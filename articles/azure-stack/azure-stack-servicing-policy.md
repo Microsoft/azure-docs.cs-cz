@@ -12,18 +12,29 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 0bbe2ee7436cc03a3780da096a498769d66eb505
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1865b4fa03f774fb4cbe69a5c8b17b096981ebc8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277932"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632785"
 ---
 # <a name="azure-stack-servicing-policy"></a>Údržba zásad služby Azure Stack
+
 Tento článek popisuje údržby zásady pro integrované systémy Azure Stack, a co musíte udělat, aby byl váš systém v podporovaném stavu. 
+
+## <a name="download-update-packages-for-integrated-systems"></a>Stáhněte si balíčky aktualizací pro integrované systémy
+
+Microsoft vydá úplné měsíční aktualizace balíčků i balíčky oprav hotfix umožní řešit konkrétní problémy. 
+
+Balíčky s měsíčním aktualizace jsou hostované v zabezpečené koncový bod Azure. Můžete je ručně pomocí Stáhnout [nástroj pro stahování aktualizací Azure Stack](http://aka.ms/azurestackupdatedownload). Pokud je připojené jednotky škálování, aktualizace se automaticky zobrazí na portálu správce jako **k dispozici je aktualizace**. Úplné a měsíční aktualizace balíčků jsou dobře zdokumentovaná při každém vydání. Další informace o každé vydané verze, můžete kliknout na libovolném vydání z [aktualizace balíčku vydávání verzí](#update-package-release-cadence) části tohoto článku.
+
+Balíčky aktualizací opravy hotfix jsou hostované ve stejné zabezpečené koncový bod Azure. Můžete je ručně pomocí vložených odkazů v každém z článků znalostní báze KB příslušné opravy hotfix; stáhnout například [Azure Stack Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Podobně jako úplné, jsou měsíční aktualizace balíčků, operátoři Azure stacku můžete stáhnout soubory .xml, soubor .bin a .exe a naimportovat pomocí postupu v [použití aktualizací ve službě Azure Stack](azure-stack-apply-updates.md). Operátoři Azure stacku s připojených jednotkách uvidí opravy hotfix, automaticky se na portálu správce se zprávou **k dispozici je aktualizace**.
+
+Pokud není připojené jednotky škálování a chcete, abyste dostávali oznámení o každém vydání opravy hotfix, přihlášení k odběru [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … ) nebo [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …) informačního kanálu, které jste si poznamenali v jednotlivých verzích.  
 
 ## <a name="update-package-types"></a>Typy aktualizace balíčků
 
@@ -51,7 +62,7 @@ Opravy hotfix se stahují a instalují stejně jako regulární úplnou aktualiz
 
 
 ## <a name="keep-your-system-under-support"></a>Zachovat systému v rámci podpory
-Pokračujte k získání podpory, je nutné zachovat vašeho nasazení Azure stacku aktuální. Zásady odložení aktualizace je: pro nasazení Azure Stack tak si zachováte podporu, musí spustit nedávno vydané verze aktualizace nebo spusťte jeden z dvě předchozí verze aktualizace. Opravy hotfix, se nepovažují aktualizace hlavní verze. Pokud cloudu služby Azure Stack je za *více než dvě aktualizace*, je to považovat za nedodržení a musíte aktualizovat alespoň minimální podporovaná verze získání podpory. 
+Pokračujte k získání podpory, je nutné zachovat vašeho nasazení Azure stacku aktuální. Zásady odložení aktualizace je: Pro nasazení Azure Stack tak si zachováte podpory se musí spustit nedávno vydané verze aktualizace nebo spustit některý z dvě předchozí verze aktualizace. Opravy hotfix, se nepovažují aktualizace hlavní verze. Pokud cloudu služby Azure Stack je za *více než dvě aktualizace*, je to považovat za nedodržení a musíte aktualizovat alespoň minimální podporovaná verze získání podpory. 
 
 Například pokud nejvíce dostupného aktualizovanou verzi je 1805 a předchozí dva balíčky aktualizace byly verze 1804 a 1803, 1803 a 1804 zůstanou na podporu. Je však 1802 bez podpory. Zásady platí, pokud neexistuje žádná verze pro měsíc nebo dvě. Například pokud v aktuální verzi je 1805 a nebyly žádné verzi 1804, předchozí dva balíčky aktualizací 1803 a 1802 zůstanou na podporu.
 

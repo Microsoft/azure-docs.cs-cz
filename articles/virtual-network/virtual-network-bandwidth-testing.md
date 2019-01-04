@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 45efaebb9539c4c0e2542966df6ab890b64d12ee
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: fa0adef58ae1eda8604cefc9c3d7e3a4c32d63d0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023816"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793535"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Šířka pásma nebo propustnosti testování (NTTTCP)
 
@@ -29,10 +29,11 @@ Zkopírujte nástroj na dva virtuální počítače Azure stejné velikosti. Jed
 
 #### <a name="deploying-vms-for-testing"></a>Nasazení virtuálních počítačů pro účely testování
 Pro účely tohoto testu dva virtuální počítače by měl být ve stejné cloudové službě nebo stejné sadě dostupnosti tak, že můžeme pomocí svých interních IP adres a vyloučit z testovacího nástroje pro vyrovnávání zatížení. Je možné otestovat pomocí virtuální IP adresa, ale tento druh testování je mimo rámec tohoto dokumentu.
- 
+
 Poznamenejte si IP adresu příjemce. Pojmenujme tuto IP adresu "a.b.c.r"
 
-Poznamenejte si počet jader ve virtuálním počítači. To budeme nazývat "\#num\_jader"  
+Poznamenejte si počet jader ve virtuálním počítači. To budeme nazývat "\#num\_jader"
+
 Spusťte NTTTCP test na 300 sekund (nebo 5 minut) na virtuálním počítači odesílatele a příjemce virtuálního počítače.
 
 Tip: Při nastavování tento test poprvé, můžete se pokusit kratší zkušebního období získat zpětnou vazbu dříve. Jakmile nástroj funguje podle očekávání, prodloužení doby testu do 300 sekund, velmi přesné výsledky.

@@ -9,33 +9,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e00c52c17eac92edc3273e2d765d6c5fd76f59b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1601663266f59668918e6799b5c4a7ff606431c4
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970672"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600008"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění Apache Spark úloh spuštěných v Azure HDInsight
 
-V tomto článku se dozvíte, jak ke sledování a ladění [Apache Spark](https://spark.apache.org/) úloh spuštěných na HDInsight clusterů pomocí [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) uživatelského rozhraní, Spark uživatelského rozhraní a Server historie Sparku. Spustit úlohu Spark pomocí poznámkového bloku, které jsou dostupné s clusterem Spark **Machine learning: prediktivní analýzy na data kontroly potravin pomocí MLLib**. Následující postup můžete použít ke sledování aplikace, které jste odeslali používáte jiný přístup, například **skriptu spark-submit**.
+V tomto článku se dozvíte, jak ke sledování a ladění [Apache Spark](https://spark.apache.org/) úloh spuštěných na HDInsight clusterů pomocí [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) uživatelského rozhraní, Spark uživatelského rozhraní a Server historie Sparku. Spustit úlohu Spark pomocí poznámkového bloku, které jsou dostupné s clusterem Spark **Machine learning: Prediktivní analýza dat kontroly potravin pomocí MLLib**. Následující postup můžete použít ke sledování aplikace, které jste odeslali používáte jiný přístup, například **skriptu spark-submit**.
 
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít následující:
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Měli jste spustili spuštění poznámkového bloku,  **[Machine learning: prediktivní analýzy na data kontroly potravin pomocí MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Pokyny, jak spustit tento poznámkový blok postupujte podle odkazu.  
+* Měli jste spustili spuštění poznámkového bloku,  **[Machine learning: Prediktivní analýza dat kontroly potravin pomocí MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Pokyny, jak spustit tento poznámkový blok postupujte podle odkazu.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Sledování aplikace v Uživatelském rozhraní YARN
 1. Spuštění uživatelského rozhraní YARN. Klikněte na tlačítko **Yarn** pod **řídicí panely clusteru**.
    
     ![Spuštění uživatelského rozhraní YARN](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
-   > [!TIP]
-   > Alternativně můžete také spustit z uživatelského rozhraní Ambari Uživatelském rozhraní YARN. Chcete-li spustit uživatelské rozhraní Ambari, klikněte na tlačítko **Ambari domácí** pod **řídicí panely clusteru**. Z uživatelského rozhraní Ambari, klikněte na tlačítko **YARN**, klikněte na tlačítko **rychlé odkazy**, klikněte na aktivní Resource Manageru a pak klikněte na **uživatelského rozhraní správce prostředků**.    
-   > 
-   > 
+   > [!TIP]  
+   > Alternativně můžete také spustit z uživatelského rozhraní Ambari Uživatelském rozhraní YARN. Chcete-li spustit uživatelské rozhraní Ambari, klikněte na tlačítko **Ambari domácí** pod **řídicí panely clusteru**. Z uživatelského rozhraní Ambari, klikněte na tlačítko **YARN**, klikněte na tlačítko **rychlé odkazy**, klikněte na aktivní Resource Manageru a pak klikněte na **uživatelského rozhraní správce prostředků**. 
+
 2. Protože jste spustili úlohu Spark pomocí poznámkových bloků Jupyter, aplikace má název **remotesparkmagics** (jde o název pro všechny aplikace, které jsou spuštěny z poznámkových bloků). Klikněte na ID aplikace proti název aplikace, chcete-li získat další informace o úloze. Otevře se zobrazení aplikace.
    
     ![Vyhledání ID aplikací Spark](./media/apache-spark-job-debugging/find-application-id.png)
@@ -43,7 +42,7 @@ Musíte mít následující:
     Pro takové aplikace, které jsou spouštěny z poznámkových bloků Jupyter, stav je vždy **systémem** dokud neukončíte poznámkového bloku.
 3. Ze zobrazení aplikací můžete procházet hierarchii dále najdete kontejnerů přidružených k aplikaci a protokoly (stdout/stderr). Rozhraní Spark můžete také spustit kliknutím propojení odpovídá **sledování adresy URL**, jak je znázorněno níže. 
    
-    ![Stáhnout protokoly kontejneru](./media/apache-spark-job-debugging/download-container-logs.png)
+    ![Stáhnout protokoly kontejnerů](./media/apache-spark-job-debugging/download-container-logs.png)
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Sledování aplikace v Uživatelském rozhraní Spark
 V uživatelském rozhraní Spark můžete přejít ke Sparkových úloh, které jsou vyvolaných pomocí aplikace, kterou jste dříve spustili.
@@ -72,10 +71,9 @@ V uživatelském rozhraní Spark můžete přejít ke Sparkových úloh, které 
    
     Tato funkce zobrazí události Spark ve formě časové osy. Zobrazení časové osy je k dispozici ve třech úrovních mezi úlohami v rámci úlohy a v rámci fáze. Na obrázku výše jsou zaznamenané zobrazení časové osy pro danou fázi.
    
-   > [!TIP]
+   > [!TIP]  
    > Pokud vyberete **zapnout zvětšování** zaškrtávací políčko, mohou posunete doleva a doprava napříč zobrazení časové osy.
-   > 
-   > 
+
 6. Ostatní karty v Uživatelském rozhraní Spark poskytují užitečné informace o instanci Spark také.
    
    * Karta úložiště – Pokud vaše aplikace vytvoří Rdd, najdete informace o těch na kartě úložiště.
@@ -92,10 +90,9 @@ Po dokončení úlohy se ukládají informace o úloze v Server historie Sparku.
    
     ![Spusťte Server historie Sparku](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
-   > [!TIP]
+   > [!TIP]  
    > Alternativně můžete také spustit uživatelské rozhraní konektoru Spark historie serveru z uživatelského rozhraní Ambari. Chcete-li spustit uživatelské rozhraní Ambari, v okně Přehled klikněte na tlačítko **Ambari domácí** pod **řídicí panely clusteru**. Z uživatelského rozhraní Ambari, klikněte na tlačítko **Spark**, klikněte na tlačítko **rychlé odkazy**a potom klikněte na tlačítko **rozhraní Server historie Sparku**.
-   > 
-   > 
+
 2. Zobrazí všechny dokončené aplikace uvedené. Klikněte na ID aplikace a přejít k podrobnostem do aplikace pro další informace.
    
     ![Spusťte Server historie Sparku](./media/apache-spark-job-debugging/view-completed-applications.png)
@@ -106,8 +103,8 @@ Po dokončení úlohy se ukládají informace o úloze v Server historie Sparku.
 
 ### <a name="for-data-analysts"></a>Pro datové analytiky
 
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Application Insight analýza dat telemetrie používat Apache Spark v HDInsight](apache-spark-analyze-application-insight-logs.md)
 * [Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark](apache-spark-deep-learning-caffe.md)

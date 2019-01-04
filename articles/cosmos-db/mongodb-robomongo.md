@@ -1,31 +1,32 @@
 ---
-title: Použití Robomongo pro službu Azure Cosmos DB
-description: 'Další informace o použití Robomongo pomocí služby Azure Cosmos DB: rozhraní API pro účet MongoDB'
+title: Slouží k připojení ke službě Azure Cosmos DB Robo 3T
+description: Zjistěte, jak se připojit ke službě Azure Cosmos DB pomocí Robo 3T a Azure Cosmos DB přes rozhraní API pro MongoDB
 keywords: robomongo
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 05/23/2017
-ms.author: sngun
-ms.openlocfilehash: 78f0158c9a80a60717b81b4788531c7efd979111
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: af601075b8cc774654a9f2dbf83193bf9701166b
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863801"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789445"
 ---
-# <a name="use-robomongo-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Použití Robomongo pomocí služby Azure Cosmos DB: rozhraní API pro účet MongoDB
-Pro připojení ke službě Azure Cosmos DB: rozhraní API pro účet MongoDB použití Robomongo, musíte:
+# <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Používáte Robo 3T s rozhraním API pro Azure Cosmos DB pro MongoDB.
 
-* Stáhněte a nainstalujte [Robomongo](https://robomongo.org/)
-* Mají služby Azure Cosmos DB: rozhraní API pro účet MongoDB [připojovací řetězec](connect-mongodb-account.md) informace
+Pro připojení k účtu Cosmos pomocí Robo 3T, musíte mít:
 
-## <a name="connect-using-robomongo"></a>Připojení s využitím Robomongo
-Přidání služby Azure Cosmos DB: rozhraní API pro účet MongoDB k připojení Robomongo MongoDB, proveďte následující kroky.
+* Stáhněte a nainstalujte [Robo 3T](https://robomongo.org/)
+* Cosmos DB mají [připojovací řetězec](connect-mongodb-account.md) informace
 
-1. Načtení Azure Cosmos DB: rozhraní API pro účet informace o připojení MongoDB pomocí pokynů [tady](connect-mongodb-account.md).
+## <a name="connect-using-robo-3t"></a>Připojte se pomocí Robo 3T
+Pokud chcete přidat do správce Robo 3T připojení účtu Cosmos, proveďte následující kroky:
+
+1. Načíst informace o připojení účtu Cosmos nakonfigurovanou API MongoDB služby Azure Cosmos DB pomocí pokynů [tady](connect-mongodb-account.md).
 
     ![Snímek obrazovky okna připojovací řetězec](./media/mongodb-robomongo/connectionstringblade.png)
 2. Spustit *Robomongo.exe*
@@ -45,4 +46,6 @@ Obě **uživatelské jméno** a **heslo** najdete informace o připojení v krok
 7. Nakonec klikněte na tlačítko **testovací** k ověření, že se můžete připojit, pak **Uložit**.
 
 ## <a name="next-steps"></a>Další postup
-* Prozkoumejte službu Azure Cosmos DB: Rozhraní API pro MongoDB [ukázky](mongodb-samples.md).
+
+- Zjistěte, jak [použití studia 3T](mongodb-mongochef.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
+- Prozkoumejte MongoDB [ukázky](mongodb-samples.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.

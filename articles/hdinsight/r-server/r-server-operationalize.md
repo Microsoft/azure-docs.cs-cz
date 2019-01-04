@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496923"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579953"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Zprovoznění služby ML clusteru v Azure HDInsight
 
@@ -22,13 +22,13 @@ Po použití služby ML clusteru v HDInsight k dokončení modelování vašich 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Cluster služby ML v HDInsight**: pokyny najdete v tématu [začít pracovat se službami ML na HDInsight](r-server-get-started.md).
+* **Cluster služby ML v HDInsight**: Pokyny najdete v tématu [začít pracovat se službami ML na HDInsight](r-server-get-started.md).
 
-* **Klient Secure Shell (SSH):** Klient SSH slouží k vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient Secure Shell (SSH)**: Klient SSH slouží ke vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo na clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Zprovoznění clusteru služby ML pomocí konfigurace
 
-> [!NOTE]
+> [!NOTE]  
 > Následující postup platí pro R Server 9.0 a ML serveru 9.1. ML Server 9.3, najdete v tématu [použít nástroje pro správu ke správě konfigurace operacionalizace](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
 
 1. Připojte se přes SSH k hraničnímu uzlu.
@@ -137,7 +137,7 @@ Jakmile je aktivní relaci SSH, provoz z portu 12800 vašeho místního počíta
 
 Pokud chcete škálovat výpočetní uzly, nejprve vyřadit z provozu pracovní uzly a pak konfigurace výpočetních uzlů na vyřazených pracovních uzlů.
 
-### <a name="step-1-decommission-the-worker-nodes"></a>Krok 1: Vyřazení z provozu pracovní uzly
+### <a name="step-1-decommission-the-worker-nodes"></a>Krok 1: Vyřazení pracovních uzlů z provozu
 
 Cluster se službou ML Services není spravován přes [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Pokud pracovní uzly nevyřadí, správce prostředků YARN nebude fungovat podle očekávání, protože nebude vědět o prostředcích, které server. Abyste této situaci zabránili, doporučujeme před horizontálním navýšením kapacity výpočetních uzlů vyřadit z provozu pracovní uzly.
 
@@ -173,7 +173,7 @@ Použijte následující postup vyřazení pracovních uzlů z provozu:
 
 1. Ukončete nástroj pro správu.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Přidání výpočetních uzlů podrobnosti do webového uzlu
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Přidání podrobností o výpočetních uzlech do webového uzlu
 
 Jakmile budou všechny vyřazené pracovní uzly jsou nakonfigurovány na spuštění výpočetního uzlu, přejděte zpět hraničního uzlu a přidejte IP adresy vyřazených pracovních uzlů do konfigurace webového uzlu ML serveru:
 

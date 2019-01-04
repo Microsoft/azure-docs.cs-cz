@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 12/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 58dfb3f02b338d62fcfb10e4d8c1bc492cdacbda
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b036f0b1c38222b6bb3ebee1a3fab0d1613260f7
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890547"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811014"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -300,15 +300,15 @@ Volitelně můžete použít rutinu Get-obsah tak, aby odkazoval na soubor, kter
 
 ## <a name="verify-azure-stack-registration"></a>Ověření registrace Azure Stack
 
-Pomocí těchto kroků můžete ověřit, že Azure Stack je úspěšně zaregistrovaný s Azure.
+Můžete použít **Správa oblastí** dlaždici a ověřte, že Azure Stack registrace byla úspěšná. Tato dlaždice není k dispozici na výchozí řídicí panel portálu správce. Stav může být registrováno nebo není zaregistrovaný. Pokud je zaregistrován, také ukazuje, ID předplatného Azure, který jste použili k registraci společně s registrace skupiny prostředků a název služby Azure Stack.
 
-1. Přihlaste se ke službě Azure Stack [portál pro správu](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*.
-2. Vyberte **všechny služby**a potom v části **správu** vyberte **Marketplace správu** > **přidat z Azure**.
+1. Přihlaste se k [portál pro správu služby Azure Stack](https://adminportal.local.azurestack.external).
 
-Pokud se zobrazí seznam položek, které jsou k dispozici od Azure (např. WordPress), s aktivací bylo úspěšné. V odpojených prostředích položky Azure marketplace v Tržišti Azure Stack neuvidíte.
+2. Z řídicího panelu, vyberte **Správa oblastí**.
 
-> [!Note]  
-> Po dokončení registrace se už zobrazí aktivní upozornění pro registraci není.
+    [ ![Dlaždice oblasti správy](media/azure-stack-registration/admin1sm.png "dlaždice oblasti správy") ](media/azure-stack-registration/admin1.png#lightbox)
+
+3. Vyberte **vlastnosti**. Toto okno zobrazuje stav a podrobnosti o vašem prostředí. Stav může být **registrované** nebo **Neregistrovaný**. Pokud je zaregistrován, také ukazuje, ID předplatného Azure, který jste použili k registraci služby Azure Stack, spolu s registrace skupiny prostředků a názvem.
 
 ## <a name="renew-or-change-registration"></a>Prodloužení nebo změnit registrace
 
@@ -434,9 +434,9 @@ Pokud chcete spustit rutinu, budete potřebovat:
 | AzureContext | PSObject |  |
 | ResourceGroupName | Řetězec |  |
 | ResourceGroupLocation | Řetězec |  |
-| BillingModel | Řetězec | Model fakturace předplatného používá. Povolené jsou hodnoty pro tento parametr: kapacity, PayAsYouUse a vývoj. |
+| BillingModel | Řetězec | Model fakturace předplatného používá. Povolené hodnoty tohoto parametru jsou: Kapacita, PayAsYouUse a vývoj. |
 | MarketplaceSyndicationEnabled | True nebo False | Určuje, zda funkce pro správu webu marketplace je k dispozici na portálu. Nastavte na hodnotu true, pokud se registrace s připojením k Internetu. Nastavte na hodnotu false, pokud se registrace v odpojených prostředích. Pro odpojený registrace [nástroj v režimu offline syndikace](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) lze použít pro stažení položek z marketplace. |
-| UsageReportingEnabled | True nebo False | Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí se musí si vypnout generování sestav o využívání. Povolené jsou hodnoty pro tento parametr: hodnotu True, False. |
+| UsageReportingEnabled | True nebo False | Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí se musí si vypnout generování sestav o využívání. Povolené hodnoty tohoto parametru jsou: Hodnota TRUE, False. |
 | AgreementNumber | Řetězec |  |
 | registrationName | Řetězec | Nastavit jedinečný název pro registraci, pokud používáte skript registrace na více než jednu instanci služby Azure Stack pomocí stejného předplatného Azure ID. Parametr má výchozí hodnotu **AzureStackRegistration**. Nicméně pokud použijete stejný název ve více než jednu instanci služby Azure Stack, skript se nezdaří. |
 
@@ -456,9 +456,9 @@ Get-AzsRegistrationToken vygeneruje registrační token ze vstupních parametrů
 | AzureContext | PSObject |  |
 | ResourceGroupName | Řetězec |  |
 | ResourceGroupLocation | Řetězec |  |
-| BillingModel | Řetězec | Model fakturace předplatného používá. Povolené jsou hodnoty pro tento parametr: kapacity, PayAsYouUse a vývoj. |
+| BillingModel | Řetězec | Model fakturace předplatného používá. Povolené hodnoty tohoto parametru jsou: Kapacita, PayAsYouUse a vývoj. |
 | MarketplaceSyndicationEnabled | True nebo False |  |
-| UsageReportingEnabled | True nebo False | Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí se musí si vypnout generování sestav o využívání. Povolené jsou hodnoty pro tento parametr: hodnotu True, False. |
+| UsageReportingEnabled | True nebo False | Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí se musí si vypnout generování sestav o využívání. Povolené hodnoty tohoto parametru jsou: Hodnota TRUE, False. |
 | AgreementNumber | Řetězec |  |
 
 

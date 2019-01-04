@@ -15,150 +15,135 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 103b5c1d2bc70f187b6e65a9fa9d80a35ad8e0c1
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d9f25b7a10b7a50663198120a895220b02818d7b
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321575"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994942"
 ---
-# <a name="how-to-monitor-apps-in-azure-app-service"></a>Postup: Sledování aplikací ve službě Azure App Service
-[App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování v [webu Azure portal](https://portal.azure.com).
-Na webu Azure portal umožňuje zkontrolovat **kvóty** a **metriky** pro aplikace, stejně jako plán služby App Service, nastavení **výstrahy** a dokonce i **škálování**  automaticky v závislosti na tyto metriky.
+# <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací ve službě Azure App Service
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, back-endů mobilních a API apps v [webu Azure portal](https://portal.azure.com).
 
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+Na webu Azure Portal, můžete zkontrolovat *kvóty* a *metriky* pro aplikace, projděte si plán služby App Service a automaticky nastavit *výstrahy* a *škálování* založené na metriky.
 
-## <a name="understanding-quotas-and-metrics"></a>Principy kvóty a metriky
-### <a name="quotas"></a>Kvóty
-Aplikace hostované ve službě App Service podléhají určité *omezení* na prostředky, můžete použít. Omezení jsou definovány **plán služby App Service** přidružené k aplikaci.
+## <a name="understand-quotas"></a>Vysvětlení kvóty
+
+Aplikace, které jsou hostované ve službě App Service se vztahují na prostředky, které můžete použít určitá omezení. Omezení je definována v plánu služby App Service, který je spojen s aplikací.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Pokud je aplikace hostovaná v **Free** nebo **Shared** plánování a omezení pro aplikace můžete používat prostředky, které jsou definovány pomocí **kvóty**.
+Pokud je aplikace hostovaná v *Free* nebo *Shared* plán, omezení pro prostředky, které může aplikace používat, jsou definovány pomocí kvót.
 
-Pokud je aplikace hostovaná v **základní**, **standardní** nebo **Premium** plánování a omezení pro prostředky, můžete použít určil institut NIST **velikost**(Malá, střední, velká) a **počet instancí** (1, 2, 3,...) z **plán služby App Service**.
+Pokud je aplikace hostovaná v *základní*, *standardní*, nebo *Premium* plán, omezení pro prostředky, které můžete použít institut NIST *velikost* () Malá, střední, velká) a *počet instancí* (1, 2, 3 a tak dále) plánu služby App Service.
 
-**Kvóty** pro **Free** nebo **Shared** aplikace jsou:
+Kvóty pro Free nebo Shared aplikace jsou:
 
-* **CPU(Short)**
-  * Procento využití procesoru, které jsou povolené pro tuto aplikaci v intervalu 5 minut. Tato kvóta resetuje každých pět minut.
-* **CPU(Day)**
-  * Celkové procento využití procesoru povolený pro tuto aplikaci za jeden den. Tato kvóta resetuje o půlnoci UTC každých 24 hodin.
-* **Paměť**
-  * Celkové množství paměti pro tuto aplikaci povolená.
-* **Šířka pásma**
-  * Celkové množství odchozích šířky pásma pro tuto aplikaci za jeden den povolené.
-    Tato kvóta resetuje o půlnoci UTC každých 24 hodin.
-* **systém souborů**
-  * Celková velikost úložiště, které jsou povoleny.
+| Kvóta | Popis |
+| --- | --- |
+| **Využití procesoru (zkráceně)** | Procento využití procesoru pro tuto aplikaci povolené v intervalu 5 minut. Tato kvóta resetuje každých pět minut. |
+| **Využití procesoru (den)** | Celkové procento využití procesoru pro tuto aplikaci za jeden den povolené. Tato kvóta resetuje o půlnoci UTC každých 24 hodin. |
+| **Paměť** | Celková velikost paměti pro tuto aplikaci povolené. |
+| **Šířka pásma** | Celkový objem odchozí šířky pásma pro tuto aplikaci za jeden den povolené. Tato kvóta resetuje o půlnoci UTC každých 24 hodin. |
+| **systém souborů** | Celková velikost úložiště povolené. |
 
-Pouze pro aplikace hostované na kvótu **základní**, **standardní**, a **Premium** plány je **systému souborů**.
+Pouze pro aplikace, které jsou hostovány v kvóty *základní*, *standardní*, a *Premium* plány je systém souborů.
 
-Další informace o konkrétní kvóty, limity a funkce dostupné na různých skladových položkách App Service najdete tady: [Omezení služeb v předplatném Azure](../azure-subscription-service-limits.md#app-service-limits)
+Další informace o konkrétní kvóty, limity a funkce, které jsou k dispozici pro různé skladové jednotky App Service najdete v tématu [limity předplatného Azure](../azure-subscription-service-limits.md#app-service-limits).
 
-#### <a name="quota-enforcement"></a>Vynucení kvót
-Pokud překročí aplikace **procesoru (zkráceně)**, **procesoru (den)**, nebo **šířky pásma** kvóta pak aplikace je zastavena, dokud se kvóta resetuje. Během této doby všechny žádosti přicházející vést **HTTP 403**.
-![][http403]
+### <a name="quota-enforcement"></a>Vynucení kvót
 
-Pokud aplikace **paměti** překročena kvóta, pak se aplikace restartuje.
+Pokud překročí aplikace *procesoru (zkráceně)*, *procesoru (den)*, nebo *šířky pásma* kvóty, aplikace se zastaví, dokud se kvóta resetuje. Během této doby všechny žádosti přicházející způsobit chybu HTTP 403.
 
-Pokud **systému souborů** překročila kvótu a jakékoli zápisu operace se nezdaří, který zahrnuje všechny zápisy do protokolů.
+![Chyba 403 zprávy][http403]
 
-Kvóty můžete zvýšit nebo z vaší aplikace odebrán, upgradujte plán služby App Service.
+Pokud dojde k překročení kvóty paměti aplikace, je restartovat aplikaci.
 
-### <a name="metrics"></a>Metriky
-**Metriky** poskytují informace o aplikaci nebo chování plán služby App Service.
+Pokud dojde k překročení kvóty systému souborů, jakékoli zápisu operace se nezdaří. Zapsat všechny zápisy do protokolů zahrnout selhání operací.
 
-Pro **aplikace**, jsou dostupné metriky:
+Můžete zvýšit nebo odebrat kvóty z vaší aplikace díky upgradu plánu služby App Service.
 
-* **Průměrná doba odezvy**
-  * Průměrná doba pro aplikaci pro požadavků v ms.
-* **Průměrná pracovní sada paměti**
-  * Průměrná velikost paměti v MIB, které aplikace používá.
-* **Čas procesoru**
-  * Procento využití procesoru v řádu sekund používané aplikace. Další informace o tuto metriku naleznete v tématu: [Vs procesoru procentuální hodnota času procesoru](#cpu-time-vs-cpu-percentage)
-* **Data v**
-  * Množství příchozích šířky pásma využívané aplikace v MIB.
-* **Výstupní data**
-  * Množství využité aplikací v MIB odchozí šířky pásma.
-* **Http 2xx**
-  * Počet požadavků, výsledkem je stavový kód protokolu HTTP > = 200, ale < 300.
-* **Http 3xx**
-  * Počet požadavků, výsledkem je stavový kód protokolu HTTP > = 300, ale < 400.
-* **Http 401**
-  * Počet požadavků, které jsou výsledkem je stavový kód HTTP 401.
-* **Http 403**
-  * Počet požadavků, které jsou výsledkem je stavový kód HTTP 403.
-* **Http 404**
-  * Počet požadavků, které jsou výsledkem je stavový kód HTTP 404.
-* **HTTP 406**
-  * Počet požadavků, které jsou výsledkem je stavový kód HTTP 406.
-* **Http 4xx**
-  * Počet požadavků, výsledkem je stavový kód protokolu HTTP > = 400, ale < 500.
-* **Chyby serveru http**
-  * Počet požadavků, výsledkem je stavový kód protokolu HTTP > = 500, ale < 600.
-* **Pracovní sada paměti**
-  * Aktuální velikost paměti, používat aplikace v MIB.
-* **Požadavky**
-  * Celkový počet požadavků bez ohledu na jejich výsledné stavového kódu protokolu HTTP.
+## <a name="understand-metrics"></a>Vysvětlení metriky
 
-Pro **plán služby App Service**, jsou dostupné metriky:
+Metriky poskytují informace o aplikaci nebo služby App Service chování plánu.
+
+Pro aplikace jsou k dispozici metriky:
+
+| Metrika | Popis |
+| --- | --- |
+| **Průměrná doba odezvy** | Průměrná doba pro aplikaci pro požadavků, v milisekundách. |
+| **Průměrná pracovní sada paměti** | Průměrná velikost paměti, používat aplikace v mebibytes (MiB). |
+| **Čas procesoru** | Procento využití procesoru používané aplikace v řádu sekund. Další informace o tuto metriku, naleznete v tématu [vs procesoru procentuální hodnota času procesoru](#cpu-time-vs-cpu-percentage). |
+| **Data v** | Množství příchozích šířky pásma používané aplikace v MiB. |
+| **Výstupní data** | Množství využité aplikací v MiB odchozí šířky pásma. |
+| **Http 2xx** | Počet požadavků, což vede k ≥ stavový kód HTTP 200, ale < 300. |
+| **Http 3xx** | Počet požadavků, výsledkem je stavový kód HTTP ≥ 300, ale < 400. |
+| **Http 401** | Počet požadavků, výsledkem je stavový kód HTTP 401. |
+| **Http 403** | Počet požadavků, výsledkem je stavový kód HTTP 403. |
+| **Http 404** | Počet požadavků, výsledkem je stavový kód HTTP 404. |
+| **HTTP 406** | Počet požadavků, výsledkem je stavový kód HTTP 406. |
+| **Http 4xx** | Počet požadavků, což vede k ≥ stavový kód HTTP 400, ale < 500. |
+| **Chyby serveru http** | Počet požadavků, výsledkem je stavový kód HTTP ≥ 500, ale < 600. |
+| **Pracovní sada paměti** | Aktuální velikost paměti, používat aplikace v MiB. |
+| **Požadavky** | Celkový počet požadavků bez ohledu na jejich výsledné stavového kódu protokolu HTTP. |
+
+Pro plán služby App Service jsou k dispozici metriky:
 
 > [!NOTE]
-> Metriky plánu služby App Service jsou dostupné jenom pro plány **základní**, **standardní**, a **Premium** úrovně.
-> 
+> Metriky plánu služby App Service jsou k dispozici pouze pro plány v *základní*, *standardní*, a *Premium* úrovně.
 > 
 
-* **Procentuální využití procesoru**
-  * Průměr CPU použít napříč všemi instancemi plánu.
-* **Procento paměti**
-  * Průměrná paměť použitá napříč všemi instancemi plánu.
-* **Data v**
-  * Průměrná příchozí šířku pásma používanou napříč všemi instancemi plánu.
-* **Výstupní data**
-  * Průměr odchozí šířka pásma použít napříč všemi instancemi plánu.
-* **Délka fronty disku**
-  * Průměrný počet čtení a zápis požadavků, které byly zařazeny do fronty úložiště. Délka fronty disku je údaj o aplikaci, která může být zpomalení z důvodu nadměrného diskové vstupně-výstupních operací.
-* **Délka fronty http**
-  * Průměrný počet požadavků HTTP, do kterých se nacházejí ve frontě, než jsou splněny. Vysokou nebo rostoucí délku fronty HTTP je příznakem plán při velkém zatížení.
+| Metrika | Popis |
+| --- | --- |
+| **Procentuální využití procesoru** | Průměr CPU použít napříč všemi instancemi plánu. |
+| **Procento paměti** | Průměrná paměť použitá napříč všemi instancemi plánu. |
+| **Data v** | Průměrná příchozí šířku pásma používanou napříč všemi instancemi plánu. |
+| **Výstupní data** | Průměr odchozí šířka pásma použít napříč všemi instancemi plánu. |
+| **Délka fronty disku** | Průměrný počet čtení a zápis požadavků, které byly zařazeny do fronty úložiště. Délka fronty disku je údaj o aplikaci, která může být zpomalení z důvodu nadměrného diskové vstupně-výstupních operací. |
+| **Délka fronty http** | Průměrný počet požadavků HTTP, do kterých se nacházejí ve frontě, než jsou splněny. Vysokou nebo rostoucí délku fronty HTTP je příznakem plán při velkém zatížení. |
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>Vs procesoru procentuální hodnota času procesoru
 <!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
-Existují dvě metriky, které odrážejí využití procesoru. **Čas procesoru** a **procento využití procesoru**
+Existují dvě metriky, které odrážejí využití procesoru:
 
-**Čas procesoru** je užitečné pro aplikace hostované v **Free** nebo **Shared** plány, protože jeden z jejich kvóty je definovaný během několika minut využití procesoru, které aplikace používá.
+**Čas procesoru**: Užitečné pro aplikace hostované v bezplatné nebo sdílené plány, protože jeden z jejich kvóty je definováno během několika minut využití procesoru, které aplikace používá.
 
-**Procentuální využití procesoru** je užitečné pro aplikace hostované v **základní**, **standardní**, a **premium** plány vzhledem k tomu, že lze škálovat. Procentuální využití procesoru je dobrá indikace toho celkové využití napříč všemi instancemi.
+**Procentuální využití procesoru**: Užitečné pro aplikace hostované v plánech Basic, Standard a Premium, protože je možné škálovat navýšení kapacity. Procentuální využití procesoru je dobrá indikace toho celkové využití napříč všemi instancemi.
 
-## <a name="metrics-granularity-and-retention-policy"></a>Metriky Členitosti a zásady uchovávání informací
-Metriky pro aplikace a plán služby app service jsou protokolovány a agregované podle této služby s využitím následujících rozlišeních a zásady uchovávání informací:
+## <a name="metrics-granularity-and-retention-policy"></a>Metriky členitosti a zásadu uchovávání
+Metriky pro aplikace a plán služby app service jsou zaznamenána a agregovat služba s následujícím rozlišeních a zásady uchovávání informací:
 
-* **Minuta** členitosti metriky se uchovávají po dobu **30 hodin**
-* **Hodina** členitosti metriky se uchovávají po dobu **30 dnů**
-* **Den** členitosti metriky se uchovávají po dobu **30 dnů**
+* **Minuta** členitosti metriky se uchovávají po dobu 30 hodin.
+* **Hodina** členitosti metriky se uchovávají po dobu 30 dnů.
+* **Den** členitosti metriky se uchovávají po dobu 30 dnů.
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorování kvóty a metriky na webu Azure Portal.
-Můžete zkontrolovat stav různých **kvóty** a **metriky** by to ovlivnilo aplikace [webu Azure portal](https://portal.azure.com).
+## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorování metrik na webu Azure Portal a kvóty
+Chcete-li zkontrolovat stav různých kvóty a metriky, které ovlivňují aplikace, přejděte [webu Azure portal](https://portal.azure.com).
 
-![][quotas]
-**Kvóty** najdete v části Nastavení >**kvóty**. Uživatelského rozhraní vám umožní zkontrolovat: (1) název kvóty, (2) jeho interval resetování, (3) jeho aktuální limit a (4) aktuální hodnotu.
+![Kvóty grafu na webu Azure Portal][quotas]
 
-![][metrics]
-**Metriky** můžete přistupovat přímo na stránce prostředků. Můžete také upravit graf podle: (1) **klikněte na tlačítko** na ně a (2) vyberte **upravit graf**.
-Odsud můžete změnit (3) **časový rozsah**, (4) **typ grafu**a (5) **metriky** k zobrazení.  
+Chcete-li najít kvóty, vyberte **nastavení** > **kvóty**. V grafu můžete zkontrolovat: 
+1. Název kvóty.
+1. Interval jeho resetování.
+1. Aktuální limit.
+1. Jeho aktuální hodnota.
 
-Další informace o metrikách tady: [Monitorování metrik služeb](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+![Graf metrik na webu Azure Portal][metrics] můžete přístup k metrikám přímo z **prostředků** stránky. Přizpůsobení grafu: 
+1. Vyberte graf.
+1. Vyberte **upravit graf**.
+1. Upravit **časový rozsah**.
+1. Upravit **typ grafu**.
+1. Upravte metriky, které chcete zobrazit.  
+
+Další informace o metrikách najdete v tématu [monitorujete metriky služeb](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Výstrahy a automatické škálování
-Metriky pro plán služby aplikace nebo služby App Service můžete využívat na výstrahy. Další informace o tom najdete v tématu [doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-alerts-portal.md).
+Metriky pro aplikaci nebo plán služby App Service můžete využívat na výstrahy. Další informace naleznete v tématu [Doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-Aplikace služby App Service, které jsou hostované v basic, standard nebo premium služby App Service plány podpory **automatického škálování**. Automatické škálování umožňuje konfigurovat pravidla, která umožňuje monitorovat metriky plánu služby App Service. Pravidla můžete zvýšit nebo snížit počet instancí nabízí další zdroje informací, podle potřeby. Pravidla i vám může pomoct ušetřit peníze, když aplikace je nadměrně zřízený. Další informace o automatickém škálování tady: [Jak škálovat](../monitoring-and-diagnostics/insights-how-to-scale.md) a zde [osvědčené postupy pro automatické škálování Azure monitoru](../azure-monitor/platform/autoscale-best-practices.md)
+Hostované v úrovně Basic, Standard nebo Premium služby App Service podporu automatického škálování plánů služby App Service aplikace. S automatickým Škálováním můžete nakonfigurovat pravidla, která umožňuje monitorovat metriky plánu služby App Service. Pravidla můžete zvýšit nebo snížit počet instancí, které můžou poskytovat další prostředky podle potřeby. Pravidla i vám může pomoct ušetřit peníze, když aplikace je nadměrně zřízený. 
 
-> [!NOTE]
-> Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
-> 
-> 
+Další informace o automatické škálování najdete v tématu [škálování](../monitoring-and-diagnostics/insights-how-to-scale.md) a [osvědčené postupy pro automatické škálování Azure monitoru](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

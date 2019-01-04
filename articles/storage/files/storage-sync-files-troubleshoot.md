@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409458"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794545"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -23,6 +23,8 @@ Tento článek je určen můžete odstraňovat potíže a řešit problémy, kte
 1. [Fórum služby Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
 3. podporu Microsoftu. Chcete-li vytvořit novou žádost o podporu, na webu Azure Portal, na **pomáhají** kartu, vyberte možnost **Nápověda a podpora** tlačítko a pak vyberte **nová žádost o podporu**.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Mám potíže s Azure File Sync na serveru (synchronizace, cloud vrstvení atd.). By měla odebrat a znovu vytvořte koncový bod pro tento server?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -130,11 +132,11 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 Tomuto problému může dojít, pokud proces synchronizace monitorování úložiště není spuštěna nebo není schopen komunikovat se službou Azure File Sync kvůli proxy nebo brány firewall na serveru.
 
-Chcete-li vyřešit tento problém, proveďte následující kroky:
+Při řešení tohoto problému postupujte následovně:
 
-1. Otevřete Správce úloh na serveru a ověřte, zda že je spuštěn proces synchronizace monitorování úložiště (AzureStorageSyncMonitor.exe). Pokud proces není spuštěn, nejprve zkuste restartovat server. Pokud restartování serveru problém nevyřeší, upgradovat na nejnovější Azure File Sync [verze agenta](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
+1. Otevřete na serveru Správce úloh a ověřte, že je spuštěný proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe). Pokud tento proces není spuštěný, zkuste nejprve server restartovat. Pokud restartování serveru problém nevyřeší, upgradovat na nejnovější Azure File Sync [verze agenta](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
 2. Ověřte, zda je správně nakonfigurované nastavení brány Firewall a proxy serveru:
-    - Pokud je server za bránou firewall, ověřte, že je povolené odchozím portu 443. Pokud brána firewall omezuje provoz na konkrétní domény, zkontrolujte domén uvedené v bráně Firewall [dokumentaci](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) jsou k dispozici.
+    - Pokud je server za bránou firewall, ověřte, že je povolený odchozí port 443. Pokud brána firewall omezuje provoz na konkrétní domény, zkontrolujte domén uvedené v bráně Firewall [dokumentaci](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) jsou k dispozici.
     - Pokud je za proxy server, nakonfigurujte nastavení proxy celý počítač nebo konkrétní aplikace podle postupu v proxy serveru [dokumentaci](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
 
 <a id="endpoint-noactivity-sync"></a>**Koncový bod serveru je ve stavu stavu "Žádná aktivita" a "Online" je stav serveru v okně registrované servery**  
@@ -468,15 +470,23 @@ Když nastavíte tuto hodnotu registru, agent funkce Synchronizace souborů Azur
 | **Text chyby** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Požadována náprava** | Ano |
 
-K této chybě obvykle dochází, protože čas serveru je nesprávný nebo vypršela platnost certifikátu používaného pro ověřování. Pokud je serveru správná, postupujte následovně pro prodloužení platnosti vypršela platnost certifikátu:
+Tato chyba může být způsobeno:
 
-1. Otevřete modul snap-in Certifikáty konzoly MMC, zvolte účet počítače a přejděte do \Personal\Certificates certifikáty (místní počítač).
-2. Zaškrtněte, pokud vypršela platnost certifikátu ověřování klienta. Pokud platnost certifikátu vypršela, zavřete modul snap-in Certifikáty konzoly MMC a proceeed ve zbývajících krocích. 
-3. Ověření agenta Azure File Sync verze 4.0.1.0 nebo novější nainstalován.
-4. Spusťte následující příkazy Powershellu na serveru:
+- Není čas serveru
+- Nepovedlo se odstranit koncový bod serveru
+- Vypršela platnost certifikátu používaného pro ověřování. 
+    Pokud chcete zkontrolovat, pokud vypršela platnost certifikátu, proveďte následující kroky:  
+    1. Otevřete modul snap-in Certifikáty konzoly MMC, zvolte účet počítače a přejděte do \Personal\Certificates certifikáty (místní počítač).
+    2. Zaškrtněte, pokud vypršela platnost certifikátu ověřování klienta.
+
+Pokud je serveru správná, proveďte následující kroky k vyřešení daného problému:
+
+1. Ověření agenta Azure File Sync verze 4.0.1.0 nebo novější nainstalován.
+2. Spusťte následující příkazy Powershellu na serveru:
 
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Login-AzureRmStorageSync -SubscriptionID <guid> -TenantID <guid>
     Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
 
@@ -562,14 +572,14 @@ K této chybě dochází z důvodu vnitřní problém s databáze sync. Tato chy
 
 ### <a name="common-troubleshooting-steps"></a>Běžné kroky odstraňování potíží
 <a id="troubleshoot-storage-account"></a>**Ověřte, že účet úložiště existuje.**  
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Přejděte do skupiny synchronizace v rámci služby synchronizace úložiště.
 2. Vyberte koncový bod cloudu v rámci skupiny synchronizace.
 3. Poznamenejte si název sdílené složky Azure file v podokně otevřené.
 4. Vyberte propojeném účtu úložiště. Pokud se tento odkaz se nepodaří, účet úložiště odkazované se odebrala.
     ![Snímek obrazovky ukazující na panelu informací o koncový bod cloudu s odkazem na účet úložiště.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -583,20 +593,20 @@ Import-Module "$agentPath\StorageSync.Management.PowerShell.Cmdlets.dll"
 
 # Log into the Azure account and put the returned account information
 # in a reference variable.
-$acctInfo = Connect-AzureRmAccount
+$acctInfo = Connect-AzAccount
 
 # this variable stores your subscription ID 
 # get the subscription ID by logging onto the Azure portal
 $subID = $acctInfo.Context.Subscription.Id
 
 # this variable holds your Azure Active Directory tenant ID
-# use Login-AzureRMAccount to get the ID from that context
+# use Login-AzAccount to get the ID from that context
 $tenantID = $acctInfo.Context.Tenant.Id
 
 # Check to ensure Azure File Sync is available in the selected Azure
 # region.
 $regions = [System.String[]]@()
-Get-AzureRmLocation | ForEach-Object { 
+Get-AzLocation | ForEach-Object { 
     if ($_.Providers -contains "Microsoft.StorageSync") { 
         $regions += $_.Location 
     } 
@@ -609,7 +619,7 @@ if ($regions -notcontains $region) {
 
 # Check to ensure resource group exists and create it if doesn't
 $resourceGroups = [System.String[]]@()
-Get-AzureRmResourceGroup | ForEach-Object { 
+Get-AzResourceGroup | ForEach-Object { 
     $resourceGroups += $_.ResourceGroupName 
 }
 
@@ -656,7 +666,7 @@ $cloudEndpoint = Get-AzureRmStorageSyncCloudEndpoint `
     -SyncGroupName $syncGroup
 
 # Get reference to storage account
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
     $_.Id -eq $cloudEndpoint.StorageAccountResourceId
 }
 
@@ -667,12 +677,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-network-rules"></a>**Zkontrolujte, ujistěte se, že účet úložiště neobsahuje žádná pravidla sítě.**  
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Jednou v účtu úložiště vyberte **virtuální sítí a bran firewall** na levé straně účtu úložiště.
 2. V účtu úložiště **povolit přístup ze všech sítí** přepínač by měl být vybrán.
     ![Snímek obrazovky zobrazující úložiště účtu sítě a brány firewall pravidla zakázán.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
@@ -683,12 +693,12 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**Ujistěte se, že existuje sdílená složka Azure.**  
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Klikněte na tlačítko **přehled** v levé tabulce obsah se vrátíte na stránku hlavního úložiště účtu.
 2. Vyberte **soubory** Chcete-li zobrazit seznam sdílených složek.
 3. Ověřte sdílenou odkazuje koncového bodu cloudu se zobrazí v seznamu sdílených složek (měli jste zaznamenali to v kroku 1 výše).
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 $fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
@@ -702,7 +712,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**Ujistěte se, že má přístup k účtu úložiště Azure File Sync.**  
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Klikněte na tlačítko **řízení přístupu (IAM)** v obsahu vlevo.
 1. Klikněte na tlačítko **přiřazení rolí** kartu do seznamu uživatelů a aplikací (*instanční*), které mají přístup k vašemu účtu úložiště.
 1. Ověřte **hybridní služby File Sync** se zobrazí v seznamu **Čtenář a přístup k datům** role. 
@@ -715,10 +725,10 @@ if ($fileShare -eq $null) {
     - V **Role** pole, vyberte **Čtenář a přístup k datům**.
     - V **vyberte** zadejte **hybridní služby File Sync**, vyberte roli a klikněte na tlačítko **Uložit**.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell    
 $foundSyncPrincipal = $false
-Get-AzureRmRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
+Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
     if ($_.DisplayName -eq "Hybrid File Sync Service") {
         $foundSyncPrincipal = $true
         if ($_.RoleDefinitionName -ne "Reader and Data Access") {
@@ -829,11 +839,11 @@ Pokud třeba připomenout soubory:
 > 9006 ID události je zaznamenána jednou za hodinu v protokolu událostí Telemetrie, pokud soubor se nepodařilo odvolat (jednu událost je protokolována za kód chyby:). Diagnostické protokoly událostí a provozní by měla sloužit pokud vyžadují další informace pro diagnostiku problému.
 
 <a id="files-unexpectedly-recalled"></a>**Řešení problémů se soubory na serveru se neočekávaně připomenout**  
-Antivirová ochrana v programu, zálohování a další aplikace, které načítají velké množství souborů způsobit nežádoucí navrácení, pokud nerespektují atribut offline přeskočit a přeskočí čtení obsahu těchto souborů. Přeskočení offline souborů pro produkty, které podporují tato možnost pomáhá zabránit neúmyslnému navrácení během operace, třeba antivirovou kontrolu nebo úlohy zálohování.
+Antivirová ochrana v programu, zálohování a další aplikace, které načítají velké množství souborů způsobit nežádoucí navrácení, pokud nerespektují atribut offline přeskočit a přeskočí čtení obsahu těchto souborů. U produktů, které tuto možnost podporují, pomáhá přeskočení offline souborů zabránit nežádoucím odvoláním během operací, jako jsou antivirové kontroly nebo úlohy zálohování.
 
-Poraďte s dodavatelem softwaru se naučíte konfigurovat jejich řešení Chcete-li přeskočit čtení offline soubory.
+Informace o konfiguraci přeskakování čtení offline souborů v řešení vám sdělí dodavatel příslušného softwaru.
 
-Nežádoucí navrácení také může dojít u dalších scénářů, jako jsou při prohlížení souborů v Průzkumníku souborů. Otevřete složku, která má cloud vrstvené soubory v Průzkumníku souborů na serveru může způsobit nežádoucí navrácení. To je ještě více pravděpodobné, pokud je na serveru zapnutá antivirová řešení.
+Nežádoucí navrácení také může dojít u dalších scénářů, jako jsou při prohlížení souborů v Průzkumníku souborů. Pokud v Průzkumníku souborů na serveru otevřete složku obsahující soubory vrstvené v cloudu, může to mít za následek nežádoucí odvolání. Pravděpodobnost, že k tomu dojde, ještě zvyšuje povolené antivirové řešení na serveru.
 
 ## <a name="general-troubleshooting"></a>Obecné řešení potíží
 Pokud narazíte na problémy s Azure File Sync na serveru, spusťte následující kroky:

@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436326"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743789"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Monitorování clusterů systému Apache Hadoop v HDInsight pomocí rozhraní API Apache Ambari
 Další informace o monitorování clusterů HDInsight pomocí rozhraní API Apache Ambari.
 
 > [!NOTE]  
 > Informace v tomto článku je primárně pro clustery HDInsight se systémem Windows, které poskytují verzi rozhraní Ambari REST API jen pro čtení. Pro clustery založené na Linuxu najdete v článku [spravovat Apache Hadoop clusterů pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md).
-> 
-> 
 
 ## <a name="what-is-ambari"></a>Co je Ambari?
 [Apache Ambari] [ ambari-home] slouží k zřizování, správě a monitorování clusterů systému Apache Hadoop. Obsahuje intuitivní sadu nástrojů pro operátory a výkonnou sadu rozhraní API, které překonávají složitost systému Hadoop a zjednodušují operace s clustery. Další informace o rozhraních API najdete v tématu [Reference k rozhraní API Ambari][ambari-api-reference]. 
@@ -38,8 +36,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
   
   > [!NOTE]  
   > Při použití příkazu cURL ve Windows, použijte dvojité uvozovky místo jednoho uvozovky u hodnot možností.
-  > 
-  > 
+
 * **Cluster Azure HDInsight**. Pokyny týkající se zřizování clusteru, naleznete v tématu [začněte používat HDInsight] [ hdinsight-get-started] nebo [clusterů HDInsight zřízení][hdinsight-provision]. Potřebujete absolvovat kurz následující údaje:
   
   | Vlastnost clusteru | Název proměnné Azure Powershellu | Hodnota | Popis |
@@ -146,13 +143,13 @@ Nyní jste se naučili, jak použít monitorování volání rozhraní API Apach
 * [Dokumentace ke službě HDInsight][hdinsight-documentation]
 * [Začínáme s HDInsight][hdinsight-get-started]
 
-[ambari-home]: http://ambari.apache.org/
+[ambari-home]: https://ambari.apache.org/
 [ambari-api-reference]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
-[microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
+[microsoft-hadoop-SDK]: https://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx

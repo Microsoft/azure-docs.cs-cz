@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure | Microsoft Docs'
+title: 'Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí webu Azure portal | Dokumentace Microsoftu'
 description: Rychlý start ukazuje, jak pomocí portálu Azure vytvořit pracovní prostor služby Azure Databricks a cluster Apache Spark a spustit úlohu Spark.
 services: storage
 author: jamesbak
@@ -8,14 +8,14 @@ ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.openlocfilehash: 14ea060ca29d181023086ad241db59d275d2c581
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c820d2172c3e38d9d744e645d7c0e8b4749b42cd
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975850"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743370"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí webu Azure portal
 
 V tomto rychlém startu se dozvíte, jak použít Azure Databricks ke spuštění úlohy Apache Spark, abyste mohli analyzovat data uložená v účtu úložiště s povolenou službou Azure Data Lake Storage Gen2 Preview.
 
@@ -137,7 +137,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
     ```scala    
     spark.conf.set("fs.azure.account.key.<account-name>.dfs.core.windows.net", "<account-key>")
 
-    dbutils.fs.ls("abfs://<file-system-name>@<account-name>.dfs.core.windows.net/")
+    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
     ```
 
 5. Zadejte kód do první buňky a stiskněte klávesu **SHIFT + ENTER** ho spustit.

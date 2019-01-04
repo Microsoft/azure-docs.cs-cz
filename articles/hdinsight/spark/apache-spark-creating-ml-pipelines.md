@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: dbda20554b119bfb72b939cbeb7f19e0b9093b31
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499407"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597473"
 ---
-# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Vytvoření Apache Spark machine learningu kanálu
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Vytvoření kanálu strojového učení Apache Sparku
 
-Knihovna pro Apache Spark škálovatelné machine learning (MLlib) přináší možnosti modelování pro distribuované prostředí. Balíček Spark [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) je sada rozhraní API vysoké úrovně využívající datových rámců. Tato rozhraní API umožňují vytvářet a ladit kanály praktické strojového učení.  *Spark machine learning* odkazuje na tento datový rámec MLlib rozhraní API, není starší na základě RDD kanálu rozhraní API.
+Knihovna pro Apache Spark škálovatelné machine learning (MLlib) přináší možnosti modelování pro distribuované prostředí. Balíček Spark [ `spark.ml` ](https://spark.apache.org/docs/latest/ml-pipeline.html) je sada rozhraní API vysoké úrovně využívající datových rámců. Tato rozhraní API umožňují vytvářet a ladit kanály praktické strojového učení.  *Spark machine learning* odkazuje na tento datový rámec MLlib rozhraní API, není starší na základě RDD kanálu rozhraní API.
 
 Služby machine learning (ML) kanálu je kompletní pracovní postup kombinace několik algoritmů strojového učení najednou. Může existovat mnoho kroky potřebné ke zpracování a Učte se od dat vyžadující posloupnost algoritmy. Kanály definovat v jednotlivých fázích a řazení služby machine learning procesu. Fáze kanálu v MLlib, jsou reprezentovány konkrétní posloupnost PipelineStages, kde transformátoru a odhadu provádět úlohy.
 
@@ -30,7 +30,7 @@ Každá bezstavové instance transformátoru nebo odhadu má svůj vlastní jedi
 
 ## <a name="pipeline-example"></a>Příklad kanálu
 
-Abychom si předvedli praktické použití kanálu služby ML, v tomto příkladu vzorku `HVAC.csv` datový soubor, který je už načtené v výchozí úložiště pro váš cluster HDInsight, Azure Storage nebo Data Lake Store. Chcete-li zobrazit obsah souboru, přejděte `/HdiSamples/HdiSamples/SensorSampleData/hvac` adresáře. `HVAC.csv` obsahuje sadu dob se cílem a skutečné teploty HVAC (*vytápění, ventilace a klimatizace*) systémy v různých budovy. Cílem je trénování modelu dat a vytvářet prognózy teploty pro dané sestavení.
+Abychom si předvedli praktické použití kanálu služby ML, v tomto příkladu vzorku `HVAC.csv` datový soubor, který je už načtené v výchozí úložiště pro váš cluster HDInsight, Azure Storage nebo Data Lake Storage. Chcete-li zobrazit obsah souboru, přejděte `/HdiSamples/HdiSamples/SensorSampleData/hvac` adresáře. `HVAC.csv` obsahuje sadu dob se cílem a skutečné teploty HVAC (*vytápění, ventilace a klimatizace*) systémy v různých budovy. Cílem je trénování modelu dat a vytvářet prognózy teploty pro dané sestavení.
 
 Následující kód:
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 19582c59460644d8599034afeaafde8735c04ec3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53441007"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549628"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -1572,4 +1572,4 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 ## <a name="next-steps"></a>Další postup
 * [Přečtěte si informace o metriky ve službě Azure Monitor](../../azure-monitor/platform/data-collection.md)
 * [Vytváření upozornění na metriky](../../azure-monitor/platform/alerts-overview.md)
-* [Export metrik úložiště, Centrum událostí a Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Export metrik úložiště, Centrum událostí a Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)

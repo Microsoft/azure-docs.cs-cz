@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 556cf755890f49e540afe64de6e485d9ebde2147
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086432"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536538"
 ---
 # <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
 
@@ -30,11 +30,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Před použitím kontejnerů pro rozpoznávání tváře, musí splňovat následující požadavky:
 
-**Modul docker**: musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](/azure/azure-stack/). Další informace o nasazení Kubernetes pro Azure Stack najdete v tématu [nasazení Kubernetes pro Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+**Modul docker**: Musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](../../aks/index.yml), [Azure Container Instances](../../container-instances/index.yml), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](../../azure-stack/index.yml). Další informace o nasazení Kubernetes pro Azure Stack najdete v tématu [nasazení Kubernetes pro Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
 
 Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure.
 
-**Znalost společnosti Microsoft Container Registry a Docker**: byste měli mít základní znalost konceptů Microsoft Container Registry a Docker, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost základní `docker` příkazy.  
+**Znalost společnosti Microsoft Container Registry a Docker**: Byste měli mít základní znalost konceptů Microsoft Container Registry a Docker, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.  
 
 Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).
 
@@ -58,7 +58,7 @@ Pokud chcete použít pro rozpoznávání tváře kontejner, musíte vytvořit p
 Proveďte následující kroky k vytvoření a načtení informací z prostředku pro rozpoznávání tváře:
 
 1. Vytvoření prostředku pro rozpoznávání tváře na webu Azure Portal.  
-   Pokud chcete použít pro rozpoznávání tváře kontejner, musíte nejprve vytvořit odpovídající prostředek pro rozpoznávání tváře na webu Azure Portal. Další informace najdete v tématu [rychlý start: vytvoření účtu služeb Cognitive Services na webu Azure Portal](../cognitive-services-apis-create-account.md).
+   Pokud chcete použít pro rozpoznávání tváře kontejner, musíte nejprve vytvořit odpovídající prostředek pro rozpoznávání tváře na webu Azure Portal. Další informace najdete v tématu [rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal](../cognitive-services-apis-create-account.md).
 
 1. Získáte klíče koncového bodu adresy URL a předplatného pro prostředky Azure.  
    Po vytvoření prostředku Azure musíte použít koncový bod adresy URL a klíč předplatného z tohoto prostředku pro vytvoření instance kontejneru odpovídající pro rozpoznávání tváře. Koncový bod adresy URL a klíč předplatného můžete zkopírovat z prostředku pro rozpoznávání tváře na portálu Azure portal, rychlý Start a klíče stránky.

@@ -9,15 +9,15 @@ ms.devlang: PowerShell
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 33bd4e39018f9789464d213ccf7921993e2da142
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fdf426d9f4c8744570d0b9c6cc30bea63b06dd6c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864710"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600676"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Cílový kód souboru události pro rozšířené události ve službě SQL Database
 
@@ -530,7 +530,7 @@ Další informace o účtech a kontejnerů ve službě Azure Storage najdete v t
 * [Použití Blob storage pomocí technologie .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [Práce s Kořenový kontejner](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [Lekce 1: Vytvoření uložené zásady přístupu a sdílený přístupový podpis Azure kontejneru](https://msdn.microsoft.com/library/dn466430.aspx)
+* [Lekce 1: Vytvoření uložené zásady přístupu a sdílený přístupový podpis v kontejneru Azure](https://msdn.microsoft.com/library/dn466430.aspx)
   * [Lekce 2: Vytvoření přihlašovacích údajů systému SQL Server pomocí sdíleného přístupového podpisu](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Rozšířené události pro Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 

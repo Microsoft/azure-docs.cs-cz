@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 47a634ca1c4e904cc1054db3a834483489ade0ec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 993d3dc065b792cc6d4ca0b1321cb1950cea85d8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093552"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652596"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací třetích stran Apache Hadoop v Azure HDInsight
 
@@ -28,14 +28,14 @@ Následující seznam uvádí publikované aplikace:
 * **Cask CDAP pro HDInsight** poskytuje první jednotnou integrační platformu pro velké objemy dat, která snižuje čas do produkčního prostředí pro data aplikací a datových jezer o 80 %. Tato aplikace podporuje pouze clustery Standard HBase 3.4.
 * **DATAIKU DDS v HDInsight** umožňuje odborníkům v oblasti dat vytvářet prototypy, sestavovat a nasazovat vysoce specifické služby, které transformují nezpracovaná data na účinné obchodní předpovědi.
 * **Datameer** je samoobslužné škálovatelná platforma pro přípravu, zkoumání, a kterými se řídí vaše data pro analýzu zrychluje zapnutí komplexní s více zdroji dat do cenné informace připravené pro potřeby doručování rychlejší a chytřejší vytváření přehledů na podnikové úrovni.
-* **H2O umělé inteligence pro HDInsight (beta verze)** H2O Sparkling Water podporuje následující distribuované algoritmy: GLM, Naive Bayes, distribuované Random doménové struktury, přechod počítače zvýšení skóre, hluboké Neuronové sítě, obsáhlý learning K-means, PCA, Využívajících modely s nízkou řadit, detekce anomálií a Autoencoders.
+* **H2O umělé inteligence pro HDInsight (beta verze)** H2O Sparkling Water podporuje následující distribuované algoritmy: GLM, Naive Bayes, distribuované Random doménové struktury, přechodu zvýšení skóre počítače, hluboké Neuronové sítě, hluboké učení, K-means, PCA, zobecněný modely řazení s nízkou, detekce anomálií a Autoencoders.
 * **Kyligence Enterprise**, analytické jádro Apache Kylin používá technologii, přináší okamžitý přehled na rozsáhlých datových sad pro obchodní analytiky, uživatelů a data. Pomocí strojového učení špičkové technologie a funkce modelování dat na inteligentní výrazně vylepšuje produktivitu firemních analýzy velkých objemů dat. 
 * **Adaptive samoobslužné přípravu dat**
 * **Server úloh Spart pro prováděcí modul Sparku KNIME** serveru úloh Spark pro prováděcí modul KNIME Spark se používá k připojení analytická platforma KNIME do clusterů HDInsight.
 * **Presto hvězdice** Presto je rychlé a škálovatelné distribuované modul dotazů SQL. Navržen k oddělení úložiště a výpočetního výkonu, je ideální pro dotazování na data v Azure Data Lake Storage, Azure Blob Storage, SQL a NoSQL databáze a další zdroje dat Presto.
 * **Kolekce dat Streamsets pro HDInsight** poskytuje plně vybavené integrované vývojové prostředí (IDE) umožňující navrhovat, testovat, nasazovat a spravovat kanály ingestace typu any-to-any, které zachytávají streamovaná data a data dávek a zahrnují celou řadu transformací v průběhu streamování – to vše bez nutnosti psát vlastní kód. 
 * **Striim** (vyslovováno "datový proud stream") je začátku do konce streamování integrace dat + platforma informací, povolení průběžného příjem, zpracování a analýzy různorodé datové proudy.
-* **[Trifacta](http://www.trifacta.com/)**  umožňuje datovými architekty a analytici efektivněji a příprava různorodých dnes s využitím strojového učení k zajištění převratných uživatelské prostředí, pracovní postup a architektury.
+* **[Trifacta](https://www.trifacta.com/)**  umožňuje datovými architekty a analytici efektivněji a příprava různorodých dnes s využitím strojového učení k zajištění převratných uživatelské prostředí, pracovní postup a architektury.
 * **Datová platforma Unifi** je bezproblémově integrovaná sada nástrojů pro samoobslužné dat navržená tak, aby obchodní uživatelům řešit problémy dat této jednotky přírůstkové výnosy, snížit náklady a složitost. 
 * **WANdisco Fusion HDI aplikace** umožňuje nepřetržité konzistentní připojení k datům, protože změny bez ohledu na to se nachází. Poskytuje přístup k vašim datům kdykoli a kdekoli bez výpadku a bez přerušení.
 * **Vodoryskou** katalogů slouží k uspořádání a řídí data automatického tagování dat s podmínkami podnikání pomocí AI. Vodoryskou vaší firmy chtějí katalogu je zásadní, součástí úspěch pro samoobslužné analýzy, dodržování předpisů a zásad správného řízení a iniciativy správy IT.
@@ -96,8 +96,8 @@ Viz článek [Řešení potíží instalace](hdinsight-apps-install-custom-appli
 
 ## <a name="next-steps"></a>Další postup
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
-* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
-* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
+* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do Azure Marketplace.
+* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Zjistěte, jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight v systému Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): další informace o použití akce skriptu k instalaci dalších aplikací.
 * [Vytvářet clustery založené na Linuxu Apache Hadoop v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Zjistěte, jak voláním šablon Resource Manageru vytvoříte clustery HDInsight.
 * [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Zjistěte, jak lze pomocí prázdných hraničních uzlů přistupovat ke clusteru HDInsight, testovat aplikace HDInsight a hostovat aplikace HDInsight.

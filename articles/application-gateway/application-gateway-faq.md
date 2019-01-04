@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 0187ef3d3b6853c1d1225fc9f208f2508372978d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425723"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994840"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -49,7 +49,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Které prostředky jsou dnes podporované jako součást back-endový fond?
 
-Back-endové fondy se může skládat ze síťových rozhraní škálovací sady virtuálních počítačů, veřejné IP adresy, interní IP adresy nebo plně kvalifikované názvy (plně kvalifikovaný název domény) a více tenantů back EndY, jako je Azure Web Apps. Členy fondu back-end brány aplikace nejsou vázané na skupinu dostupnosti. Členů fondu back-end může být napříč clustery, datová centra, Azure nebo mimo něj, tak dlouho, dokud mají připojení pomocí IP adresy.
+Back-endové fondy se může skládat ze síťových rozhraní škálovací sady virtuálních počítačů, veřejné IP adresy, interní IP adresy nebo plně kvalifikované názvy (plně kvalifikovaný název domény) a více tenantů back EndY, jako je Azure App Service. Členy fondu back-end brány aplikace nejsou vázané na skupinu dostupnosti. Členů fondu back-end může být napříč clustery, datová centra, Azure nebo mimo něj, tak dlouho, dokud mají připojení pomocí IP adresy.
 
 ### <a name="what-regions-is-the-service-available-in"></a>Jaké oblasti je k dispozici ve službě?
 
@@ -88,9 +88,11 @@ Ve službě application gateway se podporuje jenom jednu veřejnou IP adresu.
 Application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu, pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Azure si vyhrazuje první čtyři a poslední IP adresu v každé podsíti pro interní použití.
 Například, pokud služby application gateway je nastavena na tři instance a žádné privátní front-endovou IP, pak je/29 nebo větší velikost podsítě je potřeba. V tomto případě application gateway používá tři IP adresy. Pokud máte tři instance a IP adresu pro privátní front-endovou konfiguraci protokolu IP, pak o velikosti/28 podsíť, velikost nebo vyšší je potřeba, protože čtyři IP adresy jsou povinné.
 
-### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Otázka: Můžete nasadit více než jeden prostředek aplikační brány do jedné podsíti? **
+### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Otázka: Je možné nasadit více než jeden prostředek aplikační brány pro jednu podsíť?
 
 Ano, kromě má více instancí dané nasazení Application Gateway, můžete zřídit jiný jedinečný prostředek aplikační brány do existující podsítě, který obsahuje jiný prostředek aplikační brány.
+
+Kombinování Standard_v2 a standardní Application Gateway ve stejné podsíti se nepodporuje. Kromě toho pokud je povolené automatické škálování, podsíť může mít pouze jednu bránu aplikace.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Služba Application Gateway podporuje hlavičky x předané pro?
 
@@ -103,6 +105,8 @@ Služba Application Gateway také vloží hlavičku X-původní-hostitele, kter�
 Nová nasazení SKU v1 Application Gateway může trvat až 20 minut, než se zřídit. Změny velikosti a počtu instancí nejsou rušivé a během této doby zůstává aktivní brány.
 
 V2 SKU nasazení může trvat přibližně pět až šest minut zřizování.
+
+Služba Application Gateway podporuje hlavičky x předané pro?
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -210,7 +214,7 @@ Ano. Můžete nakonfigurovat vyprázdnění Chcete-li změnit členy v rámci fo
 
 ### <a name="what-are-application-gateway-sizes"></a>Co jsou aplikace velikosti brány?
 
-Služba Application Gateway je v současné době nabízena ve třech velikostech: **Small** (krátkodobé používání), **Medium** (střednědobé používání) a **Large** (dlouhodobé používání). Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
+Služba Application Gateway je teď nabízíme ve třech velikostech: **Malé**, **střední**, a **velké**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
 
 Úplný seznam omezení služby Application Gateway najdete na stránce [Omezení služby Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -316,9 +320,9 @@ WAF se monitoruje prostřednictvím protokolování diagnostiky, další informa
 
 Režim detekce Ne, zaznamená jenom provoz, která aktivuje pravidlo WAF.
 
-### <a name="how-do-i-customize-waf-rules"></a>Jak mohu přizpůsobit pravidla firewallu webových aplikací?
+### <a name="can-i-customize-waf-rules"></a>Můžete přizpůsobit pravidla firewallu webových aplikací?
 
-Ano, jsou přizpůsobitelné, další informace o tom, jak si je přizpůsobit, viz pravidla firewallu webových aplikací [WAF přizpůsobení skupin pravidel a pravidla](application-gateway-customize-waf-rules-portal.md)
+Ano, lze přizpůsobit pravidla firewallu webových aplikací. Další informace najdete v tématu [WAF přizpůsobení skupin pravidel a pravidla](application-gateway-customize-waf-rules-portal.md)
 
 ### <a name="what-rules-are-currently-available"></a>Pravidla jsou aktuálně k dispozici
 

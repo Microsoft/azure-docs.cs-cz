@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 4999639356fd440b6358983f1e4859fb3c505fc7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8c230143a4b3ab15e5a43d8b565d1973bc47ec29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106494"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599008"
 ---
 # <a name="ship-an-application"></a>Dodávejte aplikace
 
@@ -55,7 +55,7 @@ Ujistěte se, zda že jste vybrali verzi (x86, x64), která odpovídá vaší ap
 * Knihovna cURL (`libcurl.so.4`)
 * Sdílená knihovna pro aplikace ALSA (`libasound.so.2`)
 
-Na Ubuntu 16.04 například knihovny GNU C musí již být nainstalováno ve výchozím nastavení. Poslední tři lze nainstalovat pomocí těchto příkazů:
+Na Ubuntu 16.04 nebo 18.04 například knihovny GNU C musí již být nainstalováno ve výchozím nastavení. Poslední tři lze nainstalovat pomocí těchto příkazů:
 
 ```sh
 sudo apt-get update

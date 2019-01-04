@@ -1,20 +1,17 @@
 ---
 title: Připojení knihoven pro službu Azure Database for PostgreSQL
 description: Tento článek popisuje několik knihoven a ovladače, že vývojáři mohou použít při psaní kódu aplikace k připojení a dotazování Azure Database for PostgreSQL.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: edbd3b36e1c40cda3b39c85f3deb4c9e8540fd1b
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0e762a2d7cf82e2957fb276fcea0a20553f719e3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984957"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536011"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Připojení knihoven pro službu Azure Database for PostgreSQL
 Tento článek obsahuje seznam knihoven a ovladače, které mohou vývojáři k vývoji aplikací k připojení a dotazování Azure Database for PostgreSQL.

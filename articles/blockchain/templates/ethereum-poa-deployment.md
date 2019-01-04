@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 12fab05ef7c459419c8aaf319098fddaae1416e6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242412"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974042"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum během testování of-authority W3C
 
@@ -198,7 +198,7 @@ Tento proces vyžaduje předplatné Azure, které podporují nasazení několika
 
 Po přihlášení k odběru je zabezpečená, přejděte na web Azure portal. Vyberte '+', Marketplace ("Zobrazit všechny") a vyhledejte Etherea PoA Consortium.
 
-Následující části vás provede procesem konfigurace první člen nároky na místo v síti. Tok nasazení se dělí na pět kroků: základní informace o nasazení oblastí, velikost síťových a výkonu, ethereum během nastavení Azure Monitor.
+Následující části vás provede procesem konfigurace první člen nároky na místo v síti. Tok nasazení se dělí na pět kroků: Základní informace o nasazení oblastí, velikost síťových a výkon, ethereum během nastavení Azure Monitor.
 
 #### <a name="basics"></a>Základy
 
@@ -212,7 +212,7 @@ Vytvořit novou síť nebo připojit k existující síti?|Vytvořit novou síť
 E-mailová adresa (volitelné)|Obdržíte e-mailové oznámení po dokončení nasazení s informacemi o vašem nasazení.|Platné e-mailovou adresu|Není k dispozici
 Uživatelské jméno virtuálního počítače|Uživatelské jméno správce každé nasazení virtuálního počítače (jenom alfanumerické znaky)|1 – 64 znaků|Není k dispozici
 Typ ověřování|Metodu k ověření k virtuálnímu počítači.|Heslo nebo SSH veřejný klíč|Heslo
-Heslo (typ ověřování = heslo)|Heslo pro účet správce pro jednotlivé virtuální počítače nasazené.  Heslo musí obsahovat 3 z těchto věcí: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak. Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení.|12 až 72 znaků|Není k dispozici
+Heslo (typ ověřování = heslo)|Heslo pro účet správce pro jednotlivé virtuální počítače nasazené.  Heslo musí obsahovat 3 z následujících akcí: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak. Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení.|12 až 72 znaků|Není k dispozici
 Klíč SSH (typ ověření veřejného klíče =)|Klíč zabezpečeného prostředí použitý ke vzdálenému přihlášení.||Není k dispozici
 Předplatné|Předplatné, pro které má být nasazení sítě konsorcia||Není k dispozici
 Skupina prostředků|Skupina prostředků, do které chcete nasadit sítě konsorcia.||Není k dispozici
@@ -259,7 +259,7 @@ Všimněte si, že virtuální počítač a vrstva úložiště bude mít vliv n
   SKU virtuálního počítače|Úroveň úložiště|Cena|Propustnost|Latence
   ---|---|---|---|---
   F1|SSD úrovně Standard|Nízká|Nízká|Vysoká
-  D2_v3|SSD úrovně Standard|Střední|Střední|Střední
+  D2_v3|SSD úrovně Standard|středně silné|středně silné|středně silné
   F16s|Premium SSD|Vysoká|Vysoká|Nízká
 
 Ukázkové nasazení se zobrazí pod: ![velikost a výkon sítě](./media/ethereum-poa-deployment/network-size-and-performance.png)
@@ -744,7 +744,7 @@ $ truffle migrate --network poa
 
 ### <a name="debug-smart-contract-with-truffle"></a>Ladění inteligentní kontrakt s Truffle
 
-Truffle má místní vývoj síti, která je k dispozici pro ladění inteligentní kontraktu. Úplný kurz najdete [tady](http://truffleframework.com/tutorials/debugging-a-smart-contract).
+Truffle má místní vývoj síti, která je k dispozici pro ladění inteligentní kontraktu. Úplný kurz najdete [tady](https://truffleframework.com/tutorials/debugging-a-smart-contract).
 
 ### <a name="webassembly-wasm-support"></a>Podpora WebAssembly (WASM)
 

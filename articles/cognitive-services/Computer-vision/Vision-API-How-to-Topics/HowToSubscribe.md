@@ -1,5 +1,5 @@
 ---
-title: Získání klíčů předplatného pro rozhraní API pro počítačové zpracování obrazu
+title: Získání klíčů předplatného - pro počítačové zpracování obrazu
 titlesuffix: Azure Cognitive Services
 description: Další informace o získání klíčů předplatného pro volání rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
-ms.openlocfilehash: db4d589bb0c7611e632a90f2174ad8e9c415bf6a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 820531cc2254d9cbc7aaf7e758dd0457b282d892
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985418"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580803"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>Získání klíčů předplatného
 
-Počítačové zpracování obrazu služby vyžadují speciální předplatné klíče. Všechna volání rozhraní API pro počítačové zpracování obrazu vyžadují klíč předplatného. Tento klíč se musí buď předat prostřednictvím parametru řetězce dotazu, nebo zadat v hlavičce požadavku.
+Počítačové zpracování obrazu služby vyžadují speciální předplatné klíče. Ke každému volání rozhraní API pro počítačové zpracování obrazu potřebujete klíč předplatného. Tento klíč je potřeba předat buď jako parametr řetězce dotazu, nebo ho zadat v hlavičce požadavku.
 
 K registraci pro klíče předplatného najdete v článku [předplatná](https://azure.microsoft.com/try/cognitive-services/). Je to zdarma zaregistrovat. Ceny za tyto služby se může změnit.
 

@@ -5,14 +5,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 9dec4314bb99b2cb32d62f40b76591ecb03e4d56
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/28/2018
+ms.author: mayg
+ms.openlocfilehash: 5de8bc9acd97016b401bd1c2bcce46f5ab851430
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838736"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811558"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
@@ -138,6 +138,9 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 ## <a name="generate-report"></a>Generování sestav
 Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM), který shrnuje veškerá doporučení pro nasazení. Sestava má název DeploymentPlannerReport_<unique numeric identifier>.xlsm a je umístěná v zadaném adresáři.
 
+>[!NOTE]
+>Sestava vyžaduje nakonfigurovaný jako symbol desetinné čárky "." pro vytvoření odhadu nákladů na serveru, kde je spuštěn Plánovač nasazení služby. V případě můžete nastavit "," jako oddělovač tisíců na počítači s Windows, přejděte na "Změnit data, času nebo číselné formáty" v Ovládacích panelech a přejít na "Další nastavení" Chcete-li změnit symbol desetinné čárky na".".
+
 Po dokončení profilace můžete nástroj spustit v režimu generování sestav. Následující tabulka obsahuje seznam povinných a volitelných parametrů nástroje pro spuštění v režimu generování sestav.
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
@@ -160,7 +163,7 @@ Po dokončení profilace můžete nástroj spustit v režimu generování sestav
 | -EndDate | (Volitelné) Koncové datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr *EndDate* je nutné zadat společně s parametrem *StartDate*. Pokud zadáte parametr EndDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
 | -GrowthFactor | (Volitelné) Faktor růstu vyjádřený v procentech. Výchozí hodnota je 30 procent. |
 | -UseManagedDisks | (Volitelné) UseManagedDisks – Yes/No (Ano/Ne). Výchozí hodnota je Yes (Ano). Počet virtuálních počítačů, které lze umístit do jednoho účtu úložiště, se vypočítá s ohledem na to, že převzetí služeb při selhání nebo testovací převzetí služeb při selhání virtuálních počítačů se provádí na spravovaný disk namísto nespravovaného disku. |
-|-SubscriptionId |(Volitelné) GUID předplatného. Tento parametr slouží k vytvoření sestavy odhadu nákladů s nejnovějšími cenami na základě vašeho předplatného a nabídky, která je přidružená k vašemu předplatnému, a pro zadanou cílovou oblast Azure v zadané měně.|
+|-SubscriptionId |(Volitelné) GUID předplatného. Všimněte si, že tento parametr je povinný, pokud potřebujete k vytvoření sestavy odhadu nákladů s nejnovějšími cenami na základě vašeho předplatného, nabídky, která je přidružená k vašemu předplatnému a pro zadanou cílovou oblast Azure v **zadané Měna**.|
 |-TargetRegion|(Volitelné) Oblast Azure, která je cílem replikace. Vzhledem k tomu, že Azure má různé náklady pro jednotlivé oblasti, pro generování sestavy s konkrétní cílovou oblastí Azure použijte tento parametr.<br>Výchozí hodnota je WestUS2 nebo poslední použitá cílová oblast.<br>K dispozici je seznam [podporovaných cílových oblastí](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions).|
 |-OfferId|(Volitelné) Nabídka přidružená k danému předplatnému. Výchozí hodnota je MS-AZR-0003P (průběžné platby).|
 |-Currency|(Volitelné) Měna, ve které se ve vygenerované sestavě zobrazí náklady. Výchozí hodnota je americký dolar ($) nebo poslední použitá měna.<br>K dispozici je seznam [podporovaných měn](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).|
@@ -182,7 +185,7 @@ Ke vzdálenému adresáři musíte mít přístup ke čtení a zápisu.
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Příklad 3: Generování sestavy s použitím konkrétní šířky pásma a cíle dokončení prvotní replikace v zadaném čase
+#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Příklad 3: Generování sestavy s konkrétní šířkou pásma a cíle dokončení prvotní Replikace v zadaném čase
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
@@ -198,12 +201,14 @@ Máte například profilovaná data za 30 dnů a chcete vygenerovat sestavu pouz
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
 
-#### <a name="example-6-generate-a-report-for-5-minute-rpo"></a>Příklad 6: Generování sestavy s použitím 5minutového cíle bodu obnovení
+#### <a name="example-6-generate-a-report-for-5-minute-rpo"></a>Příklad 6: Generování sestavy s 5minutového cíle bodu obnovení
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
-#### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>Příklad 7: Generování sestavy pro oblast Azure Indie – jih s indickými rupiemi a konkrétním ID nabídky
+#### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>Příklad 7: Generování sestavy pro oblast Azure Indie – jih s indickými Rupiemi a konkrétním ID nabídky
+
+Všimněte si, že ID předplatného je potřeba vygenerovat sestavu nákladů v konkrétní měny.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```

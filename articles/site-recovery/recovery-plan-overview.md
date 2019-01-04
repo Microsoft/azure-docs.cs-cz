@@ -3,16 +3,17 @@ title: Pomocí plánů obnovení zotavení po havárii pomocí Azure Site Recove
 description: Další informace o použití plány obnovení pro zotavení po havárii pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cb68b71eece998fa72fccc00de45f81e6d2d778c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848387"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975657"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
@@ -64,7 +65,7 @@ Obnovení velké aplikace může být složitý úkol. Vyžadováno provedení r
     * Vytvoření veřejné IP adresy na virtuálním počítači Azure.
     * Přiřazení skupiny zabezpečení sítě k síťovému adaptéru virtuálního počítače Azure.
     * Nástroj pro vyrovnávání zatížení přidáte do skupiny dostupnosti.
-* **Úlohy uvnitř virtuálního počítače po převzetí služeb při selhání**: tyto úlohy obvykle překonfigurovat aplikace spuštěné na počítači, tak, aby i nadále fungovat správně v novém prostředí. Příklad:
+* **Úlohy uvnitř virtuálního počítače po převzetí služeb při selhání**: Tyto úlohy obvykle překonfigurovat aplikace spuštěné na počítači, tak, aby i nadále fungovat správně v novém prostředí. Příklad:
     * Upravte připojovací řetězec databáze na počítači.
     * Změna konfigurace webového serveru nebo pravidla.
 

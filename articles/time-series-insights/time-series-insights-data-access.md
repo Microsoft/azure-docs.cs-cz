@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení Azure čas Series Insights ve verzi Preview - konfigurovat zabezpečení přístup a správa Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
+title: Konfigurace zabezpečení pro přístup k a spravovat Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Tento článek popisuje postup konfigurace zabezpečení a oprávnění jako přístup pro správu zásad a přístupu k datům zásady pro zabezpečení Azure čas Series Insights ve verzi Preview.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f8eb66feecd58b766b3414b1bbc6bd4e27bf4f7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9aea7a9c9dd96bf30ebb3def9354df9e4bd30114
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275461"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558512"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Udělení přístupu k datům do prostředí
 

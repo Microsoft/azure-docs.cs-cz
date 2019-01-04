@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0bca7281c390388bd860219fb6f2eacb96b99df0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384951"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742384"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -28,10 +28,10 @@ Pokud doplněk je povolená, vytvoří zónu DNS ve vašem předplatném. Dalš�
 
 Doplněk nasadí dvě součásti: [kontroler příchozího přenosu dat Kubernetes] [ ingress] a [externí DNS] [ external-dns] kontroleru.
 
-- **Kontroler příchozího přenosu dat**: kontroler příchozího přenosu dat je přístupný z Internetu pomocí služby Kubernetes typu nástroj pro vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [příchozího přenosu dat Kubernetes prostředky][ingress-resource], který vytvoří trasy pro koncové body aplikace.
-- **Externí DNS řadiče**: sleduje pro Kubernetes prostředky příchozího přenosu dat a vytvoří záznamy DNS A v zóně DNS specifické pro cluster.
+- **Kontroler příchozího přenosu dat**: Kontroler příchozího přenosu dat je přístupný Internetu s použitím služby Kubernetes typu nástroj pro vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [příchozího přenosu dat Kubernetes prostředky][ingress-resource], který vytvoří trasy pro koncové body aplikace.
+- **Externí DNS řadiče**: Sleduje různé prostředky Kubernetes příchozího přenosu dat a vytvoří záznamy DNS A v zóně DNS specifické pro cluster.
 
-## <a name="deploy-http-routing-cli"></a>Nasazení, směrování protokolu HTTP: rozhraní příkazového řádku
+## <a name="deploy-http-routing-cli"></a>Nasazení, směrování protokolu HTTP: Rozhraní příkazového řádku
 
 Pomocí Azure CLI je možné povolit doplněk směrování aplikace HTTP, při nasazování clusteru AKS. Chcete-li tak učinit, použijte [az aks vytvořit] [ az-aks-create] příkazů `--enable-addons` argument.
 
@@ -55,7 +55,7 @@ Result
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
 ```
 
-## <a name="deploy-http-routing-portal"></a>Nasazení, směrování protokolu HTTP: portál
+## <a name="deploy-http-routing-portal"></a>Nasazení, směrování protokolu HTTP: Portál
 
 Na webu Azure portal je možné povolit doplněk směrování aplikace HTTP, při nasazování clusteru AKS.
 
@@ -174,6 +174,36 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
+Pokud je zakázáno doplněk směrování aplikace HTTP, některé prostředky Kubernetesu může zůstat v clusteru. Tyto prostředky zahrnují *configMaps* a *tajných kódů*a vytvářejí *kube-system* oboru názvů. Chcete-li udržovat čisté clusteru, můžete odebrat tyto prostředky.
+
+Vyhledejte *doplněk--směrování aplikace http* prostředky pomocí následujících [kubectl get] [ kubectl-get] příkazy:
+
+```console
+kubectl get deployments --namespace kube-system
+kubectl get services --namespace kube-system
+kubectl get configmaps --namespace kube-system
+kubectl get secrets --namespace kube-system
+```
+
+Následující příklad výstupu ukazuje configMaps, které mají být odstraněny:
+
+```
+$ kubectl get configmaps --namespace kube-system
+
+NAMESPACE     NAME                                                       DATA   AGE
+kube-system   addon-http-application-routing-nginx-configuration         0      9m7s
+kube-system   addon-http-application-routing-tcp-services                0      9m7s
+kube-system   addon-http-application-routing-udp-services                0      9m7s
+```
+
+Chcete-li odstranit prostředky, použijte [kubectl odstranit] [ kubectl-delete] příkazu. Zadejte typ prostředku, prostředek názvem a oborem názvů. Následující příklad odstraní jeden z předchozích configmaps:
+
+```console
+kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
+```
+
+Opakujte předchozí `kubectl delete` krok pro všechny *doplněk--směrování aplikace http* prostředky, které zůstávají ve vašem clusteru.
+
 ## <a name="troubleshoot"></a>Řešení potíží
 
 Použití [kubectl protokoly] [ kubectl-logs] příkazu zobrazte protokoly aplikací pro aplikaci externí DNS. Protokoly by měl potvrďte, že záznam TXT DNS a a byly úspěšně vytvořeny.
@@ -256,6 +286,7 @@ Informace o tom, jak nainstalovat řadič protokol HTTPS zabezpečená příchoz
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [ingress-resource]: https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource

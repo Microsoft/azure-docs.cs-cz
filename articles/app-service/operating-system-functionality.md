@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb17748968d0875cae132730a02f490eab966690
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ad27a7eaf88ae57f730609e2b0f43a2f5ea182a1
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388805"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653505"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému ve službě Azure App Service
 Tento článek popisuje běžné funkce operačního systému směrný plán, který je k dispozici pro všechny aplikace Windows běží na [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje soubor, sítě a přístup k registru a diagnostické protokoly a události. 
@@ -131,11 +131,5 @@ Oprávnění k zápisu do registru je blokovaný, včetně přístupu ke klíč�
 
 ## <a name="more-information"></a>Další informace
 
-[Azure Web App sandboxu](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) – nejnovější informace o prostředí pro spuštění služby App Service. Na této stránce se spravují přímo vývojovému týmu služby App Service.
-
-> [!NOTE]
-> Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
-> 
-> 
-
+[Azure sandboxu služby App Service](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) – nejnovější informace o prostředí pro spuštění služby App Service. Na této stránce se spravují přímo vývojovému týmu služby App Service.
 

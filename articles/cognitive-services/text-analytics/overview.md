@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 545d60207bbd1941920bc0e70096417c35486634
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0fe4a9f05e0f6d1abed7b906cc5cd89854885ae5
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634583"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53992851"
 ---
 # <a name="what-is-text-analytics"></a>Co je Analýza textu?
 
@@ -31,10 +31,10 @@ Analýza textu může znamenat různé věci, ale ve službě Cognitive Services
 |-----------|-------------|------|
 |[**Analýza mínění**](how-tos/text-analytics-how-to-sentiment-analysis.md) | Zjistěte, co si vaši zákazníci myslí o vaší značce nebo tématu díky analýze nezpracovaného textu k odhalení signálů pozitivního nebo negativního mínění. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package)  |
 |[**Extrakce klíčových frází**](how-tos/text-analytics-how-to-keyword-extraction.md) | Automatická extrakce klíčových frází a rychlé zjištění hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).  | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**Rozpoznávání jazyka**](how-tos/text-analytics-how-to-language-detection.md) | Služba rozpozná, v jakém jazyce je vstupní text napsaný a každému odeslanému dokumentu na žádost přiřadí kód jazyka až pro 120 jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) | 
+|[**Rozpoznávání jazyka**](how-tos/text-analytics-how-to-language-detection.md) | Služba rozpozná, v jakém jazyce je vstupní text napsaný a každému odeslanému dokumentu na žádost přiřadí kód jazyka až pro 120 jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
 |[**Rozpoznávání entit (Preview)**](how-tos/text-analytics-how-to-entity-linking.md) | Identifikuje a zařadí entity v textu do kategorií jako jsou lidé, místa, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) |
 
-## <a name="use-containers"></a>Pomocí kontejnerů
+## <a name="use-containers"></a>Použití kontejnerů
 
 [Kontejnery pro analýzu textu](how-tos/text-analytics-how-to-install-containers.md) extrahovat klíčové fráze, detekce jazyka a analýza sentimentu místně, nainstalováním standardizované kontejnery Dockeru blíž ke svým datům.
 
@@ -76,7 +76,7 @@ Omezení četnosti je 100 volání za minutu. Upozorňujeme, že můžete odesla
 
 ## <a name="unicode-encoding"></a>Kódování Unicode
 
-Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyjádření a kalkulaci počtu znaků. Požadavky je možné odesílat v kódování UTF-8 i UTF-16 bez měřitelných rozdílů v počtu znaků. Body kódu sady Unicode jsou použité jako heuristika délky znaků a jsou považovány za ekvivalentní ve smyslu datového omezení analýzy textu. Pokud používáte `String.Length` k měření počtu znaků, používáte stejnou metodu jako my k měření velikosti dat.
+Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyjádření a kalkulaci počtu znaků. Požadavky je možné odesílat v kódování UTF-8 i UTF-16 bez měřitelných rozdílů v počtu znaků. Body kódu sady Unicode jsou použité jako heuristika délky znaků a jsou považovány za ekvivalentní ve smyslu datového omezení analýzy textu. Pokud používáte [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) získat počet znaků, použijete stejnou metodu používáme k měření velikosti dat.
 
 ## <a name="next-steps"></a>Další postup
 

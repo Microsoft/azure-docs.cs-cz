@@ -9,17 +9,42 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0496d9b3fde8b0194ddf57b3bbfec98eb7fda7fe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: caa078aa522e20a0e09d0b4d97461358c1698fc7
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250845"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744225"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
 Tento článek uvádí běžné problémy, které se vztahují k Microsoft Azure Files, když se připojíte z klientů Windows. Poskytuje také možné příčiny a řešení těchto problémů. Kromě použijte kroky v tomto článku, můžete také použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) a ujistěte se, že v prostředí klienta Windows mají správné požadavky. AzFileDiagnostics automatizuje zjišťování většiny příznaků uvedených v tomto článku a pomáhá nastavení prostředí, abyste získali optimální výkon. Můžete také najít tyto informace [Azure sdíleným složkám Poradce při potížích](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který vysvětluje, jak vám pomoci problémy připojení/mapování nebo připojení Azure sdíleným složkám.
 
+<a id="error5"></a>
+## <a name="error-5-when-you-mount-an-azure-file-share"></a>Chyba 5, když připojíte sdílenou složku Azure
+
+Při pokusu o připojení sdílené složky, může dojít k následující chybě:
+
+- Došlo k chybě systému 5. Přístup byl zamítnut.
+
+### <a name="cause-1-unencrypted-communication-channel"></a>1. příčina: Nešifrovaná komunikace kanálu
+
+Z bezpečnostních důvodů připojení sdílených složek Azure jsou blokovány, pokud není šifrovaný komunikační kanál, a pokud se pokus o připojení není proveden ze stejné datové centrum, kde jsou umístěné sdílených složek Azure. Nezašifrované připojení ve stejném datacentru je taky možné zablokovat Pokud [vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení. Šifrovaný komunikační kanál je k dispozici pouze v případě, že uživatele klientský operační systém podporuje šifrování protokolu SMB.
+
+Windows 8, Windows Server 2012 a novějších verzích každý systém vyjednávat požadavky, které obsahují protokolu SMB 3.0, který podporuje šifrování.
+
+### <a name="solution-for-cause-1"></a>Řešení příčiny 1
+
+1. Připojení z klienta, který podporuje šifrování protokolu SMB (Windows 8, Windows Server 2012 nebo novější) nebo z virtuálního počítače ve stejném datacentru jako účet služby Azure storage, který se používá pro sdílenou složku Azure připojit.
+2. Ověřte, [vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) nastavení je zakázaný v účtu úložiště, pokud klient nepodporuje šifrování protokolu SMB.
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. příčina: Pravidla virtuální sítě nebo brány firewall jsou povolené v účtu úložiště 
+
+Pokud virtuální síť (VNET) a pravidla brány firewall jsou nakonfigurované v účtu úložiště, síťový provoz bude odepřen přístup Pokud IP adresa klienta nebo virtuální sítě je povolený přístup.
+
+### <a name="solution-for-cause-2"></a>Řešení příčiny 2
+
+Ověřte, že virtuální sítě a pravidel brány firewall jsou správně nakonfigurovány v účtu úložiště. Pokud chcete otestovat, pokud virtuální síť nebo brána firewall pravidla je příčinou problému, dočasně změnit nastavení pro účet úložiště na **povolit přístup ze všech sítí**. Další informace najdete v tématu [virtuální sítí a bran firewall nakonfigurovat služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Chyba 53, chyba 67 nebo 87 Chyba při připojování nebo odpojování sdílené složky Azure
@@ -30,39 +55,47 @@ Při pokusu o připojení sdílené složky v místním nebo z jiného datového
 - Došlo k chybě systému 67. Síťový název nelze nalézt.
 - Došlo k chybě systému 87. Parametr je nesprávný.
 
-### <a name="cause-1-unencrypted-communication-channel"></a>1. příčina: Nešifrované komunikační kanál
-
-Z bezpečnostních důvodů připojení sdílených složek Azure jsou blokovány, pokud není šifrovaný komunikační kanál, a pokud se pokus o připojení není proveden ze stejné datové centrum, kde jsou umístěné sdílených složek Azure. Nezašifrované připojení ve stejném datacentru je taky možné zablokovat Pokud [vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení. Komunikační kanál šifrování je k dispozici pouze v případě, že uživatele klientský operační systém podporuje šifrování protokolu SMB.
-
-Windows 8, Windows Server 2012 a novějších verzích každý systém vyjednávat požadavky, které obsahují protokolu SMB 3.0, který podporuje šifrování.
-
-### <a name="solution-for-cause-1"></a>Řešení příčiny 1
-
-1. Ověřte, [vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) je zakázáno v účtu úložiště.
-2. Připojení z klienta, která provádí jednu z následujících akcí:
-
-    - Splňuje požadavky na systém Windows 8 a Windows Server 2012 nebo novější verze
-    - Připojení z virtuálního počítače ve stejném datacentru jako účet služby Azure storage, který se používá pro sdílené složky Azure
-
-### <a name="cause-2-port-445-is-blocked"></a>2. příčina: Port 445 blokovaný.
+### <a name="cause-1-port-445-is-blocked"></a>1. příčina: Port 445 blokovaný.
 
 Systémová chyba 53 nebo 67 systémové chybě může dojít, pokud 445 odchozí komunikace přes port na datové centrum Azure Files je blokovaná. Chcete-li zobrazit souhrn poskytovatelů internetových služeb, které povolí nebo zakáže přístup z portu 445, přejděte na [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Informace o tom, zda se jedná o důvodem takového zpráva "Chyba 53 systému", můžete k dotazování na koncový bod TCP:445 Portqry. Pokud koncový bod TCP:445 se zobrazí, jak jsou vyfiltrovaná, je Zablokovaný TCP port. Zde je příklad dotazu:
+Chcete-li zkontrolovat, zda brána firewall nebo poskytovatele internetových služeb neblokuje port 445, použijte [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) nástroj nebo `Test-NetConnection` rutiny. 
 
-  `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
+Použít `Test-NetConnection` rutiny AzureRM PowerShell musí být nainstalovaný modul, naleznete v tématu [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps) Další informace. Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
-Pokud je port TCP 445 blokovaný pravidlem na síťové cestě, uvidíte následující výsledek:
+   
+    $resourceGroupName = "<your-resource-group-name>"
+    $storageAccountName = "<your-storage-account-name>"
 
-  `TCP port 445 (microsoft-ds service): FILTERED`
+    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+    # already logged in.
+    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
-Další informace o použití Portqry najdete v tématu [popisujícím nástroj příkazového řádku Portqry.exe](https://support.microsoft.com/help/310099).
+    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
+    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
+    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+  
+    
+Pokud připojení proběhne úspěšně, měl by se zobrazit následující výstup:
+    
+  
+    ComputerName     : <storage-account-host-name>
+    RemoteAddress    : <storage-account-ip-address>
+    RemotePort       : 445
+    InterfaceAlias   : <your-network-interface>
+    SourceAddress    : <your-ip-address>
+    TcpTestSucceeded : True
+ 
 
-### <a name="solution-for-cause-2"></a>Řešení příčiny 2
+> [!Note]  
+> Výše uvedený příkaz vrátí aktuální IP adresu účtu úložiště. Není zaručeno, že tato IP adresa zůstane stejná, a kdykoli se může změnit. Nekódujte pevně tuto IP adresu do skriptů ani do konfigurace brány firewall.
+
+### <a name="solution-for-cause-1"></a>Řešení příčiny 1
 
 Práce s vaším IT oddělením pro otevření portu 445 odchozí do [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
-### <a name="cause-3-ntlmv1-is-enabled"></a>3. příčina: NTLMv1 je povolená.
+### <a name="cause-2-ntlmv1-is-enabled"></a>2. příčina: NTLMv1 je povolená.
 
 Systémová chyba 53 nebo systémové chybě 87 může dojít, pokud je povolená komunikace NTLMv1 na straně klienta. Služba soubory Azure podporuje jenom ověřování NTLMv2. S NTLMv1 povolené vytvoří klienta méně bezpečné. Proto se zablokovat komunikaci pro soubory Azure. 
 
@@ -72,7 +105,7 @@ Pokud chcete zjistit, zda je příčinou chyby, ověřte, že následující pod
 
 Další informace najdete v tématu [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) tématu na webu TechNet.
 
-### <a name="solution-for-cause-3"></a>Řešení pro příčina 3
+### <a name="solution-for-cause-2"></a>Řešení příčiny 2
 
 Vrátit zpět **LmCompatibilityLevel** hodnota, která má výchozí hodnotu 3 v následujícím podklíči registru:
 
@@ -88,6 +121,27 @@ Chyba 1816 se stane při dosažení horní limit počtu souběžných otevřený
 ### <a name="solution"></a>Řešení
 
 Snižte počet souběžných otevřených popisovačů ukončením některé obslužné rutiny a pak zkuste to znovu. Další informace najdete v tématu [kontrolní seznam výkonu a škálovatelnosti Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+
+<a id="accessdeniedportal"></a>
+## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>Chyba "Přístup byl odepřen" při přechodu na sdílené složky Azure na portálu
+
+Při procházení sdílené složky Azure na portálu může zobrazit následující chyba:
+
+Přístup je odepřený.  
+Nemáte přístup.  
+Vypadá to, že nemáte přístup k tomuto obsahu. Chcete-li získat přístup, obraťte se prosím vlastníka.  
+
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. příčina: Váš uživatelský účet nemá přístup k účtu úložiště
+
+### <a name="solution-for-cause-1"></a>Řešení příčiny 1
+
+Přejděte do účtu úložiště, kde se nachází sdílená složka Azure, klikněte na tlačítko **řízení přístupu (IAM)** a ověřte váš uživatelský účet má přístup k účtu úložiště. Další informace najdete v tématu [jak zabezpečit svůj účet úložiště pomocí řízení přístupu na základě Role (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. příčina: Pravidla virtuální sítě nebo brány firewall jsou povolené v účtu úložiště
+
+### <a name="solution-for-cause-2"></a>Řešení příčiny 2
+
+Ověřte, že virtuální sítě a pravidel brány firewall jsou správně nakonfigurovány v účtu úložiště. Pokud chcete otestovat, pokud virtuální síť nebo brána firewall pravidla je příčinou problému, dočasně změnit nastavení pro účet úložiště na **povolit přístup ze všech sítí**. Další informace najdete v tématu [virtuální sítí a bran firewall nakonfigurovat služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Zpomalit kopírování souborů do a z Azure souborů ve Windows
@@ -168,7 +222,7 @@ Použijte jedno z následujících řešení:
 
   `net use * \\storage-account-name.file.core.windows.net\share`
 
-Až budete postupovat podle těchto pokynů, můžete při spuštění příkazu net use pro účet služby systému/network může zobrazí následující chybová zpráva: "systém 1312 došlo k chybě. Zadané přihlašovací relace neexistuje. To může již byla ukončena." Pokud k tomu dojde, ujistěte se, že uživatelské jméno, který je předán příkazu net use obsahuje informace o doméně (například: "[název účtu úložiště]. file.core.windows .net").
+Poté, co budete postupovat podle těchto pokynů, může dojít následující chybová zpráva, když spustíte příkaz net use pro účet systému nebo síťových služeb: "Systém 1312 došlo k chybě. Zadané přihlašovací relace neexistuje. To může již byla ukončena." Pokud k tomu dojde, ujistěte se, že uživatelské jméno, který je předán příkazu net use obsahuje informace o doméně (například: "[název účtu úložiště]. file.core.windows .net").
 
 <a id="doesnotsupportencryption"></a>
 ## <a name="error-you-are-copying-a-file-to-a-destination-that-does-not-support-encryption"></a>Chyba "Jsou kopírování souboru do cíle, které nepodporuje šifrování"
@@ -208,5 +262,5 @@ Chcete-li vyřešit tento problém, nastavení **DirectoryCacheEntrySizeMax** ho
 Můžete například ji nastavit na 0x100000 a zjistit, zda budou lepší výkon.
 
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.

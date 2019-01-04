@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 97352cdc89aabe312bf500901347acaf5238e871
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436989"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809875"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
@@ -119,7 +119,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAcco
 ```
 
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -147,7 +147,7 @@ Pokud chcete nastavit oprávnění pro účet konektoru služby AD DS při použ
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -167,7 +167,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 ```
 
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
@@ -188,7 +188,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConne
 ```
 
 
-nebo;
+Nebo;
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -207,7 +207,7 @@ Pokud chcete nastavit oprávnění pro účet konektoru služby AD DS při použ
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
@@ -219,7 +219,7 @@ Tato rutina se nastavit následující oprávnění:
 |-----|-----|-----|-----| 
 |Povolit |Účet konektoru služby AD DS |Obecný čtení/zápisu |Objekty potomkem skupiny| 
 |Povolit |Účet konektoru služby AD DS |Vytvoření nebo odstranění podřízený objekt |Tento objekt a všechny podřízené objekty| 
-|Povolit |Účet konektoru služby AD DS |Odstranit nebo odstranit objekt a všechny jeho podřízené položky |Tento objekt a všechny podřízené objekty|
+|Povolit |Účet konektoru služby AD DS |Vytvořit/odstranit objekt a všechny jeho podřízené položky |Tento objekt a všechny podřízené objekty|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Oprávnění pro hybridní nasazení systému Exchange 
 Pokud chcete nastavit oprávnění pro účet konektoru služby AD DS při použití hybridní nasazení systému Exchange, spusťte: 
@@ -229,7 +229,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnecto
 ```
 
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -253,7 +253,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -
 ```
 
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 

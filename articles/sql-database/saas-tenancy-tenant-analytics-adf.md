@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
-ms.reviewer: MightyPen
+ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 034fd2434d3b824c4356e640a1c1665dff542de6
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4b2c9f17bc9c6e9bbc280116d074bd0f1e3d3e38
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056587"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606040"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Prozkoumejte SaaS analýz s využitím Azure SQL Database, SQL Data Warehouse, služby Data Factory a Power BI
 
@@ -146,7 +146,7 @@ Jsou tři vnořené kanály: SQLDBToDW DBCopy a TableCopy.
 
 **Kanál 1 - SQLDBToDW** vyhledá názvy databází tenantů, které jsou uloženy v databázi katalogu (název tabulky: [__ShardManagement]. [ ShardsGlobal]) a pro každou databázi tenantů, spustí **DBCopy** kanálu. Po dokončení zadaných **sp_TransformExtractedData** provést uloženou proceduru schématu. Tuto uloženou proceduru transformuje načtených dat v pracovních tabulek a naplní tabulky hvězdicového schématu.
 
-**Kanál 2 - DBCopy** vyhledá názvy zdrojových tabulek a sloupců z konfiguračního souboru uložená v blob storage.  **TableCopy** pak spuštění kanálu pro všechny čtyři tabulky: TicketFacts, CustomerFacts, EventFacts a VenueFacts. **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** aktivita spustí paralelně pro všemi 20 databázemi. ADF povoluje maximálně 20 průchod cyklem běžet paralelně. Zvažte vytvoření více kanálů pro více databází.    
+**Kanál 2 - DBCopy** vyhledá názvy zdrojových tabulek a sloupců z konfiguračního souboru uložená v blob storage.  **TableCopy** pak spuštění kanálu pro všechny čtyři tabulky: TicketFacts CustomerFacts, EventFacts a VenueFacts. **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** aktivita spustí paralelně pro všemi 20 databázemi. ADF povoluje maximálně 20 průchod cyklem běžet paralelně. Zvažte vytvoření více kanálů pro více databází.    
 
 **Kanál 3 - TableCopy** používá verzi čísla řádků ve službě SQL Database (_rowversion_) k identifikaci řádků, které byly změněny nebo aktualizovány. Tato aktivita vyhledá počáteční a koncová verze řádků pro extrahování řádků ze zdrojových tabulek. **CopyTracker** sleduje poslední řádek z každé zdrojové tabulce při každém spuštění extrahovat tabulky uložené v každé databázi tenantů. Nové nebo změněné řádky se zkopírují do odpovídajících pracovních tabulek v datovém skladu: **raw_Tickets**, **raw_Customers**, **raw_Venues**, a **raw_ Události**. Nakonec poslední řádek verze je uloženo v **CopyTracker** tabulka, která se použije jako počáteční řádek verze pro další extrakce. 
 
@@ -260,6 +260,6 @@ V tomto kurzu jste se naučili:
 
 Blahopřejeme!
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 - Další [kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).

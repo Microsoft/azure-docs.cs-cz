@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2fb1f5ad0c3b46623550cbcc1204761b57f6093b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 98d3d1f6fc0f2f30196f360811808579dfbab312
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251045"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727475"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Vertikální navýšení kapacity aplikace v Azure
 
@@ -34,7 +34,7 @@ Tento článek ukazuje, jak škálovat aplikaci ve službě Azure App Service. E
 * [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Zvýšíte počet instancí virtuálních počítačů, na kterých běží vaše aplikace.
   Můžete horizontálně navýšit až 20 instancí, v závislosti na cenovou úroveň. [App Service Environment](environment/intro.md) v **izolované** další úrovně zvyšuje počet vašich horizontální navýšení kapacity až na 100 instancí. Další informace o horizontální navýšení kapacity najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md). Existuje zjistíte, jak pomocí automatického škálování, což je škálování počtu instancí automaticky na základě předdefinovaných pravidel a plány.
 
-Nastavení škálování trvat jen několik sekund pro použití a ovlivňují všechny aplikace ve vaší [plán služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+Nastavení škálování trvat jen několik sekund pro použití a ovlivňují všechny aplikace ve vaší [plán služby App Service](../app-service/overview-hosting-plans.md).
 Můžete změnit váš kód nebo znovu nasadit aplikaci nevyžadují.
 
 Informace o cenách a funkcích jednotlivé plány služby App Service najdete v tématu [podrobnosti o cenách na App Service](https://azure.microsoft.com/pricing/details/web-sites/).  

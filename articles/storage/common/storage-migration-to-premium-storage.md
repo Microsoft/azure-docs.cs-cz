@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.component: common
-ms.openlocfilehash: 4ec0d4058c512ce420cd6e1bdc393b8043dbf1b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c9e9dd0eab127fcb0deb3085915bd51eeb309089
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232547"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632836"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
 
@@ -32,7 +32,7 @@ Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou late
 Můžete migrovat virtuální počítače z jiných platforem na Azure Premium Storage, nebo migrovat stávající virtuální počítače Azure ze služby Storage úrovně Standard na Premium Storage. Tento průvodce popisuje kroky pro oba dva scénáře. Postupujte podle kroků uvedených v příslušné části v závislosti na vašem scénáři.
 
 > [!NOTE]
-> Přehled funkcí a cenách služby Storage úrovně Premium ve službě Premium Storage najdete: [vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md). Doporučujeme migrovat všechny disku virtuálního počítače vyžadující vysokou vstupně-výstupních operací na Azure Premium Storage pro zajištění nejlepšího výkonu pro vaši aplikaci. Pokud na disku nevyžaduje vysoké IOPS, můžete omezit náklady udržováním ve standardním úložišti, který ukládá data na disku virtuálního počítače na jednotky pevných disků (HDD) namísto jednotky SSD.
+> Přehled funkcí a cenách služby Storage úrovně Premium ve službě Premium Storage najdete: [Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md). Doporučujeme migrovat všechny disku virtuálního počítače vyžadující vysokou vstupně-výstupních operací na Azure Premium Storage pro zajištění nejlepšího výkonu pro vaši aplikaci. Pokud na disku nevyžaduje vysoké IOPS, můžete omezit náklady udržováním ve standardním úložišti, který ukládá data na disku virtuálního počítače na jednotky pevných disků (HDD) namísto jednotky SSD.
 >
 
 Dokončení procesu migrace v celém rozsahu může vyžadovat další akce před a po provedení kroků v tomto průvodci k dispozici. Mezi příklady patří konfigurace virtuálních sítí nebo koncovými body a provádění změn kódu v rámci vlastní aplikace může být nutné výpadkům ve vaší aplikaci. Tyto akce jsou jedinečné pro jednotlivé aplikace a byste měli provést spolu s kroky popsané v této příručce k úplné přechodu na Premium Storage jako bezproblémové co nejvíc.
@@ -86,8 +86,8 @@ Při vytváření virtuálního počítače Azure, zobrazí výzva ke konfigurac
 ## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Příprava a zkopírovat virtuální pevné disky (VHD) na Premium Storage
 Následující část obsahuje pokyny pro přípravu virtuálních pevných disků ze svého virtuálního počítače a kopírování virtuálních pevných disků do služby Azure Storage.
 
-* [Scénář 1: "migruji existujících virtuálních počítačů Azure do Azure Storage úrovně Premium."](#scenario1)
-* [Scénář 2: "migruji virtuálních počítačů z jiných platforem na Azure Premium Storage."](#scenario2)
+* [Scénář 1: "Existujících virtuálních počítačů Azure migruji do služby Azure Premium Storage."](#scenario1)
+* [Scénář 2: "Migruji virtuálních počítačů z jiných platforem na Azure Premium Storage."](#scenario2)
 
 ### <a name="prerequisites"></a>Požadavky
 Virtuální pevné disky přípravy na migraci, budete potřebovat:
@@ -105,7 +105,7 @@ Virtuální pevné disky přípravy na migraci, budete potřebovat:
 >
 >
 
-### <a name="scenario1"></a>Scénář 1: "migruji existujících virtuálních počítačů Azure do Azure Storage úrovně Premium."
+### <a name="scenario1"></a>Scénář 1: "Existujících virtuálních počítačů Azure migruji do služby Azure Premium Storage."
 Pokud migrujete existující virtuální počítače Azure, zastavte virtuální počítač, virtuální pevné disky podle typu virtuálního pevného disku, které chcete připravit a pak zkopírujte virtuální pevný disk pomocí nástroje AzCopy nebo prostředí PowerShell.
 
 Virtuální počítač musí být úplně dolů k migraci do čistého stavu. Bude výpadek až po dokončení migrace.
@@ -163,7 +163,7 @@ Je potřeba najít váš kontejner cesty a klíč účtu úložiště zpracovat 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Možnost 1: Zkopírujte virtuální pevný disk pomocí nástroje AzCopy (asynchronní kopie)
 Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.
 
-1. Stáhněte a nainstalujte nástroje AzCopy odsud: [nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
+1. Stáhněte a nainstalujte nástroj AzCopy z tohoto: [Nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
 2. Otevřete prostředí Azure PowerShell a přejděte do složky, ve kterém je nástroj AzCopy nainstalovaný.
 3. Použijte následující příkaz pro kopírování souboru virtuálního pevného disku z "Zdroj" na "Cíl".
 
@@ -179,25 +179,28 @@ Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na ve
 
     Tady jsou popisy parametrů použitých v příkazu AzCopy:
 
-   * **/ Zdroj:  *&lt;zdroj&gt;:***  umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
-   * **/ SourceKey:  *&lt;klíč zdrojového účtu&gt;:***  klíč účtu úložiště účtu zdrojového úložiště.
-   * **/ Dest:  *&lt;cílové&gt;:***  adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
-   * **/ DestKey:  *&lt;klíč účtu dest&gt;:***  klíč účtu úložiště účtu cílového úložiště.
-   * **Nebo vzor, který:  *&lt;název souboru&gt;:***  zadejte název souboru VHD, který chcete zkopírovat.
+   * **/ Zdroj:  *&lt;zdroj&gt;:*** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
+   * **/ SourceKey:  *&lt;klíč zdrojového účtu&gt;:*** Klíč účtu úložiště účtu zdrojového úložiště.
+   * **/ Dest:  *&lt;cílové&gt;:*** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
+   * **/ DestKey:  *&lt;klíč účtu dest&gt;:*** Klíč účtu úložiště účtu cílového úložiště.
+   * **Nebo vzor, který:  *&lt;název souboru&gt;:*** Zadejte název souboru VHD, který chcete zkopírovat.
 
 Podrobnosti o použití nástroje AzCopy nástroj, najdete v článku [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).
 
 ##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Možnost 2: Zkopírujte virtuální pevný disk pomocí Powershellu (Synchronized kopie)
-Můžete také zkopírovat soubor virtuálního pevného disku pomocí Powershellové rutiny Start-AzureStorageBlobCopy. Pomocí následujícího příkazu v prostředí Azure PowerShell ke kopírování virtuálního pevného disku. Hodnoty v <> nahraďte odpovídajícími hodnotami z vašeho zdrojového a cílového účtu úložiště. Pokud chcete použít tento příkaz, musíte mít kontejneru s názvem virtuální pevné disky v cílovém účtu úložiště. Pokud kontejner neexistuje, vytvořte jej před spuštěním příkazu.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Můžete také zkopírovat soubor virtuálního pevného disku pomocí Powershellové rutiny Start-AzStorageBlobCopy. Pomocí následujícího příkazu v prostředí Azure PowerShell ke kopírování virtuálního pevného disku. Hodnoty v <> nahraďte odpovídajícími hodnotami z vašeho zdrojového a cílového účtu úložiště. Pokud chcete použít tento příkaz, musíte mít kontejneru s názvem virtuální pevné disky v cílovém účtu úložiště. Pokud kontejner neexistuje, vytvořte jej před spuštěním příkazu.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
 
-$sourceContext = New-AzureStorageContext  –StorageAccountName <source-account> -StorageAccountKey <source-account-key>
+$sourceContext = New-AzStorageContext  –StorageAccountName <source-account> -StorageAccountKey <source-account-key>
 
-$destinationContext = New-AzureStorageContext  –StorageAccountName <dest-account> -StorageAccountKey <dest-account-key>
+$destinationContext = New-AzStorageContext  –StorageAccountName <dest-account> -StorageAccountKey <dest-account-key>
 
-Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer <dest-container> -DestBlob <dest-disk-name> -DestContext $destinationContext
+Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer <dest-container> -DestBlob <dest-disk-name> -DestContext $destinationContext
 ```
 
 Příklad:
@@ -205,14 +208,14 @@ Příklad:
 ```powershell
 C:\PS> $sourceBlobUri = "https://sourceaccount.blob.core.windows.net/vhds/myvhd.vhd"
 
-C:\PS> $sourceContext = New-AzureStorageContext  –StorageAccountName "sourceaccount" -StorageAccountKey "J4zUI9T5b8gvHohkiRg"
+C:\PS> $sourceContext = New-AzStorageContext  –StorageAccountName "sourceaccount" -StorageAccountKey "J4zUI9T5b8gvHohkiRg"
 
-C:\PS> $destinationContext = New-AzureStorageContext  –StorageAccountName "destaccount" -StorageAccountKey "XZTmqSGKUYFSh7zB5"
+C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destaccount" -StorageAccountKey "XZTmqSGKUYFSh7zB5"
 
-C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
+C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>Scénář 2: "migruji virtuálních počítačů z jiných platforem na Azure Premium Storage."
+### <a name="scenario2"></a>Scénář 2: "Migruji virtuálních počítačů z jiných platforem na Azure Premium Storage."
 Pokud migrujete virtuální pevný disk z jiných - Azure Cloud Storage do Azure, musíte napřed exportovat virtuální pevný disk do místního adresáře. Úplný zdrojový cesty místnímu adresáři, kde je uložen virtuální pevný disk po ruce a pak pomocí nástroje AzCopy k nahrání do služby Azure Storage.
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>Krok 1. Exportovat virtuální pevný disk do místního adresáře
@@ -254,10 +257,10 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 
 Příklad <Uri> může být ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Příklad <FileInfo> může být ***"C:\path\to\upload.vhd"***.
 
-##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Možnost 2: Nahrání souboru VHD pomocí AzCopy
+##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Možnost 2: Použití AzCopy pro nahrání souboru VHD
 Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.
 
-1. Stáhněte a nainstalujte nástroje AzCopy odsud: [nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
+1. Stáhněte a nainstalujte nástroj AzCopy z tohoto: [Nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
 2. Otevřete prostředí Azure PowerShell a přejděte do složky, ve kterém je nástroj AzCopy nainstalovaný.
 3. Použijte následující příkaz pro kopírování souboru virtuálního pevného disku z "Zdroj" na "Cíl".
 
@@ -273,12 +276,12 @@ Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na ve
 
     Tady jsou popisy parametrů použitých v příkazu AzCopy:
 
-   * **/ Zdroj:  *&lt;zdroj&gt;:***  umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
-   * **/ SourceKey:  *&lt;klíč zdrojového účtu&gt;:***  klíč účtu úložiště účtu zdrojového úložiště.
-   * **/ Dest:  *&lt;cílové&gt;:***  adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
-   * **/ DestKey:  *&lt;klíč účtu dest&gt;:***  klíč účtu úložiště účtu cílového úložiště.
+   * **/ Zdroj:  *&lt;zdroj&gt;:*** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
+   * **/ SourceKey:  *&lt;klíč zdrojového účtu&gt;:*** Klíč účtu úložiště účtu zdrojového úložiště.
+   * **/ Dest:  *&lt;cílové&gt;:*** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
+   * **/ DestKey:  *&lt;klíč účtu dest&gt;:*** Klíč účtu úložiště účtu cílového úložiště.
    * **/ BlobType: stránka:** Určuje, že cíl je objekt blob stránky.
-   * **Nebo vzor, který:  *&lt;název souboru&gt;:***  zadejte název souboru VHD, který chcete zkopírovat.
+   * **Nebo vzor, který:  *&lt;název souboru&gt;:*** Zadejte název souboru VHD, který chcete zkopírovat.
 
 Podrobnosti o použití nástroje AzCopy nástroj, najdete v článku [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).
 
@@ -430,7 +433,7 @@ Pokud máte více virtuálních počítačů k migraci, automatizace pomocí skr
 Předpokladů jsou:
 
 * Vytváříte klasické virtuální počítače Azure.
-* Zdrojové disky s operačním systémem a datové disky zdroje jsou ve stejném účtu úložiště a stejného kontejneru. Pokud disky s operačním systémem a datové disky nejsou na stejném místě, můžete použít AzCopy nebo prostředí Azure PowerShell mají zkopírovat virtuální pevné disky účtů úložiště a kontejnerů. Přečtěte si předchozí krok: [zkopírujte virtuální pevný disk pomocí nástroje AzCopy nebo prostředí PowerShell](#copy-vhd-with-azcopy-or-powershell). Tento skript podle vašeho scénáře pro úpravy je jinou možnost, ale doporučujeme použít AzCopy nebo prostředí PowerShell, protože je jednodušší a rychlejší.
+* Zdrojové disky s operačním systémem a datové disky zdroje jsou ve stejném účtu úložiště a stejného kontejneru. Pokud disky s operačním systémem a datové disky nejsou na stejném místě, můžete použít AzCopy nebo prostředí Azure PowerShell mají zkopírovat virtuální pevné disky účtů úložiště a kontejnerů. Podívejte se na předchozí krok: [Zkopírujte virtuální pevný disk pomocí nástroje AzCopy nebo prostředí PowerShell](#copy-vhd-with-azcopy-or-powershell). Tento skript podle vašeho scénáře pro úpravy je jinou možnost, ale doporučujeme použít AzCopy nebo prostředí PowerShell, protože je jednodušší a rychlejší.
 
 Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktualizujte skript v tak, aby odpovídaly s váš konkrétní scénář.
 
@@ -610,18 +613,18 @@ Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktual
 
     # Get source storage account information, not considering the data disks and os disks are in different accounts
     $sourceStorageAccountName = $sourceOSDisk.MediaLink.Host -split "\." | select -First 1
-    $sourceStorageKey = (Get-AzureStorageKey -StorageAccountName $sourceStorageAccountName).Primary
-    $sourceContext = New-AzureStorageContext –StorageAccountName $sourceStorageAccountName -StorageAccountKey $sourceStorageKey
+    $sourceStorageKey = (Get-AzStorageKey -StorageAccountName $sourceStorageAccountName).Primary
+    $sourceContext = New-AzStorageContext –StorageAccountName $sourceStorageAccountName -StorageAccountKey $sourceStorageKey
 
     # Create destination context
-    $destStorageKey = (Get-AzureStorageKey -StorageAccountName $DestStorageAccount).Primary
-    $destContext = New-AzureStorageContext –StorageAccountName $DestStorageAccount -StorageAccountKey $destStorageKey
+    $destStorageKey = (Get-AzStorageKey -StorageAccountName $DestStorageAccount).Primary
+    $destContext = New-AzStorageContext –StorageAccountName $DestStorageAccount -StorageAccountKey $destStorageKey
 
     # Create a container of vhds if it doesn't exist
-    if ((Get-AzureStorageContainer -Context $destContext -Name vhds -ErrorAction SilentlyContinue) -eq $null)
+    if ((Get-AzStorageContainer -Context $destContext -Name vhds -ErrorAction SilentlyContinue) -eq $null)
     {
         Write-Host "`n[WORKITEM] - Creating a container vhds in the destination storage account." -ForegroundColor Yellow
-        New-AzureStorageContainer -Context $destContext -Name vhds
+        New-AzStorageContainer -Context $destContext -Name vhds
     }
 
 
@@ -634,7 +637,7 @@ Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktual
         # from the same vhd blob.
         $ContinueAnswer = Read-Host "`n`t[Warning] You chose to copy data disks only. Moving VM requires removing the original VM (the disks and backing vhd files will NOT be deleted) so that the new VM can boot from the same vhd. This is an irreversible action. Do you wish to proceed right now? (Y/N)"
         If ($ContinueAnswer -ne "Y") { Write-Host "`n Exiting." -ForegroundColor Red;Exit }
-        $destOSVHD = Get-AzureStorageBlob -Blob $sourceOSVHD -Container vhds -Context $sourceContext
+        $destOSVHD = Get-AzStorageBlob -Blob $sourceOSVHD -Container vhds -Context $sourceContext
         Write-Host "`n[WORKITEM] - Removing the original VM (the vhd files are NOT deleted)." -ForegroundColor Yellow
         Remove-AzureVM -Name $SourceVMName -ServiceName $SourceServiceName
 
@@ -652,7 +655,7 @@ Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktual
         # copy the os disk vhd
         Write-Host "`n[WORKITEM] - Starting copying os disk $($disk.DiskName) at $(get-date)." -ForegroundColor Yellow
         $allDisksToCopy += @($sourceOSDisk)
-        $targetBlob = Start-AzureStorageBlobCopy -SrcContainer vhds -SrcBlob $sourceOSVHD -DestContainer vhds -DestBlob $sourceOSVHD -Context $sourceContext -DestContext $destContext -Force
+        $targetBlob = Start-AzStorageBlobCopy -SrcContainer vhds -SrcBlob $sourceOSVHD -DestContainer vhds -DestBlob $sourceOSVHD -Context $sourceContext -DestContext $destContext -Force
         $destOSVHD = $targetBlob
     }
 
@@ -664,7 +667,7 @@ Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktual
         $blobName = $disk.MediaLink.Segments[2]
         # copy all data disks
         Write-Host "`n[WORKITEM] - Starting copying data disk $($disk.DiskName) at $(get-date)." -ForegroundColor Yellow
-        $targetBlob = Start-AzureStorageBlobCopy -SrcContainer vhds -SrcBlob $blobName -DestContainer vhds -DestBlob $blobName -Context $sourceContext -DestContext $destContext -Force
+        $targetBlob = Start-AzStorageBlobCopy -SrcContainer vhds -SrcBlob $blobName -DestContainer vhds -DestBlob $blobName -Context $sourceContext -DestContext $destContext -Force
         # update the media link to point to the target blob link
         $disk.MediaLink = $targetBlob.ICloudBlob.Uri.AbsoluteUri
     }
@@ -683,7 +686,7 @@ Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktual
                 Continue
             }
             $blobName = $disk.MediaLink.Segments[2]
-            $copyState = Get-AzureStorageBlobCopyState -Blob $blobName -Container vhds -Context $destContext
+            $copyState = Get-AzStorageBlobCopyState -Blob $blobName -Container vhds -Context $destContext
             if ($copyState.Status -eq "Success")
             {
                 Write-Host "`n[Status] - Success for disk copy $($disk.DiskName) at $($copyState.CompletionTime)" -ForegroundColor Green

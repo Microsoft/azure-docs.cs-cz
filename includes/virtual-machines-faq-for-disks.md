@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5f1e728f7a13f763367abc3f380fb9fbdb67b5c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326455"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553386"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -189,7 +189,7 @@ Ne, standardní disky SSD nemají jednu instanci SLA k virtuálním počítačů
 
 ## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky
 
-** Je k dispozici žádný dopad migrace na spravované disky výkon?
+**Je k dispozici žádný dopad migrace na spravované disky výkon?**
 
 Migrace zahrnuje přesun Disk z jednoho umístění úložiště do druhého. To je orchestrované přes pozadí kopii dat, která může trvat několik hodin, obvykle méně než 24 hodin v závislosti na množství dat na discích. Během této doby může aplikace docházet vyšší než obvykle latence čtení a některé čtení můžete získat přesměrováno do původního umístění, může trvat déle. Během tohoto období není žádný vliv na latence zápisu.  
 

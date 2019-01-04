@@ -1,20 +1,17 @@
 ---
 title: Omezení ve službě Azure Database for MySQL
 description: Tento článek popisuje omezení ve službě Azure Database for MySQL, jako je třeba počet připojení a možnosti úložiště modul.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/6/2018
-ms.openlocfilehash: 89451122ff8cae33f1710fc1458fcd4277964e1f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 19fc20f21a57c2325254581c642b75c92c221fd9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090988"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536080"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení ve službě Azure Database for MySQL
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) pro databázového stroje MySQL.
@@ -39,7 +36,7 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 |Paměťově optimalizované| 32| 10000|
 
 Při připojení překročí limit, může se zobrazit následující chyba:
-> Chyba 1040 (08004): Příliš mnoho připojení
+> CHYBA 1040 (08004): Příliš mnoho připojení
 
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
@@ -56,8 +53,8 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 ## <a name="privilege-support"></a>Podpora oprávnění
 
 ### <a name="unsupported"></a>Nepodporovaný
-- DBA role: mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze. 
-- Oprávnění SUPERUŽIVATELE: podobně [SUPER oprávnění](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) je také omezen.
+- DBA role: Mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze. 
+- SUPER oprávnění: Podobně [SUPER oprávnění](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) je také omezen.
 
 ## <a name="data-manipulation-statement-support"></a>Podpora příkaz manipulace dat
 

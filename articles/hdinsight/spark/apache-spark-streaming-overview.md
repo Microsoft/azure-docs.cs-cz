@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583209"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652077"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Přehled streamování Apache Sparku
 
@@ -203,7 +203,7 @@ K dispozici v rozhraní API Spark Streaming posuvné okno funkce zahrnují okna,
 
 ## <a name="checkpointing"></a>Vytváření kontrolních bodů
 
-K zajištění odolnosti proti chybám a odolnost proti chybám, Spark Streaming spoléhá na vytváření kontrolních bodů k zajištění, že zpracování datových proudů můžete pokračovat bez přerušení, dokonce i v případě selhání uzlu. Spark v HDInsight, vytvoří kontrolní body do trvalého úložiště (Azure Storage nebo Azure Data Lake Store). Tyto kontrolní body ukládají metadata o datových proudů aplikaci, například konfigurace operací definovaných v aplikaci a všechny listy, které byly zařazeny do fronty, ale ještě nebyla zpracována. V některých případech se body obnovení bude obsahovat také ukládá data v Rdd rychleji opětovné sestavení stav dat od co je součástí sady Rdd spravuje Spark.
+K zajištění odolnosti proti chybám a odolnost proti chybám, Spark Streaming spoléhá na vytváření kontrolních bodů k zajištění, že zpracování datových proudů můžete pokračovat bez přerušení, dokonce i v případě selhání uzlu. Spark v HDInsight, vytvoří kontrolní body do trvalého úložiště (Azure Storage nebo Data Lake Storage). Tyto kontrolní body ukládají metadata o datových proudů aplikaci, například konfigurace operací definovaných v aplikaci a všechny listy, které byly zařazeny do fronty, ale ještě nebyla zpracována. V některých případech se body obnovení bude obsahovat také ukládá data v Rdd rychleji opětovné sestavení stav dat od co je součástí sady Rdd spravuje Spark.
 
 ## <a name="deploying-spark-streaming-applications"></a>Nasazení aplikací Spark Streaming
 

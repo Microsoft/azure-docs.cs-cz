@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 10cfaab44343a494dd654d0e930e12fa268ea2e3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bdbb9d7c8b129642616a934dcc3d226434e69a03
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992888"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558970"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 
@@ -42,11 +42,11 @@ Trigger časovače je k dispozici v [Microsoft.Azure.WebJobs.Extensions](https:/
 
 Podívejte se na příklad specifické pro jazyk:
 
-* [C#](#trigger---c-example)
-* [C# skript (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
+* [C#](#c-example)
+* [C# skript (.csx)](#c-script-example)
+* [F#](#f-example)
+* [JavaScript](#javascript-example)
+* [Java](#java-example)
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
@@ -230,7 +230,7 @@ Každé pole může mít jednu z následujících typů hodnot:
 |---------|---------|---------|
 |Konkrétní hodnota |<nobr>"0 5 *** *"</nobr>|na hh:05:00, kde je hh každou hodinu (jednou za hodinu)|
 |Všechny hodnoty (`*`)|<nobr>"0 * 5 ** *"</nobr>|na 5:mm: 00 každý den, kdy mm se každou minutu v hodině (60 za den)|
-|Rozsah (`-` operátor)|<nobr>"5-7 viz * * * * *"</nobr>|na hh:mm:05 hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3 x minuty)|  
+|Rozsah (`-` operátor)|<nobr>"5-7 viz *"</nobr>|na hh:mm:05 hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3 x minuty)|  
 |Sadu hodnot (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|na hh:mm:05 hh:mm:08 a hh:mm:10, kde je HH: mm každou minutu každou hodinu (3 x minuty)|
 |Hodnota intervalu (`/` operátor)|<nobr>"0 * / 5 *** *"</nobr>|mít hh:05:00 hh:10:00 hh:15:00, a tak dále prostřednictvím hh:55:00, kde je hh každou hodinu (12krát větší hodiny)|
 

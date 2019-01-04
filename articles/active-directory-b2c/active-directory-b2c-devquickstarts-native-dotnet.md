@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2e515ee61144dfe56d2b5a4fac97da81b0fa8c84
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834838"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606178"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Vytváření desktopových aplikací pro Windows
 Pomocí Azure Active Directory (Azure AD) B2C můžete přidat funkce správy identity výkonné samoobslužné služby do aplikace klasické pracovní plochy v několika krocích. Tento článek vám ukáže jak vytvořit aplikaci "seznam úkolů".NET Windows Presentation Foundation (WPF), která zahrnuje uživatelské registrace, přihlašování a správy profilů. Aplikace bude zahrnovat podporu registrace a přihlášení pomocí uživatelského jména nebo e-mailu. Bude také zahrnovat podporu registrace a přihlášení pomocí účtů na sociálních sítích, jako je například Facebook nebo Google.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
-Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta.  Adresář je kontejner pro všechny vaše uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](active-directory-b2c-get-started.md) předtím, než budete pokračovat.
+Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny vaše uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](active-directory-b2c-get-started.md) předtím, než budete pokračovat.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
-Dále musíte vytvořit aplikaci v adresáři B2C. Azure AD díky tomu získá informace potřebné k bezpečné komunikaci s vaší aplikací. Chcete-li vytvořit aplikaci, postupujte podle [těchto pokynů](active-directory-b2c-app-registration.md).  Ujistěte se, že:
+Dále musíte vytvořit aplikaci v adresáři B2C. Azure AD díky tomu získá informace potřebné k bezpečné komunikaci s vaší aplikací. Chcete-li vytvořit aplikaci, postupujte podle [těchto pokynů](active-directory-b2c-app-registration.md). Ujistěte se, že:
 
 * Zahrnout **nativního klienta** v aplikaci.
 * Kopírovat **identifikátor URI pro přesměrování** `urn:ietf:wg:oauth:2.0:oob`. To je výchozí URL pro tento příklad.
@@ -36,7 +36,7 @@ V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-
 * Zvolit v okně zprostředkovatelé identity buď **Registrace pomocí ID uživatele** nebo **Registrace pomocí e-mailu**.
 * Zvolit **Zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
 * Zvolit **Zobrazovaný název** a deklarace identity **ID objektu** jako deklarace identity aplikace v každé zásadě. Můžete zvolit i další deklarace identity.
-* Po vytvoření každé zásady si poznamenejte její **Název**. Měl by mít předponu `b2c_1_`.  Tyto názvy zásad budete potřebovat později.
+* Po vytvoření každé zásady si poznamenejte její **Název**. Měl by mít předponu `b2c_1_`. Tyto názvy zásad budete potřebovat později.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -51,7 +51,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 
 Dokončená aplikace je také [k dispozici jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) nebo ve větvi `complete` stejného úložiště.
 
-Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. `TaskClient` Projektu je desktopová aplikace WPF, kterou uživatel komunikuje. Pro účely tohoto kurzu volá úkol back endové webové rozhraní API, hostované v Azure, které ukládá seznam úkolů každého uživatele.  Není potřeba vytvářet webová rozhraní API, jsme již je spuštěna za vás.
+Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. `TaskClient` Projektu je desktopová aplikace WPF, kterou uživatel komunikuje. Pro účely tohoto kurzu volá úkol back endové webové rozhraní API, hostované v Azure, které ukládá seznam úkolů každého uživatele. Není potřeba vytvářet webová rozhraní API, jsme již je spuštěna za vás.
 
 Informace o tom, jak webové rozhraní API bezpečně ověřuje požadavky s využitím Azure AD B2C, podívejte se [webového rozhraní API Začínáme článku](active-directory-b2c-devquickstarts-api-dotnet.md).
 
@@ -96,7 +96,7 @@ protected async override void OnInitialized(EventArgs e)
 
     pca = new PublicClientApplication(Globals.clientId)
     {
-        // MSAL implements an in-memory cache by default.  Since we want tokens to persist when the user closes the app,
+        // MSAL implements an in-memory cache by default. Since we want tokens to persist when the user closes the app,
         // we've extended the MSAL TokenCache and created a simple FileCache in this app.
         UserTokenCache = new FileCache(),
     };
@@ -115,7 +115,7 @@ private async void SignUp(object sender, RoutedEventArgs e)
     {
         // Use the app's clientId here as the scope parameter, indicating that
         // you want a token to the your app's backend web API (represented by
-        // the cloud hosted task API).  Use the UiOptions.ForceLogin flag to
+        // the cloud hosted task API). Use the UiOptions.ForceLogin flag to
         // indicate to MSAL that it should show a sign-up UI no matter what.
         result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
                 string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
@@ -187,7 +187,7 @@ private async void EditProfile(object sender, RoutedEventArgs e)
 Ve všech těchto případech MSAL buď vrátí token v `AuthenticationResult` nebo vyvolá výjimku. Pokaždé, když získáváte token z MSAL, můžete použít `AuthenticationResult.User` objektu k aktualizaci dat uživatele v aplikacích, jako je například uživatelské rozhraní. ADAL také ukládá do mezipaměti tokenu pro použití v ostatních částech aplikace.
 
 ### <a name="check-for-tokens-on-app-start"></a>Kontrolovat tokeny při spuštění aplikace
-Můžete také použití MSAL k udržovat přehled o stavu přihlášení uživatele.  V této aplikaci chceme, aby uživatel zůstane přihlášený i po zavření aplikace a znovu ho otevřete.  Vrátí zpět do `OnInitialized` přepsat, použijte pro MSAL `AcquireTokenSilent` metodu ke kontrole s mezipamětí tokenů:
+Můžete také použití MSAL k udržovat přehled o stavu přihlášení uživatele. V této aplikaci chceme, aby uživatel zůstane přihlášený i po zavření aplikace a znovu otevřete. Vrátí zpět do `OnInitialized` přepsat, použijte pro MSAL `AcquireTokenSilent` metodu ke kontrole s mezipamětí tokenů:
 
 ```csharp
 AuthenticationResult result = null;
@@ -209,7 +209,7 @@ catch (MsalException ex)
 {
     if (ex.ErrorCode == "failed_to_acquire_token_silently")
     {
-        // There are no tokens in the cache.  Proceed without calling the To Do list service.
+        // There are no tokens in the cache. Proceed without calling the To Do list service.
     }
     else
     {
@@ -226,7 +226,7 @@ catch (MsalException ex)
 ```
 
 ## <a name="call-the-task-api"></a>Volání rozhraní API úkolů
-Knihovna MSAL mají nyní používají ke spouštění zásad a získat tokeny.  Pokud chcete použít jeden tyto tokeny pro volání rozhraní API úkolů, můžete opět pomocí vaší MSAL `AcquireTokenSilent` metodu ke kontrole s mezipamětí tokenů:
+Knihovna MSAL mají nyní používají ke spouštění zásad a získat tokeny. Pokud chcete použít jeden tyto tokeny pro volání rozhraní API úkolů, můžete opět pomocí vaší MSAL `AcquireTokenSilent` metodu ke kontrole s mezipamětí tokenů:
 
 ```csharp
 private async void GetTodoList()
@@ -284,7 +284,7 @@ Při volání `AcquireTokenSilentAsync(...)` úspěšné a nebude nalezen token 
 ```
 
 ## <a name="sign-the-user-out"></a>Odhlásit uživatele
-Nakonec můžete použití MSAL k ukončení relace uživatele s aplikací, když uživatel vybere **Odhlásit**.  Při použití MSAL toho dosahuje tím, že zrušíte všechny tokeny z mezipamětí tokenů:
+Nakonec můžete použití MSAL k ukončení relace uživatele s aplikací, když uživatel vybere **Odhlásit**. Při použití MSAL toho dosahuje tím, že zrušíte všechny tokeny z mezipamětí tokenů:
 
 ```csharp
 private void SignOut(object sender, RoutedEventArgs e)
@@ -306,7 +306,7 @@ private void SignOut(object sender, RoutedEventArgs e)
 ```
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
-Nakonec sestavte a spusťte ukázku.  Zaregistrujte se pro aplikaci s použitím e-mailové adresy nebo uživatelského jména. Odhlaste se a znovu se přihlásit pod stejným uživatelem. Upravte profil daného uživatele. Odhlaste se a zaregistrujte s použitím jiného uživatele.
+Nakonec sestavte a spusťte ukázku. Zaregistrujte se pro aplikaci s použitím e-mailové adresy nebo uživatelského jména. Odhlaste se a znovu se přihlásit pod stejným uživatelem. Upravte profil daného uživatele. Odhlaste se a zaregistrujte s použitím jiného uživatele.
 
 ## <a name="add-social-idps"></a>Přidání sociálních sítí zprostředkovatelů identity
 V současné době aplikace podporuje pouze registrace uživatele a přihlašování, použít **místní účty**. Toto jsou účty uložené v adresáři B2C, které používají uživatelské jméno a heslo. Pomocí Azure AD B2C, můžete přidat podporu pro jiných zprostředkovatelů identity (IDP) bez změny vašich kód.

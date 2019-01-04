@@ -1,27 +1,24 @@
 ---
 title: Migrace databáze MySQL pomocí výpisu a obnovení ve službě Azure Database for MySQL
 description: Tento článek vysvětluje dvě běžné způsoby, jak zálohovat a obnovit databáze ve službě Azure Database for MySQL pomocí nástroje, jako je mysqldump aplikace MySQL Workbench a phpmyadmin zobrazuje.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/02/2018
-ms.openlocfilehash: f3e38bb3e7e4f2c58f1ae955878747ebc7d386f1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e79c83ecb17c4dcd11f7ccbecded59e7d1d13dfd
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984482"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542457"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.
 Tento článek vysvětluje dvě běžné způsoby, jak zálohovat a obnovit databáze ve službě Azure Database for MySQL
 - Výpis a obnovení z příkazového řádku (pomocí mysqldump) 
 - Výpisu a obnovení pomocí phpmyadmin zobrazuje 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Pro jednotlivé kroky v této příručce s postupy, musíte mít:
 - [Vytvoření Azure Database for MySQL server - webu Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) na počítači nainstalovaný nástroj příkazového řádku.

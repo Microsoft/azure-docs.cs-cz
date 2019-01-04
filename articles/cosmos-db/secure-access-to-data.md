@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c203334b0ea1b47aa1884155f477e34bd8f2e1db
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878320"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724755"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpečení přístupu k datům služby Azure Cosmos DB
 Tento článek obsahuje základní informace o zabezpečení přístupu k datům uloženým v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -128,7 +128,7 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Oprávnění prostředek Cosmos DB je přidružená k uživateli služby Cosmos DB.  Každý uživatel může obsahovat nula nebo více oprávnění služby Cosmos DB.  Prostředek oprávnění poskytuje přístup k tokenu zabezpečení, který uživatel potřebuje při pokusu o přístup k prostředku konkrétní aplikaci.
 Existují dvě úrovně přístupu k dispozici, které mohou být k dispozici prostředek oprávnění:
 
-* All: Uživatel má oprávnění k úplnému prostředku.
+* Všechny: Uživatel nemá oprávnění k úplnému prostředku.
 * Čtení: Uživatel může jenom číst obsah prostředek, ale nemůže provádět zápis, aktualizace nebo odstranění operací s prostředkem.
 
 > [!NOTE]
@@ -188,10 +188,10 @@ Přidat přístup čtenáře účtu služby Azure Cosmos DB s vaším uživatels
 Entita může načíst prostředky Azure Cosmos DB.
 
 ## <a name="delete-or-export-user-data"></a>Odstranění nebo export dat uživatele
-Azure Cosmos DB umožňuje hledat, vybrat, upravit a odstranit všechny osobní údaje, které jsou umístěné v databázi nebo kolekce. Azure Cosmos DB poskytuje rozhraní API vyhledat a odstranit osobní údaje ale, je vaší odpovědností, abyste pomocí rozhraní API a definování logiku potřebnou k vymazání osobních údajů. Každé vícemodelová rozhraní API (rozhraní SQL API, rozhraní MongoDB API, Gremlin API, rozhraní Cassandra API, rozhraní Table API služby) poskytuje různé jazykové sady SDK, které obsahují metody k vyhledání a odstranění osobních údajů. Můžete také povolit [uvedení na live (TTL)](time-to-live.md) funkci, která automaticky odstraní data za určité období, bez jakýchkoli dalších nákladů.
+Azure Cosmos DB umožňuje hledat, vybrat, upravit a odstranit všechny osobní údaje, které jsou umístěné v databázi nebo kolekce. Azure Cosmos DB poskytuje rozhraní API vyhledat a odstranit osobní údaje ale, je vaší odpovědností, abyste pomocí rozhraní API a definování logiku potřebnou k vymazání osobních údajů. Každé vícemodelová rozhraní API (SQL, MongoDB, Gremlin, Cassandra, tabulku) poskytuje různé jazykové sady SDK, které obsahují metody k vyhledání a odstranění osobních údajů. Můžete také povolit [uvedení na live (TTL)](time-to-live.md) funkci, která automaticky odstraní data za určité období, bez jakýchkoli dalších nákladů.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o zabezpečení databáze Cosmos DB najdete v tématu [Cosmos DB: databáze zabezpečení](database-security.md).
+* Další informace o zabezpečení databáze Cosmos DB najdete v tématu [Cosmos DB: Zabezpečení databáze](database-security.md).
 * Zjistěte, jak vytvořit službu Azure Cosmos DB autorizačních tokenech, najdete v článku [řízení přístupu na prostředky Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

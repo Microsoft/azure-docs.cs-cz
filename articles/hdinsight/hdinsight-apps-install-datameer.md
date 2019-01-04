@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9e9ccb1ba3d19e0240df869dfea1e27ac4124c34
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 947abea50685b04c3500a13a950375c32547efaf
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498765"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652961"
 ---
 # <a name="install-published-application---datameer"></a>Instalace publikované aplikace – Datameer
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak nainstalovat a spustit [Datameer](https://www.datam
 
 ## <a name="about-datameer"></a>O Datameer
 
-Aplikace Datameer je nativní aplikace pro Hadoop platformy, rozšíření stávajících funkcí Azure HDInsight a poskytuje rychlou integraci, přípravy a analýzy strukturovanými i nestrukturovanými daty. Datameer mají přístup k více než 70 zdrojům a formáty: strukturovaných, částečně strukturovaných a nestrukturovaných. Můžete přímo nahrát data nebo použijte jejich jedinečných dat odkazy k získání dat na vyžádání. Datameer pro samoobslužné funkce a rozhraní strukturu tabulky snižuje složitost technologií pro velké objemy dat a zrychluje čas insight. Rozhraní tabulka poskytuje jednoduchý mechanismus pro zadávání deklarativní vzorců, které jsou následně převedeny na optimalizované úlohy systému Hadoop. Datameer a business intelligence (BI) a znalosti Excelu můžete pomocí Hadoopu v cloudu rychle. Další informace najdete v tématu [Datameer dokumentaci](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
+Aplikace Datameer je nativní aplikace pro Hadoop platformy, rozšíření stávajících funkcí Azure HDInsight a poskytuje rychlou integraci, přípravy a analýzy strukturovanými i nestrukturovanými daty. Datameer mají přístup k více než 70 zdrojům a formáty: strukturovaných, částečně strukturovaných a nestrukturovaných. Můžete přímo nahrát data nebo použijte jejich jedinečných dat odkazy k získání dat na vyžádání. Datameer pro samoobslužné funkce a rozhraní strukturu tabulky snižuje složitost technologií pro velké objemy dat a zrychluje čas insight. Rozhraní tabulka poskytuje jednoduchý mechanismus pro zadávání deklarativní vzorců, které jsou následně převedeny na optimalizované úlohy systému Hadoop. Datameer a business intelligence (BI) a znalosti Excelu můžete pomocí Hadoopu v cloudu rychle. Další informace najdete v tématu [Datameer dokumentaci](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,9 +106,9 @@ Blahopřejeme! Vytvořili jste vizualizace vašich dat bez psaní kódu. Nyní m
 
 ## <a name="next-steps"></a>Další postup
 
-* [Dokumentace ke službě Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
+* [Dokumentace ke službě Datameer](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft).
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
-* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
-* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
+* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do Azure Marketplace.
+* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Zjistěte, jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): Další informace o použití akce skriptu k instalaci dalších aplikací.
 * [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Další informace o použití prázdných hraničních uzlů pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikací HDInsight.

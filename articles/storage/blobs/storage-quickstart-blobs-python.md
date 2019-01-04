@@ -6,16 +6,16 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/14/2018
+ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: dd304bd4a53094605149483c0996cd5f12040a84
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 94e9d19302c4a51d1401a88248431f237bf59758
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713176"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743494"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
+# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Pythonu
 
 V tomto rychlém startu zjistíte, jak pomocí Pythonu nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
@@ -53,7 +53,7 @@ Tato ukázka vytvoří testovací soubor ve složce *Dokumenty*. Ukázkový prog
 
 Nejprve nainstalujte závislosti spuštěním příkazu `pip install`:
 
-    pip install azure-storage
+    pip install azure-storage-blob
 
 Potom spusťte ukázku. Zobrazí se zprávy podobné následujícímu výstupu:
   

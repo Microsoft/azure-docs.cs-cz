@@ -4,17 +4,17 @@ description: V tomto rychlém startu zjistěte, jak vytvořit zařízení IoT Ed
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/14/2018
+ms.date: 12/31/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6479bfbb81468649108ed648035122e4623041e3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: af95c2a5182a8adca9aeb40f047c7767413b9b1c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555502"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973665"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge k Linuxovému x64 zařízení
 
@@ -60,6 +60,8 @@ Zařízení IoT Edge:
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
+
+   Může trvat několik minut pro vytvoření a spuštění nového virtuálního počítače. 
 
    Při vytváření nového virtuálního počítače, poznamenejte si, **publicIpAddress**, který je součástí výstupu příkazu create. Tato veřejná IP adresa umožňuje připojení k virtuálnímu počítači dále v tomto rychlém startu.
 
@@ -196,12 +198,12 @@ Proces démon zabezpečení se nainstaluje jako systémová služba, aby se modu
    sudo systemctl restart iotedge
    ```
 
->[!TIP]
->Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Vaše oprávnění se automaticky aktualizují, jakmile se po instalaci modulu runtime IoT Edge odhlásíte z počítače a poprvé se k němu opět přihlásíte. Do té doby před příkazy používejte **sudo**. 
-
 ### <a name="view-the-iot-edge-runtime-status"></a>Zobrazení stavu modulu runtime IoT Edge
 
 Ověřte, že se modul runtime úspěšně nainstaloval a nakonfiguroval.
+
+>[!TIP]
+>Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Vaše oprávnění se automaticky aktualizují, jakmile se po instalaci modulu runtime IoT Edge odhlásíte z počítače a poprvé se k němu opět přihlásíte. Do té doby před příkazy používejte **sudo**. 
 
 1. Ověřte, že Edge Security Daemon běží jako systémová služba.
 
@@ -246,15 +248,18 @@ Znovu otevřete příkazový řádek na vašem zařízení IoT Edge. Zkontrolujt
 
    ![Zobrazení tří modulů na zařízení](./media/quickstart-linux/iotedge-list-2.png)
 
-Prohlédněte si zprávy, které posílá modul tempSensor:
+Zobrazení zpráv odesílány z modulu senzoru teploty:
 
    ```bash
-   sudo iotedge logs tempSensor -f
+   sudo iotedge logs SimulatedTemperatureSensor -f
    ```
 
-![Zobrazení dat z modulu](./media/quickstart-linux/iotedge-logs.png)
+   >[!TIP]
+   >Při odkazu na modul názvy jsou malá a velká písmena příkazy IoT Edge.
 
-Pokud je poslední řádek protokolu `Using transport Mqtt_Tcp_Only`, může modul senzoru teploty čekat na připojení k Edge Hubu. Zkuste modul ukončit a nechat agenta Edge, aby ho restartoval. K ukončení použijte příkaz `sudo docker stop tempSensor`.
+   ![Zobrazení dat z modulu](./media/quickstart-linux/iotedge-logs.png)
+
+Modul senzoru teploty může čekat pro připojení k Centrum Edge, pokud je na posledním řádku naleznete v protokolu **pomocí přenosu Mqtt_Tcp_Only**. Zkuste zastavení modulu, takže se Agent Edge, restartujte ji. Pomocí příkazu, můžete zastavit jeho `sudo docker stop SimulatedTemperatureSensor`.
 
 Můžete rovněž sledovat zprávy dorazí ve službě IoT hub pomocí [rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit). 
 
@@ -288,10 +293,10 @@ Při odebrání modulu runtime IoT Edge se zastaví kontejnery, které vytvořil
    sudo docker ps -a
    ```
 
-Odstraňte kontejnery, které na vašem zařízení vytvořil modul runtime IoT Edge. Změňte název kontejneru tempSensor, pokud jste ho pojmenovali nějak jinak. 
+Odstraňte kontejnery, které na vašem zařízení vytvořil modul runtime IoT Edge. 
 
    ```bash
-   sudo docker rm -f tempSensor
+   sudo docker rm -f SimulatedTemperatureSensor
    sudo docker rm -f edgeHub
    sudo docker rm -f edgeAgent
    ```

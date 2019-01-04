@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 600bec9e4cfe356dcd28d489707d20ab47f5b013
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876515"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753638"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -119,9 +119,9 @@ V [Průzkumníka metrik](../application-insights/app-insights-metrics-explorer.m
 
 ![Průzkumník metrik](media/functions-monitoring/metrics-explorer.png)
 
-Na [selhání](../application-insights/app-insights-asp-net-exceptions.md) kartu, můžete vytvořit grafy a výstrah na základě selhání funkce a server výjimky. **Název operace** je název funkce. Selhání v závislosti se nezobrazují, Pokud implementujete [vlastní telemetrii](#custom-telemetry-in-c-functions) pro závislosti.
+Na [selhání](../azure-monitor/app/asp-net-exceptions.md) kartu, můžete vytvořit grafy a výstrah na základě selhání funkce a server výjimky. **Název operace** je název funkce. Selhání v závislosti se nezobrazují, Pokud implementujete [vlastní telemetrii](#custom-telemetry-in-c-functions) pro závislosti.
 
-![Počet selhání](media/functions-monitoring/failures.png)
+![Selhání](media/functions-monitoring/failures.png)
 
 Na [výkonu](../application-insights/app-insights-performance-counters.md) kartu, můžete analyzovat problémy s výkonem.
 
@@ -137,7 +137,7 @@ Na [výkonu](../application-insights/app-insights-performance-counters.md) kartu
 
 ## <a name="query-telemetry-data"></a>Dotazování na telemetrická data
 
-[Application Insights Analytics](../application-insights/app-insights-analytics.md) vám umožní přístup ke všem telemetrických dat ve formě tabulky v databázi. Analytics poskytuje dotazovací jazyk k extrakci, manipulaci a vizualizaci dat.
+[Application Insights Analytics](../azure-monitor/app/analytics.md) vám umožní přístup ke všem telemetrických dat ve formě tabulky v databázi. Analytics poskytuje dotazovací jazyk k extrakci, manipulaci a vizualizaci dat.
 
 ![Vyberte Analytics](media/functions-monitoring/select-analytics.png)
 
@@ -158,7 +158,7 @@ Tabulky, které jsou k dispozici jsou uvedeny v **schématu** kartu v levém pod
 * **Požadavky** – jeden pro každé vyvolání funkce.
 * **výjimky** – všechny výjimky vyvolané modulem runtime.
 * **customMetrics** – počet úspěšných a neúspěšných volání, míru úspěšnosti a doba trvání.
-* **customEvents** -události sledován pomocí funkce modulu runtime, například: požadavky HTTP, které aktivují funkce.
+* **customEvents** -události sledován pomocí funkce modulu runtime, například:  Požadavky HTTP, které aktivují funkce.
 * **čítače výkonu** – informace o výkonu, které funkce jsou spuštěny na servery.
 
 Ostatní tabulky jsou pro testy dostupnosti a/prohlížeče klienta telemetrie. Můžete implementovat vlastní telemetrii můžete přidat do nich.
@@ -439,7 +439,7 @@ Tento kód se o alternativu k volání `trackMetric` pomocí [sady Node.js SDK p
 
 ## <a name="custom-telemetry-in-c-functions"></a>Vlastní telemetrická data v funkcí jazyka C#
 
-Můžete použít [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) balíčku NuGet k odesílání vlastních telemetrických dat do služby Application Insights. Následující C# příklad používá [vlastní telemetrii API](../application-insights/app-insights-api-custom-events-metrics.md). V příkladu se pro knihovny tříd .NET, ale kódu Application Insights je stejný pro skript jazyka C#.
+Můžete použít [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) balíčku NuGet k odesílání vlastních telemetrických dat do služby Application Insights. Následující C# příklad používá [vlastní telemetrii API](../azure-monitor/app/api-custom-events-metrics.md). V příkladu se pro knihovny tříd .NET, ale kódu Application Insights je stejný pro skript jazyka C#.
 
 ### <a name="version-2x"></a>Verze 2.x
 
@@ -671,7 +671,7 @@ PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-A
 PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-Další informace najdete v tématu [jak streamování protokolů](../app-service/web-sites-enable-diagnostic-log.md#streamlogs).
+Další informace najdete v tématu [jak streamování protokolů](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
 
 ### <a name="viewing-log-files-locally"></a>Zobrazení protokolů místně
 

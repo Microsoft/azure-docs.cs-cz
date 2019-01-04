@@ -1,76 +1,71 @@
 ---
-title: Node.Js s využitím Angular aplikace pomocí rozhraní API MongoB (část5)
+title: Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB - připojit ke službě Cosmos DB pomocí Mongoose
 titleSuffix: Azure Cosmos DB
-description: Pátá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
+description: Tento kurz popisuje, jak vytvořit aplikaci Node.js pomocí Angular a službou Express pro správu dat uložených ve službě Cosmos DB. V této části se pro připojení ke službě Azure Cosmos DB pomocí Mongoose.
 author: johnpapa
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 0b0ebbbf4f511d033f0724b9b97a32f408cb5c74
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
+ms.openlocfilehash: 03b1f1d5fa1320f08059ed755f6f4f7d1c08d35e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726180"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793697"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-connect-to-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – část 5: Připojení ke službě Azure Cosmos DB 
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB - připojit ke službě Cosmos DB pomocí Mongoose
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [nakonfigurovaný pro rozhraní MongoDB API účet služby Cosmos](mongodb-introduction.md).
+Tento vícedílný kurz ukazuje, jak vytvořit aplikaci Node.js s Express a Angular a připojte ho k němu vaše [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md). Tento článek popisuje část 5 tohoto kurzu a staví na [část 4](tutorial-develop-mongodb-nodejs-part4.md).
 
-Pátá část kurzu vychází z [části 4](tutorial-develop-mongodb-nodejs-part4.md) a zabývá se následujícími úlohami:
+V této části kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Připojení ke službě Azure Cosmos DB pomocí Mongoose
-> * Získání informací o připojovacím řetězci služby Cosmos DB
-> * Vytvoření modelu hero
-> * Vytvoření služby hero pro získání dat hrdinů
-> * Místní spuštění aplikace
+> * Připojení ke službě Cosmos DB pomocí Mongoose.
+> * Získejte připojovací řetězec Cosmos DB.
+> * Vytvoření modelu Hero.
+> * Vytvoření služby Hero pro získání dat hrdinů.
+> * Spusťte aplikaci místně.
 
-## <a name="video-walkthrough"></a>Video s návodem
-
-Pokud se chcete rychle seznámit s kroky popsanými v tomto dokumentu, můžete se podívat na následující video: 
-
-> [!VIDEO https://www.youtube.com/embed/sI5hw6KPPXI]
-
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v [části 4](tutorial-develop-mongodb-nodejs-part4.md) tohoto kurzu.
+* Než začnete tento kurz, proveďte kroky v [část 4](tutorial-develop-mongodb-nodejs-part4.md).
 
-> [!TIP]
-> Tento kurz vás postupně provede jednotlivými kroky vytvoření aplikace. Pokud si chcete stáhnout dokončený projekt, v [úložišti angular-cosmosdb](https://github.com/Azure-Samples/angular-cosmosdb) na GitHubu můžete získat hotovou aplikaci.
+* Tento kurz vyžaduje, abyste spustili Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [nainstalovat rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="use-mongoose-to-connect-to-azure-cosmos-db"></a>Připojení ke službě Azure Cosmos DB pomocí Mongoose
+* Tento kurz vás provede kroky k vytvoření aplikace krok za krokem. Pokud si chcete stáhnout dokončený projekt, v [úložišti angular-cosmosdb](https://github.com/Azure-Samples/angular-cosmosdb) na GitHubu můžete získat hotovou aplikaci.
 
-1. Nainstalujte modul npm mongoose, což je rozhraní API, které slouží ke komunikaci s MongoDB.
+## <a name="use-mongoose-to-connect"></a>Připojení pomocí Mongoose
+
+Mongoose je objektu data modelování knihovny (ODM) pro MongoDB a Node.js. Připojení k vašemu účtu Azure Cosmos DB můžete pomocí Mongoose. Pomocí následujících kroků nainstalujte Mongoose a připojte se ke službě Azure Cosmos DB:
+
+1. Nainstalujte modul npm mongoose, což je rozhraní API, který se používá ke komunikaci s MongoDB.
 
     ```bash
     npm i mongoose --save
     ```
 
-2. Teď vytvořte ve složce **server** nový soubor **mongo.js**. Do tohoto souboru přidáte podrobnosti o připojení k vašemu účtu služby Cosmos DB.
+1. V **server** složce vytvořte soubor s názvem **mongo.js**. Podrobnosti připojení účtu služby Azure Cosmos DB přidáte do tohoto souboru.
 
-3. Do souboru **mongo.js** zkopírujte následující kód. Tento kód:
+1. Zkopírujte následující kód do **mongo.js** souboru. Kód poskytuje následující funkce:
 
     * Vyžaduje Mongoose.
-
-    * Přepíše příslib Mongo tak, aby se používal základní příslib předdefinovaný v ES6/ES2015 a novějších verzích.
-
-    * Zavolá soubor env, který umožňuje nastavit určité chování v závislosti na tom, jestli jste v přípravném, produkčním nebo vývojovém prostředí. Tento soubor vytvoříte v další části.
-
-    * Zahrne připojovací řetězec MongoDB, který je nastavený v souboru env.
-
+    * Přepíše příslib Mongo tak používal základní příslib, která je integrována do ES6/ES2015 a novějších verzích.
+    * Volání soubor env, který umožňuje nastavit určité na základě toho, jestli jste v pracovní produkčního prostředí a vývoj. Tento soubor vytvoříte v další části.
+    * Obsahuje připojovací řetězec MongoDB, jež je nastavena v souboru env.
     * Vytvoří funkci connect, která volá Mongoose.
 
     ```javascript
     const mongoose = require('mongoose');
     /**
      * Set to Node.js native promises
-     * Per https://mongoosejs.com/docs/promises.html
+     * Per http://mongoosejs.com/docs/promises.html
      */
     mongoose.Promise = global.Promise;
 
@@ -90,9 +85,9 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     };
     ```
     
-4. V podokně Průzkumník vytvořte ve složce **server** složku **environment** a ve složce **environment** vytvořte nový soubor **environment.js**.
+1. V podokně Průzkumník pod **server**, vytvořte složku s názvem **prostředí**. V **prostředí** složce vytvořte soubor s názvem **environment.js**.
 
-5. Ze souboru mongo.js víme, že potřebujeme zahrnout `dbName`, `key` a `cosmosPort`, proto do souboru **environment.js** zkopírujte následující kód.
+1. Ze souboru mongo.js musíme zahrnout hodnoty `dbName`, `key`a `cosmosPort` parametry. Zkopírujte následující kód do **environment.js** souboru:
 
     ```javascript
     // TODO: replace if yours are different
@@ -104,39 +99,45 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     };
     ```
 
-## <a name="get-the-connection-string-information"></a>Získání informací o připojovacím řetězci
+## <a name="get-the-connection-string"></a>Získání připojovacího řetězce
 
-1. V souboru **environment.js** změňte hodnotu `port` na 10255. (Port služby Cosmos DB najdete na webu Azure Portal.)
+Pro připojení aplikace ke službě Azure Cosmos DB, musíte aktualizovat nastavení konfigurace pro aplikaci. Pomocí následujících kroků aktualizujte nastavení: 
+
+1. Na webu Azure Portal získejte číslo portu, název účtu služby Azure Cosmos DB a hodnoty primárního klíče pro váš účet Azure Cosmos DB.
+
+1. V **environment.js** souboru, změňte hodnotu vlastnosti `port` na 10255. 
 
     ```javascript
     const port = 10255;
     ```
 
-2. V souboru **environment.js** změňte hodnotu `accountName` na název účtu služby Azure Cosmos DB, který jste vytvořili v [kroku 4](tutorial-develop-mongodb-nodejs-part4.md). 
+1. V **environment.js** souboru, změňte hodnotu vlastnosti `accountName` k názvu účtu Azure Cosmos DB, který jste vytvořili v [část 4](tutorial-develop-mongodb-nodejs-part4.md) tohoto kurzu. 
 
-3. Načtěte primární klíč pro účet služby Azure Cosmos DB pomocí následujícího příkazu rozhraní příkazového řádku v okně terminálu: 
+1. Načtěte primární klíč pro účet služby Azure Cosmos DB pomocí následujícího příkazu rozhraní příkazového řádku v okně terminálu: 
 
     ```azure-cli-interactive
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
     ```    
     
-    * `<cosmosdb-name>` je název účtu služby Azure Cosmos DB, který jste vytvořili v [kroku 4](tutorial-develop-mongodb-nodejs-part4.md).
+    \<cosmosdb-name > je název účtu Azure Cosmos DB, který jste vytvořili v [část 4](tutorial-develop-mongodb-nodejs-part4.md) tohoto kurzu.
 
-4. Zkopírujte primární klíč do souboru environment.js jako hodnotu `key`.
+1. Zkopírujte primární klíč do **environment.js** soubor jako `key` hodnotu.
 
-    Vaše aplikace teď má všechny informace, které potřebuje pro připojení ke službě Azure Cosmos DB. Tyto informace můžete získat také na portálu. Další informace najdete v tématu popisujícím [získání připojovacího řetězce MongoDB pro přizpůsobení](connect-mongodb-account.md#GetCustomConnection). Uživatelské jméno na portálu odpovídá hodnotě dbName v souboru environment.js. 
+Aplikace teď má všechny informace potřebné k připojení ke službě Azure Cosmos DB. 
 
 ## <a name="create-a-hero-model"></a>Vytvoření modelu Hero
 
-1. V podokně Průzkumník vytvořte ve složce **server** soubor **hero.model.js**.
+Dále je třeba definovat schéma data uložená ve službě Azure Cosmos DB tak, že definujete soubor modelu. Pomocí následujících kroků vytvořte _Hero model_ , který definuje schéma dat:
 
-2. Do souboru **hero.model.js** zkopírujte následující kód. Tento kód poskytuje následující funkce:
+1. V podokně Průzkumník pod **server** složce vytvořte soubor s názvem **hero.model.js**.
+
+1. Zkopírujte následující kód do **hero.model.js** souboru. Kód poskytuje následující funkce:
 
    * Vyžaduje Mongoose.
    * Vytvoří nové schéma s ID, jménem (name) a slavným výrokem (saying).
-   * Vytvoří model s použitím tohoto schématu.
+   * Vytvoří model s použitím schématu.
    * Vyexportuje model. 
-   * Pojmenuje kolekci Heroes (místo Heros, což by byl výchozí název kolekce podle pravidel pojmenování v množném čísle v Mongoose).
+   * Pojmenuje kolekci **hrdinů** (místo **Heros**, což je výchozí název kolekce podle pravidel pojmenování množném čísle Mongoose).
 
    ```javascript
    const mongoose = require('mongoose');
@@ -161,15 +162,17 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 ## <a name="create-a-hero-service"></a>Vytvoření služby Hero
 
-1. V podokně Průzkumník vytvořte ve složce **server** soubor **hero.service.js**.
+Po vytvoření modelu hero, třeba definovat službu, která tato data číst a provést seznamu, vytvářet, odstranit a operace aktualizace. Pomocí následujících kroků vytvořte _službu Hero_ , zadávání dotazů na data ze služby Azure Cosmos DB:
 
-2. Do souboru **hero.service.js** zkopírujte následující kód. Tento kód:
+1. V podokně Průzkumník pod **server** složce vytvořte soubor s názvem **hero.service.js**.
 
-   * Získá model, který jste právě vytvořili.
-   * Připojí se k databázi.
-   * Vytvoří proměnnou docquery, která pomocí metody hero.find definuje dotaz, který vrátí všechny hrdiny.
-   * Pomocí metody docquery.exec spustí dotaz za účelem získání seznamu všech hrdinů se stavem odpovědi 200. 
-   * Pokud je stav 500, odešle zpět chybovou zprávu.
+1. Zkopírujte následující kód do **hero.service.js** souboru. Kód poskytuje následující funkce:
+
+   * Získá model, který jste vytvořili.
+   * Se připojí k databázi.
+   * Vytvoří `docquery` proměnné, která se používá `hero.find` metoda definovat dotaz, který vrátí všechny hrdiny.
+   * Spustí se dotaz `docquery.exec` funkce se příslib k získání seznamu všech hrdinů, kde je stav odpovědi 200. 
+   * Pokud je stav 500 odešle zpět chybovou zprávu.
    * Protože používáme moduly, získá hrdiny. 
 
    ```javascript
@@ -195,9 +198,11 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
    };
    ```
 
-## <a name="add-the-hero-service-to-routesjs"></a>Přidání služby hero do souboru routes.js
+## <a name="configure-routes"></a>Nakonfigurujte trasy
 
-1. Ve Visual Studio Code v souboru **routes.js** okomentujte funkci `res.send`, která odesílá ukázková data hrdinů, a místo ní přidejte řádek pro zavolání funkce `heroService.getHeroes`.
+V dalším kroku potřebujete nastavit trasy pro zpracování adresy URL pro get, vytváření, čtení a odstranit zastaralé požadavky. Zadejte funkce zpětného volání metody směrování (také nazývané _funkce obslužné rutiny_). Tyto funkce se volá se, když aplikace obdrží požadavek na určeném koncovém bodě a metodou HTTP. K přidání služby Hero a definování trasy, postupujte následovně:
+
+1. Ve Visual Studio Code v **routes.js** souboru, okomentujte `res.send` funkci, která odesílá ukázková data hrdinů. Přidejte řádek pro zavolání `heroService.getHeroes` namísto toho funkci.
 
     ```javascript
     router.get('/heroes', (req, res) => {
@@ -208,39 +213,43 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     });
     ```
 
-2. V souboru **routes.js** vyžádejte službu hero:
+1. V **routes.js** souboru `require` službu hero:
 
     ```javascript
     const heroService = require('./hero.service'); 
     ```
 
-3. V souboru **hero.service.js** aktualizujte následujícím způsobem funkci getHeroes tak, aby přijímala parametry `req` a `res`:
+1. V **hero.service.js** soubor, aktualizovat `getHeroes` funkci `req` a `res` parametry následujícím způsobem:
 
     ```javascript
     function getHeroes(req, res) {
     ```
 
-    Pojďme si krátce projít a zkontrolovat řetěz volání, který tu máme. Nejprve přejdeme do souboru `index.js`, který nastaví server Node a upozornění na nastavování a definování tras. Váš soubor routes.js pak sdělí službě hero, že má načíst vaše funkce, jako je getHeroes, a předat požadavek a odpověď. Soubor hero.service.js teď vezme model a připojí se k Mongo a pak při zavolání provede funkci getHeroes a vrátí odpověď 200. Ta pak projde řetězem zpět. 
+Pojďme si krátce ke kontrole a provede předchozí kód. Nejprve přejdeme do souboru index.js, který nastaví node server. Všimněte si, že nastaví a definuje trasy. V dalším kroku souboru routes.js hovoří o službě hero a že má získat vaše funkce, jako je **getHeroes**a předat žádost a odpověď. Soubor hero.service.js získá model a připojí se k Mongo. Potom se provede **getHeroes** když jsme volat, a vrátí zpět odpověď 200. 
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-1. Pojďme znovu spustit aplikaci. Ve Visual Studio Code uložte všechny provedené změny, klikněte na tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) na levé straně a pak klikněte na tlačítko **Spustit ladění** ![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
+V dalším kroku spusťte aplikaci pomocí následujících kroků:
 
-3. Teď přepněte do prohlížeče, otevřete Vývojářské nástroje a kartu Síť a přejděte na adresu http://localhost:3000, kde najdete naši aplikaci.
+1. Ve Visual Studio Code uložte všechny provedené změny. Na levé straně, vyberte **ladění** tlačítko ![ikona ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)a pak vyberte **spustit ladění** tlačítko ![ikona ladit ve Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
+
+1. Nyní přejděte v prohlížeči. Otevřít **vývojářské nástroje** a **kartu Síť**. Přejděte na http://localhost:3000, a zjistíte, že naši aplikaci.
 
     ![Nový účet služby Azure Cosmos DB na webu Azure Portal](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
-   V aplikaci ještě nejsou uložení žádní hrdinové, ale v dalším kroku kurzu přidáme funkce put, push a delete, abychom moli přidávat, aktualizovat a odstraňovat hrdiny z uživatelského prostředí pomocí připojení Mongoose k naší databázi Azure Cosmos DB. 
+Neexistují žádní hrdinové ještě v aplikaci. V další části tohoto kurzu přidáme put, push a funkci odstraňování. Pak můžeme přidat, aktualizovat a odstraňovat hrdiny z uživatelského rozhraní pomocí připojení Mongoose k naší databázi Azure Cosmos DB. 
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud prostředky už nepotřebujete, můžete odstranit skupinu prostředků, účet služby Azure Cosmos DB a všech souvisejících prostředků. Odstranit skupinu prostředků, použijte následující kroky:
+
+ 1. Přejděte do skupiny prostředků, ve které jste vytvořili účet Azure Cosmos DB.
+ 1. Vyberte **Odstranit skupinu prostředků**.
+ 1. Potvrďte název skupiny prostředků, které chcete odstranit a vyberte **odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 
-V této části kurzu jste provedli následující úlohy:
-
-> [!div class="checklist"]
-> * Pomocí rozhraní Mongoose API jste připojili aplikaci Heroes ke službě Azure Cosmos DB. 
-> * Přidali jste do aplikace funkci pro získání hrdinů.
-
-Můžete přejít k další části kurzu a přidat do aplikace funkce Post, Put a Delete.
+Přejděte na část 6 tohoto kurzu přidáte Post, Put a Delete do aplikace funkce:
 
 > [!div class="nextstepaction"]
-> [Přidání funkcí Post, Put a Delete do aplikace](tutorial-develop-mongodb-nodejs-part6.md)
+> [6. část: Přidat Post, Put a Delete do aplikace funkce](tutorial-develop-mongodb-nodejs-part6.md)

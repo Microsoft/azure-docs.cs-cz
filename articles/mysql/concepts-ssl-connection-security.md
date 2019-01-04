@@ -1,32 +1,29 @@
 ---
-title: Připojení SSL pro databázi Azure pro databázi MySQL
-description: Informace pro konfiguraci Azure databáze MySQL a přidružené aplikace odpovídajícím způsobem používat připojení SSL
-services: mysql
+title: Připojení SSL pro službu Azure Database for MySQL
+description: Informace pro konfiguraci – Azure Database for MySQL a přidružené aplikace pro správné použití připojení SSL
 author: JasonMAnderson
 ms.author: janders
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: ee7e0ec8524d66ee89cf7b2c4d44b70efa784f8f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 129f90d495627edb25dfafdeb1b274aa2c4c71cb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265057"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539823"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mysql"></a>Připojení SSL ve službě Azure Database pro databázi MySQL
-Azure databáze pro databázi MySQL podporuje připojení databázový server pro klientské aplikace pomocí Secure Sockets Layer (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
+# <a name="ssl-connectivity-in-azure-database-for-mysql"></a>Připojení SSL ve službě Azure Database for MySQL
+Azure Database for MySQL podporuje připojení databázový server pro klientské aplikace pomocí vrstvy SSL (Secure Sockets). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
 
 ## <a name="default-settings"></a>Výchozí nastavení
-Ve výchozím nastavení měla by se nakonfigurovat službu databáze vyžadovat připojení SSL při připojování k MySQL.  Doporučujeme, aby se zabránilo zakázání možností protokolu SSL, kdykoli je to možné. 
+Ve výchozím nastavení databázová služba musí být nakonfigurovaný tak, aby vyžadovala připojení SSL při připojování k MySQL.  Doporučujeme, aby bylo zabráněno zakázání možnost SSL, kdykoli je to možné. 
 
-Při zřizování nové databáze Azure pro server databáze MySQL prostřednictvím portálu Azure a rozhraní příkazového řádku, je ve výchozím nastavení povolena vynucení připojení SSL. 
+Při zřizování nového serveru Azure Database for MySQL pomocí webu Azure portal a rozhraní příkazového řádku, je standardně povolená vynucení připojení SSL. 
 
-Připojovací řetězce pro různých programovacích jazyků se zobrazí na portálu Azure. Tyto připojovací řetězce zahrnout požadované parametry protokolu SSL pro připojení k vaší databázi. Na portálu Azure vyberte svůj server. V části **nastavení** záhlaví, vyberte **připojovací řetězce**. Parametr SSL se liší v závislosti na konektoru, například "ssl = true" nebo "sslmode = vyžadují" nebo "sslmode = požadované" a dalších odlišností.
+Připojovací řetězce pro různé programovací jazyky jsou uvedeny na webu Azure Portal. Tyto řetězce připojení obsahovat požadované parametry protokolu SSL pro připojení k vaší databázi. Na webu Azure Portal vyberte svůj server. V části **nastavení** záhlaví, vyberte **připojovací řetězce**. Parametr SSL se liší v závislosti na konektoru, třeba "ssl = true" nebo "sslmode = vyžadují" nebo "sslmode = požadované" a další varianty konfigurací.
 
-Zjistěte, jak povolit nebo zakázat připojení SSL při vývoji aplikace, najdete v tématu [postup konfigurace protokolu SSL](howto-configure-ssl.md). 
+Zjistěte, jak povolit nebo zakázat připojení protokolem SSL při vývoji aplikací, najdete v tématu [konfigurace SSL](howto-configure-ssl.md). 
 
 ## <a name="next-steps"></a>Další postup
-[Knihovny připojení pro databázi Azure pro databázi MySQL](concepts-connection-libraries.md)
+[Připojení knihoven pro službu Azure Database for MySQL](concepts-connection-libraries.md)

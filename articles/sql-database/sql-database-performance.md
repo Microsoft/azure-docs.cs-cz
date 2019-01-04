@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: dd3fe059bf2352fee7471fac7aeee23ad90c7cb0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3629215dc1f6dfcb28194c487358adb058af3e8e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274928"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602915"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorování a zlepšování výkonnosti
 Identifikuje potenciální problémy ve vaší databázi Azure SQL Database a doporučuje akce, které může zlepšit výkon úloh tím, že poskytuje inteligentní optimalizačních akcí a doporučení.
@@ -70,7 +70,7 @@ Azure SQL Database může automaticky ladění výkonu databáze s použitím [d
 
 Další informace o této stránce najdete v článku  **[postup použití nástroje Query Performance Insight](sql-database-query-performance.md)**.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Azure SQL Database – Průvodce výkonem pro izolované databáze](sql-database-performance-guidance.md)
 * [Pokud by měl používat elastický fond?](sql-database-elastic-pool-guidance.md)
 

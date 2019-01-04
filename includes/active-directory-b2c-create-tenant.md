@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: patricka
 ms.openlocfilehash: 623f95eac029e808746d5d08fa088eba134592dd
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133283"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53797915"
 ---
 Klikněte na tlačítko **vytvořit prostředek** tlačítko. Do pole **Hledat na Marketplace** zadejte `Azure Active Directory B2C`.
 

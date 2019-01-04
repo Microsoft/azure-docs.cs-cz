@@ -1,5 +1,5 @@
 ---
-title: Spouštění úloh služby Azure Batch na nákladově efektivní virtuálních počítačů s nízkou prioritou | Dokumentace Microsoftu
+title: Spouštění úloh na nákladově efektivní virtuální počítače s nízkou prioritou – Azure Batch | Dokumentace Microsoftu
 description: Zjistěte, jak zřizovat virtuální počítače s nízkou prioritou, abyste snížili náklady na úlohy služby Azure Batch.
 services: batch
 author: mscurrell
@@ -11,12 +11,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec18
+ms.openlocfilehash: 17668470be3e997c215aacc4cc2c32c80de2dd81
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092999"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546789"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou pomocí služby Batch
 
@@ -42,11 +43,11 @@ Vzhledem k vlastnostem virtuálních počítačů s nízkou prioritou, co úlohy
 
 Příklady případů použití dávkové zpracování a vhodné k použití virtuálních počítačů s nízkou prioritou jsou:
 
--   **Vývoj a testování**: zejména pokud velkých řešeních jsou, a proto produkt výrazné úspory se dají realizovat. Můžete využívat všechny druhy testování, ale ve velkém měřítku zátěžové testování a regresní testování jsou skvělé používá.
+-   **Vývoj a testování**: Zejména pokud velkých řešeních jsou, a proto produkt můžete realizovat výraznou slevu. Můžete využívat všechny druhy testování, ale ve velkém měřítku zátěžové testování a regresní testování jsou skvělé používá.
 
--   **Doplnění kapacitou na vyžádání**: virtuální počítače s nízkou prioritou lze použít k doplnění pravidelně vyhrazených virtuálních počítačů – Pokud je k dispozici, můžete škálovat a proto rychleji dokončit za nižší cenu úlohy, když není k dispozici, standardní hodnoty vyhrazených virtuálních počítačů zůstal dostupný .
+-   **Doplnění kapacitou na vyžádání**: Virtuální počítače s nízkou prioritou lze použít k doplnění pravidelně vyhrazených virtuálních počítačů – Pokud je k dispozici, můžete škálovat a proto rychleji dokončit za nižší cenu; úlohy Pokud není k dispozici, zůstává k dispozici základní vyhrazených virtuálních počítačích.
 
--   **Čas spuštění úlohy flexibilní**: Pokud je flexibilitu v čase úlohy, které musíte dokončit, pak potenciální drops kapacity může tolerovat; ale s přidáním virtuálních počítačů s nízkou prioritou často úloha rychleji a s nižšími náklady.
+-   **Čas spuštění úlohy flexibilní**: Pokud existuje určitá flexibilita v čase mají úlohy dokončí, pak potenciální drops kapacity může tolerovat; ale přidání virtuálních počítačů s nízkou prioritou často úloha rychleji a s nižšími náklady.
 
 Fondy služby batch lze nakonfigurovat pro použití virtuálních počítačů s nízkou prioritou několika různými způsoby v závislosti na flexibilitu v čase spuštění úlohy:
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 45cf987d9af7b7dd0e8f05056b49ba56835603e7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f573cda9f06837bf44ee39a680b207af1ba0fe07
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313931"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973226"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Nejčastější dotazy k Azure Machine Learning
 
@@ -55,18 +55,17 @@ První dva uživatele přidružené k vaší služby experimentování ve služb
 
 **Se mi účtovat podle počtu spuštěných experimentů?**
 
-Ne, služba experimentování umožňuje tolik experimentů potřebujete a účtuje se pouze podle počtu uživatelů. Výpočetní prostředky Experimentování se účtují samostatně. Doporučujeme vám, abyste mohli vyhledat nejlepší přizpůsobení modelu pro vaše řešení provádět více experimentů.   
+Ne, služba experimentování umožňuje tolik experimentů potřebujete a účtuje se pouze podle počtu uživatelů. Výpočetní prostředky Experimentování se účtují samostatně. Doporučujeme vám, abyste mohli vyhledat nejlepší přizpůsobení modelu pro vaše řešení provádět více experimentů.
 
 **Jaké konkrétní výpočetní prostředky a prostředky úložiště, které můžete použít**
 
-Služba experimentování ve službě může vaše experimenty provádět na místních počítačích (přímý nebo v dockeru), [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), a [HDInsight](https://azure.microsoft.com/services/hdinsight/). Také přistupuje k službě [služby Azure Storage](https://azure.microsoft.com/services/storage/) účet pro ukládání výstupů spuštění a můžete využít [Visual Studio Team Service](https://azure.microsoft.com/services/visual-studio-team-services/) účet pro správu verzí a úložiště Git. Všimněte si, že se vám bude účtovat nezávisle na sobě žádné spotřebované výpočetní prostředky a prostředky úložiště podle jejich příslušných cen.  
-
+Služba experimentování ve službě může vaše experimenty provádět na místních počítačích (přímý nebo v dockeru), [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), a [HDInsight](https://azure.microsoft.com/services/hdinsight/). Také přistupuje k službě [služby Azure Storage](https://azure.microsoft.com/services/storage/) účet pro ukládání výstupů spuštění a můžete využít [Azure DevOps](https://azure.microsoft.com/services/devops/) účet pro správu verzí a úložiště Git. Všimněte si, že se vám bude účtovat nezávisle na sobě žádné spotřebované výpočetní prostředky a prostředky úložiště podle jejich příslušných cen.
 
 ## <a name="model-management"></a>Správa modelů
 
 **Co je Správa modelů Azure Machine Learning?**
 
-Správa modelů Azure Machine Learning je spravovaná služba Azure, který umožňuje data vědců a vývojářů týmům spolehlivě nasazovat prediktivní modely v nejrůznějších prostředích. Úložiště Git a kontejnery Dockeru poskytují sledovatelnost a opakovatelnost. V cloudu, v místním nebo hraničním je možné spolehlivě nasadit modely. Jakmile se v produkčním prostředí, budete moct spravovat výkon modelů, pak proaktivně přeučování Pokud výkon sníží, přetrénujte. Můžete nasazovat modely na místních počítačích, na [virtuální počítače Azure](https://azure.microsoft.com/services/virtual-machines/), Spark u [HDInsight](https://azure.microsoft.com/services/hdinsight/) nebo orchestrované Kubernetes [Azure Container Service](https://azure.microsoft.com/services/container-service/) clustery.  
+Správa modelů Azure Machine Learning je spravovaná služba Azure, který umožňuje data vědců a vývojářů týmům spolehlivě nasazovat prediktivní modely v nejrůznějších prostředích. Úložiště Git a kontejnery Dockeru poskytují sledovatelnost a opakovatelnost. V cloudu, v místním nebo hraničním je možné spolehlivě nasadit modely. Jakmile se v produkčním prostředí, budete moct spravovat výkon modelů, pak proaktivně přeučování Pokud výkon sníží, přetrénujte. Můžete nasazovat modely na místních počítačích, na [virtuální počítače Azure](https://azure.microsoft.com/services/virtual-machines/), Spark u [HDInsight](https://azure.microsoft.com/services/hdinsight/) nebo orchestrované Kubernetes [Azure Container Service](https://azure.microsoft.com/services/container-service/) clustery.
 
 **Co je "model"?**
 
@@ -78,11 +77,11 @@ Model je výstupem procesu trénování a jedná se o aplikování algoritmu mac
  
 **Co je "nasazení?"**
 
-Správa modelů umožňuje nasazovat modely jako zabalené kontejnery webové služby v Azure. Tyto webové služby je možné vyvolat pomocí rozhraní REST API. Každá webová služba se počítá jako jedno nasazení a celkový počet aktivních nasazení se započítává do plánu. Použití příklad Prognózování prodeje, když nasazujete nejvýkonnějšího modelu, váš plán je zvýšen o jedno nasazení. Přeučování a nasadit jinou verzi, máte dvě nasazení. Pokud zjistíte, že je lepší novější model a odstranit původní, počet vašich nasazení se sníží o jedna.  
+Správa modelů umožňuje nasazovat modely jako zabalené kontejnery webové služby v Azure. Tyto webové služby je možné vyvolat pomocí rozhraní REST API. Každá webová služba se počítá jako jedno nasazení a celkový počet aktivních nasazení se započítává do plánu. Použití příklad Prognózování prodeje, když nasazujete nejvýkonnějšího modelu, váš plán je zvýšen o jedno nasazení. Přeučování a nasadit jinou verzi, máte dvě nasazení. Pokud zjistíte, že je lepší novější model a odstranit původní, počet vašich nasazení se sníží o jedna.
 
 **Jaké konkrétní výpočetní prostředky jsou k dispozici pro mé nasazení?** 
 
-Správa modelů ve službě může vaše nasazení spouštět jako kontejnery Dockeru zaregistrovaný [Azure Container Service](https://azure.microsoft.com/services/container-service/), jako [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), nebo na místních počítačích. Cíle nasazení dalších přidáme zanedlouho. Všimněte si, že vám budou nezávisle účtovat veškeré spotřebované výpočetní prostředky, na základě jejich příslušných cen.     
+Správa modelů ve službě může vaše nasazení spouštět jako kontejnery Dockeru zaregistrovaný [Azure Container Service](https://azure.microsoft.com/services/container-service/), jako [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), nebo na místních počítačích. Cíle nasazení dalších přidáme zanedlouho. Všimněte si, že vám budou nezávisle účtovat veškeré spotřebované výpočetní prostředky, na základě jejich příslušných cen.
 
 **Můžete použít Správa modelů Azure Machine Learning nasazovat modely sestavené pomocí jiných nástrojů než služba experimentování?**
 
@@ -108,15 +107,15 @@ Ano, můžete nasadit několik verzí stejného modelu. Správa modelů ve služ
 
 **Co je Azure Machine Learning Workbench?**
 
-Azure Machine Learning Workbench je aplikace, která doplňuje vytvořené pro profesionální datové vědce. K dispozici pro Windows a Mac v aplikaci Machine Learning Workbench poskytuje přehled, Správa a řízení pro řešení strojového učení. Machine Learning Workbench zahrnuje přístup až po špičkové architektur AI od Microsoftu i open source komunity. Přidali jsme nejoblíbenější data science sady nástrojů, včetně TensorFlow, Microsoft Cognitive Toolkit, Spark ML a scikit-informace a provádění dalších akcí. Povolili jsme také integrace s oblíbenými datové vědy Integrovaná vývojová prostředí jako je například poznámkových bloků Jupyter, PyCharm a Visual Studio Code. Machine Learning Workbench má integrovaný možnosti přípravy rychle ukázkový, pochopit a přípravě dat, ať už strukturovaných nebo nestrukturovaných. Náš nový nástroj pro přípravu dat, volá [PROSE](https://microsoft.github.io/prose/), je založená na špičkové technologie od Microsoft Research.  
+Azure Machine Learning Workbench je aplikace, která doplňuje vytvořené pro profesionální datové vědce. K dispozici pro Windows a Mac v aplikaci Machine Learning Workbench poskytuje přehled, Správa a řízení pro řešení strojového učení. Machine Learning Workbench zahrnuje přístup až po špičkové architektur AI od Microsoftu i open source komunity. Přidali jsme nejoblíbenější data science sady nástrojů, včetně TensorFlow, Microsoft Cognitive Toolkit, Spark ML a scikit-informace a provádění dalších akcí. Povolili jsme také integrace s oblíbenými datové vědy Integrovaná vývojová prostředí jako je například poznámkových bloků Jupyter, PyCharm a Visual Studio Code. Machine Learning Workbench má integrovaný možnosti přípravy rychle ukázkový, pochopit a přípravě dat, ať už strukturovaných nebo nestrukturovaných. Náš nový nástroj pro přípravu dat, volá [PROSE](https://microsoft.github.io/prose/), je založená na špičkové technologie od Microsoft Research.
 
 **Aplikace Workbench je integrované vývojové prostředí?**
 
-Ne. Machine Learning Workbench byly navržené jako pomocníka pro oblíbená prostředí IDE, jako jsou poznámkové bloky Jupyter, Visual Studio Code a PyCharm ale není plně funkční prostředí IDE. Machine Learning Workbench nabízí některé základní text možností pro úpravy, ale ladění, technologie intellisense a dalších běžně používané funkce integrovaného vývojového prostředí se nepodporují. Doporučujeme používat své oblíbené prostředí IDE pro vývoj kódu, úpravy a ladění. Možná budete také chtít zkuste [Visual Studio Code Tools pro AI](https://www.visualstudio.com/downloads/ai-tools-vscode).
+Ne. Machine Learning Workbench byly navržené jako pomocníka pro oblíbená prostředí IDE, jako jsou poznámkové bloky Jupyter, Visual Studio Code a PyCharm ale není plně funkční prostředí IDE. Machine Learning Workbench nabízí některé základní text možností pro úpravy, ale ladění, technologie intellisense a dalších běžně používané funkce integrovaného vývojového prostředí se nepodporují. Doporučujeme používat své oblíbené prostředí IDE pro vývoj kódu, úpravy a ladění. Možná budete také chtít zkuste [Visual Studio Code Tools pro AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
 **Platí se za použití Azure Machine Learning Workbench?**
 
-Ne. Azure Machine Learning Workbench je bezplatná aplikace. Můžete ji stáhnout na tolik počítačů a pro tolik uživatelů, kolik potřebujete. K používání aplikace Azure Machine Learning Workbench potřebujete účet Experimentování. .  
+Ne. Azure Machine Learning Workbench je bezplatná aplikace. Můžete ji stáhnout na tolik počítačů a pro tolik uživatelů, kolik potřebujete. K používání aplikace Azure Machine Learning Workbench potřebujete účet Experimentování.
 
 **Podporuje možnosti příkazového řádku?**
 
@@ -138,7 +137,7 @@ Aktuální verze zahrnuté v aplikaci Workbench Jupyter spustí jádra Python 3 
 **Které formáty souborů jsou aktuálně podporovány pro příjem dat v aplikaci Workbench?**
 
 Nástroje pro přípravu dat v aplikaci Workbench aktuálně podporují příjem z následujících formátů: 
-- Soubory s oddělovači, jako je například CSV, TSV, atd.  
+- Soubory s oddělovači, jako je například CSV, TSV, atd.
 - Soubory Pevná šířka
 - Místo textových souborů
 - Excel (.xls/xlsx)
@@ -157,7 +156,7 @@ Aplikace Workbench ve veřejné verzi preview podporuje příjem dat ze:
 
 **Jaké druhy tahání dat, přípravy a transformace jsou k dispozici?**
 
-Aplikace Workbench ve veřejné verzi preview podporuje "Odvodit sloupec podle příkladu", "Rozdělit sloupec podle příkladu", "Text Clustering", "Zpracování chybějící hodnoty" a mnohé další.  Aplikace Workbench také podporuje převod typu dat, agregace dat (počet, průměr, odchylka atd.) a komplexních datových spojení. Úplný seznam podporovaných schopností projděte si naši dokumentaci produktu. 
+Aplikace Workbench ve veřejné verzi preview podporuje "Odvodit sloupec podle příkladu", "Rozdělit sloupec podle příkladu", "Text Clustering", "Zpracování chybějící hodnoty" a mnohé další. Aplikace Workbench také podporuje převod typu dat, agregace dat (počet, průměr, odchylka atd.) a komplexních datových spojení. Úplný seznam podporovaných schopností projděte si naši dokumentaci produktu. 
 
 **Existují nějaká omezení velikosti dat vynucuje Azure Machine Learning Workbench, služby experimentování ve službě nebo Správa modelů ve službě?**
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Tableau Server | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Tableau Server | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tableau Server.
 services: active-directory
 documentationCenter: na
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 84ea1d999a26ce0ce1d548da92549c6a718d5978
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c727cddf41c269c214b541134cd9f688017ee687
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850359"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789717"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Kurz: Integrace Azure Active Directory se službou Tableau Server
+# <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Kurz: Integrace Azure Active Directory s Tableau Server
 
 V tomto kurzu se dozvíte, jak integrovat Tableau Server se službou Azure Active Directory (Azure AD).
 
@@ -86,13 +86,14 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Tableau Server, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Tableau Server](#creating-a-tableau-server-test-user)**  – Pokud chcete mít protějšek Britta Simon v Tableau Server, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování jednotného přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace Tableau Server Single Sign-On](#configure-tableau-server-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Vytvořit testovacího uživatele Tableau Server](#create-tableau-server-test-user)**  – Pokud chcete mít protějšek Britta Simon Cisco zastřešující, který je propojený s Azure AD reprezentace uživatele.
+5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
 V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Tableau Server.
 
@@ -112,9 +113,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 4. V **deklarace identity uživatelů** části na **atributy uživatele a deklarace identity** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
     
-    | Název atributu | Hodnota atributu |
-    | ---------------| --------------- |    
-    | uživatelské jméno | user.userprincipalname |
+    | Název atributu | Hodnota atributu | Obor názvů |
+    | ---------------| --------------- | ----------- |   
+    | uživatelské jméno | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -151,33 +152,41 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 7. Na **podpisový certifikát SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** Stáhnout **kód XML metadat federace** a uložte soubor certifikátu v počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/tableauserver-tutorial/tutorial-tableauserver-certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/tableauserver-tutorial/tutorial-tableauserver-certificate.png)
 
-8. Pokud chcete získat jednotné přihlašování nakonfigurované pro vaši aplikaci, budete muset přihlašování k vašemu tenantovi Tableau Server jako správce.
+### <a name="configure-tableau-server-single-sign-on"></a>Konfigurace Tableau serveru jednotného přihlašování 
 
-9. Na **konfigurace serveru Tableau** stránce, proveďte následující kroky:
-   
-    ![Konfigurace jednotného přihlašování](./media/tableauserver-tutorial/tutorial-tableauserver-001.png)
+1. Pokud chcete získat jednotné přihlašování nakonfigurované pro vaši aplikaci, budete muset přihlašování k vašemu tenantovi Tableau Server jako správce.
 
-    a. V konfiguraci Tableau serveru, klikněte **SAML** kartu. 
-  
-    b. Zaškrtněte políčko z **pomocí SAML pro jednotné přihlašování**.
-   
+2. Na **konfigurace** kartu, vyberte možnost **uživatele identita a přístup**a pak vyberte **ověřování** metoda kartu.
+
+    ![Konfigurace jednotného přihlašování](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+
+3. Na **konfigurace** stránce, proveďte následující kroky:
+
+    ![Konfigurace jednotného přihlašování](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+
+    a. Pro **metodu ověřování**, vyberte SAML.
+    
+    b. Zaškrtněte políčko z **povolit ověřování SAML pro server**.
+
     c. Tableau Server návratová adresa URL – adresa URL, Tableau Server uživatelé budou přistupovat k, jako například http://tableau_server. Pomocí http://localhost se nedoporučuje. Pomocí adresy URL s koncovým lomítkem (například http://tableau_server/) se nepodporuje. Kopírování **Tableau Server návratová adresa URL** a vložte ho do služby Azure AD **přihlašovací adresa URL** textového pole v **Tableau Server domény a adresy URL** oddílu.
-   
+
     d. SAML entity ID – entity ID jednoznačně identifikuje Tableau Server instalace pro zprostředkovatele identity. Můžete zadat adresu URL svého Tableau Server znovu sem, pokud chcete, můžete, ale nemusí být vaše adresa URL serveru Tableau. Kopírování **SAML entity ID** a vložte ho do služby Azure AD **identifikátor** textového pole v **Tableau Server domény a adresy URL** oddílu.
-     
-    e. Klikněte na tlačítko **exportovat soubor metadat** a otevřít ji v aplikaci textového editoru. Vyhledejte adresu URL služby příjemce kontrolního výrazu s Http Post a indexu 0 a zkopírujte adresu URL. Nyní jej vložte do služby Azure AD **adresy URL odpovědi** textového pole v **Tableau Server domény a adresy URL** oddílu.
-   
+
+    e. Klikněte na tlačítko **stáhnout soubor metadat XML** a otevřít ji v aplikaci textového editoru. Vyhledejte adresu URL služby příjemce kontrolního výrazu s Http Post a indexu 0 a zkopírujte adresu URL. Nyní jej vložte do služby Azure AD **adresy URL odpovědi** textového pole v **Tableau Server domény a adresy URL** oddílu.
+
     f. Vyhledejte federačních metadat soubor stažený z webu Azure portal a pak ho nahrajte **soubor metadat SAML zprostředkovatele identity**.
-   
-    g. Klikněte na tlačítko **OK** tlačítko na stránce konfigurace serveru Tableau.
-   
+
+    g. Zadejte názvy atributů, které zprostředkovatel identity je používá pro uložení uživatelských jmen, zobrazované názvy, e-mailové adresy.
+
+    h. Klikněte na **Uložit**.
+
     >[!NOTE] 
     >Zákazník muset nahrát libovolný certifikát v konfiguraci jednotného přihlašování SAML Tableau serveru a bude získat ignorovat v toku jednotného přihlašování.
-    >Pokud potřebujete pomoct konfiguraci SAML na Tableau serveru, najdete v tomto článku [konfigurace SAML](https://onlinehelp.tableau.com/current/server/en-us/config_saml.htm).
+    >Pokud potřebujete pomoct konfiguraci SAML na Tableau serveru, najdete v tomto článku [konfigurace SAML](https://onlinehelp.tableau.com/v2018.2/server/en-us/saml_config_steps_tsm_ui.htm).
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -202,7 +211,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     d. Vyberte **Vytvořit**.
   
-### <a name="creating-a-tableau-server-test-user"></a>Vytvoření zkušebního uživatele Tableau Server
+### <a name="create-tableau-server-test-user"></a>Vytvořit testovacího uživatele Tableau Server
 
 Cílem této části je vytvořte uživatele Britta Simon v Tableau Server. Budete muset zřídit všechny uživatele v Tableau server. 
 
@@ -211,7 +220,7 @@ Tímto uživatelským jménem uživatele by měl odpovídat hodnotě, které jst
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset kontaktovat správce Tableau serveru ve vaší organizaci.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k serveru Tableau.
 
@@ -235,7 +244,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 6. V **přidat přiřazení** dialogového okna, vyberte **přiřadit** tlačítko.
 
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

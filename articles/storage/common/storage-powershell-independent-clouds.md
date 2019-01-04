@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 842a9354cf20648393c3262736c0a1e9654a3c70
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058341"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628336"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v Azure nezávislé cloudů pomocí Powershellu
 
@@ -23,6 +23,8 @@ Většina lidí pomocí veřejného cloudu Azure pro globální nasazení v Azur
 * [Cloud Azure China, provozovaný společností 21Vianet v Číně](http://www.windowsazure.cn/)
 * [Německého cloudu Azure](../../germany/germany-welcome.md)
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="using-an-independent-cloud"></a>Díky nezávislé cloudu 
 
 Používání Azure Storage v jednom z cloudů nezávislé, připojit s tímto cloudem místo Azure veřejné. Chcete použít jeden z nezávislé cloudy spíše než veřejné Azure:
@@ -31,28 +33,28 @@ Používání Azure Storage v jednom z cloudů nezávislé, připojit s tímto c
 * Určení a používají dostupné oblasti.
 * Můžete použít příponu správný koncový bod, který se liší od Azure veřejné.
 
-V příkladech vyžaduje modul Azure Powershellu verze 4.4.0 nebo novější. V okně Powershellu, spusťte `Get-Module -ListAvailable AzureRM` k vyhledání verze. Pokud se objevuje nic, nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+V příkladech vyžadují Azure PowerShell verze modulu Az 0.7 nebo novější. V okně Powershellu, spusťte `Get-Module -ListAvailable Az` k vyhledání verze. Pokud se objevuje nic, nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Spustit [Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) rutiny zobrazíte dostupné prostředí Azure:
+Spustit [Get-AzEnvironment](/powershell/module/az.profile/get-Azenvironment) rutiny zobrazíte dostupné prostředí Azure:
    
 ```powershell
-Get-AzureRmEnvironment
+Get-AzEnvironment
 ```
 
 Přihlaste se ke svému účtu, který má přístup do cloudu, ke kterému chcete připojit a nastavte prostředí. Tento příklad ukazuje, jak přihlášení k účtu, který používá cloudu Azure Government.   
 
 ```powershell
-Connect-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzAccount –Environment AzureUSGovernment
 ```
 
 Pro přístup k Číně, použijte prostředí **AzureChinaCloud**. Chcete-li získat přístup k německého cloudu, použijte **AzureGermanCloud**.
 
-V tomto okamžiku, pokud potřebujete seznam umístění pro vytvoření účtu úložiště nebo jiný prostředek, můžete dát dotaz na umístění k dispozici pro vybraný cloud pomocí [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation).
+V tomto okamžiku, pokud potřebujete seznam umístění pro vytvoření účtu úložiště nebo jiný prostředek, můžete dát dotaz na umístění k dispozici pro vybraný cloud pomocí [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
 
 ```powershell
-Get-AzureRmLocation | select Location, DisplayName
+Get-AzLocation | select Location, DisplayName
 ```
 
 Následující tabulka uvádí umístění pro německý cloud.
@@ -67,14 +69,14 @@ Následující tabulka uvádí umístění pro německý cloud.
 
 Přípona koncového bodu pro každou z těchto prostředí se liší od Azure veřejný koncový bod. Přípona koncového bodu objektu blob pro veřejný Azure je třeba **blob.core.windows.net**. U cloudu státní správy přípona koncového bodu objektu blob je **blob.core.usgovcloudapi.net**. 
 
-### <a name="get-endpoint-using-get-azurermenvironment"></a>Získání koncového bodu pomocí Get-AzureRMEnvironment 
+### <a name="get-endpoint-using-get-azenvironment"></a>Získání koncového bodu pomocí Get-AzEnvironment 
 
-Načíst pomocí koncového bodu přípona [Get-AzureRMEnvironment](/powershell/module/azurerm.profile/get-azurermenvironment). Koncový bod je *StorageEndpointSuffix* vlastnost prostředí. Následující fragmenty kódu ukazují, jak to udělat. Všechny tyto příkazy vracely něco jako "core.cloudapp.net" nebo "core.cloudapi.de" atd. Nový kód přidejte do služby storage pro přístup k této službě. Například "queue.core.cloudapi.de" se přístup ke službě fronty v německém cloudu.
+Načíst pomocí koncového bodu přípona [Get-AzEnvironment](/powershell/module/az.profile/get-azenvironment). Koncový bod je *StorageEndpointSuffix* vlastnost prostředí. Následující fragmenty kódu ukazují, jak to udělat. Všechny tyto příkazy vracely něco jako "core.cloudapp.net" nebo "core.cloudapi.de" atd. Nový kód přidejte do služby storage pro přístup k této službě. Například "queue.core.cloudapi.de" se přístup ke službě fronty v německém cloudu.
 
 Tento fragment kódu načte všechna prostředí a přípona koncového bodu pro každé z nich.
 
 ```powershell
-Get-AzureRmEnvironment | select Name, StorageEndpointSuffix 
+Get-AzEnvironment | select Name, StorageEndpointSuffix 
 ```
 
 Tento příkaz vrátí následující výsledky.
@@ -86,15 +88,15 @@ Tento příkaz vrátí následující výsledky.
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | Core.usgovcloudapi.NET |
 
-Chcete-li načíst všechny vlastnosti pro zadané prostředí, zavolejte **Get-AzureRmEnvironment** a zadejte název cloudu. Tento fragment kódu vrátí seznam hodnot vlastnosti; Vyhledejte **StorageEndpointSuffix** v seznamu. Následující příklad je určený pro německého cloudu.
+Chcete-li načíst všechny vlastnosti pro zadané prostředí, zavolejte **Get-AzEnvironment** a zadejte název cloudu. Tento fragment kódu vrátí seznam hodnot vlastnosti; Vyhledejte **StorageEndpointSuffix** v seznamu. Následující příklad je určený pro německého cloudu.
 
 ```powershell
-Get-AzureRmEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud 
 ```
 
 Výsledky jsou podobné následujícímu:
 
-|Název vlastnosti|Hodnota|
+|Property Name|Hodnota|
 |----|----|
 | Název | AzureGermanCloud |
 | EnableAdfsAuthentication | False |
@@ -111,7 +113,7 @@ Výsledky jsou podobné následujícímu:
 K načtení jenom vlastnost přípona úložiště koncového bodu, načtení konkrétní cloud a požádejte o právě tuto jednu vlastnost.
 
 ```powershell
-$environment = Get-AzureRmEnvironment -Name AzureGermanCloud
+$environment = Get-AzEnvironment -Name AzureGermanCloud
 Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
 ```
 
@@ -129,7 +131,7 @@ Můžete také prozkoumat vlastnosti účtu úložiště načíst koncových bod
 # Get a reference to the storage account.
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
-$storageAccount = Get-AzureRmStorageAccount `
+$storageAccount = Get-AzStorageAccount `
   -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
   # Output the endpoints.
@@ -157,7 +159,7 @@ Z tady do budoucna, můžete použít stejné prostředí PowerShell použít ke
 Pokud jste vytvořili novou skupinu prostředků a účet úložiště pro toto cvičení, můžete odebrat všechny prostředky odstraněním skupiny prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě odebere účet úložiště, který jste vytvořili a samotnou skupinu prostředků.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Další postup

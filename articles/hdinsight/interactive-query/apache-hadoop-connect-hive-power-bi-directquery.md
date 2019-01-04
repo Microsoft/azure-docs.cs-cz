@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 68f2314b995eb0f2f67307b44cbfd177f5c5a796
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5f4053888cc8402ab0196e40c33f1acc3e7eef44
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309266"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651127"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Vizualizace dat Interactive Query Apache Hive pomocí Microsoft Power BI pomocí přímých dotazů v Azure HDInsight
 
@@ -50,9 +50,9 @@ Hivesampletable tabulka Hive obsahuje všechny clustery HDInsight.
 
     - **Server**: Zadejte název clusteru Interactive Query, například *myiqcluster.azurehdinsight.net*.
 
-    - **Databáze**: pro účely tohoto kurzu zadejte **výchozí**.
+    - **Databáze**: Pro účely tohoto kurzu zadejte **výchozí**.
     
-    - **Režim připojení dat**: pro účely tohoto kurzu vyberte **DirectQuery**.
+    - **Režim připojení dat**: Pro účely tohoto kurzu vyberte **DirectQuery**.
 
     ![Připojení k HDInsight interactive query Power BI DirectQuery](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
@@ -77,7 +77,7 @@ Pokračujte v posledním postupu.
 3. Rozbalte mapu.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak k vizualizaci dat z HDInsight pomocí Power BI.  Další informace o vizualizaci dat najdete v následujících článcích:
+V tomto článku jste zjistili, jak k vizualizaci dat z HDInsight pomocí Microsoft Power BI.  Další informace o vizualizaci dat najdete v následujících článcích:
 
 * [Vizualizace dat Apache Hive pomocí Microsoft Power BI v Azure HDInsight pomocí ovladače ODBC](../hadoop/apache-hadoop-connect-hive-power-bi.md). 
 * [Použití Apache Zeppelinu ke spuštění dotazy Apache Hive v HDInsight Azure](./../hdinsight-connect-hive-zeppelin.md).

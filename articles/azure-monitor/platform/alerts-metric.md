@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 3a106b0fe570fe44f96529d830271dfe4912437f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336465"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584296"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat upozornění na metriku pomocí Azure monitoru
 
@@ -33,7 +33,7 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění metriky na w
 
 3. Klikněte na tlačítko **Výběr cíle**, v podokně kontext, který načítá, vyberte cílový prostředek, který chcete upravit. Použití **předplatné** a **typ prostředku** rozevírací seznamy se najít prostředek, kterou chcete monitorovat. Na panelu hledání můžete také najít váš prostředek.
 
-4. Pokud vybraný prostředek má, můžete vytvářet upozornění metrik **dostupné signály** na dolní pravé bude obsahovat metriky. Můžete zobrazit úplný seznam typů prostředků, které jsou podporovány pro upozornění metrik v tomto [článku](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)
+4. Pokud vybraný prostředek má, můžete vytvářet upozornění metrik **dostupné signály** na dolní pravé bude obsahovat metriky. Můžete zobrazit úplný seznam typů prostředků, které jsou podporovány pro upozornění metrik v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
 
 5. Jakmile vyberete cílový prostředek, klikněte na **přidat kritéria**
 
@@ -130,4 +130,4 @@ V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla
 
 - [Vytvoření upozornění na metriku pomocí šablony Azure Resource Manageru](../../azure-monitor/platform/alerts-enable-template.md).
 - [Vysvětlení, jak metrika výstrahy pracovní](alerts-metric-overview.md).
-- [Pochopení schématu webových hook pro upozornění na metriku](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#payload-schema)
+- [Pochopení schématu webových hook pro upozornění na metriku](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

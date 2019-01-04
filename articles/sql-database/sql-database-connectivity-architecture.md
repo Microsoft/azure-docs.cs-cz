@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.date: 12/20/2018
+ms.openlocfilehash: 62e4171a6895f2f425d67b9d1143fe9d3999a9b9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435714"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715898"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
@@ -26,7 +26,7 @@ Azure SQL Database a SQL Data Warehouse připojení k architektuře a tento čl�
 > [!IMPORTANT]
 > **[Nadcházející změny] Pro koncový bod připojení služby pro servery Azure SQL `Default` chování připojení se změní na `Redirect`.**
 >
-> Změna je již platit od 10. listopadu 2019 pro oblast Brazílie – jih a západní Evropa. Pro všechny ostatní oblasti změn začnou platit od 2. ledna 2019.
+> Změna je platit od 10. listopadu 2018 už pro oblast Brazílie – jih a západní Evropa. Pro všechny ostatní oblasti změn začnou platit od 2. ledna 2019.
 >
 > Zabránit možnosti připojení prostřednictvím koncového bodu služby rozdělení v existujících prostředích v důsledku této změny, použijeme telemetrie postupujte takto:
 > - U serverů, které byly přístupné prostřednictvím koncových bodů služby před provedením změny, které zjistíme, můžeme Přepnout typ připojení na `Proxy`.
@@ -104,9 +104,9 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adresy br
 | Japonsko – západ | 191.238.68.11 | 104.214.148.156 |
 | Jižní Korea – střed | 52.231.32.42 | |
 | Jižní Korea – jih | 52.231.200.86 |  |
-| Střed USA – sever | 23.98.55.75 | 23.96.178.199 |
+| Středoseverní USA | 23.98.55.75 | 23.96.178.199 |
 | Severní Evropa | 191.235.193.75 | 40.113.93.91 |
-| Střed USA – jih | 23.98.162.75 | 13.66.62.124 |
+| Středojižní USA | 23.98.162.75 | 13.66.62.124 |
 | Jihovýchodní Asie | 23.100.117.95 | 104.43.15.0 |
 | Velká Británie – sever | 13.87.97.210 | |
 | Velká Británie – jih 1 | 51.140.184.11 | |

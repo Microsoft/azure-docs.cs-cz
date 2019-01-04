@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 236adb45ec6663ad361df1afbf6389a449f2a529
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 4a1517c1d5bb0f34c0f1b0ec81d074f8ec39aff5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52159895"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546571"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrace služby IoT Hub z operací do nastavení diagnostiky
 
-Zákazníci, kteří používají [monitorování operací](iot-hub-operations-monitoring.md) sledovat stav operací ve službě IoT Hub můžete migrovat do pracovního postupu [nastavení Azure diagnostics](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md), funkce služby Azure Monitor. Nastavení diagnostiky zadat diagnostické informace na úrovni prostředků pro řadou služeb Azure.
+Zákazníci, kteří používají [monitorování operací](iot-hub-operations-monitoring.md) sledovat stav operací ve službě IoT Hub můžete migrovat do pracovního postupu [nastavení Azure diagnostics](../azure-monitor/platform/diagnostic-logs-overview.md), funkce služby Azure Monitor. Nastavení diagnostiky zadat diagnostické informace na úrovni prostředků pro řadou služeb Azure.
 
 Operace monitorování funkcí služby IoT Hub je zastaralá a v budoucnu se odebere. Tento článek vysvětluje, jak přesunovat zatížení z operací do nastavení diagnostiky. Další informace o vyřazení časové osy, naleznete v tématu [monitorování řešení Azure IoT pomocí Azure monitoru a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 836449dad621cf6a0efe6c8534edc9f3982869b3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141573"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601963"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Otestujte aplikaci LUIS na portálu služby LUIS
 <a name="train-your-app"></a>
@@ -51,11 +51,11 @@ Prozkoumejte podrobnosti o výsledku testu v **zkontrolujte, jestli se** panelu.
  
 1. S **testovací** snímku na více instancí panel otevřený, vyberte **zkontrolujte, jestli se** pro utterance chcete porovnat. 
 
-    ![Kontrola tlačítko](./media/luis-how-to-interactive-test/inspect.png)
+    ![Vyberte tlačítko zkontrolujte, jestli chcete zobrazit další podrobnosti o výsledcích testů](./media/luis-how-to-interactive-test/inspect.png)
 
 2. **Kontroly** otevře se panel. Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.
 
-    ![Kontrola tlačítko](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="correct-top-scoring-intent"></a>Správné nejvyšší hodnocení záměr
 

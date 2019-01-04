@@ -3,15 +3,16 @@ title: Z VMware do architektury pro zotavení po havárii Azure ve službě Azur
 description: Tento článek obsahuje přehled komponent a architektury používané při nastavování zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 962ced808f97dd1fea3805fa8c953e6d7563cd17
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1c47f9d511cd6461ef5a31f308669eba751d1de4
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871740"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975997"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Z VMware do architektury pro zotavení po havárii Azure
 
@@ -25,7 +26,7 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použi
 **Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---
 **Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních virtuálních počítačů se ukládají v účtu úložiště. Virtuální počítače Azure se vytvoří s replikovanými daty při spuštění převzetí služeb při selhání z místního do Azure. Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
-**Konfigurace počítače serveru** | Jeden místní počítač. Doporučujeme vám, že jej spouštíte jako virtuální počítač VMware, který je možné nasadit z ve stažené šabloně OVF.<br/><br/> Počítači běží všechny místní komponenty Site Recovery, mezi které patří konfigurační server, procesový server a hlavní cílový server. | **Konfigurační server**: koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat.<br/><br/> **Procesový server**: ve výchozím nastavení na konfiguračním serveru nainstalované. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odesílá je do služby Azure Storage. Procesní server nainstaluje služba Mobility Azure Site Recovery na virtuálních počítačích, které chcete replikovat, a provádí automatické zjišťování místních počítačů. Jak vaše nasazení poroste, můžete přidat další, samostatné procesní servery pro zpracování větší objemy přenosů replikace.<br/><br/> **Hlavní cílový server**: ve výchozím nastavení na konfiguračním serveru nainstalované. Zpracovává replikační data během navrácení služeb po obnovení z Azure. Pro velká nasazení můžete přidat další, samostatný hlavní cílový server navrácení služeb po obnovení.
+**Konfigurace počítače serveru** | Jeden místní počítač. Doporučujeme vám, že jej spouštíte jako virtuální počítač VMware, který je možné nasadit z ve stažené šabloně OVF.<br/><br/> Počítači běží všechny místní komponenty Site Recovery, mezi které patří konfigurační server, procesový server a hlavní cílový server. | **Konfigurační server**: Koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat.<br/><br/> **Procesový server:** Obvykle se instaluje na konfigurační server. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odesílá je do služby Azure Storage. Procesní server nainstaluje služba Mobility Azure Site Recovery na virtuálních počítačích, které chcete replikovat, a provádí automatické zjišťování místních počítačů. Jak vaše nasazení poroste, můžete přidat další, samostatné procesní servery pro zpracování větší objemy přenosů replikace.<br/><br/> **Hlavní cílový server**: Obvykle se instaluje na konfigurační server. Zpracovává replikační data během navrácení služeb po obnovení z Azure. Pro velká nasazení můžete přidat další, samostatný hlavní cílový server navrácení služeb po obnovení.
 **Servery VMware** | Virtuální počítače VMware jsou hostované na místních serverech vSphere ESXi. Doporučujeme, abyste server vCenter pro správu hostitele. | Během nasazování Site Recovery servery VMware přidáte do trezoru služby Recovery Services.
 **Replikované počítače** | Služba mobility je nainstalovaná na každý virtuální počítač VMware, které replikujete. | Doporučujeme vám, že povolíte automatické instalace z procesového serveru. Alternativně můžete ručně nainstalovat službu nebo použít metody automatického nasazení, jako je System Center Configuration Manager.
 
@@ -70,13 +71,13 @@ Po nastavení replikace a spuštění postupu zotavení po havárii (testovací 
 2. Po aktivaci počáteční převzetí služeb při selhání, potvrdíte ho začít používat úlohu z virtuálního počítače Azure.
 3. Pokud vaše místní lokalita opět dostupná, můžete připravit pro navrácení služeb po obnovení. Aby bylo možné po navrácení služeb po obnovení, budete muset nastavit infrastrukturu navrácení služeb po obnovení, včetně:
 
-    * **Dočasný procesní server v Azure**: selhání obnovení z Azure, můžete nastavit virtuální počítač Azure tak, aby fungoval jako procesový server pro zpracování replikace z Azure. Tento virtuální počítač je možné po navrácení služeb po obnovení odstranit.
-    * **Připojení k síti VPN**: K navrácení služeb po obnovení, potřebujete připojení VPN (nebo ExpressRoute) ze sítě Azure k místní lokalitě.
-    * **Samostatný hlavní cílový server**: ve výchozím nastavení, hlavní cílový server, který se nainstaloval s konfiguračním serverem na virtuálních počítačů VMware v místním zpracovává navrácení služeb po obnovení. Pokud potřebujete selhání zpět velký objem provozu, nastavte samostatný místní hlavní cílový server pro tento účel.
-    * **Zásady navrácení služeb po obnovení:** Pro zpětnou replikaci do vaší místní lokality budete potřebovat zásady navrácení služeb. Tato zásada se vytvoří automaticky při vytváření zásady replikace z místního do Azure.
+    * **Dočasný procesní server v Azure**: Selhání obnovení z Azure, můžete nastavit virtuální počítač Azure tak, aby fungoval jako procesový server pro zpracování replikace z Azure. Tento virtuální počítač je možné po navrácení služeb po obnovení odstranit.
+    * **Připojení k síti VPN**: K navrácení služeb po obnovení, potřebujete připojení k síti VPN (nebo ExpressRoute) ze sítě Azure k místní lokalitě.
+    * **Samostatný hlavní cílový server**: Ve výchozím nastavení hlavní cílový server, který se nainstaloval s konfiguračním serverem na virtuálních počítačů VMware v místním zpracovává navrácení služeb po obnovení. Pokud potřebujete selhání zpět velký objem provozu, nastavte samostatný místní hlavní cílový server pro tento účel.
+    * **Zásady navrácení služeb po obnovení**: Ke zpětné replikaci do místní lokality, budete potřebovat zásady navrácení služeb po obnovení. Tato zásada se vytvoří automaticky při vytváření zásady replikace z místního do Azure.
 4. Po součásti jsou na místě, dojde k navrácení služeb po obnovení v tři akce:
 
-    - Fáze 1: Znovunastavení ochrany virtuálních počítačů Azure tak, aby se replikace z Azure zpět do místních virtuálních počítačů VMware.
+    - Fáze 1: Znovunastavení ochrany virtuálních počítačů Azure, tak, aby se replikace z Azure zpět do místních virtuálních počítačů VMware.
     -  Fáze 2: Spuštění převzetí služeb při selhání do místní lokality.
     - Fáze 3: Po úloh se nepodařilo vrátit, povolíte replikaci místních virtuálních počítačů.
     

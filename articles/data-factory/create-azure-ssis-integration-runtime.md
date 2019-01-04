@@ -1,6 +1,6 @@
 ---
-title: Vytvoření prostředí Azure-SSIS integration runtime ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit prostředí Azure-SSIS integration runtime ve službě Azure Data Factory, abyste mohli nasadit a spouštění balíčků služby SSIS v Azure.
+title: Vytvoření prostředí Azure-SSIS Integration Runtime ve službě Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit prostředí Azure-SSIS Integration Runtime ve službě Azure Data Factory, abyste mohli nasadit a spouštění balíčků služby SSIS v Azure.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,26 +8,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/26/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 75b5246b83106b7d331ad3d467de2005e8d1f854
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f5305c2d077f909a4b6c7c5e6905376d655dd60d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279091"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794562"
 ---
-# <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS integration runtime ve službě Azure Data Factory
-Tento článek popisuje kroky pro zřízení prostředí Azure-SSIS integration runtime ve službě Azure Data Factory. Následně můžete pomocí SQL Server Data Tools (SSDT) nebo aplikace SQL Server Management Studio (SSMS) v tomto modulu runtime v Azure nasazovat a spouštět balíčky SSIS (SQL Server Integration Services). 
+# <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration Runtime ve službě Azure Data Factory
+Tento článek popisuje kroky pro zřízení prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF). Potom můžete použít SQL Server Data Tools (SSDT) nebo SQL Server Management Studio (SSMS) k nasazení a spouštění balíčků SQL Server Integration Services (SSIS) v tomto modulu integration runtime v Azure. 
 
-Tento kurz [kurz: nasazení balíčků služby SQL Server Integration Services (SSIS) do Azure](tutorial-create-azure-ssis-runtime-portal.md) ukazuje, jak vytvořit s využitím Azure SQL Database k hostování katalogu SSIS prostředí Azure-SSIS Integration Runtime (IR). Tento článek dál navazuje na tento kurz a ukazuje, jak provádět následující akce: 
+[Kurzu: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) ukazuje, jak vytvořit prostředí Azure-SSIS IR pomocí serveru Azure SQL Database a hostitele databázi katalogu služby SSIS (SSISDB). Tento článek dál navazuje na tento kurz a ukazuje, jak provádět následující akce: 
 
-- Volitelně můžete použijte Azure SQL Database s virtuální sítě služby koncové body nebo spravované Instance jako databázový server k hostování katalogu SSIS (databázi SSISDB). Pokyny k výběru typu databázový server pro hostování služby SSISDB, naleznete v tématu [logický server porovnání SQL Database a SQL Database Managed Instance](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). Předpokladem je budete muset připojit k prostředí Azure-SSIS IR k virtuální síti a konfigurace virtuální sítě oprávnění a nastavení podle potřeby. Zobrazit [připojení Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). 
+- Volitelně použijte server Azure SQL Database s virtuální sítě služby koncové body nebo spravované Instance pro hostování služby SSISDB. Pokyny k výběru typu databázový server pro hostování služby SSISDB, naleznete v tématu [serveru porovnání Azure SQL Database a Managed Instance](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). Předpokladem je budete muset připojit k prostředí Azure-SSIS IR k virtuální síti a konfigurace virtuální sítě oprávnění a nastavení podle potřeby. Zobrazit [připojení Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). 
 
-- Volitelně použijte ověřování Azure Active Directory (AAD) s identitou pro služby Azure Data Factory pro připojení k databázovému serveru. Předpokladem je, budete muset přidat spravovanou identitu pro vaši ADF do skupiny AAD s oprávnění k přístupu k databázovému serveru, najdete v článku [ověřování AAD povolit pro Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
+- Volitelně můžete pomocí ověřování Azure Active Directory (AAD) spravovanou identitu pro vaši ADF pro připojení k serveru databáze. Předpokladem je, budete muset přidat spravovanou identitu pro vaši ADF jako schopná vytvořit SSISDB ve vaší databázi Azure SQL server nebo spravované Instance uživatele databáze s omezením naleznete v tématu [ověřování AAD povolit pro Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
 ## <a name="overview"></a>Přehled
 Tento článek ukazuje různé způsoby zřizování prostředí Azure-SSIS IR: 
@@ -36,41 +36,41 @@ Tento článek ukazuje různé způsoby zřizování prostředí Azure-SSIS IR:
 - [Azure PowerShell](#azure-powershell) 
 - [Šablona Azure Resource Manageru](#azure-resource-manager-template) 
 
-Při vytváření prostředí Azure-SSIS IR služby Data Factory se připojí k Azure SQL Database a připraví databázi katalogu služby SSIS (SSISDB). Také nakonfiguruje oprávnění a nastavení virtuální sítě, pokud zadaná a připojí novou instanci prostředí Azure-SSIS IR k virtuální síti. 
+Při vytváření prostředí Azure-SSIS IR, služba ADF se připojí k vaší databáze SQL Azure server nebo spravované Instance Příprava databáze SSISDB. Také nakonfiguruje oprávnění a nastavení pro virtuální síť, je-li zadán a připojí prostředí Azure-SSIS IR k virtuální síti. 
 
-Když zřizujete instanci Azure-SSIS IR, nainstaluje se také Azure Feature Pack for SSIS a Access Redistributable. Tyto komponenty nabízejí mimo připojení k datovým zdrojům podporovaným integrovanými komponentami navíc možnosti připojení k souborům aplikací Excel a Access a různým datovým zdrojům Azure. Můžete nainstalovat také další komponenty. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). 
+Když si zřídíte Azure-SSIS IR, nainstaluje se také Azure Feature Pack for SSIS a Access Redistributable. Tyto komponenty nabízejí připojení k souborům aplikace Excel a Access a různým datovým zdrojům Azure, kromě zdroje dat podporované metodou integrované komponenty. Můžete nainstalovat také další komponenty. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). 
 
 ## <a name="prerequisites"></a>Požadavky 
-- **Předplatné Azure**. Pokud předplatné nemáte, můžete si vytvořit [bezplatný zkušební](https://azure.microsoft.com/pricing/free-trial/) účet. 
+- **Předplatné Azure**. Pokud ještě nemáte předplatné, můžete vytvořit [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) účtu. 
 
-- **Logický server Azure SQL Database nebo spravované Instance**. Pokud ještě nemáte databázový server, vytvořte si ho na webu Azure Portal před tím, než začnete. Tento server hostuje databázi katalogu služby SSIS (SSISDB). Doporučujeme vytvořit databázový server ve stejné oblasti Azure jako prostředí Integration Runtime. Tato konfigurace umožňuje prostředí Integration Runtime zapisovat protokoly spuštění do databáze SSISDB bez přecházení mezi oblastmi Azure. V závislosti na vybraném databázovém serveru je možné databázi SSISDB vytvořit vaším jménem jako jednoúčelovou databázi, součást elastického fondu nebo ve spravované instanci a zpřístupnit ji ve veřejné síti nebo prostřednictvím připojení k virtuální síti. Seznam podporovaných cenové úrovně pro službu Azure SQL Database najdete v tématu [limity prostředků SQL Database](../sql-database/sql-database-resource-limits.md). 
+- **Azure server služby SQL Database nebo spravované Instance**. Pokud ještě nemáte databázový server, můžete můžete vytvořit na webu Azure portal před zahájením práce. Tento server bude hostovat službu SSISDB. Doporučujeme vytvořit databázový server ve stejné oblasti Azure jako prostředí integration runtime. Tato konfigurace umožňuje prostředí integration runtime zapisovat protokoly spuštění do databáze SSISDB bez přecházení mezi oblastmi Azure. Na základě vybrané databáze serveru, SSISDB lze vytvořit vaším jménem jako izolovanou databázi, součástí elastického fondu, nebo v Managed Instance a dostupný ve veřejné síti nebo pomocí připojení k virtuální síti. Seznam podporovaných cenové úrovně pro službu Azure SQL Database najdete v tématu [limity prostředků SQL Database](../sql-database/sql-database-resource-limits.md). 
 
-    Ujistěte se, že logický server Azure SQL Database nebo spravované Instance ještě nemá katalog služby SSIS (databázi SSIDB). Zřízení Azure-SSIS IR nepodporuje používání existujícího katalogu služby SSIS. 
+    Ujistěte se, že vaše databáze Azure SQL server nebo spravované Instance ještě nemá SSISDB. Zřízení prostředí Azure-SSIS IR nepodporuje použití existující databáze SSISDB. 
 
-- **Classic nebo virtuální sítí Azure Resource Manageru (volitelné)**. Virtuální síť Azure musí mít, pokud platí alespoň jedna z následujících podmínek: 
-    - Hostují databázi katalogu služby SSIS v Azure SQL Database s virtuální sítě služby koncové body nebo spravované Instance, která je ve virtuální síti. 
-    - Z balíčků SSIS spuštěných v prostředí Azure SSIS Integration Runtime se chcete připojit k místním úložištím dat. 
+- **Azure Resource Manageru virtuální síť (volitelné)**. Musí mít virtuální síť Azure Resource Manageru, pokud platí alespoň jedna z následujících podmínek: 
+    - Na serveru Azure SQL Database s koncovými body služby virtuální sítě nebo spravovanou instanci, která je ve virtuální síti, jsou hostiteli databáze SSISDB. 
+    - Chcete se připojit k datům v místním úložišti z balíčků SSIS spuštěných v Azure-SSIS IR. 
 
-- **Azure PowerShell**. Postupujte podle pokynů v [instalace a konfigurace Azure Powershellu](/powershell/azure/install-azurerm-ps), je-li spustit skript prostředí zřízení prostředí Azure-SSIS integration runtime spouštějícího balíčky SSIS v cloudu pomocí Powershellu. 
+- **Azure PowerShell**. Postupujte podle pokynů [instalace a konfigurace Azure Powershellu](/powershell/azure/install-azurerm-ps), pokud chcete spustit skript prostředí PowerShell ke zřízení prostředí Azure-SSIS IR. 
 
 ### <a name="region-support"></a>Oblasti podpory
-Seznam oblastí Azure, ve kterých jsou služba Data Factory a prostředí Azure-SSIS Integration Runtime aktuálně dostupné, najdete v tématu [Dostupnost služby ADF a prostředí SSIS IR v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
+Seznam oblastí Azure, ve kterých jsou aktuálně k dispozici, ADF a Azure-SSIS IR najdete v části [ADF + SSIS IR dostupnost podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
 
 ### <a name="compare-sql-database-logical-server-and-sql-database-managed-instance"></a>Porovnání logický server služby SQL Database a SQL Database Managed Instance
 
-Následující tabulka porovnává určité funkce logický server SQL Database a SQL Database Managed Instance, jak souvisejí s nabídkou Azure SSIR IR:
+Následující tabulka porovnává určitých funkcí serveru Azure SQL Database a Managed Instance, jak souvisejí s nabídkou Azure SSIR reakcí na Incidenty:
 
-| Funkce | Logický server služby SQL Database| SQL Database – spravovaná Instance |
+| Funkce | Server služby Azure SQL Database| MI |
 |---------|--------------|------------------|
-| **Plánování** | Agent systému SQL Server není k dispozici.<br/><br/>Zobrazit [naplánovat balíčku jako součást kanálu Azure Data Factory](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Spravovaná Instance agenta je k dispozici. |
-| **Ověřování** | Můžete vytvořit databázi pomocí uživatelského účtu databáze s omezením, který reprezentuje všechny uživatele Azure Active Directory v **dbmanager** role.<br/><br/>Zobrazit [povolení služby Azure AD pro službu Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Nelze vytvořit databázi s účtem uživatele databáze s omezením, který reprezentuje všechny uživatele Azure Active Directory než správce Azure AD. <br/><br/>Zobrazit [povolení služby Azure AD na spravované instanci Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
-| **Úroveň služeb** | Při vytváření prostředí Azure-SSIS IR pro službu SQL Database, můžete vybrat na úrovni služby pro databázi SSISDB. Existuje několik úrovní služeb. | Když vytvoříte na spravované instanci Azure-SSIS IR, nelze vybrat úroveň služby pro databázi SSISDB. Všechny databáze na stejné Managed Instance sdílet stejný prostředek přidělených této instanci. |
-| **Virtuální síť** | Podporuje Azure Resource Manager a klasické virtuální sítě pro prostředí Azure-SSIS IR spojit, když používáte Azure SQL Database s koncovými body služby virtuální sítě nebo vyžadují přístup k místním datům. | Podporuje pouze virtuální sítí Azure Resource Manageru pro prostředí Azure SSIS IR pro připojení. Virtuální síť je povinná.<br/><br/>Když se do programu Azure-SSIS IR do stejné virtuální síti jako Managed Instance, ujistěte se, že Azure-SSIS IR je v jiné podsíti, než Managed Instance. Když se do programu Azure-SSIS IR k jiné virtuální sítě, než Managed Instance, doporučujeme, abyste partnerský vztah virtuální sítě (což je omezený na stejné oblasti) nebo virtuální sítě pro připojení k virtuální síti. Zobrazit [vaši aplikaci do Azure SQL Database Managed Instance připojit](../sql-database/sql-database-managed-instance-connect-app.md). |
-| **Distribuované transakce** | Podporováno prostřednictvím elastické transakce. Transakce Microsoft distribuované transakce koordinátor (MSDTC) nejsou podporovány. Pokud balíčků služby SSIS pomocí příkaz MSDTC koordinovat distribuované transakce, zvažte přechod na elastické transakce pro službu SQL Database. Další informace najdete v tématu [distribuované transakce v cloudových databázích](../sql-database/sql-database-elastic-transactions-overview.md). | Nepodporuje se. |
+| **Plánování** | Agent systému SQL Server není k dispozici.<br/><br/>Zobrazit [plánování spouštění balíčku v kanálu ADF](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Spravovaná Instance agenta je k dispozici. |
+| **Ověřování** | Můžete vytvářet databáze SSISDB uživatele databáze s omezením představující všechny skupiny AAD s identitou, vaše ADF jako člen **db_owner** role.<br/><br/>Zobrazit [povolení služby Azure AD ověřování k vytvoření databáze SSISDB na serveru Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Můžete vytvořit službu SSISDB s uživatele databáze s omezením představující spravovanou identitu vaší ADF. <br/><br/>Zobrazit [povolení služby Azure AD ověřování k vytvoření databáze SSISDB v Azure SQL Database Managed Instance](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
+| **Úroveň služeb** | Při vytváření prostředí Azure-SSIS IR pomocí serveru Azure SQL Database, můžete vybrat na úrovni služby pro databázi SSISDB. Existuje více úrovní služeb. | Při vytváření prostředí Azure-SSIS IR pomocí Managed Instance, nelze vybrat úroveň služby pro databázi SSISDB. Všechny databáze ve spravované instanci sdílet stejný prostředek přidělených této instanci. |
+| **Virtuální síť** | Podporuje pouze Azure Resource Manageru virtuální sítě pro prostředí Azure-SSIS IR mají spojit, když pomocí serveru Azure SQL Database s koncovými body služby virtuální sítě a vyžadují přístup k úložišti dat v místním. | Podporuje pouze Azure Resource Manageru virtuální sítě pro vaše prostředí Azure SSIS IR pro připojení. Vždy se vyžaduje virtuální síť.<br/><br/>Když se do programu Azure-SSIS IR do stejné virtuální síti jako Managed Instance, ujistěte se, že prostředí Azure-SSIS IR je v jiné podsíti, než Managed Instance. Když se do programu Azure-SSIS IR do jiné virtuální sítě, než Managed Instance, doporučujeme, abyste buď partnerský vztah virtuální sítě nebo virtuální sítě pro připojení k virtuální síti. Zobrazit [vaši aplikaci do Azure SQL Database Managed Instance připojit](../sql-database/sql-database-managed-instance-connect-app.md). |
+| **Distribuované transakce** | Podporováno prostřednictvím elastické transakce. Transakce Microsoft distribuované transakce koordinátor (MSDTC) nejsou podporovány. Pokud balíčků služby SSIS pomocí příkaz MSDTC koordinovat distribuované transakce, zvažte přechod na elastické transakce pro službu Azure SQL Database. Další informace najdete v tématu [distribuované transakce v cloudových databázích](../sql-database/sql-database-elastic-transactions-overview.md). | Nepodporuje se. |
 | | | |
 
 ## <a name="azure-portal"></a>portál Azure
-V této části použijete na webu Azure portal, konkrétně Uživatelském rozhraní služby Data Factory k vytvoření Azure-SSIS IR. 
+V této části použijete Azure portal, konkrétně ADF uživatelské rozhraní (UI) nebo aplikace, chcete-li vytvořit prostředí Azure-SSIS IR. 
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome. 
@@ -128,9 +128,9 @@ V této části použijete na webu Azure portal, konkrétně Uživatelském rozh
 
     e. Jako **Počet uzlů** vyberte počet uzlů ve vašem clusteru Integration Runtime. Zobrazí se pouze podporované počty uzlů. Pokud chcete paralelně spouštět mnoho balíčků, vyberte velký cluster s mnoha uzly (horizontálně navyšte kapacitu). 
 
-    f. Jako **Edice / licence** vyberte edici nebo licenci SQL Serveru pro vaše prostředí Integration Runtime: Standard nebo Enterprise. Vyberte Enterprise, pokud ve svém prostředí Integration Runtime chcete využít pokročilé nebo prémiové funkce. 
+    f. Pro **Edition nebo licencí**, vyberte edici systému SQL Server/licenci pro prostředí integration runtime: Standard nebo Enterprise. Vyberte Enterprise, pokud ve svém prostředí Integration Runtime chcete využít pokročilé nebo prémiové funkce. 
 
-    g. V části **Úspora peněz** vyberte možnost Zvýhodněného hybridního využití Azure (AHB) pro vaše prostředí Integration Runtime: Ano nebo Ne. Vyberte Ano, pokud chcete použít vlastní licenci SQL Serveru se Software Assurance a využít tak úspory nákladů spojené s hybridním využitím. 
+    g. Pro **uložit peníze**, vyberte možnost Azure Hybrid Benefit (AHB) pro prostředí integration runtime: Ano nebo ne. Vyberte Ano, pokud chcete použít vlastní licenci SQL Serveru se Software Assurance a využít tak úspory nákladů spojené s hybridním využitím. 
 
     h. Klikněte na **Další**. 
 
@@ -150,7 +150,7 @@ V této části použijete na webu Azure portal, konkrétně Uživatelském rozh
 
     f. Jako **Heslo správce** zadejte heslo ověřování SQL pro váš databázový server pro hostování databáze SSISDB. 
 
-    g. Jako **Úroveň služby databáze katalogu** vyberte úroveň služby pro váš databázový server pro hostování databáze SSISDB: úroveň Basic, Standard nebo Premium nebo název elastického fondu. 
+    g. Pro **úroveň služeb databáze katalogu**, vyberte úroveň služby pro databázový server pro hostování služby SSISDB: Úroveň Basic, Standard nebo Premium nebo název elastického fondu. 
 
     h. Klikněte na **Test připojení**, a pokud proběhne úspěšně, klikněte na **Další**. 
 
@@ -170,7 +170,7 @@ V této části použijete na webu Azure portal, konkrétně Uživatelském rozh
 
     b. Pro **umístění**, vybrali stejného umístění vašeho prostředí integration runtime. 
 
-    c. Pro **typ**, vyberte typ virtuální síť: Classic nebo Azure Resource Manageru. Doporučujeme vám, že vyberete virtuální síť Azure Resource Manageru, protože klasické virtuální sítě se brzy přestanou používat. 
+    c. Pro **typ**, vyberte typ virtuální sítě: Classic nebo Azure Resource Manageru. Doporučujeme vám, že vyberete virtuální síť Azure Resource Manageru, protože klasické virtuální sítě se brzy přestanou používat. 
 
     d. Pro **název virtuální sítě**, vyberte název virtuální sítě. Tato virtuální síť musí být stejné virtuální síti použít pro službu Azure SQL Database s virtuální sítě služby koncové body nebo spravované instanci k hostování databáze SSISDB a nebo připojené k vaší místní síti. 
 
@@ -599,7 +599,7 @@ V této části pomocí šablony Azure Resource Manageru k vytvoření prostřed
     ``` 
 
 ## <a name="deploy-ssis-packages"></a>Nasazení balíčků SSIS
-Teď použijte SQL Server Data Tools (SSDT) nebo aplikaci SQL Server Management Studio (SSMS) k nasazení vašich balíčků SSIS do Azure. Připojte se ke svému databázovému serveru, který hostuje katalog služby SSIS (SSISDB). Název databázového serveru je ve formátu: &lt;název serveru Azure SQL Database&gt;. database.windows.net nebo &lt;název spravované Instance. Předpona DNS&gt;. database.windows.net. Pokyny najdete v článku věnovaném [nasazení balíčků](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
+Teď použijte SQL Server Data Tools (SSDT) nebo aplikaci SQL Server Management Studio (SSMS) k nasazení vašich balíčků SSIS do Azure. Připojte se ke svému databázovému serveru, který hostuje katalog služby SSIS (SSISDB). Název databázového serveru je ve formátu: &lt;Název serveru Azure SQL Database&gt;. database.windows.net nebo &lt;název spravované Instance. Předpona DNS&gt;. database.windows.net. Pokyny najdete v článku věnovaném [nasazení balíčků](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit další prostředí Azure-SSIS IR témata v této dokumentaci: 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 1fbc243332684e549f6ce2fd10a10bac3aa383d1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cd26eef236063eff72d909c0cd86c7f9485bfc4d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836830"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793287"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
 
@@ -66,7 +66,7 @@ Virtuální počítač Gues – Windows/Linux - statická IP adresa | Ano
 Hosta virtuálního počítače – s více síťovými Kartami | Ano
 
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ### <a name="host-storage"></a>Úložiště hostitele
 

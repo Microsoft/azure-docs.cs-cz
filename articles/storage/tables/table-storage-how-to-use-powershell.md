@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: rogarana
 ms.component: cosmosdb-table
-ms.openlocfilehash: 219b5aa3c1f280ce02d2579f3fe2cc7ca7da490d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9aa3431e91196d7c33582d17494ddf0c32fba704
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125781"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634469"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provádění operací Azure Table storage pomocí Azure Powershellu 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,9 @@ Tento článek popisuje běžné operace Azure Table storage. Získáte informac
 
 Tento článek ukazuje, jak vytvořit nový účet úložiště Azure do nové skupiny prostředků, takže je můžete snadno odebrat po dokončení. Pokud místo toho můžete využít existující účet úložiště, můžete to udělat místo.
 
-V příkladech vyžaduje modul Azure Powershellu verze 4.4.0 nebo novější. V okně Powershellu, spusťte `Get-Module -ListAvailable AzureRM` k vyhledání verze. Pokud se nezobrazí nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+V příkladech vyžaduje modul Azure PowerShell `AzureRM` verze 4.4.0 nebo novější. V okně Powershellu, spusťte `Get-Module -ListAvailable AzureRM` k vyhledání verze. Pokud se nezobrazí nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+
+[!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
 Po instalaci prostředí Azure PowerShell nebo aktualizaci, musíte nainstalovat modul **AzureRmStorageTable**, který obsahuje příkazy pro správu entity. Chcete-li nainstalovat tento modul, spusťte PowerShell jako správce a použijte **Install-Module** příkazu.
 
@@ -40,7 +42,7 @@ Po instalaci prostředí Azure PowerShell nebo aktualizaci, musíte nainstalovat
 Install-Module AzureRmStorageTable
 ```
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 

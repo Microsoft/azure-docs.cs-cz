@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 143df8a8c82e84b193bdb48a3d41682fca19156b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315423"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608626"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Použití Apache Kafka v HDInsight pomocí Azure IoT Hub
 
@@ -48,7 +48,7 @@ Další informace o rozhraní API pro připojení najdete v tématu [ https://ka
 
 2. Pokud chcete nahrát soubor .jar k hraničnímu uzlu vašeho systému Kafka v clusteru HDInsight, použijte následující příkaz:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Nahraďte `sshuser` pomocí uživatelského účtu SSH pro váš cluster HDInsight. Nahraďte `new-edgenode` s názvem hraniční uzel. Nahraďte `clustername` s názvem clusteru. Další informace na koncovém bodu SSH pro hraniční uzel, najdete v článku [použití hraničních uzlů s HDInsight](../hdinsight-apps-use-edge-node.md#access-an-edge-node) dokumentu.
 
     ```bash
@@ -69,10 +69,10 @@ Další informace o rozhraní API pro připojení najdete v tématu [ https://ka
     sudo mv kafka-connect-iothub-assembly*.jar /usr/hdp/current/kafka-broker/libs/
     ```
 
-> [!TIP]
+> [!TIP]  
 > Pokud narazíte na problémy se zbytkem pracovního postupu v tomto dokumentu při použití souboru .jar předem připravené, zkuste sestavit balíček ze zdroje.
 >
-> Pokud chcete vytvořit konektor, musí mít Scala vývojové prostředí s [nástroj sestavení Scala](http://www.scala-sbt.org/).
+> Pokud chcete vytvořit konektor, musí mít Scala vývojové prostředí s [nástroj sestavení Scala](https://www.scala-sbt.org/).
 >
 > 1. Stáhnout zdroj pro konektor z [ https://github.com/Azure/toketi-kafka-connect-iothub/ ](https://github.com/Azure/toketi-kafka-connect-iothub/) do svého vývojového prostředí.
 >
@@ -132,7 +132,7 @@ Z připojení SSH k hraničnímu uzlu použijte následující postup ke konfigu
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Tato změna umožňuje testovat pomocí konzoly producent je součástí systému Kafka. Možná bude nutné různých převaděče pro ostatní producenty a spotřebiteli. Informace o použití jiných převaděče hodnot najdete v tématu [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
     * Přidáte řádek na konci souboru, který obsahuje následující text:
@@ -141,7 +141,7 @@ Z připojení SSH k hraničnímu uzlu použijte následující postup ke konfigu
         consumer.max.poll.records=10
         ```
 
-        > [!TIP]
+        > [!TIP]  
         > Tato změna je zabránit vypršení časového limitu pro v konektoru jímky omezení na 10 záznamů najednou. Další informace najdete na adrese [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
 6. Chcete-li uložit soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
@@ -178,7 +178,7 @@ Pokud chcete načíst informace o IoT hub používá konektorem, použijte násl
             * __Koncový bod kompatibilní s centrem událostí__
             * __Oddíly__
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Hodnota koncový bod z portálu může obsahovat další text, který není nutné v tomto příkladu. Extrahovat text, který odpovídá tomuto vzoru `sb://<randomnamespace>.servicebus.windows.net/`.
 
     * __Z [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, použijte následující příkaz:
@@ -239,14 +239,14 @@ Pokud chcete nakonfigurovat zdroj pro práci s centrem IoT, udělejte toto z př
 
     V editoru najít a změnit následující položky:
 
-    * `Kafka.Topic=PLACEHOLDER`: Nahradit `PLACEHOLDER` s `iotin`. V jsou umístěny zprávy přijaté ze služby IoT hub `iotin` tématu.
-    * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Nahradit `PLACEHOLDER` s názvem kompatibilní s centrem událostí.
-    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Nahradit `PLACEHOLDER` koncový bod kompatibilní s centrem událostí.
-    * `IotHub.Partitions=PLACEHOLDER`: Nahradit `PLACEHOLDER` s počtem oddílů z předchozího postupu.
-    * `IotHub.AccessKeyName=PLACEHOLDER`: Nahradit `PLACEHOLDER` s `service`.
-    * `IotHub.AccessKeyValue=PLACEHOLDER`: Nahradit `PLACEHOLDER` s primárním klíčem `service` zásad.
-    * `IotHub.StartType=PLACEHOLDER`: Nahradit `PLACEHOLDER` s datum UTC. Toto datum je při spuštění konektoru probíhá kontrola zpráv. Formát data je `yyyy-mm-ddThh:mm:ssZ`.
-    * `BatchSize=100`: Nahradit `100` s `5`. Tato změna způsobí, že konektor umožní číst zprávy do Kafka, jakmile existuje pět nových zpráv ve službě IoT hub.
+    * `Kafka.Topic=PLACEHOLDER`: Nahraďte  za `iotin` (Jak velká může být moje znalostní báze?). V jsou umístěny zprávy přijaté ze služby IoT hub `iotin` tématu.
+    * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s názvem kompatibilní s centrem událostí.
+    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Nahraďte `PLACEHOLDER` koncový bod kompatibilní s centrem událostí.
+    * `IotHub.Partitions=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s počtem oddílů z předchozího postupu.
+    * `IotHub.AccessKeyName=PLACEHOLDER`: Nahraďte  za `service` (Jak velká může být moje znalostní báze?).
+    * `IotHub.AccessKeyValue=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s primárním klíčem `service` zásad.
+    * `IotHub.StartType=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s datum UTC. Toto datum je při spuštění konektoru probíhá kontrola zpráv. Formát data je `yyyy-mm-ddThh:mm:ssZ`.
+    * `BatchSize=100`: Nahraďte  za `5` (Jak velká může být moje znalostní báze?). Tato změna způsobí, že konektor umožní číst zprávy do Kafka, jakmile existuje pět nových zpráv ve službě IoT hub.
 
     Příklad konfigurace najdete v tématu [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
 
@@ -272,8 +272,8 @@ Konfigurace připojení jímky pro práci s centrem IoT, udělejte toto z připo
 
     V editoru najít a změnit následující položky:
 
-    * `topics=PLACEHOLDER`: Nahradit `PLACEHOLDER` s `iotout`. Zpráv zapsaných do `iotout` téma se předávají do služby IoT hub.
-    * `IotHub.ConnectionString=PLACEHOLDER`: Nahradit `PLACEHOLDER` připojovacím řetězcem pro `service` zásad.
+    * `topics=PLACEHOLDER`: Nahraďte  za `iotout` (Jak velká může být moje znalostní báze?). Zpráv zapsaných do `iotout` téma se předávají do služby IoT hub.
+    * `IotHub.ConnectionString=PLACEHOLDER`: Nahraďte `PLACEHOLDER` připojovacím řetězcem pro `service` zásad.
 
     Příklad konfigurace najdete v tématu [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
@@ -298,7 +298,7 @@ nnect.IotHubSourceTask:39)
 org.apache.kafka.connect.runtime.WorkerSourceTask:356)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Spuštění konektoru, může se zobrazit několik upozornění. Tato upozornění nezpůsobí problémy s příjmem zpráv ze služby IoT hub.
 
 Chcete-li zastavit konektoru, použijte __Ctrl + C__.
@@ -320,7 +320,7 @@ IotHubSinkTask:47)
 t.runtime.WorkerSinkTask:262)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Můžete si všimnout několika upozornění spuštění konektoru. Ta můžete bezpečně ignorovat.
 
 K odesílání zpráv prostřednictvím konektoru použijte následující kroky:
@@ -332,7 +332,7 @@ K odesílání zpráv prostřednictvím konektoru použijte následující kroky
     ```
 2. K odesílání zpráv `iotout` tématu, použijte následující příkaz:
 
-    > [!WARNING]
+    > [!WARNING]  
     > Protože se jedná nové připojení SSH `$KAFKABROKERS` proměnné neobsahuje žádné informace. Ji nastavit, použijte jednu z následujících metod:
     >
     > * Postupujte podle prvních tří kroků v [konfigurace Apache Kafka](#configure-apache-kafka) oddílu.
@@ -346,7 +346,7 @@ K odesílání zpráv prostřednictvím konektoru použijte následující kroky
 
 3. Odeslat zprávu do vašeho zařízení, vložte do relace SSH pro dokument JSON `kafka-console-producer`.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Musíte nastavit hodnotu `"deviceId"` položku s ID zařízení. V následujícím příkladu je název zařízení `fakepi`:
 
     ```text

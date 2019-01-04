@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409747"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722647"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené využití ověřování a autorizace ve službě Azure App Service
 
-V tomto článku se dozvíte, jak přizpůsobit předdefinované [ověřování a autorizace ve službě App Service](app-service-authentication-overview.md)a jak spravovat identitu z vaší aplikace. 
+V tomto článku se dozvíte, jak přizpůsobit předdefinované [ověřování a autorizace ve službě App Service](overview-authentication-authorization.md)a jak spravovat identitu z vaší aplikace. 
 
 Abyste mohli rychle začít, najdete v jednom z následujících kurzů:
 
@@ -37,13 +37,13 @@ Abyste mohli rychle začít, najdete v jednom z následujících kurzů:
 
 ## <a name="use-multiple-sign-in-providers"></a>Použití více poskytovatelů přihlášení
 
-Konfigurace portálu nenabízí klíč způsob, jak k dispozici více zprostředkovatelů přihlašování pro vaše uživatele (například Facebook a Twitter). Však není pro přidání funkce do vaší webové aplikace. Kroky jsou uvedeny následovně:
+Konfigurace portálu nenabízí klíč způsob, jak k dispozici více zprostředkovatelů přihlašování pro vaše uživatele (například Facebook a Twitter). Však není pro přidání funkce do vaší aplikace. Kroky jsou uvedeny následovně:
 
 V první **ověřování / autorizace** stránce na webu Azure Portal, nakonfigurujte všechny zprostředkovatele identity, které chcete povolit.
 
 V **akce má být provedena, když požadavek nebude ověřený**vyberte **povolit anonymní požadavky (NIC)**.
 
-V přihlašovací stránku, nebo na navigačním panelu nebo jiného umístění vaší webové aplikace, přidejte odkaz přihlásit ke každému zprostředkovatele jste povolili (`/.auth/login/<provider>`). Příklad:
+V přihlašovací stránku, nebo na navigačním panelu nebo jiného umístění vaší aplikace, přidejte odkaz přihlásit ke každému zprostředkovatele jste povolili (`/.auth/login/<provider>`). Příklad:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -63,7 +63,7 @@ Chcete-li přesměrovat uživatele po-přihlášení se změnami na vlastní adr
 
 ## <a name="validate-tokens-from-providers"></a>Ověřovat tokeny od poskytovatelů
 
-V u klienta přesměruje přihlášení, aplikace přihlásí uživatele ke zprostředkovateli ručně a poté ho předá ověřovací token do služby App Service pro ověřování (viz [tok ověřování](app-service-authentication-overview.md#authentication-flow)). Toto ověření samotný není ve skutečnosti udělit přístup k prostředkům požadovanou aplikaci, ale úspěšné ověření získáte token relace, který můžete použít pro přístup k prostředkům aplikace. 
+V u klienta přesměruje přihlášení, aplikace přihlásí uživatele ke zprostředkovateli ručně a poté ho předá ověřovací token do služby App Service pro ověřování (viz [tok ověřování](overview-authentication-authorization.md#authentication-flow)). Toto ověření samotný není ve skutečnosti udělit přístup k prostředkům požadovanou aplikaci, ale úspěšné ověření získáte token relace, který můžete použít pro přístup k prostředkům aplikace. 
 
 Ověřit token poskytovatele, aplikaci služby App Service musíte nejdřív nakonfigurovat požadovaného poskytovatele. Za běhu a po získání ověřovacího tokenu od poskytovatele odeslat token, který má `/.auth/login/<provider>` pro ověření. Příklad: 
 
@@ -186,15 +186,15 @@ Když vyprší platnost přístupového tokenu poskytovatele, musíte uživatele
 - **Účet Microsoft**: Když [nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md), vyberte `wl.offline_access` oboru.
 - **Azure Active Directory**: V [ https://resources.azure.com ](https://resources.azure.com), proveďte následující kroky:
     1. V horní části stránky vyberte **r/w**.
-    1. V levém prohlížeč, přejděte na **předplatná** > **_\<předplatné\_název_**   >  **resourceGroups** > _**\<prostředků\_skupiny\_name >**_   >  **poskytovatelé** > **Microsoft.Web** > **lokality** > _**\<aplikace \_name >**_ > **config** > **authsettings**. 
-    1. Klikněte na **Upravit**.
-    1. Upravte následující vlastnosti. Nahraďte  _\<aplikace\_id >_ s ID aplikace Azure Active Directory, služby, které chcete získat přístup.
+    2. V levém prohlížeč, přejděte na **předplatná** > **_\<předplatné\_název_**   >  **resourceGroups** > _**\<prostředků\_skupiny\_name >**_   >  **poskytovatelé** > **Microsoft.Web** > **lokality** > _**\<aplikace \_name >**_ > **config** > **authsettings**. 
+    3. Klikněte na **Upravit**.
+    4. Upravte následující vlastnosti. Nahraďte  _\<aplikace\_id >_ s ID aplikace Azure Active Directory, služby, které chcete získat přístup.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    1. Klikněte na tlačítko **umístit**. 
+    5. Klikněte na tlačítko **umístit**. 
 
 Po nakonfigurování poskytovatele můžete [najít tokenu obnovení a dobu vypršení platnosti přístupového tokenu](#retrieve-tokens-in-app-code) v úložišti tokenů. 
 

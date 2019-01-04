@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 603aa8d85d42167accd2a5e71c4ab3e5245f5d07
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8e651f516254d408b15ab4aeae718861dfc2b3e6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499265"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608285"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do služby Azure SQL database
 
@@ -26,9 +26,9 @@ Zjistěte, jak připojit cluster Apache Spark v Azure HDInsight s Azure SQL data
 
 * **Azure SQL database**. Postupujte podle pokynů na adrese [vytvoření Azure SQL database](../../sql-database/sql-database-get-started-portal.md). Ujistěte se, že vytvoříte databázi s ukázkou **AdventureWorksLT** schéma a data. Také se ujistěte, že vytvořte pravidlo brány firewall na úrovni serveru umožňuje IP adresu vašeho klienta pro přístup k databázi SQL na serveru. Pokyny pro přidání pravidla brány firewall je k dispozici ve stejném článku. Po vytvoření databáze Azure SQL, ujistěte se, že po ruce zachovat následující hodnoty. Potřebujete připojení k databázi z clusteru Spark.
 
-    * Název serveru, který je hostitelem databáze Azure SQL
-    * Název databáze SQL Azure
-    * Azure SQL database správce uživatelské jméno / heslo
+    * Název serveru hostujícího databázi Azure SQL.
+    * Název databáze SQL Azure.
+    * Azure SQL database správce uživatelské jméno / heslo.
 
 * **SQL Server Management Studio:** Postupujte podle pokynů na adrese [použití SSMS k připojení a dotazování dat](../../sql-database/sql-database-connect-query-ssms.md).
 
@@ -41,12 +41,10 @@ Začněte vytvořením [Poznámkový blok Jupyter](https://jupyter.org/) přidru
 
     ![Poznámkový blok Jupyter ve Sparku](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Poznámkový blok Jupyter ve Sparku")
    
-   > [!NOTE]
+   > [!NOTE]  
    > Poznámkový blok Jupyter v clusteru Spark dostanete také tak, že otevřete následující adresu URL v prohlížeči. Nahraďte **CLUSTERNAME** názvem clusteru:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
 
 1. Do poznámkového bloku Jupyter, v pravém horním rohu klikněte na tlačítko **nový**a potom klikněte na tlačítko **Spark** vytvořit poznámkový blok Scala. Poznámkové bloky Jupyter v clusteru HDInsight Spark poskytují také **PySpark** jádra pro Python2 aplikace a **PySpark3** jádra pro aplikace Python3. Pro účely tohoto článku vytvoříme Poznámkový blok Scala.
    
@@ -54,9 +52,8 @@ Začněte vytvořením [Poznámkový blok Jupyter](https://jupyter.org/) přidru
 
     Další informace o jádrech najdete v tématu s popisem [použití jader poznámkových bloků Jupyter s clustery Apache Spark v HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
-   > [!NOTE]
+   > [!NOTE]  
    > V tomto článku používáme jádra Spark (Scala), protože streamování dat z aplikace Spark do služby SQL database je podporovaný jenom v Scala a Java aktuálně. I v případě, že čtení a zápis do SQL lze provést pomocí Pythonu, pro zajištění konzistence v tomto článku, používáme Scala u všech tří typů operací.
-   >
 
 1. Tím se otevře nový poznámkový blok s výchozím názvem, **bez názvu**. Klikněte na název poznámkového bloku a zadejte název podle vašeho výběru.
 
@@ -235,6 +232,6 @@ V této části jsme Streamovat data do **hvactable** , že jste již vytvořili
 
 ## <a name="next-steps"></a>Další postup
 
-* [Použití clusteru Spark v HDInsight k analýze dat v Data Lake Store](apache-spark-use-with-data-lake-store.md)
+* [Použití clusteru Spark v HDInsight k analýze dat v Data Lake Storage](apache-spark-use-with-data-lake-store.md)
 * [Zpracování strukturované streamování událostí pomocí centra událostí](apache-spark-eventhub-structured-streaming.md)
 * [Použití strukturovaného streamování Apache Sparku s využitím Apache Kafka v HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md)

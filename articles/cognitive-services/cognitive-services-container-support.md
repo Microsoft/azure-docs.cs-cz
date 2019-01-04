@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 8d98e428d60c0981385b842bcb4dfc77bdbbcf22
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 4ee98c2d8170df5ef5878f5b534b545eb105667e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413043"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543904"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -33,8 +33,8 @@ Následující video ukazuje použití kontejner služeb Cognitive Services.
 
 - **Kontrola nad daty**: Umožňuje zákazníkům zvolit, kam svá data zpracovává tyto služby Cognitive Services. To je nezbytné pro zákazníky, které nelze odesílat data do cloudu, ale přístup k technologie služeb Cognitive Services. Podpora konzistence v hybridním prostředí – napříč daty, správu, identity a zabezpečení.
 - **Ovládací prvek průběhu aktualizace modelu**: Poskytují zákazníkům flexibilitu při vytváření verzí a aktualizace modelů nasazení v rámci svých řešení.
-- **Přenosné architektura**: Povolte vytváření architektura přenosné aplikace, který je možné nasadit v Azure, místní a hraniční. Kontejnery, které je možné nasadit přímo do [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Zásobník](/azure/azure-stack/). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Vysoká propustnost / nízká latence**: Umožňují zákazníkům škálovat pro vysokou propustností a nízkou latencí tím, že služby Cognitive Services a spusťte fyzicky blízko jejich aplikační logiku a data. Kontejnery není limit transakcí za sekundu (TPS) a můžete provést škálování současně i horizontální navyšování kapacity pro zpracování poptávky, pokud zadáte nezbytné hardwarové prostředky.
+- **Přenosné architektura**: Povolte vytváření architektura přenosné aplikace, který je možné nasadit v Azure, místní a hraniční. Kontejnery, které je možné nasadit přímo do [Azure Kubernetes Service](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Zásobník](../azure-stack/index.yml). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+- **Vysoká propustnost / nízká latence**: Umožňují zákazníkům škálovat pro vysokou propustností a nízkou latencí tím, že služby Cognitive Services a spusťte fyzicky blízko jejich aplikační logiku a data. Kontejnery není limit transakcí za sekundu (TPS) a můžete provést škálování současně i horizontální navyšování kapacity pro zpracování poptávky, pokud zadáte nezbytné hardwarové prostředky. 
 
 
 ## <a name="containers-in-azure-cognitive-services"></a>Kontejnery v Azure Cognitive Services
@@ -61,7 +61,7 @@ Kontejnery služby Azure Cognitive Services jsou veřejně dostupné prostředni
 
 Před použitím kontejnerů Azure Cognitive Services, musí splňovat následující požadavky:
 
-**Modul docker**: Musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](/azure/aks/) nebo [Azure Container Instances](/azure/container-instances/).
+**Modul docker**: Musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](../aks/index.yml) nebo [Azure Container Instances](../container-instances/index.yml).
 
 Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure.
 

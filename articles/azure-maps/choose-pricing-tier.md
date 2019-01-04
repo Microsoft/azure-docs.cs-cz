@@ -3,17 +3,17 @@ title: Zvolte cenovou úroveň pro službu Azure Maps právo | Dokumentace Micro
 description: Další informace o cenových úrovních, které nabízí Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ee277867f449afddeb89c3fd73b5b577a68a4497
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 028a227eefb319d19c9274082626a007bd9161de
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998386"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993956"
 ---
 # <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>Volba správného cenové úrovně ve službě Azure Maps
 
@@ -53,9 +53,8 @@ Viz tabulku s **cenová úroveň cílové zákazníkům** získat lepší předs
 
 | Cenová úroveň  |        Cílové zákazníků                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>Cenová úroveň S0 je pro zákazníky, kteří jsou malé a střední podniky. Je pravé cenovou úroveň pro vás, pokud neočekáváte velké objemy souběžných uživatelů a splňuje vaše požadavky na služby geoprostorové základní rozhraní API, jak je uvedeno v následující tabulce. Tato úroveň je obecně dostupná a platí pro aplikace ve všech fázích výroby od testování konceptu vývoje a rané testování do produkčních aplikací a nasazení.<p>|
+| S0            |    <p>Cenová úroveň S0 je pro zákazníky, kteří jsou malé a střední podniky. Je pravé cenovou úroveň pro vás, pokud neočekáváte velké objemy souběžných uživatelů a splňuje vaše požadavky na služby geoprostorové základní rozhraní API, jak je uvedeno ve výše uvedené tabulce. Tato úroveň je obecně dostupná a platí pro aplikace ve všech fázích výroby od testování konceptu vývoje a rané testování do produkčních aplikací a nasazení.<p>|
 | S1            |    <p>Cenovou úroveň S1 je určená pro zákazníky, které potřebují podporu pro enterprise ve velkém měřítku, kritické podnikové procesy, velký objem souběžných uživatelů a vyžaduje pokročilé geoprostorových služeb.</p>|
-
 
 ## <a name="next-steps"></a>Další postup
 

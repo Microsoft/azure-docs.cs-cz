@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: fd9094d646b917cf811c28c9770fc2427a404ab4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309034"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581024"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikace témat Apache Kafka s využitím Kafka v HDInsight pomocí Mirrormakeru
 
@@ -22,7 +22,7 @@ Další informace o použití zrcadlení funkce platformy Apache Kafka pro repli
 
 V tomto příkladu je zrcadlení používanou k replikaci témata mezi dvěma clustery HDInsight. Oba clustery jsou ve službě Azure Virtual Network ve stejné oblasti.
 
-> [!WARNING]
+> [!WARNING]  
 > Zrcadlení by neměly být zahrnuté jako prostředek k dosažení odolnost proti chybám. Posun na položky v rámci tématu se liší mezi zdrojovým a cílovým clustery, aby klienti nemohou použít dva Zaměnitelně.
 >
 > Pokud máte obavy o odolnosti proti chybám, byste měli nastavit replikaci pro témata v rámci vašeho clusteru. Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
@@ -45,13 +45,13 @@ Zdrojových a cílových clusterech se může lišit v počtu používaných uzl
 
 Pokud potřebujete pro zrcadlení mezi clustery Kafka v různých sítích, existují následující další aspekty:
 
-* **Brány**: sítě musí být schopné komunikovat na úrovni protokolu TCPIP.
+* **Brány**: Sítě musí být schopné komunikovat na úrovni protokolu TCPIP.
 
-* **Překlad názvů**: clustery The Kafka v každé sítě musí být schopný se připojit k sobě navzájem pomocí názvy hostitelů. To může vyžadovat serveru systému DNS (Domain Name) v každé sítě nakonfigurovaný tak, aby směrovala požadavky k jiným sítím.
+* **Překlad názvů**: Clustery Kafka v každé sítě musí být schopný se připojit k sobě navzájem pomocí názvy hostitelů. To může vyžadovat serveru systému DNS (Domain Name) v každé sítě nakonfigurovaný tak, aby směrovala požadavky k jiným sítím.
 
     Při vytváření služby Azure Virtual Network, místo použití automatické DNS, opatřeného sítě, je nutné zadat vlastní server DNS a IP adresu serveru. Po vytvoření virtuální sítě můžete musí pak vytvořte virtuální počítač Azure, která používá tuto IP adresu, pak instalace a konfigurace DNS softwaru na něj.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Vytvoření a konfigurace vlastního serveru DNS. před instalací HDInsight do virtuální sítě. Neexistuje žádná další konfigurace požadované pro HDInsight použít server DNS nakonfigurovaný pro virtuální síť.
 
 Další informace o propojení dvou virtuálních sítích Azure najdete v tématu [konfigurace připojení typu VNet-to-VNet](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
@@ -66,7 +66,7 @@ I když můžete vytvořit virtuální síť Azure a ručně clustery Kafka, je 
    
     Šablona Azure Resource Manageru se nachází na adrese **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json**.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka se třemi pracovními uzly.
 
 2. Pomocí následujících informací vyplňte položky na **vlastní nasazení** okno:
@@ -79,19 +79,19 @@ I když můžete vytvořit virtuální síť Azure a ručně clustery Kafka, je 
      
     * **Základní název clusteru**: Tato hodnota se používá jako základní název pro clustery Kafka. Například zadání **hdi** vytváří clustery s názvem **zdroj hdi** a **dest-hdi**.
 
-    * **Uživatelské jméno přihlášení clusteru**: uživatelské jméno správce pro zdroj a cíl clusterů Kafka.
+    * **Uživatelské jméno přihlášení clusteru**: Uživatelské jméno správce pro zdroj a cíl clusterů Kafka.
 
-    * **Heslo přihlášení clusteru**: clustery Kafka heslo správce pro zdroj a cíl.
+    * **Heslo přihlášení clusteru**: Heslo správce pro zdroj a cíl clusterů Kafka.
 
-    * **Uživatelské jméno SSH**: SSH uživatele k vytvoření clusterů pro zdroj a cíl Kafka.
+    * **Uživatelské jméno SSH**: Uživatele SSH k vytvoření clusterů pro zdroj a cíl Kafka.
 
-    * **Heslo SSH**: heslo pro uživatele SSH pro zdroj a cíl clusterů Kafka.
+    * **SSH heslo**: Heslo uživatele SSH pro zdroj a cíl clusterů Kafka.
 
 3. Přečtěte si **Podmínky a ujednání** a pak vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**.
 
 4. Nakonec zaškrtněte políčko **Připnout na řídicí panel** a vyberte **Koupit**. Vytvoření clusteru trvá přibližně 20 minut.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Názvy clusterů HDInsight se **zdroj BASENAME** a **dest BASENAME**, kde BASENAME je název, který jste zadali v šabloně. Tyto názvy používat v dalších krocích při připojování ke clusteru.
 
 ## <a name="create-topics"></a>Vytvářejte témata
@@ -218,7 +218,7 @@ I když můžete vytvořit virtuální síť Azure a ručně clustery Kafka, je 
 
 7. Výchozí konfigurace pro systém Kafka na HDInsight automatického vytváření témat týkajících se nepovoluje. Před zahájením procesu zrcadlení musíte použít některý z následujících možností:
 
-    * **Vytvoření témata v cílovém clusteru**: tuto možnost můžete také nastavit počet oddílech a faktor replikace.
+    * **Vytvoření témata v cílovém clusteru**: Tato možnost umožňuje nastavit počet oddílech a faktor replikace.
 
         Témata předem můžete vytvořit pomocí následujícího příkazu:
 
@@ -254,9 +254,9 @@ I když můžete vytvořit virtuální síť Azure a ručně clustery Kafka, je 
 
     * **--producer.config**: Určuje soubor, který obsahuje vlastnosti výrobce. Tyto vlastnosti se používají k vytváření producenta, který zapisuje do *cílové* clusteru Kafka.
 
-    * **seznam povolených adres –**: seznam témat, která replikuje nástroje MirrorMaker z clusteru zdroje do cíle.
+    * **seznam povolených adres –**: Seznam témat, která replikuje nástroje MirrorMaker z clusteru zdroje do cíle.
 
-    * **--num.streams**: počet vláken příjemce pro vytvoření.
+    * **--num.streams**: Počet vláken příjemce pro vytvoření.
 
  Při spuštění nástroje MirrorMaker vrátit informace podobné následujícímu textu:
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 85405a96d141188203ddc88410c96654667fa83a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270106"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599804"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Řízení provozu služby Azure App Service pomocí Azure Traffic Manageru
 > [!NOTE]
@@ -52,7 +52,7 @@ Při použití Azure Traffic Manageru s Azure, mějte na paměti následující 
 * V profilu můžete určit pouze jeden koncový bod služby App Service v jedné oblasti. Když vyberete aplikaci jako koncový bod pro jednu oblast, stát zbývající aplikace v této oblasti k dispozici pro výběr pro tento profil.
 * Koncové body služby App Service, které jste zadali v profilu Azure Traffic Manageru se zobrazí v části **názvy domén** části na stránce konfigurace pro aplikace v profilu, ale není konfigurovatelné.
 * Po přidání aplikace do profilu **adresa URL webu** na řídicím panelu portálu stránky aplikace zobrazí adresy URL vlastní domény aplikace, pokud jste nastavili jeden. V opačném případě se zobrazí adresa URL profilu Traffic Manageru (například `contoso.trafficmanager.net`). Název přímé domény adresy URL Traffic Manageru a aplikace jsou viditelné na stránce konfigurace aplikace v rámci **názvy domén** oddílu.
-* Názvy vlastních domén fungovat podle očekávání, ale kromě jejich přidání do svých aplikací, musíte také nakonfigurovat mapy DNS tak, aby odkazoval na adresu URL Traffic Manageru. Informace o tom, jak nastavit vlastní doménu pro aplikaci služby App Service najdete v tématu [mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md).
+* Názvy vlastních domén fungovat podle očekávání, ale kromě jejich přidání do svých aplikací, musíte také nakonfigurovat mapy DNS tak, aby odkazoval na adresu URL Traffic Manageru. Informace o tom, jak nastavit vlastní doménu pro aplikaci služby App Service najdete v tématu [mapování existujícího vlastního názvu DNS do služby Azure App Service](app-service-web-tutorial-custom-domain.md).
 * Mohli byste přidávat pouze aplikace, které jsou v režimu standard nebo premium k profilu Azure Traffic Manageru.
 
 ## <a name="next-steps"></a>Další kroky

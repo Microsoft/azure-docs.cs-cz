@@ -10,21 +10,19 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: f9ee5946d9748388cc1f606d89d4edeacb0b9c02
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498093"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653709"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k sestavení služby machine learning aplikací a analyzovat datové sady
 
 Další informace o použití Apache Spark [MLlib](https://spark.apache.org/mllib/) k vytvoření služby machine learning aplikace provést jednoduché prediktivní analýzy pro otevřete datovou sadu. Spark integrované strojového učení knihovny, tento příklad používá *klasifikace* prostřednictvím logistické regrese. 
 
-> [!TIP]
+> [!TIP]  
 > V tomto příkladu je také k dispozici [Poznámkový blok Jupyter](https://jupyter.org/) na cluster Spark (Linux), který vytvoříte v HDInsight. Plnohodnotném poznámkovém bloku umožňuje spouštět fragmenty kódu Pythonu z poznámkového bloku samotný. Chcete-li postupovat podle kurzu z v rámci poznámkového bloku, vytvoření clusteru Spark a spustit Poznámkový blok Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Spusťte Poznámkový blok **Spark Machine Learning – prediktivní analýzy na data kontroly potravin pomocí MLlib.ipynb** pod **Python** složky.
->
->
 
 MLlib je knihovna Spark core, která poskytuje řadu nástrojů, které jsou užitečné pro úlohy strojového učení, včetně nástroje, které jsou vhodné pro:
 
@@ -178,7 +176,7 @@ Začněme představu, co obsahuje datovou sadu.
     SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
     ```
 
-    `%%sql` Magic, za nímž následuje `-o countResultsdf` zajistí, že výstup dotazu se ukládají místně na serveru Jupyter (obvykle hlavního uzlu clusteru). Výstup se ukládají jako [Pandas](http://pandas.pydata.org/) datový rámec se zadaným názvem **countResultsdf**. Další informace o `%%sql` magic a dalších Magic, které jsou k dispozici s jádrem pyspark, najdete v části [jádra dostupná v poznámkových blocích Jupyter s clustery Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    `%%sql` Magic, za nímž následuje `-o countResultsdf` zajistí, že výstup dotazu se ukládají místně na serveru Jupyter (obvykle hlavního uzlu clusteru). Výstup se ukládají jako [Pandas](https://pandas.pydata.org/) datový rámec se zadaným názvem **countResultsdf**. Další informace o `%%sql` magic a dalších Magic, které jsou k dispozici s jádrem pyspark, najdete v části [jádra dostupná v poznámkových blocích Jupyter s clustery Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
     Výstup bude:
 
@@ -211,7 +209,7 @@ Začněme představu, co obsahuje datovou sadu.
     - Předejte plánovaným bodem obnovení kratším podmínky
     - Nevyvíjí obchodní činnost
 
-    Pro předpověď výsledků kontroly potravin, budete muset vyvinout model založený na porušení zásad. Protože logistické regrese je metoda binární klasifikace, je vhodné seskupit Výsledná data do dvou kategorií: **selhání** a **předat**:
+    Pro předpověď výsledků kontroly potravin, budete muset vyvinout model založený na porušení zásad. Protože logistické regrese je metoda binární klasifikace, je vhodné seskupit Výsledná data do dvou kategorií: **Selhání** a **předat**:
 
     - Úspěch
         - Úspěch
@@ -385,8 +383,8 @@ Po dokončení spuštění aplikace byste měli vypínat Poznámkový blok a uvo
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací

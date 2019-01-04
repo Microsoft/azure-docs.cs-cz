@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 5ef9c15d4edf62ef63b16765f16971a9be5ca58b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e2497233ec97ffc88bf13797f62d601d4da373a1
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970701"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628489"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault
 
@@ -32,11 +32,13 @@ Proč vytvářet vlastní klíče? Vlastní klíče získáte větší flexibili
 
 Používat klíče spravované zákazníkem SSE, můžete vytvořit nový trezor klíčů a klíč, nebo můžete použít existujícího trezoru klíčů a klíč. Účet úložiště a trezoru klíčů musí být ve stejné oblasti, ale mohou být v různých předplatných.
 
-### <a name="step-1-create-a-storage-account"></a>Krok 1: Vytvoření účtu úložiště
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+### <a name="step-1-create-a-storage-account"></a>Krok 1: vytvořit účet úložiště
 
 Nejprve vytvořte účet úložiště, pokud již nemáte. Další informace najdete v článku o [vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
-### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Povolení SSE pro úložiště objektů Blob a souborů
+### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Povolit SSE pro úložiště objektů Blob a souborů
 
 Pokud chcete povolit SSE pomocí klíčů spravovaných zákazníkem, musí být dvě funkce ochrany klíčů obnovitelného odstranění a proveďte není vyprázdnit, povolená i ve službě Azure Key Vault. Tato nastavení Ujistěte se, že klíče nelze neúmyslně nebo úmyslně odstraněnými. Maximální doba uchování klíčů je nastavena na 90 dnů, ochraně uživatelů před útočníky nebo útoky ransomwaru.
 
@@ -45,7 +47,7 @@ Pokud chcete prostřednictvím kódu programu pro SSE povolit klíče spravovan�
 Používat klíče spravované zákazníkem SSE, musíte přiřadit identitu účtu úložiště do účtu úložiště. Spuštěním následujícího příkazu Powershellu nebo Azure CLI můžete nastavit identitu:
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+Set-AzStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
 ```
 
 ```azurecli-interactive
@@ -58,18 +60,18 @@ az storage account \
 Spuštěním následujících příkazů Powershellu nebo rozhraní příkazového řádku Azure můžete povolit obnovitelné odstranění a proveďte není odstranění:
 
 ```powershell
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enableSoftDelete -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enablePurgeProtection -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 ```
 
@@ -83,7 +85,7 @@ az resource update \
     --set properties.enablePurgeProtection=true
 ```
 
-### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>Krok 3: Povolení šifrování pomocí klíčů spravovaných zákazníkem
+### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>Krok 3: Povolit šifrování pomocí klíčů spravovaných zákazníkem
 
 Ve výchozím nastavení používá SSE klíčů spravovaných microsoftem. SSE můžete povolit pomocí klíčů spravovaných zákazníkem pro použití účtu úložiště [webu Azure portal](https://portal.azure.com/). Na **nastavení** okno pro účet úložiště, klikněte na tlačítko **šifrování**. Vyberte **použít vlastní klíč** možnosti, jak je znázorněno na následujícím obrázku.
 
@@ -121,11 +123,11 @@ Můžete také udělit přístup prostřednictvím webu Azure portal přejděte 
 Výše uvedený klíč můžete přidružit existující účet úložiště pomocí následujících příkazů prostředí PowerShell:
 
 ```powershell
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzKeyVault -VaultName "mykeyvault"
 $key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 ```
 
 ### <a name="step-5-copy-data-to-storage-account"></a>Krok 5: Kopírování dat do účtu úložiště
@@ -154,7 +156,7 @@ Existuje stojí pro používání služby Azure Key Vault. Další podrobnosti n
 Azure Disk Encryption poskytuje integraci řešení na základě operačního systému, jako je BitLocker a DM-Crypt a Azure Key Vaultu. Šifrování služby Storage poskytuje šifrování nativně ve vrstvě platformy Azure storage, níže virtuálního počítače.
 
 **Můžete odvolat přístup k šifrovacím klíčům?**
-Ano, můžete kdykoli odvolat přístup. Odvolání přístupu ke klíčům několika způsoby. Odkazovat na [Azure Key Vault prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) a [příkazového řádku Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault) další podrobnosti. Odvolání přístupu zablokuje efektivní oprávnění pro všechny objekty BLOB v účtu úložiště jako nedostupný šifrovací klíč účtu Azure Storage.
+Ano, můžete kdykoli odvolat přístup. Odvolání přístupu ke klíčům několika způsoby. Odkazovat na [Azure Key Vault prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) a [příkazového řádku Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault) další podrobnosti. Odvolání přístupu zablokuje efektivní oprávnění pro všechny objekty BLOB v účtu úložiště jako nedostupný šifrovací klíč účtu Azure Storage.
 
 **Můžete vytvořit účet úložiště a klíč v jiné oblasti?**  
 Účet úložiště a služby Azure Key Vault a klíč ne, musí být ve stejné oblasti.

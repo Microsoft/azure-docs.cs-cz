@@ -8,14 +8,14 @@ ms.component: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: e9e0d2f452a21f2da29568b953238318cb4477df
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 833b9e7ce65a566757c739feebdfc8e0f1d268e9
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077440"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976337"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: rozhraní Gremlin API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Gremlin API
 
 [Azure Cosmos DB](introduction.md) je globálně distribuovaná databázová služba s více modely od Microsoftu pro klíčové aplikace. Databáze pro více modelů podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat. Rozhraní Gremlin API databáze Azure Cosmos DB se používá k ukládání dat grafu a práci s nimi. Rozhraní Gremlin API podporuje modelování dat grafu a nabízí rozhraní API k procházení dat grafu.
 
@@ -24,7 +24,7 @@ Tento článek obsahuje přehled rozhraní Gremlin API služby Azure Cosmos DB a
 ## <a name="what-is-a-graph-database"></a>Co je databáze grafu
 Data, která existují v reálném světě, jsou přirozeně propojená. Tradiční modelování dat se zaměřuje na entity. U mnoha aplikací je také zapotřebí přirozeně modelovat jak entity, tak vztahy.
 
-[Graf](https://mathworld.wolfram.com/Graph.html) je struktura složená z [vrcholů](http://mathworld.wolfram.com/GraphVertex.html) a [hran](http://mathworld.wolfram.com/GraphEdge.html). Vrcholy i hrany mohou mít libovolný počet vlastností. 
+[Graf](http://mathworld.wolfram.com/Graph.html) je struktura složená z [vrcholů](http://mathworld.wolfram.com/GraphVertex.html) a [hran](http://mathworld.wolfram.com/GraphEdge.html). Vrcholy i hrany mohou mít libovolný počet vlastností. 
 
 * **Vrcholy** – znázorňují diskrétní (nespojité) objekty, jako jsou osoby, místa nebo události. 
 

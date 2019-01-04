@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: f50767ad4fc979962968c32bbe972e28d93cce88
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d6897e35aa60be11cf556335d211c5ea616295b6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166400"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652691"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive v Azure HDInsight
 
@@ -57,9 +57,9 @@ Zjistěte, jak zpracovávat a analyzovat soubory JavaScript Object Notation (JSO
 }
 ```
 
-Soubor můžete najít v **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Další informace o tom, jak používat Azure Blob storage s HDInsight naleznete v tématu [úložiště objektů Blob v Azure použití HDFS kompatibilního se systémem Hadoop v HDInsight](../hdinsight-hadoop-use-blob-storage.md). Zkopírujte soubor do kontejneru výchozí vašeho clusteru.
+Soubor můžete najít v **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Další informace o tom, jak používat Azure Blob storage s HDInsight naleznete v tématu [použití HDFS kompatibilního Azure Blob storage s využitím Apache Hadoop v HDInsight](../hdinsight-hadoop-use-blob-storage.md). Zkopírujte soubor do kontejneru výchozí vašeho clusteru.
 
-V tomto kurzu použijete konzolu Hive. Pokyny o tom, jak používat konzolu Hive najdete v tématu [použití Hivu s Hadoopem v HDInsight pomocí vzdálené plochy](apache-hadoop-use-hive-remote-desktop.md).
+V tomto kurzu použijete konzolu Apache Hive. Pokyny o tom, jak používat konzolu Hive najdete v tématu [použití Apache Hivu se službou Apache Hadoop v HDInsight pomocí vzdálené plochy](apache-hadoop-use-hive-remote-desktop.md).
 
 ## <a name="flatten-json-documents"></a>Sloučit dokumentů JSON
 Metody uvedené v následující části vyžadovat, že dokument JSON se skládá z jednoho řádku. Ano musíte sloučit dokumentu JSON na řetězec. Pokud už je sloučený dokumentu JSON, můžete tento krok přeskočit a přejít přímo k další části k analýze dat JSON. Pokud chcete sloučit dokumentu JSON, spusťte následující skript:
@@ -101,7 +101,7 @@ Hive poskytuje tři různé mechanismy ke spouštění dotazů na dokumenty JSON
 * Použijte get_json_object uživatelem definované funkce (UDF).
 * Použijte json_tuple UDF.
 * Použijte vlastní serializátor/deserializátor (SerDe).
-* Napište vlastní UDF pomocí Pythonu nebo jiných jazycích. Další informace o způsobu spuštění kódu Pythonu s Hivem najdete v tématu [uživatelsky definované funkce Pythonu s Apache Hive a Pig][hdinsight-python].
+* Napište vlastní UDF pomocí Pythonu nebo jiných jazycích. Další informace o způsobu spuštění kódu Pythonu s Hivem najdete v tématu [uživatelsky definované funkce Pythonu s Apache Hivu a Apache Pig][hdinsight-python].
 
 ### <a name="use-the-getjsonobject-udf"></a>Použití get_json_object UDF
 Hive obsahuje vestavěné UDF volá [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) , který umožňuje dotazování JSON za běhu. Tato metoda přebírá dva argumenty – název tabulky a název metody, která má pole JSON, který je analyzovat a plochá dokumentů JSON. Pojďme se podívat na příklad, který najdete v článku Jak funguje tento UDF.
@@ -152,9 +152,9 @@ Na závěr typ operátoru JSON v Hivu, který zvolíte, závisí na váš scén�
 
 Související články naleznete v tématu:
 
-* [Použití Hive a HiveQL s Hadoop v HDInsight k analýze ukázkového souboru Apache log4j](../hdinsight-use-hive.md)
-* [Analyzovat zpoždění letů pomocí Hivu ve službě HDInsight](../hdinsight-analyze-flight-delay-data.md)
-* [Analýza dat Twitteru pomocí Hivu ve službě HDInsight](../hdinsight-analyze-twitter-data.md)
+* [Použití Apache Hive a HiveQL s Apache Hadoop v HDInsight k analýze ukázkového souboru Apache log4j](../hdinsight-use-hive.md)
+* [Analyzovat zpoždění letů pomocí Apache Hive v HDInsight](../hdinsight-analyze-flight-delay-data.md)
+* [Analýza dat Twitteru pomocí Apache Hive v HDInsight](../hdinsight-analyze-twitter-data.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

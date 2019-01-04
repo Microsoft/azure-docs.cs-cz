@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 2f97a2e8ad38bb3c78333cc2c8eedad8f520e68a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036798"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602184"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Integrace protokolů Azure s protokolování diagnostiky Azure a předávání událostí Windows
 
@@ -151,9 +151,9 @@ Po dokončení základní nastavení jste připraveni k provedení kroků po ins
 V tomto kroku nakonfigurujete počítači spuštěna služba Azure Log Integration pro připojení k účtu úložiště, který obsahuje soubory protokolu.
 
 K provedení tohoto kroku potřebujete několik věcí:  
-* **FriendlyNameForSource**: popisný název, můžete provést u účtu úložiště, že jste nakonfigurovali pro virtuální počítač k ukládání informací z Azure Diagnostics.
-* **StorageAccountName**: název účtu úložiště, které jste zadali při konfiguraci diagnostiky Azure.  
-* **Klíč úložiště**: klíč úložiště pro účet úložiště, kde jsou uloženy informace diagnostiky Azure pro tento virtuální počítač.  
+* **FriendlyNameForSource**: Popisný název, můžete provést u účtu úložiště, že jste nakonfigurovali pro virtuální počítač k ukládání informací z Azure Diagnostics.
+* **StorageAccountName**: Název účtu úložiště, které jste zadali při konfiguraci diagnostiky Azure.  
+* **Klíč úložiště**: Klíč úložiště pro účet úložiště, kde jsou uloženy informace diagnostiky Azure pro tento virtuální počítač.  
 
 Pokud chcete získat klíč úložiště, proveďte následující kroky:
 1. Přejděte na [Azure Portal](http://portal.azure.com).
@@ -198,7 +198,7 @@ V následujícím videu se probírají v předchozích krocích:<br /><br />
 ## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>Pokud se nezobrazuje data ve složce předané události
 Pokud data se nezobrazuje ve složce předané události po hodině, proveďte tyto kroky:
 
-1. Zkontrolujte počítač, na kterém běží služba pro integraci protokolů Azure. Potvrďte, že může přístup k Azure. Chcete-li otestovat připojení, v prohlížeči, zkuste přejít na [webu Azure portal](http://portal.azure.com).
+1. Zkontrolujte počítač, na kterém běží služba pro integraci protokolů Azure. Potvrďte, že může přístup k Azure. Chcete-li otestovat připojení, v prohlížeči, zkuste přejít na [webu Azure portal](https://portal.azure.com).
 2. Ujistěte se, že uživatelský účet Azlog má oprávnění k zápisu pro složku users\Azlog.
   1. Otevřete Průzkumníka souborů.
   2. Přejdete na C:\users.
@@ -243,7 +243,7 @@ Můžete také otevřít [žádost o podporu](../azure-supportability/how-to-cre
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure Log Integration, naleznete v následujících článcích: než se pokusíte kroky v tomto článku, musí k tomuto článku Get Začínáme a dokončete kroky existuje.
+Další informace o Azure Log Integration, naleznete v následujících článcích: Nežli se pokusíte kroky v tomto článku, musíte k tomuto článku Get Začínáme a dokončete kroky existuje.
 
 * [Integrace protokolů Azure pro protokoly Azure](https://www.microsoft.com/download/details.aspx?id=53324). Stažení softwaru zahrnuje podrobnosti, požadavky na systém a pokyny k instalaci pro integraci protokolů Azure.
 * [Úvod do integrace protokolů Azure](security-azure-log-integration-overview.md). Tento článek vás seznámí s integrací protokolů Azure, jejích klíčových funkcích a jak to funguje.

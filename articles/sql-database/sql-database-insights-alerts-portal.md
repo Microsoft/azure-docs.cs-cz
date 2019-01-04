@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273337"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634605"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Vytvoření výstrah pro Azure SQL Database a Data Warehouse pomocí webu Azure portal
 
@@ -46,13 +46,13 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění
 1. V [portál](https://portal.azure.com/), vyhledejte prostředek zájem o sledování a vyberte ho.
 2. Vyberte **upozornění (klasická)** v části monitorování. Text a ikona se mohou mírně lišit pro různé prostředky.  
    
-     ![Monitorování](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
+     ![Monitorování](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
    - **SQL DATA WAREHOUSE POUZE**: Klikněte na tlačítko **využití DWU** grafu. Vyberte **zobrazit upozornění classic**
 
 3. Vyberte **přidat upozornění metriky (klasické)** tlačítko a přejít k vyplnění polí.
    
-    ![Přidat výstrahu](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
+    ![Přidat výstrahu](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Název** upozornění pravidlo a vyberte **popis**, které zároveň ukazuje oznámení e-mailů.
 5. Vyberte **metrika** chcete monitorovat, a potom vyberte **podmínku** a **prahová hodnota** hodnoty pro metriku. Se také rozhodnout **období** , kterou pravidlo metriky musí být splněny před výstrah aktivační události. Třeba Pokud používáte období "PT5M" a upozornění hledá CPU vyšší než 80 %, aktivaci upozornění při **průměrné** procesoru byla vyšší než 80 % po dobu 5 minut. Jakmile dojde k první aktivační událost, se znovu aktivuje, když průměrné využití procesoru je nižší než 80 % více než 5 minut. Měření využití procesoru dochází každou 1 minutu. Podporované časových oken naleznete v následující tabulce a že každý typ agregace upozornění používá ne všechny výstrahy použít průměrnou hodnotu.   
 6. Zkontrolujte **e-mailu vlastníky...**  Pokud chcete, aby správci a spolusprávci e-mailem odešle, když se aktivuje upozornění.
@@ -117,5 +117,5 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 ## <a name="next-steps"></a>Další postup
 * [Získejte přehled o Azure monitoring](../monitoring-and-diagnostics/monitoring-overview.md) včetně typů informací můžete shromažďovat a sledovat.
 * Další informace o [konfiguraci webhooků ve výstrahách](../azure-monitor/platform/alerts-webhooks.md).
-* Získat [přehled diagnostických protokolů](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a shromažďovat podrobné vysokou frekvencí metriky pro vaši službu.
+* Získat [přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md) a shromažďovat podrobné vysokou frekvencí metriky pro vaši službu.
 * Získat [přehled shromažďování metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) k Ujistěte se, že vaše služba není k dispozici a reagují.

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 603a6bab75c4a5da4425bcc57d2cc5ccda728636
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274115"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721457"
 ---
 # <a name="restore-an-app-in-azure"></a>Obnovení aplikace v Azure
-V tomto článku se dozvíte, jak obnovit aplikaci v [služby Azure App Service](../app-service/app-service-web-overview.md) , který jste dříve zálohovali (viz [zálohování vaší aplikace v Azure](web-sites-backup.md)). Podle potřeby můžete obnovit aplikaci s připojenými databázemi do předchozího stavu nebo podle záloh původní aplikace vytvořit novou aplikaci. Azure App Service podporuje pro zálohování a obnovení následujících databází:
+V tomto článku se dozvíte, jak obnovit aplikaci v [služby Azure App Service](../app-service/overview.md) , který jste dříve zálohovali (viz [zálohování vaší aplikace v Azure](manage-backup.md)). Podle potřeby můžete obnovit aplikaci s připojenými databázemi do předchozího stavu nebo podle záloh původní aplikace vytvořit novou aplikaci. Azure App Service podporuje pro zálohování a obnovení následujících databází:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
@@ -91,8 +91,8 @@ Můžete automatizovat správu záloh pomocí skriptů s využitím [rozhraní p
 
 Ukázky najdete v tématu:
 
-- [Ukázky Azure CLI](app-service-cli-samples.md)
-- [Ukázky Azure PowerShellu](app-service-powershell-samples.md)
+- [Ukázky Azure CLI](samples-cli.md)
+- [Ukázky Azure PowerShellu](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

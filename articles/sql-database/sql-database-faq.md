@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: d7e5553ec48cfda858f2a463a2df0cc60f0e5c65
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270395"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541608"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database – nejčastější dotazy (FAQ)
 
@@ -51,11 +51,11 @@ Modely založené na DTU a na virtuálních jádrech budou i nadále koexistovat
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Čeho si mám vybrat mezi vs založený na DTU nákupní model nákupní model založený na virtuálních jádrech
 
-Jednotka přenosu dat (DTU) se měří na základě výkonu procesoru, paměti a operací čtení a zápisu. Velikosti výpočetních založený na DTU představují předem nakonfigurované sady prostředků jednotky různé úrovně výkonu aplikace. Zákazníci, kteří nechtějí starat o podkladové prostředky a dáváte přednost jednoduchosti, kterou nabízejí předem nakonfigurované sady prostředků při placení pevnou měsíční zjistit model založený na DTU více odpovídají jejich potřebám. Pro zákazníky, kteří potřebovat lepší přehled o příslušné prostředky nebo se škálovat nezávisle pro zajištění optimálního výkonu, ale model založený na virtuálních jádrech budou nejlepší volbou.  Kromě toho pokud zákazník má aktivní Software Assurance (SA) pro SQL Server, mohou využít své stávající investice a ušetřit až 30 % s [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Možnosti v rámci každé tyto modely nákupu poskytují výhody plně spravované služby, jako jsou automatizované zálohy, opravy a aktualizace softwaru.
+Jednotka přenosu dat (DTU) se měří na základě výkonu procesoru, paměti a operací čtení a zápisu. Velikosti výpočetních založený na DTU představují předem nakonfigurované sady prostředků jednotky různé úrovně výkonu aplikace. Zákazníci, kteří nechtějí starat o podkladové prostředky a dáváte přednost jednoduchosti, kterou nabízejí předem nakonfigurované sady prostředků při placení pevnou měsíční zjistit model založený na DTU více odpovídají jejich potřebám. Pro zákazníky, kteří potřebovat lepší přehled o příslušné prostředky nebo se škálovat nezávisle pro zajištění optimálního výkonu, ale model založený na virtuálních jádrech budou nejlepší volbou.  Kromě toho pokud zákazník má aktivní Software Assurance (SA) pro SQL Server, mohou využít své stávající investice a ušetřit až 30 % s [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).  Možnosti v rámci každé tyto modely nákupu poskytují výhody plně spravované služby, jako jsou automatizované zálohy, opravy a aktualizace softwaru.
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Co je zvýhodněné hybridní využití Azure pro SQL Server
 
-[Zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) pomáhá maximalizovat využití stávajících investic do licencí a Zrychlete svůj přechod do cloudu. Zvýhodněné hybridní využití Azure pro SQL Server je benefit založené na Azure, umožňující využijte svoje licence SQL Server s programem Software Assurance a platit tak sníženou sazbu ("základní tarif") pro službu SQL Database. Zvýhodněné hybridní využití Azure pro SQL Server je k dispozici ve verzi public preview založený na virtuálních jádrech nákupní model pro izolované databáze SQL Database a elastické fondy. Může použít tuto výhodu, i v případě, že SKU není aktivní, ale mějte na paměti, že se základní sazba se použije od okamžiku, vyberte na portálu Azure portal. Kredity se nevydávají zpětně.
+[Zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) pomáhá maximalizovat využití stávajících investic do licencí a Zrychlete svůj přechod do cloudu. Zvýhodněné hybridní využití Azure pro SQL Server je benefit založené na Azure, umožňující využijte svoje licence SQL Server s programem Software Assurance a platit tak sníženou sazbu ("základní tarif") pro službu SQL Database. Zvýhodněné hybridní využití Azure pro SQL Server je k dispozici ve verzi public preview založený na virtuálních jádrech nákupní model pro izolované databáze SQL Database a elastické fondy. Může použít tuto výhodu, i v případě, že SKU není aktivní, ale mějte na paměti, že se základní sazba se použije od okamžiku, vyberte na portálu Azure portal. Kredity se nevydávají zpětně.
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Existují dvojího užití práva s programem Azure Hybrid Benefit pro SQL Server
 
@@ -127,13 +127,13 @@ Ano, můžete snadno převést databázi do jakékoli objective podporované vý
 
 ## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Můžete upgradovat nebo downgradovat mezi úrovněmi služeb pro obecné účely a pro důležité obchodní informace
 
-Ano, s určitými omezeními. Cíl SKU, musí splňovat maximální databáze nebo elastického fondu velikost, které jste nakonfigurovali pro vaše stávající nasazení. Pokud používáte [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md), SKU pro důležité obchodní je dostupná jenom pro zákazníky s licencemi Enterprise Edition. Pouze zákazníci, kteří migrovat z místního na použití programu zvýhodněné hybridní využití Azure pro SQL Server s licencemi Enterprise Edition pro obecné účely můžete upgradovat na důležité obchodní informace. Podrobnosti najdete v tématu [jaké jsou konkrétní práva zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md)?
+Ano, s určitými omezeními. Cíl SKU, musí splňovat maximální databáze nebo elastického fondu velikost, které jste nakonfigurovali pro vaše stávající nasazení. Pokud používáte [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/), SKU pro důležité obchodní je dostupná jenom pro zákazníky s licencemi Enterprise Edition. Pouze zákazníci, kteří migrovat z místního na použití programu zvýhodněné hybridní využití Azure pro SQL Server s licencemi Enterprise Edition pro obecné účely můžete upgradovat na důležité obchodní informace. Podrobnosti najdete v tématu [jaké jsou konkrétní práva zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)?
 
 Tento převod nemá za následek výpadek a lze inicializovat pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. Zobrazit [Správa izolovaných databází](sql-database-single-database-scale.md) a [Správa elastických fondů](sql-database-elastic-pool.md).
 
 ## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>Používám přestanou být obecně dostupná databáze úrovně Premium RS – můžu upgradovat na novou úroveň a dosáhnout podobné výhody poměr cena/výkon
 
-Vzhledem k tomu modelu virt. jader umožňuje nezávislé řízení množství zřízených výpočetních a úložných, můžete efektivněji spravovat výsledné náklady díky tomu je atraktivní cíl pro databáze Premium RS. Kromě toho [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) poskytuje podstatné slevu, pokud se používá model založený na virtuálních jádrech.
+Vzhledem k tomu modelu virt. jader umožňuje nezávislé řízení množství zřízených výpočetních a úložných, můžete efektivněji spravovat výsledné náklady díky tomu je atraktivní cíl pro databáze Premium RS. Kromě toho [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) poskytuje podstatné slevu, pokud se používá model založený na virtuálních jádrech.
 
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Jak často můžu měnit prostředky na fond
 

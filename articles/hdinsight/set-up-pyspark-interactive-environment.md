@@ -9,17 +9,16 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 82aebd780b7b821675a6ee891cc81e2b1c6fdafb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: bf47915ba93a4a3a7dec338395cfe0ce6aa3cdf6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437210"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993826"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení interaktivního prostředí PySpark pro Visual Studio Code
 
 Následující kroky ukazují, jak nainstalovat balíčky Pythonu spuštěním **HDInsight: PySpark interaktivní**.
-
 
 ## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>Nastavení interaktivního prostředí PySpark v systémech macOS a Linux
 Pokud používáte **python 3.x**, budete muset použít příkaz **pip3** pro následující kroky:

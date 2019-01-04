@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: f8c296fddaafb8364cc5e0f07b54d850606322d9
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 3da6260faa87aecb7eb13f16386006e0c856d46b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581421"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653845"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Apache Spark spouštět z prostředí Sparku
 
@@ -60,10 +60,10 @@ Chcete-li získat přístup k instanci SparkSession, zadejte `spark`. Chcete-li 
 
 Příkaz prostředí Sparku (`spark-shell`, `pyspark`, nebo `sparkR`) podporuje mnoho parametrů příkazového řádku. Pokud chcete zobrazit úplný seznam parametrů, spusťte prostředí Sparku s přepínačem `--help`. Všimněte si, že některé z těchto parametrů může platit pouze pro `spark-submit`, která zabalí prostředí Spark.
 
-| Přepínač | description | Příklad |
+| – přepínač | description | Příklad |
 | --- | --- | --- |
 | --hlavní MASTER_URL | Určuje hlavní adresy URL. V HDInsight, tato hodnota je vždy `yarn`. | `--master yarn`|
-| --jars JAR_LIST | Čárkami oddělený seznam místní kromě souborů JAR mají zobrazit na ovladač a prováděcí modul třídám. V HDInsight se tento seznam skládá z cesty na výchozí systém souborů v Azure Storage nebo Azure Data Lake Store. | `--jars /path/to/examples.jar` |
+| --jars JAR_LIST | Čárkami oddělený seznam místní kromě souborů JAR mají zobrazit na ovladač a prováděcí modul třídám. V HDInsight se tento seznam skládá z cesty na výchozí systém souborů v Azure Storage nebo Azure Data Lake Storage. | `--jars /path/to/examples.jar` |
 | – balíčky MAVEN_COORDS | Čárkami oddělený seznam souřadnice maven kromě souborů JAR mají zobrazit na ovladač a prováděcí modul třídám. Vyhledá maven místní úložiště a pak centrální maven, pak žádné další vzdálených úložištích zadaným `--repositories`. Formát pro souřadnice *groupId*:*artifactId*:*verze*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | SEZNAM py – soubory | Pro jazyk Python pouze čárkou oddělený seznam souborů .py, .zip nebo .egg umístit na PYTHONPATH. | `--pyfiles "samples.py"` |
 
@@ -72,4 +72,3 @@ Příkaz prostředí Sparku (`spark-shell`, `pyspark`, nebo `sparkR`) podporuje 
 - Zobrazit [Úvod k Apache Sparku v Azure HDInsight](apache-spark-overview.md) Přehled.
 - Zobrazit [vytvořit cluster Apache Spark v Azure HDInsight](apache-spark-jupyter-spark-sql.md) pro práci s clustery Spark a SparkSQL.
 - Zobrazit [novinky strukturovaného streamu Apache Spark?](apache-spark-streaming-overview.md) pro psaní aplikací, které zpracovávají datové proudy dat pomocí Sparku.
-

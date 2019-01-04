@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 8af8e4b7844feb785600ef683891642ea89bccaf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542578"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556896"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Návod: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Průvodce: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -30,7 +30,7 @@ IEF odesílá data jako deklarace identity a přijímá data zpět v deklaracíc
 - Může sloužit jako výměna deklarací identit rozhraní REST API nebo jako profil ověření, který se v jednom z kroků Orchestrace.
 - Obvykle ověřuje vstup uživatele. Pokud se hodnota od uživatele, uživatel zkusit znovu zadejte platnou hodnotu se moci vrátit chybovou zprávu.
 
-Můžete také navrhnout zásahu jako krok Orchestrace. Další informace najdete v tématu [názorný postup: integrace rozhraní REST API deklarací výměny na vaší cestě uživatele Azure AD B2C jako krok Orchestrace](active-directory-b2c-rest-api-step-custom.md).
+Můžete také navrhnout zásahu jako krok Orchestrace. Další informace najdete v tématu [názorný postup: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako krok Orchestrace](active-directory-b2c-rest-api-step-custom.md).
 
 Příklad profilu ověření budeme používat cesty uživatele upravit profil v souboru sady starter pack ProfileEdit.xml.
 
@@ -75,7 +75,7 @@ return request.CreateResponse(HttpStatusCode.OK);
 
 Očekává IEF `userMessage` deklarace identity, která vrací funkce Azure functions. Tato deklarace identity se zobrazí jako řetězec uživateli, pokud se ověření nezdaří, třeba když se vrátí stav 409 – konflikt v předchozím příkladu.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2: Konfigurace jako technický profil v souboru TrustFrameworkExtensions.xml výměna deklarací identit RESTful API
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2: Výměna deklarací identit RESTful API nakonfigurovat jako technický profil v souboru TrustFrameworkExtensions.xml
 
 Technický profil je úplná konfigurace exchange požadované službou RESTful. Otevřete soubor TrustFrameworkExtensions.xml a přidejte následující fragment kódu XML uvnitř `<ClaimsProviders>` elementu.
 
@@ -93,6 +93,7 @@ Technický profil je úplná konfigurace exchange požadované službou RESTful.
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
@@ -130,4 +131,4 @@ Přidání výměna deklarací identit s vlastním potvrzením technický profil
 
 [Upravit profil registrace upravit a uživatelů sbírat dodatečné informace od uživatelů](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
-[Postupy: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako krok Orchestrace](active-directory-b2c-rest-api-step-custom.md)
+[Návod: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako krok Orchestrace](active-directory-b2c-rest-api-step-custom.md)

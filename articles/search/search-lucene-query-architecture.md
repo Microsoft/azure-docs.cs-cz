@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315790"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633857"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak funguje fulltextové vyhledávání ve službě Azure Search
 
@@ -385,7 +385,7 @@ Tento článek prozkoumali fulltextové vyhledávání v rámci služby Azure Se
 
 + Vytvoření ukázkového indexu, vyzkoušejte si různé dotazy a zkontrolovat výsledky kontroly. Pokyny najdete v tématu [sestavení a dotazování indexu na portálu](search-get-started-portal.md#query-index).
 
-+ Zkuste syntaxi dalšího dotazu [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) vzorový oddíl nebo z [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) v Průzkumníku služby Search na portálu.
++ Zkuste syntaxi dalšího dotazu [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) vzorový oddíl nebo z [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) v Průzkumníku služby Search na portálu.
 
 + Kontrola [profily skórování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) Pokud chcete ladit hodnocení v vaše vyhledávací aplikace.
 
@@ -393,7 +393,7 @@ Tento článek prozkoumali fulltextové vyhledávání v rámci služby Azure Se
 
 + [Konfigurace vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo speciální zpracování na konkrétních polí.
 
-+ [Porovnat standardní a angličtině analyzátory](http://alice.unearth.ai/)) vedle sebe na tomto webu ukázku. 
++ [Porovnat standardní a angličtině analyzátory](https://alice.unearth.ai/)) vedle sebe na tomto webu ukázku. 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

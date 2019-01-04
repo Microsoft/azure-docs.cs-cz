@@ -1,91 +1,91 @@
 ---
-title: 'Azure Backup: zálohování konzistentní s aplikací virtuálních počítačů Linux'
-description: Vytvořte zálohování konzistentní s aplikací virtuálních počítačů Linux do Azure. Tento článek vysvětluje, konfiguraci rozhraní skript pro zálohování Azure nasazené virtuální počítače s Linuxem. Tento článek obsahuje také informace o odstraňování potíží.
+title: 'Azure Backup: konzistentní zálohování virtuálních počítačů s Linuxem'
+description: Vytvoření zálohy konzistentní s aplikací z vašich virtuálních počítačů s Linuxem do Azure. Tento článek vysvětluje, konfiguraci rozhraní skript pro zálohování Azure nasazené virtuální počítače s Linuxem. Tento článek také obsahuje informace o odstraňování potíží.
 services: backup
 author: anuragmehrotra
 manager: shivamg
-keywords: zálohování konzistentní s aplikací; zálohování konzistentní s aplikací virtuálního počítače Azure; Zálohování virtuálních počítačů Linux; Zálohování Azure
+keywords: zálohování konzistentní s aplikací; konzistentní zálohování virtuálních počítačů Azure; Zálohování virtuálního počítače s Linuxem; Azure Backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
 ms.author: anuragm
-ms.openlocfilehash: 027fc4098e7760de276a8548453bb83599ed0521
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a81c0b9c87db85771fcecab87c6b9ac88dcbd472
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605208"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581840"
 ---
-# <a name="application-consistent-backup-of-azure-linux-vms"></a>Zálohování konzistentní s aplikací Azure Linux virtuálních počítačů
+# <a name="application-consistent-backup-of-azure-linux-vms"></a>Konzistentní zálohování virtuálních počítačů Azure s Linuxem
 
-Při pořizování snímků záloh virtuálních počítačů, konzistence aplikací znamená, že vaše aplikace spustit v případě, že virtuální počítače spustit po obnovena. Jak si lze představit, je velmi důležité konzistence aplikace. Aby virtuální počítače Linux jsou aplikace konzistentní že rozhraní skript před a po skript Linux můžete provést zálohování konzistentní s aplikací. Rozhraní framework skript před a po skript podporuje virtuální počítače s Linuxem nasazení Azure Resource Manager. Skripty pro konzistence aplikací nepodporují nasazení portálu Service Manager virtuální počítače nebo virtuální počítače s Windows.
+Při přijímání snímky se zálohami virtuálních počítačů, konzistence aplikace znamená, že vaše aplikace spustit při spuštění virtuálních počítačů, po který se má obnovit. Konzistentnost aplikací si dokážete představit, je velmi důležité. K zajištění jsou vaše virtuální počítače s Linuxem konzistentní, že můžete použít rozhraní Linux předsnímkových a posnímkových skriptů konzistentní zálohování s aplikací. Rozhraní předzálohovacími a pozálohovacími skripty podporuje virtuální počítače s Linuxem nasazené Azure Resource Manageru. Skripty pro zajištění konzistence aplikace nepodporují portálu Service Manager nasadit virtuální počítače nebo virtuální počítače Windows.
 
-## <a name="how-the-framework-works"></a>Jak funguje rozhraní
+## <a name="how-the-framework-works"></a>Jak funguje rozhraní framework
 
-Rozhraní framework poskytuje možnost spustit vlastní skripty před a po skriptů při přenášíte snímky virtuálních počítačů. Spustit předběžné skripty těsně před provedením snímku virtuálního počítače a po skripty spustit okamžitě po pořídíte snímek virtuálního počítače. Před a po skriptů poskytují flexibilitu pro řízení aplikací a prostředí při přenášíte snímky virtuálních počítačů.
+Rozhraní poskytuje možnost spouštět skripty před a po skripty, zatímco přenášíte snímky virtuálních počítačů. Předběžné skripty se spouští jenom dříve, než se snímek virtuálního počítače a pozálohovacích skriptů spustit ihned po pořízení snímku virtuálního počítače. Předběžné skripty a pozálohovacích skriptů poskytují flexibilitu pro řízení svoji aplikaci a prostředí, zatímco přenášíte snímky virtuálních počítačů.
 
-Předběžné skripty vyvolání nativní aplikace rozhraní API, které uvedení IOs a vyprázdnit obsah v paměti na disk. Tyto akce Ujistěte se, že snímek je aplikace, které jsou konzistentní. Po skripty pomocí nativní aplikace rozhraní API se odblokování IOs, které umožní aplikaci obnovit normální provozní podmínky po snímek virtuálního počítače.
+Předběžné skripty vyvolat nativní aplikace rozhraní API, které uvedení IOs a vyprázdnit obsah v paměti na disk. Tyto akce Ujistěte se, že je snímek konzistentní s aplikací. Pozálohovacích skriptů pomocí nativní aplikace rozhraní API se uvolnit pro IOs, které umožní aplikaci obnovit normální provoz po snímek virtuálního počítače.
 
-## <a name="steps-to-configure-pre-script-and-post-script"></a>Postup konfigurace skript před a po skript
+## <a name="steps-to-configure-pre-script-and-post-script"></a>Postup konfigurace předsnímkových a posnímkových skriptů
 
-1. Přihlaste se jako kořenový uživatel do virtuálního počítače s Linuxem, které chcete zálohovat.
+1. Přihlaste se jako uživatel root do virtuálního počítače s Linuxem, které chcete zálohovat.
 
-2. Z [Githubu](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig), stáhněte si **VMSnapshotScriptPluginConfig.json** a zkopírujte ho do **/etc/azure** složky pro všechny virtuální počítače, které chcete zálohovat. Pokud **/etc/azure** složka neexistuje, vytvořte ho.
+2. Z [Githubu](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig), stáhněte si **VMSnapshotScriptPluginConfig.json** a zkopírujte ho do **/etc/azure** složky pro všechny virtuální počítače, které chcete zálohovat. Pokud **/etc/azure** složka neexistuje, vytvořte ji.
 
-3. Zkopírujte skript před a po skript pro vaši aplikaci na všech virtuálních počítačích, které chcete zálohovat. Skripty můžete zkopírovat do libovolného umístění, do virtuálního počítače. Nezapomeňte aktualizovat úplnou cestu souborů skriptů v **VMSnapshotScriptPluginConfig.json** souboru.
+3. Zkopírujte předzálohovacími a pozálohovacími skripty pro vaši aplikaci pro všechny virtuální počítače, které máte v plánu zálohování. Skripty můžete zkopírovat do jakéhokoli umístění na virtuálním počítači. Nezapomeňte aktualizovat úplnou cestu souboru skriptu v **VMSnapshotScriptPluginConfig.json** souboru.
 
-4. Zkontrolujte následující oprávnění pro tyto soubory:
+4. Ověřte následující oprávnění pro tyto soubory:
 
-   - **VMSnapshotScriptPluginConfig.json**: oprávnění "600." Například pouze "root" uživatel by měl mít oprávnění "číst" a "zápisu" k tomuto souboru a žádný uživatel by měl mít oprávnění "spustit".
+   - **VMSnapshotScriptPluginConfig.json**: Oprávnění "600". Například pouze "root" uživatel by měl mít oprávnění "číst" a "write" k tomuto souboru a uživatel by měl mít oprávnění "spustit".
 
-   - **Soubor skriptu před**: oprávnění "700."  Například by měl mít jenom uživatel "root" "číst", "zápisu" a "spustit" oprávnění k tomuto souboru.
-  
-   - **Po skriptu** oprávnění "700." Například by měl mít jenom uživatel "root" "číst", "zápisu" a "spustit" oprávnění k tomuto souboru.
+   - **Předzálohovací skript soubor**: Oprávnění "700".  Například by měl mít pouze "root" uživatel "čtení", "write" a "spustit" k tomuto souboru oprávnění.
+
+   - **Pozálohovací skript** oprávnění "700". Například by měl mít pouze "root" uživatel "čtení", "write" a "spustit" k tomuto souboru oprávnění.
 
    > [!Important]
-   > Rozhraní framework poskytuje uživatelům spoustu napájení. Zabezpečení rozhraní a ujistěte se, že pouze "root" uživatel má přístup k kritické JSON a soubory skriptu.
-   > Pokud požadavky nejsou splněny, skript se nespustí, výsledkem je selhání systému souborů a konzistentní zálohování.
+   > Rozhraní poskytuje uživatelům velké množství energie. Zabezpečení rozhraní framework a ujistěte se, že pouze "root" uživatel má přístup k kritické JSON a soubory skriptů.
+   > Pokud požadavky nejsou splněny, skript se nespustí, výsledkem je selhání systému souborů a nekonzistentní záloha.
    >
 
 5. Konfigurace **VMSnapshotScriptPluginConfig.json** podle postupu popsaného tady:
-    - **pluginName**: ponechat toto pole, jako je nebo skripty nemusí fungovat podle očekávání.
+    - **pluginName**: Ponechte toto pole je nebo skriptů nemusí fungovat podle očekávání.
 
-    - **preScriptLocation**: zadat úplnou cestu předběžné skriptu ve virtuálním počítači, který se bude zálohovat.
+    - **preScriptLocation**: Zadejte úplnou cestu předzálohovacího skriptu ve virtuálním počítači, na který budete zálohovat.
 
-    - **postScriptLocation**: zadat úplnou cestu po skriptu ve virtuálním počítači, který se bude zálohovat.
+    - **postScriptLocation**: Zadejte úplnou cestu pozálohovací skript na virtuálním počítači, který se bude zálohovat.
 
-    - **preScriptParams**: Zadejte volitelné parametry, které je třeba předávané předběžné skriptu. Všechny parametry musí být v uvozovkách. Pokud chcete použít několik parametrů, oddělte čárkou parametry.
+    - **preScriptParams**: Zadejte volitelné parametry, které je potřeba předat předzálohovacího skriptu. Všechny parametry musí být v uvozovkách. Pokud používáte více parametrů, parametry oddělte čárkou.
 
-    - **postScriptParams**: Zadejte volitelné parametry, které je třeba předat po skriptu. Všechny parametry musí být v uvozovkách. Pokud chcete použít několik parametrů, oddělte čárkou parametry.
+    - **postScriptParams**: Zadejte volitelné parametry, které je potřeba předat pozálohovací skript. Všechny parametry musí být v uvozovkách. Pokud používáte více parametrů, parametry oddělte čárkou.
 
-    - **preScriptNoOfRetries**: nastavte počet pokusů před skript by měl opakovat, pokud chybě před ukončením. Zkuste pouze jeden nula znamená a žádné opakování. Pokud dojde k selhání.
+    - **preScriptNoOfRetries**: Nastavte počet pokusů, které se předzálohovací skript by měl zopakuje, pokud dojde k jakékoli chybě před ukončením. Nula znamená, že pouze jeden pokus a nebude opakovat, pokud dojde k selhání.
 
-    - **postScriptNoOfRetries**: nastavit počet opakování po skript by měl být pokud chybě před ukončením. Zkuste pouze jeden nula znamená a žádné opakování. Pokud dojde k selhání.
-    
-    - **časový_limit_v_sekundách**: Zadejte jednotlivé časové limity pro předběžné skript a po skript.
+    - **postScriptNoOfRetries**:  Nastavte počet pokusů, které se pozálohovací skript by měl zopakuje, pokud dojde k jakékoli chybě před ukončením. Nula znamená, že pouze jeden pokus a nebude opakovat, pokud dojde k selhání.
 
-    - **continueBackupOnFailure**:, nastavte hodnotu **true** Pokud budete chtít Azure Backup vrátit k konzistentní nebo havárie konzistentní zálohu systému souborů, pokud skript před nebo po skript selže. Toto nastavení na **false** nezdaří zálohování v případě selhání skriptu (s výjimkou případů, kdy máte jeden disk virtuálního počítače, který se vrátí k konzistentní při selhání zálohování bez ohledu na toto nastavení).
+    - **časový_limit_v_sekundách**: Zadejte jednotlivé vypršení časových limitů u předzálohovací skript a pozálohovací skript (maximální hodnota může být 1 800).
 
-    - **fsFreezeEnabled**: Zadejte, zda Linux fsfreeze by měla být volána, když jste pořízení snímku virtuálního počítače k zajištění konzistence systému souborů. Doporučujeme zachovat tohoto nastavení nastavena na **true** Pokud vaše aplikace je závislý na zakázání fsfreeze.
+    - **continueBackupOnFailure**: Nastavte tuto hodnotu na **true** Pokud chcete Azure Backup vrátit k souboru systému konzistentní vzhledem k aplikacím/selhání záloha konzistentní v případě, pokud předzálohovacího skriptu nebo se nezdaří pro provedení pozálohovacího skriptu. Nastavení na **false** selže zálohování v případě selhání skriptu (s výjimkou případů, kdy máte jeden disk virtuálního počítače, který spadne zpět na konzistentní zálohování bez ohledu na toto nastavení).
 
-6. Rozhraní framework skriptu je nyní nakonfigurována. Pokud už je nakonfigurované zálohování virtuálních počítačů, další zálohování vyvolá skripty a aktivuje zálohování konzistentní s aplikací. Pokud není nakonfigurováno zálohování virtuálních počítačů, nakonfigurovat ji pomocí [zálohovat virtuální počítače, které jsou k trezory služeb zotavení Azure.](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)
+    - **fsFreezeEnabled**: Určete, zda Linux fsfreeze by měla být volána, když jste pořízení snímku virtuálního počítače k zajištění konzistence systému souborů. Doporučujeme tuto možnost nastavenou na **true** Pokud vaše aplikace má závislost na zakázání fsfreeze.
+
+6. Rozhraní skriptu je nyní nakonfigurována. Pokud je zálohování virtuálního počítače je už nakonfigurovaná, dalším zálohování vyvolá skripty a aktivuje zálohování konzistentní s aplikací. Pokud je zálohování virtuálního počítače není nakonfigurovaná, nakonfigurovat ji pomocí [zálohovat virtuální počítače Azure do trezorů služby Recovery Services.](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Ujistěte se, že přidáte příslušné protokolování při psaní skriptů před a po skriptu a kontrole skriptu protokolů k opravte všechny problémy skriptu. Pokud máte potíže se spouštěním skriptů, naleznete další informace v následující tabulce.
+Ujistěte se, že přidáte odpovídající protokolování při zápisu předsnímkových a posnímkových skriptů a zkontrolujte protokoly skriptu opravit případné problémy skriptu. Pokud stále máte problémy se spouštěním skriptů, najdete v následující tabulce najdete další informace.
 
 | Chyba | Chybová zpráva | Doporučená akce |
 | ------------------------ | -------------- | ------------------ |
-| Před ScriptExecutionFailed |Předběžné skript vrátila chybu, takže záloha pravděpodobně nebude konzistentní s aplikací.   | Podívejte se na protokoly selhání vašeho skriptu vyřešit problém.|  
-|   POST-ScriptExecutionFailed |    Po skript vrátí chybu, která může mít vliv na stav aplikace. |    Podívejte se na protokoly selhání vašeho skriptu, opravte problém a zkontrolujte stav aplikace. |
-| Před ScriptNotFound |  Předběžné skript nebyl nalezen v umístění, který je uveden v **VMSnapshotScriptPluginConfig.json** konfiguračního souboru. |   Zkontrolujte, jestli to před skript se nachází v cestě, který je uveden v konfiguračním souboru, aby zálohování konzistentní s aplikací.|
-| POST-ScriptNotFound | Po skript nebyl nalezen v umístění, který je uveden v **VMSnapshotScriptPluginConfig.json** konfiguračního souboru. |   Zkontrolujte, že to po skript se nachází v cestě, který je uveden v konfiguračním souboru, aby zálohování konzistentní s aplikací.|
-| IncorrectPluginhostFile | **Pluginhost** souboru, který se dodává s příponou VmSnapshotLinux, je poškozený, takže nelze spustit skript před a po skript a zálohování nebude konzistentní s aplikací. | Odinstalace **VmSnapshotLinux** rozšíření a bude nutné přeinstalovat automaticky s další zálohování na opravě problému. |
-| IncorrectJSONConfigFile | **VMSnapshotScriptPluginConfig.json** souboru je nesprávná, takže před skript a po skriptu nelze spustit a zálohování nebude konzistentní s aplikací. | Stáhněte si kopii z [Githubu](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) a nakonfigurujte ji znovu. |
-| InsufficientPermissionforPre skriptu | Ke spouštění skriptů, "root" uživatel by měl být vlastníka souboru a soubor musí mít oprávnění "700" (to znamená, musí mít pouze "vlastník" "číst", "zápisu" a "spustit" oprávnění). | Zajistěte, aby uživatel "root" se "vlastník" soubor skriptu a že pouze "vlastník" má "oprávnění ke čtení", "zápisu" a "spustit". |
-| InsufficientPermissionforPost skriptu | Ke spouštění skriptů, kořenový uživatel by měl být vlastníka souboru a soubor musí mít oprávnění "700" (to znamená, musí mít pouze "vlastník" "číst", "zápisu" a "spustit" oprávnění). | Zajistěte, aby uživatel "root" se "vlastník" soubor skriptu a že pouze "vlastník" má "oprávnění ke čtení", "zápisu" a "spustit". |
-| Před ScriptTimeout | Doba pro provedení konzistentní s aplikací zálohování před skriptu vypršel. | Zkontrolujte skript a zvýšit časový limit v **VMSnapshotScriptPluginConfig.json** soubor, který se nachází v **/etc/azure**. |
-| POST-ScriptTimeout | Vypršel časový limit spuštění zálohování konzistentní s aplikací po skriptu. | Zkontrolujte skript a zvýšit časový limit v **VMSnapshotScriptPluginConfig.json** soubor, který se nachází v **/etc/azure**. |
+| Pre-ScriptExecutionFailed |Předzálohovací skript vrátil chybu, takže záloha nemusí být konzistentní s aplikací.   | Podívejte se na protokoly chyb vašeho skriptu, pokud chcete problém vyřešit.|  
+|   ScriptExecutionFailed příspěvku |    Pozálohovací skript vrátil chybu, která může mít vliv na stav aplikace. |    Podívejte se na protokoly chyb vašeho skriptu, abyste tento problém vyřešit a zkontrolovat stav aplikace. |
+| Pre-ScriptNotFound |  Najít předzálohovací skript v umístění zadaném v **VMSnapshotScriptPluginConfig.json** konfiguračního souboru. |   Zkontrolujte, že to předzálohovací skript nachází na cestu, která je určena v konfiguračním souboru, aby zálohování konzistentní s aplikací.|
+| ScriptNotFound příspěvku | Najít pozálohovací skript v umístění zadaném v **VMSnapshotScriptPluginConfig.json** konfiguračního souboru. |   Zkontrolujte, že to pozálohovací skript nachází na cestě zadané v konfiguračním souboru, aby zálohování konzistentní s aplikací.|
+| IncorrectPluginhostFile | **Pluginhost** soubor, který je součástí rozšíření VmSnapshotLinux, je poškozený, takže předzálohovací a pozálohovací skript nejde spustit, nebude záloha konzistentní s aplikací. | Odinstalace **VmSnapshotLinux** rozšíření a bude automaticky znovu při dalším zálohování se tento problém vyřešit. |
+| IncorrectJSONConfigFile | **VMSnapshotScriptPluginConfig.json** souboru je nesprávná, takže předzálohovací skript a pozálohovací skript nejde spustit, nebude záloha konzistentní s aplikací. | Stáhněte si kopii z [Githubu](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) a konfigurovat znova. |
+| InsufficientPermissionforPre-Script | Ke spouštění skriptů, "root" uživatel by měl být vlastníka souboru a soubor by měl mít oprávnění "700" (to znamená, že by měl mít pouze "vlastník" "čtení", "write" a "spustit" oprávnění). | Ujistěte se, že uživatel "root" je "vlastník" soubor skriptu a že pouze "vlastník" je "oprávnění ke čtení", "write" a "spustit". |
+| InsufficientPermissionforPost-Script | Ke spouštění skriptů, musí být uživatel root vlastníka souboru a soubor by měl mít oprávnění "700" (to znamená, že by měl mít pouze "vlastník" "čtení", "write" a "spustit" oprávnění). | Ujistěte se, že uživatel "root" je "vlastník" soubor skriptu a že pouze "vlastník" je "oprávnění ke čtení", "write" a "spustit". |
+| Pre-ScriptTimeout | Spuštění konzistentní zálohování předzálohovacího skriptu vypršel časový limit. | Zkontrolujte skript a zvýšit časový limit v **VMSnapshotScriptPluginConfig.json** soubor, který se nachází ve **/etc/azure**. |
+| ScriptTimeout příspěvku | Vypršel časový limit spuštění konzistentní zálohování pozálohovací skript. | Zkontrolujte skript a zvýšit časový limit v **VMSnapshotScriptPluginConfig.json** soubor, který se nachází ve **/etc/azure**. |
 
 ## <a name="next-steps"></a>Další postup
-[Konfigurace zálohování virtuálních počítačů do trezoru služeb zotavení](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
+[Konfigurace zálohování virtuálních počítačů do trezoru služby Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

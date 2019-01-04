@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ef55f25657d1decb09e438d443e7c289823f7d9d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353737"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605904"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy pro akcelerátor řešení připojená továrna
 
@@ -27,7 +27,7 @@ Zdrojový kód je uložen v následujícím úložišti Githubu:
 
 ### <a name="what-is-opc-ua"></a>Co je OPC UA?
 
-OPC Unified architektury (UA), vydáno 2008, je nezávislá na platformě, orientovaných na služby interoperability standard. OPC UA používají různé průmyslové systémů a zařízení, jako jsou odvětví počítače, plc a senzorů. OPC UA funkce OPC Classic specifikace integruje do jednoho rozšiřitelné rozhraní s integrovaným zabezpečením. To je standard, který řídíte nadací OPC Foundation. [OPC Foundation](http://opcfoundation.org/) je pro neziskové organizace s více než 440 členy. Cílem organizace je pomocí OPC specifikací pro usnadnění více dodavatele, více platforem, bezpečné a spolehlivé vzájemná funkční spolupráce prostřednictvím:
+OPC Unified architektury (UA), vydáno 2008, je nezávislá na platformě, orientovaných na služby interoperability standard. OPC UA používají různé průmyslové systémů a zařízení, jako jsou odvětví počítače, plc a senzorů. OPC UA funkce OPC Classic specifikace integruje do jednoho rozšiřitelné rozhraní s integrovaným zabezpečením. To je standard, který řídíte nadací OPC Foundation. [OPC Foundation](https://opcfoundation.org/) je pro neziskové organizace s více než 440 členy. Cílem organizace je pomocí OPC specifikací pro usnadnění více dodavatele, více platforem, bezpečné a spolehlivé vzájemná funkční spolupráce prostřednictvím:
 
 * Infrastruktura
 * Specifikace
@@ -78,7 +78,7 @@ Pokud jste nasadili řešení od www.azureiotsolutions.com, nemůžete se přihl
 1. Chcete-li spustit všechny kontejnery simulace:
     * Exportovat do proměnné prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu **IotHubOwnerConnectionString** nastavení `<name of your deployment>.config.user` souboru. Příklad:
 
-        ```
+        ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
@@ -142,7 +142,7 @@ Pokud se nezobrazují žádná data odeslaných do služby IoT Hub, je problém 
 
 Pokud chcete povolit interaktivní mapu ve vašem řešení připojená továrna, musí mít účet Azure Maps.
 
-Při nasazení z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), procesu nasazení do skupiny prostředků, která obsahuje službu akcelerátor řešení přidá účet Azure Maps.
+Při nasazení z [www.azureiotsolutions.com](https://www.azureiotsolutions.com), procesu nasazení do skupiny prostředků, která obsahuje službu akcelerátor řešení přidá účet Azure Maps.
 
 Při nasazení pomocí `build.ps1` skript proměnnou prostředí v sadě úložiště GitHub připojené továrny `$env:MapApiQueryKey` v okně sestavení [klíče vašeho účtu Azure Maps](../azure-maps/how-to-manage-account-keys.md). Interaktivní mapu se pak povolí automaticky.
 
@@ -174,15 +174,15 @@ Neodesílat telemetrická data z jiných OPC UA zařízení pro propojenou tová
 
     ```json
     [
-      {
-        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
-        "DisplayName": "<name_of_the_datapoint>",
-        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
-        "Value": {
-          "Value": <datapoint_value>,
-          "SourceTimestamp": "<timestamp>"
-        }
-      }
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
     ]
     ```
 

@@ -9,11 +9,11 @@ ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: 00124562d3bc21f9139ae54f022d7893a4eaf11c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326536"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53638785"
 ---
 | Prostředek | Cíl | Pevný limit |
 |----------|--------------|------------|

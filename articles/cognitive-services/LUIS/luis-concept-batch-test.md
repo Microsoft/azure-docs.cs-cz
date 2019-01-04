@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b0b2c8d0e3484538ca5c988a7fad56fb82b97902
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133142"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993158"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testování s 1 000 projevy portálu LUIS služby batch
 
@@ -48,7 +48,7 @@ Všechny vlastní entity v modelu se zobrazí ve filtru entity batch test i v p�
 
 Dávkový soubor se skládá z projevy. Každý utterance musí mít očekávané záměru předpovědi spolu s [zjištěné počítače entity](luis-concept-entity-types.md#types-of-entities) očekáváte, že aby se rozpoznal. 
 
-## <a name="batch-syntax-template"></a>Syntaxe šablony služby batch
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Syntaxe šablony služby batch pro záměry s entitami
 
 Pomocí následující šablony můžete spustit dávkový soubor:
 
@@ -75,6 +75,22 @@ Pomocí následující šablony můžete spustit dávkový soubor:
 ```
 
 Dávkový soubor používá **startPos** a **endPos** vlastnosti poznamenat začátek a konec entity. Hodnoty jsou počítány od nuly a nesmí začínat ani končit mezerou. Tím se liší z protokolů dotazu, které používají startIndex a hodnota endIndex vlastnosti. 
+
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Syntaxe šablony služby batch pro záměry bez entity
+
+Pomocí následující šablony spusťte váš dávkový soubor bez entity:
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": []
+  }
+]
+```
+
+Pokud nechcete k otestování entity, zahrňte `entities` vlastnosti a hodnotu jako prázdné pole, nastavte `[]`.
 
 
 ## <a name="common-errors-importing-a-batch"></a>Běžné chyby při importu služby batch

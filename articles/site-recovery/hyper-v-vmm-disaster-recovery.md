@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 040d0dae7bb16e0c2a79640812b18ad75754ca3e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cccfc3d028cb2da9346e629a5aca080bedd7fee9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846602"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794511"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -65,7 +65,7 @@ Připravte VMM následujícím způsobem:
 
 Vyberte, jak chcete počítače replikovat a kam je chcete replikovat.
 
-1. Klikněte na **Site Recovery** > **Krok 1: Příprava infrastruktury** > **Cíl ochrany**.
+1. Klikněte na tlačítko **Site Recovery** > **krok 1: Příprava infrastruktury** > **cíl ochrany**.
 2. Vyberte **Do lokality pro obnovení** a vyberte **Ano, s technologií Hyper-V**.
 3. Vyberte **Ano**, abyste určili, že ke správě hostitelů Hyper-V používáte VMM.
 4. Vyberte **Ano**, pokud máte sekundární server VMM. Pokud nasazujete replikaci mezi cloudy na jeden server VMM, klikněte na **Ne**. Pak klikněte na **OK**.
@@ -96,7 +96,7 @@ Nainstalujte na servery VMM zprostředkovatele Azure Site Recovery a vyhledejte 
 5. Po dokončení instalace klikněte na **Zaregistrovat**, aby se server zaregistroval v trezoru.
 
     ![Umístění instalace](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na **Další**.
+6. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na tlačítko **Další**.
 7. V části **Připojení k proxy serveru** určete, jak se zprostředkovatel, který běží na serveru VMM, připojí k Azure.
    - Můžete určit, že se zprostředkovatel má k internetu připojit přímo nebo přes proxy server. Podle potřeby zadejte nastavení proxy serveru.
    - Pokud používáte proxy server, vytvoří se automaticky účet VMM RunAs (DRAProxyAccount) pomocí zadaných přihlašovacích údajů proxy serveru. Proxy server nakonfigurujte tak, aby tento účet bylo možné úspěšně ověřit. Nastavení účtu RunAs můžete upravovat v konzole VMM v části **Nastavení** > **Zabezpečení** > **Účty Spustit jako**.
@@ -133,8 +133,8 @@ Než začnete, ujistěte se, že všichni hostitelé, na které se zásada vztah
 1. V části **Frekvence kopírování** určete, jak často chcete replikovat rozdílová data po počáteční replikaci (každých 30 sekund, 5 minut nebo 15 minut).
 2. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý bude interval uchovávání dat pro jednotlivé body obnovení. Replikované počítače je možné obnovit do libovolného bodu v rámci tohoto intervalu.
 3. V části **Frekvence pořizování snímků konzistentních vzhledem k aplikacím** určete, jak často (1–12 hodin) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím. Technologie Hyper-V používá dva typy snímků:
-    - **Standardní snímek:** Poskytuje přírůstkový snímek celého virtuálního počítače.
-    - **Snímek konzistentní vzhledem k aplikacím:** Pořizuje snímek dat aplikací ve virtuálním počítači v daném okamžiku. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace budou při pořízení snímku v konzistentním stavu. Povolení snímků konzistentních vzhledem k aplikacím má vliv na výkon aplikací na zdrojových virtuálních počítačích. Nastavte hodnotu menší než počet dalších bodů obnovení, které nakonfigurujete.
+    - **Standardní snímek**: Poskytuje přírůstkový snímek celého virtuálního počítače.
+    - **Snímky konzistentní s aplikací**: Pořídí snímek dat aplikací ve virtuálním počítači v daném okamžiku. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace budou při pořízení snímku v konzistentním stavu. Povolení snímků konzistentních vzhledem k aplikacím má vliv na výkon aplikací na zdrojových virtuálních počítačích. Nastavte hodnotu menší než počet dalších bodů obnovení, které nakonfigurujete.
 4. V části **Komprese přenosu dat** určete, jestli se mají přenášená data replikace komprimovat.
 5. Výběrem možnosti **Odstranit repliku virtuálního počítače** určíte, že se má v případě, že zakážete ochranu zdrojového virtuálního počítače, odstranit jeho replika. Pokud povolíte toto nastavení, pak se v případě, že zakážete ochranu zdrojového virtuálního počítače, tento virtuální počítač odebere z konzoly Site Recovery, z konzoly VMM se odeberou nastavení Site Recovery pro VMM a odstraní se příslušná replika.
 6. Pokud provádíte replikaci přes síť, v části **Metoda počáteční replikace** určete, jestli se má spustit počáteční replikace, nebo ji naplánujte. Pokud chcete snížit využití šířky pásma, měli byste ji naplánovat na dobu mimo špičky. Pak klikněte na **OK**.

@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 99f19f6595f2e3105c4b30a7c2e7ef1e296fad6e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311809"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724847"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Připojení služby Cosmos DB pomocí Azure Search pomocí indexerů
 
@@ -38,7 +38,7 @@ V následujícím videu Azure Cosmos DB programový manažer Andrew Liu ukazuje,
 <a name="supportedAPIs"></a>
 ## <a name="supported-api-types"></a>Podporované typy rozhraní API
 
-I když službu Azure Cosmos DB podporuje širokou škálu datových modelů a rozhraní API, podpora produkční indexeru Azure Search rozšiřuje rozhraní SQL API. Podpora pro rozhraní MongoDB API je aktuálně ve verzi public preview.  
+I když službu Azure Cosmos DB podporuje širokou škálu datových modelů a rozhraní API, podpora produkční indexeru Azure Search rozšiřuje rozhraní SQL API. Podpora pro Azure Cosmos DB pro rozhraní MongoDB API je aktuálně ve verzi public preview.  
 
 Podpora pro další rozhraní API je připravovaný. Pokud chcete nám pomohou určit prioritu ty, které chcete podporovat nejprve, přetypujte hlasování na webu User Voice:
 

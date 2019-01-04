@@ -1,106 +1,72 @@
 ---
-title: Akcelerátory řešení Azure IoT a Azure Active Directory | Dokumentace Microsoftu
-description: Popisuje, jak akcelerátory řešení Azure IoT používá Azure Active Directory pro správu oprávnění.
+title: Použijte řešení IoT v Azure – Azure | Dokumentace Microsoftu
+description: Popisuje způsob použití AzureIoTSolutions.com webu nasadit akcelerátor řešení.
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 11/10/2017
+ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: e45954389c8dd1b484a7009460c541bf35266973
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713846"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601079"
 ---
-# <a name="permissions-on-the-azureiotsolutionscom-site"></a>Oprávnění na webu azureiotsolutions.com
+# <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Použití azureiotsolutions.com webu nasadit akcelerátor řešení
 
-## <a name="what-happens-when-you-sign-in"></a>Co se stane při přihlášení
+Akcelerátory řešení Azure IoT můžete nasadit ke svému předplatnému Azure z [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators). AzureIoTSolutions.com hostuje Microsoft open source a akcelerátory řešení partnerů. Tyto akcelerátory řešení bylo v souladu s [referenční architektura IoT v Azure](https://aka.ms/iotrefarchitecture). Webu můžete použít k rychlému nasazení akcelerátoru řešení jako ukázku nebo produkčního prostředí.
 
-Přihlaste se na prvním [azureiotsuite.com][lnk-azureiotsolutions], webu určuje úrovně oprávnění mít podle aktuálně vybraného tenanta Azure Active Directory (AAD) a předplatné Azure.
+![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
-1. Nejprve k naplnění seznamu tenantů vidět vedle vašeho uživatelského jména, lokality dozví z Azure které tenantů AAD, musíte patřit do. V současné době webu můžete získat pouze tokeny uživatele pro jednoho tenanta v čase. Proto při přepnutí klientů pomocí rozevíracího seznamu v pravém horním rohu webu přihlásí vás do tohoto tenanta k získání tokenů pro daného tenanta.
+> [!TIP]
+> Pokud potřebujete větší kontrolu nad tímto procesem nasazení, můžete použít [rozhraní příkazového řádku pro nasazení akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-2. V dalším kroku lokality dozví z Azure, které předplatné propojené s vybraného tenanta. Když vytvoříte nový akcelerátor řešení zobrazí dostupná předplatná.
+Můžete nasadit akcelerátory řešení v následující konfigurace:
 
-3. Nakonec webu načte všechny prostředky v předplatných a skupin prostředků označené jako akcelerátory řešení a naplní dlaždice na domovskou stránku.
+* **Standardní**: Nasazení rozšířené infrastruktury pro vývoj produkčního prostředí. Azure Container Service nasazuje mikroslužby do několika virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
+* **Základní**: Verze nižšími náklady pro ukázku nebo otestování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
+* **Místní**: Nasazení místního počítače pro vývoj a testování. Tento přístup nasazuje mikroslužby do místní kontejner Dockeru a připojí ke službě IoT Hub, Azure Cosmos DB a služby Azure storage v cloudu.
 
-Následující části popisují role, které řídí přístup k akcelerátorům řešení.
+Každá akcelerátory řešení používá jinou kombinaci služeb Azure, například služby IoT Hub, Azure Stream Analytics a Cosmos DB. Další informace najdete v článku [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) a vybrat akcelerátor řešení.
 
-## <a name="aad-roles"></a>Rolí AAD
+## <a name="sign-in-at-azureiotsolutionscom"></a>Přihlaste se na azureiotsolutions.com
 
-Role AAD řídí schopnost zřízení akcelerátory řešení pro správu uživatelů a některé služby Azure v akcelerátoru řešení.
+Před nasazením akcelerátoru řešení, musíte se přihlásit na AzureIoTSolutions.com pomocí přihlašovacích údajů spojené s předplatným Azure. Pokud váš účet je přidruženo více než jednoho tenanta Microsoft Azure Active Directory (AD), můžete použít **rozevírací výběr účtu** zvolte adresář, který chcete použít.
 
-Další informace o rolích správce najdete v adresáři AAD v [přiřazení rolí správce ve službě Azure AD][lnk-aad-admin]. Na aktuální článek se zaměřuje na **globálního správce** a **uživatele** role adresáře jako akcelerátory řešení.
+Oprávnění k akcelerátorům řešení nasazení, správu uživatelů a správy služeb Azure závisí na vaší roli ve vybraném adresáři. Běžné úlohy služby Azure AD přidružené k akcelerátorům řešení patří:
 
-### <a name="global-administrator"></a>Globální správce
+* **Globální správce**: Může být mnoho [globální správci](../active-directory/users-groups-roles/directory-assign-admin-roles.md) na tenanta Azure AD:
 
-Může existovat mnoho globálních správců na tenanta AAD:
+  * Když vytvoříte tenanta služby Azure AD, které jsou ve výchozím nastavení globálním správcem tohoto tenanta.
+  * Globální správce, můžete nasadit akcelerátory řešení basic a standard.
 
-* Když vytvoříte tenanta služby AAD, které jsou ve výchozím nastavení globálním správcem tohoto tenanta.
-* Globální správce můžete zřídit akcelerátory řešení basic a standard (základní nasazení používá jeden virtuální počítač Azure).
+* **Uživatel domény**: Může existovat mnoho uživatelů domény na tenanta služby Azure AD. Uživatel domény můžete nasadit základní řešení akcelerátoru.
 
-### <a name="domain-user"></a>Doména uživatel
+* **Uživatel typu Host**: Může existovat mnoho uživatelů typu Host na tenanta Azure AD. Uživatelé typu Host nemůže nasazení akcelerátoru řešení v tenantovi Azure AD.
 
-Může existovat mnoho uživatelů domény na tenanta služby AAD:
+Další informace týkající se uživatelů a rolí ve službě Azure AD najdete v článku na následujících odkazech:
 
-* Uživatel domény můžete zřídit akcelerátoru základní řešení prostřednictvím [azureiotsolutions.com] [ lnk-azureiotsolutions] lokality.
-* Uživatel domény může vytvářet akcelerátoru základní řešení pomocí rozhraní příkazového řádku.
+* [Vytvořit uživatele v Azure Active Directory](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+* [Přiřazení uživatelů k aplikacím](../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="guest-user"></a>Uživatel typu Host
+## <a name="choose-your-device"></a>Zvolte si zařízení
 
-Může existovat mnoho uživatelů typu Host na tenanta AAD. Uživatelé typu Host mají omezenou sadu práv v tenantovi AAD. V důsledku toho uživatele typu Host nemůže zřídit akcelerátoru řešení v tenantovi AAD.
+Web AzureIoTSolutions.com odkazuje na [programu Azure Certified for IoT zařízení katalogu](https://catalog.azureiotsolutions.com/).
 
-Další informace týkající se uživatelů a rolí ve službě AAD najdete v článku na následujících odkazech:
+Katalog obsahuje stovky certifikovaných hardwarových zařízení IoT, se můžete připojit k vaše akcelerátory řešení, abyste mohli začít vytvářet řešení IoT.
 
-* [Vytvoření uživatelů ve službě Azure AD][lnk-create-edit-users]
-* [Přiřazení uživatelů k aplikacím][lnk-assign-app-roles]
+![Katalog zařízení](media/iot-accelerators-permissions/devicecatalog.png)
 
-## <a name="azure-subscription-administrator-roles"></a>Role správce předplatného Azure
-
-Role správce Azure řídí schopnost mapování předplatné Azure s tenantem AAD.
-
-Další informace o rolích správce Azure v článku [přidat nebo změnit správce předplatného Azure][lnk-admin-roles].
-
-## <a name="faq"></a>Nejčastější dotazy
-
-### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>Jsem Správce služeb a chci změnit adresář mapování mezi svoje předplatné a konkrétního tenanta AAD. Jak tento úkol provést?
-
-Zobrazit [k přidání existujícího předplatného do adresáře služby Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
-
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Chci změnit správce služeb nebo spolupracujícího správce po přihlášení pomocí účtu organizace
-
-Přečtěte si článek podpory [změna správce služeb a spolupracujícího správce po přihlášení pomocí účtu organizace][lnk-service-admins].
-
-### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Proč se zobrazuje tato chyba? "Váš účet nemá potřebná oprávnění k vytvoření řešení. "Obraťte se na svého správce účtu, nebo zkuste s jiným účtem."
-
-Podívejte se na následující diagram pokyny:
-
-![][img-flowchart]
-
-> [!NOTE]
-> Pokud bude pořád zobrazovat chyby po ověření je globálním správcem tenanta AAD spolusprávcem předplatného a mít účet správce odeberete uživateli a znovu přiřadíte potřebná oprávnění v tomto pořadí. Nejprve přidat uživatele jako globální správce a pak přidat uživatele jako spolusprávce předplatného Azure. Pokud problémy přetrvávají, obraťte se na [Nápověda a podpora][lnk-help-support].
-
-### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Proč vidím tuto chybu, když mám předplatné Azure? "Předplatné Azure je potřeba vytvořit předem nakonfigurovaná řešení. Bezplatný zkušební účet můžete vytvořit během několika minut."
-
-Pokud si nejste jisti, že máte předplatné Azure, ověřit mapování pro vaše předplatné tenanta a ujistěte se, že je vybrán správný tenanta v rozevírací nabídce. Pokud jste ověřili požadovaný tenant je správný, postupujte podle předchozí diagram a ověřit mapování vašeho předplatného a tohoto tenanta AAD.
+Pokud jste výrobce hardwaru, klikněte na tlačítko **stát se partnerem** Další informace o partnerství s Microsoftem na Certified for IoT programu.
 
 ## <a name="next-steps"></a>Další postup
-Chcete-li pokračovat v seznamování s využitím akcelerátorů řešení IoT, naleznete v tématu Jak [přizpůsobení akcelerátoru řešení][lnk-customize].
 
-[img-flowchart]: media/iot-accelerators-permissions/flowchart.png
+Pokud si chcete vyzkoušet některý z akcelerátorů řešení IoT, projděte si následující rychlé starty:
 
-[lnk-azureiotsolutions]: https://www.azureiotsolutions.com
-[lnk-rm-github-repo]: https://github.com/Azure/remote-monitoring-services-dotnet
-[lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
-[lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
-[lnk-aad-admin]:../active-directory/users-groups-roles/directory-assign-admin-roles.md
-[lnk-portal]: https://portal.azure.com
-[lnk-create-edit-users]:../active-directory/fundamentals/active-directory-users-profile-azure-portal.md
-[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
-[lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin
-[lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
-[lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[lnk-customize]: iot-accelerators-remote-monitoring-customize.md
+* [Vyzkoušení řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
+* [Vyzkoušení řešení propojené továrny](quickstart-connected-factory-deploy.md)
+* [Vyzkoušení řešení prediktivní údržby](quickstart-predictive-maintenance-deploy.md)
+* [Vyzkoušení řešení simulace zařízení](quickstart-device-simulation-deploy.md)

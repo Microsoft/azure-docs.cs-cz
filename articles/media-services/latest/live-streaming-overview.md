@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/26/2018
 ms.author: juliako
-ms.openlocfilehash: b51f2850a925fcd9daf3a07d8db66193555df0fa
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3a2b3752926a3a4391ae9479ba636694533c97a8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000243"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788204"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -34,7 +34,7 @@ Tento článek poskytuje podrobný přehled najdete pokyny a zahrnuje diagramy h
 
 Pokud chcete doručovat na vyžádání a živé datové proudy pomocí služby Media Services, musíte mít aspoň jeden [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Při vytvoření účtu Media Services **výchozí** StreamingEndpoint se přidá k němu **Zastaveno** stavu. Je nutné začít StreamingEndpoint, ze kterého chcete Streamovat obsah do vašeho prohlížeče. Můžete použít výchozí **StreamingEndpoint**, nebo vytvořte další přizpůsobené **StreamingEndpoint** požadované konfigurace a nastavení CDN. Můžete se rozhodnout povolit více koncové body streamování, každý z nich cílení na různé sítě CDN a poskytuje jedinečný název hostitele pro doručování obsahu. 
 
-Ve službě Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za příjem a zpracování živého videa informačních kanálů. Při vytváření Livestream se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér vstupní koncový bod. Vzdáleném kodér služby live Encoding odešle informační kanál k příspěvek vstupní koncový bod buď pomocí [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [technologie Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protocol (fragmentovaný soubor MP4).  
+Ve službě Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za příjem a zpracování živého videa informačních kanálů. Při vytváření Livestream se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér vstupní koncový bod. Vzdáleném kodér služby live Encoding odešle informační kanál k příspěvek vstupní koncový bod buď pomocí [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [technologie Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protocol (fragmentovaný soubor MP4). Pro technologii Smooth Streaming ingestování, jsou podporovaná schémata URL `http://` nebo `https://`. Protokol ingestování RTMP, jsou podporovaná schémata URL `rtmp://` nebo `rtmps://`. Další informace najdete v tématu [doporučená živého streamování kodérů](recommended-on-premises-live-encoders.md).
 
 Jakmile **Livestream** spustí příjem příspěvků datového kanálu, můžete použít svůj koncový bod ve verzi preview (Náhled adresy URL pro zobrazení náhledu a ověření, že vám posíláme živého datového proudu před dalším publikování. Po kontrole, že datový proud ve verzi preview je dobré, vám pomůže Livestream uvolněte živého datového proudu pro doručení prostřednictvím jednoho nebo více (předem vytvořené) **koncové body streamování**. Chcete-li to provést, vytvořte nový [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) na **Livestream**. 
 
@@ -42,9 +42,9 @@ Jakmile **Livestream** spustí příjem příspěvků datového kanálu, můžet
 
 Pomocí služby Media Services můžete využít výhod **dynamické balení**, která umožňuje zobrazit náhled a všesměrového vysílání živé streamy v [formátů MPEG DASH, HLS a Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z příspěvku informačního kanálu že odesíláte do služby. Vaši uživatelé můžou přehrávat živé streamování pomocí libovolné kompatibilní hráči HLS, DASH nebo Smooth Streaming. Můžete použít [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) ve vašich webových nebo mobilních aplikací můžete poskytovat datový proud v některém z těchto protokolů.
 
-Služba Media Services umožňuje doručovat obsah zašifrovaný dynamicky (**dynamického šifrování**) s Advanced Encryption Standard (AES-128) nebo některou z systémy pro správu (DRM) tři hlavní digitálních práv: Microsoft PlayReady Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM licence autorizovaným klientům. Další informace o tom, jak šifrování obsahu pomocí služby Media Services najdete v tématu [ochrana obsahu – přehled](content-protection-overview.md)
+Služba Media Services umožňuje doručovat obsah zašifrovaný dynamicky (**dynamického šifrování**) s Advanced Encryption Standard (AES-128) nebo některým z tři systémů hlavní digital rights management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM licence autorizovaným klientům. Další informace o tom, jak šifrování obsahu pomocí služby Media Services najdete v tématu [ochrana obsahu – přehled](content-protection-overview.md)
 
-V případě potřeby můžete také použít dynamické filtrování, který slouží k řízení počet stop, formáty, přenosových rychlostí a prezentace časových oken, které se pošlou hráči. 
+V případě potřeby můžete také použít dynamické filtrování, který slouží k řízení počet stop, formáty, přenosových rychlostí a prezentace časových oken, které se pošlou hráči. Další informace najdete v tématu [filtrů a dynamických manifestů](filters-dynamic-manifest-overview.md).
 
 ### <a name="new-capabilities-for-live-streaming-in-v3"></a>Nové možnosti pro živé streamování ve verzi 3
 
@@ -77,13 +77,13 @@ Podívejte se na příklad za provozu v [MediaV3LiveApp](https://github.com/Azur
 
 ![živé kódování](./media/live-streaming/live-encoding.png)
 
-Pokud používáte živé kódování pomocí Media Services, nakonfigurujete by vaše místní kodér služby live Encoding odesílat videa s jednou přenosovou rychlostí jako příspěvek informačního kanálu Livestream (pomocí protokolu RTMP nebo fragmentovaný soubor Mp4). Livestream kóduje této příchozí s jednou přenosovou rychlostí na datový proud stream [více přenosovými rychlostmi datový proud videa](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), zpřístupní pro doručení pro přehrávání zařízení prostřednictvím protokolů, jako jsou MPEG-DASH, HLS a Smooth Streaming. Při vytváření tohoto typu Livestream, zadejte jako typ kódování **základní** (LiveEventEncodingType.Basic).
+Pokud používáte živé kódování pomocí Media Services, nakonfigurujete by vaše místní kodér služby live Encoding odesílat videa s jednou přenosovou rychlostí jako příspěvek informačního kanálu Livestream (pomocí protokolu RTMP nebo fragmentovaný soubor Mp4). Livestream kóduje této příchozí s jednou přenosovou rychlostí na datový proud stream [více přenosovými rychlostmi datový proud videa](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), zpřístupní pro doručení pro přehrávání zařízení prostřednictvím protokolů, jako jsou MPEG-DASH, HLS a Smooth Streaming. Při vytváření tohoto typu Livestream, zadejte jako typ kódování **standardní** (LiveEventEncodingType.Standard).
 
 Můžete odeslat příspěvek kanálu na až rozlišení 1080 p rychlostí rámec 30 snímků/druhé kodek H.264/AVC videa a AAC (AAC-LC, HE-AACv1 nebo HE-AACv2) zvukový kodek. Zobrazit [Livestream typy porovnání a omezení](live-event-types-comparison.md) , kde najdete další podrobnosti.
 
 ## <a name="liveevent-types-comparison"></a>Porovnání typů Livestream
 
-V následujícím článku obsahuje tabulku, která obsahuje porovnání funkcí těchto dvou typů Livestream: [porovnání](live-event-types-comparison.md).
+V následujícím článku obsahuje tabulku, která obsahuje porovnání funkcí těchto dvou typů Livestream: [Porovnání](live-event-types-comparison.md).
 
 ## <a name="liveoutput"></a>LiveOutput
 

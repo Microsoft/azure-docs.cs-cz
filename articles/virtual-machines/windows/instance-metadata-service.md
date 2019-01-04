@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 331ec4bd7e91e8283f6a44b0fd440a9d73e28710
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 17826bb250f1cc7c4d512f76400eeb43c2637c73
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024167"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994789"
 ---
 # <a name="azure-instance-metadata-service"></a>Služby Azure Instance Metadata
 
@@ -288,7 +288,7 @@ location | Oblasti Azure virtuální počítač běží v | 2017-04-02
 jméno | Název virtuálního počítače | 2017-04-02
 nabídka | Nabízí informace pro image virtuálního počítače. Tato hodnota platí jenom pro Image nasazují z Galerie imagí Azure. | 2017-04-02
 vydavatele | Vydavatel image virtuálního počítače | 2017-04-02
-Skladová položka | Konkrétní SKU pro image virtuálního počítače | 2017-04-02
+SKU | Konkrétní SKU pro image virtuálního počítače | 2017-04-02
 version | Verzi image virtuálního počítače | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 platformUpdateDomain |  [Aktualizační doména](manage-availability.md) virtuální počítač je spuštěný | 2017-04-02
@@ -412,6 +412,51 @@ Azure má různé suverénních cloudech, jako je [Azure Government](https://azu
   }
  
   Write-Host $environment
+```
+
+### <a name="failover-clustering-in-windows-server"></a>Převzetí služeb clusteringu ve Windows serveru
+
+Pro určité scénáře, při dotazování služba Instance Metadata pomocí clusteringu převzetí služeb při selhání, je potřeba přidat trasy do směrovací tabulky.
+
+1. Otevřete příkazový řádek s oprávněními správce.
+
+2. Spusťte následující příkaz a poznamenejte si adresu rozhraní pro cíl v síti (`0.0.0.0`) do směrovací tabulky IPv4.
+
+```bat
+route print
+```
+
+> [!NOTE] 
+> Následující příklad výstupu z virtuálního počítače s Windows serverem s clusteru převzetí služeb při selhání povolené obsahuje pouze směrovací tabulky IPv4 pro zjednodušení.
+
+```bat
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination        Netmask          Gateway       Interface  Metric
+          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
+        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+        224.0.0.0        240.0.0.0         On-link         10.0.1.10    266
+  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
+```
+
+3. Spusťte následující příkaz a použijte adresu rozhraní pro cíl v síti (`0.0.0.0`) tedy (`10.0.1.10`) v tomto příkladu.
+
+```bat
+route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání metadat služby používající různé jazyky ve virtuálním počítači 

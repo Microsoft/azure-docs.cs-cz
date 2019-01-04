@@ -4,16 +4,16 @@ description: Tento článek popisuje, jak zajistit ochranu souborového serveru 
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: dde38f1c27ed808d730699e3c1d68a1c78cf3af5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c6db0b9dda9f383ddc062c41bae0be0b56f7e69d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850478"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794086"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrana souborového serveru pomocí Azure Site Recovery 
 
@@ -37,15 +37,15 @@ V předchozím diagramu se na replikaci souborů napříč skupinou replikace ak
 
 ## <a name="disaster-recovery-recommendations-for-file-servers"></a>Doporučení k zotavení po havárii pro souborové servery
 
-* **Replikace souborového serveru pomocí Site Recovery:** Souborové servery je možné replikovat do Azure pomocí Site Recovery. V případě nedostupnosti jednoho nebo několika místních souborových serverů je možné aktivovat virtuální počítače pro obnovení v Azure. Tyto virtuální počítače pak můžou obsluhovat požadavky klientů v místním prostředí za předpokladu, že existuje připojení VPN typu Site-to-Site a v Azure je nakonfigurovaná služba Active Directory. Tuto metodu můžete využít v případě prostředí s nakonfigurovanou replikací systému souborů DFS nebo jednoduchého prostředí souborového serveru bez replikace systému souborů DFS. 
+* **Pomocí Site Recovery replikovat souborový server**: Souborové servery je možné replikovat do Azure pomocí Site Recovery. V případě nedostupnosti jednoho nebo několika místních souborových serverů je možné aktivovat virtuální počítače pro obnovení v Azure. Tyto virtuální počítače pak můžou obsluhovat požadavky klientů v místním prostředí za předpokladu, že existuje připojení VPN typu Site-to-Site a v Azure je nakonfigurovaná služba Active Directory. Tuto metodu můžete využít v případě prostředí s nakonfigurovanou replikací systému souborů DFS nebo jednoduchého prostředí souborového serveru bez replikace systému souborů DFS. 
 
-* **Rozšíření replikace systému souborů DFS na virtuální počítač Azure IaaS:** V clusterovaném prostředí souborového serveru s implementovanou replikací systému souborů DFS můžete rozšířit místní replikaci systému souborů DFS do Azure. Roli souborového serveru pak může zastávat virtuální počítač Azure. 
+* **Rozšiřte DFSR na Virtuálním počítači Azure IaaS**: V prostředí clusterového souborového serveru pomocí služby DFSR implementované můžete rozšířit místní DFSR do Azure. Roli souborového serveru pak může zastávat virtuální počítač Azure. 
 
     * Jakmile se vyřeší závislosti v podobě připojení VPN typu Site-to-Site a služby Active Directory a povolí se replikace systému souborů DFS, v případě nedostupnosti jednoho nebo několika místních souborových serverů se klienti budou moct připojit k virtuálnímu počítači Azure, který jejich požadavky zpracuje.
 
     * Tento přístup můžete využít v případě, že vaše virtuální počítače obsahují konfigurace, které Site Recovery nepodporuje. Příkladem je sdílený disk clusteru, který se občas běžně používá v prostředích souborových serverů. Replikace systému souborů DFS funguje dobře také v prostředích s nízkou šířkou pásma se středním podílem výpovědí. Je potřeba zvážit dodatečné náklady na neustálý provoz virtuálního počítače Azure. 
 
-* **Replikace souborů pomocí Synchronizace souborů Azure:** Pokud se chystáte využít cloud nebo již používáte virtuální počítač Azure, můžete použít Synchronizaci souborů Azure. Synchronizace souborů Azure nabízí synchronizaci plně spravovaných sdílených složek v cloudu, které jsou přístupné přes standardní protokol [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB). Sdílené složky Azure je pak možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. 
+* **Pomocí Azure File Sync replikovat svoje soubory**: Pokud budete chtít použít cloud nebo již virtuální počítač Azure, můžete použít Azure File Sync. Synchronizace souborů Azure nabízí synchronizaci plně spravovaných sdílených složek v cloudu, které jsou přístupné přes standardní protokol [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB). Sdílené složky Azure je pak možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. 
 
 Následující diagram vám pomůže určit, jakou strategii použít pro vaše prostředí souborového serveru.
 
@@ -74,9 +74,9 @@ Vzhledem k tomu, že je replikace Site Recovery nezávislá na aplikaci, očeká
 > [!IMPORTANT]
 > Než budete pokračovat v některém z následujících tří přístupů, nezapomeňte se postarat o tyto závislosti.
 
-**Připojení typu Site-to-Site:** Je potřeba navázat přímé připojení mezi místní lokalitou a sítí Azure, aby byla možná komunikace mezi servery. Použijte zabezpečené připojení VPN typu Site-to-Site k virtuální síti Azure, která slouží jako lokalita pro zotavení po havárii. Další informace najdete v tématu [Navázání připojení VPN typu Site-to-Site mezi místní lokalitou a virtuální sítí Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
+**Připojení Site-to-site**: Přímé připojení mezi místní lokalitou a síť Azure musí vytvořit umožňujícím komunikaci mezi servery. Použijte zabezpečené připojení VPN typu Site-to-Site k virtuální síti Azure, která slouží jako lokalita pro zotavení po havárii. Další informace najdete v tématu [Navázání připojení VPN typu Site-to-Site mezi místní lokalitou a virtuální sítí Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
 
-**Active Directory:** Replikace systému souborů DFS závisí na službě Active Directory. To znamená, že se doménová struktura Active Directory s místními řadiči domény rozšíří do lokality pro zotavení po havárii v Azure. Pokud je potřeba udělit přístup nebo ověřit přístup uživatelů, musíte tyto kroky provést i v případě, že nevyužíváte replikaci systému souborů DFS. Další informace najdete v tématu [Rozšíření místní služby Active Directory do Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory).
+**Služby Active Directory**: Služby DFSR závisí na službě Active Directory. To znamená, že se doménová struktura Active Directory s místními řadiči domény rozšíří do lokality pro zotavení po havárii v Azure. Pokud je potřeba udělit přístup nebo ověřit přístup uživatelů, musíte tyto kroky provést i v případě, že nevyužíváte replikaci systému souborů DFS. Další informace najdete v tématu [Rozšíření místní služby Active Directory do Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory).
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Doporučení k zotavení po havárii pro virtuální počítače Azure IaaS
 

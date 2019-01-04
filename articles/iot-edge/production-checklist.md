@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d39a271f33cb86bf870c3a7692c38d780093efa2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100034"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652598"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava k nasazení svého řešení IoT Edge v produkčním prostředí
 
@@ -162,6 +162,17 @@ Pokud nastavení sítě vyžaduje, že je explicitně seznamu povolených IP adr
 Ve všech třech případech název DNS by odpovídat vzoru \*.azure devices.net. 
 
 Kromě toho **modul Container** provede volání do registrů kontejnerů přes protokol HTTPS. Pokud chcete načíst Image kontejnerů modulu runtime IoT Edge, název DNS je mcr.microsoft.com. Modul kontejneru se připojí k další registry podle konfigurace v nasazení. 
+
+Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
+
+   | Adresa URL (\* = zástupných znaků) | Odchozí porty TCP | Využití |
+   | ----- | ----- | ----- |
+   | MCR.microsoft.com  | 443 | Registr kontejneru Microsoft |
+   | Global.Azure. zařízení provisioning.net  | 443 | DPS přístup (nepovinné) |
+   | \*. azurecr.io | 443 | Registry kontejnerů osobní a 3. stran |
+   | \*.blob.core.windows.net | 443 | Časový limit stažení bitové kopie rozdíly | 
+   | \*.Azure devices.net | 5671, 8883, 443 | Přístup k službě IoT Hub |
+   | \*. docker.io  | 443 | Přístup ke docker (volitelné) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurace komunikace prostřednictvím proxy serveru
 

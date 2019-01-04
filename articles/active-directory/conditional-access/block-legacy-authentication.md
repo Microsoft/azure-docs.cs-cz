@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ddfea3ec7380a36f937052a6a994504ca081f187
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2abf0afb3b6e1cd80168fa3f295297551b9bf7ce
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019411"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755151"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blok starší verze ověřování do služby Azure AD s podmíněným přístupem   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem   
 
 Azure Active Directory (Azure AD) a poskytovat uživatelům snadný přístup k vašim cloudovým aplikacím, podporuje množství různých ověřovacích protokolů včetně starší verze ověřování. Ale nepodporují starších verzí protokolů ověřování službou Multi-Factor Authentication (MFA). MFA je v mnoha prostředích běžné požadavky na krádež identity adres. 
 
@@ -60,7 +60,7 @@ Jak můžete zabránit aplikacím pomocí starší verze ověřování přístup
 
 Tato část vysvětluje postup konfigurace zásad podmíněného přístupu pro starší verze ověřování bloku. 
 
-### <a name="block-legacy-authentication"></a>Blok starší verze ověřování 
+### <a name="block-legacy-authentication"></a>Blokování starší verze ověřování 
 
 V zásadách podmíněného přístupu můžete nastavit podmínku, která se váže na klientské aplikace, které se používají pro přístup k prostředkům. Stav klienta aplikace umožňuje zúžit rozsah pro aplikace s využitím ověřování na starší verzi výběrem **ostatní klienty** pro **mobilní aplikace a desktopoví klienti**.
 
@@ -91,7 +91,7 @@ Azure má bezpečnostní funkce, která brání ve vytvoření takovouto zásadu
 ![Konfigurace zásad není podporována](./media/block-legacy-authentication/04.png)
 
 
-Funkci bezpečnosti je nezbytné protože *blokovat všechny uživatele a všechny cloudové aplikace* hrozí riziko blokování celé organizace z přihlášení do vašeho tenanta. Je nutné vyloučit aspoň jednoho uživatele splňovat minimální požadavky osvědčených postupů. Můžete také 
+Funkci bezpečnosti je nezbytné protože *blokovat všechny uživatele a všechny cloudové aplikace* hrozí riziko blokování celé organizace z přihlášení do vašeho tenanta. Je nutné vyloučit aspoň jednoho uživatele splňovat minimální požadavky osvědčených postupů. Může také vyloučit roli adresáře.
 
 ![Konfigurace zásad není podporována](./media/block-legacy-authentication/05.png)
 

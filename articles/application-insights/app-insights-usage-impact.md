@@ -13,12 +13,12 @@ ms.date: 01/25/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6bc18d73f66c1ede777d579b764127f034d9f0ca
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9b987ccd17f2060eea125a5d384446cec24fb68a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725722"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969161"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analýza dopadu pomocí Application Insights
 
@@ -35,7 +35,7 @@ Ale analýzu výkonu je pouze podmnožinu těchto dopad na možnosti. Protože d
 ![Snímek obrazovky převodu pomocí prohlížeče](./media/app-insights-usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Prostředek Application Insights může obsahovat zobrazení stránek nebo vlastní události a použít nástroj dopad. [Zjistěte, jak nastavit aplikaci shromažďovat zobrazení stránek automaticky pomocí Application Insights JavaScript SDK](app-insights-javascript.md). Také je důležité Uvědomte si, že vzhledem k tomu, že se analýza korelace, ukázkový velikost.
+> Prostředek Application Insights může obsahovat zobrazení stránek nebo vlastní události a použít nástroj dopad. [Zjistěte, jak nastavit aplikaci shromažďovat zobrazení stránek automaticky pomocí Application Insights JavaScript SDK](../azure-monitor/app/javascript.md). Také je důležité Uvědomte si, že vzhledem k tomu, že se analýza korelace, ukázkový velikost.
 >
 >
 

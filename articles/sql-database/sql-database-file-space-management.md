@@ -9,27 +9,27 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab
+ms.reviewer: jrasnick, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 2de57a4ade91293fb1164815f83e87517068544e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d8ddbb2590852ed80ce02f147886dc125815fc23
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277882"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605953"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
 Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
 
 ## <a name="overview"></a>Přehled
 
-Ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tato situace může nastat, když používá zvyšuje prostor a následně se odstraní data. Důvodem je, protože přidělené místo souboru neuvolní automaticky, když se odstraní data.
+Ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tento stav může nastat v případě, že se zvýší množství využitého prostoru a data se následně odstraní. Důvodem je, protože přidělené místo souboru neuvolní automaticky, když se odstraní data.
 
-Monitorování využití místa na soubor a zmenšení souborů dat může být nutné v následujících scénářích:
-- Maximální velikost fondu dosáhne soubor místo přidělené pro jeho databáze, povolit nárůst dat v elastickém fondu.
-- Povolte snížení maximální velikost elastický fond nebo izolovanou databázi.
-- Povolit změnu elastický fond nebo izolovanou databázi na jinou službu vrstvy nebo úrovně výkonu se nižší maximální velikost.
+V následujících scénářích může být potřeba monitorovat využití prostoru souborů a zmenšení datových souborů:
+- Povolení růstu objemu dat v elastickém fondu v případě, že prostor souborů přidělený pro jeho databáze dosáhne maximální velikosti fondu
+- Povolení snížení maximální velikosti jednoúčelové databáze nebo elastického fondu
+- Povolení změny jednoúčelové databáze nebo elastického fondu na jinou úroveň služby nebo výkonu s nižší maximální velikostí
 
 ### <a name="monitoring-file-space-usage"></a>Monitorování využití místa na souboru
 Většina metrik úložiště prostor zobrazí na webu Azure portal a rozhraní API pro následující míru jenom velikost stránky používaná data:

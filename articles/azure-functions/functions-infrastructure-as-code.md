@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 484cf0976ce10e80ca7eaf9b215329b81ed4bb13
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 428e1bed4e62b4fcbd7a4e03601cfc5c630b6583
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994664"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715524"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazování prostředků pro vaši aplikaci funkcí ve službě Azure Functions
 
@@ -167,7 +167,7 @@ Kromě toho plán Consumption vyžaduje další dvě nastavení v konfiguraci we
 
 ## <a name="deploy-a-function-app-on-the-app-service-plan"></a>Nasazení aplikace funkcí v plánu služby App Service
 
-V plánu služby App Service aplikace function app běží na vyhrazených virtuálních počítačích na Basic, Standard a SKU úrovně Premium, podobně jako webové aplikace. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+V plánu služby App Service aplikace function app běží na vyhrazených virtuálních počítačích na Basic, Standard a SKU úrovně Premium, podobně jako webové aplikace. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/overview-hosting-plans.md). 
 
 Ukázkové šablony Azure Resource Manageru, najdete v části [aplikace Function app na plán služby App Service].
 

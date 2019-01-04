@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: twhitney
-ms.openlocfilehash: 85623f5acfb33d73774e5898e3f8937b4e07a5a9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: c4add1034e4b149cbe9d3c76c03987d45ca587c4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299074"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993773"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Zobrazit protokoly pro Service Fabric container service
 Azure Service Fabric je orchestrátor kontejnerů a podporuje obě [kontejnerů Linuxu a Windows](service-fabric-containers-overview.md).  Tento článek popisuje postup zobrazení protokolů kontejneru spuštěných služby kontejneru nebo dead kontejneru, takže můžete diagnostikovat a řešit problémy.
@@ -64,10 +64,10 @@ Text odpovědi 200:
 ```
 
 ### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
-Použití [sfctl get-container protokoly služby](service-fabric-sfctl-service.md) příkaz pro načtení v protokolech chyb kontejneru.  Zadejte název uzlu, který byl kontejner spuštěný, název aplikace, název manifestu služby a název balíčku kódu. Zadejte `-previous` příznak.  Odpověď bude obsahovat protokoly kontejneru pro neaktivní kontejner instance balíček kódu.
+Použití [sfctl get-container protokoly služby](service-fabric-sfctl-service.md) příkaz pro načtení v protokolech chyb kontejneru.  Zadejte název uzlu, který byl kontejner spuštěný, název aplikace, název manifestu služby a název balíčku kódu. Zadejte `--previous` příznak.  Odpověď bude obsahovat protokoly kontejneru pro neaktivní kontejner instance balíček kódu.
 
 ```
-sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –previous
+sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –-previous
 ```
 Odpověď:
 ```json

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8c114ed137089e70899e601ebdc1d4d39f562601
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: ab3d4cbe8a200e91d02177e49446065cd9c228df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43383131"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53609068"
 ---
 ## <a name="create-a-consumer-group"></a>Vytvořit skupinu uživatelů
 
@@ -41,7 +41,7 @@ Následující kroky pomocí rozhraní příkazového řádku Azure ve službě 
 
 [Azure Time Series Insights](../articles/time-series-insights/time-series-insights-overview.md) je plně spravovaná služba analýzy, ukládání a vizualizace pro správu dat časových řad IoT měřítku v cloudu. Chcete-li vytvořit nové prostředí Time Series Insights:
 
-1. Přihlaste se k [portálu Azure](http://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **vytvořit prostředek** > **Internet of Things** > **Time Series Insights**:
 

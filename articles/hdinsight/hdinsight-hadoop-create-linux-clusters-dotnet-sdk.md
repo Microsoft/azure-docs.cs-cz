@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 06135ff77cb9c2a5b8fa2ae674206406469ed293
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 52f67d21c3a130df4d85c220baca9c6af8eb06c1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870601"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793474"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "52870601"
 
 Zjistěte, jak vytvořit [Apache Hadoop](https://hadoop.apache.org/) clusteru v clusteru Azure HDInsight pomocí sady .NET SDK.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vytvořte cluster pomocí jednoho pracovního uzlu. Pokud máte v úmyslu na více než 32 uzly pracovního procesu v clusteru vytváření nebo škálování clusteru po jeho vytvoření, musíte vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14GB paměti ram.
 >
 > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -367,7 +367,7 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-administer-use-portal-linux.md#create-clusters).
+Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Další postup
 Teď, když úspěšně vytvoříte HDInsight cluster, použijte následující postup, jak pracovat s vaším clusterem. 
@@ -375,7 +375,7 @@ Teď, když úspěšně vytvoříte HDInsight cluster, použijte následující 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop clusterů
 * [Použití Apache Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
 * [Použití Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)
-* [Použití Apache Hadoop MapReduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Clustery Apache HBase
 * [Začínáme s Apache HBase v HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
@@ -389,8 +389,8 @@ Teď, když úspěšně vytvoříte HDInsight cluster, použijte následující 
 ### <a name="apache-spark-clusters"></a>Clustery Apache Spark
 * [Vytvoření samostatné aplikace pomocí Scala](spark/apache-spark-create-standalone-application.md)
 * [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](spark/apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="run-jobs"></a>Spouštění úloh
 * [Spouštět úlohy Apache Hive v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)

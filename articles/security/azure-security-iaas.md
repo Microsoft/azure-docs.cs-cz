@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: d4a2daf10fd864f13982f4d327868ad62d1309b3
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 42958576a127fee5e0a275e53203edd4e4dee6f9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321456"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540248"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -68,7 +68,7 @@ Pokud váš virtuální počítač běží důležité aplikace, které je potř
 
 Skupina dostupnosti je logické seskupení, které můžete použít k zajištění, že prostředky virtuálních počítačů, které do ní umístíte jsou od sebe navzájem izolované při nasazení v datacentru Azure v Azure. Azure tak zajišťuje jistotu, že virtuální počítače do skupiny dostupnosti umístíte nastavit spuštění napříč více fyzických serverů, stojany výpočetní prostředky, jednotkami úložiště a síťové přepínače. Pokud dojde k hardwaru nebo softwaru Azure selhání, se vztahuje pouze dílčí část vašich virtuálních počítačů a vaše celkové aplikace nadále být k dispozici zákazníkům. Skupiny dostupnosti představují základní funkci, pokud chcete vytváření spolehlivých cloudových řešení.
 
-## <a name="protect-against-malware"></a>Ochrana proti malwaru
+## <a name="protect-against-malware"></a>Chraňte se před malwarem
 Měli byste nainstalovat ochrany proti malwaru na pomáhá s identifikací a likvidací virů, spywaru a dalšího škodlivého softwaru. Můžete nainstalovat [Microsoft Antimalware](azure-security-antimalware.md) nebo partnera společnosti Microsoft řešení ochrany koncových bodů ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Programu Windows Defender](https://www.microsoft.com/search/result.aspx?q=Windows+defender+endpoint+protection), a [System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection)).
 
 Microsoft Antimalware zahrnuje funkce, jako je ochrana v reálném čase, naplánovanou kontrolu, malwarové nápravy, aktualizace signatur, aktualizace vyhledávacího stroje, ukázky reporting a vyloučení shromažďování událostí. Pro prostředí, které jsou hostované odděleně od produkčního prostředí můžete použít antimalwarové rozšíření k ochraně vašich virtuálních počítačů a cloudových služeb.
@@ -137,7 +137,7 @@ Zneužití prostředku může být problém, když procesy virtuální počíta�
 
 Doporučujeme, abyste použili [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) získat přehled o stavu vašich prostředků. Funkce monitorování Azure:
 
-- [Soubory protokolů diagnostiky prostředků](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md): Sleduje vaše prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohlo ohrozit výkon a dostupnost.
+- [Soubory protokolů diagnostiky prostředků](../azure-monitor/platform/diagnostic-logs-overview.md): Sleduje vaše prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohlo ohrozit výkon a dostupnost.
 - [Rozšíření Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-overview.md): Poskytuje funkce pro monitorování a Diagnostika na virtuálních počítačích s Windows. Můžete povolit tyto možnosti včetně rozšíření jako součást [šablony Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md).
 
 Organizace, které nechcete monitorovat výkon virtuálního počítače nelze určit, jestli jsou určité změny ve výkonu vzorů normálního nebo neobvyklé. Virtuální počítač, který je spotřebovávat více prostředků, než je obvyklé může znamenat útok z externího zdroje nebo ohroženými procesu spuštěného ve virtuálním počítači.

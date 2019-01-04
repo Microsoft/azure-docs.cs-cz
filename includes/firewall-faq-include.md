@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 7e547f49ec14bdb69a85dd916ef435c3f30f6ef2
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: b1550fc07ee4edfe98482a2e880f201ceb66705f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413723"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53995667"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -92,7 +92,7 @@ Příklad:
 ```azurepowershell
 # Stop an exisitng firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name” -ResourceGroupName "RG Name"
+$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
 Set-AzureRmFirewall -AzureFirewall $azfw
 ```

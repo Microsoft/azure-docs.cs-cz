@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 7f67868f6220ab2940aa8ac4d4bf24f82191cc22
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b14a36e79488f586173a6f4c8b81a24d8ce24806
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620247"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727492"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Připojit zařízení IoT DevKit k akcelerátoru řešení vzdáleného monitorování
 
@@ -22,24 +22,21 @@ ms.locfileid: "52620247"
 
 Tato příručka ukazuje, jak spustit ukázkovou aplikaci na vašem zařízení IoT DevKit. Vzorový kód odesílá telemetrii ze senzorů v zařízení DevKit akcelerátor řešení.
 
-[IoT DevKit](https://aka.ms/iot-devkit) je vše v jednom Arduino kompatibilní deska bohaté periferní zařízení a senzorů. Můžete vyvíjet pro něj pomocí [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) ve Visual Studio Code. [Katalogu projektů](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) obsahuje ukázkové aplikace můžete řešení IoT prototypu.
+[MXChip IoT DevKit](https://aka.ms/iot-devkit) je vše v jednom Arduino kompatibilní deska bohaté periferní zařízení a senzorů. Můžete vyvíjet pro něj pomocí [Workbench zařízení Azure IoT](https://aka.ms/iot-workbench) nebo [nástroje Azure IoT](https://aka.ms/azure-iot-tools) balíček rozšíření pro Visual Studio Code. [Katalogu projektů](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) obsahuje ukázkové aplikace můžete řešení IoT prototypu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="before-you-begin"></a>Před zahájením
 
-Postupujte podle [příručku Začínáme s IoT DevKet získávání](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a dokončování následujících částí:
+K dokončení kroků v tomto kurzu, proveďte následující úlohy:
 
-* Připravte svůj hardware
-* Konfigurace Wi-Fi
-* Začněte používat DevKit
-* Příprava vývojového prostředí
+* Příprava vašich DevKit podle postupu v [připojení IoT DevKit AZ3166 se do služby Azure IoT Hub v cloudu](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 
-## <a name="open-the-sample"></a>Otevřete ukázku
+## <a name="open-sample-project"></a>Otevřete ukázkový projekt
 
 Otevřete ukázkový vzdálené monitorování v nástroji VS Code:
 
 1. Ujistěte se, že vaše IoT DevKit se k počítači. Nejprve spusťte VS Code a DevKit připojte se k počítači.
 
-1. Klikněte na tlačítko `F1` otevřete paletu příkazů, typ a vyberte **IoT Workbench: Příklady**. Potom vyberte **IoT DevKit** jako panel.
+1. Klikněte na tlačítko `F1` otevřete paletu příkazů, zadejte a vyberte **Workbench zařízení Azure IoT: Otevřít příklady...** . Potom vyberte **IoT DevKit** jako panel.
 
 1. Najít **vzdálené monitorování** a klikněte na tlačítko **otevřít ukázkové**. Otevře se nové okno VS Code zobrazující složku projektu:
 
@@ -58,7 +55,7 @@ Pro konfiguraci připojovací řetězec zařízení centra IoT DevKit zařízen�
 
     ![IoT DevKit režim konfigurace](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. Stisknutím klávesy **F1** otevřete paletu příkazů, typ a vyberte **IoT Workbench: zařízení > Konfigurace nastavení zařízení**.
+1. Stisknutím klávesy **F1** otevřete paletu příkazů, zadejte a vyberte **Workbench zařízení Azure IoT: Konfigurace nastavení zařízení... > připojovací řetězec zařízení Config**.
 
 1. Vložte připojovací řetězec, který jste dříve zkopírovali a stiskněte klávesu **Enter** ke konfiguraci zařízení.
 
@@ -66,13 +63,11 @@ Pro konfiguraci připojovací řetězec zařízení centra IoT DevKit zařízen�
 
 K vytvoření a nahrání kódu zařízení:
 
-1. Stisknutím klávesy **F1**"** otevřete paletu příkazů, typ a vyberte **IoT Workbench: zařízení > nahrát zařízení**:
-
-    ![IoT Workbench: Zařízení - > nahrát](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-upload.png)
+1. Stisknutím klávesy `F1` otevřete paletu příkazů, zadejte a vyberte **Workbench zařízení Azure IoT: Nahrát kód zařízení**:
 
 1. VS Code kompiluje a odesílá kód do vašeho zařízení DevKit:
 
-    ![IoT Workbench: Zařízení - > nahrát](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
+    ![Aplikace Workbench IoT: Zařízení - > nahrát](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
 
 1. DevKit zařízení restartuje a spouští kód, který jste nahráli.
 
@@ -126,7 +121,7 @@ Pokud už nepotřebujete akcelerátor řešení, odstraníte ji ze stránky ře�
 
 Pokud narazíte na jakékoli problémy, podívejte se na [nejčastějších dotazech týkajících se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujte nás prostřednictvím následujících kanálů:
 
-* [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.IM](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup

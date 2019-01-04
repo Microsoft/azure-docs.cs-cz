@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: diberry
-ms.openlocfilehash: 476e982bdddd41c1daf06c3a673d964ce2a85f98
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 625bacb48ec0e8552c296242038ec038758145d6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270888"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993804"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Rychlý start: Získat odpověď ze znalostní báze pomocí nástroje Postman
 
@@ -34,25 +34,34 @@ Až budete připravení ke generování odpověď na dotaz zadaný ze znalostní
 
 Při publikování znalostní báze **publikovat** zobrazí se stránka nastavení požadavku HTTP ke generování odpovědi. Výchozí zobrazení ukazuje nastavení vyžadovaných ke generování odpověď na základě [Postman](https://www.getpostman.com).
 
+Žlutý čísla na následujícím obrázku určují, které název/hodnota dvojice používat v následujících krocích.
+
 [![Publikování výsledků](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
 Ke generování odpovědi pomocí Postman, proveďte následující kroky:
 
 1. Otevřete nástroj Postman. 
-1. Vyberte stavebním blokem, chcete-li vytvořit základní požadavek.
-1. Nastavte **název žádosti** jako `Generate QnA Maker answer`a **kolekce** jako `Generate QnA Maker answers`.
-1. V pracovním prostoru, vyberte metodu HTTP **příspěvek**.
-1. Pro adresu URL zřetězíte hodnotu hostitele a hodnotu Post vytvořit úplnou adresu URL. 
+1. Vyberte stavebním blokem k vytvoření **základní žádosti**.
+1. Nastavte **název žádosti** jako `Generate QnA Maker answer`a **kolekce** jako `Generate QnA Maker answers`. Pokud nechcete uložit do kolekce, vyberte **zrušit** tlačítko.
+1. V pracovním prostoru výsledný vyberte metodu HTTP **příspěvek**.
 
-    [![V nástroji Postman nastavte jako metodu Post a úplnou adresu URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [![V nástroji Postman nastavte metodu POST](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+
+1. Pro adresu URL zřetězíte hodnotu hostitele (č. 2 z bitové kopie) a hodnotu Post (č. 1 z image) Chcete-li vytvořit úplnou adresu URL. Kompletní příklad adresa URL vypadá jako: 
+
+    `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
+
+    [![V nástroji Postman nastavte úplnou adresu URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
 1. Vyberte **záhlaví** pod poli Adresa URL a potom vyberte **hromadných úprav**. 
-1. Zkopírujte záhlaví do textového pole.
+1. Zkopírujte do textového pole hlavičky (#3 a 4 # z image).
 
     [![V nástroji Postman by nastavit hlavičky](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
 1. Vyberte **tělo** kartu.
-1. Vyberte **nezpracovaná** formátování a zadejte ve formátu JSON, který představuje dotaz.
+1. Vyberte **nezpracovaná** formátování a zadejte ve formátu JSON (č. 5 z image), který představuje dotaz.
+
+    `{"question":"How do I programmatically update my Knowledge Base?"}`
 
     [![V nástroji Postman by tělo nastavit, že hodnota JSON](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 

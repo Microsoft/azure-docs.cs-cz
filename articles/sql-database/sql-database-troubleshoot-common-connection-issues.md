@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
 ms.author: daleche
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 53061cde5621be06df8f992278a6510d62e51934
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5610679756e91637ac4713059a510bebb882ca7a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872574"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600552"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Řešení problémů s připojením ke službě Azure SQL Database
 Při připojení ke službě Azure SQL Database selže, obdržíte [chybové zprávy](sql-database-develop-error-messages.md). Tento článek je centralizovaná téma, které vám pomohou s řešením problémům s připojením Azure SQL Database. Zavádí [nejčastější příčiny](#cause) z problémů s připojením, doporučuje [nástroje pro odstraňování potíží](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , která pomáhá identity problém a odstraňování potíží vysvětluje, jak vyřešit [přechodné chyby](#troubleshoot-transient-errors) a [trvalé nebo nepřechodných chyb](#troubleshoot-persistent-errors). 
@@ -82,7 +82,7 @@ Pokud aplikace trvale nepodaří připojit ke službě Azure SQL Database, obvyk
 * [Hledání v dokumentaci v Microsoft Azure](https://azure.microsoft.com/search/documentation/)
 * [Prohlédněte si nejnovější aktualizace ke službě Azure SQL Database](https://azure.microsoft.com/updates/?service=sql-database)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Přehled vývoje SQL Database](sql-database-develop-overview.md)
 * [Obecné pokyny přechodné zpracování chyb](../best-practices-retry-general.md)
 * [Připojení knihoven pro službu SQL Database a SQL Server](sql-database-libraries.md)

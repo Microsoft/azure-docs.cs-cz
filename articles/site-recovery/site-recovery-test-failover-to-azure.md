@@ -3,16 +3,17 @@ title: Spuštění postupu zotavení po havárii do Azure pomocí Azure Site Rec
 description: Další informace o spuštění postupu zotavení po havárii z místního do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cd8a7540b14c9d0896b9b0db2cae91ac54d92f2a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 19f41256866b42962be36bbb97f5f6d3c06d7fed
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844681"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976547"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure 
 
@@ -35,7 +36,7 @@ Tento postup popisuje, jak spustit testovací převzetí služeb při selhání 
     - **Nejnovější**: Tato možnost nejprve zpracuje všechna data, ke které byl odeslán do služby Site Recovery, chcete-li vytvořit bod obnovení pro každý virtuální počítač před přebírání služeb při selhání se. Tato možnost poskytuje nejnižší cíl bodu obnovení bodu obnovení (rpo), protože virtuální počítač vytvořen po převzetí služeb při selhání bude mít všechna data do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
     - **Nejnovější více virtuálních počítačů zpracovat**: Tato možnost je dostupná pro plány obnovení s jeden nebo více virtuálních počítačů, které mají povolenou konzistencí pro víc virtuálních počítačů. Virtuální počítače s povoleným nastavením převzetí služeb při selhání na nejnovější společný bod obnovení konzistentní vzhledem k několika virtuálním počítačům. Ostatní virtuální počítače převzetí služeb při selhání do nejnovějšího bodu obnovení zpracované.  
     - **Nejnovější více virtuálních počítačů konzistentní**: Tato možnost je dostupná pro plány obnovení s jeden nebo více virtuálních počítačů, které mají povolenou konzistencí pro víc virtuálních počítačů. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při selhání na nejnovější společný bod obnovení konzistentní vzhledem k aplikaci pro více virtuálních počítačů. Ostatní virtuální počítače převzetí služeb při selhání na jejich nejnovější bod obnovení konzistentní s aplikací.
-    - **Vlastní**: tuto možnost použijte k převzetí služeb při selhání konkrétní virtuální počítač, který konkrétnímu bodu obnovení.
+    - **Vlastní**: Tuto možnost použijte k převzetí služeb při selhání konkrétní virtuální počítač, který konkrétnímu bodu obnovení.
 3. Výběr služby Azure virtual network, ve kterém se vytvoří testovací virtuální počítače.
 
     - Site Recovery pokusy o vytvoření testovací virtuální počítače v podsíti se stejným názvem a stejné IP adresy, který je součástí **výpočty a síť** nastavení virtuálního počítače.
@@ -52,8 +53,8 @@ Tento postup popisuje, jak spustit testovací převzetí služeb při selhání 
 
 Když se aktivuje testovací převzetí služeb, dojde k následujícímu:
 
-1. **Požadavky**: Kontrola spuštění, abyste měli jistotu, že jsou splněny všechny podmínky pro převzetí služeb při selhání požadavků.
-2. **Převzetí služeb při selhání**: zpracovává převzetí služeb při selhání a přípravy dat, aby virtuální počítač Azure je vytvořit z něj.
+1. **Požadavky**: Spuštění abyste měli jistotu, že jsou splněny všechny podmínky pro převzetí služeb při selhání kontrol předpokladů.
+2. **Převzetí služeb při selhání**: Převzetí služeb při selhání zpracuje a přípravy dat, aby virtuální počítač Azure je vytvořit z něj.
 3. **Nejnovější**: Pokud jste vybrali nejnovější bod obnovení, se vytvoří bod obnovení z dat, který se poslal na službu.
 4. **Spustit**: Tento krok vytvoří virtuální počítač Azure pomocí dat zpracovaných v předchozím kroku.
 

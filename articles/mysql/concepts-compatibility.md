@@ -1,20 +1,17 @@
 ---
 title: Ovladače MySQL a kompatibilita nástroje správy
 description: Tento článek popisuje ovladače MySQL a nástroje pro správu, které jsou kompatibilní s využitím Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 4232e1850a1354fe247258d46b280e1bfa653972
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 7bb5f861676517d709f59c1bf50d77c4d9cc49a4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290820"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548047"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače MySQL a nástroje pro správu kompatibilní s využitím Azure Database for MySQL
 Tento článek popisuje ovladačů a nástrojů pro správu, které jsou kompatibilní s využitím Azure Database for MySQL.

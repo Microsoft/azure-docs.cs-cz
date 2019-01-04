@@ -1,18 +1,18 @@
 ---
-title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-Site: Portál | Dokumentace Microsoftu'
+title: 'Připojení místní sítě ke službě Azure virtual network: Síť Site-to-Site VPN: Portál | Dokumentace Microsoftu'
 description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí portálu.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: dd29b4af85826e350e116b31fa53031aacaba067
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457115"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651635"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Vytvoření připojení typu Site-to-Site na webu Azure Portal
 
@@ -30,33 +30,33 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
-* Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN. Tato IP adresa nesmí být umístěná za překladem adres (NAT).
+* Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN.
 * Pokud neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže. Při vytváření této konfigurace musíte zadat předpony rozsahu IP adres, které bude Azure směrovat do vašeho místního umístění. Žádná z podsítí vaší místní sítě se nesmí překrývat s podsítěmi virtuální sítě, ke kterým se chcete připojit. 
 
 ### <a name="values"></a>Příklady hodnot
 
 V příkladech v tomto článku se používají následující hodnoty. Tyto hodnoty můžete použít k vytvoření testovacího prostředí nebo můžou sloužit k lepšímu pochopení příkladů v tomto článku. Další celkové informace o nastavení VPN Gateway najdete v tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md).
 
-* **Název virtuální sítě:** TestVNet1
+* **Název virtuální sítě:** Virtuální sítě TestVNet1
 * **Adresní prostor:** 10.1.0.0/16
-* **Předplatné:** Vyberte předplatné, které chcete použít.
+* **Předplatné:** Předplatné, které chcete použít
 * **Skupina prostředků:** TestRG1
-* **Umístění:** Východní USA
-* **Podsíť:** Front-end: 10.1.0.0/24, Back-end: 10.1.1.0/24 (volitelné pro toto cvičení)
-* **Název podsítě brány:** GatewaySubnet (na portálu se sám vyplní)
+* **Umístění:** USA – východ
+* **Podsíť:** Front-endu: 10.1.0.0/24, back-endu: 10.1.1.0/24 (volitelné pro toto cvičení)
+* **Název podsítě brány:** GatewaySubnet (Toto se automaticky vyplnit na portálu)
 * **Rozsah adres podsítě brány:** 10.1.255.0/27
-* **Server DNS:** 8.8.8.8 – Volitelné IP adresa vašeho serveru DNS
-* **Název brány virtuální sítě:** VNet1GW
+* **DNS Server:** 8.8.8.8 – volitelné. IP adresa vašeho serveru DNS
+* **Název brány virtuální sítě:** Brány VNet1GW
 * **Veřejná IP adresa:** VNet1GWIP
-* **Typ sítě VPN:** Trasová
-* **Typ připojení:** Site-to-Site (protokol IPsec)
+* **Typ sítě VPN:** Trasové
+* **Typ připojení:** Site-to-site (IPsec)
 * **Typ brány:** Síť VPN
-* **Název brány místní sítě:** Site1
+* **Název brány místní sítě:** Web1
 * **Název připojení:** VNet1toSite1
 * **Sdílený klíč:** V tomto příkladu použijeme abc123. Můžete ale použít cokoli, co je kompatibilní s hardwarem sítě VPN. Důležité je, že si tyto hodnoty odpovídají na obou stranách připojení.
 

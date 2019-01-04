@@ -8,17 +8,17 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: e87f8a0d168db02bf0e93216991767f5a9be584c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89cf69ba8bc88a40582ea795b6a17fab4f286d64
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863512"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651976"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze SQL serveru do Azure SQL Database
 
@@ -33,9 +33,9 @@ V obou případech je potřeba zajistit, že zdrojová databáze je kompatibiln�
 > [!NOTE]
 > Pokud chcete migrovat databázi jiného typu než SQL Server, včetně databází Microsoft Access, Sybase, MySQL Oracle a DB2, na databázi Azure SQL Database, získáte informace v tématu [Pomocník s migrací na SQL Server](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/).
 
-## <a name="method-1-migration-with-downtime-during-the-migration"></a>Způsob 1: Migrace s prostoji během migrace
+## <a name="method-1-migration-with-downtime-during-the-migration"></a>Metoda 1: Migrace s prostoji během migrace
 
- Tuto metodu použijte k migraci k jednomu nebo databázi ve fondu, pokud si můžete nějaké prostoje dovolit nebo testujete migraci produkční databáze fungují pro pozdější migraci. Podívejte se kurz [migrace databáze SQL serveru](sql-database-migrate-your-sql-server-database.md).
+ Tuto metodu použijte k migraci k jednomu nebo databázi ve fondu, pokud si můžete nějaké prostoje dovolit nebo testujete migraci produkční databáze fungují pro pozdější migraci. Podívejte se kurz [migrace databáze SQL serveru](../dms/tutorial-sql-server-to-azure-sql.md).
 
 Následující seznam obsahuje obecný pracovní postup pro migraci databáze SQL serveru z jediného nebo databázi ve fondu pomocí této metody. Pro migraci do spravované Instance, naleznete v tématu [migraci do spravované Instance](sql-database-managed-instance-migrate.md).
 
@@ -65,7 +65,7 @@ Následující seznam obsahuje doporučení pro zajištění nejlepšího výkon
 
 [Aktualizujte statistiky](https://msdn.microsoft.com/library/ms187348.aspx) pomocí úplného prohledávání, jakmile se migrace dokončí.
 
-## <a name="method-2-use-transactional-replication"></a>Způsob 2: Použití transakční replikace
+## <a name="method-2-use-transactional-replication"></a>Metoda 2: Použití transakční replikace
 
 Pokud si během migrace nemůžete dovolit stažení databáze SQL Serveru z produkčního prostředí, můžete jako řešení migrace použít transakční replikaci SQL Serveru. Abyste tento způsob mohli použít, zdrojová databáze musí splňovat [požadavky pro transakční replikaci](https://msdn.microsoft.com/library/mt589530.aspx) a musí být kompatibilní se službou Azure SQL Database. Informace o replikaci SQL s Always On najdete v tématu [konfigurace replikace pro vždy na skupiny dostupnosti (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 

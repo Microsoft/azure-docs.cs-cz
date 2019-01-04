@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c226eb19dbd2049c486acfb1ffb9423fdb1dad43
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cad368cb968b94d1327cc99ed4dfa6df0aedd2cd
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410257"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555094"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-ad"></a>Migrace z federace na synchronizaci hodnot hash hesel pro službu Azure AD
 Následující dokument obsahuje pokyny k přechod ze služby AD FS na synchronizaci hodnot hash hesel.
@@ -295,7 +295,7 @@ Tuto metodu použijte, když služby AD FS byl zpočátku nakonfigurován pomoc�
    > V tomto okamžiku federovaných domén se změní na spravované ověřování, které bude nyní využívat synchronizaci hodnot Hash hesel jako metodu ověřování.
        
    7. Otevřít na portálu Azure AD, vyberte Azure Active Directory a potom vyberte Azure AD Connect.
-   8. Ověřte, že federační vypnutá při bezproblémové jednotné přihlašování a jsou povolené synchronizace hesel.  
+   8. Ověřte, zda je při bezproblémové jednotné přihlašování zakázáno federační a jsou povolené synchronizace hesel.  
   ![Obrázek 37](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)</br>
    9. Přejděte na [testování a další kroky](#testing-and-next-steps).
    
@@ -336,7 +336,7 @@ Jako součást tohoto procesu bude bezproblémové jednotné přihlašování a 
    > [!IMPORTANT]
    > Způsob, jakým se uživatelé registrují v tuto chvíli budou provedeny žádné změny.  
    
-   7. Na portálu Azure AD ověřte, že federační i nadále možné a nyní bezproblémové jednotné přihlašování je povolený.
+   7. Na portálu Azure AD ověřte, zda federace i nadále možné a nyní bezproblémové jednotné přihlašování je povolený.
    ![Obrázek 42](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image16.png)
 
 #### <a name="convert-domains-from-federated-to-managed"></a>Převést domény ze Federovaná do služby managed

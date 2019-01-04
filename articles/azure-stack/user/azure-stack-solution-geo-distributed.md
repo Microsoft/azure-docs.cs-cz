@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965389"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714844"
 ---
-# <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s Azure a Azure Stack
+# <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
@@ -59,15 +59,15 @@ Stejně jako v případě s aspekty zabezpečení, toto řešení se nezabývá 
 
 Před vytvoření distribuované aplikace nároky, pomáhá nemají následující informace:
 
--   **Vlastní doména aplikace:** co je vlastní název domény, který zákazníci budou používat pro přístup k aplikaci? Pro ukázkovou aplikaci vlastní název domény je *www.scalableasedemo.com.*
+-   **Vlastní doména aplikace:** Co je vlastní název domény, který zákazníci budou používat pro přístup k aplikaci? Pro ukázkovou aplikaci vlastní název domény je *www.scalableasedemo.com.*
 
--   **Doménu Traffic Manageru:** názvu domény je potřeba zvolit při vytváření [profilu Azure Traffic Manageru](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-manage-profiles). Tento název se zkombinuje s *trafficmanager.net* příponu je třeba zaregistrovat položku domény, který je spravovaný nástrojem Traffic Manager. Ukázkové aplikace je název zvoleném *škálovatelné služby ase ukázka*. V důsledku toho úplný název domény, který je spravovaný nástrojem Traffic Manager je *škálovatelné služby ase demo.trafficmanager.net*.
+-   **Doménu Traffic Manageru:** Název domény je potřeba zvolit při vytváření [profilu Azure Traffic Manageru](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-manage-profiles). Tento název se zkombinuje s *trafficmanager.net* příponu je třeba zaregistrovat položku domény, který je spravovaný nástrojem Traffic Manager. Ukázkové aplikace je název zvoleném *škálovatelné služby ase ukázka*. V důsledku toho úplný název domény, který je spravovaný nástrojem Traffic Manager je *škálovatelné služby ase demo.trafficmanager.net*.
 
--   **Strategie pro škálování app nároky:** bude nároky na aplikaci distribuovat napříč více App Service Environment v jedné oblasti? Více oblastech? Kombinací obou metod? Rozhodnutí by podle očekávání, kde budou pocházet provozu zákazníka a také jak můžete škálovat zbývající aplikace podporu back-end infrastrukturu. Například se 100 % bezstavové aplikace, aplikace je možné masivně škálovat pomocí kombinace více App Service Environment v jedné oblasti Azure, vynásobený nasazení ve víc oblastech Azure App Service Environment. Pomocí 15 + globálními oblastmi Azure si můžete vybrat z zákazníků, kteří vytvářejí skutečně nároky na celém světě vysoce škálovatelné aplikace. Pro ukázková aplikace používá pro účely tohoto článku byly vytvořeny tři App Service Environment v jedné oblasti Azure (střed USA – jih).
+-   **Strategie pro škálování app nároky:** Bude nároky na aplikaci distribuovat napříč více App Service Environment v jedné oblasti? Více oblastech? Kombinací obou metod? Rozhodnutí by podle očekávání, kde budou pocházet provozu zákazníka a také jak můžete škálovat zbývající aplikace podporu back-end infrastrukturu. Například se 100 % bezstavové aplikace, aplikace je možné masivně škálovat pomocí kombinace více App Service Environment v jedné oblasti Azure, vynásobený nasazení ve víc oblastech Azure App Service Environment. Pomocí 15 + globálními oblastmi Azure si můžete vybrat z zákazníků, kteří vytvářejí skutečně nároky na celém světě vysoce škálovatelné aplikace. Pro ukázková aplikace používá pro účely tohoto článku byly vytvořeny tři App Service Environment v jedné oblasti Azure (střed USA – jih).
 
--   **Zásady vytváření názvů pro App Service Environment:** každý App Service Environment vyžaduje jedinečný název. Nad rámec jednu nebo dvě služby App Service Environment je vhodné používat takové názvy vám pomůže identifikovat každou službu App Service Environment. Ukázkové aplikace byl použit jednoduché zásady vytváření názvů. Názvy tři App Service Environment jsou *fe1ase*, *fe2ase*, a *fe3ase*.
+-   **Zásady vytváření názvů pro App Service Environment:** Každá služba App Service Environment vyžaduje jedinečný název. Nad rámec jednu nebo dvě služby App Service Environment je vhodné používat takové názvy vám pomůže identifikovat každou službu App Service Environment. Ukázkové aplikace byl použit jednoduché zásady vytváření názvů. Názvy tři App Service Environment jsou *fe1ase*, *fe2ase*, a *fe3ase*.
 
--   **Zásady vytváření názvů pro aplikace:** od více instancí aplikace se nasadí, název je potřeba pro každou instanci nasazené aplikace. App Service Environment v stejný název aplikace je možné napříč více App Service Environment. Protože každá služba App Service Environment má příponu domény jedinečný, vývojáři můžete opakovaně používat přesně stejný název aplikace v každém prostředí. Například vývojář může mít aplikace s názvem následujícím způsobem: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*atd. Každá instance aplikace pro aplikaci v tomto scénáři má jedinečný název. Názvy instancí aplikace používá jsou *webfrontend1*, *webfrontend2*, a *webfrontend3*.
+-   **Zásady vytváření názvů pro aplikace:** Protože více instancí aplikace se nasadí, název je potřeba pro každou instanci nasazené aplikace. App Service Environment v stejný název aplikace je možné napříč více App Service Environment. Protože každá služba App Service Environment má příponu domény jedinečný, vývojáři můžete opakovaně používat přesně stejný název aplikace v každém prostředí. Například vývojář může mít aplikace s názvem následujícím způsobem: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*atd. Každá instance aplikace pro aplikaci v tomto scénáři má jedinečný název. Názvy instancí aplikace používá jsou *webfrontend1*, *webfrontend2*, a *webfrontend3*.
 
 > [!Tip]  
 > ![hybridní pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
@@ -122,7 +122,7 @@ Nastavení hybridní CI/CD a nasazení webové aplikace do Azure a Azure Stack a
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Vytvoření nasazení webové aplikace v obou cloudy
 
-1.  Upravit **WebApplication.csproj** souboru: vyberte **Runtimeidentifier** a přidejte **win10 x64**. (Viz [Self-contained nasazení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentaci.)
+1.  Upravit **WebApplication.csproj** souboru: Vyberte **Runtimeidentifier** a přidejte **win10 x64**. (Viz [Self-contained nasazení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentaci.)
 
     ![Alternativní text](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -240,9 +240,9 @@ Azure DevOps a Azure DevOps serveru poskytovat vysoce konfigurovatelné a spravo
 > [!Note]  
 >  Některá nastavení pro úlohy může automaticky definovaná jako [proměnné prostředí](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) při vytvoření definice verze ze šablony. Tato nastavení nelze změnit v nastavení úkolu; Místo toho musíte vybrat nadřazená položka prostředí upravit tato nastavení.
 
-## <a name="part-2-update-web-app-options"></a>2. část: Možnosti aktualizace webové aplikace
+## <a name="part-2-update-web-app-options"></a>Část 2: Aktualizace webové aplikace možnosti
 
-[Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. 
+[Azure App Service ](https://docs.microsoft.com/azure/app-service/overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. 
 
 ![Alternativní text](media/azure-stack-solution-geo-distributed/image27.png)
 
@@ -255,7 +255,7 @@ Azure DevOps a Azure DevOps serveru poskytovat vysoce konfigurovatelné a spravo
 > [!Note]  
 >  Používejte záznam CNAME pro všechny vlastní názvy DNS kromě kořenové domény (pro example,northwind.com).
 
-Pokud chcete do služby App Service migrovat živý web a jeho název domény DNS, přečtěte si téma [Migrace aktivního názvu DNS do služby Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-custom-domain-name-migrate).
+Pokud chcete do služby App Service migrovat živý web a jeho název domény DNS, přečtěte si téma [Migrace aktivního názvu DNS do služby Azure App Service](https://docs.microsoft.com/azure/app-service/manage-custom-dns-migrate-domain).
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -276,7 +276,7 @@ Aktualizace souboru zóny DNS pro doménu. Azure AD ověří vlastnictví vlastn
 Například přidejte www.northwindcloud.com fornorthwindcloud.comand záznamy DNS, nakonfigurujte nastavení DNS pro kořenovou doménu thenorthwindcloud.com.
 
 > [!Note]  
->  Název domény je možné zakoupit pomocí [webu Azure portal](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app).  
+>  Název domény je možné zakoupit pomocí [webu Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).  
 > Abyste mohli mapovat vlastní název DNS na webovou aplikaci, [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) příslušné webové aplikace musí být na placené úrovni (**Shared**, **Basic**, **Standard** nebo **Premium**).
 
 
@@ -359,7 +359,7 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
 Přejděte na názvy DNS nakonfigurovali v předchozích krocích (například `northwindcloud.com`, www.northwindcloud.com.
 
-## <a name="part-3-bind-a-custom-ssl-cert"></a>3. část: Vazba vlastního certifikátu SSL
+## <a name="part-3-bind-a-custom-ssl-cert"></a>3. část: Vytvořit vazbu vlastního certifikátu SSL
 
 V této části:
 
@@ -398,7 +398,7 @@ Pokud chcete ve službě App Service použít certifikát, musí splňovat všec
 
 Vytvořit vazbu vlastního certifikátu SSL do webové aplikace [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být v **základní**, **standardní**, nebo **Premium** vrstvy.
 
-#### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+#### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 1.  Otevřít [webu Azure portal](https://portal.azure.com/) a přejděte do webové aplikace.
 

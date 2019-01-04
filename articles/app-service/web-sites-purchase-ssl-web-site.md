@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268712"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714296"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte, jak zabezpečit webovou aplikaci tak, že vytvoříte
 Chcete postupovat podle příručky s postupy:
 
 - [Vytvořit aplikaci App Service](/azure/app-service/)
-- [Mapování názvu domény do webové aplikace](app-service-web-tutorial-custom-domain.md) nebo [koupě a konfigurace v Azure](custom-dns-web-site-buydomains-web-app.md)
+- [Mapování názvu domény do webové aplikace](app-service-web-tutorial-custom-domain.md) nebo [koupě a konfigurace v Azure](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -91,7 +91,7 @@ Vyberte **ověřování App Service**. Protože je již namapována domény do w
 > Podporuje čtyři typy metod ověřování domény: 
 > 
 > - **App Service** -nejpohodlnější možnost, pokud doména už je namapovaný na aplikaci služby App Service ve stejném předplatném. Využívá skutečnost, že aplikace služby App Service už ověřit vlastnictví domény.
-> - **Domény** – ověření [doména služby App Service, který jste si koupili z Azure](custom-dns-web-site-buydomains-web-app.md). Azure automaticky přidá ověřovacím záznamem TXT za vás a dokončí proces.
+> - **Domény** – ověření [doména služby App Service, který jste si koupili z Azure](manage-custom-dns-buy-domain.md). Azure automaticky přidá ověřovacím záznamem TXT za vás a dokončí proces.
 > - **E-mailu** – ověření domény e-mailem správci domény. Pokyny jsou k dispozici při výběru možnosti.
 > - **Ruční** – ověření domény pomocí stránky HTML (**standardní** certifikátu pouze) nebo záznam DNS TXT. Pokyny jsou k dispozici při výběru možnosti.
 

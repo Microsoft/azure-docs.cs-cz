@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 66688ae762aa646fc72045836c4ec4671bf4b7b4
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b81b9b34843974ceacf41b08a40a52418ea46d22
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888507"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547545"
 ---
 # <a name="configure-deployment-sources"></a>Konfigurace zdrojů nasazení
 
@@ -74,8 +74,8 @@ Musíte mít účet BitBucket a dokončete tuto úlohu. Můžete chtít použít
 5. Zadejte **adresu URL zpětného volání**. Ve výchozím nasazení Azure Stack je zpětné volání adresy URL ve formě https://portal.local.azurestack.external/TokenAuthorize. Pokud jsou spuštěny v jiné doméně, nahraďte název domény pro azurestack.local. BitBucket integrace úspěšně adresa URL musí následovat malá a velká písmena zde uvedené.
 6. Zadejte **URL**. Tato adresa URL by měla být na portálu Azure Stack URL; například https://portal.local.azurestack.external.
 7. Vyberte **oprávnění** vyžaduje:
-    - **Úložiště**: *pro čtení*
-    - **Webhooky**: *čtení a zápis*
+    - **Úložiště**: *Čtení*
+    - **Webhooky**: *Čtení a zápis*
 8. Klikněte na **Uložit**. Tato nová aplikace, uvidíte spolu s **klíč** a **tajný kód**v části **OAuth příjemci**.
     ![Aplikace výpisu Bitbucketu][9]
 9.  V nové záložce prohlížeče nebo okno, přihlaste se k portálu pro správu služby Azure Stack (https://adminportal.local.azurestack.external) jako správce služeb.
@@ -138,7 +138,7 @@ Musíte mít Account Microsoft propojený s účtem Onedrivu a dokončete tuto �
 
 ## <a name="next-steps"></a>Další postup
 
-Uživatelé teď můžou používat zdrojů nasazení, jako třeba věci [průběžné nasazování](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment), [místní nasazení přes Git](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-local-git), a [cloudové synchronizace složek](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-content-sync).
+Uživatelé teď můžou používat zdrojů nasazení, jako třeba věci [průběžné nasazování](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment), [místní nasazení přes Git](https://docs.microsoft.com/azure/app-service/deploy-local-git), a [cloudové synchronizace složek](https://docs.microsoft.com/azure/app-service-web/deploy-content-sync).
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

@@ -14,37 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2018
+ms.date: 12/22/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 042be0b818ba448d64aa5e8631926420f00f4b5e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 367a9b2bd7b4a32d69974639a13f67340ea56518
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679660"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745002"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu? 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?
 
-S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak ověřeného přístupu uživatele můžete řídit vašich cloudových aplikacích. V zásadách podmíněného přístupu definujte odpověď ("to") důvod Aktivace zásady ("Když taková situace nastane"). 
+S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak ověřeného přístupu uživatele můžete řídit vašich cloudových aplikacích. V zásadách podmíněného přístupu definujte odpověď ("to") důvod Aktivace zásady ("Když taková situace nastane").
 
 ![Řízení](./media/controls/10.png)
 
-
-V souvislosti s podmíněným přístupem 
+V souvislosti s podmíněným přístupem
 
 - "**v takovém případě**" se nazývá **podmínky**
 
 - "**Proveďte to**" se nazývá **ovládací prvky přístupu**
 
-
 Kombinace příkaz podmínky s ovládacími prvky představuje zásad podmíněného přístupu.
 
 ![Řízení](./media/controls/61.png)
 
-Každý ovládací prvek je požadavek, který musí být splněny osoba nebo systém přihlášení nebo omezení na to, co uživatel můžete provést po přihlášení. 
+Každý ovládací prvek je požadavek, který musí být splněny osoba nebo systém přihlášení nebo omezení na to, co uživatel můžete provést po přihlášení.
 
-Existují dva typy ovládacích prvků: 
+Existují dva typy ovládacích prvků:
 
 - **Udělit řízení** – Pokud chcete přístup k bráně
 
@@ -56,24 +54,20 @@ Toto téma vysvětluje různé ovládací prvky, které jsou k dispozici v podm�
 
 Pomocí udělení ovládacích prvků můžete zablokovat přístup úplně nebo povolení přístupu Další požadavky tak, že vyberete požadované ovládací prvky. Pro více ovládacích prvků můžete vyžadovat, aby:
 
-- Všechny vybrané ovládací prvky musí být splněny (*a*) 
+- Všechny vybrané ovládací prvky musí být splněny (*a*)
 - Jeden vybraný ovládací prvek musí být splněny (*nebo*)
 
 ![Řízení](./media/controls/17.png)
 
-
-
 ### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
-Tento ovládací prvek můžete vyžadovat vícefaktorové ověřování pro přístup k zadané cloudové aplikace. Tento ovládací prvek podporuje následující poskytovatele služby Multi-Factor Authentication: 
+Tento ovládací prvek můžete vyžadovat vícefaktorové ověřování pro přístup k zadané cloudové aplikace. Tento ovládací prvek podporuje následující poskytovatele služby Multi-Factor Authentication:
 
-- Azure Multi-Factor Authentication 
+- Azure Multi-Factor Authentication
 
 - Poskytovatele služby Multi-Factor authentication v místním v kombinaci s Active Directory Federation Services (AD FS).
- 
+
 Pomocí služby Multi-Factor authentication pomáhá chránit prostředky přístup neautorizovanému uživateli, který může být získali přístup k primární přihlašovací údaje platného uživatele.
-
-
 
 ### <a name="compliant-device"></a>Odpovídající zařízení
 
@@ -87,25 +81,18 @@ Vyžaduje hybridní zařízení připojeného k Azure AD je další možností j
 
 Další informace najdete v tématu [nastavit zásady podmíněného přístupu podle zařízení Azure Active Directory](require-managed-devices.md).
 
-
-
-
-
 ### <a name="approved-client-app"></a>Klientem schválenou aplikaci
 
 Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro osobní a pracovní úkoly, můžete chtít mít možnost chránit firemní data při přístupu pomocí zařízení i v případě, kdy nejsou spravujete sami.
 Můžete použít [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) k ochraně dat vaší společnosti není závislá na řešení správy mobilních zařízení (MDM).
 
-
 S klientem schválených aplikací, můžete vyžadovat, aby klientská aplikace, která se pokusí o přístup k vašim cloudovým aplikacím pro podporu [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Například můžete omezit přístup k Exchangi Online k aplikaci Outlook. Zásady podmíněného přístupu, která vyžaduje schválené klientské aplikace se také označuje jako [zásady podmíněného přístupu na základě aplikace](app-based-conditional-access.md). Seznam podporovaných klientem schválených aplikací najdete v tématu [schválené klientské aplikace požadavek](technical-reference.md#approved-client-app-requirement).
-
 
 ### <a name="terms-of-use"></a>Podmínky použití
 
-Uživatel může vyžadovat ve vašem tenantovi vyjádřit souhlas s podmínkami použití před udělením přístupu k prostředku. Jako správce můžete nakonfigurovat a upravit podmínky použití nahráním dokumentu PDF. Pokud uživatel spadá do rozsahu tato řízení přístupu k aplikaci je udělit pouze tehdy, pokud bylo dohodnuto podmínky použití. 
+Uživatel může vyžadovat ve vašem tenantovi vyjádřit souhlas s podmínkami použití před udělením přístupu k prostředku. Jako správce můžete nakonfigurovat a upravit podmínky použití nahráním dokumentu PDF. Pokud uživatel spadá do rozsahu tato řízení přístupu k aplikaci je udělit pouze tehdy, pokud bylo dohodnuto podmínky použití.
 
-
-### <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview) 
+### <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
 Můžete vytvořit vlastní ovládací prvky podmíněného přístupu, který přesměrovat uživatele na kompatibilní služby splňovat další požadavky mimo službu Azure Active Directory. To umožňuje použít některé externí ověřování službou Multi-Factor Authentication a zprostředkovatelů ověření vynutit pravidla podmíněného přístupu, nebo vytvářet vlastní služby. Tím se uspokojí tento ovládací prvek, prohlížeče uživatele přesměruje na externí služby, provede všechny požadované ověřování nebo ověřování aktivity a je následně přesměrován zpět do Azure Active Directory. Pokud si uživatel byl úspěšně ověřen nebo ověřit, uživatel bude pokračovat tok podmíněného přístupu. 
 
@@ -121,6 +108,7 @@ Poskytovatelé aktuálně nabízí kompatibilní služby patří:
 - [Datacard Entrust](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
+- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Symantec virtuálních IP adres](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
@@ -138,9 +126,7 @@ Možnost vytvořit vlastní ovládací prvek je v **spravovat** část **podmín
 
 Kliknutím na **nový vlastní ovládací prvek**, otevře se okno s textové pole pro data JSON ovládacího prvku.  
 
-
 ![Řízení](./media/controls/81.png)
-
 
 ### <a name="deleting-custom-controls"></a>Odstraňuje se vlastní ovládací prvky
 
@@ -156,9 +142,6 @@ Pokud chcete odstranit vlastní ovládací prvek, musíte nejdřív zajistit, ž
 
 Chcete-li upravit vlastní ovládací prvek, musíte odstranit aktuální ovládací prvek a vytvořit nový ovládací prvek aktualizované informace.
 
-
-
-
 ## <a name="session-controls"></a>Ovládací prvky relací
 
 Ovládací prvky relací umožňují používat v cloudové aplikaci omezené možnosti. Ovládací prvky relací neprosazují cloudových aplikací a Spolehněte se na další informace, které poskytuje Azure AD do aplikace o relaci.
@@ -171,15 +154,12 @@ Tento ovládací prvek můžete použít tak, aby vyžadovala Azure AD k předá
 
 Další informace naleznete v tématu:
 
-- [Povolení omezený přístup se Sharepointem Online](https://aka.ms/spolimitedaccessdocs) 
+- [Povolení omezený přístup se Sharepointem Online](https://aka.ms/spolimitedaccessdocs)
 
 - [Povolení omezený přístup s Exchangem Online](https://aka.ms/owalimitedaccess)
-
-
-
 
 ## <a name="next-steps"></a>Další postup
 
 - Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
 
-- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
+- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

@@ -1,19 +1,17 @@
 ---
 title: Protokolů serveru ve službě Azure Database for PostgreSQL
 description: Tento článek popisuje, databáze Azure pro PostgreSQL generuje dotaz a chybových protokolů a jak uchování protokolu konfigurace.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 2ee9f750ff52b8afe4be54233f1374f523a789f4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0e2dc2af6b4c7ddf531458136e6bcabb49be3b8f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845159"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538801"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Protokolů serveru ve službě Azure Database for PostgreSQL 
 Azure Database for PostgreSQL generuje dotaz a chybových protokolů. Dotaz a chybových protokolů umožňuje zjistit, řešit a opravit chyby v konfiguraci a neoptimální výkonu. (Přístup k protokolům transakce není součástí). 
@@ -30,7 +28,7 @@ Pokud jste povolili protokoly, které můžete přistupovat k nim z Azure Databa
 
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for PostgreSQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly na váš server PostgreSQL, můžete je mít znovu vygenerován pro [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, najdete v části s postupy [dokumentace k diagnostickým protokolům](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
+Azure Database for PostgreSQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly na váš server PostgreSQL, můžete je mít znovu vygenerován pro [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, najdete v části s postupy [dokumentace k diagnostickým protokolům](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
 
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na výstupního koncového bodu, kterou zvolíte, pole zahrnutá a pořadí, ve kterém jsou uvedeny, se můžou lišit. 
@@ -49,7 +47,7 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na v�
 | Prostředek | Název serveru |
 | Kategorie | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | Úroveň protokolování, například: LOG, chyby, upozornění |
+| errorLevel | Protokolování úrovně, například: VŠIMNĚTE SI, ŽE PROTOKOL, CHYBA, |
 | Zpráva | Primární protokolu zpráv | 
 | Domain (Doména) | Verze serveru, například: postgres 10 |
 | Detail | Zpráva protokolu sekundární (Pokud je k dispozici) |

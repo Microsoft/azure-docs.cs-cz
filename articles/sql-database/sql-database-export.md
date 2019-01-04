@@ -7,17 +7,17 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 2d881b9dbc20dbbf95491d023b859a20815091d3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 804202149234a55de4f7f99b18dc40b8136463a3
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311197"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651041"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportovat databázi Azure SQL do souboru BACPAC
 
@@ -98,6 +98,7 @@ $exportStatus
 - Další informace o dlouhodobém uchovávání záloh zálohy Azure SQL database jako alternativu k exportovat databázi pro účely archivace, naleznete v tématu [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
 - Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 - Další informace o import souboru BACPAC do databáze SQL serveru najdete v tématu [importovat do databáze SQL serveru BACPCAC](https://msdn.microsoft.com/library/hh710052.aspx).
-- Další informace o export souboru BACPAC z databáze SQL serveru najdete v tématu [exportem aplikace datové vrstvy](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) a [migrovat svoji první databázi](sql-database-migrate-your-sql-server-database.md).
+- Další informace o export souboru BACPAC z databáze SQL serveru najdete v tématu [exportem aplikace datové vrstvy](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+- Další informace o použití služby migrace dat k migraci databáze, najdete v článku [migrace systému SQL Server do služby Azure SQL Database pomocí DMS offline](../dms/tutorial-sql-server-to-azure-sql.md).
 - Pokud exportujete z SQL serveru jako prelude migrace do Azure SQL Database, přečtěte si téma [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-cloud-migrate.md).
 - Informace o správě a sdílení klíčů k úložišti a sdílené přístupové podpisy bezpečně, najdete v [Průvodci zabezpečením Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

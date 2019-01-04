@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384189"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718924"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
 
@@ -134,7 +134,7 @@ Založené na Linuxu clustery HDInsight poskytují dva hlavní uzly, které jsou
 
 ### <a name="bPS6"></a>Konfigurace vlastních součástech používání úložiště objektů Blob v Azure
 
-Součásti, které instalujete na clusteru může být výchozí konfigurace, který používá Apache Hadoop Distributed File System (HDFS) úložiště. HDInsight používá Azure Storage nebo Data Lake Store jako výchozím úložištěm. Oba poskytují systému HDFS kompatibilní soubor, který bude zachován dat i v případě odstranění clusteru. Budete muset konfigurovat součásti instalujete používat WASB nebo ADL namísto HDFS.
+Součásti, které instalujete na clusteru může být výchozí konfigurace, který používá Apache Hadoop Distributed File System (HDFS) úložiště. HDInsight používá jako výchozího úložiště Data Lake Storage nebo Azure Storage. Oba poskytují systému HDFS kompatibilní soubor, který bude zachován dat i v případě odstranění clusteru. Budete muset konfigurovat součásti instalujete používat WASB nebo ADL namísto HDFS.
 
 Pro většinu operací není potřeba zadat v systému souborů. Například následující zkopíruje giraph-examples.jar soubor z místního systému souborů do úložiště clusteru:
 
@@ -142,7 +142,7 @@ Pro většinu operací není potřeba zadat v systému souborů. Například ná
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace budete možná muset zadat identifikátor URI. Například `adl:///example/jars` pro Data Lake Store nebo `wasb:///example/jars` pro službu Azure Storage.
+V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace budete možná muset zadat identifikátor URI. Například `adl:///example/jars` pro Data Lake Storage nebo `wasb:///example/jars` pro službu Azure Storage.
 
 ### <a name="bPS7"></a>Zápis informací o do STDOUT a STDERR
 
@@ -163,7 +163,7 @@ Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Chcete-li ho přím
 >&2 echo "An error occurred installing Foo"
 ```
 
-To přesměruje informací, zapsán do STDOUT do výstupu STDERR (2) místo toho. Další informace o přesměrování vstupně-výstupních operací, najdete v části [ http://www.tldp.org/LDP/abs/html/io-redirection.html ](http://www.tldp.org/LDP/abs/html/io-redirection.html).
+To přesměruje informací, zapsán do STDOUT do výstupu STDERR (2) místo toho. Další informace o přesměrování vstupně-výstupních operací, najdete v části [ https://www.tldp.org/LDP/abs/html/io-redirection.html ](https://www.tldp.org/LDP/abs/html/io-redirection.html).
 
 Další informace o zobrazení informacím protokolovaným v akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
@@ -278,17 +278,17 @@ Skripty používané k úpravám clusteru musí být uložen v jednom z následu
 
 * A __veřejně čitelné URI__. Například adresa URL k datům uloženým na Onedrivu, Dropboxu nebo jiný soubor, který je hostitelem služby.
 
-* __Účtu Azure Data Lake Store__ , který je přidružen HDInsight cluster. Další informace o používání Azure Data Lake Store se službou HDInsight najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Účet Azure Data Lake Storage__ , který je přidružen HDInsight cluster. Další informace o používání služby Azure Data Lake Storage s HDInsight naleznete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]  
-    > Instanční objekt služby, kterou používá HDInsight pro přístup k Data Lake Store musí mít oprávnění ke čtení pro skript.
+    > Instanční objekt služby, kterou používá HDInsight pro přístup k Data Lake Storage musí mít oprávnění ke čtení pro skript.
 
 Prostředky využívané třídou skriptu musí být také veřejně dostupná.
 
-Ukládání souborů do účtu Azure Storage nebo Azure Data Lake Store poskytuje rychlý přístup, jako v rámci sítě Azure.
+Ukládání souborů do účtu Azure Storage nebo Azure Data Lake Storage poskytuje rychlý přístup, jako v rámci sítě Azure.
 
 > [!NOTE]  
-> Formát identifikátoru URI slouží jako odkaz na skript se liší v závislosti na používaných služeb. Pro účty úložiště přidružené ke clusteru HDInsight, použijte `wasb://` nebo `wasbs://`. Veřejně čitelné identifikátory URI, použijte `http://` nebo `https://`. Pro Data Lake Store, použijte `adl://`.
+> Formát identifikátoru URI slouží jako odkaz na skript se liší v závislosti na používaných služeb. Pro účty úložiště přidružené ke clusteru HDInsight, použijte `wasb://` nebo `wasbs://`. Veřejně čitelné identifikátory URI, použijte `http://` nebo `https://`. Pro Data Lake Storage, použijte `adl://`.
 
 ### <a name="checking-the-operating-system-version"></a>Kontroluje se verze operačního systému
 

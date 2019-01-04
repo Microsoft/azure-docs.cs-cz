@@ -6,12 +6,12 @@ author: iainfoulds
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: ee16165352edbacddac0c91f1ff68109982577de
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7d12e0f53796713df83b1cbb9e55695598c29077
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855703"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607383"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly pomocí Azure CLI
 
@@ -20,9 +20,29 @@ Rychlé škálování úloh aplikací v clusteru služby Azure Kubernetes Servic
 > [!IMPORTANT]
 > Virtuální uzly pro AKS jsou nyní v **ve verzi preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Virtuální uzly povolit síťovou komunikaci mezi pody spuštěné v ACI a AKS clusteru. Pro tuto komunikaci, se vytvoří podsíť virtuální sítě a jsou přiřazeny delegovaná oprávnění. Virtuální uzly fungovat jenom s clustery AKS vytvořeného *pokročilé* sítě. Ve výchozím nastavení, AKS clustery jsou vytvořeny pomocí *základní* sítě. Tento článek ukazuje, jak vytvořit virtuální síť a podsítě a pak Nasaďte cluster AKS, který používá rozšířeného sítě.
+
+Pokud jste dříve nepoužili ACI, zaregistrujte poskytovatele služeb s vaším předplatným. Můžete zkontrolovat stav registrace poskytovatele ACI pomocí [az provider list] [ az-provider-list] příkaz, jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+*Microsoft.ContainerInstance* poskytovatele hlásit jako *registrované*, jak je znázorněno v následujícím příkladu výstupu:
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+Pokud poskytovatel zobrazí jako *NotRegistered*, zaregistrujte poskytovatele pomocí [az provider register] [ az-provider-register] jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -278,13 +298,13 @@ NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query
 az network profile delete --id $NETWORK_PROFILE_ID -y
 
 # Get the service association link (SAL) ID
-SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name myVnet --name myAKSSubnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
+SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name myVnet --name myVirtualNodeSubnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
 
 # Delete the default SAL ID for the subnet
 az resource delete --ids $SAL_ID --api-version 2018-07-01
 
 # Delete the subnet delegation to Azure Container Instances
-az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --name myAKSSubnet --remove delegations 0
+az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --name myVirtualNodeSubnet --remove delegations 0
 ```
 
 ## <a name="next-steps"></a>Další postup
@@ -319,3 +339,5 @@ Virtuální uzly jsou často jedna komponenta škálování řešení ve služb�
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
+[az-provider-list]: /cli/azure/provider#az-provider-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

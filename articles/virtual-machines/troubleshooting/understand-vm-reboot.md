@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c1f48e3273ac0a237c72565acf25049b763dba8a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0ea9d8be9bf341c77c993bc04d438953241915c2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246663"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544831"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Vysvětlení restartování systému pro virtuální počítač Azure
 
@@ -64,7 +64,7 @@ Aktualizace více instancí (pro virtuální počítače ve skupině dostupnosti
     
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>Nebo zapnul a je akce zahájená uživatelem
  
-Pokud provést restartování z webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku nebo rozhraní API REST, můžete vyhledat události v [protokolu aktivit Azure](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Pokud provést restartování z webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku nebo rozhraní API REST, můžete vyhledat události v [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md).
 
 Pokud provedení akce z operačního systému Virtuálního počítače, najdete v protokolech systému události.
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301544"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548591"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
 Služba Azure Functions umožňuje snadno nasadit aplikaci function app používáte průběžnou integraci služby App Service. Functions se integruje s BitBucket, Dropbox, GitHub a Azure DevOps. To umožňuje pracovní postupy s kde kód funkce aktualizace provedené pomocí jedné z těchto integrovaných služeb aktivační události nasazení do Azure. Pokud jste ještě do služby Azure Functions, začněte s [přehled Azure Functions](functions-overview.md).
@@ -26,7 +26,7 @@ Průběžné nasazování je skvělou možností pro projekty, u kterých se int
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
 * Externí úložiště (Git nebo Mercurial)
-* [Místní úložiště Git](../app-service/app-service-deploy-local-git.md)
+* [Místní úložiště Git](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
 * [Služby Azure DevOps](https://www.visualstudio.com/team-services/)
@@ -52,7 +52,7 @@ Pomocí tohoto postupu konfigurace průběžného nasazování pro existující 
  
     ![Průběžné nasazování](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. V **zdroj nasazení** okna, klikněte na tlačítko **zvolit zdroj**, potom vyplňte informace pro vybrané nasazení zdroj a klikněte na tlačítko **OK**.
+3. V **zdroj nasazení** okna, klikněte na tlačítko **zvolit zdroj**, potom vyplňte informace pro vybrané nasazení zdroj a klikněte na tlačítko **OK**.
    
     ![Vyberte zdroj nasazení](./media/functions-continuous-deployment/choose-deployment-source.png)
 
@@ -93,12 +93,12 @@ Pokud máte existující funkce, které jste vytvořili a udržuje na portálu, 
 > [!NOTE]
 > Po dokončení konfigurace průběžné integrace, je již nebude moci upravit zdrojových souborů na portálu Functions.
 
-- [Postupy: Konfigurace přihlašovacích údajů nasazení](#credentials)
-- [Postupy: stahování souborů přes FTP](#downftp)
-- [Postupy: stahování souborů pomocí místního úložiště Git](#downgit)
+- [Jak: Nakonfigurujte přihlašovací údaje pro nasazení](#credentials)
+- [Jak: Stahování souborů přes FTP](#downftp)
+- [Jak: Stáhnout soubory pomocí místního úložiště Git](#downgit)
 
 <a name="credentials"></a>
-#### <a name="how-to-configure-deployment-credentials"></a>Postupy: Konfigurace přihlašovacích údajů nasazení
+#### <a name="how-to-configure-deployment-credentials"></a>Postup: Nakonfigurujte přihlašovací údaje pro nasazení
 Předtím, než může stáhnout soubory z vaší aplikace function app s FTP nebo místní úložiště Git, je nutné nakonfigurovat přihlašovací údaje pro přístup k webu. Přihlašovací údaje jsou nastavené na úrovni aplikace funkce. Chcete-li nastavit přihlašovací údaje pro nasazení na webu Azure Portal postupujte následovně:
 
 1. V aplikaci function app v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **funkce platformy** a **přihlašovací údaje pro nasazení**.
@@ -108,7 +108,7 @@ Předtím, než může stáhnout soubory z vaší aplikace function app s FTP ne
 2. Zadejte uživatelské jméno a heslo a potom klikněte na **Uložit**. Nyní můžete tyto přihlašovací údaje pro přístup k aplikaci function app z FTP nebo integrované úložiště Git.
 
 <a name="downftp"></a>
-#### <a name="how-to-download-files-using-ftp"></a>Postupy: stahování souborů přes FTP
+#### <a name="how-to-download-files-using-ftp"></a>Postup: Stahování souborů přes FTP
 
 1. V aplikaci function app v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **funkce platformy** a **vlastnosti**, zkopírujte hodnoty **uživatel FTP/nasazení**, **Název hostitele FTP**, a **název hostitele FTPS**.  
 
@@ -119,7 +119,7 @@ Předtím, než může stáhnout soubory z vaší aplikace function app s FTP ne
 2. Ze svého klienta FTP, použijte informace o připojení jste shromáždili pro připojení k vaší aplikace a stáhněte zdrojové soubory pro vaše funkce.
 
 <a name="downgit"></a>
-#### <a name="how-to-download-files-using-a-local-git-repository"></a>Postupy: stahování souborů pomocí místního úložiště Git
+#### <a name="how-to-download-files-using-a-local-git-repository"></a>Postup: Stáhnout soubory pomocí místního úložiště Git
 
 1. V aplikaci function app v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **funkce platformy** a **možnosti nasazení**. 
    

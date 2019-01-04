@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 74d6748a4d595e330103497dcc97ac57e01db250
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b1cfecca7d7b8a3f554466d95c666e2cbddbffde
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158614"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975674"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Povolení zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Kompletní [úloha 2 – exportujte certifikát protokolu secure LDAP pro. Soubor PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
 
 
@@ -51,7 +51,7 @@ Pokud chcete povolit protokol secure LDAP, proveďte následující kroky konfig
 5. Ve výchozím nastavení je zakázán přístup ke spravované doméně přes internet secure LDAP. Přepnout **povolit protokolu Secure LDAP přes internet** k **povolit**, pokud je potřeba.
 
     > [!WARNING]
-    > Když povolíte přístup protokolu secure LDAP přes internet, vaše doména je náchylný na útoky hrubou silou hesla přes internet. Proto doporučujeme nastavit skupinu zabezpečení sítě pro uzamčení přístupu k požadovaných zdrojových rozsahů IP adres. Přečtěte si pokyny k [uzamknutí LDAPS přístup ke spravované doméně přes internet](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
+    > Když povolíte přístup protokolu secure LDAP přes internet, vaše doména je náchylný na útoky hrubou silou hesla přes internet. Proto doporučujeme nastavit skupinu zabezpečení sítě pro uzamčení přístupu k požadovaných zdrojových rozsahů IP adres. Přečtěte si pokyny k [uzamknutí LDAPS přístup ke spravované doméně přes internet](active-directory-ds-ldaps-bind-lockdown.md#task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
     >
 
 6. Klikněte na ikonu následující složky **. Soubor PFX s certifikátem protokolu secure LDAP**. Zadejte cestu k souboru PFX s certifikátem pro přístup ke spravované doméně secure LDAP.

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 44b5702aa765b0e821850f6a390432563126482d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6e0cff6725db52601b4639ad638216370dd3cfda
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839904"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810691"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -81,8 +81,24 @@ Spusťte instalační soubor zprostředkovatele (AzureSiteRecoveryProvider.exe) 
 5. V části **Nastavení proxy** vyberte **Připojit přímo k Azure Site Recovery bez proxy**.
 6. Po registraci serveru v trezoru v části **Registrace** klikněte na **Dokončit**.
 
-Azure Site Recovery načte metadata ze serveru Hyper-V a server se zobrazí v části **Infrastruktura Site Recovery** > **Hostitelé Hyper-V**. Tento proces může trvat až 30 minut.
+Azure Site Recovery načte metadata ze serveru Hyper-V a server se zobrazí v části **Infrastruktura Site Recovery** > **Hostitelé Hyper-V**. Tento proces může trvat až 30 minut.        
 
+V případě, že používáte jádro serveru technologie Hyper-V, postupujte níže uvedený postup po stažení přihlašovacích údajů zprostředkovatele a trezor, jak je uvedeno [zde](#set-up-the-source-environment)
+
+1. Extrahujte soubory z AzureSiteRecoveryProvider.exe spuštěním
+
+    ``AzureSiteRecoveryProvider.exe /x:. /q``
+ 
+    To, který extrahuje soubory do místního adresáře.
+ 
+2.  Spusťte ``.\setupdr.exe /i ``.
+
+    Výsledky se budou protokolovat do %Programdata%\ASRLogs\DRASetupWizard.log
+
+3.  Registrace serveru pomocí příkazu:
+
+``cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved" ``
+ 
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 

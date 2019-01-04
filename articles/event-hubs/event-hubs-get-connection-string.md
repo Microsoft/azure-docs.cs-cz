@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 263dba970b015d466b3fd46f390a063e87de2e2c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 31220002f8529fd31407470e7650a4c97b62f2b4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093300"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535264"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Získání připojovacího řetězce služby Event Hubs
 
@@ -51,7 +51,7 @@ Můžete přidat nové zásady SAS a získání připojovacího řetězce nebo p
 ![Získání připojovacího řetězce služby Event Hubs](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Získávání připojovacího řetězce pomocí Azure Powershellu
-Get-AzureRmEventHubNamespaceKey můžete použít k získání připojovacího řetězce pro název zadejte zásady/pravidla, jak je znázorněno níže:
+Get-AzureRmEventHubNamespaceKey můžete použít k získání připojovacího řetězce pro název konkrétní pravidlo, jak je znázorněno níže:
 
 ```azurepowershell-interactive
 Get-AzureRmEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7f33742fc5e765aa5ab0c66d13e844b3be2bab9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322290"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599872"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Grafana přístupu v Azure HDInsight
 
@@ -34,7 +34,7 @@ V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablo
 
 2. Zadejte nebo vyberte hodnoty navržené na následujícím snímku obrazovky:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Zadané hodnoty musí být jedinečné a měly by splňovat pokyny pro pojmenování. Šablona neprovádí ověřovací kontroly. Pokud se zadané hodnoty již používají nebo pokud nesplňují příslušné pokyny, po odeslání šablony se zobrazí chyba.       
     > 
     >
@@ -66,10 +66,8 @@ V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablo
 5. Na dlaždici je uvedené také výchozí úložiště přidružené ke clusteru. Každý cluster obsahuje závislost [účtu Azure Storage](../hdinsight-hadoop-use-blob-storage.md) nebo [účtu Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Označuje se jako výchozí účet úložiště. HDInsight cluster a jeho výchozí účet úložiště, musí být umístěny společně ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
     
 
-> [!NOTE]
-> Další metody vytváření clusterů a principy vlastnosti používaných v tomto kurzu najdete v části [Vytváření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).       
-> 
->
+> [!NOTE]  
+> Další metody vytváření clusterů a principy vlastnosti používaných v tomto kurzu najdete v části [Vytváření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). 
 
 ## <a name="access-the-grafana-dashboard"></a>Přístup k řídicím panelem Grafana
 
@@ -94,10 +92,8 @@ V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablo
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Jakmile budete s článkem hotovi, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. 
 
-> [!NOTE]
+> [!NOTE]  
 > Pokud *rovnou* pokračujete k dalšímu kurzu, ve kterém se dozvíte, jak spouštět operace ETL s využitím Hadoopu ve službě HDInsight, můžete cluster nechat spuštěný. To proto, že v kurzu musíte cluster Hadoop vytvořit znovu. Pokud ale nebudete hned pokračovat dalším kurzem, musíte teď cluster odstranit.
-> 
-> 
 
 **Postup odstranění clusteru a/nebo výchozího účtu úložiště**
 
@@ -124,7 +120,7 @@ Další informace o analýze dat pomocí HDInsight najdete v následujících č
 
 * Další informace o používání Hivu se službou HDInsight, včetně postupu provádění dotazů Hivu ze sady Visual Studio, naleznete v tématu [použití Apache Hivu se službou HDInsight](../hdinsight-use-hive.md).
 * Další informace o jazyce používaném k transformaci dat, Pig najdete [použití Apache Pig s HDInsight](../hdinsight-use-pig.md).
-* Další informace o Apache Hadoop MapReduce, způsobu psaní programů, které zpracovávají data v Hadoopu, najdete v článku [použití Apache Hadoop MapReduce se službou HDInsight](../hdinsight-use-mapreduce.md).
+* Další informace o MapReduce, způsobu psaní programů, které zpracovávají data v Hadoopu, najdete v tématu [Použití MapReduce se službou HDInsight](../hdinsight-use-mapreduce.md).
 * Další informace o použití nástrojů HDInsight pro Visual Studio k analýze dat na HDInsight najdete v části [Začněte používat nástroje Visual Studio Hadoop pro HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9d3b72e62c778d02b25b082643e0de4c6cc09a60
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 86823579286ac0b8fae39c265b387ea6b4ad99ee
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190760"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755236"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 
@@ -139,7 +139,7 @@ dataflow.head(5)
 Výstup ukazuje, že data v druhé tabulce měli tři prázdné řádky před záhlaví. `read_excel()` Funkce obsahuje volitelné parametry pro přeskočení řádků a pomocí hlavičky. Spusťte následující kód, který přeskočí první tři řádky a použít čtvrtý řádek jako záhlaví.
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_header=True, skip_rows=3)
+dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
 ||pořadí|Titul|Studio|Celosvětově|Domácí / %|Sloupec1|Zámořské / %|Column2|Rok ^|

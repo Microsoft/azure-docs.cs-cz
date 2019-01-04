@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 865525d9c978f3168a4c580dec20f0f91f0a0d16
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 62478eed2eb647a2f29e488e60e41dd9ae501273
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074070"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605836"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co je znalostní bázi nástroje QnA Maker?
 
@@ -26,7 +26,7 @@ Znalostní báze QnA Maker se skládá ze sady páry otázek a odpovědí (QnA) 
 
 * **Dotazy** -dotaz obsahuje text, který nejlépe představuje uživatelský dotaz. 
 * **Odpovědi** – odpověď je tato odpověď, která je vrácena, pokud uživatelský dotaz je nalezena shoda s přidružené otázku.  
-* **Metadata** – Metadata jsou značky přiřazeny k pár QnA a jsou reprezentovány jako páry klíč hodnota. Metadata se používají k filtrování QnA páry a omezit tak skupinu, přes který dotaz se provádí porovnávání.
+* **Metadata** – Metadata jsou značky přiřazeny k pár QnA a jsou reprezentovány jako páry klíč hodnota. Metadata značky se používají k filtrování QnA páry a omezit tak skupinu, přes který dotaz se provádí porovnávání.
 
 Jeden QnA, reprezentovaný číselné ID QnA má několik variant otázky (alternativní dotazy), že všechny mapovat na jednu odpověď. Každý takový pár kromě toho může mít více polí metadat s ním spojená.
 

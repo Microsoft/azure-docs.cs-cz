@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: aeb0dec07ef9c8fb124089c785929f4e5ce69ffe
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ad59decab7233c74e13468b0cf0b11fdb5485d07
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871420"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722347"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Přizpůsobení clusterů HDInsight se systémem Windows pomocí akce skriptu
 **Skript akce** můžete použít k vyvolání [vlastní skripty](hdinsight-hadoop-script-actions.md) během procesu vytváření clusteru pro instalaci dalšího softwaru v clusteru.
 
 Informace v tomto článku je specifická pro clustery HDInsight se systémem Windows. Pro clustery založené na Linuxu najdete v článku [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Clustery HDInsight je možné přizpůsobit v různých způsobů, jako je například včetně další účty Azure Storage, změna [Apache Hadoop](https://hadoop.apache.org/) konfiguračních souborů (core-site.xml, hive-site.xml, atd.) nebo přidání sdílených knihovny (například [Apache Hive](https://hive.apache.org/), [Apache Oozie](https://oozie.apache.org/)) do společného umístění v clusteru. Tato přizpůsobení lze provést prostřednictvím Azure Powershellu, Azure HDInsight .NET SDK nebo na webu Azure portal. Další informace najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight][hdinsight-provision-cluster].
@@ -35,7 +35,7 @@ Akce skriptu se používá pouze při clusteru se právě vytváří. Následuj�
 
 Když je spuštěný skript, přejde do clusteru **ClusterCustomization** fázi. V této fázi skript je spuštěn v rámci účtu správce systému a paralelně na všechny zadané uzly v clusteru a poskytuje oprávnění správce na uzlech.
 
-> [!NOTE]
+> [!NOTE]  
 > Vzhledem k tomu, že máte oprávnění správce na uzlech clusteru během **ClusterCustomization** fáze, můžete použít skript k provedení operace, jako je zastavení a spuštění služeb, včetně služby související s Hadoop. Jako součást skriptu, takže je musíte ujistit, že služby Ambari a další služby související s Hadoop zprovoznění před dokončením spuštění skriptu. Tyto služby jsou nezbytné pro úspěšně zjistit stav a stav clusteru při jeho vytváření. Pokud změníte žádnou konfiguraci v clusteru, který má vliv na tyto služby, musíte použít pomocných funkcí, které jsou k dispozici. Další informace o pomocných funkcí najdete v tématu [vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script].
 >
 >
@@ -288,10 +288,10 @@ Existují dva druhy opensourcové komponenty, které jsou k dispozici ve služb�
 
 Integrované komponenty jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 
-> [!WARNING]
+> [!WARNING]  
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 >
-> Vlastní komponenty získat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Vlastní komponenty získat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Také projektů Apache mít projektovým webům na [ https://apache.org ](https://apache.org), například: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 >
 >
 

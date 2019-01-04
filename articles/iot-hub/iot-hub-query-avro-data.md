@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: asrastog
-ms.openlocfilehash: a5b8ce8cd753ee294a8d61ba8a3dfed872f0f31a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69c890cfc3db04fe625ed7ad008f545c01844834
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956317"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993480"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Dotazování na Avro data pomocí Azure Data Lake Analytics
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak dotazovat data Avro můžete efektivně směrovat z
 
 Před obrovskou výzvou – dochází po, který Azure IoT Hub provádí směrování zpráv do služby Azure Blob storage, služby IoT Hub zapíše obsah ve formátu Avro, který má do zprávy vlastnost text i vlastnost zprávy. IoT Hub pouze v datovém formátu Avro podporuje zápis dat do úložiště objektů Blob a tento formát se používá pro všechny ostatní koncové body. Další informace najdete v článku o používání kontejnerů Azure Storage. Ačkoli formát Avro se skvěle hodí pro zachování dat a zpráva, představuje výzvu ji používat k dotazování na data. Porovnání je mnohem jednodušší pro dotazování na data ve formátu JSON nebo CSV.
 
-<!-- https://review.docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
+<!-- https://review.docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
 
 Adres nerelačních potřebám velkých objemů dat a formátů a tento problém vyřešili, můžete použít mnoho vzorků velkých objemů dat pro transformaci a škálování data. Jednomu ze vzorů, "platba za dotazu", Azure Data Lake Analytics, který je hlavním cílem tohoto článku. I když v Hadoop nebo jiná řešení můžete snadno spustit dotaz, Data Lake Analytics je často vhodnější pro tento přístup "platba za dotaz". 
 
@@ -171,7 +171,7 @@ V této části dotazování na Avro data a exportujte ho do souboru CSV v úlo�
 
 V tomto kurzu jste zjistili, jak zadávat dotazy na data Avro můžete efektivně směrovat zprávy ze služby Azure IoT Hub ke službám Azure.
 
-Příklady kompletní řešení začátku do konce, které používají služby IoT Hub, najdete v článku [dokumentace k Akcelerátorům řešení Azure IoT](../iot-accelerators/index.yml).
+Příklady kompletní řešení začátku do konce, které používají služby IoT Hub, najdete v článku [dokumentace k Akcelerátorům řešení Azure IoT](/azure/iot-accelerators).
 
 Další informace o vývoji řešení s využitím služby IoT Hub, najdete v článku [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md).
 

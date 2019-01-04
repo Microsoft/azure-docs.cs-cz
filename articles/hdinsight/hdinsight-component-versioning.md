@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 878d9e635d82e52d8a47d47a135ba865f140c9e9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3a8b3a22eb4bdaed0142f8afc6f92128be32eca3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321882"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971116"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -60,7 +60,7 @@ Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následu
 
 Verze součástí ekosystému Hadoop spojené s verzemi clusterů HDInsight můžete změnit pomocí aktualizací na HDInsight. Chcete-li ověřit, jaké verze jsou používány pro cluster a zkontrolujte součásti platformy Hadoop, pomocí rozhraní Ambari REST API. **GetComponentInformation** příkaz načte informace o součásti služby. Podrobnosti najdete v tématu [dokumentaci Apache Ambari][ambari-docs].
 
-> [!IMPORTANT]  
+> [!IMPORTANT]    
 > Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [vyřazení Windows na HDInsight](#hdinsight-windows-retirement).
 
 ### <a name="release-notes"></a>Poznámky k verzi
@@ -139,9 +139,9 @@ V současné době pouze následující typy clusteru podporují Enterprise Secu
 - Spark
 - Interaktivní dotaz
 
-### <a name="support-for-azure-data-lake-store"></a>Podpora pro Azure Data Lake Store
+### <a name="support-for-azure-data-lake-storage"></a>Podpora pro Azure Data Lake Storage
 
-Enterprise Security Package podporuje, pomocí Azure Data Lake Store jako primární úložiště a doplňkové úložiště.
+Enterprise Security Package podporuje, pomocí Azure Data Lake Storage jako primární úložiště a doplňkové úložiště.
 
 ### <a name="pricing-and-sla"></a>Ceny a smlouva SLA
 Informace o cenách a smlouva SLA pro Enterprise Security Package najdete v tématu [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -149,7 +149,7 @@ Informace o cenách a smlouva SLA pro Enterprise Security Package najdete v tém
 ## <a name="hdinsight-windows-retirement"></a>Konec podpory HDInsight ve Windows
 Microsoft Azure HDInsight verze 3.3 byl poslední verze HDInsight ve Windows. Datum vyřazení pro HDInsight ve Windows je 31. července 2018. Pokud máte všechny clustery HDInsight ve Windows 3.3 nebo starší, musí migrovat na HDInsight v Linuxu (HDInsight verze 3.5 nebo novější) před 31. července 2018. Migrace na operační systém Linux umožňuje zachovat možnost vytváření nebo změně velikosti vašich clusterů HDInsight. 27. června 2016 vypršela platnost podpory pro HDInsight verze 3.3 na Windows.
 
-Spouští se s HDInsight verze 3.4, společnost Microsoft vydala pouze v operačním systému Linux HDInsight. V důsledku toho některé součásti v HDInsight jsou k dispozici pro Linux pouze. Patří mezi ně [Apache Ranger](https://ranger.apache.org/), [Apache Kafka](https://kafka.apache.org/), Interactive Query [Apache Spark](https://spark.apache.org/), HDInsight aplikace a Azure Data Lake Store jako primární soubor systému. Budoucí verze HDInsight jsou k dispozici pouze v operačním systému Linux. Nebude žádný budoucí verze HDInsight ve Windows. 
+Spouští se s HDInsight verze 3.4, společnost Microsoft vydala pouze v operačním systému Linux HDInsight. V důsledku toho některé součásti v HDInsight jsou k dispozici pro Linux pouze. Patří mezi ně [Apache Ranger](https://ranger.apache.org/), [Apache Kafka](https://kafka.apache.org/), Interactive Query [Apache Spark](https://spark.apache.org/), HDInsight aplikace a Azure Data Lake Storage jako primární soubor systému. Budoucí verze HDInsight jsou k dispozici pouze v operačním systému Linux. Nebude žádný budoucí verze HDInsight ve Windows. 
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
@@ -172,7 +172,7 @@ Na webu Azure Portal, přejděte na stránku přehled clusteru HDInsight a vyhle
 V clusteru HDInsight Windows běží jako-se, ale nelze vytvořit nový cluster HDInsight Windows nebo změně velikosti existujícího clusteru HDInsight Windows. 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>Cluster obsahuje závislost .NET. Jak vyřešit tuto závislost na platformě Linux?
-Vaše závislost clusteru Linux lze vyřešit pomocí [projekt Mono](http://www.mono-project.com/). Tato implementace open source technologie .NET je k dispozici u clusterů HDInsight Linux. Další informace najdete v [dokumentu migrace HDInsight](hdinsight-migrate-from-windows-to-linux.md). 
+Vaše závislost clusteru Linux lze vyřešit pomocí [projekt Mono](https://www.mono-project.com/). Tato implementace open source technologie .NET je k dispozici u clusterů HDInsight Linux. Další informace najdete v [dokumentu migrace HDInsight](hdinsight-migrate-from-windows-to-linux.md). 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>Já jsem nového zákazníka pro HDInsight ve Windows. Jak můžete vytvořit cluster služby HDInsight Windows?
 Od 3. července 2017 můžete pouze stávající zákazníci HDInsight Windows vytvářet nové Windows HDInsight clustery. Noví zákazníci nelze vytvořit cluster HDInsight Windows na webu Azure Portal pomocí Powershellu nebo sady SDK. Doporučujeme vám, že noví zákazníci vytvořit cluster HDInsight Linux. Stávající zákazníci tak můžou vytvářet nové Windows HDInsight clustery až do HDInsight ve Windows vyřazením. 
@@ -186,7 +186,7 @@ Ne, ceny je stejný pro HDInsight v obou operačním systému.
 * Schopnost vykonávat aktivní přístup k vývoji open sourcové komunity pro Hadoop a dalších technologií pro velké objemy dat
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>HDInsight v Linuxu poskytuje další funkce nad rámec co je k dispozici v HDInsight ve Windows?
-Spouští se s HDInsight verze 3.4, společnost Microsoft vydala pouze v operačním systému Linux HDInsight. V důsledku toho některé součásti v HDInsight jsou k dispozici pro Linux pouze. Patří mezi ně Apache Ranger, Kafka, Interactive Query, Spark, aplikací HDInsight a Azure Data Lake Store jako primární soubor systému. 
+Spouští se s HDInsight verze 3.4, společnost Microsoft vydala pouze v operačním systému Linux HDInsight. V důsledku toho některé součásti v HDInsight jsou k dispozici pro Linux pouze. Patří mezi ně Apache Ranger, Kafka, Interactive Query, Spark, aplikací HDInsight a Azure Data Lake Storage jako primární soubor systému. 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Smlouva o úrovni služeb pro verze clusteru HDInsight
 Smlouva o úrovni služeb (SLA) je definován z hlediska _podporu okno_. Okno podpory je časový úsek, který je ve verzi clusteru HDInsight nepodporuje Microsoft zákaznický servis a podporu. Pokud je verze _podporují datum vypršení platnosti_ , který je předán, HDInsight cluster je mimo časový interval pro podporu. Další informace o podporovaných verzích najdete v seznamu [podporované verze clusteru HDInsight](hdinsight-migrate-from-windows-to-linux.md). Datum vypršení platnosti podpora pro zadanou HDInsight verze X (po je dostupná novější verze X + 1) se počítá jako později z:  
@@ -203,10 +203,10 @@ _Vyřazením_ je datum, po jejímž uplynutí verze clusteru nelze pro HDInsight
 
 V části obsahuje odkazy na poznámky k verzi pro datovou platformou Hortonworks distribucích a Apache součásti, které se používají s HDInsight.
 * Verze clusteru HDInsight 4.0 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html)
-* Verze clusteru HDInsight 3.6 využívá distribuci systému Hadoop, který je založen na [datová platforma Hortonworks 2.6](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html).
-* Verze clusteru HDInsight 3.5 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 2.5](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html). Verze clusteru HDInsight 3.5 není _výchozí_ cluster Hadoop, který se vytvoří na webu Azure Portal.
-* Verze clusteru HDInsight 3.4 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html).
-* Verze clusteru HDInsight 3.3 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 2.3](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html).
+* Verze clusteru HDInsight 3.6 využívá distribuci systému Hadoop, který je založen na [datová platforma Hortonworks 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html).
+* Verze clusteru HDInsight 3.5 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 2.5](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html). Verze clusteru HDInsight 3.5 není _výchozí_ cluster Hadoop, který se vytvoří na webu Azure Portal.
+* Verze clusteru HDInsight 3.4 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 2.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html).
+* Verze clusteru HDInsight 3.3 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 2.3](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html).
 
   * [Zpráva k vydání verze Apache Storm](https://storm.apache.org/2015/11/05/storm0100-released.html) jsou k dispozici na webu Apache.
   * [Apache Hive zpráva k vydání verze](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) jsou k dispozici na webu Apache.
@@ -230,11 +230,11 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
 
   | Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark  | ML Server |
   | --- | --- | --- | --- | --- | --- | --- |
-  | Hlavní: výchozí velikosti virtuálního počítače |D3 v2 |D3 v2 | D13,<br/> D14 |A4 v2 |D12 v2 |D12 v2 |
+  | Hlavní: výchozí velikosti virtuálního počítače |D12 v2 |D12 v2 | D13 v2 |A3 |D12 v2 |D12 v2 |
   | Hlavní: doporučené velikosti virtuálních počítačů |D3 v2<br/> D4 v2<br/> D12 v2 |D3 v2<br/> D4 v2<br/> D12 v2  | D13,<br/> D14 |A4 v2<br/> A8 v2<br/> A2m v2 |D12 v2<br/> D13 v2<br/> D14 v2 |D12 v2<br/> D13 v2<br/> D14 v2 |
-  | Pracovních procesů: výchozí velikosti virtuálního počítače |D3 v2 |D3 v2  | D13,<br/> D14 |D3 v2 |D4 v2 | D4 v2 |
+  | Pracovních procesů: výchozí velikosti virtuálního počítače |D4 v2 |D4 v2| D14 v2|D3 v2 |D13 v2 | D4 v2 |
   | Pracovního procesu: doporučené velikosti virtuálních počítačů |D3 v2<br/> D4 v2<br/> D12 v2 |D3 v2<br/> D4 v2<br/> D12 v2  | D13,<br/> D14 |D3 v2<br/> D4 v2<br/> D12 v2 |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
-  | ZooKeeper: výchozí velikosti virtuálního počítače | |A4 v2 | |A2 v2 | | |
+  | ZooKeeper: výchozí velikosti virtuálního počítače | |A4 v2 |A4 v2 |A4 v2 | | A2 v2|
   | ZooKeeper: doporučené velikosti virtuálních počítačů | |A4 v2<br/> A8 v2<br/> A2m v2 | | A2 v2<br/> A4 v2<br/> A8 v2 | | |
   | Edge: výchozí velikosti virtuálního počítače | | | | | |D4 v2 |
   | Edge: Doporučená velikost virtuálního počítače | | | | | |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
@@ -242,11 +242,11 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
 
   | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | Služby ML |
   | --- | --- | --- | --- | --- | --- | --- |
-  | Hlavní: výchozí velikosti virtuálního počítače |D3 |D3  | D13,<br/> D14 |A3 |D12 |D12 |
+  | Hlavní: výchozí velikosti virtuálního počítače |D12 |D12  | D13 |A3 |D12 |D12 |
   | Hlavní: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
-  | Pracovních procesů: výchozí velikosti virtuálního počítače |D3 |D3  | D13,<br/> D14 |D3 |D4 |D4 |
+  | Pracovních procesů: výchozí velikosti virtuálního počítače |D4 |D4  |  D14 |D3 |D13 |D4 |
   | Pracovního procesu: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
-  | ZooKeeper: výchozí velikosti virtuálního počítače | |A2 | | A2 | | |
+  | ZooKeeper: výchozí velikosti virtuálního počítače | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
   | ZooKeeper: doporučené velikosti virtuálních počítačů | |A2,<br/> A3<br/> A4 | |A2,<br/> A3<br/> A4 | | |
   | Edge: velikosti virtuálních počítačů výchozí | | | | | |D4 |
   | Edge: doporučené velikosti virtuálních počítačů | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
@@ -270,16 +270,16 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
 
 [hdp-2-2]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.9/bk_HDP_RelNotes/content/ch_relnotes_v229.html
 
-[hdp-2-1-7]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
+[hdp-2-1-7]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
 
-[hdp-2-1-1]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
+[hdp-2-1-1]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
 
-[hdp-2-0-8]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
+[hdp-2-0-8]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
 
-[hdp-1-3-0]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
+[hdp-1-3-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
 
 [hdp-1-1-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.1.1.16_1.html
 
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
-[zookeeper]: http://zookeeper.apache.org/
+[zookeeper]: https://zookeeper.apache.org/

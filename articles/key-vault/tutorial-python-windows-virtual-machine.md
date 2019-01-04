@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 43f1918e7c80fdc04b80583ce374cfb8127dd021
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: cced3d363f9eb7418d6f453eccb1bf1d7ac20ead
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602558"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972341"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-python"></a>Kurz: Jak používat Azure Key Vault s Windows virtuální počítač Azure v Pythonu
 
@@ -137,7 +137,7 @@ Můžete použít tento [kurz](https://docs.microsoft.com/azure/virtual-machines
 
 ## <a name="create-and-run-sample-python-app"></a>Vytvořit a spustit ukázkovou aplikaci v Pythonu
 
-Níže je právě ukázkového souboru s názvem "Sample.py". Používá [požadavky](http://docs.python-requests.org/master/) knihovny pro volání HTTP GET.
+Níže je právě ukázkového souboru s názvem "Sample.py". Používá [požadavky](http://docs.python-requests.org/en/master/) knihovny pro volání HTTP GET.
 
 ## <a name="edit-samplepy"></a>Upravit Sample.py
 Po vytvoření Sample.py otevřete soubor a zkopírujte níže uvedeného kódu

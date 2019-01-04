@@ -70,7 +70,7 @@ Chcete-li zobrazit, pokud se podporuje zamýšlený zdrojové oblasti, použijte
 | Vytvoření v galerii nebo "zdrojové oblasti"   | Replikovat rersion k nebo "cílové oblasti" |
 |----------------------------------------|-------------------------------------------|
 | Západní střed USA                        | Všechny oblasti veřejném cloudu Azure            |
-| Střed USA – jih                       |                                           |
+| Středojižní USA                       |                                           |
 | Východní USA 2                              |                                           |
 | Jihovýchodní Asie                         |                                           |
 | Západní Evropa                            |                                           |

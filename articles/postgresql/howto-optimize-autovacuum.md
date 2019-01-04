@@ -3,16 +3,15 @@ title: Optimalizace autovacuum ve službě Azure Database pro PostgreSQL server
 description: Tento článek popisuje, jak můžete optimalizovat autovacuum ve službě Azure Database pro PostgreSQL server.
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 3f35779337082b7280398bd13ef870c74f3ec082
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685986"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539785"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optimalizace autovacuum v databázi Azure PostgreSQL server 
 Tento článek popisuje, jak efektivně optimalizovat autovacuum na – Azure Database for PostgreSQL.
@@ -34,7 +33,7 @@ Dá se Autovacuum a výhody ladění. Výchozí hodnoty, které se dodává s Po
 - Zvýšená vstupně-výstupních operací.
 
 ## <a name="monitoring-bloat-with-autovacuum-queries"></a>Monitorování vyhledávání s dotazy autovacuum
-Následující ukázkový dotaz slouží k identifikaci počet nefunkční a funkční řazených kolekcí členů v tabulce s názvem "XYZ": "Vyberte relace %{relname/, n_dead_tup, n_live_tup, (n_dead_tup / n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_ tabulky relace %{relname/ WHERE = "XYZ" objednávky podle n_dead_tup DESC;.
+Následující ukázkový dotaz slouží k identifikaci počet nefunkční a funkční řazených kolekcí členů v tabulce s názvem "XYZ": "Vyberte relace %{relname/, n_dead_tup, n_live_tup, (n_dead_tup / n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables relace %{relname/ WHERE ="XYZ"objednávky podle n_dead_tup DESC;.
 
 ## <a name="autovacuum-configurations"></a>Konfigurace Autovacuum
 Parametry konfigurace, které řídí autovacuum točí kolem dvě základní otázky:

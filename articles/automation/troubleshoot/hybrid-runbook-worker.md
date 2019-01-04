@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: ''
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a95c9f1edd6983c915316f2900885a8131245860
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 57897060e79ffbd750b47b21e97bb16d651f835c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437822"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583506"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
 
@@ -34,7 +34,7 @@ Spuštění sady Runbook selže a zobrazí se následující chyba:
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Vaše sada runbook je pozastavený, krátce po pokusu o provedení jeho třikrát. Existují podmínky, které mohou narušit runbook úspěšně dokončit a související chybové zprávy neobsahuje další informace, který označuje důvod, proč.
+Vaše sada runbook je pozastavený, krátce po pokusu o spuštění se třikrát. Existují podmínky, které mohou narušit runbook dokončit. Pokud k tomu dojde, související chybové zprávy nesmí obsahovat žádné další informace, které zjistíte, proč.
 
 #### <a name="cause"></a>Příčina
 
@@ -46,17 +46,40 @@ Toto jsou možné příčiny:
 
 * Runbook nejde ověřit s místními prostředky
 
-* Počítač určený pro spouštění funkce Hybrid Runbook Worker splňuje minimální hardwarové požadavky.
+* Počítač nakonfigurovaný pro spouštění funkce Hybrid Runbook Worker splňuje minimální hardwarové požadavky.
 
 #### <a name="resolution"></a>Řešení
 
 Ověřte, že má počítač odchozí přístup k *.azure-automation.net na portu 443.
 
-Počítače se systémem Hybrid Runbook Worker by měl splňovat minimální požadavky na hardware před určit ji hostovat tuto funkci. V závislosti na využití prostředků z jiné procesy na pozadí a během může spuštění sady runbook v opačném případě příčina počítač stane přetížen a způsobit zpoždění úlohy sady runbook nebo vypršení časových limitů.
+Počítače se systémem Hybrid Runbook Worker by měl splňovat minimální požadavky na hardware, než je nakonfigurovaný pro hostování této funkce. Sady Runbook a procesy na pozadí, které používají může způsobit, že systém být přetížen a způsobit zpoždění úlohy sady runbook nebo vypršení časových limitů.
 
-Potvrďte, že počítač určený pro spouštění funkce Hybrid Runbook Worker splňuje minimální hardwarové požadavky. Pokud ano, monitorování využití procesoru a paměti určit jakákoli korelace mezi výkonem procesy Hybrid Runbook Worker a Windows. Pokud je paměť nebo procesor přetížení, může to znamenat nemusíte upgradovat nebo přidání dalších procesorů nebo navyšte paměť adres kritickým bodem prostředků a vyřešení chyby. Alternativně vyberte různé výpočetního prostředku, který podporuje požadavky na minimální a škálování při vytížení označující, že zvýšení je nezbytné.
+Potvrďte, že počítač, který se spustí funkce Hybrid Runbook Worker splňuje minimální hardwarové požadavky. Pokud ano, monitorování využití procesoru a paměti použít k určení jakákoli korelace mezi výkonem procesy Hybrid Runbook Worker a Windows. Pokud je paměť nebo procesor přetížení, může to znamenat nutnosti upgradu prostředků. Můžete také vybrat jiný výpočetního prostředku, který podporuje požadavky na minimální a škálování při vytížení označující, že je nezbytné zvýšení.
 
 Zkontrolujte **Microsoft SMA** protokolu událostí pro odpovídající události s popisem *Win32 proces skončil s kódem [4294967295]*. Příčinou této chyby je nebyly nakonfigurované ověřování ve vašich sadách runbook nebo zadaná pověření spustit jako pro skupinu hybridních pracovních procesů. Kontrola [oprávnění sady Runbook](../automation-hrw-run-runbooks.md#runbook-permissions) potvrďte jste správně nakonfigurovali ověřování pro vlastní runbooky.
+
+### <a name="no-cert-found"></a>Scénář: Nebyl nalezen žádný certifikát v úložišti certifikátů v procesu Hybrid Runbook Worker
+
+#### <a name="issue"></a>Problém
+
+Runbook spuštěný v procesu Hybrid Runbook Worker nezdaří a zobrazí se následující chybová zpráva:
+
+```error
+Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
+At line:3 char:1
++ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě dochází při pokusu o použití [účet Spustit jako](../manage-runas-account.md) v sadě runbook, který běží na Hybrid Runbook Worker, kde je certifikátu účtu spustit jako není k dispozici. Hybridní pracovní procesy Runbooku nemáte prostředek certifikátu místně ve výchozím nastavení, který je požadován účet Spustit jako správně fungovat.
+
+#### <a name="resolution"></a>Řešení
+
+Pokud vaše funkce Hybrid Runbook Worker je virtuální počítač Azure, můžete použít [spravovaných identit pro prostředky Azure](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) místo. Tento scénář umožňuje mohli ověřovat prostředky Azure pomocí spravované identity virtuálního počítače Azure namísto účtu spustit jako, která zjednodušuje jejich ověřování. Funkce Hybrid Runbook Worker je místní počítač, musíte k instalaci certifikátu účtu spustit v počítači. Zjistěte, jak nainstalovat certifikát, najdete v článku kroky ke spuštění [Export RunAsCertificateToHybridWorker](../automation-hrw-run-runbooks.md#runas-script) sady runbook.
 
 ## <a name="linux"></a>Linux
 
@@ -64,7 +87,8 @@ Hybrid Runbook Worker Linuxu závisí na agenta OMS pro Linux ke komunikaci s ú
 
 ### <a name="oms-agent-not-running"></a>Scénář: Není spuštěn Agent OMS pro Linux
 
-Pokud není spuštěn Agent OMS pro Linux, zabrání Hybrid Runbook Worker Linuxu komunikaci s Azure Automation. Ověření, je agent spuštěn tak, že zadáte následující příkaz: `ps -ef | grep python`. Byste měli vidět výstup podobný následujícímu procesů python pomocí **nxautomation** uživatelský účet. Pokud nejsou povolené řešení Update Management nebo služby Azure Automation, žádný z následujících postupů běží.
+
+Pokud není spuštěn Agent OMS pro Linux, zabraňuje Hybrid Runbook Worker Linuxu komunikaci s Azure Automation. Ověření, je agent spuštěn tak, že zadáte následující příkaz: `ps -ef | grep python`. Byste měli vidět výstup podobný následujícímu procesů python pomocí **nxautomation** uživatelský účet. Pokud nejsou povolené řešení Update Management nebo služby Azure Automation, žádný z následujících postupů běží.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -74,11 +98,12 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 Následující seznam uvádí procesy, které jsou spouštěny pro Linux Hybrid Runbook Worker. Všechny nacházejí v `/var/opt/microsoft/omsagent/state/automationworker/` adresáře.
 
-* **OMS.conf** – tento proces je správce pracovního procesu, tento proces je spuštěn přímo z DSC.
+
+* **OMS.conf** – tato hodnota je správce pracovního procesu. Je spuštěna přímo z DSC.
 
 * **Worker.conf** -tohoto procesu je automaticky zaregistrovaný hybridní pracovní proces, se spustí Správce pracovních procesů. Tento proces používá správu aktualizací a je pro uživatele transparentní. Tento proces není k dispozici, pokud na počítači není povolené řešení Update Management.
 
-* **diy/Worker.conf** – tento proces je rozběhněte zcela hybridní pracovní proces. Rozběhněte zcela hybridní pracovní proces se používá k provedení uživatele runbooky v procesu Hybrid Runbook Worker. Se liší pouze od automatického zaregistrovaný hybridní pracovní proces v klíčových podrobností, které se používá jinou konfiguraci. Tento proces není k dispozici, pokud řešení Azure Automation není povoleno a není registrovaný rozběhněte zcela Hybrid Worker v Linuxu.
+* **diy/Worker.conf** – tento proces je rozběhněte zcela hybridní pracovní proces. Rozběhněte zcela hybridní pracovní proces se používá k provedení uživatele runbooky v procesu Hybrid Runbook Worker. Se liší pouze od automatického zaregistrovaný hybridní pracovní proces v klíčových podrobností, které se používá jinou konfiguraci. Tento proces není k dispozici, pokud řešení služby Azure Automation je zakázaná a není registrovaný rozběhněte zcela Hybrid Worker v Linuxu.
 
 Pokud agenta OMS pro Linux neběží, spusťte následující příkaz ke spuštění služby: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
@@ -102,7 +127,7 @@ Funkce Hybrid Runbook Worker Windows závisí na agenta Microsoft Monitoring Age
 
 #### <a name="cause"></a>Příčina
 
-Pokud služba Microsoft Monitoring agenta Windows není spuštěna, tento scénář brání Hybrid Runbook Worker v komunikaci s Azure Automation.
+Pokud služba Microsoft Monitoring agenta Windows není spuštěna, tento stav brání Hybrid Runbook Worker v komunikaci s Azure Automation.
 
 #### <a name="resolution"></a>Řešení
 

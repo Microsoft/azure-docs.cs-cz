@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 872e700842ce69ca955035120d4e09ec9facf7ec
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/16/2018
+ms.openlocfilehash: 3e807033b109b8281057f6881a315f5c1c783a22
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165547"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536368"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Maskování dynamických dat SQL Database
 
@@ -31,7 +31,7 @@ Například pracovníkem služeb v centru volání může identifikovat volajíc
 Nastavení dynamické maskování zásady na portálu Azure portal tak, že vyberete maskování operace v okně konfigurace SQL Database nebo okno nastavení dynamických dat dat.
 
 ### <a name="dynamic-data-masking-permissions"></a>Oprávnění maskování dynamických dat
-Dynamické maskování dat je možné nakonfigurovat správce databáze Azure, správce serveru nebo oddělení rolí zabezpečení.
+Dynamické maskování dat se dá nakonfigurovat pomocí Azure Database správce, správce serveru nebo [správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) role.
 
 ### <a name="dynamic-data-masking-policy"></a>Zásady maskování dynamických dat
 * **Uživatelé SQL vyloučení z maskování** – A nastavení uživatelů SQL nebo výsledky dotazu identity AAD, které získávají odmaskovaná data v SQL. Uživatelé s oprávněními správce jsou vždycky vyloučení z maskování a zobrazit původní data bez jakékoli masky.

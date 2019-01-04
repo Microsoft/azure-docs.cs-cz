@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 80f7d93037c0b900608301ebf6463f85be10f2de
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 84d8d3838740ec5d448b14b5c4539f7d78c96b5e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311316"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714351"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -56,7 +56,7 @@ Když chcete nejrychlejší cestu k publikování vašich webových projektů, v
 
 Můžete vytvářet webové aplikace, back-EndY mobilních aplikací a API apps.
 
-Protože všechny typy aplikací tři sdílet modul runtime služby App Service, hostování webu, podporovat mobilní klienty a zpřístupněte vaše rozhraní API v Azure, vše z jednoho projektu nebo řešení. Další informace o App Service najdete v tématu [co je Azure Web Apps](../../app-service/app-service-web-overview.md).
+Protože všechny typy aplikací tři sdílet modul runtime služby App Service, hostování webu, podporovat mobilní klienty a zpřístupněte vaše rozhraní API v Azure, vše z jednoho projektu nebo řešení. Další informace o App Service najdete v tématu [co je Azure Web Apps](../../app-service/overview.md).
 
 App Service byly navržené s DevOps v úvahu. Podporuje různé nástroje pro publikování a průběžné integrace nasazení, včetně Githubu webhooky, Jenkins, Azure DevOps, TeamCity a dalších.
 
@@ -168,7 +168,7 @@ Je nezbytné pouze vědět, kdo používá vaše aplikace, ale také zabránit n
 
     >**Kdy použít**: Pokud chcete povolit ověřování v aplikaci služby App Service pomocí služby Azure AD zprostředkovatele sociální identity, nebo obojí.
 
-    >**Začínáme**: Další informace o ověřování ve službě App Service najdete v tématu [ověřování a autorizace ve službě Azure App Service](../../app-service/app-service-authentication-overview.md).
+    >**Začínáme**: Další informace o ověřování ve službě App Service najdete v tématu [ověřování a autorizace ve službě Azure App Service](../../app-service/overview-authentication-authorization.md).
 
 Další informace o osvědčených postupech zabezpečení v Azure najdete v tématu [osvědčené postupy zabezpečení Azure a vzory](../../security/security-best-practices-and-patterns.md).
 
@@ -190,7 +190,7 @@ Ať už je zřizování virtuálních počítačů nebo publikování vašich we
 
 >**Vyzkoušejte si ho hned teď:** [Vyzkoušejte si několik integrace DevOps](https://azure.microsoft.com/try/devops/).
 
->**Začínáme**: Možnosti DevOps pro aplikace služby App Service najdete v tématu [průběžné nasazování do služby Azure App Service](../../app-service/app-service-continuous-deployment.md).
+>**Začínáme**: Možnosti DevOps pro aplikace služby App Service najdete v tématu [průběžné nasazování do služby Azure App Service](../../app-service/deploy-continuous-deployment.md).
 
 
 ## <a name="azure-regions"></a>Oblast Azure

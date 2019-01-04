@@ -7,18 +7,22 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/25/2018
 ms.author: juliako
-ms.openlocfilehash: a051f40cb5586cae58d8e4939f4fcee35438bf69
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 2c07cfcba473e2e27f14ff0118e6ca8a8f484df1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292235"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791810"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
-Tento článek ukazuje, jak vložit widgety Video Indexeru do vašich aplikací. Video Indexer podporuje vkládání dvou typů widgetů do aplikace: **Cognitive Insights** (Přehledy) a **Player** (Přehrávač). 
+Tento článek ukazuje, jak vložit widgety Video Indexeru do vašich aplikací. Video Indexer podporuje dva typy vkládání widgetů do aplikace: **Kognitivní přehledy** a **Player**. 
+
+> [!NOTE]
+> Počínaje 1. února 2018 se verze 1 **kognitivní přehledy** widgetu se přestanou používat. Vložit adresu URL verze bude ve výchozím nastavení `version=2`.
+
 ## <a name="widget-types"></a>Typy widgetů
 
 ### <a name="cognitive-insights-widget"></a>Widget Cognitive Insights
@@ -27,8 +31,8 @@ Widget **Cognitive Insights** zahrnuje všechny vizuální přehledy, které se 
 
 |Název|Definice|Popis|
 |---|---|---|
-|widgets|Řetězce oddělené čárkami|Umožňuje řídit, které přehledy chcete vykreslit. <br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` vykreslí jenom přehledy lidí a značek<br/>Dostupné možnosti: people (lidé), keywords (klíčová slova), annotations (poznámky), brands (značky), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).<br/>Není podporováno prostřednictvím adresy URL ve version=2<br/><br/>**Poznámka:** Parametr adresy URL **widgets** není podporovaný, pokud se používá **version=2**. |
-|version|Verze widgetu **Cognitive Insights**|Pokud chcete získat nejnovější aktualizace widgetu přehledů, přidejte do adresy URL vložení parametr dotazu `?version=2`. Například `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2`. <br/> Pokud chcete získat starší verzi, stačí `version=2` z adresy URL odebrat.
+|widgets|Řetězce oddělené čárkami|Umožňuje řídit, které přehledy chcete vykreslit. <br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` vykreslí jenom přehledy lidí a značek<br/>Dostupné možnosti: people (lidé), keywords (klíčová slova), annotations (poznámky), brands (značky), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).<br/>Není podporováno prostřednictvím adresy URL ve version=2<br/><br/>**Poznámka:** **Widgety** param adresa URL není podporováno, pokud **verze = 2** se používá. |
+|version|Verze widgetu **Cognitive Insights**|Abyste získali přehledy toho nejnovější aktualizace widgetů, přidejte `?version=2` dotazů odesílaných na adresu URL vložení. Například `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2`. <br/> Pokud chcete získat starší verzi, stačí `version=2` z adresy URL odebrat.
 
 ### <a name="player-widget"></a>Widget Player
 
@@ -39,7 +43,7 @@ Widget **Player** umožňuje streamovat video pomocí adaptivní přenosové ryc
 |t|Počet sekund od začátku|Přehrávač začne přehrávat od daného časového bodu.<br/>Příklad: t=60|
 |captions|Kód jazyka|Při načítání widgetu načte titulky v daném jazyce, aby byly k dispozici v nabídce titulků.<br/>Příklad: captions=en-US|
 |showCaptions|Logická hodnota|Přehrávač se načte s už povolenými titulky.<br/>Příklad: showCaptions=true|
-|type||Aktivuje vzhled přehrávače zvuku (video část se odebere).<br/>Příklad: type=audio|
+|type||Aktivuje vzhled přehrávače zvuku (video část se odebere).<br/>Příklad: type=audio|"
 |autoplay|Logická hodnota|Udává, jestli má přehrávač začít přehrávat video při načtení (výchozí hodnota je true).<br/>Příklad: autoplay=false|
 |language|Kód jazyka|Určuje jazyk přehrávače (výchozí hodnota je en-US)<br/>Příklad: language=de-DE|
 

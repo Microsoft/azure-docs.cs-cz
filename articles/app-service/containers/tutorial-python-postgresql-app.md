@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 663e2ef224cdc9f79db642a8a2b8958599f16f60
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c70c7e8b893c511aae36f122c5983fd0958eac8e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728155"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975385"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Vytvoření aplikace Python a PostgreSQL v Azure App Service
 
@@ -205,7 +205,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > Toto nastavení umožňuje síťová připojení ze všech IP adres v síti Azure. Pro produkční prostředí zkuste nakonfigurovat co nejvíce omezující pravidla firewallu tak, že [použijete jen odchozí IP adresy, které používá vaše aplikace](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-Spusťte v Cloud Shellu tento příkaz znovu, ale nahraďte *\<your_ip_address>* [vaší místní IP adresou IPv4](https://www.whatsmyip.org/), abyste měli přístup k databázi.
+Spusťte v Cloud Shellu tento příkaz znovu, ale nahraďte *\<your_ip_address>* [vaší místní IP adresou IPv4](http://www.whatsmyip.org/), abyste měli přístup k databázi.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 828f8e78f24380303f30260c39f837f0ba3524e6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ef360fd56c3530a49c2f36846db34b29ca1cf444
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832359"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788014"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovat do sekundárního místního serveru
 
@@ -30,8 +30,8 @@ Tento článek popisuje, jak převzít služby při selhání pro virtuální po
 
 Převzetí služeb při selhání a navrácení služeb po obnovení má tři fáze:
 
-1. **Převzetí služeb při selhání do sekundární lokality**: selhání počítačů z primární lokality do sekundární.
-2. **Selhání zpět ze sekundární lokality**: replikovat virtuální počítače ze sekundární do primární a spusťte plánované převzetí služeb při selhání pro navrácení služeb po obnovení.
+1. **Převzetí služeb při selhání do sekundární lokality**: Selhání počítačů z primární lokality do sekundární.
+2. **Selhání zpět ze sekundární lokality**: Replikace virtuálních počítačů ze sekundární do primární a plánované převzetí služeb při selhání pro navrácení služeb po obnovení.
 3. Po plánované převzetí služeb při selhání volitelně spusťte, které se replikují z primární lokality do sekundární znovu.
 
 
@@ -58,7 +58,7 @@ Tento postup popisuje, jak regulární převzetí služeb při selhání.
 3. Po ověření virtuálních počítačů, **potvrzení** převzetí služeb při selhání. Tím se odstraní všechny dostupné body obnovení.
 
 > [!WARNING]
-> **Nepřerušujte v průběhu proces převzetí služeb při selhání:** Před spuštěním převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  
+> **Nepřerušujte převzetí služeb při selhání v průběhu**: Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>Zpětná replikace a převzetí služeb při selhání

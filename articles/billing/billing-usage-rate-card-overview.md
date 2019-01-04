@@ -16,18 +16,15 @@ ms.workload: billing
 ms.date: 5/10/2018
 ms.author: erikre
 ms.custom: seodec18
-ms.openlocfilehash: 9e3ad2327297e0403b279ad40db2186fcb55ae93
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 944623943fc49f4f6856c3a62f30ea61f901c16d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080975"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579409"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Pomocí Azure API pro fakturaci prostřednictvím kódu programu získáte přehled o využívání služeb Azure
 Pomocí Azure API pro fakturaci. data o využití a prostředků o přijetí změn do nástroje pro vaše preferované datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Rozhraní API se implementují jako poskytovatele prostředků a součástí rodiny API pomocí Azure Resource Manageru.  
-
-> [!div class="nextstepaction"]
-> [Pomozte vylepšit dokumentaci k fakturaci Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Rozhraní API pro stažení faktury Azure (Preview)
 Jednou [vyjádřit výslovný souhlas se kompletní](billing-manage-access.md#opt-in), stahování faktur ve verzi preview [faktury API](/rest/api/billing). Mezi funkce patří:

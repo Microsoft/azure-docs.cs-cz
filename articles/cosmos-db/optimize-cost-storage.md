@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 78c840efebd2e451747e2490fc4d2f363afa9a09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 618be936ef0326a1b9f5db426d4c37bb2bd1c760
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263829"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535654"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimalizovat náklady na úložiště ve službě Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Azure Cosmos DB očekává, že velikost položky bude 2 MB pro optimální výk
 
 ## <a name="optimize-cost-with-indexing"></a>Optimalizujte náklady s indexování
 
-Ve výchozím nastavení data se automaticky indexován, což může zvýšit celkové úložiště spotřebované. Však můžete uplatnit zásady vlastního indexového omezit tato režie. Automatické indexování, který nebyl byla vyladěný pomocí zásad je přibližně 10 – 20 % velikosti položky. Odebráním nebo přizpůsobení index zásady, neplatíte dodatečné náklady pro zápis a nevyžadují další kapacitu. Zobrazit [indexování ve službě Cosmos DB](indexing-policies.md) nakonfigurovat vlastní zásady indexování. Pokud jste už pracovali s relační databází před, může si myslíte, že "indexování všeho." znamená, že možnost zdvojnásobení úložiště nebo vyšší. Ve službě Azure Cosmos DB, v případě, střední, je však mnohem nižší. Ve službě Azure Cosmos DB nároky na úložiště indexů je obvykle nízké (10-20 %) i s automatické indexování, protože je určená pro nízkou úložiště nároky. Tím, že spravuje zásady indexování, můžete řídit kompromis index nároky na místo a výkonu dotazování umožňujícímu podrobnějšího způsobem.
+Ve výchozím nastavení data se automaticky indexován, což může zvýšit celkové úložiště spotřebované. Však můžete uplatnit zásady vlastního indexového omezit tato režie. Automatické indexování, který nebyl byla vyladěný pomocí zásad je přibližně 10 – 20 % velikosti položky. Odebráním nebo přizpůsobení index zásady, neplatíte dodatečné náklady pro zápis a nevyžadují další kapacitu. Zobrazit [indexování ve službě Azure Cosmos DB](indexing-policies.md) nakonfigurovat vlastní zásady indexování. Pokud jste už pracovali s relační databází před, může si myslíte, že "indexování všeho." znamená, že možnost zdvojnásobení úložiště nebo vyšší. Ve službě Azure Cosmos DB, v případě, střední, je však mnohem nižší. Ve službě Azure Cosmos DB nároky na úložiště indexů je obvykle nízké (10-20 %) i s automatické indexování, protože je určená pro nízkou úložiště nároky. Tím, že spravuje zásady indexování, můžete řídit kompromis index nároky na místo a výkonu dotazování umožňujícímu podrobnějšího způsobem.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizujte náklady s časem a živého kanálu změn
 

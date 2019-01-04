@@ -11,10 +11,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 64c4b82208b2f8a20f7fd00fb574d5e017030e81
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "53094147"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí Azure CLI
@@ -158,7 +158,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 * **– id nasazení** – název nasazení, který existuje ve službě IoT hub.
 * **– název centra** – název služby IoT hub, ve které existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
 
-Zkontrolujte nasazení v příkazovém okně. Metriky počet pro každou **metriku**, která se vyhodnocuje na základě každé centrum seznamů vlastností:
+Zkontrolujte nasazení v příkazovém okně. **Metriky** počet pro každou metriku, která se vyhodnocuje na základě každé centrum seznamů vlastností:
 * **targetedCount** – systém metriku, která určuje počet dvojčat zařízení ve službě IoT Hub, která splňují cílovou podmínku.
 * **appliedCount** -metrika systému určuje počet zařízení, která jste využili obsahu nasazení u jejich dvojčaty modulů ve službě IoT Hub.
 * **reportedSuccessfulCount** -metriku zařízení, která určuje počet hraničních zařízení v nasazení generování sestav úspěšnost modul runtime IoT Edge klienta.

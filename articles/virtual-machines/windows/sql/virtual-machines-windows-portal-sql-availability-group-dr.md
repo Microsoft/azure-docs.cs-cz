@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 43f3628878654a32be8aeafe1ba0d2e42e03d82f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d64c55857cda0aa64dc010566490e1696fffdea0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240405"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972375"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurace skupiny dostupnosti AlwaysOn na virtuálních počítačích, které jsou v různých oblastech Azure
 
@@ -84,6 +84,7 @@ Chcete-li vytvořit repliku ve vzdáleném datovém centru, proveďte následuj�
    - Zahrnout back-endový fond, který se skládá z virtuálních počítačů ve stejné oblasti jako nástroj pro vyrovnávání zatížení.
    - Použijte sondu protokolu TCP port specifické pro IP adresu.
    - Mají pravidla specifická pro SQL Server ve stejné oblasti vyrovnávání zatížení.  
+   - Být standardní nástroj pro vyrovnávání zatížení, pokud virtuální počítače v back-endového fondu nejsou součástí jedné skupiny dostupnosti nebo škálovací sady virtuálních počítačů. Pro další informace najdete [Přehled služby Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
 1. [Přidejte funkci Clustering převzetí služeb při selhání na nový server SQL](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
 

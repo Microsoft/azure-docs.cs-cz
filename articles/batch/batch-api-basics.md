@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3043764ed89f2e53ddc3fd3f009a8bee586031e9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540366"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754063"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -264,7 +264,7 @@ Při vytvoření úkolu můžete zadat:
 * Odkaz na **image kontejneru** v Docker Hubu nebo privátním registru a další nastavení pro vytvoření kontejneru Dockeru, ve kterém se bude spouštět úloha na uzlu. Tyto údaje zadáváte pouze v případě, že je ve fondu nastavená konfigurace kontejneru.
 
 > [!NOTE]
-> Maximální doba života úkolu, od jeho přidání do úlohy po jeho dokončení, je 7 dní. Dokončené úkoly se zachovávají po neomezenou dobu; data pro úkoly, které se nedokončí v rámci maximální doby života, nejsou dostupná.
+> Maximální doba života úkolu, od jeho přidání do úlohy po dokončení je 180 dnů. Dokončené úkoly se zachovávají po dobu 7 dní; data pro úkoly, které se nedokončí v rámci maximální doby života není přístupný.
 
 Vedle úkolů, které definujete pro provádění výpočtů na uzlu, poskytuje služba Batch také následující zvláštní úkoly:
 

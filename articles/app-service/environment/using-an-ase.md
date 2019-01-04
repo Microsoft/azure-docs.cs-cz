@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274713"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630661"
 ---
 # <a name="use-an-app-service-environment"></a>Pomocí služby App Service environment #
 
@@ -39,22 +39,22 @@ Azure App Service Environment je nasazení služby Azure App Service do podsít�
 
 Nasazení prostředí ASE (ASEv1 a ASEv2) externí nebo interní virtuální IP adresu pro přístup k aplikaci. Nasazení s externí virtuální IP Adresou se tomu říká externí služby ASE. Interní verze se nazývá služba ASE s ILB, protože používá interní nástroj pro vyrovnávání zatížení (ILB). Další informace o služba ASE s ILB, naleznete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE].
 
-## <a name="create-a-web-app-in-an-ase"></a>Vytvoření webové aplikace ve službě ASE ##
+## <a name="create-an-app-in-an-ase"></a>Vytvoření aplikace ve službě ASE ##
 
-Vytvoření webové aplikace ve službě ASE, použít stejně jako když vytvoříte obvykle ale několik malých rozdílů. Když vytvoříte nový plán služby App Service:
+K vytvoření aplikace ve službě ASE, použít stejně jako když vytvoříte obvykle ale několik malých rozdílů. Když vytvoříte nový plán služby App Service:
 
 - Místo zeměpisné umístění, ve které se má nasadit vaše aplikace, zvolte jako umístění služby ASE.
 - Všechny plány služby App Service vytvoří ve službě ASE musí být v izolované cenové úrovně.
 
 Pokud nemáte službu ASE, můžete vytvořit podle pokynů v [vytvoření služby App Service environment][MakeExternalASE].
 
-Vytvoření webové aplikace ve službě ASE:
+K vytvoření aplikace ve službě ASE:
 
 1. Vyberte **vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
 
-2. Zadejte název webové aplikace. Pokud jste již vybrali plán služby App Service ve službě ASE, název domény pro aplikace odráží název domény služby ase.
+2. Zadejte název aplikace. Pokud jste již vybrali plán služby App Service ve službě ASE, název domény pro aplikace odráží název domény služby ase.
 
-    ![Výběr názvu webové aplikace][1]
+    ![Výběr názvu aplikace][1]
 
 1. Vyberte předplatné.
 
@@ -80,10 +80,10 @@ Vytvoření webové aplikace ve službě ASE:
     ![Izolované cenové úrovně][2]
 
     > [!NOTE]
-    > Linuxové webové aplikace a webové aplikace Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
+    > Linuxových aplikací a aplikací Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
     >
 
-1. Vyberte **Vytvořit**.
+2. Vyberte **Vytvořit**.
 
 ## <a name="how-scale-works"></a>Jak škálovat funguje ##
 
@@ -97,7 +97,7 @@ Ve službě ASE je možné škálovat až 100 instancí. Tyto 100 instancí mů�
 
 ## <a name="ip-addresses"></a>IP adresy ##
 
-App Service má schopnost přidělit vyhrazenou IP adresu do aplikace. Tato funkce je dostupná, když nakonfigurujete SSL na základě IP adresy, jak je popsáno v [vytvoření vazby existujícího vlastního certifikátu SSL k Azure web apps][ConfigureSSL]. Ve službě ASE, existuje ale významné výjimky. Nelze přidat další IP adresy se použije pro založené na protokolu IP SSL ve službě ASE s ILB.
+App Service má schopnost přidělit vyhrazenou IP adresu do aplikace. Tato funkce je dostupná, když nakonfigurujete SSL na základě IP adresy, jak je popsáno v [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service][ConfigureSSL]. Ve službě ASE, existuje ale významné výjimky. Nelze přidat další IP adresy se použije pro založené na protokolu IP SSL ve službě ASE s ILB.
 
 V verzi ASEv1 je potřeba přidělit IP adresy jako prostředky, abyste mohli používat. V ASEv2 použijete je z vaší aplikace stejným způsobem jako ve víceklientské službě App Service. Je vždycky náhradních adres v ASEv2 až 30 IP adresy. Pokaždé, když použijete jednu, jiné se přidá tak, aby vždy snadno k dispozici pro použití adresy. Čas, zpoždění je nutné přidělit jinou IP adresu, který zabraňuje přidávání IP adresy rychle po sobě.
 
@@ -187,6 +187,6 @@ Pokud chcete odstranit službu ASE:
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[AppDeploy]: ../app-service-deploy-local-git.md
+[AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

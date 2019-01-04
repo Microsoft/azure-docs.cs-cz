@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 412ec0a7d2cd8574aadf6e9f104407792ddb29ed
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a09dcfbffb6daa2ae2514c608e88c8dc475c9676
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341521"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581432"
 ---
 # <a name="alerts-on-activity-log"></a>Upozornění v protokolu aktivit 
 
@@ -28,11 +28,11 @@ Obvykle je vytvoření upozornění protokolu aktivit k přijímání oznámení
 * Určité operace, ke kterým došlo u prostředků v předplatném Azure, často obor skupiny konkrétní prostředek nebo prostředky. Například můžete být upozorněni na jakýkoli virtuální počítač v myProductionResourceGroup se odstraní. Nebo můžete chtít vás upozorní, když jsou přiřazeny žádné nové role pro uživatele ve vašem předplatném.
 * Vyvolá se událost stavu služby. Události služby Service health zahrnout oznámení událostí a události údržby, které se vztahují k prostředkům ve vašem předplatném.
 
-Jednoduché přirovnání pro vysvětlení podmínky, na kterých se dají vytvořit pravidla upozornění na protokol aktivit je prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit na webu Azure Portal](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). Ve službě Azure Monitor – protokol aktivit, jeden můžete filtrovat nebo najít potřebné události a pak vytvořte výstrahu pomocí **přidat upozornění protokolu aktivit** tlačítko.
+Jednoduché přirovnání pro vysvětlení podmínky, na kterých se dají vytvořit pravidla upozornění na protokol aktivit je prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit na webu Azure Portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). Ve službě Azure Monitor – protokol aktivit, jeden můžete filtrovat nebo najít potřebné události a pak vytvořte výstrahu pomocí **přidat upozornění protokolu aktivit** tlačítko.
 
 V obou případech se upozornění protokolu aktivit monitoruje pouze pro události v rámci předplatného, ve kterém se vytvoří výstraha.
 
-Můžete nakonfigurovat upozornění protokolu aktivit na základě jakékoli vlastnosti nejvyšší úrovně v objektu JSON pro událost protokolu aktivit. Další informace najdete v tématu [přehled protokolu aktivit Azure](./../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log). Další informace o události služby service health najdete v tématu [dostávat upozornění protokolu aktivit pro oznámení služby](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+Můžete nakonfigurovat upozornění protokolu aktivit na základě jakékoli vlastnosti nejvyšší úrovně v objektu JSON pro událost protokolu aktivit. Další informace najdete v tématu [přehled protokolu aktivit Azure](./../../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log). Další informace o události služby service health najdete v tématu [dostávat upozornění protokolu aktivit pro oznámení služby](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
 
 Upozornění protokolu aktivit mít několik běžných možností:
 
@@ -64,5 +64,5 @@ Další informace o skupinách akcí najdete v tématu [vytvořit a spravovat sk
 - Získat [přehled výstrah](../../azure-monitor/platform/alerts-overview.md).
 - Další informace o [vytvářet a upravovat upozornění protokolu aktivit](../../azure-monitor/platform/alerts-activity-log.md).
 - Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](activity-log-alerts-webhook.md).
-- Další informace o [služby oznámení o stavu](../../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Další informace o [služby oznámení o stavu](../../azure-monitor/platform/service-notifications.md).
 

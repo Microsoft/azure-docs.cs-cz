@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/11/2018
+ms.date: 12/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 9dd519f8efc9700f7a747aa37a9c02414f3e1865
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: c0793cd4adc5359aaa2282eb2505c257315c056f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093880"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793389"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>Použití místního webového uživatelského rozhraní při správě Data Boxu
 
@@ -25,8 +25,7 @@ Tento článek obsahuje následující návody:
 
 - Generování balíčku pro podporu
 - Vypnutí nebo restartování zařízení
-- Bezpečné vymazání dat ze zařízení
-- Monitorování dostupné kapacity zařízení
+- Zobrazení dostupné kapacity zařízení
 - Přeskočení ověření kontrolního součtu 
 
 ## <a name="generate-support-package"></a>Generování balíčku pro podporu
@@ -101,7 +100,7 @@ Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovl
 2. **Zakázání** ověření kontrolního součtu
 3. Klikněte na tlačítko **Použít**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si, jak [spravovat Data Box prostřednictvím webu Azure Portal](data-box-portal-admin.md).
 

@@ -4,19 +4,19 @@ description: Přečtěte si nejčastější dotazy o použití k provedení migr
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: f1f67921e7eadded4292f244f5754c8f00341a15
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 12/19/2018
+ms.openlocfilehash: b8001729c85c8447ab22bafffe24a32524a0662a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887100"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714691"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 Tento článek obsahuje nejčastější dotazy o použití Azure Database Migration Service společně se související odpovědi.
@@ -28,7 +28,7 @@ Azure Database Migration Service je plně spravovaná služba, která umožňuj�
 - Další investice do bezproblémové migrace.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>Otázka: Jaké párů zdroj cíl Azure Database Migration Service aktuálně podporuje?
-Tato služba momentálně podporuje migraci z SQL serveru do služby Azure SQL Database a můžete přejít na web Azure Portal teď začít používat Azure Database Migration Service pro tento scénář. Jiných párů zdroj cíl, jako je Oracle do Azure SQL Database jsou dostupné přes privátní verzi limited Preview. Příležitosti k účasti ve verzi limited Preview privátní z těchto scénářů, zaregistrujte [tady](https://aka.ms/dms-preview/).
+Služba aktuálně podporuje širokou škálu scénářů migrace. Úplný seznam všech stav jednotlivých scénářů migrace k dispozici, najdete v článku [stavový migrační scénáře podporované službou Azure Database Migration Service](https://docs.microsoft.com/azure/dms/resource-scenario-status). Další scénáře migrace jsou ve verzi limited preview a vyžadovat odeslání nominace prostřednictvím webu DMS ve verzi Preview. Úplný seznam všech scénáře ve verzi limited preview a zaregistrovat se a particpate v jednom z těchto nabídek, najdete v článku [DMS ve verzi Preview webu](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>Otázka: Jak Azure Database Migration Service se dá porovnat s ostatními nástroji Migrace databáze Microsoftu jako jsou databáze Migration Assistant (DMA) nebo SQL asistent migrace Server (SSMA)?
 Azure Database Migration Service je upřednostňovanou metodou pro migraci databází do Microsoft Azure ve velkém měřítku. Další podrobnosti o jak si Azure Database Migration Service vede jiné společnosti Microsoft databázových nástrojů pro migraci a doporučení týkající se používání služby pro různé scénáře, naleznete v tématu příspěvky blogu [odlišení těchto Microsoft databáze Nástroje pro migraci a služby](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0d6c22d54de0486ad679f93343f0e7b208f21f4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 5db4387c2fd610313aaac032c122366aa45dc7f9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384039"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720182"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Vývoj skriptových akcí skriptů pro clustery se systémem Windows pro HDInsight
 Zjistěte, jak psát skripty akci skriptu pro HDInsight. Informace o pomocí skriptových akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md). Stejného článku napsané pro clustery HDInsight se systémem Linux, najdete v části [vývoj skriptových akcí skriptů pro HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -32,8 +32,6 @@ Akce skriptu lze použít k instalaci dalšího softwaru, které se spouští v 
 > System.Management.Automation.CommandNotFoundException; ExceptionMessage: Termín 'Save-HDIFile' nebyl rozpoznán jako název rutiny, funkce, soubor skriptu nebo spustitelného programu. Zkontrolujte, zda název, nebo pokud cesty byl zahrnut, ověřte správnost cesty a zkuste to znovu.
 > 
 > Je, protože jste nezahrnuli pomocné metody.  Zobrazit [pomocné metody pro vlastní skripty](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
->
->
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 Akci skriptu pro vytváření clusterů HDInsight v operačním systému Windows, je skript Azure Powershellu. Následující skript je ukázka konfigurace lokality konfigurační soubory:

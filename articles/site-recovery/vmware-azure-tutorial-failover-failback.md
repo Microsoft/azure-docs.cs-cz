@@ -4,16 +4,17 @@ description: Zjistěte, jak během zotavení po havárii do Azure pomocí Azure 
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 517355a32fc7a549370aed2c7a8408c3a0887e13
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e17ddb45143e03023c30b69ed314270ed97dc039
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838017"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973162"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů replikovaných do Azure
 
@@ -42,10 +43,10 @@ Tento kurz je pátou částí série. Tento kurz předpokládá, že jste už do
 
 Převzetí služeb při selhání a navrácení služeb po obnovení probíhá ve čtyřech fázích:
 
-1. **Převzetí služeb při selhání do Azure:** Převezmou se služby při selhání počítačů z místní lokality do Azure.
-2. **Znovunastavení ochrany virtuálních počítačů Azure:** Znovu se nastaví ochrana virtuálních počítačů Azure, aby se začaly replikovat zpět do místních virtuálních počítačů VMware. Místní virtuální počítač se během opětovného nastavování ochrany vypne. To pomáhá zajistit konzistenci dat během replikace.
-3. **Převzetí služeb při selhání do místní lokality:** Spustí se převzetí služeb při selhání, které zajistí navrácení služeb po obnovení z Azure.
-4. **Znovunastavení ochrany místních virtuálních počítačů:** Po navrácení dat po obnovení se znovu nastaví ochrana místních virtuálních počítačů, na které jste provedli navrácení služeb po obnovení, aby se začaly replikovat do Azure.
+1. **Převzetí služeb při selhání do Azure**: Selhání počítačů z místní lokality do Azure.
+2. **Znovunastavení ochrany virtuálních počítačů Azure**: Znovunastavení ochrany virtuálních počítačů Azure tak, aby se začaly replikovat zpět do místních virtuálních počítačů VMware. Místní virtuální počítač se během opětovného nastavování ochrany vypne. To pomáhá zajistit konzistenci dat během replikace.
+3. **Převzetí služeb při selhání do místního**: Spuštění převzetí služeb při selhání, selhání obnovení z Azure.
+4. **Znovunastavení ochrany místních virtuálních počítačů**: Po zpět navrácení dat znovunastavení ochrany místních virtuálních počítačů, které se nepodařilo zpět do tak, aby se začaly replikovat do Azure.
 
 ## <a name="verify-vm-properties"></a>Ověření vlastností virtuálního počítače
 
@@ -66,17 +67,17 @@ Ověřte vlastnosti virtuálního počítače a ujistěte se, že splňuje [pož
 1. V části **Nastavení** > **Replikované položky** klikněte na virtuální počítač a pak na **Převzetí služeb při selhání**.
 
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
-   - **Nejnovější:** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
-   - **Nejnovější zpracovaný:** Tato možnost převezme služby při selhání virtuálního počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
-   - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost převezme služby při selhání virtuálního počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím zpracovanému službou Site Recovery.
-   - **Vlastní:** Zadáte vlastní bod obnovení.
+   - **Nejnovější**: Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
+   - **Nejnovější zpracovaný**: Tato možnost převezme služby při selhání virtuálního počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
+   - **Nejnovější konzistentní vzhledem k**: Tato možnost převezme služby při selhání virtuálního počítače do bodu nejnovější konzistentní vzhledem k obnovení zpracovanému službou Site Recovery.
+   - **Vlastní**: Zadejte bod obnovení.
 
 3. Vyberte možnost **Před spuštěním převzetí služeb při selhání vypnout počítač**, pokud se chcete pokusit před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Možná si všimnete **delšího trvání testovacího převzetí služeb při selhání** u virtuálních počítačů VMware využívajících službu Mobility starší verze než 9.8, fyzických serverů, virtuálních počítačů VMware s Linuxem, virtuálních počítačů Hyper-V chráněných jako fyzické servery, virtuálních počítačů VMware bez povolené služby DHCP a virtuálních počítačů VMware bez následujících ovladačů spuštění: storvsc, vmbus, storflt, intelide, atapi.
 
 > [!WARNING]
-> **Nepřerušujte v průběhu proces převzetí služeb při selhání**: před zahájením procesu převzetí služeb při selhání se zastaví replikace virtuálního počítače.
+> **Nepřerušujte převzetí služeb při selhání v průběhu**: Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače.
 > Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>Připojení k virtuálnímu počítači v Azure, pro který bylo provedeno převzetí služeb při selhání

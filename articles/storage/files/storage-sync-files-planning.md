@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: HT
+ms.openlocfilehash: 76bec0f0e924fe193519f47effb8dd45f6262697
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335176"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630321"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
 
 Tento článek popisuje důležité informace týkající se nasazení služby Azure File Sync. Doporučujeme vám, že si také přečíst [plánování nasazení služby soubory Azure](storage-files-planning.md). 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="azure-file-sync-terminology"></a>Terminologie služby Azure File Sync
 Před získáním na podrobné informace o plánování nasazení služby Azure File Sync, je důležité, abyste rozuměli technologiím.
@@ -34,9 +36,9 @@ Objekt registrovaný server představuje vztah důvěryhodnosti mezi serverem (n
 
 ### <a name="azure-file-sync-agent"></a>Agenta Azure File Sync
 Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje synchronizaci Windows Serveru se sdílenou složkou Azure. Agenta Azure File Sync má tři hlavní komponenty: 
-- **FileSyncSvc.exe**: na pozadí služby Windows, který je zodpovědný za monitorování změn na koncové body serveru a pro inicializaci relace synchronizace do Azure.
-- **StorageSync.sys**: filtr systému souborů Azure File Sync, který je zodpovědný za vrstvení soubory do služby soubory Azure (když cloudu ovládání datových vrstev je povolené).
-- **Rutiny Powershellu pro správu**: rutiny Powershellu, které slouží k interakci s poskytovatelem prostředků Microsoft.StorageSync Azure. Můžete je vyhledat v následujících umístěních (výchozí):
+- **FileSyncSvc.exe**: Na pozadí služby Windows, který je zodpovědný za monitorování změn na koncové body serveru a pro inicializaci relace synchronizace do Azure.
+- **StorageSync.sys**: Azure File Sync filtru systému souborů, který je zodpovědný za vrstvení soubory do služby soubory Azure (když cloudu ovládání datových vrstev je povolené).
+- **Rutiny Powershellu pro správu**: Rutiny Powershellu, který slouží k interakci s poskytovatelem prostředků Microsoft.StorageSync Azure. Můžete je vyhledat v následujících umístěních (výchozí):
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
@@ -68,7 +70,7 @@ Cloud ovládání datových vrstev je volitelná funkce služby Azure File Sync,
 Tato část popisuje požadavky na systém pro agenta Azure File Sync a vzájemná funkční spolupráce s funkcí Windows serveru a role a řešení třetích stran.
 
 ### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
-Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je AzureRM powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Všimněte si, že jeho kontroly se týkají nejvíce, ale ne všechny funkce uvedené níže; Doporučujeme, abyste že si přečíst postupujte podle zbývajících kroků této části pečlivě, ujistěte se, že vaše nasazení přejde plynule. 
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Všimněte si, že jeho kontroly se týkají nejvíce, ale ne všechny funkce uvedené níže; Doporučujeme, abyste že si přečíst postupujte podle zbývajících kroků této části pečlivě, ujistěte se, že vaše nasazení přejde plynule. 
 
 #### <a name="download-instructions"></a>Pokyny ke stažení
 1. Ujistěte se, že máte nejnovější verzi modulu PackageManagement a modul PowerShellGet nainstalovaný (díky tomu můžete nainstalovat moduly ve verzi preview)
@@ -82,29 +84,29 @@ Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompat
 3. Instalace modulů
     
     ```PowerShell
-        Install-Module -Name AzureRM.StorageSync -AllowPrerelease
+        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
     ```
 
 #### <a name="usage"></a>Využití  
 Nástroj pro vyhodnocení můžete vyvolat několika různými způsoby: můžete provádět kontrolu systému, kontroly datovou sadu nebo obojí. K provedení kontroly systému a datové sady: 
 
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path>
+    Invoke-AzStorageSyncCompatibilityCheck -Path <path>
 ```
 
 Chcete-li otestovat pouze datovou sadu:
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
+    Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
 ```
  
 K otestování pouze požadavky na systém:
 ```PowerShell
-    Invoke-AzureRmStorageSyncCompatibilityCheck -ComputerName <computer name>
+    Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
 ```
  
 Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 ```PowerShell
-    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck […]
+    $errors = Invoke-AzStorageSyncCompatibilityCheck […]
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
@@ -113,7 +115,7 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 
     | Verze | Podporované skladové položky | Možnosti podporovaného nasazení |
     |---------|----------------|------------------------------|
-    | Windows Server. 2019 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
+    | Windows Server 2019 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
     | Windows Server 2016 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
     | Windows Server 2012 R2 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
 
@@ -170,9 +172,9 @@ U svazků, které nemají povolené vrstvení cloudu Azure File Sync podporuje W
 ### <a name="distributed-file-system-dfs"></a>Systém souborů DFS (DFS)
 Azure File Sync podporuje zprostředkovatel komunikace s objekty s obory názvů DFS (DFS-N) a replikace DFS (DFS-R) počínaje [agenta Azure File Sync 1.2](https://go.microsoft.com/fwlink/?linkid=864522).
 
-**Obory názvů DFS (DFS-N)**: na servery systému souborů DFS-N se plně podporuje Azure File Sync. Můžete nainstalovat agenta Azure File Sync na jeden nebo více členů systému souborů DFS-N, synchronizaci dat mezi koncové body serveru a koncový bod cloudu. Další informace najdete v tématu [přehledu oborů názvů DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**Obory názvů DFS (DFS-N)**: Na serverech systému souborů DFS-N se plně podporuje Azure File Sync. Můžete nainstalovat agenta Azure File Sync na jeden nebo více členů systému souborů DFS-N, synchronizaci dat mezi koncové body serveru a koncový bod cloudu. Další informace najdete v tématu [přehledu oborů názvů DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Replikace DFS (DFS-R)**: protože systému souborů DFS-R a Azure File Sync jsou obě řešení replikace, ve většině případů, doporučujeme nahradit systému souborů DFS-R Azure File Sync. Existuje však několik scénářů, kdy je vhodné používat společně systému souborů DFS-R a Azure File Sync:
+**Replikace DFS (DFS-R)**: Od systému souborů DFS-R a Azure File Sync jsou obě řešení replikace, ve většině případů doporučujeme nahrazení systému souborů DFS-R pomocí služby Azure File Sync. Existuje však několik scénářů, kdy je vhodné používat společně systému souborů DFS-R a Azure File Sync:
 
 - Migrujete ze systému souborů DFS-R nasazení k nasazení služby Azure File Sync. Další informace najdete v tématu [migrace replikace DFS (DFS-R) nasazení do Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
 - Ne každá na místním serveru, která potřebuje kopii data souborů můžete připojené přímo k Internetu.
@@ -233,9 +235,9 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Východní Asie | Hongkong |
 | USA – východ | Virginie |
 | USA – východ 2 | Virginie |
-| Střed USA – sever | Illinois |
+| Středoseverní USA | Illinois |
 | Severní Evropa | Irsko |
-| Střed USA – jih | Texas |
+| Středojižní USA | Texas |
 | Indie – jih | Čennaj |
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |
@@ -262,7 +264,7 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | USA – východ             | Západní USA            |
 | Východ USA 2           | USA – střed         |
 | Severní Evropa        | Západní Evropa        |
-| Střed USA – sever    | Střed USA – jih   |
+| Středoseverní USA    | Středojižní USA   |
 | Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
 | Velká Británie – jih            | Spojené království – západ            |

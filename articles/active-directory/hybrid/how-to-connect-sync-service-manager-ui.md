@@ -1,5 +1,5 @@
 ---
-title: 'Synchronizace Azure AD Connect: uživatelské rozhraní Synchronization Service Manager | Dokumentace Microsoftu'
+title: 'Synchronizace Azure AD Connect: Uživatelské rozhraní Synchronization Service Manager | Dokumentace Microsoftu'
 description: Seznamte se s Synchronization Service Manager pro služby Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 877f41fb1d47bc8faf4ea1275c94cd492884bfb1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 439535975c6e1b996bf888a1df7b6f2ae6732a6d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313247"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717531"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Úvod do služby Azure AD Connect uživatelského rozhraní Synchronization Service Manager
 
@@ -32,9 +32,10 @@ ms.locfileid: "46313247"
 Spuštění **Synchronization Service Manager** uživatelského rozhraní z nabídky start. Je název **synchronizační služba** a najdete v **Azure AD Connect** skupiny.  
 ![Správce synchronizace služby](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
-Kliknutím na odkazy v horní části tohoto tématu, dozvíte se další informace o různých kartách v uživatelském rozhraní.
-
 ## <a name="next-steps"></a>Další postup
+
+Další informace o uživatelském rozhraní Synchronization Service Manager, včetně [operace](how-to-connect-sync-service-manager-ui-operations.md), [konektory](how-to-connect-sync-service-manager-ui-connectors.md), [Návrhář Metaverse](how-to-connect-sync-service-manager-ui-mvdesigner.md), a [vyhledávání Metaverse](how-to-connect-sync-service-manager-ui-mvsearch.md) karty.
+
 Další informace o [synchronizace Azure AD Connect](how-to-connect-sync-whatis.md) konfigurace.
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

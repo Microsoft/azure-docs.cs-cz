@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: ec282bc1159e8a8cf21b88b8430bbf3067686528
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963317"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788612"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Kurz: Nasazení aplikace Service Fabric Mesh
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Kurz: Nasazení aplikace Service Fabric mřížky
 
 V tomto kurzu, který je třetí částí série, se dozvíte, jak publikovat webovou aplikaci Azure Service Fabric Mesh přímo ze sady Visual Studio.
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Vytvoření aplikace Service Fabric Mesh v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Vytvořit aplikaci Service Fabric Mesh v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
 > * [Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * Nasazení aplikace Service Fabric Mesh
 > * [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
@@ -113,10 +113,10 @@ K dokončení zbývajících kroků můžete použít Azure Cloud Shell nebo mí
 
 V tuto chvíli je vaše aplikace nasazena. Na její stav se můžete podívat pomocí příkazu `app show`. 
 
-Název aplikace pro účely tohoto kurzu je `ServiceMeshApp`. Podrobnosti o aplikace získáte pomocí následujícího příkazu:
+Název aplikace pro účely tohoto kurzu je `todolistapp`. Podrobnosti o aplikace získáte pomocí následujícího příkazu:
 
 ```azurecli-interactive
-az mesh app show --resource-group $rg --name ServiceMeshApp
+az mesh app show --resource-group $rg --name todolistapp
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>Zobrazení všech aplikací aktuálně nasazených v předplatném
@@ -127,7 +127,7 @@ Seznam aplikací, které jste nasadili v předplatném, zobrazíte pomocí pří
 az mesh app list --output table
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 > [!div class="checklist"]
@@ -137,6 +137,6 @@ V této části kurzu jste se naučili:
 
 Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
-> [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
+> [Upgradovat aplikaci Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

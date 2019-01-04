@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d7a32abe52e6f1109becc18c84b19d0ccd69719c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385461"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534872"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Monitorování zpráv B2B s Azure Log Analytics v Azure Logic Apps
 
@@ -122,7 +122,7 @@ Jakmile budete hotovi, zvolte **přidejte nastavení diagnostiky**.
 Spolu s Azure Log Analytics můžete rozšířit použití diagnostických dat vaší aplikace logiky s ostatními službami Azure, například: 
 
 * [Archiv, který protokoly diagnostiky Azure ve službě Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Stream protokoly diagnostiky Azure do služby Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
+* [Stream protokoly diagnostiky Azure do služby Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
 
 Můžete získat v reálném čase sledování pomocí telemetrie a analýz z jiných služeb, jako jsou [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
 

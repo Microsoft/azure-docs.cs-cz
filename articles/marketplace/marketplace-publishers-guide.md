@@ -14,16 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0f4ff7c11952e6e222104b3953c547a91b4fc124
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223068"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753961"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace a AppSource Průvodce publikováním
 
 Průvodce publikováním na webu Marketplace je určen pro nové a stávající vydavatelé Další informace o použití prodejních míst v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com) k rozvoji podnikání v partnerství u Microsoftu nejpozději do aplikací a služeb.
+
+>[!Note]
+>Na webu Marketplace odkazuje na Azure Marketplace a AppSource.  Zobrazit [Marketplace jeden, dva prodejní místa](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace) Další informace.
 
 Tato příručka obsahuje následující témata: 
 *   Co je na webu Marketplace a jak to funguje 
@@ -62,9 +65,9 @@ Novým položkám na webu Marketplace jsou způsobilé pro širokou škálu růz
 
 *   Technické: Všechno, co je potřeba získat připraveno ke spuštění vaší aplikace. Technickou podporu, návrhu aplikace a návrh architektury, kredity Azure pro vývoj a testování. 
 
-*   Společný marketing: Všechno, co potřebujete ke spuštění vaší nabídky. Přístup k bezplatným Microsoft Go-To-Market spuštění základy můžete spustit a propagace vašeho řešení. Může být také nárok na další zahrnutí marketingové kampaně Microsoftu a příležitostí, které chcete doporučit na webu Marketplace.
+*   Marketingové: Všechno, co potřebujete ke spuštění vaší nabídky. Přístup k bezplatným Microsoft Go-To-Market spuštění základy můžete spustit a propagace vašeho řešení. Může být také nárok na další zahrnutí marketingové kampaně Microsoftu a příležitostí, které chcete doporučit na webu Marketplace.
 
-*   Společný prodej: Begin nebo Zrychlete svou cestu k prodeji s Microsoftem prostřednictvím webu Marketplace. Přístup k programům a podporu k společnému prodeji s Microsoft teams.
+*   Společný prodej: Zahájit nebo Zrychlete svou cestu k prodeji s Microsoftem prostřednictvím webu Marketplace. Přístup k programům a podporu k společnému prodeji s Microsoft teams.
 
 Poté co [odeslání vašeho řešení](https://azuremarketplace.microsoft.com/sell/signup) na webu Marketplace, kontaktuje náš onboardingový tým podporu prostředí pro publikování.
 

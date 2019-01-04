@@ -9,15 +9,18 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a518d00a50c0fc6ec83626852f30f739d64b18ea
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283282"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634316"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie modulů a Runbooků Azure Automation
 Místo vytváření vlastních modulů a runbooků ve službě Azure Automation, můžete přistupovat širokou škálu scénářů, které již byly vytvořeny od Microsoftu a komunity.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete použít jako výchozí bod a upravit je pro vaše konkrétní požadavky.
+
+> [!NOTE]
+> Nové [modul Azure PowerShell Az](/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0) nejsou podporované ve službě Azure Automation. Všechny skripty stáhnout z Galerie prostředí PowerShell pomocí těchto rutin nebudou fungovat ve službě Azure Automation.
 
 Můžete získat runbooky [Galerie Runbooků](#runbooks-in-runbook-gallery) a modulů [Galerie prostředí PowerShell](#modules-in-powerShell-gallery).  Můžete přispívat také v komunitě sdílením scénáře, které vyvíjíte, naleznete v tématu [přidání sady runbook do Galerie](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
 

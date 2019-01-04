@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
 ms.openlocfilehash: e535d1c2c581e20667a1ccf10fc97fcf988bc91a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "53001812"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)

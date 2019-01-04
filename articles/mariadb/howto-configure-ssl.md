@@ -3,24 +3,22 @@ title: Konfigurace připojení SSL pro zabezpečené připojení k Azure Databas
 description: Pokyny, jak správně nakonfigurovat – Azure Database pro MariaDB a přidružených aplikací, aby správně používaly připojení SSL
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 00e8479eab927acccc8f797311a0a2d440bb96da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4bf18a44255903df09aae3382c0eb35a2a55eea5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961667"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541808"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database pro MariaDB
 Azure Database pro MariaDB podporuje připojení Azure Database pro MariaDB server ke klientským aplikacím pomocí vrstvy SSL (Secure Sockets). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
 
 ## <a name="obtain-ssl-certificate"></a>Získat certifikát SSL
 Stáhněte si certifikát nutný pro komunikaci pomocí protokolu SSL na váš server Azure Database for MariaDB z [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) a uložte soubor certifikátu na místním disku (v tomto kurzu používá c:\ssl třeba).
-**Aplikace Microsoft Internet Explorer a Microsoft Edge:** po dokončení stahování, přejmenovat na BaltimoreCyberTrustRoot.crt.pem certifikát.
+**Microsoft Internet Explorer nebo Microsoft Edge:** Po dokončení stahování certifikát přejmenujte BaltimoreCyberTrustRoot.crt.pem.
 
 ## <a name="bind-ssl"></a>Vytvoření vazby SSL
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Připojení k serveru pomocí aplikace MySQL Workbench přes protokol SSL
@@ -49,7 +47,7 @@ Spustit mysql **stav** příkazu ověřte, zda jste se připojili k MariaDB serv
 ```sql
 status
 ```
-Ověřte připojení zašifrují kontrolou výstupu by se zobrazit: **SSL: šifer používaných je AES256 SHA** 
+Potvrďte, že připojení je zašifrován kontrolou výstupu by se zobrazit:  **PROTOKOL SSL: Šifrování používá je AES256 SHA** 
 
 ## <a name="sample-code"></a>Ukázka kódu
 Navázat zabezpečené připojení ke službě Azure Database pro MariaDB přes protokol SSL z vaší aplikace, podívejte se na následující ukázky kódu:

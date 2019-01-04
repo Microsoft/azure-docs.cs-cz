@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9dd4ca4b4f156823aff3b8a475e06ea63f98be6c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260546"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975290"
 ---
 # <a name="aerial-image-classification"></a>Klasifikace leteckých snímků
 
@@ -174,7 +174,7 @@ Naše doporučovaná metoda pro vytvoření clusteru HDInsight používá šablo
 
 1. Šablonu clusteru HDInsight Spark je "template.json" soubor v podsložce "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" Tento projekt. Ve výchozím nastavení šablona vytvoří Spark cluster s 40 pracovních uzlů. Pokud toto číslo je nutné upravit, otevřete šablonu ve svém oblíbeném textovém editoru a nahraďte všechny výskyty "40" číslo pracovního uzlu podle vašeho výběru.
     - Limit paměti chyby mohou nastat později, pokud je menší počet pracovních uzlů, které zvolíte. K boji s chybami paměti, může spouštět skripty školení a operacionalizaci na podmnožinu dostupných dat, jak je popsáno dále v tomto dokumentu.
-2. Zvolte jedinečný název a heslo pro HDInsight cluster a zapíše je uvedeno v následujícím příkazu: vytvořte cluster pomocí příkazů:
+2. Zvolte jedinečný název a heslo pro HDInsight cluster a zapíše je uvedeno v následujícím příkazu: Potom vytvořte cluster pomocí příkazů:
 
     ```
     set HDINSIGHT_CLUSTER_NAME=[HDInsight cluster name]
@@ -332,7 +332,7 @@ pip install matplotlib azure-storage==0.36.0 pillow scikit-learn azure-mgmt-batc
 
 ## <a name="data-acquisition-and-understanding"></a>Získávání a pochopení dat
 
-Tento scénář využívá veřejně dostupnou leteckých snímků dat z [národní Program Trénováním zemědělství](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) rozlišení měřiče 1. Vygenerování sady 224 pixel x 224 pixel soubory PNG výtisky oříznout z původní data NAIP a seřazených podle pozemního použít popisky z [databáze zahrnují národní pozemního](https://www.mrlc.gov/nlcd2011.php). Ukázkový obrázek s popiskem "Developed" se zobrazí v plné velikosti:
+Tento scénář využívá veřejně dostupnou leteckých snímků dat z [národní Program Trénováním zemědělství](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) rozlišení měřiče 1. Vygenerování sady 224 pixel x 224 pixel soubory PNG výtisky oříznout z původní data NAIP a seřazených podle pozemního použít popisky z [databáze zahrnují národní pozemního](https://www.mrlc.gov/data/references/national-land-cover-database-2011-nlcd2011). Ukázkový obrázek s popiskem "Developed" se zobrazí v plné velikosti:
 
 ![Ukázka dlaždice vyvinuté pozemek](media/scenario-aerial-image-classification/sample-tile-developed.png)
 

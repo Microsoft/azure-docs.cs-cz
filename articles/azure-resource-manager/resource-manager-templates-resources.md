@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2018
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0b42a51f255080905cb0104d06ed18f1d18f8e5d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 5a2b38e5d627341b3684ee55d13ee06881fbae55
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015411"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728359"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Oddíl prostředků šablon Azure Resource Manageru
 
@@ -90,10 +90,10 @@ Můžete definovat prostředky s následující strukturou:
 | location |Různé |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle je vhodné vybrat ten, který je blízko vašim uživatelům. Obvykle je také vhodné umístit prostředky, které spolu interagují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (jako je například přiřazení role) nevyžadují umístění. |
 | tags |Ne |Značky, které jsou spojeny s prostředkem. Použití značek logicky tak uspořádat prostředky napříč vašeho předplatného. |
 | Komentáře |Ne |Poznámky pro dokumentaci prostředků v šabloně |
-| Kopírovat |Ne |V případě potřeby je více než jednu instanci, kolik prostředků k vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky k nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md). |
+| Kopírovat |Ne |V případě potřeby je více než jednu instanci, kolik prostředků k vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky k nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit několik instancí prostředků v Azure Resource Manageru](resource-group-create-multiple.md). |
 | dependsOn |Ne |Prostředky, které musí být nasazený před nasazením tento prostředek. Resource Manager vyhodnotí závislosti mezi prostředky a nasadí ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, kde jsou nasazeny současně. Hodnota může být čárkou oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Pouze výpis prostředků, které jsou nasazené v této šabloně. Prostředky, které nejsou definovány v této šabloně už musí existovat. Vyhněte se přidává zbytečné závislostí může zpomalit vaše nasazení a vytvoření cyklické závislosti. Pokyny k nastavení závislostí v tématu [definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md). |
 | properties |Ne |Nastavení konfigurace specifických pro prostředky. Hodnoty pro tyto vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku pro operaci rozhraní REST API (metodu PUT) a vytvoří prostředek. Můžete také zadat pole kopie vytvořit několik instancí vlastnosti. |
-| Skladová položka | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
+| SKU | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
 | Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasadíte. Můžete například zadat typ služby Cosmos DB k vytvoření. |
 | plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat image marketplace pro virtuální počítač. | 
 | zdroje |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Plně kvalifikovaný typ podřízený prostředek obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. |
@@ -289,7 +289,7 @@ Formát typu podřízeného prostředku je: `{resource-provider-namespace}/{pare
 
 Formát názvu podřízených prostředků je: `{parent-resource-name}/{child-resource-name}`
 
-Ale není nutné definovat databáze v rámci serveru. Můžete definovat podřízený prostředek na nejvyšší úrovni. Tento přístup může použít, pokud se nadřazený prostředek není nasazený ve stejné šabloně, nebo pokud chcete použít `copy` vytváření více podřízených prostředků. S tímto přístupem poskytují úplnou prostředků a zahrnout název nadřazeného prostředku v názvu prostředku podřízeného.
+Ale není nutné definovat databáze v rámci serveru. Můžete definovat podřízený prostředek na nejvyšší úrovni. Tento přístup může použít, pokud se nadřazený prostředek není nasazený ve stejné šabloně, nebo pokud chcete použít `copy` vytvořit více než jeden podřízený prostředek. S tímto přístupem poskytují úplnou prostředků a zahrnout název nadřazeného prostředku v názvu prostředku podřízeného.
 
 ```json
 {
@@ -318,122 +318,11 @@ Příklad:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` správnost `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správná
 
-## <a name="recommendations"></a>Doporučení
-Při práci s prostředky, může být užitečné následující informace:
-
-* Chcete-li pomoci ostatních uživatelů pochopit účel prostředku, zadejte **komentáře** pro každý prostředek v šabloně:
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-01-01",
-         "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
-         ...
-     }
-   ]
-   ```
-
-* Pokud používáte *veřejný koncový bod* v šabloně (třeba Azure Blob storage veřejný koncový bod), *proveďte není pevně zakódovat* obor názvů. Použití **odkaz** funkce, která se dynamicky načíst obor názvů. Tento přístup můžete použít k nasazení šablony do prostředí jiný obor názvů veřejné beze změny ručně koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
-   
-   ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-   
-   Pokud účet úložiště je nasazená ve stejné šabloně, kterou vytváříte, není nutné určit obor názvů poskytovatele při odkazování na prostředek. Následující příklad znázorňuje zjednodušenou syntaxi:
-   
-   ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(variables('storageAccountName'), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-   
-   Pokud máte jiné hodnoty v šabloně, které jsou nakonfigurovány pro použití veřejných obor názvů, změnit tyto hodnoty tak, aby odrážely stejné **odkaz** funkce. Například můžete nastavit **storageUri** vlastnost diagnostického profilu virtuálního počítače:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
-   
-   Můžete také využít existující účet úložiště, který je v jiné skupině prostředků:
-
-   ```json
-   "osDisk": {
-       "name": "osdisk", 
-       "vhd": {
-           "uri":"[concat(reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts/', parameters('existingStorageAccountName')), '2016-01-01').primaryEndpoints.blob,  variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-
-* Přiřadíte veřejné IP adresy virtuálního počítače pouze v případě, že aplikace vyžaduje. Pro připojení k virtuálnímu počítači (VM) pro ladění nebo pro správu nebo účely správy, použijte pravidla příchozího překladu adres, bránu virtuální sítě nebo jumpbox.
-   
-     Další informace o připojení k virtuálním počítačům naleznete v tématu:
-   
-   * [Spuštění virtuálních počítačů pro N-vrstvou architekturu v Azure](../guidance/guidance-compute-n-tier-vm.md)
-   * [Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manageru](../virtual-machines/windows/winrm.md)
-   * [Povolení externího přístupu k vašemu virtuálnímu počítači pomocí webu Azure portal](../virtual-machines/windows/nsg-quickstart-portal.md)
-   * [Povolení externího přístupu k vašemu virtuálnímu počítači pomocí Powershellu](../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Povolení externího přístupu k virtuálním počítačům s Linuxem pomocí Azure CLI](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
-* **Popisek_názvu_domény** vlastnost pro veřejné IP adresy musí být jedinečný. **Popisek_názvu_domény** hodnota musí být dlouhý 3 až 63 znaků a řídí se pravidly určené tento regulární výraz: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Protože **uniqueString** funkce z nich generuje řetězec, který je 13 znaků dlouhá a **dnsPrefixString** parametr je omezen na 50 znaků:
-
-   ```json
-   "parameters": {
-       "dnsPrefixString": {
-           "type": "string",
-           "maxLength": 50,
-           "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
-           }
-       }
-   },
-   "variables": {
-       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-   }
-   ```
-
-* Když přidáte heslo k rozšíření vlastních skriptů, použijte **commandToExecute** vlastnost **protectedSettings** vlastnost:
-   
-   ```json
-   "properties": {
-       "publisher": "Microsoft.Azure.Extensions",
-       "type": "CustomScript",
-       "typeHandlerVersion": "2.0",
-       "autoUpgradeMinorVersion": true,
-       "settings": {
-           "fileUris": [
-               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-           ]
-       },
-       "protectedSettings": {
-           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-       }
-   }
-   ```
-   
-   > [!NOTE]
-   > Chcete-li zajistit, že tajných kódů se šifrují, pokud jsou předány jako parametry pro virtuální počítače a rozšíření, použijte **protectedSettings** vlastnost příslušné rozšíření.
-   > 
-   > 
 
 
 ## <a name="next-steps"></a>Další postup
 * Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
 * Podrobnosti o funkce, které můžete použít z v rámci šablony najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md).
-* Použití více než jedna šablona během nasazení, najdete v článku [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
+* Doporučení o vytváření šablon naleznete v tématu [osvědčené postupy pro šablony Azure Resource Manageru](template-best-practices.md).
 * Budete muset použít prostředky, které existují v rámci jiné skupiny prostředků. Tento postup je běžný při práci s účty úložiště nebo virtuální sítě, které jsou sdíleny napříč několika skupin prostředků. Další informace najdete v tématu [funkce resourceId](resource-group-template-functions-resource.md#resourceid).
 * Informace o omezení názvů prostředků najdete v tématu [doporučené zásady vytváření názvů pro prostředky Azure](../guidance/guidance-naming-conventions.md).

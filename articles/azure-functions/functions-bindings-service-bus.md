@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 0a4d5cf4731932ed72e0dc38c13a5f855a937864
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 21f8d8ad63e8ea7c134477a6171155c40a2b4dc8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317504"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792012"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -331,6 +331,9 @@ Aktivační události služby Service Bus nabízí několik [vlastnosti metadat]
 |`Label`|`string`|Popisek konkrétní aplikace.|
 |`CorrelationId`|`string`|ID korelace.|
 |`UserProperties`|`IDictionary<String,Object>`|Vlastnosti konkrétní zprávy aplikace.|
+
+> [!NOTE]
+> V současné době trigger funguje jenom pomocí front a odběrů, které nepoužívají relace. Sledujte prosím [tuto položku funkce](https://github.com/Azure/azure-functions-host/issues/563) žádné další aktualizace ohledně této funkce. 
 
 Zobrazit [příklady kódu](#trigger---example) , které používají tyto vlastnosti dříve v tomto článku.
 

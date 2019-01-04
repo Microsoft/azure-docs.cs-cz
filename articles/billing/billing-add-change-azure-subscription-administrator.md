@@ -15,19 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 53cecc845ed8bd15311e1bcec3ec9b36db8f5c2c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 94d574d16b1b9951ab91a09023f9193723f850a7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727864"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583353"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 
 Pokud chcete spravovat přístup k prostředkům Azure, potřebujete mít odpovídající roli správce. Tento článek popisuje postup přidání nebo změna rolí správce pro uživatele na úrovni předplatného.
-
-> [!div class="nextstepaction"]
-> [Pomozte vylepšit dokumentaci k fakturaci Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="what-administrator-role-do-i-use"></a>Jakou roli správce můžu použít?
 
@@ -127,6 +124,6 @@ Pouze správce účtu může změnit správce služeb pro předplatné. Ve vých
 * Další informace o všech rolí v Azure najdete v tématu [pochopit různé role v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 * Další informace o službě Azure Active Directory najdete v tématu [předplatné Azure propojeno se službou Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md) a [přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

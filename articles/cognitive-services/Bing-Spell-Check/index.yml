@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a13532f0dbd687dacffda938e6fbfe5506f60ff8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1f0414bf705fad7fffc6013f73dddd2e663b078c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091085"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787592"
 documentType: LandingData
 title: Dokumentace k rozhraní API pro kontrolu pravopisu Bingu
 metadata:
@@ -64,6 +64,14 @@ sections:
     items:
     - html: <a href="tutorials/spellcheck.md">Jednostránková webová aplikace</a>
     - html: <a href="tutorials/spellcheck-source.md">Jednostránková webová aplikace (zdrojový kód)</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: 'Projděte si ukázky pro rozhraní API Bingu pro kontrolu pravopisu:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="sdk.md">Ukázky kódu</a>
 - title: Referenční informace
   items:
   - type: list
@@ -71,6 +79,10 @@ sections:
     className: cardsD
     items:
     - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference">Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference">Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v5</a> (stará verze)</p>
-    - title: Ukázky kódů
-      html: <p><a href="sdk.md">Přehled ukázek SDK</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference">Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference">Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v5</a> (stará verze)</p>
+    - title: Sady SDK
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/spellcheck?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable">Java</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>

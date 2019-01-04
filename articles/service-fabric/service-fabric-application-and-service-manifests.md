@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2018
+ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 78315409c5d83a98321e16913b1090e8996ed8ce
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3e390763255878384e7a767158210d0515b09958
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230280"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653540"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Manifesty služby a aplikace Service Fabric
 Tento článek popisuje, jak aplikace Service Fabric a služby jsou definované a verzovaným pomocí souboru ApplicationManifest.xml a ServiceManifest.xml.  Podrobnější příklady najdete v článku [aplikací a službou manifest příklady](service-fabric-manifest-examples.md).  Schéma XML pro tyto soubory manifestu jsou uvedené v [dokumentace schématu ServiceFabricServiceModel.xsd](service-fabric-service-model-schema.md).
+
+> [!WARNING]
+> Soubor schématu manifestu XML vynucuje správné řazení podřízených elementů.  Jako částečné alternativní řešení otevřete v sadě Visual Studio při vytváření nebo úprava všech manifestů Service Fabric "C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd". To vám umožní zkontrolovat řazení podřízené prvky a poskytuje práci.
 
 ## <a name="describe-a-service-in-servicemanifestxml"></a>Popis služby ve službě ServiceManifest.xml
 Manifest služby definuje deklarativně, typ služby a její verzi. Určuje metadata služby, např. typ služby, Vlastnosti stavu, Vyrovnávání zatížení metriku, binární soubory služby a konfigurační soubory.  Jinými slovy, popisuje balíčky kódu, konfigurace a data, které tvoří službu balíček pro podporu jeden nebo více typů služeb. Manifest služby může obsahovat více kódu, konfigurace a data balíčky, které může být označené verzí nezávisle na sobě. Tady je manifest služby pro ASP.NET Core webová front-end služba nástroje [ukázkovou aplikaci Voting](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (a tady jsou některé [podrobnější příklady](service-fabric-manifest-examples.md)):

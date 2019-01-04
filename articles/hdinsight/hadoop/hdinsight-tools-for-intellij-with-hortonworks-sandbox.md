@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 56747179c69e6495e9a764f81e0827e29cb077e6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: aaebad004e5d426ca1c593941b15a2515c4476de
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017402"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635659"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Použití nástrojů HDInsight pro IntelliJ s Hortonworks Sandbox
 
@@ -27,7 +27,7 @@ Naučte se používat nástroje HDInsight pro IntelliJ k vývoji aplikací Apach
 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
-- Hortonworks Data Platform (HDP) 2.4 na Hortonworks Sandbox běží na místním počítači. Pokud chcete nastavit HDP, přečtěte si [začít pracovat v ekosystému Hadoop s Hadoop sandbox na virtuálním počítači](apache-hadoop-emulator-get-started.md). 
+- Hortonworks Data Platform (HDP) 2.4 na Hortonworks Sandbox běží na místním počítači. Pokud chcete nastavit HDP, přečtěte si [začít pracovat v ekosystému Apache Hadoop s Hadoop sandbox na virtuálním počítači](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
     > Nástroje HDInsight pro IntelliJ prošel testováním pouze s HDP 2.4. Chcete-li získat HDP 2.4, rozbalte **Hortonworks Sandbox archivu** na [Hortonworks Sandbox soubory ke stažení webu](https://hortonworks.com/downloads/#sandbox).
 
@@ -44,7 +44,7 @@ Chcete-li nainstalovat moduly plug-in:
   5. K dokončení instalace, vybrat **restartovat IntelliJ IDEA**.
   6. Opakujte kroky 4 a 5 a nainstalujte **sady Azure Toolkit pro IntelliJ**. Další informace najdete v tématu [instalace sady Azure Toolkit pro IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
 
-## <a name="create-a-spark-scala-application"></a>Vytvoření aplikací Spark Scala
+## <a name="create-an-apache-spark-scala-application"></a>Vytváření aplikací Apache Spark Scala
 
 V této části vytvoříte ukázkový projekt Scala pomocí IntelliJ IDEA. V další části propojíte IntelliJ IDEA Hortonworks Sandbox (emulátor) před odesláním projektu.
 
@@ -53,8 +53,8 @@ V této části vytvoříte ukázkový projekt Scala pomocí IntelliJ IDEA. V da
    1. Vyberte **HDInsight** > **Spark on HDInsight (Scala)** (Spark v HDInsight (Scala)).
    2. V **nástroj pro sestavení** seznamu vyberte jednu z těchto možností podle vašemu scénáři:
 
-    * **Maven**: podpora Scala pro vytvoření projektu průvodce.
-    * **SBT**: pro správu závislostí a vývoj aplikací pro Scala projektu.
+    * **Maven**: Pro podporu průvodce Scala vytváření projektu.
+    * **SBT**: Ke správě závislostí a vývoj aplikací pro Scala projektu.
 
    ![Dialogové okno New Project (Nový projekt)](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
@@ -149,14 +149,14 @@ K odeslání projektu na emulátor:
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [použít k vytvoření aplikací Spark pro cluster HDInsight Spark Linux HDInsight Tools v sadě Azure Toolkit pro IntelliJ](../spark/apache-spark-intellij-tool-plugin.md).
+- Zjistěte, jak [vytváření aplikací Apache Spark pro cluster HDInsight Spark Linux pomocí nástrojů HDInsight v sadě Azure Toolkit pro IntelliJ](../spark/apache-spark-intellij-tool-plugin.md).
 
-- Video o nástrojích HDInsight pro IntelliJ najdete v tématu [zavést nástroje HDInsight pro IntelliJ pro vývoj pro Spark](https://www.youtube.com/watch?v=YTZzYVgut6c).
+- Video o nástrojích HDInsight pro IntelliJ najdete v tématu [zavést nástroje HDInsight pro IntelliJ pro Apache Spark vývoj](https://www.youtube.com/watch?v=YTZzYVgut6c).
 
-- Zjistěte, jak [vzdáleně ladit aplikace Spark v clusteru služby HDInsight pomocí sady Azure Toolkit pro IntelliJ přes SSH](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md).
+- Zjistěte, jak [vzdáleně ladit aplikace Apache Spark v clusteru služby HDInsight pomocí sady Azure Toolkit pro IntelliJ přes SSH](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md).
 
-- Zjistěte, jak [ladění aplikací Spark na clusteru HDInsight Spark Linux vzdáleně pomocí nástrojů HDInsight v sadě Azure Toolkit pro IntelliJ](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
+- Zjistěte, jak [ladění aplikací Apache Spark v clusteru HDInsight Spark Linux vzdáleně pomocí nástrojů HDInsight v sadě Azure Toolkit pro IntelliJ](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
 
-- Zjistěte, jak [HDInsight pomocí nástrojů v sadě Azure Toolkit pro Eclipse k vytvoření aplikací Spark](../spark/apache-spark-eclipse-tool-plugin.md).
+- Zjistěte, jak [HDInsight pomocí nástrojů v sadě Azure Toolkit pro Eclipse k vytvoření aplikací Apache Spark](../spark/apache-spark-eclipse-tool-plugin.md).
 
 - Video o nástrojích HDInsight pro Eclipse najdete v tématu [pomocí nástrojů HDInsight pro Eclipse k vytvoření aplikací Spark](https://mix.office.com/watch/1rau2mopb6fha).

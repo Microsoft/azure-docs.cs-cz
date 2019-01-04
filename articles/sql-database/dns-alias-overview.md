@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek
+ms.reviewer: genemi,ayolubek, jrasnick
 manager: craigg
 ms.date: 02/05/2018
-ms.openlocfilehash: 290414ca07014d5f3bfbe160b0f571397fb13948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 96627d96acee76516c9dc3db1b58d6e4b7b6ff15
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467121"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601032"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro službu Azure SQL Database
 
@@ -55,12 +55,12 @@ Zotavení po havárii může posunout vaše databáze SQL server v jiné geograf
 
 Následující vlastnosti se vztahují na každý alias DNS pro server SQL Database:
 
-- *Jedinečný název:* každý název aliasu vytvoříte je jedinečná napříč všemi servery Azure SQL Database, stejně jako server se názvy.
-- *Je vyžadován server:* A DNS alias nelze vytvořit, pokud odkazuje na právě jeden server a server už musí existovat. Aktualizované alias vždy musí odkazovat přesně na jednom stávajícím serveru.
+- *Jedinečný název:* Každý název aliasu, který vytvoříte je jedinečná napříč všemi servery Azure SQL Database, stejně, jako jsou názvy serverů.
+- *Je vyžadován server:* DNS alias nelze vytvořit, pokud odkazuje na právě jeden server a server už musí existovat. Aktualizované alias vždy musí odkazovat přesně na jednom stávajícím serveru.
   - Při umístění serveru SQL Database systému Azure i zahodí všechny aliasy DNS, které odkazují na serveru.
-- *Bez vazby na libovolné oblasti:* aliasy DNS nejsou vázány na oblast. Všechny aliasy DNS je možné aktualizovat k odkazování na serveru Azure SQL Database, které se nacházejí v libovolné geografické oblasti.
+- *Bez vazby na libovolné oblasti:* Aliasy DNS nejsou vázány na oblast. Všechny aliasy DNS je možné aktualizovat k odkazování na serveru Azure SQL Database, které se nacházejí v libovolné geografické oblasti.
   - Ale při aktualizaci aliasu pro odkazování na jiný server, oba servery, musí existovat ve stejné *předplatné*.
-- *Oprávnění:* ke správě DNS alias, musí mít uživatel *Přispěvatel serveru* oprávnění, nebo vyšší. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).
+- *Oprávnění:* Ke správě DNS alias, musí mít uživatel *Přispěvatel serveru* oprávnění, nebo vyšší. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>Spravovat vaše aliasy DNS
 
@@ -95,10 +95,10 @@ Příklad kódu používá ke správě aliasy DNS rutiny prostředí PowerShell 
 
 Rutiny používané v příkladu kódu jsou následující:
 
-- [Nový-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): vytvoří nový alias DNS v systému služby Azure SQL Database. Alias odkazuje na serveru Azure SQL Database 1.
-- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): získání a seznam všechny aliasy DNS, které jsou přiřazeny k serveru SQL DB 1.
-- [Rutiny Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): upraví název serveru alias nakonfigurovaný tak, aby si ze serveru 1 do databáze SQL serveru 2.
-- [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): odebrání DNS alias serveru SQL DB 2, pomocí názvu aliasu.
+- [Nový AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Vytvoří nový alias DNS v systému služby Azure SQL Database. Alias odkazuje na serveru Azure SQL Database 1.
+- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Získání a seznam všechny aliasy DNS, které jsou přiřazeny k serveru SQL DB 1.
+- [Rutiny Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Upraví název serveru alias nakonfigurovaný tak, aby si ze serveru 1 do databáze SQL serveru 2.
+- [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Odebrání DNS alias serveru SQL DB 2, pomocí názvu aliasu.
 
 Předchozí rutiny byly přidány do **AzureRM.Sql** modul od verze 5.1.1 modulu.
 
@@ -106,10 +106,10 @@ Předchozí rutiny byly přidány do **AzureRM.Sql** modul od verze 5.1.1 modulu
 
 V současné době DNS alias má následující omezení:
 
-- *Prodlevě o délce až 2 minuty:* trvá až 2 minut aliasu DNS pro aktualizace nebo odstranění.
+- *Zpoždění až 2 minut:* Trvá až 2 minut aliasu DNS pro aktualizace nebo odstranění.
   - Bez ohledu na krátké prodlevě alias okamžitě zastaví odkazující připojení klientů pro starší verze serveru.
-- *Vyhledávání DNS:* prozatím pouze autoritativní způsob, jak zkontrolovat, co server dané DNS alias odkazuje na je pomocí provádí [vyhledávání DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
-- *[Auditování tabulek není podporován](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* nelze použít DNS alias na serveru Azure SQL Database, který má *auditování tabulek* na databázi povolená.
+- *Vyhledávání DNS:* Prozatím pouze autoritativní způsob, jak zkontrolovat, co server dané DNS alias odkazuje na je pomocí provádí [vyhledávání DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
+- *[Auditování tabulek není podporován](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* DNS alias nelze použít na serveru Azure SQL Database, který má *auditování tabulek* na databázi povolená.
   - Auditování tabulek je zastaralá.
   - Doporučujeme vám, že přejdete na [auditování objektů Blob](sql-database-auditing.md).
 

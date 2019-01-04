@@ -1,21 +1,18 @@
 ---
 title: Zálohování a obnovení serveru ve službě Azure Database pro MariaDB
 description: Zjistěte, jak zálohovat a obnovovat server ve službě Azure Database pro MariaDB s použitím rozhraní příkazového řádku Azure.
-services: mariadb
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: 1f17ab167c6487d59ce31106f1bbcffd86a29fd8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 41e75a946f51f67b2b77a36dc0525cd4ff5fcd64
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955186"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543117"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database pro MariaDB pomocí Azure CLI
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 8285632d8dea76763c65dd06e8be2d7494a47188
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 02e6d6407a515314d99ea747dac3646d665c47ae
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838986"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976575"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure stacku pro Azure
 
@@ -31,11 +31,11 @@ V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * **Krok 1: Příprava virtuálních počítačů Azure stack pro replikaci**. Zkontrolujte, jestli virtuální počítače v souladu s požadavky služby Site Recovery a příprava na instalaci služby Site Recovery Mobility. Tato služba nainstaluje na každý virtuální počítač, který chcete replikovat.
-> * **Krok 2: Nastavení trezoru služby Recovery Services**. Nastavíte trezor Site Recovery a určit, co chcete replikovat. Součásti Site Recovery a akce jsou nakonfigurované a spravovaných v trezoru.
-> * **Krok 3: Nastavte zdrojové prostředí replikace**. Nastavení konfiguračního serveru Site Recovery. Konfigurační server je jeden virtuální počítač Azure Stack, na kterém běží všechny součásti potřebné službou Site Recovery. Jakmile nastavíte konfigurační server, zaregistrujte v trezoru.
-> * **Krok 4: Nastavení cílové prostředí replikace**. Vyberte váš účet Azure a účet úložiště Azure a síť, kterou chcete použít. Během replikace virtuálních počítačů data zkopírována do úložiště Azure. Po převzetí služeb při selhání jsou připojené virtuální počítače Azure pro zadanou síť.
+> * **Krok 2: Nastavíte trezor služby Recovery Services**. Nastavíte trezor Site Recovery a určit, co chcete replikovat. Součásti Site Recovery a akce jsou nakonfigurované a spravovaných v trezoru.
+> * **Krok 3: Nastavit zdrojové prostředí replikace**. Nastavení konfiguračního serveru Site Recovery. Konfigurační server je jeden virtuální počítač Azure Stack, na kterém běží všechny součásti potřebné službou Site Recovery. Jakmile nastavíte konfigurační server, zaregistrujte v trezoru.
+> * **Krok 4: Nastavit cílové prostředí replikace**. Vyberte svého účtu Azure a účet úložiště Azure a síť, kterou chcete použít. Během replikace virtuálních počítačů data zkopírována do úložiště Azure. Po převzetí služeb při selhání jsou připojené virtuální počítače Azure pro zadanou síť.
 > * **Krok 5: Povolení replikace**. Konfigurace nastavení replikace a povolení replikace pro virtuální počítače. Po povolení replikace, se na virtuálním počítači nainstaluje služba Mobility. Site Recovery provede počáteční replikaci virtuálního počítače a poté zahájí probíhající replikaci.
-> * **Krok 6: Spuštění postupu zotavení po havárii**: po replikace je v provozu, ověříte, že převzetí služeb při selhání bude fungovat podle očekávání, spuštěním přechod. Iniciování na postup zotavení spustit testovací převzetí služeb ve službě Site Recovery. Testovací převzetí služeb nebude mít vliv na vaše produkční prostředí.
+> * **Krok 6: Spuštění postupu zotavení po havárii**: Po replikace je v provozu, ověřte, že tento převzetí služeb při selhání bude fungovat podle očekávání, spuštěním přechod. Iniciování na postup zotavení spustit testovací převzetí služeb ve službě Site Recovery. Testovací převzetí služeb nebude mít vliv na vaše produkční prostředí.
 
 Pomocí tohoto postupu dokončení můžete spustit úplné převzetí služeb při selhání do Azure jako a je potřeba.
 
@@ -45,7 +45,7 @@ Pomocí tohoto postupu dokončení můžete spustit úplné převzetí služeb p
 
 **Umístění** | **Komponenta** |**Podrobnosti**
 --- | --- | ---
-**Konfigurační server** | Běží na jednom virtuálním počítači Azure Stack. | V každém předplatném nastavíte konfigurační server virtuálního počítače. Tento virtuální počítač spustí následující součásti Site Recovery:<br/><br/> -Konfigurace serveru: koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat. -Procesový server: funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odesílá je do úložiště Azure.<br/><br/> Pokud chcete replikovat virtuální počítače překročí omezení uvedená níže, můžete nastavit samostatného procesový server. [Další informace](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
+**Konfigurační server** | Běží na jednom virtuálním počítači Azure Stack. | V každém předplatném nastavíte konfigurační server virtuálního počítače. Tento virtuální počítač spustí následující součásti Site Recovery:<br/><br/> -Konfigurace serveru: Koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat. -Procesový server: Funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odesílá je do úložiště Azure.<br/><br/> Pokud chcete replikovat virtuální počítače překročí omezení uvedená níže, můžete nastavit samostatného procesový server. [Další informace](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
 **Služba mobility** | Nainstalovat na každý virtuální počítač, který chcete replikovat. | V krocích v tomto článku jsme připravit účet tak, aby služba Mobility se instaluje automaticky na virtuálním počítači po povolení replikace. Pokud nechcete instalovat službu automaticky, existuje mnoho dalších metod, které můžete použít. [Další informace](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
 **Azure** | V Azure budete potřebovat trezor služby Recovery Services, účet úložiště a virtuální síť. |  Replikovaná data jsou uložena v účtu úložiště. Virtuální počítače Azure jsou přidány do sítě Azure, když dojde k převzetí služeb při selhání. 
 
@@ -104,7 +104,7 @@ Každý virtuální počítač, který chcete replikovat, musí mít nainstalova
     - Pokud nepoužíváte účet domény, je nutné zakázat vzdálené řízení přístupu uživatele na virtuálním počítači:
         - V registru, vytvořte hodnotu DWORD **LocalAccountTokenFilterPolicy** pod položku HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System.
         - Nastavte hodnotu na 1.
-        - Chcete-li to provést na příkazovém řádku zadejte následující příkaz: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Přidáte REG /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**.
+        - K tomu na příkazovém řádku zadejte následující příkaz: **REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**.
 - V bráně Windows Firewall na virtuálním počítači, který chcete replikovat Povolit sdílení souborů a tiskáren a WMI.
     - Chcete-li to provést, spusťte **wf.msc** pro otevření konzoly brány Windows Firewall. Klikněte pravým tlačítkem myši **příchozí pravidla** > **nové pravidlo**. Vyberte **předdefinované**a zvolte **souborů a tiskáren sdílení** ze seznamu. Dokončete průvodce, výběrem ji povolte připojení > **Dokončit**.
     - Pro počítače domény můžete k tomu objekt zásad skupiny.
@@ -234,13 +234,13 @@ Ujistěte se, že jste dokončili všechny úkoly v [krok 1: Příprava počíta
 3. V **typ počítače**vyberte **fyzické počítače**.
 4. Vyberte procesní server (konfigurační server). Pak klikněte na **OK**.
 5. V **cílové**, vyberte předplatné a skupinu prostředků, ve kterém chcete vytvořit virtuální počítače po převzetí služeb při selhání. Vyberte model nasazení, který chcete použít pro virtuální počítače s převzetím služeb při selhání.
-6. Vyberte účet úložiště Azure, ve kterém chcete ukládají replikovaná data.
+6. Vyberte účet úložiště Azure, ve kterém chcete k ukládání replikovaných dat.
 7. Vyberte síť Azure a podsíť, ke kterým se připojí virtuální počítače Azure, když se vytvoří po převzetí služeb při selhání.
 8. Výběrem možnosti **Nakonfigurovat pro vybrané počítače** použijte nastavení sítě pro všechny počítače, které jste vybrali pro ochranu. Vyberte **nakonfigurovat později** Pokud budete chtít vyberte síť Azure, samostatně pro každý počítač.
-9. V **fyzické počítače**, klikněte na tlačítko **+ fyzický počítač**. Zadejte název IP adresu každého počítače a operační systém, který chcete replikovat.
+9. V **fyzické počítače**, klikněte na tlačítko **+ fyzický počítač**. Zadejte název, IP adresy a typ operačního systému každého počítače, které chcete replikovat.
 
     - Použijte interní IP adresu počítače.
-    - Pokud určíte, že veřejné IP adresy replikace nemusí fungovat podle očekávání.
+    - Pokud zadáte veřejnou IP adresu, replikace nemusí fungovat podle očekávání.
 
 10. V **vlastnosti** > **konfigurovat vlastnosti**, vyberte účet, který použije procesový server při automatické instalaci služby Mobility na počítači.
 11. V **nastavení replikace** > **konfigurace nastavení replikace**, zkontrolujte, že je vybraná správná zásada replikace.
@@ -278,9 +278,9 @@ Když spustíte testovací převzetí služeb při selhání, stane se následuj
 
 1. Spustí se kontrola předpokladů, která zjistí, zda jsou splněné všechny podmínky pro převzetí služeb při selhání.
 2. Převzetí služeb při selhání zpracovává data pomocí Zadaný bod obnovení:
-    - **Nejnovější zpracovaný**: počítač selže přes k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Časové razítko je vidět. Tato možnost neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-    - **Nejnovější konzistentní vzhledem k**. Tento počítač převezme služby při selhání do nejnovějšího bodu obnovení s konzistentní aplikací.
-    - **Vlastní**. Vyberte bod obnovení pro převzetí služeb při selhání.
+    - **Nejnovější zpracovaný**: Tento počítač převezme služby při selhání do nejnovějšího bodu obnovení zpracovanému službou Site Recovery. Časové razítko je vidět. Tato možnost neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
+    - **Nejnovější konzistentní vzhledem k**: Tento počítač převezme služby při selhání do nejnovějšího bodu obnovení s konzistentní aplikací.
+    - **Vlastní**: Vyberte bod obnovení pro převzetí služeb při selhání.
 
 3. Virtuální počítač Azure je vytvořený pomocí zpracovaná data.
 4. Virtuální počítače Azure vytvořené během na postup zotavení můžete automaticky vyčistit testovací převzetí služeb při selhání.
@@ -314,12 +314,12 @@ Spusťte převzetí služeb při selhání následujícím způsobem:
 7. Po ověření tento virtuální počítač, klikněte na tlačítko **potvrzení** dokončete převzetí služeb při selhání. Tím se odstraní všechny dostupné body obnovení.
 
 > [!WARNING]
-> Nepřerušujte převzetí služeb při selhání v průběhu: před spuštěním převzetí služeb při selhání, se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.
+> Nepřerušujte převzetí služeb při selhání v průběhu: Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.
 
 
 ### <a name="fail-back-to-azure-stack"></a>Selhání zpátky do služby Azure Stack
 
-Když je primární lokalita je znovu spuštěn a pracuje, můžete službu navrátit z Azure do Azure Stack. K tomuto účelu, budete muset stáhnout virtuální pevný disk virtuálního počítače Azure a nahrajte ho do služby Azure Stack.
+Až bude primární lokality opět zprovoznit, můžete službu navrátit z Azure do Azure Stack. K tomuto účelu, budete muset stáhnout virtuální pevný disk virtuálního počítače Azure a nahrajte ho do služby Azure Stack.
 
 1. Vypněte virtuální počítač Azure tak, aby si můžete stáhnout virtuální pevný disk. 
 2. Pokud chcete začít, stahování virtuální pevný disk, nainstalujte [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).

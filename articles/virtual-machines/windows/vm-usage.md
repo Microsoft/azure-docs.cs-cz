@@ -78,7 +78,7 @@ Název oblasti vložené do pole umístění prostředku v podrobnosti o využit
 |    CanadaCentral         |    Kanada – střed                            |
 |    CanadaEast            |    Kanada – východ                               |
 |    CentralIndia          |    Indie – střed                            |
-|    centralus             |    Střed USA                            |
+|    centralus             |    Střední USA                            |
 |    chinaeast             |    Čína – východ                            |
 |    chinanorth            |    Čína – sever                           |
 |    eastasia              |    Východní Asie                             |
@@ -90,9 +90,9 @@ Název oblasti vložené do pole umístění prostředku v podrobnosti o využit
 |    japanwest             |    Japonsko – západ                               |
 |    KoreaCentral          |    Korea – střed                            |
 |    KoreaSouth            |    Korea – jih                              |
-|    northcentralus        |    Střed USA – sever                      |
+|    northcentralus        |    Středoseverní USA                      |
 |    northeurope           |    Severní Evropa                          |
-|    southcentralus        |    Střed USA – jih                      |
+|    southcentralus        |    Středojižní USA                      |
 |    southeastasia         |    Jihovýchodní Asie                        |
 |    SouthIndia            |    Indie – jih                              |
 |    UKNorth               |    USA – sever                              |

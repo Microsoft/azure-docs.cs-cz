@@ -1,20 +1,17 @@
 ---
-title: Přehled koncových bodů služby Azure Database for virtuální sítě serveru PostgreSQL | Dokumentace Microsoftu
-description: Popisuje, jak fungují koncové body služby virtuální sítě pro váš server Azure Database for PostgreSQL.
-services: postgresql
+title: Přehled koncových bodů služby Azure Database for virtuální sítě serveru PostgreSQL
+description: Zjistěte, jak fungují koncové body služby virtuální sítě pro váš server Azure Database for PostgreSQL.
 author: mbolz
 ms.author: mbolz
-manager: jhubbard
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 5a0181a1430e9de690fe4b4a48aa298db4c024e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2f26c4ae352ea5385886abcaecba5f50d30c530a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433654"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537218"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database for PostgreSQL
 

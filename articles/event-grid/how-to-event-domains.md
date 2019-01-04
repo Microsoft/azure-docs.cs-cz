@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.openlocfilehash: ad23599d1df5d07e912f634435f8b44b441d87e6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 12/17/2018
+ms.openlocfilehash: 08faef2eaf5c9cd09172d455c464531e293d5f3e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298523"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554584"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Správa témat a publikovat události pomocí událostí domény
 
@@ -139,7 +139,7 @@ Oprávnění nastavená pro téma se ukládají ve službě Azure Active Directo
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Publikování událostí do domény služby Event Grid
 
-Publikování událostí do domény je stejný jako [publikování do vlastního tématu](./post-to-custom-topic.md). Jediným rozdílem je, že je třeba zadat téma, které si přejete přejdete na každou událost. Následující pole událostí, které by mělo za následek událost s `"id": "1111"` téma `foo` při události s `"id": "2222"` by odeslané do tématu `bar`:
+Publikování událostí do domény je stejný jako [publikování do vlastního tématu](./post-to-custom-topic.md). Ale namísto publikování do vlastního tématu, publikujete všechny události do koncového bodu domény. V události data JSON zadejte téma, které si přejete události, které chcete použít. Následující pole událostí, které by mělo za následek událost s `"id": "1111"` téma `demotopic1` při události s `"id": "2222"` by odeslané do tématu `demotopic2`:
 
 ```json
 [{
@@ -168,7 +168,15 @@ Publikování událostí do domény je stejný jako [publikování do vlastního
 }]
 ```
 
-Získat klíče pro doménu pomocí Azure CLI, použijte:
+K získání koncového bodu domény pomocí Azure CLI, použijte
+
+```azurecli-interactive
+az eventgrid domain show \
+  -g <my-resource-group> \
+  -n <my-domain>
+```
+
+Pokud chcete získat klíče pro doménu, použijte:
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -176,7 +184,15 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-Pokud používáte PowerShell, použijte:
+K získání koncového bodu domény pomocí Powershellu, použijte
+
+```azurepowershell-interactive
+Get-AzureRmEventGridDomain `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain>
+```
+
+Pokud chcete získat klíče pro doménu, použijte:
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomainKey `

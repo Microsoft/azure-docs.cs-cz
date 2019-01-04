@@ -9,24 +9,24 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b3498deb85b84c9c47544be1d8c3709c9fc78ae1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100240"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974350"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
-*Toto téma platí pro následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [objektů Blob v Azure](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), a [SFTP](connector-sftp.md).*
+*Toto téma platí pro následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [objektů Blob v Azure](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), a [SFTP](connector-sftp.md).*
 
 Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. Pokud chcete **analyzovat a generovat soubory s konkrétním formátu**, Azure Data Factory podporuje následující typy formátů souboru:
 
 * [Formát textu](#text-format)
 * [Formát JSON](#json-format)
-* [Formát Avro](#avro-format)
-* [Formát ORC](#orc-format)
 * [Formát parquet](#parquet-format)
+* [Formát ORC](#orc-format)
+* [Formát Avro](#avro-format)
 
 > [!TIP]
 > Zjistěte, jak aktivitu kopírování, která mapuje svá zdrojová data pro zpracování z [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md), včetně jak metadata je určen na základě svého nastavení formátu souboru a tipy na tom, kdy k určení [datovou sadu `structure` ](concepts-datasets-linked-services.md#dataset-structure) oddílu.
@@ -39,7 +39,7 @@ Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru,
 | --- | --- | --- | --- |
 | columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete zvážit použití výjimečných málo častého netisknutelného znaku, který nemusí existovat ve vašich datech. Zadejte například "\u0001", který představuje Start začátek hlavičky (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)**. <br/><br/>Použijte znakovou sadu Unicode, najdete v tématu [znaky znakové sady Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) získat pro ni odpovídající kód. |Ne |
 | rowDelimiter |Znak, který slouží k oddělení řádků v souboru. |Je povolený jenom jeden znak. **Výchozí** hodnotou pro čtení může být libovolná z těchto hodnot: **[\r\n, \r, \n]** a pro zápis hodnota **\r\n**. |Ne |
-| escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: Hello, world), můžete jako řídicí znak definovat $ a použít ve zdroji řetězec Hello$, world. |Ne |
+| escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud používáte čárku (', ') jako oddělovač sloupců ale chcete znak čárky v textu (Příklad: "Hello, world"), můžete definovat jako řídicí znak "$" a použijte řetězec "Hello$, world" ve zdroji. |Ne |
 | quoteChar |Znak, který slouží k uvození textového řetězce. Oddělovače sloupců a řádků uvnitř znaků uvozovek budou považované za součást hodnoty příslušného řetězce. Tato vlastnost se vztahuje na vstupní i výstupní datové sady.<br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: <Hello, world>), můžete jako znak uvozovek definovat " (dvojité uvozovky) a použít ve zdroji řetězec "Hello$, world". |Ne |
 | nullValue |Jeden nebo několik znaků, které se používají jako reprezentace hodnoty Null. |Jeden nebo několik znaků. **Výchozí** hodnoty jsou **\N a NULL** pro čtení a **\N** pro zápis. |Ne |
 | encodingName |Zadejte název kódování. |Platný název kódování. Další informace najdete v tématu [Vlastnost Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |Ne |
@@ -78,7 +78,7 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>Scénáře použití firstRowAsHeader a skipLineCount
 
-* Kopírujete z nesouborového zdroje do textového souboru a chcete přidat řádek záhlaví obsahující metadata schématu (třeba schéma SQL). V tomto scénáři zadejte ve vstupní sadě `firstRowAsHeader` jako true.
+* Kopírujete z nesouborového zdroje do textového souboru a chcete přidat řádek záhlaví obsahující metadata schématu (například: Schéma SQL). V tomto scénáři zadejte ve vstupní sadě `firstRowAsHeader` jako true.
 * Kopírujete text z textového souboru obsahujícího řádek záhlaví do nesouborové jímky a chcete tento řádek vynechat. Zadejte ve vstupní sadě `firstRowAsHeader` jako true.
 * Kopírujete text z textového souboru a chcete vynechat několik prvních řádků, které neobsahují data ani informace záhlaví. Zadáním `skipLineCount` určete, kolik řádků se má přeskočit. Pokud zbytek souboru obsahuje řádek záhlaví, můžete také zadat `firstRowAsHeader`. Pokud je zadaný parametr `skipLineCount` i `firstRowAsHeader`, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví.
 
@@ -91,9 +91,9 @@ Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nasta
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou **setOfObjects** a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |Ne |
-| jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost se podporuje jenom pro kopírování dat ze souborů JSON. | Ne |
-| jsonPathDefinition | Zadejte výraz cesty JSON pro každé mapování sloupců s vlastním názvem sloupce (s počátečním malým písmenem). Tato vlastnost se podporuje jenom pro kopírování dat ze souborů JSON. Můžete extrahovat data z objektu nebo pole. <br/><br/> U polí v kořenovém objektu začtěte s kořenem $, u polí uvnitř pole vybraného pomocí vlastnosti `jsonNodeReference` začněte elementem pole. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example). | Ne |
-| encodingName |Zadejte název kódování. Seznam platných názvů kódování najdete v tématu věnovaném vlastnosti [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |Ne |
+| jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost je podporována pouze v případě, že kopírování dat **z** soubory JSON. | Ne |
+| jsonPathDefinition | Zadejte výraz cesty JSON pro každé mapování sloupců s vlastním názvem sloupce (s počátečním malým písmenem). Tato vlastnost je podporována pouze v případě, že kopírování dat **z** soubory JSON a můžete extrahovat data z objektu nebo pole. <br/><br/> U polí v kořenovém objektu začtěte s kořenem $, u polí uvnitř pole vybraného pomocí vlastnosti `jsonNodeReference` začněte elementem pole. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example). | Ne |
+| encodingName |Zadejte název kódování. Seznam platných názvů kódování najdete v tématu: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) vlastnost. Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je: **UTF-8**. |Ne |
 | nestingSeparator |Znak, který se používá k oddělení úrovní vnoření. Výchozí hodnota je tečka (.). |Ne |
 
 ### <a name="json-file-patterns"></a>Vzory souborů JSON
@@ -190,8 +190,6 @@ Aktivita kopírování může analyzovat tyto vzory souborů JSON:
 ### <a name="jsonformat-example"></a>Příklad typu JsonFormat
 
 **Případ 1: Kopírování dat ze souborů JSON**
-
-Při kopírování dat ze souborů JSON najdete v následujících dvou vzorcích. Obecné aspekty, které mějte na paměti:
 
 **Ukázka 1: Extrakce dat z objektu a pole**
 
@@ -351,7 +349,7 @@ Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsob
 * Pokud je několik duplicitních názvů na stejné úrovni, aktivita kopírování vybere poslední z nich.
 * V názvech vlastností se rozlišují velká a malá písmena. Vlastnosti se stejným názvem, ale různým použitím velkých a malých písmen, se budou považovat za různé.
 
-**Příklad 2: Zápis dat do souboru JSON**
+**Případ 2: Zápis dat do souboru JSON**
 
 Pokud máte ve službě SQL Database v následující tabulce:
 
@@ -405,67 +403,6 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 }
 ```
 
-## <a name="avro-format"></a>Formát AVRO
-
-Pokud chcete analyzovat soubory Avro nebo zapisovat data ve formátu Avro, nastavte vlastnost `format` `type` na hodnotu **AvroFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
-
-```json
-"format":
-{
-    "type": "AvroFormat",
-}
-```
-
-Pokud chcete formát Avro použít v tabulce Hive, najdete potřebné informace v [kurzu k Apache Hive](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
-
-Je třeba počítat s následujícím:
-
-* [Komplexní datové typy](http://avro.apache.org/docs/current/spec.html#schema_complex) se nepodporují (záznamy, výčty, pole, mapy, sjednocení a oprava).
-
-## <a name="orc-format"></a>Formát ORC
-
-Pokud chcete analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavte vlastnost `format` `type` na hodnotu **OrcFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
-
-```json
-"format":
-{
-    "type": "OrcFormat"
-}
-```
-
-> [!IMPORTANT]
-> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
-Je třeba počítat s následujícím:
-
-* Komplexní datové typy se nepodporují (STRUCT, MAP, LIST, UNION).
-* Soubory ORC mají tři [možnosti komprese](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB a SNAPPY. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
-
-### <a name="data-type-mapping-for-orc-files"></a>Datový typ mapování pro soubory ORC
-
-| Data factory dočasné datový typ | Typy ORC |
-|:--- |:--- |
-| Logická hodnota | Logická hodnota |
-| SByte – | Bajt |
-| Bajt | Krátké |
-| Int16 | Krátké |
-| UInt16 | Int |
-| Datový typ Int32 | Int |
-| UInt32 | Dlouhé |
-| Int64 | Dlouhé |
-| UInt64 | Řetězec |
-| Jednoduchá | Float |
-| Double | Double |
-| Decimal | Decimal |
-| Řetězec | Řetězec |
-| DateTime | Timestamp |
-| DateTimeOffset | Timestamp |
-| Časový interval | Timestamp |
-| ByteArray | Binární hodnota |
-| Guid | Řetězec |
-| Char | Char(1) |
-
 ## <a name="parquet-format"></a>Formát parquet
 
 Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet, nastavte vlastnost `format` `type` na hodnotu **Format**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
@@ -484,7 +421,8 @@ Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet,
 Je třeba počítat s následujícím:
 
 * Komplexní datové typy se nepodporují (MAP, LIST).
-* Soubory Parquet mají tyto možnosti komprese: NONE, SNAPPY, GZIP a LZO. Služba data Factory podporuje čtení dat ze souboru Parquet v některém z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
+* Prázdné znaky v názvu sloupce se nepodporuje.
+* Soubory parquet mají následující možnosti komprese: NONE, SNAPPY, GZIP a LZO. Data Factory podporuje čtení dat ze souboru Parquet v některé z těchto komprimovaných formátech s výjimkou LZO – k načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapování pro soubory Parquet typu dat.
 
@@ -510,6 +448,68 @@ Je třeba počítat s následujícím:
 | Guid | Binární hodnota | Utf8 | Utf8 |
 | Char | Binární hodnota | Utf8 | Utf8 |
 | CharArray | Nepodporuje se | neuvedeno | neuvedeno |
+
+## <a name="orc-format"></a>Formát ORC
+
+Pokud chcete analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavte vlastnost `format` `type` na hodnotu **OrcFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
+
+```json
+"format":
+{
+    "type": "OrcFormat"
+}
+```
+
+> [!IMPORTANT]
+> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
+>
+
+Je třeba počítat s následujícím:
+
+* Komplexní datové typy se nepodporují (STRUCT, MAP, seznam, SJEDNOCENÍ).
+* Prázdné znaky v názvu sloupce se nepodporuje.
+* Orc mají tři [možnosti komprese](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB A SNAPPY. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
+
+### <a name="data-type-mapping-for-orc-files"></a>Datový typ mapování pro soubory ORC
+
+| Data factory dočasné datový typ | Typy ORC |
+|:--- |:--- |
+| Logická hodnota | Logická hodnota |
+| SByte – | Bajt |
+| Bajt | Krátké |
+| Int16 | Krátké |
+| UInt16 | Int |
+| Datový typ Int32 | Int |
+| UInt32 | Dlouhé |
+| Int64 | Dlouhé |
+| UInt64 | Řetězec |
+| Jednoduchá | Float |
+| Double | Double |
+| Decimal | Decimal |
+| Řetězec | Řetězec |
+| DateTime | Timestamp |
+| DateTimeOffset | Timestamp |
+| Časový interval | Timestamp |
+| ByteArray | Binární hodnota |
+| Guid | Řetězec |
+| Char | Char(1) |
+
+## <a name="avro-format"></a>Formát AVRO
+
+Pokud chcete analyzovat soubory Avro nebo zapisovat data ve formátu Avro, nastavte vlastnost `format` `type` na hodnotu **AvroFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
+
+```json
+"format":
+{
+    "type": "AvroFormat",
+}
+```
+
+Pokud chcete formát Avro použít v tabulce Hive, najdete potřebné informace v [kurzu k Apache Hive](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
+
+Je třeba počítat s následujícím:
+
+* [Komplexní datové typy](http://avro.apache.org/docs/current/spec.html#schema_complex) se nepodporují (záznamy, výčty, pole, mapy, sjednocení a oprava).
 
 ## <a name="compression-support"></a>Podpora komprese
 
@@ -551,8 +551,8 @@ Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v dat
 * **Typ:** kompresní kodek, který může být **GZIP**, **Deflate**, **BZIP2**, nebo **ZipDeflate**.
 * **Úroveň:** kompresní poměr, který může být **Optimal** nebo **nejrychlejší**.
 
-  * **Nejrychlejší:** komprese operace by se měla dokončit co nejrychleji, i v případě, že výsledný soubor není komprimována optimálně.
-  * **Optimální**: Operace komprese by měl být optimálně v komprimovaném tvaru i v případě, že operace trvá delší dobu pro dokončení.
+  * **Nejrychlejší:** Komprese operace by se měla dokončit tak rychle, jako je to možné, i v případě, že výsledný soubor není komprimována optimálně.
+  * **Optimální**: Komprese operace by měla být optimálně v komprimovaném tvaru i v případě, že operace trvá delší dobu pro dokončení.
 
     Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tématu.
 

@@ -63,6 +63,10 @@ items:
     href: how-to-diagnose-user-defined-functions.md
   - name: Konfigurace sledování
     href: how-to-configure-monitoring.md
+- name: Referenční informace
+  items:
+  - name: Klientská knihovna uživatelem definovaných funkcí
+    href: reference-user-defined-functions-client-library.md
 - name: Související
   items:
   - name: Řešení
@@ -109,9 +113,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: Videa
     href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: c8e66a50ba4fbad8caabbcaf96875f3712b6e2c6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 04716146653b833461b8230c2895fd1a8b6dcd42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076487"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993463"

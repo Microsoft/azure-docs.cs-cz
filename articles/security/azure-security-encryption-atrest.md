@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 1bcd9dfe2d7a846dd040944509be916c1964ba48
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420383"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994398"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data šifrování neaktivních
 
@@ -104,7 +104,7 @@ Existují tři scénáře pro šifrování na straně serveru:
 - Zákazníci spravovat a ukládat klíče v místním (nebo v jiných zabezpečené úložiště). Klíče nejsou k dispozici ke službám Azure
 - Snížení cloudové funkce
 
-Modely podporované šifrování v Azure rozdělit do dvou hlavních skupin: "Šifrování klienta" a "-šifrování na straně serveru" jako již bylo zmíněno dříve. Bez ohledu na šifrování v modelu rest používá, služby Azure vždy doporučujeme používat zabezpečeného přenosu, jako je protokol TLS nebo HTTPS. Šifrování během přenosu, proto by měl řešit přenosový protokol a neměla by být hlavním faktorem při určování, které šifrování v modelu rest pro použití.
+Modely podporované šifrování v Azure rozdělit do dvou hlavních skupin: "Klient" a "na straně serveru šifrováním" jako již bylo zmíněno dříve. Bez ohledu na šifrování v modelu rest používá, služby Azure vždy doporučujeme používat zabezpečeného přenosu, jako je protokol TLS nebo HTTPS. Šifrování během přenosu, proto by měl řešit přenosový protokol a neměla by být hlavním faktorem při určování, které šifrování v modelu rest pro použití.
 
 ### <a name="client-encryption-model"></a>Model klientského šifrování
 
@@ -201,7 +201,7 @@ Při použití šifrování na straně serveru pomocí klíče spravované záka
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Šifrování v klidovém stavu uložených v cloudových službách Microsoftu
 
-Cloudové služby společnosti Microsoft se používají ve všech třech cloudových modelech: IaaS, PaaS, SaaS. Dál budete mít příklady, jak se vešly na každý model:
+Cloudové služby společnosti Microsoft se používají ve všech modelech tři cloudu: IaaS, PaaS, SaaS. Dál budete mít příklady, jak se vešly na každý model:
 
 - Softwarových služeb, které označují jako softwaru jako Server nebo platformám SaaS, které mají aplikace v cloudu, jako je Office 365 k dispozici.
 - Služby platformy, které zákazníci využívat v cloudu ve svých aplikacích pomocí cloudu pro takové věci, jako jsou úložiště, analýzy a funkce služby Service bus.
@@ -244,7 +244,7 @@ Každý zákazník se pomocí infrastruktury Azure jako služba (IaaS) funkce m�
 Všechny služby Azure Storage (úložiště objektů Blob, Queue storage, Table storage a Azure Files) podporují šifrování na straně serveru v klidovém stavu, se některé služby, podpora klíčů spravovaných zákazníkem a šifrování na straně klienta.  
 
 - Na serveru: Všechny služby Azure Storage povolit šifrování na straně serveru ve výchozím nastavení pomocí klíče spravované zákazníkem služby, které je transparentní pro aplikaci. Další informace najdete v tématu [šifrování služby Azure Storage pro neaktivní uložená Data](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob storage a službou soubory Azure také podporují klíče spravované zákazníkem RSA 2048 bitů ve službě Azure Key Vault. Další informace najdete v tématu [šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
-- Na straně klienta: Objekty BLOB Azure, tabulky a fronty podporují šifrování na straně klienta. Při použití šifrování na straně klienta, zákazníci šifrování dat a nahrajte data jako zašifrovaný objekt blob. Zákazník se provádí správu klíčů. Další informace najdete v tématu [šifrování na straně klienta a služby Azure Key Vault pro Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
+- Na straně klienta: Azure BLOB, tabulky a fronty podporují šifrování na straně klienta. Při použití šifrování na straně klienta, zákazníci šifrování dat a nahrajte data jako zašifrovaný objekt blob. Zákazník se provádí správu klíčů. Další informace najdete v tématu [šifrování na straně klienta a služby Azure Key Vault pro Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
@@ -262,6 +262,7 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | Disk (IaaS)                      | -                  | Ano, RSA 2048 bitů  | -                  |
 | SQL Server (IaaS)                | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | Azure SQL (databáze/datový sklad) | Ano                | Ano, RSA 2048 bitů  | Ano                |
+| Azure SQL (databáze spravované Instance) | Ano                | Ve verzi Preview, RSA 2048 bitů  | Ano                |
 | Azure Storage (objekty BLOB bloku nebo stránky) | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | Azure Storage (soubory)            | Ano                | Ano, RSA 2048 bitů  | -                  |
 | Azure Storage (tabulky, fronty)   | Ano                | -                  | Ano                |

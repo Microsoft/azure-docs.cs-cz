@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 362a8f6108ad035c66fe76dae09cf7711dafd070
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 6748998e87de7f0d5ea41a10ba16600aa7b31505
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344342"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972035"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 2.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Vyberte verzi programu Azure Functions, který používáte: "]
 > * [Verze 1](functions-bindings-cosmosdb.md)
 > * [Verze 2](functions-bindings-cosmosdb-v2.md)
 
@@ -274,8 +274,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval aktivovala úloha Vypočítat, pokud oddíly jsou rovnoměrně mezi známými hostiteli instance. Výchozí hodnota je 13000 (13 sekund).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, pro kterou je zapůjčení pořízené zapůjčení představující oddílu. Pokud v rámci tohoto intervalu nedojde k jeho prodloužení zapůjčení, způsobí vypršení platnosti a vlastnictví oddílu se přesune do jiné instance. Výchozí hodnota je 60000 (60 sekund).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval obnovení pro všechny zapůjčení pro oddíly právě načtený v instanci. Výchozí hodnota je 17000 (17 sekund).
-|**checkpointFrequency**| **checkpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po úspěšném volání funkce.
+|**checkpointFrequency**| **checkpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po každé volání funkce.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Volitelné) Pokud nastavíte, přizpůsobuje maximální objem přijatých položek pro volání funkce.
+|**startFromBeginning**| **StartFromBeginning**| (Volitelné) Pokud nastavíte, sdělí triggeru pro spuštění čtení změny od začátku této historie kolekce místo aktuální čas. Toto funguje, pouze při prvním spuštění triggeru, stejně jako v následné spuštění, kontrolní body jsou již uloženy. Nastavení na `true` pokud existuje zapůjčení už vytvořili nemá žádný vliv.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -384,6 +385,10 @@ namespace CosmosDBSamplesV2
 #### <a name="http-trigger-look-up-id-from-query-string-c"></a>Trigger HTTP, vyhledejte ID z řetězce dotazu (C#)
 
 Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Že ID slouží k načtení `ToDoItem` dokument ze zadané databáze a kolekce.
+
+>[!NOTE]
+>Parametr řetězce dotazu HTTP rozlišuje velká a malá písmena.
+>
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -1446,29 +1451,253 @@ Chcete-li přidat `project.json` souborů naleznete v tématu [ F# Správa balí
 
 ### <a name="input---java-examples"></a>Vstup - příkladů v jazyce Java
 
-Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Toto ID se používá k načtení dokumentu ToDoItem ze zadané databáze a kolekce.
+Tato část obsahuje následující příklady:
 
-Tady je kód Java:
+* [Trigger HTTP, vyhledejte ID z řetězce dotazu – parametr řetězce](#http-trigger-look-up-id-from-query-string---string-parameter-java)
+* [Trigger HTTP, vyhledejte ID z řetězce dotazu - POJO parametr](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
+* [Trigger HTTP, vyhledejte ID z dat trasy](#http-trigger-look-up-id-from-route-data-java)
+* [Trigger HTTP, vyhledejte ID z dat trasy, pomocí SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
+* [HTTP aktivovat, získat z dat trasy, SqlQuery pomocí více dokumentace](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
+
+Příklady najdete jednoduchý `ToDoItem` typu:
 
 ```java
-@FunctionName("getItem")
-public String cosmosDbQueryById(
-    @HttpTrigger(name = "req",
-                  methods = {HttpMethod.GET},
-                  authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> dummy,
-    @CosmosDBInput(name = "database",
-                      databaseName = "ToDoList",
-                      collectionName = "Items",
-                      leaseCollectionName = "",
-                      id = "{Query.id}"
-                      connectionStringSetting = "AzureCosmosDBConnection") Optional<String> item,
-    final ExecutionContext context
- ) {
-    return item.orElse("Not found");
- }
+public class ToDoItem {
+
+  private String id;
+  private String description;  
+
+  public String getId() {
+    return id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+  
+  @Override
+  public String toString() {
+    return "ToDoItem={id=" + id + ",description=" + description + "}";
+  }
+}
+```
+
+#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>Trigger HTTP, vyhledejte ID z řetězce dotazu – parametr řetězce (Java)
+
+Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce, ve formátu řetězce.
+
+```java
+public class DocByIdFromQueryString {
+
+    @FunctionName("DocByIdFromQueryString")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{Query.id}",
+              partitionKey = "{Query.id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            Optional<String> item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("String from the database is " + (item.isPresent() ? item.get() : null));
+
+        // Convert and display
+        if (!item.isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from Cosmos. Alternatively, we can parse the JSON string 
+            // and return an enriched JSON object.
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item.get())
+                          .build();
+        }
+    }
+}
  ```
 
 V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@CosmosDBInput` Poznámka k parametrům funkcí, jehož hodnota bude pocházet ze služby Cosmos DB.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí nepovinné<T>.
+
+#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>Trigger HTTP, vyhledejte ID z řetězce dotazu – parametr POJO (Java)
+
+Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce. Dokument je pak převedeno do instance ```ToDoItem``` POJO dříve vytvořen a předán jako argument funkce.
+
+```java
+public class DocByIdFromQueryStringPojo {
+
+    @FunctionName("DocByIdFromQueryStringPojo")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{Query.id}",
+              partitionKey = "{Query.id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Item from the database is " + item);
+
+        // Convert and display
+        if (item == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item)
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-look-up-id-from-route-data-java"></a>Trigger HTTP, vyhledejte ID z dat trasy (Java)
+
+Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který se používá parametr trasa k určení ID se má vyhledat. Že ID slouží k načtení dokumentu ze zadané databáze a kolekce, vrácením jako ```Optional<String>```.
+
+```java
+public class DocByIdFromRoute {
+
+    @FunctionName("DocByIdFromRoute")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems/{id}")
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{id}",
+              partitionKey = "{id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            Optional<String> item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("String from the database is " + (item.isPresent() ? item.get() : null));
+
+        // Convert and display
+        if (!item.isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from Cosmos. Alternatively, we can parse the JSON string 
+            // and return an enriched JSON object.
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item.get())
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>Trigger HTTP, vyhledejte ID z dat trasy, pomocí SqlQuery (Java)
+
+Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který se používá parametr trasa k určení ID se má vyhledat. Že ID slouží k načtení dokumentu ze zadané databáze a kolekce, převod výsledku nastaveno ```ToDoItem[]```, protože mnoho dokumentů mohou být vráceny, v závislosti na kritéria dotazu.
+
+```java
+public class DocByIdFromRouteSqlQuery {
+
+    @FunctionName("DocByIdFromRouteSqlQuery")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems2/{id}") 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              sqlQuery = "select * from Items r where r.id = {id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem[] item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Items from the database are " + item);
+
+        // Convert and display
+        if (item == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item)
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP aktivovat, získat více dokumentace od data trasy, která pomocí SqlQuery (Java)
+
+Následující příklad ukazuje funkci Java, která více dokumentů. Je funkce aktivována požadavkem HTTP, který používá parametr trasa ```desc``` zadat řetězec pro hledání v ```description``` pole. Hledaný termín se používá k načtení kolekce dokumentů ze zadané databáze a kolekce, převod sadu výsledků ```ToDoItem[]``` a předáním jako argument funkce.
+
+```java
+public class DocsFromRouteSqlQuery {
+
+    @FunctionName("DocsFromRouteSqlQuery")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems3/{desc}")
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              sqlQuery = "select * from Items r where contains(r.description, {desc})",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem[] items,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Number of items from the database is " + (items == null ? 0 : items.length));
+
+        // Convert and display
+        if (items == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("No documents found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(items)
+                          .build();
+        }
+    }
+}
+ ```
 
 ## <a name="input---attributes"></a>(Vstup) – atributy
 
@@ -1511,7 +1740,7 @@ Podívejte se na příklady specifické pro jazyk:
 * [C#](#output---c-examples)
 * [C# skript (.csx)](#output---c-script-examples)
 * [F#](#output---f-examples)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-examples)
 
 Viz také [vstupní příklad](#input---c-examples) , která používá `DocumentClient`.
@@ -1884,20 +2113,163 @@ Chcete-li přidat `project.json` souborů naleznete v tématu [ F# Správa balí
 
 ### <a name="output---java-examples"></a>Výstup – příkladů v jazyce Java
 
+* [Aktivační událost fronty zprávu uložit do databáze prostřednictvím návratová hodnota](#queue-trigger-save-message-to-database-via-return-value-java)
+* [Trigger HTTP, uložení jednoho dokumentu do databáze prostřednictvím návratová hodnota](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [Trigger HTTP, uložit do databáze prostřednictvím OutputBinding jednoho dokumentu](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [Trigger HTTP, ukládání více dokumentů do databáze prostřednictvím OutputBinding](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+
+
+#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>Aktivační událost fronty zprávu uložit do databáze prostřednictvím návratovou hodnotu (Java)
+
 Následující příklad ukazuje funkci Java, která přidá dokumentu do databáze s daty ze zprávy v rámci Queue storage.
 
 ```java
 @FunctionName("getItem")
-@CosmosDBOutput(name = "database", databaseName = "ToDoList", collectionName = "Items", connectionStringSetting = "AzureCosmosDBConnection")
+@CosmosDBOutput(name = "database", 
+  databaseName = "ToDoList", 
+  collectionName = "Items", 
+  connectionStringSetting = "AzureCosmosDBConnection")
 public String cosmosDbQueryById(
-     @QueueTrigger(name = "msg", queueName = "myqueue-items", connection = "AzureWebJobsStorage") String message,
-     final ExecutionContext context
-)  {
-     return "{ id: " + System.currentTimeMillis() + ", Description: " + message + " }";
+    @QueueTrigger(name = "msg", 
+      queueName = "myqueue-items", 
+      connection = "AzureWebJobsStorage") 
+    String message,
+    final ExecutionContext context)  {
+     return "{ id: \"" + System.currentTimeMillis() + "\", Description: " + message + " }";
    }
 ```
 
-V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@CosmosDBOutput` poznámku o parametrech, které se zapíšou do služby Cosmos DB.  Typ anotace parametru by měl být OutputBinding<T>, kde T je nativní typ Java nebo objekt POJO.
+#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>Trigger HTTP, uložení jednoho dokumentu do databáze prostřednictvím návratovou hodnotu (Java)
+
+Následující příklad ukazuje funkce Java, jejíž podpis je opatřen poznámkou ```@CosmosDBOutput``` a má návratovou hodnotu typu ```String```. Dokument JSON vrácené funkcí se automaticky zapíše do příslušné kolekce cosmos DB.
+
+```java
+    @FunctionName("WriteOneDoc")
+    @CosmosDBOutput(name = "database", 
+      databaseName = "ToDoList",
+      collectionName = "Items", 
+      connectionStringSetting = "Cosmos_DB_Connection_String")
+    public String run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+
+        // Parse query parameter        
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        return jsonDocument;
+    }
+```
+
+#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>Trigger HTTP, uložení jednoho dokumentu do databáze prostřednictvím OutputBinding (Java)
+
+Následující příklad ukazuje funkci Java, která zapíše dokument služby cosmos DB prostřednictvím ```OutputBinding<T>``` výstupní parametr. Všimněte si, že v tomto nastavení je ```outputItem``` parametr, který musí být komentována atributem ```@CosmosDBOutput```, ne signatura funkce. Pomocí ```OutputBinding<T>``` umožňuje funkci využít výhod vazby pro zápis dokumentu do služby cosmos DB a zároveň vrací jinou hodnotu volajícímu funkce, jako je dokument JSON nebo XML.
+
+```java
+    @FunctionName("WriteOneDocOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database", 
+              databaseName = "ToDoList", 
+              collectionName = "Items", 
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            OutputBinding<String> outputItem,
+            final ExecutionContext context) {
+  
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+      
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        // Set outputItem's value to the JSON document to be saved
+        outputItem.setValue(jsonDocument);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Document created successfully.")
+                      .build();
+    }
+```
+
+#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>Trigger HTTP, ukládání více dokumentů do databáze prostřednictvím OutputBinding (Java)
+
+Následující příklad ukazuje funkci Java, která zapisuje do služby cosmos DB přes několik dokumentů ```OutputBinding<T>``` výstupní parametr. Všimněte si, že v tomto nastavení je ```outputItem``` parametr, který musí být komentována atributem ```@CosmosDBOutput```, ne signatura funkce. Výstupní parametr ```outputItem``` má seznam ```ToDoItem``` objekty jako jeho typu parametru šablony. Pomocí ```OutputBinding<T>``` umožňuje funkci využít výhod vazby pro zápis dokumenty do služby cosmos DB a zároveň vrací jinou hodnotu volajícímu funkce, jako je dokument JSON nebo XML.
+
+```java
+    @FunctionName("WriteMultipleDocsOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database", 
+              databaseName = "ToDoList", 
+              collectionName = "Items", 
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            OutputBinding<List<ToDoItem>> outputItem,
+            final ExecutionContext context) {
+  
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+      
+        // Generate documents
+        List<ToDoItem> items = new ArrayList<>();
+
+        for (int i = 0; i < 5; i ++) {
+          // Generate random ID
+          final int id = Math.abs(new Random().nextInt());
+
+          // Create ToDoItem
+          ToDoItem item = new ToDoItem(String.valueOf(id), name);
+          
+          items.add(item);
+        }
+
+        // Set outputItem's value to the list of POJOs to be saved
+        outputItem.setValue(items);
+        context.getLogger().info("Document to be saved: " + items);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Documents created successfully.")
+                      .build();
+    }
+```
+
+V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@CosmosDBOutput` poznámku o parametrech, které se zapíšou do služby Cosmos DB.  Typ anotace parametru by měl být ```OutputBinding<T>```, kde T je nativní typ Java nebo objekt POJO.
 
 
 ## <a name="output---attributes"></a>Výstup – atributy

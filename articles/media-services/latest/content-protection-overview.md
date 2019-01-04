@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: cb7e867ea4304cf8b8741eac183e60d325c752c7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 09c8b63cddde547b0dc42cf1f15a8ac5002d0a3e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141845"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725134"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
-Azure Media Services můžete použít k zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Pomocí služby Media Services můžete doručovat na vyžádání a živého obsahu dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některý z systémy tři hlavní digital rights management (DRM): Apple FairPlay, Microsoft PlayReady a Google Widevine. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 
+Azure Media Services můžete použít k zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Pomocí služby Media Services můžete doručovat na vyžádání a živé obsah dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některým z tři systémů hlavní digital rights management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 
 
 Následující obrázek ukazuje pracovní postup služby Media Services content protection: 
 
@@ -53,7 +53,7 @@ Pro úspěšné dokončení návrhu "content protection" systému nebo aplikace,
 
 2. Přehrávač klientem DRM nebo AES. Přehrávač videa aplikaci založenou na přehrávač SDK (nativní nebo založené na prohlížeči) musí splňovat následující požadavky:
   * Přehrávač SDK podporuje potřebné klienti DRM
-  * Přehrávač SDK podporuje požadované protokoly datových proudů: protokol Smooth, DASH nebo HLS
+  * Přehrávač SDK podporuje požadované protokoly streamování: Protokol Smooth, DASH nebo HLS
   * Přehrávač SDK musí být schopna zpracovávat předání tokenů JWT token v žádosti o získání licence
   
     Přehrávač můžete vytvořit pomocí [rozhraní API služby Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/). Použít [rozhraní API služby Azure Media Player ProtectionInfo](http://amp.azure.net/libs/amp/latest/docs/) zadat technologii DRM, která má používat na různých platformách DRM.

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Převod převod textu na řeč, .NET Core – hlasové služby'
+title: 'Rychlý start: Převést převod textu na řeč, .NET Core – hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte jak převést převod textu na řeč pomocí rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d463ca73fb533b8a44c2019a478f2df0162cb23
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089866"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791441"
 ---
-# <a name="quickstart-convert-text-to-speech-using-net-core"></a>Rychlý start: Převod převod textu na řeč pomocí .NET Core
+# <a name="quickstart-convert-text-to-speech-using-net-core"></a>Rychlý start: Převést převod textu na řeč pomocí .NET Core
 
 V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí .NET Core a rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci má strukturu [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md), která umožňuje výběr hlasu a jazyk odpovědi.
 
@@ -27,7 +27,7 @@ Tento rychlý start vyžaduje [účtu služeb Azure Cognitive Services](https://
 
 K tomuto rychlému startu potřebujete:
 
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
+* [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), nebo vašem oblíbeném textovém editoru
 * Klíč rozhraní předplatné Azure pro službu rozpoznávání řeči
 
@@ -109,7 +109,7 @@ public class Authentication
 ```
 
 > [!NOTE]
-> Další informace o ověřování najdete v tématu [jak získat přístupový token](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token).
+> Další informace o ověřování najdete v tématu [ověřování pomocí přístupového tokenu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
 ## <a name="get-an-access-token-and-set-the-host-url"></a>Získání přístupového tokenu a nastavit adresu URL pro hostitele
 
@@ -162,7 +162,7 @@ string body = @"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis'
 ```
 
 > [!NOTE]
-> Tento příklad používá `ZiraRUS` hlasového písma. Pro úplný seznam Microsoft poskytuje hlasy/jazyky, naleznete v tématu [jazykovou podporu](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/language-support). Pokud vás zajímá vytváření jedinečné, rozpoznat hlas pro hodnotu značky, přečtěte si téma [vytváření vlastního hlasového písma](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font).
+> Tento příklad používá `ZiraRUS` hlasového písma. Pro úplný seznam Microsoft poskytuje hlasy/jazyky, naleznete v tématu [jazykovou podporu](language-support.md). Pokud vás zajímá vytváření jedinečné, rozpoznat hlas pro hodnotu značky, přečtěte si téma [vytváření vlastního hlasového písma](how-to-customize-voice-font.md).
 
 ## <a name="instantiate-the-client-make-a-request-and-save-synthesized-audio-to-a-file"></a>Vytvořit instanci klienta, vytvoříte žádost o a uložit do souboru syntetizovaný zvuku
 

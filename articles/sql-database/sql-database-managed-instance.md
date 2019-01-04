@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 57dd6fc822e0285b33368987d2af7c690d4f7786
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337814"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994755"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>U služeb virtual networks a téměř 100 % kompatibilitou pomocí SQL Database Managed Instance
 
@@ -30,7 +30,7 @@ Následující diagram popisuje klíčové funkce služby Managed Instance:
 
 ![klíčové funkce](./media/sql-database-managed-instance/key-features.png)
 
-Azure SQL Database Managed Instance je určená pro zákazníky v úmyslu migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen, nebo nezávislý výrobce softwaru ve formě prostředí tak, aby plně spravované cloudové prostředí PaaS s nízkou migrace úsilí co nejvíce. Použití plně automatizované [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) v Azure, zákazníci mohou přenést a shift jejich místního SQL serveru do Managed Instance, která nabízí kompatibilitu s místním SQL serverem a kompletní izolaci zákaznických instancí s nativní podporou virtuální sítě.  S programem Software Assurance, mohou vyměňovat své stávající licence pro zlevněné sazby pro SQL Database Managed Instance pomocí [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  SQL Database Managed Instance je nejlepším řešením migrace v cloudu pro instance systému SQL Server, vyžadujících vysoké zabezpečení a s rozsáhlou programovatelností pomocí povrchu.
+Azure SQL Database Managed Instance je určená pro zákazníky v úmyslu migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen, nebo nezávislý výrobce softwaru ve formě prostředí tak, aby plně spravované cloudové prostředí PaaS s nízkou migrace úsilí co nejvíce. Použití plně automatizované [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) v Azure, zákazníci mohou přenést a shift jejich místního SQL serveru do Managed Instance, která nabízí kompatibilitu s místním SQL serverem a kompletní izolaci zákaznických instancí s nativní podporou virtuální sítě.  S programem Software Assurance, mohou vyměňovat své stávající licence pro zlevněné sazby pro SQL Database Managed Instance pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).  SQL Database Managed Instance je nejlepším řešením migrace v cloudu pro instance systému SQL Server, vyžadujících vysoké zabezpečení a s rozsáhlou programovatelností pomocí povrchu.
 
 Podle všeobecné dostupnosti zaměřuje Managed Instance poskytovat blízko povrchu 100 % kompatibilitu s nejnovější verzí systému SQL Server v místním prostřednictvím plánu dvoufázové instalace verze.
 
@@ -70,7 +70,7 @@ Klíčové funkce Managed Instance jsou uvedeny v následující tabulce:
 
 ## <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 
-[Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) v Managed Instance poskytuje flexibilitu, ovládací prvek, transparentnost a jednoduchý způsob převodu požadavků místních úlohy do cloudu. Tento model umožňuje změnit výpočetních, paměťových a úložiště na základě potřeb vašich úloh. Je také nárok až na 30 procent spoření s modelu virt. jader [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+[Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) v Managed Instance poskytuje flexibilitu, ovládací prvek, transparentnost a jednoduchý způsob převodu požadavků místních úlohy do cloudu. Tento model umožňuje změnit výpočetních, paměťových a úložiště na základě potřeb vašich úloh. Je také nárok až na 30 procent spoření s modelu virt. jader [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 V modelu virt. jader můžete mezi generacemi hardwaru.
 

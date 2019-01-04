@@ -1,21 +1,18 @@
 ---
 title: Přístup protokolů serveru ve službě Azure Database for MySQL pomocí Azure CLI
 description: Tento článek popisuje, jak získat přístup k protokolům serveru ve službě Azure Database for MySQL pomocí nástroje příkazového řádku Azure CLI.
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: e3940f07ab97eb2ad03c347c39bf2412a8497f5e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 207e9965f6600477e1df93845bc41bd33b5c028c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978450"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547027"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a získat přístup k protokolům serveru pomocí příkazového řádku Azure
 Azure Database for MySQL – protokoly serveru si můžete stáhnout pomocí příkazového řádku Azure, nástroje příkazového řádku Azure.
@@ -28,7 +25,7 @@ Pro jednotlivé kroky v této příručce s postupy, musíte:
 ## <a name="configure-logging-for-azure-database-for-mysql"></a>Konfigurace protokolování pro službu Azure Database for MySQL
 Můžete nakonfigurovat server pro přístup k protokolu pomalých dotazů MySQL pomocí následujících kroků:
 1. Zapnutí protokolování tak, že nastavíte **pomalé\_dotazu\_protokolu** parametr ON.
-2. Upravit další parametry, jako například **dlouhé\_dotazu\_čas** a **protokolu\_pomalé\_správce\_příkazy**.
+2. Upravit další parametry, jako například **dlouhé\_dotazu\_čas** a **protokolu\_pomalé\_správce\_příkazy**.
 
 Zjistěte, jak nastavit hodnoty těchto parametrů pomocí Azure CLI, najdete v článku [konfigurace parametrů serveru](howto-configure-server-parameters-using-cli.md). 
 

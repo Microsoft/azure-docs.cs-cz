@@ -4,15 +4,16 @@ description: Shrnuje podporované operační systémy a komponenty pro zotavení
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 12/12/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 7593183093a722f55b2bd638ef551fb1343433c4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5d457a6b7eb96486a24ca53d9093ffa4f573b774
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323469"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974416"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -48,12 +49,12 @@ Volné místo na disku | 600 GB místa potřebného pro jednotka pro uchování.
 Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 |
 Národní prostředí operačního systému | Angličtina (en-us)
 PowerCLI. | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") by měly být nainstalovány.
-Role Windows Serveru | Nepovolí: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V |
-Zásady skupiny| Nepovolí: <br> -Zabránit přístupu do příkazového řádku. <br> -Zabránit přístupu k nástrojům pro úpravu registru. <br> – Logika důvěryhodnosti pro přiložené soubory. <br> -Zapnutí provádění skriptů. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Ujistěte se, že jste:<br/><br/> – Dříve existující výchozí web není nutné. <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br> -Nemají dříve existující web nebo aplikace naslouchá na portu 443<br>
+Role Windows Serveru | Nepovolí: <br/> – Active Directory Domain Services <br/>– Internet Information Service <br/> – Hyper-V |
+Zásady skupiny| Nepovolí: <br/> -Zabránit přístupu do příkazového řádku. <br/> -Zabránit přístupu k nástrojům pro úpravu registru. <br/> – Logika důvěryhodnosti pro přiložené soubory. <br/> -Zapnutí provádění skriptů. <br/> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | Ujistěte se, že jste:<br/><br/> – Dříve existující výchozí web není nutné. <br/> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br/> -Nemají dříve existující web nebo aplikace naslouchá na portu 443<br/>
 Typ NIC | VMXNET3 (Pokud je nasazená jako virtuální počítač VMware)
 Typ IP adresy | Statická
-Porty | 443 pro Orchestrace řídicího kanálu)<br>9443 používá pro přenos dat
+Porty | 443 pro Orchestrace řídicího kanálu)<br/>9443 používá pro přenos dat
 
 ## <a name="replicated-machines"></a>Replikované počítače
 
@@ -62,8 +63,8 @@ Site Recovery podporuje jakoukoli úlohu spuštěnou na podporovaném počítač
 **Komponenta** | **Podrobnosti**
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky služby Azure](#azure-vm-requirements).
-Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1. </br></br>  [Windows Server 2008 s na minimálně SP2 – 32bitové a 64bitové](migrate-tutorial-windows-server-2008.md) (pouze migrace). </br></br> Windows 2016 Nano Server není podporován.
-Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>CentOS: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>Server se systémem Ubuntu 14.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, operačním systémem SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/></br>-Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.</br></br> - [Další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) informace o podpoře pro Linux a opensourcové technologie v Azure. Site Recovery orchestruje převzetí služeb při selhání spuštění servery s Linuxem v Azure. Linux dodavatelů ale může omezit podporu pouze verze distribuce, které se ještě nedostaly ukončenou životností.<br/><br/> – V Linuxových distribucích jsou podporovány pouze uložených jader, které jsou součástí vydání/aktualizace podverze distribuce.<br/><br/> -Upgradu chráněné počítače napříč hlavní Linux není podporována verze distribuce. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.<br/><br/> -Servery se systémem Red Hat Enterprise Linux 5,11 5.2 nebo CentOS 5.2 5,11 by měly mít [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) nainstalována počítačů pro spuštění v Azure.
+Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1. <br/><br/>  [Windows Server 2008 s na minimálně SP2 – 32bitové a 64bitové](migrate-tutorial-windows-server-2008.md) (pouze migrace). <br/><br/> Windows 2016 Nano Server není podporován.
+Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>CentOS: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>Server se systémem Ubuntu 14.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, operačním systémem SUSE Linux Enterprise Server 11 SP4 * <br/><br/>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/><br/>-Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.<br/><br/> - [Další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) informace o podpoře pro Linux a opensourcové technologie v Azure. Site Recovery orchestruje převzetí služeb při selhání spuštění servery s Linuxem v Azure. Linux dodavatelů ale může omezit podporu pouze verze distribuce, které se ještě nedostaly ukončenou životností.<br/><br/> – V Linuxových distribucích jsou podporovány pouze uložených jader, které jsou součástí vydání/aktualizace podverze distribuce.<br/><br/> -Upgradu chráněné počítače napříč hlavní Linux není podporována verze distribuce. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.<br/><br/> -Servery se systémem Red Hat Enterprise Linux 5,11 5.2 nebo CentOS 5.2 5,11 by měly mít [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) nainstalována počítačů pro spuštění v Azure.
 
 
 
@@ -99,9 +100,9 @@ Debian 8 | [9.16](https://support.microsoft.com/en-in/help/4278275/update-rollup
 
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9,20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.156-94.64-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.96-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default k 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.96-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default k 4.4.138-94.39-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9,20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default<br/><br/> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default<br/><br/> 4.4.21-69-default SP2 do 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default<br/><br/>SP3 4.4.73-5-default k 4.4.156-94.64-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default<br/><br/> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.96-default<br/><br/> 4.4.21-69-default SP2 do 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.85-default<br/><br/>SP3 4.4.73-5-default k 4.4.140-94.42-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default<br/><br/> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.96-default<br/><br/> 4.4.21-69-default SP2 do 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.85-default<br/><br/>SP3 4.4.73-5-default k 4.4.138-94.39-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Úložiště systémů/hostů soubor Linuxu
 
@@ -112,9 +113,11 @@ Správce svazků | Před [9.20 verze](https://support.microsoft.com/en-in/help/4
 Paravirtualizovanými úložných zařízení | Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
 Blokovat fronty více vstupně-výstupních operací zařízení | Nepodporuje se.
 Fyzické servery s řadič úložiště HP CCISS | Nepodporuje se.
+
+Zařízení/přípojný bod zásady vytváření názvů | Název zařízení nebo název přípojného bodu musí být jedinečné. Zajistěte, aby velká a malá písmena názvy žádné dvě zařízení a přípojné body. </br> Příklad: Pojmenování dvě zařízení stejný virtuální počítač jako *zařízení1* a *zařízení1* není povolený.
 Adresáře | Před [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. V následujících adresářích (Pokud nastavený jako samostatné oddíly /-systémy souborů) musí být na stejném disku operačního systému na zdrojovém serveru: / (root), Boot, / USR, /usr/local, /var, / etc.</br>2. Boot by měl být na disku oddílu a nesmí být svazku LVM.<br/><br/> Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) a vyšší, nad omezení neplatí.
-Požadavky na volné místo| 2 GB na oddíl/root <br/><br/> 250 MB v instalační složce Nástroje
-XFSv5 | XFSv5 v systémech souborů s XFS, jako je například metadata kontrolního součtu, jsou však podporovány ze služby Mobility verze dále 9.10. Pomocí nástroje xfs_info tzv XFS pro oddíl. Pokud ftype je nastavena na hodnotu 1, funkce XFSv5 jsou používána.
+
+Požadavky na místo na bezplatné | 2 GB na oddíl/root <br/><br/> 250 MB v instalační složce XFSv5 | XFSv5 v systémech souborů s XFS, jako je například metadata kontrolního součtu, jsou však podporovány ze služby Mobility verze dále 9.10. Pomocí nástroje xfs_info tzv XFS pro oddíl. Pokud ftype je nastavena na hodnotu 1, funkce XFSv5 jsou používána.
 
 ## <a name="vmdisk-management"></a>Správa virtuálních počítačů/disků
 
@@ -163,7 +166,7 @@ Síť vSAN hostitele | Ano pro VMware<br/><br/> Není k dispozici pro fyzické s
 Hostitel multipath (MPIO Multipath) | Ano, testováním s využitím Microsoft DSM EMC PowerPath 5.7 SP4, EMC PowerPath DSM pro CLARiiON
 Svazky virtuálního hostitele (VVols) | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Host/server VMDK | Ano
-Host/server rozhraním EFI/UEFI| Partial (migrace dat do Azure pro Windows Server 2012 a novější) </br></br> Další informace v poznámce na konci v tabulce
+Host/server rozhraním EFI/UEFI| Partial (migrace dat do Azure pro Windows Server 2012 a novější) <br/><br/> Další informace v poznámce na konci v tabulce
 Disk sdíleného clusteru hosta/server | Ne
 Šifrované disk Host/server | Ne
 Host/server systému souborů NFS | Ne
@@ -172,7 +175,7 @@ Host/server RDM | Ano<br/><br/> Není k dispozici pro fyzické servery
 Disk Host/serveru > 1 TB | Ano<br/><br/>Až 4 095 GB
 Host/server na disku s velikost fyzického sektoru 4K logické a 4 kB | Ano
 Disk s 4 kB logického typu Host/server a velikost fyzického sektoru 512 bajtů | Ano
-Host/server svazek s prokládané disk > 4 TB <br><br/>Správa logických svazků (LVM)| Ano
+Host/server svazek s prokládané disk > 4 TB <br/><br/>Správa logických svazků (LVM)| Ano
 Host/server – prostory úložiště | Ne
 Disk horké přidávat nebo odebírat hosta/server | Ne
 Host/server - vyloučení disku | Ano
@@ -218,8 +221,8 @@ Místní virtuální počítače, které se replikují do Azure, musí splňovat
 Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated-machines) pro replikované počítače. | Kontrola selže, pokud není podporován.
 Architektura operačního systému hosta | 64-bit. | Kontrola selže, pokud není podporován.
 Velikost disku operačního systému | Až 2 048 GB. | Kontrola selže, pokud není podporován.
-Počet disků operačního systému | 1 | Kontrola selže, pokud není podporován.  
-Počet datových disků | 64 nebo méně. | Kontrola selže, pokud není podporován.  
+Počet disků operačního systému | 1 | Kontrola selže, pokud není podporován.
+Počet datových disků | 64 nebo méně. | Kontrola selže, pokud není podporován.
 Velikost datového disku | Až 4 095 GB | Kontrola selže, pokud není podporován.
 Síťové adaptéry | Podporuje se více adaptérů. |
 Sdílený virtuální pevný disk | Nepodporuje se. | Kontrola selže, pokud není podporován.

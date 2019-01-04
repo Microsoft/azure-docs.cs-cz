@@ -9,18 +9,40 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: d5dd2e2943d78291fc9c4903c15fb4d3767edbea
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: b8f77f404a8e5d2d1625a327a1e50c0e169b6135
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442008"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744424"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
-Tento článek uvádí běžné problémy, které se vztahují k Microsoft Azure Files, když se připojíte z klientů Linux. Poskytuje také možné příčiny a řešení těchto problémů. 
+Tento článek uvádí běžné problémy, které se vztahují k Azure Files při připojení klientů systému Linux. Poskytuje také možné příčiny a řešení těchto problémů. 
 
 Kromě použijte kroky v tomto článku, můžete použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) zajistit správné požadavky klienta pro Linux. AzFileDiagnostics automatizuje detekce většinu z příznaků uvedených v tomto článku. Umožňuje nastavit prostředí, abyste získali optimální výkon. Můžete také najít tyto informace [Azure sdíleným složkám Poradce při potížích](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Poradce při potížích se vysvětluje, jak vám pomůžou se potíže s připojením, mapování a připojování sdílených složek Azure.
+
+<a id="mounterror13"></a>
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Připojit error(13): Přístup byl odepřen"po připojení sdílené složky Azure
+
+### <a name="cause-1-unencrypted-communication-channel"></a>1. příčina: Nešifrovaná komunikace kanálu
+
+Z bezpečnostních důvodů připojení sdílených složek Azure jsou blokovány, pokud není šifrovaný komunikační kanál, a pokud se pokus o připojení není proveden ze stejné datové centrum, kde jsou umístěné sdílených složek Azure. Nezašifrované připojení ve stejném datacentru je taky možné zablokovat Pokud [vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení. Šifrovaný komunikační kanál je k dispozici pouze v případě, že uživatele klientský operační systém podporuje šifrování protokolu SMB.
+
+Další informace najdete v tématu [požadavky pro připojení Azure file sdílet se systémy Linux a balíček cifs utils](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+
+### <a name="solution-for-cause-1"></a>Řešení příčiny 1
+
+1. Připojení z klienta, který podporuje šifrování protokolu SMB nebo připojte z virtuálního počítače ve stejném datacentru jako účet služby Azure storage, který se používá pro sdílené složky Azure.
+2. Ověřte, [vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) nastavení je zakázaný v účtu úložiště, pokud klient nepodporuje šifrování protokolu SMB.
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. příčina: Pravidla virtuální sítě nebo brány firewall jsou povolené v účtu úložiště 
+
+Pokud virtuální síť (VNET) a pravidla brány firewall jsou nakonfigurované v účtu úložiště, síťový provoz bude odepřen přístup Pokud IP adresa klienta nebo virtuální sítě je povolený přístup.
+
+### <a name="solution-for-cause-2"></a>Řešení příčiny 2
+
+Ověřte, že virtuální sítě a pravidel brány firewall jsou správně nakonfigurovány v účtu úložiště. Pokud chcete otestovat, pokud virtuální síť nebo brána firewall pravidla je příčinou problému, dočasně změnit nastavení pro účet úložiště na **povolit přístup ze všech sítí**. Další informace najdete v tématu [virtuální sítí a bran firewall nakonfigurovat služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"[bylo odepřeno oprávnění]: překročena kvóta disku" při pokusu o otevření souboru
@@ -47,7 +69,7 @@ Snižte počet souběžných otevřených popisovačů ukončením některé obs
     - Použití [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) mezi sdílené složky na místním počítači.
 
 <a id="error112"></a>
-## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Připojit error(112): Hostitel nepracuje" z důvodu vypršení časového limitu opětovné připojení
+## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Připojit error(112): Hostitel je mimo provoz"z důvodu vypršení časového limitu opětovné připojení
 
 "112" připojení dojde k chybě na straně klienta pro Linux klienta byl nečinný po dlouhou dobu. Po delší dobu nečinné klient neodpojí a připojení vyprší časový limit.  
 
@@ -65,9 +87,9 @@ Tento problém opětovným připojením v linuxového jádra je opravená jako s
 - [Oprava znovu připojit k není odložit smb3 relace znovu připojit po obnovení připojení soketu](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [Volání služby echo okamžitě po obnovení připojení soketu](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
 - [CIFS: Oprava poškození možné paměti při volání metody reconnect](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
-- [CIFS: Opravte je to možné double uzamčení vzájemně vyloučeného přístupu při volání metody reconnect (pro jádra v4.9 a novější)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
+- [CIFS: Opravit je to možné double uzamčení vzájemně vyloučeného přístupu při volání metody reconnect (pro jádra v4.9 a novější)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Však nemusí být tyto změny přenést ještě do Linuxových distribucí. Tato oprava a ostatní opravy opětovné připojení jsou v následujících oblíbených Linuxových jádrech: 4.4.40 4.8.16 a 4.9.1. Tato oprava můžete získat díky upgradu na některou z těchto verzí doporučené jádra.
+Však nemusí být tyto změny přenést ještě do Linuxových distribucí. V následující oblíbených Linuxových jádrech jsou tato oprava a ostatní opravy opětovné připojení: 4.4.40 4.8.16 a 4.9.1. Tato oprava můžete získat díky upgradu na některou z těchto verzí doporučené jádra.
 
 ### <a name="workaround"></a>Alternativní řešení
 
@@ -76,7 +98,7 @@ Tento problém můžete vyřešit tak, že zadáte pevné připojení. Pevné p�
 Pokud nelze upgradovat na nejnovější verze jádra, můžete tento problém vyřešit tím, že soubor do sdílené složky Azure, který píšete na každých 30 sekund nebo méně. Toto musí být operace zápisu, jako je například přepisování vytvořené nebo upravené datum na tento soubor. V opačném případě se mohou zobrazovat výsledky uložené v mezipaměti, a operace nemusí aktivovat obnovení připojení.
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Připojit error(115): nyní probíhá operace" Když připojíte soubory Azure pomocí protokolu SMB 3.0
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Připojit error(115): Nyní probíhá operace"Když připojíte soubory Azure pomocí protokolu SMB 3.0
 
 ### <a name="cause"></a>Příčina
 
@@ -87,6 +109,27 @@ Některých Linuxových distribucích zatím nepodporují funkce šifrování v 
 Funkce šifrování protokolu SMB 3.0 pro Linux byla zavedena v 4.11 jádra. Tato funkce umožňuje připojení sdílené složky Azure v místním nebo z jiné oblasti Azure. V době publikování tato funkce byla přeneseny zpět do č. 17.04 Ubuntu a Ubuntu 16.10. 
 
 Pokud klient Linux SMB nepodporuje šifrování, připojení Azure souborů pomocí protokolu SMB 2.1 z virtuálního počítače Linux Azure, který je ve stejném datacentru jako sdílené. Ověřte, že [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) je zakázáno v účtu úložiště. 
+
+<a id="accessdeniedportal"></a>
+## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>Chyba "Přístup byl odepřen" při přechodu na sdílené složky Azure na portálu
+
+Při procházení sdílené složky Azure na portálu může zobrazit následující chyba:
+
+Přístup je odepřený.  
+Nemáte přístup.  
+Vypadá to, že nemáte přístup k tomuto obsahu. Chcete-li získat přístup, obraťte se prosím vlastníka.  
+
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. příčina: Váš uživatelský účet nemá přístup k účtu úložiště
+
+### <a name="solution-for-cause-1"></a>Řešení příčiny 1
+
+Přejděte do účtu úložiště, kde se nachází sdílená složka Azure, klikněte na tlačítko **řízení přístupu (IAM)** a ověřte váš uživatelský účet má přístup k účtu úložiště. Další informace najdete v tématu [jak zabezpečit svůj účet úložiště pomocí řízení přístupu na základě Role (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. příčina: Pravidla virtuální sítě nebo brány firewall jsou povolené v účtu úložiště
+
+### <a name="solution-for-cause-2"></a>Řešení příčiny 2
+
+Ověřte, že virtuální sítě a pravidel brány firewall jsou správně nakonfigurovány v účtu úložiště. Pokud chcete otestovat, pokud virtuální síť nebo brána firewall pravidla je příčinou problému, dočasně změnit nastavení pro účet úložiště na **povolit přístup ze všech sítí**. Další informace najdete v tématu [virtuální sítí a bran firewall nakonfigurovat služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Nízký výkon na sdílenou složku Azure připojit na virtuálním počítači s Linuxem
@@ -178,7 +221,7 @@ Jádro Linuxu upgradujte následující verze, které mají opravu tohoto probl�
 - 4.12.11+
 - Všechny verze, které jsou větší než nebo rovna hodnotě 4.13
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nelze vytvořit symbolické odkazy - ln: se nepovedlo vytvořit symbolický odkaz, 't': operace není podporována
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nelze vytvořit symbolické odkazy - ln: se nepovedlo vytvořit symbolický odkaz, 't': Tato operace není podporována
 
 ### <a name="cause"></a>Příčina
 Ve výchozím nastavení nemá připojení sdílené složky Azure v Linuxu pomocí CIFS povolení podpory pro symbolické odkazy (symbolických odkazů). Zobrazí se chyba takto:
@@ -203,6 +246,6 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 
 Potom můžete vytvořit symbolických odkazů na jako navrhované [wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.

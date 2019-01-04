@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 26d25ec44ca19e1b3c0f7a0905c1a37a9fa57026
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e816799ba2df0f97aca7618e7c181a1086bb84a9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653545"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791910"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>Rychlý start: Vytvoření clusteru Apache Spark v HDInsight pomocí šablony
 
@@ -50,7 +50,7 @@ Vytvořte cluster HDInsight Spark pomocí šablony Azure Resource Manageru. Šab
 
 3. Vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**, vyberte **Připnout na řídicí panel** a pak vyberte **Koupit**. Zobrazí se nová dlaždice s názvem **Nasazení šablony**. Vytvoření clusteru trvá přibližně 20 minut. Než budete moct pokračovat k další relaci, musí se cluster nejdříve vytvořit.
 
-Pokud narazíte na problém s vytvářením clusterů HDInsight, může to být způsobeno tím, že k tomu nemáte správná oprávnění. Další informace najdete v tématu popisujícím [požadavky na řízení přístupu](../hdinsight-administer-use-portal-linux.md#create-clusters).
+Pokud narazíte na problém s vytvářením clusterů HDInsight, může to být způsobeno tím, že k tomu nemáte správná oprávnění. Další informace najdete v tématu popisujícím [požadavky na řízení přístupu](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="install-intellijeclipse-for-spark-application"></a>Instalace IntelliJ/Eclipse pro aplikaci Spark
 Použití sady Azure Toolkit pro modul plug-in IntelliJ nebo Eclipse k vývoji aplikací Spark napsané v [Scala](https://www.scala-lang.org/)a odešlete je do clusteru Azure HDInsight Spark přímo z (IntelliJ nebo Eclipse, integrované vývojové prostředí INTEGROVANÉ VÝVOJOVÉ PROSTŘEDÍ). Další informace najdete v článcích [o použití IntelliJ k vytvoření/odeslání aplikace Spark](./apache-spark-intellij-tool-plugin.md) a [o použití Eclipse k vytvoření/odeslání aplikace Spark](./apache-spark-eclipse-tool-plugin.md).

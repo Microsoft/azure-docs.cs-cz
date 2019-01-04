@@ -1,34 +1,34 @@
 ---
-title: Připojení k účtu MongoDB použití studia 3T (MongoChef)
+title: Připojit k rozhraní API služby Azure Cosmos DB pro MongoDB použití studia 3T
 titleSuffix: Azure Cosmos DB
-description: Zjistěte, jak se připojit k rozhraní MongoDB API ve službě Azure Cosmos DB s použitím sady Studio 3T a vytvoření databáze, kolekce a dokumenty po připojení.
+description: Zjistěte, jak se připojit ke službě Cosmos DB pomocí rozhraní API služby Azure Cosmos DB a Studio 3T pro MongoDB.
 keywords: mongochef studia 3T
 services: cosmos-db
-author: slyons
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: sclyon
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 5bdcf035f892f1cbdb8bb43579dba547f0ec8bfd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 396db84186e00fefe14ac55b9a36497c6674cb43
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135644"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811235"
 ---
-# <a name="connect-to-mongodb-account-using-studio-3t-mongochef"></a>Připojení k účtu MongoDB použití studia 3T (MongoChef)
+# <a name="connect-to-cosmos-account-using-studio-3t"></a>Připojení k účtu Cosmos použití studia 3T
 
-Pro připojení k účtu MongoDB API služby Azure Cosmos DB, musíte mít:
+Pro připojení k účtu Cosmos pomocí rozhraní API služby Azure Cosmos DB pro MongoDB, musíte mít:
 
-* Stáhněte a nainstalujte [studia 3T](https://studio3t.com/) (dříve označované jako MongoChef)
-* Azure Cosmos DB mají [připojovací řetězec](connect-mongodb-account.md) informací pro váš účet MongoDB
+* Stáhněte a nainstalujte [studia 3T](https://studio3t.com/)
+* Cosmos DB mají [připojovací řetězec](connect-mongodb-account.md) informace
 
 ## <a name="create-the-connection-in-studio-3t"></a>Vytvoření připojení v studia 3T
-Pokud chcete přidat do správce Studio 3T připojení účtu služby Azure Cosmos DB, proveďte následující kroky:
+Pokud chcete přidat do správce Studio 3T připojení účtu Cosmos, proveďte následující kroky:
 
-1. Načíst informace o připojení služby Azure Cosmos DB u vašeho účtu rozhraní MongoDB API pomocí pokynů [připojení aplikace MongoDB ke službě Azure Cosmos DB](connect-mongodb-account.md) článku.
+1. Načíst informace o připojení účtu Cosmos nakonfigurovanou API MongoDB služby Azure Cosmos DB pomocí pokynů v [připojení aplikace MongoDB ke službě Azure Cosmos DB](connect-mongodb-account.md) článku.
 
     ![Snímek obrazovky stránky připojovacího řetězce](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. Klikněte na tlačítko **připojit** Správce připojení, potom klikněte na tlačítko **nové připojení**
@@ -112,4 +112,6 @@ Pokud chcete vytvořit databázi, kolekci a dokumenty použití studia 3T, prove
     ![Výsledky dotazu Mongo Chef snímek obrazovky](./media/mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>Další postup
-* Prozkoumejte rozhraní API MongoDB služby Azure Cosmos DB [ukázky](mongodb-samples.md).
+
+- Zjistěte, jak [použít Robo 3T](mongodb-robomongo.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
+- Prozkoumejte MongoDB [ukázky](mongodb-samples.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.

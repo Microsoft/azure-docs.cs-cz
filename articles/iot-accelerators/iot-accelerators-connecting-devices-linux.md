@@ -8,20 +8,22 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
-ms.openlocfilehash: 5faa91f054e62e2b3d9d317efe57f2d3f659cee6
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829830"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628319"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Připojení zařízení k akcelerátor řešení vzdálené monitorování (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak připojení fyzických zařízení k akcelerátoru řešení vzdáleného monitorování.
+V tomto kurzu se dozvíte, jak se připojit skutečné zařízení k akcelerátoru řešení vzdáleného monitorování.
 
 Stejně jako u nejvíce vložené aplikace, která běží na zařízeních s omezením, kód klienta pro zařízení aplikace napsané v C. V tomto kurzu vytvoříte aplikaci na počítači s Ubuntu (Linux).
+
+Pokud chcete simulovat zařízení, přečtěte si téma [vytvoření a testování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

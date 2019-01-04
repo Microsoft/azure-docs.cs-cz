@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 23003859b9a75fb986fe65f5528004f3dd150f9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312183"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633040"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Upgradujte na nejnovější verzi rozhraní REST API služby Azure Search
 Pokud používáte předchozí verzi [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/), tento článek vám pomůže při upgradu aplikace použít nejnovější dostupná verze rozhraní API 2017-11-11.
@@ -59,7 +59,7 @@ Pokud váš kód používá tyto funkce, nebude možné upgradovat na 2017-11-11
 ## <a name="conclusion"></a>Závěr
 Pokud potřebujete další podrobnosti o použití rozhraní REST API Azure Search Service, najdete v článku nedávno aktualizovanou [Reference k rozhraní API](https://docs.microsoft.com/rest/api/searchservice/) na webové stránce MSDN.
 
-Vítáme váš názor na Azure Search. Pokud narazíte na problémy, neváhejte nás požádat o pomoc na [fórum Azure Search na webu MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) nebo [StackOverflow](http://stackoverflow.com/). Pokud jste položení otázky o Azure Search na StackOverflow, ujistěte se, že ji označit `azure-search`.
+Vítáme váš názor na Azure Search. Pokud narazíte na problémy, neváhejte nás požádat o pomoc na [fórum Azure Search na webu MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) nebo [StackOverflow](https://stackoverflow.com/). Pokud jste položení otázky o Azure Search na StackOverflow, ujistěte se, že ji označit `azure-search`.
 
 Děkujeme vám za použití Azure Search.
 

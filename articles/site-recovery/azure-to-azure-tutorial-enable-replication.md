@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0aa7b7f3558bab7f3553527e03c44d71dd5a87ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 60ecf08d7f0c40a04472b3e2bf5ef739e51c32e8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833138"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794426"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -138,24 +138,24 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 
 3. Přizpůsobte cílová nastavení následujícím způsobem:
 
-    - **Cílové předplatné:** Cílové předplatné, které se použije pro zotavení po havárii. Ve výchozím nastavení bude cílové předplatné stejné jako zdrojové předplatné. Po kliknutí na Přizpůsobit můžete vybrat jiné cílové předplatné ve stejném tenantovi Azure Active Directory.
-    - **Cílové umístění:** Cílové umístění, které se použije pro zotavení po havárii. Doporučujeme, aby cílové umístění odpovídalo umístění trezoru Site Recovery.
-    - **Cílová skupina prostředků:** Skupina prostředků v cílové oblasti, která bude obsahovat virtuální počítače Azure po převzetí služeb při selhání. Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu prostředků s příponou asr. Umístěním cílové skupiny prostředků může být libovolná oblast s výjimkou oblasti, ve které jsou hostované vaše zdrojové virtuální počítače.
-    - **Cílová virtuální síť:** Síť v cílové oblasti, ve které budou virtuální počítače po převzetí služeb při selhání.
+    - **Cílové předplatné**: Cílové předplatné použité pro zotavení po havárii. Ve výchozím nastavení bude cílové předplatné stejné jako zdrojové předplatné. Po kliknutí na Přizpůsobit můžete vybrat jiné cílové předplatné ve stejném tenantovi Azure Active Directory.
+    - **Cílové umístění**: Cílové oblasti používané ke zotavení po havárii. Doporučujeme, aby cílové umístění odpovídalo umístění trezoru Site Recovery.
+    - **Cílová skupina prostředků**: Skupina prostředků v cílové oblasti, která obsahuje virtuální počítače Azure po převzetí služeb při selhání. Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu prostředků s příponou asr. Umístěním cílové skupiny prostředků může být libovolná oblast s výjimkou oblasti, ve které jsou hostované vaše zdrojové virtuální počítače.
+    - **Cílová virtuální síť**: Síť v cílové oblasti, že jsou virtuální počítače umístěné po převzetí služeb při selhání.
       Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou virtuální síť (a podsítě) s příponou asr.
-    - **Účty úložiště mezipaměti:** Site Recovery používá účet úložiště ve zdrojové oblasti. Do tohoto účtu se odešlou změny zdrojových virtuálních počítačů před replikací o cílového umístění.
+    - **Účty úložiště mezipaměti**: Site Recovery využívá účet úložiště ve zdrojové oblasti. Do tohoto účtu se odešlou změny zdrojových virtuálních počítačů před replikací o cílového umístění.
       >[!NOTE]
       >Pokud používáte účet úložiště mezipaměti povolenou bránu firewall, ujistěte se vám "Povolit důvěryhodným službám Microsoftu". [Další informace](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
       >
 
-    - **Cílové účty úložiště (pokud zdrojový virtuální počítač nepoužívá spravované disky):** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti nový účet úložiště zrcadlící účet úložiště zdrojového virtuálního počítače.
+    - **Cílové účty úložiště (Pokud zdrojový virtuální počítač nepoužívá spravované disky)**: Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti zrcadlící účet úložiště virtuálního počítače zdrojového nový účet úložiště.
       >[!NOTE]
       >Pokud používáte účet úložiště povolenou bránu firewall zdroje nebo cíle, zajištění "Povolit důvěryhodným službám Microsoftu". [Další informace](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
       >
 
-    - **Repliky spravovaných disků (pokud zdrojový virtuální počítač používá spravované disky):** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti repliky spravovaných disků zrcadlící spravované disky zdrojového virtuálního počítače se stejným typem úložiště (Standard nebo Premium) jako u spravovaných disků zdrojového virtuálního počítače.
-    - **Cílové skupiny dostupnosti**: ve výchozím nastavení Azure Site Recovery vytvoří nové dostupnosti v cílové oblasti s názvem, který má příponu "Azure Site Recovery" pro virtuální počítače součástí skupiny dostupnosti ve zdrojové oblasti. V případě, že skupina dostupnosti Azure Site Recovery vytvoří již existuje, je znovu.
-    - **Cílové zóny dostupnosti**: ve výchozím nastavení, Site Recovery přiřadí číslo zóny jako zdrojové oblasti v cílové oblasti, v případě, že cílové oblasti podporují zóny dostupnosti. 
+    - **Repliky spravovaných disků (Pokud zdrojový virtuální počítač používá spravované disky)**: Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače se stejným typem úložiště (Standard nebo premium), protože zdrojový virtuální počítač spravovaný disk repliky spravovaných disků.
+    - **Cílové skupiny dostupnosti**: Ve výchozím nastavení Azure Site Recovery vytvoří nové dostupnosti v cílové oblasti s názvem, který má příponu "Azure Site Recovery" pro virtuální počítače součástí skupiny dostupnosti ve zdrojové oblasti. V případě, že skupina dostupnosti Azure Site Recovery vytvoří již existuje, je znovu.
+    - **Cílové zóny dostupnosti**: Ve výchozím nastavení Site Recovery přiřadí číslo zóny jako zdrojové oblasti v cílové oblasti, v případě, že cílové oblasti podporují zóny dostupnosti. 
 
     Pokud cílová oblast nepodporuje zóny dostupnosti, jsou cílové virtuální počítače ve výchozím nastavení nakonfigurované jako jedné instance. V případě potřeby můžete nakonfigurovat tyto virtuální počítače kliknutím na "Vlastní" jako součást skupiny dostupnosti v cílové oblasti.
 
@@ -165,10 +165,10 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 
 4. Chcete-li přizpůsobit nastavení zásad replikace, klikněte na tlačítko **vlastní** vedle **zásady replikace**a upravte následující nastavení podle potřeby:
 
-    - **Název zásady replikace:** Název zásady.
-    - **Uchovávání bodu obnovení:** Ve výchozím nastavení uchovává Site Recovery body obnovení po dobu 24 hodin. Můžete nakonfigurovat hodnotu v rozmezí 1 až 72 hodin.
-    - **Frekvence pořizování snímků konzistentních vzhledem k aplikacím:** Ve výchozím nastavení pořizuje Site Recovery snímek konzistentní vzhledem k aplikacím každé 4 hodiny. Můžete nakonfigurovat jakoukoli hodnotu v rozmezí 1 až 12 hodin. Snímek konzistentní vzhledem k aplikacím je snímek dat aplikací ve virtuálním počítači v daném okamžiku. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace na virtuálním počítači budou při pořízení snímku v konzistentním stavu.
-    - **Replikační skupina:** Pokud vaše aplikace vyžaduje konzistenci napříč několika virtuálními počítači, můžete pro tyto virtuální počítače vytvořit replikační skupinu. Ve výchozím nastavení nejsou vybrané virtuální počítače součástí žádné replikační skupiny.
+    - **Název zásady replikace**: Název zásady.
+    - **Uchování bodu obnovení**: Ve výchozím nastavení uchovává Site Recovery body obnovení po dobu 24 hodin. Můžete nakonfigurovat hodnotu v rozmezí 1 až 72 hodin.
+    - **Frekvence snímků konzistentní vzhledem k**: Ve výchozím nastavení Site Recovery pořídí konzistentního snímku každé 4 hodiny. Můžete nakonfigurovat jakoukoli hodnotu v rozmezí 1 až 12 hodin. Snímek konzistentní vzhledem k aplikacím je snímek dat aplikací ve virtuálním počítači v daném okamžiku. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace na virtuálním počítači budou při pořízení snímku v konzistentním stavu.
+    - **Replikační skupina**: Pokud vaše aplikace potřebuje konzistenci napříč virtuálními počítači, můžete vytvořit replikační skupinu. u těchto počítačů. Ve výchozím nastavení nejsou vybrané virtuální počítače součástí žádné replikační skupiny.
 
 5. V **vlastní**vyberte **Ano** konzistence více virtuálních počítačů, pokud chcete přidat virtuální počítače do nové nebo existující replikační skupiny. Chcete-li virtuální počítače součástí replikační skupiny. Pak klikněte na **OK**.
 
@@ -180,8 +180,8 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 Pokud zdrojový virtuální počítač má povolen Azure disk encryption (ADE), se zobrazí nastavení šifrování:
 
 1. Zkontrolujte nastavení šifrování.
-    - **Trezory klíčů pro šifrování disků:** Azure Site Recovery ve výchozím nastavení vytvoří v cílové oblasti nový trezor klíčů s příponou názvu „asr“ na základě klíčů pro šifrování disků zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor.
-    - **Trezory klíčů pro šifrování klíčů:** Azure Site Recovery ve výchozím nastavení vytvoří v cílové oblasti nový trezor klíčů s příponou názvu „asr“ na základě klíčových šifrovacích klíčů zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor.
+    - **Trezory klíčů šifrování disku**: Ve výchozím nastavení Azure Site Recovery vytvoří nové služby key vault v cílové oblasti s názvem, který má příponu "Azure Site Recovery" podle klíče pro šifrování disků zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor.
+    - **Trezory klíčů šifrovací klíče**: Ve výchozím nastavení Azure Site Recovery vytvoří nové služby key vault v cílové oblasti s názvem, který má příponu "Azure Site Recovery" podle klíče šifrovací klíče zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor.
 
 2. Klikněte na tlačítko **vlastní** vybrat vlastní trezorům klíčů.
 

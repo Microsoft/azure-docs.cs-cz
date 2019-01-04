@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: d801ed309b0d79dd6655c7dd59ebd17bd37de222
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 9d566c0f95325635c5ce5030f4d3b22dba7ceb08
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164394"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726027"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
 
@@ -44,7 +44,7 @@ Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 
 ## <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 
-Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru a fyzické charakteristiky hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na virtuálních jádrech poskytuje flexibilitu, kontrolu, transparentnost spotřeby jednotlivých prostředků a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Tento model umožňuje zvolit výpočetních, paměťových a úložiště na základě jejich potřebám provádění úloh. V nákupní model založený na virtuálních jádrech můžete vybrat mezi [Obecné](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) a [pro důležité obchodní informace](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) úrovně služeb pro obě [izolované databáze](sql-database-single-database-scale.md), [ spravované instance](sql-database-managed-instance.md), a [elastické fondy](sql-database-elastic-pool.md). Pro izolované databáze, můžete také [Hyperškálovatelného (preview)](sql-database-service-tier-hyperscale.md) úroveň služby.
+Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru a fyzické charakteristiky hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na virtuálních jádrech poskytuje flexibilitu, kontrolu, transparentnost spotřeby jednotlivých prostředků a jednoduchý způsob převodu požadavků místních úlohy do cloudu. Tento model umožňuje zvolit výpočetních, paměťových a úložiště na základě jejich potřebám provádění úloh. V nákupní model založený na virtuálních jádrech můžete vybrat mezi [Obecné](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) a [pro důležité obchodní informace](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) úrovně služeb pro obě [izolované databáze](sql-database-single-database-scale.md), [ spravované instance](sql-database-managed-instance.md), a [elastické fondy](sql-database-elastic-pool.md). Pro izolované databáze, můžete také [Hyperškálovatelného (preview)](sql-database-service-tier-hyperscale.md) úroveň služby.
 
 Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě vybrat úložnou a výpočetní prostředky, odpovídají zajištění místního výkonu a optimalizovat cena. V nákupní model založený na virtuálních jádrech zákazníci platí za:
 

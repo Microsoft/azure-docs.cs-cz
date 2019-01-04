@@ -12,24 +12,24 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3eb5b2300ea2af7bc778e0831d105f286eab247c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3808b3e93ed7e3ad374054c3c32fd54930f50972
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721404"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606567"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profilovat živé aplikace Azure Service Fabric pomocí Application Insights
 
 Můžete také nasadit Application Insights profiler za tyto služby:
-* [Azure Web Apps](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Cloud Services](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
 ## <a name="set-up-the-environment-deployment-definition"></a>Nastavte definici nasazení prostředí
 
-Application Insights Profiler je v ceně s Windows Azure Diagnostics (WAD). Rozšíření WAD můžete nainstalovat pomocí šablony Azure RM pro váš cluster Service Fabric. Je Ukázková šablona: [ **šablonu, která nainstaluje WAD na clusteru Service Fabric.**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
+Application Insights Profiler je v ceně s Windows Azure Diagnostics (WAD). Rozšíření WAD můžete nainstalovat pomocí šablony Azure RM pro váš cluster Service Fabric. Je Ukázková šablona: [**Šablona, která nainstaluje WAD clusteru Service Fabric.**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
 Nastavení prostředí, pomocí následujících kroků:
 1. K zajištění, že používáte [rozhraní .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější, stačí potvrdit, že je nasazený operační systém `Windows Server 2012 R2` nebo novější.

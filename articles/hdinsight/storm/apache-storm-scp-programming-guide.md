@@ -9,15 +9,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496870"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631817"
 ---
 # <a name="scp-programming-guide"></a>Průvodce programováním pro spojovací bod služby
-Spojovací bod služby je platformou můžete tvořit v reálném čase spolehlivé a konzistentní a zpracování dat vysoce výkonné aplikace. Systém orchard je založen na horní [Apache Storm](http://storm.incubator.apache.org/) – systém ve komunity OSS pro zpracování datových proudů. Storm je určen Nathan marz a byla open source služba Twitter. Využívá [Apache ZooKeeper](http://zookeeper.apache.org/), jiný projekt Apache umožňující vysoce spolehlivých distribuovaných správy koordinace a stavu. 
+Spojovací bod služby je platformou můžete tvořit v reálném čase spolehlivé a konzistentní a zpracování dat vysoce výkonné aplikace. Systém orchard je založen na horní [Apache Storm](https://storm.incubator.apache.org/) – systém ve komunity OSS pro zpracování datových proudů. Storm je určen Nathan marz a byla open source služba Twitter. Využívá [Apache ZooKeeper](https://zookeeper.apache.org/), jiný projekt Apache umožňující vysoce spolehlivých distribuovaných správy koordinace a stavu. 
 
 Pouze projekt spojovací bod služby přenést Storm ve Windows, ale také projekt přidán rozšíření a přizpůsobení pro ekosystém Windows. Rozšíření patří prostředí pro vývojáře .NET a knihovny, přizpůsobení zahrnuje nasazení založené na Windows. 
 
@@ -309,7 +309,7 @@ Pro ISCPBatchBolt, abychom se mohli `StormTxAttempt` z `parms`a použít ho k po
 
 Obecně řečeno moduly plug-in spojovací bod služby může běžet ve dvou režimech tady:
 
-1. Místní režim Test: V tomto režimu, moduly plug-in spojovací bod služby (C\# uživatelský kód) spustit ve fázi vývoje v sadě Visual Studio. `LocalContext` je možné v tomto režimu, který poskytuje metody k serializaci emitovaný řazené kolekce členů k místním souborům a přečtěte si je zpět do paměti.
+1. Místní Test režim: V tomto režimu, moduly plug-in spojovací bod služby (C\# uživatelský kód) spustit ve fázi vývoje v sadě Visual Studio. `LocalContext` je možné v tomto režimu, který poskytuje metody k serializaci emitovaný řazené kolekce členů k místním souborům a přečtěte si je zpět do paměti.
    
         public interface ILocalContext
         {
@@ -317,7 +317,7 @@ Obecně řečeno moduly plug-in spojovací bod služby může běžet ve dvou re
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
-2. Běžný režim: V tomto režimu, moduly plug-in spojovací bod služby vydávaných procesem java pro storm.
+2. Běžný režim: V tomto režimu je procesem java pro storm spuštěných modulů plug-in spojovací bod služby.
    
     Tady je příklad spuštění modulu plug-in spojovací bod služby:
    
@@ -346,7 +346,7 @@ Obecně řečeno moduly plug-in spojovací bod služby může běžet ve dvou re
         }
 
 ## <a name="topology-specification-language"></a>Topologie jazyka
-Určení topologie spojovací bod služby je jazyka specifického pro doménu pro popisující a konfiguraci topologie spojovací bod služby. Je založen na pro Storm Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) a je rozšířena podle spojovací bod služby.
+Určení topologie spojovací bod služby je jazyka specifického pro doménu pro popisující a konfiguraci topologie spojovací bod služby. Je založen na pro Storm Clojure DSL (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) a je rozšířena podle spojovací bod služby.
 
 Specifikace topologie můžete odeslat přímo do clusteru storm pro spouštění prostřednictvím ***runspec*** příkazu.
 
@@ -594,7 +594,7 @@ Pokud je povoleno potvrzení, v spout, slouží slovník pro ukládání do mezi
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** příklad ukazuje, jak implementovat topologii transakční. Má jeden spout volá **generátor**, volá batch bolt **partial-count**, bolt potvrzení změn s názvem **součet počtu**. Jsou také tři soubory txt předem vytvořené: **DataSource0.txt**, **DataSource1.txt**, a **DataSource2.txt**.
+**HelloWorldTx** příklad ukazuje, jak implementovat topologii transakční. Má jeden spout volá **generátor**, volá batch bolt **partial-count**, bolt potvrzení změn s názvem **součet počtu**. Existují tři soubory txt předem vytvořené: **DataSource0.txt**, **DataSource1.txt**, a **DataSource2.txt**.
 
 V každé transakci spout **generátor** náhodně vybere dva soubory z předem vytvořených tři soubory a generovat názvy dvou souborů **partial-count** bolt. Bolt **partial-count** získá soubor název z přijatý řazené kolekce členů, pak otevřete soubor a počet slov v tomto souboru a nakonec generování slovo číslo, které má **součet počtu** bolt. **Součet počtu** bolt shrnuje celkový počet.
 

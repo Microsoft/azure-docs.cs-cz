@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 2f4bc578b567462c2591c28b270f863ba5756815
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193905"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976014"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple zabezpečení a ochranu dat.
 
@@ -121,7 +121,7 @@ Další informace o StorSimple Snapshot Manageru, přejděte na [co je StorSimpl
 Doporučujeme vám pomáhají zajistit, že hesel zařízení StorSimple jsou silné a dobře chráněné pomocí následujících pokynů:
 
 * Změna hesla každé tři měsíce. Změna hesla se pořizují na rok vynucuje.
-* Použijte silná hesla. Další informace najdete v části [vytvořit volba bezpečnějších hesel a chránit je](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/).
+* Použijte silná hesla. Další informace najdete v části [vytvořit volba bezpečnějších hesel a chránit je](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/).
 * Vždy používejte různá hesla pro přístup k jiné mechanismy; Každý z hesla, které zadáte, musí být jedinečné.
 * Nesdílejte hesla s kýmkoli, kdo nemá oprávnění k přístupu k zařízení StorSimple.
 * Mluví o zadání hesla před ostatními nebo pomocného parametru na formát hesla.

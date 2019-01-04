@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 63025a299f6b7b48936be9702522a832a1d77330
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d51cbc7bd88fd9f4baf066210e7b7da8cd175cd6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074792"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603119"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Doporučené postupy nástroje QnA Maker znalostní báze
 [Životního cyklu vývoje znalostní báze](../Concepts/development-lifecycle-knowledge-base.md) vás o tom, jak spravovat znalostní BÁZÍ od začátku do konce. Použijte tyto osvědčené postupy pro zlepšení znalostní báze a application/chatovací robot koncovým uživatelům poskytovat lepší výsledky.
@@ -67,8 +67,11 @@ Výchozí skóre spolehlivosti, který se používá jako prahová hodnota je 50
 |Je parkovací k dispozici?|Máte car park?|Struktura větu|
  |Ahoj|Jo<br>Dobrý den existuje!|Word – vizuální styl nebo slang|
 
-### <a name="use-metadata-filters"></a>Použití filtrů metadat
-[Metadata](../How-To/edit-knowledge-base.md) umožňuje zúžit výsledky dotazu uživatele na základě filtrů. Odpověď znalostní báze se může lišit podle značky metadat i v případě, že dotaz je stejný. Například *"kde je umístěn parkovací"* může mít různé odpovědi, pokud umístění restaurace větve se liší – to znamená, metadata jsou *umístění: Seattle* oproti *umístění: Redmond*.
+<a name="#use-metadata-filters"></a>
+
+### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Použití značek metadata do filtru otázek a odpovědí
+
+[Metadata](../How-To/edit-knowledge-base.md) umožňuje zúžit výsledky dotazu uživatele na základě metadat značek. Odpověď znalostní báze se může lišit podle značky metadat i v případě, že dotaz je stejný. Například *"kde je umístěn parkovací"* může mít různé odpovědi, pokud umístění restaurace větve se liší – to znamená, metadata jsou *umístění: Seattle* oproti *umístění: Redmond*.
 
 ### <a name="use-synonyms"></a>Použití synonym
 Zatímco některé podpora synonym v angličtině, použijte [word rozšiřuje](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) synonyma přidáte klíčová slova, které mají jiný formát. Synonyma by měl přidány na úrovni služby QnA Maker a sdílí všechny znalostních bází ve službě.

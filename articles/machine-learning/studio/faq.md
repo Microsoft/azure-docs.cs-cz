@@ -430,7 +430,7 @@ Doporučujeme začít s úrovní Standard S1 a monitorovat využití prostředk�
 
 Nové fakturační plány jsou dostupné ve třech produkčních oblastech, kde podporujeme nové webové služby:
 
-* Střed USA – jih
+* Středojižní USA
 * Západní Evropa
 * Jihovýchodní Asie
 

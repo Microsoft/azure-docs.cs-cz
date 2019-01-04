@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 9880afb6c4fd2b7fe1e97b5390c4769c8cafb4ed
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e293c27faa69fe5c79b776a98bcae0f72e85c3ee
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634614"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811150"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Partneři business intelligence SQL Data Warehouse
 K vytvoření vašeho řešení začátku do konce datového skladu, vyberte z široké škály špičkové nástroje.  Tento článek se soustředí partnerských společností Microsoft s Azure SQL Data Warehouse podporuje řešení pro business intelligence (BI).
@@ -34,7 +34,7 @@ K vytvoření vašeho řešení začátku do konce datového skladu, vyberte z �
 | ![SiSense][9] |**SiSense**<br>SiSense je software kompletní Business Intelligence, která se dodává s nástroji, které firma potřebuje analýza a vizualizace dat: vysoce výkonné analytické databáze, schopnost připojit k více zdrojů, jednoduchá extrakce (ETL) a na základě webových dat vizualizace. Začněte analyzovat a vizualizovat velké datové sady s SiSense BI a analytických ještě dnes. |[Web][sisense_website]<br>[Datový list][sisense_datasheet]<br>[Twitter][sisense_twitter]<br>[YouTube][sisense_youtube] |[![sisense videa](./media/sql-data-warehouse-partner-business-intelligence/sisense_video.jpg)](https://www.youtube.com/watch?v=6N3mkTWI5R4) |
 | ![Tableau][10] |**Tableau**<br>Tableau pro samoobslužné analýzy pomoct kdokoli viděl a pochopil svá data v mnoha různých dat z plochých souborů do databáze. Tableau s konektorem nativního, optimalizovaného do Microsoft Azure SQL Data Warehouse, která podporuje živých dat a analýzu v paměti. |[Marketplace][tableau_marketplace]<br>[Web][tableau_website]<br>[Datový list][tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![tableau videa](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
 | ![Targit][11] |**Targit**<br>Poskytuje sada rozhodnutí Targit BI a analytických platformu, která poskytuje řídicí panely v reálném čase, samoobslužné analýzy, uživatelsky přívětivé vytváření sestav, poutavé mobilní funkce a technologie jednoduché zjišťování dat v jedné a získá na ucelenosti řešení. Targit nabízí společnostem odvahu tak, aby fungoval. |[Marketplace][targit_marketplace]<br>[Web][targit_website]<br>[Twitter][targit_twitter]<br>[YouTube][targit_youtube] |[![targit videa](./media/sql-data-warehouse-partner-business-intelligence/targit_video.jpg)](https://www.youtube.com/watch?v=A0vET80Ker4) |
-| ![Yellowfin][12] |**Yellowfin**<br>Yellowfin je nejvyšší hodnocení dodavatele cloudu BI pro ad-hoc sestavy a řídicí panely podle barc vyhodnocena jako ŠPIČKOVÁ; BI průzkumu. Připojení k Azure SQL Data Warehouse a pak vytvořit a sdílet působivé sestavy a řídicí panely s Oceňovaný spolupráci BI a umístění informačních funkcí. |[Marketplace][yellowfin_marketplace]<br>[Web][yellowfin_website]<br>[List] [yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![yellowfin videa](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
+| ![Yellowfin][12] |**Yellowfin**<br>Yellowfin je nejvyšší hodnocení dodavatele cloudu BI pro ad-hoc sestavy a řídicí panely podle barc vyhodnocena jako ŠPIČKOVÁ; BI průzkumu. Připojení k Azure SQL Data Warehouse a pak vytvořit a sdílet působivé sestavy a řídicí panely s Oceňovaný spolupráci BI a umístění informačních funkcí. |[Marketplace][yellowfin_marketplace]<br>[Web][yellowfin_website]<br>[Datový list][yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![yellowfin videa](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
@@ -95,12 +95,17 @@ Další informace o některých z našich partnerů, naleznete v tématu [partne
 
 [tableau_datasheet]:http://www.tableau.com/stories/workbook/azure-sql-data
 
-<!--[targit_datasheet]:--> [yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
+<!--[targit_datasheet]:-->
+
+[yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
 
 <!--Marketplace Links -->
+
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 
-<!--[clearstory_marketplace]:--> [dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
+<!--[clearstory_marketplace]:-->
+
+[dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
 
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
 
@@ -118,15 +123,24 @@ Další informace o některých z našich partnerů, naleznete v tématu [partne
 
 <!--Press links-->
 
-<!--[birst_press]:--> [clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
+<!--[birst_press]:-->
 
-<!--[dell_statistica_press]:--> [dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+[clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
 
-<!--[jinfonet_press]:--> [logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/ [looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
+<!--[dell_statistica_press]:-->
+
+[dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+
+<!--[jinfonet_press]:-->
+
+[logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/
+[looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
 
 <!--[qlik_press]:-->
 
-<!--[sisense_press]:--> [tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
+<!--[sisense_press]:-->
+
+[tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
 
 <!--[targit_press]:-->
 <!--[yellowfin_press]:-->

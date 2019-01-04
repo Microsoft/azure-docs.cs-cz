@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: f36d89fb01e7892ef10576b7f5f0b5fa86d8a21b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b7c94fd2372f1d995c50439b2bd5eaefb237e175
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314247"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651397"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
-[Apache Phoenix](http://phoenix.apache.org/) je open source, vrstva masivně paralelní relační databáze nad [Apache HBase](apache-hbase-overview.md). Phoenix umožňuje použít dotazy na podobném SQL s HBase SSH pomocí nástrojů, jako [SQLLine](apache-hbase-phoenix-squirrel-linux.md). Phoenix také poskytuje server HTTP volá Phoenix Query Server (PQS), tenkým klientům, který podporuje dva mechanismy přenosu pro komunikaci klienta: JSON a Protocol Buffers. Protocol Buffers je výchozího mechanismu a nabízí mnohem efektivnější komunikaci než pro JSON.
+[Apache Phoenix](https://phoenix.apache.org/) je open source, vrstva masivně paralelní relační databáze nad [Apache HBase](apache-hbase-overview.md). Phoenix umožňuje použít dotazy na podobném SQL s HBase SSH pomocí nástrojů, jako [SQLLine](apache-hbase-phoenix-squirrel-linux.md). Phoenix také poskytuje server HTTP volá Phoenix Query Server (PQS), tenkým klientům, který podporuje dva mechanismy přenosu pro komunikaci klienta: JSON a Protocol Buffers. Protocol Buffers je výchozího mechanismu a nabízí mnohem efektivnější komunikaci než pro JSON.
 
 Tento článek popisuje způsob použití PQS REST SDK k vytváření tabulek, řádky upsert jednotlivě a hromadně a výběr dat pomocí příkazů jazyka SQL. V příkladech se používá [ovladač rozhraní Microsoft .NET pro Apache Phoenix Query Server](https://www.nuget.org/packages/Microsoft.Phoenix.Client). Tato sada SDK je postavená na [Apache Calcite Avatica](https://calcite.apache.org/avatica/) rozhraní API, která používají Protocol Buffers výlučně pro formát serializace.
 

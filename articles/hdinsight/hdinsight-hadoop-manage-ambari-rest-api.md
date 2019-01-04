@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: b5083a2af335bd40dc55f7f325ac0a4ad125b682
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384221"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715100"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí rozhraní Apache Ambari REST API
 
@@ -26,7 +26,7 @@ Apache Ambari zjednodušuje správu a monitorování clusteru Hadoop tím, že p
 
 ## <a id="whatis"></a>Co je Apache Ambari
 
-[Apache Ambari](http://ambari.apache.org) poskytuje webové uživatelské rozhraní, které lze použít ke správě a monitorování clusterů systému Hadoop. Vývojářům můžete integrovat tyto funkce do svých aplikací s použitím [rozhraní Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Apache Ambari](https://ambari.apache.org) poskytuje webové uživatelské rozhraní, které lze použít ke správě a monitorování clusterů systému Hadoop. Vývojářům můžete integrovat tyto funkce do svých aplikací s použitím [rozhraní Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Ambari je dostupné ve výchozím nastavení s clustery HDInsight založené na Linuxu.
 
@@ -232,7 +232,7 @@ foreach($item in $respObj.items) {
 
 ## <a name="example-get-the-default-storage"></a>Příklad: Získání výchozí úložiště
 
-Při vytváření clusteru služby HDInsight, musíte použít účet služby Azure Storage nebo Data Lake Store jako výchozím úložištěm clusteru. Ambari slouží k načtení těchto informací po vytvoření clusteru. Pokud třeba chcete pro čtení a zápisu dat do kontejneru mimo HDInsight.
+Při vytváření clusteru služby HDInsight, musí použít účet služby Azure Storage nebo Data Lake Storage jako výchozí úložiště clusteru. Ambari slouží k načtení těchto informací po vytvoření clusteru. Pokud třeba chcete pro čtení a zápisu dat do kontejneru mimo HDInsight.
 
 Následující příklady načíst výchozí konfigurace úložiště v clusteru:
 
@@ -255,9 +255,9 @@ Vrácená hodnota je podobná následující příklady:
 
 * `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – Tato hodnota označuje, že cluster používá účet Azure Storage pro výchozí úložiště. `ACCOUNTNAME` Hodnota je název účtu úložiště. `CONTAINER` Část je název kontejneru objektů blob v účtu úložiště. Kontejner je kořenový adresář HDFS kompatibilní úložiště pro cluster.
 
-* `adl://home` – Tato hodnota označuje, že cluster používá Azure Data Lake Store pro výchozí úložiště.
+* `adl://home` – Tato hodnota označuje, že cluster používá úložiště Azure Data Lake pro výchozí úložiště.
 
-    Pokud chcete zjistit název účtu Data Lake Store, použijte následující příklady:
+    Pokud chcete zjistit název účtu Data Lake Storage, použijte následující příklady:
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -271,9 +271,9 @@ Vrácená hodnota je podobná následující příklady:
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    Vrácená hodnota je podobný `ACCOUNTNAME.azuredatalakestore.net`, kde `ACCOUNTNAME` je název účtu Data Lake Store.
+    Vrácená hodnota je podobný `ACCOUNTNAME.azuredatalakestore.net`, kde `ACCOUNTNAME` je název účtu Data Lake Storage.
 
-    Pokud chcete zjistit adresáři v Data Lake Store, obsahující úložiště pro cluster, použijte následující příklady:
+    Pokud chcete najít adresář Data Lake Storage, který obsahuje úložiště pro cluster, použijte následující příklady:
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -287,7 +287,7 @@ Vrácená hodnota je podobná následující příklady:
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    Vrácená hodnota je podobný `/clusters/CLUSTERNAME/`. Tato hodnota je cesta v rámci účtu Data Lake Store. Tato cesta je kořenový systému HDFS kompatibilní souborů pro cluster. 
+    Vrácená hodnota je podobný `/clusters/CLUSTERNAME/`. Tato hodnota je cesta v rámci účtu Data Lake Storage. Tato cesta je kořenový systému HDFS kompatibilní souborů pro cluster. 
 
 > [!NOTE]  
 > `Get-AzureRmHDInsightCluster` Rutiny poskytované [prostředí Azure PowerShell](/powershell/azure/overview) také vrátí informace o úložiště pro cluster.

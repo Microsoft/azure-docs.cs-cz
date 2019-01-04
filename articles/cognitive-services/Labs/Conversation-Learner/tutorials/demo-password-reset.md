@@ -10,21 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 409647da146a2844384204cb03de5028d45e5763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240864"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792386"
 ---
 # <a name="demo-password-reset"></a>Ukázka: Resetování hesla
-Tato ukázka znázorňuje robota jednoduché technické podpory, který vám pomůže s resetování hesla. 
-
-Ukazuje, jak konverzace Learner další toky netriviální dialogového okna, sekvence více zapnout, včetně třídu mimo doménu. Tato ukázka nepoužívá žádné kódu nebo entity.
+Tento kurz představuje robota jednoduché technické podpory, který vám pomůže s resetování hesla s využitím learner konverzace. Model bodu robotů také další toky netriviální dialogové okno a více zapnout včetně třídy mimo doménu pořadí. Úkol můžete udělat bez kódu nebo entity.
 
 ## <a name="video"></a>Video
 
-[![Ukázka heslo ve verzi Preview](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
+[![Ukázka heslo ve verzi Preview](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
 
 ## <a name="requirements"></a>Požadavky
 Tento kurz vyžaduje, zda je spuštěna bot resetování hesla
@@ -37,41 +35,48 @@ V seznamu modelu ve webovém uživatelském rozhraní kliknutím na kurz ukázka
 
 ### <a name="actions"></a>Akce
 
-Vytvořili jsme sadu akcí, kde se uživatel dívá pro pomoc s jejich hesla, včetně řešení.
+Model obsahuje sadu akcí, které má pomoct uživatelům s řešením běžných problémů heslo.
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
 ### <a name="training-dialogs"></a>Dialogová okna školení
 
-Existuje několik dialogů, školení. Existují také ukázky out doménové třídy – například požadavky uživatelů jako "řízení pokynů" jsou mimo doménu. robot se předala příklady některé z požadavků domény a můžou reagovat s "Nelze zvýšit s ním."
+Model obsahuje také několik trénování dialogová okna, včetně některých, které ukazují mimo doménu třídy školení. Například, jako jsou uživatelé, kteří můžou požádat o řízení pokynů. Ukázka bot vyškolila na několik pro demonstrační účely, a jednoduše odpoví uvádí ho "nelze pomáhá, který." Seznam existujících dialogů trénování nachází v části "Dialogů Train" na levém panelu.
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-Jako příklad si vyzkoušíme relaci výuky.
+1. Na levém panelu klikněte na tlačítko "Dialogů Train" a potom na tlačítko "Dialogové okno Nový Train".
+2. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "i ztráty hesla."
+3. Klikněte na tlačítko "Skóre akce".
+4. Vyberte odpověď na "Je, že pro místní účet nebo účet Microsoft?"
+5. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "prosím místní účet"
+6. Klikněte na tlačítko "Skóre akce".
+7. Vyberte odpověď na "kterou verzi Windows máte?"
+8. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "windows xp"
+9. Klikněte na tlačítko "Skóre akce".
+10. Klikněte "+ akce" tlačítko.
+11. "Bodu robotů také odpovědi na..." pole, zadejte "řešení: Postup resetování hesla na Windows XP."
+12. Klikněte na tlačítko "Vytvořit".
 
-1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
-1. Zadejte "Můžu ztráty hesla".
-2. Klikněte na akci skóre.
-3. Kliknutím vyberte "Je, že pro místní účet nebo účet Microsoft?"
-4. Zadejte "Místní účet".
-5. Klikněte na výsledek akce.
-3. Klikněte na Vybrat "kterou verzi Windows máte?"
-4. Zadejte "Windows 8'.
-5. Klikněte na výsledek akce.
-6. Vyberte "řešení: resetování hesla v systému Windows 8."
-4. Klikněte na Hotovo výuky.
+### <a name="training-dialogs-for-out-of-domain-scenarios"></a>Dialogová okna školení pro scénáře mimo doménu
 
-Pojďme si vyzkoušet, jak robota další třídu mimo doménu.
-
-1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
-1. Zadejte 'vyhledávání na webu'.
-    - Toto je příklad mimo doménovou třídu. 
-2. Klikněte na akci skóre.
-3. Kliknutím vyberte: je nám líto, můžu vám nemůže pomoci s ním."
-    - Všimněte si, že skóre pro tuto možnost je nyní nízká. Ale po pár dalších výuky, se zobrazí skóre vyšší.
-4. Klikněte na Hotovo výuky.
-
-Viděli jste nyní jak vytvořit na základní technickou podporu ukázku a jak můžete zjistěte, jak poskytnout řešení a také zpracování z ukázkové dotazy.
+1. Na levém panelu klikněte na tlačítko "Dialogů Train" a pak existující "hračkami úložišť" trénování dialogového okna.
+2. Na panelu chatu klikněte na tlačítko utterance "slonovi úložiště".
+3. V poli "Přidat alternativní vstup..." typ "vyhledávání na webu" a stiskněte enter.
+4. V poli "Přidat alternativní vstup..." typ "letu rezervace" a stiskněte enter.
+5. Klikněte na tlačítko "Uložit změny".
+6. Klikněte na tlačítko "Upravit uložit".
+7. Na levém panelu klikněte na tlačítko "Protokolu dialogů" a potom na tlačítko "Dialogové okno Nový protokol".
+8. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "nelze najít heslo"
+9. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "Účet Microsoft"
+10. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "Děkujeme"
+11. Klikněte na tlačítko "Testování Hotovo".
+12. Kliknutím na dialogové okno protokol "nelze najít heslo" ze zobrazení mřížky.
+13. Na panelu chatu, klikněte na tlačítko nesprávně vykreslené "řešení: Postup resetování hesla účtu Microsoft"odpověď.
+14. Klikněte "+ akce" tlačítko.
+15. "Bodu robotů také odpovědi na..." pole, zadejte "Určitě"
+16. Klikněte na tlačítko "Vytvořit".
+17. Klikněte na tlačítko "Uložit jako trénování dialogové okno".
 
 ## <a name="next-steps"></a>Další postup
 

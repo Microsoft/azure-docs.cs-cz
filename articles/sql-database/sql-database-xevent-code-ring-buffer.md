@@ -9,15 +9,15 @@ ms.devlang: PowerShell
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 522561d8afcf6fe1bdd2887f7fd5180b79565a61
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2aaab17f3ba9352e2ee9448acbbc2d2ca2b9d077
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874613"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607638"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kód cyklické vyrovnávací paměti cílového pro rozšířené události ve službě SQL Database
 
@@ -348,7 +348,7 @@ Primární téma pro rozšířené události pro Azure SQL Database je:
 
 Další témata ukázkový kód pro rozšířené události jsou k dispozici prostřednictvím následujících odkazů. Však musí pravidelně zkontrolujte všechny ukázky a zda vzorku, zaměřuje Microsoft SQL Server a Azure SQL Database. Pak se můžete rozhodnout, zda jsou menší změny potřebné ke spuštění ukázky.
 
-* Ukázka kódu pro Azure SQL Database: [cílový kód souboru události pro rozšířené události ve službě SQL Database](sql-database-xevent-code-event-file.md)
+* Ukázka kódu pro Azure SQL Database: [Cílový kód souboru události pro rozšířené události ve službě SQL Database](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

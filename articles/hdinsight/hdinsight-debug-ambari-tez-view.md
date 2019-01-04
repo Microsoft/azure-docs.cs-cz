@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 312b476f8809d1d6375cc20035901d8d11c32173
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012347"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719689"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Použití zobrazení Apache Ambari k ladění úloh Tez Apache v HDInsight
 
 [Apache Ambari](https://ambari.apache.org/) obsahuje webové uživatelské rozhraní pro HDInsight [Apache TEZ](https://tez.apache.org/) zobrazení, které můžete použít k pochopení a ladění úloh, které používají Tez. Zobrazení Tez umožňuje vizualizovat úlohy jako graf připojené položky, jednotlivé položky Přejít k podrobnostem a získat statistiky a informace o protokolování.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -91,7 +91,7 @@ Ke spuštění dotazu Hive, který používá Tez, postupujte následovně:
 5. Karty na této stránce umožňují zobrazit následující informace:
 
     * **Podrobnosti dotazu**: Podrobnosti o dotazu Hive.
-    * **Časová osa**: informace o tom, jak dlouho trvalo každá fáze zpracování.
+    * **Časová osa**: Informace o tom, jak dlouho trvalo každá fáze zpracování.
     * **Konfigurace**: Konfigurace použitá pro tento dotaz.
 
     Z __podrobnosti dotazu__ můžete pomocí odkazů můžete získat informace o __aplikace__ nebo __DAG__ pro tento dotaz.

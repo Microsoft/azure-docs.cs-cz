@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 8b14550adf89f866cf3b736db049cc671db5b765
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 04a923a8bc022aefb667489702c0e74493df94a8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314503"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652757"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Hromadné načtení dat do Apache Phoenixu s využitím psql
 
-[Apache Phoenix](http://phoenix.apache.org/) je masivně paralelní relační databáze založená na open source [Apache HBase](../hbase/apache-hbase-overview.md). Phoenix nabízí podobném SQL dotazy nad HBase. Phoenix používá ovladače JDBC umožňuje uživatelům vytvářet, odstraňovat a změnit tabulek, indexů, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL místo použití prostředí MapReduce ke kompilaci dotazů, k vytvoření aplikace s nízkou latencí nad HBase. Phoenix přidá společné procesory, které podporují spouštění kódu dodaná klientem v adresním prostoru serveru, spouští kód společně umístěné s daty. Tím se minimalizují přenos dat klienta nebo serveru.  Pro práci s daty v HDInsight pomocí Phoenix, vytvoření tabulky a pak načíst data do nich.
+[Apache Phoenix](https://phoenix.apache.org/) je masivně paralelní relační databáze založená na open source [Apache HBase](../hbase/apache-hbase-overview.md). Phoenix nabízí podobném SQL dotazy nad HBase. Phoenix používá ovladače JDBC umožňuje uživatelům vytvářet, odstraňovat a změnit tabulek, indexů, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL místo použití prostředí MapReduce ke kompilaci dotazů, k vytvoření aplikace s nízkou latencí nad HBase. Phoenix přidá společné procesory, které podporují spouštění kódu dodaná klientem v adresním prostoru serveru, spouští kód společně umístěné s daty. Tím se minimalizují přenos dat klienta nebo serveru.  Pro práci s daty v HDInsight pomocí Phoenix, vytvoření tabulky a pak načíst data do nich.
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>Hromadné načtení se Apache Phoenix
 
@@ -73,7 +73,7 @@ Než začnete, načítání dat, ověřte, že je povoleno Phoenix a zda jsou na
     python psql.py ZookeeperQuorum createCustomersTable.sql /tmp/customers.csv listCustomers.sql
     ```
 
-    > [!NOTE] 
+    > [!NOTE]   
     > Chcete-li zjistit `ZookeeperQuorum` název, vyhledejte [Apache ZooKeeper](https://zookeeper.apache.org/) kvora řetězce v souboru `/etc/hbase/conf/hbase-site.xml` s názvem vlastnosti `hbase.zookeeper.quorum`.
 
 5. Po `psql` operace dokončí, zobrazí se zpráva v příkazovém okně:
@@ -141,7 +141,7 @@ Pro vyšší propustnost načítání distribuované přes clusteru, použijte n
 
 ## <a name="next-steps"></a>Další postup
 
-* [Hromadné načítání dat s Apache Phoenix](http://phoenix.apache.org/bulk_dataload.html)
+* [Hromadné načítání dat s Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
 * [Použití Apache Phoenixu s clustery založené na Linuxu Apache HBase v HDInsight](../hbase/apache-hbase-phoenix-squirrel-linux.md)
 * [Solené tabulky](https://phoenix.apache.org/salted.html)
-* [Gramatika Phoenix](http://phoenix.apache.org/language/index.html)
+* [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html)

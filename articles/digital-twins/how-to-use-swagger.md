@@ -1,21 +1,22 @@
 ---
-title: Pochopit, jak používat Azure digitální dvojče Swagger | Dokumentace Microsoftu
-description: Použití Azure digitální dvojče Swagger
+title: Pochopit, jak použít Azure digitální dvojče odkaz Swagger | Dokumentace Microsoftu
+description: Ke zjištění, jak používat Azure digitální dvojče Swagger referenční dokumentaci.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/31/2018
 ms.author: adgera
-ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 7d079f543f8b564c396560c97225897c12f3cd24
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624246"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975640"
 ---
-# <a name="use-azure-digital-twins-swagger"></a>Použití Azure digitální dvojče Swagger
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Digitální dvojče Swagger referenční dokumentace k Azure
 
 Každá instance zřízené digitální dvojče Azure zahrnuje vlastní automaticky generované referenční dokumentaci Swagger.
 
@@ -34,19 +35,19 @@ Swagger poskytuje interaktivní přehled vašeho rozhraní API, která zahrnuje:
 * Informace o odpovědi příklad používá k ověření a potvrďte odpovědi protokolu HTTP.
 * Informace o kódu chyby.
 
-Swagger je praktický nástroj, který vám pomůže s vývoj a testování volání rozhraní API pro správu.
+Swagger je praktický nástroj, který vám pomůže s vývoj a testování volání rozhraní API Správce Dvojčat digitální Azure.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Referenční materiál
 
-Automaticky generované referenční materiály, které popisuje důležité koncepty a objektové modely.
+Automaticky generované referenční materiál Swagger poskytuje rychlý přehled důležitých konceptů, k dispozici koncové body rozhraní API pro správu a popis jednotlivých objektový model pro vývoj a testování.
 
 Stručný přehled popisuje rozhraní API.
 
 ![Horní swagger][1]
 
-Základní rozhraní API objektové modely jsou také uvedeny.
+Správa API objektové modely jsou také uvedeny.
 
 ![Modely swagger][2]
 
@@ -58,7 +59,7 @@ Vygenerovaný objektové modely Swaggeru je pohodlné zobrazíte všechny dostup
 
 ## <a name="endpoint-summary"></a>Souhrn koncového bodu
 
-Swagger obsahuje také důkladný přehled všechny koncové body, které tvoří rozhraní API.
+Swagger obsahuje také důkladný přehled všechny koncové body, které tvoří rozhraní API pro správu.
 
 Každý koncový bod uvedené také zahrnuje požadovaná žádost o informace, jako:
 

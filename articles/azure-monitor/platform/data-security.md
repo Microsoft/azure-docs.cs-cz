@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 12/19/2018
 ms.author: magoedte
-ms.openlocfilehash: fa7d89d749d50d62ce54ea71d604831e8919b454
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 581d5ddc0930a84bad4dd74a0e8dbcc3787f1a16
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189842"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652060"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../../security/security-microsoft-trust-center.md).  
@@ -60,7 +60,7 @@ Po ingestuje data služby Log Analytics, se ukládají data logicky oddělená p
 ## <a name="data-retention"></a>Uchovávání dat
 Indexovaná data vyhledávání protokolu je uložen a zachována podle cenového plánu. Další informace najdete v tématu [ceny Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-Jako součást vaší [smlouva o předplatném](https://azure.microsoft.com/support/legal/subscription-agreement/), Microsoft bude uchovávat data za podmínky smlouvy.  Když data se odstraní, jsme také odstranit účet úložiště Azure, kde jsou data uložená.  Při odebrání zákaznická data nejsou zničeny žádné fyzické disky.  
+Jako součást vaší [smlouva o předplatném](https://azure.microsoft.com/support/legal/subscription-agreement/), Microsoft bude uchovávat data za podmínky smlouvy.  Při odebrání zákaznická data nejsou zničeny žádné fyzické disky.  
 
 V následující tabulce jsou uvedeny některé dostupná řešení a poskytuje příklady typů shromážděná data.
 
@@ -150,7 +150,7 @@ Pro vaši organizaci k odesílání dat do Log Analytics konfiguraci agenta pro 
 * [ID organizace](../../active-directory/fundamentals/sign-up-organization.md)
 * [Účet Microsoft - Outlooku Office Live, MSN](https://account.microsoft.com/account)
 
-Pracovní prostor Log Analytics je se shromažďují data, agregují, analyzují a zobrazí. Pracovní prostor se používá především jako prostředek k dělení dat a každý pracovní prostor je jedinečný. Například můžete chtít mít produkční data spravovat pomocí jednoho pracovního prostoru a zkušebních dat spravované s jiným pracovním prostorem. Pracovní prostory také pomoci správce řízení uživatelského přístupu k datům. Každý pracovní prostor může mít více uživatelských účtů, které s ním spojená, a každý uživatelský účet dostanete víc pracovních prostorů Log Analytics. Můžete vytvořit pracovní prostory podle oblast datového centra. Každý pracovní prostor se replikují do jiných datových centrech v oblasti, především pro dostupnost služby Log Analytics.
+Pracovní prostor Log Analytics je se shromažďují data, agregují, analyzují a zobrazí. Pracovní prostor se používá především jako prostředek k dělení dat a každý pracovní prostor je jedinečný. Například můžete chtít mít produkční data spravovat pomocí jednoho pracovního prostoru a zkušebních dat spravované s jiným pracovním prostorem. Pracovní prostory také pomoci správce řízení uživatelského přístupu k datům. Každý pracovní prostor může mít více uživatelských účtů, které s ním spojená, a každý uživatelský účet dostanete víc pracovních prostorů Log Analytics. Můžete vytvořit pracovní prostory podle oblast datového centra.
 
 Skupiny pro správu nástroje Operations Manager pro nástroj Operations Manager, naváže připojení se službou Log Analytics. Potom nakonfigurujete, které systémech spravovaných agentem ve skupině pro správu jsou povoleny pro shromažďování a odesílání dat do služby. V závislosti na řešení, které jste povolili, data z těchto řešení jsou buď odesílá přímo ze serveru pro správu Operations Manageru ke službě Log Analytics nebo kvůli objemu data shromážděná agentem řízený systém, odesílají přímo z agenta ke službě. Pro systémy nemonitorováno nástrojem Operations Manager každý spojuje bezpečně ke službě Log Analytics přímo.
 

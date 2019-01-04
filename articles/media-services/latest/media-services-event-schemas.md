@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 12/05/2018
+ms.date: 12/24/2018
 ms.author: juliako
-ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c5332cd2613bc64e3dda143381f37d27b54aa922
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011990"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789225"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémata událostí služby Media Services
 
@@ -28,7 +28,7 @@ Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj událostí Medi
 
 ### <a name="job-related-event-types"></a>Úlohy související s typy událostí
 
-Media Services vyslala **úlohy** související typy událostí, které jsou popsané níže. Existují dvě kategorie pro **úlohy** související události: "Monitorování úlohy změny stavu" a "Monitorování úlohy výstup změny stavu". 
+Media Services vyslala **úlohy** související typy událostí, které jsou popsané níže. Existují dvě kategorie pro **úlohy** související události: "Monitorování stav úlohy změní" a "Monitorování výstup stav úlohy změní". 
 
 Pro všechny události se můžete zaregistrovat prostřednictvím přihlášení k JobStateChange událost odběru. Nebo můžete odebírat jenom určité události (například poslední stavy jako JobErrored JobFinished a JobCanceled). 
 
@@ -112,9 +112,9 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | previousState | řetězec | Stav úlohy před událostí. |
-| state | řetězec | Nový stav úlohy se oznámení na tuto událost. Například "naplánované: Úloha je začít" nebo "dokončeno: Úloha je dokončena".|
+| state | řetězec | Nový stav úlohy se oznámení na tuto událost. Například "naplánované: Jste připravení začít se úloha aktualizace zobrazí"nebo" dokončeno: Úloha je dokončena".|
 
-Stav úlohy kde může být jedna z hodnot: *ve frontě*, *naplánované*, *zpracování*, *dokončeno*, *chyba*, *Zrušena*, *zrušení*
+Stav úlohy kde může být jedna z hodnot: *Ve frontě*, *naplánované*, *zpracování*, *dokončení*, *chyba*, *zrušena*, *Zrušení*
 
 > [!NOTE]
 > *Ve frontě* bude jenom zobrazovat nacházet v **previousState** vlastností, ale ne v **stavu** vlastnost.
@@ -134,7 +134,7 @@ U každé nefinální úlohy stavu změny (například JobCanceling JobScheduled
     "previousState": "Scheduled",
     "state": "Processing",
     "correlationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -168,7 +168,7 @@ U každé poslední úlohy stavu změny (například JobErrored JobFinished JobC
     "previousState": "Processing",
     "state": "Finished",
     "correlationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -205,7 +205,7 @@ Následující příklad ukazuje schématu **JobOutputStateChange** události:
       "state": "Finished"
     },
     "jobCorrelationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -236,7 +236,7 @@ Pro každou změnu stavu JobOutput příkladu schématu vypadá nějak takto:
       "state": "Processing"
     },
     "jobCorrelationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -258,13 +258,14 @@ Následující příklad ukazuje schématu **LiveEventConnectionRejected** udál
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "b303db59-d5c1-47eb-927a-3650875fded1",
     "data": { 
-      "StreamId":"Mystream1",
-      "IngestUrl": "http://abc.ingest.isml",
-      "EncoderIp": "118.238.251.xxx",
-      "EncoderPort": 52859,
-      "ResultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
+      "streamId":"Mystream1",
+      "ingestUrl": "http://abc.ingest.isml",
+      "encoderIp": "118.238.251.xxx",
+      "encoderPort": 52859,
+      "resultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -394,14 +395,15 @@ Následující příklad ukazuje schématu **LiveEventIncomingDataChunkDropped**
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "03da9c10-fde7-48e1-80d8-49936f2c3e7d",
     "data": { 
-      "TrackType": "Video",
-      "TrackName": "Video",
-      "Bitrate": 300000,
-      "Timestamp": 36656620000,
-      "Timescale": 10000000,
-      "ResultCode": "FragmentDrop_OverlapTimestamp"
+      "trackType": "Video",
+      "trackName": "Video",
+      "bitrate": 300000,
+      "timestamp": 36656620000,
+      "timescale": 10000000,
+      "resultCode": "FragmentDrop_OverlapTimestamp"
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -413,8 +415,8 @@ Datový objekt má následující vlastnosti:
 | TrackType | řetězec | Typ stopě (zvuk / Video). |
 | TrackName | řetězec | Jeden směr určený název. |
 | S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
-| Timestamp | řetězec | Časové razítko datové dávky vyřazen. |
-| Timescale | řetězec | Časové razítko. |
+| časové razítko | řetězec | Časové razítko datové dávky vyřazen. |
+| Časová osa | řetězec | Časové razítko. |
 | Kód výsledku | řetězec | Z důvodu rozevírací bloku dat data. **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -456,8 +458,8 @@ Datový objekt má následující vlastnosti:
 | IngestUrl | řetězec | Ingestování adresy URL poskytnuté živé události. |
 | EncoderIp | řetězec  | IP adresa z kodéru. |
 | EncoderPort | řetězec | Port kodér, ve kterém je tento datový proud zapnout. |
-| Timestamp | řetězec | První časové razítko přijetí datové dávky. |
-| Timescale | řetězec | Časový rámec, ve kterém je reprezentován časové razítko. |
+| časové razítko | řetězec | První časové razítko přijetí datové dávky. |
+| Časová osa | řetězec | Časový rámec, ve kterém je reprezentován časové razítko. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -509,13 +511,14 @@ Následující příklad ukazuje schématu **LiveEventIncomingVideoStreamsOutOfS
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "6dd4d862-d442-40a0-b9f3-fc14bcf6d750",
     "data": {
-      "FirstTimestamp": "2162058216",
-      "FirstDuration": "2000",
-      "SecondTimestamp": "2162057216",
-      "SecondDuration": "2000",
+      "firstTimestamp": "2162058216",
+      "firstDuration": "2000",
+      "secondTimestamp": "2162057216",
+      "secondDuration": "2000",
       "timescale": "10000000"      
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -528,7 +531,7 @@ Datový objekt má následující vlastnosti:
 | FirstDuration | řetězec | Doba trvání bloků dat s první časové razítko. |
 | SecondTimestamp | řetězec  | Časové razítko přijetí pro některé další úroveň sledování/kvality typu videa. |
 | SecondDuration | řetězec | Doba trvání bloků dat s druhé časové razítko. |
-| Timescale | řetězec | Časová osa časová razítka a doba trvání.|
+| Časová osa | řetězec | Časová osa časová razítka a doba trvání.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -571,13 +574,13 @@ Datový objekt má následující vlastnosti:
 | S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
 | IncomingBitrate | integer | Vypočtený s přenosovou rychlostí podle bloků dat z kodéru. |
 | LastTimestamp | řetězec | Poslední časové razítko přijetí pro sledování v posledních 20 sekund. |
-| Timescale | řetězec | Časový rámec, ve kterém jsou vyjádřeny časová razítka. |
+| Časová osa | řetězec | Časový rámec, ve kterém jsou vyjádřeny časová razítka. |
 | OverlapCount | integer | Počet bloků dat měli překrytých časová razítka v posledních 20 sekund. |
 | DiscontinuityCount | integer | Počet nespojitosti zjištěnými v posledních 20 sekund. |
 | NonIncreasingCount | integer | Počet bloků dat s časovými razítky v minulosti byly přijaty v posledních 20 sekund. |
-| UnexpectedBitrate | BOOL | Pokud očekávaných a aktuálních přenosových rychlostí lišit o více než povolený limit v posledních 20 sekund. Je hodnota true v případě a pouze tehdy, pokud IncomingBitrate > = 2 * s přenosovou rychlostí nebo IncomingBitrate < = nebo IncomingBitrate s přenosovou rychlostí/2 = 0. |
-| Stav | řetězec | Stav živé události. |
-| V pořádku | BOOL | Označuje, zda ingestování je v pořádku na základě počtu a příznaky. V pořádku má hodnotu true Pokud OverlapCount = 0 & & DiscontinuityCount = 0 & & NonIncreasingCount = 0 & & UnexpectedBitrate = false. |
+| UnexpectedBitrate | BOOL | Pokud očekávaných a aktuálních přenosových rychlostí lišit o více než povolený limit v posledních 20 sekund. Je hodnota true v případě a pouze tehdy, pokud incomingBitrate > = 2 * s přenosovou rychlostí nebo incomingBitrate < = nebo IncomingBitrate s přenosovou rychlostí/2 = 0. |
+| state | řetězec | Stav živé události. |
+| v pořádku | BOOL | Označuje, zda ingestování je v pořádku na základě počtu a příznaky. V pořádku má hodnotu true Pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -616,7 +619,7 @@ Datový objekt má následující vlastnosti:
 | PreviousTimestamp | řetězec | Časové razítko předchozí fragment. |
 | NewTimestamp | řetězec | Časové razítko aktuální fragmentu. |
 | DiscontinuityGap | řetězec | Mezera mezi nad dva časová razítka. |
-| Timescale | řetězec | Jsou reprezentovány časový rámec, ve které časovým razítkem a diskontinuitu mezera. |
+| Časová osa | řetězec | Jsou reprezentovány časový rámec, ve které časovým razítkem a diskontinuitu mezera. |
 
 ### <a name="common-event-properties"></a>Společných vlastností události
 

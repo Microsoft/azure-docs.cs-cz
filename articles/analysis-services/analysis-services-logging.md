@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f3a3261fa1b7aa2075a05d7b87ea3fc29c5b9fab
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: f2e0767e78119b224f7be9256ab7050deca37e32
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385869"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546976"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
-Důležitou součástí řešení služby Analysis Services je monitorování, jaký výkon vaše servery. S [diagnostické protokoly Azure prostředků](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md), můžete sledovat a odeslat protokoly s [služby Azure Storage](https://azure.microsoft.com/services/storage/), Streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolu Analytics](https://azure.microsoft.com/services/log-analytics/), službě [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). 
+Důležitou součástí řešení služby Analysis Services je monitorování, jaký výkon vaše servery. S [diagnostické protokoly Azure prostředků](../azure-monitor/platform/diagnostic-logs-overview.md), můžete sledovat a odeslat protokoly s [služby Azure Storage](https://azure.microsoft.com/services/storage/), Streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolu Analytics](https://azure.microsoft.com/services/log-analytics/), službě [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). 
 
 ![Protokolování diagnostiky do úložiště, Event Hubs nebo Log Analytics](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -304,6 +304,6 @@ Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [protokolování diagnostiky prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Další informace o [protokolování diagnostiky prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 Zobrazit [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/Set-AzureRmDiagnosticSetting) v nápovědě k prostředí PowerShell.

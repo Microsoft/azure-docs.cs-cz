@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496884"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725265"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
 [Enterprise Security Package (ESP) povolena clustery HDInsight](./domain-joined/apache-domain-joined-introduction.md) poskytuje funkce na podnikové úrovni, včetně ověřování pomocí Azure Active Directory. Je možné [synchronizovat noví uživatelé](hdinsight-sync-aad-users-to-cluster.md) přidán do skupiny Azure AD, které byly zadány přístup ke clusteru, tyto konkrétní uživatelé můžou k provedení určité akce. Práce s uživatele, skupiny a oprávnění v [Apache Ambari](https://ambari.apache.org/) se podporuje pro clustery HDInsight ESP i clusterů HDInsight standard.
 
-Uživatelé služby Active Directory může přihlásit k uzlům clusteru pomocí svých přihlašovacích údajů domény. Přihlašovacích údajů domény může také používat k ověření clusteru interakce s dalších schválených koncových bodech, jako je [Hue](http://gethue.com/), zobrazení Ambari, rozhraní ODBC, JDBC, PowerShell a rozhraní REST API.
+Uživatelé služby Active Directory může přihlásit k uzlům clusteru pomocí svých přihlašovacích údajů domény. Přihlašovacích údajů domény může také používat k ověření clusteru interakce s dalších schválených koncových bodech, jako je [Hue](https://gethue.com/), zobrazení Ambari, rozhraní ODBC, JDBC, PowerShell a rozhraní REST API.
 
-> [!WARNING]
+> [!WARNING]  
 > Neměňte heslo Ambari sledovacích (hdinsightwatchdog) ve vašem clusteru HDInsight se systémem Linux. Změna hesla dělí schopnost pomocí skriptových akcí nebo provádění operací škálování s vaším clusterem.
 
 Pokud jste tak již neučinili, postupujte podle [tyto pokyny](./domain-joined/apache-domain-joined-configure.md) zřizovat ESP nového clusteru.
@@ -100,7 +100,7 @@ Pokud chcete zobrazit seznam oprávnění udělená pro jednotlivé role, klikn�
 
 ![Role nabídky odkazu](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
 
-Na této stránce se dvěma různými zobrazeními můžete použít ke správě rolí pro uživatele a skupiny: bloku a seznam.
+Na této stránce se dvěma různými zobrazeními, který můžete použít ke správě rolí pro uživatele a skupiny: Blok a seznam.
 
 ### <a name="block-view"></a>Zobrazení bloku
 
@@ -110,7 +110,7 @@ Zobrazení bloku zobrazuje každou roli v samostatném řádku a poskytuje **př
 
 ### <a name="list-view"></a>Zobrazení seznamu
 
-Zobrazení seznamu poskytuje funkce pro rychlé úpravy do dvou kategorií: uživatelé a skupiny.
+Zobrazení seznamu poskytuje funkce pro rychlé úpravy do dvou kategorií: Uživatelé a skupiny.
 
 * Kategorie uživatelů v zobrazení seznamu zobrazuje seznam všech uživatelů, což vám umožní vybrat roli pro každého uživatele v rozevíracím seznamu.
 

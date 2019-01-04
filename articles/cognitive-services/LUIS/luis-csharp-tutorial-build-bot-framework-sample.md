@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 74fec29c2e70f929b64a7a64bab2a525f4facbc6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 951a202f8d57c736af8c17af91859ce89e9efc7d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438723"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717955"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v C# pomocí rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
@@ -165,16 +165,5 @@ Přidání záměrů LUIS a Bot service dialogová okna pro zpracování **pomá
 > [!div class="nextstepaction"]
 > [Přidání záměrů](./luis-how-to-add-intents.md)
 > [dočištění řeči](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
-
-
-<!-- Links -->
-[GitHub-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
-[GitHub-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[GitHub-LUIS-Samples-cs-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/csharp
-[GitHub-LUIS-Samples-cs-hotel-bot-readme]: https://github.com/Microsoft/LUIS-Samples/blob/master/bot-integration-samples/hotel-finder/csharp/README.md
-[BFPortal]: https://dev.botframework.com/
-[RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
-[BotFramework]: https://docs.microsoft.com/bot-framework/
-[VisualStudio]: https://www.visualstudio.com/
 
 <!-- tested on Win10 -->

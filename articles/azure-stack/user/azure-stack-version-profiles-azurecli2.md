@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2018
+ms.date: 12/06/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dacc28c1cfe2ee896597aeaf92a22c7f6e13c306
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969953"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726608"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 
@@ -128,7 +128,6 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
         --suffix-keyvault-dns ".adminvault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
-
    b. K registraci *uživatele* prostředí, použijte:
 
       ```azurecli
@@ -151,9 +150,22 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
         --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
         --profile 2018-03-01-hybrid
       ```
+    d. K registraci uživatele v prostředí služby AD FS, použijte:
 
+      ```azurecli
+      az cloud register \
+        -n AzureStack  \
+        --endpoint-resource-manager "https://management.local.azurestack.external" \
+        --suffix-storage-endpoint "local.azurestack.external" \
+        --suffix-keyvault-dns ".vault.local.azurestack.external"\
+        --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" \
+        --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/"\
+        --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/"\
+        --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases> \
+        --profile "2018-03-01-hybrid"
+      ```
 1. Pomocí následujících příkazů nastavte aktivní prostředí.
-
+   
    a. Pro *pro správu cloudu* prostředí, použijte:
 
       ```azurecli
@@ -180,8 +192,8 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
 
 1. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
-    * Prostředí AAD
-      * Přihlaste se jako *uživatele*: můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz % $n nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování.
+    * Prostředí Azure AD
+      * Přihlaste se jako *uživatele*: Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz % $n nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování.
 
       ```azurecli
       az login \
@@ -192,9 +204,9 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
       > [!NOTE]
       > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login command` bez zadání `-u` parametru. Spuštěním příkazu poskytuje adresu URL a kód, který je nutné použít k ověření.
    
-      * Přihlaste se jako *instanční objekt služby*: než se přihlásit, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
+      * Přihlaste se jako *instanční objekt služby*: Před přihlášením, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
 
-      ```azurecli
+      ```azurecli  
       az login \
         --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
         --service-principal \
@@ -203,20 +215,33 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
       ```
     * AD FS prostředí
 
-        * Přihlaste se jako *instanční objekt služby*: 
-          1.    Připravte soubor .pem, který má být použit pro přihlášením instančního objektu.
-                * Na klientském počítači, kde byl vytvořen objekt zabezpečení a export certifikátu objektu služby jako pfx s privátním klíčem (umístěné na cert: \CurrentUser\My; název certifikátu má stejný název jako objekt zabezpečení).
+        * Přihlaste se jako uživatel pomocí webového prohlížeče:  
+              ```azurecli  
+              az login
+              ```
+        * Přihlaste se jako uživatel s kódem zařízení pomocí webového prohlížeče:  
+              ```azurecli  
+              az login --use-device-code
+              ```
+        > [!Note]  
+        >Spuštěním příkazu poskytuje adresu URL a kód, který je nutné použít k ověření.
 
-                *   Převeďte soubor pfx na pem (použití OpenSSL nástroje).
+        * Přihlaste se jako hlavní název služby:
+        
+          1. Připravte soubor .pem, který má být použit pro přihlášením instančního objektu.
 
-          1.    Přihlaste se k rozhraní příkazového řádku. :
-                ```azurecli
-                az login --service-principal \
-                 -u <Client ID from the Service Principal details> \
-                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
-                 --tenant <Tenant ID> \
-                 --debug 
-                ```
+            * Na klientském počítači, kde byl vytvořen objekt zabezpečení a export certifikátu objektu služby jako pfx s privátním klíčem (umístěný ve `cert:\CurrentUser\My;` název certifikátu má stejný název jako objekt zabezpečení).
+        
+            * Převeďte soubor pfx na pem (použití OpenSSL nástroje).
+
+          2.  Přihlaste se k rozhraní příkazového řádku:
+            ```azurecli  
+            az login --service-principal \
+              -u <Client ID from the Service Principal details> \
+              -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
+              --tenant <Tenant ID> \
+              --debug 
+            ```
 
 ## <a name="test-the-connectivity"></a>Otestovat připojení
 

@@ -1,7 +1,7 @@
 ---
 title: Popis Image - pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související s popisem obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související s funkcí Popis bitové kopie z rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,22 +10,23 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 423d1be57bc800108a08a81b72587ca2711bbc3d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 5b920e4ce8df131b81a9ef6ce2d66c7082d8f5e4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342411"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583404"
 ---
-# <a name="describing-images"></a>Popisování obrázků
+# <a name="describe-images-with-human-readable-language"></a>Popis bitové kopie v lidsky čitelném jazyce
 
-Počítačové zpracování obrazu algoritmy analyzovat obsah v obrázku. Tato analýza tvoří základ pro "popisu" zobrazí jako čitelný jazyk v úplných větách. Popis shrnuje, co se nachází na obrázku. Počítačové zpracování obrazu algoritmy generovat různé popisy podle vizuální funkce identifikované v bitové kopii. Každý popis je vyhodnocen a generované skóre spolehlivosti. Pak se vrátí seznam seřazený od nejvyššího skóre spolehlivosti po nejnižší.
+Počítačové zpracování obrazu algoritmy analyzovat obsah v obrázku. Tato analýza tvoří základ popisu zobrazeného v čitelném jazyce a v celých větách. Popis shrnuje zjištěný obsah obrázku. Počítačové zpracování obrazu algoritmy generovat různé popisy podle vizuální funkce identifikované v bitové kopii. Každý popis je vyhodnocen a generované skóre spolehlivosti. Pak se vrátí seznam seřazený od nejvyššího skóre spolehlivosti po nejnižší.
 
 ## <a name="image-description-example"></a>Příklad popis obrázku
 
 Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při popisu příklad image založenou na jeho vizuální funkce.
 
-![B & vá budov](./Images/bw_buildings.png)
+![Černá a bílá obrázek budovy v Manhattan](./Images/bw_buildings.png)
 
 ```json
 {

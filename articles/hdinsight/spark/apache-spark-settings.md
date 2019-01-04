@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 127bd965fdce93ae44fbb38a037477174c9cb3fe
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583240"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652231"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
 
@@ -33,7 +33,7 @@ Používejte doporučené verze Sparku pro váš cluster.  Služba HDInsight zah
 Při vytváření nového clusteru existuje více verzí Spark lze vybírat. Pokud chcete zobrazit úplný seznam [HDInsight komponenty a verze](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
 
 
-> [!NOTE]
+> [!NOTE]  
 > Výchozí verze Apache Spark ve službě HDInsight mohou změnit bez předchozího upozornění. Pokud máte verzi závislosti, společnost Microsoft doporučuje, zadejte tuto konkrétní verzi při vytváření clusterů s využitím sady .NET SDK, Azure Powershellu a rozhraní příkazového řádku Azure Classic.
 
 Apache Spark má tři umístění konfigurace systému:
@@ -76,7 +76,7 @@ Pokud chcete zobrazit a změnit hodnoty konfigurace jednotlivých Spark, vyberte
 
 Pokud vytvoříte sadu jiné než výchozí konfigurační hodnoty, můžete také zobrazit historii aktualizací konfigurace.  Historie této konfigurace může být užitečné jiné než výchozí konfiguraci, kterou má optimální výkon.
 
-> [!NOTE]
+> [!NOTE]  
 > Chcete-li zobrazit, ale nikoli změnit, běžných nastavení konfigurace clusteru Spark, vyberte **prostředí** karty na nejvyšší úrovni **uživatelského rozhraní úlohy Spark** rozhraní.
 
 ## <a name="configuring-spark-executors"></a>Konfigurace prováděcí moduly Spark
@@ -89,7 +89,7 @@ Sparkových úloh pomocí prostředky pracovního procesu, zejména paměti tak,
 
 Jsou tři parametry klíče, které jsou často k vyladění konfigurace Spark ke zlepšení požadavky aplikace upraveny `spark.executor.instances`, `spark.executor.cores`, a `spark.executor.memory`. Vykonavatele je proces spuštěn z aplikace Spark. Vykonavatele běží na pracovní uzel a zodpovídá za úlohy pro aplikaci. Pro každý cluster výchozí číslo prováděcí moduly a velikosti prováděcí modul se počítají na základě počtu pracovních uzlů a velikost uzlu pracovního procesu. Tyto jsou uložené v `spark-defaults.conf` o hlavních uzlech clusteru.  Tyto hodnoty spuštěný cluster můžete upravit tak, že vyberete **vlastní spark – výchozí hodnoty** odkaz do webového uživatelského rozhraní Ambari.  Když provedete změny, se zobrazí výzva k uživatelským rozhraním pro **restartovat** všechny ovlivněné služby.
 
-> [!NOTE]
+> [!NOTE]  
 > Tyto tři konfigurační parametry, můžete nakonfigurovat na úrovni clusteru (pro všechny aplikace, které běží na clusteru) a také zadat pro každou jednotlivou aplikaci.
 
 Další zdroje informací o prostředcích používá prováděcí moduly Spark se uživatelské rozhraní aplikace Spark.  V uživatelském rozhraní Spark, vyberte **prováděcí moduly** karet zobrazit souhrn a podrobnosti zobrazení konfigurace a prostředky spotřebované prováděcí moduly.  Tato zobrazení vám pomohou určit, zda chcete-li změnit výchozí hodnoty pro Spark vykonavatele pro celý cluster, nebo konkrétní sadu se prováděné úlohy.
@@ -123,15 +123,15 @@ YARN řídí maximální součtem velikostí paměti využívaných kontejnery n
 
 Clustery Spark v HDInsight zahrnují komponent ve výchozím nastavení. Každá z těchto komponent zahrnuje výchozí konfigurační hodnoty, které mohou být přepsána nastaveními podle potřeby.
 
-* Spark Core – Spark Core, Spark SQL, streamování rozhraní API, GraphX a MLlib ve Sparku
-* Anaconda – Správce balíčků pythonu
-* [Apache Livy](https://livy.incubator.apache.org/) – Apache Spark REST API používá k odeslání vzdálené úlohy ke clusteru HDInsight Spark
-* [Jupyter](https://jupyter.org/) a [Apache Zeppelin](https://zeppelin.apache.org/) poznámkových bloků – interaktivní webové rozhraní pro interakci s vaším clusterem Sparku
-* Ovladač ODBC – připojení k nástroji business intelligence (BI), jako je například Microsoft Power BI a tableau. představují clustery Spark v HDInsight
+* Spark Core – Spark Core, Spark SQL, streamování rozhraní API, GraphX a Apache Spark MLlib ve Sparku.
+* Anaconda – Správce balíčků pythonu.
+* [Apache Livy](https://livy.incubator.apache.org/) – Apache Spark REST API používá k odeslání vzdálené úlohy ke clusteru HDInsight Spark.
+* [Jupyter](https://jupyter.org/) a [Apache Zeppelin](https://zeppelin.apache.org/) poznámkových bloků – interaktivní webové rozhraní pro interakci s vaším clusterem Spark.
+* Ovladač ODBC - připojuje k nástroji business intelligence (BI), jako je například Microsoft Power BI a tableau. představují clustery Spark v HDInsight.
 
 Pro aplikace běžící v poznámkovém bloku Jupyter, použijte `%%configure` příkazu konfigurace se změní z v rámci samotného poznámkového bloku. Tyto změny konfigurace se použijí k Sparkových úloh spustit z vaší instance poznámkového bloku. Měli byste zajistit takové změny na začátku aplikace před spuštěním vaší první buňky kódu. Změny konfigurace se použijí pro relaci Livy když se vytvoří.
 
-> [!NOTE]
+> [!NOTE]  
 > Chcete-li změnit konfiguraci v pozdější fázi v aplikaci, použijte `-f` parametr (force). Všechny probíhající aplikace však budou ztraceny.
 
 Následující kód ukazuje, jak změnit konfiguraci pro aplikace běžící v poznámkovém bloku Jupyter.

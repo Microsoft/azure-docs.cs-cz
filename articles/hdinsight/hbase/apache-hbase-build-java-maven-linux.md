@@ -9,30 +9,30 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: dbcb031b49c529bc2b2524cd0984bbef1945d485
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1eab8b248fd8ad42adf8c0a747565fed9bbc14e8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164054"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652553"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Apache HBase v Javě
 
-Zjistěte, jak vytvořit [Apache HBase](http://hbase.apache.org/) aplikace v Javě. Potom s použitím aplikace s HBase v Azure HDInsight.
+Zjistěte, jak vytvořit [Apache HBase](https://hbase.apache.org/) aplikace v Javě. Potom s použitím aplikace s HBase v Azure HDInsight.
 
 Kroky v tomto dokumentu pomocí [Apache Maven](https://maven.apache.org/) vytvořte a sestavte projekt. Maven je software, řízení projektů a porozumění nástroj, který vám umožní vytvářet software, dokumentaci a sestav pro projekty Java.
 
-> [!NOTE]
+> [!NOTE]  
 > Kroky v tomto dokumentu se jako poslední byly testovány s HDInsight 3.6.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Požadavky
 
 * [Platforma Java JDK](https://aka.ms/azure-jdks) 8 nebo novější.
 
-    > [!NOTE]
+    > [!NOTE]  
     > HDInsight verze 3.5 nebo novější vyžaduje Java 8. Starší verze systému HDInsight vyžadují Java 7.
 
 * [Apache Maven](https://maven.apache.org/)
@@ -49,14 +49,14 @@ Kroky v tomto dokumentu pomocí [Apache Maven](https://maven.apache.org/) vytvo�
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud používáte PowerShell, je nutné uzavřít `-D` parametry do dvojitých uvozovek.
     >
     > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
     Tento příkaz vytvoří adresář se stejným názvem jako **artifactID** parametr (**hbaseapp** v tomto příkladu.) Tento adresář obsahuje následující položky:
 
-   * **pom.xml**:  Model objektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
+   * **pom.xml**:  Model objektu projektu ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
    * **src**: Adresář, který obsahuje **main/java/com/microsoft/příklady** adresáře, kde můžete vytvářet aplikace.
 
 3. Odstranit `src/test/java/com/microsoft/examples/apptest.java` souboru. Není použit v tomto příkladu.
@@ -78,9 +78,9 @@ Kroky v tomto dokumentu pomocí [Apache Maven](https://maven.apache.org/) vytvo�
     </dependency>
    ```
 
-    Tato část znamená, že projekt měl **hbase-client** a **phoenix core** komponenty. V době kompilace jsou tyto závislosti stáhnout z úložiště Maven výchozí. Můžete použít [vyhledávání centrálního úložiště Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) získat další informace o této závislosti.
+    Tato část znamená, že projekt měl **hbase-client** a **phoenix core** komponenty. V době kompilace jsou tyto závislosti stáhnout z úložiště Maven výchozí. Můžete použít [vyhledávání centrálního úložiště Maven](https://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) získat další informace o této závislosti.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Číslo verze klienta hbase musí odpovídat verzi Apache HBase, který je součástí vašeho clusteru HDInsight. V následující tabulce můžete najít na správné číslo verze.
 
    | Verze clusteru HDInsight | Apache HBase verze se má použít |
@@ -88,7 +88,7 @@ Kroky v tomto dokumentu pomocí [Apache Maven](https://maven.apache.org/) vytvo�
    | 3.2 |0.98.4-hadoop2 |
    | 3.3, 3.4, 3.5 a 3.6 |1.1.2 |
 
-    Další informace o verzích HDInsight a komponenty, naleznete v tématu [jaké jsou různé součásti platformy Hadoop HDInsight přináší](../hdinsight-component-versioning.md).
+    Další informace o verzích HDInsight a komponenty, naleznete v tématu [jaké jsou různé komponenty Apache Hadoop, která je k dispozici s HDInsight](../hdinsight-component-versioning.md).
 
 3. Přidejte následující kód, který **pom.xml** souboru. Tento text musí být uvnitř `<project>...</project>` značky v souboru, například mezi `</dependencies>` a `</project>`.
 
@@ -139,10 +139,10 @@ Kroky v tomto dokumentu pomocí [Apache Maven](https://maven.apache.org/) vytvo�
 
     V této části nakonfiguruje prostředku (`conf/hbase-site.xml`), který obsahuje informace o konfiguraci pro HBase.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Můžete také nastavit hodnoty konfigurace prostřednictvím kódu. Viz poznámky v `CreateTable` příklad.
 
-    Tato část také nakonfiguruje [modulu plug-in Maven kompilátoru](http://maven.apache.org/plugins/maven-compiler-plugin/) a [modulu plug-in Maven odstín](http://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru je používá ke kompilaci topologie. Modul plug-in odstín se používá při prevenci licence duplikace v balíček JAR, který je sestavený Maven. Tento modul plug-in se používá při prevenci "duplicitní licenčních souborů" Chyba za běhu v clusteru HDInsight. Využitím odstín plug-in maven s `ApacheLicenseResourceTransformer` implementace brání chyba.
+    Tato část také nakonfiguruje [plug-in Apache Maven kompilátoru](https://maven.apache.org/plugins/maven-compiler-plugin/) a [plug-in Apache Maven odstín](https://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru je používá ke kompilaci topologie. Modul plug-in odstín se používá při prevenci licence duplikace v balíček JAR, který je sestavený Maven. Tento modul plug-in se používá při prevenci "duplicitní licenčních souborů" Chyba za běhu v clusteru HDInsight. Využitím odstín plug-in maven s `ApacheLicenseResourceTransformer` implementace brání chyba.
 
     Plug-in odstín maven vytvoří také uber jar, obsahující všechny závislosti vyžadované aplikací.
 
@@ -357,7 +357,7 @@ Kroky v tomto dokumentu pomocí [Apache Maven](https://maven.apache.org/) vytvo�
 
 2. Po dokončení příkazu `hbaseapp/target` adresář obsahuje soubor s názvem `hbaseapp-1.0-SNAPSHOT.jar`.
 
-   > [!NOTE]
+   > [!NOTE]  
    > `hbaseapp-1.0-SNAPSHOT.jar` Je soubor soubor jar uber. Obsahuje všechny závislosti potřebné ke spuštění aplikace.
 
 

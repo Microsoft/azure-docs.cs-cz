@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: 10044f17baee8fb4d7afe9223abdbb518952e71f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: da5064c7a064498378b37972fd76dc1c9a8d16e0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52741854"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807886"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorování využití a výkonu klasických desktopových aplikací pro Windows
 
-Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech výhod Application Insights. Jediným omezením je nutnost [povolení komunikace](app-insights-ip-addresses.md) se službou Application Insights. Pro monitorování aplikací pro Univerzální platformu Windows (UPW) doporučujeme používat sadu [Visual Studio App Center](app-insights-mobile-center-quickstart.md).
+Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech výhod Application Insights. Jediným omezením je nutnost [povolení komunikace](../azure-monitor/app/ip-addresses.md) se službou Application Insights. Pro monitorování aplikací pro Univerzální platformu Windows (UPW) doporučujeme používat sadu [Visual Studio App Center](app-insights-mobile-center-quickstart.md).
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Odeslání telemetrie do Application Insights z klasické aplikace pro Windows
 1. Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](app-insights-create-new-resource.md). Jako typ aplikace vyberte aplikaci ASP.NET.
@@ -36,7 +36,7 @@ Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech v
     `<InstrumentationKey>`*váš klíč*`</InstrumentationKey>` 
    
     Pokud používáte soubor ApplicationInsights.config, ujistěte se, že jsou jeho vlastnosti v Průzkumníku řešení nastavené na: **Build Action = Content, Copy to Output Directory = Copy**.
-5. [Použijte rozhraní API](app-insights-api-custom-events-metrics.md) k odesílání telemetrie.
+5. [Použijte rozhraní API](../azure-monitor/app/api-custom-events-metrics.md) k odesílání telemetrie.
 6. Spusťte aplikaci a zobrazte telemetrii v prostředku, který jste vytvořili na webu Azure Portal.
 
 ## <a name="telemetry"></a>Příklad kódu
@@ -77,8 +77,8 @@ Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech v
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření řídicího panelu](app-insights-dashboards.md)
-* [Diagnostické vyhledávání](app-insights-diagnostic-search.md)
+* [Vytvoření řídicího panelu](../azure-monitor/app/app-insights-dashboards.md)
+* [Diagnostické vyhledávání](../azure-monitor/app/diagnostic-search.md)
 * [Zkoumání metrik](app-insights-metrics-explorer.md)
-* [Psaní analytických dotazů](app-insights-analytics.md)
+* [Psaní analytických dotazů](../azure-monitor/app/analytics.md)
 

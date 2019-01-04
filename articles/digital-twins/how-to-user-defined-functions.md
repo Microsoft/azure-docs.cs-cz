@@ -1,29 +1,32 @@
 ---
-title: Použití uživatelem definovaných funkcí v Azure digitální dvojče | Dokumentace Microsoftu
+title: Vytvoření uživatelem definovaných funkcí v Azure digitální dvojče | Dokumentace Microsoftu
 description: Pokyny o tom, jak vytvořit přiřazení role, uživatelem definované funkce a procesy pro hledání shody s Dvojčaty digitální Azure.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/27/2018
 ms.author: alinast
-ms.openlocfilehash: 6a757dca48dc3ff41adfe6f8802fad40e7a4ca81
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 91c0b5700fbc648f1fcd1355a438694cecc07a04
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636828"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993397"
 ---
-# <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Použití uživatelem definovaných funkcí v Azure digitální dvojče
+# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Vytvoření uživatelem definovaných funkcí v Azure digitální dvojče
 
-[Uživatelem definované funkce](./concepts-user-defined-functions.md) povolit uživatelům spustit vlastní logiku pro příchozí zprávy telemetrii a metadata prostorový graf (UDF). Uživatel pak může odesílání událostí do předdefinovaných koncových bodů. Tento průvodce vás provede příkladem acting událostí teplotní ke zjištění a upozornění na jakékoli materiály, které překračuje určité teploty.
+[Uživatelem definované funkce](./concepts-user-defined-functions.md) povolit uživatelům konfigurovat vlastní logiku, který se spustí z příchozí zprávy telemetrii a metadata prostorový graf. Uživatelé můžou také posílat události předdefinované [koncové body](./how-to-egress-endpoints.md).
+
+Tento průvodce vás provede příkladem představením toho, jak detekovat a upozornění na jakékoli materiály, které překračuje teplota z teploty přijatých událostí.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="client-library-reference"></a>Klientská knihovna – referenční informace
 
-Funkce, které jsou k dispozici jako pomocné metody v modulu runtime uživatelem definovaných funkcích jsou uvedené v [odkaz klienta](#Client-Reference) oddílu.
+Funkce k dispozici jako pomocné metody v modulu runtime uživatelem definovaných funkcích jsou uvedené v [Klientská knihovna – referenční informace](./reference-user-defined-functions-client-library.md) dokumentu.
 
 ## <a name="create-a-matcher"></a>Vytvoření předávaný
 
@@ -41,10 +44,15 @@ Procesy pro hledání shody jsou objektů grafu, které určují, uživatelem de
   - `SensorDevice`
   - `SensorSpace`
 
-Následující příklad předávaný vyhodnotí jako true na libovolnou událost telemetrická data ze senzorů s `"Temperature"` jako hodnotu datového typu. Můžete vytvořit více procesy pro hledání shody v uživatelsky definované funkce:
+Následující příklad předávaný vyhodnotí jako true na libovolnou událost telemetrická data ze senzorů s `"Temperature"` jako hodnotu datového typu. Můžete vytvořit více procesy pro hledání shody na uživatelem definovanou funkci tak, že ověřeného požadavku HTTP POST do:
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/matchers
+YOUR_MANAGEMENT_API_URL/matchers
+```
+
+S text JSON:
+
+```JSON
 {
   "Name": "Temperature Matcher",
   "Conditions": [
@@ -63,26 +71,23 @@ POST YOUR_MANAGEMENT_API_URL/matchers
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | Jaké oblasti serveru vaší instance je hostován aplikací |
 
-## <a name="create-a-user-defined-function-udf"></a>Vytvoření uživatelem definované funkce (UDF)
+## <a name="create-a-user-defined-function"></a>Vytvoření uživatelem definované funkce
 
-Po vytvoření procesy pro hledání shody nahrát fragment funkce s následujícími **příspěvek** volání:
-
-> [!IMPORTANT]
-> - V záhlaví, nastavte následující `Content-Type: multipart/form-data; boundary="userDefinedBoundary"`.
-> - Text je vícedílné zprávy standardu:
->   - První část je o metadata potřebná pro UDF.
->   - Druhá část je výpočetní logiky JavaScript.
-> - V **USER_DEFINED_BOUNDARY** části, nahraďte **SpaceId** a **Machers** hodnoty.
+Po vytvoření procesy pro hledání shody nahrávání fragment funkce následujícími způsoby ověření HTTP **příspěvek** žádosti:
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/userdefinedfunctions with Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
+YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-| Hodnota parametru | Nahradit hodnotou |
-| --- | --- |
-| *USER_DEFINED_BOUNDARY* | Název obsahu hranic s více částmi. |
+> [!IMPORTANT]
+> - Ověřte, že hlavičky zahrnují: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+> - Zadaný text je vícedílné zprávy standardu:
+>   - První část obsahuje požadovaná metadata UDF.
+>   - Druhá část obsahuje logiku výpočetní jazyka JavaScript.
+> - V **USER_DEFINED_BOUNDARY** části, nahraďte **spaceId** (`YOUR_SPACE_IDENTIFIER`) a **procesy pro hledání shody**(`YOUR_MATCHER_IDENTIFIER`) hodnoty.
+> - Poznámka: jako zadána UDF JavaScriptu `Content-Type: text/javascript`.
 
-### <a name="body"></a>Tělo
+Pomocí následujícího textu JSON:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -90,10 +95,10 @@ Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
 
 {
-  "SpaceId": "YOUR_SPACE_IDENTIFIER",
-  "Name": "User Defined Function",
-  "Description": "The contents of this udf will be executed when matched against incoming telemetry.",
-  "Matchers": ["YOUR_MATCHER_IDENTIFIER"]
+  "spaceId": "YOUR_SPACE_IDENTIFIER",
+  "name": "User Defined Function",
+  "description": "The contents of this udf will be executed when matched against incoming telemetry.",
+  "matchers": ["YOUR_MATCHER_IDENTIFIER"]
 }
 --USER_DEFINED_BOUNDARY
 Content-Disposition: form-data; name="contents"; filename="userDefinedFunction.js"
@@ -108,6 +113,7 @@ function process(telemetry, executionContext) {
 
 | Hodnota | Nahradit hodnotou |
 | --- | --- |
+| USER_DEFINED_BOUNDARY | Název obsahu hranic s více částmi. |
 | YOUR_SPACE_IDENTIFIER | Identifikátor místa  |
 | YOUR_MATCHER_IDENTIFIER | ID předávaný kterou chcete použít |
 
@@ -180,39 +186,44 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Pro složitější ukázku kódu UDF [zkontrolujte dostupné místo čerstvé vzduchem UDF](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+Složitější ukázku kódu uživatelem definované funkce, najdete v článku [rychlý start obsazení](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
 
 ## <a name="create-a-role-assignment"></a>Vytvořit přiřazení role
 
-Potřebujeme vytvořit přiřazení role pro uživatelem definované funkce ke spuštění v rámci. Pokud není, nebude mít správná oprávnění k interakci s rozhraním API pro správu k provádění akcí v grafu objektů. Akce, které provádí uživatelem definovanou funkci nejsou vyloučené z řízení přístupu na základě rolí v rámci Azure digitální dvojče Management API. Může být omezená v oboru tak, že zadáte určité role nebo určité cesty řízení přístupu. Další informace najdete v tématu [řízení přístupu na základě rolí](./security-role-based-access-control.md) dokumentaci.
+Vytvořte přiřazení role pro uživatelem definované funkce ke spuštění v rámci. Pokud pro uživatelem definované funkce neexistuje žádná přiřazení role, nemá potřebná oprávnění k interakci s rozhraním API pro správu nebo nebude mít přístup k provádění akcí v grafu objektů. Akce, které může provádět uživatelem definované funkce jsou zadány a prostřednictvím řízení přístupu na základě rolí v rámci Azure digitální dvojče Management API. Uživatelem definované funkce může omezit v oboru, například tak, že zadáte určité role nebo určité cesty řízení přístupu. Další informace najdete v tématu [řízení přístupu na základě rolí](./security-role-based-access-control.md) dokumentaci.
 
-1. Dotazování pro role a získat ID role, kterou chcete přiřadit k UDF. Předejte ji do **RoleId**:
-
-    ```plaintext
-    GET YOUR_MANAGEMENT_API_URL/system/roles
-    ```
-
-1. **ID objektu** bude UDF ID, které jste vytvořili dříve.
-1. Vrátí hodnotu **cesta** dotazováním prostory vaší s `fullpath`.
-1. Zkopírujte vráceného `spacePaths` hodnotu. Který použijete v následujícím kódu:
+1. [Dotazování do rozhraní API systému](./security-create-manage-role-assignments.md#all) u všech rolí k získání ID role, kterou chcete přiřadit k vaší UDF. Udělat tak, že ověřeného požadavku HTTP GET na:
 
     ```plaintext
-    GET YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
+    YOUR_MANAGEMENT_API_URL/system/roles
+    ```
+   Zachovat ID požadované role. Se předá jako atribut textu JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) níže.
+
+1. **ID objektu** (`YOUR_USER_DEFINED_FUNCTION_ID`) bude UDF ID, které jste vytvořili dříve.
+1. Vrátí hodnotu **cesta** (`YOUR_ACCESS_CONTROL_PATH`) dotazováním prostory vaší s `fullpath`.
+1. Zkopírujte vráceného `spacePaths` hodnotu. Který budete používat níže. Proveďte ověřené požadavek HTTP GET na:
+
+    ```plaintext
+    YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Hodnota parametru | Nahradit hodnotou |
+    | Hodnota | Nahradit hodnotou |
     | --- | --- |
-    | *YOUR_SPACE_NAME* | Název pole, které chcete použít |
+    | YOUR_SPACE_NAME | Název pole, které chcete použít |
 
-1. Vložte vrácený `spacePaths` hodnoty do **cesta** k vytvoření přiřazení role UDF:
+1. Vložte vrácený `spacePaths` hodnoty do **cesta** k vytvoření přiřazení role UDF tím, že ověřeného požadavku HTTP POST do:
 
     ```plaintext
-    POST YOUR_MANAGEMENT_API_URL/roleassignments
+    YOUR_MANAGEMENT_API_URL/roleassignments
+    ```
+    S text JSON:
+
+    ```JSON
     {
-      "RoleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
-      "ObjectId": "YOUR_USER_DEFINED_FUNCTION_ID",
-      "ObjectIdType": "YOUR_USER_DEFINED_FUNCTION_TYPE_ID",
-      "Path": "YOUR_ACCESS_CONTROL_PATH"
+      "roleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
+      "objectId": "YOUR_USER_DEFINED_FUNCTION_ID",
+      "objectIdType": "YOUR_USER_DEFINED_FUNCTION_TYPE_ID",
+      "path": "YOUR_ACCESS_CONTROL_PATH"
     }
     ```
 
@@ -223,433 +234,21 @@ Potřebujeme vytvořit přiřazení role pro uživatelem definované funkce ke s
     | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ID určení typu UDF |
     | YOUR_ACCESS_CONTROL_PATH | Cesta správy přístupu |
 
+>[!TIP]
+> Přečtěte si článek [jak vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md) Další informace o operacích UDF související rozhraní API pro správu a koncových bodů.
+
 ## <a name="send-telemetry-to-be-processed"></a>Odesílání telemetrických dat ke zpracování
 
-Telemetrii generovanou senzor je popsáno v grafu se aktivuje spuštění uživatelem definované funkce, který byl nahrán. Procesor dat převezme telemetrická data. Plán spuštění vytvoří se pro volání uživatelem definované funkce.
-
-1. Načte procesy pro hledání shody vygenerování čtení odhlásit z senzoru.
-1. V závislosti na tom, co procesy pro hledání shody úspěšně vyhodnocena načtěte související uživatelem definované funkce.
-1. Spusťte každý uživatelem definované funkce.
-
-## <a name="client-reference"></a>Klientská – referenční informace
-
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata(id) ⇒ `space`
-
-Zadaný identifikátor místa, načte tuto funkci místo z grafu.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ---------- | ------------------- | ------------ |
-| *ID*  | `guid` | identifikátor místa |
-
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
-
-Zadaný identifikátor senzor, tato funkce načte senzor z grafu.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ---------- | ------------------- | ------------ |
-| *ID*  | `guid` | identifikátor senzor |
-
-### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
-
-Zadaný identifikátor zařízení, tato funkce načítá zařízení z grafu.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *ID* | `guid` | Identifikátor zařízení: |
-
-### <a name="getsensorvaluesensorid-datatype--value"></a>⇒ getSensorValue (sensorId, datový typ) `value`
-
-Zadaný identifikátor ze senzorů a jeho datového typu, tato funkce načte aktuální hodnota pro tento senzoru.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *sensorId*  | `guid` | identifikátor senzor |
-| *Datový typ*  | `string` | Typ dat ze senzorů |
-
-### <a name="getspacevaluespaceid-valuename--value"></a>⇒ getSpaceValue (spaceId, valueName) `value`
-
-Zadaný identifikátor místa a název hodnoty, tato funkce načte aktuální hodnotou pro tuto vlastnost místa.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *spaceId*  | `guid` | identifikátor místa |
-| *Název hodnoty* | `string` | Název vlastnosti místa |
-
-### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>⇒ getSensorHistoryValues (sensorId, datový typ) `value[]`
-
-Zadaný identifikátor ze senzorů a jeho datového typu, tato funkce načte historickými hodnotami pro tento senzoru.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | identifikátor senzor |
-| *Datový typ* | `string` | Typ dat ze senzorů |
-
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>⇒ getSpaceHistoryValues (spaceId, datový typ) `value[]`
-
-Zadaný identifikátor místa a název hodnoty, tato funkce načte historickými hodnotami pro tuto vlastnost v prostoru.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | identifikátor místa |
-| *Název hodnoty* | `string` | Název vlastnosti místa |
-
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
-
-Zadaný identifikátor místo, tato funkce načte podřízený prostory pro toto nadřazené místo.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | identifikátor místa |
-
-### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
-
-Zadaný identifikátor místo, tato funkce načte podřízený senzory pro toto nadřazené místo.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | identifikátor místa |
-
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
-
-Zadaný identifikátor místa, tato funkce načte podřízený zařízení pro toto nadřazené místo.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | identifikátor místa |
-
-### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
-
-Zadaný identifikátor zařízení, tato funkce načítá podřízené senzory pro funkce zařízení nadřazené.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *ID zařízení* | `guid` | Identifikátor zařízení: |
-
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
-
-Zadaný identifikátor místo, tato funkce načítá prostor jeho nadřazené.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *childSpaceId* | `guid` | identifikátor místa |
-
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
-
-Zadaný identifikátor senzor, tato funkce načítá prostor jeho nadřazené.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | identifikátor senzor |
-
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
-
-Zadaný identifikátor zařízení, tato funkce načítá prostor jeho nadřazené.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *childDeviceId* | `guid` | Identifikátor zařízení: |
-
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
-
-Zadaný identifikátor senzor, tato funkce načítá nadřazeného zařízení.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | identifikátor senzor |
-
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>⇒ getSpaceExtendedProperty (spaceId, propertyName) `extendedProperty`
-
-Zadaný identifikátor místa, tato funkce načte vlastnosti a její hodnotu z prostoru.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | identifikátor místa |
-| *propertyName* | `string` | Název vlastnosti místa |
-
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>⇒ getSensorExtendedProperty (sensorId, propertyName) `extendedProperty`
-
-Zadaný identifikátor senzor, tato funkce načte vlastnosti a její hodnotu z senzoru.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | identifikátor senzor |
-| *propertyName* | `string` | Název vlastnosti senzor |
-
-### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>⇒ getDeviceExtendedProperty (deviceId, propertyName) `extendedProperty`
-
-Zadaný identifikátor zařízení, tato funkce použije vlastnost a její hodnotu ze zařízení.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *ID zařízení* | `guid` | Identifikátor zařízení: |
-| *propertyName* | `string` | Název vlastnosti zařízení |
-
-### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, datový typ, hodnoty)
-
-Tato funkce nastaví hodnotu v objektu ze senzorů pomocí daného datového typu.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | identifikátor senzor |
-| *Datový typ*  | `string` | Typ dat ze senzorů |
-| *value*  | `string` | Hodnota |
-
-### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, datový typ, hodnoty)
-
-Tato funkce nastaví hodnotu na objekt prostoru s danou datovým typem.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | identifikátor místa |
-| *Datový typ* | `string` | Typ dat |
-| *value* | `string` | Hodnota |
-
-### <a name="logmessage"></a>log(Message)
-
-Tato funkce protokolů následující zprávu do uživatelem definované funkce.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *Zpráva* | `string` | zaznamenávané zprávy |
-
-### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, datová část)
-
-Tato funkce odesílá vlastní oznámení k odeslání.
-
-**Druh**: globální funkce
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *topologyObjectId*  | `guid` | Identifikátor objektu grafu. Příklady jsou místa, ze senzorů a ID zařízení.|
-| *topologyObjectType*  | `string` | Příklady jsou ze senzorů a zařízení.|
-| *datová část*  | `string` | Datová část JSON k odeslání oznámení. |
-
-## <a name="return-types"></a>Návratové typy
-
-Následující modely popisují návratových objektů z předchozí odkaz klienta.
-
-### <a name="space"></a>Kosmické aktivity
-
-```JSON
-{
-  "Id": "00000000-0000-0000-0000-000000000000",
-  "Name": "Space",
-  "FriendlyName": "Conference Room",
-  "TypeId": 0,
-  "ParentSpaceId": "00000000-0000-0000-0000-000000000001",
-  "SubtypeId": 0
-}
-```
-
-### <a name="space-methods"></a>Místo metody
-
-#### <a name="parent--space"></a>Parent() ⇒ `space`
-
-Tato funkce vrací nadřazené místo aktuálního místa.
-
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
-
-Tato funkce vrací podřízeného senzorů aktuálního místa.
-
-#### <a name="childdevices--device"></a>ChildDevices() ⇒ `device[]`
-
-Tato funkce vrací podřízeného zařízení aktuálního místa.
-
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
-
-Tato funkce vrací rozšířené vlastnosti a její hodnotu aktuálního místa.
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Název rozšířené vlastnosti |
-
-#### <a name="valuevaluename--value"></a>Value(VALUENAME) ⇒ `value`
-
-Tato funkce vrací hodnotu aktuálního místa.
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *Název hodnoty* | `string` | Název hodnoty |
-
-#### <a name="historyvaluename--value"></a>History(VALUENAME) ⇒ `value[]`
-
-Tato funkce vrací historickými hodnotami aktuálního místa.
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *Název hodnoty* | `string` | Název hodnoty |
-
-#### <a name="notifypayload"></a>Notify(Payload)
-
-Tato funkce odesílá oznámení se zadanou datovou část.
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *datová část* | `string` | Datová část JSON zahrnout oznámení |
-
-### <a name="device"></a>Zařízení
-
-```JSON
-{
-  "Id": "00000000-0000-0000-0000-000000000002",
-  "Name": "Device",
-  "FriendlyName": "Temperature Sensing Device",
-  "Description": "This device contains a sensor that captures temperature readings.",
-  "Type": "None",
-  "Subtype": "None",
-  "TypeId": 0,
-  "SubtypeId": 0,
-  "HardwareId": "ABC123",
-  "GatewayId": "ABC",
-  "SpaceId": "00000000-0000-0000-0000-000000000000"
-}
-```
-
-### <a name="device-methods"></a>Metody zařízení
-
-#### <a name="parent--space"></a>Parent() ⇒ `space`
-
-Tato funkce vrací nadřazené prostoru aktuální zařízení.
-
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
-
-Tato funkce vrací podřízeného senzorů aktuální zařízení.
-
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
-
-Tato funkce vrací rozšířené vlastnosti a její hodnotu pro aktuální zařízení.
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Název rozšířené vlastnosti |
-
-#### <a name="notifypayload"></a>Notify(Payload)
-
-Tato funkce odesílá oznámení se zadanou datovou část.
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *datová část* | `string` | Datová část JSON zahrnout oznámení |
-
-### <a name="sensor"></a>Senzor
-
-```JSON
-{
-  "Id": "00000000-0000-0000-0000-000000000003",
-  "Port": "30",
-  "PollRate": 3600,
-  "DataType": "Temperature",
-  "DataSubtype": "None",
-  "Type": "Classic",
-  "PortType": "None",
-  "DataUnitType": "FahrenheitTemperature",
-  "SpaceId": "00000000-0000-0000-0000-000000000000",
-  "DeviceId": "00000000-0000-0000-0000-000000000001",
-  "PortTypeId": 0,
-  "DataUnitTypeId": 0,
-  "DataTypeId": 0,
-  "DataSubtypeId": 0,
-  "TypeId": 0  
-}
-```
-
-### <a name="sensor-methods"></a>Senzor metody
-
-#### <a name="space--space"></a>Space() ⇒ `space`
-
-Tato funkce vrací nadřazené místo aktuální ze souboru.
-
-#### <a name="device--device"></a>Device() ⇒ `device`
-
-Tato funkce vrací nadřazené zařízení aktuální ze souboru.
-
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
-
-Tato funkce vrací rozšířené vlastnosti a její hodnotu aktuální senzoru.
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Název rozšířené vlastnosti |
-
-#### <a name="value--value"></a>Value() ⇒ `value`
-
-Tato funkce vrací hodnotu aktuální senzoru.
-
-#### <a name="history--value"></a>History() ⇒ `value[]`
-
-Tato funkce vrací historickými hodnotami aktuální senzoru.
-
-#### <a name="notifypayload"></a>Notify(Payload)
-
-Tato funkce odesílá oznámení se zadanou datovou část.
-
-| Parametr  | Typ                | Popis  |
-| ------ | ------------------- | ------------ |
-| *datová část* | `string` | Datová část JSON zahrnout oznámení |
-
-### <a name="value"></a>Hodnota
-
-```JSON
-{
-  "DataType": "Temperature",
-  "Value": "70",
-  "CreatedTime": ""
-}
-```
-
-### <a name="extended-property"></a>Rozšířené vlastnosti
-
-```JSON
-{
-  "Name": "OccupancyStatus",
-  "Value": "Occupied"
-}
-```
+Senzor definované v grafu prostorových intelligence odesílá telemetrická data. Telemetrická data zase aktivuje spuštění uživatelem definované funkce, který byl nahrán. Procesor dat převezme telemetrická data. Pak je vytvořen plán provádění volání uživatelem definované funkce.
+
+1. Načte procesy pro hledání shody vygenerování čtení ze senzoru.
+1. V závislosti na tom, jaké procesy pro hledání shody byla úspěšně vyhodnocena načtěte související uživatelem definované funkce.
+1. Spuštění každý uživatelem definované funkce.
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [vytvoření koncových bodů Azure digitální dvojče](how-to-egress-endpoints.md) k odesílání událostí do.
+- Zjistěte, jak [vytvoření koncových bodů Azure digitální dvojče](./how-to-egress-endpoints.md) k odesílání událostí do.
 
-- Další podrobné informace o koncových bodů Azure digitální dvojče [Další informace o koncových bodech](concepts-events-routing.md).
+- Další podrobnosti o směrování v Azure digitální dvojče [směrování události a zprávy](./concepts-events-routing.md).
+
+- Zkontrolujte [klientské knihovny referenční dokumentaci](./reference-user-defined-functions-client-library.md).

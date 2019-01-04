@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: b751fe4feab48e6ed706a2e28bba8406f4f4891c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9bbaf23999c04eba5157ebe7dff73ed47418c99a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185694"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634180"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Řešení potíží s chybami při pomocí služby Azure Backup pomocí informací uvedených v následující tabulce došlo k chybě:
@@ -69,11 +69,11 @@ ms.locfileid: "53185694"
 | Typ účtu úložiště zadaný pro operaci obnovení není online: <br>Ujistěte se, že účet úložiště zadaný u operace obnovení je online. |K této chybě může dojít z důvodu o přechodnou chybu ve službě Azure Storage nebo kvůli výpadku. Zvolte jiný účet úložiště. |
 | Byla dosažena kvóta skupin prostředků: <br>Odstraňte některé skupiny prostředků na portálu Azure nebo se obraťte na podporu Azure o navýšení limitů. |Žádný |
 | Vybraná podsíť neexistuje: <br>Vyberte podsíť, která existuje. |Žádný |
-| Služba zálohování nemá autorizaci pro přístup k prostředkům ve vašem předplatném. |Chcete-li vyřešit tuto chybu, nejdříve obnovit disky pomocí kroků v [obnovení disků zálohovaných](backup-azure-arm-restore-vms.md#restore-backed-up-disks). Pak použijte rutinu prostředí PowerShell kroky v [vytvořit virtuální počítač z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) vytvoří úplný virtuální počítač z obnovených disků. |
+| Služba zálohování nemá autorizaci pro přístup k prostředkům ve vašem předplatném. |Chcete-li vyřešit tuto chybu, nejdříve obnovit disky pomocí kroků v [obnovení disků zálohovaných](backup-azure-arm-restore-vms.md#create-new-restore-disks). Pak použijte rutinu prostředí PowerShell kroky v [vytvořit virtuální počítač z obnovených disků](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
 ## <a name="backup-or-restore-takes-time"></a>Zálohování nebo obnovení trvá určitou dobu
 Pokud zálohování trvá déle než 12 hodin nebo obnovení trvá déle než 6 hodin:
-* Vysvětlení [faktorů, které přispívají k čas zálohování](backup-azure-vms-introduction.md#total-vm-backup-time) a [faktorů, které přispívají k čas obnovení](backup-azure-vms-introduction.md#total-restore-time).
+* Vysvětlení [faktorů, které přispívají k čas zálohování](backup-azure-vms-introduction.md#time-considerations) a [faktorů, které přispívají k čas obnovení](backup-azure-vms-introduction.md#restore-considerations).
 * Ujistěte se, že se řídíte [doporučené zálohovat](backup-azure-vms-introduction.md#best-practices).
 
 ## <a name="vm-agent"></a>Agent virtuálního počítače

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: c2fd32ad15366c76c061ba42fa0a59d43a317b43
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7c2a1c586b4d6f5f9f6e34a091702a35f994544f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012755"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726625"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Použití nástrojů Azure Data Lake pro Visual Studio s Hortonworks Sandbox
 
@@ -60,13 +60,13 @@ Ujistěte se, že Hortonworks Sandbox běží. Postupujte podle pokynů v [zahá
 
     ![Snímek obrazovky dialogového okna, se zvýrazněným tlačítkem Aktualizovat](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Proces aktualizace využívá Ambari k úpravě konfigurace Hortonworks Sandbox na co se očekává nástroje Data Lake Tools pro Visual Studio.
 
 6. Po dokončení ověřování vyberte **Dokončit** a dokončete konfiguraci.
     ![Snímek obrazovky dialogového okna, se zvýrazněným tlačítkem Dokončit](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
-     >[!NOTE]
+     >[!NOTE]  
      > V závislosti na rychlosti vývojového prostředí a množství paměti přidělené virtuálnímu počítači může trvat několik minut, než se konfigurace a ověření služby.
 
 Po provedení těchto kroků, teď máte **místní cluster HDInsight** položku v Průzkumníku serveru pod **HDInsight** oddílu.
@@ -99,7 +99,7 @@ Hive poskytuje SQL jako dotazovací jazyk (HiveQL) pro práci se strukturovaným
 
     Po **stav úlohy** změní na **dokončeno**, zobrazí se orientovaného Acyklického grafu (DAG). Tento diagram znázorňuje cesta spuštění, která byla určena podle Tez při zpracování dotazu Hive. Tez je výchozí prováděcí modul pro Hive na místním clusteru.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Apache Tez je také výchozí, když používáte clusterech HDInsight založených na Linuxu. Není výchozí v HDInsight se systémem Windows. Jeho použití, je nutné přidat řádek `set hive.execution.engine = tez;` na začátek dotazu Hive.
 
     Použití **výstup úlohy** odkaz k zobrazení výstupu. V takovém případě je 823, počet řádků v tabulce sample_08. Diagnostické informace o úloze můžete zobrazit pomocí **protokol úloh** a **stáhnout protokol YARN** odkazy.
@@ -110,7 +110,7 @@ Hive poskytuje SQL jako dotazovací jazyk (HiveQL) pro práci se strukturovaným
 
     Interaktivního dotazu streamuje výstup protokolu vygenerovaných během zpracování **výstup serveru HiveServer2** okna.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Informace jsou stejné, který je k dispozici **protokol úloh** odkaz po dokončení úlohy.
 
     ![Snímek obrazovky výstupu protokolu](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)

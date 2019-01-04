@@ -11,24 +11,24 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a97da5542395b57fa9a6ca6e4c38dd25e524ec3e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098638"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969416"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>Extrakce dat z záměry a entity
 Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON.
 
-Nejtěžší data k extrakci jsou data zjištěné počítače, protože se neshoduje přesný text. Extrakce dat z počítače zjistili [entity](luis-concept-entity-types.md) musí být součástí [vytváření cyklu](luis-concept-app-iteration.md) dokud jste si jisti, můžete přijímat data očekáváte, že.
+Nejtěžší data k extrakci jsou data zjištěné počítače, protože není přesný text v případě shody. Extrakce dat z počítače zjistili [entity](luis-concept-entity-types.md) musí být součástí [vytváření cyklu](luis-concept-app-iteration.md) dokud nejste jisti, můžete přijímat data očekáváte, že.
 
 ## <a name="data-location-and-key-usage"></a>Umístění a klíč využití dat
 Služba LUIS poskytuje data z publikovanému [koncový bod](luis-glossary.md#endpoint). **Požadavek HTTPS** (POST nebo GET), obsahuje utterance, jakož i některé volitelné konfigurace, jako je pracovní nebo produkční prostředí.
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-`appID` Je k dispozici na **nastavení** stránky vaší aplikace LUIS stejně jako část adresy URL (po `/apps/`) při úpravách aplikace LUIS. `subscription-key` Je koncový bod klíče použitého k dotazování vaší aplikace. Při vytváření/starter bezplatný klíč můžete použít během výuky LUIS, je potřeba změnit klíč koncového bodu na klíč, který podporuje vaši [očekávané využití LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednotka je minut.
+`appID` Je k dispozici na **nastavení** stránky vaší aplikace LUIS stejně jako část adresy URL (po `/apps/`) při úpravách aplikace LUIS. `subscription-key` Je koncový bod klíče použitého k dotazování vaší aplikace. Při vytváření/starter bezplatný klíč můžete použít při seznamování se služba LUIS, je potřeba změnit klíč koncového bodu na klíč, který podporuje vaši [očekávané využití LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednotka je minut.
 
 **Odpovědi HTTP** obsahuje všechny informace o záměru a entity LUIS můžete zjistit na základě aktuální publikované modelu buď koncový bod přípravném nebo produkčním prostředí. Koncový bod adresy URL se nachází na [LUIS](luis-reference-regions.md) webu v **spravovat** části na **klíče a koncových bodů** stránky.
 
@@ -174,7 +174,7 @@ Data vrácená z koncového bodu obsahuje název entity, zjištěný text z utte
 
 ## <a name="hierarchical-entity-data"></a>Data hierarchická entity
 
-[Hierarchické](luis-concept-entity-types.md) entity jsou zjištěné počítače a může obsahovat slova nebo fráze. Podřízené položky se identifikují podle kontextu. Pokud chcete pro relaci nadřazený podřízený se shodou přesný text, použití [seznamu](#list-entity-data) entity.
+[Hierarchické](luis-concept-entity-types.md) entity jsou zjištěné počítače a může obsahovat slova nebo fráze. Podřízené položky se identifikují podle kontextu. Pokud hledáte vztahu nadřazený podřízený se shodou přesný text, použití [seznamu](#list-entity-data) entity.
 
 `book 2 tickets to paris`
 
@@ -260,7 +260,7 @@ Složený entity jsou vráceny v `compositeEntities` pole a všechny entity v r�
 
 ## <a name="list-entity-data"></a>Seznam dat entity
 
-A [seznamu](luis-concept-entity-types.md) není entita se naučili počítače. Se neshoduje přesný text. Představuje seznam položek v seznamu spolu s synonyma pro tyto položky. Služba LUIS označí všechny shody jako položka v seznamu jako entity v odpovědi. Synonymum může být ve více než jeden seznam.
+A [seznamu](luis-concept-entity-types.md) entity není zjištěné počítače. Se neshoduje přesný text. Představuje seznam položek v seznamu spolu s synonyma pro tyto položky. Služba LUIS označí všechny shody jako položka v seznamu jako entity v odpovědi. Synonymum může být ve více než jeden seznam.
 
 Předpokládejme, že aplikace má seznam s názvem `Cities`, což každodenně názvy měst včetně město letiště (Sea hrají), kód letiště (SEA), poštovní směrovací číslo poštovní směrovací (98101) a phone oblasti kódu (206).
 
@@ -425,7 +425,11 @@ Jiný příklad utterance pomocí synonymum pro Paříž:
 ```
 
 ## <a name="extracting-names"></a>Extrahování názvů
-Získávání názvů z utterance je obtížné, protože název může být téměř libovolnou kombinací písmena a slova. V závislosti na tom, jaký typ název rozbaluje máte několik možností. Ty nejsou pravidla, ale další pokyny.
+Získávání názvů z utterance je obtížné, protože název může být téměř libovolnou kombinací písmena a slova. V závislosti na tom, jaký typ název jste už extrahování máte několik možností. Následující návrhy nejsou pravidla, ale další pokyny.
+
+### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Přidání předem připravených entit PersonName a GeographyV2
+
+[PersonName](luis-reference-prebuilt-person.md) a [GeographyV2](luis-reference-prebuilt-geographyV2.md) entity jsou dostupné v některých [jazykových verzí jazyka](luis-reference-prebuilt-entities.md). 
 
 ### <a name="names-of-people"></a>Jména osob
 Název lidí může mít některé mírné formátu v závislosti na jazyk a jazykovou verzi. Použít hierarchická entity s jména a příjmení jako podřízené položky nebo jednoduché entity s rolemi křestní jméno a příjmení. Ujistěte se, že poskytnout příklady, které používají název první a poslední v různých částech utterance, v různých délek projevy a projevy přes všechny záměry včetně žádný záměru. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
@@ -434,7 +438,7 @@ Název lidí může mít některé mírné formátu v závislosti na jazyk a jaz
 Názvy umístění nastavují a známé jako je například města, okresy, státy, provincie a zemí. Pokud vaše aplikace používá know sadu umístěních, zvažte seznam entit. Pokud chcete najít že všechny umístit názvy, vytvořit jednoduchou entitu a poskytují řadu příkladů. Přidáte frázi seznam místních jmen posílit jaké místo názvů vypadají ve vaší aplikaci. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
 ### <a name="new-and-emerging-names"></a>Nové a chystané názvy
-Některé aplikace musí být schopna najít nové a chystané názvy, například produkty nebo společnosti. Toto je automatizování nejobtížnějších typ extrakce. Začít s jednoduchou entitu a přidat seznam frázi. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
+Některé aplikace musí být schopna najít nové a chystané názvy, například produkty nebo společnosti. Tyto typy názvů je automatizování nejobtížnějších typu extrakce. Začít s jednoduchou entitu a přidat seznam frázi. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
 ## <a name="pattern-roles-data"></a>Vzor role dat
 Role jsou kontextové rozdíly entit.
@@ -603,6 +607,7 @@ Entity extrakce klíčových frází vrací klíčové fráze v utterance, posky
 ```
 
 ## <a name="data-matching-multiple-entities"></a>Data odpovídající více entit
+
 Služba LUIS vrátí všechny entity v utterance. V důsledku toho může váš robot třeba, aby rozhodování na základě výsledků. Utterance může mít mnoho entit v utterance:
 
 `book me 2 adult business tickets to paris tomorrow on air france`
@@ -728,6 +733,46 @@ Koncový bod služby LUIS můžete zjistit na stejná data v různé entity:
           "value": "business"
         }
       ]
+    }
+  ]
+}
+```
+
+## <a name="data-matching-multiple-list-entities"></a>Data odpovídající více seznam entit
+
+Pokud slovo nebo frázi, odpovídá více než jednu entitu seznamu, koncový bod dotaz vrátí Každá entita seznamu.
+
+Pro dotaz `when is the best time to go to red rock?`, a aplikace obsahuje slovo `red` ve více než jeden seznam, LUIS, rozpozná všechny entity a vrátí pole entit jako součást koncového bodu odpověď JSON: 
+
+```JSON
+{
+  "query": "when is the best time to go to red rock?",
+  "topScoringIntent": {
+    "intent": "Calendar.Find",
+    "score": 0.06701678
+  },
+  "entities": [
+    {
+      "entity": "red",
+      "type": "Colors",
+      "startIndex": 31,
+      "endIndex": 33,
+      "resolution": {
+        "values": [
+          "Red"
+        ]
+      }
+    },
+    {
+      "entity": "red rock",
+      "type": "Cities",
+      "startIndex": 31,
+      "endIndex": 38,
+      "resolution": {
+        "values": [
+          "Destinations"
+        ]
+      }
     }
   ]
 }

@@ -98,9 +98,9 @@ Když jsou zdroje a jímky úložiště dat v cloudu, datová továrna použív�
 |:--- |:--- |:--- |
 | Spojené státy | Východ USA | Východ USA |
 | &nbsp; | Východní USA 2 | Východní USA 2 |
-| &nbsp; | Střed USA | Střed USA |
-| &nbsp; | Střed USA – sever | Střed USA – sever |
-| &nbsp; | Střed USA – jih | Střed USA – jih |
+| &nbsp; | Střední USA | Střední USA |
+| &nbsp; | Středoseverní USA | Středoseverní USA |
+| &nbsp; | Středojižní USA | Středojižní USA |
 | &nbsp; | Západní střed USA | Západní střed USA |
 | &nbsp; | Západní USA | Západní USA |
 | &nbsp; | Západní USA 2 | Západní USA 2 |

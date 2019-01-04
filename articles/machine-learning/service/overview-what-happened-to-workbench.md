@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7b8cf102160a281b47419680a209c58a7ae60c9
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: ff6b61874363bbc869bd509174e58640a2487f56
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582826"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811303"
 ---
 # <a name="whats-happening-to-machine-learning-workbench-in-azure-machine-learning-service"></a>Co se děje, Machine Learning Workbench ve službě Azure Machine Learning?
 
@@ -68,9 +68,9 @@ Historie spuštění, se nazývají **experimenty** v aktuální verzi. Můžete
 
 Existující soubory přípravy dat nejsou přenosné na nejnovější verzi, protože už nemáme Machine Learning Workbench. I přesto ale můžete připravovat data k modelování.  
 
-S menší datové sady, můžete použít <a href="https://aka.ms/aml-sdk" target="_blank">sady SDK pro přípravu dat Azure Machine Learning</a> k rychlé přípravě vaše data před modelování. 
+S datovými sadami libovolné velikosti, můžete použít [sady SDK služby Azure Machine Learning Data Prep](http://aka.ms/data-prep-sdk) k rychlé přípravě vaše data před modelování napsáním kódu v Pythonu. 
 
-Můžete použít tento stejný <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> u větších datových sad. Nebo připravte velké datové sady pomocí Azure Databricks. 
+Můžete postupovat podle [v tomto kurzu](tutorial-data-prep.md) Další informace o tom, jak pomocí Azure Machine Learning Data Prep SDK.
 
 ## <a name="will-projects-persist"></a>Vydrží mi moje projekty?
 
@@ -78,7 +78,7 @@ Neztratíte žádný kód ani práci. Ve starší verzi jsou projekty cloudové 
 
 Velká část obsahu projektu se již v místním počítači. Proto stačí na něj odkazovat ve vašem kódu pro připojení k vašemu pracovnímu prostoru a vytvoření konfiguračního souboru v tomto adresáři. Zjistěte, jak [migrovat existující projekty](how-to-migrate.md#projects).
 
-Zjistěte, jak [začít pracovat v Pythonu s hlavním SDK](quickstart-get-started.md).
+Zjistěte, jak začít pracovat [Python s hlavním SDK](quickstart-create-workspace-with-python.md) nebo pomocí [webu Azure portal](quickstart-get-started.md).
 
 ## <a name="what-about-my-registered-models-and-images"></a>Jak Moje registrované modely a Image?
  

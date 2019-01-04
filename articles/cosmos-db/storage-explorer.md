@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jejiang
 ms.custom: seodec18
-ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: fb758c12d699bb80f81b65db99e1fec68c4efabf
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138122"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809756"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Správa prostředků Azure Cosmos DB pomocí Průzkumníka služby Azure Storage
 
-Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage umožňuje uživatelům spravovat entity Azure Cosmos DB, manipulovat s daty, aktualizovat uložené procedury a triggery, stejně jako další entity Azure, jako jsou objekty blob a fronty služby Storage. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě. V současné době podporuje Průzkumník služby Azure Storage účty SQL, MongoDB, Graph a Table.
+Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage umožňuje uživatelům spravovat entity Azure Cosmos DB, manipulovat s daty, aktualizovat uložené procedury a triggery, stejně jako další entity Azure, jako jsou objekty blob a fronty služby Storage. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě. V současné době podporuje Průzkumník služby Azure Storage účty Cosmos konfigurované pro SQL, MongoDB, Graph a Table API služby.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Účet služby Azure Cosmos DB pro rozhraní SQL API <!--or MongoDB API-->. Pokud účet nemáte, můžete si ho vytvořit na webu Azure Portal, jak je popsáno v tématu [Azure Cosmos DB: Vytvoření webové aplikace SQL API s využitím .NET a webu Azure Portal](create-sql-api-dotnet.md).
+Účet Cosmos pomocí rozhraní SQL API nebo Azure Cosmos DB: rozhraní API pro MongoDB. Pokud nemáte účet, můžete vytvořit jeden na webu Azure Portal, jak je popsáno v [služby Azure Cosmos DB: Vytvoření webové aplikace SQL API s využitím .NET a webu Azure portal](create-sql-api-dotnet.md).
 
 ## <a name="installation"></a>Instalace
 
-Nainstalujte nejnovější části Průzkumníka služby Azure Storage: [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). V současné době podporujeme verze pro Windows, Linux a Mac.
+Nainstalujte nejnovější části Průzkumníka služby Storage Azure do tady: [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)podporujeme verze pro Windows, Linux a MAC.
 
 ## <a name="connect-to-an-azure-subscription"></a>Připojení k předplatnému Azure
 
@@ -222,9 +222,9 @@ Pokud Průzkumník služby Storage narazí na některý z těchto certifikátů 
 
 1. Nainstalujte OpenSSL.
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (stačí jakákoli z odlehčených verzí)
-     - Mac a Linux: Mělo by být součástí operačního systému.
+     - Mac a Linux: Mělo by být součástí operačního systému
 2. Spusťte OpenSSL.
-    - Windows: Přejděte do adresáře instalace, pak do složky **/bin/** a dvakrát klikněte na soubor **openssl.exe**.
+    - Windows: Přejděte do adresáře instalace, pak **/bin/**, pak poklikejte na **openssl.exe**.
     - Mac a Linux: V terminálu spusťte příkaz **openssl**.
 3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.
 4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jisti, které certifikáty jsou podepsané svým držitelem, hledejte certifikáty, jejichž předmět (s:) je stejný jako vystavitel (i:).
@@ -241,7 +241,7 @@ Pokud se vám po úspěšném přihlášení nedaří načíst vaše předplatn�
 - Ujistěte se, že jste se přihlásili s použitím správného prostředí ([Azure](https://portal.azure.com/), [Azure (Čína)](https://portal.azure.cn/), [Azure (Německo)](https://portal.microsoftazure.de/), [Azure pro vládu USA](https://portal.azure.us/) nebo vlastní prostředí nebo Azure Stack).
 - Pokud se nacházíte za proxy serverem, ujistěte se, že jste správně nakonfigurovali proxy Průzkumníka služby Storage.
 - Zkuste účet odebrat a znovu přidat.
-- Zkuste z domovského adresáře (např. C:\Users\ContosoUser) odstranit následující soubory a pak znovu přidat účet:
+- Zkuste z domovského adresáře odstranit následující soubory (například: C:\Users\ContosoUser) a pak znovu přidat účet:
   - .adalcache
   - .devaccounts
   - .extaccounts
@@ -305,6 +305,6 @@ Pokud vám žádné z předchozích řešení nepomohlo, požádejte o pomoc s �
 
 ## <a name="next-steps"></a>Další postup
 
-* Podívejte se na následující video a zjistěte, jak používat službu Azure Cosmos DB v Průzkumníku služby Azure Storage: [Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
+* Podívejte se na následující video a zjistěte, jak pomocí služby Azure Cosmos DB v Průzkumníku služby Storage: [Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * Další informace o Průzkumníku služby Storage a připojení dalších služeb najdete v tématu [Začínáme s Průzkumníkem služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

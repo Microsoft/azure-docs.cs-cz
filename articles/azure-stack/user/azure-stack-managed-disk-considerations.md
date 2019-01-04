@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 9eed4c4bd8cd6290bd2126c91bcf4e37c1b0fa0b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4bad339ca704f14f57c120db5e731d0dbfeb8d59
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341944"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793429"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack spravované disky: Rozdíly a aspekty
 Tento článek shrnuje známé rozdíly mezi Azure Stack Managed Disks a Managed Disks pro Azure. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
@@ -61,6 +61,14 @@ Existují také rozdíly pomocí metrik storage:
 ## <a name="api-versions"></a>Verze rozhraní API
 Služba Azure Managed Disks zásobníku podporuje následující verze rozhraní API:
 - 2017-03-30
+
+## <a name="known-issues"></a>Známé problémy
+Po použití 1809 aktualizace, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+
+   - Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
+      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
+      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
+   - Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Pokud chcete chybu vyřešit, postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
 
 
 ## <a name="next-steps"></a>Další postup

@@ -1,20 +1,17 @@
 ---
 title: Zálohování a obnovení ve službě Azure Database for PostgreSQL
 description: Další informace o automatické zálohování a obnovení vašeho serveru Azure Database for PostgreSQL.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 707803e1f69a3146772e71ff711a48b510d8c9fc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: cf8cef9c715d9bbe82a0bae5c59f329f350021f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127563"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538337"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Zálohování a obnovení ve službě Azure Database for PostgreSQL
 

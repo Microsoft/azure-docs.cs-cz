@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: a15a704cfba9260daac0cd5edfdf8b4566348628
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 419ad6681af39aee468a23319b773de23619984d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263962"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555451"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Celkové náklady na Ownership(TCO) pomocí služby Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Bez serveru modelu zřizování služby Azure Cosmos DB eliminuje potřebu zřiz
 
 * **Větší hodnotu za cenu:** Analytici na trhu, zákazníky a partnery potvrdily větší hodnotu všech funkcí, které služby Azure Cosmos DB nabízí za mnohem nižší cenu ve srovnání s co zákazníci mohou získat při implementaci těchto řešení, samostatně nebo prostřednictvím jiných dodavatelů. Databáze obsahuje tyto globální distribuci, modely konzistence s několika hlavními databázemi, dobře definovaný a intuitivní, automatické indexování se značně zjednodušená pomocí služby Azure Cosmos DB bez jakékoli režie, složitost nebo výpadek.
 
-* **Žádnou správu NoSQL devops je potřeba:** Pomocí služby Azure Cosmos DB jeden není potřeba využívat devops pro správu nasazení, provádění údržby, škálování nebo opravy. Můžete spustit všechny úlohy, které byste udělali s OSS NoSQL hostovaný cluster místní nebo cloudové infrastruktury.
+* **Žádnou správu NoSQL DevOps je potřeba:** Pomocí služby Azure Cosmos DB jeden není potřeba využívat DevOps pro správu nasazení, provádění údržby, škálování nebo opravy. Můžete spustit všechny úlohy, které byste udělali s OSS NoSQL hostovaný cluster místní nebo cloudové infrastruktury.
 
 ![Azure Cosmos DB náklady na vlastnictví](./media/total-cost-ownership/tco.png)
 
@@ -37,7 +37,7 @@ Bez serveru modelu zřizování služby Azure Cosmos DB eliminuje potřebu zřiz
 
 * **Optimalizováno pro cloudové prostředí:** Azure Cosmos DB je navržená od základů s izolací podrobných více tenantů a výkonu. To umožňuje optimální umístění, provádění a vyrovnávání tisíce tenantů a jejich pracovní vytížení clusterů a datových center. Naproti tomu aktuální generace databáze OSS NoSQL použít místní celý virtuální počítač, který předpokládá, že ke spuštění úlohy jednoho tenanta. Tyto databáze nejsou navržený tak, aby využití poskytovatele cloudové infrastruktury a hardwaru v plném rozsahu. Například upgradovat rutinní image NoSQL OSS databázový stroj není zohledňovat rozdíly mezi virtuálním počítači se dolů Vs, nebo skutečnost, tento disk úrovně premium je už trojcestných replikovat. Nemůže využít tyto výhody a předat jí výhody a úspory pro zákazníky.
 
-* **Platíte podle počtu hodin:** Pro rozsáhlé úlohy, které je potřeba škálovat na libovolné bodu v čase se účtují po hodinách. Úlohy v aplikaci obvykle lišit mezi časy roku a data, která, která je dotazována. Pomocí služby Azure Cosmos DB můžete škálovat směrem nahoru nebo dolů podle potřeby a Plaťte jenom za co potřebujete. U systémů, místní nebo hostovaný IaaS nemůžete přiřadit tento model, protože není k dispozici způsob, jak vyřadit z provozu hardware každou hodinu. V takových případech můžete potenciálně ušetřit mezi do 14 10krát na průměr pomocí služby Azure Cosmos DB.
+* **Platíte podle počtu hodin:** Pro rozsáhlé úlohy, které potřebujete škálovat v libovolném bodě v čase, pouze se účtují po hodinách. Úlohy v aplikaci se obvykle liší mezi časy v roce a data, která je dotazována. Pomocí služby Azure Cosmos DB můžete škálovat směrem nahoru nebo dolů podle potřeby a Plaťte jenom za co potřebujete. U systémů, místní nebo hostovaný IaaS nemůžete přiřadit tento model, protože není k dispozici způsob, jak vyřadit z provozu hardware každou hodinu. V takových případech můžete potenciálně ušetřit mezi do 14 10krát na průměr pomocí služby Azure Cosmos DB.
 
 * **Získat mnoho funkcí zdarma:** Ve službě Azure Cosmos DB zápisu úlohy jsou výrazně levnější porovnání s alternativní databázové služby. Kromě toho Azure Cosmos DB nabízí funkce, jako například [automatického indexování](indexing-policies.md), [čas to Live (TTL)](time-to-live.md), [Change Feed](change-feed.md) a dalších bez jakýchkoli dalších poplatků něco, co se obvykle účtuje jiné databázové služby.
 

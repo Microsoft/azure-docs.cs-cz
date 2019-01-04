@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 022ffeaf75f8f03447b931ed9c3a474286a17f89
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 841c65fd8420fdfe681cb99ee7054cb4edd5fcd3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067801"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968979"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamicky vytvořit a použít trvalý svazek se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -20,11 +20,11 @@ Trvalý svazek představuje část úložiště, která byla zřízena pro použ
 
 Další informace o Kubernetes trvalé svazky, naleznete v tématu [trvalé svazky Kubernetes][kubernetes-volumes].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
-Také nutné mít Azure CLI verze 2.0.46 nebo později nainstalované a nakonfigurované. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -184,7 +184,7 @@ Vytvořte pod s [použití kubectl] [ kubectl-apply] příkazu.
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-Teď máte spuštěné pod s Azure disku připojené */mnt/azure* adresáře. Tato konfigurace se zobrazí při kontrole podu prostřednictvím `kubectl describe pod mypod`. Následující výstup zhuštěnému příkladu ukazuje svazek připojený v kontejneru:
+Teď máte spuštěné pod s vaší sdílenou složku služby soubory Azure připojené */mnt/azure* adresáře. Tato konfigurace se zobrazí při kontrole podu prostřednictvím `kubectl describe pod mypod`. Následující výstup zhuštěnému příkladu ukazuje svazek připojený v kontejneru:
 
 ```
 Containers:

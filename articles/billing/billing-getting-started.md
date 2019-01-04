@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: a110d14293b391a6856b56d0d8a84a24a90d33e1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 98ce2127cc9f60128767f8e4409134f2393ac84f
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341656"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582419"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vám nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure
 
@@ -31,9 +31,6 @@ Při registraci Azure existuje několik věcí, které vám pomůžou získat le
 - Pokud je vaše předplatné bezplatné zkušební verze, [sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)Azure v Open (AIO) nebo BizSpark, vaše předplatné se automaticky zakáže při vaše kredity se uplatňují. Další informace o [limitech útraty](#spending-limit) vyhnout předplatného neočekávaně zakázán.
 
 - Pokud jste registrovanou službu [bezplatný účet Azure](https://azure.microsoft.com/free/), [můžete použít některé z nejoblíbenějších služeb Azure zdarma po dobu 12 měsíců](billing-create-free-services-included-free-account.md). Spolu s doporučení uvedených níže, naleznete v tématu [vyhnuli účtování zdarma účet](billing-avoid-charges-free-account.md).
-
-> [!div class="nextstepaction"]
-> [Pomozte vylepšit dokumentaci k fakturaci Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Získejte odhadované náklady před přidáním služeb Azure
 
@@ -170,6 +167,6 @@ Pokud si nejste správce účtu, pak někdo pravděpodobně zobrazila částečn
 
 Pokud správce účtu už není ve vaší organizaci a potřebujete spravovat fakturace, [kontaktujte nás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

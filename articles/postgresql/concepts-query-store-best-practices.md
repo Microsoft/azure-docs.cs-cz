@@ -1,18 +1,17 @@
 ---
 title: Query Store osvědčené postupy ve službě Azure Database for PostgreSQL
 description: Tento článek popisuje osvědčené postupy pro Query Store ve službě Azure Database for PostgreSQL.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 54a86a7ea1852efba0776451291820f4174a1f1f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 0c962dc6d8aff63a3b7dd34133a40c7ff9feec4c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377568"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540737"
 ---
 # <a name="best-practices-for-query-store"></a>Osvědčené postupy pro Query Store
 
@@ -31,7 +30,7 @@ Query Store vám umožňují zachytit data, které vás zajímají.
 |---|---|
 |_Všechny_  |Analýza úloh důkladně z hlediska všechny dotazy a jejich Frekvence spouštění a další statistiky. Identifikujte nové dotazy ve vašich úloh. Rozpoznat, pokud ad-hoc dotazy se používají k identifikaci příležitostí pro uživatele nebo Parametrizace automaticky. _Všechny_ dodává se náklady na spotřebu zvýšenou prostředků. |
 |_nahoru_  |Zaměřte se na nejčastější dotazy – vydávaných klienty vaši pozornost.
-|_None_ |Jste zaznamenali sadě dotazu a časový interval, který chcete prozkoumat a chcete vyloučit rozptýlení, které mohou zavést další dotazy. _Žádný_ je vhodný pro testování a zkušebním označení prostředí. _Žádný_ třeba používat opatrně, protože můžete přijít o možnost sledovat a optimalizovat důležité nové dotazy. Nelze obnovit data na těchto posledních časových oken. |
+|_Žádné_ |Jste zaznamenali sadě dotazu a časový interval, který chcete prozkoumat a chcete vyloučit rozptýlení, které mohou zavést další dotazy. _Žádný_ je vhodný pro testování a zkušebním označení prostředí. _Žádný_ třeba používat opatrně, protože můžete přijít o možnost sledovat a optimalizovat důležité nové dotazy. Nelze obnovit data na těchto posledních časových oken. |
 
 Query Store také úložiště pro statistiky čekání. Není dotaz režimu další snímek, který řídí statistiky čekání: **pgms_wait_sampling.query_capture_mode** může být nastaven na _žádný_ nebo _všechny_. 
 

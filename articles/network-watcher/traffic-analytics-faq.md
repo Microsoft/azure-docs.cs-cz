@@ -68,8 +68,8 @@ Použití analýzy provozu pro skupiny zabezpečení sítě v některém z násl
 - Západní střed USA
 - USA – východ
 - Východní USA 2
-- Střed USA – sever
-- Střed USA – jih
+- Středoseverní USA
+- Středojižní USA
 - USA – střed
 - Západní USA
 - Západní USA 2

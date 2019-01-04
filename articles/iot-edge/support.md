@@ -4,17 +4,17 @@ description: Zjistěte, jaké operační systémy můžete spustit démona Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/07/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c75f50e40f83a4dc6765ae422fbb2458f40d770
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6443260de0a8bd8531edb303fa581d281034fef3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100173"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555604"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
@@ -41,12 +41,14 @@ Obecně dostupná
 | Ubuntu Server 16.04 | Ano | Ne |
 | Ubuntu Server 18.04 | Ano | Ne |
 
-Ve verzi Public Preview
+Verze Public Preview
 | Operační systém | AMD64 | ARM32 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core (duben 2018 update) | Ano | Ne |
-| Windows 10 IoT Enterprise (duben 2018 update) | Ano | Ne |
-| Server Windows 10 verzi 1803 | Ano | Ne |
+| Sestavení Windows 10 IoT Core 17763 | Ano | Ne |
+| Windows 10 sestavení 17763 pro kontejnery Windows<br><br>Windows 10 sestavení 14393 nebo novější pro kontejnery Linuxu\* | Ano | Ne |
+| Windows Server 2019 pro kontejnery Windows<br><br>Windows Server 2016 nebo novější pro kontejnery Linuxu\* | Ano | Ne |
+
+\* Společnost Microsoft poskytuje pro kontejnery Linuxu na zařízeních s Windows pro vývoj a testování pouze instalační balíčky. Toto není podporovaná konfigurace pro použití v produkčním prostředí. 
 
 ### <a name="tier-2"></a>Úroveň 2
 Systémy vrstvy 2 si lze představit jako kompatibilní s Azure IoT Edge a je možné poměrně snadno. To znamená, že:

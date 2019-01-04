@@ -67,6 +67,22 @@ items:
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference
   - name: Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
     href: use-and-display-requirements.md
+  - name: Sady SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
+    - name: Java – vlastní vyhledávání
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable
+    - name: Java – vlastní vyhledávání obrázků
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest
+    - name: Go – vlastní vyhledávání
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch
+    - name: Go – vlastní vyhledávání obrázků
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch
 - name: Zdroje a prostředky
   items:
   - name: Ceny
@@ -89,9 +105,9 @@ items:
     href: endpoint-custom.md
   - name: Podpora jazyků a oblastí
     href: language-support.md
-ms.openlocfilehash: 81d0d94efc519fa241ab36979506b2baddf50d91
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d027f3483be960381964071fda7124c79ea31a10
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555860"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789343"

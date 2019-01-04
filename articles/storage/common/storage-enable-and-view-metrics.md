@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: a12f2f3775808edb2045be5a1d955280f515ff7d
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3e6a11a8c225afb220f290cee2db39c36750b401
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530839"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632140"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Zapnutí metrik Azure Storage a zobrazení dat metrik
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -37,7 +37,10 @@ Postupujte podle těchto kroků k zapnutí metrik v [webu Azure portal](https://
 [Webu Azure portal](https://portal.azure.com) nepovolíte aktuálně je možné nakonfigurovat minutové metriky ve vašem účtu úložiště, je nutné povolit minutové metriky pomocí Powershellu nebo prostřednictvím kódu programu.
 
 ## <a name="how-to-enable-metrics-using-powershell"></a>Postup povolení metriky pomocí Powershellu
-Konfigurace metrik úložiště ve vašem účtu úložiště pomocí prostředí Azure PowerShell rutinu Get-AzureStorageServiceMetricsProperty načíst aktuální nastavení a rutiny můžete použít prostředí PowerShell na místním počítači Set-AzureStorageServiceMetricsProperty změnit aktuální nastavení.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Konfigurace metrik Storage ve vašem účtu úložiště pomocí prostředí Azure PowerShell rutinu Get-AzStorageServiceMetricsProperty načíst aktuální nastavení a rutiny Set-AzStorageServiceMetricsProperty můžete použít prostředí PowerShell na místním počítači Chcete-li změnit aktuální nastavení.
 
 Rutiny, které řídí metrik úložiště, použijte následující parametry:
 
@@ -48,16 +51,16 @@ Rutiny, které řídí metrik úložiště, použijte následující parametry:
 Například následující příkaz zapne minutové metriky pro službu Blob service ve výchozí účet úložiště s uchováním nastavte období na pět dní:
 
 ```powershell
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
 ```
 
 Následující příkaz načte aktuální hodinové metriky úroveň a uchovávání dní pro službu blob service ve výchozí účet úložiště:
 
 ```powershell
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Informace o tom, jak nakonfigurovat rutiny Azure Powershellu pro práci s vašeho předplatného Azure a tom, jak vybrat výchozí účet úložiště, který chcete použít, naleznete v tématu: [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
+Informace o tom, jak nakonfigurovat rutiny Azure Powershellu pro práci s vaším předplatným Azure a jak vybrat výchozí účet úložiště pro použití najdete tady: [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>Postup povolení metrik Storage prostřednictvím kódu programu
 Následující jazyka C# fragment kódu ukazuje, jak povolit metrik a protokolování pro službu Blob service pomocí klientskou knihovnu pro úložiště pro .NET:

@@ -2,20 +2,17 @@
 title: Zpracování chyb přechodné připojení pro službu Azure Database pro MariaDB | Dokumentace Microsoftu
 description: Zjistěte, jak zpracovávat chyby přechodné připojení pro službu Azure Database pro MariaDB.
 keywords: připojení k MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
-services: mariadb
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 203401e3842912169371f315048f6930c8dc80eb
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f5f5915e6fdb240fa519ee10526c935a524cb5b4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568093"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546279"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Řešení chyb přechodné připojení pro službu Azure Database pro MariaDB
 

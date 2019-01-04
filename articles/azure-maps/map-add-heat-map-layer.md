@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ec1343f85216171adac22f873f9be2e72bb4c282
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: cbf134640f981056c0996ffc6768ebc1381ce2ac
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892154"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995146"
 ---
-# <a name="add-a-heat-map-layer"></a>Přidat vrstvu heat mapy
+# <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
 Zahřívá mapy, označované také jako bod hustota mapy, jsou typu vizualizace dat používá k reprezentování hustotu dat s využitím celou škálu barev. Se často používají k zobrazení dat "hotspotů" na mapě a jsou skvělý způsob, jak vykreslit velké bodu datových sad.  Například vykreslování desítky tisíc body v rámci zobrazení mapy jako symboly pokrýval většinu oblasti rozvržení a způsobí mnoho symbolů se vztahuje jiné, a může ztížit mnohem proniknout do data. Ale vizualizace tato datová sada stejné jako heat mapa umožňuje snadno zjistit, ve kterém jsou data bodu densest a relativní hustota do jiných oblastí. Existuje mnoho scénářů, ve které heat mapy, používají. Tady je několik příkladů;
 
 * Data o teplotě se vykreslí jako heat mapa běžně, protože nabízí rovin útoku, pro jaké teploty mezi dvěma datovými body.
-* Generování dat pro senzory šumu jako heat mapa nejen insanity šumu ukazuje, kde je senzor, ale můžete také poskytnout představu o rozptylu na vzdálenosti. Úroveň šumu v jedné lokalitě nemusí být vysoká, ale pokud se překrývá se oblasti pokrytí šumu z řadu senzorů, je možné, že může docházet k vyšší úrovně šumu této překrývající se oblasti a proto bude viditelné v heat mapě.
+* Generování dat pro senzory šumu jako heat mapa nejen zobrazuje intenzitu zrcadlových šumu kde senzor je ale můžete také poskytnout představu o rozptylu na vzdálenosti. Úroveň šumu v jedné lokalitě nemusí být vysoká, ale pokud se překrývá se oblasti pokrytí šumu z řadu senzorů, je možné, že může docházet k vyšší úrovně šumu této překrývající se oblasti a proto bude viditelné v heat mapě.
 * Vizualizace GPS trasování, která zahrnuje rychlosti jako výška mapování váha kde intenzitu zrcadlových datových bodů podle rychlosti je skvělý způsob, jak rychle zjistit, kde byl zkrácení vozidlo.
 
 > [!TIP]
-> Vykreslí souřadnice všechny geometrie ve zdroji dat se bubliny vrstvy ve výchozím nastavení. K omezení vrstvu tak, aby pouze vykreslí bod geometrie funkce set `filter` vlastnost vrstva `['==', '$type', 'Point']`
+> Vykreslí souřadnice všechny geometrie ve zdroji dat se bubliny vrstvy ve výchozím nastavení. Omezit vrstvu tak, aby je jen pro vykreslení bodu geometrie funkce nastavit `filter` vlastnost vrstva `['==', '$type', 'Point']`
 
-## <a name="add-a-heat-map-layer"></a>Přidat vrstvu heat mapy
+## <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
 K vykreslení datové zdroje bodů jako jednoduchý heat mapu předat zdroje dat do instance třídy HeatMapLayer a přidejte mapu, jak je znázorněno zde.
 
@@ -50,7 +50,7 @@ Předchozí příklad nastavení možností pomocí protokolu radius a krytí up
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"interpolovat.<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["lineární"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[heatmapu hustoty\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "transparentní.<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "fialové",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, '#fb00fb.<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff.<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"krok",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[heatmapu hustoty\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transparentní.<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "navy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "navy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "zelená",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, "", žlutý<br/>&nbsp;&nbsp;&nbsp;&nbsp;1,00 "red"<br/>\] |   
 
 * `opacity`: Určuje, jak neprůhledné nebo průhledné heat mapa vrstva je.
-* `intensity`: Použije multiplikátoru na váhu jednotlivých bodů řady ke zvýšení celkové intenzitu zrcadlových Heat mapě. To pomáhá provádět malé rozdíly v hmotnosti datových bodů snadnější vizualizace.
+* `intensity`: Násobitel se vztahuje na váhu jednotlivých bodů řady ke zvýšení celkové intenzitu zrcadlových Heat mapě. To pomáhá provádět malé rozdíly v hmotnosti datových bodů snadnější vizualizace.
 * `weight`: Ve výchozím nastavení všechny datové body mají lepší zvolit váhu 1, takže všechny datové body jsou vyváženy rovnoměrně. Možnost Váha funguje jako násobitel a je možné nastavit jako číslo nebo výraz. Pokud číslo je nastavená na číslo, Dejme tomu, že 2, je ekvivalentní zadání datových bodů na mapě dvakrát, tím zdvojnásobení hustotu. Nastavení možnosti váhou na číslo vykreslí heat mapa podobným způsobem intenzita možnost použití. Nicméně pokud použijete výraz váhu jednotlivých bodů řady může být založen na jiné a závisí na některé metriky ve vlastnostech bodu. Využijte zemětřesení data jako například datových bodů představují zemětřesení a důležité metriky, které má každý zemětřesení je velikost. Zemětřesení stát celou dobu, ale většina mají nízké velikost a ještě nejsou popisovač. Pomocí hodnoty velikosti ve výrazu přiřazení váha možnost vám umožní významnější zemětřesení, aby lépe reprezentovat zvýšení v rámci heat mapa.
 * Kromě možností základní vrstvě; minimální/maximální přiblížení, viditelné a filtrovat, je zde také `source` možnost, pokud chcete aktualizovat zdroj dat a `source-layer` Pokud zdroj dat je zdroj dlaždice vektoru.
 

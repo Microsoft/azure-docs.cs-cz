@@ -69,7 +69,7 @@ V následující tabulce jsou uvedeny párování k dispozici primární a sekun
 
 | Primární | Sekundární |
 | --- | --- |
-| Střed USA – jih |Střed USA – sever |
+| Středojižní USA |Středoseverní USA |
 | USA – východ 2 |USA – střed |
 | Západní Evropa |Severní Evropa |
 | Jihovýchodní Asie |Východní Asie |

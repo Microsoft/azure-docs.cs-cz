@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: a75d3265e70efacc9e581abe32faacb6c5fb1b37
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3fdbac019849bc97e8d336b75f26a8fe0a05c449
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850512"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713110"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
@@ -31,12 +31,12 @@ Následující služby Azure podporují spravované identity pro prostředky Azu
 | ------- | ------ | ---- | --------- | ----------- |
 | Azure Virtual Machines | K dispozici. | Preview | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash nebo nástroj Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
 | Virtual Machine Scale Sets | K dispozici. | Preview | [Azure Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Šablony Azure Resource Manageru](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash nebo nástroj Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
-| Azure App Service | Windows: k dispozici <br> Linux: verze Preview | Preview | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell)  |
-| Azure Functions | K dispozici. | Preview | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell) |
-| Azure Logic Apps | K dispozici. | Není k dispozici. | [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#deployment-template) |  |
+| Azure App Service | Windows: K dispozici. <br> Linux: Preview | Preview | [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell)  |
+| Azure Functions | K dispozici. | Preview | [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell) |
+| Azure Logic Apps | K dispozici. | Není k dispozici. | [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#deployment-template) |  |
 | Azure Data Factory V2 | K dispozici. | Není k dispozici. | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
 | Azure API Management | K dispozici. | Není k dispozici. | [Šablona Azure Resource Manageru](/azure/api-management/api-management-howto-use-managed-service-identity) |
-| Azure Container Instances | Linux: verze Preview<br>Windows: Není k dispozici | Linux: verze Preview<br>Windows: Není k dispozici | [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)<br>[Šablona Azure Resource Manageru](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)<br>[YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file) |  |
+| Azure Container Instances | Linux: Preview<br>Windows: Není k dispozici. | Linux: Preview<br>Windows: Není k dispozici. | [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)<br>[Šablona Azure Resource Manageru](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)<br>[YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file) |  |
 
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Podpora služby Azure AD ověření služby Azure
@@ -49,6 +49,6 @@ Tyto služby podporují ověřování Azure AD a prošel testováním s využit�
 | Azure Key Vault | `https://vault.azure.net` | K dispozici. | Září 2017 | |
 | Azure Data Lake | `https://datalake.azure.net/` | K dispozici. | Září 2017 | |
 | Azure SQL | `https://database.windows.net/` | K dispozici. | Říjen 2017 | |
-| Azure Event Hubs | `https://eventhubs.azure.net` | Preview | . Prosince 2017 | |
-| Azure Service Bus | `https://servicebus.azure.net` | Preview | . Prosince 2017 | |
+| Azure Event Hubs | `https://eventhubs.azure.net` | Preview | Prosinec 2017 | |
+| Azure Service Bus | `https://servicebus.azure.net` | Preview | Prosinec 2017 | |
 | Azure Storage | `https://storage.azure.com/` | Preview | Květen 2018 | |

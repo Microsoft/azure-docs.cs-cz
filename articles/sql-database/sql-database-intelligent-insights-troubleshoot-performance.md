@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ad7d56b3a23d163cfbc6c9ca14c2788c5f96486b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273931"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600858"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
-Tato stránka poskytuje informace o Azure SQL Database a zjištěné problémy s výkonem Managed Instance [Intelligent Insights](sql-database-intelligent-insights.md) protokolu diagnostiky výkonu databáze. Telemetrická data diagnostiky protokolu můžete Streamovat do [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní výstrahy DevOps a Možnosti vytváření sestav.
+Tato stránka poskytuje informace o Azure SQL Database a zjištěné problémy s výkonem Managed Instance [Intelligent Insights](sql-database-intelligent-insights.md) protokolu diagnostiky výkonu databáze. Telemetrická data diagnostiky protokolu můžete Streamovat do [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní výstrahy DevOps a Možnosti vytváření sestav.
 
 > [!NOTE]
 > Rychlý výkon databáze SQL pomocí Intelligent Insights Průvodce odstraňováním potíží, najdete v článku [doporučené řešení potíží s tok](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) vývojový diagram v tomto dokumentu.
@@ -332,4 +332,4 @@ Intelligent Insights musí obvykle hodinu čas k provedení analýzy hlavní př
 - Přečtěte si [Intelligent Insights](sql-database-intelligent-insights.md) koncepty.
 - Použití [protokolování diagnostiky výkonu Intelligent Insights Azure SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Monitorování [Azure SQL Database s využitím Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+- Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md).

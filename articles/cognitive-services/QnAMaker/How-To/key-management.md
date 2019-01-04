@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 25b23d280aca9ef13b8820596686a1f9dbecd2a1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3984ac84271728b9066aba15a582065ea3121c76
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085939"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581755"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>Správa klíčů v nástroje QnA Maker
 
@@ -24,9 +24,9 @@ Vaše služba QnA Maker se zabývá dvěma druhy klíče, **klíče předplatné
 
 ![Správa klíčů](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **Klíče předplatného**: tyto klíče se používají pro přístup [rozhraní API nástroje QnA Maker správy služeb](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff). Tato rozhraní API umožňují provádět různé operace CRUD v znalostní báze.  
+1. **Klíče předplatného**: Tyto klíče se používají pro přístup [rozhraní API nástroje QnA Maker správy služeb](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff). Tato rozhraní API umožňují provádět úpravy znalostní báze.  
 
-2. **Koncový bod klíče**: tyto klíče se používají pro přístup ke koncovému bodu znalostní báze získat odpověď pro otázku uživatele. Obvykle použijete tento koncový bod v kódu chat bot nebo aplikaci, která využívá službu QnA Maker.
+2. **Koncový bod klíče**: Tyto klíče se používají pro přístup ke koncovému bodu znalostní báze získat odpověď pro otázku uživatele. Obvykle použijete tento koncový bod v chatovací robot nebo kódem klientské aplikace, která využívá službu QnA Maker.
  
 ## <a name="subscription-keys"></a>Klíčů předplatného
 Můžete zobrazit a obnovit klíče předplatného z portálu Azure, ve které jste vytvořili prostředek QnA Maker. 
@@ -42,7 +42,7 @@ Můžete zobrazit a obnovit klíče předplatného z portálu Azure, ve které j
 
 Klíče koncového bodu je možné spravovat z [portál QnA Maker](https://qnamaker.ai).
 
-1. Přihlaste se k [portál QnA Maker](https://qnamaker.ai)a přejděte na **spravovat klíče**.
+1. Přihlaste se k [portál QnA Maker](https://qnamaker.ai)a přejděte na **nastavení služby**.
 
     ![Klíč koncového bodu](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
@@ -51,7 +51,7 @@ Klíče koncového bodu je možné spravovat z [portál QnA Maker](https://qnama
     ![klíče správce koncového bodu](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
-    >Pokud se domníváte, že jsou ohrožené, aktualizujte svoje klíče. To může vyžadovat odpovídající změny kódu aplikace/robota.
+    >Pokud se domníváte, že jsou ohrožené, aktualizujte svoje klíče. To může vyžadovat odpovídající změny vaše klientská aplikace nebo kódu robota.
 
 ## <a name="next-steps"></a>Další postup
 

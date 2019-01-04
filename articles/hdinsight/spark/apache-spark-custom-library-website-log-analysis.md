@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 26ee51da0065b15191c6a02bcd10597c1190dd0a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f8b479f55ea5ee22ae2510fad6279cac0aaa9c0d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497283"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608796"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analýza webových protokolů pomocí vlastní knihovna Python s clusterem Apache Spark v HDInsight
 
 Tento poznámkový blok ukazuje, jak analyzovat data protokolů použití vlastní knihovny s Apache Spark v HDInsight. Vlastní knihovny používáme je knihovnu Pythonu s názvem **iislogparser.py**.
 
-> [!TIP]
+> [!TIP]  
 > V tomto kurzu jsou také dostupné jako poznámkový blok Jupyter v clusteru Spark (Linux), který vytvoříte v HDInsight. Plnohodnotném poznámkovém bloku umožňuje spouštět fragmenty kódu Pythonu z poznámkového bloku samotný. K provedení kurzem z v rámci poznámkového bloku, vytvořte Spark cluster, spustit Poznámkový blok Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), a pak spusťte Poznámkový blok **Analýza protokolů se Sparkem s využitím vlastní library.ipynb** pod **PySpark**  složky.
 >
 >
@@ -176,7 +176,7 @@ Po uložení dat jako tabulku Apache Hive v další části se připojíme k tab
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   `%%sql` Magic, za nímž následuje `-o averagetime` zajistí, že výstup dotazu se ukládají místně na serveru Jupyter (obvykle hlavního uzlu clusteru). Výstup se ukládají jako [Pandas](http://pandas.pydata.org/) datový rámec se zadaným názvem **averagetime**.
+   `%%sql` Magic, za nímž následuje `-o averagetime` zajistí, že výstup dotazu se ukládají místně na serveru Jupyter (obvykle hlavního uzlu clusteru). Výstup se ukládají jako [Pandas](https://pandas.pydata.org/) datový rámec se zadaným názvem **averagetime**.
 
    Zobrazený výstup by měl vypadat asi takto:
 
@@ -202,13 +202,13 @@ Po uložení dat jako tabulku Apache Hive v další části se připojíme k tab
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Apache Spark Scala](apache-spark-intellij-tool-plugin.md)

@@ -10,12 +10,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6f88ff8ecd1aee588cb82c08ae2eda58fe2eb1e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f3d2276c92868bd2f9d98b119bc31aee4db13a81
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627306"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717548"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co je pracovní prostor Translator vlastní?
 
@@ -31,7 +31,7 @@ Projekt je obálka pro model, dokumenty a testy. Každý projekt automaticky obs
 
 Kategorie určuje doménu – oblast terminologie a stylu, které chcete použít – pro váš projekt. Zvolte kategorii/jí nejvíce hodilo dokumentů. V některých případech podle vašeho výběru kategorie přímo ovlivňuje chování vlastní překladač.
 
-Nemáme vlastních modelů pro kategorie, ale s výjimkou systému obecné směrného plánu. Ale přesto doporučujeme uživatelům vybrat kategorii nejvíce hodí na své domény tak, aby ho můžete použít jako identifikátor v ID kategorie. Pro projekty v doméně technologie vyberete "Technologie" zajišťuje, že při model směrného plánu je k dispozici, že váš projekt bude moct používat.
+Máme dvě sady základní modely. Jsou obecné a technologie. Pokud kategorie **technologie** je zaškrtnuto, bude použita technologie základní modely. Pro další výběr kategorie se používají obecné základní modely. Model základní technologie nemá v doméně technologie, ale zobrazuje nižší kvality, pokud není věty používá pro překlad spadají do domény technologie. Doporučujeme zákazníkům vybrat kategorii technologii pouze v případě, že věty spadat výhradně v rámci domény technologie.
 
 Ve stejném pracovním prostoru mohou vytvářet projekty pro stejného páru jazyk v různých kategoriích. Vlastní Translator brání vytvoření duplicitního projektu s stejného páru jazyka a kategorie. Použití popisku do projektu umožňuje se tomuto omezení vyhnout. Nepoužívejte popisky, pokud pro více klientů, jako přidávání že jedinečný popisek do projektu se projeví ve vašich projektech ID kategorie vytváříte překladových systémů.
 

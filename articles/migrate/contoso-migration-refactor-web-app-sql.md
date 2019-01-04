@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 923a1ab9020925c17b3b19d24c7524ab2f8f3356
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: eb046ceebf9c6233fa5178d18603add2f0c26a29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092755"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608013"
 ---
-# <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migrace Contoso: Refaktorovat místní aplikace do webové aplikace Azure a Azure SQL database
+# <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migrace Contoso: Refaktorovat a místní aplikace do webové aplikace Azure a Azure SQL database
 
 Tento článek ukazuje, jak společnosti Contoso refactors jejich aplikace SmartHotel360 v Azure. Jsou aplikace front-endový virtuální počítač migrovat do webové aplikace Azure a databáze aplikace ke službě Azure SQL database.
 
@@ -29,11 +29,11 @@ Tento dokument je jednou z řady článků, které ukazují, jak fiktivní spole
 [Článek 4: Změna hostitele aplikace na virtuálních počítačích Azure a spravované Instance SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Ukazuje, jak společnosti Contoso běží lift and shift migrace do Azure pro aplikaci SmartHotel. Contoso migruje virtuální počítač front-endu aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a databáze aplikace do spravované Instance SQL, pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.
 [Článek 5: Změna hostitele aplikace do virtuálních počítačů Azure](contoso-migration-rehost-vm.md) | Ukazuje, jak migrovat aplikace SmartHotel virtuálních počítačů pomocí Site Recovery pouze Contoso. | K dispozici.
 [Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a SQL Server Always On Availability Group](contoso-migration-rehost-vm-sql-ag.md) | Ukazuje, jak společnosti Contoso migruje SmartHotel aplikace. Contoso využívá Site Recovery k migraci aplikace, virtuální počítače a Database Migration service, jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn. | K dispozici.
-[Článek 7: Změna hostitele Linuxovou aplikaci do virtuálních počítačů Azure](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak Contoso funguje lift and shift migrace aplikace osTicket Linux na virtuální počítače Azure pomocí služby Site Recovery | K dispozici.
+[Článek 7: Změna hostitele aplikace Linux na virtuálních počítačích Azure](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak Contoso funguje lift and shift migrace aplikace osTicket Linux na virtuální počítače Azure pomocí služby Site Recovery | K dispozici.
 [Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure serveru MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Ukazuje, jak společnosti Contoso migruje Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Site Recovery a migraci databáze aplikace na instanci serveru Azure MySQL pomocí aplikace MySQL Workbench. | K dispozici.
-Článek 9: Refaktorujte aplikace do webové aplikace Azure a Azure SQL database | Ukazuje, jak společnosti Contoso migruje SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure | V tomto článku
-[Článek 10: Refaktorujte Linuxovou aplikaci do Azure Web Apps a Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Ukazuje, jak společnosti Contoso migruje aplikace osTicket Linux do Azure Web Apps ve více lokalitách, integrovaná se službou GitHub pro průběžné doručování. Jejich migrovat databázi aplikace na instanci Azure MySQL. | K dispozici.
-[Článek 11: Refaktorovat TFS na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Ukazuje, jak společnosti Contoso migruje svoje místní nasazení Team Foundation Server (TFS) a migrujte ho ke službám Azure DevOps v Azure. | K dispozici.
+Článek 9: Refaktoring aplikace do webové aplikace Azure a databáze SQL Azure | Ukazuje, jak společnosti Contoso migruje SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure | V tomto článku
+[Článek 10: Refaktorovat Linuxovou aplikaci do Azure Web Apps a Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Ukazuje, jak společnosti Contoso migruje aplikace osTicket Linux do Azure Web Apps ve více lokalitách, integrovaná se službou GitHub pro průběžné doručování. Jejich migrovat databázi aplikace na instanci Azure MySQL. | K dispozici.
+[Článek 11: Refaktorujte TFS na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Ukazuje, jak společnosti Contoso migruje svoje místní nasazení Team Foundation Server (TFS) a migrujte ho ke službám Azure DevOps v Azure. | K dispozici.
 [Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Ukazuje, jak společnosti Contoso migruje a rearchitects jeho SmartHotel aplikace do Azure. Jejich úprava architektury webové vrstvy aplikace jako kontejner Windows a databáze aplikace ve službě Azure SQL Database. | K dispozici.
 [Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Ukazuje, jak společnosti Contoso znovu sestavte své aplikace SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služeb App Services, Kubernetes v Azure, Azure Functions, Cognitive services a Cosmos DB. | K dispozici.
 [Článek 14: Škálování migrace do Azure](contoso-migration-scale.md) | Po vyzkoušení kombinace migrace, Contoso připraví škálovat na plné migraci do Azure. | K dispozici.
@@ -45,12 +45,12 @@ V tomto článku se migruje Contoso dvouvrstvé Windows. NET SmartHotel360 aplik
 Vedení IT úzké spolupráci s obchodními partnery pochopit, co chtějí dosáhnout s tato migrace:
 
 - **Adresa obchodní růst**: Contoso se rozrůstá a není tlak na místních systémů a infrastruktury.
-- **Zvýšení efektivity**: Contoso musí odebrat nepotřebné postupy a zjednodušte procesy pro vývojáře a uživatele.  Obchodní potřeby IT bude rychlé a ne produkovaného odpadu čas nebo peníze, tím rychlejší doručování na požadavky zákazníků.
-- **Zvýšení flexibility**: Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změn na webu Marketplace, aby úspěch v globální ekonomiku.  Nesmí získat způsobem nebo stát obchodní blokování.
-- **Škálování**: růstem podniku zvládla úspěšně, musíte zadat Contoso IT systémy, které mohou rozšířit stejným tempem.
+- **Zvýšení efektivity**: Contoso je potřeba odebrat nepotřebné postupy a zjednodušte procesy pro vývojáře a uživatele.  Obchodní potřeby IT bude rychlé a ne produkovaného odpadu čas nebo peníze, tím rychlejší doručování na požadavky zákazníků.
+- **Zvýšení flexibility**:  Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změn na webu Marketplace, aby úspěch v globální ekonomiku.  Nesmí získat způsobem nebo stát obchodní blokování.
+- **Škálování**: Růstem podniku zvládla úspěšně, musíte zadat Contoso IT systémy, které mohou rozšířit stejným tempem.
 - **Náklady na**: Contoso chce minimalizovat náklady na licencování.
 
-## <a name="migration-goals"></a>Migrace cíle
+## <a name="migration-goals"></a>Cíle migrace
 
 Tým cloudových Contoso má připnutou dolů cíle pro tuto migraci. Tyto cíle se používá k určení nejlepší metody migrace.
 
@@ -110,7 +110,7 @@ Contoso vyhodnotí své navrhované návrhu společně vložením seznam výhody
 --- | --- | ---
 [Database Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Společnost Contoso použije DMA k vyhodnocení a zjištění problémů s kompatibilitou, které může mít vliv na jejich fungování databáze v Azure. DMA vyhodnocuje paritu funkcí mezi SQL zdroje a cíle a doporučuje vylepšení výkonu a spolehlivosti. | Tento nástroj je zdarma ke stažení.
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) | Inteligentní, plně spravovaná relační Cloudová databázová služba. | Náklady na základě funkcí, propustnosti a velikosti. [Další informace](https://azure.microsoft.com/pricing/details/sql-database/managed/).
-[Azure App Service – Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) | Vytváření výkonných cloudových aplikací s využitím plně spravované platformy | Náklady podle doby trvání velikost, umístění a využití. [Další informace](https://azure.microsoft.com/pricing/details/app-service/windows/).
+[Azure App Service – Web Apps](https://docs.microsoft.com/azure/app-service/overview) | Vytváření výkonných cloudových aplikací s využitím plně spravované platformy | Náklady podle doby trvání velikost, umístění a využití. [Další informace](https://azure.microsoft.com/pricing/details/app-service/windows/).
 [Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | Poskytuje průběžné integrace a průběžného nasazování (CI/CD) kanálů pro vývoj aplikací. Kanál začíná úložiště Git pro správu kód aplikace, systém sestavení pro vytváření balíčků a další artefakty sestavení a systém správy vydaných verzí nasazení změny do vývojových, testovacích a produkčních prostředích. 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -130,13 +130,13 @@ Tady je způsob spuštění migrace Contoso:
 > [!div class="checklist"]
 > * **Krok 1: Zřízení instance SQL Database v Azure**: Contoso zřídí instanci SQL v Azure. Poté, co je web aplikace migraci do Azure, webové aplikace služby WCF bude odkazovat na tuto instanci.
 > * **Krok 2: Migrace databáze pomocí DMA**: Contoso migraci databáze aplikace pomocí Pomocníka s migrací databáze.
-> * **Krok 3: Zřízení webové aplikace**: Contoso ustanovení dvě webové aplikace.
+> * **Krok 3: Zřízení webové aplikace**: Contoso zřídí dvě webové aplikace.
 > * **Krok 4: Nastavení Azure DevOps**: Contoso vytvoří nový projekt Azure DevOps a naimportuje úložiště Git.
 > * **Krok 5: Konfigurace připojovacích řetězců**: Contoso nakonfiguruje připojovacích řetězců tak, aby webové vrstvy webové aplikace, webové aplikace služby WCF a instanci SQL lze komunikovat.
-> * **Krok 6: Nastavení sestavení a vydávání kanálů**: Contoso nastaví v posledním kroku, sestavení a vydání kanály vytvořte aplikaci a nasadí je do dvou samostatných Azure Web Apps.
+> * **Krok 6: Nastavení sestavení a vydávání kanálů**: V posledním kroku Contoso nastaví sestavení a vydání kanály vytvořte aplikaci a nasadí je do dvou samostatných Azure Web Apps.
 
 
-## <a name="step-1-provision-an-azure-sql-database"></a>Krok 1: Zřízení služby Azure SQL Database
+## <a name="step-1-provision-an-azure-sql-database"></a>Krok 1: Zřízení databáze služby Azure SQL Database
 
 1. Vyberte správce společnosti Contoso vytvořit databázi SQL v Azure. 
 
@@ -239,7 +239,7 @@ S databází migrovat, správce společnosti Contoso můžete nyní zřídit dv�
 4. Po jejich dokončení, přejděte na adresu aplikací ke kontrole, že jste byla úspěšně vytvořena.
 
 
-## <a name="step-4-set-up-azure-devops"></a>Krok 4: Nastavení Azure DevOps
+## <a name="step-4-set-up-azure-devops"></a>Krok 4: Nastavení služby Azure DevOps
 
 
 Contoso potřebuje pro sestavení infrastruktury DevOps a kanály pro aplikaci.  K tomuto účelu správce společnosti Contoso vytvořit nový projekt DevOps, naimportovat kód a pak nastavení sestavení a vydávání kanálů.

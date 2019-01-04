@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1b4ca22faf8ef01cab4b2e7231fea8ed49f0fcb3
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 698806bdedd9994f2c9de53118cb42c9df1c36cd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494594"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724398"
 ---
 # <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>Shromažďování výpisů haldy v úložišti objektů Blob pro ladění a analýza služby Apache Hadoop
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
@@ -23,8 +23,8 @@ Výpisů paměti haldy obsahují snímek paměti aplikace, včetně hodnot prom�
 
 Shromažďování výpisů paměti haldy pro různé služby musí být povolena pro služby v jednotlivých clusterech. Výchozí hodnota pro tuto funkci je možné vypnout pro cluster. Tyto výpisů paměti haldy můžou být velké, proto se doporučuje pro monitorování účtu služby Blob storage, kde se uloží po kolekce se povolila.
 
-> [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace v tomto článku se vztahují pouze na HDInsight se systémem Windows. Informace týkající se systémem Linux HDInsight naleznete v tématu [výpisů haldy povolit služby Apache Hadoop v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+> [!IMPORTANT]  
+> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace v tomto článku se vztahují pouze na HDInsight se systémem Windows. Informace týkající se systémem Linux HDInsight naleznete v tématu [výpisů haldy povolit služby Apache Hadoop v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
 
 
 ## <a name="eligible-services-for-heap-dumps"></a>Opravňující služby pro výpisů paměti haldy

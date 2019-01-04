@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 38d73f38a5e04a42ee15c9206ce760936e3e10c9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 42635852bb5c6e7b388d4dc58b9d5bfaa6212438
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980300"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725845"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure Functions
 Ve službě Azure Functions konkrétní funkce sdílet několik klíčových technických konceptech a komponenty, bez ohledu na jazyk nebo vazby, kterou používáte. Před přechodem do učení podrobnosti specifické pro daný jazyk nebo vazby, ujistěte se, že jste si tento přehled, který se vztahuje na všechny z nich.
@@ -76,7 +76,7 @@ Při vytváření projektu pro nasazení funkce do aplikace function app v Azure
 ## <a id="fileupdate"></a> Postup aktualizace souborů aplikace – funkce
 Funkce v editoru kódu postaveném na web Azure Portal umožňuje aktualizovat *function.json* soubor a soubor kódu pro funkci. K nahrání nebo aktualizace dalších souborů, jako *package.json* nebo *project.json* nebo závislosti, budete muset použít jiné metody nasazení.
 
-Aplikace Function App jsou postavené na službě App Service, takže všechno [dostupným možnostem nasazení do standardních webových aplikací](../app-service/app-service-deploy-local-git.md) jsou také k dispozici pro aplikace function App. Tady jsou některé metody, které můžete použít k nahrání nebo aktualizace souborů aplikace funkce. 
+Aplikace Function App jsou postavené na službě App Service, takže všechno [dostupným možnostem nasazení do standardních webových aplikací](../app-service/deploy-local-git.md) jsou také k dispozici pro aplikace function App. Tady jsou některé metody, které můžete použít k nahrání nebo aktualizace souborů aplikace funkce. 
 
 #### <a name="use-local-tools-and-publishing"></a>Použití nástrojů pro místní a publikování
 Aplikace Function App můžete vytvořili a publikovali pomocí různých nástrojů, včetně [sady Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md)a [nástroje Azure Functions Core](./functions-develop-local.md). Další informace najdete v tématu [kódu a testování Azure Functions místně](./functions-develop-local.md).
@@ -87,7 +87,7 @@ Aplikace Function App můžete vytvořili a publikovali pomocí různých nástr
 Postupujte podle pokynů v tématu [průběžné nasazování pro službu Azure Functions](functions-continuous-deployment.md).
 
 ## <a name="parallel-execution"></a>Paralelní provádění
-Dojde-li více spouštěcí události rychleji, než dokáže zpracovat s jedním vláknem funkce modulu runtime, modul runtime může volat funkci více než jednou paralelně.  Pokud používáte aplikaci function app [plán hostování Consumption](functions-scale.md#how-the-consumption-plan-works), aplikace function app může automatické horizontální navýšení kapacity.  Každá instance aplikace function app, jestli aplikace běží na spotřebu hostování plán nebo běžný [plán hostování služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), může zpracovat volání funkce souběžné používání více vláken současně.  Maximální počet souběžných funkce volání v každé instanci aplikace funkce se liší v závislosti na typu triggeru se používají, jakož i prostředky využívané třídou jiné funkce v rámci aplikace function app.
+Dojde-li více spouštěcí události rychleji, než dokáže zpracovat s jedním vláknem funkce modulu runtime, modul runtime může volat funkci více než jednou paralelně.  Pokud používáte aplikaci function app [plán hostování Consumption](functions-scale.md#how-the-consumption-plan-works), aplikace function app může automatické horizontální navýšení kapacity.  Každá instance aplikace function app, jestli aplikace běží na spotřebu hostování plán nebo běžný [plán hostování služby App Service](../app-service/overview-hosting-plans.md), může zpracovat volání funkce souběžné používání více vláken současně.  Maximální počet souběžných funkce volání v každé instanci aplikace funkce se liší v závislosti na typu triggeru se používají, jakož i prostředky využívané třídou jiné funkce v rámci aplikace function app.
 
 ## <a name="functions-runtime-versioning"></a>Správa verzí modulu runtime functions
 
@@ -117,8 +117,8 @@ Další informace najdete v následujících materiálech:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Funkce jazyka C# pro vývojáře referenční informace k Azure](functions-reference-csharp.md)
-* [Azure Functions F # – reference pro vývojáře](functions-reference-fsharp.md)
+* [Služba Azure Functions F# referenční informace pro vývojáře](functions-reference-fsharp.md)
 * [Referenční informace pro vývojáře Azure Functions NodeJS](functions-reference-node.md)
 * [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
-* [Služba Azure Functions: Cesta](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) na blogu týmu Azure App Service. Historie jak byla vyvinuta Azure Functions.
+* [Služba Azure Functions: Cesty](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) na blogu týmu Azure App Service. Historie jak byla vyvinuta Azure Functions.
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 962bc996a86340bb10a28b90ef6340a98c5d9275
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1c9161f6d31a3fcff8f8926c8bf188f1bdc14799
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430602"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725849"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Doprovodné materiály k architektuře nabízení v podnicích
 Podniky jsou dnes postupně přesun směrem k vytvoření mobilní aplikace pro buď jejich koncoví uživatelé (externí) nebo pro zaměstnance (interní). Mají stávající back-end systémy na místě už to jsou sálové počítače nebo některé obchodní aplikace, které musí být integrován do architektury mobilních aplikací. Tato příručka pojednává o jak vhodné provést tuto integraci, doporučujeme z možných řešení pro běžné scénáře.
@@ -264,6 +264,6 @@ Proveďte následující kurzy a seznámit se s koncepty, stejně jako běžné 
 [Mobilní služby Azure]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
 [Programování služby Service Bus Pub/Sub]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Webová úloha Azure]: ../app-service/web-sites-create-web-jobs.md
+[Webová úloha Azure]: ../app-service/webjobs-create.md
 [Notification Hubs – kurz pro univerzální aplikace Windows]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure Portal]: https://portal.azure.com/

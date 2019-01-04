@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 9af4f5223dfe269ace459c8a7de07fe6dd0c2427
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238507"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973957"
 ---
 # <a name="part-of-speech-tagging"></a>Označování částí řeči
 
 > [!IMPORTANT]
-> Pro jazykovou analýzu ve verzi preview byla vyřazena z provozu, 9. srpna 2018. Doporučujeme používat [moduly analýzy textu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) pro zpracování textu a analýzy.
+> Dne 9. srpna 2018 došlo k vyřazení jazykové analýzy ve verzi Preview z provozu. Ke zpracování a analýze textu doporučujeme používat [moduly analýzy textu služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 ## <a name="background-and-motivation"></a>Na pozadí a motivace
 
@@ -46,7 +46,7 @@ Patří mezi ně kategoriích, jako je *podstatné jméno* (obecně představuj�
 | DT | determiner |všech obou ani|
 | EX | existenční zde | existuje |
 | FW | cizí slova | enfant terrible hoi polloi je ne sais quoi |
-| INDIE | mezerami nebo podřazování spojení| Pokud se vyskytuje na, jestli se v uvnitř |
+| IN | mezerami nebo podřazování spojení| Pokud se vyskytuje na, jestli se v uvnitř |
 | JJ | přídavného jména nebo číslo, pořadové | devátý poměrně execrable Multimodální |
 | JJR | srovnávací přídavného jména | lepší rychleji levnější |
 | JJS | přídavného jména superlative | nejlepší nejrychlejší nejlevnější |
@@ -80,4 +80,4 @@ Patří mezi ně kategoriích, jako je *podstatné jméno* (obecně představuj�
 
 ## <a name="specification"></a>Specifikace
 
-Jako u Tokenizace, spoléháme na specifikaci od [diskutují Treebank](https://catalog.ldc.upenn.edu/ldc99t42).
+Jako u Tokenizace, spoléháme na specifikaci od [diskutují Treebank](https://catalog.ldc.upenn.edu/LDC99T42).

@@ -10,18 +10,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 04046b4c7c36418b9024a690ad5279f9e34578a5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 87d13f8b0df4d9a357218b34035993663dfda8b3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583631"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634588"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj topologií Apache Storm pomocí Pythonu v HDInsight
 
-Zjistěte, jak vytvořit [Apache Storm](http://storm.apache.org/) topologie, která používá komponent v Pythonu. Apache Storm podporuje více jazyků, dokonce i díky tomu můžete kombinovat součásti z různých jazyků v jedné topologie. [Tok](http://storm.apache.org/releases/current/flux.html) framework (zavedl se Stormem 0.10.0) umožňuje snadno vytvářet řešení, která používají komponent v Pythonu.
+Zjistěte, jak vytvořit [Apache Storm](https://storm.apache.org/) topologie, která používá komponent v Pythonu. Apache Storm podporuje více jazyků, dokonce i díky tomu můžete kombinovat součásti z různých jazyků v jedné topologie. [Tok](https://storm.apache.org/releases/current/flux.html) framework (zavedl se Stormem 0.10.0) umožňuje snadno vytvářet řešení, která používají komponent v Pythonu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Informace v tomto dokumentu byl testován pomocí Storm v HDInsight 3.6. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Kód pro tento projekt je k dispozici na [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
@@ -34,7 +34,7 @@ Kód pro tento projekt je k dispozici na [ https://github.com/Azure-Samples/hdin
 
 * [Nástroje Apache Maven 3](https://maven.apache.org/download.cgi)
 
-* (Volitelné) Místní vývojové prostředí Storm. Místní prostředí Storm je potřeba pouze v případě, že chcete spustit topologii místně. Další informace najdete v tématu [nastavení vývojového prostředí](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
+* (Volitelné) Místní vývojové prostředí Storm. Místní prostředí Storm je potřeba pouze v případě, že chcete spustit topologii místně. Další informace najdete v tématu [nastavení vývojového prostředí](https://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
 ## <a name="storm-multi-language-support"></a>Podpora víc jazyků Storm
 
@@ -92,8 +92,8 @@ Topologie spouštět místně, použijte následující příkaz:
 storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.yaml
 ```
 
-> [!NOTE]
-> Tento příkaz vyžaduje místní vývojové prostředí Storm. Další informace najdete v tématu [nastavení vývojového prostředí](http://storm.apache.org/releases/current/Setting-up-development-environment.html)
+> [!NOTE]  
+> Tento příkaz vyžaduje místní vývojové prostředí Storm. Další informace najdete v tématu [nastavení vývojového prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html)
 
 Po spuštění topologie vydává informace do místní konzoly podobný následujícímu textu:
 
@@ -137,7 +137,7 @@ Chcete-li ukončit topologii, použijte __Ctrl + C__.
 
 3. Chcete-li zobrazit topologii v clusteru můžete použít uživatelské rozhraní Storm. Uživatelské rozhraní Storm se nachází na https://mycluster.azurehdinsight.net/stormui. Nahraďte `mycluster` názvem vašeho clusteru.
 
-> [!NOTE]
+> [!NOTE]  
 > Po zahájení topologie Stormu spouští až do ukončení. Pokud chcete ukončit topologii, použijte jednu z následujících metod:
 >
 > * `storm kill TOPOLOGYNAME` Příkazu z příkazového řádku
@@ -148,5 +148,5 @@ Chcete-li ukončit topologii, použijte __Ctrl + C__.
 
 Najdete v následujících dokumentech další způsoby, jak používat Python s HDInsight:
 
-* [Použití Pythonu pro datové proudy úlohy Apache Hadoop MapReduce](../hadoop/apache-hadoop-streaming-python.md)
+* [Použití Pythonu pro streamovacích úloh MapReduce](../hadoop/apache-hadoop-streaming-python.md)
 * [Jak používat Python uživateli definované funkce (UDF) v Apache Pig a Apache Hive](../hadoop/python-udf-hdinsight.md)

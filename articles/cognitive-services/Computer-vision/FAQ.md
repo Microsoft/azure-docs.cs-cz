@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Computer Vision API
+title: Časté otázky – pro počítačové zpracování obrazu
 titlesuffix: Azure Cognitive Services
 description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 55b474d0edbb8dc01b9f35d4f8799e53e37862df
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec18
+ms.openlocfilehash: 3146650280af80923a4ed9cbb78a5ce6d43e5bce
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166368"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584271"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API na nejčastější dotazy
 
@@ -23,21 +24,21 @@ ms.locfileid: "49166368"
 
 -----
 
-**Dotaz**: *můžete trénování rozhraní API pro počítačové zpracování obrazu používat vlastní značky?  Například chci informačního kanálu obrázky plemen cat trénování AI a pak zobrazí hodnotu generace v požadavku AI.*
+**Dotaz**: *Trénovat rozhraní API pro počítačové zpracování obrazu používat vlastní značky  Například chci informačního kanálu obrázky plemen cat trénování AI a pak zobrazí hodnotu generace v požadavku AI.*
 
-**Odpověď**: Tato funkce momentálně není k dispozici. Naši technici jsou však práce zpřístupnit tuto funkci pro počítačové zpracování obrazu.
-
------
-
-**Dotaz**: *můžete pro počítačové zpracování obrazu se dá používat místně bez připojení k Internetu?*
-
-**Odpověď**: aktuálně nenabízíme místní nebo místního řešení.
+**Odpověď**: Tato funkce není aktuálně k dispozici. Naši technici jsou však práce zpřístupnit tuto funkci pro počítačové zpracování obrazu.
 
 -----
 
-**Dotaz**: *jazyky, které podporují pro počítačové zpracování obrazu?*
+**Dotaz**: *Počítačové zpracování obrazu slouží místně bez připojení k Internetu?*
 
-**Odpověď**: podporované jazyky patří:
+**Odpověď**: Momentálně neposkytujeme místní nebo místního řešení.
+
+-----
+
+**Dotaz**: *Jaké jazyky jsou podporovány s pro počítačové zpracování obrazu?*
+
+**Odpověď**: Mezi podporované jazyky patří:
 
 | | | Podporované jazyky | | |
 |---------------- |------------------ |------------------ |--------------------------- |--------------------
@@ -48,44 +49,44 @@ ms.locfileid: "49166368"
 
 -----
 
-**Dotaz**: *můžete pro počítačové zpracování obrazu použít ke čtení talířů licence?*
+**Dotaz**: *Pro počítačové zpracování obrazu umožňuje číst talířů licence?*
 
-**Odpověď**: rozhraní API pro zpracování obrazu nabízí dobrý duplicit text pomocí technologie OCR, ale není aktuálně optimalizované pro licence talířů. Pokoušíme se neustále vylepšovat naše služby a přidali OCR pro automatické rozpoznávání registrační na našem seznamu požadovaných funkcí.
-
------
-
-**Otázka:** *jazyky, které podporují rozpoznávání textu psaného rukou?*
-
-**Odpověď**: v současné době se podporuje jenom v angličtině.
+**Odpověď**: Rozhraní API pro zpracování obrazu nabízí dobrý duplicit text pomocí technologie OCR, ale není aktuálně optimalizované pro licence talířů. Pokoušíme se neustále vylepšovat naše služby a přidali OCR pro automatické rozpoznávání registrační na našem seznamu požadovaných funkcí.
 
 -----
 
-**Dotaz**: *jaké typy psaní plochy jsou podporovány pro rozpoznávání textu psaného rukou?*
+**Otázka:** *Jaké jazyky jsou podporovány pro rozpoznávání textu psaného rukou?*
+
+**Odpověď**: V současné době se podporuje jenom v angličtině.
+
+-----
+
+**Dotaz**: *Jaké typy psaní plochy jsou podporovány pro rozpoznávání textu psaného rukou?*
 
 **Odpověď**: Tato technologie funguje s různými druhy zařízení Surface, včetně bločky nebo Tabule, dokument white paper a žluté.
 
 -----
 
-**Dotaz**: *jak dlouho operace rozpoznávání textu psaného rukou trvá?*
+**Dotaz**: *Jak dlouho operace rozpoznávání textu psaného rukou trvá?*
 
-**Odpověď**: množství času potřebného závisí na délce textu. Pro delší text může trvat až na několik sekund. Proto po dokončení operace rozpoznat rukou Text, budete muset počkat, než můžete načíst pomocí operace získat rukou výsledek operace Text.
-
------
-
-**Dotaz**: *jak text popisovač technologie rozpoznávání rukopisu, který byl vložen pomocí stříška uprostřed řádku?*
-
-**Odpověď**: takového textu se vrátí jako samostatný řádek operací rozpoznávání rukopisu.
+**Odpověď**: Množství času potřebného závisí na délce textu. Pro delší text může trvat až na několik sekund. Proto po dokončení operace rozpoznat rukou Text, budete muset počkat, než můžete načíst pomocí operace získat rukou výsledek operace Text.
 
 -----
 
-**Dotaz**: *jak technologii rozpoznávání rukopisu zpracovává přeškrtnutý slova nebo řádky?*
+**Dotaz**: *Jak technologii rozpoznávání ručně psaného textu zpracovává text, který byl vložen pomocí stříška uprostřed řádku?*
 
-**Odpověď**: překročení slova s více řádky k vykreslení je nelze rozpoznat, operace rozpoznávání textu psaného rukou nebude sesbírejte je. Ale překročení slova pomocí jeden řádek, tento přechod je považován za šumu a slova stále získat vyzvednou operace rozpoznávání rukopisu.
+**Odpověď**: Takové textu se vrátí jako samostatný řádek operací rozpoznávání rukopisu.
 
 -----
 
-**Dotaz**: *jaké orientace textu podporují technologii rozpoznávání rukopisu?*
+**Dotaz**: *Jak technologii rozpoznávání rukopisu zpracovává přeškrtnutý slova nebo řádky?*
 
-**Odpověď**: Text orientovaný na úhly až přibližně 30 stupňů na 40 stupně může získat vyzvednou operace rozpoznávání rukopisu.
+**Odpověď**: Překročení slova s více řádky k vykreslení je nelze rozpoznat, operace rozpoznávání textu psaného rukou nebude sesbírejte je. Ale překročení slova pomocí jeden řádek, tento přechod je považován za šumu a slova stále získat vyzvednou operace rozpoznávání rukopisu.
+
+-----
+
+**Dotaz**: *Jaké orientace textu podporují technologii rozpoznávání rukopisu?*
+
+**Odpověď**: Text orientovaný na úhly až přibližně 30 stupňů na 40 stupně může získat neexistoval operace rozpoznávání rukopisu.
 
 -----

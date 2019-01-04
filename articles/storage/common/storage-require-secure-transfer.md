@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 72e0937e91a7287d240bbdb25996865f934d432d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6f17cb4540feea6400c60c8032d071d6a922c871
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876498"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633057"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Vyžádání bezpečného přenosu ve službě Azure Storage
 
@@ -50,7 +50,7 @@ Můžete zapnout "zabezpečený přenos vyžaduje" nastavení při vytváření 
 Pokud chcete vyžadovat zabezpečený přenos prostřednictvím kódu programu, použijte nastavení _supportsHttpsTrafficOnly_ ve vlastnosti účtu úložiště pomocí rozhraní REST API, nástrojů nebo knihovny:
 
 * [Rozhraní REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (verze: 2016-12-01)
-* [Prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (verze: 4.1.0)
+* [Prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) (verze: 0,7)
 * [Rozhraní příkazového řádku](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (verze: 2.0.11)
 * [Prostředí NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (verze: 1.1.0)
 * [Sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (verze: 6.3.0)
@@ -59,14 +59,16 @@ Pokud chcete vyžadovat zabezpečený přenos prostřednictvím kódu programu, 
 
 ### <a name="enable-secure-transfer-required-setting-with-powershell"></a>Povolit "Zabezpečený přenos vyžaduje" nastavení pomocí Powershellu
 
-Tato ukázka vyžaduje modul Azure Powershellu verze 4.1 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure.
+Tato ukázka vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+
+Spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure.
 
  Pokud chcete zkontrolovat nastavení, použijte následující příkazový řádek:
 
 ```powershell
-> Get-AzureRmStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
+> Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : False
@@ -77,7 +79,7 @@ EnableHttpsTrafficOnly : False
 Povolit nastavení použijte následující příkazový řádek:
 
 ```powershell
-> Set-AzureRmStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
+> Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : True

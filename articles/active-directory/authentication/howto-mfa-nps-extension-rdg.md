@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 013b63d0eb2cc69893dcb4075c1ca26a31ef2474
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: db7591c98147a5728486843efb0c807b6094557a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277977"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601470"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -26,7 +26,7 @@ Rozšíření serveru NPS (Network Policy Server) pro Azure umožňuje zákazní
 Tento článek obsahuje podrobné pokyny pro integraci s Azure MFA NPS server infrastruktury pomocí rozšíření NPS pro Azure. To umožňuje zabezpečené ověřování pro uživatele pokoušející se přihlásit do služby Brána vzdálené plochy.
 
 > [!NOTE]
-> V tomto článku se nemá používat s MFA Server nasazení pouze Azure MFA (Cloud-based).
+> Tento článek se nemá používat s MFA Server nasazení a by měla sloužit pouze s nasazeními Azure MFA (Cloud-based).
 
 Síťové zásady a přístup k službám (NPS) poskytuje organizacím možnost postupujte takto:
 
@@ -162,7 +162,7 @@ Pokud chcete použít skript, poskytují rozšíření pomocí svých přihlašo
 
 1. Otevřete řádku prostředí Windows PowerShell pro správu.
 1. Zadejte v příkazovém prostředí PowerShell `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`a stiskněte klávesu **ENTER**.
-1. Typ `.\AzureMfsNpsExtnConfigSetup.ps1`a stiskněte klávesu **ENTER**. Skript zkontroluje, zda je nainstalován modul Powershellu pro Azure Active Directory. Pokud nainstalovaná není, skript nainstaluje modul pro vás.
+1. Typ `.\AzureMfaNpsExtnConfigSetup.ps1`a stiskněte klávesu **ENTER**. Skript zkontroluje, zda je nainstalován modul Powershellu pro Azure Active Directory. Pokud nainstalovaná není, skript nainstaluje modul pro vás.
 
   ![Prostředí PowerShell Azure AD](./media/howto-mfa-nps-extension-rdg/image4.png)
   

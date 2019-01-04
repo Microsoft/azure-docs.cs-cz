@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434041"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741585"
 ---
 # <a name="os-patching-for-hdinsight"></a>Opravy operačního systému pro HDInsight 
 Spravovaná služba, Apache Hadoop HDInsight postará o opravy OS základních virtuálních počítačů, které jsou používané clustery HDInsight. Od 1. srpna 2016 jsme změnili zásady použití dílčích oprav operačního systému hosta clusterech HDInsight založených na Linuxu (verze 3.4). Cílem nové zásady je výrazně snížil počet restartování z důvodu opravy. Nová zásada bude nadále opravu virtuálních počítačů (VM) na clusterech s Linuxem každé pondělí a čtvrtek, od 00: 00 UTC postupný způsobem napříč uzly v jakémkoliv daného clusteru. Libovolný daný virtuální počítač se restartuje však pouze maximálně jednou za 30 dnů z důvodu opravy hostovaného operačního systému. Kromě toho první restartování pro nově vytvořený cluster se neprovede dřív než 30 dní od data vytvoření clusteru. Opravy začnou platit, až se virtuální počítače se restartují.
@@ -33,7 +33,6 @@ Pomocí skriptových akcí popsaných v tomto článku, můžete upravit násled
 
 > [!NOTE]  
 > Tuto akci se skripty budou fungovat jenom s clustery HDInsight založené na Linuxu vytvořená po 1. srpna 2016. Opravy bude platit pouze v případě, že virtuální počítače se restartují. 
->
 
 ## <a name="how-to-use-the-script"></a>Jak používat skript 
 

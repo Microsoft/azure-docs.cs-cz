@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3e4ab9dc03afe1c4a19e738804e6400b0830291
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b9c8f1af612c220534e45c5c66651f0ad8600826
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634409"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628182"
 ---
 # <a name="analyze-sensor-data-using-the-apache-hive-query-console-on-apache-hadoop-in-hdinsight"></a>Analýza dat senzoru pomocí Apache Hive konzoly pro dotazy na Apache Hadoop v HDInsight
 
-Zjistěte, jak analyzovat data ze senzorů pomocí konzoly pro dotazy Hive s HDInsight (Apache Hadoop) a pak data vizualizovat v Microsoft Excelu pomocí Power View.
+Zjistěte, jak analyzovat data ze senzorů pomocí dotazu konzoly Apache Hive s HDInsight (Apache Hadoop) a pak data vizualizovat v Microsoft Excelu pomocí Power View.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu fungovat jenom s clustery HDInsight se systémem Windows. HDInsight je dostupná jenom ve Windows pro verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 
@@ -35,10 +35,10 @@ V této ukázce použijete Hive ke zpracování historických dat a identifikova
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster HDInsight (Hadoop): viz [vytváření clusterů Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) informace o vytváření clusteru.
+* Cluster HDInsight (Hadoop): Zobrazit [vytvořit Apache Hadoop clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) informace o vytváření clusteru.
 * Microsoft Excel 2013
 
-  > [!NOTE]
+  > [!NOTE]  
   > Aplikace Microsoft Excel se používá pro vizualizace dat s využitím [Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US).
 
 * [Ovladače ODBC Microsoft Hivu](https://www.microsoft.com/download/details.aspx?id=40886)

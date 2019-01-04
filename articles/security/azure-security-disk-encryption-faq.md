@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ba955e9e71926a513f6c083acb6508b3ec330d17
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cc9368bfe95aba3da3dba3a4ac4293790bb09cd3
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094555"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754080"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače Iaas – nejčastější dotazy
 
@@ -44,10 +44,10 @@ Azure Disk Encryption je podporováno v následujících Linuxových distribucí
 | --- | --- |--- |
 | Ubuntu | 16.04. KAŽDÝ DEN LTS | Disk operačního systému a dat |
 | Ubuntu | 14.04.5-DAILY-LTS | Disk operačního systému a dat |
-| RHEL | 7.5 | Datový disk * |
-| RHEL | 7.4 | Datový disk * |
-| RHEL | 7.3 | Datový disk * |
-| RHEL | 7.2 | Datový disk * |
+| RHEL | 7.5 | Operační systém a datového disku * |
+| RHEL | 7.4 | Operační systém a datového disku * |
+| RHEL | 7.3 | Operační systém a datového disku * |
+| RHEL | 7.2 | Operační systém a datového disku * |
 | RHEL | 6.8 | Datový disk * |
 | RHEL | 6.7 | Datový disk * |
 | CentOS | 7.4 | Disk operačního systému a dat |
@@ -61,13 +61,13 @@ Azure Disk Encryption je podporováno v následujících Linuxových distribucí
 | CentOS | 6.5 | Datový disk |
 | openSUSE | 13.2 | Datový disk |
 | SLES | 12 SP1 | Datový disk |
-| SLES | Priorita: 12 – aktualizace SP1 | Datový disk |
+| SLES | Priorita: 12-SP1 | Datový disk |
 | SLES | PROSTŘEDÍ HPC 12 | Datový disk |
-| SLES | Priorita: 11-SP4 | Datový disk |
+| SLES | Priorita: 11 SP4 | Datový disk |
 | SLES | 11 SP4 | Datový disk |
 
 
-*__ADE je podporována pro RHEL pro datový disk. Aktuální implementace ADE funguje pro disk s operačním systémem, ale aktuálně společně se nepodporuje. Microsoft a Red Hat pracujete společně podporované řešení. Prozatím můžete odkazovat [Azure Disk Encryption pro Linux](azure-security-disk-encryption-linux.md) článku.__
+*__Novou implementaci ADE se podporuje pro RHEL operačního systému a datovým diskem pro Image s průběžnými platbami RHEL7. ADE není aktuálně podporována pro Image RHEL přenést-Your-vlastní – předplatné (BYOS). Také najdete [Azure Disk Encryption pro Linux](azure-security-disk-encryption-linux.md) najdete další informace.__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Jak můžu začít používat Azure Disk Encryption?
 

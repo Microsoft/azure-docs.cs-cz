@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c8870fdb0ff0a62c9b1a3b690724aa004e911bb3
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133743"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810878"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Změna informačního kanálu ve službě Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Změna informačního kanálu ve službě Azure Cosmos DB umožňuje vytvářet 
 
 Tato funkce je aktuálně podporuje následující klientské sady SDK a rozhraní API služby Azure Cosmos DB.
 
-| **Ovladače klienta** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API**|**Rozhraní Table API** |
+| **Ovladače klienta** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API**|**Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | Není k dispozici | Ano | Ne | Ne | Ano | Ne |
 |Java|Není k dispozici|Ano|Ne|Ne|Ano|Ne|

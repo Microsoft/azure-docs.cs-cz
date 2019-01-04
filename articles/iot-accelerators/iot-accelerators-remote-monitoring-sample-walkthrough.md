@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: e02492b3e80f71b4ae92066e5e4a2baf26818621
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316161"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605530"
 ---
-# <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení vzdáleného monitorování
+# <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení vzdáleného sledování
 
 Vzdálené monitorování [akcelerátor řešení](../iot-accelerators/about-iot-accelerators.md) implementuje řešení monitorování v začátku do konce pro více počítačů ve vzdálených umístěních. Řešení kombinuje klíčové služby Azure a poskytuje obecnou implementaci obchodního scénáře. Řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) ho podle konkrétních podnikových požadavků.
 
@@ -135,7 +135,7 @@ Referenční data pro skupiny zařízení slouží k identifikaci která skupina
 
 ### <a name="authentication-and-authorization-microservice"></a>Ověřování a autorizace mikroslužeb
 
-[Ověřování a autorizace mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) slouží ke správě uživatelů, oprávnění pro přístup k akcelerátoru řešení. Správa uživatelů lze provést pomocí všech poskytovatelů služeb identita, která podporuje [OpenId Connect](http://openid.net/connect/).
+[Ověřování a autorizace mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) slouží ke správě uživatelů, oprávnění pro přístup k akcelerátoru řešení. Správa uživatelů lze provést pomocí všech poskytovatelů služeb identita, která podporuje [OpenId Connect](https://openid.net/connect/).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 

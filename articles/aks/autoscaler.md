@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 0f376d6b1108b784af37b5e50dab9edba63e5f76
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0b2e49bb0e269c91ed6a1bf7294565a729082db3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713091"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975130"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Cluster automatického škálování ve službě Azure Kubernetes Service (AKS) – ve verzi Preview
 
@@ -382,7 +382,7 @@ Events:  <none>
 Stav clusteru automatického škálování vám umožní zobrazit stav modulu automatického škálování clusteru na dvou různých úrovních: celoclusterový a v rámci jednotlivých skupin uzlu. Protože AKS aktuálně podporuje pouze jeden fond uzlů, tyto metriky jsou stejné.
 
 * Stav označuje celkový stav uzlů. Pokud automatického škálování clusteru potýká k vytvoření a odebírá uzly v clusteru, tento stav se změní na "Není v pořádku". K dispozici je také rozdělení stavu různých uzlech:
-    * "Připraveno" znamená, že uzel je připraven k mít podů naplánované na něm.
+    * "Připraveno" znamená, že uzel je připravený na podů naplánované na něj.
     * "NEPŘIPRAVENÉM" znamená, že uzel, který se podařilo přerušit dolů po jeho spuštění.
     * "NotStarted" znamená, že uzel není úplně spuštěna.
     * "LongNotStarted" znamená, že uzel se nepovedlo spustit ve lhůtě přiměřené.
@@ -398,7 +398,7 @@ Stav clusteru automatického škálování vám umožní zobrazit stav modulu au
     * Mezi kandidáty pro vertikální snížení kapacity je uzel, který určil automatického škálování clusteru je možné odebrat, aniž to ovlivní schopnost clusteru zvládnout zatížení. 
     * Časů zadaných zobrazit čas poslední clusteru došlo k zaškrtnutí pro vertikální snížení kapacity kandidáty a jeho poslední čas přechodu.
 
-Nakonec můžete v rámci události, získají až libovolném měřítku nebo vertikálně snížit kapacitu události, neúspěšné nebo úspěšné a jejich časy, které provedl automatického škálování clusteru.
+Nakonec můžete v rámci události, najdete v libovolném měřítku nahoru nebo vertikálně snížit kapacitu události, neúspěšné nebo úspěšné a jejich časy, které provedl automatického škálování clusteru.
 
 ## <a name="next-steps"></a>Další postup
 

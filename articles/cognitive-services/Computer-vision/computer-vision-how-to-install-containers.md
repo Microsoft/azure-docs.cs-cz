@@ -1,24 +1,24 @@
 ---
-title: Instalace a spuštění kontejnerů
-titlesuffix: Computer Vision - Azure Cognitive Services
+title: Jak nainstalovat a spustit kontejnery – pro počítačové zpracování obrazu
+titlesuffix: Azure Cognitive Services
 description: Jak si stáhnout, nainstalovat a spouštění kontejnerů v tomto kurzu návod pro počítačové zpracování obrazu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 9964be07c578cd1cafd93328bffe972483123e03
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 6a6468cd71cf83c627f6dd72e5a1fc5564361d50
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077031"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579851"
 ---
-# <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
+# <a name="install-and-run-recognize-text-containers"></a>Instalace a spouštění kontejnerů rozpoznat Text
 
 Kontejnerizace je přístup k distribuci softwaru, ve kterém je zabalená aplikace nebo služby, jako image kontejneru. Konfigurace a závislosti pro aplikaci nebo službě jsou součástí image kontejneru. Image kontejneru je potom nasadit na hostiteli s téměř nebo vůbec žádné změny. Kontejnery jsou izolované od sebe navzájem a základní operační systém s menší nároky na místo než virtuální počítač. Kontejnery můžete vytvořené z imagí kontejneru pro krátkodobé úlohy a odebrat, pokud už je nepotřebujete.
 
@@ -32,11 +32,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Před použitím rozpoznat Text kontejner musí splňovat následující požadavky:
 
-**Modul docker**: musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](/azure/azure-stack/). Další informace o nasazení Kubernetes pro Azure Stack najdete v tématu [nasazení Kubernetes pro Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+**Modul docker**: Musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](../../aks/index.yml), [Azure Container Instances](../../container-instances/index.yml), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](../../azure-stack/index.yml). Další informace o nasazení Kubernetes pro Azure Stack najdete v tématu [nasazení Kubernetes pro Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
 
 Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure.
 
-**Znalost společnosti Microsoft Container Registry a Docker**: byste měli mít základní znalost konceptů Microsoft Container Registry a Docker, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost základní `docker` příkazy.  
+**Znalost společnosti Microsoft Container Registry a Docker**: Byste měli mít základní znalost konceptů Microsoft Container Registry a Docker, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.  
 
 Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).
 
@@ -60,7 +60,7 @@ Pokud chcete použít kontejner rozpoznat Text, musíte vytvořit prostředek pr
 Proveďte následující kroky k vytvoření a načtení informací z prostředku Azure:
 
 1. Vytvoření prostředku Azure na webu Azure Portal.  
-   Pokud chcete použít kontejner rozpoznat Text, musíte nejprve vytvořit odpovídající prostředek pro počítačové zpracování obrazu na webu Azure Portal. Další informace najdete v tématu [rychlý start: vytvoření účtu služeb Cognitive Services na webu Azure Portal](../cognitive-services-apis-create-account.md).
+   Pokud chcete použít kontejner rozpoznat Text, musíte nejprve vytvořit odpovídající prostředek pro počítačové zpracování obrazu na webu Azure Portal. Další informace najdete v tématu [rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal](../cognitive-services-apis-create-account.md).
 
 1. Získáte klíče koncového bodu adresy URL a předplatného pro prostředky Azure.  
    Po vytvoření prostředku Azure musíte použít koncový bod adresy URL a klíč předplatného z tohoto prostředku pro vytvoření instance kontejneru odpovídající rozpoznat Text. Koncový bod adresy URL a klíč předplatného můžete zkopírovat z v uvedeném pořadí, rychlý Start a klíče stránky pro počítačové zpracování obrazu prostředků na portálu Azure portal.

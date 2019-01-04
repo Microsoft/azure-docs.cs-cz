@@ -1,5 +1,5 @@
 ---
-title: Ověřování Azure Time Series Insights – postupy ověřování a autorizace pomocí rozhraní API ve službě Azure Time Series Insights | Dokumentace Microsoftu
+title: Jak ověřování a autorizace pomocí rozhraní API ve službě Azure Time Series Insights | Dokumentace Microsoftu
 description: Tento článek popisuje, jak nakonfigurovat ověřování a autorizace pro vlastní aplikaci, která volá rozhraní API Azure čas Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: e42a29152f3abb762e6c95833e8e2e5eddd6929b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 17ca5430a0fdba0bf11d7c2caecd19ec0a402c0e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273540"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556692"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure čas Series Insights
 

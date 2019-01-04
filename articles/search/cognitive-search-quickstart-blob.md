@@ -32,7 +32,7 @@ V tomto rychlém startu si můžete vyzkoušet kanál pro rozšiřování na por
 Kognitivní hledání si můžete vyzkoušet ve službě Azure Search vytvořené v následujících oblastech:
 
 * Západní střed USA
-* Střed USA – jih
+* Středojižní USA
 * USA – východ
 * Východní USA 2
 * Západní USA 2

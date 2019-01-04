@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8882970471b554f6d05a9cf3028e7be572292ef6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 605ce97f786b6b674a4adf8d6b1ee50957ef25fa
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582696"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582740"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade na zásobník záloh virtuálních počítačů Azure V2
 
@@ -147,3 +147,6 @@ Přírůstkových snímků se používají pro nespravované disky. Bod kolekce 
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>Jak získat SSD na úrovni standard managed podporu disků pro virtuální počítač?
 Upgrade na zásobník záloh virtuálních počítačů Azure V2 potřebujete podporu Azure Backup pro [Standard Managed SSD Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
+
+### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-snapshot-tier1"></a>Co se stane, když vyberu doba uchování bodu obnovení (vrstva 2) menší než snímku (1jádrové)?
+V2 zásobník záloh virtuálních počítačů není povoleno odstranění bodu obnovení (úroveň 2) Pokud se odstraní snímek (1jádrové). Momentálně podporujeme dobu uchování 7 dní pro odstranění snímku (1jádrové), takže bodu obnovení (úroveň 2) není podporována uchovávají po dobu kratší než 7 dní. Doporučujeme, abyste plánování doba uchování (úroveň 2) bodu obnovení delší než 7 dnů.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eee37f5a77331b78aa587ba2e3eb61132d7d6adc
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385563"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722018"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -26,7 +26,7 @@ V tomto dokumentu se dozvíte, jak pomocí webového uživatelského rozhraní A
 
 ## <a id="whatis"></a>Co je Apache Ambari?
 
-[Apache Ambari](http://ambari.apache.org) zjednodušuje správu Hadoop tím, že poskytuje snadno použitelné webové uživatelské rozhraní. Ambari slouží ke správě a monitorování clusterů systému Hadoop. Vývojářům můžete integrovat tyto funkce do svých aplikací s použitím [rozhraní Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Apache Ambari](https://ambari.apache.org) zjednodušuje správu Hadoop tím, že poskytuje snadno použitelné webové uživatelské rozhraní. Ambari slouží ke správě a monitorování clusterů systému Hadoop. Vývojářům můžete integrovat tyto funkce do svých aplikací s použitím [rozhraní Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Webové uživatelské rozhraní Ambari je dostupné ve výchozím nastavení s clustery HDInsight, které používají operační systém Linux.
 
@@ -181,12 +181,12 @@ Práce s uživatele, skupiny a oprávnění jsou podporovány při použití [p�
 
    * **Vyřazení z provozu** – odebere hostitele z clusteru.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Nepoužívejte tuto akci na clusterech HDInsight.
 
    * **Recommission** – přidá dříve Vyřazená z provozu hostitele do clusteru.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Nepoužívejte tuto akci na clusterech HDInsight.
 
 ### <a id="service"></a>Služby

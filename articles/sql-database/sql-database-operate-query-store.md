@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: cf5035d4dd1c58baff66bd5edbdac42c08d6baab
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164561"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600167"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Provozování Query Store ve službě Azure SQL Database
 Query Store v Azure je plně spravované databázové funkce, která průběžně shromažďuje a uvede podrobné historické údaje o všech dotazech. Query Store se dá chápat jako podobný zapisovač letových údajů letadlo, který výrazně zjednodušuje výkon dotazů, řešení potíží pro cloudové a místní zákazníci. Tento článek popisuje konkrétní aspekty provozování Query Store v Azure. Na základě těchto dat předem shromážděná dotazu můžete rychle diagnostikovat a vyřešit problémy s výkonem a tedy věnovat víc času, zaměřuje se na svoje podnikání. 
@@ -52,7 +52,7 @@ Pokud chcete Zůstaňte s přední vlastní nastavení, použijte [ALTER DATABAS
 ## <a name="next-steps"></a>Další postup
 [SQL Database Performance Insight](sql-database-performance.md)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 Pro další kontrolu informace v následujících článcích:
 
 * [Zapisovač letových údajů pro vaši databázi](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 

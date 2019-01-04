@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 3f7cfbea414561a50152f88ac9061d7f62c89e2a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc8688e06b430522d2aeb1bcc67f72dae2e9ac6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192389"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728396"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Prohledávání protokolů skupiny počítačů v Log Analytics
 
@@ -31,7 +31,7 @@ Vytvořit skupinu počítačů v Log Analytics pomocí některé z metod v násl
 |:--- |:--- |
 | Prohledávání protokolů |Vytvoření prohledávání protokolu, který vrátí seznam počítačů. |
 | Rozhraní API pro prohledávání protokolů |Pomocí rozhraní API pro vyhledávání protokolu prostřednictvím kódu programu vytvořit skupinu počítačů na základě výsledků prohledávání protokolu. |
-| Active Directory |Automaticky vyhledávat členství ve skupině všechny počítače agenta, které jsou členy domény služby Active Directory a vytvoření skupiny pro každou skupinu zabezpečení ve službě Log Analytics. |
+| Active Directory |Automaticky vyhledávat členství ve skupině všechny počítače agenta, které jsou členy domény služby Active Directory a vytvoření skupiny pro každou skupinu zabezpečení ve službě Log Analytics. (Pouze Windows počítače)|
 | Configuration Manager | Importovat kolekce z nástroje System Center Configuration Manager a vytvoření skupiny ve službě Log Analytics pro každého. |
 | Windows Server Update Services |Automaticky vyhledat cílí na skupiny služby WSUS servery nebo klienty a vytvořte skupinu ve službě Log Analytics pro každého. |
 
@@ -60,7 +60,10 @@ Pomocí následujícího postupu můžete vytvořit skupinu počítačů z prohl
 
 
 ### <a name="active-directory"></a>Active Directory
-Při konfiguraci Log Analytics pro import členství skupin Active Directory, analyzuje členství ve skupině všechny počítače připojené k doméně pomocí agenta Log Analytics.  Skupina počítačů se vytvoří v Log Analytics pro každou skupinu zabezpečení ve službě Active Directory a každý počítač přidán do skupiny počítačů, které jsou členy skupiny zabezpečení odpovídající.  Toto členství se průběžně aktualizuje každé 4 hodiny.  
+Při konfiguraci Log Analytics pro import členství skupin Active Directory, analyzuje členství ve skupině všechny počítače připojené k doméně Windows pomocí agenta Log Analytics.  Skupina počítačů se vytvoří v Log Analytics pro každou skupinu zabezpečení ve službě Active Directory a každý počítač Windows je přidán do skupiny počítačů, které jsou členy skupiny zabezpečení odpovídající.  Toto členství se průběžně aktualizuje každé 4 hodiny.  
+
+> [!NOTE]
+> Importované skupiny služby Active Directory obsahují pouze počítače s Windows.
 
 Konfigurace Log Analytics k importu skupin zabezpečení služby Active Directory ze služby Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů**, **služby Active Directory**a potom **členství ve skupině služby Active Directory Import z počítačů**.  Není nutná žádná další konfigurace.
 

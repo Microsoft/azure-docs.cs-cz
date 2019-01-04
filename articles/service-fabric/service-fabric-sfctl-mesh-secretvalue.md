@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: b8172ba50f7fec8f0aa1ba768c05d087ecabf8c8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 064aeaea47dd59a1dd75cf19ea4060d8f9c2c4bf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285414"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559055"
 ---
-# <a name="sfctl-mesh-secretvalue"></a>sfctl secretvalue sítě
+# <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 Získání a odstraňte prostředky secretvalue sítě.
 
 ## <a name="commands"></a>Příkazy
@@ -30,7 +30,7 @@ Získání a odstraňte prostředky secretvalue sítě.
 | --- | --- |
 | delete | Odstraní zadanou hodnotu tajného kódu s názvem prostředku. |
 | list | Vypsat názvy všech hodnot zadaný prostředek tajného kódu. |
-| Show | Načte hodnotu určenou verzi tajného kódu prostředků. |
+| zobrazit | Načte hodnotu určenou verzi tajného kódu prostředků. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl síť secretvalue delete
 Odstraní zadanou hodnotu tajného kódu s názvem prostředku.

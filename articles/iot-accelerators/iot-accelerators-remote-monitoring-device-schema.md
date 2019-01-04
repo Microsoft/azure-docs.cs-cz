@@ -2,24 +2,27 @@
 title: Schéma zařízení v řešení vzdáleného monitorování – Azure | Dokumentace Microsoftu
 description: Tento článek popisuje schématu JSON, který definuje simulovaného zařízení v řešení vzdáleného monitorování.
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: f312f29e14c371e7b500f3eee6471151e3544513
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338851"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635523"
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schématu modelu zařízení
 
-Simulovaná zařízení v řešení vzdáleného monitorování můžete testovat jeho chování. Když nasadíte řešení vzdáleného monitorování, je automaticky zřídí kolekce simulované zařízení. Můžete přizpůsobit existující Simulovaná zařízení nebo vytvořit vlastní.
+Simulovaná zařízení v řešení vzdáleného monitorování můžete testovat jeho chování. Řešení vzdáleného monitorování zahrnuje službu simulace zařízení ke spuštění simulovaných zařízení. Když nasadíte řešení vzdáleného monitorování, je automaticky zřídí kolekce simulované zařízení. Můžete přizpůsobit existující Simulovaná zařízení nebo vytvořit vlastní.
 
 Tento článek popisuje schématu modelu zařízení, která určuje funkce a chování simulovaných zařízení. Model zařízení je uložená v souboru JSON.
+
+> [!NOTE]
+> Toto schéma modelu zařízení je jenom pro Simulovaná zařízení, které jsou hostované ve službě simulace zařízení. Pokud chcete vytvořit jedno fyzické zařízení, přečtěte si téma [připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
 V následujících článcích se vztahují k aktuální článku:
 

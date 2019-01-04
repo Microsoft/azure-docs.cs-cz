@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0948251c18ad8eece974914ee33dff18b5930553
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226564"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535799"
 ---
 # <a name="text-moderation"></a>Moderování textu
 
@@ -149,7 +149,7 @@ Když požadujete třeba automatické opravy, odpověď obsahuje opravenou verzi
 Zatímco výchozí, globální seznam termínů dobře funguje pro většinu případů, můžete chtít obrazovky s výrazy, které jsou specifické pro vaše obchodní potřeby. Můžete například vyfiltrovat všechny konkurenční názvy z příspěvků uživateli.
 
 > [!NOTE]
-> Je maximální limit **5 termín uvádí** s každou seznamu **není delší než 10 000 podmínky**.
+> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů**.
 >
 
 Následující příklad ukazuje odpovídající ID seznamu:

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření clustery systému Apache Hadoop na vyžádání v Azure HDInsight pomocí Data Factory '
+title: 'Kurz: Vytváření clusterů na vyžádání Apache Hadoop v Azure HDInsight pomocí Data Factory '
 description: Zjistěte, jak vytvářet clustery na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory.
 services: hdinsight
 author: hrasheed-msft
@@ -7,16 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: c7ec0b29e200710070cb1243ff8bfadd5e31e8eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7b20ceb61f522bea11e7256c824a851e587cbd49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879405"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975453"
 ---
-# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytvoření clusterů na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory
+# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytváření clusterů na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit [Apache Hadoop](https://hadoop.apache.org/) clusteru na vyžádání v Azure HDInsight pomocí Azure Data Factory. Pak použijete datové kanály ve službě Azure Data Factory ke spuštění úlohy Hive a cluster odstranit. Na konci tohoto kurzu se dozvíte, jak pro zprovoznění úlohu velké objemy dat spouštět, kde se vytvoření clusteru, spuštění úlohy a odstranění clusteru provádět podle plánu.
@@ -55,7 +55,7 @@ Tato část používá skript Azure Powershellu k vytvoření účtu úložišt�
 
 
 **Vytvoření účtu úložiště a kopírovat soubory pomocí Azure Powershellu:**
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Zadejte názvy pro skupinu prostředků Azure a účet úložiště Azure, který bude vytvořen skriptem.
 > Zapište si **název skupiny prostředků**, **název účtu úložiště**, a **klíč účtu úložiště** výstupem skriptem. Budete je potřebovat v další části.
 
@@ -166,7 +166,11 @@ V tomto článku nakonfigurujete aktivitu Hive k vytvoření clusteru HDInsight 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Na webu Azure Portal, vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**.
+1. V nabídce vlevo vyberte **+ vytvořit prostředek**.
+
+1. V části **Azure Marketplace**vyberte **Analytics**.
+
+1.  V části **doporučené**vyberte **služby Data Factory**.
 
     ![Na portálu Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory na portálu")
 
@@ -181,19 +185,18 @@ V tomto článku nakonfigurujete aktivitu Hive k vytvoření clusteru HDInsight 
     |**Název** |  Zadejte název datové továrny. Tento název musí být globálně jedinečný.|
     |**Předplatné**     |  Vyberte své předplatné Azure. |
     |**Skupina prostředků**     | Vyberte **použít existující** a pak vyberte skupinu prostředků, kterou jste vytvořili, pomocí Powershellového skriptu. |
-    |**Verze**     | Vyberte **V2 (Preview)** |
-    |**Umístění**     | Umístění se nastaví automaticky do umístění, které jste zadali při vytváření skupiny prostředků dříve. Pro účely tohoto kurzu, umístění se nastaví **USA – východ 2**. |
+    |**Verze**     | Vyberte **V2** |
+    |**Umístění**     | Umístění se nastaví automaticky do umístění, které jste zadali při vytváření skupiny prostředků dříve. Pro účely tohoto kurzu, umístění se nastaví **USA – východ**. |
     
 
-1. Vyberte **připnout na řídicí panel**a pak vyberte **vytvořit**. Na řídicím panelu portálu by se měla zobrazit nová dlaždice s názvem **Odesílá se nasazení**. Vytváří se objekt pro vytváření dat může trvat mezi 2 až 4 minuty.
+1. Vyberte **Vytvořit**. Vytváří se objekt pro vytváření dat může trvat mezi 2 až 4 minuty.
 
-    ![Průběh nasazení šablony](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "průběh nasazení šablony") 
- 
-1. Po vytvoření objektu pro vytváření dat na portálu se zobrazí přehled služby data factory.
 
-    ![Přehled služby Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory – přehled")
+1. Po vytvoření datové továrny se zobrazí **nasazení bylo úspěšné** oznámení **přejít k prostředku** tlačítko.  Vyberte **přejít k prostředku** otevřete výchozího zobrazení datové továrny.
 
 1. Vyberte **vytvořit a monitorovat** ke spuštění Azure Data Factory pro vytváření a monitorování portálu.
+
+    ![Přehled služby Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory – přehled")
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 74d6acb03f9ba984d35caf1f5c7963f686cda5a7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 47ce2b39f1733c99ef8c15926d42aa62e1fcd44c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219252"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634554"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurace vlastního názvu domény pro váš účet úložiště Azure
 
@@ -176,12 +176,14 @@ K odebrání registrace vlastní domény, použijte [aktualizace účtu úloži�
 
 ### <a name="powershell"></a>PowerShell
 
-K odebrání registrace vlastní domény, použijte [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) rutiny Powershellu a pak zadejte prázdný řetězec (`""`) pro `-CustomDomainName` hodnota argumentu.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+K odebrání registrace vlastní domény, použijte [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) rutiny Powershellu a pak zadejte prázdný řetězec (`""`) pro `-CustomDomainName` hodnota argumentu.
 
 * Formát příkazu:
 
   ```powershell
-  Set-AzureRmStorageAccount `
+  Set-AzStorageAccount `
       -ResourceGroupName "<resource-group-name>" `
       -AccountName "<storage-account-name>" `
       -CustomDomainName ""
@@ -190,7 +192,7 @@ K odebrání registrace vlastní domény, použijte [Set-AzureRmStorageAccount](
 * Příklad příkazu:
 
   ```powershell
-  Set-AzureRmStorageAccount `
+  Set-AzStorageAccount `
       -ResourceGroupName "myresourcegroup" `
       -AccountName "mystorageaccount" `
       -CustomDomainName ""

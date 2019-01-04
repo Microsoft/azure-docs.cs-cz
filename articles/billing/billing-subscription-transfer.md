@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a841ae168119546e8be32ce6f614656f775709ee
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2fe018139fd99f395ff88eae39ca8836eded5677
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583308"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581517"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví předplatného Azure na jiný účet
 
@@ -31,9 +31,6 @@ Převod vašeho předplatného na jiného uživatele v centru účtů můžete z
 > [!IMPORTANT]
 > 
 > Pokud přenesete předplatné na nový Azure AD tenanta, všechna přiřazení rolí v [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) se trvale odstraní z tenanta zdroje a nebudou migrována k cílovému tenantovi.
-
-> [!div class="nextstepaction"]
-> [Pomozte vylepšit dokumentaci k fakturaci Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Převod vlastnictví předplatného Azure
 
@@ -175,6 +172,6 @@ Přijmout převod předplatného, musí být uvedeny platební kartu ani podobn�
 
 Pokud nelze převést vlastnictví předplatného, můžete ručně migrovat vaše prostředky. Zobrazit [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

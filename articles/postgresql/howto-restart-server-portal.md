@@ -1,20 +1,17 @@
 ---
 title: Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
 description: Tento článek popisuje, jak je možné restartovat Azure Database for PostgreSQL pomocí webu Azure Portal.
-services: postgresql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2018
-ms.openlocfilehash: 9a60f46f71a3d8e6f6d218c9a0ebd3194b6ab39f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7d409db839f94e27ac036550c22302188f37cc90
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52166971"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545863"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-azure-portal"></a>Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
 Toto téma popisuje, jak je možné restartovat server Azure Database for PostgreSQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.

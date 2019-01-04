@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2018
+ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: dd7858b9723d8d3ee9eb9299b2cee11596563a33
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b77e814f9f339dff4539a04ab8b492e9777abe0d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340696"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537643"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Vysvětlení doporučení prostředků služby Azure Security Center
 
@@ -60,7 +60,7 @@ V následujících tabulkách použijte jako vám pomůžou pochopit dostupné v
 | Použít nejnovější podporovanou verzi Node.js pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi Node.js pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
 | CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci Function App | Doporučuje se, že povolíte jenom požadované domén pro interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat všechny domény pro přístup k vaší aplikaci funkcí. |
 | Použijte vlastní domény pro aplikaci Function App | Doporučuje, použijte vlastní domény k ochraně aplikace function app před běžnými útoky, jako je útok phishing a další útoky související s DNS. |
-| Nakonfigurovat omezení IP adres pro aplikaci Function App | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace. Použití omezení IP adres chrání před běžnými útoky aplikaci function app. |
+| Konfigurace omezení IP adres pro aplikaci funkcí | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace. Použití omezení IP adres chrání před běžnými útoky aplikaci function app. |
 | Funkce aplikace by měla být přístupná jen přes HTTPS | Doporučuje se pouze omezit přístup z aplikace Function App přes protokol HTTPS. |
 | Vzdálené ladění by měl být vypnuté pro aplikaci Function App | Doporučuje vypnout ladění pro aplikace Function App, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App. |
 | Webové sokety by mělo být zakázáno pro aplikaci Function App | Doporučuje, abyste pečlivě zkontrolujte použití procedury webové sokety v rámci aplikace Function App. Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |

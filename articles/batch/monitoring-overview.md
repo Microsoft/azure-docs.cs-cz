@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 3053e136ab08c38d9460d60f64464a17f6f61574
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ee483c19aa59ca98226f77a5e56b1ee4eb4dede5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824077"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543406"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorování řešení Batch
 
@@ -26,7 +26,7 @@ Přehled Azure součástmi a službami, které jsou k dispozici pro monitorován
 
 ## <a name="subscription-level-monitoring"></a>Monitorování na úrovni předplatného
 
-Na úrovni předplatného, který obsahuje účty Batch, [protokolu aktivit Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) shromažďuje provozní události v [několik kategorií](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log).
+Na úrovni předplatného, který obsahuje účty Batch, [protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md) shromažďuje provozní události v [několik kategorií](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log).
 
 Pro účty Batch konkrétně protokolu aktivit shromažďuje události související se správou vytváření a odstraňování a klíč účtu.
 
@@ -34,7 +34,7 @@ Jedním ze způsobů k načtení událostí z protokolu aktivit je použití web
 
 ## <a name="batch-account-level-monitoring"></a>Monitorování úroveň účtu batch
 
-Sledování každého účtu Batch pomocí funkce [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../azure-monitor/platform/data-collection.md#metrics) a volitelně [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) pro prostředky v oboru na úrovni účtu Batch, jako jsou fondy, úlohy a úkoly. Shromažďování a tato data využívat ručně nebo prostřednictvím kódu programu k monitorování aktivit v účtu Batch a k diagnostice problémů. Podrobnosti najdete v tématu [Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování](batch-diagnostics.md).
+Sledování každého účtu Batch pomocí funkce [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../azure-monitor/platform/data-collection.md#metrics) a volitelně [diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md) pro prostředky v oboru na úrovni účtu Batch, jako jsou fondy, úlohy a úkoly. Shromažďování a tato data využívat ručně nebo prostřednictvím kódu programu k monitorování aktivit v účtu Batch a k diagnostice problémů. Podrobnosti najdete v tématu [Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování](batch-diagnostics.md).
  
 > [!NOTE]
 > Metriky jsou k dispozici ve výchozím nastavení v účtu Batch bez další konfigurace a znají historii posledních 30 dní. Je nutné povolit protokolování diagnostiky pro účet Batch a může způsobit dodatečné náklady na uložení nebo zpracování dat diagnostický protokol. 

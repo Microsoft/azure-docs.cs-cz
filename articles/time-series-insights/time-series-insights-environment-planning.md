@@ -1,5 +1,5 @@
 ---
-title: Plán Azure Time Series Insights – plán proporce vašeho prostředí Azure Time Series Insights | Dokumentace Microsoftu
+title: Plánování škálování vašeho prostředí Azure Time Series Insights | Dokumentace Microsoftu
 description: Tento článek popisuje, jak řídit se doporučenými postupy při plánování prostředí Azure Time Series Insights, včetně kapacitu úložiště, uchovávání dat, kapacita příchozího přenosu dat, monitorování a provozní zotavení po havárii (BCDR).
 services: time-series-insights
 ms.service: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: 6541363eb2ac19cfa4359fe85bde5fa39157055e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ce31b22dcbf3fbe79192647e9a21983911e77a9c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273761"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556029"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Plánování prostředí Azure Time Series Insights
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 568d63f984980e91b4dc059211dcf0eaceb73820
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d7be248e49baf4e7fd10d6b37df1473e92ccfce7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164224"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651720"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Nastavení zálohování a replikaci pro Apache HBase a vrstvou Apache Phoenix v HDInsight
 
@@ -26,7 +26,7 @@ Apache HBase podporuje několik přístupů pro zabezpečení proti ztrátě dat
 * Snímky
 * Replikace
 
-> [!NOTE]
+> [!NOTE]  
 > Apache Phoenix ukládá jeho metadata v tabulkách HBase, tak, aby se metadata zálohovány při zálohování tabulky HBase systém katalogu.
 
 Následující části popisují scénáře použití pro každou z těchto přístupů.
@@ -35,7 +35,7 @@ Následující části popisují scénáře použití pro každou z těchto př�
 
 S tímto přístupem zkopírování všech dat HBase, aniž by bylo možné vybrat podmnožinu tabulek nebo rodin sloupců. Následující přístupy poskytují větší kontrolu.
 
-HBase v HDInsight používá výchozí úložiště, které vybrali při vytváření clusteru, objekty BLOB služby Azure Storage nebo Azure Data Lake Store. V obou případech se ukládá HBase jeho data a metadata soubory v následující cestě:
+HBase v HDInsight používá výchozí úložiště, které vybrali při vytváření clusteru, objekty BLOB služby Azure Storage nebo Azure Data Lake Storage. V obou případech se ukládá HBase jeho data a metadata soubory v následující cestě:
 
     /hbase
 
@@ -45,7 +45,7 @@ HBase v HDInsight používá výchozí úložiště, které vybrali při vytvá�
     wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
     ```
 
-* V Azure Data Lake Store `hbase` je umístěn v kořenové cestě, které jste zadali při vytváření clusteru. Tato kořenová cesta má obvykle `clusters` složky podsložku s názvem po vašeho clusteru HDInsight:
+* Ve službě Azure Data Lake Storage `hbase` je umístěn v kořenové cestě, které jste zadali při vytváření clusteru. Tato kořenová cesta má obvykle `clusters` složky podsložku s názvem po vašeho clusteru HDInsight:
 
     ```
     /clusters/<clusterName>/hbase
@@ -57,7 +57,7 @@ Po odstranění clusteru můžete ponechat data na místě, nebo zkopírovat dat
 
 * Vytvořte novou instanci HDInsight odkazující na aktuální umístění úložiště. Nová instance je vytvořena s existujícími daty.
 
-* Kopírovat `hbase` složky do jiné služby Azure Storage blob nebo kontejneru umístění Data Lake Store a pak spusťte nový cluster s daty. Pro službu Azure Storage, použijte [AzCopy](../../storage/common/storage-use-azcopy.md)a pro použití Data Lake Store [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
+* Kopírovat `hbase` složky do jiné služby Azure Storage blob nebo kontejneru umístění Data Lake Storage a pak spusťte nový cluster s daty. Pro službu Azure Storage, použijte [AzCopy](../../storage/common/storage-use-azcopy.md)a pro použití Data Lake Storage [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
 
 ## <a name="export-then-import"></a>Export pak Import
 
@@ -75,7 +75,7 @@ Zadejte export úplnou cestu k výchozí úložiště nebo některou z možnost�
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
-V Azure Data Lake Store syntaxe je:
+Ve službě Azure Data Lake Storage je syntaxe:
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 
@@ -117,7 +117,7 @@ Nástroj CopyTable také podporuje parametry se mají zadat časový rozsah řá
 
 CopyTable prohledává celý zdrojový obsah tabulky, která se překopírovaly do cílové tabulky. Zatímco CopyTable provede to může snížit výkon HBase cluster.
 
-> [!NOTE]
+> [!NOTE]  
 > K automatizaci kopírování dat mezi tabulkami, najdete v článku `hdi_copy_table.sh` skript v [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) úložišti na Githubu.
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Ručně shromáždit kvora Apache ZooKeeper seznamu

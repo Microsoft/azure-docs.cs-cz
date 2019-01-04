@@ -41,6 +41,8 @@ items:
     href: ./ansible-create-configure-azure-web-apps.md
   - name: Škálování Azure Web Apps
     href: ./ansible-scale-azure-web-apps.md
+  - name: Vytvoření a konfigurace směrovacích tabulek
+    href: ./ansible-create-configure-route-table.md
 - name: Referenční informace
   items:
   - name: Role playbooku
@@ -65,9 +67,9 @@ items:
   items:
   - name: Rozšíření editoru Visual Studio Code pro Ansible
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: f426841f2a02b085e34e9e2a768c43a052bf62f7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a54936953aa812cbe943394b9d083d8957f770ae
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409132"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789836"

@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 0c14055209c6094585e0d1df892fea24a3f3ea55
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a64f92df7592b4df419e5f70a32f631ca0504c6c
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721064"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994211"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -362,7 +362,7 @@ Můžete použít následující atributy zařízení.
  systemLabels | jakýkoli řetězec odpovídající vlastnosti zařízení Intune pro označování moderního pracoviště zařízení | (device.systemLabels – obsahuje "M365Managed")
 
 > [!Note]  
-> Pro deviceOwnership při vytváření dynamické skupiny zařízení, je nutné nastavit hodnotu rovnající se "Společnost". V Intune reprezentována vlastnictví zařízení jako firemní. místo toho. Odkazovat na [OwnerTypes](https://docs.microsoft.com/en-us/intune/reports-ref-devices#ownertypes) další podrobnosti. 
+> Pro deviceOwnership při vytváření dynamické skupiny zařízení, je nutné nastavit hodnotu rovnající se "Společnost". V Intune reprezentována vlastnictví zařízení jako firemní. místo toho. Odkazovat na [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) další podrobnosti. 
 
 ## <a name="next-steps"></a>Další postup
 

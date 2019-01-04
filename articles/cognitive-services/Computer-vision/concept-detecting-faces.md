@@ -1,7 +1,7 @@
 ---
 title: Rozpoznání tváře - pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související se zjišťováním tváří pomocí rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související s funkce rozpoznávání tváře z rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: bf358d1e8f60f989ced8db966bbf0a5179fab25b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 0c6485bff4ad11aab37139cd2aa2d3660bddac0e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342309"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580532"
 ---
-# <a name="detecting-faces"></a>Rozpoznávání tváří
+# <a name="face-detection-with-computer-vision"></a>Rozpoznávání tváře se pro počítačové zpracování obrazu
 
 Počítačové zpracování obrazu detekuje lidské tváře v obrázku a generuje věk, pohlaví a rámeček pro každé zjištěné rozpoznávání tváře. Počítačové zpracování obrazu poskytuje podmnožinu funkcí, které najdete ve službě [Rozpoznávání tváře](/azure/cognitive-services/face/), kterou můžete využít k podrobnější analýze, například identifikaci tváří a rozpoznávání pózy.  
 
@@ -25,7 +26,7 @@ Počítačové zpracování obrazu detekuje lidské tváře v obrázku a generuj
 
 První příklad ukazuje odpověď JSON vrátil pro počítačové zpracování obrazu pro image obsahující jeden lidské tváře.
 
-![Pro zpracování obrazu analyzovat žena stříška pro rozpoznávání tváře](./Images/woman_roof_face.png)
+![Vizuální analýza ženy na střeše](./Images/woman_roof_face.png)
 
 ```json
 {

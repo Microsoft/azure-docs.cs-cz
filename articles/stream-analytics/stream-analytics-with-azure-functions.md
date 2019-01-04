@@ -2,8 +2,7 @@
 title: 'Kurz: Spouštění Azure Functions pomocí úloh Azure Stream Analytics | Dokumentace Microsoftu'
 description: V tomto kurzu se naučíte nakonfigurovat Azure Functions jako výstupní jímku pro úlohy Stream Analytics.
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
@@ -11,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164156"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993004"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spouštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -152,7 +151,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 1. Otevřete úlohu Stream Analytics na portálu Azure Portal.  
 
-2. Přejděte k dané funkci a vyberte **Přehled** > **Výstupy** > **Přidat**. Pokud chcete přidat nový výstup, vyberte **funkci Azure** pro možnost jímky. Nový adaptér pro výstup služby Functions je dostupný s následujícími vlastnostmi:  
+2. Přejděte k dané funkci a vyberte **Přehled** > **Výstupy** > **Přidat**. Pokud chcete přidat nový výstup, vyberte **funkci Azure** pro možnost jímky. Adaptér pro výstup funkce má následující vlastnosti:  
 
    |**Název vlastnosti**|**Popis**|
    |---|---|
@@ -160,7 +159,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
    |Možnost importu| Můžete použít funkci z aktuálního předplatného nebo ručně zadat nastavení, pokud se funkce nachází v jiném předplatném. |
    |Function App| Název vaší aplikace Functions |
    |Funkce| Název funkce ve vaší aplikaci Functions (název vaší funkce run.csx)|
-   |Maximální velikost dávky|Nastavuje maximální velikost pro každou výstupní dávku, která se odesílá do dané funkce. Ve výchozím nastavení je tato hodnota nastavená na 256 kB.|
+   |Maximální velikost dávky|Nastaví maximální velikost pro každou výstupní dávku, která se odesílá do funkce v bajtech. Ve výchozím nastavení je tato hodnota nastavena na 262 144 bajtů (256 KB).|
    |Maximální počet v dávce|Určuje maximální počet událostí v každé dávce, která se odesílá do dané funkce. Výchozí hodnota je 100. Tato vlastnost je nepovinná.|
    |Klíč|Umožňuje vám použít funkci z jiného předplatného. Zadejte hodnotu klíče pro přístup k dané funkci. Tato vlastnost je nepovinná.|
 

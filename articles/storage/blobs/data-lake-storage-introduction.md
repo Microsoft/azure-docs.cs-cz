@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0b3c4a4c21bc9b124a98b1f204f85e6e78ff233e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099558"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994330"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Úvod do služby Azure Data Lake Storage Gen2 ve verzi Preview
 
-Azure Data Lake Storage Gen2 ve verzi Preview je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, postavená na [úložiště objektů Blob v Azure](storage-blobs-introduction.md). Data Lake Storage Gen2 je výsledkem slučuje možnosti našich dva existující služby storage, Azure Blob storage a Azure Data Lake Storage Gen1. Funkce z [Azure Data Lake Storage Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/index), jako jsou sémantiku systému souborů, adresáře a zabezpečení na úrovni souborů a škálování se sloučí s s nízkými náklady, vrstveného úložiště, možnosti obnovení vysoká dostupnost/zotavení po havárii z [Azure Blob storage](storage-blobs-introduction.md).
+Azure Data Lake Storage Gen2 ve verzi Preview je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, postavená na [úložiště objektů Blob v Azure](storage-blobs-introduction.md). Data Lake Storage Gen2 je výsledkem slučuje možnosti našich dva existující služby storage, Azure Blob storage a Azure Data Lake Storage Gen1. Funkce z [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), jako jsou sémantiku systému souborů, adresáře a zabezpečení na úrovni souborů a škálování se sloučí s s nízkými náklady, vrstveného úložiště, možnosti obnovení vysoká dostupnost/zotavení po havárii z [Azure Blob storage](storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Navržená pro analýzy velkých objemů dat organizace
 
@@ -39,11 +39,11 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 -   **Hadoop kompatibilní přístup**: Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](data-lake-storage-abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, včetně [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), a [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) přístup k datům uloženým v Data Lake Storage Gen2.
 
--   **Nadmnožina POSIX oprávnění**: model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován pomocí Průzkumníka služby Storage nebo prostřednictvím architektury, jako je Hive a Spark.
+-   **Nadmnožina POSIX oprávnění**: Model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován pomocí Průzkumníka služby Storage nebo prostřednictvím architektury, jako je Hive a Spark.
 
--   **Nákladově efektivní**: nabízí kapacitu úložiště s nízkými náklady a transakce s Data Lake Storage Gen2. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](storage-lifecycle-management-concepts.md).
+-   **Nákladově efektivní**: Data Lake Storage Gen2 nabízí kapacitu úložiště s nízkými náklady a transakce. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](storage-lifecycle-management-concepts.md).
 
--   **Optimalizované ovladač**: ovladač abfs [speciálně optimalizovaná](data-lake-storage-abfs-driver.md) pro analýzy velkých objemů dat. Zobrazují se prostřednictvím koncového bodu systému souborů dfs, odpovídající rozhraní REST API dfs.core.windows.net.
+-   **Optimalizované ovladač**: Ovladač abfs [speciálně optimalizovaná](data-lake-storage-abfs-driver.md) pro analýzy velkých objemů dat. Zobrazují se prostřednictvím koncového bodu systému souborů dfs, odpovídající rozhraní REST API dfs.core.windows.net.
 
 ### <a name="scalability"></a>Škálovatelnost
 

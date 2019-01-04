@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: b9f7a1144be21b425ff0bed9e2e6cb47315c13a2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0b171c7ed13eab84d84bb797e154a3acec8fbac7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974896"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633670"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 Preview s využitím clusterů Azure HDInsight
 
@@ -63,17 +63,17 @@ Předpokládaná výkonová náročnost společně umístěných výpočetních 
 
 S ukládáním dat ve službě Azure Storage namísto HDFS je spojeno několik výhod:
 
-* **Opakované použití dat a sdílení:** data v HDFS se nachází uvnitř výpočetního clusteru. Jenom aplikace, které mají přístup k výpočetnímu clusteru, můžou používat data pomocí rozhraní API HDFS. Data ve službě Azure Storage jsou přístupná prostřednictvím rozhraní API HDFS nebo prostřednictvím [rozhraní REST API služby Blob Storage][blob-storage-restAPI]. Proto s větším počtem aplikací (včetně jiných clusterů HDInsight) a nástrojů  se dají vytvářet a využívat data.
+* **Opakované použití dat a sdílení:** Data v HDFS se nachází uvnitř výpočetního clusteru. Jenom aplikace, které mají přístup k výpočetnímu clusteru, můžou používat data pomocí rozhraní API HDFS. Data ve službě Azure Storage jsou přístupná prostřednictvím rozhraní API HDFS nebo prostřednictvím [rozhraní REST API služby Blob Storage][blob-storage-restAPI]. Proto s větším počtem aplikací (včetně jiných clusterů HDInsight) a nástrojů  se dají vytvářet a využívat data.
 
-* **Archivace dat:** Ukládání dat ve službě Azure Storage umožňuje bezpečné odstranění clusterů HDInsight, které jsou používány pro výpočty, aniž by se ztratila uživatelská data.
+* **Archivace dat:** Ukládání dat ve službě Azure storage umožňuje clusterů HDInsight, které jsou používány pro výpočty bezpečně odstranit, aniž by se ztratila uživatelská data.
 
-* **Náklady na úložiště dat:** ukládání dat v nativní HDFS je z dlouhodobého hlediska dražší než ukládání dat ve službě Azure storage, protože náklady na výpočetní cluster jsou vyšší než náklady na úložiště Azure. Navíc se data nemusí nahrávat znovu pro každou generaci výpočetních clusterů, náklady na nahrávání dat jsou tak nižší.
+* **Náklady na úložiště dat:** Pro dlouhodobé ukládání dat v nativní HDFS je proto dražší než ukládání dat ve službě Azure storage, protože náklady na výpočetní cluster jsou vyšší než náklady na úložiště Azure. Navíc se data nemusí nahrávat znovu pro každou generaci výpočetních clusterů, náklady na nahrávání dat jsou tak nižší.
 
-* **Elastické škálování:** I když HDFS poskytuje škálovaný systém souborů, škála se určuje podle počtu uzlů, které vytvoříte pro svůj cluster. Změna škálování může být složitější než využití elastického škálování, které je automaticky k dispozici ve službě Azure Storage.
+* **Elastické horizontální navýšení kapacity:** I když HDFS poskytuje systém horizontálním navýšením kapacity souborů, škála se určuje podle počtu uzlů, které vytvoříte pro váš cluster. Změna škálování může být složitější než využití elastického škálování, které je automaticky k dispozici ve službě Azure Storage.
 
-* **Geografická replikace:** dat úložiště Azure může být geograficky replikovaný. I když se tato možnost poskytuje geografické obnovení a redundanci dat, podpora převzetí služeb při selhání do geograficky replikovaného umístění vážně ovlivňuje výkon a může způsobit dodatečné náklady. Proto zvolte geografické replikace opatrně a pouze pokud je hodnota dat. Další vyplatí.
+* **Geografická replikace:** Data úložiště Azure může být geograficky replikovaný. I když se tato možnost poskytuje geografické obnovení a redundanci dat, podpora převzetí služeb při selhání do geograficky replikovaného umístění vážně ovlivňuje výkon a může způsobit dodatečné náklady. Proto zvolte geografické replikace opatrně a pouze pokud je hodnota dat. Další vyplatí.
 
-* **Správa životního cyklu dat:** všechna data v libovolném systému souborů, prochází jeho vlastního životního cyklu. Data často začíná jsou velmi cenné a často používaná, přejde do právě méně užitečné a které vyžadují přístup pro méně a nakonec vyžaduje archivu nebo odstranění. Azure Storage poskytuje ovládání datových vrstev na data a životního cyklu zásad správy, které vrstvení dat odpovídajícím způsobem pro fáze životního cyklu.
+* **Správa životního cyklu dat:** Všechna data v libovolném systému souborů prochází jeho vlastního životního cyklu. Data často začíná jsou velmi cenné a často používaná, přejde do právě méně užitečné a které vyžadují přístup pro méně a nakonec vyžaduje archivu nebo odstranění. Azure Storage poskytuje ovládání datových vrstev na data a životního cyklu zásad správy, které vrstvení dat odpovídajícím způsobem pro fáze životního cyklu.
 
 Některé úlohy a balíčky MapReduce můžou vytvořit mezilehlé výsledky, které ve službě Azure Storage ve skutečnosti uložit nechcete. V takovém případě můžete zvolit k uložení dat do místní HDFS. Ve skutečnosti HDInsight používá nativní implementaci HDFS (což se označuje jako DFS) pro některé z těchto mezilehlých výsledků v úlohách Hive a jiných procesů.
 
@@ -101,35 +101,39 @@ Při vytváření clusteru HDInsight z portálu, máte k dispozici možnosti (ja
 
 ### <a name="use-azure-powershell"></a>Použití Azure Powershell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Pokud jste [nainstalovali a nakonfigurovali Azure PowerShell][powershell-install], můžete použít následující kód z příkazového řádku Azure PowerShell k vytvoření účtu úložiště a kontejneru:
 
 [!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
 
-    $SubscriptionID = "<Your Azure Subscription ID>"
-    $ResourceGroupName = "<New Azure Resource Group Name>"
-    $Location = "WEST US 2"
+```azurepowershell
+$SubscriptionID = "<Your Azure Subscription ID>"
+$ResourceGroupName = "<New Azure Resource Group Name>"
+$Location = "WEST US 2"
 
-    $StorageAccountName = "<New Azure Storage Account Name>"
-    $containerName = "<New Azure Blob Container Name>"
+$StorageAccountName = "<New Azure Storage Account Name>"
+$containerName = "<New Azure Blob Container Name>"
 
-    Connect-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId $SubscriptionID
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId $SubscriptionID
 
-    # Create resource group
-    New-AzureRmResourceGroup -name $ResourceGroupName -Location $Location
+# Create resource group
+New-AzResourceGroup -name $ResourceGroupName -Location $Location
 
-    # Create default storage account
-    New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName `
-      -Name StorageAccountName `
-      -Location $Location `
-      -SkuName Standard_LRS `
-      -Kind StorageV2 
-      -HierarchialNamespace $True
+# Create default storage account
+New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
+  -Name StorageAccountName `
+  -Location $Location `
+  -SkuName Standard_LRS `
+  -Kind StorageV2 
+  -HierarchialNamespace $True
 
-    # Create default blob containers
-    $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $StorageAccountName)[0].Value
-    $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
-    New-AzureStorageContainer -Name $containerName -Context $destContext
+# Create default blob containers
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $StorageAccountName)[0].Value
+$destContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
+New-AzStorageContainer -Name $containerName -Context $destContext
+```
 
 > [!NOTE]
 > Vytvoření kontejneru je synonymum pro vytváření systému souborů v Data Lake Storage Gen2.
@@ -209,7 +213,7 @@ Další informace naleznete v tématu:
 * [Nastavení clusterů HDInsight pomocí Azure Data Lake Storage Gen2 s Hadoop, Spark, Kafka a další](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 * [Ingestovat data do Azure Data Lake Storage Gen2 pomocí distcp](data-lake-storage-use-distcp.md)
 
-[powershell-install]: /powershell/azureps-cmdlets-docs
+[powershell-install]: /powershell/azure/install-az-ps
 [hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md
 
 [blob-storage-restAPI]: http://msdn.microsoft.com/library/windowsazure/dd135733.aspx

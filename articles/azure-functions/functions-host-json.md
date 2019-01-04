@@ -19,7 +19,7 @@ ms.locfileid: "53413264"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>referenční materiály k Host.JSON pro Azure Functions 2.x  
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Vyberte verzi programu Azure Functions, který používáte: "]
 > * [Verze 1](functions-host-json-v1.md)
 > * [Verze 2](functions-host-json.md)
 

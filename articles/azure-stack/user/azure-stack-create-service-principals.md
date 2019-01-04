@@ -3,23 +3,22 @@ title: Vytvoření instančního objektu pro Azure Stack | Dokumentace Microsoft
 description: Popisuje, jak vytvořit instanční objekt, který lze použít s řízením přístupu na základě role v Azure Resource Manageru pro správu přístupu k prostředkům.
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: mattbriggs
 manager: femila
-ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
-ms.author: sethm
+ms.date: 12/12/2018
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a32327109bc71a41f871682936c5f27ed490975c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4c205055239b7bf16bbb73448c21818de419e623
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958310"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715819"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Přístup aplikací k prostředkům Azure Stack tak, že vytvoříte instanční objekty
 
@@ -52,7 +51,7 @@ Způsob, jakým jste nakonfigurovali Active Directory pro Azure Stack Určuje, j
 
 Postup pro přiřazení instančního objektu k roli stejný pro Azure AD a AD FS. Po vytvoření instančního objektu můžete [delegovat oprávnění](azure-stack-create-service-principals.md#assign-role-to-service-principal) po přiřazení k roli.
 
-## <a name="create-a-service-principal-for-azure-ad"></a>Vytvoření instančního objektu služby pro službu Azure AD
+## <a name="create-service-principal-for-azure-ad"></a>Vytvoření instančního objektu pro službu Azure AD
 
 Pokud služby Azure Stack používá jako úložiště identit Azure AD, které můžete vytvořit instanční objekt pomocí stejného postupu jako v Azure pomocí webu Azure portal.
 
@@ -95,11 +94,11 @@ Pokud jste nasadili Azure Stack pomocí služby AD FS jako úložiště identit,
 * Přiřadíte roli instančnímu objektu služby.
 * Přihlaste se pomocí instančního objektu identity.
 
-Podrobnosti o tom, jak vytvořit instanční objekt služby najdete v tématu [vytvořit instanční objekt služby AD FS](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
+Podrobnosti o tom, jak vytvořit instanční objekt služby najdete v tématu [vytvořit instanční objekt služby AD FS](../azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
 ## <a name="assign-the-service-principal-to-a-role"></a>Přiřazení instančního objektu k roli
 
-Pro přístup k prostředkům ve vašem předplatném, musíte přiřadit aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: vestavěné role](../../role-based-access-control/built-in-roles.md).
+Pro přístup k prostředkům ve vašem předplatném, musíte přiřadit aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: Vestavěné role](../../role-based-access-control/built-in-roles.md).
 
 >[!NOTE]
 Můžete nastavit obor této role na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. Aplikaci se službou role Čtenář pro skupinu prostředků například znamená, že aplikace může číst libovolný z prostředků ve skupině prostředků.
@@ -114,9 +113,7 @@ Následující postup použijte jako vodítko pro přiřazení role instančním
 
 3. Vyberte **řízení přístupu (IAM)** pro předplatné.
 
-     ![Vyberte řízení přístupu](./media/azure-stack-create-service-principal/image17.png)
-
-4. Vyberte **Přidat**.
+4. Vyberte **přidat přiřazení role**.
 
 5. Vyberte roli, kterou chcete přiřadit k aplikaci.
 

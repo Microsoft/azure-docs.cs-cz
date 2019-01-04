@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3ac7517327e1447fbcd20cf3ffb506b7207a78b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b50609449d6144d2bb013d82e2eb29e94b5b01be
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717565"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754114"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Kurz: Vytvoření víc instancí prostředků pomocí šablon Resource Manageru
 
@@ -122,14 +122,14 @@ Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-
 
 Chcete-li vypsat všechny tři účty úložiště, vynechejte --název parametru:
 
-# <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

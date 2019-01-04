@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342387"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631851"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -589,7 +589,7 @@ Protože Update Management se provede aktualizace rozšíření v cloudu, někte
 
 Update Management však stále hlásit tohoto počítače, jako je nedodržují předpisy, protože obsahuje další informace o příslušné aktualizace.
 
-Nasazení aktualizací podle klasifikace aktualizací nebude fungovat na CentOS úprav. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Toto chování se o omezení zypperu. V některých případech je může být nutné znovu spustit nasazení aktualizace. Pokud chcete ověřit, zkontrolujte protokol aktualizace.
+Nasazení aktualizací podle klasifikace aktualizací nebude fungovat na CentOS úprav. Správně nasazení aktualizací pro CentOS, vyberte všechny klasifikace k zajištění, že se mají aktualizace instalovat. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Toto chování se o omezení zypperu. V některých případech je může být nutné znovu spustit nasazení aktualizace. Pokud chcete ověřit, zkontrolujte protokol aktualizace.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 

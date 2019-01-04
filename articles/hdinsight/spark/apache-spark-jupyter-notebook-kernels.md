@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea54419f230a7988a42fd4b85be0d212ee3d14d4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 937f6ffb9865419611c35b95ac84832bb2f1f3fe
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582577"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791806"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro poznámkový blok Jupyter v clusterech Apache Spark v Azure HDInsight 
 
 Clustery HDInsight Spark poskytují jader, které můžete použít s poznámkovým blokem Jupyter na [Apache Spark](https://spark.apache.org/) pro testování vašich aplikací. Jádra je program, který se spustí a interpretuje váš kód. Jsou tři jádra:
 
-- **PySpark** – pro aplikace napsané v Python2
-- **PySpark3** – pro aplikace napsané v pythonu3
-- **Spark** – pro aplikace napsané v jazyce Scala
+- **PySpark** – pro aplikace napsané v Python2.
+- **PySpark3** – pro aplikace napsané v pythonu3.
+- **Spark** – pro aplikace napsané v jazyce Scala.
 
 V tomto článku se dozvíte, jak používat tyto jádrech a výhody jejich používání.
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak používat tyto jádrech a výhody jejich pou�
 
 ## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Vytvoření poznámkového bloku Jupyter na HDInsight Spark
 
-1. Z [webu Azure portal](https://portal.azure.com/), otevřete svůj cluster.  Zobrazit [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters) pokyny. Cluster se otevře v novém okně portálu.
+1. Z [webu Azure portal](https://portal.azure.com/), otevřete svůj cluster.  Zobrazit [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters) pokyny. Cluster se otevře v novém okně portálu.
 
 2. Z **rychlé odkazy** klikněte na tlačítko **řídicí panely clusteru** otevřít **řídicí panely clusteru** okno.  Pokud nevidíte **rychlé odkazy**, klikněte na tlačítko **přehled** v levé nabídce v okně.
 
@@ -41,12 +41,11 @@ V tomto článku se dozvíte, jak používat tyto jádrech a výhody jejich pou�
 
 3. Klikněte na tlačítko **Poznámkový blok Jupyter**. Po vyzvání zadejte přihlašovací údaje správce clusteru.
    
-   > [!NOTE]
+   > [!NOTE]  
    > Může také Poznámkový blok Jupyter v clusteru Spark tak, že otevřete následující adresu URL v prohlížeči. Nahraďte **CLUSTERNAME** názvem clusteru:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
+
 
 3. Klikněte na tlačítko **nový**a potom klikněte na možnost **Pyspark**, **PySpark3**, nebo **Spark** vytvoření poznámkového bloku. Použijte Spark jádra pro aplikace Scala, jádra PySpark pro Python2 aplikace a PySpark3 jádra pro aplikace Python3.
    
@@ -70,7 +69,7 @@ Tady je několik výhod pomocí jádrech nový poznámkový blok Jupyter v clust
    
    Místo toho můžete přímo použít přednastavených kontextech ve vaší aplikaci.
 
-- **Buňky Magic**. Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s `%%` (například `%%MAGIC` <args>). Magický příkaz musí být první slovo do buňky kódu a umožňují více řádků obsahu. Magický slov by měla být první slovo v buňce. Přidání nic před magic, dokonce i komentáře, způsobí chybu.     Další informace o Magic, naleznete v tématu [tady](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Buňky Magic**. Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s `%%` (například `%%MAGIC` <args>). Magický příkaz musí být první slovo do buňky kódu a umožňují více řádků obsahu. Magický slov by měla být první slovo v buňce. Přidání nic před magic, dokonce i komentáře, způsobí chybu.     Další informace o Magic, naleznete v tématu [tady](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
     V následující tabulce jsou uvedeny různé Magic, které jsou k dispozici prostřednictvím jádrech.
 
@@ -79,16 +78,15 @@ Tady je několik výhod pomocí jádrech nový poznámkový blok Jupyter v clust
    | Nápověda |`%%help` |Vytvoří tabulku ze všech dostupných Magic příklad a popis |
    | informace |`%%info` |Informace o relaci výstupy pro aktuální koncový bod Livy |
    | konfigurovat |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Nakonfiguruje parametry pro vytvoření relace. Příznak force (-f) je povinný, pokud relace již byla vytvořena, což zajistí, že je relace vyřadit a vytvořit znovu. Podívejte se na [/sessions příspěvek Livy text žádosti](https://github.com/cloudera/livy#request-body) seznam platných parametrů. Parametry musí být předán v podobě řetězce JSON a musí být na dalším řádku za všechno, jak je znázorněno v příkladu sloupce. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz Hive proti kontext sqlContext. Pokud `-o` parametr se předává, výsledek dotazu se ukládají v %% místní kontext Python jako [Pandas](http://pandas.pydata.org/) datového rámce. |
+   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz Hive proti kontext sqlContext. Pokud `-o` parametr se předává, výsledek dotazu se ukládají v %% místní kontext Python jako [Pandas](https://pandas.pydata.org/) datového rámce. |
    | místní |`%%local`<br>`a=1` |Veškerý kód v dalších řádcích je spuštěn místně. Kód musí být platný kód Python2 i bez ohledu na jádro, které používáte. Ano, i v případě, že jste vybrali **PySpark3** nebo **Spark** jádrech při vytváření Poznámkový blok, pokud použijete `%%local` magic v buňce, tato buňka musí mít pouze platný kód Python2... |
    | Protokoly |`%%logs` |Protokoly pro aktuální relaci Livy výstupy. |
    | delete |`%%delete -f -s <session number>` |Odstraní konkrétní relace aktuální Livy koncového bodu. Nelze odstranit relace je zahájeno pro jádra, samotného. |
    | Vyčištění |`%%cleanup -f` |Odstraní všechny relace pro aktuální Livy koncový bod, včetně relace tento poznámkový blok. Příznak force -f je povinný. |
 
-   > [!NOTE]
+   > [!NOTE]  
    > Kromě Magic přidal jádra PySpark, můžete také použít [integrované IPython Magic](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), včetně `%%sh`. Můžete použít `%%sh` magic spouštět skripty a blok kódu na hlavního uzlu clusteru.
-   >
-   >
+
 2. **Auto vizualizace**. **Pyspark** jádra automaticky vizualizuje výstup dotazy Hive a SQL. Můžete zvolit několik různých typů vizualizace včetně tabulky, výsečové, řádek, oblasti, panel.
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>Podporované s parametry %% magický příkaz jazyka sql
@@ -96,7 +94,7 @@ Tady je několik výhod pomocí jádrech nový poznámkový blok Jupyter v clust
 
 | Parametr | Příklad: | Popis |
 | --- | --- | --- |
-| -o |`-o <VARIABLE NAME>` |Tento parametr použijte k uchování výsledků dotazu v %% kontextu místního Pythonu, jako [Pandas](http://pandas.pydata.org/) datového rámce. Název proměnné dataframe je název proměnné, které zadáte. |
+| -o |`-o <VARIABLE NAME>` |Tento parametr použijte k uchování výsledků dotazu v %% kontextu místního Pythonu, jako [Pandas](https://pandas.pydata.org/) datového rámce. Název proměnné dataframe je název proměnné, které zadáte. |
 | -q |`-q` |Použijte k vypnutí možnosti vizualizace pro buňku. Pokud nechcete automaticky vizualizovat obsah buňky a chcete jenom pro zachycení jako datový rámec, a následné použití `-q -o <VARIABLE>`. Pokud chcete vypnout vizualizace bez zaznamenání výsledků (například pro spuštění dotazu SQL, jako je třeba `CREATE TABLE` příkaz), použijte `-q` bez zadání `-o` argument. |
 | -m |`-m <METHOD>` |Kde **metoda** je buď **trvat** nebo **ukázka** (výchozí hodnota je **trvat**). Pokud je metoda **trvat**, jádro vybere prvky z horní části datové sady výsledků dotazu určeno MAXROWS (popsáno dále v této tabulce). Pokud je metoda **ukázka**, jádro náhodně ukázky prvky sady dat podle `-r` parametr, je popsáno dále v této tabulce. |
 | -r |`-r <FRACTION>` |Tady **ZLOMEK** je číslo s plovoucí desetinnou čárkou mezi 0,0 a 1,0. Pokud je ukázka metody pro dotaz SQL `sample`, pak jádra náhodně ukázky zadaný zlomek prvky sady výsledků za vás. Například můžete spustit dotaz SQL s argumenty `-m sample -r 0.01`, pak 1 % výsledné řádky se vzorkují náhodně. |
@@ -131,9 +129,8 @@ Můžete otevřít **00 - [přečtěte si NEJPRVE] funkce jádra Magic Spark** P
 
 Pokud váš cluster používá jako výchozí účet úložiště Azure Storage, poznámkové bloky Jupyter se uloží do účtu úložiště **/HdiNotebooks** složky.  Poznámkové bloky, textové soubory a složky, které vytvoříte z v rámci Jupyter jsou přístupné z účtu úložiště.  Například, pokud použijete k vytvoření složky Jupyter **Moje_složka** a Poznámkový blok **myfolder/mynotebook.ipynb**, dostanete tento poznámkový blok v `/HdiNotebooks/myfolder/mynotebook.ipynb` v rámci účtu úložiště.  Platí to i hodnotu true, to znamená, pokud nahrání poznámkového bloku přímo do vašeho účtu úložiště v `/HdiNotebooks/mynotebook1.ipynb`, a je viditelná z Jupyter Poznámkový blok.  Poznámkové bloky zůstanou v účtu úložiště i po odstranění clusteru.
 
-> [!NOTE]
-> Clustery HDInsight s Azure Data Lake Store jako výchozím úložištěm neukládejte poznámkových bloků v přidružené úložiště.
->
+> [!NOTE]  
+> Clustery HDInsight s Azure Data Lake Storage jako výchozím úložištěm neukládejte poznámkových bloků v přidružené úložiště.
 
 Způsob, jakým poznámkových bloků se uloží do účtu úložiště je kompatibilní s [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html). Takže pokud je SSH do clusteru, které můžete použít soubor příkazy pro správu, jak je znázorněno v následujícím fragmentu kódu:
 
@@ -141,7 +138,7 @@ Způsob, jakým poznámkových bloků se uloží do účtu úložiště je kompa
     hdfs dfs –copyToLocal /HdiNotebooks                    # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
-Bez ohledu na to, zda cluster používá Azure Storage nebo Azure Data Lake Store jako výchozí účet úložiště, poznámkových bloků jsou uložené taky na hlavního uzlu clusteru v `/var/lib/jupyter`.
+Bez ohledu na to, zda cluster používá Azure Storage nebo Azure Data Lake Storage jako výchozí účet úložiště, poznámkových bloků jsou uložené taky na hlavního uzlu clusteru v `/var/lib/jupyter`.
 
 ## <a name="supported-browser"></a>Podporovaný prohlížeč
 
@@ -154,14 +151,14 @@ Nové jádrech jsou ve fázi se vyvíjejí a bude pro dospělé v čase. To mů�
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)

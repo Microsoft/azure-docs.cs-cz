@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f732391cc73f0a7cb417409cd6f6f2b3c54f93d6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082233"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994126"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
@@ -25,9 +25,9 @@ Následující tabulka shrnuje typy obsahu a souboru formáty, které podporuje 
 
 |Typ zdroje|Typ obsahu| Příklady|
 |--|--|--|
-|zprostředkovatele identity|Nejčastější dotazy (fixní, oddíly nebo s domovskou stránku témata)|[Nejčastější dotazy týkající se prostý](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), [– nejčastější dotazy s odkazy](https://www.microsoft.com/software-download/faq), [– nejčastější dotazy s témata domovské stránky](https://support.microsoft.com/products/windows?os=windows-10)|
-|SOUBOR PDF / DOC|Nejčastější dotazy, příručka k produktu, brožury, dokument, leták zásad, podporu průvodce strukturovaných QnA atd.|[Strukturované QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [ukázky produktu Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf), [ukázkový částečně structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [ukázkový bílé paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
-|Excel|Strukturované QnA souboru (včetně RTF, HTML podpora)|[Ukázka QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|zprostředkovatele identity|Nejčastější dotazy<br> (Paušální, oddíly nebo s domovskou stránku témata)<br>Stránku podpory <br> (Jednostránkové články s postupy, řešení potíží s články atd.)|[Nejčastější dotazy týkající se prostý](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Nejčastější dotazy týkající se propojení](https://www.microsoft.com/software-download/faq),<br> [Nejčastější dotazy týkající se témata domovské stránky](https://support.microsoft.com/products/windows?os=windows-10)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|SOUBOR PDF / DOC|Nejčastější dotazy,<br> Příručka k produktu,<br> Brožur<br> Dokument,<br> Leták zásad<br> Průvodce podpory<br> Nástroj QnA strukturovaná,<br> Atd.|[Strukturované QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka produktu Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázkový částečně structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka bílé paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|Strukturované QnA souboru<br> (včetně RTF, HTML podpora)|[Ukázka QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Strukturované QnA souboru|[Ukázka chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="data-source-locations"></a>Umístění zdroje dat.
@@ -36,7 +36,7 @@ Pouze veřejné adresy URL jsou platné pro všechny datové zdroje. Neodesílej
 
 ## <a name="faq-urls"></a>Nejčastější dotazy týkající se adresy URL
 
-Nástroj QnA Maker může podporovat nejčastější dotazy k webové stránky ve 3 různých podob: prostý nejčastější dotazy k stránky, stránky – nejčastější dotazy s odkazy, nejčastější dotazy týkající se stránky s domovskou stránku témata.
+Nástroj QnA Maker může podporovat nejčastější dotazy k webové stránky ve 3 různých podob: Jednoduché stránky – nejčastější dotazy, nejčastější dotazy k stránky s odkazy, nejčastější dotazy týkající se stránky s domovskou stránku témata.
 
 ### <a name="plain-faq-pages"></a>Jednoduché stránky – nejčastější dotazy
 
@@ -65,6 +65,16 @@ Níže je příklad stránky nejčastější dotazy k domovské stránce témata
  ![Příklad stránky přímý odkaz na nejčastější dotazy pro znalostní báze](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
+### <a name="support-urls"></a>Podporovat adresy URL
+
+Nástroj QnA Maker může zpracovat semistrukturovaná podpora webové stránky, jako jsou webové články, které by popisují, jak provést dané úlohy, jak diagnostikovat a řešit daný problém a doporučené postupy pro daný proces. Extrakce funguje nejlépe na obsah, který se má Vymazat strukturu s hierarchické záhlaví.
+
+> [!NOTE]
+> Extrakce pro články podpory je nová funkce a je v raných fázích. Je nejvhodnější pro jednoduché stránky, které jsou také strukturované a neobsahují komplexní záhlaví/zápatí.
+
+![Podporuje QnA Maker extrakce z částečně strukturovaných webové stránky, kde se zobrazí Vymazat strukturu s hierarchické záhlaví](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+
+
 ## <a name="pdf-doc-files"></a>Soubor PDF / DOC soubory
 
 Nástroj QnA Maker můžete zpracovat semistrukturovaná obsah v souboru PDF nebo dokumentu a převádět je do maximálně. Dobré soubor, který může být extrahována a je jedním obsah je uspořádaný v nějaké podobě strukturovaných kde je reprezentován v částech dobře definované. Oddíly lze dále rozdělit na témata nebo dílčí témata. Extrakce funguje nejlépe na dokumenty, které se mají Vymazat strukturu s hierarchické záhlaví.
@@ -84,7 +94,7 @@ Tady je příklad příručky s indexovou stránku a hierarchické obsahu
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>Brožury, pokyny, papírů a další soubory
 
-Mnoho dalších typů dokumentů mohou být také zpracovány ke generování dvojice dotazů a odpovědí, za předpokladu, že máte Vymazat strukturu a rozložení. Mezi ně patří: brožury pokyny, sestavy, bílý papír, vědecké práce, zásady, knihy, atd. Podívejte se příklad [tady](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
+Mnoho dalších typů dokumentů mohou být také zpracovány ke generování dvojice dotazů a odpovědí, za předpokladu, že máte Vymazat strukturu a rozložení. Mezi ně patří: Brožury pokyny, sestavy, dokumenty white paper, vědecké práce, zásady, knihy, atd. Podívejte se příklad [tady](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
 Níže je příklad částečně strukturovaných dokumentů, bez indexu:
 

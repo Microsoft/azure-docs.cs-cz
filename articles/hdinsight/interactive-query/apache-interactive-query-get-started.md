@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 6086c03961294a18fbf6a106188593c79c88d663
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b34d67e640f09ac6949e992d3af9388581851622
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309993"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629522"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Pomocí HDInsight Interactive Query
 Interactive Query (také nazývané Apache Hive LLAP nebo [s nízkou latencí analytické zpracování](https://cwiki.apache.org/confluence/display/Hive/LLAP)) Azure HDInsight je [typ clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interactive Query podporuje ukládání do mezipaměti v paměti, takže se dotazy Apache Hive, rychlejší a mnohem vyšší interaktivitou.
@@ -23,10 +23,8 @@ Interactive Query (také nazývané Apache Hive LLAP nebo [s nízkou latencí an
 
 Cluster Interactive Query se liší od cluster Apache Hadoop. Obsahuje jedinou službou Hive. 
 
-> [!NOTE]
+> [!NOTE]  
 > Můžete přístup ke službě Hive v clusteru Interactive Query pouze prostřednictvím zobrazení Ambari Hive Apache, Beeline a ovladače Microsoft Hive Open Database Connectivity (rozhraní ODBC Hive). Nelze k němu přístup přes konzolu Hive, Templeton, rozhraní příkazového řádku Azure Classic nebo Azure Powershellu. 
-> 
-> 
 
 ## <a name="create-an-interactive-query-cluster"></a>Vytvořte cluster Interactive Query
 Informace o vytváření clusteru HDInsight najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Zvolte typ clusteru Interactive Query.
@@ -34,7 +32,7 @@ Informace o vytváření clusteru HDInsight najdete v tématu [vytvořit Apache 
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>Spustit dotazy Apache Hive v Interactive Query
 Ke spouštění dotazů Hive, máte následující možnosti:
 
-* Použití Power BI
+* Použít Microsoft Power BI
 
     Zobrazit [vizualizace dat Interactive Query Apache Hive pomocí Power BI v Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) naleznete v tématu [vizualizovat velké objemy dat v Power BI v Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
  
@@ -44,7 +42,7 @@ Ke spouštění dotazů Hive, máte následující možnosti:
 
 * Použití Visual Studia
 
-    Zobrazit [připojení k Azure HDInsight a spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
+    Zobrazit [připojení k Azure HDInsight a spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
 
 * Použijte Visual Studio Code
 
@@ -75,7 +73,7 @@ Chcete-li nalezen připojovací řetězec připojení k databázi Java (JDBC):
 * Zjistěte, jak [v HDInsight vytvořit clusterům Interactive Query](../hdinsight-hadoop-provision-linux-clusters.md).
 * Zjistěte, jak [vizualizovat velké objemy dat v Power BI v Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
 * Zjistěte, jak [použití Apache Zeppelinu ke spuštění dotazy Apache Hive v HDInsight Azure ](../hdinsight-connect-hive-zeppelin.md).
-* Zjistěte, jak [spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
+* Zjistěte, jak [spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
 * Zjistěte, jak [použití nástrojů HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md).
 * Zjistěte, jak [zobrazení Apache Hive pomocí Apache Hadoop v HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md)
 * Zjistěte, jak [použití Beeline odesílat dotazy Apache Hive v HDInsight](../hadoop/apache-hadoop-use-hive-beeline.md).

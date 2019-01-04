@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: a30311f8b171d80e036b4e554b2f1026b43c8a67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287604"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604767"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Zjistíte, jak spouštět mikroslužby v sadě Visual Studio. Nasazení místního mikroslužeb používá tyto cloudové služby: služby IoT Hub, Cosmos DB, Azure Stream Analytics a Azure Time Series Insights v cloudu.
+Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Zjistíte, jak spouštět mikroslužby v sadě Visual Studio. Nasazení místního mikroslužeb používá tyto cloudové služby: Služby IoT Hub, Cosmos DB, Azure Stream Analytics a Azure Time Series Insights v cloudu.
 
 Pokud chcete spustit akcelerátor řešení vzdálené monitorování v Dockeru na místním počítači, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování místně - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
@@ -36,7 +36,7 @@ K dokončení místní nasazení, budete potřebovat následující nástroje na
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/)
-* [Server Nginx](http://nginx.org/en/download.html)
+* [Server Nginx](https://nginx.org/en/download.html)
 * [Node.js v8](https://nodejs.org/) -tento software je předpokladem pro počítače s CLI, skripty použít k vytvoření prostředků Azure. Nepoužívejte Node.js v10.
 
 > [!NOTE]
@@ -101,7 +101,7 @@ Reverzní proxy server nastavte propojení webové aplikace a mikroslužeb spou�
 * Kopírování **nginx.conf** soubor **webui\scripts\localhost** složku **nginx\conf** instalační adresář.
 * Spustit **nginx**.
 
-Další informace o spouštění **nginx**, naleznete v tématu [nginx pro Windows](http://nginx.org/en/docs/windows.html).
+Další informace o spouštění **nginx**, naleznete v tématu [nginx pro Windows](https://nginx.org/en/docs/windows.html).
 
 ### <a name="connect-to-the-dashboard"></a>Připojte se k řídicímu panelu
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Převod převod textu na řeč, Python – hlasové služby'
+title: 'Rychlý start: Převést převod textu na řeč, Python – hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Pythonu a rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 7512c443c49f1518d6a6f7ace7e981d3508b1d7a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00f57ccc0e02c8805e9a41fc5bce8f0ca4a3303a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090053"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542522"
 ---
-# <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převod převod textu na řeč pomocí Pythonu
+# <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převést převod textu na řeč pomocí Pythonu
 
 V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Pythonu a převod textu na řeč rozhraní REST API. Text požadavku v této příručce má strukturu [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md), která umožňuje výběr hlasu a jazyk odpovědi.
 
@@ -86,7 +86,7 @@ def get_token(self):
 ```
 
 > [!NOTE]
-> Další informace o ověřování najdete v tématu [jak získat přístupový token](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token).
+> Další informace o ověřování najdete v tématu [ověřování pomocí přístupového tokenu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
 ## <a name="make-a-request-and-save-the-response"></a>Vytvořit žádost a uložit odpověď
 

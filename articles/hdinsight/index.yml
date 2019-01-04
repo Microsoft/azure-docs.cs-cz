@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bf2b326b6e0003b9a690e560d5a312f16659dad9
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 52f96a97aaf4ced4cf7b0e1170014f327ff6e192
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406739"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975795"
 documentType: LandingData
 title: Dokumentace ke službě HDInsight
 metadata:
@@ -75,7 +75,7 @@ sections:
     - html: 'Apache Kafka: <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturované streamování s využitím Kafka</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Použití se Stormem v HDInsightu</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Použití rozhraní Kafka Producer and Consumer API</a>'
     - html: 'Apache HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">Vytváření clusterů HBase ve virtuální síti</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Použití Apache Phoenixu</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Připojení ke Sparku</a>'
     - html: 'Interactive Query: <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Propojení s Power BI s využitím Direct Query</a>'
-    - html: 'Apache Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Vytvoření topologie Stormu v Javě</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Nasazení topologií Stormu v HDInsightu</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Zápis ze Stormu do služby Data Lake Store</a>'
+    - html: 'Apache Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Vytvoření topologie Stormu v Javě</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Nasazení topologií Stormu v HDInsightu</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Zápis ze Stormu do služby Data Lake Storage</a>'
     - html: Služby ML Services&#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Použití Nástrojů R pro Visual Studio</a>
 - title: Referenční informace
   items:

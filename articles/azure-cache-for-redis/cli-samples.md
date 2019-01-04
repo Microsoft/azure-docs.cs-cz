@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: wesmc
-ms.openlocfilehash: fabd21f9d7fe5ac1511f6b4cc07b8c17b055befe
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 15166ae5eaab72849564ce8f03daf65eefae11f1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019340"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584033"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Ukázky v Azure CLI pro mezipaměť Azure redis Cache
 
@@ -33,7 +33,7 @@ Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure
 | [Získat podrobnosti o redis cache](./scripts/show-cache.md) | Načte Podrobnosti mezipaměti Azure pro instanci Redis, včetně Stav zřizování. |
 | [Získání názvu hostitele, porty a klíče](./scripts/cache-keys-ports.md) | Získá název hostitele, porty a klíče pro Azure Cache pro instanci Redis. |
 |**Webovou aplikaci a mezipaměť**||
-| [Připojení webové aplikace do služby Azure Cache pro Redis](./../app-service/scripts/app-service-cli-app-service-redis.md) | Vytvoří webovou aplikaci Azure a Azure Cache pro Redis a pak přidá do nastavení aplikace podrobnosti připojení redis. |
+| [Připojení webové aplikace do služby Azure Cache pro Redis](./../app-service/scripts/cli-connect-to-redis.md) | Vytvoří webovou aplikaci Azure a Azure Cache pro Redis a pak přidá do nastavení aplikace podrobnosti připojení redis. |
 |**Odstranění mezipaměti**||
 | [Odstranění mezipaměti](./scripts/delete-cache.md) | Odstraní Azure pro instanci Redis Cache  |
 | | |

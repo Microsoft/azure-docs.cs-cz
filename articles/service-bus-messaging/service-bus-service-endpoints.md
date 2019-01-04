@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: clemensv
-ms.openlocfilehash: 3e1bdcc9340cc6cf997bebcdf1567bf676521ea5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276124"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651431"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Koncové body služeb virtuální sítě pomocí Azure Service Bus
 
@@ -39,7 +39,7 @@ Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány
 > - Průzkumník dat Azure
 >
 > Níže Microsoft services musí být ve virtuální síti
-> - Azure Web Apps
+> - Azure App Service
 > - Azure Functions
 
 > [!IMPORTANT]

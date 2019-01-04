@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 5b8db52623eead2800b0a5d8154a222573808750
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192426"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810266"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Pokyny pro osobní údaje uložené v Log Analytics a Application Insights
 
@@ -124,4 +124,4 @@ Jakmile se přiřadila role Azure Resource Manageru, jsou k dispozici dvě nová
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o způsobu shromažďují, zpracování a zabezpečená data služby Log Analytics najdete v tématu [zabezpečení dat Log Analytics](../../azure-monitor/platform/data-security.md).
-- Další informace o jak shromážděné, zpracované a zabezpečené data Application Insights najdete v tématu [zabezpečení dat ve službě Application Insights](../../application-insights/app-insights-data-retention-privacy.md).
+- Další informace o jak shromážděné, zpracované a zabezpečené data Application Insights najdete v tématu [zabezpečení dat ve službě Application Insights](../../azure-monitor/app/data-retention-privacy.md).

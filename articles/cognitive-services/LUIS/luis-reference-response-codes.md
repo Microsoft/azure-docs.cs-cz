@@ -11,14 +11,15 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 478727a4d3628fbe6a385e3beb28201c228f9e2d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8ea180131ce2f9e1288c3ffb928170be55a77de7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078227"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598446"
 ---
-# <a name="luis-api-http-response-codes"></a>Kódy odpovědí protokolu HTTP rozhraní API LUIS
+# <a name="common-api-response-codes-and-their-meaning"></a>Běžné kódy odpovědí rozhraní API a jejich význam
+
 [Vytváření](https://aka.ms/luis-authoring-apis) a [koncový bod](https://aka.ms/luis-endpoint-apis) rozhraní API vrací kódy odpovědí protokolu HTTP. Zprávy s odezvami zahrnout informace specifické pro požadavek, je obecné stavového kódu odpovědi HTTP. 
 
 ## <a name="common-status-codes"></a>Běžné kódy stavu
@@ -38,3 +39,7 @@ V následující tabulce jsou uvedeny některé z nejběžnějších kódy stavu
 |410|Koncový bod|aplikace musí být retrained a znovu publikovat|
 |414|Koncový bod|dotaz překračuje limit maximálního počtu znaků|
 |429|Vytváření koncového bodu|Překročení limitu přenosové rychlosti (počet požadavků za sekundu)|
+
+## <a name="next-steps"></a>Další postup
+
+* Rozhraní REST API [vytváření](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) a [koncový bod](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) dokumentace

@@ -9,16 +9,19 @@ ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f461bc1fd17ee957be5f223de731608011d021f5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5a60dd9af60328759e332514c8af061e50382798
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959355"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634860"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
 Ve výchozím nastavení v jednotlivých účtů Automation jsou k dispozici většiny běžných modulů Azure Powershellu. Tým Azure pravidelně aktualizuje moduly Azure. Ve vašem účtu Automation se poskytuje způsob, jak aktualizovat moduly v účtu, když je nová verze dostupná z portálu.
+
+> [!NOTE]
+> Nové [modul Azure PowerShell Az](/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0) nejsou podporované ve službě Azure Automation.
 
 Protože moduly jsou pravidelně aktualizovány produktovou skupinou, změny můžou nastat pomocí rutiny zahrnuté. Tato akce může mít negativní vliv na vaše sady runbook v závislosti na typ změny, jako například přejmenování parametru nebo zcela vyřazení rutiny. Aby se zabránilo dopadu na vaše sady runbook a procesy, automatizovat, testování a ověřování než budete pokračovat. Pokud nemáte určené pro tento účel vyhrazený účet služby Automation, zvažte vytvoření jednoho tak, aby můžete vyzkoušet řadu různých scénářů při vývoji vašich sadách runbook. Tento test by měl obsahovat iterativní změny, jako je aktualizace modulů prostředí PowerShell. Pokud vyvíjíte skripty místně, se doporučuje mít stejnou verzí modulů místně, které máte ve svém účtu Automation při testování pro zajištění vám zobrazí stejné výsledky. Po výsledky se ověří a použili potřebné změny, můžete přesunout změny do produkčního prostředí.
 

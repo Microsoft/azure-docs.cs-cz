@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: bf91377b544328ed63d3767ce9b0064a6c4eeaff
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 66fdb1313177b6f6a285f7d1b1b02dadac9472cc
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53711886"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810436"
 ---
 # <a name="create-a-container-in-azure-cosmos-db"></a>Vytvoření kontejneru ve službě Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
 
 ![Rozhraní SQL API vytvoří kolekci](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb"></a>Azure Cosmos DB pro rozhraní MongoDB API
+### <a id="portal-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
@@ -51,7 +51,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
    * Zadejte propustnost, například 1 000 RU.
    * Vyberte **OK**.
 
-![Vytvoří kolekci Azure Cosmos DB pro rozhraní MongoDB API](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Vytvoří kolekci Azure Cosmos DB API pro MongoDB](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Rozhraní API Cassandra
 
@@ -123,7 +123,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-mongodb"></a>Azure Cosmos DB pro rozhraní MongoDB API
+### <a id="cli-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
 ```azurecli-interactive
 # Create a collection with a shard key and provision 1000 RU/s throughput.
@@ -191,7 +191,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-### <a id="dotnet-mongodb"></a>Azure Cosmos DB pro rozhraní MongoDB API
+### <a id="dotnet-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
 ```csharp
 // Create a collection with a partition key by using Mongo Shell:

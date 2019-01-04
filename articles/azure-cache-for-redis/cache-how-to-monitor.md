@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 5ab2f1df72f04b6456f1083de6870fb86bad6616
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438275"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582707"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorovat Azure mezipaměti Redis
 Mezipaměť Azure pro použití Redis [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) poskytnout několik možností, jak pro monitorování vaší instance mezipaměti. Můžete zobrazit metriky, připnout grafy metrik na úvodní panel, přizpůsobení datum a čas, množství grafy monitorování, přidání a odebrání grafy metrik a nastavit upozornění při splnění určitých podmínek. Tyto nástroje umožňují monitorování stavu vaší mezipaměti Azure pro instance Redis a snadněji tak můžete spravovat ukládání do mezipaměti aplikace.
@@ -79,7 +79,7 @@ Jak nakonfigurovat účet úložiště pro metriky mezipaměti:
 >
 >
 
-Pro přístup k metriky, můžete je zobrazit na webu Azure Portal, jak to popisuje tento článek a můžete také přistupovat pomocí [rozhraní REST API služby Azure Monitor Metrics](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+Pro přístup k metriky, můžete je zobrazit na webu Azure Portal, jak to popisuje tento článek a můžete také přistupovat pomocí [rozhraní REST API služby Azure Monitor Metrics](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 > [!NOTE]
 > Pokud změníte účet úložiště, zůstávají data v dříve nakonfigurovaný účet úložiště k dispozici ke stažení, ale nezobrazí se na webu Azure Portal.  
@@ -142,7 +142,7 @@ Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezi
 
 Zobrazení protokolů aktivit pro mezipaměť, klikněte na tlačítko **protokoly aktivit** z **nabídce prostředků**.
 
-Další informace o protokolech aktivit najdete v tématu [přehled protokolu aktivit Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Další informace o protokolech aktivit najdete v tématu [přehled protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
 
 
 

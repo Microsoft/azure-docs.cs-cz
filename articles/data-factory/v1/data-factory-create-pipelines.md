@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 09fd2f38c3746cf92d576325058dc36221ae50cd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c31c57cc28b1e817cbb772154cfb2f04ff349640
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38668023"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973702"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](data-factory-create-pipelines.md)
 > * [Verze 2 (aktuální verze)](../concepts-pipelines-activities.md)
 
@@ -95,7 +95,7 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 
 | Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| jméno |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description | Určuje text popisující, k čemu se kanál používá. |Ano |
 | activities | Část **activities** může obsahovat definici jedné nebo více aktivit. V části Další podrobnosti o elementu activities formátu JSON. | Ano |  
 | start | Počáteční datum a čas pro kanál. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Například: `2016-10-14T16:32:41Z`. <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`", což je odhad AM 6<br/><br/>Počáteční a koncové vlastnosti definujte aktivní období kanálu. Výstupní řezy se tvoří pouze s v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end, musíte zadat hodnotu pro vlastnost start.<br/><br/>Počáteční a koncový čas může být oba prázdné k vytvoření kanálu. Je nutné zadat obě hodnoty se nastavit aktivní období kanálu ke spuštění. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete nastavit pomocí rutiny Set-AzureRmDataFactoryPipelineActivePeriod později. |
@@ -133,7 +133,7 @@ Následující tabulka obsahuje popis vlastností v definici aktivity ve formát
 
 | Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description | Text popisující, k čemu aktivita slouží. |Ano |
 | type | Typ aktivity. Zobrazit [aktivity přesunu dat](#data-movement-activities) a [aktivity transformace dat](#data-transformation-activities) oddíly pro různé typy aktivit. |Ano |
 | vstupy |Vstupní tabulky použité aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ano |
@@ -154,7 +154,7 @@ Zásady ovlivňují chování za běhu aktivity, konkrétně v případě, že z
 | retry |Integer<br/><br/>Maximální hodnota je 10 |0 |Počet opakování, než se zpracování dat pro řez je označen jako selhání. Spuštění aktivit pro datový řez je opakovat maximálně určený počet opakování. Opakování se provádí co nejdříve po selhání. |
 | timeout |Časový interval |00:00:00 |Časový limit aktivity. Příklad: 00:10:00 (implikuje časový limit 10 minut)<br/><br/>Pokud hodnotu nezadáte, nebo je 0, je neomezený časový limit.<br/><br/>Pokud doba zpracování dat na určitý řez překročí hodnota časového limitu, bude zrušen a se systém pokusí o opakování zpracování. Počet opakovaných pokusů závisí na vlastnosti opakování. Pokud dojde k vypršení časového limitu, je stav nastaven na vypršel časový limit. |
 | zpoždění |Časový interval |00:00:00 |Zadejte zpoždění před zpracování dat řezu.<br/><br/>Spuštění aktivit pro datový řez se spustí po zpoždění je za očekávanou dobu spuštění.<br/><br/>Příklad: 00:10:00 (implikuje prodlevě o délce 10 minut) |
-| opakování po delší době |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet opakování po delší době pokusů, než se řez spuštění se nezdařilo.<br/><br/>pokusy o opakování po delší době jsou rozmístěné ve longRetryInterval. Proto pokud je třeba zadat dobu mezi opakovanými pokusy, použijte opakování po delší době. Pokud je určen jak opakování, longRetry, jednotlivé pokusy o opakování po delší době zahrnuje opakovaných pokusů a je maximální počet pokusů o opakování * opakování po delší době.<br/><br/>Například, pokud budeme mít následující nastavení v zásadách aktivit:<br/>Zkuste: 3<br/>opakování po delší době: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládá se jenom jeden řez ke spuštění (stav Čeká) a pokaždé, když se nezdaří spuštění aktivity. Zpočátku bude pokusy o 3 po sobě jdoucích provedení. Po každý pokus o stav řezu bude opakovat. Po první 3 pokusy přes stav řezu bude LongRetry.<br/><br/>Po hodině (to znamená, longRetryInteval hodnota) bude další sadu 3 pokusy po sobě jdoucích spuštění. Potom by se stav řezu a byste se pokusit žádné další pokusy. Proto celkové 6 byly provedeny pokusy.<br/><br/>Pokud žádné spuštění úspěšné, stav řezu bude připravená a nedochází k pokusům o žádné další pokusy.<br/><br/>opakování po delší době může použít v situacích, kdy závislá data přibývají Nedeterministický časy nebo celkové prostředí je v nestabilním stavu za zpracování dat dojde k. V takových případech to uděláte, opakované pokusy sebou nemusí pomáhá a tím po uplynutí čas výsledky v požadované výstupu.<br/><br/>Word upozornění: není nastavený pro opakování po delší době nebo longRetryInterval vysoké hodnoty. Obvykle vyšší hodnoty znamenají další systémové problémy. |
+| opakování po delší době |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet opakování po delší době pokusů, než se řez spuštění se nezdařilo.<br/><br/>pokusy o opakování po delší době jsou rozmístěné ve longRetryInterval. Proto pokud je třeba zadat dobu mezi opakovanými pokusy, použijte opakování po delší době. Pokud je určen jak opakování, longRetry, jednotlivé pokusy o opakování po delší době zahrnuje opakovaných pokusů a je maximální počet pokusů o opakování * opakování po delší době.<br/><br/>Například, pokud budeme mít následující nastavení v zásadách aktivit:<br/>Zkuste to znovu: 3<br/>opakování po delší době: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládá se jenom jeden řez ke spuštění (stav Čeká) a pokaždé, když se nezdaří spuštění aktivity. Zpočátku bude pokusy o 3 po sobě jdoucích provedení. Po každý pokus o stav řezu bude opakovat. Po první 3 pokusy přes stav řezu bude LongRetry.<br/><br/>Po hodině (to znamená, longRetryInteval hodnota) bude další sadu 3 pokusy po sobě jdoucích spuštění. Potom by se stav řezu a byste se pokusit žádné další pokusy. Proto celkové 6 byly provedeny pokusy.<br/><br/>Pokud žádné spuštění úspěšné, stav řezu bude připravená a nedochází k pokusům o žádné další pokusy.<br/><br/>opakování po delší době může použít v situacích, kdy závislá data přibývají Nedeterministický časy nebo celkové prostředí je v nestabilním stavu za zpracování dat dojde k. V takových případech to uděláte, opakované pokusy sebou nemusí pomáhá a tím po uplynutí čas výsledky v požadované výstupu.<br/><br/>Word upozornění: není nastavený pro opakování po delší době nebo longRetryInterval vysoké hodnoty. Obvykle vyšší hodnoty znamenají další systémové problémy. |
 | longRetryInterval |Časový interval |00:00:00 |Prodleva mezi pokusy o opakování po delší době |
 
 ## <a name="sample-copy-pipeline"></a>Ukázkový kanál kopírování
@@ -209,7 +209,7 @@ Je třeba počítat s následujícím:
 * Vstup aktivity je nastavený na **InputDataset** a výstup aktivity je nastavený na **OutputDataset**. Informace o definicích datových sad ve formátu JSON najdete v článku [Datové sady](data-factory-create-datasets.md). 
 * V části **typeProperties** je jako typ zdroje určen **BlobSource** a jako typ jímky **SqlSink**. V [aktivity přesunu dat](#data-movement-activities) oddíl, klikněte na úložiště dat, že chcete získat další informace o přesouvání dat do a z tohoto úložiště dat použít jako zdroj nebo jímku. 
 
-Kompletní postup vytváření tohoto kanálu najdete v části [kurz: kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Kompletní postup vytváření tohoto kanálu najdete v části [kurzu: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ## <a name="sample-transformation-pipeline"></a>Ukázkový kanál transformace
 V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **HDInsightHive**. V této ukázce [aktivita HDInsight Hive](data-factory-hive-activity.md) transformuje data ze služby Azure Blob Storage tak, že v clusteru Azure HDInsight Hadoop spustí soubor skriptu Hive. 
@@ -267,7 +267,7 @@ Je třeba počítat s následujícím:
 
 Část **typeProperties** je u každé aktivity transformace odlišná. Další informace o vlastnostech typu podporovaných u aktivit transformace, klikněte na aktivitu transformace v [aktivity transformace dat](#data-transformation-activities) tabulky. 
 
-Kompletní postup vytváření tohoto kanálu najdete v části [kurz: vytvoření prvního kanálu pro zpracování dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
+Kompletní postup vytváření tohoto kanálu najdete v části [kurzu: Vytvoření prvního kanálu pro zpracování dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Více aktivit v kanálu
 Oba předchozí ukázkové kanály obsahovaly jenom jednu aktivitu. Kanál může obsahovat víc než jednu aktivitu.  
@@ -278,7 +278,7 @@ Dvě aktivity můžete zřetězit tím, že výstupní datové sady jedné aktiv
 
 ![Řetězení aktivit v kanálech stejné](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-V tomto příkladu tento kanál obsahuje dvou aktivit: aktivity "activity1" a "activity2". Vezme Dataset1 jako vstup aktivity "activity1" a vytváří výstupní Dataset2. Aktivita přijímá jako vstup Dataset2 a vytváří výstupní Dataset3. Od výstup aktivity "activity1" vstup "activity2", "activity2" spustí, až po úspěšném dokončení aktivity a produkuje řez Dataset2 je (Dataset2). Pokud aktivity "activity1" z nějakého důvodu nepovede, nevytvoří řez Dataset2 Activity 2 nespustí pro tento řez (například: 9: 00 do 10: 00). 
+Kanál v této ukázce má dvě aktivity: Aktivity "activity1" a "activity2". Vezme Dataset1 jako vstup aktivity "activity1" a vytváří výstupní Dataset2. Aktivita přijímá jako vstup Dataset2 a vytváří výstupní Dataset3. Od výstup aktivity "activity1" vstup "activity2", "activity2" spustí, až po úspěšném dokončení aktivity a produkuje řez Dataset2 je (Dataset2). Pokud aktivity "activity1" z nějakého důvodu nepovede, nevytvoří řez Dataset2 Activity 2 nespustí pro tento řez (například: 9 jsem na 10 AM). 
 
 Můžete také zřetězit aktivity, které jsou v různých kanálech.
 
@@ -292,7 +292,7 @@ Další informace najdete v tématu [plánování a provádění](data-factory-s
 Můžete vytvářet kanály pomocí jedné z těchto nástrojů nebo sad SDK. 
 
 - Průvodce kopírováním. 
-- Azure Portal
+- portál Azure
 - Visual Studio
 - Azure PowerShell
 - Šablona Azure Resource Manageru

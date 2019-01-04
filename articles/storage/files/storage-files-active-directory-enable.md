@@ -7,17 +7,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: c898a206322bbc6acb73d582fcb08c8bbba274d0
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 03344cf989e1381f97b108e82b8d63e9c4653404
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291433"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809794"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Povolit ověřování Azure Active Directory přes protokol SMB pro soubory Azure (preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 Přehled ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure najdete v tématu [přehled o Azure Active Directory authentication přes protokol SMB pro soubory Azure (Preview)](storage-files-active-directory-overview.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>Přehled pracovního postupu
 Před povolením služby Azure AD prostřednictvím protokolu SMB pro soubory Azure, ověřte, že služby Azure AD a prostředích Azure Storage jsou správně nakonfigurované. Doporučuje se, že si projdete [požadavky](#prerequisites) abyste měli jistotu, že jste provedli všechny požadované kroky. 
@@ -60,7 +62,7 @@ Před povolením služby Azure AD prostřednictvím protokolu SMB pro soubory Az
 
     Vyberte nový nebo existující sdílenou složku, která má přidružené k stejnému předplatnému jako vašeho tenanta Azure AD. Informace o vytváření nové sdílené složky najdete v tématu [vytvoření sdílené složky ve službě soubory Azure](storage-how-to-create-file-share.md). 
 
-    Tenant Azure AD se musí nasadit do oblasti, podporovaná ve verzi Preview služby Azure AD prostřednictvím protokolu SMB. Verzi preview je k dispozici ve všech veřejných oblastech s výjimkou: USA – Západ, USA – západ 2, střed USA – Jih, USA – východ, USA – východ 2, střed USA, střed USA – sever, Austrálie – východ, západní Evropa, Severní Evropa.
+    Tenant Azure AD se musí nasadit do oblasti, podporovaná ve verzi Preview služby Azure AD prostřednictvím protokolu SMB. Verzi preview je k dispozici ve všech veřejných oblastech s výjimkou: USA – Západ, USA – západ 2, střední část jihu USA, USA – východ, USA – východ 2, střed USA, USA (střed) – sever, Austrálie – východ, západní Evropa, Severní Evropa.
 
     Pro zajištění optimálního výkonu společnost Microsoft doporučuje, vaše sdílená složka je ve stejné oblasti jako virtuální počítač, ze kterého plánujete přístup do sdílené složky.
 
@@ -88,17 +90,17 @@ Následující obrázek ukazuje, jak povolit ověřování Azure AD prostřednic
   
 ### <a name="powershell"></a>PowerShell  
 
-Pokud chcete povolit ověřování Azure AD prostřednictvím protokolu SMB v Azure Powershellu, nejprve nainstalujte `AzureRM.Storage` modulu, verze `6.0.0-preview`, následujícím způsobem. Další informace o instalaci Powershellu najdete v tématu [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps):
+Pokud chcete povolit ověřování Azure AD prostřednictvím protokolu SMB v Azure Powershellu, nejprve nainstalovat sestavení ve verzi preview `Az.Storage` modulu s podporou služby Azure AD. Další informace o instalaci Powershellu najdete v tématu [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps):
 
 ```powershell
-Install-Module -Name AzureRM.Storage -RequiredVersion 6.0.0-preview -AllowPrerelease
+Install-Module -Name Az.Storage -AllowPrerelease -Force -AllowClobber
 ```
 
-Dále vytvořte nové úložiště účtu a potom voláním [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) a nastavit **EnableAzureFilesAadIntegrationForSMB** parametr **true**. V následujícím příkladu nezapomeňte nahradit zástupné hodnoty vlastními hodnotami.
+Dále vytvořte nové úložiště účtu a potom voláním [Set-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) a nastavit **EnableAzureFilesAadIntegrationForSMB** parametr **true**. V následujícím příkladu nezapomeňte nahradit zástupné hodnoty vlastními hodnotami.
 
 ```powershell
 # Create a new storage account
-New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
+New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -Location "<azure-region>" `
     -SkuName Standard_LRS `
@@ -107,7 +109,7 @@ New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 # Update an existing storage account
 # Supported for storage accounts created after September 24, 2018 only
-Set-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
+Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true```
 ```
@@ -152,17 +154,16 @@ Následující šablony vlastní role poskytuje oprávnění změnit na úrovni 
   "Name": "<Custom-Role-Name>",
   "Id": null,
   "IsCustom": true,
-  "Description": "Allows for read, write and delete access to Azure File Share",
+  "Description": "Allows for read, write and delete access to Azure File Share over SMB",
   "Actions": [
-    "*"
-  ],
-  "NotActions": [
-      "Microsoft.Authorization/*/Delete",
-    "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Storage/storageAccounts/fileServices/fileshare/*"
   ],
   "DataActions": [
-    "*"
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/*"
+  ],
+  "NotDataActions": [
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermission",
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actasadmin"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"
@@ -178,12 +179,12 @@ Následující šablony vlastní role poskytuje oprávnění ke čtení úrovni 
   "Name": "<Custom-Role-Name>",
   "Id": null,
   "IsCustom": true,
-  "Description": "Allows for read access to Azure File Share",
+  "Description": "Allows for read access to Azure File Share over SMB",
   "Actions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/fileshare/read"
   ],
   "DataActions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"
@@ -201,7 +202,7 @@ Následující příkaz Powershellu vytvoří vlastní roli na základě jedné 
 
 ```powershell
 #Create a custom role based on the sample template above
-New-AzureRmRoleDefinition -InputFile "<custom-role-def-json-path>"
+New-AzRoleDefinition -InputFile "<custom-role-def-json-path>"
 ```
 
 #### <a name="cli"></a>Rozhraní příkazového řádku 
@@ -225,11 +226,11 @@ Při spuštění následující ukázkový skript, nezapomeňte nahradit zástup
 
 ```powershell
 #Get the name of the custom role
-$FileShareContributorRole = Get-AzureRmRoleDefinition "<role-name>"
+$FileShareContributorRole = Get-AzRoleDefinition "<role-name>"
 #Constrain the scope to the target file share
 $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 #Assign the custom role to the target identity with the specified scope.
-New-AzureRmRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
+New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
 #### <a name="cli"></a>Rozhraní příkazového řádku

@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 9e5b132a7946bdc648e051c9f7327cc7159f291e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 9a8bfa2e89e6bc0cbbd5af2efdff60aa406b3f1d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163629"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714198"
 ---
-# <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
+# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
 Tento článek obsahuje odpovědi na nejčastější dotazy o Language Understanding (LUIS).
 
@@ -212,7 +212,7 @@ Následující funkce byly vydány na konferenci Build 2018:
 |Integrace|[Rozhraní text analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integrace [analýzu subjektivního hodnocení](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech) integrace dočištění řeči ve spojení s [sadou SDK pro řeč](https://aka.ms/SpeechSDK)|
 |Nástroj pro odesílání|Součást [BotBuilder nástroje](https://github.com/Microsoft/botbuilder-tools), odeslání příkazového řádku [nástroj](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) zkombinovat více LUIS a nástroje QnA Maker aplikace do jedné aplikace LUIS pro lepší rozpoznání záměru v robota
 
-Další vytváření [trasy rozhraní API](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md) byly zahrnuty.
+Další vytváření [trasy rozhraní API](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md) byly zahrnuty.
 
 Videa:
 * [Azure Friday na 2018 sestavení: Cognitive Services – Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)

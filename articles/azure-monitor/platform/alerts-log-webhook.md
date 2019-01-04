@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 4502f7232d2bcfaf4a32a384d24556cd668dc50b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7676213f9eee781fa7b8c19a30c6505ca5bf2ac
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285120"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720301"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolů
 Když [upozornění protokolu se vytvoří v Azure](alerts-log.md), máte možnost [konfigurace pomocí skupin akcí](action-groups.md) provést jednu nebo více akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o tom, jak nakonfigurovat vlastní webhooku založenými na JSON.
@@ -73,13 +73,13 @@ Tato datová část příklad by přeložit na podobné následujícímu při od
 ```
 Všechny proměnné v webhooku vlastní musí zadat v rámci skříň JSON jako "#searchinterval", výsledná webhooku má také data proměnných ve skříni, jako je "00: 05:00".
 
-Do výsledků hledání zahrnout vlastní datovou část, ujistěte se, že **IncudeSearchResults** je nastaven jako vlastnost v datové části json nejvyšší úrovně. 
+Do výsledků hledání zahrnout vlastní datovou část, ujistěte se, že **IncludeSearchResults** je nastaven jako vlastnost v datové části json nejvyšší úrovně. 
 
 ## <a name="sample-payloads"></a>Ukázkové datové části
 Tato část ukazuje ukázkovou datovou část webhooku pro upozornění protokolů, včetně při datové části je pevná a při jeho vlastní.
 
 > [!NOTE]
-> K zajištění zpětné kompatibility, datová část standardní webhooku pro výstrahy pomocí Azure Log Analytics je stejný jako [správu upozornění Log Analytics](alerts-metric.md). Ale pro výstrahy protokolu pomocí [Application Insights](../../application-insights/app-insights-analytics.md), datová část webhooku standardní podle schématu skupiny akcí.
+> K zajištění zpětné kompatibility, datová část standardní webhooku pro výstrahy pomocí Azure Log Analytics je stejný jako [správu upozornění Log Analytics](alerts-metric.md). Ale pro výstrahy protokolu pomocí [Application Insights](../../azure-monitor/app/analytics.md), datová část webhooku standardní podle schématu skupiny akcí.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standardní Webhooku pro výstrahy protokolu 
 Oba tyto příklady uvedli fiktivní datovou část s pouze dvěma sloupci a dva řádky.
@@ -200,5 +200,5 @@ Následuje ukázkovou datovou část pro akce webhooku vlastní žádné upozorn
 - Další informace o [upozornění protokolů ve výstrahách Azure ](alerts-unified-log.md)
 - Vysvětlení [managaing protokolu upozornění v Azure](alerts-log.md)
 - Vytvoření a správa [skupiny akcí v Azure](action-groups.md)
-- Další informace o [Application Insights](../../application-insights/app-insights-analytics.md)
+- Další informace o [Application Insights](../../azure-monitor/app/analytics.md)
 - Další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 

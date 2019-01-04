@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: a7fe2cf151b79b02f4f8996ad938d8fc262a5f77
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b2733bed4418fdfcaefb20c04683cb6a229134e9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400245"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594190"
 ---
 # <a name="enable-write-accelerator"></a>Povolení akcelerátoru zápisu
 
@@ -41,7 +41,7 @@ Povolení Write Accelerator pro disky s operačním systémem nemělo být nutn�
 Při použití akcelerátorem zápisu pro Azure disk nebo virtuální pevný disk, platí tato omezení:
 
 - Premium diskové mezipaměti musí být nastavena na hodnotu 'None' nebo "Jen pro čtení". Všechny jiné režimy ukládání do mezipaměti nejsou podporovány.
-- Snímky na akcelerátor zápisu disku se ještě nepodporuje. Toto omezení blokuje služby Azure Backup schopnost provádět snímek konzistentní vzhledem k v aplikaci všech disků virtuálního počítače.
+- Snímek nejsou aktuálně podporovány pro disky s povoleným akcelerátorem zápisu. Při zálohování služba Azure Backup automaticky vyloučí s povoleným akcelerátorem zápisu disky připojené k virtuálnímu počítači.
 - Menší velikost vstupně-výstupních operací (< = 32 KiB) trvá akcelerované cestu. V úloze situacích, kde data prochází hromadné načtení nebo pokud vyrovnávacích pamětí protokolu transakce různých DBMS jsou vyplněny ve větší míře před získávání trvale uložena do úložiště, je pravděpodobné, vstupně-výstupních operací zapsána do disku nejde akcelerované cestu.
 
 Existují omezení Azure Premium Storage VHD na virtuální počítač, který může podporovat akcelerátorem zápisu. Aktuální omezení platí pro:

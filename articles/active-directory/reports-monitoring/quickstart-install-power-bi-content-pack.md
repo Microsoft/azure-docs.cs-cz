@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 314f1c1656485f93942eb23f928cc66720a12565
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622530"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753536"
 ---
-# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Rychlý start: Instalace balíčku obsahu Azure Active Directory Power BI
+# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Rychlý start: Instalace Azure Active Directory Power BI Content pack
 
 |  |
 |--|
@@ -39,7 +39,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 * Účet Power BI. Jde o stejný účet, jako je váš účet O365 nebo Azure AD. 
 * ID vašeho tenanta Azure AD. Toto je **ID adresáře** vašeho adresáře, které najdete na [stránce vlastností](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) na webu Azure Portal.
-* Licence Azure AD Premium (P1/P2). 
+* Licence Azure AD Premium (P1/P2). Zobrazit [Začínáme se službou Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) upgradovat edici Azure Active Directory.
 
 ## <a name="install-azure-ad-power-bi-content-pack"></a>Instalace balíčku obsahu Power BI služby Azure AD 
 

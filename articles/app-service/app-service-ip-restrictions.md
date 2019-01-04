@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a152efb3979b4ffe3402ed668c0f683f5e9cc651
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 337d71c84ace7f44c2668cf2344d9083c4a85bee
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337151"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651058"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Omezení statickou IP adresu služby Azure App Service #
 
 Omezení IP adres umožňují definovat prioritu seřazený povolit nebo zamítnout seznam IP adres, které můžou přistupovat k vaší aplikace. Seznam povolených tříd může obsahovat adresy IPv4 a IPv6. Pokud je jeden nebo více položek, je pak implicitní Zamítnout vše, která existuje na konci seznamu. 
 
-Funkce omezení podle IP funguje se všemi úlohami, které zahrnují; hostované služby App Service webové aplikace, aplikace api, linuxové aplikace, aplikace kontejneru linuxu a funkce. 
+Funkce omezení podle IP funguje se všemi úlohami, které zahrnují; hostované služby App Service webové aplikace, aplikace API, Linuxové aplikace, aplikace kontejneru Linuxu a funkce. 
 
 Po odeslání žádosti do vaší aplikace z IP adres je porovnán seznamu omezení IP adres. Pokud adresa nemá povolený přístup na základě pravidel v seznamu, odpoví odpovědí služby s [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) stavový kód.
 

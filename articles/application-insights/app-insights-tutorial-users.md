@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: d5e97d82a011bc4aba29aa597a7fc6473d17a3b2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5a991bf5da6d17aad6b1456e82f6c7795ab67356
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970786"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745019"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -39,7 +39,7 @@ K provedení kroků v tomto kurzu je potřeba:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
-- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](app-insights-asp-net.md). 
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../azure-monitor/app/asp-net.md). 
 - [Odesílat z aplikace telemetrii](app-insights-usage-overview.md#send-telemetry-from-your-app) umožňující přidání vlastních zobrazení událostí a stránek.
 - Odesílat [kontext uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
 

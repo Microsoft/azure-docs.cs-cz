@@ -1,5 +1,5 @@
 ---
-title: Vizualizace telemetrie simulace zařízení pomocí služby Azure Time Series Insights | Dokumentace Microsoftu
+title: Vizualizace telemetrie simulace zařízení pomocí služby Time Series Insights – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak nakonfigurovat prostředí Time Series Insights můžete zkoumat a analyzovat telemetrii generovanou akcelerátor řešení simulaci zařízení.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 49cecca4e5ebef9f43fdda16cfa1fdc2ad7b6f94
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: aea02cbde32d9485bd49ec39a6f300021c6ef927
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43383244"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597694"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Vizualizace telemetrická data odesílaná z akcelerátoru řešení simulace zařízení pomocí služby Time Series Insights
 

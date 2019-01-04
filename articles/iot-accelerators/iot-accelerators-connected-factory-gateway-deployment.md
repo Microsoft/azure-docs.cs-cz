@@ -8,20 +8,20 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ce2391014eb5e15650c0a81ebb8e2fd4a08ca96b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139220"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599940"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Nasazení brány edge pro akcelerátor řešení připojená továrna ve Windows nebo Linuxu
 
 Budete potřebovat dvě součásti softwaru k nasazení brány edge pro *připojená továrna* akcelerátor řešení:
 
-- Proxy  *serveru OPC* naváže připojení k připojené továrny. Proxy server OPC a čeká na příkazy a ovládání zpráv z rozhraní integrované OPC v prohlížeči, na kterém běží na portálu řešení připojené továrny.
+-  *Proxy serveru OPC* naváže připojení k připojené továrny. Proxy server OPC a čeká na příkazy a ovládání zpráv z rozhraní integrované OPC v prohlížeči, na kterém běží na portálu řešení připojené továrny.
 
-- Vydavatel  *OPC* připojí k existující místní servery OPC UA a předává telemetrické zprávy z nich pro propojenou továrnu. Můžete připojit pomocí klasické zařízení OPC [OPC classic adaptér pro OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
+-  *Vydavatel OPC* připojí k existující místní servery OPC UA a předává telemetrické zprávy z nich pro propojenou továrnu. Můžete připojit pomocí klasické zařízení OPC [OPC classic adaptér pro OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
 
 Obě komponenty jsou open source a jsou k dispozici jako source na Githubu a jako kontejnery Dockeru na Dockerhubu:
 
@@ -70,7 +70,7 @@ Další informace najdete v tématu [použít svazky](https://docs.docker.com/en
 
 Před instalací komponenty OPC, proveďte následující kroky k přípravě vašeho prostředí:
 
-1. K dokončení nasazení brány, je potřeba **iothubowner** připojovací řetězec služby IoT Hub v nasazení připojené továrny. V [webu Azure portal](http://portal.azure.com/), přejděte do služby IoT Hub ve skupině prostředků vytvořili při nasazení řešení připojené továrny. Klikněte na tlačítko **zásady sdíleného přístupu** přístup **iothubowner** připojovací řetězec:
+1. K dokončení nasazení brány, je potřeba **iothubowner** připojovací řetězec služby IoT Hub v nasazení připojené továrny. V [webu Azure portal](https://portal.azure.com/), přejděte do služby IoT Hub ve skupině prostředků vytvořili při nasazení řešení připojené továrny. Klikněte na tlačítko **zásady sdíleného přístupu** přístup **iothubowner** připojovací řetězec:
 
     ![Najděte připojovací řetězec služby IoT Hub](./media/iot-accelerators-connected-factory-gateway-deployment/image2.png)
 

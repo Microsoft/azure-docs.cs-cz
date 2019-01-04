@@ -6,15 +6,15 @@ author: wmgries
 ms.service: storage
 ms.devlang: python
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 12/14/2018
 ms.author: tamram
 ms.component: files
-ms.openlocfilehash: 4082352c8c9814b8e6533d3f64b18450a6cf416d
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f1ebc059c66615ecf21054e85472b2a6d86dfce6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165568"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743183"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Vývoj pro soubory Azure pomocí Pythonu
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -33,7 +33,7 @@ Tento kurz vám ukáže základy používání Python k vývoji aplikací a slu�
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Stáhněte a nainstalujte sadu SDK služby Azure Storage pro Python
 
-Azure Storage SDK pro Python vyžaduje Python 2.7, 3.3, 3.4, 3.5 a 3.6 a je k dispozici ve 4 různých balíčcích: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` a `azure-storage-queue`. V tomto kurzu budeme používat `azure-storage-file` balíčku.
+[Azure Storage SDK pro Python](https://github.com/azure/azure-storage-python) vyžaduje Python 2.7, 3.3, 3.4, 3.5 a 3.6.
  
 ## <a name="install-via-pypi"></a>Instalace přes PyPi
 
@@ -43,13 +43,15 @@ Pokud chcete nainstalovat prostřednictvím indexu balíčků Pythonu (PyPI), za
 pip install azure-storage-file
 ```
 
-
 > [!NOTE]
-> Pokud provádíte upgrade z Azure Storage SDK pro Python verze 0.36 nebo starší, budete nejdřív muset, odinstalujte ji pomocí `pip uninstall azure-storage` jako už vydáváme Storage SDK pro Python v jediném balíčku.
-> 
-> 
+> Pokud provádíte upgrade z Azure Storage SDK pro Python verze 0.36 nebo starší, odinstalujte starší pomocí sady SDK `pip uninstall azure-storage` před instalací nejnovější balíček.
 
 Metody alternativní instalace, najdete [Azure Storage SDK pro Python na Githubu](https://github.com/Azure/azure-storage-python/).
+
+## <a name="view-the-sample-application"></a>Zobrazit ukázkové aplikace
+f pro zobrazení a spuštění ukázkové aplikace, který ukazuje, jak se soubory Azure pomocí Pythonu najdete v článku [služby Azure Storage: Začínáme se službou soubory Azure v Pythonu](https://github.com/Azure-Samples/storage-file-python-getting-started). 
+
+Spustit ukázkovou aplikaci, ujistěte se, že máte nainstalovanou i `azure-storage-file` a `azure-storage-common` balíčky.
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Nastavení aplikace používat soubory Azure
 Přidejte následující v horní části libovolného Python zdrojového souboru, ve kterém chcete programovému přístupu ke službě Azure Storage.

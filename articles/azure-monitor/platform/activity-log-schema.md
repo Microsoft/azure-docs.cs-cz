@@ -7,16 +7,16 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
-ms.component: activitylog
-ms.openlocfilehash: 9129ccdd66b07fc53fe46aa64317f7f064eb7e0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.component: logs
+ms.openlocfilehash: 64b92a758d3d5f713b58a5e310a897ac1f11024d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388880"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714827"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure schéma událostí protokolu aktivit
-**Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./tutorial-dashboards.md) je k dispozici na konci tohoto článku.
+**Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./tutorial-dashboards.md) je k dispozici na konci tohoto článku.
 
 ## <a name="administrative"></a>Správa
 Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a akce operace provést prostřednictvím Resource Manageru. Typy událostí, zobrazí se v této kategorii příklady "vytvořit virtuální počítač" a "odstranit skupinu zabezpečení sítě" každé akce, které uživatele nebo aplikace pomocí Resource Manageru je modelovaná jako operace na konkrétní typ prostředku. Pokud je typ operace zápisu, Delete nebo akce, záznamy o zahájení a úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Administrativní kategorie také zahrnuje všechny změny na řízení přístupu na základě rolí v rámci předplatného.
@@ -191,7 +191,7 @@ Tato kategorie obsahuje záznam všechny incidenty health service, ke kterým do
   }
 }
 ```
-Odkazovat [služby oznámení o stavu](./../../monitoring-and-diagnostics/monitoring-service-notifications.md) článku pro dokumentaci o hodnotách ve vlastnostech.
+Odkazovat [služby oznámení o stavu](./../../azure-monitor/platform/service-notifications.md) článku pro dokumentaci o hodnotách ve vlastnostech.
 
 ## <a name="resource-health"></a>Stav prostředků
 Tato kategorie obsahuje záznam všechny události stavu prostředků, ke kterým došlo u vašich prostředků Azure. Je například typ události, kterou byste viděli v této kategorii "Virtuální počítač stav změní na není k dispozici." Události stavu prostředků může představovat jeden z čtyř stavů stavu: K dispozici, není k dispozici, snížení a neznámý. Kromě toho události stavu prostředků můžete zařadit iniciovanou platformy nebo uživatele.
@@ -676,5 +676,5 @@ Při streamování protokolu aktivit Azure do účtu úložiště nebo oboru ná
 
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o protokolu aktivit (dříve protokoly auditu)](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
-* [Stream protokolů aktivit Azure do služby Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
+* [Další informace o protokolu aktivit (dříve protokoly auditu)](../../azure-monitor/platform/activity-logs-overview.md)
+* [Stream protokolů aktivit Azure do služby Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)

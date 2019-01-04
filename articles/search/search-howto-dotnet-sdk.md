@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: c2dd9d7c7567a7c57def093c4d611ab09c870d84
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6f263511a7d1df4af82a690c1d6b04fecd2a8a91
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310660"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634537"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Jak používat Azure Search z aplikace .NET
 Tento článek je návod, který vám pomůžou začít pracovat s [Azure Search .NET SDK](https://aka.ms/search-sdk). Sady .NET SDK můžete použít k implementaci bohaté vyhledávací funkce do vaší aplikace pomocí Azure Search.
@@ -48,7 +48,7 @@ Pokud už používáte starší verzi rozhraní .NET SDK služby Azure Search a 
 ## <a name="requirements-for-the-sdk"></a>Požadavky pro sadu SDK
 1. Sada Visual Studio 2017.
 2. Vlastní službu Azure Search. Chcete-li použít sadu SDK, musíte název vaší služby a jeden nebo víc klíčů rozhraní API. [Vytvoření služby na portálu](search-create-service-portal.md) vám pomůže tyto kroky.
-3. Stáhnout Azure Search .NET SDK [balíček NuGet](http://www.nuget.org/packages/Microsoft.Azure.Search) pomocí "Správa balíčků NuGet" v sadě Visual Studio. Právě vyhledejte název balíčku `Microsoft.Azure.Search` NuGet.org (nebo jednoho z jiných balíčků výše uvedené názvy, pokud potřebujete jenom podmnožinu funkcí).
+3. Stáhnout Azure Search .NET SDK [balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.Search) pomocí "Správa balíčků NuGet" v sadě Visual Studio. Právě vyhledejte název balíčku `Microsoft.Azure.Search` NuGet.org (nebo jednoho z jiných balíčků výše uvedené názvy, pokud potřebujete jenom podmnožinu funkcí).
 
 Azure Search .NET SDK podporuje aplikace cílené na rozhraní .NET Framework 4.5.2 nebo novější, a také .NET Core.
 
@@ -243,7 +243,7 @@ Tato metoda vytvoří nový `Index` objektu se seznamem `Field` objekty, které 
 >
 > 
 
-Kromě polí můžete také přidat bodovací profily, moduly pro návrhy nebo možnosti CORS do indexu (tyto jsou vynechány z ukázky pro zkrácení). Můžete najít další informace o objektu indexu a v jejích částí [odkaz na sadu SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index#microsoft_azure_search_models_index), a v [REST API služby Azure Search odkaz](https://docs.microsoft.com/rest/api/searchservice/).
+Kromě polí můžete také přidat bodovací profily, moduly pro návrhy nebo možnosti CORS do indexu (tyto jsou vynechány z ukázky pro zkrácení). Můžete najít další informace o objektu indexu a v jejích částí [odkaz na sadu SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index), a v [REST API služby Azure Search odkaz](https://docs.microsoft.com/rest/api/searchservice/).
 
 ### <a name="populating-the-index"></a>Naplnění indexu
 Na další krok v `Main` je k naplnění indexu nově vytvořený. To se provádí v následující metodu:
@@ -324,7 +324,7 @@ Vytvoří druhou částí `IndexBatch` obsahující dokumenty. Zadejte operace, 
 Třetí část této metody je blok catch, který zpracovává s případem důležitých chyb pro indexování. Pokud služba Azure Search při indexování některých dokumentů v dávce selže, `Documents.Index` vyvolá výjimku `IndexBatchException`. To může nastat v případě indexování dokumentů, zatímco je služba velmi zatížená. **Důrazně doporučujeme v kódu explicitně zpracovávat tento případ.** Indexování dokumentů, které selhaly, můžete odložit a poté zkusit znovu, nebo v závislosti na požadavcích vaší aplikace na konzistenci dat provést něco jiného.
 
 > [!NOTE]
-> Můžete použít `FindFailedActionsToRetry` metoda vytvořit nový list obsahující jenom akce, které se nepodařilo v předchozím volání `Index`. Metoda je popsána [tady](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception#Microsoft_Azure_Search_IndexBatchException_FindFailedActionsToRetry_Microsoft_Azure_Search_Models_IndexBatch_System_String_) a diskusi o tom, jak správně používat [na StackOverflow](http://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
+> Můžete použít [ `FindFailedActionsToRetry` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) metoda vytvořit nový list obsahující jenom akce, které se nepodařilo v předchozím volání `Index`. Je diskusi o tom, jak správně používat [na StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
 >
 >
 
@@ -390,20 +390,20 @@ public partial class Hotel
 Všimněte si, že prvním krokem je, že každá veřejná vlastnost třídy `Hotel` odpovídá poli v definici indexu, ale s jedním zásadním rozdílem: Název každého pole začíná malým písmenem ("camelCase"), zatímco název každé veřejné vlastnosti třídy `Hotel` začíná velké písmeno ("pascalcase"). To je běžný scénář v .NET aplikacích provádějících datové vazby, kde je cílové schéma mimo kontrolu vývojáře aplikace. Místo porušování směrnic pojmenování .NET psaním názvů vlastností ve stylu CamelCase můžete pomocí atributu `[SerializePropertyNamesAsCamelCase]` říct sadě SDK, aby mapovala názvy vlastností na CamelCase automaticky.
 
 > [!NOTE]
-> .NET SDK služby Azure Search používá k serializaci a deserializaci vlastních objektů modelu do a z JSON knihovnu [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm). V případě potřeby lze serializaci přizpůsobit. Další podrobnosti najdete v tématu [vlastní serializace pomocí technologie JSON.NET](#JsonDotNet).
+> .NET SDK služby Azure Search používá k serializaci a deserializaci vlastních objektů modelu do a z JSON knihovnu [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm). V případě potřeby lze serializaci přizpůsobit. Další podrobnosti najdete v tématu [vlastní serializace pomocí technologie JSON.NET](#JsonDotNet).
 > 
 > 
 
 Druhou věcí a Všimněte si, jako jsou atributy `IsFilterable`, `IsSearchable`, `Key`, a `Analyzer` , který uspořádání každé veřejné vlastnosti. Tyto atributy mapují přímo [odpovídající atributy indexu Azure Search](https://docs.microsoft.com/rest/api/searchservice/create-index#request). `FieldBuilder` Tato třída používá k vytvoření definice polí pro index.
 
-Třetí důležité o `Hotel` třídy jsou datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Podobná mapování typu probíhají mezi `bool?` a `Edm.Boolean`, `DateTimeOffset?` a `Edm.DateTimeOffset` atd. Konkrétní pravidla pro mapování typu jsou popsaná u metody `Documents.Get` v tématu [Reference k sadě .NET SDK služby Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_). `FieldBuilder` Třídy postará za vás toto mapování, ale stále může být užitečné k pochopení případ potřeby řešení potíží, serializace.
+Třetí důležité o `Hotel` třídy jsou datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Podobná mapování typu probíhají mezi `bool?` a `Edm.Boolean`, `DateTimeOffset?` a `Edm.DateTimeOffset` atd. Konkrétní pravidla pro mapování typu jsou popsaná u metody `Documents.Get` v tématu [Reference k sadě .NET SDK služby Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). `FieldBuilder` Třídy postará za vás toto mapování, ale stále může být užitečné k pochopení případ potřeby řešení potíží, serializace.
 
 Tato možnost používat vaše vlastní třídy jako dokumenty funguje v obou směrech; Můžete také načíst výsledky hledání a uvidíme v další části jsou sady SDK automaticky deserializovala do požadovaného typu podle vašeho výběru.
 
 > [!NOTE]
-> .NET SDK služby Azure Search také podporuje dynamicky typované dokumenty pomocí třídy `Document`, která zajišťuje mapování klíč-hodnota názvů polí na hodnoty polí. To je užitečné v situacích, kdy v době navrhování neznáte schéma indexu nebo kde by vázání na konkrétní třídy modelu bylo nepraktické. Všechny metody v sadě SDK, které pracují s dokumenty, mají přetížení, které pracují se třídou `Document`, ale i přetížení silně závislá na typu, která přebírají parametr obecného typu. Pouze ty druhé se používají ve vzorovém kódu v tomto kurzu. `Document` Třída dědí z `Dictionary<string, object>`. Další podrobnosti můžete najít [tady](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document#microsoft_azure_search_models_document).
+> .NET SDK služby Azure Search také podporuje dynamicky typované dokumenty pomocí třídy `Document`, která zajišťuje mapování klíč-hodnota názvů polí na hodnoty polí. To je užitečné v situacích, kdy v době navrhování neznáte schéma indexu nebo kde by vázání na konkrétní třídy modelu bylo nepraktické. Všechny metody v sadě SDK, které pracují s dokumenty, mají přetížení, které pracují se třídou `Document`, ale i přetížení silně závislá na typu, která přebírají parametr obecného typu. Pouze ty druhé se používají ve vzorovém kódu v tomto kurzu. [ `Document` Třídy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) dědí z `Dictionary<string, object>`.
 > 
-> 
+>
 
 **Proč byste měli používat datové typy s možnou hodnotou null**
 
@@ -418,7 +418,7 @@ Z tohoto důvodu doporučujeme jako osvědčený postup používat ve třídách
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>Vlastní serializace pomocí technologie JSON.NET
-Sada SDK používá technologii JSON.NET pro serializaci a deserializaci dokumenty. Můžete přizpůsobit serializaci a deserializaci v případě potřeby tak, že definujete vlastní `JsonConverter` nebo `IContractResolver` (najdete v článku [JSON.NET dokumentaci](http://www.newtonsoft.com/json/help/html/Introduction.htm) další podrobnosti). To může být užitečné, pokud chcete upravit existující třídu modelu z vaší aplikace pro použití se službou Azure Search a další pokročilé scénáře. Například vlastní serializace vám umožní:
+Sada SDK používá technologii JSON.NET pro serializaci a deserializaci dokumenty. Můžete přizpůsobit serializaci a deserializaci v případě potřeby tak, že definujete vlastní `JsonConverter` nebo `IContractResolver` (najdete v článku [JSON.NET dokumentaci](https://www.newtonsoft.com/json/help/html/Introduction.htm) další podrobnosti). To může být užitečné, pokud chcete upravit existující třídu modelu z vaší aplikace pro použití se službou Azure Search a další pokročilé scénáře. Například vlastní serializace vám umožní:
 
 * Zahrnout nebo vyloučit určité vlastnosti třídy modelu ukládat jako pole dokumentů.
 * Mapování mezi názvy vlastností v kódu a názvy polí v indexu.

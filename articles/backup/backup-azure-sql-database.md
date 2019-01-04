@@ -2,25 +2,18 @@
 title: Zálohování databází SQL serveru do Azure | Dokumentace Microsoftu
 description: Tento kurz vysvětluje, jak k zálohování SQL serveru do Azure. Tento článek také popisuje obnovení SQL serveru.
 services: backup
-documentationcenter: ''
 author: rayne-wiselman
 manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/02/2018
-ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.topic: tutorial
+ms.date: 12/21/2018
+ms.author: raynew
+ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410359"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790158"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -44,9 +37,9 @@ Následující položky jsou známé omezení verze Public Preview:
 - Virtuální počítač SQL (VM) vyžaduje připojení k Internetu pro přístup k veřejným IP adresám Azure. Podrobnosti najdete v tématu [navázat připojení k síti](backup-azure-sql-database.md#establish-network-connectivity).
 - Chraňte až 2 000 databází SQL v jeden trezor služby Recovery Services. Další databáze SQL by měla být uložena v samostatném trezoru služby Recovery Services.
 - [Zálohování skupiny dostupnosti v distribuovaných](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) mají omezení.
-- Vždy na převzetí služeb při selhání instance clusteru SQL Server (instancích Fci) nejsou podporovány.
+- Vždy na převzetí služeb při selhání instance clusteru SQL Server (instancích Fci) nejsou podporovány pro zálohování.
 - Nakonfigurujte zálohování Azure pro ochranu databáze SQL serveru pomocí webu Azure portal. Prostředí Azure PowerShell, rozhraní příkazového řádku Azure a rozhraní REST API nejsou aktuálně podporované.
-- Operace zálohování a obnovení pro zrcadlení databáze, snímky databází a databází v rámci FCI nejsou podporovány.
+- Operace zálohování a obnovení pro FCI zrcadlení databáze, snímky databází a databází nejsou podporovány.
 - Databáze s velkým počtem souborů nejde chránit. Maximální počet souborů, které jsou podporovány není velmi deterministické číslo, protože nejen závisí na počtu souborů, ale také závisí na délka cesty k souborům. Takové případy jsou však méně běžně se vyskytujícím. Vytváříme řešení, které se o to postarají.
 
 Najdete [oddílu Nejčastější dotazy](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) podrobné informace o podpoře nebo není podporované scénáře.
@@ -136,7 +129,7 @@ Kompromisy mezi možnostmi jsou možnosti správy, podrobnou kontrolu a náklady
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Nastavení oprávnění pro jiné - Tržiště virtuálních počítačů SQL
 
-Zálohování virtuálního počítače, vyžaduje Azure Backup **AzureBackupWindowsWorkload** rozšíření k instalaci. Pokud používáte virtuální počítače Azure Marketplace, i nadále [databáze SQL serveru zjistit](backup-azure-sql-database.md#discover-sql-server-databases). Pokud virtuální počítač, který je hostitelem databáze SQL není vytvořen z Azure Marketplace, proveďte následující postup k instalaci rozšíření a nastavte příslušná oprávnění. Kromě **AzureBackupWindowsWorkload** rozšíření, Azure Backup vyžaduje oprávnění správce systému SQL pro ochranu databáze SQL. Chcete-li zjistit databáze na virtuálním počítači, Azure Backup vytvoří účet **NT Service\AzureWLBackupPluginSvc**. Tento účet se používá pro zálohování a obnovení a musí mít oprávnění správce systému SQL. Kromě toho bude využívat Azure Backup **NT AUTHORITY\SYSTEM** účet pro zjišťování DB nebo dotaz, aby tento účet musí být veřejné přihlášení na SQL.
+Zálohování virtuálního počítače, vyžaduje Azure Backup **AzureBackupWindowsWorkload** rozšíření k instalaci. Pokud používáte virtuální počítače Azure Marketplace, i nadále [databáze SQL serveru zjistit](backup-azure-sql-database.md#discover-sql-server-databases). Pokud virtuální počítač, který je hostitelem databáze SQL není vytvořen z Azure Marketplace, proveďte následující postup k instalaci rozšíření a nastavte příslušná oprávnění. Kromě **AzureBackupWindowsWorkload** rozšíření, Azure Backup vyžaduje oprávnění správce systému SQL pro ochranu databáze SQL. Chcete-li zjistit databáze na virtuálním počítači, Azure Backup vytvoří účet **NT SERVICE\AzureWLBackupPluginSvc**. Tento účet se používá pro zálohování a obnovení a musí mít oprávnění správce systému SQL. Kromě toho bude využívat Azure Backup **NT AUTHORITY\SYSTEM** účet pro zjišťování DB nebo dotaz, aby tento účet musí být veřejné přihlášení na SQL.
 
 Ke konfiguraci oprávnění:
 
@@ -182,7 +175,7 @@ Během procesu instalace, pokud se zobrazí chyba `UserErrorSQLNoSysadminMembers
 
     ![V části přihlášení – nové dialogové okno, vyberte hledání](./media/backup-azure-sql-database/new-login-search.png)
 
-3. Účet služby Windows virtuální **NT Service\AzureWLBackupPluginSvc** jste vytvořili během registrace virtuálního počítače a fázi zjišťování SQL. Zadejte název účtu, jak je znázorněno **zadejte název objektu k výběru** pole. Vyberte **Kontrola názvů** přeložit název.
+3. Účet služby Windows virtuální **NT SERVICE\AzureWLBackupPluginSvc** jste vytvořili během registrace virtuálního počítače a fázi zjišťování SQL. Zadejte název účtu, jak je znázorněno **zadejte název objektu k výběru** pole. Vyberte **Kontrola názvů** přeložit název.
 
     ![Vyberte Zkontrolovat jména k přeložení názvu služby neznámý](./media/backup-azure-sql-database/check-name.png)
 

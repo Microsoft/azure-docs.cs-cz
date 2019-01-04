@@ -3,16 +3,15 @@ title: Optimalizace času dotazu ve službě Azure Database for PostgreSQL pomoc
 description: Tento článek popisuje způsob optimalizace dotazů, když se informační zpráva strategie úložiště tabulky ve službě Azure Database pro PostgreSQL server.
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: dee8aaaef4b1998a7234a88d07ad5efbc79d050b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1fb818a65e26f969f72131b0f5265f3efdd36bb6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628960"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542195"
 ---
 # <a name="optimizing-query-time-with-toast-table-storage-strategy"></a>Optimalizace době zpracování dotazu se strategie úložiště tabulky informační zprávy 
 Tento článek popisuje, jak optimalizovat dotaz časy s strategie úložiště tabulky informační zprávy.
@@ -32,4 +31,4 @@ Pokud máte úlohu pomocí schématu s širokých tabulek a počty Vysoký znak,
 ## <a name="next-steps"></a>Další postup
 Zkontrolujte vaše úlohy pro výše uvedených charakteristik. 
 
-Projděte si následující dokumentaci k PostgreSQL: [kapitoly 68 fyzické úložiště databáze](https://www.postgresql.org/docs/current/storage-toast.html) 
+Projděte si následující dokumentaci k PostgreSQL: [Kapitola 68, fyzické úložiště databáze](https://www.postgresql.org/docs/current/storage-toast.html) 

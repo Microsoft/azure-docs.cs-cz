@@ -11,20 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: df9470813f3f9c3bff58882879c06e7b7b0fc15b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 9657fd448f6fb98eec87a5999af100d4d08594e5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379600"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717717"
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Vyměňovat hardwarové součásti uzlu jednotek škálování v Azure stacku
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
-Tento článek popisuje obecný postup k nahrazení hardwarové součásti, které jsou mimo za provozu. Skutečné nahrazení, který se postup lišit podle dodavatele hardwaru, výrobce OEM (OEM). Dokumentaci od dodavatele pole vyměnitelná jednotka (FRU) podrobné pokyny, které jsou specifické pro systém Azure Stack integrované.
+Tento článek popisuje obecný postup k nahrazení hardwarové součásti, které jsou mimo za provozu. Skutečné nahrazení, který se postup lišit podle dodavatele hardwaru, výrobce OEM (OEM). Konkrétní podrobný postup pro váš integrovaný systém Azure Stack najdete v dokumentaci k jednotce nahraditelné v terénu od vašeho dodavatele.
 
 Bez za provozu součásti zahrnují následující:
 
@@ -54,21 +54,23 @@ Stav služby Azure Stack a systém monitorování sledují stav síťových adap
 
 Následující kroky obsahují podrobný přehled proces nahrazení komponenty. Nepostupujte podle těchto kroků bez ohledu na dokumentaci k FRU poskytnutou výrobcem OEM.
 
-1. Použití [vyprázdnit](azure-stack-node-actions.md#scale-unit-node-actions) akce Vložit škálovací jednotku uzel do režimu údržby. Tato akce nemusí být vyžadovány na základě podmínky fyzického hardwaru.
+1. Použijte akci vypnutí řádně vypnout uzel jednotek škálování. Tato akce nemusí být vyžadovány na základě podmínky fyzického hardwaru.
 
-   > [!NOTE]
-   > V každém případě pouze jeden uzel vyprázdnit a vypnutý ve stejnou dobu, aniž by vás to S2D (prostory úložiště – přímé).
+2. V nepravděpodobném případě, která akci vypnutí nezdaří, použijte [vyprázdnit](azure-stack-node-actions.md#drain) akce Vložit škálovací jednotku uzel do režimu údržby. Tato akce nemusí být vyžadovány na základě podmínky fyzického hardwaru.
 
-2. Po uzlu škálovací jednotku je v režimu údržby, použijte [vypnutí](azure-stack-node-actions.md#scale-unit-node-actions) akce. Tato akce nemusí být vyžadovány na základě podmínky fyzického hardwaru.
+   > [!NOTE]  
+   > V každém případě můžete jenom jeden uzel zakázána a vypnutý ve stejnou dobu, aniž by vás to S2D (prostory úložiště – přímé).
 
-   > [!NOTE]
+3. Po uzlu škálovací jednotku je v režimu údržby, použijte [vypnutí](azure-stack-node-actions.md#scale-unit-node-actions) akce. Tato akce nemusí být vyžadovány na základě podmínky fyzického hardwaru.
+
+   > [!NOTE]  
    > V nepravděpodobném případě vypnout akce nefunguje místo toho použijte webové rozhraní řadič pro správu základní desky.
 
-3. Nahraďte poškozený hardwarová komponenta. Zda OEM dodavatele hardwaru provede nahrazení komponenty může lišit v závislosti na vaší smlouvu o podpoře.  
-4. Aktualizace firmwaru. Postupujte podle váš proces aktualizace firmwaru specifického pro dodavatele pomocí životního cyklu hostitelů hardware zajistěte, aby že nahradil hardwarová komponenta byla schválené firmware úroveň použít. Zda OEM dodavatele hardwaru provádí tento krok může lišit v závislosti na vaší smlouvu o podpoře.  
-5. Použití [opravit](azure-stack-node-actions.md#scale-unit-node-actions) akce vrací do stavu uzlu jednotky škálování jednotek škálování.
-6. Použít privilegovaný koncový bod pro [zkontrolovat stav oprava virtuálního disku](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Úloha opravy celé úložiště pomocí nové datové jednotky, může trvat několik hodin v závislosti na zatížení systému a využité místo.
-7. Po dokončení akce opravy, ověřte, že byly automaticky zavřeny všechny aktivní výstrahy.
+4. Nahraďte poškozený hardwarová komponenta. Zda OEM dodavatele hardwaru provede nahrazení komponenty může lišit v závislosti na vaší smlouvu o podpoře.  
+5. Aktualizace firmwaru. Postupujte podle váš proces aktualizace firmwaru specifického pro dodavatele pomocí životního cyklu hostitelů hardware zajistěte, aby že nahradil hardwarová komponenta byla schválené firmware úroveň použít. Zda OEM dodavatele hardwaru provádí tento krok může lišit v závislosti na vaší smlouvu o podpoře.  
+6. Použití [opravit](azure-stack-node-actions.md#scale-unit-node-actions) akce vrací do stavu uzlu jednotky škálování jednotek škálování.
+7. Použít privilegovaný koncový bod pro [zkontrolovat stav oprava virtuálního disku](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). Úloha opravy celé úložiště pomocí nové datové jednotky, může trvat několik hodin v závislosti na zatížení systému a využité místo.
+8. Po dokončení akce opravy, ověřte, že byly automaticky zavřeny všechny aktivní výstrahy.
 
 ## <a name="next-steps"></a>Další postup
 

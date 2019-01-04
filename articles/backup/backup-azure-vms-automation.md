@@ -9,25 +9,26 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 814afb8731f8e4da3d3cbc75ef69c3b5da487914
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f2cdeea546e7153c63cb1edfbc53f3644facc4f2
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877857"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743897"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Použití Powershellu k zálohování a obnovení virtuálních počítačů
 
-Tento článek ukazuje, jak pomocí rutin Azure Powershellu k zálohování a obnovení Azure virtuálního počítače (VM) z trezoru služby Recovery Services. Trezor služby Recovery Services je prostředek Azure Resource Manageru použít k ochraně dat a assetů ve službě Azure Backup a Azure Site Recovery services. 
+Tento článek ukazuje, jak pomocí rutin Azure Powershellu k zálohování a obnovení Azure virtuálního počítače (VM) z trezoru služby Recovery Services. Trezor služby Recovery Services je prostředek Azure Resource Manageru použít k ochraně dat a assetů ve službě Azure Backup a Azure Site Recovery services.
 
 > [!NOTE]
-> Azure obsahuje dva modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek je určený pro použití s virtuálními počítači vytvořené pomocí modelu Resource Manageru.
+> Azure nabízí dva modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek je určený pro použití s virtuálními počítači vytvořené pomocí modelu Resource Manageru.
 >
 >
 
 Tento článek vás provede pomocí prostředí PowerShell k ochraně virtuálního počítače a obnovení dat z bodu obnovení.
 
 ## <a name="concepts"></a>Koncepty
+
 Pokud nejste obeznámeni se službou Azure Backup, získáte přehled o službě, přečtěte si článek, [co je Azure Backup?](backup-introduction-to-azure-backup.md) Než začnete, ujistěte se, že jste zahrnuli součásti potřebné Azure Backup a omezení aktuálního řešení zálohování virtuálního počítače.
 
 Jak efektivně pomocí prostředí PowerShell, je nezbytné pro zjištění hierarchie objektů a ze které se mají spustit.
@@ -43,7 +44,7 @@ Chcete-li začít:
 1. [Stáhněte si nejnovější verzi prostředí PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (minimální požadovaná verze je: 1.4.0)
 
 2. Vyhledání dostupných rutin Powershellu pro zálohování Azure tak, že zadáte následující příkaz:
-   
+
     ```powershell
     Get-Command *azurermrecoveryservices*
     ```    
@@ -311,7 +312,7 @@ $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "Az
 $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení
+### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení.
 
 Použití **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** rutiny pro zobrazení seznamu všech bodů obnovení zálohované položky. Zvolte bod obnovení pro obnovení. Pokud si nejste jistí, který bod obnovení používat, je vhodné zvolte nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
@@ -326,7 +327,7 @@ $rp[0]
 
 Výstup se podobá následujícímu příkladu:
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -350,6 +351,7 @@ Chcete-li obnovit disky a konfigurační informace:
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG"
 $restorejob
 ```
+
 #### <a name="restore-managed-disks"></a>Obnovení spravovaných disků
 
 > [!NOTE]
@@ -359,16 +361,15 @@ $restorejob
 
 Zadejte další parametr **TargetResourceGroupName** k určení RG, ke kterému se obnovit spravované disky.
 
-
 ```powershell
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"
 ```
 
 **VMConfig.JSON** soubor se obnoví do účtu úložiště a spravované disky se obnoví do zadané cílové RG.
 
-
 Výstup se podobá následujícímu příkladu:
-```
+
+```powershell
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -397,6 +398,27 @@ Po obnovení disků použijte následující kroky k vytvoření a konfigurace v
 > Vytvořit z obnovených disků šifrovaných virtuálních počítačů, Azure role musí mít oprávnění k provedení akce, **Microsoft.KeyVault/vaults/deploy/action**. Pokud vaše role toto oprávnění nemá, vytvořte vlastní roli s touto akcí. Další informace najdete v tématu [vlastní role Azure RBAC](../role-based-access-control/custom-roles.md).
 >
 >
+
+> [!NOTE]
+> Po obnovení disků, teď můžete získat šablonu nasazení, který můžete přímo použít k vytvoření nového virtuálního počítače. Žádné další různé rutiny PS k vytvoření virtuálních počítačů spravované nebo nespravované, které jsou šifrované a nešifrované.
+
+Podrobnosti o výsledné úloze poskytuje šablona identifikátoru URI, které jde dotazovat a nasadit.
+
+```powershell
+   $properties = $details.properties
+   $templateBlobURI = $properties["Template Blob Uri"]
+```
+
+Nasadit šablonu, kterou chcete vytvořit nový virtuální počítač, jak je vysvětleno [tady](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy#deploy-a-template-from-an-external-source).
+
+```powershell
+New-AzureRmResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS
+```
+
+V následující části jsou uvedené kroky potřebné k vytvoření virtuálního počítače pomocí souboru "Funkce".
+
+> [!NOTE]
+> Důrazně doporučujeme použít šablonu nasazení, které jsou podrobně popsané výše vytvořte virtuální počítač. V této části (body 1 až 6) bude brzy přestanou používat.
 
 1. Dotaz na vlastnosti obnoveného disku pro podrobnosti o úloze.
 
@@ -476,14 +498,14 @@ Po obnovení disků použijte následující kroky k vytvoření a konfigurace v
    * **Spravovaný a bez šifrování virtuálního počítače** – spravované nešifrované virtuální počítače, připojit obnovenou spravované disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md).
 
    * **Spravovat a šifrovaných virtuálních počítačů (pouze klíče BEK)** – spravovaných šifrovaných virtuálních počítačů (šifrované pomocí klíče BEK pouze), připojení obnovené spravované disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md).
-   
-      Pomocí následujícího příkazu ručně povolit šifrování pro datové disky.
+
+     Pomocí následujícího příkazu ručně povolit šifrování pro datové disky.
 
        ```powershell
        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
        ```
 
-   * **Spravovat a šifrovaných virtuálních počítačů (klíče BEK a KEK)** – spravovaných šifrovaných virtuálních počítačů (šifrované pomocí klíče BEK a KEK), připojení obnovené spravované disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md). 
+   * **Spravovat a šifrovaných virtuálních počítačů (klíče BEK a KEK)** – spravovaných šifrovaných virtuálních počítačů (šifrované pomocí klíče BEK a KEK), připojení obnovené spravované disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md).
 
       Pomocí následujícího příkazu ručně povolit šifrování pro datové disky.
 
@@ -516,11 +538,10 @@ Kromě obnovení disků, můžete také obnovit jednotlivé soubory ze zálohy v
 Toto jsou základní kroky obnovení souboru ze zálohy virtuálního počítače Azure:
 
 * Vyberte virtuální počítač
-* Zvolte bod obnovení
+* Zvolte bod obnovení.
 * Připojte disky bod obnovení
 * Zkopírujte požadované soubory
 * Odpojení disku
-
 
 ### <a name="select-the-vm"></a>Vyberte virtuální počítač
 
@@ -531,7 +552,7 @@ $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "Az
 $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení
+### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení.
 
 Použití **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** rutiny pro zobrazení seznamu všech bodů obnovení zálohované položky. Zvolte bod obnovení pro obnovení. Pokud si nejste jistí, který bod obnovení používat, je vhodné zvolte nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
@@ -575,7 +596,7 @@ Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 Výstup se podobá následujícímu příkladu:
 
-```
+```powershell
 OsType  Password        Filename
 ------  --------        --------
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe

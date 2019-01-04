@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308206"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653301"
 ---
-# <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix osvědčené postupy z hlediska výkonu
+# <a name="apache-phoenix-performance-best-practices"></a>Osvědčené postupy pro Apache Phoenix z hlediska výkonu
 
-Nejdůležitější aspekty [Apache Phoenix](https://phoenix.apache.org/) výkonu je k optimalizaci základní [Apache HBase](http://hbase.apache.org/). Phoenix vytvoří relačním datovým modelem nad HBase, který převádí dotazy SQL HBase operace, jako je prohledávání. Phoenix výkon ovlivnit návrh schéma tabulky, výběr a pořadí polí ve primárního klíče a vaše využití všechny indexy.
+Nejdůležitější aspekty [Apache Phoenix](https://phoenix.apache.org/) výkonu je k optimalizaci základní [Apache HBase](https://hbase.apache.org/). Phoenix vytvoří relačním datovým modelem nad HBase, který převádí dotazy SQL HBase operace, jako je prohledávání. Phoenix výkon ovlivnit návrh schéma tabulky, výběr a pořadí polí ve primárního klíče a vaše využití všechny indexy.
 
 ## <a name="table-schema-design"></a>Návrh schématu tabulky
 
@@ -225,9 +225,9 @@ Pokud váš scénář upřednostňuje rychlost zápisu před integritu dat, zva�
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-Podrobnosti o tomto a dalších možností najdete v tématu [Phoenix gramatiky](http://phoenix.apache.org/language/index.html#options).
+Podrobnosti o tomto a dalších možností najdete v tématu [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html#options).
 
 ## <a name="next-steps"></a>Další postup
 
 * [Průvodci optimalizací Apache Phoenix](https://phoenix.apache.org/tuning_guide.html)
-* [Sekundární indexy](http://phoenix.apache.org/secondary_indexing.html)
+* [Sekundární indexy](https://phoenix.apache.org/secondary_indexing.html)

@@ -108,8 +108,8 @@ Při vytváření cloudové služby nebo služba úložiště, je třeba zadat p
 * Jihovýchodní Asie
 * Východní Asie
 * USA – střed
-* Střed USA – sever
-* Střed USA – jih
+* Středoseverní USA
+* Středojižní USA
 * Západní USA
 * USA – východ
 * Japonsko – východ

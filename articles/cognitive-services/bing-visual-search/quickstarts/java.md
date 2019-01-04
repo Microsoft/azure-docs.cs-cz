@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vytvoření dotazu pro vizuální vyhledávání, Java – Vizuální vyhledávání Bingu'
+title: 'Rychlý start: Získejte přehledy obrázků pomocí API REST pro vizuální vyhledávání Bingu a Java'
 titleSuffix: Azure Cognitive Services
-description: Zde najdete informace, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat zpět přehledy o obrázku.
+description: Zjistěte, jak k nahrání obrázku do Visual API Bingu pro vyhledávání a získávat přehledy o něm.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,18 +10,18 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: c1b63b12a48f5ccfb1a396ffa9282249b03893fe
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 148d145dae01fffdf7a4c650a0e2b20f8387295a
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445170"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742180"
 ---
-# <a name="quickstart-your-first-bing-visual-search-query-in-java"></a>Rychlý start: Váš první dotaz Vizuálního vyhledávání Bingu v Javě
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Rychlý start: Získejte přehledy obrázků pomocí API REST pro vizuální vyhledávání Bingu a Java
 
-Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který poskytnete. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v článku [Co je rozhraní API pro vizuální vyhledávání Bingu?](../overview.md) Tento článek ukazuje nahrávání obrázku. Nahrání obrázku může být užitečné v situacích s mobilním zařízením, když pořídíte snímek dobře známé pamětihodnosti a získáte o ní informace. Přehledy můžou například obsahovat základní informace o pamětihodnosti. 
+V tomto rychlém startu můžete provést první volání do rozhraní API vizuální vyhledávání Bingu a zobrazení výsledků hledání. Tento jednoduchý C# aplikace odešle obrázek do rozhraní API a zobrazí informace vrácené o něm. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Pokud nahrajete místní obrázek, ukazuje následující kód data formuláře, která musíte zahrnout do textu žádosti POST. Data formuláře musí obsahovat hlavičku Content-Disposition. Jeho parametr `name` musí být nastavený na "image" a parametr `filename` může být nastavený na libovolný řetězec. Obsah formuláře je binární soubor obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB. 
+Při nahrávání místní image, data formuláře musí zahrnovat hlavičku Content-Disposition. Její parametr `name` musí být nastavený na "image" a parametr `filename` může být nastavený na libovolný řetězec. Obsah formuláře je binární soubor obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -32,132 +32,102 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-Tento článek obsahuje jednoduchou konzolovou aplikaci, která pošle žádost do rozhraní API pro vizuální vyhledávání Bingu a zobrazí výsledky hledání JSON. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
-
-
 ## <a name="prerequisites"></a>Požadavky
-Pro účely tohoto rychlého startu budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
 
-K zahájení předplatného na webu Azure portal:
-1. Zadejte do textového pole v horní části webu Azure portal s textem "BingSearchV7" `Search resources, services, and docs`.  
-2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
-3. Zadejte `Name` pro nový prostředek.
-4. Vyberte `Pay-As-You-Go` předplatného.
-5. Vyberte `S9` cenovou úroveň.
-6. Klikněte na tlačítko `Enable` k zahájení odběru.
+* [Java Development Kit (JDK) 7 nebo 8](https://aka.ms/azure-jdks)
+* [Knihovna Gson](https://github.com/google/gson)
+* [Apache HttpComponents](http://hc.apache.org/downloads.cgi)
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://aka.ms/azure-jdks). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
-## <a name="running-the-application"></a>Spouštění aplikace.
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-Následující příklad ukazuje, jak nahrát obrázek pomocí MultipartEntityBuilder v jazyce Java.
+## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-Pokud chcete tuto aplikaci spustit, postupujte následovně:
+1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny.
 
-1. Stáhněte si nebo nainstalujte [knihovnu gson](https://github.com/google/gson). Můžete ji také získat prostřednictvím systému Maven.
-2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
-3. Přidejte poskytnutý kód do souboru s názvem `VisualSearch.java`.
-4. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
-4. Hodnotu `imagePath` nahraďte cestou nahrávaného obrázku.
-5. Spusťte program.
+    ```java
+    import java.util.*;
+    import java.io.*;
+    import com.google.gson.Gson;
+    import com.google.gson.GsonBuilder;
+    import com.google.gson.JsonObject;
+    import com.google.gson.JsonParser;
+    
+    // HttpClient libraries
+    
+    import org.apache.http.HttpEntity;
+    import org.apache.http.HttpResponse;
+    import org.apache.http.client.methods.HttpPost;
+    import org.apache.http.entity.ContentType;
+    import org.apache.http.entity.mime.MultipartEntityBuilder;
+    import org.apache.http.impl.client.CloseableHttpClient;
+    import org.apache.http.impl.client.HttpClientBuilder;
+    ```
 
+2. Vytváření proměnných pro váš koncový bod rozhraní API, klíč předplatného a cestu k bitové kopii. 
+
+    ```java
+    static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
+    static String subscriptionKey = "your-key-here";
+    static String imagePath = "path-to-your-image";
+    ```
+
+## <a name="create-the-json-parser"></a>Vytvoření analyzátor JSON
+
+Vytvořit metodu odpověď JSON z rozhraní API lépe čitelný pomocí `JsonParser`.
+
+    ```java
+    public static String prettify(String json_text) {
+            JsonParser parser = new JsonParser();
+            JsonObject json = parser.parse(json_text).getAsJsonObject();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(json);
+        }
+    ```
+
+## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
+
+1. V hlavní metodě aplikace vytvořit klienta Http pomocí `HttpClientBuilder.create().build();`.
+
+    ```java
+    CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+    ```
+
+2. Vytvoření `HttpEntity` k nahrajete svou image do rozhraní API.
+
+    ```java
+    HttpEntity entity = MultipartEntityBuilder
+        .create()
+        .addBinaryBody("image", new File(imagePath))
+        .build();
+    ```
+
+3. Vytvoření `httpPost` objekt s váš koncový bod a nastavte záhlaví používat váš klíč předplatného.
+
+    ```java
+    HttpPost httpPost = new HttpPost(endpoint);
+    httpPost.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+    httpPost.setEntity(entity);
+    ```
+
+## <a name="receive-and-process-the-json-response"></a>Příjem a zpracování odpovědi JSON
+
+1. Použití `HttpClient.execute()` odeslat požadavek na rozhraní API a uložení odpovědi v `InputStream` objektu.
+    
+    ```java
+    HttpResponse response = httpClient.execute(httpPost);
+    InputStream stream = response.getEntity().getContent();
+    ```
+
+2. Store řetězec formátu JSON a tisku na odpověď.
 
 ```java
-package uploadimage;
-
-import java.util.*;
-import java.io.*;
-
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.2
- *
- * Once you have compiled or downloaded gson-2.8.2.jar, assuming you have placed it in the
- * same folder as this file (BingImageSearch.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac BingImageSearch.java -classpath .;gson-2.8.2.jar -encoding UTF-8
- * java -cp .;gson-2.8.2.jar BingImageSearch
- */
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-// http://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-
-
-public class UploadImage2 {
-
-    static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
-    static String subscriptionKey = "<yoursubscriptionkeygoeshere";
-    static String imagePath = "<pathtoyourimagetouploadgoeshere>";
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        
-        try {
-            HttpEntity entity = MultipartEntityBuilder
-                .create()
-                .addBinaryBody("image", new File(imagePath))
-                .build();
-
-            HttpPost httpPost = new HttpPost(endpoint);
-            httpPost.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            httpPost.setEntity(entity);
-            HttpResponse response = httpClient.execute(httpPost);
-
-            InputStream stream = response.getEntity().getContent();
-            String json = new Scanner(stream).useDelimiter("\\A").next();
-
-            System.out.println("\nJSON Response:\n");
-            System.out.println(prettify(json));
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace(System.out);
-            System.exit(1);
-        }
-        catch (Exception e) {
-            e.printStackTrace(System.out);
-            System.exit(1);
-        }
-    }
-    
-    // pretty-printer for JSON; uses GSON parser to parse and re-serialize
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-    
-}
+String json = new Scanner(stream).useDelimiter("\\A").next();
+System.out.println("\nJSON Response:\n");
+System.out.println(prettify(json));
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-[Získání přehledu o obrázku pomocí tokenu insights](../use-insights-token.md)  
-[Kurz nahrávání obrázků Vizuálního vyhledávání Bingu](../tutorial-visual-search-image-upload.md)
-[Kurz k jednostránkové aplikaci Vizuálního vyhledávání Bingu](../tutorial-bing-visual-search-single-page-app.md)  
-[Přehled Vizuálního vyhledávání Bingu](../overview.md)  
-[Vyzkoušejte si to](https://aka.ms/bingvisualsearchtryforfree)  
-[Získání bezplatné zkušební verze přístupového klíče](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Reference k rozhraní API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)
-
+> [!div class="nextstepaction"]
+> [Sestavení webové aplikace s vlastní vyhledávání](../tutorial-bing-visual-search-single-page-app.md)

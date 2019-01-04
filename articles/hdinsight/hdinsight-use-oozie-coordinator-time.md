@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 422ae24357290a782b05ab7e5580c09e8472ddf8
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6e45dfbea9545c72d80a17e8ae144f4dacc70a63
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408659"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995010"
 ---
 # <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Použití koordinátoru Apache Oozie založeného na čase s Apache Hadoop v HDInsight k definování pracovních postupů a koordinace úloh
 V tomto článku se dozvíte, jak definovat pracovní postupy a koordinátory a jak aktivovat koordinátor úlohy, na základě času. Je užitečné projít [použití Apache Oozie s HDInsight] [ hdinsight-use-oozie] předtím, než v tomto článku. Kromě Oozie toho můžete také plánovat úlohy pomocí služby Azure Data Factory. Další služby Azure Data Factory najdete v tématu [použití Apache Pig a Apache Hivu se službou Data Factory](../data-factory/transform-data.md).
@@ -718,7 +718,7 @@ V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a Oozie coordi
 * [Použití Apache Pig s HDInsight][hdinsight-use-pig]
 * [Vývoj programů Java MapReduce pro HDInsight][hdinsight-develop-java-mapreduce]
 
-[hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
+[hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563
 
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
@@ -740,12 +740,12 @@ V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a Oozie coordi
 [azure-management-portal]: https://portal.azure.com/
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
-[apache-hadoop]: http://hadoop.apache.org/
-[apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
-[apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
+[apache-hadoop]: https://hadoop.apache.org/
+[apache-oozie-400]: https://oozie.apache.org/docs/4.0.0/
+[apache-oozie-332]: https://oozie.apache.org/docs/3.3.2/
 
 [powershell-download]: https://azure.microsoft.com/downloads/
-[powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
+[powershell-about-profiles]: https://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
@@ -756,4 +756,4 @@ V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a Oozie coordi
 [img-preparation-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

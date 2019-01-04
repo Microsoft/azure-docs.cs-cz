@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: ce0c51a3b97c57095a336128919c5e27f860905b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1e35513d5a5a799b1f5e45cf9a5aa97c083e2087
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676466"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725197"
 ---
 # <a name="devtest-labs-concepts"></a>Koncepce DevTest Labs
 ## <a name="overview"></a>Přehled
@@ -29,7 +29,7 @@ Následující seznam obsahuje klíčové koncepce DevTest Labs a definice:
 Testovací prostředí je infrastrukturu, která zahrnuje skupinu prostředků, třeba Virtual Machines (VM), která vám umožní lépe spravovat tyto prostředky zadáním omezení a kvóty.
 
 ## <a name="virtual-machine"></a>Virtuální počítač
-Virtuální počítač Azure je jedním z několika typů [výpočetních prostředků na vyžádání, škálovatelné](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm) , které Azure nabízí. Virtuální počítače Azure poskytují flexibilitu virtualizace bez nutnosti zakoupení a údržby fyzického hardwaru, na kterém běží, i když je stále potřeba údržbě virtuálního počítače pomocí provádí některé úkoly, jako jsou konfigurace, opravy a instalaci softwaru, který běží na ho.
+Virtuální počítač Azure je jedním z několika typů [výpočetních prostředků na vyžádání, škálovatelné](https://docs.microsoft.com/azure/app-service/overview-compare) , které Azure nabízí. Virtuální počítače Azure poskytují flexibilitu virtualizace bez nutnosti zakoupení a údržby fyzického hardwaru, na kterém běží, i když je stále potřeba údržbě virtuálního počítače pomocí provádí některé úkoly, jako jsou konfigurace, opravy a instalaci softwaru, který běží na ho.
 
 [Přehled virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) poskytuje informace o co byste měli zvážit před vytvoření virtuálního počítače, jak vytvořit a jak ho spravovat.
 

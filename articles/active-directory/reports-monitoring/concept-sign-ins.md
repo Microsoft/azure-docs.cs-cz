@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d3705267520087e098e3e2bcc55e677935dc6097
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 5607dd0f3c682915f1a64edcc5e946491bab5279
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275329"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653352"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -44,7 +44,7 @@ Toto téma poskytuje přehled o sestavy přihlášení.
 * Kromě toho může každý uživatel (bez oprávnění správce) přístup k vlastní přihlášení 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaká licence Azure AD je potřeba pro přístup k přihlašovací aktivitě?
-* Klient musí mít přiřazenou licenci Azure AD Premium, aby mohl zobrazit sestavu veškerých aktivit přihlašování.
+* Váš tenant musí mít licenci Azure AD Premium přidružené ho, abyste viděli sestavu aktivity všech přihlášení. Zobrazit [Začínáme se službou Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) upgradovat edici Azure Active Directory.
 
 ## <a name="sign-ins-report"></a>Sestava přihlášení
 

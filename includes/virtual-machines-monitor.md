@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c2924380ef5175b330deb5052a962bfecf820ae
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399825"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594157"
 ---
 Můžete využít výhod množství příležitostí k monitorování virtuálních počítačů shromažďování, zobrazení a analýza diagnostických a protokolovat data. Provést jednoduché [monitorování](../articles/azure-monitor/overview.md) vašeho virtuálního počítače, můžete použít obrazovka s přehledem pro virtuální počítač na webu Azure Portal. Můžete použít [rozšíření](../articles/virtual-machines/windows/extensions-features.md) ke konfiguraci diagnostiky na virtuálních počítačích shromažďovat další data metriky. Můžete použít také pokročilejší možnosti monitorování, jako například [Application Insights](../articles/application-insights/app-insights-overview.md) a [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -43,23 +43,23 @@ Můžete vytvořit [výstrahy](../articles/azure-monitor/platform/alerts-overvie
 
 ## <a name="logs"></a>Logs
 
-[Protokolu aktivit Azure](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) je předplatné protokol, který poskytuje podrobné informace o události na úrovni předplatného, ke kterým došlo v Azure. V protokolu obsahuje celou řadu dat z Azure Resource Manageru provozních dat k aktualizacím na události služby Service Health. Protokol aktivit můžete kliknout na webu Azure Portal do zobrazení protokolu pro váš virtuální počítač.
+[Protokolu aktivit Azure](../articles/azure-monitor/platform/activity-logs-overview.md) je předplatné protokol, který poskytuje podrobné informace o události na úrovni předplatného, ke kterým došlo v Azure. V protokolu obsahuje celou řadu dat z Azure Resource Manageru provozních dat k aktualizacím na události služby Service Health. Protokol aktivit můžete kliknout na webu Azure Portal do zobrazení protokolu pro váš virtuální počítač.
 
 Některé z akcí, které vám pomůžou s protokolu aktivit patří:
 
-- Vytvoření [výstrahu pro událost protokolu aktivit](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
-- [Stream do centra událostí](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
+- Vytvoření [výstrahu pro událost protokolu aktivit](../articles/azure-monitor/platform/activity-logs-overview.md).
+- [Stream do centra událostí](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
 - Analyzovat pomocí Power BI [balíček obsahu Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 - [Uložte ho do účtu úložiště](../articles/azure-monitor/platform/archive-activity-log.md) pro archivaci nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech) pomocí profilu protokolu.
 
 Data protokolu aktivit se můžete dostat taky pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor), nebo [monitorování rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/).
 
-[Diagnostické protokoly Azure](../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) jsou protokoly generované ve vašem virtuálním počítači, které poskytují bohatou, časté data o její činnosti. Diagnostické protokoly se liší od protokolů aktivit tím, že poskytuje dokonalý přehled o operacích provedených ve virtuálním počítači.
+[Diagnostické protokoly Azure](../articles/azure-monitor/platform/diagnostic-logs-overview.md) jsou protokoly generované ve vašem virtuálním počítači, které poskytují bohatou, časté data o její činnosti. Diagnostické protokoly se liší od protokolů aktivit tím, že poskytuje dokonalý přehled o operacích provedených ve virtuálním počítači.
 
 Některé z akcí, které vám pomůžou s diagnostických protokolů patří:
 
 - [Uložit do účtu úložiště](../articles/azure-monitor/platform/archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech), pomocí nastavení diagnostiky prostředku.
-- [Stream do služby Event Hubs](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
+- [Stream do služby Event Hubs](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
 - Analyzovat pomocí [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování

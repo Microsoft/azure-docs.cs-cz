@@ -1,7 +1,7 @@
 ---
 title: Zabránit obsahu překladu – Translator Text API
 titlesuffix: Azure Cognitive Services
-description: Zakázat posunutí obsahu s Translator Text API.
+description: Zakázat posunutí obsahu s rozhraním Translator Text API.
 services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: v-jansko
-ms.openlocfilehash: b012201bcb9e0aece3d7e1ddd4f771643088af76
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 70bc4a50240abd8e4b67ff572f8c472f7519569a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52683375"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556845"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Jak zabránit překlad obsahu s rozhraním Translator Text API
 
@@ -37,7 +37,7 @@ Translator Text API vám umožní obsah značky tak, aby není přeložen. Můž
 
 4. Nepředávejte řetězec rozhraní Translator Text API pro překlad.
 
-5. Vlastní Translator: Použít [slovníku v vlastní Translator](custom-translator/what-is-dictionary.md) stanovit překladu věty se 100 % pravděpodobností.
+5. Vlastní Translator: Použití [slovníku v vlastní Translator](custom-translator/what-is-dictionary.md) stanovit překladu věty se 100 % pravděpodobností.
 
 
 ## <a name="next-steps"></a>Další postup

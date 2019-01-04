@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 1f53d87d6de76c0ff6954c9bd38d95e05981d822
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499471"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584526"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Úvod do služby ML a možnosti open-source jazyka R v HDInsight
 
-> [!NOTE]
+> [!NOTE]  
 > V září 2017 byla vydána Microsoft R serveru v rámci nový název **Microsoft Machine Learning Server** nebo ML Server. V důsledku toho se teď nazývá clusteru R serveru v HDInsight **Machine Learning Services** nebo **služby ML** clusteru v HDInsight. Další informace o změně názvu R serveru, naleznete v tématu [Microsoft R Server je teď Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server).
 
 Microsoft Machine Learning Server je dostupná jako možnost nasazení, při vytváření clusterů HDInsight v Azure. Typ clusteru, který poskytuje tato možnost se nazývá **služby ML**. Tato funkce poskytuje datovým vědcům, statistikům a programátorům v R přístup na vyžádání ke škálovatelným, distribuovaným analytickým na HDInsight metodám služby.
@@ -29,7 +29,7 @@ Služby ML v HDInsight poskytuje nejnovější funkce pro analýzy založené na
 
 Hraničním uzlu clusteru poskytuje praktické místo k připojení ke clusteru a ke spuštění skriptů jazyka R. Díky hraniční uzel máte možnost spuštění paralelizované distribuované funkcí ScaleR mezi jádry hraničního uzlu serveru. Použít také na uzlech clusteru s využitím Hadoop Map Reduce nebo Apache Spark výpočetní kontext ScaleR společnosti.
 
-Modely nebo předpovědi, které jsou výsledkem analýzy si můžete stáhnout pro místní použití. Jejich lze také se mají zprovoznit jinde v Azure, zejména prostřednictvím [Azure Machine Learning Studio](http://studio.azureml.net) [webová služba](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
+Modely nebo předpovědi, které jsou výsledkem analýzy si můžete stáhnout pro místní použití. Jejich lze také se mají zprovoznit jinde v Azure, zejména prostřednictvím [Azure Machine Learning Studio](https://studio.azureml.net) [webová služba](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Začínáme se službou ML v HDInsight
 
@@ -72,7 +72,7 @@ Následující funkce jsou součástí služby ML v HDInsight.
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Možnosti úložiště dat pro služby ML v HDInsight
 
-Výchozí úložiště pro systém souborů HDFS clusterů HDInsight může být přidružené k účtu služby Azure Storage nebo Azure Data Lake Store. Toto přidružení se zajistí, že požadovaná data se nahraje do clusteru se provádí trvalého úložiště během analýzy a data jsou k dispozici i po odstranění clusteru. Existují různé nástroje pro přenosy dat, který vyberete, včetně zařízení nahrávání založené na portálu účtu úložiště, možnosti úložiště a [AzCopy](../../storage/common/storage-use-azcopy.md) nástroj.
+Výchozí úložiště pro systém souborů HDFS clusterů HDInsight může být přidružené k účtu služby Azure Storage nebo Azure Data Lake Storage. Toto přidružení se zajistí, že požadovaná data se nahraje do clusteru se provádí trvalého úložiště během analýzy a data jsou k dispozici i po odstranění clusteru. Existují různé nástroje pro přenosy dat, který vyberete, včetně zařízení nahrávání založené na portálu účtu úložiště, možnosti úložiště a [AzCopy](../../storage/common/storage-use-azcopy.md) nástroj.
 
 Máte možnost povolit přístup k další objektů Blob a ukládá Data lake během procesu bez ohledu na to možnost primární úložiště používá zřizování clusteru. Zobrazit [Začínáme se službou ML na HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started) informace o přidání přístupu na další účty. Zobrazit [možnosti služby Azure Storage pro služby ML v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) článku se dozvíte další informace o použití více účtů úložiště.
 

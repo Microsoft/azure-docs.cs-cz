@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b1bea9b1a2bdb04a60fa6a8fa1d92bfbaf80c6d6
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 2df24cfe217a9955a3abb08d042836821b083946
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320825"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580633"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Mít klasických upozornění na metriku oznámení do systému mimo Azure, pomocí webhooku
 Použití webhooků pro směrování Azure oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Webhooku v upozornění můžete směrovat do služby, které posílat SMS zprávy do protokolu chyb, které chcete upozornit tým prostřednictvím chatu nebo zasílání zpráv služby, nebo pro různé další akce. 
@@ -27,7 +27,7 @@ Chcete-li přidat nebo aktualizovat webhook identifikátor URI, v [webu Azure po
 
 ![Přidání pravidla výstrahy podokna](./media/alerts-webhooks/Alertwebhook.png)
 
-Můžete také nakonfigurovat výstrahu na Odeslat požadavek POST webhooku identifikátoru URI pomocí [rutin prostředí Azure PowerShell](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts), [– multiplatformního rozhraní příkazového řádku](../../azure-monitor/platform/cli-samples.md#work-with-alerts), nebo [REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Můžete také nakonfigurovat výstrahu na Odeslat požadavek POST webhooku identifikátoru URI pomocí [rutin prostředí Azure PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), [– multiplatformního rozhraní příkazového řádku](../../azure-monitor/platform/cli-samples.md#work-with-alerts), nebo [REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="authenticate-the-webhook"></a>Ověření se webhook.
 Webhook se ověřit pomocí ověřování založené na tokenech. Webhook identifikátoru URI je uložen s ID tokenu Příklad: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

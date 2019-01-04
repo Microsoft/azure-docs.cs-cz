@@ -2,27 +2,21 @@
 title: Globální distribuce služby Azure Cosmos DB
 description: Zjistěte, jak globálně replikovat data pomocí služby Azure Cosmos DB na webu Azure Portal.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/26/2018
-ms.author: sngun
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: fb9418d47d2888467e1c1c40862833029111b75b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38747527"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53796109"
 ---
-Informace o globální distribuci služby Azure Cosmos DB najdete v následujícím videu, kde Andrew Liu, manažer programu Azure Cosmos DB, prochází funkce globální distribuce.
-
->[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
-
-Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Cosmos DB](../articles/cosmos-db/distribute-data-globally.md).
-
 ## <a id="addregion"></a>Přidání globálních oblastí databáze pomocí webu Azure Portal
-Služba Azure Cosmos DB je dostupná ve všech [oblastech Azure][azureregions] po celém světe. Po výběru výchozí úrovně konzistence účtu databáze k němu můžete přidružit jednu nebo několik oblastí (v závislosti na výběru výchozí úrovně konzistence a potřebách globální distribuce).
+Azure Cosmos DB je k dispozici ve všech [oblastí Azure] [ azureregions] po celém světě. Po výběru výchozí úrovně konzistence účtu databáze k němu můžete přidružit jednu nebo několik oblastí (v závislosti na výběru výchozí úrovně konzistence a potřebách globální distribuce).
 
 1. V levém panelu na webu [Azure Portal](https://portal.azure.com/) klikněte na **Azure Cosmos DB**.
 2. Na stránce **Azure Cosmos DB** vyberte účet databáze, který chcete upravit.
@@ -41,7 +35,7 @@ Pro konfiguraci dvou nebo více oblastí existují dva běžné scénáře:
 
 Pro zajištění nízké latence pro koncové uživatele se doporučuje nasadit aplikaci i službu Azure Cosmos DB v oblastech, které odpovídají umístění uživatelů aplikace.
 
-Pro zajištění BCDR se doporučuje přidat oblasti podle spárovaných oblastí popsaných v článku [Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure][bcdr].
+Pro zajištění BCDR se doporučuje přidat oblasti podle spárovaných oblastí popsaných v [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Azure spárované oblasti] [ bcdr] článku.
 
 <!--
 

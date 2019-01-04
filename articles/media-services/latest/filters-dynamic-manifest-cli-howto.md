@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5aa617edf13aee9c5899a59c46aeb729f202719f
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133855"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744203"
 ---
 # <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku 
 
@@ -37,7 +37,7 @@ Toto téma ukazuje, jak konfigurovat filtr pro prostředek videa na vyžádání
 
 ## <a name="define-a-filter"></a>Definujte filtr 
 
-Následující příklad definuje podmínky výběr sledování, které jsou přidány do konečné manifestu. Tento filtr obsahuje všechny zvukové stopy, které jsou anglické s ES-3 a jakékoli video sledují, které mají s přenosovou rychlostí v 0 – 1 000 000 rozsahu.
+Následující příklad definuje podmínky výběr sledování, které jsou přidány do konečné manifestu. Tento filtr obsahuje všechny zvukové stopy, které jsou ES-3 a jakékoli video sledují, které mají s přenosovou rychlostí v 0 – 1 000 000 rozsahu.
 
 Filtry definované v klidu, obsahovat objekt JSON "Properties" obálky.  
 
@@ -48,11 +48,6 @@ Filtry definované v klidu, obsahovat objekt JSON "Properties" obálky.
             {
                 "property": "Type",
                 "value": "Audio",
-                "operation": "Equal"
-            },
-            {
-                "property": "Language",
-                "value": "en",
                 "operation": "Equal"
             },
             {
@@ -83,8 +78,16 @@ Filtry definované v klidu, obsahovat objekt JSON "Properties" obálky.
 
 Následující [účtu ams az-filtr](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) příkaz vytvoří filtr účet s filtrem sledování výběry, které byly [definovali dříve](#define-a-filter). 
 
+Následující příkaz povolí možnost `--tracks` , který přijme soubor. Pokud používáte Azure CLI místně, zadejte cestu celý soubor:
+
 ```azurecli
-az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @C:\tracks.json
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @c:\tracks.json
+```
+
+Pokud používáte Azure Cloud Shell, nahrajte soubor do Cloud Shellu (hledání tlačítka nahrávání a stahování souborů v horní části okna prostředí). Potom můžete odkazovat souboru následujícím způsobem:
+
+```azurecli
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
 Viz také [příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter).
@@ -93,8 +96,11 @@ Viz také [příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media
 
 Následující [az ams asset filtrování](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) příkaz vytvoří filtr asset s filtrem sledování výběry, které byly [definovali dříve](#define-a-filter). 
 
+> [!TIP]
+> Zobrazí informace o určení umístění názvu souboru v předchozí části.
+
 ```azurecli
-az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @C:\tracks.json
+az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
 Viz také [příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter).

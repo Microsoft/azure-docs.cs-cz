@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 964f91f412645e141ca003d511480f6f6eb438a3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343281"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536045"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance architektura připojení
 
@@ -113,7 +113,10 @@ Managed Instance můžete nasadit ve vyhrazené podsíti (podsíť Managed Insta
 
   > [!Note]
   > I když povinné zabezpečení příchozích pravidel povolit provoz z _jakékoli_ zdroje na portech 9000 9003, 1438, 1440, 1452 tyto porty jsou chráněné bránou firewall integrované. To [článku](sql-database-managed-instance-find-management-endpoint-ip-address.md) ukazuje, jak lze zjistit IP adresu koncového bodu správy a ověřte pravidla brány firewall. 
-
+  
+  > [!Note]
+  > Pokud používáte transakční replikace ve spravované instanci a všechny databáze ve spravované instanci slouží jako vydavatel či distributor, port 445 (odchozí TCP) také musí být otevřené v pravidlech zabezpečení podsítě pro přístup ke sdílené složce Azure.
+  
 ## <a name="next-steps"></a>Další postup
 
 - Přehled najdete v tématu [co je Managed Instance](sql-database-managed-instance.md)

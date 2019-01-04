@@ -9,18 +9,36 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d789954c0ebc71f88fb434430de5b5076ca6c246
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8b66895e1ae37947c995ffc643505d466c42b93b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713710"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753111"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz 4: Extrakce vzorů souvisejících s kontextem
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Kurz: Extrahovat kontextově související vzory používání rolí
 
 V tomto kurzu budete používat vzor k extrakci dat z dobře formulované šablony promluvy. Šablona promluvy používá jednoduchou entitu a role k extrakci takových souvisejících dat, jako jsou umístění původu a umístění cíle.  Záměr bude při použití vzorů potřebovat méně ukázkových promluv.
+
+
+**V tomto kurzu se naučíte:**
+
+> [!div class="checklist"]
+> * Importovat ukázková aplikace
+> * Tvorba nových entit
+> * Tvorba nového záměru
+> * Trénování
+> * Publikování
+> * Zjistit záměry a entity z koncového bodu
+> * Vytvořit vzor s rolemi
+> * Vytvořit seznam frází měst
+> * Zjistit záměry a entity z koncového bodu
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-roles-in-patterns"></a>Použití rolí ve vzorcích
 
 Účelem rolí je extrahovat z promluvy entity související s kontextem. V promluvě `Move new employee Robert Williams from Sacramento and San Francisco` jsou hodnoty města původu a cílového města ve vztahu jedna k druhé a odlišují se jen obecným jazykem. 
 
@@ -37,25 +55,10 @@ Protože má ukázková promluva `Move new employee Robert Williams from Sacrame
 
 Pokud máte potíže s určováním jednoduché entity, protože jde o název, například města, zvažte přidání seznamu frází podobných hodnot. Pomáhá to detekci názvu města tím, že LUIS dostane další signál, že jde o určitý typ slova nebo fráze. Seznamy frází jen pomáhají vzoru detekovat entitu. To je nutné pro spárování vzoru. 
 
-**V tomto kurzu se naučíte:**
-
-> [!div class="checklist"]
-> * Používat existující ukázkovou aplikaci
-> * Tvorba nových entit
-> * Tvorba nového záměru
-> * Trénování
-> * Publikování
-> * Zjistit záměry a entity z koncového bodu
-> * Vytvořit vzor s rolemi
-> * Vytvořit seznam frází měst
-> * Zjistit záměry a entity z koncového bodu
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Použití existující aplikace
+## <a name="import-example-app"></a>Importovat ukázková aplikace
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
+Použijte k tomu následující postup:
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json) a uložte si ho.
 

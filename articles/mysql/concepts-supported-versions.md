@@ -1,20 +1,17 @@
 ---
 title: Podporované verze ve službě Azure Database for MySQL
 description: Popisuje podporované verze ve službě Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/10/2018
-ms.openlocfilehash: f2a9348e267ad6a5929fda64cc08dcd837243e71
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 720644519eb0031f9f2837cc8321a0def39c37a6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093336"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545701"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Podporované – Azure Database for MySQL server verze
 Azure Database for MySQL byla vyvinuta z [MySQL Community Edition](https://www.mysql.com/products/community/), pomocí modul InnoDB. Azure Database for MySQL aktuálně podporuje následující verze:

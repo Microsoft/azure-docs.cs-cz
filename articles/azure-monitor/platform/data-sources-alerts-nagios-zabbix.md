@@ -13,22 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 217f19b02ccd5561ee499388bb62d5a6639086ac
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cccc42cd925c123b52c0f2416599bb989ce44d8a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436190"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713493"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix ve službě Azure Monitor z agenta Log Analytics pro Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-<<<<<<< HEAD [Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do služby Azure Monitor, abyste mohli analyzovat data protokolů z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
+
+[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do služby Azure Monitor, abyste mohli analyzovat data protokolů z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
 
 > [!NOTE]
 > [Upozornění vytvořená službou Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) jsou uloženy odděleně od dat protokolu a není přístupný z dotazů na protokoly.
-=======
-[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](../../azure-monitor/platform/alerts-overview.md).  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
->>>>>>> 98b6f1655e9ada6d4b6a408ada0f1e4c9ed727d2
+
  
 ## <a name="prerequisites"></a>Požadavky
 Agenta Log Analytics pro Linux podporuje shromažďování údajů o výstrahy Nagios verzi 4.2.x a Zabbix verzi 2.x.

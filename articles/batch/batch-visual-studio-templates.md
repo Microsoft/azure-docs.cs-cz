@@ -1,9 +1,9 @@
 ---
-title: Sestavujte řešení Batch s využitím šablony sady Visual Studio – Azure | Dokumentace Microsoftu
+title: Sestavujte řešení s využitím šablony sady Visual Studio – služby Azure Batch | Dokumentace Microsoftu
 description: Zjistěte, jak pomocí šablony projektů Visual Studio můžete implementovat a spouštět úlohy náročné na výpočetní prostředky v Azure Batch.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114092"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538119"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Rychlé zprovoznění řešení Batch pomocí šablony projektů Visual Studio
 
@@ -62,7 +62,7 @@ Použití šablon služby Batch, budete potřebovat následující:
     
     * Správce úloh Azure Batch s rozdělovačem úlohy
     * Procesor úloh služby Azure Batch
-  * Stažení šablon z online Galerie pro sadu Visual Studio: [projektu šablony aplikace Microsoft Azure Batch][vs_gallery_templates]
+  * Stáhněte šablony z online Galerie pro sadu Visual Studio: [Šablony projektů Microsoft Azure Batch][vs_gallery_templates]
 * Pokud budete chtít použít [balíčky aplikací](batch-application-packages.md) funkce pro nasazení Správce úloh a procesor úloh do služby Batch výpočetní uzly, budete muset propojit účet úložiště do svého účtu Batch.
 
 ## <a name="preparation"></a>Příprava

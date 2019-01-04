@@ -9,23 +9,23 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 8132e2ad986bbdc5056d16714eab6dd8394f0f08
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 05af52ab492fcfe509b547efdd182a366642b9ed
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718567"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754403"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Kurz 3: Přidání běžných formátů promluv
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Kurz: Přidejte společný vzor šablony utterance formátů
 
 V tomto kurzu budete požívat vzory ke zvýšení záměru a predikce entity pomocí menšího počtu ukázkových promluv. Vzor je k dispozici jako šablona příkladu promluvy, který obsahuje syntaxi identifikace entit a ignorovatelného textu. Vzor je kombinací párování jazykových výrazů a strojového učení.  Šablona příkladu promluvy spolu se záměrem promluvy umožňují LUIS lépe porozumět tomu, jaké promluvy odpovídají určitému záměru. 
 
 **V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
-> * Používat existující ukázkovou aplikaci 
+> * Importovat ukázková aplikace 
 > * Vytvořit záměr
 > * Trénování
 > * Publikování
@@ -37,11 +37,11 @@ V tomto kurzu budete požívat vzory ke zvýšení záměru a predikce entity po
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Použití existující aplikace
+## <a name="import-example-app"></a>Importovat ukázková aplikace
 
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
+Použijte k tomu následující postup:
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json) a uložte si ho.
 

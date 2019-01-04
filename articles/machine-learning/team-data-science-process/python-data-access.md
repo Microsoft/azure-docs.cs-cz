@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f53233edd17fa7097dde67bbce16b1ece668c721
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140026"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554856"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Klientská knihovna Python pro Microsoft Azure Machine Learning ve verzi preview můžete povolit zabezpečený přístup k vaší datové sady Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a Správa datových sad v pracovním prostoru.
 
 Toto téma obsahuje pokyny o tom, jak:
 
-* Nainstalujte klientské knihovny pro Python pro Machine Learning 
+* Nainstalujte klientské knihovny pro Python pro Machine Learning
 * přístup a nahrajte datové sady, včetně informací o tom, jak získat autorizaci pro přístup k datové sady Azure Machine Learning z vašeho místního prostředí Pythonu
 * přístup k zprostředkující datovým sadám z experimentů
 * Použití klientské knihovny pro Python vytvářet výčty sad dat, přístupu k metadatům, přečíst obsah datové sady, vytvořit nové datové sady a aktualizaci stávajících objektech datových sad
@@ -49,7 +49,7 @@ Klientská knihovna Python pro Azure Machine Learning musí také nainstalovaná
 
     pip install azureml
 
-Alternativně můžete stáhnout a nainstalovat ze zdroje na [githubu](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
+Alternativně můžete stáhnout a nainstalovat ze zdroje na [Githubu](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
 
     python setup.py install
 
@@ -74,11 +74,11 @@ Pokud vaše role není nastaven jako **vlastníka**, můžete buď vyžádat se 
 
 Získat autorizační token, proveďte jednu z následujících akcí:
 
-* Požádejte o token od vlastníka. Vlastníci dostanete ze stránky nastavení jejich pracovního prostoru v nástroji Studio jejich autorizačních tokenech. Vyberte **nastavení** v levém podokně a klepněte na **AUTORIZAČNÍCH TOKENECH** zobrazíte primární a sekundární tokeny.  Přestože primární nebo sekundární autorizačních tokenech je možné ve fragmentu kódu, se doporučuje vlastníky sdílet jenom sekundární autorizačních tokenech.
+* Požádejte o token od vlastníka. Vlastníci dostanete ze stránky nastavení jejich pracovního prostoru v nástroji Studio jejich autorizačních tokenech. Vyberte **nastavení** v levém podokně a klepněte na **AUTORIZAČNÍCH TOKENECH** zobrazíte primární a sekundární tokeny. Přestože primární nebo sekundární autorizačních tokenech je možné ve fragmentu kódu, se doporučuje vlastníky sdílet jenom sekundární autorizačních tokenech.
 
 ![Autorizačních tokenech](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Požádejte o povýšen na roli vlastníka.  Aktuální vlastník pracovního prostoru musí k tomu, odeberte nejprve můžete z pracovního prostoru a poté znovu pozvat, abyste k němu jako vlastníka.
+* Požádejte o povýšen na roli vlastníka. Aktuální vlastník pracovního prostoru musí k tomu, odeberte nejprve můžete z pracovního prostoru a poté znovu pozvat, abyste k němu jako vlastníka.
 
 Jakmile vývojáři získají id pracovního prostoru a autorizační token, budou mít možnost si přístup k pracovním prostoru pomocí fragmentu kódu bez ohledu na jejich role.
 

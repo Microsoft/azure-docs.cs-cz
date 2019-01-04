@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c511ef8fc4ae580f869ef90da3e2c8764a146881
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250566"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969127"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -37,8 +37,9 @@ Azure Migrate vám pomůže s následujícími úlohami:
 -  Projekt Azure Migrate můžete vytvořit pouze v následujících zeměpisných oblastech. Ale to vás neomezuje vaše schopnost vytvořit posouzení pro jiné cílové umístění Azure.
     **Zeměpisné oblasti** | **Umístění úložiště**
     --- | ---
-    Sjednotí stavy | Střed USA – západ nebo USA – východ
     Azure Government | USA (Gov) – Virginia
+    Evropa | Severní Evropa a západní Evropa
+    Sjednotí stavy | USA – východ nebo USA (střed) – západ
 
     Zeměpisné oblasti přidružené k projektu migrace slouží k uložení metadat zjištěných v místním prostředí. Metadata jsou uložena v oblastech podle zeměpisné oblasti vybrané pro tento projekt migrace. Pokud můžete použít vizualizaci závislostí, tak, že vytvoříte nový pracovní prostor Log Analytics, vytvoří se pracovní prostor ve stejné oblasti jako projekt.
 - Funkce vizualizace závislostí není k dispozici ve službě Azure Government.

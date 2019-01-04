@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: c3299b2ea777577281ede234cd1aa5137ce5a445
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2062862670f5b373d3153c473e45455e10d5e996
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138105"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548676"
 ---
 # <a name="regional-presence-of-azure-cosmos-db"></a>Místní přítomnost služby Azure Cosmos DB
 
 V současné době je k dispozici v Azure [54 oblastech](https://azure.microsoft.com/global-infrastructure/regions/) po celém světě. Azure Cosmos DB je podkladovou službu v Azure a je k dispozici ve všech oblastech, kde je Azure k dispozici.
 
-![Regionální dostupnost služby Azure Cosmos DB](./media/regional-presence/regional-presence.png)
+[![Oblastech, kde je k dispozici služby Azure Cosmos DB](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
 
 Cosmos DB je k dispozici ve všech pěti různých Azure cloudových prostředích dostupný pro zákazníky:
 

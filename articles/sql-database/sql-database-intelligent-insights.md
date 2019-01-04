@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 573e0dd1bae584b12cfd3859fe63d7ca20bb7b52
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6969744ff52e9aff9d486d2eab6fffc2c3ac8b74
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278130"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607996"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Inteligentní přehledy s využitím AI k monitorování a ladění výkonu databáze
 
@@ -57,7 +57,7 @@ Identifikuje SQL Database přehledu výkonu jsou zaznamenány v protokolu diagno
 | Hodnota dopad | Měří hodnota metriky. |
 | Ovlivněné dotazy a kódy chyb | Dotaz na hodnotu hash nebo kód chyby. To umožňuje snadno porovnat pro ovlivněné dotazy. Metriky, které se skládají z zvýšení doby trvání dotazu, čekání, vypršení časového limitu počtu nebo kódy chyb jsou k dispozici. |
 | Nalezení | Detekce určí v databázi v době události. Existují 15 detekce vzory. Další informace najdete v tématu [databáze odstraňování problémů s výkonem Intelligent insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Analýza hlavní příčiny | Hlavní příčina analýzy problému zjištěného v lidsky čitelném formátu. Některé insights může obsahovat doporučení zlepšení výkonu, kde je to možné. |
+| Analýza původní příčiny | Hlavní příčina analýzy problému zjištěného v lidsky čitelném formátu. Některé insights může obsahovat doporučení zlepšení výkonu, kde je to možné. |
 |||
 
 Praktické přehled o používání Intelligent Insights s Azure SQL Analytics a typické scénáře využití najdete v části vložené video:
@@ -97,7 +97,7 @@ Následující příklad ukazuje, že Intelligent Insights zobrazit pomocí Azur
 
 ### <a name="set-up-with-event-hubs"></a>Nastavení se službou Event Hubs
 
-Intelligent Insights pomocí služby Event Hubs, konfigurace dat protokolu Intelligent Insights Streamovat do služby Event Hubs najdete v tématu [diagnostické protokoly Stream Azure do služby Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
+Intelligent Insights pomocí služby Event Hubs, konfigurace dat protokolu Intelligent Insights Streamovat do služby Event Hubs najdete v tématu [diagnostické protokoly Stream Azure do služby Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
 
 Nastavit vlastní monitorování a upozorňování pomocí služby Event Hubs naleznete v části [co dělat s Diagnostika a metriky protokolů ve službě Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
 
@@ -180,4 +180,4 @@ Pokud některý z monitorovaných kritické výjimky pro různé absolutní prah
 - Zjistěte, jak [řešení problémů s výkonem SQL Database s Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Použití [protokolování diagnostiky výkonu Intelligent Insights SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Zjistěte, jak [monitorování SQL Database s použitím SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+- Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md).

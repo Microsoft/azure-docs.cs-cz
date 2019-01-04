@@ -4,14 +4,14 @@ description: Nejčastější dotazy k Azure Migrate adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: snehaa
-ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257790"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975470"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -48,12 +48,13 @@ Azure Migrate je nástroj pro plánování migrace a Azure Site Recovery Deploym
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Které geografické oblasti Azure jsou podporovány službou Azure Migrate?
 
-Azure Migrate aktuálně podporuje Spojených států a Azure Government jako zeměpisných oblastech projektu. I když migrace projektů můžete vytvořit pouze v těchto geografické oblasti, můžete přesto posoudit u svých počítačů [více cílových míst](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Zeměpisné oblasti projektu slouží pouze k uložení metadat zjištěných.
+Azure Migrate aktuálně podporuje Evropa, Spojené státy a Azure Government jako zeměpisných oblastech projektu. I když migrace projektů můžete vytvořit pouze v těchto geografické oblasti, můžete přesto posoudit u svých počítačů [více cílových míst](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Zeměpisné oblasti projektu slouží pouze k uložení metadat zjištěných.
 
 **Zeměpisné oblasti** | **Umístění úložiště metadat**
 --- | ---
-Sjednotí stavy | Střed USA – západ nebo USA – východ
 Azure Government | USA (Gov) – Virginia
+Evropa | Severní Evropa a západní Evropa
+Sjednotí stavy | Východní USA střed USA – západ
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak v místní lokalitě připojit k Azure Migrate?
 

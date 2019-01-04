@@ -1,29 +1,29 @@
 ---
-title: Jak provádět dotazy na data ze služby Azure Cosmos DB pro rozhraní MongoDB API
-description: Zjistěte, jak dotazovat pomocí rozhraní Azure Cosmos DB pro rozhraní API MongoDB.
+title: Dotazování dat pomocí služby Azure Cosmos DB přes rozhraní API pro MongoDB
+description: Zjistěte, jak k dotazování dat pomocí služby Azure Cosmos DB přes rozhraní API pro MongoDB.
 services: cosmos-db
-author: SnehaGunda
-ms.author: sngun
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/29/2018
-ms.openlocfilehash: bcfbb0115274c8b0d330426a454530dcd7c170ab
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/26/2018
+ms.openlocfilehash: b2bfc48fa0ba8aab0bbdf19e1b127155633e2271
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724653"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793202"
 ---
-# <a name="tutorial-query-data-using-azure-cosmos-db-for-mongodb-api"></a>Kurz: Dotazování dat pomocí služby Azure Cosmos DB pro rozhraní MongoDB API
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování dat pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
 
-Rozhraní [API pro MongoDB](mongodb-introduction.md) služby Azure Cosmos DB podporuje [dotazy prostředí MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+[Rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md) podporuje [MongoDB dotazy](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * QQuerying dat uložených v databázi Cosmos přes MongoDB shell
+> * Dotazování na data uložená v databázi Cosmos přes MongoDB shell
 
 Můžete začít s použitím příkladů v tomto dokumentu a podívat se na video o [dotazování služby Azure Cosmos DB pomocí prostředí MongoDB Shell](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/).
 
@@ -303,7 +303,7 @@ Nevrátí se žádné výsledky, protože v žádné rodině není více než dv
 V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Zjistili jste, jak provádět dotazy pomocí služby Cosmos DB nativní podporu pro rozhraní MongoDB API
+> * Zjistili jste, jak provádět dotazy pomocí rozhraní API Cosmos DB pro MongoDB
 
 Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně distribuovat data.
 

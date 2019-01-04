@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 432f1a89979829bd43596d0d6a3ab7a2a3bfb996
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2b427669fe692704343d5a3c2096df92cffb8d76
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336464"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583982"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -98,7 +98,7 @@ Zdrojové rozsahy IP adres
     - 13.106.38.148
     - 13.106.57.196
 
-Získat informace o změnách na tyto IP adresy, doporučujeme, abyste konfiguraci [upozornění na stav služby](./../../monitoring-and-diagnostics/monitoring-service-notifications.md) monitoruje informační upozornění týkající se služby skupiny akcí.
+Získat informace o změnách na tyto IP adresy, doporučujeme, abyste konfiguraci [upozornění na stav služby](./../../azure-monitor/platform/service-notifications.md) monitoruje informační upozornění týkající se služby skupiny akcí.
 
 
 ## <a name="next-steps"></a>Další postup ##

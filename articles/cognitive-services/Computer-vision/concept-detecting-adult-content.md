@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 71866149e3d2dca4b39585ce8da73aae658a4d59
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: e0cca054acb7d3d649105ecd45748a60a2aa9bbb
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344910"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582163"
 ---
 # <a name="detecting-adult-and-racy-content"></a>Rozpoznávání obsahu pro dospělé a nevhodného obsahu
 
-V jednotlivých kategoriích visual je pro dospělé nebo pikantního skupiny, která umožňuje detekovat dospělé materiálů a omezuje zobrazení obrázků sexuální zneužívání obsahem. Filtr pro dospělé nebo pikantního obsahu zjišťování můžete nastavit pomocí posuvné stupnice tak, aby vyhovovaly preferencím uživatele.
+Mezi různými obrazovými kategoriemi je i skupina nevhodného obsahu a obsahu pro dospělé. Tato skupina umožňuje zjišťovat materiály pro dospělé a omezuje zobrazování obrázků se sexuálním obsahem. Filtr pro rozpoznání nevhodného obsahu a obsahu pro dospělé je možné podle potřeby nastavit na posuvné stupnici podle preferencí uživatele.
 
 ## <a name="defining-adult-and-racy-content"></a>Definování obsahu pro dospělé nebo pikantního obsahu
 

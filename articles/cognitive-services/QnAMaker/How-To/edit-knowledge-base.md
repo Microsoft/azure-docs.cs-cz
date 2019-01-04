@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40886f54083a1619635f31af57841138f1706d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e055d1e10ddf8c18c84af5376cf4a284d48fde6b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086602"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603323"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Úprava znalostní báze v nástroje QnA Maker
 
@@ -71,7 +71,7 @@ Přidáte alternativní dotazy na existující dvojice QnA ke zlepšení pravdě
 ## <a name="add-metadata"></a>Přidání metadat
 
 
-Přidat páry metadata tak, že vyberete ikonu filtru
+Přidat páry metadata tak, že vyberete ikonu metadat
 
 ![Přidání metadat](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -80,11 +80,17 @@ Přidat páry metadata tak, že vyberete ikonu filtru
 
 ## <a name="manage-large-knowledge-bases"></a>Správa velkých znalostních bází
 
-1. Budou maximálně **seskupené** ve zdroji dat, ze kterého byly extrahovány. Můžete rozbalit nebo sbalit zdroj dat.
-2. Je možné **hledání** znalostní báze tak, že zadáte do textového pole v horní části tabulce znalostní báze Knowledge Base. Chcete-li vyhledat obsah dotaz, odpověď nebo metadata, klikněte na enter. Klikněte na ikonu X odebrat vyhledávací filtr.
-3. **Stránkování** umožňuje spravovat velké znalostních bází
+* **Zdroj dat skupiny**: Maximálně jsou seskupené ve zdroji dat, ze kterého byly extrahovány. Můžete rozbalit nebo sbalit zdroj dat.
 
-    ![Hledání, stránkování, skupiny](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Použít panel zdroj dat nástroje QnA Maker k rozbalení a sbalení datový zdroj otázky a odpovědi](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+
+* **Znalostní bázi knowledge base**: Hledat ve znalostní bázi zadáním do textového pole v horní části tabulce znalostní báze Knowledge Base. Chcete-li vyhledat obsah dotaz, odpověď nebo metadata, klikněte na enter. Klikněte na ikonu X odebrat vyhledávací filtr.
+
+    ![Pomocí vyhledávacího pole QnA Maker nad otázek a odpovědí pro snížení zobrazení na pouze položky odpovídající filtr](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+* **Stránkování**: Rychle procházet zdroje dat ke správě velkých znalostních bází
+
+    ![Použijte výše uvedené otázky a odpovědi stránkování funkce nástroje QnA Maker pro přesun mezi stránkami otázek a odpovědí](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>Odstranit znalostních bází
 

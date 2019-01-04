@@ -4,14 +4,14 @@ description: Ukazuje, jaké typy prostředků Azure podporují značky. Poskytuj
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/20/2018
+ms.date: 12/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 580955d3c6fd7a33c152e49e601d8078eb169a22
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: ef365cdf0a5df168c438abd0428e41200b07756c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409662"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753774"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [označování](resource-group-using-tags.md).
@@ -264,6 +264,7 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 ## <a name="insights"></a>Insights
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
+| actionGroups | Ano |
 | Součásti | Ano | 
 | součásti či dotazu | Ne | 
 | součásti/metriky | Ne | 

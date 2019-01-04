@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 084d5e9453ea5a55bdeeff839e4c70890575c83d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258011"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653386"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections #
 
@@ -177,7 +177,7 @@ Jsou k dispozici pravidelné aktualizace na správce hybridního připojení k �
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Přidání hybridního připojení do vaší aplikace prostřednictvím kódu programu ##
 
-Rozhraní API služby jste si poznamenali níže je možné přímo ke správě hybridních připojení připojené k vaší webové aplikace. 
+Rozhraní API služby jste si poznamenali níže je možné přímo ke správě hybridních připojení připojené k vaší aplikace. 
 
     /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
 
@@ -198,7 +198,7 @@ Objekt JSON přidružený k hybridní připojení vypadá takto:
       }
     }
 
-Jeden ze způsobů použití těchto informací se armclient, které můžete získat [ARMClient] [ armclient] projektu z Githubu. Tady je příklad existující hybridní připojení se připojuje k vaší webové aplikace. Vytvořte soubor JSON na výše uvedené schéma jako:
+Jeden ze způsobů použití těchto informací se armclient, které můžete získat [ARMClient] [ armclient] projektu z Githubu. Tady je příklad existující hybridní připojení se připojuje k vaší aplikace. Vytvořte soubor JSON na výše uvedené schéma jako:
 
     {
       "name": "relay-demo-hc",
@@ -230,7 +230,7 @@ Ve službě App Service může být nástroj tcpping vyvolat pomocí konzoly ná
 
 ## <a name="biztalk-hybrid-connections"></a>Hybridní připojení BizTalk ##
 
-Počáteční formulář této funkce jmenovala BizTalk Hybrid Connections. Tato funkce 31. května 2018 se nepovedlo ukončení životnosti a operace ukončil. Hybridní připojení BizTalk byly odebrány ze všech webových aplikací a nejsou přístupné prostřednictvím portálu nebo rozhraní API. Pokud stále máte tyto starší připojení nakonfigurovaná v správce hybridního připojení, se zobrazí stav vyřazeno a zobrazit příkazem End životnosti v dolní části.
+Počáteční formulář této funkce jmenovala BizTalk Hybrid Connections. Tato funkce 31. května 2018 se nepovedlo ukončení životnosti a operace ukončil. Hybridní připojení BizTalk byly odebrány ze všech aplikací a nejsou přístupné prostřednictvím portálu nebo rozhraní API. Pokud stále máte tyto starší připojení nakonfigurovaná v správce hybridního připojení, se zobrazí stav vyřazeno a zobrazit příkazem End životnosti v dolní části.
 
 ![Hybridní připojení BizTalk v HCM][12]
 

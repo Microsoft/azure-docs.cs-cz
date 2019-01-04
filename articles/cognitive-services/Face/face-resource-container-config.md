@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 30546d31e96d7d7fa1009f16a50fe8fda12ead67
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105100"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725048"
 ---
 # <a name="configure-containers"></a>Konfigurace kontejnerů
 
@@ -113,10 +113,10 @@ Kontejner pro rozpoznávání tváře ukládá objekt blob, mezipaměť, metadat
   Všechny čtyři typy dat jsou uložené v paměti. Nejsou distribuovány ani jsou trvalé. Pokud je zastavena nebo odebrání kontejneru pro rozpoznávání tváře je zničen všechna data v úložišti pro tento kontejner.  
   Toto je výchozí scénář úložiště pro kontejner pro rozpoznávání tváře.
 * Azure  
-  Kontejner pro rozpoznávání tváře využívá Azure Storage a Azure Cosmos DB k distribuci tyto čtyři typy dat napříč trvalého úložiště. Zpracování dat objektů BLOB a fronty Azure Storage. Metadata a mezipaměti dat zařizuje služba Azure Cosmos DB pomocí rozhraní MongoDB API. Pokud kontejner pro rozpoznávání tváře je zastavena nebo odebrán, všechna data v úložišti pro tento kontejner zůstane uložená v Azure Storage a Azure Cosmos DB.  
+  Kontejner pro rozpoznávání tváře využívá Azure Storage a Azure Cosmos DB k distribuci tyto čtyři typy dat napříč trvalého úložiště. Zpracování dat objektů BLOB a fronty Azure Storage. Metadata a mezipaměti dat zařizuje služba Azure Cosmos DB. Pokud kontejner pro rozpoznávání tváře je zastavena nebo odebrán, všechna data v úložišti pro tento kontejner zůstane uložená v Azure Storage a Azure Cosmos DB.  
   Prostředky využívané třídou scénáře služby Azure storage mají následující další požadavky
   * Prostředek služby Azure Storage, musíte použít StorageV2 druh účtu
-  * Prostředek služby Azure Cosmos DB, musíte použít rozhraní MongoDB API
+  * Prostředek služby Azure Cosmos DB musí používat služby Azure Cosmos DB pro rozhraní MongoDB API
 
 Scénáře využití služby storage a související konfigurační nastavení jsou spravovány `Storage` objektu v oblasti `CloudAI` konfigurační oddíl. Jsou k dispozici v následujícím nastavením konfigurace `Storage` objektu:
 
@@ -176,7 +176,7 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 
   | Název | Typ dat | Popis |
   |------|-----------|-------------|
-  | `Format` | Řetězec | Výstupní formát souborů protokolu.<br/> **Poznámka:** tato hodnota musí být nastavená na `json` povolit zprostředkovatele. Pokud tato hodnota je spustit bez úkolu připojení výstupu při vytvoření instance kontejneru, dojde k chybě. |
+  | `Format` | Řetězec | Výstupní formát souborů protokolu.<br/> **Poznámka:** Tato hodnota musí být nastavená na `json` povolit zprostředkovatele. Pokud tato hodnota je spustit bez úkolu připojení výstupu při vytvoření instance kontejneru, dojde k chybě. |
   | `MaxFileSize` | Integer | Maximální velikost v megabajtech (MB), soubor protokolu. Když velikost aktuálního souboru protokolu splňuje nebo překročí tuto hodnotu, nový soubor protokolu je spuštěn poskytovatel protokolování. Pokud není zadána hodnota -1, velikost souboru protokolu je omezen pouze maximální velikost souboru, pokud existuje, pro výstupní připojení. Výchozí hodnota je 1. |
 
 Další informace o konfiguraci protokolování podpora ASP.NET Core najdete v tématu [konfigurační soubor nastavení](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).

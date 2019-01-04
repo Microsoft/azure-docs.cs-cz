@@ -3,24 +3,22 @@ title: Vytvoření uživatelů ve službě Azure Database pro MariaDB server
 description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty k interakci se službou Azure Database pro MariaDB server.
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50154a7fee63eb3ff9e08155123f9e5962bbfcf0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 189e122e04d56d28c1e1e94d328569647614a124
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946104"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542123"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Vytvoření uživatelů ve službě Azure Database pro MariaDB 
 Tento článek popisuje, jak vytvořit uživatele ve službě Azure Database pro MariaDB.
 
 Při prvním vytvoření Azure Database pro MariaDB, jste zadali přihlašovací uživatelské jméno správce serveru a heslo. Další informace, můžete postupovat podle [rychlý Start](quickstart-create-mariadb-server-database-using-azure-portal.md). Můžete vyhledat vaše přihlašovací jméno správce serveru uživatele z portálu Azure portal.
 
-Uživatel správce serveru získá určitá oprávnění pro váš server, jak je uvedeno: vyberte, vkládání, aktualizaci, odstranění, vytvořit, VYŘADIT, znovu NAČÍST, proces, odkazy, INDEX, ALTER, zobrazit databází, vytvořit dočasné tabulky, ZÁMKU tabulky, EXECUTE, podřízený server REPLIKACE, REPLIKACE KLIENTA, VYTVOŘIT ZOBRAZENÍ, ZOBRAZENÍ, VYTVOŘENÍ RUTINNÍ, ALTER RUTINU, VYTVOŘENÍ AKTIVAČNÍ UDÁLOSTI PRO UŽIVATELE, UDÁLOSTI,
+Uživatel správce serveru získá určitá privilegia, pro váš server, jak je uvedeno: VYBRAT, VLOŽIT, AKTUALIZOVAT, ODSTRANIT, VYTVOŘIT, VYŘADIT, ZNOVU NAČÍST, ZPRACOVÁNÍ, ODKAZY, INDEX, ALTER, ZOBRAZTE DATABÁZE, VYTVOŘIT DOČASNÉ TABULKY, UZAMKNOUT TABULKY, SPUŠTĚNÍ, VYTVOŘIT PODŘÍZENÝ SERVER REPLIKACE, KLIENT REPLIKACE, ZOBRAZENÍ, ZOBRAZENÍ, VYTVOŘENÍ RUTINNÍ, ALTER RUTINU, VYTVOŘTE UŽIVATELE , UDÁLOSTI, AKTIVAČNÍ UDÁLOSTI
 
 Po vytvoření Azure Database pro MariaDB server slouží k vytvoření dalších uživatelů a udělit přístup správce k nim první účet uživatele správce serveru. Také účet správce serveru slouží k vytvoření méně privilegovaným uživatele, kteří mají přístup k jednotlivým databázových schématech.
 
@@ -85,6 +83,6 @@ Po vytvoření Azure Database pro MariaDB server slouží k vytvoření dalšíc
 Další informace týkající se správy uživatelských účtů, najdete v dokumentaci MariaDB pro [Správa uživatelských účtů](https://mariadb.com/kb/en/library/user-account-management/), [udělení syntaxe](https://mariadb.com/kb/en/library/grant/), a [oprávnění](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="next-steps"></a>Další postup
-Otevření brány firewall pro IP adresy počítačů noví uživatelé jim připojení povolit: [vytvořit a spravovat Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal](howto-manage-firewall-portal.md)  
+Otevření brány firewall pro IP adresy počítačů novým uživatelům povolit jim připojení: [Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

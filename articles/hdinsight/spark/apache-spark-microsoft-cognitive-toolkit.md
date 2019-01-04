@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: f3e590ec5dded03ce9c6ab2f7a21d51048020622
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 76fc2c9a0864417e380471f8de59d148e0fbf7b4
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012585"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651823"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použití sady Microsoft Cognitive Toolkit hloubkového učení modelu s clusterem Azure HDInsight Spark
 
@@ -39,15 +39,15 @@ Toto řešení je rozdělena mezi v tomto článku a poznámkového bloku Jupyte
 
 Následující zbývající kroky jsou popsané v Poznámkový blok Jupyter.
 
-- Načíst ukázkové obrázky do Spark Resiliant Distributed Dataset nebo RDD
-   - Moduly zatížení a definovat předvolby
-   - Stáhnout datovou sadu místně na clusteru Spark
-   - Převést RDD datové sady
-- Skóre imagí pomocí trénovaného modelu Cognitive Toolkit
-   - Stáhněte si trénovaného modelu Cognitive Toolkit ke clusteru Spark
-   - Definování funkcí používané pracovních uzlů
-   - Skóre bitové kopie na pracovních uzlech
-   - Vyzkoušejte přesnost modelu
+- Načtěte ukázkové obrázky do Spark Resiliant Distributed Dataset nebo RDD.
+   - Moduly zatížení a definovat předvolby.
+   - Stáhněte datovou sadu místně na clusteru Spark.
+   - Převeďte RDD datové sady.
+- Skóre imagí pomocí trénovaného modelu Cognitive Toolkit.
+   - Stáhněte si trénovaného modelu Cognitive Toolkit ke clusteru Spark.
+   - Definování funkcí používané pracovních uzlů.
+   - Skóre bitové kopie na pracovních uzlech.
+   - Vyzkoušejte přesnost modelu.
 
 
 ## <a name="install-microsoft-cognitive-toolkit"></a>Instalace sady Microsoft Cognitive Toolkit
@@ -90,15 +90,15 @@ Microsoft Cognitive Toolkit pomocí clusteru Azure HDInsight Spark, je nutné na
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Application Insight analýza dat telemetrie používat Apache Spark v HDInsight](apache-spark-analyze-application-insight-logs.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)

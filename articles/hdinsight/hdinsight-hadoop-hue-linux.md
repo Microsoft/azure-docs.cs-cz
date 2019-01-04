@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 5df494904dd756ca7ef3a36a48da2224ab2bca81
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e0e25a9a1e70575d862374da0fb3097408b002e7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386005"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714623"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat rozhraní Hue v clusterech HDInsight Hadoop
 
@@ -37,13 +37,13 @@ Odstín, který je sada webových aplikací používaných pro interakci s clust
 > [!WARNING]  
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 >
-> Vlastní komponenty získat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty získat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Také projektů Apache mít projektovým webům na [ https://apache.org ](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>Instalace aplikace Hue pomocí akcí skriptů
 
-Skript pro instalaci aplikace Hue do clusteru HDInsight se systémem Linux je k dispozici na https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Tento skript můžete použít k instalaci aplikace Hue v clusterech s objekty BLOB Azure Storage (WASB) nebo Azure Data Lake Store jako výchozím úložištěm.
+Skript pro instalaci aplikace Hue do clusteru HDInsight se systémem Linux je k dispozici na https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Tento skript můžete použít postup instalace aplikace Hue v clusterech s objekty BLOB Azure Storage (WASB) nebo Azure Data Lake Storage jako výchozí úložiště.
 
 Tato část obsahuje informace o tom, jak pomocí skriptu při zřizování clusteru pomocí webu Azure portal.
 

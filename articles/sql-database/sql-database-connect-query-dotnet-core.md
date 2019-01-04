@@ -12,16 +12,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 471d2b0b8d98651d4b9ef4e88df0e863715b0c88
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5f2c8c2a9a2b21a15aa997ff0cc98860ceec76cc
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341775"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744832"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rychlý start: Použití .NET Core (jazyk C#) k dotazování databáze SQL Azure
 
-Tento rychlý start ukazuje, jak používat [.NET Core](https://www.microsoft.com/net/) a C# kód pro připojení k databázi Azure SQL a spuštění příkazu jazyka Transact-SQL k dotazování na data.
+V tomto rychlém startu použijete [.NET Core](https://www.microsoft.com/net/) a C# kód k připojení k databázi Azure SQL. Pak je potřeba spustit příkaz jazyka Transact-SQL k dotazování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,14 +53,14 @@ Pro účely tohoto kurzu potřebujete:
   
 ## <a name="create-a-new-net-core-project"></a>Vytvoření nového projektu .NET Core
 
-1. Otevřete příkazový řádek a vytvořte složku **sqltest**. Přejděte do této složky a spusťte následující příkaz.
+1. Otevřete příkazový řádek a vytvořte složku **sqltest**. Přejděte do této složky a spusťte tento příkaz.
 
     ```cmd
     dotnet new console
     ```
-    Tím se vytvoří nová aplikace pro soubory projektu, včetně počáteční C# souboru s kódem (**Program.cs**), konfigurační soubor XML (**sqltest.csproj**) a potřebné binární soubory.
+    Tento příkaz vytvoří novou aplikaci soubory projektu, včetně počáteční C# souboru s kódem (**Program.cs**), konfigurační soubor XML (**sqltest.csproj**) a potřebné binární soubory.
 
-2. V textovém editoru otevřete **sqltest.csproj** a vložte následující kód XML mezi `<Project>` značky. Tento postup přidá `System.Data.SqlClient` jako závislost.
+2. V textovém editoru otevřete **sqltest.csproj** a vložte následující kód XML mezi `<Project>` značky. Přidá tato konfigurace XML `System.Data.SqlClient` jako závislost.
 
     ```xml
     <ItemGroup>
@@ -173,7 +173,7 @@ namespace sqltest
 
    Done. Press enter.
    ```
-3. Stisknutím klávesy **Enter** okna aplikace okno zavřete.
+3. Zvolte **Enter** okna aplikace okno zavřete.
 
 ## <a name="next-steps"></a>Další postup
 

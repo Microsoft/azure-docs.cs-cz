@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: c68febc7bd6aac0262c41cc8b33602f8496eb215
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0b6ade7a6031b957f2405e525d61c9ca1d2dac3d
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436396"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809093"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Odstranění virtuálního počítače s Windows pomocí připojení disku s operačním systémem k obnovení virtuálního počítače pomocí webu Azure portal
 Pokud váš Windows virtuální počítač (VM) v Azure dojde k chybě spouštění nebo disku, budete muset provést postup řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být aktualizace selhání aplikace, která brání virtuálního počítače moci úspěšně spustil. Tento článek podrobně popisuje, jak připojit virtuální pevný disk k jinému virtuálnímu počítači Windows opravte všechny chyby a pak znovu vytvořit původní virtuální počítač pomocí webu Azure portal.
@@ -133,7 +133,7 @@ Po vyřešení chyby odpojte existující virtuální pevný disk z vašeho ře�
     Počkejte, dokud virtuální počítač úspěšně odpojit datový disk než budete pokračovat.
 
 ## <a name="create-vm-from-original-hard-disk"></a>Vytvoření virtuálního počítače z původního pevného disku
-Vytvoření virtuálního počítače z původního virtuálního pevného disku, použijte [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet). Šablona nasadí virtuální počítač do existující virtuální sítě pomocí adresy URL virtuálního pevného disku z předchozích příkazu. Klikněte na tlačítko **nasadit do Azure** tlačítko následujícím způsobem:
+Vytvoření virtuálního počítače z původního virtuálního pevného disku, použijte [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet). Šablona nasadí virtuální počítač do existující nebo nové virtuální sítě, pomocí adresy URL virtuálního pevného disku z předchozích příkazu. Klikněte na tlačítko **nasadit do Azure** tlačítko následujícím způsobem:
 
 ![Nasazení virtuálního počítače ze šablony z Githubu](./media/troubleshoot-recovery-disks-portal-windows/deploy-template-from-github.png)
 

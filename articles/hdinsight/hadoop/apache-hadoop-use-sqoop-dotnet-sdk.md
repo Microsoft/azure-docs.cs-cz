@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0b8d408482f1f6e2bcd25182208a46d28f7b4f7a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 3cd34bf67b0d796af71036e7d14834a061803973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633029"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628079"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Spouštět úlohy Apache Sqoop pomocí sady .NET SDK pro Apache Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -24,12 +24,11 @@ Zjistěte, jak pomocí .NET SDK služby Azure HDInsight můžete spouštět úlo
 
 > [!NOTE]
 > I když používáte postupy v tomto článku se buď cluster HDInsight založených na Windows nebo Linux, fungují pouze z klienta Windows. Zvolit jiné metody, použijte volič karty v horní části tohoto článku.
-> 
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete tento kurz, musíte mít následující položky:
 
-* Cluster Hadoop v HDInsight. Další informace najdete v tématu [vytvoření clusteru a SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [vytvoření clusteru a SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Pomocí Sqoop na clusterech HDInsight pomocí sady .NET SDK
 Sady HDInsight .NET SDK obsahuje klientské knihovny .NET, tak, aby bylo jednodušší fungují s clustery HDInsight z .NET. V této části vytvoříte aplikaci konzoly C# pro export hivesampletable do tabulky Azure SQL Database, kterou jste vytvořili dříve v tomto kurzu.
@@ -111,14 +110,14 @@ Sady HDInsight .NET SDK obsahuje klientské knihovny .NET, tak, aby bylo jednodu
 ## <a name="limitations"></a>Omezení
 Linuxovým systémem HDInsight představuje následující omezení:
 
-* Hromadný export: The Sqoop konektor, který slouží k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje operace hromadného vložení.
+* Hromadný export: Sqoop konektor, který slouží k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje operace hromadného vložení.
 
-* Dávkování: pomocí `-batch` při přepnutí provede vložení, Sqoop provede několik vložení místo dávkování operace vložení.
+* Dávkové zpracování: S použitím `-batch` přepínače, Sqoop provede několik vložení místo dávkování operace vložení.
 
 ## <a name="next-steps"></a>Další postup
 Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
 
-* [Použití Oozie s HDInsight](../hdinsight-use-oozie.md): použití Sqoopu akce v pracovním postupu Oozie.
-* [Analýza zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): použití Hive k analýze letu zpoždění dat a potom použít Sqoop k exportování dat do Azure SQL database.
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najít další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
+* [Použití Apache Oozie s HDInsight](../hdinsight-use-oozie.md): Pomocí Sqoop akce v pracovním postupu Oozie.
+* [Analýza zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): Analýza zpoždění letů pomocí Apache Hive a potom použít Sqoop k exportování dat do Azure SQL database.
+* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najdete další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
 

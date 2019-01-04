@@ -1,21 +1,18 @@
 ---
 title: Nastavit parametry služby ve službě Azure Database for PostgreSQL
 description: Tento článek popisuje, jak nastavit parametry služby ve službě Azure Database for PostgreSQL pomocí příkazového řádku Azure CLI.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 5520c08d2bf5dba85ece1de0bca7329286625911
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d566f317595e314c91cf510ba2459638e624d8c3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968046"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539732"
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí Azure CLI
 Seznam, zobrazit a aktualizovat parametry konfigurace pro server Azure PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Podmnožina stroj konfigurace je zveřejněný na úrovni serveru a je možné upravit. 

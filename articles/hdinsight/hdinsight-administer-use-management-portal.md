@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 378f52f0418c8c99e9ce6ca393ca10a77504698d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499583"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632011"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery založené na Windows Apache Hadoop v HDInsight pomocí webu Azure portal
 
@@ -55,12 +55,10 @@ HDInsight funguje s komponentami široký rozsah Apache Hadoop. Seznam komponent
 * Při vytváření clusteru pomocí vlastního nastavení parametrů clusteru v HDInsight .NET SDK nebo v prostředí Azure PowerShell. Tyto změny konfigurace jsou pak nezachová dobu živostnosti clusteru a obnoví uzlu clusteru, které platformy Azure provádí pravidelné kvůli údržbě neovlivní. Další informace o používání vlastního nastavení parametrů clusteru najdete v tématu [clusterů HDInsight vytvořit](hdinsight-hadoop-provision-linux-clusters.md).
 * Některé nativní součásti Java, jako jsou [Apache Mahout](https://mahout.apache.org/) a [s možností](https://www.cascading.org/), může běžet v clusteru jako soubory JAR. Tyto soubory JAR můžete distribuovat do úložiště objektů Blob v Azure a odeslat do clusterů HDInsight prostřednictvím mechanismy odesílání úloh Hadoop. Další informace najdete v tématu [úlohy Apache Hadoop odeslat prostřednictvím kódu programu](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
-  > [!NOTE]
+  > [!NOTE]  
   > Pokud máte problémy s nasazením soubory JAR do clusterů HDInsight nebo volání soubory JAR na clusterech HDInsight, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).
   >
   > Kaskádová šablona nepodporuje HDInsight a nesplňuje podmínky pro Microsoft Support. Seznam podporovaných součásti, naleznete v tématu [co je nového ve verzích clusterů HDInsight poskytuje](hdinsight-component-versioning.md).
-  >
-  >
 
 Instalace vlastního softwaru v clusteru pomocí připojení ke vzdálené ploše není podporována. Neměli byste ukládat soubory na jednotkách hlavního uzlu, jak budou ztraceny, budete muset znovu vytvořit clustery. Doporučujeme ukládat soubory do úložiště objektů Blob v Azure. Úložiště objektů blob je trvalé.
 
@@ -75,25 +73,22 @@ Instalace vlastního softwaru v clusteru pomocí připojení ke vzdálené ploš
     ![Azure portal essentials clusteru HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-essentials.png)
 
    * Přizpůsobení nabídky, klikněte pravým tlačítkem na libovolné místo v nabídce a potom klikněte na tlačítko **vlastní**.
-   * **Nastavení** a **všechna nastavení**: zobrazí **nastavení** okno pro cluster, který vám umožní přistupovat k podrobné informace o konfiguraci pro cluster.
+   * **Nastavení** a **všechna nastavení**: Zobrazí **nastavení** okno pro cluster, který vám umožní přistupovat k podrobné informace o konfiguraci pro cluster.
    * **Řídicí panel**, **řídicí panel clusteru** a **URL**: Toto jsou všechny způsoby přístupu k řídicí panel clusteru, který je Ambari Web pro clustery založené na Linuxu.
-   * **Secure Shell**: zobrazí pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH).
-   * **Škálování clusteru**: umožňuje změnit počet uzlů pracovního procesu pro tento cluster.
+   * **Secure Shell**: Zobrazí pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH).
+   * **Škálování clusteru**: Umožňuje změnit počet uzlů pracovního procesu pro tento cluster.
    * **Odstranit**: Odstraní cluster.
    * **Rychlý Start**: Zobrazí informace, které vám pomůžou začít používat HDInsight.
-   * **Uživatelé**: umožňuje nastavit oprávnění pro *portálu správy* tohoto clusteru pro ostatní uživatele v rámci předplatného Azure.
+   * **Uživatelé**: Umožňuje nastavit oprávnění pro *portálu správy* tohoto clusteru pro ostatní uživatele v rámci předplatného Azure.
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > To *pouze* má vliv na přístup a oprávnění pro tento cluster na webu Azure Portal a nemá žádný vliv na který můžete připojit k nebo odesílat úlohy do clusteru HDInsight.
-     >
-     >
-   * **Značky**: klíčová slova umožňují vám umožní nastavit páry klíč/hodnota k definování vlastní taxonomii z vašich cloudových služeb. Můžete například vytvořit klíč s názvem **projektu**a pak použít společné hodnoty pro všechny služby související s konkrétním projektu.
-   * **Zobrazení Ambari**: odkazy na webové Ambari.
 
-     > [!IMPORTANT]
+   * **Značky**: Značky umožňují nastavit páry klíč/hodnota k definování vlastní taxonomii z vašich cloudových služeb. Můžete například vytvořit klíč s názvem **projektu**a pak použít společné hodnoty pro všechny služby související s konkrétním projektu.
+   * **Zobrazení Ambari**: Obsahuje odkazy na webové Ambari.
+
+     > [!IMPORTANT]  
      > Pokud chcete spravovat služby poskytované clusteru HDInsight, musíte použít Ambari Web nebo Ambari REST API. Další informace o použití Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md).
-     >
-     >
 
      **Využití**:
 
@@ -102,32 +97,31 @@ Instalace vlastního softwaru v clusteru pomocí připojení ke vzdálené ploš
 
     ![Azure portal využívání clusteru HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
-   * **Vlastnosti**: zobrazení vlastností clusteru.
+   * **Vlastnosti**: Zobrazte vlastnosti clusteru.
    * **Cluster AAD Identity**:
-   * **Klíče Azure Storage**: Zobrazit výchozí účet úložiště a jeho klíčem. Účet úložiště je konfigurace během procesu vytváření clusteru.
-   * **Přihlášení clusteru**: Změna clusteru HTTP uživatelského jména a hesla.
-   * **Externí Metaúložiště**: Zobrazit [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/) metaúložiště. Metaúložiště se dá nakonfigurovat jenom během procesu vytváření clusteru.
-   * **Škálování clusteru**: zvýšení a snížení počtu pracovních uzlů clusteru.
+   * **Klíče Azure Storage**: Zobrazte výchozí účet úložiště a jeho klíčem. Účet úložiště je konfigurace během procesu vytváření clusteru.
+   * **Přihlášení clusteru**: Změňte cluster HTTP uživatelského jména a hesla.
+   * **Externí Metaúložiště**: Zobrazení [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/) metaúložiště. Metaúložiště se dá nakonfigurovat jenom během procesu vytváření clusteru.
+   * **Škálování clusteru**: Zvýšit a snížit počet pracovních uzlů clusteru.
    * **Vzdálená plocha**: Povolit a zakázat přístup ke vzdálené ploše (RDP) a konfigurace protokolu RDP uživatelské jméno.  Uživatelské jméno RDP musí být odlišný od názvu uživatele protokolu HTTP.
    * **Partner of Record**:
 
-     > [!NOTE]
+     > [!NOTE]  
      > Toto je obecný seznam dostupných nastavení; Ne všechny z nich bude k dispozici pro všechny typy clusteru.
-     >
-     >
+
 6. Klikněte na tlačítko **vlastnosti**:
 
     Oddíl properties se zobrazí následující informace:
 
-   * **Název hostitele**: název clusteru.
+   * **Název hostitele**: Název clusteru.
    * **Adresa URL clusteru**.
-   * **Stav**: zahrnují přerušen, přijetí, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, provozní, s, chyba, odstranění, odstranit, vypršel časový limit, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, ClusterCustomization CertRolloverQueued ResizeQueued,
-   * **Oblast**: umístění Azure. Seznam podporovaných umístění Azure, najdete v článku **oblasti** rozevíracího seznamu na [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+   * **Stav**: Zahrnout přerušen, přijetí, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, provozní, s, chyba, odstranění, odstranit, vypršel časový limit, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued ClusterCustomization
+   * **Oblast**: Umístění Azure. Seznam podporovaných umístění Azure, najdete v článku **oblasti** rozevíracího seznamu na [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
    * **Data vytvořená**.
-   * **Operační systém**: buď **Windows** nebo **Linux**.
+   * **Operační systém**: Buď **Windows** nebo **Linux**.
    * **Typ**: Hadoop, HBase, Storm, Spark.
    * **Verze**. Zobrazit [HDInsight verze](hdinsight-component-versioning.md)
-   * **Předplatné**: Název předplatného.
+   * **Předplatné**: Název předplatného
    * **ID předplatného**.
    * **Primární zdroj dat**. Účet úložiště objektů Blob v Azure používají jako výchozí systém souborů Hadoop.
    * **Cenová úroveň pracovních uzlů**.
@@ -145,10 +139,8 @@ Viz také [pozastavit a vypnout clustery](#pauseshut-down-clusters).
 ## <a name="scale-clusters"></a>Škálování clusterů
 Funkce škálování clusteru umožňuje změnit počet uzlů pracovního procesu se používá cluster, který běží v Azure HDInsight bez nutnosti nového vytváření clusteru.
 
-> [!NOTE]
+> [!NOTE]  
 > Pouze clustery HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí verze vašeho clusteru, můžete zkontrolovat na stránce Vlastnosti.  Zobrazit [výpisu a zobrazení clusterů](#list-and-show-clusters).
->
->
 
 Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight:
 
@@ -175,7 +167,7 @@ Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight
   * Apache Storm webového uživatelského rozhraní
   * Nástroje rozhraní příkazového řádku (CLI)
 
-    Najdete [dokumentaci Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
+    Najdete [dokumentaci Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
 
     Webové uživatelské rozhraní Storm je k dispozici v clusteru HDInsight:
 
@@ -234,10 +226,8 @@ Clustery HDInsight mají následující webové služby HTTP (mít všechny tyto
 
 Tyto služby jsou ve výchozím nastavení oprávnění pro přístup. Vám může revoke/udělit přístup z portálu Azure portal.
 
-> [!NOTE]
+> [!NOTE]  
 > Pomocí udělení nebo odvolání přístupu, resetuje clusteru uživatelské jméno a heslo.
->
->
 
 **K udělení nebo odvolání přístupu protokolu HTTP webové služby**
 
@@ -264,15 +254,15 @@ Zobrazit [výpisu a zobrazení clusterů](#list-and-show-clusters).
 ## <a name="open-hdinsight-query-console"></a>Otevřete konzoly pro dotazy na HDInsight
 Konzole pro dotazy na HDInsight zahrnuje následující funkce:
 
-* **Hive Editor**: grafickým uživatelským rozhraním A webové rozhraní pro odesílání úloh Hive.  Zobrazit [spouštění Apache dotazů Hive pomocí konzoly pro dotazy](hadoop/apache-hadoop-use-hive-query-console.md).
+* **Hive Editor**: Webové rozhraní grafického uživatelského rozhraní pro odesílání úloh Hive.  Zobrazit [spouštění Apache dotazů Hive pomocí konzoly pro dotazy](hadoop/apache-hadoop-use-hive-query-console.md).
 
     ![Editor portálu hive v HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
-* **Historie úlohy**: úlohy systému Hadoop monitorování.  
+* **Historie úlohy**: Monitorování úloh Hadoopu.  
 
     ![Historie úlohy portálu HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
     Klikněte na tlačítko **název dotazu** zobrazíte podrobnosti, včetně vlastnosti úlohy **dotaz na úlohu**, a ** výstup úlohy. Můžete také stáhnout dotaz a výstup do pracovní stanice.
-* **Soubor prohlížeče**: procházení výchozí účet úložiště a propojené účty úložiště.
+* **Soubor prohlížeče**: Procházejte výchozí účet úložiště a propojené účty úložiště.
 
     ![Procházet HDInsight portálu soubor prohlížeče](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)
 
@@ -300,10 +290,8 @@ Můžete také použít **procházení systémem souborů** nástroje z **uživa
 ## <a name="monitor-cluster-usage"></a>Monitorování využití clusteru
 **Využití** části z okna clusteru HDInsight se zobrazují informace o počet jader dostupných pro vaše předplatné pro použití s HDInsight, jakož i počet jader, které jsou přiděleny do tohoto clusteru a jak se přidělují pro uzly v tomto clusteru. Zobrazit [výpisu a zobrazení clusterů](#list-and-show-clusters).
 
-> [!IMPORTANT]
-> Pokud chcete monitorovat služby poskytované clusteru HDInsight, musíte použít Ambari Web nebo Ambari REST API. Další informace o použití Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md)
->
->
+> [!IMPORTANT]  
+> Pokud chcete monitorovat služby poskytované clusteru HDInsight, musíte použít Ambari Web nebo Ambari REST API. Další informace o použití Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="open-hadoop-ui"></a>Otevřete uživatelské rozhraní systému Hadoop
 Monitorování clusteru, procházení systému souborů a v protokolech, klikněte na tlačítko **uživatelského rozhraní systému Hadoop** v konzole pro dotazy na HDInsight. Zobrazit [konzoly otevřete dotaz HDInsight](#open-hdinsight-query-console).
@@ -325,10 +313,8 @@ Přihlašovací údaje pro cluster, který jste zadali při jeho vytváření po
 
     Výchozí hodnoty pro vypršení platnosti na dojde už za týden.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Můžete také sady HDInsight .NET SDK k povolení služby Vzdálená plocha v clusteru. Použití **EnableRdp** metodu na objekt klienta HDInsight následujícím způsobem: **klienta. EnableRdp (název clusteru, umístění, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**. Podobně, chcete-li zakázat vzdálené plochy v clusteru, můžete použít **klienta. DisableRdp (název clusteru, umístění)**. Další informace o těchto metodách, naleznete v tématu [HDInsight .NET SDK – referenční informace](https://go.microsoft.com/fwlink/?LinkId=529017). To platí pouze pro clustery HDInsight se systémem Windows.
-   >
-   >
 
 **Připojení ke clusteru pomocí protokolu RDP**
 
@@ -347,7 +333,7 @@ Pro připojení ke clusteru pomocí vzdálené plochy a použití příkazového
 
     ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
-    Další informace o příkazy Hadoop najdete v tématu [Apache Hadoop příkazy odkaz](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
+    Další informace o příkazy Hadoop najdete v tématu [Apache Hadoop příkazy odkaz](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 
 Na předchozím snímku obrazovky má název složky vložené číslo verze systému Hadoop. Číslo verze můžete změnit v závislosti na verzi součásti platformy Hadoop, které jsou nainstalované v clusteru. K odkazování na tyto složky můžete použít proměnné prostředí systému Hadoop. Příklad:
 

@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ce39e3ffce0b7721bde84254c7e5a35ec28465dc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 322c7164c0ecda550bf1bfe6a55075759bf95735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583155"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630512"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Nasazení a správa topologií Apache Storm v HDInsight se systémem Windows
 
-[Apache Storm](http://storm.apache.org/) řídicí panel umožňuje snadno nasadit a spustit topologií Apache Storm pro HDInsight, vaše clusteru pomocí webového prohlížeče. Řídicí panel můžete také monitorovat a spravovat spuštěné topologie. Pokud používáte sadu Visual Studio, nástroje HDInsight pro Visual Studio poskytuje podobné funkce v sadě Visual Studio.
+[Apache Storm](https://storm.apache.org/) řídicí panel umožňuje snadno nasadit a spustit topologií Apache Storm pro HDInsight, vaše clusteru pomocí webového prohlížeče. Řídicí panel můžete také monitorovat a spravovat spuštěné topologie. Pokud používáte sadu Visual Studio, nástroje HDInsight pro Visual Studio poskytuje podobné funkce v sadě Visual Studio.
 
 Řídicí panel Storm a funkce Storm v HDInsight Tools využívají Storm REST API, které je možné vytvořit vlastní, monitorování a řešení pro správu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují Storm na clusteru HDInsight, používající jako operační systém Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
 > Informace o nasazení a správa topologií Storm pomocí clusteru služby HDInsight, který používá Linux, najdete v tématu [nasazení a správa topologií Apache Storm v HDInsight se systémem Linux](apache-storm-deploy-monitor-topology-linux.md)
@@ -31,7 +31,7 @@ ms.locfileid: "52583155"
 
 * **Apache Storm v HDInsight** – viz [Začínáme s Apache Storm v HDInsight](apache-storm-tutorial-get-started-linux.md) pokyny týkající se vytvoření clusteru.
 
-* Pro **řídicí panel Storm**: moderní webový prohlížeč, který podporuje HTML5.
+* Pro **řídicí panel Storm**: Moderní webový prohlížeč, který podporuje HTML5.
 
 * Pro **sady Visual Studio** – sada Azure SDK 2.5.1 nebo novější a HDInsight Tools for Visual Studio. Zobrazit [začněte používat nástroje HDInsight pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md) k instalaci a konfiguraci nástroje HDInsight pro Visual Studio.
 
@@ -59,18 +59,18 @@ V horní části řídicího panelu Storm, vyberte **odeslat topologii**. Postup
 
 ![uživatelské rozhraní storm][storm-dashboard-ui]
 
-> [!NOTE]
+> [!NOTE]  
 > V některých verzích aplikace Internet Explorer je zjistit, že uživatelské rozhraní Storm neaktualizuje po jste ji nejprve nenavštívil. Například se nemusí zobrazit nové topologie jste odeslali, nebo měl dříve deaktivuje, se může zobrazit topologie jako aktivní. Microsoft si tohoto problému vědomi a pracuje na řešení.
 
 #### <a name="main-page"></a>Hlavní stránka
 
 Hlavní stránka uživatelského rozhraní Storm poskytuje následující informace:
 
-* **Souhrn clusteru**: základní informace o clusteru Storm.
+* **Souhrn clusteru**: Základní informace o clusteru Storm.
 
-* **Souhrn topologie**: seznam spuštěných topologií. Pomocí odkazů v této části můžete zobrazit další informace o konkrétních topologií.
+* **Souhrn topologie**: Seznam spuštěných topologií. Pomocí odkazů v této části můžete zobrazit další informace o konkrétních topologií.
 
-* **Dohledové Souhrn**: informace o vedoucí Storm.
+* **Dohledové Souhrn**: Informace o vedoucí Storm.
 
 * **Konfigurace nimbus**: Nimbus konfiguraci clusteru.
 
@@ -78,43 +78,43 @@ Hlavní stránka uživatelského rozhraní Storm poskytuje následující inform
 
 Vyberte odkaz z **souhrn topologie** části zobrazí následující informace o topologii:
 
-* **Souhrn topologie**: základní informace o topologii.
+* **Souhrn topologie**: Základní informace o topologii.
 
-* **Akce topologie**: akce správy, které můžete provést pro topologie.
+* **Akce topologie**: Akce správy, které můžete provést pro topologie.
 
-  * **Aktivovat**: obnoví zpracování deaktivované topologie.
+  * **Aktivovat**: Obnoví zpracování deaktivované topologie.
 
   * **Deaktivovat**: Pozastaví spuštěné topologie.
 
-  * **Obnovit rovnováhu**: upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. To umožňuje topologii upravovat paralelismus za účelem kompenzace zvýšení nebo snížení počtu uzlů v clusteru.
+  * **Obnovit rovnováhu**: Upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. To umožňuje topologii upravovat paralelismus za účelem kompenzace zvýšení nebo snížení počtu uzlů v clusteru.
 
-      Další informace najdete v tématu [pochopení paralelismu topologie Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+      Další informace najdete v tématu [pochopení paralelismu topologie Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-  * **Ukončit**: ukončí topologii Storm po zadaný časový limit.
+  * **Ukončit**: Ukončí topologii Storm po zadaný časový limit.
 
-* **Statistiky topologie**: statistické údaje o topologii. Pomocí odkazů ve **okno** sloupce nastavit časový rámec pro zbývající položky na stránce.
+* **Statistiky topologie**: Statistika týkající se topologie. Pomocí odkazů ve **okno** sloupce nastavit časový rámec pro zbývající položky na stránce.
 
-* **Spouts**: spoutů používat topologii. Chcete-li zobrazit další informace o konkrétních funkcích spouts pomocí odkazů v této části.
+* **Spouts**: Spoutů používat topologii. Chcete-li zobrazit další informace o konkrétních funkcích spouts pomocí odkazů v této části.
 
-* **Bolts**: bolty používat topologii. Pomocí odkazů v této části můžete zobrazit další informace o konkrétních funkcích bolts.
+* **Bolts**: Bolty používat topologii. Pomocí odkazů v této části můžete zobrazit další informace o konkrétních funkcích bolts.
 
-* **Topologie konfigurace**: Konfigurace vybrané topologie.
+* **Topologie konfigurace**: Konfigurace vybraného topologie.
 
 #### <a name="spout-and-bolt-summary"></a>Spout a Bolt souhrn
 
 Výběr spout z **Spouts** nebo **Bolts** části zobrazí následující informace o vybrané položce:
 
-* **Souhrn komponenty**: základní informace o funkcích spout nebo bolt.
+* **Souhrn komponenty**: Základní informace o funkcích spout nebo bolt.
 
-* **Funkcí spout/Bolt statistiky**: statistické údaje o funkcích spout nebo bolt. Pomocí odkazů ve **okno** sloupce nastavit časový rámec pro zbývající položky na stránce.
+* **Funkcí spout/Bolt statistiky**: Statistické údaje o funkcích spout nebo bolt. Pomocí odkazů ve **okno** sloupce nastavit časový rámec pro zbývající položky na stránce.
 
-* **Statistiky vstupu** (pouze funkce bolt): informace o vstupní datové proudy využívaná funkcí bolt.
+* **Statistiky vstupu** (pouze funkce bolt): Informace o vstupní datové proudy využívaná funkcí bolt.
 
-* **Statististiky výstupu**: informace o datové proudy vyslané situace spout nebo funkce bolt.
+* **Statististiky výstupu**: Informace o datových proudů, protože ho vygeneroval tento funkcích spout nebo bolt.
 
-* **Prováděcí moduly**: informace o instancích sady funkcích spout nebo bolt. Vyberte **Port** vytvořený záznam pro konkrétní prováděcí modul zobrazení protokolu diagnostických informací pro tuto instanci.
+* **Prováděcí moduly**: Informace o instancích sady funkcích spout nebo bolt. Vyberte **Port** vytvořený záznam pro konkrétní prováděcí modul zobrazení protokolu diagnostických informací pro tuto instanci.
 
-* **Chyby**: žádné informace o chybě pro tento spout nebo funkce bolt.
+* **Chyby**: Veškeré informace o chybě pro tento funkcích spout nebo bolt.
 
 ## <a name="hdinsight-tools-for-visual-studio"></a>Nástroje HDInsight pro Visual Studio
 
@@ -132,7 +132,7 @@ Nasadit ukázku Storm v clusteru HDInsight, pak zobrazení a Správa topologie p
 
 4. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt a vyberte **odeslat do Storm v HDInsight**.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Pokud se zobrazí výzva, zadejte přihlašovací údaje pro vaše předplatné Azure. Pokud máte více než jedno předplatné, přihlaste se na ten, který obsahuje váš cluster Storm v HDInsight.
 
 5. Vyberte váš cluster Storm v HDInsight z **Storm Cluster** rozevíracího seznamu a pak vyberte **odeslat**. Můžete sledovat, jestli je pomocí úspěšného odeslání **výstup** okna.
@@ -141,17 +141,17 @@ Nasadit ukázku Storm v clusteru HDInsight, pak zobrazení a Správa topologie p
 
     ![monitorování sady Visual studio](./media/apache-storm-deploy-monitor-topology/vsmonitor.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Můžete také zobrazit **topologií Storm** z **Průzkumníka serveru** tak, že rozbalíte **Azure** > **HDInsight**a pak pravým tlačítkem cluster Storm v HDInsight a výběrem **zobrazit topologie Storm**.
 
     Vyberte tvar spoutů a boltů zobrazíte informace o těchto součástí. Otevře se nové okno pro každé vybrané položky.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Název topologie je název třídy topologie (v tomto případě `HelloWord`,) s časovým razítkem připojí.
 
 7. Z **souhrn topologie** zobrazit, vyberte možnost **Kill** zastavení topologie.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Topologie Storm pokračovat, spuštění, dokud se zastaví nebo odstranění clusteru.
 
 
@@ -169,10 +169,10 @@ Základní identifikátor URI pro rozhraní REST API v clusterech HDInsight je *
 
 Požadavky rozhraní REST API musí používat **základní ověřování**, takže se pomocí jména správce clusteru HDInsight a heslo.
 
-> [!NOTE]
+> [!NOTE]  
 > Protože odesílají základní ověřování pomocí prostého textu, měli byste **vždy** zabezpečená komunikace s využitím clusteru pomocí protokolu HTTPS.
 
-### <a name="return-values"></a>Návratové hodnoty
+### <a name="return-values"></a>Vrácené hodnoty
 
 Použitelné z v rámci clusteru nebo virtuálním počítačům ve stejné virtuální síti Azure jako cluster může být pouze informace vrácené z rozhraní REST API. Například plně kvalifikovaný název domény (FQDN) vrátil pro [Apache ZooKeeper](https://zookeeper.apache.org/) servery nejsou přístupné z Internetu.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: 0e7487525dc23482cbd3029b626e7bb30dd51b50
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 7f7071c9f87528eddbfe3d541cd85624e308948f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398556"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633381"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Obnovitelné odstranění pro objekty BLOB služby Azure Storage
 Azure Storage teď nabízí obnovitelného odstranění pro objekty blob, takže můžete snadno obnovit data, když je chybně změněného nebo odstraněného aplikaci nebo jiný uživatel účet úložiště.
@@ -170,26 +170,29 @@ Jakmile jste se obnovit snímky objekt blob, můžete kliknout na **povýšit** 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 ### <a name="powershell"></a>PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů blob. Následující příklad povolí obnovitelného odstranění pro podmnožinu účtů v předplatném:
 
 ```powershell
-Set-AzureRmContext -Subscription "<subscription-name>"
-$MatchingAccounts = Get-AzureRMStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
-$MatchingAccounts | Enable-AzureStorageDeleteRetentionPolicy -RetentionDays 7
+Set-AzContext -Subscription "<subscription-name>"
+$MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
+$MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
 Můžete ověřit, že tento obnovitelné odstranění zapnutý pomocí následujícího příkazu:
 
 ```powershell
-$MatchingAccounts | Get-AzureStorageServiceProperty -ServiceType Blob
+$MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 Pokud chcete obnovit objekty BLOB, které se neúmyslně odstranily, volání zrušení odstranění u těchto objektů BLOB. Mějte na paměti, že volání **obnovit objekt Blob**, obnoví na aktivní a obnovitelně odstraněné objekty BLOB, všechny přidružené obnovitelně odstraněné snímky jako aktivní. Následující příklad volá obnovit na všech obnovitelně odstraněný a aktivní objektů BLOB v kontejneru:
 ```powershell
 # Create a context by specifying storage account name and key
-$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 # Get the blobs in a given container and show their properties
-$Blobs = Get-AzureStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
+$Blobs = Get-AzStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
 $Blobs.ICloudBlob.Properties
 
 # Undelete the blobs
@@ -198,8 +201,8 @@ $Blobs.ICloudBlob.Undelete()
 K vyhledání zásady uchovávání informací aktuálního obnovitelné odstranění, použijte následující příkaz:
 
 ```azurepowershell-interactive
-   $account = Get-AzureRmStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzureStorageServiceProperty -ServiceType Blob -Context $account.Context
+   $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
+   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
 ### <a name="azure-cli"></a>Azure CLI 

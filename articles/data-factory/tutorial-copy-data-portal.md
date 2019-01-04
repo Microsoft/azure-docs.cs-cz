@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: f7d6f34c75069f91e06d58c960249d040b2bda8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 6e3ab097b08e3a15d012ccc644307bc8f4b281ab
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299188"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971678"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště Azure Blob Storage do databáze SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -217,7 +217,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
     ![Karta Kanál](./media/tutorial-copy-data-portal/pipeline-tab-2.png)        
 
-### <a name="confugure-mapping"></a>Konfigurace mapování
+### <a name="configure-mapping"></a>Nakonfigurujte mapování
 
 V dolní části okna **Vlastnosti** přejděte na kartu **Mapování** a vyberte **Importovat schémata**. Všimněte si mapování prvního a druhého sloupce ve zdrojovém souboru na pole **FirstName** (Jméno) a **LastName** (Příjmení) v databázi SQL Database.
 
@@ -303,7 +303,7 @@ V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato akt
     ![Seznam spuštění aktivační události](./media/tutorial-copy-data-portal/trigger-runs-list.png)
 1. Ověřte, že se až do uplynutí zadaného koncového času budou do tabulky **emp** vkládat dva řádky za minutu (pro každé spuštění kanálu). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti Blob Storage. Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]

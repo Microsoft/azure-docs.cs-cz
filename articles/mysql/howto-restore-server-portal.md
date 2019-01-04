@@ -1,20 +1,17 @@
 ---
 title: Postup obnovení serveru ve službě Azure Database for MySQL
 description: Tento článek popisuje, jak obnovit server ve službě Azure Database for MySQL pomocí webu Azure portal.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 7f75950a0f61c646d6cf36ea0903ebdefbd336ee
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e1545e830ac04000920c3881486b2add79744201
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138475"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548863"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Zálohování a obnovení serveru ve službě Azure Database for MySQL pomocí webu Azure portal
 
@@ -65,10 +62,10 @@ Následující kroky obnoví ukázkový server k určitému bodu v čase:
 3. Vyplňte formulář obnovit požadované údaje:
 
    ![Azure Database for MySQL – informace o obnovení ](./media/howto-restore-server-portal/3-restore.png)
-   - **Bod obnovení**: vyberte v daném okamžiku chcete provést obnovení.
+   - **Bod obnovení**: Vyberte v daném okamžiku, kterou chcete obnovit.
    - **Cílový server**: Zadejte název pro nový server.
-   - **Umístění**: nejde vyberte oblast. Ve výchozím nastavení je stejná jako u zdrojového serveru.
-   - **Cenová úroveň**: nemůžete změnit tyto parametry při provádění obnovení bodu v čase. Je stejná jako u zdrojového serveru. 
+   - **Umístění**: Nejde vyberte oblast. Ve výchozím nastavení je stejná jako u zdrojového serveru.
+   - **Cenová úroveň**: Při obnovení bodu v čase nelze změnit tyto parametry. Je stejná jako u zdrojového serveru. 
 
 4. Klikněte na tlačítko **OK** k obnovení serveru k obnovení v daném okamžiku. 
 

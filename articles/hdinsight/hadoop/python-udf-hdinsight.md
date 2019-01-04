@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 021ec3919e061010265ff3a2f30fde0ffb59e7b0
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 92221e5aaebbaebb2af17ea211e38a3665a2b04f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632607"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652469"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití Pythonu uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig v HDInsight
 
@@ -26,7 +26,7 @@ Python2.7 se instaluje standardně na HDInsight 3.0 nebo novější. Apache Hive
 
 HDInsight také zahrnuje Jython, což je implementace Python napsané v jazyce Java. Jython běží přímo na virtuálním počítači Java a nepoužívá streamování. Jython je doporučené interpret Pythonu při použití Pythonu s Pig.
 
-> [!WARNING]
+> [!WARNING]  
 > Kroky v tomto dokumentu vytvořit následující předpoklady: 
 >
 > * Vytváření skriptů Pythonu ve svém místním vývojovém prostředí.
@@ -38,7 +38,7 @@ HDInsight také zahrnuje Jython, což je implementace Python napsané v jazyce J
 > * Použití `scp` k nahrání souborů ze služby cloud shell pro HDInsight.
 > * Použití `ssh` od služby cloud shell pro připojení k HDInsight a spuštění příkladů.
 
-## <a name="hivepython"></a>Hive UDF
+## <a name="hivepython"></a>Apache Hive UDF
 
 Python může sloužit jako UDF z Hive prostřednictvím HiveQL `TRANSFORM` příkazu. Například následující HiveQL vyvolá `hiveudf.py` souboru uloženém na výchozí účet úložiště Azure pro cluster.
 
@@ -66,7 +66,7 @@ FROM hivesampletable
 ORDER BY clientid LIMIT 50;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Na clusterech HDInsight se systémem Windows `USING` klauzule musíte zadat úplnou cestu k python.exe.
 
 Zde je, co dělá v tomto příkladu:
@@ -111,7 +111,7 @@ Výstup skriptu je tvořen vstupní hodnoty pro `devicemake` a `devicemodel`a ho
 
 Zobrazit [spuštění příkladů](#running) pro spuštění v tomto příkladu ve vašem clusteru HDInsight.
 
-## <a name="pigpython"></a>Pig UDF
+## <a name="pigpython"></a>Apache Pig UDF
 
 Skript v jazyce Python se může sloužit jako UDF z Pig prostřednictvím `GENERATE` příkazu. Spuštěním skriptu s použitím Jython nebo C Python.
 
@@ -123,7 +123,7 @@ Chcete-li určit interpret Pythonu, použijte `register` při odkazování na sk
 * **Chcete-li použít Jython**: `register '/path/to/pigudf.py' using jython as myfuncs;`
 * **Použití Pythonu C**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Při použití Jython, cesta k souboru pig_jython může být buď místní cestu nebo WASB: / / cestu. Ale při použití Pythonu C, musí odkazovat na soubor v místním systému souborů uzlu, který se používá k odeslání úlohy Pig.
 
 Jednou za registraci, Pig Latin pro účely tohoto příkladu je stejný pro:
@@ -182,7 +182,7 @@ Když data se vrátí do Pig, konzistentní schéma má definované v `@outputSc
 
 ## <a name="running"></a>Nahrání a spuštění příkladů
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > **SSH** kroky fungují pouze u clusteru HDInsight se systémem Linux. **Powershellu** postup práce s clusterem Linuxu nebo HDInsight se systémem Windows, ale vyžadují klienta Windows.
 
 ### <a name="ssh"></a>SSH
@@ -299,11 +299,11 @@ Po nahrání soubory, pomocí následujících kroků můžete spouštět úlohy
 
     Po dokončení této úlohy byste měli vidět stejný výstup jako když jste dříve spustili skriptu s použitím Jython.
 
-### <a name="powershell-upload-the-files"></a>Prostředí PowerShell: Nahrání souborů
+### <a name="powershell-upload-the-files"></a>PowerShell: Nahrání souborů
 
 Prostředí PowerShell můžete použít k nahrání souborů do serveru HDInsight. Pokud chcete nahrát soubory Pythonu pomocí následujícího skriptu:
 
-> [!IMPORTANT] 
+> [!IMPORTANT]   
 > Kroky v této části pomocí Azure Powershellu. Další informace o použití Azure Powershellu najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=5-41)]
@@ -313,14 +313,14 @@ Prostředí PowerShell můžete použít k nahrání souborů do serveru HDInsig
 
 Tento skript načte informace pro váš cluster HDInsight, pak extrahuje účtu a klíč pro výchozí účet úložiště a tyto soubory nahraje do kořenového adresáře kontejneru.
 
-> [!NOTE]
-> Další informace o nahrávání souborů, najdete v článku [nahrávání dat pro úlohy systému Hadoop v HDInsight](../hdinsight-upload-data.md) dokumentu.
+> [!NOTE]  
+> Další informace o nahrávání souborů, najdete v článku [nahrávání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md) dokumentu.
 
-#### <a name="powershell-use-the-hive-udf"></a>PowerShell: Pomocí Hive UDF
+#### <a name="powershell-use-the-hive-udf"></a>PowerShell: Použití Hivu UDF
 
 Prostředí PowerShell také umožňuje vzdáleně spouštět dotazy Hive. Pomocí následujícího skriptu prostředí PowerShell ke spuštění dotazu Hive, který používá **hiveudf.py** skriptu:
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Před spuštěním, skript vás vyzve k zadání informací o účtu HTTPs/správce pro váš cluster HDInsight.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=45-94)]
@@ -337,7 +337,7 @@ Výstup **Hive** úloha by měla vypadat podobně jako v následujícím příkl
 
 Prostředí PowerShell je také možné spouštět úlohy Pig Latin. Ke spuštění úlohy Pig Latin, který používá **pigudf.py** skriptu, použijte následující příkaz powershellu:
 
-> [!NOTE]
+> [!NOTE]  
 > Při vzdálené odeslání úlohy pomocí Powershellu, není možné použít jako překladač Pythonu C.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=98-144)]
@@ -383,6 +383,6 @@ Pokud je potřeba načíst moduly Pythonu, které nejsou k dispozici ve výchoz�
 
 Další způsoby použití Pig, Hive a další informace o použití prostředí MapReduce, naleznete v následujících dokumentech:
 
-* [Použití Hivu se službou HDInsight](hdinsight-use-hive.md)
-* [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Hivu se službou HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Pig s HDInsight](hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)

@@ -3,17 +3,15 @@ title: Replikace dat do služby Azure Database pro MariaDB.
 description: Tento článek popisuje dat replikace pro službu Azure Database pro MariaDB.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a6bb6ae45c4240f21b1e0baf4956b053d4b98720
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948175"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547600"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikace dat do služby Azure Database pro MariaDB
 
@@ -22,8 +20,8 @@ Replikace dat umožňuje synchronizovat data ze serveru MariaDB s místně, v da
 ## <a name="when-to-use-data-in-replication"></a>Kdy použít replikace dat
 Hlavní scénáře pro zvážení použití replikace dat jsou:
 
-- **Synchronizace dat hybridní:** se Data replikace, abyste mohli data synchronizovat mezi vašimi místními servery a Azure Database pro MariaDB. Tato synchronizace je užitečné pro vytváření hybridních aplikací. Tato metoda je přitažlivými, pokud máte existující místní databázový server, ale chcete přesunout data do oblasti blíže koncovým uživatelům.
-- **Multicloudové synchronizace:** komplexní cloudové řešení, pomocí replikace dat pro synchronizaci dat mezi – Azure Database pro MariaDB a různí poskytovatelé cloudových, včetně virtual machines a databáze služby hostované v tyto cloudy.
+- **Hybridní synchronizace dat:** Pomocí Data replikace můžete zachovat data synchronizovat mezi vašimi místními servery a Azure Database pro MariaDB. Tato synchronizace je užitečné pro vytváření hybridních aplikací. Tato metoda je přitažlivými, pokud máte existující místní databázový server, ale chcete přesunout data do oblasti blíže koncovým uživatelům.
+- **Multicloudové synchronizace:** Pro komplexní cloudové řešení pomocí replikace dat pro synchronizaci dat mezi – Azure Database pro MariaDB a různí poskytovatelé cloudových, včetně virtual machines a databáze služby hostované v tyto cloudy.
 
 ## <a name="limitations-and-considerations"></a>Omezení a důležité informace
 

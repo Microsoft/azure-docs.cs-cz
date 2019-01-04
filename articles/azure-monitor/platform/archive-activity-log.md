@@ -7,16 +7,16 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
-ms.component: activitylog
-ms.openlocfilehash: 19f97d097c47229038595b202e82ccf41dfbfefc
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.component: logs
+ms.openlocfilehash: 9714cb8ce1c3380ac74150148c8d84bd410e3fc4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434915"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715207"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivace protokolu aktivit Azure
-V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershellu nebo CLI pro různé platformy pro archivaci vaše [ **protokolu aktivit Azure** ](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat váš protokol aktivit déle než 90 dnů (s úplnou kontrolou nad zásady uchovávání informací) pro audit, statické analýzy nebo pro zálohování. Pokud potřebujete události uchovávat po 90 dní nebo méně nepotřebujete nastavit archivaci do účtu úložiště, protože události protokolu aktivit se zachovají na platformě Azure po dobu 90 dnů bez povolení archivace.
+V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershellu nebo CLI pro různé platformy pro archivaci vaše [ **protokolu aktivit Azure** ](../../azure-monitor/platform/activity-logs-overview.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat váš protokol aktivit déle než 90 dnů (s úplnou kontrolou nad zásady uchovávání informací) pro audit, statické analýzy nebo pro zálohování. Pokud potřebujete události uchovávat po 90 dní nebo méně nepotřebujete nastavit archivaci do účtu úložiště, protože události protokolu aktivit se zachovají na platformě Azure po dobu 90 dnů bez povolení archivace.
 
 > [!WARNING]
 > 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
@@ -30,7 +30,7 @@ Než začnete, budete muset [vytvořit účet úložiště](../../storage/common
 >  Nelze aktuálně archivace dat do účtu služby storage vytvořené za zabezpečené virtuální síti.
 
 ## <a name="log-profile"></a>Profilu protokolu
-Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte **profilu protokolu** pro odběr. Profil protokolu definuje typ události, které jsou uložená nebo prostřednictvím datového proudu a výstupy – úložiště účtu a/nebo event hub. Definuje také zásady uchovávání informací (počet dní uchování) pro události, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události jsou uloženy po neomezenou dobu. V opačném případě to lze nastavit na libovolnou hodnotu mezi 1 a 2147483647. Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. [Další informace o protokolu profily zde](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 
+Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte **profilu protokolu** pro odběr. Profil protokolu definuje typ události, které jsou uložená nebo prostřednictvím datového proudu a výstupy – úložiště účtu a/nebo event hub. Definuje také zásady uchovávání informací (počet dní uchování) pro události, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události jsou uloženy po neomezenou dobu. V opačném případě to lze nastavit na libovolnou hodnotu mezi 1 a 2147483647. Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. [Další informace o protokolu profily zde](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>Archivace protokolu aktivit na portálu
 1. Na portálu klikněte na tlačítko **protokolu aktivit** odkaz v levé navigaci. Pokud nevidíte odkaz pro protokol aktivit, klikněte na tlačítko **všechny služby** nejdřív propojit.
@@ -182,6 +182,6 @@ V rámci souboru pt1h.JSON, když se ukládají všechny události v poli "zázn
 
 ## <a name="next-steps"></a>Další postup
 * [Stažení objektů blob pro analýzu](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-* [Stream protokolů aktivit do služby Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
-* [Další informace o protokolu aktivit](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+* [Stream protokolů aktivit do služby Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+* [Další informace o protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md)
 

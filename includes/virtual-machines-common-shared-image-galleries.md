@@ -44,13 +44,13 @@ Místní podpora pro sdílené bitové kopie Galerie je ve verzi limited preview
 
 | Vytvoření galerie v  | Verze, kterou chcete replikaci |
 |--------------------|----------------------|
-| Západní střed USA    |Střed USA – jih|
+| Západní střed USA    |Středojižní USA|
 | Východní USA 2          |USA – východ|
-| Střed USA – jih   |Východní USA 2|
+| Středojižní USA   |Východní USA 2|
 | Jihovýchodní Asie     |Západní USA|
 | Západní Evropa        |Západní USA 2|
 |                    |USA – střed|
-|                    |Střed USA – sever|
+|                    |Středoseverní USA|
 |                    |Kanada – střed|
 |                    |Kanada – východ|
 |                    |Severní Evropa|

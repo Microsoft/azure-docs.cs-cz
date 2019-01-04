@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 844adf70a62377814e813604f1789633367b3da7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 157d7776cc9a8eff485bd18658527bc8d30f4df0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284854"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602953"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Vytvoření čitelné sekundární databáze pomocí aktivní geografické replikace
 

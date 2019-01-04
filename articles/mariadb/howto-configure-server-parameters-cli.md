@@ -1,21 +1,18 @@
 ---
 title: Nastavit parametry služby ve službě Azure Database pro MariaDB
 description: Tento článek popisuje, jak nastavit parametry služby ve službě Azure Database pro MariaDB pomocí nástroje příkazového řádku Azure CLI.
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 4e391ce56b31f35da67b3d975bbc1290c17cb139
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 4e0bf45f1c67a5e07d6ed632f6560d094b673c0a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516144"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547148"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí příkazového řádku Azure
 Seznam, zobrazit a aktualizovat parametry konfigurace pro službu Azure Database pro MariaDB server pomocí rozhraní příkazového řádku Azure, nástroje příkazového řádku Azure. Podmnožina stroj konfigurace je zveřejněný na úrovni serveru a je možné upravit.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: ad711fe998a3c250775c5d4f4d76305ffb7cf860
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2237d523b8023c0a6551515f9a2740e92e7beb3f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244589"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548914"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -104,7 +104,7 @@ Například může mít zařízení pro zabezpečení virtuální sítě ve vaš
 
 [Vynucené tunelování](https://www.petri.com/azure-forced-tunneling) virtuálních sítí je mechanismus, který můžete použít k zajištění, že vaše služby nejsou povoleny k navázání připojení k zařízení na Internetu. Všimněte si, že se liší od přijímat příchozí připojení a pak reagovat na ně. Front-endové webové servery musí reagovat na žádosti z Internetu hostitelů a proto síti internet opensourcového vizualizačního provoz je povolený příchozí pro tyto webové servery a webové servery můžou reagovat.
 
-Co nechcete povolit je front-end webový server iniciovat odchozí požadavek. Požadavky, může představovat bezpečnostní riziko, protože tato připojení je možné stáhnout malware. I v případě, že chcete tyto servery front-end iniciovat odchozí požadavky na Internetu, můžete chtít vynutit je na vaše místní webové proxy servery. To umožňuje využít výhod adresu URL, filtrování a protokolování.
+Don t chcete povolit je front-end webový server iniciovat odchozí požadavek. Požadavky, může představovat bezpečnostní riziko, protože tato připojení je možné stáhnout malware. I v případě, že chcete tyto servery front-end iniciovat odchozí požadavky na Internetu, můžete chtít vynutit je na vaše místní webové proxy servery. To umožňuje využít výhod adresu URL, filtrování a protokolování.
 
 Místo toho byste k tomu použít vynucené tunelování. Když povolíte vynucené tunelování, vložení je vynuceno všechna připojení k Internetu prostřednictvím místní brány. Můžete nakonfigurovat vynucené tunelování s využitím trasy definované uživatelem.
 
@@ -127,7 +127,7 @@ Vaše požadavky na zabezpečení mohou například zahrnovat:
 * Řízení přístupu aplikace
 * Další ochranu před útoky DDoS (nad DDoS protection poskytuje prostředky infrastruktury Azure, samotný)
 
-Tyto funkce zabezpečení rozšířeného sítě můžete přistupovat pomocí Azure partnerského řešení. Najdete nejaktuálnější sítě partnerů Azure řešení zabezpečení přechodem [Azure Marketplace](https://azure.microsoft.com/marketplace/)a vyhledáním "zabezpečení" a "zabezpečení sítě."
+Tyto funkce zabezpečení rozšířeného sítě můžete přistupovat pomocí Azure partnerského řešení. Najdete nejaktuálnější sítě partnerů Azure řešení zabezpečení přechodem [Azure Marketplace](https://azure.microsoft.com/marketplace/)a vyhledávání pro zabezpečení a zabezpečení sítě.
 
 ## <a name="azure-firewall"></a>Brána Azure Firewall
 
@@ -171,7 +171,7 @@ Další informace:
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>Připojení místní sítě k virtuální síti pomocí sítě VPN
 
-Můžete chtít připojit celý podnikové síti nebo jeho části, k virtuální síti. To je běžné v hybridním IT scénáře, kdy organizace [rozšířit jejich místní datacentra do Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). V mnoha případech hostovat organizace části služby v Azure a částí místní. Například může dělají, když řešení obsahuje front-end webové servery v Azure a místní databáze back-end. Tyto typy připojení "více míst" také nastavit správu Azure, které jsou umístěné prostředky lepší zabezpečení a aktivovat scénáře jako rozšíření řadiče domény služby Active Directory do Azure.
+Můžete chtít připojit celý podnikové síti nebo jeho části, k virtuální síti. To je běžné v hybridním IT scénáře, kdy organizace [rozšířit jejich místní datacentra do Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). V mnoha případech hostovat organizace části služby v Azure a částí místní. Například může dělají, když řešení obsahuje front-end webové servery v Azure a místní databáze back-end. Tyto typy připojení mezi různými místy také usnadnění správy Azure, které jsou umístěné prostředky lepší zabezpečení a aktivovat scénáře jako rozšíření řadiče domény služby Active Directory do Azure.
 
 Jeden ze způsobů, jak provádět jde použít [site-to-site VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn). Rozdíl mezi VPN typu site-to-site a point-to-site VPN je, že druhá možnost připojí jedno zařízení k virtuální síti. Síť site-to-site VPN připojuje k celé síti (například vaší místní sítě) k virtuální síti. VPN typu Site-to-site k virtuální síti pomocí vysoce zabezpečené režimu tunelového propojení IPsec protokol VPN.
 
@@ -199,7 +199,7 @@ Další informace:
 
 Je možné použít řadu virtuálních sítí pro vaše nasazení. Existují různé důvody, proč to můžete udělat. Chcete zjednodušit správu, nebo může být vhodné zvýšit zabezpečení. Bez ohledu na to motivace pro uvedení prostředků v různých virtuálních sítích může nastat situace, kdy má být prostředky ve všech sítích se mezi sebou připojit.
 
-Jednou z možností je pro služby v jedné virtuální sítě pro připojení ke službám v jiné virtuální síti s "opakování ve smyčce zpět" prostřednictvím Internetu. Připojení se spouští v jedné virtuální sítě prochází Internetu a potom se vrátí zpět do cílové virtuální sítě. Tato možnost poskytuje připojení k řešení problémů zabezpečení vyplývajících z libovolné internetové komunikaci.
+Jednou z možností je pro služby v jedné virtuální sítě pro připojení ke službám na jinou virtuální sítí, ve smyčce zpátky pomocí Internetu. Připojení se spouští v jedné virtuální sítě prochází Internetu a potom se vrátí zpět do cílové virtuální sítě. Tato možnost poskytuje připojení k řešení problémů zabezpečení vyplývajících z libovolné internetové komunikaci.
 
 Může být vhodnější vytvořit sítě site-to-site VPN, která se připojuje mezi dvěma virtuálními sítěmi. Tato metoda používá stejný [režimu tunelového propojení IPSec](https://technet.microsoft.com/library/cc786385.aspx) protokol jako připojení VPN site-to-site mezi různými místy uvedených výše.
 
@@ -213,7 +213,7 @@ Dalším způsobem, jak propojit virtuální sítě je [VNET peering](../virtual
 
 ## <a name="availability"></a>Dostupnost
 
-Dostupnost je klíčovou součástí každého programu zabezpečení. Pokud uživatelům a systémům nelze získat přístup k to, co chtějí získat přístup přes síť, službu lze považovat za dojde k ohrožení bezpečnosti. Azure nabízí síťové technologie, které podporují vysokou dostupnost následujících mechanismů:
+Dostupnost je klíčovou součástí každého programu zabezpečení. Pokud vaši uživatelé a systémy můžou t přístup, které potřebují přístup přes síť, službu lze považovat za dojde k ohrožení bezpečnosti. Azure nabízí síťové technologie, které podporují vysokou dostupnost následujících mechanismů:
 
 * Vyrovnávání zatížení založený na protokolu HTTP
 * Úrovně služby Vyrovnávání zatížení sítě
@@ -222,7 +222,7 @@ Dostupnost je klíčovou součástí každého programu zabezpečení. Pokud už
 Vyrovnávání zatížení je mechanismus, který je navržený tak, aby rovnoměrně rozmístit připojení mezi více zařízení. Cíle služby Vyrovnávání zatížení jsou:
 
 * Chcete-li zvýšit dostupnost. Při načítání zůstatek připojení mezi různými zařízeními, jeden nebo více zařízení nemusí být k dispozici bez narušení služby. Služby spuštěné na zbývající online zařízení můžete dál obsluhovat obsah ze služby.
-* Chcete-li zvýšit výkon. Při načítání zůstatek připojení mezi různými zařízeními jedno zařízení nemusí zpracovávat veškeré zpracování. Místo toho paměti a zpracování požadavků pro poskytování obsahu je rozdělena mezi více zařízení.
+* Chcete-li zvýšit výkon. Při načítání zůstatek připojení mezi různými zařízeními jedno zařízení kódu nemá pro zpracování všech procesů. Místo toho paměti a zpracování požadavků pro poskytování obsahu je rozdělena mezi více zařízení.
 
 ### <a name="http-based-load-balancing"></a>Vyrovnávání zatížení založený na protokolu HTTP
 
@@ -231,7 +231,7 @@ Organizace, které se spouštějí webové služby často žádoucí mít Vyrovn
 Azure Application Gateway zajišťuje pro vaše webové služby Vyrovnávání zatížení založený na protokolu HTTP. Služba Application Gateway podporuje:
 
 * Spřažení relace na základě souborů cookie. Tato funkce zajišťuje, že připojení na jeden ze serverů za tento nástroj pro vyrovnávání zatížení zůstane beze změny mezi klientem a serverem. Tím se zajistí stabilitu transakcí.
-* Přesměrování zpracování SSL. Pokud se klient připojí pomocí nástroje pro vyrovnávání zatížení, relace se šifrují pomocí protokolu HTTPS (SSL). Za účelem zvýšení výkonu, ale můžete použít protokol HTTP (nešifrované) pro připojení mezi nástroje pro vyrovnávání zatížení a webový server za nástrojem pro vyrovnávání zatížení. To se označuje jako "Přesměrování zpracování SSL," protože webových serverů za nástrojem pro vyrovnávání zatížení není prostředí procesoru režie spojená s šifrováním. Webové servery může proto žádosti o služby rychleji.
+* Přesměrování zpracování SSL. Pokud se klient připojí pomocí nástroje pro vyrovnávání zatížení, relace se šifrují pomocí protokolu HTTPS (SSL). Za účelem zvýšení výkonu, ale můžete použít protokol HTTP (nešifrované) pro připojení mezi nástroje pro vyrovnávání zatížení a webový server za nástrojem pro vyrovnávání zatížení. To se označuje jako snižování zátěže SSL, protože webových serverů za don nástroje pro vyrovnávání zatížení t prostředí procesoru režie spojená s šifrováním. Webové servery může proto žádosti o služby rychleji.
 * Adresa URL obsahu směrování na základě. Tato funkce umožňuje Vyrovnávání zatížení pro rozhodování o tam, kde na dopředné připojení založené na cílové adrese URL. To zajišťuje mnohem větší flexibilitu než řešení, která usnadňují načíst vyrovnávání rozhodování na základě IP adres.
 
 Další informace:
@@ -256,7 +256,7 @@ Další informace:
 
 ### <a name="global-load-balancing"></a>Globální Vyrovnávání zatížení
 
-Některé organizace má nejvyšší úroveň dostupnosti je to možné. Jedním ze způsobů dosažení tohoto cíle je k hostování aplikací v globálně distribuovaných datacentrech. Když je aplikace hostovaná v datových centrech rozmístěných po celém světě, je to možné celé geopolitické oblasti není dostupná, a ještě další aplikace a spuštěna.
+Některé organizace má nejvyšší úroveň dostupnosti je to možné. Jedním ze způsobů dosažení tohoto cíle je k hostování aplikací v globálně distribuovaných datacentrech. Když je aplikace hostovaná v datových centrech rozmístěných po celém světě a je možné pro celé geopolitické oblasti není dostupná a stále máte aplikaci rychle zprovoznit s.
 
 Tato strategie Vyrovnávání zatížení můžete také k výraznému výkonu. Může směrovat požadavky na službu do datového centra, která je nejblíže zařízení, která odeslala žádost.
 
@@ -268,7 +268,7 @@ Další informace:
 
 ## <a name="name-resolution"></a>Překlad adres
 
-Překlad názvů je důležité funkce pro všechny služby, které můžete hostovat v Azure. Z hlediska zabezpečení může způsobit ohrožení zabezpečení funkce překladu názvu útočník přesměrování požadavků z vašich serverů do lokality útočníka. Zabezpečené překlad představuje požadavek pro všechny služby hostované v cloudu.
+Překlad názvů je důležité funkce pro všechny služby, které můžete hostovat v Azure. Z hlediska zabezpečení může způsobit ohrožení zabezpečení funkce překladu názvu útočník přesměrování požadavků z vašich serverů do lokality útočník s. Zabezpečené překlad představuje požadavek pro všechny služby hostované v cloudu.
 
 Existují dva typy překladu adres, které je potřeba vyhovět:
 
@@ -292,7 +292,7 @@ Pro externí překlad máte dvě možnosti:
 
 Mnoho organizací hostovat vlastní DNS servery místně. Protože mají síťové odborných znalostí a globální přítomnosti Uděláte to tak to dělají.
 
-Ve většině případů je lepší pro hostování vaší služby překladu názvů DNS u poskytovatele služeb. Poskytovatelé služeb mají sítě odbornost a globální přítomnosti zajistit velmi vysokou dostupnost služeb název řešení. Dostupnost je nezbytné služby DNS, protože při selhání vaší služby rozlišení názvů nikdo se nebude moct kontaktovat vaše internetové služby.
+Ve většině případů je lepší pro hostování vaší DNS s názvem řešení služby u poskytovatele služeb. Poskytovatelé služeb mají sítě odbornost a globální přítomnosti zajistit velmi vysokou dostupnost služeb název řešení. Dostupnost je nezbytné služby DNS, protože při selhání vaší služby rozlišení názvů nikdo se nebude moct kontaktovat vaše internetové služby.
 
 Azure vám poskytne vysoce dostupné a vysoce výkonné externí řešení DNS ve formě Azure DNS. Toto řešení externí název řešení využívá výhod infrastruktury po celém světě Azure DNS. Umožňuje hostování domény v Azure, pomocí stejných přihlašovacích údajů, rozhraní API, nástrojů a fakturačních podmínek jako u ostatních služeb Azure. V rámci Azure se také dědí ovládací prvky silné zabezpečení integrované v platformě.
 
@@ -303,7 +303,7 @@ Další informace:
 
 ## <a name="perimeter-network-architecture"></a>Architektura hraniční sítě
 
-Mnoho organizací použití hraničních sítích k segmentaci svých sítí a vytvořit zónu vyrovnávací paměť mezi Internetem a jejich služby. Hraniční části sítě se považuje za zónu s nízkou úrovní zabezpečení a žádné cenné prostředky jsou umístěné v daném segmentu sítě. Obvykle se zobrazí zařízení pro zabezpečení sítě, které mají síťové rozhraní v segmentu hraniční sítě. Jiné síťové rozhraní je připojen k síti, která obsahuje virtuální počítače a služby, které přijímají příchozí připojení z Internetu.
+Mnoho organizací použití hraničních sítích k segmentaci svých sítí a vytvořit zónu vyrovnávací paměť mezi Internetem a jejich služby. Hraniční části sítě se považuje za zónu s nízkou úrovní zabezpečení a žádné cenné prostředky jsou umístěné v daném segmentu sítě. Vše je obvykle najdete v článku síťová zařízení zabezpečení, které mají síťové rozhraní v segmentu hraniční sítě. Jiné síťové rozhraní je připojen k síti, která obsahuje virtuální počítače a služby, které přijímají příchozí připojení z Internetu.
 
 Můžete navrhnout hraniční sítě v několika různými způsoby. Rozhodnutí o nasazení do hraniční sítě a jaký druh hraniční sítě má použít, pokud se rozhodnete použít jednu, závisí na požadavcích zabezpečení sítě.
 
@@ -313,19 +313,19 @@ Další informace:
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 
-Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. Útoky DDoS se pokoušejí vyčerpat prostředky aplikace, aby byla aplikace nedostupná oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
+Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. S útoky DDoS pokusí vyčerpání aplikaci s prostředcích, aplikace není k dispozici pro oprávněné uživatele. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
 Microsoft poskytuje ochranu před útoky DDoS říká **základní** jako součást platformy Azure. Toto je zdarma a zahrnuje vždy na monitorování a v reálném čase ke zmírnění běžných útoků úrovně sítě. Kromě ochrany před útoky DDoS protection je součástí **základní** můžete povolit **standardní** možnost. DDoS Protection standardní funkce patří:
 
-* **Integrace nativní platformy:** nativně integrované do Azure. Zahrnuje konfiguraci prostřednictvím webu Azure portal. Standardní před útoky DDoS Protection rozumí vašim prostředkům a konfiguraci prostředků.
-* **Ochrana na klíč:** zjednodušená konfigurace okamžitě chrání všechny prostředky ve virtuální síti jako standardní před útoky DDoS Protection je povolená. Vyžaduje se žádná definice zásahů nebo uživatele. Standardní před útoky DDoS Protection okamžitě a automaticky zmírní útok, jakmile se detekuje.
-* **Monitorování vždy provozu:** vzory provozu vaší aplikace jsou monitorovány 24 hodin denně, 7 dní v týdnu, hledá indikátory útoky DDoS. Omezení rizik provádí při překročení zásady ochrany.
+* **Integrace nativní platformy:** Nativně integrováno do Azure. Zahrnuje konfiguraci prostřednictvím webu Azure portal. Standardní před útoky DDoS Protection rozumí vašim prostředkům a konfiguraci prostředků.
+* **Ochrana na klíč:** Zjednodušená konfigurace okamžitě chrání všechny prostředky ve virtuální síti jako standardní před útoky DDoS Protection je povolená. Vyžaduje se žádná definice zásahů nebo uživatele. Standardní před útoky DDoS Protection okamžitě a automaticky zmírní útok, jakmile se detekuje.
+* **Monitorování se vždy provozu:** Vzory provozu vaší aplikace jsou monitorovány 24 hodin denně, 7 dní v týdnu, hledá indikátory útoky DDoS. Omezení rizik provádí při překročení zásady ochrany.
 * **Sestavy omezení rizik útoků** sestavy omezení rizik útoků pomocí agregované sítě toku dat poskytují podrobné informace o útocích určenou pro vaše prostředky.
 * **Protokoly toku omezení rizik útoků** protokoly toku omezení rizik útoků ke kontrole zhoršení provozu povolit přesměrovaný přenos a další data útoku v téměř reálném čase během aktivního útoku DDoS.
-* **Adaptivní ladění:** provoz inteligentní profilace učí o provozu vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil, který upravuje provoz mění v průběhu času. Vrstvy 3 ochrany vrstvy 7: poskytuje ochranu před útoky DDoS plnohodnotných, při použití s firewallem webových aplikací.
-* **Škálování rozsáhlé omezení rizik:** přes 60 útoku různé typy můžete minimalizovat, globální kapacitou pro ochranu před největší známé útoky DDoS.
-* **Útokům metriky:** Summarized metriky z každého útoku jsou přístupné prostřednictvím služby Azure Monitor.
-* **Upozornění útoku:** oznámení se dají konfigurovat na spouštění a zastavování útoků a na dobu trvání útok, pomocí integrované útoku metrik. Upozornění integrovat do provozní softwaru, například Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailu a na webu Azure portal.
-* **Se zárukou nákladů:** přenosu dat a aplikací horizontální navýšení kapacity kredity pro dokument útoky DDoS.
+* **Adaptivní ladění:** Inteligentní přenos profilace se učí přenosy s vaší aplikací a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil, který upravuje provoz mění v průběhu času. Vrstvy 3 ochrany vrstvy 7: Poskytuje ochranu před útoky DDoS plnohodnotných, při použití s firewallem webových aplikací.
+* **Škálování rozsáhlé omezení rizik:** Více než 60 útoku různé typy můžete řešit s využitím globální kapacitu, pro ochranu před největší známé útoky DDoS.
+* **Útok metriky:** Souhrnná metriky z každého útoku jsou přístupné prostřednictvím služby Azure Monitor.
+* **Útok výstrahy:** Oznámení se dají konfigurovat na spouštění a zastavování útoků a přes trvání útoku s použitím integrované útoku metriky. Upozornění integrovat do provozní softwaru, například Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailu a na webu Azure portal.
+* **Se zárukou nákladů:**  Přenos dat a aplikací horizontální navýšení kapacity kredity pro dokument útoky DDoS.
 * **Před útoky DDoS rychlou odezvou** zákazníci s edicí Standard před útoky DDoS Protection teď mají přístup k týmu Rapid Response během aktivního útoku. Obsluhy DRR může pomoct s vyšetřování útoku, vlastní zmírnění rizik během útoku a analýzy po útoku.
 
 
@@ -394,7 +394,7 @@ Další informace:
 
 Protokolování na úrovni sítě je klíčová funkce pro jakýkoli scénář zabezpečení sítě. V Azure můžete protokolovat informace získané pro skupiny Nsg k síťové úroveň protokolování informací. Pomocí protokolování NSG, získat informace z:
 
-* [Protokoly aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Pomocí těchto protokolů můžete zobrazit všechny operace odeslání pro vaše předplatná Azure. Tyto protokoly jsou ve výchozím nastavení povolené a můžou používat na webu Azure portal. Dříve se používalo označení auditu nebo provozní protokoly.
+* [Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md). Pomocí těchto protokolů můžete zobrazit všechny operace odeslání pro vaše předplatná Azure. Tyto protokoly jsou ve výchozím nastavení povolené a můžou používat na webu Azure portal. Dříve se používalo označení auditu nebo provozní protokoly.
 * Protokoly událostí. Tyto protokoly poskytuje informace o tom, jaká pravidla skupiny zabezpečení sítě se používají.
 * Čítač protokoly. Tyto protokoly umožňují zjistit, kolikrát se každé pravidlo skupiny zabezpečení sítě byla použita pro odepření nebo povolení provozu.
 

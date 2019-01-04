@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436156"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744441"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -426,7 +426,7 @@ Následující tabulka shrnuje každého vlastností a označuje místo, kde naj
 | hiveDataFolder | Cesta data obsažená ve pracovní tabulky ve službě Azure Storage. |
 | sqlDatabaseConnectionString | JDBC syntaxe připojovacího řetězce k databázi SQL Azure. |
 | sqlDatabaseTableName | Název tabulky v Azure SQL Database, do kterého se vložily řádky souhrnu. Nechte `dailyflights`. |
-| rok | Složku roku dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
+| za rok | Složku roku dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
 | měsíc | Komponentu měsíc dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
 | den | Den v měsíci dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
 
@@ -551,7 +551,7 @@ Jak vidíte, je většinou koordinátor právě předávání konfiguračních i
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Koordinátor je zodpovědná za plánování akce v rámci `start` a `end` rozsah, kalendářních dat podle intervalu určeném `frequency` atribut. Všechny naplánované akce pak spustí pracovní postup podle konfigurace. Ve výše uvedená definice koordinátor koordinátor je nakonfigurovaný ke spouštění akcí z 1. ledna 2017 na 5. ledna 2017. Frekvence je nastavená na 1 den podle [jazyk výrazů Oozie](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) frekvence výraz `${coord:days(1)}`. Výsledkem je koordinátor plánování akci (a tedy pracovního postupu) jednou za den. Pro rozsahy kalendářních dat, které jsou v minulosti, jako v následujícím příkladu bude naplánováno akce spustit bez zpoždění. Počáteční datum, ze kterých je naplánované spuštění akce je volána *nominální čas*. Například ke zpracování dat pro 1. ledna 2017 se koordinátor naplánuje akcí s dobou nominální 2017-01-01T00:00:00 GMT.
+    Koordinátor je zodpovědná za plánování akce v rámci `start` a `end` rozsah, kalendářních dat podle intervalu určeném `frequency` atribut. Všechny naplánované akce pak spustí pracovní postup podle konfigurace. Ve výše uvedená definice koordinátor koordinátor je nakonfigurovaný ke spouštění akcí z 1. ledna 2017 na 5. ledna 2017. Frekvence je nastavená na 1 den podle [jazyk výrazů Oozie](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) frekvence výraz `${coord:days(1)}`. Výsledkem je koordinátor plánování akci (a tedy pracovního postupu) jednou za den. Pro rozsahy kalendářních dat, které jsou v minulosti, jako v následujícím příkladu bude naplánováno akce spustit bez zpoždění. Počáteční datum, ze kterých je naplánované spuštění akce je volána *nominální čas*. Například ke zpracování dat pro 1. ledna 2017 se koordinátor naplánuje akcí s dobou nominální 2017-01-01T00:00:00 GMT.
 
 * Bod 2: V rámci pracovního postupu, období `dataset` element určuje, kde se mají hledat data pro konkrétní rozsah v HDFS a konfiguruje jak Oozie Určuje, zda je k dispozici data ještě pro zpracování.
 
@@ -651,6 +651,6 @@ Spuštění kanálu se koordinátorem, pokračujte podobným způsobem jako u pr
 
 ## <a name="next-steps"></a>Další postup
 
-* [Dokumentace Apache Oozie](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Dokumentace Apache Oozie](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

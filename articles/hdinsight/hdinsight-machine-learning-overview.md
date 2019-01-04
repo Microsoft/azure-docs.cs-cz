@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08d0221c785fdaeb18fe9a2999d08ded67d1fa91
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437193"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742996"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Strojové učení v HDInsight
 
-HDInsight umožňuje machine learning s velkými objemy dat, poskytuje schopnosti získávat cenné informace z velkých objemů (petabajty nebo dokonce exabajtů) strukturovaných, nestrukturovaných a rychlé tempo data. Existuje několik strojového učení možnosti v HDInsight:  Ve SparkML a MLlib, R, Apache Hivu a sady Microsoft Cognitive Toolkit.
+HDInsight umožňuje machine learning s velkými objemy dat, poskytuje schopnosti získávat cenné informace z velkých objemů (petabajty nebo dokonce exabajtů) strukturovaných, nestrukturovaných a rychlé tempo data. Existuje několik strojového učení možnosti v HDInsight:  Ve SparkML a Apache Spark MLlib, R, Apache Hivu a sady Microsoft Cognitive Toolkit.
 
 ## <a name="sparkml-and-mllib"></a>Ve SparkML a MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Apache Spark](http://spark.apache.org/), sjednoceném open source, rozhraní paralelní zpracování dat podporuje zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. Existují dvě škálovatelné machine learning knihovny, které přinášejí možnosti vylepšením modelování do této distribuované prostředí: MLlib a ve SparkML. MLlib obsahuje původní rozhraní API, které jsou postavené na Rdd. Ve SparkML je novější balíček, který poskytuje vyšší úrovně rozhraní API pro vytváření kanálů ML postavené na datových rámců. Ve SparkML zatím nepodporuje všechny funkce MLlib, ale nahrazuje MLlib jako Spark standardní knihovnou pro machine learning.
+[HDInsight Spark](spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Apache Spark](https://spark.apache.org/), sjednoceném open source, rozhraní paralelní zpracování dat podporuje zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. Existují dvě škálovatelné machine learning knihovny, které přinášejí možnosti vylepšením modelování do této distribuované prostředí: MLlib a ve SparkML. MLlib obsahuje původní rozhraní API, které jsou postavené na Rdd. Ve SparkML je novější balíček, který poskytuje vyšší úrovně rozhraní API pro vytváření kanálů ML postavené na datových rámců. Ve SparkML zatím nepodporuje všechny funkce MLlib, ale nahrazuje MLlib jako Spark standardní knihovnou pro machine learning.
 
 Knihovna Microsoft Machine Learning pro Apache Spark je [MMLSpark](https://github.com/Azure/mmlspark). Tato knihovna je určená produktivnější odborníci přes data ve Sparku, zvýšit frekvenci experimentování a využít techniky nejmodernější strojového učení, včetně obsáhlého learningu na velmi rozsáhlých datových sadách. MMLSpark poskytuje vrstvu nad nízké úrovně rozhraní API v ve SparkML při sestavování škálovatelných modelů ML, jako jsou indexování řetězce podřízenému data do rozložení očekává počítačem učení se supervizí a propojením vektory funkce. Knihovna MMLSpark zjednodušuje tyto a další běžné úlohy vytváření modelů v PySpark.
 

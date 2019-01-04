@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 04588d0af0f85a9e69f44e82d01294c2a4440abc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70f07b3925eb91d91dfbd623f8f1611ac31a1b6f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961140"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542505"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>V Azure Service Bus a Event Hubs Průvodce protokolem AMQP 1.0
 
@@ -226,7 +226,7 @@ Jakákoli vlastnost, která aplikace potřebuje definuje musí být mapováno na
 | id uživatele |Identifikátor uživatele definované aplikací, není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
 | na |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
 | předmět |Identifikátor účelu zpráv definované aplikací není Interpretovaná ve službě Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
-| odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[replyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
+| odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
 | id korelace |Identifikátor korelace definované aplikací, není Interpretovaná ve službě Service Bus. |[ID korelace](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
 | Typ obsahu |Definované aplikací ukazatel typu obsahu pro obsah, není Interpretovaná ve službě Service Bus. |[contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
 | kódování obsahu |Definované aplikací kódování obsahu indikátor pro text není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
@@ -264,7 +264,7 @@ Všechna připojení musí inicializovat vlastní ovládací prvek propojení um
 
 #### <a name="starting-a-transaction"></a>Spouštění transakce
 
-Chcete-li začít transakční práce. kontroler musí získat `txn-id` ze coordinator. Dělá to tak, že odesílání `declare` typ zprávy. Pokud deklarace je úspěšné, koordinátor odpoví dispozice výsledek, který představuje přiřazená `txn-id`.
+Chcete-li začít transakční práce. kontroler musí získat `txn-id` ze coordinator. Dělá to tak, že odesílání `declare` typ zprávy. Pokud deklarace je úspěšné, koordinátor odpoví dispozice výsledek, který nese přiřazená `txn-id`.
 
 | Klient (kontroler) | | Service Bus (koordinátor) |
 | --- | --- | --- |
@@ -351,7 +351,7 @@ Integrace rozhraní SASL AMQP má dvě nevýhody:
 * Všechny přihlašovací údaje a tokeny mají rozsah připojení. Infrastruktura zasílání zpráv může být vhodné k poskytování řízení DIFERENCOVANÝ přístup na základě jednotlivých entitách; například povolení nosný token k odeslání do fronty A, ale ne do fronty služby serveru B. S autorizační kontext ukotven na připojení není možné používat jedno připojení a ještě používat jiné přístupové tokeny pro fronty A a fronty služby serveru B.
 * Přístupové tokeny jsou obvykle platné jenom po omezenou dobu. Tato platnost vyžaduje, aby uživatel se pravidelně znovu získat tokeny a představuje příležitost k vydavatel tokenu odmítnout vydání aktuální token, pokud došlo ke změně oprávnění pro přístup daného uživatele. Připojení AMQP může trvat dlouhou dobu. SASL model pouze poskytuje možnost nastavit token v době připojení, což znamená, že infrastruktura zasílání zpráv, které jsou buď má k odpojení klienta, když vyprší platnost tokenu nebo ho musí přijmout riziko povolení trvalé komunikace s klientem kdo. přístupová práva může být mezitím odvolán.
 
-Specifikace protokolu AMQP CBS, implementované ve službě Service Bus, umožňují elegantní alternativní řešení pro oba tyto problémy: umožňuje klientovi přidružit každý uzel přístupové tokeny a k aktualizaci těchto tokenů před vypršením jejich platnosti, aniž by bylo třeba přerušit tok zpráv.
+Specifikace protokolu AMQP CBS, implementované ve službě Service Bus, umožňují elegantní alternativní řešení pro oba tyto problémy: To umožňuje klientovi přidružit každý uzel přístupové tokeny a k aktualizaci těchto tokenů před vypršením jejich platnosti, aniž by bylo třeba přerušit tok zpráv.
 
 Správa virtuálního uzlu, s názvem definuje CBS *$cbs*, které poskytují infrastruktura zasílání zpráv. Uzel správy přijímá tokeny jménem jiných uzlů v infrastruktura zasílání zpráv.
 
@@ -374,7 +374,7 @@ Zpráva požadavku má následující vlastnosti aplikace:
 | amqp:swt |Jednoduchý webový Token (SWT) |AMQP hodnoty (string) |Podporuje jenom pro SWT tokeny vystavené službou AAD/ACS |
 | servicebus.Windows.NET:sastoken |Token SAS služby Service Bus |AMQP hodnoty (string) |- |
 
-Tokeny udělit práva. Service Bus ví o tři základní práva: "Odeslat" umožňuje odesílání "Naslouchání" příjem, a "Manage" umožňuje manipulaci s entitami. Tato práva SWT tokeny vystavené službou AAD/ACS explicitně zahrnuly jako deklarace identity. Tokeny SAS služby Service Bus odkazovat na pravidla, které jsou nakonfigurované na oboru názvů nebo entity a tato pravidla jsou nakonfigurovány s oprávněními. Podpis tokenu s klíč spojený s tímto pravidlem tedy díky token express příslušných práv. Token přidružený k entitu s využitím *put token* povoluje připojení klienta k interakci s entitou za token práva. Certifikovaného klienta na odkaz *odesílatele* role vyžaduje "Odeslat"; přímo na *příjemce* role vyžaduje "Naslouchání" vpravo.
+Tokeny udělit práva. Service Bus ví o tři základní práva: Povolí odesílání "Naslouchání" Povolí příjem, "Odeslat" a "Manage" umožňuje manipulaci s entitami. Tato práva SWT tokeny vystavené službou AAD/ACS explicitně zahrnuly jako deklarace identity. Tokeny SAS služby Service Bus odkazovat na pravidla, které jsou nakonfigurované na oboru názvů nebo entity a tato pravidla jsou nakonfigurovány s oprávněními. Podpis tokenu s klíč spojený s tímto pravidlem tedy díky token express příslušných práv. Token přidružený k entitu s využitím *put token* povoluje připojení klienta k interakci s entitou za token práva. Certifikovaného klienta na odkaz *odesílatele* role vyžaduje "Odeslat"; přímo na *příjemce* role vyžaduje "Naslouchání" vpravo.
 
 Zprávy s odpovědí obsahuje následující *vlastnosti aplikace* hodnoty
 

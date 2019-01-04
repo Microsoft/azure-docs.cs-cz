@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: rajanaki
-ms.openlocfilehash: e965848b0c3c009444762dafdf42acc080b6915e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834944"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791873"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Znovunastavení ochrany a navrácení služeb po back počítače k místní lokalitě po převzetí služeb při selhání do Azure
 
@@ -22,7 +22,7 @@ Získejte rychlý přehled zhlédnout následující video o tom, jak převzetí
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Pokud jste použili k vytvoření virtuálních počítačů šablony, ujistěte se, že každý virtuální počítač má svůj vlastní identifikátor UUID disků. Pokud UUID na místním virtuálním počítači konfliktu s UUID hlavního cíle, protože oba byly vytvořeny ze stejné šablony, opětovného nastavování ochrany se nezdaří. Nasazení jiný hlavní cíl, který nebyl vytvořen ze stejné šablony. Všimněte si následujících informací:
 - Pokud se pokoušíte navrácení služeb po obnovení alternativního serveru vCenter, ujistěte se, že se zjistí nové vCenter a hlavní cílový server. Typické symptomem je, že nejsou dostupné úložiště dat, nebo nejsou viditelné v **znovunastavení ochrany** dialogové okno.
@@ -61,8 +61,8 @@ Nasazení procesového serveru v Azure:
 
 Hlavní cílový server přijímá data navrácení služeb po obnovení. Ve výchozím nastavení běží hlavní cílový server na místním konfiguračním serveru. V závislosti na tom, jaký objem přenosů se nezdařilo zpět, potřebujete ale vytvořit samostatný hlavní cílový server navrácení služeb po obnovení. Tady je postup pro vytvoření:
 
-* [Vytvoření hlavního cílového serveru s Linuxem](vmware-azure-install-linux-master-target.md) navrácení služeb po obnovení virtuálních počítačů s Linuxem. Toto je povinné.
-* Volitelně můžete vytvořte samostatný hlavní cílový server navrácení služeb po obnovení virtuálního počítače Windows. K tomuto účelu sjednocenou instalaci spusťte znovu a vyberte, chcete-li vytvořit hlavní cílový server. [Další informace](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers).
+* [Vytvoření hlavního cílového serveru s Linuxem](vmware-azure-install-linux-master-target.md) navrácení služeb po obnovení virtuálních počítačů s Linuxem. Toto je povinné. Všimněte si, že hlavní cílový server na LVM se nepodporuje.
+* Volitelně můžete vytvořte samostatný hlavní cílový server navrácení služeb po obnovení virtuálního počítače Windows. K tomuto účelu sjednocenou instalaci spusťte znovu a vyberte, chcete-li vytvořit hlavní cílový server. [Další informace](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
 
 Jakmile vytvoříte hlavní cílový server, proveďte následující úkoly:
 

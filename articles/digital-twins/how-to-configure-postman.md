@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/18/2018
 ms.author: adgera
-ms.openlocfilehash: b22bf34a06966f917cdcdd07c28ead2d042061c1
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 92ff8cb732c7c10c525d8a8ec76180cb435bd466
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163992"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975003"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postup konfigurace nástroje Postman pro digitální dvojče Azure
 
@@ -31,7 +31,7 @@ Konfigurace aplikace Azure AD pro používání služby flow implicitní grant O
 
 1. Postupujte podle kroků v [v tomto rychlém startu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) k vytvoření aplikace Azure AD typu Native. Nebo můžete znovu použít existující registraci nativní aplikace.
 
-1. V části **požadovaná oprávnění**, zadejte `Azure Digital Twins` a vyberte **delegovaná oprávnění**. Potom vyberte **udělit oprávnění**.
+1. V části **požadovaná oprávnění**vyberte **přidat** a zadejte **digitální dvojče Azure** pod **přístup přes rozhraní API přidat**. Pokud se vám toto rozhraní API nepodaří najít, vyhledejte místo toho **Azure Smart Spaces**. Vyberte **udělit oprávnění > delegovaná oprávnění** a **provádí**.
 
     ![Registrace aplikace Azure AD přidat rozhraní api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
@@ -65,7 +65,7 @@ V dalším kroku nastavení a konfigurace nástroje Postman pro získání token
     | Pole  | Hodnota |
     |---------|---------|
     | Typ udělení | `Implicit` |
-    | Adresa URL zpětného volání | [`https://www.getpostman.com/oauth2/callback`](https://www.getpostman.com/oauth2/callback) |
+    | Adresa URL pro zpětné volání | `https://www.getpostman.com/oauth2/callback` |
     | Ověřovací adresa URL | Použití **autorizace URL** z kroku 2 |
     | ID klienta | Použití **ID aplikace** pro aplikace Azure AD, který byl vytvořen nebo k jinému účelu z předchozí části |
     | Rozsah | Ponechte prázdné |

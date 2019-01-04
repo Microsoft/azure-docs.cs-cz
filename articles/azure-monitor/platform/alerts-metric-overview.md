@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: cf315718377210e13a6634c0eaf8caab158bcc4d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24d0965fa2a88bc844a81c7430d46c071a9b874b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342217"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580038"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
 
@@ -93,7 +93,7 @@ Pro upozornění metrik obvykle dostanete oznámení za méně než 5 minut Poku
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Podporované typy prostředků pro upozornění na metriku
 
-Úplný seznam podporovaných typů prostředků najdete v tomto [článku](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+Úplný seznam podporovaných typů prostředků najdete v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit, pokud podporují upozornění na metriku všechny typy prostředků, který používáte, následující tabulka ukazuje na prostředek typy podporovaných klasického upozornění metrik a pokud se podporuje upozornění metrik ještě dnes nebo ne.
 
@@ -125,10 +125,10 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 |Microsoft.Storage/storageAccounts. | Ano|
 |Microsoft.StreamAnalytics/streamingjobs| Ano|
 |Microsoft.TimeSeriesInsights/environments | Ano|
-|Společnosti Microsoft. Web/serverových farem | Ano |
-|Společnosti Microsoft. Weby (s výjimkou funkce) | Ano|
-|Společnosti Microsoft. Web/hostingEnvironments/multiRolePools | Ne|
-|Společnosti Microsoft. Web/hostingEnvironments/workerPools| Ne
+|Microsoft Web/serverových farem | Ano |
+|Microsoft Weby (s výjimkou funkce) | Ano|
+|Microsoft Web/hostingEnvironments/multiRolePools | Ne|
+|Microsoft Web/hostingEnvironments/workerPools| Ne
 |Microsoft.SQL/Servers | Ne|
 
 ## <a name="next-steps"></a>Další postup

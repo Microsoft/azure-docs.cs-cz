@@ -12,18 +12,21 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: c08a76711a74f5b0fd119e579c6db54fc13ecfbb
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685816"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723888"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
 
 Tento článek popisuje řešení známých problémů se synchronizací dat SQL Azure. Pokud je řešení problému, je tady uvedená.
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md).
+
+> [!IMPORTANT]
+> Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
 
 ## <a name="sync-issues"></a>Problémům se synchronizací
 
@@ -37,7 +40,7 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 - [Najdete v článku významné snížení výkonu](#sync-perf)
 
-- [Zobrazí tato zpráva: "nelze vložit hodnoty NULL do sloupce <column>. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit?](#sync-nulls)
+- [Zobrazí tato zpráva: "Nelze vložit hodnoty NULL do sloupce <column>. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit?](#sync-nulls)
 
 - [Jak synchronizovat Data zpracovává. cyklické odkazy? To znamená, když na stejná data se synchronizují do více skupin synchronizace a neustále mění díky tomu?](#sync-circ)
 
@@ -102,7 +105,7 @@ Výkon výrazně zhorší, případně do bodu, ve kterém nelze otevřít i už
 
 - **Rozlišení**. Nejlepší je ochrany před únikem informací. Ujistěte se, že není nutné cyklické odkazy do skupiny synchronizace. Všechny řádky, které se synchronizuje podle jednu skupinu synchronizace nejde synchronizovat jinou skupinou synchronizace.
 
-### <a name="sync-nulls"></a> Zobrazí tato zpráva: "nelze vložit hodnoty NULL do sloupce <column>. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit? 
+### <a name="sync-nulls"></a> Zobrazí tato zpráva: "Nelze vložit hodnoty NULL do sloupce <column>. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit? 
 Tato chybová zpráva indikuje, že jeden z následujících dvou problémů došlo k chybě:
 -  Tabulka nemá primární klíč. Chcete-li vyřešit tento problém, přidáte do všech tabulek, které synchronizujete primární klíč.
 -  Existuje klauzule WHERE v příkazu CREATE INDEX. Synchronizace dat není zpracovat tento stav. Chcete-li vyřešit tento problém, odeberte klauzuli WHERE nebo ručně provést změny na všechny databáze. 
@@ -241,7 +244,7 @@ Další informace o synchronizaci dat SQL najdete v tématu:
 
 -   Přehled – [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL Azure](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurzu: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)

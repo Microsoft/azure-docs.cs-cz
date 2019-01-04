@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 957100e042da1d41fb7c8fa27a5663cf99a41c20
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: af7bcf2a83259b9d883a824b05312316f9f1f4f8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093931"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794001"
 ---
 # <a name="azure-data-box-system-requirements"></a>Požadavky na systém Azure Data Box
 
@@ -43,7 +43,7 @@ Tady je seznam podporovaných operačních systémech pro kopírování dat pros
 
 | **Protokoly** | **Verze** | 
 | --- | --- | 
-| Protokol SMB |2.X a novější |
+| SMB |2.X a novější |
 | Systém souborů NFS | Všechny verze až po a včetně 4.1|
 
 ### <a name="supported-storage-accounts"></a>Účty úložiště podporuje
@@ -55,6 +55,9 @@ Tady je seznam typů úložiště podporuje pro zařízení Data Box.
 | Classic | Standard |
 | Obecné účely  |Standardní; verze V1 i V2 podporují. |
 | Objekt blob |Horká a studená jsou podporovány. |
+
+>[!NOTE]
+> Účty Azure Data Lake Storage generace 2 nejsou podporovány.
 
 
 ### <a name="supported-storage-types"></a>Typy podporovaných úložišť

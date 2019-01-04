@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: b32ea4293daa9206c6b0da4bdee777677c5d340d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 22dbe9b29059ff351cd1937f72f6dc742b24c690
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685510"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993885"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Vytvořit sdílené místní prostředí integration runtime ve službě Azure Data Factory pomocí Powershellu
 
@@ -33,7 +33,7 @@ Tento podrobný návod ukazuje, jak vytvořit sdílené místní prostředí int
 
 - **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
-- **Azure PowerShell**. Postupujte podle pokynů v [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). Pomocí Powershellu spusťte skript pro vytvoření místního prostředí integration runtime, který je možné sdílet s další datové továrny. 
+- **Azure PowerShell**. Postupujte podle pokynů v [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). Pomocí Powershellu spusťte skript pro vytvoření místního prostředí integration runtime, který je možné sdílet s další datové továrny. 
 
 > [!NOTE]  
 > Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
@@ -75,7 +75,7 @@ Tento podrobný návod ukazuje, jak vytvořit sdílené místní prostředí int
     > [!NOTE]  
     > Tento krok je volitelný. Pokud už máte datovou továrnu, tento krok přeskočte. 
 
-    Vytvoření [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) pomocí [New-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) příkazu. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` WestEurope umístění: 
+    Vytvoření [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) pomocí [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) příkazu. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` WestEurope umístění: 
 
     ```powershell
     New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -192,6 +192,6 @@ Remove-AzureRmDataFactoryV2IntegrationRuntime `
 
 ## <a name="next-steps"></a>Další postup
 
-- Kontrola [koncepty runtime integrace v Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime).
+- Kontrola [koncepty runtime integrace v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
 
-- Zjistěte, jak [vytvořit místní prostředí integration runtime na webu Azure Portal](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime).
+- Zjistěte, jak [vytvořit místní prostředí integration runtime na webu Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).

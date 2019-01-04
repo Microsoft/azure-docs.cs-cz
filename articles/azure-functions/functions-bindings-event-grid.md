@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: e5c5c7f667959426f015e207cd32d716c493e31e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995036"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810930"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -48,7 +48,7 @@ Podívejte se na příklad konkrétní jazyk pro trigger Event Grid:
 
 * [C#](#c-example)
 * [C# skript (.csx)](#c-script-example)
-* [Java](#trigger---java-example)
+* [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
@@ -221,9 +221,14 @@ def main(event: func.EventGridEvent):
     logging.info("  Data: %s", event.get_json())
 ```
 
-### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
+### <a name="trigger---java-examples"></a>Aktivační události – příkladů v jazyce Java
 
-Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [Java funkce](functions-reference-java.md) , který používá vazbu a vytiskne událost.
+Tato část obsahuje následující příklady:
+
+* [Trigger služby Event Grid, parametru řetězce](#event-grid-trigger-string-parameter-java)
+* [Trigger služby Event Grid, POJO parametr](#event-grid-trigger-pojo-parameter-java)
+
+Následující příklady ukazují vazby aktivační události v *function.json* souboru a [funkcí v Javě](functions-reference-java.md) , které tuto vazbu využíval a vytiskne událost, nejprve přijímajícího událost jako ```String``` a druhý jako objekt POJO.
 
 ```json
 {
@@ -237,16 +242,60 @@ Následující příklad ukazuje vazbu aktivační události v *function.json* s
 }
 ```
 
-Tady je kód Java:
+#### <a name="event-grid-trigger-string-parameter-java"></a>Trigger služby Event Grid, parametru řetězce (Java)
 
 ```java
-@FunctionName("eventGridMonitor")
+  @FunctionName("eventGridMonitorString")
   public void logEvent(
-     @EventGridTrigger(name = "event") String content,
-      final ExecutionContext context
-  ) {
-      context.getLogger().info(content);
-    }
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    String content, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: " + content);      
+  }
+```
+
+#### <a name="event-grid-trigger-pojo-parameter-java"></a>Trigger služby Event Grid, parametr POJO (Java)
+
+Tento příklad používá následující POJO představující vlastnosti nejvyšší úrovně služby Event Grid události:
+
+```java
+import java.util.Date;
+import java.util.Map;
+
+public class EventSchema {
+
+  public String topic;
+  public String subject;
+  public String eventType;
+  public Date eventTime;
+  public String id;
+  public String dataVersion;
+  public String metadataVersion;
+  public Map<String, Object> data;
+
+}
+```
+
+Při příchodu, je zrušit serializovaná do datové části JSON události ```EventSchema``` POJO pro použití funkcí. To umožňuje funkci získat přístup k vlastnostem události způsobem objektově orientovaný.
+
+```java
+  @FunctionName("eventGridMonitor")
+  public void logEvent(
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    EventSchema event, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: ");
+      context.getLogger().info("Subject: " + event.subject);
+      context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
+      context.getLogger().info("Id: " + event.id);
+      context.getLogger().info("Data: " + event.data);
+  }
 ```
 
 V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `EventGridTrigger` poznámku o parametrech, jehož hodnota bude pocházet z EventGrid. Parametry těchto poznámek způsobit funkce spustit, když dorazí událost.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí `Optional<T>`.

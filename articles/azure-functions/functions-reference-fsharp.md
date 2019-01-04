@@ -1,41 +1,41 @@
 ---
-title: 'Azure Functions F # – reference pro vývojáře | Dokumentace Microsoftu'
-description: 'Naučte se vyvíjet funkce Azure pomocí skriptu F #.'
+title: Služba Azure Functions F# referenční informace pro vývojáře | Dokumentace Microsoftu
+description: Naučte se vyvíjet funkce Azure pomocí F# skriptu.
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-keywords: 'Azure functions, functions, zpracování událostí, webhook, dynamické výpočty, architektura, bez serveru F #'
+keywords: Azure funkce, funkce, zpracování událostí, webhooky, dynamické výpočty, architektura bez serveruF#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: azure-functions
 ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: bd971b84b907d3fda1bea9922b2fd1881eb369e9
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 112a986efc11822f6c847511a33be6206b1f00da
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087232"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717480"
 ---
-# <a name="azure-functions-f-developer-reference"></a>F # pro vývojáře Azure Functions – Reference
+# <a name="azure-functions-f-developer-reference"></a>Služba Azure Functions F# referenční informace pro vývojáře
 
-F # pro službu Azure Functions je řešení umožňující snadno spouštět malé části kódu, nebo "funkce" v cloudu. Data budou téci do vaší funkce jazyka F # prostřednictvím argumentů funkce. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k věci, jako je funkce protokolovací nástroj a zrušení tokenů. 
+F#pro službu Azure Functions je řešení umožňující snadno spouštět malé části kódu, nebo "funkce" v cloudu. Data budou téci do vaší F# funkce prostřednictvím argumentů funkce. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k věci, jako je funkce protokolovací nástroj a zrušení tokenů. 
 
 >[!IMPORTANT]
->Skript F # (.fsx) je podporovaná jenom rozhraním [verzi 1.x](functions-versions.md#creating-1x-apps) modulu runtime Azure Functions. Pokud chcete použít F # s modulem runtime verze 2.x, musíte použít předkompilovanou F # projekt knihovny tříd (.fs). Vytvoření, správě a publikování F # projekt knihovny tříd pomocí sady Visual Studio, stejně jako [projekt knihovny tříd jazyka C#](functions-dotnet-class-library.md). Další informace o verzích funkce, najdete v části [přehled verze modulu runtime Azure Functions](functions-versions.md).
+>F#skript (.fsx) je podporovaná jenom rozhraním [verzi 1.x](functions-versions.md#creating-1x-apps) modulu runtime Azure Functions. Pokud chcete použít F# s modulem runtime verze 2.x, je nutné použít předkompilované F# projekt knihovny tříd (.fs). Vytvoření, správě a publikování F# projekt knihovny tříd pomocí sady Visual Studio, stejně jako [ C# projekt knihovny tříd](functions-dotnet-class-library.md). Další informace o verzích funkce, najdete v části [přehled verze modulu runtime Azure Functions](functions-versions.md).
 
 Tento článek předpokládá, že jste už čtete [referenční informace pro vývojáře Azure Functions](functions-reference.md).
 
 ## <a name="how-fsx-works"></a>Jak funguje .fsx
-`.fsx` Je soubor skriptu F #. To můžete představit jako projekt F #, které jsou obsaženy v jednom souboru. Soubor obsahuje kód pro váš program (v tomto případě vaši funkci Azure Functions) a direktivy pro správu závislostí.
+`.fsx` Soubor je F# skriptu. To můžete představit jako F# projekt, který je obsažen v jednom souboru. Soubor obsahuje kód pro váš program (v tomto případě vaši funkci Azure Functions) a direktivy pro správu závislostí.
 
 Při použití `.fsx` pro funkce Azure Functions, běžně vyžaduje sestavení budou zahrnuty automaticky za vás, abyste mohli zaměřit na samotný kód funkce, nikoli "standardní".
 
 ## <a name="folder-structure"></a>struktura složek
 
-Struktura složek pro projekt skriptu F # vypadá takto:
+Struktura složek F# skript projekt vypadá takto:
 
 ```
 FunctionsProject
@@ -57,7 +57,7 @@ Existuje sdílený [host.json](functions-host-json.md) soubor, který můžete p
 Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
 
 ## <a name="binding-to-arguments"></a>Vytvoření vazby na argumenty
-Každá vazba podporuje některé sadu argumentů, jak je uvedeno v [referenční informace pro vývojáře Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md). Například jedna z vazeb argument, který podporuje aktivační událost objektů blob je POCO, které lze vyjádřit pomocí záznamu F #. Příklad:
+Každá vazba podporuje některé sadu argumentů, jak je uvedeno v [referenční informace pro vývojáře Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md). Jedna z vazeb argument podporuje aktivační událost objektů blob je třeba POCO, které lze vyjádřit pomocí F# záznamu. Příklad:
 
 ```fsharp
 type Item = { Id: string }
@@ -67,11 +67,11 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Funkce Azure F # bude trvat jeden nebo více argumentů. Když mluvíme o Azure Functions argumenty, označujeme *vstupní* argumenty a *výstup* argumenty. Vstupní argument je přesně to vypadá jako: vstup do funkce Azure F #. *Výstup* argument je proměnlivé datové nebo `byref<>` argument, který slouží jako způsob, jak předání dat zpět *si* vaší funkce.
+Vaše F# funkce Azure Functions bude trvat jeden nebo více argumentů. Když mluvíme o Azure Functions argumenty, označujeme *vstupní* argumenty a *výstup* argumenty. Vstupní argument je přesně to vypadá jako: vstup do vaší F# funkce Azure functions. *Výstup* argument je proměnlivé datové nebo `byref<>` argument, který slouží jako způsob, jak předání dat zpět *si* vaší funkce.
 
 V příkladu výše `blob` je vstupní argument a `output` je výstupní argument. Všimněte si, že jsme použili `byref<>` pro `output` (není nutné přidat `[<Out>]` poznámky). Použití `byref<>` typ umožňuje změnit, který záznam nebo argument odkazuje na objekt funkce.
 
-Pokud záznam F # slouží jako vstupní typ, záznam definice musí být označeny pomocí `[<CLIMutable>]` aby rozhraní Azure Functions k odpovídajícím způsobem nastavit pole před předáním záznam vaší funkce. Pod pokličkou `[<CLIMutable>]` generuje setter vlastnosti záznamu. Příklad:
+Když F# záznam se používá jako vstupní typ, musí být označené záznam definice `[<CLIMutable>]` aby rozhraní Azure Functions k odpovídajícím způsobem nastavit pole před předáním funkci záznam. Pod pokličkou `[<CLIMutable>]` generuje setter vlastnosti záznamu. Příklad:
 
 ```fsharp
 [<CLIMutable>]
@@ -83,7 +83,7 @@ let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-Třída F # je také možné pro vstupní ani výstupní argumenty. Pro třídy vlastnosti obvykle potřebovat metody getter a setter. Příklad:
+F# Třídy lze také použít pro vstupní ani výstupní argumenty. Pro třídy vlastnosti obvykle potřebovat metody getter a setter. Příklad:
 
 ```fsharp
 type Item() =
@@ -96,7 +96,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Protokolování
-Protokolovat výstup do vaší [streamování protokolů](../app-service/web-sites-enable-diagnostic-log.md) v F#, funkce by měla trvat argumentu typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Pro zajištění konzistence, doporučujeme tento argument je s názvem `log`. Příklad:
+Protokolovat výstup do vaší [streamování protokolů](../app-service/troubleshoot-diagnostic-logs.md) v F#, funkce by měla trvat argumentu typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Pro zajištění konzistence, doporučujeme tento argument je s názvem `log`. Příklad:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -188,7 +188,7 @@ Navíc následující sestavení jsou speciální notaci a mohou být odkazován
 Pokud potřebujete odkazovat na soukromé sestavení, můžete nahrát soubor sestavení do `bin` složce relativní k vaší funkce a odkaz, ji pomocí souboru (např. název  `#r "MyAssembly.dll"`). Informace o tom, jak nahrávat soubory do složky funkce naleznete v tématu v následující části týkající se správy balíčků.
 
 ## <a name="editor-prelude"></a>Editor Prelude
-Editor, který podporuje služby kompilátoru F # nebude vědět o obory názvů a sestavení, která se automaticky zahrne Azure Functions. V důsledku toho může být užitečné zahrnout prelude, usnadňující editor najít sestavení, které používáte a explicitně otevřít obory názvů. Příklad:
+Editor, který podporuje F# kompilátoru služby nebude vědět o obory názvů a sestavení, která se automaticky zahrne Azure Functions. V důsledku toho může být užitečné zahrnout prelude, usnadňující editor najít sestavení, které používáte a explicitně otevřít obory názvů. Příklad:
 
 ```fsharp
 #if !COMPILED
@@ -209,7 +209,7 @@ Jakmile Azure Functions spustí váš kód, zpracuje zdroje s `COMPILED` definov
 <a name="package"></a>
 
 ## <a name="package-management"></a>Správa balíčků
-Chcete-li používat balíčky NuGet v funkce jazyka F #, přidejte `project.json` soubor do složky funkce v systému souborů aplikace function app. Tady je příklad `project.json` soubor, který přidá odkaz na balíček NuGet do `Microsoft.ProjectOxford.Face` verze 1.1.0:
+Použití balíčků NuGet v F# funkci, přidejte `project.json` soubor do složky funkce v systému souborů aplikace function app. Tady je příklad `project.json` soubor, který přidá odkaz na balíček NuGet do `Microsoft.ProjectOxford.Face` verze 1.1.0:
 
 ```json
 {
@@ -227,7 +227,7 @@ Rozhraní .NET Framework 4.6 je podporováno, proto se ujistěte, že vaše `pro
 
 Po odeslání `project.json` souboru, modul runtime získá balíčky a automaticky přidá odkazy na sestavení balíčku. Není nutné přidat `#r "AssemblyName"` direktivy. Stačí přidat požadované `open` příkazy pro vaše `.fsx` souboru.
 
-Můžete chtít změnit automaticky odkazy na sestavení na váš editor prelude zlepšit váš editor interakci s kompilaci služby F #.
+Možná budete chtít změnit automaticky odkazy na sestavení na váš editor prelude zlepšit váš editor interakci s F# kompilaci služby.
 
 ### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>Postup přidání `project.json` soubor pro vaši funkci Azure functions
 1. Začátek řešíme tak, aby vaše aplikace function app běží, což lze provést tak, že otevřete vaši funkci na portálu Azure portal. To také poskytuje přístup do protokolů streamování ve kterém se zobrazí výstup instalace balíčku.
@@ -288,12 +288,12 @@ Poskytuje cesty `#load` směrnice jsou relativní k umístění vašeho `.fsx` s
 * `#load "package\logger.fsx"` načte soubor umístěný ve `package` složky ve složce funkce.
 * `#load "..\shared\mylogger.fsx"` načte soubor umístěný ve `shared` složky na stejné úrovni jako funkce složky tedy přímo pod `wwwroot`.
 
-`#load` – Direktiva funguje pouze s `.fsx` soubory (skript F #) a ne s `.fs` soubory.
+`#load` – Direktiva funguje pouze s `.fsx` (F# skript) soubory a ne s `.fs` soubory.
 
 ## <a name="next-steps"></a>Další postup
 Další informace najdete v následujících materiálech:
 
-* [Průvodce jazykem F #](/dotnet/articles/fsharp/index)
+* [F#Průvodce](/dotnet/articles/fsharp/index)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
 * [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)

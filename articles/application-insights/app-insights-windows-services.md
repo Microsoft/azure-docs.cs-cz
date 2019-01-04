@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 850ff2cfb02b5a968a40e0cd43b5c65d9d4e3490
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b760780912642dac664f68c1f2b9d8d4ebf8cbde
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001729"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809892"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Ruční konfigurace služby Application Insights pro aplikace .NET
 
-Službu [Application Insights](app-insights-overview.md) můžete nakonfigurovat tak, aby monitorovala celou řadu aplikací nebo aplikačních rolí, komponent a mikroslužeb. Pro webové aplikace a služby nabízí Visual Studio [konfiguraci v jednom kroku](app-insights-asp-net.md). V případě jiných typů aplikací .NET, například u rolí back-end serveru nebo u desktopových aplikací, můžete nakonfigurovat službu Application Insights ručně.
+Službu [Application Insights](app-insights-overview.md) můžete nakonfigurovat tak, aby monitorovala celou řadu aplikací nebo aplikačních rolí, komponent a mikroslužeb. Pro webové aplikace a služby nabízí Visual Studio [konfiguraci v jednom kroku](../azure-monitor/app/asp-net.md). V případě jiných typů aplikací .NET, například u rolí back-end serveru nebo u desktopových aplikací, můžete nakonfigurovat službu Application Insights ručně.
 
 ![Příklady tabulek sledování výkonu](./media/app-insights-windows-services/10-perf.png)
 
@@ -36,7 +36,7 @@ Budete potřebovat:
 
 Prostředkem je místo na webu Azure Portal, kde jsou shromažďována a zobrazena vaše data. Musíte se rozhodnout, jestli chcete vytvořit nový nebo sdílet existující prostředek.
 
-### <a name="part-of-a-larger-app-use-existing-resource"></a>Součást větší aplikace – použití existujícího prostředku
+### <a name="part-of-a-larger-app-use-existing-resource"></a>Součást větší aplikace: Použijte existující prostředek
 
 Pokud má vaše webová aplikace několik komponent – například front-end webovou aplikaci a jednu nebo více back-end služeb – pak byste měli telemetrická data ze všech komponent odesílat do stejného prostředku. To umožní jejich zobrazení v rámci jedné Mapy aplikace a bude možné trasovat požadavky mezi jednotlivými komponentami.
 
@@ -44,7 +44,7 @@ Pokud už tedy monitorujete jiné komponenty této aplikace, pak použijte stejn
 
 Prostředek otevřete na webu [Azure Portal](https://portal.azure.com/). 
 
-### <a name="self-contained-app-create-a-new-resource"></a>Samostatná aplikace – vytvoření nového prostředku
+### <a name="self-contained-app-create-a-new-resource"></a>Samostatná aplikace: Vytvoření nového prostředku
 
 Pokud není nová aplikace vázána k ostatním aplikacím, měla by mít svůj vlastní prostředek.
 
@@ -90,7 +90,7 @@ Pokud jste provedli jakékoli úpravy souboru ApplicationInsights.config, uložt
 * Nastavte v kódu klíč instrumentace, například v metodě `main()`: 
   
     `TelemetryConfiguration.Active.InstrumentationKey = "`*váš klíč*`";` 
-* [Napište si vlastní telemetrii pomocí rozhraní API](app-insights-api-custom-events-metrics.md#ikey).
+* [Napište si vlastní telemetrii pomocí rozhraní API](../azure-monitor/app/api-custom-events-metrics.md#ikey).
 
 **Pokud jste nainstalovali jiné balíčky Application Insights**, můžete k nastavení klíče instrumentace použít soubor .config, pokud tomu dáváte přednost:
 
@@ -119,7 +119,7 @@ Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších
 
 ### <a name="no-data"></a>Žádná data?
 * Použijte aplikaci a otevřete různé stránky tak, aby došlo k vygenerování nějaké telemetrie.
-* Otevřete dlaždici [Vyhledávání](app-insights-diagnostic-search.md) a zobrazte jednotlivé události. Někdy trvá událostem trochu déle, než se dostanou skrz kanály metriky.
+* Otevřete dlaždici [Vyhledávání](../azure-monitor/app/diagnostic-search.md) a zobrazte jednotlivé události. Někdy trvá událostem trochu déle, než se dostanou skrz kanály metriky.
 * Počkejte několik sekund a klikněte na tlačítko **Aktualizovat**. Grafy se pravidelně samy aktualizují, ale můžete je aktualizovat ručně, pokud čekáte na zobrazení některých dat.
 * Viz [Poradce při potížích](app-insights-troubleshoot-faq.md).
 
@@ -134,7 +134,7 @@ Při spuštění v režimu ladění prochází telemetrie skrz kanál, takže by
 Otevřete v bráně firewall serveru porty pro odchozí provoz. Na [této stránce](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses) najdete seznam požadovaných adres. 
 
 ### <a name="trouble-on-your-build-server"></a>Potíže na vašem serveru sestavení?
-Podívejte se na [tuto položku Řešení potíží](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
+Podívejte se na [tuto položku Řešení potíží](../azure-monitor/app/asp-net-troubleshoot-no-data.md#NuGetBuild).
 
 > [!NOTE]
 > Pokud vaše aplikace generuje mnoho telemetrických dat, sníží modul adaptivního vzorkování automaticky objem dat odesílaných na portál tím, že budou odesílány pouze reprezentativní vzorky událostí. Události, které se vztahují ke stejnému požadavku, však budou vybrány nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. 
@@ -147,5 +147,5 @@ Podívejte se na [tuto položku Řešení potíží](app-insights-asp-net-troubl
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Další postup
-* [Přidejte více telemetrie](app-insights-asp-net-more.md) a získejte komplexní náhled na svoji aplikaci.
+* [Přidejte více telemetrie](../azure-monitor/app/asp-net-more.md) a získejte komplexní náhled na svoji aplikaci.
 

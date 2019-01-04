@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 50f9027301e4a04cd5624deee084429c803e04f4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24776e2d14824c6d7b028a2cb9e2ba1e1aaa5c96
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342710"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789122"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -56,8 +56,9 @@ Německo | Německo – střed, Německo – severovýchod
 
 >[!NOTE]
 >
-> Pro oblast Brazílie – jih můžete replikaci a převzetí služeb při selhání pro jeden z následujících akcí: Střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever.</br>
-> Je třeba poznamenat, Site Recovery je povolena pouze oblasti Brazílie – Jih, který se použije jako zdrojové oblasti, ze které se dají chránit virtuální počítače. Nelze použít jako cíl zotavení po Havárii oblasti pro všechny oblasti Azure, jako jsou střed USA – jih. Důvod je ten latence zjištěnými z důvodu geografické vzdálenosti doporučujeme vybrat oblasti žádné další Ameriky, než Brazílie – jih.  
+> Pro oblast Brazílie – jih můžete replikaci a převzetí služeb při selhání pro jeden z následujících akcí: Střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever.
+>
+> Je třeba poznamenat, Site Recovery je povolena pouze oblasti Brazílie – Jih, který se použije jako zdrojové oblasti, ze které se dají chránit virtuální počítače. Nelze použít jako cíl zotavení po Havárii oblasti pro všechny oblasti Azure, jako jsou střed USA – jih. Důvod je ten latence zjištěnými z důvodu geografické vzdálenosti doporučujeme vybrat oblasti žádné další Ameriky, než Brazílie – jih.
 
 ## <a name="cache-storage"></a>Úložiště mezipaměti
 
@@ -127,10 +128,10 @@ Debian 8 | 9.17, 9.18 | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.
 
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9,20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.69-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default k 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default k 4.4.138-94.39-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.88-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default k 4.4.126-94.22-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9,20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default<br/><br/> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default<br/><br/> 4.4.21-69-default SP2 do 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default<br/><br/>SP3 4.4.73-5-default k 4.4.162-94.69-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default<br/><br/> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default<br/><br/> 4.4.21-69-default SP2 do 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default<br/><br/>SP3 4.4.73-5-default k 4.4.140-94.42-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default<br/><br/> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default<br/><br/> 4.4.21-69-default SP2 do 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default<br/><br/>SP3 4.4.73-5-default k 4.4.138-94.39-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default<br/><br/> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.88-default<br/><br/> 4.4.21-69-default SP2 do 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default<br/><br/>SP3 4.4.73-5-default k 4.4.126-94.22-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikované počítače – Linux souboru systému/hostovaného úložiště
 
@@ -145,7 +146,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k
 --- | --- | ---
 Velikost | Libovolná velikost virtuálních počítačů Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md).
 Skupiny dostupnosti | Podporováno | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, skupinu dostupnosti se vytvoří automaticky v závislosti na nastavení zdrojové oblasti. Tato nastavení můžete upravit.
-Zóny dostupnosti | Podporováno |  
+Zóny dostupnosti | Podporováno |
 Program hybrid Use Benefit (HUB) | Podporováno | Pokud zdrojový virtuální počítač má licenci centra povolené, testovací převzetí služeb při selhání nebo převzetí služeb při selhání virtuálního počítače také používá licenci ROZBOČOVAČE.
 Škálovací sady virtuálních počítačů | Nepodporuje se |
 Publikované Image z Galerie Azure – Microsoft | Podporováno | Podporováno, pokud virtuální počítač běží na podporovaném operačním systému.
@@ -177,23 +178,23 @@ Maximální číslo datového disku | Až 64, v souladu s podporou pro určité 
 Četnost změn dat disku | Maximálně 10 MB/s na disku pro premium storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud Průměrná frekvence změny dat na disku je trvale vyšší než maximální délka, nebude dohnat replikace.<br/><br/>  Pokud se překročí maximální nedojde replikace můžete zachytit, ale může se zobrazit body obnovení mírně zpožděné.
 Datový disk - účet úložiště úrovně standard | Podporováno |
 Datový disk - účtu služby premium storage | Podporováno | Pokud virtuální počítač obsahuje disky, které jsou rozděleny mezi účty úložiště úrovně standard a premium, můžete vybrat jiný cílový účet úložiště pro každý z disků, zajistěte, že abyste měli stejnou konfiguraci úložiště v cílové oblasti.
-Spravovaný disk – standard | Podporované v oblastech Azure, ve kterých je Azure Site Recovery nepodporuje. |  
+Spravovaný disk – standard | Podporované v oblastech Azure, ve kterých je Azure Site Recovery nepodporuje. |
 Spravovaný disk – premium | Podporované v oblastech Azure, ve kterých je Azure Site Recovery nepodporuje. |
 SSD úrovně Standard | Nepodporuje se |
 Redundance | Jsou podporovány LRS a GRS.<br/><br/> ZRS se nepodporuje.
 Úložiště Cool a hot | Nepodporuje se | Disky virtuálních počítačů se nepodporují studené a horké úložiště
-Prostory úložiště | Podporováno |         
+Prostory úložiště | Podporováno |
 Šifrování v klidovém stavu (SSE) | Podporováno | SSE je výchozí nastavení u účtů úložiště.   
 Azure Disk Encryption (ADE) pro operační systém Windows | Povoleno pro virtuální počítače [šifrování pomocí aplikace Azure AD](https://aka.ms/ade-aad-app) jsou podporovány |
 Azure Disk Encryption (ADE) pro operační systém Linux | Nepodporuje se |
 Přidání nebo odebrání horké disku | Nepodporuje se | Je-li přidat nebo odebrat datový disk na virtuálním počítači, musíte zakázat replikaci a povolte replikaci pro virtuální počítač znovu.
 Vyloučení disku | Nepodporuje se|   Dočasný disk je ve výchozím nastavení vyloučen.
-Prostory úložiště s přímým přístupem  | Nepodporuje se|
+Prostory úložiště s přímým přístupem  | Nepodporuje se|
 Souborový Server se Škálováním  | Nepodporuje se|
 LRS | Podporováno |
 GRS | Podporováno |
 RA-GRS | Podporováno |
-ZRS | Nepodporuje se |  
+ZRS | Nepodporuje se |
 Úložiště Cool a Hot | Nepodporuje se | Disky virtuálního počítače nejsou podporovány na studené a horké úložiště
 Pro virtuální sítě brány firewall služby Azure Storage  | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, zajistěte, aby ["Povolit důvěryhodné služby Microsoftu"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Účty úložiště pro obecné účely V2 (i horká a studená úroveň) | Ne | Zvýšit náklady na transakce podstatně porovnání pro obecné účely V1 účty úložiště
@@ -220,13 +221,13 @@ NIC | Maximální počet podporovaný pro určité velikosti virtuálních poč�
 Internetový nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předkonfigurované zátěže pomocí Azure Automation skriptu v plánu obnovení.
 Interní nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předkonfigurované zátěže pomocí Azure Automation skriptu v plánu obnovení.
 Veřejná IP adresa | Podporováno | Stávající veřejnou IP adresu přidružit k síťové kartě Vytvoření veřejné IP adresy a přidružte jej k síťovému rozhraní pomocí Azure Automation skriptu v plánu obnovení.
-NSG na síťové KARTĚ | Podporováno | Přidružení NSG k síťovému rozhraní pomocí Azure Automation skriptu v plánu obnovení.  
+NSG na síťové KARTĚ | Podporováno | Přidružení NSG k síťovému rozhraní pomocí Azure Automation skriptu v plánu obnovení.
 NSG na podsítě | Podporováno | Přidružení skupiny zabezpečení sítě s podsítí pomocí Azure Automation skriptu v plánu obnovení.
 Vyhrazená IP adresa (statické) | Podporováno | Pokud má síťový adaptér na zdrojovém virtuálním počítači statickou IP adresu a cílová podsíť má stejnou IP adresu k dispozici, je přiřazen k převzetí virtuálního počítače.<br/><br/> Pokud cílová podsíť nemá stejnou IP adresu k dispozici, některou z dostupných IP adres v podsíti je vyhrazen pro virtuální počítač.<br/><br/> Můžete také určit pevnou IP adresu a podsítě v **replikované položky** > **nastavení** > **výpočty a síť**  >  **Síťová rozhraní**.
 Dynamická IP adresa | Podporováno | Pokud má síťový adaptér na zdroj dynamických IP adres, NIC se selhání pro virtuální počítač je dynamický ve výchozím nastavení.<br/><br/> Tuto hodnotu můžete změnit na pevnou IP adresu v případě potřeby.
 Traffic Manager     | Podporováno | Traffic Manager vám umožňují předem nakonfigurovat tak, aby provoz se směruje do koncového bodu ve zdrojové oblasti v pravidelných intervalech a ke koncovému bodu v cílové oblasti v případě převzetí služeb při selhání.
 Azure DNS | Podporováno |
-Vlastní DNS  | Podporováno |    
+Vlastní DNS  | Podporováno |
 Neověřené Proxy | Podporováno | Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)    
 Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač používá ověřený proxy server pro odchozí připojení, nelze replikovat, pomocí Azure Site Recovery.    
 Site to Site VPN s místními (s nebo bez ExpressRoute)| Podporováno | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že provoz obnovení lokality se nesměruje na místní. Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)  

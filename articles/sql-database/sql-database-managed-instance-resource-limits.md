@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315634"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584492"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -48,16 +48,20 @@ Managed Instance má dvě úrovně služeb - obecné účely a pro důležité o
 | **Funkce** | **Obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Paměť) | Gen4: 56GB – 156GB<br/>Gen5: 44GB - 440GB<br/>\*Proporční na počet virtuálních jader | Gen4: 56GB – 156GB <br/> Gen5: 44GB - 440GB<br/>\*Proporční na počet virtuálních jader |
+| Memory (Paměť) | Gen4: 56GB – 156GB<br/>Gen5: 44GB - 440GB<br/>\*Proporční na počet virtuálních jader | Gen4: 56GB – 156GB <br/> Gen5: 41GB - 408GB<br/>\*Proporční na počet virtuálních jader |
 | Maximální velikost úložiště | 8 TB | Gen 4: 1 TB <br/> Generace 5: <br/>-1 TB pro 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet databází na instanci | Až 280 | 32 767 počet souborů v databázi |
-| Vstupně-výstupních operací (přibližné) | 500-7500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 110 tis. (1375 vCore) |
+| Data/Log IOPS (přibližné) | 500-7500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 110 tis. (1375 vCore) |
+| Propustnost instance protokolu | 22MB/s na instanci | 3MB/s na vCore<br/>Maximální počet 48MB/s |
+| Propustnost dat (přibližné) | 100 250 MB/s na souboru<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48MB/s na vCore |
 | Vstupně-výstupní latence (přibližné) | 5 až 10 ms | 1 až 2 ms |
-| Maximální velikost tempDB | 192 1920 GB (24 GB na vCore) | Určuje maximální velikost úložiště na instanci |
+| Maximální velikost tempDB | 192 1920 GB (24 GB na vCore) | Bez omezení – limitován velikostí úložiště maximální počet instancí |
 
-- Velikost úložiště instance, která je ve srovnání s maximální limit velikosti úložiště jsou součástí uživatele a systémové databáze. Použití <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> zobrazení systému k určení součet využitého místa databáze. Protokoly chyb není trvalý a není součástí velikost. Velikost úložiště nejsou součástí zálohy.
+**Poznámky k**:
+- Velikost souboru protokolu a data uživatelů a systémové databáze jsou součástí úložiště velikost instance, která je ve srovnání s maximální limit velikosti úložiště. Použití <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> zobrazení systému k určení součet využitého místa databáze. Protokoly chyb není trvalý a není součástí velikost. Velikost úložiště nejsou součástí zálohy.
+- Propustnost a vstupně-výstupních operací, také závisí na velikosti stránky, který není omezený explicitně Managed Instance.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 

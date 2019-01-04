@@ -32,7 +32,7 @@ Moduly hardwarového zabezpečení jsou distribuovány napříč datovými centr
 * USA – východ
 * Východní USA 2
 * Západní USA
-* Střed USA – jih
+* Středojižní USA
 * Jihovýchodní Asie
 * Východní Asie
 * Severní Evropa

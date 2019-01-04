@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098086"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754539"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Tento článek popisuje obsah balíčku. 1808 aktualizace. Balíček aktualizace zahrnuje vylepšení, oprav a známé problémy pro tuto verzi sady Azure Stack. Tento článek také obsahuje odkaz, takže si můžete stáhnout aktualizace. Známé problémy jsou rozděleny do problémy přímo souvisí s proces aktualizace a problémy se sestavením (po instalaci).
 
@@ -43,7 +43,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 - **Všechna prostředí Azure Stack teď použijte formát časového pásma koordinovaný univerzální čas (UTC).**  Všechna data protokolů a související informace nyní zobrazit ve formátu UTC. Při aktualizaci z předchozí verze, který nebyl nainstalován pomocí času UTC, vaše prostředí se aktualizuje a pomocí času UTC. 
 
 <!-- 2437250  | IS  ASDK --> 
-- **Spravované disky se podporují.** Teď můžete použít Managed Disks v Azure stacku virtuální počítače a škálovací sady virtuálních počítačů. Další informace najdete v tématu [Azure Stack Managed Disks: rozdíly a aspekty](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
+- **Spravované disky se podporují.** Teď můžete použít Managed Disks v Azure stacku virtuální počítače a škálovací sady virtuálních počítačů. Další informace najdete v tématu [Azure Stack Managed Disks: Rozdíly a aspekty](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
 
 <!-- 2563799  | IS  ASDK --> 
 - **Azure Monitor**. Jako je Azure Monitor v Azure Azure Monitor ve službě Azure Stack poskytuje základní infrastruktura metriky a protokoly pro většina služeb. Další informace najdete v tématu [Azure Monitor ve službě Azure Stack](/azure/azure-stack/user/azure-stack-metrics-azure-data).
@@ -226,16 +226,16 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  
 
    Upozornění #1:
-   - Název: Infrastrukturu role není v pořádku
-   - ZÁVAŽNOST: upozornění
-   - KOMPONENTY: Kontroler stavu
-   - Popis: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
+   - JMÉNO:  Infrastrukturu role není v pořádku
+   - ZÁVAŽNOST: Upozornění
+   - KOMPONENTY: Stav kontroleru
+   - POPIS: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
 
   Upozornění #2:
-   - Název: Infrastrukturu role není v pořádku
-   - ZÁVAŽNOST: upozornění
-   - KOMPONENTY: Kontroler stavu
-   - Popis: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
+   - JMÉNO:  Infrastrukturu role není v pořádku
+   - ZÁVAŽNOST: Upozornění
+   - KOMPONENTY: Stav kontroleru
+   - POPIS: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
 
   Obě výstrahy můžete bezpečně ignorovat a bude automaticky zavřít v čase.  
 
@@ -243,16 +243,15 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- 2812138 | IS --> 
 - Může se zobrazit upozornění pro **úložiště** komponenta, která obsahuje následující podrobnosti:
 
-   - Název: Chyba interní komunikace se službou Storage  
-   - ZÁVAŽNOST: kritické  
-   - KOMPONENTA: úložiště  
-   - Popis: Chyba interní komunikace se službou úložiště došlo k chybě při odesílání požadavků na tyto uzly.  
+   - JMÉNO: Chyba interní komunikace se službou Storage  
+   - ZÁVAŽNOST: Kritická  
+   - KOMPONENTY: Storage  
+   - POPIS: Chyba interní komunikace se službou úložiště došlo k chybě při odesílání požadavků na tyto uzly.  
 
     Upozornění můžete ignorovat, ale budete muset ručně zavřete výstrahu.
 
 <!-- 2368581 - IS. ASDK --> 
 - Operátory Azure stacku, pokud se zobrazí upozornění na nedostatek paměti a virtuální počítače klientů selhání nasazení **Chyba při vytváření virtuálních počítačů Fabric**, je možné, že toto razítko Azure Stack je nedostatek dostupné paměti. Použití [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) nejlépe pochopit dostupné kapacity pro vaše úlohy.
-
 
 ### <a name="compute"></a>Compute
 
@@ -283,17 +282,17 @@ Sestavy využití vytvořenými využití rozhraní API služby Azure Stack zobr
    - Při aktualizaci hodnoty kvóty na hodnotu 0, je ekvivalentní výchozí hodnotu 2 048 GB. Jako alternativní řešení nastavte hodnoty kvóty na 1.
 
 <!-- 2869209 – IS, ASDK --> 
-- Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Failed"*. 
+- Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *Dlouho běžící operace se nezdařila se stavem "Failed"*. 
 
 <!--  2966665 – IS, ASDK --> 
-- Připojení SSD spravovaných disků úrovně premium velikosti spravovaného disku virtuální počítače (DS, DSv2, Fs, Fs_V2) selže s chybou: *nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: Požadovaná operace nejde provést, protože typ účtu úložiště. Premium_LRS' není podporována pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*
+- Připojení SSD spravované datové disky úrovně premium velikosti disku virtuálního počítače (DS, DSv2, Fs, Fs_V2) selže s chybou:  *Nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: Požadovaná operace nejde provést, protože typ účtu úložiště 'Premium_LRS' není podporován pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*
 
    Chcete-li tento problém obejít, použijte *Standard_LRS* datových disků místo *Premium_LRS disky*. Použití *Standard_LRS* datových disků nedojde ke změně vstupně-výstupních operací nebo fakturační náklady. 
 
 <!--  2795678 – IS, ASDK --> 
 - Při použití portálu k vytvoření virtuálních počítačů (VM) o velikosti virtuálních počítačů úrovně premium (DS, Ds_v2, služby FS, FSv2) virtuální počítač se vytvoří v účtu úložiště úrovně standard. Vytvoření účtu úložiště úrovně standard neovlivňuje funkčně vstupně-výstupních operací, nebo fakturace. 
 
-   Můžete bezpečně ignorovat upozornění, že: *jste se rozhodli použít standardní disk o velikosti, která podporuje prémiové disky. To může mít vliv na výkon operačního systému a nedoporučuje se používat. Zvažte raději použití storage úrovně premium (SSD).*
+   Můžete bezpečně ignorovat upozornění, že: *Rozhodli jste se použít standardní disk o velikosti, která podporuje prémiové disky. To může mít vliv na výkon operačního systému a nedoporučuje se používat. Zvažte raději použití storage úrovně premium (SSD).*
 
 <!-- 2967447 - IS, ASDK --> 
 - Škálovací sada virtuálních počítačů (VMSS) vytvořte prostředí založené na CentOS 7.2 poskytuje jako možnost pro nasazení. Vzhledem k tomu, že obrázek není k dispozici ve službě Azure Stack, vyberte jiný operační systém pro vaše nasazení nebo pomocí šablony Azure Resource Manageru zadáním jiné image CentOS, který byl stažen před jejich nasazením na Marketplace operátorem.  
@@ -315,7 +314,7 @@ Sestavy využití vytvořenými využití rozhraní API služby Azure Stack zobr
 
    Graf procento využití procesoru pro virtuální počítač, najdete **metriky** blade a zobrazit všechny podporované Windows virtuálního počítače hosta metriky.
 
-
+- Virtuální počítač Ubuntu 18.04 vytvořené pomocí SSH autorizace povolená neumožňuje použití klíčů SSH pro přihlášení. Jako alternativní řešení použijte přístup k virtuálním počítačům pro rozšíření Linuxu pro implementaci klíče SSH po zřízení, nebo použít ověřování pomocí hesla.
 
 ### <a name="networking"></a>Sítě  
 
@@ -361,8 +360,10 @@ Sestavy využití vytvořenými využití rozhraní API služby Azure Stack zobr
 
 
 ## <a name="download-the-update"></a>Stáhnout aktualizaci.
-Můžete stáhnout aktualizace balíčku. Azure Stack 1808 z [tady](https://aka.ms/azurestackupdatedownload).
-  
+
+Můžete stáhnout aktualizace balíčku. Azure Stack 1808 z [tady](https://aka.ms/azurestackupdatedownload). 
+
+Nasazení Azure Stack v propojených scénářích pouze, pravidelně kontrolovat zabezpečeného koncového bodu a automaticky upozorní, pokud je aktualizace k dispozici pro váš cloud. Další informace najdete v tématu [Správa aktualizací pro Azure Stack](azure-stack-updates.md).
 
 ## <a name="next-steps"></a>Další postup
 - Zásady údržby pro integrované systémy Azure Stack, a co musíte udělat, aby byl váš systém v podporovaném stavu najdete v tématu [Azure Stack zásady obsluhy](azure-stack-servicing-policy.md).  

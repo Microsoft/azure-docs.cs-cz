@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 22032f9d2e60d3c51546c32df8b98f9633c95535
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864974"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726529"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Co zvážit při plánování nasazení Azure Stack
 Než nasadíte Azure Stack Development Kit (ASDK), zkontrolujte, zda že splňuje požadavky popsané v tomto článku hostitelského počítače development kit.
@@ -29,17 +29,17 @@ Než nasadíte Azure Stack Development Kit (ASDK), zkontrolujte, zda že splňuj
 ## <a name="hardware"></a>Hardware
 | Komponenta | Minimální | Doporučené |
 | --- | --- | --- |
-| Diskové jednotky: Operační systém |Jeden disk s operačním systémem a alespoň 200 GB místa pro systémový oddíl (SSD nebo pevný disk) |Jeden disk s operačním systémem a alespoň 200 GB místa pro systémový oddíl (SSD nebo pevný disk) |
-| Diskové jednotky: Obecné vývojové sady dat<sup>*</sup>  |Čtyři disky. Každý disk nabízí minimálně 140 GB místa (SSD nebo pevný disk). Všechny dostupné disky se používají. |Čtyři disky. Každý disk nabízí minimálně 250 GB místa (SSD nebo pevný disk). Všechny dostupné disky se používají. |
-| Výpočetní služby: Procesor |Duální soket: 12 fyzických jader (celkem) |Duální soket: 16 fyzických jader (celkem) |
-| Výpočetní služby: Paměť |96 GB RAM |128 GB paměti RAM (to je minimum pro podporu poskytovatele prostředků PaaS).|
-| Výpočetní služby: BIOS |Povolená technologie Hyper-V (s podporou SLAT) |Povolená technologie Hyper-V (s podporou SLAT) |
-| Síť: NIC |V případě NIC se vyžaduje certifikace Windows Serveru 2012 R2. Specializované funkce se nepožadují |V případě NIC se vyžaduje certifikace Windows Serveru 2012 R2. Specializované funkce se nepožadují |
+| Diskové jednotky: Operační systém |1 disk s operačním systémem s alespoň 200 GB místa pro systémový oddíl (SSD nebo HDD) |Jeden disk s operačním systémem a alespoň 200 GB místa pro systémový oddíl (SSD nebo pevný disk) |
+| Diskové jednotky: Obecný vývoj sady dat<sup>*</sup>  |Čtyři disky. Každý disk nabízí minimálně 240 GB místa (SSD nebo HDD). Všechny dostupné disky se používají. |Čtyři disky. Každý disk nabízí minimálně 400 GB místa (SSD nebo HDD). Všechny dostupné disky se používají. |
+| COMPUTE: Procesor |Duální soket: 16 fyzických jader (celkem) |Duální soket: 20 fyzických jader (celkem) |
+| COMPUTE: Memory (Paměť) |192 GB PAMĚTI RAM |256 GB PAMĚTI RAM |
+| COMPUTE: SYSTÉMU BIOS |Povolená technologie Hyper-V (s podporou SLAT) |Povolená technologie Hyper-V (s podporou SLAT) |
+| Síť: NIC |Certifikace pro Windows Server 2012 R2. Specializované funkce se nepožadují |Certifikace pro Windows Server 2012 R2. Specializované funkce se nepožadují |
 | Hardwarová certifikace loga |[Certifikované pro systém Windows Server 2012 R2](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certifikované pro systém Windows Server 2016](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> Potřebujete víc než to doporučuje kapacitu, když plánujete přidat řadu [položky marketplace](asdk-marketplace-item.md) z Azure.
 
-**Konfigurace datových disků:** všechny datové jednotky musí být stejného typu (všechny SAS, všechny SATA nebo všechna NVMe) a kapacitu. Pokud použijete disky SAS, musí být diskové jednotky připojené pomocí jedné cesty (žádné funkce MPIO, podpora více cest je zajištěna).
+**Konfigurace datových disků:** Všechny datové jednotky musí být stejného typu (všechny SAS, všechny SATA nebo všechna NVMe) a kapacitu. Pokud použijete disky SAS, musí být diskové jednotky připojené pomocí jedné cesty (žádné funkce MPIO, podpora více cest je zajištěna).
 
 **Možnosti konfigurace adaptéru HBA**
 
@@ -59,7 +59,7 @@ Než nasadíte Azure Stack Development Kit (ASDK), zkontrolujte, zda že splňuj
 
 <sup>*</sup> Řadiče RAID bez možnosti průchodu nerozpoznají typ média. Tyto řadiče označit pevný disk i SSD jako Neurčeno. V takovém případě se používá SSD jako trvalé úložiště místo mezipaměťových zařízení. Proto můžete nasadit sada na tyto disky SSD.
 
-**Příklad HBA**: LSI 9207-8i, LSI-9300-8i nebo LSI-9265-8i v režimu průchodu
+**Příklad HBA**: Adaptér LSI 9207-8i, LSI-9300-8i nebo LSI-9265-8i v režimu průchodu
 
 Dostupné jsou ukázkové OEM konfigurace.
 

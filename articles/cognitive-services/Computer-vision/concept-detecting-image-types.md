@@ -1,7 +1,7 @@
 ---
 title: Zjišťování typy obrázků – pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související se zjišťováním typy obrázků pomocí rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty související s funkcí zjišťování typ bitové kopie z rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: ecdbdd60af41ee14070f2f45dfe50875e38ac3b3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 04062d5625126712c5f14c41d610d55caf4c28b5
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341993"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583098"
 ---
-# <a name="detecting-image-types"></a>Rozpoznávání typů obrázků
+# <a name="detecting-image-types-with-computer-vision"></a>Zjišťování typy obrázků s pro počítačové zpracování obrazu
 
 Počítačové zpracování obrazu můžete analyzovat typ obsahu imagí podle určující, zda je bitové klipart, hodnocení pravděpodobnost, že na škálovací nebo perokresba.
 
@@ -27,7 +28,7 @@ Počítačové zpracování obrazu analyzuje bitovou kopii a vyhodnotí pravděp
 
 | Hodnota | Význam |
 |-------|---------|
-| 0 | Bez klipart |
+| 0 | Není klipart |
 | 1 | Nejednoznačný |
 | 2 | Normální klipart |
 | 3 | Dobré klipart |
@@ -36,7 +37,7 @@ Počítačové zpracování obrazu analyzuje bitovou kopii a vyhodnotí pravděp
 
 Následující odpověďmi ve formátu JSON ukazuje, co pro počítačové zpracování obrazu vrací při hodnocení pravděpodobnost, že Image příklad se klipart.
 
-![Pro zpracování obrazu analyzovat produkci minipivovarů ve Wisconsinu klipart](./Images/cheese_clipart.png)
+![Klipartu určitý řez produkci minipivovarů ve wisconsinu](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -53,7 +54,7 @@ Následující odpověďmi ve formátu JSON ukazuje, co pro počítačové zprac
 }
 ```
 
-![Pro zpracování obrazu analyzovat House Yard](./Images/house_yard.png)
+![Modré house a front-yard](./Images/house_yard.png)
 
 ```json
 {
@@ -78,7 +79,7 @@ Počítačové zpracování obrazu analyzuje bitovou kopii a vrátí hodnotu typ
 
 Následující odpověďmi ve formátu JSON ukazuje, co pro počítačové zpracování obrazu vrací při určování, zda jsou obrázky příklad kreslení čáry.
 
-![Pro zpracování obrazu analyzovat Lion kreslení](./Images/lion_drawing.png)
+![Perokresba snímek lion](./Images/lion_drawing.png)
 
 ```json
 {
@@ -95,7 +96,7 @@ Následující odpověďmi ve formátu JSON ukazuje, co pro počítačové zprac
 }
 ```
 
-![Analýza květinu pro zpracování obrazu](./Images/flower.png)
+![Bílé květinu zeleným pozadím](./Images/flower.png)
 
 ```json
 {

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: danlep
-ms.openlocfilehash: e03a35b31c9089abe973c7e4388b508f668a3970
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 172ddd11cb956ab6d74e1ce870e2378205dd1613
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619839"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993282"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
@@ -47,6 +47,7 @@ Tato funkce je ve verzi preview, platí následující omezení při nasazován�
 * Severní Evropa (northeurope)
 * Západní Evropa (westeurope)
 * USA – západ (westus)
+* USA – východ (eastus)
 
 **Nepodporovaná** síťové prostředky:
 

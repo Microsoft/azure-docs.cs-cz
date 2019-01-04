@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: e39829d4fa08e466f98930becc831c6f4b551aed
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3d048618fef04b630366b3f575e420b329f102cb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315830"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597660"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>Vysoká dostupnost dat s využitím Apache Kafka ve službě HDInsight
 
@@ -26,7 +26,7 @@ Doména selhání je logické seskupení základního hardwaru v datovém centru
 
 Každá oblast Azure má určitý počet domén selhání. Seznam domén a počet domén selhání, které obsahují, najdete v dokumentaci [Skupiny dostupnosti](../../virtual-machines/windows/regions-and-availability.md#availability-sets).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kafka nemá o doménách selhání žádné informace. Když vytvoříte téma v Kafka, může uložit všechny repliky oddílů ve stejné doméně selhání. K vyřešení tohoto problému služba HDInsight poskytuje [nástroj pro obnovení rovnováhy oddílů Kafka](https://github.com/hdinsight/hdinsight-kafka-tools).
 
 ## <a name="when-to-rebalance-partition-replicas"></a>Kdy obnovit rovnováhu replik oddílů
@@ -39,7 +39,7 @@ K zajištění nejvyšší dostupnost dat Kafka byste měli obnovit rovnováhu r
 
 ## <a name="replication-factor"></a>Faktor replikace
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Doporučujeme použít oblast Azure, která obsahuje tři domény selhání, a použít faktor replikace 3.
 
 Pokud musíte použít oblast, která obsahuje jenom dvě domény selhání, použijte faktor replikace 4, abyste zajistili rovnoměrné rozložení replik napříč těmito dvěma doménami selhání.

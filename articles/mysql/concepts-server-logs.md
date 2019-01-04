@@ -1,20 +1,17 @@
 ---
 title: Protokoly serveru Azure Database for MySQL
 description: Popisuje protokoly, které jsou k dispozici ve službě Azure Database for MySQL a parametry dostupnými pro povolení úrovní různých protokolování.
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/03/2018
-ms.openlocfilehash: 73be0e4ecff4bc0d9b69249430bba69a93cc54ae
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c9f8fc4bee370f287b40275b76fa98d2552d7600
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093778"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545069"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Protokolů serveru ve službě Azure Database for MySQL
 Ve službě Azure Database for MySQL je k dispozici uživatelům v protokolu pomalých dotazů. Přístup k protokolu transakcí se nepodporuje. Protokol pomalých dotazů je možné identifikovat kritické body výkonu pro řešení potíží. 
@@ -47,13 +44,13 @@ Další parametry, které můžete upravit patří:
 Zobrazit MySQL [zpomalit dokumentace ke službě log dotazu](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) úplný popis parametrů protokol pomalých dotazů.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for MySQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly pomalých dotazů na váš server MySQL, můžete je mít znovu vygenerován pro Log Analytics a Event Hubs, Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, zjistit, jak část [dokumentace k diagnostickým protokolům](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Azure Database for MySQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly pomalých dotazů na váš server MySQL, můžete je mít znovu vygenerován pro Log Analytics a Event Hubs, Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, zjistit, jak část [dokumentace k diagnostickým protokolům](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě výstup pole zahrnutá a pořadí, ve kterém jsou uvedeny se mohou lišit.
 
 | **Vlastnost** | **Popis** |
 |---|---|---|
-| ID Tenanta | Vaše ID tenanta |
+| TenantId | Vaše ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
 | Typ | Typ protokolu. Vždy `AzureDiagnostics` |

@@ -15,35 +15,35 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a012798f71b0e3c14ab9982fd41bce6f0fa098e5
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5aa52805afcd50ebf7a9ac0ddcae95f21dd329f1
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257603"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554754"
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>Přeučování webové služby Classic Azure Machine Learning Studio
-Prediktivní webové služby, kterou jste nasadili je výchozí bodovací koncový bod. Výchozí koncové body se udržovat synchronizované s původní trénování a vyhodnocování experimenty, a proto nejde nahradit trénovaný model pro výchozí koncový bod. Chcete-li přeučování webové služby, je nutné přidat nový koncový bod webové služby. 
+Prediktivní webové služby, kterou jste nasadili je výchozí bodovací koncový bod. Výchozí koncové body se udržovat synchronizované s původní trénování a vyhodnocování experimenty, a proto nejde nahradit trénovaný model pro výchozí koncový bod. Chcete-li přeučování webové služby, je nutné přidat nový koncový bod webové služby.
 
 ## <a name="prerequisites"></a>Požadavky
-Je nutné nastavit výukového experimentu a prediktivní experiment jak je znázorněno v [modelů Machine Learning Přeučování](retrain-models-programmatically.md). 
+Je nutné nastavit výukového experimentu a prediktivní experiment jak je znázorněno v [modelů Machine Learning Přeučování](retrain-models-programmatically.md).
 
 > [!IMPORTANT]
-> Prediktivní experiment musí být nasazený jako klasickém webovou službu machine learning. 
-> 
-> 
+> Prediktivní experiment musí být nasazený jako klasickém webovou službu machine learning.
+>
+>
 
 Další informace o nasazování webových služeb najdete v tématu [nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
 
 ## <a name="add-a-new-endpoint"></a>Přidat nový koncový bod
-Prediktivní webové služby, které jste nasadili obsahuje výchozí bodovací koncový bod, který je udržovat synchronizované s původní trénování a vyhodnocování trénovaného modelu experimentů. Pokud chcete aktualizovat webovou službu, která s novou trénovaného modelu, musíte vytvořit nový bodovací koncový bod. 
+Prediktivní webové služby, které jste nasadili obsahuje výchozí bodovací koncový bod, který je udržovat synchronizované s původní trénování a vyhodnocování trénovaného modelu experimentů. Pokud chcete aktualizovat webovou službu, která s novou trénovaného modelu, musíte vytvořit nový bodovací koncový bod.
 
 Chcete-li vytvořit nový bodovací koncový bod, na prediktivní webové služby, které se dají aktualizovat trénovaného modelu:
 
 > [!NOTE]
 > Ujistěte se, že chcete přidat koncový bod prediktivní webové služby, ne webová služba školení. Pokud jste nasadili správně Trénovací a prediktivní webové služby, měli byste vidět uvedené dvě samostatné webové služby. Prediktivní webová služba by měla končit "[prediktivní exp.]".
-> 
-> 
+>
+>
 
 Existují dva způsoby, ve kterých můžete přidat nový koncový bod webové služby:
 
@@ -51,7 +51,7 @@ Existují dva způsoby, ve kterých můžete přidat nový koncový bod webové 
 2. Použití portálu webových služeb Microsoft Azure
 
 ### <a name="programmatically-add-an-endpoint"></a>Přidání koncového bodu prostřednictvím kódu programu
-Můžete přidat bodovací koncové body pomocí ukázkového kódu, poskytnutý v tomto [úložiště github](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
+Můžete přidat bodovací koncové body pomocí ukázkového kódu, poskytnutý v tomto [úložiště GitHub](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
 
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Použití portálu webových služeb Microsoft Azure k přidání koncového bodu
 1. V nástroji Machine Learning Studio v levém navigačním sloupci klikněte na webové služby.

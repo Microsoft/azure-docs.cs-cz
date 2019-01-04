@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274560"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993278"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak naplánovat vaši implementaci připojení k hybridní službě Azure Active Directory
 
@@ -146,9 +146,9 @@ Azure AD Connect od verze 1.1.819.0 nabízí průvodce konfigurací hybridního 
 
 ## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Podpora alternativní Id přihlášení v připojení k hybridní službě Azure AD
 
-Připojení k Windows 10 hybridní Azure AD poskytuje omezenou podporu pro [alternativní ID přihlášení](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na základě typu alternativního přihlašovacího id [metodu ověřování](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn), typ domény a verzi Windows 10. Existují dva typy alternativního přihlašovacího ID, které může existovat ve vašem prostředí.
+Připojení k Windows 10 hybridní Azure AD poskytuje omezenou podporu pro [alternativní ID přihlášení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na základě typu alternativního přihlašovacího id [metodu ověřování](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typ domény a verzi Windows 10. Existují dva typy alternativního přihlašovacího ID, které může existovat ve vašem prostředí.
 
- - Směrovatelné alternativního přihlašovacího id: Směrovatelné alternativního přihlašovacího id má platný ověřenou doménu, který je zaregistrovaný u registrátora domény. Například pokud primární doména je contoso.com contoso.org a contoso.co.uk jsou platné domény, které jsou majetkem společnosti Contoso a [ověřit ve službě Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)
+ - Směrovatelné alternativního přihlašovacího id: Směrovatelné alternativního přihlašovacího id má platný ověřenou doménu, který je zaregistrovaný u registrátora domény. Například pokud primární doména je contoso.com contoso.org a contoso.co.uk jsou platné domény, které jsou majetkem společnosti Contoso a [ověřit ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
  
  - Non směrovatelné alternativního přihlašovacího id: Nesměrovatelných alternativního přihlašovacího id nemá žádné ověřené doméně. To platí pouze v privátní síti vaší organizace. Například pokud primární doména je contoso.com contoso.local není ověřitelný doménu v Internetu ale se používá v rámci sítě společnosti Contoso.
  

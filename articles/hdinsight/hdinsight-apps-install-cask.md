@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: ef61ee9f15253c6a270cd4089625776a458df2ee
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 715e536d7356a4e37f512027a23236b1fd37cbac
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499328"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651295"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>Instalace publikované aplikace – Cask Data Application Platform (CDAP)
 
-Tento článek popisuje, jak nainstalovat a spustit [CDAP](http://cask.co/products/cdap/) publikované [Apache Hadoop](https://hadoop.apache.org/) aplikaci v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalovat aplikace jiných výrobců Apache Hadoop](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [CDAP](https://cask.co/products/cdap/) publikované [Apache Hadoop](https://hadoop.apache.org/) aplikaci v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalovat aplikace jiných výrobců Apache Hadoop](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-cdap"></a>O CDAP
 
@@ -30,7 +30,7 @@ Cask Data Application Platform CDAP () je integrační platformu pro velké obje
 
 CDAP používá základními koncepty a abstrakce, které jsou pro vývojáře srozumitelná. Tato abstrakce skrýt složitosti interních systémů a podporovat opětovné použití řešení.
 
-Rozšíření CDAP voláno [Cask Hydrator](http://cask.co/products/hydrator/) poskytuje uživatelské rozhraní pro vývoj a spravovat datové kanály. Datový kanál se skládá z různých * získávání dat, transformace, analýzy a po spuštění operace, jako jsou moduly plug-in, které provádějí úlohy.
+Rozšíření CDAP voláno [Cask Hydrator](https://cask.co/products/hydrator/) poskytuje uživatelské rozhraní pro vývoj a spravovat datové kanály. Datový kanál se skládá z různých * získávání dat, transformace, analýzy a po spuštění operace, jako jsou moduly plug-in, které provádějí úlohy.
 
 Každý modul plug-in CDAP má dobře definované rozhraní tak, aby vaše rozhodnutí vyzkoušet různé technologie stačí jenom jeden modul plug-in nahrazení jiný, aniž byste museli touch zbývajících částí aplikace.
 
@@ -42,7 +42,7 @@ Následující příklad datového kanálu ingestuje data twitteru v reálném �
 
 Tento kanál začátku do konce se vytvořil pomocí **Cask Hydrator UI**, pomocí jeho funkce modulu plug-in rozhraní a přetažením myší vytvořit připojení mezi jednotlivým fázím. Můžete izolovat a změnit tak funkce modulu plug-in nezávisle na sobě. Pomocí CDAP, podobně jako kanály dají vytvořit a ověřit v hodinách. V typické Hadoop world vytváření takové řešení může trvat několik dní.
 
-CDAP také poskytuje rozšíření volá [Cask sledování](http://cask.co/products/tracker/) pro vizuální trasování dat při prochází přes aplikaci. Přidá cask sledování *datový dozor nad* systému tak, aby datové assety jsou formálně spravovat v celé aplikaci. Můžete sledovat rodokmenu datových bodů, shromažďovat relevantní metriky a záznam pro data v celém procesu audit.
+CDAP také poskytuje rozšíření volá [Cask sledování](https://cask.co/products/tracker/) pro vizuální trasování dat při prochází přes aplikaci. Přidá cask sledování *datový dozor nad* systému tak, aby datové assety jsou formálně spravovat v celé aplikaci. Můžete sledovat rodokmenu datových bodů, shromažďovat relevantní metriky a záznam pro data v celém procesu audit.
 
 Tady je ilustraci, jak se data přenášejí do výše uvedené kanálu:
 
@@ -126,9 +126,9 @@ Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých vý
 
 ## <a name="next-steps"></a>Další postup
 
-* [Dokumentace ke službě cask](http://cask.co/resources/documentation/).
+* [Dokumentace ke službě cask](https://cask.co/resources/documentation/).
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
-* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
-* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
+* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do Azure Marketplace.
+* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Zjistěte, jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): Další informace o použití akce skriptu k instalaci dalších aplikací.
 * [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Další informace o použití prázdných hraničních uzlů pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikací HDInsight.

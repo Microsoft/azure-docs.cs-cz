@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 71be338aeb6d0234d22d412d6838e36a26797b20
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5a74097521cc7dceea2c47f78c1dbb2f17e292aa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002112"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726676"
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>Upgrade existující mobilní služby Azure Node.js do služby App Service
 Mobile App Service je nový způsob vytváření mobilních aplikací pomocí Microsoft Azure. Další informace najdete v tématu [co jsou Mobile Apps?].
@@ -98,7 +98,7 @@ Během nasazení budete potřebovat provést následující kroky:
 2. Klikněte na **+NOVÝ** > **Web + mobilní zařízení** > **Mobilní aplikace** a potom zadejte název back-endu mobilní aplikace .
 3. V případě **skupiny prostředků** vyberte existující skupinu prostředků nebo vytvořte novou (použijte stejný název, jaký má aplikace).
 
-    Můžete buď vybrat jiný plán služby App Service nebo vytvořit nový. Další informace o plánech služby App Service a vytvoření nového plánu v různých cenových úrovních a požadovaném umístění najdete v článku [Podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+    Můžete buď vybrat jiný plán služby App Service nebo vytvořit nový. Další informace o plánech služby App Service a vytvoření nového plánu v různých cenových úrovních a požadovaném umístění najdete v článku [Podrobný přehled plánů služby Azure App Service](../app-service/overview-hosting-plans.md).
 4. V případě **plánu služby App Service** je vybraný výchozí plán (na [úrovni Standard](https://azure.microsoft.com/pricing/details/app-service/)). Můžete také vybrat jiný plán nebo [vytvořit nový](../app-service/app-service-plan-manage.md#create-an-app-service-plan). Určit nastavení plánu služby App Service [umístění, funkce, náklady a výpočetní prostředky](https://azure.microsoft.com/pricing/details/app-service/) spojené s vaší aplikací.
 
     Až se rozhodnete pro konkrétní plán, klikněte na **Vytvořit**. Tím vytvoříte back-end mobilní aplikace.
@@ -162,7 +162,7 @@ Až budete mít novou verzi klienta, která je připravená, vyzkoušejte si to 
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [Ceny služeb App Service]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Koncepty ověřování]: ../app-service/app-service-authentication-overview.md
+[Koncepty ověřování]: ../app-service/overview-authentication-authorization.md
 [Rychlý start ověřování]: app-service-mobile-auth.md
 
 [Azure Portal]: https://portal.azure.com/

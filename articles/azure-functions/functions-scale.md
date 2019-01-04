@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b42529df406febc617c778d18d5b420f9c38c59a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1940908cc0120ed5a69ae6603ec101d020b0ef3f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434660"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722069"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -66,7 +66,7 @@ Vezměte v úvahu plán služby App Service v těchto případech:
 * Vyžadujete funkce, které jsou dostupné jenom pro plán služby App Service, jako třeba podporu pro App Service Environment, virtuální sítě nebo VPN připojení a větší velikosti virtuálních počítačů.
 * Chcete spustit aplikaci function app v Linuxu nebo chcete poskytnout vlastní image, ve kterém se spustí vaše funkce.
 
-Virtuální počítač ze počet spuštění, čas spuštění a paměť použitá odděluje obě části. V důsledku toho nebude platit víc než náklady na instance virtuálních počítačů, kterou přidělíte. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Virtuální počítač ze počet spuštění, čas spuštění a paměť použitá odděluje obě části. V důsledku toho nebude platit víc než náklady na instance virtuálních počítačů, kterou přidělíte. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/overview-hosting-plans.md). 
 
 S plánem služby App Service můžete ručně škálovat přidáváním dalších instancí virtuálních počítačů, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Také můžete škálovat výběrem jiný plán služby App Service. Další informace najdete v tématu [vertikální navýšení kapacity aplikace v Azure](../app-service/web-sites-scale.md). 
 

@@ -183,8 +183,8 @@ Nastavení testu:
 | Seattle | Západní USA 2        |    191 km |   5 ms | 262.0 Mbit/s |  3.74 Gbits za sekundu | 21
 | Seattle | Západní USA          |  1,094 km |  18 ms |  82.3 Mbit/s |  3.70 Gbits za sekundu | 20
 | Seattle | USA – střed       |  2,357 km |  40 ms |  38.8 Mbit/s |  2.55 Gbits za sekundu | 17
-| Seattle | Střed USA – jih |  2,877 km |  51 ms |  30.6 Mbit/s |  2.49 Gbits za sekundu | 19
-| Seattle | Střed USA – sever |  2,792 km |  55 ms |  27.7 Mbit/s |  2.19 Gbits za sekundu | 18
+| Seattle | Středojižní USA |  2,877 km |  51 ms |  30.6 Mbit/s |  2.49 Gbits za sekundu | 19
+| Seattle | Středoseverní USA |  2,792 km |  55 ms |  27.7 Mbit/s |  2.19 Gbits za sekundu | 18
 | Seattle | Východní USA 2        |  3,769 km |  73 ms |  21.3 Mbit/s |  1.79 Gbits za sekundu | 16
 | Seattle | USA – východ          |  3,699 km |  74 ms |  21.1 Mbit/s |  1.78 Gbits za sekundu | 15
 | Seattle | Japonsko – východ       |  7,705 km | 106 ms |  14.6 Mbit/s |  1.22 Gbits za sekundu | 28

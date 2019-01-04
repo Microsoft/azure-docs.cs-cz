@@ -10,22 +10,22 @@ ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: 0d53c8355fadf53c81676a1fe3c71f8e0b046630
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: e95b20a12fafa9d1dbcbd641ce1c9f2674314489
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126564"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606431"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Nasazení a volání vlastních rozhraní API z pracovních postupů v Azure Logic Apps
 
-Poté co [vytvoření vlastních rozhraní API](./logic-apps-create-api-app.md) pro použití v pracovních postupů aplikace logiky, musíte nasadit svoje rozhraní API, než bude možné volat. Můžete nasadit jako rozhraní API [webové aplikace](../app-service/app-service-web-overview.md), ale zvažte nasazení vašich rozhraní API jako [API apps](../app-service/app-service-web-tutorial-rest-api.md), které usnadní práci při vytváření, hostování a používání rozhraní API v cloudu i v místním prostředí. Nemusíte měnit žádný kód v rozhraní API – stačí nasazení kódu do aplikace API. Rozhraní API můžete hostovat na [služby Azure App Service](../app-service/app-service-web-overview.md), platform-as-a-service (PaaS) nabídka, která poskytuje vysoce škálovatelnou a jednoduché rozhraní API hostování.
+Poté co [vytvoření vlastních rozhraní API](./logic-apps-create-api-app.md) pro použití v pracovních postupů aplikace logiky, musíte nasadit svoje rozhraní API, než bude možné volat. Můžete nasadit jako rozhraní API [webové aplikace](../app-service/overview.md), ale zvažte nasazení vašich rozhraní API jako [API apps](../app-service/app-service-web-tutorial-rest-api.md), které usnadní práci při vytváření, hostování a používání rozhraní API v cloudu i v místním prostředí. Nemusíte měnit žádný kód v rozhraní API – stačí nasazení kódu do aplikace API. Rozhraní API můžete hostovat na [služby Azure App Service](../app-service/overview.md), platform-as-a-service (PaaS) nabídka, která poskytuje vysoce škálovatelnou a jednoduché rozhraní API hostování.
 
 I když bude možné volat jakékoli rozhraní API z aplikace logiky, pro dosažení co nejlepších výsledků, přidejte [OpenAPI (dříve Swagger) metadat](http://swagger.io/specification/) , který popisuje operace a parametry vašeho rozhraní API. Tento soubor OpenAPI pomáhá vaše rozhraní API snadno integrovat a lépe fungují s logic apps.
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Nasadit své rozhraní API jako webovou aplikaci nebo aplikaci API
 
-Předtím, než bude možné volat vlastní API z aplikace logiky, nasaďte své rozhraní API jako webovou aplikaci nebo aplikaci API do služby Azure App Service. Také, aby OpenAPI soubor přečíst návrháře pro Logic Apps, nastavte vlastnosti definice rozhraní API a zapnout [prostředků mezi zdroji (CORS) pro sdílení obsahu](../app-service/app-service-web-overview.md) pro webovou aplikaci nebo aplikaci API.
+Předtím, než bude možné volat vlastní API z aplikace logiky, nasaďte své rozhraní API jako webovou aplikaci nebo aplikaci API do služby Azure App Service. Také, aby OpenAPI soubor přečíst návrháře pro Logic Apps, nastavte vlastnosti definice rozhraní API a zapnout [prostředků mezi zdroji (CORS) pro sdílení obsahu](../app-service/overview.md) pro webovou aplikaci nebo aplikaci API.
 
 1. V [webu Azure portal](https://portal.azure.com), vyberte webovou aplikaci nebo aplikaci API.
 

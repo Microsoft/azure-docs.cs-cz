@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 90623981f67bbed15ade743192525676e58a0a83
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 30fc36f29a7602e2bc3f192b445474bfc50e9434
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318677"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632631"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>Použití Powershellu k zálohování a obnovení sdílených složek Azure
 
@@ -34,11 +34,11 @@ Reference k rutinám Powershellu AzureRm.RecoveryServices.Backup, naleznete v t�
 ## <a name="setup-and-registration"></a>Instalace a registrace
 
 > [!NOTE]
-> Jak je uvedeno [tady](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), podporu pro nové funkce v modulu AzureRM endové systémy v listopadu 2018. Proto poskytujeme podporu pro zálohování sdílených složek Azure pomocí nového modulu "Az" PS. Plánujeme také byl zapojený do verze GA Az modulu.
+> Jak je uvedeno [tady](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), podporu pro nové funkce v modulu AzureRM endové systémy v listopadu 2018. Proto poskytujeme podporu pro zálohování sdílených složek Azure pomocí nové "Az" PS modulu nyní v obecné dostupnosti.
 
 Chcete-li začít:
 
-1. [Stáhněte si nejnovější verzi prostředí PowerShell "Az"](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (minimální požadovaná verze je: 0.7.0)
+1. [Stáhněte si nejnovější verzi prostředí PowerShell "Az"](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (minimální požadovaná verze je: 1.0.0)
 
 2. Vyhledání dostupných rutin Powershellu pro zálohování Azure tak, že zadáte následující příkaz:
 
@@ -158,6 +158,8 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 ----                 ------------       -------------------- ----------                ----------
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
 ```
+
+"NewAFSPolicy" trvá denní zálohování a uchovávají po dobu 30 dnů.
 
 ### <a name="enable-protection"></a>Povolení ochrany
 

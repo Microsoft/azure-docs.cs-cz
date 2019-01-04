@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/29/2018
-ms.openlocfilehash: c234ac95d0e02857fe87afe3a734d77f00954477
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/18/2018
+ms.openlocfilehash: 2be5c8ddf6928d5529c2eb08a6d64bd64b8445de
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864940"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631970"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělování přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -31,9 +31,9 @@ Po konfiguraci pravidel brány firewall, budete moct připojit k Azure [SQL Data
 > Podívejte se kurz [zabezpečení služby Azure SQL Database](sql-database-security-tutorial.md). V tomto kurzu se nedá použít u **Azure SQL Database Managed Instance**.
 
 ## <a name="unrestricted-administrative-accounts"></a>Neomezené účty pro správu
-Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce Active Directory**). Pokud chcete zjistit tyto účty správce pro svůj SQL server, otevřete web Azure Portal a přejděte k vlastnostem SQL serveru.
+Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce Active Directory**). Pokud chcete zjistit tyto účty správce pro SQL server, otevřete na webu Azure portal a přejděte na kartu Vlastnosti systému SQL server nebo databázi SQL.
 
-![Správci SQL serveru](./media/sql-database-manage-logins/sql-admins.png)
+![Správci SQL serveru](media/sql-database-manage-logins/sql-admins.png)
 
 - **Správce serveru**   
 Když vytvoříte Azure SQL server, musíte určit **Přihlášení správce serveru**. SQL server vytvoří tento účet v hlavní databázi jako přihlašovací. Tento účet používá pro připojení ověřování SQL Serveru (uživatelské jméno a heslo). Existovat může jenom jeden z těchto účtů.   
@@ -78,7 +78,7 @@ Kromě správních rolí na úrovni serveru popsaných v předchozích částech
 Jednou z těchto správních rolí je role **dbmanager**. Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. K vytvoření databáze je nutné, aby uživatel byl uživatelem na základě přihlášení pro SQL Server v hlavní databázi nebo uživatelem databáze s omezením na základě uživatele Azure Active Directory.
 
 1. Pomocí účtu správce se připojte k hlavní databázi.
-2. Volitelný krok: Vytvořte přihlášení s ověřováním SQL Serveru pomocí příkazu [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx). Ukázka příkazu:
+2. Volitelný krok: Vytvořit účet ověřování SQL serveru, pomocí [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) příkazu. Ukázka příkazu:
    
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
@@ -184,7 +184,7 @@ Při správě přihlášení a uživatelů ve službě SQL Database mějte na pa
 * Při provádění příkazu `CREATE USER` s možností `FOR/FROM LOGIN` musí jít o jediný příkaz v dávce Transact-SQL.
 * Při provádění příkazu `ALTER USER` s možností `WITH LOGIN` musí jít o jediný příkaz v dávce Transact-SQL.
 * Pokud chcete použít příkaz `CREATE/ALTER/DROP` pro vytvoření, změnu nebo odstranění uživatele, musíte mít v databázi oprávnění `ALTER ANY USER`.
-* Pokud se vlastník databázové role pokusí přidat do této role jiného uživatele databáze (nebo ho z ní odebrat), může dojít k následující chybě: **Uživatel nebo role „Jméno“ v této databázi neexistuje.** Chyba je způsobená tím, že vlastník role daného uživatele nevidí. Problém vyřešíte tak, že vlastníkovi role udělíte oprávnění `VIEW DEFINITION` pro daného uživatele. 
+* Když se vlastník databázové role pokusí přidat nebo odebrat jiného uživatele databáze do nebo z ní, může dojít k následující chybě: **Uživatel nebo role "Jméno" v této databázi neexistuje.** Chyba je způsobená tím, že vlastník role daného uživatele nevidí. Problém vyřešíte tak, že vlastníkovi role udělíte oprávnění `VIEW DEFINITION` pro daného uživatele. 
 
 
 ## <a name="next-steps"></a>Další postup

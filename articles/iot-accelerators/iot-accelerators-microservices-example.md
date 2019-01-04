@@ -1,5 +1,5 @@
 ---
-title: Změnit a opakované nasazení mikroslužby | Dokumentace Microsoftu
+title: Změnit a opakované nasazení mikroslužby – Azure | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak změnit a opakované nasazení mikroslužby v vzdáleného monitorování
 author: dominicbetts
 ms.author: dobett
@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 563de3d062b2c49d6b7ba23ae405e75283270815
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315753"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631889"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Přizpůsobení a opakované nasazení mikroslužby
 
-V tomto kurzu se dozvíte, jak upravit některou [mikroslužeb](http://azure.com/microservices) v řešení vzdáleného monitorování, vytváření bitové kopie vašeho mikroslužeb, nasazení image do docker hubu a použít jej v řešení vzdáleného monitorování. Zavedení tohoto konceptu, v tomto kurzu použijete základní scénář, ve kterém volání rozhraní API mikroslužby a změnit stavová zpráva "Aktivní a dobře" k "New upraví Made tady!"
+V tomto kurzu se dozvíte, jak upravit některou [mikroslužeb](https://azure.com/microservices) v řešení vzdáleného monitorování, vytváření bitové kopie vašeho mikroslužeb, nasazení image do docker hubu a použít jej v řešení vzdáleného monitorování. Zavedení tohoto konceptu, v tomto kurzu použijete základní scénář, ve kterém volání rozhraní API mikroslužby a změnit stavová zpráva "Aktivní a dobře" k "New upraví Made tady!"
 
 Řešení vzdáleného monitorování využívá mikroslužeb, které jsou vytvořené pomocí Image dockeru, které se berou z docker hubu. 
 
@@ -77,7 +77,7 @@ Teď změňte stavová zpráva Iot Hub správci mikroslužeb "Nové provedeny zm
     
     nebo na Windows:
     
-    ```
+    ```cmd
     ./build.cmd
     ```
 

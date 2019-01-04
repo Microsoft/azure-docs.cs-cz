@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b269b8db59c4aeecf182b6ea11b92a3980a2cd6d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 40f8f1e9470201292c9dee27187d2155c879e13b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567413"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583064"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup
 Tento článek se hovoří o tom, jak zálohovat a obnovovat virtuální počítače (VM) s využitím Azure Backup. Poskytuje také informace o podporované scénáře, požadavky a kroky při řešení potíží pro případy chyb.
@@ -27,6 +27,10 @@ Tento článek se hovoří o tom, jak zálohovat a obnovovat virtuální počít
    | --- | --- | --- |
    | **Nespravovaná virtuálních počítačů**  | Ano | Ano  |
    | **Spravované virtuální počítače**  | Ano | Ano  |
+
+   > [!NOTE]
+   > Azure Backup podporuje virtuální počítače jsou šifrované pomocí klíče samostatné. Libovolné klávesy, která je součástí certifikát použitý k šifrování virtuálního počítače nepodporuje ještě dnes.
+   >   
 
 ## <a name="prerequisites"></a>Požadavky
 * Virtuální počítač byl zašifrován pomocí [Azure Disk Encryption](../security/azure-security-disk-encryption.md).

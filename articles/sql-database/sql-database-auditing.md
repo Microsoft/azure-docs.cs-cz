@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/25/2018
-ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 892e4e776479d767326d4895dbf4bd4f30c418b0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971517"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973194"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -175,13 +175,15 @@ Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage,
 
 S geograficky replikované databáze když povolíte auditování u primární databáze sekundární databáze mají shodné zásady auditování. Je také možné nastavit auditování v sekundární databázi povolením auditování **sekundární server**, nezávisle na primární databázi.
 
-- Úroveň serveru (**doporučuje**): zapněte auditování na obou **primární server** i na **sekundární server** – primární a sekundární databáze bude každý auditovat nezávisle na sobě podle jejich příslušné zásady na úrovni serveru.
-- Úrovni databáze: Databáze úrovni auditování u sekundárních databází se dá nakonfigurovat jenom z nastavení auditování primární databáze.
+- Úroveň serveru (**doporučuje**): Zapněte auditování na obou **primární server** také **sekundární server** – primární a sekundární databáze bude každý auditovat nezávisle na sobě podle jejich příslušné zásady na úrovni serveru.
+- Úrovni databáze: Auditování na úrovni databáze u sekundárních databází se dá nakonfigurovat jenom z nastavení auditování primární databáze.
   - Auditování musí být povolené na *primární samotná databáze*, nikoli na server.
   - Jakmile u primární databáze je povolené auditování, se také zpřístupní v sekundární databázi.
 
     >[!IMPORTANT]
     >Díky auditování na úrovni databáze, nastavení úložiště pro sekundární databáze bude stejné jako primární databáze, způsobí přenos mezi zónami. Doporučujeme, abyste povolili auditování jenom úroveň serveru a nechte auditování databáze zakázané pro všechny databáze.
+    > [!WARNING]
+    > K protokolům auditu na úrovni serveru pomocí event hubu nebo služby log analytics jako cíle není aktuálně podporováno u sekundárních databází geograficky replikovaný.
 
 ### <a id="subheading-6">Opětovném generování přístupového klíče úložiště</a>
 
@@ -220,12 +222,12 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizují vaše
 
 ## <a id="subheading-7"></a>Spravovat auditování služby SQL database pomocí prostředí Azure PowerShell
 
-**Rutiny Powershellu**:
+**Rutiny Powershellu (včetně podpory klauzule WHERE pro další filtrování)**:
 
-- [Vytvořit nebo aktualizovat objekt Blob databáze auditování zásad (Set-AzureRMSqlDatabaseAuditing)][105]
-- [Vytvořit nebo aktualizovat objekt Blob Server auditování zásad (Set-AzureRMSqlServerAuditing)][106]
-- [Získat databázi zásady auditu (Get-AzureRMSqlDatabaseAuditing)][101]
-- [Získat (Get-AzureRMSqlServerAuditing) objektů Blob serveru zásady auditu][102]
+- [Vytvořit nebo aktualizovat objekt Blob databáze auditování zásad (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Vytvořit nebo aktualizovat objekt Blob Server auditování zásad (Set-AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverauditing)
+- [Získat databázi zásady auditu (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Získat (Get-AzSqlServerAuditing) objektů Blob serveru zásady auditu](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditing)
 
 Ukázkový skript, naleznete v tématu [konfigurace auditování a detekce hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -245,6 +247,14 @@ Rozšířené zásady pomocí kde klauzule podpory pro další filtrování:
 - [Získat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Získat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
+## <a id="subheading-10"></a>Spravovat auditování služby SQL database pomocí šablon ARM
+
+Můžete spravovat pomocí auditování Azure SQL database [Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) šablony, jak je znázorněno v těchto příkladech:
+
+- [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu do účtu úložiště objektů blob v Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
+- [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu do Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu do služby Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1
 [Set up auditing for your database]: #subheading-2
@@ -254,6 +264,7 @@ Rozšířené zásady pomocí kde klauzule podpory pro další filtrování:
 [Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
 [Manage SQL database auditing using REST API]: #subheading-9
+[Manage SQL database auditing using ARM templates]: #subheading-10
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png
@@ -266,10 +277,3 @@ Rozšířené zásady pomocí kde klauzule podpory pro další filtrování:
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
 [10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
-
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditing
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditing
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing

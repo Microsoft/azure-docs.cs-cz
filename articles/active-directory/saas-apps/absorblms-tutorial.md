@@ -5,286 +5,276 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/15/2017
+ms.topic: tutorial
+ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 066ae92056e4b80b6627b371d6ebeb3235b2781d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f7f96b4357e7db61d3b5d30b93eff8960e515c2d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043774"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971286"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Integrace Azure Active Directory s vyrovnat se s LMS
+# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Integrace s LMS vyrovnat se s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat LMS vyrovnat se s Azure Active Directory (Azure AD).
-
 Chránit před LMS integrace s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k vyrovnat se s LMS.
-- Můžete povolit uživatelům přihlásit se automaticky chránit před LMS (přes jednotné přihlašování) s jejich účty Azure AD.
-- Můžete spravovat své účty v jednom centrálním místě na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k vyrovnat se s LMS.
+* Uživatelům se automaticky přihlášeni k vyrovnat se s LMS (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete získat další informace o softwaru jako integraci služby (SaaS) aplikací s Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s vyrovnat se s LMS, potřebujete následující položky:
 
-- S předplatným služby Azure AD
-- Se vyrovnávají s LMS jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Nedoporučujeme používat produkčním prostředí pro účely tohoto kurzu.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Chránit před LMS jednotné přihlášení povolený předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-* Přidání vyrovnat se s LMS z Galerie
-* Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-## <a name="add-absorb-lms-from-the-gallery"></a>Přidání vyrovnat se s LMS z Galerie
-Pokud chcete nakonfigurovat integraci vyrovnat se s LMS do služby Azure AD, přidejte vyrovnat se s LMS z Galerie na váš seznam spravovaných aplikací SaaS.
+* Chránit před LMS podporuje **IDP** jednotné přihlašování zahájené pomocí
 
-Chcete-li přidat vyrovnat se s LMS z galerie, postupujte takto:
+## <a name="adding-absorb-lms-from-the-gallery"></a>Přidání vyrovnat se s LMS z Galerie
 
-1. V [webu Azure portal](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** ikonu. 
+Ke konfiguraci integrace vyrovnat se s LMS do služby Azure AD, budete muset vyrovnat se s LMS přidat z Galerie na váš seznam spravovaných aplikací SaaS.
 
-    ![Tlačítko Azure Active Directory][1]
+**Chcete-li přidat vyrovnat se s LMS z galerie, postupujte následovně:**
 
-2. Přejděte na **podnikové aplikace** > **všechny aplikace**.
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![V podokně podnikových aplikací][2]
-    
-3. Chcete-li přidat aplikaci, vyberte **novou aplikaci** tlačítko.
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-    ![Tlačítko nové aplikace][3]
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-4. Do vyhledávacího pole zadejte **vyrovnat se s LMS**vyberte **vyrovnat se s LMS** v způsobit panelu a pak vyberte **přidat** tlačítko.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Chránit před LMS v seznamu výsledků](./media/absorblms-tutorial/tutorial_absorblms_addfromgallery.png)
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+
+    ![Tlačítko nové aplikace](common/add-new-app.png)
+
+4. Do vyhledávacího pole zadejte **vyrovnat se s LMS**vyberte **vyrovnat se s LMS** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+
+     ![Chránit před LMS v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí vyrovnat se s LMS podle volá Britta Simon testovacího uživatele.
+V této části, konfigurace a testování Azure AD jednotného přihlašování se podle testu uživateli LMS vyrovnat se s **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v vyrovnat se s LMS.
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek vyrovnat se s LMS je ve službě Azure AD. Jinými slovy je potřeba vytvořit vztah mezi uživatelem ve službě Azure AD a odpovídajícího uživatele v LMS vyrovnat se s.
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s vyrovnat se s LMS, které potřebujete k dokončení následujících stavebních bloků:
 
-Navázání tohoto vztahu odkazu přiřazením *uživatelské jméno* hodnota ve službě Azure AD, jako *uživatelské jméno* hodnotu v LMS vyrovnat se s.
-
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s vyrovnat se s LMS, dokončete stavební bloky v příštích pěti oddílů.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace vyrovnat se s LMS Single Sign-On](#configure-absorb-lms-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele vyrovnat se s LMS](#create-absorb-lms-test-user)**  – Pokud chcete mít protějšek Britta Simon vyrovnat se s LMS, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování aplikace se vyrovnávají s LMS.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Chcete-li nakonfigurovat LMS vyrovnat se s Azure AD jednotného přihlašování, postupujte takto:
+Chcete-li nakonfigurovat LMS vyrovnat se s Azure AD jednotného přihlašování, postupujte následovně:
 
-1. Na webu Azure Portal na **vyrovnat se s LMS** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **vyrovnat se s LMS** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. V **jednotného přihlašování** v dialogu **režimu** vyberte **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/absorblms-tutorial/tutorial_absorblms_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-3. V **vyrovnat se s LMS domény a adresy URL** části, postupujte takto:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Chránit před LMS domény a adresy URL jednotné přihlašování – informace](./media/absorblms-tutorial/tutorial_absorblms_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **identifikátor** zadejte adresu URL, která používá následující syntaxi: `https://<subdomain>.myabsorb.com/Account/SAML`.
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **adresy URL odpovědi** zadejte adresu URL, která používá následující syntaxi: `https://<subdomain>.myabsorb.com/Account/SAML`.
-     
-    > [!NOTE] 
-    > Tyto adresy URL nejsou skutečné hodnoty. Aktualizujte je skutečná identifikátor a adresy URL odpovědí. Chcete-li tyto hodnoty získat, obraťte se [tým podpory klienta vyrovnat se s LMS](https://www.absorblms.com/support). 
+4. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **základní konfiguraci SAML** dialogového okna.
 
-4. V **podpisový certifikát SAML** sekci **Stáhnout** sloupci vyberte **soubor XML s metadaty**a poté uložte soubor metadat do počítače.
+    ![Chránit před LMS domény a adresy URL jednotné přihlašování – informace](common/idp-intiated.png)
 
-    ![Odkaz ke stažení podpisového certifikátu](./media/absorblms-tutorial/tutorial_absorblms_certificate.png) 
+    Pokud používáte **vyrovnat se s 5 - UI** použijte následující konfiguraci:
 
-5. Vyberte **Uložit**.
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://company.myabsorb.com/account/saml`
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/absorblms-tutorial/tutorial_general_400.png)
-    
-6. V **vyrovnat se s konfigurací LMS** vyberte **konfigurace LMS vyrovnat se s** otevřete **nakonfigurovat přihlašování** okna a pak nakopírujte **odhlašování URL** v **Stručná referenční příručka oddílu.**
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://company.myabsorb.com/account/saml`
 
-    ![V podokně Konfigurace LMS vyrovnat se s](./media/absorblms-tutorial/tutorial_absorblms_configure.png) 
+    Pokud používáte **vyrovnat se s 5 – nové prostředí Learner** použijte následující konfiguraci:
 
-7. V novém okně webového prohlížeče Přihlaste se k serveru vaší společnosti LMS vyrovnat se s jako správce.
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
-8. Vyberte **účet** tlačítko v pravé horní části. 
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
+
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory vyrovnat se s klienta LMS](https://support.absorblms.com/hc/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **soubor XML s metadaty**z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+
+6. Na **nastavení vyrovnat se s LMS** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-absorb-lms-single-sign-on"></a>Konfigurace vyrovnat se s LMS jednotného přihlašování
+
+1. V novém okně webového prohlížeče Přihlaste se k serveru vaší společnosti LMS vyrovnat se s jako správce.
+
+2. Vyberte **účet** tlačítko v pravé horní části.
 
     ![Tlačítko účet](./media/absorblms-tutorial/1.png)
 
-9. V podokně účtu vyberte **nastavení portálu**.
+3. V podokně účtu vyberte **nastavení portálu**.
 
     ![Odkaz Nastavení portálu](./media/absorblms-tutorial/2.png)
-    
-10. Vyberte kartu **Uživatelé**.
 
-    ![Kartu uživatelé](./media/absorblms-tutorial/3.png)
+4. Vyberte **spravovat nastavení jednotného přihlašování** kartu.
 
-11. Na stránce Konfigurace jednotného přihlašování postupujte takto:
+    ![Kartu uživatelé](./media/absorblms-tutorial/managesso.png)
 
-    ![Na stránce Konfigurace jednotného přihlašování](./media/absorblms-tutorial/4.png)
+5. Na **spravovat jednotné přihlašování – nastavení** stránce, postupujte takto:
 
-    a. V **režimu** vyberte **iniciované zprostředkovatele Identity**.
+    ![Na stránce Konfigurace jednotného přihlašování](./media/absorblms-tutorial/settings.png)
 
-    b. V poznámkovém bloku otevřete certifikát, který jste si stáhli z webu Azure portal. Odeberte **---BEGIN CERTIFICATE---** a **---END CERTIFICATE---** značky. Potom v **klíč** vložte zbývající obsah.
-    
-    c. V **Vlastnost Id** vyberte atribut, který jste nakonfigurovali jako identifikátor uživatele ve službě Azure AD. Například pokud *userPrincipalName* je vybrána ve službě Azure AD, vyberte **uživatelské jméno**.
+    a. V **název** textového pole zadejte název, jako je Azure AD Marketplace jednotného přihlašování.
 
-    d. V **přihlašovací adresa URL** pole, vložte **adresa URL portálu User Access** z vaší aplikace **vlastnosti** stránky na webu Azure portal.
+    b. Vyberte **SAML** jako **metoda**.
 
-    e. V **odhlašovací adresa URL**, vložte **odhlašování URL** hodnotu, kterou jste zkopírovali z **nakonfigurovat přihlašování** okna na webu Azure portal.
+    c. V poznámkovém bloku otevřete certifikát, který jste si stáhli z webu Azure portal. Odeberte **---BEGIN CERTIFICATE---** a **---END CERTIFICATE---** značky. Potom v **klíč** vložte zbývající obsah.
 
-12. Přepnout **pouze povolení přihlášení SSO** k **na**.
+    d. V **režimu** vyberte **iniciované zprostředkovatele Identity**.
 
-    ![Přepnout pouze povolení přihlášení SSO](./media/absorblms-tutorial/5.png)
+    e. V **Vlastnost Id** vyberte atribut, který jste nakonfigurovali jako identifikátor uživatele ve službě Azure AD. Například pokud *userPrincipalName* je vybrána ve službě Azure AD, vyberte **uživatelské jméno**.
 
-13. Vyberte **uložit.**
+    f. Vyberte **Sha256** jako **typ podpisu**.
 
-> [!TIP]
-> Stručné verzi těchto pokynů si můžete přečíst [webu Azure portal](https://portal.azure.com) při nastavení aplikace. Po přidání aplikace **služby Active Directory** > **podnikové aplikace** vyberte **Single Sign-On** kartu a přístup k vložený dokumentace ke službě prostřednictvím **konfigurace** oblast v dolní části. Další informace najdete v tématu [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
+    g. V **přihlašovací adresa URL** pole, vložte **adresa URL portálu User Access** z vaší aplikace **vlastnosti** stránky na webu Azure portal.
+
+    h. V **odhlašovací adresa URL**, vložte **odhlašování URL** hodnotu, kterou jste zkopírovali z **nakonfigurovat přihlašování** okna na webu Azure portal.
+
+    i. Přepnout **automaticky přesměrovat** k **na**.
+
+6. Vyberte **uložit.**
+
+    ![Přepnout pouze povolení přihlášení SSO](./media/absorblms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části můžete vytvořit testovacího uživatele Britta Simon na webu Azure Portal.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte takto:
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/absorblms-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-2. Chcete-li zobrazit seznam uživatelů, vyberte **uživatelů a skupin** > **všichni uživatelé**.
-    
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/absorblms-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-3. V horní části dialogového okna, vyberte **přidat**.
- 
-    ![Tlačítko Přidat](./media/absorblms-tutorial/create_aaduser_03.png) 
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-4. V **uživatele** dialogové okno pole, postupujte takto:
- 
-    ![Dialogové okno uživatele](./media/absorblms-tutorial/create_aaduser_04.png) 
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    a. V **název** zadejte **BrittaSimon**.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-    b. V **uživatelské jméno** textového pole zadejte e-mailovou adresu Britta Simon.
+    d. Klikněte na možnost **Vytvořit**.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a potom si poznamenejte hodnotu v **heslo** pole.
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-    d. Vyberte **Vytvořit**.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k LMS vyrovnat se s.
 
-### <a name="create-an-absorb-lms-test-user"></a>Vytvořit testovacího uživatele vyrovnat se s LMS
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **vyrovnat se s LMS**.
 
-Přihlaste se k LMS vyrovnat se s Azure AD uživatelům musí být nastavené v LMS vyrovnat se s.  
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-Instalační program pro vyrovnat se s LMS úlohu.
+2. V seznamu aplikace zadejte a vyberte **vyrovnat se s LMS**.
 
-Chcete-li nastavit uživatelský účet, postupujte takto:
+    ![Chránit před LMS odkaz v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-absorb-lms-test-user"></a>Vytvoření vyrovnat se s LMS testovacího uživatele
+
+Přihlaste se k LMS vyrovnat se s Azure AD uživatelům musí být nastavené v LMS vyrovnat se s. V případě vyrovnat se s LMS zřizování je ruční úloha.
+
+**Konfigurace zřizování uživatelů, proveďte následující kroky:**
 
 1. Přihlaste se k webu společnosti LMS vyrovnat se s jako správce.
 
-2. V levém podokně vyberte **uživatelé**.
-
-    ![Odkaz Vyrovnat se s LMS uživatele](./media/absorblms-tutorial/absorblms_users.png)
-
-3. V **uživatelé** vyberte **uživatelé**.
+2. V **uživatelé** vyberte **uživatelé**.
 
     ![Odkaz uživatele](./media/absorblms-tutorial/absorblms_userssub.png)
 
-4. V **přidat nový** rozevíracího seznamu vyberte **uživatele**.
+3. Vyberte **uživatele** kartu.
 
     ![Přidat nový rozevírací seznam](./media/absorblms-tutorial/absorblms_createuser.png)
 
-5. Na **přidat uživatele** stránce, postupujte takto:
+4. Na **přidat uživatele** stránce, postupujte takto:
 
     ![Stránka Přidat uživatel](./media/absorblms-tutorial/user.png)
 
     a. V **křestní jméno** zadejte jméno, například **Britta**.
 
     b. V **příjmení** zadejte příjmení, jako například **Simon**.
-    
+
     c. V **uživatelské jméno** zadejte úplný název, jako například **Britta Simon**.
 
-    d. V **heslo** zadejte heslo Britta Simon.
+    d. V **heslo** pole, zadejte heslo uživatele.
 
     e. V **Potvrdit heslo** pole, zadejte heslo znovu.
-    
-    f. Nastavte **je aktivní** přepnutím **aktivní**.  
 
-6. Vyberte **uložit.**
- 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+    f. Nastavte **je aktivní** přepnutím **aktivní**.
 
-V této části povolit uživatele Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k vyrovnat se s LMS.
+5. Vyberte **uložit.**
 
-![Přiřazení role uživatele][200]
+    ![Přepnout pouze povolení přihlášení SSO](./media/absorblms-tutorial/save.png)
 
-Chcete vyrovnat se s LMS přiřadit uživatele Britta Simon, postupujte takto:
+    > [!NOTE]
+    > Ve výchozím nastavení zřizování uživatelů není povolena v jednotného přihlašování. Pokud zákazník chce tuto funkci povolit, mají nastavení až, jak je uvedeno v [to](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning) dokumentaci. Také Upozorňujeme, že uživatel Provisioing je dostupný jenom u **vyrovnat se s 5 – nové prostředí Learner** s ACS URL -`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací, přejděte do zobrazení adresáře a pak vyberte **podnikové aplikace** > **všechny aplikace**.
-
-    ![Odkaz "Všechny aplikace"][201] 
-
-2. V **aplikací** seznamu vyberte **vyrovnat se s LMS**.
-
-    ![Chránit před LMS odkaz v seznamu aplikací](./media/absorblms-tutorial/tutorial_absorblms_app.png) 
-
-3. V levém podokně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"][202] 
-
-4. Vyberte **přidat** a pak na **přidat přiřazení** vyberte **uživatelů a skupin**.
-
-    ![Podokno Přidat přiřazení][203]
-
-5. V **uživatelů a skupin** v dialogu **uživatelé** seznamu vyberte **Britta Simon**.
-
-6. V **uživatelů a skupin** dialogové okno, vyberte **vyberte** tlačítko.
-
-7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit** tlačítko.
-    
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Na přístupovém panelu vyberte **vyrovnat se s LMS** dlaždice se automaticky přihlásí vám do vaší aplikace se vyrovnávají s LMS. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici vyrovnat se s LMS na přístupovém panelu, vám by měl být automaticky přihlášeni vyrovnat se s LMS, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/absorblms-tutorial/tutorial_general_01.png
-[2]: ./media/absorblms-tutorial/tutorial_general_02.png
-[3]: ./media/absorblms-tutorial/tutorial_general_03.png
-[4]: ./media/absorblms-tutorial/tutorial_general_04.png
-
-[100]: ./media/absorblms-tutorial/tutorial_general_100.png
-
-[200]: ./media/absorblms-tutorial/tutorial_general_200.png
-[201]: ./media/absorblms-tutorial/tutorial_general_201.png
-[202]: ./media/absorblms-tutorial/tutorial_general_202.png
-[203]: ./media/absorblms-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

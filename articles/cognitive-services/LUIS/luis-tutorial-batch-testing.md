@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2c8d4486b235534db2bb7d06206d5767c1496fbd
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106035"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754386"
 ---
-# <a name="tutorial-2-batch-test-data-sets"></a>Tutoriál 2: Dávkové testovací datové sady
+# <a name="tutorial-batch-test-data-sets"></a>Kurz: Batch testovací datové sady
 
 Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.  
 
@@ -36,7 +36,7 @@ Při používání aplikace než v tomto kurzu, proveďte *není* pomocí přík
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Používat existující ukázkovou aplikaci
+> * Importovat ukázková aplikace
 > * Vytvořte dávkový soubor testu 
 > * Spuštění testu služby batch
 > * Kontrola výsledků testu
@@ -45,13 +45,13 @@ Při používání aplikace než v tomto kurzu, proveďte *není* pomocí přík
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Použití existující aplikace
+## <a name="import-example-app"></a>Importovat ukázková aplikace
 
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
+Použijte k tomu následující postup:
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json) a uložte si ho.
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json) a uložte si ho.
 
 2. Naimportujte soubor JSON do nové aplikace.
 
@@ -61,7 +61,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
 ## <a name="batch-file"></a>Dávkový soubor
 
-1. Vytvoření `HumanResources-jobs-batch.json` v textovém editoru nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) ho. 
+1. Vytvoření `HumanResources-jobs-batch.json` v textovém editoru nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) ho. 
 
 2. V souboru ve formátu JSON batch přidání projevů s **záměr** chcete předpokládané v testu. 
 
@@ -177,7 +177,7 @@ Při prvním psaní a testování dávkové soubory, je nejlepší začít s ně
 
 Hodnota **úlohy** entita, součástí projevy testu je obvykle jedno nebo dvě slova s pár příkladů se další slova. Pokud _vlastní_ lidských zdrojů, aplikace obvykle obsahuje názvy úlohy řada výrazů, příklad projevy označené **úlohy** entity v této aplikaci nebude fungovat správně.
 
-1. Vytvoření `HumanResources-entities-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/) nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) ho.
+1. Vytvoření `HumanResources-entities-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/) nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) ho.
 
 
 2. V souboru ve formátu JSON služby batch, přidejte pole objektů, které zahrnují projevy s **záměr** chcete předpokládané v testu, stejně jako umístění všech entit v utterance. Entita je založená na tokenech, ujistěte se, že ke spouštění a zastavování Každá entita na znak. Začínat nebo končit utterance v prostoru. To způsobí chybu při importu souboru služby batch.  

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 2e8c5b3d9624d3a622f16d770f68bc8614993d36
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 99cca60fe13b9757b3328d00cf66b673c95f66ea
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387478"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558426"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorování datové továrny pomocí Azure monitoru
 Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování poskytuje data k zajištění, že systém zůstane vaší aplikace v provozu a spuštěná v dobrém stavu. Také pomáhá stave vypnout potenciální problémy a řešení potíží s poslední těch, které jsou. Kromě toho můžete data monitorování získat podrobný přehled o vaší aplikaci. Tyto znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -26,24 +26,24 @@ Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování 
 Platforma Azure Monitor poskytuje základní úroveň infrastruktura metriky a protokoly pro většinu služeb Microsoft Azure. Podrobnosti najdete v tématu [Přehled monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Diagnostické protokoly Azure jsou protokoly generované prostředek, které poskytují bohatě vybaveným a časté informace o fungování tohoto prostředku. Data Factory uloží diagnostické protokoly ve službě Azure Monitor.
 
 ## <a name="persist-data-factory-data"></a>Uchování dat Data Factory
-Objekt pro vytváření dat se uchovávají pouze spuštění kanálu dat pro 45 dní. Pokud chcete zachovat spuštění kanálu dat pro více než 45 dnů, používat Azure Monitor, nemůžete provádět směrování pouze diagnostických protokolů pro analýzy, je možné zachovat do účtu úložiště a tak budete mít objekt pro vytváření informace po dobu trvání podle vašeho výběru.
+Objekt pro vytváření dat se uchovávají pouze spuštění kanálu dat pro 45 dní. Pokud chcete zachovat spuštění kanálu dat pro více než 45 dnů, používat Azure Monitor, nemůžete provádět směrování pouze diagnostických protokolů pro analýzu, je možné zachovat do účtu úložiště a tak budete mít objekt pro vytváření informace po dobu trvání podle vašeho výběru.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
 * Uložte je do **účtu úložiště** pro auditování nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech), pomocí nastavení diagnostiky.
-* Stream je **Event Hubs** za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
+* Stream je **Event Hubs** za účelem ingestování datových služby třetích stran nebo vlastních analytics řešení, jako je Power BI.
 * Analyzovat pomocí **Log Analytics**
 
 Můžete použít úložiště účtu nebo událostí centra oboru názvů, který není ve stejném předplatném jako prostředek, který je vysílá protokoly. Uživatel, který konfiguruje nastavení musí mít přístup odpovídající přístup na základě rolí (RBAC) ovládacího prvku k oběma předplatným.
 
-## <a name="set-up-diagnostic-logs"></a>Nastavili odesílání diagnostických protokolů
+## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
 ### <a name="diagnostic-settings"></a>Nastavení diagnostiky
 Diagnostické protokoly pro prostředky rozsáhlých výpočetních prostředků jsou nakonfigurováni pomocí nastavení diagnostiky. Nastavení diagnostiky pro ovládací prvek zdroje:
 
-* Diagnostické protokoly se odešle (účet úložiště, Event Hubs, a/nebo Log Analytics).
+* Diagnostické protokoly se odešle (účet úložiště, Event Hubs nebo Log Analytics).
 * Kategorie protokolu, které se odesílají.
-* Jak dlouho se každá kategorie protokolu uchovávat v účtu úložiště
+* Jak dlouho se uchovávají každou kategorii protokolů v účtu úložiště.
 * Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě hodnota může být libovolný počet dnů mezi 1 a 2147483647.
 * Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pouze služby Event Hubs nebo Log Analytics jsou vybrané možnosti), zásady uchovávání informací nemají žádný vliv.
 * Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní.
@@ -59,7 +59,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ```
 
 **Hlavičky**
-* Nahraďte `{api-version}` s `2016-09-01`.
+* Nahraďte `{api-version}` za `2016-09-01` (Jak velká může být moje znalostní báze?).
 * Nahraďte `{resource-id}` s ID prostředku, pro kterou chcete upravit nastavení diagnostiky prostředku. Další informace [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-portal.md).
 * Nastavte `Content-Type` záhlaví `application/json`.
 * Nastavte hlavičku autorizace JSON web token, který můžete získat ze služby Azure Active Directory. Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
@@ -177,7 +177,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ```
 
 **Hlavičky**
-* Nahraďte `{api-version}` s `2016-09-01`.
+* Nahraďte `{api-version}` za `2016-09-01` (Jak velká může být moje znalostní báze?).
 * Nahraďte `{resource-id}` s ID prostředku, pro kterou chcete upravit nastavení diagnostiky prostředku. Pro další informace o použití skupin prostředků ke správě prostředků Azure.
 * Nastavte `Content-Type` záhlaví `application/json`.
 * Nastavte hlavičku autorizace webového tokenu JSON, který získáte ze služby Azure Active Directory. Další informace najdete v tématu věnovaném ověřování požadavků.
@@ -465,15 +465,7 @@ Můžete vizualizovat metriky výše, podívejte se na dotazy za tyto metriky, u
 
 ## <a name="alerts"></a>Výstrahy
 
-Může vyvolat upozornění na podporované metriky ve službě Data Factory. Klikněte na tlačítko **výstrahy** tlačítko v datové továrně **monitorování** stránky.
-
-![Možnost výstrahy](media/monitor-using-azure-monitor/alerts_image1.png)
-
-Tím přejdete **výstrahy** stránky.
-
-![Stránky s upozorněními](media/monitor-using-azure-monitor/alerts_image2.png)
-
-Můžete také přihlásit k webu Azure portal a klikněte na tlačítko **monitorování –&gt; výstrahy** kontaktovat **výstrahy** přímo stránku.
+Přihlaste se k webu Azure portal a klikněte na tlačítko **monitorování –&gt; výstrahy** vytvářet upozornění.
 
 ![Výstrahy v nabídce portálu](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -509,4 +501,5 @@ Můžete také přihlásit k webu Azure portal a klikněte na tlačítko **monit
     ![Skupina akcí obrazovky 4 ze 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md) článku se dozvíte o monitorování a Správa kanálů spuštěním.
+
+Zobrazit [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md) článku se dozvíte o monitorování a Správa kanálů s kódem.

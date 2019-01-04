@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 8ebc07f68e2d26126d0bd387f32204255404d6e1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: eb27bed02b44cad791a0c1fa2c8e0ed0b54537cd
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605309"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972545"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>Kurz: Jak používat Azure Key Vault s Windows virtuální počítač Azure v .NET
 
@@ -162,7 +162,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 Změňte soubor třídy tak, aby obsahovala níže uvedeného kódu. Jde o 2 krocích. 
-1. Načíst token z koncového bodu místní instalační služby MSI ve virtuálním počítači, který inturn načte token ze služby Azure Active Directory
+1. Načíst token z koncového bodu místní instalační služby MSI ve virtuálním počítači, který pak načte token ze služby Azure Active Directory
 2. Předat token do služby Key Vault a načtou se vaše tajný klíč 
 
 ```
@@ -211,7 +211,7 @@ Změňte soubor třídy tak, aby obsahovala níže uvedeného kódu. Jde o 2 kro
 ```
 
 
-Výše uvedený kód ukazuje, jak provádět operace se službou Azure Key Vault v Azure virtuálního počítače s Linuxem. 
+Výše uvedený kód ukazuje, jak provádět operace se službou Azure Key Vault ve virtuálním počítači Windows Azure. 
 
 
 

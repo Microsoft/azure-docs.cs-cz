@@ -1,24 +1,24 @@
 ---
-title: Konfigurace kontejnerů
-titlesuffix: Computer Vision - Azure Cognitive Services
-description: Nastavení konfigurace pro kontejnery v počítačové zpracování obrazu.
+title: Konfigurace kontejnery – pro počítačové zpracování obrazu
+titlesuffix: Azure Cognitive Services
+description: Nakonfigurujte různá nastavení pro kontejnery rozpoznat Text v počítačové zpracování obrazu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: f71cbe965e70dfce1b29cf0e5f9ea44faf0a4e27
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077014"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579783"
 ---
-# <a name="configure-containers"></a>Konfigurace kontejnerů
+# <a name="configure-recognize-text-containers"></a>Konfigurovat rozpoznání textu kontejnery
 
 Pro počítačové zpracování obrazu poskytuje kontejner rozpoznat Text s společnou architekturu konfigurace, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrická data a nastavení zabezpečení pro vaše kontejnery.
 
@@ -41,7 +41,7 @@ Hodnoty proměnných prostředí přepsat hodnoty argumentů příkazového řá
 
 ### <a name="configuration-settings-as-environment-variables"></a>Nastavení konfigurace jako proměnné prostředí
 
-Můžete použít [syntaxi proměnných prostředí ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment) ke specifikaci nastavení konfigurace.
+Můžete použít [syntaxi proměnných prostředí ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#environment-variables-configuration-provider) ke specifikaci nastavení konfigurace.
 
 Kontejner přečte uživatelských proměnných prostředí při vytváření instance kontejneru. Pokud proměnná prostředí existuje, přepíše hodnotu proměnné prostředí výchozí hodnota pro nastavení konfigurace. Výhodou použití proměnných prostředí je, že více nastavení konfigurace můžete nastavit před vytvořením instance kontejnerů a několik kontejnerů může automaticky použít stejnou sadu nastavení konfigurace.
 
@@ -130,10 +130,10 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 
   | Název | Typ dat | Popis |
   |------|-----------|-------------|
-  | `Format` | Řetězec | Výstupní formát souborů protokolu.<br/> **Poznámka:** tato hodnota musí být nastavená na `json` povolit zprostředkovatele. Pokud tato hodnota je spustit bez úkolu připojení výstupu při vytvoření instance kontejneru, dojde k chybě. |
+  | `Format` | Řetězec | Výstupní formát souborů protokolu.<br/> **Poznámka:** Tato hodnota musí být nastavená na `json` povolit zprostředkovatele. Pokud tato hodnota je spustit bez úkolu připojení výstupu při vytvoření instance kontejneru, dojde k chybě. |
   | `MaxFileSize` | Integer | Maximální velikost v megabajtech (MB), soubor protokolu. Když velikost aktuálního souboru protokolu splňuje nebo překročí tuto hodnotu, nový soubor protokolu je spuštěn poskytovatel protokolování. Pokud není zadána hodnota -1, velikost souboru protokolu je omezen pouze maximální velikost souboru, pokud existuje, pro výstupní připojení. Výchozí hodnota je 1. |
 
-Další informace o konfiguraci protokolování podpora ASP.NET Core najdete v tématu [konfigurační soubor nastavení](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
+Další informace o konfiguraci protokolování podpora ASP.NET Core najdete v tématu [protokolování v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#configuration).
 
 ## <a name="mounts-configuration-settings"></a>Konfigurace nastavení připojení
 

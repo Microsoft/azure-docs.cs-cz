@@ -1,18 +1,17 @@
 ---
 title: Azure Database for MySQL – partneři pro migraci | Dokumentace Microsoftu
 description: Seznam partneři pro migraci třetích stran s řešeními, která podporují Azure Database for MySQL.
-services: mysql
 author: HJToland3
 ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: e50cd285d904830bd7332f39d51aaa149f38b82a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c081c6436939089565425a0f14bbf1856ca7ce8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054618"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536759"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL partneři pro migraci
 Pro podporu široce databáze Azure pro MySQL řešení, můžete z širokou škálu špičkových partnerů a nástroje. Tento článek se soustředí na partnery Microsoftu pomocí řešení migrace, které podporují – Azure Database for MySQL.

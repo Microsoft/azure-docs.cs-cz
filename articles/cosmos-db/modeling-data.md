@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0197c11673f49214dc2cea09b53290993a00c6b3
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166638"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744934"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>Modelování dat dokumentů databází NoSQL
 
@@ -71,7 +71,7 @@ Nyní Pojďme se podívat, jak jsme by model stejná data jako samostatný entit
         ] 
     }
 
-Pomocí výše uvedených přístup teď máme **Nenormalizovaná** osoby záznamu, kde jsme **vložený** veškeré informace o této osobě, jako je například své kontaktní údaje a adresy, v jedné JSON dokument.
+Pomocí výše uvedených přístup teď máme **Nenormalizovaná** osoby záznamu, kde jsme **vložený** všechny informace týkající se tomuto uživateli, jako je například své kontaktní údaje a adresy, do jednoho formátu JSON dokument.
 Navíc protože jsme nejsou omezeny na pevné schéma máme flexibilitu k provádění akcí, jako byste měli zcela kontaktní údaje z různých tvarů. 
 
 Načítání kompletní osoba záznam z databáze je teď jediný přečíst operace pro jednu kolekci nebo pro jednotlivý dokument. Aktualizace záznamu osoby s jejich kontaktní údaje a adresy, je také operace zápisu jednoho pro jednotlivý dokument.
@@ -172,7 +172,7 @@ Využijte tento fragment kódu JSON.
         ]
     }
 
-To může představovat uložených portfolia osoby. Jsme zvolili a vloží tyto informace uložené v pro každý dokument portfolia. V prostředí, ve kterém související data se často mění například akcie obchodní aplikace, vkládání dat, která se často mění se to znamenat pokaždé, když se prodávají stejných akcií se neustále aktualizuje každý dokument portfolia.
+To může představovat uložených portfolia osoby. Jsme zvolili a vloží tyto uložené informace do každého dokumentu portfolia. V prostředí, ve kterém související data se často mění například akcie obchodní aplikace, vkládání dat, která se často mění se to znamenat pokaždé, když se prodávají stejných akcií se neustále aktualizuje každý dokument portfolia.
 
 Stock *zaza* může být prodávají stovky časy v jediném den a tisíce uživatelů může mít *zaza* na jejich portfolia. S datovým modelem, který je uveden výše budeme něco muset aktualizovat tisíce portfolia dokumenty v mnoha případech každý den, což vede k systému, který nebude jednoduše škálovat. 
 
@@ -259,7 +259,7 @@ Když se podíváte na JSON, níže, který modeluje vydavatele a knihy.
     ...
     {"id": "100", "name": "Learn about Azure Cosmos DB" }
     ...
-    {"id": "1000", "name": "Deep Dive in to Azure Cosmos DB" }
+    {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
 
 Pokud je malá růstu omezený počet knih podle vydavatele, pak ukládání odkaz knihy uvnitř vydavatele dokumentu může být užitečné. Nicméně pokud počet knih podle vydavatele je bez vazby, pak tento datový model povede k měnitelný a rostoucí pole, stejně jako v dokumentu vydavatele příklad výše. 
 
@@ -278,7 +278,7 @@ Přepínání věcí kolem trochu způsobovaly v modelu, který představuje st�
     ...
     {"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
     ...
-    {"id": "1000","name": "Deep Dive in to Azure Cosmos DB", "pub-id": "mspress"}
+    {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
 
 V předchozím příkladu jsme vynechali kolekci bez vazby na dokument vydavatele. Místo toho jsme právě obsahovat odkaz na vydavatele u každé knihy dokumentu.
 
@@ -298,7 +298,7 @@ Můžete mít tendenci replikovat stejnou věc použití dokumentů a vytvořit 
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
     {"id": "b3", "name": "Taking over the world one JSON doc at a time" }
     {"id": "b4", "name": "Learn about Azure Cosmos DB" }
-    {"id": "b5", "name": "Deep Dive in to Azure Cosmos DB" }
+    {"id": "b5", "name": "Deep Dive into Azure Cosmos DB" }
 
     Joining documents: 
     {"authorId": "a1", "bookId": "b1" }
@@ -319,7 +319,7 @@ Mějte na paměti.
     {"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
-    {"id": "b4", "name": "Deep Dive in to Azure Cosmos DB", "authors": ["a2"]}
+    {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 
 Nyní kdybychom měli Autor, které knihy jste napsali okamžitě vím a naopak kdybychom měli načíst knihy dokumentu by vím ID autory. Toto uloží zprostředkující dotazu proti spojení tabulek snižuje počet serverů zaokrouhlit zkracuje dobu odezvy, které má vaše aplikace provést. 
 
@@ -381,7 +381,7 @@ Je-li změnit jméno autora nebo jejich vlastním tempem k aktualizaci jejich fo
 
 V tomto příkladu jsou **předem vypočtena agregace** hodnoty ušetřit nákladné zpracování na operace čtení. V tomto příkladu je některá data vloží do dokumentu Autor data, která se počítá v době běhu. Pokaždé, když se publikuje nová kniha, se vytvoří dokument adresáře **a** countOfBooks pole nastavena na počítané hodnoty na základě počtu dokumentů knihy, které existují konkrétní autora. Tyto optimalizace by bylo dobré v systémech čtení náročné kde jsme si může dovolit provádět výpočty na zápis k optimalizaci čtení.
 
-Možnost používat model s předem vypočtené pole je možné, protože Azure Cosmos DB podporuje **transakce s několika dokumenty**. Mnoho úložišť nosql s dvojicí nelze provádět transakce mezi dokumenty a proto pomocníků pro rozhodnutí o návrhu, jako je například "always vložit všechno, co", z důvodu tohoto omezení. Pomocí služby Azure Cosmos DB můžete použít aktivační procedury na straně serveru nebo uložené procedury, které knihy vkládací a aktualizační autoři všechny v modelu ACID transakci. Teď ne **mají** pro vložení vše do jednoho dokumentu jenom k Ujistěte se, že vaše data zůstanou konzistentní.
+Možnost používat model s předem vypočtené pole je možné, protože Azure Cosmos DB podporuje **transakce s několika dokumenty**. Mnoho úložišť nosql s dvojicí nelze provádět transakce mezi dokumenty a proto pomocníků pro rozhodnutí o návrhu, jako je například "always vložit všechno, co", z důvodu tohoto omezení. Pomocí služby Azure Cosmos DB můžete použít aktivační procedury na straně serveru nebo uložené procedury, které knihy vkládací a aktualizační autoři všechny v modelu ACID transakci. Teď ne **mají** všechno, co vložit do jednoho dokumentu jenom k Ujistěte se, že vaše data zůstanou konzistentní.
 
 ## <a name="NextSteps"></a>Další kroky
 Největší takeaways v tomto článku jsou informace o tom, že se modelování ve světě neschematických dat důležité jako dříve. 

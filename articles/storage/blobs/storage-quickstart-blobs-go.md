@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: 2939bd5c7b32cc9fe05326ee72dbb7367a72ef7f
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 5bafceca09cfe5a981365a39e4f3803b5865ce73
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711153"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754811"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Go
 
 V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
@@ -51,14 +51,14 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 Toto řešení vyžaduje, aby název a klíč vašeho účtu úložiště byly bezpečně uložené v místních proměnných prostředí počítače, na kterém je ukázka spuštěná. V závislosti na operačním systému vytvořte proměnné prostředí pomocí jednoho z následujících příkladů.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -148,7 +148,7 @@ handleErrors(err)
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Upload (PutBlob), StageBlock nebo CommitBlockList (PutBlock nebo PutBlockList). 
+Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Nahrávání (PutBlob) StageBlock/CommitBlockList (PutBlock nebo PutBlockList). 
 
 Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Příkladem je funkce ***UploadFileToBlockBlob***, která používá operace StageBlock (PutBlock) k souběžnému nahrání souboru po částech za účelem optimalizace propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci Upload (PutBlob) k dokončení přenosu v rámci jediné transakce.
 

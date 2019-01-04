@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 79ac2ee327c53012097bf6130deba676edcf785a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b26605bd0b436d948fb1f62cbf32a17ea4f386d0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642337"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602252"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Předat token přístupu přes tok uživatele do vaší aplikace v Azure Active Directory B2C
 
 > [!NOTE]
 > Tato funkce je aktuálně ve verzi public preview.
+
+> [!Important]
+> Tato funkce ve verzi public preview je dočasně nedostupný.
 
 A [tok uživatele](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C poskytuje uživatelům vaší aplikace příležitost k registraci nebo přihlášení pomocí zprostředkovatele identity. Při spuštění cesty, obdrží Azure AD B2C [přístupový token](active-directory-b2c-reference-tokens.md) od zprostředkovatele identity. Azure AD B2C používá tento token k načtení informací o uživateli. Povolte deklaraci v toku uživatele a předat token prostřednictvím aplikace, které zaregistrujete v Azure AD B2C.
 

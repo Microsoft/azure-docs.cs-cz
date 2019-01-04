@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 3da4d6ffe8660c490d39f223dff105ed126fa10b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e20b18afb579839343fc4c079c039d7b9e5438f7
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284938"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994636"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
-Skupiny automatické převzetí služeb při selhání je funkce SQL Database, která vám umožní spravovat replikaci a převzetí služeb při selhání skupiny databází na logickém serveru nebo všechny databáze ve spravované instanci do jiné oblasti (aktuálně ve verzi public preview pro Managed Instance). Používá stejné základní technologii jako [aktivní geografickou replikaci](sql-database-active-geo-replication.md). Převzetí služeb při selhání můžete spustit ručně nebo ho můžete delegovat na službu SQL Database, na základě zásady definované uživatelem pomocí uživatelem definované zásady. Druhou možnost můžete automaticky obnovit více související databáze v sekundární oblasti po závažnému selhání nebo jiné neplánované události, jehož výsledkem úplné nebo částečné ztrátě dostupnosti služby SQL Database v primární oblasti. Kromě toho můžete použít čitelné sekundární databáze k přesměrování zpracování úlohy dotazu jen pro čtení. Protože-automatické převzetí služeb při selhání skupiny zahrnují více databází, musí být nakonfigurované tyto databáze na primárním serveru. Primární a sekundární servery pro databáze ve skupině převzetí služeb při selhání musí být ve stejném předplatném. Automatické převzetí služeb při selhání skupiny podporu replikace všech databází ve skupině jenom jednu sekundární server v jiné oblasti.
+Skupiny automatické převzetí služeb při selhání je funkce SQL Database, která vám umožní spravovat replikaci a převzetí služeb při selhání skupiny databází na logickém serveru nebo všechny databáze ve spravované instanci do jiné oblasti (aktuálně ve verzi public preview pro Managed Instance). Používá stejné základní technologii jako [aktivní geografickou replikaci](sql-database-active-geo-replication.md). Převzetí služeb při selhání můžete spustit ručně nebo ho můžete delegovat na službu SQL Database založené na uživatelem definované zásady. Druhou možnost můžete automaticky obnovit více související databáze v sekundární oblasti po závažnému selhání nebo jiné neplánované události, jehož výsledkem úplné nebo částečné ztrátě dostupnosti služby SQL Database v primární oblasti. Kromě toho můžete použít čitelné sekundární databáze k přesměrování zpracování úlohy dotazu jen pro čtení. Protože-automatické převzetí služeb při selhání skupiny zahrnují více databází, musí být nakonfigurované tyto databáze na primárním serveru. Primární a sekundární servery pro databáze ve skupině převzetí služeb při selhání musí být ve stejném předplatném. Automatické převzetí služeb při selhání skupiny podporu replikace všech databází ve skupině jenom jednu sekundární server v jiné oblasti.
 
 > [!NOTE]
 > Při práci s databázemi jeden, nebo součástí fondu na logický server a nyní má více sekundární databáze v jedné nebo několika oblastech, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
@@ -81,7 +81,7 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Převzetí služeb při selhání jen pro čtení naslouchacího procesu skupiny**
 
-  Záznam DNS CNAME tvar, který odkazuje na je jen pro čtení naslouchací proces, odkazující na adresu URL sekundární. Umožňuje aplikacím SQL jen pro čtení transparentně připojit do sekundární lokality pomocí zadaného pravidla Vyrovnávání zatížení.
+  Záznam DNS CNAME, který tvar, který odkazuje na jen pro čtení naslouchací proces, odkazující na adresu URL sekundární. Umožňuje aplikacím SQL jen pro čtení transparentně připojit do sekundární lokality pomocí zadaného pravidla Vyrovnávání zatížení.
 
   - **Logický server záznam DNS CNAME pro naslouchacího zápisu jen pro čtení**
 
@@ -203,7 +203,7 @@ Pokud vaše aplikace používá jako datovou vrstvu Managed Instance, postupujte
 
 - **Připravit pro snížení výkonu**
 
-  Rozhodnutí převzetí služeb při selhání SQL je nezávislá na zbývající části aplikace nebo jiných služeb, které využívají. Aplikace může být "směšovat" s některými komponentami, v jedné oblasti a některé v jiném. Abyste se vyhnuli zjištěním snížení výkonnosti, zkontrolujte nasazení redundantního aplikace v oblasti zotavení po Havárii a postupujte podle těchto [pokyny pro zabezpečení sítě](#Failover groups-and-network-security).
+  Rozhodnutí převzetí služeb při selhání SQL je nezávislá na zbývající části aplikace nebo jiných služeb, které využívají. Aplikace může být "směšovat" s některými komponentami, v jedné oblasti a některé v jiném. Abyste se vyhnuli zjištěním snížení výkonnosti, zkontrolujte nasazení redundantního aplikace v oblasti zotavení po Havárii a postupujte podle těchto [pokyny pro zabezpečení sítě](#failover-groups-and-network-security).
 
 - **Příprava ke ztrátě dat.**
 
@@ -262,7 +262,7 @@ Když nastavíte skupiny převzetí služeb při selhání mezi primárním a se
     > [!IMPORTANT]
     > Nesprávně nakonfigurované NSG zabezpečení pravidla vede k zablokované databázových operací kopírování.
 
-7. Musíte nakonfigurovat partnerské zóny DNS na sekundární instanci. Zóny DNS je vlastnost Managed Instance. Představuje součást název hostitele, který následuje název spravované Instance a předchází `.database.windows.net` předponu. Je generována jako náhodný řetězec během vytváření prvního Managed Instance v každé virtuální síti. Zóna DNS se nemůže modifikovat po vytvoření spravované instance a spravovaných instancí ve stejné podsíti sdílet stejnou hodnotu zóny DNS. Kvůli nastavení skupiny převzetí služeb při selhání spravovaných instancí Managed Instance primární a sekundární Managed Instance musejí sdílet stejnou hodnotu zóny DNS. Můžete to provést tak, že zadáte parametr DnsZonePartner při vytváření sekundární Managed Instance. Definuje vlastnost partnera zóny DNS Managed Instance pro sdílení ve skupině převzetí služeb při selhání instancí s. Předáním do id prostředku jiné mi jako vstup DnsZonePartner, v tuto chvíli vytváří Managed Instance dědí stejnou hodnotu zóny DNS partnera, spravované Instance.
+7. Musíte nakonfigurovat partnerské zóny DNS na sekundární instanci. Zóny DNS je vlastnost Managed Instance. Představuje součást název hostitele, který následuje název spravované Instance a předchází `.database.windows.net` předponu. Je generována jako náhodný řetězec během vytváření prvního Managed Instance v každé virtuální síti. Zóna DNS se nemůže modifikovat po vytvoření spravované instance a spravovaných instancí ve stejné podsíti sdílet stejnou hodnotu zóny DNS. Pro nastavení skupiny převzetí služeb při selhání pro Managed Instance spravované Instance primární a sekundární Managed Instance musejí sdílet stejnou hodnotu zóny DNS. Můžete to provést tak, že zadáte parametr DnsZonePartner při vytváření sekundární Managed Instance. Definuje vlastnost partnera zóny DNS Managed Instance pro sdílení ve skupině převzetí služeb při selhání instancí s. Předáním do id prostředku jiné mi jako vstup DnsZonePartner, v tuto chvíli vytváří Managed Instance dědí stejnou hodnotu zóny DNS partnera, spravované Instance.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade nebo při downgradu primární databáze
 
@@ -306,17 +306,17 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 
 #### <a name="install-the-newest-pre-release-version-of-powershell"></a>Nainstalujte nejnovější verzi předběžné verze prostředí PowerShell
 
-1. Aktualizace modulu powershellget 1.6.5 (nebo nejnovější verze preview). Zobrazit [Powershellu ve verzi preview webu](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
+1. Aktualizace modulu PowerShellGet 1.6.5 (nebo nejnovější verze preview). Zobrazit [Powershellu ve verzi preview webu](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
 
    ```Powershell
-      install-module powershellget -MinimumVersion 1.6.5 -force
+      install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. V novém okně prostředí PowerShell spusťte následující příkazy:
 
    ```Powershell
-      import-module powershellget
-      get-module powershellget #verify version is 1.6.5 (or newer)
+      import-module PowerShellGet
+      get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
       import-module azurerm.sql
    ```

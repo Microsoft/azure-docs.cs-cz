@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 8acb1c70dc21efc87e13e0e5e94d9a61acfe01e9
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292236"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554652"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
@@ -78,8 +78,8 @@ Tato část uvádí přehled informací.
 |Atribut | Popis|
 |---|---|
 |jméno|Název videa. Například Azure Monitor.|
-|shortId|ID videa. Například 63c6d532ff.|
-|privacyMode|Vaše rozpis může mít jednu z těchto režimů: **privátní**, **veřejné**. **Veřejné** – video je viditelné všem uživatelům v účtu a každý uživatel, který obsahuje odkaz na video. **Privátní** – video je viditelné všem uživatelům ve vašem účtu.|
+|id|ID videa. Například 63c6d532ff.|
+|privacyMode|Vaše rozpis může mít jednu z těchto režimů: **Privátní**, **veřejné**. **Veřejné** – video je viditelné všem uživatelům v účtu a každý uživatel, který obsahuje odkaz na video. **Privátní** – video je viditelné všem uživatelům ve vašem účtu.|
 |doba trvání|Obsahuje jeden dobu, po kterou popisuje čas, kdy došlo k chybě přehledů. Doba trvání je během několika sekund.|
 |thumbnailVideoId|ID videa, ze kterého bylo převedeno na miniaturu.
 |thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniaturu, volání Get-miniaturu (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
@@ -149,7 +149,7 @@ Tato část uvádí přehled informací.
 
 Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, atd.), kde každé dimenze je seznam jedinečných prvků (například face1 ze předu 2, ze předu 3), a každý prvek má svůj vlastní metadata a seznam její instance (které jsou s časových rozsahů Další volitelná metadata).
 
-Řez může mít ID, název, miniaturu, další metadata a seznam její dočasná instance (Příklad: 00:00:05 – 00:00:10: 00:01:00 - 00:02:30 a 00:41:21 – 00:41:49.) Každá dočasná instance může mít další metadata. Například pro rozpoznávání tváře obdélník koordinuje (20,230,60,60).
+Řez může mít ID, název, miniaturu, další metadata a seznam její dočasná instance (například: 00: 00:05 – 00:00:10, 00:01:00-00:02:30 a 00:41:21 – 00:41:49.) Každá dočasná instance může mít další metadata. Například pro rozpoznávání tváře obdélník koordinuje (20,230,60,60).
 
 |Verze|Kód verze|
 |---|---|
@@ -553,7 +553,7 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 |Název|Popis|
 |---|---|
 |CorrespondenceCount|Počet srovnávací ve videu.|
-|WordCount|Počet slov za mluvčího.|
+|SpeakerWordCount|Počet slov za mluvčího.|
 |SpeakerNumberOfFragments|Množství fragmenty mluvčího se ve videu.|
 |SpeakerLongestMonolog|Nejdelší monolog tohoto mluvčího. Pokud má mluvčího silences uvnitř protokolu monolog je zahrnuté. Na začátku a konci protokolu monolog nečinnosti se odstraní.| 
 |SpeakerTalkToListenRatio|Výpočet vychází čas strávený na mluvčího protokolu monolog (bez nečinnosti mezi) rozdělené podle celkové doby trvání videa. Čas se zaokrouhlí na třetí desetinné čárky.|
@@ -768,7 +768,7 @@ Video Indexer umožňuje odvození hlavní témata z záznamy o studiu. Pokud je
 |---|---|
 |id|ID tématu.|
 |jméno|Název tématu, například: "Pharmaceuticals".|
-|referenceId|Odráží hierarchii témata s popisem cesty. Příklad: "stavu a wellbeing / lékařství a zdravotní péče / Pharmaceuticals".|
+|referenceId|Odráží hierarchii témata s popisem cesty. Příklad: "Stavu a wellbeing / lékařství a zdravotní péče / Pharmaceuticals".|
 |spolehlivosti|Skóre spolehlivosti v rozsahu [0,1]. Vyšší je větší jistotu.|
 |language|Jazyk použitý v tomto tématu.|
 |iptcName|IPTC média kódu název, pokud se zjistí.|

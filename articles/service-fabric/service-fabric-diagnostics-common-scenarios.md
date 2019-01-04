@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e91ca12c06a1582b9bb715031a9c379b1a47b04b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633091"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713455"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostikovat běžné scénáře s využitím Service Fabric
 
-Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti monitorování a diagnostiku, s využitím Service Fabric. Scénáře uvedené zahrnují všechny vrstvy 3 service Fabric: aplikace, clusteru a infrastruktury. Každé řešení používá Application Insights a Log Analytics, Azure nástrojů pro monitorování, dokončete každý scénář. Kroky v jednotlivých řešení uživatelům úvodní informace o tom, jak používat Application Insights a Log Analytics v rámci Service Fabric.
+Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti monitorování a diagnostiku, s využitím Service Fabric. Scénáře uvedené zahrnují všechny vrstvy 3 service Fabric: Aplikace, clusteru a infrastruktury. Každé řešení používá Application Insights a Log Analytics, Azure nástrojů pro monitorování, dokončete každý scénář. Kroky v jednotlivých řešení uživatelům úvodní informace o tom, jak používat Application Insights a Log Analytics v rámci Service Fabric.
 
 ## <a name="prerequisites-and-recommendations"></a>Požadavky a doporučení
 
@@ -56,7 +56,7 @@ Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti mon
 
     ![Mapa aplikace AI okno](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![Mapa aplikace AI](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
-    Další informace o mapy aplikace najdete [dokumentaci Mapa aplikace](../application-insights/app-insights-app-map.md)
+    Další informace o mapy aplikace najdete [dokumentaci Mapa aplikace](../azure-monitor/app/app-map.md)
 
 ## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Jak vytvořím oznámení, když se uzel ocitne mimo provoz
 
@@ -139,7 +139,7 @@ Zkontrolujte tyto odkazy pro úplný seznam čítačů výkonu na spolehlivé [s
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nastavte si upozornění v umělé Inteligenci](../application-insights/app-insights-alerts.md) abyste dostávali oznámení o změny ve výkonu a využití
+* [Nastavte si upozornění v umělé Inteligenci](../azure-monitor/app/alerts.md) abyste dostávali oznámení o změny ve výkonu a využití
 * [Inteligentní zjišťování ve službě Application Insights](../application-insights/app-insights-proactive-diagnostics.md) provádí proaktivní analýzu telemetrických dat odesílaných do AI upozornit vás na potenciální problémy s výkonem
 * Další informace o službě Log Analytics [upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
 * Log Analytics nabízí místními clustery brány (dopředu proxy server HTTP), který slouží k odesílání dat do Log Analytics. Další informace o, že v [počítače bez připojení k Internetu připojení ke službě Log Analytics pomocí brány Log Analytics](../azure-monitor/platform/gateway.md)

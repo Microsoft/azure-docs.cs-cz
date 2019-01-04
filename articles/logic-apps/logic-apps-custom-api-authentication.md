@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 7e1f2411db828917d7a3c5e21348b553a5a5a3bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d83a27d87ffadd15a27196a11ae3f69d84232efa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087504"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719590"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Zabezpečení volání vlastních rozhraní API z Azure Logic Apps
 
@@ -24,12 +24,12 @@ Pokud chcete zabezpečit volání k rozhraním API, můžete nastavit ověřová
 
 Zabezpečení volání vlastních rozhraní API následujícími způsoby:
 
-* [Bez jediné změny kódu](#no-code): ochrana vašeho rozhraní API s [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) prostřednictvím webu Azure portal, takže není nutné aktualizovat váš kód nebo znovu nasadit své rozhraní API.
+* [Bez jediné změny kódu](#no-code): Ochrana rozhraní API pomocí [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) prostřednictvím webu Azure portal, takže není nutné aktualizovat váš kód nebo znovu nasadit své rozhraní API.
 
   > [!NOTE]
   > Ve výchozím nastavení ověřování Azure AD, která můžete zapnout na webu Azure Portal neposkytuje podrobné autorizace. Například toto ověřování zamkne vašeho rozhraní API na právě konkrétního tenanta, nikoli na konkrétního uživatele nebo aplikace. 
 
-* [Aktualizace kódu rozhraní API](#update-code): ochrana vašeho rozhraní API tím, že vynucuje [ověřování pomocí certifikátu](#certificate), [základní ověřování](#basic), nebo [ověřování Azure AD](#azure-ad-code) prostřednictvím kód.
+* [Aktualizace kódu rozhraní API](#update-code): Ochrana vašeho rozhraní API tím, že vynucuje [ověřování pomocí certifikátu](#certificate), [základní ověřování](#basic), nebo [ověřování Azure AD](#azure-ad-code) prostřednictvím kódu.
 
 <a name="no-code"></a>
 
@@ -266,7 +266,7 @@ Pokud chcete omezit přístup přes rozhraní API do aplikace logiky pomocí kó
 
 <!-- Going further, to implement this authentication entirely in your own code, 
 and not use the Azure portal, learn how to 
-[authenticate with on-premises Active Directory in your Azure app](../app-service/app-service-authentication-overview.md).
+[authenticate with on-premises Active Directory in your Azure app](../app-service/overview-authentication-authorization.md).
 
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->

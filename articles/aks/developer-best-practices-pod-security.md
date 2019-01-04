@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 8acd69480d6cd441c33ccc696794977bbfbfd975
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109706"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559072"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod ve službě Azure Kubernetes Service (AKS)
 
-Vývoj a spouštění aplikací ve službě Azure Kubernetes Service (AKS), je zabezpečení pody je důležitým aspektem. Vaše aplikace by se měly navrhovat pro objekt zabezpečení nejnižší počet požadovaná oprávnění. Zabezpečení dat soukromých je zřeteli pro zákazníky. Nechcete, aby přihlašovací údaje, jako jsou databázové připojovací řetězce klíčů, nebo tajné klíče a certifikáty, které jsou vystaveny vnějším světem pokud útočník může využít výhod těchto tajných kódů ke škodlivým účelům. Nemáte přidejte do kódu nebo je vložit do imagí kontejnerů. Tento přístup by představovat riziko pro vystavení a omezit možnost obměňovat tyto přihlašovací údaje jako Image kontejneru bude třeba znovu sestavit.
+Vývoj a spouštění aplikací ve službě Azure Kubernetes Service (AKS), je zabezpečení pody je důležitým aspektem. Vaše aplikace by se měly navrhovat pro principu nejnižší počet požadovaná oprávnění. Zabezpečení dat soukromých je zřeteli pro zákazníky. Nechcete přihlašovací údaje, jako jsou databázové připojovací řetězce, klíče, nebo tajné kódy a certifikáty vystavené vnějšímu světu, kde může útočník využít výhod těchto tajných kódů ke škodlivým účelům. Nemáte přidejte do kódu nebo je vložit do imagí kontejnerů. Tento přístup by představovat riziko pro vystavení a omezit možnost obměňovat tyto přihlašovací údaje jako Image kontejneru bude třeba znovu sestavit.
 
 Tento článek o osvědčených postupech se zaměřuje na zabezpečené podů ve službě AKS. Získáte informace o těchto tématech:
 

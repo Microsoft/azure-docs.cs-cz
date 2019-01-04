@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d10ca5d704892ae0a1494d729b46abf0fc06aa64
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5debc14a6a20c42b62b9a7b2c524e36e94302221
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092248"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792862"
 ---
 # <a name="azure-data-box-disk-system-requirements-preview"></a>Azure Data Box Disk požadavky na systém (Preview)
 
@@ -61,6 +61,9 @@ Tady je seznam typů podporovaných úložiště pro Data Box Disk.
 | --- | --- |
 | Classic | Standard |
 | Obecné použití  |Standardní; verze V1 i V2 podporují. Vrstvy hot a cool nejsou podporovány. |
+
+>[!NOTE]
+> Účty Azure Data Lake Storage generace 2 nejsou podporovány.
 
 
 ## <a name="supported-storage-types"></a>Typy podporovaných úložišť

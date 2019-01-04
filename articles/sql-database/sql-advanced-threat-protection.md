@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: ea7b4def23f766e6cda1e1e8e1d4e8dc7be302fe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 12/16/2018
+ms.openlocfilehash: 40f6b6effa509fd2cfa40ecfc758ac37e0a66778
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997589"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538604"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection pro Azure SQL Database
 
@@ -30,7 +30,7 @@ SQL pokročilé Threat Protection (ATP) poskytuje sadu pokročilé funkce zabezp
 - [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovatelná služba, která může zjišťovat, sledovat a pomáhat opravovat potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
 - [Detekce hrozeb](sql-database-threat-detection-overview.md) zjišťuje neobvyklé aktivity, které můžou ukazovat na neobvyklé a potenciálně škodlivé pokusy o přístup k databázi nebo její zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Upozornění detekce hrozeb obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
 
-Povolení ochrany ATP v programu SQL po povolte všechny z nich zahrnuty funkce. Jedním kliknutím můžete povolit ATP na celém databázovém serveru a použít pro všechny databáze na tomto serveru. 
+Povolení ochrany ATP v programu SQL po povolte všechny z nich zahrnuty funkce. Jedním kliknutím můžete povolit ATP na celém databázovém serveru a použít pro všechny databáze na tomto serveru. Povolení nebo správu nastavení ochrany ATP v programu, který patří do vyžaduje [správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) role, role správce databáze SQL nebo role správce systému SQL server. 
 
 Ceny ochrany ATP v programu v souladu s Azure Security Center úrovně standard, kde každý chráněný server SQL Database se počítá jako jeden uzel. Nově chráněných prostředků nárok na bezplatnou zkušební verzi služby Security Center úrovně standard. Další informace najdete v tématu [stránce s cenami za Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 

@@ -4,19 +4,19 @@ description: Přečtěte si požadavky na zdrojovou a cílovou konfiguraci pro s
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/8/2018
-ms.openlocfilehash: cd62b60718a35aed9129db61413086266bb9f2c7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: bc54b3dbcdb304b18f916e5fbd4866ff54d1bfa2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971075"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713192"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Síťové topologie pro migrace Azure SQL DB Managed Instance pomocí Azure Database Migration Service
 Tento článek popisuje různé topologie sítě, které Azure Database Migration Service můžete pracovat na poskytovat komplexní migrace z místních SQL serverů do Azure SQL Database Managed Instance.
@@ -87,4 +87,5 @@ Tato topologie sítě použijte, pokud vaše prostředí vyžaduje nejméně jed
 - [Vytvoření virtuální sítě pomocí webu Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
 ## <a name="next-steps"></a>Další postup
-Přehled služby Azure Database Migration Service a regionální dostupnost ve verzi Public Preview, najdete v článku [co je služba Azure Database Migration ve verzi Preview](dms-overview.md). 
+- Přehled služby Azure Database Migration Service, najdete v článku [co je Azure Database Migration Service?](dms-overview.md).
+- Aktuální informace o dostupnosti v jednotlivých oblastech Azure Database Migration Service, najdete v článku [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration) stránky.

@@ -55,166 +55,18 @@ items:
       href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
   - name: Rychlý start s R
     href: r-quickstart.md
-- name: Postup
+- name: Ukázky
   items:
-  - name: Nastavení nástrojů a pomůcek
-    items:
-    - name: Správa pracovního prostoru
-      items:
-      - name: Vytvořit
-        href: create-workspace.md
-      - name: Spravovat
-        href: manage-workspace.md
-      - name: Řešení potíží
-        href: troubleshooting-creating-ml-workspace.md
-      - name: Nasazení pomocí architektury ARM
-        href: deploy-with-resource-manager-template.md
-      - name: Zobrazení a odstranění dat účtu sady Studio
-        displayName: export
-        href: export-delete-personal-data-dsr.md
-  - name: Získání dat a jejich pochopení
-    items:
-    - name: Import trénovacích dat
-      items:
-      - name: Přehled
-        href: import-data.md
-      - name: Z místního souboru
-        href: import-data-from-local-file.md
-      - name: Z online zdrojů
-        href: import-data-from-online-sources.md
-      - name: Z experimentu
-        href: import-data-from-an-experiment.md
-      - name: Použití místního SQL
-        displayName: on-premises
-        href: use-data-from-an-on-premises-sql-server.md
-  - name: Vývoj modelů
-    items:
-    - name: Vytvoření a trénování modelů
-      items:
-      - name: Správa životního cyklu experimentů
-        href: version-control.md
-      - name: Správa iterací experimentu
-        href: manage-experiment-iterations.md
-      - name: Vytváření modelů s využitím PowerShellu
-        displayName: endpoint, endpoints
-        href: create-models-and-endpoints-with-powershell.md
-      - name: Výběr algoritmů
-        items:
-        - name: Volba algoritmů
-          href: algorithm-choice.md
-        - name: Tahák s algoritmy
-          href: algorithm-cheat-sheet.md
-        - name: Použití lineární regrese
-          href: linear-regression-in-azure.md
-        - name: Použití analýzy textu
-          href: text-analytics-module-tutorial.md
-      - name: Vyhodnocování a interpretace výsledků
-        items:
-        - name: Vyhodnocení výkonu
-          href: evaluate-model-performance.md
-        - name: Optimalizace parametrů
-          displayName: optimization
-          href: algorithm-parameters-optimize.md
-        - name: Interpretace výsledků
-          href: interpret-model-results.md
-        - name: Ladění
-          href: debug-models.md
-      - name: Použití R a Pythonu
-        items:
-        - name: Spouštění skriptů R
-          href: extend-your-experiment-with-r.md
-        - name: Tvorba vlastních modulů R
-          href: custom-r-modules.md
-        - name: Spouštění skriptů Pythonu
-          href: execute-python-scripts.md
-  - name: Zprovoznění modelů
-    displayName: deploy
-    items:
-    - name: Přehled
-      displayName: deploy, consume, web service
-      href: deploy-consume-web-service-guide.md
-    - name: Modely nasazení
-      items:
-      - name: Nasazení webové služby
-        displayName: publish
-        href: publish-a-machine-learning-web-service.md
-      - name: Jak to funguje
-        href: model-progression-experiment-to-web-service.md
-      - name: Příprava nasazení
-        href: convert-training-experiment-to-scoring-experiment.md
-      - name: Použití externích dat
-        displayName: import, export
-        href: web-services-that-use-import-export-modules.md
-      - name: Nasazení v několika oblastech
-        displayName: multiple regions
-        href: how-to-deploy-to-multiple-regions.md
-      - name: Použití parametrů webové služby
-        href: web-service-parameters.md
-      - name: Povolit protokolování
-        href: web-services-logging.md
-    - name: Správa webových služeb
-      items:
-      - name: Použití portálu webových služeb
-        href: manage-new-webservice.md
-      - name: Správa s využitím rozhraní API
-        displayName: endpoint, endpoints
-        href: manage-web-service-endpoints-using-api-management.md
-      - name: Vytváření koncových bodů
-        href: create-endpoint.md
-      - name: Škálování
-        href: scaling-webservice.md
-    - name: Přeučování modelů
-      items:
-      - name: Přehled
-        href: retrain-machine-learning-model.md
-      - name: Programové přeučování
-        href: retrain-models-programmatically.md
-      - name: Přeučování webové služby Classic
-        href: retrain-a-classic-web-service.md
-      - name: Přeučování s využitím PowerShellu
-        href: retrain-new-web-service-using-powershell.md
-      - name: Přeučování existující webové služby
-        href: retrain-existing-resource-manager-based-web-service.md
-      - name: Řešení potíží
-        href: troubleshooting-retraining-models.md
-    - name: Použití modelů
-      items:
-      - name: Přehled
-        href: consume-web-services.md
-      - name: Použití Excelu
-        href: consuming-from-excel.md
-      - name: Použití doplňků Excelu
-        href: excel-add-in-for-web-services.md
-      - name: Použití šablony webové aplikace
-        href: consume-web-service-with-web-app-template.md
-      - name: Použití fondu Batch
-        href: dedicated-capacity-for-bes-jobs.md
-  - name: Příklady
-    items:
-    - name: Ukázkové experimenty
-      href: sample-experiments.md
-    - name: Ukázkové datové sady
-      href: use-sample-datasets.md
-    - name: Příklad změn zákazníka
-      href: azure-ml-customer-churn-scenario.md
-- name: Referenční informace
-  items:
-  - name: Modul Azure PowerShell (nový)
-    href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
-  - name: Modul Azure PowerShell (klasický)
-    href: powershell-module.md
-  - name: Referenční materiály k modulům a algoritmům
-    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
-  - name: Rozhraní PRI pro správu REST
-    href: /rest/api/machinelearning
-  - name: Kódy chyb webových služeb
-    href: web-service-error-codes.md
-- name: Související
-  items:
+  - name: Ukázkové datové sady
+    href: use-sample-datasets.md
+  - name: Příklad změn zákazníka
+    href: azure-ml-customer-churn-scenario.md
   - name: Galerie Azure AI
     items:
     - name: Přehled
       href: gallery-how-to-use-contribute-publish.md
+    - name: Ukázkové experimenty
+      href: sample-experiments.md
     - name: Odvětví
       href: gallery-industries.md
     - name: Řešení
@@ -235,6 +87,145 @@ items:
       href: gallery-custom-modules.md
     - name: Zobrazení a odstranění dat účtu
       href: ai-gallery-control-personal-data-dsr.md
+- name: Koncepty
+  items:
+  - name: Správa modelů
+    displayName: deploy, consume, web service
+    href: deploy-consume-web-service-guide.md
+- name: Návody
+  items:
+  - name: Správa pracovního prostoru
+    items:
+    - name: Vytvořit
+      href: create-workspace.md
+    - name: Spravovat
+      href: manage-workspace.md
+    - name: Řešení potíží
+      href: troubleshooting-creating-ml-workspace.md
+    - name: Nasazení pomocí architektury ARM
+      href: deploy-with-resource-manager-template.md
+    - name: Zobrazení a odstranění dat účtu sady Studio
+      displayName: export
+      href: export-delete-personal-data-dsr.md
+  - name: Import trénovacích dat
+    items:
+    - name: Přehled
+      href: import-data.md
+    - name: Z místního souboru
+      href: import-data-from-local-file.md
+    - name: Z online zdrojů
+      href: import-data-from-online-sources.md
+    - name: Z experimentu
+      href: import-data-from-an-experiment.md
+    - name: Použití místního SQL
+      displayName: on-premises
+      href: use-data-from-an-on-premises-sql-server.md
+  - name: Vytvoření a trénování modelů
+    items:
+    - name: Správa životního cyklu experimentů
+      href: version-control.md
+    - name: Správa iterací experimentu
+      href: manage-experiment-iterations.md
+    - name: Vytváření modelů s využitím PowerShellu
+      displayName: endpoint, endpoints
+      href: create-models-and-endpoints-with-powershell.md
+    - name: Výběr algoritmů
+      items:
+      - name: Volba algoritmů
+        href: algorithm-choice.md
+      - name: Tahák s algoritmy
+        href: algorithm-cheat-sheet.md
+      - name: Použití lineární regrese
+        href: linear-regression-in-azure.md
+      - name: Použití analýzy textu
+        href: text-analytics-module-tutorial.md
+    - name: Vyhodnocování a interpretace výsledků
+      items:
+      - name: Vyhodnocení výkonu
+        href: evaluate-model-performance.md
+      - name: Optimalizace parametrů
+        displayName: optimization
+        href: algorithm-parameters-optimize.md
+      - name: Interpretace výsledků
+        href: interpret-model-results.md
+      - name: Ladění
+        href: debug-models.md
+    - name: Použití R a Pythonu
+      items:
+      - name: Spouštění skriptů R
+        href: extend-your-experiment-with-r.md
+      - name: Tvorba vlastních modulů R
+        href: custom-r-modules.md
+      - name: Spouštění skriptů Pythonu
+        href: execute-python-scripts.md
+  - name: Modely nasazení
+    items:
+    - name: Nasazení webové služby
+      displayName: publish
+      href: publish-a-machine-learning-web-service.md
+    - name: Jak to funguje
+      href: model-progression-experiment-to-web-service.md
+    - name: Příprava nasazení
+      href: convert-training-experiment-to-scoring-experiment.md
+    - name: Použití externích dat
+      displayName: import, export
+      href: web-services-that-use-import-export-modules.md
+    - name: Nasazení v několika oblastech
+      displayName: multiple regions
+      href: how-to-deploy-to-multiple-regions.md
+    - name: Použití parametrů webové služby
+      href: web-service-parameters.md
+    - name: Povolit protokolování
+      href: web-services-logging.md
+  - name: Správa webových služeb
+    items:
+    - name: Použití portálu webových služeb
+      href: manage-new-webservice.md
+    - name: Správa s využitím rozhraní API
+      displayName: endpoint, endpoints
+      href: manage-web-service-endpoints-using-api-management.md
+    - name: Vytváření koncových bodů
+      href: create-endpoint.md
+    - name: Škálování
+      href: scaling-webservice.md
+  - name: Přeučování modelů
+    items:
+    - name: Přehled
+      href: retrain-machine-learning-model.md
+    - name: Programové přeučování
+      href: retrain-models-programmatically.md
+    - name: Přeučování webové služby Classic
+      href: retrain-a-classic-web-service.md
+    - name: Přeučování s využitím PowerShellu
+      href: retrain-new-web-service-using-powershell.md
+    - name: Přeučování existující webové služby
+      href: retrain-existing-resource-manager-based-web-service.md
+    - name: Řešení potíží
+      href: troubleshooting-retraining-models.md
+  - name: Použití modelů
+    items:
+    - name: Přehled
+      href: consume-web-services.md
+    - name: Použití Excelu
+      href: consuming-from-excel.md
+    - name: Použití doplňků Excelu
+      href: excel-add-in-for-web-services.md
+    - name: Použití šablony webové aplikace
+      href: consume-web-service-with-web-app-template.md
+    - name: Použití fondu Batch
+      href: dedicated-capacity-for-bes-jobs.md
+- name: Referenční informace
+  items:
+  - name: Modul Azure PowerShell (nový)
+    href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
+  - name: Modul Azure PowerShell (klasický)
+    href: powershell-module.md
+  - name: Referenční materiály k modulům a algoritmům
+    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
+  - name: Rozhraní PRI pro správu REST
+    href: /rest/api/machinelearning
+  - name: Kódy chyb webových služeb
+    href: web-service-error-codes.md
 - name: Zdroje a prostředky
   items:
   - name: Ceny
@@ -249,9 +240,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: Příručka pro vývojáře v R
     href: ../r-developers-guide.md
-ms.openlocfilehash: 8aaf830dc13919a664a931b5d08a11c817e8dc51
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 16c610345c063be9149d841c71d27f73e22d143d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628302"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974111"

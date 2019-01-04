@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4496a0fd3ec220d03c4cc279876234b503b0dbb6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231619"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720862"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Osvědčené postupy a referenční architektury
 
@@ -81,7 +81,7 @@ Zajištění, že aplikace je dostatečně odolné pro zpracování odepření s
 
 Škálovatelnost je, jak dobře může systému zvládnout zvýšenou zátěž. Je třeba navrhnout svoje aplikace na [škálovat horizontálně](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) podle potřeby zesilovací zatížení, konkrétně v případě útoku DDoS. Pokud je aplikace závislá na jednu instanci služby, vzniká jediný bod selhání. Zřízení více instancí je váš systém větší škálovatelnost a odolnost.
 
-Pro [služby Azure App Service](../app-service/app-service-value-prop-what-is.md)vyberte [plán služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) , který nabízí více instancí. Pro Azure Cloud Services, nakonfigurovat všechny své role používat [více instancí](../cloud-services/cloud-services-choose-me.md). Pro [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), ujistěte se, že vaše Architektura virtuálního počítače (VM) obsahuje více než jeden virtuální počítač a že každý virtuální počítač je součástí [dostupnosti](../virtual-machines/virtual-machines-windows-manage-availability.md). Doporučujeme používat [škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro možnosti automatického škálování.
+Pro [služby Azure App Service](../app-service/app-service-value-prop-what-is.md)vyberte [plán služby App Service](../app-service/overview-hosting-plans.md) , který nabízí více instancí. Pro Azure Cloud Services, nakonfigurovat všechny své role používat [více instancí](../cloud-services/cloud-services-choose-me.md). Pro [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), ujistěte se, že vaše Architektura virtuálního počítače (VM) obsahuje více než jeden virtuální počítač a že každý virtuální počítač je součástí [dostupnosti](../virtual-machines/virtual-machines-windows-manage-availability.md). Doporučujeme používat [škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro možnosti automatického škálování.
 
 ### <a name="defense-in-depth"></a>Obrana dopodrobna
 
@@ -96,7 +96,7 @@ Vidíme často zákazníků s místními prostředky získávání napadených s
 
 ## <a name="azure-offerings-for-ddos-protection"></a>Nabídky Azure DDoS Protection
 
-Azure má dva nabídky služeb DDoS, které poskytují ochranu před síťovými útoky (vrstva 3 a 4): před útoky DDoS Protection Basic a Standard ochranu před útoky DDoS. 
+Azure má dva nabídky služeb DDoS, které poskytují ochranu před síťovými útoky (vrstva 3 a 4): Před útoky DDoS Basic Protection a před útoky DDoS Standard Protection. 
 
 ### <a name="ddos-protection-basic"></a>Před útoky DDoS Basic Protection
 

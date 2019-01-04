@@ -1,5 +1,5 @@
 ---
-title: Integrace služby Azure Time Series Insights pomocí vzdáleného monitorování | Dokumentace Microsoftu
+title: Integrace služby Time Series Insights pomocí vzdáleného monitorování – Azure | Dokumentace Microsoftu
 description: V tomto návodu se dozvíte, jak nakonfigurovat služby Time Series Insights pro existující řešení vzdáleného monitorování, které již neobsahuje Time Series Insights.
 author: aditidugar
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253812"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633735"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 V dalším kroku nasaďte Time Series Insights jako zdroj dalších do vašeho řešení vzdáleného monitorování a připojení ke službě IoT hub.
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **vytvořit prostředek** > **Internet of Things** > **Time Series Insights**.
 
@@ -164,12 +164,13 @@ Dalším krokem je konfigurace mikroslužeb Azure Stream Analytics Manageru pře
 
 .NET: 
 
-```
+```cmd/sh
 docker pull azureiotpcs/asa-manager-dotnet:1.0.2
 ```
 
 Java:
-```
+
+```cmd/sh
 docker pull azureiotpcs/asa-manager-java:1.0.2
 ```
 
@@ -178,13 +179,14 @@ docker pull azureiotpcs/asa-manager-java:1.0.2
 Stáhněte si nejnovější mikroslužeb Telemetrie zadáním následujícího příkazu do příkazového řádku:
 
 .NET:
-```
+
+```cmd/sh
 docker pull azureiotpcs/telemetry-dotnet:1.0.2
 ```
 
 Java:
 
-```
+```cmd/sh
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
@@ -192,7 +194,7 @@ docker pull azureiotpcs/telemetry-java:1.0.2
 
 Data snadno zobrazit v Průzkumníku Time Series Insights, doporučujeme přizpůsobením uživatelského rozhraní snadno propojit do prostředí. Uděláte to tak, stáhněte si nejnovější změny do webového uživatelského rozhraní pomocí následujícího příkazu:
 
-```
+```cmd/sh
 docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 ```
 
@@ -220,7 +222,7 @@ Konfigurace prostředí, které `basic` nasazení aktualizované mikroslužeb.
 
 1. Přidejte následující proměnné prostředí na jednotlivých mikroslužeb v dockeru compose soubor yaml a `env-setup` skriptu ve virtuálním počítači:
 
-    ```
+    ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
     PCS_TSI_FQDN={TSI Data Access FQDN}
     PCS_AAD_TENANT={AAD Tenant Id}
@@ -244,7 +246,7 @@ Konfigurace prostředí, které `standard` nasazení pro aktualizace mikroslužb
 
 1. Najdete mapování konfigurace k přidání následující nové proměnné prostředí pro TSI:
 
-    ```
+    ```yaml
     telemetry.storage.type: "tsi"
     telemetry.tsi.fqdn: "{TSI Data Access FQDN}"
     security.auth.serviceprincipal.secret: "{AAD application service principal secret}"
@@ -252,7 +254,7 @@ Konfigurace prostředí, které `standard` nasazení pro aktualizace mikroslužb
 
 4. Upravte soubor yaml šablony pod služba telemetrie:
 
-    ```
+    ```yaml
     - name: PCS_AAD_TENANT
         valueFrom:
         configMapKeyRef:
@@ -282,7 +284,7 @@ Konfigurace prostředí, které `standard` nasazení pro aktualizace mikroslužb
 
 5. Upravte soubor yaml šablony pro Azure Stream Analytics pod service manager:
 
-    ```
+    ```yaml
     - name: PCS_TELEMETRY_STORAGE_TYPE
         valueFrom:
         configMapKeyRef:

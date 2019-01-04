@@ -16,12 +16,12 @@ ms.custom: mvc
 ms.date: 07/30/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: f6b85d2197a4db9cdfc526e5857e4b6ce707beb2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: e84e72157726311281994b0e287eda7dfc4b144a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076786"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716749"
 ---
 # <a name="azure-stack-add-on-plans"></a>Azure Stack doplňkové plány
 
@@ -32,7 +32,7 @@ Existují situace, kdy kombinování všechno v jednom plánu je optimální. Ji
 Dalším důvodem pro použití doplňkové plány je k poskytování pomoci uživatelům mějte jejich využití prostředků. Uděláte to tak, můžete začít s základní plán, který obsahuje poměrně málo početnému kvóty (v závislosti na požadované služby). Poté jako uživatelé kontaktovat kapacitu, jejich by Generovat výstrahy, které spotřebovali přidělení prostředků na základě jejich přiřazené plánu. Odtud uživatelé pak vybrat doplňkový plán, který poskytuje další prostředky.
 
 > [!NOTE]
-> Pokud nechcete použít doplňkový plán pro rozšíření kvóty, můžete také do [upravit původní konfiguraci kvóty](azure-stack-quota-types.md#to-edit-a-quota). 
+> Pokud nechcete použít doplňkový plán pro rozšíření kvóty, můžete také do [upravit původní konfiguraci kvóty](azure-stack-quota-types.md#edit-a-quota). 
 
 Když uživatel přidá doplňkový plán k existujícímu předplatnému nabídky, další prostředky může trvat až hodinu, se zobrazí. 
 

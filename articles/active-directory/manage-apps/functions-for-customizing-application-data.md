@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 058cadec0776e05daf9fddbf715020953478ff58
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 867fdd57df163f37d86572798aaae6d78d43f479
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105151"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973719"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -27,14 +27,14 @@ Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování a
 Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro funkce Applications (VBA).
 
 * Celý výraz musí být definován jako funkce, které tvoří název, za nímž následuje argumenty v závorkách: <br>
-  *FunctionName (<< argumentu 1 >> <<argument N>>)*
-* Může vnořit do jiné funkce. Příklad: <br> *FunctionOne (FunctionTwo (<<argument1>>))*
+  *FunctionName (`<<argument 1>>`,`<<argument N>>`)*
+* Může vnořit do jiné funkce. Příklad: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
 * Tři různé typy argumentů můžete předat do funkce:
   
   1. Atributy, které musí být uzavřeny do hranatých závorek. Příklad: [attributeName]
   2. Řetězcové konstanty, které musí být umístěn do dvojitých uvozovek. Příklad: "USA"
-  3. Další funkce. Příklad: FunctionOne (<<argument1>>, FunctionTwo (<<argument2>>))
-* Pro řetězcové konstanty Pokud potřebujete zpětného lomítka (\) nebo uvozovky (") v řetězci, se musejí být uvozeny symbol zpětného lomítka (\). Příklad: "název společnosti: \"Contoso\""
+  3. Další funkce. Příklad: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
+* Pro řetězcové konstanty Pokud potřebujete zpětného lomítka (\) nebo uvozovky (") v řetězci, se musejí být uvozeny symbol zpětného lomítka (\). Příklad: "Název společnosti: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Seznam funkcí
 [Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Přepínače](#switch)
@@ -242,8 +242,8 @@ Budete muset vygenerovat uživatele alias provedením první 3 písmena křestn�
 **Ukázkový vstup/výstup:** <br>
 
 * **VSTUP** (givenName): "John"
-* **VSTUP** (příjmení): "Nováková"
-* **VÝSTUP**: "JohDoe"
+* **VSTUP** (příjmení): "Doe"
+* **VÝSTUP**:  "JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>Odebrat znaky s diakritikou v řetězci
 Je třeba nahradit znaků obsahující diakritická znaménka s ekvivalentní znaků, které neobsahují slovo značky zvýraznění.
@@ -254,7 +254,7 @@ NormalizeDiacritics([givenName])
 **Ukázkový vstup/výstup:** <br>
 
 * **VSTUP** (givenName): "Zoë"
-* **VÝSTUP**: "Zoe"
+* **VÝSTUP**:  "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Výstupní data jako řetězec v určitém formátu
 
@@ -268,7 +268,7 @@ Je třeba k formátování kalendářních dat pro ServiceNow.
 **Ukázkový vstup/výstup:**
 
 * **VSTUP** (extensionAttribute1): "20150123105347.1Z"
-* **VÝSTUP**: "2015-01-23"
+* **VÝSTUP**:  "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Nahraďte hodnotu podle předdefinovanou sadu možností
 

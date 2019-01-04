@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410274"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994364"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
 
@@ -88,7 +88,7 @@ Pokud chcete otevřít seznam zobrazení, služby, vyberte **zobrazení Ambari**
 
 #### <a name="check-for-azure-service-outages"></a>Vyhledat výpadek služeb Azure
 
-HDInsight spoléhá na několik služeb Azure. Spuštění virtuálních serverů v Azure HDInsight, úložiště dat a skriptů do úložiště objektů Blob v Azure nebo Azure DataLake Store, a indexy soubory protokolů ve službě Azure Table storage. Přerušení na tyto služby, i když se taková situace vzácná, může způsobit problémy v HDInsight. Pokud máte neočekávané zpomalení nebo selhání v clusteru, zkontrolujte, [řídicí panel stavu Azure](https://azure.microsoft.com/status/). Stav jednotlivých služeb je uveden podle oblasti. Zkontrolujte váš cluster oblasti a také oblastech souvisejících služeb.
+HDInsight spoléhá na několik služeb Azure. Spuštění virtuálních serverů v Azure HDInsight, úložiště dat a skriptů do úložiště objektů Blob v Azure nebo Azure Data Lake Storage a indexy soubory protokolů ve službě Azure Table storage. Přerušení na tyto služby, i když se taková situace vzácná, může způsobit problémy v HDInsight. Pokud máte neočekávané zpomalení nebo selhání v clusteru, zkontrolujte, [řídicí panel stavu Azure](https://azure.microsoft.com/status/). Stav jednotlivých služeb je uveden podle oblasti. Zkontrolujte váš cluster oblasti a také oblastech souvisejících služeb.
 
 #### <a name="check-azure-service-usage-limits"></a>Kontrola omezení využití služby Azure
 

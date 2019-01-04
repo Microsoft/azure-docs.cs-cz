@@ -1,5 +1,5 @@
 ---
-title: 'Služby Azure AD Connect: Předávací ověřování – nejčastější dotazy | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Předávací ověřování – nejčastější dotazy | Dokumentace Microsoftu'
 description: Odpovědi na nejčastější dotazy týkající se předávací ověřování Azure Active Directory
 services: active-directory
 keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 77872ab809f4375523a91f4ebc9b24f8606e6c94
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: fdb316f5f5c1f67dbb92fe8847c0ffacce46ae07
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619809"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789088"
 ---
-# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
+# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Předávací ověřování služby Azure Active Directory: Nejčastější dotazy
 
 Tento článek se zabývá nejčastější dotazy týkající se předávací ověřování služby Azure Active Directory (Azure AD). Kontrolovat zpět pro aktualizaci obsahu.
 
@@ -62,7 +62,7 @@ Tato funkce fungovala, musíte verze 1.1.750.0 nebo později pro Azure AD Connec
 
 Pokud jste nakonfigurovali [zpětný zápis hesla](../authentication/concept-sspr-writeback.md) pro konkrétního uživatele, a pokud se uživatel přihlásí pomocí předávacího ověřování, můžete změnit nebo resetování hesel. Hesel, zapíšou se zpět do místní služby Active Directory podle očekávání.
 
-Pokud jste nenakonfigurovali zpětný zápis hesla pro konkrétního uživatele, nebo pokud uživatel nemá platnou Azure AD licenci přiřazenou, uživatel nemůže aktualizovat své heslo služby v cloudu. Nemohou aktualizovat heslo, i v případě, že vypršela platnost jejich hesla. Uživateli se místo toho zobrazí tato zpráva: "vaše organizace nepovoluje aktualizaci hesla na tomto webu. Aktualizovat způsobem doporučeným ve vaší organizaci, nebo požádejte správce, pokud potřebujete pomoc." Uživatel nebo správce musí resetovat své heslo v místní službě Active Directory.
+Pokud jste nenakonfigurovali zpětný zápis hesla pro konkrétního uživatele, nebo pokud uživatel nemá platnou Azure AD licenci přiřazenou, uživatel nemůže aktualizovat své heslo služby v cloudu. Nemohou aktualizovat heslo, i v případě, že vypršela platnost jejich hesla. Uživateli se místo toho zobrazí tato zpráva: "Vaše organizace nepovoluje aktualizaci hesla na tomto webu. Aktualizovat způsobem doporučeným ve vaší organizaci, nebo požádejte správce, pokud potřebujete pomoc." Uživatel nebo správce musí resetovat své heslo v místní službě Active Directory.
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Jak předávací ověřování chrání vás před útoky na hesla hrubou silou?
 
@@ -74,7 +74,7 @@ Pokud jste nenakonfigurovali zpětný zápis hesla pro konkrétního uživatele,
 - Agentů ověřování vytvářet požadavky HTTP přes port 80 k stažení SSL seznamy odvolaných certifikátů (CRL).
 
      >[!NOTE]
-     >Nejnovější aktualizace snížený počet porty, které vyžaduje funkci. Pokud máte starší verze služby Azure AD Connect nebo ověřovacího agenta, ponechte tyto porty otevřít také: 5671 8080, 9090, 9091, 9350, 9352 a 10100 10120.
+     >Nejnovější aktualizace snížený počet porty, které vyžaduje funkci. Pokud máte starší verze služby Azure AD Connect nebo ověřovacího agenta, nechte otevřené i tyto porty: 5671 8080, 9090, 9091, 9350, 9352 a 10100 10120.
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Komunikovat přes odchozí webového proxy serveru se službou agentů předávací ověřování?
 
@@ -83,7 +83,7 @@ Ano. Pokud Proxy Auto-Discovery WPAD (Web) je povoleno v místním prostředí, 
 Pokud nemáte WPAD ve vašem prostředí, můžete přidat informace o proxy serveru (jak je vidět níže) Chcete-li povolit agenta předávací ověřování ke komunikaci s Azure AD:
 - Nakonfigurujte informace o proxy serveru v aplikaci Internet Explorer před instalací agenta předávací ověřování na serveru. To vám umožní k dokončení instalace ověřovacího agenta služby, ale stále se zobrazí jako **neaktivní** na portálu pro správu.
 - Na serveru přejděte na "C:\Program Files\Microsoft Azure AD Connect ověřovacího agenta".
-- Upravte konfigurační soubor "AzureADConnectAuthenticationAgentService" a přidejte následující řádky (nahradit "http://contosoproxy.com:8080" adresou skutečného proxy serveru):
+- Upravte konfigurační soubor "AzureADConnectAuthenticationAgentService" a přidejte následující řádky (nahradit "http\:/ / contosoproxy.com:8080" adresou skutečného proxy serveru):
 
 ```
    <system.net>
@@ -156,7 +156,7 @@ Pokud odinstalujete agenta předávací ověřování ze serveru, způsobí, že
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Mám starší tenanta, který byl původně instalaci pomocí služby AD FS.  Jsme nedávno provedla migraci do PTA, ale teď nezobrazují naše změny UPN nesynchronizuje do Azure AD.  Proč jsou naše UPN se změní není synchronizované?
 
-Odpověď: v následujících případech nemusí přestane synchronizovat změny místní hlavní název uživatele:
+ODPOVĚĎ: V následujících případech nemusí přestane synchronizovat změny místní hlavní název uživatele:
 
 - Před 15. června 2015 byla vytvořena vašeho tenanta Azure AD
 - Zpočátku se byly Federovaná pomocí vašeho tenanta Azure AD pomocí služby AD FS pro ověřování
@@ -172,12 +172,12 @@ Tenanty vytvořené po 15. června 2015 mají výchozí chování synchronizace 
 
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
-- [Rychlý start](how-to-connect-pta-quick-start.md): uvedení do provozu na předávacího ověřování Azure AD.
+- [Rychlý start](how-to-connect-pta-quick-start.md): Uvedení do provozu na předávacího ověřování Azure AD.
 - [Migrace ze služby AD FS na předávací ověřování](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení ve svém tenantovi k ochraně uživatelské účty.
-- [Podrobné technické informace](how-to-connect-pta-how-it-works.md): pochopit, jak funguje funkce předávací ověřování.
+- [Podrobné technické informace](how-to-connect-pta-how-it-works.md): Vysvětlení fungování funkce předávací ověřování.
 - [Řešení potíží s](tshoot-connect-pass-through-authentication.md): Zjistěte, jak řešit běžné problémy s funkcí předávací ověřování.
-- [Podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md): získáte podrobné technické informace o funkci předávací ověřování.
-- [Azure AD bezproblémového jednotného přihlašování k](how-to-connect-sso.md): Další informace o této doplňkové funkce.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte fórum Azure Active Directory do souboru žádostí o nové funkce.
+- [Podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md): Získejte podrobné technické informace o funkci předávací ověřování.
+- [Bezproblémové jednotné přihlašování Azure AD](how-to-connect-sso.md): Další informace o této doplňkové funkce.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fórum Azure Active Directory pomocí do souboru žádostí o nové funkce.
 

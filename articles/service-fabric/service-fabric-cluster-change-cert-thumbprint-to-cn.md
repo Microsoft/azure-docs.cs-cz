@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
+ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 378f4609efcc9e9f0652b9ec68f5374b1fe3626a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6e596b0db1a03efbf6b029487ed956105b632edb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959644"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972800"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změnit z kryptografický otisk certifikátu clusteru na běžný název
 Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje clusteru certifikáty vyměnit nebo správy. Více certifikátů, ale mají stejný běžný název nebo předmětu.  Přepínání nasazeném clusteru pomocí kryptografické otisky certifikátů k běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu. Tento článek popisuje postup aktualizace spuštěný cluster Service Fabric běžný název certifikátu použít místo kryptografického otisku certifikátu.
+
+>[!NOTE]
+> Pokud máte dva kryptografický otisk deklarované v šabloně, budete muset provést dvě nasazení.  První nasazení se provádí před provedením kroků v tomto článku.  První nasazení nastaví vaše **kryptografický otisk** vlastnosti v šabloně certifikátu používanému a odebere **thumbprintSecondary** vlastnost.  Druhé nasazení postupujte podle kroků v tomto článku.
  
 ## <a name="get-a-certificate"></a>Získání certifikátu
 Nejprve Získejte certifikát [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority).  Běžný název certifikátu by měl být název hostitelského clusteru.  Například "myclustername.southcentralus.cloudapp.azure.com".  

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3c809638cef89d111a032e5876b1f2f1b2c1eb7b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272860"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602342"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
@@ -91,7 +91,7 @@ Potíže s parametrem citlivé plán (PSP) odkazuje na scénáři, kde Optimaliz
 
 Existuje několik řešení zmírnit problémy, každá má přidružené kompromisy a nevýhody:
 
-- Použití [znovu ZKOMPILOVAT](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu v každé spuštění dotazu. Toto řešení obchoduje čas kompilace obchody a zvýšení využití procesoru pro lepší kvalitu plánu. Použití `RECOMPILE` možnost je často není možné pro úlohy vyžadující vysokou propustnost.
+- Použití [znovu ZKOMPILOVAT](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu v každé spuštění dotazu. Toto řešení obchoduje čas kompilace a zvýšení využití procesoru pro lepší kvalitu plánu. Použití `RECOMPILE` možnost je často není možné pro úlohy vyžadující vysokou propustnost.
 - Použití [možnosti (optimalizace pro...) ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu přepsat hodnotu skutečný parametr s hodnotou typické parametr, který vytváří plán dostatečné pro většinu možností hodnotu parametru.   Tato možnost vyžaduje dostatečné povědomí o charakteristiky související plán a optimální parametr hodnoty.
 - Použití [možnosti (optimalizace pro neznámý)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu přepsat hodnotu skutečný parametr výměnou za pomocí vektoru průměr hustoty. Dalším způsobem, jak to provést, je zachycení příchozí hodnoty parametrů do místní proměnné a pak pomocí místní proměnné v rámci predikáty, namísto použití parametrů samotných. Musí být průměrné hustota *dostatečné* pomocí této opravy.
 - Zakažte parametr pro analýzu sítě zcela pomocí [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu.
@@ -104,7 +104,7 @@ Další informace o řešení těchto typů problémů najdete v tématu:
 
 - To [cítit parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) blogový příspěvek
 - To [parametr pro analýzu sítě problému a alternativní řešení](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/) blogový příspěvek
-- To [Slon a pro analýzu sítě myši parametr](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) blogový příspěvek
+- To [Slon a pro analýzu sítě myši parametr](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) blogový příspěvek
 - To [dynamické srovnání plánu kvality pro parametrizované dotazy sql](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogový příspěvek
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Řešení potíží s aktivitu kompilace z důvodu nesprávné Parametrizace

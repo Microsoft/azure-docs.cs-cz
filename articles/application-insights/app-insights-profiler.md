@@ -1,6 +1,6 @@
 ---
-title: Profilování živých webových aplikací Azure pomocí Application Insights | Dokumentace Microsoftu
-description: Profil živých webových aplikací v Azure pomocí Application Insights Profiler.
+title: Profilování živých aplikací Azure App Service pomocí nástroje Application Insights | Dokumentace Microsoftu
+description: Profilování živých aplikací ve službě Azure App Service s Application Insights Profiler.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4d957c26bd4e4ae278c0909c9df1476b02954b86
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bc551d99528218f258acfd5d860795aae498d58f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138003"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653573"
 ---
-# <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilování živých webových aplikací Azure pomocí Application Insights
+# <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování živých aplikací Azure App Service pomocí nástroje Application Insights
 
-Profiler v současné době používá pro webové aplikace ASP.NET a ASP.NET Core, které běží ve službě Web Apps. Základní úroveň služby nebo vyšší je potřeba použít Profiler. Povolení Profiler v Linuxu je aktuálně možné jenom přes [tato metoda](app-insights-profiler-aspnetcore-linux.md).
+Profiler se aktuálně funguje pro aplikace ASP.NET a ASP.NET Core, na kterých běží ve službě Azure App Service. Základní úroveň služby nebo vyšší je potřeba použít Profiler. Povolení Profiler v Linuxu je aktuálně možné jenom přes [tato metoda](app-insights-profiler-aspnetcore-linux.md).
 
-## <a id="installation"></a> Povolit Profiler pro svoje webové aplikace
-Pokud chcete povolit Profiler pro webovou aplikaci, postupujte podle pokynů níže. Pokud používáte jiný typ služby Azure, tady jsou pokyny pro povolení Profiler na jiné podporované platformy:
+## <a id="installation"></a> Povolit Profiler pro vaši aplikaci
+Pokud chcete povolit Profiler pro aplikaci, postupujte podle pokynů níže. Pokud používáte jiný typ služby Azure, tady jsou pokyny pro povolení Profiler na jiné podporované platformy:
 * [Cloud Services](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Aplikace Service Fabric](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Profiler je předinstalovaná jako součást modulu runtime služeb App Services, ale musíte vypnout k získání profily pro Azure Web Apps. Jakmile nasadíte webovou aplikaci, i v případě, že jste zahrnuli App Insights SDK do zdrojového kódu, postupujte podle následujících kroků, abyste povolení profileru.
+Application Insights Profiler je předinstalovaná jako součást modulu runtime služeb App Services, ale musíte vypnout k získání profily pro aplikace app Service. Jakmile jste nasadili aplikaci, i v případě, že jste zahrnuli App Insights SDK do zdrojového kódu, postupujte podle následujících kroků, abyste povolení profileru.
 
 1. Přejděte **App Services** podokně webu Azure Portal.
-1. Přejděte do **Nastavení > Application Insights** podokně.
+2. Přejděte do **Nastavení > Application Insights** podokně.
 
    ![Povolit App Insights na portálu služby App Services](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-1. Buď postupujte podle pokynů v podokně a vytvořte nový prostředek nebo vyberte existující prostředek App Insights monitorovat webové aplikace. Také se ujistěte, Profiler je **na**.
+3. Buď podle pokynů a vytvořte nový prostředek nebo vyberte existující prostředek App Insights pro sledování aplikace podokna. Také se ujistěte, Profiler je **na**.
 
    ![Přidat rozšíření webu App Insights][Enablement UI]
 
-1. Profiler se teď aktivuje pomocí nastavení aplikace služby App.
+4. Profiler se teď aktivuje pomocí nastavení aplikace služby App.
 
     ![Nastavení aplikace, které pro Profiler][profiler-app-setting]
 
 ## <a name="disable-profiler"></a>Zakázat Profiler
 
-Pro zastavení nebo restartování Profiler pro instance jednotlivých webovou aplikaci, v části **webové úlohy**, přejděte do prostředku webové aplikace. Chcete-li odstranit Profiler, přejděte na **rozšíření**.
+Pro zastavení nebo restartování Profiler pro jednotlivé aplikace instance, v části **webové úlohy**, přejděte na prostředek aplikace. Chcete-li odstranit Profiler, přejděte na **rozšíření**.
 
 ![Zakázat Profiler pro webové úlohy][disable-profiler-webjob]
 
-Doporučujeme, abyste měli Profiler povolena na všech svých webových aplikací se co nejdříve zjistit problémy s výkonem.
+Doporučujeme, abyste měli Profiler povolená na všech svých aplikací se co nejdříve zjistit problémy s výkonem.
 
 Pokud pomocí nasazení webu nasadit změny do vaší webové aplikace, ujistěte se, že se že můžete vyloučit složku App_Data odstranit během nasazení. V opačném případě rozšíření Profiler soubory jsou odstraněny při příštím nasazení webové aplikace do Azure.
 

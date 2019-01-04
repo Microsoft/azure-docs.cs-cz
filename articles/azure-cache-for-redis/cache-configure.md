@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: c95c40404bb52f739c407eca3c0d48be5e0a86e6
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ff6a3f32d9163be01483e8b8c743caa4e5bb573c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262431"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581245"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Postup konfigurace mezipaměti Azure Redis
 Toto téma popisuje dostupné konfigurace pro mezipaměť Azure pro instance Redis. Toto téma také popisuje výchozí konfigurace serveru Redis pro mezipaměť Azure pro instance Redis.
@@ -359,7 +359,7 @@ Klikněte na tlačítko **pravidla upozornění** ke konfiguraci upozornění za
 Ve výchozím nastavení, metriky mezipaměti ve službě Azure Monitor jsou [uchovávají po dobu 30 dní](../azure-monitor/platform/data-collection.md#metrics) a pak odstranit. Pokud chcete zachovat metriky mezipaměti po dobu delší než 30 dní, klikněte na tlačítko **diagnostiky** k [konfigurace účtu úložiště](cache-how-to-monitor.md#export-cache-metrics) používá k ukládání diagnostiku mezipaměti.
 
 >[!NOTE]
->Kromě archivace metriky mezipaměti do úložiště, můžete také [Streamovat do centra událostí nebo odeslat do služby Log Analytics](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+>Kromě archivace metriky mezipaměti do úložiště, můžete také [Streamovat do centra událostí nebo odeslat do služby Log Analytics](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 >
 >
 

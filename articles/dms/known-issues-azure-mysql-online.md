@@ -4,28 +4,28 @@ description: Přečtěte si o známých problémech a migrace omezení online mi
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 6e82c10d8e9109279045095c1b856520245a5a6f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ebe2af858aafaff62a7e3b629c0a8c84bbf49584
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884506"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721644"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Známé problémy a migrace omezení online migrace do Azure DB for MySQL
 
 Známé problémy a omezení související s online migrace z MySQL do služby Azure Database for MySQL jsou popsány v následujících částech. 
 
 ## <a name="online-migration-configuration"></a>Online migrace konfigurace
-- Zdrojový MySQL Server musí mít verzi 5.6.35, 5.7.18 nebo novější
+- Zdrojový MySQL Server verze musí mít verzi 5.6.35, 5.7.18 nebo novější
 - Azure Database for MySQL podporuje:
-    - MySQL Community Edition
+    - MySQL community edition
     - Modul InnoDB
 - Migrace stejnou verzi. Migrace MySQL 5.6 na Azure Database for MySQL 5.7 není podporována.
 - Povolte binární protokolování v souboru my.ini (Windows) nebo my.cnf (Unix)
@@ -53,7 +53,7 @@ Známé problémy a omezení související s online migrace z MySQL do služby A
       GROUP BY SchemaName;
     ```
 
-    Ve výsledku dotazu. Spusťte rozevírací cizí klíč (což je druhý sloupec).
+    Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
 - Schéma v cíl – Azure Database for MySQL nesmí obsahovat žádné aktivační události. K odpojení aktivačních událostí v cílové databázi:
     ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
@@ -62,20 +62,20 @@ Známé problémy a omezení související s online migrace z MySQL do služby A
 ## <a name="datatype-limitations"></a>Datový typ omezení
 - **Omezení**: Pokud je datový typ JSON ve zdrojové databázi MySQL, migrace selže během průběžné synchronizace.
 
-    **Alternativní řešení**: datový typ upravit JSON na střední text nebo longtext ve zdrojové databázi MySQL.
+    **Alternativní řešení**: Změňte datový typ formátu JSON na střední text nebo longtext ve zdrojové databázi MySQL.
 
 - **Omezení**: Pokud neexistuje žádný primární klíč v tabulkách, průběžné synchronizace se nezdaří.
  
-    **Alternativní řešení**: dočasně nastavit primární klíč pro tabulku pro migraci, abyste mohli pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
+    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku pro migraci, abyste mohli pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
 
 ## <a name="lob-limitations"></a>Omezení LOB
 Sloupce velkého objektu (LOB) jsou sloupce, které může rozvíjet velké. Pro MySQL, střední text Longtext, objektů Blob, Mediumblob, Longblob atd. jsou uvedeny některé typy LOB.
 
-- **Omezení**: Pokud LOB datové typy se používají jako primární klíče, migrace selže.
+- **Omezení**: Pokud obchodní datové typy se používají jako primární klíče, migrace selže.
 
-    **Alternativní řešení**: nahradit primární klíč s jinými typy nebo sloupce, které nejsou LOB.
+    **Alternativní řešení**: Nahraďte další datové typy nebo sloupce, které nejsou LOB primární klíč.
 
-- **Omezení**: Pokud sloupec velkého objektu (LOB) je větší než 32 KB, může data zkrácen na cíl. Délka sloupce LOB pomocí tohoto dotazu, můžete zkontrolovat:
+- **Omezení**: Pokud délka sloupec velkého objektu (LOB) je větší než 32 KB, mohou být v cílovém zkráceny data. Délka sloupce LOB pomocí tohoto dotazu, můžete zkontrolovat:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```

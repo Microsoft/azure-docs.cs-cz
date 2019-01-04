@@ -1,22 +1,22 @@
 ---
 title: Připojení aplikace mongodb s podporou Node.js ke službě Azure Cosmos DB
 description: Tento rychlý start ukazuje, jak se připojit stávající aplikace MongoDB napsané v Node.js do služby Azure Cosmos DB.
-author: SnehaGunda
-ms.author: sngun
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: 2c11aa11bad7e3cbdeae418eef92a042ca0731b4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.custom: quickstart
+ms.openlocfilehash: 954be5699bb039f9eeaae827e6564fea6dfe70ff
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725571"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788673"
 ---
-# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Migrace stávající webové aplikace mongodb s podporou Node.js 
+# <a name="migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Migrace stávající webové aplikace Node.js s MongoDB ke službě Azure Cosmos DB 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -27,11 +27,11 @@ ms.locfileid: "53725571"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat dokument, klíč/hodnota a databáze grafů, které můžou využívat výhody globální distribuce a možností horizontálního škálování v jádru služby Cosmos DB. 
 
-Tento rychlý start popisuje způsob použití stávající aplikace MongoDB napsané v Node.js a jejím připojení k databázi Azure Cosmos DB, která podporuje klientská připojení MongoDB pomocí [služby Azure Cosmos DB pro rozhraní MongoDB API](mongodb-introduction.md). Jinými slovy aplikace Node.js ví pouze to, že se připojuje k databázi pomocí služby Azure Cosmos DB pro rozhraní API MongoDB. V aplikaci se transparentně zobrazuje, že data jsou uložena ve službě Azure Cosmos DB.
+Tento rychlý start popisuje způsob použití stávající aplikace MongoDB napsané v Node.js a jejím připojení k databázi Cosmos, která podporuje klienta MongoDB. Jinými slovy je transparentní pro aplikace, že jsou data uložená v databázi Cosmos.
 
-Po dokončení budete mít ve službě [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) spuštěnou aplikaci MEAN (MongoDB, Express, Angular a Node.js). 
+Jakmile budete hotovi, budete mít spuštěnou aplikaci MEAN (MongoDB, Express, Angular a Node.js) na [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). 
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/create-mongodb-nodejs/meanjs-in-azure.png)
 
@@ -109,9 +109,9 @@ az group create --name myResourceGroup --location "West Europe"
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Pomocí příkazu [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) vytvořte účet služby Azure Cosmos DB.
+Vytvořit účet Cosmos s [az cosmosdb vytvořit](/cli/azure/cosmosdb#az-cosmosdb-create) příkazu.
 
-V následujícím příkazu nahraďte zástupný symbol `<cosmosdb-name>` vlastním jedinečným názvem účtu služby Azure Cosmos DB. Tento jedinečný název se použije jako součást koncového bodu služby Azure Cosmos DB (`https://<cosmosdb-name>.documents.azure.com/`). Název proto musí být jedinečný ve všech účtech služby Azure Cosmos DB platformy Azure. 
+V následujícím příkazu nahraďte vlastním jedinečným názvem účtu Cosmos, kde se zobrazují `<cosmosdb-name>` zástupný symbol. Tento jedinečný název se použije jako součást koncového bodu služby Cosmos DB (`https://<cosmosdb-name>.documents.azure.com/`), takže název musí být jedinečný ve všech účtech Cosmos v Azure. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -158,14 +158,14 @@ DB/databaseAccounts/<cosmosdb-name>",
 
 ## <a name="connect-your-nodejs-application-to-the-database"></a>Připojení aplikace Node.js k databázi
 
-V tomto kroku připojíte ukázkovou aplikaci MEAN.js k právě vytvořené databázi služby Azure Cosmos DB, a to pomocí připojovacího řetězce MongoDB. 
+V tomto kroku připojíte ukázkovou aplikaci MEAN.js k databázi Cosmos, kterou jste právě vytvořili. 
 
 <a name="devconfig"></a>
 ## <a name="configure-the-connection-string-in-your-nodejs-application"></a>Konfigurace připojovacího řetězce v aplikaci Node.js
 
 V úložišti MEAN.js otevřete `config/env/local-development.js`.
 
-Obsah tohoto souboru nahraďte následujícím kódem. Nezapomeňte nahradit také dva zástupné symboly `<cosmosdb-name>` názvem vašeho účtu služby Azure Cosmos DB.
+Obsah tohoto souboru nahraďte následujícím kódem. Nezapomeňte nahradit také dva `<cosmosdb-name>` zástupné texty názvem svého účtu Cosmos.
 
 ```javascript
 'use strict';
@@ -179,7 +179,7 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>Načtení klíče
 
-Aby bylo možné se připojit k databázi služby Azure Cosmos DB, potřebujete klíč databáze. Pro načtení primárního klíče použijte příkaz [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys).
+Abyste se mohli připojit k databázi Cosmos, potřebujete klíč databáze. Pro načtení primárního klíče použijte příkaz [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys).
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
@@ -213,18 +213,18 @@ Ukázková aplikace MEAN.js ukládá data uživatelů v databázi. Pokud budete
 
 ## <a name="view-data-in-data-explorer"></a>Zobrazení dat v Průzkumníku dat
 
-Data uložená službou Azure Cosmos DB je možné zobrazovat a je možné se na ně dotazovat a spouštět na ně obchodní logiku na portálu Azure Portal.
+Data uložená v databázi Cosmos je k dispozici k zobrazení a dotazování na webu Azure Portal.
 
 Pokud chcete zobrazovat uživatelská data vytvořená v předchozím kroku, zadávat na ně dotazy a pracovat s nimi, přihlaste se k portálu [Azure Portal](https://portal.azure.com) ve webovém prohlížeči.
 
-V horním vyhledávacím poli zadejte Azure Cosmos DB. Po otevření okna účtu služby Cosmos DB vyberte účet Cosmos DB. V levém navigačním panelu klikněte na Průzkumník dat. Rozbalte kolekci v podokně Kolekce. Pak můžete zobrazovat dokumenty v kolekci, dotazovat se na data a dokonce vytvářet a spouštět uložené procedury, triggery a funkce UDF. 
+V horním vyhledávacím poli zadejte Azure Cosmos DB. Když se otevře okno účtu Cosmos, vyberte svůj účet Cosmos. V levém navigačním panelu klikněte na Průzkumník dat. Rozbalte kolekci v podokně Kolekce. Pak můžete zobrazovat dokumenty v kolekci, dotazovat se na data a dokonce vytvářet a spouštět uložené procedury, triggery a funkce UDF. 
 
 ![Průzkumník dat na portálu Azure Portal](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>Nasaďte aplikaci Node.js do platformy Azure
 
-V tomto kroku se nasazuje aplikace Node.js připojená k databázi MongoDB ke službě Azure Cosmos DB.
+V tomto kroku nasadíte svou aplikaci Node.js do služby Cosmos DB.
 
 Pravděpodobně jste si všimli, že dříve změněný soubor konfigurace je určený pro vývojové prostředí (`/config/env/local-development.js`). Pokud nasadíte aplikaci do služby App Service, bude se ve výchozím nastavení spouštět v produkčním prostředí. Teď tedy musíte provést stejné změny v příslušném souboru konfigurace.
 
@@ -237,7 +237,7 @@ V objektu `db` nahraďte hodnotu `uri` tak, jak je uvedeno v následujícím p
 ```
 
 > [!NOTE] 
-> Možnost `ssl=true` je důležitá, protože [služba Azure Cosmos DB vyžaduje SSL](connect-mongodb-account.md#connection-string-requirements). 
+> `ssl=true` Možnost je důležité, protože [Cosmos DB vyžaduje SSL](connect-mongodb-account.md#connection-string-requirements). 
 >
 >
 
@@ -253,7 +253,7 @@ git commit -m "configured MongoDB connection string"
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze služby Azure Cosmos DB a vytvoření kolekce MongoDB pomocí Průzkumníku dat. Teď můžete migrovat data MongoDB do služby Azure Cosmos DB.  
+V tomto rychlém startu jste zjistili, jak vytvořit účet Cosmos, vytvoření kolekce a spustíte aplikaci konzoly. Teď můžete importovat další data k databázi Cosmos. 
 
 > [!div class="nextstepaction"]
 > [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)

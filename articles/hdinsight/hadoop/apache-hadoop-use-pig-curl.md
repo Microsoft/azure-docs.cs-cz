@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434004"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715422"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Spouštět úlohy Apache Pig s Apache Hadoop v HDInsight pomocí REST
 
@@ -101,7 +101,7 @@ Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do c
 
 Když má stav úlohy změní na **SUCCEEDED**, můžete načíst výsledky úlohy. `statusdir` Parametr předaný s dotazem obsahuje umístění výstupního souboru; v takovém případě `/example/pigcurl`.
 
-HDInsight můžete použít Azure Storage nebo Azure Data Lake Storage jako výchozího datového úložiště. Existují různé způsoby, jak získat data v závislosti na tom, co používáte. Další informace najdete v části úložiště [Linuxovým systémem HDInsight informace](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentu.
+HDInsight můžete použít Azure Storage nebo Azure Data Lake Storage jako výchozího datového úložiště. Existují různé způsoby, jak získat data v závislosti na tom, co používáte. Další informace najdete v části úložiště [Linuxovým systémem HDInsight informace](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-storage) dokumentu.
 
 ## <a id="summary"></a>Shrnutí
 

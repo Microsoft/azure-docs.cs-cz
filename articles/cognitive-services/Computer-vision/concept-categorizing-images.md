@@ -1,7 +1,7 @@
 ---
 title: Kategorizace obrázků – pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související s kategorizace obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
+description: Další koncepty související s funkcí kategorizace obrázků z rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 7062d98d40c15f4e9e873038fc12fc1b104c996d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 40873b13407066920caec5c04751b65c01d7e209
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333475"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579494"
 ---
-# <a name="categorizing-images"></a>Kategorizace obrázků
+# <a name="image-categorization-with-computer-vision"></a>Kategorizace obrázků s pro počítačové zpracování obrazu
 
 Kromě označování a popisy pro počítačové zpracování obrazu vrací taxonomie podle kategorie definované v předchozích verzích. Tyto kategorie jsou taxonomicky uspořádané jako dědičné hierarchie nadřízených a podřízených prvků. Všechny kategorie jsou v angličtině. Bylo možné samostatně nebo s naší novou označování modely.
 
@@ -31,7 +32,7 @@ Na základě seznamu konceptů 86 vidět v následujícím diagramu, bitovou kop
 
 Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při zařazení na obrázku podle jeho vizuální funkce.
 
-![Žena na střeše](./Images/woman_roof.png)
+![Žena stropu budovy objektu apartment](./Images/woman_roof.png)
 
 ```json
 {
@@ -54,10 +55,10 @@ Následující tabulka ukazuje typické bitové kopie sady a kategorie vrátil p
 
 | Image | Kategorie |
 |-------|----------|
-| ![Rodinná fotka](./Images/family_photo.png) | people_group |
-| ![Pejsek](./Images/cute_dog.png) | animal_dog |
-| ![Na horách](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Vizuální analýza pečiva](./Images/bread.png) | food_bread |
+| ![Čtyřmi lidmi kompenzaci společně jako skupina](./Images/family_photo.png) | people_group |
+| ![Štěněte chladniček na grassy pole](./Images/cute_dog.png) | animal_dog |
+| ![Osoba na rock Horská oblast, abyste se při západu slunce](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Celé řady bread role na tabulku](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>Další postup
 

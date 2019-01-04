@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9ef3525d7867d0ef01b6f17035039d4a4e6def93
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874539"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793508"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -39,31 +39,34 @@ Ano. Budete však muset [zastavit ochranu](backup-azure-files.md#stop-protecting
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Ve kterých zeměpisných oblastech můžu zálohovat sdílené složky Azure? <br/>
 Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k dispozici pouze v následujících zeměpisných oblastech: 
--   Austrálie – východ (AE) 
+- Austrálie – východ (AE) 
 - Austrálie – jihovýchod (ASE) 
 - Brazílie – jih (BRS)
 - Kanada – střed (CNC)
--   Kanada – východ (CE)
--   USA – střed (CUS)
--   Východní Asie (EA)
--   USA – východ (EUS)
--   USA – východ 2 (EUS2)
+- Kanada – východ (CE)
+- USA – střed (CUS)
+- Východní Asie (EA)
+- USA – východ (EUS)
+- USA – východ 2 (EUS2)
 - Japonsko – východ (JPE)
 - Japonsko – západ (JPW)
--   Indie – střed (INC) 
+- Indie – střed (INC) 
 - Indie – jih (INS)
 - Jižní Korea – střed (KRC)
 - Jižní Korea – jih (KRS)
--   Střed USA – sever (NCUS) 
--   Severní Evropa (NE) 
--   Střed USA – jih (SCUS) 
--   Jihovýchodní Asie (SEA)
--   Velká Británie – jih (UKS) 
--   Velká Británie – západ (UKW) 
--   Západní Evropa (WE) 
--   Západní USA (WUS)
--   Střed USA – západ (WCUS)
--   Západní USA 2 (WUS 2)
+- Střed USA – sever (NCUS) 
+- Severní Evropa (NE) 
+- Střed USA – jih (SCUS) 
+- Jihovýchodní Asie (SEA)
+- Velká Británie – jih (UKS) 
+- Velká Británie – západ (UKW) 
+- Západní Evropa (WE) 
+- Západní USA (WUS)
+- Střed USA – západ (WCUS)
+- Západní USA 2 (WUS 2)
+- US Gov Arizona (UGA)
+- US Gov Texas (UGT)
+- US Gov Virginie (UGV)
 
 Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 

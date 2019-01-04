@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
-ms.openlocfilehash: e9fbe59c40fe55218429a3b479ddbbec7220c66a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056643"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789462"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Úvod do cloudové služby monitorování
 
-Můžete monitorovat klíčové metriky výkonu pro kteroukoli cloudovou službu. Shromažďuje minimální údaje o každé role cloudové služby: využití CPU, využití sítě a využití disku. Pokud má cloudové služby `Microsoft.Azure.Diagnostics` rozšíření u role, tuto roli můžete shromažďovat další datové body. Tento článek obsahuje úvod do Azure Diagnostics pro cloudové služby.
+Můžete monitorovat klíčové metriky výkonu pro kteroukoli cloudovou službu. Shromažďuje minimální údaje o každé role cloudové služby: Využití procesoru, využití sítě a využití disku. Pokud má cloudové služby `Microsoft.Azure.Diagnostics` rozšíření u role, tuto roli můžete shromažďovat další datové body. Tento článek obsahuje úvod do Azure Diagnostics pro cloudové služby.
 
 Základní monitorování data čítače výkonu z instancí rolí je Vzorkovaná a shromážděných v intervalech 3minutové. Tato základní monitorování data nejsou uložená v účtu úložiště a k němu má přidružené žádné další poplatky.
 
@@ -93,13 +93,13 @@ Pravděpodobně máte dva **.cscfg** soubory, jednu s názvem **ServiceConfigura
 
 ## <a name="use-application-insights"></a>Pomocí služby Application Insights
 
-Když publikujete Cloudovou službu v sadě Visual Studio, budete mít možnost posílat diagnostická data do Application Insights. Můžete vytvoří prostředek služby Application Insights Azure v daném čase nebo odesílat data do stávající prostředky Azure. Cloudové služby můžete monitorovat pomocí Application Insights pro dostupnost, výkon, chyby a využití. Vlastní grafy můžete přidat do služby Application Insights, kde můžete zobrazit data, která nejvíc záleží. Pomocí Application Insights SDK do projektu cloudové služby se můžou shromažďovat role instance data. Další informace o tom, jak integrovat Application Insights najdete v tématu [Application Insights s cloudovými službami](../application-insights/app-insights-cloudservices.md).
+Když publikujete Cloudovou službu v sadě Visual Studio, budete mít možnost posílat diagnostická data do Application Insights. Můžete vytvoří prostředek služby Application Insights Azure v daném čase nebo odesílat data do stávající prostředky Azure. Cloudové služby můžete monitorovat pomocí Application Insights pro dostupnost, výkon, chyby a využití. Vlastní grafy můžete přidat do služby Application Insights, kde můžete zobrazit data, která nejvíc záleží. Pomocí Application Insights SDK do projektu cloudové služby se můžou shromažďovat role instance data. Další informace o tom, jak integrovat Application Insights najdete v tématu [Application Insights s cloudovými službami](../azure-monitor/app/cloudservices.md).
 
 Všimněte si, že zatímco Application Insights můžete použít k zobrazení čítačů výkonu (a další nastavení) zadáte prostřednictvím rozšíření diagnostiky Windows Azure, můžete pouze získat pohodlnější a pestřejší prostředí díky integraci služby Application Insights SDK do vaší role pracovního procesu a web.
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Další informace o Application Insights s cloudovými službami](../application-insights/app-insights-cloudservices.md)
+- [Další informace o Application Insights s cloudovými službami](../azure-monitor/app/cloudservices.md)
 - [Nastavení čítače výkonu](diagnostics-performance-counters.md)
 

@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 7d914f394ecfcf02ed26f41cd8fe2ef799cf6103
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 371fa639b2edc300e44cc495393e89c9fce9c4bf
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966734"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580854"
 ---
-# <a name="generating-thumbnails"></a>Generování miniatur
+# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generuje se oříznou kolem smart miniatury s pro počítačové zpracování obrazu
 
 Miniatura je reprezentace snížit velikost obrázku. Miniatury se používá k reprezentování obrázky a další data úspornější a podporou rozložení způsobem. Rozhraní API pro počítačové zpracování obrazu používá inteligentní oříznutí, společně se změna velikosti obrázku, k vytvoření intuitivní miniatury pro danou image.
 
@@ -42,9 +43,9 @@ Následující tabulka ukazuje typické miniatury generovaných pro počítačov
 
 | Image | Miniatura |
 |-------|-----------|
-|![Na horách](./Images/mountain_vista.png) | ![Horská oblast venku miniaturu](./Images/mountain_vista_thumbnail.png) |
-|![Vizuální analýza květiny](./Images/flower.png) | ![Analýza květinu miniaturu pro zpracování obrazu](./Images/flower_thumbnail.png) |
-|![Žena na střeše](./Images/woman_roof.png) | ![Žena stříška miniaturu](./Images/woman_roof_thumbnail.png) |
+|![Osoba na rock Horská oblast, abyste se při západu slunce](./Images/mountain_vista.png) | ![Horská oblast venku miniaturu](./Images/mountain_vista_thumbnail.png) |
+|![Bílé květinu zeleným pozadím](./Images/flower.png) | ![Analýza květinu miniaturu pro zpracování obrazu](./Images/flower_thumbnail.png) |
+|![Žena stropu budovy objektu apartment](./Images/woman_roof.png) | ![Žena stříška miniaturu](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>Další postup
 

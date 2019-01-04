@@ -14,17 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: borisb
-ms.openlocfilehash: 20fe724d32e31e1bacbad024cc934f89af12f112
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0755d472ef6b2566d7faa51019da7d49266fa199
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139924"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993208"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure pro virtuální počítače na vyžádání Red Hat Enterprise Linuxem v Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umožňuje poskytovateli cloudu, jako je Azure, které zrcadlí obsahu úložiště hostované v systému Red Hat, vytvořte vlastní úložiště s týkající se Azure obsahu a ji dejte k dispozici pro virtuální počítače koncového uživatele.
 
 Image Red Hat Enterprise Linux (RHEL) průběžných plateb (PAYG) jsou předem nakonfigurovaný pro přístup k Azure RHUI. Je potřeba žádná další konfigurace. Chcete-li získat nejnovější aktualizace, spusťte `sudo yum update` po RHEL instance je připravený. Tato služba je součástí poplatky za software RHEL průběžné platby.
+
+Další informace pro Image RHEL v Azure, včetně publikování a zásady uchovávání informací jsou k dispozici [tady](./rhel-images.md).
 
 ## <a name="important-information-about-azure-rhui"></a>Důležité informace o Azure RHUI
 * Azure RHUI aktuálně podporuje pouze nejnovější podverzi v každé rodině RHEL (počítače RHEL6 nebo RHEL7). Pokud chcete upgradovat instanci virtuálního počítače RHEL připojené k RHUI nejnovější dílčí verzi, spusťte `sudo yum update`.
@@ -35,9 +37,37 @@ Image Red Hat Enterprise Linux (RHEL) průběžných plateb (PAYG) jsou předem 
 
 * Přístup ke RHUI hostovaných v Azure je součástí ceny image RHEL průběžné platby. Pokud můžete zrušit registraci virtuálního počítače s průběžnými PLATBAMI RHEL od RHUI hostovaných v Azure, který není převést virtuální počítač do typu přineste si – používání vlastní licence (BYOL) virtuálního počítače. Když si zaregistrujete stejný virtuální počítač s jiný zdroj aktualizací, můžou vám být účtovány _nepřímé_ dvakrát poplatky. Vám budou účtovány poprvé poplatek za software RHEL v Azure. Vám budou účtovány podruhé pro předplatných Red Hat, které byly zakoupeny dříve. Pokud je potřeba konzistentně použití aktualizace infrastruktury než RHUI hostovaných v Azure, zvažte vytvoření a nasazení vlastních imagí (BYOL-type). Tento proces je popsán v [vytvoření a nahrání virtuálního počítače založeného na Red Hat pro Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-* Dvě třídy imagí RHEL PAYG v Azure (RHEL for SAP HANA) a RHEL for SAP Business Applications jsou připojené k vyhrazené RHUI kanály, které zůstávají na konkrétní dílčí verze RHEL podle potřeby k certifikaci pro SAP.
+* Image RHEL SAP PAYG v Azure (RHEL for SAP, RHEL for SAP HANA a RHEL for SAP Business Applications) jsou připojené k vyhrazené RHUI kanály, které zůstávají na konkrétní dílčí verze RHEL podle potřeby k certifikaci pro SAP.
 
 * Přístup ke RHUI hostovaných v Azure je omezený na virtuální počítače v rámci [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jste připojení přes server proxy veškerý provoz virtuálního počítače přes místní síťové infrastruktury, musíte nastavit trasy definované uživatelem pro virtuální počítače s průběžnými PLATBAMI RHEL pro přístup k Azure RHUI.
+
+### <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEl EUS a zamykání verze RHEL virtuálních počítačů
+Někteří zákazníci mohou chcete zamknout své virtuální počítače RHEL do některých vydání vedlejší verze RHEL. Verze zámku můžete aktualizací úložiště tak, aby odkazoval na rozšířenou podporu aktualizace úložiště virtuálního počítače RHEL, aby konkrétní podverze. Pomocí následujících pokynů k uzamčení virtuální počítač s RHEL do určité dílčí verze:
+
+>[!NOTE]
+> To platí jenom pro RHEL 7.2 7.5
+
+1. Zakažte jiné EUS úložišť:
+    ```
+    sudo yum --disablerepo=* remove rhui-azure-rhel7
+    ```
+
+1. Přidáte EUS úložišť:
+    ```
+    yum --config=https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config install rhui-azure-rhel7-eus
+    ```
+
+1. Zámek releasever proměnné:
+    ```
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > RHEL dílčí verze na aktuální vydání vedlejší dojde k uzamčení podle výše uvedených pokynů. Zadejte konkrétní podverzi, pokud chcete upgradovat a uzamknout novější verze, která není na nejnovější verzi. Například `echo 7.5 > /etc/yum/vars/releasever` dojde k uzamčení vaše RHEL verze RHEL 7.5
+1. Aktualizovat váš virtuální počítač s RHEL
+    ```bash
+    sudo yum update
+    ```
 
 ### <a name="the-ips-for-the-rhui-content-delivery-servers"></a>IP adresy serverů pro doručování obsahu RHUI
 
@@ -70,13 +100,19 @@ Nasazení nových serverů Azure RHUI se používají [Azure Traffic Manager](ht
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Aktualizovat certifikát s prošlou platností klienta RHUI na virtuálním počítači
 
-Pokud používáte starší image virtuálního počítače RHEL, například RHEL 7.4 (obrázku URN: `RedHat:RHEL:7.4:7.4.2018010506`), dojde k problémům s připojením k RHUI kvůli klientský certifikát SSL vypršela (v listopadu 2018 21). Chcete-li tento problém vyřešit, aktualizujte prosím balíček klienta RHUI na virtuálním počítači pomocí následujícího příkazu
+Pokud používáte starší image virtuálního počítače RHEL, například RHEL 7.4 (obrázku URN: `RedHat:RHEL:7.4:7.4.2018010506`), dojde k problémům s připojením k RHUI kvůli klientský certifikát SSL vypršela (v listopadu 2018 21). Chcete-li tento problém vyřešit, aktualizujte prosím balíček klienta RHUI na virtuálním počítači pomocí následujícího příkazu:
 
 ```bash
 sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-azure-rhel7
 ```
 
-Alternativně systémem `sudo yum update` se aktualizuje i tento balíček bez ohledu na "vypršela platnost certifikátu SSL" chyby, zobrazí se pro jiné úložiště. Po aktualizaci, normální připojení do jiných úložišť RHUI by se měla obnovit.
+Pokud je váš virtuální počítač s RHEL v cloudu pro státní správu USA, použijte následující příkaz:
+```bash
+sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-usgov-rhel7
+```
+
+Alternativně systémem `sudo yum update` také aktualizuje balíček certifikátů klienta bez ohledu na "vypršela platnost certifikátu SSL" chyby, zobrazí se pro jiné úložiště. Po aktualizaci, by měl normální připojení do jiných úložišť RHUI obnoví, tak bude moct spustit `sudo yum update` úspěšně.
+
 
 ### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Potíže s připojením k Azure RHUI
 Pokud máte potíže s připojením k Azure RHUI z vašeho virtuálního počítače Azure RHEL průběžné platby, postupujte podle těchto kroků:
@@ -179,5 +215,6 @@ Tento postup je k dispozici pouze pro referenci. Image RHEL PAYG už máte sprá
 1. Po dokončení, ověřte, že se dá dostat Azure RHUI z virtuálního počítače.
 
 ## <a name="next-steps"></a>Další postup
-Vytvoření virtuálního počítače s Red Hat Enterprise Linuxem z image Azure Marketplace s průběžnými PLATBAMI a použít RHUI hostovaných v Azure, přejděte [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/).
+* Vytvoření virtuálního počítače s Red Hat Enterprise Linuxem z image Azure Marketplace s průběžnými PLATBAMI a použít RHUI hostovaných v Azure, přejděte [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/).
+* Další informace o Image Red Hat v Azure, přejděte [stránky dokumentace](./rhel-images.md).
 

@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 622aa49a8dffa933499c243bd723ce2d67a4c251
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6cbeb44e5dfca84bc85a6be4c4b44cb59bad783a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714896"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755117"
 ---
-# <a name="tutorial-1-fix-unsure-predictions"></a>Kurz 1: Oprava nejistých předpovědí
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Oprava jisti predikcí kontrolou projevy koncového bodu
 V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
 
 Tento proces kontroly představuje další způsob, jakým se LUIS seznamuje s vaší aplikační doménou. Služba LUIS vybrala promluvy zobrazené v seznamu revizí. Tento seznam:
@@ -33,7 +33,7 @@ Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný 
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Používat existující ukázkovou aplikaci
+> * Importovat ukázková aplikace
 > * Kontrola promluv koncového bodu
 > * Aktualizace seznamu frází
 > * Vytrénovat aplikaci
@@ -42,11 +42,11 @@ Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Použití existující aplikace
+## <a name="import-example-app"></a>Importovat ukázková aplikace
 
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
+Použijte k tomu následující postup:
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json) a uložte si ho.
 

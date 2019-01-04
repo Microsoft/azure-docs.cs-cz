@@ -1,23 +1,23 @@
 ---
-title: Vytvoření konzolové aplikace pomocí Javy a rozhraní Azure Cosmos DB pro rozhraní API MongoDB
-description: Představuje ukázku kódu Java, které můžete použít k připojení a dotazování služby Azure Cosmos DB pro rozhraní MongoDB API
+title: Sestavit aplikaci konzoly pomocí rozhraní API služby Azure Cosmos DB pro MongoDB a sady Java SDK
+description: Představuje ukázku kódu Java, které můžete použít k připojení a dotazování pomocí rozhraní API služby Azure Cosmos DB pro MongoDB.
 services: cosmos-db
-author: slyons
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.custom: quick start connect, mvc
+ms.custom: quickstart
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 05/10/2017
-ms.author: sclyon
-ms.openlocfilehash: 106db77dbd884ea15e12ccfc49a8de7e6c3c1924
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/26/2017
+ms.author: rimman
+ms.openlocfilehash: 6a27958a38006d8ef81fab469bbf3c9d97e90a69
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717666"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793124"
 ---
-# <a name="build-a-console-app-with-java-and-the-azure-cosmos-db-for-mongodb-api"></a>Vytvoření konzolové aplikace pomocí Javy a rozhraní Azure Cosmos DB pro rozhraní API MongoDB
+# <a name="build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>Vytvoření webové aplikace pomocí rozhraní API služby Azure Cosmos DB pro MongoDB a sady Java SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -28,9 +28,9 @@ ms.locfileid: "53717666"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazování databází dokument, klíč/hodnota a grafů, které můžou využívat výhody globální distribuce a možností horizontálního škálování v jádru služby Cosmos DB. 
 
-Tento rychlý start ukazuje, jak vytvořit [služby Azure Cosmos DB pro rozhraní MongoDB API](mongodb-introduction.md) účtu, databáze dokumentů a kolekce pomocí webu Azure portal. Potom sestavíte a nasadíte aplikaci konzoly založenou na [ovladači Java MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
+Tento rychlý start ukazuje, jak vytvořit účet Cosmos s [rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md). Potom sestavíte a nasadíte aplikaci konzoly založenou pomocí [ovladači MongoDB Java](https://docs.mongodb.com/ecosystem/drivers/java/). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -137,9 +137,7 @@ Teď můžete provádět dotazy a úpravy a pracovat s těmito novými daty v pr
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, vytvoření kolekce pomocí Průzkumníka dat a spuštění aplikace konzoly. Teď můžete do účtu Cosmos DB importovat další data. 
+V tomto rychlém startu jste zjistili, jak vytvořit účet Cosmos, vytvoření kolekce a spustíte aplikaci konzoly. Teď můžete importovat další data k databázi Cosmos.
 
 > [!div class="nextstepaction"]
-> [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)
-
-
+> [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)

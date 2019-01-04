@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/21/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 73d4ecec2665e238236de4a778d6cdd43642c87b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310391"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716612"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -83,11 +83,11 @@ Rozhraní API v3 má následující funkce mezer s ohledem na rozhraní API v2. 
     * Překrytí
     * Oříznutí
     * Prvky, které budou miniatur
-* LiveEvents s překódování aktuálně nepodporují stream Střední břidlicová vložení, vlastní předvolby nebo vkládáním značek prostřednictvím volání rozhraní API. 
+* LiveEvents s překódování aktuálně nepodporují břidlicová kurzor umístíte dovnitř datového proudu a ad vkládáním značek pro reklamy prostřednictvím volání rozhraní API. 
 
 > [!NOTE]
 > Tento článek (záložky) a zachovat, vyhledávají se aktualizace.
-
+ 
 ## <a name="code-differences"></a>Rozdílů v kódu
 
 V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné scénáře.
@@ -108,7 +108,7 @@ V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné
     * Kanály a programy vytvořené pomocí v2 (které jsou mapovány na LiveEvents a LiveOutputs ve verzi 3) nemůže pokračovat, spravován pomocí v3. Doporučuje se přepnout na v3 LiveEvents a LiveOutputs na vhodné zastavit kanál.<br/>V současné době nemůžete migrovat průběžně běžícím kanálům se půjde.  
 
 > [!NOTE]
-> Tento článek (záložky) a zachovat, vyhledávají se aktualizace.
+> Tato stránka se zachová, a tým Media Services umožňuje další vylepšení rozhraní API v3 se zaměřuje na mezery mezi verzemi.
 
 ## <a name="next-steps"></a>Další postup
 

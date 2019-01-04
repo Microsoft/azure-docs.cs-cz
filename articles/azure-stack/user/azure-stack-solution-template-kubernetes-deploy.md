@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5573c7f122360b3bd3adeb9dcca1c827a1933f70
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959457"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722392"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Nasazení Kubernetes pro Azure Stack
 
@@ -101,7 +101,7 @@ Poskytněte přístup instančního objektu služby do vašeho předplatného, t
 
 1. Vyberte předplatné vytvořené operátor pro použití clusteru Kubernetes.
 
-1. Vyberte **řízení přístupu (IAM)** > vyberte **+ přidat**.
+1. Vyberte **řízení přístupu (IAM)** > vyberte **přidat přiřazení role**.
 
 1. Vyberte **Přispěvatel** role.
 

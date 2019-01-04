@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: f76dfc8499d294c2c682c4d9c4cf2cd2f858432f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 547cc30bdf3dedff30c28165a7a76093a6512b83
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408850"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993075"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
@@ -126,7 +126,7 @@ V tomto kroku vytvoření a vyplnění jednoduché tabulky v Apache HBase, kter�
 1. Připojení k hlavnímu uzlu clusteru Sparku pomocí protokolu SSH.
 2. Spusťte prostředí sparku, určení balíčků konektor Spark HBase:
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/content/groups/public/
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
 
 3. Ponechat otevřené tuto instanci prostředí Spark a pokračovat k dalšímu kroku.
 

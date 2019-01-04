@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4b673423bcf3785b29cc287e025d1ee52bc402f7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 51707baeba4a511d2766161afacd512a4338cf24
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312898"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653981"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Použití Apache Phoenixu s clustery založené na Linuxu Apache HBase v HDInsight
-Další informace o použití [Apache Phoenix](http://phoenix.apache.org/) v Azure HDInsight a jak používat SQLLine. Další informace o Phoenix, naleznete v tématu [Phoenix za 15 minut nebo i rychleji](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Gramatika Phoenix, naleznete v tématu [Phoenix gramatiky](http://phoenix.apache.org/language/index.html).
+Další informace o použití [Apache Phoenix](https://phoenix.apache.org/) v Azure HDInsight a jak používat SQLLine. Další informace o Phoenix, naleznete v tématu [Apache Phoenix za 15 minut nebo i rychleji](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Gramatika Phoenix, naleznete v tématu [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html).
 
-> [!NOTE]
-> Phoenix verze informace o HDInsight najdete v tématu [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight](../hdinsight-component-versioning.md).
+> [!NOTE]  
+> Phoenix verze informace o HDInsight najdete v tématu [co je nového ve verzích clusterů systému Apache Hadoop poskytovaných službou HDInsight](../hdinsight-component-versioning.md).
 >
 >
 
@@ -61,7 +61,7 @@ Když se připojíte ke clusteru služby HBase, budete muset připojit k jednomu
 
         !quit
 
-Další informace najdete v tématu [SQLLine ruční](http://sqlline.sourceforge.net/#manual) a [Apache Phoenix gramatiky](http://phoenix.apache.org/language/index.html).
+Další informace najdete v tématu [SQLLine ruční](http://sqlline.sourceforge.net/#manual) a [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html).
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak používat Apache Phoenix v HDInsight. Další informace najdete v těchto článcích:

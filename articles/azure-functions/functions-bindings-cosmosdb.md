@@ -10,16 +10,16 @@ ms.service: azure-functions; cosmos-db
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 2a501129720447462d1e6e961597b51fa683dc1e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 4c5d7c1ebf50103786aaf07f298b5b4d971ad955
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136201"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971950"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 1.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Vyberte verzi programu Azure Functions, který používáte: "]
 > * [Verze 1](functions-bindings-cosmosdb.md)
 > * [Verze 2](functions-bindings-cosmosdb-v2.md)
 
@@ -33,7 +33,7 @@ Tento článek vysvětluje, jak pracovat s [služby Azure Cosmos DB](../cosmos-d
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Vazby Azure Cosmos DB se podporují jenom pro použití s rozhraním SQL API. Pro všechny ostatní Azure Cosmos DB API, by měl přístup k databázi z funkce s použitím statické klienta pro vaše rozhraní API, včetně [rozhraní MongoDB API](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [rozhraní Cassandra API](../cosmos-db/cassandra-introduction.md), [Gremlin API](../cosmos-db/graph-introduction.md), a [Table API](../cosmos-db/table-introduction.md).
+> Vazby Azure Cosmos DB se podporují jenom pro použití s rozhraním SQL API. Pro všechny ostatní Azure Cosmos DB API, by měl přístup k databázi z funkce s použitím statické klienta pro vaše rozhraní API, včetně [služby Azure Cosmos DB pro rozhraní MongoDB API](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [rozhraní Cassandra API](../cosmos-db/cassandra-introduction.md), [Gremlin API](../cosmos-db/graph-introduction.md), a [Table API](../cosmos-db/table-introduction.md).
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
@@ -198,8 +198,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval aktivovala úloha Vypočítat, pokud oddíly jsou rovnoměrně mezi známými hostiteli instance. Výchozí hodnota je 13000 (13 sekund).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, pro kterou je zapůjčení pořízené zapůjčení představující oddílu. Pokud v rámci tohoto intervalu nedojde k jeho prodloužení zapůjčení, způsobí vypršení platnosti a vlastnictví oddílu se přesune do jiné instance. Výchozí hodnota je 60000 (60 sekund).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval obnovení pro všechny zapůjčení pro oddíly právě načtený v instanci. Výchozí hodnota je 17000 (17 sekund).
-|**checkpointFrequency**| **checkpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po úspěšném volání funkce.
+|**checkpointFrequency**| **checkpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po každé volání funkce.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Volitelné) Pokud nastavíte, přizpůsobuje maximální objem přijatých položek pro volání funkce.
+|**startFromBeginning**| **StartFromBeginning**| (Volitelné) Pokud nastavíte, sdělí triggeru pro spuštění čtení změny od začátku této historie kolekce místo aktuální čas. Toto funguje, pouze při prvním spuštění triggeru, stejně jako v následné spuštění, kontrolní body jsou již uloženy. Nastavení na `true` pokud existuje zapůjčení už vytvořili nemá žádný vliv.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

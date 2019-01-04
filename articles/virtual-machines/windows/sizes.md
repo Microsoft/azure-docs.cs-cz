@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/14/2018
 ms.author: jonbeck
-ms.openlocfilehash: de8e16584f6e6a67d7869f037433de00cfdc2024
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: da679436efede3ec12851578f50a91874eabece7
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705459"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754709"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů Windows v Azure
 
@@ -32,7 +32,7 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 | [Obecné účely](sizes-general.md)          | B, Dsv3, Dv3, DSv2, Dv2, Av2, DC | Vyvážený poměr procesorů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. |
 | [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)        | Fsv2, Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
 | [Optimalizované z hlediska paměti](../virtual-machines-windows-sizes-memory.md)         | Esv3, Ev3, M, GS, G, DSv2, Dv2  | Vysoký poměr paměti na procesor. Velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti.                 |
-| [Optimalizované z hlediska úložiště](../virtual-machines-windows-sizes-storage.md)        | Ls                | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
+| [Optimalizované z hlediska úložiště](../virtual-machines-windows-sizes-storage.md)        | Lsv2 Ls                | Vysoká propustnost disku a vstupně-výstupních operací ideální pro velké objemy dat, SQL, NoSQL databáze, datových skladů a velké transakční databáze.  |
 | [GPU](sizes-gpu.md)            | NV NVv2, síťového adaptéru, NCv2, NCv3, ND, Ndv2 (Preview)            | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa, jakož i model trénování a odvozování (ND) s obsáhlým learningem. K dispozici s jedním nebo několika grafickými procesory.       |
 | [Vysokovýkonné výpočetní prostředí](sizes-hpc.md) | H       | Naše nejrychlejší a procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: c2e278b606ebfb445fc76294b2fac78d729aa970
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 44f93cc72915b378d0e05287deff3540fe347f99
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606159"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995129"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Azure Key Vault používat s webovou aplikaci Azure v .NET
 
@@ -256,4 +256,4 @@ Nyní teď úspěšně jste vytvořili webovou aplikaci v .NET, která ukládá 
 ## <a name="next-steps"></a>Další postup
 
 >[!div class="nextstepaction"]
->[Průvodce vývojáře pro Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-developers-guide)
+>[Průvodce vývojáře pro Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-developers-guide)

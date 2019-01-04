@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a6343d9bd2009ee2c16f0cca3118e5653faa4c07
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f9f0c52c187b36416dbc77f280a8f6148cf1cbbc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138683"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971048"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Principy záměry aplikace LUIS
 
@@ -58,7 +58,7 @@ Podobně míněný [projevy](luis-concept-utterance.md) odpovídají jedné zám
 [Předem připravených domén](luis-how-to-use-prebuilt-domains.md) mají záměry s projevy.  
 
 ## <a name="none-intent-is-fallback-for-app"></a>Žádná záměru není pro aplikaci pro použití náhradní lokality
-**Žádný** pokrývající vše nebo záložní záměr je cílem. Používá se naučit LUIS projevy, které nejsou důležité v doméně aplikace (oblastí). **Žádný** záměr by měl mít 10 až 20 procent celkového projevy v aplikaci. Nenechávejte ho prázdný. 
+**Žádný** pokrývající vše nebo záložní záměr je cílem. Používá se naučit LUIS projevy, které nejsou důležité v doméně aplikace (oblastí). **Žádný** záměr by měl mít 10 až 20 procent celkového projevy v aplikaci. Nenechávají žádný prázdný. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Žádný záměru pomáhá směr konverzace
 Když utterance očekává se, že jako žádný záměru a vrácené chatovací robot s predikcí, robota můžete další otázky nebo nabídky nasměrovat uživatele na platné možnosti v chatovací robot. 

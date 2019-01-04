@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 90c636d57189518cb95291510f3e83ef8e7a8a75
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 818801a7f36e82d0065f85b5cf9e36288ccbff32
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422027"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970385"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Pochopení toku implicitní grant OAuth2 v Azure Active Directory (AD)
 
@@ -57,11 +57,11 @@ Implicitní grant toku bez vyvolání tokeny obnovení, většinou z bezpečnost
 
 Aplikace v jazyce JavaScript však má jiný mechanismus k dispozici pro obnovení přístupových tokenů bez opakovaného výzvy k zadání přihlašovacích údajů. Aplikace skrytý element iframe slouží k provádění žádostí o nový token na koncový bod autorizace Azure AD: jako prohlížeč stále obsahuje aktivní relaci (čtení: má soubor cookie relace) vůči doméně Azure AD, můžete žádost o ověření úspěšně dojít bez nutnosti zásahu uživatele.
 
-Tento model umožňuje aplikaci JavaScript nezávisle obnovit přístupové tokeny a dokonce i získat nové značky pro nové rozhraní API (za předpokladu, že uživatel už odsouhlasený. pro ně. Tím se vyhnete přidání zatížení získává, údržbu a ochraně cenných artefaktů, například obnovovací token. Artefakt, který umožňuje bezobslužné obnovení souboru cookie relace Azure AD se spravuje mimo aplikaci. Další výhodou tohoto přístupu je, že uživatel může odhlásit se ze služby Azure AD, pomocí některé z aplikací, přihlášení k Azure AD běžící ve všech záložkách prohlížeče. Výsledkem je odstranění souboru cookie relace Azure AD a jazyka JavaScript aplikace automaticky nebudete už moct obnovit tokeny pro podepsané si uživatele.
+Tento model umožňuje aplikaci JavaScript nezávisle obnovit přístupové tokeny a dokonce i získat nové značky pro nové rozhraní API (za předpokladu, že uživatel už odsouhlasený. pro ně). Tím se vyhnete přidání zatížení získává, údržbu a ochraně cenných artefaktů, například obnovovací token. Artefakt, který umožňuje bezobslužné obnovení souboru cookie relace Azure AD se spravuje mimo aplikaci. Další výhodou tohoto přístupu je, že uživatel může odhlásit se ze služby Azure AD, pomocí některé z aplikací, přihlášení k Azure AD běžící ve všech záložkách prohlížeče. Výsledkem je odstranění souboru cookie relace Azure AD a jazyka JavaScript aplikace automaticky nebudete už moct obnovit tokeny pro podepsané si uživatele.
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Implicitní grant je vhodný pro moji aplikaci?
 
-Implicitní grant představuje další rizik než ostatní udělí a jsou popsány oblasti je potřeba věnovat pozornost. Například [zneužití přístupový Token k vydávat se za vlastníka prostředku v implicitní tok] [ OAuth2-Spec-Implicit-Misuse] a [Model hrozeb OAuth 2.0 a důležité informace o zabezpečení] [ OAuth2-Threat-Model-And-Security-Implications]). Ale vyšší riziko profilu je do značné míry vzhledem k tomu, že je určená k umožňují aplikacím, které jsou spouštěny aktivním kódem, obsluhuje vzdálený prostředek do prohlížeče. Pokud plánujete SPA architekturu, jste žádné součásti back-end nebo úmyslu vyvolat webové rozhraní API prostřednictvím JavaScriptu, doporučujeme použít implicitní tok pro získání tokenu.
+Implicitní grant představuje další rizik než ostatní udělí a jsou popsány oblasti je potřeba věnovat pozornost (například [zneužití přístupový Token k vydávat se za vlastníka prostředku v implicitní tok] [ OAuth2-Spec-Implicit-Misuse]a [Model hrozeb OAuth 2.0 a důležité informace o zabezpečení][OAuth2-Threat-Model-And-Security-Implications]). Ale vyšší riziko profilu je do značné míry vzhledem k tomu, že je určená k umožňují aplikacím, které jsou spouštěny aktivním kódem, obsluhuje vzdálený prostředek do prohlížeče. Pokud plánujete SPA architekturu, jste žádné součásti back-end nebo úmyslu vyvolat webové rozhraní API prostřednictvím JavaScriptu, doporučujeme použít implicitní tok pro získání tokenu.
 
 Pokud je vaše aplikace nativního klienta, implicitní tok se skvěle hodí. Neexistence souboru cookie relace Azure AD v rámci nativního klienta zbaví aplikace znamená, že zachování dlouhodobá relace. To znamená, že vaše aplikace opakovaně, vyzve uživatele při získávání přístupových tokenů pro nové prostředky.
 

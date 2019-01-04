@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 6a9f3fcb372606e7f608b5137fb1ed15376d72d9
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6f6dac37d1114e8a9faa16c07fd5c14a90a5b0fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407333"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976728"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -28,7 +28,7 @@ Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě p
 
 ## <a name="logging-and-debugging-apps"></a>Protokolování a ladění aplikací
 
-Sestavy o výkonu, provoz vizualizace a kontroly stavu jsou k dispozici pro aplikaci eeach prostřednictvím webu Azure portal. Zobrazit [Přehled diagnostiky služby Azure App Service](/azure/app-service/app-service-diagnostics) Další informace o tom, jak přistupovat a používat tyto diagnostické nástroje.
+Sestavy o výkonu, provoz vizualizace a kontroly stavu jsou k dispozici pro aplikaci eeach prostřednictvím webu Azure portal. Zobrazit [Přehled diagnostiky služby Azure App Service](/azure/app-service/overview-diagnostics) Další informace o tom, jak přistupovat a používat tyto diagnostické nástroje.
 
 ## <a name="application-performance-monitoring"></a>Funkce Application performance monitoring
 
@@ -54,11 +54,11 @@ Potom streamování protokolů k pomocí konzoly `az webapp log tail`:
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
 
-Další informace najdete v tématu [streamování protokolů pomocí Azure CLI](../web-sites-enable-diagnostic-log.md#streaming-with-azure-cli).
+Další informace najdete v tématu [streamování protokolů pomocí Azure CLI](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
 
 ### <a name="app-logging"></a>Protokolování aplikace
 
-Povolit [protokolování aplikací](/azure/app-service/web-sites-enable-diagnostic-log#enablediag) prostřednictvím webu Azure portal nebo [rozhraní příkazového řádku Azure](/cli/azure/webapp/log#az-webapp-log-config) ke konfiguraci služby App Service, zaznamená se do místní výstup standardní konzole vaší aplikace a datových proudů chyba standardní konzole systém souborů nebo úložiště objektů Blob v Azure. Instance je zakázaná 12 hodin po dokončení konfigurace protokolování do místního systému souborů služby App Service. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci zapisovat výstup do kontejneru úložiště objektů Blob.
+Povolit [protokolování aplikací](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) prostřednictvím webu Azure portal nebo [rozhraní příkazového řádku Azure](/cli/azure/webapp/log#az-webapp-log-config) ke konfiguraci služby App Service, zaznamená se do místní výstup standardní konzole vaší aplikace a datových proudů chyba standardní konzole systém souborů nebo úložiště objektů Blob v Azure. Instance je zakázaná 12 hodin po dokončení konfigurace protokolování do místního systému souborů služby App Service. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci zapisovat výstup do kontejneru úložiště objektů Blob.
 
 Pokud vaše aplikace používá [Logback](https://logback.qos.ch/) nebo [Log4j](https://logging.apache.org/log4j) pro trasování, můžete předat dál trasování ke kontrole do služby Azure Application Insights pomocí pokyny ke konfiguraci protokolování framework v [Protokoly trasování prozkoumejte Java ve službě Application Insights](/azure/application-insights/app-insights-java-trace-logs). 
 
@@ -173,9 +173,6 @@ Pokud chcete nakonfigurovat Tomcat používat připojení k databázi Java (JDBC
 
 Nebo nastavte proměnné prostředí v okně "Nastavení aplikace" na webu Azure Portal.
 
->[!NOTE]
-> Pokud používáte databáze Azure pro Postgres, nahraďte `ssl=true` s `sslmode=require` připojovací řetězec JDBC.
-
 Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo pro všechny aplikace spuštěné na Tomcat servlet.
 
 #### <a name="for-application-level-data-sources"></a>U zdrojů dat na úrovni aplikace: 
@@ -259,7 +256,7 @@ Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo
 
     3. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do `/home/tomcat/lib` složky.
 
-    Alternativně můžete klienta FTP k nahrání ovladač JDBC. Postupujte podle těchto [pokyny k získání údajů FTP](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials).
+    Alternativně můžete klienta FTP k nahrání ovladač JDBC. Postupujte podle těchto [pokyny k získání údajů FTP](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 2. Pokud jste nevytvořili zdroj dat na úrovni serveru, restartujte aplikaci App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat/conf` a použít aktualizovanou konfiguraci.
 

@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fb2ec4802ad2ecf25a8fca031553c8209dc4267d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427518"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791315"
 ---
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení kabeláže a připojení k Azure Data Boxu
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení a připojte se k zařízení Azure Data Box
 
 Tento kurz popisuje, jak zapojit kabeláž, připojit a zapnout Azure Data Box.
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [Kurz: Objednání Azure Data Boxu](data-box-deploy-ordered.md).
+1. Dokončili jste [kurzu: Objednávka zařízení Azure Data Box](data-box-deploy-ordered.md).
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**. 
     - V průhledném pouzdře připevněném k zařízení pod elektrickým kabelem najdete expediční štítek. Tento štítek bezpečně uschovejte, protože ho budete potřebovat pro zpáteční zásilku.
     - Některé oblasti v Evropě se může zobrazit zařízení zabalené v poli. Ujistěte se, že máte rozbalit zařízení a uložit do pole pro zpáteční zásilku.
@@ -69,7 +69,7 @@ Při zapojování kabeláže zařízení postupujte následovně.
 Pomocí následujícího postupu nastavte své zařízení s využitím místního webového uživatelského rozhraní a uživatelského rozhraní portálu.
 
 1. Na adaptéru sítě Ethernet na přenosném počítači, pomocí kterého se připojujete k zařízení, nakonfigurujte statickou IP adresu 192.168.100.5 a podsíť 255.255.255.0. 
-2. Připojte se k portu MGMT vašeho zařízení a přejděte na jeho místní webové uživatelské rozhraní na adrese https://192.168.100.10. Po zapnutí zařízení to může trvat až 5 minut.
+2. Připojte se k portu MGMT vašeho zařízení a přístup k jeho místního webového uživatelského rozhraní na https\:/ / 192.168.100.10. Po zapnutí zařízení to může trvat až 5 minut.
 3. Klikněte na **Podrobnosti** a pak na **Pokračovat na web**.
 
    ![Připojení k místnímu webovému uživatelskému rozhraní](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 

@@ -1,17 +1,17 @@
 ---
-title: Možnosti vykreslování služby Batch
+title: Azure Batch Rendering možnosti –
 description: Možnosti vykreslování konkrétní ve službě Azure Batch
 services: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a1408720a5387d044416ded377189e4539f782a7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392773"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543032"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Možnosti vykreslování Azure Batch
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou SuccessFactors | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s SuccessFactors | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SuccessFactors.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 89224b32efaecdf7a2797b034b1beac7ad191ee5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 467db4046c0600142338dcfa39e136f45255caba
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685221"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976745"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Kurz: Integrace Azure Active Directory se službou SuccessFactors
+# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Kurz: Integrace Azure Active Directory s SuccessFactors
 
 V tomto kurzu se dozvíte, jak integrovat SuccessFactors s Azure Active Directory (Azure AD).
 
@@ -150,7 +150,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://<companyname>.sapsf.cn/<companyname>`|
          
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory SuccessFactors klienta](https://www.successfactors.com/support.html) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory SuccessFactors klienta](https://www.successfactors.com/content/ssf-site/en/support.html) k získání těchto hodnot. 
 
 5. Na **podpisový certifikát SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** Stáhnout **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
@@ -261,7 +261,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Přihlaste se k SuccessFactors Azure AD uživatelům umožnit, musí být poskytnuty do SuccessFactors.  
 V případě SuccessFactors zřizování se ruční úlohy.
 
-Chcete-li získat uživatelé vytvoření ve SuccessFactors, budete muset požádat [tým podpory SuccessFactors](https://www.successfactors.com/support.html).
+Chcete-li získat uživatelé vytvoření ve SuccessFactors, budete muset požádat [tým podpory SuccessFactors](https://www.successfactors.com/content/ssf-site/en/support.html).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

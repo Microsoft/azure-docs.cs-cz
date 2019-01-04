@@ -4,12 +4,12 @@ ms.service: application-insights
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3986b77cfad167134bf8ada1e3cbb73ad64dd3ca
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571959"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728978"
 ---
 Kolekce vlastních měření. Použijte tuto kolekci do sestavy s názvem měření přidružené položky telemetrie. Typické případy použití jsou:
 - Velikost datové části Telemetrických závislostí
@@ -25,6 +25,6 @@ customEvents
 ```
 
  > [!NOTE]
- > Vlastní měření jsou přidružená k položce telemetrie, do kterých patří. Jsou v souladu s vzorkování s položkou telemetrie obsahující tyto měření. Chcete-li sledovat měření, jehož hodnota je nezávislá na jiné typy telemetrie, použijte [telemetrie metrik](../articles/application-insights/app-insights-api-custom-events-metrics.md).
+ > Vlastní měření jsou přidružená k položce telemetrie, do kterých patří. Jsou v souladu s vzorkování s položkou telemetrie obsahující tyto měření. Chcete-li sledovat měření, jehož hodnota je nezávislá na jiné typy telemetrie, použijte [telemetrie metrik](../articles/azure-monitor/app/api-custom-events-metrics.md).
 
-Maximální délka: 150
+Maximální délka klíče: 150

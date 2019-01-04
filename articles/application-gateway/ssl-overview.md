@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: e7020ef5c1f7411c7226e7a2db489112ee6bf0a4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: fcb49f532d5dfcd340baf017bd55c69d4e81e0e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945497"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630678"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Přehled koncového šifrování protokolu SSL pomocí služby Application Gateway
 
@@ -31,7 +31,7 @@ V tomto příkladu jsou požadavky, které používají šifrování TLS 1.2, p�
 Služba Application Gateway komunikuje pouze se známými back-endovými instancemi, jejichž certifikáty jsou uvedeny v seznamu povolených certifikátů ve službě Application Gateway. Chcete-li povolit vytváření seznamu povolených certifikátů, musíte do aplikační brány nahrát veřejný klíč certifikátů back-endového serveru (nikoliv kořenový certifikát). Potom budou povolena jenom připojení ke známým back-endům uvedeným v seznamu. Zbývající back-endy způsobí chybu brány. Certifikáty podepsané svým držitelem slouží pouze k testování a nedoporučují se pro úlohy v produkčním prostředí. Tyto certifikáty musí být povolené ve službě application gateway popsané v předchozích krocích předtím, než je možné.
 
 > [!NOTE]
-> Instalace certifikátu ověřování se nevyžaduje pro důvěryhodného služby Azure, jako je Azure Web Apps.
+> Instalace certifikátu ověřování se nevyžaduje pro důvěryhodného služby Azure, jako je Azure App Service.
 
 ## <a name="end-to-end-ssl-with-the-v2-sku"></a>Koncové šifrování protokolu SSL s v2 SKU
 
@@ -39,7 +39,7 @@ Ověřovací certifikáty byly zastaralé a nahrazují důvěryhodných kořenov
 
 - Certifikáty podepsané dobře známé Certifikační autority jehož CN odpovídá názvu hostitele v nastavení HTTP back-endu nevyžadují žádné další krok pro kompletního protokolu SSL pro práci. 
 
-   Například pokud společnost dobře známé certifikační Autorita vydá nové certifikáty back-endu a má CN contoso.com a pole nastavení http back-endu hostitele je také nastavena na contoso.com, pak nejsou žádné další kroky požadované. Můžete nastavit back-endu http nastavení protokolu HTTPS a oba stavu sondy cesta bude protokol SSL povolený. Pokud používáte Azure Web Apps nebo jiné služby Azure web jako back-endu, ty jsou také implicitně důvěryhodné a žádné další kroky jsou požadovány pro kompletního protokolu SSL.
+   Například pokud společnost dobře známé certifikační Autorita vydá nové certifikáty back-endu a má CN contoso.com a pole nastavení http back-endu hostitele je také nastavena na contoso.com, pak nejsou žádné další kroky požadované. Můžete nastavit back-endu http nastavení protokolu HTTPS a oba stavu sondy cesta bude protokol SSL povolený. Pokud používáte službu Azure App Service nebo jiné služby Azure web jako back-endu, ty jsou také implicitně důvěryhodné a žádné další kroky jsou požadovány pro kompletního protokolu SSL.
 - Pokud certifikát podepsaný svým držitelem nebo podepsány Neznámý prostředníci, pak k povolení koncového šifrování protokolu SSL v SKU v2 pro důvěryhodného kořenového certifikátu musí být definovaný. Aplikační brána bude komunikovat jenom s back-EndY certifikát serveru, jehož kořenový certifikát odpovídá jednomu z seznam důvěryhodných kořenových certifikátů v nastavení http back-endu přidružené k fondu.
 - Kromě shodu kořenový certifikát služba Application Gateway také ověří, jestli se hostitel nastavení zadaného v nastavení http back-end se shoduje s běžného názvu (CN) předložený certifikát SSL back-endového serveru. Při pokusu o navázání připojení protokolem SSL k back-endu, nastaví služba Application Gateway rozšíření indikace názvu serveru (SNI) hostitel zadaný v nastavení http back-endu.
 - Pokud **vybrat název hostitele z back-endová adresa** je vybrán místo pole Host v nastavení http back-end, pak záhlaví SNI je vždycky nastavený na back-endový fond, plně kvalifikovaný název domény a CN na back-end serveru SSL certifikát se musí shodovat jeho plně kvalifikovaný název domény. V tomto scénáři nejsou podporovány členů fondu back-end s IP adresami.

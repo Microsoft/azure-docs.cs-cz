@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 98d534e20b8e4c6bf6bcc3f483f59b796dc85073
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5ab5c769280bdd91a15e6107df8c9c6b7814571c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274463"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599906"
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externí App Service environment #
 
@@ -197,7 +197,7 @@ Další informace o verzi ASEv1 najdete v tématu [Úvod do služby App Service 
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[webapps]: ../app-service-web-overview.md
+[webapps]: ../overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/

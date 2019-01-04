@@ -1,6 +1,6 @@
 ---
-title: Proměnných šablony Azure Resource Manager | Microsoft Docs
-description: Popisuje, jak definovat proměnné v šablonách správce prostředků Azure pomocí deklarativní syntaxe JSON.
+title: Proměnné šablony Azure Resource Manageru | Dokumentace Microsoftu
+description: Popisuje, jak definovat proměnné v šablonách Azure Resource Manageru pomocí deklarativní syntaxe JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08728a3c0b4d4578939004e2d1b1ee2d30a682ab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359284"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53712742"
 ---
-# <a name="variables-section-of-azure-resource-manager-templates"></a>Části proměnných šablon Azure Resource Manager
-V sekci proměnných můžete vytvořit hodnoty, které lze použít v celé vaší šablony. Není potřeba definovat proměnné, ale jejich často zjednodušit vaše šablony snížením složité výrazy.
+# <a name="variables-section-of-azure-resource-manager-templates"></a>Části proměnných šablon Azure Resource Manageru
+V sekci proměnných vytvořit hodnoty, které lze použít v celé vaší šablony. Není nutné definovat proměnné, ale často zjednodušení šablony snížením složité výrazy.
 
 ## <a name="define-and-use-a-variable"></a>Definice a používání proměnné
 
-Následující příklad ukazuje definici proměnné. Vytvoří hodnotu řetězce pro název účtu úložiště. Používá několik šablony funkcí získat hodnotu parametru a zřetězit ho do jedinečného řetězce.
+Následující příklad ukazuje definicí proměnné. Vytvoří hodnotu řetězce pro název účtu úložiště. Několik funkcí šablony používá k získání hodnoty parametrů a zřetězit ho do jedinečného řetězce.
 
 ```json
 "variables": {
@@ -43,9 +43,9 @@ Při definování prostředku, použijte proměnnou.
     ...
 ```
 
-## <a name="available-definitions"></a>K dispozici definice
+## <a name="available-definitions"></a>Dostupné definice
 
-Předchozí příklad ukázal jedním ze způsobů k definování proměnné. Můžete použít některou z následující definice:
+Předchozí příklad ukázal jedním ze způsobů k definování proměnné. Můžete použít některý z následující definice:
 
 ```json
 "variables": {
@@ -95,7 +95,7 @@ Komplexní typy JSON můžete použít k definování souvisejících hodnot pro
 },
 ```
 
-V parametrech vytvořit hodnotu, která určuje, které konfigurační hodnoty použít.
+V parametrech vytvořit hodnotu určující, která konfigurace bude hodnoty použití.
 
 ```json
 "parameters": {
@@ -115,9 +115,9 @@ Aktuální nastavení s načíst:
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-## <a name="use-copy-element-in-variable-definition"></a>Pomocí elementu kopírování v definicí proměnné
+## <a name="use-copy-element-in-variable-definition"></a>Použití elementu copy v definici proměnné
 
-Můžete použít **kopie** syntaxe vytvoření proměnné s pole více elementů. Zadejte počet pro počet elementů. Každý prvek obsahuje vlastnosti v rámci **vstupní** objektu. Můžete kopírovat buď v rámci proměnné nebo vytvořte proměnnou. Při definování proměnné a použijete **kopie** v rámci tuto proměnnou můžete vytvořit objekt, který má vlastnost pole. Při použití **kopie** na nejvyšší úrovni a definovat jeden nebo více proměnných v něm můžete vytvořit jeden nebo více polí. Následující příklad ukazuje obou přístupů:
+Můžete použít **kopírování** syntaxe pro vytvoření proměnné pomocí pole z několika prvků. Zadejte počet pro počet prvků. Každý prvek obsahuje vlastnosti v rámci **vstupní** objektu. Můžete kopírovat buď v rámci proměnné nebo vytvořte proměnnou. Při definování proměnné a použití **kopírování** v rámci této proměnné můžete vytvořit objekt, který má vlastnost typu pole. Při použití **kopírování** na nejvyšší úrovni a definovat jeden nebo více proměnných v rámci něj vytvořit jeden nebo více polí. Oba přístupy jsou uvedeny v následujícím příkladu:
 
 ```json
 "variables": {
@@ -194,7 +194,7 @@ Proměnná **disky nejvyšší úroveň pole** obsahuje následující pole:
 ]
 ```
 
-Více než jeden objekt můžete zadat také v případě použití kopie k vytvoření proměnné. V následujícím příkladu definuje dvě pole jako proměnné. Jednu s názvem **disky nejvyšší úroveň pole** a má pět elementy. Druhá s názvem **jiné pole** a má tři prvky.
+Můžete také zadat více než jeden objekt při vytváření proměnné pomocí kopírování. Následující příklad definuje dvě pole jako proměnné. Jeden s názvem **disky nejvyšší úroveň pole** a má pět prvků. Druhá s názvem **různých pole** a má tři prvky.
 
 ```json
 "variables": {
@@ -221,7 +221,7 @@ Více než jeden objekt můžete zadat také v případě použití kopie k vytv
 },
 ```
 
-Tento postup funguje dobře, pokud potřebujete provést hodnoty parametrů a ujistěte se, že jsou ve správném formátu pro hodnotu šablony. Následující příklad formátuje hodnoty parametrů pro použití k definování pravidel zabezpečení:
+Tento přístup funguje dobře, když se budete muset provést hodnoty parametrů a ujistěte se, že jsou ve správném formátu pro hodnoty v šabloně. Následující příklad formátuje hodnoty parametrů pro použití v definice pravidla zabezpečení:
 
 ```json
 {
@@ -269,26 +269,19 @@ Tento postup funguje dobře, pokud potřebujete provést hodnoty parametrů a uj
 }
 ```
 
-## <a name="recommendations"></a>Doporučení
-Při práci s proměnnými, může být užitečné následující informace:
-
-* Použití proměnných hodnot, které je nutné použít více než jednou v šabloně. Pokud hodnota je použit pouze jednou, hodnotu pevně usnadňuje šablony čtení.
-* Nelze použít [odkaz](resource-group-template-functions-resource.md#reference) fungovat v **proměnné** část šablony. **Odkaz** funkce odvozuje svou hodnotu z prostředku stav modulu runtime. Proměnné jsou však vyřešeny během počáteční analýzy šablony. Konstrukce hodnoty kterém musí **odkaz** funkce přímo v **prostředky** nebo **výstupy** část šablony.
-* Zahrnout proměnné pro názvy prostředků, které musí být jedinečný.
-
 ## <a name="example-templates"></a>Příklad šablony
 
-Tyto šablony příklad ukazují některé scénáře pro používání proměnných. Je k testování zpracování proměnné v různých scénářích nasazení. 
+Tyto šablony příklad ukazují některé scénáře pro používání proměnných. Je nasadíte na testování, jak se zpracovává proměnné v různých scénářích. 
 
 |Šablona  |Popis  |
 |---------|---------|
-| [definice proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé typy proměnných. Šablony není nasazen žádné prostředky. To vytvoří hodnoty proměnných a vrátí tyto hodnoty. |
-| [Konfigurace proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Demonstruje použití proměnné, která definuje hodnoty konfigurace. Šablony není nasazen žádné prostředky. To vytvoří hodnoty proměnných a vrátí tyto hodnoty. |
-| [pravidla zabezpečení sítě](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) a [soubor parametrů](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Vytvoří pole ve správném formátu pro přiřazení pravidla zabezpečení pro skupinu zabezpečení sítě. |
+| [Definice proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé druhy proměnných. Šablona nenasadí žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
+| [Konfigurační proměnná](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Ukazuje použití proměnné, která definuje hodnoty konfigurace. Šablona nenasadí žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
+| [pravidel zabezpečení sítě](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) a [soubor s parametry](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Vytvoří pole ve správném formátu pro přiřazení pravidla zabezpečení pro skupinu zabezpečení sítě. |
 
 
 ## <a name="next-steps"></a>Další postup
 * Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
-* Podrobnosti o funkcích, které můžete použít z v rámci šablon najdete v tématu [funkce šablon Azure Resource Manager](resource-group-template-functions.md).
-* Pokud chcete kombinovat několik šablon během nasazení, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* Musíte používat prostředky, které existují v jiné skupině prostředků. Tento scénář je běžný, při práci s účty úložiště a virtuální sítě, které jsou sdíleny více skupin prostředků. Další informace najdete v tématu [resourceId funkce](resource-group-template-functions-resource.md#resourceid).
+* Podrobnosti o funkce, které můžete použít z v rámci šablony najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md).
+* Doporučení o vytváření šablon naleznete v tématu [osvědčené postupy pro šablony Azure Resource Manageru](template-best-practices.md).
+* Budete muset použít prostředky, které existují v rámci jiné skupiny prostředků. Tento postup je běžný při práci s účty úložiště nebo virtuální sítě, které jsou sdíleny napříč více než jednu skupinu prostředků. Další informace najdete v tématu [funkce resourceId](resource-group-template-functions-resource.md#resourceid).

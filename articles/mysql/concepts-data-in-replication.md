@@ -1,20 +1,17 @@
 ---
 title: Replikace dat do služby Azure Database for MySQL.
 description: Tento článek popisuje dat replikace pro službu Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: 6135e4a0182f3af7db54eab974e4c307402185ab
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ca748dff67be2a37ca61f34602f207265cc77aaa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666072"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544222"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikace dat do služby Azure Database for MySQL
 
@@ -23,8 +20,8 @@ Replikace dat můžete synchronizovat data z na virtual machines nebo databázov
 ## <a name="when-to-use-data-in-replication"></a>Kdy použít replikace dat
 Hlavní scénáře pro zvážení použití replikace dat jsou:
 
-- **Synchronizace dat hybridní:** se Data replikace, abyste mohli data synchronizovat mezi vašimi místními servery a Azure Database for MySQL. Tato synchronizace je užitečné pro vytváření hybridních aplikací. Tato metoda je přitažlivými, pokud máte existující místní databázový server, ale chcete přesunout data do oblasti blíže koncovým uživatelům.
-- **Multicloudové synchronizace:** komplexní cloudové řešení, pomocí replikace dat pro synchronizaci dat mezi – Azure Database for MySQL a různí poskytovatelé cloudových, včetně virtual machines a databáze služby hostované v tyto cloudy.
+- **Hybridní synchronizace dat:** Pomocí Data replikace můžete zachovat data synchronizovat mezi vašimi místními servery a Azure Database for MySQL. Tato synchronizace je užitečné pro vytváření hybridních aplikací. Tato metoda je přitažlivými, pokud máte existující místní databázový server, ale chcete přesunout data do oblasti blíže koncovým uživatelům.
+- **Multicloudové synchronizace:** Pro komplexní cloudové řešení pomocí replikace dat pro synchronizaci dat mezi – Azure Database for MySQL a různí poskytovatelé cloudových, včetně virtual machines a databáze služby hostované v tyto cloudy.
 
 ## <a name="limitations-and-considerations"></a>Omezení a důležité informace
 

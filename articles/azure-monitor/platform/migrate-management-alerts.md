@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: e3159ac4074e7ff437e052e0e2c1ae7d31378abe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8fd7161208f6303e03deaacca6a1e2fad24ec45e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345969"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580872"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrace na upozornění protokolu aktivit Azure výstrahy týkající se událostí správy
 
@@ -110,9 +110,9 @@ Výstrahy na události správy, které jste předtím vytvořili nebudou automat
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [protokolu aktivit](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+* Další informace o [protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md)
 * Konfigurace [upozornění protokolu aktivit prostřednictvím webu Azure portal](../../azure-monitor/platform/activity-log-alerts.md)
 * Konfigurace [upozornění protokolu aktivit prostřednictvím Resource Manageru](../../azure-monitor/platform/alerts-activity-log.md)
 * Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md)
-* Další informace o [oznámení služby](../../monitoring-and-diagnostics/monitoring-service-notifications.md)
+* Další informace o [oznámení služby](../../azure-monitor/platform/service-notifications.md)
 * Další informace o [skupiny akcí](../../azure-monitor/platform/action-groups.md)

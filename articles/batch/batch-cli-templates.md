@@ -1,22 +1,23 @@
 ---
-title: Spouštění úloh služby Azure Batch začátku do konce pomocí šablon | Dokumentace Microsoftu
+title: Spouštění úloh začátku do konce pomocí šablon – Azure Batch | Dokumentace Microsoftu
 description: Vytvořte fondy, úlohy a úkoly služby Batch pomocí souborů šablon a Azure CLI.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 08/02/2018
-ms.author: danlep
-ms.openlocfilehash: 753a36eb6fb7a0c007c62bbab7fe7390e706b1f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5e592845f96cb0734daf3c9e07d60005de260386
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964288"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547673"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití šablon rozhraní příkazového řádku Azure Batch a přenos souborů
 
@@ -37,7 +38,7 @@ Vytváření šablon služby batch [stávající podporu služby Batch v Azure C
 
 Úlohy obvykle použít vstupních datových souborů a vytvoří výstupní datové soubory. Účet úložiště je spojený ve výchozím nastavení ke každému účtu Batch. Přenos souborů do a z tohoto účtu úložiště pomocí rozhraní příkazového řádku se žádné psaní kódu a žádné přihlašovací údaje úložiště.
 
-Například [ffmpeg](http://ffmpeg.org/) je Oblíbené aplikace, která zpracovává audio a video soubory. Tady je postup pomocí příkazového řádku Azure Batch pro vyvolání aplikaci ffmpeg kvůli překódování zdrojových souborů videa pro různá řešení.
+Například [ffmpeg](https://ffmpeg.org/) je Oblíbené aplikace, která zpracovává audio a video soubory. Tady je postup pomocí příkazového řádku Azure Batch pro vyvolání aplikaci ffmpeg kvůli překódování zdrojových souborů videa pro různá řešení.
 
 -   Vytvoření šablony fondu. Uživatel vytvářející šablony ví, jak volat aplikace ffmpeg a jejich požadavcích; Určí, že příslušný operační systém, virtuální počítač velikost, jak aplikace ffmpeg se instalované (z balíčku aplikace nebo pomocí Správce balíčků, například) a jiné hodnoty vlastností fondu. Parametry jsou vytvořeny tak, že při použití této šablony je potřeba zadat ID fondu a počtu virtuálních počítačů.
 

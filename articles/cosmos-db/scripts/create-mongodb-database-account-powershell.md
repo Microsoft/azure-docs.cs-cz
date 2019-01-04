@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/29/2018
-ms.openlocfilehash: 08a0994f2da7dcee5c9e9498d68767f458a82acb
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c12f2f86e56ac90fbea366e43959dd934c89d931
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715167"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811048"
 ---
-# <a name="create-a-azure-cosmos-db-account-for-mongodb-api-using-powershell"></a>Vytvoření účtu Azure Cosmos DB pro rozhraní API MongoDB pomocí Powershellu
+# <a name="create-an-azure-cosmos-db-account-with-azure-cosmos-dbs-api-for-mongodb-using-powershell"></a>Vytvoření účtu služby Azure Cosmos DB s rozhraním API služby Azure Cosmos DB pro MongoDB pomocí Powershellu
 
-Tento ukázkový skript Powershellu vytvoří účet rozhraní MongoDB API služby Azure Cosmos DB. 
+Tento ukázkový skript Powershellu vytvoří účet Cosmos s Azure Cosmos DB přes rozhraní API pro MongoDB. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

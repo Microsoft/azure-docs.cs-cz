@@ -10,20 +10,20 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 40b9685c56dd494e82c05bff9ed75f425a3006ff
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 39468a4a143d184fcc964ae88f82ad7254e4f3b0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886623"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741738"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Příklady použití insights Bingu
 
-Tato část obsahuje příklady, jak může Bing zobrazují poznatky, na adrese Bing.com.
+Tento článek obsahuje příklady toho, jak může Bing použít a zobrazit přehledy obrázků na adrese Bing.com.
 
 ## <a name="pagesincluding-insight-example"></a>Příklad PagesIncluding insight
 
-Následující obrázek znázorňuje Bingu může zobrazení webové stránky, které zahrnují bitovou kopii. Příklad zobrazí odkaz na první webovou stránku a umožní uživateli rozbalit nebo sbalit seznam jiných webových stránek, které obsahují image.
+Následující zobrazí odkaz na první webovou stránku a umožní uživateli rozbalit nebo sbalit seznam jiných webových stránek, které obsahují image.
 
 ![Rozšířené stránek, včetně](./media/pages-including.PNG)
 
@@ -83,9 +83,7 @@ Jiné než výchozí značky se týkají třeba ohraničovací rámeček, který
 
 ## <a name="next-steps"></a>Další postup
 
-Podívejte se na JSON za těchto příkladech, naleznete v tématu [výchozí insights](default-insights-tag.md) a [odpověď JSON](overview.md#the-response).
-
-Abyste mohli rychle začít s vaší první žádost, najdete v článku postupů rychlý start: [jazyka C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)
+Abyste mohli rychle začít s vaší první žádost, najdete v článku postupů rychlý start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: b110a57526d6e23ba53afce0a91d735fad6d247c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215779"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604095"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurace nástroje Postman pro volání REST API služby Media Services
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak nakonfigurovat **Postman** takže ho můžete 
 - Získání informací potřebných k [přístup k rozhraním API](access-api-cli-how-to.md)
 - Nainstalujte klienta [Postman](https://www.getpostman.com/) rozhraní REST, ve kterém můžete spouštět rozhraní REST API používaná v některých kurzech ke službě AMS REST. 
 
-    V příkladech používáme **Postman**, můžete ale zvolit jakýkoli nástroj REST. Další možnosti jsou: **Visual Studio Code** s pluginem REST nebo **Telerik Fiddler**. 
+    V příkladech používáme **Postman**, můžete ale zvolit jakýkoli nástroj REST. Další možnosti jsou: **Visual Studio Code** pomocí modulu plug-in REST nebo **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Stažení souborů nástroje Postman
 
@@ -75,7 +75,7 @@ Tato část popisuje konfiguraci nástroje Postman.
 
 Než začnete manipulace s prostředky AMS v3 potřebujete k získání a nastavení tokenu Azure AD pro ověřování instančního objektu.
 
-1. V levém okně nástroje Postman vyberte „Step 1: Get AAD Auth token“ (Krok 1: Získání ověřovacího tokenu AAD).
+1. V levém okně Postman, vyberte "krok 1: Získání ověřování AAD tokenu".
 2. Potom vyberte „Get Azure AD Token for Service Principal Authentication“ (Získat token služby Azure AD pro ověření instančního objektu).
 3. Stiskněte **Odeslat**.
 
@@ -85,7 +85,7 @@ Než začnete manipulace s prostředky AMS v3 potřebujete k získání a nastav
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. Vrátí se odpověď s tokenem, která nastaví proměnnou prostředí „AccessToken“ na hodnotu tokenu. Kód, který nastavuje proměnnou „AccessToken“, zobrazíte na kartě **Tests** (Testy). 
+4. Vrátí se odpověď s tokenem, která nastaví proměnnou prostředí „AccessToken“ na hodnotu tokenu.  
 
     ![Získání tokenu AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: cf01ddd53741a77df61e3dc1946eb836640034d0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b24b98760e276c207bb360687f32ae902b3306fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345988"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976949"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -56,7 +56,7 @@ Jsou klíčové atributy pravidlo výstrahy:
 
 ## <a name="what-you-can-alert-on"></a>Může upozornit na
 
-Můžete upozornění na metriky a protokoly, jak je popsáno v [monitorování zdroje dat](../../monitoring-and-diagnostics/monitoring-data-sources.md). Patří mezi ně jsou mimo jiné tyto:
+Můžete upozornění na metriky a protokoly, jak je popsáno v [monitorování zdroje dat](../../azure-monitor/platform/data-sources-reference.md). Patří mezi ně jsou mimo jiné tyto:
 - Hodnoty metrik
 - Dotazy prohledávání protokolu
 - Události protokolu aktivit
@@ -131,7 +131,7 @@ Azure Monitor, Application Insights, Log Analytics a stavy služeb dříve musel
 | **Zdroj monitorování** | **Typ signálu**  | **Popis** | 
 |-------------|----------------|-------------|
 | Stav služby | Protokol aktivit  | Nepodporuje se. Zobrazit [vytvoření upozornění protokolu aktivit pro oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Testy dostupnosti webu | Nepodporuje se. Zobrazit [upozornění webových testů](../../application-insights/app-insights-monitor-web-app-availability.md). K dispozici pro všechny weby, které je instrumentováno pro odesílání dat do Application Insights. Když dostupnosti nebo rychlost odezvy webu je nižší než očekávání, dostanete oznámení. |
+| Application Insights | Testy dostupnosti webu | Nepodporuje se. Zobrazit [upozornění webových testů](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které je instrumentováno pro odesílání dat do Application Insights. Když dostupnosti nebo rychlost odezvy webu je nižší než očekávání, dostanete oznámení. |
 
 
 ## <a name="all-alerts-page"></a>Všechny stránky s upozorněními 

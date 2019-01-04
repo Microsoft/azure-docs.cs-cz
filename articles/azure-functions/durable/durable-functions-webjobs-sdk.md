@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343152"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713264"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit odolná služba functions jako WebJobs
 
-[Služba Azure Functions](../functions-overview.md) a [Durable Functions](durable-functions-overview.md) rozšíření jsou postavené na [sada WebJobs SDK](../../app-service/web-sites-create-web-jobs.md). `JobHost` v sadě WebJobs SDK je modul runtime ve službě Azure Functions. Pokud potřebujete mít kontrolu nad `JobHost` chování způsoby není možné ve službě Azure Functions, můžete vyvíjet a spouštět odolná služba functions pomocí sady SDK pro WebJobs sami. Pak můžete spustit váš odolná služba functions ve webové úloze Azure nebo kdekoli konzolovou aplikaci spustí.
+[Služba Azure Functions](../functions-overview.md) a [Durable Functions](durable-functions-overview.md) rozšíření jsou postavené na [sada WebJobs SDK](../../app-service/webjobs-create.md). `JobHost` v sadě WebJobs SDK je modul runtime ve službě Azure Functions. Pokud potřebujete mít kontrolu nad `JobHost` chování způsoby není možné ve službě Azure Functions, můžete vyvíjet a spouštět odolná služba functions pomocí sady SDK pro WebJobs sami. Pak můžete spustit váš odolná služba functions ve webové úloze Azure nebo kdekoli konzolovou aplikaci spustí.
 
 Řetězení Durable Functions ukázka je k dispozici ve verzi sady SDK pro WebJobs: Stáhněte nebo naklonujte [Durable Functions úložiště](https://github.com/azure/azure-functions-durable-extension/) a přejděte *ukázky\\webjobssdk\\řetězení* složky.
 

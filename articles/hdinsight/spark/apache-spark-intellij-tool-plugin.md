@@ -1,5 +1,5 @@
 ---
-title: 'Sada Azure Toolkit pro IntelliJ: vytvoření aplikací Spark pro HDInsight cluster '
+title: 'Sada Azure Toolkit pro IntelliJ: Vytvoření aplikací Spark pro HDInsight cluster '
 description: Pomocí sady Azure Toolkit pro IntelliJ můžete vyvíjet aplikace Spark napsané v jazyce Scala a odesílat je na cluster HDInsight Spark.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: b2bf79d90c741e09c683e4520b05b31ba2fee1da
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 621d41c5c9558b5cb17d2a1e5a03d68f8af0df19
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582764"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600637"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
 
@@ -26,7 +26,7 @@ Použití sady Azure Toolkit pro IntelliJ modulu plug-in k vývoji [Apache Spark
 
 K vytvoření projektu, zobrazení [vytváření aplikací Apache Spark pomocí sady Azure Toolkit pro IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) videa.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tento modul plug-in můžete použít k vytvoření a odeslání aplikace pouze pro cluster HDInsight Spark na systému Linux.
 > 
 
@@ -180,22 +180,22 @@ Po vytvoření aplikace v jazyce Scala, můžete ho odeslat do clusteru.
 
     * Vyberte artefakt z projektu IntelliJ nebo vyberte některou z pevného disku.
 
-    * **Název hlavní třídy** pole: výchozí hodnota je hlavní třída z vybraného souboru. Třídu můžete změnit tak, že vyberete symbol tří teček (**...** ) a výběrem jiné třídy.   
+    * **Název hlavní třídy** pole: Výchozí hodnota je hlavní třída z vybraného souboru. Třídu můžete změnit tak, že vyberete symbol tří teček (**...** ) a výběrem jiné třídy.   
 
-    * **Konfigurace úlohy** pole: výchozí hodnoty jsou nastavené jako obrázku je znázorněno výše. Můžete změnit hodnotu nebo přidejte nový klíč/hodnota pro odeslání úlohy. Další informace: [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)
+    * **Konfigurace úlohy** pole:  Ve výše uvedeném obrázku jsou nastaveny výchozí hodnoty. Můžete změnit hodnotu nebo přidejte nový klíč/hodnota pro odeslání úlohy. Další informace najdete tady: [Apache Livy rozhraní REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)
 
       ![Význam Spark odeslání dialogové okno pole úlohy konfigurace](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
 
-    * **Argumenty příkazového řádku** pole: můžete zadat hodnoty argumentů v případě potřeby rozdělit tak prostor pro hlavní třída.
+    * **Argumenty příkazového řádku** pole: Můžete zadat hodnoty argumentů místo pro hlavní třída v případě potřeby rozdělit.
 
-    * **Kromě souborů JAR odkazovat** a **odkazované soubory** pole: můžete zadat cesty pro odkazované kromě souborů JAR a soubory případné. Další informace: [konfigurace Apache Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
+    * **Kromě souborů JAR odkazovat** a **odkazované soubory** pole: Cesty pro odkazované kromě souborů JAR a soubory můžete zadat případné. Další informace najdete tady: [Konfigurace Apache Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
 
       ![To znamená soubory jar pole Spark odeslání dialogového okna](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
 
-       > [!NOTE]
-       > Nahrát odkazuje JARs a odkazované soubory, najdete v tématu: [jak nahrát prostředky do clusteru](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
+       > [!NOTE]  
+       > Nahrát odkazuje JARs a odkazované soubory, najdete v tématu: [Jak nahrát prostředky do clusteru](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
                          
-    * **Nahrát cesta**: můžete určit umístění úložiště pro soubor Jar nebo Scala odeslání prostředků projektu. Existují tři typy úložiště se nepodporuje: **objektů Blob v Azure**, **interaktivní relace použití Sparku k nahrání artefakty**, a **použít výchozí účet úložiště clusteru**a **ADLS Gen1**. Následující snímek obrazovky je příklad pro objektů Blob v Azure.
+    * **Nahrát cesta**: Můžete určit umístění úložiště pro soubor Jar nebo Scala odeslání prostředků projektu. Existují tři podporované typy úložiště: **Azure Blob**, **interaktivní relace použití Sparku k nahrání artefakty**, a **použít výchozí účet úložiště clusteru**, a **ADLS Gen1**. Následující snímek obrazovky je příklad pro objektů Blob v Azure.
 
         ![Dialogové okno odeslání Spark](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
 
@@ -310,7 +310,7 @@ Můžete převést stávající Scala Spark aplikací, které jste vytvořili v 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="error-in-local-run-please-use-a-larger-heap-size"></a>Chyba při místním spuštění: *použijte prosím větší velikost haldy*
+### <a name="error-in-local-run-please-use-a-larger-heap-size"></a>Chyba při místním spuštění: *Použijte prosím větší velikost haldy*
 Ve Spark 1.6 při místním spuštění, při použití sady Java SDK pro 32-bit může dojít k následujícím chybám:
 
     Exception in thread "main" java.lang.IllegalArgumentException: System memory 259522560 must be at least 4.718592E8. Please use a larger heap size.
@@ -350,18 +350,18 @@ Pokud máte nějaké návrhy nebo zpětnou vazbu, nebo pokud se vyskytnou potí�
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="demo"></a>Ukázka
-* Vytvořit projekt Scala (video): [vytváření aplikací Apache Spark Scala](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Vzdálené ladění (video): [použití sady Azure Toolkit pro IntelliJ pro ladění aplikací Apache Spark vzdáleně na clusteru HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Vytvoření projektu Scala (video): [Vytváření aplikací Apache Spark Scala](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Vzdálené ladění (video): [Ladění aplikací Apache Spark vzdáleně v clusteru HDInsight pomocí sady Azure Toolkit pro IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu teploty v budově pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Vytváření a spouštění aplikací
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Ladění aplikací Apache Spark vzdáleně přes síť VPN pomocí sady Azure Toolkit pro IntelliJ](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)

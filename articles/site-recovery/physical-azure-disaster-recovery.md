@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: fa2f16f1a7d99a825039e2191c69642a45ff728a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3b06335019cf15cc296c1814ee1fcf5ce50c3949
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845225"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971837"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -137,7 +137,7 @@ Pravidla brány firewall založená na adresu IP musí umožňovat komunikaci pr
 - **Komerční IP adresy** -povolit [Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/confirmation.aspx?id=41653)a port HTTPS (443). Povolte rozsahy IP adres pro oblast Azure svého předplatného na podporu AAD, zálohování, replikace a adresy URL úložiště.  
 - **Státní správy IP adres** -povolit [Azure Government rozsahů IP adres Datacentra](https://www.microsoft.com/en-us/download/details.aspx?id=57063)a port HTTPS (443) pro všechny oblasti USGov (Virginie, Texas, Arizona a Iowa) pro podporu AAD, zálohování, replikace a adresy URL úložiště.  
 
-#### <a name="run-setup"></a>Spusťte instalační program
+#### <a name="run-setup"></a>Spuštění instalace
 Spuštění sjednocené instalace jako místní správce, chcete-li nainstalovat konfigurační server. Procesový server a hlavní cílový server jsou také nainstalované ve výchozím nastavení na konfiguračním serveru.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]

@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 01d1ef428804838df4257a4c28dfcddbdd8f156b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a3687a4b8bb4e0d900ee96f52c40352db4e96df6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010990"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635557"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hivu a Apache Hadoop v HDInsight
 
 Další informace o použití [Apache Hive](https://hive.apache.org/) zpracovává data Twitteru. Výsledkem je seznam uživatelů Twitteru, kteří odeslané většina tweety, které obsahují určité slovo.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu byly testovány v HDInsight 3.6.
 >
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="get-the-data"></a>Získání dat
 
-Twitter umožňuje načíst data pro každý tweet jako dokument JavaScript Object Notation (JSON) prostřednictvím rozhraní REST API. [OAuth](http://oauth.net) se nedá provést ověření do rozhraní API.
+Twitter umožňuje načíst data pro každý tweet jako dokument JavaScript Object Notation (JSON) prostřednictvím rozhraní REST API. [OAuth](https://oauth.net) se nedá provést ověření do rozhraní API.
 
 ### <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
 
@@ -41,7 +41,7 @@ Twitter umožňuje načíst data pro každý tweet jako dokument JavaScript Obje
    |:--- |:--- |
    | Název |MyHDInsightApp |
    | Popis |MyHDInsightApp |
-   | Web |http://www.myhdinsightapp.com |
+   | Web |https://www.myhdinsightapp.com |
 
 4. Zkontrolujte **Ano, souhlasím**a potom klikněte na tlačítko **vytvoření aplikace Twitter**.
 
@@ -59,7 +59,7 @@ Twitter umožňuje načíst data pro každý tweet jako dokument JavaScript Obje
 
 Následující kód Python stáhne 10 000 tweety z Twitteru a uložit je do souboru s názvem **tweets.txt**.
 
-> [!NOTE]
+> [!NOTE]  
 > Následující kroky se provádějí v clusteru HDInsight, protože je již nainstalován Python.
 
 1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
@@ -70,7 +70,7 @@ Následující kód Python stáhne 10 000 tweety z Twitteru a uložit je do soub
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Pomocí následujících příkazů nainstalujte [Tweepy](http://www.tweepy.org/), [Progressbar](https://pypi.python.org/pypi/progressbar/2.2)a další požadované balíčky:
+3. Pomocí následujících příkazů nainstalujte [Tweepy](https://www.tweepy.org/), [Progressbar](https://pypi.python.org/pypi/progressbar/2.2)a další požadované balíčky:
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -145,7 +145,7 @@ Následující kód Python stáhne 10 000 tweety z Twitteru a uložit je do soub
    twitterStream.filter(track=["azure","cloud","hdinsight"])
    ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Informace o aplikaci twitter nahraďte zástupný text pro následující položky:
     >
     > * `consumer_secret`
@@ -153,7 +153,7 @@ Následující kód Python stáhne 10 000 tweety z Twitteru a uložit je do soub
     > * `access_token`
     > * `access_token_secret`
 
-    > [!TIP]
+    > [!TIP]  
     > Upravte filtr témata na posledním řádku ke sledování oblíbených klíčových slov. Pomocí oblíbených klíčových slov v době spuštění skriptu umožňuje rychlejší zachycení data.
 
 6. Použití **Ctrl + X**, pak **Y** k uložení souboru.
@@ -166,7 +166,7 @@ Následující kód Python stáhne 10 000 tweety z Twitteru a uložit je do soub
 
     Se zobrazuje indikátor průběhu. Až 100 % se počítá jako tweety, které se stáhnou.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Pokud trvá dlouhou dobu indikátoru průběhu pro přechod, měli byste změnit filtr ke sledování populárních témat. Po mnoho tweetů o tématu ve filtru se můžete rychle získat 10000 tweety, které jsou potřeba.
 
 ### <a name="upload-the-data"></a>Nahrání dat
@@ -317,7 +317,7 @@ Tyto příkazy uložení dat do umístění, které můžou přistupovat všechn
 
     Tento dotaz vrátí maximálně 10 tweety, které obsahují slovo **Azure** v textu zprávy.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud jste změnili filtr `gettweets.py` skriptu, nahraďte **Azure** s jeden z filtrů jste použili.
 
 ## <a name="next-steps"></a>Další postup
@@ -327,7 +327,7 @@ Jste se naučili, jak má být transformován nestrukturované datové sady JSON
 * [Začínáme s HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Analýza zpoždění letů pomocí HDInsight](hdinsight-analyze-flight-delay-data-linux.md)
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial

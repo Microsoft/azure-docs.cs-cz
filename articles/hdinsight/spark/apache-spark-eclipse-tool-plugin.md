@@ -1,5 +1,5 @@
 ---
-title: 'Sada Azure Toolkit pro Eclipse: Scala vytvářet aplikace pro HDInsight Spark '
+title: 'Sada Azure Toolkit pro Eclipse: Vytvoření aplikace Scala Spark v HDInsight '
 description: Pomocí nástrojů HDInsight v sadě Azure Toolkit pro Eclipse pro vývoj aplikací Spark napsané v jazyce Scala a odesílat je na cluster HDInsight Spark přímo z integrovaného vývojového prostředí Eclipse.
 services: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: a875e7517870e4a782d3169fd5eb0796c9b0f16a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4370cc5e39b7d1b9a50e8fc8af9f7bfc58f6356a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496595"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602745"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro Eclipse
 
 Pomocí nástrojů HDInsight v sadě Azure Toolkit pro [Eclipse](https://www.eclipse.org/) k vývoji [Apache Spark](https://spark.apache.org/) aplikace napsané v [Scala](https://www.scala-lang.org/) a odesílat je na cluster Azure HDInsight Spark přímo z integrovaného vývojového prostředí Eclipse. Můžete použít několik různých způsobů, jak modul plug-in nástroje HDInsight:
 
-* Pro vývoj a odeslání aplikace Scala Spark na cluster HDInsight Spark
-* Pro přístup k vašim prostředkům clusteru Azure HDInsight Spark
-* Pro vývoj a spouštění aplikace Scala Spark místně
+* Pro vývoj a odeslání aplikace Scala Spark na cluster HDInsight Spark.
+* Pro přístup k vašim prostředkům clusteru Azure HDInsight Spark.
+* Pro vývoj a spouštění aplikace Scala Spark místně.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tento nástroj můžete použít k vytvoření a odeslání aplikace pouze pro cluster HDInsight Spark na systému Linux.
 > 
 > 
@@ -78,7 +78,7 @@ Normální cluster můžete propojit pomocí Ambari, spravovat uživatelské jm�
    
    ![Dialogové okno clusteru odkaz](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené clusteru používáme klíč propojené úložiště, uživatelské jméno a heslo.
    > ![Průzkumník služby Storage v Eclipse](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
@@ -207,7 +207,7 @@ Nástroje HDInsight v sadě Azure Toolkit pro Eclipse slouží ke spuštění ap
 ### <a name="prerequisite"></a>Požadavek
 Když používáte místní aplikace Spark Scala na počítači Windows, může získat výjimku, jak je vysvětleno v [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356). Touto výjimkou způsobeno **WinUtils.exe** chybí ve Windows. 
 
-Chcete-li vyřešit tuto chybu, je třeba [stažení spustitelného souboru](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do umístění, jako je **C:\WinUtils\bin**a pak přidejte proměnnou prostředí **HADOOP_HOME** a nastavte hodnotu vlastnosti proměnnou **C\WinUtils**.
+Chcete-li vyřešit tuto chybu, je třeba [stažení spustitelného souboru](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do umístění, jako je **C:\WinUtils\bin**a pak přidejte proměnnou prostředí **HADOOP_HOME** a nastavte hodnotu vlastnosti proměnnou **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Spuštění místních aplikací Spark Scala
 1. Spusťte Eclipse a vytvořte projekt. V **nový projekt** dialogové okno, vyberte následující možnosti a pak vyberte **Další**.
@@ -245,9 +245,9 @@ Pokud máte nějakou zpětnou vazbu, nebo pokud narazíte na jakékoli potíže 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Vytváření a spouštění aplikací

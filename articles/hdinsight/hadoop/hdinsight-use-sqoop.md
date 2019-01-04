@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: e448b367e574b044762fb1ee7eaa30e1bb3e1f8b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a6c17ad8d4af568d910597da4b44f09676d1c36a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011729"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652486"
 ---
-# <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Použití nástroje Sqoop se systémem Hadoop v HDInsight
+# <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
 Další informace o použití Apache Sqoop v HDInsight pro import a export mezi clusteru HDInsight a Azure SQL database nebo databáze systému SQL Server.
 
 I když Apache Hadoop je přirozenou volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory, může to mít také potřeba ke zpracování strukturovaných dat, která je uložená v relačních databázích.
 
-[Apache Sqoop] [ sqoop-user-guide-1.4.4] je nástroj určený pro přenos dat mezi clustery Hadoop a relačními databázemi. Můžete ho použít pro import dat ze systému správy relačních databází (RDBMS), jako jsou SQL Server, MySQL nebo Oracle do distribuovaného systému souborů Hadoop (HDFS), transformujte data v Hadoop MapReduce nebo Hive a pak exportovat data zpět do relační databázový systém. V tomto kurzu použijete databázi serveru SQL Server pro relační databáze.
+[Apache Sqoop] [ sqoop-user-guide-1.4.4] je nástroj určený pro přenos dat mezi clustery Hadoop a relačními databázemi. Slouží k importu dat ze systému pro správu relačních databází (RDBMS), jako jsou SQL Server, MySQL nebo Oracle do distribuovaného systému souborů Hadoop (HDFS) transformace dat v systému Hadoop pomocí MapReduce nebo Apache Hive a pak exportovat data zpět do relační databázový systém . V tomto kurzu použijete databázi serveru SQL Server pro relační databáze.
 
 Sqoop verze, které jsou podporovány v clusterech HDInsight najdete v tématu [co je nového ve verzích clusterů poskytovaných službou HDInsight?][hdinsight-versions]
 
@@ -31,7 +31,7 @@ Sqoop verze, které jsou podporovány v clusterech HDInsight najdete v tématu [
 
 HDInsight cluster se dodává s ukázkovými daty. Můžete použít následující dvě ukázky:
 
-* Souboru protokolu log4j, které se nacházejí v */example/data/sample.log*. Tyto protokoly jsou extrahovány ze souboru:
+* Soubor protokolu Apache Log4j, které se nacházejí v */example/data/sample.log*. Tyto protokoly jsou extrahovány ze souboru:
   
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -65,7 +65,7 @@ V této části se dozvíte, jak vytvořit cluster, SQL Database a SQL database 
 
 Pokud byste radši chtěli použít Azure PowerShell k vytvoření clusteru a službu SQL Database, najdete v článku [příloha A](#appendix-a---a-powershell-sample).
 
-> [!NOTE]
+> [!NOTE]  
 > Import pomocí šablony nebo na webu Azure portal podporuje pouze import souboru BACPAC z úložiště objektů blob v Azure.
 
 **Konfigurace prostředí pomocí šablony resource management**
@@ -73,17 +73,17 @@ Pokud byste radši chtěli použít Azure PowerShell k vytvoření clusteru a sl
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-2. Zadejte následující vlastnosti:
+2. Zadejte tyto vlastnosti:
 
     - **Předplatné**: Zadejte předplatné Azure.
-    - **Skupina prostředků**: vytvořit novou skupinu prostředků Azure, nebo vyberte existující skupinu prostředků.  Skupina prostředků je pro účely správy.  Je kontejner pro objekty.
+    - **Skupina prostředků**: Vytvořit novou skupinu prostředků Azure, nebo vyberte existující skupinu prostředků.  Skupina prostředků je pro účely správy.  Je kontejner pro objekty.
     - **Umístění**: Vyberte oblast.
-    - **Název clusteru**: Zadejte název pro Hadoop cluster.
-    - **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je admin.
+    - **Název clusteru**: Zadejte název clusteru Hadoop.
+    - **Přihlašovací jméno a heslo clusteru**: Výchozí přihlašovací jméno je admin.
     - **Uživatelské jméno a heslo SSH**.
     - **Databáze SQL serveru přihlašovací jméno a heslo**.
-    - **_artifacts umístění**: použijte výchozí hodnotu, pokud chcete použít vlastní soubor backpac v jiném umístění.
-    - **Sas Token umístění _artifacts**: pole ponechte prázdné.
+    - **umístění _artifacts**: Použijte výchozí hodnotu, pokud chcete použít vlastní soubor backpac v jiném umístění.
+    - **Token Sas umístění _artifacts**: Ponechte prázdné.
     - **Název souboru Bacpac**: Pokud chcete použít vlastní soubor backpac použijte výchozí hodnotu.
      
         Pevně zakódované v sekci proměnných jsou následující hodnoty:
@@ -99,34 +99,31 @@ Pokud byste radši chtěli použít Azure PowerShell k vytvoření clusteru a sl
 
 Pokud se rozhodnete použít existující databázi Azure SQL nebo Microsoft SQL Server
 
-* **Azure SQL database**: je nutné nakonfigurovat pravidlo brány firewall pro server databáze Azure SQL umožňující přístup z pracovní stanice. Pokyny týkající se vytváření databáze Azure SQL a konfiguraci brány firewall najdete v tématu [začít používat Azure SQL database][sqldatabase-get-started]. 
+* **Azure SQL database**: Je nutné nakonfigurovat pravidlo brány firewall pro server databáze Azure SQL umožňující přístup z pracovní stanice. Pokyny týkající se vytváření databáze Azure SQL a konfiguraci brány firewall najdete v tématu [začít používat Azure SQL database][sqldatabase-get-started]. 
   
-  > [!NOTE]
+  > [!NOTE]  
   > Ve výchozím nastavení umožňuje službě Azure SQL database připojení ze služeb Azure, jako je například Azure HDInsight. Pokud toto nastavení brány firewall je zakázaná, musíte ji povolit z portálu Azure portal. Pokyny týkající se vytváření databáze Azure SQL a konfigurace pravidla brány firewall naleznete v tématu [vytvoření a konfigurace služby SQL Database][sqldatabase-create-configure].
-  > 
-  > 
+
 * **SQL Server**: Pokud váš cluster HDInsight je ve stejné virtuální síti v Azure jako SQL Server, můžete použít kroky v tomto článku pro import a export dat do databáze SQL serveru.
   
-  > [!NOTE]
+  > [!NOTE]  
   > HDInsight podporuje jen na základě umístění virtuální sítě, a to aktuálně nefunguje s virtuální sítí založených na skupinu vztahů.
-  > 
-  > 
+
   
   * Vytvoření a konfigurace virtuální sítě najdete v tématu [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
     
     * Pokud používáte SQL Server ve vašem datovém centru, je nutné nakonfigurovat virtuální sítě jako *site-to-site* nebo *point-to-site*.
       
-      > [!NOTE]
+      > [!NOTE]  
       > Pro **point-to-site** virtuální sítě, SQL Server musí běžet klienta VPN konfigurace aplikace, která je k dispozici **řídicí panel** konfigurace virtuální sítě Azure.
-      > 
-      > 
+
+
     * Při použití systému SQL Server na virtuálním počítači Azure, pokud virtuální počítač, který je hostitelem systému SQL Server je členem stejné virtuální síti jako HDInsight lze použít všechny konfigurace virtuální sítě.
-  * Vytvoření clusteru služby HDInsight ve virtuální síti najdete v tématu [vytváření clusterů Hadoop v HDInsight pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md)
+  * Vytvoření clusteru služby HDInsight ve virtuální síti najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md)
     
-    > [!NOTE]
+    > [!NOTE]  
     > SQL Server, musíte také povolit ověřování. Přihlašovací jméno SQL serveru musíte použít k dokončení kroků v tomto článku.
-    > 
-    > 
+
 
 **Ověření konfigurace**
 
@@ -158,9 +155,9 @@ HDInsight můžete spouštět úlohy Sqoop pomocí různých metod. Použijte n�
 ## <a name="next-steps"></a>Další postup
 Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
 
-* [Použití Hivu se službou HDInsight](../hdinsight-use-hive.md)
-* [Použití Pigu se službou HDInsight](../hdinsight-use-pig.md)
-* [Nahrání dat do HDInsight][hdinsight-upload-data]: Najít další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
+* [Použití Apache Hivu se službou HDInsight](../hdinsight-use-hive.md)
+* [Použití Apache Pig s HDInsight](../hdinsight-use-pig.md)
+* [Nahrání dat do HDInsight][hdinsight-upload-data]: Najdete další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
 
 ## <a name="appendix-a---a-powershell-sample"></a>Příloha A – ukázku prostředí PowerShell
 V ukázce Powershellu provede následující kroky:
@@ -211,12 +208,12 @@ V ukázce Powershellu provede následující kroky:
    
     Zdrojový soubor se tutorials/usesqoop/data/sample.log. Tabulka, ve kterém data se exportují do se nazývá log4jlogs.
    
-   > [!NOTE]
+   > [!NOTE]  
    > Kromě informací o připojovacím řetězci by měl fungovat kroky v této části pro službu Azure SQL database nebo SQL Server. Tyto kroky byly testovány s použitím následující konfigurace:
    > 
-   > * **Konfigurace point-to-site virtuální síť Azure**: virtuální sítě clusteru HDInsight připojené k serveru SQL Server v privátním datacentru. Zobrazit [konfigurace Point-to-Site VPN na portálu Management Portal](../../vpn-gateway/vpn-gateway-point-to-site-create.md) Další informace.
-   > * **Azure HDInsight**: viz [vytváření clusterů Hadoop v HDInsight pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md) informace o vytvoření clusteru ve virtuální síti.
-   > * **SQL Server 2014**: nakonfigurována pro povolení ověřování a jak spustit klienta VPN konfigurační balíček se navázat zabezpečené připojení k virtuální síti.
+   > * **Konfigurace point-to-site virtuální síť Azure**: Virtuální síť clusteru HDInsight připojené k serveru SQL Server v privátním datacentru. Zobrazit [konfigurace Point-to-Site VPN na portálu Management Portal](../../vpn-gateway/vpn-gateway-point-to-site-create.md) Další informace.
+   > * **Azure HDInsight**: Zobrazit [vytváření clusterů Hadoop v HDInsight pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md) informace o vytvoření clusteru ve virtuální síti.
+   > * **SQL Server 2014**: Nakonfigurované tak, aby ověřování a jak spustit klienta VPN konfigurační balíček se navázat zabezpečené připojení k virtuální síti.
    > 
    > 
 7. Exportujte tabulky Hive ke službě Azure SQL database.
@@ -260,7 +257,7 @@ $sqlDatabaseConnectionString = "Data Source=$sqlDatabaseServerName.database.wind
 $sqlDatabaseMaxSizeGB = 10
 
 # Used for retrieving external IP address and creating firewall rules
-$ipAddressRestService = "http://bot.whatismyipaddress.com"
+$ipAddressRestService = "https://bot.whatismyipaddress.com"
 $fireWallRuleName = "UseSqoop"
 
 # Used for creating tables and clustered indexes

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 2ff7221a3742f59cdef2c5c7c220cc80148b94d0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b8f7142b2bd8e07e4b92c37b7e06bc4fe09efb73
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721557"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580412"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Pravidelné zálohování a obnovení v Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -146,6 +146,9 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+> [!IMPORTANT]
+> Kvůli problému v modulu runtime Ujistěte se, že doba uchování v zásadách uchovávání dat je nakonfigurovaný, aby byl méně než 24 dní, jinak by vést ve službě obnovení zálohy přejít do převzetí služeb při selhání kvora ztráty příspěvek repliky.
+
 ### <a name="enable-periodic-backup"></a>Povolit pravidelné zálohování
 Po definování zásad pro splnění požadavků na ochranu dat aplikace, zásady zálohování by měly být přidružené aplikace. V závislosti na požadavku může být zásady zálohování přidružené aplikace, služby nebo oddíl.
 
@@ -222,9 +225,13 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+## <a name="known-issues"></a>Známé problémy
+- Nakonfigurujte doba uchovávání být kratší než 24 dní. 
+- Služba Backup Restore nepřejde do stavu na národní prostředí, kde je jiné než oddělovač desetinných míst "."
+- Služba Backup obnovení selže a navrhněte na cluster zabezpečený pomocí zabezpečení na základě gMSA.
+
 ## <a name="limitation-caveats"></a>Omezení / upozornění
 - Rutiny prostředí PowerShell předdefinované bez Service Fabric.
-- Žádná podpora pro Service Fabric CLI.
 - Žádná podpora pro Service Fabric clustery v Linuxu.
 
 ## <a name="next-steps"></a>Další postup

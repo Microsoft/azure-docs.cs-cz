@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8782db64a39ab3994c4689e7f809005c20c6dacd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b8ab4acd24a53267711fde4408bb9fa8f52c35f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017453"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635574"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-in-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hive v HDInsight
 Sociální weby jsou jedním z hlavních dodávala vynutí pro velké objemy dat přijetí. Veřejné rozhraní API pomocí Twitteru, jako jsou k dispozici jsou užitečné zdroje dat pro analýzu a pochopení trendů Oblíbené.
 V tomto kurzu dostávat tweety pomocí Twitteru streamovacího rozhraní API a pak použít [Apache Hive](https://hive.apache.org/) v Azure HDInsight získat seznam uživatelů Twitteru, kteří odeslané nejvíce tweety, které určitým slovem.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Konkrétní kroky do clusteru se systémem Linux najdete v tématu [analýza Twitteru dat pomocí Apache Hive v HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -42,7 +42,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
     Select-AzureRmSubscription -SubscriptionID <Azure Subscription ID>
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Podpora prostředí Azure PowerShell pro správu prostředků služby HDInsight pomocí Azure Service Manageru je **zastaralá** a k 1. lednu 2017 jsme ji odebrali. Kroky v tomto dokumentu používají nové rutiny služby HDInsight, které pracují s Azure Resource Managerem.
     >
     > Podle postupu v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) si nainstalujte nejnovější verzi prostředí Azure PowerShell. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny, které pracují s nástrojem Azure Resource Manager, najdete další informace v tématu [Migrace na vývojové nástroje založené na Azure Resource Manageru pro clustery služby HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
@@ -61,12 +61,12 @@ Následující tabulka uvádí soubory používané v tomto kurzu:
 ## <a name="get-twitter-feed"></a>Informační kanál Twitteru GET
 V tomto kurzu budete používat [rozhraní API pro streamování na Twitteru][twitter-streaming-api]. Konkrétní Twitter streamovacího rozhraní API použijete je [stavy nebo bloku filtru][twitter-statuses-filter].
 
-> [!NOTE]
+> [!NOTE]  
 > Soubor, který obsahuje 10 000 tweety a soubor skriptu Hive (popsané v další části) se nahrály do veřejného kontejneru objektů Blob. Pokud chcete použít nahraných souborů, můžete tuto část přeskočit.
 
 Tweety data se ukládají ve formátu JavaScript Object Notation (JSON), který obsahuje komplexní vnořené struktury. Místo psaní spousty řádků kódu s použitím konvenčních programovací jazyk, můžete transformovat tento vnořené struktury do tabulky Hive, tak, aby může být dotázán pomocí jazyk SQL (Structured Query) – například jazyka nazývaného HiveQL.
 
-Twitter používá OAuth pro zajištění autorizovaný přístup k jeho rozhraní API. OAuth je ověřovací protokol, který umožňuje uživatelům, abyste mohli schválit aplikace tak, aby fungoval bez sdílení hesla jejich jménem. Další informace najdete v [oauth.net](http://oauth.net/) nebo vynikající [Průvodce pro začátečníky OAuth](http://hueniverse.com/oauth/) z Hueniverse.
+Twitter používá OAuth pro zajištění autorizovaný přístup k jeho rozhraní API. OAuth je ověřovací protokol, který umožňuje uživatelům, abyste mohli schválit aplikace tak, aby fungoval bez sdílení hesla jejich jménem. Další informace najdete v [oauth.net](https://oauth.net/) nebo vynikající [Průvodce pro začátečníky OAuth](https://hueniverse.com/oauth/) z Hueniverse.
 
 Prvním krokem při používání OAuth je vytvoření nové aplikace na webu vývojáře služby Twitter.
 
@@ -80,7 +80,7 @@ Prvním krokem při používání OAuth je vytvoření nové aplikace na webu v�
    | --- | --- |
    |  Název |MyHDInsightApp |
    |  Popis |MyHDInsightApp |
-   |  Web |http://www.myhdinsightapp.com |
+   |  Web |https://www.myhdinsightapp.com |
 4. Zkontrolujte **Ano, souhlasím**a potom klikněte na tlačítko **vytvoření aplikace Twitter**.
 5. Klikněte na tlačítko **oprávnění** kartu. Výchozí oprávnění je **jen pro čtení**. To je dostatečná pro účely tohoto kurzu.
 6. Klikněte na tlačítko **klíče a přístupové tokeny** kartu.
@@ -90,7 +90,7 @@ Prvním krokem při používání OAuth je vytvoření nové aplikace na webu v�
 
 V tomto kurzu použijete prostředí Windows PowerShell provádět volání webové služby. Další oblíbené nástroje pro volání webové služby je [ *Curl*][curl]. Curl je možné stáhnout z [tady][curl-download].
 
-> [!NOTE]
+> [!NOTE]  
 > Při použití příkazu curl ve Windows pro hodnoty možnosti použijte dvojité uvozovky místo jednoduché uvozovky.
 
 **Chcete-li získat tweetů**
@@ -245,7 +245,7 @@ Jako postup ověření, můžete zkontrolovat soubor výstup **/tutorials/twitte
 ## <a name="create-hiveql-script"></a>Vytvořte skript HiveQL
 Pomocí Azure Powershellu, můžete spustit více [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) příkazy jeden čas nebo balíček příkaz HiveQL do souboru skriptu. V tomto kurzu vytvoříte skript HiveQL. Soubor skriptu musí být odeslán do služby Azure Blob storage. V další části se spustí soubor skriptu pomocí Azure Powershellu.
 
-> [!NOTE]
+> [!NOTE]  
 > Soubor skriptu Hive a soubor, který obsahuje 10 000 tweety se nahrály do veřejného kontejneru objektů Blob. Pokud chcete použít nahraných souborů, můžete tuto část přeskočit.
 
 Skript HiveQL provede následující:
@@ -453,7 +453,7 @@ Dokončili jste všechny přípravné kroky. Nyní jste vyvolání skriptu Hivu 
 ### <a name="submit-a-hive-job"></a>Odeslání úlohy Hive
 Pomocí následujícího skriptu prostředí Windows PowerShell pro spuštění skriptu Hive. Budete muset nastavit první proměnné.
 
-> [!NOTE]
+> [!NOTE]  
 > Používat tweetech a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) skript, který jste nahráli v posledních dvou oddílech, nastavte $hqlScriptFile na "/ tutorials/twitter/twitter.hql". Pokud chcete použít ty, které byly nahrány do veřejných objektů blob za vás, nastavte $hqlScriptFile "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql".
 
 ```powershell
@@ -529,7 +529,7 @@ Write-Host "==================================" -ForegroundColor Green
 #end region
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > V tabulce Hive \001 používá jako oddělovač. Oddělovač není ve výstupu.
 
 Po výsledky analýzy byly umístěny do úložiště objektů Blob v Azure, můžete exportovat data do serveru Azure SQL database a SQL, exportovat data do aplikace Excel pomocí doplňku Power Query nebo připojení aplikace k datům pomocí ovladače ODBC Hive. Další informace najdete v tématu [použití Apache Sqoop s HDInsight][hdinsight-use-sqoop], [analyzovat zpoždění letů pomocí HDInsight][hdinsight-analyze-flight-delay-data], [ Připojení Excelu k HDInsight pomocí Power Query][hdinsight-power-query], a [připojení Excelu k HDInsight pomocí ovladače ODBC Microsoft Hivu][hdinsight-hive-odbc].
@@ -543,7 +543,7 @@ V tomto kurzu jsme viděli, jak transformovat nestrukturované datové sady JSON
 * [Připojení Excelu k HDInsight pomocí ovladače ODBC Microsoft Hivu][hdinsight-hive-odbc]
 * [Použití Apache Sqoop s HDInsight][hdinsight-use-sqoop]
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial

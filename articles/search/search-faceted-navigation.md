@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 3/10/2017
+ms.date: 03/10/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 337ee5259e980509c73099f0e3417bb31ec3276d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 67cc955e4a265a2b29893bd0484dd905f4f2c2b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313934"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632429"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetová navigace je filtrační mechanismus, který poskytuje samořízeného k podrobnostem námětů a navigace ve vyhledávání aplikací. Termín 'Fasetové navigace' může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie slouží k filtrování výsledků.
@@ -34,7 +34,7 @@ Psaní kódu, který vytvoří dotazy vývoje aplikací, představuje velkou č�
 ## <a name="sample-code-and-demo"></a>Ukázkový kód a ukázky
 Tento článek používá portál pro prohledávání úlohy jako příklad. V příkladu je implementovaný jako aplikaci ASP.NET MVC.
 
--   A testování pracovní si online ukázku v [Azure Search úlohy portálu Demo](http://azjobsdemo.azurewebsites.net/).
+-   A testování pracovní si online ukázku v [Azure Search úlohy portálu Demo](https://azjobsdemo.azurewebsites.net/).
 
 -   Stáhněte si kód z [Azure-Samples úložišti na Githubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -371,7 +371,7 @@ Můžete najít příklady filtrů v [syntaxe výrazů OData (Azure Search)](htt
 ## <a name="try-the-demo"></a>Vyzkoušet ukázkovou verzi
 Azure Search úlohy portálu Demo obsahuje příklady odkazované v tomto článku.
 
--   A testování pracovní si online ukázku v [Azure Search úlohy portálu Demo](http://azjobsdemo.azurewebsites.net/).
+-   A testování pracovní si online ukázku v [Azure Search úlohy portálu Demo](https://azjobsdemo.azurewebsites.net/).
 
 -   Stáhněte si kód z [Azure-Samples úložišti na Githubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -396,12 +396,12 @@ Při práci s výsledky hledání, podívejte se na adresu URL pro změny v kons
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Další informace
-Sledování [podrobné informace o Azure Search](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Na 45:25 není o tom, jak implementovat omezující vlastnosti na ukázku.
+Sledování [podrobné informace o Azure Search](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Na 45:25 není o tom, jak implementovat omezující vlastnosti na ukázku.
 
 Další přehledy o Principy návrhu pro fasetovou navigaci doporučujeme na následujících odkazech:
 
 * [Návrh a Fasetové vyhledávání](http://www.uie.com/articles/faceted_search/)
-* [Vzory návrhu: Fasetová navigace](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [Vzory návrhu: Fasetová navigace](https://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
@@ -431,7 +431,7 @@ Další přehledy o Principy návrhu pro fasetovou navigaci doporučujeme na ná
 
 <!--Link references-->
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/

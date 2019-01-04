@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: barclayn
-ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 39ae2108c327f38dbf41981ec6aabe7722b77685
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302013"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717377"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení služby Azure Key Vault s obměny klíčů a auditování
 
@@ -414,7 +414,7 @@ A přidejte soubor s názvem souboru project.json s následujícím obsahem:
 
 Při **Uložit**, Azure Functions se stáhne požadované binární soubory.
 
-Přepněte **integrace** kartu a dejte smysluplný název určený v rámci funkce parametr časovače. V předchozím kódu se očekává, že na časovač a volat *myTimer*. Zadejte [výraz CRON](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON) následujícím způsobem: 0 \* \* \* \* \* časovač, který způsobí, že funkce pro spuštění jednou za minutu.
+Přepněte **integrace** kartu a dejte smysluplný název určený v rámci funkce parametr časovače. V předchozím kódu se očekává, že na časovač a volat *myTimer*. Zadejte [výraz CRON](../app-service/webjobs-create.md#CreateScheduledCRON) následujícím způsobem: 0 \* \* \* \* \* časovač, který způsobí, že funkce pro spuštění jednou za minutu.
 
 Na stejném **integrace** kartu, přidat vstup typu **Azure Blob Storage**. To bude odkazovat na sync.txt souboru, který obsahuje časové razítko poslední události podívali se na funkce. To bude možné v rámci funkce podle názvu parametru. V předchozím kódu vstup úložiště objektů Blob v Azure očekává, že název parametru, který se má *inputBlob*. Zvolte účet úložiště, ve kterém bude uložený soubor sync.txt (může to být stejný nebo jiný účet úložiště). V poli Cesta zadejte cestu, kam se soubor nachází ve formátu {container-name}/path/to/sync.txt.
 

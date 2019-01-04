@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 86b10d65ecaa52055244f3530f91c1cabbe219e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 833f240572b10e9d07da0ded27f5848822a70f46
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435544"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744326"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix ve službě HDInsight
 
-[Apache Phoenix](http://phoenix.apache.org/) je vrstva masivně paralelní relační databáze založená na open source [Apache HBase](hbase/apache-hbase-overview.md). Phoenix umožňuje používat dotazy na podobném SQL nad HBase. Phoenix používá ovladače JDBC pod umožňující uživatelům vytvořit, odstranit, změnit tabulek, indexů, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL místo použití prostředí MapReduce ke kompilaci dotazů, umožňují vytvářet aplikace s nízkou latencí nad HBase. Phoenix přidá coprocessors k podpoře spouštění v adresním prostoru serveru klientem poskytnutý kód spouští kód umístěny společně s daty. Tento přístup minimalizuje přenosu dat klienta nebo serveru.
+[Apache Phoenix](https://phoenix.apache.org/) je vrstva masivně paralelní relační databáze založená na open source [Apache HBase](hbase/apache-hbase-overview.md). Phoenix umožňuje používat dotazy na podobném SQL nad HBase. Phoenix používá ovladače JDBC pod umožňující uživatelům vytvořit, odstranit, změnit tabulek, indexů, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL místo použití prostředí MapReduce ke kompilaci dotazů, umožňují vytvářet aplikace s nízkou latencí nad HBase. Phoenix přidá coprocessors k podpoře spouštění v adresním prostoru serveru klientem poskytnutý kód spouští kód umístěny společně s daty. Tento přístup minimalizuje přenosu dat klienta nebo serveru.
 
-Apache Phoenix otevře velkých objemů dat pro nevývojáře, kteří můžou využívat syntaxe podobném SQL místo programování. Phoenix je vysoce optimalizovaných pro HBase, na rozdíl od jiných nástrojů, jako [Hive](hadoop/hdinsight-use-hive.md) a Apache Spark SQL. Výhoda pro vývojáře je zápis vysoce výkonných dotazů s mnohem menším množstvím kódu.
+Apache Phoenix otevře velkých objemů dat pro nevývojáře, kteří můžou využívat syntaxe podobném SQL místo programování. Phoenix je vysoce optimalizovaných pro HBase, na rozdíl od jiných nástrojů, jako [Apache Hive](hadoop/hdinsight-use-hive.md) a Apache Spark SQL. Výhoda pro vývojáře je zápis vysoce výkonných dotazů s mnohem menším množstvím kódu.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 Když odešlete dotaz SQL, Phoenix zkompiluje dotaz pro nativní volání HBase a spustí skener (nebo plán) paralelní optimalizace. Tato vrstva abstrakce uvolní vývojářům od vytváření úloh MapReduce, místo toho se soustředit na obchodní logiku a pracovní postup jejich aplikaci kolem Phoenix pro velké objemy dat úložiště.
@@ -70,17 +70,17 @@ Chcete-li později přidat další sloupce, použijte `ALTER VIEW` příkazu.
 
 ### <a name="skip-scan"></a>Přeskočit kontrolu
 
-Přeskočit kontrolu používá k nalezení jedinečných hodnot jednoho nebo více sloupců složeném indexu. Na rozdíl od kontrolu rozsahu přeskočit kontroly implementuje uvnitř řádku skenování, což má za následek [vyšší výkon](http://phoenix.apache.org/performance.html#Skip-Scan). Při hledání, se přeskočí první odpovídající hodnotu spolu s index dokud není nalezena hodnota dalšího.
+Přeskočit kontrolu používá k nalezení jedinečných hodnot jednoho nebo více sloupců složeném indexu. Na rozdíl od kontrolu rozsahu přeskočit kontroly implementuje uvnitř řádku skenování, což má za následek [vyšší výkon](https://phoenix.apache.org/performance.html#Skip-Scan). Při hledání, se přeskočí první odpovídající hodnotu spolu s index dokud není nalezena hodnota dalšího.
 
 Přeskočit kontrolu používá `SEEK_NEXT_USING_HINT` výčtu filtru HBase. Pomocí `SEEK_NEXT_USING_HINT`, kontrolu přeskočit uchovává informace o které sadu klíčů nebo rozsahy klíčů, jsou prohledávána v každém sloupci. Přeskočení kontroly potom trvá klíč, který byl předán během vyhodnocení filtru a určuje, zda je jeden z kombinace. Pokud ne, vyhodnotí další nejvyšší klíč pro přechod na kontrolu přeskočit.
 
 ### <a name="transactions"></a>Transakce
 
-HBase poskytuje transakcí na úrovni řádků, Phoenix integruje [Tephra](http://tephra.io/) přidává různé řádků a křížovou tabulku transakce s plnou [kyseliny](https://en.wikipedia.org/wiki/ACID) sémantiku.
+HBase poskytuje transakcí na úrovni řádků, Phoenix integruje [Tephra](https://tephra.io/) přidává různé řádků a křížovou tabulku transakce s plnou [kyseliny](https://en.wikipedia.org/wiki/ACID) sémantiku.
 
 Jako s tradiční SQL transakce, transakce, které jsou k dispozici prostřednictvím Správce transakcí Phoenix umožňují Ujistěte se, že atomickou jednotku dat se úspěšně upserted, transakce vrácení zpět, pokud operace upsert je neúspěšná na jakoukoli tabulku podporou transakcí.
 
-K povolení Phoenix transakcí, najdete v článku [dokumentaci Apache Phoenix transakce](http://phoenix.apache.org/transactions.html).
+K povolení Phoenix transakcí, najdete v článku [dokumentaci Apache Phoenix transakce](https://phoenix.apache.org/transactions.html).
 
 Chcete-li vytvořit novou tabulku s transakcemi povolena, nastavte `TRANSACTIONAL` vlastnost `true` v `CREATE` – příkaz:
 
@@ -94,7 +94,7 @@ Změnit existující tabulku využívat transakce, použijte stejnou vlastnost v
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Transakční tabulku nelze přepnout zpět na právě není transakční.
 
 ### <a name="salted-tables"></a>Solené tabulky

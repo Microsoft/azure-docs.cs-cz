@@ -1,24 +1,21 @@
 ---
-title: 'První pohled: Ochrana virtuálních počítačů s trezorem Recovery Services'
-description: Virtuální počítače Azure s trezorem Recovery Services. Ochrana dat pomocí záloh virtuálních počítačů nasazených Resource Managerem, virtuálních počítačů nasazených službou Classic, virtuálních počítačů služby Premium Storage, šifrovaných virtuálních počítačů a virtuálních počítačů na spravovaných discích. Vytvoření a registrace trezoru Recovery Services. Registrace virtuálních počítačů, vytváření zásad a ochrana virtuálních počítačů v Azure.
+title: Zálohování virtuálních počítačů Azure pomocí služby Azure Backup
+description: Zjistěte, jak zálohovat virtuální počítače Azure pomocí služby Azure Backup
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/17/2018
 ms.author: raynew
-ms.custom: H1Hack27Feb2017
-keywords: zálohy. zálohování virtuálních počítačů
-ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0c394a92bff3ace210ee0db156f47bb8912bf45d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869924"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631579"
 ---
-# <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure do trezoru služby Recovery Services
+# <a name="back-up-azure-vms-with-the-azure-backup-service"></a>Zálohování virtuálních počítačů Azure pomocí služby Azure Backup
 
 Tento článek vysvětluje, jak nakonfigurovat ochranu pro virtuální počítač z nabídky operace virtuálních počítačů nebo do trezoru služby Recovery Services. Trezory Služeb zotavení chrání:
 
@@ -32,7 +29,7 @@ Tento článek vysvětluje, jak nakonfigurovat ochranu pro virtuální počíta�
 
 Další informace o ochraně virtuálních počítačů služby Premium Storage najdete v článku [Zálohování a obnovení virtuálních počítačů služby Premium Storage](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). Další informace o podpoře pro virtuální počítače se spravovanými disky najdete v tématu věnovaném [zálohování a obnovení virtuálních počítačů na spravovaných discích](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). Další informace o rozhraní s předsnímkovými a posnímkovými skripty pro zálohování virtuálních počítačů s Linuxem najdete v tématu [Zálohování virtuálních počítačů s Linuxem konzistentní s aplikacemi pomocí předsnímkových a posnímkových skriptů](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
-Další informace o tom, co lze a nelze zálohovat, najdete v tématu [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
+Další informace o tom, co lze a nelze zálohovat, najdete v tématu [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#before-you-start).
 
 > [!NOTE]
 > Služba Backup vytvoří samostatné skupiny prostředků než skupina prostředků virtuálního počítače k uložení kolekci bodů obnovení. Zákazníkům doporučujeme není zamknout skupiny prostředků vytvořené pro použití službou Backup.
@@ -337,7 +334,9 @@ Služba Backup nainstaluje rozšíření zálohování i v případě, že virtu
 Pokud máte problémy s plněním některých úkolů v tomto článku, obraťte se na [Pokyny při řešení potíží](backup-azure-vms-troubleshoot.md).
 
 ## <a name="pricing"></a>Ceny
-Náklady na zálohování virtuálních počítačů Azure závisí na počtu chráněných instancí. Definici chráněné instance najdete v tématu [Co je chráněná instance](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Příklad výpočtu nákladů na zálohování virtuálního počítače najdete v tématu [Jak se počítají chráněné instance](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances). Informace o [cenách služby Backup](https://azure.microsoft.com/pricing/details/backup/) najdete na stránce Ceny služby Azure Backup.
+Náklady na zálohování virtuálních počítačů Azure závisí na počtu chráněných instancí. Definici chráněné instance najdete v tématu [Co je chráněná instance](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Informace o [cenách služby Backup](https://azure.microsoft.com/pricing/details/backup/) najdete na stránce Ceny služby Azure Backup.
 
-## <a name="questions"></a>Máte dotazy?
-Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](https://aka.ms/azurebackup_feedback).
+## <a name="next-steps"></a>Další postup
+
+[Správa](backup-azure-manage-vms.md) zálohy.
+

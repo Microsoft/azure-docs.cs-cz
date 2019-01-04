@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f08de2398174363604576874627026dcc6199ac5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104658"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753944"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 
 Pro absolvování tohoto kurzu potřebujete:
 
-Nejdřív je potřeba dokončit předchozí kurz o službě Blob Storage: [Odeslání dat obrázků do cloudu v Azure Storage][previous-tutorial].
+Je nutné dokončit předchozí kurz o službě Blob storage: [Odeslání dat obrázků do cloudu pomocí služby Azure Storage][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -110,7 +110,7 @@ Teď můžete nasadit do této aplikace Function App nasadit projekt projektu k�
 
 ## <a name="deploy-the-function-code"></a>Nasazení kódu funkce 
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 Ukázkový skript jazyka C# (.csx) pro změnu velikosti je k dispozici na [GitHubu](https://github.com/Azure-Samples/function-image-upload-resize). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) nasaďte tento projekt kódu funkce do aplikace Function App. 
 

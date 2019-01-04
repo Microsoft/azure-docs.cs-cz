@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 09f4637c24b146394dc0299e60e729c07420150a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833308"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974358"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure, které můžete navrácení služeb po obnovení virtuálních počítačů do místní lokality. K navrácení služeb po obnovení, budete muset znovu nastavit ochranu virtuálního počítače z Azure do místní lokality. Tento proces je nutné místní hlavní cílový server pro příjem provozu. 
@@ -20,6 +20,7 @@ Pokud se chráněný virtuální počítač je virtuální počítač s Windows,
 
 > [!IMPORTANT]
 > Od verze 9.10.0 hlavní cílový server na nejnovější hlavní cílový server můžete nainstalovat jenom na serveru se systémem Ubuntu 16.04. Nové instalace nejsou povoleny na serverech CentOS6.6. Ale můžete dál upgrade původní hlavní cílový server pomocí 9.10.0 verze.
+> Hlavní cílový server na LVM se nepodporuje.
 
 ## <a name="overview"></a>Přehled
 Tento článek obsahuje pokyny pro instalaci hlavního cílového systému Linux.
@@ -38,7 +39,7 @@ Dotazy nebo připomínky můžete publikovat na konci tohoto článku nebo na [f
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Pokyny pro nastavení velikosti pro vytvoření hlavního cílového serveru
 
 Vytvořte na hlavním cíli v souladu s velikosti podle následujících pokynů:
-- **Paměť RAM**: 6 GB nebo více
+- **PAMĚŤ RAM**: 6 GB nebo více
 - **Velikost disku OS**: 100 GB nebo více (pro instalaci operačního systému)
 - **Další velikosti jednotky pro uchovávání dat**: 1 TB
 - **Jádra procesoru**: 4 jádra nebo více
@@ -59,7 +60,7 @@ Jsou podporovány následující podporované jádrech Ubuntu.
 
 Následující kroky pro instalaci operačního systému Ubuntu 16.04.2 64-bit.
 
-1.   Přejděte [odkaz ke stažení](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64), zvolte nejbližší anddownload zrcadlení Image ISO se systémem Ubuntu 16.04.2 minimální 64-bit.
+1.   Přejděte [odkaz ke stažení](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), zvolte nejbližší anddownload zrcadlení Image ISO se systémem Ubuntu 16.04.2 minimální 64-bit.
 Ponechat soubor ISO se systémem Ubuntu 16.04.2 minimální 64-bit do jednotky DVD a spuštění systému.
 
 1.  Vyberte **Angličtina** jako váš preferovaný jazyk a pak vyberte **Enter**.
@@ -259,7 +260,7 @@ Chcete-li vytvořit disk pro uchování postupujte následovně:
     
     Vyberte **vložit** zahájíte úpravou souboru. Vytvořit novou čáru a vložte následující text. Upravte více cest ID disku na základě Identifikátoru zvýrazněné více cest z předchozího příkazu.
 
-    **/dev/Mapovač/<Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
+     **/dev/Mapovač/ <Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
 
     Vyberte **Esc**a pak zadejte **: QW** (zápisu a ukončete) zavřete okno editoru.
 

@@ -9,30 +9,28 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 23dae8a6f0651ee6b753c4b29112eb733103b9e1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c3b7695b7a67a33df93b0216cfd02f762e412158
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631440"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635710"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Spouštět úlohy Apache Sqoop pomocí Azure Powershellu pro Apache Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
 Zjistěte, jak pomocí Azure Powershellu můžete spouštět úlohy Apache Sqoop v Azure HDInsight pro import a export mezi clusterem HDInsight a Azure SQL database nebo databáze systému SQL Server.
 
-> [!NOTE]
+> [!NOTE]  
 > I když používáte postupy v tomto článku se buď cluster HDInsight založených na Windows nebo Linux, fungují pouze z klienta Windows. Zvolit jiné metody, použijte volič karty v horní části tohoto článku. 
-> 
-> 
 
-### <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
 * Pracovní stanice s prostředím Azure PowerShell.
-* Cluster Hadoop v HDInsight. Další informace najdete v tématu [vytvoření clusteru a SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [vytvoření clusteru a SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## <a name="run-sqoop-by-using-powershell"></a>Spusťte Sqoop pomocí Powershellu
+## <a name="run-apache-sqoop-by-using-powershell"></a>Apache Sqoop spuštění pomocí prostředí PowerShell
 Následující skript prostředí PowerShell předem zpracuje zdrojový soubor a exportuje ji do služby Azure SQL database:
 
     $resourceGroupName = "<AzureResourceGroupName>"
@@ -160,15 +158,15 @@ Následující skript prostředí PowerShell předem zpracuje zdrojový soubor a
 ## <a name="limitations"></a>Omezení
 Linuxovým systémem HDInsight představuje následující omezení:
 
-* Hromadný export: The Sqoop konektor, který slouží k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje operace hromadného vložení.
+* Hromadný export: Sqoop konektor, který slouží k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje operace hromadného vložení.
 
-* Dávkování: pomocí `-batch` při přepnutí provede vložení, Sqoop provede několik vložení místo dávkování operace vložení. 
+* Dávkové zpracování: S použitím `-batch` při přepnutí provede vložení, Sqoop provede několik vložení místo dávkování operace vložení. 
 
 ## <a name="next-steps"></a>Další postup
 Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
 
-* [Použití Oozie s HDInsight](../hdinsight-use-oozie.md): použití Sqoopu akce v pracovním postupu Oozie.
-* [Analyzovat zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): použití Hive k analýze letu zpoždění dat a potom použít Sqoop k exportování dat do Azure SQL database.
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najít další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
+* [Použití Apache Oozie s HDInsight](../hdinsight-use-oozie.md): Pomocí Sqoop akce v pracovním postupu Oozie.
+* [Analyzovat zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): Analýza zpoždění letů pomocí Apache Hive a potom použít Sqoop k exportování dat do Azure SQL database.
+* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najdete další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

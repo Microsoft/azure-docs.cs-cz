@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 3c9514e39e061067b7332570e0eb6273924529e0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: be86e961d04b600f112a173c041b60cbe50ea00d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339208"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725047"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak nastavit upozornění protokolů pomocí rozhr
 - Kritéria: Konkrétní podmínky nebo logiku, která při vidět v signál, by měly aktivovat akce
 - Akce: Konkrétní volání odesílat příjemce oznámení – e-mail, SMS, webhooku atd.
 
-Termín **upozornění protokolů** k popisu výstrahy, pokud je signál vlastní dotaz na základě [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy z [upozornění - Přehled protokolů](../../azure-monitor/platform/alerts-unified-log.md).
+Termín **upozornění protokolů** k popisu výstrahy, pokud je signál vlastní dotaz na základě [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Další informace o funkci, terminologie a typy z [upozornění - Přehled protokolů](../../azure-monitor/platform/alerts-unified-log.md).
 
 > [!NOTE]
 > Data z oblíbených protokolů [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) je teď taky dostupná na platformě metriky ve službě Azure Monitor. Pro zobrazení podrobností o [upozornění metriky pro protokoly](../../azure-monitor/platform/alerts-metric-logs.md)
@@ -245,6 +245,6 @@ az group deployment create --resource-group myRG --template-file sampleScheduled
 
 * Další informace o [upozornění protokolů ve výstrahách Azure](../../azure-monitor/platform/alerts-unified-log.md)
 * Vysvětlení [akce Webhooku pro výstrahy protokolu](../../azure-monitor/platform/alerts-log-webhook.md)
-* Další informace o [Application Insights](../../application-insights/app-insights-analytics.md)
+* Další informace o [Application Insights](../../azure-monitor/app/analytics.md)
 * Další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 
 

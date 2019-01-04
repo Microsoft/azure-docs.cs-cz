@@ -1,8 +1,8 @@
 ---
-title: Trvalý výstup úloh a ke službě Azure Storage pomocí rozhraní API služby Azure Batch | Dokumentace Microsoftu
+title: Trvalý výstup úloh a ke službě Azure Storage pomocí služby Batch API – Azure Batch | Dokumentace Microsoftu
 description: Další informace o použití rozhraní API služby Batch pro trvalý výstup úloh a úlohy služby Batch do služby Azure Storage.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.service: batch
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
-ms.openlocfilehash: 549be57b52fa88efa8c3850d131563fea2a7c65e
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 685f034dfa3b312c461f7313c0f85a256838a8d2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706122"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539547"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Zachovat data úloh do služby Azure Storage pomocí rozhraní API služby Batch
 

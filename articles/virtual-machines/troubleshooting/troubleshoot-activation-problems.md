@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824298"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976356"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Poradce při potížích aktivace virtuálního počítače Windows Azure
 
@@ -40,7 +40,7 @@ Při pokusu o aktivaci virtuálního počítače Windows Azure, se zobrazí chyb
 **Chyba: 0xC004F074, které LicensingService softwaru oznámila, že počítač se nepovedlo aktivovat. Nebylo možné kontaktovat žádný ManagementService klíčů (KMS). Podrobnosti najdete v protokolu událostí aplikací Další informace.**
 
 ## <a name="cause"></a>Příčina
-Obecně platí problémů s aktivací virtuálního počítače Azure dojít, pokud virtuální počítač Windows není nakonfigurovaný pomocí příslušný instalační klíč klienta služby správy KLÍČŮ nebo má virtuální počítač Windows problému s připojením ke službě Azure prostřednictvím služby správy KLÍČŮ (kms.core.windows.net, port 1668). 
+Obecně platí problémů s aktivací virtuálního počítače Azure dojít, pokud virtuální počítač Windows není nakonfigurovaný pomocí příslušný instalační klíč klienta služby správy KLÍČŮ nebo má virtuální počítač Windows problému s připojením ke službě Azure prostřednictvím služby správy KLÍČŮ (kms.core.windows.net, port 1688). 
 
 ## <a name="solution"></a>Řešení
 
@@ -86,7 +86,7 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
     ```
     iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    Příkaz by měl vrátit: název počítače služby správy klíčů nastavený na kms.core.windows.net:1688 úspěšně.
+    Příkaz by měl vrátit: Název počítače služby správy klíčů na kms.core.windows.net:1688 byl úspěšně nastaven.
 
 4. Ověřte pomocí Pspingu, že máte připojení k serveru služby správy KLÍČŮ. Přejděte do složky, které jste extrahovali Pstools.zip stahování a pak spusťte následující příkaz:
   
@@ -94,7 +94,7 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
     \psping.exe kms.core.windows.net:1688
     ```
   
-  V druhé poslední řádek výstupu, ujistěte se, že se zobrazuje: odeslané = 4, přijaté = 4, bylo ztraceno = 0 (ztráty 0 %).
+  V druhé poslední řádek výstupu Ujistěte se, že se zobrazí: Odeslání = 4, přijaté = 4, bylo ztraceno = 0 (ztráty 0 %).
 
   Pokud bylo ztraceno je větší než 0 (nula), virtuální počítač nemá připojení k serveru služby správy KLÍČŮ. V takovém případě pokud je virtuální počítač ve virtuální síti a má vlastní server DNS zadán, je nutné tento server DNS je schopen převést kms.core.windows.net. Nebo změnit DNS server, který kms.core.windows.net vyřešit.
 
@@ -126,5 +126,5 @@ Ano.
  
 Po období odkladu vypršelo a ještě není aktivováno Windows, Windows Server 2008 R2 a novějších verzích Windows se zobrazí další oznámení o aktivaci služby Azure. Zůstane černé tapetu plochy a Windows Update budou instalovat zabezpečení a pouze kritické aktualizace, ale ne volitelné aktualizace. V části upozornění v dolní části [licenční podmínky](https://technet.microsoft.com/library/ff793403.aspx) stránky.   
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
