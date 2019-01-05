@@ -21,7 +21,7 @@ ms.locfileid: "54023341"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopírování dat do indexu Azure Search pomocí Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-azure-search-connector.md)
 > * [Aktuální verze](connector-azure-search.md)
 
