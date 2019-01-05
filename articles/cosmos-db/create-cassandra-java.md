@@ -1,21 +1,19 @@
 ---
-title: 'Rychlý start: Rozhraní API Cassandra s využitím Javy – Azure Cosmos DB'
+title: 'Rychlý start: Rozhraní Cassandra API s využitím Javy – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy.
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.component: cosmosdb-cassandra
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 0ba2143847d51bda7bc15c0c93835c758505cd0b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ed4240b23aa7f7d2dd2365ba646b8f67ecc9f351
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089169"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039517"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Javy a Azure Cosmos DB
 

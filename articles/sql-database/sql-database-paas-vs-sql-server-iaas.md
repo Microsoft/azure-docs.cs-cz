@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: e9f322198cf94232dd2d87aa1f27dbbd6a282b72
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: c1ef32256569d1718f6848a968585216f43f333a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994993"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033447"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure---paas-or-iaas"></a>Zvolte vpravo systému SQL Server v Azure – PaaS nebo IaaS
 
@@ -87,10 +87,11 @@ Následující tabulka shrnuje hlavní vlastnosti SQL Database a SQL Serveru na 
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>Motivace firem pro zvolení Azure SQL Database nebo SQL Serveru na virtuálních počítačích Azure
 
 Existuje několik faktorů, které můžou ovlivnit vaše rozhodnutí zvolit PaaS nebo IaaS k hostování vašich databází SQL:
+
 - [Náklady na](#cost) -i PaaS a IaaS možnost zahrnovat základní ceny přidané titulní licencování a základní infrastruktury. Nicméně s možností IaaS musíte investovat další čas i prostředky ke správě databáze, zatímco v modelu PaaS se zobrazuje zahrnutá v ceně tyto funkce pro správu. IaaS umožňuje vypnutí vašich prostředků při jejich snížit náklady, zatímco verze PaaS bude vždy spuštěn, pokud nepoužíváte-li vyřadit a znovu vytvořit prostředky, když jsou potřeba.
 - [Správa](#administration) – možnosti PaaS omezit množství času, které je potřeba investovat ke správě databáze. Ale to také nebudete vykonávat některé vlastní správy, které může zlepšit výkon vašich úloh.
 - [Smlouvu o úrovni služeb](#service-level-agreement-sla) -i IaaS a PaaS poskytují nejvyšší, oborový standard smlouvu SLA. Možnost PaaS zaručuje 99,99 % smlouva SLA, zatímco IaaS zaručuje GARANTOVANÁ dostupnost 99,95 % pro infrastrukturu, což znamená, že je potřeba implementovat další mechanismy pro zajištění dostupnosti vaší databáze. V extrémním případě Pokud chcete implementovat řešení vysoké dostupnosti, které je odpovídající PaaS, potřebujete vytvořit další systému SQL Server na virtuálním počítači a konfigurace skupin dostupnosti AlwaysOn, které může být dvojí náklady na vaši databázi.
-- [Čas přesunout do cloudu](#time-to-move-to-cloud) – SQL Server na virtuálním počítači Azure je přesnou shodu prostředí, proto migrace z místního na virtuální počítač SQL Azure není liší od přesunutí databází z jednoho místního serveru na jiný. Spravovaná Instance také umožňuje velmi snadno migrace; může však být některé změny, které je potřeba ještě před migrací do spravované Instance.
+- [Čas do Azure přesunout](#market) – SQL Server na virtuálním počítači Azure je přesnou shodu prostředí, proto migrace z místního na virtuální počítač SQL Azure není liší od přesunutí databází z jednoho místního serveru na jiný. Spravovaná Instance také umožňuje velmi snadno migrace; může však být některé změny, které je potřeba ještě před migrací do spravované Instance.
 
 Tyto faktory probereme podrobněji v následujících částech.
 
@@ -102,10 +103,8 @@ Ať už jste začínající společnost, která nemá mnoho peněz, nebo tým v 
 
 V současné době **SQL Database** se prodává jako služba a je k dispozici na několika úrovních služby s různými cenami pro prostředky, které se účtují po hodinách s pevnou sazbou na základě úrovně služeb a velikost výpočetního zvolíte.
 Díky izolovanou databázi SQL můžete rozhodnout o úrovni služeb, který nejlépe vyhovuje vašim potřebám z široké škály ceny od 5$ měsíčně pro úroveň Basic.
-S SQL Database Managed Instance můžete také přinést vlastní licenci. Další informace o používání vlastní licence, najdete v části [mobilitu licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/) nebo použijte [kalkulačky pro program Azure Hybrid Benefit](https://azure.microsoft.com/en-us/pricing/hybrid-benefit/#sql-database) zobrazíte jak **ušetříte až 40 %**.
+S SQL Database Managed Instance můžete také přinést vlastní licenci. Další informace o používání vlastní licence, najdete v části [mobilitu licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/) nebo použijte [kalkulačky pro program Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) zobrazíte jak **ušetříte až 40 %**.
 Kromě toho se vám účtuje odchozí přenos přes internet podle běžných [sazeb za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/). Můžete dynamicky upravit úrovně služeb a vypočítat velikost tak, aby odpovídaly potřebám různých propustnosti vaší aplikace. Nejnovější informace o aktuálně podporovaných cenových úrovních služeb najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Můžete také vytvořit [elastické fondy](sql-database-elastic-pool.md) sdílení prostředků mezi různými instancemi databáze ke snížení nákladů a využití zohlednit špičky.
-
-
 
 V případě **SQL Database** je databázový software konfigurován, opravován a upgradován automaticky společností Microsoft, což snižuje náklady na správu. Kromě toho vám [integrované funkce zálohování](sql-database-automated-backups.md) pomůžou dosáhnout výrazných úspor nákladů, hlavně v případě, že máte velký počet databází.
 

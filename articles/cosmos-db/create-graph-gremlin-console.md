@@ -1,21 +1,20 @@
 ---
-title: 'Kurz služby Azure Cosmos DB: vytváření, dotazování a procházení v konzole Apache TinkerPops Gremlin'
+title: 'Kurz služby Azure Cosmos DB: Vytvářet, dotazovat a procházení v konzole Apache TinkerPops Gremlin'
 description: Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Gremlin API služby Azure Cosmos DB.
-services: cosmos-db
 author: luisbosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
+ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: b3077920f08688d2cc84997ef8712183e8d7a09a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e94d52cc920759b0ddf462b7fb5d20b86ab61e6c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098062"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54032172"
 ---
-# <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
+# <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Vytvářet, dotazovat a procházení grafu v konzole Gremlin
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -63,9 +62,9 @@ Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/). 
     fond připojení|{enableSsl: true}|Nastavení fondu připojení pro protokol SSL.
     serializátor|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Nastavte na tuto hodnotu a odstraňte případné konce řádků `\n` vzniklé vložením hodnoty.
 
-    Pro hodnotu hostitelé zkopírujte hodnotu **Gremlin URI** ze stránky **Přehled**: ![Zobrazení a zkopírování hodnoty Gremlin URI na stránce Přehled na webu Azure Portal](./media/create-graph-gremlin-console/gremlin-uri.png)
+    Pro hodnotu hostitelé zkopírujte **Gremlin URI** hodnotu **přehled** stránky: ![Zobrazení a zkopírování hodnoty Gremlin URI na stránce Přehled na webu Azure Portal](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    Pro hodnotu heslo zkopírujte **Primární klíč** ze stránky **Klíče**: ![Zobrazení a zkopírování primárního klíče na stránce Klíče na webu Azure Portal](./media/create-graph-gremlin-console/keys.png)
+    Pro hodnotu heslo zkopírujte **primární klíč** z **klíče** stránky: ![Zobrazení a zkopírování primárního klíče na stránce webu Azure portal, klíče](./media/create-graph-gremlin-console/keys.png)
 
 Váš soubor remote-secure.yaml by měl vypadat nějak takto:
 
@@ -301,7 +300,7 @@ g.E().drop()
 g.V().drop()
 ```
 
-Blahopřejeme! Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos DB.
+Blahopřejeme! Dokončili jste tuto službu Azure Cosmos DB: Kurz gremlin API!
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 

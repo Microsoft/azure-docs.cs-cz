@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 29c0a1a15db7670d83ff384a1ba0f37499389ef7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a476af9ceb1b664a458f7f07a5a7b3945b1ad881
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741875"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036558"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Další informace o šablonách škálovacích sad virtuálních počítačů
 [Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. V této sérii kurzů ukazuje, jak vytvořit šablonu minimální přijatelné škálovací sady a jak upravit tuto šablonu tak, aby odpovídala různé scénáře. Všechny příklady pocházejí z tohoto [úložiště GitHub](https://github.com/gatneil/mvss). 
@@ -70,7 +70,7 @@ Dále je část zdroje šablony. Tady můžete definovat, co vlastně chcete nas
    "resources": [
 ```
 
-Všechny prostředky vyžadují `type`, `name`, `apiVersion`, a `location` vlastnosti. První prostředek v tomto příkladu má typ `Microsft.Network/virtualNetwork`a názvem `myVnet`a verze rozhraní API `2016-03-30`. (Nejnovější verze rozhraní API pro typ prostředku, najdete v tématu [dokumentace k rozhraní REST API služby Azure](https://docs.microsoft.com/rest/api/).)
+Všechny prostředky vyžadují `type`, `name`, `apiVersion`, a `location` vlastnosti. První prostředek v tomto příkladu má typ [Microsft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)a názvem `myVnet`a verze rozhraní API `2016-03-30`. (Nejnovější verze rozhraní API pro typ prostředku, najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).)
 
 ```json
      {
@@ -124,7 +124,7 @@ V seznamu, virtuální sítě z předchozího příkladu je v tomto případě p
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>Zadejte vlastnosti škálovací sady
-Škálovací sady mají mnoho vlastností pro přizpůsobení virtuálních počítačů ve škálovací sadě. Úplný seznam těchto vlastností najdete v tématu [škálovací sada dokumentace k rozhraní REST API](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set). Pro účely tohoto kurzu jsou nastavené pouze několik běžně používaných vlastností.
+Škálovací sady mají mnoho vlastností pro přizpůsobení virtuálních počítačů ve škálovací sadě. Úplný seznam těchto vlastností najdete v tématu [referenčními informacemi k šablonám](/azure/templates/microsoft.compute/virtualmachinescalesets). Pro účely tohoto kurzu jsou nastavené pouze několik běžně používaných vlastností.
 ### <a name="supply-vm-size-and-capacity"></a>Zadejte velikost virtuálního počítače a kapacita
 Škálovací sada je potřeba vědět, jaké velikosti virtuálního počítače na vytvoření ("název sku") a kolik takových virtuálních počítačů k vytvoření ("kapacita skladové položky"). Chcete-li zjistit, jaké velikosti virtuálních počítačů jsou k dispozici, najdete v článku [dokumentaci velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 

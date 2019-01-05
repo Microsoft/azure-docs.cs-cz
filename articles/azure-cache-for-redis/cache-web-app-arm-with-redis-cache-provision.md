@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: adca39fd86563ad4e494995feb843b76b76806d6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f95db9b1c8119784d2b1d9cfb9dd005fc42ac3e4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019321"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033787"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Vytvořit webovou aplikaci a mezipaměti Azure Redis pomocí šablony
 V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manageru, která nasadí webovou aplikaci Azure s mezipamětí Azure pro Redis. Naučíte se, jak definovat prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
-Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
+Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). Další informace o syntaxi JSON a vlastnosti pro typy prostředků mezipaměti najdete v tématu [typy prostředků Microsoft.Cache](/azure/templates/microsoft.cache/allversions).
 
 Úplnou šablonu najdete v části [webové aplikace s mezipamětí Azure Redis šablony](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 

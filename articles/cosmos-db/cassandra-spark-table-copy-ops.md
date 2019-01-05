@@ -1,20 +1,19 @@
 ---
 title: Operace kopírování tabulky v Azure Cosmos DB Cassandra API z aplikace Spark.
 description: Tento článek podrobně popisuje, jak kopírovat data mezi tabulkami v Azure Cosmos DB Cassandra API
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: 4be80bfa7354f4a4b6a13a7a34150c7052a2117b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c98582d5fe11b87d2ba88d5fb247a87cc905e1dc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227125"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034158"
 ---
 # <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Operace kopírování tabulky v Azure Cosmos DB Cassandra API z aplikace Spark
 
@@ -147,6 +146,6 @@ newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: stri
 
 ## <a name="next-steps"></a>Další postup
 
- * Začínáme s [vytvoření účtu rozhraní Cassandra API, databáze a tabulky](create-cassandra-api-account-java.md) s použitím aplikace v Javě.
- * [Načtení ukázkových dat do tabulky Cassandra API](cassandra-api-load-data.md) s použitím aplikace v Javě.
- * [Dotazování dat z účtu rozhraní Cassandra API](cassandra-api-query-data.md) s použitím aplikace v Javě.
+ * Začněte [vytvořením účtu rozhraní API Cassandra, databáze a tabulky](create-cassandra-api-account-java.md) pomocí aplikace v Javě.
+ * [Načtěte ukázková data do tabulky rozhraní API Cassandra](cassandra-api-load-data.md) pomocí aplikace v Javě.
+ * [Zadejte dotaz na data z účtu rozhraní API Cassandra](cassandra-api-query-data.md) pomocí aplikace v Javě.

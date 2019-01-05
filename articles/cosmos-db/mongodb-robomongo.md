@@ -1,20 +1,18 @@
 ---
 title: Slouží k připojení ke službě Azure Cosmos DB Robo 3T
 description: Zjistěte, jak se připojit ke službě Azure Cosmos DB pomocí Robo 3T a Azure Cosmos DB přes rozhraní API pro MongoDB
-keywords: robomongo
-services: cosmos-db
-author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: af601075b8cc774654a9f2dbf83193bf9701166b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: 5696c376ad64df01d7f9d43ff59c87402c334c52
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789445"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034807"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Používáte Robo 3T s rozhraním API pro Azure Cosmos DB pro MongoDB.
 

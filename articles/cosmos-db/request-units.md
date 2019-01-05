@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: rimman
-ms.openlocfilehash: c43b718002267cd33135c130c6c41cabd8ee9c3b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd9fb81b37627518af1375aa9876e6c509b917c9
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310029"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033923"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky ve službě Azure Cosmos DB
 

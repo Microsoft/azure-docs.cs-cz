@@ -1,23 +1,21 @@
 ---
 title: Rozhraní API tabulky Azure Cosmos DB pro Javu
 description: Další informace o Azure Cosmos DB Table API včetně data vydání, vyřazení dat a změny provedené mezi jednotlivými verzemi.
-services: cosmos-db
-author: yarong
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/20/2017
-ms.author: yaronyg
-ms.custom: ''
-ms.openlocfilehash: 54fad2e830ae7ff1d07cc8f67e50d2b5bc4fe8a7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 724f0b9eb09b9eecad5b0a360d9301616d1494f1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096560"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035128"
 ---
-# <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table API pro Javu: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table API pro Javu: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)

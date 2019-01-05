@@ -1,21 +1,19 @@
 ---
 title: Vytvořit databázi dokumentů Azure Cosmos DB pomocí Javy.
 description: Tento článek představuje vzorový kód Java, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.custom: quick start connect, mvc, devcenter
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
-ms.author: moderakh
-ms.openlocfilehash: 5f66623c8e37f0663da7defc10d87d89bd0ad99d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.author: sngun
+ms.openlocfilehash: 70aa5c62afb6706fa9084d1ed081f70517d8d89e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105774"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039431"
 ---
 # <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>Vytváření a správa prostředků účtu rozhraní SQL API služby Azure Cosmos DB pomocí aplikace v Javě
 

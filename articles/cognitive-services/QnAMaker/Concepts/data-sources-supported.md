@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/04/2019
 ms.author: tulasim
-ms.openlocfilehash: f732391cc73f0a7cb417409cd6f6f2b3c54f93d6
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a26c4b6d16ac16596f8b1b0606aca029be335d71
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994126"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038496"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
@@ -149,6 +149,23 @@ Pokud nemáte existující obsah k vyplnění znalostní báze, můžete přidat
 ## <a name="formatting-considerations"></a>Důležité informace o formátování
 
 Po importu souboru nebo adresy URL, je převeden na Markdown a uložená v tomto formátu. Pokud proces převodu není správně převod odkazů na soubory a adresy URL, měli upravovat dotazy a odpovědi na **upravit** stránky. 
+
+|Formát|Účel|
+|--|--|
+|`\n\n`| Nový řádek|
+|`\n*`|Odrážce je seřazený seznam|
+
+## <a name="editing-your-knowledge-base-locally"></a>Úpravy místně znalostní báze
+
+Po vytvoření znalostní báze se doporučuje provádět úpravy textu znalostní báze knowledge base [portál QnA Maker](https://qnamaker.ai), místo export a znovu importujte prostřednictvím místních souborů. Může však nastat situace, které je potřeba upravit znalostní bázi místně. 
+
+Exportovat ve znalostní bázi z **nastavení** stránce a pak upravit znalostní báze pomocí aplikace Microsoft Excel. Pokud se rozhodnete používat jiná aplikace upravte exportovaný soubor TSV, aplikace může představovat chyby syntaxe, protože není plně TSV kompatibilní. Soubory aplikace Microsoft Excel TSV obecně nezpůsobíte žádné chyby formátování. 
+
+Po dokončení úprav opětovné importování souboru TSV z **nastavení** stránky. Zcela tato operace nahradí aktuální znalostní báze s importovaných znalostní báze. 
+
+## <a name="testing-your-markdown"></a>Testování Markdown
+
+Použití **[CommonMark](https://commonmark.org/help/tutorial/index.html)** kurz k ověření Markdown. Tento kurz obsahuje **vyzkoušet** funkce pro ověření rychlého kopírování a vkládání. 
 
 ## <a name="next-steps"></a>Další postup
 

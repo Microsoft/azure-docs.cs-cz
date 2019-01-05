@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: c77cdf23e73a174ca68744ea543a41ce0a1de9f7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5f6a0ce0c9d863b5ab4922e7228a873ed5398600
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095699"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033277"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí šablony
 
@@ -80,3 +80,5 @@ Pokud chcete nasadit šablonu pomocí rozhraní příkazového řádku Azure, po
 [Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md)
 
 [Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)
+
+Syntaxi JSON a vlastnosti služby vyrovnání zatížení v šabloně najdete v tématu [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

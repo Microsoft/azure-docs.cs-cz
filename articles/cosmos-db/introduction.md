@@ -1,19 +1,17 @@
 ---
 title: Úvod do služby Azure Cosmos DB
 description: Přečtěte si něco o službě Azure Cosmos DB. Tato globálně distribuovaná databáze s více modely je navržená s ohledem na nízkou latenci, elastickou škálovatelnost a vysokou dostupnost a nabízí nativní podporu pro data NoSQL.
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 12/18/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 4a4bcf80eeff8700da37f5ea46353b1be6f2327b
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b384bc51ac371ef75f5128c92f7e4b8d7f45ecc6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809008"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034943"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 

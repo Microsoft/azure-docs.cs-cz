@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: fbfee92343bfecfbe8395f95775ae1f107b99299
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336522"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037272"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Přehled funkcí pro Durable Functions (Azure Functions) a typy funkce
 
@@ -37,7 +37,7 @@ Další informace a příklady najdete v [Durable Functions vazby článku](dura
 
 ### <a name="orchestrator-functions"></a>Funkce nástroje Orchestrator
 
-Funkce nástroje Orchestrator jsou základem odolné funkce.  Funkce nástroje Orchestrator popisují způsob a pořadí spouštění akcí.  Funkce nástroje Orchestrator popisují Orchestrace v kódu (C# nebo JavaScript), jak je znázorněno [odolná služba functions přehled](durable-functions-overview.md).  Orchestrace může mít mnoho různých typů akce, jako je třeba [funkce aktivity](#activity-functions), [dílčí Orchestrace](#sub-orchestrations), [čekající na externí události](#external-events), a [ časovače](#durable-timers).  
+Funkce nástroje Orchestrator jsou základem odolné funkce.  Funkce nástroje Orchestrator popisují způsob a pořadí spouštění akcí.  Orchestrace v kódu popisují funkce produktu Orchestrator (C# nebo JavaScript) jak je znázorněno [Durable Functions vzory a technických konceptech](durable-functions-concepts.md).  Orchestrace může mít mnoho různých typů akce, jako je třeba [funkce aktivity](#activity-functions), [dílčí Orchestrace](#sub-orchestrations), [čekající na externí události](#external-events), a [ časovače](#durable-timers).  
 
 Funkce orchestrátoru musí být aktivované [Orchestrace trigger](durable-functions-bindings.md#orchestration-triggers).
 

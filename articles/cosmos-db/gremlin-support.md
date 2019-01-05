@@ -1,19 +1,18 @@
 ---
 title: Podpora služby Azure Cosmos DB Gremlin
 description: Přečtěte si o jazyce Gremlin od společnosti Apache TinkerPop. Dozvíte se, které funkce a kroky jsou dostupné ve službě Azure Cosmos DB.
-services: cosmos-db
 author: LuisBosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
+ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: 53ca762232db5e79acdacbb3d52ce05f88dc108b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e7230e9c4d97c1c3ba8f0cf20d32f5a59ea2219b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080397"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034518"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
 Azure Cosmos DB podporuje [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) – jazyk pro procházení grafu od společnosti [Apache Tinkerpop](https://tinkerpop.apache.org), což je rozhraní Gremlin API pro vytváření grafových entit a provádění operací dotazování grafu. Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
@@ -29,17 +28,17 @@ Ukázkový graf vám pomůže pochopit, jak lze v jazyce Gremlin vyjádřit dota
 
 Tento graf má následující typy vrcholů (v jazyce Gremlin se jim říká popisky):
 
-- People (Lidé): Graf obsahuje tři lidi – Robina, Thomase a Bena.
-- Interests (Zájmy): Jejich zájmem v tomto příkladu je hra Football.
-- Devices (Zařízení): Jedná se o zařízení, která lidé používají.
-- Operating Systems (Operační systémy): Jedná se o operační systémy, na nichž zařízení běží.
+- Uživatelé: Graf má tři lidi, Robin Thomas a Petr
+- Zájmy: Jejich zájmů, v tomto příkladu hru fotbalového
+- Zařízení: Zařízení, která používá
+- Operační systémy: Operační systémy, které zařízení běží v
 
 Vztahy mezi těmito entitami vyjádříme pomocí následujících typů okrajů/popisků:
 
-- Knows (Zná): Například Thomas knows Robin (Thomas zná Robina).
-- Interested (Zajímá se): Slouží pro vyjádření zájmů lidí v našem grafu, například Ben is interested in Football (Ben se zajímá o fotbal).
-- RunsOS (Používaný OS): Vyjadřuje, že notebook běží na operačním systému Windows.
-- Uses (Používá): Slouží k vyjádření toho, jaké zařízení osoba používá. Robin například používá telefon Motorola se sériovým číslem 77.
+- Ví: Například "Thomas ví Robin"
+- Chtěli byste: K reprezentaci zájmy uživatelů v našem grafu, například "Ben má zájem o Football"
+- RunsOS: Přenosný počítač spustí operační systém Windows
+- Používá: K reprezentaci zařízení uživatel používá. Robin například používá telefon Motorola se sériovým číslem 77.
 
 Nyní pomocí [konzoly Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) spustíme u tohoto grafu několik operací. K jejich provedení můžete také použít ovladače Gremlin na platformě dle vlastního výběru (Java, Node.js, Python nebo .NET).  Než se podíváme na to, co Azure Cosmos DB podporuje, projděme si několik příkladů, abychom se blíže seznámili se syntaxí.
 
@@ -81,7 +80,7 @@ V následující tabulce najdete přehled funkcí TinkerPop, které Azure Cosmos
 | Funkce okrajů | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Podporuje vytváření, úpravy a odstraňování okrajů. |
 | Funkce vlastností okrajů | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vlastností okrajů. |
 
-## <a name="gremlin-wire-format-graphson"></a>Přenosový formát Gremlinu: GraphSON
+## <a name="gremlin-wire-format-graphson"></a>Gremlin přenosový formát: GraphSON
 
 Při vracení výsledků z operací Gremlinu služba Azure Cosmos DB používá [formát GraphSON](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format). GraphSON je standardní formát jazyka Gremlin pro reprezentaci vrcholů, okrajů a vlastností (vlastností s jednou i více hodnotami) pomocí formátu JSON. 
 

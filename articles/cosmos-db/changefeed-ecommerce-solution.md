@@ -1,19 +1,18 @@
 ---
 title: Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 description: Tento článek popisuje, jak kanál změn umožňuje společností maloobchodní porozumět trendům uživatele, provedení analýzy dat v reálném čase a vizualizace.
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: e663a7b8f68c43ebf4c562dd67630db5d113e979
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b04a31ec46194d68dbbc5e5a4eb2b600968d7be5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090750"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037102"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
@@ -31,7 +30,7 @@ Následující diagram znázorňuje tok dat a součásti účastnící se řeše
 
 ![Projekt visual](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Generování dat:** simulátor dat se používá ke generování prodejní data, která představuje události, jako je například uživatel položku zobrazení, přidání položky do jejich košíku a zakoupení položku. Velkou sadu ukázkových dat můžete vygenerovat pomocí generátoru dat. Generovaných vzorových dat obsahuje dokumenty v následujícím formátu:
+1. **Generování dat:** Simulátor dat slouží ke generování prodejní data, která představuje události, jako je například uživatel položku zobrazení, přidání položky do jejich košíku a zakoupení položku. Velkou sadu ukázkových dat můžete vygenerovat pomocí generátoru dat. Generovaných vzorových dat obsahuje dokumenty v následujícím formátu:
    
    ```json
    {      
@@ -42,11 +41,11 @@ Následující diagram znázorňuje tok dat a součásti účastnící se řeše
    }
    ```
 
-2. **Cosmos DB:** generovaná data se ukládá v kolekci Azure Cosmos DB.  
+2. **Cosmos DB:** Generovaná data se ukládá v kolekci Azure Cosmos DB.  
 
-3. **Kanál změn:** kanálu změn bude naslouchat změny kolekce Azure Cosmos DB. Pokaždé, když do kolekce (která je při výskytu události, uživatelem zobrazení položky, přidání položky do jejich košíku nebo zakoupením položky) se přidá nový dokument, změna kanálu bude aktivovat [funkce Azure Functions](../azure-functions/functions-overview.md).  
+3. **Kanál změn:** Kanál změn bude naslouchat změny kolekce Azure Cosmos DB. Pokaždé, když do kolekce (která je při výskytu události, uživatelem zobrazení položky, přidání položky do jejich košíku nebo zakoupením položky) se přidá nový dokument, změna kanálu bude aktivovat [funkce Azure Functions](../azure-functions/functions-overview.md).  
 
-4. **Funkce Azure:** funkce Azure Functions zpracovává nová data a odesílá je do [Azure Event Hubs](../event-hubs/event-hubs-about.md).  
+4. **Funkce Azure:** Funkce Azure Functions zpracovává nová data a odesílá je do [Azure Event Hubs](../event-hubs/event-hubs-about.md).  
 
 5. **Centrum událostí:** Azure Event Hubs uchovává tyto události a odesílá je do [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) k další analýze.  
 

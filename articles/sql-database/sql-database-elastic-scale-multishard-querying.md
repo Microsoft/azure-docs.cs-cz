@@ -11,55 +11,55 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: bc0ca62699c21848e4d5fdc18bef292dce4634bf
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/03/2019
+ms.openlocfilehash: a7a27d8447a306bc7a3440d64cc6216ca20d2528
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863461"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038141"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Dotazování více horizontálních oddílů pomocí nástrojů pro elastické databáze
 
 ## <a name="overview"></a>Přehled
 
-S [nástrojů Elastic Database](sql-database-elastic-scale-introduction.md), můžete vytvořit řešení horizontálně dělené databáze. **Dotazování více horizontálních oddílů** se používá pro úkoly, jako je shromažďování a generování sestav dat, které vyžadují spuštění dotazu, který roztáhne mezi několika horizontálními oddíly. (Tuto hodnotu na kontrast [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md), který provádí veškerou práci na jeden horizontální oddíl.) 
+S [nástrojů Elastic Database](sql-database-elastic-scale-introduction.md), můžete vytvořit řešení horizontálně dělené databáze. **Dotazování více horizontálních oddílů** se používá pro úkoly, jako je shromažďování a generování sestav dat, které vyžadují spuštění dotazu, který roztáhne mezi několika horizontálními oddíly. (Tuto hodnotu na kontrast [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md), který provádí veškerou práci na jeden horizontální oddíl.)
 
-1. Získání **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map), [.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx)) nebo **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map), [.NET ](https://msdn.microsoft.com/library/azure/dn807370.aspx)) pomocí **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetrangeshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)), **TryGetListShardMap** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetlistshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)), nebo **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) metody. Zobrazit **[sestavením ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)** a  **[získat RangeShardMap nebo ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)**.
-2. Vytvoření **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_connection), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection.aspx)) objektu.
-3. Vytvoření **MultiShardStatement nebo MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.aspx)). 
-4. Nastavte **Vlastnost CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.commandtext.aspx#P:Microsoft.Azure.SqlDatabase.ElasticScale.Query.MultiShardCommand.CommandText)) k příkazu T-SQL.
-5. Spusťte příkaz voláním **ExecuteQueryAsync nebo ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement.executeQueryAsync), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.executereader.aspx)) metody.
-6. Zobrazit výsledky pomocí **MultiShardResultSet nebo MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_result_set), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader.aspx)) třídy. 
+1. Získání **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) nebo **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) pomocí **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)), **TryGetListShardMap** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)), nebo **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) metody. Zobrazit [sestavením ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) a [získat RangeShardMap nebo ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+2. Vytvoření **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) objektu.
+3. Vytvoření **MultiShardStatement nebo MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
+4. Nastavte **Vlastnost CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) k příkazu T-SQL.
+5. Spusťte příkaz voláním **ExecuteQueryAsync nebo ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) metody.
+6. Zobrazit výsledky pomocí **MultiShardResultSet nebo MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) třídy.
 
 ## <a name="example"></a>Příklad:
 
-Následující kód ukazuje použití více horizontálních oddílů pomocí dotazování daný **ShardMap** s názvem *myShardMap*. 
+Následující kód ukazuje použití více horizontálních oddílů pomocí dotazování daný **ShardMap** s názvem *myShardMap*.
 
 ```csharp
-using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards(), myShardConnectionString)) 
-{ 
+using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards(), myShardConnectionString))
+{
     using (MultiShardCommand cmd = conn.CreateCommand())
-    { 
-        cmd.CommandText = "SELECT c1, c2, c3 FROM ShardedTable"; 
-        cmd.CommandType = CommandType.Text; 
-        cmd.ExecutionOptions = MultiShardExecutionOptions.IncludeShardNameColumn; 
-        cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults; 
+    {
+        cmd.CommandText = "SELECT c1, c2, c3 FROM ShardedTable";
+        cmd.CommandType = CommandType.Text;
+        cmd.ExecutionOptions = MultiShardExecutionOptions.IncludeShardNameColumn;
+        cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults;
 
-        using (MultiShardDataReader sdr = cmd.ExecuteReader()) 
-        { 
+        using (MultiShardDataReader sdr = cmd.ExecuteReader())
+        {
             while (sdr.Read())
-            { 
-                var c1Field = sdr.GetString(0); 
-                var c2Field = sdr.GetFieldValue<int>(1); 
+            {
+                var c1Field = sdr.GetString(0);
+                var c2Field = sdr.GetFieldValue<int>(1);
                 var c3Field = sdr.GetFieldValue<Int64>(2);
-            } 
-        } 
-    } 
-} 
+            }
+        }
+    }
+}
 ```
 
-Klíčovým rozdílem je konstrukce připojení více horizontálních oddílů. Kde **SqlConnection** funguje v izolované databáze **MultiShardConnection** přijímá ***sadu horizontálních oddílů*** jako vstup. Naplnění kolekce horizontálních oddílů z mapy horizontálních oddílů. Potom spuštění dotazu na sadu horizontálních oddílů pomocí **UNION ALL** sémantiku sestavit jeden celkový výsledek. Volitelně můžete do výstupu pomocí přidali jméno horizontálních oddílů, odkud pochází řádku z **ExecutionOptions** vlastnost příkazu. 
+Klíčovým rozdílem je konstrukce připojení více horizontálních oddílů. Kde **SqlConnection** funguje v izolované databáze **MultiShardConnection** přijímá ***sadu horizontálních oddílů*** jako vstup. Naplnění kolekce horizontálních oddílů z mapy horizontálních oddílů. Potom spuštění dotazu na sadu horizontálních oddílů pomocí **UNION ALL** sémantiku sestavit jeden celkový výsledek. Volitelně můžete do výstupu pomocí přidali jméno horizontálních oddílů, odkud pochází řádku z **ExecutionOptions** vlastnost příkazu.
 
 Všimněte si volání **myShardMap.GetShards()**. Tato metoda načte všechny horizontální oddíly z mapy horizontálních oddílů a poskytuje snadný způsob, jak spustit dotaz napříč všemi databázemi relevantní. Kolekce horizontálních oddílů pro dotazování více horizontálních oddílů může být kontrast dále provedením dotazu LINQ nad shromažďováním vrácená z volání **myShardMap.GetShards()**. V kombinaci se zásadou částečných výsledků byla navržena tak, aby fungovat dobře pro desítky až stovek horizontálních oddílů aktuální funkce v dotazování více horizontálních oddílů.
 

@@ -3,15 +3,17 @@ title: Skript Azure CLI – Škálování propustnosti kontejneru Azure Cosmos D
 description: Ukázkový skript Azure CLI – Škálování propustnosti kontejneru Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4eafc94349acaedeee72edb408d5cea43eae92c3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.reviewer: sngun
+ms.openlocfilehash: 593fade731fac86e7fcda69bfe223716127de9e1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005627"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038445"
 ---
 # <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Škálování propustnosti kontejneru Azure Cosmos DB pomocí Azure CLI
 
@@ -46,7 +48,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Aktualizuje kontejner Azure Cosmos DB. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

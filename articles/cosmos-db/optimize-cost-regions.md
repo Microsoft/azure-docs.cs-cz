@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 0ec603df7005b9151f1cf760df80de9aaffc78b3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b4c873e319dd611221c81deb948db3a64062631e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539700"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54032597"
 ---
 # <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Optimalizujte náklady pro nasazení ve více oblastech ve službě Azure Cosmos DB
 

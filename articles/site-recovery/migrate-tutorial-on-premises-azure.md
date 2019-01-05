@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5023171c4f943b7e698a0b6bbcadef209965e2df
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4ba25da1f356f6164137dead467bd8bc948ce3d7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789242"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037833"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -45,7 +45,7 @@ Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Klikněte na **Vytvořit prostředek** > **Monitorování a správa** > **Backup a Site Recovery**.
+2. Klikněte na tlačítko **vytvořit prostředek** > **nástroje pro správu** > **Backup a Site Recovery**.
 3. Do pole **Název** zadejte popisný název **ContosoVMVault**. Pokud máte více předplatných, vyberte příslušné předplatné.
 4. Vytvořte skupinu prostředků **ContosoRG**.
 5. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).

@@ -10,24 +10,25 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d1b15e634cae0758f1f872750ffd9dd569e83a8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380212"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036235"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze rozhraní API poskytovatele prostředků podporované profily ve službě Azure Stack
 
 Vyhledejte poskytovatele prostředků a čísla verze pro každý profil rozhraní API používané ve službě Azure Stack v tomto článku. V tabulkách v tomto článku jsou uvedeny verze podporované pro každý poskytovatel prostředků a rozhraní API verze profilů. Každý poskytovatel prostředků obsahuje sadu typů prostředků a čísla konkrétní verzi.
 
 Profil rozhraní API používá tři zásady vytváření názvů:
- - nejnovější
- - Rrrr mm-dd hybridní
- - rrrr mm-dd-profile
+
+ - **nejnovější**
+ - **yyyy-mm-dd-hybrid**
+ - **yyyy-mm-dd-profile**
 
 Vysvětlení profilů rozhraní API a verze vydávání verzí pro službu Azure Stack najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](azure-stack-version-profiles.md).
 
@@ -42,7 +43,7 @@ Vysvětlení profilů rozhraní API a verze vydávání verzí pro službu Azure
 | Microsoft.Network | 2017-10-01<br>VPN Gateway bude 2017-03-01 |
 | Microsoft.Storage (rovina dat) | 2017-04-17 |
 | Microsoft.Storage (rovina řízení) | 2016-01-01 |
-| Společnosti Microsoft. Web | 2016-08-01<br>což je nejnovější vydání v Azure (od této chvíle) |
+| Microsoft Web | 2016-08-01<br>což je nejnovější vydání v Azure (od této chvíle) |
 | Microsoft.KeyVault | 2016-10-01 (ne změnit) |
 | Microsoft.Resources (Azure Resource Manageru samotné) | 2016-02-01 |
 | Microsoft.Authorization (operace zásad) | 2015-11-01 |
@@ -76,13 +77,13 @@ Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profi
 | Resources_Locks | 2016-09-01 |
 | Předplatná | 2016-06-1 |
 
-Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2018-03-01hybridní](#details-for-the-2018-03-01-hybrid)
+Seznam verzí každý typ prostředku pro zprostředkovatele v profilu rozhraní API najdete v další části.
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Podrobnosti o 2018-03-01hybridní
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-Řízení přístupu na základě role umožňuje spravovat akce, které můžou uživatelé ve vaší organizaci provádět s prostředky. Tato sada operací umožňuje definovat role, přiřazovat role uživatelům nebo skupinám a získávat informace o oprávněních. Další informace najdete v tématu [autorizace](https://docs.microsoft.com/rest/api/authorization/).
+Řízení přístupu na základě role umožňuje spravovat akce, které můžou uživatelé ve vaší organizaci provádět s prostředky. Tato sada operací umožňuje definovat role, přiřazovat role uživatelům nebo skupinám a získávat informace o oprávněních. Další informace najdete v tématu [autorizace](/rest/api/authorization/).
 
 | Typy prostředků | Verze rozhraní API |
 |---------------------|--------------------|
@@ -108,7 +109,7 @@ Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profi
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-Rozhraní API Azure Compute poskytují programový přístup k virtuálním počítačům a jejich pomocným prostředkům. Další informace najdete v tématu [Azure Compute](https://docs.microsoft.com/rest/api/compute/).
+Rozhraní API Azure Compute poskytují programový přístup k virtuálním počítačům a jejich pomocným prostředkům. Další informace najdete v tématu [Azure Compute](/rest/api/compute/).
 
 | Typ prostředku | Verze rozhraní API |
 |---------------------------------------------------------------|-------------|
@@ -155,7 +156,7 @@ Rozhraní API Azure Compute poskytují programový přístup k virtuálním poč
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-Správa vašeho klíče trezory klíčů, tajných kódů a certifikátů v trezorech klíčů. Další informace najdete v tématu [REST API služby Azure Key Vault odkaz](https://docs.microsoft.com/rest/api/keyvault/).
+Správa vašeho klíče trezory klíčů, tajných kódů a certifikátů v trezorech klíčů. Další informace najdete v tématu [REST API služby Azure Key Vault odkaz](/rest/api/keyvault/).
 
 | Typy prostředků | Verze rozhraní API |
 |-------------------------|--------------|
@@ -166,7 +167,7 @@ Správa vašeho klíče trezory klíčů, tajných kódů a certifikátů v trez
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Výsledek volání operací je reprezentace seznamu dostupných operací cloudové sítě. Další informace najdete v tématu [operace REST API](https://docs.microsoft.com/rest/api/operation/).
+Výsledek volání operací je reprezentace seznamu dostupných síťových cloudových operací. Další informace najdete v tématu [operace REST API](/rest/api/operation/).
 
 | Typy prostředků | Verze rozhraní API |
 |---------------------------|--------------|
@@ -188,7 +189,7 @@ Výsledek volání operací je reprezentace seznamu dostupných operací cloudov
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-Azure Resource Manager umožňuje nasadit a spravovat infrastrukturu pro vaše řešení Azure. Uspořádání souvisejících prostředků ve skupinách prostředků a nasazení prostředků pomocí šablon JSON. Úvod k nasazování a správě prostředků pomocí Resource Manageru, najdete v článku [přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Azure Resource Manager umožňuje nasadit a spravovat infrastrukturu pro vaše řešení Azure. Uspořádání souvisejících prostředků ve skupinách prostředků a nasazení prostředků pomocí šablon JSON. Úvod k nasazování a správě prostředků pomocí Resource Manageru, najdete v článku [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
 
 | Typy prostředků | Verze rozhraní API |
 |-----------------------------------------|-------------------|
@@ -220,7 +221,7 @@ Azure Resource Manager umožňuje nasadit a spravovat infrastrukturu pro vaše �
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 
-Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet úložiště a klíče prostřednictvím kódu programu. Další informace najdete v tématu [Azure Storage Resource Provider Reference k REST API](https://docs.microsoft.com/rest/api/storagerp/).
+Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet úložiště a klíče prostřednictvím kódu programu. Další informace najdete v tématu [odkaz na Azure Storage Resource Provider REST API](/rest/api/storagerp/).
 
 | Typy prostředků | Verze rozhraní API |
 |-------------------------|--------------|
@@ -228,7 +229,7 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | Umístění | 2016-01-01 |
 | Umístění a kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
-| StorageAccounts | 2016-01-01 |
+| storageAccounts | 2016-01-01 |
 | Použití | 2016-01-01 |
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Podrobnosti o 2018-03-01hybridní
@@ -323,7 +324,7 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | Umístění | 2016-01-01 |
 | Umístění a kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
-| StorageAccounts | 2016-01-01 |
+| storageAccounts | 2016-01-01 |
 | Použití | 2016-01-01 |
 
 ## <a name="next-steps"></a>Další postup

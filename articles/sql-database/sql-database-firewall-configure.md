@@ -11,21 +11,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 6de91e28ebced1d41e128cec1180839e4b353020
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/03/2019
+ms.openlocfilehash: e4079a4dcaadab8e9cea0cc1b30a609a091e5937
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945463"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035266"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse pravidla brány firewall
 
 Microsoft Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) poskytuje relační databázová služba pro Azure a další internetové aplikace. Brána firewall pomáhá chránit vaše data tím, že brání veškerému přístupu k vašemu databázovému serveru, dokud neurčíte, které počítače k tomu mají oprávnění. Brána firewall uděluje přístup k databázím v závislosti na zdrojové IP adrese každého požadavku.
 
 > [!NOTE]
-> Tento článek se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořeny na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. 
-
+> Tento článek se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořeny na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 > [!IMPORTANT]
 > Tento článek provádí *není* platí pro **Azure SQL Database Managed Instance**. Podrobnosti najdete v následujícím článku na [připojení k Managed Instance](sql-database-managed-instance-connect-app.md) Další informace o konfiguraci sítě potřeba.
 
@@ -58,9 +57,9 @@ Pokusy o připojení z internetu a z Azure musí nejdříve projít přes bránu
 
 Microsoft doporučuje používat pravidla brány firewall na úrovni databáze kdykoli je to možné, pro zvýšení zabezpečení a přenositelnosti databáze. Použijte pravidla brány firewall na úrovni serveru pro správce a pokud máte mnoho databází se stejnými požadavky na přístup a nechcete ztrácet čas konfigurací jednotlivých databází.
 
-> [!Important]
+> [!IMPORTANT]
 > Windows Azure SQL Database podporuje maximálně 128 pravidel brány firewall.
-> [!Note]
+> [!NOTE]
 > Informace o přenosných databázích v kontextu kontinuity podnikových procesů najdete v tématu [Požadavky na ověřování pro zotavení po havárii](sql-database-geo-replication-security-config.md).
 
 ### <a name="connecting-from-the-internet"></a>Připojení z Internetu
@@ -102,7 +101,7 @@ Pokud chcete nastavit pravidlo brány firewall na úrovni serveru na webu Azure 
 
 ### <a name="from-database-overview-page"></a>Na stránce Přehled databáze
 
-1. Chcete-li nastavit pravidlo brány firewall na úrovni serveru na stránce Přehled databáze, klikněte na tlačítko **nastavit bránu firewall serveru** na panelu nástrojů, jak je znázorněno na následujícím obrázku: **nastavení brány Firewall** stránce databáze SQL serveru otevře.
+1. Chcete-li nastavit pravidlo brány firewall na úrovni serveru na stránce Přehled databáze, klikněte na tlačítko **nastavit bránu firewall serveru** na panelu nástrojů, jak je znázorněno na následujícím obrázku: Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
 
       ![pravidlo brány firewall serveru](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
@@ -223,7 +222,7 @@ Pokud se přístup ke službě Microsoft Azure SQL Database nechová podle oček
 
 - **Konfigurace místní brány firewall:**
 
-  Než počítač přístup k Azure SQL Database, budete muset vytvořit výjimku brány firewall v počítači pro TCP port 1433. Pokud provádíte připojení v rámci cloudu Azure, možná bude nutné otevřít další porty. Další informace najdete v tématu **SQL Database: vnější vs. vnitřní** část [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+  Než počítač přístup k Azure SQL Database, budete muset vytvořit výjimku brány firewall v počítači pro TCP port 1433. Pokud provádíte připojení v rámci cloudu Azure, možná bude nutné otevřít další porty. Další informace najdete v tématu **SQL Database: Vnější vs. vnitřní** část [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 - **Překlad síťových adres (NAT):**
 
@@ -248,7 +247,7 @@ Pokud se přístup ke službě Microsoft Azure SQL Database nechová podle oček
 
 - Rychlý start k vytvoření databáze a pravidla brány firewall na úrovni serveru, naleznete v tématu [vytvoření Azure SQL database](sql-database-get-started-portal.md).
 - S připojováním k databázi SQL Azure z open source aplikací nebo aplikací třetích stran vám pomůžou [Ukázky kódu pro rychlý start klientů se službou SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
-- Informace o další porty, které budete muset otevřít, najdete v článku **SQL Database: vnější vs. vnitřní** část [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
+- Informace o další porty, které budete muset otevřít, najdete v článku **SQL Database: Vnější vs. vnitřní** část [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 - Přehled zabezpečení služby Azure SQL Database najdete v tématu [zabezpečení databáze](sql-database-security-overview.md)
 
 <!--Image references-->

@@ -1,22 +1,22 @@
 ---
-title: 'Kurz: Dotazování na data z účtu rozhraní Cassandra API ve službě Azure Cosmos DB'
+title: 'Kurz: Dotazování dat z účtu rozhraní Cassandra API ve službě Azure Cosmos DB'
 description: Tento kurz ukazuje postupy při dotazování na data uživatele z účtu služby Azure Cosmos DB Cassandra API s použitím aplikace v Javě.
 ms.service: cosmos-db
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 57d83516708e3105ba32f8b83420f06aadf0ace1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867508"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038173"
 ---
-# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: Dotazování na data z účtu rozhraní Cassandra API ve službě Azure Cosmos DB
+# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: Dotazování dat z účtu rozhraní Cassandra API ve službě Azure Cosmos DB
 
 Jako vývojář můžete mít aplikace, které používají páry klíč/hodnota. Účet rozhraní Cassandra API ve službě Azure Cosmos DB můžete použít k ukládání a dotazování dat klíč/hodnota. Tento kurz ukazuje postupy při dotazování na data uživatele z účtu rozhraní Cassandra API ve službě Azure Cosmos DB s použitím aplikace v Javě. Využívá aplikaci v Javě [ovladači Java](https://github.com/datastax/java-driver) a zadávání dotazů na data uživatele, jako je například ID uživatele, uživatelské jméno a město uživatele. 
 

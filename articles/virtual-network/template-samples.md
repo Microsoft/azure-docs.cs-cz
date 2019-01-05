@@ -15,16 +15,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/13/2018
 ms.author: jdial
-ms.openlocfilehash: af0affc549afd8b63fe0d566fac198de054554c1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: a16feffea6ac64423398b995499f0e6a60182636
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528983"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039584"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>Ukázkové šablony Azure Resource Manageru pro virtuální síť
 
 Následující tabulka obsahuje odkazy na ukázkové šablony Azure Resource Manageru. Šablony můžete nasadit pomocí portálu Azure [Portal](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), Azure [CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo Azure [PowerShellu](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud se chcete dozvědět, jak si můžete vytvořit vlastní šablony, přečtěte si články [Vytvoření první šablony](../azure-resource-manager/resource-manager-create-first-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+Syntaxi JSON a vlastnosti, které chcete použít v šablonách najdete v tématu [typy prostředků Microsoft.Network](/azure/templates/microsoft.network/allversions).
 
 
 | | |

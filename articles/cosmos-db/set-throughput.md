@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: 5b2847914007df414c37397d61632567c277d1b2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3e992dd8ab24e4e60b81c6565ea4ec3971a9336b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999420"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036410"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Zřizování propustnosti na kontejnery Azure Cosmos a databází
 

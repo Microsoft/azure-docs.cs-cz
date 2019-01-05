@@ -12,18 +12,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/04/201
 ms.author: sethm
-ms.openlocfilehash: 51c04a567ff953c4e84930e3feae448f78627683
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 89a9a5418e0eab210c1132570beda20a39635677
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713931"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034658"
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>Správa služby Key Vault ve službě Azure Stack pomocí portálu
 
-Key Vault ve službě Azure Stack můžete spravovat pomocí portálu Azure Stack. Tento článek vám pomůže začít vytvářet a spravovat služby key vault ve službě Azure Stack.
+Key Vault ve službě Azure Stack můžete spravovat pomocí portálu Azure Stack. Tento článek popisuje, jak vytvářet a spravovat služby key vault ve službě Azure Stack.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,19 +33,17 @@ Můžete musí přihlásit k odběru nabídky, která zahrnuje službu Azure Key
 
 1. Přihlaste se k [portálu user portal](https://portal.local.azurestack.external).
 
-2. Z řídicího panelu, vyberte **+ vytvořit prostředek** > **zabezpečení + Identita** > **služby Key Vault**.
+2. Z řídicího panelu, vyberte **+ vytvořit prostředek**, pak **zabezpečení + Identita**, pak **služby Key Vault**.
 
     ![Obrazovky služby Key Vault](media/azure-stack-kv-manage-portal/image1.png)
 
-3. V **vytvořit trezor klíčů** podokno, přiřadit **název** pro svůj trezor. Trezor názvy můžou obsahovat jenom alfanumerické znaky a speciální znak spojovníku (-). Nesmí začínat číslicí.
+3. V **vytvořit trezor klíčů** podokno, přiřadit **název** pro svůj trezor. Trezor názvy můžou obsahovat jenom alfanumerické znaky a znak spojovníku (-). Nesmí začínat číslicí.
 
 4. Zvolte **předplatné** ze seznamu dostupných předplatných. V rozevíracím seznamu se zobrazí všechna předplatná, která nabízí služby Key Vault.
 
-5. Vyberte existující **skupinu prostředků** nebo vytvořte novou.
+5. Vyberte existující **skupiny prostředků**, nebo vytvořte novou.
 
-6. Vyberte **cenová úroveň**.
-    >[!NOTE]
-    > Klíč úložišť ve službě Azure Stack Development Kit podporu **standardní** pouze skladové položky.
+6. Vyberte **cenová úroveň**. Trezory klíčů v Azure Stack Development Kit (ASDK), podporu **standardní** pouze skladové položky.
 
 7. Vyberte jednu z existující **zásady přístupu** nebo vytvořte novou. Zásady přístupu můžete udělit oprávnění pro uživatele, aplikace nebo skupinu zabezpečení k provedení operací k tomuto trezoru.
 
@@ -55,7 +53,7 @@ Můžete musí přihlásit k odběru nabídky, která zahrnuje službu Azure Key
 
 ## <a name="manage-keys-and-secrets"></a>Správa klíčů a tajných kódů
 
-Po vytvoření trezoru, následujícím postupem vytvoření a Správa klíčů a tajných kódů v trezoru.
+Po vytvoření trezoru, použijte následující postup k vytváření a správě klíčů a tajných kódů v trezoru.
 
 ### <a name="create-a-key"></a>Vytvoření klíče
 
@@ -67,7 +65,7 @@ Po vytvoření trezoru, následujícím postupem vytvoření a Správa klíčů 
 
 4. V **vytvořte klíč** podokno, ze seznamu **možnosti**, zvolte metodu, kterou chcete použít k vytvoření klíče. Je možné **generovat** nový klíč, **nahrát** z existujícího klíče, nebo použijte **obnovit zálohování** vyberte zálohování klíče.
 
-5. Zadejte **název** pro váš klíč. Název klíče, který může obsahovat jenom alfanumerické znaky a speciální znak spojovníku (-).
+5. Zadejte **název** pro váš klíč. Název klíče, který může obsahovat jenom alfanumerické znaky a znak spojovníku (-).
 
 6. Volitelně můžete nakonfigurovat **nastavit datum aktivace** a **nastavit datum vypršení platnosti** hodnoty klíče.
 
@@ -80,13 +78,14 @@ Po úspěšném vytvoření klíče můžete vybrat za **klíče** a zobrazit ne
 ### <a name="create-a-secret"></a>Vytvoření tajného klíče
 
 1. Přihlaste se k [portálu user portal](https://portal.local.azurestack.external).
+
 2. Z řídicího panelu, vyberte **všechny prostředky**, vyberte trezor klíčů, který jste vytvořili dříve a pak vyberte **tajných kódů** dlaždici.
 
 3. V části **tajných kódů**vyberte **přidat**.
 
-4. V části **vytvoření tajného klíče**, ze seznamu **možnosti nahrání**, zvolte možnost podle kterého chcete vytvořit tajný kód. Můžete vytvořit tajný kód **ručně** Pokud zadáte hodnotu pro tajný klíč nebo nahrávání **certifikát** z místního počítače.
+4. V části **vytvoření tajného klíče**, ze seznamu **možnosti nahrání**, zvolte možnost, se kterým se má vytvořit tajný kód. Můžete vytvořit tajný kód **ručně** Pokud zadáte hodnotu pro tajný klíč nebo nahrávání **certifikát** z místního počítače.
 
-5. Zadejte **název** pro tajný kód. Název tajného kódu může obsahovat jenom alfanumerické znaky a speciální znak spojovníku (-).
+5. Zadejte **název** pro tajný kód. Název tajného kódu může obsahovat jenom alfanumerické znaky a znak spojovníku (-).
 
 6. Volitelně můžete určit **typ obsahu**a nakonfigurujte hodnoty pro **nastavit datum aktivace** a **nastavit datum vypršení platnosti** pro tajný kód.
 

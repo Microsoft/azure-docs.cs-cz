@@ -1,23 +1,22 @@
 ---
 title: Škálování propustnosti ve službě Azure Cosmos DB
 description: Tento článek popisuje, jak službu Azure Cosmos DB Elasticky škáluje propustnost
-services: cosmos-db
-author: dharmas
+author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 7e3f6d053e9466f07e15b0c2c1092fece76c98a4
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 5834bf88b63209d2374cfea71fc0f01a1f7451c5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160660"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033430"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Škálování propustnosti ve službě Azure Cosmos DB
 
-Ve službě Azure Cosmos DB, zřízená propustnost je vyjádřena jako požadavek jednotek za sekundu (RU/s, plural: ru). Měření náklady na čtení a zápisu operace kontejneru Cosmos, jak je znázorněno na následujícím obrázku:
+Ve službě Azure Cosmos DB, zřízená propustnost je vyjádřena jako požadavek jednotek za sekundu (RU/s, plural: RU). Měření náklady na čtení a zápisu operace kontejneru Cosmos, jak je znázorněno na následujícím obrázku:
 
 ![Požadované jednotky](./media/scale-throughput/figure1.png)
 

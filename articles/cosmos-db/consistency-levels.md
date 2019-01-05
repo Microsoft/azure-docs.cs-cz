@@ -1,20 +1,17 @@
 ---
 title: Úrovně konzistence ve službě Azure Cosmos DB
 description: Azure Cosmos DB má pět úrovní konzistence umožňující zůstatek konečnou konzistencí, dostupností a latencí kompromisy.
-keywords: konzistence typu případné, azure cosmos db, azure, Microsoft azure
-services: cosmos-db
-author: aliuy
-ms.author: andrl
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b509c7eceb3c2e2fb2e53f20791976b0322ad744
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 914933e4e0489d68640edb58ceb91dc73a963eb3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089730"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034960"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
@@ -42,20 +39,20 @@ Komplexní smlouvy SLA k dispozici ve službě Azure Cosmos DB záruku, že spl�
 
 Sémantika úrovně konzistence pět jsou popsány zde:
 
-- **Silná**: nabízí silnou konzistenci [linearizovatelnosti](https://aphyr.com/posts/313-strong-consistency-models) zaručit. Čtení má zaručeno vrátí nejnovější potvrzené verzi položky. Klient nikdy vidí nepotvrzených nebo částečné zápisu. Přečtěte si nejnovější potvrzené zápisu uživatele je vždycky zaručená.
+- **Silná**: Nabízí silnou konzistenci [linearizovatelnosti](https://aphyr.com/posts/313-strong-consistency-models) zaručit. Čtení má zaručeno vrátí nejnovější potvrzené verzi položky. Klient nikdy vidí nepotvrzených nebo částečné zápisu. Přečtěte si nejnovější potvrzené zápisu uživatele je vždycky zaručená.
 
-- **Omezená neaktuálnost**: čtení má zaručeno případném dalším sdílení dodržovat záruku konzistentní předpony. Může prodleva čtení zápisů maximálně verzemi "K" (které je "aktualizací") položky nebo "t" časovém intervalu. Pokud si zvolíte omezená neaktuálnost, "neaktuálnost" můžete nakonfigurovat dvěma způsoby: 
+- **Omezená neaktuálnost**: Čtení má zaručeno případném dalším sdílení dodržovat záruku konzistentní předpony. Může prodleva čtení zápisů maximálně verzemi "K" (které je "aktualizací") položky nebo "t" časovém intervalu. Pokud si zvolíte omezená neaktuálnost, "neaktuálnost" můžete nakonfigurovat dvěma způsoby: 
 
   * Počet verzí (kB)
   * Časový interval (t), podle kterého může prodleva čtení zápisů 
 
   Omezená neaktuálnost nabízí celkový globální pořadí s výjimkou v rámci "neaktuálnost okno." Monotónní čtení záruky existovat v rámci oblasti uvnitř i mimo časový interval pro odolnost. Silná konzistence má stejnou sémantiku jako ty, které nabízí omezená neaktuálnost. Okno neaktuálnost je rovna hodnotě nula. Omezená neaktuálnost se také označuje jako doba zpoždění linearizovatelnosti. Když klient provádí operace čtení v oblasti, která přijímá zápisy, záruky poskytované konzistenci omezená neaktuálnost jsou stejné jako záruk se silnou konzistenci.
 
-- **Relace**: čtení má zaručeno případném dalším sdílení dodržovat konzistentní předpona (za předpokladu, že jeden "zapisovač" relace), monotónní čtení, monotónní zápisy, čtení zápisů a zápis čtení záruky. Konzistence typu relace je vymezen relace klienta.
+- **Relace**: Čtení má zaručeno případném dalším sdílení dodržovat konzistentní předpona (za předpokladu, že jeden "zapisovač" relace), monotónní čtení, monotónní zápisy, čtení zápisů a zápis čtení záruky. Konzistence typu relace je vymezen relace klienta.
 
-- **Konzistentní předpona**: aktualizace, které jsou vráceny obsahují předponou všech aktualizací bez mezer. Konzistentní předpona zaručuje, že čtení nikdy neuvidí zápisy mimo pořadí.
+- **Konzistentní předpona**: Aktualizace, které jsou vráceny obsahují předponou všech aktualizací bez mezer. Konzistentní předpona zaručuje, že čtení nikdy neuvidí zápisy mimo pořadí.
 
-- **Konečný výsledek**: není zaručeno pořadí pro čtení. Chybí dalším zápisům nakonec sloučí replik.
+- **Konečný výsledek**: Není zaručeno pořadí pro čtení. Chybí dalším zápisům nakonec sloučí replik.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Úrovně konzistence je vysvětleno pomocí baseballu
 
@@ -71,8 +68,8 @@ Kontejner služby Azure Cosmos DB obsahuje návštěvníci a domácí týmu spus
 | **Úrovně konzistence** | **Skóre** |
 | - | - |
 | **Silné** | 2 – 5 |
-| **Omezená neaktuálnost** | Skóre, které jsou maximálně jeden inning zastaralá: 2-3, 2 – 4, 2 – 5 |
-| **Relace** | <ul><li>Pro modul pro zápis: 2 – 5</li><li> pro všechny, kteří zapisovač: 0-0, 0-1, 0-2, 0 3, 0-4, 0-5, 1 – 0, 1-1, 1 – 2, 1 – 3, 1 – 4, 1-5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>Po přečtení 1-3: 1-3, 1 – 4, 1-5, 2-3, 2 – 4, 2 – 5</li> |
+| **Omezená neaktuálnost** | Skóre, které jsou maximálně jeden inning zastaralé: 2-3, 2 – 4, 2 – 5 |
+| **Relace** | <ul><li>Pro modul pro zápis: 2 – 5</li><li> Pro každého, než je modul pro zápis: 0-0, 0-1, 0-2, 0 3, 0-4, 0-5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1-5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>Po přečtení 1-3: 1-3, 1 – 4, 1-5, 2-3, 2 – 4, 2 – 5</li> |
 | **Konzistentní předpona** | 0-0, 0-1, 1-1, 1 – 2, 1 – 3, 2-3, 2 – 4, 2 – 5 |
 | **Konečný výsledek** | 0-0, 0-1, 0-2, 0 3, 0-4, 0-5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1-5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5 |
 
@@ -84,7 +81,7 @@ Další informace o konceptech konzistence najdete v následujících článcíc
 - [Replikovaná Data konzistence je vysvětleno prostřednictvím baseballu (video) podle Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
 - [Replikovaná Data konzistence je vysvětleno prostřednictvím baseballu (dokument White Paper) podle Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Relace záruky pro replikovaná data slabě konzistentní vzhledem k aplikacím](https://dl.acm.org/citation.cfm?id=383631)
-- [Konzistence kompromisy moderní systémy distribuované databáze-návrhu: limit je pouze část textu](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
+- [Konzistence kompromisů v moderních distribuované systémy návrh databáze: LIMIT je pouze část textu](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 - [Omezená Neaktuálnost pravděpodobnostní (PBS) pro praktické částečné kvor](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Nakonec konzistentní – kdykoli znovu spustit.](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
