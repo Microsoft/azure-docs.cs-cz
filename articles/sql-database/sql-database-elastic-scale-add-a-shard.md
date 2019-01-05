@@ -11,70 +11,74 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 46580efa697c174743228fcc9eee82e0a67e1912
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/03/2019
+ms.openlocfilehash: 0a6a4d8a2f2100f967cdc5ead84f56bfb15f564b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864592"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043545"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Přidání horizontálního oddílu pomocí nástrojů pro elastické databáze
-## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Přidání horizontálního oddílu pro novou oblast nebo klíč
-Aplikace často potřebují pro přidání nových horizontálních oddílů pro zpracování dat, která se očekává z nové klíče nebo klíče oblastí mapy horizontálních oddílů, který již existuje. Například horizontálně dělené aplikace podle ID Tenanta může být nutné poskytnout nový horizontální oddíl pro nového klienta, nebo měsíční horizontálně dělených dat může být nutné nový horizontální oddíl zřídit před zahájením nové měsíčně. 
 
-Nový rozsah hodnot klíčů již není součástí mapování stávající, jde snadno přidat nový horizontální oddíl a přidružit nový klíč a rozsah na daném horizontálním oddílu. 
+## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Přidání horizontálního oddílu pro novou oblast nebo klíč
+
+Aplikace často potřebují pro přidání nových horizontálních oddílů pro zpracování dat, která se očekává z nové klíče nebo klíče oblastí mapy horizontálních oddílů, který již existuje. Například horizontálně dělené aplikace podle ID Tenanta může být nutné poskytnout nový horizontální oddíl pro nového klienta, nebo měsíční horizontálně dělených dat může být nutné nový horizontální oddíl zřídit před zahájením nové měsíčně.
+
+Nový rozsah hodnot klíčů již není součástí mapování stávající, jde snadno přidat nový horizontální oddíl a přidružit nový klíč a rozsah na daném horizontálním oddílu.
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Příklad: Přidání horizontálního oddílu a rozsah jeho do existující mapy horizontálních oddílů
-Tento příklad používá TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map.trygetshard), [.NET](https://msdn.microsoft.com/library/azure/dn823929.aspx)) CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map.createshard), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)), CreateRangeMapping ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.createrangemapping), [.NET](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping\(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0}\))) metody a vytvoří instanci ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base._shard_location), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.)) třídy. V ukázce níže, databázi s názvem **sample_shard_2** a všechny objekty nezbytné schématu uvnitř této byly vytvořeny pro uložení rozsah [300, 400).  
+
+Tento příklad používá TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)), CreateRangeMapping ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metody a vytvoří instanci ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.)) třídy. V ukázce níže, databázi s názvem **sample_shard_2** a všechny objekty nezbytné schématu uvnitř této byly vytvořeny pro uložení rozsah [300, 400).  
 
 ```csharp
 // sm is a RangeShardMap object.
-// Add a new shard to hold the range being added. 
-Shard shard2 = null; 
+// Add a new shard to hold the range being added.
+Shard shard2 = null;
 
-if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_2"),out shard2)) 
-{ 
+if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_2"),out shard2))
+{
     shard2 = sm.CreateShard(new ShardLocation(shardServer, "sample_shard_2"));  
-} 
+}
 
-// Create the mapping and associate it with the new shard 
-sm.CreateRangeMapping(new RangeMappingCreationInfo<long> 
-                            (new Range<long>(300, 400), shard2, MappingStatus.Online)); 
+// Create the mapping and associate it with the new shard
+sm.CreateRangeMapping(new RangeMappingCreationInfo<long>
+                            (new Range<long>(300, 400), shard2, MappingStatus.Online));
 ```
 
 Pro verzi rozhraní .NET můžete také pomocí prostředí PowerShell jako alternativu k vytvoření nového správce mapování horizontálních oddílů. Příkladem je k dispozici [tady](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 ## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>Přidání horizontálního oddílu pro prázdnou částí stávající rozsah
+
 V některých případech je již namapována na horizontální oddíl rozsahu a částečně naplněný daty, ale nyní chcete nadcházející data směrovat do jiného horizontálního oddílu. Například můžete horizontálních oddílů v rozmezí dnů a obsahovat již přidělené 50 dnů do horizontálního oddílu, ale dne 24 chcete dat objevil v rozdílných horizontálních oddílech. Elastické databáze [nástroj split-merge](sql-database-elastic-scale-overview-split-and-merge.md) mohou provést tuto operaci, ale pokud přesun dat není nutné (například data pro rozsah dnů [25, 50), to znamená, dne 25 (včetně) až 50 exkluzivní, ještě neexistuje) můžete to provést zcela přímo pomocí rozhraní API Správce mapování horizontálních oddílů.
 
 ### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Příklad: rozdělením rozsah a prázdnou část přiřazování k nově přidané horizontálních oddílů
+
 Databázi s názvem "sample_shard_2" a všechny objekty nezbytné schématu uvnitř této byly vytvořeny.  
 
 ```csharp
 // sm is a RangeShardMap object.
-// Add a new shard to hold the range we will move 
-Shard shard2 = null; 
+// Add a new shard to hold the range we will move
+Shard shard2 = null;
 
-if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_2"),out shard2)) 
-{ 
+if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_2"),out shard2))
+{
     shard2 = sm.CreateShard(new ShardLocation(shardServer,"sample_shard_2"));  
-} 
+}
 
-// Split the Range holding Key 25 
-sm.SplitMapping(sm.GetMappingForKey(25), 25); 
+// Split the Range holding Key 25
+sm.SplitMapping(sm.GetMappingForKey(25), 25);
 
-// Map new range holding [25-50) to different shard: 
-// first take existing mapping offline 
-sm.MarkMappingOffline(sm.GetMappingForKey(25)); 
+// Map new range holding [25-50) to different shard:
+// first take existing mapping offline
+sm.MarkMappingOffline(sm.GetMappingForKey(25));
 
-// now map while offline to a different shard and take online 
-RangeMappingUpdate upd = new RangeMappingUpdate(); 
-upd.Shard = shard2; 
-sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd)); 
+// now map while offline to a different shard and take online
+RangeMappingUpdate upd = new RangeMappingUpdate();
+upd.Shard = shard2;
+sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Důležité**: Tento postup použít, pouze pokud jste si jisti, že rozsah aktualizovaná mapování je prázdný.  Předchozí metody nezaškrtávejte políčko dat pro rozsah přesouvaných, takže je vhodné zahrnout kontroly ve vašem kódu.  Pokud je řádků v rozsahu, který se přesouvá, distribuce skutečná data nebudou odpovídat mapa aktualizovaná horizontálních oddílů. Použití [nástroj split-merge](sql-database-elastic-scale-overview-split-and-merge.md) místo toho provádět operace v těchto případech.  
+**Důležité**:  Tento postup použijte, pouze pokud jste si jisti, že rozsah aktualizovaná mapování je prázdný.  Předchozí metody nezaškrtávejte políčko dat pro rozsah přesouvaných, takže je vhodné zahrnout kontroly ve vašem kódu.  Pokud je řádků v rozsahu, který se přesouvá, distribuce skutečná data nebudou odpovídat mapa aktualizovaná horizontálních oddílů. Použití [nástroj split-merge](sql-database-elastic-scale-overview-split-and-merge.md) místo toho provádět operace v těchto případech.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-

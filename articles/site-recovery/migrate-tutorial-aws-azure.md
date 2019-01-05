@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 24503a821445bbf1610588d7f69ec87948a812b9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4674428cf96562670b0e24e5ac93a2f2979128da
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793066"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042049"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -33,12 +33,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 - Ověřte, že na virtuálních počítačích, které chcete migrovat, běží podporovaná verze operačního systému. Podporované verze: 
-  - Windows Server 2016 
-  - Windows Server 2012 R2
-  - Windows Server 2012 
-  - 64bitová verze systému Windows Server 2008 R2 SP1 nebo novější
-  - Red Hat Enterprise Linux 6.7 (pouze virtualizované instance HVM) s ovladačem Citrix PV nebo AWS PV. Instance s ovladači RedHat PV *nejsou* podporované.
- - Na každý virtuální počítač, který chcete replikovat, bude nutné nainstalovat službu Mobility. 
+      - Windows Server 2016 
+      - Windows Server 2012 R2
+      - Windows Server 2012 
+      - 64bitová verze systému Windows Server 2008 R2 SP1 nebo novější
+      - Red Hat Enterprise Linux 6.4 6.10, 7.1 na 7.6 (pouze virtualizované instance HVM) *(instance s ovladači RedHat PV nejsou podporované.)*
+      - CentOS 6.4 6.10 7.1 na 7.6 (pouze virtualizované instance HVM)
+ 
+- Na každý virtuální počítač, který chcete replikovat, bude nutné nainstalovat službu Mobility. 
 
     > [!IMPORTANT]
     > Služba Site Recovery tuto službu nainstaluje automaticky, když u virtuálního počítače zapnete replikaci. U automatické instalace musíte připravit účet na instancích EC2, který služba Site Recovery použije k získání přístupu k virtuálnímu počítači. Můžete použít účet domény nebo místní účet. 

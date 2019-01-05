@@ -3,18 +3,18 @@ title: 'Kurz: Načtení ukázkových dat do tabulky Cassandra API ve službě Az
 description: Tento kurz ukazuje, jak načíst ukázková data uživatele do tabulky Cassandra API ve službě Azure Cosmos DB s použitím aplikace v Javě.
 author: kanshiG
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: govindk
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: fad6d34a3d3712a036e0275717754f75d5314aae
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 68baffea86ce5c877217ec05d477288b71830a42
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863649"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037425"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Kurz: Načtení ukázkových dat do tabulky Cassandra API ve službě Azure Cosmos DB
 

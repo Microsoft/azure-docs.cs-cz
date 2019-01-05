@@ -8,12 +8,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: 86fdbbacf3e8064afe0aaaaebea1d6ef6c25f9d4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a15ffa23b64f944d8b2c088113bcc29443ce6873
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865820"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038955"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Brána Firewall služby Azure pomocí šablony nasazení
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Na portálu na **vytvoření izolovaného prostoru nastavení AzureFirewall** stránky zadejte nebo vyberte následující hodnoty:
    
-   - **Skupina prostředků**: vyberte **vytvořit nový**, zadejte název pro skupinu prostředků a vyberte **OK**. 
+   - **Skupina prostředků**: Vyberte **vytvořit nový**, zadejte název pro skupinu prostředků a vyberte **OK**. 
    - **Název virtuální sítě**: Zadejte název nové sítě VNet. 
    - **Uživatelské jméno správce**: Zadejte uživatelské jméno pro účet správce systému.
    - **Heslo správce**: Zadejte heslo správce. 
@@ -51,6 +51,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    Bude trvat několik minut, než vytvoříte prostředky. 
    
 1. Materiály, které byly vytvořeny pomocí brány firewall. 
+
+Další informace o syntaxi JSON a vlastnosti pro bránu firewall v šabloně najdete v tématu [Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -66,4 +68,4 @@ Neodebírat skupinu prostředků a brány firewall, pokud budete chtít pokračo
 Dále můžete monitorovat protokoly brány Firewall Azure:
 
 > [!div class="nextstepaction"]
-> [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+> [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)

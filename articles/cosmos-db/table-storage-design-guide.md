@@ -1,19 +1,19 @@
 ---
 title: Návrh tabulek Azure Cosmos DB pro podporu škálování a výkonu
 description: 'Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek ve službě Azure Cosmos DB a Azure Storage Table'
-author: SnehaGunda
-ms.author: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 12/07/2018
+author: wmengmsft
+ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 656a8acc06a0d02959dda42c980db65c011f0bb3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9784d08a8e3e471a8b516c3bc285430c537857a8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140944"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044174"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek
 
@@ -132,7 +132,7 @@ Název účtu, název tabulky a **PartitionKey** společně identifikovat oddíl
 
 Ve službě Table service, služby jednotlivých uzlů jeden nebo více dokončení oddíly a škálování služby pomocí dynamické vyrovnávání zatížení oddílů mezi uzly. Pokud uzel je zatížení, můžete služby table service *rozdělit* rozsahem oddílů obsluhovány pomocí tohoto uzlu na různých uzlech; při provozu poklesne, můžete službu *sloučení* rozsahů oddílů z quiet uzlů zpět na jeden uzel.  
 
-Další informace o interní informace služby Table service, zejména způsob, jakým služba spravuje oddíly, najdete v dokumentu paper [Microsoft Azure Storage: A vysoce dostupné služby cloudového úložiště se silnou konzistencí](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Další informace o interní informace služby Table service, zejména způsob, jakým služba spravuje oddíly, najdete v dokumentu paper [Microsoft Azure Storage: Služby s vysokou dostupností cloudového úložiště se silnou konzistenci](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Transakcí skupin entit
 Ve službě Table service transakcí skupin entit (EGTs) jsou pouze předdefinovaný mechanismus pro provádění atomické aktualizace napříč více entit. EGTs se také označují jako *dávkové transakce* v některé dokumentaci. EGTs může pracovat pouze s entitami, které jsou uložené ve stejném oddílu (sdílená složka stejným klíčem oddílu v dané tabulce), tak kdykoli potřebujete atomic transakční chování napříč více entit, je nutné se ujistit, že jsou tyto entity do stejného oddílu. To je často důvod pro udržování několik typů entit ve stejné tabulce (a oddílu) a bez použití více tabulek pro typy jiné entity. Jeden EGT může pracovat na maximálně 100 entit.  Pokud uvedete více souběžných EGTs pro zpracování, je důležité zajistit, že tyto EGTs není pracovat u entit, které jsou společné napříč EGTs, protože jinak zpracování může zpozdit.
@@ -582,11 +582,11 @@ Povolit vyhledávání podle příjmení pomocí struktury entit, které jsou uv
 * Vytvořte index entity do stejného oddílu jako entity zaměstnance.  
 * Vytvoření indexu entit v samostatném oddílu nebo tabulky.  
 
-<u>Možnost #1: Úložiště objektů blob můžete použít</u>  
+<u>Možnost #1: Použití služby blob storage</u>  
 
 Pro první možnost se vám vytvoření objektu blob pro každou jedinečnou příjmení a v každé úložiště objektů blob v seznamu **PartitionKey** (department) a **RowKey** hodnoty (id zaměstnance) pro zaměstnance, kteří mají tento poslední název. Při přidání nebo odstranění zaměstnanec, měli byste zajistit, že obsah objektu blob relevantní je konzistentní s entitami zaměstnance.  
 
-<u>Možnost #2:</u> vytvořit index entity do stejného oddílu  
+<u>Možnost #2:</u> Vytvoření indexu entit ve stejném oddílu  
 
 Pro druhou možnost použijte index entity, které ukládat následující data:  
 
@@ -608,7 +608,7 @@ Následující kroky popisují proces, kterým byste měli postupovat, když bud
 2. Parsovat seznam ID v poli EmployeeIDs zaměstnanců.  
 3. Pokud potřebujete další informace o každém z těchto zaměstnanci (například jejich e-mailové adresy), načíst všechny entity zaměstnance pomocí **PartitionKey** hodnotu "Prodeje" a **RowKey** hodnoty z seznam zaměstnanců, které jste získali v kroku 2.  
 
-<u>Možnost #3:</u> vytvořit index entity v samostatném oddílu nebo tabulky  
+<u>Možnost #3:</u> Vytvoření indexu entit v samostatném oddílu nebo tabulky  
 
 Třetí možnost použití indexu entity, které ukládat následující data:  
 
@@ -1300,7 +1300,7 @@ Zbývající část Tato část popisuje některé funkce v klientské knihovně
 #### <a name="retrieving-heterogeneous-entity-types"></a>Načítání typů heterogenní entity
 Pokud používáte klientskou knihovnu pro úložiště, máte tři možnosti pro práci s více typy entit.  
 
-Pokud je, že typ entity uložená s konkrétním **RowKey** a **PartitionKey** hodnoty, pokud načítáte entity, jak je znázorněno v předchozích dvou příkladech můžete zadat typ entity, která načtení entit typu **EmployeeEntity**: [provádění dotazu bodu pomocí klientskou knihovnu pro úložiště](#executing-a-point-query-using-the-storage-client-library) a [načítání více entit pomocí jazyka LINQ](#retrieving-multiple-entities-using-linq).  
+Pokud je, že typ entity uložená s konkrétním **RowKey** a **PartitionKey** hodnoty, pokud načítáte entity, jak je znázorněno v předchozích dvou příkladech můžete zadat typ entity, která načtení entit typu **EmployeeEntity**: [Provádění dotazu bodu pomocí klientskou knihovnu pro úložiště](#executing-a-point-query-using-the-storage-client-library) a [načítání více entit pomocí jazyka LINQ](#retrieving-multiple-entities-using-linq).  
 
 Druhou možností je použít **DynamicTableEntity** typ (kontejner objektů) místo konkrétní typ entity POCO (Tato možnost může také zvýšit výkon, protože není nutné k serializaci a deserializaci entita, která má typy rozhraní .NET). Následující kód jazyka C# potenciálně načte více entit různých typů z tabulky, ale vrací všechny entity jako **DynamicTableEntity** instancí. Poté použije **EntityType** a určí typ jednotlivých entit:  
 
@@ -1509,7 +1509,7 @@ Klientská aplikace může volat více asynchronních metod, jako je ten, a kaž
 ### <a name="credits"></a>Závěrečné titulky
 Rádi bychom vám chceme poděkovat následující členy týmu Azure za svoje příspěvky: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Yields, Vamshidhar Kommineni, Vinay Shah Serdar Ozler i Petr Hollander z Microsoft DX. 
 
-Budeme také rádi následující MVPs Microsoftu pro své přínosné podněty během cyklů revize: Igor Papirov a Edward Bakker.
+Budeme také rádi následující MVPs Microsoftu pro své přínosné podněty během kontroly cykly: Igor Papirov a Edward Bakker.
 
 [1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
 [2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png

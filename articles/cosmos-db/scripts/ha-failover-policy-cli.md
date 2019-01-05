@@ -4,14 +4,16 @@ description: Ukázkový skript Azure CLI – Vytvoření zásady převzetí slu�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.openlocfilehash: 613177f61e9b50af7f671b3c0f20c83a97ac6133
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: dc7a8030faf649e36136f6b1da366b4745f617b3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969256"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042865"
 ---
 # <a name="create-a-failover-policy-for-high-availability-using-the-azure-cli"></a>Vytvoření zásady převzetí služeb při selhání pro zajištění vysoké dostupnosti pomocí Azure CLI
 

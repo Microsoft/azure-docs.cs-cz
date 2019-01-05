@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 856ffe050fce204d52d6666025a7284788bb0893
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bee48efd52a6ead6896691683c4605fcf833e2b6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022235"
+ms.locfileid: "54033688"
 ---
 # <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
 
@@ -121,11 +121,11 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Graf metrik serveru](./media/app-insights-website-monitoring/browser-performance.png)
 
-4. Pokud chcete začít zkoumat [nástroje pro analýzu chování uživatelů](app-insights-usage-overview.md), v hlavní nabídce Application Insights pod nadpisem **Využití** vyberte [**Uživatelé**](app-insights-usage-segmentation.md). Protože testujeme z jediného počítače, zobrazí se nám data pouze pro jednoho uživatele. V případě živého webu by distribuce uživatelů mohla vypadat nějak takto:
+4. Pokud chcete začít zkoumat [nástroje pro analýzu chování uživatelů](../azure-monitor/app/usage-overview.md), v hlavní nabídce Application Insights pod nadpisem **Využití** vyberte [**Uživatelé**](../azure-monitor/app/usage-segmentation.md). Protože testujeme z jediného počítače, zobrazí se nám data pouze pro jednoho uživatele. V případě živého webu by distribuce uživatelů mohla vypadat nějak takto:
 
      ![Graf uživatelů](./media/app-insights-website-monitoring/usage-users.png)
 
-5. Dalším užitečným nástrojem pro instrumentaci složitějších webů s více stránkami je nástroj [**Toky uživatelů**](app-insights-usage-flows.md). Pomocí nástroje **Toky uživatelů** můžete sledovat cesty uživatelů různými částmi vašeho webu.
+5. Dalším užitečným nástrojem pro instrumentaci složitějších webů s více stránkami je nástroj [**Toky uživatelů**](../azure-monitor/app/usage-flows.md). Pomocí nástroje **Toky uživatelů** můžete sledovat cesty uživatelů různými částmi vašeho webu.
 
   ![Vizualizace nástroje Toky uživatelů](./media/app-insights-website-monitoring/user-flows.png)
 

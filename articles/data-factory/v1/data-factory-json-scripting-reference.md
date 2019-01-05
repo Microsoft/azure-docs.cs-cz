@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c61612bad181eb600f449fea7eb22ca2abc17a12
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7b38bc8a2cdb740363dbf2c797738fc5277ff2bc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020451"
+ms.locfileid: "54036416"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON Scripting Reference
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1.
 
 
-Tento článek obsahuje příklady a schémata JSON pro definování entit služby Azure Data Factory (kanál, aktivit, datové sady a propojené služby).  
+Tento článek obsahuje příklady a schémata JSON pro definování entit služby Azure Data Factory (kanál, aktivit, datové sady a propojené služby).
 
-## <a name="pipeline"></a>Kanál 
-Vysoké úrovně struktury kanálu je následujícím způsobem: 
+## <a name="pipeline"></a>Kanál
+Vysoké úrovně struktury kanálu je následujícím způsobem:
 
 ```json
 {
@@ -40,14 +40,14 @@ Vysoké úrovně struktury kanálu je následujícím způsobem:
     "start": "2016-07-12T00:00:00",
     "end": "2016-07-13T00:00:00"
   }
-} 
+}
 ```
 
 Následující tabulka popisuje vlastnosti v rámci kanálu definici JSON:
 
 | Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-| jméno | Název kanálu. Zadejte název, který představuje akci, aktivity nebo kanálu je nakonfigurovaný<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| jméno | Název kanálu. Zadejte název, který představuje akci, aktivity nebo kanálu je nakonfigurovaný<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description |Text popisující, k čemu aktivita nebo kanál slouží | Ne |
 | activities | Obsahuje seznam aktivit. | Ano |
 | start |Počáteční datum a čas pro kanál. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41. <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00**-05:00`, což je odhad AM 6<br/><br/>Počáteční a koncové vlastnosti definujte aktivní období kanálu. Výstupní řezy se tvoří pouze s v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end, musíte zadat hodnotu pro vlastnost start.<br/><br/>Počáteční a koncový čas může být oba prázdné k vytvoření kanálu. Je nutné zadat obě hodnoty se nastavit aktivní období kanálu ke spuštění. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete nastavit pomocí rutiny Set-AzureRmDataFactoryPipelineActivePeriod později. |
@@ -57,13 +57,13 @@ Následující tabulka popisuje vlastnosti v rámci kanálu definici JSON:
 | expirationTime |Dobu trvání, po vytvoření, pro kterou je platný a zůstanou zřízené kanálu. Pokud nemá žádná aktivní, se nezdařilo, nebo čekající spuštění kanálu se odstraní automaticky jednou dosáhne čas vypršení platnosti. |Ne |
 
 
-## <a name="activity"></a>Aktivita 
+## <a name="activity"></a>Aktivita
 Vysoké úrovně struktury pro aktivitu v rámci definice kanálu (aktivity element) je následujícím způsobem:
 
 ```json
 {
     "name": "ActivityName",
-    "description": "description", 
+    "description": "description",
     "type": "<ActivityType>",
     "inputs":  "[]",
     "outputs":  "[]",
@@ -74,7 +74,7 @@ Vysoké úrovně struktury pro aktivitu v rámci definice kanálu (aktivity elem
     },
     "policy":
     {
-    }
+    },
     "scheduler":
     {
     }
@@ -85,7 +85,7 @@ Následující tabulka popisuje vlastnosti v rámci aktivity definici JSON:
 
 | Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název aktivity. Zadejte název, který představuje akci, který je nakonfigurovaný na aktivitu<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| jméno |Název aktivity. Zadejte název, který představuje akci, který je nakonfigurovaný na aktivitu<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description |Text popisující, k čemu aktivita slouží. |Ne |
 | type |Určuje typ aktivity. Zobrazit [ÚLOŽIŠŤ dat](#data-stores) a [aktivity TRANSFORMACE dat](#data-transformation-activities) oddíly pro různé typy aktivit. |Ano |
 | vstupy |Vstupní tabulky použité aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ne pro HDInsightStreaming a SqlServerStoredProcedure aktivity <br/> <br/> Ano, pro všechny ostatní |
@@ -109,12 +109,12 @@ Zásady ovlivňují chování za běhu aktivity, konkrétně v případě, že z
 | longRetryInterval |Časový interval |00:00:00 |Prodleva mezi pokusy o opakování po delší době |
 
 ### <a name="typeproperties-section"></a>části typeProperties
-V části typeProperties se liší pro každou aktivitu. Aktivity transformace mají pouze vlastnosti typu. Zobrazit [aktivity TRANSFORMACE dat](#data-transformation-activities) části v tomto článku pro ukázky JSON, které definují transformace aktivity v kanálu. 
+V části typeProperties se liší pro každou aktivitu. Aktivity transformace mají pouze vlastnosti typu. Zobrazit [aktivity TRANSFORMACE dat](#data-transformation-activities) části v tomto článku pro ukázky JSON, které definují transformace aktivity v kanálu.
 
-**Aktivita kopírování** má dvě témata v části typeProperties: **zdroj** a **jímky**. Zobrazit [ÚLOŽIŠŤ dat](#data-stores) části v tomto článku pro ukázky JSON, které ukazují, jak pomocí dat ukládat jako zdroje a jímky. 
+**Aktivita kopírování** má dvě témata v části typeProperties: **zdroj** a **jímky**. Zobrazit [ÚLOŽIŠŤ dat](#data-stores) části v tomto článku pro ukázky JSON, které ukazují, jak pomocí dat ukládat jako zdroje a jímky.
 
 ### <a name="sample-copy-pipeline"></a>Ukázkový kanál kopírování
-V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **Kopírování**. V této ukázce [aktivita kopírování](data-factory-data-movement-activities.md) kopíruje data ze služby Azure Blob storage do služby Azure SQL database. 
+V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **Kopírování**. V této ukázce [aktivita kopírování](data-factory-data-movement-activities.md) kopíruje data ze služby Azure Blob storage do služby Azure SQL database.
 
 ```json
 {
@@ -156,7 +156,7 @@ V následujícím ukázkovém kanálu je v části **activities** jedna aktivita
     "start": "2016-07-12T00:00:00",
     "end": "2016-07-13T00:00:00"
   }
-} 
+}
 ```
 
 Je třeba počítat s následujícím:
@@ -165,12 +165,12 @@ Je třeba počítat s následujícím:
 * Vstup aktivity je nastavený na **InputDataset** a výstup aktivity je nastavený na **OutputDataset**.
 * V části **typeProperties** je jako typ zdroje určen **BlobSource** a jako typ jímky **SqlSink**.
 
-Zobrazit [ÚLOŽIŠŤ dat](#data-stores) části v tomto článku pro ukázky JSON, které ukazují, jak pomocí dat ukládat jako zdroje a jímky.    
+Zobrazit [ÚLOŽIŠŤ dat](#data-stores) části v tomto článku pro ukázky JSON, které ukazují, jak pomocí dat ukládat jako zdroje a jímky.
 
-Kompletní postup vytváření tohoto kanálu najdete v části [kurzu: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Kompletní postup vytváření tohoto kanálu najdete v části [kurzu: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ### <a name="sample-transformation-pipeline"></a>Ukázkový kanál transformace
-V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **HDInsightHive**. V této ukázce [aktivita HDInsight Hive](data-factory-hive-activity.md) transformuje data ze služby Azure Blob Storage tak, že v clusteru Azure HDInsight Hadoop spustí soubor skriptu Hive. 
+V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **HDInsightHive**. V této ukázce [aktivita HDInsight Hive](data-factory-hive-activity.md) transformuje data ze služby Azure Blob Storage tak, že v clusteru Azure HDInsight Hadoop spustí soubor skriptu Hive.
 
 ```json
 {
@@ -217,7 +217,7 @@ V následujícím ukázkovém kanálu je v části **activities** jedna aktivita
 }
 ```
 
-Je třeba počítat s následujícím: 
+Je třeba počítat s následujícím:
 
 * V části activities je jenom jedna aktivita, jejíž vlastnost **type** má hodnotu **HDInsightHive**.
 * Soubor skriptu Hive **partitionweblogs.hql** je uložený v účtu služby Azure Storage (který určuje služba scriptLinkedService s názvem **AzureStorageLinkedService**) a ve složce **script** v kontejneru **adfgetstarted**.
@@ -225,7 +225,7 @@ Je třeba počítat s následujícím:
 
 Zobrazit [aktivity TRANSFORMACE dat](#data-transformation-activities) části v tomto článku pro ukázky JSON, které definují transformace aktivity v kanálu.
 
-Kompletní postup vytváření tohoto kanálu najdete v části [kurzu: Vytvoření prvního kanálu pro zpracování dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
+Kompletní postup vytváření tohoto kanálu najdete v části [kurzu: Vytvoření prvního kanálu pro zpracování dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
 ## <a name="linked-service"></a>Propojená služba
 Základní struktura pro definici propojené služby je následujícím způsobem:
@@ -244,12 +244,12 @@ Základní struktura pro definici propojené služby je následujícím způsobe
 Následující tabulka popisuje vlastnosti v rámci aktivity definici JSON:
 
 | Vlastnost | Popis | Požaduje se |
-| -------- | ----------- | -------- | 
-| jméno | Název propojené služby. | Ano | 
+| -------- | ----------- | -------- |
+| jméno | Název propojené služby. | Ano |
 | vlastnosti – typ | Typ propojené služby. Příklad: Azure Storage, Azure SQL Database. |
-| typeProperties | V části typeProperties má elementy, které se liší pro jednotlivé obchody dat nebo výpočetní prostředí. V tématu [úložišť dat](#datastores) části pro všechna data propojené služby úložiště a [výpočetní prostředí](#compute-environments) všechny výpočty propojené služby |   
+| typeProperties | V části typeProperties má elementy, které se liší pro jednotlivé obchody dat nebo výpočetní prostředí. V tématu [úložišť dat](#datastores) části pro všechna data propojené služby úložiště a [výpočetní prostředí](#compute-environments) všechny výpočty propojené služby |
 
-## <a name="dataset"></a>Datová sada 
+## <a name="dataset"></a>Datová sada
 Datové sady ve službě Azure Data Factory je definovaná následujícím způsobem:
 
 ```json
@@ -273,19 +273,19 @@ Datové sady ve službě Azure Data Factory je definovaná následujícím způs
             "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
             "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
         },
-       "policy":
-        {      
+        "policy":
+        {
         }
     }
 }
 ```
 
-Následující tabulka popisuje vlastnosti v výše uvedený text JSON:   
+Následující tabulka popisuje vlastnosti v výše uvedený text JSON:
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
 | jméno | Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](data-factory-naming-rules.md) pravidla pojmenování. |Ano |Není k dispozici |
-| type | Typ datové sady. Zadejte jeden z typů podporovaných službou Azure Data Factory (například: AzureBlob, AzureSqlTable). Zobrazit [ÚLOŽIŠŤ dat](#data-stores) oddíl úložiště dat a typů sad dat podporovaných službou Data Factory. | 
+| type | Typ datové sady. Zadejte jeden z typů podporovaných službou Azure Data Factory (například: AzureBlob, AzureSqlTable). Zobrazit [ÚLOŽIŠŤ dat](#data-stores) oddíl úložiště dat a typů sad dat podporovaných službou Data Factory. |
 | Struktura | Schéma datové sady. Obsahuje sloupce, jejich typy, atd. | Ne |Není k dispozici |
 | typeProperties | Vlastnosti odpovídající vybraného typu. Zobrazit [ÚLOŽIŠŤ dat](#data-stores) části Podporované typy a jejich vlastnosti. |Ano |Není k dispozici |
 | external | Logický příznak k určení, zda datové sady je explicitně vytvořen kanál datové továrny nebo ne. |Ne |false (nepravda) |
@@ -304,7 +304,7 @@ Každý sloupec v **struktura** oddíl obsahuje následující vlastnosti:
 V následujícím příkladu datová sada obsahuje tři sloupce `slicetimestamp`, `projectname`, a `pageviews` a jsou typu: Řetězec, řetězec a desetinných v uvedeném pořadí.
 
 ```json
-structure:  
+structure:
 [
     { "name": "slicetimestamp", "type": "String"},
     { "name": "projectname", "type": "String"},
@@ -325,10 +325,10 @@ Následující tabulka popisuje vlastnosti, které můžete použít v **dostupn
 Následující části Dostupnost určuje, zda výstupní datové sady vyprodukované každou hodinu (nebo) vstupní datová sada je k dispozici po hodinách:
 
 ```json
-"availability":    
-{    
-    "frequency": "Hour",        
-    "interval": 1    
+"availability":
+{
+    "frequency": "Hour",
+    "interval": 1
 }
 ```
 
@@ -367,11 +367,11 @@ Pokud datová sada je vytvořených službou Azure Data Factory, by měla být o
 
 [Datovou sadu](#dataset) oddílu k dispozici popisy elementů JSON, které jsou společné pro všechny typy datových sad. Tato část obsahuje podrobnosti o JSON prvky, které jsou specifické pro každé úložiště.
 
-[Aktivity](#activity) oddílu k dispozici popisy elementů JSON, které jsou společné pro všechny typy aktivit. Tato část obsahuje podrobnosti o JSON elementy, které jsou specifické pro každé úložiště dat, když se používá jako zdroj/jímka v aktivitě kopírování.  
+[Aktivity](#activity) oddílu k dispozici popisy elementů JSON, které jsou společné pro všechny typy aktivit. Tato část obsahuje podrobnosti o JSON elementy, které jsou specifické pro každé úložiště dat, když se používá jako zdroj/jímka v aktivitě kopírování.
 
 Kliknutím na odkaz úložiště, které vás zajímají zobrazíte schémat JSON propojené služby, datové sady a zdroje/jímky pro aktivitu kopírování.
 
-| Kategorie | Úložiště dat 
+| Kategorie | Úložiště dat
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](#azure-blob-storage) |
 | &nbsp; |[Azure Data Lake Store](#azure-datalake-store) |
@@ -409,13 +409,13 @@ Kliknutím na odkaz úložiště, které vás zajímají zobrazíte schémat JSO
 Existují dva typy propojené služby: Propojená služba Azure Storage a Azure Storage SAS propojené služby.
 
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-K propojení účtu Azure storage do služby data factory pomocí **klíč účtu**, vytvořte propojenou službu Azure Storage. K definování služby Azure Storage propojenou službu, nastavte **typ** propojené služby pro **AzureStorage**. Potom můžete zadat následující vlastnosti v **typeProperties** části:  
+K propojení účtu Azure storage do služby data factory pomocí **klíč účtu**, vytvořte propojenou službu Azure Storage. K definování služby Azure Storage propojenou službu, nastavte **typ** propojené služby pro **AzureStorage**. Potom můžete zadat následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k Azure storage pro vlastnost připojovací řetězec. |Ano |
 
-##### <a name="example"></a>Příklad:  
+##### <a name="example"></a>Příklad:
 
 ```json
 {
@@ -430,7 +430,7 @@ K propojení účtu Azure storage do služby data factory pomocí **klíč účt
 ```
 
 #### <a name="azure-storage-sas-linked-service"></a>Propojená služba Azure Storage SAS
-Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí sdílený přístupový podpis (SAS). Poskytuje objekt pro vytváření dat s omezením pomocí specifikátoru/časově omezenou přístup k prostředkům all/konkrétní (objektu blob nebo kontejneru) ve službě storage. Propojte svůj účet úložiště Azure do služby data factory pomocí sdíleného přístupového podpisu, vytvoření Azure Storage SAS propojenou službu. K definování Azure Storage SAS propojenou službu, nastavte **typ** propojené služby pro **AzureStorageSas**. Potom můžete zadat následující vlastnosti v **typeProperties** části:   
+Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí sdílený přístupový podpis (SAS). Poskytuje objekt pro vytváření dat s omezením pomocí specifikátoru/časově omezenou přístup k prostředkům all/konkrétní (objektu blob nebo kontejneru) ve službě storage. Propojte svůj účet úložiště Azure do služby data factory pomocí sdíleného přístupového podpisu, vytvoření Azure Storage SAS propojenou službu. K definování Azure Storage SAS propojenou službu, nastavte **typ** propojené služby pro **AzureStorageSas**. Potom můžete zadat následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -439,21 +439,21 @@ Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azu
 ##### <a name="example"></a>Příklad:
 
 ```json
-{  
-    "name": "StorageSasLinkedService",  
-    "properties": {  
-        "type": "AzureStorageSas",  
-        "typeProperties": {  
-            "sasUri": "<storageUri>?<sasToken>"   
-        }  
-    }  
-}  
+{
+    "name": "StorageSasLinkedService",
+    "properties": {
+        "type": "AzureStorageSas",
+        "typeProperties": {
+            "sasUri": "<storageUri>?<sasToken>"
+        }
+    }
+}
 ```
 
-Další informace o těchto propojené služby, najdete v části [konektor Azure Blob Storage](data-factory-azure-blob-connector.md#linked-service-properties) článku. 
+Další informace o těchto propojené služby, najdete v části [konektor Azure Blob Storage](data-factory-azure-blob-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady objektů Blob v Azure, nastavte **typ** datové sady na **AzureBlob**. Zadejte následující specifické vlastnosti objektů Blob v Azure v **typeProperties** části: 
+K definování datové sady objektů Blob v Azure, nastavte **typ** datové sady na **AzureBlob**. Zadejte následující specifické vlastnosti objektů Blob v Azure v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -581,12 +581,12 @@ Pokud se kopírování dat do služby Azure Blob Storage, nastavte **jímky typu
 }
 ```
 
-Další informace najdete v tématu [konektor Azure Blob](data-factory-azure-blob-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor Azure Blob](data-factory-azure-blob-connector.md#copy-activity-properties) článku.
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
 ### <a name="linked-service"></a>Propojená služba
-K definování Azure Data Lake Store propojenou službu, nastavte typ propojenou službu, která **AzureDataLakeStore**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování Azure Data Lake Store propojenou službu, nastavte typ propojenou službu, která **AzureDataLakeStore**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -633,10 +633,10 @@ K definování Azure Data Lake Store propojenou službu, nastavte typ propojenou
 }
 ```
 
-Další informace najdete v tématu [konektor Azure Data Lake Store](data-factory-azure-datalake-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor Azure Data Lake Store](data-factory-azure-datalake-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby Azure Data Lake Store, nastavte **typ** datové sady na **AzureDataLakeStore**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby Azure Data Lake Store, nastavte **typ** datové sady na **AzureDataLakeStore**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -678,7 +678,7 @@ Chcete-li definovat datová sada služby Azure Data Lake Store, nastavte **typ**
 }
 ```
 
-Další informace najdete v tématu [konektor Azure Data Lake Store](data-factory-azure-datalake-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor Azure Data Lake Store](data-factory-azure-datalake-connector.md#dataset-properties) článku.
 
 ### <a name="azure-data-lake-store-source-in-copy-activity"></a>Azure Data Lake Store zdroje v aktivitě kopírování
 Pokud se kopírování dat ze Azure Data Lake Store, nastavte **typ zdroje** aktivity kopírování na **AzureDataLakeStoreSource**a zadejte následující vlastnosti v **zdroj**části:
@@ -777,12 +777,12 @@ Pokud se kopírování dat do Azure Data Lake Store, nastavte **jímky typu** ak
 }
 ```
 
-Další informace najdete v tématu [konektor Azure Data Lake Store](data-factory-azure-datalake-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor Azure Data Lake Store](data-factory-azure-datalake-connector.md#copy-activity-properties) článku.
 
-## <a name="azure-cosmos-db"></a>Azure Cosmos DB  
+## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
 ### <a name="linked-service"></a>Propojená služba
-K definování služby Azure Cosmos DB propojenou službu, nastavte **typ** propojené služby pro **DocumentDb**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování služby Azure Cosmos DB propojenou službu, nastavte **typ** propojené služby pro **DocumentDb**a zadejte následující vlastnosti v **typeProperties** části:
 
 | **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |
@@ -804,7 +804,7 @@ K definování služby Azure Cosmos DB propojenou službu, nastavte **typ** prop
 Další informace najdete v tématu [konektor služby Azure Cosmos DB](data-factory-azure-documentdb-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby Azure Cosmos DB, nastavte **typ** datové sady na **DocumentDbCollection**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby Azure Cosmos DB, nastavte **typ** datové sady na **DocumentDbCollection**a zadejte následující vlastnosti v **typeProperties** části:
 
 | **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |
@@ -932,7 +932,7 @@ Další informace najdete v tématu [konektor služby Azure Cosmos DB](data-fact
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
 ### <a name="linked-service"></a>Propojená služba
-Definovat službu Azure SQL Database propojenou službu, nastavte **typ** propojené služby pro **AzureSqlDatabase**a zadejte následující vlastnosti v **typeProperties** části:  
+Definovat službu Azure SQL Database propojenou službu, nastavte **typ** propojené služby pro **AzureSqlDatabase**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -951,10 +951,10 @@ Definovat službu Azure SQL Database propojenou službu, nastavte **typ** propoj
 }
 ```
 
-Další informace najdete v tématu [konektor služby Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor služby Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby Azure SQL Database, nastavte **typ** datové sady na **AzureSqlTable**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby Azure SQL Database, nastavte **typ** datové sady na **AzureSqlTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -986,7 +986,7 @@ Chcete-li definovat datová sada služby Azure SQL Database, nastavte **typ** da
     }
 }
 ```
-Další informace najdete v tématu [konektor služby Azure SQL](data-factory-azure-sql-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor služby Azure SQL](data-factory-azure-sql-connector.md#dataset-properties) článku.
 
 ### <a name="sql-source-in-copy-activity"></a>Zdroje SQL v aktivitě kopírování
 Pokud se kopírování dat ze služby Azure SQL Database, nastavte **typ zdroje** aktivity kopírování na **SqlSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -1040,7 +1040,7 @@ Pokud se kopírování dat ze služby Azure SQL Database, nastavte **typ zdroje*
     }
 }
 ```
-Další informace najdete v tématu [konektor služby Azure SQL](data-factory-azure-sql-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor služby Azure SQL](data-factory-azure-sql-connector.md#copy-activity-properties) článku.
 
 ### <a name="sql-sink-in-copy-activity"></a>SQL jímky v aktivitě kopírování
 Pokud kopírujete data do služby Azure SQL Database, nastavte **jímky typu** aktivity kopírování na **SqlSink**a zadejte následující vlastnosti v **jímky** části:
@@ -1098,12 +1098,12 @@ Pokud kopírujete data do služby Azure SQL Database, nastavte **jímky typu** a
 }
 ```
 
-Další informace najdete v tématu [konektor služby Azure SQL](data-factory-azure-sql-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor služby Azure SQL](data-factory-azure-sql-connector.md#copy-activity-properties) článku.
 
 ## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
 ### <a name="linked-service"></a>Propojená služba
-Definovat službu Azure SQL Data Warehouse propojenou službu, nastavte **typ** propojené služby pro **AzureSqlDW**a zadejte následující vlastnosti v **typeProperties** části:  
+Definovat službu Azure SQL Data Warehouse propojenou službu, nastavte **typ** propojené služby pro **AzureSqlDW**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1125,10 +1125,10 @@ Definovat službu Azure SQL Data Warehouse propojenou službu, nastavte **typ** 
 }
 ```
 
-Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby Azure SQL Data Warehouse, nastavte **typ** datové sady na **AzureSqlDWTable**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby Azure SQL Data Warehouse, nastavte **typ** datové sady na **AzureSqlDWTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1161,7 +1161,7 @@ Chcete-li definovat datová sada služby Azure SQL Data Warehouse, nastavte **ty
 }
 ```
 
-Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties) článku.
 
 ### <a name="sql-dw-source-in-copy-activity"></a>SQL data Warehouse zdroje v aktivitě kopírování
 Pokud se kopírování dat z Azure SQL Data Warehouse, nastavte **typ zdroje** aktivity kopírování na **SqlDWSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -1216,7 +1216,7 @@ Pokud se kopírování dat z Azure SQL Data Warehouse, nastavte **typ zdroje** a
 }
 ```
 
-Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) článku.
 
 ### <a name="sql-dw-sink-in-copy-activity"></a>SQL data Warehouse jímky v aktivitě kopírování
 Pokud kopírujete data do služby Azure SQL Data Warehouse, nastavte **jímky typu** aktivity kopírování na **SqlDWSink**a zadejte následující vlastnosti v **jímky** části:
@@ -1277,12 +1277,12 @@ Pokud kopírujete data do služby Azure SQL Data Warehouse, nastavte **jímky ty
 }
 ```
 
-Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) článku.
 
 ## <a name="azure-search"></a>Azure Search
 
 ### <a name="linked-service"></a>Propojená služba
-K definování Azure Search propojenou službu, nastavte **typ** propojené služby pro **AzureSearch**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování Azure Search propojenou službu, nastavte **typ** propojené služby pro **AzureSearch**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
@@ -1307,7 +1307,7 @@ K definování Azure Search propojenou službu, nastavte **typ** propojené slu�
 Další informace najdete v tématu [konektor Azure Search](data-factory-azure-search-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby Azure Search, nastavte **typ** datové sady na **AzureSearchIndex**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby Azure Search, nastavte **typ** datové sady na **AzureSearchIndex**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
@@ -1394,29 +1394,29 @@ Další informace najdete v tématu [konektor Azure Search](data-factory-azure-s
 Existují dva typy propojené služby: Propojená služba Azure Storage a Azure Storage SAS propojené služby.
 
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-K propojení účtu Azure storage do služby data factory pomocí **klíč účtu**, vytvořte propojenou službu Azure Storage. K definování služby Azure Storage propojenou službu, nastavte **typ** propojené služby pro **AzureStorage**. Potom můžete zadat následující vlastnosti v **typeProperties** části:  
+K propojení účtu Azure storage do služby data factory pomocí **klíč účtu**, vytvořte propojenou službu Azure Storage. K definování služby Azure Storage propojenou službu, nastavte **typ** propojené služby pro **AzureStorage**. Potom můžete zadat následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type |Vlastnost type musí být nastavená na: **AzureStorage** |Ano |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k Azure storage pro vlastnost připojovací řetězec. |Ano |
 
-**Příklad:**  
+**Příklad:**
 
 ```json
-{  
-    "name": "StorageLinkedService",  
-    "properties": {  
-        "type": "AzureStorage",  
-        "typeProperties": {  
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"  
-        }  
-    }  
-}  
+{
+    "name": "StorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+        }
+    }
+}
 ```
 
 #### <a name="azure-storage-sas-linked-service"></a>Propojená služba Azure Storage SAS
-Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí sdílený přístupový podpis (SAS). Poskytuje objekt pro vytváření dat s omezením pomocí specifikátoru/časově omezenou přístup k prostředkům all/konkrétní (objektu blob nebo kontejneru) ve službě storage. Propojte svůj účet úložiště Azure do služby data factory pomocí sdíleného přístupového podpisu, vytvoření Azure Storage SAS propojenou službu. K definování Azure Storage SAS propojenou službu, nastavte **typ** propojené služby pro **AzureStorageSas**. Potom můžete zadat následující vlastnosti v **typeProperties** části:   
+Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí sdílený přístupový podpis (SAS). Poskytuje objekt pro vytváření dat s omezením pomocí specifikátoru/časově omezenou přístup k prostředkům all/konkrétní (objektu blob nebo kontejneru) ve službě storage. Propojte svůj účet úložiště Azure do služby data factory pomocí sdíleného přístupového podpisu, vytvoření Azure Storage SAS propojenou službu. K definování Azure Storage SAS propojenou službu, nastavte **typ** propojené služby pro **AzureStorageSas**. Potom můžete zadat následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -1426,21 +1426,21 @@ Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azu
 **Příklad:**
 
 ```json
-{  
-    "name": "StorageSasLinkedService",  
-    "properties": {  
-        "type": "AzureStorageSas",  
-        "typeProperties": {  
-            "sasUri": "<storageUri>?<sasToken>"   
-        }  
-    }  
-}  
+{
+    "name": "StorageSasLinkedService",
+    "properties": {
+        "type": "AzureStorageSas",
+        "typeProperties": {
+            "sasUri": "<storageUri>?<sasToken>"
+        }
+    }
+}
 ```
 
-Další informace o těchto propojené služby, najdete v části [konektor Azure Table Storage](data-factory-azure-table-connector.md#linked-service-properties) článku. 
+Další informace o těchto propojené služby, najdete v části [konektor Azure Table Storage](data-factory-azure-table-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby Azure Table, nastavte **typ** datové sady na **AzureTable**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby Azure Table, nastavte **typ** datové sady na **AzureTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1473,7 +1473,7 @@ Chcete-li definovat datová sada služby Azure Table, nastavte **typ** datové s
 }
 ```
 
-Další informace o těchto propojené služby, najdete v části [konektor Azure Table Storage](data-factory-azure-table-connector.md#dataset-properties) článku. 
+Další informace o těchto propojené služby, najdete v části [konektor Azure Table Storage](data-factory-azure-table-connector.md#dataset-properties) článku.
 
 ### <a name="azure-table-source-in-copy-activity"></a>Azure Table zdroje v aktivitě kopírování
 Pokud se kopírování dat z Azure Table Storage, nastavte **typ zdroje** aktivity kopírování na **AzureTableSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -1526,7 +1526,7 @@ Pokud se kopírování dat z Azure Table Storage, nastavte **typ zdroje** aktivi
 }
 ```
 
-Další informace o těchto propojené služby, najdete v části [konektor Azure Table Storage](data-factory-azure-table-connector.md#copy-activity-properties) článku. 
+Další informace o těchto propojené služby, najdete v části [konektor Azure Table Storage](data-factory-azure-table-connector.md#copy-activity-properties) článku.
 
 ### <a name="azure-table-sink-in-copy-activity"></a>Tabulka Azure jímky v aktivitě kopírování
 Pokud se kopírování dat do Azure Table Storage, nastavte **jímky typu** aktivity kopírování na **AzureTableSink**a zadejte následující vlastnosti v **jímky** části:
@@ -1583,12 +1583,12 @@ Pokud se kopírování dat do Azure Table Storage, nastavte **jímky typu** akti
     }
 }
 ```
-Další informace o těchto propojené služby, najdete v části [konektor Azure Table Storage](data-factory-azure-table-connector.md#copy-activity-properties) článku. 
+Další informace o těchto propojené služby, najdete v části [konektor Azure Table Storage](data-factory-azure-table-connector.md#copy-activity-properties) článku.
 
 ## <a name="amazon-redshift"></a>Amazon RedShift
 
 ### <a name="linked-service"></a>Propojená služba
-K definování Amazon Redshift propojenou službu, nastavte **typ** propojené služby pro **AmazonRedshift**a zadejte následující vlastnosti v **typeProperties** oddílu :  
+K definování Amazon Redshift propojenou službu, nastavte **typ** propojené služby pro **AmazonRedshift**a zadejte následující vlastnosti v **typeProperties** oddílu :
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1616,10 +1616,10 @@ K definování Amazon Redshift propojenou službu, nastavte **typ** propojené s
 }
 ```
 
-Další informace najdete v tématu [konektor Amazon Redshift](#data-factory-amazon-redshift-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor Amazon Redshift](#data-factory-amazon-redshift-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby Amazon Redshift, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby Amazon Redshift, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1647,7 +1647,7 @@ Chcete-li definovat datová sada služby Amazon Redshift, nastavte **typ** datov
 ```
 Další informace najdete v tématu [konektor Amazon Redshift](#data-factory-amazon-redshift-connector.md#dataset-properties) článku.
 
-### <a name="relational-source-in-copy-activity"></a>Relační zdroj v aktivitě kopírování 
+### <a name="relational-source-in-copy-activity"></a>Relační zdroj v aktivitě kopírování
 Pokud data kopírujete text z Amazon Redshift, nastavte **typ zdroje** aktivity kopírování na **RelationalSource**a zadejte následující vlastnosti v **zdroj** části:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
@@ -1700,7 +1700,7 @@ Další informace najdete v tématu [konektor Amazon Redshift](#data-factory-ama
 ## <a name="ibm-db2"></a>IBM DB2
 
 ### <a name="linked-service"></a>Propojená služba
-K definování IBM DB2 propojenou službu, nastavte **typ** propojené služby pro **OnPremisesDB2**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování IBM DB2 propojenou službu, nastavte **typ** propojené služby pro **OnPremisesDB2**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1737,7 +1737,7 @@ K definování datové sady DB2, nastavte **typ** datové sady na **RelationalTa
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| tableName |Název tabulky instance databáze DB2, propojená služba odkazuje na. TableName je velká a malá písmena. |Ne (Pokud **dotazu** z **RelationalSource** určena) 
+| tableName |Název tabulky instance databáze DB2, propojená služba odkazuje na. TableName je velká a malá písmena. |Ne (Pokud **dotazu** z **RelationalSource** určena)
 
 #### <a name="example"></a>Příklad:
 ```json
@@ -1816,7 +1816,7 @@ Další informace najdete v tématu [konektor IBM DB2](#data-factory-onprem-db2-
 ## <a name="mysql"></a>MySQL
 
 ### <a name="linked-service"></a>Propojená služba
-K definování MySQL propojenou službu, nastavte **typ** propojené služby pro **OnPremisesMySql**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování MySQL propojenou službu, nastavte **typ** propojené služby pro **OnPremisesMySql**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1848,10 +1848,10 @@ K definování MySQL propojenou službu, nastavte **typ** propojené služby pro
 }
 ```
 
-Další informace najdete v tématu [konektor MySQL](data-factory-onprem-mysql-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor MySQL](data-factory-onprem-mysql-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady MySQL, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady MySQL, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1881,7 +1881,7 @@ K definování datové sady MySQL, nastavte **typ** datové sady na **Relational
     }
 }
 ```
-Další informace najdete v tématu [konektor MySQL](data-factory-onprem-mysql-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor MySQL](data-factory-onprem-mysql-connector.md#dataset-properties) článku.
 
 ### <a name="relational-source-in-copy-activity"></a>Relační zdroj v aktivitě kopírování
 Pokud se kopírování dat z databáze MySQL, nastavte **typ zdroje** aktivity kopírování na **RelationalSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -1933,12 +1933,12 @@ Pokud se kopírování dat z databáze MySQL, nastavte **typ zdroje** aktivity k
 }
 ```
 
-Další informace najdete v tématu [konektor MySQL](data-factory-onprem-mysql-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor MySQL](data-factory-onprem-mysql-connector.md#copy-activity-properties) článku.
 
-## <a name="oracle"></a>Oracle 
+## <a name="oracle"></a>Oracle
 
 ### <a name="linked-service"></a>Propojená služba
-K definování Oracle propojenou službu, nastavte **typ** propojené služby pro **OnPremisesOracle**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování Oracle propojenou službu, nastavte **typ** propojené služby pro **OnPremisesOracle**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -1964,7 +1964,7 @@ K definování Oracle propojenou službu, nastavte **typ** propojené služby pr
 Další informace najdete v tématu [konektor Oracle](data-factory-onprem-oracle-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady Oracle, nastavte **typ** datové sady na **OracleTable**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady Oracle, nastavte **typ** datové sady na **OracleTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2107,7 +2107,7 @@ Další informace najdete v tématu [konektor Oracle](data-factory-onprem-oracle
 ## <a name="postgresql"></a>PostgreSQL
 
 ### <a name="linked-service"></a>Propojená služba
-K definování PostgreSQL propojenou službu, nastavte **typ** propojené služby pro **OnPremisesPostgreSql**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování PostgreSQL propojenou službu, nastavte **typ** propojené služby pro **OnPremisesPostgreSql**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2141,7 +2141,7 @@ K definování PostgreSQL propojenou službu, nastavte **typ** propojené služb
 Další informace najdete v tématu [PostgreSQL konektor](data-factory-onprem-postgresql-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady PostgreSQL, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady PostgreSQL, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2226,7 +2226,7 @@ Další informace najdete v tématu [PostgreSQL konektor](data-factory-onprem-po
 
 
 ### <a name="linked-service"></a>Propojená služba
-K definování SAP Business Warehouse (BW) propojenou službu, nastavte **typ** propojené služby pro **SapBw**a zadejte následující vlastnosti v **typeProperties** oddílu :  
+K definování SAP Business Warehouse (BW) propojenou službu, nastavte **typ** propojené služby pro **SapBw**a zadejte následující vlastnosti v **typeProperties** oddílu :
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
@@ -2257,10 +2257,10 @@ encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | ř
 }
 ```
 
-Další informace najdete v tématu [konektoru SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektoru SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady SAP BW, nastavte **typ** datové sady na **RelationalTable**. Nejsou žádné vlastnosti specifické pro typ. podporované pro SAP BW datové sady typu **RelationalTable**.  
+K definování datové sady SAP BW, nastavte **typ** datové sady na **RelationalTable**. Nejsou žádné vlastnosti specifické pro typ. podporované pro SAP BW datové sady typu **RelationalTable**.
 
 #### <a name="example"></a>Příklad:
 
@@ -2279,7 +2279,7 @@ K definování datové sady SAP BW, nastavte **typ** datové sady na **Relationa
     }
 }
 ```
-Další informace najdete v tématu [konektoru SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektoru SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md#dataset-properties) článku.
 
 ### <a name="relational-source-in-copy-activity"></a>Relační zdroj v aktivitě kopírování
 Pokud data kopírujete text z SAP Business Warehouse, nastavte **typ zdroje** aktivity kopírování na **RelationalSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -2331,17 +2331,17 @@ Pokud data kopírujete text z SAP Business Warehouse, nastavte **typ zdroje** ak
 }
 ```
 
-Další informace najdete v tématu [konektoru SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektoru SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md#copy-activity-properties) článku.
 
 ## <a name="sap-hana"></a>SAP HANA
 
 ### <a name="linked-service"></a>Propojená služba
-K definování SAP HANA propojenou službu, nastavte **typ** propojené služby pro **SapHana**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování SAP HANA propojenou službu, nastavte **typ** propojené služby pro **SapHana**a zadejte následující vlastnosti v **typeProperties** části:
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | řetězec | Ano
-authenticationType. | Typ ověřování. | řetězec. "Základní" nebo "Windows" | Ano 
+authenticationType. | Typ ověřování. | řetězec. "Základní" nebo "Windows" | Ano
 uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
 heslo | Heslo pro tohoto uživatele. | řetězec | Ano
 Název brány | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP HANA. | řetězec | Ano
@@ -2366,9 +2366,9 @@ encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | ř
 
 ```
 Další informace najdete v tématu [konektor SAP HANA](data-factory-sap-hana-connector.md#linked-service-properties) článku.
- 
+
 ### <a name="dataset"></a>Datová sada
-K definování datové sady SAP HANA, nastavte **typ** datové sady na **RelationalTable**. Nejsou žádné vlastnosti specifické pro typ. podporované pro SAP HANA datové sady typu **RelationalTable**. 
+K definování datové sady SAP HANA, nastavte **typ** datové sady na **RelationalTable**. Nejsou žádné vlastnosti specifické pro typ. podporované pro SAP HANA datové sady typu **RelationalTable**.
 
 #### <a name="example"></a>Příklad:
 
@@ -2387,7 +2387,7 @@ K definování datové sady SAP HANA, nastavte **typ** datové sady na **Relatio
     }
 }
 ```
-Další informace najdete v tématu [konektor SAP HANA](data-factory-sap-hana-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor SAP HANA](data-factory-sap-hana-connector.md#dataset-properties) článku.
 
 ### <a name="relational-source-in-copy-activity"></a>Relační zdroj v aktivitě kopírování
 Pokud se kopírování dat z úložiště dat SAP HANA, nastavte **typ zdroje** aktivity kopírování na **RelationalSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -2458,7 +2458,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 
-Můžete k šifrování přihlašovacích údajů a **New-AzureRmDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):  
+Můžete k šifrování přihlašovacích údajů a **New-AzureRmDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):
 
 ```json
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -2498,10 +2498,10 @@ Pokud uživatelské jméno a heslo nejsou zadány, budou brána používá zosob
 }
 ```
 
-Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserver-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserver-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady SQL Server, nastavte **typ** datové sady na **SqlServerTable**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady SQL Server, nastavte **typ** datové sady na **SqlServerTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2533,7 +2533,7 @@ K definování datové sady SQL Server, nastavte **typ** datové sady na **SqlSe
 }
 ```
 
-Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserver-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserver-connector.md#dataset-properties) článku.
 
 ### <a name="sql-source-in-copy-activity"></a>Zdroje SQL v aktivitě kopírování
 Pokud se kopírování dat z databáze serveru SQL Server, nastavte **typ zdroje** aktivity kopírování na **SqlSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -2601,7 +2601,7 @@ V tomto příkladu **sqlReaderQuery** je určená pro SqlSource. Tento dotaz spu
 
 Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce definované v části struktura slouží k sestavení dotazu select pro spuštění na databázi SQL serveru. Pokud struktura nemá žádné definice datové sady, vyberou se všechny sloupce z tabulky.
 
-Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserver-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserver-connector.md#copy-activity-properties) článku.
 
 ### <a name="sql-sink-in-copy-activity"></a>SQL jímky v aktivitě kopírování
 Pokud se kopírování dat do databáze SQL serveru, nastavte **jímky typu** aktivity kopírování na **SqlSink**a zadejte následující vlastnosti v **jímky** části:
@@ -2660,12 +2660,12 @@ Kanálu obsahujícího aktivitu kopírování, kterou Pokud chcete použít tyto
 }
 ```
 
-Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserver-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserver-connector.md#copy-activity-properties) článku.
 
 ## <a name="sybase"></a>Sybase
 
 ### <a name="linked-service"></a>Propojená služba
-K definování Sybase propojenou službu, nastavte **typ** propojené služby pro **OnPremisesSybase**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování Sybase propojenou službu, nastavte **typ** propojené služby pro **OnPremisesSybase**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2696,10 +2696,10 @@ K definování Sybase propojenou službu, nastavte **typ** propojené služby pr
 }
 ```
 
-Další informace najdete v tématu [Sybase konektor](data-factory-onprem-sybase-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [Sybase konektor](data-factory-onprem-sybase-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady Sybase, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady Sybase, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2730,7 +2730,7 @@ K definování datové sady Sybase, nastavte **typ** datové sady na **Relationa
 }
 ```
 
-Další informace najdete v tématu [Sybase konektor](data-factory-onprem-sybase-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [Sybase konektor](data-factory-onprem-sybase-connector.md#dataset-properties) článku.
 
 ### <a name="relational-source-in-copy-activity"></a>Relační zdroj v aktivitě kopírování
 Pokud se kopírování dat z databáze Sybase, nastavte **typ zdroje** aktivity kopírování na **RelationalSource**a zadejte následující vlastnosti v **zdroj** oddílu :
@@ -2785,7 +2785,7 @@ Další informace najdete v tématu [Sybase konektor](data-factory-onprem-sybase
 ## <a name="teradata"></a>Teradata
 
 ### <a name="linked-service"></a>Propojená služba
-K definování Teradata propojenou službu, nastavte **typ** propojené služby pro **OnPremisesTeradata**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování Teradata propojenou službu, nastavte **typ** propojené služby pro **OnPremisesTeradata**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2815,7 +2815,7 @@ K definování Teradata propojenou službu, nastavte **typ** propojené služby 
 Další informace najdete v tématu [Teradata konektor](data-factory-onprem-teradata-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady objektů Teradata Blob, nastavte **typ** datové sady na **RelationalTable**. V současné době nejsou žádné vlastnosti typu pro datovou sadu Teradata nepodporuje. 
+K definování datové sady objektů Teradata Blob, nastavte **typ** datové sady na **RelationalTable**. V současné době nejsou žádné vlastnosti typu pro datovou sadu Teradata nepodporuje.
 
 #### <a name="example"></a>Příklad:
 ```json
@@ -2899,7 +2899,7 @@ Další informace najdete v tématu [Teradata konektor](data-factory-onprem-tera
 
 
 ### <a name="linked-service"></a>Propojená služba
-Chcete-li definovat Cassandra propojené služby, nastavte **typ** propojené služby pro **OnPremisesCassandra**a zadejte následující vlastnosti v **typeProperties** části:  
+Chcete-li definovat Cassandra propojené služby, nastavte **typ** propojené služby pro **OnPremisesCassandra**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2930,10 +2930,10 @@ Chcete-li definovat Cassandra propojené služby, nastavte **typ** propojené sl
 }
 ```
 
-Další informace najdete v tématu [Cassandra konektor](data-factory-onprem-cassandra-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [Cassandra konektor](data-factory-onprem-cassandra-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady Cassandra, nastavte **typ** datové sady na **CassandraTable**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady Cassandra, nastavte **typ** datové sady na **CassandraTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -2968,7 +2968,7 @@ K definování datové sady Cassandra, nastavte **typ** datové sady na **Cassan
 }
 ```
 
-Další informace najdete v tématu [Cassandra konektor](data-factory-onprem-cassandra-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [Cassandra konektor](data-factory-onprem-cassandra-connector.md#dataset-properties) článku.
 
 ### <a name="cassandra-source-in-copy-activity"></a>Zdroj Cassandra v aktivitě kopírování
 Pokud se kopírování dat z Cassandry, nastavte **typ zdroje** aktivity kopírování na **CassandraSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -2979,7 +2979,7 @@ Pokud se kopírování dat z Cassandry, nastavte **typ zdroje** aktivity kopíro
 | consistencyLevel |Úrovně konzistentnosti Určuje, kolik repliky musí odpovědět na požadavek čtení před vrácením data do klientské aplikace. Cassandra ověří zadaný počet replik pro data splňují požadavek na čtení. |JEDNA, DVĚ, TŘI, KVORA, VŠECHNY, LOCAL_QUORUM EACH_QUORUM, LOCAL_ONE. Zobrazit [konfigurace konzistentnosti dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) podrobnosti. |Ne. Výchozí hodnota je 1. |
 
 #### <a name="example"></a>Příklad:
-  
+
 ```json
 {
     "name": "SamplePipeline",
@@ -3026,7 +3026,7 @@ Další informace najdete v tématu [Cassandra konektor](data-factory-onprem-cas
 ## <a name="mongodb"></a>MongoDB
 
 ### <a name="linked-service"></a>Propojená služba
-K definování MongoDB propojenou službu, nastavte **typ** propojené služby pro **OnPremisesMongoDB**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování MongoDB propojenou službu, nastavte **typ** propojené služby pro **OnPremisesMongoDB**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -3064,7 +3064,7 @@ K definování MongoDB propojenou službu, nastavte **typ** propojené služby p
 Další informace najdete v tématu [článku konektoru MongoDB](data-factory-on-premises-mongodb-connector.md#linked-service-properties)
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady MongoDB, nastavte **typ** datové sady na **MongoDbCollection**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady MongoDB, nastavte **typ** datové sady na **MongoDbCollection**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -3147,7 +3147,7 @@ Další informace najdete v tématu [článku konektoru MongoDB](data-factory-on
 
 
 ### <a name="linked-service"></a>Propojená služba
-K definování Amazon S3 propojenou službu, nastavte **typ** propojené služby pro **typu AwsAccessKey**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování Amazon S3 propojenou službu, nastavte **typ** propojené služby pro **typu AwsAccessKey**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
@@ -3171,7 +3171,7 @@ K definování Amazon S3 propojenou službu, nastavte **typ** propojené služby
 Další informace najdete v tématu [článku konektor Amazon S3](data-factory-amazon-simple-storage-service-connector.md#linked-service-properties).
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby Amazon S3, nastavte **typ** datové sady na **AmazonS3**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby Amazon S3, nastavte **typ** datové sady na **AmazonS3**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
@@ -3322,7 +3322,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 | encryptedCredential |Zadejte zašifrované přihlašovací údaje, které můžete získat spuštěním rutiny New-AzureRmDataFactoryEncryptValue. |Ne (když se rozhodnete zadat ID uživatele a heslo jako prostý text) |
 | Název brány |Určuje název brány, které služby Data Factory měla použít pro připojení k serveru v místním souboru. |Ano |
 
-#### <a name="sample-folder-path-definitions"></a>Ukázka složky cesta definice 
+#### <a name="sample-folder-path-definitions"></a>Ukázka složky cesta definice
 | Scénář | Hostování v definici propojené služby | folderPath v definici datové sady |
 | --- | --- | --- |
 | Místní složka na počítači brány pro správu dat: <br/><br/>Příklady: D:\\ \* nebo D:\folder\subfolder\\* |D:\\ \\ (pro Data Management Gateway 2.0 a novější) <br/><br/> místního hostitele (pro starší verze než Data Management Gateway 2.0) |. \\ \\ nebo složky\\\\podsložku (pro Data Management Gateway 2.0 a novější) <br/><br/>D:\\ \\ nebo D:\\\\složky\\\\podsložku (pro brány verze nižší než 2.0) |
@@ -3365,7 +3365,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 Další informace najdete v tématu [článku konektoru systému souborů](data-factory-onprem-file-system-connector.md#linked-service-properties).
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady systému souborů, nastavte **typ** datové sady na **sdílení souborů**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady systému souborů, nastavte **typ** datové sady na **sdílení souborů**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -3544,7 +3544,7 @@ Další informace najdete v tématu [článku konektoru systému souborů](data-
 ## <a name="ftp"></a>FTP
 
 ### <a name="linked-service"></a>Propojená služba
-K definování FTP propojenou službu, nastavte **typ** propojené služby pro **Server_ftp**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování FTP propojenou službu, nastavte **typ** propojené služby pro **Server_ftp**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
@@ -3599,7 +3599,7 @@ K definování FTP propojenou službu, nastavte **typ** propojené služby pro *
         "type": "FtpServer",
         "typeProperties": {
             "host": "myftpserver.com",
-            "authenticationType": "Basic",    
+            "authenticationType": "Basic",
             "username": "Admin",
             "password": "123456",
             "port": "21",
@@ -3630,12 +3630,12 @@ K definování FTP propojenou službu, nastavte **typ** propojené služby pro *
 Další informace najdete v tématu [konektor FTP](data-factory-ftp-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby FTP, nastavte **typ** datové sady na **sdílení souborů**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby FTP, nastavte **typ** datové sady na **sdílení souborů**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| folderPath |Podřízená cesta ke složce. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano 
-| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
+| folderPath |Podřízená cesta ke složce. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano
+| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt) |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklady 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter platí pro vstupní datovou sadu sdílení souborů. Tato vlastnost není podporována s HDFS. |Ne |
 | partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časových řad. Například folderPath s parametry pro každou hodinu data. |Ne |
 | formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
@@ -3722,7 +3722,7 @@ Další informace najdete v tématu [konektor FTP](data-factory-ftp-connector.md
 ## <a name="hdfs"></a>HDFS
 
 ### <a name="linked-service"></a>Propojená služba
-K definování HDFS propojenou službu, nastavte **typ** propojené služby pro **Hdfs**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování HDFS propojenou službu, nastavte **typ** propojené služby pro **Hdfs**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -3769,10 +3769,10 @@ K definování HDFS propojenou službu, nastavte **typ** propojené služby pro 
 }
 ```
 
-Další informace najdete v tématu [HDFS konektor](#data-factory-hdfs-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [HDFS konektor](#data-factory-hdfs-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady HDFS, nastavte **typ** datové sady na **sdílení souborů**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady HDFS, nastavte **typ** datové sady na **sdílení souborů**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -3805,7 +3805,7 @@ K definování datové sady HDFS, nastavte **typ** datové sady na **sdílení s
 }
 ```
 
-Další informace najdete v tématu [HDFS konektor](#data-factory-hdfs-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [HDFS konektor](#data-factory-hdfs-connector.md#dataset-properties) článku.
 
 ### <a name="file-system-source-in-copy-activity"></a>Zdroj systému souborů v aktivitě kopírování
 Pokud se kopírují data z HDFS, nastavte **typ zdroje** aktivity kopírování na **FileSystemSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -3858,7 +3858,7 @@ Další informace najdete v tématu [HDFS konektor](#data-factory-hdfs-connector
 
 
 ### <a name="linked-service"></a>Propojená služba
-K definování protokolu SFTP propojenou službu, nastavte **typ** propojené služby pro **Sftp**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování protokolu SFTP propojenou službu, nastavte **typ** propojené služby pro **Sftp**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- | --- |
@@ -3969,15 +3969,15 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 }
 ```
 
-Další informace najdete v tématu [konektor SFTP](data-factory-sftp-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor SFTP](data-factory-sftp-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady SFTP, nastavte **typ** datové sady na **sdílení souborů**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady SFTP, nastavte **typ** datové sady na **sdílení souborů**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | folderPath |Podřízená cesta ke složce. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano |
-| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
+| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt) |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklady 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter platí pro vstupní datovou sadu sdílení souborů. Tato vlastnost není podporována s HDFS. |Ne |
 | partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časových řad. Například folderPath s parametry pro každou hodinu data. |Ne |
 | formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
@@ -4008,7 +4008,7 @@ K definování datové sady SFTP, nastavte **typ** datové sady na **sdílení s
 }
 ```
 
-Další informace najdete v tématu [konektor SFTP](data-factory-sftp-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor SFTP](data-factory-sftp-connector.md#dataset-properties) článku.
 
 ### <a name="file-system-source-in-copy-activity"></a>Zdroj systému souborů v aktivitě kopírování
 Pokud se kopírování dat z protokolu SFTP zdroje, nastavte **typ zdroje** aktivity kopírování na **FileSystemSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -4065,7 +4065,7 @@ Další informace najdete v tématu [konektor SFTP](data-factory-sftp-connector.
 ## <a name="http"></a>HTTP
 
 ### <a name="linked-service"></a>Propojená služba
-K definování HTTP propojenou službu, nastavte **typ** propojené služby pro **Http**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování HTTP propojenou službu, nastavte **typ** propojené služby pro **Http**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -4113,7 +4113,7 @@ Pokud používáte `certThumbprint` pro ověřování a certifikát, který je n
 1. Spusťte konzolu Microsoft Management Console (MMC). Přidat **certifikáty** modul snap-in, který se zaměřuje **místního počítače**.
 2. Rozbalte **certifikáty**, **osobní**a klikněte na tlačítko **certifikáty**.
 3. Klikněte pravým tlačítkem na certifikát z osobního úložiště a vyberte **všechny úkoly**->**spravovat soukromé klíče...**
-3. Na **zabezpečení** kartu, přidejte uživatelský účet, pod kterým je spuštěna služba hostitele brány správy dat s přístupem pro čtení k certifikátu.  
+3. Na **zabezpečení** kartu, přidejte uživatelský účet, pod kterým je spuštěna služba hostitele brány správy dat s přístupem pro čtení k certifikátu.
 
 **Příklad: použití klientského certifikátu:** Tato propojená služba propojuje svou datovou továrnu místní webový server HTTP. Klientský certifikát, který je nainstalován na počítači s nainstalovanou bránu správy dat využívá.
 
@@ -4153,7 +4153,7 @@ Tato propojená služba propojuje svou datovou továrnu místní webový server 
 Další informace najdete v tématu [konektor HTTP](data-factory-http-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada HTTP, nastavte **typ** datové sady na **Http**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada HTTP, nastavte **typ** datové sady na **Http**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -4263,7 +4263,7 @@ Další informace najdete v tématu [konektor HTTP](data-factory-http-connector.
 ## <a name="odata"></a>OData
 
 ### <a name="linked-service"></a>Propojená služba
-K definování OData propojenou službu, nastavte **typ** propojené služby pro **OData**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování OData propojenou službu, nastavte **typ** propojené služby pro **OData**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -4343,7 +4343,7 @@ K definování OData propojenou službu, nastavte **typ** propojené služby pro
 Další informace najdete v tématu [konektor OData](data-factory-odata-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada služby OData, nastavte **typ** datové sady na **ODataResource**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada služby OData, nastavte **typ** datové sady na **ODataResource**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -4433,12 +4433,12 @@ Další informace najdete v tématu [konektor OData](data-factory-odata-connecto
 
 
 ### <a name="linked-service"></a>Propojená služba
-K definování ODBC propojenou službu, nastavte **typ** propojené služby pro **OnPremisesOdbc**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování ODBC propojenou službu, nastavte **typ** propojené služby pro **OnPremisesOdbc**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | připojovací řetězec |– Přístup k pověření část připojovací řetězec a případně zašifrované přihlašovací údaje. Příklady v následujících částech. |Ano |
-| pověření |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: "Uid =<user ID>; PWD =<password>; RefreshToken =<secret refresh token>; ". |Ne |
+| pověření |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Ne |
 | authenticationType. |Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC. Možné hodnoty: Anonymní a Basic. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
@@ -4462,7 +4462,7 @@ K definování ODBC propojenou službu, nastavte **typ** propojené služby pro 
 }
 ```
 #### <a name="example---using-basic-authentication-with-encrypted-credentials"></a>Příklad: použití základního ověřování se zašifrovanými přihlašovacími údaji
-Můžete šifrovat přihlašovací údaje pomocí [New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) rutiny (1.0 verzi prostředí Azure PowerShell) nebo [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0.9 nebo starší verzi nástroje Azure Prostředí PowerShell).  
+Můžete šifrovat přihlašovací údaje pomocí [New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) rutiny (1.0 verzi prostředí Azure PowerShell) nebo [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0.9 nebo starší verzi nástroje Azure Prostředí PowerShell).
 
 ```json
 {
@@ -4495,10 +4495,10 @@ Můžete šifrovat přihlašovací údaje pomocí [New-AzureRMDataFactoryEncrypt
 }
 ```
 
-Další informace najdete v tématu [konektor ODBC](data-factory-odbc-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor ODBC](data-factory-odbc-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady rozhraní ODBC, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady rozhraní ODBC, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -4530,7 +4530,7 @@ K definování datové sady rozhraní ODBC, nastavte **typ** datové sady na **R
 }
 ```
 
-Další informace najdete v tématu [konektor ODBC](data-factory-odbc-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor ODBC](data-factory-odbc-connector.md#dataset-properties) článku.
 
 ### <a name="relational-source-in-copy-activity"></a>Relační zdroj v aktivitě kopírování
 Pokud se kopírování dat z úložiště dat rozhraní ODBC, nastavte **typ zdroje** aktivity kopírování na **RelationalSource**a zadejte následující vlastnosti v **zdroj** oddílu :
@@ -4579,7 +4579,7 @@ Pokud se kopírování dat z úložiště dat rozhraní ODBC, nastavte **typ zdr
         "end": "2016-06-01T19:00:00"
     }
 }
-``` 
+```
 
 Další informace najdete v tématu [konektor ODBC](data-factory-odbc-connector.md#copy-activity-properties) článku.
 
@@ -4587,7 +4587,7 @@ Další informace najdete v tématu [konektor ODBC](data-factory-odbc-connector.
 
 
 ### <a name="linked-service"></a>Propojená služba
-K definování Salesforce propojenou službu, nastavte **typ** propojené služby pro **Salesforce**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování Salesforce propojenou službu, nastavte **typ** propojené služby pro **Salesforce**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -4612,10 +4612,10 @@ K definování Salesforce propojenou službu, nastavte **typ** propojené služb
 }
 ```
 
-Další informace najdete v tématu [konektor Salesforce](data-factory-salesforce-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor Salesforce](data-factory-salesforce-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datová sada Salesforce, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části: 
+Chcete-li definovat datová sada Salesforce, nastavte **typ** datové sady na **RelationalTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -4648,7 +4648,7 @@ Chcete-li definovat datová sada Salesforce, nastavte **typ** datové sady na **
 }
 ```
 
-Další informace najdete v tématu [konektor Salesforce](data-factory-salesforce-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [konektor Salesforce](data-factory-salesforce-connector.md#dataset-properties) článku.
 
 ### <a name="relational-source-in-copy-activity"></a>Relační zdroj v aktivitě kopírování
 Pokud se kopírování dat ze služby Salesforce, nastavte **typ zdroje** aktivity kopírování na **RelationalSource**a zadejte následující vlastnosti v **zdroj** části:
@@ -4657,7 +4657,7 @@ Pokud se kopírování dat ze služby Salesforce, nastavte **typ zdroje** aktivi
 | --- | --- | --- | --- |
 | query |Použijte vlastní dotaz číst data. |Dotaz SQL 92 nebo [Salesforce objektu dotazu jazyka (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) dotazu. Například `select * from MyTable__c`. |Ne (Pokud **tableName** z **datovou sadu** určena) |
 
-#### <a name="example"></a>Příklad:  
+#### <a name="example"></a>Příklad:
 
 
 
@@ -4705,18 +4705,18 @@ Pokud se kopírování dat ze služby Salesforce, nastavte **typ zdroje** aktivi
 > [!IMPORTANT]
 > Část "__c" název rozhraní API je potřeba pro všechny vlastní objekt.
 
-Další informace najdete v tématu [konektor Salesforce](data-factory-salesforce-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [konektor Salesforce](data-factory-salesforce-connector.md#copy-activity-properties) článku.
 
-## <a name="web-data"></a>Data webů 
+## <a name="web-data"></a>Data webů
 
 ### <a name="linked-service"></a>Propojená služba
-K definování webové propojené služby, nastavte **typ** propojené služby pro **webové**a zadejte následující vlastnosti v **typeProperties** části:  
+K definování webové propojené služby, nastavte **typ** propojené služby pro **webové**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | URL |Adresa URL k webovému zdroji |Ano |
 | authenticationType. |Anonymní. |Ano |
- 
+
 
 #### <a name="example"></a>Příklad:
 
@@ -4734,10 +4734,10 @@ K definování webové propojené služby, nastavte **typ** propojené služby p
 }
 ```
 
-Další informace najdete v tématu [Webová tabulka konektor](data-factory-web-table-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [Webová tabulka konektor](data-factory-web-table-connector.md#linked-service-properties) článku.
 
 ### <a name="dataset"></a>Datová sada
-K definování datové sady Web, nastavte **typ** datové sady na **WebTable**a zadejte následující vlastnosti v **typeProperties** části: 
+K definování datové sady Web, nastavte **typ** datové sady na **WebTable**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -4766,7 +4766,7 @@ K definování datové sady Web, nastavte **typ** datové sady na **WebTable**a 
 }
 ```
 
-Další informace najdete v tématu [Webová tabulka konektor](data-factory-web-table-connector.md#dataset-properties) článku. 
+Další informace najdete v tématu [Webová tabulka konektor](data-factory-web-table-connector.md#dataset-properties) článku.
 
 ### <a name="web-source-in-copy-activity"></a>Webový zdroj v aktivitě kopírování
 Pokud data kopírujete text z Webová tabulka, nastavte **typ zdroje** aktivity kopírování na **WebSource**. Pokud v současné době zdroje v aktivitě kopírování je typu **WebSource**, jsou podporovány žádné další vlastnosti.
@@ -4813,10 +4813,10 @@ Pokud data kopírujete text z Webová tabulka, nastavte **typ zdroje** aktivity 
 }
 ```
 
-Další informace najdete v tématu [Webová tabulka konektor](data-factory-web-table-connector.md#copy-activity-properties) článku. 
+Další informace najdete v tématu [Webová tabulka konektor](data-factory-web-table-connector.md#copy-activity-properties) článku.
 
 ## <a name="compute-environments"></a>VÝPOČETNÍ PROSTŘEDÍ
-Následující tabulka uvádí podporované objektu pro vytváření dat a aktivity transformace, které v nich dají spustit výpočetní prostředí. Klikněte na odkaz pro výpočetní prostředky, které vás zajímají zobrazíte schémat JSON pro propojenou službu, která ho propojit s datovou továrnou. 
+Následující tabulka uvádí podporované objektu pro vytváření dat a aktivity transformace, které v nich dají spustit výpočetní prostředí. Klikněte na odkaz pro výpočetní prostředky, které vás zajímají zobrazíte schémat JSON pro propojenou službu, která ho propojit s datovou továrnou.
 
 | Výpočetní prostředí | Aktivity |
 | --- | --- |
@@ -4827,9 +4827,9 @@ Následující tabulka uvádí podporované objektu pro vytváření dat a aktiv
 | [Azure SQL Database](#azure-sql-database-1), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-1), [systému SQL Server](#sql-server-1) |[Uložená procedura](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Cluster Azure HDInsight na vyžádání
-Služba Azure Data Factory můžete automaticky vytvořit Windows/linuxem clusteru HDInsight na vyžádání zpracovávat data. Vytvoření clusteru ve stejné oblasti jako účet úložiště (vlastnost linkedServiceName v kódu JSON) přidružené ke clusteru. Můžete spustit následující aktivity transformace na tuto propojenou službu: [vlastní aktivita .NET](#net-custom-activity), [aktivitu Hivu](#hdinsight-hive-activity), [aktivita Pig](#hdinsight-pig-activity), [MapReduce aktivita](#hdinsight-mapreduce-activity), [Hadoop, streamování aktivity](#hdinsight-streaming-activityd), [aktivitu Spark](#hdinsight-spark-activity). 
+Služba Azure Data Factory můžete automaticky vytvořit Windows/linuxem clusteru HDInsight na vyžádání zpracovávat data. Vytvoření clusteru ve stejné oblasti jako účet úložiště (vlastnost linkedServiceName v kódu JSON) přidružené ke clusteru. Můžete spustit následující aktivity transformace na tuto propojenou službu: [vlastní aktivita .NET](#net-custom-activity), [aktivitu Hivu](#hdinsight-hive-activity), [aktivita Pig](#hdinsight-pig-activity), [MapReduce aktivita](#hdinsight-mapreduce-activity), [Hadoop, streamování aktivity](#hdinsight-streaming-activityd), [aktivitu Spark](#hdinsight-spark-activity).
 
-### <a name="linked-service"></a>Propojená služba 
+### <a name="linked-service"></a>Propojená služba
 Následující tabulka obsahuje popis vlastností použitých v definici JSON pro Azure HDInsight, propojené služby na vyžádání.
 
 | Vlastnost | Popis | Požaduje se |
@@ -4844,7 +4844,7 @@ Následující tabulka obsahuje popis vlastností použitých v definici JSON pr
 | hcatalogLinkedServiceName |Název serveru Azure SQL propojenou službu, které odkazují na databázi HCatalog. Cluster HDInsight na vyžádání se vytvoří s využitím Azure SQL database jako metastore. |Ne |
 
 ### <a name="json-example"></a>Příklad JSON
-Následující kód JSON určuje HDInsight propojené služby na vyžádání založené na Linuxu. Služba Data Factory automaticky vytvoří **založených na Linuxu** clusteru HDInsight při zpracování datový řez. 
+Následující kód JSON určuje HDInsight propojené služby na vyžádání založené na Linuxu. Služba Data Factory automaticky vytvoří **založených na Linuxu** clusteru HDInsight při zpracování datový řez.
 
 ```json
 {
@@ -4862,10 +4862,10 @@ Následující kód JSON určuje HDInsight propojené služby na vyžádání za
 }
 ```
 
-Další informace najdete v tématu [propojené služby Compute](data-factory-compute-linked-services.md) článku. 
+Další informace najdete v tématu [propojené služby Compute](data-factory-compute-linked-services.md) článku.
 
 ## <a name="existing-azure-hdinsight-cluster"></a>Existující cluster Azure HDInsight
-Můžete vytvořit služby Azure HDInsight propojené můžete zaregistrovat vlastní cluster HDInsight s Data Factory. Můžete spustit následující aktivity transformace dat v této propojené službě: [vlastní aktivita .NET](#net-custom-activity), [aktivitu Hivu](#hdinsight-hive-activity), [aktivita Pig](#hdinsight-pig-activity), [ Aktivita MapReduce](#hdinsight-mapreduce-activity), [Hadoop, streamování aktivity](#hdinsight-streaming-activityd), [aktivitu Spark](#hdinsight-spark-activity). 
+Můžete vytvořit služby Azure HDInsight propojené můžete zaregistrovat vlastní cluster HDInsight s Data Factory. Můžete spustit následující aktivity transformace dat v této propojené službě: [vlastní aktivita .NET](#net-custom-activity), [aktivitu Hivu](#hdinsight-hive-activity), [aktivita Pig](#hdinsight-pig-activity), [ Aktivita MapReduce](#hdinsight-mapreduce-activity), [Hadoop, streamování aktivity](#hdinsight-streaming-activityd), [aktivitu Spark](#hdinsight-spark-activity).
 
 ### <a name="linked-service"></a>Propojená služba
 Následující tabulka obsahuje popis vlastností použitých v definici Azure JSON HDInsight Azure propojené služby.
@@ -4878,7 +4878,7 @@ Následující tabulka obsahuje popis vlastností použitých v definici Azure J
 | heslo |Zadejte heslo pro uživatelský účet. |Ano |
 | linkedServiceName | Název propojenou službu Azure Storage, který odkazuje na úložiště objektů blob v Azure používá HDInsight cluster. <p>V současné době nelze zadat, že že Azure Data Lake Store propojené služby pro tuto vlastnost. Získávají přístup k datům v Azure Data Lake Store pomocí skriptů Hive a Pig Pokud HDInsight cluster má přístup k Data Lake Store. </p>  |Ano |
 
-Verze podporováno clusterů HDInsight najdete v tématu [podporované verze HDInsight](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory). 
+Verze podporováno clusterů HDInsight najdete v tématu [podporované verze HDInsight](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory).
 
 #### <a name="json-example"></a>Příklad JSON
 
@@ -4898,7 +4898,7 @@ Verze podporováno clusterů HDInsight najdete v tématu [podporované verze HDI
 ```
 
 ## <a name="azure-batch"></a>Azure Batch
-Můžete vytvořit služby propojené služby Azure Batch můžete zaregistrovat fondu služby Batch virtuálních počítačů (VM) pomocí služby data factory. Můžete spouštět vlastní aktivity .NET pomocí Azure HDInsight nebo Azure Batch. Můžete spustit [vlastní aktivita .NET](#net-custom-activity) v této propojené službě. 
+Můžete vytvořit služby propojené služby Azure Batch můžete zaregistrovat fondu služby Batch virtuálních počítačů (VM) pomocí služby data factory. Můžete spouštět vlastní aktivity .NET pomocí Azure HDInsight nebo Azure Batch. Můžete spustit [vlastní aktivita .NET](#net-custom-activity) v této propojené službě.
 
 ### <a name="linked-service"></a>Propojená služba
 Následující tabulka obsahuje popis vlastností použitých v definici Azure JSON služby propojené služby Azure Batch.
@@ -4930,7 +4930,7 @@ Následující tabulka obsahuje popis vlastností použitých v definici Azure J
 ```
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
-Vytvoření služby Azure Machine Learning propojený zaregistrovat Machine Learning dávkového vyhodnocování koncového bodu pomocí služby data factory. Aktivity transformace dat dvě, které lze spustit na tuto propojenou službu: [Aktivita provedení dávky služby Machine Learning](#machine-learning-batch-execution-activity), [aktivita aktualizace prostředku služby Machine Learning](#machine-learning-update-resource-activity). 
+Vytvoření služby Azure Machine Learning propojený zaregistrovat Machine Learning dávkového vyhodnocování koncového bodu pomocí služby data factory. Aktivity transformace dat dvě, které lze spustit na tuto propojenou službu: [Aktivita provedení dávky služby Machine Learning](#machine-learning-batch-execution-activity), [aktivita aktualizace prostředku služby Machine Learning](#machine-learning-update-resource-activity).
 
 ### <a name="linked-service"></a>Propojená služba
 Následující tabulka obsahuje popis vlastností použitých v definici Azure JSON ze služby Azure Machine Learning propojený.
@@ -4961,7 +4961,7 @@ Vytváření **Azure Data Lake Analytics** propojená služba Azure Data Lake An
 
 ### <a name="linked-service"></a>Propojená služba
 
-Následující tabulka obsahuje popis vlastností použitých v definici JSON služby Azure Data Lake Analytics propojený. 
+Následující tabulka obsahuje popis vlastností použitých v definici JSON služby Azure Data Lake Analytics propojený.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -4995,10 +4995,10 @@ Následující příklad uvádí definici JSON pro Azure Data Lake Analytics pro
 ```
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
-Vytvoření propojené služby Azure SQL a použít je s [aktivity uložené procedury](#stored-procedure-activity) vyvolat uloženou proceduru z kanálu Data Factory. 
+Vytvoření propojené služby Azure SQL a použít je s [aktivity uložené procedury](#stored-procedure-activity) vyvolat uloženou proceduru z kanálu Data Factory.
 
 ### <a name="linked-service"></a>Propojená služba
-Definovat službu Azure SQL Database propojenou službu, nastavte **typ** propojené služby pro **AzureSqlDatabase**a zadejte následující vlastnosti v **typeProperties** části:  
+Definovat službu Azure SQL Database propojenou službu, nastavte **typ** propojené služby pro **AzureSqlDatabase**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -5021,10 +5021,10 @@ Definovat službu Azure SQL Database propojenou službu, nastavte **typ** propoj
 Zobrazit [konektor služby Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties) , kde najdete podrobnosti o této propojené službě.
 
 ## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Vytvoření služby Azure SQL Data Warehouse propojené a použít je s [aktivity uložené procedury](data-factory-stored-proc-activity.md) vyvolat uloženou proceduru z kanálu Data Factory. 
+Vytvoření služby Azure SQL Data Warehouse propojené a použít je s [aktivity uložené procedury](data-factory-stored-proc-activity.md) vyvolat uloženou proceduru z kanálu Data Factory.
 
 ### <a name="linked-service"></a>Propojená služba
-Definovat službu Azure SQL Data Warehouse propojenou službu, nastavte **typ** propojené služby pro **AzureSqlDW**a zadejte následující vlastnosti v **typeProperties** části:  
+Definovat službu Azure SQL Data Warehouse propojenou službu, nastavte **typ** propojené služby pro **AzureSqlDW**a zadejte následující vlastnosti v **typeProperties** části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -5044,10 +5044,10 @@ Definovat službu Azure SQL Data Warehouse propojenou službu, nastavte **typ** 
 }
 ```
 
-Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) článku. 
+Další informace najdete v tématu [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) článku.
 
-## <a name="sql-server"></a>SQL Server 
-Vytvoření propojené služby SQL serveru a použít je s [aktivity uložené procedury](data-factory-stored-proc-activity.md) vyvolat uloženou proceduru z kanálu Data Factory. 
+## <a name="sql-server"></a>SQL Server
+Vytvoření propojené služby SQL serveru a použít je s [aktivity uložené procedury](data-factory-stored-proc-activity.md) vyvolat uloženou proceduru z kanálu Data Factory.
 
 ### <a name="linked-service"></a>Propojená služba
 Vytvoření propojené služby typu **OnPremisesSqlServer** propojení k místní databázi SQL serveru do služby data factory. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro místní propojené služby SQL serveru.
@@ -5062,7 +5062,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 
-Můžete k šifrování přihlašovacích údajů a **New-AzureRmDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):  
+Můžete k šifrování přihlašovacích údajů a **New-AzureRmDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -5108,18 +5108,18 @@ Další informace najdete v tématu [konektor SQL serveru](data-factory-sqlserve
 
 Aktivita | Popis
 -------- | -----------
-[Aktivita HDInsight Hive](#hdinsight-hive-activity) | Aktivita HDInsight Hive v kanálu služby Data Factory provádí dotazy Hive sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. 
+[Aktivita HDInsight Hive](#hdinsight-hive-activity) | Aktivita HDInsight Hive v kanálu služby Data Factory provádí dotazy Hive sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání.
 [Aktivita Pig s HDInsight](#hdinsight-pig-activity) | Aktivita Pig s HDInsight v kanálech Data Factory spustí dotazy Pig sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání.
 [Aktivita MapReduce služby HDInsight](#hdinsight-mapreduce-activity) | Aktivita HDInsight MapReduce v kanálech Data Factory provádí programů MapReduce sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání.
 [Aktivita Streamování služby HDInsight](#hdinsight-streaming-activity) | Aktivita HDInsight streamování v kanálech Data Factory provádí streamování Hadoop programy sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání.
-[Aktivita Sparku služby HDInsight](#hdinsight-spark-activity) | HDInsight Spark aktivitu v kanálu služby Data Factory provádí programů Spark v clusteru HDInsight. 
-[Aktivita Provedení dávky služby Machine Learning](#machine-learning-batch-execution-activity) | Azure Data Factory umožňuje snadno vytvářet kanály, které používají publikované webové služby Azure Machine Learning pro prediktivní analýzy. Aktivita provedení dávky služby v kanálu Azure Data Factory, můžete vyvolat webové služby Machine Learning k vytváření predikcí na data ve službě batch. 
+[Aktivita Sparku služby HDInsight](#hdinsight-spark-activity) | HDInsight Spark aktivitu v kanálu služby Data Factory provádí programů Spark v clusteru HDInsight.
+[Aktivita Provedení dávky služby Machine Learning](#machine-learning-batch-execution-activity) | Azure Data Factory umožňuje snadno vytvářet kanály, které používají publikované webové služby Azure Machine Learning pro prediktivní analýzy. Aktivita provedení dávky služby v kanálu Azure Data Factory, můžete vyvolat webové služby Machine Learning k vytváření predikcí na data ve službě batch.
 [Aktivita Aktualizace prostředků služby Machine Learning](#machine-learning-update-resource-activity) | V průběhu času prediktivních modelů ve službě Machine Learning, experimenty vyhodnocování musí být retrained pomocí nové vstupní datové sady. Jakmile budete hotovi s přetrénování, budete chtít aktualizovat hodnoticí webové služby s modelem Machine Learning retrained. Aktivita aktualizace prostředku můžete použít k aktualizaci webové služby s nově trénovaného modelu.
-[Aktivita Uložená procedura](#stored-procedure-activity) | Aktivity uložené procedury v kanálech Data Factory můžete použít k vyvolání uložené procedury v jedné z následujících úložiště dat: Azure SQL Database, Azure SQL Data Warehouse, databáze SQL serveru ve vašem podniku nebo Virtuálním počítači Azure. 
-[Aktivita data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) | Aktivita U-SQL služby data Lake Analytics spouští skript U-SQL v clusteru služby Azure Data Lake Analytics.  
-[Vlastní aktivita .NET](#net-custom-activity) | Pokud potřebujete transformovat data způsobem, který není podporován službou Data Factory, můžete vytvořit vlastní aktivitu s vlastní logiku zpracování dat a použijte aktivitu v kanálu. Můžete vytvořit vlastní aktivitu .NET pro spuštění pomocí služby Azure Batch nebo cluster Azure HDInsight. 
+[Aktivita Uložená procedura](#stored-procedure-activity) | Aktivity uložené procedury v kanálech Data Factory můžete použít k vyvolání uložené procedury v jedné z následujících úložiště dat: Azure SQL Database, Azure SQL Data Warehouse, databáze SQL serveru ve vašem podniku nebo Virtuálním počítači Azure.
+[Aktivita data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) | Aktivita U-SQL služby data Lake Analytics spouští skript U-SQL v clusteru služby Azure Data Lake Analytics.
+[Vlastní aktivita .NET](#net-custom-activity) | Pokud potřebujete transformovat data způsobem, který není podporován službou Data Factory, můžete vytvořit vlastní aktivitu s vlastní logiku zpracování dat a použijte aktivitu v kanálu. Můžete vytvořit vlastní aktivitu .NET pro spuštění pomocí služby Azure Batch nebo cluster Azure HDInsight.
 
-     
+
 ## <a name="hdinsight-hive-activity"></a>Aktivita Hivu služby HDInsight
 V definici JSON aktivity Hive můžete zadat následující vlastnosti. Vlastnost typu aktivity musí být: **HDInsightHive**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** části Pokud nastavíte typ aktivity HDInsightHive:
 
@@ -5129,10 +5129,10 @@ V definici JSON aktivity Hive můžete zadat následující vlastnosti. Vlastnos
 | Cesta ke skriptu |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
 | definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu Hive pomocí "hiveconf. |Ne |
 
-Tyto vlastnosti typu jsou specifická pro aktivitu Hive. Další vlastnosti (mimo části typeProperties) jsou podporované pro všechny aktivity.   
+Tyto vlastnosti typu jsou specifická pro aktivitu Hive. Další vlastnosti (mimo části typeProperties) jsou podporované pro všechny aktivity.
 
 ### <a name="json-example"></a>Příklad JSON
-Následující kód JSON určuje aktivitu HDInsight Hive v kanálu.  
+Následující kód JSON určuje aktivitu HDInsight Hive v kanálu.
 
 ```json
 {
@@ -5164,10 +5164,10 @@ Následující kód JSON určuje aktivitu HDInsight Hive v kanálu.
 }
 ```
 
-Další informace najdete v tématu [aktivita Hive](data-factory-hive-activity.md) článku. 
+Další informace najdete v tématu [aktivita Hive](data-factory-hive-activity.md) článku.
 
 ## <a name="hdinsight-pig-activity"></a>Aktivita Pig služby HDInsight
-Zadejte následující vlastnosti v definici JSON aktivity Pig. Vlastnost typu aktivity musí být: **HDInsightPig**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na HDInsightPig: 
+Zadejte následující vlastnosti v definici JSON aktivity Pig. Vlastnost typu aktivity musí být: **HDInsightPig**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na HDInsightPig:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -5175,7 +5175,7 @@ Zadejte následující vlastnosti v definici JSON aktivity Pig. Vlastnost typu a
 | Cesta ke skriptu |Skript Pig Store ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
 | definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig |Ne |
 
-Tyto vlastnosti typu jsou specifická pro aktivitu Pig. Další vlastnosti (mimo části typeProperties) jsou podporované pro všechny aktivity.   
+Tyto vlastnosti typu jsou specifická pro aktivitu Pig. Další vlastnosti (mimo části typeProperties) jsou podporované pro všechny aktivity.
 
 ### <a name="json-example"></a>Příklad JSON
 
@@ -5216,17 +5216,17 @@ Tyto vlastnosti typu jsou specifická pro aktivitu Pig. Další vlastnosti (mimo
 }
 ```
 
-Další informace najdete v tématu [aktivita Pig](#data-factory-pig-activity.md) článku. 
+Další informace najdete v tématu [aktivita Pig](#data-factory-pig-activity.md) článku.
 
 ## <a name="hdinsight-mapreduce-activity"></a>Aktivita MapReduce služby HDInsight
-V definici JSON aktivity MapReduce můžete zadat následující vlastnosti. Vlastnost typu aktivity musí být: **HDInsightMapReduce**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na HDInsightMapReduce: 
+V definici JSON aktivity MapReduce můžete zadat následující vlastnosti. Vlastnost typu aktivity musí být: **HDInsightMapReduce**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na HDInsightMapReduce:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | jarLinkedService | Název propojené služby pro službu Azure Storage, který obsahuje soubor JAR. | Ano |
-| jarFilePath | Cesta k souboru JAR ve službě Azure Storage. | Ano | 
-| Název třídy | Název hlavní třída v souboru JAR. | Ano | 
-| argumenty | Seznam argumentů pro MapReduce program s hodnotami oddělenými čárkou. Za běhu, se zobrazí několik dalších argumentů (například: mapreduce.job.tags) z rozhraní MapReduce. K rozlišení vaše argumenty s argumenty MapReduce, zvažte použití možnosti a hodnoty jako argumenty, jak je znázorněno v následujícím příkladu (- s, – vstup, – výstup atd., jsou možnosti bezprostředně následovat jejich hodnoty) | Ne | 
+| jarFilePath | Cesta k souboru JAR ve službě Azure Storage. | Ano |
+| Název třídy | Název hlavní třída v souboru JAR. | Ano |
+| argumenty | Seznam argumentů pro MapReduce program s hodnotami oddělenými čárkou. Za běhu, se zobrazí několik dalších argumentů (například: mapreduce.job.tags) z rozhraní MapReduce. K rozlišení vaše argumenty s argumenty MapReduce, zvažte použití možnosti a hodnoty jako argumenty, jak je znázorněno v následujícím příkladu (- s, – vstup, – výstup atd., jsou možnosti bezprostředně následovat jejich hodnoty) | Ne |
 
 ### <a name="json-example"></a>Příklad JSON
 
@@ -5274,24 +5274,24 @@ V definici JSON aktivity MapReduce můžete zadat následující vlastnosti. Vla
 }
 ```
 
-Další informace najdete v tématu [aktivita MapReduce](data-factory-map-reduce.md) článku. 
+Další informace najdete v tématu [aktivita MapReduce](data-factory-map-reduce.md) článku.
 
 ## <a name="hdinsight-streaming-activity"></a>Aktivita Streamování služby HDInsight
-V definici JSON aktivity streamování Hadoop můžete zadat následující vlastnosti. Vlastnost typu aktivity musí být: **HDInsightStreaming**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na HDInsightStreaming: 
+V definici JSON aktivity streamování Hadoop můžete zadat následující vlastnosti. Vlastnost typu aktivity musí být: **HDInsightStreaming**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na HDInsightStreaming:
 
-| Vlastnost | Popis | 
+| Vlastnost | Popis |
 | --- | --- |
-| mapování | Název spustitelného souboru mapování. V tomto příkladu je cat.exe Mapovač spustitelný soubor.| 
-| redukční funkci | Název spustitelného souboru redukční funkci. V tomto příkladu je wc.exe redukční funkci spustitelný soubor. | 
-| vstup | Vstupní soubor (včetně umístění) pro mapovač. Příklad: "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample je kontejner objektů blob, příklad/data/Gutenberg je složka, a davinci.txt objektu blob. |
+| mapování | Název spustitelného souboru mapování. V tomto příkladu je cat.exe Mapovač spustitelný soubor.|
+| redukční funkci | Název spustitelného souboru redukční funkci. V tomto příkladu je wc.exe redukční funkci spustitelný soubor. |
+| vstup | Vstupní soubor (včetně umístění) pro mapovač. Příklad: `"wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt"`: adfsample je kontejner objektů blob, příklad/data/Gutenberg je složka, a davinci.txt objektu blob. |
 | output | Výstupní soubor (včetně umístění) pro redukční funkci. Výstup úlohy streamování Hadoop je zapsán do umístění určeného pro tuto vlastnost. |
-| filePaths | Cesty pro spustitelné soubory mapovací a redukční funkci. Příklad: "adfsample/example/apps/wc.exe" adfsample je kontejner objektů blob, příklad/aplikace je složka, a wc.exe spustitelný soubor. | 
-| fileLinkedService | Propojená služba Azure Storage, který představuje úložiště Azure, který obsahuje soubory zadané v části filePaths. | 
-| argumenty | Seznam argumentů pro MapReduce program s hodnotami oddělenými čárkou. Za běhu, se zobrazí několik dalších argumentů (například: mapreduce.job.tags) z rozhraní MapReduce. K rozlišení vaše argumenty s argumenty MapReduce, zvažte použití možnosti a hodnoty jako argumenty, jak je znázorněno v následujícím příkladu (- s, – vstup, – výstup atd., jsou možnosti bezprostředně následovat jejich hodnoty) | 
-| getDebugInfo | Volitelný prvek. Pokud je nastaven na chybu, protokoly se stáhnou pouze při selhání. Pokud je nastavená na všechny, protokoly budou staženy vždy bez ohledu na stav spuštění. | 
+| filePaths | Cesty pro spustitelné soubory mapovací a redukční funkci. Příklad: "adfsample/example/apps/wc.exe" adfsample je kontejner objektů blob, příklad/aplikace je složka, a wc.exe spustitelný soubor. |
+| fileLinkedService | Propojená služba Azure Storage, který představuje úložiště Azure, který obsahuje soubory zadané v části filePaths. |
+| argumenty | Seznam argumentů pro MapReduce program s hodnotami oddělenými čárkou. Za běhu, se zobrazí několik dalších argumentů (například: mapreduce.job.tags) z rozhraní MapReduce. K rozlišení vaše argumenty s argumenty MapReduce, zvažte použití možnosti a hodnoty jako argumenty, jak je znázorněno v následujícím příkladu (- s, – vstup, – výstup atd., jsou možnosti bezprostředně následovat jejich hodnoty) |
+| getDebugInfo | Volitelný prvek. Pokud je nastaven na chybu, protokoly se stáhnou pouze při selhání. Pokud je nastavená na všechny, protokoly budou staženy vždy bez ohledu na stav spuštění. |
 
 > [!NOTE]
-> Je nutné zadat pro streamované aktivitě Hadoop pro výstupní datovou sadu **výstupy** vlastnost. Tato datová sada může být jen fiktivní datovou sadu, která je nutná Centrum umožňující prosazovat kanálu plánu (každou hodinu, každý den atd.). Pokud aktivita nemá vstupní, můžete přeskočit zadávání vstupní datovou sadu aktivity pro **vstupy** vlastnost.  
+> Je nutné zadat pro streamované aktivitě Hadoop pro výstupní datovou sadu **výstupy** vlastnost. Tato datová sada může být jen fiktivní datovou sadu, která je nutná Centrum umožňující prosazovat kanálu plánu (každou hodinu, každý den atd.). Pokud aktivita nemá vstupní, můžete přeskočit zadávání vstupní datovou sadu aktivity pro **vstupy** vlastnost.
 
 ## <a name="json-example"></a>Příklad JSON
 
@@ -5338,20 +5338,20 @@ V definici JSON aktivity streamování Hadoop můžete zadat následující vlas
 }
 ```
 
-Další informace najdete v tématu [streamované aktivitě Hadoop](data-factory-hadoop-streaming-activity.md) článku. 
+Další informace najdete v tématu [streamované aktivitě Hadoop](data-factory-hadoop-streaming-activity.md) článku.
 
 ## <a name="hdinsight-spark-activity"></a>Aktivita Spark služby HDInsight
-Zadejte následující vlastnosti v definici JSON aktivity Spark. Vlastnost typu aktivity musí být: **HDInsightSpark**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na HDInsightSpark: 
+Zadejte následující vlastnosti v definici JSON aktivity Spark. Vlastnost typu aktivity musí být: **HDInsightSpark**. Musíte nejprve vytvořit HDInsight propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na HDInsightSpark:
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
 | rootPath | Kontejner objektů Blob v Azure a složku obsahující soubor Spark. Název souboru je velká a malá písmena. | Ano |
 | entryFilePath | Relativní cesta ke kořenové složce kódu nebo balíčku, Spark. | Ano |
-| Název třídy | Hlavní třída Java/Spark vaší aplikace | Ne | 
-| argumenty | Seznam argumentů příkazového řádku pro program Sparku. | Ne | 
-| proxyUser | Uživatelský účet zosobnění spuštění programu Sparku | Ne | 
-| sparkConfig | Vlastnosti konfigurace Spark. | Ne | 
-| getDebugInfo | Určuje, kdy soubory protokolu Spark se zkopírují do služby Azure storage používá HDInsight cluster (nebo) je uvedli v sparkJobLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné. | Ne | 
+| Název třídy | Hlavní třída Java/Spark vaší aplikace | Ne |
+| argumenty | Seznam argumentů příkazového řádku pro program Sparku. | Ne |
+| proxyUser | Uživatelský účet zosobnění spuštění programu Sparku | Ne |
+| sparkConfig | Vlastnosti konfigurace Spark. | Ne |
+| getDebugInfo | Určuje, kdy soubory protokolu Spark se zkopírují do služby Azure storage používá HDInsight cluster (nebo) je uvedli v sparkJobLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné. | Ne |
 | sparkJobLinkedService | Azure Storage propojenou službu, která obsahuje Spark soubor úlohy, závislosti a protokoly.  Pokud žádnou hodnotu pro tuto vlastnost nezadáte, použije se úložiště spojené s clusterem HDInsight. | Ne |
 
 ### <a name="json-example"></a>Příklad JSON
@@ -5382,31 +5382,31 @@ Zadejte následující vlastnosti v definici JSON aktivity Spark. Vlastnost typu
     }
 }
 ```
-Je třeba počítat s následujícím: 
+Je třeba počítat s následujícím:
 
 - **Typ** je nastavena na **HDInsightSpark**.
 - **RootPath** je nastavena na **adfspark\\pyFiles** kde adfspark je kontejner objektů Blob v Azure a pyFiles je jemné složky v tomto kontejneru. V tomto příkladu Azure Blob Storage je ten, který je spojen s clusterem Spark. Nahrajte soubor do jiné služby Azure Storage. Pokud tak učiníte, vytvořte propojenou službu Azure Storage k propojení účtu úložiště do služby data factory. Zadejte název propojené služby, jako hodnotu **sparkJobLinkedService** vlastnost. Zobrazit [vlastnosti aktivity Spark](#spark-activity-properties) podrobnosti o této vlastnosti a dalších vlastností podporovaných aktivitou Sparku.
-- **EntryFilePath** je nastavena na **test.py**, což je soubor pythonu. 
+- **EntryFilePath** je nastavena na **test.py**, což je soubor pythonu.
 - **GetDebugInfo** je nastavena na **vždy**, což znamená, že soubory protokolu budou vždy generována (úspěch nebo neúspěch).  
 
     > [!IMPORTANT]
-    > Doporučujeme vám, že nenastavíte tato vlastnost vždy v produkčním prostředí Pokud řešíte problém. 
+    > Doporučujeme vám, že nenastavíte tato vlastnost vždy v produkčním prostředí Pokud řešíte problém.
 - **Výstupy** oddíl má jednu výstupní datovou sadu. Výstupní datové sady je nutné zadat i v případě, že program sparku nevytváří žádný výstup. Výstupní datovou sadu řídí plán kanálu (každou hodinu, každý den atd.).
 
-Další informace o aktivitě najdete v tématu [aktivitu Spark](data-factory-spark.md) článku.  
+Další informace o aktivitě najdete v tématu [aktivitu Spark](data-factory-spark.md) článku.
 
 ## <a name="machine-learning-batch-execution-activity"></a>Aktivita Provedení dávky služby Machine Learning
 Zadejte následující vlastnosti v Azure ML Batch spuštění aktivity JSON definice. Vlastnost typu aktivity musí být: **AzureMLBatchExecution**. Musíte vytvořit Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na AzureMLBatchExecution:
 
-Vlastnost | Popis | Požaduje se 
+Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-webServiceInput | Datové sady mají být předány jako vstup pro webovou službu Azure ML. Tato datová sada musí být součástí vstupy pro aktivitu. |Použijte webServiceInput nebo webServiceInputs. | 
-webServiceInputs | Zadejte datové sady mají být předány jako vstupy pro webovou službu Azure ML. Pokud webová služba přijímá více vstupů, použijte vlastnost webServiceInputs namísto použití vlastnost webServiceInput. Datové sady, které odkazují **webServiceInputs** musí také obsahovat aktivity **vstupy**. | Použijte webServiceInput nebo webServiceInputs. | 
-webServiceOutputs | Datové sady, které jsou přiřazené jako výstup pro webovou službu Azure ML. Webová služba vrátí výstupní data v této datové sadě. | Ano | 
-globalParameters | Zadejte hodnoty parametrů webové služby v této části. | Ne | 
+webServiceInput | Datové sady mají být předány jako vstup pro webovou službu Azure ML. Tato datová sada musí být součástí vstupy pro aktivitu. |Použijte webServiceInput nebo webServiceInputs. |
+webServiceInputs | Zadejte datové sady mají být předány jako vstupy pro webovou službu Azure ML. Pokud webová služba přijímá více vstupů, použijte vlastnost webServiceInputs namísto použití vlastnost webServiceInput. Datové sady, které odkazují **webServiceInputs** musí také obsahovat aktivity **vstupy**. | Použijte webServiceInput nebo webServiceInputs. |
+webServiceOutputs | Datové sady, které jsou přiřazené jako výstup pro webovou službu Azure ML. Webová služba vrátí výstupní data v této datové sadě. | Ano |
+globalParameters | Zadejte hodnoty parametrů webové služby v této části. | Ne |
 
 ### <a name="json-example"></a>Příklad JSON
-V tomto příkladu má datovou sadu aktivita **MLSqlInput** jako vstup a **MLSqlOutput** jako výstup. **MLSqlInput** je předán jako vstup do webové služby s použitím **webServiceInput** vlastnost JSON. **MLSqlOutput** je předán jako výstup webové služby s použitím **webServiceOutputs** vlastnost JSON. 
+V tomto příkladu má datovou sadu aktivita **MLSqlInput** jako vstup a **MLSqlOutput** jako výstup. **MLSqlInput** je předán jako vstup do webové služby s použitím **webServiceInput** vlastnost JSON. **MLSqlOutput** je předán jako výstup webové služby s použitím **webServiceOutputs** vlastnost JSON.
 
 ```json
 {
@@ -5431,7 +5431,7 @@ V tomto příkladu má datovou sadu aktivita **MLSqlInput** jako vstup a **MLSql
                "Database name": "<database>",
                "Server user account name": "<user name>",
                "Server user account password": "<password>"
-            }              
+            }
          },
          "policy": {
             "concurrency": 1,
@@ -5454,10 +5454,10 @@ V tomto příkladu JSON v nasazované službě Azure Machine Learning Web použ�
 ## <a name="machine-learning-update-resource-activity"></a>Aktivita aktualizace prostředku služby Machine Learning
 V definici Azure ML aktualizace prostředků zápis JSON aktivity můžete zadat následující vlastnosti. Vlastnost typu aktivity musí být: **AzureMLUpdateResource**. Musíte vytvořit Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** části Pokud nastavíte typ aktivity AzureMLUpdateResource:
 
-Vlastnost | Popis | Požaduje se 
+Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-Hodnota trainedModelName | Název retrained modelu. | Ano |  
-trainedModelDatasetName | Datová sada odkazuje na soubor iLearner, který vrátil retraining operací. | Ano | 
+Hodnota trainedModelName | Název retrained modelu. | Ano |
+trainedModelDatasetName | Datová sada odkazuje na soubor iLearner, který vrátil retraining operací. | Ano |
 
 ### <a name="json-example"></a>Příklad JSON
 Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**. Aktivita provedení dávky služby Azure ML trvá trénovací data jako vstup a vytvoří soubor iLearner jako výstup. Aktivita vyvolá školení webové služby (výukového experimentu vystavena jako webové služby) se vstupní trénovacích dat a soubor ilearner, který obdrží z webové služby. PlaceholderBlob je jenom fiktivní výstupní datovou sadu, která požaduje služba Azure Data Factory ke spuštění kanálu.
@@ -5485,7 +5485,7 @@ Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**.
                     "webServiceInput": "trainingData",
                     "webServiceOutputs": {
                         "output1": "trainedModelBlob"
-                    }              
+                    }
                  },
                 "linkedServiceName": "trainingEndpoint",
                 "policy": {
@@ -5519,7 +5519,7 @@ Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**.
 ```
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita U-SQL služby Data Lake Analytics
-Zadejte následující vlastnosti v definici JSON aktivity U-SQL. Vlastnost typu aktivity musí být: **DataLakeAnalyticsU SQL**. Musíte vytvořit službu Azure Data Lake Analytics propojené a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená DataLakeAnalyticsU-SQL: 
+Zadejte následující vlastnosti v definici JSON aktivity U-SQL. Vlastnost typu aktivity musí být: **DataLakeAnalyticsU SQL**. Musíte vytvořit službu Azure Data Lake Analytics propojené a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená DataLakeAnalyticsU-SQL:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -5537,7 +5537,7 @@ Zadejte následující vlastnosti v definici JSON aktivity U-SQL. Vlastnost typu
     "name": "ComputeEventsByRegionPipeline",
     "properties": {
         "description": "This pipeline computes events for en-gb locale and date less than Feb 19, 2012.",
-        "activities": 
+        "activities":
         [
             {
                 "type": "DataLakeAnalyticsU-SQL",
@@ -5556,7 +5556,7 @@ Zadejte následující vlastnosti v definici JSON aktivity U-SQL. Vlastnost typu
                         "name": "DataLakeTable"
                     }
                 ],
-                "outputs": 
+                "outputs":
                 [
                     {
                         "name": "EventsByRegionTable"
@@ -5583,12 +5583,12 @@ Zadejte následující vlastnosti v definici JSON aktivity U-SQL. Vlastnost typu
 }
 ```
 
-Další informace najdete v tématu [aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md). 
+Další informace najdete v tématu [aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md).
 
 ## <a name="stored-procedure-activity"></a>Aktivita Uložená procedura
 Zadejte následující vlastnosti v definici zápis JSON aktivity uložené procedury. Vlastnost typu aktivity musí být: **SqlServerStoredProcedure**. Musíte vytvořit některý z následujících propojených služeb a jako hodnotu uvést název propojené služby **linkedServiceName** vlastnost:
 
-- SQL Server 
+- SQL Server
 - Azure SQL Database
 - Azure SQL Data Warehouse
 
@@ -5599,9 +5599,9 @@ Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu ak
 | storedProcedureName |Zadejte název uložené procedury v databázi Azure SQL nebo Azure SQL Data Warehouse, která je reprezentována propojené služby, který používá výstupní tabulky. |Ano |
 | storedProcedureParameters |Zadejte hodnoty parametrů uložené procedury. Pokud je potřeba pro parametr předat hodnotu null, použijte syntaxi: "param1": null (malými písmeny). Najdete v následující ukázce se dozvíte o použití této vlastnosti. |Ne |
 
-Pokud chcete zadat vstupní datovou sadu, musí být k dispozici (ve stavu "Připraveno") pro spuštění aktivity uložené procedury. Vstupní datovou sadu nejde použít v uložené proceduře jako parametr. Používá se pouze ke kontrole závislost před spuštěním aktivity uložených procedur. Je nutné zadat výstupní datovou sadu aktivity uložené procedury. 
+Pokud chcete zadat vstupní datovou sadu, musí být k dispozici (ve stavu "Připraveno") pro spuštění aktivity uložené procedury. Vstupní datovou sadu nejde použít v uložené proceduře jako parametr. Používá se pouze ke kontrole závislost před spuštěním aktivity uložených procedur. Je nutné zadat výstupní datovou sadu aktivity uložené procedury.
 
-Výstupní datová sada Určuje **plán** pro aktivitu uložené procedury (každou hodinu, každý týden, měsíc, atd.). Výstupní datová sada musí používat **propojená služba** , který odkazuje na službu Azure SQL Database nebo Azure SQL Data Warehouse nebo databázi SQL Server, ve kterém chcete spustit uloženou proceduru. Výstupní datová sada může sloužit jako způsob, jak předat výsledek úložnou proceduru pro následné zpracování pomocí další aktivity ([řetězení aktivit](data-factory-scheduling-and-execution.md##multiple-activities-in-a-pipeline)) v kanálu. Ale Data Factory nezapisuje automaticky výstup z uložené procedury do tohoto objektu dataset. Je uložená procedura, která zapisuje do výstupní datové sady odkazující na tabulku SQL. V některých případech může být výstupní datovou sadu **fiktivní datovou sadu**, který se používá jenom k určení plánu pro spuštěnou aktivitu uložené procedury.  
+Výstupní datová sada Určuje **plán** pro aktivitu uložené procedury (každou hodinu, každý týden, měsíc, atd.). Výstupní datová sada musí používat **propojená služba** , který odkazuje na službu Azure SQL Database nebo Azure SQL Data Warehouse nebo databázi SQL Server, ve kterém chcete spustit uloženou proceduru. Výstupní datová sada může sloužit jako způsob, jak předat výsledek úložnou proceduru pro následné zpracování pomocí další aktivity ([řetězení aktivit](data-factory-scheduling-and-execution.md##multiple-activities-in-a-pipeline)) v kanálu. Ale Data Factory nezapisuje automaticky výstup z uložené procedury do tohoto objektu dataset. Je uložená procedura, která zapisuje do výstupní datové sady odkazující na tabulku SQL. V některých případech může být výstupní datovou sadu **fiktivní datovou sadu**, který se používá jenom k určení plánu pro spuštěnou aktivitu uložené procedury.
 
 ### <a name="json-example"></a>Příklad JSON
 
@@ -5629,18 +5629,18 @@ Výstupní datová sada Určuje **plán** pro aktivitu uložené procedury (kaž
 }
 ```
 
-Další informace najdete v tématu [aktivity uložené procedury](data-factory-stored-proc-activity.md) článku. 
+Další informace najdete v tématu [aktivity uložené procedury](data-factory-stored-proc-activity.md) článku.
 
 ## <a name="net-custom-activity"></a>Vlastní aktivita .NET
 Zadejte následující vlastnosti v vlastní aktivitu .NET definice JSON. Vlastnost typu aktivity musí být: **DotNetActivity**. Je nutné vytvořit službu Azure HDInsight, propojené nebo Azure Batch, propojené služby a jako hodnotu uvést název propojené služby **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na DotNetActivity:
- 
+
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | AssemblyName | Název sestavení. V tomto příkladu je: **MyDotnetActivity.dll**. | Ano |
-| Vstupní bod |Název třídy, která implementuje rozhraní IDotNetActivity. V tomto příkladu je: **MyDotNetActivityNS.MyDotNetActivity** kde MyDotNetActivityNS je obor názvů a MyDotNetActivity je třída.  | Ano | 
+| Vstupní bod |Název třídy, která implementuje rozhraní IDotNetActivity. V tomto příkladu je: **MyDotNetActivityNS.MyDotNetActivity** kde MyDotNetActivityNS je obor názvů a MyDotNetActivity je třída.  | Ano |
 | PackageLinkedService | Název propojenou službu Azure Storage, který odkazuje na úložiště objektů blob, který obsahuje příslušný soubor .zip pro vlastní aktivity. V tomto příkladu je: **AzureStorageLinkedService**.| Ano |
 | PackageFile | Název souboru zip. V tomto příkladu je: **customactivitycontainer/MyDotNetActivity.zip**. | Ano |
-| ExtendedProperties | Rozšířené vlastnosti, které můžete definovat a předat kód .NET. V tomto příkladu **SliceStart** proměnná je nastavená na hodnotu podle vlastnosti SliceStart systémové proměnné. | Ne | 
+| ExtendedProperties | Rozšířené vlastnosti, které můžete definovat a předat kód .NET. V tomto příkladu **SliceStart** proměnná je nastavená na hodnotu podle vlastnosti SliceStart systémové proměnné. | Ne |
 
 ### <a name="json-example"></a>Příklad JSON
 
@@ -5689,10 +5689,10 @@ Zadejte následující vlastnosti v vlastní aktivitu .NET definice JSON. Vlastn
 }
 ```
 
-Podrobné informace najdete v tématu [použití vlastních aktivit ve službě Data Factory](data-factory-use-custom-activities.md) článku. 
+Podrobné informace najdete v tématu [použití vlastních aktivit ve službě Data Factory](data-factory-use-custom-activities.md) článku.
 
 ## <a name="next-steps"></a>Další kroky
-Projděte si tyto kurzy: 
+Projděte si tyto kurzy:
 
 - [Kurz: vytvoření kanálu s aktivitou kopírování](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Kurz: vytvoření kanálu s aktivitou hivu](data-factory-build-your-first-pipeline-using-editor.md)

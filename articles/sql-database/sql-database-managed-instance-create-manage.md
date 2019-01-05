@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: 7fb6917e129c015536143a707fd2a89fc5423a99
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.date: 01/03/2019
+ms.openlocfilehash: 30efbcd5ba36ea912a7238eef9e300085cb1d3d1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323076"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040196"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Spravovaná reference k rozhraní API pro Azure SQL Database Managed instance
 
@@ -37,9 +37,13 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí
 | Rutina | Popis |
 | --- | --- |
 |[Nové AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Vytvoří spravované Instance Azure SQL Database |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlInstance)|Vrátí informace o spravované Instance Azure SQL|
-|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Set-AzureRmSqlInstance)|Nastaví vlastnosti pro Azure SQL Database Managed Instance|
-|[Odebrat AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Remove-AzureRmSqlInstance)|Odebere instanci spravované databáze Azure SQL|
+|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Vrátí informace o spravované Instance Azure SQL|
+|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Nastaví vlastnosti pro Azure SQL Database Managed Instance|
+|[Odebrat AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Odebere instanci spravované databáze Azure SQL|
+|[Nové AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Vytvoří databázi Azure SQL Database Managed Instance|
+|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Vrátí informace o spravované Instance Azure SQL database|
+|[Odebrat AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Odebere databázi spravované instanci databáze SQL Azure|
+|[Obnovení AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Obnoví databázi spravované instanci databáze SQL Azure|
 
 ## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI: Správa logických serverů a databází
 
@@ -47,15 +51,19 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall s [rozh
 
 > [!TIP]
 > Rychlý start Azure CLI najdete v části [práce s SQL Managed Instance pomocí rozhraní příkazového řádku Azure](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
->
 
 | Rutina | Popis |
 | --- | --- |
-|[Vytvoření az sql mi](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-create) |Vytvoří spravovanou instanci|
-|[seznam mi az sql](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-list)|Seznam dostupných spravovaných instancí|
-|[Zobrazit mi az sql](/cli/azure/sql/db#az-sql-mi-show)|Získat podrobnosti pro Managed Instance|
-|[aktualizace mi az sql](/cli/azure/sql/db#az-sql-mi-update)|Aktualizace spravované Instance|
-|[Odstranit mi az sql](/cli/azure/sql/db#az-sql-mi-delete)|Odebere spravované Instance|
+|[Vytvoření az sql mi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Vytvoří spravovanou instanci|
+|[seznam mi az sql](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Seznam dostupných spravovaných instancí|
+|[Zobrazit mi az sql](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Získat podrobnosti pro Managed Instance|
+|[aktualizace mi az sql](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Aktualizace spravované Instance|
+|[Odstranit mi az sql](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Odebere spravované Instance|
+|[Vytvoření az sql midb](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Vytvoří spravovanou databázovou|
+|[seznam midb az sql](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Seznamy, které jsou k dispozici spravované databáze|
+|[obnovení midb az sql](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Obnovení spravované databáze|
+|[aktualizace midb az sql](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-update)|Aktualizace spravované databáze|
+|[Odstranit midb az sql](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Odebere spravované databáze|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Příkaz Transact-SQL: Správa logických serverů a databází
 

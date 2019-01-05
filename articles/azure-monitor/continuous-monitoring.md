@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 2d58a39efca8733902d157083489e59bf22ef161
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8cbd09beffb8d86ab35e5fc1cf15c37b1bef9eb2
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002276"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050604"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování prostřednictvím služby Azure Monitor
 
@@ -32,7 +32,7 @@ Tento článek popisuje konkrétní kroky pro používání Azure Monitor umož�
 Získalo observability napříč celým prostředím je potřeba povolit monitorování na všechny webové aplikace a služby. To vám umožní snadno vizualizovat transakce začátku do konce a připojení napříč všemi komponentami.
 
 - [Projekty Azure DevOps](../devops-project/overview.md) umožňují zjednodušené prostředí s váš stávající kód a úložiště Git, nebo vyberte jednu z ukázkových aplikací k vytvoření kanálu kontinuální integrace (CI) a průběžné doručování (CD) do Azure.
-- [Nepřetržité monitorování v kanálu pro vydávání verzí DevOps](../application-insights/app-insights-vsts-continuous-monitoring.md) vám umožní brány nebo vrácení změn na základě monitorování dat nasazení.
+- [Nepřetržité monitorování v kanálu pro vydávání verzí DevOps](../azure-monitor/app/continuous-monitoring.md) vám umožní brány nebo vrácení změn na základě monitorování dat nasazení.
 - [Monitorování stavu](../azure-monitor/app/monitor-performance-live-website-now.md) umožňuje instrumentovat živou aplikaci .NET ve Windows pomocí Azure Application Insights, aniž byste museli upravovat nebo znovu nasazovat kód.
 - Pokud máte přístup ke kódu pro vaši aplikaci, povolte úplné monitorování s využitím [Application Insights](../application-insights/app-insights-overview.md) nainstalováním sady Azure monitorování Application Insights SDK pro [.NET](../application-insights/quick-monitor-portal.md), [Java ](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), nebo [jiných programovacích jazycích](../azure-monitor/app/platforms.md). To umožňuje zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaší firmy.
 
@@ -64,7 +64,7 @@ Průběžná integrace / průběžné nasazování umožňuje automaticky integr
 
 - Použití [kanály Azure](/azure/devops/pipelines) implementovat průběžné nasazování a automatizovat celý proces od potvrzení změn kódu do produkčního prostředí založené na vaše testy CI/CD.
 - Použití [brány kvality](/devops/pipelines/release/approvals/gates) integrovat monitorování do před nasazením nebo po nasazení. Tím se zajistí, že vaše aplikace přesunout z dev do produkčního prostředí a případné rozdíly v prostředí infrastruktury nebo škálování není mít negativní vliv klíčových ukazatelů výkonu naplňujete metriky stavu a výkonu (KPI).
-- [Udržovat samostatné monitorování instance](../application-insights/app-insights-separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../azure-monitor/platform/metrics-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Log Analytics](log-query/cross-workspace-query.md).
+- [Udržovat samostatné monitorování instance](../azure-monitor/app/separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../azure-monitor/platform/metrics-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Log Analytics](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Vytváření užitečných výstrahy s akcemi
@@ -80,16 +80,16 @@ Důležité aspekty monitorování je proaktivnímu upozorňování na správci 
 Zajištění, že vývoje a provozu přístup pro stejnou telemetrii a nástroje umožňující zobrazit vzory napříč celým prostředím a minimalizovat průměrný čas potřebný k detekci (MTTD) a průměrný čas potřebný k obnovení (MTTR).
 
 - Příprava [vlastní řídicí panely](../application-insights/app-insights-tutorial-dashboards.md) na základě běžné metriky a protokoly pro různé role ve vaší organizaci. Řídicí panely můžete kombinovat data ze všech prostředků Azure.
-- Příprava [sešity](../application-insights/app-insights-usage-workbooks.md) pro zajištění znalosti sdílení mezi vývojem a provozem. Tyto může být připravené jako dynamické sestavy s grafy metrik a dotazů na protokoly nebo dokonce odstraňování vodítka vývojáři pomoc zákaznické podpory nebo operace připravena ke zpracování základních problémů.
+- Příprava [sešity](../azure-monitor/app/usage-workbooks.md) pro zajištění znalosti sdílení mezi vývojem a provozem. Tyto může být připravené jako dynamické sestavy s grafy metrik a dotazů na protokoly nebo dokonce odstraňování vodítka vývojáři pomoc zákaznické podpory nebo operace připravena ke zpracování základních problémů.
 
 ## <a name="continuously-optimize"></a>Průběžné optimalizaci je možné
  Monitorování patří mezi základní aspekty oblíbených filozofií sestavení-vyhodnocení-poučení, které doporučuje průběžně sledování klíčových ukazatelů výkonu a metriky chování uživatelů a potom se snaží optimalizovat prostřednictvím plánování iterací. Azure Monitor umožňuje shromažďovat metriky a protokoly, které jsou relevantní pro vaši firmu a přidání nových datových bodů v další nasazení podle potřeby.
 
 - Pomocí nástrojů v Application Insights a [sledovat chování koncových uživatelů a zapojení](../application-insights/app-insights-tutorial-users.md).
-- Použití [analýza dopadu](../application-insights/app-insights-usage-impact.md) můžete určit prioritu které oblasti zaměřit se na disku, aby se důležité klíčové ukazatele výkonu.
+- Použití [analýza dopadu](../azure-monitor/app/usage-impact.md) můžete určit prioritu které oblasti zaměřit se na disku, aby se důležité klíčové ukazatele výkonu.
 
 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o komponentách rozdíl [Azure Monitor](overview.md).
-- [Přidání průběžného monitorování](../application-insights/app-insights-vsts-continuous-monitoring.md) do kanálu pro vydávání verzí.
+- [Přidání průběžného monitorování](../azure-monitor/app/continuous-monitoring.md) do kanálu pro vydávání verzí.

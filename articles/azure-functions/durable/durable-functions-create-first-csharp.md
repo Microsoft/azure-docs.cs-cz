@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341044"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038145"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první funkce trvalý v jazyce C\#
 
 *Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Rozšíření spravuje stav, kontrolní body a restartuje za vás.
 
-V tomto článku se dozvíte, jak používat nástroje Visual Studio 2017 pro službu Azure Functions místně vytvořit a otestovat funkci "hello world" trvalý.  Tato funkce bude orchestrovat a zřetězit volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást sady funkcí Azure – vývoj v sadě Visual Studio 2017.
+V tomto článku se dozvíte, jak používat nástroje Visual Studio 2017 pro službu Azure Functions místně vytvořit a otestovat funkci "hello world" trvalý.  Tato funkce orchestruje a zřetězen dohromady volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást sady funkcí Azure – vývoj v sadě Visual Studio 2017.
 
 ![Odolné funkce spuštěné v Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak používat nástroje Visual Studio 2017 pro sl
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalujte [Visual Studio 2017](https://azure.microsoft.com/downloads/) a ujistěte se, že máte nainstalovanou i sadu funkcí **Azure Development**.
+* Nainstalujte [Visual Studio 2017](https://azure.microsoft.com/downloads/). Ujistěte se, že **vývoj pro Azure** je nainstalovaná úloha.
 
 * Přesvědčte se, že máte [nejnovější nástroje Azure Functions](../functions-develop-vs.md#check-your-tools-version).
 
@@ -40,7 +40,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="create-a-function-app-project"></a>Vytvoření projektu aplikace funkcí
 
-Šablona projektu Azure Functions v sadě Visual Studio vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
+Šablony Azure Functions vytvoří projekt, který jde publikovat do aplikace function app v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
 
 1. V sadě Visual Studio zvolte v nabídce **Soubor** možnost **Nový** > **Projekt**.
 
@@ -55,14 +55,14 @@ Pro absolvování tohoto kurzu potřebujete:
     | Nastavení      | Navrhovaná hodnota  | Popis                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Verze** | Azure Functions 2.x <br />(.NET Core) | Vytvoří projekt funkce, která používá modul runtime verze 2.x Azure Functions, která podporuje .NET Core. Azure Functions 1.x podporuje rozhraní .NET Framework. Další informace najdete v tématu s [přehledem verzí modulu runtime Azure Functions](../functions-versions.md).   |
-    | **Šablona** | Prázdné | Tím se vytvoří aplikaci funkcí prázdný. |
+    | **Šablona** | Prázdné | Vytvoří aplikaci funkcí prázdný. |
     | **Účet úložiště**  | Emulátor úložiště | Účet úložiště je nutná pro správu odolné funkce stavu. |
 
-4. Klikněte na tlačítko **OK** pro vytvoření projektu funkce empty.
+4. Klikněte na tlačítko **OK** pro vytvoření projektu funkce empty. Tento projekt obsahuje základní konfigurační soubory potřebné ke spuštění vaší funkce.
 
 ## <a name="add-functions-to-the-app"></a>Přidání funkce do aplikace
 
-Visual Studio vytvoří projekt aplikace funkce empty.  Obsahuje základní konfigurační soubory potřebné pro aplikace, ale ještě neobsahuje žádné funkce.  Potřebujeme přidat šablona odolné funkce do projektu.
+V následujících krocích používá šablony k vytvoření kódových odolné funkce ve vašem projektu.
 
 1. Klikněte pravým tlačítkem na projekt v sadě Visual Studio a vyberte **přidat** > **novou funkci Azure Functions**.
 
@@ -74,11 +74,13 @@ Visual Studio vytvoří projekt aplikace funkce empty.  Obsahuje základní konf
 
     ![Šablona odolné výběru](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
-Nová funkce trvalý se přidají do aplikace.  Otevřete nový soubor, chcete-li zobrazit obsah.  Tato funkce trvalý je jednoduchý příklad řetězení funkce.  
+Nová funkce trvalý se přidá do aplikace.  Otevřete nový soubor .cs, chcete-li zobrazit obsah. Tato funkce trvalý je jednoduchou funkci příklad řetězení pomocí následujících metod:  
 
-* `RunOrchestrator` Metoda je přidružený k funkci nástroje orchestrator.  Tato funkce bude spustit, vytvoření seznamu a přidat výsledek tři volání funkce do seznamu.  Po dokončení volání tři funkce se vrátí v seznamu.  Je funkce, která se volá `SayHello` – metoda (výchozí, bude zavolána `<NameOfFile>_Hello`).
-* `SayHello` Funkce vrátí hello.
-* `HttpStart` Metoda popisuje funkce, která se spustí výskyty orchestraci.  Je přidružený [triggeru HTTP](../functions-bindings-http-webhook.md) , který spustí novou instanci třídy orchestrator a vrátit zpět odpověď na kontrolu stavu.
+| Metoda | functionName | Popis |
+| -----  | ------------ | ----------- |
+| **`RunOrchestrator`** | `<file-name>` | Spravuje trvalé Orchestrace. V tomto případě orchestraci spustí, vytvoří seznam a přidá výsledek tři funkce volání do seznamu.  Po dokončení tři volání se vrátí seznam. |
+| **`SayHello`** | `<file-name>_Hello` | Funkce vrátí hello. Toto je funkce, která obsahuje obchodní logiku, která je právě orchestrované. |
+| **`HttpStart`** | `<file-name>_HttpStart` | [Funkci aktivovanou protokolem HTTP](../functions-bindings-http-webhook.md) , který spustí instanci orchestraci a vrátí odpověď na kontrolu stavu. |
 
 Teď máte vytvořený projekt funkcí a odolné funkce, takže ji otestovat na místním počítači.
 
@@ -143,4 +145,4 @@ Před publikováním projektu musíte mít v předplatném Azure aplikaci funkc�
 Visual Studio jste použili k vytvoření a publikování C# odolné funkce aplikace.
 
 > [!div class="nextstepaction"]
-> [Další informace o běžných vzorech odolné funkce.](durable-functions-overview.md)
+> [Další informace o běžných vzorech odolné funkce.](durable-functions-concepts.md)

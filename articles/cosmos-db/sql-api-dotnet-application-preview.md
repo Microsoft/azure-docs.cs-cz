@@ -3,17 +3,17 @@ title: Kurz pro vývoj webové aplikace ASP.NET MVC pomocí služby Azure Cosmos
 description: Tento kurz popisuje, jak vytvořit ASP .net MVC webovou aplikaci pomocí služby Azure Cosmos DB. Budete ukládat a přistupovat k datům JSON z aplikace seznamu úkolů hostované v Azure.
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: c0b1ed5aff7f22000a179983396239c24d21a311
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e3ad852246b4b78d5ed7ac938348e59e9b7e6ce0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101326"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037119"
 ---
 # <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Kurz: Vývoj webové aplikace ASP.NET MVC pomocí služby Azure Cosmos DB pomocí rozhraní .net ve verzi preview SDK 
 
@@ -47,7 +47,7 @@ Tento kurz zahrnuje:
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující prostředky:
 
-* **Aktivní účet Azure:** Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete. 
+* **Aktivní účet Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -57,7 +57,7 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte n
 
 Všechny snímky obrazovky v tomto článku byly pořízeny pomocí Microsoft Visual Studio Community 2017. Pokud je systém konfigurován s jinou verzí, je možné, že vaše obrazovky a možnosti nemusí mírně lišit, ale pokud splníte výše uvedené požadavky tohoto řešení by mělo fungovat.
 
-## <a name="create-an-azure-cosmos-account"></a>Krok 1: Vytvoření účtu Azure Cosmos
+## <a name="create-an-azure-cosmos-account"></a>Krok 1: Vytvoření účtu služby Azure Cosmos
 
 Začněme vytvořením účtu služby Azure Cosmos. Pokud už máte účet rozhraní SQL API služby Azure Cosmos DB nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [vytvořit novou aplikaci ASP.NET MVC](#create-a-new-mvc-application) oddílu.
 

@@ -1,23 +1,21 @@
 ---
-title: 'Azure Cosmos DB: Úvodní kurz k rozhraní SQL API'
+title: 'Azure Cosmos DB: Rozhraní SQL API kurz Začínáme'
 description: Kurz, v rámci kterého se vytvoří online databáze a konzolová aplikace v jazyce C# pomocí rozhraní SQL API.
-keywords: kurz nosql, online databáze konzolová aplikace jazyka c#
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 100524eacb30f77e06204fb3b31e6477dd1320a4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867525"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043443"
 ---
-# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Úvodní kurz k rozhraní SQL API
+# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Rozhraní SQL API kurz Začínáme
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -77,7 +75,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
 
 Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Úplný projekt s kódem pro tento kurz najdete na [GitHubu](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).
 
-## <a id="Connect"></a>Krok 3: Připojení k účtu služby Azure Cosmos DB
+## <a id="Connect"></a>Krok 3: Připojte se k účtu služby Azure Cosmos DB
 Nejprve přidejte na začátek aplikace C# do souboru Program.cs tyto reference:
 
     using System;
@@ -495,7 +493,7 @@ Stisknutím klávesy **F5** spusťte aplikaci.
 
 Blahopřejeme! Úspěšně jste odstranili databázi Azure Cosmos DB.
 
-## <a id="Run"></a>Krok 11: Spuštění celé konzolové aplikace jazyka C#
+## <a id="Run"></a>Krok 11: Spustit vaše C# všechno dohromady konzolové aplikace!
 Stiskněte v nástroji Visual Studio klávesu F5 – aplikace se sestaví v režimu ladění.
 
 V okně konzoly by se měl zobrazit výstup spuštěné aplikace. Výstup bude zobrazovat výsledky dotazů, které jsme přidali, a měl by odpovídat ukázkovému textu níže.
@@ -538,7 +536,7 @@ A to je vše, stačí sestavit a máte hotovo.
 
 
 ## <a name="next-steps"></a>Další postup
-* Chcete komplexnější kurz pro ASP.NET MVC? Viz [Kurz k ASP.NET MVC: Vývoj webové aplikace s použitím služby Azure Cosmos DB](sql-api-dotnet-application.md).
+* Chcete komplexnější kurz pro ASP.NET MVC? Zobrazit [kurz k ASP.NET MVC: Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-dotnet-application.md).
 * Chcete testovat škálování a výkon pomocí služby Azure Cosmos DB? Viz [Testování výkonu a škálování pomocí služby Azure Cosmos DB](performance-testing.md).
 * Přečtěte si, jak [sledovat požadavky, využití a úložiště Azure Cosmos DB](monitor-accounts.md).
 * Spouštějte dotazy proti ukázkovým datovým sadám v [Query Playground](https://www.documentdb.com/sql/demo).

@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339582"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043953"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkce řetězení v Durable Functions – ukázka Hello pořadí
 
-Funkce řetězení odkazuje na model provedení pořadí funkcí v určitém pořadí. Často výstup jedné funkce je potřeba použít se vstupem jiné funkce. Tento článek popisuje řetězení sekvenci, která vytvoříte po dokončení tohoto rychlého startu Durable Functions ([ C# ](durable-functions-create-first-csharp.md) nebo [JavaScript](quickstart-js-vscode.md)). Další informace o Durable Functions najdete v tématu [Durable Functions přehled](durable-functions-overview.md).
+Funkce řetězení odkazuje na model provedení pořadí funkcí v určitém pořadí. Často výstup jedné funkce je potřeba použít se vstupem jiné funkce. Tento článek popisuje řetězení sekvenci, která vytvoříte po dokončení tohoto rychlého startu Durable Functions ([ C# ](durable-functions-create-first-csharp.md) nebo [JavaScript](quickstart-js-vscode.md)). Další informace o Durable Functions najdete v tématu [Durable Functions vzory a technických konceptech](durable-functions-concepts.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -142,7 +142,7 @@ Jak je vidět, `runtimeStatus` instance je *dokončeno* a `output` obsahuje výs
 > [!NOTE]
 > Koncový bod HTTP POST, který spustil funkce orchestrátoru je implementována v ukázkové aplikaci jako HTTP aktivuje funkci s názvem "HttpStart". Můžete implementovat podobné starter logiku pro další typy triggerů, jako je třeba `queueTrigger`, `eventHubTrigger`, nebo `timerTrigger`.
 
-Podívejte se na protokoly spuštění funkce. `E1_HelloSequence` Funkce spuštěno a dokončeno více než jednou z důvodu chování opakování podle [přehled](durable-functions-overview.md). Na druhé straně, došlo jenom tři prováděných `E1_SayHello` od provádění těchto funkcí není získat znovu přehrát.
+Podívejte se na protokoly spuštění funkce. `E1_HelloSequence` Funkce spuštěno a dokončeno více než jednou z důvodu chování opakování podle [přehled](durable-functions-concepts.md). Na druhé straně, došlo jenom tři prováděných `E1_SayHello` od provádění těchto funkcí není získat znovu přehrát.
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio ukázkový kód
 

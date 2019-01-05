@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2153f0a16df9e79b3f5324ce19880e2708855196
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0fb2c3daf19ce07d9641cbc5504cb3b598ad5b0d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847996"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034451"
 ---
 # <a name="indexing-policy-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
 Můžete přepsat výchozí zásady na kontejner služby Azure Cosmos indexování nakonfigurováním následující parametry:
 
-* **Zahrnout nebo vyloučit položky a cesty z indexu**: můžete vyloučit nebo zahrnout konkrétní položky v indexu při vložení nebo nahrazení položek v rámci kontejneru. Můžete také zahrnout nebo vyloučit určité cesty/vlastnosti indexovaných napříč kontejnery. Cesty může obsahovat jeden vzor zástupných znaků, například *.
+* **Zahrnout nebo vyloučit položky a cesty z indexu**: Můžete vyloučit nebo zahrnout konkrétní položky v indexu při vložení nebo nahrazení položek v rámci kontejneru. Můžete také zahrnout nebo vyloučit určité cesty/vlastnosti indexovaných napříč kontejnery. Cesty může obsahovat jeden vzor zástupných znaků, například *.
 
-* **Konfigurovat typy index**: kromě pro oblast cesty indexované, můžete přidat další typy indexy, jako prostorových.
+* **Konfigurovat typy index**: Kromě toho pro oblast cesty indexované, můžete přidat další typy indexy, jako prostorových.
 
-* **Konfigurace režimů index**: pomocí zásady indexování v kontejneru můžete nakonfigurovat různé režimy indexování například *konzistentní* nebo *žádný*.
+* **Konfigurace režimů index**: Pomocí zásady indexování v kontejneru můžete nakonfigurovat různé režimy indexování například *konzistentní* nebo *žádný*.
 
 ## <a name="indexing-modes"></a>Indexování režimy 
 
@@ -31,7 +31,7 @@ Azure Cosmos DB podporuje dva režimy indexování, které můžete konfigurovat
 
   Index se aktualizuje synchronně při aktualizaci položky. Například insert, replace, aktualizace a operace odstranění na položku způsobí aktualizace indexu. Konzistentní indexování podporuje konzistentních dotazů za cenu vliv na propustnost zápisu. Snížení propustnosti zápisu závisí "cesty součástí indexování" a "úrovně konzistence." Konzistentní indexování režimu rychle slouží k zápisu a dotazování okamžitě úlohy.
 
-* **Žádný**: kontejner, který nemá žádný index režim nemá žádný index s ním spojená. To se běžně používá, pokud je databáze Azure Cosmos použít jako úložiště klíč / hodnota a položky jsou přístupné jenom podle jejich ID vlastnosti.
+* **Žádný**: Kontejner, který nemá žádný index režim nemá žádný index s ním spojená. To se běžně používá, pokud je databáze Azure Cosmos použít jako úložiště klíč / hodnota a položky jsou přístupné jenom podle jejich ID vlastnosti.
 
   > [!NOTE]
   > Konfigurace režimu indexování jako žádná má vedlejší účinek vyřadit všechny stávající indexy. Tuto možnost používejte, pokud vaše vzorce přístupu vyžaduje ID nebo odkaz na sebe sama pouze.

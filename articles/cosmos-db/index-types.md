@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: f3c5d7bc1907e94ff2e590fe77cc531ac4b01f4c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628936"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034080"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Typy indexu ve službě Azure Cosmos DB
 
 Existuje několik možností kde konfigurujete zásady indexování pro cestu. Můžete zadat jednu nebo víc definic indexování pro každou cestu:
 
-- **Datový typ:** řetězec, číslo, bod, mnohoúhelník nebo LineString (může obsahovat jenom jeden záznam za datový typ na cestu).
+- **Datový typ:** Řetězec, číslo, bod, mnohoúhelník nebo LineString (může obsahovat jenom jeden záznam za datový typ na cestu).
 
-- **Typ indexu:** Hash (dotazy na rovnost), rozsah (rovnosti, oblast nebo ORDER BY dotazy) nebo Spatial (prostorový dotazy).
+- **Typ indexu:** Hodnota hash (dotazy na rovnost), rozsah (rovnosti, oblast nebo ORDER BY dotazy) nebo Spatial (prostorový dotazy).
 
-- **Přesnost:** pro Hash index, to se liší od 1 do 8 pro čísla i řetězce a výchozí hodnota je 3. Hodnota Maximální přesnost pro index na rozsah, je -1. To se může lišit od 1 do 100 (Maximální přesnost) pro řetězec nebo číselné hodnoty.
+- **Přesnost:** Pro index Hash to se liší od 1 do 8 pro čísla i řetězce a výchozí hodnota je 3. Hodnota Maximální přesnost pro index na rozsah, je -1. To se může lišit od 1 do 100 (Maximální přesnost) pro řetězec nebo číselné hodnoty.
 
 ## <a name="index-kind"></a>Typ indexu
 
@@ -39,7 +39,7 @@ Tady jsou příklady dotazů, které hodnoty Hash, rozsah, a prostorové indexy 
 | ---------- | ---------------- |
 | Hodnota hash  | Hodnota hash přes/prop /? (nebo /) umožňuje efektivně slouží následující dotazy:<br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Hodnota hash přes/vlastnosti / [] /? (nebo / / vlastnosti/nebo) umožňuje efektivně slouží následující dotazy:<br><br>Vyberte značku z kolekce c spojení značky v c.props značky WHERE = 5  |
 | Rozsah  | V rozsahu přes/prop /? (nebo /) umožňuje efektivně slouží následující dotazy:<br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Vyberte z kolekce c WHERE c.prop > 5<br><br>Vyberte z kolekce c ORDER BY c.prop   |
-| Spatial     | V rozsahu přes/prop /? (nebo /) umožňuje efektivně slouží následující dotazy:<br><br>Vyberte z kolekce c<br><br>KDE ST_DISTANCE (c.prop, {"type": "Bodu", "coordinates": [0.0, 10.0]}) < 40<br><br>Vyberte z kolekce c kde ST_WITHIN(c.prop, {"type": "Polygon",...}) – s indexování povolený tento počet bodů<br><br>Vyberte z kolekce c kde ST_WITHIN({"type": "Point",...}, c.prop) – s indexování na mnohoúhelníky povolena.     |
+| Spatial     | V rozsahu přes/prop /? (nebo /) umožňuje efektivně slouží následující dotazy:<br><br>Vyberte z kolekce c<br><br>KDE ST_DISTANCE (c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>Vyberte z kolekce c kde ST_WITHIN(c.prop, {"type": "Mnohoúhelníku",...}) --s indexování povolený tento počet bodů<br><br>Vyberte z kolekce c kde ST_WITHIN({"type": "Point",...}, c.prop) – s indexování na mnohoúhelníky povolena.     |
 
 ## <a name="default-behavior-of-index-kinds"></a>Výchozí chování druhů indexu
 

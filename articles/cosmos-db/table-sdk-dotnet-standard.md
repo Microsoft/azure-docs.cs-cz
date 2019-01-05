@@ -1,20 +1,19 @@
 ---
 title: Azure Cosmos DB Table API .NET Standard SDK a zdroje informací
 description: Přečtěte si všechno o Azure Cosmos DB Table API a .NET Standard SDK, včetně data vydání, vyřazení dat a změny provedené mezi jednotlivými verzemi.
-services: cosmos-db
-author: donghexu
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.author: dox
-ms.openlocfilehash: dd095328f8ba4cc22eea21133e7c8600a2cd64e1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 5e0282c766527f8210e36f6e916518a252200041
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438655"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038887"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Standardní rozhraní .NET API tabulky Azure Cosmos DB: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]

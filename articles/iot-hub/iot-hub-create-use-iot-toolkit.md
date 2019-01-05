@@ -1,24 +1,24 @@
 ---
-title: Vytvoření centra IoT Azure pomocí Azure IoT Hub Toolkit pro VS Code | Dokumentace Microsoftu
-description: Jak používat Azure IoT Hub Toolkit pro VS Code k vytvoření služby IoT hub.
+title: Vytvoření služby Azure IoT Hub pomocí nástroje Azure IoT pro VS Code | Dokumentace Microsoftu
+description: Jak používat nástroje Azure IoT pro VS Code k vytvoření služby IoT hub.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: cee71ddfbf1a20cc7417976d60b04bff6f0deac8
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9138a709cf8a166bbb572e04b082c5b8e6c82949
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339021"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050230"
 ---
-# <a name="create-an-iot-hub-using-the-azure-iot-hub-toolkit-for-visual-studio-code"></a>Vytvoření IoT hubu pomocí sady Azure IoT Hub Toolkit pro Visual Studio Code
+# <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Vytvoření IoT hubu pomocí nástroje Azure IoT pro Visual Studio Code
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-V tomto článku se dozvíte, jak používat [Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve Azure IoT Toolkit) k vytvoření služby Azure IoT hub. 
+V tomto článku se dozvíte, jak používat [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) k vytvoření služby Azure IoT hub. 
 
 K dokončení tohoto článku, budete potřebovat následující:
 
@@ -26,7 +26,7 @@ K dokončení tohoto článku, budete potřebovat následující:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-- [Sada Azure IoT Hub](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+- [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pro Visual Studio Code.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -56,10 +56,10 @@ K dokončení tohoto článku, budete potřebovat následující:
 
 ## <a name="next-steps"></a>Další postup
 
-Nyní jste nasadili Centrum IoT pomocí Azure IoT Hub Toolkit pro Visual Studio Code. Dále zkoumat, najdete v následujících článcích:
+Nyní jste nasadili Centrum IoT pomocí IoT nástrojů Azure pro Visual Studio Code. Dále zkoumat, najdete v následujících článcích:
 
-* [Použití rozšíření Azure IoT Hub Toolkit pro Visual Studio Code k odesílání a příjem zpráv mezi zařízením a služby IoT Hub](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+* [Používat nástroje Azure IoT pro Visual Studio Code k odesílání a příjem zpráv mezi zařízením a služby IoT Hub](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
-* [Použití rozšíření Azure IoT Hub Toolkit pro Visual Studio Code pro správu zařízení Azure IoT Hub](iot-hub-device-management-iot-toolkit.md)
+* [Použití nástroje Azure IoT pro Visual Studio Code pro správu zařízení Azure IoT Hub](iot-hub-device-management-iot-toolkit.md)
 
 * [Najdete na stránce wiki Azure IoT Hub Toolkit](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).

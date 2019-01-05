@@ -1,20 +1,19 @@
 ---
 title: Dotazování dat pomocí služby Azure Cosmos DB přes rozhraní API pro MongoDB
 description: Zjistěte, jak k dotazování dat pomocí služby Azure Cosmos DB přes rozhraní API pro MongoDB.
-services: cosmos-db
 author: rimman
 ms.author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 12/26/2018
-ms.openlocfilehash: b2bfc48fa0ba8aab0bbdf19e1b127155633e2271
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.reviewer: sngun
+ms.openlocfilehash: 8bdd88652019ceb48cfd9f05d1009271f5b7a8c7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793202"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042984"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování dat pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
 

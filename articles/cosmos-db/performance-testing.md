@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 776956624dc1da12427d6e4f79ea5e59788f2459
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6d2863e39b5f28c56e2b9045513aa83326d8b8c7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135351"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043188"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Testování pomocí služby Azure Cosmos DB výkonu a škálování
 
@@ -37,16 +37,16 @@ Pokud hledáte možnosti konfigurace na straně klienta pro zlepšení výkonu s
 ## <a name="run-the-performance-testing-application"></a>Spuštění aplikace pro testování výkonu
 Nejrychlejší způsob, jak začít pracovat se kompilace a spuštění ukázky .NET, jak je popsáno v následujících krocích. Můžete také zkontrolujte zdrojový kód a implementovat podobné konfigurace na vlastní klientské aplikace.
 
-**Krok 1:** stáhnete projekt z [testování ukázkové výkonu služby Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), nebo vytvořit fork úložiště GitHub.
+**Krok 1:** Stáhněte si projekt z [testování ukázkové výkonu služby Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), nebo vytvořit fork úložiště GitHub.
 
-**Krok 2:** upravit nastavení pro EndpointUrl, authorizationkey tak, CollectionThroughput a DocumentTemplate (volitelné) v souboru App.config.
+**Krok 2:** Upravte nastavení pro EndpointUrl, authorizationkey tak, CollectionThroughput a DocumentTemplate (volitelné) v souboru App.config.
 
 > [!NOTE]
 > Než zřídíte kolekce s vysokou propustností, odkazovat [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) odhadnout náklady na kolekci. Azure Cosmos DB účtů úložiště a propustnost nezávisle na po hodinách. Dá ušetřit odstraněním nebo po testování snížení propustnosti kolekce Azure Cosmos DB.
 > 
 > 
 
-**Krok 3:** kompilace a spuštění aplikace konzoly z příkazového řádku. Byste měli vidět výstup podobný tomuto:
+**Krok 3:** Kompilace a spuštění aplikace konzoly z příkazového řádku. Byste měli vidět výstup podobný tomuto:
 
     C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
     Summary:
@@ -89,7 +89,7 @@ Nejrychlejší způsob, jak začít pracovat se kompilace a spuštění ukázky 
     Press any key to exit...
 
 
-**Krok 4 (v případě potřeby):** propustnost hlášené (RU/s) z nástroje by měla být stejná nebo vyšší. zřízená propustnost kolekce nebo sady kolekcí. Pokud není, zvýšení DegreeOfParallelism po malých krocích vám můžou pomoct dosáhla limitu. Pokud se propustnost z klientské aplikace plateaus spusťte více instancí aplikace na další klientské počítače. Pokud potřebujete pomoc s tímto krokem, e-mailu askcosmosdb@microsoft.com nebo z lístek podpory [webu Azure portal](https://portal.azure.com).
+**Krok 4 (v případě potřeby):** Propustnost hlášené (RU/s) z nástroje by měla být stejná nebo vyšší. zřízená propustnost kolekce nebo sady kolekcí. Pokud není, zvýšení DegreeOfParallelism po malých krocích vám můžou pomoct dosáhla limitu. Pokud se propustnost z klientské aplikace plateaus spusťte více instancí aplikace na další klientské počítače. Pokud potřebujete pomoc s tímto krokem, e-mailu askcosmosdb@microsoft.com nebo z lístek podpory [webu Azure portal](https://portal.azure.com).
 
 Jakmile budete mít spuštěnou aplikaci, můžete zkusit jiný [zásadám indexování](index-policy.md) a [úrovně konzistence](consistency-levels.md) pochopit jejich dopad na propustnost a latenci. Můžete také zkontrolovat zdrojový kód a implementovat podobné konfigurace vlastními testovacích sad nebo aplikacích v produkčním prostředí.
 

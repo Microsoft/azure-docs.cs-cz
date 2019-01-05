@@ -1,19 +1,17 @@
 ---
 title: Zabezpečení databáze – Azure Cosmos DB
 description: Zjistěte, jak službu Azure Cosmos DB poskytuje ochranu a data zabezpečení pro vaše data databáze.
-keywords: databáze nosql, zabezpečení, informace o zabezpečení, zabezpečení dat, šifrování databáze, ochrana databáze, zásady zabezpečení, testování zabezpečení
-services: cosmos-db
 author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: 0ffd07269570b26b527286f1a0b5a57a6b5c6018
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5fcf04c57f957b670d813de8ffe2d945f70cb3c5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093416"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038768"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
 
@@ -78,11 +76,11 @@ Pojďme se podívat do každé z nich podrobněji.
 |Šifrování v klidovém stavu|Všechna data ukládají do služby Azure Cosmos DB se šifrují při nečinnosti. Další informace najdete v [služby Azure Cosmos DB šifrování v klidovém stavu](./database-encryption-at-rest.md)|
 |Patched servery|Jako spravovanou databázovou službu Azure Cosmos DB eliminuje potřebu správu a servery, oprava, která má automaticky provede za vás.|
 |Účty pro správu s silná hesla|Je těžké si myslíte, že musíme ještě zmiňovat tento požadavek, ale na rozdíl od některých z našich konkurentů, není možné mít účet správce bez hesla ve službě Azure Cosmos DB.<br><br> Ve výchozím nastavení je těšte zabezpečení prostřednictvím protokolu SSL a HMAC tajného kódu na základě ověřování.|
-|Zabezpečení a data protection certifikace|Většina až do data seznam certifikací, naleznete v části celkové [dodržování předpisů Azure web](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a také je [dokumentu dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) s všechny certifikace (vyhledejte Cosmos). Přesněji zaměřené najdete podívejte se na příspěvek k 25. dubna 2018 [Azure #CosmosDB: zabezpečené, privátní, který vyhovuje](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) obsahující Soc 1/2 typ 2, HITRUST, PCI DSS úrovně 1, ISO 27001, HIPAA, FedRAMP High a mnoha dalších.
+|Zabezpečení a data protection certifikace|Většina až do data seznam certifikací, naleznete v části celkové [dodržování předpisů Azure web](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a také je [dokumentu dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) s všechny certifikace (vyhledejte Cosmos). Podívejte se na příspěvek k 25. dubna 2018 přesněji zaměřené najdete [Azure #CosmosDB: Zabezpečené, privátní, který vyhovuje](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) obsahující Soc 1/2 typ 2, HITRUST, PCI DSS úrovně 1, ISO 27001, HIPAA, FedRAMP High a mnoha dalších.
 
-Následující snímek obrazovky ukazuje integrace služby Active directory (RBAC) pomocí řízení přístupu (IAM) na webu Azure Portal: ![řízení přístupu (IAM) na webu Azure Portal – ukázka zabezpečení databáze](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
+Následující snímek obrazovky ukazuje integrace služby Active directory (RBAC) pomocí řízení přístupu (IAM) na webu Azure Portal: ![Řízení přístupu (IAM) na webu Azure Portal – ukázka zabezpečení databáze](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 
-Následující snímek obrazovky ukazuje, jak můžete protokoly auditu protokolování a aktivity k monitorování vašeho účtu: ![protokoly aktivit pro službu Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)
+Následující snímek obrazovky ukazuje, jak můžete protokoly auditu protokolování a aktivity k monitorování vašeho účtu: ![Protokoly aktivit pro službu Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,19 +1,18 @@
 ---
 title: 'Azure Cosmos DB: příklady v .NET pro rozhraní SQL API'
 description: Najít C# příklady .NET na Githubu pro běžné úlohy pomocí rozhraní Azure Cosmos DB SQL API, včetně operace CRUD.
-keywords: Příklad NoSQL
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
-ms.author: rnagpal
-ms.openlocfilehash: 00161c8eac445a02ffbb7a3f0a15af24df7f8c3a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.author: sngun
+ms.openlocfilehash: 5d80c0a8464a9672859a3fbd305bbd4ab322b092
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001817"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037085"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: příklady v .NET pro rozhraní SQL API
 > [!div class="op_single_selector"]

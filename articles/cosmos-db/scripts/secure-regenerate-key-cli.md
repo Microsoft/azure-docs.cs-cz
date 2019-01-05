@@ -4,14 +4,16 @@ description: Ukázkový skript Azure CLI – Obnovení klíče účtu služby Az
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.openlocfilehash: 38ebfde4b9b473f412ae667cdc6b36ea5e991608
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: a8af5b7b035b67b5f09b1f16f26394f28941ec8d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958095"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040927"
 ---
 # <a name="regenerate-an-azure-cosmos-db-account-key-using-the-azure-cli"></a>Obnovení klíče účtu služby Azure Cosmos DB pomocí Azure CLI
 

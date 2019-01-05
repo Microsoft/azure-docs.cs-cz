@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: jroth
-ms.openlocfilehash: c663aec02d4d1808426a9f05a6674d5504563a63
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5ffee3bb5cbeff4e2222307e2a1afb4691ae93d5
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009403"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053036"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Automatizace úloh správy ve službě Azure Virtual Machines pomocí rozšíření agenta SQL serveru (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-server-agent-extension.md)
 > * [Classic](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
-Rozšíření SQL Server IaaS agenta (SQLIaaSExtension) běží na virtuálních počítačích Azure k automatizaci úloh správy. Tento článek obsahuje přehled služby podporuje rozšíření, stejně jako pokyny pro instalaci, stavu a odebrání.
+Rozšíření SQL Server IaaS agenta (SqlIaasExtension) běží na virtuálních počítačích Azure k automatizaci úloh správy. Tento článek obsahuje přehled služby podporuje rozšíření, stejně jako pokyny pro instalaci, stavu a odebrání.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -70,7 +70,7 @@ Požadavky pro použití rozšíření agenta SQL Server IaaS na vašem virtuál
 Rozšíření agenta SQL Server IaaS je automaticky nainstalován při zřizování Image Galerie virtuálních počítačů SQL serveru. Pokud je potřeba ručně znovu nainstalujte rozšíření na jednom z těchto virtuálních počítačů SQL serveru, použijte následující příkaz Powershellu:
 
 ```powershell
-Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SQLIaasExtension" -Version "1.2" -Location "East US 2"
+Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
 ```
 
 > [!IMPORTANT]
@@ -80,7 +80,7 @@ Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "
 > Rozšíření agenta SQL Server IaaS je podporována pouze na [Image virtuálního počítače s SQL serverem z Galerie](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (s průběžnými platbami nebo přeneste svůj – používání vlastní licence). Pokud ručně instalovat SQL Server na virtuálním počítači pouze pro operační systém Windows Server nebo nasadit vlastní VHD virtuálního počítače SQL serveru není podporována. V těchto případech je možné nainstalovat a spravovat rozšíření ručně pomocí Powershellu, ale nelze získat nastavení konfigurace SQL serveru na webu Azure Portal. Důrazně však doporučujeme místo toho nainstalovat image virtuálního počítače s SQL serverem z galerie a pak ji přizpůsobit.
 
 ## <a name="status"></a>Status
-Chcete-li zobrazit stav agenta na webu Azure Portal je jeden způsob, jak ověřit, že rozšíření je nainstalované. Vyberte **všechna nastavení** v okně virtuálního počítače a potom kliknout na **rozšíření**. Měli byste vidět **SQLIaaSExtension** uvedená rozšíření.
+Chcete-li zobrazit stav agenta na webu Azure Portal je jeden způsob, jak ověřit, že rozšíření je nainstalované. Vyberte **všechna nastavení** v okně virtuálního počítače a potom kliknout na **rozšíření**. Měli byste vidět **SqlIaasExtension** uvedená rozšíření.
 
 ![Rozšíření agenta SQL Server IaaS na webu Azure portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
@@ -101,7 +101,7 @@ Na webu Azure Portal můžete odinstalovat rozšíření po kliknutí na tři te
 
 Můžete také použít **Remove-AzureRmVMSqlServerExtension** rutiny Powershellu.
 
-    Remove-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SQLIaasExtension"
+    Remove-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
 
 ## <a name="next-steps"></a>Další postup
 Začněte používat jednu ze služeb podporovaný rozšířením. Další podrobnosti najdete v článcích odkazuje [podporované služby](#supported-services) části tohoto článku.

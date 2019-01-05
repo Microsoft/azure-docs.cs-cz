@@ -1,25 +1,24 @@
 ---
-title: Azure správy zařízení IoT s Azure IoT Hub Toolkit rozšíření pro Visual Studio Code | Dokumentace Microsoftu
-description: Pomocí rozšíření Azure IoT Hub Toolkit pro Visual Studio Code pro správu zařízení Azure IoT Hub, poskytuje funkci přímých metod a možnosti správy požadované vlastnosti Dvojčete společnosti.
+title: Azure správy zařízení IoT s Azure IoT Tools pro Visual Studio Code | Dokumentace Microsoftu
+description: Pomocí nástrojů Azure IoT pro Visual Studio Code pro správu zařízení Azure IoT Hub, poskytuje funkci přímých metod a možnosti správy požadované vlastnosti Dvojčete společnosti.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
-ms.date: 8/3/2018
+ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 4b7de0652172de5120e88e7c597fc31037ddbbb3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ec19045892b975fed7611c7747fa7b2bb4b1515c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339555"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051132"
 ---
-# <a name="use-azure-iot-hub-toolkit-extension-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití rozšíření Azure IoT Hub Toolkit pro Visual Studio Code pro správu zařízení Azure IoT Hub
+# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití nástrojů Azure IoT pro Visual Studio Code pro správu zařízení Azure IoT Hub
 
 ![Diagram začátku do konce](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve Azure IoT Toolkit) je užitečná rozšíření Visual Studio Code, který usnadňuje správy ve službě IoT Hub. Obsahuje možnosti správy, které slouží k provádění různých úloh.
+[Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) je užitečná rozšíření Visual Studio Code, který usnadňuje služby IoT Hub správu a vývoj aplikací IoT. Obsahuje možnosti správy, které slouží k provádění různých úloh.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -36,18 +35,18 @@ Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu za
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Zjistíte pomocí rozšíření Azure IoT Hub Toolkit pro Visual Studio Code pomocí různých možností správy na svém vývojovém počítači.
+Zjistíte pomocí nástroje Azure IoT pro Visual Studio Code pomocí různých možností správy na svém vývojovém počítači.
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
-Spusťte rozšíření Azure IoT Hub Toolkit pro Visual Studio Code pomocí různých možností správy.
+Spuštění nástroje pro Azure IoT pro Visual Studio Code pomocí různých možností správy.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
 * Aktivní předplatné Azure.
 * Azure IoT hub v rámci vašeho předplatného.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Sada Azure IoT Hub](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+* [Nástroje Azure IoT pro VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Přihlaste se ke službě IoT hub
 
@@ -98,6 +97,6 @@ Odeslat zprávu na vaše zařízení ze služby IoT hub, postupujte podle těcht
 
 ## <a name="next-steps"></a>Další postup
 
-Jste zjistili, jak pomocí rozšíření Azure IoT Hub Toolkit pro Visual Studio Code pomocí různých možností správy.
+Jste zjistili, jak používat rozšíření Azure IoT Tools pro Visual Studio Code pomocí různých možností správy.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

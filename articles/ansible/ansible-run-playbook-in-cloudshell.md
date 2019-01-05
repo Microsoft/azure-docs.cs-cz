@@ -2,18 +2,18 @@
 title: Spuštění Ansible bash ve službě Azure Cloud Shell
 description: Zjistěte, jak provádět různé úlohy Ansible bash ve službě Azure Cloud Shell
 ms.service: ansible
-keywords: ansible v azure, devops, bash, cloud shell, playbooku, prostředí bash
-author: tomarcher
+keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/07/2018
 ms.topic: article
-ms.openlocfilehash: 9928f646905dd0da4b15166ec55e5d8a183cb210
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 6bfac47e4afa41b4c75a8d33b4eea1ff5103296d
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054409"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050890"
 ---
 # <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Spuštění Ansible bash ve službě Azure Cloud Shell
 
@@ -21,13 +21,13 @@ V tomto kurzu se dozvíte, jak nakonfigurovat předplatné služby Azure jako v�
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure** – Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Konfigurace Azure Cloud Shell** – Pokud jste novým uživatelem Azure Cloud Shell, článku, [rychlý start pro Bash ve službě Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart), ukazuje, jak spustit a nakonfigurovat Cloud Shell. 
+- **Konfigurace služby Azure Cloud Shell** – Pokud se službou Azure Cloud Shell teprve začínáte, v článku [Rychlý start pro Bash ve službě Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) se dozvíte, jak spustit a nakonfigurovat Cloud Shell. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="automatic-credential-configuration"></a>Konfigurace automatického přihlašovacích údajů
+## <a name="automatic-credential-configuration"></a>Automatická konfigurace přihlašovacích údajů
 
 Když jste přihlášení ke službě Cloud Shell, ověřuje Ansible v Azure ke správě infrastruktury bez další konfigurace. Pokud máte více než jedno předplatné, které předplatné Ansible by měli spolupracovat se exportováním můžete `AZURE_SUBSCRIPTION_ID` proměnné prostředí. Chcete-li vypsat všechna vaše předplatná Azure, spusťte následující příkaz:
 
@@ -41,7 +41,7 @@ Použití **id** předplatného, se kterým chcete pracovat, nastavte **AZURE_SU
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ```
 
-## <a name="verify-the-configuration"></a>Zkontrolujte konfiguraci
+## <a name="verify-the-configuration"></a>Ověření konfigurace
 Pokud chcete ověřit úspěšné konfiguraci, použijte Ansible k vytvoření skupiny prostředků.
 
 [!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-create-resource-group.md)]

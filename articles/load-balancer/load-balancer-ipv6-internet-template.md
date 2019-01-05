@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 2374df3a457e0f4730dcaa6d69ea3f2e0fa6e9cc
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163204"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039788"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení ve nástroje pro vyrovnávání zatížení přístupem k Internetu s protokolem IPv6 pomocí šablony
 
@@ -133,3 +133,7 @@ Příklad šablony použité v tomto článku obsahuje následující proměnné
 | lbName |Zadejte název nástroje pro vyrovnávání zatížení. Tento název se zobrazí na portálu nebo používají při odkazování na ji pomocí příkazu rozhraní příkazového řádku nebo Powershellu. |
 
 Zbývající proměnné v šabloně obsahují odvozeným hodnotám, které jsou přiřazeny při Azure vytvoří potřebné prostředky. Neměňte těchto proměnných.
+
+## <a name="next-steps"></a>Další postup
+
+Syntaxi JSON a vlastnosti služby vyrovnání zatížení v šabloně najdete v tématu [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 172714b3a58d1620b896e089194a797a9e1e7b1b
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 14cb821152e6a380de1be4fddef76aa2edec4a8f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410975"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042253"
 ---
 # <a name="working-with-azure-cosmos-db-stored-procedures-triggers-and-user-defined-functions"></a>Práce s Azure Cosmos DB uložené procedury, triggery a uživatelem definovaných funkcí
 

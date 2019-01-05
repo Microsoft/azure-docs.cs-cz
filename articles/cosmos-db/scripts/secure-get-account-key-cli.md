@@ -4,14 +4,16 @@ description: Ukázkový skript Azure CLI – Získání klíčů účtu pro slu�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.openlocfilehash: 354184313e541dfa0cbe32c36abbd097c9a97b3c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: 1e080b7826d845e7278208af2fb09b487c67e865
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965884"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038676"
 ---
 # <a name="get-account-keys-for-azure-cosmos-db-using-the-azure-cli"></a>Získání klíčů účtu pro službu Azure Cosmos DB pomocí Azure CLI
 

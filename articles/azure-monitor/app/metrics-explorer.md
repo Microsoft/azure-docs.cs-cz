@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: aaa34d27e73c1691e69ea2f6860226639217f0c6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 6341ffe33984a7f40f9d4120ca6726a082463474
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003257"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039703"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Zkoumání metrik ve službě Application Insights
 Metriky na [Application Insights] [ start] měřené hodnoty a počty událostí, které se odesílají v telemetrii z vaší aplikace. Pomáhají zjišťovat problémy s výkonem a sledovat trendy ve využití vaší aplikace. Existuje širokou škálu standardních metrik a můžete také vytvořit své vlastní metriky a události.
@@ -200,7 +200,7 @@ Z grafu metrik můžete kliknout na ikonu Analytics získat přímo na ekvivalen
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Další postup
-* [Sledování využití pomocí Application Insights](../../application-insights/app-insights-usage-overview.md)
+* [Sledování využití pomocí Application Insights](../../azure-monitor/app/usage-overview.md)
 * [Pomocí vyhledávání diagnostiky](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->

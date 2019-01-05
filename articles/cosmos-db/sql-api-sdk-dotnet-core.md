@@ -1,21 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL API pro .NET Core, sady SDK a zdroje informací'
 description: Další informace o SQL API pro .NET Core a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB .NET Core SDK.
-services: cosmos-db
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d947974575cf996ed880f2c1b5f8f7700b81ffd3
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.author: sngun
+ms.openlocfilehash: 5eb04f30fd6766b8df65998b8a4d53797b8341ba
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413502"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053547"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -57,6 +55,14 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 * Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy.
 * Podpora pro datové proudy.
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď.
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* Zlepšení logika opakovaných pokusů během převzetí služeb při selhání pro uložené procedury StoredProcedure provést volání.
+
+* Předložené DocumentClientEventSource jednotlivý prvek. 
+
+* Časový limit GatewayAddressCache není dodržením ConnectionPolicy RequestTimeout opravte.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -227,6 +233,7 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |Prosinec 24. května 2018 |--- |
 | [2.2.0](#2.2.0) |07 prosince 2018 |--- |
 | [2.1.3](#2.1.3) |15. října 2018 |--- |
 | [2.1.2](#2.1.2) |04. října 2018 |--- |

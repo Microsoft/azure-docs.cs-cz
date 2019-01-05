@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 77b278d939b7d2676ade03af75e48c1e2df184f9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: de28bce852d00900bee19b2fa4d7e4e39d050b4d
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028250"
+ms.locfileid: "54054507"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -108,7 +108,7 @@ V čem je problém? Server je pomalý, je velmi dlouhá stránky nebo udělat sp
 
 Otevřete okno prohlížeče metriky. Segmentované zobrazení prohlížeče stránka zatížení čas ukazuje, kam čas. 
 
-* Pokud **odeslat doba požadavku** je vysoké, buď server reaguje pomalu nebo žádosti je post s velkým množstvím dat. Podívejte se na [metriky výkonu](../../application-insights/app-insights-web-monitor-performance.md#metrics) k prozkoumání doby odezvy.
+* Pokud **odeslat doba požadavku** je vysoké, buď server reaguje pomalu nebo žádosti je post s velkým množstvím dat. Podívejte se na [metriky výkonu](../../azure-monitor/app/web-monitor-performance.md#metrics) k prozkoumání doby odezvy.
 * Nastavit [sledování závislostí](../../azure-monitor/app/asp-net-dependencies.md) Přesvědčte se, zda pomalost je z důvodu externích služeb nebo databáze.
 * Pokud **přijetí odpovědi** převládá, stránce a jeho závislé součásti – JavaScript, CSS, obrázky a tak dále (ale ne asynchronně načtená data) jsou dlouhé. Nastavení [test dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)a nezapomeňte nastavit možnost načíst závislé součásti. Pokud jste získali nějaké výsledky, Otevřít podrobnosti výsledku a rozbalte ho a podívejte se dobu načítání různých souborů.
 * Vysoká **doba zpracování klienta** navrhuje skripty běží pomalu. Pokud z důvodu není zřejmé, zvažte přidání některých časování kód a odeslat časy v trackMetric volání.

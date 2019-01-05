@@ -1,19 +1,18 @@
 ---
 title: Použití rozhraní API služby Azure Cosmos DB pro podpora funkce MongoDB
 description: Další informace o podporovaných funkcích, které nabízí rozhraní API služby Azure Cosmos DB pro MongoDB k MongoDB 3.4.
-services: cosmos-db
-author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: bb25cf6ed60317dd5d7266e2f4750c2bb9f4859d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: 7bf8258524b0b5e73c1a499fb6d3578098a0821e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790279"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039159"
 ---
 # <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Použít pro podporu MongoDB pro funkce a syntaxi MongoDB API služby Azure Cosmos DB
 

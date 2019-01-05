@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 45a4a43ae95b42174f368122f89831a356410f2b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 33b1d5c947d658147e6e59fa37b6ca505f48fb15
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003225"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044089"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-templates"></a>Kurz: Zřízení serveru Azure Database for MySQL pomocí šablon Azure Resource Manageru
 
@@ -32,7 +32,7 @@ V tomto kurzu jste pomocí šablon Azure Azure Resource Manageru a dalších ná
 
 ## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Vytvoření serveru Azure Database for MySQL pomocí koncového bodu služby virtuální sítě pomocí šablony Azure Resource Manageru
 
-Chcete-li získat odkaz na šablonu JSON na serveru Azure Database for MySQL, přejděte na referenčními informacemi k šablonám Microsoft.DBforMySQL servery (https://docs.microsoft.com/en-us/azure/templates/microsoft.dbformysql/servers). Níže je ukázkové šablony JSON, který slouží k vytvoření nového serveru se systémem – Azure Database for MySQL pomocí koncového bodu služby virtuální sítě.
+Chcete-li získat odkaz na šablonu JSON na serveru Azure Database for MySQL, přejděte na [Microsoft.DBforMySQL servery](/azure/templates/microsoft.dbformysql/servers) referenčními informacemi k šablonám. Níže je ukázkové šablony JSON, který slouží k vytvoření nového serveru se systémem – Azure Database for MySQL pomocí koncového bodu služby virtuální sítě.
 ```json
 {
   "apiVersion": "2017-12-01",

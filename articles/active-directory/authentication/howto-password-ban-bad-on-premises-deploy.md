@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5774af4e0550ceb7a51e399fcab203a503a7f23f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011489"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033600"
 ---
-# <a name="preview-deploy-azure-ad-password-protection"></a>Ve verzi Preview: Nasazení ochrany hesla Azure AD
+# <a name="preview-deploy-azure-ad-password-protection"></a>Verze Preview: Nasazení ochrany hesel Azure AD
 
 |     |
 | --- |
@@ -85,6 +85,9 @@ Existují dva instalační programy požadovaných k ochraně heslem služby Azu
 
 2. Nainstalujte službu Proxy zásady hesla software použitím balíčku AzureADPasswordProtectionProxy.msi MSI.
    * Instalace softwaru nevyžaduje restartování. Instalace softwaru může možné automatizovat pomocí standardní postupy MSI, například: `msiexec.exe /i AzureADPasswordProtectionProxy.msi /quiet /qn`
+
+      > [!NOTE]
+      > Před instalací balíčku AzureADPasswordProtectionProxy.msi MSI musí běžet služba brány Windows Firewall, jinak dojde k chybě instalace. Pokud brána Windows Firewall je nakonfigurovaná a nebudou tedy spuštěny, alternativním řešením je dočasně povolit a spustit službu brány Windows Firewall během procesu instalace. Proxy software nemá žádné konkrétní závislost na software brány Windows Firewall po instalaci. Pokud používáte bránu firewall jiného dodavatele, ho musí být nakonfigurován tak, aby byly splněny požadavky na nasazení (Povolit přístup k portu 135 pro příchozí připojení a proxy server RPC port serveru, jestli dynamická nebo statická). [Projděte si požadavky na nasazení](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)
 
 3. Otevřete okno Powershellu jako správce.
    * Ochrana hesel Azure AD Proxy software obsahuje nový modul prostředí PowerShell s názvem AzureADPasswordProtection. Následující kroky jsou založeny na spuštění různé rutiny z tohoto modulu prostředí PowerShell a předpokládají, že jste otevřeli nové okno Powershellu a následujícím způsobem importovat nový modul:

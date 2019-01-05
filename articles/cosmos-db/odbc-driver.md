@@ -1,19 +1,17 @@
 ---
 title: Připojení k Azure Cosmos DB pomocí analytických nástrojů BI
 description: Zjistěte, jak vytvořit tabulky a zobrazení normalizovaná data lze zobrazit v BI a data analytický software pomocí ovladače Azure Cosmos DB ODBC.
-keywords: ODBC a ovladači odbc
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: d1ea0a51d9637c1ca1dba214e969e6835dfb241c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f51ce90d9349d345bb1e77ca5e254315c20c1b1d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136354"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034468"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení ke službě Azure Cosmos DB pomocí nástroje pro analýzu BI pomocí ovladače ODBC
 
@@ -59,19 +57,19 @@ Pusťme se do práce pomocí ovladače ODBC.
 1. V **Azure Cosmos DB ODBC – ovladače SDN nastavení** okno, zadejte následující informace: 
 
     ![Azure Cosmos DB ODBC ovladač DSN okno](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **Název zdroje dat**: vlastní popisný název DSN rozhraní ODBC. Tento název je jedinečný pro váš účet Azure Cosmos DB, tak pojmenujte ho správně Pokud máte více účtů.
-    - **Popis**: stručný popis datového zdroje.
-    - **Hostitel**: identifikátor URI pro váš účet Azure Cosmos DB. Můžete načíst to ze stránky klíče služby Azure Cosmos DB na webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky. 
-    - **Přístup ke klíči**: klíč primární nebo sekundární, čtení a zápis nebo jen pro čtení z klíče Azure Cosmos DB stránce na webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky. Doporučujeme že použít klíč jen pro čtení, pokud název zdroje dat se používá pro zpracování dat jen pro čtení a vytváření sestav.
+    - **Název zdroje dat**: Vlastní popisný název DSN rozhraní ODBC. Tento název je jedinečný pro váš účet Azure Cosmos DB, tak pojmenujte ho správně Pokud máte více účtů.
+    - **Popis**: Stručný popis datového zdroje.
+    - **Hostitel**: Identifikátor URI pro váš účet Azure Cosmos DB. Můžete načíst to ze stránky klíče služby Azure Cosmos DB na webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky. 
+    - **Přístup ke klíči**: Primární nebo sekundární, čtení a zápis nebo jen pro čtení klíče ze stránky klíče služby Azure Cosmos DB na webu Azure portal, jak je znázorněno na následujícím snímku obrazovky. Doporučujeme že použít klíč jen pro čtení, pokud název zdroje dat se používá pro zpracování dat jen pro čtení a vytváření sestav.
     ![Stránka služby Azure Cosmos DB klíče](./media/odbc-driver/odbc-driver-keys.png)
-    - **Přístupový klíč pro šifrování**: vybrat nejlepší volbou založená na uživatelích tohoto počítače. 
+    - **Přístupový klíč pro šifrování**: Vyberte nejlepší volbou založená na uživatelích tohoto počítače. 
     
 1. Klikněte na tlačítko **Test** tlačítko a ujistěte se, že můžete připojit ke svému účtu Azure Cosmos DB. 
 
 1. Klikněte na tlačítko **rozšířené možnosti** a nastavte následující hodnoty:
-    - **Dotazování konzistence**: vyberte [úrovně konzistence](consistency-levels.md) pro operace. Výchozí hodnota je relace.
+    - **Dotazování konzistence**: Vyberte [úrovně konzistence](consistency-levels.md) pro operace. Výchozí hodnota je relace.
     - **Počet opakovaných pokusů**: Zadejte počet pokusů o zopakování operace, pokud v prvotní žádosti z důvodu omezení rychlosti služby nedokončí.
-    - **Soubor schématu**: tady máte několik možností.
+    - **Soubor schématu**: Zde máte několik možností.
         - Ve výchozím nastavení, byste museli opustit tuto položku jako (prázdné) ovladač prohledá první stránka data pro všechny kolekce k určení schéma každé z kolekcí. To se označuje jako kolekce mapování. Bez souboru schématu definice ovladač nemá k provedení kontroly pro každou relaci ovladač a může mít za následek vyšší dobu spuštění aplikace pomocí DSN. Doporučujeme vždy přiřadit soubor schématu pro zdroje dat DSN.
         - Pokud už máte soubor schématu (může být takový, který jste vytvořili pomocí [Editor schémat](#schema-editor)), můžete kliknout na **Procházet**, přejděte k souboru, klikněte na tlačítko **Uložit**a potom klikněte na **OK**.
         - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK**a potom klikněte na tlačítko **Editor schémat** v hlavním okně. Pokračujte [Editor schémat](#schema-editor) informace. Po vytvoření nového souboru schématu, nezapomeňte přejít zpět **rozšířené možnosti** okna k zahrnutí souboru nově vytvořeného schématu.
@@ -80,7 +78,7 @@ Pusťme se do práce pomocí ovladače ODBC.
 
     ![Nové Azure Cosmos DB název DSN rozhraní ODBC na kartě Uživatelské DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#collection-mapping"></a>Krok 3: Vytvoření schématu definice pomocí metody mapování kolekce
+## <a id="#collection-mapping"></a>Krok 3: Vytvořte definici schématu pomocí metody kolekce mapování
 
 Existují dva typy metod vzorkování, které můžete použít: **kolekce mapování** nebo **tabulky oddělovače**. Relaci vzorkování se můžou využívat obě metody vzorkování, ale každá kolekce lze použít pouze metody konkrétní vzorkování. Následující postup vytvořte schéma pro data v jedné nebo více kolekcí pomocí metody mapování kolekce. Tato metoda vzorkování načítá data na stránce kolekci určit strukturu dat. Transponuje ho kolekce do tabulky na straně rozhraní ODBC. Tato metoda vzorkování je efektivní a rychlé po homogenní data v kolekci. Pokud kolekce obsahuje heterogenní typ dat, doporučujeme použít [oddělovače tabulky mapování metody](#table-mapping) poskytuje robustnější metody vzorkování určit datové struktury v kolekci. 
 
@@ -101,7 +99,7 @@ Existují dva typy metod vzorkování, které můžete použít: **kolekce mapov
 
     Pokud chcete v budoucnu toto schéma používají, pomocí názvu DSN, otevřete okno Azure Cosmos DB ODBC – ovladače DSN nastavení (prostřednictvím Správce zdrojů dat ODBC), klikněte na tlačítko Upřesnit možnosti a potom v dialogovém okně soubor schématu přejděte na uložené schématu. Ukládání souboru schématu do existující DSN upraví připojení DSN do oboru k datům a struktura definovaná pomocí schématu.
 
-## <a id="table-mapping"></a>Krok 4: Vytvoření schématu definice pomocí oddělovače tabulky mapování – metoda
+## <a id="table-mapping"></a>Krok 4: Vytvořte definici schématu pomocí oddělovače tabulky mapování – metoda
 
 Existují dva typy metod vzorkování, které můžete použít: **kolekce mapování** nebo **tabulky oddělovače**. Relaci vzorkování se můžou využívat obě metody vzorkování, ale každá kolekce lze použít pouze metody konkrétní vzorkování. 
 
@@ -201,7 +199,7 @@ Pak v **definice zobrazení** okno, postupujte takto:
 
 Chcete, můžete vytvořit mnoha zobrazení. Po dokončení definování zobrazení, můžete pak Vzorkovat data. 
 
-## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Krok 5: Zobrazení dat v nástrojích BI, jako je například Power BI Desktopu
+## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Krok 5: Umožňuje zobrazit vaše data v nástrojů BI, jako je Power BI Desktopu
 
 Váš nový název zdroje dat můžete použít pro připojení ke službě Azure Cosmos DB se žádné kompatibilní se standardem ODBC nástroje – tento krok jednoduše se dozvíte, jak se připojit k Power BI Desktopu a vytvoření vizualizace pomocí Power BI.
 

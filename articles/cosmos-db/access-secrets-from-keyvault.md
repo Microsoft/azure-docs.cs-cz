@@ -1,19 +1,20 @@
 ---
 title: Použití služby Key Vault k ukládání a přístupové klíče služby Azure Cosmos DB
 description: Použití Azure Key Vault k ukládání a přístup ke službě Azure Cosmos DB připojovacího řetězce, klíče, identifikátor URI.
-services: cosmos-db
 author: rafats
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: f5d494006ebafab37bd10591ad02671e192d73e8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: c80f555a3789a12420cef0dc91ef7accc6a4388d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837388"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036184"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Použití služby Key Vault k ukládání a přístupové klíče služby Azure Cosmos DB
 
@@ -32,8 +33,8 @@ Následující kroky jsou nutné pro ukládání a čtení přístupové klíče
 1. Přihlaste se k [webu Azure Portal](https://portal.azure.com/).  
 2. Vyberte **vytvořit prostředek > zabezpečení > služby Key Vault**.  
 3. V části **Vytvořit trezor klíčů** zadejte následující informace:  
-   * **Název:** zadejte jedinečný název pro Key Vault.  
-   * **Předplatné:** zvolte předplatné, které budete používat.  
+   * **Jméno:** Zadejte jedinečný název pro Key Vault.  
+   * **Předplatné:** Vyberte předplatné, které bude použito.  
    * V části **Skupina prostředků** zvolte **Vytvořit novou** a zadejte název skupiny prostředků.  
    * V rozevírací nabídce umístění zvolte umístění.  
    * Další možnosti ponechte jejich výchozí hodnoty.  

@@ -1,21 +1,20 @@
 ---
 title: Připojovací řetězec Azure Powershellu Get skriptu Azure Cosmos DB pro aplikace MongoDB
 description: Ukázkový skript Azure PowerShellu – Získání připojovacího řetězce služby Azure Cosmos DB pro aplikace MongoDB
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.component: cosmosdb-mongo
-ms.custom: mvc
+ms.subservice: cosmosdb-sql
 ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/10/2017
-ms.openlocfilehash: 56dd939027d4cf3fd11b89891b0a35a623cd6f68
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: e90c0533f6caee697a9083aae6086ecceec430e0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959559"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038479"
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-powershell"></a>Získání připojovacího řetězce služby Azure Cosmos DB pro aplikace MongoDB pomocí PowerShellu
 

@@ -11,18 +11,18 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: a5abc90f5a40911538b6516622203f595adfed5c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 140fc870500054d0652b48bc602706398371fa8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091811"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039046"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Vytvoření první funkce Pythonu v Azure (preview)
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
-Tento článek Rychlý start vás provede jak používat rozhraní příkazového řádku Azure k vytvoření vaší první [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) aplikace běžící na Linuxu funkce Pythonu. Kód funkce se vytvoří místně a pak se nasadí do Azure pomocí [Azure Functions Core Tools](functions-run-local.md). Další informace o aspektech týkajících se ve verzi preview pro spuštění vaší aplikace function App v Linuxu najdete v tématu [to funguje v systému Linux článku](https://aka.ms/funclinux).
+Tento článek Rychlý start vás provede jak používat rozhraní příkazového řádku Azure k vytvoření vaší první [bez serveru](https://azure.com/serverless) aplikace běžící na Linuxu funkce Pythonu. Kód funkce se vytvoří místně a pak se nasadí do Azure pomocí [Azure Functions Core Tools](functions-run-local.md). Další informace o aspektech týkajících se ve verzi preview pro spuštění vaší aplikace function App v Linuxu najdete v tématu [to funguje v systému Linux článku](https://aka.ms/funclinux).
 
 Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux.
 

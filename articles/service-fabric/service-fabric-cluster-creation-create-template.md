@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 9482b1a33caaf73838101431dfc1faac7020ee42
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: cd4871e3e4613973a50c8ee0994fe0440150eddf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234882"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044021"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření šablony Resource Manageru clusteru Service Fabric
 
@@ -258,6 +258,14 @@ Následující diagram znázorňuje, které je váš trezor klíčů a konfigura
 ## <a name="next-steps"></a>Další postup
 Teď, když máte vytvořenou šablonu pro váš cluster, zjistěte, jak [nasazení clusteru Azure](service-fabric-cluster-creation-via-arm.md).  Pokud jste to ještě neudělali, přečtěte si [připravenosti produkční kontrolní seznam](service-fabric-production-readiness-checklist.md) před nasazením clusteru pro produkční prostředí.
 
+Další informace o syntaxi JSON a vlastnosti pro prostředky nasazené v tomto článku najdete v tématu:
+
+* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft.Storage/storageAccounts.](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 21f6331276155ec926b47a5db8310486835cb3ae
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001273"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035419"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -42,7 +42,7 @@ Můžete použít tyto zálohy na:
 
 ## <a name="how-long-are-backups-kept"></a>Jak dlouho se zálohy uchovávat
 
-Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí [nákupní model a úroveň služeb](#pitr-retention-period). Můžete aktualizovat období uchování zálohy pro databázi na logickém serveru Azure. Další informace najdete v tématu [období uchování zálohy změnu](#how-to-change-the-pitr-backup-retention-period).
+Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí nákupní model a úrovně služeb. Můžete aktualizovat zálohování) doby uchování pro databázi na logickém serveru Azure. Další informace najdete v tématu [období uchování zálohy změnu](#how-to-change-the-pitr-backup-retention-period).
 
 Když odstraníte databáze, databáze SQL zachovají zálohy stejným způsobem, který by tomu bylo online databáze. Například pokud odstraníte databázi Basic, který má dobu uchování o délce sedm dní, zálohy, která je starší čtyř dní uložená pro další tři dny.
 
@@ -109,7 +109,7 @@ Můžete změnit období uchování zálohy PITR výchozí pomocí webu Azure Po
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Změnit PITR období uchování zálohy pomocí webu Azure portal
 
-Můžete změnit období uchování zálohy PITR pomocí webu Azure portal, přejděte na objekt serveru jehož doba uchování chcete změnit na portálu a pak vyberte příslušnou možnost základě, na který objekt serveru, kterou upravujete. 
+Můžete změnit období uchování zálohy PITR pomocí webu Azure portal, přejděte na objekt serveru jehož doba uchování chcete změnit na portálu a pak vyberte příslušnou možnost základě, na který objekt serveru, kterou upravujete.
 
 #### <a name="change-pitr-for-a-logical-server"></a>Změna PITR pro logický server
 

@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 7b40496d22ffed8096ac40efcb96ec55a8ba63ca
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652791"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052713"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -108,7 +108,7 @@ Existuje několik postupů vašim službám, které můžete použít k dosažen
 
 Brána firewall brání přístupu ke svému serveru z externí entitu tím, že povolíte přístup jenom konkrétní entity ke svému logickému serveru. Ve výchozím nastavení všechna připojení a databázím uvnitř logický server jsou zakázány, s výjimkou připojení nárůst od ostatních služeb Azure. S pravidlem brány firewall můžete otevřít přístup k vašemu serveru jenom pro entity (například počítač Vývojář), které schválíte, tím, že IP adresa tohoto počítače přes bránu firewall. Také vám umožňuje zadat rozsahu IP adres, které chcete povolit přístup k logickému serveru. Například vývojář počítače IP adresy ve vaší organizaci je možné přidat najednou pomocí celé řady na stránce nastavení brány Firewall.
 
-Můžete vytvořit pravidla brány firewall na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall na úrovni serveru můžete vytvořit buď pomocí Azure portal nebo pomocí aplikace SSMS. Získání informací o tom, jak nastavit pravidlo brány firewall na úrovni databáze a serveru, naleznete v tématu: [Vytvoření pravidla brány firewall ve službě SQL Database](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal).
+Můžete vytvořit pravidla brány firewall na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall na úrovni serveru můžete vytvořit buď pomocí Azure portal nebo pomocí aplikace SSMS. Získání informací o tom, jak nastavit pravidlo brány firewall na úrovni databáze a serveru, naleznete v tématu: [Vytvoření pravidla brány firewall ve službě SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Koncové body služby
 
@@ -130,11 +130,11 @@ Port 1433. SQL Database komunikuje přes tento port. Chcete-li připojit z podni
 
 #### <a name="sql-database-auditing"></a>Auditování služby SQL Database
 
-SQL Database můžete zapnout auditování sledovat události databáze. [Auditování služby SQL Database](sql-database-auditing.md) zaznamenává události databáze a zapisuje je do souboru protokolu auditování v účtu úložiště Azure. Auditování je obzvláště užitečné, pokud chcete získat přehled o případné porušení zabezpečení a zásad, zajistit dodržování předpisů atd. Umožňuje definovat a nakonfigurovat určité kategorie událostí, které se domníváte, že potřebujete auditování a na základě, získejte předem nakonfigurované sestavy a řídicí panel pro spoluprodej základní informace o události, ke kterým dochází ve vaší databázi. Můžete použít tyto zásady auditování na úrovni databáze, nebo na úrovni serveru. Příručka o tom, jak zapnout auditování serveru/databáze, naleznete v tématu: [Povolení SQL Database auditování](sql-database-security-tutorial.md#enable-sql-database-auditing-if-necessary).
+SQL Database můžete zapnout auditování sledovat události databáze. [Auditování služby SQL Database](sql-database-auditing.md) zaznamenává události databáze a zapisuje je do souboru protokolu auditování v účtu úložiště Azure. Auditování je obzvláště užitečné, pokud chcete získat přehled o případné porušení zabezpečení a zásad, zajistit dodržování předpisů atd. Umožňuje definovat a nakonfigurovat určité kategorie událostí, které se domníváte, že potřebujete auditování a na základě, získejte předem nakonfigurované sestavy a řídicí panel pro spoluprodej základní informace o události, ke kterým dochází ve vaší databázi. Můžete použít tyto zásady auditování na úrovni databáze, nebo na úrovni serveru. Příručka o tom, jak zapnout auditování serveru/databáze, naleznete v tématu: [Povolení SQL Database auditování](sql-database-security-tutorial.md#enable-security-features).
 
 #### <a name="threat-detection"></a>Detekce hrozeb
 
-S [detekce hrozeb](sql-database-threat-detection.md), získáte možnost tak, aby fungoval na porušení zabezpečení nebo zásady auditování velmi snadno zjistit. Nemusíte být zabezpečení odborné vyřešit potenciální hrozby nebo narušení ve vašem systému. Detekce hrozeb má také některé integrované funkce, jako je detekce útoku prostřednictvím injektáže SQL. Útok prostřednictvím injektáže SQL při pokusu o alter nebo ohrozit zabezpečení dat a poměrně běžný způsob obecně napadení databázové aplikace. Detekce hrozeb služby SQL Database se spustí více sad algoritmů, které detekovat potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, jakož i databáze neobvyklé vzory přístupu k (jako je například přístup z neobvyklého umístění nebo neznámého objektu zabezpečení). Vedoucí pracovníci pověření ochranou zabezpečení nebo jiné určené správci přijímání oznámení, pokud se zjistí ohrožení databáze. Každé upozornění obsahuje podrobnosti o podezřelé aktivitě a doporučení k dále zkoumat a zmírnit hrozby. Zjistěte, jak zapnout detekce hrozeb, najdete v tématech: [Povolení detekce hrozeb služby SQL Database](sql-database-security-tutorial.md#enable-sql-database-threat-detection).
+S [detekce hrozeb](sql-database-threat-detection.md), získáte možnost tak, aby fungoval na porušení zabezpečení nebo zásady auditování velmi snadno zjistit. Nemusíte být zabezpečení odborné vyřešit potenciální hrozby nebo narušení ve vašem systému. Detekce hrozeb má také některé integrované funkce, jako je detekce útoku prostřednictvím injektáže SQL. Útok prostřednictvím injektáže SQL při pokusu o alter nebo ohrozit zabezpečení dat a poměrně běžný způsob obecně napadení databázové aplikace. Detekce hrozeb služby SQL Database se spustí více sad algoritmů, které detekovat potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, jakož i databáze neobvyklé vzory přístupu k (jako je například přístup z neobvyklého umístění nebo neznámého objektu zabezpečení). Vedoucí pracovníci pověření ochranou zabezpečení nebo jiné určené správci přijímání oznámení, pokud se zjistí ohrožení databáze. Každé upozornění obsahuje podrobnosti o podezřelé aktivitě a doporučení k dále zkoumat a zmírnit hrozby. Zjistěte, jak zapnout detekce hrozeb, najdete v tématech: [Povolení detekce hrozeb služby SQL Database](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Jak chránit svá data obecně pro službu SQL Database
 

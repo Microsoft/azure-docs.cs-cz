@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 62e4171a6895f2f425d67b9d1143fe9d3999a9b9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/03/2019
+ms.openlocfilehash: 38b7c478e3b90347086c2dd005630d239db7fd89
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715898"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038207"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
@@ -26,18 +26,17 @@ Azure SQL Database a SQL Data Warehouse připojení k architektuře a tento čl�
 > [!IMPORTANT]
 > **[Nadcházející změny] Pro koncový bod připojení služby pro servery Azure SQL `Default` chování připojení se změní na `Redirect`.**
 >
-> Změna je platit od 10. listopadu 2018 už pro oblast Brazílie – jih a západní Evropa. Pro všechny ostatní oblasti změn začnou platit od 2. ledna 2019.
+> Změny se promítnou pro všechny oblasti nebo před 2. ledna 2019.
 >
 > Zabránit možnosti připojení prostřednictvím koncového bodu služby rozdělení v existujících prostředích v důsledku této změny, použijeme telemetrie postupujte takto:
 > - U serverů, které byly přístupné prostřednictvím koncových bodů služby před provedením změny, které zjistíme, můžeme Přepnout typ připojení na `Proxy`.
 > - Pro všechny ostatní servery, můžeme Přepnout připojení typu bude přepínat na `Redirect`.
 >
-> Uživatelé koncový bod služby může být stále postižená v následujících scénářích: 
-> - Aplikace se připojí k existující server zřídka, naše telemetrie nebyla zaznamenat informace o těchto aplikací 
-> - Automatické nasazení logiky vytvoří logický server za předpokladu, že je výchozí chování pro koncový bod připojení služby `Proxy` 
+> Uživatelé koncový bod služby může být stále postižená v následujících scénářích:
+> - Aplikace se připojí k existující server zřídka, naše telemetrie nebyla zaznamenat informace o těchto aplikací
+> - Automatické nasazení logiky vytvoří logický server za předpokladu, že je výchozí chování pro koncový bod připojení služby `Proxy`
 >
 > Pokud nelze navázat koncový bod připojení služby k serveru Azure SQL a jsou podezření, že se vás tato změna, ověřte prosím, že typ připojení je explicitně nastaveno `Redirect`. Pokud je to tento případ, budete muset otevřít pravidla brány firewall virtuálního počítače a skupiny zabezpečení sítě (NSG) Azure IP adres v oblasti, které patří do Sql [značka služby](../virtual-network/security-overview.md#service-tags) pro porty 11000 12000. Pokud to není pro vás, přepněte server explicitně na `Proxy`.
-
 > [!NOTE]
 > Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 
@@ -131,7 +130,6 @@ Chcete-li změnit zásady připojení Azure SQL Database pro server Azure SQL Da
 
 > [!IMPORTANT]
 > Tento skript vyžaduje [modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
->
 
 Následující skript prostředí PowerShell ukazuje, jak změnit zásady připojení.
 

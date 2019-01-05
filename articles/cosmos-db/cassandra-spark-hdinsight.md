@@ -1,20 +1,19 @@
 ---
 title: Přístup k Azure Cosmos DB Cassandra API z aplikace Spark na základě YARNU s HDInsight
 description: Tento článek popisuje, jak pracovat s Azure Cosmos DB Cassandra API z aplikace Spark na základě YARNU s HDInsight
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: a86b7375122d38d36707a419b265dcd3c1b57087
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f728baedf9e325f224ce52e64325064f553d2671
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741687"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54032895"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Přístup k Azure Cosmos DB Cassandra API z aplikace Spark na základě YARNU s HDInsight
 

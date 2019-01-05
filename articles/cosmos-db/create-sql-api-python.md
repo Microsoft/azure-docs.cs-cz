@@ -1,23 +1,21 @@
 ---
-title: 'Azure Cosmos DB: Sestavení aplikace v jazyce Python s rozhraním SQL API'
+title: 'Azure Cosmos DB: Sestavení aplikace v jazyce Python a rozhraní SQL API'
 description: Tento článek představuje ukázku kódu Python, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.custom: quick start connect, mvc, devcenter
+ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: 6f3f1f6eb89127e6b0ac0e2983a27dfd731651cb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b9ea87b3a56c4759a0d96b7d01e33087c64ccd91
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094232"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037547"
 ---
-# <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření aplikace SQL API s využitím Pythonu a webu Azure Portal
+# <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření aplikace SQL API pomocí Pythonu a webu Azure portal
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -173,7 +171,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. V aplikaci Visual Studio Code vyberte **Zobrazení**>**Paleta příkazů**. 
 
-2. Do příkazového řádku zadejte **Python: Select Interpreter** a pak vyberte verzi jazyka Python, kterou chcete používat.
+2. Na příkazovém řádku zadejte **Pythonu: Vyberte interpret** a pak vyberte verzi jazyka Python k použití.
 
     Zápatí v aplikaci Visual Studio Code se aktualizuje a bude označovat, že je vybraný interpret. 
 

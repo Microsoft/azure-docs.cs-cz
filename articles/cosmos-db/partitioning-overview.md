@@ -1,17 +1,17 @@
 ---
 title: Dělení ve službě Azure Cosmos DB
 description: Přehled dělení ve službě Azure Cosmos DB
-author: aliuy
+ms.author: mjbrown
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.author: andrl
-ms.openlocfilehash: b89830d566b36b0446836d8f32aee5756e2d0991
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 20e869d30f9e7b8102b723870f0102e041e064d7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498430"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042270"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 

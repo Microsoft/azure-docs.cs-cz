@@ -1,20 +1,20 @@
 ---
 title: Skript Azure Powershellu – vytvoření zásady převzetí služeb při selhání služby Azure Cosmos DB
 description: Ukázkový skript Azure PowerShellu – Vytvoření zásady převzetí služeb při selhání služby Azure Cosmos DB
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.custom: mvc
 ms.devlang: PowerShell
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/10/2017
-ms.openlocfilehash: 831faf7122a2fff8297cdc390584add29ee13937
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: 9d78198f6561d2eba47e0cb6d0eb0f90fa059425
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962490"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044429"
 ---
 # <a name="create-an-azure-cosmos-db-failover-policy-for-high-availability-using-powershell"></a>Vytvoření zásady převzetí služeb při selhání služby Azure Cosmos DB pro zajištění vysoké dostupnosti pomocí PowerShellu
 

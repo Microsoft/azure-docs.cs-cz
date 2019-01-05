@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679592"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050587"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Volby architektury vzdáleného monitorování
 
@@ -51,7 +51,7 @@ Azure IoT Hub se používá jako cloudová brána řešení vzdáleného monitor
 
 Připojení zařízení IoT můžete použít:
 
-- [Sady SDK pro zařízení služby IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) implementovat nativní klientské aplikace pro vaše zařízení. Sady SDK nabízejí obálky kolem rozhraní REST API centra IoT a zpracování scénářů, jako je například opakovaných pokusů.
+- [Sady SDK pro zařízení služby IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) implementovat nativní klientské aplikace pro vaše zařízení. Sady SDK nabízejí obálky kolem rozhraní REST API centra IoT a zpracování scénářů, jako je například opakovaných pokusů.
 - Integrace s Azure IoT Edge můžete nasadit a spravovat vlastní moduly spouštěných v kontejnerech na vašich zařízeních.
 - Integrace se správu automatické zařízení ve službě IoT Hub ke správě připojených zařízení hromadně.
 
@@ -59,7 +59,7 @@ Připojení zařízení IoT můžete použít:
 
 Pro zpracování datového proudu, používá řešení vzdáleného monitorování Azure Stream Analytics pro zpracování složitých pravidla. Pokud chcete použít jednodušší pravidla, je vlastní mikroslužeb s podporou pro zpracování jednoduché pravidlo, i když toto nastavení není součástí nasazení out-of-the-box. Referenční architektura doporučuje Azure Functions pro zpracování jednoduché pravidlo a Azure Stream Analytics pro zpracování složitých pravidla.
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Akcelerátor řešení vzdálené monitorování pro úložiště, používá Azure Time Series Insights a Azure Cosmos DB. Azure Time Series Insights ukládá zprávy přicházející z připojených zařízení prostřednictvím služby IoT Hub. Akcelerátor řešení využívá Azure Cosmos DB pro všechna úložiště, jako je například studeného úložiště, definice pravidla, alarmy a nastavení konfigurace.
 

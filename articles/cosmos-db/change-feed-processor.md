@@ -7,12 +7,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: eee80563a838e6d453278735abf96fa5a6996f19
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: 35577f103979bf5f767e3b9d42548ed488e365c8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835488"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041896"
 ---
 # <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>Použití změn databáze Azure Cosmos DB kanálu knihovny procesoru
 
@@ -32,17 +33,17 @@ Pokud máte dvě funkce bez serveru Azure monitoring stejného kontejneru a pomo
 
 Existují čtyři hlavní součásti implementace kanálu knihovny procesoru změn: 
 
-1. **Monitorované kontejneru:** monitorovaných kontejner obsahuje data, ze kterého je generován kanál změn. Všechny operace vložení a změny monitorovaných kontejneru se projeví v kanálu změn kontejneru.
+1. **Monitorované kontejneru:** Monitorované kontejner obsahuje data, ze kterého je generován kanál změn. Všechny operace vložení a změny monitorovaných kontejneru se projeví v kanálu změn kontejneru.
 
-1. **Zapůjčení kontejneru:** souřadnicích kontejneru zapůjčení zpracování kanálu změn napříč několika pracovních procesů. Samostatný kontejner se používá k ukládání zapůjčení s jeden zapůjčení na oddíl. Je výhodné pro uložení tohoto kontejneru zapůjčení na jiný účet s oblastí zápisu blíže na kterém je spuštěný kanálu procesoru změn. Objekt zapůjčení obsahuje následující atributy:
+1. **Zapůjčení kontejneru:** Souřadnicích kontejneru zapůjčení zpracování kanálu změn napříč několika pracovních procesů. Samostatný kontejner se používá k ukládání zapůjčení s jeden zapůjčení na oddíl. Je výhodné pro uložení tohoto kontejneru zapůjčení na jiný účet s oblastí zápisu blíže na kterém je spuštěný kanálu procesoru změn. Objekt zapůjčení obsahuje následující atributy:
 
    * Vlastník: Určuje hostitele, který vlastní zapůjčení.
 
-   * Pokračování: Určuje umístění (token pro pokračování) v kanálu pro konkrétní oddíl změn.
+   * Pokračování: Určuje pozici (token pro pokračování) v kanálu pro konkrétní oddíl změn.
 
-   * Časové razítko: Čas poslední byla aktualizována zapůjčení; časové razítko slouží ke kontrole, jestli zapůjčení je považována za ukončenou.
+   * Časové razítko: Poslední čas zapůjčení aktualizace; časové razítko slouží ke kontrole, jestli zapůjčení je považována za ukončenou.
 
-1. **Hostitel procesoru:** každého hostitele Určuje, kolik oddíly k procesu v závislosti na tom, kolik instancí hostitelů máte aktivní zapůjčení.
+1. **Hostitel procesoru:** Každý hostitel Určuje, kolik oddíly ke zpracování na základě počtu instancí hostitelů mají aktivní zapůjčení.
 
    * Při spuštění hostitele, získá zapůjčení vyrovnávat zatížení na všech hostitelích. Hostitel pravidelně obnoví zapůjčení, tak zůstanou aktivní zapůjčení.
 
@@ -52,7 +53,7 @@ Existují čtyři hlavní součásti implementace kanálu knihovny procesoru zm�
 
    Počet hostitelů v současné době nemůže být větší než počet oddílů (zapůjčení).
 
-1. **Příjemci:** spotřebitelům nebo zaměstnanců, jsou vlákna, které provádějí zpracování kanálu změn inicializuje v každém hostiteli. Každý procesor hostitel může mít několik příjemců. Každý příjemce čte změnu datového kanálu z oddílu, který je přiřazen k a upozorní jeho hostitel změny a vypršení platnosti zapůjčení.
+1. **Příjemci:** Uživatelé nebo pracovníci, jsou vlákna, které provádějí zpracování kanálu změn inicializuje v každém hostiteli. Každý procesor hostitel může mít několik příjemců. Každý příjemce čte změnu datového kanálu z oddílu, který je přiřazen k a upozorní jeho hostitel změny a vypršení platnosti zapůjčení.
 
 Abyste pochopili, jak tyto čtyři prvky z kanálu změn práce procesoru společně, Pojďme se podívat na příklad na následujícím diagramu. Monitorované kolekci ukládá dokumenty a používá "Město" jako klíč oddílu. Vidíme, že modrý oddíl obsahuje dokumenty s polem "Město" z "A-E –" a tak dále. Existují dva hostitele, každou s dvěma čtením čtyři oddíly paralelní konzumenty. Šipky zobrazují příjemci čtení z určité místo v kanálu změn. Do prvního oddílu představuje tmavší modrá nepřečtené změny, zatímco světle modrá představuje změny již čtení na kanálu změn. Hostitele použít kolekci zapůjčení pro uložení hodnoty "pokračování" ke sledování na aktuální pozici čtení pro každého příjemce.
 
@@ -62,7 +63,7 @@ Abyste pochopili, jak tyto čtyři prvky z kanálu změn práce procesoru spole�
 
 Bude vám účtována od přesunu dat do a z Cosmos kontejnery vždy využívá ru spotřebovaných rezervovaných jednotek. Bude vám účtována ru spotřebovaných kontejneru zapůjčení.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Azure Cosmos DB knihovnou change feed processor](sql-api-sdk-dotnet-changefeed.md)
 * [Balíček Nuget](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)

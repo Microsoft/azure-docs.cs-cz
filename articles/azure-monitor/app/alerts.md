@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 63045ce1ac06bfb87595675395a411978a17f95a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d3d2aa78ef853903263b4b497f0e399241ac8ce9
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017051"
+ms.locfileid: "54050825"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavení upozornění ve službě Application Insights
 [Azure Application Insights] [ start] může vás upozornit na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
@@ -29,7 +29,7 @@ Existují tři druhy výstrah:
 
 * **Upozornění na metriku** říct, pokud metrika překročí prahovou hodnotu určitou dobu – například dobu odezvy, počet výjimek, využití procesoru nebo zobrazení stránek. 
 * [**Webové testy** ] [ availability] zjistíte, když váš web není k dispozici na Internetu, nebo odpovídá pomalu. [Další informace][availability].
-* [**Proaktivní Diagnostika** ](../../application-insights/app-insights-proactive-diagnostics.md) umožňují automaticky informovat o výkonu neobvyklé vzory.
+* [**Proaktivní Diagnostika** ](../../azure-monitor/app/proactive-diagnostics.md) umožňují automaticky informovat o výkonu neobvyklé vzory.
 
 Zaměřujeme se na upozornění metrik v tomto článku.
 
@@ -102,7 +102,7 @@ Nezapomeňte, že [proaktivní míra Diagnostika chyb](../../azure-monitor/app/p
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatizace nastavení výstrahy](../../azure-monitor/app/powershell-alerts.md)
-* [Proaktivní Diagnostika](../../application-insights/app-insights-proactive-diagnostics.md) 
+* [Proaktivní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

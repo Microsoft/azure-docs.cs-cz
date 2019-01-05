@@ -1,6 +1,6 @@
 ---
-title: Jak plánovat prostředí Azure SSIS integration runtime | Dokumentace Microsoftu
-description: Tento článek popisuje, jak naplánovat spuštění a zastavení z prostředí Azure SSIS integration runtime pomocí Azure Automation a Data Factory.
+title: Jak plánovat prostředí Azure-SSIS Integration Runtime | Dokumentace Microsoftu
+description: Tento článek popisuje, jak naplánovat spuštění a zastavení prostředí Azure-SSIS Integration runtime pomocí služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,96 +8,268 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 12/27/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f83715d2a382db271686210d9df285c255c09216
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 5920ec5ec8e864b5bdb986544a3cdc259e7344da
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113973"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053632"
 ---
-# <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Jak spustit a zastavit prostředí Azure SSIS integration runtime podle plánu
-Tento článek popisuje, jak naplánovat spuštění a zastavení z prostředí Azure SSIS integration runtime (IR) pomocí služby Azure Automation a Azure Data Factory. Spuštění prostředí Azure SSIS (SQL Server Integration Services) integration runtime (IR) má svou cenu s ním spojená. Proto je obvykle chcete spustit prostředí IR jenom v případě, že budete muset spouštění balíčků služby SSIS v Azure a zastavit prostředí IR, když ho nepotřebujete. Můžete použít uživatelské rozhraní služby Data Factory nebo prostředí Azure PowerShell potřeba [ručně spustit nebo zastavit prostředí Azure SSIS IR](manage-azure-ssis-integration-runtime.md)).
+# <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak spustit a zastavit prostředí Azure-SSIS Integration Runtime podle plánu
+Tento článek popisuje, jak naplánovat spuštění a zastavení prostředí Azure-SSIS Integration Runtime (IR) pomocí Azure Data Factory (ADF). Prostředí Azure-SSIS IR je ADF výpočetní prostředky, které jsou vyhrazené pro spouštění balíčků SQL Server Integration Services (SSIS). Spuštění prostředí Azure-SSIS IR s náklady s ním spojená. Proto je obvykle chcete spustit prostředí IR jenom v případě, že budete muset spouštění balíčků služby SSIS v Azure a zastavit prostředí IR, když ho už není nutné. Můžete použít ADF uživatelské rozhraní (UI) / aplikaci nebo prostředí Azure PowerShell potřeba [ručně spustit nebo zastavit prostředí IR](manage-azure-ssis-integration-runtime.md)).
 
-Můžete například vytvořit aktivity webu pomocí webhooků do runbooku Azure Automation, PowerShell a řetězit aktivity spuštění balíčku služby SSIS mezi nimi. Aktivity webu můžete spustit a zastavit prostředí Azure-SSIS IR za běhu před a po spuštění vašeho balíčku. Další informace o aktivitě spuštění balíčku služby SSIS najdete v tématu [spouštění balíčků služby SSIS pomocí aktivity SSIS v Azure Data Factory](how-to-invoke-ssis-package-ssis-activity.md).
-
-## <a name="overview-of-the-steps"></a>Přehled kroků
-
-Tady jsou hlavní kroky popsané v tomto článku:
-
-1. **Vytvoření a testování runbooku Azure Automation.** V tomto kroku vytvořte Powershellový runbook se skriptem, který spuštění nebo zastavení Azure-SSIS IR. Potom runbook otestovat ve scénářích spouštění a ZASTAVOVÁNÍ a potvrďte, že reakcí na Incidenty, spuštění nebo zastavení. 
-2. **Vytvořte dva plány pro sadu runbook.** Pro první plán nakonfigurujete sadu runbook s START jako operaci. Pro druhý plán nakonfigurujte sadu runbook se jako operaci. Oba plány zadejte tempo spuštění sady runbook. Například můžete naplánovat první z nich ke spuštění v 8: 00, každý den a druhou pro spuštění v každý den 23: 00. První sada runbook běží, spustí Azure SSIS IR. Pokud druhá sada runbook běží, zastaví se Azure SSIS IR. 
-3. **Vytvoření dvou webhook pro runbook**, jeden pro operace spuštění a druhou pro operaci zastavení. Adresy URL tyto webhooky použijete při konfiguraci webové aktivity v kanálu služby Data Factory. 
-4. **Vytvoření kanálu Data Factory**. Kanál, který vytvoříte skládá ze tří činností. První **webové** aktivita vyvolá první webhooku spustit Azure SSIS IR. **Uložená procedura** aktivita spouští skript SQL, na kterém běží balíčků služby SSIS. Druhá **webové** aktivity zastaví Azure SSIS IR. Další informace o volání z kanálu Data Factory balíčku SSIS pomocí aktivity uložených procedur, naleznete v tématu [vyvolání balíčků SSIS](how-to-invoke-ssis-package-stored-procedure-activity.md). Pak vytvoříte aktivační událost plánovače naplánování kanálu běžet frekvencí, kterou zadáte.
+Alternativně můžete vytvořit aktivity webu v ADF kanály, abyste mohli spustit/zastavit prostředí IR podle plánu, třeba to začne ráno před spouštěním vaše každodenní úlohy ETL a zastavuje odpoledne poté, co se dokončí.  Můžete také zřetězit aktivity spuštění balíčku služby SSIS mezi dvě aktivity webu spouštějících a zastavujících vaše reakcí na Incidenty, takže prostředí IR se spustit/zastavit na vyžádání za běhu před nebo za spouštění vašeho balíčku. Další informace o aktivitě spuštění balíčku služby SSIS najdete v tématu [spouštění balíčků služby SSIS pomocí aktivity spustit balíčků služby SSIS v kanálu ADF](how-to-invoke-ssis-package-ssis-activity.md) článku.
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud jste ještě prostředí Azure SSIS integration runtime už zřídili, zřízení podle pokynů v [kurzu](tutorial-create-azure-ssis-runtime-portal.md). 
+Pokud jste ještě už zřídili prostředí Azure-SSIS IR, zřízení podle pokynů v [kurzu](tutorial-create-azure-ssis-runtime-portal.md). 
 
-## <a name="create-and-test-an-azure-automation-runbook"></a>Vytvoření a otestování runbooku Azure Automation
-V této části provedete následující kroky: 
+## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>Vytvoření a naplánování ADF kanály, které spustit a zastavit prostředí Azure-SSIS IR
+V této části se dozvíte, jak pomocí aktivity webu v kanálech ADF operací spustit/zastavit prostředí Azure-SSIS IR podle plánu nebo spuštění a zastavení na vyžádání. Můžeme vás povedou při vytvoření tří kanály: 
 
-1. Vytvoření účtu Azure Automation.
-2. Vytvořte Powershellový runbook v účtu Azure Automation. Skript Powershellu, které jsou přidružené k sadě runbook spustí nebo zastaví prostředí Azure SSIS IR založené na příkazu, který zadáte pro parametr operace. 
-3. Otestovat sadu runbook v obou po spuštění a zastavení scénáře ověřte, že funguje. 
+1. První kanál obsahuje aktivitu webu, který se spustí vaše prostředí Azure-SSIS IR. 
+2. Druhý kanál obsahuje webová aktivita, která ukončí vaše prostředí Azure-SSIS IR.
+3. Třetí kanál obsahuje aktivity spuštění balíčku služby SSIS zřetězené mezi dvě aktivity webu, které operací spustit/zastavit Azure-SSIS IR. 
 
-### <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
-Pokud nemáte účet Azure Automation, vytvořte si ho podle pokynů v tomto kroku. Podrobné pokyny najdete v článku [vytvořit účet Azure Automation](../automation/automation-quickstart-create-account.md). Jako součást v tomto kroku vytvoříte **spustit jako pro Azure** účtu (instanční objekt ve službě Azure Active Directory) a přidejte ho do **Přispěvatel** role vašeho předplatného Azure. Ujistěte se, že je stejné jako předplatné, které obsahuje služby data factory, který má Azure SSIS IR. Tento účet služby Azure Automation používá k ověření na Azure Resource Manager a pracovat s prostředky. 
+Po vytvoření a testování tyto kanály, můžete vytvořit aktivační událost plánovače a přidružte jej k libovolného kanálu. Aktivační událost plánovače definuje plánu pro spuštěnou přidruženého kanálu. 
 
-1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).    
+Například můžete vytvořit dvě aktivační události, první z nich je naplánované spouštění každý den v 6: 00 a související s první kanál, zatímco druhá je naplánováno spuštění každý den na 18: 00 a přidružené druhého kanálu.  Tímto způsobem mají období mezi 6: 00 do 18 hodin každý den, kdy prostředí IR běží, připravené ke spuštění vaše každodenní úlohy ETL.  
+
+Pokud vytvoříte třetí aktivační událost, která je naplánované spouštění každý den o půlnoci a související se třetí kanálu, tento kanál se spustí každý den o půlnoci spouštění prostředí IR těsně před spuštěním balíčku, následně provádění vašeho balíčku a ihned zastavení prostředí IR bezprostředně po spuštění balíčku, takže prostředí IR nebude spuštěn idly.
+
+### <a name="create-your-adf"></a>Vytvoření vašeho ADF
+
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).    
+2. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
+   
+   ![Nový -> Datová továrna](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
+   
+3. V **nová datová továrna** zadejte **MyAzureSsisDataFactory** pro **název**. 
+      
+   ![Stránka Nová datová továrna](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
+ 
+   Název vašeho ADF musí být globálně jedinečný. Pokud se zobrazí následující chyba, změňte název vaší ADF (například na Vaše_jméno_myazuressisdatafactory) a zkuste vytvořit znova. Zobrazit [služby Data Factory – pravidla pojmenování](naming-rules.md) článku se dozvíte o pravidla pojmenování artefaktů ADF.
+  
+   `Data factory name �MyAzureSsisDataFactory� is not available`
+      
+4. Vyberte si Azure **předplatné** pod kterou chcete vytvořit váš ADF. 
+5. V části **Skupina prostředků** proveďte jeden z následujících kroků:
+     
+   - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
+   - Vyberte **vytvořit nový**a zadejte název nové skupiny prostředků.   
+         
+   Další informace o skupinách prostředků najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md) článku.
+   
+6. Pro **verze**vyberte **V2** .
+7. Pro **umístění**, vyberte jednu z podporovaných pro ADF vytváření z rozevíracího seznamu umístění.
+8. Zaškrtněte **Připnout na řídicí panel**.     
+9. Klikněte na možnost **Vytvořit**.
+10. Na řídicím panelu Azure se zobrazí následující dlaždice se statusem: **Nasazování datové továrny**. 
+
+   ![nasazování dlaždice datové továrny](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
+   
+11. Po vytvoření se zobrazí, uvidíte stránku ADF, jak je znázorněno níže.
+   
+   ![Domovská stránka datové továrny](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
+   
+12. Klikněte na tlačítko **vytvořit a monitorovat** pro spuštění na samostatné kartě uživatelské rozhraní ADF/aplikace.
+
+### <a name="create-your-pipelines"></a>Vytváření kanálů
+
+1. V **pusťme se do práce** stránce **vytvořit kanál**. 
+
+   ![Stránka Začínáme](./media/how-to-schedule-azure-ssis-integration-runtime/get-started-page.png)
+   
+2. V **aktivity** sady nástrojů, rozbalte **Obecné** nabídky a přetáhnout **webové** aktivity na plochu návrháře kanálu. V **Obecné** kartě okna vlastnosti aktivity, změňte název aktivity na **startMyIR**. Přepnout na **nastavení** kartu, a proveďte následující akce.
+
+    1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, který se spustí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`.
+    
+    Alternativně je můžete také zkopírujte a vložte ID prostředku prostředí IR z jeho monitorování stránky na ADF uživatelského rozhraní nebo aplikaci nahradit následující část výše zobrazenou adresu URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
+    
+   ![ID prostředku prostředí IR služby SSIS ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
+  
+    2. Pro **metoda**vyberte **příspěvek**. 
+    3. Pro **tělo**, zadejte `{"message":"Start my IR"}`. 
+    4. Pro **ověřování**vyberte **MSI** pomocí spravované identity pro vaše ADF naleznete v části [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) najdete další informace.
+    5. Pro **prostředků**, zadejte `https://management.azure.com/`. 
+    
+   ![Plán ADF webové aktivity SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
+  
+3. Klonovat první kanál vytvořit druhý certifikát, mění se název aktivity na **stopMyIR** a nahraďte následující vlastnosti.
+
+    1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, která ukončí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
+  
+    2. Pro **tělo**, zadejte `{"message":"Stop my IR"}`. 
+
+4. Vytvoření kanálu třetí, přetažením **spuštění balíčku služby SSIS** aktivita z **aktivity** nástrojů do návrháře kanálu plochu a nakonfigurujte ho podle pokynů v [ Vyvolání balíčků SSIS pomocí aktivity spustit balíčků služby SSIS ve službě ADF](how-to-invoke-ssis-package-ssis-activity.md) článku.  Alternativně můžete použít **uložená procedura** aktivity místo a nakonfigurujte ho podle pokynů v [vyvolání balíčků SSIS pomocí aktivity uložených procedur ve službě ADF](how-to-invoke-ssis-package-stored-procedure-activity.md) článku.  V dalším kroku řetězit aktivity spuštění služby SSIS balíčku/uložené procedury mezi dvě aktivity webu, které prostředí IR, podobně jako tyto aktivity webu v kanálech první nebo druhé spuštění/zastavení.
+
+   ![Aktivita webu ADF na vyžádání prostředí IR služby SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
+
+5. Přiřazení spravovaných identit pro vaše ADF **Přispěvatel** rolí na sebe sama, takže aktivity webu v její kanály můžete volat rozhraní REST API se spustit nebo zastavit prostředí Azure-SSIS IR zřízené v ní.  Na stránce ADF na webu Azure portal, klikněte na tlačítko **řízení přístupu (IAM)**, klikněte na tlačítko **+ přidat přiřazení role**a pak na **přidat přiřazení role** okno, proveďte následující akce.
+
+    1. Pro **Role**vyberte **Přispěvatel**. 
+    2. Pro **přiřadit přístup k**vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**. 
+    3. Pro **vyberte**, vyhledejte své jméno ADF a vyberte ho. 
+    4. Klikněte na **Uložit**.
+    
+   ![ADF spravované Identity přiřazení Role](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
+
+6. Ověřit vaše ADF a všechna nastavení kanálu kliknutím **ověřit, zda všechny / Validate** na panelu nástrojů továrny a kanálu. Zavřít **výstup ověření kanálu Factory/** kliknutím **>>** tlačítko.  
+
+   ![Ověření kanálu](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
+
+### <a name="test-run-your-pipelines"></a>Testovací běh vašich kanálů
+
+1. Vyberte **testovací běh** na panelu nástrojů pro každý kanál a viz **výstup** okno v dolním podokně. 
+
+   ![Testovací běh](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
+    
+2. Třetí kanálu otestovat, spusťte SQL Server Management Studio (SSMS). V **připojit k serveru** okno, proveďte následující akce. 
+
+    1. Pro **název serveru**, zadejte  **&lt;název vašeho serveru Azure SQL Database&gt;. database.windows.net**.
+    2. Vyberte **možnosti >>**.
+    3. Pro **připojit k databázi**vyberte **SSISDB**.
+    4. Vyberte **Connect** (Připojit). 
+    5. Rozbalte **integrace služby katalogy** -> **SSISDB** -> složky -> **projekty** -> Projekt vaše služby SSIS -> **balíčky** . 
+    6. Klikněte pravým tlačítkem na zadaného balíčku služby SSIS ke spuštění a vyberte **sestavy** -> **standardních sestav** -> **všech provedení**. 
+    7. Ověřte, zda byl spuštěn. 
+
+   ![Ověřte spuštění balíčku služby SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
+
+### <a name="schedule-your-pipelines"></a>Plánování kanálů
+
+Teď, když vaše kanály fungovat jako jste očekávali, můžete vytvořit aktivační události pro spuštění v zadané cadences. Podrobnosti o přidružování aktivační události kanálů najdete v tématu [aktivace kanálu podle plánu](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule) článku.
+
+1. Na panelu nástrojů kanálu vyberte **aktivační událost** a vyberte **nová/upravit**. 
+
+   ![Aktivační událost -> Nový/upravit](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
+
+2. V **přidat aktivační události** vyberte **+ nová**.
+
+   ![Přidat aktivační události – nový](./media/how-to-schedule-azure-ssis-integration-runtime/add-triggers-new.png)
+
+3. V **Nová aktivační událost** podokno, proveďte následující akce: 
+
+    1. Pro **název**, zadejte název pro aktivační událost. V následujícím příkladu **každodenní spouštění** je název aktivační události. 
+    2. Pro **typ**vyberte **plán**. 
+    3. Pro **Start datum (UTC)**, zadejte počáteční datum a čas ve standardu UTC. 
+    4. Pro **opakování**, zadejte tempo aktivační události. V následujícím příkladu je **denní** po. 
+    5. Pro **End**vyberte **bez ukončení** nebo zadejte koncové datum a čas, po výběru **k datu**. 
+    6. Vyberte **aktivováno** aktivační okamžitě po publikování celé nastavení ADF. 
+    7. Vyberte **Další**.
+
+   ![Aktivační událost -> Nový/upravit](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
+    
+4. V **parametry spuštění aktivační události** stránce zkontrolujte všechna upozornění a vyberte **Dokončit**. 
+5. Celý ADF nastavení publikování tak, že vyberete **Publikovat vše** na panelu nástrojů objekt pro vytváření. 
+
+   ![Publikovat vše](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
+
+### <a name="monitor-your-pipelines-and-triggers-in-azure-portal"></a>Sledujte své kanály a aktivační události na webu Azure portal
+
+1. Pokud chcete monitorovat spuštění aktivační události a spuštění kanálu, použijte **monitorování** karty na levé straně ADF uživatelského rozhraní nebo aplikaci. Podrobné pokyny najdete v článku [monitorování kanálu](quickstart-create-data-factory-portal.md#monitor-the-pipeline) článku.
+
+   ![Spuštění kanálu](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
+
+2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte první odkaz (**zobrazit spuštění aktivit**) v **akce** sloupce. Třetí kanálu uvidíte tři spuštění aktivit, jeden pro každou zřetězené aktivitu v kanálu (webové aktivity pro spuštění prostředí IR, aktivita uložené procedury ke spouštění vašeho balíčku, webová aktivita zastavit prostředí IR). Chcete-li zobrazit kanál spustí znovu, vyberte **kanály** odkazu v horní části.
+
+   ![Spuštění aktivit](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
+
+3. Pokud chcete zobrazit spuštění aktivační události vyberte **aktivační událost spouští** z rozevíracího seznamu v části **spuštění kanálu** v horní části. 
+
+   ![Spuštění aktivačních událostí](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
+
+### <a name="monitor-your-pipelines-and-triggers-with-powershell"></a>Sledujte své kanály a aktivační události s využitím Powershellu
+
+Sledujte své kanály a aktivační události pomocí skriptů jako v následujících příkladech.
+
+1. Získáte stav spuštění kanálu.
+
+  ```powershell
+  Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
+  ```
+
+2. Získáte informace o aktivační události.
+
+  ```powershell
+  Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
+  ```
+
+3. Načíst stav spuštění aktivační události.
+
+  ```powershell
+  Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
+  ```
+
+## <a name="create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir"></a>Vytvoření a naplánování runbooku Azure Automation, který spustí/zastaví prostředí Azure-SSIS IR
+
+V této části se zjistíte, jak vytvořit runbook Azure Automation, který se spustí skript Powershellu, spouštění/zastavování prostředí Azure-SSIS IR podle plánu.  To je užitečné, pokud chcete spustit další skripty před a po spuštění/zastavení prostředí IR pro pre, post zpracování.
+
+### <a name="create-your-azure-automation-account"></a>Vytvoření účtu Azure Automation.
+
+Pokud ještě nemáte účet Azure Automation, vytvořte ho podle pokynů v tomto kroku. Podrobné pokyny najdete v článku [vytvořit účet Azure Automation](../automation/automation-quickstart-create-account.md) článku. Jako součást v tomto kroku vytvoříte **spustit jako pro Azure** účtu (instanční objekt ve službě Azure Active Directory) a přiřaďte ho **Přispěvatel** role ve vašem předplatném Azure. Ujistěte se, že se jedná o předplatným, které obsahuje váš ADF s Azure SSIS IR. Azure Automation bude tento účet používat k ověření na Azure Resource Manager a pracovat s prostředky. 
+
+1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. V současné době ADF uživatelského rozhraní nebo aplikací je podporována pouze v Microsoft Edge a webové prohlížeče Google Chrome.
+2. Přihlaste se k [portálu Azure](https://portal.azure.com/).    
 3. Vyberte **nový** v nabídce vlevo vyberte **monitorování a správa**a vyberte **automatizace**. 
 
-    ![Nový -> monitorování + Správa -> Automatizace](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
-2. V **přidat účet Automation** okno, proveďte následující kroky: 
+   ![Nový -> monitorování + Správa -> Automatizace](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+    
+2. V **přidat účet Automation** podokno, proveďte následující akce.
 
-    1. Zadejte **název** pro účet automation. 
-    2. Vyberte **předplatné** , který má datovou továrnu s Azure SSIS IR. 
-    3. Pro **skupiny prostředků**vyberte **vytvořit nový** a vytvořte novou skupinu prostředků nebo vyberte **použít existující** vyberte existující skupinu prostředků. 
-    4. Vyberte **umístění** pro účet automation. 
-    5. Ujistěte se, že **vytvořit účet Spustit jako** je nastavena na **Ano**. Instanční objekt služby se vytvoří ve službě Azure Active Directory. Přidá se do **Přispěvatel** role vašeho předplatného Azure
-    6. Vyberte **připnout na řídicí panel** tak, aby se zobrazí na řídicím panelu portálu. 
+    1. Pro **název**, zadejte název účtu služby Azure Automation. 
+    2. Pro **předplatné**, vyberte předplatné, které má vaše ADF pomocí prostředí Azure-SSIS IR. 
+    3. Pro **skupiny prostředků**vyberte **vytvořit nový** vytvořit novou skupinu prostředků nebo **použít existující** vyberte nějaký existující. 
+    4. Pro **umístění**, vyberte umístění pro váš účet Azure Automation. 
+    5. Potvrďte **vytvoření účtu Azure spustit jako** jako **Ano**. Instanční objekt služby bude vytvořena ve službě Azure Active Directory a přiřadit **Přispěvatel** role ve vašem předplatném Azure.
+    6. Vyberte **připnout na řídicí panel** trvale zobrazí v řídicím panelu Azure. 
     7. Vyberte **Vytvořit**. 
 
-        ![Nový -> monitorování + Správa -> Automatizace](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
-3. Zobrazí **stav nasazení** na řídicím panelu a v oznámeních. 
+   ![Nový -> monitorování + Správa -> Automatizace](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
+   
+3. Zobrazí se stav nasazení vašeho účtu Azure Automation v řídicím panelu Azure a oznámení. 
     
-    ![Nasazení služby automation](./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png) 
-4. Po úspěšném vytvoření se zobrazí domovská stránka účtu automation. 
+   ![Nasazení služby automation](./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png) 
+    
+4. Po úspěšném vytvoření se zobrazí na domovské stránce vašeho účtu Azure Automation. 
 
-    ![Domovská stránka služby Automation](./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png)
+   ![Domovská stránka služby Automation](./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png)
 
-### <a name="import-data-factory-modules"></a>Import modulů služby Data Factory
+### <a name="import-adf-modules"></a>Import modulů ADF
 
-1. Vyberte **moduly** v **SDÍLENÉ prostředky** části v nabídce vlevo a ověřte, jestli máte **AzureRM.Profile** a **AzureRM.DataFactoryV2** v seznamu modulů.
+1. Vyberte **moduly** v **SDÍLENÉ prostředky** v nabídce vlevo a ověřte, zda máte **AzureRM.DataFactoryV2**  +   **AzureRM.Profile** v seznamu modulů.
 
-    ![Ověřte požadované moduly.](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
+   ![Ověřte požadované moduly.](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  Přejděte na galerii prostředí PowerShell pro [AzureRM.DataFactoryV2 modulu](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/)vyberte **nasadit do Azure Automation**, vyberte svůj účet Automation a pak vyberte **OK**. Přejděte zpět na zobrazení **moduly** v **SDÍLENÉ prostředky** části v nabídce vlevo a počkejte, dokud **stav** z **AzureRM.DataFactoryV2** modulu změnu **dostupné**.
+2.  Pokud nemáte **AzureRM.DataFactoryV2**, přejděte na galerii prostředí PowerShell pro [AzureRM.DataFactoryV2 modulu](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/)vyberte **nasadit do Azure Automation**, vyberte Azure Účet Automation a pak vyberte **OK**. Přejděte zpět na zobrazení **moduly** v **SDÍLENÉ prostředky** části v nabídce vlevo a počkejte, dokud **stav** z **AzureRM.DataFactoryV2** modul se změnil na **dostupné**.
 
     ![Ověření modulu služby Data Factory](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  Přejděte na galerii prostředí PowerShell pro [modulu AzureRM.Profile](https://www.powershellgallery.com/packages/AzureRM.profile/), klikněte na **nasadit do Azure Automation**, vyberte svůj účet Automation a pak vyberte **OK**. Přejděte zpět na zobrazení **moduly** v **SDÍLENÉ prostředky** části v nabídce vlevo a počkejte, dokud **stav** z **AzureRM.Profile**modulu změnu **dostupné**.
+3.  Pokud nemáte **AzureRM.Profile**, přejděte na galerii prostředí PowerShell pro [modulu AzureRM.Profile](https://www.powershellgallery.com/packages/AzureRM.profile/)vyberte **nasadit do Azure Automation**, vyberte Azure Automation účet a potom vyberte **OK**. Přejděte zpět na zobrazení **moduly** v **SDÍLENÉ prostředky** části v nabídce vlevo a počkejte, dokud **stav** z **AzureRM.Profile** modul se změnil na **dostupné**.
 
     ![Ověření modulu profilu](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
-### <a name="create-a-powershell-runbook"></a>Vytvoření runbooku v PowerShellu
-Následující postup předvádí kroky k vytvoření runbooku v Powershellu. Skript přidružené k sadě runbook buď spustí/zastaví založené na příkazu zadáte pro prostředí Azure SSIS IR **operace** parametru. Tato část neposkytuje všechny podrobnosti pro vytvoření sady runbook. Další informace najdete v tématu [vytvoření sady runbook](../automation/automation-quickstart-create-runbook.md) článku.
+### <a name="create-your-powershell-runbook"></a>Vytvoření Powershellového runbooku
 
-1. Přepněte **sady Runbook** kartu a vyberte **+ přidat runbook** z panelu nástrojů. 
+Následující část obsahuje postup pro vytvoření sady runbook Powershellu. Skript přidružené k sadě runbook buď spustí/zastaví založené na příkazu zadáte pro Azure-SSIS IR **operace** parametru. Tento oddíl neposkytuje kompletní informace pro vytvoření sady runbook. Další informace najdete v tématu [vytvoření sady runbook](../automation/automation-quickstart-create-runbook.md) článku.
 
-    ![Přidejte tlačítko sady runbook](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
-2. Vyberte **vytvořit nový runbook**a proveďte následující kroky: 
+1. Přepnout na **sady Runbook** kartě a vyberte **+ přidat runbook** z panelu nástrojů. 
 
-    1. Pro **název**, typ **StartStopAzureSsisRuntime**.
+   ![Přidejte tlačítko sady runbook](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   
+2. Vyberte **vytvořit nový runbook** a proveďte následující akce: 
+
+    1. Pro **název**, zadejte **StartStopAzureSsisRuntime**.
     2. Pro **typ Runbooku**vyberte **Powershellu**.
     3. Vyberte **Vytvořit**.
     
-        ![Přidejte tlačítko sady runbook](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
-3. Kopírování a vkládání následující skript do okna skript sady runbook. Uložit a potom publikovat sadu runbook pomocí **Uložit** a **publikovat** tlačítka na panelu nástrojů. 
+   ![Přidejte tlačítko sady runbook](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
+   
+3. Zkopírujte a vložte následující skript Powershellu pro okno skript sady runbook. Uložit a potom publikovat runbook pomocí **Uložit** a **publikovat** tlačítka na panelu nástrojů. 
 
     ```powershell
     Param
@@ -152,261 +324,59 @@ Následující postup předvádí kroky k vytvoření runbooku v Powershellu. Sk
     "##### Completed #####"    
     ```
 
-    ![Upravit runbook Powershellu](./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png)
-5. Otestovat sadu runbook tak, že vyberete **Start** tlačítko na panelu nástrojů. 
+   ![Upravit runbook Powershellu](./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png)
+    
+4. Otestovat sadu runbook tak, že vyberete **Start** tlačítko na panelu nástrojů. 
 
-    ![Sada runbook tlačítko Start](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
-6. V **spustit Runbook** okno, proveďte následující kroky: 
+   ![Sada runbook tlačítko Start](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
+    
+5. V **spustit Runbook** podokno, proveďte následující ations: 
 
-    1. Pro **název skupiny prostředků**, zadejte název skupiny prostředků pomocí služby data factory, který má Azure SSIS IR. 
-    2. Pro **název datové TOVÁRNY**, zadejte název objektu pro vytváření dat, která má Azure SSIS IR. 
-    3. Pro **AZURESSISNAME**, zadejte název Azure SSIS IR. 
+    1. Pro **název skupiny prostředků**, zadejte název skupiny prostředků, která obsahuje vaše ADF pomocí prostředí Azure-SSIS IR. 
+    2. Pro **název datové TOVÁRNY**, zadejte název vaší ADF pomocí prostředí Azure-SSIS IR. 
+    3. Pro **AZURESSISNAME**, zadejte název prostředí Azure-SSIS IR. 
     4. Pro **operace**, zadejte **START**. 
     5. Vyberte **OK**.  
 
-        ![Sada runbook časový interval pro spuštění](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
-7. V okně úlohy vyberte **výstup** dlaždici. V okně výstupu úlohy, počkejte, až se zobrazí zpráva **### dokončeno ###** po zobrazení **### počáteční ###**. Spuštění prostředí Azure SSIS IR trvá přibližně 20 minut. Zavřít **úlohy** okna a potom **Runbook** okna.
+   ![Sada runbook časový interval pro spuštění](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
+   
+6. V okně úlohy vyberte **výstup** dlaždici. V okně výstupu čekat na zprávu **### dokončeno ###** po zobrazení **### počáteční ###**. Spuštění prostředí Azure-SSIS IR trvá přibližně 20 minut. Zavřít **úlohy** okno a získat zpět do **Runbook** okna.
 
-    ![Azure SSIS IR – zahájeno](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
-8.  Opakujte předchozí dva kroky, ale pomocí **Zastavit** hodnotu **operace**. Znovu spusťte runbook kliknutím na položku **Start** tlačítko na panelu nástrojů. Zadejte název skupiny prostředků, název datové továrny a prostředí Azure SSIS IR název. Pro **operace**, zadejte **Zastavit**. 
+   ![Azure SSIS IR – zahájeno](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+    
+7. Opakujte předchozí dva kroky pomocí **Zastavit** hodnotu **operace**. Znovu spusťte runbook kliknutím na položku **Start** tlačítko na panelu nástrojů. Zadejte skupinu prostředků, ADF a Azure-SSIS IR názvy. Pro **operace**, zadejte **Zastavit**. V okně výstupu čekat na zprávu **### dokončeno ###** po zobrazení **### zastavení ###**. Zastavení prostředí Azure-SSIS IR nepřijímá až potom ji spustit. Zavřít **úlohy** okno a získat zpět do **Runbook** okna.
 
-    V okně výstupu úlohy, počkejte, až se zobrazí zpráva **### dokončeno ###** po zobrazení **### zastavení ###**. Zastavení prostředí Azure SSIS IR nepřijímá až od Azure SSIS IR. Zavřít **úlohy** okna a potom **Runbook** okna.
+## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Vytváření plánů pro sady runbook a operací spustit/zastavit prostředí Azure-SSIS IR
 
-## <a name="create-schedules-for-the-runbook-to-startstop-the-azure-ssis-ir"></a>Vytváření plánů pro sady runbook spustit/zastavit prostředí Azure SSIS IR
-V předchozí části jste vytvořili runbooku Azure Automation, který můžete spustit nebo zastavit Azure-SSIS IR. V této části vytvoříte dvě plány pro sadu runbook. Při konfiguraci prvního plánu, zadejte START pro parametr operace. Podobně při konfiguraci druhý plánu, zadejte místo pro OPERACI. Podrobné pokyny pro vytváření plánů, naleznete v tématu [vytvořit plán](../automation/automation-schedules.md#creating-a-schedule).
+V předchozí části jste vytvořili runbooku Azure Automation, který můžete spustit nebo zastavit prostředí Azure-SSIS IR. V této části vytvoříte dvě plány pro své sadě runbook. Při konfiguraci prvního plánu, zadejte **START** pro **operace**. Podobně při konfiguraci je druhý řádek, zadáte **Zastavit** pro **operace**. Podrobný postup vytváření plánů najdete v tématu [vytvořit plán](../automation/automation-schedules.md#creating-a-schedule) článku.
 
 1. V **Runbook** okně **plány**a vyberte **+ přidat plán** na panelu nástrojů. 
 
-    ![Azure SSIS IR – zahájeno](./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png)
-2. V **plán Runbook** okno, proveďte následující kroky: 
+   ![Azure SSIS IR – zahájeno](./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png)
+   
+2. V **plán Runbook** podokno, proveďte následující akce: 
 
     1. Vyberte **připojení plánu k runbooku**. 
     2. Vyberte **vytvoření nového plánu**.
-    3. V **nový plán** okno, zadejte **Start IR denně** pro **název**. 
-    4. V **zahájí oddíl**, může určit čas pár minut po aktuálním čase. 
+    3. V **nový plán** podokně zadejte **Start IR denně** pro **název**. 
+    4. Pro **spustí**, zadejte čas, který je pár minut po aktuálním čase. 
     5. Pro **opakování**vyberte **periodický**. 
-    6. V **opakovat každých** vyberte **den**. 
+    6. Pro **opakovat každých**, zadejte **1** a vyberte **den**. 
     7. Vyberte **Vytvořit**. 
 
-        ![Plán pro spuštění prostředí Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
-3. Přepněte **nastavení parametrů a běhu** kartu. Zadejte název skupiny prostředků, název datové továrny a prostředí Azure SSIS IR název. Pro **operace**, zadejte **START**. Vyberte **OK**. Vyberte **OK** znovu, abyste viděli plán na **plány** stránky sady runbook. 
+   ![Plán pro spuštění prostředí Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
+    
+3. Přepnout na **nastavení parametrů a běhu** kartu. Zadejte skupinu prostředků, ADF a Azure-SSIS IR názvy. Pro **operace**, zadejte **START** a vyberte **OK**. Vyberte **OK** znovu, abyste viděli plán na **plány** stránky sady runbook. 
 
-    ![Plán pro rovnou začít prostředí Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
-4. Opakujte předchozí dva kroky k vytvoření plánu s názvem **zastavit prostředí IR denně**. Tentokrát, zadejte čas aspoň 30 minut od chvíle, kdy jste zadali pro **Start IR denně** plánu. Pro **operace**, zadejte **Zastavit**. 
-5. V **Runbook** okně **úlohy** v nabídce vlevo. Měli byste vidět úloh vytvořených produktem plány v zadaném časy a jejich stavy. Můžete zobrazit podrobnosti o úlohy, například jeho výstup podobný co jste viděli při testování runbooku. 
+   ![Plán pro rovnou začít prostředí Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+    
+4. Opakujte předchozí dva kroky k vytvoření plánu s názvem **zastavit prostředí IR denně**. Zadejte čas, který je nejméně 30 minut od chvíle, kdy jste zadali pro **Start IR denně** plánu. Pro **operace**, zadejte **Zastavit** a vyberte **OK**. Vyberte **OK** znovu, abyste viděli plán na **plány** stránky sady runbook. 
 
-    ![Plán pro rovnou začít prostředí Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png)
-6. Po dokončení testování, upravovat a výběrem zakázat plány **ne** pro **povoleno**. Vyberte **plány** v nabídce vlevo vyberte **spustit prostředí IR denní/Stop reakcí na Incidenty denně**a vyberte **ne** pro **povoleno**. 
+5. V **Runbook** okně **úlohy** v nabídce vlevo. Měli byste vidět úloh vytvořených produktem schémata v zadaný čas a jejich stavy. Zobrazí podrobnosti úlohy, jako je například jeho výstup, podobný co jste viděli po vás vaše sada runbook otestovat. 
 
-## <a name="create-webhooks-to-start-and-stop-the-azure-ssis-ir"></a>Vytváření webhooků, spuštění a zastavení prostředí Azure SSIS IR
-Postupujte podle pokynů v [vytvořit webhook](../automation/automation-webhooks.md#creating-a-webhook) k vytvoření dvou webhooky pro sadu runbook. Pro první z nich zadejte START jako OPERACI a pro druhý, zadejte jako OPERACI zastavení. Uložte si adresy URL pro webhooky někde (například poznámkového bloku Onenotu nebo textového souboru). Tyto adresy URL použijete při konfiguraci webové aktivity v kanálu služby Data Factory. Příklad vytvoření webhooku, který se spustí prostředí Azure SSIS IR je znázorněno na následujícím obrázku:
-
-1. V **Runbook** okně **Webhooky** v levé nabídce a vyberte **+ přidat Webhook** na panelu nástrojů. 
-
-    ![Webhooky -> Přidat Webhook](./media/how-to-schedule-azure-ssis-integration-runtime/add-web-hook-menu.png)
-2. V **přidat Webhook** okně **vytvořit nový webhook**, a proveďte následující akce: 
-
-    1. Pro **název**, zadejte **StartAzureSsisIR**. 
-    2. Ujistěte se, že **povoleno** je nastavena na **Ano**. 
-    3. Kopírovat **URL** a uložte ho někam. Tento krok je důležitý. Adresa URL nezobrazí později. 
-    4. Vyberte **OK**. 
-
-        ![Okno Nový Webhook](./media/how-to-schedule-azure-ssis-integration-runtime/new-web-hook-window.png)
-3. Přepněte **nastavení parametrů a běhu** kartu. Zadejte název skupiny prostředků, název datové továrny a název prostředí Azure SSIS IR. Pro **operace**, zadejte **START**. Klikněte na **OK**. Poté klikněte na možnost **Vytvořit**. 
-
-    ![Webhook – nastavení parametrů a běhu](./media/how-to-schedule-azure-ssis-integration-runtime/webhook-parameters.png)
-4. Opakujte předchozí tři kroky k vytvoření jiného webhooku s názvem **StopAzureSsisIR**. Nezapomeňte si zkopírovat adresu URL. Při zadávání parametrů a parametrů spuštění, zadejte **Zastavit** pro **operace**. 
-
-Byste měli mít dvě adresy URL. jednu pro **StartAzureSsisIR** webhook a druhou pro **StopAzureSsisIR** webhooku. Můžete odeslat požadavek HTTP POST na tyto adresy URL pro spuštění/zastavení vaše Azure SSIS IR. 
-
-## <a name="create-and-schedule-a-data-factory-pipeline-that-startsstops-the-ir"></a>Vytvoření a naplánování kanálu služby Data Factory, který spustí/zastaví prostředí IR
-V této části ukazuje, jak používat aktivitu webu k vyvolání webhooky, které jste vytvořili v předchozí části.
-
-Kanál, který vytvoříte skládá ze tří činností. 
-
-1. První **webové** aktivita vyvolá první webhooku spustit Azure SSIS IR. 
-2. **Spuštění balíčku služby SSIS** aktivity nebo **uložená procedura** aktivita spustí balíček služby SSIS.
-3. Druhá **webové** aktivity volá webhook, aby zastavit Azure SSIS IR. 
-
-Po vytvoření a testování kanálu, vytvoříte aktivační událost plánovače a přidružit kanálu. Aktivační událost plánovače definuje plán pro kanál. Předpokládejme, že vytvoříte aktivační událost, která je naplánované spouštění každý den ve 23: 00. Aktivační událost spouští kanál ve 23: 00 každý den. Kanál spuštění prostředí Azure SSIS IR, spustí balíček služby SSIS a poté se zastaví Azure SSIS IR. 
-
-### <a name="create-a-data-factory"></a>Vytvoření datové továrny
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).    
-2. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
-   
-   ![Nový -> Datová továrna](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
-3. Na stránce **Nová datová továrna** jako **název** zadejte **MyAzureSsisDataFactory**. 
-      
-     ![Stránka Nová datová továrna](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
- 
-   Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název datové továrny (například na vaše_jméno_MyAzureSsisDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
-  
-       `Data factory name �MyAzureSsisDataFactory� is not available`
-3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
-4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
-     
-      - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
-      - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
-         
-      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-4. Jako **verzi** vyberte **V2**.
-5. Vyberte **umístění** pro datovou továrnu. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
-6. Zaškrtněte **Připnout na řídicí panel**.     
-7. Klikněte na možnost **Vytvořit**.
-8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
-
-    ![nasazování dlaždice datové továrny](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
-9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
-   
-   ![Domovská stránka datové továrny](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
-10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory.
-
-### <a name="create-a-pipeline"></a>Vytvoření kanálu
-
-1. V **Začínáme** stránce **vytvořit kanál**. 
-
-   ![Stránka Začínáme](./media/how-to-schedule-azure-ssis-integration-runtime/get-started-page.png)
-2. V **aktivity** sady nástrojů, rozbalte **Obecné**, přetáhněte **webové** aktivity na plochu návrháře kanálu. V **Obecné** karty **vlastnosti** okna, změňte název aktivity na **StartIR**.
-
-   ![První aktivity webu – karta Obecné](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-general-tab.png)
-3. Přepněte **nastavení** kartu **vlastnosti** okna, a proveďte následující akce: 
-
-    1. Pro **URL**, vložte adresu URL webhooku, která spustí Azure SSIS IR. 
-    2. Pro **metoda**vyberte **příspěvek**. 
-    3. Pro **tělo**, zadejte `{"message":"hello world"}`. 
-   
-        ![První aktivity webu – karta nastavení](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-
-4. Přetažení aktivity spuštění balíčku služby SSIS nebo aktivity uložené procedury z **Obecné** část **aktivity** sady nástrojů. Nastavte název aktivity na **RunSSISPackage**. 
-
-5. Pokud vyberete aktivity spuštění balíčku služby SSIS, postupujte podle pokynů v [spouštění balíčků služby SSIS pomocí aktivity SSIS v Azure Data Factory](how-to-invoke-ssis-package-ssis-activity.md) nezbytných k dokončení vytvoření aktivity.  Ujistěte se, že zadáte dostatečný počet opakovaných pokusů, které jsou dostatečně častý na čekání na dostupnost prostředí Azure-SSIS IR, protože trvá až 30 minut spuštění. 
-
-    ![Nastavení opakování](media/how-to-schedule-azure-ssis-integration-runtime/retry-settings.png)
-
-6. Pokud vyberete aktivity uložené procedury, postupujte podle pokynů v [vyvolání balíčků SSIS pomocí aktivity uložených procedur ve službě Azure Data Factory](how-to-invoke-ssis-package-stored-procedure-activity.md) nezbytných k dokončení vytvoření aktivity. Ujistěte se, že vložení skript Transact-SQL, který čeká na dostupnost prostředí Azure-SSIS IR, protože trvá až 30 minut spuštění.
-    ```sql
-    DECLARE @return_value int, @exe_id bigint, @err_msg nvarchar(150)
-
-    -- Wait until Azure-SSIS IR is started
-    WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
-    BEGIN
-        WAITFOR DELAY '00:00:01';
-    END
-
-    EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
-        @project_name=N'YourProject', @package_name=N'YourPackage',
-        @use32bitruntime=0, @runincluster=1, @useanyworker=1,
-        @execution_id=@exe_id OUTPUT 
-
-    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
-
-    EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
-
-    -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/
-    -- failed (4)/pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
-    IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
-    BEGIN
-        SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
-        RAISERROR(@err_msg, 15, 1)
-    END
-    ```
-
-7. Připojení **webové** aktivitu **spuštění balíčku služby SSIS** nebo **uložená procedura** aktivity. 
-
-    ![Propojení aktivit Web a uložená procedura](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
-
-8. Přetáhnout myší jiného **webové** aktivity napravo od **spuštění balíčku služby SSIS** aktivity nebo **uložená procedura** aktivity. Nastavte název aktivity na **StopIR**. 
-9. Přepněte **nastavení** kartu **vlastnosti** okna, a proveďte následující akce: 
-
-    1. Pro **URL**, vložte adresu URL webhooku, která ukončí Azure SSIS IR. 
-    2. Pro **metoda**vyberte **příspěvek**. 
-    3. Pro **tělo**, zadejte `{"message":"hello world"}`.  
-10. Připojení **spuštění balíčku služby SSIS** aktivity nebo **uložená procedura** aktivity na poslední **webové** aktivity.
-
-    ![Úplný kanál](./media/how-to-schedule-azure-ssis-integration-runtime/full-pipeline.png)
-11. Kliknutím na ověřit nastavení kanálu **ověřit** na panelu nástrojů. Zavřít **sestava ověření kanálu** kliknutím **>>** tlačítko. 
-
-    ![Ověření kanálu](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
-
-### <a name="test-run-the-pipeline"></a>Testovací spuštění kanálu
-
-1. Vyberte **testovací běh** na panelu nástrojů pro kanál. Najdete ve výstupu v **výstup** okno v dolním podokně. 
-
-    ![Testovací běh](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
-2. V **Runbook** stránku vašeho účtu Azure Automation můžete ověřit, že úlohy proběhly spuštění a zastavení Azure SSIS IR. 
-
-    ![Úlohy sady Runbook](./media/how-to-schedule-azure-ssis-integration-runtime/runbook-jobs.png)
-3. Spusťte SQL Server Management Studio. V **připojit k serveru** okno, proveďte následující akce: 
-
-    1. Pro **název serveru**, zadejte  **&lt;Azure SQL database&gt;. database.windows.net**.
-    2. Vyberte **možnosti >>**.
-    3. Pro **připojit k databázi**vyberte **SSISDB**.
-    4. Vyberte **Connect** (Připojit). 
-    5. Rozbalte **integrace služby katalogy** -> **SSISDB** -> složky -> **projekty** -> Projekt vaše služby SSIS -> **balíčky** . 
-    6. Klikněte pravým tlačítkem na váš balíček služby SSIS a vyberte **sestavy** -> **standardních sestav** -> **všech provedení**. 
-    7. Ověřte, zda byl spuštěn balíčků služby SSIS. 
-
-        ![Ověřte spuštění balíčku služby SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/verfiy-ssis-package-run.png)
-
-### <a name="schedule-the-pipeline"></a>Naplánovat kanál 
-Kanál pracuje, jak jste očekávali, můžete vytvořit aktivační událost pro spuštění kanálu v zadané tempo. Podrobnosti o přiřazení aktivační událost plánovače s kanálem, najdete v článku [aktivace kanálu podle plánu](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
-
-1. Na panelu nástrojů pro kanál vyberte **aktivační událost**a vyberte **nová/upravit**. 
-
-    ![Aktivační událost -> Nový/upravit](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
-2. V **přidat aktivační události** okně **+ nová**.
-
-    ![Přidat aktivační události – nový](./media/how-to-schedule-azure-ssis-integration-runtime/add-triggers-new.png)
-3. V **Nová aktivační událost**, proveďte následující akce: 
-
-    1. Pro **název**, zadejte název pro aktivační událost. V následujícím příkladu **každodenní spouštění** je název triggeru. 
-    2. Pro **typ**vyberte **plán**. 
-    3. Pro **datum zahájení**, vyberte počáteční datum a čas. 
-    4. Pro **opakování**, zadejte tempo aktivační události. V následujícím příkladu denní jednou. 
-    5. Pro **End**, můžete určit datum a čas tak, že vyberete **k datu** možnost. 
-    6. Vyberte **aktivovat**. Aktivační událost se aktivuje okamžitě po publikování řešení do služby Data Factory. 
-    7. Vyberte **Další**.
-
-        ![Aktivační událost -> Nový/upravit](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
-4. V **parametry spuštění aktivační události** stránky, přečtěte si upozornění a vyberte **Dokončit**. 
-5. Publikování řešení do služby Data Factory tak, že vyberete **Publikovat vše** v levém podokně. 
-
-    ![Publikovat vše](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
-
-### <a name="monitor-the-pipeline-and-trigger-in-the-azure-portal"></a>Monitorování kanálu a aktivační události na webu Azure Portal
-
-1. Pokud chcete monitorovat spuštění aktivační události a spuštění kanálu, použijte **monitorování** karty na levé straně. Podrobné pokyny najdete v článku [monitorování kanálu](quickstart-create-data-factory-portal.md#monitor-the-pipeline).
-
-    ![Spuštění kanálu](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
-2. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte první odkaz (**zobrazit spuštění aktivit**) v **akce** sloupce. Zobrazit spuštění aktivit tři spojené s každou aktivitu v kanálu (první webová aktivita, aktivita uložené procedury a druhé aktivity webu). Pokud chcete přepnout zpět na zobrazení spuštění kanálu, vyberte **kanály** odkazu v horní části.
-
-    ![Spuštění aktivit](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
-3. Spuštění aktivační události můžete zobrazit také tak, že vyberete **spouštět testy** z rozevíracího seznamu vedle **spuštění kanálu** v horní části. 
-
-    ![Spuštění aktivačních událostí](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
-
-### <a name="monitor-the-pipeline-and-trigger-with-powershell"></a>Monitorování kanálu a aktivační události s využitím Powershellu
-
-Použití skriptů, jako jsou následující příklady k monitorování kanálu a aktivační události.
-
-1. Získáte stav spuštění kanálu.
-
-  ```powershell
-  Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
-  ```
-
-2. Získáte informace o aktivační události.
-
-  ```powershell
-  Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
-  ```
-
-3. Načíst stav spuštění aktivační události.
-
-  ```powershell
-  Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
-  ```
+   ![Plán pro rovnou začít prostředí Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png)
+    
+6. Po dokončení testování, zakažte plánům jejich úpravou. Vyberte **plány** v nabídce vlevo vyberte **spustit prostředí IR denní/Stop reakcí na Incidenty denně**a vyberte **ne** pro **povoleno**. 
 
 ## <a name="next-steps"></a>Další postup
 Najdete v následujícím blogovém příspěvku:

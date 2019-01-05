@@ -1,19 +1,19 @@
 ---
 title: Syntaxe jazyka SQL ve službě Azure Cosmos DB
 description: Tento článek popisuje syntaxi jazyka dotazů SQL v Azure Cosmos DB, různé operátory a klíčová slova k dispozici v tomto jazyce.
-author: LalithaMV
+author: markjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.topic: reference
 ms.date: 12/07/2018
-ms.author: laviswa
+ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: eec3846319a93e94ca362d9ef6815a73d0ca958a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142559"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044378"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Referenční dokumentace jazyka služby Azure Cosmos DB SQL 
 
@@ -474,7 +474,7 @@ ORDER BY <sort_specification>
 |**Kategorie**|**Podrobnosti**|  
 |-|-|  
 |**Aritmetické operace**|Operátor očekává, že nahráním být číslo nebo čísla. Výstup je také číslo. Pokud kterýkoli ze vstupních **nedefinované** nebo je typ jiný než číslo potom výsledek **nedefinované**.|  
-|**bitové operace**|Operátor očekává, že nahráním jako 32bitové celé číslo se znaménkem číslo nebo čísla. Výstup je také 32bitové celé číslo se znaménkem číslo.<br /><br /> Libovolná hodnota celé číslo se zaokrouhlí. Kladná hodnota se zaokrouhlí směrem dolů, záporné hodnoty zaokrouhluje nahoru.<br /><br /> Libovolnou hodnotu, která je mimo rozsah 32bitové celé číslo se převedou provedením poslední 32 bity jeho dvojkový doplněk zápisu.<br /><br /> Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než číslo, bude výsledkem **nedefinované**.<br /><br /> **Poznámka:** výše uvedené chování je kompatibilní s chováním bitový operátor jazyka JavaScript.|  
+|**bitové operace**|Operátor očekává, že nahráním jako 32bitové celé číslo se znaménkem číslo nebo čísla. Výstup je také 32bitové celé číslo se znaménkem číslo.<br /><br /> Libovolná hodnota celé číslo se zaokrouhlí. Kladná hodnota se zaokrouhlí směrem dolů, záporné hodnoty zaokrouhluje nahoru.<br /><br /> Libovolnou hodnotu, která je mimo rozsah 32bitové celé číslo se převedou provedením poslední 32 bity jeho dvojkový doplněk zápisu.<br /><br /> Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než číslo, bude výsledkem **nedefinované**.<br /><br /> **Poznámka:** Výše uvedené chování je kompatibilní s chováním bitový operátor jazyka JavaScript.|  
 |**Logické**|Operátor očekává, že nahráním bude Boolean(s). Výstup je také logickou hodnotu.<br />Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než logickou hodnotu, bude výsledkem **nedefinované**.|  
 |**Porovnání**|Operátor očekává, že nahráním být stejného typu a nesmí být definován. Výstup je logická hodnota.<br /><br /> Pokud kterýkoli ze vstupních **nedefinované** nebo vstupy mají rozdílné typy a výsledkem je **nedefinované**.<br /><br /> Zobrazit **řazení hodnot pro porovnání** tabulky pro hodnotu řazení podrobnosti.|  
 |**řetězec**|Operátor očekává, že nahráním být řetězce. Výstup je také řetězec.<br />Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než řetězce a výsledkem je **nedefinované**.|  
@@ -517,7 +517,7 @@ ORDER BY <sort_specification>
   
  Ve službě Cosmos DB typy hodnot, často nejsou známé, dokud se načítají z databáze. Aby bylo možné podporovat efektivní provádění dotazů, většina operátory mají požadavky na striktní typy. Operátory samy také neprovádějte implicitní převody.  
   
- To znamená, že jako dotaz: vybrat * z kořenového r WHERE r.Age = 21 vrátí jenom dokumenty s vlastností stáří rovná počtu 21. Dokumenty s vlastností rovno řetězci "21" nebo "0021" řetězec věk nebudou odpovídat jako výraz "21" = 21 vyhodnotí na nedefinovaný. To umožňuje lepší využití indexy, protože je rychlejší než hledání nekonečný počet vyhledávání konkrétní hodnotu (například číslo 21) potenciál odpovídá (číslo 21 nebo řetězce "21", "021", "21.0"...). Tím se liší od způsob, jak JavaScript vyhodnocuje operátory na hodnoty různých typů.  
+ To znamená, že dotaz podobný tomuto: Vybrat * z kořenového r WHERE r.Age = 21 vrátí jenom dokumenty s vlastností stáří rovná počtu 21. Dokumenty s vlastností rovno řetězci "21" nebo "0021" řetězec věk nebudou odpovídat jako výraz "21" = 21 vyhodnotí na nedefinovaný. To umožňuje lepší využití indexy, protože je rychlejší než hledání nekonečný počet vyhledávání konkrétní hodnotu (například číslo 21) potenciál odpovídá (číslo 21 nebo řetězce "21", "021", "21.0"...). Tím se liší od způsob, jak JavaScript vyhodnocuje operátory na hodnoty různých typů.  
   
  **Pole a objekty rovnosti a porovnání**  
   
@@ -1051,7 +1051,7 @@ EXP (<numeric_expression>)
   
  Exponent číslo je konstanta **e** umocněné na čísla. Například EXP(1.0) = e ^ 1.0 = 2.71828182845905 a EXP(10) = e ^ 10 = 22026.4657948067.  
   
- Exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (n).) = n. A přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (n).) = n.  
+ Exponent přirozený logaritmus čísla číslo se sama: EXP (protokol (n).) = n. A přirozený logaritmus čísla exponenciální je číslo sama: PROTOKOL (EXP (n).) = n.  
   
  **Příklady**  
   
@@ -1108,7 +1108,7 @@ LOG (<numeric_expression> [, <base>])
   
  Přirozený logaritmus se logaritmus o základu **e**, kde **e** rovná nenormální – konstanta přibližně 2.718281828.  
   
- Přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (n).) = n. A exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (n).) = n.  
+ Přirozený logaritmus čísla exponenciální je číslo sama: PROTOKOL (EXP (n).) = n. A exponent přirozený logaritmus čísla je číslo sama: EXP (protokol (n).) = n.  
   
  **Příklady**  
   

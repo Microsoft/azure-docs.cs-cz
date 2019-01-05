@@ -10,16 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086943"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040655"
 ---
-# <a name="how-to-configure-password-writeback"></a>Postupy: Konfigurace zpětného zápisu hesla
-
-Doporučujeme používat funkci Automatické aktualizace [Azure AD Connect](../hybrid/how-to-connect-install-express.md) při použití zpětný zápis hesla.
+# <a name="how-to-configure-password-writeback"></a>Postupy: Nakonfigurovat zpětný zápis hesla
 
 Následující postup předpokládá, že jste už nakonfigurovali Azure AD Connect ve vašem prostředí s použitím [Express](../hybrid/how-to-connect-install-express.md) nebo [vlastní](../hybrid/how-to-connect-install-custom.md) nastavení.
 
@@ -39,6 +37,24 @@ Související se zpětným zápisem hesla, běžné úloh odstraňování potí�
 > Zpětný zápis hesla, přestanou fungovat pro zákazníky, kteří používají Azure AD Connect verze 1.0.8641.0 a starší při [Azure Access Control service (ACS) je dostupné jenom do 7. listopadu 2018](../develop/active-directory-acs-migration.md). Azure AD Connect verze 1.0.8641.0 a starší se už nebude povolovat zpětného zápisu hesla v daném čase protože závisejí na služby ACS, které tuto funkci.
 >
 > Pokud chcete zabránit přerušení služby, upgrade z předchozí verze služby Azure AD Connect na novější verzi, najdete v článku [Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi](../hybrid/how-to-upgrade-previous-version.md)
+>
+
+## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla
+
+**Samoobslužné služby heslo resetovat/změny/odemknutí přes místní zpětný zápis je Prémiová funkce služby Azure AD**. Další informace o licencích najdete v článku [cenami služby Azure Active Directory web](https://azure.microsoft.com/pricing/details/active-directory/).
+
+Pokud chcete použít zpětný zápis hesla, musí mít jeden z přiřazené ve svém tenantovi následující licence:
+
+* Azure AD Premium P1
+* Azure AD Premium P2
+* Enterprise Mobility + Security E3 nebo A3
+* Enterprise Mobility + Security E5 nebo A5
+* Microsoft 365 E3 nebo A3
+* Microsoft 365 E5 nebo A5
+* Microsoft 365 F1
+
+> [!WARNING]
+> Office 365 samostatné licenční plány *nepodporují "Samoobslužné heslo resetování/změna/odemknutí přes místní zpětný zápis"* a vyžadují, abyste měli jeden z předchozích plánů pro tuto funkci pracovat.
 >
 
 ## <a name="active-directory-permissions"></a>Oprávnění služby Active Directory

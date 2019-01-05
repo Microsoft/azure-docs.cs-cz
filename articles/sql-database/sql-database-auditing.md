@@ -11,13 +11,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/25/2018
-ms.openlocfilehash: 892e4e776479d767326d4895dbf4bd4f30c418b0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 01/03/2019
+ms.openlocfilehash: 598d2b86e7aeeac9525f37b1ab9422d854e75392
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973194"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034025"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -224,10 +224,10 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizují vaše
 
 **Rutiny Powershellu (včetně podpory klauzule WHERE pro další filtrování)**:
 
-- [Vytvořit nebo aktualizovat objekt Blob databáze auditování zásad (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Vytvořit nebo aktualizovat objekt Blob Server auditování zásad (Set-AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverauditing)
-- [Získat databázi zásady auditu (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [Získat (Get-AzSqlServerAuditing) objektů Blob serveru zásady auditu](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditing)
+- [Vytvořit nebo aktualizovat objekt Blob databáze auditování zásad (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Vytvořit nebo aktualizovat objekt Blob Server auditování zásad (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [Získat databázi zásady auditu (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Získat (Get-AzSqlServerAuditing) objektů Blob serveru zásady auditu](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 Ukázkový skript, naleznete v tématu [konfigurace auditování a detekce hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -249,7 +249,7 @@ Rozšířené zásady pomocí kde klauzule podpory pro další filtrování:
 
 ## <a id="subheading-10"></a>Spravovat auditování služby SQL database pomocí šablon ARM
 
-Můžete spravovat pomocí auditování Azure SQL database [Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) šablony, jak je znázorněno v těchto příkladech:
+Můžete spravovat pomocí auditování Azure SQL database [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) šablony, jak je znázorněno v těchto příkladech:
 
 - [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu do účtu úložiště objektů blob v Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
 - [Nasazení Azure SQL serveru s auditování povoleno pro zápis protokolů auditu do Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)

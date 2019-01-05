@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 653a636ca2d71c573ffde2e9e70a06cf3fcc95fb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d3dca1d7247a822720d32e32fe959053fb80ddd1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021879"
+ms.locfileid: "54052475"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigace a řídicí panely na portálu Application Insights
 Až budete mít [nastavení Application Insights v projektu](../../application-insights/app-insights-overview.md), telemetrická data o výkonu a využití vaší aplikace se zobrazí v projektu prostředek Application Insights [webu Azure portal](https://portal.azure.com).
@@ -129,12 +129,12 @@ Okno přehledu je brána na další informace o vaší aplikaci.
 PROZKOUMAT
 
 * [**Mapa aplikace** ](app-map.md) – aktivní mapa zobrazující komponent vaší aplikace, odvozený z informací o závislostech.
-* [**Inteligentní zjišťování** ](../../application-insights/app-insights-proactive-diagnostics.md) – zkontrolujte nedávné výstrahy výkonu.
+* [**Inteligentní zjišťování** ](../../azure-monitor/app/proactive-diagnostics.md) – zkontrolujte nedávné výstrahy výkonu.
 * [**Live Stream** ](../../azure-monitor/app/live-stream.md) – A nelze upravovat nastavení téměř okamžité metriky, užitečné při nasazování nového sestavení nebo ladění.
 * [**Dostupnost / webové testy** ](../../azure-monitor/app/monitor-web-app-availability.md) -odesílání pravidelných požadavků pro vaše webové aplikace po celém world.*
-* [**Výkon, selhání** ](../../application-insights/app-insights-web-monitor-performance.md) – výjimky, chybovost a doby odezvy pro požadavky vaší aplikace a požadavky z vaší aplikace do [závislosti](../../azure-monitor/app/asp-net-dependencies.md).
-* [**Výkon** ](../../application-insights/app-insights-web-monitor-performance.md) – doba odezvy, závislosti, doby odezvy.
-* [Servery](../../application-insights/app-insights-web-monitor-performance.md) – čítače výkonu. K dispozici po vás [nainstalujte monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md).
+* [**Výkon, selhání** ](../../azure-monitor/app/web-monitor-performance.md) – výjimky, chybovost a doby odezvy pro požadavky vaší aplikace a požadavky z vaší aplikace do [závislosti](../../azure-monitor/app/asp-net-dependencies.md).
+* [**Výkon** ](../../azure-monitor/app/web-monitor-performance.md) – doba odezvy, závislosti, doby odezvy.
+* [Servery](../../azure-monitor/app/web-monitor-performance.md) – čítače výkonu. K dispozici po vás [nainstalujte monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * **Prohlížeč** – stránka zobrazení a výkonu aplikace AJAX. K dispozici po vás [instrumentace webových stránek](../../azure-monitor/app/javascript.md).
 * **Využití** -stránce počty zobrazení, uživatelů a relací. K dispozici po vás [instrumentace webových stránek](../../azure-monitor/app/javascript.md).
 

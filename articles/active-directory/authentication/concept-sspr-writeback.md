@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4d311794c1c0f2dd6b9a0b2a44983b47bfeef362
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319366"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040536"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -35,11 +35,11 @@ Zpětný zápis hesla je podporována v prostředí, které používá:
 
 Zpětný zápis hesla nabízí:
 
-* **Vynucení zásad hesel místní služby Active Directory**: když uživatel může resetovat hesla, je zaškrtnuté políčko k zajištění splňuje zásady vaší místní služby Active Directory před potvrzením do tohoto adresáře. Tato kontrola zahrnuje kontrolu historie, složitost, stáří, filtrů hesla a další omezení hesel, které jste definovali v místní službě Active Directory.
-* **Zpětná vazba delay nule**: zpětný zápis hesla je asynchronní operace. Uživatelům se zobrazí oznámení okamžitě pokud své heslo nesplňuje zásady nebo nemohl být vynulována ani změněna z jakéhokoli důvodu.
-* **Změní heslo podporuje z přístupového panelu a Office 365**: když federovaný nebo synchronizaci hodnoty hash hesla uživatelé navštíví ke změně hesla vypršela platnost, nebo vypršela platnost, tato hesla jsou zapsány zpět do vašeho místního prostředí Active Directory.
-* **Podporuje zpětný zápis hesla, když správce obnoví je na webu Azure Portal**: vždy, když správce obnoví heslo uživatele [webu Azure portal](https://portal.azure.com), pokud daného uživatele je Federovaná nebo hodnoty hash hesla synchronizovat, je heslo místní zpětný zápis. Tato funkce není aktuálně podporována v portálu pro správu Office.
-* **Nevyžaduje se žádná pravidla brány firewall pro příchozí**: zpětný zápis hesla předávání přes Azure Service Bus používá jako základní komunikační kanál. Veškerá komunikace je odchozí port 443.
+* **Vynucení zásad hesel místní služby Active Directory**: Když uživatel může resetovat hesla, zkontroluje se ujistěte, že splňuje zásady vaší místní služby Active Directory před potvrzením do tohoto adresáře. Tato kontrola zahrnuje kontrolu historie, složitost, stáří, filtrů hesla a další omezení hesel, které jste definovali v místní službě Active Directory.
+* **Zpětná vazba delay nule**: Zpětný zápis hesla je asynchronní operace. Uživatelům se zobrazí oznámení okamžitě pokud své heslo nesplňuje zásady nebo nemohl být vynulována ani změněna z jakéhokoli důvodu.
+* **Změní heslo podporuje z přístupového panelu a Office 365**: Když federovaný nebo synchronizaci hodnoty hash hesla uživatelé navštíví ke změně hesla vypršela platnost, nebo vypršela platnost, tato hesla jsou zapsány zpět do vašeho místního prostředí Active Directory.
+* **Když správce obnoví je na webu Azure Portal podporuje zpětný zápis hesla**: Vždy, když správce obnoví heslo uživatele [webu Azure portal](https://portal.azure.com), pokud daného uživatele je Federovaná nebo synchronizaci hodnoty hash hesla, heslo se zapíšou zpátky do místního. Tato funkce není aktuálně podporována v portálu pro správu Office.
+* **Nevyžaduje se žádná pravidla brány firewall pro příchozí**: Zpětný zápis hesla předávání přes Azure Service Bus používá jako základní komunikační kanál. Veškerá komunikace je odchozí port 443.
 
 > [!Note]
 > Uživatelské účty, které existují v rámci chráněné skupiny v místní službě Active Directory nelze použít se zpětným zápisem hesla. Další informace o chráněné skupiny, najdete v části [chráněné účty a skupiny ve službě Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
@@ -60,7 +60,7 @@ Pokud chcete použít zpětný zápis hesla, musí mít jeden z přiřazené ve 
 * Microsoft 365 F1
 
 > [!WARNING]
-> Office 365 samostatné licenční plány *nepodporují zpětný zápis hesla* a vyžadují, abyste měli jeden z předchozích plánů pro tuto funkci pracovat.
+> Office 365 samostatné licenční plány *nepodporují "Samoobslužné heslo resetování/změna/odemknutí přes místní zpětný zápis"* a vyžadují, abyste měli jeden z předchozích plánů pro tuto funkci pracovat.
 >
 
 ## <a name="how-password-writeback-works"></a>Jak funguje zpětný zápis hesla
@@ -121,10 +121,10 @@ Zpětný zápis hesla je vysoce zabezpečená služba. K zajištění, že vaše
 
 Poté, co uživatel odešle resetování hesla, žádost o resetování prochází několika šifrování kroky předtím, než dorazí ve vašem místním prostředí. Tyto kroky pro šifrování zajistit maximální služby spolehlivost a zabezpečení. Tyto toky jsou popsané následujícím způsobem:
 
-* **Krok 1: Heslo šifrování pomocí klíče RSA 2048 bitů**: po odeslání hesla pro zapsání zpět do místního, zadané heslo, samotného je zašifrovaný pomocí 2048bitový klíč RSA.
-* **Krok 2: Šifrování na úrovni balíčku s AES-GCM**: celý balíček, heslo a požadovaná metadata, se šifrují pomocí AES-GCM. Šifrování zabraňuje každý, kdo má přímý přístup k základním kanálu služby Service Bus zobrazení a manipulaci s obsahem.
-* **Krok 3: Veškerá komunikace probíhá přes protokol TLS/SSL**: veškerá komunikace s služby Service Bus probíhá kanál SSL/TLS. Toto šifrování zabezpečuje obsah od neoprávněné třetích stran.
-* **Automatické vrácení klíče přes každých šest měsíců**: vrátit všechny klíče přes každých šest měsíců, nebo zpětný zápis hesla každý čas je zakázané a pak znova aktivovat na Azure AD Connect, k zajištění maximální služby zabezpečení a bezpečnosti.
+* **Krok 1: Heslo šifrování pomocí klíče RSA 2048 bitů**: Po odeslání hesla pro zapsání zpět do místního, je zadané heslo, samotný šifrován 2048bitový klíč RSA.
+* **Krok 2: Šifrování na úrovni balíčku s AES-GCM**: Celý balíček, heslo a požadovaná metadata, se šifrují pomocí AES-GCM. Šifrování zabraňuje každý, kdo má přímý přístup k základním kanálu služby Service Bus zobrazení a manipulaci s obsahem.
+* **Krok 3: Veškerá komunikace probíhá přes protokol TLS/SSL**: Veškerá komunikace s služby Service Bus probíhá kanál SSL/TLS. Toto šifrování zabezpečuje obsah od neoprávněné třetích stran.
+* **Automatické vrácení klíče přes každých šest měsíců**: Všechny klíče vrátit přes každých šest měsíců, nebo pokaždé, když se zpětným zápisem hesla je zakázané a pak znova aktivovat na Azure AD Connect, k zajištění maximální služby zabezpečení a bezpečnosti.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Využití šířky pásma zpětný zápis hesla
 
@@ -169,4 +169,4 @@ Hesla jsou *není* zpětný zápis v některém z následujících situací:
 
 ## <a name="next-steps"></a>Další postup
 
-Povolení zpětného zápisu hesla pomocí tohoto kurzu: [povolení zpětného zápisu hesla](tutorial-enable-writeback.md)
+Povolení zpětného zápisu hesla pomocí tohoto kurzu: [Povolení zpětného zápisu hesla](tutorial-enable-writeback.md)

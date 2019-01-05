@@ -1,18 +1,18 @@
 ---
 title: Připojení ke službě Azure Cosmos DB Qlik Sense a vizualizace dat
 description: Tento článek popisuje kroky potřebné pro připojení služby Azure Cosmos DB k Qlik Sense a vizualizace dat služby.
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 8b86f79cb5af34105a666613152acc0acfb08f56
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.reviewer: sngun
+ms.openlocfilehash: 4b37b6cd35526d6a76625dd03d1325f1688e698e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808923"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044463"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojení ke službě Azure Cosmos DB Qlik Sense a vizualizace dat
 

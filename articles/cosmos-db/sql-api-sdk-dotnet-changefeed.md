@@ -1,20 +1,19 @@
 ---
 title: 'Azure Cosmos DB: API procesoru informační kanál změn .NET, SDK & zdroje'
 description: Další informace o rozhraní API procesoru kanálu změn a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady SDK pro procesor informační kanál změn .NET.
-services: cosmos-db
 author: ealsur
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 7b6fefd575901648a99bb3a67a05e705622bb74a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f7c8313e6216f10dccdfbb298bbf02036e21c138
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407860"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043001"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET change Feed procesoru SDK: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]

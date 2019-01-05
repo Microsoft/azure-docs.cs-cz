@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: 5b0543b28117d349ceaef173a1201574cf2b3682
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2019
+ms.openlocfilehash: 36a448a861bdfdcd85e532578383b14e56f54b1a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604544"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039091"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Řešení potíží s připojením pro službu Azure SQL Database pomocí Resource Health
 
@@ -77,6 +77,6 @@ Rekonfigurací se považují za přechodné podmínky. proto se očekává, že 
 
 - Další informace o [Logika opakování pro přechodné chyby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
 - [Oprava, diagnostika a prevence chyb připojení SQL](./sql-database-connectivity-issues.md)
-- Další informace o [konfigurace výstrah Resource Health](/articles/service-health/resource-health-alert-arm-template-guide.md)
-- Získejte přehled o [Resource Health](/articles/service-health/resource-health-overview.md)
-- [Služba Resource Health – nejčastější dotazy](/articles/service-health/resource-health-faq.md)
+- Další informace o [konfigurace výstrah Resource Health](../service-health/resource-health-alert-arm-template-guide.md)
+- Získejte přehled o [Resource Health](../service-health/resource-health-overview.md)
+- [Služba Resource Health – nejčastější dotazy](../service-health/resource-health-faq.md)

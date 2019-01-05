@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: ea2e0513ef2674fdbe6d28f77c4f709848a0d2eb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c7b9485d9a7da6479e65689fbcab67e10dec5cb2
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016371"
+ms.locfileid: "54052270"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -61,7 +61,7 @@ Selhání se zobrazují jako červené tečky v grafu webového testu:
 Ale co je důležitější, upozornění na jakékoli selhání se odešle e-mailem vývojovému týmu. Tímto způsobem se o tom dozví dříve, než téměř všichni zákazníci.
 
 ## <a name="monitor-performance"></a>Monitorování výkonu
-Na stránce Přehled v Application Insights je graf zobrazující různé [klíčové metriky](../../application-insights/app-insights-web-monitor-performance.md).
+Na stránce Přehled v Application Insights je graf zobrazující různé [klíčové metriky](../../azure-monitor/app/web-monitor-performance.md).
 
 ![Snímek obrazovky s přehledem grafů vývoje klíčových ukazatelů výkonu](./media/detect-triage-diagnose/overview-graphs.png)
 
@@ -151,7 +151,7 @@ Výjimky a události se zobrazují v okně [Diagnostické vyhledávání](diagno
 
 
 ## <a name="monitor-proactively"></a>Proaktivní monitorování
-Marcela jen tak nesedí a nečeká na upozornění. Krátce po každém nasazení si prohlédne [dobu odezvy](../../application-insights/app-insights-web-monitor-performance.md), a to jak celkové číslo a tabulku nejpomalejších požadavků, tak i počty výjimek.  
+Marcela jen tak nesedí a nečeká na upozornění. Krátce po každém nasazení si prohlédne [dobu odezvy](../../azure-monitor/app/web-monitor-performance.md), a to jak celkové číslo a tabulku nejpomalejších požadavků, tak i počty výjimek.  
 
 ![Graf doby odezvy a mřížka doby odezvy serveru](./media/detect-triage-diagnose/response-time.png)
 
@@ -215,7 +215,7 @@ Ať jsou důvody jakékoli, data pomáhají týmu porozumět chování uživatel
 
 Tým si postupně zvyká na to, že má k dispozici informace o aktivitách uživatelů. V současné době vždy, když navrhují novou funkci, vypracují plán na získání zpětné vazby o jejím využití. Od samého začátku zahrnují do návrhu funkce i sledovací volání. Zpětnou vazbu využívají v každém vývojovém cyklu ke zlepšení funkce.
 
-[Další informace o sledování využití](../../application-insights/app-insights-usage-overview.md).
+[Další informace o sledování využití](../../azure-monitor/app/usage-overview.md).
 
 ## <a name="apply-the-devops-cycle"></a>Použití cyklu DevOps
 Toto byla ukázka jednoho týmu, který pomocí Application Insights nejen řeší jednotlivé problémy, ale také zlepšuje životní cyklus vývoje. Doufám, že jste získali představu o tom, jak vám Application Insights může pomoct se správou výkonu vašich vlastních aplikací.
