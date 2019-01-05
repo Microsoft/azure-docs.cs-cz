@@ -6,18 +6,18 @@ author: bryanla
 manager: mbaldwin
 services: key-vault
 ms.author: bryanla
-ms.date: 11/27/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 54449e26279e6c6d83a57daa9c8f40819fab4993
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e3239d57b34af396ee4b23f3b9b01b367eb3daa6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715751"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050111"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET
 
@@ -29,14 +29,14 @@ Pomocí přihlašovacích údajů pro vývojáře při místním vývojovém je 
 
 `Microsoft.Azure.Services.AppAuthentication` Knihovny spravuje ověřování automaticky, která zase umožňuje zaměřit se na řešení, nikoli vaše přihlašovací údaje.
 
-`Microsoft.Azure.Services.AppAuthentication` Knihovna podporuje místní vývoj pomocí sady Microsoft Visual Studio, Azure CLI nebo integrované ověřování Azure AD. Při nasazení do Azure App Services nebo virtuálního počítače Azure (VM), automaticky používá knihovna [spravovaných identit pro Azure services](/azure/active-directory/msi-overview). Nejsou potřeba žádné změny kódu nebo konfigurace. Knihovna také podporuje s přímým přístupem pomocí služby Azure AD [přihlašovací údaje pro klienta](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal) když spravovaná identita není k dispozici, nebo když při místním vývojovém nelze určit kontext zabezpečení pro vývojáře.
+`Microsoft.Azure.Services.AppAuthentication` Knihovna podporuje místní vývoj pomocí sady Microsoft Visual Studio, Azure CLI nebo integrované ověřování Azure AD. Při nasazení na prostředek Azure, který podporuje spravovanou identitu, automaticky používá knihovna [spravovaných identit pro prostředky Azure](/azure/active-directory/msi-overview). Nejsou potřeba žádné změny kódu nebo konfigurace. Knihovna také podporuje s přímým přístupem pomocí služby Azure AD [přihlašovací údaje pro klienta](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal) když spravovaná identita není k dispozici, nebo když při místním vývojovém nelze určit kontext zabezpečení pro vývojáře.
 
 <a name="asal"></a>
 ## <a name="using-the-library"></a>Použití knihovny
 
 Pro aplikace .NET, je nejjednodušší způsob, jak pracovat s spravovanou identitu prostřednictvím `Microsoft.Azure.Services.AppAuthentication` balíčku. Tady je postup, jak začít:
 
-1. Přidejte odkaz na [Microsoft.Azure.Services.appauthentication přistupovat](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) balíček NuGet do vaší aplikace.
+1. Přidat odkazy [Microsoft.Azure.Services.appauthentication přistupovat](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) balíčky NuGet pro vaši aplikaci. 
 
 2. Přidejte následující kód:
 
@@ -44,16 +44,13 @@ Pro aplikace .NET, je nejjednodušší způsob, jak pracovat s spravovanou ident
     using Microsoft.Azure.Services.AppAuthentication;
     using Microsoft.Azure.KeyVault;
 
-    // ...
+    // Instantiate a new KeyVaultClient object, with an access token to Key Vault
+    var azureServiceTokenProvider1 = new AzureServiceTokenProvider();
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider1.KeyVaultTokenCallback));
 
-    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(
-    azureServiceTokenProvider.KeyVaultTokenCallback));
-
-    // or
-
-    var azureServiceTokenProvider = new AzureServiceTokenProvider();
-    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync(
-       "https://management.azure.com/").ConfigureAwait(false);
+    // Optional: Request an access token to other Azure services
+    var azureServiceTokenProvider2 = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
 `AzureServiceTokenProvider` Třídy ukládá do mezipaměti v mezipaměti a načte ze služby Azure AD těsně před vypršení platnosti. V důsledku toho již máte ke kontrole platnosti před voláním `GetAccessTokenAsync` metody. Pokud chcete použít token právě volejte metodu. 
@@ -234,8 +231,5 @@ Podporovány jsou následující možnosti:
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [spravovaných identit pro prostředky Azure](/azure/app-service/overview-managed-identity).
-
-- Přečtěte si různé způsoby, jak [ověřování a autorizace aplikace](/azure/app-service/overview-authentication-authorization).
-
-- Další informace o službě Azure AD [scénáře ověřování](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application).
+- Další informace o [spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/).
+- Další informace o [scénáře ověřování služby Azure AD](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application).

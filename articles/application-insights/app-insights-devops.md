@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a160cd6d81ab7cb760a85ee7cbdbedf55c17167
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 31ab9f37bcb4ea32caa48edf9460fa7ffcdf764d
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998229"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052066"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -94,7 +94,7 @@ Real Madrid používá modulu Power BI k zobrazení jejich telemetrická data.
 ![Power BI zobrazení telemetrie Application Insights](./media/app-insights-devops/080.png)
 
 ## <a name="smart-detection"></a>Inteligentní zjišťování
-[Proaktivní Diagnostika](app-insights-proactive-diagnostics.md) je nejnovější funkce. Bez žádnou zvláštní konfiguraci vámi Application Insights automaticky zjistí a upozorní vás neobvyklé nárůsty chybovost ve vaší aplikaci. Je dostatečně inteligentní, aby Ignorovat pozadí občasnému selhání, a také složitost, které jsou jednoduše úměrné nárůst požadavků. Tak například pokud dojde k selhání v jednom ze služeb, které závisí na, nebo pokud nové sestavení do fronty jste právě nasadili nepracuje tak dobře, pak budete vědět o něm poté, co lze najít v e-mailu. (A webhooky, takže můžete aktivovat další aplikace.)
+[Proaktivní Diagnostika](../azure-monitor/app/proactive-diagnostics.md) je nejnovější funkce. Bez žádnou zvláštní konfiguraci vámi Application Insights automaticky zjistí a upozorní vás neobvyklé nárůsty chybovost ve vaší aplikaci. Je dostatečně inteligentní, aby Ignorovat pozadí občasnému selhání, a také složitost, které jsou jednoduše úměrné nárůst požadavků. Tak například pokud dojde k selhání v jednom ze služeb, které závisí na, nebo pokud nové sestavení do fronty jste právě nasadili nepracuje tak dobře, pak budete vědět o něm poté, co lze najít v e-mailu. (A webhooky, takže můžete aktivovat další aplikace.)
 
 Dalším aspektem tato funkce provádí denní potřebují podrobně analyzovat telemetrii, hledá neobvyklé vzory výkonu, které se těžko zjistit. Například najdete nízký výkon, které jsou spojené s konkrétní zeměpisné oblasti nebo s verzí určitého prohlížeče.
 

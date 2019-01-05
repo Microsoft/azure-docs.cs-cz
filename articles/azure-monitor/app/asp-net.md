@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 14dd5eef90ff4e6b3281f5a1337b9b59796277e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a68b312d4b2a35bdaf2f2973c403c750645352b9
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018751"
+ms.locfileid: "54054919"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -84,7 +84,7 @@ V okně Visual Studio Application Insights Search se zobrazí telemetrie vygener
 > [!Tip]
 > Pokud se žádná data nezobrazí, ujistěte se, že je časový rozsah správný, a klikněte na ikonu Search.
 
-[Další informace týkající se nástrojů Application Insights v sadě Visual Studio](../../application-insights/app-insights-visual-studio.md).
+[Další informace týkající se nástrojů Application Insights v sadě Visual Studio](../../azure-monitor/app/visual-studio.md).
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>Zobrazení telemetrických dat na webovém portálu
@@ -106,7 +106,7 @@ Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vy
 
 Telemetrie vzniká na portálu Application Insights, kde můžete monitorovat metriky, vyhledávat telemetrii a nastavovat [řídicí panely](../../azure-monitor/app/app-insights-dashboards.md). Můžete také použít výkonný [dotazovací jazyk Log Analytics](https://aka.ms/LogAnalyticsLanguage) k analýze využití a výkonu nebo k hledání konkrétních událostí.
 
-Můžete také dále analyzovat telemetrii v sadě [Visual Studio](../../application-insights/app-insights-visual-studio.md) pomocí nástrojů jako vyhledávání diagnostiky a [Trendy](../../application-insights/app-insights-visual-studio-trends.md).
+Můžete také dále analyzovat telemetrii v sadě [Visual Studio](../../azure-monitor/app/visual-studio.md) pomocí nástrojů jako vyhledávání diagnostiky a [Trendy](../../azure-monitor/app/visual-studio-trends.md).
 
 > [!NOTE]
 > Pokud vaše aplikace odesílá dostatek telemetrie k dosažení [limitů omezení](../../azure-monitor/app/pricing.md#limits-summary), zapne se automatické [vzorkování](../../azure-monitor/app/sampling.md). Vzorkování snižuje množství telemetrie odesílané z vaší aplikace při zachování korelovaných dat k diagnostickým účelům.
@@ -147,14 +147,14 @@ K dispozici jsou i alternativní témata, na která se v případě zájmu můž
 
 ### <a name="analysis"></a>Analýza
 
-* **[Práce s Application Insights v sadě Visual Studio](../../application-insights/app-insights-visual-studio.md)**<br/>Zahrnuje informace o ladění pomocí telemetrie, diagnostických hledáních a podrobném procházení kódem.
+* **[Práce s Application Insights v sadě Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Zahrnuje informace o ladění pomocí telemetrie, diagnostických hledáních a podrobném procházení kódem.
 * **[Práce s portálem Application Insights](../../azure-monitor/app/app-insights-dashboards.md)**<br/> Zahrnuje informace o řídicích panelech, výkonných nástrojích pro diagnostiku a analýzy, výstrahách, aktivních mapách závislostí vaší aplikace a exportu telemetrie.
 * **[Analytics](../../azure-monitor/log-query/get-started-portal.md)** – Výkonný dotazovací jazyk.
 
 ### <a name="alerts"></a>Výstrahy
 
 * [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md): Vytvořte testy, abyste měli jistotu, že váš web je viditelný na webu.
-* [Inteligentní Diagnostika](../../application-insights/app-insights-proactive-diagnostics.md): Tyto testy se spouštějí automaticky, takže nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
+* [Inteligentní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md): Tyto testy se spouštějí automaticky, takže nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
 * [Upozornění na metriku](../../azure-monitor/app/alerts.md): Nastavte, nechte se upozornit, pokud metrika překročí mezní hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 
 ### <a name="automation"></a>Automation

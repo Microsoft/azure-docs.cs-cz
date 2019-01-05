@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: f0d0442a8640a75b21e95e3ae024fd7994602b51
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 279f029dee9e49985805a383fb4fefb82a4f4ebd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807937"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038326"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Optimalizace propustnosti nákladů ve službě Azure Cosmos DB
 

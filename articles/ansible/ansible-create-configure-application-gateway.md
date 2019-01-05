@@ -3,17 +3,17 @@ title: Správa webového provozu s využitím Azure Application Gateway pomocí 
 description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat službu Azure Application Gateway pro správu webového provozu.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbooku, aplikační bránu, nástroj pro vyrovnávání zatížení, webového provozu
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: af7f22ae5c289a01e6876d8ce586cb32383c8d3b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 43e8681e5266f113d466a138abeeda77aff1c18b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253346"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052253"
 ---
 # <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Správa webového provozu s využitím Azure Application Gateway pomocí Ansible
 

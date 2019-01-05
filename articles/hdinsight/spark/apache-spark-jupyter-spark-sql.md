@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e816799ba2df0f97aca7618e7c181a1086bb84a9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2fc88f82222deeecb55dac8fa77e1d8702ffe011
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791910"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055026"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>Rychlý start: Vytvoření clusteru Apache Spark v HDInsight pomocí šablony
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>Vytvoření clusteru HDInsight Spark
 
-Vytvořte cluster HDInsight Spark pomocí šablony Azure Resource Manageru. Šablony lze nalézt v [Githubu](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/).
+Vytvořte cluster HDInsight Spark pomocí šablony Azure Resource Manageru. Šablony lze nalézt v [Githubu](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/). Syntaxi JSON a vlastnosti clusteru najdete v tématu [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters).
 
 1. Výběrem následujícího odkazu otevřete šablonu na webu Azure Portal na nové kartě prohlížeče:
 

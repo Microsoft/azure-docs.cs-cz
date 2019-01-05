@@ -1,23 +1,21 @@
 ---
-title: 'Kurz k NoSQL: rozhraní SQL API pro Azure Cosmos DB Java SDK'
+title: 'Kurz k NoSQL: Rozhraní SQL API pro Azure Cosmos DB Java SDK'
 description: Kurz k NoSQL, v rámci kterého se vytvoří online databáze a aplikace konzoly Java pomocí rozhraní SQL API pro Azure Cosmos DB. Azure SQL je databáze NoSQL pro JSON.
-keywords: nosql tutorial, online database, java console application
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 0bab289fedbbceb2d5cb763bd0f55e455bb60a29
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4b03fc3721d7a2be1e2099bf4878f6abb50e6b76
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093013"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044038"
 ---
-# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření aplikace konzoly Java rozhraní SQL API
+# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření konzolové aplikace SQL API Java
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -63,7 +61,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud už máte účet, který chcete 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>Krok 2: Klonování projektu z GitHubu
+## <a id="GitClone"></a>Krok 2: Klonování projektu z Githubu
 Můžete začít naklonováním úložiště GitHub pro projekt [Začínáme se službou Azure Cosmos DB a Javou](https://github.com/Azure-Samples/documentdb-java-getting-started). Například spusťte z místního adresáře následující příkaz, který načte ukázkový projekt pro místní použití.
 
     git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -78,7 +76,7 @@ Adresář obsahuje soubor `pom.xml` pro projekt a složku `src` obsahující zdr
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>Krok 3: Připojení k účtu služby Azure Cosmos DB
+## <a id="Connect"></a>Krok 3: Připojte se k účtu služby Azure Cosmos DB
 Dále přejděte zpět na [Azure Portal](https://portal.azure.com) a získejte koncový bod a primární hlavní klíč. Koncový bod a primární klíč služby Azure Cosmos DB jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace.
 
 Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na **Klíče**. Zkopírujte identifikátor URI z portálu a vložte ho do `https://FILLME.documents.azure.com` v souboru Program.java. Poté zkopírujte PRIMÁRNÍ KLÍČ z portálu a vložte ho do `FILLME`.
@@ -174,7 +172,7 @@ Odstraněním vytvořené databáze dojde k odebrání databáze a všech jejíc
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>Krok 11: Spuštění celé konzolové aplikace jazyka Java!
+## <a id="Run"></a>Krok 11: Spustit vaše Java všechno dohromady konzolové aplikace!
 Chcete-li aplikaci spustit z konzoly, přejděte do složky projektu a proveďte kompilaci pomocí nástroje Maven:
     
     mvn package

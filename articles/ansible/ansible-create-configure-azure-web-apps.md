@@ -3,17 +3,17 @@ title: Vytvoření webové aplikace Azure pomocí Ansible
 description: Zjistěte, jak pomocí Ansible vytvořit webovou aplikaci s modulem runtime kontejnerů Java 8 a Tomcat ve službě App Service v Linuxu.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, Java
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 4a772977130f5679da2d879cc12738b89be09f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 106fe11355d629e57f71b12d1125d188b98c2236
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726727"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051341"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Vytvoření webové aplikace Azure App Service web apps pomocí Ansible
 [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (nebo jenom Web Apps) hostitele webové aplikace, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.

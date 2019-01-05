@@ -1,5 +1,5 @@
 ---
-title: Nasměrování internetové domény společnosti na název domény Traffic Manageru | Dokumentace Microsoftu
+title: Nasměrování internetové domény společnosti na název domény Azure Traffic Manager | Dokumentace Microsoftu
 description: Tento článek vám pomůže nasměrovat název domény společnosti na název domény Traffic Manageru.
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 45fe4fd8511cd1d725275a5a04bd4b6e13eb68f7
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 2b9b718a61d13790de38ea82f9b479e372e9de63
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138391"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052679"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Nasměrování internetové domény společnosti na doménu Azure Traffic Manageru
 
@@ -31,7 +31,7 @@ Veškeré žádosti o přenos na *www.contoso.com* se budou směrovat na *contos
 > [!IMPORTANT]
 > Doménu druhé úrovně, například *contoso.com*, nelze nasměrovat na doménu Traffic Manageru. Standardy protokolu DNS nepovolují záznamy CNAME pro názvy domén druhé úrovně.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Metody směrování Traffic Manageru](traffic-manager-routing-methods.md)
 * [Traffic Manager – Zakázání, povolení nebo odstranění profilu](disable-enable-or-delete-a-profile.md)

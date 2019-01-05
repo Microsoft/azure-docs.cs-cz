@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/21/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 954fb0fd4c8b9773edad904fa82a0a90111a66fa
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754590"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054915"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Pomocí sady Visual Studio 2017 na vývoj a ladění modulů jazyka C# pro Azure IoT Edge (Preview)
 
@@ -37,7 +37,7 @@ Vzhledem k tomu tento článek používá jako hlavní vývojový nástroj Visua
 
 Poté, co Visual Studio 2017 je připraven, budete potřebovat následující komponenty a nástrojů:
 
-- Stáhněte a nainstalujte [rozšíření Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) ze sady Visual Studio marketplace pro vytvoření projektu IoT Edge v sadě Visual Studio 2017.
+- Stáhněte a nainstalujte [rozšíření Azure IoT Edge (Preview)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) z webu marketplace Visual Studio k vytvoření IoT Edge projektu v sadě Visual Studio 2017.
 
 - Stáhněte a nainstalujte [Docker Community Edition](https://docs.docker.com/install/) na vývojovém počítači sestavení a spuštění vaší bitové kopie modulu. Budete muset nastavit Docker CE pro spuštění v režimu kontejneru Linuxu nebo režimu kontejneru Windows.
 

@@ -1,13 +1,10 @@
 ---
-title: Vytvořit a přidružit zásady koncových bodů služeb – web Azure portal | Dokumentace Microsoftu
+title: Vytvořit a přidružit zásady koncových bodů služeb – web Azure portal
+titlesuffix: Azure Virtual Network
 description: V tomto článku zjistěte, jak nastavit a přidružená služba Zásady koncového bodu pomocí webu Azure portal.
 services: virtual-network
 documentationcenter: virtual-network
 author: anithaa
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 6bd318da5b3cd667d0a39b9c963e8d3ffd472f41
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 06c034968b2577d6321ffe6f55f969547a35931f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633006"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054431"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Vytvoření, změna nebo odstranění zásady koncového bodu služby pomocí webu Azure portal
 
@@ -36,7 +33,7 @@ Zásady koncového bodu služby umožňují filtrovat provoz virtuální sítě 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 
 Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
@@ -47,9 +44,9 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 3. Zadejte nebo vyberte následující informace v **základy** 
 
    - Předplatné: Vyberte své předplatné pro zásady.    
-   - Skupina prostředků: vyberte **vytvořit nový** a zadejte *myResourceGroup*.     
+   - Skupina prostředků: Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.     
    - Název: myEndpointPolicy
-   - Umístění: Střed USA – západ     
+   - Umístění: Západní střed USA     
  
    ![Vytvoření koncového bodu služby Základy zásad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
    
@@ -66,8 +63,8 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
    
 5. Volitelné: Zadejte nebo vyberte následující informace v **značky**:
    
-   - Klíč: Vyberte svůj klíč pro zásady. Příklad: oddělení     
-   - Hodnota: Zadejte hodnotu pár klíče. Příklad: Finance
+   - Klíč: Vyberte svůj klíč pro zásady. Např.: Oddělení     
+   - Hodnota: Zadejte hodnotu pár klíče. Např.: Finance
 
 6. Vyberte **zkontrolovat a vytvořit**. Ověřit informace a klikněte na tlačítko **vytvořit**. Chcete-li provést další změny, klikněte na tlačítko **předchozí**. 
 
@@ -102,8 +99,8 @@ Než budete moct přidružit zásadu k podsíti, budete muset vytvořit virtuál
    - Název: myVirtualNetwork      
    - Adresní prostor: 10.0.0.0/16      
    - Předplatné: Vyberte své předplatné. Zásada by měla být ve stejném předplatném jako virtuální síť     
-   - Skupina prostředků: vyberte **použít existující** a pak vyberte *myResourceGroup*     
-   - Umístění: Střed USA – západ     
+   - Skupina prostředků: Vyberte **použít existující** a pak vyberte *myResourceGroup*     
+   - Umístění: Západní střed USA     
    - Název podsítě: privátní     
    - Rozsah adres: 10.0.0.0/24
      

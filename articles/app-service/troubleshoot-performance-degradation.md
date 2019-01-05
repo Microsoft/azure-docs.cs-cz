@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25b8b66e67450cb96cd988efd6dd5ffd03377fde
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9c66a937ffd9155569820c47c99946d186c55cce
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016541"
+ms.locfileid: "54052151"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Řešení problémů s výkonem pomalých aplikace ve službě Azure App Service
 V tomto článku vám pomůžou s řešením problémů s výkonem pomalých aplikací v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -92,7 +92,7 @@ Každá aplikace služby App Service poskytuje rozšiřitelná Správa koncový 
 - Editorů zdrojového kódu, jako jsou [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Nástroje pro správu pro připojené prostředky, jako jsou databáze MySQL připojený k aplikaci.
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) je lokality rozšíření, která je také k dispozici pro monitorování výkonu. Jak pomocí Application Insights, znovu sestavte svůj kód pomocí sady SDK. Můžete také nainstalovat rozšíření, která poskytuje přístup k dalším datům. Sada SDK umožňuje napsat kód ke sledování využití a výkonu vaší aplikace podrobněji. Další informace najdete v tématu [monitorování výkonu webových aplikací](../application-insights/app-insights-web-monitor-performance.md).
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) je lokality rozšíření, která je také k dispozici pro monitorování výkonu. Jak pomocí Application Insights, znovu sestavte svůj kód pomocí sady SDK. Můžete také nainstalovat rozšíření, která poskytuje přístup k dalším datům. Sada SDK umožňuje napsat kód ke sledování využití a výkonu vaší aplikace podrobněji. Další informace najdete v tématu [monitorování výkonu webových aplikací](../azure-monitor/app/web-monitor-performance.md).
 
 <a name="collect" />
 

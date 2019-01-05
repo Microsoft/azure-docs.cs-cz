@@ -14,17 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 8ca04fef8a17c43c9d1f761e36d8da7f1e07d4d5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 08d1589b8b215471983dc76a836dd89f83fd8204
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283576"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053394"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým služby Azure Active Directory pravidelně aktualizuje s novými funkcemi a funkce Azure AD Connect Health. Tento článek uvádí verzích a funkcích, které byly vydány.
-Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure AD Connect. Další informace o [historie verzí služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)
+Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure AD Connect. Další informace o [historie verzí služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) zpětnou vazbu funkce, Hlasujte na [Connect Health User Voice kanálu](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
+## <a name="november-2018"></a>. Listopadu 2018
+**Nové funkce všeobecné dostupnosti:** 
+* Azure AD Connect Health pro synchronizaci - diagnostikovat a opravit chyby synchronizace duplicitním atributem z portálu
+
+**Aktualizace agenta:** 
+*  Agent Azure AD Connect Health pro službu AD DS (verze 3.1.24.0) 
+1. Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
+2. Omezily rušivé výstrahy globálního katalogu
+3. Opravy chyb registrace agenta stavu
+
+*   Agent Azure AD Connect Health pro službu AD FS (verze 3.1.24.0)
+1. Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
+2. Podpora ADFSRequestToken testovacího lokalizovaný operačního systému
+3. Vyřešit problém zamykání EventHandler disgnostic agenta
+4. Opravy chyb registrace agenta stavu
 
 ## <a name="august-2018"></a>Srpen 2018 
 *  Agent Azure AD Connect Health pro synchronizaci (verze 3.1.7.0) vydané službou Azure AD Connect verze 1.1.880.0    
@@ -62,7 +77,7 @@ Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure
  2. Obecná vylepšení a opravy chyb
 
 
-## <a name="march-2018"></a>. Března 2018
+## <a name="march-2018"></a>Březen 2018
 **Nové funkce ve verzi preview:**
 * Azure AD Connect Health pro AD FS – sestavě rizikových IP adres a upozornění.
 
@@ -78,7 +93,7 @@ Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure
   1. Vylepšení dostupnosti agenta 
   2. Obecná vylepšení a opravy chyb
 
-## <a name="december-2017"></a>. Prosince 2017
+## <a name="december-2017"></a>Prosinec 2017
 **Aktualizace agenta:**
 
 *   Agent Azure AD Connect Health pro službu AD DS (verze 3.0.145.0)
@@ -96,7 +111,7 @@ Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure
  * Agent Azure AD Connect Health pro synchronizaci (verze 3.0.129.0) vydané službou Azure AD Connect verze 1.1.649.0
 <br></br> Opravili jsme potíže s kompatibilitou verze mezi Azure AD Connect a agenta Azure AD Connect Health pro synchronizaci. Tento problém má vliv na zákazníky, kteří působí Azure AD Connect místní upgrade na verzi 1.1.647.0, ale má v současné době verze 3.0.127.0 stavu agenta. Po upgradu agenta stavu už odesílání dat o službu Azure AD Connect synchronizaci stavu do služby Azure AD Health. S touto opravou během místní upgrade služby Azure AD Connect nainstaluje agenta služby Health verze 3.0.129.0. Agent stavu verze 3.0.129.0 nemá potíže s kompatibilitou s Azure AD Connect verze 1.1.649.0.
 
-## <a name="july-2017"></a>. Července 2017
+## <a name="july-2017"></a>Červenec 2017
 **Aktualizace agenta:**
 
 *   Agent Azure AD Connect Health pro službu AD DS (verze 3.0.68.0)

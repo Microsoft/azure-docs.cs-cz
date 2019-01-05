@@ -3,17 +3,17 @@ title: Vytváření škálovacích sad virtuálních počítačů v Azure pomoc�
 description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat škálovací sadu virtuálních počítačů v Azure.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: 8dacfb054a36801c076435037a530daa87c4a89c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 920a631ed379651751641c22e4b43f6731197377
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409381"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054151"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Vytváření škálovacích sad virtuálních počítačů v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat škálovací sadu virtuálních počítačů v Azure stejně jako jakékoli jiné prostředky Azure. V tomto článku se dozvíte, jak pomocí Ansible vytvořit škálovací sadu virtuálních počítačů a horizontálně navýšit její kapacitu. 

@@ -8,14 +8,14 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 586f3c81fad79f49b3506b0bd84a4f7b218d8605
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54d23bca29c38f258334d7b641b8c1f480da55e1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426481"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054958"
 ---
-# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: Referenční informace prostředí PowerShell ADSyncTools
+# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADSyncTools
 Následující dokumentace obsahuje referenční informace pro modul Powershellu ADSyncTools.psm1, která je součástí služby Azure AD Connect.
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>Vymazat ADSyncToolsConsistencyGuid
@@ -338,7 +338,7 @@ Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Vrátí objekt AD lze: podpora více doménové struktury
+Vrátí objekt AD chcete provést: Podpora více doménové struktury
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -470,7 +470,7 @@ Další informace najdete v části about_CommonParameters (https://go.microsoft
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>SYNOPSE
-Zobrazit historii spuštění Connnect AAD
+Get AAD Connect historie spuštění
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -479,7 +479,7 @@ Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Funkce, která vrací historie běhů AAD Connnect ve formátu XML
+Funkce, která vrací historie spuštění služby AAD Connect ve formátu XML
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -526,7 +526,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>POPIS
-Funkce dotazuje historie běhů Connnect AAD a vyexportuje všechny uživatele oznámena tato chyba: "atribut SourceAnchor změnila."
+Funkce dotazů AAD Connect historie spuštění a vyexportuje všechny uživatele oznámena tato chyba: "Atribut SourceAnchor změnila."
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -593,7 +593,7 @@ Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFrom
 ```
 
 ### <a name="description"></a>POPIS
-Generuje soubor se všemi uživateli Azure AD Synchronized obsahující ImmutableID hodnotu ve formátu GUID požadavky: modul MSOnline Powershellu
+Generuje soubor se všemi uživateli Azure AD Synchronized obsahující ImmutableID hodnotu ve formátu GUID požadavky: Modul MSOnline Powershellu
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -719,7 +719,7 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 Tento skript má všechny objekty z cíle organizační jednotky ve vaší doméně služby Active Directory – filtrovat podle třídy objektu (uživatele nebo počítače) a odstraní všechny certifikáty s vypršenou platností atributem UserCertificate k dispozici.
 Ve výchozím nastavení (režim BackupOnly) pouze provede zálohování, certifikáty s vypršenou platností do souboru a není nutné žádné změny ve službě AD.
 Pokud používáte – BackupOnly $false pak jakékoli atributem UserCertificate k dispozici pro tyto objekty vypršela platnost certifikátu se odebere ze služby AD po zkopírování do souboru.
-Jednotlivé certifikáty budou zálohovány do oddělených filename: ObjectClass_ObjectGUID_CertThumprint.cer skript také vytvoří soubor protokolu ve formátu CSV se seznamem všech uživatelů s certifikáty, buď jsou platné nebo vypršela jejich platnost, včetně skutečné akce ( Přeskočené/exportované/odstraněné).
+Jednotlivé certifikáty budou zálohovány do oddělených název souboru: ObjectClass_ObjectGUID_CertThumprint.cer skript také vytvoří soubor protokolu ve formátu CSV obsahující všechny uživatele s certifikáty, které buď platné nebo vypršela jejich platnost, včetně skutečné akce (vynecháno/exportované/Deleted).
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -1227,7 +1227,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>POPIS
-Aktualizace uživatele s novou hodnotou ConsistencyGuid (ImmutableId) přijata z této sestavy ConsistencyGuid funkce podporuje přepínač WhatIf Poznámka: ConsistencyGuid sestavy musí být importovány pomocí Output_delimiter kartu
+Aktualizuje uživatele s použitím nové hodnoty ConsistencyGuid (ImmutableId) přijata z této sestavy ConsistencyGuid podporuje funkce přepínače WhatIf Poznámka: ConsistencyGuid sestavy musí být importovány pomocí Output_delimiter kartu
 
 ### <a name="examples"></a>PŘÍKLADY
 

@@ -1,23 +1,21 @@
 ---
 title: Rozhraní API tabulky Azure Cosmos DB pro Python
 description: Další informace o Azure Cosmos DB Table API včetně data vydání, vyřazení dat a změny provedené mezi jednotlivými verzemi.
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: reference
 ms.date: 11/20/2017
-ms.author: sngun
-ms.custom: ''
-ms.openlocfilehash: 165dbaf3faec90498cf42bad39257e26662da072
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 257d55fd0c7d843934c4f07a798247c5271d8ed7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869849"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044293"
 ---
-# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK pro Python: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Služby Azure Cosmos DB Table API SDK pro Python: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)

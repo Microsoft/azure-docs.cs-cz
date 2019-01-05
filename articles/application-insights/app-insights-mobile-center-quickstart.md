@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 77fafb3f3a4c834c5a7f185d129a1c651db58089
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 77fe6846a056bcdd5a62f1c7d0c7640bae892a75
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719842"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044157"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -169,4 +169,4 @@ Odstranění prostředku Application Insights:
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Porozumění způsobu, jakým zákazníci používají vaši aplikaci](app-insights-usage-overview.md)
+> [Porozumění způsobu, jakým zákazníci používají vaši aplikaci](../azure-monitor/app/usage-overview.md)

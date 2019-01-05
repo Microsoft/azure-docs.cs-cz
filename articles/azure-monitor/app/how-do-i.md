@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: c8ff6abe72a55be24b35b254a4bfc2a446b13c0b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dacd2e0d43f2c7711539896b88838adb85542963
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999677"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051726"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získejte e-mailu při...
@@ -83,11 +83,11 @@ Některé body ke zvážení:
 ## <a name="separate-telemetry-from-different-versions"></a>Samostatné telemetrická data z různých verzí
 
 * Více rolí v aplikaci: Použít na jeden prostředek Application Insights a vyfiltrujte [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* Oddělení vývoje, testování a vydání verze: Použijte různé prostředky Application Insights. Sbírání instrumentačních klíčů ze souboru web.config. [Další informace](../../application-insights/app-insights-separate-resources.md)
-* Vytváření sestav verze sestavení: Přidání vlastnosti pomocí inicializátoru telemetrie. [Další informace](../../application-insights/app-insights-separate-resources.md)
+* Oddělení vývoje, testování a vydání verze: Použijte různé prostředky Application Insights. Sbírání instrumentačních klíčů ze souboru web.config. [Další informace](../../azure-monitor/app/separate-resources.md)
+* Vytváření sestav verze sestavení: Přidání vlastnosti pomocí inicializátoru telemetrie. [Další informace](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Monitorování back-end serverů a aplikací klasické pracovní plochy
-[Použít modul Windows Server SDK](../../application-insights/app-insights-windows-desktop.md).
+[Použít modul Windows Server SDK](../../azure-monitor/app/windows-desktop.md).
 
 ## <a name="visualize-data"></a>Vizualizace dat
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Řídicí panel s metrikami z více aplikací

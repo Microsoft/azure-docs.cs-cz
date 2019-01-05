@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4013b7136fd365b1d37348cfc1f0b46cce787ce2
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 63f0c1846a6e32dc5a5fcc9b1162d343890387a1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363119"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053513"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Nasazení šablon pomocí portálu Azure Stack
 
@@ -31,7 +31,7 @@ Na portálu můžete použít k nasazení šablony Azure Resource Manageru ke sl
 ## <a name="to-deploy-a-template"></a>K nasazení šablony
 
 1. Přihlaste se k portálu vyberte **+ vytvořit prostředek**a pak vyberte **vlastní**.
-2. Vyberte **nasazení šablony**.
+2. Vyberte **Template deployment**.
 3. Vyberte **úpravy šablony**a vložte kód JSON šablony do okna kódu. Vyberte **Uložit**.
 4. Vyberte **upravit parametry**, zadejte hodnoty pro parametry, které jsou zobrazeny a pak vyberte **OK**.
 5. Vyberte **předplatné**. Zvolte předplatné, které chcete použít a potom vyberte **OK**.
@@ -40,6 +40,6 @@ Na portálu můžete použít k nasazení šablony Azure Resource Manageru ke sl
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o nasazení šablony najdete v tématu:
+Další informace o nasazení šablony, najdete v následujícím článku:
 
-[Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
+- [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)

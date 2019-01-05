@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/14/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fb3d19d35a15d5476594948b035a39ae703f1c3a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5eb896978e9b04a6ad87fe1f669d9155e9cc1433
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551299"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053207"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Azure IoT Edge
 
@@ -31,7 +31,7 @@ Pro moduly napsanými v C#, Node.js nebo Java, existují dva způsoby ladění m
 
 Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) první a pak přidejte následující rozšíření:
 
-- [Rozšíření Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
+- [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Rozšíření docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - Visual Studio rozšíření specifické pro jazyk, kterou vyvíjíte v:
   - C#, včetně Azure Functions: [Rozšíření jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
@@ -73,7 +73,7 @@ Pokud vyvíjíte modulu v jazyce C, budete také potřebovat založené na Pytho
 
 ## <a name="create-a-new-solution-template"></a>Vytvořit novou šablonu řešení
 
-Následující kroky ukazují, jak vytvořit modul IoT Edge ve vašem jazyce oblíbeným vývojovým (včetně Azure Functions, v C#) pomocí Visual Studio Code a rozšíření Azure IoT Edge. Začnete vytvořením řešení a pak v něm generování modulu první. Každé řešení může obsahovat více modulů.
+Následující kroky ukazují, jak vytvořit modul IoT Edge ve vašem jazyce oblíbeným vývojovým (včetně Azure Functions, v C#) pomocí nástroje IoT Azure a Visual Studio Code. Začnete vytvořením řešení a pak v něm generování modulu první. Každé řešení může obsahovat více modulů.
 
 1. Vyberte **zobrazení** > **příkaz palety**.
 

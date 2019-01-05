@@ -11,28 +11,28 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2019
+ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601555"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044565"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
 Azure SQL Database, elastické fondy, Managed Instance a databáze v Managed Instance můžete streamování protokolů Diagnostika a metriky pro snazší monitorování výkonu. Databáze k přenosu využití prostředků, pracovních procesů a relace a připojení k jednomu z následujících prostředků Azure můžete nakonfigurovat:
 
-* **Azure SQL Analytics**: Chcete-li získat inteligentního monitorování Azure databází, které zahrnují sestavy o výkonu, upozornění a doporučení pro zmírnění dopadů.
-* **Azure Event Hubs**: pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály.
-* **Azure Storage**: pro archivaci obrovských objemů telemetrických dat za zlomek ceny.
+- **Azure SQL Analytics**: Chcete-li získat inteligentního monitorování Azure databází, které zahrnují sestavy o výkonu, upozornění a doporučení pro zmírnění dopadů.
+- **Azure Event Hubs**: pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály.
+- **Azure Storage**: pro archivaci obrovských objemů telemetrických dat za zlomek ceny.
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
 Další informace o kategoriích metrik a protokolů, podporuje různé služby Azure najdete v tématu:
 
-* [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Přehled protokoly diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Přehled protokoly diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Tento článek obsahuje pokyny, které vám umožní povolit telemetrická data diagnostiky pro databáze, elastické fondy a Managed Instance. Také může pomoct vás seznámí s postupy ke konfiguraci Azure SQL Analytics jako nástroj pro sledování pro zobrazování diagnostické telemetrie databáze.
 
@@ -101,7 +101,6 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro Azure SQL 
 
 > [!NOTE]
 > Protokoly auditu zabezpečení není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování SQL v Azure Log Analytics a Azure Event Hubs protokoly](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
-
 > [!TIP]
 > Tento postup opakujte pro každý Azure SQL Database, kterou chcete monitorovat.
 
@@ -112,17 +111,17 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro Azure SQL 
 Pokud chcete povolit streamování telemetrická data diagnostiky pro databáze ve spravované instanci, postupujte podle těchto kroků:
 
 1. Přejděte k vaší databázi v Managed Instance.
-1. Vyberte **nastavení diagnostiky**.
-1. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
+2. Vyberte **nastavení diagnostiky**.
+3. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
    - Můžete vytvořit až tři (3) paralelní připojení telemetrická data diagnostiky datového proudu.
    - Vyberte **+ přidat nastavení diagnostiky** konfigurace paralelní streamování dat diagnostiky k více prostředkům.
 
    ![Povolit diagnostiku pro Managed Instance databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-1. Zadejte název nastavení pro vlastní referenci.
-1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
-1. Zaškrtněte políčka pro databáze diagnostickou telemetrii: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** a **chyby**.
-1. Vyberte **Uložit**.
+4. Zadejte název nastavení pro vlastní referenci.
+5. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
+6. Zaškrtněte políčka pro databáze diagnostickou telemetrii: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** a **chyby**.
+7. Vyberte **Uložit**.
 
    ![Konfigurovat diagnostiku pro Managed Instance databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
@@ -170,7 +169,7 @@ Prostředek Managed Instance můžete nastavit shromažďování následujícíc
 
 | Prostředek | Monitorování telemetrických dat |
 | :------------------- | ------------------- |
-| **Spravovaná Instance** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
+| **Spravovaná Instance** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
 
 Pokud chcete povolit streamování telemetrická data diagnostiky pro prostředek Managed Instance, postupujte takto:
 
@@ -338,11 +337,11 @@ Po streamuje vybraná data do služby Event Hubs, jste zase o krok blíž k povo
 
 Streamovaná metriky můžete použít ve službě Event Hubs do:
 
-* **Zobrazení stavu služby podle streamovaných dat horká cesta k Power BI**. Pomocí služby Event Hubs, Stream Analytics a Power BI můžete snadno transformovat data metrik a diagnostických nástrojů do téměř v reálném čase na služby Azure. Přehled o tom, jak vytvořit Centrum událostí, zpracování dat pomocí Stream Analytics a pomocí Power BI jako výstup, naleznete v tématu [Stream Analytics a Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
+- **Zobrazení stavu služby podle streamovaných dat horká cesta k Power BI**. Pomocí služby Event Hubs, Stream Analytics a Power BI můžete snadno transformovat data metrik a diagnostických nástrojů do téměř v reálném čase na služby Azure. Přehled o tom, jak vytvořit Centrum událostí, zpracování dat pomocí Stream Analytics a pomocí Power BI jako výstup, naleznete v tématu [Stream Analytics a Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
 
-* **Stream protokolů do datových proudů telemetrie a protokolování třetích stran**. Pomocí služby Event Hubs streamování můžete získat metriky a diagnostické protokoly do různých výrobců sledování a protokolů analytická řešení.
+- **Stream protokolů do datových proudů telemetrie a protokolování třetích stran**. Pomocí služby Event Hubs streamování můžete získat metriky a diagnostické protokoly do různých výrobců sledování a protokolů analytická řešení.
 
-* **Vytvářejte vlastní telemetrii a protokolování platformy**. Proveďte už máte platformu vlastními silami sestavených telemetrická data nebo zvažuje vytvoříte? Vysoce škálovatelné publikování a odběru povaha služby Event Hubs umožňuje flexibilně ingestovat diagnostické protokoly. Zobrazit [Dan Rosanova návod k použití služby Event Hubs v globálním měřítku telemetrie platformě](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+- **Vytvářejte vlastní telemetrii a protokolování platformy**. Proveďte už máte platformu vlastními silami sestavených telemetrická data nebo zvažuje vytvoříte? Vysoce škálovatelné publikování a odběru povaha služby Event Hubs umožňuje flexibilně ingestovat diagnostické protokoly. Zobrazit [Dan Rosanova návod k použití služby Event Hubs v globálním měřítku telemetrie platformě](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="stream-into-storage"></a>Stream do služby Storage
 
@@ -386,7 +385,7 @@ Pokud používáte Azure SQL Analytics, můžete monitorovat spotřebu příjem 
 
 ## <a name="metrics-and-logs-available"></a>Metriky a protokoly, které jsou k dispozici
 
-Shromážděné telemetrické monitorování lze použít pro vlastní _vlastní analýza_ a _vývoj aplikací_ pomocí [jazyk SQL Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries). 
+Shromážděné telemetrické monitorování lze použít pro vlastní _vlastní analýza_ a _vývoj aplikací_ pomocí [jazyk SQL Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="all-metrics"></a>Všechny metriky
 
@@ -690,12 +689,12 @@ Další informace o [formát protokolu Intelligent Insights](sql-database-intell
 
 Zjistěte, jak povolit protokolování a pochopit, metriky a protokolování kategorie podporuje různé služby Azure, najdete v tématech:
 
-* [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Přehled protokoly diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Přehled protokoly diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Další informace o službě Event Hubs, přečtěte si:
 
-* [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
-* [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Další informace o službě Azure Storage najdete v tématu [stahování metriky a diagnostické protokoly z úložiště](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

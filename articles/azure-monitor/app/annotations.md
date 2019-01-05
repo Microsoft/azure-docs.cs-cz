@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 126c0d63a7d59b76361a25844575ee6556a475b1
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9aa77caa690bfb51dd0e5d43e15d246614f1cc71
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002072"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050179"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafy metrik ve službě Application Insights
 
 Poznámky na [Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md) grafy zobrazují, kam jste nasadili nového sestavení nebo jiné významné události. Využívají ji snadno zjistit, zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří podle [Azure DevOps služby sestavovací systém](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Můžete také vytvořit poznámky k nastavení příznaku jakékoli události, například podle [jejich vytváření z Powershellu](#create-annotations-from-powershell).
 
 > [!NOTE]
-> Tento článek odráží zastaralá **prostředí klasické metriky**. Poznámky jsou aktuálně dostupné v klasickém prostředí a  **[sešity](../../application-insights/app-insights-usage-workbooks.md)**. Další informace o aktuálního prostředí metriky, můžete konzultovat [v tomto článku](../../azure-monitor/platform/metrics-charts.md).
+> Tento článek odráží zastaralá **prostředí klasické metriky**. Poznámky jsou aktuálně dostupné v klasickém prostředí a  **[sešity](../../azure-monitor/app/usage-workbooks.md)**. Další informace o aktuálního prostředí metriky, můžete konzultovat [v tomto článku](../../azure-monitor/platform/metrics-charts.md).
 
 ![Příklad poznámky s viditelné korelace s doba odezvy serveru](./media/annotations/00.png)
 

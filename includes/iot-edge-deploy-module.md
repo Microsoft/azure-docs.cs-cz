@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 12/31/2018
+ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: dd4873017105db190f9a468ec1f1f77f4e8c9c0e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 019d6120f8f3769d2d974270d575278da0370ef0
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53977102"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54057368"
 ---
 Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Modul IoT Edge je spustitelný balíček implementovaný jako kontejner. V této části jsme nasadit předem sestavené modulu z [moduly IoT Edge části webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Tento modul generuje Simulovaná telemetrická data pro vaše zařízení IoT Edge.
 
@@ -21,13 +21,13 @@ Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat m
 
    ![Simulované teplotní snímač ve službě Azure search na portálu](./media/iot-edge-deploy-module/search-for-temperature-sensor.png)
 
-2. Vyberte zařízení IoT Edge pro příjem tento modul. V **cílová zařízení pro modul IoT Edge**, zadejte následující informace:
+2. Vyberte zařízení IoT Edge pro příjem tento modul. Na **cílová zařízení pro modul IoT Edge** stránky, zadejte následující informace:
 
    1. **Předplatné**: Vyberte předplatné, které obsahuje IoT hub, kterou používáte.
 
    2. **IoT Hub**: vyberte název služby IoT hub, kterou používáte.
 
-   3. **Název zařízení IoT Edge**: Pokud dříve v tomto rychlém startu jste použili navrhované zařízení název, zadejte **myEdgeDevice**. Nebo vyberte **najít zařízení** vybírat ze seznamu zařízení ve službě IoT hub. 
+   3. **Název zařízení IoT Edge**: Pokud dříve v tomto rychlém startu jste použili navrhované zařízení název, zadejte **myEdgeDevice**. Nebo vyberte **najít zařízení** vybírat ze seznamu zařízení IoT Edge ve službě IoT hub. 
    
    4. Vyberte **Vytvořit**.
 

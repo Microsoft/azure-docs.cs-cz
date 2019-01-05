@@ -1,5 +1,5 @@
 ---
-title: Jak vytvořit odběry ve službě Azure API Management | Dokumentace Microsoftu
+title: Vytvořit odběry ve službě Azure API Management | Dokumentace Microsoftu
 description: Zjistěte, jak vytvořit odběry ve službě Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -13,40 +13,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 3f4e113125ec9644aac974e47996afe290e57cee
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 1393e548c46c23f6b50c1b18a274febb74914ae8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52621790"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054489"
 ---
-# <a name="how-to-create-subscriptions-in-azure-api-management"></a>Jak vytvořit odběry ve službě Azure API Management
+# <a name="create-subscriptions-in-azure-api-management"></a>Vytvořit odběry ve službě Azure API Management
 
-Při publikování rozhraní API pomocí Azure API Management (APIM), je nejběžnější a nejjednodušší způsob, jak zabezpečit přístup k těmto rozhraním API pomocí klíče předplatného. Jinými slovy klientské aplikace, které potřebují využívat publikovaných rozhraní API musí obsahovat platný klíč předplatného v požadavcích HTTP při volání těchto rozhraních API. Pokud chcete získat klíč předplatného pro přístup k rozhraní API, se vyžaduje předplatné. Další informace o předplatných najdete v tématu [předplatných ve službě Azure API Management](api-management-subscriptions.md)
+Při publikování rozhraní API prostřednictvím služby Azure API Management je snadné a společné pro zabezpečený přístup k těmto rozhraním API pomocí klíče předplatného. Klientské aplikace, které potřebují využívat publikovaných rozhraní API musí obsahovat platné předplatné klíč v požadavcích HTTP při provádění volání těchto rozhraní API. Pokud chcete získat klíč předplatného pro přístup k rozhraní API, se vyžaduje předplatné. Další informace o předplatných najdete v tématu [předplatných ve službě Azure API Management](api-management-subscriptions.md).
 
 Tento článek vás provede kroky pro vytvoření předplatných na webu Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto článku, budete muset:
+Provést kroky v tomto článku, jsou následující požadavky:
 
-+ [Vytvoření instance APIM](get-started-create-service-instance.md)
-+ Vysvětlení [předplatných služby APIM](api-management-subscriptions.md)
++ [Vytvoření instance API managementu](get-started-create-service-instance.md).
++ Vysvětlení [předplatných ve službě API Management](api-management-subscriptions.md).
 
 ## <a name="create-a-new-subscription"></a>Vytvořte nové předplatné
 
-1. Klikněte na **předplatná** v nabídce na levé straně
-2. Klikněte na tlačítko **přidat předplatné**
-3. Zadejte název předplatného a výběr rozsahu
-4. Klikněte na **Uložit**.
+1. Vyberte **předplatná** v nabídce na levé straně.
+2. Vyberte **přidat předplatné**.
+3. Zadejte název předplatného a vyberte obor.
+4. Vyberte **Uložit**.
 
 ![Flexibilní předplatná](./media/api-management-subscriptions/flexible-subscription.png)
 
-Po vytvoření předplatného dvojici klíčů rozhraní API (primární i sekundární) připravené pro přístup k rozhraní API.
+Po vytvoření předplatného jsou k dispozici dva klíče rozhraní API pro přístup k rozhraní API. Jeden z nich je primární a jedna je sekundární. 
 
 ## <a name="next-steps"></a>Další postup
-Další informace o službě API Management:
+Získejte další informace o službě API Management:
 
-+ Přečtěte si další [koncepty](api-management-terminology.md) ve službě API Management
-+ Postupujte podle našich [kurzy](import-and-publish.md) Další informace o službě API Management
-+ Zkontrolujte naše [stránku s nejčastějšími dotazy](api-management-faq.md) pro běžné dotazy
++ Přečtěte si další [koncepty](api-management-terminology.md) ve službě API Management.
++ Postupujte podle našich [kurzy](import-and-publish.md) Další informace o službě API Management.
++ Zkontrolujte naše [stránku s nejčastějšími dotazy](api-management-faq.md) pro běžné dotazy.

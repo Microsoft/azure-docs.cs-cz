@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: d6180156e1a8f3fa053c7fbb247e38831f86e76a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: f7050514d5f0de0cade09c6be672d7dfd3568da3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998402"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037408"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Vytvoření služby Application Gateway pomocí šablony Azure Resource Manageru
 
@@ -68,7 +68,7 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
 
    * **type**. Typ prostředku vytvořeného šablonou. V takovém případě je typ `Microsoft.Network/applicationGateways`, který představuje službu application gateway.
    * **name**. Název prostředku. Všimněte si použití `[parameters('applicationGatewayName')]`, což znamená, že název doplníte jako vstup nebo doplněn souborem parametru během nasazení.
-   * **properties**. Seznam vlastností prostředku. Tato šablona používá při vytváření služby Application Gateway virtuální síť a veřejnou IP adresu.
+   * **properties**. Seznam vlastností prostředku. Tato šablona používá při vytváření služby Application Gateway virtuální síť a veřejnou IP adresu. Syntaxi JSON a vlastností služby application gateway v šabloně najdete v tématu [Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways).
 
 1. Přejděte zpět do [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Klikněte na tlačítko **azuredeploy-parameters.json**a potom klikněte na tlačítko **RAW**.
@@ -118,7 +118,7 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Nasazení šablony Azure Resource Manageru pomocí prostředí PowerShell
 
-Pokud jste prostředí Azure PowerShell nikdy nepoužívali, navštivte: [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) a postupujte podle pokynů k přihlášení do Azure a vyberte své předplatné.
+Pokud jste prostředí Azure PowerShell nikdy nepoužívali, navštivte: [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) a postupujte podle pokynů k přihlášení do Azure a vyberte své předplatné.
 
 1. Přihlaste se k prostředí PowerShell
 
@@ -226,9 +226,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete konfigurovat přesměrování zpracování SSL, přečtěte si článek [Konfigurace aplikační brány pro přesměrování zpracování SSL](tutorial-ssl-cli.md).
+Pokud chcete konfigurovat přesměrování zpracování SSL, navštivte: [Konfigurace aplikační brány pro přesměrování zpracování SSL](tutorial-ssl-cli.md).
 
-Pokud chcete službu Application Gateway nakonfigurovat pro použití s interním nástrojem pro vyrovnávání zatížení, přečtěte si článek [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (ILB)](redirect-internal-site-cli.md).
+Pokud chcete provést konfiguraci aplikační brány pro použití s službě interní služby load balancer, navštivte: [Vytvoření služby application gateway se interní nástroj pro vyrovnávání zatížení (ILB)](redirect-internal-site-cli.md).
 
 Pokud chcete získat další informace o obecných možnostech vyrovnávání zatížení, přečtěte si článek:
 

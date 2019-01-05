@@ -5,20 +5,20 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 5d8aa2c25bf79278b10b96f93733e3abf89e4783
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971177"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040740"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
 S Azure Kubernetes Service (AKS), hlavní součásti, jako *kube apiserver* a *správce kontroléru kube* jsou k dispozici jako spravovaná služba. Vytvořit a spravovat uzly, které běží *kubelet* a kontejner modulu runtime a nasadit vaše aplikace prostřednictvím spravovaného serveru Kubernetes API. K řešení potíží se vaše aplikace a služby, můžete zobrazit protokoly generované tyto hlavní součásti. V tomto článku se dozvíte, jak povolit a dotazování protokolů z hlavní součásti Kubernetes pomocí Azure Log Analytics.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek vyžaduje existující cluster AKS spuštěné v účtu Azure. Pokud již nemáte AKS cluster, vytvořte ji pomocí [rozhraní příkazového řádku Azure] [ cli-quickstart] nebo [webu Azure portal][portal-quickstart]. Log Analytics spolupracuje s oběma RBAC a není RBAC povolené AKS clustery.
 
@@ -31,18 +31,15 @@ Log Analytics je povolit a spravovat na webu Azure Portal. Pokud chcete povolit 
 1. Vyberte skupinu prostředků pro váš cluster AKS, jako je například *myResourceGroup*. Nevybírejte skupinu prostředků, která obsahuje vaše vybrané prostředky clusteru AKS, jako například *MC_myResourceGroup_myAKSCluster_eastus*.
 1. Na levé straně zvolte **nastavení diagnostiky**.
 1. Vyberte váš cluster AKS, jako je například *myAKSCluster*, pak se rozhodnout **zapnout diagnostiku**.
-1. Zadejte název, jako například *myAKSLogs*, vyberte možnost **odesílat do Log Analytics**.
+1. Zadejte název, jako například *myAKSClusterLogs*, vyberte možnost **odesílat do Log Analytics**.
     * Zvolit *konfigurovat* Log Analytics, vyberte existující pracovní prostor nebo **vytvořit nový pracovní prostor**.
     * Pokud je potřeba vytvořit pracovní prostor, zadejte název, skupinu prostředků a umístění.
-1. V seznamu dostupných protokolů, vyberte protokoly, které chcete povolit, jako například *kube apiserver*, *správce kontroléru kube*, a *kube Plánovač*. Můžete vrátit a změnit shromažďovat protokoly, jakmile budou povolené Log Analytics.
+1. V seznamu dostupných protokolů vyberte protokoly, které si přejete povolit. Ve výchozím nastavení *kube apiserver*, *správce kontroléru kube*, a *kube Plánovač* protokoly jsou povolené. Můžete povolit dodatečné protokolování, *kube auditu* a *clusteru bylo*. Můžete vrátit a změnit shromažďovat protokoly, jakmile budou povolené Log Analytics.
 1. Až to budete mít, vyberte **Uložit** povolení kolekce vybraných protokolů.
 
 Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnostiky* časového intervalu a poté možnost vytvoření pracovního prostoru služby Log Analytics:
 
 ![Povolit pracovní prostor Log Analytics pro cluster Log Analytics AKS](media/view-master-logs/enable-oms-log-analytics.png)
-
->[!NOTE]
->Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Plánování testů pod v clusteru AKS
 

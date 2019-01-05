@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2a7b5a1f90ddc6ccfdbc568113a5c265dd9ac84
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f0f1464adde2c80706fbced7309877447644d19e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022950"
+ms.locfileid: "54040434"
 ---
 # <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
 Hledání je funkce [Application Insights](../../application-insights/app-insights-overview.md) , který používáte k vyhledání a prozkoumejte telemetrická data jednotlivých položek, například zobrazení stránek, výjimky nebo webové požadavky. A můžete zobrazit trasování protokolů a událostí, které jste nakódovali.
@@ -166,4 +166,4 @@ Automaticky jsme není protokolů následných dat ale můžete použít [TrackT
 * [Zápis složitých dotazů v Analytics](../../azure-monitor/log-query/get-started-portal.md)
 * [Odeslání protokolů a vlastní telemetrii do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Nastavení dostupnosti a rychlosti odezvy testy](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Řešení potíží](../../application-insights/app-insights-troubleshoot-faq.md)
+* [Řešení potíží](../../azure-monitor/app/troubleshoot-faq.md)

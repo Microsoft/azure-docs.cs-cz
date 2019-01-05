@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4ad93dad2044526f5825823540325b73f2d0d7ae
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087929"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053530"
 ---
-# <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
+# <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaná data
 
 Pokud jste si prošli kurz Analýza nákladů, pak jste obeznámeni s ručním stahováním dat ze služby Cost Management. Můžete však vytvořit opakované úlohy, která automaticky vyexportuje Cost Management data do služby Azure storage na základě denně, týdně nebo měsíčně. Exportovaná data jsou ve formátu CSV a obsahují všechny informace, které služba Cost Management shromažďuje. Exportovaná data v úložišti Azure pak můžete používat s externími systémy a kombinovat je se svými vlastními daty. Exportovaná data můžete používat v externím systému, jako je třeba řídicí panel nebo jiný finanční systém.
 
@@ -62,7 +62,23 @@ Nový export se zobrazí v seznamu exportů. Ve výchozím nastavení jsou nové
 
 Na začátku může trvat jednu až dvě hodiny, než se export spustí. Může však trvat až čtyři hodiny, než se v exportovaných souborech zobrazí data.
 
-## <a name="verify-that-data-is-collected"></a>Ověření shromáždění dat
+### <a name="export-schedule"></a>Exportujte plán
+
+Naplánované exporty jsou ovlivněny čas a den v týdnu při počátečním vytvoření exportu. Při vytváření naplánované export exportu se spustí ve stejnou dobu den pro každý výskyt následné export. Například můžete vytvořit denní export v 13:00. Další export běží: 00: 00 následujícího dne. Aktuální čas ovlivňuje všechny ostatní typy export stejným způsobem – vždy spouštět ve stejnou dobu den jako při počátečním vytvoření exportu. V jiném příkladu vytvoříte týdenní exportu v 16:00:00 v pondělí. Sestava příštích běží v 16:00:00 následující pondělí. *Exportovaná data je k dispozici do čtyř hodin běhu.*
+
+Každý export vytvoří nový soubor, tak starší exporty se nepřepíšou.
+
+Existují tři typy možností:
+
+**Denní export náklady za měsíc k datu** – počáteční export se spustí okamžitě. Následující export spustit následující den ve stejnou dobu jako počáteční export. Nejnovější data se shromažďuje od předchozí denní exporty.
+
+**Týdenní náklady za posledních sedm dní** – počáteční export se spustí okamžitě. Spusťte následující export dne v týdnu a ve stejnou dobu jako počáteční export. Náklady jsou za posledních sedm dní.
+
+**Vlastní** – umožňuje naplánovat týdenní a měsíční exportuje s možnostmi pro týden k datu a měsíc k datu. *Počáteční export se spustí okamžitě.*
+
+![Nový export – základní informace o kartě zobrazen vlastní týdenní výběr týden k datu](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+
+## <a name="verify-that-data-is-collected"></a>Ověřit shromáždění dat
 
 Pomocí Průzkumníka služby Azure Storage můžete snadno ověřit, že se data služby Cost Management shromažďují, a zobrazit exportovaný soubor CSV.
 

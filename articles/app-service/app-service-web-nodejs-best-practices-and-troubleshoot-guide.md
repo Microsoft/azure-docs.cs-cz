@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: db412d3fd0af84d528ad0c83d86cc5d055359914
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632683"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051848"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v Azure App Service Windows
 
@@ -147,7 +147,7 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Moje aplikace v Ruby spotřebovává příliš mnoho procesoru
 
-Může se zobrazit doporučení ze služby Azure App Service na portálu o vysoké využití procesoru. Monitorování můžete nastavit také sledovat u určitých [metriky](web-sites-monitor.md). Když zkontrolujete využití procesoru [řídicí panel portálu Azure](../application-insights/app-insights-web-monitor-performance.md), zkontrolujte maximální hodnoty pro procesor, Nenechte si ujít maximální hodnoty.
+Může se zobrazit doporučení ze služby Azure App Service na portálu o vysoké využití procesoru. Monitorování můžete nastavit také sledovat u určitých [metriky](web-sites-monitor.md). Když zkontrolujete využití procesoru [řídicí panel portálu Azure](../azure-monitor/app/web-monitor-performance.md), zkontrolujte maximální hodnoty pro procesor, Nenechte si ujít maximální hodnoty.
 Pokud si myslíte, že vaše aplikace spotřebovává příliš mnoho CPU a nelze vysvětlit, proč, můžete provádět profilaci vaši aplikaci uzlu zjistit.
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilace aplikace node ve službě Azure App Service s V8 Profiler
@@ -220,7 +220,7 @@ Uvidíte, že 95 % doby spotřebovával WriteConsoleLog funkcí. Výstup také z
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Moje aplikace v Ruby spotřebovává příliš mnoho paměti
 
-Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí upozornění ze služby Azure App Service na portálu o vysoké spotřeby paměti. Můžete nastavit monitorování pro určité sledovat [metriky](web-sites-monitor.md). Při kontrole využití paměti na [řídicí panel portálu Azure](../application-insights/app-insights-web-monitor-performance.md), nezapomeňte se podívat maximální hodnoty paměti, Nenechte si ujít maximální hodnoty.
+Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí upozornění ze služby Azure App Service na portálu o vysoké spotřeby paměti. Můžete nastavit monitorování pro určité sledovat [metriky](web-sites-monitor.md). Při kontrole využití paměti na [řídicí panel portálu Azure](../azure-monitor/app/web-monitor-performance.md), nezapomeňte se podívat maximální hodnoty paměti, Nenechte si ujít maximální hodnoty.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Detekce nevrácení paměti a halda Diff pro node.js
 

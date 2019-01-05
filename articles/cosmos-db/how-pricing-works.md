@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: rimman
-ms.openlocfilehash: 5651e7ee8196eec9d1b1bf20e84ed73e484afb4b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 81c54d0540aa5af279a5a6d570784454026ff229
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542386"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042003"
 ---
 # <a name="pricing-model-of-azure-cosmos-db"></a>Cenový model služby Azure Cosmos DB 
 

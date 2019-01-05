@@ -3,17 +3,17 @@ title: Automatické škálování virtuálního počítače škálovací sady v 
 description: Zjistěte, jak použít Ansible k škálování virtuálního počítače škálovací sady s automatickým Škálováním v Azure
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, škálování, automatické škálování, virtuálních počítačů, škálovací sadu virtuálních počítačů, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: yuwzho, kyliel
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.openlocfilehash: c6678d6df3a695d3a0471e5779bc3af4b6ba6c84
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b573eecb2f5c67014901f0006cf1087a261cf9c4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410909"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049941"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Automatické škálování virtuálního počítače škálovací sady v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat škálovací sadu virtuálních počítačů v Azure stejně jako jakékoli jiné prostředky Azure. 

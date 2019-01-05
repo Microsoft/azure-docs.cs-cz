@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7aa5ccb402bf8648668a5eb00d6a740caf7bf3d4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794545"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055145"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -145,11 +145,13 @@ Stav stavu koncového bodu serveru "Žádná aktivita" znamená, že koncový bo
 
 Koncový bod serveru nemůže protokolu aktivitu synchronizace z následujících důvodů:
 
-- Server dosáhl maximální počet souběžných synchronizace relací. Azure File Sync podporuje aktuálně 2 activesyncu relací na procesor nebo maximálně 8 active sync relace na serveru.
+- Server má aktivní relace synchronizace stínové kopie svazku (SnapshotSync). Při aktivním pro koncový bod serveru relaci synchronizace VSS další koncové body serveru v jednom svazku nelze spustit relaci počáteční synchronizace až do dokončení stínové kopie svazku relace synchronizace.
 
-- Server má aktivní relace synchronizace stínové kopie svazku (SnapshotSync). Při aktivním pro koncový bod serveru relaci synchronizace VSS další koncové body serveru na serveru nelze spustit relaci počáteční synchronizace až do dokončení stínové kopie svazku relace synchronizace.
+    Aktuální aktivitu synchronizace na serveru, najdete v části [jak sledovat průběh aktuální relace synchronizace?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-Aktuální aktivitu synchronizace na serveru, najdete v části [jak sledovat průběh aktuální relace synchronizace?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Server dosáhl maximální počet souběžných synchronizace relací. 
+    - Agent verze 4.x a novější: Omezení se liší v závislosti na dostupných systémových prostředcích.
+    - Verze agenta 3.x: 2 activesyncu relací na procesor nebo maximálně 8 active sync relace na serveru.
 
 > [!Note]  
 > Je-li stav serveru v okně registrované servery "Se zobrazí v režimu Offline", proveďte kroky popsané v [koncový bod serveru je ve stavu stavu "Žádná aktivita" nebo "Čeká na vyřízení" a stavu serveru v okně registrované servery je "Se zobrazí v režimu offline" ](#server-endpoint-noactivity) oddílu.
@@ -244,13 +246,14 @@ Pokud chcete zobrazit tyto chyby, spusťte **FileSyncErrorsReport.ps1** skript p
 **Protokol ItemResults – chyby za položek synchronizace**  
 | HODNOTA HRESULT | HRESULT (decimální) | Text chyby | Problém | Náprava |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80065 | -2134376347 | ECS_E_DATA_TRANSFER_BLOCKED | Soubor má došlo k trvalé chybě při synchronizaci a proto bude pouze proveden pokus o synchronizaci jednou za den. Základní chyba najdete v dřívějších protokolu událostí. | V produktu agents R2 (2.0) a výše, se zobrazí původní chyby spíše než ten. Upgradujte na nejnovější verzi agenta zobrazí podkladová chyba nebo podívejte se na starší protokoly událostí k nalezení příčiny původní chyby. |
-| 0x7B | 123 | ERROR_INVALID_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [pokyny pro pojmenování souborů Azure](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) a ze seznamu níže nepodporované znaky. |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [pokyny pro pojmenování souborů Azure](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) a ze seznamu níže nepodporované znaky. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor byl změněn, ale změny ještě nezjistil synchronizace. Synchronizace se obnoví po této změně se detekuje. | Není vyžadována žádná akce. |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů. |
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nejde zatím synchronizovat, protože ještě není synchronizovaná závislá složka. Tato položka se synchronizuje po závislých změn. | Není vyžadována žádná akce. |
+| 0x7B | 123 | ERROR_INVALID_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [zpracování nepodporované znaky](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Další informace. |
+| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [zpracování nepodporované znaky](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Další informace. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor byl změněn, ale změny ještě nezjistil synchronizace. Synchronizace se obnoví po této změně se detekuje. | Není vyžadována žádná akce. |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Soubor nelze synchronizovat, protože je dosažen limit sdílené složky Azure file. | Chcete-li vyřešit tento problém, naleznete v tématu [jste dosáhli limitu úložiště sdílené složky Azure file](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) části v Průvodci odstraňováním potíží. |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Této chybě může dojít, pokud je soubor šifrovaný pomocí nepodporované řešení (například systém souborů EFS systému souborů NTFS) nebo soubor má odstranění stavu čekání. | Pokud je soubor šifrovaný pomocí nepodporované řešení, dešifrování souboru a používejte šifrování podporovaných řešení. Seznam řešení podpory najdete v tématu [řešení šifrování](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions) části v Průvodci plánem. Pokud se soubor nachází v odstranění stav Čekání na vyřízení, soubor odstraní, jakmile se zavřou všechny otevřené popisovače souborů. |
+| 0x20 | 32 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Nějaký soubor se během synchronizace změnil, takže je nutné ho synchronizovat znovu. | Není vyžadována žádná akce. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporované znaky.

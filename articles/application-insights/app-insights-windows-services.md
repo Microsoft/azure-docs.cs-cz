@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: c23ff8a22284416a9c87750e4ca0448e0690de0e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f828ebf9131be014d2ea572b3314b1aacd630d14
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017510"
+ms.locfileid: "54050335"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Ruční konfigurace služby Application Insights pro aplikace .NET
 
@@ -99,7 +99,7 @@ Pokud jste provedli jakékoli úpravy souboru ApplicationInsights.config, uložt
     `<InstrumentationKey>`*zkopírovaný klíč instrumentace*`</InstrumentationKey>`
 * Ujistěte se, že jsou vlastnosti souboru ApplicationInsights.config v Průzkumníku řešení nastavené na: **Build Action = Content, Copy to Output Directory = Copy**.
 
-Nastavení klíče instrumentace v kódu je užitečné v případě, že chcete [přepínat mezi klíči pro různé konfigurace sestavení](app-insights-separate-resources.md). Pokud klíč nastavíte v kódu, nemusíte ho nastavovat v souboru `.config`.
+Nastavení klíče instrumentace v kódu je užitečné v případě, že chcete [přepínat mezi klíči pro různé konfigurace sestavení](../azure-monitor/app/separate-resources.md). Pokud klíč nastavíte v kódu, nemusíte ho nastavovat v souboru `.config`.
 
 ## <a name="run"></a> Spuštění projektu
 Použijte **F5** ke spuštění aplikace a vyzkoušejte: otevření různých stránek k vygenerování nějaké telemetrie.
@@ -115,13 +115,13 @@ Vyhledejte data v tabulkách Přehled. Na první pohled uvidíte pouze jeden neb
 
 ![Proklikejte se k dalším datům](./media/app-insights-windows-services/12-first-perf.png)
 
-Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších metrik. [Další informace o metrikách.](app-insights-web-monitor-performance.md)
+Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších metrik. [Další informace o metrikách.](../azure-monitor/app/web-monitor-performance.md)
 
 ### <a name="no-data"></a>Žádná data?
 * Použijte aplikaci a otevřete různé stránky tak, aby došlo k vygenerování nějaké telemetrie.
 * Otevřete dlaždici [Vyhledávání](../azure-monitor/app/diagnostic-search.md) a zobrazte jednotlivé události. Někdy trvá událostem trochu déle, než se dostanou skrz kanály metriky.
 * Počkejte několik sekund a klikněte na tlačítko **Aktualizovat**. Grafy se pravidelně samy aktualizují, ale můžete je aktualizovat ručně, pokud čekáte na zobrazení některých dat.
-* Viz [Poradce při potížích](app-insights-troubleshoot-faq.md).
+* Viz [Poradce při potížích](../azure-monitor/app/troubleshoot-faq.md).
 
 ## <a name="publish-your-app"></a>Publikování aplikace
 Nyní nasaďte aplikaci na server nebo do Azure a sledujte shromažďování dat.

@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s replikaci pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+title: Řešení problémů s replikací pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek obsahuje informace o odstraňování potíží pro běžné potíže s replikací během zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,100 +7,115 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 1c37b764b47856d3a369228d3f224f2a464029bb
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 30f128e75feb149453b642739f57c3a16ade524f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790652"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053087"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
 
-Pokud chráníte virtuální počítače VMware nebo fyzických serverů požíváním Azure Site Recovery, může se zobrazit zpráva konkrétní chyba. Tento článek popisuje některé běžné problémy se můžou vyskytnout při replikaci místních virtuálních počítačů VMware a fyzických serverů do Azure s využitím [Azure Site Recovery](site-recovery-overview.md).
-
+Pokud chráníte virtuální počítače VMware nebo fyzické servery s využitím Azure Site Recovery, může se zobrazit zpráva konkrétní chyba. Tento článek popisuje některé běžné problémy se můžou vyskytnout při replikaci místních virtuálních počítačů VMware a fyzických serverů do Azure pomocí [Site Recovery](site-recovery-overview.md).
 
 ## <a name="initial-replication-issues"></a>Potíže s úvodní replikací
 
-V mnoha případech jsou selhání počáteční replikace, na které jsme na webu podpory kvůli problémům s připojením mezi zdrojovém serveru proces nebo proces serveru do Azure. Většině případů můžete tyto potíže řešit pomocí následujících kroků uvedených dole.
+Počáteční replikace selhání často jsou způsobeny problémy s připojením mezi zdrojovým serverem a že procesový server nebo mezi procesovým serverem a Azure. Ve většině případů při řešení těchto problémů podle postupu uvedeného v následujících částech.
 
-### <a name="verify-the-source-machine"></a>Ověřte, zdrojový počítač
-* Z příkazového řádku počítače zdrojového serveru použijte službu Telnet příkaz ping procesový Server s port https (standardně 9443), jak vidíte níže, jestli jsou všechny problémy se síťovým připojením nebo brány firewall portu blokující problémy.
+### <a name="check-the-source-machine"></a>Zkontrolujte zdrojový počítač
 
-    `telnet <PS IP address> <port>`
-> [!NOTE]
-    > Použít službu Telnet, nepoužívejte příkazem PING otestovat připojení.  Pokud není nainstalovaný protokol Telnet, postupujte podle seznamu kroků [zde](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)
+Seznam ukazuje takto můžete zkontrolovat zdrojový počítač:
 
-Pokud se nelze připojit, povolit příchozí port 9443 na Procesovém serveru a zkontrolujte, pokud problém pořád ukončen. Byl někdy, ve kterém byl procesový server za hraniční síti, která je příčinou tohoto problému.
+*  Na příkazovém řádku na zdrojovém serveru použijte příkaz ping na procesovém serveru přes port HTTPS (výchozí port HTTPS je 9443) spuštěním následujícího příkazu Telnet. Příkaz zkontroluje problémy se síťovým připojením a problémy tento blok port brány firewall.
 
-* Zkontrolujte, že stav služby `InMage Scout VX Agent – Sentinel/OutpostStart` Pokud není spuštěný a zkontrolujte Pokud problém stále přetrvává.   
+   `telnet <process server IP address> <port>`
 
-### <a name="verify-the-process-server"></a>Ověřte, že procesový server
+   > [!NOTE]
+   > Použijte službu Telnet k testování připojení. Nepoužívejte `ping`. Pokud není nainstalovaný protokol Telnet, proveďte kroky uvedené v [nainstalovat klient služby Telnet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx).
 
-* **Zaškrtněte, pokud procesový server je aktivně doručením (push) dat do Azure**
+   Pokud se nemůžete připojit k procesového serveru, povolte příchozí port 9443 na procesovém serveru. Například může být nutné k povolení příchozího portu 9443 na procesovém serveru, pokud síť obsahuje hraniční síti a monitorována podsíť. Potom zkontrolujte, jestli problém přetrvává.
 
-Z počítač procesového serveru otevřete Správce úloh (stisknutím klávesy Ctrl-Shift-Esc). Přejděte na kartu výkonu a klikněte na odkaz Monitor otevřít zdroj. Z Resource Manageru, přejděte na kartu síť. Zaškrtněte, pokud cbengine.exe v "Procesy s aktivitou sítě" aktivně odesílá velké objemy dat (v MB).
+*  Zkontrolujte stav **InMage Scout VX Agent – Sentinel/OutpostStart** služby. Pokud služba není spuštěná, spusťte službu a potom zkontrolujte, zda problém přetrvává.   
 
-![Povolení replikace](./media/vmware-azure-troubleshoot-replication/cbengine.png)
+### <a name="check-the-process-server"></a>Zkontrolujte, že procesový server
 
-V opačném případě postupujte podle kroků uvedených dole:
+Seznam ukazuje takto můžete zkontrolovat procesový server:
 
-* **Zkontrolujte, jestli je procesový server moct připojit objektů Blob v Azure**: Vyberte a zkontrolujte cbengine.exe zobrazíte "připojení TCP' podívejte se, pokud je připojení z procesového serveru do služby Azure Storage blob URL.
+*  **Zkontrolujte, zda procesový server je aktivně doručením (push) dat do Azure**.
 
-![Povolení replikace](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
+   1. Na procesovém serveru otevřete Správce úloh (stisknutím klávesy Ctrl + Shift + Esc).
+   2. Vyberte **výkonu** kartu a potom vyberte **Monitor otevřít zdroj** odkaz. 
+   3. Na **sledování prostředků** stránky, vyberte **sítě** kartu. V části **procesů pomocí síťové aktivity**, zkontrolujte, zda **cbengine.exe** aktivně odesílá velké objemy dat.
 
-Pokud není pak přejděte do ovládacích panelů > služeb, zkontrolujte, jestli jsou tyto služby do provozu:
+        ![Snímek obrazovky zobrazující svazky v rámci procesů pomocí síťové aktivity](./media/vmware-azure-troubleshoot-replication/cbengine.png)
 
-     * cxprocessserver
-     * InMage Scout VX Agent – Sentinel/Outpost
-     * Microsoft Azure Recovery Services Agent
-     * Microsoft Azure Site Recovery Service
-     * tmansvc
-     *
-(I opětovné) Pokud problém stále přetrvává spusťte žádné služby, která není spuštěná a kontrola.
+   Pokud cbengine.exe neodesílá velké objemy dat, proveďte kroky v následujících částech.
 
-* **Zkontrolujte, jestli je procesový server moct připojit k veřejné IP adrese Azure pomocí portu 443**
+*  **Zkontrolujte, zda procesový server můžete připojit k úložišti objektů Blob v Azure**.
 
-Otevřete nejnovější CBEngineCurr.errlog z `%programfiles%\Microsoft Azure Recovery Services Agent\Temp` a vyhledat: připojení k 443 a pokus se nezdařil.
+   Vyberte **cbengine.exe**. V části **připojení TCP**, zkontrolujte, zda je připojení z procesového serveru na adresu URL blogu o Azure storage.
 
-![Povolení replikace](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
+   ![Snímek obrazovky zobrazující spojení mezi cbengine.exe a adresu URL úložiště objektů Blob v Azure](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
 
-Pokud dojde k problémům, z příkazového řádku procesový Server, použijte telnet příkaz ping vaše veřejné IP adrese Azure (v maskována nad image) součástí CBEngineCurr.currLog přes port 443.
+   Pokud není k dispozici připojení z procesového serveru na adresu URL blogu o Azure storage, v Ovládacích panelech vyberte **služby**. Zkontrolujte, zda jsou spuštěné následující služby:
 
-      telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443
-Pokud se nemůžete připojit, potom zkontrolujte, jestli problém s přístupem k je kvůli bráně firewall nebo Proxy, jak je popsáno v dalším kroku.
+   *  cxprocessserver
+   *  Nástroje InMage Scout VX Agent – Sentinel/Outpost
+   *  Agent Microsoft Azure Recovery Services
+   *  Služba Microsoft Azure Site Recovery
+   *  tmansvc
 
+   Spusťte nebo restartujte jakoukoliv službu, která není spuštěná. Zkontrolujte, zda problém přetrvává.
 
-* **Zaškrtněte, pokud není IP adresa brány firewall založeným na Procesovém serveru blokuje přístup**: Pokud používáte pravidla brány firewall založená na adresu IP serveru, pak si stáhnout kompletní seznam Microsoft Azure Datacenter rozsahy IP adres z [tady](https://www.microsoft.com/download/details.aspx?id=41653) a přidat je do konfigurace brány firewall k zajištění, že byla povolena komunikace s Azure (a port HTTPS (443)).  Povolte rozsahy IP adres pro oblast Azure svého předplatného a pro oblast Západní USA (používá se pro řízení přístupu a správu identit).
+*  **Zkontrolujte, zda procesový server může připojit k Azure veřejnou IP adresu pomocí portu 443**.
 
-* **Zaškrtněte, pokud není brány firewall založeným na adresu URL na Procesovém serveru blokuje přístup**:  Pokud použijete pravidla brány firewall na základě adresy URL na serveru, ujistěte se, že následující adresy URL se přidají do konfigurace brány firewall.
+   V %programfiles%\Microsoft Azure Recovery Services Agent\Temp otevřete nejnovější CBEngineCurr.errlog soubor. V souboru vyhledejte **443** nebo řetězce **pokus o připojení se nezdařilo**.
+
+   ![Snímek obrazovky zobrazující chybu protokoly ve složce Temp](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
+
+   Pokud se zobrazí problémy, na příkazovém řádku na procesovém serveru použijte službu Telnet příkaz ping Azure veřejné IP adresy (IP adresa je maskované na předchozím obrázku). Azure veřejné IP adresy najdete v souboru CBEngineCurr.currLog pomocí portu 443:
+
+   `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
+
+   Pokud se nemůžete připojit, zkontrolujte, zda problém s přístupem k je z důvodu nastavení brány firewall nebo proxy serveru, jak je popsáno v dalším kroku.
+
+*  **Zkontrolujte, zda brány firewall protokolu IP adres založené na procesovém serveru blokuje přístup**.
+
+   Pokud použijete pravidla brány firewall založená na adresu IP serveru, stáhněte si úplný seznam [rozsahy IP adres datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Přidejte rozsahy IP adres pro konfiguraci brány firewall tak, aby Ujistěte se, že brána firewall umožňuje komunikaci do Azure (a výchozí port HTTPS 443). Povolte rozsahy IP adres pro oblast Azure svého předplatného a oblasti Azure USA – Západ, který se (používané pro řízení přístupu a identit správě).
+
+*  **Zkontrolujte, zda bránu firewall založenou na adresu URL na procesovém serveru blokuje přístup**.
+
+   Pokud používáte pravidlo brány firewall na základě adresy URL na serveru, přidejte adresy URL uvedené v následující tabulce ke konfiguraci brány firewall:
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
-* **Zaškrtněte, pokud nejsou nastavení serveru Proxy na Procesovém serveru blokuje přístup**.  Pokud používáte Proxy Server, zajistěte, aby že serverem DNS překládá název proxy serveru.
-Chcete-li zkontrolovat, co jste zadali v době instalace konfiguračního serveru. Přejděte ke klíči registru
+*  **Zkontrolujte, zda nastavení serveru proxy na procesovém serveru blokují přístup**.
 
-    `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings`
+   Pokud používáte proxy server, ujistěte se, že DNS server se přeložit název proxy serveru. Pokud chcete zjistit hodnotu, která jste zadali při nastavení konfiguračního serveru, přejděte ke klíči registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure lokality Recovery\ProxySettings**.
 
-Teď zkontrolujte, že stejné nastavení se používá pomocí agenta Azure Site Recovery k odesílání dat.
-Zálohování Microsoft Azure Search
+   Dále se ujistěte, že stejné nastavení bude používat agent Azure Site Recovery k odesílání dat: 
+      
+   1. Vyhledejte **služby Microsoft Azure Backup**. 
+   2. Otevřít **Microsoft Azure Backup**a pak vyberte **akce** > **změnit vlastnosti**. 
+   3. Na **konfiguraci proxy serveru** kartu, měli byste vidět adresa proxy serveru. Adresa proxy serveru musí být stejná jako adresa proxy serveru, který je zobrazen v nastavení registru. Pokud ne, změňte ho na stejnou adresu.
 
-Otevřete ho a klikněte na akci > změnit vlastnosti. Na kartě Konfigurace proxy serveru měli byste vidět adresu proxy serveru, která by měla být stejná, jak je znázorněno v nastavení registru. Pokud ne, změňte ji na stejné adrese.
+*  **Zkontrolujte, zda omezení šířky pásma je omezená na procesovém serveru**.
 
+   Zvětšit šířku pásma a potom zkontrolujte, jestli problém přetrvává.
 
-* **Zaškrtněte, pokud není omezen omezení šířky pásma na Procesovém serveru**:  Zvětšit šířku pásma a zkontrolujte, jestli problém stále existuje.
+## <a name="source-machine-isnt-listed-in-the-azure-portal"></a>Zdrojový počítač není uvedená na webu Azure Portal
 
-## <a name="source-machine-to-be-protected-through-site-recovery-is-not-listed-on-azure-portal"></a>Zdrojový počítač, který se má chránit pomocí Site Recovery není uvedený na portálu Azure portal
+Při pokusu o vyberte zdrojový počítač k replikaci pomocí Site Recovery počítač nemusí být k dispozici pro jednu z následujících důvodů:
 
-Při pokusu o zvolte zdrojového počítače na povolení replikace prostřednictvím služby Azure Site Recovery se na počítači možná není k dispozici vám pokračujte z následujících důvodů
+*  Pokud dva virtuální počítače v rámci vCenter mají stejnou instanci UUID, prvního virtuálního počítače zjištěny konfigurační server se zobrazí na webu Azure Portal. Pokud chcete tento problém vyřešit, ujistěte se, že žádné dva virtuální počítače mají stejnou instanci UUID.
+*  Ujistěte se, že jste přidali přihlašovací údaje k vCenter správná při nastavování konfiguračního serveru pomocí šablony OVF nebo jednotný instalační program. Ověření přihlašovacích údajů, které jste přidali během instalace, najdete v článku [upravit přihlašovací údaje pro automatické zjišťování](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
+*  Pokud není k dispozici pro přístup k serveru vCenter oprávnění požadovaná oprávnění, může dojít k selhání se zjistit virtuální počítače. Ujistěte se, že oprávnění popsaná v [Příprava účtu pro automatické zjišťování](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) jsou přidány do uživatelský účet vCenter.
+*  Pokud virtuální počítač je už chránit pomocí Site Recovery, virtuální počítač není dostupný pro vybrané pro ochranu na portálu. Ujistěte se, že virtuální počítač, který hledáte, na portálu ještě nebyla zapnuta libovolným uživatelem nebo v jiném předplatném.
 
-* Pokud jsou dva virtuální počítače v rámci serveru vCenter s stejnou instanci UUID, pak první virtuální počítač zjištěných konfiguračního serveru se zobrazí na portálu. Pokud chcete vyřešit, zajistěte, aby žádné dva virtuální počítače měly stejnou instanci UUID.
-* Ujistěte se, že jste přidali přihlašovací údaje k vCenter správná během sada konfigurace pomocí šablony OVF a sjednocené sady. K ověření přihlašovacích údajů přidaných, najdete pokyny, které sdílí [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
-* Pokud je k dispozici pro přístup k serveru vCenter oprávnění nemají dostatečná oprávnění, může vést k selhání v zjišťování virtuálních počítačů. Zkontrolujte oprávnění k dispozici [tady](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) jsou přidány do uživatelský účet vCenter.
-* Pokud virtuální počítač je už chránit pomocí Site Recovery, pak nebude k dispozici pro ochranu. Ujistěte se, že virtuální počítač, který hledáte, na portálu ještě nebyla zapnuta libovolným uživatelem nebo v jiných předplatných.
+## <a name="protected-virtual-machines-arent-available-in-the-portal"></a>Chráněné virtuální počítače nejsou dostupné na portálu
 
-## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>Chráněné virtuální počítače jsou zobrazena šedě out na portálu
-
-Virtuální počítače, které se replikují v rámci obnovení lokality mají šedou barvu pokud existuje duplicitní položky v systému. Přečtěte si pokyny uvedené [tady](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) odstranit zastaralé položky a vyřešte problém.
+Virtuální počítače, které se replikují v rámci obnovení lokality nejsou k dispozici na webu Azure Portal, pokud existují duplicitní položky v systému. Zjistěte, jak odstranit zastaralé položky a vyřešte problém, naleznete v tématu [Azure Site Recovery VMware do Azure: Návod k vyčištění duplicitní nebo zastaralý položky](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
 
 ## <a name="next-steps"></a>Další postup
-Pokud potřebujete další pomoc, odešle se dotaz a [fórum pro Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). Máme k dispozici aktivní komunitě a jednu naši technici budou schopni pomoct.
+
+Pokud potřebujete další pomoc, zveřejněte svůj dotaz v [fórum pro Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). Máme k dispozici aktivní komunitě a jedním z našich techniků, kteří vám můžou pomoct.

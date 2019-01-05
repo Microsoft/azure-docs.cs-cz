@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 4096cf3a44b7c32ed94fdd2ef5dcbad9db08a386
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3f7d44a2a34f6b52c2229cf6491e99c65d5bb525
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054626"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052985"
 ---
 # <a name="pen-testing"></a>Testování průniku
 Jednou z výhod používání Azure pro testování aplikací a nasazení je, že můžete rychle získat prostředí vytvořená.  Není nutné se starat o žádanek, získání a "r: sledování a stohování" v místním hardwaru.
@@ -40,7 +40,7 @@ Od 15. června 2017 Microsoft už nevyžaduje předběžné schválení ho necha
 Standardní testy, které můžete provádět, patří:
 
 * Testování na koncových bodech, a odhalit [Open Web Application zabezpečení projektu (OWASP) top 10 ohrožení zabezpečení](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
-* [Testování argumentu neurčité](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) z vašich koncových bodů
+* [Testování argumentu neurčité](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) z vašich koncových bodů
 * [Port scanning](https://en.wikipedia.org/wiki/Port_scanner) z vašich koncových bodů
 
 Jeden typ testu, který nelze provést, je libovolný druh [útok na dostupnost služby (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) útoku. Jedná se o zahájení útoku DoS, samotné nebo provádění související testy, které může určit, ukazují nebo simulovat jakýkoli typ útoku DoS.

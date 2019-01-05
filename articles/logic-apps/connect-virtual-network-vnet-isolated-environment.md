@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/06/2018
-ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 41ba0816dde63bc611dcb5be544609b88dfe9158
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997502"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052628"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
 
@@ -78,7 +78,7 @@ Při vytváření prostředí integrační služby (ISE), vyberte virtuální s�
 
    Příklad:
 
-   ![Přidání přiřazení role](./media/connect-virtual-network-vnet-isolated-environment/add-contributor-roles.png)
+   ![Přidat přiřazení role](./media/connect-virtual-network-vnet-isolated-environment/add-contributor-roles.png)
 
 Další informace najdete v tématu [oprávnění pro přístup k virtuální síti](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
@@ -110,8 +110,8 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
    | **Název prostředí integrační služby** | Ano | <*Název prostředí*> | Název prostředí | 
    | **Umístění** | Ano | <*Oblast datového centra Azure*> | Oblast datového centra Azure, jak nasadíte prostředí | 
    | **Kapacita** | Ano | 0, 1, 2, 3 | Počet jednotek zpracování pro tento prostředek ISE | 
-   | **Virtuální síť** | Ano | <*Azure--název virtuální sítě –*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nejste připojeni k síti, můžete jeden vytvořit tady. <p>**Důležité**: můžete *pouze* provádět tento vkládání při vytváření vašeho ISE. Ale předtím, než budete moct vytvořit tuto relaci, ujistěte se, že jste již [nastavit řízení přístupu na základě role ve službě virtual network pro Azure Logic Apps](#vnet-access). | 
-   | **Podsítě** | Ano | <*Rozsah IP adres*> | ISE vyžaduje čtyři *prázdný* podsítě. Tyto podsítě jsou undelegated k libovolné službě a jsou používány pro vytváření prostředků ve vašem prostředí. Můžete *nelze změnit* tyto rozsahy IP adres po vytvoření prostředí. <p><p>K vytvoření každé podsíti [, použijte postup v této tabulce](#create-subnet). Každá podsíť musí splňovat tato kritéria: <p>– Musí neexistuje ve stejném rozsahu adres pro vámi zvolené virtuální síti ani žádné jiné privátních IP adres ve kterých je připojený virtuální sítě. <br>-Používá název, který nezačíná znakem čísla nebo pomlčku. <br>-Používá [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>-Vyžaduje třídy B adresní prostor. <br>-Zahrnuje `/27`. Například každá podsíť určuje rozsah adres 32-bit: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, a `10.0.0.96/27`. <br>– Musí být prázdný. |
+   | **Virtuální síť** | Ano | <*Azure--název virtuální sítě –*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nejste připojeni k síti, můžete jeden vytvořit tady. <p>**Důležité**: Je možné *pouze* provádět tento vkládání při vytváření vašeho ISE. Ale předtím, než budete moct vytvořit tuto relaci, ujistěte se, že jste již [nastavit řízení přístupu na základě role ve službě virtual network pro Azure Logic Apps](#vnet-access). | 
+   | **Podsítě** | Ano | <*Rozsah IP adres*> | ISE vyžaduje čtyři *prázdný* podsítě. Tyto podsítě jsou undelegated k libovolné službě a jsou používány pro vytváření prostředků ve vašem prostředí. Můžete *nelze změnit* tyto rozsahy IP adres po vytvoření prostředí. <p><p>K vytvoření každé podsíti [, použijte postup v této tabulce](#create-subnet). Každá podsíť musí splňovat tato kritéria: <p>-Používá název, který nezačíná znakem čísla nebo pomlčku. <br>-Používá [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>-Vyžaduje třídy B adresní prostor. <br>-Zahrnuje `/27`. Například každá podsíť určuje rozsah adres 32-bit: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, a `10.0.0.96/27`. <br>– Musí být prázdný. |
    |||||
 
    <a name="create-subnet"></a>
@@ -128,8 +128,8 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
 
    1. Na **přidat podsíť** podokně zadejte tyto informace.
 
-      * **Název**: název pro vaši podsíť
-      * **Rozsah adres (blok CIDR)**: rozsah vaší podsítě ve virtuální síti a ve formátu CIDR
+      * **Název**: Název pro vaši podsíť
+      * **Rozsah adres (blok CIDR)**: Rozsah vaší podsítě ve virtuální síti a ve formátu CIDR
 
       ![Přidat podrobnosti o podsíti](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 

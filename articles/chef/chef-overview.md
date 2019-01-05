@@ -1,30 +1,30 @@
 ---
-title: Chef pomocí Azure
-description: Základní informace o použití Chef nakonfigurovat a otestovat infrastruktury Azure
+title: Azure pomocí Chefu
+description: Úvod do nakonfigurovat a otestovat infrastrukturou Azure pomocí Chefu
 ms.service: virtual-machines-linux
 keywords: Azure, chef, devops, virtuální počítače, přehled, automatizovat
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 345dc1c608eabb2d1108a337c0fffc7f86b9460e
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 0e37aee06ed7066dab2ab25915edcc471993b996
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260006"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050264"
 ---
-# <a name="using-chef-with-azure"></a>Chef pomocí Azure
-[Chef](http://www.chef.io) je výkonný automatizace platforma, která transformuje infrastruktury virtuálního počítače na platformě Azure do kódu. Chef automatizuje, jak je infrastruktura nakonfigurované, nasazují a spravují v síti, bez ohledu na jeho velikost.
+# <a name="using-chef-with-azure"></a>Azure pomocí Chefu
+[Chef](http://www.chef.io) je výkonným Automatizačním platforma, která transformuje infrastruktury virtuálních počítačů v Azure do kódu. Chef automatizuje, jak je infrastruktura nakonfigurované, nasazují a spravují v síti, bez ohledu na velikost.
 
 Tento článek popisuje výhody použití Chef ke správě infrastruktury Azure.
 
-## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>Automatizovat infrastruktury, aplikace a dodržování předpisů s jednu platformu
-Společnosti vyžadují rychlosti, rychlosti a zabezpečení k pokouší digitální Marketplace. Společně Chef a Microsoft pomohou jednotlivce, týmů a podniky provést všechny tyto věci. Pomocí jedné platformě, Chef automatizovat, můžete nyní automatizovat a nepřetržitě poskytovat vaší infrastruktury, aplikací a to i v dodržování předpisů vaší majetku společnosti Microsoft.
+## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>Automatizace infrastruktury, aplikací a dodržování předpisů s jednou platformou
+Společnosti vyžadují rychlost, rychlost a bezpečný přístup z více zaregistrovaní digital marketplace. Chef a Microsoft společně pomáhají jednotlivce, týmy i velké podniky provést všechny tyto věci. Pomocí jedné platformě Chef Automate, můžete nyní automatizovat a průběžně doručovat infrastruktury, aplikací a dokonce i dodržování předpisů ve vaší majetku společnosti Microsoft.
 
-## <a name="test-drive-chef-automate-on-azure"></a>Vyzkoušejte Chef automatizovat v Azure
-Nepodporuje Chef, [Chef automatizovat Azure Marketplace řešení](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate) umožňuje vytvoření, nasazení a správě infrastruktury a aplikace společně. Jedním kliknutím získá, okamžitý přístup ke všem funkcím komerční součástí Chef automatizovat; vidí začátku do konce mezi vaší celou řadu typů, povolte kontrolovaly soulad s předpisy a spravovat všechny změny s jednotnou pracovního postupu.
+## <a name="test-drive-chef-automate-on-azure"></a>Vyzkoušejte si Chef Automate v Azure
+Podporuje Chef, [řešení Azure Marketplace automatizaci Chef](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate) umožňuje vytvořit, nasadit a spravovat infrastrukturu a aplikace společně. Jedním kliknutím získáte okamžitý přístup ke všem komerčním funkcím, které jsou součástí Chef Automate; Získejte potřebný přehled začátku do konce napříč celou řadu typů, umožníte průběžné dodržování předpisů a správu všech změn pomocí unifikovaného pracovního postupu.
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření virtuálního počítače s Windows v Azure pomocí Chef](/azure/virtual-machines/windows/chef-automation)
+* [Vytvoření virtuálního počítače s Windows v Azure pomocí Chefu](/azure/virtual-machines/windows/chef-automation)

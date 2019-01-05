@@ -4,307 +4,349 @@ description: Další informace o techniky a funkce pro zabezpečení izolované 
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/17/2018
-ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 12/18/2018
+ms.openlocfilehash: e0311174303fc91767d3f99e6db05927b25aea05
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558630"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051658"
 ---
-# <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>Kurz: Zabezpečené izolované databáze ve službě Azure SQL Database
+# <a name="tutorial-secure-a-single-database"></a>Kurz: Zabezpečené izolované databáze
 
-SQL Database chrání vaše data v izolované databáze Azure SQL pomocí:
+Azure SQL Database chrání data v izolované databáze SQL, neboť umožňuje:
 
-- Omezení přístupu k vaší databázi pomocí pravidel brány firewall
+- Omezení přístupu pomocí pravidel brány firewall
 - Použití mechanismů ověřování vyžadujících identitu
-- Ověřování přístupu k datům prostřednictvím členství na základě role a oprávnění
-- Zabezpečení na úrovni řádku
-- Dynamické maskování dat
+- Autorizace pomocí členství na základě role a oprávnění
+- Povolení funkcí zabezpečení
 
-SQL Database zahrnuje také pokročilé monitorování, auditování a detekci hrozeb.
+> [!NOTE]
+> Na spravované instanci Azure SQL database je zabezpečený pomocí pravidla zabezpečení sítě a privátní koncové body, jak je popsáno v [Azure SQL database managed instance](sql-database-managed-instance-index.yml) a [architektura připojení](sql-database-managed-instance-connectivity-architecture.md).
 
-> [!IMPORTANT]
-> Azure SQL Database chrání databázi do Managed instance pomocí pravidla zabezpečení sítě a privátní koncových bodů. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance-index.yml) a [Azure SQL Database Managed Instance připojení architektury](sql-database-managed-instance-connectivity-architecture.md).
-
-Ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přístupem můžete zlepšit v několika jednoduchých krocích. V tomto kurzu se naučíte:
+Můžete zvýšit zabezpečení vaší databáze pomocí několika jednoduchých kroků. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> - Nastavení pravidel brány firewall na úrovni serveru na webu Azure Portal
-> - Nastavení pravidel brány firewall na úrovni databáze pomocí aplikace SSMS
-> - Připojení k databázi pomocí zabezpečeného připojovacího řetězce
-> - Nakonfigurování správce Azure Active Directory pro Azure SQL
-> - Správa uživatelského přístupu
-> - Ochrana dat pomocí šifrování
-> - Povolení auditování služby SQL Database
-> - Povolení detekce hrozeb služby SQL Database
+> - Vytvoření pravidla brány firewall na úrovni serveru a databáze
+> - Konfigurace správce Azure Active Directory (AD)
+> - Správa přístupu uživatelů pomocí ověřování SQL, ověřování Azure AD a zabezpečený připojovací řetězce
+> - Povolit funkce zabezpečení, jako je ochrana před internetovými útoky, auditování, maskování dat a šifrování
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace najdete v tématu [Přehled zabezpečení služby Azure SQL Database](/azure/sql-database/sql-database-security-index) a [možnosti](sql-database-security-overview.md) článků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
+Pro absolvování tohoto kurzu, nezapomeňte, že jsou splněné následující požadavky:
 
-- Instalace nejnovější verze aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
-- Instalace aplikace Microsoft Excel.
-- Vytvořený server a databázi SQL Azure – Viz [Vytvoření databáze SQL Azure na webu Azure Portal](sql-database-get-started-portal.md), [Vytvoření izolované databáze SQL Azure pomocí Azure CLI](sql-database-cli-samples.md) a [Vytvoření izolované databáze SQL Azure pomocí PowerShellu](sql-database-powershell-samples.md).
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- Azure SQL server a databáze služby
+    - Vytvoření pomocí [webu Azure portal](sql-database-get-started-portal.md), [rozhraní příkazového řádku](sql-database-cli-samples.md), nebo [prostředí PowerShell](sql-database-powershell-samples.md)
 
-> [!NOTE]
-> Tento kurz předpokládá, že budete mít buď již nakonfigurované služby Azure Active Directory nebo, že používáte počáteční Azure Active Directory spravované domény. Informace o konfiguraci služby Azure Active Directory pro různé scénáře, naleznete v tématu [integrace místních identit s Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure teď podporuje federace se službou Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [správě adresáře Azure AD](../active-directory/fundamentals/active-directory-administer.md), [spravovat Azure AD pomocí prostředí Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0), a [vyžaduje hybridní identita porty a protokoly](../active-directory/hybrid/reference-connect-ports.md).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Pro všechny kroky v tomto kurzu, přihlaste se k [webu Azure portal](https://portal.azure.com/)
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru na webu Azure Portal
+## <a name="create-firewall-rules"></a>Vytvoření pravidel brány firewall
 
-Databáze SQL jsou chráněné bránou firewall v Azure. Ve výchozím nastavení se všechna připojení k serveru a databázím uvnitř serveru odmítají, s výjimkou připojení z dalších služeb Azure. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](sql-database-firewall-configure.md).
+Databáze SQL jsou chráněné bránou firewall v Azure. Ve výchozím nastavení všechna připojení k serveru a databázi odmítají, s výjimkou připojení z ostatních služeb Azure. Další informace najdete v tématu [pravidla brány firewall na úrovni serveru a databáze Azure SQL Database](sql-database-firewall-configure.md).
 
-Nejbezpečnější konfigurací je nastavit možnost Povolit přístup ke službám Azure na VYPNUTO. Pokud se k databázi potřebujete připojit z cloudové služby nebo virtuálního počítače Azure, měli byste vytvořit [vyhrazenou IP adresu (klasické nasazení)](../virtual-network/virtual-networks-reserved-public-ip.md) a povolit přístup přes bránu firewall pouze této vyhrazené IP adrese. Pokud používáte model nasazení [Resource Manager](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm), k prostředku se přiřadí vyhrazená veřejná IP adresa a této IP adrese byste měli povolit přístup přes bránu firewall.
-
-Pomocí těchto kroků vytvořte [pravidlo brány firewall na úrovni serveru SQL Database](sql-database-firewall-configure.md), aby váš server umožňoval připojení z konkrétní IP adresy.
+Nastavte **povolit přístup ke službám Azure** k **OFF** nejbezpečnější konfiguraci. Pak vytvořte [vyhrazené IP (klasické nasazení)](../virtual-network/virtual-networks-reserved-public-ip.md) pro prostředek, který je potřeba připojit, jako je například virtuální počítač Azure nebo cloudovou službu a povolit pouze tuto IP adresu přístup přes bránu firewall. Pokud používáte [resource Manageru](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) model nasazení, vyhrazené veřejné IP adresy je povinné pro každý zdroj.
 
 > [!NOTE]
-> Pokud jste vytvořili ukázkovou databázi v Azure podle některého z předchozích kurzů nebo rychlých startů a provádíte tento kurz na počítači se stejnou IP adresou, kterou měl při procházení daných kurzů, můžete tento krok přeskočit, protože pravidlo brány firewall na úrovni serveru už budete mít vytvořené.
+> SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete připojit k serveru Azure SQL Database, dokud správce otevře port 1433.
 
-1. V nabídce vlevo klikněte na **Databáze SQL** a na stránce **Databáze SQL** klikněte na databázi, pro kterou chcete pravidlo brány firewall nakonfigurovat. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **mynewserver-20170313.database.windows.net**) a možnosti pro další konfiguraci.
+### <a name="set-up-server-level-firewall-rules"></a>Nastavení pravidel brány firewall na úrovni serveru
 
-      ![pravidlo brány firewall serveru](./media/sql-database-security-tutorial/server-firewall-rule.png)
+Pravidla brány firewall na úrovni serveru se vztahují na všechny databáze v rámci stejného logického serveru.
 
-2. Klikněte na **Nastavit bránu firewall serveru** na panelu nástrojů, jak je vidět na předchozím obrázku. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
+Nastavit pravidlo brány firewall na úrovni serveru:
 
-3. Kliknutím na **Přidat IP adresu klienta** na panelu nástrojů přidejte veřejnou IP adresu počítače připojeného k portálu nebo zadejte pravidlo brány firewall ručně a pak klikněte na **Uložit**.
+1. Na webu Azure portal, vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
 
-      ![nastavení pravidla brány firewall serveru](./media/sql-database-security-tutorial/server-firewall-rule-set.png)
+    ![pravidlo brány firewall serveru](./media/sql-database-security-tutorial/server-name.png)
 
-4. Kliknutím na **OK** a pak na **X** zavřete stránku **Nastavení brány firewall**.
+    > [!NOTE]
+    > Nezapomeňte si zkopírovat váš plně kvalifikovaný název serveru (například *yourserver.database.windows.net*) pro použití v pozdější části kurzu.
+
+1. Na **přehled** stránce **nastavit bránu firewall serveru**. **Nastavení brány Firewall** otevře se stránka pro databázový server.
+
+    1. Vyberte **přidat IP adresu klienta** na panelu nástrojů přidat vaši aktuální IP adresu na nové pravidlo brány firewall. Pravidlo může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres. Vyberte **Uložit**.
+
+    ![nastavení pravidla brány firewall serveru](./media/sql-database-security-tutorial/server-firewall-rule2.png)
+
+    1. Vyberte **OK** a zavřít **nastavení brány Firewall** stránky.
 
 Nyní se můžete pomocí zadané IP adresy nebo rozsahu IP adres připojit k jakékoli databázi na serveru.
 
-> [!NOTE]
-> SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
->
+> [!IMPORTANT]
+> Ve výchozím nastavení, přístup přes bránu firewall služby SQL Database je povoleno pro všechny služby Azure, v části **povolit přístup ke službám Azure**. Zvolte **OFF** můžete zakázat přístup pro všechny služby Azure.
 
-## <a name="create-a-database-level-firewall-rule-using-ssms"></a>Vytvoření pravidla brány firewall na úrovni databáze pomocí aplikace SSMS
+### <a name="setup-database-level-firewall-rules"></a>Nastavení pravidel brány firewall na úrovni databáze
 
-Pravidla brány firewall na úrovni databáze umožňují vytvářet různá nastavení brány firewall pro různé databáze v rámci stejného logického serveru a vytvořit pravidla brány firewall, které jsou přenosný počítač – to znamená, že řídí databáze při selhání místo ukládaného na serveru SQL server. Pravidla brány firewall na úrovni databáze je možné konfigurovat pouze pomocí příkazů jazyka Transact-SQL a pouze po nakonfigurování prvního pravidla brány firewall na úrovni serveru. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](sql-database-firewall-configure.md).
+Pravidla brány firewall na úrovni databáze platí jenom pro jednotlivé databáze. Tato pravidla jsou přenositelné a bude následovat databáze při selhání serveru. Pravidla brány firewall na úrovni databáze lze konfigurovat pouze pomocí příkazů jazyka Transact-SQL (T-SQL) a až poté, co jste nakonfigurovali pravidlo brány firewall na úrovni serveru.
 
-Postupujte podle těchto kroků a vytvořte pravidlo brány firewall specifické pro databázi.
+Chcete-li nastavit pravidlo brány firewall na úrovni databáze:
 
-1. Připojte se ke své databázi například pomocí aplikace [SQL Server Management Studio](./sql-database-connect-query-ssms.md).
+1. Připojení k databázi, například pomocí [SQL Server Management Studio](./sql-database-connect-query-ssms.md).
 
-2. V Průzkumníku objektů klikněte pravým tlačítkem na databázi, pro kterou chcete přidat pravidlo brány firewall, a pak klikněte na **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vaší databázi.
+1. V **Průzkumník objektů**, klikněte pravým tlačítkem na databázi a vyberte **nový dotaz**.
 
-3. V okně dotazu upravte IP adresu na svou veřejnou IP adresu a pak proveďte následující dotaz:
+1. V okně dotazu přidejte tento příkaz a upravit IP adresu na veřejnou IP adresu:
 
     ```sql
     EXECUTE sp_set_database_firewall_rule N'Example DB Rule','0.0.0.4','0.0.0.4';
     ```
 
-4. Na panelu nástrojů klikněte na **Provést** a vytvořte pravidlo brány firewall.
+1. Na panelu nástrojů vyberte **Execute** k vytvoření pravidla brány firewall.
 
-## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>Postup pro připojení aplikace k databázi pomocí zabezpečeného připojovacího řetězce
+> [!NOTE]
+> Můžete také vytvořit pravidlo brány firewall na úrovni serveru v aplikaci SSMS s využitím [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) příkazu, ale musíte být připojeni k *hlavní* databáze.
 
-Pokud chcete zajistit zabezpečené a šifrované připojení mezi klientskou aplikací a službou SQL Database, připojovací řetězec je potřeba nakonfigurovat tak, aby:
+## <a name="create-an-azure-ad-admin"></a>Vytvoření správce Azure AD
 
-- Vyžadoval šifrované připojení
-- Nedůvěřoval certifikátu serveru
+Ujistěte se, že používáte příslušné spravované doméně Azure Active Directory (AD). Vyberte doménu AD, použijte pravém horním rohu webu Azure portal. Tento proces potvrdí, stejné předplatné se používá pro obě služby Azure AD a SQL serveru, který hostuje vaši databázi ani na datový sklad Azure SQL.
 
-Tím se naváže připojení pomocí protokolu TLS (Transport Layer Security) a sníží riziko napadení útočníky, kteří se vydávají za prostředníky. Správně nakonfigurované připojovací řetězce pro vaši službu SQL Database pro podporované ovladače klienta můžete získat z webu Azure Portal, jak je znázorněno na tomto snímku obrazovky pro ADO.NET. Informace o protokolu TLS a možnostech připojení najdete v části věnované [důležitým informacím o protokolu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
+   ![Zvolte ad](./media/sql-database-security-tutorial/8choose-ad.png)
 
-1. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi.
+Nastavení správce Azure AD:
 
-2. Na stránce **Přehled** pro vaši databázi klikněte na **Zobrazit databázové připojovací řetězce**.
+1. Na webu Azure portal na **systému SQL server** stránce **správce Active Directory**. Dále vyberte **nastavit správce**.
 
-3. Zkontrolujte úplný připojovací řetězec **ADO.NET**.
+    ![Výběr Active Directory](./media/sql-database-security-tutorial/admin-settings.png)  
 
-    ![Připojovací řetězec pro ADO.NET](./media/sql-database-security-tutorial/adonet-connection-string.png)
+    > [!IMPORTANT]
+    > Musíte být buď "Správce společnosti" nebo "Globální správce" k provedení této úlohy.
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Zřízení správce Azure Active Directory pro váš server Azure SQL Database
+1. Na **přidat správce** stránce, hledání a vyberte skupina nebo uživatel AD a zvolte **vyberte**. Všichni členové a skupiny služby Active Directory jsou uvedené, položek zobrazena šedě, nejsou podporovány jako správce Azure AD. Zobrazit [funkcí Azure AD a omezení](sql-database-aad-authentication.md#azure-ad-features-and-limitations).
 
-Zřízení správce Azure Active Directory pro server Azure SQL na webu Azure Portal.
+    ![Vyberte správce](./media/sql-database-security-tutorial/admin-select.png)
 
-1. V [webu Azure portal](https://portal.azure.com/), v pravém horním rohu vyberte připojení ke rozevírací seznam možných aktivního adresáře. Zvolte správné služby Active Directory jako výchozí služby Azure AD. Propojí Active Directory pro předplatné spojené s využitím Azure SQL serveru a ujistěte se, že stejné předplatné používá pro obě služby Azure AD a systému SQL Server. (Server Azure SQL lze hostování, Azure SQL Database nebo Azure SQL Data Warehouse.)
+    > [!IMPORTANT]
+    > Jenom řízení přístupu na základě role (RBAC) se vztahuje na portál a se nerozšíří do systému SQL Server.
 
-    ![Zvolte ad](./media/sql-database-aad-authentication/8choose-ad.png)
+1. V horní části **správce Active Directory** stránce **Uložit**.
 
-2. Na **systému SQL Server** stránce **správce Active Directory**a na **správce Active Directory** stránce **nastavit správce**.  ![vyberte služby active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+    Proces změny správce může trvat několik minut. Nový správce se zobrazí v **správce Active Directory** pole.
 
-   > [!IMPORTANT]
-   > Musíte být správcem"společnost" nebo "Globální správce" k provedení této úlohy.
+> [!NOTE]
+> Při nastavování správce Azure AD, nový název správce (uživatel nebo skupina) nemůže existovat jako uživatel s ověřováním systému SQL Server v *hlavní* databáze. Pokud jsou k dispozici, instalace se nezdaří a vrátit zpět změny, označující, že takové jméno správce již existuje. Protože uživatel ověřování serveru SQL Server není součástí služby Azure AD, žádné úsilí pro připojení uživatele pomocí ověřování Azure AD se nezdaří.
 
-3. V **přidat správce** stránce, vyhledat uživatele, vyberte uživatele nebo skupiny jako správce a vyberte **vyberte**. (Na stránce správy služby Active Directory zobrazí všichni členové a skupiny služby Active Directory. Uživatelé nebo skupiny, jež jsou zobrazena šedě nelze vybrat, protože nejsou podporovány jako správce Azure AD. (Viz seznam podporovaných správců v **funkce Azure AD a omezení** část [používání ověřování Azure Active Directory pro ověřování pomocí SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication.md).) Řízení přístupu na základě role (RBAC) se vztahuje pouze na portálu a se nerozšíří do systému SQL Server.
-    ![Vyberte správce](./media/sql-database-aad-authentication/select-admin.png)  
+Informace o konfiguraci Azure AD najdete tady:
 
-4. V horní části **správce Active Directory** stránce **Uložit**.
-    ![Uložit správce](./media/sql-database-aad-authentication/save-admin.png)
+- [Integrace místních identit s Azure AD](../active-directory/hybrid/whatis-hybrid-identity.md)
+- [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md)
+- [Microsoft Azure teď podporuje federace se službou Windows Server AD](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Správa adresáře služby Azure AD](../active-directory/fundamentals/active-directory-administer.md)
+- [Správa služby Azure AD pomocí Powershellu](/powershell/azure/overview?view=azureadps-2.0)
+- [Porty a protokoly vyžaduje hybridní identita](../active-directory/hybrid/reference-connect-ports.md)
 
-Proces změny správce může trvat několik minut. Pak nový správce se zobrazí v **správce Active Directory** pole.
+## <a name="manage-database-access"></a>Spravovat přístup k databázi
 
-   > [!NOTE]
-   > Při nastavování správce Azure AD, nový název správce (uživatel nebo skupina) už nejde použít ve virtuální hlavní databázi jako uživatel ověřování serveru SQL Server. Pokud jsou k dispozici, se nezdaří instalace správce Azure AD; vrácení zpět jeho vytvoření a označením tohoto takový správce (název) již existuje. Od tohoto systému SQL Server ověřování uživatele není součástí služby Azure AD, žádné úsilí pro připojení k serveru pomocí ověřování Azure AD se nezdaří.
+Spravujte přístup k databázi přidání uživatele do databáze nebo povolením přístupu uživatelů pomocí zabezpečený připojovací řetězce. Připojovací řetězce jsou užitečné pro externí aplikace. Další informace najdete v tématu [řízení přístupu Azure SQL](sql-database-control-access.md) a [ověřování AD](sql-database-aad-authentication.md).
 
-## <a name="creating-database-users"></a>Vytváření uživatelů databáze
+Chcete-li přidat uživatele, zvolte typ ověřování databáze:
 
-Před vytvořením uživatelů musíte nejprve zvolit jeden ze dvou typů ověřování, které podporuje služba Azure SQL Database:
+- **Ověřování SQL**, použijte uživatelské jméno a heslo pro přihlášení a platí jenom v kontextu konkrétní databáze v rámci serveru
 
-**Ověřování SQL**, které pro přihlášení používá uživatelské jméno a heslo a uživatele, kteří jsou platní pouze v kontextu konkrétní databáze v rámci logického serveru.
+- **Ověřování Azure AD**, použití identity spravované v Azure AD
 
-**Ověřování Azure Active Directory,**, které používá identity spravované v Azure Active Directory.
+### <a name="sql-authentication"></a>Ověřování pomocí SQL
 
-### <a name="create-a-user-using-sql-authentication"></a>Vytvořte uživatele využívajícího ověřování SQL
+Pokud chcete přidat uživatele s ověřováním SQL:
 
-Postupujte podle těchto kroků a vytvořte uživatele využívajícího ověřování SQL:
+1. Připojení k databázi, například pomocí [SQL Server Management Studio](./sql-database-connect-query-ssms.md).
 
-1. Připojte se ke své databázi například pomocí aplikace [SQL Server Management Studio](./sql-database-connect-query-ssms.md) s použitím svých přihlašovacích údajů správce serveru.
+1. V **Průzkumník objektů**, klikněte pravým tlačítkem na databázi a zvolte **nový dotaz**.
 
-2. V Průzkumníku objektů klikněte pravým tlačítkem na databázi, pro kterou chcete přidat nového uživatele, a pak klikněte na **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vybrané databázi.
-
-3. Do okna dotazu zadejte následující dotaz:
+1. V okně dotazu zadejte následující příkaz:
 
     ```sql
     CREATE USER ApplicationUser WITH PASSWORD = 'YourStrongPassword1';
     ```
 
-4. Na panelu nástrojů klikněte na **Provést** a vytvořte uživatele.
+1. Na panelu nástrojů vyberte **Execute** pro vytvoření uživatele.
 
-5. Ve výchozím nastavení se uživatel může připojit k databázi, ale nemá žádná oprávnění ke čtení nebo zápisu dat. Pokud chcete nově vytvořenému uživateli tato oprávnění udělit, v novém okně dotazu spusťte následující dva příkazy:
+1. Ve výchozím nastavení se uživatel může připojit k databázi, ale nemá žádná oprávnění ke čtení nebo zápisu dat. Udělení oprávnění v nové okně dotazu spusťte následující příkazy:
 
     ```sql
     ALTER ROLE db_datareader ADD MEMBER ApplicationUser;
     ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
     ```
 
-Pro připojení k databázi je osvědčeným postupem vytvořit tyto účty bez oprávnění správce na úrovni databáze, pokud nepotřebujete provádět úlohy správce, jako je vytváření nových uživatelů. Informace o ověřování pomocí Azure Active Directory najdete v [kurzu pro Azure Active Directory](./sql-database-aad-authentication-configure.md).
+> [!NOTE]
+> Vytvořte účty bez oprávnění správce na úrovni databáze, pokud potřebují spustit Správce úloh, jako je vytváření nových uživatelů.
 
-### <a name="create-a-user-using-azure-active-directory-authentication"></a>Vytvořte uživatele využívajícího ověřování Azure Active Directory
+### <a name="azure-ad-authentication"></a>Ověřování Azure AD
 
-Ověřování pomocí Azure Active Directory vyžaduje, aby uživatelé databáze má být vytvořen jako uživatele databáze s omezením. Uživatel databáze s omezením na základě Azure AD identity je uživatel databáze nemá přihlášení v hlavní databázi, a který se mapuje na identitu v adresáři Azure AD, který je přidružený k databázi. Identity Azure AD může být jednotlivý uživatelský účet nebo skupinu. Další informace o uživatele databáze s omezením najdete v tématu [uživatelé databáze s omezením vytváření přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx).
+Ověřování pomocí Azure Active Directory vyžaduje, že obsažený vytváření uživatelů databáze. Uživatel databáze s omezením se mapuje na identitu v adresáři Azure AD přidružený k databázi a nemá žádné přihlášení v *hlavní* databáze. Identity Azure AD může být buď pro jednotlivé uživatele nebo skupinu. Další informace najdete v tématu [uživatele databáze s omezením, ujistěte se, vaši databázi přenosné](https://msdn.microsoft.com/library/ff929188.aspx) a projděte si [kurz služby Azure AD](./sql-database-aad-authentication-configure.md) o tom, jak ověřovat pomocí služby Azure AD.
 
 > [!NOTE]
-> Nelze vytvořit uživatele databáze (s výjimkou správci) pomocí webu Azure portal. Role RBAC nejsou šířeny do systému SQL Server, SQL Database nebo SQL Data Warehouse. Role Azure RBAC se používají pro správu prostředků Azure a se nevztahují na oprávnění databáze. Například **Přispěvatel SQL serveru** role bez možnosti udělovat přístup pro připojení k SQL Database nebo SQL Data Warehouse. Přímo v databázi pomocí příkazů jazyka Transact-SQL musí být udělena oprávnění k přístupu.
-> [!WARNING]
-> Speciální znaky, jako je dvojtečka `:` nebo ampersand `&` obsažen jako uživatelská jména v příkazech jazyka T-SQL vytvořte přihlášení a vytvoření uživatele nejsou podporovány.
+> Nelze vytvořit uživatele databáze (s výjimkou správci) pomocí webu Azure portal. Role Azure RBAC nejsou rozšířena do SQL servery, databáze nebo datového skladu. Tyto slouží pouze ke správě prostředků Azure a se nevztahují na oprávnění databáze.
+>
+> Například *Přispěvatel SQL serveru* role neudělují přístupu pro připojení k databázi ani na datový sklad. Toto oprávnění musí být poskytovány v databázi pomocí příkazů T-SQL.
 
-1. Připojení k serveru SQL Azure pomocí účtu služby Azure Active Directory s alespoň **ALTER ANY USER** oprávnění.
-2. V Průzkumníku objektů klikněte pravým tlačítkem na databázi, pro kterou chcete přidat nového uživatele, a pak klikněte na **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vybrané databázi.
+> [!IMPORTANT]
+> Speciální znaky, jako je dvojtečka `:` nebo ampersand `&` nejsou podporovány v uživatelská jména v T-SQL `CREATE LOGIN` a `CREATE USER` příkazy.
 
-3. V okně dotazu zadejte následující dotaz a upravit `<Azure_AD_principal_name>` do určeným uživatelem. hlavní název uživatele služby Azure AD nebo zobrazovaného názvu skupiny Azure AD:
+Pokud chcete přidat uživatele s ověřováním Azure AD:
+
+1. Připojte se k serveru Azure SQL pomocí účtu služby Azure AD s alespoň *ALTER ANY USER* oprávnění.
+
+1. V **Průzkumník objektů**, klikněte pravým tlačítkem na databázi a vyberte **nový dotaz**.
+
+1. V okně dotazu zadejte následující příkaz a upravit `<Azure_AD_principal_name>` hlavní název uživatele Azure AD nebo zobrazovaného názvu skupiny Azure AD:
 
    ```sql
    CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
    ```
 
-   > [!NOTE]
-   > Uživatelé Azure AD jsou označeny jako metadata databáze s typem E (EXTERNAL_USER) a pro skupiny s typem X (EXTERNAL_GROUPS). Další informace najdete v tématu [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
+> [!NOTE]
+> Uživatelé Azure AD jsou označeny jako metadata databáze s typem `E (EXTERNAL_USER)` a typ `X (EXTERNAL_GROUPS)` pro skupiny. Další informace najdete v tématu [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
-## <a name="protect-your-data-with-encryption"></a>Ochrana dat pomocí šifrování
+### <a name="secure-connection-strings"></a>Zabezpečený připojovací řetězce
 
-Transparentní šifrování dat služby Azure SQL Database automaticky šifruje neaktivní uložená data, aniž by vyžadovalo jakékoli změny aplikace, která k šifrované databázi přistupuje. U nově vytvořených databází je transparentní šifrování dat ve výchozím nastavení zapnuté. Pokud chcete povolit transparentní šifrování dat pro svou databázi nebo ověřit, že je transparentní šifrování dat zapnuté, postupujte podle těchto kroků:
+K zajištění zabezpečené a šifrované připojení mezi klientskou aplikaci a SQL database, připojovací řetězec musí být nakonfigurován pro:
 
-1. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi.
+- Vyžadoval šifrované připojení
+- Není důvěřovat certifikátu serveru
 
-2. Kliknutím na **Transparentní šifrování dat** otevřete konfigurační stránku pro transparentní šifrování dat.
+Připojení se naváže s využitím zabezpečení TLS (Transport Layer) a snižuje riziko útoku man-in-the-middle. Připojovací řetězce jsou k dispozici na databázi a jsou předem nakonfigurované pro podporu ovladače klienta, jako je například technologie ADO.NET, JDBC, ODBC a PHP. Informace o protokolu TLS a možnostech připojení najdete v části věnované [důležitým informacím o protokolu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
 
-    ![Transparentní šifrování dat](./media/sql-database-security-tutorial/transparent-data-encryption-enabled.png)
+Zkopírování zabezpečeného připojovacího řetězce:
 
-3. V případě potřeby nastavte **Šifrování dat** na ZAPNUTO a klikněte na **Uložit**.
+1. Na webu Azure portal, vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
 
-Na pozadí se spustí proces šifrování. Průběh můžete monitorovat po připojení ke službě SQL Database pomocí aplikace [SQL Server Management Studio](./sql-database-connect-query-ssms.md) a dotazováním sloupce encryption_state v zobrazení [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017). Stav 3 značí, že je databáze šifrovaná.
+1. Na **přehled** stránce **zobrazit databázové připojovací řetězce**.
 
-## <a name="enable-sql-database-auditing-if-necessary"></a>Povolení auditování služby SQL Database v případě potřeby
+1. Vyberte kartu ovladač a zkopírujte úplný připojovací řetězec.
 
-Auditování služby Azure SQL Database sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu Azure Storage. Auditování pomáhá zajistit dodržování legislativních předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které můžou značit potenciální narušení zabezpečení. Postupujte podle těchto kroků a vytvořte pro svou databázi SQL výchozí zásadu auditování:
+    ![Připojovací řetězec pro ADO.NET](./media/sql-database-security-tutorial/connection.png)
 
-1. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi.
+## <a name="enable-security-features"></a>Povolení funkcí zabezpečení
 
-2. V okně Nastavení vyberte **Auditování a detekce hrozeb**. Všimněte si vypnutého auditování na straně serveru a odkazu **Zobrazit nastavení serveru**, který umožňuje zobrazit nebo upravit nastavení auditování serveru z tohoto kontextu.
+Azure SQL Database poskytuje funkce zabezpečení, které jsou přístupné pomocí webu Azure portal. Tyto funkce jsou k dispozici pro databáze a serveru, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [rozšířeného zjišťování hrozeb](sql-advanced-threat-protection.md), [auditování](sql-database-auditing.md), [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md), a [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).
 
-    ![Okno Auditování](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
+### <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
 
-3. Pokud upřednostňujete povolení jiného typu auditu (nebo umístění), než je zadaný na úrovni serveru, **zapněte** auditování a zvolte typ auditování **Objekt blob**. Pokud je povolené auditování objektů blob serveru, nakonfigurovaný audit databáze bude existovat vedle auditu objektů blob serveru.
+Funkce ochrany pokročilé hrozby zjištění potenciálních hrozeb, protože dojde k a poskytuje výstrahy zabezpečení na neobvyklé aktivity. Uživatelé můžou prozkoumat tyto podezřelé události pomocí funkce auditování a zjistit, zda událost pro přístup, narušení nebo zneužití dat v databázi. Uživatelé jsou taky k dispozici přehled zabezpečení, která zahrnuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a klasifikace dat.
 
-    ![Zapnutí auditování](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
+> [!NOTE]
+> Před internetovými útoky příkladu je útok prostřednictvím injektáže SQL, proces, kde útočníci injektovat škodlivý SQL do vstupů aplikace. Aplikace můžete neúmyslně spuštění škodlivého SQL a útočníkům umožnit přístup k porušení zabezpečení nebo úpravy dat v databázi.
 
-4. Vyberte **Podrobnosti o úložišti** a otevřete okno Úložiště protokolů auditů. Vyberte účet úložiště Azure, do kterého se protokoly budou ukládat, a období uchovávání, po jehož uplynutí se staré protokoly odstraní, a pak klikněte na **OK** v dolní části.
+Pokud chcete povolit ochranu před hrozbami:
 
-   > [!TIP]
-   > Pro všechny auditované databáze použijte stejný účet úložiště, abyste získali maximum z šablon sestav auditování.
+1. Na webu Azure portal, vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
 
-5. Klikněte na **Uložit**.
+1. Na **přehled** stránky, vyberte **název serveru** odkaz. Otevře se stránka serveru databáze.
+
+1. Na **systému SQL server** stránky, vyhledejte **zabezpečení** a vyberte **Advanced Threat Protection**.
+
+    1. Vyberte **ON** pod **Advanced Threat Protection** k povolení této funkce. Potom vyberte **Uložit**.
+
+    ![Navigační podokno](./media/sql-database-security-tutorial/threat-settings.png)
+
+    Můžete také nakonfigurovat e-mailů dostávat výstrahy zabezpečení a podrobnosti o úložišti a typy detekce hrozeb.
+
+1. Vraťte se na **databází SQL** stránky databáze a vyberte **Advanced Threat Protection** pod **zabezpečení** části. Tady najdete různé ukazatele zabezpečení dostupné pro databázi.
+
+    ![Stav hrozby](./media/sql-database-security-tutorial/threat-status.png)
+
+Pokud se zjistí neobvyklé aktivity, obdržíte e-mail s informacemi o události. To zahrnuje povaze aktivity, databázi, server, čas události, možné příčiny a doporučené akce k prošetření a zmírnění potenciálního ohrožení. Pokud takový e-mail, vyberte **protokol auditování SQL Azure** odkaz ke spuštění na webu Azure portal a zobrazí relevantní záznamy auditování pro čas události.
+
+   ![E-mail detekce hrozeb](./media/sql-database-security-tutorial/threat-email.png)
+
+### <a name="auditing"></a>Auditování
+
+Tato funkce sleduje události databáze a zapisuje události do protokolu auditu v úložišti buď Azure log analytics nebo centra událostí. Auditování pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit potenciální narušení zabezpečení.
+
+Pokud chcete povolit auditování:
+
+1. Na webu Azure portal, vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
+
+1. V **zabezpečení** vyberte **auditování**.
+
+1. V části **auditování** nastavení, nastavte následující hodnoty:
+
+    1. Nastavte **auditování** k **ON**.
+
+    1. Vyberte **cíl protokolu auditu** jako některý z následujících akcí:
+
+        - **Úložiště**, účet úložiště Azure, kde se ukládají protokoly událostí a lze stáhnout jako *xel* soubory
+
+           > [!TIP]
+           > Chcete-li získat maximum z šablon sestav auditování pomocí stejného účtu úložiště pro všechny auditované databáze.
+
+        - **Log Analytics**, které automaticky uloží události pro dotaz nebo další analýzu
+
+            > [!NOTE]
+            > A **pracovní prostor Log analytics** je nezbytný pro podporu pokročilých funkcí, jako je například analýzy, vlastních pravidel výstrah a export Excelu nebo Power BI. Bez pracovní prostor je k dispozici pouze v editoru dotazů.
+
+        - **Centrum událostí**, což umožňuje událostí bude směrovat pro použití v jiných aplikacích
+
+    1. Vyberte **Uložit**.
+
+    ![Nastavení auditu](./media/sql-database-security-tutorial/audit-settings.png)
+
+1. Teď můžete vybrat **zobrazit protokoly auditu** chcete zobrazit údaje o událostech databáze.
+
+    ![Záznamy auditu](./media/sql-database-security-tutorial/audit-records.png)
 
 > [!IMPORTANT]
-> Pokud chcete přizpůsobit auditované události, můžete to provést prostřednictvím PowerShellu nebo rozhraní REST API – další informace najdete v tématu [Auditování databáze SQL](sql-database-auditing.md).
->
+> Zobrazit [auditování služby SQL database](sql-database-auditing.md) o tom, jak dále přizpůsobit událostí auditu pomocí Powershellu nebo rozhraní REST API.
 
-## <a name="enable-sql-database-threat-detection"></a>Povolení detekce hrozeb služby SQL Database
+### <a name="dynamic-data-masking"></a>Dynamické maskování dat
 
-Detekce hrozeb poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje díky poskytování výstrah zabezpečení na neobvyklé aktivity detekovat a reagovat na potenciální hrozby, když k nim dojde. Uživatelé můžou pomocí auditování služby SQL Database prozkoumat podezřelé události a určit, jestli jsou důsledkem pokusu o přístup, porušení zabezpečení nebo zneužití dat v databázi. Detekce hrozeb usnadňuje řešení potenciálních ohrožení databáze, aniž byste museli být odborníkem na zabezpečení nebo museli spravovat pokročilé systémy monitorování zabezpečení.
-Detekce hrozeb například detekuje určité neobvyklé databázové aktivity značící potenciální pokusy o útok prostřednictvím injektáže SQL. Injektáž SQL představuje jeden z nejběžnějších problémů zabezpečení webových aplikací na internetu a používá se k útokům na aplikace založené na datech. Útočníci využívají ohrožení zabezpečení aplikací k injektáži škodlivých příkazů jazyka SQL do vstupních polí aplikace za účelem porušení zabezpečení nebo úpravy dat v databázi.
+Funkci maskování dat se automaticky skrýt citlivá data v databázi.
 
-1. Přejděte do okna konfigurace databáze SQL, kterou chcete monitorovat. V okně Nastavení vyberte **Auditování a detekce hrozeb**.
+Pokud chcete povolit maskování dat:
 
-    ![Navigační podokno](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
-2. V navigačním okně **Auditování a detekce hrozeb** **zapněte** auditování. Tím se zobrazí nastavení detekce hrozeb.
+1. Na webu Azure portal, vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
 
-3. **Zapněte** detekci hrozeb.
+1. V **zabezpečení** vyberte **maskování dynamických dat**.
 
-4. Nakonfigurujte seznam emailů, které budou přijímat výstrahy zabezpečení po detekci neobvyklých databázových aktivit.
+1. V části **dynamické maskování dat** nastavení, vyberte **přidat masku** přidáte pravidlo maskování. Azure se automaticky vyplní dostupné databázová schémata, tabulky a sloupce lze vybírat.
 
-5. Kliknutím na **Uložit** v okně **Auditování a detekce hrozeb** uložte novou nebo aktualizovanou zásadu auditování a detekce hrozeb.
+    ![Nastavení masky](./media/sql-database-security-tutorial/mask-settings.png)
 
-    ![Navigační podokno](./media/sql-database-security-tutorial/td-turn-on-threat-detection.png)
+1. Vyberte **Uložit**. Vybrané informace nyní maskovaná pro ochranu osobních údajů.
 
-    Pokud dojde k detekci neobvyklých databázových aktivit, obdržíte e-mailové oznámení. E-mail bude obsahovat informace o podezřelé události zabezpečení, včetně povahy neobvyklých aktivit, názvu databáze, názvu serveru a času události. Kromě toho bude obsahovat informace o možných příčinách a doporučených akcích pro šetření a zmírnění potenciálního ohrožení databáze. Další kroky vás provedou doporučeným postupem po přijetí takového e-mailu:
+    ![Například maska](./media/sql-database-security-tutorial/mask-query.png)
 
-    ![E-mail detekce hrozeb](./media/sql-database-threat-detection-get-started/4_td_email.png)
+### <a name="transparent-data-encryption"></a>Transparentní šifrování dat
 
-6. V e-mailu klikněte na odkaz **Protokol auditování SQL Azure**. Tím se otevře Azure Portal, na kterém se zobrazí relevantní záznamy auditování v době výskytu podezřelé události.
+Funkce šifrování automaticky šifruje vaše data v klidovém stavu a nevyžaduje žádné změny k aplikacím přístup k šifrované databázi. Pro nové databáze je ve výchozím nastavení šifrování. Můžete taky k šifrování dat pomocí aplikace SSMS a [s funkcí Always encrypted](sql-database-always-encrypted.md) funkce.
 
-    ![Záznamy auditu](./media/sql-database-threat-detection-get-started/5_td_audit_records.png)
+K povolení nebo ověřit šifrování:
 
-7. Kliknutím na záznamy auditu zobrazíte další informace o podezřelých databázových aktivitách, jako je příkaz jazyka SQL, důvod selhání a IP adresa klienta.
+1. Na webu Azure portal, vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
 
-    ![Podrobnosti o záznamu](./media/sql-database-security-tutorial/6_td_audit_record_details.png)
+1. V **zabezpečení** vyberte **transparentní šifrování dat**.
 
-8. V okně Záznamy auditování klikněte na **Otevřít v aplikaci Excel** a otevřete předkonfigurovanou šablonu aplikace Excel umožňující import a spuštění hlubší analýzy protokolu auditu v době výskytu podezřelé události.
+1. V případě potřeby nastavte **šifrování dat** k **ON**. Vyberte **Uložit**.
 
-    > [!NOTE]
-    > V aplikaci Excel 2010 a novější se vyžaduje doplněk Power Query a nastavení **Rychle zkombinovat**.
+    ![Transparentní šifrování dat](./media/sql-database-security-tutorial/encryption-settings.png)
 
-    ![Otevřené záznamy v aplikaci Excel](./media/sql-database-threat-detection-get-started/7_td_audit_records_open_excel.png)
-
-9. Konfigurace nastavení **Rychle zkombinovat** – Na záložce pásu karet **POWER QUERY** vyberte **Možnosti** a zobrazte dialogové okno Možnosti. Vyberte část Osobní údaje a zvolte druhou možnost – Ignorovat úrovně ochrany osobních údajů a potenciálně tak vylepšit výkon:
-
-    ![Rychle zkombinovat v aplikaci Excel](./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png)
-
-10. Načíst protokoly auditu SQL, zajistěte, aby parametrů v nastavení kartě jsou správně nastavena a poté vyberte pásu karet, Data a klikněte na tlačítko 'aktualizovat vše.
-
-    ![Parametry v aplikaci Excel](./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png)
-
-11. Výsledky se zobrazí na listu **Protokoly auditu SQL**, na kterém můžete spustit hlubší analýzu detekovaných neobvyklých aktivit a zmírnit dopad události zabezpečení na vaši aplikaci.
+> [!NOTE]
+> Chcete-li zobrazit stav šifrování, připojit k databázi pomocí [SSMS](./sql-database-connect-query-ssms.md) a dotazování `encryption_state` sloupec [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) zobrazení. Stav `3` označuje je databáze šifrovaná.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak v několika jednoduchých krocích zlepšit ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přístupem.  Naučili jste se tyto postupy:
+V tomto kurzu jste zjistili, jak zlepšit zabezpečení vaší databáze pomocí několika jednoduchých krocích. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> - Nastavení pravidel brány firewall pro server nebo databázi
-> - Připojení k databázi pomocí zabezpečeného připojovacího řetězce
-> - Nakonfigurování správce Azure Active Directory pro Azure SQL
-> - Správa uživatelského přístupu
-> - Ochrana dat pomocí šifrování
-> - Povolení auditování služby SQL Database
-> - Povolení detekce hrozeb služby SQL Database
+> - Vytvoření pravidla brány firewall na úrovni serveru a databáze
+> - Konfigurace správce Azure Active Directory (AD)
+> - Správa přístupu uživatelů pomocí ověřování SQL, ověřování Azure AD a zabezpečený připojovací řetězce
+> - Povolit funkce zabezpečení, jako je ochrana před internetovými útoky, auditování, maskování dat a šifrování
 
-V dalším kurzu se dozvíte, jak implementovat geograficky distribuovanou databázi.
+Přejděte k dalšímu kurzu, kde se naučíte, jak implementovat geografická distribuce.
 
 > [!div class="nextstepaction"]
 >[Implementace geograficky distribuované databáze](sql-database-implement-geo-distributed-database.md)

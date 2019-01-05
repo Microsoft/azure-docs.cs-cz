@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 50f5cf48838e5578dc94c61b4463f94e76f886e6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 92a3caefaa0185aa4bd86fbf66d6279e49b0f5c1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028244"
+ms.locfileid: "54053226"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 
@@ -166,7 +166,7 @@ Podporují se následující prostředí:
 
 ### <a name="configure-snapshot-collection-for-other-net-applications"></a>Konfigurace shromažďování snímků pro jiné aplikace .NET
 
-1. Pokud vaše aplikace není již instrumentována pomocí nástroje Application Insights, začněte tím, že [povolením Application Insights a že Instrumentační klíč nastavíte](../../application-insights/app-insights-windows-desktop.md).
+1. Pokud vaše aplikace není již instrumentována pomocí nástroje Application Insights, začněte tím, že [povolením Application Insights a že Instrumentační klíč nastavíte](../../azure-monitor/app/windows-desktop.md).
 
 2. Přidat [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
 
@@ -478,4 +478,4 @@ Pokud vaše aplikace připojuje k Internetu přes proxy server nebo brána firew
 
 * [Nastavit snímkovací body ve vašem kódu](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) získat snímky bez čekání na výjimku.
 * [Diagnostika výjimek ve vašich webových aplikacích](../../azure-monitor/app/asp-net-exceptions.md) vysvětluje, jak zviditelnit více výjimek Application Insights.
-* [Inteligentní zjišťování](../../application-insights/app-insights-proactive-diagnostics.md) automaticky zjišťuje anomálie výkonu.
+* [Inteligentní zjišťování](../../azure-monitor/app/proactive-diagnostics.md) automaticky zjišťuje anomálie výkonu.

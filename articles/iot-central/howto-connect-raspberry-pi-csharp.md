@@ -1,5 +1,5 @@
 ---
-title: Connnect Raspberry Pi až po aplikace Azure IoT Central (C#) | Dokumentace Microsoftu
+title: Připojte se k aplikaci Azure IoT Central Raspberry Pi (C#) | Dokumentace Microsoftu
 description: Jako vývojář zařízení jak se připojit k Azure IoT Central aplikace pomocí jazyka C# Raspberry Pi.
 author: viv-liu
 ms.author: viviali
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50956719"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051386"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (C#)
 
@@ -21,12 +21,12 @@ ms.locfileid: "50956719"
 
 Tento článek popisuje, jak jako vývojář zařízení připojit Raspberry Pi do aplikace Microsoft Azure IoT Central, pomocí programovacího jazyka C#.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 K dokončení kroků v tomto článku, budete potřebovat následující komponenty:
 
 * [.NET core 2](https://www.microsoft.com/net) nainstalována na vývojovém počítači. Také byste měli mít vhodný kód editoru, jako [Visual Studio Code](https://code.visualstudio.com/).
-* Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
+* Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 * Raspberry Pi zařízení se systémem Raspbian operačního systému.
 
 

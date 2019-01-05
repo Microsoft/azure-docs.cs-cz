@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f85934b0c800ca354cc9cff02132a40c8eccea57
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bbe843f3481c6cd15f2c14386088cbb8d2d355d6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014841"
+ms.locfileid: "54053121"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Použití rozšíření rozhraní příkazového řádku pro službu Azure Machine Learning
 
@@ -119,11 +119,15 @@ Následující příkazy ukazují, jak pracovat s experimenty pomocí rozhraní 
     az ml project attach --experiment-name myhistory
     ```
 
-* Spusťte běh experimentu. Při použití tohoto příkazu, zadejte cílové výpočetní prostředí. V tomto příkladu `local` používá k natrénování modelu pomocí místního počítače `train.py` skriptu:
+* Spusťte běh experimentu. Při použití tohoto příkazu, zadejte název `.runconfig` soubor, který obsahuje konfigurace spuštění. Cílové výpočetní prostředí používá k vytvoření prostředí pro školení pro model konfigurace spuštění. V tomto příkladu je konfigurace spuštění načtena z `./aml_config/myrunconfig.runconfig` souboru.
 
     ```azurecli-interactive
-    az ml run submit -c local train.py
+    az ml run submit -c myrunconfig train.py
     ```
+
+    Výchozí `.runconfig` soubory s názvem `docker.runconfig` a `local.runconfig` jsou vytvořeny po připojení projektu pomocí `az ml project attach` příkazu. Budete muset upravit před jejich použitím pro trénování modelu. 
+
+    Můžete také vytvořit konfigurace spuštění prostřednictvím kódu programu pomocí [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) třídy. Po vytvoření, pak můžete použít `save()` metodu pro vytvoření `.runconfig` souboru.
 
 * Zobrazte seznam odeslaných experimentů:
 

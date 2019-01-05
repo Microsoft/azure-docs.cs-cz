@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 030ec9db16f90430a544ca8715a4e1dea02e2c62
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 71f024c81983fcb9c3e99bdf633a5bde306452b8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873236"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051233"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Klientská knihovna elastic Database s Entity Framework
 Tento dokument ukazuje změny v aplikaci Entity Framework, které jsou potřebné k integraci s [nástrojů Elastic Database](sql-database-elastic-scale-introduction.md). Zaměřuje se na vytváření [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) a [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) s rozhraním Entity Framework **Code First** přístup. [Code First – nová databáze](https://msdn.microsoft.com/data/jj193542.aspx) EF v tomto kurzu slouží jako příklad v tomto dokumentu. Vzorový kód doprovodném tohoto dokumentu je součástí nástrojů elastic database nastavit vzorků v kódu ukázky sady Visual Studio.
@@ -42,10 +42,10 @@ Jakmile vytvoříte tyto databáze, zadejte místo zástupné znaky v **Program.
 ## <a name="entity-framework-workflows"></a>Pracovní postupy Entity Framework
 Entity Framework vývojáři Spolehněte se na jednu z následujících čtyř pracovní postupy pro vytváření aplikací a k zajištění trvalosti pro objekty aplikací: 
 
-* **Code First (nová databáze)**: pro vývojáře EF vytvoří modelu v kódu aplikace a pak EF vygeneruje databáze z něj. 
-* **Code First (existující databázi)**: vývojářům umožňuje EF, generování kódu aplikace pro model z existující databáze.
-* **Model první**: vývojáři vytváří model v EF designeru a pak EF vytvoří databáze z modelu.
-* **Databáze první**: vývojář používá EF nástrojů k odvození modelu z existující databáze. 
+* **Code First (nová databáze)**: EF vývojářem modelu v kódu aplikace a poté vygeneruje EF databáze z něj. 
+* **Code First (existující databázi)**: Vývojář umožňuje EF, generování kódu aplikace pro model z existující databáze.
+* **Model první**: Vývojář vytvoří model v EF designeru a pak EF vytvoří databáze z modelu.
+* **Databáze první**: Vývojář používá EF nástrojů k odvození modelu z existující databáze. 
 
 Všechny tyto přístupy využívají třídy DbContext transparentně spravovat připojení k databázi a schéma databáze pro aplikaci. Různé konstruktory základní třídy DbContext povolit pro různé úrovně kontroly nad vytvoření připojení a spuštění databáze a také vytváří schématu. Problémy jsou vyvolány primárně skutečnost, že správa připojení databáze poskytovaná v EF protíná díky možnostem připojení správy závislé na datech směrování rozhraní, které jsou k dispozici ve Klientská knihovna elastic database. 
 
@@ -60,9 +60,9 @@ Správce mapování horizontálních oddílů uživatelé chrání před konzist
 Při práci s Klientská knihovna elastic database a rozhraní API Entity Framework, budete chtít zachovat následující vlastnosti: 
 
 * **Horizontální navýšení kapacity**: Přidání nebo odebrání databází v horizontálně dělené aplikace podle potřeby pro požadavky kapacity aplikace datové vrstvy. To znamená, že ovládací prvek za vytvoření a odstranění databází a pomocí Správce mapování horizontálních oddílů elastické databáze rozhraní API pro správu databází a mapování shardletů. 
-* **Konzistence**: aplikace využívá horizontálního dělení a využívá možnosti směrování závislé na datech klientské knihovny. Pokud chcete vyhnout poškození nebo nesprávné výsledků, jsou zprostředkovaných připojení prostřednictvím Správce mapování horizontálních oddílů. Uchovává také ověření a konzistence.
-* **Code First**: uchování pohodlí první paradigma společnosti EF kódu. V Code First tříd v aplikaci jsou mapovány transparentně základní struktury databáze. Kód aplikace komunikuje s DbSets, který maskování většinu aspektů, které jsou součástí základní zpracování databáze.
-* **Schéma**: Entity Framework se stará o vytvoření schématu počáteční databáze a vývoj následné schématu prostřednictvím migrace. Přizpůsobení aplikace je snadno tak, že zachová tyto možnosti, jak data vyvíjí. 
+* **Konzistence**: Aplikace využívá horizontálního dělení a využívá možnosti směrování závislé na datech klientské knihovny. Pokud chcete vyhnout poškození nebo nesprávné výsledků, jsou zprostředkovaných připojení prostřednictvím Správce mapování horizontálních oddílů. Uchovává také ověření a konzistence.
+* **Code First**: Pokud chcete zachovat pohodlí první paradigma společnosti EF kódu. V Code First tříd v aplikaci jsou mapovány transparentně základní struktury databáze. Kód aplikace komunikuje s DbSets, který maskování většinu aspektů, které jsou součástí základní zpracování databáze.
+* **Schéma**: Entity Framework zpracovává vytvoření schématu počáteční databáze a vývoj následné schématu prostřednictvím migrace. Přizpůsobení aplikace je snadno tak, že zachová tyto možnosti, jak data vyvíjí. 
 
 Následující pokyny dá pokyn, jak splnit tyto požadavky pro Code First aplikace pomocí nástrojů pro elastické databáze. 
 
@@ -189,7 +189,7 @@ Výše uvedené příklady kódu ukazují výchozí konstruktor přepíše potř
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>Nasazení schématu horizontálních oddílů pomocí migrace EF
 Správa automatického schématu je pohodlné poskytované rozhraním Entity Framework. V rámci aplikace pomocí nástrojů pro elastické databáze budete chtít zachovat tuto možnost při přidávání databází do horizontálně dělené aplikace jsou automaticky zřízena schéma do nově vytvořeného horizontálních oddílů. Primárním případem použití je zvýšit kapacitu datové vrstvy pro horizontálně dělené aplikace pomocí EF. S horizontálně dělené aplikace založená na EF spoléhat na EF v možnosti Správa schématu snižuje úsilí správu databáze. 
 
-Nasazení schématu prostřednictvím migrace EF funguje nejlépe na **neotevřených připojení**. To se liší od scénář směrování závislé na datech, která závisí na otevřené připojení poskytuje rozhraní API klienta elastické databáze. Další rozdíl je požadavek konzistence: při žádoucí, aby byla zaručena konzistence pro všechny závislé na datech směrování připojení k ochraně proti manipulaci mapy horizontálních oddílů souběžných, není žádný problém s počáteční nasazení schématu pro novou databázi, která má ještě není registrován v mapě horizontálních oddílů a dosud byl přidělen k uložení shardletů. Proto se můžete spolehnout na standardní databázi připojení pro tento scénář, na rozdíl od směrování závislé na datech.  
+Nasazení schématu prostřednictvím migrace EF funguje nejlépe na **neotevřených připojení**. To se liší od scénář směrování závislé na datech, která závisí na otevřené připojení poskytuje rozhraní API klienta elastické databáze. Další rozdíl je požadavek konzistence: Při žádoucí, aby byla zaručena konzistence pro všechny závislé na datech směrování připojení k ochraně proti manipulaci mapy horizontálních oddílů souběžných není žádný problém s počátečním schématem nasazení do nové databáze, který má ještě není registrován v mapě horizontálních oddílů a ještě byl přidělen k uložení shardletů. Proto se můžete spolehnout na standardní databázi připojení pro tento scénář, na rozdíl od směrování závislé na datech.  
 
 To vede k přístupu, kde nasazení schématu prostřednictvím migrace EF je úzce párována registrace nové databáze jako horizontálních oddílů v mapě horizontálních oddílů aplikace. To závisí na následujících požadavků: 
 
@@ -236,13 +236,13 @@ Tento příklad ukazuje metodu **RegisterNewShard** , který registruje horizont
         } 
 
         // Only static methods are allowed in calls into base class c'tors 
-        private static string SetInitializerForConnection(string connnectionString) 
+        private static string SetInitializerForConnection(string connectionString) 
         { 
             // You want existence checks so that the schema can get deployed 
             Database.SetInitializer<ElasticScaleContext<T>>( 
         new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
 
-            return connnectionString; 
+            return connectionString; 
         } 
 
 Jeden možná použili verze konstruktoru zděděné ze základní třídy. Ale kód je potřeba zajistit, aby používal výchozí inicializátor pro EF při připojování. Proto krátké předání do statické metody před voláním do konstruktoru základní třídy s připojovacím řetězcem. Všimněte si, že registrace horizontálních oddílů má běžet v jiné domény aplikace nebo proces, který zajišťuje, že nastavení inicializátor pro EF není v konfliktu. 

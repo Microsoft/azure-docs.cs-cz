@@ -1,10 +1,9 @@
 ---
-title: Konfigurace metody směrování provozu podsítě pomocí služby Azure Traffic Manager | Microsoft Docs
+title: Konfigurace metody směrování podsítě provozu pomocí Azure Traffic Manageru
 description: Tento článek vysvětluje, jak nakonfigurovat službu Traffic Manager tak, aby směrovala provoz z podsítí uživatelů do konkrétních koncových bodů.
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 20c34b820eb326a18be1c4298b0850a58599be64
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 8243130fc9752a47661b4c80826000d573da35c8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956230"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053070"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -46,7 +45,7 @@ Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, 
 
 Testovací virtuální počítače slouží k ilustraci způsobu, jakým Traffic Manager směruje provoz uživatelů na interní nebo produkční web v závislosti na podsíti, ze které dotaz uživatele pochází.
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
+### <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -240,7 +239,7 @@ V této části uvidíte službu Traffic Manager v akci.
 ## <a name="delete-the-traffic-manager-profile"></a>Odstranění profilu služby Traffic Manager
 Pokud už skupiny prostředků (**ResourceGroupTM1** a **ResourceGroupTM2**) nepotřebujete, odstraňte je. Uděláte to tak, že vyberte skupinu prostředků (**ResourceGroupTM1** nebo **ResourceGroupTM2**) a pak vyberete **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si o [metodě váženého směrování provozu](traffic-manager-configure-weighted-routing-method.md).
 - Přečtěte si o [metodě prioritního směrování](traffic-manager-configure-priority-routing-method.md).

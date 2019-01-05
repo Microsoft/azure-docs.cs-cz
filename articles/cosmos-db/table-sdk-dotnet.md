@@ -1,22 +1,21 @@
 ---
 title: Azure Cosmos DB Table API .NET SDK a zdroje informací
 description: Další informace o Azure Cosmos DB Table API včetně data vydání, vyřazení dat a změny provedené mezi jednotlivými verzemi.
-services: cosmos-db
-author: rnagpal
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.author: rnagpal
-ms.openlocfilehash: 7092daa7cf3a1cfcbeac06db308fa53e18d27131
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f2492e3d49f9b7e965c33ed4419f566e81dd62ed
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878580"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043460"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Stáhněte si a poznámky k verzi
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Rozhraní .NET API tabulky Azure Cosmos DB: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -28,7 +27,7 @@ ms.locfileid: "52878580"
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://aka.ms/acdbtablenuget)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní API .NET](https://aka.ms/acdbtableapiref)|
-|**Rychlý start**|[Azure Cosmos DB: Sestavení aplikace pomocí .NET a rozhraní API tabulky](create-table-dotnet.md)|
+|**Rychlý start**|[Azure Cosmos DB: Sestavení aplikace s využitím .NET a rozhraní API tabulky](create-table-dotnet.md)|
 |**Kurz**|[Azure Cosmos DB: Vývoj s využitím rozhraní Table API v .NET](tutorial-develop-table-dotnet.md)|
 |**Aktuální podporované architektury**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 

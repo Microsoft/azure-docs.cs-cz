@@ -143,7 +143,7 @@ items:
     - name: Log Analytics
       href: platform/log-faq.md
     - name: Application Insights
-      href: ../application-insights/app-insights-troubleshoot-faq.md?toc=/azure/azure-monitor/toc.json
+      href: app/troubleshoot-faq.md
 - name: Návody
   items:
   - name: Plánování a příprava
@@ -163,9 +163,9 @@ items:
       - name: Hloubková diagnostika webových aplikací a služeb
         href: ../application-insights/app-insights-devops.md?toc=/azure/azure-monitor/toc.json
       - name: Sledování výkonu webových aplikací
-        href: ../application-insights/app-insights-web-monitor-performance.md?toc=/azure/azure-monitor/toc.json
+        href: app/web-monitor-performance.md
       - name: Samostatný vývoj, testování a provoz
-        href: ../application-insights/app-insights-separate-resources.md?toc=/azure/azure-monitor/toc.json
+        href: app/separate-resources.md
       - name: Jak mám udělat ... pomocí Application Insights?
         href: app/how-do-i.md
     - name: Správa pracovních prostorů
@@ -267,7 +267,7 @@ items:
         - name: Azure Cloud Services
           href: app/cloudservices.md
         - name: Přidání průběžného monitorování
-          href: ../application-insights/app-insights-vsts-continuous-monitoring.md?toc=/azure/azure-monitor/toc.json
+          href: app/continuous-monitoring.md
         - name: Profiler
           items:
           - name: Přehled
@@ -299,7 +299,7 @@ items:
         - name: Služby pro Windows
           href: ../application-insights/app-insights-windows-services.md?toc=/azure/azure-monitor/toc.json
         - name: Plocha Windows
-          href: ../application-insights/app-insights-windows-desktop.md?toc=/azure/azure-monitor/toc.json
+          href: app/windows-desktop.md
         - name: Jádro ASP.NET
           href: app/asp-net-core.md
           items:
@@ -364,11 +364,11 @@ items:
       - name: Jiné platformy
         items:
         - name: Weby SharePoint
-          href: ../application-insights/app-insights-sharepoint.md?toc=/azure/azure-monitor/toc.json
+          href: app/sharepoint.md
         - name: Dynamics CRM
           href: app/sample-mscrm.md
       - name: Inteligentní zjišťování
-        href: ../application-insights/app-insights-proactive-diagnostics.md?toc=/azure/azure-monitor/toc.json
+        href: app/proactive-diagnostics.md
         items:
         - name: Anomálie selhání
           href: app/proactive-failure-diagnostics.md
@@ -401,7 +401,7 @@ items:
         - name: Java
           href: app/java-troubleshoot.md
         - name: Analýza využití
-          href: ../application-insights/app-insights-usage-troubleshoot.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-troubleshoot.md
     - name: Prostředky Azure
       items:
       - name: Protokoly aktivit Azure
@@ -484,31 +484,31 @@ items:
       - name: Visual Studio
         items:
         - name: Náhledy pomocí klávesy F5
-          href: ../application-insights/app-insights-visual-studio.md?toc=/azure/azure-monitor/toc.json
+          href: app/visual-studio.md
         - name: Trendy
-          href: ../application-insights/app-insights-visual-studio-trends.md?toc=/azure/azure-monitor/toc.json
+          href: app/visual-studio-trends.md
         - name: CodeLens
-          href: ../application-insights/app-insights-visual-studio-codelens.md?toc=/azure/azure-monitor/toc.json
+          href: app/visual-studio-codelens.md
       - name: Využití
         items:
         - name: Přehled
-          href: ../application-insights/app-insights-usage-overview.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-overview.md
         - name: Odeslání kontextu uživatele
-          href: ../application-insights/app-insights-usage-send-user-context.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-send-user-context.md
         - name: Uživatelé, relace, události
-          href: ../application-insights/app-insights-usage-segmentation.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-segmentation.md
         - name: Trychtýře
-          href: ../application-insights/usage-funnels.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-funnels.md
         - name: Kohorty
-          href: ../application-insights/app-insights-usage-cohorts.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-cohorts.md
         - name: Dopad
-          href: ../application-insights/app-insights-usage-impact.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-impact.md
         - name: Uchovávání
-          href: ../application-insights/app-insights-usage-retention.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-retention.md
         - name: Toky uživatele
-          href: ../application-insights/app-insights-usage-flows.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-flows.md
         - name: Workbooks
-          href: ../application-insights/app-insights-usage-workbooks.md?toc=/azure/azure-monitor/toc.json
+          href: app/usage-workbooks.md
       - name: Řešení analýzy webových aplikací
         href: insights/azure-web-apps-analytics.md
     - name: Monitorování kontejnerů
@@ -1004,9 +1004,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 0cfca3a41157065f2e64c0da8062ebd011375f70
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8fc518262ba4b1d1c53c8fd2622f724550cddb2e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016106"
+ms.locfileid: "54053649"

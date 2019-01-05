@@ -4,16 +4,16 @@ description: Přečtěte si o podporovaných systémů a nástroje pro vývoj pr
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 46b007cfa7156c0c7718b7f4bd4f735a58c722fc
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797927"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052577"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Připravte vývojové a testovací prostředí pro IoT Edge
 
@@ -45,7 +45,7 @@ Pokud chcete vyvíjet pomocí jiné editory nebo z rozhraní příkazového řá
 
 Rozšíření Azure IoT Edge pro Visual Studio Code poskytuje IoT Edge module šablony založená na programovací jazyky, včetně C, C#, Java, Node.js a Python, jakož i služba Azure functions v C#. 
 
-Další informace a ke stažení najdete na stránce [Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
+Další informace a ke stažení najdete na stránce [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 Kromě rozšíření IoT Edge možná bude užitečné, chcete-li nainstalovat další rozšíření pro vývoj. Například můžete použít [podporu Dockeru pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) ke správě bitových kopií, kontejnery a registry. Všechny hlavní podporované jazyky kromě toho mají rozšíření pro Visual Studio Code, který vám pomůže, když vyvíjíte moduly. 
 

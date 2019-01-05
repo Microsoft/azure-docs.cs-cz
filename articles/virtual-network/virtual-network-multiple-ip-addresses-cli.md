@@ -1,13 +1,10 @@
 ---
-title: Virtuální počítač s několika IP adresy, které používají rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+title: Virtuální počítač s několika IP adresami pomocí Azure CLI
+titlesuffix: Azure Virtual Network
 description: Zjistěte, jak přiřadit několik IP adres k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: 8f82a7d5d9c9f3b85856154973be4ec3fb961f6c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b383bd601335e8c828c4c734ad8015b650fdc9f3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287553"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055111"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Přiřadit několik IP adres pro virtuální počítače pomocí Azure CLI
 

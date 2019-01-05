@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric image store připojení řetězce | Dokumentace Microsoftu
+title: Azure Service Fabric image store připojovacího řetězce | Dokumentace Microsoftu
 description: Vysvětlení připojovací řetězec úložiště obrázků
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 8a11f9c9ebc2dd0b0eabf7a34d5ef38ae4e29309
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5f69de9ba9a3226209a339c6f6fa778d9ded9755
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719066"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050980"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Principy nastavení ImageStoreConnectionString
 

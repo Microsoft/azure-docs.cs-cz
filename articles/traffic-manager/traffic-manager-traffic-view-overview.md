@@ -1,10 +1,9 @@
 ---
-title: Zobrazení v Azure Traffic Manageru přenosů | Dokumentace Microsoftu
+title: Zobrazení přenosů ve službě Azure Traffic Manager
 description: Úvod do zobrazení provozu Traffic Manageru
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: jeconnoc
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -13,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: d1800fea2212628e7647b5250efa33ebb97957f9
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 9f818715895c2ff2c5d0e1758aaf17a2393287d2
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138068"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050640"
 ---
 # <a name="traffic-manager-traffic-view"></a>Zobrazení přenosů Traffic Manageru
 

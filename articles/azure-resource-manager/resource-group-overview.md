@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 470d08c13d5874283794fa9a2ce06fcaad4f60c2
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 24646c9448a70af228085c99f03ab844e5af7e9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300536"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053138"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 Infrastrukturu aplikace obvykle tvoří celá řada komponent, může to být třeba virtuální počítač, účet úložiště a virtuální síť nebo webová aplikace, databáze, databázový server a služby jiných výrobců. Tyto komponenty nevidíte jako samostatné entity, ale je jako související a vzájemně provázané části jedné entity. Chcete je nasadit, spravovat a monitorovat jako skupinu. Azure Resource Manager umožňuje pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat. 
 
 ## <a name="consistent-management-layer"></a>Konzistentní vrstva správy
-Resource Manager poskytuje konzistentní vrstvu správy pro provádění úloh prostřednictvím Azure PowerShellu, Azure CLI, webu Azure Portal, rozhraní REST API a klientských sad SDK. Všechny možnosti, které jsou k dispozici na webu Azure Portal, jsou dostupné také v Azure PowerShellu, Azure CLI, rozhraních Azure REST API a klientských sadách SDK. Funkce původně vydané prostřednictvím rozhraní API budou na portálu k dispozici do 180 dnů od počátečního vydání.
+Resource Manager poskytuje konzistentní vrstvu správy k provádění úloh na webu Azure portal a všechny funkce, které jsou k dispozici na webu Azure Portal jsou také k dispozici prostřednictvím Azure Powershellu, rozhraní příkazového řádku Azure, rozhraní Azure REST API a klientské sady SDK. Funkce původně vydané prostřednictvím rozhraní API budou na portálu k dispozici do 180 dnů od počátečního vydání.
 
 Vyberte si nástroje a rozhraní API, které vám nejvíce vyhovují – obsahují stejné funkce a poskytují konzistentní výsledky.
 
@@ -88,9 +88,9 @@ Název typu prostředku má formát: **{poskytovatel prostředku}/{typ prostřed
 Než začnete nasazovat prostředky, měli byste získat přehled o dostupných poskytovatelích prostředků. Znalost názvů poskytovatelů prostředků a samotných prostředků vám umožní definovat prostředky, které chcete nasadit do Azure. Také je potřeba vědět platná umístění a verze rozhraní API pro každý typ prostředku. Další informace najdete v tématu [Zprostředkovatelé a typy prostředků](resource-manager-supported-services.md).
 
 ## <a name="template-deployment"></a>Nasazení šablon
-Pomocí Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která definuje infrastrukturu a konfiguraci vašeho řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Když vytvoříte řešení z portálu, bude toto řešení automaticky zahrnovat šablonu nasazení. Šablonu nemusíte vytvářet od začátku, protože můžete začít se šablonou pro své řešení a upravit ji tak, aby vyhovovala vašim konkrétním potřebám. Ukázku najdete v článku [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Šablonu pro stávající skupinu prostředků můžete také získat tak, že vyexportujete aktuální stav této skupiny prostředků nebo zobrazíte šablonu použitou pro konkrétní nasazení. Zobrazení [vyexportované šablony](resource-manager-export-template.md) vám pomůže blíže se seznámit se syntaxí šablony.
+Pomocí Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která definuje infrastrukturu a konfiguraci vašeho řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Když vytvoříte řešení z portálu, bude toto řešení automaticky zahrnovat šablonu nasazení. Šablonu nemusíte vytvářet od začátku, protože můžete začít se šablonou pro své řešení a upravit ji tak, aby vyhovovala vašim konkrétním potřebám. Ukázku najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Šablonu pro stávající skupinu prostředků můžete také získat tak, že vyexportujete aktuální stav této skupiny prostředků nebo zobrazíte šablonu použitou pro konkrétní nasazení. Zobrazení [vyexportované šablony](resource-manager-export-template.md) vám pomůže blíže se seznámit se syntaxí šablony.
 
-Další informace o formátu šablony a způsobu jejího vytvoření najdete v článku [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Syntaxi JSON pro typy prostředků najdete v tématu [Definování prostředků v šablonách Azure Resource Manageru](/azure/templates/).
+Další informace o formátu šablony a způsobu jejího sestavení najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Syntaxi JSON pro typy prostředků najdete v tématu [Definování prostředků v šablonách Azure Resource Manageru](/azure/templates/).
 
 Resource Manager zpracovává šablonu stejně jako ostatní požadavky (viz obrázek [Konzistentní vrstva správy](#consistent-management-layer)). Parsuje šablonu a převede její syntaxi na operace rozhraní REST API pro příslušné poskytovatele prostředků. Když například Resource Manager obdrží šablonu s následující definicí prostředku:
 
@@ -212,7 +212,7 @@ Azure poskytuje také několik rolí specifických pro prostředky. Mezi ty bě�
 4. Přispěvatel SQL Serveru: Může spravovat servery a databáze SQL, ale ne jejich zásady zabezpečení.
 5. Přispěvatel webů: Může spravovat weby, ale ne webové plány, ke kterým jsou připojené.
 
-Úplný seznam rolí a povolených akcí najdete v tématu [RBAC: vestavěné role](../role-based-access-control/built-in-roles.md). Další informace o řízení přístupu na základě rolí najdete v tématu [Řízení přístupu na základě role v Azure](../role-based-access-control/role-assignments-portal.md). 
+Úplný seznam rolí a povolených akcí najdete v tématu [RBAC: Vestavěné role](../role-based-access-control/built-in-roles.md). Další informace o řízení přístupu na základě rolí najdete v tématu [Řízení přístupu na základě role v Azure](../role-based-access-control/role-assignments-portal.md). 
 
 V některých případech chcete spustit kód nebo skript, který bude mít přístup k prostředkům, ale ne tak, aby běžel pod přihlašovacími údaji určitého uživatele. Místo toho pro aplikaci vytvoříte identitu, která se označuje jako instanční objekt (nebo také objekt služby), a přiřadíte jí odpovídající roli. V Resource Manageru můžete pro tuto aplikaci vytvořit přihlašovací údaje a ověřit ji pomocí kódu programu. Další informace o vytváření instančních objektů najdete v následujících tématech:
 
@@ -255,4 +255,4 @@ Informace o používání těchto jazyků s vašimi prostředky najdete na násl
 V tomto článku jste se dozvěděli, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure. V dalším článku se dozvíte, jak vytvořit první šablonu Azure Resource Manageru.
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)
+> [Rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md)

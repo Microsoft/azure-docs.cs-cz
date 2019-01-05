@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: b4d87ab62503bee1ff54ba9713f7c49d09a2e547
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1a5f756c4fac92260e77b24ca2cde6abccf0797a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015062"
+ms.locfileid: "54042780"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](https://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](app-insights-overview.md).
@@ -65,7 +65,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 8. Aktualizovat sestavu ručně v intervalech nebo nastavit plánovanou aktualizaci na stránce Možnosti.
 
 ### <a name="export-a-funnel"></a>Export trychtýře
-1. [Ujistěte se, svém trychtýři](usage-funnels.md).
+1. [Ujistěte se, svém trychtýři](../azure-monitor/app/usage-funnels.md).
 2. Vyberte **Power BI**.
 
    ![Snímek obrazovky s Power BI tlačítko](./media/app-insights-export-power-bi/button.png)

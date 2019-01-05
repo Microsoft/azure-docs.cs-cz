@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 19830ade92e5d2a046abc8a2ad00c086a5bf62ec
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 24132fdb23ff89045f2b497327997d95e4ceecac
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972783"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054839"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights pro ASP.NET Core
 
@@ -62,7 +62,7 @@ K otestování této funkce:
    ![Snímek obrazovky sady Visual Studio Application Insights hledání](./media/asp-net-core/006-search.png)
 
 > [!NOTE]
-> Další informace o jak Visual Studio světla do funkce jako [hledání Application Insights](../../application-insights/app-insights-visual-studio.md) a [CodeLens](../../application-insights/app-insights-visual-studio-codelens.md) místně předtím, než přidáte Application Insights do projektu ASP.NET Core, najdete v článku [ Hledání Application Insights pokračování](#application-insights-search-continued).
+> Další informace o jak Visual Studio světla do funkce jako [hledání Application Insights](../../azure-monitor/app/visual-studio.md) a [CodeLens](../../azure-monitor/app/visual-studio-codelens.md) místně předtím, než přidáte Application Insights do projektu ASP.NET Core, najdete v článku [ Hledání Application Insights pokračování](#application-insights-search-continued).
 
 ## <a name="add-application-insights-telemetry"></a>Přidání Telemetrie Application Insights
 
@@ -404,7 +404,7 @@ Problém s některou z těchto metod je, že se nemusíte zakážou pouze služb
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
 ## <a name="next-steps"></a>Další postup
-* [Prozkoumejte toky uživatelů](../../application-insights/app-insights-usage-flows.md) pochopit, jak uživatelé procházejí vaši aplikaci.
+* [Prozkoumejte toky uživatelů](../../azure-monitor/app/usage-flows.md) pochopit, jak uživatelé procházejí vaši aplikaci.
 * [Konfigurace shromažďování snímků](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications) zobrazíte stav zdrojového kódu a proměnné v tuto chvíli dojde k výjimce.
 * [Použití rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md) k odesílání vlastních událostí a metrik pro podrobnější přehled výkonu a využití vaší aplikace.
 * Použití [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) ke kontrole neustále z aplikace po celém světě.

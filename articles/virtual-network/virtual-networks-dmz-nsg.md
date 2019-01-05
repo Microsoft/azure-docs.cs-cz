@@ -5,8 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457285"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052389"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Příklad 1 – Vytvoření jednoduché DMZ pomocí skupin zabezpečení sítě pomocí šablony Azure Resource Manageru
 [Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -51,8 +49,8 @@ V části odkazy je odkaz na šablonu Azure Resource Manageru, který vytváří
 
 **K vytvoření tohoto prostředí** (podrobné pokyny najdete v oddílu odkazy tohoto dokumentu);
 
-1. Nasazení šablony Azure Resource Manageru v: [šablony rychlý start Azure][Template]
-2. Nainstalovat ukázkovou aplikaci v: [skript ukázkové aplikace][SampleApp]
+1. Nasazení šablony Azure Resource Manageru na: [Šablony rychlý start Azure][Template]
+2. Nainstalujte ukázkovou aplikaci na: [Ukázkový skript aplikace][SampleApp]
 
 >[!NOTE]
 >Pro protokol RDP na jakékoli servery back-end v tomto případě se používá server služby IIS jako "jump box." První protokol RDP na serveru IIS a pak RDP Server služby IIS na back endového serveru. Můžete také veřejné IP adresy můžou být spojené s každý server síťovou kartu pro snazší protokol RDP.
@@ -350,7 +348,7 @@ Pokud chcete nasadit šablonu, která vytvoří v tomto příkladu z Githubu a n
 Odebrat toto nasazení, odstraňte skupinu prostředků a všech jejích podřízených prostředků budou také odstraněny.
 
 #### <a name="sample-application-scripts"></a>Ukázky skriptů aplikace
-Po úspěšném spuštění šablony můžete nastavit webový server a server aplikace s jednoduchou webovou aplikaci umožňující testování s touto konfigurací DMZ. Pokud chcete nainstalovat ukázkovou aplikaci pro tuto a další příklady DMZ, jeden byl poskytnut na následující odkaz: [skript ukázkové aplikace][SampleApp]
+Po úspěšném spuštění šablony můžete nastavit webový server a server aplikace s jednoduchou webovou aplikaci umožňující testování s touto konfigurací DMZ. Pokud chcete nainstalovat ukázkovou aplikaci pro tuto a další příklady DMZ, jeden byl poskytnut na následující odkaz: [Ukázkový skript aplikace][SampleApp]
 
 ## <a name="next-steps"></a>Další postup
 

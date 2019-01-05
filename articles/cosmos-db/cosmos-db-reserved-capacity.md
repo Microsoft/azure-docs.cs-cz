@@ -1,19 +1,18 @@
 ---
 title: Optimalizovat náklady na prostředky Azure Cosmos DB pomocí vyhrazené kapacity
 description: Informace o možnostech nákupu služby Azure Cosmos DB vyhrazené kapacity a Ušetřete na svých výpočetních nákladech.
-services: cosmos-db
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a1f5db6428a892e10a3591edb7542996ad1b3319
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: b4f36abb2136223be8d4eec67935317041a41b93
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386804"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044276"
 ---
 # <a name="optimize-cost-of-azure-cosmos-db-resources-with-reserved-capacity"></a>Optimalizovat náklady na prostředky Azure Cosmos DB pomocí vyhrazené kapacity
 
@@ -84,7 +83,7 @@ Sleva za rezervaci se automaticky využije na prostředky Azure Cosmos DB, kter�
    * [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](../billing/billing-understand-reserved-instance-usage.md)
    * [Rezervace Azure v programu Partnerské centrum CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

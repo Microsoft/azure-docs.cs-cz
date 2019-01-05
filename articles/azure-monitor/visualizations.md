@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 862380a35dcc4d50dce8d709bd1dbea1aa38e37a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9b160c011a8a9507698443446ad5fe908b32fb9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728342"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049958"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
 Tento článek obsahuje přehled dostupných metod, která bude vizualizovat data protokolů a metrik uložené ve službě Azure Monitor.
@@ -71,7 +71,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 
 
 ## <a name="application-insights-workbooks"></a>Sešity Application Insights
-[Sešity](../application-insights/app-insights-usage-workbooks.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich dat, prozkoumání a spolupráci v týmu. Konkrétní příklady, kde jsou užitečné sešity jsou řešení potíží s pokyny a incident postmortem.
+[Sešity](../azure-monitor/app/usage-workbooks.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich dat, prozkoumání a spolupráci v týmu. Konkrétní příklady, kde jsou užitečné sešity jsou řešení potíží s pokyny a incident postmortem.
 
 ![Sešit](media/visualizations/workbook.png)
 
@@ -140,7 +140,7 @@ Data v protokolech a data metriky ve službě Azure Monitor můžete přistupova
 - Další informace o [data shromážděná službou Azure Monitor](platform/data-collection.md).
 - Další informace o [řídicích panelů Azure](../azure-portal/azure-portal-dashboards.md).
 - Další informace o [zobrazení ve službě Azure Monitor](platform/view-designer.md).
-- Další informace o [sešity ve službě Application Insights](../application-insights/app-insights-usage-workbooks.md).
+- Další informace o [sešity ve službě Application Insights](../azure-monitor/app/usage-workbooks.md).
 - Další informace o [importovat do Power BI data protokolu](../azure-monitor/platform/powerbi.md).
 - Další informace o [modulu plug-in zdroje dat monitorování Azure Grafana](../azure-monitor/platform/grafana-plugin.md).
 

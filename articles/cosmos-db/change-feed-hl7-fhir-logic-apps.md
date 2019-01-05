@@ -1,19 +1,18 @@
 ---
 title: Změna datového kanálu pro prostředky HL7 FHIR – Azure Cosmos DB
 description: Zjistěte, jak nastavit oznamování změn pro pacienty zdravotní péče záznamy HL7 FHIR pomocí Azure Logic Apps služby Azure Cosmos DB a služby Service Bus.
-keywords: hl7 fhir
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 5cc6bdfa9c16a6dfbdd0f6c87873a90b2a203169
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0ff92ad58cc8b7206b7061c88f8aadbb701870f0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089220"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044514"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Upozornění pacientů změny zdravotní péče záznamu HL7 FHIR pomocí Logic Apps a Azure Cosmos DB
 
@@ -38,9 +37,9 @@ Na vysoké úrovni projektu vyžaduje následující kroky pracovního postupu:
 
 ## <a name="solution-architecture"></a>Architektury řešení
 Toto řešení vyžaduje tři Logic Apps splnění výš uvedených požadavků a dokončete pracovní postup řešení. Jsou tři aplikace logiky:
-1. **Aplikace HL7 FHIR mapování**: obdrží HL7 C-CDA dokument, ho transformuje na prostředek FHIR a pak uloží jej do služby Azure Cosmos DB.
-2. **Aplikace EHR**: dotazuje úložiště Azure Cosmos DB FHIR a uloží odpověď do fronty služby Service Bus. Tato aplikace logiky používá [aplikace API](#api-app) k načtení nové a změněné dokumenty.
-3. **Proces oznámení aplikace**: odešle e-mailové oznámení s dokumenty FHIR prostředků v textu.
+1. **Aplikace HL7 FHIR mapování**: Přijímá HL7 C-CDA dokument, ho transformuje na prostředek FHIR a pak uloží jej do služby Azure Cosmos DB.
+2. **Aplikace EHR**: Dotazuje úložiště Azure Cosmos DB FHIR a uloží odpověď do fronty služby Service Bus. Tato aplikace logiky používá [aplikace API](#api-app) k načtení nové a změněné dokumenty.
+3. **Proces oznámení aplikace**: Odešle e-mailové oznámení s dokumenty FHIR prostředků v textu.
 
 ![Tři Logic Apps použité v řešení HL7 FHIR zdravotní péče](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
@@ -57,16 +56,16 @@ Azure Cosmos DB je úložiště pro FHIR prostředky, jak je znázorněno na ná
 Logic Apps zpracovávat procesu pracovního postupu. Na následujících snímcích obrazovky zobrazit aplikace logiky vytvořené pro toto řešení. 
 
 
-1. **Aplikace HL7 FHIR mapování**: dokument HL7 C-CDA přijmout a transformovat ho na prostředek FHIR pomocí sady Enterprise Integration Pack pro Logic Apps. Enterprise Integration Pack zpracovává mapování C-CDA FHIR prostředky.
+1. **Aplikace HL7 FHIR mapování**: Přijmout dokument HL7 C-CDA a transformovat ho na prostředek FHIR pomocí sady Enterprise Integration Pack pro Logic Apps. Enterprise Integration Pack zpracovává mapování C-CDA FHIR prostředky.
 
     ![Slouží k přijímání HL7 FHIR zdravotní záznamy aplikace logiky](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. **Aplikace EHR**: dotazování úložiště Azure Cosmos DB FHIR a uložit odpověď do fronty služby Service Bus. Kód pro aplikace GetNewOrModifiedFHIRDocuments je níže.
+2. **Aplikace EHR**: Dotazování Azure Cosmos DB FHIR úložiště a uložit odpověď do fronty služby Service Bus. Kód pro aplikace GetNewOrModifiedFHIRDocuments je níže.
 
     ![Aplikace logiky používá k dotazování služby Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-3. **Proces oznámení aplikace**: poslat e-mailové oznámení s dokumenty FHIR prostředků v textu.
+3. **Proces oznámení aplikace**: Poslat e-mailové oznámení s dokumenty FHIR prostředků v textu.
 
     ![Aplikace logiky, která odešle e-mail o pacientech HL7 FHIR prostředku v textu](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
@@ -88,12 +87,12 @@ Používáme [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/libr
 - ID databáze
 - CollectionId
 - Název typu prostředku HL7 FHIR
-- Logická hodnota: Začít od začátku
+- Logická hodnota: Začněte od začátku
 - Int: Počet vrácených dokumentů
 
 **Výstupy**
-- Úspěchu: Stavový kód: 200, odpovědi: seznam dokumentů (pole JSON)
-- Chyby: Kód stav: odpovědi 404,: "pro nenašly žádné dokumenty"*název prostředku "* typ prostředku"
+- Úspěch: Stavový kód: 200, odpovědi: Seznam dokumentů (pole JSON)
+- Chyba: Stavový kód: 404, odpovědi: "Pro nenašly žádné dokumenty"*název prostředku "* typ prostředku"
 
 <a id="api-app-source"></a>
 

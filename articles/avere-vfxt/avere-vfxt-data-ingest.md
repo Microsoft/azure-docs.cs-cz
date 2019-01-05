@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bf16c0fbc7090bf9b548796765502cde1731aef9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633824"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050485"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Přesun dat do clusteru vFXT - paralelních dat ingestu 
 
@@ -19,7 +19,7 @@ Po vytvoření nového clusteru vFXT, vaše první úkol může být pro přesun
 
 Vzhledem k tomu, že je Avere vFXT cluster škálovatelné více klientů mezipaměti, nejúčinnější a nejrychlejší způsob, jak kopírovat data do ní je s více klienty. Tato technika parallelizes ingestování soubory a objekty.
 
-![Diagram zobrazující více klientů a vícevláknové přesouvání dat: vlevo nahoře, ikona pro úložiště v místním hardwaru má více šipky pocházející z něj. Šipky odkazovat na čtyři počítače klienta. Z každý klientský počítač tři šipky ukazují směrem k Avere vFXT. Z Avere vFXT více šipky ukazují do úložiště objektů Blob.](media/avere-vfxt-parallel-ingest.png) 
+![Diagram zobrazující více klientů a vícevláknové přesouvání dat: V levé horní části ikonu pro úložiště v místním hardwaru má více šipky pocházející z něj. Šipky odkazovat na čtyři počítače klienta. Z každý klientský počítač tři šipky ukazují směrem k Avere vFXT. Z Avere vFXT více šipky ukazují do úložiště objektů Blob.](media/avere-vfxt-parallel-ingest.png) 
 
 ``cp`` Nebo ``copy`` jsou příkazy, které se běžně používají k používání pro přenos dat z jednoho úložiště systému na jiný s jedním vláknem procesy, které kopírují pouze jeden soubor současně. To znamená, že je souborový server ingestovat pouze jeden soubor v době – které by o plýtvání prostředky clusteru.
 
@@ -167,7 +167,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ### <a name="create-file-manifests"></a>Vytváření souboru manifestu
 
-Po Principy přístupy výše (více kopírování vláken na cílový, více cílů jednoho klienta, více klientů za síťově přístupné zdrojového systému souborů), zvažte tato doporučení: sestavení souboru manifestů a používáte je se kopírování příkazy do více klientů.
+Po Principy přístupy výše (více kopírování vláken na cílový, více cílů jednoho klienta, více klientů za síťově přístupné zdrojového systému souborů), vezměte v úvahu tato doporučení: Sestavení souborů manifestů a použít je s příkazy pro kopírování do více klientů.
 
 Tento scénář využívá UNIX ``find`` příkaz pro vytvoření manifestů souborů nebo adresářů:
 
@@ -272,7 +272,7 @@ Pokud chcete použít k naplnění svazku cloudu Azure s clusterem Avere msrsync
 1. Nainstalujte msrsync a nezbytný software (rsync a Python 2.6 nebo novější)
 1. Zjistěte celkový počet souborů a adresářů ke zkopírování.
 
-   Třeba použít nástroj Avere ``prime.py`` s argumenty ```prime.py --directory /path/to/some/directory``` (k dispozici stažením url https://raw.githubusercontent.com/Azure/Avere/master/src/dataingestor/prime.py).
+   Třeba použít nástroj Avere ``prime.py`` s argumenty ```prime.py --directory /path/to/some/directory``` (k dispozici stažením url https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py).
 
    Pokud nepoužíváte ``prime.py``, můžete vypočítat počet položek s Gnu ``find`` nástroj následujícím způsobem:
 

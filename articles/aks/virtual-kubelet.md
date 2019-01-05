@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: e5d415593a510acb81eac65242010d1841044857
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162643"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054006"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet pomocí služby Azure Kubernetes Service (AKS)
 
@@ -90,7 +90,7 @@ Tyto argumenty jsou k dispozici pro `aks install-connector` příkazu.
 | `--connector-name` | Název konektoru ACI.| Ano |
 | `--name` `-n` | Název spravovaného clusteru. | Ano |
 | `--resource-group` `-g` | Název skupiny prostředků. | Ano |
-| `--os-type` | Typ operačního systému instance kontejneru. Povolené hodnoty: Obě, Linuxu a Windows. Výchozí: Linux. | Ne |
+| `--os-type` | Typ operačního systému instance kontejneru. Povolené hodnoty: Obě, Linuxu a Windows. Výchozí: Linux | Ne |
 | `--aci-resource-group` | Skupina prostředků, ve kterém chcete vytvořit skupiny kontejnerů ACI. | Ne |
 | `--location` `-l` | Umístění pro vytvoření skupiny kontejnerů ACI. | Ne |
 | `--service-principal` | Instanční objekt služby používat k ověřování do rozhraní API Azure. | Ne |
@@ -240,7 +240,7 @@ Další informace o Virtual Kubelet na [projektu z Githubu Virtual Kubelet][vk-g
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
-[kubectl-get]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#get
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [vk-github]: https://github.com/virtual-kubelet/virtual-kubelet

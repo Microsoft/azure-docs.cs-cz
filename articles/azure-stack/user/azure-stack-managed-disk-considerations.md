@@ -12,23 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 4bad339ca704f14f57c120db5e731d0dbfeb8d59
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e86e1d862644aa143046045e74ec994d42a5598e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793429"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050162"
 ---
-# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack spravované disky: Rozdíly a aspekty
-Tento článek shrnuje známé rozdíly mezi Azure Stack Managed Disks a Managed Disks pro Azure. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
+# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: rozdíly a aspekty
 
-Spravované disky zjednodušují správu disků pro virtuální počítače IaaS pomocí správy [účty úložiště](/azure/azure-stack/azure-stack-manage-storage-accounts) přidružené k diskům virtuálních počítačů.
+Tento článek shrnuje známé rozdíly mezi [Azure Stack Managed Disks](azure-stack-manage-vm-disks.md) a [Managed Disks pro Azure](../../virtual-machines/windows/managed-disks-overview.md). Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
+
+Spravované disky zjednodušují správu disků pro virtuální počítače IaaS pomocí správy [účty úložiště](../azure-stack-manage-storage-accounts.md) přidružené k diskům virtuálních počítačů.
 
 > [!Note]  
-> Spravované disky ve službě Azure Stack je k dispozici. 1808.
+> Spravované disky ve službě Azure Stack je k dispozici od verze. 1808.
   
 
 ## <a name="cheat-sheet-managed-disk-differences"></a>Tahák: Spravovaného disku rozdíly
@@ -46,30 +47,34 @@ Spravované disky zjednodušují správu disků pro virtuální počítače IaaS
 |Velikost disku  |Disk Azure typu Premium: P4 (32 GB) na P80 (32 TB)<br>Disk Azure SSD na úrovni Standard: E10 (128 GB) na E80 (32 TB)<br>Pevný disk Azure standardní Disk: S4 (32 GB) na S80 (32 TB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 GB |
 |Kopie snímků disků|Pořízení snímku Azure připojené do spuštěného virtuálního počítače nepodporuje spravované disky|Není dosud podporován. |
 |Výkon disků analýzy |Agregace metrik a metriky pro disk podporované |Není dosud podporován. |
-|Migrace      |Poskytuje nástroj pro migraci z existující nespravované správce prostředků virtuálních počítačů Azure bez nutnosti znovu vytvořte virtuální počítač  |Není dosud podporován. |
+|Migrace      |Poskytuje nástroj pro migraci z existující nespravovaná správce prostředků virtuálních počítačů Azure bez nutnosti znovu vytvořte virtuální počítač  |Není dosud podporován. |
 
-> [!Note]  
+> [!NOTE]  
 > Spravované disky vstupně-výstupních operací a propustnosti ve službě Azure Stack je číslo zakončení místo zřízené číslo, které může vliv hardwaru a pracovní postupy spouštěné ve službě Azure Stack.
 
-
 ## <a name="metrics"></a>Metriky
+
 Existují také rozdíly pomocí metrik storage:
-- Pomocí služby Azure Stack nerozlišují data transakcí v metrikách storage šířky pásma sítě interní nebo externí.
+
+- Transakce data v metrikách storage pomocí služby Azure Stack nerozlišuje šířky pásma sítě interní nebo externí.
 - Azure Stack data transakcí v metrikách storage neobsahuje virtuální počítač přístup k připojené disky.
 
-
 ## <a name="api-versions"></a>Verze rozhraní API
+
 Služba Azure Managed Disks zásobníku podporuje následující verze rozhraní API:
+
 - 2017-03-30
 
 ## <a name="known-issues"></a>Známé problémy
-Po použití 1809 aktualizace, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
 
-   - Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
-      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
-      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
-   - Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Pokud chcete chybu vyřešit, postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
+Po použití [aktualizovat 1811](../azure-stack-update-1811.md), může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+
+- Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
+   1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
+   2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
+- Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Pokud chcete chybu vyřešit, postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
 
 
 ## <a name="next-steps"></a>Další postup
-[Další informace o virtuálních počítačích Azure Stack](azure-stack-compute-overview.md)
+
+- [Další informace o virtuálních počítačích Azure Stack](azure-stack-compute-overview.md)

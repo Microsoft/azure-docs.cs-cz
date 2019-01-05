@@ -1,21 +1,19 @@
 ---
 title: Agregační operace pro tabulky Azure Cosmos DB Cassandra API z aplikace Spark
 description: V tomto článku najdete základní agregační operace na tabulky Azure Cosmos DB Cassandra API z aplikace Spark
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.custom: basics, DDL, DML
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: 385a365ac3b81bca70a71eeed7ca1876c9df49b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 56cd2284fb4bf7dabb280170757c128b8f985433
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224990"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037306"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Agregační operace pro tabulky Azure Cosmos DB Cassandra API z aplikace Spark 
 
@@ -93,7 +91,7 @@ Zvolte [možnost úložiště]( https://spark.apache.org/docs/2.2.0/rdd-programm
 
 * MEMORY_AND_DISK: Úložiště RDD jako deserializovaný objekty Java v JVM. Pokud RDD se nevejde do paměti, uložte oddíly, které nemáte vejít na disku a pokaždé, když se vyžaduje, přečtěte si je z umístění, které jsou pak uloženy.
 
-* MEMORY_ONLY_SER (Java/Scala): RDD úložiště jako serializovat objekty jeden bajtové pole Java na oddíl. Tato možnost je prostor efektivní ve srovnání s objekty deserializovat, zvláště při použití rychlého serializátor, ale více náročnou na procesor ke čtení.
+* MEMORY_ONLY_SER (Java/Scala): Úložiště RDD jako serializované objekty. jeden bajtové pole Java na oddíl. Tato možnost je prostor efektivní ve srovnání s objekty deserializovat, zvláště při použití rychlého serializátor, ale více náročnou na procesor ke čtení.
 
 * MEMORY_AND_DISK_SER (Java/Scala): Tato možnost úložiště je třeba MEMORY_ONLY_SER, jediným rozdílem je, že ho rozlití kapaliny oddíly, které nevyhovují uvedeným disk paměti namísto recomputing je v případě potřeby.
 
@@ -101,7 +99,7 @@ Zvolte [možnost úložiště]( https://spark.apache.org/docs/2.2.0/rdd-programm
 
 * MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Stejné jako úrovně výše, ale replikuje každý oddíl na dva uzly clusteru.
 
-* (Experimentální) OFF_HEAP: podobný MEMORY_ONLY_SER, ale jeho ukládá data v vypnout haldy paměti a vyžaduje vypnutí haldy paměti povolení předem. 
+* OFF_HEAP (experimentální): Podobně jako MEMORY_ONLY_SER, ale ukládá data v vypnout haldy paměti a vyžaduje vypnutí haldy paměti povolení předem. 
 
 ```scala
 //Workaround

@@ -1,42 +1,42 @@
 ---
-title: Použití prostředí pro nasazení aplikace do Azure
-description: Zjistěte, jak konzistentně nasadit aplikaci na virtuálních počítačích Azure a kontejnery
-keywords: Azure, chef, devops, virtuální počítače, přehled, automatizaci, prostředí
+title: Nasazení aplikace do Azure pomocí Habitat
+description: Zjistěte, jak konzistentně nasadit vaše aplikace na Azure virtual machines a kontejnerů
+keywords: Azure, chef, devops, virtuální počítače, přehled, automatizovat, habitat
 ms.service: virtual-machines-linux
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 73c6834eb53c0496fa673dd25ab90abc18a6a139
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 4847d9ce551c9acf1e4fb6325c770187b2cfd89f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267377"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052287"
 ---
-# <a name="use-habitat-to-deploy-your-application-to-azure"></a>Použití prostředí pro nasazení aplikace do Azure
-[Prostředí](https://www.habitat.sh/) je první jeho typu open source projektu, který nabízí úplně novou přístup ke správě aplikací. Prostředí aplikace a její automatizace je jednotka nasazení. Pokud aplikace jsou uzavřen do lightweight "prostředí", běhové prostředí toho, jestli je kontejner, holý počítač nebo PaaS, již není aktivní a neuvádělo aplikace. 
+# <a name="use-habitat-to-deploy-your-application-to-azure"></a>Nasazení aplikace do Azure pomocí Habitat
+[Habitat](https://www.habitat.sh/) je první z jeho typu open source projekt, který nabízí zcela nový přístup ke správě aplikací. Habitat je aplikace a její automatizace jednotku nasazení. Když aplikace jsou zabalené ve zjednodušené "habitat", běhové prostředí, jestli je kontejner, holých počítačů nebo PaaS, už není aktivní a neomezuje aplikace. 
 
-Tento článek popisuje výhody použití prostředí.
+Tento článek popisuje výhody použití Habitat.
 
 ## <a name="support-for-the-modern-application"></a>Podpora pro moderní aplikace
-Balíčky prostředí obsahovat vše, co je potřeba spustit v průběhu životního cyklu aplikace. Prostředí na základní komponenty jsou:
-- Balení formát: aplikace v prostředí balíčku jsou atomic, neměnné a kontrolovatelný.
-- Supervisor prostředí spouští balíčky aplikace povědomí o daných balíčků sdílené relace, strategie upgradu a zásady zabezpečení. Prostředí nadřízeného konfiguruje a spravuje žádosti o jakémkoli prostředí je k dispozici.
-- Ekosystému prostředí také poskytuje službu sestavení, která přebírá plán prostředí sestavení, vytvoří balíček prostředí a publikuje do skladu.
+Mohou balíčky habitat zahrnovat všechny položky, které aplikace potřebuje ke spuštění v průběhu životního cyklu. Habitat na základní komponenty jsou:
+- Balení formátu – aplikace v balíčku Habitat jsou atomické, neměnné a auditovatelných.
+- Habitat faktorem je frekvence spouštění balíčků aplikací povědomí o balíčky partnerského uzlu relace, upgrade strategie a zásady zabezpečení. Dohledové Habitat konfiguruje a spravuje aplikace pro jakékoli prostředí je k dispozici.
+- Ekosystém Habitat také poskytuje služby build service, která přebírá plánu sestavení Habitat, vytvoří balíček Habitat a publikuje ji skladu.
 
 ## <a name="run-any-application-anywhere"></a>Spuštění libovolné aplikace kdekoli
-Pomocí prostředí můžete spustit aplikace beze změny v jakémkoli prostředí runtime. To zahrnuje vše z holý počítač a virtuální počítače ke kontejnerům (například Docker), Správa clusteru systémy (například Mesosphere nebo Kubernetes) a systémy PaaS (například hrají Foundry cloudu).
+Pomocí Habitatu aplikace se můžou spouštět v jakémkoli prostředí modulu runtime bez úprav. Aplikace může být cokoli z holých počítačů a virtuálních počítačů na kontejnery (jako je Docker), systémů pro správu clusteru (třeba Mesosphere nebo Kubernetes) a PaaS systémy (například Pivotal Cloud Foundry).
 
-## <a name="easily-port-legacy-applications"></a>Snadno port starších verzí aplikací
-Pokud jsou starší verze aplikace zabalená v balíčku prostředí, jsou nezávislé na prostředí, pro které byly původně navrženy aplikace. Balíčky se dají rychle přesunout do více moderní prostředí třeba cloud nebo kontejnerů. Navíc vzhledem k tomu, že prostředí balíčky standardní pasivního přístupných rozhraní, starších verzí aplikací stát mnohem snazší spravovat.
+## <a name="easily-port-legacy-applications"></a>Snadno port starší verze aplikací
+Pokud starší aplikace, které jsou zabaleny v balíčku Habitat, aplikace jsou nezávislé na prostředí, pro které byly původně vytvořeny. Balíčky je možné rychle přesunout na Modernější prostředí cloud nebo kontejnery. Navíc vzhledem k tomu, že mohou balíčky Habitat standardní pasivního protilehlé rozhraní, starší verze aplikací budou podstatně usnadňují správu.
 
 ## <a name="improve-the-container-experience"></a>Vylepšit kontejneru
-Prostředí snižuje složitost správy kontejnerů v produkčním prostředí. Tím, že automatizuje konfigurace aplikace v rámci kontejneru, řeší prostředí tučné vývojáři problémy při přesunu aplikace založené na kontejneru z vývojových prostředí do produkčního prostředí.
+Habitat snižuje složitost správy kontejnerů v produkčním prostředí. Díky automatizaci konfigurace aplikace v rámci kontejneru, řeší Habitat tváře vývojáři výzvy při přesouvání aplikací založených na kontejnerech z vývojová prostředí do produkčního prostředí.
 
-## <a name="integrate-into-the-chef-devops-workflow"></a>Integrovat do pracovního postupu, Chef DevOps
-Projekt prostředí je podporován Chef. Prostředí využívá Chef společnosti přímý zkušenosti s automatizace infrastruktury k poskytování možnosti nebývalá automatizace na aplikace. Chef bude nabízet komerční podporu pro prostředí a zajistit bezproblémovou integraci mezi prostředí a Chef doručení pro úplnou automatizaci cyklu verze aplikace, z vývojového do nasazení.
+## <a name="integrate-into-the-chef-devops-workflow"></a>Integrace do pracovních postupů Chef DevOps
+Habitat projektu, se kterou vyvíjí společnost Chef. Habitat využívá Chefu zkušeností s automatizace infrastruktury pro zajištění možnosti bezprecedentní automatizace pro aplikace. Chef budou nabízet komerční podpora Habitat a zajistit bezproblémovou integraci Habitat a doručování Chef k automatizaci aplikace cyklu vydávání verzí, od vývoje k nasazení.
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření virtuálního počítače s Windows v Azure pomocí Chef](/azure/virtual-machines/windows/chef-automation)
+* [Vytvoření virtuálního počítače s Windows v Azure pomocí Chefu](/azure/virtual-machines/windows/chef-automation)

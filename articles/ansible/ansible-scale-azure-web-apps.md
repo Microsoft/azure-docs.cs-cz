@@ -3,17 +3,17 @@ title: Škálování aplikací Azure App Service web apps pomocí Ansible
 description: Zjistěte, jak pomocí Ansible vytvořit webovou aplikaci s modulem runtime kontejnerů Java 8 a Tomcat ve službě App Service v Linuxu.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbooku, Azure App Service, Web Apps, škálování, Java
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: kyliel
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 740ff6d6a636377f9d58a5231692c87f935ae6d2
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a63289c3dec41217725199614420935532a04aa4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601861"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051675"
 ---
 # <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Škálování aplikací Azure App Service web apps pomocí Ansible
 [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (nebo jenom Web Apps) hostitele webové aplikace, rozhraní REST API a mobilní back-endu. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.

@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: c9c9f07eab395df716a4575338f881f07d573b74
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9e5da96cb02e681c83bd707fc038117050712ccf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019125"
+ms.locfileid: "54044242"
 ---
-# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datové sady a propojené služby v Azure Data Factory 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datové sady a propojené služby v Azure Data Factory
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-create-datasets.md)
 > * [Aktuální verze](concepts-datasets-linked-services.md)
 
-Tento článek popisuje, jaké datové sady se, jak jsou definované ve formátu JSON, a jak se používají v kanály Azure Data Factory. 
+Tento článek popisuje, jaké datové sady se, jak jsou definované ve formátu JSON, a jak se používají v kanály Azure Data Factory.
 
-Pokud do služby Data Factory začínáte, přečtěte si téma [Úvod do služby Azure Data Factory](introduction.md) Přehled. 
+Pokud do služby Data Factory začínáte, přečtěte si téma [Úvod do služby Azure Data Factory](introduction.md) Přehled.
 
 ## <a name="overview"></a>Přehled
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. A **kanálu** je logické seskupení **aktivity** , které dohromady provádějí určitou úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Například můžete použít aktivitu kopírování ke kopírování dat z místního SQL serveru do úložiště objektů Blob v Azure. Potom můžete použít aktivitu Hivu, která spouští skript Hive v clusteru Azure HDInsight ke zpracování dat z úložiště objektů Blob a generuje výstupní data. Nakonec můžete použít druhou aktivitu kopírování ke kopírování dat výstup do Azure SQL Data Warehouse, na které business intelligence (BI), vytváření sestav jsou integrované řešení. Další informace o kanálech a aktivitách najdete v tématu [kanály a aktivity](concepts-pipelines-activities.md) ve službě Azure Data Factory.
@@ -70,7 +70,7 @@ typeProperties | Vlastnosti typu se liší pro jednotlivé obchody dat nebo výp
 connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne
 
 ## <a name="linked-service-example"></a>Například propojená služba
-Tato propojená služba je propojenou službu Azure Storage. Všimněte si, že typ je nastavený na AzureStorage. Typ vlastnosti propojenou službu Azure Storage zahrnují připojovací řetězec. Služba Data Factory používá tento připojovací řetězec pro připojení k úložišti dat za běhu. 
+Tato propojená služba je propojenou službu Azure Storage. Všimněte si, že typ je nastavený na AzureStorage. Typ vlastnosti propojenou službu Azure Storage zahrnují připojovací řetězec. Služba Data Factory používá tento připojovací řetězec pro připojení k úložišti dat za běhu.
 
 ```json
 {
@@ -101,7 +101,7 @@ Datové sady ve službě Data Factory je definovaná ve formátu JSON následuj�
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
         "linkedServiceName": {
                 "referenceName": "<name of linked service>",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "structure": [
             {
@@ -136,7 +136,7 @@ V následujícím příkladu datová sada představuje tabulku s názvem MyTable
         "type": "AzureSqlTable",
         "linkedServiceName": {
                 "referenceName": "MyAzureSqlLinkedService",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "typeProperties":
         {
@@ -166,9 +166,9 @@ V příkladu v předchozí části, typ datové sady je nastaven na **AzureSqlTa
         "type": "AzureBlob",
         "linkedServiceName": {
                 "referenceName": "MyAzureStorageLinkedService",
-                 "type": "LinkedServiceReference",
-        }, 
- 
+                "type": "LinkedServiceReference",
+        },
+
         "typeProperties": {
             "fileName": "input.log",
             "folderPath": "adfgetstarted/inputdata",
@@ -218,14 +218,14 @@ Můžete vytvářet datové sady pomocí jednoho z těchto nástrojů nebo sad S
 
 ## <a name="current-version-vs-version-1-datasets"></a>Aktuální verze a verze 1 datové sady
 
-Tady jsou některé rozdíly mezi objektu pro vytváření dat a datové sady Data Factory verze 1: 
+Tady jsou některé rozdíly mezi objektu pro vytváření dat a datové sady Data Factory verze 1:
 
 - Vlastnost external se nepodporuje v aktuální verzi. Se nahrazuje [aktivační událost](concepts-pipeline-execution-triggers.md).
 - Vlastnosti zásad a dostupnosti nejsou podporovány v aktuální verzi. Počáteční čas pro kanál závisí na [triggery](concepts-pipeline-execution-triggers.md).
-- Datové sady s vymezeným oborem (datové sady, definované v kanálu) nejsou podporovány v aktuální verzi. 
+- Datové sady s vymezeným oborem (datové sady, definované v kanálu) nejsou podporovány v aktuální verzi.
 
 ## <a name="next-steps"></a>Další postup
-Projděte si následující kurz podrobné pokyny pro vytváření kanálů a datových sad pomocí jedné z těchto nástrojů nebo sad SDK. 
+Projděte si následující kurz podrobné pokyny pro vytváření kanálů a datových sad pomocí jedné z těchto nástrojů nebo sad SDK.
 
 - [Rychlý start: Vytvoření datové továrny pomocí rozhraní .NET](quickstart-create-data-factory-dot-net.md)
 - [Rychlý start: vytvoření datové továrny pomocí prostředí PowerShell](quickstart-create-data-factory-powershell.md)

@@ -1,18 +1,17 @@
 ---
 title: Informace o správě účtů databáze ve službě Azure Cosmos DB
 description: Informace o správě účtů databáze ve službě Azure Cosmos DB
-services: cosmos-db
 author: christopheranderson
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 9fe8142c4fce45adaa3697023eab3ac9dbb55f37
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3ee6db382f848a029f3e0355abdfe5eecc80656
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635658"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035827"
 ---
 # <a name="manage-database-accounts-in-azure-cosmos-db"></a>Správa účtů databáze ve službě Azure Cosmos DB
 

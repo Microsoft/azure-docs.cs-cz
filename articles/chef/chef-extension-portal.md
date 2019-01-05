@@ -3,33 +3,33 @@ title: Instalace klienta Chefu na webu Azure Portal
 description: Zjistěte, jak nasadit a nakonfigurovat klienta Chefu na webu Azure Portal
 keywords: Azure, chef, devops, klienta, instalaci, portál
 ms.service: virtual-machines-linux
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: e121cd038b8becee1e9c4c12659dbbee0696a9f1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: e5de21e8e493871150d302f1d2c0e31d067affde
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378648"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051324"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Instalace klienta Chefu na webu Azure Portal
 Při vytváření nebo úpravách virtuálního počítače Linux nebo Windows na webu Azure Portal, můžete přidat rozšíření Chef k virtuálnímu počítači. Tento článek vás provede tohoto procesu pomocí nového virtuálního počítače Linux.
 
 ## <a name="prerequisites"></a>Požadavky
-- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Chef**: Pokud nemáte aktivní účet Chef, zaregistrovat [bezplatnou zkušební verzi hostované Chef](https://manage.chef.io/signup). Pokud chcete postupovat podle pokynů v tomto článku, budete potřebovat následující hodnoty z vašeho účtu Chef: 
+- **Chef**: Pokud nemáte aktivní účet Chef, zaregistrovat [bezplatnou zkušební verzi hostované Chef](https://manage.chef.io/signup). Postupujte podle pokynů v tomto článku, budete potřebovat následující hodnoty z vašeho účtu Chef: 
     - klíč organization_validation
     - RB
     - run_list
 
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>Instalace rozšíření Chefu na nový virtuální počítač Linux
-V této části nejprve použijete na webu Azure portal vytvořit počítač s Linuxem. Během procesu uvidíte také tom, jak nainstalovat rozšíření Chefu na nový virtuální počítač.
+V této části použijete nejprve na webu Azure portal k vytvoření počítače s Linuxem. Během procesu můžete také zjistit, jak nainstalovat rozšíření Chefu na nový virtuální počítač.
 
-1. Přejděte [webu Azure portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](http://portal.azure.com).
 
 1. V nabídce na levé straně vyberte **virtuálních počítačů** možnost. Pokud **virtuálních počítačů** možnost není k dispozici, vyberte **všechny služby** a pak vyberte **virtuálních počítačů**.
 
@@ -53,7 +53,7 @@ V této části nejprve použijete na webu Azure portal vytvořit počítač s L
 
     - **Název** – zadejte název pro nový virtuální počítač.
     - **Typ disku virtuálního počítače** -zadat buď **SSD** nebo **HDD** pro typ úložného disku. Další informace o typech disků virtuálního počítače v Azure najdete v článku [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](/azure/virtual-machines/windows/premium-storage).
-    - **Uživatelské jméno** – zadejte uživatelské jméno, které je udělen oprávnění správce na virtuálním počítači.
+    - **Uživatelské jméno** – zadejte uživatelské jméno udělována práva správce na virtuálním počítači.
     - **Typ ověřování** – vyberte **heslo**. Můžete také vybrat **veřejný klíč SSH**a zadat hodnotu veřejného klíče SSH. Pro účely této ukázky (a na snímcích obrazovky) **heslo** zaškrtnuto.
     - **Heslo** a **potvrzení hesla** – zadejte heslo pro tohoto uživatele.
     - **Přihlásit se přes Azure Active Directory** – vyberte **zakázané**.
@@ -65,7 +65,7 @@ V této části nejprve použijete na webu Azure portal vytvořit počítač s L
 
 1. Na **zvolte velikost** kartu, vyberte velikost virtuálního počítače a pak vyberte **vyberte**.
 
-1. Na **nastavení** kartu, většinou hodnot naplní se podle hodnoty, které jste vybrali v předchozím karty. Vyberte **rozšíření**.
+1. Na **nastavení** kartu, většinou hodnot se vyplní podle hodnoty, které jste vybrali v předchozím karty. Vyberte **Extensions** (Rozšíření).
 
     ![Přidání rozšíření do virtuálních počítačů na kartě nastavení](./media/chef-extension-portal/add-vm-select-extensions.png)
 
@@ -87,7 +87,7 @@ V této části nejprve použijete na webu Azure portal vytvořit počítač s L
     - **Název klienta ověření** – zadejte název Chef ověření klienta. například *tarcher validátoru*.
     - **Ověřovací klíč** – vyberte soubor obsahující ověřovací klíč použít při spuštění počítače. 
     - **Soubor konfigurace klienta** – vyberte konfigurační soubor pro klienta chef. To může být ponecháno prázdné.
-    - **Verze klienta Chef** – zadejte verzi klienta chef k instalaci. To může být ponecháno prázdné. Prázdnou hodnotu způsobí, že k instalaci nejnovější verze. 
+    - **Verze klienta Chef** – zadejte verzi klienta chef k instalaci. To může být ponecháno prázdné. Prázdné hodnoty vznikla hodnota právě nainstalovanou nejnovější verzi. 
     - **Režim ověřování SSL** – vyberte buď **žádný** nebo **Peer**. *Žádný* byl vybrán pro tuto ukázku.
     - **Prostředí Chef** – zadejte prostředí Chef tohoto uzlu by měl být členem skupiny. To může být ponecháno prázdné.
     - **Šifrované tajné Databag** – vyberte soubor obsahující tajný klíč pro Databag šifrované tento počítač by měl mít přístup k. To může být ponecháno prázdné.

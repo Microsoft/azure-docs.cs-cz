@@ -3,24 +3,20 @@ title: Zásady koncových bodů služby Azure Virtual Network | Microsoft Docs
 description: Přečtěte si, jak používat zásady koncových bodů služby Azure Virtual Network k filtrování přenosů ve virtuální síti.
 services: virtual-network
 documentationcenter: na
-author: anithaa
-manager: narayan
-editor: ''
-ms.assetid: ''
+author: sumeetmittal
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: anithaa
-ms.custom: ''
-ms.openlocfilehash: 425bbc9eac112a4b999bd08940abb8b875aca61c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
+ms.author: sumeet.mittal
+ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433289"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051307"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby Virtual Network (Preview)
 
@@ -28,7 +24,7 @@ Zásady koncových bodů služby Virtual Network (VNet) umožňují v provozu vi
 
 Tato funkce je dostupná ve verzi __Preview__ pro následující služby a oblasti Azure:
 
-__Azure Storage__: USA – středozápad, USA – západ 2.
+__Azure Storage__: WestCentralUS, WestUS2.
 
 Aktuální oznámení o verzi Preview najdete na stránce s [aktuálními informacemi o službě Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -123,13 +119,13 @@ Zásady koncových bodů služby virtuální sítě nabízejí následující v�
      - Azure Application Gateway (Classic)
      - Azure VPN Gateway (Classic)
 
-- Azure Storage: Zásady koncových bodů nepodporují klasické účty úložiště. Zásady automaticky zamítnou přístup všem klasickým účtům úložiště. Pokud vaše aplikace potřebuje přístup k Azure Resource Manageru a klasickým účtům úložišť, nepoužívejte pro tyto přenosy zásady koncových bodů. 
+- Azure Storage: Klasických účtů úložiště nejsou podporované v zásadách koncového bodu. Zásady automaticky zamítnou přístup všem klasickým účtům úložiště. Pokud vaše aplikace potřebuje přístup k Azure Resource Manageru a klasickým účtům úložišť, nepoužívejte pro tyto přenosy zásady koncových bodů. 
 
 ## <a name="nsgs-with-service-endpoint-policies"></a>Skupiny zabezpečení sítě se zásadami koncového bodu služby
 - Ve výchozím nastavení povolují skupiny zabezpečení sítě odchozí internetové přenosy, včetně přenosů dat z virtuální sítě do služeb Azure.
 - Pokud chcete zakázat všechny odchozí internetové přenosy a povolit přenosy jenom určitým prostředkům služeb Azure: 
 
-  1. krok: Nakonfigurujte skupiny zabezpečení sítě, aby povolovaly odchozí přenosy jenom službám Azure v oblastech s koncovými body pomocí *značek služeb Azure*. Další informace najdete v části o [značkách služeb pro skupiny zabezpečení sítě](https://aka.ms/servicetags).
+  Krok 1: Konfigurace skupin zabezpečení sítě umožňující odchozí provoz jenom na služby Azure v oblastech koncový bod pomocí *značek služeb Azure*. Další informace najdete v části o [značkách služeb pro skupiny zabezpečení sítě](https://aka.ms/servicetags).
       
   Například pravidla skupiny zabezpečení sítě, která omezují přístup jenom na oblasti s koncovými body, vypadají následovně:
 
@@ -139,18 +135,18 @@ Zásady koncových bodů služby virtuální sítě nabízejí následující v�
   Deny all
   ```
 
-  2. krok: Použijte zásadu koncového bodu služby s přístupem pouze k určitým prostředkům služby Azure.
+  Krok 2: Zásady koncového bodu služby s přístupem platí pro pouze prostředky konkrétních služeb Azure.
 
   > [!WARNING]  
   > Pokud konfigurace skupiny zabezpečení sítě neomezuje přístup virtuální sítě ke službě Azure na oblasti s koncovými body, můžete přistupovat k prostředkům služby i v jiných oblastech, přestože platí zásada koncového bodu služby.
 
 ## <a name="scenarios"></a>Scénáře
 
-- **Partnerské, propojené nebo vícenásobné virtuální sítě:** Pokud chcete filtrovat přenosy v partnerských virtuálních sítích, měli byste zásady koncových bodů použít v těchto jednotlivých virtuálních sítích.
-- **Filtrování internetových přenosů pomocí síťových zařízení nebo Azure Firewallu:** K filtrování přenosů dat mezi službami Azure použijte zásady koncových bodů a k filtrování zbývajících internetových přenosů nebo provozu Azure použijte zařízení nebo Azure Firewall. 
-- **Filtrování přenosů u služeb Azure nasazených ve virtuálních sítích:** Ve verzi Preview nejsou podporované zásady koncových bodů služeb pro spravované služby Azure nasazené ve vaší virtuální síti. 
+- **Partnerské, propojené nebo vícenásobné virtuální sítě**: Pro filtrování provozu ve virtuálních sítích s navázaným partnerským vztahem, zásad koncových bodů bude použito jednotlivě na tyto virtuální sítě.
+- **Filtrování přenosy z Internetu pomocí síťových zařízení nebo brány Firewall Azure**: Filtrovat provoz služeb Azure se zásadami, prostřednictvím koncových bodů a filtrovat rest z Internetu nebo v Azure provoz přes zařízení nebo brána Firewall služby Azure. 
+- **Filtrování provozu služeb Azure, které jsou nasazené do virtuálních sítí**: Ve verzi preview nejsou podporované zásadami koncových bodů služeb pro služby spravované Azure, které jsou nasazeny do vaší virtuální sítě. 
  Informace o konkrétních službách najdete v části [Omezení](#Limitations).
-- **Filtrování přenosů dat z místního prostředí do služeb Azure:** Zásady koncových bodů služeb platí jenom pro přenosy z podsítí přidružených k zásadám. Pokud chcete povolit přístup k určitým prostředkům služeb Azure z místního prostředí, musíte k filtrování přenosů požít síťová virtuální zařízení nebo brány firewall.
+- **Filtrování provozu do služby Azure z místního**: Zásady koncového bodu služby platí jenom pro provoz z podsítě přidružené zásady. Pokud chcete povolit přístup k určitým prostředkům služeb Azure z místního prostředí, musíte k filtrování přenosů požít síťová virtuální zařízení nebo brány firewall.
 
 ## <a name="logging-and-troubleshooting"></a>Protokolování a řešení potíží
 Zásady koncových bodů služeb nepodporují centrální přihlašování. Informace o diagnostických protokolech služby najdete v části o [protokolování koncových bodů služby](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting).

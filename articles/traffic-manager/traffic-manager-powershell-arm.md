@@ -1,5 +1,5 @@
 ---
-title: Použití Powershellu ke správě Traffic Manageru v Azure | Dokumentace Microsoftu
+title: Použití Powershellu ke správě Traffic Manageru v Azure
 description: Pomocí prostředí PowerShell pro Traffic Manager pomocí Azure Resource Manageru
 services: traffic-manager
 documentationcenter: na
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 93d52101569e911c90377f26a9773d61eeaaf229
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fe647f96d8b992d8d5c1682d588bbdbba0ddf43b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653675"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055128"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití Powershellu ke správě Traffic Manageru
 

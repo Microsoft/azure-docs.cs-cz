@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 17402911fee5363d707547e73df7da30be6dcd0e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ab196645cc14acb3ed2e56ee785d4790a8df3c23
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343798"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052535"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Pochopení a vyvolání přímých metod ze služby IoT Hub
 
@@ -203,4 +203,4 @@ Nyní jste se naučili, jak použití přímých metod, vás může zajímat v n
 Pokud chcete vyzkoušet si některé koncepty popsané v tomto článku, vás může zajímat v následujícím kurzu služby IoT Hub:
 
 * [Použití přímých metod](quickstart-control-device-node.md)
-* [Správa zařízení pomocí sady Azure IoT Hub Toolkit pro VS Code](iot-hub-device-management-iot-toolkit.md)
+* [Správa zařízení pomocí nástroje Azure IoT pro VS Code](iot-hub-device-management-iot-toolkit.md)

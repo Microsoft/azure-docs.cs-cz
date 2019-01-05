@@ -12,44 +12,44 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 1c657fd7b3059dcf46a371b133a5d078e02f0599
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d42b6b857f04c191ebdfb1687c8ee2adcad95d26
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014195"
+ms.locfileid: "54054279"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivita webu ve službě Azure Data Factory
-Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup. 
+Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup.
 
 ## <a name="syntax"></a>Syntaxe
 
 ```json
-{  
+{
    "name":"MyWebActivity",
    "type":"WebActivity",
-   "typeProperties":{  
+   "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
-      "headers":{  
+      "headers":{
          "Content-Type":"application/json"
       },
-      "authentication":{  
-         "type":"ClientCertificate",  
+      "authentication":{
+         "type":"ClientCertificate",
          "pfx":"****",
          "password":"****"
       },
-      "datasets":[  
-         {  
+      "datasets":[
+         {
             "referenceName":"<ConsumedDatasetName>",
             "type":"DatasetReference",
-            "parameters":{  
+            "parameters":{
                ...
             }
          }
       ],
-      "linkedServices":[  
-         {  
+      "linkedServices":[
+         {
             "referenceName":"<ConsumedLinkedServiceName>",
             "type":"LinkedServiceReference"
          }
@@ -92,10 +92,10 @@ V následující tabulce jsou uvedeny požadavky pro obsah JSON:
 Pokud se nevyžaduje ověřování, nezahrnujte vlastnosti "ověřování".
 
 ### <a name="basic"></a>Basic
-Zadejte uživatelské jméno a heslo pro použití se základním ověřováním. 
+Zadejte uživatelské jméno a heslo pro použití se základním ověřováním.
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"Basic",
    "username":"****",
    "password":"****"
@@ -103,12 +103,12 @@ Zadejte uživatelské jméno a heslo pro použití se základním ověřováním
 ```
 
 ### <a name="client-certificate"></a>Klientský certifikát
-Zadejte obsah souboru PFX a heslo s kódováním base64. 
+Zadejte obsah souboru PFX a heslo s kódováním base64.
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"ClientCertificate",
-   "pfx":"****",   
+   "pfx":"****",
    "password":"****"
 }
 ```
@@ -125,7 +125,7 @@ Zadejte identifikátor uri prostředku, pro kterou přístupový token bude vyž
 ```
 
 ## <a name="request-payload-schema"></a>Schéma datové části požadavku
-Pokud použijete metodu POST a PUT, vlastnost text představuje datová část odeslaná do koncového bodu. Propojené služby a datové sady můžete předat jako součást datové části. Tady je schéma pro datové části: 
+Pokud použijete metodu POST a PUT, vlastnost text představuje datová část odeslaná do koncového bodu. Propojené služby a datové sady můžete předat jako součást datové části. Tady je schéma pro datové části:
 
 ```json
 {
@@ -144,11 +144,11 @@ Pokud použijete metodu POST a PUT, vlastnost text představuje datová část o
             }
         }]
     }
-} 
+}
 ```
 
 ## <a name="example"></a>Příklad:
-V tomto příkladu volá webová aktivita v kanálu koncový bod REST. Předá propojené služby Azure SQL a datová sada služby Azure SQL do koncového bodu. Koncový bod REST používá připojovací řetězec Azure SQL pro připojení k serveru Azure SQL a vrátí název instance systému SQL server. 
+V tomto příkladu volá webová aktivita v kanálu koncový bod REST. Předá propojené služby Azure SQL a datová sada služby Azure SQL do koncového bodu. Koncový bod REST používá připojovací řetězec Azure SQL pro připojení k serveru Azure SQL a vrátí název instance systému SQL server.
 
 ### <a name="pipeline-definition"></a>Definice kanálu
 
@@ -242,7 +242,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 
+Zobrazit další aktivity toku řízení podporovaných službou Data Factory:
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)

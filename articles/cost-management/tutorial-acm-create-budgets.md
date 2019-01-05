@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/11/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: ab2ea762ac8cc289ff24136f3cafac2b80fa1a9f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7ffceaf761d459667e4118e3e10b733898ea2710
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268440"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053972"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
@@ -51,9 +51,7 @@ Další informace o přiřazování oprávnění k datům služby Cost Managemen
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Vytvořit rozpočet na webu Azure Portal
 
-Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Navigační obsah na webu Azure Portal určuje, zda rozpočet pro předplatné nebo skupinu prostředků vytvoříte.
-
-Na webu Azure Portal, přejděte na **Správa nákladů a fakturace** &gt; **předplatná** &gt; vybrat odběr, který &gt; **rozpočty**. V tomto příkladu je rozpočtu, který vytvoříte pro předplatné, které jste vybrali.
+Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Navigační obsah na webu Azure Portal určuje, zda rozpočet pro předplatné nebo skupinu prostředků vytvoříte. Například na webu Azure Portal, přejděte na **předplatná** &gt; vybrat odběr, který &gt; **rozpočty**. V tomto příkladu je rozpočtu, který vytvoříte pro předplatné, které jste vybrali. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **skupiny prostředků** > vyberte skupinu prostředků > **rozpočty**.
 
 Po vytvoření rozpočty, zobrazí se vaše aktuální útratu proti nim jednoduché zobrazení.
 

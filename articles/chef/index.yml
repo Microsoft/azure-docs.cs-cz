@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 87bef3568e45f3d966d90d980403c83c96aa461f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7e320bdc98de75141aed4783d343571971287f37
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300864"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052527"
 documentType: LandingData
 title: Dokumentace k softwaru Chef v Azure
 metadata:
@@ -12,7 +12,7 @@ metadata:
   description: Software Chef poskytuje automatizační platformu DevOps pro Linux a Windows, která umožňuje současnou správu fyzických i virtuálních serverových konfigurací. Naučte se prostřednictvím šablon Rychlý start a kurzů využívat softwarové produkty Chef k automatizaci návodů pro infrastrukturu jako kód (IaC) a správě a nasazení virtuálních počítačů v Azure.
   ms.service: chef
   keywords: chef, azure, devops, tutorials, samples, reference
-  author: tomarcher
+  author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing page

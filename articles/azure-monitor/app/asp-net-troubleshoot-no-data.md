@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2695f4e2dcd2441b0a8845bd194d4e393e1d7ca
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 18416f4208a77c27290b7e524b207fc681f06fdb
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020468"
+ms.locfileid: "54050808"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -39,7 +39,7 @@ ms.locfileid: "54020468"
 ## <a name="q01"></a>Žádná možnost Přidat Application Insights v sadě Visual Studio
 *Když pravým tlačítkem myši existující projekt v Průzkumníku řešení, se mi nezobrazují žádné možnosti Application Insights.*
 
-* Nástroje podporují všechny typy projektu .NET. Web a WCF projekty jsou podporovány. Pro ostatní typy projektů jako jsou třeba aplikace klasické pracovní plochy nebo služby, můžete ji [ručně přidejte sadu Application Insights SDK do projektu](../../application-insights/app-insights-windows-desktop.md).
+* Nástroje podporují všechny typy projektu .NET. Web a WCF projekty jsou podporovány. Pro ostatní typy projektů jako jsou třeba aplikace klasické pracovní plochy nebo služby, můžete ji [ručně přidejte sadu Application Insights SDK do projektu](../../azure-monitor/app/windows-desktop.md).
 * Ujistěte se, že máte [Visual Studio 2013 Update 3 nebo novější](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs). Obsahuje předem nainstalovaných pomocí nástroje Developer Analytics, které poskytují Application Insights SDK.
 * Vyberte **nástroje**, **rozšíření a aktualizace** a zkontrolujte, že **Developer Analytics Tools** je nainstalován a povolen. Pokud ano, klikněte na tlačítko **aktualizace** zobrazíte, pokud je k dispozici aktualizace.
 * Otevřete dialogové okno Nový projekt a zvolte webovou aplikaci ASP.NET. Pokud se zobrazí možnost Application Insights, pak tyto nástroje jsou nainstalovány. Pokud tomu tak není, zkuste odinstalovat a opětovné instalaci nástroje Application Insights.
@@ -154,7 +154,7 @@ Data pocházejí z skripty na webových stránkách.
 Zobrazit [telemetrických závislostí](../../azure-monitor/app/asp-net-dependencies.md) a [telemetrie výjimek](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Žádná data o výkonu
-Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro [webových služeb v Javě](../../azure-monitor/app/java-collectd.md), [aplikací klasické pracovní plochy Windows](../../application-insights/app-insights-windows-desktop.md), [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md), a [Azure Cloud Services](../../application-insights/app-insights-overview.md). najdete ji v části nastavení serverů.
+Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro [webových služeb v Javě](../../azure-monitor/app/java-collectd.md), [aplikací klasické pracovní plochy Windows](../../azure-monitor/app/windows-desktop.md), [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md), a [Azure Cloud Services](../../application-insights/app-insights-overview.md). najdete ji v části nastavení serverů.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Žádná data (server), protože jsem publikoval aplikaci ke svému serveru
 * Ve skutečnosti zkopírování všech Microsoft zkontrolujte. ApplicationInsights knihovny DLL na serveru, spolu s Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll

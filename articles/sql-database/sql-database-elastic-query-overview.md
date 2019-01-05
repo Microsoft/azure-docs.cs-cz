@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: dd6a9ee00ba6244e5a0d04f654e6b57db8896ea6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 139bf169a00f1c529e95499124358c447d0de8c5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603943"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044667"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled služby Azure SQL Database elastic query (preview)
 
@@ -108,11 +108,11 @@ Použitím elastického dotazu se provedly horizontálně dělené úlohám gene
 
 Následující kroky konfigurace dotazy elastických databází pro horizontální dělení scénáře, které vyžadují přístup k sadě tabulek na (obvykle) několik vzdálené databáze SQL:
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
+* [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * Vytvoření [mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) představující datovou vrstvu pomocí Klientská knihovna elastic database.
-* [Příkaz CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource typu **SHARD_MAP_MANAGER**
-* [Příkaz CREATE/DROP externí tabulky](https://msdn.microsoft.com/library/dn935021.aspx) mytable
+* [Příkaz CREATE/DROP EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource typu **SHARD_MAP_MANAGER**
+* [Příkaz CREATE/DROP externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 Po provedení těchto kroků, dostanete horizontálně dělenou tabulku "mytable", jako by šlo místní tabulku. Azure SQL Database automaticky otevře několik paralelní připojení ke vzdálené databáze fyzicky ukládat tabulky, zpracovává požadavky pro vzdálené databáze a vrátí výsledky.
 Další informace o kroky potřebné pro horizontální dělení scénář lze najít v [elastický dotaz pro horizontální dělení](sql-database-elastic-query-horizontal-partitioning.md).

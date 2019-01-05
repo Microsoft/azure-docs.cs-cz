@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: twhitney
-ms.openlocfilehash: 07c227c198166254eb130604685a4ba5884b783a
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 5432266bd042b527156852aaf30fef09f3bf8c72
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299873"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053292"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -193,6 +193,11 @@ Zadejte mapování portů ve správném formátu. Pro účely tohoto článku, b
    </ServiceManifestImport>
 ``` 
 
+Doporučujeme šifrovat heslo úložiště, najdete [ spravovat šifrované tajné kódy aplikace Service Fabric](service-fabric-application-secret-management.md)
+
+### <a name="configure-cluster-wide-credentials"></a>Konfigurace přihlašovacích údajů celoclusterový
+Odkazovat na [dokumentaci](
+service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
 Verze modulu runtime 6.3 izolaci virtuálních počítačů se podporuje pro kontejnery Linuxu, a tím podpora pro kontejnery dva režimy izolace: proces a Hyper-v. V režimu izolace Hyper-v izolují všechny kontejnery a hostitele kontejneru. Izolace hyperv je implementováno pomocí [vymazat kontejnery](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Zadaný režim izolace pro Linux clusterů v nástroji `ServicePackageContainerPolicy` prvku v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozí hodnota je režim izolace procesů. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
@@ -210,7 +215,7 @@ Verze modulu runtime 6.3 izolaci virtuálních počítačů se podporuje pro kon
 
 
 ## <a name="configure-resource-governance"></a>Konfigurace zásad správného řízení prostředků
-[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků je možné nastavit pro tyto prostředky: Memory, MemorySwap, CpuShares (relativní váha CPU), MemoryReservationInMB, BlkioWeight (relativní váha BlockIO). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
+[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků lze nastavit pro následující prostředky: Paměť, MemorySwap, CpuShares (Relativní váha CPU), MemoryReservationInMB, BlkioWeight (Relativní váha BlockIO). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
 
 ```xml
 <ServiceManifestImport>

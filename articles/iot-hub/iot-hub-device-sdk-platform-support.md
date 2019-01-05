@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879345"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053189"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Podpora platformy sady SDK Azure IoT
 
@@ -20,9 +20,9 @@ ms.locfileid: "52879345"
 
 Společnost Microsoft podporuje různé operační systémy/platformy/rozhraní a je možné rozšířit pomocí sady Azure IoT C SDK. Některé jsou od týmu, seskupených do vrstev, které představují úroveň podpory, které uživatelé můžou očekávat oficiálně podporována. *Plně podporované platformy* znamená, že Microsoft:
 
-    * Průběžně sestaví a spustí testy začátku do konce na hlavním virtuálním počítači a LTS podporované verze.  Pro zajištění pokrytí testu mezi různými verzemi, budeme obecně testování proti nejoblíbenější a nejnovější verze LTS.  Jiné verze stejnou platformu mohou být podporovány prostřednictvím Kompatibilita verze platformy.
-    * Poskytuje pokyny k instalaci nebo balíčky, pokud je k dispozici.
-    * Plně podporuje platformy na Githubu.
+- Průběžně sestaví a spustí testy začátku do konce na hlavním virtuálním počítači a LTS podporované verze.  Pro zajištění pokrytí testu mezi různými verzemi, budeme obecně testování proti nejoblíbenější a nejnovější verze LTS.  Jiné verze stejnou platformu mohou být podporovány prostřednictvím Kompatibilita verze platformy.
+- Poskytuje pokyny k instalaci nebo balíčky, pokud je k dispozici.
+- Plně podporuje platformy na Githubu.
 
 Kromě toho obsahuje seznam partnerů nabízejících přenáší naší sady SDK jazyka C k více platforem a udržuje vrstva abstrakce platformy (PAL). [Azure IoT katalog zařízení Certified for](https://catalog.azureiotsolutions.com/) také funkce seznam platforem operačních systémů různých sadách SDK byly testovány s. Sady SDK také pravidelně vytvářejte na těchto platformách, s omezenou testování a podporu:
 
@@ -67,7 +67,7 @@ Existuje několik platforem podporována.
 | Ubuntu 16.04 LTS    | X64  | .NET core 2.1        | .NET standard 2.0 |
 | Windows Server 2016 | X64  | .NET core 2.1        | .NET standard 2.0 |
 | Windows Server 2016 | X64  | Rozhraní .NET framework 4.7   | .NET standard 2.0 |
-| Windows Server 2016 | X64  | Rozhraní .NET framework 4.5.1 | neuvedeno               |
+| Windows Server 2016 | X64  | .NET Framework 4.5.1 | neuvedeno               |
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 

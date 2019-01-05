@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 73eda631d43da87b4472615c2b6a28244372c613
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1d7c5df1b49a1f8c2fe4fbae4d8c8fdbd481e0e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339259"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053904"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -75,11 +75,11 @@ Existuje několik opensourcových nástrojů, které vám pomohou při správě 
 
 * Aplikace Windows s názvem [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-* Volá se, Visual Studio Code příponou napříč platformami [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve Azure IoT Toolkit).
+* Volá se, Visual Studio Code příponou napříč platformami [nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 * Python – multiplatformního rozhraní příkazového řádku volá [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
-Tento kurz používá grafickém *Průzkumník zařízení* nástroj. Můžete použít *rozšíření Azure IoT Hub Toolkit pro VS Code* při vývoji v nástroji VS Code. Můžete také použít *rozšíření IoT pro Azure CLI 2.0* nástroj, pokud byste radši chtěli použít nástroj příkazového řádku.
+Tento kurz používá grafickém *Průzkumník zařízení* nástroj. Můžete použít *nástroje Azure IoT pro VS Code* při vývoji v nástroji VS Code. Můžete také použít *rozšíření IoT pro Azure CLI 2.0* nástroj, pokud byste radši chtěli použít nástroj příkazového řádku.
 
 Nástroj device explorer knihovny služby Azure IoT používá k provádění různých funkcí v IoT Hubu, včetně přidávání zařízení. Pokud používáte nástroj Průzkumník zařízení pro přidání zařízení, získání připojovacího řetězce pro vaše zařízení. Je nutné tento připojovací řetězec pro spuštění ukázkové aplikace.
 

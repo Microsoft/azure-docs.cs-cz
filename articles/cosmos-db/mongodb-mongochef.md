@@ -2,21 +2,19 @@
 title: Připojit k rozhraní API služby Azure Cosmos DB pro MongoDB použití studia 3T
 titleSuffix: Azure Cosmos DB
 description: Zjistěte, jak se připojit ke službě Cosmos DB pomocí rozhraní API služby Azure Cosmos DB a Studio 3T pro MongoDB.
-keywords: mongochef studia 3T
-services: cosmos-db
-author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: rimman
+author: sivethe
+ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 396db84186e00fefe14ac55b9a36497c6674cb43
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c679d2e6b7dc8998016e79d265f368504d6def3d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811235"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038406"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Připojení k účtu Cosmos použití studia 3T
 
