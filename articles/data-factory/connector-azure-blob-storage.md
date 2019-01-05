@@ -17,7 +17,7 @@ ms.lasthandoff: 12/08/2018
 ms.locfileid: "53095331"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-azure-blob-connector.md)
 > * [Aktuální verze](connector-azure-blob-storage.md)
 
