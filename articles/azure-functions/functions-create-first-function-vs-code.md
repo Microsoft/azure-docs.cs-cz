@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ce887c6d9e4e625d8fe08ee3acfc179cd903d187
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633754"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054057"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Vytvoření první funkce pomocí Visual Studio Code
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak použít [rozšíření Azure Functions pro Vi
 
 ![Kód služby Azure Functions v projektu sady Visual Studio](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-Rozšíření nyní podporuje funkce C#, JavaScript a Java. Kroky v tomto článku se mohou lišit podle vašeho výběru jazyka pro váš projekt Azure Functions. Rozšíření je v současné době ve verzi Preview. Další informace najdete na stránce rozšíření [Rozšíření Azure Functions pro Visual Studio Code].
+Rozšíření aktuálně plně podporuje C#, JavaScript a Javu funguje s podpora v jazyce Python aktuálně ve verzi Preview. Kroky v tomto článku se mohou lišit podle vašeho výběru jazyka pro váš projekt Azure Functions. Rozšíření je v současné době ve verzi Preview. Další informace najdete na stránce rozšíření [Rozšíření Azure Functions pro Visual Studio Code].
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,7 +55,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 ## <a name="create-an-http-triggered-function"></a>Vytvoření funkce aktivované protokolem HTTP
 
-1. Z oblasti **Azure: Functions** zvolte ikonu Vytvořit funkci.
+1. Z **Azure: Funkce**, zvolte ikonu Create Function.
 
     ![Vytvoření funkce](./media/functions-create-first-function-vs-code/create-function.png)
 

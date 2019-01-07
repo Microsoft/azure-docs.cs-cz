@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 34f69340e0e7cad583ba0b8797a076a4fd6e3097
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c8aadcf7b37e28035e936a9f722ee832127e928d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019366"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038581"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Vytvoření Azure Cache pro Redis pomocí šablony
 V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manageru, který se nasazuje pro Redis Cache Azure. Mezipaměti můžete použít s existující účet úložiště k uložení diagnostických dat. Také zjistíte, jak definovat prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
 V současné době jsou sdíleny nastavení diagnostiky pro všechny mezipaměti ve stejné oblasti pro odběr. Aktualizuje se mezipaměť jeden v oblasti má vliv na všechny mezipaměti v oblasti.
 
-Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
+Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). Další informace o syntaxi JSON a vlastnosti pro typy prostředků mezipaměti najdete v tématu [typy prostředků Microsoft.Cache](/azure/templates/microsoft.cache/allversions).
 
 Úplnou šablonu najdete v části [mezipaměti Azure Redis šablony](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 

@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 514516dcc28e99d03611c7db6ec09c7b4a48ff0e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0fbb389120857a167867a5804c670e181f5232b6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306659"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051437"
 ---
 # <a name="visualize-data-with-power-bi"></a>Vizualizace dat pomocí Power BI
 V tomto kurzu si ukážeme, jak se pomocí Power BI připojit k SQL Data Warehouse a vytvořit pár základních vizualizací.
@@ -32,7 +32,7 @@ Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 ## <a name="1-connect-to-your-database"></a>1. Připojení k databázi
 Pokud chcete otevřít Power BI a připojit se ke své databázi AdventureWorksDW, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 2. Klikněte na **Databáze SQL** a zvolte databázi AdventureWorks služby SQL Data Warehouse.
    
     ![Vyhledání databáze](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
@@ -77,7 +77,7 @@ Teď můžete pomocí Power BI analyzovat ukázková data databáze AdventureWor
 
 Kdykoli můžete rozdělanou práci uložit tak, že kliknete na **Soubor** a vyberete **Uložit**.
 
-## <a name="using-direct-connnect"></a>Používání s přímým přístupem Connnect
+## <a name="using-direct-connect"></a>Pomocí přímé připojení
 Jako s Azure SQL Database, SQL Data Warehouse přímé připojení umožňuje logické přenosu směrem dolů vedle analytických funkcí Power BI. Přímé připojení dotazy odesílají pomocí zpět do služby Azure SQL Data Warehouse v reálném čase když zkoumáte data.  Tato funkce ve spojení se Škálováním služby SQL Data Warehouse umožňuje vytvářet dynamické sestavy během několika minut terabajtech dat. Kromě toho po zavedení služby otevřít v Power BI tlačítko umožňuje uživatelům přímo připojit Power BI pro svůj SQL Data Warehouse bez shromažďování informací o z jiných částí Azure.
 
 Při používání s přímým přístupem připojení:

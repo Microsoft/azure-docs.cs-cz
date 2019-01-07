@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 02e6d6407a515314d99ea747dac3646d665c47ae
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976575"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039465"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure stacku pro Azure
 
@@ -142,7 +142,7 @@ Pro každý počítač, který chcete replikovat zjistit IP adresu:
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>Krok 2: Vytvoření trezoru a výběr cíle replikace
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Monitorování a správa** > **Backup a Site Recovery**.
+1. Na webu Azure Portal, vyberte **vytvořit prostředek** > **nástroje pro správu** > **Backup a Site Recovery**.
 2. Jako **Název** zadejte popisný název pro identifikaci trezoru. 
 3. V **skupiny prostředků**, vytvořte nebo vyberte skupinu prostředků. Používáme **contosoRG**.
 4. V **umístění**, zadejte oblast Azure. používáme oblast **Západní Evropa**.

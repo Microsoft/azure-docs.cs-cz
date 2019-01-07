@@ -1,20 +1,20 @@
 ---
 title: Diagnostika a řešení potíží s Azure Cosmos DB Java asynchronní SDK
 description: Použití funkcí, jako je protokolování na straně klienta a další nástroje třetích stran k identifikaci, diagnostice a řešení potíží s Azure Cosmos DB.
-services: cosmos-db
 author: moderakh
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
-ms.component: cosmosdb-sql
-ms.openlocfilehash: 951c26ea5b5c77cf205e7793834d564889b9a635
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: cosmosdb-sql
+ms.reviewer: sngun
+ms.openlocfilehash: 86e5a0a0cf4c820efdcc65505d11e2fb0c198f0b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876099"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039839"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Řešení potíží při použití sady Java SDK asynchronní s účty SQL API služby Azure Cosmos DB
 Tento článek popisuje běžné problémy, alternativní řešení, kroky pro diagnostiku a nástroje, při použití [sady Java SDK pro asynchronní](sql-api-sdk-async-java.md) s účty SQL API služby Azure Cosmos DB.
@@ -63,7 +63,7 @@ Pokud vaše aplikace je nasazená ve službě Azure Virtual Machines bez veřejn
 Pokud používáte proxy server HTTP, ujistěte se, že počet připojení nakonfigurovaná v sadě SDK, které může podporovat `ConnectionPolicy`.
 Jinak kterými se setkáváte problémy s připojením.
 
-#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Neplatný vzor kódování: blokování vlákna Netty vstupně-výstupních operací
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Neplatný vzor pro psaní kódu: Blokování vlákna Netty vstupně-výstupních operací
 
 Sada SDK používá [Netty](https://netty.io/) vstupně-výstupních operací knihovny ke komunikaci s Azure Cosmos DB. Sada SDK má asynchronní rozhraní API a používá neblokující vstupně-výstupní operace rozhraní API Netty. Vstupně-výstupních operací pracovního sadě SDK se provádí na vstupně-výstupních operací Netty vlákna. Počet vláken vstupně-výstupních operací Netty byl nakonfigurován jako stejný jako počet jader procesoru počítače aplikace. 
 

@@ -1,19 +1,17 @@
 ---
 title: 'Vzor návrhu Azure Cosmos DB: Aplikace sociálních médií'
 description: Další informace o vzoru návrhu pro sociální sítě s využitím flexibilní úložiště služby Azure Cosmos DB a dalšími službami Azure.
-keywords: aplikace sociálních médií
-services: cosmos-db
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 494566cc7d49d502fd0bd864e70b338b8d6e0788
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8d6dfa292bd597c2e37f7111e3a068010dc4653c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726778"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042679"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociální funkce s Azure Cosmos DB
 

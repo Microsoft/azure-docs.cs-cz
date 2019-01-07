@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: e20b18afb579839343fc4c079c039d7b9e5438f7
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994636"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033804"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
@@ -175,7 +175,7 @@ Pokud vaše aplikace používá jako datovou vrstvu Managed Instance, postupujte
 
   Když je vytvořena nová instance, jedinečné id je automaticky generována jako zóna DNS a název DNS instance součástí. Vícedoménové (SAN) certifikátu pro tuto instanci zřizován s polem SAN v podobě `zone_id.database.windows.net`. Tento certifikát slouží k ověření připojení klienta do instance ve stejné zóně DNS. K zajištění bez přerušení připojení k primární instance po převzetí služeb při selhání primární i sekundární instancí musí být ve stejné zóně DNS. Když je aplikace připravená pro produkční nasazení, vytvoření sekundární instance v různých oblastech a ujistěte se, že zóna DNS, která sdílí s primární instance. To se provádí tak, že zadáte `DNS Zone Partner` volitelný parametr pomocí webu Azure portal, Powershellu nebo rozhraní REST API.
 
-  Další informace o vytvoření sekundární instance ve stejné zóně DNS jako primární instance najdete v tématu [správy skupiny převzetí služeb při selhání s využitím spravované instance (preview)](#managing-failover-groups-with-managed-instances-preview).
+  Další informace o vytvoření sekundární instance ve stejné zóně DNS jako primární instance najdete v tématu [správy skupiny převzetí služeb při selhání s využitím spravované instance (preview)](#powershell-managing-failover-groups-with-managed-instances-preview).
 
 - **Povolit replikaci mezi dvěma instancemi**
 
@@ -349,7 +349,7 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 | Rozhraní API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání |
-| [Odstranění skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru |
+| [Odstranění skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru |
 | [Převzetí služeb při selhání (plánovaná)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Převezme služby při selhání z aktuálního primárního serveru na tomto serveru. |
 | [Povolit Vynucené převzetí služeb při selhání ztráty dat](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |přes ails z aktuálního primárního serveru na tomto serveru. Tato operace může dojít ke ztrátě. |
 | [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Načte skupinu převzetí služeb při selhání. |
