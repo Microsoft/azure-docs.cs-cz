@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1dc312598fa9bbacedc085480b0771adeb2d182a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5459786ccf69c51fec1630d612fd37b1b78c36c9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731036"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017000"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Řešení potíží s analýzami v nástroji Application Insights
 Problémy s [Application Insights Analytics](analytics.md)? Začněte tady. Analytics je nástroj výkonné hledání služby Azure Application Insights.
@@ -78,7 +78,7 @@ Prostředek aplikace už odstranil z Application Insights a t není k dispozici.
 
 Nemáte oprávnění otevřít tuto aplikaci v Analytics.
 
-* Obdrželi jste od někoho jiného odkaz? Požádejte ho, abyste měli jistotu, které jsou v [čtenáři a přispěvatelé této skupiny prostředků](../../application-insights/app-insights-resources-roles-access-control.md).
+* Obdrželi jste od někoho jiného odkaz? Požádejte ho, abyste měli jistotu, které jsou v [čtenáři a přispěvatelé této skupiny prostředků](../../azure-monitor/app/resources-roles-access-control.md).
 * Jste uložili odkaz použitím různých přihlašovacích údajů? Otevřít [webu Azure portal](https://portal.azure.com), odhlaste se a pak zkuste tento odkaz znovu, poskytování správných přihlašovacích údajů.
 
 ## <a name="html-storage"></a>403 ... Úložiště HTML5

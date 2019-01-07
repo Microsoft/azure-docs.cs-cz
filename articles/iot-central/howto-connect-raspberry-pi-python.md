@@ -1,5 +1,5 @@
 ---
-title: Connnect Raspberry Pi až po aplikace Azure IoT Central (Python) | Dokumentace Microsoftu
+title: Připojte Raspberry Pi do aplikace Azure IoT Central (Python) | Dokumentace Microsoftu
 description: Jako vývojář zařízení jak se připojit na Raspberry Pi do aplikace Azure IoT Central pomocí Pythonu.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f39832b50ed983e7d8a0bfc0a06366870717fa3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239589"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051981"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (Python)
 
@@ -21,11 +21,11 @@ ms.locfileid: "51239589"
 
 Tento článek popisuje, jak jako vývojář zařízení připojit Raspberry Pi do aplikace Microsoft Azure IoT Central, pomocí programovacího jazyka Python.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 K dokončení kroků v tomto článku, budete potřebovat následující komponenty:
 
-* Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
+* Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 * Raspberry Pi zařízení se systémem Raspbian operačního systému. Potřebujete monitoru, klávesnice a myši připojené k Raspberry Pi přístup k prostředí grafického uživatelského rozhraní. Raspberry Pi musí být schopen [připojení k Internetu](https://www.raspberrypi.org/learning/software-guide/wifi/).
 * Volitelně můžete [smysl Hat](https://www.raspberrypi.org/products/sense-hat/) panel doplněk pro Raspberry Pi. Tento panel shromažďuje telemetrická data z různých snímačů a poslat do aplikace Azure IoT Central. Pokud nemáte k dispozici **smysl Hat** panelu, můžete místo toho použít emulátor (k dispozici jako součást image Raspberry Pi).
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 83054c505689768c14d168841764a4557c3e1f8b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158994"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043035"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetovat licenčních požadavcích pro hesla pomocí samoobslužné služby Azure AD
 
@@ -41,7 +41,7 @@ Hesel Azure AD samoobslužné resetování je licencovaný podle počtu uživate
    * Tato funkce je zahrnutá v Azure AD Premium P1, nebo v edicích Premium P2.
 
 > [!WARNING]
-> Office 365 samostatné licenční plány **nepodporují zpětný zápis hesla** a vyžaduje Azure AD Premium P1 nebo edice Premium P2 pro tuto funkci pracovat.
+> Office 365 samostatné licenční plány *nepodporují "Samoobslužné heslo resetování/změna/odemknutí přes místní zpětný zápis"* a vyžadují plán, který obsahuje Azure AD Premium P1, nebo v edicích Premium P2 pro tuto funkci do práce.
 >
 
 Další licenční informace, včetně nákladů, najdete na následujících stránkách:

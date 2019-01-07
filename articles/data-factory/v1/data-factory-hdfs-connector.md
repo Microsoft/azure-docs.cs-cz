@@ -9,17 +9,16 @@ ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ac9ba682079f735aa2fdd416070c5d206d526ad4
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e8af817c942a28cfd28d1b13303aebfcc10d31ba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629697"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016042"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Přesun dat z místní HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,9 +46,9 @@ Když bránu můžete nainstalovat na stejnou místní počítač nebo virtuáln
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, který přesouvá data z HDFS zdroje pomocí různých nástrojů a rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **webu Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru **, **Rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -57,7 +56,7 @@ Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kr
 2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování.
 3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup.
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat HDFS najdete v části [příklad JSON: kopírování dat z místní HDFS do objektů Blob v Azure](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) části tohoto článku.
+Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat HDFS najdete v části [příklad JSON: Kopírování dat z místní HDFS do objektů Blob v Azure](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) části tohoto článku.
 
 Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní HDFS:
 
@@ -122,8 +121,8 @@ Propojená služba propojuje úložiště dat do služby data factory. Vytvořen
 | folderPath |Cesta ke složce. Příklad: `myfolder`<br/><br/>Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Příklad: folder\subfolder, určete složku\\\\podsložky a d:\samplefolder, zadejte d:\\\\ukázková_složka.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano |
 | fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časových řad. Příklad: folderPath s parametry pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ** ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 > [!NOTE]
 > Název souboru a fileFilter nelze použít současně.
@@ -175,7 +174,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **FileSystemSource** v části t
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
 Zobrazit [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článek věnovaný tomu podrobnosti.
 
-## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>Příklad JSON: kopírování dat z místní HDFS do objektů Blob v Azure
+## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>Příklad JSON: Kopírování dat z místní HDFS do objektů Blob v Azure
 Tato ukázka předvádí, jak kopírovat data do Azure Blob Storage z v místním HDFS. Nicméně je možné zkopírovat data **přímo** do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.  
 
 Tento vzorový definice JSON pro následující entity služby Data Factory. Tyto definice můžete použít k vytvoření kanálu pro kopírování dat z HDFS do Azure Blob Storage pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md).
@@ -190,7 +189,7 @@ Ukázce kopíruje data z HDFS místní do objektu blob Azure každou hodinu. Vla
 
 Jako první krok nastavte si bránu správy dat. Podle pokynů [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
-**Propojená služba HDFS:** tento příklad používá ověřování Windows. Zobrazit [HDFS propojená služba](#linked-service-properties) oddílu pro různé typy ověřování můžete použít.
+**HDFS propojené služby:** Tento příklad používá ověřování Windows. Zobrazit [HDFS propojená služba](#linked-service-properties) oddílu pro různé typy ověřování můžete použít.
 
 ```JSON
 {
@@ -224,7 +223,7 @@ Jako první krok nastavte si bránu správy dat. Podle pokynů [přesun dat mezi
 }
 ```
 
-**HDFS vstupní datovou sadu:** tato datová sada odkazuje na složku HDFS DataTransfer/UnitTest /. Kanál kopíruje do cíle všechny soubory v této složce.
+**HDFS vstupní datové sady:** Tato datová sada odkazuje na složku HDFS DataTransfer/UnitTest /. Kanál kopíruje do cíle všechny soubory v této složce.
 
 Nastavení "externí": "PRAVDA" informuje služby Data Factory, že datová sada je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
 
@@ -350,8 +349,8 @@ Kanálu obsahujícího aktivitu kopírování, kterou Pokud chcete použít tyto
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Používat ověřování protokolem Kerberos pro konektor HDFS
 Existují dvě možnosti, jak nastavit v místním prostředí tak, aby používala ověřování protokolu Kerberos v konektoru HDFS. Můžete zvolit, že je lépe vyhovuje vašemu případu.
-* Možnost 1: [připojení k počítači brány ve sféře Kerberos](#kerberos-join-realm)
-* Možnost 2: [povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos](#kerberos-mutual-trust)
+* Možnost 1: [Připojte se k počítači brány ve sféře Kerberos](#kerberos-join-realm)
+* Možnost 2: [Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos](#kerberos-mutual-trust)
 
 ### <a name="kerberos-join-realm"></a>Možnost 1: Připojte se k počítači brány ve sféře Kerberos
 
@@ -383,7 +382,7 @@ Existují dvě možnosti, jak nastavit v místním prostředí tak, aby použív
 
 * Nakonfigurujte pomocí konektoru HDFS **ověřování Windows** společně s vaší hlavní název Kerberos a heslo pro připojení ke zdroji dat HDFS. Zkontrolujte [propojená služba HDFS vlastnosti](#linked-service-properties) části na podrobnosti o konfiguraci.
 
-### <a name="kerberos-mutual-trust"></a>Možnost 2: Povolení vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos
+### <a name="kerberos-mutual-trust"></a>Možnost 2: Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos
 
 #### <a name="requirement"></a>Požadavek:
 *   Počítači brány musí připojit k doméně Windows.
@@ -438,7 +437,7 @@ Existují dvě možnosti, jak nastavit v místním prostředí tak, aby použív
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.  V **hadoop.security.auth_to_local ** konfigurace služby HDFS přidejte `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`.
+3.  V **hadoop.security.auth_to_local**  konfigurace služby HDFS přidejte `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`.
 
 **Na řadiči domény:**
 
@@ -455,7 +454,7 @@ Existují dvě možnosti, jak nastavit v místním prostředí tak, aby použív
 
     1. Přejděte do správce serveru > Správa zásad skupiny > domény > objekty zásad skupiny > výchozí nebo zásady aktivní domény a upravit.
 
-    2. V **Editor správy zásad skupiny** automaticky otevíraném okně, přejděte na konfigurace počítače > zásady > Nastavení Windows > Nastavení zabezpečení > Místní zásady > Možnosti zabezpečení a nakonfigurujte **sítě zabezpečení: konfigurovat typy šifrování povolené pro protokol Kerberos**.
+    2. V **Editor správy zásad skupiny** automaticky otevíraném okně, přejděte na konfigurace počítače > zásady > Nastavení Windows > Nastavení zabezpečení > Místní zásady > Možnosti zabezpečení a nakonfigurujte **sítě zabezpečení: Konfigurovat typy šifrování povolené pro protokol Kerberos**.
 
     3. Vyberte šifrovací algoritmus, který chcete použít při připojení k služby KDC. Běžně můžete jednoduše vybrat všechny možnosti.
 

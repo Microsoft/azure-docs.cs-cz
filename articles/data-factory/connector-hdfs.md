@@ -1,6 +1,6 @@
 ---
-title: Kopírovat data z HDFS pomocí Azure Data Factory | Microsoft Docs
-description: Postup kopírování dat z cloudu nebo na místní zdroj HDFS do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
+title: Kopírovat data z HDFS pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data z HDFS zdroje – místních i cloudových úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,58 +9,57 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 034c9a321f402bada87290f6aa72fc7e416ef2c6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a5df9d4d323158ee52c872b0122fdd28d9f74979
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054540"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019856"
 ---
-# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírování dat z HDFS pomocí Azure Data Factory
+# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírovat data z HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-hdfs-connector.md)
 > * [Aktuální verze](connector-hdfs.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z HDFS. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z HDFS. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Můžete zkopírovat data z HDFS do úložiště dat žádné podporované jímky. Seznam úložišť dat jako zdroje nebo jímky nepodporuje aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Kopírování dat z HDFS do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Konkrétně tento konektor HDFS podporuje:
 
 - Kopírování souborů pomocí **Windows** (Kerberos) nebo **anonymní** ověřování.
-- Kopírování souborů pomocí **webhdfs** protokolu nebo **předdefinované DistCp** podporovat.
-- Kopírování souborů jako-je nebo analýza nebo generování souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
+- Kopírování souborů pomocí **webhdfs** protokol nebo **integrované DistCp** podporovat.
+- Kopírování souborů jako-je nebo analýze a generování souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke kopírování dat ze HDFS, který není veřejně přístupný, musíte nastavit Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](concepts-integration-runtime.md) článku se dozvíte podrobnosti.
+Pokud chcete zkopírovat data z HDFS, který není veřejně přístupná, musíte nastavit modul Integration Runtime. Zobrazit [modul Integration Runtime](concepts-integration-runtime.md) článku se dozvíte podrobnosti.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které se používají k definování entit služby Data Factory, které jsou specifické pro HDFS.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní HDFS.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro HDFS propojené služby jsou podporovány následující vlastnosti:
+HDFS propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **Hdfs**. | Ano |
+| type | Vlastnost type musí být nastavená na: **Hdfs**. | Ano |
 | url |Adresa URL HDFS |Ano |
-| authenticationType. | Povolené hodnoty jsou: **anonymní**, nebo **Windows**. <br><br> Použít **ověřování protokolem Kerberos** HDFS konektor, najdete v části [v této části](#use-kerberos-authentication-for-hdfs-connector) odpovídajícím způsobem nastavit v místním prostředí. |Ano |
-| uživatelské jméno |Ověřování uživatelského jména pro systém Windows. Pro ověřování pomocí protokolu Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
-| heslo |Heslo pro ověřování systému Windows. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano (pro ověřování systému Windows) |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+| authenticationType. | Povolené hodnoty jsou: **Anonymní**, nebo **Windows**. <br><br> Použití **ověřování protokolem Kerberos** konektor HDFS najdete v tématu [v této části](#use-kerberos-authentication-for-hdfs-connector) odpovídajícím způsobem nastavit v místním prostředí. |Ano |
+| uživatelské jméno |Ověřování uživatelského jména pro Windows. Pro ověřování protokolem Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
+| heslo |Heslo pro ověřování Windows. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano (pro ověřování systému Windows) |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
-**Příklad: pomocí anonymní ověřování**
+**Příklad: použití anonymní ověřování**
 
 ```json
 {
@@ -80,7 +79,7 @@ Pro HDFS propojené služby jsou podporovány následující vlastnosti:
 }
 ```
 
-**Příklad: pomocí ověřování systému Windows**
+**Příklad: použití ověřování Windows**
 
 ```json
 {
@@ -106,20 +105,20 @@ Pro HDFS propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností nepodporuje datovou sadu HDFS.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností, které podporuje HDFS datové sady.
 
-Chcete-li zkopírovat data z HDFS, nastavte vlastnost typu datové sady, která **sdílení souborů**. Podporovány jsou následující vlastnosti:
+Ke zkopírování dat z HDFS, nastavte vlastnost typ datové sady na **sdílení souborů**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na: **sdílení souborů** |Ano |
-| folderPath | Cesta ke složce. Zástupný filtr není podporován. Příklad: složku nebo podsložku / |Ano |
-| fileName |  **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř. |Ne |
-| Formát | Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |
-| Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |
+| type | Vlastnost type datové sady, musí být nastavená na: **Sdílenou složku.** |Ano |
+| folderPath | Cesta ke složce. Filtr zástupných znaků není podporován. Příklad: / podsložce složky / |Ano |
+| fileName |  **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>– Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` dostala mimo vašeho skutečného názvu souboru má zástupných znaků nebo tento znak escape uvnitř. |Ne |
+| formát | Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat soubory s konkrétním formátu, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formát](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro binární kopie scénář) |
+| Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimální** a **nejrychlejší**. |Ne |
 
 >[!TIP]
->Pokud chcete zkopírovat všechny soubory ve složce, zadejte **folderPath** pouze.<br>Pokud chcete zkopírovat jeden soubor s daným názvem, zadejte **folderPath** s částí složky a **fileName** s názvem souboru.<br>Pokud chcete zkopírovat podmnožinu souborů ve složce, zadejte **folderPath** s částí složky a **fileName** s filtrem zástupný znak.
+>Zkopírujte všechny soubory ve složce, zadejte **folderPath** pouze.<br>Pokud chcete zkopírovat jeden soubor s daným názvem, zadejte **folderPath** s složkovou část a **fileName** s názvem souboru.<br>Chcete-li zkopírovat podmnožinu souborů ve složce, zadejte **folderPath** s složkovou část a **fileName** s filtr zástupných znaků.
 
 **Příklad:**
 
@@ -151,22 +150,22 @@ Chcete-li zkopírovat data z HDFS, nastavte vlastnost typu datové sady, která 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které jsou podporovány zdrojem HDFS.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem HDFS.
 
 ### <a name="hdfs-as-source"></a>HDFS jako zdroj
 
-Pokud chcete zkopírovat data z HDFS, nastavte typ zdroje v aktivitě kopírování do **HdfsSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Ke zkopírování dat z HDFS, nastavte typ zdroje v aktivitě kopírování do **HdfsSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HdfsSource** |Ano |
-| rekurzivní | Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. Poznámka: když rekurzivní nastavena na hodnotu true a jímka je na základě souborů úložiště, prázdné složky nebo dílčí-folder nebudou zkopírovat nebo vytvořit v jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
-| distcpSettings | Skupina vlastností při použití HDFS DistCp. | Ne |
-| resourceManagerEndpoint | Koncový bod Yarn ResourceManager | Ano, při použití DistCp |
-| tempScriptPath | Cesty používá k ukládání dočasného DistCp příkazu skriptu. Soubor skriptu je generován objekt pro vytváření dat a bude odebrána po dokončení úlohu kopírování. | Ano, při použití DistCp |
-| distcpOptions | Další možnosti poskytnuté DistCp příkaz. | Ne |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **HdfsSource** |Ano |
+| rekurzivní | Určuje, jestli se data ze složek sub nebo pouze z určené složky Číst rekurzivně. Poznámka: Pokud rekurzivní je nastavena na hodnotu true a datovou sadu jímky souborové úložiště je prázdné složky/dílčí-folder nebudou zkopírovány/vytvořili na jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
+| distcpSettings | Vlastnosti skupiny při použití HDFS DistCp. | Ne |
+| resourceManagerEndpoint | Koncový bod správce prostředků Yarn | Ano, pokud pomocí DistCp |
+| tempScriptPath | Cestu ke složce pro ukládání dočasného DistCp příkazový skript. Soubor skriptu vygenerované službou Data Factory a po dokončení úlohy kopírování se odebere. | Ano, pokud pomocí DistCp |
+| distcpOptions | Příkaz DistCp k dispozici další možnosti. | Ne |
 
-**Příklad: HDFS zdroje v aktivitou kopírování pomocí uvolnění**
+**Příklad: HDFS zdroje v aktivitou kopírování pomocí uvolnění z paměti**
 
 ```json
 "source": {
@@ -179,31 +178,31 @@ Pokud chcete zkopírovat data z HDFS, nastavte typ zdroje v aktivitě kopírová
 }
 ```
 
-Další informace o tom, jak použití DistCp zkopírovat data z HDFS efektivně z v další části.
+Další informace o tom, jak použití DistCp ke kopírování dat z HDFS efektivně v další části.
 
-## <a name="use-distcp-to-copy-data-from-hdfs"></a>Použití DistCp zkopírovat data z HDFS
+## <a name="use-distcp-to-copy-data-from-hdfs"></a>Použití DistCp ke kopírování dat z HDFS
 
-[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) je Hadoop nativní nástroj příkazového řádku udělat distribuované kopírování v clusteru Hadoop. Při spuštění příkazu Distcp, bude nejprve seznamu všechny soubory, které chcete kopírovat, vytvořte několik úloh mapy do clusteru Hadoop a každá úloha mapy bude do binární kopie ze zdroje na jímky.
+[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) je Hadoop nativní nástroj příkazového řádku provést distribuované kopírování v clusteru Hadoop. Při spuštění příkaz Distcp, zobrazí se seznam nejprve všechny soubory chcete zkopírovat, vytvořit několik Map úloh na clusteru Hadoop a každá úloha mapa bude do binární kopie ze zdroje do jímky.
 
-Zkopírujte aktivity podpora použití DistCp kopírovat soubory jako-je do Azure Blob (včetně [připravený kopie](copy-activity-performance.md) nebo Azure Data Lake Store, v takovém případě ji můžete plně využít váš cluster power namísto spuštění na modulu Runtime Self-hosted integrace . Lepší propustnosti kopie poskytne hlavně v případě, že je velice mocný nástroj vašeho clusteru. V závislosti na vaší konfiguraci v Azure Data Factory aktivity kopírování automaticky vytvořit příkaz distcp, odeslání do clusteru Hadoop a sledovat stav kopírování.
+Použití DistCp ke kopírování souborů jako podpora činnosti zkopírujte-do objektů Blob v Azure (včetně [fázovaného kopírování](copy-activity-performance.md) nebo Azure Data Lake Store, v takovém případě ji můžete plně využít váš cluster power místo spouštění na modul Integration Runtime . Zejména v případě, že je velice mocný nástroj váš cluster bude poskytovat vyšší propustnost kopírování. Na základě vaší konfigurace v Azure Data Factory, aktivita kopírování automaticky vytvořit příkaz distcp, odeslat ke clusteru Hadoop a monitorovat stav kopírování.
 
 ### <a name="prerequsites"></a>Prerequsites
 
-Použití DistCp ke kopírování souborů jako-je z HDFS (včetně dvoufázové instalace kopie) objektů Blob v Azure nebo Azure Data Lake Store, zajistěte, aby Hadoop cluster splňuje následující požadavky:
+Použití DistCp ke kopírování souborů jako-je z HDFS do objektů Blob v Azure (včetně dvoufázové instalace kopie) nebo Azure Data Lake Store, ujistěte se, že Hadoop cluster splňuje následující požadavky:
 
-1. MapReduce a Yarn služby jsou povolené.
-2. Je yarn verze 2.5 nebo novější.
-3. HDFS server je integrován se data store cíl - objektů Blob v Azure nebo Azure Data Lake Store:
+1. Povolené služby MapReduce a Yarn.
+2. Je yarn verze 2.5 nebo vyšší.
+3. HDFS server je integrován s vaší cílové úložiště dat – objektů Blob v Azure nebo Azure Data Lake Store:
 
-    - Systém souborů Azure Blob je nativně podporována od Hadoop 2.7. Stačí zadat cestu jar v konfiguračním env Hadoop.
-    - Systém souborů Azure Data Lake Store je zabalené od Hadoop 3.0.0-alpha1. Pokud váš cluster Hadoop je nižší než verze, budete muset ručně importovat ADLS související jar balíčky (azure datalake store.jar) do clusteru z [zde](https://hadoop.apache.org/releases.html)a zadejte cestu jar v konfiguračním env Hadoop.
+    - Systém souborů Azure Blob je nativně podporuje od verze Hadoop 2.7. Stačí zadat soubor jar cestu v konfiguraci env Hadoop.
+    - Systém souborů Azure Data Lake Store je zabalený od Hadoop 3.0.0-alpha1. Pokud váš cluster Hadoop je nižší než verze, budete muset ručně importovat ADLS související jar balíčky (azure-datalake-store.jar) do clusteru ze [tady](https://hadoop.apache.org/releases.html)a zadejte cestu jar v konfiguraci env Hadoop.
 
-4. Připravte dočasnou složku v HDFS. Tato dočasná složka se používá k uložení DistCp skript prostředí, takže bude zabírat úrovni KB místa.
-5. Ujistěte se, že uživatelský účet zadaný v propojené službě HDFS mít oprávnění k) v Yarn; podat žádost b) mají oprávnění k vytvoření podsložky, pro čtení a zápis souborů ve výše dočasnou složku.
+4. Příprava dočasnou složku v HDFS. Tuto dočasnou složku slouží k uložení DistCp skript prostředí, tak bude zabírat úrovni KB místa.
+5. Ujistěte se, že uživatelský účet k dispozici v propojené službě HDFS mít oprávnění k) odeslat aplikaci Yarn; (b) mají oprávnění k vytváření podsložek, čtení a zápis souborů v rámci nad dočasnou složku.
 
 ### <a name="configurations"></a>Konfigurace
 
-Dole je příklad konfigurace aktivity kopírování zkopírovat data z HDFS do objektu Blob Azure pomocí DistCp:
+Níže je příklad konfigurace aktivity kopírování kopíruje data z HDFS do objektů Blob v Azure pomocí DistCp:
 
 **Příklad:**
 
@@ -241,57 +240,57 @@ Dole je příklad konfigurace aktivity kopírování zkopírovat data z HDFS do 
 ]
 ```
 
-## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Ověřování pomocí protokolu Kerberos pro HDFS konektor
+## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Používat ověřování protokolem Kerberos pro konektor HDFS
 
-Existují dvě možnosti nastavit v místním prostředí tak, aby používala ověřování protokolu Kerberos v konektoru HDFS. Je možné, že byl lépe vyhovuje váš případ.
-* Možnost 1: [Runtime integrace Self-hosted připojení k počítači ve sféře Kerberos](#kerberos-join-realm)
-* Možnost 2: [povolit vzájemné vztah důvěryhodnosti mezi doménou systému Windows a Sféra Kerberos](#kerberos-mutual-trust)
+Existují dvě možnosti, jak nastavit v místním prostředí tak, aby používala ověřování protokolu Kerberos v konektoru HDFS. Můžete zvolit, že je lépe vyhovuje vašemu případu.
+* Možnost 1: [Připojte se k počítači modul Integration Runtime ve sféře Kerberos](#kerberos-join-realm)
+* Možnost 2: [Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>Možnost 1: Připojte počítač Self-hosted integrace Runtime ve sféře Kerberos
+### <a name="kerberos-join-realm"></a>Možnost 1: Připojte se k počítači modul Integration Runtime ve sféře Kerberos
 
 #### <a name="requirements"></a>Požadavky
 
-* Počítač Self-hosted integrace Runtime potřebuje k připojení Sféra Kerberos a nemůže připojit k žádné doméně systému Windows.
+* Počítač modul Integration Runtime je potřeba připojit k sféry Kerberos a nejde připojit k libovolné doméně Windows.
 
 #### <a name="how-to-configure"></a>Postup konfigurace
 
-**Na počítači Self-hosted integrace Runtime:**
+**Na počítači modul Integration Runtime:**
 
-1.  Spustit **Ksetup** nástroj Konfigurace serveru protokolu Kerberos služby KDC a sféru.
+1.  Spustit **Ksetup** nástroj a nakonfigurujte server KDC protokolu Kerberos a sféry.
 
-    Počítač musí být nakonfigurován jako člena pracovní skupiny, protože Sféra Kerberos se liší od domény systému Windows. Toho lze dosáhnout nastavením Sféra Kerberos a takto přidejte server služby KDC. Nahraďte *REALM.COM* s vlastními příslušných sféry podle potřeby.
+    Na počítači musí být nakonfigurován jako člen pracovní skupiny, protože Sféra Kerberos se liší od domény Windows. Toho lze dosáhnout nastavením sféry Kerberos a přidání serveru služby KDC následujícím způsobem. Nahraďte *REALM.COM* s vlastním příslušných sféra podle potřeby.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    **Restartujte** počítače po provedení těchto příkazů 2.
+    **Restartujte** počítač po spuštění těchto příkazů 2.
 
-2.  Ověření konfigurace s **Ksetup** příkaz. Výstup by měl vypadat podobně jako:
+2.  Ověřte konfiguraci pomocí **Ksetup** příkazu. Výstup by měl být jako:
 
             C:> Ksetup
             default realm = REALM.COM (external)
             REALM.com:
                 kdc = <your_kdc_server_address>
 
-**V Azure Data Factory:**
+**Ve službě Azure Data Factory:**
 
-* Konfigurovat pomocí konektoru HDFS **ověřování systému Windows** společně s hlavní název protokolu Kerberos a heslo pro připojení ke zdroji dat HDFS. Zkontrolujte [vlastnosti propojené služby HDFS](#linked-service-properties) části na podrobnosti o konfiguraci.
+* Nakonfigurujte pomocí konektoru HDFS **ověřování Windows** společně s vaší hlavní název Kerberos a heslo pro připojení ke zdroji dat HDFS. Zkontrolujte [propojená služba HDFS vlastnosti](#linked-service-properties) části na podrobnosti o konfiguraci.
 
-### <a name="kerberos-mutual-trust"></a>Možnost 2: Povolení vzájemné vztah důvěryhodnosti mezi doménou systému Windows a Sféra Kerberos
+### <a name="kerberos-mutual-trust"></a>Možnost 2: Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos
 
 #### <a name="requirements"></a>Požadavky
 
-*   Počítač Self-hosted integrace Runtime musí připojit k doméně systému Windows.
+*   Na počítači modul Integration Runtime musí připojit k doméně Windows.
 *   Budete potřebovat oprávnění k aktualizaci nastavení řadiče domény.
 
 #### <a name="how-to-configure"></a>Postup konfigurace
 
 > [!NOTE]
-> Nahraďte REALM.COM a AD.COM v následujícím kurzu vlastní příslušných sféry a řadič domény, podle potřeby.
+> Nahraďte REALM.COM a AD.COM v následujícím kurzu s příslušnými sféry a řadič domény, podle potřeby.
 
 **Na serveru služby KDC:**
 
-1.  Upravit konfiguraci služby KDC v **krb5.conf** souboru chcete, aby služba KDC vztahu důvěryhodnosti domény systému Windows na následující konfigurace šablony. Ve výchozím nastavení nachází ve **/etc/krb5.conf**.
+1.  Upravit konfiguraci služby KDC v **krb5.conf** souboru chcete, aby služba KDC důvěřovat odkazující na následující šablonu konfigurace domény Windows. Ve výchozím nastavení, se nachází v konfiguraci **/etc/krb5.conf**.
 
             [logging]
              default = FILE:/var/log/krb5libs.log
@@ -333,56 +332,56 @@ Existují dvě možnosti nastavit v místním prostředí tak, aby používala o
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.  V **hadoop.security.auth_to_local** konfigurace služby HDFS souboru, přidejte `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`.
+3.  V **hadoop.security.auth_to_local**  konfigurace služby HDFS přidejte `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`.
 
 **Na řadiči domény:**
 
-1.  Spusťte následující **Ksetup** přidejte položku sféry:
+1.  Spusťte následující příkaz **Ksetup** příkazy, které chcete přidat položku sféry:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Navázání vztahu důvěryhodnosti z domény systému Windows k Sféra Kerberos. [heslo] je heslo pro objekt **krbtgt/REALM.COM@AD.COM**.
+2.  Navázání vztahu důvěryhodnosti z domény Windows do sféry Kerberos. [heslo] je heslo pro objekt **krbtgt/REALM.COM@AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
 3.  Vyberte šifrovací algoritmus použitý v protokolu Kerberos.
 
-    1. Přejděte do správce serveru > Správa zásad skupiny > domény > objekty zásad skupiny > výchozí nebo zásady služby Active Domain a upravit.
+    1. Přejděte do správce serveru > Správa zásad skupiny > domény > objekty zásad skupiny > výchozí nebo zásady aktivní domény a upravit.
 
-    2. V **Editor správy zásad skupiny** automaticky otevíraném okně, přejděte na konfigurace počítače > zásady > Nastavení systému Windows > Nastavení zabezpečení > Místní zásady > Možnosti zabezpečení a nakonfigurujte **sítě zabezpečení: Konfigurace typy šifrování, které jsou povoleny pro protokol Kerberos**.
+    2. V **Editor správy zásad skupiny** automaticky otevíraném okně, přejděte na konfigurace počítače > zásady > Nastavení Windows > Nastavení zabezpečení > Místní zásady > Možnosti zabezpečení a nakonfigurujte **sítě zabezpečení: Konfigurovat typy šifrování povolené pro protokol Kerberos**.
 
-    3. Vyberte algoritmus šifrování, kterou chcete použít při připojení k služby KDC. Běžně můžete jednoduše vybrat všechny možnosti.
+    3. Vyberte šifrovací algoritmus, který chcete použít při připojení k služby KDC. Běžně můžete jednoduše vybrat všechny možnosti.
 
-        ![Typy šifrování konfigurace pro protokol Kerberos](media/connector-hdfs/config-encryption-types-for-kerberos.png)
+        ![Typy šifrování konfiguračním pro protokol Kerberos](media/connector-hdfs/config-encryption-types-for-kerberos.png)
 
     4. Použití **Ksetup** příkazu zadejte šifrovací algoritmus, který se má použít na konkrétní SFÉRY.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Vytvoření mapování mezi účet domény a objektu zabezpečení pomocí protokolu Kerberos, aby bylo možné používat objekt zabezpečení protokolu Kerberos v doméně systému Windows.
+4.  Vytvoření mapování mezi účet domény a zabezpečení protokolu Kerberos, aby bylo možné používat instanční objekt pomocí protokolu Kerberos v doméně Windows.
 
     1. Spuštění nástroje pro správu > **Active Directory Users and Computers**.
 
     2. Konfigurace rozšířených funkcí kliknutím **zobrazení** > **pokročilé funkce**.
 
-    3. Najděte účet, ke které chcete vytvořit mapování a klikněte pravým tlačítkem myši zobrazíte **mapování názvů** > klikněte na tlačítko **Kerberos názvy** kartě.
+    3. Najděte účet, ke kterému chcete vytvořit mapování a klikněte pravým tlačítkem na zobrazení **mapování názvů** > klikněte na tlačítko **Kerberos názvy** kartu.
 
-    4. Přidáte objekt z sféru.
+    4. Přidáte objekt zabezpečení ze sféry.
 
-        ![Mapování Identity zabezpečení](media/connector-hdfs/map-security-identity.png)
+        ![Identita zabezpečení mapy](media/connector-hdfs/map-security-identity.png)
 
-**Na počítači Self-hosted integrace Runtime:**
+**Na počítači modul Integration Runtime:**
 
-* Spusťte následující **Ksetup** přidejte položku sféry.
+* Spusťte následující příkaz **Ksetup** příkazy, které chcete přidat položku sféry.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-**V Azure Data Factory:**
+**Ve službě Azure Data Factory:**
 
-* Konfigurovat pomocí konektoru HDFS **ověřování systému Windows** společně s buď váš účet domény nebo objekt zabezpečení protokolu Kerberos pro připojení ke zdroji dat HDFS. Zkontrolujte [vlastnosti propojené služby HDFS](#linked-service-properties) části na podrobnosti o konfiguraci.
+* Nakonfigurujte pomocí konektoru HDFS **ověřování Windows** společně se váš účet domény nebo objekt zabezpečení protokolu Kerberos pro připojení ke zdroji dat HDFS. Zkontrolujte [propojená služba HDFS vlastnosti](#linked-service-properties) části na podrobnosti o konfiguraci.
 
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
