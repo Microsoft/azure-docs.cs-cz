@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7599fbe05b99466ed1d1a3db17156888cf9ea353
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 26bccc07e402288db696bce8a2371cab9ef7aff9
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338281"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055077"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -40,8 +40,8 @@ Existují _sady SDK pro zařízení_ dostupné pro různé jazyky, které vám u
 ## <a name="azure-iot-service-sdks"></a>Sady SDK pro služby Azure IoT
 Existují _služby sady SDK_ dostupné pro různé jazyky, které vám umožní vytvořit [back endové aplikace](#back-end-app) , které komunikovat s centrem IoT. IoT Hub kurzy ukazují, jak pomocí sady SDK pro tyto služby. V tomto Githubu můžete najít zdrojový kód a další informace o sadách SDK služby [úložiště](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-hub-toolkit"></a>Sada Azure IoT Hub
-[Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve Azure IoT Toolkit) je multiplatformní, open source rozšíření Visual Studio Code, která pomáhá spravovat zařízení v nástroji VS Code a Azure IoT Hub. Se sadou Azure IoT Hub nástrojů může vývojáře IoT vývoj IoT projektu v nástroji VS Code s lehkostí a elegancí.
+## <a name="azure-iot-tools"></a>Nástroje Azure IoT
+[Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) je různé platformy, open source rozšíření Visual Studio Code, který vám pomůže spravovat zařízení v nástroji VS Code a Azure IoT Hub. Nástroje pro Azure IoT může IoT vývojáři vyvíjet pro projekty IoT v nástroji VS Code s lehkostí a elegancí.
 
 ## <a name="azure-portal"></a>portál Azure
 [Portálu Microsoft Azure](https://portal.azure.com) je centrálním místem, kde můžete zřizovat a spravovat prostředky Azure. Slouží k uspořádání obsahu pomocí _oken_.
