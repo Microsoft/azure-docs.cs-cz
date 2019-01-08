@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: 80fb6812338cf16c51e2e4706ff1f9e9c4eb85a9
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 95ff8d1a70325357fee4bc24fd96c1a1c7a73845
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54056880"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077602"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorování využití a výkonu klasických desktopových aplikací pro Windows
 
-Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech výhod Application Insights. Jediným omezením je nutnost [povolení komunikace](../../azure-monitor/app/ip-addresses.md) se službou Application Insights. Pro monitorování aplikací pro Univerzální platformu Windows (UPW) doporučujeme používat sadu [Visual Studio App Center](../../application-insights/app-insights-mobile-center-quickstart.md).
+Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech výhod Application Insights. Jediným omezením je nutnost [povolení komunikace](../../azure-monitor/app/ip-addresses.md) se službou Application Insights. Pro monitorování aplikací pro Univerzální platformu Windows (UPW) doporučujeme používat sadu [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md).
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Odeslání telemetrie do Application Insights z klasické aplikace pro Windows
-1. Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../application-insights/app-insights-create-new-resource.md). Jako typ aplikace vyberte aplikaci ASP.NET.
+1. Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ). Jako typ aplikace vyberte aplikaci ASP.NET.
 2. Zkopírujte klíč instrumentace. Klíč najdete v rozevírací nabídce Základy nového prostředku, který jste právě vytvořili. 
 3. V sadě Visual Studio upravte balíčky NuGet projektu aplikace a přidejte Microsoft.ApplicationInsights.WindowsServer. (Nebo zvolte Microsoft.ApplicationInsights, pokud chcete prosté rozhraní API bez standardních modulů kolekce telemetrie.)
 4. Nastavte klíč instrumentace, buď ve vašem kódu:

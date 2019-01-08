@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 91f6254fe756f256a2c88429fb4d96156867ef4a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1f9a108a91a2fa917ec58e6cff487c6dca71130f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001902"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076395"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: Datový model Application Insights
 
@@ -63,9 +63,9 @@ Maximální délka: 1024 znaků.
 
 ## <a name="success"></a>Úspěch
 
-Údaj o volání úspěšné nebo neúspěšné. Toto pole je povinné. Pokud není nastavený explicitně na `false` -žádost považována za k dosažení úspěchu. Nastavte tuto hodnotu na `false` Pokud operace se přerušila výjimka nebo vrátilo kód chyby výsledek.
+Údaj o volání úspěšné nebo neúspěšné. Toto pole je povinné. Pokud není nastavený explicitně na `false` -požadavek je považován za úspěšné. Nastavte tuto hodnotu na `false` Pokud operace se přerušila výjimka nebo vrátilo kód chyby výsledek.
 
-Application Insights pro webové aplikace, definovat požadavek, jako neúspěšný, pokud kód odpovědi menší `400` nebo rovna hodnotě `401`. Ale existují případy, když toto výchozí mapování se neshoduje s sémantické aplikace. Kód odpovědi `404` může znamenat "žádné záznamy", které mohou být součástí regulární toku. Také může to znamenat poškozený odkaz. Nefunkční odkazy můžete dokonce implementovat složitější logiku. Nefunkční odkazy můžete označit jako selhání pouze v případě, že tyto odkazy jsou umístěné ve stejné lokalitě díky analýze odkaz poskytuje adresu url. Nebo označit je jako selhání při přístupu z mobilní aplikace vaší společnosti. Podobně `301` a `302` indikuje selhání při přístupu z klienta, který nepodporuje přesměrování.
+Pro webové aplikace Application Insights definovat žádost jako úspěšný při kód odezvy je méně než `400` nebo rovna hodnotě `401`. Ale existují případy, když toto výchozí mapování se neshoduje s sémantické aplikace. Kód odpovědi `404` může znamenat "žádné záznamy", které mohou být součástí regulární toku. Také může to znamenat poškozený odkaz. Nefunkční odkazy můžete dokonce implementovat složitější logiku. Nefunkční odkazy můžete označit jako selhání pouze v případě, že tyto odkazy jsou umístěné ve stejné lokalitě díky analýze odkaz poskytuje adresu url. Nebo označit je jako selhání při přístupu z mobilní aplikace vaší společnosti. Podobně `301` a `302` indikuje selhání při přístupu z klienta, který nepodporuje přesměrování.
 
 Částečně přijmout obsah `206` může znamenat selhání celkový požadavek. Koncový bod služby Application Insights pro instanci přijímá dávky položky telemetrie jako jeden požadavek. Vrátí `206` kdy některé položky v dávce nebyly úspěšně zpracována. Rostoucí počet `206` indikuje problém, který je nutné prozkoumat. Podobná logika platí pro `207` více stav, kdy úspěch může být nejhorší ze samostatných kódů odpovědí.
 

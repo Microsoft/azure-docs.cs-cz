@@ -4,17 +4,17 @@ description: Zjistěte, jak vytvořit základní šablonu Terraformu v Azure pom
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtuální počítač, azure, yeoman
-author: v-mavick
+author: tomarchermsft
 manager: jeconnoc
-ms.author: v-mavick
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 36e4b424cdb961920fccdf7f050e28447ccbd6cf
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284331"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074508"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Vytvoření základní šablony Terraformu v Azure pomocí Yeomanu
 
@@ -28,11 +28,11 @@ V tomto článku se dozvíte, jak používat generátor modulů Yeoman k vytvoř
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- **Visual Studio Code**: Použijeme [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) k prozkoumání souborů vytvořených generátorem Yeoman. Můžete však použít libovolný editor kódu podle vašeho výběru.
-- **Terraform**: budete potřebovat instalaci [Terraformu](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) ke spuštění modulu vytvořenou pomocí Yeomanu.
-- **Docker**: použijeme [Docker](https://www.docker.com/get-started) ke spuštění modulu vytvořené generátorem Yeoman. (Pokud tomu dáváte přednost, můžete použít Ruby místo Dockeru pro spuštění vzorového modulu.)
-- **Programovací jazyk Go**: budete potřebovat instalaci [Go](https://golang.org/) protože testovací případy generované pomocí Yeomanu jsou napsané v Go.
+- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- **Visual Studio Code**: Použijeme [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) prozkoumat soubory vytvořené generátoru Yeoman. Můžete však použít libovolný editor kódu podle vašeho výběru.
+- **Terraform**: Budete potřebovat instalaci [Terraformu](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) ke spuštění modulu vytvořená pomocí Yeomanu.
+- **Docker**: Použijeme [Docker](https://www.docker.com/get-started) ke spuštění modulu vytvořené Yeoman generátoru. (Pokud tomu dáváte přednost, můžete použít Ruby místo Dockeru pro spuštění vzorového modulu.)
+- **Přejděte programovací jazyk**: Budete potřebovat instalaci [Přejít](https://golang.org/) protože testovacích případů pomocí Yeomanu vygenerovat jsou napsané v Go.
 
 >[!NOTE]
 >Většina procedur v tomto tutoriálu zahrnuje položky příkazového řádku. Kroky popsané zde platí pro všechny operační systémy a nástroje příkazového řádku. V našem příkladu jsme zvolili používání prostředí PowerShell pro místní prostředí i prostředí Git Bash pro prostředí cloud shell.
@@ -140,16 +140,16 @@ Definuje, co modul vydává. Zde je to hodnota vrácená prostřednictvím **ran
 
 Definuje kroky sestavení. Tyto kroky zahrnují:
 
-- **sestavení**: ověří formátování main.tf souboru.
-- **jednotka**: Generovaná modulová kostra neobsahuje kód pro testování jednotky. Pokud chcete specifikovat scénář testování jednotky, přidejte sem kód.
-- **e2e**: spouští test modulu end-to-end.
+- **Sestavení**: Ověří, formátování main.tf souboru.
+- **Jednotka**: Kostru generované modul neobsahuje kód pro testování částí. Pokud chcete specifikovat scénář testování jednotky, přidejte sem kód.
+- **e2e**: Spouští začátku do konce testu modulu.
 
 ### <a name="test"></a>test
 
 - Testovací případy jsou napsané v Go.
 - Všechny kódy v testu jsou testy end-to-end.
 - Testy end-to-end se pokouší použít Terraform ke zřízení všech položek definovaných v části  **příslušenství** a pak porovná výstup v **template_output.go** kódu pomocí předem definovaných očekávaných hodnot.
-- **Gopkg.Lock** a **Gopkg.toml**: Definujte své závislostí. 
+- **Gopkg.Lock** a **Gopkg.toml**: Definování závislostí. 
 
 ## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Testování nového modulu Terraformu pomocí souboru Docker
 
@@ -248,7 +248,7 @@ Všechny tyto položky jsou předem nainstalované ve službě Cloud Shell.
 
 1. V tomto okamžiku Cloud Shell se už nakonfigurovali GOPATH v proměnných prostředí za vás. Chcete-li zobrazit cestu, zadejte `go env`.
 
-1. Vytvořte složku $GOPATH, pokud ještě neexistuje: Zadejte `mkdir ~/go`.
+1. Pokud ještě neexistuje, vytvořte složku $GOPATH: Zadejte `mkdir ~/go`.
 
 1. Vytvořte složku ve složce $GOPATH: Zadejte `mkdir ~/go/src`. Tato složka se použije k uložení a uspořádat složky jiného projektu, které mohou vytvořit, jako je například složka < your-module-name >, které vytvoříte v dalším kroku.
 

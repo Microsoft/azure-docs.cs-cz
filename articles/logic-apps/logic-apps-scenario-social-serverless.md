@@ -10,18 +10,18 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 638b29dd2a15d0467c41e20ecfed9f333b34c04d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229413"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061053"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření datových proudů řídicí panel přehledů o zákazníků s Azure Logic Apps a Azure Functions
 
-Azure nabízí nástroje bez serverů, které vám pomůžou rychle sestavování a hostování aplikací v cloudu, aniž byste museli uvažovat o infrastrukturu. V tomto kurzu můžete vytvořit řídicí panel, který aktivuje na zpětnou vazbu od zákazníků, zpětné vazby pomocí strojového učení analyzuje a publikuje insights ke zdroji, jako je například Power BI nebo Azure Data Lake.
+Azure nabízí [bez serveru](https://azure.microsoft.com/solutions/serverless/) nástroje, které vám pomohou rychle sestavovat a hostovat aplikace v cloudu, aniž byste museli uvažovat o infrastrukturu. V tomto kurzu můžete vytvořit řídicí panel, který aktivuje na zpětnou vazbu od zákazníků, zpětné vazby pomocí strojového učení analyzuje a publikuje insights ke zdroji, jako je například Power BI nebo Azure Data Lake.
 
-Pro tohle řešení použijete tyto klíčové komponenty Azure pro aplikace bez serveru: [Azure Functions](https://azure.microsoft.com/services/functions/) a [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Pro tohle řešení použijete tyto klíčové komponenty Azure pro aplikace bez serveru: [Služba Azure Functions](https://azure.microsoft.com/services/functions/) a [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Služba Azure Logic Apps poskytuje modul pracovních postupů bez serveru v cloudu, aby mohli k vytváření orchestrací komponentami bez serveru a připojení k více než 200 služeb a rozhraní API. Služba Azure Functions poskytuje architekturu bez serverů v cloudu. Toto řešení používá k nastavení příznaku zákazníka tweety na základě předdefinovaných klíčových slov pro Azure Functions.
 
 V tomto scénáři vytvoříte aplikaci logiky, která aktivuje na hledání zpětnou vazbu od zákazníků. Některé konektory, zahrnují pomoc reagovat na názory zákazníků služby Outlook.com, Office 365, opic průzkumu, Twitter a [požadavku HTTP z webového formuláře](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Pracovní postup, který vytvoříte monitoruje hashtagu na Twitteru.
@@ -34,7 +34,7 @@ Je možné [sestavte celé řešení v sadě Visual Studio](../logic-apps/quicks
 
    Pokud se službou logic Apps teprve začínáte, přečtěte si [rychlý start pro Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) nebo [rychlý start pro Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
-2. V návrháři aplikace logiky, najděte a přidejte trigger Twitteru, který má tuto akci: **při publikuje nový tweet**
+2. V návrháři aplikace logiky najděte a přidejte trigger Twitteru, který má tuto akci: **Když se nový tweet**
 
 3. Nastavte aktivační událost pro naslouchání tweety na základě – klíčové slovo nebo hashtagem.
 
@@ -60,10 +60,10 @@ K rozpoznávání mínění za nějaký text, můžete použít [Azure Cognitive
 
 Po získání tweet dat a přehledů o daném tweetu, můžete nyní použít několik dalších relevantní konektory a jejich akce:
 
-* **Power BI – přidání řádků do datové sady streamování**: Zobrazit příchozí tweety na řídicí panel Power BI.
-* **Azure Data Lake – připojit soubor**: Přidat zákaznická data k datové sadě služby Azure Data Lake mají být zahrnuty úlohy analýzy.
-* **SQL – přidání řádků**: Store data do databáze pro pozdější načtení.
-* **Slack – poslat zprávu**: oznámení o negativní zpětnou vazbu, které můžou vyžadovat akci kanál Slack.
+* **Power BI – přidání řádků do datové sady streamování**: Zobrazte příchozí tweety na řídicí panel Power BI.
+* **Azure Data Lake – připojit soubor**: Přidáte zákaznická data k datové sadě služby Azure Data Lake mají být zahrnuty úlohy analýzy.
+* **SQL – přidání řádků**: Data Store databáze pro pozdější načtení.
+* **Slack – poslat zprávu**: Upozorněte kanál Slack ohledně vašeho názoru záporné hodnoty, které můžou vyžadovat akci.
 
 Můžete také vytvořit a funkce Azure tak, aby vlastní zpracování můžete provést s vašimi daty. 
 

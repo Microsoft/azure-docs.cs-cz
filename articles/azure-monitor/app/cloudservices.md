@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 710b584777abc312388c3857ced06ce196416a31
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 170ba8e85318ab3774aef95b0a62e452bc2c5e24
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042933"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077857"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 U [aplikací cloudových služeb Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) je možné pomocí služby [Application Insights][start] monitorovat dostupnost, výkon, chyby a využití díky kombinování dat ze sad SDK služby Application Insights a dat [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -217,7 +217,7 @@ Chcete-li získat celkový přehled o systému, můžete klíčové grafy monito
 
 Pokud váš systém využívá jiné služby Azure, například Stream Analytics, jsou zahrnuty i jejich grafy monitorování. 
 
-Pokud máte mobilní klientskou aplikaci, použijte [App Center](../../application-insights/app-insights-mobile-center-quickstart.md). V [Analytics](../../azure-monitor/app/analytics.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
+Pokud máte mobilní klientskou aplikaci, použijte [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). V [Analytics](../../azure-monitor/app/analytics.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
 ## <a name="example"></a>Příklad:
 V [příkladu](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.

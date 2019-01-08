@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: a57422b4bbac4b929a67495bfffeec7bf0476e9c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 039ebe9d38b4ac4f63b078489a9c442e08aff0b0
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000219"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075103"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromážděná: Metriky výkonu systému Linux ve službě Application Insights
 
@@ -29,7 +29,7 @@ Obvykle použijete shromážděná, pokud už máte [instrumentována webová sl
 ![Ukázkové grafy](./media/java-collectd/sample.png)
 
 ## <a name="get-your-instrumentation-key"></a>Získejte klíč instrumentace
-V [portálu Microsoft Azure](https://portal.azure.com), otevřete [Application Insights](../../application-insights/app-insights-overview.md) prostředků, ve kterém chcete data zobrazit. (Nebo [vytvořit nový prostředek](../../application-insights/app-insights-create-new-resource.md).)
+V [portálu Microsoft Azure](https://portal.azure.com), otevřete [Application Insights](../../application-insights/app-insights-overview.md) prostředků, ve kterém chcete data zobrazit. (Nebo [vytvořit nový prostředek](../../azure-monitor/app/create-new-resource.md ).)
 
 Pořiďte si klíč instrumentace, který identifikuje prostředek.
 

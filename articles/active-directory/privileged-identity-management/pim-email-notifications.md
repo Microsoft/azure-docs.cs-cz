@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 11/30/2018
+ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 00b096f59e70962b6883a8024744e8c91a5f9ae3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4bc963d09b9d01efdfad65b78ce9ce336798d375
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846891"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065337"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailových oznámení v PIM
 
@@ -43,16 +43,15 @@ PIM odešle e-mailů, když dojde k následujícím událostem pro role Azure AD
 
 - Pokud je aktivace privilegovaných rolí čekající na schválení
 - Po dokončení požadavek aktivace privilegovaných rolí
-- Když je přiřazení privilegovaných rolí jako oprávněné
 - Pokud je povolená Azure AD PIM
 
 Kdo přijímá tyto e-maily pro role Azure AD závisí na vaší roli, události a oznámení nastavení:
 
-| Uživatel | Aktivace role čeká na schválení | Dokončit žádost o aktivaci role | Role je přiřazená jako oprávněné | Je povolené PIM |
-| --- | --- | --- | --- | --- |
-| Správce privilegované role</br>(Aktivovat/vhodné) | Ano</br>(pouze pokud jsou zadány žádné explicitní schvalovatelům) | Ano* | Ano | Ano |
-| Správce zabezpečení</br>(Aktivovat/vhodné) | Ne | Ano* | Ano | Ano |
-| Globální správce</br>(Aktivovat/vhodné) | Ne | Ano* | Ano | Ano |
+| Uživatel | Aktivace role čeká na schválení | Dokončit žádost o aktivaci role | Je povolené PIM |
+| --- | --- | --- | --- |
+| Správce privilegované role</br>(Aktivovat/vhodné) | Ano</br>(pouze pokud jsou zadány žádné explicitní schvalovatelům) | Ano* | Ano |
+| Správce zabezpečení</br>(Aktivovat/vhodné) | Ne | Ano* | Ano |
+| Globální správce</br>(Aktivovat/vhodné) | Ne | Ano* | Ano |
 
 \* Pokud [ **oznámení** nastavení](pim-how-to-change-default-settings.md#notifications) je nastavena na **povolit**.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: be7cb2e602f1c8c0c8471c866d68c28e0ec37498
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 79801ba7a7b50d751cd105a4c8bcd39bb6681c54
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042338"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075332"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](../../application-insights/app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
@@ -44,7 +44,7 @@ Pokud ji nemáte, vytvořte ji:
 
 ![Zvolte Nový, služby pro vývojáře, Application Insights.](./media/javascript/01-create.png)
 
-*Již máte dotazy?* [Další informace o vytvoření prostředku](../../application-insights/app-insights-create-new-resource.md).
+*Již máte dotazy?* [Další informace o vytvoření prostředku](../../azure-monitor/app/create-new-resource.md ).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Přidejte skript SDK do aplikace nebo webové stránky
 

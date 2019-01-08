@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 8cbd09beffb8d86ab35e5fc1cf15c37b1bef9eb2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: a3a4039e8b9c372212655718a40a57fedcfa188d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050604"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075783"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování prostřednictvím služby Azure Monitor
 
@@ -34,7 +34,7 @@ Získalo observability napříč celým prostředím je potřeba povolit monitor
 - [Projekty Azure DevOps](../devops-project/overview.md) umožňují zjednodušené prostředí s váš stávající kód a úložiště Git, nebo vyberte jednu z ukázkových aplikací k vytvoření kanálu kontinuální integrace (CI) a průběžné doručování (CD) do Azure.
 - [Nepřetržité monitorování v kanálu pro vydávání verzí DevOps](../azure-monitor/app/continuous-monitoring.md) vám umožní brány nebo vrácení změn na základě monitorování dat nasazení.
 - [Monitorování stavu](../azure-monitor/app/monitor-performance-live-website-now.md) umožňuje instrumentovat živou aplikaci .NET ve Windows pomocí Azure Application Insights, aniž byste museli upravovat nebo znovu nasazovat kód.
-- Pokud máte přístup ke kódu pro vaši aplikaci, povolte úplné monitorování s využitím [Application Insights](../application-insights/app-insights-overview.md) nainstalováním sady Azure monitorování Application Insights SDK pro [.NET](../application-insights/quick-monitor-portal.md), [Java ](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), nebo [jiných programovacích jazycích](../azure-monitor/app/platforms.md). To umožňuje zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaší firmy.
+- Pokud máte přístup ke kódu pro vaši aplikaci, povolte úplné monitorování s využitím [Application Insights](../application-insights/app-insights-overview.md) nainstalováním sady Azure monitorování Application Insights SDK pro [.NET](../azure-monitor/learn/quick-monitor-portal.md), [Java ](../azure-monitor/learn/java-quick-start.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md), nebo [jiných programovacích jazycích](../azure-monitor/app/platforms.md). To umožňuje zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaší firmy.
 
 
 
@@ -79,7 +79,7 @@ Důležité aspekty monitorování je proaktivnímu upozorňování na správci 
 ## <a name="prepare-dashboards-and-workbooks"></a>Příprava řídicí panely a sešity
 Zajištění, že vývoje a provozu přístup pro stejnou telemetrii a nástroje umožňující zobrazit vzory napříč celým prostředím a minimalizovat průměrný čas potřebný k detekci (MTTD) a průměrný čas potřebný k obnovení (MTTR).
 
-- Příprava [vlastní řídicí panely](../application-insights/app-insights-tutorial-dashboards.md) na základě běžné metriky a protokoly pro různé role ve vaší organizaci. Řídicí panely můžete kombinovat data ze všech prostředků Azure.
+- Příprava [vlastní řídicí panely](../azure-monitor/learn/tutorial-app-dashboards.md) na základě běžné metriky a protokoly pro různé role ve vaší organizaci. Řídicí panely můžete kombinovat data ze všech prostředků Azure.
 - Příprava [sešity](../azure-monitor/app/usage-workbooks.md) pro zajištění znalosti sdílení mezi vývojem a provozem. Tyto může být připravené jako dynamické sestavy s grafy metrik a dotazů na protokoly nebo dokonce odstraňování vodítka vývojáři pomoc zákaznické podpory nebo operace připravena ke zpracování základních problémů.
 
 ## <a name="continuously-optimize"></a>Průběžné optimalizaci je možné

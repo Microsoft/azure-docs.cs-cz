@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846466"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077551"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -80,7 +80,7 @@ Náš Onboardingový tým Marketplace ověří marketplace registrace podrobné 
 Budete používat [portál partnerů cloudu](https://cloudpartner.azure.com) k vytvoření, publikovat a spravovat nabídky na webu marketplace. Po schválení uvítací e-mail obdržíte, můžete okamžitě přihlásit [portál partnerů cloudu](https://cloudpartner.azure.com) pomocí svého účtu Microsoft k další technické informace o publikování na webu marketplace a vytváření vaší nabídky. 
 *   Další informace o používání portál Cloud Partner [přejděte na Začínáme článek v další části](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal). Musíte být přihlášeni na portál Cloud Partner pro přístup k tyto podrobnosti.
 *   Pokud máte otázky nebo by například chcete naplánovat volání přehled rozhraní připojování, přečtěte si prosím další články v této příručce pro vydavatele nebo žádost o podporu v části typ problému > Marketplace registrace z v rámci portálu partnerů cloudu.
-*   Pokud jste nedostali Uvítacího e-mailu, Zkontrolujte prosím složku s nevyžádanou poštou pro e-mail s předmětem "Vítejte na webu Microsoft Marketplace!." Pokud neexistuje žádný e-mailu v složku s nevyžádanou poštou, [obraťte na podporu Microsoftu](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Na stránce podpory prosím vyberte: typ problému > Marketplace registrace.  Náš Onboardingový tým vydavatele Marketplace potěší, která vám pomůže s vaše dotazy. 
+*   Pokud jste nedostali Uvítacího e-mailu, Zkontrolujte prosím složku s nevyžádanou poštou pro e-mail s předmětem "Vítejte na webu Microsoft Marketplace!." Pokud neexistuje žádný e-mailu v složku s nevyžádanou poštou, [obraťte na podporu Microsoftu](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Na stránce podpory prosím vyberte: Typ problému > Marketplace registrace.  Náš Onboardingový tým vydavatele Marketplace potěší, která vám pomůže s vaše dotazy. 
 
 
 ## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. Zaregistrujte se na webu Dev Center (Transact publikování jenom pro variantu) 
@@ -97,15 +97,15 @@ Jednotlivé registrace v [Dev Center](https://developer.microsoft.com/store/regi
 Po dokončení [Dev Center](https://developer.microsoft.com/store/register) registrace, propojte svůj profil partnerů cloudu s vaší [Dev Center](https://developer.microsoft.com/store/register) účtu (viz podrobné kroky). Tento krok je třeba provést před publikování vaší nabídky v transact. 
 
 >[!Note]
->Pokud chcete vzdát poplatek za zápis $99 středisko pro vývojáře, proveďte [marketplace registrační formulář](https://azuremarketplace.microsoft.com/en-us/sell/signup) a obdržíte e-mail obsahující propagační kód. 
+>Pokud chcete vzdát poplatek za zápis $99 středisko pro vývojáře, proveďte [marketplace registrační formulář](https://azuremarketplace.microsoft.com/sell/signup) a obdržíte e-mail obsahující propagační kód. 
 
 >[!Important]
 >Než začnete vytvářet účet Microsoft Dev Center, ověřte prosím, že vaše organizace ještě nemá účet Dev Center, aby duplicitní účty. Další informace najdete [registraci v centru vývojářů pro](https://docs.microsoft.com/azure/marketplace/register-dev-center) oddílu.
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o prodejních míst marketplace: [porovnání AppSource a na webu Azure Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
-*   [Určení typu výpis pro vaše řešení](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+* Další informace o prodejních míst marketplace: [Porovnání AppSource a na webu Azure Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+*   [Určení typu výpis pro vaše řešení](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
 
  
 ---  

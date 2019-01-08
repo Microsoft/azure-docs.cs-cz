@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 4a77f73f4d87f7def7c8a841c7a59aed04b9bee2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 69ba67eb74333e8316b739fc2f264434643cab95
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020043"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075137"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí nástroje Application Insights
 
@@ -35,11 +35,11 @@ Ukázky C# řešení s kódem pro tento článek je k dispozici na [Githubu](htt
 
 * [Účet batch a propojený účet úložiště](batch-account-create-portal.md)
 
-* [Prostředek služby Application Insights](../application-insights/app-insights-create-new-resource.md)
+* [Prostředek služby Application Insights](../azure-monitor/app/create-new-resource.md )
   
    * Pomocí webu Azure portal k vytvoření Application Insights *prostředků*. Vyberte *Obecné* **typ aplikace**.
 
-   * Kopírovat [Instrumentační klíč](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) z portálu. Je vyžadováno později v tomto článku.
+   * Kopírovat [Instrumentační klíč](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) z portálu. Je vyžadováno později v tomto článku.
   
   > [!NOTE]
   > Může být [účtovat](https://azure.microsoft.com/pricing/details/application-insights/) pro data uložená ve službě Application Insights. To zahrnuje diagnostiky a monitorování dat popsané v tomto článku.

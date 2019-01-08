@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a4e4ca1ca4878a2a405b12413e4378a2cb79aef6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3ea7d6562965debda2c146fedab2ea9ab19f6cc8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999114"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077449"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Monitorování aplikací Dockeru ve službě Application Insights
 
@@ -36,9 +36,9 @@ Při spuštění [Application Insights image](https://hub.docker.com/r/microsoft
 
 ## <a name="set-up-your-application-insights-resource"></a>Nastavení prostředku Application Insights
 
-1. Přihlaste se do [portálu Microsoft Azure](https://azure.com) a otevřete prostředek Application Insights pro vaši aplikaci; nebo [vytvořte novou](../../application-insights/app-insights-create-new-resource.md). 
+1. Přihlaste se do [portálu Microsoft Azure](https://azure.com) a otevřete prostředek Application Insights pro vaši aplikaci; nebo [vytvořte novou](../../azure-monitor/app/create-new-resource.md ). 
    
-    *Který prostředek by měl použít?* Pokud aplikace, které jsou spuštěné v hostiteli vytvořené někým jiným, pak budete muset [vytvořit nový prostředek Application Insights](../../application-insights/app-insights-create-new-resource.md). To je, kde můžete zobrazit a analyzovat telemetrická data. (Vyberte obecné pro typ aplikace.)
+    *Který prostředek by měl použít?* Pokud aplikace, které jsou spuštěné v hostiteli vytvořené někým jiným, pak budete muset [vytvořit nový prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ). To je, kde můžete zobrazit a analyzovat telemetrická data. (Vyberte obecné pro typ aplikace.)
    
     Ale pokud jste vývojář aplikací a Věříme, že jste [přidat sadu Application Insights SDK](../../azure-monitor/app/java-live.md) u každého z nich. Pokud jsou všechny skutečně komponenty jednu obchodní aplikace, pak můžete nakonfigurovat všechny z nich k odesílání telemetrie na jeden prostředek a použijete tento stejný prostředek pro zobrazení údajů o Docker životního cyklu a výkonu. 
    

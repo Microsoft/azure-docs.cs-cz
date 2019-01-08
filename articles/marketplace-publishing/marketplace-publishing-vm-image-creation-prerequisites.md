@@ -3,7 +3,7 @@ title: Technické požadavky pro vytváření imagí virtuálních počítačů 
 description: Pochopili požadavky na vytvoření a nasazení image virtuálního počítače na webu Azure Marketplace pro ostatní uživatele k nákupu.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 79fb9869b37e82df3f41a50e4425e7c0cd08c841
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1fdf945645b2d5c89d7f3750ec836595adb90b06
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255264"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077075"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Technické požadavky pro vytváření imagí virtuálních počítačů pro Azure Marketplace
 Přečtěte si důkladně před zahájením procesu a pochopit, kde a proč provádění jednotlivých kroků. Co je to možné, můžete by měla připravit informace o vaší společnosti a další data, stáhněte potřebné nástroje, nebo vytvořit technickými komponentami před zahájením procesu vytvoření nabídky. Tyto položky by měl být zřejmé z revize v tomto článku.  
@@ -50,6 +51,6 @@ Můžete vyvíjet virtuálních počítačů Azure ve Windows nebo Linuxu. Někt
 Můžete vyvíjet virtuálních pevných disků Azure v cloudu nebo lokálně:
 
 * Vývoj pro cloudové znamená, že všechny kroky vývoje provádějí vzdáleně na virtuální pevný disk rezidenční v Azure.
-* Místní vývoj vyžaduje stažení virtuálního pevného disku a vývoj pomocí místní infrastruktury. I když je to možné, nedoporučujeme ji. Mějte na paměti, že vyvíjet pro Windows nebo SQL v místním vyžaduje mít odpovídající místní licenční klíče. Nelze zahrnout nebo po vytvoření virtuálního počítače nainstalovat systém SQL Server. Musíte také základní vaší nabídky na schválené imagi SQL na webu Azure Portal. Pokud se rozhodnete pro vývoj v místním, je nutné provést několik kroků, jinak, než pokud byly vývoje v cloudu. Můžete najít relevantní informace v [vytvořit image virtuálního počítače v místním](marketplace-publishing-vm-image-creation-on-premise.md).
+* Místní vývoj vyžaduje stažení virtuálního pevného disku a vývoj pomocí místní infrastruktury. Přestože tento přístup je možné, nedoporučujeme ji. Vývoj pro Windows nebo SQL v místním vyžaduje mít odpovídající místní licenční klíče. Nelze zahrnout nebo po vytvoření virtuálního počítače nainstalovat systém SQL Server. Musíte také základní vaší nabídky na schválené imagi SQL na webu Azure Portal. Pokud se rozhodnete pro vývoj v místním, je nutné provést několik kroků, jinak, než pokud byly vývoje v cloudu. Můžete najít relevantní informace v [vytvořit image virtuálního počítače v místním](marketplace-publishing-vm-image-creation-on-premise.md).
 
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md

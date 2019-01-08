@@ -1,41 +1,41 @@
 ---
 title: Obměna klíčů přístup pro služby Azure SignalR
-description: Obsahuje přehled proč zákazník potřebuje pravidelně obměna přístupových klíčů a jak to provést v portálu grafického uživatelského rozhraní a rozhraní příkazového řádku.
+description: Obsahuje přehled proč zákazník potřebuje pravidelně obměna přístupových klíčů a jak to provést s grafickým uživatelským rozhraním webu Azure portal a rozhraní příkazového řádku Azure.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 2c0f60b0ef3a90372fc4a095c830f39bc148f354
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 04321e62ea41b58e9ee4314b600c77e6c39b7ade
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53636153"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065830"
 ---
 # <a name="access-key-rotation-for-azure-signalr-service"></a>Obměna klíčů přístup pro služby Azure SignalR
 
-Každá instance služby Azure SignalR nemá dvojici přístupové klíče: Primární a sekundární klíče. Používají se k ověřování klientů SignalR při zasílání požadavků na službu. Klíče jsou spojeny s adresu url koncového bodu instance. Zabezpečení vašich klíčů a je pravidelně otočení. Dva přístupové klíče, jsou k dispozici, můžete udržovat připojení pomocí jednoho klíče druhého.
+Každá instance služby Azure SignalR nemá dvojici přístupové klíče volá primárního a sekundárního klíče. Slouží k ověřování klientů SignalR při žádostí do služby. Klíče jsou spojeny s adresu url koncového bodu instance. Zabezpečení vašich klíčů a je pravidelně otočení. Jste, pokud se dva přístupové klíče, takže můžete udržovat připojení pomocí jeden klíč druhého.
 
 ## <a name="why-rotate-access-keys"></a>Proč otočit přístupové klíče?
 
-Při požadavku na důvod a dodržování předpisů zabezpečení vývojáři doporučují pravidelně obměna přístupových klíčů.
+Z důvodů zabezpečení a požadavky na dodržování předpisů pravidelně otočit přístupové klíče.
 
-## <a name="how-to-regenerate-access-keys"></a>Jak znovu vygenerovat přístupové klíče?
+## <a name="regenerate-access-keys"></a>Opětovné vygenerování přístupových klíčů
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com/) a přihlaste se pomocí svých přihlašovacích údajů.
+1. Přejděte [webu Azure portal](https://portal.azure.com/)a přihlaste se pomocí svých přihlašovacích údajů.
 
-1. Najít **klíče** část z instance služby Azure SignalR, který chcete znovu vygenerovat klíče.
+1. Najít **klíče** části v instanci služby Azure SignalR s klíči, které chcete znovu vygenerovat.
 
-1. Klikněte na tlačítko **klíče** v navigační nabídce.
+1. Vyberte **klíče** v navigační nabídce.
 
-1. Klikněte na tlačítko **znovu vygenerovat primární klíč** nebo **znovu vygenerovat sekundární klíč**.
+1. Vyberte **znovu vygenerovat primární klíč** nebo **znovu vygenerovat sekundární klíč**.
 
-Bude vytvořena a zobrazí nový klíč a odpovídající připojovací řetězec.
+   Nový klíč a odpovídající připojovací řetězec se vytvoří a zobrazí.
 
- ![Obnovit klíče](media/signalr-key-rotation/regenerate-keys.png)
+   ![Obnovit klíče](media/signalr-key-rotation/regenerate-keys.png)
 
-Můžete také znovu vygenerovat klíče pomocí [rozhraní příkazového řádku Azure](/cli/azure/ext/signalr/signalr/key?view=azure-cli-latest#ext-signalr-az-signalr-key-renew).
+Můžete také může znovu vygenerovat klíče s použitím [rozhraní příkazového řádku Azure](/cli/azure/ext/signalr/signalr/key?view=azure-cli-latest#ext-signalr-az-signalr-key-renew).
 
 ## <a name="update-configurations-with-new-connection-strings"></a>Aktualizace konfigurace se nové připojovací řetězce
 
@@ -47,16 +47,16 @@ Můžete také znovu vygenerovat klíče pomocí [rozhraní příkazového řád
 
 ## <a name="forced-access-key-regeneration"></a>Opětovné generování vynucené přístupového klíče
 
-Službě Azure SignalR může vynutit povinná opětovné generování přístupového klíče v rámci určité situace. Služba upozorní zákazníky prostřednictvím e-mailu a portálu oznámení. Pokud přijímáte tuto komunikaci nebo dojde k selhání služby z důvodu přístupový klíč, otočení klíčů podle této příručky.
+Službě Azure SignalR může vynutit povinná opětovné generování přístupového klíče v některých situacích. Služba upozorní zákazníky prostřednictvím e-mailu a portálu oznámení. Pokud přijímáte tuto komunikaci nebo dojde k selhání služby z důvodu přístupový klíč, otočení klíče podle pokynů v této příručce.
 
 ## <a name="next-steps"></a>Další postup
 
-Doporučujeme pravidelně otáčení přístupové klíče z hlediska zabezpečení.
+Otočit přístupové klíče pravidelně z hlediska zabezpečení.
 
-V této příručce jste se dozvěděli o tom, jak znovu vygenerovat přístupové klíče. Pokračujte na další kurzy týkající se ověřování pomocí OAuth, nebo s využitím Azure Functions.
-
-> [!div class="nextstepaction"]
-> [Integrace s ASP.NET Core Identity](./signalr-authenticate-oauth.md)
+V této příručce jste zjistili, jak znovu vygenerovat přístupové klíče. Pokračujte na další kurzy týkající se ověřování pomocí OAuth, nebo s využitím Azure Functions.
 
 > [!div class="nextstepaction"]
-> [Vytvoření aplikace bez serveru v reálném čase s ověřováním](./signalr-authenticate-azure-functions.md)
+> [Integrace s ASP.NET core identity](./signalr-authenticate-oauth.md)
+
+> [!div class="nextstepaction"]
+> [Sestavení aplikace bez serveru v reálném čase s ověřováním](./signalr-authenticate-azure-functions.md)

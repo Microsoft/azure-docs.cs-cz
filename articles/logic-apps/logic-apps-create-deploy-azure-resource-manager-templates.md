@@ -10,16 +10,16 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 274fa3153f6a354b121b7fd8338d8e0d2d94f4f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 52aea4e47473d4dd27519ae53322b0e72d93f20e
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230808"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062889"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Vytvoření a nasazení aplikací logiky s využitím šablon Azure Resource Manageru
 
-Služba Azure Logic Apps poskytuje šablony Azure Resource Manageru, které můžete použít nejen k vytváření aplikací logiky pro automatizaci pracovních postupů, ale také k definování prostředky a parametry, které se používají pro nasazení. Můžete použít tuto šablonu pro vaše vlastní obchodní scénáře nebo šablonu přizpůsobit, aby splňovaly vaše požadavky. Další informace o [šablony Resource Manageru pro logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) a [strukturu šablony Azure Resource Manageru a syntaxe](../azure-resource-manager/resource-group-authoring-templates.md).
+Služba Azure Logic Apps poskytuje šablony Azure Resource Manageru, které můžete použít nejen k vytváření aplikací logiky pro automatizaci pracovních postupů, ale také k definování prostředky a parametry, které se používají pro nasazení. Můžete použít tuto šablonu pro vaše vlastní obchodní scénáře nebo šablonu přizpůsobit, aby splňovaly vaše požadavky. Další informace o [šablony Resource Manageru pro logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) a [strukturu šablony Azure Resource Manageru a syntaxe](../azure-resource-manager/resource-group-authoring-templates.md). Syntaxi JSON a vlastnostech najdete v tématu [typy prostředků Microsoft.Logic](/azure/templates/microsoft.logic/allversions).
 
 ## <a name="define-the-logic-app"></a>Definice aplikace logiky
 

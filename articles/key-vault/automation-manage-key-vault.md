@@ -10,16 +10,15 @@ ms.assetid: 4e780762-19b6-4ca6-b894-ebb44c538f35
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: magoedte
-ms.openlocfilehash: e95e7dac0c6668078a9399342617c041eee6fd7d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 85a0c05719ba374ed213212db6f094d75e433183
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998604"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073427"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Správa služby Azure Key Vault pomocí Azure Automation.
 

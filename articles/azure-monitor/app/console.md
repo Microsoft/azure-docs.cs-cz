@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: c3381ac2dcc3755bb0aedb5f36e398ebc5842959
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 57c0b930982f3a8b82ef7c077bfcdae6dfa23aac
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797941"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077109"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro .NET konzolové aplikace
 [Application Insights](../../application-insights/app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
@@ -27,7 +27,7 @@ Musíte mít předplatné s [Microsoft Azure](https://azure.com). Přihlaste se 
 
 ## <a name="getting-started"></a>Začínáme
 
-* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../application-insights/app-insights-create-new-resource.md). Typ aplikace vyberte **Obecné**.
+* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ). Typ aplikace vyberte **Obecné**.
 * Zkopírujte klíč instrumentace. Vyhledejte klíč v **Essentials** rozevíracího seznamu nový prostředek vytvořený. 
 * Nainstalujte nejnovější [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíčku.
 * Nastavení klíče instrumentace v kódu před sledování žádnou telemetrii (nebo nastavte proměnnou prostředí APPINSIGHTS_INSTRUMENTATIONKEY). Potom byste měli mít ručně sledovat telemetrii a podívejte se na webu Azure portal

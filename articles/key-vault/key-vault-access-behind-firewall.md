@@ -10,16 +10,15 @@ ms.assetid: 50d21774-2ee1-4212-8995-570c9de603c5
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: ddc341aae823ddaad2c6b2e8969be71ff8f918e8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: cd5ecf60c76ec3db0bc0d867a8a807016eeea863
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998283"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073720"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Přístup ke službě Azure Key Vault za bránou firewall
 

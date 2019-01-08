@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 04/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bf6bca668ff97b30789a99dab2f1f3d409ab0624
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ffd153490938c232bdf8b5d4e40a2d43ced9f57b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867911"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063264"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Šablony Azure Resource Manageru pro službu Azure Backup
 
-Následující tabulka obsahuje odkazy na šablony Azure Resource Manageru pro použití s trezory služby Recovery Services a funkcemi služby Azure Backup.
+Následující tabulka obsahuje odkazy na šablony Azure Resource Manageru pro použití s trezory služby Recovery Services a funkcemi služby Azure Backup. Další informace o syntaxi JSON a vlastnostech najdete v tématu [Microsoft.recoveryservices typy prostředků](/azure/templates/microsoft.recoveryservices/allversions).
 
 |   |   |
 |---|---|

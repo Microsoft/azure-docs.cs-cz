@@ -10,16 +10,15 @@ ms.assetid: 0d0995aa-b60d-4811-be12-ba0a45390197
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 0e24bd56123279a24a72b9b52d8cb51e2a3a5eae
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f5a6365476f5dc626766ca33f9c933cd12226957
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300626"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078078"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Monitorování a správa vytvoření certifikátu
 Platí pro: Azure  

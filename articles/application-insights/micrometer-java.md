@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 378516066e3b4a3436a2952616ea877d9a49d5d4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3bf24a4ed17986ff948a7396e608a51ae38208a5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255308"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076497"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak používat Micrometer pomocí Azure Application Insights Java SDK
 Micrometer monitorování míry metriky aplikací pro aplikace založené na JVM kódu a umožňuje exportovat data do své oblíbené systémy pro monitorování. V tomto článku se dozvíte, jak používat Micrometer pro Spring Boot a aplikace Spring Boot s využitím Application Insights.
@@ -27,7 +27,7 @@ Do souboru pom.xml nebo build.gradle přidejte následující závislosti:
 * [Application Insights aplikace spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-BETA nebo novější
 * Micrometer Azure registru 1.1.0 nebo novější
 * [Starší verze micrometer Spring](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (v tomto zpětné autoconfig kódu v rámci Spring).
-* [Prostředek ApplicationInsights](app-insights-create-new-resource.md)
+* [Prostředek ApplicationInsights](../azure-monitor/app/create-new-resource.md )
 
 Kroky
 
@@ -65,7 +65,7 @@ Do souboru pom.xml nebo build.gradle přidejte následující závislosti:
 
 * Application Insights Spring boot starter 2.1.2 nebo novější
 * Azure-spring spouštěcí metrics spouštěčů 2.0.7 nebo novější  
-* [Prostředek služby Application Insights](app-insights-create-new-resource.md)
+* [Prostředek služby Application Insights](../azure-monitor/app/create-new-resource.md )
 
 Kroky:
 
@@ -126,7 +126,7 @@ Do souboru pom.xml nebo build.gradle přidejte následující závislosti:
 * [Application Insights webové 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) nebo novější
 * [Registrace webového filtru](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * Micrometer Azure registru 1.1.0 nebo novější
-* [Prostředek služby Application Insights](app-insights-create-new-resource.md)
+* [Prostředek služby Application Insights](../azure-monitor/app/create-new-resource.md )
 
 Kroky:
 

@@ -4,17 +4,17 @@ description: Použijte Terraform a jazyk konfigurace společnosti HashiCorp (HCL
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtuální počítač, síť, moduly
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.openlocfilehash: 9870eac87204f24993ab71e373dcab3a8ead3e89
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667596"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075333"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
 
@@ -23,11 +23,11 @@ Tento kurz ukazuje, jak pomocí [jazyka konfigurace společnosti HashiCorp](http
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavit ověřování Azure
+> * Nastavení ověřování Azure
 > * Vytvořit konfigurační soubor Terraformu
 > * Inicializovat Terraform
 > * Vytvořit plán provádění Terraformu
-> * Použít plán provádění Terraformu
+> * Použití plánu provádění Terraformu
 
 ## <a name="1-set-up-azure-authentication"></a>1. Nastavení ověřování Azure
 
@@ -62,7 +62,7 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
 
 6. Vytvořte nový soubor, který bude obsahovat hodnoty proměnných Terraformu. Běžně se soubor proměnných Terraformu pojmenovává `terraform.tfvars`, protože Terraform soubor pojmenovaný `terraform.tfvars` (nebo s tvarem `*.auto.tfvars`) načte automaticky, pokud se nachází v aktuálním adresáři. 
 
-7. Do souboru proměnných zkopírujte následující kód. Nezapomeňte následovně nahradit zástupné hodnoty: U `subscription_id` použijte ID předplatného Azure, které jste zadali při spuštění `az account set`. U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
+7. Do souboru proměnných zkopírujte následující kód. Nezapomeňte nahradit zástupné symboly následujícím způsobem: Pro `subscription_id`, použijte ID předplatného Azure, který jste zadali při spuštění `az account set`. U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
 
   ```tf
   subscription_id = "<azure-subscription-id>"
@@ -218,7 +218,7 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
   }
   ```
 
-## <a name="3-initialize-terraform"></a>3. Inicializace Terraformu 
+## <a name="3-initialize-terraform"></a>3. Inicializovat Terraform 
 
 [Příkaz terraform init](https://www.terraform.io/docs/commands/init.html) se používá k inicializaci adresáře, který obsahuje konfigurační soubory Terraformu – soubory vytvořené v předchozích částech. Příkaz `terraform init` je dobrým zvykem spouštět vždy po zapsání nové konfigurace Terraformu. 
 
@@ -275,7 +275,7 @@ Pokud chcete použít dříve uložený plán provádění, spusťte tento pří
 
 ![Použití plánu provádění Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Projděte si seznam [modulů Terraformu pro Azure](https://registry.terraform.io/modules/Azure).
 - Vytvořte [pomocí Terraformu škálovací sadu virtuálních počítačů](terraform-create-vm-scaleset-network-disks-hcl.md).

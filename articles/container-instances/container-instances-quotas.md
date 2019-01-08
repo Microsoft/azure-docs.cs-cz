@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: 86c169c84e905362e8fdb069e8ceadcb5e19fe67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602388"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075494"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kvóty a dostupnost oblastí pro Azure Container Instances
 
@@ -24,7 +24,7 @@ Všechny služby Azure zahrnují určitá výchozí omezení a kvóty pro prost�
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Služba Azure Container Instances je dostupná v následujících oblastech s uvedenými omezeními procesoru a paměti. Hodnoty jsou aktuální k datu publikování. Aktuální informace, použijte [seznamu možnosti](/rest/api/container-instances/listcapabilities/listcapabilities) rozhraní API.
+Služba Azure Container Instances je dostupná v následujících oblastech s uvedenými omezeními procesoru a paměti. Hodnoty jsou aktuální k datu publikování. Aktuální informace, použijte [seznamu možnosti](/rest/api/container-instances/listcapabilities/listcapabilities) rozhraní API. Omezení dostupnosti a prostředků se může lišit při použití Azure Container Instances pomocí [virtuální sítě](container-instances-vnet.md) (preview) nebo s [GPU prostředky](container-instances-gpu.md) (preview).
 
 | Umístění | Operační systém | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |

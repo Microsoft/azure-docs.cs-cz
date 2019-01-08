@@ -10,16 +10,15 @@ ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 11506f63089564b5187ebd6177f7187f1faf6655
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999590"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077704"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení služby Azure Key Vault s obměny klíčů a auditování
 

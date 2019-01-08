@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: d67b53d80b74d0a6ad3c4264a55a5e277acffd20
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ddf4763b8f5abb81c7d884d9d978c85843410ccb
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083899"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064942"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Vyhledání nápovědy a vytvořit lístek podpory pro Azure Active Directory
 Společnost Microsoft poskytuje globální technickou, před prodejem, fakturaci a předplatné podpory pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu pro placené Microsoft Azure a zkušebních verzí předplatného. Telefonické podpory a online podporu fakturace jsou dostupné v dalších jazycích. 
@@ -51,7 +51,7 @@ Pokud nemůžete najít odpovědi sami, můžete otevřít lístek online podpor
    
 4. Pro **služby**vyberte **Azure Active Directory**a pak vyberte **Další**.
 
-5. Na **problém** okno, vyberte [závažnost](https://azure.microsoft.com/support/plans/response/)).
+5. Na **problém** okno, vyberte [závažnost](https://azure.microsoft.com/support/plans/response/).
   
 6. Vyberte **typ problému**a potom vyberte **kategorie** daného typu. V tomto okamžiku se také nabízí informace o samoobslužné pomoci pro kategorii problému.
   
@@ -68,9 +68,9 @@ Pokud nemůžete najít odpovědi sami, můžete otevřít lístek online podpor
 
 1. Přihlaste se k [centru pro správu Office 365](https://portal.office.com) pomocí účtu, který má Enterprise Mobility + Security (EMS) licence.
 
-2. Na **podporu** dlaždice, vyberte **nové žádosti o službu**: ![snímek obrazovky portálu služeb Office 365](./media/active-directory-troubleshooting-support-howto/office-portal.png)
+2. Na **podporu** dlaždice, vyberte **nové žádosti o službu**: ![Snímek obrazovky portálu Office 365](./media/active-directory-troubleshooting-support-howto/office-portal.png)
 
-3. Na **podporují přehled** stránce **Identity management** nebo **Správa uživatelů a domény**: ![snímek obrazovky kategorie podpory služby Azure AD](./media/active-directory-troubleshooting-support-howto/select-identity.png)
+3. Na **Přehled podpory** stránce **Identity management** nebo **Správa uživatelů a domény**: ![Snímek obrazovky kategorie podporu Azure AD](./media/active-directory-troubleshooting-support-howto/select-identity.png)
 
 4. Pro **funkce**, vyberte funkci Azure AD, pro které chcete podporu.
 

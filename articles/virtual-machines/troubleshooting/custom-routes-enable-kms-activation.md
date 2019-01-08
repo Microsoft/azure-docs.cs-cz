@@ -1,6 +1,6 @@
 ---
 title: Povolit aktivaci prostřednictvím služby správy KLÍČŮ u vynuceného tunelování pomocí Azure vlastní trasy | Dokumentace Microsoftu
-description: Ukazuje, jak povolit aktivaci prostřednictvím služby správy KLÍČŮ vynucené tunelování v Azure pomocí Azure vlastní trasy.
+description: Ukazuje, jak použít Azure vlastní trasy k povolení aktivace prostřednictvím služby správy KLÍČŮ při použití vynuceného tunelování v Azure.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: f1e2ab6a954361a7807d78dc2baf5d24af52a679
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 71330e72ef27b62472622472b37e2ec8c78211d7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797934"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075562"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace Windows selže v případě vynuceného tunelování
 
-Tento článek popisuje, jak vyřešit problém aktivace služby správy KLÍČŮ, který může dojít, pokud je povolené vynucené tunelování v připojení VPN typu site-to-site nebo ExpressRoute scénáře.
+Tento článek popisuje, jak vyřešit problém aktivace služby správy KLÍČŮ, se kterým může docházet při povolení vynuceného tunelování v připojení VPN typu site-to-site nebo ExpressRoute scénáře.
 
 ## <a name="symptom"></a>Příznak
 
-Povolíte [vynucené tunelování](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) na Azure podsítí virtuální sítě směrovat všechen provoz směřující na Internet zpět do místní sítě. V tomto scénáři můžete virtuální počítače Azure (VM), na kterých běží Windows Server 2012 R2 nebo novější verze úspěšně aktivovat Windows. Však virtuální počítače, na kterých běží starší verze Windows nepodaří aktivovat Windows. 
+Povolíte [vynucené tunelování](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) v Azure podsítí virtuální sítě směrovat všechen provoz směřující na Internet zpět do místní sítě. V tomto scénáři Azure virtuální počítače (VM), na kterých běží Windows Server 2012 R2 (nebo novější verze systému Windows) úspěšně aktivace Windows. Virtuální počítače, na kterých běží starší verze Windows ale selhala aktivace Windows.
 
 ## <a name="cause"></a>Příčina
 
-Virtuální počítače s Windows Azure potřebujete připojit k serveru Azure prostřednictvím služby správy KLÍČŮ pro aktivaci Windows. Aktivace vyžaduje, že žádost o aktivaci musí pocházet z Azure veřejnou IP adresu. Vynucené tunelování scénář aktivace selže, protože požadavek na aktivaci se z místní sítě, místo ze Azure veřejnou IP adresu. 
+Virtuální počítače Windows Azure je nutné se připojit k serveru Azure prostřednictvím služby správy KLÍČŮ pro aktivaci Windows. Aktivace vyžaduje, že žádost o aktivaci pocházejí z Azure veřejné IP adresy. Vynucené tunelování scénář tato aktivace selže, protože požadavek na aktivaci přichází z místní sítě, místo z Azure veřejné IP adresy.
 
 ## <a name="solution"></a>Řešení
 
-Chcete-li tento problém vyřešit, použijte Azure aktivace vlastní trasy pro směrování provozu na server služby správy KLÍČŮ Azure (23.102.135.246). 
+Chcete-li tento problém vyřešit, použijte Azure aktivace vlastní trasy pro směrování provozu na server služby správy KLÍČŮ Azure.
 
-IP adresa 23.102.135.246 je IP adresa serveru služby správy KLÍČŮ pro Azure globální cloud. Názvu DNS je kms.core.windows.net. Pokud používáte jiné platformy Azure jako Azure Germany, musíte použít IP adresu serveru služby správy KLÍČŮ odpovídá. Další informace najdete v tématu v následující tabulce:
+IP adresa serveru služby správy KLÍČŮ pro Azure globální cloud je 23.102.135.246. Názvu DNS je kms.core.windows.net. Pokud používáte jiné platformy Azure jako Azure Germany, je nutné použít IP adresu odpovídající serveru služby správy KLÍČŮ. Další informace najdete v tématu v následující tabulce:
 
 |Platforma| DNS SLUŽBY SPRÁVY KLÍČŮ|SLUŽBY SPRÁVY KLÍČŮ IP|
 |------|-------|-------|
@@ -55,11 +55,11 @@ Chcete-li přidat vlastní trasy, postupujte takto:
 2. Spusťte následující příkazy:
 
     ```powershell
-    # First, we will get the virtual network hosts the VMs that has activation problems. In this case, I get virtual network ArmVNet-DM in Resource Group ArmVNet-DM
+    # First, get the virtual network that hosts the VMs that have activation problems. In this case, we get virtual network ArmVNet-DM in Resource Group ArmVNet-DM:
 
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "ArmVNet-DM" -Name "ArmVNet-DM"
 
-    # Next, we create a route table and specify that traffic bound to the KMS IP (23.102.135.246) will go directly out
+    # Next, create a route table and specify that traffic bound to the KMS IP (23.102.135.246) will go directly out:
 
     $RouteTable = New-AzureRmRouteTable -Name "ArmVNet-DM-KmsDirectRoute" -ResourceGroupName "ArmVNet-DM" -Location "centralus"
 
@@ -67,7 +67,7 @@ Chcete-li přidat vlastní trasy, postupujte takto:
 
     Set-AzureRmRouteTable -RouteTable $RouteTable
     ```
-3. Přejděte na virtuální počítač, který má problém s aktivací, použijte [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) chcete otestovat, jestli ho můžete získat přístup k serveru služby správy KLÍČŮ:
+3. Přejděte k virtuálnímu počítači, který má problémy s aktivací. Použití [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) chcete otestovat, jestli se můžete připojit k serveru služby správy KLÍČŮ:
 
         psping kms.core.windows.net:1688
 
@@ -79,21 +79,21 @@ Chcete-li přidat vlastní trasy, postupujte takto:
 2. Spusťte následující příkazy:
 
     ```powershell
-    # First, we will create a new route table
+    # First, create a new route table:
     New-AzureRouteTable -Name "VNet-DM-KmsRouteGroup" -Label "Route table for KMS" -Location "Central US"
 
-    # Next, get the routetable that was created
+    # Next, get the route table that was created:
     $rt = Get-AzureRouteTable -Name "VNet-DM-KmsRouteTable"
 
-    # Next, create a route
+    # Next, create a route:
     Set-AzureRoute -RouteTable $rt -RouteName "AzureKMS" -AddressPrefix "23.102.135.246/32" -NextHopType Internet
 
-    # Apply KMS route table to the subnet that host the problem VMs (in this case, I will apply it to the subnet named Subnet-1)
+    # Apply the KMS route table to the subnet that hosts the problem VMs (in this case, we apply it to the subnet that's named Subnet-1):
     Set-AzureSubnetRouteTable -VirtualNetworkName "VNet-DM" -SubnetName "Subnet-1" 
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Přejděte na virtuální počítač, který má problém s aktivací, použijte [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) chcete otestovat, jestli ho můžete získat přístup k serveru služby správy KLÍČŮ:
+3. Přejděte k virtuálnímu počítači, který má problémy s aktivací. Použití [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) chcete otestovat, jestli se můžete připojit k serveru služby správy KLÍČŮ:
 
         psping kms.core.windows.net:1688
 

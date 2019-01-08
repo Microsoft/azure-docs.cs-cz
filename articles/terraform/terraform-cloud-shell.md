@@ -4,17 +4,17 @@ description: Použijte Terraform se službou Azure Cloud Shell a zjednodušte si
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, škálovací sada, virtuální počítač, síť, úložiště, moduly
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: a5f44edf201ce9a2e2c0da6b5da9031958a11fdc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: af71cf07ea12e605f57d34b530fcbcd61838128b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959304"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074515"
 ---
 # <a name="terraform-cloud-shell-development"></a>Vývoj v Cloud Shellu pomocí Terraformu 
 
@@ -48,7 +48,7 @@ Soubory a stavy prostředí mezi relacemi služby Azure Storage a Cloud Shellu p
 Ve službě Cloud Shell je k dispozici Azure CLI. Je to skvělý nástroj pro testování konfigurací a kontrolu práce po dokončení příkazů `terraform apply` nebo `terraform destroy`.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Vytvoření malého clusteru virtuálních počítačů pomocí Registru modulů](terraform-create-vm-cluster-module.md)
 [Vytvoření malého clusteru virtuálních počítačů pomocí vlastního HCL](terraform-create-vm-cluster-with-infrastructure.md)

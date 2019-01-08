@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 4653803623ed0c847fa63663204b5842f7a03d08
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584203"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063909"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Kurz integrace protokolů Azure: Zpracování událostí služby Azure Key Vault pomocí Event Hubs
 
@@ -25,13 +25,13 @@ ms.locfileid: "53584203"
 
 Integrace protokolů Azure slouží k načtení protokolovaných událostí a zpřístupněte je do vašeho systému pro správu (SIEM) událostí zabezpečení. Tento kurz ukazuje příklad použití Azure Log Integration pro zpracování protokoly získané prostřednictvím služby Azure Event Hubs.
 
-Upřednostňovanou metodou pro integraci protokolů Azure je pomocí konektoru SIEM dodavatele s Azure Monitor a podle těchto [pokyny](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Nicméně pokud t kódu dodavatele vašeho systému SIEM konektor poskytnout do Azure monitoru, bude pravděpodobně možné používat Azure Log Integration jako dočasné řešení (Pokud vašeho systému SIEM je podporovaný službou Azure Log Integration) dokud tyto connector je k dispozici.
+Je upřednostňovanou metodou pro integraci protokolů Azure pomocí Azure Monitor konektor SIEM dodavatele a podle těchto [pokyny](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Nicméně pokud dodavatele vašeho systému SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné používat Azure Log Integration jako dočasné řešení (Pokud vašeho systému SIEM je podporovaný službou Azure Log Integration) dokud tyto connector je k dispozici.
 
  
-V tomto kurzu použijte k získání seznámí s tím, jak integrace protokolů Azure Event Hubs spolu fungují a podle následujících kroků příklad a vysvětlení, jak každý krok podporuje řešení. Pak můžete využít, co jste již naučili zde k vytvoření vlastní kroky pro podporu vaší společnosti s jedinečným požadavkům.
+V tomto kurzu použijte k získání seznámí s tím, jak integrace protokolů Azure Event Hubs spolu fungují a podle následujících kroků příklad a vysvětlení, jak každý krok podporuje řešení. Pak můžete využít, co jste se naučili v tomto poli k vytvoření vlastní kroky pro podporu jedinečným požadavkům vaší společnosti.
 
 >[!WARNING]
-Kroky a příkazy v tomto kurzu nejsou určeny k zkopírovat a vložit. Jsou to pouze jako příklady. Nepoužívejte příkazy prostředí PowerShell je v živém prostředí. Je nutné přizpůsobit podle vašeho prostředí jedinečné.
+Kroky a příkazy v tomto kurzu nejsou určeny k zkopírovat a vložit. Jsou to pouze jako příklady. Nepoužívejte příkazy prostředí PowerShell "tak jak jsou" v živém prostředí. Je nutné přizpůsobit podle vašeho prostředí jedinečné.
 
 
 Tento kurz vás provede procesem odběr služby Azure Key Vault aktivit do centra událostí a jejich zpřístupnění jako soubory JSON do vašeho systému SIEM. Potom můžete nakonfigurovat vašeho systému SIEM ke zpracování souborů JSON.
@@ -80,7 +80,7 @@ Před dokončením kroků v tomto článku, budete potřebovat následující:
 ## <a name="create-supporting-infrastructure-elements"></a>Vytvořit prvky podpůrné infrastruktury
 
 1. Otevřete okno Powershellu se zvýšenými oprávněními a přejděte na **C:\Program Files\Microsoft Azure Log Integration**.
-1. Importujte rutiny AzLog spuštěním skriptu LoadAzLogModule.ps1. Zadejte `.\LoadAzLogModule.ps1` příkazu. (Všimněte si, že. \ v tomto příkazu.) Mělo by se vám zobrazit přibližně toto:</br>
+1. Importujte rutiny AzLog spuštěním skriptu LoadAzLogModule.ps1. Zadejte `.\LoadAzLogModule.ps1` příkazu. (Všimněte si, že ". \" v tomto příkazu.) Mělo by se vám zobrazit přibližně toto:</br>
 
    ![Seznam načtené moduly](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
@@ -93,7 +93,7 @@ Před dokončením kroků v tomto článku, budete potřebovat následující:
 
    ![Okno prostředí PowerShell](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 1. Vytvoření proměnné k ukládání hodnot, které se později použijí. Zadejte všechny následující příkazy prostředí PowerShell. Můžete potřebovat a upravte hodnoty tak, aby odpovídaly vašemu prostředí.
-    - ```$subscriptionName = �Visual Studio Ultimate with MSDN�``` (Název vašeho odběru může lišit. Zobrazí se jako součást výstupního předchozím příkazem.)
+    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (Název vašeho odběru může lišit. Zobrazí se jako součást výstupního předchozím příkazem.)
     - ```$location = 'West US'``` (Tato proměnná se používá k předání umístění, kde by měl být vytvořen prostředky. Můžete změnit tuto proměnnou na libovolné místo podle vašeho výběru.)
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random``` (Název může obsahovat cokoli, ale měl by obsahovat pouze malá písmena a číslice.)

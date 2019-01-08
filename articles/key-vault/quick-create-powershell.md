@@ -9,19 +9,19 @@ ms.assetid: 1126f665-2e6c-4cca-897e-7d61842e8334
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: powershell
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/28/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: ae09442c1ebec878e15b5149d0634f8dc3568f7a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: d43cd53c462527ce5458e7ae8c4bcbe961ed7553
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362414"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076259"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí PowerShellu
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Powershellu
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Další informace o službě Key Vault najdete v tématu [Přehled](key-vault-overview.md). V tomto rychlém startu vytvoříte trezor klíčů pomocí PowerShellu. Do nově vytvořeného trezoru pak uložíte tajný klíč.
 
@@ -59,8 +59,8 @@ New-AzureRmKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGr
 
 Výstup této rutiny zobrazuje vlastnosti nově vytvořeného trezoru klíčů. Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
-* **Název trezoru:** V tomto příkladu je to **Contoso-Vault2**. Tento název budete používat pro další rutiny Key Vault.
-* **Identifikátor URI trezoru:** V tomto příkladu je to https://contosokeyvault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+* **Název trezoru**: V tomto příkladu je to **Contoso-Vault2**. Tento název budete používat pro další rutiny Key Vault.
+* **Identifikátor URI trezoru**: V tomto příkladu, který je https://contosokeyvault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 Po vytvoření trezoru bude jakékoli operace s tímto novým trezorem moct provádět pouze váš účet Azure.
 
@@ -100,7 +100,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, služby
 Remove-AzureRmResourceGroup -Name ContosoResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili službu Key Vault a uložili do ní softwarový klíč. Další informace o službě Key Vault a jejím použití s vašimi aplikacemi najdete v kurzu pro webové aplikace pracující se službou Key Vault.
 

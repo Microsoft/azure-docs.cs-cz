@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e89ba38b7993b8f2d17704ff592eecd3d02d303e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 238b75681ec525187ea27f60ac8b21b05b13954d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731005"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063110"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -191,13 +191,13 @@ Další informace o tom, jak přepsat vlastnost cloud_RoleName inicializátory t
 
 Pokud máte problémy dostat se mapa aplikace fungovat podle očekávání, proveďte následující kroky:
 
-1. Ujistěte se, že jste znovu pomocí oficiálně podporované sady SDK. Sady SDK nepodporuje/community nemusí podporovat korelace.
+1. Ujistěte se, že používáte oficiálně podporovaná sada SDK. Sady SDK nepodporuje/community nemusí podporovat korelace.
 
     Projít tento [článku](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) seznam podporovaných sad SDK.
 
 2. Všechny součásti upgradujte na nejnovější verzi sady SDK.
 
-3. Pokud jste znovu pomocí služby Azure Functions s C#, proveďte upgrade na [funkce V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
+3. Pokud používáte Azure Functions s C#, proveďte upgrade na [funkce V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
 4. Potvrďte [cloud_RoleName](app-map.md#Set-cloud-RoleName) je správně nakonfigurovaný.
 

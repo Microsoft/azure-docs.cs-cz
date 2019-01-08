@@ -14,12 +14,12 @@ ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 42568a6da6cb8994fa8804f294cf67b30fada4fb
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050145"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078758"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání kontextu uživatele ID Umožněte využití ve službě Azure Application Insights
 
@@ -38,7 +38,7 @@ Aby bylo možné sledovat, co uživatel provede v čase, Application Insights mu
 - Relace: Zahrnují ID relace.
 
 > [!NOTE]
-> Toto je pokročilá článek sbalování ruční kroky pro sledování činnosti uživatelů pomocí Application Insights. U mnoha webových aplikací **tyto kroky nemusí být požadovaný**, jako výchozí server-side sady SDK ve spojení s [a prohlížeči klientů JavaScript SDK](../../application-insights/app-insights-website-monitoring.md), jsou často dostatečné pro automatické sledování aktivity uživatelů. Pokud jste nenakonfigurovali [monitorování na straně klienta](../../application-insights/app-insights-website-monitoring.md) kromě sady SDK na straně serveru, učiňte tak nyní a otestovat, pokud uživatel chování analytické nástroje fungují podle očekávání.
+> Toto je pokročilá článek sbalování ruční kroky pro sledování činnosti uživatelů pomocí Application Insights. U mnoha webových aplikací **tyto kroky nemusí být požadovaný**, jako výchozí server-side sady SDK ve spojení s [a prohlížeči klientů JavaScript SDK](../../azure-monitor/app/website-monitoring.md ), jsou často dostatečné pro automatické sledování aktivity uživatelů. Pokud jste nenakonfigurovali [monitorování na straně klienta](../../azure-monitor/app/website-monitoring.md ) kromě sady SDK na straně serveru, učiňte tak nyní a otestovat, pokud uživatel chování analytické nástroje fungují podle očekávání.
 
 ## <a name="choosing-user-ids"></a>Výběr ID uživatele
 

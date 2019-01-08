@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 3d3e6d37ace7ed72700042c04b6e4502a6b3b42a
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: baf3adaafb8c4add5a9a1acb4f3a3314b567e4c7
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53814514"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54069937"
 ---
 | Kategorie | Úložiště dat | Podporované jako zdroj | Podporované jako jímka | Podporované prostředím [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Podporované [místním prostředím IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -61,7 +61,7 @@ ms.locfileid: "53814514"
 | **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |✓ | |✓ |✓  |
 | &nbsp; |[Systém souborů](../articles/data-factory/connector-file-system.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |✓ | |✓ |✓  |
-| &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-amazon-simple-storage-service.md#copy-from-google-cloud-storage) |✓ | |✓ |✓  |
+| &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |✓ | |✓ |✓  |
 | &nbsp; |[SFTP](../articles/data-factory/connector-sftp.md) |✓ | |✓ |✓  |
 | **Obecný protokol** |[Obecná rozhraní HTTP](../articles/data-factory/connector-http.md) |✓ | |✓ |✓  |

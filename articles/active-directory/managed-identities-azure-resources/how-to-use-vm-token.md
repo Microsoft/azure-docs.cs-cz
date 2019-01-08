@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 0355b8cf19209509dca2f3cac93c7abb92a63990
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 10cc8007c4f54808b5d7eb41ad2caa008b5c7107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323316"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078996"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak získat přístupový token pomocí spravované identity pro prostředky Azure na Virtuálním počítači Azure 
 
@@ -124,7 +124,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Získání tokenu pomocí knihovnu Microsoft.Azure.Services.appauthentication přistupovat pro .NET
 
-Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s spravovaných identit pro prostředky Azure prostřednictvím balíčku Microsoft.Azure.Services.appauthentication přistupovat. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu z aplikace Visual Studio [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech místní vývoj pomocí této knihovny naleznete v tématu [odkaz Microsoft.Azure.Services.appauthentication přistupovat]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
+Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s spravovaných identit pro prostředky Azure prostřednictvím balíčku Microsoft.Azure.Services.appauthentication přistupovat. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu z aplikace Visual Studio [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech místní vývoj pomocí této knihovny, najdete v článku [Microsoft.Azure.Services.appauthentication přistupovat odkaz](/azure/key-vault/service-to-service-authentication). V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
 
 1. Přidat odkazy [Microsoft.Azure.Services.appauthentication přistupovat](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) balíčky NuGet pro vaši aplikaci.
 

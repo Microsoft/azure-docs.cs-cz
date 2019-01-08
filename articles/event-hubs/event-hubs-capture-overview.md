@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8e44db9c992a2c4905a392323994c67befea9a9a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e2adae46e3124fcd407fa4d4677f02bdface0a6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096719"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077636"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí pomocí Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
 Azure Event Hubs umožňuje automaticky zachytit streamovaná data ve službě Event Hubs do [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [úložiště Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) účet podle vašeho výběru s flexibilnější určení časový nebo velikostní interval. Nastavení zachytávání je rychlý, neexistují žádné administrativní náklady na spuštění a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-features.md#capacity). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
@@ -62,15 +62,43 @@ Funkci Capture můžete nakonfigurovat pomocí event hub pro čas vytvoření [w
 - [Povolení funkce Event Hubs Capture pomocí webu Azure portal](event-hubs-capture-enable-through-portal.md)
 - [Vytvořte obor názvů služby Event Hubs s centrem událostí a povolení funkce Capture pomocí šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 
+
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>Zkoumání zaznamenané soubory prostředků a práci s Avrem
 
 Funkce Event Hubs Capture vytvoří soubory ve formátu Avro, jak je uvedeno na nakonfigurované časové okno. Tyto soubory můžete zobrazit všechny nástroje, jako [Průzkumníka služby Azure Storage][Azure Storage Explorer]. Můžete si stáhnout soubory místně pro práci s nimi.
 
 Soubory vytvořené metodou Event Hubs Capture mají následující schématu Avro:
 
-![Acro schématu][3]
+![Schématu Avro][3]
 
-Snadný způsob, jak prozkoumat souborů Avro je použít [nástroje Avro] [ Avro Tools] jar z Apache. Po stažení tento soubor jar, zobrazí se schéma konkrétní soubor Avro spuštěním následujícího příkazu:
+Snadný způsob, jak prozkoumat souborů Avro je použít [nástroje Avro] [ Avro Tools] jar z Apache. Můžete také použít [Apache Drill] [ Apache Drill] pro zjednodušenou poskytuje prostředí řízené SQL nebo [Apache Spark] [ Apache Spark] provádět komplexní distribuované zpracování v přijatých dat. 
+
+### <a name="use-apache-drill"></a>Použití Apache Drill
+
+[Apache Drill] [ Apache Drill] je "open-source SQL dotazu modul pro zkoumání velkých objemů dat", který můžete dotazovat strukturovaných a částečně strukturovaná data, ať jsou kdekoli. Modul může běžet jako samostatný uzel nebo jako cluster s velkou pro vysoký výkon.
+
+Nativní podporu pro Azure Blob storage je k dispozici, který umožňuje snadno provádět dotazy na data v souboru Avro, jak je popsáno v dokumentaci:
+
+[Apache Drill: Modul plug-in Azure Blob Storage][Apache Drill: Azure Blob Storage Plugin]
+
+Snadno vytvářet dotazy na zaznamenané soubory, můžete vytvořit a spustit virtuální počítač s Apache Drill povolit prostřednictvím kontejner pro přístup k úložišti objektů Blob v Azure:
+
+https://github.com/yorek/apache-drill-azure-blob
+
+Úplného začátku do konce vzorku je k dispozici v datových proudů na škálovatelné úložiště:
+
+[Streamování ve velkém měřítku: Event Hubs Capture]
+
+### <a name="use-apache-spark"></a>Použití Apache Sparku
+
+[Apache Spark] [ Apache Spark] je "jednotné analytics modul pro zpracování rozsáhlých dat." Podporuje různé jazyky, včetně SQL a může snadno přistupovat k úložišti objektů Blob v Azure. Existují dvě možnosti spouštění Apache Spark v Azure a umožňují snadný přístup k úložišti objektů Blob v Azure:
+
+- [HDInsight: Adresování souborů ve službě Azure storage][HDInsight: Address files in Azure storage]
+- [Azure Databricks: Azure Blob storage][Azure Databricks: Azure Blob Storage]
+
+### <a name="use-avro-tools"></a>Použití nástroje Avro
+
+[Nástroje Avro] [ Avro Tools] jsou k dispozici jako balíček jar. Po stažení souboru jar, zobrazí se schéma konkrétní soubor Avro spuštěním následujícího příkazu:
 
 ```shell
 java -jar avro-tools-1.8.2.jar getschema <name of capture file>
@@ -106,8 +134,8 @@ Apache Avro má kompletní příručky Začínáme pro [Java] [ Java] a [Python]
 Funkce Event Hubs Capture se měří podobně pro jednotky propustnosti: jako hodinovou sazbu. Sazba je přímo úměrný počtu jednotek propustnosti zakoupili pro obor názvů. Jednotky propustnosti jsou zvýšení a snížení, Event Hubs Capture měřiče zvýšit nebo snížit zajistit odpovídající výkonu. Při vytvoření celostní dojde k měřiče. Podrobnosti o cenách najdete v tématu [ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
 ## <a name="integration-with-event-grid"></a>Integrace s využitím služby Event Grid 
-Můžete vytvořit předplatné Azure Event Grid se obor názvů služby Event Hubs jako svůj zdroj. V následujícím kurzu se dozvíte, jak vytvořit odběr Event gridu pomocí centra událostí jako zdroj a jako jímku aplikaci Azure Functions: [procesu a migrace do SQL Data Warehouse s využitím služby Event Grid a Azure FunctionszachycenádataEventHubs](store-captured-data-data-warehouse.md).
 
+Můžete vytvořit předplatné Azure Event Grid se obor názvů služby Event Hubs jako svůj zdroj. V následujícím kurzu se dozvíte, jak vytvořit odběr Event gridu pomocí centra událostí jako zdroj a jako jímku aplikaci Azure Functions: [Zpracování a migrace zachycená data Event Hubs do SQL Data Warehouse s využitím služby Event Grid a Azure Functions](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -119,6 +147,8 @@ Další informace o službě Event Hubs najdete na následujících odkazech:
 * [Přehled služby Event Hubs][Event Hubs overview]
 
 [Apache Avro]: http://avro.apache.org/
+[Apache Drill]: https://drill.apache.org/
+[Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: http://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
@@ -126,3 +156,7 @@ Další informace o službě Event Hubs najdete na následujících odkazech:
 [Java]: http://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: http://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
+[Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
+[Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
+[Streamování ve velkém měřítku: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

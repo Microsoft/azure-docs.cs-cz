@@ -3,17 +3,17 @@ title: Použití Ansible ke správě virtuálního počítače s Linuxem v Azure
 description: Zjistěte, jak pomocí Ansible spravovat virtuální počítač s Linuxem v Azure.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: 14e675097a23b50c8ff193c69c377ac8edfb989f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ef19043465cb67401786cddec4972f67231995bb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317258"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077806"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Použití Ansible ke správě virtuálního počítače s Linuxem v Azure
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat virtuální počítače Azure stejně jako jakékoli jiné prostředky. V tomto článku se dozvíte, jak pomocí playbooku Ansible spustit a zastavit virtuální počítač s Linuxem. 

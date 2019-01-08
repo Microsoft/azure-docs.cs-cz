@@ -13,12 +13,12 @@ ms.date: 07/17/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: cc2a21999bdbaef956c0cc6424bb46a93072a6cd
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049975"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076276"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Zjistit, jak zákazníci používají vaši aplikaci s Application Insights trychtýře
 
@@ -44,7 +44,7 @@ Následující snímek obrazovky ukazuje že příklad, jaká data nástroj tryc
 ### <a name="funnels-features"></a>Funkce trychtýře
 Na předchozím snímku obrazovky obsahuje pět zvýrazněné oblasti. Toto jsou funkce trychtýře. Následující seznam obsahuje další informace o každé odpovídající oblasti na snímku obrazovky:
 1. Pokud vaše aplikace vede, zobrazí se banner vzorkování. Vyberte informační zprávu se otevře podokno kontextu, s vysvětlením, jak vypnout vzorkování. 
-2. Můžete exportovat na svém trychtýři [Power BI](../../application-insights/app-insights-export-power-bi.md).
+2. Můžete exportovat na svém trychtýři [Power BI](../../azure-monitor/app/export-power-bi.md ).
 3. Vyberte krok, abyste zobrazili další podrobnosti na pravé straně. 
 4. Historická konverze graf ukazuje míry úspěšnosti za posledních 90 dní. 
 5. Uživatelům lepší pochopení díky přístupu do nástroj Uživatelé. Pomocí filtrů v každém kroku. 
@@ -55,5 +55,5 @@ Na předchozím snímku obrazovky obsahuje pět zvýrazněné oblasti. Toto jsou
   * [Uchování](usage-retention.md)
   * [Workbooks](../../azure-monitor/app/usage-workbooks.md)
   * [Přidat kontext uživatele](usage-send-user-context.md)
-  * [Export do Power BI](../../application-insights/app-insights-export-power-bi.md)
+  * [Export do Power BI](../../azure-monitor/app/export-power-bi.md )
 

@@ -3,17 +3,17 @@ title: Spuštění Azure CLI s využitím Jenkinse
 description: Zjistěte, jak pomocí Azure CLI v kanálu Jenkinse nasadit webovou aplikaci v Javě do Azure.
 ms.service: jenkins
 keywords: jenkins, azure, devops, app service, cli
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 6/7/2017
-ms.openlocfilehash: b9ca8848da543bbfb27246109c3a4ab97eb6bc58
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 05e21083b060e00602f58e1a17f52f40ced7d34e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974914"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075205"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Nasazení do Azure App Service pomocí Jenkinse a Azure CLI
 K nasazení webové aplikace v Javě do Azure můžete použít Azure CLI v [kanálu Jenkinse](https://jenkins.io/doc/book/pipeline/). V tomto kurzu vytvoříte kanál CI/CD na virtuálním počítači Azure a také se naučíte:
@@ -26,7 +26,7 @@ K nasazení webové aplikace v Javě do Azure můžete použít Azure CLI v [kan
 > * Vytvoření kanálu Jenkinse
 > * Spuštění kanálu a ověření webové aplikace
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -215,7 +215,7 @@ Web App on Linux podporuje jiný způsob nasazení, který spočívá v použit�
 
     Přejděte na adresu http://&lt;název_aplikace>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (místo &lt;x> a &lt;y> zadejte libovolná čísla), kde se zobrazí součet hodnot x a y.
     
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste nakonfigurovali kanál Jenkinse, který rezervuje zdrojový kód v úložišti GitHub. Potom spustí Maven, který sestaví soubor war, a sestavený soubor pak pomocí Azure CLI nasadí do služby Azure App Service. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

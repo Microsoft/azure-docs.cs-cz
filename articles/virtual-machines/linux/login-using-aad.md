@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bc556991cc304aa8c5edc04dba1d333dc77ad230
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850971"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073403"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -37,7 +37,7 @@ Existuje mnoho výhod používání ověřování Azure AD k přihlášení do v
   - Na další zabezpečení přihlášení pro virtuální počítače Azure můžete nakonfigurovat ověřování Multi-Factor Authentication.
   - Schopnost přihlášení do virtuálních počítačů s Linuxem pomocí Azure Active Directory funguje i pro zákazníky používající [Federation Services](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
-- **Bezproblémová spolupráce:** řízení přístupu With Role-Based (RBAC), můžete určit, kdo může přihlásit k daného virtuálního počítače jako běžný uživatel nebo s oprávněním správce. Když uživatelé připojit nebo opustit váš tým, můžete aktualizovat zásady RBAC pro virtuální počítač k udělení přístupu podle potřeby. Toto prostředí je mnohem jednodušší než by bylo nutné procházení virtuálních počítačů odebrat nepotřebné veřejné klíče SSH. Když zaměstnanci opustí organizaci a jeho uživatelský účet je zakázán nebo odebrány ze služby Azure AD, že už nebude mít přístup k vašim prostředkům.
+- **Bezproblémová spolupráce:** Pomocí Role-Based řízení přístupu (RBAC), můžete určit, kdo může přihlásit k daného virtuálního počítače jako běžný uživatel nebo s oprávněním správce. Když uživatelé připojit nebo opustit váš tým, můžete aktualizovat zásady RBAC pro virtuální počítač k udělení přístupu podle potřeby. Toto prostředí je mnohem jednodušší než by bylo nutné procházení virtuálních počítačů odebrat nepotřebné veřejné klíče SSH. Když zaměstnanci opustí organizaci a jeho uživatelský účet je zakázán nebo odebrány ze služby Azure AD, že už nebude mít přístup k vašim prostředkům.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Podporované oblasti Azure a distribucí systému Linux
 
@@ -96,8 +96,8 @@ az vm extension set \
 
 Zásady řízení přístupu na základě rolí (RBAC) Azure určí, kdo může přihlásit k virtuálnímu počítači. Dvě role RBAC se používají k autorizaci přihlášení virtuálního počítače:
 
-- **Přihlášení správce virtuálního počítače**: uživatelé s touto rolí přiřazené přihlásit virtuálního počítače Azure s správce Windows nebo Linuxem kořenovými oprávněními.
-- **Přihlášení uživatele virtuálního počítače**: uživatelé s touto rolí přiřazené přihlásit virtuální počítač Azure s běžná uživatelská oprávnění.
+- **Přihlášení správce virtuálního počítače**: Uživatelé s touto rolí přiřazené přihlásit virtuální počítač Azure s správce Windows nebo Linuxem kořenovými oprávněními.
+- **Přihlášení uživatele virtuálního počítače**: Uživatelé s touto rolí přiřadit může přihlásit k virtuálnímu počítači Azure s běžná uživatelská oprávnění.
 
 > [!NOTE]
 > Pokud chcete, aby uživatel pro přihlášení k virtuálnímu počítači přes SSH, je nutné přiřadit buď *přihlášení správce virtuálního počítače* nebo *přihlášení uživatele virtuálního počítače* role. Uživatele s Azure *vlastníka* nebo *Přispěvatel* role přiřazené pro virtuální počítač automaticky nemají oprávnění k přihlášení k virtuálnímu počítači přes SSH.
@@ -150,7 +150,7 @@ Zavřete okno prohlížeče, vraťte se do SSH výzvy a stiskněte klávesu **En
 
 ## <a name="sudo-and-aad-login"></a>Přihlášení Sudo a AAD
 
-Při prvním spuštění sudo, zobrazí se výzva k ověření podruhé. Pokud nechcete, aby museli znovu provést ověření pro spuštění sudo, můžete upravit soubor sudoers `/aad/etc/sudoers.d/aad_admins` a nahraďte tento řádek:
+Při prvním spuštění sudo, zobrazí se výzva k ověření podruhé. Pokud nechcete, aby museli znovu provést ověření pro spuštění sudo, můžete upravit soubor sudoers `/etc/sudoers.d/aad_admins` a nahraďte tento řádek:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -166,7 +166,7 @@ Tento řádek:
 
 Některé běžné chyby při pokusu o SSH pomocí přihlašovacích údajů Azure AD. obsahovat žádné role RBAC přiřazen a opakovat pokynů se přihlaste. Pomocí následujících částí k odstranění těchto problémů.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Přístup byl odepřen: není přiřazená role RBAC
+### <a name="access-denied-rbac-role-not-assigned"></a>Přístup byl odepřen: Role RBAC není přiřazen
 
 Pokud se zobrazí následující chyba na příkazovém řádku vašeho SSH, ověřte, že máte [nakonfigurovali zásady RBAC](#configure-rbac-policy-for-the-virtual-machine) pro virtuální počítač, který uděluje uživateli buď *přihlášení správce virtuálního počítače* nebo *virtuální Počítač přihlášení uživatele* role:
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: db2972019e81ab413857d49ffa65eade3ff061ec
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bfd6f59ca61d14bc8187aa7c56c29ac44b40b8e9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051182"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074272"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilování webových aplikací ASP.NET Core Azure s Linuxem pomocí Application Insights Profiler
 
@@ -136,7 +136,7 @@ Byste měli vidět výstup podobný následujícímu příkladu:
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Přidejte Application Insights a monitorujte vaše webové aplikace
 
-1. [Vytvořte prostředek Application Insights](./../../application-insights/app-insights-create-new-resource.md).
+1. [Vytvořte prostředek Application Insights](./../../azure-monitor/app/create-new-resource.md ).
 
 2. Kopírovat **Instrumentační klíč** hodnotu prostředku Application Insights a nastavte následující nastavení ve službě web apps:
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bd85214efc3c8f67d41563e3ca46a1e2278c4868
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999535"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062669"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby služby Azure storage tabulky pro službu Azure Functions
 
@@ -779,7 +779,7 @@ Table storage Výstupní vazba podporuje následující scénáře:
 
   V jazyce C# a skript jazyka C#, přístup k entitu výstupní tabulky pomocí parametru metody `out T paramName` nebo návratovou hodnotu funkce. Ve skriptu jazyka C# `paramName` je zadaná hodnota v `name` vlastnost *function.json*. `T` může být jakékoli serializovatelný typ., pokud jsou poskytovány klíče oddílu a klíč řádku *function.json* souboru nebo `Table` atribut. V opačném případě `T` musí být typ, který zahrnuje `PartitionKey` a `RowKey` vlastnosti. V tomto scénáři `T` obvykle implementují `ITableEntity` nebo je z `TableEntity`, ale nemusí to.
 
-* **Zápis jeden nebo více řádků v C# nebo C#**
+* **Napište jednu nebo více řádků v C# nebo C# skriptu**
 
   V C# a skript jazyka C#, přístup k entitu výstupní tabulky pomocí parametru metody `ICollector<T> paramName` nebo `IAsyncCollector<T> paramName`. Ve skriptu jazyka C# `paramName` je zadaná hodnota v `name` vlastnost *function.json*. `T` Určuje schématu entity, které chcete přidat. Obvykle `T` je odvozena z `TableEntity` nebo implementuje `ITableEntity`, ale nemusí to. Klíč oddílu a řádku hodnoty v klíče *function.json* nebo `Table` konstruktor atributu nejsou použity v tomto scénáři.
 

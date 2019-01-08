@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602167"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077738"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
@@ -36,10 +36,8 @@ Využití attribution zákazníka se vyžaduje u všech [šablony řešení](./c
 
 ## <a name="use-resource-manager-templates"></a>Použití šablon Resource Manageru
 
-Mnoho partnerská řešení jsou nasazené na předplatné zákazníka pomocí šablon Resource Manageru. Pokud máte šablony Resource Manageru, který je dostupný v Tržišti Azure Marketplace, na Githubu nebo jako rychlém startu procesu úpravy šablony pro povolení nový způsob sledování by měl být přímočaré. Pokud nechcete použít šablony Azure Resource Manageru, tady je pár odkazů, které pomůžou lépe pochopit šablon Resource Manageru a jak ji vytvořit: 
+Mnoho partnerská řešení jsou nasazené na předplatné zákazníka pomocí šablon Resource Manageru. Pokud máte šablony Resource Manageru, který je dostupný v Tržišti Azure Marketplace, na Githubu nebo jako rychlém startu procesu úpravy šablony pro povolení nový způsob sledování by měl být přímočaré. Další informace najdete v tématu [vytvoření a nasazení první šablony Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
 
-*   [Vytvoření a nasazení první šablony Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Vytvořte šablonu řešení pro Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
 ## <a name="add-a-guid-to-your-template"></a>Přidat identifikátor GUID do šablony
 
@@ -270,11 +268,15 @@ Společnost Microsoft poskytuje partnerům, kteří mají zobrazení zákaznick�
 
 **Identifikátor GUID, můžete přidat do šablony?**
 
-Sledování prostředků je určený pro připojení partnerské řešení pro využití Azure zákazníka. Využití dat se váže k identitě partnera Microsoft Partner Network (MPN ID). 
+Sledování prostředků je určený pro připojení partnerské řešení pro využití Azure zákazníka. Využití dat se váže k identitě partnera Microsoft Partner Network (MPN ID). Vytváření sestav je k dispozici pro partnery v CPP.
 
 **Po přidání identifikátoru GUID, můžete ho změnit?**
  
 Ano, partner zákazníka nebo implementace může přizpůsobit šablonu a můžete změnit nebo odebrat identifikátor GUID. Doporučujeme vám, že partneři proaktivně popis role prostředků a identifikátor GUID pro jejich zákazníky a partnery, abyste zabránili odstranění nebo úpravy sledování identifikátor GUID. Změna GUID ovlivní pouze nové, ne stávající nasazení a prostředky.
+
+**Při vytváření sestav bude k dispozici?**
+
+Beta verze generování sestav by měla brzy dostupné. Vytváření sestav, bude se integrovat do CPP.
 
 **Můžete sledovat nasazených z úložiště jiných společností než Microsoft, např. GitHub šablon?**
 

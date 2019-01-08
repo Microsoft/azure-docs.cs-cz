@@ -10,16 +10,15 @@ ms.assetid: 43f96a2b-3af8-4adc-9344-bc6041fface8
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 8e3076f2176739f5b9df5776f27d7483c9fd2692
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: e4d5004deeff43e83406ecb5d06b2857817531c6
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000406"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074270"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vault
 
@@ -113,7 +112,7 @@ K povolení protokolování pro Key Vault použijeme rutinu Set-AzureRmDiagnosti
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 ```
 
-Výstup mimo jiné obsahuje:
+Výstup bude vypadat takto:
 
     StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
     ServiceBusRuleId   :
@@ -230,6 +229,7 @@ Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
 
 Vrátí položku protokolu podobná následující:
 
+```json
     {
         "records":
         [
@@ -250,6 +250,7 @@ Vrátí položku protokolu podobná následující:
             }
         ]
     }
+```
 
 Následující tabulka obsahuje seznam názvů polí a popisy.
 

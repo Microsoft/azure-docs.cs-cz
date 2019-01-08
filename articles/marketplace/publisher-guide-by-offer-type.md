@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: qianw211
-ms.openlocfilehash: 44526445629d2cbfe3aab3cf62316a1163f8f2d7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 29909e9fba209ee892bc5fd3b0c08026ee5250b0
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266731"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075477"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
@@ -50,7 +50,7 @@ V následující tabulce jsou uvedeny typy nabídek Azure Marketplace.
 
 A konečně, naleznete v tématu [ **požadavky služby Azure AD** ](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad) tím, že výpis možností a nabízí další informace o jednotné přihlašování – požadavky na typy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 *   Přečtěte si požadavky zakládající nárok v možnosti publikování nabídky typu oddílu k dokončení pro výběr a konfiguraci nabídky.
 *   Zkontrolujte publikování vzory jejich příklady jak řešení mapuje na typ nabídky a konfigurace z prodejních míst.

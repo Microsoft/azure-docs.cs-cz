@@ -14,41 +14,35 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/14/2018
+ms.date: 01/07/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0508e6418a5095ed9ee27baf045f655d66ea9b58
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d3256fcf33a9ad1eb34ec5dbb0c701c8166a49e2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435340"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075171"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Použití Azure k hostování a spuštění scénáře úloh řešení SAP
 
-Když zvolíte Microsoft Azure jako váš partner cloudové SAP, budete moct využijte možnost spolehlivě spouštět nejdůležitější úlohy SAP a scénářů na škálovatelné a kompatibilní prověřená v podnikovém platformě.  Získejte škálovatelnost, flexibilitu a snížení nákladů, které poskytuje Azure. V rozšířené partnerství mezi společnostmi Microsoft a SAP můžete spouštět aplikace SAP pro vývoj/testování a produkčními scénáři v Azure – a mít přitom plnou podporu. Od SAP Netweaveru po SAP S4/HANA, SAP BI, Linuxu po Windows, SAP HANA po SQL máme všechno, co potřebujete.
+Když zvolíte Microsoft Azure, budete moct na platformě škálovatelné, kompatibilní a prověřená v podnikovém využijte možnost spolehlivě spouštět nejdůležitější úlohy SAP a scénářů.  Získejte škálovatelnost, flexibilitu a snížení nákladů, které poskytuje Azure. V rozšířené partnerství mezi společnostmi Microsoft a SAP můžete spouštět aplikace SAP pro vývoj/testování a produkčními scénáři v Azure – a mít přitom plnou podporu. Od SAP Netweaveru po SAP S4/HANA, SAP BI, Linuxu po Windows, SAP HANA po SQL máme všechno, co potřebujete.
 
-Kromě hostování SAP NetWeaver scénáře pomocí různých DBMS v Azure, které můžete hostovat různé jiné scénáře úloh řešení SAP, jako je SAP BI v Azure. Dokumentace k nasazení SAP NetWeaver na nativních virtuálních počítačích Azure najdete v části "SAP NetWeaver na virtuálních počítačích Azure."
+Kromě hostování SAP NetWeaver scénáře pomocí různých DBMS v Azure, které můžete hostovat různé jiné scénáře úloh řešení SAP, jako je SAP BI v Azure. 
 
-Jedinečnost Azure pro SAP HANA je jedinečný nabídka, která nastavuje Azure kromě soutěže. Chcete-li povolit hostování více paměti a procesoru prostředků náročné SAP scénáře zahrnující SAP HANA, Azure nabízí využití zákazníka vyhrazený hardware úplné obnovení systému za účelem spuštění nasazení SAP HANA, které vyžadují až 20 TB paměti pro (60 TB scale-out) S/4HANA nebo jiné úlohy SAP HANA. Tento jedinečný Azure řešení SAP HANA v Azure (velké instance) umožňuje spouštění řešení SAP HANA na vyhrazeném hardwaru úplné obnovení systému se na aplikační vrstvě SAP nebo úlohy VMware střední vrstvy hostované na nativních virtuálních počítačích Azure. Toto řešení je popsána v několika dokumentů v části "SAP HANA v Azure (velké instance)."   
+Jedinečnost Azure pro SAP HANA je nabídka, která odlišuje Azure soutěže. Chcete-li povolit hostování více paměti a procesoru prostředků náročné SAP scénáře zahrnující SAP HANA, Azure nabízí využití zákazníka vyhrazený hardware úplné obnovení systému za účelem spuštění nasazení SAP HANA, které vyžadují až 24 TB paměti (120 TB scale-out) pro S/4HANA nebo jiné úlohy SAP HANA. Tento jedinečný Azure řešení SAP HANA v Azure (velké instance) umožňuje spouštění řešení SAP HANA na vyhrazeném hardwaru úplné obnovení systému se na aplikační vrstvě SAP nebo úlohy VMware střední vrstvy hostované na nativních virtuálních počítačích Azure. Toto řešení je popsána v několika dokumentů v části "SAP HANA v Azure (velké instance)."   
 
 Hostování scénáře úloh řešení SAP v Azure můžete vytvořit požadavky integrace identit a Single-Sign-On pomocí Azure Active Directory pro různé součásti SAP a SAP SaaS nebo nabízí PaaS. Seznam těchto integrace a scénáře jednotného přihlašování s Azure Active Directory (AAD) a SAP entity je popsané a popsány v části "integrace identit AAD SAP a Single-Sign-On."
 
 ## <a name="latest-changes"></a>Nejnovější změny
+
+Verzi [SAP úlohy plánování a nasazení kontrolního seznamu](sap-deployment-checklist.md)
 
 Další informace týkající se používání a konfiguraci [Azure síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v cestách důležité komunikace latence systémů SAP v:
 
 - [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 - [Konfigurace infrastruktury SAP HANA a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
-Dokumentace ke službě kolem SAP HANA dynamické ovládání datových vrstev pro virtuální počítače Azure
-
-- [Konfigurace infrastruktury SAP HANA a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#sap-hana-dynamic-tiering-20-for-azure-virtual-machines)
-
-Dokumentace ke službě kolem SAP HANA škálovat do M128s virtuálního počítače Azure je teď přidat do:
-
-- [Konfigurace infrastruktury SAP HANA a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#configuring-azure-infrastructure-for-sap-hana-scale-out)
-- [Dostupnost SAP HANA v rámci jedné oblasti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
 
 
 ## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA na systému SAP HANA v Azure (velké instance)

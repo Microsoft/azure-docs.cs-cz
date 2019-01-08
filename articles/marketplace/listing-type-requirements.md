@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 1c850b16492f725114fb23a8503f6345e1509212
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3cd0766fa4308df41172c323aa933e1c048f1e9d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868663"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073998"
 ---
 # <a name="requirements-by-listing-type"></a>Požadavky na uvedením typu  
 Obsahu požadavky na technickou a marketingovou se liší podle z prodejních míst, typ nabídky a výpis typu. Projděte si následující specifikace k ověření vaší dodržování předpisů.  
@@ -40,7 +40,7 @@ Následující tabulka popisuje požadavky pro publikování na AppSource.
 | ***Software jako služba (SaaS) aplikací pro firmy*** | Aplikace musí splňovat následující požadavky.<ul> <li>Obchodní aplikaci SaaS</li> <li>Obchodní proces, zaměřuje</li> <li>Cílený na firemní zákazníky</li> <li>Umožníte uživatelům používat svoje pracovní přihlašovací údaje pro přihlášení jako je například uživatelské jméno a heslo</li> </ul> | Požaduje se |  
 | ***Období bezplatné zkušební verze a zkušební verze*** | Aplikace musí obsahovat jednu následující možnosti v objednávky pro zákazníka aplikaci mohli používat zdarma po omezenou dobu.<ul> <li>Zadejte `try` metoda, takže zákazníci můžou začít se zkušební verzí vaší aplikace v AppSource</li> <li>Zadejte `request trial` možnost v AppSource, takže zákazníci můžou požádat o zkušební verzi vaší aplikace</li> </ul>Bezplatná zkušební verze, které poskytujete nabídnout zákazníkům předem určené časové období vyzkoušet si vaše aplikace bez dalších poplatků. | Požaduje se |  
 | ***Dají se snadno konfigurovat a připravené k použití řešení*** | Snadné a rychlé ke konfiguraci a nastavení se žádné přizpůsobení nutné musí být vaše aplikace. | Požaduje se |  
-| ***Průběžná správa*** | Je nutné povolit CRM tak, aby přijímal data zájemce předtím, než se zobrazí vede ze storu.<ul> <li>Certifikované příklady Marketo, Microsoft Dynamics nebo Salesforce</li> </ul> | Požaduje se |  
+| ***Správa potenciálních zákazníků*** | Povolte CRM tak, aby přijímal data zájemce předtím, než se zobrazí vede ze storu.<ul> <li>Certifikované příklady Marketo, Microsoft Dynamics nebo Salesforce</li> </ul> | Požaduje se |  
 | ***Zásady ochrany osobních údajů a podmínky použití*** | Aplikaci musíte zadat odkaz na stránku zásady ochrany osobních údajů pomocí veřejné adresy URL. Vaše podmínky použití, musí být zadaný během publikování jako text. | Požaduje se |  
 | ***Podpora*** | Aplikaci musíte zadat odkaz na stránku podpory zákazníků pomocí veřejné adresy URL. Pokud je vaše aplikace používat zkušební verzi, pak musíte podporovat bez dalších poplatků během zkušebního období. | Požaduje se |  
 
@@ -49,10 +49,10 @@ Tady jsou požadavky pro výpis typy na webu Azure Marketplace.
 
 | Požadavek | Podrobnosti | Typ seznamu |  
 |:--- |:--- |:--- |  
-| ***Zásady účasti na webu*** | Aplikace musí následovat zásadách pro účast na webu Azure Marketplace.<ul> <li>Další informace o zásadách pro účast, najdete na webu Azure Marketplace zásadách pro účast na stránce umístění [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).</li></ul> | list<br />Příkaz Transact<br />trial |  
+| ***Zásady účasti na webu*** | Vaše aplikace musí odpovídat zásadách pro účast na webu Azure Marketplace.<ul> <li>Další informace o zásadách pro účast, najdete na webu Azure Marketplace zásadách pro účast na stránce umístění [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).</li></ul> | list<br />Příkaz Transact<br />trial |  
 | ***Integrace s Microsoftem*** | Nabídky použijte nebo rozšířit typů služeb Microsoft Azure, například compute, sítě nebo úložiště. Do existující kategorie Azure Marketplace, jako jsou databáze, zabezpečení nebo sítě by mělo odpovídat vaší nabídky.<ul> <li>Další informace o nabídky na webu Marketplace, navštivte aplikace Marketplace stránky umístěné na [azuremarketplace.microsoft.com/marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps).</li> </ul> | list<br />Příkaz Transact<br />trial |  
 | ***Cílová skupina*** | Vaše nabídka musí být pro IT profesionály, vývojářům pro cloud nebo jiné role technické zákazníka. | list<br />Příkaz Transact<br />trial |  
-| ***Průběžná správa*** | Je nutné povolit CRM (Marketo, Microsoft Dynamics nebo Salesforce) tak, aby přijímal data zájemce předtím, než se zobrazí vede ze storu. | list<br />Příkaz Transact<br />trial |  
+| ***Správa potenciálních zákazníků*** | Povolte CRM (Marketo, Microsoft Dynamics nebo Salesforce) tak, aby přijímal data zájemce předtím, než se zobrazí vede ze storu. | list<br />Příkaz Transact<br />trial |  
 | ***Zásady ochrany osobních údajů a podmínky použití*** | Aplikaci musíte zadat odkaz na stránku zásady ochrany osobních údajů pomocí veřejné adresy URL. Vaše podmínky použití, musí být zadaný během publikování jako text. | list<br />Příkaz Transact<br />trial |  
 | ***Podpora*** | Nabídky musíte zadat odkaz na stránku podpory zákazníků pomocí veřejné adresy URL. Pokud vaše nabídka zkušební verzi, pak musíte podporovat bez dalších poplatků během zkušebního období. | Příkaz Transact<br />trial |    
 
@@ -64,19 +64,19 @@ V seznamu typ seznamu zahrnuje následující typy nabídek na prodejní místa 
 
 | Typ nabídky | Prodejní místo | Podrobnosti |  
 |:---        |:---        |:---     |  
-| Konzultační služby | AppSource | [Požadavky: AppSource: seznam: konzultační služby](#requirements-appsource-list-consulting-services) |  
-| Konzultační služby | Azure Marketplace | [Požadavky: Azure Marketplace: seznam: konzultační služby](#requirements-azure-marketplace-list-consulting-services) |  
+| Konzultační služby | AppSource | [Požadavky: AppSource: Seznam: Konzultační služby](#requirements-appsource-list-consulting-services) |  
+| Konzultační služby | Azure Marketplace | [Požadavky: Azure Marketplace: Seznam: Konzultační služby](#requirements-azure-marketplace-list-consulting-services) |  
 | Kontaktujte mě | AppSource | [](#) |  
-| Kontaktujte mě | Azure Marketplace | [Požadavky: AppSource: seznam: Kontaktujte mě](#requirements-azure-marketplace-list-contact-me) |  
+| Kontaktujte mě | Azure Marketplace | [Požadavky: AppSource: Seznam: Kontaktujte mě](#requirements-azure-marketplace-list-contact-me) |  
 
-#### <a name="requirements-appsource-list-consulting-service"></a>Požadavky: AppSource: seznam: konzultační služby  
+#### <a name="requirements-appsource-list-consulting-service"></a>Požadavky: AppSource: Seznam: Konzultační služby  
 
 | Požadavky | Podrobnosti |  
 |:--- |:--- |  
 | Vlastnosti nabídky služeb | Konzultační služby, musí splňovat následující kritéria.<ul> <li>Dodávejte engagement-oboru, dobou trvání, pevnou cenou (nebo zdarma).</li> <li>Orient především pro před prodejem.</li> <li>Omezení pro jediného zákazníka.</li> <li>Proveďte na webu.</li> </ul> |  
 | Požadavky na partnera pro konzultační služby | Splňují kritéria v příslušné oblasti pro vaši službu.<table><tr><th>Oblast řešení</th><th>Kritéria</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Máte kompetenci stříbrné nebo zlaté řízení vztahů se cloudové zákazníky.</td></tr><tr><td>Dynamics 365 pro Finance and Operations, Enterprise edition</td><td>Máte kompetenci stříbrné nebo zlaté podnikového plánování zdrojů a výnosy z vašich cloudových operací v konci 12měsíčního období $ 25 000 nebo více.</td></tr><tr><td>Dynamics 365 pro Finance and Operations, verze Business edition</td><td>Slouží jako služby poskytovatele CSP (Cloud) nebo digitální DPOR Partner of Record () pro jeden nebo více zákazníků.</td></tr><tr><td>Power BI</td><td>Kritériím partnerských řešení.</td></tr><tr><td>PowerApps</td><td>Máte prezentaci partnerských řešení.</td></tr></table><ul> <li>Další informace o řízení vztahů se zákazníky, najdete v cloudu řízení vztahů se zákazníky stránky umístěného v [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Další informace o plánování prostředků najdete plánování podnikových zdrojů stránky umístění [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>Další informace o CSP najdete poskytovatel cloudových služeb, stránka umístění [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Další informace o partnera DPOR, navštivte Digital Partner of Record a přidružení partnera stránky umístěného v [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Další informace o kritériích partnerských řešení, najdete přehled partnerských řešení a umístění dokumentu pobídky [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx? SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Další informace o prezentaci partnerů, navštivte prezentaci partnerů stránky umístěného v [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
 
-#### <a name="requirements-azure-marketplace-list-consulting-service"></a>Požadavky: Azure Marketplace: seznam: konzultační služby  
+#### <a name="requirements-azure-marketplace-list-consulting-service"></a>Požadavky: Azure Marketplace: Seznam: Konzultační služby  
 
 | Požadavky | Podrobnosti |  
 |:--- |:--- |  
@@ -91,35 +91,35 @@ V seznamu typ seznamu zahrnuje následující typy nabídek na prodejní místa 
 
 | Typ nabídky | Prodejní místo | Podrobnosti |  
 |:---        |:---        |:---     |  
-| Bezplatné a zkušební verze SaaS | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
-| Bezplatné a zkušební verze SaaS | Azure Marketplace | [Požadavky: Azure Marketplace: zkušební verze: bezplatná zkušební verze nebo zkušební verze SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| Interaktivní ukázka | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
-| Interaktivní ukázka | Azure Marketplace | [Požadavky: Azure Marketplace: zkušební verze: interaktivní ukázka](#requirements-azure-marketplace-trial-interactive-demo) |  
-| Testovací verze | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
-| Testovací verze | Azure Marketplace | [Požadavky: Azure Marketplace: zkušební verze: testovací verze](#requirements-azure-marketplace-trial-test-drive) |  
+| Bezplatné a zkušební verze SaaS | AppSource | [Požadavky na typ výpisu: Zkušební verze](#listing-type-requirements-trial) |  
+| Bezplatné a zkušební verze SaaS | Azure Marketplace | [Požadavky: Azure Marketplace: Zkušební verze: Bezplatná zkušební verze nebo zkušební verze SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| Interaktivní ukázka | AppSource | [Požadavky na typ výpisu: Zkušební verze](#listing-type-requirements-trial) |  
+| Interaktivní ukázka | Azure Marketplace | [Požadavky: Azure Marketplace: Zkušební verze: Interaktivní ukázka](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Testovací verze | AppSource | [Požadavky na typ výpisu: Zkušební verze](#listing-type-requirements-trial) |  
+| Testovací verze | Azure Marketplace | [Požadavky: Azure Marketplace: Zkušební verze: Testovací verze](#requirements-azure-marketplace-trial-test-drive) |  
 
-#### <a name="requirements-azure-marketplace-trial"></a>Požadavky: Azure Marketplace: zkušební verze  
+#### <a name="requirements-azure-marketplace-trial"></a>Požadavky: Azure Marketplace: Zkušební verze  
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
-| Období bezplatné zkušební verze a zkušební verze | Vaši zákazníci mohou využívat vaše aplikace zdarma po omezenou dobu.<br /><br />Váš zákazník není potřeba platit žádné poplatky za licence nebo předplatné pro vaši nabídku nebo aplikace. Váš zákazník není potřeba platit za základní produkt společnosti Microsoft první strany nebo služby. Všechny možnosti zkušebních verzí se nasadí do vašeho předplatného Azure. Máte jediný ovládací prvek zkušební verzi pro optimalizaci nákladů a řízení.<br /><br />Můžete zvolit bezplatnou zkušební verzi, interaktivní ukázka nebo testovací verze. Bez ohledu na to, které zvolíte musí si bezplatnou zkušební verzi nabídnout zákazníkům předem určené časové období pro vyzkoušení aplikace bez dalších poplatků.<ul> <li>Zahajte proces vytváření si testovací jízdu, odešlete e-mail na [ amp-testdrive@microsoft.com ](mailto:amp-testdrive@microsoft.com).</li> </ul>Poznámka: Zkušební prostředí Azure Marketplace SaaS musí umožnit zákazníkům využívat pracovní přihlašovací údaje pro přihlášení.<ul> <li>Další informace najdete na webu AppSource zkušební prostředí nacházející se na [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences).</li> </ul> |  
+| Období bezplatné zkušební verze a zkušební verze | Vaši zákazníci mohou využívat vaše aplikace zdarma po omezenou dobu.<br /><br />Váš zákazník není potřeba platit žádné poplatky za licence nebo předplatné pro vaši nabídku nebo aplikace. Váš zákazník není potřeba platit za základní produkt společnosti Microsoft první strany nebo služby. Všechny možnosti zkušebních verzí se nasadí do vašeho předplatného Azure. Máte jediný ovládací prvek zkušební verzi pro optimalizaci nákladů a řízení.<br /><br />Můžete zvolit bezplatnou zkušební verzi, interaktivní ukázka nebo testovací verze. Bez ohledu na to, které zvolíte musí si bezplatnou zkušební verzi nabídnout zákazníkům předem určené časové období pro vyzkoušení aplikace bez dalších poplatků.<ul> <li>Zahajte proces vytváření si testovací jízdu, odešlete e-mail na [ amp-testdrive@microsoft.com ](mailto:amp-testdrive@microsoft.com).</li> </ul>Poznámka: Azure Marketplace SaaS zkušební prostředí musí umožnit zákazníkům využívat pracovní přihlašovací údaje pro přihlášení.<ul> <li>Další informace najdete na webu AppSource zkušební prostředí nacházející se na [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences).</li> </ul> |  
 | Dají se snadno konfigurovat a připravené k použití řešení | Snadné a rychlé ke konfiguraci a nastavení, musí být vaše aplikace. |  
 | Dostupnost / doba provozu | Aplikace SaaS nebo platformy musí mít minimálně 99,9 % dostupnost. |  
 | Azure Active Directory | Nabídky musíte povolit, že Azure Active Directory (Azure AD) federované jednotné přihlašování (SSO) (Azure AD federované jednotné přihlašování) pomocí souhlasu povolena. |  
 
-#### <a name="requirements-azure-marketplace-trial-free-trial--saas-trial"></a>Požadavky: Azure Marketplace: zkušební verze: bezplatná zkušební verze nebo zkušební verze SaaS  
+#### <a name="requirements-azure-marketplace-trial-free-trial--saas-trial"></a>Požadavky: Azure Marketplace: Zkušební verze: Bezplatná zkušební verze nebo zkušební verze SaaS  
 
 | Výhoda | Požadavek |  
 |:--- |:--- |  
 | Umožňuje zákazníkům před nákup automatizované metodou pro převod na placené použití vyzkoušet produkt. Taky umožňuje testování konceptů, pro zákazníky a společné zapojení prodejního týmu Microsoftu. | Vaše řešení je virtuální počítač nebo šablonu řešení.<br /><br />Vaše řešení je SaaS, nabízí a nabízejí víceklientské produkt SaaS.<br /><br />Máte prvního spuštění zprovoznit zákazníka a rychle.<br /><br />Máte jednoho tenanta, ale zákazníci přidat jako uživatele typu Host. |  
 
-#### <a name="requirements-azure-marketplace-trial-interactive-demo"></a>Požadavky: Azure Marketplace: zkušební verze: interaktivní ukázka  
+#### <a name="requirements-azure-marketplace-trial-interactive-demo"></a>Požadavky: Azure Marketplace: Zkušební verze: Interaktivní ukázka  
 
 | Výhoda | Požadavek |  
 |:--- |:--- |  
 | Umožňuje zobrazit vaše řešení v akci, ale bez složité nastavení zákazníkům. | Vaše řešení nevyžaduje komplexní nastavení, které by bylo obtížné dosáhnout v rámci zkušebního období. |  
 
-#### <a name="requirements-azure-marketplace-trial-test-drive"></a>Požadavky: Azure Marketplace: zkušební verze: testovací verze  
+#### <a name="requirements-azure-marketplace-trial-test-drive"></a>Požadavky: Azure Marketplace: Zkušební verze: Testovací verze  
 
 | Výhoda | Požadavek |  
 |:--- |:--- |  
@@ -133,24 +133,24 @@ V seznamu typ seznamu zahrnuje následující typy nabídek na prodejní místa 
 
 | Typ nabídky | Prodejní místo | Podrobnosti |   
 |:---        |:---        | :--- |  
-| Aplikace Azure: spravované aplikace | Azure Marketplace | [Požadavky: Azure Marketplace: Transact: aplikace Azure: spravované aplikace](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Aplikace Azure: Šablona řešení | Azure Marketplace | [Požadavky: Azure Marketplace: Transact: aplikace Azure: Šablona řešení](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
-| Containers | Azure Marketplace | [Požadavky: Azure Marketplace: Transact: kontejner](#requirements-azure-marketplace-transact-container) |  
-| Aplikace SaaS  | Azure Marketplace | [Požadavky: Azure Marketplace: Transact: aplikace SaaS](#requirements-azure-marketplace-transact-saas-app) |  
-| Virtuální počítač | Azure Marketplace | [Požadavky: Azure Marketplace: Transact: virtuální počítač](#requirements-azure-marketplace-transact-virtual-machine) |  
+| Aplikace Azure: Spravované aplikace | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Aplikace Azure: Spravované aplikace](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Aplikace Azure: Šablona řešení | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Aplikace Azure: Šablona řešení](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Kontejner](#requirements-azure-marketplace-transact-container) |  
+| Aplikace SaaS  | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Aplikace SaaS](#requirements-azure-marketplace-transact-saas-app) |  
+| Virtuální počítač | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Virtuální počítač](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 
 #### Requirements: Azure Marketplace: Transact: Azure apps: Solution template   -->
 
-#### <a name="requirements-azure-marketplace-transact-container"></a>Požadavky: Azure Marketplace: Transact: kontejner  
+#### <a name="requirements-azure-marketplace-transact-container"></a>Požadavky: Azure Marketplace: Příkaz Transact: Kontejner  
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
 | K fakturaci a měření | Podpora buď bezplatnou nebo fakturační model BYOL. |  
 | Image dockeru | Svou image kontejneru musí být založené na formátu image Dockeru a musí vytáhnout z Azure Container Registry. |  
 
-#### <a name="requirements-azure-marketplace-transact-saas-app"></a>Požadavky: Azure Marketplace: Transact: aplikace SaaS  
+#### <a name="requirements-azure-marketplace-transact-saas-app"></a>Požadavky: Azure Marketplace: Příkaz Transact: Aplikace SaaS  
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
@@ -159,14 +159,13 @@ V seznamu typ seznamu zahrnuje následující typy nabídek na prodejní místa 
 | Cílová stránka transakce | Hostování Azure značkou transakce cílovou stránkou. Cílová stránka umožňuje zákazníkům vytvářet a spravovat váš účet služby SaaS. |  
 | Předplatné SaaS API | Zadejte služba, která komunikuje s předplatným služby SaaS vytvářet, aktualizovat a odstraňovat uživatelský účet a službu plán. Všechny důležité změny rozhraní API musí podporovat během 24 hodin. Méně důležité změny rozhraní API jsou pravidelně aktualizovány. |  
 
-#### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Požadavky: Azure Marketplace: Transact: virtuální počítač  
+#### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Požadavky: Azure Marketplace: Příkaz Transact: Virtuální počítač  
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- | 
 | K fakturaci a měření | Váš virtuální počítač musí podporovat BYOL či s průběžnými platbami měsíční fakturací. |  
-| Kompatibilní s Azure virtuálního pevného disku (VHD) | Virtuální počítače musí být sestaveny jako ve Windows nebo Linuxu.<ul> <li>Další informace o vytváření linuxového virtuálního pevného disku najdete vytvořením kompatibilní s Azure virtuálního pevného disku (založené na Linuxu) části umístění [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2- Create-an-Azure-Compatible-VHD-Linux-Based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based).</li> <li>Další informace o vytváření virtuálního pevného disku Windows najdete vytvořením kompatibilní s Azure virtuálního pevného disku (založený na Windows) části umístění [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3- Create-an-Azure-Compatible-VHD-Windows-Based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based).</li> </ul> |  
+| Kompatibilní s Azure virtuálního pevného disku (VHD) | Virtuální počítače musí být sestaveny jako ve Windows nebo Linuxu.<ul> <li>Další informace o vytváření linuxového virtuálního pevného disku najdete v tématu [Linuxových distribucí doporučených pro na Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Další informace o vytváření virtuálního pevného disku Windows najdete v tématu [vytvoření virtuálního pevného disku kompatibilního s Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
 
 ## <a name="next-steps"></a>Další postup
 *   Přejděte [Azure Marketplace a AppSource příručce pro vydavatele](./marketplace-publishers-guide.md) stránky.  
- 
----  
+

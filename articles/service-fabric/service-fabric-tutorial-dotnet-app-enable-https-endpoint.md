@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4333a234efe96f32541254819c9c5f21bb031757
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: 2e631a0605385f8d55c652a26739b23a0945674f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115072"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077246"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-end služby webového rozhraní API ASP.NET Core pomocí Kestrel
 
 Tento kurz je třetí částí série.  Zjistíte, jak povolit HTTPS ve službě ASP.NET Core spuštěné v Service Fabric. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem ASP.NET Core s povoleným HTTPS, který bude naslouchat na portu 443. Pokud nechcete hlasovací aplikaci vytvářet ručně, v tématu popisujícím [vytvoření aplikace Service Fabric v .NET](service-fabric-tutorial-deploy-app-to-party-cluster.md) si můžete [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace.
 
@@ -54,10 +54,10 @@ Než začnete s tímto kurzem:
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Získání certifikátu nebo vytvoření certifikátu podepsaného svým držitelem pro vývoj
 
-Pro produkční aplikace používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority). Pro účely vývoje a testování můžete vytvořit a používat certifikát podepsaný svým držitelem. Sada Service Fabric SDK poskytuje skript *CertSetup.ps1*, který vytvoří certifikát podepsaný svým držitelem a importuje ho do úložiště certifikátů `Cert:\LocalMachine\My`. Otevřete příkazový řádek jako správce a spuštěním následujícího příkazu vytvořte certifikát s předmětem CN=localhost:
+Pro produkční aplikace používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority). Pro účely vývoje a testování můžete vytvořit a používat certifikát podepsaný svým držitelem. Sada Service Fabric SDK poskytuje skript *CertSetup.ps1*, který vytvoří certifikát podepsaný svým držitelem a importuje ho do úložiště certifikátů `Cert:\LocalMachine\My`. Otevřete příkazový řádek jako správce a spuštěním následujícího příkazu vytvořte certifikát s předmětem "CN = mytestcert":
 
 ```powershell
-PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost
+PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
 ```
 
 Pokud už máte soubor certifikátu PFX, spuštěním následujícího příkazu importujte certifikát do úložiště certifikátů `Cert:\LocalMachine\My`:
@@ -158,7 +158,7 @@ serviceContext =>
         }))
 ```
 
-Přidejte také následující metodu, aby Kestrel mohl vyhledat certifikát v úložišti `Cert:\LocalMachine\My` pomocí předmětu.  Nahraďte &lt;your_CN_value&gt; za localhost, pokud jste pomocí předchozího příkazu PowerShellu vytvořili certifikát podepsaný svým držitelem, nebo použijte název vašeho certifikátu.
+Přidejte také následující metodu, aby Kestrel mohl vyhledat certifikát v úložišti `Cert:\LocalMachine\My` pomocí předmětu.  Nahraďte "&lt;your_CN_value&gt;" s "mytestcert", pokud jste pomocí předchozího příkazu Powershellu vytvořili certifikát podepsaný svým držitelem, nebo použijte název vašeho certifikátu.
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -178,7 +178,7 @@ private X509Certificate2 GetCertificateFromStore()
 }
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>Poskytnutí přístupu k privátnímu klíči certifikátu účtu NETWORK SERVICE
+## <a name="give-network-service-access-to-the-certificates-private-key"></a>Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 
 V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Účtu, pod kterým se služba spouští (ve výchozím nastavení je to NETWORK SERVICE), musíte také explicitně udělit přístup k privátnímu klíči certifikátu. Můžete to provést ručně (pomocí nástroje certlm.msc), ale lepší je automaticky spustit skript PowerShellu prostřednictvím [konfigurace spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v části **SetupEntryPoint** v manifestu služby.
 
@@ -238,7 +238,7 @@ Upravte vlastnosti souboru *Setup.bat* a nastavte možnost **Kopírovat do výst
 V Průzkumníku řešení klikněte pravým tlačítkem na **VotingWeb**, vyberte **Přidat**->**Nová položka** a přidejte nový soubor SetCertAccess.ps1.  Upravte soubor *SetCertAccess.ps1* a přidejte následující skript:
 
 ```powershell
-$subject="localhost"
+$subject="mytestcert"
 $userGroup="NETWORK SERVICE"
 
 Write-Host "Checking permissions to certificate $subject.." -ForegroundColor DarkCyan
@@ -349,7 +349,7 @@ Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  
 
 Než aplikaci nasadíte do Azure, nainstalujte certifikát do úložiště `Cert:\LocalMachine\My` na uzly vzdáleného clusteru.  Při spuštění webové front-end služby na uzlu clusteru vyhledá spouštěcí skript certifikát a nakonfiguruje přístupová oprávnění.
 
-Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci certlm.msc a přejděte do části **Osobní**>**Certifikáty**.  Klikněte pravým tlačítkem na certifikát *localhost* a vyberte **Všechny úlohy**>**Exportovat**.
+Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci certlm.msc a přejděte do části **Osobní**>**Certifikáty**.  Klikněte pravým tlačítkem na *mytestcert* certifikátu a vyberte **všechny úkoly**>**exportovat**.
 
 ![Export certifikátu][image4]
 
@@ -430,7 +430,7 @@ Po nasazení aplikace otevřete webový prohlížeč a přejděte na adresu [htt
 
 ![Hlasovací aplikace][image3]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

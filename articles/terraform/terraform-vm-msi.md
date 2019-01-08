@@ -4,17 +4,17 @@ description: Použijte image z webu Marketplace k vytvoření virtuálního poč
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, MSI, virtuální počítač, vzdálený stav, azure
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6c9bef108c2f272c678879124ae2cd4f9ae093ba
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971160"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076213"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravovaných identit pro prostředky Azure
 
@@ -47,17 +47,17 @@ Na kartě **Vytvořit Terraform** zadejte následující podrobnosti:
 
 1. **Základy**
     
-   * **Název**: název virtuálního počítače Terraform
-   * **Uživatelské jméno**: přihlašovací ID prvního účtu
-   * **Heslo**: heslo první účtu (Místo hesla můžete použít veřejný klíč SSH.)
-   * **Předplatné**: předplatné, ve kterém se má počítač vytvořit a kterému se bude fakturovat. Toto předplatné musí mít oprávnění vytvářet prostředky.
-   * **Skupina prostředků**: nová nebo existující skupina prostředků
-   * **Umístění**: nejvhodnější datacentrum (Obvykle jde o datacentrum s většinou dat nebo nejbližší datacentrum kvůli co nejrychlejšímu síťovému přístupu.)
+   * **Název**: Název virtuálního počítače Terraform.
+   * **Uživatelské jméno**: ID první účet přihlášení.
+   * **Heslo**: První heslo účtu. (Místo hesla můžete použít veřejný klíč SSH.)
+   * **Předplatné**: Předplatné, ve které je vytvořené a fakturuje počítač. Toto předplatné musí mít oprávnění vytvářet prostředky.
+   * **Skupina prostředků**: Nové nebo existující skupinu prostředků.
+   * **Umístění**: Datacentrum, který nejlépe vyhovuje. (Obvykle jde o datacentrum s většinou dat nebo nejbližší datacentrum kvůli co nejrychlejšímu síťovému přístupu.)
 
 2. **Další nastavení**
 
-   * **Velikost**: velikost virtuálního počítače 
-   * **Typ disku virtuálního počítače**: SSD nebo HDD
+   * **Velikost**: Velikost virtuálního počítače. 
+   * **Typ disku virtuálního počítače**: SSD nebo pevný disk.
 
 3. **Souhrn Terraformu**
 

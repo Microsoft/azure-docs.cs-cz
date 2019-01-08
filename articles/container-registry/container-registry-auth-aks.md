@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 850919f8ca8bb68af544ae528a779e16068424b1
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0dbdf2261b851b303a0c606e5de70354578c6d2e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752533"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078775"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověřování pomocí Azure Container Registry ze služby Azure Kubernetes
 
@@ -44,7 +44,7 @@ az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 
 ## <a name="access-with-kubernetes-secret"></a>Přístup pomocí tajného klíče Kubernetes
 
-V některých případech nemusí být možné přiřadit požadované role automaticky generované AKS instančnímu objektu služby se uděluje přístup do služby ACR. Díky modelu zabezpečení vaší organizace například nemusí mít dostatečná oprávnění v adresáři služby Azure AD k přiřazení role ve službě AKS generovány instančního objektu. V takovém případě můžete vytvořit nový instanční objekt a pak mu udělit přístup k registru kontejnerů pomocí tajného klíče Kubernetes obrázek o přijetí změn.
+V některých případech nemusí být možné přiřadit požadované role automaticky generované AKS instančnímu objektu služby se uděluje přístup do služby ACR. Díky modelu zabezpečení vaší organizace například nemusí mít dostatečná oprávnění ve vašem tenantovi Azure Active Directory na přiřazení role ve službě AKS generovány instančního objektu. Přiřazení role instančnímu objektu služby vyžaduje váš účet Azure AD oprávnění k zápisu do svého tenanta Azure AD. Pokud nemáte oprávnění, můžete vytvořit nový instanční objekt a pak mu udělit přístup k registru kontejnerů pomocí tajného klíče Kubernetes obrázek o přijetí změn.
 
 Pomocí následujícího skriptu vytvořte nový instanční objekt (budete používat svoje přihlašovací údaje pro tajného kódu Kubernetes obrázek o přijetí změn). Upravit `ACR_NAME` proměnné pro vaše prostředí před spuštěním skriptu.
 

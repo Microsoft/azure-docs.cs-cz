@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8459866aa192f2364ae52d0d5d68eace693e127e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c73c846db4b22d8c19ccdaa2ec99a3fe7fdadf78
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832679"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076701"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Správa profilu vydavatele "Azure Marketplace" a "AppSource.
 
@@ -29,7 +29,7 @@ V tuto chvíli jste dokončili kroky, abyste se na vydavatele Azure Marketplace 
 
 Pokud vaše společnost ještě nezaregistrovali jako cloud partner, najdete v článku [začít pracovat s portálem cloud partner](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
 
-**Profil vydavatele**: svůj profil vydavatele odlišuje vaší společnosti na Azure Marketplace a AppSource. Zahrnuje ID vydavatele, zobrazovaný název a vlastníka email(s). Dobře spravovaného profilu se zvýší viditelnost a pomozte uživatelům marketplace snadno identifikovat a vyberte příslušné nabídky.
+**Profil vydavatele**: Svůj profil vydavatele odlišuje vaší společnosti na Azure Marketplace a AppSource. Zahrnuje ID vydavatele, zobrazovaný název a vlastníka email(s). Dobře spravovaného profilu se zvýší viditelnost a pomozte uživatelům marketplace snadno identifikovat a vyberte příslušné nabídky.
 
 > [!NOTE]
 > ID vydavatele a registrovaného vlastníka e-mailu se upravovat po publikování vaší nabídky první. Ale můžete zobrazit svůj profil a upravit zobrazovaného názvu publisher z portál partnerů cloudu.
@@ -45,12 +45,12 @@ Pokud vaše společnost ještě nezaregistrovali jako cloud partner, najdete v �
 
 ![Podrobnosti o profilu vydavatele – podrobnosti o profilu vydavatele](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
 
-**Propojení účtu Dev Center**: stávajícího účtu Dev Center můžete také propojit s svůj profil vydavatele na portál partnerů cloudu.
+**Propojí váš účet vývojáře pro**: Můžete také propojit existujícího účtu Dev Center s svůj profil vydavatele na portál partnerů cloudu.
 Nejdřív přihlásit k portálu pomocí stejné e-mailovou adresu použije k registraci účtu Dev Center. Pak zobrazí stránku svého profilu vydavatele stav účtu Dev Center, e-mail vlastníka účtu Dev Center a název účtu Dev Center.
 
 >[!NOTE]
 >Registrace účtu dev Center je povinná pro publikování placené trh skladové položky.
 
-Pokud nemáte k dispozici [účet v Centru pro vývojáře](~/articles/marketplace-publishing/marketplace-publishing-accounts-creation-registration.md), můžete vytvořit účet. Pak přidejte registrované e-mailovou adresu jako vlastníka na portál partnerů cloudu pro vaši nabídku. Jako vlastníka můžete přidat pouze registrované e-mailovou adresu do profilu publikování z **uživatele** oddílu. Poté Přihlaste se k portálu pomocí stejné e-mailovou adresu a propojí váš účet vývojáře.
+Pokud nemáte k dispozici [účet v Centru pro vývojáře](./cloud-partner-portal-dev-center-accounts-registration.md), můžete vytvořit účet. Pak přidejte registrované e-mailovou adresu jako vlastníka na portál partnerů cloudu pro vaši nabídku. Jako vlastníka můžete přidat pouze registrované e-mailovou adresu do profilu publikování z **uživatele** oddílu. Poté Přihlaste se k portálu pomocí stejné e-mailovou adresu a propojí váš účet vývojáře.
 
 ![Podrobnosti o profilu vydavatele – popis profilu vydavatele](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

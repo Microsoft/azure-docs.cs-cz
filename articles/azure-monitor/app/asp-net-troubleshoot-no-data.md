@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 18416f4208a77c27290b7e524b207fc681f06fdb
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2387af0ddd9f6f3ecbe91afaaca66d89f070c036
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050808"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076036"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -58,7 +58,7 @@ Oprava:
 * Zkontrolujte, že jste zadali přihlašovací údaje pro účet přímo Azure. 
 * V prohlížeči, zkontrolujte, že máte přístup k [webu Azure portal](https://portal.azure.com). Otevřete nastavení a zjistit, jestli žádná omezení.
 * [Přidejte Application Insights do existujícího projektu](../../azure-monitor/app/asp-net.md): V Průzkumníku řešení klikněte pravým tlačítkem na projekt a zvolte "Přidat Application Insights."
-* Pokud to pořád nefunguje, postupujte [Ruční postup](../../application-insights/app-insights-windows-services.md) přidat prostředek na portálu a potom přidejte sadu SDK do projektu. 
+* Pokud to pořád nefunguje, postupujte [Ruční postup](../../azure-monitor/app/windows-services.md) přidat prostředek na portálu a potom přidejte sadu SDK do projektu. 
 
 ## <a name="emptykey"></a>Dojde k chybě "Instrumentační klíč nemůže být prázdný"
 Vypadá to, došlo k chybě při jste instalovali Application Insights nebo možná adaptér protokolování.

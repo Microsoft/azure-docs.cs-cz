@@ -1,6 +1,6 @@
 ---
-title: Přístup ke zdrojům dat v místním prostředí pro Azure Logic Apps | Dokumentace Microsoftu
-description: Vytvoření a nastavení na místní bránu dat, můžete přístup ke zdrojům dat místně z aplikací logiky
+title: Přístup ke zdrojům dat v místním prostředí v Azure Logic Apps | Dokumentace Microsoftu
+description: Připojte se k místním datům zdroje z aplikací logiky vytvořením místní brány dat
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,19 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: e8e8d85d2c95c1dda7271de72491594562b7d3c1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413702"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064062"
 ---
-# <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Připojení ke zdrojům dat v místním prostředí v Azure Logic Apps s místní bránou dat
+# <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
-Přístup z aplikace logiky ke zdrojům dat v místním prostředí, můžete vytvořit prostředek brány dat v Azure, takže aplikace logiky můžete použít [místní konektory](../logic-apps/logic-apps-gateway-install.md#supported-connections). Tento článek popisuje, jak vytvořit váš prostředek Azure gateway *po* vám [stáhnout a nainstalovat bránu na místním počítači](../logic-apps/logic-apps-gateway-install.md). 
+Přístup ke zdrojům dat v místním prostředí z aplikace logiky, vytvoření prostředku brány místní data na webu Azure Portal. Aplikace logiky pak může použít [místní konektory](../logic-apps/logic-apps-gateway-install.md#supported-connections). Tento článek popisuje, jak vytvořit váš prostředek Azure gateway *po* vám [stáhnout a nainstalovat bránu na místním počítači](../logic-apps/logic-apps-gateway-install.md). 
+
+> [!TIP]
+> Pro připojení k virtuálním sítím Azure, zvažte vytvoření [ *prostředí integrační služby* ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) místo. 
 
 Informace o tom, jak použít bránu s ostatními službami, najdete v těchto článcích:
 
@@ -65,7 +68,7 @@ Po instalaci brány na místním počítači, pak vytvoříte prostředek Azure 
    | **Název** | Název pro prostředek brány | 
    | **Předplatné** | Název předplatného Azure, které by měly být stejné předplatné jako aplikace logiky. Výchozí odběr je založený na účtu Azure, který jste použili k přihlášení. | 
    | **Skupina prostředků** | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) pro uspořádání souvisejících prostředků | 
-   | **Umístění** | Azure omezuje toto umístění do stejné oblasti, která byla vybrána pro cloudovou službu Brána během [instalace brány](../logic-apps/logic-apps-gateway-install.md). <p>**Poznámka:**: Ujistěte se, že toto umístění prostředku brány odpovídá umístění bránu cloudové služby. V opačném případě instalaci brány se nemusí zobrazit v seznamu nainstalovaných bran pro výběr v dalším kroku. Pro prostředek brány a pro vaši aplikaci logiky, můžete použít různé oblasti. | 
+   | **Umístění** | Azure omezuje toto umístění do stejné oblasti, která byla vybrána pro cloudovou službu Brána během [instalace brány](../logic-apps/logic-apps-gateway-install.md). <p>**Poznámka:** Ujistěte se, že toto umístění prostředku brány odpovídá umístění bránu cloudové služby. V opačném případě instalaci brány se nemusí zobrazit v seznamu nainstalovaných bran pro výběr v dalším kroku. Pro prostředek brány a pro vaši aplikaci logiky, můžete použít různé oblasti. | 
    | **Název instalace** | Pokud vaše instalace brány není vybrána, vyberte bránu, kterou jste dříve nainstalovali. | 
    | | | 
 

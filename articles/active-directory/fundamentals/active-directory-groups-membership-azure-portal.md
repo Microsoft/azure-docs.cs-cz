@@ -12,12 +12,12 @@ ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 12f557e9453db0d8bff2ab91fe8453e026e0320c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c13be8cbe9c05b9dcf513588825a22722c66e529
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104267"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061891"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Přidat nebo odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory
 Tento článek vám umožní přidat a odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory.
@@ -29,7 +29,7 @@ Tento článek vám umožní přidat a odebrat skupiny z jiné skupiny pomocí s
 Můžete přidat existující skupinu zabezpečení do jiné existující skupiny zabezpečení (označované také jako vnořené skupiny), vytváření členem skupiny (podskupiny) a nadřazenou skupinu. Vlastnosti atributy a nadřazené skupiny, ušetříte čas konfigurační nastavení převezme skupina člena.
 
 >[!Important]
->Aktuálně nepodporujeme:<ul><li>Přidání skupiny do skupiny synchronizované s místní služby Active Directory</li><li>Přidání skupin zabezpečení pro skupiny Office 365</li><li>Přidání skupin Office 365 do skupiny zabezpečení nebo jiné skupiny Office 365</li><li>Přiřazení aplikací do vnořené skupiny</li><li>Použití licence pro vnořené skupiny</li></ul>
+>Aktuálně nepodporujeme:<ul><li>Přidání skupiny do skupiny synchronizované s místní služby Active Directory.</li><li>Přidání skupin zabezpečení pro skupiny Office 365.</li><li>Přidání skupin Office 365 do skupiny zabezpečení nebo jiné skupiny Office 365.</li><li>Přiřazení aplikací do vnořených skupin.</li><li>Použití vnořených skupin licencí.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Přidání skupiny jako člena jiné skupiny
 

@@ -7,15 +7,15 @@ author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/07/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5d9b42cc4fb93df2da5b039d66aa5386b52ce860
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: a82b29dedf8d415c0fc21d159c0e61c84e2855f6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435738"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065745"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Podpora přirozeného jazyka pro Azure Cognitive Services
 
@@ -68,7 +68,7 @@ Tyto tabulky zvýraznit jazyk dostupnost kategorii služeb; jazyky Core vylouče
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | [Kontrola pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: |
 | [Rozhraní Content Moderator: Filtrování textu](https://docs.microsoft.com/azure/cognitive-services/content-moderator/text-moderation-api-languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages) | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: |
+| [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages) | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: |
 | [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: |
 

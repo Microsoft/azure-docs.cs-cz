@@ -1,6 +1,6 @@
 ---
-title: Vytvoření pravidelně spuštěných úloh a pracovních postupů s Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizace úloh a pracovních postupů, které se spustí podle plánu opakování v konektoru v Azure Logic Apps
+title: Naplánování a spuštění automatizovaných úloh a pracovních postupů s Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace naplánovaných a opakované úkoly s konektorem opakování v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,23 +10,23 @@ ms.reviewer: klam, LADocs
 ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 tags: connectors
 ms.topic: article
-ms.date: 09/25/2017
-ms.openlocfilehash: 905157ab530ae042318de520f9d6fe24cb9d59ce
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 01/08/2019
+ms.openlocfilehash: 369bdba063f8582b8343682dcbbc990d2f63e21a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127050"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078061"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Vytváření a spouštění opakovaných úloh a pracovních postupů s Azure Logic Apps
 
-Plánování úloh, akce, úlohy a procesy, které pravidelně spouštět, můžete vytvořit pracovní postup aplikace logiky, která začíná **plán – opakování** [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts). S tímto triggerem můžete nastavit datum a čas pro spuštění opakování a plán opakování pro provádění úloh, jako jsou tyto příklady a další:
+Naplánování akcí, úlohy a procesy, které pravidelně spouštět vytvořit pracovní postup aplikace logiky, která začíná **plán – opakování** [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts). Můžete nastavit datum a čas pro spuštění pracovního postupu a plán opakování pro provádění úloh, jako jsou tyto příklady a další:
 
-* Načíst interní data: [spuštění uložené procedury SQL](../connectors/connectors-create-api-sqlazure.md) každý den.
-* Načíst externí data: načítat zprávy o počasí NOAA každých 15 minut.
-* Dat sestavy: e-mailu souhrnné informace pro všechny objednávky větší než konkrétní částku v minulém týdnu.
-* Zpracování dat: komprese dnes má nahraných obrázků každý den v týdnu, hodiny mimo špičku.
-* Vyčistit data: odstranit všechny tweety, které jsou starší než tři měsíce.
+* Získáte interní data: [Spuštění uložené procedury SQL](../connectors/connectors-create-api-sqlazure.md) každý den.
+* Načíst externí data: Načítat zprávy o počasí NOAA každých 15 minut.
+* Data sestavy: E-mailu souhrnné informace pro všechny objednávky větší než konkrétní částku v minulém týdnu.
+* Zpracování dat: Komprese nahraných obrázků s dnešní každý den v týdnu, hodiny mimo špičku.
+* Vyčištění dat: Odstraňte všechny tweety, které jsou starší než tři měsíce.
 * Archivace dat: Push faktury ke službě zálohování každý měsíc.
 
 Tato aktivační událost podporuje mnoho vzory, třeba:
@@ -37,7 +37,9 @@ Tato aktivační událost podporuje mnoho vzory, třeba:
 * Spuštění a opakovat každý týden, ale jenom pro konkrétní dny, jako je například sobotu a neděli.
 * Spuštění a opakujte každý týden, ale jenom pro konkrétní dny a časy, jako je od pondělí do pátku v 8:00:00 a 17:00:00.
 
-Když se trigger opakování aktivuje pokaždé, když, Logic Apps vytvoří a spustí novou instanci pracovního postupu aplikace logiky.
+Když se trigger opakování aktivuje pokaždé, když, Logic Apps vytvoří a spustí novou instanci pracovního postupu aplikace logiky. 
+
+Okamžitě aktivovat svou aplikaci logiky a spusťte jednou bez opakovaného najdete v tématu [spuštění úlohy jednou](#run-once) dále v tomto tématu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -49,9 +51,9 @@ Když se trigger opakování aktivuje pokaždé, když, Logic Apps vytvoří a s
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky, nebo si přečtěte [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2. Poté, co se zobrazí návrhář pro Logic Apps, do vyhledávacího pole zadejte jako filtr "opakování". Vyberte **plán – opakování** aktivační události. 
+2. Až se návrhář pro Logic Apps se zobrazí pod vyhledávacím polem zvolte **všechny**. Do vyhledávacího pole zadejte jako filtr "opakování". Ze seznamu triggerů vyberte tento trigger: **Opakování – plán** 
 
-   ![Plán – opakování triggeru](./media/connectors-native-recurrence/add-recurrence-trigger.png)
+   ![Vyberte trigger "Plán – opakování"](./media/connectors-native-recurrence/add-recurrence-trigger.png)
 
    Tato aktivační událost je teď na první krok ve své aplikaci logiky.
 
@@ -95,11 +97,11 @@ Můžete nakonfigurovat tyto vlastnosti pro trigger opakování.
 
 | Název | Požaduje se | Název vlastnosti | Typ | Popis | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **Frekvence** | Ano | frequency | Řetězec | Jednotka času pro opakování: **druhý**, **minutu**, **hodinu**, **den**, **týden**, nebo  **Měsíc** | 
-| **Interval** | Ano | interval | Integer | Kladné celé číslo, který popisuje, jak často pracovní postup spouští na základě frekvence. <p>Výchozí interval je 1. Toto jsou minimální a maximální intervaly: <p>-Měsíce: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minuty: 1-72,000 minut </br>-Druhý: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", pak opakování je každých 6 měsíců. | 
+| **Frekvence** | Ano | frequency | Řetězec | Jednotka času pro opakování: **Druhý**, **minutu**, **hodinu**, **den**, **týden**, nebo **měsíc** | 
+| **Interval** | Ano | interval | Integer | Kladné celé číslo, který popisuje, jak často pracovní postup spouští na základě frekvence. <p>Výchozí interval je 1. Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", pak opakování je každých 6 měsíců. | 
 | **Časové pásmo** | Ne | timeZone | Řetězec | Platí, pouze pokud zadáte čas spuštění protože nepřijme tento trigger [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. | 
-| **Čas spuštění** | Ne | startTime | Řetězec | Zadejte čas spuštění v tomto formátu: <p>RRRR-MM-ddTHH Pokud vyberte časové pásmo <p>-nebo- <p>RRRR-MM-: ssZ Pokud nevyberete časové pásmo <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, jako je například tichomořského času. Nebo zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tato počáteční čas musí následovat [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). <p>U jednoduchých plánů, počáteční čas je první výskyt, zatímco u složitějších plánů aktivační událost neaktivuje všechny dříve než čas spuštění. [*Jaké jsou způsoby, které lze použít počáteční datum a čas?*](#start-time) | 
-| **V tyto dny** | Ne | weekDays | Řetězec nebo pole řetězců | Pokud vyberete "Týden", můžete vybrat jeden nebo více dní, kdy chcete spustit pracovní postup: **pondělí**, **úterý**, **středa**, **čtvrtek** , **Pátek**, **sobota**, a **neděle** | 
+| **Čas spuštění** | Ne | startTime | Řetězec | Zadejte čas spuštění v tomto formátu: <p>RRRR-MM-ddTHH Pokud vyberte časové pásmo <p>-nebo- <p>RRRR-MM-: ssZ Pokud nevyberete časové pásmo <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, jako je například tichomořského času. Nebo zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas musí následovat [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). <p>U jednoduchých plánů, počáteční čas je první výskyt, zatímco u složitějších plánů aktivační událost neaktivuje všechny dříve než čas spuštění. [*Jaké jsou způsoby, které lze použít počáteční datum a čas?*](#start-time) | 
+| **V tyto dny** | Ne | weekDays | Řetězec nebo pole řetězců | Pokud vyberete "Týden", můžete vybrat jeden nebo více dní, kdy chcete spustit pracovní postup: **Pondělí**, **úterý**, **středa**, **čtvrtek**, **pátek**, **sobota**, a **Neděle** | 
 | **V těchto hodinách** | Ne | hours | Integer nebo celočíselné pole | Pokud vyberete "Day" nebo "Týden", můžete vybrat jeden nebo více celá čísla od 0 do 23 jako hodin dne, kdy chcete spustit pracovní postup. <p>Například pokud zadáte "číslo 10", "12" a "14", získáte 10 AM, 12 hodin a 14: 00 jako značky hodinu. | 
 | **V těchto minutách** | Ne | minutes | Integer nebo celočíselné pole | Pokud vyberete "Day" nebo "Týden", můžete vybrat jeden nebo více celá čísla od 0 do 59 jako minuty v hodině, kdy chcete spustit pracovní postup. <p>Například můžete zadat "30" jako značku minutu a použijeme předchozí příklad hodin dne, získáte 10:30:00, 12:30 odp. a 2:30 odp. | 
 ||||| 
@@ -109,42 +111,49 @@ Můžete nakonfigurovat tyto vlastnosti pro trigger opakování.
 Tady je příklad [definice aktivační události opakování](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger):
 
 ``` json
-{
-    "triggers": {
-        "Recurrence": {
-            "type": "Recurrence",
-            "recurrence": {
-                "frequency": "Week",
-                "interval": 1,
-                "schedule": {
-                    "hours": [
-                        10,
-                        12,
-                        14
-                    ],
-                    "minutes": [
-                        30
-                    ],
-                    "weekDays": [
-                        "Monday"
-                    ]
-                },
-               "startTime": "2017-09-07T14:00:00",
-               "timeZone": "Pacific Standard Time"
-            }
-        }
-    }
+"triggers": {
+   "Recurrence": {
+      "type": "Recurrence",
+      "recurrence": {
+         "frequency": "Week",
+         "interval": 1,
+         "schedule": {
+            "hours": [
+               10,
+               12,
+               14
+            ],
+            "minutes": [
+               30
+            ],
+            "weekDays": [
+               "Monday"
+            ]
+         },
+         "startTime": "2017-09-07T14:00:00",
+         "timeZone": "Pacific Standard Time"
+      }
+   }
 }
 ```
 
 ## <a name="faq"></a>Nejčastější dotazy
 
+<a name="run-once"></a>
+
+**DOTAZ:** Co když chci spustit okamžitě a jednou pouze aplikaci logiky? </br>
+**ODPOVĚĎ:** K aktivaci vaší aplikace logiky hned a spusťte jednou bez opakování, můžete použít **plánovače: Spustit jednou úlohy** šablony. Po vytvoření nové aplikace logiky, ale před otevřením v návrháři pro Logic Apps **šablony** části z **kategorie** seznamu vyberte **plán**a pak vyberte šablony:
+
+![Vyberte "plánovače: Spustit jednou úlohy"šablony](./media/connectors-native-recurrence/choose-run-once-template.png)
+
+Nebo, pokud používáte šablony prázdné aplikace logiky, aplikaci logiky s spustit **přijetí požadavku HTTP při - požadavek** aktivační událost. Počáteční čas triggeru předáte jako parametr. Na další krok, přidejte **zpoždění do – naplánovat** akce a zadejte čas při spuštění další akci.
+
 <a name="example-recurrences"></a>
 
-**Otázka:** jaké jsou další příklady plánů opakování? </br>
-**Odpověď:** uvádíme další příklady:
+**DOTAZ:** Jaké jsou další příklady plánů opakování? </br>
+**ODPOVĚĎ:** Tady jsou další příklady:
 
-| Opakování | Interval | Frekvence | Čas spuštění | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
+| Opakování | Interval | Frekvence | Počáteční čas | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
 | ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
 | Spuštění každých 15 minut (žádná počáteční datum a čas) | 15 | Minuta | {none} | {není k dispozici} | {none} | {none} | Tento plán okamžitě spustí a pak vypočítá budoucí opakování podle času posledního spuštění. | 
 | Spuštění každých 15 minut (s počáteční datum a čas) | 15 | Minuta | *startDate*T*startTime*Z | {není k dispozici} | {none} | {none} | Nelze spustit tento plán *všechny dřív* než zadané datum a čas, pak vypočítá budoucí opakování podle času posledního spuštění. | 
@@ -171,26 +180,26 @@ Tady je příklad [definice aktivační události opakování](../logic-apps/log
 
 <a name="start-time"></a>
 
-**Otázka:** jakými způsoby, které lze použít počáteční datum a čas? </br>
-**Odpověď:** tady jsou některé vzory, které ukazují, jak můžete řídit opakování s počáteční datum a čas a jak modul Logic Apps provede tyto opakování:
+**DOTAZ:** Jaké jsou způsoby, které lze použít počáteční datum a čas? </br>
+**ODPOVĚĎ:** Tady jsou některé vzory, které ukazují, jak můžete řídit opakování s počáteční datum a čas a jak modul Logic Apps provede tyto opakování:
 
-| Čas spuštění | Opakování bez plánu | Opakování s plánem | 
+| Počáteční čas | Opakování bez plánu | Opakování s plánem | 
 | ---------- | --------------------------- | ------------------------ | 
 | {none} | První úloha se spustí okamžitě. <p>Spustí budoucí úlohy založené na čas posledního spuštění. | První úloha se spustí okamžitě. <p>Umožňuje spouštět budoucí úlohy podle zadaného plánu. | 
-| Počáteční čas v minulosti | Vypočítá doba spuštění na základě zadaný čas začátku a zahození za posledních spustit časy. Spuštění první úlohy v další budoucí čas spuštění. <p>Spustí budoucí úlohy založené na výpočty z posledního času spuštění. <p>Podrobnější vysvětlení najdete v příkladu za touto tabulkou. | Spuštění první úlohy *až po* než čas spuštění podle plánu vypočítaného z času začátku. <p>Umožňuje spouštět budoucí úlohy podle zadaného plánu. <p>**Poznámka:** -li zadat počet opakování s plánem, ale nezadávejte hodin nebo minut, než se plán a pak budoucích časů spuštění vypočítají na základě hodiny nebo minuty, respektive, od prvního spuštění. | 
-| Čas spuštění v současné době nebo v budoucnu | Spuštění první úlohy v zadaný čas začátku. <p>Spustí budoucí úlohy založené na výpočty z posledního času spuštění. | Spuštění první úlohy *až po* než čas spuštění podle plánu vypočítaného z času začátku. <p>Umožňuje spouštět budoucí úlohy podle zadaného plánu. <p>**Poznámka:** -li zadat počet opakování s plánem, ale nezadávejte hodin nebo minut, než se plán a pak budoucích časů spuštění vypočítají na základě hodiny nebo minuty, respektive, od prvního spuštění. | 
+| Počáteční čas v minulosti | Vypočítá doba spuštění na základě zadaný čas začátku a zahození za posledních spustit časy. Spuštění první úlohy v další budoucí čas spuštění. <p>Spustí budoucí úlohy založené na výpočty z posledního času spuštění. <p>Podrobnější vysvětlení najdete v příkladu za touto tabulkou. | Spuštění první úlohy *až po* než čas spuštění podle plánu vypočítaného z času začátku. <p>Umožňuje spouštět budoucí úlohy podle zadaného plánu. <p>**Poznámka:** Je-li zadat počet opakování s plánem, ale nezadávejte hodin nebo minut, než plán, pak budoucích časů spuštění vypočítají na základě hodin nebo minut, v uvedeném pořadí, od prvního spuštění. | 
+| Čas spuštění v současné době nebo v budoucnu | Spuštění první úlohy v zadaný čas začátku. <p>Spustí budoucí úlohy založené na výpočty z posledního času spuštění. | Spuštění první úlohy *až po* než čas spuštění podle plánu vypočítaného z času začátku. <p>Umožňuje spouštět budoucí úlohy podle zadaného plánu. <p>**Poznámka:** Je-li zadat počet opakování s plánem, ale nezadávejte hodin nebo minut, než plán, pak budoucích časů spuštění vypočítají na základě hodin nebo minut, v uvedeném pořadí, od prvního spuštění. | 
 ||||
 
 **Příklad pro poslední počáteční čas opakování, ale žádný plán** 
 
-| Čas spuštění | Aktuální čas | Opakování | Plán |
+| Počáteční čas | Aktuální čas | Opakování | Plán |
 | ---------- | ------------ | ---------- | -------- | 
 | 2017-09-**07**T14:00:00Z | 2017-09-**08**T13:00:00Z | Každé 2 dny | {none} | 
 ||||| 
 
 V tomto scénáři, Logic Apps vypočítá modul runtime podle času spuštění zahodí minulé doby spuštění a používá další budoucí čas zahájení pro první spuštění. Po prvním spuštění budoucí spouštění vycházejí z plánu vypočítaného z času začátku. Zde je, jak bude vypadat toto opakování:
 
-| Čas spuštění | První čas spuštění | Budoucí čas spuštění | 
+| Počáteční čas | První čas spuštění | Budoucí čas spuštění | 
 | ---------- | ------------ | ---------- | 
 | 2017-09 -**07** ve 14:00 | 2017-09 -**09** ve 14:00 | 2017-09 -**11** ve 14:00 </br>2017-09 -**13** ve 14:00 </br>2017-09 -**15** ve 14:00 </br>a tak dále.
 ||||| 

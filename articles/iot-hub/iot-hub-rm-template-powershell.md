@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby Azure IoT Hub pomocí šablony (PowerShell) | Microsoft Docs
-description: Postup vytvoření služby IoT Hub pomocí prostředí PowerShell pomocí šablony Azure Resource Manager.
+title: Vytvoření centra IoT Azure pomocí šablony (PowerShell) | Dokumentace Microsoftu
+description: Jak používat šablony Azure Resource Manageru k vytvoření IoT Hubu pomocí Powershellu.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,21 +8,21 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: cdc53aeb0ecbea5714a8587c8d03ab6aa292394c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 27e946dfdbb71bec03d3e4001ec63bd2d889e1b9
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634994"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063501"
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Vytvoření služby IoT hub pomocí šablony Azure Resource Manageru (PowerShell)
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Vytvoření IoT hubu pomocí šablony Azure Resource Manageru (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Azure Resource Manager můžete použít k vytváření a správě Azure IoT hubs prostřednictvím kódu programu. V tomto kurzu se dozvíte, jak k vytvoření služby IoT hub pomocí prostředí PowerShell pomocí šablony Azure Resource Manager.
+Azure Resource Manageru můžete použít k vytváření a správě služby Azure IoT hubs prostřednictvím kódu programu. V tomto kurzu se dozvíte, jak pomocí šablony Azure Resource Manageru k vytvoření IoT hubu pomocí Powershellu.
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager a klasický](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Azure Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Azure Resource Manageru.
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -30,17 +30,17 @@ Pro absolvování tohoto kurzu potřebujete:
 * [Azure PowerShell 1.0] [ lnk-powershell-install] nebo novější.
 
 > [!TIP]
-> Článek [použití Azure Powershellu s Azure Resource Manager] [ lnk-powershell-arm] poskytuje další informace o tom, jak pomocí prostředí PowerShell a Azure Resource Manager šablony vytváření prostředků Azure.
+> Tento článek [pomocí Azure Powershellu s Azure Resource Managerem] [ lnk-powershell-arm] poskytuje další informace o tom, jak vytvářet prostředky Azure pomocí šablony Azure Resource Manageru a Powershellu.
 
 ## <a name="connect-to-your-azure-subscription"></a>Připojení k předplatnému služby Azure
 
-V příkazovém řádku prostředí PowerShell zadejte následující příkaz k přihlášení k předplatnému Azure:
+V příkazovém řádku prostředí PowerShell zadejte následující příkaz pro přihlášení ke svému předplatnému Azure:
 
 ```powershell
 Connect-AzureRmAccount
 ```
 
-Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístup do všech předplatná Azure přidružená přihlašovacích údajů. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure, které je k dispozici pro použití:
+Pokud máte více předplatných Azure, přihlášení k Azure získáte přístup ke Všechna předplatná Azure přidružená svoje přihlašovací údaje. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure k dispozici pro použití:
 
 ```powershell
 Get-AzureRMSubscription
@@ -60,17 +60,17 @@ Chcete-li zjistit, kde můžete nasadit služby IoT hub a aktuálně podporovan�
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).ApiVersions
 ```
 
-Vytvořte skupinu prostředků tak, aby obsahovala služby IoT hub pomocí následujícího příkazu v jednom z podporovaných umístění pro IoT Hub. Tento příklad vytvoří skupinu prostředků s názvem **MyIoTRG1**:
+Vytvořte skupinu prostředků obsahující službu IoT hub pomocí následujícího příkazu v jednom z podporovaných umístění pro službu IoT Hub. Tento příklad vytvoří skupinu prostředků s názvem **MyIoTRG1**:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
-## <a name="submit-a-template-to-create-an-iot-hub"></a>Odeslat šablonu pro vytvoření služby IoT hub
+## <a name="submit-a-template-to-create-an-iot-hub"></a>Odeslání šablony k vytvoření služby IoT hub
 
-Použijte šablonu JSON pro vytvoření služby IoT hub ve vaší skupině prostředků. Šablonu Azure Resource Manager můžete také provést změny do stávající služby IoT hub.
+Pomocí šablony JSON pro vytvoření služby IoT hub ve vaší skupině prostředků. Můžete také použít šablony Azure Resource Manageru provádět změny existující služby IoT hub.
 
-1. Pomocí textového editoru vytvořit šablonu Azure Resource Manager názvem **template.json** s následující definice prostředků k vytvoření nového centra IoT standardní. Přidá IoT Hub v tomto příkladu **východní USA** oblast, vytvoří dvě skupiny uživatelů (**cg1** a **cg2**) na koncový bod kompatibilní s centrem událostí a používá  **2016-02-03** verze rozhraní API. Tato šablona také očekává, že budete předávat název centra IoT jako parametr názvem **hubName**. Aktuální seznam umístění, které podporují služby IoT Hub naleznete v části [stavu Azure][lnk-status].
+1. Pomocí textového editoru vytvořte šablonu Azure Resource Manageru volá **template.json** s následující definicí prostředku k vytvoření nového standardní centra IoT. V tomto příkladu přidá Centrum IoT **USA – východ** oblast, vytvoří dvě skupiny uživatelů (**cg1** a **cg2**) na koncový bod kompatibilní s centrem událostí a používá  **2016-02-03** verze rozhraní API. Tato šablona také očekává, že budete a zajistěte tak předání názvu centra IoT jako parametr názvem **hubName**. Aktuální seznam umístění, které podporují služby IoT Hub najdete v části [stav Azure][lnk-status].
 
     ```json
     {
@@ -122,35 +122,36 @@ Použijte šablonu JSON pro vytvoření služby IoT hub ve vaší skupině prost
     }
     ```
 
-2. Uložte soubor šablony Azure Resource Manager na místním počítači. Tento příklad předpokládá můžete uložit ve složce s názvem **c:\templates**.
+2. Uložte soubor šablony Azure Resource Manageru na místním počítači. Tento příklad předpokládá, uložte ho do složky s názvem **c:\templates**.
 
-3. Spusťte následující příkaz k nasazení nového centra IoT předávání název služby IoT hub jako parametr. V tomto příkladu je název služby IoT hub `abcmyiothub`. Musí být globálně jedinečný název služby IoT hub:
+3. Spusťte následující příkaz pro vaši novou službu IoT hub, předejte název služby IoT hub jako parametr nasazení. V tomto příkladu je název služby IoT hub `abcmyiothub`. Musí být globálně jedinečný název vašeho centra IoT:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
     ```
   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-4. Výstup zobrazuje klíče pro službu IoT hub, kterou jste vytvořili.
+4. Ve výstupu nezobrazí klíče pro službu IoT hub, kterou jste vytvořili.
 
-5. Chcete-li ověřit, vaše aplikace přidat nového centra IoT, navštivte [portál Azure] [ lnk-azure-portal] a zobrazení seznamu prostředků. Můžete taky použít **Get-AzureRmResource** rutiny prostředí PowerShell.
+5. K ověření vaší aplikace přidat novou službu IoT hub, najdete [webu Azure portal] [ lnk-azure-portal] a zobrazit seznam prostředků. Můžete taky použít **Get-AzureRmResource** rutiny Powershellu.
 
 > [!NOTE]
-> Tato ukázková aplikace přidá S1 Standard IoT Hub pro kterou se účtují. Odstraněním služby IoT hub prostřednictvím [portál Azure] [ lnk-azure-portal] nebo pomocí **AzureRmResource odebrat** rutiny prostředí PowerShell po dokončení.
+> Tato ukázková aplikace přidá S1 Standard služby IoT Hub pro kterou se vám účtuje. Můžete odstranit centrum IoT prostřednictvím [webu Azure portal] [ lnk-azure-portal] nebo s použitím **Remove-AzureRmResource** rutiny Powershellu, až budete hotovi.
 
 ## <a name="next-steps"></a>Další postup
 
-Nyní jste nasadili služby IoT hub pomocí šablony Azure Resource Manager pomocí prostředí PowerShell, můžete chtít Další:
+Nyní jste nasadili IoT hubu pomocí šablony Azure Resource Manageru pomocí Powershellu, můžete dále zkoumat:
 
-* Přečtěte si informace o možnostech [zprostředkovatele prostředků služby IoT Hub REST API][lnk-rest-api].
-* Čtení [přehled Azure Resource Manageru] [ lnk-azure-rm-overview] Další informace o funkcích nástroje Azure Resource Manager.
+* Přečtěte si o možnostech [rozhraní REST API poskytovatele prostředků služby IoT Hub][lnk-rest-api].
+* Čtení [přehled Azure Resource Manageru] [ lnk-azure-rm-overview] Další informace o možnostech Azure Resource Manageru.
+* Syntaxi JSON a vlastnosti, které chcete použít v šablonách najdete v tématu [typy prostředků Microsoft.Devices](/azure/templates/microsoft.devices/iothub-allversions).
 
-Další informace o vývoji pro Centrum IoT, naleznete v následujících článcích:
+Další informace o vývoji pro službu IoT Hub, najdete v následujících článcích:
 
-* [Úvod do jazyka C SDK][lnk-c-sdk]
-* [Sady SDK služby Azure IoT][lnk-sdks]
+* [Seznámení s C SDK][lnk-c-sdk]
+* [Sady Azure IoT SDK][lnk-sdks]
 
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 
 * [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 

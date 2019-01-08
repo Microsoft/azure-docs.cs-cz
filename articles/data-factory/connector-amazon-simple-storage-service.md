@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 7373cc23654e2168963a364e4b4069331bf196c5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8a0808c0e82ee31a5fd684d449fa30cd331d3dba
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969926"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063858"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon Simple Storage Service pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Aktuální verze](connector-amazon-simple-storage-service.md)
 
@@ -31,7 +31,7 @@ Kopírování dat Amazon S3 do jakékoli podporovaného úložiště dat jímky.
 Konkrétně tento konektor Amazon S3 podporuje kopírování souborů jako-je nebo analýza souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
->Tento konektor Amazon S3 můžete použít ke zkopírování dat z **všechny zprostředkovatele úložiště kompatibilního S3** například [Google Cloud Storage](#copy-from-google-cloud-storage). Zadejte adresu URL odpovídající služby v konfiguraci propojenou službu.
+>Tento konektor Amazon S3 můžete použít ke zkopírování dat z **všechny zprostředkovatele úložiště kompatibilního S3** například [Google Cloud Storage](connector-google-cloud-storage.md). Zadejte adresu URL odpovídající služby v konfiguraci propojenou službu.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
@@ -212,35 +212,6 @@ Pokud chcete zkopírovat data z Amazonu S3, nastavit typ zdroje v aktivitě kop�
         }
     }
 ]
-```
-
-## <a name="copy-from-google-cloud-storage"></a>Kopírování z Google Cloud Storage
-
-Protože Google Cloud Storage nabízí interoperabilitu mezi S3 kompatibilní, můžete použít konektor Amazon S3 ke zkopírování dat z Google Cloud Storage k libovolnému [podporovaná úložiště dat jímky](copy-activity-overview.md#supported-data-stores-and-formats). 
-
-Konkrétní položky Google Cloud Storage můžete najít v ADF pro vytváření uživatelského rozhraní konektoru galerii automaticky vyplní adresu URL služby jako `https://storage.googleapis.com`. Pokud chcete najít přístupový klíč a tajný kód, přejděte na **Google Cloud Storage** > **nastavení** > **Interoperability**. Přečtěte si tento článek od začátku pro podrobný přehled o kopírování dat pomocí konektoru S3.
-
-**Příklad propojené služby:**
-
-```json
-{
-    "name": "GoogleCloudStorageLinkedService",
-    "properties": {
-        "type": "AmazonS3",
-        "typeProperties": {
-            "accessKeyId": "<access key id>",
-            "secretAccessKey": {
-                "type": "SecureString",
-                "value": "<secret access key>"
-            },
-            "serviceUrl": "https://storage.googleapis.com"
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
 ```
 
 ## <a name="next-steps"></a>Další postup

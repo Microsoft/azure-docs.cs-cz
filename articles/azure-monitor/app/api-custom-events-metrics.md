@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7422e7145acfece9c9da3277c8d92c949220dbab
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: bbb849b19d523c315e192110ce71c4f382e04657
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039312"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077908"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
@@ -1076,7 +1076,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-ikey"></a> Dynamické Instrumentační klíč
 
-Nekombinujte se telemetrie z vývoj, testování a produkční prostředí, můžete [vytvořit samostatný prostředek Application Insights](../../application-insights/app-insights-create-new-resource.md) a změňte jejich klíče, v závislosti na prostředí.
+Nekombinujte se telemetrie z vývoj, testování a produkční prostředí, můžete [vytvořit samostatný prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ) a změňte jejich klíče, v závislosti na prostředí.
 
 Místo zobrazování Instrumentační klíč z konfiguračního souboru, můžete ho nastavit ve vašem kódu. Nastavte klíč v metodě inicializace, jako je například souboru global.aspx.cs v rámci služby technologie ASP.NET:
 
@@ -1170,7 +1170,7 @@ Chcete-li zjistit, jak dlouho se data ukládají, přečtěte si téma [uchováv
     Žádné. Není nutné zabalit je do klauzule try-catch. Pokud sada SDK narazí na problémy, se protokolování zpráv ve výstupu konzoly ladění a--pokud zprávy zobrazí prostřednictvím – v diagnostickém vyhledávání.
 * *Je k dispozici rozhraní REST API k získání dat z portálu?*
 
-    Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Další možnosti, jak extrahovat data zahrnují [exportovat z analýzy do Power BI](../../application-insights/app-insights-export-power-bi.md) a [průběžný export](../../azure-monitor/app/export-telemetry.md).
+    Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Další možnosti, jak extrahovat data zahrnují [exportovat z analýzy do Power BI](../../azure-monitor/app/export-power-bi.md ) a [průběžný export](../../azure-monitor/app/export-telemetry.md).
 
 ## <a name="next"></a>Další kroky
 

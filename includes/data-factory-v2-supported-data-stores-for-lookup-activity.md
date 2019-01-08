@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 30f62a25388004a92026ab2ccae15c5941bfa222
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 38b630b14a7425b4f8854ea88d6ba7e7a4335bea
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53814517"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54069869"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |
@@ -60,7 +60,7 @@ ms.locfileid: "53814517"
 | **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[Systém souborů](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
-| &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-amazon-simple-storage-service.md#copy-from-google-cloud-storage) |
+| &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |
 | &nbsp; |[SFTP](../articles/data-factory/connector-sftp.md) |
 | **Obecný protokol** |[Obecná rozhraní HTTP](../articles/data-factory/connector-http.md) |

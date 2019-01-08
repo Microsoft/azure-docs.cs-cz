@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c6f8a4c24a600eb9a84076d63bed295f646f3fec
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d33d63cc7d13a5c2c6e1923607102c4ddc554650
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251160"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062754"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a Node.js
 
@@ -31,7 +31,7 @@ Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
-* [Knihovna žádostí JavaScriptu](https://github.com/request/request)
+* [Knihovna žádostí o jazyka JavaScript](https://github.com/request/request)  
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).

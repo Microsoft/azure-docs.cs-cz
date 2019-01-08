@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK pro jazyk C#'
+title: 'Rychlý start: Vytvoření projektu klasifikace obrázků s vlastní Vision SDK proC#'
 titlesuffix: Azure Cognitive Services
 description: Vytvořte projekt, přidejte značky, nahrajte obrázky, natrénujte svůj projekt a vytvořte předpověď pomocí sady .NET SDK a jazyka C#.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: anroth
-ms.openlocfilehash: 6f92201e1c7222bed5d59066798d7eb6844ecd76
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: aaffd5e47c8465d44c2dbcdde3f40cf6e6995e55
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279422"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079081"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision .NET SDK
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků s využitím Custom Vision .NET SDK
 
 Tento článek obsahuje informace a vzorový kód, které vám pomůžou začít s vytvořením modelu klasifikace obrázků pomocí sady Custom Vision SDK a jazyka C#. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v .NET. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](getting-started-build-a-classifier.md).
 
@@ -42,6 +42,10 @@ Tento projekt sady Visual Studio vytvoří nový projekt služby Custom Vision s
 Otevřete soubor _Program.cs_ a prozkoumejte kód. Do odpovídajících definic v metodě **Main** vložte své klíče předplatného.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=21-30)]
+
+Parametr koncový bod by měl odkazovat na oblasti, kde se skupina prostředků Azure obsahující prostředky Custom Vision vytvořil v. V tomto příkladu budeme předpokládat oblasti střed USA – jih a použít:
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=14-14)]
 
 Následující řádky kódu provádějí primární funkce projektu.
 
@@ -98,7 +102,7 @@ Pak můžete ověřit správné označení testovacího obrázku (ve složce **I
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu klasifikace obrázků provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější.
 

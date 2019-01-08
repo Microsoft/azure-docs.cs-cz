@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: c22c97efed7c70b554acd449ed15c6641e377b6a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2580d49fb7ab0779f81f1315b9765a0dc4745cb6
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788493"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078214"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Posílat diagnostická data cloudové služby, virtuální počítač nebo Service Fabric do Application Insights
 Cloud services, Virtual Machines, Virtual Machine Scale Sets a Service Fabric všechny použití rozšíření diagnostiky Azure shromažďovat data.  Diagnostika Azure odesílá data do tabulky Azure Storage.  Můžete však také všechny kanálu nebo podmnožinu dat do jiných umístění pomocí rozšíření Azure Diagnostics 1.5 nebo novější.
@@ -61,7 +61,7 @@ Příklad konfigurace jímka pro službu Application Insights:
 - **Jímky** *název* atribut je řetězcová hodnota, která jednoznačně identifikuje jímky.
 
 - **ApplicationInsights** prvek určuje Instrumentační klíč tohoto prostředku Application insights, kde je odeslána dat diagnostiky Azure.
-    - Pokud nemáte existující prostředek Application Insights, přečtěte si téma [vytvořit nový prostředek Application Insights](../../application-insights/app-insights-create-new-resource.md) Další informace o vytvoření prostředku a získání Instrumentační klíč.
+    - Pokud nemáte existující prostředek Application Insights, přečtěte si téma [vytvořit nový prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ) Další informace o vytvoření prostředku a získání Instrumentační klíč.
     - Pokud vyvíjíte Cloudovou službu s Azure SDK 2.8 nebo novější, tento klíč instrumentace se vyplní automaticky. Hodnota je založena na **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení konfigurace služby, při vytváření balíčku projektu cloudové služby. Zobrazit [pomocí Application Insights s cloudovými službami](../../azure-monitor/app/cloudservices.md).
 
 - **Kanály** element obsahuje jeden nebo více **kanál** elementy.

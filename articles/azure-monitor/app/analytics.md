@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 52b18f3f6f1166650fb13694f3eed54c28bbc0a9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c41444f94e4685d246de225500c8a5beefc74944
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731021"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065609"
 ---
 # <a name="analytics-in-application-insights"></a>Analýzy ve službě Application Insights
 Analýza je výkonný nástroj hledání a dotaz z [Application Insights](../../application-insights/app-insights-overview.md). Analytics je webový nástroj, takže není zapotřebí žádné nastavení. Pokud jste již nakonfigurovali Application Insights pro některé z aplikací, můžete analyzovat data vaší aplikace tak, že otevřete Analytics z vaší aplikace [okno přehledu](../../azure-monitor/app/app-insights-dashboards.md).
@@ -48,7 +48,7 @@ Počítáme počet záznamů za země (, že se data nachází ve sloupci *clien
 Jazyk má mnoho atraktivní funkce:
 
 * [Filtr](/azure/kusto/query/whereoperator) telemetrie vaší aplikace nezpracovaná tak všechna pole, včetně vaší vlastní vlastnosti a metriky.
-* [Připojte se k](/azure/kusto/query/joinoperator) více tabulek je možné korelovat požadavky s zobrazení stránek, volání závislostí, výjimek a trasování protokolu.
+* [Připojte se k](/azure/kusto/query/joinoperator) více tabulek - korelaci požadavků s zobrazení stránek, volání závislostí, výjimek a trasování protokolu.
 * Výkonný statistický [agregace](/azure/kusto/query/summarizeoperator).
 * Okamžité a výkonnou vizualizací.
 * [Rozhraní REST API](https://dev.applicationinsights.io/) , můžete použít ke spouštění dotazů prostřednictvím kódu programu, například z Powershellu.

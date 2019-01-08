@@ -12,12 +12,12 @@ ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: b857b0bd56b479d4301535a4e1f734d8002dcc8e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c63872ce19cc7076929785cc7bd150c1599c5705
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099048"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063042"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Upravit skupinu informací pomocí Azure Active Directory
 
@@ -50,7 +50,7 @@ Pomocí Azure Active Directory (Azure AD), můžete upravit nastavení skupiny, 
 
     - **Typ skupiny.** Typ skupiny nelze změnit po vytvoření. Chcete-li změnit **typ skupiny**, musíte odstranit skupinu a vytvořte novou.
     
-    - **Typ členství.** Změníte typ členství. Další informace o různých typech dostupné členy najdete v tématu [postupy: vytvoření základní skupiny a přidání členů pomocí portálu Azure Active Directory](active-directory-groups-create-azure-portal.md)
+    - **Typ členství.** Změníte typ členství. Další informace o různých typech dostupné členy najdete v tématu [jak: Vytvoření základní skupiny a přidání členů pomocí portálu Azure Active Directory](active-directory-groups-create-azure-portal.md).
     
     - **ID objektu.** ID objektu nelze změnit, ale můžete je zkopírovat používané k příkazům Powershellu pro skupinu. Další informace o používání rutin prostředí PowerShell najdete v tématu [rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-v2-cmdlets.md).
 

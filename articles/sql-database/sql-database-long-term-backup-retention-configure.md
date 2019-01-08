@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: ed3203cde8bad8c506bacf3607faecfbcde2cd75
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6be0603c8332a6d1bd6c965a167b14f5a22362e6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606856"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064215"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh Azure SQL Database
 
@@ -33,7 +33,7 @@ Následující části ukazují, jak pomocí webu Azure portal nakonfigurovat dl
 
 SQL Database, které můžete nakonfigurovat [uchovávání automatizovaných záloh](sql-database-long-term-retention.md) dobu delší, než je doba uchovávání vaší úrovně služby. 
 
-1. Na webu Azure Portal, vyberte váš server SQL a pak klikněte na tlačítko **spravovat zálohy**. Na **nakonfigurovat zásady** kartu, zaškrtněte políčko pro databázi, na kterém chcete nastavit nebo změnit zásady dlouhodobého uchovávání záloh.
+1. Na webu Azure Portal, vyberte váš server SQL a pak klikněte na tlačítko **spravovat zálohy**. Na **nakonfigurovat zásady** kartě *zaškrtněte políčko pro databázi, na kterém chcete nastavit nebo změnit zásady dlouhodobého uchovávání záloh*. Pokud není zaškrtnuto zaškrtávací políčko vedle databáze, změny zásady neplatí pro tuto databázi.  
 
    ![Správa záloh odkaz](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 

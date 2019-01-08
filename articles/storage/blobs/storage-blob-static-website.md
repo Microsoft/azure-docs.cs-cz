@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 933fcbfc21c69d02f1093e0ea2519d76f4130b29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8f88bf6b0de8296de14dccd51b38ee6ca480f059
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598886"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065082"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
@@ -97,10 +97,10 @@ Dotaz adresy URL koncového bodu webu:
 az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-Nahrání objektů *$web* kontejneru ze zdrojového adresáře:
+Nahrání objektů *$web* kontejneru ze zdrojového adresáře. Ujistěte se, zda jste správně řídicí odkaz na *$web* kontejneru v příkazu. Například pokud používáte Azure CLI z cloud Shell na webu Azure Portal, řídicí *$web* kontejneru, jak je znázorněno:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d `$web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Nasazení

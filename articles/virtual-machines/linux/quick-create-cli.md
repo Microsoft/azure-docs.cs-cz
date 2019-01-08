@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3c2212ba0216949d3ca7dbcedb5e086bc3e43b97
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: af7f3b42aad41f103be6c86da84db2ff230ff226
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406632"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065206"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
 
@@ -49,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create).
 
-Následující příklad vytvoří virtuální počítač *myVM* a přidá uživatelský účet *azureuser*. Parametr `--generate-ssh-keys` slouží k automatickému vygenerování klíče SSH a jeho uložení do výchozího umístění klíčů (*~/.ssh*). Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Následující příklad vytvoří virtuální počítač *myVM* a přidá uživatelský účet *azureuser*. `--generate-ssh-keys` Parametr se používá k automatickému generování klíče SSH a put ve výchozím umístění klíčů (*~/.ssh*). Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -118,7 +118,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili jednoduchý virtuální počítač, otevřeli jste síťový port pro webový provoz a nainstalovali jste základní webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
 

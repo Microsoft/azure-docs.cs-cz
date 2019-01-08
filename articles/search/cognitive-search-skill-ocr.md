@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 097fd93955a4ca3fd96ae6452fa3b503b029ffc3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b07c71a9365fca3a2e5d7c837acf689af980afdd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313220"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075817"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR kognitivních dovedností
 
@@ -44,7 +44,7 @@ Parametry rozlišují malá a velká písmena.
 | Název parametru     | Popis |
 |--------------------|-------------|
 | detectOrientation | Umožňuje automatické zjištění orientaci obrázku. <br/> Platné hodnoty: true / false.|
-|defaultLanguageCode | <p>  Kód jazyka vstupního textu. Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>CS (čeština) <br/>da (dánština) <br/>Nizozemsko (holandština) <br/>en (v angličtině) <br/>Fi (finština)  <br/>Francie (francouzština) <br/>  Německo (němčina) <br/>El (řečtina) <br/> FU (holandština) <br/> to (italština) <br/>  Japonsko (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   PL (polština) <br/> PT (portugalština) <br/>  RU (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (Arabské písmo) <br/> ro (rumunština) <br/> rozhraní SR-Cyrl (SerbianCyrillic) <br/> rozhraní SR-Latn (SerbianLatin) <br/>  Sk (slovenština). <br/>  UNK (neznámé) <br/><br/> Pokud je kód jazyka neurčené nebo mít hodnotu null, je jazyk autodetected. </p> |
+|defaultLanguageCode | <p>  Kód jazyka vstupního textu. Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>CS (čeština) <br/>da (dánština) <br/>Nizozemsko (holandština) <br/>en (v angličtině) <br/>Fi (finština)  <br/>Francie (francouzština) <br/>  Německo (němčina) <br/>El (řečtina) <br/> FU (holandština) <br/> to (italština) <br/>  Japonsko (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   PL (polština) <br/> PT (portugalština) <br/>  RU (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (Arabské písmo) <br/> ro (rumunština) <br/> rozhraní SR-Cyrl (SerbianCyrillic) <br/> rozhraní SR-Latn (SerbianLatin) <br/>  Sk (slovenština). <br/>  UNK (neznámé) <br/><br/> Pokud kód jazyka neurčené nebo mít hodnotu null, nastaví se jazyk na angličtinu. Pokud jazyk explicitně nastavená na "unk", jazyk se automaticky zjištěno. </p> |
 | textExtractionAlgorithm | "Tisk" nebo "rukou psaný". Algoritmus OCR rozpoznávání "rukou psaný" text je aktuálně ve verzi preview a podporuje jenom v angličtině. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností

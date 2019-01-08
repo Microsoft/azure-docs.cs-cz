@@ -3,17 +3,17 @@ title: Instalace Ansible na virtuálních počítačích Azure
 description: Zjistěte, jak nainstalovat a nakonfigurovat Ansible pro správu prostředků Azure v Ubuntu, CentOS a SLES.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: b714470cd12bb7a0cd2d2a00b4f09467726f505d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 227f3baf67bd65a8c6eeb170ce219a3ddf79606a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987046"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078044"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>Instalace Ansible na virtuálních počítačích Azure
 
@@ -25,7 +25,7 @@ Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vaš
 
 - **Přístup k Linuxu nebo virtuálnímu počítači s Linuxem** – Pokud nemáte počítač s Linuxem, vytvořte si [virtuální počítač s Linuxem](https://docs.microsoft.com/azure/virtual-network/quick-create-cli).
 
-- **Instanční objekt Azure:** Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku [Vytvoření instančního objektu Azure pomocí Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Poznamenejte si hodnoty **appId**, **displayName**, **password** a **tenant**.
+- **Instanční objekt Azure**: Postupujte podle pokynů v části **vytvořit instanční objekt** části tohoto článku věnované [vytvoření instančního objektu Azure pomocí příkazového řádku Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Poznamenejte si hodnoty **appId**, **displayName**, **password** a **tenant**.
 
 ## <a name="install-ansible-on-an-azure-linux-virtual-machine"></a>Instalace Ansible na virtuálním počítači Azure s Linuxem
 
@@ -133,7 +133,7 @@ Pokud chcete ověřit úspěšnou konfiguraci, můžete teď pomocí Ansible vyt
 
 [!INCLUDE [create-resource-group-with-ansible.md](../../../includes/ansible-create-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"] 
 > [Použití Ansible k vytvoření virtuálního počítače s Linuxem v Azure](./ansible-create-vm.md)

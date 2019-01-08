@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: c37676a32dd1fb58c1ac03640ff0bbfbdc3f7d8f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2467da8d5a87a3a9325b807aec48c584ab0197cb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972887"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079098"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii virtuálních počítačů VMware v místním nebo fyzické servery do sekundární lokality
 
@@ -64,18 +64,6 @@ Pro absolvování tohoto kurzu potřebujete:
 - Ujistěte se, že počítače, které chcete replikovat v souladu s [počítač podporu replikovaných](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
-## <a name="create-a-vault"></a>Vytvoření trezoru
-
-[!INCLUDE [site-recovery-create-vault](../../includes/site-recovery-create-vault.md)]
-
-## <a name="choose-a-protection-goal"></a>Výběr cíle ochrany
-
-Vyberte, co replikovat a kam jej chcete replikovat.
-
-1. Klikněte na tlačítko **Site Recovery** > **připravit infrastrukturu** > **cíl ochrany**.
-2. Vyberte **do lokality pro obnovení** > **Ano, s VMware vSphere Hypervisor**. Pak klikněte na **OK**.
-3. V **Scout nastavení**, stáhněte si nástroj InMage Scout 8.0.1 software verze GA. a registrační klíč. Instalační soubory pro všechny součásti jsou zahrnuty v souboru ZIP staženého.
-
 ## <a name="download-and-install-component-updates"></a>Stáhněte a nainstalujte aktualizace součástí
 
  Zkontrolovat a nainstalovat nejnovější [aktualizace](#updates). Aktualizace musí být nainstalován na servery v následujícím pořadí:
@@ -86,6 +74,108 @@ Vyberte, co replikovat a kam jej chcete replikovat.
 4. Hlavní cílové servery
 5. vContinuum servery
 6. Zdrojový server (Windows a servery se systémem Linux)
+
+Nainstalujte aktualizace následujícím způsobem:
+
+> [!NOTE]
+>Všechny komponenty Scout soubor aktualizovanou verzi nemusí být stejné v souboru ZIP aktualizace. Starší verze znamenat, že není žádná změna v komponentě od předchozí aktualizace v této aktualizaci.
+
+Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update7) soubor .zip. Tento soubor obsahuje všechny báze base binární soubory a kumulativního upgradu binární soubory z následujících součástí: 
+  - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
+  - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
+  - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
+  - InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
+  - InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
+  - InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10 – aktualizace SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10 – aktualizace SP1-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2 – 32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2 – 64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11 – aktualizace SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11 – aktualizace SP1-64_GA_04Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2 – 32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2 – 64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
+1. Rozbalte soubory .zip.
+2. **RX server**: Kopírování **RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz** k příjmu serveru a rozbalte ho. Ve složce extrahované spustit **/Install**.
+3. **Konfigurační server a procesový server**: Kopírování **CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe** konfigurační server a procesový server. Dvakrát klikněte na spustit ho.<br>
+4. **Windows hlavní cílový server**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** k serveru. Dvojím kliknutím ho spustit. Stejný soubor lze také použít pro novou instalaci. Stejnou aktualizaci nástroj unified agent platí také pro zdrojový server.
+  Aktualizace není nutné použít na hlavním cílovém připravený pomocí **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** je to nový instalační program GA s nejnovějšími změnami.
+5. **vContinuum server**:  Kopírování **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** k serveru.  Ujistěte se, že jsme uzavřeli Průvodce vContinuum. Poklikejte na soubor k jeho spuštění.
+6. **Hlavního linuxového cílového serveru**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** hlavní Linuxový uzel cílovému serveru a rozbalte ho. Ve složce extrahované spustit **/Install**.
+7. **Zdrojový server Windows**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** na zdrojovém serveru. Poklikejte na soubor k jeho spuštění. 
+8. **Zdrojový server Linux**: Chcete-li aktualizovat nástroj unified agent, zkopírujte odpovídající verzi souboru nástroj unified agent na Linux server a rozbalte jej. Ve složce extrahované spustit **/Install**.  Příklad: Pro RHEL 6.7 64bitovým serverem, kopie **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** na server a rozbalte ho. Ve složce extrahované spustit **/Install**.
+9. Po upgradu konfigurační Server, procesový Server a RX server instalátory uvedené výš, musí být upgradovány ručně pomocí kroků uvedených v knihoven PHP využívající databázi MySQL [části](#manual-upgrade-for-php-and-mysql-on-cs-ps-and-rx).
+
+## <a name="enable-replication"></a>Povolení replikace
+
+1. Nastavení replikace mezi zdrojové a cílové servery VMware.
+2. Najdete v následujících dokumentech získat další informace o instalaci, ochrany a obnovení:
+
+   * [Poznámky k verzi](https://aka.ms/asr-scout-release-notes)
+   * [Matice kompatibility](https://aka.ms/asr-scout-cm)
+   * [Uživatelská příručka](https://aka.ms/asr-scout-user-guide)
+   * [Uživatelská příručka k příjmu](https://aka.ms/asr-scout-rx-user-guide)
+   * [Příručka pro rychlou instalaci](https://aka.ms/asr-scout-quick-install-guide)
+   * [Upgrade knihovny MYSQL a PHP](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)
+
+## <a name="updates"></a>Aktualizace
+
+### <a name="site-recovery-scout-801-update-7"></a>Aktualizace služby Site Recovery Scout 8.0.1 7 
+Aktualizováno: Stáhněte si 31. prosince 2018 [Scout aktualizace 7](https://aka.ms/asr-scout-update7).
+Aktualizace Scout 7 je úplné instalační program, který lze použít pro novou instalaci i jako upgrade stávající agenty/MT, které jsou na předchozí aktualizace (z aktualizace 1 pro aktualizaci 6). Obsahuje všechny opravy z Update 1 na aktualizaci 6 plus nové opravy a vylepšení popsaných níže.
+ 
+#### <a name="new-features"></a>Nové funkce
+* Dodržování PCI
+* Podpora protokolu TLS verze 1.2
+
+#### <a name="bug-and-security-fixes"></a>Chyby a oprav chyb zabezpečení
+* Opraveno: Windows Cluster nebo samostatné počítače mají nesprávnou konfiguraci IP adresy při obnovení nebo zotavení.
+* Opraveno: Někdy selže operace přidání disku clusteru V2V.
+* Opraveno: vContinuum Průvodce zasekne fázi obnovení Pokud hlavním cíli je Windows Server 2016
+* Opraveno: Problémy se zabezpečením MySQL jsou omezeny upgradovat na verzi 5.7.23 MySQL
+
+#### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>Ruční Upgrade pro PHP a MySQL v CS, PS a příjmu
+Skriptovací platformu PHP byste upgradovat na verzi 7.2.10 na konfigurační Server, procesový Server a Server příjmu.
+Systém správy databáze MySQL byste upgradovat na verzi 5.7.23 na konfigurační Server, procesový Server a Server příjmu.
+Postupujte prosím podle manaual podle [rychlá Instalační příručka](https://aka.ms/asr-scout-quick-install-guide) upgrade verze PHP a MySQL.
+
+### <a name="site-recovery-scout-801-update-6"></a>Aktualizace služby Site Recovery Scout 8.0.1 6 
+Aktualizováno: 12. října 2017
+
+Stáhněte si [Scout aktualizace 6](https://aka.ms/asr-scout-update6).
+
+Scout aktualizací 6 je kumulativní aktualizace. Obsahuje všechny opravy od 1 aktualizace Update 5 a nové opravy a vylepšení popsaných níže. 
+
+#### <a name="new-platform-support"></a>Nová podpora platformy
+* Byla přidána podpora pro zdroje Windows Server 2016
+* Byla přidána podpora pro následujících operačních systémů Linux:
+    - Red Hat Enterprise Linux (RHEL) 6.9
+    - CentOS 6.9
+    - Oracle Linux 5,11
+    - Oracle Linux 6.8
+* Byla přidána podpora pro System Center 6.5 VMware
 
 Nainstalujte aktualizace následujícím způsobem:
 
@@ -111,34 +201,6 @@ Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update6) soubor .zip. Soub
     Není nutné pro instalaci agenta Update 5 na zdrojovém serveru, pokud již byl aktualizován na aktualizaci Update 4 nebo agenta zdroje nástroje je nainstalovaný nejnovější základní instalační služby systému **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**.
 8. **Zdrojový server Linux**: Chcete-li aktualizovat nástroj unified agent, zkopírujte odpovídající verzi souboru nástroj unified agent na Linux server a rozbalte jej. Ve složce extrahované spustit **/Install**.  Příklad: Pro RHEL 6.7 64bitovým serverem, kopie **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** na server a rozbalte ho. Ve složce extrahované spustit **/Install**.
 
-## <a name="enable-replication"></a>Povolení replikace
-
-1. Nastavení replikace mezi zdrojové a cílové servery VMware.
-2. Najdete v následujících dokumentech získat další informace o instalaci, ochrany a obnovení:
-
-   * [Poznámky k verzi](https://aka.ms/asr-scout-release-notes)
-   * [Matice kompatibility](https://aka.ms/asr-scout-cm)
-   * [Uživatelská příručka](https://aka.ms/asr-scout-user-guide)
-   * [Uživatelská příručka k příjmu](https://aka.ms/asr-scout-rx-user-guide)
-   * [Příručka pro rychlou instalaci](https://aka.ms/asr-scout-quick-install-guide)
-
-## <a name="updates"></a>Aktualizace
-
-### <a name="site-recovery-scout-801-update-6"></a>Aktualizace služby Site Recovery Scout 8.0.1 6 
-Aktualizováno: 12. října 2017
-
-Stáhněte si [Scout aktualizace 6](https://aka.ms/asr-scout-update6).
-
-Scout aktualizací 6 je kumulativní aktualizace. Obsahuje všechny opravy od 1 aktualizace Update 5 a nové opravy a vylepšení popsaných níže. 
-
-#### <a name="new-platform-support"></a>Nová podpora platformy
-* Byla přidána podpora pro zdroje Windows Server 2016
-* Byla přidána podpora pro následujících operačních systémů Linux:
-    - Red Hat Enterprise Linux (RHEL) 6.9
-    - CentOS 6.9
-    - Oracle Linux 5,11
-    - Oracle Linux 6.8
-* Byla přidána podpora pro System Center 6.5 VMware
 
 > [!NOTE]
 > * Základní Unified Agent(UA) installer pro Windows se obnovil podpory systému Windows Server 2016. V novém instalačním programu **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** je součástí balíčku balíček základní Scout GA (**InMage_Scout_Standard_8.0.1 GA – Oct17.zip**). Stejný instalační program se použije pro všechny podporované verze Windows. 

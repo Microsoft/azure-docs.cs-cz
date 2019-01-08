@@ -4,17 +4,17 @@ description: Kurz vysvětlující, jak vytvořit cluster Kubernetes pomocí slu�
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtuální počítač, azure, kubernetes
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: d723eea6fff54b3a2f90478fcb209df76a6a776e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3ccba82e626882a99deaca2f12be3d2f96869b81
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872913"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078945"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes a umožňuje rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
@@ -28,11 +28,11 @@ V tomto kurzu se dozvíte, jak provedením následujících úkolů vytvořit po
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nakonfigurovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Nakonfigurujte Terraform**: Postupujte podle pokynů v článku, [Terraform a konfigurovat přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Instanční objekt Azure:** Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Poznamenejte si hodnoty appId, displayName, password a tenant.
+- **Instanční objekt Azure**: Postupujte podle pokynů v části **vytvořit instanční objekt** části tohoto článku věnované [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Poznamenejte si hodnoty appId, displayName, password a tenant.
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu pro toto cvičení.

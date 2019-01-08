@@ -11,18 +11,18 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 117934c83d54cb5454f476ffb3b1a1437c0fd30b
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 5008aebfea8fc284b1b85797f0523bc4fb11c7bd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811473"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075936"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
 V tomto kurzu budete trénovat model strojového učení místně i pomocí vzdálených výpočetních prostředků. Pomocí školení a pracovní postup nasazení služby Azure Machine Learning v poznámkovém bloku Jupyter pro Python. Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
-V tomto kurzu trénovat jednoduché logistickou regresi s použitím [mnist ručně](https://yann.lecun.com/exdb/mnist/) datové sady a [scikit-informace](https://scikit-learn.org) službou Azure Machine Learning. MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každé image je rukou psaný číslice 28 x 28 pixelů, představující číslo od 0 do 9. Cílem je vytvořit víc tříd třídění k identifikaci číslice danou image představuje. 
+V tomto kurzu trénovat jednoduché logistickou regresi s použitím [mnist ručně](http://yann.lecun.com/exdb/mnist/) datové sady a [scikit-informace](https://scikit-learn.org) službou Azure Machine Learning. MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každé image je rukou psaný číslice 28 x 28 pixelů, představující číslo od 0 do 9. Cílem je vytvořit víc tříd třídění k identifikaci číslice danou image představuje. 
 
 Zjistěte, jak provádět následující akce:
 

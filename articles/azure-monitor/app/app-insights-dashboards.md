@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: d3dca1d7247a822720d32e32fe959053fb80ddd1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0135f3ab79852e55187874ce1d5a0695238de207
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052475"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074831"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigace a řídicí panely na portálu Application Insights
 Až budete mít [nastavení Application Insights v projektu](../../application-insights/app-insights-overview.md), telemetrická data o výkonu a využití vaší aplikace se zobrazí v projektu prostředek Application Insights [webu Azure portal](https://portal.azure.com).
@@ -113,10 +113,10 @@ Okno přehledu je brána na další informace o vaší aplikaci.
 * [**Hledání** ](../../azure-monitor/app/diagnostic-search.md) – prozkoumat konkrétní instance události, například požadavky, výjimky, nebo trasování protokolů.
 * [**Analytics** ](../../azure-monitor/app/analytics.md) -zadávat efektivní dotazy na telemetrie.
 * **Časový rozsah** – upravit rozsah zobrazí všechny grafy v okně.
-* **Odstranit** – odstranit prostředek Application Insights pro tuto aplikaci. Také buď odstranit balíčky Application Insights z kódu vaší aplikace, nebo upravit [Instrumentační klíč](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) ve vaší aplikaci na přímé telemetrických dat do jiného prostředku Application Insights.
+* **Odstranit** – odstranit prostředek Application Insights pro tuto aplikaci. Také buď odstranit balíčky Application Insights z kódu vaší aplikace, nebo upravit [Instrumentační klíč](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) ve vaší aplikaci na přímé telemetrických dat do jiného prostředku Application Insights.
 
 ### <a name="essentials-tab"></a>Na kartě
-* [Instrumentační klíč](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) -identifikuje tento prostředek aplikace.
+* [Instrumentační klíč](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) -identifikuje tento prostředek aplikace.
 
 ### <a name="app-navigation-bar"></a>Navigační panel aplikace
 ![Levý navigační panel](./media/app-insights-dashboards/app-left-nav-bar.png)

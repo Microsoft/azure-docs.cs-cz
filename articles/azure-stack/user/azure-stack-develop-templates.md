@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 01/05/2019
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 16cf679f91dae185a857813ec27441b9a4440e37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.reviewer: ''
+ms.openlocfilehash: 34804dae53fcf06d1a18bf503cdabea61f272585
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244045"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065388"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Aspekty šablon Azure Resource Manageru
 
@@ -34,7 +34,7 @@ Při vývoji vaší aplikace, je důležité pro zajištění přenositelnosti �
 
 ## <a name="public-namespaces"></a>Veřejné obory názvů
 
-Protože Azure Stack je hostované ve vašem datovém centru, má obory názvů koncový bod jinou službu než veřejného cloudu Azure. Veřejné koncové body pevně zakódované v šablonách Azure Resource Manageru selhat v důsledku toho při pokusu o jejich nasazení do služby Azure Stack. Můžete vytvářet dynamicky pomocí koncových bodů služby *odkaz* a *zřetězit* funkce k načtení hodnoty od zprostředkovatele prostředků během nasazování. Například místo hardcoding *blob.core.windows.net* v šabloně, načíst [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) nastavovat dynamicky *osDisk.URI* koncový bod:
+Protože Azure Stack je hostované ve vašem datovém centru, má obory názvů koncový bod jinou službu než veřejného cloudu Azure. V důsledku toho pevně zakódované veřejné koncové body v šablonách Azure Resource Manageru selhání při pokusu o jejich nasazení do služby Azure Stack. Můžete vytvářet dynamicky pomocí koncových bodů služby `reference` a `concatenate` funkce k načtení hodnoty od zprostředkovatele prostředků během nasazování. Například místo pevného kódování *blob.core.windows.net* v šabloně, načíst [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) nastavovat dynamicky *osDisk.URI* koncový bod:
 
 ```json
 "osDisk": {"name": "osdisk","vhd": {"uri":
@@ -50,7 +50,7 @@ Verze služby Azure může lišit mezi Azure a Azure Stack. Jednotlivé prostře
 | --- | --- |
 | Compute |`'2015-06-15'` |
 | Síť |`'2015-06-15'`, `'2015-05-01-preview'` |
-| Úložiště |`'2016-01-01'`, `'2015-06-15'`, `'2015-05-01-preview'` |
+| Storage |`'2016-01-01'`, `'2015-06-15'`, `'2015-05-01-preview'` |
 | KeyVault | `'2015-06-01'` |
 | App Service |`'2015-08-01'` |
 

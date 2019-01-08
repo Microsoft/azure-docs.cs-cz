@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73dc8c2217a0f4eecd5d5b0f934624d9491055a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 99a8ac29167db4619d68cfa51de6a747d5ae9a51
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040230"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079166"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování a Diagnostika s latencí 1 sekundu
 
@@ -38,7 +38,7 @@ Live Metrics Stream můžete:
 
 ## <a name="get-started"></a>Začínáme
 
-1. Pokud jste tak ještě neučinili [nenainstalovali Application Insights](../../azure-monitor/app/asp-net.md) ve webové aplikaci ASP.NET nebo [aplikace Windows server](../../application-insights/app-insights-windows-services.md), proveďte to nyní. 
+1. Pokud jste tak ještě neučinili [nenainstalovali Application Insights](../../azure-monitor/app/asp-net.md) ve webové aplikaci ASP.NET nebo [aplikace Windows server](../../azure-monitor/app/windows-services.md), proveďte to nyní. 
 2. **Aktualizace na nejnovější verzi** balíčku Application Insights. V sadě Visual Studio, klikněte pravým tlačítkem na projekt a zvolte **Správa balíčků Nuget**. Otevřít **aktualizace** kartě **zahrnout předběžné verze**a vybrat všechny balíčky Microsoft.ApplicationInsights.*.
 
     Znovu nasaďte aplikaci.

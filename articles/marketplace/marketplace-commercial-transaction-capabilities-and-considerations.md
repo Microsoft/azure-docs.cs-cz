@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: b2f106edf69b57410fd1990d0888cf9d3a71be56
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 867af6de05d1d9ab54cf8a4bf02221acc43a2b28
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880178"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075630"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace obchodní transakce možnosti a důležité faktory
 
@@ -46,7 +46,7 @@ Kromě seznamu a možnostmi pořízení zkušební verze publikování možnost 
 
 Při použití možnosti publikování transact díky microsoftu Prodej a nasazení softwaru třetích stran s předplatným Azure zákazníka. Vydavatel nutné vzít v úvahu tak účtování poplatků za infrastrukturu Azure a vydavatele vlastní licenční poplatky za software, při výběru fakturace modelu a typ v Azure Marketplace nabídky. 
 
-Transact možnost publikování na webu Azure Marketplace je momentálně podporována pro následující typy nabídek: virtuální počítače, aplikace Azure nebo aplikace SaaS.
+Možnost Transact publikování na webu Azure Marketplace aktuálně podporuje pro následující typy nabídek: Virtuální počítače, aplikace Azure nebo aplikace SaaS.
 
 ![[Objednávkám organizace se zabývá na webu Azure Marketplace.]](./media/marketplace-publishers-guide/Transact-enterprise-deals.png)
 
@@ -64,15 +64,15 @@ Pro aplikace SaaS vydavatel musí odpovídat poplatky za využití infrastruktur
 
 V závislosti na možnosti transakce, používají lze takto zobrazit licenční poplatky za software vydavatele:  
 
-* Zdarma: Žádné poplatky za licence k softwaru. 
+* Zadarmo: Žádné poplatky za licence k softwaru. 
 
-* Používání vlastní licence (BYOL): všechny příslušné poplatky za licence na software se spravují přímo mezi vydavatele a odběratele. Microsoft prochází pouze poplatky za využití infrastruktury Azure. (Virtuální počítače a jenom aplikace Azure.)
+* Používání vlastní licence (BYOL): Všechny příslušné poplatky za licence na software se spravují přímo mezi vydavatele a odběratele. Microsoft prochází pouze poplatky za využití infrastruktury Azure. (Virtuální počítače a jenom aplikace Azure.)
 
-* Průběžné platby: Licenční poplatky za Software se zobrazují jako za každou hodinu, na jádro (vCPU) ceny sazba založená na infrastruktuře Azure používat. To platí jenom pro virtuální počítače a aplikace Azure.
+* Průběžné platby: Licenční poplatky za software se zobrazují jako za každou hodinu, na jádro (vCPU) ceny sazba založená na infrastruktuře Azure používat. To platí jenom pro virtuální počítače a aplikace Azure.
 
-* Předplatné ceny (Správa): licenční poplatky za Software se zobrazují jako měsíční, opakované poplatek.  Platí jen pro aplikace SaaS a aplikací Azure – spravované aplikace.
+* Předplatné ceny (Správa): Licenční poplatky za software se zobrazují jako měsíční, opakované poplatek.  Platí jen pro aplikace SaaS a aplikací Azure – spravované aplikace.
 
-* Bezplatná zkušební verze softwaru: žádné poplatky za licence na software pro 30 dnů nebo 90 dnů.
+* Bezplatná zkušební verze softwaru: Žádné poplatky za licence na software pro 30 dnů nebo 90 dnů.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Zdarma a přenést svůj – používání vlastní licence (BYOL) ceny
 
@@ -214,7 +214,7 @@ Když jsou vybrané předplatné nebo s průběžnými platbami cenové modely, 
 
 Další informace a právní zásady, najdete v článku [smlouvě s vydavatelem](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) (k dispozici na portálu partnerů cloudu).
 
-Nápovědu k fakturaci, [vytvořit incident podpory](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636764613233453423) a zvolte virtuální počítače nebo webových aplikací (označuje se také jako aplikace SaaS) v závislosti na typu nabídky použít.
+Nápovědu k fakturaci, [vytvořit incident podpory](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&pesid=16230&forceorigin=esmc&ccsid=636764613233453423) a zvolte virtuální počítače nebo webových aplikací (označuje se také jako aplikace SaaS) v závislosti na typu nabídky použít.
 
 ## <a name="transact-requirements"></a>Příkaz Transact požadavky
 
@@ -238,7 +238,7 @@ Možnost publikování transact dostupná jenom pro použití s těmito typy nab
 
 Vyberte z bezplatné, přeneste svůj – používání vlastní licence nebo průběžnými platbami-as-you-go-pricing modelů a prezentovat jako skladové položky definované na úrovni nabídky. Na zákazníka vyúčtování služeb Azure Microsoft uvede vydavatele licenční poplatky za software odděleně od základní poplatky za infrastrukturu Azure. Poplatky za infrastrukturu Azure se řídí užívání softwaru vydavatele.
 
-**Aplikace Azure: Šablona řešení nebo aplikace spravované** 
+**Aplikace Azure: Šablona řešení nebo spravovaná aplikace** 
 
 Musíte zřídit jednu nebo více virtuálních počítačů a si prostřednictvím součet ceny virtuálního počítače. Paušální měsíční předplatné u spravovaných aplikací na jeden plán, je možné vybrat jako ceny místo toho modelu, ceny virtuálních počítačů. V obou případech platí poplatky za využití infrastruktury Azure jsou předány do zákazníka odděleně od licenční poplatky za software, ale na stejný fakturu.
 

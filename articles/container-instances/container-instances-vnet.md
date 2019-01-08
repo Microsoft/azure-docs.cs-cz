@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 172ddd11cb956ab6d74e1ce870e2378205dd1613
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993282"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077467"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
@@ -33,26 +33,28 @@ Skupiny kontejner nasadí do služby Azure virtual network umožňují scénář
 
 Při nasazení skupin kontejneru k virtuální síti platí určitá omezení.
 
-* Kontejnery Windows se nepodporují
 * Nasazení skupin kontejnerů k podsíti, podsíť nemůže obsahovat další typy prostředků. Odeberte všechny existující prostředky z existující podsítě před nasazením skupiny kontejnerů na ni, nebo vytvořte novou podsíť.
 * Skupin kontejnerů nasazený do virtuální sítě nepodporuje aktuálně veřejné IP adresy nebo popisky názvů DNS.
 * Z důvodu dalších síťových prostředků zahrnutých nasazení skupiny kontejnerů k virtuální síti je obvykle o něco pomalejší než nasazení kontejneru standardní instance.
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-Tato funkce je ve verzi preview, platí následující omezení při nasazování instancí kontejneru k virtuální síti.
+Tato funkce je ve verzi preview, platí následující omezení při nasazování instancí kontejneru k virtuální síti. 
 
-**Podporované** oblastech:
+**Podporované oblasti a omezení prostředků**
 
-* Severní Evropa (northeurope)
-* Západní Evropa (westeurope)
-* USA – západ (westus)
-* USA – východ (eastus)
+| Umístění | Operační systém | Procesor | Paměť (GB) |
+| -------- | :---: | :---: | :-----------: |
+| Západní Evropa | Linux | 4 | 14 |
+| USA – východ, USA – západ | Linux | 2 | 3,5 |
+| Austrálie – východ, Severní Evropa | Linux | 1 | 1,5 |
 
-**Nepodporovaná** síťové prostředky:
+Omezení prostředků kontejner může lišit od limity pro jiné síťové container instances v těchto oblastech. Momentálně se podporuje jenom na Linuxové kontejnery jsou podporovány pro tuto funkci. Podpora Windows je naplánovaná.
 
-* Skupina zabezpečení sítě
+**Nepodporovaná síťových prostředků a funkcí**
+
 * Nástroj pro vyrovnávání zatížení Azure
+* Partnerské vztahy virtuálních sítí
 
 **Odstranění prostředku sítě** vyžaduje [další kroky](#delete-network-resources) po nasazení skupiny kontejnerů na virtuální síť.
 

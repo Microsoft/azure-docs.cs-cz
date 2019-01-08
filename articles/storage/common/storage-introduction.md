@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 07/11/2018
+ms.date: 01/02/2019
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e483997140efc1d75466d887e42383d887f8a6f4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc7932f197931a0fbf1dde924eb70ca18f6f9748
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963245"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065541"
 ---
 # <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
@@ -22,17 +22,17 @@ Azure Storage je řešení cloudového úložiště Microsoftu pro scénáře mo
 - **Odolné a vysoce dostupné:** Redundance zajišťuje, že vaše data budou v případě krátkodobého selhání hardwaru v bezpečí. Můžete se také rozhodnout data replikovat napříč několika datacentry nebo geografickými oblastmi, abyste se ochránili i proti místní pohromě nebo přírodní katastrofě. Data replikovaná tímto způsobem zůstávají v případě nečekaného výpadku vysoce dostupná. 
 - **Zabezpečené:** Všechna data a zapsaná do služby Azure Storage jsou touto službou šifrovaná. Azure Storage poskytuje jemně odstupňované řízení přístupu k datům.
 - **Škálovatelné:** Azure Storage je navržené pro širokou škálovatelnost, aby splňovalo požadavky dnešních aplikací na datové úložiště a výkon. 
-- **Spravované:** Microsoft Azure se stará o údržbu a řeší za vás veškeré kritické problémy.
+- **Spravované:** Microsoft Azure stará o údržbu hardwaru, aktualizace a kritické problémy za vás.
 - **Přístupné:** Data ve službě Azure Storage jsou přístupná prostřednictvím protokolu HTTP nebo HTTPS odkudkoli na světě. Microsoft poskytuje sady SDK pro Azure Storage v mnoha různých jazycích – .NET, Java, Node.js, Python, PHP, Ruby, Go a další – a také vyspělé rozhraní REST API. Azure Storage podporuje skriptování v Azure PowerShellu nebo Azure CLI. A web Azure Portal a Průzkumník služby Azure Storage nabízí snadná vizuální řešení pro práci s daty.  
 
 ## <a name="azure-storage-services"></a>Služby Azure Storage
 
 Azure Storage zahrnuje tyto datové služby: 
 
-- [Objekty blob Azure](../blobs/storage-blobs-introduction.md): široce škálovatelné úložiště objektů pro textová a binární data
-- [Soubory Azure](../files/storage-files-introduction.md): spravované sdílené složky pro nasazení v cloudu nebo místní nasazení.
-- [Fronty Azure](../queues/storage-queues-introduction.md): spolehlivé úložiště pro přenos zpráv mezi součástmi aplikace. 
-- [Tabulky Azure](../tables/table-storage-overview.md): úložiště NoSQL pro úložiště strukturovaných dat bez schématu.
+- [Objekty BLOB Azure](../blobs/storage-blobs-introduction.md): Široce škálovatelné úložiště objektů pro textové a binární data.
+- [Služba soubory Azure](../files/storage-files-introduction.md): Spravované sdílené složky pro cloudové nebo místní nasazení.
+- [Fronty Azure](../queues/storage-queues-introduction.md): Úložiště pro spolehlivé zasílání zpráv mezi součástmi aplikace. 
+- [Tabulky Azure](../tables/table-storage-overview.md): Úložiště NoSQL pro úložiště strukturovaných dat bez schématu.
 
 Ke každé službě získáte přístup z účtu uložiště. Než začnete, přečtěte si článek [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
@@ -89,30 +89,9 @@ Azure Storage také zahrnuje funkce spravovaných a nespravovaných disků využ
 
 ## <a name="types-of-storage-accounts"></a>Typy účtů úložiště
 
-Tato tabulka uvádí různé typy účtů úložiště a to, které objekty je pro ně možné využít.
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
-|**Typ účtu úložiště**|**Standard pro obecné účely**|**Premium pro obecné účely**|**Blob Storage, horká a studená vrstva přístupu**|
-|-----|-----|-----|-----|
-|**Podporované služby**| Služby objektů blob, souborů, front a tabulek | Služba objektů blob | Služba objektů blob|
-|**Typy podporovaných objektů blob**|Objekty blob bloku, objekty blob stránky a doplňovací objekty blob | Objekty blob stránky | Objekty blob bloku a doplňovací objekty blob|
-
-### <a name="general-purpose-storage-accounts"></a>Účty úložiště pro obecné účely
-
-Existují dva typy účtů úložiště pro obecné účely.
-
-#### <a name="standard-storage"></a>Storage úrovně Standard
-
-Nejčastěji používanými účty úložiště jsou standardní účty, které je možné použít pro všechny typy dat. Účty úložiště úrovně Standard k ukládání dat používají magnetická média.
-
-#### <a name="premium-storage"></a>Premium Storage
-
-Premium Storage poskytuje vysoce výkonné úložiště pro objekty blob stránky, které se primárně využívají pro soubory VHD. Účty služby Premium Storage k ukládání dat používají SSD. Microsoft doporučuje používat Premium Storage pro všechny vaše virtuální počítače.
-
-### <a name="blob-storage-accounts"></a>Účty služby Blob Storage
-
-Účet služby Blob Storage je specializovaný účet úložiště používaný k ukládání objektů blob bloku a doplňovacích objektů blob. V těchto účtech nejde ukládat objekty blob stránky, a proto nemůžete ukládat soubory VHD. Tyto účty umožňují nastavit horkou nebo studenou vrstvu přístupu. Tuto vrstvu můžete kdykoli změnit.
-
-Horká vrstva přístupu se používá pro soubory, ke kterým se přistupuje často – platíte vyšší náklady na úložiště, ale náklady na přístup k objektům blob jsou mnohem nižší. U objektů blob uložených ve studené vrstvě přístupu platíte vyšší náklady na přístup, ale náklady na úložiště jsou mnohem nižší.
+Další informace o typech účtů úložiště najdete v tématu [přehled účtu Azure storage](storage-account-overview.md). 
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>Přístup k objektům blob, frontám a souborům
 
@@ -161,16 +140,7 @@ Informace o zotavení po havárii najdete v tématu [Co dělat v případě výp
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Přesun dat z Azure Storage a do Azure Storage
 
-Pomocí nástroje příkazového řádku AzCopy můžete kopírovat objekt blob a data souboru v rámci svého účtu úložiště nebo mezi různými účty úložiště. Nápovědu získáte v jednom z těchto článků:
-
-* [Přenos dat pomocí nástroje AzCopy pro Windows](storage-use-azcopy.md)
-* [Přenos dat pomocí nástroje AzCopy pro Linux](storage-use-azcopy-linux.md)
-
-Nástroj AzCopy je postavený na [Knihovně pro přesun dat v Azure](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), která je aktuálně dostupná v předběžné ukázkové verzi.
-
-Službu Azure Import/Export můžete použít pro import nebo export velkých objemů dat objektů blob do nebo z účtu úložiště. Připravíte několik pevných disků a odešlete je poštou do datového centra Azure, kde se provede přenos dat z těchto pevných disků nebo na ně a odešlou se zpátky k vám. Další informace o službě Import/Export najdete v tématu [Přenos dat do Blob Storage pomocí služby Microsoft Azure Import/Export](../storage-import-export-service.md).
-
-Pokud chcete rychle, levně a spolehlivě importovat velký objem dat objektu blob do účtu úložiště, můžete také využít službu Azure Data Box Disk. Prostřednictvím místní přepravní služby Microsoft pošle až 5 šifrovaných disků SSD (Solid-State Disk) o kapacitě 40 TB do vašeho datacentra. Vy si rychle disky nakonfigurujete, přes USB na ně zkopírujete data a disky pak pošlete zpět do Azure. V datacentru Azure se vaše data automaticky nahrají z disků do cloudu. Další informace o tomto řešení najdete v článku [Přehled služby Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
+Máte několik možností pro přesun dat do nebo z úložiště Azure. Kterou možnost zvolíte, závisí na velikosti vaší datové sadě a šířka pásma sítě. Další informace najdete v tématu [zvolit řešení Azure pro přenos dat](storage-choose-data-transfer-solution.md).
 
 ## <a name="pricing"></a>Ceny
 

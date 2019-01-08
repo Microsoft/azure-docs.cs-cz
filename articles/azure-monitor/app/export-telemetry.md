@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c6323a4b8243791cc7a9f847c7d08e5bd5946e96
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025262"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076769"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chceme zajistit telemetrických dat po dobu delší než doba uchování standard? Nebo zpracovat nějakým způsobem specializované? Průběžný Export je ideální pro to. Události, které se zobrazí na portálu Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Tam si můžete stáhnout data a zápis, cokoli, co kód potřebují ke zpracování.  
@@ -27,7 +27,7 @@ Před nastavením průběžný export je některé alternativy, které můžete 
 * Tlačítko pro Export v horní části okna metrik nebo hledání vám umožní přesunout tabulky a grafy do Excelové tabulky.
 
 * [Analytics](../../azure-monitor/app/analytics.md) poskytuje výkonný dotazovací jazyk pro telemetrii. Můžete také exportovat výsledky.
-* Pokud ale chcete [zkoumání dat v Power BI](../../application-insights/app-insights-export-power-bi.md), můžete to udělat bez použití průběžného exportu.
+* Pokud ale chcete [zkoumání dat v Power BI](../../azure-monitor/app/export-power-bi.md ), můžete to udělat bez použití průběžného exportu.
 * [Rozhraní REST API pro přístup k datům](https://dev.applicationinsights.io/) umožňuje programový přístup k vaší telemetrie.
 * Také přístup k nastavení [průběžný export prostřednictvím prostředí Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 

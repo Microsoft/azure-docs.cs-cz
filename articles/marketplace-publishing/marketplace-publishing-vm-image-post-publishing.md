@@ -3,7 +3,7 @@ title: Správa vaší image virtuálního počítače na webu Azure Marketplace 
 description: Podrobné pokyny o tom, jak spravovat po počáteční publikování image virtuálního počítače na webu Azure Marketplace
 services: Azure Marketplace
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7aea357c22a928d8af96791bf9cb4bd3c94f37b4
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252968"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077058"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Průvodce postprodukční nabídky virtuálního počítače na webu Azure Marketplace
 Tento článek vysvětluje, jak můžete aktualizovat nabídku na živé virtuálního počítače na webu Azure Marketplace. Provede vás provede procesem přidávání jeden nebo více nové skladové položky do existující nabídky. Také provede vás procesem jeho odebrání nabídky živé virtuálního počítače nebo skladové položky z webu Marketplace.
@@ -28,13 +29,13 @@ Po nabídka/SKU je umístěné v [webu Azure portal](http://portal.azure.com), n
 
 * **Nabízejí identifikátor**: V publikování portál, přejděte na **virtuálních počítačů** a vyberte možnost nabídky. Pak klikněte na tlačítko **IMAGÍ virtuálních počítačů** > **nabízejí identifikátor**.
 * **Identifikátor SKU**: V publikování portál, přejděte na **virtuálních počítačů** a vyberte možnost nabídky. Pak klikněte na tlačítko **SKU** > **přidejte skladovou jednotku**.
-* **Vydavatel Namespace**: V publikování portál, přejděte na **virtuálních počítačů** > **návod** > **Řekněte nám o vaši společnost**(tuto možnost najdete v části "Krok 2 zaregistrujte vaši společnost.") > **vydavatele Namespace** > **Namespace**.
+* **Vydavatel Namespace**: V publikování portál, přejděte na **virtuálních počítačů** > **návod** > **Řekněte nám o vaši společnost** (nalezené pod "Register kroku 2 vaší Společnost") > **vydavatele Namespace** > **Namespace**.
 
 Po nabídka/SKU je uveden v [Marketplace](https://azure.microsoft.com/marketplace), nebudete moct změnit následující textová pole:
 
 * **Nabízejí identifikátor**: V publikování portál, přejděte na **virtuálních počítačů** a vyberte možnost nabídky. Pak klikněte na tlačítko **IMAGÍ virtuálních počítačů** > **nabízejí identifikátor**.
 * **Identifikátor SKU**: V publikování portál, přejděte na **virtuálních počítačů** a vyberte možnost nabídky. Pak klikněte na tlačítko **SKU** > **přidejte skladovou jednotku**.
-* **Vydavatel Namespace**: V publikování portál, přejděte na **virtuálních počítačů** > **návod** > **Řekněte nám o vaši společnost**(tuto možnost najdete v části "Krok 2 Register") **vydavatele Namespace** > **Namespace**.
+* **Vydavatel Namespace**: V publikování portál, přejděte na **virtuálních počítačů** > **návod** > **Řekněte nám o vaši společnost** (tuto možnost najdete v části "Krok 2 Register") **Vydavatele Namespace** > **Namespace**.
 * **Porty**: V publikování portál, přejděte na **virtuálních počítačů** a vyberte možnost nabídky. Pak klikněte na tlačítko **IMAGÍ virtuálních počítačů** > **otevření portů**.
 * **Změna skladové jednotky uvedené ceny**
 * **Změna modelu fakturace uvedené skladové jednotky**
@@ -336,4 +337,4 @@ Pokud chcete vrátit nastavení viditelnosti uvedené skladové položky na hodn
 * [S řešením běžných problémů publikování na webu Marketplace](marketplace-publishing-support-common-issues.md)
 * [Získat podporu jako vydavatel](marketplace-publishing-get-publisher-support.md)
 * [Místní vytvoření image virtuálního počítače](marketplace-publishing-vm-image-creation-on-premise.md)
-* [Vytvoření virtuálního počítače s Windows na portálu Azure preview](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Vytvoření virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

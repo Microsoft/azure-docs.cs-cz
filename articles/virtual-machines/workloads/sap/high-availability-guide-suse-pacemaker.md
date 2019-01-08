@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076351"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074372"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -483,12 +483,12 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 Využitím techniky STONITH zařízení využívá instanční objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit instanční objekt služby.
 
-1. Přejděte na <https://portal.azure.com>.
+1. Přejděte na < https\://portal.azure.com >
 1. Otevře se okno Azure Active Directory  
    Přejděte do vlastností a poznamenejte si ID adresáře. Toto je **ID tenanta**.
 1. Klikněte na možnost registrace aplikací
 1. Klikněte na tlačítko Přidat.
-1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (například http://localhost) a klikněte na tlačítko Vytvořit
+1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (třeba http\://localhost) a klikněte na tlačítko Vytvořit
 1. Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
 1. Vyberte novou aplikaci a na kartě nastavení klikněte na tlačítko klíče
 1. Zadejte popis pro nový klíč, vyberte "Je platné stále" a klikněte na Uložit
@@ -525,7 +525,7 @@ Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, kt
 
 Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v kapitole poslední k Instančnímu objektu. Už nepoužívají role vlastníka!
 
-1. Přejděte na https://portal.azure.com.
+1. Přejděte na https\://portal.azure.com
 1. Otevřete v okně všechny prostředky
 1. Vyberte virtuální počítač na prvním uzlu clusteru
 1. Klikněte na řízení přístupu (IAM)

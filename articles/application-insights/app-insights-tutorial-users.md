@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ca3af8e660b45fdb7e7ea8186139d86a66ae00e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 38f5684962bb48ada8dad125a15ebf2977a06d26
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042185"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077840"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -167,4 +167,4 @@ Zatímco předchozí panely se zaměřovaly na to, co prováděli uživatelé va
 Teď, když jste zjistili, jak analyzovat uživatele, přejděte k dalšímu kurzu, ve kterém se dozvíte, jak vytvářet vlastní řídicí panely, které tyto informace kombinují s dalšími užitečnými daty o vaší aplikaci.
 
 > [!div class="nextstepaction"]
-> [Vytváření vlastních řídicích panelů](app-insights-tutorial-dashboards.md)
+> [Vytváření vlastních řídicích panelů](../azure-monitor/learn/tutorial-app-dashboards.md)

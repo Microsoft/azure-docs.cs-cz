@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9dadd61c8c4c2d1cd2305aa852e4528bfb9a1421
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: be20f01511990ef8de6ce6e0e13ddfa99b004dcd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076606"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076209"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>Konfigurace ExpressRoute Direct (Preview)
 
@@ -69,7 +69,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 3. Pokud výše uvedené umístění určila dostupnou šířku pásma
 
   ```powershell
-  Get-AzureRMExpressRoutePortsLocations -Name "Equinix-San-Jose-SV1"
+  Get-AzureRmExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
   ```
 
   **Příklad výstupu**
@@ -229,7 +229,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 
 Ve výchozím nastavení můžete vytvořit v rámci předplatného, ve kterém je prostředek přímo ExpressRoute 10 okruhy. To jde navýšit o podporu. Které nesou odpovědnost za sledování zřízená a využité šířky pásma. Přenosového pásma je součet šířky pásma všechny okruhy ExpressRoute přímo prostředku a využívaných šířky pásma fyzického využití základní fyzické rozhraní.
 
-Existují další okruh šířky pásma, které můžete využít na ExpressRoute přímo pouze do podpory scénářů uvedených výše. Jedná se o: 40Gbps a 100Gbps.
+Existují další okruh šířky pásma, které můžete využít na ExpressRoute přímo pouze do podpory scénářů uvedených výše. Jsou to: 40Gbps a 100Gbps.
 
 Je možné vytvářet okruhy úrovně Standard nebo premium. Standardní okruhy jsou zahrnutá v ceně, zatímco okruhy premium mají svou cenu na základě šířky pásma vybrané. Okruhy lze vytvořit pouze jako měřená, jako neomezená nepodporuje přímé ExpressRoute.
 
@@ -239,7 +239,7 @@ Vytvoření okruhu ExpressRoute přímo prostředku.
   New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Zahrnout další šířek pásma: 5.0, 10.0 a 40.0
+  Další šířek pásma patří: 5.0, 10.0 a 40.0
 
   **Příklad výstupu:**
 

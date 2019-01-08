@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f1607a7d795e3934881429feb18c711a75995e31
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039424"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062940"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
@@ -59,6 +59,24 @@ Pokud vybraný pracovní prostor není propojený s účtem Automation, zobrazí
 
 ![Žádný pracovní prostor](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
+Při povolování řešení, pro propojení pracovního prostoru Log Analytics a účet Automation se podporují pouze určité oblasti.
+
+V následující tabulce jsou uvedeny podporované mapování:
+
+|**Oblasti pracovního prostoru log Analytics**|**Oblasti služby Azure Automation**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS|WestCentralUS|
+|WestEurope|WestEurope|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
+
 Zrušit zaškrtnutí políčka vedle libovolného virtuálního počítače, které nechcete povolit. Virtuálních počítačů, které není možné je už vybraná.
 
 Klikněte na tlačítko **povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
@@ -80,13 +98,13 @@ Po odebrání těchto řešení provedením následujících kroků se zrušit p
 
 1. Z portálu Azure portal otevřete svůj účet Automation, a na automatizaci účtu vyberte stránku **pracovní prostor propojený** části **související prostředky** na levé straně.
 
-1. Na stránce zrušit propojení pracovního prostoru klikněte na tlačítko **zrušit propojení pracovního prostoru**.
+2. Na stránce zrušit propojení pracovního prostoru klikněte na tlačítko **zrušit propojení pracovního prostoru**.
 
    ![Zrušit propojení pracovního prostoru stránky](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
 
    Zobrazí se výzva s dotazem, jestli chcete pokračovat.
 
-1. Zatímco bude Azure Automation se pokusí zrušit propojení účtu pracovního prostoru Log Analytics, můžete sledovat průběh **oznámení** z nabídky.
+3. Zatímco bude Azure Automation se pokusí zrušit propojení účtu pracovního prostoru Log Analytics, můžete sledovat průběh **oznámení** z nabídky.
 
 Pokud jste použili řešení Update Management, Volitelně můžete odebrat následující položky, které už nejsou potřeba po odebrání řešení.
 
@@ -106,37 +124,37 @@ Při připojování více počítačů, může být počítače, které se zobra
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Virtuální počítač hlásí s jiným pracovním prostorem: "\<workspaceName\>".  Změna konfigurace použít k povolení
 
-**Příčina**: k této chybě ukazuje, že virtuální počítač, který se pokoušíte připojit sestavy s jiným pracovním prostorem.
+**Příčina**: Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit sestavy s jiným pracovním prostorem.
 
-**Řešení**: klikněte na tlačítko **jako konfigurace** změnit cílový pracovní prostor účtu Automation a Log Analytics.
+**Řešení**: Klikněte na tlačítko **jako konfigurace** změnit cílový pracovní prostor účtu Automation a Log Analytics.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Virtuální počítač sestavy do pracovního prostoru, který není v tomto předplatném k dispozici
 
-**Příčina**:, který bude virtuální počítač hlásit do pracovního prostoru:
+**Příčina**: Pracovní prostor, který bude virtuální počítač hlásit do:
 
 * Je v jiném předplatném, nebo
 * Už existuje, nebo
 * Je ve skupině prostředků nemáte oprávnění k přístupu k
 
-**Řešení**: Najít účet automation přidružený, který bude virtuální počítač hlásit do pracovního prostoru a připojit virtuální počítač tak, že změníte konfiguraci oboru.
+**Řešení**: Najdete účet automation přidružený, který bude virtuální počítač hlásit do pracovního prostoru a připojit virtuální počítač tak, že změníte konfiguraci oboru.
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>Verze operačního systému virtuálního počítače nebo distribuce se nepodporuje.
 
-**Příčina:** řešení pro všechny Linuxových distribucí nebo všechny verze Windows nepodporuje.
+**Příčina:** Řešení není podporován pro všechny Linuxových distribucí nebo všechny verze Windows.
 
-**Řešení:** odkazovat [seznam podporovaných klientů](automation-update-management.md#clients) řešení.
+**Řešení:** Odkazovat [seznam podporovaných klientů](automation-update-management.md#clients) řešení.
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klasický virtuální počítač se nedá povolit.
 
-**Příčina**: virtuální počítače, které používají model nasazení classic se nepodporují.
+**Příčina**: Virtuální počítače, které používají model nasazení classic se nepodporují.
 
-**Řešení**: migrace virtuálního počítače do modelu nasazení resource manager. Zjistěte, jak to provést, najdete v článku [migrace prostředků modelu nasazení classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Řešení**: Virtuální počítač Migrate na modelu nasazení resource manager. Zjistěte, jak to provést, najdete v článku [migrace prostředků modelu nasazení classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Virtuální počítač je zastavený. (přidělení zrušeno)
 
-**Příčina**: virtuální počítač není v **systémem** stavu.
+**Příčina**: Virtuální počítač není v **systémem** stavu.
 
-**Řešení**: za účelem připojení virtuálního počítače do řešení pro virtuální počítač musí být spuštěn. Klikněte na tlačítko **spustit virtuální počítač** vložený odkaz ke spuštění virtuálního počítače bez navigaci pryč z stránky.
+**Řešení**: Za účelem připojení musí být virtuální počítač do řešení pro virtuální počítač spuštěn. Klikněte na tlačítko **spustit virtuální počítač** vložený odkaz ke spuštění virtuálního počítače bez navigaci pryč z stránky.
 
 ## <a name="next-steps"></a>Další postup
 

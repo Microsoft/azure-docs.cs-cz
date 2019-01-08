@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 79d9ab603b8548269647b7922c6eb01dcc228c4c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1a1038bec66cd90e2cd0cbc8b125857403317d89
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019584"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078248"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure pro virtuální počítače na vyžádání Red Hat Enterprise Linuxem v Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umožňuje poskytovateli cloudu, jako je Azure, které zrcadlí obsahu úložiště hostované v systému Red Hat, vytvořte vlastní úložiště s týkající se Azure obsahu a ji dejte k dispozici pro virtuální počítače koncového uživatele.
@@ -41,11 +41,11 @@ Další informace pro Image RHEL v Azure, včetně publikování a zásady uchov
 
 * Přístup ke RHUI hostovaných v Azure je omezený na virtuální počítače v rámci [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jste připojení přes server proxy veškerý provoz virtuálního počítače přes místní síťové infrastruktury, musíte nastavit trasy definované uživatelem pro virtuální počítače s průběžnými PLATBAMI RHEL pro přístup k Azure RHUI.
 
-### <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEl EUS a zamykání verze RHEL virtuálních počítačů
+### <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS a zamykání verze RHEL virtuálních počítačů
 Někteří zákazníci mohou chcete zamknout své virtuální počítače RHEL do některých vydání vedlejší verze RHEL. Verze zámku můžete aktualizací úložiště tak, aby odkazoval na rozšířenou podporu aktualizace úložiště virtuálního počítače RHEL, aby konkrétní podverze. Pomocí následujících pokynů k uzamčení virtuální počítač s RHEL do určité dílčí verze:
 
 >[!NOTE]
-> To platí jenom pro RHEL 7.2 7.5
+> To platí jenom pro RHEL verze, pro které je k dispozici EUS. V době psaní tohoto návodu jedná se o RHEL 7.2 7.6. Další podrobnosti jsou k dispozici na [Red Hat Enterprise Linux životního cyklu](https://access.redhat.com/support/policy/updates/errata) stránky.
 
 1. Zakažte jiné EUS úložišť:
     ```bash

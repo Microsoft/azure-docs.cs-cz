@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 349632c751c3116244bc8ef7708708f3aa45754c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 93757c9f589ec1a6d5065d32740831dac922a015
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013232"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079064"
 ---
 # <a name="advisor-performance-recommendations"></a>Poradce doporučení k výkonu
 
@@ -39,11 +39,6 @@ Advisor vám poskytuje konzistentní vzhledem k aplikacím, konsolidované zobra
 
 Další informace o službě SQL Database Advisor najdete v tématu [služby SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
-## <a name="improve-azure-cache-for-redis-performance-and-reliability"></a>Vylepšení mezipaměti Azure Redis výkonu a spolehlivosti
-
-Advisor identifikuje mezipaměti Azure Redis instance, kde výkon může negativně ovlivněn vysoké využití paměti, zatížení serveru, šířky pásma sítě nebo velký počet připojení klientů. Osvědčené postupy Advisor také poskytuje doporučení, abyste se vyhnuli potenciální problémy. Další informace o mezipaměti Azure Redis doporučení, najdete v části [mezipaměti Azure redis Cache Advisoru](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
-
-
 ## <a name="improve-app-service-performance-and-reliability"></a>Zlepšení výkonu služby App Service a spolehlivosti
 
 Azure Advisor se integruje se doporučené postupy pro zlepšení prostředí služby App Services a zajištění příslušné možnosti. Příklady doporučení App Services:
@@ -52,6 +47,16 @@ Azure Advisor se integruje se doporučené postupy pro zlepšení prostředí sl
 
 Další informace o doporučeních App Services najdete v tématu [osvědčené postupy pro službu Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
 
+## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Chcete-li zabránit omezování disku vstupně-výstupní operace použít Managed Disks
+
+Advisor bude identifikovat virtuální počítače, které patří k účtu úložiště, která dosahuje svého cíle škálovatelnosti. Díky tomu je náchylný k omezování vstupně-výstupních operací. Advisor vám doporučí, že tyto virtuální počítače používat spravované disky, aby se zabránilo snížení výkonu.
+
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>Zvýšit výkon a spolehlivost disků virtuálního počítače pomocí služby Premium Storage
+
+Advisor identifikuje virtuální počítače se standardní disky, které mají k velkému počtu následujících na vašem účtu úložiště a doporučuje upgrade na disky premium. 
+
+Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých běží I intenzivních vstupně-výstupních operací. Disky virtuálních počítačů, které používají účty služby premium storage ukládat data na jednotky SSD (Solid-State Drive). Pro zajištění nejlepšího výkonu pro vaši aplikaci doporučujeme vám, že můžete migrovat všechny disky virtuálního počítače, které vyžadují vysokou vstupně-výstupních operací na premium storage.
+
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Odeberte na tabulku SQL data warehouse ke zvýšení výkonu dotazů Nerovnoměrná distribuce dat.
 
 Nerovnoměrná distribuce dat může způsobit nepotřebná data pohybu nebo prostředků problémová místa při spuštění vaší úlohy. Poradce zjistí data distribuce zkosení delší než 15 % a doporučujeme znovu distribuovat data a návštěvě klíče výběr distribuce tabulky. Další informace o identifikaci a odebírání zkosení najdete v tématu [řešení potíží s zkosení](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
@@ -59,6 +64,14 @@ Nerovnoměrná distribuce dat může způsobit nepotřebná data pohybu nebo pro
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Vytvořit nebo aktualizovat statistiky zastaralé tabulky na tabulku SQL data warehouse ke zvýšení výkonu dotazů
 
 Advisor identifikuje tabulky, které nemají aktuální [Statistika tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) a doporučuje se vytváří nebo aktualizuje statistika tabulky. Dotaz, že Optimalizátor používá aktuální statik k odhadu kardinality nebo počet řádků ve výsledku dotazu, který umožňuje optimalizátoru dotazů k vytvoření vysoce kvalitní plán dotazu pro nejrychlejší výkon služby SQL data warehouse.
+
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Vertikálně navýšit kapacitu k optimalizaci využití mezipaměti v tabulkách SQL Data Warehouse ke zvýšení výkonu dotazů
+
+Azure Advisor zjišťuje, pokud má vaše služba SQL Data Warehouse vysokou mezipaměti použít procento a nízké procento úspěšnosti. To znamená vyřazení vysokou mezipaměti, což může ovlivnit výkon služby SQL Data Warehouse. Advisor navrhuje, vertikálně navýšit kapacitu služby SQL Data Warehouse k zajištění, že přidělíte dostatek kapacity mezipaměti pro vaše úlohy.
+
+## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Převést tabulek SQL Data Warehouse na replikované tabulky pro zvýšení výkonu dotazů
+
+Advisor určí tabulek, které nejsou replikované tabulky, ale je výhodná převodu a naznačuje, že převod těchto tabulek. Doporučení jsou založená na replikovanou tabulku velikost, počet sloupců, typ distribuce tabulky a počet oddílů v tabulce SQL Data Warehouse. Další heurisitics může být součástí doporučení pro kontext. Další informace o tom, jak toto doporučení závisí, naleznete v tématu [doporučení pro SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Migrace účtu úložiště do Azure Resource Manageru a mějte všechny nejnovější funkce Azure
 

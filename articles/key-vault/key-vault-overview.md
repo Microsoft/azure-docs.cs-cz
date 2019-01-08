@@ -9,17 +9,16 @@ ms.assetid: 34af20ee-3fa7-4f28-9d98-6168b1759764
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 80a740e13f5c3a13b7533d75e386a9afa2855085
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 21e5642f738fa1c90e22422e204d9a04d968f072
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002242"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075460"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: ee7b403c2ebdc590bd428eff880769ae83632585
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 76ebdc85db2c65b1ad99c1e7abe5e697f1c1284c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228211"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063994"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurujte jeden nebo více Always On naslouchacích procesů skupin dostupnosti - Resource Manageru
 Toto téma ukazuje, jak:
@@ -176,7 +176,7 @@ Chcete-li otestovat připojení:
 1. Použití **sqlcmd** nástroj k testování připojení. Například následující skript vytvoří **sqlcmd** připojení k primární replice prostřednictvím naslouchací proces s ověřováním Windows:
    
     ```
-    sqlmd -S <listenerName> -E
+    sqlcmd -S <listenerName> -E
     ```
    
     Pokud je naslouchací proces používá jiný port než výchozí port (1433), zadejte port, který v připojovacím řetězci. Například následující příkaz sqlcmd se připojí k naslouchání na portu 1435: 

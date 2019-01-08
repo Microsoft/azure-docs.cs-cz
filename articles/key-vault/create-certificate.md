@@ -10,24 +10,23 @@ ms.assetid: e17b4c9b-4ff3-472f-8c9d-d130eb443968
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: d2f9327841e0c6193a89df6459b4d8fffb14c05e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f2ba077b23a1fb12d1b547f8c9e3013135db1d87
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302839"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076021"
 ---
 # <a name="certificate-creation-methods"></a>Metody vytvoření certifikátu
 
  Certifikát pro Key Vault (KV) můžou vytvořit nebo importovat do služby key vault. Když se vytvoří certifikát KV je privátní klíč vytvoří uvnitř trezoru klíčů a nikdy vystavený certifikát vlastníka. Následují způsoby, jak vytvořit certifikát ve službě Key Vault:  
 
--   **Vytvořit certifikát podepsaný svým držitelem:** to bude vytvoření páru veřejného a privátního klíče a přidružte jej k certifikátu. Certifikát podepíše svůj vlastní klíč.  
+-   **Vytvořte certifikát podepsaný svým držitelem:** To vytvoří pár veřejného a privátního klíče a přidružit ho k certifikátu. Certifikát podepíše svůj vlastní klíč.  
 
--    **Ruční vytvoření nového certifikátu:** se vytvoření páru veřejného a privátního klíče a generovat žádosti o podepsání certifikátu X.509. Žádost o podepsání může být podepsány registrační autority nebo certifikační autorita. Pair – x509 podepsaný certifikát lze sloučit s probíhající klíč k dokončení KV certifikátu ve službě Key Vault. I když tato metoda vyžaduje další kroky, se poskytují větší zabezpečení vzhledem k tomu, že privátní klíč je vytvořen a s omezením pomocí specifikátoru do služby Key Vault. To je vysvětleno v následujícím diagramu.  
+-    **Ruční vytvoření nového certifikátu:** To vytvoří pár veřejného a privátního klíče a generovat žádosti o podepsání certifikátu X.509. Žádost o podepsání může být podepsány registrační autority nebo certifikační autorita. Pair – x509 podepsaný certifikát lze sloučit s probíhající klíč k dokončení KV certifikátu ve službě Key Vault. I když tato metoda vyžaduje další kroky, se poskytují větší zabezpečení vzhledem k tomu, že privátní klíč je vytvořen a s omezením pomocí specifikátoru do služby Key Vault. To je vysvětleno v následujícím diagramu.  
 
 ![Vytvořte certifikát s svou vlastní certifikační autoritu](media/certificate-authority-1.png)  
 
@@ -39,7 +38,7 @@ V následujících popisech odpovídají zelené lettered kroky na předchozím 
 4. Vaši vybranou certifikační Autority odpoví x X509 certifikátu.
 5. Vaše aplikace dokončí nové vytvoření certifikátu s spojení X509 certifikát z certifikační Autority.
 
--   **Vytvořte certifikát s poskytovatelem známé vystavitele:** tato metoda vyžaduje, abyste k provedení jednorázové úlohy vytvoření objektu vystavitele. Jakmile je vytvořen objekt vystavitelů ve trezor klíčů, jeho název může být odkazováno v zásadách KV certifikátu. Požadavek na vytvoření certifikátu KV vytvoření páru klíčů v trezoru, který se komunikovat se službou poskytovatele vystavitele zobrazíte x x509 pomocí informací v objektu odkazovaný vystavitele certifikátu. Vytvoření certifikátu x509 certifikát se načte ze služby vystavitele a je sloučen s pár klíčů KV dokončit.  
+-   **Vytvořte certifikát s zprostředkovatele známé vystavitele:** Tato metoda vyžaduje, abyste k provedení jednorázové úlohy vytvoření objektu vystavitele. Jakmile je vytvořen objekt vystavitelů ve trezor klíčů, jeho název může být odkazováno v zásadách KV certifikátu. Požadavek na vytvoření certifikátu KV vytvoření páru klíčů v trezoru, který se komunikovat se službou poskytovatele vystavitele zobrazíte x x509 pomocí informací v objektu odkazovaný vystavitele certifikátu. Vytvoření certifikátu x509 certifikát se načte ze služby vystavitele a je sloučen s pár klíčů KV dokončit.  
 
 ![Vytvořit certifikát u certifikační autority služby Key Vault partnerství](media/certificate-authority-2.png)  
 
@@ -58,7 +57,7 @@ Po dokončení žádosti o vytvoření certifikátu KV stav Čeká na objektu se
 
 ## <a name="first-creation"></a>Vytvoření první
  Když se poprvé certifikát KV, adresovatelný klíč a tajný klíč služby se vytvoří také se stejným názvem jako u certifikátu. Pokud název se už používá, se nezdaří operace s kódem stavu http 409 (konflikt).
-Adresovatelný klíč a tajný kód získat jejich atributy z atributů KV certifikát. Adresovatelný klíč a tajný klíč vytvořené tímto způsobem jsou označeny jako spravované klíče a tajné kódy, jejichž životnost se spravuje přes Key Vault. Spravované klíče a tajné kódy jsou jen pro čtení. Poznámka: Pokud KV certifikátu vyprší platnost nebo je zakázaný, odpovídající klíč a tajný klíč se stane nefunkční.  
+Adresovatelný klíč a tajný kód získat jejich atributy z atributů KV certifikát. Adresovatelný klíč a tajný klíč vytvořené tímto způsobem jsou označeny jako spravované klíče a tajné kódy, jejichž životnost se spravuje přes Key Vault. Spravované klíče a tajné kódy jsou jen pro čtení. Poznámka: Pokud KV certifikátu vyprší platnost nebo je zakázána, bude odpovídající klíč a tajný klíč nebude funkční.  
 
  Pokud je toto první operace vytvoření certifikátu KV se zásada vyžaduje.  Zásada může být rovněž dodán s po sobě jdoucích vytvoření operací nahradit zdroj zásad. Pokud není zadán zásady, zásady prostředků ve službě slouží k vytvoření další verzi KV certifikátu. Všimněte si, že požadavek na vytvoření další verze je v průběhu, aktuální certifikát KV a odpovídající adresovatelný klíč a tajný klíč, zůstanou beze změny.  
 
@@ -93,7 +92,7 @@ Vytvoření certifikátu může být dokončené ručně nebo pomocí "svým" vy
 
 Mějte na paměti, že pořadí při umístění s poskytovateli vystavitele, může přijmout nebo přepsání x509 rozšíření certifikátu a období platnosti certifikátu na základě typu certifikátu.  
 
- Autorizace: Vyžaduje oprávnění k vytvoření/certifikáty.
+ Autorizace: Vyžaduje certifikáty/vytvoření oprávnění.
 
  ## <a name="see-also"></a>Viz také
  - [Informace o klíčích, tajných kódů a certifikátů](about-keys-secrets-and-certificates.md)

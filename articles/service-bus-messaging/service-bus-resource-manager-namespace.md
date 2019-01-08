@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: c616ad86e6846800d214feeaf100f63e311f78b0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 248ac7ed2a855dd1df71e6e44d1aa7065ddd8ba4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282726"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062063"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus pomocí šablony Azure Resource Manageru
 V tomto rychlém startu vytvoříte šablonu Azure Resource Manageru, která vytvoří obor názvů služby Service Bus typu **zasílání zpráv** s **standardní** SKU. Tento článek také definuje parametry, které jsou určené pro spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Další informace o vytváření šablon najdete v tématu [Tvorba šablon Azure Resource Manageru][Authoring Azure Resource Manager templates]. Úplnou šablonu najdete v článku [šablony obor názvů služby Service Bus] [ Service Bus namespace template] na Githubu.
@@ -96,7 +96,7 @@ Vytvořte soubor JSON s názvem **MyServiceBusNamespace.json** s následujícím
 }
 ```
 
-Tato šablona vytvoří standardní obor názvů služby Service Bus.
+Tato šablona vytvoří standardní obor názvů služby Service Bus. Syntaxi JSON a vlastnostech najdete v tématu [obory názvů](/azure/templates/microsoft.servicebus/namespaces) referenčními informacemi k šablonám.
 
 ## <a name="create-the-parameters-json"></a>Vytvoření parametry JSON
 Šablona, kterou jste vytvořili v předchozím kroku obsahuje část s názvem `Parameters`. Definujete parametry pro tyto hodnoty, které se liší na základě projektu nasazení nebo v závislosti na cílové prostředí. Tato šablona definuje následující parametry: **serviceBusNamespaceName**, **serviceBusSku**, a **umístění**. Další informace o SKU Service Bus, najdete v článku [skladové položky služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/) vytvořit.
@@ -166,7 +166,7 @@ K nasazení prostředků pomocí Azure Powershellu, přejděte do složky, kam j
 
 ## <a name="use-azure-cli-to-deploy-the-template"></a>Použití Azure CLI k nasazení šablony
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 1. Spuštěním následujícího příkazu se přihlaste k Azure:
 

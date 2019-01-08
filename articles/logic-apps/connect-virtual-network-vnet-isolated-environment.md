@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/06/2018
-ms.openlocfilehash: 41ba0816dde63bc611dcb5be544609b88dfe9158
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 31f3cf9bd8f83c5da32569ed370de1ed35299749
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052628"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062379"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
 
 > [!NOTE]
 > Tato funkce je v *ve verzi private preview*. Chcete-li požádat o přístup, [vytváření žádosti o připojení tady](https://aka.ms/iseprivatepreview).
 
-Pro scénáře, ve kterém logic apps a účty pro integraci potřebují přístup k [virtuální síť Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je privátní a izolované prostředí, která používá vyhrazeného úložiště a další prostředky, které uchovávají nezávislá na infrastruktuře veřejného nebo *globální* služba Logic Apps. Toto oddělení také snižuje předejde jiných tenantů Azure může mít na výkon vaší aplikace. Je vaše ISE *vložený* do ke službě Azure virtual network, která pak nasadí služba Logic Apps do vaší virtuální sítě. Při vytváření logiku aplikace nebo integračního účtu, vyberte tento ISE jako jejich umístění. Váš účet integrace nebo aplikace logiky můžete pak přímý přístup k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby ve vaší virtuální síti. 
+Pro scénáře, ve kterém logic apps a účty pro integraci potřebují přístup k [virtuální síť Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je privátní a izolované prostředí, která používá vyhrazeného úložiště a dalším prostředkům udržovány odděleně od veřejné nebo "globální" služba Logic Apps. Toto oddělení také snižuje předejde jiných tenantů Azure může mít na výkon vaší aplikace. Je vaše ISE *vložený* do ke službě Azure virtual network, která pak nasadí služba Logic Apps do vaší virtuální sítě. Při vytváření logiku aplikace nebo integračního účtu, vyberte tento ISE jako jejich umístění. Váš účet integrace nebo aplikace logiky můžete pak přímý přístup k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby ve vaší virtuální síti. 
 
 ![Vyberte prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
@@ -40,6 +40,9 @@ Další informace o prostředí integrační služby naleznete v tématu [přís
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+
+  > [!IMPORTANT]
+  > Logic apps, integrované akce a konektory, na kterých běží vaše ISE používá jiný cenový plán není založenou na skutečné spotřebě cenového plánu. Další informace najdete v tématu [ceny Logic Apps](../logic-apps/logic-apps-pricing.md).
 
 * [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Pokud nemáte virtuální síť, zjistěte, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md). 
 
@@ -109,9 +112,9 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
    | **Skupina prostředků** | Ano | <*Azure-resource-group-name*> | Skupina prostředků Azure, ve kterém chcete vytvořit prostředí |
    | **Název prostředí integrační služby** | Ano | <*Název prostředí*> | Název prostředí | 
    | **Umístění** | Ano | <*Oblast datového centra Azure*> | Oblast datového centra Azure, jak nasadíte prostředí | 
-   | **Kapacita** | Ano | 0, 1, 2, 3 | Počet jednotek zpracování pro tento prostředek ISE | 
+   | **Zvýšení kapacity** | Ano | 0, 1, 2, 3 | Počet jednotek zpracování pro tento prostředek ISE | 
    | **Virtuální síť** | Ano | <*Azure--název virtuální sítě –*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nejste připojeni k síti, můžete jeden vytvořit tady. <p>**Důležité**: Je možné *pouze* provádět tento vkládání při vytváření vašeho ISE. Ale předtím, než budete moct vytvořit tuto relaci, ujistěte se, že jste již [nastavit řízení přístupu na základě role ve službě virtual network pro Azure Logic Apps](#vnet-access). | 
-   | **Podsítě** | Ano | <*Rozsah IP adres*> | ISE vyžaduje čtyři *prázdný* podsítě. Tyto podsítě jsou undelegated k libovolné službě a jsou používány pro vytváření prostředků ve vašem prostředí. Můžete *nelze změnit* tyto rozsahy IP adres po vytvoření prostředí. <p><p>K vytvoření každé podsíti [, použijte postup v této tabulce](#create-subnet). Každá podsíť musí splňovat tato kritéria: <p>-Používá název, který nezačíná znakem čísla nebo pomlčku. <br>-Používá [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>-Vyžaduje třídy B adresní prostor. <br>-Zahrnuje `/27`. Například každá podsíť určuje rozsah adres 32-bit: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, a `10.0.0.96/27`. <br>– Musí být prázdný. |
+   | **Podsítě** | Ano | <*seznam prostředků podsítě*> | ISE vyžaduje čtyři *prázdný* podsítě pro vytváření prostředků ve vašem prostředí. Ano, ujistěte se, že tyto podsítě *nejsou přidělena* na libovolnou službu. Můžete *nelze změnit* tyto adresy podsítě po vytvoření prostředí. <p><p>K vytvoření každé podsíti [, použijte postup v této tabulce](#create-subnet). Každá podsíť musí splňovat tato kritéria: <p>– Musí být prázdný. <br>-Používá název, který nezačíná znakem čísla nebo pomlčku. <br>-Používá [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) a prostor adres třídy B. <br>-Zahrnuje nejméně jednoho `/27` v adresním prostoru, získá alespoň 32 adres podsítě. Další informace o výpočtu počet adres najdete v tématu [bloky IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Příklad: <p>- `10.0.0.0/24` protože má 256 adresy 2<sup>(32-24)</sup> je 2<sup>8</sup> nebo 256. <br>- `10.0.0.0/27` protože má 32 adres 2<sup>(32-27)</sup> je 2<sup>5</sup> nebo 32. <br>- `10.0.0.0/28` protože má jenom 16 adresy 2<sup>(32-28)</sup> je 2<sup>4</sup> nebo 16. |
    |||||
 
    <a name="create-subnet"></a>

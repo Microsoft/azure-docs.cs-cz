@@ -1,7 +1,7 @@
 ---
 title: Kurz – CI/CD z Jenkins na virtuální počítače Azure pomocí služby Azure DevOps Services | Microsoft Docs
 description: V tomto kurzu se naučíte, jak nastavit kontinuální integraci (CI) a průběžné nasazování (CD) aplikace Node.js pomocí Jenkins na virtuální počítače Azure ze správy vydaných verzí v produktech Visual Studio Team Services nebo Microsoft Team Foundation Server.
-author: tomarcher
+author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 651e8505c6d3a3952347bba5e598ec9a0a518e8e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388478"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074763"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace na linuxové virtuální počítače v Azure pomocí Jenkins a Azure DevOps Services
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace do virtuálních počítačů s Linuxem v Azure s využitím Jenkinse a Azure DevOps služby
 
 Kontinuální integrace (CI) a průběžné nasazování (CD) tvoří kanál, s jehož pomocí můžete sestavovat, vydávat a nasazovat kód. Azure DevOps Services poskytuje kompletní plnohodnotnou sadu nástrojů pro automatizaci CI/CD umožňující nasazení do Azure. Jenkins je populární serverový nástroj CI/CD od jiného výrobce, který rovněž nabízí automatizaci CI/CD. Kombinací produktů Azure DevOps Services a Jenkins můžete přizpůsobit způsob, jakým dodáváte cloudovou aplikaci nebo službu.
 
@@ -38,7 +38,7 @@ do [skupiny nasazení](https://docs.microsoft.com/azure/devops/pipelines/release
 > * Vytvoření kanálu verze Azure Pipelines
 > * Ruční nasazení nebo nasazení aktivované přes CI
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Potřebujete přístup k serveru Jenkins. Pokud jste ještě nevytvořili server Jenkins, přečtěte si článek o [vytvoření hlavní databáze Jenkins ve virtuálním počítači Azure](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
@@ -68,7 +68,7 @@ Vytvořte fork této aplikace a poznačte si umístění (adresu URL), které po
 
 ## <a name="configure-jenkins-plug-ins"></a>Konfigurace modulů plug-in Jenkins
 
-Nejprve musíte nakonfigurovat dva moduly plug-in Jenkins: **NodeJS** a **VS Team Services Continuous Deployment**.
+Nejprve je nutné nakonfigurovat dva moduly plug-in Jenkins: **Prostředí NodeJS** a **průběžného nasazování služby VS Team Services**.
 
 1. Otevřete svůj účet Jenkins a vyberte **Manage Jenkins** (Spravovat Jenkins).
 2. Na stránce **Manage Jenkins** (Spravovat Jenkins) vyberte **Manage Plugins** (Spravovat moduly plug-in).
@@ -164,7 +164,7 @@ Kanál verze vytvoříte v Azure Pipelines takto:
 
 1. Vyberte **+ Vydaná verze** a vyberte **Vytvořit vydanou verzi**.
 2. Ve zvýrazněném rozevíracím seznamu vyberte dokončené sestavení a pak vyberte **Zařadit do fronty**.
-3. Ve vyskakovací zprávě zvolte odkaz na vydanou verzi. Příklad: „Vydaná verze **Verze-1** byla vytvořena.“
+3. Ve vyskakovací zprávě zvolte odkaz na vydanou verzi. Příklad: "Vydání **Release-1** byla vytvořena."
 4. Otevřete kartu **Protokoly** a prohlédněte si výstup konzole vydané verze.
 5. V prohlížeči otevřete adresu URL jednoho ze serverů, který jste přidali do skupiny nasazení. Zadejte například **http://{IP-adresa-vašeho-serveru}**.
 6. Přejděte do zdrojového úložiště Gitu a změňte text nadpisu **h1** v souboru app/views/index.jade.
@@ -175,7 +175,7 @@ Kanál verze vytvoříte v Azure Pipelines takto:
 
 Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste automatizovali nasazení aplikace do Azure pomocí služby Jenkins pro build a služby Azure DevOps Services pro verzi. Naučili jste se tyto postupy:
 

@@ -1,7 +1,7 @@
 ---
 title: 'Regresní model kurzu: Příprava dat'
 titleSuffix: Azure Machine Learning service
-description: V první části tohoto kurzu dozvíte, jak pro přípravu dat v jazyce Python pro modelování regrese pomocí sady SDK služby Azure ML.
+description: V první části tohoto kurzu se dozvíte, jak k přípravě dat v jazyce Python pro regresní modelování pomocí sady SDK Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,37 +11,39 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d20ff1fabfb73c899153cf42bb6f2d7a8f233e21
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8f7e414d2aa4962534a90a295e104f8e8ebabbd9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314682"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079234"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
-V tomto kurzu se dozvíte, jak pro přípravu dat pomocí sady SDK pro Azure Machine Learning Data Prep modelování regrese. Proveďte různé transformace k filtrování a kombinovat dvěma různým sadám dat taxislužby NYC. Konečným cílem této sérii kurzů je odhadnout náklady na cesty taxíkem díky trénování modelu na data funkce včetně vyzvednutí hodinu, den v týdnu, počet cestujících a souřadnice. Tento kurz je první částí z dvou částí série.
+V tomto kurzu se dozvíte, jak připravit data pro modelování s použitím sady SDK pro Azure Machine Learning Data Prep regrese. Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.  
+
+Tento kurz je první částí z dvou částí série. Po dokončení série kurzů, lze odhadnout náklady na cesty taxíkem díky trénování modelu na datových funkcích. Tyto funkce patří vyzvednutí den a čas, počet cestujících a výstupní umístění.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavení prostředí Pythonu a importovat balíčky
-> * Načíst dvě datové sady s názvy jiného pole
-> * Čistí data odebrat anomálií
-> * Transformace dat pomocí inteligentních transformace k vytvoření nové funkce
-> * Uložte objekt toku dat pro použití v regresní model
+> * Nastavení prostředí Pythonu a importovat balíčky.
+> * Načtěte dvě datové sady s názvy jiného pole.
+> * Čistí data odebrat anomálie.
+> * Transformace dat pomocí inteligentních transformace k vytvoření nové funkce.
+> * Uložte objekt toku dat pro použití v regresní model.
 
-Můžete připravit vaše data v Pythonu pomocí [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk).
+Můžete připravit vaše data v jazyce Python pomocí [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk).
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb). Spusťte poznámkový blok `regression-part1-data-prep.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb). Spustit **regrese – část 1 data-prep.ipynb** poznámkového bloku v poznámkových bloků Azure nebo v serveru Poznámkový blok Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 ## <a name="import-packages"></a>Import balíčků
 
-Začněte tím, že import sady SDK.
+Začnete importováním sady SDK.
 
 
 ```python
@@ -50,7 +52,7 @@ import azureml.dataprep as dprep
 
 ## <a name="load-data"></a>Načtení dat
 
-Stáhněte si dvě různé sady dat taxislužby NYC do toku dat objektů.  Tyto datové sady obsahují pole mírně liší. Metoda `auto_read_file()` automaticky rozpozná typ vstupního souboru.
+Stáhněte si dvě různé sady dat taxislužby NYC do toku dat objektů. Datové sady mají mírně odlišné pole. `auto_read_file()` Metoda automaticky rozpozná typ vstupního souboru.
 
 
 ```python
@@ -60,7 +62,7 @@ green_path = "/".join([dataset_root, "green-small/*"])
 yellow_path = "/".join([dataset_root, "yellow-small/*"])
 
 green_df = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
-# auto_read_file will automatically identify and parse the file type, and is useful if you don't know the file type
+# auto_read_file automatically identifies and parses the file type, which is useful when you don't know the file type.
 yellow_df = dprep.auto_read_file(path=yellow_path)
 
 display(green_df.head(5))
@@ -69,7 +71,7 @@ display(yellow_df.head(5))
 
 ## <a name="cleanse-data"></a>Vyčistit data
 
-Nyní naplňte několik proměnných s místní transformace, které budou platit pro všechny toky dat. Proměnná `drop_if_all_null` se používat k odstranění záznamů, kde jsou všechna pole hodnotu null. Proměnná `useful_columns` obsahuje celou řadu popisy sloupců, které jsou zachovány v každé datového toku.
+Nyní naplňte několik proměnných s místní transformace na platí pro všechny toky dat. `drop_if_all_null` Proměnná slouží k odstranění záznamů, kde jsou všechna pole hodnotu null. `useful_columns` Proměnná obsahuje celou řadu popisy sloupců, které jsou zachovány v každé datového toku.
 
 ```python
 all_columns = dprep.ColumnSelector(term=".*", use_regex=True)
@@ -80,7 +82,7 @@ useful_columns = [
 ]
 ```
 
-Nejprve pracovat data taxislužby zelené a get do platné obrazce, který je možné kombinovat s dat taxislužby žlutou. Vytvořit dočasný toku dat `tmp_df`. Volání `replace_na()`, `drop_nulls()`, a `keep_columns()` funkce pomocí zástupce transformace proměnné, které jste vytvořili. Kromě toho přejmenovat všechny sloupce datového rámce tak, aby odpovídaly názvům v `useful_columns`.
+Nejprve práci s daty zelené taxislužby můžete načíst platný tvar, který je možné kombinovat s dat taxislužby žlutou. Vytvořit dočasný toku dat s názvem `tmp_df`. Volání `replace_na()`, `drop_nulls()`, a `keep_columns()` funkce pomocí zástupce transformace proměnné, které jste vytvořili. Kromě toho přejmenovat všechny sloupce datového rámce tak, aby odpovídaly názvům v `useful_columns` proměnné.
 
 
 ```python
@@ -209,13 +211,13 @@ tmp_df.head(5)
 </table>
 </div>
 
-Přepsat `green_df` proměnné s transformací, proveden na `tmp_df` v předchozím kroku.
+Přepsat `green_df` proměnné s transformací spouštět `tmp_df` toku dat v předchozím kroku.
 
 ```python
 green_df = tmp_df
 ```
 
-Proveďte stejné kroky transformace dat žlutý taxislužby.
+Spusťte stejné kroky transformace dat žlutý taxislužby.
 
 
 ```python
@@ -247,7 +249,7 @@ tmp_df = (yellow_df
 tmp_df.head(5)
 ```
 
-Znovu, přepsat `yellow_df` s `tmp_df`a následně zavolat `append_rows()` funkci pro data taxislužby zelená pro připojení dat taxislužby žlutý, vytvoření nové kombinované datového rámce.
+Znovu, přepsat `yellow_df` toku dat s `tmp_df` datového toku. Zavolejte `append_rows()` funkci pro data taxislužby zelená pro připojení dat taxislužby žlutou. Vytvoří se nové kombinované datového rámce.
 
 
 ```python
@@ -257,7 +259,7 @@ combined_df = green_df.append_rows([yellow_df])
 
 ### <a name="convert-types-and-filter"></a>Převod typů a filtr 
 
-Prozkoumejte sbírat míčky a odkládací souřadnice souhrnné statistiky chcete zobrazit, jak se data distribuovat. Nejprve definovat `TypeConverter` objektu a měnit tak pole lat/dlouho na typ decimal. Pak zavolejte `keep_columns()` funkce výstup omezit pouze na pole lat/dlouho a následně zavolat `get_profile()`.
+Prozkoumejte sbírat míčky a odkládací souřadnice souhrnné statistiky chcete zobrazit, jak se data distribuovat. Nejprve definujte `TypeConverter` objektu a měnit tak pole zeměpisné šířky a délky na typ decimal. Pak zavolejte `keep_columns()` funkce omezit výstup pouze zeměpisné šířky a délky pole a následně zavolat `get_profile()` funkce.
 
 
 ```python
@@ -401,7 +403,7 @@ combined_df.keep_columns(columns=[
 
 
 
-Z výstupu souhrnné statistiky uvidíte, že existují souřadnic, které chybí a souřadnice, které nejsou v New Yorku. Vyfiltrovat ohraničení město souřadnic ve zřetězení příkazů filtru sloupce v rámci `filter()` fungovat a definování minimální a maximální mezí pro každé pole. Poté zavolejte `get_profile()` znovu k ověření transformace.
+Z výstupu souhrnné statistiky, uvidíte, jsou chybějící souřadnice a souřadnic, které nejsou v New Yorku. Vyfiltrování souřadnic pro umístění, které jsou mimo hranice město. Řetězec sloupcový filtr příkazy v rámci `filter()` fungovat a definovat minimální a maximální mezí pro každé pole. Zavolejte `get_profile()` funkce znovu k ověření transformace.
 
 
 ```python
@@ -553,7 +555,7 @@ tmp_df.keep_columns(columns=[
 
 
 
-Přepsat `combined_df` s transformacemi provedené `tmp_df`.
+Přepsat `combined_df` toku dat pomocí transformace, které jste provedli `tmp_df` datového toku.
 
 
 ```python
@@ -627,14 +629,14 @@ combined_df.keep_columns(columns='store_forward').get_profile()
 
 
 
-Z výstupu profil dat `store_forward`, uvidíte, že je nekonzistentní data a hodnoty chybí nebo hodnota null. Nahraďte tyto hodnoty pomocí `replace()` a `fill_nulls()` funkce a v obou případech změnit na řetězec "N".
+Všimněte si, že profil dat výstup v `store_forward` sloupci se zobrazuje, že data nekonzistentní a jsou chybějící nebo hodnoty null. Použití `replace()` a `fill_nulls()` funkce tyto hodnoty nahraďte řetězec "N":
 
 
 ```python
 combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-Provést jiné `replace` , tentokrát na fungovat `distance` pole. To přeformátuje vzdálenost hodnoty, které jsou nesprávně označený jako `.00`a vyplní všechny hodnoty Null nulami. Převést `distance` pole na číselný formát.
+Spustit `replace` na fungovat `distance` pole. Funkce přeformátuje vzdálenost hodnoty, které jsou nesprávně označený jako `.00`a vyplní všechny hodnoty Null nulami. Převést `distance` pole na číselný formát.
 
 
 ```python
@@ -642,7 +644,7 @@ combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0
 combined_df = combined_df.to_number(["distance"])
 ```
 
-Rozdělit vyskladnění a zhoršit datetimes do sloupce odpovídajících data a času. Použití `split_column_by_example()` provádět rozdělení. V tomto případě nepovinný `example` parametr `split_column_by_example()` je vynechán. Proto funkce se automaticky určit, kde rozdělit podle data.
+Hodnoty data a času sbírat míčky a dropoff rozdělte příslušného sloupce data a času. Použití `split_column_by_example()` funkci rozdělení. V tomto případě nepovinný `example` parametr `split_column_by_example()` funkce je vynechán. Proto se funkce automaticky určí, kde rozdělit podle data.
 
 
 ```python
@@ -780,7 +782,7 @@ tmp_df.head(5)
 </div>
 
 
-Přejmenování sloupců generovaných `split_column_by_example()` do smysluplné názvy.
+Přejmenování sloupců generovaných `split_column_by_example()` funkce použijte smysluplné názvy.
 
 
 ```python
@@ -794,7 +796,7 @@ tmp_df_renamed = (tmp_df
 tmp_df_renamed.head(5)
 ```
 
-Přepsat `combined_df` provedených transformací, a poté zavolejte `get_profile()` zobrazíte úplné souhrnnou statistiku po všechny transformace.
+Přepsat `combined_df` toku dat s provedených transformací. Zavolejte `get_profile()` funkce, která se zobrazí úplné souhrnnou statistiku po všechny transformace.
 
 
 ```python
@@ -804,9 +806,9 @@ combined_df.get_profile()
 
 ## <a name="transform-data"></a>Transformace dat
 
-Pozdější datum vyzvednutí a odkládací rozdělení na den týdne, dne v měsíci a měsíc. Chcete-li získat den v týdnu, použijte `derive_column_by_example()` funkce. Tato funkce přebírá jako parametr pole příklad objekty, které definují vstupních dat a požadovaný výstup. Funkce pak automaticky určuje požadovanou transformaci. Pro sbírat míčky a pro odložení času sloupce rozdělit do hodiny, minuty a sekundy pomocí `split_column_by_example()` funkce s parametrem žádné příklad.
+Rozdělte sbírat míčky a dropoff pozdější datum na den, týden, den v měsíci a hodnoty za měsíc. Den v týdnu hodnoty, použijte `derive_column_by_example()` funkce. Funkce přijímá parametr pole, které definují vstupní data a upřednostňovaného výstupního objektů příklad. Funkce automaticky určuje upřednostňovaný transformace. Pro čas sloupce sbírat míčky a dropoff rozdělení čas na hodinu, minutu a sekundu pomocí `split_column_by_example()` funkce s parametrem žádné příklad.
 
-Po vygenerování tyto nové funkce odstranit původní pole ve prospěch nově vygenerovaný funkcí pomocí `drop_columns()`. Přejmenujte všechny zbývající pole na přesné popisy.
+Po vytvoření nové funkce, použijte `drop_columns()` funkce odstranit původní pole jsou upřednostňované nově vygenerovaný funkce. Přejmenujte zbývající pole na smysluplný popis.
 
 
 ```python
@@ -824,7 +826,7 @@ tmp_df = (combined_df
           
     .split_column_by_example(source_column="pickup_time")
     .split_column_by_example(source_column="dropoff_time")
-    # the following two split_column_by_example calls reference the generated column names from the above two calls
+    # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
     .split_column_by_example(source_column="pickup_time_1")
     .split_column_by_example(source_column="dropoff_time_1")
     .drop_columns(columns=[
@@ -999,7 +1001,7 @@ tmp_df.head(5)
 </table>
 </div>
 
-Z výše uvedených dat zobrazí správnost sbírat míčky a odkládací datum a čas komponenty vytvořenými odvozené transformace. Přetáhněte `pickup_datetime` a `dropoff_datetime` sloupce jsou už potřeba.
+Všimněte si, že data odhalí sbírat míčky a dropoff součásti datum a čas vytvořenými odvozené transformace správné. Přetáhněte `pickup_datetime` a `dropoff_datetime` sloupců, protože jsou už potřeba.
 
 
 ```python
@@ -1034,7 +1036,7 @@ type_infer
     'dropoff_latitude': [FieldType.DECIMAL],
     'cost': [FieldType.DECIMAL]
 
-Převody typu na toku dat odvození výsledky nevypadají správně na základě dat, nyní použijte.
+Odvození výsledky nevypadají správně založené na datech. Převody typu na toku dat teď použijte.
 
 
 ```python
@@ -1042,14 +1044,14 @@ tmp_df = type_infer.to_dataflow()
 tmp_df.get_profile()
 ```
 
-Než připravíte balíček toku dat, proveďte dvě poslední filtry na datové sadě. Chcete-li odstranit nesprávné datové body, filtrovat toku dat na záznamy kde i `cost` a `distance` jsou větší než nula.
+Předtím, než budete balíček toku dat, spusťte dvě poslední filtry na datové sadě. Chcete-li odstranit nesprávné datové body, filtrovat toku dat na záznamy kde i `cost` a `distance` hodnoty proměnných jsou větší než nula.
 
 ```python
 tmp_df = tmp_df.filter(dprep.col("distance") > 0)
 tmp_df = tmp_df.filter(dprep.col("cost") > 0)
 ```
 
-V tomto okamžiku máte objekt toku dat plně transformovaná a připravené k použití v modelu strojového učení. Sada SDK zahrnuje funkce serializace objektu, který se používá takto.
+Teď máte objekt toku dat plně transformovaná a připravené k použití v modelu strojového učení. Sada SDK zahrnuje funkce serializace objektu, který se používá, jak je znázorněno v následujícím fragmentu kódu.
 
 ```python
 import os
@@ -1062,19 +1064,21 @@ package.save(file_path)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Stejný soubor odstranit také `dflows.dprep` (ať už spouštíte místně, nebo v poznámkových bloků Azure) v aktuálním adresáři Pokud nechcete pokračovat s druhou částí z tohoto kurzu. Pokud budete pokračovat k druhé části, musíte `dflows.dprep` soubor v aktuálním adresáři.
+V druhé části kurzu pokračovat, je nutné **dflows.dprep** soubor v aktuálním adresáři.
+
+Pokud nemáte v úmyslu pokračovat v druhé části, odstraňte **dflows.dprep** soubor v aktuálním adresáři. Odstraňte tento soubor, ať používáte provádění místně nebo v poznámkových bloků Azure.
 
 ## <a name="next-steps"></a>Další postup
 
 V první části tohoto kurzu můžete:
 
 > [!div class="checklist"]
-> * Nastavení vývojového prostředí
-> * Načtené a ukládat očištěné datových sad
-> * Použít k předvídání svoji logiku podle příklad inteligentní transformace
-> * Sloučené a zabalené datové sady pro trénování machine learning
+> * Nastavení vývojového prostředí.
+> * Načtené a ukládat očištěné datových sad.
+> * Inteligentní transformací použít k předvídání logiky založené na příklad.
+> * Sloučené a zabalené datové sady pro trénování machine learning.
 
-Jste připraveni na základě těchto dat školení v další části této série kurzů:
+Jste připraveni používat trénovací data ve druhé části kurzu:
 
 > [!div class="nextstepaction"]
-> [Kurz #2: Trénování regresní model](tutorial-auto-train-models.md)
+> [Kurz (část 2): Trénování regresní model](tutorial-auto-train-models.md)

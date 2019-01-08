@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 32def80b1118d6ef57db8f1543f770fc51ff568e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 84c1c814838c0d59a522de4afe061d76e7419fd4
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051913"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079183"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje u aplikací na široké škále platforem, jako jsou .NET, Node.js a J2EE, a to hostovaných lokálně i v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -72,7 +72,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 | [**Analýzy**](../azure-monitor/app/analytics.md)<br/>Tento výkonný dotazovací jazyk umožňuje odpovědět na složité dotazy týkající se využití a výkonu vaší aplikace. |![Ukázka analýzy](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](../azure-monitor/app/visual-studio.md)<br/>Viz údaje o výkonu v kódu. Ke kódu je možné přejít z trasování zásobníku.|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
 | [**Ladicí program snímků**](../azure-monitor/app/snapshot-debugger.md)<br/>Laďte vzorky snímků z operací za provozu s hodnotami parametrů.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
-| [**Power BI**](app-insights-export-power-bi.md)<br/>Integrujte metriky využití s ostatními funkcemi business intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
+| [**Power BI**](../azure-monitor/app/export-power-bi.md )<br/>Integrujte metriky využití s ostatními funkcemi business intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>Napište kód pro spouštění dotazů nad daty metrik a nezpracovanými daty.| ![REST API](./media/app-insights-overview/rest-tn.png) |
 | [**Průběžný export**](../azure-monitor/app/export-telemetry.md)<br/>Nezpracovaná data se dají hromadně exportovat do úložiště, jakmile dorazí. |![Export](./media/app-insights-overview/export-tn.png) |
 
@@ -114,7 +114,7 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
   * [Node.js](../azure-monitor/app/nodejs.md)
   * [Jiné platformy](../azure-monitor/app/platforms.md)
 * **[Instrumentace webových stránek](../azure-monitor/app/javascript.md)** pro zobrazení stránek, AJAX a další telemetrii na straně klienta.
-* **[Analýza využití mobilních aplikací](app-insights-mobile-center-quickstart.md)** díky integraci s Visual Studio App Center.
+* **[Analýza využití mobilních aplikací](../azure-monitor/learn/mobile-center-quickstart.md)** díky integraci s Visual Studio App Center.
 * **[Testy dostupnosti](../azure-monitor/app/monitor-web-app-availability.md)** – Příkazem ping z našich serverů pravidelně testujte váš web.
 
 
@@ -148,13 +148,13 @@ Začínáme při vývoji:
 
 <!--Link references-->
 
-[android]: app-insights-mobile-center-quickstart.md
+[android]: ../azure-monitor/learn/mobile-center-quickstart.md
 [azure]: ../insights-perf-analytics.md
 [client]: ../azure-monitor/app/javascript.md
 [desktop]: ../azure-monitor/app/windows-desktop.md
 [detect]: ../azure-monitor/app/detect-triage-diagnose.md
 [greenbrown]: ../azure-monitor/app/asp-net.md
-[ios]: app-insights-mobile-center-quickstart.md
+[ios]: ../azure-monitor/learn/mobile-center-quickstart.md
 [java]: ../azure-monitor/app/java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: ../azure-monitor/app/platforms.md

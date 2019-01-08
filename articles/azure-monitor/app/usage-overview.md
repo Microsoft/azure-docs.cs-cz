@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 45db2d02a434f2d7e7f3187c0d87c0b68ecf5235
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6d8570c78fcf28a236374579a9cb85c7c27f6ec8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051998"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076973"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -30,7 +30,7 @@ Dosažení co nejlepších výsledků je získat nainstalováním služby Applic
 
 1. **Kód serveru:** Nainstalujte příslušný modul pro vaše [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../application-insights/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), nebo [jiných](../../azure-monitor/app/platforms.md) aplikace.
 
-    * *Nechcete, aby instalace serveru kód? Právě [vytvoří prostředek služby Azure Application Insights](../../application-insights/app-insights-create-new-resource.md).*
+    * *Nechcete, aby instalace serveru kód? Právě [vytvoří prostředek služby Azure Application Insights](../../azure-monitor/app/create-new-resource.md ).*
 
 2. **Kódu webové stránky:** Přidejte následující skript do své webové stránce před uzavírací značku ``</head>``. Nahraďte klíč instrumentace má hodnotu vhodnou pro váš prostředek Application Insights:
 
@@ -47,7 +47,7 @@ Dosažení co nejlepších výsledků je získat nainstalováním služby Applic
     ```
     Pokud se chcete dozvědět o pokročilejších konfiguracích monitorování webů, přečtěte si [referenční informace k rozhraní API sady JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md).
 
-3. **Kód mobilní aplikace:** Použití sady SDK centra aplikací shromažďovat události z vaší aplikace a pak posílat kopie těchto událostí do služby Application Insights pro analýzu, [podle těchto pokynů](../../application-insights/app-insights-mobile-center-quickstart.md).
+3. **Kód mobilní aplikace:** Použití sady SDK centra aplikací shromažďovat události z vaší aplikace a pak posílat kopie těchto událostí do služby Application Insights pro analýzu, [podle těchto pokynů](../../azure-monitor/learn/mobile-center-quickstart.md).
 
 4. **Získání telemetrie:** Spuštění projektu v režimu ladění na pár minut a zkuste najít výsledky v okně Přehled v Application Insights.
 

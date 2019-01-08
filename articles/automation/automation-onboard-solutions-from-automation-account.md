@@ -9,18 +9,18 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 6ee89f3d57ded382b4d4519e4054448c144b10c5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7d79e7aca0e8aa506abba174668c60fcd2fd4bc2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632683"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065439"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
 Azure Automation poskytuje řešení ke správě aktualizací zabezpečení operačního systému, sledování změn a inventáře, co je nainstalována na počítačích. Existuje mnoho způsobů, jak připojit počítače, můžete připojit řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), [z procházení více počítačů](automation-onboard-solutions-from-browse.md), ve svém účtu Automation, nebo podle [runbook](automation-onboard-solutions.md). Tento článek popisuje připojení těchto řešení ve svém účtu Automation.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k Azure na adrese https://portal.azure.com.
 
@@ -31,6 +31,24 @@ Přejděte na svůj účet Automation a vyberte buď **inventáře** nebo **Chan
 Zvolte pracovní prostor Log analytics a účet Automation a klikněte na tlačítko **povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Začlenění řešení Inventory](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
+
+Při povolování řešení, pro propojení pracovního prostoru Log Analytics a účet Automation se podporují pouze určité oblasti.
+
+V následující tabulce jsou uvedeny podporované mapování:
+
+|**Oblasti pracovního prostoru log Analytics**|**Oblasti služby Azure Automation**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS|WestCentralUS|
+|WestEurope|WestEurope|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
 
 Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/01/2016
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: bf8eac34f5fa334568e3c808968b12412f785380
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f882cc9414f5230a6d0e74afd602bdaa1b779941
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050336"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073930"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Developer Analytics: jazyky, platformy a integrace
 Tyto položky jsou implementace [Application Insights](../../application-insights/app-insights-overview.md), o kterých jsme se dozvěděli. Zahrnují také některé, které dodávají třetí strany.
@@ -40,7 +40,7 @@ Tyto položky jsou implementace [Application Insights](../../application-insight
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET – pro aplikace, které jsou již nasazeny](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Jádro ASP.NET](../../azure-monitor/app/asp-net-core.md)
-* [Android](../../application-insights/app-insights-mobile-center-quickstart.md) (App Center)
+* [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
 * [Angular](https://github.com/MarkPieszak/angular-application-insights)
 * [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
@@ -48,7 +48,7 @@ Tyto položky jsou implementace [Application Insights](../../application-insight
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 * [Docker](../../azure-monitor/app/docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
-* [iOS](../../application-insights/app-insights-mobile-center-quickstart.md) (App Center)
+* [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
 * [J2EE](../../azure-monitor/app/java-get-started.md)
@@ -57,7 +57,7 @@ Tyto položky jsou implementace [Application Insights](../../application-insight
 * [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 * [Stack SAFE](https://safe-stack.github.io/docs/template-azure-ai/)
 * [Spring](https://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
-* [Univerzální aplikace pro Windows](../../application-insights/app-insights-mobile-center-quickstart.md) (App Center)
+* [Univerzální aplikace pro Windows](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
 * [Aplikace pracovní plochy Windows, služby a pracovní role](../../azure-monitor/app/windows-desktop.md)
 * [Cokoliv jiného](#projects)
@@ -83,7 +83,7 @@ Tyto položky jsou implementace [Application Insights](../../application-insight
 ## <a name="export-and-data-analysis"></a>Export a analýza dat
 * [Alooma](https://www.alooma.com/blog/application-insights-amazon-redshift)
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
-* [Stream Analytics](../../application-insights/app-insights-export-power-bi.md)
+* [Stream Analytics](../../azure-monitor/app/export-power-bi.md )
 
 ## <a name="projects"></a> Sestavte si vlastní sadu SDK
 Pokud ještě není SDK k dispozici pro váš jazyk nebo platformu, možná si chcete jednu vytvořit? Prohlédněte si kód existující sady SDK, které jsou uvedeny v [Application Insights SDK projektu na Githubu](https://github.com/Microsoft/AppInsights-Home).

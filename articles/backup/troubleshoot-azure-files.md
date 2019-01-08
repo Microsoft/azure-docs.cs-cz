@@ -8,12 +8,12 @@ ms.author: raynew
 ms.date: 10/23/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 4806ca77bda1d380d3c5f1d958a335bceddc7f16
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 56daf1bd8d0ab7752b74463759f25441924b52d2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787439"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064113"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Řešení problémů se zálohováním sdílených složek Azure
 K řešení problémů a chyb, ke kterým dochází při používání zálohování sdílených složek Azure, můžete využít informace uvedené v následujících tabulkách.
@@ -36,7 +36,7 @@ Zálohování sdílených složek Azure v účtech úložiště s [zónově redu
 ## <a name="configuring-backup"></a>Konfigurace zálohování
 Následující tabulka se týká konfigurace zálohování:
 
-| Konfigurace zálohování | Alternativní řešení nebo tipy k řešení |
+| Chybové zprávy | Alternativní řešení nebo tipy k řešení |
 | ------------------ | ----------------------------- |
 | Nemůžu najít svůj účet úložiště pro konfiguraci zálohování sdílené složky Azure. | <ul><li>Počkejte na dokončení zjišťování. <li>Zkontrolujte, jestli nějaká sdílená složka z daného účtu úložiště již není chráněná pomocí jiného trezoru služby Recovery Services. **Poznámka:** Všechny sdílené složky v účtu úložiště můžete chránit pouze v jeden trezor služby Recovery Services. <li>Ujistěte se, že se sdílená složka nenachází v žádném z nepodporovaných účtů úložiště.|
 | Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo. | Pokud máte partnerské předplatné (s podporou poskytovatele CSP), chybu ignorujte. Pokud vaše předplatné nepodporuje poskytovatele CSP a vaše účty úložiště nejde zjistit, kontaktujte podporu.|
@@ -64,6 +64,14 @@ Následující tabulka se týká konfigurace zálohování:
 | Operace obnovení selhala, protože cílová sdílená složka je plná. | Navyšte kvótu velikosti cílové sdílené složky, aby byla dostatečná pro data obnovení, a zkuste operaci zopakovat. |
 | Operace obnovení selhala, protože došlo k chybě při provádění operací před obnovením s prostředky Synchronizace souborů přidruženými k cílové sdílené složce. | Zkuste operaci zopakovat později, a pokud se problém nevyřeší, kontaktujte podporu Azure. |
 | Jeden nebo více souborů nebylo možné úspěšně obnovit. Další informace najdete v seznamu souborů, u kterých došlo k chybě, v cestě uvedené výše. | <ul> <li> Důvody selhání obnovení jsou uvedené v souboru (cestu najdete v podrobnostech o úloze). Vyřešte tyto důvody a zopakujte operaci obnovení pouze pro soubory, u kterých došlo k chybě. <li> Běžné důvody selhání obnovení souborů: <br/> – Ujistěte se, že se soubory, u kterých došlo k chybě, aktuálně nepoužívají. <br/> – V nadřazeném adresáři existuje adresář se stejným názvem jako soubor, u kterého došlo k chybě. |
+
+
+## <a name="modify-policy"></a>Upravit zásady
+| Chybové zprávy | Alternativní řešení nebo tipy k řešení |
+| ------------------ | ----------------------------- |
+| U této položky právě probíhá jiná operace konfigurace ochrany. | Počkejte, než předchozí upravit zásady operaci dokončit a zkuste to znovu za chvíli.|
+| Jiná operace se u vybrané položky. | Počkejte prosím, než jiné probíhající operace dokončí, a zkuste to znovu za nějakou dobu |
+
 
 ## <a name="see-also"></a>Viz také
 Další informace o zálohování sdílených složek Azure najdete tady:

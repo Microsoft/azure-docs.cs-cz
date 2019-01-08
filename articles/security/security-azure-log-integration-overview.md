@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 06/07/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: f20da4ab60eeec3e9c353445f6bc20449b9c1cb6
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e9b547b6b582e38a51196815522132dd807c971b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584475"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079030"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Úvod do integrace protokolů Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "53584475"
 
 Integrace protokolů Azure byl k dispozici pro zjednodušení úloh s integrací Azure protokolů pomocí vašeho místního systému informace o zabezpečení a správu událostí (SIEM).
 
- Integrace protokolů Azure doporučujeme používat konektory s dodavatele vašeho systému SIEM. Platforma Azure Monitor poskytuje možnost streamování protokolů do služby event hubs a dodavatelů SIEM můžete napsat konektory k další integraci protokoly z centra událostí do systému SIEM.  Popis toho, jak to funguje, postupujte podle pokynů v [monitorování datového proudu monitorování dat služby event hubs](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Tento článek obsahuje také seznam systémů Siem, pro které přímé Azure konektory jsou už k dispozici.  
+ Integrace protokolů Azure doporučujeme používat konektory dodavatele SIEM. Platforma Azure Monitor poskytuje možnost streamování protokolů do služby event hubs a dodavatelů SIEM můžete napsat konektory k další integraci protokoly z centra událostí do systému SIEM.  Popis toho, jak to funguje, postupujte podle pokynů v [monitorování datového proudu monitorování dat služby event hubs](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Tento článek obsahuje také seznam systémů Siem, pro které přímé Azure konektory jsou už k dispozici.  
 
 > [!IMPORTANT]
 > Pokud primárním zájmem je shromažďování protokolů virtuálního počítače, většina dodavatelů SIEM zahrnout tuto možnost jejich řešení. Použití systému SIEM od dodavatele konektoru je vždy upřednostňovaná alternativa.

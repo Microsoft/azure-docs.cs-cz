@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 2934eadce9e3e0d5e0375dff4eec359a33bd4479
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420094"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065796"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -61,7 +61,7 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
 
   **Minimální požadavky**
 
-  * Rozhraní .NET framework 4.5.2
+  * .NET Framework 4.5.2
   * 64bitová verze Windows 7 nebo Windows Server 2008 R2 (nebo novější)
 
   **Doporučené požadavky**
@@ -276,10 +276,9 @@ Můžete přinutit bránu komunikovat s Azure Service Bus přes protokol HTTPS, 
 
 ## <a name="windows-service-account"></a>Účet služby Windows
 
-Místní brána dat je možné spustit jako služby Windows s názvem "On-premises data gateway service", ale používá "NT SERVICE\PBIEgwService" pro jeho "Přihlásit se jako" přihlašovací údaje účtu. Místní brána dat ve výchozím nastavení, má oprávnění "Přihlásit jako službu" pro počítač, ve kterém bránu instalujete. K vytváření a údržbě brány na webu Azure Portal, účet služby Windows musí mít alespoň **Přispěvatel** oprávnění. 
+Na počítači, ve kterém nainstalujete místní bránu dat může brána běžet jako účet služby Windows s názvem "On-premises data gateway service". Ale brána používá "NT SERVICE\PBIEgwService" název "Přihlásit se jako" účet pověření uživatele. Brány má ve výchozím nastavení oprávnění "Přihlásit jako službu" na počítači, ve kterém bránu instalujete. Účet služby Windows pro danou bránu se obvykle liší od účtu, který používáte pro připojení k místním zdrojům dat a z pracovního nebo školního účtu, který používáte pro přihlášení ke cloudovým službám.
 
-> [!NOTE]
-> Účet služby Windows se liší od účet používaný pro připojení k místním zdrojům dat a z pracovní nebo školní účet použitý k přihlášení do cloudových služeb.
+Abyste mohli vytvářet a spravovat brány na webu Azure Portal, tento účet služby Windows musí mít minimálně **Přispěvatel** oprávnění. Tato oprávnění, najdete v části [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md). 
 
 <a name="restart-gateway"></a>
 
@@ -332,55 +331,55 @@ Tyto kroky popisují, co se stane, když uživatel v cloudu komunikuje s element
 **Q**: Potřebuji bránu pro zdroje dat v cloudu, jako je Azure SQL Database? <br/>
 **A**: Ne, brána se připojí k místním zdrojům dat pouze.
 
-**Q**: Brána musí být nainstalovaný na stejném počítači jako zdroj dat? <br/>
-**A**: Ne, se brána připojuje ke zdroji dat s použitím informací o zadané připojení. Vezměte v úvahu brány jako klientskou aplikaci v tomto smyslu. Brána musí pouze připojení k názvu serveru, který byl poskytnut.
+**Q**: Má brána nainstalovat ve stejném počítači jako zdroj dat? <br/>
+**A**: Ne, brána se připojuje ke zdroji dat s použitím informací o zadané připojení. Vezměte v úvahu brány jako klientskou aplikaci v tomto smyslu. Brána musí pouze připojení k názvu serveru, který byl poskytnut.
 
 <a name="why-azure-work-school-account"></a>
 
-**Q**: Proč musí můžu použít pracovní nebo školní účet pro přihlášení? <br/>
-**A**: pracovní nebo školní účet můžete použít jenom při instalaci na místní bránu dat. Váš účet přihlášení je uložený v tenantovi, který je spravovaný službou Azure Active Directory (Azure AD). Obvykle váš účet Azure AD hlavní název uživatele (UPN) odpovídá e-mailovou adresu.
+**Q**: Proč musí používat pracovní nebo školní účet pro přihlášení? <br/>
+**A**: Pracovní nebo školní účet můžete použít jenom při instalaci na místní bránu dat. Váš účet přihlášení je uložený v tenantovi, který je spravovaný službou Azure Active Directory (Azure AD). Obvykle váš účet Azure AD hlavní název uživatele (UPN) odpovídá e-mailovou adresu.
 
-**Q**: kde jsou uloženy Moje přihlašovací údaje? <br/>
-**A**: přihlašovací údaje, které zadáte pro zdroj dat jsou zašifrované a uložené v cloudové službě brány. Přihlašovací údaje se dešifrují na místní data brány.
+**Q**: Kde jsou uloženy Moje přihlašovací údaje? <br/>
+**A**: Přihlašovací údaje, které zadáte pro zdroj dat jsou zašifrované a uložené v cloudové službě brány. Přihlašovací údaje se dešifrují na místní data brány.
 
-**Q**: existují nějaké požadavky na šířku pásma sítě? <br/>
-**A**: Zkontrolujte, zda dobrou propustnost připojení k síti. Každé prostředí je jiné a množství dat odesílaných může mít vliv na výsledky. Pokud chcete zajistit úroveň propustnosti mezi místní zdroje dat a datacentry Azure, zkuste [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/). Chcete-li odhadnout propustnost, zkuste externího nástroje, jako je Azure Speed Test.
+**Q**: Existují nějaké požadavky na šířku pásma sítě? <br/>
+**A**: Zkontrolujte, jestli připojení k síti dobrou propustnost. Každé prostředí je jiné a množství dat odesílaných může mít vliv na výsledky. Pokud chcete zajistit úroveň propustnosti mezi místní zdroje dat a datacentry Azure, zkuste [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/). Chcete-li odhadnout propustnost, zkuste externího nástroje, jako je Azure Speed Test.
 
 **Q**: Jaká je latence pro spouštění dotazů na zdroj dat z brány? Co je nejvhodnější architektura? <br/>
-**A**: Pokud chcete snížit latenci sítě, nainstalujte bránu co nejblíže zdroji dat co nejvíce. Pokud bránu můžete nainstalovat na skutečný zdroj dat, toto blízkosti minimalizuje uvedenou latenci. Zvažte také vzdálenost k datovým centrům Azure. Například pokud vaše služba používá datové centrum západ USA a SQL Server je hostovaný na Virtuálním počítači Azure, pak můžete virtuální počítače Azure v oblasti USA – západ příliš. Tato blízkosti minimalizuje latenci a vyhnete poplatky za výchozí přenos dat na virtuálním počítači Azure.
+**A**: Pokud chcete snížit latenci sítě, instalace brány jako nejblíž ke zdroji dat co nejvíc. Pokud bránu můžete nainstalovat na skutečný zdroj dat, toto blízkosti minimalizuje uvedenou latenci. Zvažte také vzdálenost k datovým centrům Azure. Například pokud vaše služba používá datové centrum západ USA a SQL Server je hostovaný na Virtuálním počítači Azure, pak můžete virtuální počítače Azure v oblasti USA – západ příliš. Tato blízkosti minimalizuje latenci a vyhnete poplatky za výchozí přenos dat na virtuálním počítači Azure.
 
-**Q**: jak se výsledky odesílají zpět do cloudu? <br/>
-**A**: výsledky se posílají přes Azure Service Bus.
+**Q**: Jak se výsledky odesílají zpět do cloudu? <br/>
+**A**: Výsledky se posílají přes Azure Service Bus.
 
-**Q**: existují nějaká příchozí připojení k bráně z cloudu? <br/>
+**Q**: Existují nějaká příchozí připojení k bráně z cloudu? <br/>
 **A**: Ne, brána používá odchozí připojení ke službě Azure Service Bus.
 
 **Q**: Co když blokuji odchozí připojení? Co je potřeba otevřít? <br/>
 **A**: Podívejte se, portů a hostitelů, které brána používá.
 
-**Q**: co je aktuální služby Windows volat? <br/>
-**A**: na kartě služeb v programu Správce úloh, název služby je "PBIEgwService", nebo služba brány Enterprise Power BI. V konzole služby název služby je "On-premises data gateway service". Služba Windows používá "NT SERVICE\PBIEgwService" jako identifikátor SID služby (SSID).
+**Q**: Co se nazývá skutečná služba Windows? <br/>
+**A**: Na kartě služby ve Správci úloh je název služby "PBIEgwService", nebo služba brány Enterprise Power BI. V konzole služby název služby je "On-premises data gateway service". Služba Windows používá "NT SERVICE\PBIEgwService" jako identifikátor SID služby (SSID).
 
-**Q**: Služba Windows brány můžete spustit pomocí účtu služby Azure Active Directory? <br/>
-**A**: Ne, služba Windows musí mít platný účet Windows.
+**Q**: Může služba Windows brány běžet s účtem Azure Active Directory? <br/>
+**A**: Ne, službu Windows musí mít platný účet Windows.
 
 ### <a name="disaster-recovery"></a>Zotavení po havárii
 
-**Q**: jaké možnosti jsou dostupné pro zotavení po havárii? <br/>
-**A**: obnovovací klíč můžete použít k obnovení nebo přesunutí brány. Při instalaci brány zadejte obnovovací klíč.
+**Q**: Jaké možnosti jsou dostupné pro zotavení po havárii? <br/>
+**A**: Obnovovací klíč slouží k obnovení nebo přesunutí brány. Při instalaci brány zadejte obnovovací klíč.
 
-**Q**: co je výhodou obnovovacího klíče? <br/>
-**A**: obnovovací klíč poskytuje způsob, jak migrovat nebo obnovit nastavení brány po havárii.
+**Q**: Co je výhodou obnovovacího klíče? <br/>
+**A**: Obnovovací klíč poskytuje způsob, jak migrovat nebo obnovit nastavení brány po havárii.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Tento oddíl popisuje některé běžné problémy, ke kterým může při nastavování a pomocí místní brány dat máte.
 
-**Q**: Proč můj instalace brány nezdaří? <br/>
+**Q**: Proč moje instalace brány nezdaří? <br/>
 **A**: Tento problém může stát, když antivirový software v cílovém počítači je zastaralá. Můžete buď aktualizovat antivirový software nebo zakažte antivirový software, ale pouze během instalace brány a potom znovu povolit softwaru.
 
-**Q**: Proč nevidím instalaci brány při vytváření prostředku brány v Azure? <br/>
-**A**: Tento problém může dojít z těchto důvodů:
+**Q**: Proč nevidím instalaci brány, při vytváření prostředku brány v Azure? <br/>
+**A**: Tento problém může nastat z těchto důvodů:
 
 * Instalace brány je už zaregistrované a převzatá podle jiného prostředku brány v Azure. Instalace brány nejsou zobrazeny v seznamu instance vytvořené prostředky brány pro ně.
 Zkontrolujte registraci brány na webu Azure Portal, najdete v tématu všech vašich prostředků Azure s **On-premises Data Gateway** zadejte *všechny* předplatných Azure. 
@@ -389,11 +388,11 @@ Zkontrolujte registraci brány na webu Azure Portal, najdete v tématu všech va
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-**Q**: kde se nacházejí protokoly brány? <br/>
-**A**: najdete v článku [ **protokoly** části](#logs) dále v tomto článku.
+**Q**: Kde se nacházejí protokoly brány? <br/>
+**A**: Zobrazit [ **protokoly** části](#logs) dále v tomto článku.
 
 **Q**: Jak můžu zjistit, jaké dotazy se posílají do zdroje dat v místním? <br/>
-**A**: můžete povolit trasování dotazů, které obsahuje dotazy, které se odesílají. Nezapomeňte změnit dotaz trasování zpět na původní hodnotu po dokončení odstraňování potíží. Trasování dotazů zapnuté vytvoří větší protokoly.
+**A**: Můžete povolit trasování dotazů, které obsahuje dotazy, které se odesílají. Nezapomeňte změnit dotaz trasování zpět na původní hodnotu po dokončení odstraňování potíží. Trasování dotazů zapnuté vytvoří větší protokoly.
 
 Můžete se také podívat na nástroje, které váš zdroj dat používá pro trasování dotazů. Například můžete použít Extended Events nebo SQL Profiler pro SQL Server a služby Analysis Services.
 

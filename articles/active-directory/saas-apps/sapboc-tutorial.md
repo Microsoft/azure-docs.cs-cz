@@ -1,213 +1,216 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se SAP cloudem objekt Business | Dokumentace Microsoftu'
+title: 'Kurz: Integrace se SAP Business objekt cloudem Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP Business objekt cloudu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/14/2017
+ms.topic: tutorial
+ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: ffd4480a13549caba17becff27a43f51fcaa1988
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 18adc7728ffd0b4faf2e63e7c5d3be0da7dd651c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041734"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065108"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Kurz: Integrace Azure Active Directory se SAP Business objekt cloudem
+# <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Kurz: Integrace se SAP Business objekt cloudem Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat SAP Business objekt cloudu s Azure Active Directory (Azure AD).
+SAP Business objekt cloudové integrace s Azure AD poskytuje následující výhody:
 
-Při integraci SAP Business objekt cloudu s Azure AD, získáte následující výhody:
+* Můžete řídit ve službě Azure AD, který má přístup k SAP Business objekt cloudu.
+* Uživatelům se automaticky přihlášeni k SAP Business objekt cloudu (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-- Ve službě Azure AD můžete řídit, kdo má přístup k SAP Business objekt cloudu.
-- Uživatelům SAP Business objekt cloudu můžete automaticky přihlásit pomocí jednotného přihlašování a k účtu služby Azure AD.
-- Můžete spravovat své účty v jednom, centrálním místě na webu Azure portal.
-
-Další informace o softwaru jako integraci služby (SaaS) aplikací s Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Postup nastavení integrace služby Azure AD se SAP Business objekt cloudem, potřebujete následující položky:
+Konfigurace integrace Azure AD se SAP Business objekt cloudem, potřebujete následující položky:
 
-- S předplatným služby Azure AD
-- SAP Business objekt cloudu s více než jednotné přihlašování zapnuto
-
-> [!NOTE]
-> Pokud testovací kroky v tomto kurzu, doporučujeme, není jejich testování v produkčním prostředí.
-
-Doporučení pro testovací kroky v tomto kurzu:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat bezplatnou zkušební verzi měsíčního](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* SAP Business objekt Cloud jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. 
 
-Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-1. SAP Business objekt cloudu přidejte z galerie.
-2. Nastavení a testování Azure AD jednotného přihlašování.
+* SAP Business objekt Cloud podporuje **SP** jednotné přihlašování zahájené pomocí
 
-## <a name="add-sap-business-object-cloud-from-the-gallery"></a>Přidání SAP Business objekt Cloud z Galerie
-Nastavení integrace SAP Business objekt cloudu s Azure AD v galerii, přidejte si na seznam spravovaných aplikací SaaS SAP Business objekt cloudu.
+## <a name="adding-sap-business-object-cloud-from-the-gallery"></a>Přidání SAP Business objekt Cloud z Galerie
 
-Chcete-li přidat SAP Business objekt Cloud z galerie:
+Pokud chcete nakonfigurovat integraci SAP Business objektu cloudu do služby Azure AD, potřebujete přidat SAP Business objekt Cloud z Galerie na váš seznam spravovaných aplikací SaaS.
 
-1. V [webu Azure portal](https://portal.azure.com), v nabídce vlevo vyberte **Azure Active Directory**. 
+**Chcete-li přidat SAP Business objekt Cloud z galerie, postupujte následovně:**
 
-    ![Tlačítko Azure Active Directory][1]
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-2. Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-    ![Stránka aplikace organizace][2]
-    
-3. Chcete-li přidat novou aplikaci, **novou aplikaci**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Tlačítko nové aplikace][3]
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-4. Do vyhledávacího pole zadejte **SAP Business objekt cloudu**.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Do vyhledávacího pole](./media/sapboc-tutorial/tutorial_sapboc_search.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-5. Na panelu výsledků vyberte **SAP Business objekt cloudu**a pak vyberte **přidat**.
+4. Do vyhledávacího pole zadejte **SAP Business objekt cloudu**vyberte **SAP Business objekt cloudu** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![SAP Business objekt cloudu v seznamu výsledků](./media/sapboc-tutorial/tutorial_sapboc_addfromgallery.png)
+     ![SAP Business objekt cloudu v seznamu výsledků](common/search-new-app.png)
 
-##  <a name="set-up-and-test-azure-ad-single-sign-on"></a>Nastavení a testování Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nastavíte a testovací služby Azure AD jednotného přihlašování se SAP cloudem objekt firmy podle testovacího uživatele s názvem *Britta Simon*.
+V této části, konfigurace a testování Azure AD jednotné přihlašování pomocí SAP Business objekt cloudu založená na uživateli testu **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatel v SAP Business objekt cloudu.
 
-Azure AD pro jednotné přihlašování pro práci, potřebuje vědět protějšek uživatele Azure AD v cloudu SAP Business objektu. Vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v cloudu objekt SAP Business musí vytvořit.
+Nakonfigurovat a otestovat Azure AD jednotného přihlašování se SAP cloudem objekt firmy, které potřebujete k dokončení následujících stavebních bloků:
 
-K navázání vztahu odkazu, v cloudu pro SAP Business objektu, pro **uživatelské jméno**, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace SAP Business objekt cloudu jednotného přihlašování](#configure-sap-business-object-cloud-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele SAP Business objekt cloudu](#create-sap-business-object-cloud-test-user)**  – Pokud chcete mít protějšek Britta Simon v SAP Business objekt cloudu, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-Nakonfigurovat a otestovat Azure AD jednotného přihlašování se SAP Business objekt cloudem, proveďte následující úlohy:
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-1. [Nastavení Azure AD jednotného přihlašování](#set-up-azure-ad-single-sign-on). Nastaví uživatele tak, aby tuto funkci používat.
-2. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user). Zkoušky Azure AD jednotné přihlašování s uživatelem Britta Simon.
-3. [Vytvořit testovacího uživatele SAP Business objekt cloudu](#create-an-sap-business-object-cloud-test-user). Vytvoří protějšek Britta Simon v SAP Business objekt cloudu, který je propojený s Azure AD zastoupení uživatele.
-4. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user). Nastaví Britta Simon používání Azure AD jednotného přihlašování.
-5. [Otestovat jednotné přihlašování](#test-single-sign-on). Ověřuje, že konfigurace funguje.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-### <a name="set-up-azure-ad-single-sign-on"></a>Nastavení Azure AD jednotného přihlašování
+Ke konfiguraci Azure AD jednotného přihlašování se SAP Business objekt cloudem, proveďte následující kroky:
 
-V této části posunete se v Azure AD jednoho přihlašování na portálu Azure portal. Poté nastavíte jednotné přihlašování v SAP Business objekt cloudové aplikace.
+1. V [webu Azure portal](https://portal.azure.com/)na **SAP Business objekt cloudu** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-Nastavení Azure AD jednotného přihlašování se SAP cloudem objekt firmy:
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na webu Azure Portal na **SAP Business objekt cloudu** integrace stránce aplikace vyberte **jednotného přihlašování**.
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-    ![Vyberte jednotného přihlašování][4]
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-2. Na **jednotného přihlašování** stránky, pro **režimu**vyberte **přihlašování na základě SAML**.
- 
-    ![Vyberte přihlašování na základě SAML](./media/sapboc-tutorial/tutorial_sapboc_samlbase.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-3. V části **SAP Business objekt Cloudová doména a adresy URL**, proveďte následující kroky:
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    1. V **přihlašovací adresa URL** zadejte adresu URL, která má následujícímu vzoru: 
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+
+    ![SAP Business objekt Cloudová doména a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
     | |
     |-|-|
     | `https://<sub-domain>.sapanalytics.cloud/` |
     | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
-    2. V **identifikátor** zadejte adresu URL, která má následujícímu vzoru:
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
     | |
     |-|-|
     | `<sub-domain>.sapbusinessobjects.cloud` |
     | `<sub-domain>.sapanalytics.cloud` |
 
-    ![SAP Business objekt Cloudová doména a adresy URL adresy URL stránky](./media/sapboc-tutorial/tutorial_sapboc_url.png)
- 
     > [!NOTE] 
-    > Hodnoty v těchto adres URL jsou pouze ukázku. Aktualizujte hodnoty skutečné přihlašovací adresu URL a identifikátoru adresy URL. Získat adresu URL přihlašování, obraťte se [tým podpory SAP Business objekt cloudu klienta](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US). Identifikátoru adresy URL můžete získat stažením metadata SAP Business objekt cloudu z konzoly pro správu. To je vysvětleno dále v tomto kurzu. 
+    > Hodnoty v těchto adres URL jsou pouze ukázku. Aktualizujte hodnoty skutečné přihlašovací adresu URL a identifikátoru adresy URL. Získat adresu URL přihlašování, obraťte se [tým podpory SAP Business objekt cloudu klienta](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/). Identifikátoru adresy URL můžete získat stažením metadata SAP Business objekt cloudu z konzoly pro správu. To je vysvětleno dále v tomto kurzu.
 
-4. V části **podpisový certifikát SAML**vyberte **soubor XML s metadaty**. Uložte soubor metadat ve vašem počítači.
+4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-    ![Vyberte soubor XML s metadaty](./media/sapboc-tutorial/tutorial_sapboc_certificate.png) 
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-5. Vyberte **Uložit**.
+### <a name="configure-sap-business-object-cloud-single-sign-on"></a>Konfigurace SAP Business objekt cloudu jednotného přihlašování
 
-    ![Vyberte Uložit.](./media/sapboc-tutorial/tutorial_general_400.png)
+1. V okně jiné webové prohlížeče Přihlaste se k serveru SAP Business objekt cloudu společnosti jako správce.
 
-6. V okně jiné webové prohlížeče Přihlaste se k serveru SAP Business objekt cloudu společnosti jako správce.
-
-7. Vyberte **nabídky** > **systému** > **správu**.
+2. Vyberte **nabídky** > **systému** > **správu**.
     
     ![Vyberte nabídky, pak systém a Správa](./media/sapboc-tutorial/config1.png)
 
-8. Na **zabezpečení** kartu, vyberte **upravit** ikony (pero).
+3. Na **zabezpečení** kartu, vyberte **upravit** ikony (pero).
     
     ![Na kartě zabezpečení vyberte ikonu pro úpravy](./media/sapboc-tutorial/config2.png)  
 
-9. Pro **metodu ověřování**vyberte **SAML jednotné přihlašování (SSO)**.
+4. Pro **metodu ověřování**vyberte **SAML jednotné přihlašování (SSO)**.
 
     ![Vyberte metodu ověřování SAML jednotného přihlašování](./media/sapboc-tutorial/config3.png)  
 
-10. Chcete-li stáhnout metadata poskytovatele služby (krok 1), vyberte **Stáhnout**. V souboru metadat, vyhledejte a zkopírujte **entityID** hodnotu. Na webu Azure Portal v části **SAP Business objekt Cloudová doména a adresy URL**, vložte tuto hodnotu v **identifikátor** pole.
+5. Chcete-li stáhnout metadata poskytovatele služby (krok 1), vyberte **Stáhnout**. V souboru metadat, vyhledejte a zkopírujte **entityID** hodnotu. Na webu Azure Portal na **základní konfiguraci SAML** dialogového okna, vložte tuto hodnotu v **identifikátor** pole.
 
     ![Zkopírujte a vložte tuto hodnotu entityID](./media/sapboc-tutorial/config4.png)  
 
-11. Nahrát zprostředkovatele metadat služby (krok 2) v souboru, který jste si stáhli z webu Azure portal v části **metadat zprostředkovatele Identity nahrát**vyberte **nahrát**.  
+6. Nahrát zprostředkovatele metadat služby (krok 2) v souboru, který jste si stáhli z webu Azure portal v části **metadat zprostředkovatele Identity nahrát**vyberte **nahrát**.  
 
     ![V části metadata uložit zprostředkovatele Identity výběr nahrání](./media/sapboc-tutorial/config5.png)
 
-12. V **atribut uživatele** vyberte atribut uživatele (krok 3), který chcete použít pro implementaci. Tento atribut uživatele se mapuje na zprostředkovatele identity. Chcete-li zadat vlastní atribut na stránku uživatele, použijte **vlastní mapování SAML** možnost. Nebo můžete vybrat, zda **e-mailu** nebo **ID uživatele** jako atribut uživatele. V našem příkladu jsme vybrali **e-mailu** protože jsme namapované identifikátor deklarace identity uživatele s **userprincipalname** atribut **atributy uživatele** oddíl ve službě Azure portál. Tímto způsobem e-mail jedinečných uživatelů, která se posílají do SAP Business objekt cloudové aplikace v každé úspěšné odpovědi SAML.
+7. V **atribut uživatele** vyberte atribut uživatele (krok 3), který chcete použít pro implementaci. Tento atribut uživatele se mapuje na zprostředkovatele identity. Chcete-li zadat vlastní atribut na stránku uživatele, použijte **vlastní mapování SAML** možnost. Nebo můžete vybrat, zda **e-mailu** nebo **ID uživatele** jako atribut uživatele. V našem příkladu jsme vybrali **e-mailu** protože jsme namapované identifikátor deklarace identity uživatele s **userprincipalname** atribut **atributy uživatele a deklarace identity** tématu na webu Azure portal. Tímto způsobem e-mail jedinečných uživatelů, která se posílají do SAP Business objekt cloudové aplikace v každé úspěšné odpovědi SAML.
 
     ![Vyberte atribut uživatele](./media/sapboc-tutorial/config6.png)
 
-13. Chcete-li ověřit účet pomocí zprostředkovatele identity (krok 4), v **přihlašovacích údajů (E-mail)** zadejte e-mailovou adresu uživatele. Vyberte **ověřte účet**. Systém přidá přihlašovací údaje uživatelského účtu.
+8. Chcete-li ověřit účet pomocí zprostředkovatele identity (krok 4), v **přihlašovacích údajů (E-mail)** zadejte e-mailovou adresu uživatele. Vyberte **ověřte účet**. Systém přidá přihlašovací údaje uživatelského účtu.
 
     ![Zadejte e-mailu a vyberte ověření účtu](./media/sapboc-tutorial/config7.png)
 
-14. Vyberte **Uložit** ikonu.
+9. Vyberte **Uložit** ikonu.
 
     ![Ikonu Uložit](./media/sapboc-tutorial/save.png)
 
-> [!TIP]
-> Stručné verzi těchto pokynů si můžete přečíst [webu Azure portal](https://portal.azure.com), když nastavujete aplikace! Poté, co přidáte aplikaci tak, že vyberete **služby Active Directory** > **podnikové aplikace**, vyberte **Single Sign-On** kartu. Přistupujete k dokumentaci vložený v **konfigurace** části, v dolní části stránky. Další informace najdete v tématu [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
-V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-Chcete-li vytvořit testovacího uživatele ve službě Azure AD:
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-1. Na webu Azure Portal, v nabídce vlevo vyberte **Azure Active Directory**.
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sapboc-tutorial/create_aaduser_01.png) 
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-2. Chcete-li zobrazit seznam uživatelů, vyberte **uživatelů a skupin**a pak vyberte **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sapboc-tutorial/create_aaduser_02.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-3. Chcete-li otevřít **uživatele** dialogu **přidat**.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sapboc-tutorial/create_aaduser_03.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
- 
-    1. V **název** zadejte **BrittaSimon**.
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-    2. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    3. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-    4. Vyberte **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
-        ![Dialogové okno uživatele](./media/sapboc-tutorial/create_aaduser_04.png) 
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-    ![Vytvoření uživatele Azure AD][100]
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tak, že udělíte přístup k SAP Business objektu cloudu.
 
-### <a name="create-an-sap-business-object-cloud-test-user"></a>Vytvořit testovacího uživatele SAP Business objekt cloudu
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **SAP Business objekt cloudu**.
+
+    ![Okno aplikace organizace](common/enterprise-applications.png)
+
+2. V seznamu aplikací vyberte **SAP Business objekt cloudu**.
+
+    ![SAP Business objekt Cloud odkaz v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-sap-business-object-cloud-test-user"></a>Vytvořit testovacího uživatele SAP Business objekt cloudu
 
 Uživatelé Azure AD musí být poskytnuty v cloudu objekt SAP Business předtím, než se mohl přihlásit k SAP Business objekt cloudu. V SAP Business objekt cloudu zřizování je ruční úloha.
 
@@ -225,78 +228,33 @@ Chcete-li vytvořit uživatelský účet:
 
     Potom proveďte následující kroky:
 
-    1. V **ID uživatele** zadejte ID uživatele uživatele, jako je třeba **Britta**.
+    a. V **ID uživatele** zadejte ID uživatele uživatele, jako je třeba **Britta**.
 
-    2. V **KŘESTNÍ jméno** zadejte jméno uživatele, jako je třeba **Britta**.
+    b. V **KŘESTNÍ jméno** zadejte jméno uživatele, jako je třeba **Britta**.
 
-    3. V **příjmení** zadejte příjmení uživatele, jako je třeba **Simon**.
+    c. V **příjmení** zadejte příjmení uživatele, jako je třeba **Simon**.
 
-    4. V **ZOBRAZOVANÝ název** zadejte celé jméno uživatele, jako je třeba **Britta Simon**.
+    d. V **ZOBRAZOVANÝ název** zadejte celé jméno uživatele, jako je třeba **Britta Simon**.
 
-    5. V **e-mailu** zadejte e-mailovou adresu uživatele, jako je třeba **brittasimon@contoso.com**.
+    e. V **e-mailu** zadejte e-mailovou adresu uživatele, jako je třeba **brittasimon@contoso.com**.
 
-    6. Na **vybrat role** stránky, vyberte vhodnou roli pro uživatele a pak vyberte **OK**.
+    f. Na **vybrat role** stránky, vyberte vhodnou roli pro uživatele a pak vyberte **OK**.
 
       ![Výběr role](./media/sapboc-tutorial/user3.png)
 
-    7. Vyberte **Uložit** ikonu.    
+    g. Vyberte **Uložit** ikonu.    
 
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části vám umožní uživateli Britta Simon pomocí služby Azure AD jednotného přihlašování udělení přístupu uživatelskému účtu k SAP Business objekt cloudu.
-
-Přiřadit Cloud SAP Business objekt Britta Simon:
-
-1. Na webu Azure Portal otevřete zobrazení aplikace a pak přejděte do zobrazení adresáře. Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201] 
-
-2. V seznamu aplikací vyberte **SAP Business objekt cloudu**.
-
-    ![Konfigurace jednotného přihlašování](./media/sapboc-tutorial/tutorial_sapboc_app.png) 
-
-3. V nabídce vlevo vyberte **uživatelů a skupin**.
-
-    ![Vyberte uživatele a skupiny][202] 
-
-4. Vyberte **Přidat**. Potom na **přidat přiřazení** stránce **uživatelů a skupin**.
-
-    ![Stránka Přidat přiřazení][203]
-
-5. Na **uživatelů a skupin** v seznamu uživatelů, vyberte na stránce **Britta Simon**.
-
-6. Na **uživatelů a skupin** stránce **vyberte**.
-
-7. Na **přidat přiřazení** stránce **přiřadit**.
-
-![Přiřazení role uživatele][200] 
-    
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Při výběru dlaždice SAP Business objekt cloudem na přístupovém panelu, můžete by měl být automaticky přihlášeni k SAP Business objekt cloudové aplikace.
+Po kliknutí na dlaždici SAP Business objekt cloudem na přístupovém panelu, vám by měl být automaticky přihlášeni do cloudu SAP Business objekt, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+## <a name="additional-resources"></a>Další prostředky
 
-## <a name="additional-resources"></a>Další zdroje informací:
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/sapboc-tutorial/tutorial_general_01.png
-[2]: ./media/sapboc-tutorial/tutorial_general_02.png
-[3]: ./media/sapboc-tutorial/tutorial_general_03.png
-[4]: ./media/sapboc-tutorial/tutorial_general_04.png
-
-[100]: ./media/sapboc-tutorial/tutorial_general_100.png
-
-[200]: ./media/sapboc-tutorial/tutorial_general_200.png
-[201]: ./media/sapboc-tutorial/tutorial_general_201.png
-[202]: ./media/sapboc-tutorial/tutorial_general_202.png
-[203]: ./media/sapboc-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

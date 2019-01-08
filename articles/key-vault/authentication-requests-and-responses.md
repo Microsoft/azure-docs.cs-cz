@@ -10,16 +10,15 @@ ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: c7cd9dfa019ca0d8560833b10a3e8a1a37a1e1ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4d897512e5c53222cb77906200e1a33e2eeec78e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296546"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074049"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
 
@@ -65,13 +64,13 @@ Toto téma obsahuje podrobné informace o službě Azure Key Vault. Obecné info
 ## <a name="error-responses"></a>Chybové odpovědi  
  Zpracování chyb použije stavové kódy HTTP. Výsledky jsou:  
 
--   2xx – Úspěch: použít pro běžné operace. Text odpovědi bude obsahovat očekávaný výsledek  
+-   2xx – Úspěch: Použít pro běžné operace. Text odpovědi bude obsahovat očekávaný výsledek  
 
--   3xx – Přesměrování: The 304 "nedojde ke změně" mohou být vráceny ke splnění podmíněné operace GET. Další kódy 3xx lze v budoucnu k označení změny DNS a cestu.  
+-   3xx – Přesměrování: 304 "Nedojde ke změně" mohou být vráceny ke splnění podmíněné operace GET. Další kódy 3xx lze v budoucnu k označení změny DNS a cestu.  
 
--   4xx – chyba klienta: používá se pro chybných požadavků, chybí klíče, chyby syntaxe, neplatný parametry, chyby ověřování, atd. Text odpovědi bude obsahovat vysvětlení podrobné informace o chybě.  
+-   4xx – chyba klienta: Používá se pro chybných požadavků, chybí klíče, chyby syntaxe, neplatný parametry, chyby ověřování, atd. Text odpovědi bude obsahovat vysvětlení podrobné informace o chybě.  
 
--   5xx – Chyba serveru: používá se pro vnitřní chyby serveru. Text odpovědi bude obsahovat informace o souhrnné chybě.  
+-   5xx – Chyba serveru: Používá se pro vnitřní chyby serveru. Text odpovědi bude obsahovat informace o souhrnné chybě.  
 
  Systém je navržen pro práci za proxy nebo brány firewall. Klient proto může zobrazit v dalších chybových kódech.  
 
@@ -115,9 +114,9 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  Parametry v hlavičce WWW-Authenticate jsou:  
 
--   autorizace: adresa služby autorizace OAuth2, která slouží k získání přístupového tokenu pro požadavek.  
+-   Autorizace: Adresa autorizační službu OAuth2, který slouží k získání přístupového tokenu pro požadavek.  
 
--   prostředek: name prostředek má být použit v žádosti o autorizaci.  
+-   prostředek: Název prostředku pro použití v žádost o autorizaci.  
 
 ## <a name="see-also"></a>Viz také  
  [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)

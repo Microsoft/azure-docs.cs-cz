@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 06c6d2935358650eb9f7ef1cda55d5292e203daf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019924"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076242"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Vytvoření uživatelem definovaných funkcí v Azure digitální dvojče
 
@@ -73,15 +73,17 @@ S text JSON:
 
 ## <a name="create-a-user-defined-function"></a>Vytvoření uživatelem definované funkce
 
-Po vytvoření procesy pro hledání shody nahrajte funkce fragment kódu s požadavkem HTTP POST s více částmi. následující ověření:
+Vytvoření uživatelem definované funkce zahrnuje provádí s více částmi. požadavek HTTP do rozhraní API Správce Dvojčat digitální Azure.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
+
+Po vytvoření procesy pro hledání shody nahrajte fragment funkce s následující ověřeného vícedílné zprávy standardu odeslání požadavku HTTP POST do:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-Pomocí následujícího textu JSON:
+Použijte následující text:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY

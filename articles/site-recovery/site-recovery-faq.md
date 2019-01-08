@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 0c70d3b5166b0e3719aa621091920d2c91696bf1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: bd5c3a6fc4a2d6f6a8b4f07154c02d7d29211ec9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973532"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078588"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: Časté otázky (FAQ)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -91,7 +91,7 @@ Pro virtuální počítače a fyzické servery se podporuje replikaci mezi míst
 Azure Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Replikace není přes síť site-to-site VPN. Site-to-site VPN, můžete vytvořit pomocí služby Azure virtual network. To není v konfliktu se replikace Site Recovery.
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Můžete použít ExpressRoute pro replikaci virtuálních počítačů do Azure?
-Ano, [ExpressRoute je možné](concepts-expressroute-with-site-recovery.md) pro replikaci místních virtuálních počítačů do Azure. Azure Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Budete muset nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) pro účely replikace Site Recovery ExpressRoute. Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Ujistěte se, že [síťové požadavky](vmware-azure-configuration-server-requirements.md#network-requirements) splnění pro replikaci. Po virtuální počítače mají převzalo služby Azure virtual network k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering) instalační program s Azure virtual network. Replikace není podporována přes privátní partnerský vztah.
+Ano, [ExpressRoute je možné](concepts-expressroute-with-site-recovery.md) pro replikaci místních virtuálních počítačů do Azure. Azure Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Budete muset nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) pro účely replikace Site Recovery ExpressRoute. Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Po virtuální počítače mají převzalo služby Azure virtual network k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering) instalační program s Azure virtual network. Replikace není podporována přes privátní partnerský vztah. V případě, že chráníte počítače VMware nebo fyzických počítačů, ujistěte se, že [síťové požadavky](vmware-azure-configuration-server-requirements.md#network-requirements) splnění pro replikaci. 
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Vztahují se na replikaci virtuálních počítačů do Azure nějaké požadavky?
 [Virtuální počítače VMware](vmware-physical-azure-support-matrix.md#replicated-machines) a [virtuálních počítačů Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) chcete replikovat do Azure by měly splňovat požadavky na Azure.

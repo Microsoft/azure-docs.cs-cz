@@ -3,7 +3,7 @@ title: Vytvoření image virtuálního počítače pro Azure Marketplace | Dokum
 description: Podrobné pokyny o tom, jak vytvořit image virtuálního počítače pro Azure Marketplace pro ostatní uživatele k nákupu.
 services: Azure Marketplace
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 0dc33c669a73dd92926eef6a9c4a476160ce60a4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6737e16efa93370b5b5d2b46026fce3bbc22d38f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686360"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075154"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Příručka k vytvoření image virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede přípravou virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základem pro vaši skladovou jednotku. Proces se liší v závislosti na tom, jestli poskytujete skladovou jednotku založených na Linuxu nebo Windows. Tento článek popisuje oba scénáře. Tento proces se dá provádět zároveň s [vytváření účtů a registraci][link-acct-creation].
@@ -30,14 +31,14 @@ V této části zjistíte, jak definovat nabídky a jejich přidružené skladov
 Nabídka je „nadřazený objekt“ všech skladových jednotek příslušné nabídky. Nabídek může být víc. Je jenom na vás, jak se rozhodnete svoje nabídky strukturovat. Když se nabídka převede do přípravy, převede se se všemi příslušnými skladovými jednotkami. Pečlivě zvažte svoje identifikátory skladových jednotek, protože budou vidět v adrese URL:
 
 * Azure.com: http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
-* Portál Azure preview: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
+* Azure portal: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
 Skladová jednotka je obchodní název pro image virtuálního počítače. Image virtuálního počítače obsahuje jeden operační systém disku a nula nebo více datových disků. Jde prakticky o kompletní profil úložiště pro virtuální počítač. Jeden virtuální pevný disk je potřeba na disk. I prázdné datové disky vyžadují vytvoření virtuálního pevného disku.
 
 Bez ohledu na použitý operační systém přidávejte jenom nejmenší počet datových disků, které skladová jednotka potřebuje. Zákazníci nelze odebrat disky, které jsou součástí image v době nasazování však můžete vždy přidat disky během nebo po nasazení Pokud je budou potřebovat.
 
 > [!IMPORTANT]
-> **Neměňte počet disků v nové verzi image.** Pokud je nutné překonfigurovat datové disky na obrázku, definujte novou skladovou Položku. Publikování nové verze image s počty jiný disk bude mít riziko rozbíjející nové nasazení na základě nové verze image v případech, automatické škálování, automatické nasazení řešení pomocí šablony ARM a další scénáře.
+> *Neměňte počet disků v nové verzi image.* Pokud je nutné překonfigurovat datové disky na obrázku, definujte novou skladovou Položku. Publikování nové verze image s počty jiný disk bude mít riziko rozbíjející nové nasazení na základě nové verze image v případech, automatické škálování, automatické nasazení řešení pomocí šablony ARM a další scénáře.
 >
 >
 
@@ -59,7 +60,7 @@ Jakmile budete mít přidanou nabídku, budete muset definovat a identifikovat s
 3. Pokud používáte skladové jednotky založené na Windows, přejděte na navrhované odkazy, kde získáte schválené verze Windows Serveru.
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2. Vytvoření virtuálního pevného disku kompatibilního s Azure (založený na systému Linux)
-Tato část se zaměřuje na osvědčené postupy pro vytváření imagí virtuálních počítačů s linuxem pro Azure Marketplace. Podrobný názorný postup najdete v následující dokumentaci: [vytvoření vlastní image virtuálního počítače s Linuxem](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tato část se zaměřuje na osvědčené postupy pro vytváření imagí virtuálních počítačů s linuxem pro Azure Marketplace. Podrobný návod najdete v následující dokumentaci: [Vytvoření vlastní image virtuálního počítače s Linuxem](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>3. Vytvoření virtuálního pevného disku kompatibilního s Azure (založený na Windows)
 Tato část se zaměřuje na kroky k vytvoření skladová jednotka založená na Windows serveru pro Azure Marketplace.
@@ -81,13 +82,13 @@ Tyto odkazy se dají najít i na Portálu publikování na stránce skladové je
 >
 
 ### <a name="32-create-your-windows-based-vm"></a>3.2 Vytvoření virtuálního počítače založené na Windows
-Na portálu Microsoft Azure můžete vytvořit svůj virtuální počítač založený na schválené základní imagi v několika jednoduchých krocích. Následuje přehled procesu:
+Na portálu Microsoft Azure můžete vytvořit svůj virtuální počítač založený na schválené základní imagi v několika jednoduchých krocích. Následující seznam obsahuje přehled procesu:
 
 1. Na stránce základní image zvolte **vytvořit virtuální počítač** přejdete do nového [portálu Microsoft Azure][link-azure-portal].
 
     ![Kreslení][img-acom-1]
 2. Přihlaste se k portálu pomocí účtu Microsoft a heslem pro předplatné Azure, které chcete použít.
-3. Postupujte podle výzev a vytvořte virtuální počítač pomocí základní image, kterou jste vybrali. Budete muset poskytnout hostiteli name (název počítače), uživatelské jméno (registrovaný jako správce) a heslo pro virtuální počítač.
+3. Postupujte podle výzev a vytvořte virtuální počítač pomocí základní image, kterou jste vybrali. Zadejte hostitele name (název počítače), uživatelské jméno (registrovaný jako správce) a heslo pro virtuální počítač.
 
     ![Kreslení][img-portal-vm-create]
 4. Vyberte velikost nasazovaného virtuálního počítače:
@@ -110,7 +111,7 @@ Na portálu Microsoft Azure můžete vytvořit svůj virtuální počítač zalo
 
     a.    Pokud se chystáte vyvíjet virtuální pevný disk v místním, umístění není důležitá, protože odešlete image do Azure později.
 
-    b.    Pokud se chystáte vyvíjet image v Azure, zvažte možnost od začátku používat jednu z oblastí Microsoft Azure ve Spojených státech. Urychlí proces kopírování virtuálního pevného disku, že pokud jste svoji image odešlete k certifikaci, Microsoft provede za vás.
+    b.    Pokud se chystáte vyvíjet image v Azure, zvažte možnost od začátku používat jednu z oblastí Microsoft Azure ve Spojených státech. Tento výběr urychlí proces kopírování virtuálního pevného disku, že pokud jste svoji image odešlete k certifikaci, Microsoft provede za vás.
 
     ![Kreslení][img-portal-vm-location]
 7. Klikněte na možnost **Vytvořit**. Virtuální počítač se začne nasazovat. Během několika minut budete mít úspěšné nasazení a můžete začít vytvářet image pro svoje skladové jednotky.
@@ -152,7 +153,7 @@ Další informace o protokolu RDP najdete na webu MSDN v článku [připojit k v
 
 **Konfigurace virtuálního počítače a vytvoření skladové jednotky**
 
-Po operační systém, který se stáhne virtuální pevný disk použijte Hyper-v a konfigurace virtuálního počítače můžete začít vytvářet skladovou jednotku. Podrobný postup najdete v následujícím odkazu TechNetu: [Hyper-v instalovat a konfigurovat virtuální počítač](https://technet.microsoft.com/library/hh846766.aspx).
+Po operační systém, který se stáhne virtuální pevný disk použijte Hyper-v a konfigurace virtuálního počítače můžete začít vytvářet skladovou jednotku. Podrobný postup najdete v následujícím odkazu TechNetu: [Nainstalujte Hyper-v a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
 ### <a name="34-choose-the-correct-vhd-size"></a>3.4 výběr správné velikosti virtuálního pevného disku
 Operačního systému Windows virtuální pevný disk ve vaší imagi virtuálního počítače měl vytvořit jako 128 GB pevného formátu virtuálního pevného disku.  
@@ -168,7 +169,7 @@ Základní image obsahují opravy, které byly v době publikace imagí nejnově
 Pokud je potřeba další konfiguraci, zvažte možnost použít plánovanou úlohu, která se spustí při spuštění počítače a provede všechny finální změny k virtuálnímu počítači po nasazení:
 
 * Osvědčilo se takové nastavení, kdy se úloha po úspěšném spuštění odstraní.
-* Žádná konfigurace by se neměla spoléhat na jednotky jiné než jednotky C a D, protože toto jsou jediné dvě jednotky, které je vždycky zaručená. Jednotka C je disk s operačním systémem a jednotky D je dočasný místní disk.
+* Žádná konfigurace by se neměla spoléhat na jednotky jiné než jednotky C a D, protože tyto disky jsou pouze dva, které je vždycky zaručená. Jednotka C je disk s operačním systémem a jednotky D je dočasný místní disk.
 
 ### <a name="37-generalize-the-image"></a>3.7 Zobecněte image
 Všechny Image v Tržišti Azure Marketplace musí být obecně opakovaně použitelné. Jinými slovy musí být zobecněn operační systém virtuálního pevného disku:
@@ -178,10 +179,10 @@ Všechny Image v Tržišti Azure Marketplace musí být obecně opakovaně použ
 
         sysprep.exe /generalize /oobe /shutdown
 
-  Pokyny, jak operační systém pro nástroj sysprep najdete v kroku v následujícím článku MSDN: [vytvoření a nahrání VHD s Windows serverem do Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+  Pokyny týkající se nástroje Sysprep operační systém, najdete v kroku v následujícím článku MSDN: [Vytvoření a nahrání virtuálního pevného disku Windows serverem do Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4. Nasazení virtuálního počítače z virtuálních pevných disků
-Po odeslání virtuální pevné disky (zobecněný virtuální pevný disk operačního systému a nula nebo více datových pevných disků) do účtu služby Azure storage, můžete je zaregistrovat jako uživatelskou image virtuálního počítače. Pak můžete otestovat této bitové kopie. Všimněte si, že vzhledem k tomu, že je zobecněný virtuální pevný disk operačního systému, nemůžete nasadit přímo virtuální počítač zadáním adresy URL virtuálního pevného disku.
+Po odeslání virtuální pevné disky (zobecněný virtuální pevný disk operačního systému a nula nebo více datových pevných disků) do účtu služby Azure storage, můžete je zaregistrovat jako uživatelskou image virtuálního počítače. Pak můžete otestovat této bitové kopie. Protože je zobecněný virtuální pevný disk operačního systému, nelze přímo nasadit virtuální počítač zadáním adresy URL virtuálního pevného disku.
 
 Další informace o imagích virtuálních počítačů, najdete v těchto blogových příspěvcích:
 
@@ -195,14 +196,14 @@ Další informace o imagích virtuálních počítačů, najdete v těchto blogo
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 Vytvoření uživatelské image virtuálního počítače
 #### <a name="capture-vm"></a>Zachycení virtuálního počítače
-Přečtěte si prosím odkazy níže uvedené pokyny k zachycení virtuálního počítače pomocí rozhraní API, Powershellu nebo Azure CLI.
+Přečtěte si na odkazy níže uvedené pokyny k zachycení virtuálního počítače pomocí rozhraní API, Powershellu nebo Azure CLI.
 
 * [Rozhraní API](https://msdn.microsoft.com/library/mt163560.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Azure CLI](../virtual-machines/linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="generalize-image"></a>Zobecněte Image
-Přečtěte si prosím odkazy níže uvedené pokyny k zachycení virtuálního počítače pomocí rozhraní API, Powershellu nebo Azure CLI.
+Přečtěte si na odkazy níže uvedené pokyny k zachycení virtuálního počítače pomocí rozhraní API, Powershellu nebo Azure CLI.
 
 * [Rozhraní API](https://msdn.microsoft.com/library/mt269439.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -225,7 +226,7 @@ K nasazení virtuálního počítače z uživatelské image virtuálního počí
 
 **Nasazení virtuálního počítače z prostředí PowerShell**
 
-Pokud chcete nasadit velký virtuální počítač z image generalizovaného virtuálního počítače právě vytvořili, můžete použít následující rutiny.
+Pokud chcete nasadit velký virtuální počítač z nově vytvořené image generalizovaného virtuálního počítače, můžete použít následující rutiny.
 
     $img = Get-AzureVMImage -ImageName "myVMImage"
     $user = "user123"
@@ -276,7 +277,7 @@ Po dokončení testu dostanete výsledky (Prošel/Neprošel/Upozornění) pro ka
 
 ![Testovací případy pro Image virtuálního počítače Windows][img-cert-vm-test-win]
 
-Pokud selže některý z testů, nebude certifikaci vaší image. Pokud k tomu dojde, zkontrolujte požadavky a proveďte potřebné změny.
+Pokud selže některý z testů, nebude certifikaci vaší image. Pokud k tomuto problému dochází, zkontrolujte požadavky a proveďte potřebné změny.
 
 Po dokončení automatizovaný test budete vyzváni, poskytuje jim další vstupy ve vaší imagi virtuálního počítače prostřednictvím dotazníku obrazovky.  Dokončení otázek a pak vyberte **Další**.
 
@@ -289,18 +290,18 @@ Po dokončení dotazník můžete zadat další informace, jako jsou informace o
 ![Certifikace uložit výsledky testů][img-cert-vm-results]
 
 ### <a name="52-get-the-shared-access-signature-uri-for-your-vm-images"></a>5.2 získání sdíleného přístupového podpisu URI vašich imagí virtuálních počítačů
-Během procesu publikování zadáte identifikátory URI (URI), které vedou na jednotlivé virtuální pevné disky, které jste vytvořili pro vaši skladovou jednotku. Microsoft během certifikačního procesu potřebuje přístup k těmto virtuálním pevným diskům. Proto je potřeba vytvořit identifikátor URI sdíleného přístupového podpisu pro každý virtuální pevný disk. Toto je identifikátor URI, který by měly být zadány ve **Imagí** karta na portálu publikování.
+Během procesu publikování zadáte identifikátory URI (URI), které vedou na jednotlivé virtuální pevné disky, které jste vytvořili pro vaši skladovou jednotku. Microsoft během certifikačního procesu potřebuje přístup k těmto virtuálním pevným diskům. Proto je potřeba vytvořit identifikátor URI sdíleného přístupového podpisu pro každý virtuální pevný disk. Tento identifikátor URI by měly být zadány ve **Imagí** karta na portálu publikování.
 
 Sdílený přístupový podpis, který vytvořit identifikátor URI by měl splňovat následující požadavky:
 
-Poznámka: následující pokyny platí jenom pro nespravované disky, které jsou podporovány pouze typ.
+Následující pokyny platí jenom pro nespravované disky, které jsou podporovány pouze typ.
 
 * Při generování identifikátorů URI pro vaše virtuální pevné disky sdíleného přístupového podpisu, výpis a čtení oprávnění jsou dostačující. Neposkytujte přístup pro psaní nebo odstranění.
 * Doba trvání přístupu by měl být minimálně tří (3) týdnů od vytvoření sdíleného přístupového podpisu URI.
 * Pokud chcete ochranu pro čas UTC, vyberte den před aktuálním datem. Například pokud je aktuální datum 6. října 2014, vyberte 10 5. 2014.
 
 Adresa URL SAS, mohou být generovány v několika způsoby, jak sdílet svůj virtuální pevný disk pro Azure Marketplace.
-Následují 3 doporučených nástrojů:
+Toto jsou tři doporučených nástrojů:
 
 1.  Azure Storage Explorer
 2.  Průzkumník úložišť Microsoft
@@ -323,7 +324,7 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Azur
 
     ![Kreslení](media/marketplace-publishing-vm-image-creation/img5.2_03.png)
 
-5. Zadejte název účtu úložiště, klíč účtu úložiště a doména koncových bodů úložiště. Toto je účet úložiště ve vašem předplatném Azure, kde mají uchovávat vašeho virtuálního pevného disku na portálu Azure portal.
+5. Zadejte název účtu úložiště, klíč účtu úložiště a doména koncových bodů úložiště. Tento účet úložiště se ve vašem předplatném Azure, kde mají uchovávat vašeho virtuálního pevného disku na portálu Azure portal.
 
     ![Kreslení](media/marketplace-publishing-vm-image-creation/img5.2_04.png)
 
@@ -347,11 +348,11 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Azur
 
     ![Kreslení](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
-    a. **Povolen přístup z:** ochrany pro čas UTC, vyberte den před aktuálním datem. Například pokud je aktuální datum 6. října 2014, vyberte 10 5. 2014.
+    a. **Z povolen přístup:** Pokud chcete ochranu pro čas UTC, vyberte den před aktuálním datem. Například pokud je aktuální datum 6. října 2014, vyberte 10 5. 2014.
 
-    b. **Povolen přístup k:** vyberte datum, které je nejméně 3 týdny po **povolen přístup z** datum.
+    b. **Přístup k oprávnění:** Vyberte datum, které je nejméně tři týdny po **povolen přístup z** datum.
 
-    c. **Povolené akce:** vyberte **seznamu** a **čtení** oprávnění.
+    c. **Povolené akce:** Vyberte **seznamu** a **čtení** oprávnění.
 
     d. Pokud jste vybrali soubor .vhd správně, je váš soubor se zobrazí v **název objektu Blob pro přístup k** s příponou VHD.
 
@@ -360,12 +361,12 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Azur
     f. V **generované sdíleného přístupového podpisu identifikátoru URI tohoto kontejneru**, zkontrolujte následující zvýrazněný výše:
 
        - Ujistěte se, že název souboru bitové kopie a **"VHD"** jsou v identifikátoru URI.
-       - Na konci podpisu, ujistěte se, že **"= rl"** se zobrazí. Tento příklad ukazuje, že byl úspěšně poskytuje přístup pro čtení a seznam.
-       - Ve středu podpis, ujistěte se, že **"sr = c"** se zobrazí. Tento příklad ukazuje, že máte úrovně přístupu ke kontejneru
+       - Na konci podpisu, ujistěte se, že **"= rl"** se zobrazí. Tato hodnota ukazuje, že byl úspěšně poskytuje přístup pro čtení a seznam.
+       - Ve středu podpis, ujistěte se, že **"sr = c"** se zobrazí. Tato hodnota ukazuje, že máte úrovně přístupu ke kontejneru
 
 11. Aby bylo zajištěno, že generované sdílený přístup podpisu URI funguje, klikněte na tlačítko **otestovat v prohlížeči**. By se měl spustit proces stahování.
 
-12. Zkopírujte URI sdíleného přístupového podpisu. Je to identifikátor, který se má vložit do Portálu publikování.
+12. Zkopírujte URI sdíleného přístupového podpisu. Vložte tento identifikátor URI do publikování portálu.
 
 13. Opakujte kroky 6 až 10 pro každý virtuální pevný disk ve skladové Položce.
 
@@ -381,7 +382,7 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Micr
 
 3.  Klikněte na tlačítko **přidat účet**.
 
-4.  Konfigurace Microsoft Azure Storage Exploreru k předplatnému s přihlášení ke svému účtu
+4.  Konfigurace Microsoft Azure Storage Exploreru k předplatnému s přihlásit ke svému účtu
 
     ![Kreslení](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 
@@ -395,11 +396,11 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Micr
 
     ![Kreslení](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.  **Čas spuštění:** ochrany pro čas UTC, vyberte den před aktuálním datem. Například pokud je aktuální datum 6. října 2014, vyberte 10 5. 2014.
+    a.  **Čas spuštění:** Pokud chcete ochranu pro čas UTC, vyberte den před aktuálním datem. Například pokud je aktuální datum 6. října 2014, vyberte 10 5. 2014.
 
-    b.  **Čas vypršení platnosti:** vyberte datum, které je nejméně 3 týdny po **čas zahájení** datum.
+    b.  **Čas vypršení platnosti:** Vyberte datum, které je nejméně tři týdny po **čas zahájení** datum.
 
-    c.  **Oprávnění:** vyberte **seznamu** a **čtení** oprávnění
+    c.  **Oprávnění:** Vyberte **seznamu** a **čtení** oprávnění
 
 8.  Zkopírujte URI sdíleného přístupového podpisu kontejneru
 
@@ -418,12 +419,12 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Micr
     TestRGVM201631920152.vhd je název virtuálního pevného disku, pak bude mít adresu URL virtuální pevný disk SAS `https://testrg009.blob.core.windows.net/vhds/TestRGVM201631920152.vhd?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
     - Ujistěte se, že název souboru bitové kopie a **"VHD"** jsou v identifikátoru URI.
-    - Ve středu podpis, ujistěte se, že **"sp = rl"** se zobrazí. Tento příklad ukazuje, že byl úspěšně poskytuje přístup pro čtení a seznam.
-    - Ve středu podpis, ujistěte se, že **"sr = c"** se zobrazí. Tento příklad ukazuje, že máte úrovně přístupu ke kontejneru
+    - Ve středu podpis, ujistěte se, že **"sp = rl"** se zobrazí. Tato hodnota ukazuje, že byl úspěšně poskytuje přístup pro čtení a seznam.
+    - Ve středu podpis, ujistěte se, že **"sr = c"** se zobrazí. Tato hodnota ukazuje, že máte úrovně přístupu ke kontejneru
 
 9.  Ujistěte se, že generované sdílený přístup podpisu URI funguje, že ji otestujte v prohlížeči. By se měl spustit proces stahování
 
-10. Zkopírujte URI sdíleného přístupového podpisu. Je to identifikátor, který se má vložit do Portálu publikování.
+10. Zkopírujte URI sdíleného přístupového podpisu. Vložte tento identifikátor URI do publikování portálu.
 
 11. Tyto kroky zopakujte pro každý virtuální pevný disk ve skladové jednotce.
 
@@ -435,7 +436,7 @@ Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku
 
 1.  Stáhněte si Microsoft Azure CLI z [tady](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Můžete také vyhledat odkazy na různé **[Windows](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)** a  **[MAC OS](https://docs.microsoft.com/cli/azure/install-azure-cli-macos?view=azure-cli-latest)**.
 
-2.  Po stažení, nainstalujte
+2.  Po stažení, tento nástroj nainstalujte.
 
 3.  Vytvoření Bash (nebo jiného spustitelného souboru ekvivalentní skript) souboru následujícím kódem a uloží do místního prostředí
 
@@ -449,18 +450,18 @@ Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku
 
     a. **`<Storage Account Name>`**: Zadejte název svého účtu úložiště
 
-    b. **`<VHD Blob Name>`**: Zadejte název objektu virtuálního pevného disku.
+    b. **`<VHD Blob Name>`**: Zadejte název objektu blob služby virtuálního pevného disku.
 
-    Vyberte datum, které je nejméně 3 týdny po počátečním datu (výchozí nastavení generování tokenu sas). Příkladem hodnoty je: **2018-10-11T23:56Z**.
+    Vyberte datum, které je nejméně tři týdny po počátečním datu (výchozí nastavení generování tokenu sas). Příkladem hodnoty je: `2018-10-11T23:56Z`.
 
-    Tady je příklad kódu po aktualizaci správné parametry exportu AZURE_STORAGE_ACCOUNT = vypršení platnosti vhdstorage1ba78dfb6bc2d8 = $(datum -d "3 týdny" "+ %Y-min %-dT % H: % MZ) CONTAINER_SAS = $(az storage container generovat sas - n virtuální pevné disky – oprávnění rl – $ vypršení platnosti Vypršení platnosti - otsv) BLOB_URL = $(az storage blob url - c virtuální pevné disky - n osdisk_1ba78dfb6b.vhd - otsv) echo $BLOB_URL\?$CONTAINER_SAS
+    Tady je příklad kódu po aktualizaci správné parametry exportu AZURE_STORAGE_ACCOUNT = vypršení platnosti vhdstorage1ba78dfb6bc2d8 = $(datum -d "tři týdny" "+ %Y-min %-dT % H: % MZ) CONTAINER_SAS = $(az storage kontejneru generovat sas - n virtuální pevné disky – oprávnění rl-- vypršení platnosti $EXPIRY - otsv) BLOB_URL = $(az storage blob url - c virtuální pevné disky - n osdisk_1ba78dfb6b.vhd - otsv) echo $BLOB_URL\?$CONTAINER_SAS
 
 4.  Spusťte skript a poskytne vám adresa URL SAS pro úrovně přístupu ke kontejneru.
 
 5.  Zkontrolujte vaše adresa URL SAS.
 
     - Ujistěte se, že váš název souboru obrázku a "VHD" jsou v identifikátoru URI.
-    -   Ve středu podpis, ujistěte se, že se zobrazí "sp = rl". Tento příklad ukazuje, že byl úspěšně poskytuje přístup pro čtení a seznam.
+    -   Ve středu podpis, ujistěte se, že se zobrazí "sp = rl". Tato hodnota ukazuje, že byl úspěšně poskytuje přístup pro čtení a seznam.
     -   Ve středu podpis, ujistěte se, že "sr = c" se zobrazí. Tento příklad ukazuje, že máte úrovně přístupu ke kontejneru
 
     Příklad:
@@ -469,7 +470,7 @@ Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku
 
 8.  Ujistěte se, že generované sdílený přístup podpisu URI funguje, že ji otestujte v prohlížeči. By se měl spustit proces stahování
 
-9.  Zkopírujte URI sdíleného přístupového podpisu. Je to identifikátor, který se má vložit do Portálu publikování.
+9.  Zkopírujte URI sdíleného přístupového podpisu. Vložte tento identifikátor URI do publikování portálu.
 
 10. Tyto kroky zopakujte pro každý virtuální pevný disk ve skladové jednotce.
 
@@ -483,7 +484,7 @@ Jakmile vytvoříte svoji nabídku a skladovou Položku, měli byste zadat podro
 4. Vyplňte vlastnosti z kategorie **SKU** oddílu.
 5. V části **operační systém řady**, klikněte na typ operačního systému, které jsou spojené s operačním systémem virtuálního pevného disku.
 6. V **operačního systému** pole, popište operační systém. Zvažte formát jako je řada operačních systémů, typ, verze a aktualizace. Příkladem je "Windows Server Datacenter 2014 R2."
-7. Vyberte až šest doporučené velikosti virtuálního počítače. Jedná se o doporučení, která se zobrazí zákazníka v okně cenová úroveň na webu Azure Portal chvíli kdy se rozhodnou vaši image koupit a nasadit. **Jedná se jenom o doporučení. Zákazník se může vybrat jakoukoli velikost virtuálního počítače, které se vejdou disky určené ve vaší imagi.**
+7. Vyberte až šest doporučené velikosti virtuálního počítače. Tyto velikosti jsou doporučení, která se zobrazí zákazníka v okně cenová úroveň na webu Azure Portal chvíli kdy se rozhodnou vaši image koupit a nasadit. **Jedná se jenom o doporučení. Zákazník se může vybrat jakoukoli velikost virtuálního počítače, které se vejdou disky určené ve vaší imagi.**
 8. Zadejte verzi. Pole verze zapouzdřuje sémantickou verzi k identifikaci produktu a jeho aktualizace:
    * Verze by měla mít formát X.Y.Z, kde X, Y a jsou celá čísla.
    * Obrázky v různých skladových položkách může mít různé hlavní verze a podverze.
@@ -499,18 +500,18 @@ Jakmile vytvoříte svoji nabídku a skladovou Položku, měli byste zadat podro
 
 |Problém|Zpráva o selhání|Napravit|Odkaz na dokumentaci|
 |---|---|---|---|
-|Chyba při kopírování Image - "?" nebyl nalezen v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS pomocí doporučené nástroje|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování Image - parametry "st" a "se" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS s počátečním a koncovým datem, které na něm|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování imagí – "sp = rl" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS|Aktualizace adres Url SAS pomocí oprávnění nastavená jako "Čtení" a "List|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování imagí – adresa url SAS mít prázdné znaky v názvu virtuálního pevného disku|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS bez mezer|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování imagí – chyby autorizace adres Url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu chyby autorizace|Znovu vygenerovat adresu SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování imagí – adresa Url SAS "st" a "se" parametry nemají specifikace úplné datum a čas|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu nesprávné adresy Url SAS |Parametry spuštění adresy Url SAS a koncové datum ("st", "se") musí mít specifikaci úplné datum a čas, jako je například 11-02-2017T00:00:00Z a ne pouze datum nebo zkrácené verze po dobu. Je možné se setkat se tento scénář s využitím Azure CLI verze 2.0 nebo vyšší. Ujistěte se, k poskytování specifikaci úplné datum a čas a znovu vygenerovat adresu SAS Url.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování Image - "?" nebyl nalezen v adrese url SAS|Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS pomocí doporučené nástroje|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování Image - parametry "st" a "se" není v adrese url SAS|Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS s počátečním a koncovým datem, které na něm|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování imagí – "sp = rl" není v adrese url SAS|Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS|Aktualizace adres Url SAS pomocí oprávnění nastavená jako "Čtení" a "List|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování imagí – adresa url SAS mít prázdné znaky v názvu virtuálního pevného disku|Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS bez mezer|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování imagí – chyby autorizace adres Url SAS|Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob z důvodu chyby autorizace|Znovu vygenerovat adresu SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování imagí – adresa Url SAS "st" a "se" parametry nemají specifikace úplné datum a čas|Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob z důvodu nesprávné adresy Url SAS |Parametry spuštění adresy Url SAS a koncové datum ("st", "se") musí mít specifikaci úplné datum a čas, jako je například 11-02-2017T00:00:00Z a ne pouze datum nebo zkrácené verze po dobu. Je možné se setkat se tento scénář s využitím Azure CLI verze 2.0 nebo vyšší. Ujistěte se, k poskytování specifikaci úplné datum a čas a znovu vygenerovat adresu SAS Url.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Další krok
-Jakmile budete hotovi s podrobné údaje SKU, můžete se posunout dál a [marketingového obsahu Průvodce Azure Marketplace][link-pushstaging]. V tomto kroku procesu publikování zadáte marketingový obsah, ceny a jiné informace potřebné před **krok 3: testování vašeho virtuálního počítače v testovacím prostředí nabízejí**, kde můžete testovat různé scénáře použití před nasazením nabídky Azure Marketplace pro veřejné viditelnost a nákup.  
+Jakmile budete hotovi s podrobné údaje SKU, můžete se posunout dál a [marketingového obsahu Průvodce Azure Marketplace][link-pushstaging]. V tomto kroku procesu publikování zadáte marketingový obsah, ceny a jiné informace potřebné před **krok 3: Testování virtuální počítač v testovacím prostředí nabízejí**, kde můžete otestovat různé scénáře použití před nasazením nabídky na webu Azure Marketplace pro veřejné viditelnost a nákup.  
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Začínáme: publikování nabídky na webu Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Začínáme: Publikování nabídky na webu Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
 [img-portal-vm-size]:media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png

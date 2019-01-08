@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123478"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074712"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikace SaaS nabízí průvodce publikováním
 
-SaaS aplikace lze publikovat na webu Marketplace pomocí tří různých volání akce: "Kontaktujte mě," "Vyzkoušet" a "Získat." Tato příručka vysvětluje tyto tři možnosti, včetně požadavků pro každý. 
+Aplikace SaaS je publikovat na webu Marketplace pomocí tří různých volání akce: "Kontaktujte mě," "Try it now" a "Získat." Tato příručka vysvětluje tyto tři možnosti, včetně požadavků pro každý. 
 
 ## <a name="offer-overview"></a>Přehled nabídky  
 
@@ -34,8 +34,8 @@ Aplikace SaaS jsou k dispozici v obou prodejních míst Azure následující tab
 | AppSource | Ano (Kontaktujte mě) | Ano (Power BI/Dynamics) |
 | Azure Marketplace | Ne | Ano (aplikace SaaS) |   
 
-**Seznam:** možnost publikování výpisu se skládá z kontaktu mě typ nabídky a používá se při účasti úroveň zkušební verze nebo transakce není možné. Výhodou tohoto přístupu je, že umožňuje vydavatelům se řešení na trhu okamžitě začít přijímat potenciálních zákazníků, které je možné zapnout do obchodů pro zvýšení vaší firmy.  
-**Zkušební verze nebo transakce:** zákazník má povolenou možnost přímo kupovat nebo požádejte o zkušební verzi pro vaše řešení. Zkušební prostředí. proto Zavádíme zvýší úroveň engagement nabízí zákazníkům a umožňuje zákazníkům prozkoumat své řešení před zakoupením. Zkušební prostředí s, budete mít lepší pravděpodobnost povýšení prodejní místa a měli byste očekávat více a více potenciálních zákazníků z zákazníky. Zkušební verze musí obsahovat bezplatná podpora k alespoň po dobu trvání zkušebního období.  
+**Seznam:**  Možnost publikování výpisu se skládá z Kontaktujte mě typ nabídky a používá se při účasti úroveň zkušební verze nebo transakce není možné. Výhodou tohoto přístupu je, že umožňuje vydavatelům se řešení na trhu okamžitě začít přijímat potenciálních zákazníků, které je možné zapnout do obchodů pro zvýšení vaší firmy.  
+**Zkušební verze nebo transakce:**  Zákazník má povolenou možnost přímo kupovat nebo požádejte o zkušební verzi pro vaše řešení. Zkušební prostředí. proto Zavádíme zvýší úroveň engagement nabízí zákazníkům a umožňuje zákazníkům prozkoumat své řešení před zakoupením. Zkušební prostředí s, budete mít lepší pravděpodobnost povýšení prodejní místa a měli byste očekávat více a více potenciálních zákazníků z zákazníky. Zkušební verze musí obsahovat bezplatná podpora k alespoň po dobu trvání zkušebního období.  
 
 | Nabídky SaaS aplikace | Obchodní požadavky | Technické požadavky |  
 | --- | --- | --- |  
@@ -94,7 +94,7 @@ Výuková videa zkontrolujte následující položky:
 * [Microsoft Azure videa, zaměřuje na Active Directory](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 Bezplatné školení Azure Active Directory je k dispozici na  
-* [Microsoft Azure pro IT profesionály série: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [Microsoft Azure pro IT profesionály série: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 Kromě toho Azure Active Directory poskytuje lokality aktualizace služby   
 * [Aktualizace služby Azure AD](https://azure.microsoft.com/updates/?product=active-directory)
@@ -144,11 +144,12 @@ Microsoft je hostitelem transakce commerce. Microsoft účtuje zákazníkovi va�
 |Cílová stránka transakce | Hostujete Azure značkou transakce cílová stránka kde uživatelé můžou vytvářet a spravovat své účty služby SaaS. |   
 | Předplatné rozhraní API | Můžete zpřístupnit služby, které mohou komunikovat s předplatným služby SaaS vytvářet, aktualizovat a odstraňovat uživatelský účet a službu plán. Důležité změny rozhraní API musí podporovat během 24 hodin. Pravidelně se vydá Nekritická změn rozhraní API. |  
 
-## <a name="next-steps"></a>Další kroky
-Pokud jste tak již neučinili, 
+## <a name="next-steps"></a>Další postup
+Pokud jste tak již neučinili,
 
-- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace
+- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace.
 
 Pokud budete zaregistrováni a vytvoření nové nabídky nebo pracující na existující,
 
-- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky
+- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky.
+- Zobrazit [nabídky aplikace Azure SaaS](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer) Další informace.

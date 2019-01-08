@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fcb692d7189c84e32f55995538ffc692cb67dd6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078226"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064708"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2 licencování funkce kontrolní seznam
 
@@ -33,7 +33,7 @@ Tento průvodce to předpokládá, že máte licence Azure AD Premium P2, Enterp
 
 [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 
-## <a name="plan-and-deploy-day-1-30"></a>Plánování a nasazení: den 1-30
+## <a name="plan-and-deploy-day-1-30"></a>Plánování a nasazení: Dne 1-30
 
 - Určení více než jednoho globálního správce (konec pohotovostní účet)
    - [Spravovat účty pro správu nouzovou přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md)
@@ -64,7 +64,7 @@ Tento průvodce to předpokládá, že máte licence Azure AD Premium P2, Enterp
    - [Implementace služby Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md)
 - [Přiřazení licencí pro uživatele na základě členství ve skupinách v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
 
-## <a name="plan-and-deploy-day-31-90"></a>Plánování a nasazení: dne 31 až 90
+## <a name="plan-and-deploy-day-31-90"></a>Plánování a nasazení: Dne 31 až 90
 
 - [Plánování přístupu uživatelů typu Host](../b2b/what-is-b2b.md)
    - [Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal](../b2b/add-users-administrator.md)
@@ -75,7 +75,7 @@ Tento průvodce to předpokládá, že máte licence Azure AD Premium P2, Enterp
    - [Scénáře použití a aspekty nasazení pro službu Azure AD Join](../devices/azureadjoin-plan.md)
 - [Správa Windows Hello pro firmy ve vaší organizaci](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization)
 
-## <a name="plan-and-deploy-day-90-and-beyond"></a>Plánování a nasazení: den 90 a novější
+## <a name="plan-and-deploy-day-90-and-beyond"></a>Plánování a nasazení: Den 90 a novější
 
 - [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md)
    - [Konfigurace nastavení role adresáře Azure AD v PIM](../privileged-identity-management/pim-how-to-change-default-settings.md)
@@ -84,7 +84,7 @@ Tento průvodce to předpokládá, že máte licence Azure AD Premium P2, Enterp
 - Správa životního cyklu uživatele holistické
    - Azure AD má přístup ke správě životního cyklu identit
    - Odebrání vyžadováno provedení ručních kroků životního cyklu pro účet vaše zaměstnance, aby se zabránilo neoprávněnému přístupu:
-      - Synchronizaci identit mezi vaším zdrojem pravdivých informací (HR systému) do služby Azure AD. odkaz na podporované systémy oddělení Personalistiky)
+      - Synchronizaci identit mezi vaším zdrojem pravdivých informací (HR systému) do služby Azure AD.
       - [Umožňuje automaticky přiřadit uživatele do skupin na základě jejich atributů z personálního oddělení (nebo zdroji pravdivých informací), jako je například oddělení, název, oblast a další atributy dynamické skupiny.](../users-groups-roles/groups-dynamic-membership.md)
       - [Pomocí přístupu na základě skupiny správy zřizování, které umožňuje automaticky zřizovat uživatele pro aplikace SaaS.](../manage-apps/what-is-access-management.md)
 

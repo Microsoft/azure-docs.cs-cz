@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a automatizace prvního pracovního postupu – Azure Logic Apps | Microsoft Docs
-description: Rychlý start pro vytvoření první aplikace logiky, která slouží k automatizaci úloh, procesů a pracovních postupů pomocí Azure Logic Apps Vytváření aplikací logiky pro řešení systémové integrace a integrace podnikových aplikací (EAI) určená vašim systémům a cloudovým službám
+title: Rychlý start – vytvoření a automatizace prvního pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
+description: Vytvořte svou první aplikaci logiky, který automatizuje úlohy, procesy a pracovní postupy s Azure Logic Apps. Vytváření aplikací logiky pro řešení systémové integrace a integrace podnikových aplikací (EAI) určená vašim systémům a cloudovým službám
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,14 +11,14 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: fe2ca48c1cab3789f2bb501eaf00aeb9cd866b8c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: cc0f452cf9dc27354124437acc8d9a7c99fa80f4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233680"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065184"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure Portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure portal
 
 V tomto rychlém startu se seznámíte se sestavením prvního automatizovaného pracovního postupu pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). V tomto článku vytvoříte aplikaci logiky, která pravidelně kontrolujte nové položky v informačním kanálu RSS webu. Pokud se najdou nové položky, aplikace logiky za každou z nich odešle e-mail. Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat jako tento pracovní postup:
 
@@ -38,7 +38,7 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
 
    ![Vytvoření aplikace logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
-3. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, zvolte **Připnout na řídicí panel** > **Vytvořit**.
+3. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, zvolte **vytvořit**.
 
    ![Zadání podrobností o aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -61,9 +61,9 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Kontrola informačního kanálu RSS pomocí triggeru
 
-1. V návrháři zadejte do vyhledávacího pole „rss“. Vyberte trigger **RSS – Při publikování položky informačního kanálu**.
+1. V návrháři zadejte do vyhledávacího pole „rss“. Vyberte tento trigger: **RSS – při publikování položky informačního kanálu**
 
-   ![Výběr triggeru RSS – Při publikování položky informačního kanálu](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
+   ![Výběr triggeru: "RSS – při publikování položky informačního kanálu"](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
 
 2. Zadejte pro trigger informace zobrazené a popsané níže: 
 
@@ -91,13 +91,13 @@ Vaše aplikace logiky je teď v provozu, ale kromě kontroly informačního kan�
 
 Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts), která odešle e-mail, když se v informačním kanálu RSS objeví nová položka. 
 
-1. Pod triggerem **Při publikování položky informačního kanálu** zvolte **+ Nový krok** > **Přidat akci**.
+1. V části **při publikování položky informačního kanálu** aktivovat, vyberte **nový krok**.
 
    ![Přidání akce](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. V části **Zvolte akci** zadejte jako filtr Odeslat e-mail. V seznamu akcí vyberte akci Odeslat e-mail pro požadovaného poskytovatele e-mailu. 
+2. V části **zvolte akci**, do vyhledávacího pole zadejte "Odeslat e-mail". Pod vyhledávacím polem vyberte **všechny**. V seznamu akcí vyberte akci Odeslat e-mail pro požadovaného poskytovatele e-mailu. 
 
-   ![Výběr akce Office 365 Outlook – Odeslat e-mail](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
+   ![Vyberte tuto akci: "Office 365 Outlook – odeslat e-mail"](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
    Pokud chcete v seznamu akcí vyfiltrovat konkrétní aplikaci nebo službu, můžete nejprve tuto aplikaci nebo službu vybrat:
 
@@ -180,7 +180,7 @@ Pokud tuto ukázku už nepotřebujete, odstraňte skupinu prostředků, která o
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili svou první aplikaci logiky, která podle zadaného plánu (každou minutu) kontroluje aktualizace informačního kanálu RSS a při nalezení aktualizace provede akci. Další informace najdete v tomto kurzu, ve kterém se vytváří pokročilejší pracovní postupy založené na plánu:
 

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9200b3b8cd85bfd94bbc4c66cccb35b78a97aaff
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554686"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062651"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytvořit prostředky služby Time Series Insights pomocí šablon Azure Resource Manageru
 
@@ -34,6 +34,7 @@ Time Series Insights podporuje následující zdroje:
 
 - [Přehled Azure Resource Manageru – nasazení šablony](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/resource-group-template-deploy.md)
+- [Typy prostředků Microsoft.TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 [201-timeseriesinsights prostředí s eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) šablonu pro rychlý start se publikoval na Githubu. Tato šablona vytvoří prostředí Time Series Insights, zdroj události podřízené nakonfigurovaný tak, aby přijímat události z centra událostí a zásadami, které udělují přístup k datům prostředí. Pokud není zadaný existující centrum událostí, bude vytvořen s nasazením.
 

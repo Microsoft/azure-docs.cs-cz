@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 6bb1709d10a406d88378189cd68b9a36abed2c8d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9abf1eebe8174160bd671d83086ed641708b98eb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017562"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073947"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidat objekty BLOB na objekty v digitální dvojče Azure
 
 Objekty BLOB jsou nestrukturovaných reprezentace běžných typů souborů, jako jsou obrázky a protokoly. Objekty BLOB, udržovat přehled o jaký druh dat, které představují pomocí typu MIME (například: "image/jpeg") a metadata (název, popis, typ a tak dále).
 
-Azure podporuje digitální dvojče objekty BLOB se připojuje k zařízení, mezery a uživatelů. Objekty BLOB mohou představovat profilový obrázek pro uživatele, zařízení fotografie, video, mapy nebo protokolu.
+Azure podporuje digitální dvojče objekty BLOB se připojuje k zařízení, mezery a uživatelů. Objekty BLOB mohou představovat profilový obrázek uživatele, zařízení fotografie, video, mapy, firmwaru zip, JSON data, protokolu atd.
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
@@ -32,7 +32,7 @@ S více částmi. požadavky můžete použít k nahrání objektů blob pro kon
 
 ### <a name="blob-metadata"></a>Metadata objektu blob
 
-Kromě **Content-Type** a **Content-Disposition**, vícedílné zprávy standardu požadavků musíte zadat správný text JSON. Které text JSON pro odeslání závisí na druh operace požadavku HTTP, který provádí.
+Kromě **Content-Type** a **Content-Disposition**, digitální dvojče Azure blob s více částmi. požadavky nutné zadat správný text JSON. Které text JSON pro odeslání závisí na druh operace požadavku HTTP, který provádí.
 
 Čtyři hlavní schémat JSON jsou:
 
@@ -48,12 +48,15 @@ Další informace o použití najdete v referenční dokumentaci [použití Swag
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Chcete-li **příspěvek** požadavek, který nahraje do textového souboru jako objekt blob a přidruží ji k mezeru:
+Nahrát textový soubor jako objekt blob a přidružte jej k mezeru, ujistěte se, ověřeného požadavku HTTP POST do:
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/spaces/blobs HTTP/1.1
-Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
+YOUR_MANAGEMENT_API_URL/spaces/blobs
+```
 
+Spolu s následujícím textem:
+
+```plaintext
 --USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
@@ -96,6 +99,16 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
+V obou příkladech:
+
+1. Ověřte, že hlavičky zahrnují: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Ověřte, zda je textu vícedílné zprávy standardu:
+
+   - První část obsahuje metadata objektu blob vyžaduje.
+   - Druhá část obsahuje textového souboru.
+
+1. Ověřte, že je textový soubor zadaný jako `Content-Type: text/plain`.
+
 ## <a name="api-endpoints"></a>Koncové body rozhraní API
 
 Následující části popisují koncových bodů core týkajících se objektu blob rozhraní API a jejich funkce.
@@ -106,7 +119,7 @@ Objekty BLOB můžete připojit k zařízení. Následující obrázek znázorň
 
 ![Objekty BLOB zařízení][2]
 
-Například pokud chcete aktualizovat nebo vytvoření objektu blob a připojit objekt blob do zařízení, je **oprava** požadavek na:
+Například pokud chcete aktualizovat nebo vytvoření objektu blob a připojit objekt blob do zařízení, je ověřený HTTP PATCH požadavek na:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -132,7 +145,7 @@ Objekty BLOB můžete také připojit na mezery. Na následujícím obrázku jso
 
 ![Objekty BLOB místa][3]
 
-Například vrátit objekt blob připojené k mezeru, je **získat** požadavek na:
+Například vrátit objekt blob připojené k mezeru, je ověřený požadavek HTTP GET na:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -142,7 +155,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | ID požadované objektů blob |
 
-Vytváření **oprava** požadavek na stejný koncový bod můžete aktualizovat popis metadat a vytvořit novou verzi objektu blob. Požadavek HTTP je proveden prostřednictvím **oprava** metoda spolu s všechny nezbytné metadat a dat vícedílného formuláře.
+Požadavek PATCH na stejný koncový bod aktualizuje popisů metadat a vytvoří nové verze objektu blob. Se požadavek HTTP pomocí metody PATCH, spolu s všechny nezbytné metadat a dat vícedílného formuláře.
 
 Úspěšné operace vrátit **SpaceBlob** objekt, který odpovídá následujícím schématu. Můžete ho využívat vrácená data.
 
@@ -157,7 +170,7 @@ Objekty BLOB můžete připojit k modelům uživatele (například přidružit p
 
 ![Uživatelské objekty BLOB][4]
 
-Například k načtení objektu blob připojit na uživatele, ujistěte se, **získat** požadavek s daty z jakékoli požadované formuláře:
+Například k načtení objektu blob připojit na uživatele, ujistěte se, ověřeného požadavku HTTP GET s daty z jakékoli požadované formuláře:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID

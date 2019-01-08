@@ -1,6 +1,6 @@
 ---
-title: Sledování výkonu služby Azure App Service | Dokumentace Microsoftu
-description: Monitorování výkonu webových aplikací Azure. Můžete vytvářet grafy zatížení a doby odezvy nebo informací o závislosti a nastavovat upozornění týkající se výkonu.
+title: Monitorování výkonu Azure app services | Dokumentace Microsoftu
+description: Sledování výkonu aplikací pro Azure app Service. Můžete vytvářet grafy zatížení a doby odezvy nebo informací o závislosti a nastavovat upozornění týkající se výkonu.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: d96a7b775ec051f3511a179ebd4e879f50b9af32
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3e027b92114bdf8cebf6e6bf239ebd9beb4943d6
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019636"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073335"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
 V [webu Azure Portal](https://portal.azure.com) můžete nastavit application performance monitoring pro aplikace pro webové aplikace, back-endů mobilních a API apps v [služby Azure App Service](../../app-service/overview.md). [Azure Application Insights](../../application-insights/app-insights-overview.md) využívá vaši aplikaci k odesílání telemetrických dat o jejích aktivitách do služby Application Insights, kde se ukládají a analyzují. Tam lze grafy metrik a vyhledávací nástroje použít při řešení problémů s diagnostikou, při zvyšování výkonu a při vyhodnocování využití.
@@ -25,20 +25,20 @@ V [webu Azure Portal](https://portal.azure.com) můžete nastavit application pe
 ## <a name="run-time-or-build-time"></a>Za běhu nebo při sestavení
 Monitorování s použitím aplikace můžete konfigurovat dvěma způsoby:
 
-* **Za běhu** – Můžete vybrat rozšíření pro monitorování výkonu, když je webová aplikace již v živém provozu. Aplikaci není třeba znovu sestavit ani instalovat. Obdržíte standardní sadu balíčků, které monitorují dobu odezvy, úspěšnost, výjimky, závislosti a další. 
+* **Za běhu** – můžete vybrat rozšíření pro službu app service je již živá monitorování výkonu. Aplikaci není třeba znovu sestavit ani instalovat. Obdržíte standardní sadu balíčků, které monitorují dobu odezvy, úspěšnost, výjimky, závislosti a další. 
 * **Při sestavení** – Do aplikace můžete balíček nainstalovat během vývoje. Tato možnost nabízí větší variabilitu. Kromě stejných standardních balíčků můžete napsat kód pro přizpůsobení telemetrických dat nebo pro odesílání vlastních telemetrických dat. Můžete protokolovat konkrétní aktivity nebo zaznamenávat události podle sémantiky domény aplikace. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Použití za běhu s Application Insights
-Pokud už webovou aplikaci v Azure spouštíte, máte již monitorování do jisté míry k dispozici: můžete monitorovat požadavky a chybovost. Přidejte Application Insights a získejte další možnosti, například zaznamenávání doby odezvy, monitorování volání závislostí, inteligentní detekci a výkonný dotazovací jazyk Log Analytics. 
+Pokud už máte službu app service v Azure, již nabízí některá monitorování: požadavky a chybovost. Přidejte Application Insights a získejte další možnosti, například zaznamenávání doby odezvy, monitorování volání závislostí, inteligentní detekci a výkonný dotazovací jazyk Log Analytics. 
 
-1. **Vyberte Application Insights** pro svou webovou aplikaci na ovládacím panelu Azure.
+1. **Vyberte Application Insights** Azure ovládacího panelu pro službu app service.
 
     ![V části Nastavení zvolte Application Insights](./media/azure-web-apps/settings-app-insights.png)
 
    * Můžete vytvořit nový prostředek, pokud jste už nastavili prostředek Application Insights pro tuto aplikaci. 
 
     > [!NOTE]
-    > Po kliknutí na **OK** k vytvoření nového prostředku, zobrazí se výzva k **použít nastavení monitorování**. Výběr **pokračovat** propojí nový prostředek Application Insights do své webové aplikace, to může také **aktivujte restartování vaší webové aplikace**. 
+    > Po kliknutí na **OK** k vytvoření nového prostředku, zobrazí se výzva k **použít nastavení monitorování**. Výběr **pokračovat** propojí nový prostředek Application Insights do vaší služby app service, to může také **aktivujte restartování služby app service**. 
 
     ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource.png)
 
@@ -46,7 +46,7 @@ Pokud už webovou aplikaci v Azure spouštíte, máte již monitorování do jis
 
     ![Vyberte možnosti jednotlivé platformy](./media/azure-web-apps/choose-options.png)
 
-3. Po instalaci Application Insights **webovou aplikaci používejte**.
+3. **Instrumentace vaší služby app service** po instalaci Application Insights.
 
    **Povolte monitorování na straně klienta** pro zobrazení stránek a telemetrii uživatelů.
 
@@ -95,6 +95,17 @@ Application Insights může poskytovat podrobnější telemetrie po nainstalová
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED způsobí, že neúplné odpovědi HTML ve webových aplikací .NET CORE.
+
+Povolení jazyka Javascript pomocí App Services může způsobit, že odpovědi html se oříznou.
+
+- Alternativní řešení 1: nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED na hodnotu false nebo ho úplně odeberte a restartování
+- Alternativní řešení 2: přidání sady sdk prostřednictvím kódu a odebrání rozšíření (Profiler a Snapshot debugger nebudou s touto konfigurací)
+
+Tento problém sledujeme [zde](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)
 
 ## <a name="next-steps"></a>Další postup
 * [Spusťte profiler v živé aplikaci](../../azure-monitor/app/profiler.md).

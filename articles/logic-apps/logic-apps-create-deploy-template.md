@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8714c91079d087b16a62af4af8b381edf6871f8b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000559"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065728"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Vytvoření šablony Azure Resource Manageru pro nasazení aplikací logiky
 
@@ -34,7 +34,7 @@ V prostředku aplikace logiky, najdete tuto definici v `definition` vlastnost.
 * **Připojení**: Odkazuje na samostatné prostředky, které bezpečně ukládají metadata o všechna připojení konektoru, jako je například připojovací řetězec a přístupového tokenu.
 V prostředku aplikace logiky, aplikace logiky, odkazuje na tyto prostředky v `parameters` oddílu.
 
-Všechny tyto části existující aplikace logiky můžete zobrazit pomocí některého nástroje, například [Azure Resource Exploreru](http://resources.azure.com).
+Všechny tyto části existující aplikace logiky můžete zobrazit pomocí některého nástroje, například [Azure Resource Exploreru](http://resources.azure.com). Syntaxi JSON a vlastnostech najdete v tématu [typy prostředků Microsoft.Logic](/azure/templates/microsoft.logic/allversions).
 
 Chcete-li šablonu pro aplikace logiky pro použití s nasazeními skupin prostředků, musí definovat prostředky a parametrizovat podle potřeby.
 Například pokud nasazení provádíte do vývoje, testování a produkční prostředí, budete pravděpodobně chtít použít jiné připojovací řetězce k databázi SQL v jednotlivých prostředích.

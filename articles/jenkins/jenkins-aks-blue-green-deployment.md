@@ -3,17 +3,17 @@ title: Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse
 description: Zjistěte, jak provést nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení.
 ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, blue green deployment, continuous delivery, cd
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 6cd3938844d7f6977c7b0912acffbfb1679dc42e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387376"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073879"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení
 
@@ -31,11 +31,11 @@ V tomto kurzu zjistíte, jak provést následující úlohy:
 > * Vytvoření a spuštění úlohy Jenkinse
 
 ## <a name="prerequisites"></a>Požadavky
-- [Účet GitHub:](https://github.com) Účet GitHub potřebujete k naklonování ukázkového úložiště.
-- [Azure CLI 2.0:](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Pomocí Azure CLI 2.0 vytvoříte cluster Kubernetes.
-- [Chocolatey:](https://chocolatey.org) Správce balíčků, pomocí kterého nainstalujete kubectl.
-- [kubectl:](https://kubernetes.io/docs/tasks/tools/install-kubectl/) Rozhraní příkazového řádku, pomocí kterého můžete spouštět příkazy pro clustery Kubernetes.
-- [jq:](https://stedolan.github.io/jq/download/) Jednoduchý procesor JSON v příkazovém řádku.
+- [Účet GitHub](https://github.com) : Potřebujete účet Githubu naklonujte ukázkové úložiště.
+- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) : Použití rozhraní příkazového řádku Azure CLI 2.0 k vytvoření clusteru Kubernetes.
+- [Chocolatey](https://chocolatey.org): Správce balíčků, které používáte k instalaci kubectl.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Rozhraní příkazového řádku, který používáte pro spuštění příkazů pro clustery Kubernetes.
+- [jq](https://stedolan.github.io/jq/download/): Procesor JSON zjednodušené, příkazového řádku.
 
 ## <a name="clone-the-sample-app-from-github"></a>Naklonování ukázkové aplikace z GitHubu
 
@@ -259,7 +259,7 @@ V této části se dozvíte, jak připravit server Jenkinse na spuštění sesta
 
 ## <a name="run-the-job"></a>Spuštění úlohy
 
-1. Ověřte, že můžete projekt úspěšně spustit v místním prostředí. Postup najdete tady: [Spuštění projektu na místním počítači](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
+1. Ověřte, že můžete projekt úspěšně spustit v místním prostředí. Zde je uveden postup: [Spuštění projektu v místním počítači](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
 
 1. Spusťte úlohu Jenkinse. Při prvním spuštění úlohy Jenkins nasadí aplikaci seznamu úkolů do modrého prostředí, což je výchozí neaktivní prostředí. 
 
@@ -288,7 +288,7 @@ az group delete -y --no-wait -n <your-resource-group-name>
 
 Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak provést nasazení do AKS s využitím Jenkinse a vzoru modrého/zeleného nasazení. Další informace o poskytovateli Azure Jenkins najdete na webu Jenkins v Azure.
 

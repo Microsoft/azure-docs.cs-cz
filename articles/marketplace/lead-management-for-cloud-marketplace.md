@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 8bb964308e11d238def4eed3f194ffc9ef8ab086
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: abaad7eabf92b6f3f53d7807af132959533552b9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840159"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076956"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Vedoucí správy pro cloudové Tržiště
 
@@ -60,7 +60,7 @@ Po technické nastavení je na místě, by měl obsahovat těchto potenciálníc
 
 ## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Běžné chyby konfigurace potenciálních zákazníků při publikování na portál cloud partner 
 
-**Nepovedlo se uložit zájemce do Dynamics CRM. Zkontrolujte nastavení účtu Dynamics CRM. LastCRMError: Nepovedlo se přihlásit k aplikaci Dynamics CRM, LastCRMException:** 
+**Nepovedlo se uložit zájemce do Dynamics CRM. Zkontrolujte nastavení účtu Dynamics CRM. LastCRMError: Nepovedlo se přihlásit do aplikace Dynamics CRM, LastCRMException:** 
 
 > Pokud jste vybrali ověřování O365, zkontrolujte, jestli je platný uživatelský účet a heslo. Pokud jste vybrali AAD, zaškrtněte, pokud ID tenanta, ID aplikace a tajný klíč odpovídá aplikace co byla nastavena na AAD. Postupujte podle pokynů [tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics). Pokud uživatelské jméno/heslo účtu je platný, Zkontrolujte prosím, že má přístup k Dynamics 365 a má přiřazené licence (kroky 11-15, pokud používáte-li uživatel aplikace Office pomocí Azure Active Directory nebo nastavení zabezpečení). 
 
@@ -77,21 +77,21 @@ Po technické nastavení je na místě, by měl obsahovat těchto potenciálníc
 
 > Řešení: Přiřazení role zabezpečení na webu Microsoft Marketplace zájemce zapisovače. Postupujte podle pokynů [tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) v části Nastavení zabezpečení 
 
-**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Aplikaci s identifikátorem nebyl nalezen v adresáři** 
+**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Aplikace s identifikátorem nebyla nalezena v adresáři** 
 
 > Id aplikace poskytnuté v části Správa potenciálních zákazníků není platný adresář. Podrobnosti získání Id adresáře podle pokynů v kroku 8 (v části Azure Active Directory, z [tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Požadovaný identifikátor tenanta není platný a není platný externí domény formátu** 
+**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Identifikátor tenanta požadovaný není formát platných a není externí domény** 
 
 > Id adresáře, které jsou k dispozici v části Správa potenciálních zákazníků není platný adresář. Podrobnosti získání Id adresáře podle pokynů v kroku 2 (v části Azure Active Directory, z [tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimkou:: Ověřují se přihlašovací údaje. Chyba: je k dispozici tajný kód klienta je neplatný.** 
+**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Chyba při ověřování přihlašovacích údajů.: Je k dispozici tajný kód klienta je neplatný.** 
 
-> Řešení: Přihlaste se k webu Azure Portal, zkontrolujte, jestli klíč aplikace odpovídá, co je portál partnerů cloudu. Vygenerujte heslo podle pokynů v kroku 10 (v části Azure Active Directory), z [tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> Řešení: Přihlaste se k webu Azure Portal, zkontrolujte, jestli klíč aplikace se shoduje s co je portál partnerů cloudu. Vygenerujte heslo podle pokynů v kroku 10 (v části Azure Active Directory), z [tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
 **Nepovedlo se uložit zájemce do Dynamics CRM. LastCRMError: Kanálu požadavku skončila platnost při čekání na odpověď po 00:02:00. Zvyšte hodnotu časového limitu předanou volání požadavku nebo zvyšte hodnotu SendTimeout na vazbě. Čas přidělený této operaci pravděpodobně částí delšího časového limitu.**  
 
-> Řešení: Přihlášení na portál Cloud Partner, v podrobnostech o prodejních míst >> zájemce cílové >> adresy URL, zkontrolujte, jestli je platnou instanci CRM dynamické
+> Řešení: Přihlaste se na portál Cloud Partner, prodejních míst v podrobnostech o >> zájemce cílové >> adresy URL, zkontrolujte, jestli je platnou instanci CRM dynamické
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -102,7 +102,7 @@ Potenciální zákazníci jsou zákazníci, kteří jsou nasazení produktů z w
 
 **Kde získám pomoc při nastavování mé určení potenciálních zákazníků?** 
 
-Najdete zde dokumentaci: [získání potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) nebo odeslat lístek podpory prostřednictvím aka.ms/marketplacepublishersupport vyberte nabídku typu a vést správy. 
+Najdete zde dokumentaci: [Získání potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) nebo odeslat lístek podpory prostřednictvím aka.ms/marketplacepublishersupport vyberte nabídku typu a vést správy. 
 
 
 
@@ -150,7 +150,7 @@ Název = MSFT_TEST_636573304831318844
 
 **Mám živé nabídky, ale mi nezobrazují všechny potenciální zákazníky?**
 
-Jednotlivé potenciální zákazníky budou mít data předaná do polí v cíl vybraného zájemce, budou přicházet potenciální zákazníky v tomto formátu: **akce zdroje | Nabídka** 
+Jednotlivé potenciální zákazníky budou mít data předaná do polí v cíl vybraného zájemce, budou přicházet potenciální zákazníky v tomto formátu: **Zdroj akce | Nabídka** 
 
   *Zdroje:*
 

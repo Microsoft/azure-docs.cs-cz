@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: ff3ca665382efc9133a4c4ce3f3fde25c03c5e52
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ad22f1944d3fe9a088b66da4cf4df7136db497f7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809561"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075326"
 ---
 <a name="make-your-virtual-machine-offer-live-on-azure-marketplace"></a>Ujistěte se, virtuálního počítače za provozu nabídky na webu Azure Marketplace
 =========================================================
@@ -51,13 +51,13 @@ Projděme si všechny kroky pro publikování, popisují, co se stane v každém
 
 Když kliknete na možnost "Publikovat", bude trvat automatickou kontrolu určitým postupem zajistit, že máte na vaši nabídku naplněné všechna povinná pole. Pokud nejsou všechna pole vyplněné, upozornění se zobrazí vedle pole a budete muset naplnit přesně pak klikněte na možnost "Publikovat" znovu.
 
-Jakmile dokončíte tento krok správně, se zobrazí automaticky otevírané okno s dotazem pro e-mailovou adresu. Toto je e-mail, ke kterému bude přijímat publikování oznámení o stavu pro zbytek procesu publikování. Jakmile odešlete e-mailovou adresu, tento krok je dokončena.
+Jakmile dokončíte tento krok správně, bude automaticky otevírané okno k zadání e-mailovou adresu. Toto je e-mail, ke kterému bude přijímat publikování oznámení o stavu pro zbytek procesu publikování. Jakmile odešlete e-mailovou adresu, tento krok je dokončena.
 
 ![Nabídky přejít Live pořadí 4 – publikování nabídky](./media/cloud-partner-portal-offer-go-live-azure-marketplace/publishyouroffer.png)
 
 **Certifikace (\<5 dní)**
 
-Tento krok je, kde můžeme spustit několik testů, které Ujistěte se, že vaši image virtuálního počítače splňuje požadavky programu Azure Certified. Jsou všechny pokyny, budete muset zajistit předat požadavky na certifikaci [tady](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites).
+Tento krok je, kde můžeme spustit několik testů, které Ujistěte se, že vaši image virtuálního počítače splňuje požadavky programu Azure Certified. Jsou všechny pokyny, budete muset zajistit předat požadavky na certifikaci [tady](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md).
 
 Od tohoto kroku může trvat několik dní, můžete se odhlásit z portál partnerů cloudu. Pošleme vám oznámení e-mailem Pokud nejsou žádné chyby, které je potřeba vyhovět. Pokud vše projde úspěšně, proces se automaticky přesunou krok zřizování.
 
@@ -75,17 +75,17 @@ Navíc pokud jste nakonfigurovali funkci generování zájemců, ověříme funk
 
 Zobrazí se oznamovací e-mail, že vaše nabídka byla úspěšně dokončena kroky potřebné pro přístup k nabídce ve verzi preview. Během tohoto kroku by měl zobrazit náhled vaší nabídky a ujistěte se, že všechno, co vypadá jako by měl být a že váš virtuální počítač správně nasazuje v testovacím prostředí.
 
-**Pouze seznam povolených adres předplatná můžete provést toto ověřování.**\*
+*Pouze seznam povolených adres předplatná můžete provést toto ověřování.*
 
 **Vydavatel schvalování**
 
-Jakmile ověříte všechno, co vypadá správně a funguje správně ve verzi preview, jste připraveni na přechod na živý přenos. Chcete-li to provést, klikněte na Přejít Live v části stav kartu a My se začne postup, aby vaše nabídka za provozu v produkčním prostředí a na webu. Obvykle bude trvat několik hodin od okamžiku, klikněte na možnost aktivace a když tato nabídka je za provozu na webu. Pošleme vám e-mailové oznámení po oficiálně za provozu na webu pro vaši nabídku.
+Jakmile ověříte všechno, co vypadá správně a funguje správně ve verzi preview, jste připraveni na přechod na živý přenos. Klikněte na tlačítko **aktivace** pod **stav** kartu a My se začne postup, aby vaše nabídka za provozu v produkčním prostředí a na webu. Obvykle bude trvat několik hodin od okamžiku, klikněte na možnost aktivace a když tato nabídka je za provozu na webu. Pošleme vám e-mailové oznámení po oficiálně za provozu na webu pro vaši nabídku.
 
 ![Nabízí Go živé pořadí 5 – přechod na živý přenos](./media/cloud-partner-portal-offer-go-live-azure-marketplace/golive.png)
 
 **Živé**
 
-Vaši nabídku je teď živě v Azure Marketplace a webu Azure Portal a zákazníci budou moci zobrazit a nasazení virtuálního počítače ve svých předplatných Azure. V libovolném okamžiku můžete kliknout na kartě vše nabízí a zobrazit stav pro všechny vaše nabídky, které jsou uvedené v pravém sloupci. Kliknutím na stav zobrazíte stav publikování tok v souvislosti s vaší nabídky.
+Vaši nabídku je teď živě v Azure Marketplace a webu Azure portal a zákazníci budou moci zobrazit a nasazení virtuálního počítače ve svých předplatných Azure. V libovolném okamžiku můžete kliknout na kartě vše nabízí a zobrazit stav pro všechny vaše nabídky, které jsou uvedené v pravém sloupci. Kliknutím na stav zobrazíte stav publikování tok v souvislosti s vaší nabídky.
 
 <a name="error-handling"></a>Zpracování chyb
 --------------
@@ -94,7 +94,7 @@ Během procesu publikování může došlo k chybě. Pokud dojde k chybě, zobra
 
 ![Nabízí Go živé pořadí 6 – chybová zpráva](./media/cloud-partner-portal-offer-go-live-azure-marketplace/errormessage.png)
 
-Pokud narazíte na chyby během procesu publikování, je nutné opravit ty pak klikněte na možnost "Publikovat" celý proces. Při opětovné publikování po jakákoli oprava chyby, musíte spustit na začátku postupu publikování v požadavky na ověření.
+Pokud narazíte na chyby během procesu publikování, je nutné vyřešit tyto problémy a pak klikněte na možnost "Publikovat" celý proces. Při opětovné po jakákoli oprava chyby, musíte spustit na začátku postupu publikování v požadavky na ověření.
 
 Pokud máte problémy řeší chybu, měli byste otevřít žádost o podporu jak získat pomoc od našimi techniky podpory.
 

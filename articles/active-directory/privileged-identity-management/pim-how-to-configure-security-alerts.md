@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/21/2018
+ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 0231eaad26fbc3e7157999c0023c5001f37d70d5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291211"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063280"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM
 
@@ -30,9 +30,9 @@ Azure AD Privileged Identity Management (PIM) generuje výstrahy, když je aktiv
 
 Tato část obsahuje seznam všech výstrah zabezpečení pro role adresáře, jak vyřešit a jak zabránit. Závažnost má následující význam:
 
-* **Vysoká**: vyžaduje okamžitý zásah kvůli porušení zásad.
-* **Střední**: není potřeba reagovat okamžitě, ale signály potenciální porušení zásad.
-* **Nízká**: není potřeba reagovat okamžitě, ale navrhuje změna vhodnější zásad.
+* **Vysoká**: Vyžaduje okamžitý zásah kvůli porušení zásad.
+* **Střední**: Není potřeba reagovat okamžitě, ale signály potenciální porušení zásad.
+* **Nízká**: Není potřeba reagovat okamžitě, ale navrhuje změna vhodnější zásad.
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Nepoužívají správci svoje privilegované role
 
@@ -69,7 +69,7 @@ Tato část obsahuje seznam všech výstrah zabezpečení pro role adresáře, j
 | | |
 | --- | --- |
 | **Závažnost** | Střednědobé používání |
-| **Proč se zobrazí toto upozornění?** | Účty, které nebyly změněny jejich heslo nedávno může být služba nebo sdílené účty, které nejsou dodržovány. Tyto účty v privilegovaných rolích se pak můžou útočníci. |
+| **Proč se zobrazí toto upozornění?** | Účty v privilegovaných rolí, které nedošlo ke změně hesla v posledních 90 dnů. Tyto účty mohou být služby nebo sdílené účty, které nejsou dodržovány a můžou se stát terčem útočníků. |
 | **Jak vyřešit?** | Projděte si účty v seznamu. Pokud už potřebují přístup, odeberte je ze svoje privilegované role. |
 | **Ochrany před únikem informací** | Ujistěte se, že účty, které jsou sdíleny jsou otáčení silná hesla, když dojde ke změně v uživatele, kteří znát heslo. </br>Pravidelně revize účty s privilegované role pomocí [kontrol přístupu](pim-how-to-start-security-review.md) a odeberte přiřazení rolí, které už nejsou potřeba. |
 | **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: e91f6ecb4ff510b1ba93b56d0bfb0bda0a156cf1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4d49306150388788ac33d8c6e267ba08a4593686
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019822"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074729"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
@@ -382,6 +382,6 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: ../../azure-monitor/app/asp-net-exceptions.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
-[new]: ../../application-insights/app-insights-create-new-resource.md
+[new]: ../../azure-monitor/app/create-new-resource.md 
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../application-insights/app-insights-overview.md

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 1c6579776b86decb78c172578cbe55a66c05d78f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6eb7993b4dbec3ab4901dc7071d18eae98ab8ae4
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54026549"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079251"
 ---
 > [!NOTE]
 > Požadavky na vícedílné zprávy standardu obvykle vyžadují tři údaje:
@@ -34,3 +34,5 @@ S více částmi. požadavky můžete provést prostřednictvím kódu programu 
 > * Obsah objektu BLOB, které zahrnují nestrukturovaný obsah souboru k odeslání
 >
 > Ani jeden ze dvou částí, je třeba **oprava** požadavky. Jsou potřeba pro **příspěvek** nebo operace vytvoření.
+
+[Zdrojový kód tohoto rychlého startu obsazení](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) obsahuje kompletní C# příklady demonstrující, jak je nechat vícedílné zprávy standardu žádosti na rozhraní API Správce Dvojčat digitální Azure.

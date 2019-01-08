@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c8ead3dc34faefce0f113dee2074960fddfa11a1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: ae50562a9354b9c1e5b2711e5bbeec7b1e0fbbb8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144587"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078792"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Aplikace Azure: Nabídka spravované aplikace Průvodce publikováním
+# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Aplikace Azure: Nabídka spravované aplikace, Průvodce publikováním
 
 Spravované aplikace je jedním z hlavních způsobů, jak publikování řešení na webu Marketplace. Tento průvodce vám porozumět všem požadavkům pro v rámci této nabídky. 
 
@@ -41,17 +41,17 @@ Pomocí aplikace Azure: spravovaného typu nabídky aplikace, pokud vyžaduje sp
 |Nasazení s předplatným Azure zákazníka | Spravované aplikace musí být nasazen v rámci předplatného zákazníka a je možné spravovat pomocí 3. stran | 
 |K fakturaci a měření    |  Prostředky se zřídí v rámci předplatného Azure zákazníka. Průběžné platby (PAYGO) virtuálních počítačů se nepodporuje transakce u zákazníka prostřednictvím Microsoft účtuje prostřednictvím předplatného Azure zákazníkem (PAYGO) 
 V případě používání – vlastní licence zatímco Microsoft vám bude účtovat náklady na infrastrukturu v předplatném zákazníka můžete bude transact vaší licenční poplatky zákazníkovi přímo software        |
-|Kompatibilní s Azure virtuálního pevného disku (VHD)    |   Virtuální počítače musí být sestaveny jako ve Windows nebo Linuxu.<ul> <li>Další informace o vytváření linuxového virtuálního pevného disku najdete vytvořením kompatibilní s Azure virtuálního pevného disku (založené na Linuxu) části umístění [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2- Create-an-Azure-Compatible-VHD-Linux-Based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based).</li> <li>Další informace o vytváření virtuálního pevného disku Windows najdete vytvořením kompatibilní s Azure virtuálního pevného disku (založený na Windows) části umístění [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3- Create-an-Azure-Compatible-VHD-Windows-Based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based).</li> </ul>      |
+|Kompatibilní s Azure virtuálního pevného disku (VHD)    |   Virtuální počítače musí být sestaveny jako ve Windows nebo Linuxu.<ul> <ul> <li>Další informace o vytváření linuxového virtuálního pevného disku najdete v tématu [Linuxových distribucí doporučených pro na Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Další informace o vytváření virtuálního pevného disku Windows najdete v tématu [vytvoření virtuálního pevného disku kompatibilního s Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |
 
 >[!NOTE]
 > Spravované aplikace musí být nasaditelný prostřednictvím webu Marketplace. Pokud zákazník komunikace je problém, pak by se kontaktovat zúčastněným zákazníkům po povolení sdílení potenciálních zákazníků.  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud jste tak již neučinili, 
 
-- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace
+- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace.
 
 Pokud budete zaregistrováni a vytvoření nové nabídky nebo pracující na existující,
 
-- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky
+- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky.

@@ -4,24 +4,24 @@ description: Zjistěte, jak použít moduly Terraformu k vytvoření clusteru vi
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtuální počítač, síť, moduly
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: 03c09e190fce9cbbd98cea3565dd2437f79dadf1
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.openlocfilehash: efeae877161b2632112938d63b6f6e31cce96ac5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666629"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077194"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu s využitím registru modulů
 
 Tento článek vás provede vytvořením malého clusteru virtuálních počítačů pomocí [výpočetního modulu Terraform Azure](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
-> * Nastavit ověřování pomocí Azure
+> * Nastavení ověřování pomocí Azure
 > * Vytvořit šablonu Terraformu
 > * Vizualizovat změny pomocí plánu
 > * Použít konfiguraci k vytvoření clusteru virtuálních počítačů
@@ -102,7 +102,7 @@ Virtuální počítače v Azure zřídíte spuštěním příkazu `terraform app
 
 ![Příkaz terraform apply](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Projděte si seznam [modulů Terraformu pro Azure](https://registry.terraform.io/modules/Azure).
 - Vytvořte [pomocí Terraformu škálovací sadu virtuálních počítačů](terraform-create-vm-scaleset-network-disks-hcl.md).

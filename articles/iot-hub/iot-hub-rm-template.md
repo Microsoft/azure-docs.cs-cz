@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 1a64749b7218fccfdad6b6eeebfac39a44aa0522
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2b1aca07fe60a328dac9d3724454a21835026a53
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687767"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063841"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Vytvoření IoT hubu pomocí šablony Azure Resource Manageru (.NET)
 
@@ -23,7 +23,7 @@ ms.locfileid: "38687767"
 Azure Resource Manageru můžete použít k vytváření a správě služby Azure IoT hubs prostřednictvím kódu programu. V tomto kurzu se dozvíte, jak pomocí šablony Azure Resource Manageru k vytvoření služby IoT hub z programu v jazyce C#.
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manageru a Klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Azure Resource Manageru.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Azure Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Azure Resource Manageru.
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -203,6 +203,7 @@ Nyní jste nasadili IoT hubu pomocí šablony Azure Resource Manageru pomocí pr
 
 * Přečtěte si o možnostech [rozhraní REST API poskytovatele prostředků služby IoT Hub][lnk-rest-api].
 * Čtení [přehled Azure Resource Manageru] [ lnk-azure-rm-overview] Další informace o možnostech Azure Resource Manageru.
+* Syntaxi JSON a vlastnosti, které chcete použít v šablonách najdete v tématu [typy prostředků Microsoft.Devices](/azure/templates/microsoft.devices/iothub-allversions).
 
 Další informace o vývoji pro službu IoT Hub, najdete v následujících článcích:
 

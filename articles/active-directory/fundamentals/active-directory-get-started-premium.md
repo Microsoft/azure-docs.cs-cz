@@ -12,12 +12,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 23778a56cfa6440442bd7aab67c5441094a633ae
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fd5f9567c92201b4dfa08c74574df97fa8c91ae2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073988"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065558"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Zaregistrujte si edice Azure Active Directory Premium
 Můžete zakoupit a přidružit edice Azure Active Directory (Azure AD) Premium s předplatným Azure. Pokud potřebujete vytvořit nové předplatné Azure, budete také muset aktivovat svůj licenční plán a přístup ke službě Azure AD.
@@ -39,7 +39,7 @@ Pokud k registraci použijete předplatné Azure s dříve zakoupenými a aktivo
 Jako předplatitel Azure nebo Office 365 si můžete edice Azure Active Directory Premium koupit online. Podrobný postup naleznete v tématu [Jak zakoupit Azure Active Directory Premium – stávající zákazníci](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) nebo [Jak zakoupit Azure Active Directory Premium – noví zákazníci](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Registrace s použitím licenčního plánu Enterprise Mobility + Security
-Enterprise Mobility + Security je sada, která se skládá z Azure AD Premium, Azure Information Protection a Microsoft Intune. Pokud máte licenci EMS, můžete pro Azure AD začít používat některou z následujících možností licencování:
+Enterprise Mobility + Security je sada sestává z Azure AD Premium, Azure Information Protection a Microsoft Intune. Pokud máte licenci EMS, můžete pro Azure AD začít používat některou z následujících možností licencování:
 
 Další informace o EMS najdete na [webu Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security).
 
@@ -66,7 +66,7 @@ Pokud jste si zaregistrovali nový licenční plán Azure AD, musíte ho pro svo
    
     ![Přihlášení](media/active-directory-get-started-premium/MOLSEmail.png)
 
-    - **Přihlášení.** Tento odkaz použijte, pokud máte stávajícího tenanta a chcete se přihlásit pod stávajícím účtem správce. V tenantovi, kde se licence aktivují, musíte být globální správce.
+    - **Přihlášení.** Tento odkaz použijte, pokud máte stávajícího tenanta a chcete se přihlásit pod stávajícím účtem správce. Musí být globálním správcem v klientovi, kde jsou aktivované licence.
 
     - **Registrace.** Tento odkaz použijte, pokud chcete otevřít stránku **Vytvoření profilu účtu** a vytvořit nového tenanta Azure AD svého licenčního plánu.
 

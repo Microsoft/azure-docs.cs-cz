@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 01/07/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e3d1a79dc7dd775cea71df2f36a5f34d85f3e240
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9d5533932ef9ab521b623c18a0c3a27b663c56f8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261804"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077398"
 ---
-# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření připojení typu point-to-site pomocí služby Azure Virtual WAN (Preview)
+# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření připojení typu Point-to-Site pomocí Azure virtuální sítě WAN (Preview)
 
 V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv2) nebo OpenVPN. Tento typ připojení vyžaduje, aby byl na klientském počítači nakonfigurovaný klient. Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
 
@@ -36,13 +36,13 @@ V tomto kurzu se naučíte:
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>Registrace této funkce
 
-Kliknutím na **Vyzkoušet** zaregistrujete tuto funkci snadno pomocí prostředí Azure Cloud Shell.
+Kliknutím na **Vyzkoušet** zaregistrujete tuto funkci snadno pomocí prostředí Azure Cloud Shell. Pokud by místo toho spustíte PowerShell místně, ujistěte se, že máte nejnovější verzi a přihlaste se pomocí **Connect-AzureRmAccount** a **Select-AzureRmSubscription** příkazy.
 
 >[!NOTE]
 >Pokud tuto funkci nezaregistrujete, nebudete ji moci použít ani ji neuvidíte na portálu.
@@ -149,7 +149,7 @@ Pomocí staženého profilu nakonfigurujte klienty pro vzdálený přístup. Pos
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Z oficiálního webu si stáhněte klienta OpenVPN a nainstalujte ho.
-2.  Stáhněte si profil sítě VPN pro bránu. Můžete to provést na kartě Konfigurace point-to-site na webu Azure Portal nebo pomocí rutiny New-AzureRmVpnClientConfiguration v PowerShellu.
+2.  Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace Point-to-site na webu Azure portal nebo New-AzureRmVpnClientConfiguration v prostředí PowerShell.
 3.  Rozbalte profil. V Poznámkovém bloku otevřete konfigurační soubor vpnconfig.ovpn ze složky OpenVPN.
 4.  V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. Tady zjistíte, jak exportovat certifikát a získat zakódovaný veřejný klíč.
 5.  V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Tady zjistíte, jak extrahovat privátní klíč.
@@ -168,7 +168,7 @@ Pomocí staženého profilu nakonfigurujte klienty pro vzdálený přístup. Pos
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Stáhněte a nainstalujte si klienta OpenVPN, například TunnelBlik z webu https://tunnelblick.net/downloads.html. 
-2.  Stáhněte si profil sítě VPN pro bránu. Můžete to provést na kartě Konfigurace point-to-site na webu Azure Portal nebo pomocí rutiny New-AzureRmVpnClientConfiguration v PowerShellu.
+2.  Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace Point-to-site na webu Azure portal nebo New-AzureRmVpnClientConfiguration v prostředí PowerShell.
 3.  Rozbalte profil. V Poznámkovém bloku otevřete konfigurační soubor vpnconfig.ovpn ze složky OpenVPN.
 4.  V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. Tady zjistíte, jak exportovat certifikát a získat zakódovaný veřejný klíč.
 5.  V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Tady zjistíte, jak extrahovat privátní klíč.
@@ -207,7 +207,7 @@ Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostř
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

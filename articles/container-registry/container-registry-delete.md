@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 01/04/2019
 ms.author: danlep
-ms.openlocfilehash: a1644f68465cffa8cce27257bb91100c111af8a1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b18638057def03a02024200edb157e5caf08a669
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857767"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065167"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Odstranit Image kontejnerů ve službě Azure Container Registry
 
@@ -60,7 +60,7 @@ V privátním registru, jako je Azure Container Registry názvu image také zahr
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
 ```
 
-Informace o obrázku označování osvědčené postupy, najdete v článku [označování Dockeru: osvědčené postupy pro označování a správy verzí Image dockeru] [ tagging-best-practices] blogový příspěvek na webu MSDN.
+Informace o obrázku označování osvědčené postupy, najdete v článku [označování Dockeru: Osvědčené postupy pro označování a správy verzí Image dockeru] [ tagging-best-practices] blogový příspěvek na webu MSDN.
 
 ### <a name="layer"></a>Vrstva
 
@@ -131,7 +131,7 @@ Obrazová data můžete odstranit z vašeho registru kontejneru několika způso
 
 * Odstranit [úložiště](#delete-repository): Odstraní všechny Image a všechny jedinečné vrstvy v rámci tohoto úložiště.
 * Tím odstraníte [značka](#delete-by-tag): Odstraní image, značky, všechny jedinečné vrstvy odkazuje image a všechny ostatní značky, které jsou spojené s imagí.
-* Tím odstraníte [manifestu digest](#delete-by-manifest-digest): Odstraní bitovou kopii, všechny jedinečné vrstvy odkazuje image a všechny značky přidružené k imagi.
+* Tím odstraníte [manifestu digest](#delete-by-manifest-digest): Odstraní image, všechny jedinečné vrstvy odkazuje image a všechny značky, které jsou spojené s imagí.
 
 ## <a name="delete-repository"></a>Odstranit úložiště
 
@@ -239,20 +239,20 @@ Jak je uvedeno v [manifestu digest](#manifest-digest) části doručením (push)
      },
      {
        "digest": "sha256:d2bdc0c22d78cde155f53b4092111d7e13fe28ebf87a945f94b19c248000ceec",
-       "tags": null,
+       "tags": [],
        "timestamp": "2018-07-11T21:32:21.1400513Z"
      }
    ]
    ```
 
-Jak je vidět ve výstupu příkazu poslední krok v pořadí, je teď osamocený manifestu, jehož `"tags"` vlastnost `null`. Tento manifest stále existuje v registru, spolu s daty všechny jedinečné vrstvy, na kterou odkazuje. **Chcete-li například Odstranit osamocené obrázků a jejich data vrstev, je nutné odstranit podle manifestu digest**.
+Jak je vidět ve výstupu příkazu poslední krok v pořadí, je teď osamocený manifestu, jehož `"tags"` vlastnost je prázdné pole. Tento manifest stále existuje v registru, spolu s daty všechny jedinečné vrstvy, na kterou odkazuje. **Chcete-li například Odstranit osamocené obrázků a jejich data vrstev, je nutné odstranit podle manifestu digest**.
 
 ### <a name="list-untagged-images"></a>Seznam neoznačených obrázků
 
 V úložišti pomocí následujícího příkazu rozhraní příkazového řádku Azure můžete vytvořit seznam všech neoznačených obrázků. Nahraďte `<acrName>` a `<repositoryName>` s hodnotami, které jsou vhodné pro vaše prostředí.
 
 ```azurecli
-az acr repository show-manifests --name <acrName> --repository <repositoryName>  --query "[?tags==null].digest"
+az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?!(tags[?'*'])].digest"
 ```
 
 ### <a name="delete-all-untagged-images"></a>Odstranit všechny neoznačených obrázků
@@ -283,7 +283,7 @@ REPOSITORY=myrepository
 # Delete all untagged (orphaned) images
 if [ "$ENABLE_DELETE" = true ]
 then
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags==null].digest" -o tsv \
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?!(tags[?'*'])].digest" -o tsv \
     | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
 else
     echo "No data deleted. Set ENABLE_DELETE=true to enable image deletion."
@@ -310,7 +310,7 @@ $registry = "myregistry"
 $repository = "myrepository"
 
 if ($enableDelete) {
-    az acr repository show-manifests --name $registry --repository $repository --query "[?tags==null].digest" -o tsv `
+    az acr repository show-manifests --name $registry --repository $repository --query "[?!(tags[?'*'])].digest" -o tsv `
     | %{ az acr repository delete --name $registry --image $repository@$_ --yes }
 } else {
     Write-Host "No data deleted. Set `$enableDelete = `$TRUE to enable image deletion."

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5eb30c65032332825d05097f86d0275b015a8929
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6b02714c3a62e8d11512c1cc2dfc7a75a422441d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059421"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076378"
 ---
 # <a name="containers-offer-publishing-guide"></a>Kontejnery nabízejí Průvodce publikováním
 
@@ -40,16 +40,17 @@ Společnost Microsoft aktuálně podporuje zdarma a přenést svůj – použív
 |:--- |:--- |  
 | K fakturaci a měření | Podpora buď bezplatnou nebo fakturační model BYOL. |  
 | Bitové kopie vytvořené ze souboru Dockerfile | Image kontejneru musí být založené na specifikaci image Dockeru a musí být sestaveny ze souboru Dockerfile.<ul> <li>Další informace o vytváření imagí dockeru, najdete v části využívání umístěného v [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
-| Hostování v ACR | Image kontejneru musí být uložen v úložišti Azure Container Registry (ACR).<ul> <li>Další informace o práci s ACR získáte rychlý start: vytvoření registru kontejnerů pomocí stránky Azure portal v [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
+| Hostování v ACR | Image kontejneru musí být uložen v úložišti Azure Container Registry (ACR).<ul> <li>Další informace o práci s ACR najdete rychlém startu: Vytvoření registru kontejnerů pomocí stránky Azure portal v [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
 | Označení Image | Image kontejnerů musí obsahovat alespoň 1 značky (maximální počet značek: 16).<ul> <li>Další informace o označování image, najdete na stránce značky dockeru v [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste tak již neučinili, 
 
-- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace
+- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace.
 
 Pokud budete zaregistrováni a vytvoření nové nabídky nebo pracující na existující,
 
-- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky
+- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky.
+- Zobrazit [kontejnery](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) Další informace.

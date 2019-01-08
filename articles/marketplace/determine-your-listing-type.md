@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4abed1718d77c93e864fe5bb1d39aba5e5272f10
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081536"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074466"
 ---
 # <a name="determine-your-publishing-option"></a>Určení publikování možnost
 Přímo na požadavky zakládající nárok i na webu marketplace výhody GTM souvisí možnost publikování, který jste vybrali pro vaši nabídku. Důležitější je výběr publikování možnost a typ nabídky na portál Cloud Partner definuje interakci uživatele v rámci vaší nabídky na webu marketplace.
@@ -62,18 +62,18 @@ Storu, kde nabídky se zobrazí, webu Azure Marketplace a AppSource, automaticky
 
 ## <a name="choose-a-publishing-option"></a>Zvolte možnost publikování
 
-Dostupné možnosti publikování nabízejí rozlišené customer engagement teprve přitom budete mít přístup ke sdílení potenciálních zákazníků a [Go-To-Market výhody](https://partner.microsoft.com/en-US/reach-customers/gtm). Vyberte ze tří možností publikování před použitím portál partnerů cloudu k vytvoření nabídky na webu marketplace. Všimněte si volání na akce, která odpovídají možnost publikování:
+Dostupné možnosti publikování nabízejí rozlišené customer engagement teprve přitom budete mít přístup ke sdílení potenciálních zákazníků a [Go-To-Market výhody](https://partner.microsoft.com/reach-customers/gtm). Vyberte ze tří možností publikování před použitím portál partnerů cloudu k vytvoření nabídky na webu marketplace. Všimněte si volání na akce, která odpovídají možnost publikování:
 
 | **Možnost publikování**    | **Popis**  |
 | :------------------- | :-------------------|
 | **Seznam** | Jednoduchý seznam vaše aplikace nebo služba, která umožňuje uživateli marketplace vám umožní připojit se u zákazníka prostřednictvím požadavku **Kontaktujte mě** volání akce. |
-| **Zkušební verze** | Můžete zvýšit vyhledatelnost a automatizovat zřizování zkušební prostředí vaší aplikace, potenciální uživatelům umožníte používat prostředí v aplikaci SaaS, IaaS nebo Microsoft zdarma po omezenou dobu před nakupují marketplace. Volání k akci pro zkušební možnost publikování jsou buď: **bezplatná zkušební verze** nebo **Test Drive**. |
+| **Zkušební verze** | Můžete zvýšit vyhledatelnost a automatizovat zřizování zkušební prostředí vaší aplikace, potenciální uživatelům umožníte používat prostředí v aplikaci SaaS, IaaS nebo Microsoft zdarma po omezenou dobu před nakupují marketplace. Volání k akci pro zkušební možnost publikování jsou buď: **Bezplatná zkušební verze** nebo **Test Drive**. |
 | **Příkaz Transact** | Vaše aplikace běží na Azure a dá zřídit jako prostředek přímo do předplatného zákazníka z oblasti Azure, když zákazník vybere Get teď výzva k akci. Váš licenční poplatky za software je volitelně možné zakoupit a účtují prostřednictvím volby zákazníka platební nástroj a podmínky, a můžete také nabízejí časově omezený přístup k vaší **bezplatná zkušební verze softwaru** (dostupné pouze pro Azure Tržiště.) |
 
 >[!Note]
 >Při použití příkazů jazyka Transact publikování možnost, je důležité pochopit, před výběrem typu nabídky a vytváření vaší nabídky na cenách, fakturaci, fakturace a důležité informace o platební. Zkontrolujte [Marketplace fakturace a důležité obchodní informace článku se dozvíte více](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 *   Po zvolení možnost publikování, jste připraveni k [vyberte typ nabídky](./publisher-guide-by-offer-type.md) , který se použije k prezentaci vaší nabídky.
 *   Přečtěte si požadavky zakládající nárok v možnosti publikování nabídky typu oddílu k dokončení pro výběr a konfiguraci nabídky.

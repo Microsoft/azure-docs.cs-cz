@@ -3,25 +3,25 @@ title: Odesílání vyhledávacích dotazů na rozhraní API vizuální vyhledá
 titlesuffix: Azure Cognitive Services
 description: Další informace o rozhraní REST API parametrů použitých ve Visual API Bingu pro vyhledávání.
 services: cognitive-services
-author: aahi
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
 ms.topic: article
 ms.date: 12/18/2018
-ms.author: aahill
-ms.openlocfilehash: 073570b428ffed395d90ee1cd6a734f66a1b0908
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.author: aahi
+ms.openlocfilehash: 4f1f52c7954b4985d0da24f51eb199e2cbeac3a6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745440"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063586"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Odesílání vyhledávacích dotazů na rozhraní API vizuální vyhledávání Bingu
 
 Tento článek popisuje parametry a atributy požadavky odeslané na rozhraní API vizuální vyhledávání Bingu, jakož i objektu odpovědi.
 
-Získejte přehled o bitovou kopii můžete získat třemi způsoby: 
+Získejte přehled o bitovou kopii třemi způsoby: 
 
 - pomocí tokenu insights, který získáte z image v předchozí volání k jednomu z [API pro vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) koncových bodů.
 - Odesílá adresa URL obrázku.

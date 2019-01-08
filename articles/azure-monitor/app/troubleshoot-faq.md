@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e620deae1a73c110dd22133a12155166a55b999
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: cb2383ee8a921aa2c9c4e3b536edc203dd883200
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052015"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074440"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -141,7 +141,7 @@ Podíváme se IP adresa (IPv4 nebo IPv6) webového klienta pomocí [GeoLite2](ht
 
 Můžete nakonfigurovat `ClientIpHeaderTelemetryInitializer` mají získat IP adresu z jiné záhlaví. U některých systémů, například se přesune na proxy serveru, načtěte nástroj pro vyrovnávání nebo sítěmi CDN, aby `X-Originating-IP`. [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
-Je možné [pomocí Power BI](../../application-insights/app-insights-export-power-bi.md) zobrazíte telemetrických dat požadavek na mapě.
+Je možné [pomocí Power BI](../../azure-monitor/app/export-power-bi.md ) zobrazíte telemetrických dat požadavek na mapě.
 
 
 ## <a name="data"></a>Jak dlouho se data uchovávají v portálu? Je bezpečný?

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: dacd2e0d43f2c7711539896b88838adb85542963
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051726"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074202"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získejte e-mailu při...
@@ -94,7 +94,7 @@ Některé body ke zvážení:
 * V [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md), přizpůsobení grafu a uložit jako oblíbenou položku. Připnete na řídicí panel Azure.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Řídicí panel s daty z jiných zdrojů a Application Insights
-* [Export telemetrie do Power BI](../../application-insights/app-insights-export-power-bi.md).
+* [Export telemetrie do Power BI](../../azure-monitor/app/export-power-bi.md ).
 
 Nebo
 

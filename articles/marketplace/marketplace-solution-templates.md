@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: ellacroi
-ms.openlocfilehash: d955f5c11121e8d42bc4b02b75427ab07298e74b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 660120a1314c0071aa5b1cf3eae668e1626813a1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264178"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073454"
 ---
-# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Aplikace Azure: Nabídka šablony řešení Průvodce publikováním
+# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Aplikace Azure: Průvodce publikováním nabídky šablony řešení
 
 Šablony řešení jsou jedním z hlavních způsobů, jak publikování řešení na webu Marketplace. Tento průvodce vám porozumět všem požadavkům pro v rámci této nabídky. 
 
@@ -40,7 +40,7 @@ Tyto šablony řešení jsou transakce nabídek, které se nasazují a prostřed
 |  |  |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud jste tak již neučinili, [zaregistrovat](https://azuremarketplace.microsoft.com/sell) na webu Marketplace.
 
 Pokud budete zaregistrováni a vytváříte novou nabídku nebo pracující na existující, přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky.

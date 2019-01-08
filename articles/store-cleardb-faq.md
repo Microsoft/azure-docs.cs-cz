@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k databázím ClearDB MySql pomocí Azure App Service | Dokumentace Microsoftu
+title: Nejčastější dotazy k databázím ClearDB MySQL ve službě Azure App Service
 description: Odpovědi na běžné dotazy týkající se použití databází ClearDB MySQL pomocí Azure App Service.
 documentationcenter: php
 services: mysql
@@ -7,17 +7,16 @@ author: sunbuild
 manager: yochayk
 tags: mysql
 ms.service: multiple
-ms.workload: data-management
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 253f817099bd2705d8b9ea98741dc8fd28f09efe
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0887f58ca455dfec0474c8d6a1acba584224f0d7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421653"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074406"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím ClearDB MySQL ve službě Azure App Service
 Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použití a nakupování databází ClearDB MySQL pro Azure Web Apps.
@@ -27,24 +26,22 @@ Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použit�
 >
 > Další podrobnosti a další kroky najdete v tématu [změní na plány služeb ClearDB](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
 
-
 ## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Jaké jsou možnosti pro MySQL v Azure?
-Máte několik možností:
+Zobrazit [ClearDB](https://w2.cleardb.net/) nejnovější informace o této službě. ClearDB MySQL, který je hostitelem služby je a spravuje MySQL infrastruktury za vás. 
 
-* [Databáze ClearDB MySQL sdílené](/marketplace/partners/cleardb/databases/)
-* [Clustery ClearDB MySQL Premium](/marketplace/partners/cleardb-clusters/cluster/)
+Máte několik možností pro hostování MySQL v Azure:
+* [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
 * [MySQL clusteru běžícího na Virtuálním počítači Azure](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
 * [Jednu instanci MySQL běžící na Virtuálním počítači Azure](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-ClearDB MySQL, který je hostitelem služby je a spravuje MySQL infrastruktury za vás. Když spustíte vlastní MySQL cluster nebo databáze ve virtuálním počítači Azure, budete muset nastavit MySQL server a zachování jejich aktualizace s opravami.
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Potřebuji platební kartu pro webová aplikace a MySQL šablony na webu Azure Marketplace?
 To závisí na typu vašeho předplatného, který používáte. Tady jsou některé běžně používané předplatné:
 
-* [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/): vyžaduje platební karta a při nákupu placené databáze MySQL se účtuje vaší platební karty.
-* [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/): zahrnuje kredity pro použití s Microsoft Azure services, ale neumožňuje nákup materiály třetích stran. K nákupu služeb třetích stran nebo placené databázi MySQL, budete muset použít platební kartu povolené předplatné. Pro webové aplikace můžete vytvořit bezplatný ClearDB MySQL database.
-* [Předplatné MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) a **MSDN pro vývoj testování průběžných plateb**: podobně jako v případě bezplatné zkušební verze předplatného MSDN vyžaduje, abyste platební kartu zakoupit placené řešení MySQL od ClearDB.
-* [Smlouvy Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): zákazníky se smlouvou EA se účtují podle příslušné smlouvy EA čtvrtletně pro všechny své nákupy na Azure Marketplace (třetí strany) na samostatné, konsolidované faktury. Bude se vám účtovat mimo peněžní závazek pro nákupy na marketplace. Mějte prosím na paměti, že v tuto chvíli není Azure Store dostupný pro zákazníky, které jsou zaregistrované v Ázerbájdžán, Chorvatsko, Norsko a Portoriko. 
+* [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/): Vyžaduje se platební karta a při nákupu placené databázi MySQL, kterou se účtuje vaší platební karty.
+* [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/): Zahrnuje kredity pro služby Microsoft Azure, ale neumožňuje nákup materiály třetích stran. K nákupu služeb třetích stran nebo placené databázi MySQL, budete muset použít platební kartu povolené předplatné. Pro webové aplikace můžete vytvořit bezplatný ClearDB MySQL database.
+* [Předplatné MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) a **MSDN pro vývoj testování průběžných plateb**: Podobně jako bezplatná zkušební verze, s předplatným služby MSDN vyžaduje platební kartu zakoupit placené řešení MySQL od ClearDB.
+* [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): Zákazníkům se smlouvou EA se účtují podle příslušné smlouvy EA čtvrtletně pro všechny své nákupy na Azure Marketplace (třetí strany) na samostatné, konsolidované faktury. Bude se vám účtovat mimo peněžní závazek pro nákupy na marketplace. Mějte prosím na paměti, že v tuto chvíli není Azure Store dostupný pro zákazníky, které jsou zaregistrované v Ázerbájdžán, Chorvatsko, Norsko a Portoriko. 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Proč se mi naúčtovala platba 3.50 pro webové aplikace a MySQL v Azure Marketplace?
 Výchozí možnost databáze je Titan, což je 3.50 $. Jsme nezobrazovat náklady při vytváření databáze, a chybně jste si můžete koupit databázi, kterou jste neměli v úmyslu. Snažíme se najít způsob, jak vylepšit, ale do té doby je nutné zkontrolovat všechny vaše vybrané cenové úrovně pro webovou aplikaci a databázi před kliknutím na tlačítko **vytvořit** a spouští se nasazování prostředků.
@@ -53,7 +50,7 @@ Výchozí možnost databáze je Titan, což je 3.50 $. Jsme nezobrazovat náklad
 Ano. Webové aplikace může připojit k vaší databázi, tak dlouho, dokud váš virtuální počítač Azure udělil vzdálený přístup do vaší webové aplikace. Další informace najdete v tématu [instalace MySQL na virtuálním počítači](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>Ve které země jsou podporované clustery ClearDB Premium MySQL?
-[ClearDB Premium MySQL clustery](/marketplace/partners/cleardb-clusters/cluster/) jsou k dispozici ve všech oblastech Azure po celém světě s výjimkou Indie, Austrálie, Brazílie – jih a Čína.
+Clustery ClearDB Premium MySQL jsou dostupné ve všech oblastech Azure po celém světě s výjimkou Indie, Austrálie, Brazílie – jih a Čína.
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>Můžete vytvořit nový cluster před vytvořením databáze ClearDB řešení cluster úrovně premium?
 Ne, vytváření clusterů prázdný ClearDB se nepodporuje. Na webu Azure portal umožňuje vytvářet databáze v clusteru, který může vytvořit nový cluster ve stejnou dobu.
@@ -65,7 +62,7 @@ Ne, Azure nezobrazí upozornění je-li odstranit nákup na marketplace, které 
 Azure Marketplace není dostupná pro zákazníky, které jsou zaregistrované v Ázerbájdžán, Chorvatsko, Norsko a Portoriko. ClearDB není k dispozici v těchto oblastech.
 
 ## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>Jaké cenové úrovně je nejvhodnější pro produkční webovou aplikaci a databázi?
-Použijte Basic nebo vyšší cenovou úroveň pro webové aplikace. ClearDB doporučujeme Saturn nebo Jupiter plánu. Kontrola funkce a omezení každá cenová úroveň pro obě [Web Apps](https://azure.microsoft.com/pricing/details/app-service/) a [databází ClearDB MySQL](/marketplace/partners/cleardb/databases/) zvolit ten, který nejlépe vyhovuje vašim potřebám.
+Použijte Basic nebo vyšší cenovou úroveň pro webové aplikace. ClearDB doporučujeme Saturn nebo Jupiter plánu. Kontrola funkce a omezení každá cenová úroveň pro obě [Web Apps](https://azure.microsoft.com/pricing/details/app-service/) a [databází ClearDB MySQL](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/) zvolit ten, který nejlépe vyhovuje vašim potřebám.
 
 ## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>Jak můžu upgradovat Moje databáze ClearDB z jednoho plánu do jiného?
 V [webu Azure portal](https://portal.azure.com), je možné škálovat i databázi ClearDB sdíleného hostingu. Přečtěte si tento [článku](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/) Další informace. Aktuálně Nepodporujeme upgrade ClearDB Premium clusterů na portálu Azure portal.

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519867b1e0607a769948c86af263c172e810d107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247071"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078112"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Publikování virtuálního počítače na webu Azure Marketplace
 
@@ -31,38 +31,26 @@ Následující technická a Netechnická požadavky platí pro publikování vir
 
 ### <a name="technical"></a>Technická
 
--   [Technické požadavky pro vytváření imagí virtuálních počítačů pro Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Technické požadavky pro vytváření imagí virtuálních počítačů pro Azure Marketplace](../cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
 -   [Vytvoření a nahrání linuxového virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [Vytvořit & testovací virtuální počítač s Linuxem pomocí bitové kopie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Vytvoření a nahrání virtuálního pevného disku Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [Vytvořit & testovací virtuálního počítače s Windows pomocí bitové kopie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
-
--   [Jak řešit běžné problémy během vytváření virtuálního pevného disku](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
+-   [Jak řešit běžné problémy během vytváření virtuálního pevného disku](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 -   [Doporučení zabezpečení pro Image Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)
 
 
 ### <a name="non-technical-business-requirements"></a>Netechnická (požadavky)
 
  -   Vaše společnost (nebo její pobočka) se nachází v určité zemi zákazník podporovanými webem Azure Marketplace
-
 -   Váš produkt musí mít licenci způsobem, který je kompatibilní s modely fakturace podporovanými webem Azure Marketplace
-
 -   Zodpovídáte za zpřístupnění technické podpory pro zákazníky přiměřené způsobem. Tato podpora může bude zdarma, placená nebo komunitní.
-
 -   Zodpovídáte za licencování váš software a všechny závislosti softwaru třetích stran.
-
--   Poskytnete obsah, který splňuje kritéria pro nabídky na webu Azure Marketplace a portálu pro správu Azure.
-
+-   Poskytnete obsah, který splňuje kritéria pro nabídky na webu Azure Marketplace a na webu Azure Portal.
 -   Souhlasíte s podmínkami zásady účasti na Azure Marketplace a smlouvě s vydavatelem.
-
 -   Budete souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [prohlášení o ochraně osobních údajů Microsoft](https://www.microsoft.com/privacystatement/default.aspx), a [smlouvou Microsoft Azure Certified Program](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Po splnění všech požadavků, můžete spustit vytváření šablony řešení nabídky. Než začnete, projděte si následující nabídky a informace o SKU.
 
@@ -116,7 +104,7 @@ Skladová položka se zobrazí v případě nadřazené nabídky na webu Azure M
 
     **Název**
 
-    Zobrazovaný název nabídky. Tento název se zobrazí na webu Azure Marketplace a na webu Azure Portal. Může mít maximálně 50 znaků. Použijte následující pokyny pro název nabídky:
+    Zobrazovaný název nabídky. Tento název se zobrazí na webu Azure Marketplace a na webu Azure portal. Může mít maximálně 50 znaků. Použijte následující pokyny pro název nabídky:
     -  Do názvu zahrňte rozpoznatelný název značky pro váš produkt. 
     - Nezahrnujte název společnosti, pokud je jak nabídku na trh.
     - Pokud v rámci této nabídky máte marketing na svůj vlastní web, ujistěte se, že název shodný s názvem na vašem webu.
@@ -140,7 +128,7 @@ Po přidání SKU, se zobrazí v seznamu skladových položek v zobrazení sklad
 
 ### <a name="hide-this-sku"></a>Skrýt toto SKU
 
-Toto nastavení použijte ke správě viditelnosti SKU. Pokud je vypnutý "Skrýt tuto skladovou Položku", SKU není viditelný v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [webu Azure Portal](https://portal.azure.com/) zákazníkům. Můžete chtít skrýt skladovou Položku, pokud chcete pouze je k dispozici prostřednictvím šablon řešení a není pro nákup jednotlivě.
+Toto nastavení použijte ke správě viditelnosti SKU. Pokud je vypnutý "Skrýt tuto skladovou Položku", SKU není viditelný v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [webu Azure portal](https://portal.azure.com/) zákazníkům. Můžete chtít skrýt skladovou Položku, pokud chcete pouze je k dispozici prostřednictvím šablon řešení a není pro nákup jednotlivě.
 
 ### <a name="cloud-availability"></a>Dostupnost cloudu
 
@@ -177,7 +165,7 @@ Spravujete licencování softwaru běžícího na virtuálním počítači. Micr
 
 #### <a name="usage-based-monthly-billed-sku"></a>Měsíční SKU se fakturuje podle využití
 
-Zákazníkům účtovat podle sazeb nastavit vydavatelé o velikostech virtuálních počítačů pro každý za každou hodinu. V případě klíčových **hodinové fakturace** modelu SKU, celková cena bude součtem nákladů na software účtuje vydavatelem a účtovat microsoftem náklady na infrastrukturu. Toto celkové náklady se zobrazí zákazníka jako po hodinách a měsíční cena při nákupu zvažují. Fakturace v tomto případě bude každý měsíc.
+Zákazníkům účtovat podle sazeb nastavit vydavatelé o velikostech virtuálních počítačů pro každý za každou hodinu. Pokud **hodinové fakturace** model se používá, celková cena bude součtem nákladů na software účtuje vydavatelem a účtovat microsoftem náklady na infrastrukturu. Toto celkové náklady se zobrazí zákazníka jako po hodinách a měsíční cena při nákupu zvažují. Fakturace v tomto případě bude každý měsíc.
 
 V rámci modelu na základě využití jsou třeba další nastavení.
 
@@ -188,7 +176,7 @@ Tady zákazník nebude účtovat, náklady na software pro prvních 30 nebo 90 d
 
 **Za jádro**
 
-Můžete nastavit ceny podle počtu jader pro vaši skladovou jednotku. V takovém případě stačí zadat základní ceny pro jedním jádrem a jsme automaticky – výpočetní ceny pro ostatní jádra. Zadání ceny v USD na portálu a bude automaticky výpočtu ceny pro ostatní oblasti. Ceny v dalších oblastech můžete ověřit pomocí **exportovat Data ceny**
+Můžete nastavit ceny podle počtu jader pro vaši skladovou jednotku. Pro tuto možnost stačí zadat základní ceny pro jedním jádrem a jsme automaticky – výpočetní ceny pro ostatní jádra. Zadání ceny v USD na portálu a bude automaticky výpočtu ceny pro ostatní oblasti. Ceny v dalších oblastech můžete ověřit pomocí **exportovat Data ceny**
 
 ![Za jádro](./media/cloud-partner-portal-publish-virtual-machine/publishvm6.png)
 
@@ -201,8 +189,8 @@ Můžete nastavit, ceny pro každou sadu jader zvlášť pokud byste chtěli cen
 
 **Export-Import ceny**
 
-Máte možnost exportovat ceny, která je nakonfigurovaná prostřednictvím portálu provádět změny prostřednictvím rozhraní excel. To také umožňuje ověřit ceny podle oblasti a ceny v místní měny.
-Kliknutím na **ceny Export** stáhne excelový soubor se předem vyplní podrobnosti o cenách. Bude možné upravit v rámci aplikace excel a potom pomocí **ceny importu** k importu, které byly provedeny změny.
+Máte možnost exportovat ceny, která je nakonfigurovaná prostřednictvím portálu provádět změny prostřednictvím rozhraní excel. Tato možnost také umožňuje ověřit ceny podle oblasti a ceny v místní měny.
+Kliknutím na **ceny Export** stáhne Excelový soubor se předem vyplní podrobnosti o cenách. Bude možné upravit následující údaje v tabulce a potom pomocí **ceny importu** k importu, které byly provedeny změny.
 Importované ceny se projeví i na portálu.
 
 V této cenové Excelu jsou uvedené ceny pro různé oblasti v místní měně. Kurzu, který jsme použili se aktualizují každý den.
@@ -219,24 +207,18 @@ V této cenové Excelu jsou uvedené ceny pro různé oblasti v místní měně.
 
 Další části a proveďte bude části Imagí virtuálních počítačů. Před přechodem do této části, musíte mít virtuální pevný disk, který chcete publikovat připravený. Tady je pár odkazů, což pomáhá vytvořit virtuální pevný disk:
 
--   [Technické požadavky pro vytváření imagí virtuálních počítačů pro Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Technické požadavky pro vytváření imagí virtuálních počítačů pro Azure Marketplace](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
 -   [Vytvoření a nahrání linuxového virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [Vytvořit & testovací virtuální počítač s Linuxem pomocí bitové kopie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Vytvoření a nahrání virtuálního pevného disku Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [Vytvořit & testovací virtuálního počítače s Windows pomocí bitové kopie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
+-   [Jak řešit běžné problémy během vytváření virtuálního pevného disku](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 
--   [Jak řešit běžné problémy během vytváření virtuálního pevného disku](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
-Jakmile se vaše virtuální pevný disk připravený, můžete začít vyplňování v této části.
-Tady jsou některé podrobnosti pro některá pole.
+Jakmile se vaše virtuální pevný disk připravený, můžete začít vyplňování v této části.  Tady jsou některé podrobnosti pro některá pole.
 
 ### <a name="recommended-vm-sizes"></a>Doporučené velikosti virtuálních počítačů
 
-Vyberte až šest doporučené velikosti virtuálního počítače. Jedná se o doporučení, která se zobrazí zákazníků na webu Azure Marketplace a v okně cenová úroveň na webu Azure Portal chvíli kdy se rozhodnou vaši image koupit a nasadit. **Jedná se jenom o doporučení. Zákazník se může vybrat jakoukoli velikost virtuálního počítače, které se vejdou disky určené ve vaší imagi.**  Následující snímek obrazovky ukazuje doporučené velikosti virtuálních počítačů, které zákazník uvidí na portálu Azure Portal.
+Vyberte až šest doporučené velikosti virtuálního počítače. Tato doporučení se zobrazí na zákazníky v Azure Marketplace a v okně cenová úroveň na webu Azure Portal chvíli kdy se rozhodnou vaši image koupit a nasadit. *Tyto velikosti jsou jenom o doporučení. Zákazník se může vybrat jakoukoli velikost virtuálního počítače, které se vejdou disky určené ve vaší imagi.*  Následující snímek obrazovky ukazuje doporučené velikosti virtuálních počítačů, které zákazník se zobrazí na webu Azure Portal.
 
 
 ![Doporučené velikosti virtuálních počítačů](./media/cloud-partner-portal-publish-virtual-machine/publishvm9.png)
@@ -250,7 +232,7 @@ Zadejte porty, na které jste provedli otevřený a dostupný. Tyto porty jsou o
 
 Dalším krokem je přidání image virtuálního počítače pro vaši skladovou jednotku. Můžete přidat až 8 diskových verzí za skladové položky. Pouze nejvyšší verze číslo disku pro určité skladové položky se zobrazí na webu Azure Marketplace. Ostatní budou viditelné prostřednictvím rozhraní API.
 
-V části **disková verze**vyberte **+ nová verze**. To ukazuje následující pole, které je třeba vyplnit.
+V části **disková verze**vyberte **+ nová verze**. Tato možnost ukazuje následující pole, které je třeba vyplnit.
 
 #### <a name="vm-image-version"></a>Verze image virtuálního počítače
 
@@ -258,13 +240,13 @@ Verze image virtuálního počítače je potřeba postupovat podle [sémantickou
 
 #### <a name="os-vhd-url"></a>ADRESA URL VIRTUÁLNÍHO PEVNÉHO DISKU
 
-Zadejte [sdíleného přístupového podpisu URI](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) pro operační systém virtuálního pevného disku.
+Zadejte [sdíleného přístupového podpisu URI](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) pro operační systém virtuálního pevného disku.
 
 Pokud je této skladové jednotce přidružené datové disky, můžete přidat tyto disky tak, že vyberete **+ nový datový disk** odkaz. Tato akce zobrazí další pole můžete vyplnit.
 
 #### <a name="lun-vhd-url"></a>URL VIRTUÁLNÍHO PEVNÉHO DISKU LUN
 
-Zadejte [sdíleného přístupového podpisu URI](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) pro datový disk.
+Zadejte [sdíleného přístupového podpisu URI](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) pro datový disk.
 
 #### <a name="lun-number"></a>Číslo logické jednotky
 
@@ -277,16 +259,16 @@ Přiřaďte tuto logickou jednotku číslo. Toto číslo se vyhradí pro tento d
 
 | Problém                                                                 | Zpráva                                                                           | Napravit                                                           |  Odkaz na dokumentaci                                                                                |
 |---------------------------------------------------------------------  |-------------------------------------------------------------------------------    |-----------------------------------------------------------    |---------------------------------------------------------------------------------------------------    |
-| Chyba při kopírování Image - "?" nebyl nalezen v adrese url SAS                | Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.       | Aktualizace adres Url SAS pomocí doporučené nástroje                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Chyba při kopírování Image - parametry "st" a "se" není v adrese url SAS   | Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.        | Aktualizace adres Url SAS s počátečním a koncovým datem, které na něm             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Chyba při kopírování imagí – "sp = rl" není v adrese url SAS                    | Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS         | Aktualizace adres Url SAS pomocí oprávnění nastavená jako "Čtení" a "List     | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Chyba při kopírování imagí – adresa url SAS mít prázdné znaky v názvu virtuálního pevného disku     | Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.        | Aktualizace adres Url SAS bez mezer                       | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Chyba při kopírování imagí – chyby autorizace adres Url SAS               | Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu chyby autorizace     | Znovu vygenerovat adresu SAS Url                                        | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Chyba při kopírování Image - "?" nebyl nalezen v adrese url SAS                | Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.       | Aktualizace adres Url SAS pomocí doporučené nástroje                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Chyba při kopírování Image - parametry "st" a "se" není v adrese url SAS   | Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.        | Aktualizace adres Url SAS s počátečním a koncovým datem, které na něm             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Chyba při kopírování imagí – "sp = rl" není v adrese url SAS                    | Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS         | Aktualizace adres Url SAS pomocí oprávnění nastavená jako "Čtení" a "List     | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Chyba při kopírování imagí – adresa url SAS mít prázdné znaky v názvu virtuálního pevného disku     | Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.        | Aktualizace adres Url SAS bez mezer                       | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Chyba při kopírování imagí – chyby autorizace adres Url SAS               | Chyba: Kopírování obrázků. Nepodařilo se stáhnout objekt blob z důvodu chyby autorizace     | Znovu vygenerovat adresu SAS Url                                        | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
 
 
 ## <a name="to-configure-the-marketplace"></a>Konfigurace na webu Marketplace
 
-Použít ke konfiguraci pole, která se zobrazují pro nabídky na Marketplace zobrazení [Azure Marketplace](https://azuremarketplace.microsoft.com) a na [webu Azure Portal](https://portal.azure.com/).
+Použít ke konfiguraci pole, která se zobrazují pro nabídky na Marketplace zobrazení [Azure Marketplace](https://azuremarketplace.microsoft.com) a na [webu Azure portal](https://portal.azure.com/).
 
 ### <a name="preview-subscription-ids"></a>ID předplatných ve verzi Preview
 
@@ -294,9 +276,9 @@ Seznam ID předplatných Azure, který chcete mít přístup do nabídky při pu
 
 ### <a name="suggested-categories"></a>Navrhované kategorií
 
-Vyberte kategorie až 5 ze zadaného seznamu, který vaše nabídka může být nejlepší přidružený. Vybrané kategorie se použije k mapování vaší nabídky na o produktových kategoriích, které jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [webu Azure Portal](https://portal.azure.com/).
+Vyberte až o pěti kategorií ze zadaného seznamu, který vaše nabídka může být nejlepší přidružený. Vybrané kategorie se použije k mapování vaší nabídky na o produktových kategoriích, které jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [webu Azure portal](https://portal.azure.com/).
 
-Následující příklady ukazují informace z marketplace na webu Azure Marketplace a na webu Azure Portal.
+Následující příklady ukazují informace z marketplace na webu Azure Marketplace a na webu Azure portal.
 
 **Azure Marketplace**
 
@@ -316,7 +298,6 @@ Následující příklady ukazují informace z marketplace na webu Azure Marketp
 ![publishvm12](./media/cloud-partner-portal-publish-virtual-machine/publishvm12.png)
 
 
-
 ![publishvm13](./media/cloud-partner-portal-publish-virtual-machine/publishvm13.png)
 
 
@@ -329,11 +310,11 @@ Postupujte podle následujících pokynů loga nahráli na portál partnerů clo
 -   Jsou bílé barvy motivu na webu Azure portal a černé. Nepoužívejte tyto barvy jako barva pozadí vašeho loga. Použijte barvu, která by provedla vašeho loga viditelného na webu Azure Portal. Doporučujeme použít jednoduché primární barvy.
 
     >[!Note] 
-    >Pokud pracujete s průhledným pozadím, ujistěte se, že nejsou bílé, loga nebo text černou nebo modrou.
+    >Pokud pracujete s průhledným pozadím, ujistěte se, že nejsou loga/text bílé, černá a modrá.
 
 -   Nepoužívejte v logu pozadí s barevným přechodem.
 
--   Předejde text loga. To zahrnuje vaše společnost nebo název značky. Vzhled a chování vašeho loga musí být *plochý* a přechody se měli vyhnout.
+-   Předejde text, mezi které patří společnosti nebo název značky na loga.  Vzhled a chování vašeho loga musí být *plochý* a přechody se měli vyhnout.
 
 -   Logo by neměl být roztažená.
 
@@ -343,9 +324,9 @@ Hero logo je volitelné. Vydavatele můžete nahrávat Hero logo. Ale po nahrán
 
 #### <a name="guidelines-for-the-hero-logo-icon"></a>Pokyny pro ikona loga Hero
 
--   Zobrazovaný název vydavatele, název plánu a nabídky, dlouhé shrnutí jsou zobrazeny pomocí bílé barevné písma. Vyhněte se použití jakékoli světlé barevné na pozadí. Černá, bílý a průhledné pozadí nejsou povoleny pro Hero ikony.
+-   Zobrazovaný název vydavatele, název plánu a nabídky, dlouhé shrnutí jsou zobrazeny pomocí bílé barvy písma. Vyhněte se použití jakékoli světlé barevné na pozadí. Černou, bílou a průhledné pozadí nejsou povoleny pro Hero ikony.
 
--   Vydavatel zobrazovaný název, plán, title, nabídky, dlouhé shrnutí a tlačítka pro vytvoření jsou vložené prostřednictvím kódu programu uvnitř Hero logo při jejím uvedené. Při navrhování Hero logo, nezadávejte žádný text. Ponechte prázdné místo na pravé straně loga. Tento prostor by měl být 415 × 100 pixelů a je posunut 370 pixelů od levého okraje.
+-   Vydavatel zobrazovaný název, plán, title, nabídky, dlouhé shrnutí a tlačítka pro vytvoření jsou vložené prostřednictvím kódu programu uvnitř Hero logo při nabídky je uveden. Při navrhování Hero logo, nezadávejte žádný text. Ponechte prázdné místo na pravé straně loga. Tento prostor by měl být 415 × 100 pixelů a je posunut 370 pixelů od levého okraje.
 
 ![Příklad hero loga](./media/cloud-partner-portal-publish-virtual-machine/publishvm14.png)
 

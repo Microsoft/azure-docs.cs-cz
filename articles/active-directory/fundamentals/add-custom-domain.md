@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 14035fe9061af98b10b822c3b7b9213cdda3fbbd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3fdbbd1d3cf27172ed9ba5c5087ffc331e01ccf9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098287"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076803"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Přidání vlastního názvu domény pomocí portálu Azure Active Directory
 Každý nový Azure AD tenanta se dodává s počáteční název domény, *domainname*. onmicrosoft.com. Nelze změnit ani odstranit název domény, ale vaše organizace názvy můžete přidat do seznamu. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, které jsou vaši uživatelé znají, jako je například *alain@contoso.com*.
@@ -63,7 +63,7 @@ Po vytvoření adresáře, můžete přidat vlastní název domény.
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>Přidejte své informace o DNS pro registrátora domény
 Po přidání vlastního názvu domény do Azure AD, musíte vrátit vašeho registrátora domény a přidejte informace o Azure AD DNS ze zkopírovaného souboru TXT. Vytvoření tohoto TXT záznam pro vaši doménu "ověří" vlastnictví názvu domény.
 
--  Vraťte se do vašeho registrátora domény, vytvořte nový záznam TXT pro vaši doménu na základě zkopírovaný informací DNS, nastavte **TTL** (hodnota time to live) až 60 minut a uložte informace.
+-  Vraťte se do vašeho registrátora domény, vytvořte nový záznam TXT pro vaši doménu na základě zkopírovaný informací DNS, nastavte **TTL** (hodnota time to live) 3 600 sekund (60 minut) a poté uložit informace.
 
     >[!Important]
     >Můžete zaregistrovat libovolný počet názvů domén. Každá doména však získá svůj vlastní záznam TXT ze služby Azure AD. Buďte opatrní při zadávání vaše informace o souboru TXT registrátora domény. Pokud zadáte chybnou nebo duplicitní informace omylem, budete muset počkat, dokud hodnota TTL vyprší časový limit (standardně 60 minut) předtím, než můžete to zkusit znovu.
@@ -98,10 +98,10 @@ Až dokončíte registraci vlastního názvu domény, budete muset Ujistěte se,
 
 ## <a name="next-steps"></a>Další postup
 
-- Přidáte další globální správce adresáře. Další informace najdete v tématu [přiřazení role a správci](active-directory-users-assign-role-azure-portal.md)
+- Přidáte další globální správce adresáře. Další informace najdete v tématu [přiřazení role a správci](active-directory-users-assign-role-azure-portal.md).
 
-- Přidání uživatelů do domény, najdete v článku [postup přidání nebo odstranění uživatelů](add-users-azure-active-directory.md)
+- Přidání uživatelů do domény, najdete v článku [postup přidání nebo odstranění uživatelů](add-users-azure-active-directory.md).
 
-- Spravujte vaše informace o názvu domény ve službě Azure AD. Další informace najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md)
+- Spravujte vaše informace o názvu domény ve službě Azure AD. Další informace najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
 
 - Pokud máte místní verze systému Windows Server, který chcete použít společně s Azure Active Directory, naleznete v tématu [integrace místních adresářů se službou Azure Active Directory](../connect/active-directory-aadconnect.md).

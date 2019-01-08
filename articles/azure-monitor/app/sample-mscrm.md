@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 9028d682d7807b8b153153840356e2e37b082b27
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 12b4a4639991628265a19a5d45f3abdef590efcd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028214"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077925"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Průvodce: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
 V tomto článku se dozvíte, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Provedeme procesem kompletní proces přidávání skript Application Insights do vaší aplikace, zachycení dat a vizualizace dat.
@@ -127,7 +127,7 @@ Klepněte na graf, abyste získali více podrobností:
 [Procházet ukázky kódu](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="power-bi"></a>Power BI
-Můžete provést i hlubší analýzu, pokud jste [export dat do Microsoft Power BI](../../application-insights/app-insights-export-power-bi.md).
+Můžete provést i hlubší analýzu, pokud jste [export dat do Microsoft Power BI](../../azure-monitor/app/export-power-bi.md ).
 
 ## <a name="sample-microsoft-dynamics-crm-solution"></a>Ukázkové aplikace Microsoft Dynamics CRM řešení
 [Tady je ukázka řešení implementované v aplikaci Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).

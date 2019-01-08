@@ -1,6 +1,6 @@
 ---
-title: Růst společnosti v Azure pomocí AppSource | Azure
-description: Informace o používání AppSource, což umožňuje partnerům Microsoftu zjistitelnost partnera technologie a služby zákazníkům prostřednictvím podporovaných Microsoft online výkladní skříň.
+title: Rozvíjejte své podnikání v Azure s využitím AppSource | Azure
+description: Informace o používání AppSource, který umožňuje partnerům Microsoftu zjistitelnost partnera technologie a služby zákazníkům prostřednictvím online prezentace podporovaný společností Microsoft.
 services: Azure, Marketplace, AppSource, Compute, Storage, Networking, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,174 +14,174 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: f39392518f89ac51afd9a18fe59bcef46840478d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2a4343b036716e6c49f7a05a8a480c6e74463760
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054169"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077993"
 ---
-# <a name="grow-your-business-with-appsource"></a>Růst společnosti s AppSource  
-Použít AppSource při zaujmout obchodní zákazníkům najít, zkuste a get-obchodní software jako služba (SaaS) aplikace a implementaci služby Nápověda jednotky obchodní výsledky a zkrátit čas na hodnotu.  
+# <a name="grow-your-business-with-appsource"></a>Rozvíjejte své podnikání s využitím AppSource  
+Použijte AppSource, pokud zapojení firemním zákazníkům najít, zkuste a získejte-obchodní software jako služba (SaaS) aplikací a implementace služeb a pomůže zlepšit výsledky firmy a zkrácení doby uvedení na hodnotu.  
 
 | Požádejte zákazníka | Funkce |  
 |:--- |:--- |  
-| ***Obchodní řešení, které pracují s produkty Microsoftu zákazníci již používat*** | Umožňuje zákazníkům partnerských aplikací a služeb můžete použít k rozšíření Microsoft cloudových aplikací a technologie |  
-| ***Schopnost snadno najít službu správné řešení nebo implementace.*** | Poskytuje centralizované zjistit, zkuste a získat aplikace a služby, moduly a další |  
-| ***Průmyslové obchodní řešení, aby reagovaly na výzvy zákazníka konkrétní obchodní*** | Poskytuje oborový dokončení začátku do konce řešení pro identifikaci a ověření požadavků napříč mnoha odvětví |  
-| ***Aplikacemi a pomáhá zvýšit produktivitu, efektivitu a podnikových statistik*** | Poskytuje aplikace pro odvětví podnikání, včetně služeb zákazníkům, oddělení lidských zdrojů, operace a další |  
-| ***Implementace zkušeného partnera k přizpůsobí aplikace jedinečný situaci pro vaše zákazníky*** | Nabízí katalog služby Consulting Services nabídek pro řešení založená na Dynamics 365, Power BI, PowerApps a partnerských aplikací pomáhá podnikovým uživatelům poskytovat předvídatelný výstupy |  
+| ***Použití obchodních řešení, která fungují s produkty společnosti Microsoft zákazníkům již*** | Umožňuje zákazníkům používat partnerské aplikace a služby pro rozšíření Microsoft cloudovými aplikacemi a technologie |  
+| ***Schopnost snadno vyhledat požadovanou službu řešení nebo implementace.*** | Poskytuje univerzálním zjišťovat, zkoušet a získejte, aplikace a služby, doplňky a další |  
+| ***Řeší specifické obchodní problémy zákazníků z podnikové řešení specifických pro dané odvětví*** | Poskytuje dokončení začátku do konce oborová řešení k identifikaci a ověření požadavků v mnoha oborech |  
+| ***Aplikace, které jí pomohou zlepšit produktivitu, efektivitu a obchodní přehledy*** | Aplikace zajišťující odvětví podnikání, včetně služby zákazníkům, HR, operací a dalších |  
+| ***Zkušení implementace partnera, který přizpůsobí aplikacím jedinečný stav pro vaše zákazníky*** | Nabízí katalog Consulting Services nabídek pro řešení založená na Dynamics 365, Power BI, PowerApps a partnerských aplikací pomáhají podnikovým uživatelům dodávat předvídatelné výsledky |  
 
-<!-- # Grow your business with AppSource  --> Azure Marketplace i AppSource jsou spuštění body pro společné aktivity, přejděte na trh se společností Microsoft a setrvačníku pro růst podniku. Pomocí spuštění povýšení, generování vyžádání a joint prodeje a marketingu, lze vaši nabídku marketplace základnu vaší firmy stroje cloudu. Neexistují žádné poplatky za účasti. Zákazníci společnosti Microsoft, navštivte obchodní poutače na marketplace každý den se najít správné aplikace a služby, které pomohou zvýšit firmy pro vaše zákazníky. Cílem společnosti Microsoft je připojení organizace s řešeními a služeb od společnosti Microsoft a Microsoft partnery.  
+<!-- # Grow your business with AppSource  --> Azure Marketplace a AppSource se spouštění body pro společné aktivity uvedení na trh s Microsoftem a setrvačníku pro obchodní růst. Použití spuštění povýšení, generování poptávky a společný prodej a marketing, nabídky marketplace může být základem vašeho cloudového byznysu. Neexistují žádné poplatky za účast. Zákazníci společnosti Microsoft najdete prodejní místa na webu marketplace každý den k nalezení správné aplikace a služby pro firmy zvyšují pro vaše zákazníky. Cílem Microsoftu je připojit organizace s řešeními a služeb od Microsoftu a Microsoft partnery.  
 
-## <a name="business-benefits-of-joining-a-cloud-marketplace"></a>Obchodní výhody propojení na trhu cloudu  
-Existuje mnoho pádných důvodů, proč připojovat obchodní poutače na webu marketplace. Zde jsou výhody určený speciálně pro výpis vaší nabídky na AppSource můžete růst společnosti:  
-*   **Připojit se k rozhodnutí ve firmě**  
-    AppSource pomáhá nezávislí dodavatelé softwaru a systému implementors kontaktovat potenciální zákazníky a připojit se k těchto kritické obchodní rozhodnutí ve firmě, poskytuje jeden cíl pro firmy uživatelům zjišťovat a zkuste SaaS obchodní aplikace.  
-*   **Dosažení více zákazníků**  
-    AppSource můžete uživatelům firmy po celém světě v trhy, které je možné, že byla dosažitelné před doručena. Zákazníci můžou snadno najít aplikace nejen na AppSource, ale také z v rámci produktů společnosti Microsoft zákazníci již použít – prostřednictvím Galerie aplikace v produktu.  
-    *   Další informace o AppSource naleznete na stránce AppSource nacházející se v [ https://appsource.microsoft.com ](https://appsource.microsoft.com).  
-*   **Generovat zájemců a prodejních příležitostí**  
-    Pokud se uživatelé obchodní aplikace ve sdílených složkách AppSource Microsoft zákazník kontaktní informace s vámi přímo v systému CRM, můžete se připojit se zákazníkem a zákazník do prodejních příležitostí zapnout.  
-*   **Rozšíření týmům prodeje**  
-    Týmům prodeje hraje zásadní roli ve vašem podniku. Když můžete seznam aplikací na AppSource, získáte další prodejní kanál, který umožňuje podnikoví uživatelé k vyhledání a zkuste to obchodních aplikací. Plus podle seznamu v AppSource, vám může spolupracovat s prodeje týmy Microsoftu jak dodat řešení začátku do konce.  
-*   **Obchodní hodnotu zvýšit a zvýšení velikosti zakázky se stávající a nové zákazníky**  
-    Růst pozornosti velikost a adresa zákazníka problémové body při přesunu úloh do cloudu. Snižte prodejní cykly a zvýšit pozornosti ziskovosti prodejní kompletních řešení tento cíl konkrétní úlohy nebo odvětví scénáře.  
-*   **Odemknutí služby Microsoft přejděte na trh**  
-    Otevřete nový dveře prostřednictvím společného spuštění plánování nápovědy služby Microsoft přejděte na trh (GTM), globální rozšíření, vývoj kanálu vést sdílení a další. V závislosti na zkušební prostředí nabízejí a s růstem používání technologie společnosti Microsoft, získáte další výhody GTM odemknout.  
-*   **Seznam konzultační služby nabídkami**  
-    Podnikoví uživatelé hledají zkušeného partnery můžete začít pracovat s jistotou prostřednictvím nabídky kvality konzultační služby navržený tak, aby předvídatelný výstupy zákazníka. Zobrazí seznam konzultační služby nabídkami pomohou podnikoví uživatelé najít nabízí pomohou zákazník rychle začít.  
+## <a name="business-benefits-of-joining-a-cloud-marketplace"></a>Připojení cloudové Tržiště výhodách pro firmy  
+Existuje mnoho pádných důvodů, proč připojovat prodejní místa na webu marketplace. Tady jsou výhody speciálně pro výpis svoje nabídky na AppSource, které vám pomůžou rozvíjet vaše podnikání:  
+*   **Spojte se přímo s uživatelé s rozhodovací pravomocí**  
+    AppSource umožňuje nezávislým výrobcům softwaru a systému implementors kontaktovat potenciální zákazníky a spojte se přímo s tyto důležité obchodní uživatelé s rozhodovací pravomocí, poskytuje na jednom místě pro obchodní uživatele k vyhledání a vyzkoušení aplikací LoB SaaS.  
+*   **Oslovte více zákazníků**  
+    AppSource můžete oslovit obchodní uživatele po celém světě trhy, které jste možná nebylo možné kontaktovat před. Zákazníci můžou snadno najít aplikace nejen na AppSource, ale také z v rámci produktů společnosti Microsoft zákazníkům už používáte – prostřednictvím Galerie aplikací v rámci produktu.  
+    *   Další informace o AppSource, najdete na stránce AppSource v [ https://appsource.microsoft.com ](https://appsource.microsoft.com).  
+*   **Generování zájemců a prodejních příležitostí**  
+    Při podnikoví uživatelé vaší aplikace na AppSource Microsoft složky zákazníka kontaktní informace s vámi přímo v systému CRM, abyste se mohli připojit k odběrateli a zapnout zákazníků na prodejní příležitosti.  
+*   **Rozšíření prodejních týmů**  
+    Prodejních týmů hrají hlavní roli ve vašem podniku. Po zařazení vašich aplikací na AppSource získáte jiné prodejní kanál, který umožňuje podnikovým uživatelům umožňuje najít a zkuste obchodní aplikace. Navíc ve výpisu na AppSource, vám může partnerství s prodejním týmům Microsoftu k zajištění řešení začátku do konce.  
+*   **Vylepšení přidanou hodnotu a zvětšení velikosti zakázek díky stávající i nové zákazníky**  
+    Rozšiřte zakázky velikost a adresy zákazníka problémové body při přesunu úlohy do cloudu. Snižte prodejní cykly a zvýšit ziskovost zakázky prodejem kompletní řešení tento cíl konkrétní úlohy nebo scénáře odvětví.  
+*   **Odemknout Microsoft Go-To-Market Services**  
+    Nápověda služby Microsoft Go-To-Market (GTM) otevřete nové možnosti, aby prostřednictvím plánování vstupu na trh společné, globální expanze, vývoj pro kanál, vést sdílení a provádění dalších akcí. V závislosti na zkušební prostředí nabízejí a s růstem použití technologie společnosti Microsoft, získáte další výhody GTM odemknout.  
+*   **Seznam vašich nabídek ze strany konzultační služby**  
+    Podnikoví uživatelé hledají zkušených partnerů, abychom zákazníkovi s jistotou začít tím, že nabízí kvality konzultační služby navržené tak, aby dodávat předvídatelné výsledky. Seznam vašich nabídek konzultační služby k poskytování pomoci uživatelům firmy najít nabídky, abychom zákazníkovi rychle začít.  
 *   **Začínáme s jistotou**  
-    Tým Microsoft AppSource se zde a poskytuje prostředí bezproblémové registrace. Tým služby AppSource se zde můžete každý krok procesu; jestli ho pracuje na zkušební verzi nebo testování jednotky zkušenosti, vám pomáhá splňují kritéria výpis a další.  
-*   **Přizpůsobení seznamu stránku aplikace**  
-    Budete mít flexibilitu při rozhodování o při rozhodování o tom, jak jste chtěli na trhu aplikací na AppSource. Zadejte, video, datové listy, dokumentace a podrobný popis. Microsoft spolupracuje s prezentovat vaší aplikace na AppSource poutavé způsobem.  
-*   **Získání prakticky uplatnitelných informací**  
-    Přehledné na výkon vaší výpisech prostřednictvím portálu pro partnery cloudu nebo proces publikování aplikací Office. Sledovat, kolik návštěvníky aplikace získá výpis a kolik akci vaší aplikace. Další podrobnosti o výkonu marketingových kampaní a které obsah poskytuje nejlepší výkon.  
+    Tým Microsoft AppSource je připraven pro zajištění bezproblémového připojení prostředí. Tým AppSource je připraven vám pomoct s způsob, jakým; Určuje, zda je funkční na zkušební verzi nebo testovací jednotky prostředí, pomoc se splněním kritérií a další.  
+*   **Přizpůsobení stránky seznamu aplikací**  
+    Máte flexibilitu při rozhodování o rozhodování o tom, jak byste chtěli uvedení na trh své aplikace na AppSource. Zadejte videa, datových listů, dokumentace a podrobný popis. Microsoft spolupracuje s prezentovat vaší aplikace na AppSource skupinu.  
+*   **Získání užitečných přehledů**  
+    Získejte přehled o výkonu vaší výpisy přes portál partnerů cloudu nebo se proces publikování aplikace Office. Kolik návštěvníků sledovat vaše aplikace získá výpis a kolik vyzkouší vaši aplikaci. Přečtěte si podrobné údaje o výkonu vašich marketingových kampaní a jakého obsahu poskytuje nejlepší výkon.  
 
-## <a name="how-to-grow-your-business-with-appsource"></a>Postupy pro růst společnosti s AppSource  
-Následující osvědčené postupy v marketingové vaší nabídky na AppSource pomáhá maximalizovat výhody vaší firmy a nastavené úspěch s přejděte na trh a iniciativami společné Sell společnosti Microsoft. Microsoft Partner sítě (MPN) je brána pro všechny Marketplace nesouvisející marketing a programové prostředky.  
-*   Další informace o MPN, najdete v článku Microsoft Partner Network, stránka nacházející se v [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
+## <a name="how-to-grow-your-business-with-appsource"></a>Jak rozvíjet vaše podnikání s využitím AppSource  
+Osvědčených postupů v marketingu vaší nabídky na AppSource umožňuje maximalizovat výhodách pro firmy a zajistěte tak úspěch s Go-to-Market a iniciativy Microsoft Sell nastavení. Microsoft Partner Network (MPN) je brána pro všechny Marketplace nesouvisející marketing a prostředky prostřednictvím kódu programu.  
+*   Další informace o programu MPN, navštivte stránku umístěného v programu Microsoft Partner Network [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
 
-Kvalitu aplikace publikace a zavázala k zákazníka zaměřená na vyžádání generování a partnerské engagement nápovědy jednotky zákazníka růstu pro vaši organizaci.  
+Kvalita publikace aplikace a závazku zaměřeného na zákazníky vyžádání generování a jeho partnerů engagement pomoc tím napomoct rozvoji zákazníka svého pro vaši firmu.  
 
-Následující kontrolní seznam obsahuje marketing osvědčené postupy a prostředků, které můžete zvážit při vytváření nabídky publikována na AppSource:  
-*   **Uvědomte si Microsoft Trademark & Brand pokyny.**  
-    Při pojmenovávání vaší aplikace a odkazující na ochranné známky společnosti Microsoft a názvy softwaru společnosti Microsoft, produktů a služeb, postupujte podle Trademark Microsoft a pokyny pro značku, jakož i pokyny relevantní určitého produktu.  
-    *   Další informace o ochranné známky společnosti Microsoft a značka, najdete v článku Microsoft Trademark a pokyny Brand stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).  
-*   **Povolit get teď prostředí, nabídka bezplatné zkušební verze, nebo testovací prostředí jednotky pro vaši aplikaci.**  
-    Podnikoví uživatelé chtít nejprve ručně prostředí vaší aplikace.  
-*   **Sestavení nabízená silné hodnota.**  
-    Zjistit, kdo je potenciální zákazník a co vaše řešení nemá, který se liší od uživatele je aktuálně úspěšnost něco.  
-*   **Ujistěte se, vaše aplikace výpis zvýraznění.**  
-    Cílová stránka aplikace je první dojem, že obchodní uživatel získá. Založená na seznamu vaší aplikace, zákazníci rozhodnout, zda chtějí získat další informace a zkuste to vaše aplikace.  
-*   **Optimalizujte svůj výpis ke zvýšení výkonu vyhledávání modul hodnocení.**  
-    Zajistěte, aby začlenit hledaná klíčová slova v názvu aplikace, souhrn a výpis a zahrnout hledaná klíčová slova tři hledaná klíčová slova.  
-*   **Podnikoví uživatelé spoléhají na názory zákazníků.**  
-    Připomeňte vašim zákazníkům odeslat hodnocení a zkontrolovat. Uživatelé obdrží e-mailu po jejich spuštění a zkušební sdílet zkušenosti vašich zákazníků.  
-*   **Povýšíte, že aplikace je k dispozici na AppSource.**  
-    Odkaz na vaši aplikaci výpis na AppSource z stránku pomocí AppSource oznámení a použít adresy URL označování pokaždé, když se připojujete k aplikaci.  
-*   **Vytvoření plánu generování vyžádání.**  
-    Zákazníci můžete vybrat z čtenáře počet řešení. Jak vytvořit vaši zákazníci využívající řešení? Jednotka vyžádání pomocí marketingové aktivity.  
-*   **Povolte sdílení zájemce.**  
-    Přijímat kontaktní informace o zákazníkovi, pokud to zkusí vaše právo aplikace v systému CRM. Ujistěte se, že máte proces opatření ke zpracování těchto zájemců.  
-*   **Zkontrolujte výkon výpis vaší aplikace.**  
-    Ke kontrole výkonu použijte přehledný řídicí panel v portálu pro partnery cloudu nebo proces publikování aplikací Office.  
-*   **Využívat výhody služby přejděte na trh.**  
-    Pokud uvedete nabídku na AppSource, máte přístup ke službám přejděte na trh. Další informace o výhodách, které jsou k dispozici prostřednictvím sítě Microsoft Partner (MPN).  
+Následující kontrolní seznam obsahuje osvědčené postupy marketing a prostředky, které je třeba zvážit při vytváření nabídky pro publikování na AppSource:  
+*   **Mějte na paměti Trademark Microsoft & pravidla značky.**  
+    Výběr názvu aplikace a odkazující na ochranné známky společnosti Microsoft a názvy softwaru společnosti Microsoft, produktů a služeb, postupujte při Trademark Microsoft a pravidla značky, jakož i relevantní pokyny specifické pro produkt.  
+    *   Další informace o ochranných známek Microsoftu a značky, navštivte Microsoft Trademark a pravidla značky stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).  
+*   **Povolit get teď vyzkoušejte, bezplatná zkušební verze nebo test jednotky prostředí pro vaši aplikaci.**  
+    Podnikoví uživatelé mají první ruky – přímo prostředí vaší aplikace.  
+*   **Vytvářejte návrh silné hodnoty.**  
+    Zjistit, kdo je potenciálního zákazníka a nemá čemu vaše řešení, která se liší od jak uživatel je momentálně něco.  
+*   **Zkontrolujte svůj výpis aplikaci vyniknout.**  
+    Cílová stránka aplikace je první dojem, že získá obchodnímu uživateli. Podle aplikace uvedené, zákazníci rozhodněte, pokud chtějí chcete dozvědět víc a zkuste vašich aplikací.  
+*   **Optimalizujte svůj výpis umožňující hodnocení vyhledávacím strojem boost.**  
+    Ujistěte se, že můžete začlenit hledání klíčových slov v názvu aplikace, summary a výpis a obsahovat klíčová slova pro vyhledávání v tři klíčová.  
+*   **Firemní uživatelé neobejdou zpětné vazby od zákazníků.**  
+    Připomeňte odeslat hodnocení a zkontrolovat vaše zákazníky. Uživatelé dostanou e-mail sdílet zkušenosti vašich zákazníků po jejich spuštění zkušební verzi.  
+*   **Umožňuje zvýšit úroveň, že vaše aplikace je k dispozici na AppSource.**  
+    Propojit s vaší aplikace na AppSource přidáním ze stránky pomocí Odznáček AppSource a pomocí adresy URL značek pokaždé, když odkazujete na vaši aplikaci.  
+*   **Sestavte plán generování poptávky.**  
+    Zákazníci mohou vybírat z příliš velkého počtu řešení. Jak je, aby vaši zákazníci používající řešení? Získejte lepší podmínky vyžádání s využitím marketingových aktivit.  
+*   **Povolte sdílení potenciálních zákazníků.**  
+    Když se pokusí vaše právo aplikace v systému CRM, dostanete kontaktní údaje zákazníka. Ujistěte se, že máte proces na místě, abyste pokračovali v těchto potenciálních zákazníků.  
+*   **Zkontrolujte výkon vaší aplikace uvedené.**  
+    Můžete zkontrolovat výkon přehledný řídicí panel v portál partnerů cloudu nebo v procesu publikování aplikace Office.  
+*   **Využijte výhody Go-To-Market services.**  
+    Pokud uvedete nabídku na AppSource, máte přístup k Go-To-Market services. Další informace o výhodách, které jsou dostupné prostřednictvím Microsoft Partner Network (MPN).  
  
-### <a name="app-listing-best-practices"></a>Osvědčené postupy výpis aplikace  
-Výpis v AppSource může být vaše první interakci s potenciálních zákazníků. Jako první dojem má být silné a něco cílovou skupinu chce zpracovat. Partner s oddělení marketingu zajistit zasílání zpráv a podpůrné obsah vašeho seznamu rozlišené a pomáhá vaši nabídku zvýraznění. 
+### <a name="app-listing-best-practices"></a>Aplikace výpisu osvědčené postupy  
+Váš výpis v AppSource, může být první interakce s potenciálního zákazníka. Jako první dojem chtít zvětšit silná a něco svou cílovou skupinu chce zpracovat. Ve spolupráci s marketingový tým zajistit zasílání zpráv a podpůrné obsah svůj výpis diferencované a pomáhá nabídky vyniknout. 
 
-Tady jsou některé základní kroky, které vám pomohou zajistit skvělé první dojem. 
+Zde jsou některé základní kroky, které vám pomůžou zajistit skvělé první dojem. 
 
 ![První dojem](./media/marketplace-appsource/appsourcefirstimpression.png)
 
-V další části vás provede procesem různé kroky potřebné k odeslání vašeho tržišti. Přes něj pečlivě si přečtěte zahrnuje osvědčených postupů, které mohou pomoci aplikace zvýraznění a zlepšení vyhledávání modul hodnocení. 
+Následující části vás provede různé kroky potřebné k odeslání vaší tržišti. Pečlivě si přečtěte přes něj zahrnuje osvědčené postupy, které pomáhají aplikaci vyniknout a vylepšit hledání modulu pořadím. 
 
-V následujících tabulkách jsou upřesněny každého kroku vyplníte vaše nabídka výpis.
+Každý krok vyplňování svůj výpis nabídky jsou podrobně popsané v následujících tabulkách.
 
 **Nabídka identity**  
 
 | Nabídka nastavení | Osvědčené postupy | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Název** | **Pojmenování vaši nabídku**<br />Volba názvu pro vaši aplikaci je klíčová rozhodnutí. Na základě Benefit názvy jsou efektivnější než popisné názvy. Zákazníci hodnotu základní obdrží by měl název vaší aplikace komunikovat. Včetně hledaná klíčová slova v název vaší aplikace může také pomoct vaší aplikace, jejíž pořadí se určí vyšší ve výsledcích vyhledávání. Při odkazování na ochranné známky společnosti Microsoft a názvy Microsoft, softwaru, produktů a služeb, postupujte podle Trademark Microsoft a pokyny pro značku, jakož i pokyny relevantní určitého produktu.<ul> <li>Další informace o ochranné známky společnosti Microsoft a značka, najdete v článku Microsoft Trademark a pokyny Brand stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
+| **Název** | **Pojmenování nabídky**<br />Volba názvu pro vaše aplikace je klíčová rozhodnutí. Na základě výhody názvy jsou účinnější než popisné názvy. Název vaší aplikace měl sdělit, že že základní hodnotu zákazníkům. Včetně klíčová slova pro vyhledávání v název vaší aplikace může také pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů. Postupujte podle Trademark Microsoft a pravidla značky, jakož i relevantní specifické pro produkt pokyny k odkazování na ochranné známky společnosti Microsoft a názvy, softwaru, produktů a služeb Microsoft.<ul> <li>Další informace o ochranných známek Microsoftu a značky, navštivte Microsoft Trademark a pravidla značky stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
 
-**StoreFront podrobnosti - podrobnosti nabídky**  
+**Prezentace podrobnosti – podrobnosti o nabídce**  
 
-| StoreFront nastavení | Osvědčené postupy | 
+| Nastavení prezentace | Osvědčené postupy | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Název nabídky** | Na stránce vyhledávání nabídku v galerii AppSource domovské stránky a aplikace se zobrazí souhrn nabídky. Hledaná klíčová slova zahrňte do vaší nabídky shrnutí k vylepšení hodnocení aplikace do výsledků vyhledávacích webů. |
-| **Popis nabídky** | **Zadejte popis, dobrý nabídka**<br />Jasně popisují nabízená hodnota nabídky v první několik věty vaší popisu. Uvědomte si, že první několik věty mohou být zobrazeny ve výsledcích vyhledávání.<br />Nespoléhejte na prvky a funkce prodeji určitého produktu. Místo toho se zaměřit na hodnotu, kterou můžete poskytovat. Pomocí termínů průmyslové nebo na základě benefit slov co nejvíc.<br />Základní součásti služby vaší nabízená hodnota by měla obsahovat informace o:<ul> <li>Novinky produktu</li>  <li>Kdo získá z něj nejvíc</li> <li>Jaké nutné nebo problémové ho adres.</li> </ul>Řekněte zákazníkům, jak své firmy nebo pracovní dobu životnosti se může lišit po používají řešení.<br />Začlenit hledaná klíčová slova a variace – klíčové slovo v popisu nabídka k vylepšení pořadí vaši nabídku do výsledků vyhledávacích webů.<br />Zadejte popis nabídky pomocí jednoduchého HTML.<br />Tady je příklad jednoduchého nabídka výpis stránky (jak je znázorněno v výše uvedený příklad výpis), která poskytuje nabídka souhrn, za nímž následuje seznam funkcí, klíče. Maximální počet znaků je 3 000.<br />*Ukázka HTML*<br />Statistika organizace pro Dynamics 365 (online) poskytuje důležité využití a přijetí metriky pro vaši organizaci Dynamics 365 a nástroje umožňující předcházení problémů výkonu a podporu. <ul> <li>**Přizpůsobit řídicí panely**<br />Nastavení řídicího panelu zajistit na základě bohatých zkušeností uživatelů a snímky důležitá data.<ul> <li>**Monitorování přijetí a použití**<br />Identifikaci vašich nejaktivnějších uživatelů, počet žádostí stránek, nejpoužívanějším entity, pracovní postupy a další.</li> </ul></li> </ul>Minimální podporované platformy verze: `8.1.1` |
+| **Název nabídky** | Na stránce hledání nabídky v galerii AppSource domovské stránky a aplikace se zobrazí souhrn nabídky. Klíčová slova pro vyhledávání zahrňte do vaší nabídky shrnutí jí pomohou zlepšit hodnocení vaší aplikace do výsledků vyhledávacích webů. |
+| **Popis nabídky** | **Zadejte popis dobré nabídky**<br />Zřetelně popište hodnotové nabídky v prvních několika větách popisu. Uvědomte si, že první několika větách může zobrazit ve výsledcích vyhledávání vyhledávacího webu.<br />Nespoléhejte na funkce, aby je prodal váš produkt. Místo toho soustřeďte na základě hodnoty, které poskytujete. Pomocí specifických pro dané odvětví slovníku nebo na základě výhody formulace co největší míře.<br />Základní součásti váš návrh hodnoty by měl obsahovat informace o:<ul> <li>Co je produkt</li>  <li>Kdo získává z něj nejčastěji</li> <li>Jaké potřebu, nebo bolest jeho adresu.</li> </ul>Řekněte zákazníkům jak jejich podnikání nebo života pracovních může být jiný po použití vašeho řešení.<br />Začlenění klíčová slova pro vyhledávání a variace – klíčové slovo v popisu nabídky ke zlepšování hodnocení vaší nabídky do výsledků vyhledávacích webů.<br />Zadejte popis nabídky pomocí jednoduchého kódu HTML.<br />Tady je příklad jednoduchého nabídka zobrazení stránky (jak je znázorněno výše uvedený příklad výpisu), která poskytuje souhrn nabídky, za nímž následuje seznam klíčových funkcí. Maximální počet znaků je 3 000.<br />*Ukázka HTML*<br />Insights organizace pro Dynamics 365 (online) poskytuje důležité metriky využití a přijetí vaší organizace Dynamics 365 a nástroje umožňující udržte si náskok před problémy s výkonem a podporu. <ul> <li>**Přizpůsobení řídicích panelů**<br />Nastavte řídicí panel poskytuje bohaté uživatelské prostředí a snímky důležitá data.<ul> <li>**Sledování přijetí a použití**<br />Identifikujte Nejaktivnější uživatelé, počet žádostí stránky, používat většinu entit, pracovní postupy a další.</li> </ul></li> </ul>Verze minimální podporované platformy: `8.1.1` |
 
-**StoreFront podrobnosti - výpis podrobnosti**  
+**Prezentace podrobnosti – podrobnosti výpisu**  
 
-| StoreFront nastavení | Osvědčené postupy | 
+| Nastavení prezentace | Osvědčené postupy | 
 |:--- |:--- |
-| **Odvětví (max 2)** | Vyberte až dvě odvětví, pokud vaši nabídku adresy průmyslové požadavky. Ujistěte se, že volání na tyto funkce průmyslové v popis nabídky. |
-| **Kategorie (max 3)** | Vyberte maximálně tři kategorie, které nejlépe přiblížili vaši nabídku. Vyberte tyto kategorie pečlivě jako uživatelé používat kategorie k vyhledání příslušné aplikace. Ujistěte se, že volání o tom, jak vaši nabídku podporuje kategorie specifické potřeby v popisu nabídky. |
-| **Produkty, které vaše aplikace funguje s (max 3)** | Zobrazí seznam další produkty a technologie, které používá vaše řešení. Například Azure IOT Hub, Azure Machine Learning, atd. |
-| **Hledaná klíčová slova (max 3)** | Hledaná klíčová slova pomohou podnikoví uživatelé najít vaši nabídku při hledání na AppSource nebo s použitím vyhledávacích webů. Identity nejvyšší 3 hledaná klíčová slova pro vaši nabídku začlenit hledaná klíčová slova ve vaší nabídky shrnutí, popis a seznam klíčová sem. |
+| **Obory (max. 2)** | Vyberte až dvě odvětví, pokud vaši nabídku řeší požadavky specifických pro dané odvětví. Ujistěte se, které vyvolají tyto funkce specifické pro odvětví v popis nabídky. |
+| **Kategorie (maximálně 3)** | Vyberte nejvýše tři kategorie, které nejlépe odpovídají v rámci vaší nabídky. Tyto kategorie uživatelů slouží k vyhledání příslušné aplikace. kategorie pečlivě zvolte. Ujistěte se, že volání o tom, jak vaši nabídku podporuje potřeby podle kategorií v popis nabídky. |
+| **Produkty, které vaše aplikace funguje se (maximálně 3)** | Seznam dalších produktů a technologií, které používá vaše řešení. Například Azure IOT Hub, Azure Machine Learning, atd. |
+| **Klíčová slova pro vyhledávání (maximálně 3)** | Klíčová slova pro vyhledávání pomáhá podnikovým uživatelům najít vaši nabídku při hledání na AppSource nebo vyhledávací weby. Identity hlavní 3 klíčová pro vaši nabídku začlenit klíčová slova pro vyhledávání v popisu summary, nabídky a seznamu klíčová tady. |
 
-**StoreFront podrobnosti - artefakty Marketing**  
+**Prezentace podrobnosti - artefakty Marketing**  
 
-| StoreFront nastavení | Osvědčené postupy | 
+| Nastavení prezentace | Osvědčené postupy | 
 |:--- |:--- |
-| **Nabídka logo (formát PNG, 48 × 48)** | Vaše logo musí navržena a optimalizována pro digitální střední.<br />Nahrajte logo ve formátu PNG pro hledání stránce nabídky. |
-| **Nabídka logo (.png. 216 x 216)** | Vaše logo musí navržena a optimalizována pro digitální střední.<br />Nahrajte logo ve formátu PNG pro výpis stránce nabídky podrobnosti o aplikaci. |
-| **Další informace** | Zahrnují podporu prodeje a marketingu prostředky v části "Další informace," pro příklad, dokumenty white paper, brožury, kontrolní seznamy, PowerPoints a tak dále. Všechny soubory musí být ve formátu PDF. Není prodeje, informujte potenciálního zákazníka.<br />Přidání odkazu na cílovou stránku aplikace na všechny dokumenty a přidejte adresu URL parametry můžete sledovat návštěvníky a zkušební verze. |
-| **Videa** | Nahrát aspoň jeden video, jsou povoleny maximálně čtyři videa. Videa měli komunikovat hodnotu vaši nabídku. Zajistěte, aby byl kandidát hrdina tohoto textu není vaší společnosti. Videa by měl řeči primárnímu serveru, problémy a cíle vaší základní rozhodnutí maker osobě.<br />Doporučená délka: 60 90 sekund. Začlenit klíčových slov názvu videím.<br />Zvažte přidání dalších videa, jako je například postupy video; začátek video nebo video názory zákazníků. |
-| **Snímky obrazovky** | Přidat až pět snímků obrazovky, začlenit klíče hledaná slova v názvech. |
+| **Nabídka logo (formát PNG, 48 x 48)** | Logo by měl být navržené a optimalizované pro digitální média.<br />Nahrajte logo ve formátu PNG pro stránku vyhledávání o vaší nabídce. |
+| **Nabídka logo (ve formátu PNG. 216 x 216)** | Logo by měl být navržené a optimalizované pro digitální média.<br />Nahrajte logo ve formátu PNG pro výpis stránky o vaší nabídce podrobnosti o aplikaci. |
+| **Další informace** | Zahrnout podporu prodejní a marketingové prostředky v části "Další informace," například dokumenty white paper, brožury, kontrolní seznamy, PowerPoints, a tak dále. Všechny soubory musí být ve formátu PDF. Není prodávat, říct potenciálního zákazníka.<br />Přidejte odkaz na vaše cílová stránka aplikace na všechny dokumenty a parametrů adresy URL, abychom vám pomohli sledovat návštěvníky a zkušební verze. |
+| **Videa** | Nahrání videa alespoň jeden, jsou povolené až čtyři videa. Vaše video by měl objasněte důležitost vaší nabídky. Ujistěte se, že potenciálního zákazníka hero scénář není vaší společnosti. Vaše video měli mluvit instančnímu objektu výzev a cíle vaší základní rozhodnutí Tvůrce osoby.<br />Doporučená délka: 60 – 90 sekund. Začleňte klíčových slov názvu videa.<br />Zvažte přidání dalších videích, jako jsou videa s návody; úvodní video nebo video citace zákazníka. |
+| **Snímky obrazovky** | Přidat až pět snímky obrazovky, začlenit klíčových slov v názvu. |
 
-### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Zvýšení úrovně dostupnost vaši nabídku na AppSource  
-Když vaši nabídku uveden v AppSource, získali jste práva k zobrazení ***k dispozici na AppSource*** oznámení "BADGE" na stránku. 
+### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Zvýšit úroveň dostupnosti vaší nabídky na AppSource  
+Když nabídky je uveden v AppSource, proto jste získali právo zobrazit ***k dispozici na AppSource*** oznámení "BADGE" na stránce. 
 
  ![Oznámení "BADGE" AppSource](./media/marketplace-appsource/appsourcebadge.png)
     
-Přidání tato oznámení do vaší lokality podporuje, že vaši nabídku na AppSource a vy můžete propojit potenciální zákazníky přímo na stránku výpis. Oznámení AppSource je k dispozici ve třech úrovních. Můžete si stáhnout oznámení "BADGE" spolu s pokyny k použití v [zvýšit úroveň dostupnosti vaší aplikace na Microsoft AppSource](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
+Přidání tohoto oznámení "BADGE" do vaší lokality podporuje, že vaši nabídku na AppSource kde můžete přímo propojit s potenciálních zákazníků stránce. Odznáček AppSource je k dispozici ve třech velikostech. Můžete si stáhnout oznámení "BADGE" spolu s pokyny k použití v [zvýšit úroveň dostupnosti vaší aplikace do Microsoft AppSource](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
 
-#### <a name="linking-to-your-app-listing-page-on-appsource-from-your-page"></a>Propojení na stránku aplikace výpis na AppSource ze stránky  
-Při propojení z AppSource oznámení na svém webu do vašeho seznamu na AppSource, musí zahrnovat následující parametry dotazu na konci adresy URL:
+#### <a name="linking-to-your-app-listing-page-on-appsource-from-your-page"></a>Odkazování na stránky seznamu aplikací na AppSource ze stránky  
+Když odkazujete z AppSource Odznáček na webu na svůj výpis na AppSource, musíte zahrnout tyto parametry dotazu na konec adresy URL:
 *   **src**  
-    Zahrnout zdroje z kde provoz se směruje na AppSource. Například web, LinkedIn, Facebook, atd.
+    Zahrnout zdroje z kam směruje provoz do AppSource. Třeba web, LinkedIn, Facebook, atd.
 *   **mktcmpid**  
-    Vaše marketingové kampaně ID, která může obsahovat až 16 znaků pomocí libovolné kombinace písmeno, číslo, podtržítka a pomlčky. Například `blogpost_12`. 
+    Vaše marketingové kampaně ID, které může obsahovat až 16 znaků pomocí jakékoli kombinace písmeno, číslo, podtržítka a pomlčky. Například `blogpost_12`. 
 
-Následující příklad ukazuje adresu URL, která obsahuje dva parametry dotazu. Přidání parametrů do AppSource URL umožňuje kontrolovat efektivitu kampaně v řídicím panelu analýzy v cloudu portál pro partnery.  
+Následující příklad ukazuje adresu URL, která obsahuje dva parametry dotazu. Přidávání parametrů k adrese URL AppSource umožňuje kontrolovat účinnost kampaně v řídicím panelu analýz v portál partnerů cloudu.  
 
 ```html
 https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12
 ```  
 
 >[!Important]  
->Když připravujete adresu URL, tak nebudou obsahovat kód jazyka, jako `/en-us/`.  
+>Při přípravě adresu URL, neobsahují kód jazyka, jako například ".  
 
 
-#### <a name="link-to-gtm-benefits"></a>Odkaz na GTM výhody
-*  Přejděte [GTM výhody na webu marketplace](./gtm-benefits.md) stránky.   
+#### <a name="link-to-gtm-benefits"></a>Odkaz na výhodách GTM
+*  Přejděte [výhodách GTM na webu marketplace](./gtm-benefits.md) stránky.   
 
 ---  
 
 ### <a name="link-to-landing-page"></a>Odkaz na úvodní stránka
 *   Přejděte [sestavení si úvodní stránka](./build-your-landing-page.md) stránky.  
 
-#### <a name="link-to-enable-lead-sharing"></a>Odkaz na povolit nepovedou sdílení  
+#### <a name="link-to-enable-lead-sharing"></a>Odkaz na povolit průběžné sdílení  
 *   Přejděte [povolit vést sdílení](./enable-lead-sharing.md) stránky.  
 
-#### <a name="link-to-promote-your-business-with-microsoft"></a>Odkaz na podporu vaší firmě se společností Microsoft  
-*   Přejděte [povýšit vaše firma Microsoft](promote-your-business-with-microsoft.md) stránky.  
+#### <a name="link-to-promote-your-business-with-microsoft"></a>Odkaz na propagaci vašeho podnikání s Microsoftem  
+*   Přejděte [podporovat obchody s Microsoftem](promote-your-business-with-microsoft.md) stránky.  
 
-#### <a name="search-engine-optimization"></a>Optimalizaci pro vyhledávací weby  
-Můžete ovlivnit hodnocení vaši nabídku do výsledků vyhledávacích webů. Spolupracovat s oddělení marketingu, identifikovat klíčová slova a ujistěte se, postupujte podle pokynů níže Pomozte nám vylepšit výsledky hledání aplikace:
-*   Název vaši nabídku s hledaná klíčová slova v paměti.
-*   Zahrňte do nabídky shrnutí hledaná klíčová slova.
-*   Zobrazí seznam hledaná klíčová slova první tři pro vaši nabídku v podrobnostech storefront.
-*   Vaši nabídku přidružte správné kategorie a odvětví.
-*   Pravidelně tweet o dostupnosti vaši nabídku a obsahovat odkaz na vaši nabídku.  
+#### <a name="search-engine-optimization"></a>Optimalizace pro vyhledávací weby  
+Můžete ovlivnit hodnocení vaší nabídky do výsledků vyhledávacích webů. Spolupracovat s týmem marketing, identifikace klíčových slov a ujistěte se, že podle pokynů uvedených níže, které pomůžou zlepšit výsledky hledání aplikací:
+*   Název nabídky s klíčová slova pro vyhledávání v paměti.
+*   Do nabídky souhrnu zahrňte klíčová slova pro vyhledávání.
+*   Zobrazí první tři klíčová slova pro vyhledávání pro vaší nabídky v podrobnostech prezentace.
+*   Nabídky přidružení správnou kategorii a oboru.
+*   Pravidelně tweet o dostupnosti nabídky a zahrnout odkaz na vaši nabídku.  
 
-#### <a name="merchandising"></a>Prodeje  
-Gold partnery společnosti Microsoft se může stát vhodné ji mít partnera vybrané plynoucí z poskytování na AppSource zkušební prostředí aplikace (bezplatnou aplikaci, bezplatnou zkušební verzi nebo testovací jednotku). Aplikace může být umístěná podle kategorie nebo odvětví a jsou obvykle vyzval k minimálně dva týdny. Další informace o tom, vybrané aplikace. přizpůsobit v rámci své výhody přejděte na trh, projděte si část Marketplace GTM výhody tohoto průvodce.   
+#### <a name="merchandising"></a>Propagace  
+Zlatým partnerům Microsoftu může být vhodné mít partnerské aplikace vybrané při zadávání zkušební prostředí aplikace (bezplatnou aplikaci, bezplatná zkušební verze nebo Test Drive) na AppSource. Aplikace může být umístěná podle kategorie nebo oboru a jsou povýšeny obvykle po dobu minimálně dva týdny. Další informace o tom, vybrané aplikace přizpůsobit v rámci výhod Go-To-Market, projděte si část výhodách GTM Marketplace tohoto průvodce.   
 
 ## <a name="next-steps"></a>Další postup
-*   Přejděte [AppSource vydavatele průvodce a Azure Marketplace](./marketplace-publishers-guide.md) stránky.  
+*   Přejděte [Azure Marketplace a AppSource příručce pro vydavatele](./marketplace-publishers-guide.md) stránky.  
 
 ---  

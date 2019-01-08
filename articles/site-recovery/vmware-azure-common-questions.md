@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 920ae8ff09cb8e936a1ba70b2c862bd9bc076046
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e229fcc2c9eb6b8e1b49293dfd741a2f96f62871
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974688"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077381"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -108,6 +108,12 @@ Ano, můžete přidat nové virtuální počítače do existující skupiny repl
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Můžete upravit virtuální počítače, které se replikují přidáním nebo změnou velikosti disků?
 
 Pro replikaci VMware do Azure můžete upravit velikost disku. Pokud chcete přidat nové disky, které potřebujete přidat disk a znovu povolit ochranu virtuálního počítače.
+
+### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Můžu migrovat místní počítače do nového serveru Vcenter bez dopadu na probíhající replikaci?
+Ne, Změna serveru Vcenter nebo migrace ovlivní probíhající replikaci. Budete muset nastavení Azure Site Recovery do nového systému Vcenter a povolíte replikaci pro počítače.
+
+### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Můžete replikovat do mezipaměti nebo cílový účet úložiště, který má virtuální sítě (pomocí bran firewall Azure storage) nakonfigurovaný na něm?
+Ne, Azure Site Recovery nepodporuje replikaci do úložiště ve virtuální síti.
 
 ## <a name="configuration-server"></a>Konfigurační server
 
@@ -225,9 +231,10 @@ Služba Azure je pro odolnost navržena. Site Recovery je navržena pro převzet
 Ano, pokud převzetí služeb při selhání do Azure, můžete navrátit služby zpět do jiného umístění Pokud původní není k dispozici. [Další informace](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>Proč potřebuji síť VPN nebo ExpressRoute k navrácení služeb po obnovení?
-
 Když převezmete služby zpět z Azure, se kopírují data z Azure zpět na vaše místní virtuální počítač a soukromý přístup je povinný.
 
+### <a name="can-i-resize-the-azure-vm-after-failover"></a>Můžu změnit velikost virtuálního počítače Azure po převzetí služeb při selhání?
+Ne, nelze změnit velikost cílového virtuálního počítače po převzetí služeb.
 
 
 ## <a name="automation-and-scripting"></a>Automatizací a skriptováním

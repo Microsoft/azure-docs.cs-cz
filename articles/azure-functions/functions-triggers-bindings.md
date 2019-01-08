@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: ba2441044d63e63b969054e84e163352d2b376e8
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993798"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074509"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Aktivace Azure Functions a vazby koncepty
 
@@ -674,6 +674,10 @@ V jazyce C# a jinými jazyky rozhraní .NET, můžete použít vzoru imperativn�
 ## <a name="functionjson-file-schema"></a>Schéma souboru Function.JSON
 
 *Function.json* soubor schématu je k dispozici na [ http://json.schemastore.org/function ](http://json.schemastore.org/function).
+
+## <a name="testing-bindings"></a>Testování vazby
+
+Při vytváření funkcí místně, můžete otestovat pomocí sady Visual Studio 2017 nebo Visual Studio Code vazby. Další informace najdete v tématu [strategie pro testování kódu ve službě Azure Functions](functions-test-a-function.md). Můžete také vyvolat vazby jiným protokolem než HTTP pomocí rozhraní REST API. Další informace najdete v tématu [ručně spustit jiných funkci aktivovanou protokolem HTTP](functions-manually-run-non-http.md).
 
 ## <a name="handling-binding-errors"></a>Zpracování chyb vazeb
 

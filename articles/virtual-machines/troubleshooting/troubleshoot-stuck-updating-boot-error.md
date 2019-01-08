@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 2d42d2014432b72f35e9b0d9543fe499a6ab721b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d56e96ca1fbc96261f6f526c792b0a53c74718ef
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355409"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063656"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure při spuštění virtuálního počítače se zasekla na Windows update
 
 Tento článek pomůže problém vyřešit, když vašeho virtuálního počítače (VM) zasekl ve fázi aktualizace Windows během spouštění. 
 
 > [!NOTE] 
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manager. Doporučujeme použít tento model pro nových nasazení namísto pomocí modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manager. Doporučujeme použít tento model pro nových nasazení namísto pomocí modelu nasazení classic.
 
  ## <a name="symptom"></a>Příznak
 
@@ -47,16 +47,16 @@ V závislosti na počtu aktualizací, které se zobrazuje nainstalované nebo vr
 
 1. Pořízení snímku disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md). 
 2. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
-3. Po Virtuálním počítači pro obnovení je připojený disk s operačním systémem, otevřete **Správce disků** a ověřte je **ONLINE**. Poznamenejte si písmeno jednotky, která je přiřazena připojeného disku s operačním systémem obsahující složku \windows. Pokud je disk šifrovaný, dešifrujte disku, než budete pokračovat s dalšími kroky v tomto dokumentu.
+3. Po Virtuálním počítači pro obnovení je připojený disk s operačním systémem, spuštěním souboru **diskmgmt.msc** otevřete správu disků a zkontrolujte připojený disk je **ONLINE**. Poznamenejte si písmeno jednotky, která je přiřazena připojeného disku s operačním systémem obsahující složku \windows. Pokud je disk šifrovaný, dešifrujte disku, než budete pokračovat s dalšími kroky v tomto dokumentu.
 
-3. Získání seznamu balíčků aktualizací, které jsou v připojeném disku s operačním systémem:
+4. Spusťte instanci příkazový řádek se zvýšenými oprávněními (Spustit jako správce). Spuštěním následujícího příkazu Získejte seznam balíčky aktualizací, které jsou v připojeném disku s operačním systémem:
 
         dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
 
     Například pokud připojeném disku s operačním systémem je jednotka F, spusťte následující příkaz:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-4. Otevřete soubor C:\temp\Patch_level.txt a přečíst ho zdola. Vyhledejte aktualizace, která je v **instalace čeká** nebo **odinstalovat čekající** stavu.  Tady je ukázka stav aktualizace:
+5. Otevřete soubor C:\temp\Patch_level.txt a přečíst ho zdola. Vyhledejte aktualizace, která je v **instalace čeká** nebo **odinstalovat čekající** stavu.  Tady je ukázka stav aktualizace:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -64,7 +64,7 @@ V závislosti na počtu aktualizací, které se zobrazuje nainstalované nebo vr
     Release Type : Security Update
     Install Time :
     ```
-5. Odebrání aktualizace, která způsobila Chyba:
+6. Odebrání aktualizace, která způsobila Chyba:
     
     ```
     dism /Image:<Attached OS disk>:\ /Remove-Package /PackageName:<PACKAGE NAME TO DELETE>
@@ -72,10 +72,10 @@ V závislosti na počtu aktualizací, které se zobrazuje nainstalované nebo vr
     Příklad: 
 
     ```
-    dism /Image:F:\ /Remove-Package /Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
+    dism /Image:F:\ /Remove-Package /PackageName:Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     ```
 
     > [!NOTE] 
     > V závislosti na velikosti balíčku nástroje DISM bude chvíli trvat ke zpracování zrušení instalace. Proces bude obvykle dokončit do 16 minut.
 
-6. Odpojit disk s operačním systémem a potom [znovu vytvořit virtuální počítač s použitím disku s operačním systémem](troubleshoot-recovery-disks-portal-windows.md). 
+7. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Zkontrolujte, zda je problém vyřešen.

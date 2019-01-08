@@ -4,57 +4,50 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/30/2018
+ms.topic: tutorial
+ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 53db637bf7ad47896747b491fcbe31123fdb104e
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 9afd1f75f997070428466b82d48624fb4ac3e835
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741806"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>Kurz: Integrace Azure Active Directory s 8 x 8 virtuálních Office
 
 V tomto kurzu se dozvíte, jak integrovat 8 x 8 virtuálních Office se službou Azure Active Directory (Azure AD).
-
 Integrace 8 x 8 virtuální Office pomocí služby Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Office virtuální 8 x 8.
-- Uživatele, aby automaticky získat přihlášení k Office virtuální 8 x 8 (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k Office virtuální 8 x 8.
+* Uživatelům se automaticky přihlášeni k 8 x 8 virtuálních Office (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s 8 x 8 virtuálních Office, potřebujete následující položky:
 
-- Předplatné Azure AD
-- 8 x 8 virtuální Office jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* 8 x 8 virtuální Office jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-1. Přidání virtuální Office 8 x 8 z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+
+* podporuje virtuální Office 8 x 8 **IDP** jednotné přihlašování zahájené pomocí
+
+* podporuje virtuální Office 8 x 8 **JIT** zřizování uživatelů
 
 ## <a name="adding-8x8-virtual-office-from-the-gallery"></a>Přidání virtuální Office 8 x 8 z Galerie
 
@@ -62,75 +55,77 @@ Pokud chcete nakonfigurovat integraci Office virtuální 8 x 8 do služby Azure 
 
 **Chcete-li přidat Office virtuální 8 x 8 z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
-    
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **8 x 8 virtuálních Office**vyberte **8 x 8 virtuálních Office** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![8 x 8 virtuálních Office v seznamu výsledků](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_addfromgallery.png)
+     ![8 x 8 virtuálních Office v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s 8 x 8 virtuální Office založená na uživateli test "Britta Simon".
-
-Azure AD pro jednotné přihlašování pro práci, potřebuje vědět, co protějšek uživatel v 8 x 8 virtuální Office je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v 8 x 8 virtuální Office je potřeba navázat.
+V této části, konfiguraci a testování Azure AD jednotné přihlašování s 8 x 8 virtuální Office podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci vztah odkazu mezi uživatele služby Azure AD a související uživatelské v 8 x 8 virtuální Office je potřeba navázat.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s 8 x 8 virtuálních Office, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření testovacího uživatele virtuální Office 8 x 8](#creating-a-8x8-virtual-office-test-user)**  – Pokud chcete mít protějšek Britta Simon v Office virtuální 8 x 8, která souvisí s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování jednotného přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace 8 x 8 virtuální Office Single Sign-On](#configure-8x8-virtual-office-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele virtuální Office 8 x 8](#create-8x8-virtual-office-test-user)**  – Pokud chcete mít protějšek Britta Simon v Office virtuální 8 x 8, která souvisí s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Office virtuální 8 x 8.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s 8 x 8 virtuálních Office, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s 8 x 8 virtuálních Office, proveďte následující kroky:
 
-1. Na webu Azure Portal na **8 x 8 virtuálních Office** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **8 x 8 virtuálních Office** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, klikněte na tlačítko **vyberte** pro **SAML** chcete povolit jednotné přihlašování.
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-    ![Konfigurace jednotného přihlašování](common/tutorial_general_301.png)
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Konfigurace jednotného přihlašování](common/editconfigure.png)
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. Na **základní konfiguraci SAML** dialogového okna, proveďte následující kroky:
 
-    ![8 x 8 virtuální domény Office a adresy URL jednotné přihlašování – informace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
+    ![8 x 8 virtuální domény Office a adresy URL jednotné přihlašování – informace](common/idp-intiated.png)
 
-    a. V **identifikátor** textového pole zadejte adresu URL: `https://sso.8x8.com/saml2`
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://sso.8x8.com/saml2`
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL: `https://sso.8x8.com/saml2`
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://sso.8x8.com/saml2`
 
-5. Na **podpisový certifikát SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** Stáhnout **certifikát (Raw)** a uložte soubor certifikátu v počítači.
+4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_certificate.png) 
+    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-6. Na **nastavení 8 x 8 virtuálních Office** tématu, zkopírujte adresu URL odpovídající podle vašich požadavků.
+6. Na **nastavení 8 x 8 virtuálních Office** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor služby Azure Ad
 
     c. Adresa URL – odhlášení
 
-    ![Konfigurace virtuální Office 8 x 8](common/configuresection.png)
+### <a name="configure-8x8-virtual-office-single-sign-on"></a>Konfigurace 8 x 8 virtuální Office jednotného přihlašování
 
 7. Přihlášení k tenantovi virtuální Office 8 x 8 jako správce.
 
@@ -168,85 +163,75 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     e. Klikněte na tlačítko **Uložit**.
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
 1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-    ![Vytvoření uživatele Azure AD][100]
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](common/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](common/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadejte **BrittaSimon**.
+    a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-    d. Vyberte **Vytvořit**.
-  
-### <a name="creating-a-8x8-virtual-office-test-user"></a>Vytváření 8 x 8 virtuální Office testovacího uživatele
+    d. Klikněte na možnost **Vytvořit**.
 
-Cílem této části je vytvořte uživatele Britta Simon v Office virtuální 8 x 8. 8 x 8 virtuální podporuje Office just-in-time zřizování, který je ve výchozím nastavení povolená.
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Office virtuální 8 x 8, pokud ještě neexistuje.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Office virtuální 8 x 8.
+
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **8 x 8 virtuálních Office**.
+
+    ![Okno aplikace organizace](common/enterprise-applications.png)
+
+2. V seznamu aplikace zadejte a vyberte **8 x 8 virtuálních Office**.
+
+    ![Propojení virtuální Office 8 x 8 v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-8x8-virtual-office-test-user"></a>Vytvořit 8 x 8 virtuální Office testovacího uživatele
+
+V této části se vytvoří uživateli Britta Simon v Office virtuální 8 x 8. podporuje virtuální Office 8 x 8 **zřizování uživatelů just-in-time**, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi 8 x 8 virtuálních Office, vytvoří se nový po ověření.
 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory virtuální Office 8 x 8](https://www.8x8.com/about-us/contact-us).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Office virtuální 8 x 8.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201]
-
-2. V seznamu aplikací vyberte **8 x 8 virtuálních Office**.
-
-    ![Konfigurace jednotného přihlašování](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_app.png) 
-
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Přiřadit uživatele][202]
-
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Přiřadit uživatele][203]
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. V **přidat přiřazení** dialogové okno Vybrat **přiřadit** tlačítko.
-
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Office virtuální 8 x 8 na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Office virtuální 8 x 8.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici Office virtuální 8 x 8 na přístupovém panelu, vám by měl být automaticky přihlášeni Office virtuální 8 x 8, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: common/tutorial_general_01.png
-[2]: common/tutorial_general_02.png
-[3]: common/tutorial_general_03.png
-[4]: common/tutorial_general_04.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: common/tutorial_general_100.png
-
-[201]: common/tutorial_general_201.png
-[202]: common/tutorial_general_202.png
-[203]: common/tutorial_general_203.png

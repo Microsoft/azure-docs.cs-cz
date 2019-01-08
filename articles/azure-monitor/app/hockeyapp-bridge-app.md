@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 73e1fac5ba9fbb981c92ff8d32064f7d34729ef7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 06a9cf124708984444bc2bc19f2529a3c0f75283
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811957"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074355"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Zkoumat data HockeyApp v Application Insights
 
 > [!NOTE]
-> HockeyApp už nejsou k dispozici pro nové aplikace. Stávající nasazení HockeyApp budou nadále fungovat. Visual Studio App Center je teď doporučená služba od Microsoftu pro monitorování nových mobilních aplikací. [Další informace o nastavení aplikace pomocí App Center a Application Insights](../../application-insights/app-insights-mobile-center-quickstart.md).
+> HockeyApp už nejsou k dispozici pro nové aplikace. Stávající nasazení HockeyApp budou nadále fungovat. Visual Studio App Center je teď doporučená služba od Microsoftu pro monitorování nových mobilních aplikací. [Další informace o nastavení aplikace pomocí App Center a Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
 
 [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) je služba pro sledování živého desktopových a mobilních aplikací. Z HockeyApp můžete odeslat vlastní a sledovat telemetrii ke sledování využití a pomoct s diagnostikou (navíc k získávání dat o chybách). Tento datový proud telemetrických dat může být dotázán pomocí výkonný [Analytics](../../azure-monitor/app/analytics.md) funkce [Azure Application Insights](../../application-insights/app-insights-overview.md). Kromě toho můžete [exportovat vlastní a sledovat telemetrii](export-telemetry.md). Pokud chcete povolit tyto funkce, nastavení mostu, který předává HockeyApp vlastních dat do Application Insights.
 
@@ -33,7 +33,7 @@ V Hockeyappu, otevřete nastavení účtu [tokeny API](https://rink.hockeyapp.ne
 
 ![Získání tokenu pro rozhraní API HockeyApp](./media/hockeyapp-bridge-app/01.png)
 
-Otevřít na portálu Microsoft Azure a [vytvořte prostředek Application Insights](../../application-insights/app-insights-create-new-resource.md). Typ aplikace nastavte na "Aplikace HockeyApp bridge":
+Otevřít na portálu Microsoft Azure a [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ). Typ aplikace nastavte na "Aplikace HockeyApp bridge":
 
 ![Nový prostředek Application Insights](./media/hockeyapp-bridge-app/02.png)
 

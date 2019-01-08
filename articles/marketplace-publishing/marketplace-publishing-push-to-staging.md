@@ -3,7 +3,7 @@ title: Připravit a otestovat vaši nabídku pro nasazení na webu Azure Marketp
 description: Podrobné pokyny k poskytování marketingové obsahu, konfigurace věnovaného cenovým plánům a testování vaši nabídku před nasazením na Azure Marketplace.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
@@ -14,18 +14,19 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: hascipio
-ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ROBOTS: NOINDEX
+ms.openlocfilehash: f1e6e779731564f714cc100d25a53da8732dca74
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714955"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075987"
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Dokončení vytvoření nabídky s marketingového obsahu
 V tomto kroku se proces publikování je potřeba poskytnout určité marketingový obsah a podrobnosti o vaší nabídky a skladové položky na webu Azure Marketplace. Bude třeba, zadejte popis váš produkt, loga společnosti, cenové plány, podrobnosti o plány a další informace potřebné k převedení vaší nabídky a skladové položky do přípravného prostředí. Tyto informace slouží jako marketingový obsah na webu Azure Portal. Tento proces se začne [portálu pro publikování][link-pubportal].
 
-## <a name="step-1-provide-marketplace-marketing-content"></a>Krok 1: Zadejte Marketplace marketingové obsahu
-**Angličtina je výchozí a jediný podporovaný jazyk.** Ujistěte se prosím, že všechny informace, které zadáte do polí musí být anglicky. Než přejdete k přípravám, dají se všechny informace kdykoli upravit.
+## <a name="step-1-provide-marketplace-marketing-content"></a>Krok 1: Poskytnout marketingové obsah webu Marketplace
+*Angličtina je výchozí a jediný podporovaný jazyk.*  Ověřte, že všechny informace, které zadáte do polí v angličtině. Než přejdete k přípravám, dají se všechny informace kdykoli upravit.
 
 1. Přejděte na portálu publikování [ https://publish.windowsazure.com ](https://publish.windowsazure.com).
 2. V nabídce vlevo klikněte na tlačítko **marketingové** kartu.
@@ -78,8 +79,8 @@ Postupujte podle všech loga nahrát na portálu publikování níže uvedených
 **Další pokyny pro ikonu Hero logo (volitelné)**
 
 * Hero logo je volitelné. Vydavatele můžete nahrávat Hero logo. **Ale jednou nahrané ikonu hero nelze odstranit z publikování portálu. V tu chvíli partner musí dodržovat pokyny Azure Marketplace pro jiný Hero ikony neschválí nabídky do produkčního prostředí.**
-* Zobrazovaný název vydavatele, název plánu a nabídky, dlouhé shrnutí se zobrazují v barva bílé písma. Proto byste se měli vyhnout zachovat všechny světlé barva pozadí ikony Hero. Černou, bílou a průhledné pozadí není povolena pro Hero ikony.
-* Zobrazovaný název vydavatele, plán, title, nabídky, dlouhé shrnutí a tlačítka pro vytvoření jsou vložené prostřednictvím kódu programu uvnitř Hero logo Jakmile přejde nabídky uvedené. Při návrhu Hero logo, proto by neměl zadat libovolný text. Ponechte prázdné místo na pravé straně, protože text (například zobrazovaný název vydavatele, název plánu nabídky, dlouhé shrnutí) budou zahrnuty programově od nás tam. Prázdný text by měl být 415 x 100 na pravé straně (a je posunut 370px od levého okraje).
+* Zobrazovaný název vydavatele, název plánu a nabídky, dlouhé shrnutí se zobrazují v barva bílé písma. Proto byste se měli vyhnout zachovat všechny světlé barva pozadí ikony Hero. Černá, bílý a průhledné pozadí není povolena pro Hero ikony.
+* Zobrazovaný název vydavatele, plán, title, nabídky, dlouhé shrnutí a tlačítka pro vytvoření jsou vložené prostřednictvím kódu programu uvnitř Hero logo Jakmile přejde nabídky uvedené. Při návrhu Hero logo, proto by neměl zadat libovolný text. Ponechte prázdné místo na pravé straně, protože text (to znamená, zobrazovaný název vydavatele, název plánu nabídky, dlouhé shrnutí) budou zahrnuty programově od nás tam. Prázdný text by měl být 415 x 100 na pravé straně (a je posunut 370 pixelů od levého okraje).
   
   ![Kreslení](media/marketplace-publishing-push-to-staging/pubportal-herobanner.png)
 
@@ -104,7 +105,7 @@ Na **právní** kartu, zadejte odkaz na svoje zásady/podmínky použití. Zadej
 
 ![Kreslení](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-legal-01.png)
 
-**Poznámka:** nabídky virtuálních počítačů po nabídka/SKU je připravené na webu Azure Portal, nebudete moct změnit pole uvedena níže:
+**Poznámka:** Nabídky virtuálních počítačů po nabídka/SKU je připravené na webu Azure Portal, nelze změnit pole uvedena níže:
 
 * **Identifikátor nabídky:** [portál pro publikování -> Virtual Machines -> vaši nabídku Image virtuálního počítače -> kartu -> identifikátor nabídky]
 * **Identifikátor SKU:** [portál pro publikování -> Virtual Machines -> -> nabídkou vyberte skladovou Položku Přidat -> karta skladové položky]
@@ -144,15 +145,15 @@ Nabídky virtuálních počítačů po nabídka/SKU je uveden v Tržišti Azure 
 | Služba pro vývojáře |Ano |Ano |Ano |
 
 ### <a name="21-set-your-vm-prices"></a>2.1. Nastavení vašich cen virtuálních počítačů
-V současné době pro virtuální počítače, máme následující **3 typy modely fakturace:**
+V současné době pro virtuální počítače, máme následující **tři typy modely fakturace:**
 
-* **Každou hodinu:** zákazníkům účtovat podle sazeb nastavit vydavatelé o velikostech virtuálních počítačů pro každý za každou hodinu. V případě klíčových **hodinové fakturace** modelu SKU, celková cena bude součtem nákladů na software účtuje vydavatelem a účtovat microsoftem náklady na infrastrukturu. Toto celkové náklady se zobrazí zákazníka jako po hodinách a měsíční cena při nákupu zvažují (viz následující snímek obrazovky). **Vydavatel obdrží 80 % nákladů softwaru, účtuje se podle nich.** Proto prosím zkontrolujte výpočtu odpovídajícím způsobem než nastavení cen pro skladové jednotky.
+* **Po hodinách:** Zákazníkům účtovat podle sazeb nastavit vydavatelé o velikostech virtuálních počítačů pro každý za každou hodinu. V případě klíčových **hodinové fakturace** modelu SKU, celková cena bude součtem nákladů na software účtuje vydavatelem a účtovat microsoftem náklady na infrastrukturu. Toto celkové náklady se zobrazí zákazníka jako po hodinách a měsíční cena při nákupu zvažují (viz následující snímek obrazovky). **Vydavatel obdrží 80 % nákladů softwaru, účtuje se podle nich.** Proto odpovídajícím způsobem provést výpočet před nastavením ceny pro vaše skladové jednotky.
   
     ![Kreslení](media/marketplace-publishing-push-to-staging/img2.1-01.png)
-* **Bezplatná zkušební verze:** Toto je jiný charakter hodinový model. Tady zákazník nebude účtovat, náklady na software pro prvních 30 days(Free) po nasazení virtuálního počítače. Po 30days se bude účtovat na základě HODINOVĚ podle sazby stanovené vydavatelů v hodinový model.
-* **Přineste si – vlastní licence (BYOL):** vydavatele spravovat licencování softwaru běžícího na virtuálním počítači.
+* **Bezplatná zkušební verze:** Tato možnost je jiný charakter hodinový model. Tady zákazník nebude účtovat, náklady na software pro prvních 30 days(Free) po nasazení virtuálního počítače. Po uplynutí 30 dnů se vám účtují poplatky na základě HODINOVĚ podle sazby stanovené vydavatelů v hodinový model.
+* **Přineste si – vlastní licence (BYOL):** Vydavatele spravovat licencování softwaru běžícího na virtuálním počítači.
 
-**Důležité:** po nabídka/SKU je uveden na webu Azure Marketplace, nebudete moct změnit pole uvedena níže.
+**Důležité:** Jakmile nabídka/SKU je uveden na webu Azure Marketplace, nelze změnit pole uvedena níže.
 
 * **Při změně cen uvedených skladové jednotky**
 * **Fakturace Změna modelu uvedené skladové jednotky**
@@ -174,22 +175,22 @@ Je potřeba pečlivě zvážit, kde můžete zpřístupnit skladové jednotky. N
 > 
 > 
 
-### <a name="211-how-to-setup-hourly-pricing-model-for-a-sku"></a>2.1.1 jak nastavit hodinové cenový model pro SKU
-Postupujte podle kroků uvedených níže pro každou hodinu cenový model pro skladovou Položku instalační program:
+### <a name="211-how-to-set-up-hourly-pricing-model-for-a-sku"></a>2.1.1 jak nastavit každou hodinu pro skladovou Položku cenový model
+Postupujte podle níže uvedených nastavení každou hodinu cenový model pro SKU:
 
 1. Přihlaste se k [portál pro publikování](https://publish.windowsazure.com).
 2. Přejděte **VIRTUÁLNÍCH počítačů** kartě a vyberte vaši nabídku.
-3. V nabídce na levé straně straně, klikněte na tlačítko **SKU** kartu.
+3. Z nabídky na levé straně klikněte na tlačítko **SKU** kartu.
 4. Ujistěte se, že SKU je označena jako "Hodinové fakturace Model". Pokud ne, pak klikněte na **upravit** tlačítko model fakturace vrátit zpět. Otevře se okno. Zrušte zaškrtnutí políčka "fakturaci a licencování provádí externě od Azure (označuje se také jako používání vlastní licence)" a uložte změny.
-5. Pokud chcete povolit bezplatnou zkušební verzi pro první 30days skladovou Položku nasazení, vyberte možnost "Měsíc" pro otázku "Je bezplatná zkušební verze dostupná?" Jinak vyberte možnost "Ne zkušební verze". Nyní postupujte podle kroků uvedených níže.
-6. V nabídce na levé straně straně, klikněte na tlačítko **ceny** kartu.
+5. Pokud chcete povolit bezplatnou zkušební verzi pro prvních 30 dnů skladová položka nasazení, vyberte možnost "Měsíc" pro otázku "Je bezplatná zkušební verze dostupná?" Jinak vyberte možnost "Ne zkušební verze". Nyní postupujte podle kroků uvedených níže.
+6. Z nabídky na levé straně klikněte na tlačítko **ceny** kartu.
 7. Vyberte základní oblast.
    
    ![Kreslení](media/marketplace-publishing-push-to-staging/img2.1.1_07.png)
-8. Nastavení cen pro všechna jádra. **Cena je nutné zadat pro všechna jádra SKU i v případě skladové jednotky se nepodporuje.**
+8. Nastavení cen pro všechna jádra. *Zadejte cenu pro všechna jádra SKU i v případě skladové jednotky se nepodporuje.*
    
     ![Kreslení](media/marketplace-publishing-push-to-staging/img2.1.1_08.png)
-9. Nastavení cen pro ostatní oblasti ručně nebo můžete použít Průvodce AUTOPRICE nastavení cen jiných oblastech založené na základní oblasti. Chcete-li použít AUTOPRICE průvodce kliknutím na tlačítko **AUTOPRICE ostatní trhy založené na ceny v (Spojené státy).** **Poznámka:** popisek tlačítka se může lišit v závislosti na oblasti, které jste vybrali. Protože při vytváření tohoto dokumentu jsme vybrali Spojených států, takže toto tlačítko má název jako "Automatické price ostatních trhů. na základě cen v USA" v následujícím snímku obrazovky.
+9. Nastavení cen pro ostatní oblasti ručně nebo můžete použít Průvodce AUTOPRICE nastavení cen jiných oblastech založené na základní oblasti. Chcete-li použít AUTOPRICE průvodce kliknutím na tlačítko **AUTOPRICE ostatní trhy založené na ceny v (Spojené státy).** **Poznámka:** Popisek tlačítka se může lišit v závislosti na oblasti, kterou jste vybrali. Protože při vytváření tohoto dokumentu jsme vybrali Spojených států, takže toto tlačítko má název jako "Automatické price ostatních trhů. na základě cen v USA" v následujícím snímku obrazovky.
    
    ![Kreslení](media/marketplace-publishing-push-to-staging/img2.1.1_09.png)
 10. Otevře se průvodce automaticky cena. Na první stránce se zobrazí výběr pro základní trhu. Ujistěte se, oddíl a přejít na další stránku kliknutím na tlačítko "->".
@@ -203,16 +204,16 @@ Postupujte podle kroků uvedených níže pro každou hodinu cenový model pro s
     ![Kreslení](media/marketplace-publishing-push-to-staging/img2.1.1_12.png)
 13. Stránka 4 zobrazuje kurzů. Klikněte na tlačítko Dokončit dokončete postup.
 
-### <a name="212-how-to-setup-byol-pricing-model-for-a-sku"></a>2.1.2 jak nastavit BYOL cenový model pro SKU
-Postupujte podle kroků níže uvedených nastavení BYOL cenový model pro SKU:
+### <a name="212-how-to-set-up-byol-pricing-model-for-a-sku"></a>2.1.2 jak nastavit BYOL cenový model pro SKU
+Postupujte podle níže uvedených nastavení BYOL cenový model pro SKU:
 
 1. Přihlaste se k [portál pro publikování](https://publish.windowsazure.com).
 2. Přejděte **VIRTUÁLNÍCH počítačů** kartě a vyberte vaši nabídku.
-3. V nabídce na levé straně straně, klikněte na tlačítko **SKU** kartu.
+3. Z nabídky na levé straně klikněte na tlačítko **SKU** kartu.
 4. Ujistěte se, že SKU je označen jako "Přineste vlastní licenci skladová položka". V opačném případě klikněte na tlačítko Upravit model fakturace vrátit zpět. Otevře se okno. Zaškrtněte políčko "fakturaci a licencování provádí externě od Azure (označuje se také jako používání vlastní licence)" a uložte změny.
    
    ![Kreslení](media/marketplace-publishing-push-to-staging/img2.1.2_04.png)
-5. V nabídce na levé straně straně, klikněte na tlačítko **ceny** kartu.
+5. Z nabídky na levé straně klikněte na tlačítko **ceny** kartu.
 6. Vyberte základní oblast a zpřístupnit SKU v oblasti tak, že zaškrtnete políčko proti SKU části dostupnosti skladových položek EXTERNALLY-LICENSED (BYOL) (viz následující snímek obrazovky).
    
    ![Kreslení](media/marketplace-publishing-push-to-staging/img2.1.2_06.png)
@@ -221,7 +222,7 @@ Postupujte podle kroků níže uvedených nastavení BYOL cenový model pro SKU:
 ### <a name="22-set-your-developer-service-prices"></a>2.2. Nastavení vašich cen služby pro vývojáře
 Plány můžou být libovolnou kombinací base + využití, kde base je měsíční poplatek a při překročení limitu je cena, platba za použití. (Viz níže pro další podrobnosti.)
 
-**Příklad:** nabídky služeb pro vývojáře společnosti Contoso
+**Příklad:**  Nabídky služeb pro vývojáře společnosti Contoso
 
 | Plánování | Cena | Zahrnuje | Následující způsob migrace |
 | --- | --- | --- | --- |
@@ -233,7 +234,7 @@ Plány můžou být libovolnou kombinací base + využití, kde base je měsíč
 | Stříbrným Plus |20 USD za měsíc + $ 0,15/meter01 + 0.01 $/ meter02 |Základní funkce a kvóty 10 000 funkce X a Y funkce 100.  Jakmile se používá funkce X kvóty, zákazníka můžete platit za použití prostřednictvím meter01.  Jakmile se používá funkce Y kvóty, zákazníka můžete platit za použití prostřednictvím meter02. |Můžete migrovat do bronzová Plus a zlaté plány |
 | Zlatá |1 000 USD/měsíc |Kvóta 10 000 X 1 000 funkce Y, funkce a funkce Z neomezený počet. |Můžete migrovat všechny plány kromě zdarma |
 
-## <a name="step-3-provide-support-information"></a>Krok 3: Zadání podpory informace
+## <a name="step-3-provide-support-information"></a>Krok 3: Poskytnutí informací o podpoře
 Kontaktní údaje se používají pro interní komunikaci mezi Microsoft a partnerské pouze. Adresa URL podpory, bude k dispozici koncovým zákazníkům.
 
 1. Přejděte **podporu** nadpis na levé straně portálu publikování.
@@ -241,8 +242,8 @@ Kontaktní údaje se používají pro interní komunikaci mezi Microsoft a partn
 3. Zadejte informace pod **zákaznickou podporu**. Pokud poskytujete jenom e-mailovou podporu, zadejte fiktivní telefonní číslo a zadaný e-mail se použije místo toho.
 4. Zadejte adresu URL podpory.
 
-## <a name="step-4-choose-azure-marketplace-categories"></a>Krok 4: Výběr kategorií webu Azure Marketplace
-**Kategorie** karta obsahuje celou řadu výběry. Vaše nabídka může spadat do těchto a můžete vybrat až o pěti kategorií.
+## <a name="step-4-choose-azure-marketplace-categories"></a>Krok 4: Zvolte Azure Marketplace kategorie
+**Kategorie** karta obsahuje celou řadu výběry. Můžete vybrat až o pěti kategorií.
 
 ## <a name="how-your-marketing-will-appear"></a>Jak se zobrazí vaše marketing
 Tady je podrobné zobrazení využití nabízejí obchodní informace na [webu Azure Marketplace](https://azure.microsoft.com/marketplace/) a [webu Azure portal](https://portal.azure.com).
@@ -262,7 +263,7 @@ Tady je podrobné zobrazení využití nabízejí obchodní informace na [webu A
 
 *Podrobnosti o cenách na webu Azure Marketplace popis nabídky*
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 ![Kreslení](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-01.png)
 
 *Seznam nabídek na webu Azure Portal*
@@ -278,7 +279,7 @@ Teď, když dojde k načtení obsahu webu Marketplace, můžeme pokračovat v te
 * [Test šablony nabídky řešení v testovacím prostředí](marketplace-publishing-solution-template-test-in-staging.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Začínáme: publikování nabídky na webu Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Začínáme: Publikování nabídky na webu Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-map-acom]:media/marketplace-publishing-push-to-staging/pubportal-mapping-acom.jpg
 [img-map-portal]:media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg

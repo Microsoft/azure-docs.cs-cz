@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: a37ed044275abfca23c83e7d17012b9afdc78f6c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 92c1e706d3cbcff8bb0d66ddf4f2e73362a96af6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908781"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064521"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtrování síťového provozu se skupinou zabezpečení sítě pomocí Powershellu
 
@@ -302,4 +302,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 V tomto článku jste vytvořili skupinu zabezpečení sítě a přidružené k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématech [Přehled skupin zabezpečení sítě](security-overview.md) a [Správa skupiny zabezpečení sítě](manage-network-security-group.md).
 
-Provoz mezi podsítěmi směruje ve výchozím nastavení Azure. Místo toho se můžete rozhodnout směrovat provoz mezi podsítěmi například prostřednictvím virtuálního počítače, který slouží jako brána firewall. Provoz mezi podsítěmi směruje ve výchozím nastavení Azure. Místo toho se můžete rozhodnout směrovat provoz mezi podsítěmi například prostřednictvím virtuálního počítače, který slouží jako brána firewall. Další informace o postupu [vytvořit směrovací tabulku](tutorial-create-route-table-powershell.md).
+Provoz mezi podsítěmi směruje ve výchozím nastavení Azure. Místo toho se můžete rozhodnout směrovat provoz mezi podsítěmi například prostřednictvím virtuálního počítače, který slouží jako brána firewall. Další informace o postupu [vytvořit směrovací tabulku](tutorial-create-route-table-powershell.md).

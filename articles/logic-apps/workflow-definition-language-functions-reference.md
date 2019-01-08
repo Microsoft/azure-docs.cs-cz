@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 179d8fc0f17bf43792db6a9b0e15a6f63349f002
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 31c4268522ca373ca0b467c13dd83500e18ef8e6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890938"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065881"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -102,6 +102,7 @@ Pro práci s kolekcemi, obecně pole, řetězce a v některých případech slov
 | [prázdný](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Zkontrolujte, zda kolekce je prázdná. | 
 | [první](../logic-apps/workflow-definition-language-functions-reference.md#first) | Vrátí první položku z kolekce. | 
 | [Průnik](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vrátí kolekci, která má *pouze* společné položky mezi zadaným kolekcím. | 
+| [Položka](../logic-apps/workflow-definition-language-functions-reference.md#item) | Když v opakující se akci nad polem, vrátí aktuální položku v poli během aktuální iteraci akce. | 
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Vrátí řetězec, který má *všechny* položek z pole, oddělené zadaný znak. | 
 | [poslední](../logic-apps/workflow-definition-language-functions-reference.md#last) | Vrátí poslední položku z kolekce. | 
 | [Délka](../logic-apps/workflow-definition-language-functions-reference.md#length) | Vrátí počet položek v řetězce nebo pole. | 
@@ -126,7 +127,7 @@ K práci s podmínkami, porovnat hodnoty a výsledky výrazu nebo vyhodnotit rů
 | [méně](../logic-apps/workflow-definition-language-functions-reference.md#less) | Zkontrolujte, zda je první hodnota menší než druhá hodnota. | 
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Zkontrolujte, zda je první hodnota menší než druhá hodnota. | 
 | [Not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Zkontrolujte, zda má výraz hodnotu false. | 
-| [Nebo](../logic-apps/workflow-definition-language-functions-reference.md#or) | Zkontrolujte, zda má nejméně jeden výraz hodnotu true. |
+| [nebo](../logic-apps/workflow-definition-language-functions-reference.md#or) | Zkontrolujte, zda má nejméně jeden výraz hodnotu true. |
 ||| 
 
 <a name="conversion-functions"></a>
@@ -265,7 +266,7 @@ Práce s identifikátory URI (URI) a získat tyto identifikátory URI různé ho
 
 <a name="manipulation-functions"></a>
 
-## <a name="manipulation-functions-json--xml"></a>Funkce pro zpracování: JSON a XML
+## <a name="manipulation-functions-json--xml"></a>Funkce pro zpracování: JSON A XML
 
 Pro práci s objekty JSON a z uzlů XML, můžete tyto funkce pro zpracování. Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
@@ -691,7 +692,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
 | <*interval*> | Ano | Integer | Počet jednotek určený čas přidání | 
-| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
+| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
 | <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddTHH:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
@@ -752,9 +753,9 @@ and(false, false)
 
 A vrátí tyto výsledky:
 
-* První příklad: oba výrazy hodnotu true, proto vrátí `true`. 
-* Druhý příklad: jeden výraz má hodnotu false, takže vrací `false`.
-* Třetí příklad: oba výrazy jsou false, takže vrací `false`.
+* První příklad: Oba výrazy hodnotu true, proto vrátí `true`. 
+* Druhý příklad: Jeden výraz má hodnotu false, takže vrací `false`.
+* Třetí příklad: Oba výrazy jsou false, takže vrací `false`.
 
 *Příklad 2*
 
@@ -768,9 +769,9 @@ and(equals(1, 2), equals(1, 3))
 
 A vrátí tyto výsledky:
 
-* První příklad: oba výrazy hodnotu true, proto vrátí `true`. 
-* Druhý příklad: jeden výraz má hodnotu false, takže vrací `false`.
-* Třetí příklad: oba výrazy jsou false, takže vrací `false`.
+* První příklad: Oba výrazy hodnotu true, proto vrátí `true`. 
+* Druhý příklad: Jeden výraz má hodnotu false, takže vrací `false`.
+* Třetí příklad: Oba výrazy jsou false, takže vrací `false`.
 
 <a name="array"></a>
 
@@ -1616,7 +1617,7 @@ A vrátí výsledek: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
-### <a name="empty"></a>prázdný
+### <a name="empty"></a>Prázdná
 
 Zkontrolujte, zda kolekce je prázdná. Vrátí hodnotu PRAVDA, pokud kolekce je prázdná nebo vrátí hodnotu NEPRAVDA, pokud není prázdný.
 
@@ -1646,8 +1647,8 @@ empty('abc')
 
 A vrátí tyto výsledky: 
 
-* První příklad: předá prázdný řetězec, funkce vrátí `true`. 
-* Druhý příklad: předává řetězec "abc" tak, aby funkce `false`. 
+* První příklad: Předá prázdný řetězec, funkce vrátí `true`. 
+* Druhý příklad: Předává řetězec "abc" tak, aby funkce `false`. 
 
 <a name="endswith"></a>
 
@@ -1721,8 +1722,8 @@ equals('abc', 'abcd')
 
 A vrátí tyto výsledky: 
 
-* První příklad: jsou ekvivalentní, obě hodnoty, funkce vrátí `true`.
-* Druhý příklad: obě hodnoty nejsou ekvivalentní, tak, aby funkce `false`.
+* První příklad: Obě hodnoty jsou ekvivalentní, tak, aby funkce `true`.
+* Druhý příklad: Obě hodnoty nejsou ekvivalentní, tak, aby funkce `false`.
 
 <a name="first"></a>
 
@@ -1895,7 +1896,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
 | <*interval*> | Ano | Integer | Počet jednotek určený čas se má odečíst | 
-| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
+| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
 | <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddTHH:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
 ||||| 
 
@@ -1937,7 +1938,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
 | <*interval*> | Ano | Integer | Počet jednotek určený čas se má odečíst | 
-| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
+| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
 | <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddTHH:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
 ||||| 
 
@@ -2077,7 +2078,7 @@ A vrátí výsledek: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
-### <a name="if"></a>If
+### <a name="if"></a>if
 
 Zkontrolujte, zda je výraz hodnotu true nebo false. Na základě výsledku, vrátí zadanou hodnotu.
 
@@ -2543,7 +2544,7 @@ Tento příklad ukazuje ukázkovou adresu URL zpětného volání, že tato funk
 
 <a name="max"></a>
 
-### <a name="max"></a>max.
+### <a name="max"></a>max
 
 Vrátí nejvyšší hodnotu ze seznamu nebo pole s čísly, který je také zahrnuto na obou koncích. 
 
@@ -2725,8 +2726,8 @@ not(true)
 
 A vracet tyto výsledky:
 
-* První příklad: výraz je hodnota false, tak, aby funkce `true`.
-* Druhý příklad: výraz je hodnota true, tak, aby funkce `false`.
+* První příklad: Výraz má hodnotu false, takže funkce vrátí `true`.
+* Druhý příklad: Výraz má hodnotu true, tak, aby funkce `false`.
 
 *Příklad 2*
 
@@ -2739,8 +2740,8 @@ not(equals(1, 1))
 
 A vracet tyto výsledky:
 
-* První příklad: výraz je hodnota false, tak, aby funkce `true`.
-* Druhý příklad: výraz je hodnota true, tak, aby funkce `false`.
+* První příklad: Výraz má hodnotu false, takže funkce vrátí `true`.
+* Druhý příklad: Výraz má hodnotu true, tak, aby funkce `false`.
 
 <a name="or"></a>
 
@@ -2773,8 +2774,8 @@ or(false, false)
 
 A vracet tyto výsledky:
 
-* První příklad: nejméně jeden výraz má hodnotu true, tak, aby funkce `true`.
-* Druhý příklad: jsou oba výrazy hodnoty false, vrátí funkce hodnotu `false`.
+* První příklad: Nejméně jeden výraz má hodnotu true, tak, aby funkce `true`.
+* Druhý příklad: Oba výrazy jsou false, tak, aby funkce `false`.
 
 *Příklad 2*
 
@@ -2787,8 +2788,8 @@ or(equals(1, 2), equals(1, 3))
 
 A vracet tyto výsledky:
 
-* První příklad: nejméně jeden výraz má hodnotu true, tak, aby funkce `true`.
-* Druhý příklad: jsou oba výrazy hodnoty false, vrátí funkce hodnotu `false`.
+* První příklad: Nejméně jeden výraz má hodnotu true, tak, aby funkce `true`.
+* Druhý příklad: Oba výrazy jsou false, tak, aby funkce `false`.
 
 <a name="parameters"></a>
 
@@ -3294,7 +3295,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
 | <*interval*> | Ano | Integer | Počet jednotek určený čas se má odečíst | 
-| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
+| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
 | <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddTHH:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
 ||||| 
 

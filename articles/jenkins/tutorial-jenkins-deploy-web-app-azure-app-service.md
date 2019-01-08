@@ -3,17 +3,17 @@ title: Kurz – nasazení z Githubu do služby Azure App Service s využitím Je
 description: Nastavení Jenkinse pro průběžnou integraci (CI) z webu GitHub a průběžného nasazování (CD) do služby Azure App Service pro webové aplikace v Javě
 services: jenkins
 ms.service: jenkins
-author: tomarcher
+author: tomarchermsft
 ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: b65972b79fd16b912abfbd2e35642ef5d9f5adc4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 786fc427e4cb631c4aedd0f795daebebd9fb15bc
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438468"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077432"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z Githubu do služby Azure App Service pomocí Jenkinse průběžnou integraci a nasazování
 

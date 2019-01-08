@@ -3,17 +3,17 @@ title: Škálování nasazení Jenkinse pomocí agentů virtuálních počítač
 description: Pomocí modulu plug-in Jenkins Azure VM Agents můžete do svých kanálů Jenkinse využívajících virtuální počítače Azure přidat dodatečnou kapacitu.
 ms.service: jenkins
 keywords: jenkins, azure, devops, virtual machine, agents
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 46710b3a669b6a00dc1826c55e8d35fe700f312f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106219"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074661"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Škálování nasazení Jenkinse podle potřeby pomocí agentů virtuálních počítačů Azure
 
@@ -144,7 +144,7 @@ Výběrem možnosti **Verify Template** (Ověřit šablonu) ověřte konfiguraci
 
 Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Průběžná integrace a doručování do služby Azure App Service](java-deploy-webapp-tutorial.md)

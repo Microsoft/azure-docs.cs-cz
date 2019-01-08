@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/11/2018
+ms.date: 01/07/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 9085bea06553bcb2b8cf871153ddd1fb767c04f4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: cb07ce71162a766add5ca251c97a11d353ee8084
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277739"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077653"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Zkoumání a analýzy náklady pomocí Cost analysis
 
@@ -49,7 +49,7 @@ Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise
 
 Pokud chcete zkontrolovat náklady pomocí analýzy nákladů, přejděte na webu Azure Portal na **Správa nákladů a fakturace** &gt; **Správa nákladů** &gt; **Změnit obor**, zvolte obor a klikněte na **Vybrat**.
 
-Vybraný obor se použije v celé službě Cost Management k poskytování konsolidace dat a k řízení přístupu k informacím o nákladech. Při použití oborů nevybíráte více oborů. Místo toho vyberete rozsáhlejší obor, který zahrnuje ostatní obory, a potom vyfiltrujete přesně to, co potřebujete. To je důležité vědět, protože někteří uživatelé nemusí mít přístup k nadřazenému oboru, který zahrnuje data z podřízených oborů.
+Vybraný obor se použije v celé službě Cost Management k poskytování konsolidace dat a k řízení přístupu k informacím o nákladech. Při použití oborů nevybíráte více oborů. Místo toho vybrat větší rozsah, který ostatní až vrátit a pak je filtr seznamu na co chcete. To je důležité pochopit, protože někteří uživatelé neměli mít přístup, který podřízené obory vrátit až nadřazený obor.
 
 Klikněte na **Otevřít analýzu nákladů**.
 
@@ -86,7 +86,11 @@ Obecně můžete očekávat zobrazíte data nebo oznámení o spotřebovaných p
 
 ![Denní zobrazení příklad denních nákladů pro aktuální měsíc](./media/quick-acm-cost-analysis/daily-view.png)
 
-Výběrem možnosti **Seskupit podle** můžete vybrat kategorii skupiny a změnit data zobrazená v horním celkovém plošném grafu. Seskupení umožňuje rychle zjistíte, jak vaší útraty jsou rozdělené do kategorií podle společné vlastnosti prostředku a využití, jako jsou skupiny prostředků nebo značky prostředku. Seskupit podle značky, vyberte klíč značky, které chcete seskupit podle a uvidíte náklady porušena každá hodnota značky, další segment pro prostředky, které nemají dané klíčové slovo použít. Všimněte si, že Cost Management podporuje pouze značky prostředků ode dne, kdy jsou značky použít přímo na prostředek. Skupiny značky prostředku se nepodporují ještě dnes. Tady je zobrazení nákladů na služby Azure pro zobrazení minulého měsíce.
+Výběrem možnosti **Seskupit podle** můžete vybrat kategorii skupiny a změnit data zobrazená v horním celkovém plošném grafu. Seskupení umožňuje rychle zjistíte, jak vaší útraty jsou rozdělené do kategorií podle společné vlastnosti prostředku a využití, jako jsou skupiny prostředků nebo značky prostředku. Seskupit podle značky, vyberte klíč značky, které chcete seskupit. Zobrazí se vám náklady porušena každá hodnota značky, další segment pro prostředky, které nemají dané klíčové slovo použít.
+
+Většina [prostředky Azure podporují označování](../azure-resource-manager/tag-support.md), ale některé značky nejsou k dispozici ve službě Cost Management a fakturace. Kromě toho skupiny značky prostředku se nepodporují. Služba Cost Management podporuje pouze značky prostředků ode dne, kdy jsou značky použít přímo na prostředek.
+
+Tady je zobrazení nákladů na služby Azure pro zobrazení minulého měsíce.
 
 ![Seskupené denní souhrnné zobrazení příklad náklady na služby Azure za poslední měsíc](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
@@ -96,9 +100,9 @@ Kontingenční grafy v rámci hlavní grafu zobrazit různé seskupení abyste z
 
 Na předchozím obrázku jsou znázorněny názvy skupin prostředků. Zatímco můžete seskupit podle značky, chcete-li zobrazit celkové náklady pro jednotlivé značky, zobrazení všech značek na prostředek nebo skupina prostředků není k dispozici v zobrazení analýzy nákladů.
 
-Při seskupování nákladů podle konkrétního atributu je zobrazeno deset nejvýznamnějších přispěvatelů k nákladům, od nejvyššího k nejnižšímu. Pokud je skupin více než deset, je zobrazeno devět horních přispěvatelů a potom skupina **Ostatní**, která pokrývá všechny zbývající skupiny dohromady. Při seskupování podle klíčových slov, může se zobrazit také **Untagged** pro náklady, které nemají značku klíč použít. **Neoznačených** je vždy poslední, i když nejsou více neoznačených nákladů než příznakem náklady. Pokud existuje 10 nebo více hodnot značek, neoznačených nákladů bude součástí **ostatní**.
+Při seskupování nákladů podle konkrétního atributu je zobrazeno deset nejvýznamnějších přispěvatelů k nákladům, od nejvyššího k nejnižšímu. Pokud existuje více než deset skupin, jsou uvedeny nejčastější devět nákladům přispívá. Také je jako **ostatní** skupiny, které zahrnuje všechny zbývající skupiny společně. Při seskupování podle klíčových slov, může se zobrazit také **Untagged** pro náklady, které nemají značku klíč použít. **Neoznačených** je vždy poslední, i když nejsou více neoznačených nákladů než příznakem náklady. Pokud existují deset nebo více hodnot značek, neoznačených nákladů bude součástí **ostatní**.
 
-Prostředky virtuálních počítačů, sítě a úložiště *Classic* (Azure Service Management nebo ASM) nesdílí podrobná data o fakturaci. Ta jsou při seskupování nákladů sloučena do položky **Classic services**.
+*Klasické* virtuálních počítačů (Azure Service Management nebo ASM), sítě a prostředky úložiště Nesdílejte podrobné fakturačních údajů. Při sloučení jako **klasické služby** při seskupování náklady.
 
 
 ## <a name="download-cost-analysis-data"></a>Stažení dat analýzy nákladů

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1d902f8d87b81fda9edf2c1c37ad40416ac6baf2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: daba72639e190bb255dd515237d25c20df433901
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028176"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075018"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování živých aplikací Azure App Service pomocí nástroje Application Insights
 
@@ -25,9 +25,9 @@ Profiler se aktuálně funguje pro aplikace ASP.NET a ASP.NET Core, na kterých 
 
 ## <a id="installation"></a> Povolit Profiler pro vaši aplikaci
 Pokud chcete povolit Profiler pro aplikaci, postupujte podle pokynů níže. Pokud používáte jiný typ služby Azure, tady jsou pokyny pro povolení Profiler na jiné podporované platformy:
-* [Cloud Services](../../application-insights/app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Aplikace Service Fabric](../../application-insights/app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Virtual Machines](../../application-insights/app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Cloud Services](../../azure-monitor/app/profiler-cloudservice.md ?toc=/azure/azure-monitor/toc.json)
+* [Aplikace Service Fabric](../../azure-monitor/app/profiler-servicefabric.md ?toc=/azure/azure-monitor/toc.json)
+* [Virtual Machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler je předinstalovaná jako součást modulu runtime služeb App Services, ale musíte vypnout k získání profily pro aplikace app Service. Jakmile jste nasadili aplikaci, i v případě, že jste zahrnuli App Insights SDK do zdrojového kódu, postupujte podle následujících kroků, abyste povolení profileru.
 

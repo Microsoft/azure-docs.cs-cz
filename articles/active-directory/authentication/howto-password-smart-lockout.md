@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 80b1896c55d00a4ac8e5dea62afc08ace1a84249
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435272"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078520"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentní uzamčení
 
@@ -70,6 +70,14 @@ Chcete-li zkontrolovat nebo změnit inteligentním uzamčením hodnoty pro vaši
 > Pokud první přihlášení po uzamčení je také neúspěšná, účet zamezí znovu. Pokud účet uzamkne opakovaně, doba trvání uzamčení se zvýší.
 
 ![Přizpůsobte si zásadu inteligentním uzamčením Azure AD na webu Azure Portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+
+## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>Jak určit, zda Smartlockout funkce pracuje, nebo ne
+
+Když se aktivuje smartlockout prahovou hodnotu, zobrazí se následující zpráva při uzamčení účtu:
+
+**Váš účet je dočasně uzamčený, abyste zabránili neoprávněnému používání. Zkuste to znovu později a Pokud potíže přetrvávají, obraťte se na svého správce.**
+
+
 ## <a name="next-steps"></a>Další postup
 
 [Zjistěte, jak zakázat chybná hesla ve vaší organizaci pomocí služby Azure AD.](howto-password-ban-bad.md)

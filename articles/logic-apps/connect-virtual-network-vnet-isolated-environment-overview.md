@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: 5046b1012e0074e9548cad050c16eef25c00cee0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2b11d74436907380811acda3b7427ebe8011afb4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845191"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061019"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network v Azure Logic Apps s využitím prostředí integrační služby (ISEs)
 
@@ -33,7 +33,7 @@ Tento přehled popisuje, jak ISE poskytuje aplikace logiky a účty pro integrac
 
 ## <a name="isolated-versus-global"></a>Izolovaná a globální
 
-Když vytvoříte integrované služby prostředí (ISE) v Azure, vyberte virtuální síť Azure kde vaše *vložit* prostředí. Azure nasadí privátní instanci služby Logic Apps do vaší virtuální sítě. Tato akce vytvoří izolovaného prostředí, ve kterém můžete vytvořit a spustit aplikace logiky na vyhrazených prostředcích. Když vytvoříte aplikaci logiky, vyberte toto prostředí jako umístění vaší aplikace, která poskytuje přímý přístup vašich logic app k prostředkům ve vaší virtuální síti. 
+Když vytvoříte integrované služby prostředí (ISE) v Azure, vyberte virtuální síť Azure, ve které chcete *vložit* vaše ISE. Azure nasadí privátní instanci služby Logic Apps do vaší virtuální sítě. Tato akce vytvoří izolovaného prostředí, ve kterém můžete vytvořit a spustit aplikace logiky na vyhrazených prostředcích. Když vytvoříte aplikaci logiky, vyberte toto prostředí jako umístění vaší aplikace, která poskytuje přímý přístup vašich logic app k prostředkům ve vaší virtuální síti. 
 
 Aplikace logiky do ISE poskytují stejné uživatelské prostředí a podobné funkce jako globální služba Logic Apps. Nejen můžete použijete stejné integrované akce a konektory v globální službě Logic Apps, ale můžete také použít konkrétní ISE konektory. Tady je příklad, některé standardní konektory, které nabízí verze, na kterých běží v prostředí ISE:
  

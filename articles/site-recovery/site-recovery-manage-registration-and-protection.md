@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 8e8cabe48f7f1036986a896d0449798f4aea2522
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 43394be7acc4c561147ffc86744f2daf0d751788
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844562"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074984"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 
@@ -138,7 +138,7 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
 
 1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
 2. V **zakázat replikaci** stránky, vyberte jednu z těchto možností:
-    - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na konfiguračním serveru se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
+    - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na konfiguračním serveru se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server. Všimněte si, že tuto možnost jde použít jenom při konfiguraci serveru v připojeném stavu.
     - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na konfiguračním serveru **nebudou** vyčistit. 
 
 > [!NOTE]

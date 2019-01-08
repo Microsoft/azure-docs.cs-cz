@@ -4,17 +4,17 @@ description: Použijte Terraform ke konfiguraci a správě verzí škálovací s
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, škálovací sada, virtuální počítač, síť, úložiště, moduly, vlastní image, packer
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
-ms.openlocfilehash: 9e999ba8a36edd990bbab4648d9d4d98e3301153
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.openlocfilehash: 12c6ebc9b29c356ad169dbd921e71c7aa0c273b7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668627"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077500"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure z vlastní image Packeru
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 > * [Nainstalujte Terraform a nakonfigurujte přístup k Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
 > * [Vytvořte pár klíčů SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), pokud ho ještě nemáte.
 > * [Nainstalujte Packer](https://www.packer.io/docs/install/index.html), pokud ho ještě na svém místním počítači nainstalovaný nemáte.
@@ -455,7 +455,7 @@ terraform destroy
 
 Když se zobrazí výzva k potvrzení odstranění skupiny prostředků, zadejte `yes`. Odstranění můžete trvat i několik minut.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste pomocí Terraformu nasadili do Azure škálovací sadu virtuálních počítačů a jumpbox. Naučili jste se tyto postupy:
 

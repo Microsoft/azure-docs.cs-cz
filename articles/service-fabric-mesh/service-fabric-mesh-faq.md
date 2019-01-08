@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 39709377a83226c90626221f0f5a98f3d7d5c74a
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 8d6dcdd4de8fb56935d2f66bfff045b2115d4004
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051199"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063569"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy služby prostředků infrastruktury sítě
 
@@ -93,9 +93,9 @@ Následující Image kontejneru operačních systémů lze použít k nasazení 
 
 ## <a name="developer-experience-issues"></a>Problémy prostředí pro vývojáře
 
-### <a name="dns-resolution-and-outgoing-traffic-from-a-container-doesnt-work"></a>Překlad DNS a odchozí provoz z kontejneru nefunguje
+### <a name="dns-resolution-from-a-container-doesnt-work"></a>Překlad DNS z kontejneru nebude fungovat.
 
-Pokud máte kontejner, který odesílá odchozí provoz, včetně pokusu o kontaktování služby DNS, může dojít k selhání za určitých okolností. To je Zkoumáme. Zmírnit:
+Za určitých okolností může selhat odchozí dotazy DNS z kontejneru ve službě Service Fabric DNS. To je Zkoumáme. Zmírnit:
 
 - Použití Windows Fall Creators update (verze 1709) nebo vyšší jako image základního kontejneru.
 - Pokud název služby samostatně nefunguje, zkuste plně kvalifikovaný název: ServiceName.ApplicationName.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f3994c2be50939a837256224030e5284cc6f385b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754046"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077959"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -48,6 +48,8 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
    Další informace najdete v tématu [předávání syslog Azure Stack](azure-stack-integrate-security.md).
 
 - Teď můžete [přesunout prostředek registrace](azure-stack-registration.md#move-a-registration-resource) v Azure mezi skupinami prostředků, aniž byste museli znovu zaregistrovat. Poskytovatele cloud Solution Provider (CSP) můžete také přesunout registrace prostředků mezi předplatnými, tak dlouho, dokud novém i starém předplatná jsou mapovány na stejné ID partnera CSP. Toto neovlivní existující mapování tenanta zákazníka. 
+
+- Přidání podpory pro přiřazení několika IP adres na jedno síťové rozhraní.  Další podrobnosti najdete v tématu [přiřadit několik IP adres k virtuálním počítačům pomocí prostředí PowerShell](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell).
 
 ### <a name="fixed-issues"></a>Oprava potíží
 

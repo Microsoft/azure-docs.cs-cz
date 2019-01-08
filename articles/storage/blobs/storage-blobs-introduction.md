@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/19/2018
+ms.date: 01/03/2019
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 7628260efff34b52ca7d4bd4c35cce279d5474b3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 516ce9d9a6fcc73b543c7db584afebf71c2293ca
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965406"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064985"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -33,7 +33,7 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 ### <a name="storage-accounts"></a>Účty úložiště
 
-Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, ve kterém je uložený ve službě Azure Storage má adresu, která obsahuje název vaší jedinečný účet. Kombinace názvu účtu a koncový bod služby Azure Storage tvoří koncové body účtu úložiště.
+Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, ve kterém je uložený ve službě Azure Storage má adresu, která obsahuje název vaší jedinečný účet. Kombinace názvu účtu a koncový bod služby Azure Storage blob tvoří základní adresu pro objekty ve vašem účtu úložiště.
 
 Například, pokud je název vašeho účtu úložiště *mystorageaccount*, pak bude výchozím koncovým bodem pro úložiště objektů Blob:
 
@@ -56,7 +56,7 @@ Azure Storage podporuje tři typy objektů blob:
 
 * **Objekty BLOB bloku** ukládání textových a binárních dat, a to až do velikosti 4,7 TB. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě.
 * **Doplňovací objekty BLOB** jsou tvořené bloky, jako jsou objekty BLOB bloku, ale jsou optimalizované pro doplňovací operace. Doplňovací objekty blob jsou ideální pro scénáře, jako je protokolování dat z virtuálních počítačů.
-* **Objekty BLOB stránky** náhodný přístup úložiště souborů až do 8 TB velikosti. Úložiště, které soubory virtuálního pevného disku (VHD) bude sloužit jako disky pro virtuální počítače Azure, objekty BLOB stránky. Další informace o objektech BLOB stránky, naleznete v tématu (.. / articles/storage/blobs/storage-blob-pageblob-overview.md)
+* **Objekty BLOB stránky** náhodný přístup úložiště souborů až do 8 TB velikosti. Úložiště, které soubory virtuálního pevného disku (VHD) bude sloužit jako disky pro virtuální počítače Azure, objekty BLOB stránky. Další informace o objektech BLOB stránky, najdete v článku [objekty BLOB stránky Azure – přehled](storage-blob-pageblob-overview.md)
 
 Další informace o různých typech objektů BLOB najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 

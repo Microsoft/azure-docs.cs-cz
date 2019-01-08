@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 458b615ea872b62a412a71cbbb0b3827ccb4d9b8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: eb81e5202b5705c59bae8e07cbf2ade43b03f075
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580922"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064470"
 ---
 # <a name="azure-log-integration-faq"></a>Integrace protokolů Azure – nejčastější dotazy
 
@@ -31,7 +31,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o integraci pr
 
 Integrace protokolů Azure je služba operačního systému Windows, která vám umožní integrovat vaše místní zabezpečení informací a událostí (SIEM) systémy pro správu nezpracovaných protokolů z vašich prostředků Azure. Tato integrace poskytuje jednotný řídicí panel pro všechny vaše prostředky, místní nebo v cloudu. Můžete pak agregovat, korelovat, analyzovat a výstrahy pro události zabezpečení související s vašimi aplikacemi.
 
-Upřednostňovanou metodou pro integraci protokolů Azure je pomocí konektoru SIEM dodavatele s Azure Monitor a podle těchto [pokyny](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Nicméně pokud t kódu dodavatele vašeho systému SIEM konektor poskytnout do Azure monitoru, bude pravděpodobně možné používat Azure Log Integration jako dočasné řešení (Pokud vašeho systému SIEM je podporovaný službou Azure Log Integration) dokud tyto connector je k dispozici.
+Je upřednostňovanou metodou pro integraci protokolů Azure pomocí Azure Monitor konektor SIEM dodavatele a podle těchto [pokyny](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Nicméně pokud dodavatele vašeho systému SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné používat Azure Log Integration jako dočasné řešení (Pokud vašeho systému SIEM je podporovaný službou Azure Log Integration) dokud tyto connector je k dispozici.
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Integrace protokolů Azure softwaru je zdarma?
 

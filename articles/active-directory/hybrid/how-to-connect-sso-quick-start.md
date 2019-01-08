@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d6b8d2bddcd3ac622a2a5f51ebe78cbecc29c29
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: ed3271eb2fdae1b89013f0145b0e08de49792305
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687329"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062872"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
+# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: Rychlý start
 
 ## <a name="deploy-seamless-single-sign-on"></a>Nasazení bezproblémové jednotné přihlašování
 
@@ -46,15 +46,15 @@ Ujistěte se, že jsou splněné následující požadavky:
     >[!NOTE]
     >Bezproblémové jednotné přihlašování podporuje několik doménových struktur AD, zda existují AD vztah důvěryhodnosti mezi nimi či nikoli.
 
-* **Nastavit přihlašovací údaje správce domény**: musíte mít přihlašovací údaje správce domény pro každé služby Active Directory doménové struktury, které:
+* **Nastavit přihlašovací údaje správce domény**: Musíte mít přihlašovací údaje správce domény pro každé služby Active Directory doménové struktury, které:
     * Synchronizovat s Azure AD prostřednictvím služby Azure AD Connect.
     * Obsahuje uživatele, které chcete povolit pro bezproblémové jednotné přihlašování.
     
-* **Povolit moderní ověřování**: je nutné povolit [moderní ověřování](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) ve svém tenantovi pro tuto funkci pracovat.
+* **Povolit moderní ověřování**: Je nutné povolit [moderní ověřování](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) ve svém tenantovi pro tuto funkci pracovat.
 
 * **Použít nejnovější verze klientů Office 365**: Pokud chcete získat tiché přihlašování s klienty Office 365 (Outlook, Word, Excel a další), uživatelé muset použít verze 16.0.8730.xxxx nebo vyšší.
 
-## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení funkce
+## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení této funkce
 
 Povolte bezproblémové jednotné přihlašování prostřednictvím [služby Azure AD Connect](whatis-hybrid-identity.md).
 
@@ -70,7 +70,7 @@ Pokud provádíte novou instalaci služby Azure AD Connect, zvolte [vlastní ins
 
 Pokud již máte instalaci služby Azure AD Connect, vyberte **změnit přihlášení uživatele** stránky ve službě Azure AD Connect a pak vyberte **Další**. Pokud používáte Azure AD Connect verze 1.1.880.0 nebo vyšší, **povolit jednotné přihlašování** ve výchozím nastavení bude vybrána možnost. Pokud používáte starší verze služby Azure AD Connect, vyberte **povolit jednotné přihlašování** možnost.
 
-![Azure AD Connect: Změňte přihlášení uživatele](./media/how-to-connect-sso-quick-start/changeusersignin.png)
+![Azure AD Connect: Změnit přihlášení uživatele](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 Pokračujte v průvodci, dokud nezískáte **povolit jednotné přihlašování** stránky. Poskytněte přihlašovací údaje správce domény pro každou službu Active Directory doménové struktury, které:
     * Synchronizovat s Azure AD prostřednictvím služby Azure AD Connect.
@@ -88,7 +88,7 @@ Postupujte podle těchto pokynů a ověřte, že jste povolili bezproblémového
 3. Vyberte **služby Azure AD Connect**.
 4. Ověřte, že **bezproblémové jednotné přihlašování** funkce se zobrazí jako **povoleno**.
 
-![Azure portal: podokně služby Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
+![Azure portal: Podokno Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
 > Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` (která představuje Azure AD) ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD. Tento účet počítače je potřeba pro funkci pracovat. Pokud používáte architekturu Pass-the-Hash a krádeže přihlašovacích údajů omezení rizik ve vašem místním prostředí, ujistěte se, že `AZUREADSSOACC` účet počítače nemá ukládaly do karantény kontejneru. Abyste provedli odpovídající změny k vytvoření účtu počítače v kontejneru počítače. Poté, co bezproblémového jednotného přihlašování se úspěšně zapnulo Průvodce Azure AD Connect, přesunout `AZUREADSSOACC` počítačový účet k organizační jednotce (OU) ve které jsou jiné účty počítačů spravovaná zajistit, že se omylem neodstraní.
@@ -97,7 +97,7 @@ Postupujte podle těchto pokynů a ověřte, že jste povolili bezproblémového
 
 Můžete postupně zavedení bezproblémového jednotného přihlašování pro vaše uživatele pomocí níže uvedených pokynů. Začněte přidáním následující adresu URL služby Azure AD pro všechny nebo vybrané nastavení zóny Intranet uživatele pomocí zásad skupiny ve službě Active Directory:
 
-- https://autologon.microsoftazuread-sso.com
+- `https://autologon.microsoftazuread-sso.com`
 
 Kromě toho je potřeba povolit zásadu zóny intranetu názvem **povolit aktualizace stavového řádku prostřednictvím skriptu** prostřednictvím zásad skupiny. 
 
@@ -106,7 +106,7 @@ Kromě toho je potřeba povolit zásadu zóny intranetu názvem **povolit aktual
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Proč je třeba změnit nastavení zóny Intranet uživatele?
 
-Ve výchozím nastavení prohlížeč automaticky vypočítá správné zóně, Internetu nebo intranetu, z konkrétní adresy URL. Například "http://contoso/"mapuje do zóny Intranet, zatímco"http://intranet.contoso.com/" mapuje na zóně Internet (vzhledem k tomu, že adresa URL obsahuje tečku). Prohlížeče nebude odesílat lístky protokolu Kerberos do koncového bodu cloudu, podobně jako adresu URL Azure AD, pokud explicitně přidat adresu URL do zóny intranetu prohlížeče.
+Ve výchozím nastavení prohlížeč automaticky vypočítá správné zóně, Internetu nebo intranetu, z konkrétní adresy URL. Například `http://contoso/` mapuje do zóny Intranet, zatímco `http://intranet.contoso.com/` mapuje na zóně Internet (vzhledem k tomu, že adresa URL obsahuje tečku). Prohlížeče nebude odesílat lístky protokolu Kerberos do koncového bodu cloudu, podobně jako adresu URL Azure AD, pokud explicitně přidat adresu URL do zóny intranetu prohlížeče.
 
 Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
 
@@ -122,14 +122,14 @@ Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
 3. Přejděte do **konfigurace uživatele** > **šablony pro správu** > **součásti Windows**  >   **Aplikace Internet Explorer** > **ovládací Panel Možnosti Internetu** > **stránku zabezpečení**. Potom vyberte **web k zóně Assignment List**.
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Povolte zásady a pak v dialogovém okně zadejte následující hodnoty:
-   - **Název hodnoty**: přesměrována lístky protokolu Kerberos adresu URL služby Azure AD.
+   - **Název hodnoty**: Azure AD adresa URL, které jsou předávány lístky protokolu Kerberos.
    - **Hodnota** (Data): **1** označuje zóny intranetu.
 
     Výsledek vypadá takto:
 
-    Název hodnoty: https://autologon.microsoftazuread-sso.com
+    Název hodnoty: `https://autologon.microsoftazuread-sso.com`
   
-    (Hodnota): 1
+    Hodnota (Data): 1
 
    >[!NOTE]
    > Pokud chcete zakázat některé uživatele pomocí bezproblémového jednotného přihlašování (například pokud tito uživatelé přihlásit na sdílené veřejné terminály), nastavte předchozí hodnoty na **4**. Tato akce přidá adresu URL služby Azure AD k zóně s omezeným přístupem a neustále se nezdaří bezproblémového jednotného přihlašování.
@@ -181,7 +181,7 @@ Mozilla Firefox nebude automaticky používat ověřování protokolem Kerberos.
 1. Spusťte Firefox a zadejte `about:config` do adresního řádku. Zavřete všechna naše oznámení, které se zobrazí.
 2. Hledat **identifikátory URI network.negotiate auth.trusted** předvoleb. Tato předvolba obsahuje seznam důvěryhodných serverů pro Firefox pro ověřování protokolem Kerberos.
 3. Klikněte pravým tlačítkem a vyberte **změnit**.
-4. Zadejte https://autologon.microsoftazuread-sso.com v poli.
+4. Zadejte `https://autologon.microsoftazuread-sso.com` v poli.
 5. Vyberte **OK** a pak znovu otevřít prohlížeč.
 
 #### <a name="safari-macos"></a>Safari (macOS)
@@ -190,7 +190,7 @@ Ujistěte se, že počítač s macOS připojený ke službě AD. Pokyny pro při
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 
-Pokud mají přepsat [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) nastavení zásad ve vašem prostředí, ujistěte se, že můžete přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) k nim také.
+Pokud mají přepsat [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) nastavení zásad ve vašem prostředí, ujistěte se, že můžete přidat adresu URL služby Azure AD (`https://autologon.microsoftazuread-sso.com`) k nim také.
 
 #### <a name="google-chrome-macos-only"></a>Google Chrome (pouze v systému macOS)
 
@@ -202,7 +202,7 @@ Použití rozšíření zásad skupiny služby Active Directory třetích stran 
 
 Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení prohlížeče Firefox a hraničními zařízeními. Je také nebude fungovat v Internet Exploreru Pokud prohlížeč běží v rozšířené chráněný režim.
 
-## <a name="step-4-test-the-feature"></a>Krok 4: Testování funkce
+## <a name="step-4-test-the-feature"></a>Krok 4: Otestovat funkci
 
 Otestovat funkci pro konkrétního uživatele, ujistěte se, že všechny následující podmínky jsou splněné:
   - Uživatel se přihlásí do podnikové zařízení.
@@ -211,15 +211,15 @@ Otestovat funkci pro konkrétního uživatele, ujistěte se, že všechny násle
   - Máte [zavádí funkci](##step-3-roll-out-the-feature) s tímto uživatelem prostřednictvím zásad skupiny.
 
 K otestování tohoto scénáře, ve kterém uživatel zadá jenom uživatelské jméno, ale ne heslo:
-   - Přihlaste se k https://myapps.microsoft.com/ v nové relaci privátního prohlížeče.
+   - Přihlaste se k `https://myapps.microsoft.com/` v nové relaci privátního prohlížeče.
 
 K otestování tohoto scénáře, ve kterém uživatel nemusí zadávat uživatelské jméno nebo heslo, použijte jeden z následujících kroků: 
-   - Přihlaste se k https://myapps.microsoft.com/contoso.onmicrosoft.com v nové relaci privátního prohlížeče. Nahraďte *contoso* s názvem vašeho tenanta.
-   - Přihlaste se k https://myapps.microsoft.com/contoso.com v nové relaci privátního prohlížeče. Nahraďte *contoso.com* s ověřenou doménou (nikoli do federované domény) ve svém tenantovi.
+   - Přihlaste se k `https://myapps.microsoft.com/contoso.onmicrosoft.com` v nové relaci privátního prohlížeče. Nahraďte *contoso* s názvem vašeho tenanta.
+   - Přihlaste se k `https://myapps.microsoft.com/contoso.com` v nové relaci privátního prohlížeče. Nahraďte *contoso.com* s ověřenou doménou (nikoli do federované domény) ve svém tenantovi.
 
-## <a name="step-5-roll-over-keys"></a>Krok 5: Nespotřebujete klíče
+## <a name="step-5-roll-over-keys"></a>Krok 5: Převrácení klíče
 
-V kroku 2 vytvoří účty počítačů (reprezentace služby Azure AD) ve všech struktur služby Active Directory, na které jste povolili bezproblémového jednotného přihlašování Azure AD Connect. Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace](how-to-connect-sso-how-it-works.md).
+V kroku 2 vytvoří účty počítačů (reprezentace služby Azure AD) ve všech struktur služby Active Directory, na které jste povolili bezproblémového jednotného přihlašování Azure AD Connect. Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování: Podrobné technické informace](how-to-connect-sso-how-it-works.md).
 
 >[!IMPORTANT]
 >Dešifrovací klíč protokolu Kerberos na účet počítače, pokud úniku, lze použít ke generování lístky protokolu Kerberos pro všechny uživatele v doménové struktuře AD. Útočníky můžete poté k zosobnění přihlášení ohrožených uživatelů Azure AD. Důrazně doporučujeme pravidelná obměna přes tyto dešifrovací klíče Kerberos – alespoň jednou za 30 dnů.
@@ -231,7 +231,7 @@ Pokyny k výměně klíčů najdete v tématu [Azure Active Directory bezproblé
 
 ## <a name="next-steps"></a>Další postup
 
-- [Podrobné technické informace](how-to-connect-sso-how-it-works.md): pochopit, jak funguje funkce bezproblémové jednotné přihlašování.
+- [Podrobné technické informace](how-to-connect-sso-how-it-works.md): Zjistěte, jak funkce bezproblémové jednotné přihlašování funguje.
 - [Nejčastější dotazy k](how-to-connect-sso-faq.md): Získejte odpovědi na nejčastější dotazy o bezproblémové jednotné přihlašování.
 - [Řešení potíží s](tshoot-connect-sso.md): Zjistěte, jak řešit běžné problémy s funkcí bezproblémové jednotné přihlašování.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte fórum Azure Active Directory do souboru žádostí o nové funkce.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fórum Azure Active Directory pomocí do souboru žádostí o nové funkce.

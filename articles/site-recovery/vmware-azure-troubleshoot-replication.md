@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 30f128e75feb149453b642739f57c3a16ade524f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c53dc81da9469c0628adbd3751dc818997fa4d05
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053087"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063674"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
 
@@ -28,7 +28,9 @@ Seznam ukazuje takto můžete zkontrolovat zdrojový počítač:
 
 *  Na příkazovém řádku na zdrojovém serveru použijte příkaz ping na procesovém serveru přes port HTTPS (výchozí port HTTPS je 9443) spuštěním následujícího příkazu Telnet. Příkaz zkontroluje problémy se síťovým připojením a problémy tento blok port brány firewall.
 
+
    `telnet <process server IP address> <port>`
+
 
    > [!NOTE]
    > Použijte službu Telnet k testování připojení. Nepoužívejte `ping`. Pokud není nainstalovaný protokol Telnet, proveďte kroky uvedené v [nainstalovat klient služby Telnet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx).

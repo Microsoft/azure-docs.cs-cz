@@ -3,7 +3,7 @@ title: Netechnická požadované součásti pro vytváření v rámci nabídky A
 description: Pochopili požadavky na vytvoření a nasazení v rámci nabídky Azure Marketplace pro ostatní uživatele k nákupu.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
-ms.openlocfilehash: ef19380372354b8f34343f9f94ebf6b384996f14
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b925522186d2d9ae537431c1d96d39b107ad967
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261549"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073165"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Obecné požadavky pro vytváření v rámci nabídky Azure Marketplace
 Seznamte se s Obecné, proces napjaté požadavky, které jsou potřeba k pokračovat v procesu vytváření nabídky.
@@ -27,34 +28,34 @@ Seznamte se s Obecné, proces napjaté požadavky, které jsou potřeba k pokra�
 ## <a name="ensure-that-you-are-registered-as-a-seller-with-microsoft"></a>Ujistěte se, že jste zaregistrovaní jako prodejce s Microsoftem
 Podrobné pokyny pro registraci účtem prodejce s Microsoftem, přejděte na [vytváření účtů a registraci](marketplace-publishing-accounts-creation-registration.md).
 
-* **Pokud vaše společnost je už zaregistrovaný jako prodejce v Centru pro vývojáře a chcete vytvořit novou nabídku** a přihlaste se k publikování se stejným id e-mailu, s kterou Dev Center se provádí registraci portálu. Tento krok je nutný proto, že jsou mezi sebou propojeny portálu pro vývojáře a publikování.
-* **Pokud vaše společnost je už zaregistrovaný jako prodejce v Centru pro vývojáře a chcete upravit stávající nabídky,** pak buď Přihlaste se k publikování portálu pomocí účtu správce nebo pomocí účtu, který se přidá jako spolupracujícího Správce publikování portálu. Postup přidání spolusprávce účtu jsou uvedena níže.
+* Pokud chcete vytvořit novou nabídku společnosti je už zaregistrovaný jako prodejce v Centru pro vývojáře, pak se přihlaste k publikování se stejným ID e-mailu, s kterou Dev Center se provádí registraci portálu. Tento krok je nutný proto, že jsou mezi sebou propojeny portálu pro vývojáře a publikování.
+* Pokud vaše společnost je už zaregistrovaný jako prodejce v Centru pro vývojáře a chcete upravit stávající nabídky, pak buď se přihlaste publikování portálu pomocí účtu správce nebo pomocí účtu, který je přidán jako coadmin v publikování portálu. Postup přidání účtu coadmin jsou uvedena níže.
 
-## <a name="steps-to-add-a-co-admin-in-the-publishing-portal"></a>Postup přidání spolusprávce na portálu publikování
-Správci portálu publikování můžete přidat ostatní členové podíváme na společnost, kteří pracují na aplikace, jako spolupracujícího Správce publikování portálu. **Za předpokladu, že jste správce,** níže uvedené kroky pro přidání spolusprávce.
+## <a name="steps-to-add-a-coadmin-in-the-publishing-portal"></a>Postup přidání coadmin na portálu publikování
+Správci portálu publikování můžete přidat ostatní členové podíváme na společnost, kteří pracují na aplikace, jako coadmin v publikování portálu. **Za předpokladu, že jste správce,** uvedena níže jsou kroky pro přidání coadmin.
 
 > [!NOTE]
 > Pro nové uživatele, před přidáním spolusprávce v publikování portál, ujistěte se, že jste vytvořili aspoň jednu aplikaci v publikování portálu. To je potřeba jako **VYDAVATELÉ** kartě se zobrazí pouze po vytvoření alespoň jednu aplikaci v publikování portálu.
 > 
 > 
 
-1. Ujistěte se, že je id e-mailu spolusprávce Microsoft account(MSA). Pokud ne, zaregistrujte ho jako MSA použití této funkce [odkaz](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
-2. Ujistěte se, že existuje alespoň jedna aplikace pod účtem správce, než se pokusíte o přidání spolusprávce.
-3. Po dokončení výše uvedené kroky, přihlaste se k publikování s id e-mailu spolupracujícího správce a přihlaste se na portálu.
-4. Nyní Přihlaste se k publikování portálu s id e-mailu správce.
-5. Přejděte na vydavatelé -> vyberte váš účet -> správci -> Přidat spolusprávce (snímek obrazovky níže uvedené)
+1. Ujistěte se, že je ID e-mailu coadmin Microsoft account(MSA). Pokud ne, zaregistrovat jako použití této funkce MSA [odkaz](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
+2. Zajistěte, aby existovala alespoň jedna aplikace pod účtem správce, než se pokusíte přidat coadmin.
+3. Po dokončení výše uvedené kroky přihlásit do k publikování portál coadmin e-mailem ID a potom Odhlásit se.
+4. Teď se přihlaste k publikování portálu s ID správce e-mailu.
+5. Přejděte na vydavatelé -> vyberte váš účet -> správci -> Přidat coadmin (snímek obrazovky níže uvedené)
    
     ![Kreslení](media/marketplace-publishing-pre-requisites/imgAddAdmin_05.png)
 6. Ujistěte se, že ID e-mailů, které jsou k dispozici v různých fázích procesu publikování (třeba Dev Center, portál pro publikování) jsou monitorovány žádné komunikaci od Microsoftu.
-7. Pro vývojáře pro registraci nepoužívejte účet přidružený k jedné osobě. To je určeno pro odebrání závislostí jedna osoba.
-8. Pokud budete mít nějaké problémy s registrací Centrum pro vývojáře, pak vyvolejte lístek pomocí tohoto [odkaz](https://developer.microsoft.com/en-us/windows/support).
+7. Pro vývojáře pro registraci nepoužívejte účet přidružený k jedné osobě. Tento návrh odebere závislost na jeden uživatel.
+8. Pokud budete mít nějaké problémy s registrací Centrum vývojářů, vyvolat lístek pomocí tohoto [odkaz](https://developer.microsoft.com/en-us/windows/support).
 
-## <a name="steps-to-delete-a-co-admin-in-the-publishing-portal"></a>Kroky pro odstranění spolupracujícího Správce publikování portálu
-**Za předpokladu, že jste správce,** uvedena níže jsou kroky pro odstranění spolusprávce.
+## <a name="steps-to-delete-a-coadmin-in-the-publishing-portal"></a>Kroky pro odstranění coadmin v publikování portálu
+**Za předpokladu, že jste správce,** uvedena níže jsou kroky pro odstranění coadmin.
 
-1. Přihlaste se k publikování portálu s id e-mailu správce.
+1. Přihlaste se k publikování portálu s ID správce e-mailu.
 2. Přejděte do **vydavatelé** -> vyberte váš účet -> **správci** -> **Spolusprávci**.
-3. Klikněte na **X** tlačítko vedle spolusprávce chcete odstranit tot (níže uvedeném snímku obrazovky).
+3. Klikněte na **X** tlačítko vedle coadmin chcete odstranit tot (níže uvedeném snímku obrazovky).
    
     ![Kreslení](media/marketplace-publishing-pre-requisites/imgDeleteAdmin_03.png)
 
@@ -66,7 +67,7 @@ Správci portálu publikování můžete přidat ostatní členové podíváme n
 > 
 
 ## <a name="acquire-an-azure-pay-as-you-go-subscription"></a>Získat předplatné Azure "s průběžnými platbami"
-Toto je předplatné, které použijete k vytvoření vašich imagí virtuálních počítačů a předá bitové kopie [Azure Marketplace](https://azure.microsoft.com/marketplace/). Pokud předplatné nemáte, pak zaregistrujte se prosím na https://account.windowsazure.com/signup?offer=ms-azr-0003p.
+Tato hodnota je předplatné, které použijete k vytvoření vašich imagí virtuálních počítačů a předá bitové kopie [Azure Marketplace](https://azure.microsoft.com/marketplace/). Pokud předplatné nemáte, potom se zaregistrujte na https://account.windowsazure.com/signup?offer=ms-azr-0003p.
 
 ## <a name="sell-from-countries"></a>"Zákazník z" země
 > [!WARNING]
@@ -75,11 +76,11 @@ Toto je předplatné, které použijete k vytvoření vašich imagí virtuální
 > 
 
 ## <a name="next-steps"></a>Další postup
-Jakmile netechnické požadavky splněny, se vedle nabídky konkrétní technické požadavky. Klikněte na odkaz na článek pro typ příslušné nabídky, který chcete vytvořit pro Azure Marketplace.
+Po netechnické požadavky splněny, další jsou specifické pro nabídky technické požadavky. Klikněte na odkaz na článek pro typ příslušné nabídky, který chcete vytvořit pro Azure Marketplace.
 
 * [Technické požadavky virtuálního počítače](marketplace-publishing-vm-image-creation-prerequisites.md)
 * [Řešení šablony technické předpoklady](marketplace-publishing-solution-template-creation-prerequisites.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Začínáme: publikování nabídky na webu Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Začínáme: Publikování nabídky na webu Azure Marketplace](marketplace-publishing-getting-started.md)
 

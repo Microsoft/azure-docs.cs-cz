@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: twhitney
-ms.openlocfilehash: e6552984fd629810fd5e422c92ef9ee8ecd2b342
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 13637e4de0d555bdd0e70c69097b204c286eb24c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053104"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063824"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 > [!div class="op_single_selector"]
@@ -332,9 +332,9 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ### <a name="configure-cluster-wide-credentials"></a>Konfigurace přihlašovacích údajů celoclusterový
 
-Od v6.3 se Service Fabric umožňují uživatelům konfigurovat celoclusterový přihlašovací údaje, které je možné použít jako výchozí přihlašovací údaje úložiště aplikací.
+Service Fabric počínaje 6.3 modulu runtime, umožňuje nakonfigurovat celoclusterový přihlašovací údaje, které je možné použít jako výchozí přihlašovací údaje úložiště aplikací.
 
-Můžete povolit nebo zakázat funkci přidáním atributu "UseDefaultRepositoryCredentials" ContainerHostPolicies v souboru ApplicationManifest.xml s "true/false" logickou hodnotu.
+Můžete povolit nebo zakázat funkci tak, že přidáte `UseDefaultRepositoryCredentials` atribut `ContainerHostPolicies` v souboru ApplicationManifest.xml s `true` nebo `false` hodnotu.
 
 ```xml
 <ServiceManifestImport>
@@ -348,14 +348,14 @@ Můžete povolit nebo zakázat funkci přidáním atributu "UseDefaultRepository
 </ServiceManifestImport>
 ```
 
-Se tak dozví, Service Fabric k použití výchozích pověření úložiště, které můžete zadat v ClusterManifest části Hosting.  Pokud UseDefaultRepositoryCredentials nastavená na hodnotu true, Service Fabric se nyní čtení následující hodnoty v clustermanifest:
+Service Fabric, použije výchozí úložiště pověření, které můžete zadat v ClusterManifest pod `Hosting` oddílu.  Pokud `UseDefaultRepositoryCredentials` je `true`, Service Fabric načteme ClusterManifest následující hodnoty:
 
 * DefaultContainerRepositoryAccountName (string)
 * DefaultContainerRepositoryPassword (string)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
-* DefaultContainerRepositoryPasswordType(string)---Podporuje od v6.4
+* DefaultContainerRepositoryPasswordType (řetězec)---podporovány od verze 6.4 modulu runtime
 
-Tady je příklad toho, co můžete přidat uvnitř oddílu Hosting v ClusterManifestTemplate.json. Další informace o [postup konfigurace nastavení clusteru](service-fabric-cluster-fabric-settings.md) a [ zašifrování hesla](service-fabric-application-secret-management.md)
+Tady je příklad toho, co můžete přidat uvnitř `Hosting` oddílu v souboru ClusterManifestTemplate.json. Další informace najdete v tématu [nastavení clusteru změnit Azure Service Fabric](service-fabric-cluster-fabric-settings.md) a [tajných kódů aplikace spravovat Azure Service Fabric](service-fabric-application-secret-management.md)
 
 ```json
       {
@@ -384,7 +384,6 @@ Tady je příklad toho, co můžete přidat uvnitř oddílu Hosting v ClusterMan
         ]
       },
 ```
-
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
 Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. V režimu izolace procesů všechny kontejnery spuštěné na stejném hostitelském počítači sdílejí jádro s hostitelem. V režimu izolace Hyper-V se jádra pro jednotlivé kontejnery Hyper-V a hostitele kontejneru izolují. Režim izolace určuje element `ContainerHostPolicies` v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozí hodnota je režim izolace procesů v hostitelích Windows Server. Na hostitelích s Windows 10 je podporována pouze režimu izolace Hyper-V, takže se kontejner spustí v režimu izolace Hyper-V bez ohledu na nastavení režimu izolace. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.

@@ -9,28 +9,29 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: ronitr
-ms.author: ronitr
+author: vainolo
+ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: b295f7a2a454e3987e8639814f785b7457dd452b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 045314980d0051e8b5ef71bdf95023084eff1880
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973090"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063863"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure auditem SQL Database Managed Instance
 
 [Azure SQL Database Managed Instance](sql-database-managed-instance.md) auditování sleduje události databáze a zapisuje je do auditu protokolu ve vašem účtu úložiště Azure. Také auditování:
+
 - Pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
 - Povolí a umožňuje dodržování standardů dodržování předpisů, ale nezaručuje dodržování předpisů. Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/).
 
-
-## <a name="set-up-auditing-for-your-server"></a>Nastavení auditování serveru
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Nastavení auditování serveru do služby Azure Storage 
 
 Následující část popisuje konfiguraci auditování pro Managed Instance.
+
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Následující kroky slouží k vytvoření služby Azure Storage **kontejneru** kde jsou uloženy protokoly auditu.
 
@@ -124,15 +125,69 @@ Následující část popisuje konfiguraci auditování pro Managed Instance.
     GO
     ```
 
-## <a name="analyze-audit-logs"></a>Analýza protokolů auditu
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>Nastavení auditování serveru do centra událostí nebo Log Analytics
+
+Protokoly auditu z Managed Instance můžete odeslat do i rozbočovače nebo Log Analytics pomocí Azure monitoru. Tato část popisuje, jak nastavit tuto konfiguraci:
+
+1. Přejděte v [webu Azure Portal](https://portal.azure.com/) na SQL Managed Instance.
+
+2. Klikněte na **nastavení diagnostiky**.
+
+3. Klikněte na **zapnout diagnostiku**. Pokud už je povolená Diagnostika *+ přidat nastavení diagnostiky* se zobrazí místo.
+
+4. Vyberte **SQLSecurityAuditEvents** v seznamu protokolů.
+
+5. Vyberte cílové umístění událostí auditu – centra událostí a Log Analytics. Konfigurace pro každý cíl požadované parametry (například pracovní prostor Log Analytics).
+
+6. Klikněte na **Uložit**.
+
+  ![Navigační podokno][9]
+
+7. Připojte se k Managed Instance pomocí **SQL Server Management Studio (SSMS)** nebo jakéhokoli klienta podporované.
+
+8. Spusťte následující příkaz jazyka T-SQL k vytvoření auditu serveru:
+
+    ```SQL
+    CREATE SERVER AUDIT [<your_audit_name>] TO EXTERNAL_MONITOR;
+    GO
+    ```
+
+9. Vytvoření specifikace auditu serveru nebo specifikací auditu databáze, stejně jako pro SQL Server:
+
+   - [Vytvořit průvodce pro specifikace jazyka T-SQL Server audit](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [Vytvořit průvodce T-SQL specifikace auditu databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+
+10. Povolte auditování server vytvořili v kroku 7:
+ 
+    ```SQL
+    ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
+    GO
+    ```
+
+## <a name="consume-audit-logs"></a>Využívání protokolů auditování
+
+### <a name="consume-logs-stored-in-azure-storage"></a>Využívání protokolů uložená ve službě Azure Storage
+
 Existuje několik metod, které lze použít k zobrazení protokolů auditování objektů blob.
 
 - Použít funkci systému `sys.fn_get_audit_file` (T-SQL) vrátit data protokolu auditování v tabulkovém formátu. Další informace o použití této funkce najdete v článku [sys.fn_get_audit_file dokumentaci](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
+- Protokoly auditu můžete prozkoumat pomocí nástroje, jako je Průzkumník služby Azure Storage. Ve službě Azure storage se ukládají protokoly auditování jako kolekce souborů, objektů blob v kontejneru s názvem sqldbauditlogs. Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku odkaz formát protokolu auditování objektů Blob.
+
 - Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing).
 
 > [!IMPORTANT]
-> Metoda pro zobrazení záznamů auditu na webu Azure Portal (záznamy auditu podokno) je nyní k dispozici pro Managed Instance.
+> Zobrazení záznamů auditu na webu Azure Portal (záznamy auditu podokno) je nyní k dispozici pro Managed Instance.
+
+### <a name="consume-logs-stored-in-event-hub"></a>Využívání protokolů uložených v Centru událostí
+
+Chcete-li využívají data protokolů auditu z centra událostí, je potřeba nastavit, aby datový proud zpracování událostí a jejich zápisu do cílového. Další informace najdete v článku dokumentace k Azure Event Hubs.
+
+### <a name="consume-and-analyze-logs-stored-in-log-analytics"></a>Využití a analyzovat protokoly uložené v Log Analytics
+
+Pokud se protokoly auditu se zapisují do Log Analytics, jsou k dispozici v pracovním prostoru Log Analytics, ve kterém rozšířené hledání můžete spustit na data auditu. Jako výchozí bod, přejděte do služby Log Analytics a v části *Obecné* klikněte na *protokoly* a zadejte jednoduchý dotaz, jako například: `search "SQLSecurityAuditEvents"` zobrazíte auditování protokoluje.  
+
+Log Analytics nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o vyhledávací jazyk Log Analytics a příkazy najdete v tématu [referenční příručce k vyhledávání Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
 ## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>Auditování rozdíly mezi Managed Instance, Azure SQL Database a SQL Server
 
@@ -145,22 +200,17 @@ Hlavní rozdíly mezi auditování SQL v Managed Instance, Azure SQL Database a 
 Relace XEvent auditování ve spravované instanci podporuje cíle úložiště objektů blob v Azure. Souborová služba a windows protokoly jsou **nepodporuje**.
 
 Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování do Azure blob storage jsou:
+
 - Novou syntaxi `TO URL` je k dispozici a umožní vám zadat adresu URL kontejneru objektů blob v Azure Storage, kde `.xel` soubory jsou umístěny.
+- Novou syntaxi `TO EXTERNAL MONITOR` je k dispozici pro povolení cíle i centra a Log Analytics.
 - Syntaxe `TO FILE` je **nepodporuje** protože Managed Instance nemá přístup ke sdílené složky Windows.
 - Možnost vypnutí je **nepodporuje**.
 - `queue_delay` 0 je **nepodporuje**.
-
 
 ## <a name="next-steps"></a>Další postup
 
 - Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
 - Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/).
-
-
-<!--Anchors-->
-[Set up auditing for your server]: #subheading-1
-[Analyze audit logs]: #subheading-2
-[Auditing differences between Managed Instance, Azure SQL DB and SQL Server]: #subheading-3
 
 <!--Image references-->
 [1]: ./media/sql-managed-instance-auditing/1_blobs_widget.png
@@ -171,3 +221,4 @@ Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování do Azure blob storage 
 [6]: ./media/sql-managed-instance-auditing/6_storage_settings_menu.png
 [7]: ./media/sql-managed-instance-auditing/7_sas_configure.png
 [8]: ./media/sql-managed-instance-auditing/8_sas_copy.png
+[9]: ./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png

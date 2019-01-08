@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 6d0524471ddc62e1ff6285bd0c80049917e726a6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d103061289991fb149b7c8d76430b37a6b385f80
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014943"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064368"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
 > * [Verze 1](v1/data-factory-scheduling-and-execution.md)
 > * [Aktuální verze](concepts-pipeline-execution-triggers.md)
 
-_Spuštění kanálu_ v Azure Data Factory definuje instanci spuštění kanálu. Například si představte, že máte kanál, který se spouští v 8:00, 9:00 a 10:00. V tomto případě existují tři samostatná spuštění kanálu. Každé spuštění kanálu má jedinečné ID spuštění. Tento identifikátor GUID jedinečným způsobem definuje konkrétní spuštění kanálu. 
+_Spuštění kanálu_ v Azure Data Factory definuje instanci spuštění kanálu. Například si představte, že máte kanál, který se spouští v 8:00, 9:00 a 10:00. V tomto případě existují tři samostatná spuštění kanálu. Každé spuštění kanálu má jedinečné ID spuštění. Tento identifikátor GUID jedinečným způsobem definuje konkrétní spuštění kanálu.
 
 Instance spuštění kanálu se obvykle vytvářejí předáváním argumentů do parametrů, které definujete v kanálech. Kanál můžete spustit ručně nebo prostřednictvím _aktivační události_. Tento článek obsahuje podrobnosti o obou způsobech spuštění kanálu.
 
@@ -84,7 +84,7 @@ Kanál můžete ručně spustit některým z následujících způsobů:
 - Python SDK
 
 ### <a name="rest-api"></a>REST API
-Následující ukázkový příkaz ukazuje ruční spuštění kanálu pomocí rozhraní REST API:  
+Následující ukázkový příkaz ukazuje ruční spuštění kanálu pomocí rozhraní REST API:
 
 ```
 POST
@@ -175,7 +175,7 @@ Aktivační událost plánovače spouští kanály podle časového plánu. Tato
 Další informace o aktivačních událostech plánovače a příklady najdete v tématu [Vytvoření aktivační události plánovače](how-to-create-schedule-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Definice aktivační události plánovače
-Při vytváření aktivační události plánovače určíte plánování a opakování pomocí definice JSON. 
+Při vytváření aktivační události plánovače určíte plánování a opakování pomocí definice JSON.
 
 Pokud chcete, aby aktivační událost plánovače aktivovala spuštění kanálu, zahrňte do definice aktivační události odkaz na příslušný kanál. Mezi kanály a aktivačními událostmi existuje vztah n-m. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů.
 
@@ -292,7 +292,7 @@ Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovlád�
 
 Podívejme se na příklad toho, co se stane, když je čas začátku v minulosti a je nastaveno opakování, ale žádný plán. Předpokládejme, že aktuální čas je 8. 4. 2017 13:00, čas začátku je 7. 4. 2017 14:00 a opakování je nastaveno na každé dva dny. (Hodnota **recurrence** je definovaná nastavením vlastnosti **frequency** na hodnotu „day“ (den) vlastnosti **interval** na hodnotu 2.) Všimněte si, že hodnota **startTime** je v minulosti a předchází aktuálnímu času.
 
-Za těchto podmínek dojde k prvnímu spuštění v 9. 4. 2017 ve 14:00. Modul plánovače vypočítá výskyty spuštění na základě času začátku. Všechny instance v minulosti se zahodí. Modul použije další instanci, která nastane v budoucnosti. V tomto scénáři je čas začátku 7. 4. 2017 ve 14:00. Další instance nastane o dva dny později, tedy 9. 4. 2017 ve 14:00.
+Za těchto podmínek dojde k prvnímu spuštění je 2017-04-09 ve 14:00. Modul plánovače vypočítá výskyty spuštění na základě času začátku. Všechny instance v minulosti se zahodí. Modul použije další instanci, která nastane v budoucnosti. V tomto scénáři je čas začátku 7. 4. 2017 ve 14:00. Další instance nastane o dva dny později, tedy 9. 4. 2017 ve 14:00.
 
 První čas spuštění je stejný, i když má položka **startTime** hodnotu 2017-04-05 14:00 (5. 4. 2017 ve 14:00) nebo 2017-04-01 14:00 (1. 4. 2017 ve 14:00). Po prvním spuštění se další spuštění vypočítají na základě plánu. Proto další spuštění proběhnou 11. 4. 2017 ve 14:00, pak 13. 4. 2017 ve 14:00, pak 15. 4. 2017 ve 14:00 atd.
 
@@ -312,7 +312,7 @@ Následující tabulka obsahuje podrobný popis elementů **schedule**:
 | **minutes** | Minuty v hodině, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
 | **hours** | Hodiny dne, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
 | **weekDays** | Dny v týdnu, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při týdenní frekvenci.|<br />– Monday (Pondělí)<br />– Tuesday (Úterý)<br />– Wednesday (Středa)<br />– Thursday (Čtvrtek)<br />– Friday (Pátek)<br />– Saturday (Sobota)<br />– Sunday (Neděle)<br />– Pole hodnot dní (maximální velikost pole je 7)<br /><br />V hodnotách dní se nerozlišují malá a velká písmena|
-| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |– Pole **monthlyOccurrence** objekty: `{ "day": day,  "occurrence": occurrence }`<br />– Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.<br />– Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.|
+| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |– Pole **monthlyOccurrence** objekty: `{ "day": day, "occurrence": occurrence }`<br />– Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.<br />– Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.|
 | **monthDays** | Dan v měsíci, ve kterém se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |– Libovolná hodnota <= −1 a >= −31<br />– Libovolná hodnota >= 1 a <= 31<br />– Pole hodnot|
 
 ## <a name="tumbling-window-trigger"></a>Aktivační událost pro přeskakující okno
@@ -372,7 +372,7 @@ Následující tabulka obsahuje porovnání aktivační události pro přeskakuj
 | **Možnost opakování** | Podporuje se. Spuštění kanálu, která selžou, mají výchozí zásadu opakování 0 nebo zásadu zadanou uživatelem v definici aktivační události. Automaticky opakuje pokus, když spuštění kanálu selže kvůli omezení souběžnosti, serveru/omezování (tedy stavové kódy 400: Chyba uživatele, 429: Příliš mnoho požadavků a 500: Vnitřní chyba serveru). | Nepodporuje se. |
 | **Souběžnost** | Podporuje se. Uživatelé můžou pro aktivační událost explicitně nastavit omezení souběžnosti. Umožňuje 1 až 50 souběžně aktivovaných spuštění kanálu. | Nepodporuje se. |
 | **Systémové proměnné** | Podporuje použití systémových proměnných **WindowStart** a **WindowEnd**. Uživatelé mají v definici aktivační události přístup k `triggerOutputs().windowStartTime` a `triggerOutputs().windowEndTime` jako systémovým proměnným aktivační události. Tyto hodnoty se používají v čase začátku okna a v čase konce okna. Například pro aktivační událost pro přeskakující okno, která se spouští každou hodinu, je definice okna od 1:00 do 2:00 následující: `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` a `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nepodporuje se. |
-| **Vztah mezi kanálem a aktivační událostí** | Podporuje vztah 1:1. Je možné aktivovat pouze jeden kanál. | Podporuje vztahy M:N. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů. | 
+| **Vztah mezi kanálem a aktivační událostí** | Podporuje vztah 1:1. Je možné aktivovat pouze jeden kanál. | Podporuje vztahy M:N. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů. |
 
 ## <a name="next-steps"></a>Další postup
 Projděte si tyto kurzy:

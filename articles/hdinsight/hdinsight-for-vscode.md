@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 23cbdb4d72a6b88563d9d2c2bd0e4e3c8223377f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c86fd2affa08999ae574f55315c6a0b32fa58fca
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723667"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076786"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Použití Azure HDInsight Tools pro Visual Studio Code
 
@@ -127,7 +127,7 @@ Normální cluster můžete propojit s použitím [Apache Ambari](https://ambari
 
 1. Výběrem otevřete paletu příkazů **CTRL + SHIFT + P**a pak zadejte **HDInsight: Propojení clusteru**.
 2. Vyberte **koncový bod obecného Livy**.
-3. Zadejte obecné Livy koncového bodu, například: http://10.172.41.42:18080.
+3. Zadejte obecné Livy koncového bodu, například: http\:/ / 10.172.41.42:18080.
 4. Vyberte **základní** potřebovat při autorizaci pro obecný Livy koncový bod, jinak vyberte **žádný**.
 5. Název vstupu uživatele při vyberte **základní** v step4.
 6. Zadejte heslo, když vyberte **základní** v step4.

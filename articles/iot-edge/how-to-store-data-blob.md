@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 287f67ff9eb0ecc214bd8e8fd3c27660cea185c7
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b5dcc4295467aee82547bc2a0894320bd110998f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055060"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065813"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -86,7 +86,7 @@ Na webu Azure Marketplace poskytuje IoT Edge moduly, které je možné nasadit p
       >[!IMPORTANT]
       >Azure IoT Edge je velká a malá písmena, při volání k modulům a sady SDK služby Storage výchozí hodnoty na malá písmena. Aby bylo zajištěno, že nedošlo k přerušení připojení k Azure Blob Storage na modul IoT Edge, pojmenujte ho malá písmena. 
 
-   2. Výchozí hodnota **možnosti vytvoření kontejneru** vazby portu, které váš kontejner potřebuje, ale také muset přidat informace o vašem účtu úložiště a vazby k adresáři úložiště ve vašem zařízení. Přepsat ve formátu JSON na portálu se na následující JSON:
+   2. Výchozí hodnota **možnosti vytvoření kontejneru** vazby portu, které váš kontejner potřebuje, ale také muset přidat informace o vašem účtu úložiště a vazby k adresáři úložiště ve vašem zařízení. Přepište ve formátu JSON na portálu ve formátu JSON:
     
       ```json
       {
