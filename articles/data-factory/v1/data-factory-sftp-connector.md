@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54017646"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Přesun dat z server SFTP pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](data-factory-sftp-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-sftp.md)
 
