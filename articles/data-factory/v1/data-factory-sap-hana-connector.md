@@ -21,7 +21,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54020944"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesouvání dat ze SAP HANA pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](data-factory-sap-hana-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-sap-hana.md)
 
