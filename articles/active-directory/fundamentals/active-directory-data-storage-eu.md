@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 371c7b2eb2f2e0e34dc80cf8fe6771620fa76765
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 51658fe686e2826618b2044cd969e6b4d463b93f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099932"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063169"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Ukládání dat identity Evropského zákazníků v Azure Active Directory
 Azure Active Directory (Azure AD) pomáhá spravovat identity uživatelů a vytvářet zásady přístupu využitím inteligentních funkcí, které pomáhají zabezpečit prostředky vaší organizace. Data identit se uchovávají v umístění na základě adresy vaší organizace, kterou jste uvedli při přihlášení k odběru služby. Například při přihlášení k odběru Office 365 nebo Azure. Konkrétní informace o tom, kde se uchovávají data vašich identit, najdete v části [Jaké je umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v Centru zabezpečení Microsoftu.
@@ -55,7 +55,7 @@ Většina dat evropských identit souvisejících s Azure AD pro organizace s ev
 
 - **Microsoft Azure Active Directory B2C (Azure AD B2C)**
 
-    Azure AD B2C uchovává všechna neaktivní uložená data uživatelů v evropských datacentrech. Operační protokoly (z nichž se odeberou osobní údaje) však zůstávají v umístění, odkud uživatel přistupuje ke službám. Pokud například uživatel B2C přistupuje ke službě v USA, zůstanou operační protokoly v USA. Kromě toho se výhradně v USA uchovávají veškerá konfigurační data zásad, která neobsahují osobní údaje. Další informace o konfiguracích zásad najdete v článku [Azure Active Directory B2C: Předdefinované zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies).
+    Azure AD B2C uchovává všechna neaktivní uložená data uživatelů v evropských datacentrech. Operační protokoly (z nichž se odeberou osobní údaje) však zůstávají v umístění, odkud uživatel přistupuje ke službám. Pokud například uživatel B2C přistupuje ke službě v USA, zůstanou operační protokoly v USA. Kromě toho se výhradně v USA uchovávají veškerá konfigurační data zásad, která neobsahují osobní údaje. Další informace o konfiguraci zásad najdete v článku [Azure Active Directory B2C: Předdefinované zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) článku.
 
 - **Microsoft Azure Active Directory B2B (Azure AD B2B)** 
     
@@ -72,7 +72,7 @@ Většina dat evropských identit souvisejících s Azure AD pro organizace s ev
     Další informace o rezidenci dat služeb Microsoftu najdete v části [Jaké je umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v Centru zabezpečení Microsoftu.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o všech výše popsaných funkcích najdete v těchto článcích.
+Další informace o všech vlastností a funkcí popsaných výše najdete v těchto článcích:
 - [Co je Multi-Factor Authentication?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
 - [Samoobslužné resetování hesla Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)
 - [Co je Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)

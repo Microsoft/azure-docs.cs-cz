@@ -5,16 +5,16 @@ description: Klíče účtu úložiště poskytují seemless integrace mezi slu�
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
-author: bryanla
-ms.author: bryanla
+author: prashanthyv
+ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e110a24af6a0d49ea949db6bc30ab344c81d0f48
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 3ee0d19c174490d558a8ff06d3f5e038ffff211f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619278"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064436"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
@@ -32,7 +32,7 @@ ms.locfileid: "52619278"
 1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) instalace Azure CLI   
 2. [Vytvoření účtu úložiště](https://azure.microsoft.com/services/storage/)
     - Postupujte podle kroků v tomto [dokumentu](https://docs.microsoft.com/azure/storage/) k vytvoření účtu úložiště  
-    - **Pokyny pro pojmenování:** názvy účtů úložiště musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.        
+    - **Pokyny pro pojmenování:** Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.        
       
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>Krok pokyny o tom, jak používat ke správě klíčů účtu úložiště služby Key Vault
 --------------------------------------------------------------------------------

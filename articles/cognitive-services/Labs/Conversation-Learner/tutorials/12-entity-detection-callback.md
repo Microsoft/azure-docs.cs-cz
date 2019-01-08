@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 147887151abd5c1f7455b0efbf9aadbc2d884183
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a96cfcb07252dc4a9089eab2decaec9efb01a67b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796711"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064982"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Jak používat entity detekce zpětného volání
 
@@ -95,7 +95,7 @@ Tady je kód zpětného volání:
 6. Klikněte na tlačítko "Skóre akce".
     - Kliknutím na tlačítko aktivuje zpětného volání zjišťování entit
     - Zpětné volání kód nastaví hodnota CityResolved Entity správně na "new york"
-7. Vyberte odpověď na "new york je je opravdu dobré."
+7. Vyberte odpověď na "new york je opravdu dobré."
 
 Tento model je typický pro mnoho scénářů robota. Uživatel projevy a extrahované entity se poskytne obchodní logiky a tuto logiku transformace utterance do kanonického tvaru, který se pak uloží do programové entity, pro následné zapne dialogového okna.
 

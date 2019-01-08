@@ -8,18 +8,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 6b4b1b74ace534517157edc20c33236d516205c5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635012"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065490"
 ---
-# <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: posouzení vhodnosti místních úloh pro migraci do Azure
+# <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: Posouzení místních úloh pro migraci do Azure
 
 V tomto článku Contoso vyhodnocuje jeho místní SmartHotel360 aplikaci pro migraci do Azure.
 
-Tento článek je součástí série, která popisuje, jak fiktivní společnosti Contoso migraci svých místních prostředků do cloudu Microsoft Azure. Obsahuje informatio na pozadí a scénáře podrobné nasazení, které ukazují, jak nastavit infrastrukturu migrace vyhodnotit vhodnost migrace místních prostředků a spouštět různé druhy migrace. Scénáře jejich složitost v. V čase se přidají do série článků.
+Tento článek je součástí série, která popisuje, jak fiktivní společnosti Contoso migraci svých místních prostředků do cloudu Microsoft Azure. Obsahuje základní informace a podrobné nasazení scénářů, které ukazují, jak nastavit infrastrukturu migrace vyhodnotit vhodnost migrace místních prostředků a spouštět různé druhy migrace. Scénáře jejich složitost v. V čase se přidají do série článků.
 
 Článek | Podrobnosti | Status
 --- | --- | ---
@@ -31,9 +31,9 @@ Tento článek je součástí série, která popisuje, jak fiktivní společnost
 [Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje aplikace SmartHotel360 pomocí služby Site Recovery k migraci virtuálních počítačů aplikace a Database Migration Service, jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn. | K dispozici.
 [Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso se dokončí migrace lift and shift jeho Linux osTicket aplikace na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
 [Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje jeho Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Site Recovery. Migrace databáze aplikace ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. | K dispozici.
-[Článek 9: Refaktorujte aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migraci své aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace do instance serveru SQL Azure pomocí Pomocníka s migrací databáze. | K dispozici.
-[Článek 10: Refaktorujte Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje osTicket své Linuxové aplikace do webové aplikace Azure v několika oblastech Azure pomocí Azure Traffic Manageru, integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici.
-[Článku 11: Refaktorujte Team Foundation Server na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migrovat své místní nasazení serveru Team Foundation Server ke službám Azure DevOps v Azure. | K dispozici.
+[Článek 9: Refaktorovat aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migraci své aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace do instance serveru SQL Azure pomocí Pomocníka s migrací databáze. | K dispozici.
+[Článek 10: Refaktorovat Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje osTicket své Linuxové aplikace do webové aplikace Azure v několika oblastech Azure pomocí Azure Traffic Manageru, integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici.
+[Článek 11: Refaktorovat a Team Foundation Server na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migrovat své místní nasazení serveru Team Foundation Server ke službám Azure DevOps v Azure. | K dispozici.
 [Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a databázi Azure SQL Database. | K dispozici.
 [Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
 [Článek 14: Škálování migrace do Azure](contoso-migration-scale.md) | Po vyzkoušení kombinace migrace, Contoso připraví škálovat na plné migraci do Azure. | K dispozici.
@@ -70,8 +70,8 @@ Společnosti Contoso vedení IT úzké spolupráci s obchodními partnery spole�
 
 - **Adresa obchodní růst**: Contoso roste. V důsledku toho přetížení zvýšil na místních systémech a infrastrukturu vaší společnosti.
 - **Zvýšení efektivity**: Contoso je potřeba odebrat nepotřebné postupy a zjednodušte procesy pro její vývojáře a uživatele. Obchodní potřeby IT být rychlé a k není produkovaného odpadu čas a peníze, takže společnost doručovat rychleji na požadavky zákazníků.
-- **Zvýšení flexibility**: Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změny, ke kterým dochází v marketplace pro společnost v globální ekonomiku proběhla úspěšně. IT ve společnosti Contoso nesmí získat způsobem, nebo se Staňte obchodní blokování.
-- **Škálování**: s růstem společnosti úspěšně Contoso IT musí poskytnout systémy, které můžou růst stejným tempem.
+- **Zvýšení flexibility**:  Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změny, ke kterým dochází v marketplace pro společnost v globální ekonomiku proběhla úspěšně. IT ve společnosti Contoso nesmí získat způsobem, nebo se Staňte obchodní blokování.
+- **Škálování**: S růstem společnosti úspěšně, musíte zadat Contoso IT systémy, které můžou růst stejným tempem.
 
 ## <a name="assessment-goals"></a>Posouzení cíle
 
@@ -135,11 +135,11 @@ Contoso a ostatní uživatelé musí splňovat následující požadavky pro ass
 Tady je způsob, jakým Contoso provádí hodnocení:
 
 > [!div class="checklist"]
-> * **Krok 1: Stáhněte a nainstalujte Pomocníka s migrací dat**: Contoso připraví Data Migration Assistant pro posouzení místní databáze SQL serveru.
-> * **Krok 2: Posouzení databáze s využitím Pomocníka s migrací dat**: Contoso běží a analyzuje posouzení databáze.
+> * **Krok 1: Stáhněte a nainstalujte Pomocníka s migrací dat**: Contoso připraví Data Migration Assistant posouzení místní databáze SQL serveru.
+> * **Krok 2: Posouzení databáze s využitím Pomocníka s migrací dat**: Contoso je spuštěna a analyzuje posouzení databáze.
 > * **Krok 3: Příprava na posouzení virtuálních počítačů pomocí Azure Migrate**: Contoso nastaví místních účtů a upraví nastavení VMware.
-> * **Krok 4: Vyhledání místních virtuálních počítačů pomocí Azure Migrate**: Contoso vytvoří Azure Migrate collector virtuálního počítače. Potom Contoso spuštění kolektoru pro vyhledání virtuálních počítačů pro posouzení.
-> * **Krok 5: Příprava na analýzu závislostí s využitím Azure Migrate**: nainstaluje Contoso agentů Azure Migrate na virtuálních počítačích, takže společnosti můžete zobrazit mapování závislostí mezi virtuálními počítači.
+> * **Krok 4: Zjištění místních virtuálních počítačů pomocí Azure Migrate**: Contoso vytvoří Azure Migrate collector virtuálního počítače. Potom Contoso spuštění kolektoru pro vyhledání virtuálních počítačů pro posouzení.
+> * **Krok 5: Příprava na analýzu závislostí s využitím Azure Migrate**: Společnost uvidíte mapování závislostí mezi virtuálními počítači, nainstaluje contoso na virtuálních počítačích, agenty Azure Migrate.
 > * **Krok 6: Posouzení virtuálních počítačů pomocí Azure Migrate**: Contoso zkontroluje závislostí skupiny virtuálních počítačů a spuštění posouzení. Při hodnocení je připraven, analyzuje Contoso posouzení v rámci přípravy na migraci.
 
 ## <a name="step-1-download-and-install-data-migration-assistant"></a>Krok 1: Stáhněte a nainstalujte Pomocníka s migrací dat
@@ -186,10 +186,10 @@ Výsledky se zobrazí, jakmile jsou k dispozici. Pokud Contoso řeší problémy
 
 1. V **problémy s kompatibilitou** sestavy Contoso vyhledá všechny problémy na jednotlivých úrovních kompatibility. Mapování úrovní kompatibility na verze SQL Serveru je následující:
 
-    - 100: SQL Server 2008/Azure SQL Database
-    - 110: SQL Server 2012/Azure SQL Database
-    - 120: SQL Server 2014/Azure SQL Database
-    - 130: SQL Server 2016/Azure SQL Database
+    - 100: SQL Server 2008 nebo Azure SQL Database
+    - 110: SQL Server 2012 nebo Azure SQL Database
+    - 120: SQL Server 2014 a Azure SQL Database
+    - 130: SQL Server 2016 a Azure SQL Database
     - 140: SQL Server 2017/Azure SQL Database
 
     ![Data Migration Assistant – sestava problémy s kompatibilitou](./media/contoso-migration-assessment/dma-assessment-5.png)
@@ -217,9 +217,9 @@ Contoso je potřeba vytvořte účet VMware s Azure Migrate můžete použít k 
 
 Zjišťování virtuálních počítačů vyžaduje účet jen pro čtení v systému vCenter Server, který má následující vlastnosti:
 
-- **Typ uživatele**: alespoň uživatel jen pro čtení.
-- **Oprávnění**: objekt datového centra, vyberte **rozšířit na podřízený objekt** zaškrtávací políčko. Pro **Role**vyberte **jen pro čtení**.
-- **Podrobnosti o**: má uživatel přiřazené na úrovni datacentra s přístupem ke všem objektům v datacentru.
+- **Typ uživatele**: Alespoň uživatel jen pro čtení.
+- **Oprávnění**: Objekt datového centra, vyberte **rozšířit na podřízený objekt** zaškrtávací políčko. Pro **Role**vyberte **jen pro čtení**.
+- **Podrobnosti o**: Uživateli se přiřadí na úrovni datacentra s přístupem ke všem objektům v datacentru.
 - Chcete-li omezit přístup, přiřaďte **bez přístupu** role s **rozšířit na podřízený** objekt podřízeným objektům (hostitelé vSphere, úložiště, virtuální počítače a sítě).
 
 ### <a name="verify-permissions-to-create-a-vm"></a>Ověření oprávnění k vytvoření virtuálního počítače

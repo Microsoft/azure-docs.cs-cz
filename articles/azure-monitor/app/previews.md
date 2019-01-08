@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7b7de745d63ca5f6ac28dee4f98b0069a52ea0a8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: e53aa250f19c69e234a678be5e9f51a3836cb3a2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003290"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074848"
 ---
 # <a name="preview-upcoming-changes-to-azure-application-insights"></a>Připravované změny ve verzi Preview služby Azure Application Insights 
 
@@ -37,4 +37,4 @@ V okně verze Preview můžete vybrat jednu z následujících možností až uv
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření prostředku](../../application-insights/app-insights-create-new-resource.md)
+- [Vytvoření prostředku](../../azure-monitor/app/create-new-resource.md )

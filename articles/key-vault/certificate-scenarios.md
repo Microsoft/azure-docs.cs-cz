@@ -10,16 +10,15 @@ ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: d4d2ce4dcda9ea72d4a33ee363efd3519c2118aa
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3adeb2e9fab22d1e9c10b2deb4591c29ccff748
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635828"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074389"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují některé z primární použití služby Key Vault certificate management včetně další kroky potřebné pro vytvoření vaší první certifikát do svého trezoru klíčů.

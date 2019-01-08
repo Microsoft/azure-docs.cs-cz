@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 9f3d84b1f2e179d265c811faf2d35bd55bc1410f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d9f3685e0a3961631f1577827cc415cb91d38a15
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606977"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074236"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -304,9 +304,9 @@ V této části provedete následující úlohy k nastavení Application Insight
 
 1. Pokud ještě nemáte aplikaci služby App Service, které můžete použít, [vytvořit](app-service-web-get-started-dotnet-framework.md).
 
-1. Pokud ještě nemáte prostředku Application Insights, které můžete použít, [vytvořit](../application-insights/app-insights-create-new-resource.md). Nastavte **typ aplikace** k **Obecné**a přeskočte následující části **zkopírujte klíč instrumentace**.
+1. Pokud ještě nemáte prostředku Application Insights, které můžete použít, [vytvořit](../azure-monitor/app/create-new-resource.md ). Nastavte **typ aplikace** k **Obecné**a přeskočte následující části **zkopírujte klíč instrumentace**.
 
-1. Pokud už máte prostředek Application Insights, který chcete použít, [zkopírujte klíč instrumentace](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key).
+1. Pokud už máte prostředek Application Insights, který chcete použít, [zkopírujte klíč instrumentace](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key).
 
 ### <a name="configure-app-settings"></a>Konfigurace nastavení aplikace 
 

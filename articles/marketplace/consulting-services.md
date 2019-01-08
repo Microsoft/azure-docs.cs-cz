@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dbd97ba8faacdc387a6e0b78c206f65a201ca246
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 85f88d9234acbb1831ea76188d06ef47199703ca
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261543"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074083"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytuje partnerů Microsoftu, cíl připojení zákazníků služby na podporu a rozšiřují jejich používání Azure a obchodních cílů. 
@@ -66,8 +66,8 @@ Partneři musí mít **stříbrné nebo zlaté úrovně kompetence** v příslu�
 |Primární produktu |Požadavky zakládající nárok |
 |---------|---------|
 | Dynamics 365 for Customer Engagement    |   Stříbrné nebo zlaté úrovně [řízení vztahů se zákazníky cloudu](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) competency.    | 
-|Dynamics 365 pro Finance and Operations, Enterprise edition  |  Stříbrné nebo zlaté úrovně [plánování podnikových zdrojů](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) kompetence a minimální příjmy z $25 tisíc v cloudové operace koncové 12 měsíců.       |
-|Dynamics 365 pro Finance and Operations, verze Business edition  |  Slouží jako [Cloud Service Provider (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) nebo [digitální DPOR Partner of Record ()](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) pro alespoň jednoho odběratele      |
+|Dynamics 365 pro Finance and Operations, Enterprise edition  |  Stříbrné nebo zlaté úrovně [plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetence a minimální příjmy z $25 tisíc v cloudové operace koncové 12 měsíců.       |
+|Dynamics 365 pro Finance and Operations, verze Business edition  |  Slouží jako [Cloud Service Provider (CSP)](https://partner.microsoft.com/cloud-solution-provider) nebo [digitální DPOR Partner of Record ()](https://partner.microsoft.com/membership/digital-partner-of-record) pro alespoň jednoho odběratele      |
 |Power BI, Power BI vlastní Vizuály | Splnění [Solution Partner kritéria](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
 |PowerApps | Máte publikování [prezentaci partnerů]() řešení
 
@@ -84,10 +84,10 @@ Partneři musí mít **stříbrné nebo zlaté úrovně kompetence** v příslu�
 |Dánsko   |Itálie   |     Norsko          |Spojené státy |
 |Finsko   |Japonsko   |     Polsko          
 
-Konzultační služby na trh bude publikovaný v konkrétní geografické oblasti. První spuštění bude: USA, Kanadě, Spojeném království a Austrálii. Katalogy pro jiné země, bude publikovaný po smysluplné číslo a přesvědčivé výběr nabídky služeb byly odeslané partnerů a schváleny společností Microsoft.
+Konzultační služby na trh bude publikovaný v konkrétní geografické oblasti. První spuštění bude: USA, Kanadě, Spojeném království a Austrálie. Katalogy pro jiné země, bude publikovaný po smysluplné číslo a přesvědčivé výběr nabídky služeb byly odeslané partnerů a schváleny společností Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Jak se zaregistrovat pro konzultační služby v Azure Marketplace a AppSource
-Začněte tím, že [registrace](https://azuremarketplace.microsoft.com/en-us/sell/signup) údaje o společnosti na webu Marketplace. Vydavatelé mohou na odkazovat [stát vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), úplný seznam Kontrola požadavků na registraci. 
+Začněte tím, že [registrace](https://azuremarketplace.microsoft.com/sell/signup) údaje o společnosti na webu Marketplace. Vydavatelé mohou na odkazovat [stát vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), úplný seznam Kontrola požadavků na registraci. 
 
 **Co chcete očekávat po registraci** The Onboardingový tým vás bude kontaktovat do 1 – 3 pracovních dnů s uvítací e-mail, který bude obsahovat přihlašovací údaje pro váš portál partnerů cloudu (CPP). [Portál partnerů cloudu](https://cloudpartner.azure.com) je portál výpis nabídka, kde vydavatelé odesílat informacích o a odesílání. 
 
@@ -119,37 +119,37 @@ Před registrací můžete spustit shromažďování a příprava obsah, který 
 ## <a name="publishing-process"></a>Proces publikování
 Výpis nabídkou konzultační služby na Azure Marketplace a AppSource zahrnuje následující fáze:
 
-1. **Výpis**: spustit sestavování nové nabídky výpis po přihlášení k vaší [portál partnerů cloudu](https://cloudpartner.azure.com) účtu. Z rozevírací nabídky vyberte "Nové nabídky" a konzultační služby. Zadejte váš výpis artefaktů a publikovat.
-2. **Ověření**: vaše žádost se u nich zkontrolovat, ujistěte se, že splňujete kritériích způsobilosti. Potom pošleme vám pokyny pro výpis konzultační služby nabízí. 
+1. **Výpis**: Spustit sestavování nové nabídky výpis po přihlášení k vaší [portál partnerů cloudu](https://cloudpartner.azure.com) účtu. Z rozevírací nabídky vyberte "Nové nabídky" a konzultační služby. Zadejte váš výpis artefaktů a publikovat.
+2. **Ověření**: K ověření, že splňujete kritéria způsobilosti je zkontrolovat, jestli vaši žádost. Potom pošleme vám pokyny pro výpis konzultační služby nabízí. 
 3. **Odeslat**: Zadejte požadované informace, který je uvedený v pokynech. Veškerý obsah a podpůrné materiály musí odesílat v angličtině. 
-4. **Kontrola**: našeho týmu pro uvádění na trh a redakční kontroly váš příspěvek a optimalizuje pro lepší čitelnost, gramatiky a efektivitu. 
-5. **Pracovní**: váš příspěvek je připraven k revizi. 
+4. **Kontrola**: Náš tým uvádění na trh a redakční kontroly váš příspěvek a optimalizuje pro lepší čitelnost, gramatiky a efektivitu. 
+5. **Pracovní**: Váš příspěvek je připraven k revizi. 
 6. **Publikování**: Pokud jste s Microsoftem jste spokojeni s připravený obsah nezkontroloval, váš výpis je připravený k publikování na webu marketplace. Datum pro uvedení do provozu pro výpis závisí na zemi, který je zadán v rámci vaší nabídky. Pokud už je katalog pro vybranou zemi živé na Azure Marketplace nebo AppSource, během pár hodin se zobrazí výpis. Výpis v opačném případě se zobrazí, jakmile uvedete v katalogu.
 
 ## <a name="offer-listings-and-content-review-criteria"></a>: Výpisy nabídek a kritéria obsahu kontroly
 Nabídky musí být jeden z následujících pět typů (můžete zobrazit seznam více než jeden): 
 
-* **Posouzení**: vyhodnocení na základě prostředí a určit použitelnost řešení a poskytuje odhad nákladů a časování. 
-* **Přehledovou**: Úvod k řešení nebo konzultační služby k vykreslení zájmu zákazníků s využitím architektury, ukázek a příkladů zákazníků. 
-* **Implementace**: dokončení instalace, jejímž výsledkem plně funkčního řešení. Doporučujeme, abyste omezení na řešení, která může být implementováno ve dvou týdnů nebo nižší. 
-* **Testování konceptu**: implementace omezený rozsah k určení, jestli řešení požadavkům zákazníků. 
-* **Seminář**: interaktivní zapojení, který se provádí v místním prostředí zákazníka. To může zahrnovat školení, brífinků, hodnocení a ukázky, které jsou postavené na data nebo prostředí zákazníka. 
+* **Posouzení**: Vyhodnocení na základě prostředí a určit použitelnost řešení a poskytuje odhad nákladů a časování. 
+* **Přehledovou**: Úvod do řešení a konzultační služby k vykreslení zájmu zákazníků s využitím architektury, ukázek a příkladů zákazníků. 
+* **Implementace**: Dokončení instalace, jejímž výsledkem plně funkčního řešení. Doporučujeme, abyste omezení na řešení, která může být implementováno ve dvou týdnů nebo nižší. 
+* **Testování konceptu**: Omezením oboru implementace k určení, jestli řešení požadavkům zákazníků. 
+* **Seminář**: Interaktivní zapojení se provádí v místním prostředí zákazníka. To může zahrnovat školení, brífinků, hodnocení a ukázky, které jsou postavené na data nebo prostředí zákazníka. 
 
-**Poznámka:** s výjimkou *přehledové* typ služby, konzultační služby je možné poskytovat osobně (to znamená, že přímo u jeho umístění nebo partnerském zařízení), nebo virtuálně (to znamená prostřednictvím telekonference, web konference, nebo vzdálené implementace). Brífinků musí nabízet osobně.
+**Poznámka:** S výjimkou *přehledové* typ služby, konzultační služby je možné poskytovat osobně (to znamená, že přímo u jeho umístění nebo partnerském zařízení), nebo virtuálně (to znamená prostřednictvím telekonference, webové konference, nebo vzdálené implementace). Brífinků musí nabízet osobně.
 
 Po nakonfigurování výše uvedených požadované elementy tým obsahu kontroly se ověří, že je váš popis nabídky informativní a kompletní pro cílovou skupinu. 
 
 #### <a name="listing-title"></a>Název seznamu
 
-Pole název je omezena na 50 znaků a musí přenášet dobu trvání a služby typu nabídky se pro zajištění maximálního optimalizace pro vyhledávací weby. Požadovaný formát je následujícím způsobem: název: typ trvání
+Pole název je omezena na 50 znaků a musí přenášet dobu trvání a služby typu nabídky se pro zajištění maximálního optimalizace pro vyhledávací weby. Požadovaný formát je následující: JMÉNO: TYP TRVÁNÍ
 
 Příklady:
 
 
 |Ukázkový název  |Správný formát  |
 |---------|---------|
-|Začínáme se službou Azure IoT výroby    |   Výrobu IoT: posouzení 2denním      |
-|Seminář na inteligentní opékače        |  Inteligentní opékače: seminář o 1 týden       |
+|Začínáme se službou Azure IoT výroby    |   Výrobní IoT: Posouzení 2 dny      |
+|Seminář na inteligentní opékače        |  Inteligentní opékače: Seminář o 1 týden       |
 |  Koncepce migrace SQL serveru    | Migrace SQL: 3 týdny testování konceptu        |
 
 #### <a name="listing-summaries-and-descriptions"></a>Výpis souhrny a popisy
@@ -176,12 +176,13 @@ V rámci portál Cloud Partner, můžete přidat na váš výpis formátování 
 * * Kurzívu souhrn nabídky
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste tak již neučinili, 
 
-- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace
+- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace.
 
 Pokud jste se zaregistrovali a práci na portál Cloud Partner 
 
-- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky
+- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky.
+- Zobrazit [Azure a Dynamics 365 konzultační nabídky](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) Další informace.

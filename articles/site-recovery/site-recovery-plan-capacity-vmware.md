@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 6f644416a9e56009aadd0f8e1b217402d625af84
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: dc903fca206f5d40f631181b83252f505b9f57a2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788731"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065201"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -30,7 +30,7 @@ Znát požadavky infrastruktura Azure Site Recovery, shromážděte informace o 
 **Konfigurační server** | Konfigurační server by měl být schopen zpracovat denní kapacitu změnit rychlost přes všechny úlohy spuštěné na chráněných počítačích a potřebuje dostatečnou šířku pásma, pokud chcete nepřetržitě replikovat data do služby Azure Storage.<br/><br/> Jako osvědčený postup vyhledejte konfigurační server na segment sítě LAN ve stejné síti jako počítače, které chcete chránit. Můžou být umístěné na jinou síť, ale počítače, které chcete chránit, by měly mít viditelnost vrstvy 3 sítě do ní.<br/><br/> V tabulce v následující části jsou shrnuté doporučené velikosti pro konfigurační server.
 **Procesový server** | První procesový server je nainstalovaný ve výchozím nastavení na konfiguračním serveru. Můžete nasadit další Procesové servery pro horizontální vašeho prostředí. <br/><br/> Procesový server přijímá data replikace z chráněného počítače a optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. Pak odešle data do Azure. Počítač serveru proces by měla mít dostatek prostředků k provedení těchto úloh.<br/><br/> Procesový server používá mezipaměť založené na disku. Použijte samostatný mezipaměti disku 600 GB nebo více ke zpracování změny dat uložených v případě kritický bod sítě nebo kvůli výpadku.
 
-## <a name="size-recommendations-for-the-configuration-serverin-built-process-server"></a>Doporučené velikosti pro konfigurační server/integrovaný procesový server
+## <a name="size-recommendations-for-the-configuration-server-along-with-in-built-process-server"></a>Doporučené velikosti pro konfigurační server (spolu s integrovaný procesový server)
 
 Každý server konfigurace nasazené prostřednictvím [šablony OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) obsahuje integrované procesový server. Prostředky konfiguračního serveru, jako je procesor, paměť, volné místo přistupujících s rychlostí při integrované procesový server se používá k ochraně virtuálních počítačů. Proto požadavky lišit při využít integrované procesový server.
 Konfigurační server, kde se používá integrované procesový server k ochraně úloh dokáže zpracovat až 200 virtuálních počítačů na základě následujících konfigurací
@@ -47,18 +47,6 @@ Kde:
 
 * Každý zdrojový počítač je nakonfigurován se 3 disky o 100 GB.
 * Jsme použili srovnávací testy úložiště z 10 TIS ot. / min, 8 disků SAS pomocí diskového pole RAID 10 pro měření mezipaměti disku.
-
-## <a name="size-recommendations-for-the-configuration-server"></a>Doporučené velikosti pro konfigurační server
-
-Pokud nemáte v úmyslu použít konfigurační server jako procesový server, postupujte níže uvedené konfigurace zpracovat až 650 virtuálních počítačů.
-
-**CPU** | **PAMĚŤ RAM** | **Velikost disku operačního systému** | **Frekvence změny dat** | **Chráněné počítače**
---- | --- | --- | --- | ---
-24 virtuálních procesorů (2 sockets * 12 jader \@ 2,5 GHz [GHz])| 32GB | 80 GB | Neuvedeno | Až virtuálních 650 počítačů
-
-Pokud každý zdrojový počítač je nakonfigurován se 3 disky o 100 GB.
-
-Protože funkce serveru procesů nevyužívá, četnost změn dat se nedá použít. Pokud chcete zachovat nad kapacitu, můžete přepnout úlohy z interních procesový server na jiný proces horizontální navýšení kapacity pomocí následujících pokynů [tady](vmware-azure-manage-process-server.md#balance-the-load-on-process-server).
 
 ## <a name="size-recommendations-for-the-process-server"></a>Velikost doporučení k procesového serveru
 
@@ -123,7 +111,7 @@ Pro nastavení omezování můžete také použít rutinu [Set OBMachineSetting]
 Před nastavením infrastruktury Azure Site Recovery, budete potřebovat pro přístup k prostředí k měření následující faktory: frekvence, požadovaná šířka pásma sítě pro požadovaný cíl bodu obnovení Azure site recovery počet kompatibilních virtuálních počítačů, dat o denním změny komponenty požadované, čas potřebný k dokončení počáteční replikace atd.,
 
 1. K měření tyto parametry, nezapomeňte spuštění plánovače nasazení služby ve vašem prostředí pomocí pokynů sdílené [tady](site-recovery-deployment-planner.md).
-2. Nasazení konfiguračního serveru pomocí uvedené požadavky [tady](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server). Pokud vaše produkční úlohy překročí celkový počet virtuálních 650 počítačů, nasazování jiném konfiguračním serveru.
+2. Nasazení konfiguračního serveru pomocí výše uvedené požadavky. Pokud vaše produkční úlohy překročí celkový počet virtuálních 650 počítačů, nasazování jiném konfiguračním serveru.
 3. Podle měřené denní frekvenci změn dat, nasaďte [horizontální navýšení kapacity procesových serverů](vmware-azure-set-up-process-server-scale.md#download-installation-file) díky velikost pokyny uvedenými [tady](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
 4. Pokud očekáváte, že frekvence změny dat pro disk virtuálního počítače by být delší než 2 MB/s, nezapomeňte [nastavení účtu služby premium storage](tutorial-prepare-azure.md#create-a-storage-account). Protože spuštění plánovače nasazení pro určité časové období špičky v datech frekvence změny během další čas období nemusí být zachyceny v sestavě.
 5. Podle požadovaného cíle bodu obnovení [nastavit šířku pásma sítě](site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
