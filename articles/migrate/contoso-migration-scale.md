@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 37f0ba800cca4b096691a8bb6b43eb33a636d833
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: ca7d565c020e8ac4510c7a65745a9e052b69551d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284859"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063165"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – škálování migrace do Azure
 
@@ -32,9 +32,9 @@ Tento článek je jednou z řady článků, které dokumentují, jak fiktivní s
 [Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje do aplikace pomocí služby Site Recovery k migraci virtuálních počítačů aplikace a Database Migration Service, jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn. | K dispozici.
 [Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso se dokončí migrace lift and shift jeho Linux osTicket aplikace na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
 [Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje svou aplikaci osTicket Linux do virtuálních počítačů Azure pomocí Site Recovery. Migrace databáze aplikace ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. | K dispozici.
-[Článek 9: Refaktorujte aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migraci své aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure pomocí Pomocníka s migrací databáze. | K dispozici.    
-[Článek 10: Refaktorujte Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje jeho Linuxovou aplikaci osTicket do webové aplikace Azure v několika lokalitách. Webová aplikace je integrovaná se službou GitHub pro průběžné doručování. Migrace databáze aplikace ke službě Azure Database for MySQL instance. | K dispozici.
-[Článku 11: Refaktorujte Team Foundation Server na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migrovat své místní nasazení serveru Team Foundation Server ke službám Azure DevOps v Azure. | K dispozici.
+[Článek 9: Refaktorovat aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migraci své aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure pomocí Pomocníka s migrací databáze. | K dispozici.    
+[Článek 10: Refaktorovat Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje jeho Linuxovou aplikaci osTicket do webové aplikace Azure v několika lokalitách. Webová aplikace je integrovaná se službou GitHub pro průběžné doručování. Migrace databáze aplikace ke službě Azure Database for MySQL instance. | K dispozici.
+[Článek 11: Refaktorovat a Team Foundation Server na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migrovat své místní nasazení serveru Team Foundation Server ke službám Azure DevOps v Azure. | K dispozici.
 [Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a app databáze s využitím Azure SQL Database. | K dispozici.    
 [Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici. 
 Článek 14: Škálování migrace do Azure | Po vyzkoušení kombinace migrace, Contoso připraví škálovat na plné migraci do Azure. | V tomto článku
@@ -43,15 +43,15 @@ Tento článek je jednou z řady článků, které dokumentují, jak fiktivní s
 
 Vedení IT úzké spolupráci s obchodními partnery pochopit, co chtějí dosáhnout s tato migrace:
 
-- **Adresa obchodní růst**: Contoso roste, způsobí tlak na místních systémů a infrastruktury.
-- **Zvýšení efektivity**: Contoso musí odebrat nepotřebné postupy a zjednodušte procesy pro vývojáře a uživatele. Obchodní potřeby IT bude rychlé a ne produkovaného odpadu čas nebo peníze, tím rychlejší doručování na požadavky zákazníků.
+- **Adresa obchodní růst**: Contoso je stále se rozšiřující, způsobí tlak na místních systémů a infrastruktury.
+- **Zvýšení efektivity**: Contoso je potřeba odebrat nepotřebné postupy a zjednodušte procesy pro vývojáře a uživatele. Obchodní potřeby IT bude rychlé a ne produkovaného odpadu čas nebo peníze, tím rychlejší doručování na požadavky zákazníků.
 - **Zvýšení flexibility**: Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změn na webu Marketplace, aby úspěch v globální ekonomiku. Nesmí získat způsobem nebo stát obchodní blokování.
-- **Škálování**: růstem podniku zvládla úspěšně, Contoso IT tým musí poskytovat systémy, které mohou rozšířit stejným tempem.
+- **Škálování**: Růstem podniku zvládla úspěšně, musíte zadat tým Contoso IT systémy, které mohou rozšířit stejným tempem.
 - **Zlepšení nákladový model**: Contoso chce snížit kapitálové požadavky v rozpočtu na IT.  Contoso chce používat cloudové možnosti škálování a snížit nutnost drahého hardware.
 - **Nižší náklady na licencování**: Contoso chce minimalizovat náklady na cloud.
 
 
-## <a name="migration-goals"></a>Migrace cíle
+## <a name="migration-goals"></a>Cíle migrace
 
 Tým cloudových Contoso má připnutou dolů cíle pro tuto migraci. Tyto cíle se používá k určení nejlepší metody migrace.
 
@@ -80,16 +80,16 @@ Po plánování a nastavení [infrastruktury Azure](contoso-migration-infrastruc
 
 Teď, když Contoso jste připnuli obchodních faktorů a cílů migrace, určuje čtyři kombinovaným přístup pro proces migrace:
 
-- **Fáze 1 – posouzení**: Přečtěte si o aktuální prostředky a zjistit, jestli jsou vhodné k migraci do Azure.
-- **Fáze 2 – Migrace**: přesunutí prostředků do Azure. Jak se přesouvají aplikace a objektů do Azure bude záviset na aplikaci, a to, co chtějí dosáhnout.
-- **Fáze 3 – optimalizace**: Po přesunutí prostředků do Azure, Contoso musí zlepšit a zjednodušit maximálního výkonu a účinnosti.
-- **Fáze 4 zabezpečení a správu**: všechno v místě společnosti Contoso nyní používá Azure zabezpečení a správu prostředků a služeb k řízení, zabezpečení a monitorovat své cloudové aplikace v Azure.
+- **Fáze 1 – posouzení**: Zjistit aktuální prostředky a zjistěte, jestli jsou vhodné k migraci do Azure.
+- **Fáze 2 – Migrace**: Přesunutí prostředků do Azure. Jak se přesouvají aplikace a objektů do Azure bude záviset na aplikaci, a to, co chtějí dosáhnout.
+- **Fáze 3 – optimalizace**: Po přesunutí prostředků do Azure, musí společnosti Contoso zlepšit a zjednodušit maximálního výkonu a účinnosti.
+- **Fáze 4 zabezpečení a správa**: Všechno v místě Contoso nyní používá zabezpečení a správu prostředků Azure a služby k řízení, zabezpečení a monitorovat své cloudové aplikace v Azure.
 
 
 Tyto fáze nejsou sériového portu v organizaci. Každá část společnosti Contoso projekt migrace budou v různých fází procesu vyhodnocení a migraci. Optimalizace, zabezpečení a správu bude probíhající v čase.
 
 
-## <a name="phase-1-assess"></a>Fáze 1: posouzení
+## <a name="phase-1-assess"></a>Fáze 1: Posouzení
 
 Contoso zahajuje proces zjištěním a posouzením místních aplikací, dat a infrastruktury. Zde je, co udělá Contoso:
 
@@ -169,13 +169,13 @@ Contoso rozhodne, který nástroj pro zjišťování, vyhodnocení a vytvářen�
 
 Služba Azure Migrate vám umožní zkoumat a posuzovat virtuální počítače VMware v místním, v rámci přípravy na migraci do Azure. Zde je, co Azure Migrate umožňuje:
 
-1. Vyhledávání: Zjišťování místních virtuálních počítačů VMware.
+1. Zjišťování: Zjištění místních virtuálních počítačů VMware.
     - Azure Migrate podporuje zjišťování z více servery vCenter (sériově) a v samostatné projekty Azure Migrate můžete spustit zjišťování.
     - Azure Migrate provádí zjišťování, a to znamená, že na virtuálním počítači VMware Migrate Collector spuštěná. Stejné kolekce můžete zjištění virtuálních počítačů na jiný vCenter servery a odesílání dat do různých projektů.
-1. Vyhodnocení připravenosti: vyhodnoťte, jestli se místní počítače jsou vhodné pro spuštění v Azure. Posouzení obsahuje:
-    - Doporučená velikost: Získejte doporučení k velikosti pro virtuální počítače Azure, na základě historie výkonu místních virtuálních počítačů.
+1. Vyhodnocení připravenosti: Vyhodnoťte, jestli se místní počítače jsou vhodné pro spuštění v Azure. Posouzení obsahuje:
+    - Doporučení týkajících se velikosti: Získejte doporučení k velikosti pro virtuální počítače Azure, na základě historie výkonu místních virtuálních počítačů.
     - Odhadované měsíční náklady: Získejte odhadované náklady na provoz místních počítačů v Azure.
-2. Určení závislostí: vizualizací závislostí místních počítačů k vytváření skupin počítačů optimální pro vyhodnocení a migraci.
+2. Určení závislostí:  Vizualizace závislostí místních počítačů k vytváření skupin počítačů optimální pro vyhodnocení a migraci.
 
 
 ![Azure Migrate](./media/contoso-migration-scale/azure-migrate.png)
@@ -216,7 +216,7 @@ Kromě DMS Contoso má jiné skripty, které používají ke zjištění a dokum
 
 Existuje několik dalších partnerů nástroje, které společnost Contoso může pomoct při posuzování v místním prostředí pro migraci do Azure. [Další informace](https://azure.microsoft.com/migration/partners/) o partnerů Azure Migration.  
 
-## <a name="phase-2-migrate"></a>Fáze 2: migrace
+## <a name="phase-2-migrate"></a>Fáze 2: Migrace
 
 Jejich hodnocení kompletní Contoso potřebuje k identifikaci nástroje pro přesun jejich aplikací, dat a infrastruktury do Azure. 
 
@@ -242,7 +242,7 @@ Data musíte také zvážit, zejména s svazku databáze, které má společnost
 Contoso jsou primárně pomocí několika služeb Azure a nástroje pro migraci:
 
 - [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview): Orchestruje zotavení po havárii a migraci místních virtuálních počítačů do Azure.
-- [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview): migraci místních databází, jako je například SQL Server, MySQL a Oracle do Azure.
+- [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview): Migraci místních databází, jako je například SQL Server, MySQL a Oracle do Azure.
 
 
 #### <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -289,8 +289,8 @@ Contoso potřebuje zjistit, jak nasadit tyto komponenty založené na důležit�
 --- | ---
 **Maximální denní frekvenci změn** | Jeden procesový server dokáže zpracovat denní změnu přenosové rychlosti až do velikosti 2 TB. Protože virtuální počítač můžete použít pouze jeden procesový server, je maximální denní četnost změn dat, která je podporována pro replikovaný virtuální počítač 2 TB.
 **Maximální propustnost** | Účet úložiště Azure úrovně standard dokáže zpracovat až 20 000 požadavků za sekundu a vstupně výstupní operace za sekundu (IOPS) napříč replikaci virtuálního počítače musí být v rámci tohoto limitu. Například pokud virtuální počítač má 5 disků a každý disk generuje 120 vstupně-výstupních operací (velikosti 8 kB) na virtuálním počítači, pak bude v rámci Azure za maximální IOPS na disku 500.<br/><br/> Všimněte si, že počet účtů úložiště potřebných je rovna celkové zdrojový počítač vstupně-výstupních operací, dělený 20 000. Replikované počítače můžou patřit pouze do jednoho účtu úložiště v Azure.
-**Konfigurační server** | Podle společnosti Contoso odhad replikace 100 = 200 virtuálních počítačů najednou a [požadavky na nastavení velikosti konfiguračního serveru](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server), Contoso odhadnout je musí počítač s konfigurací serveru následujícím způsobem:<br/><br/> Využití procesoru: 16 virtuálních procesorů (2 sockets * @ 2,5 GHz 8 jader)<br/><br/> Paměti: 32 GB<br/><br/> Mezipaměť disku: 1 TB<br/><br/> Frekvence změny dat: 1 TB na 2 TB.<br/><br/> Kromě požadavků na změny velikosti Contoso muset Ujistěte se, že je konfigurační server optimálně umístěné ve stejné síti a segment sítě LAN jsou virtuální počítače, které se budou migrovat.
-**Procesový server** | Contoso se nasadit samostatný vyhrazené procesní server s možností replikace 100 až 200 virtuálních počítačů:<br/><br/> Využití procesoru: 16 virtuálních procesorů (2 sockets * @ 2,5 GHz 8 jader)<br/><br/> Paměti: 32 GB<br/><br/> Mezipaměť disku: 1 TB<br/><br/> Frekvence změny dat: 1 TB na 2 TB.<br/><br/> Procesový server bude obtížné pracovní a jako takové se musí nacházet na hostiteli ESXi, který dokáže zpracovat vstup/výstup disku, síťový provoz a procesoru vyžadované pro replikaci. Contoso zohlední vyhrazeného hostitele pro tento účel. 
+**Konfigurační server** | Podle společnosti Contoso odhad replikace 100 = 200 virtuálních počítačů najednou a [požadavky na nastavení velikosti konfiguračního serveru](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-along-with-in-built-process-server), Contoso odhadnout je musí počítač s konfigurací serveru následujícím způsobem:<br/><br/> Procesor: 16 virtuálních procesorů (2 sockets * @ 2,5 GHz 8 jader)<br/><br/> Paměť: 32 GB<br/><br/> Disk mezipaměti: 1 TB<br/><br/> Frekvence změny dat: 1 TB na 2 TB.<br/><br/> Kromě požadavků na změny velikosti Contoso muset Ujistěte se, že je konfigurační server optimálně umístěné ve stejné síti a segment sítě LAN jsou virtuální počítače, které se budou migrovat.
+**Procesový server** | Contoso se nasadit samostatný vyhrazené procesní server s možností replikace 100 až 200 virtuálních počítačů:<br/><br/> Procesor: 16 virtuálních procesorů (2 sockets * @ 2,5 GHz 8 jader)<br/><br/> Paměť: 32 GB<br/><br/> Disk mezipaměti: 1 TB<br/><br/> Frekvence změny dat: 1 TB na 2 TB.<br/><br/> Procesový server bude obtížné pracovní a jako takové se musí nacházet na hostiteli ESXi, který dokáže zpracovat vstup/výstup disku, síťový provoz a procesoru vyžadované pro replikaci. Contoso zohlední vyhrazeného hostitele pro tento účel. 
 **Sítě** | Contoso má zkontrolovat aktuální infrastrukturu sítě VPN site-to-site a rozhodla implementovat Azure ExpressRoute. Implementace je důležité, protože bude nižší latenci a zvýšení šířky pásma pro primární oblast východní USA 2 platformě Azure společnosti Contoso.<br/><br/> **Monitorování**: Contoso potřeba pečlivě monitorovat data přenášejí z procesového serveru. Pokud data přetížení šířky pásma sítě bude předpokládat, že Contoso [omezení šířky pásma proces serveru](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 **Úložiště Azure** | Pro migraci musí identifikovat Contoso správný typ a počet cílových účtů služby Azure storage.  Site Recovery replikuje data virtuálního počítače do služby Azure storage.<br/><br/> Site Recovery můžete replikovat do účtů úložiště (SSD) úrovně standard nebo premium.<br/><br/> Při rozhodování o úložišti, musíte zkontrolovat Contoso [omezení úložiště](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)a zvážit očekávaný růst a zvyšováním využití v čase. Vzhledem k rychlost a priority migrace, Contoso se rozhodl používat účty úložiště úrovně premium.<br/><br/> Uživatelé budou vytvářet a opakovaně používat více účtů úložiště během procesu migrace.
 Contoso se rozhodli použít spravované disky pro všechny virtuální počítače, které jsou nasazeny do Azure.  Vstupně-výstupních operací, vyžaduje se určí, jestli se disky být Standard (HDD) nebo Premium (SSD).<br/>.<br/>
@@ -327,7 +327,7 @@ Kromě DMS použít Contoso ostatními nástroji a službami pro informace o vir
 - Řadu [partnerské nástroje](https://azure.microsoft.com/migration/partners/) lze také použít pro migraci.
 
 
-## <a name="phase-3-optimize"></a>Fáze 3: optimalizace
+## <a name="phase-3-optimize"></a>Fáze 3: Optimalizace
 
 Po Contoso přesunutí prostředků do Azure, které potřebují k zjednodušení je můžete zvyšovat výkon a zajišťovat maximální návratnost investice pomocí nástrojů pro správu nákladů. Zadaný, že Azure je služba platby pro použití, je velmi důležité pro společnost Contoso, abyste pochopili, jaký výkon systémů a ujistěte se, že jsou správně velká.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 054215a44b66d8fbf30c1a3e61f66425350392b1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233010"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074511"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Rozvíjejte své podnikání na Marketplace 
 Po publikování vaší nabídky na AppSource nebo na webu Azure Marketplace, můžete použít svůj výpis jako hlavní panel pro společné aktivity uvedení na trh (GTM) s Microsoftem. Řízení provozu do vaší nabídky na webu Marketplace a péči o zákazníky Marketplace potenciálních zákazníků, třeba jsou skvělé způsoby, jak posílit firemní růst. 
@@ -33,15 +33,15 @@ Tabulky v následujících částech poskytují návrhy pro vytvoření atraktiv
 ### <a name="storefront-offer-details"></a>Podrobnosti o nabídce prezentace
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Název nabídky | Zadejte silný název:<br>Název vaší aplikace byste komunikovat základní hodnotu, která vaši zákazníci získají. Včetně klíčová slova pro vyhledávání v název vaší aplikace může pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů.<br><br>Použijte formát názvu sady konzultační služby výpisy:<br>[Název nabídky]: [trvání] [typu nabídky] \(například *Contoso: implementace týdnu 2*)<br><br>Dodržujte pravidla značky:<br>Postupujte podle [Trademark Microsoft a pravidla značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) a další relevantní, specifické pro produkt pokyny při odkazování na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
+| Název nabídky | Zadejte silný název:<br>Název vaší aplikace byste komunikovat základní hodnotu, která vaši zákazníci získají. Včetně klíčová slova pro vyhledávání v název vaší aplikace může pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů.<br><br>Použijte formát názvu sady konzultační služby výpisy:<br>[Název nabídky]: [trvání] [typu nabídky] (například *Contoso: Implementace týdnu 2*)<br><br>Dodržujte pravidla značky:<br>Postupujte podle [Trademark Microsoft a pravidla značky](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) a další relevantní, specifické pro produkt pokyny při odkazování na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
 | Popis nabídky | Zadejte popis vymazat nabídky:<br>Zřetelně popište návrh hodnoty vaší nabídky v prvních několika větách popisu. Uvědomte si, že první několika větách může zobrazit ve výsledcích vyhledávání vyhledávacího webu. Nespoléhejte na funkce, aby je prodal váš produkt. Místo toho soustřeďte na základě hodnoty, které poskytujete. Pomocí specifických pro dané odvětví slovníku nebo na základě výhody formulace co největší míře.<br><br>Základní součásti váš návrh hodnoty by měl obsahovat následující informace:<ul><li>Popis produktu</li><li>Typ uživatele, který těží z produktu</li><li>Důvod zákazníka, nebo problémy, které řeší produktu</li></ul> |
 
 ### <a name="storefront-listing-details"></a>Podrobnosti prezentace výpisu
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Odvětví: Aplikace AppSource a konzultační služby pouze | Vyberte odvětví, pokud vaši nabídku řeší požadavky specifických pro dané odvětví:<br>Volání s funkcemi konkrétní obory můžete využít nabídku popisu.<br><br>**Poznámka:**: maximální počet možností, které se liší podle typu nabídky a je uvedené na portálu Cloud Partner. |
-| Kategorie | Vyberte kategorie, které nejlépe odpovídají v rámci vaší nabídky:<br>Pečlivě kategorie, vzhledem k tomu, že jejich zákazníky slouží k vyhledání příslušné aplikace. Nezapomeňte volat o tom, jak vaši nabídku podporuje potřeby podle kategorií v popis nabídky.<br><br> **Poznámka:**: maximální počet možností, které se liší podle typu nabídky a je uvedené na portálu Cloud Partner. |
-| Produkty, které vaše aplikace funguje se (3&nbsp;max): jenom aplikace AppSource | Seznam dalších produktů a technologií, které používá vaše řešení a rozšiřuje:<br>Například Azure IoT Hub nebo Azure Machine Learning. |
+| Odvětví: Aplikace AppSource a pouze konzultační služby | Vyberte odvětví, pokud vaši nabídku řeší požadavky specifických pro dané odvětví:<br>Volání s funkcemi konkrétní obory můžete využít nabídku popisu.<br><br>**Poznámka:** Maximální počet možností, které se liší podle typu nabídky a je uvedené na portálu Cloud Partner. |
+| Kategorie | Vyberte kategorie, které nejlépe odpovídají v rámci vaší nabídky:<br>Pečlivě kategorie, vzhledem k tomu, že jejich zákazníky slouží k vyhledání příslušné aplikace. Nezapomeňte volat o tom, jak vaši nabídku podporuje potřeby podle kategorií v popis nabídky.<br><br> **Poznámka:** Maximální počet možností, které se liší podle typu nabídky a je uvedené na portálu Cloud Partner. |
+| Produkty, které vaše aplikace funguje se (3&nbsp;max): Jenom aplikace AppSource | Seznam dalších produktů a technologií, které používá vaše řešení a rozšiřuje:<br>Například Azure IoT Hub nebo Azure Machine Learning. |
 | Klíčová slova pro vyhledávání (3&nbsp;max) | Použít klíčová slova pro vyhledávání, které pomáhají podnikovým uživatelům najít vaši nabídku při vyhledávání na webu Azure Marketplace a AppSource nebo pomocí vyhledávací weby:<br>Identifikujte začátek tři klíčová slova pro vyhledávání pro vaši nabídku; začlenit klíčová slova pro vyhledávání v svoji nabídku souhrn a popis; a seznam klíčová tady. |
 
 ### <a name="storefront-marketing-details"></a>Prezentace marketingové podrobnosti
@@ -147,8 +147,8 @@ Oznámení "BADGE" webu Azure Marketplace je k dispozici jako součást bezplatn
 
 ### <a name="link-to-your-app-listing-page-in-the-marketplace-from-your-website"></a>Propojení na stránky seznamu aplikací na webu Marketplace z webu
 Když odkazujete z oznámení "BADGE" AppSource nebo Azure Marketplace na webu na svůj výpis na webu Marketplace, podpora, silné analýzy a generování sestav včetně tyto parametry dotazu na konec adresy URL:
-* **src**: zahrnují zdroj, ze kterého je provoz směrován do AppSource (například webu, LinkedIn nebo Facebook).
-* **mktcmpid**: marketingové kampaně ID, které může obsahovat až 16 znaků v libovolnou kombinaci písmen, čísla, podtržítka a spojovníky (například *blogpost_12*).
+* **src**: Zahrnout zdroji, odkud provoz směrován do AppSource (například webu, LinkedIn nebo Facebook).
+* **mktcmpid**: Vaše marketingové kampaně ID, které může obsahovat až 16 znaků v libovolnou kombinací písmena, čísla, podtržítka a pomlčky (například *blogpost_12*).
 
 Následující příklad adresy URL obsahuje oba předchozí parametry dotazu: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

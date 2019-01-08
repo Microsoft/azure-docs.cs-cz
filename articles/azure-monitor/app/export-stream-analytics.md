@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8afe994f2441e736d660a306746508e9c6d13691
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: ca9148093660f3ed223fd2117e85d309c919e040
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001834"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076922"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Pomocí Stream Analytics zpracovávat data exportovaná z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovat ze služby Application Insights](export-telemetry.md). Stream Analytics můžete vyžádat data z různých zdrojů. Můžete transformovat a filtrovat data a pak směrovat na různé jímky.
@@ -25,7 +25,7 @@ ms.locfileid: "54001834"
 V tomto příkladu vytvoříme adaptér, který přijímá data ze služby Application Insights, přejmenování a zpracovává některá pole a přesměrují do Power BI.
 
 > [!WARNING]
-> Jsou mnohem lepšímu a snazšímu [doporučené způsoby, jak zobrazit data Application Insights v Power BI](../../application-insights/app-insights-export-power-bi.md). Cesta znázorněno zde je uvedené jenom jako příklad si ukážeme, jak zpracovat exportovaná data.
+> Jsou mnohem lepšímu a snazšímu [doporučené způsoby, jak zobrazit data Application Insights v Power BI](../../azure-monitor/app/export-power-bi.md ). Cesta znázorněno zde je uvedené jenom jako příklad si ukážeme, jak zpracovat exportovaná data.
 > 
 > 
 
@@ -198,7 +198,7 @@ Počkejte, dokud je úloha spuštěná.
 
 ## <a name="see-results-in-power-bi"></a>Zobrazení výsledků v Power BI
 > [!WARNING]
-> Jsou mnohem lepšímu a snazšímu [doporučené způsoby, jak zobrazit data Application Insights v Power BI](../../application-insights/app-insights-export-power-bi.md). Cesta znázorněno zde je uvedené jenom jako příklad si ukážeme, jak zpracovat exportovaná data.
+> Jsou mnohem lepšímu a snazšímu [doporučené způsoby, jak zobrazit data Application Insights v Power BI](../../azure-monitor/app/export-power-bi.md ). Cesta znázorněno zde je uvedené jenom jako příklad si ukážeme, jak zpracovat exportovaná data.
 > 
 > 
 

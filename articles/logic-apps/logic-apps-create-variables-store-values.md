@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231623"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063212"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Vytvoření proměnné k ukládání a správě hodnoty v Azure Logic Apps
 
@@ -28,7 +28,10 @@ Můžete vytvořit proměnné pro datové typy, například celé číslo, float
 * Přiřadíte jinou hodnotu do proměnné.
 * Vložit nebo *připojit* hodnotu proměnné jako poslední čas v řetězce nebo pole.
 
-Proměnné existují a jsou globální pouze v rámci instanci aplikace logiky, která je vytvořila. Kromě toho jsou zachována i mezi všechny iterace smyčky v instanci aplikace logiky. Při odkazování na proměnné, použijte název proměnné jako token, ne název akce, který je obvykle způsob, jak odkazovat na výstupy akce.
+Proměnné existují a jsou globální pouze v rámci instanci aplikace logiky, která je vytvořila. Kromě toho jsou zachována i mezi všechny iterace smyčky v instanci aplikace logiky. Při odkazování na proměnné, použijte název proměnné jako token, ne název akce, který je obvykle způsob, jak odkazovat na výstupy akce. 
+
+> [!IMPORTANT]
+> Ve výchozím nastavení cykly ve smyčce "Foreach" běžet paralelně. Při použití proměnných ve smyčkách spuštění smyčky [postupně](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) proměnné vrátit předvídatelné výsledky. 
 
 Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>. 
 
@@ -38,7 +41,7 @@ Chcete-li postupovat podle tohoto článku, tady jsou položky, které potřebuj
 
 * Aplikace logiky, ve kterém chcete vytvořit proměnnou 
 
-  Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * A [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako první krok ve své aplikaci logiky 
 
@@ -58,7 +61,7 @@ Můžete vytvořit proměnnou a deklarovat jeho datový typ a počáteční hodn
 
    * Chcete-li přidat akci v posledním kroku, zvolte **nový krok** > **přidat akci**.
 
-     ![Přidání akce](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![Přidat akci](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * Přidání akce mezi kroky, najeďte myší na připojení šipku, zobrazí se na symbol plus (+). 
    Vyberte znaménko plus a pak zvolte **přidat akci**.
@@ -73,7 +76,7 @@ Můžete vytvořit proměnnou a deklarovat jeho datový typ a počáteční hodn
    |----------|----------|-------|--------------|
    | Název | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
    | Typ | Ano | <*Typ proměnné*> | Datový typ pro proměnnou | 
-   | Hodnota | Ne | <*Počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: i když je volitelné, tuto hodnotu nastavit jako osvědčený postup, budete vždycky vědět, počáteční hodnotu proměnné. | 
+   | Hodnota | Ne | <*Počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, počáteční hodnotu proměnné. | 
    ||||| 
 
    ![Inicializovat proměnnou](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -195,7 +198,7 @@ Pro zvýšení nebo *přírůstek* proměnnou podle konstantní hodnoty, přidej
 
    Tato aplikace logiky již má například aktivační událost a akce, která vytvoří proměnnou. Ano přidejte novou akci podle těchto kroků:
 
-   ![Přidání akce](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
+   ![Přidat akci](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
 
    Přidání akce mezi stávající kroky, najeďte myší na šipku připojení tak, aby se zobrazí znaménko plus (+). Vyberte znaménko plus a pak zvolte **přidat akci**.
 
@@ -208,7 +211,7 @@ Pro zvýšení nebo *přírůstek* proměnnou podle konstantní hodnoty, přidej
    | Vlastnost | Požaduje se | Hodnota |  Popis |
    |----------|----------|-------|--------------|
    | Název | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
-   | Hodnota | Ne | <*přírůstková hodnota*> | Hodnota určená pro zvyšování hodnoty proměnné. Výchozí hodnota je 1. <p><p>**Tip**: i když je volitelné, tuto hodnotu nastavit jako osvědčený postup, budete vždycky vědět, konkrétní hodnota se zvyšuje vaše proměnná. | 
+   | Hodnota | Ne | <*přírůstková hodnota*> | Hodnota určená pro zvyšování hodnoty proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, konkrétní hodnota se zvyšuje vaše proměnná. | 
    |||| 
 
    Příklad: 
@@ -328,7 +331,7 @@ Tady jsou vlastnosti **Dekrementuje proměnnou** akce:
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
 | Název | Ano | <*Název proměnné*> | Název proměnné se sníží | 
-| Hodnota | Ne | <*přírůstková hodnota*> | Hodnota dekrementace proměnné. Výchozí hodnota je 1. <p><p>**Tip**: i když je volitelné, tuto hodnotu nastavit jako osvědčený postup, budete vždycky vědět, konkrétní hodnota dekrementace proměnné. | 
+| Hodnota | Ne | <*přírůstková hodnota*> | Hodnota dekrementace proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, budete vždycky vědět, konkrétní hodnota dekrementace proměnné. | 
 ||||| 
 
 Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **Dekrementuje proměnnou** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON.

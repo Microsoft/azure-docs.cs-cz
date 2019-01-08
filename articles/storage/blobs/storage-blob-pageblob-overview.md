@@ -1,35 +1,35 @@
 ---
-title: Jedinečné funkce objektů BLOB stránky Azure | Dokumentace Microsoftu
+title: Přehled objektů BLOB stránky Azure | Dokumentace Microsoftu
 description: Přehled o objekty BLOB stránky Azure a jejich výhod, včetně případů použití se skripty.
 services: storage
 author: anasouma
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 01/03/2019
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 6d1c443cfe3454d1b1e50a7270bd78598f69f6de
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022684"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063926"
 ---
-# <a name="unique-features-of-azure-page-blobs"></a>Jedinečné funkce objektů BLOB stránky Azure
+# <a name="overview-of-azure-page-blobs"></a>Přehled objektů BLOB stránky Azure
 
-Azure Storage nabízí tři typy úložiště objektů blob: objekty BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky. Objekty BLOB bloku se skládají z bloků a jsou ideální pro ukládání textových nebo binárních souborů a pro nahrávání velkých souborů efektivně. Doplňovací objekty BLOB jsou také tvoří bloky, ale jsou optimalizované pro doplňovací operace. Díky tomu je ideální pro scénáře protokolování. Objekty BLOB stránky jsou tvořené 512 bajtů stránky do 8 TB, v celkové velikosti a jsou navržené pro operace časté náhodné čtení a zápisu. Objekty BLOB stránky jsou základem pro disky Azure IaaS. Tento článek se týká s vysvětlením, funkce a výhody objekty BLOB stránky.
+Azure Storage nabízí tři typy úložiště objektů blob: Objekty BLOB bloku a doplňovacích objektů BLOB stránky objekty BLOB. Objekty BLOB bloku se skládají z bloků a jsou ideální pro ukládání textových nebo binárních souborů a pro nahrávání velkých souborů efektivně. Doplňovací objekty BLOB jsou také tvoří bloky, ale jsou optimalizované pro doplňovací operace. Díky tomu je ideální pro scénáře protokolování. Objekty BLOB stránky jsou tvořené 512 bajtů stránky do 8 TB, v celkové velikosti a jsou navržené pro operace časté náhodné čtení a zápisu. Objekty BLOB stránky jsou základem pro disky Azure IaaS. Tento článek se týká s vysvětlením, funkce a výhody objekty BLOB stránky.
 
 Objekty BLOB stránky jsou kolekce stránek 512 bajtů, které poskytují možnost čtení/zápis libovolný rozsah bajtů. Objekty BLOB stránky jsou proto ideální pro ukládání indexu a zhuštěné datové struktury, jako je operační systém a datové disky pro virtuální počítače a databáze. Databáze SQL Azure například používá objekty BLOB stránky jako základní trvalého úložiště pro své databáze. Kromě toho objekty BLOB stránky se také často používají pro soubory s aktualizacemi založený na rozsahu.  
 
-Klíčové funkce objektů BLOB stránky Azure jsou jeho rozhraní REST, odolnosti základního úložiště a možností zajistí tak bezproblémovou migraci do Azure. Tyto funkce jsou podrobněji popsány v následující části. Kromě toho jsou objekty BLOB stránky Azure aktuálně podporovány na dva typy úložišť: Premium Storage a Storage úrovně Standard. Storage úrovně Premium je určený speciálně pro úlohy vyžadující konzistentní vysoký výkon a nízkou latencí. Díky tomu objekty BLOB stránky úrovně premium ideální pro vysoce výkonné datové úložiště databáze.  Storage úrovně Standard je nákladově efektivní pro spouštění úloh v kterému latence nevadí.
+Klíčové funkce objektů BLOB stránky Azure jsou jeho rozhraní REST, odolnosti základního úložiště a možností zajistí tak bezproblémovou migraci do Azure. Tyto funkce jsou podrobněji popsány v následující části. Kromě toho jsou objekty BLOB stránky Azure aktuálně podporovány na dva typy úložiště: Storage úrovně Standard a Premium Storage. Storage úrovně Premium je určený speciálně pro úlohy vyžadující konzistentní vysoký výkon a nízkou latencí. Díky tomu objekty BLOB stránky úrovně premium ideální pro vysoce výkonné datové úložiště databáze.  Storage úrovně Standard je nákladově efektivní pro spouštění úloh v kterému latence nevadí.
 
 ## <a name="sample-use-cases"></a>Ukázka případy použití
 
 Pojďme se podívat do ní několik případů použití pro objekty BLOB stránky, počínaje disky Azure IaaS. Objekty BLOB stránky Azure je páteří zajištění provozu virtuálních disků platform pro Azure IaaS. Operační systém Azure a datové disky jsou implementovány jako virtuální disky se data trvale zachována na platformě Azure Storage a pak doručí na virtuální počítače pro maximální výkon. Disky Azure jsou zachované v Hyper-V [Formát virtuálního pevného disku](https://technet.microsoft.com/library/dd979539.aspx) a uložené jako [objektů blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) ve službě Azure Storage. Kromě používání virtuální disky pro virtuální počítače Azure IaaS, objekty BLOB stránky také povolit PaaS a DBaaS scénářů, jako je služba Azure SQL DB, která momentálně používá objekty BLOB stránky pro ukládání dat SQL, povolení vysoká rychlost náhodného čtení a zápis operace pro databázi. Dalším příkladem může být, pokud máte službu PaaS sdílená média přístup pro úpravy aplikace pro spolupráci videa, objekty BLOB stránky Dal rychle získat přístup do náhodných umístění na médiu. Umožňuje také rychlé a efektivní úpravy a slučování stejná média víc uživatelů. 
 
 První strany službám Microsoftu, jako je Azure Site Recovery, Azure Backup, stejně jako mnoho vývojáři třetích stran jste implementovali špičkové inovace pomocí rozhraní REST pro objekt blob stránky. Zde jsou některé jedinečné scénáře implementovat v Azure: 
-* Správa aplikace řízené přírůstkový snímek: aplikace můžou využívat snímky objektů blob stránky a rozhraní REST API pro ukládání kontrolní body aplikace bez dalších nákladů na nákladné duplikaci dat. Azure Storage podporuje místních snímků pro objekty BLOB stránky, které nevyžadují celý objekt blob kopírování. Tyto veřejné snímku rozhraní API také umožňují přístup a kopírování rozdíly mezi snímky.
-* Migrace aplikací a dat z místního do cloudu za provozu: kopírování dat v místním prostředí a pomocí REST API můžete zapisovat přímo do objektu blob stránky Azure, zatímco místního virtuálního počítače stále běží. Jakmile cíl zachytila, můžete rychle převzetí služeb při selhání virtuálního počítače Azure pomocí tato data. Tímto způsobem můžete migrovat virtuální počítače a virtuální disky z místního do cloudu s minimálními výpadky, protože migrace dat probíhá na pozadí, zatímco budete nadále používat tento virtuální počítač a výpadků potřebné pro převzetí služeb při selhání bude krátký (v minutách).
+* Správa aplikace řízené přírůstkový snímek: Aplikace můžou využívat snímky objektů blob stránky a rozhraní REST API pro ukládání kontrolní body aplikace bez dalších nákladů na nákladné duplikaci dat. Azure Storage podporuje místních snímků pro objekty BLOB stránky, které nevyžadují celý objekt blob kopírování. Tyto veřejné snímku rozhraní API také umožňují přístup a kopírování rozdíly mezi snímky.
+* Migrace za provozu aplikace a data z místního cloudu: Kopírování dat v místním prostředí a pomocí REST API můžete zapisovat přímo do objektu blob stránky Azure, zatímco místního virtuálního počítače stále běží. Jakmile cíl zachytila, můžete rychle převzetí služeb při selhání virtuálního počítače Azure pomocí tato data. Tímto způsobem můžete migrovat virtuální počítače a virtuální disky z místního do cloudu s minimálními výpadky, protože migrace dat probíhá na pozadí, zatímco budete nadále používat tento virtuální počítač a výpadků potřebné pro převzetí služeb při selhání bude krátký (v minutách).
 * [Na základě SAS](../common/storage-dotnet-shared-access-signature-part-1.md) sdílený přístup, která umožňuje scénáře, jako je několik čtenářů a jednoho zapisovače s podporou pro řízení souběžnosti.
 
 ## <a name="page-blob-features"></a>Funkce objektů blob stránky
