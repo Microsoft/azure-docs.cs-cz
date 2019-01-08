@@ -52,12 +52,9 @@
 ## [Zálohování SAP HANA na úrovni souborů](sap-hana-backup-file-level.md)
 ## [Zálohy snímků úložiště SAP HANA](sap-hana-backup-storage-snapshots.md)
 # SAP NetWeaver a Business One ve službě Azure Virtual Machines
-## [SAP Business One ve službě Azure Virtual Machines](business-one-azure.md)
-## [Průvodce nasazením SAP IDES na Windows/SQL Server SAP CAL](cal-ides-erp6-erp7-sp3-sql.md)
-## [SAP NetWeaver ve virtuálních počítačích Azure s Linuxem](suse-quickstart.md)
+## [Kontrolní seznam pro nasazení a plánování úloh SAP](sap-deployment-checklist.md)
 ## [Plánování a implementace SAP NetWeaveru v Azure](planning-guide.md)
 ## [Průvodce nasazením SAP NetWeaveru](deployment-guide.md)
-## [Konektor SAP LaMa pro Azure](lama-installation.md)
 ## Průvodci nasazením DBMS pro úlohy SAP
 ### [Nasazení DBMS v obecných počítačích Azure Virtual Machines pro úlohy SAP](dbms_guide_general.md)
 ### [Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP](dbms_guide_sqlserver.md)
@@ -69,6 +66,10 @@
 ### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
 ### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
 ### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
+## [SAP Business One ve službě Azure Virtual Machines](business-one-azure.md)
+## [Průvodce nasazením SAP IDES na Windows/SQL Server SAP CAL](cal-ides-erp6-erp7-sp3-sql.md)
+## [SAP NetWeaver ve virtuálních počítačích Azure s Linuxem](suse-quickstart.md)
+## [Konektor SAP LaMa pro Azure](lama-installation.md)
 ## Vysoká dostupnost (HA) ve Windows a Linuxu
 ### [Přehled](sap-high-availability-guide-start.md)
 ### Architektura pro vysokou dostupnost

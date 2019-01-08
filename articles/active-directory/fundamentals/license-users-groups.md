@@ -13,12 +13,12 @@ ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0d3f417b5a169b3d8d91d85b5f47496064c8f5f3
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077449"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063348"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory
 Mnoho služeb Azure Active Directory (Azure AD) vyžadují aktivaci produktů Azure AD a licencování jednotlivých uživatelů nebo skupin (a související členy) pro tento produkt. Uživatelé s licencemi na aktivní budou moci přistupovat a používat licencovaný jenom služby Azure AD.
@@ -57,7 +57,8 @@ Můžete zobrazit vaši dostupný produkty Microsoftu, včetně jednotlivých li
 ## <a name="assign-licenses-to-users-or-groups"></a>Přiřazení licencí uživatelům nebo skupinám
 Ujistěte se, že kdokoli by bylo potřeba použít licencovanou služby Azure AD má příslušnou licenci. To je na vás, jestli chcete přidat licenční práva pro jednotlivé uživatele nebo celé skupiny.
 
->! [Poznámka] Licencování na základě skupiny je funkce ve verzi public preview služby Azure AD a je k dispozici žádné placené licenční plán Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Podrobné informace o tom, jak přidat uživatele najdete v tématu [postup přidání nebo odstranění uživatelů ve službě Azure Active Directory](add-users-azure-active-directory.md). Podrobné informace o tom, jak vytvářet skupiny a přidávat členy, naleznete v tématu [vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
+>[!Note]
+>Licencování na základě skupiny je funkce ve verzi public preview služby Azure AD a je k dispozici žádné placené licenční plán Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Podrobné informace o tom, jak přidat uživatele najdete v tématu [postup přidání nebo odstranění uživatelů ve službě Azure Active Directory](add-users-azure-active-directory.md). Podrobné informace o tom, jak vytvářet skupiny a přidávat členy, naleznete v tématu [vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>Chcete-li přiřadit licenci pro konkrétního uživatele
 1. Na **produkty** stránky, vyberte název edice, kterou chcete uživateli přiřadit ručně. Například _Azure Active Directory Premium plán 2_.

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cd539e1ba1b740155a22960645c3947d7c4d8176
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e94a667cb67e4812984d4a338e763ebeaa1d3205
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666521"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073216"
 documentType: LandingData
 title: Jenkins v Azure
 metadata:
@@ -12,7 +12,7 @@ metadata:
   description: Nasazení a integrace Jenkinse s Azure
   ms.service: jenkins
   keywords: jenkins, azure, devops, tutorials, samples, reference
-  author: tomarcher
+  author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing-page
@@ -66,4 +66,4 @@ sections:
     - title: Moduly plug-in
       html: <p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure Container Agents</a><p><a href="https://plugins.jenkins.io/azure-function">Modul plug-in Azure Function</a><p><a href="https://plugins.jenkins.io/azure-acs">Modul plug-in Azure Container Service</a>
 - type: paragraph
-  text: <h4>Jenkins® je registrovaná ochranná známka společnosti Software in the Public Interest, Inc. [Logo Jenkins®](https://wiki.jenkins.io/display/JENKINS/Logo) je licencováno v rámci [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) z [projektu Jenkins](https://jenkins.io).</h4>
+  text: <h4>Jenkins® je registrovaná ochranná známka společnosti Software in the Public Interest, Inc. [Logo Jenkins®](https://wiki.jenkins.io/display/JENKINS/Logo) je licencované v rámci [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) z [projektu Jenkins](https://jenkins.io).</h4>

@@ -107,7 +107,7 @@
    Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  
 -->
 
-<!-- new for SaaS 12/05/2018 -->
+<!-- new for SaaS 12/24/2018 -->
 ## [Nabídka aplikace SaaS](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
 ### [Požadavky](./cloud-partner-portal/saas-app/cpp-prerequisites.md)
 ### [Vytvoření nabídky aplikací SaaS](./cloud-partner-portal/saas-app/cpp-create-offer.md)
@@ -121,6 +121,7 @@
 ### [Publikování nabídky](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 ### [Aktualizace stávající nabídky](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 ### [Rozhraní API SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+### [Klient samočinného testování SaaS](./cloud-partner-portal/saas-app/cpp-selftest-client.md)
 
 <!-- Legacy SaaS Offer replaced
 ## [SaaS application offer](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
@@ -162,12 +163,26 @@
 
 <!-- ## [Cortana Intelligence](./cloud-partner-portal-orig/cloud-partner-portal-publish-cortana-intelligence-app.md)  -->
 
-## [Nabídka Dynamics 365 for Customer Engagement](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
-### [Vytvoření řešení](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
-### [Vytvoření balíčku](./cloud-partner-portal-orig/appSource-package-preparation.md)
-### [Vygenerování klíče SAS](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
-### [Vytvoření nabídky](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
-### [Publikování nabídky](./cloud-partner-portal-orig/request-to-publish-the-app.md)
+## [Nabídka Dynamics 365 for Customer Engagement](./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md)
+### [Požadavky](./cloud-partner-portal/dyn365ce/cpp-prerequisites.md)
+### [Vytvoření nabídky modulu IoT Edge](./cloud-partner-portal/dyn365ce/cpp-create-offer.md)
+#### [Karta Nastavení nabídky](./cloud-partner-portal/dyn365ce/cpp-offer-settings-tab.md)
+#### [Karta Technické informace](./cloud-partner-portal/dyn365ce/cpp-technical-info-tab.md)
+#### [Karta Testovací verze](./cloud-partner-portal/dyn365ce/cpp-testdrive-tab.md)
+#### [Karta podrobností o prodejních místech](./cloud-partner-portal/dyn365ce/cpp-storefront-details-tab.md)
+#### [Karta Kontakty](./cloud-partner-portal/dyn365ce/cpp-contacts-tab.md)
+### [Vytváření technických prostředků pro Customer Engagement](./cloud-partner-portal/dyn365ce/cpp-create-technical-assets.md)
+### [Publikování nabídky Customer Engagement](./cloud-partner-portal/dyn365ce/cpp-publish-offer.md)
+
+<!-- Following legacy IoT section was replaced.  -->
+<!-- 
+## [Dynamics 365 for Customer Engagement offer](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
+### [Create solution](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
+### [Create package](./cloud-partner-portal-orig/appSource-package-preparation.md)
+### [Generate SAS key](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
+### [Create offer](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
+### [Publish offer](./cloud-partner-portal-orig/request-to-publish-the-app.md)
+-->
 
 ## [Nabídka Dynamics 365 for Business Central](./cloud-partner-portal-orig/cpp-business-central-offer.md)
 ### [Přehled publikování](./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md)

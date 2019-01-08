@@ -12,17 +12,17 @@ items:
   - name: Aplikace
     items:
     - name: Aplikace v .NET
-      href: ../application-insights/quick-monitor-portal.md?toc=/azure/azure-monitor/toc.json
+      href: learn/quick-monitor-portal.md
     - name: Aplikace v .NET Core
-      href: ../application-insights/app-insights-dotnetcore-quick-start.md?toc=/azure/azure-monitor/toc.json
+      href: learn/dotnetcore-quick-start.md
     - name: Aplikace v Node.js
-      href: ../application-insights/app-insights-nodejs-quick-start.md?toc=/azure/azure-monitor/toc.json
+      href: learn/nodejs-quick-start.md
     - name: Aplikace v Javě
-      href: ../application-insights/app-insights-java-quick-start.md?toc=/azure/azure-monitor/toc.json
+      href: learn/java-quick-start.md
     - name: Mobilní aplikace
-      href: ../application-insights/app-insights-mobile-center-quickstart.md?toc=/azure/azure-monitor/toc.json
+      href: learn/mobile-center-quickstart.md
     - name: Webová aplikace
-      href: ../application-insights/app-insights-website-monitoring.md?toc=/azure/azure-monitor/toc.json
+      href: app/website-monitoring.md
   - name: Virtuální počítače
     items:
     - name: Shromažďování – virtuální počítače Azure
@@ -45,15 +45,15 @@ items:
   - name: Automatické škálování podle výkonu a plánu
     href: learn/tutorial-autoscale-performance-schedule.md
   - name: Vyhledání běhových výjimek aplikací
-    href: ../application-insights/app-insights-tutorial-runtime-exceptions.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-runtime-exceptions.md
   - name: Vyhledání potíží s výkonem aplikací
     href: ../application-insights/app-insights-tutorial-performance.md?toc=/azure/azure-monitor/toc.json
   - name: Upozornění na stav aplikace
-    href: ../application-insights/app-insights-tutorial-alert.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-alert.md
   - name: Vysvětlení uživatelů aplikací
     href: ../application-insights/app-insights-tutorial-users.md?toc=/azure/azure-monitor/toc.json
   - name: Vytvoření vlastních řídicích panelů
-    href: ../application-insights/app-insights-tutorial-dashboards.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-app-dashboards.md
 - name: Ukázky
   items:
   - name: Azure PowerShell
@@ -262,8 +262,8 @@ items:
       items:
       - name: Aplikace Azure
         items:
-        - name: Webové aplikace Azure
-          href: app/azure-web-apps.md
+        - name: Azure App Service
+          href: ../application-insights/app-insights-azure-web-apps.md?toc=/azure/azure-monitor/toc.json
         - name: Azure Cloud Services
           href: app/cloudservices.md
         - name: Přidání průběžného monitorování
@@ -271,21 +271,21 @@ items:
         - name: Profiler
           items:
           - name: Přehled
-            href: ../application-insights/app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-overview.md
           - name: Povolení profileru pro App Service
             href: app/profiler.md
           - name: Povolení profileru pro cloudovou službu
-            href: ../application-insights/app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-cloudservice.md
           - name: Povolení profileru pro aplikaci Service Fabric
-            href: ../application-insights/app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-servicefabric.md
           - name: Povolení profileru pro virtuální počítač Azure
-            href: ../application-insights/app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-vm.md
           - name: Nastavení profileru
-            href: ../application-insights/app-insights-profiler-settings.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-settings.md
           - name: Sledování požadavků pro profilaci
-            href: ../application-insights/app-insights-profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-trackrequests.md
           - name: Řešení potíží s profilerem
-            href: ../application-insights/app-insights-profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-troubleshooting.md
         - name: Diagnostika
           href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: Náhledy
@@ -297,7 +297,7 @@ items:
         - name: Monitorování stavu
           href: app/monitor-performance-live-website-now.md
         - name: Služby pro Windows
-          href: ../application-insights/app-insights-windows-services.md?toc=/azure/azure-monitor/toc.json
+          href: app/windows-services.md
         - name: Plocha Windows
           href: app/windows-desktop.md
         - name: Jádro ASP.NET
@@ -389,7 +389,7 @@ items:
         - name: Správa pravidel inteligentního zjišťování
           href: app/proactive-arm-config.md
       - name: Vytvoření prostředku
-        href: ../application-insights/app-insights-create-new-resource.md?toc=/azure/azure-monitor/toc.json
+        href: app/create-new-resource.md
       - name: Řešení potíží
         items:
         - name: Žádná data pro .NET
@@ -645,7 +645,7 @@ items:
       - name: Export dat protokolů
         href: platform/powerbi.md
       - name: Export dat aplikací
-        href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
+        href: app/export-power-bi.md
     - name: Odeslání dat do Grafany
       href: platform/grafana-plugin.md
   - name: Analýza dat
@@ -713,6 +713,7 @@ items:
         - name: Data aplikací
           href: app/analytics.md
         - name: Standardní vlastnosti
+          href: platform/log-standard-properties.md
         - name: Analýza textových dat
           href: log-query/parse-text.md
       - name: Provedení akce na základě výsledků hledání
@@ -930,7 +931,7 @@ items:
   - name: Azure CLI
     href: /cli/azure/monitor?view=azure-cli-latest
   - name: Azure Functions
-    href: ../application-insights/azure-functions-supported-features.md?toc=/azure/azure-monitor/toc.json
+    href: app/azure-functions-supported-features.md
   - name: Azure PowerShell
     items:
     - name: Monitorování
@@ -1004,9 +1005,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 8fc518262ba4b1d1c53c8fd2622f724550cddb2e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: daba9eb12d568e3eb49a7aa4d21f1d2eaa367ab8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053649"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074610"

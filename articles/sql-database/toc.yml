@@ -25,7 +25,7 @@ items:
       href: sql-database-managed-instance-configure-p2s.md
   - name: Načtení dat
     items:
-    - name: Import BACPAC do jednoúčelové databáze
+    - name: Import BACPAC do nové databáze
       href: sql-database-import.md
     - name: Obnovení zálohy databáze do spravované instance
       href: sql-database-managed-instance-get-started-restore.md
@@ -680,9 +680,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: fd0ffff6220f967e064cd300596402a8aaf60ceb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 501f10b734fe3d7fbd576ba2131b84a5b04681d0
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033379"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077721"

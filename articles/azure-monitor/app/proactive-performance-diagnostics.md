@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: de28bce852d00900bee19b2fa4d7e4e39d050b4d
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1db4f4be7ab883e6be52b52bd93a43468829bed5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054507"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076621"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -80,7 +80,7 @@ E-mailů o inteligentní detekce anomálie výkonu jsou omezené na jeden e-mail
 
   * Dosud ale můžete:
     * [Nastavení výstrah](../../azure-monitor/app/alerts.md) , který říct, pokud metrika překročí mezní hodnotu.
-    * [Export telemetrie](../../azure-monitor/app/export-telemetry.md) k [databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) nebo [do PowerBI](../../application-insights/app-insights-export-power-bi.md), kde je můžete analyzovat sami.
+    * [Export telemetrie](../../azure-monitor/app/export-telemetry.md) k [databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) nebo [do PowerBI](../../azure-monitor/app/export-power-bi.md ), kde je můžete analyzovat sami.
 * *Jak často se provádí analýzu?*
 
   * Zajišťuje každodenní provoz analýzy každý den na telemetrická data z předchozího dne (celý den v časovém pásmu UTC).
