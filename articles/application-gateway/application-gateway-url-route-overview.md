@@ -1,18 +1,17 @@
 ---
-title: Přehled směrování obsahu na základě adresy URL | Dokumentace Microsoftu
-description: Tato stránka poskytuje přehled směrování obsahu na základě adresy URL, konfigurace UrlPathMap a pravidla PathBasedRouting ve službě Application Gateway.
+title: Přehled směrování obsahu na základě adresy URL v Azure Application Gateway
+description: Tato stránka poskytuje přehled adresa URL brány aplikací Azure – směrování na základě obsahu, konfigurace UrlPathMap a pravidla pathbasedrouting ve službě.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: bc123307a3cc3a5040e93e517c60604dc75fc7e7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: d5d8ed09da2b05de079bc1b62066bb4008a659d8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218419"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118355"
 ---
 # <a name="url-path-based-routing-overview"></a>Přehled směrování na základě cest URL
 
@@ -20,7 +19,7 @@ Směrování na základě cesty URL umožňuje směrovat provoz do fondů back-e
 
 Jedním ze scénářů je směrování požadavků na různé typy obsahu do různých fondů back-endové serveru.
 
-V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com ze tří fondů back-endového serveru, například: VideoFondServeru, ObrazkyFondServeru a VychoziFondServeru.
+V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com ze tří fondů back-end serverů například: Videofondserveru, Obrazkyfondserveru a Vychozifondserveru.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
@@ -62,8 +61,37 @@ Prvek UrlPathMap slouží k určení vzorů cest pro mapování fondů back-end 
 }]
 ```
 
-> [!NOTE]
-> PathPattern: Toto nastavení je seznam vzorů cest, které je nutné splnit. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec k předávaný cesta neobsahuje žádný text po prvním? nebo # a tyto znaky tady nejsou povolené. V opačném případě PathPattern může všech znaků v adrese URL.
+### <a name="pathpattern"></a>PathPattern
+
+PathPattern je seznam vzorů cest tak, aby odpovídaly. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec k předávaný cesta neobsahuje žádný text po prvním? nebo # a tyto znaky tady nejsou povolené. V opačném případě PathPattern může všech znaků v adrese URL.
+
+Tyto vzory se dají nepodporuje závisí na kterém, jestli nasazujete Application Gateway v1 nebo v2:
+
+#### <a name="v1"></a>V1
+
+Pravidla přidávání cest jsou malá a velká písmena.
+
+|vzor cesty V1  |Je podporováno?  |
+|---------|---------|
+|`/images/*`     |ano|
+|`/images*`     |ne|
+|`/images/*.jpg`     |ne|
+|`/*.jpg`     |ne|
+|`/Repos/*/Comments/*`     |ne|
+|`/CurrentUser/Comments/*`     |ano|
+
+#### <a name="v2"></a>v2
+
+Pravidla přidávání cest rozlišují malá a velká písmena.
+
+|vzor cesty v2  |Je podporováno?  |
+|---------|---------|
+|`/images/*`     |ano|
+|`/images*`     |ano|
+|`/images/*.jpg`     |ne|
+|`/*.jpg`     |ne|
+|`/Repos/*/Comments/*`     |ne|
+|`/CurrentUser/Comments/*`     |ano|
 
 Více informací najdete v dokumentu [Šablona Resource Manageru používající směrování na základě adresy URL](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 

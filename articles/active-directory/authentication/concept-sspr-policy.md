@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3a16977f2d3bc7321de2d2a1538276f182e7fa10
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d7f364ac5863c70cd0034d9c458e94cfb164cba
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190982"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116955"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
-Tento článek popisuje zásady pro hesla a požadavky na složitost spojené s uživatelskými účty, které jsou uložené ve vašem tenantovi Azure Active Directory (Azure AD).
+Tento článek popisuje zásady pro hesla a požadavky na složitost spojené s uživatelskými účty ve vašem tenantovi Azure Active Directory (Azure AD).
 
 ## <a name="administrator-reset-policy-differences"></a>Správce resetovat zásady rozdíly
 
@@ -79,7 +79,7 @@ Následující tabulka popisuje nastavení zásad k dispozici heslo, které lze 
 | Vlastnost | Požadavky |
 | --- | --- |
 | Povolený počet znaků |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| Znaky nejsou povoleny |<ul><li>Znaky Unicode.</li><li>Mezery.</li><li> Pouze silná hesla</li></ul> |
+| Znaky nejsou povoleny |<ul><li>Znaky Unicode.</li><li>Mezery.</li><li> Pouze silná hesla: Nesmí obsahovat znak tečky "." Bezprostředně před "\@ \" symbol".</li></ul> |
 | Omezení pro heslo |<ul><li>Minimálně 8 znaků a maximálně 16 znaků.</li><li>Pouze silná hesla: Vyžaduje tři ze čtyř z následujících akcí:<ul><li>Malá písmena.</li><li>Velká písmena.</li><li>Číslice (0 – 9).</li><li>Symboly (viz předchozí omezení pro heslo).</li></ul></li></ul> |
 | Doba vypršení platnosti hesla |<ul><li>Výchozí hodnota: **90** dnů.</li><li>Hodnota je konfigurovatelná pomocí `Set-MsolPasswordPolicy` rutiny z Active Directory modulu Azure pro Windows PowerShell.</li></ul> |
 | Oznámení o vypršení platnosti hesla |<ul><li>Výchozí hodnota: **14** (před vypršením platnosti hesla).</li><li>Hodnota je konfigurovatelná pomocí `Set-MsolPasswordPolicy` rutiny.</li></ul> |

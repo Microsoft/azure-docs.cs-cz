@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 79d78faa53962ea72178281d75cef3c2f61320b1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a3703133e5dc5f0525638562fab98f9416bcf26e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971500"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104654"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Přidání poskytovatele prostředků App Service pro odpojené prostředí Azure Stack zabezpečené službou AD FS
 
@@ -160,7 +160,7 @@ Chcete-li nasadit službu App Service v odpojeném prostředí, musíte nejdří
 
     | Role | Minimální instance | Minimální SKU | Poznámky |
     | --- | --- | --- | --- |
-    | Kontroler | 1 | Standard_A2 - (2 virtuální procesory a 3584 MB) | Spravuje a udržuje stav cloudové služby App Service. |
+    | Kontrolér | 1 | Standard_A2 - (2 virtuální procesory a 3584 MB) | Spravuje a udržuje stav cloudové služby App Service. |
     | Správa | 1 | Standard_A2 - (2 virtuální procesory, 3584 MB) | Slouží ke správě koncových bodů aplikace služby Azure Resource Manageru a rozhraní API, rozšíření portálu (admin, tenanta, portálu Functions) a datové služby. Pro podporu převzetí služeb při selhání, vyšší doporučenou instance až na 2. |
     | Vydavatel | 1 | Standard_A1 - (1 virtuální procesor, 1792 MB) | Publikuje obsahu prostřednictvím nasazení pomocí FTP a web. |
     | FrontEnd | 1 | Standard_A1 - (1 virtuální procesor, 1792 MB) | Směruje žádosti do aplikace služby App Service. |
@@ -203,12 +203,12 @@ Chcete-li nasadit službu App Service v odpojeném prostředí, musíte nejdří
 
 > [!NOTE]
 > Pokud jste se rozhodli nasadit do existující virtuální sítě a interní IP adresu pro připojení k souborového serveru, je nutné přidat odchozí pravidlo zabezpečení, povolení provozu SMB mezi podsítě pracovního procesu a souborového serveru.  Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
-> * Zdroj: žádné
+> * Zdroj: Všechny
 > * Zdrojový rozsah portů: *
 > * Cíl: IP adresy
-> * Rozsah cílových IP adres: rozsah IP adres pro souborového serveru
+> * Rozsah cílových IP adres: Rozsah IP adres pro souborového serveru
 > * Rozsah cílových portů: 445
-> * Protocol: TCP
+> * Protokol: TCP
 > * Akce: Povolit
 > * Priorita: 700
 > * Název: Outbound_Allow_SMB445
@@ -257,9 +257,9 @@ Můžete také vyzkoušet ostatní [platforma jako služba (PaaS) služby](azure
 - [Poskytovatele prostředků MySQL](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
-[Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
-[App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
-[AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+[Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531
+[App_Service_Deployment]: https://go.microsoft.com/fwlink/?LinkId=723982
+[AppServiceHelperScripts]: https://go.microsoft.com/fwlink/?LinkId=733525
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy-offline/app-service-exe-advanced-create-package.png

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 2467da8d5a87a3a9325b807aec48c584ab0197cb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079098"
+ms.locfileid: "54105181"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii virtuálních počítačů VMware v místním nebo fyzické servery do sekundární lokality
 
@@ -80,7 +80,7 @@ Nainstalujte aktualizace následujícím způsobem:
 > [!NOTE]
 >Všechny komponenty Scout soubor aktualizovanou verzi nemusí být stejné v souboru ZIP aktualizace. Starší verze znamenat, že není žádná změna v komponentě od předchozí aktualizace v této aktualizaci.
 
-Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update7) soubor .zip. Tento soubor obsahuje všechny báze base binární soubory a kumulativního upgradu binární soubory z následujících součástí: 
+Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update7) soubor .zip a [MySQL a PHP upgradovat](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) konfigurační soubory. Aktualizovat soubor .zip obsahuje soubor všechny základní binární soubory a kumulativního upgradu binární soubory z následujících součástí: 
   - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
   - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
   - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
@@ -126,7 +126,7 @@ Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update7) soubor .zip. Tent
 6. **Hlavního linuxového cílového serveru**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** hlavní Linuxový uzel cílovému serveru a rozbalte ho. Ve složce extrahované spustit **/Install**.
 7. **Zdrojový server Windows**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** na zdrojovém serveru. Poklikejte na soubor k jeho spuštění. 
 8. **Zdrojový server Linux**: Chcete-li aktualizovat nástroj unified agent, zkopírujte odpovídající verzi souboru nástroj unified agent na Linux server a rozbalte jej. Ve složce extrahované spustit **/Install**.  Příklad: Pro RHEL 6.7 64bitovým serverem, kopie **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** na server a rozbalte ho. Ve složce extrahované spustit **/Install**.
-9. Po upgradu konfigurační Server, procesový Server a RX server instalátory uvedené výš, musí být upgradovány ručně pomocí kroků uvedených v knihoven PHP využívající databázi MySQL [části](#manual-upgrade-for-php-and-mysql-on-cs-ps-and-rx).
+9. Po upgradu konfigurační Server, procesový Server a RX server instalátory uvedené výš, musí být upgradovány ručně pomocí kroků uvedených v části 7.4 knihoven PHP využívající databázi MySQL [rychlá Instalační příručka](https://aka.ms/asr-scout-quick-install-guide).
 
 ## <a name="enable-replication"></a>Povolení replikace
 

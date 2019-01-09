@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: f4ca513e3c2e2345dc0005b95ddb7927c0164ffe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e5f2ecd2cdff0ae5f3f5f086bde0741f7f6d2dbb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383013"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121613"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>Kurz: Připojení, nastavení a aktivovat Azure Data Box Edge (preview) 
 
@@ -85,7 +85,10 @@ Teď jste na řídicím panelu vašeho zařízení.
     - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. IP adresa, podsíť, brána a DNS jsou automaticky přiřazeny.
     - Pokud není povolený DHCP, můžete přiřadit statické IP adresy v případě potřeby.
     - Síťové rozhraní můžete nakonfigurovat jako pro protokol IPv4.
-   
+
+    >[!NOTE] 
+    > Doporučujeme přepnutí místní IP adresu rozhraní netowrk ze statické na server, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud pomocí některé síťové rozhraní a můžete přepnout na DHCP, by existovat žádný způsob, jak určit adresu ze serveru DHCP. Pokud chcete změnit adresu DHCP, počkat, dokud se zařízení zaregistruje ve službě a potom změňte. Pak můžete zobrazit IP adresy všech adpaters v **vlastnosti zařízení** na webu Azure Portal pro vaši službu.
+
 1. (Volitelné) V levém podokně vyberte **nastavení proxy webu**a potom nakonfigurovat váš webový proxy server. Přestože konfigurace webového proxy serveru je volitelné, pokud používáte webový proxy server, můžete ho nakonfigurovat na této stránce pouze.
    
    ![Na stránce "Nastavení webového proxy serveru"](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)

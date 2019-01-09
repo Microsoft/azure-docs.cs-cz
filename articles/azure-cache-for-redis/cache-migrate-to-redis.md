@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 5a1febb80b5d3aaf0e5da2620f1b0a35d5d1144b
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 27c8fce8c8eac936708dbac72ca60a1c0af286ea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556794"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106133"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrace ze služby Managed Cache Service do mezipaměti Azure pro Redis
 Migrace vaší aplikace, které používají službu Azure Managed Cache Service k mezipaměti Azure pro Redis můžete docílit, když s minimálními změnami pro vaši aplikaci, v závislosti na službu Managed Cache Service funkcí používaných v rámci ukládání do mezipaměti aplikace. Rozhraní API jsou přesně stejné jsou podobné a velkou část vaší existující kód, který používá službu Managed Cache Service pro přístup k mezipaměti lze opětovně použít s minimálními změnami. Tento článek ukazuje, jak provést nezbytné konfigurace a aplikace se změní na migrovat aplikace Managed Cache Service pro účely mezipaměti Azure Redis a ukazuje, jak některé funkce mezipaměti Azure Redis umožňuje implementovat funkci Služba Managed Cache Service mezipaměti.
@@ -53,7 +53,7 @@ Azure Managed Cache Service a mezipaměť Azure Redis jsou podobné, ale někter
 | Místní mezipaměť |Místně ukládá kopie objektů uložených v mezipaměti na straně klienta pro velmi rychlý přístup. |Klientské aplikace, třeba k implementaci této funkce s použitím slovníku nebo podobné datové struktury. |
 | Zásady vyřazení |Žádné nebo LRU. Výchozí zásada je LRU. |Podporuje následující zásady vyřazení mezipaměti Redis Azure: volatile lru, allkeys lru, náhodných volatile, allkeys náhodné, volatile ttl, noeviction. Výchozí zásada je volatile lru. Další informace najdete v tématu [výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
 | Zásady vypršení platnosti |Výchozí zásady vypršení platnosti je absolutní výchozí interval vypršení platnosti je 10 minut Klouzavé a nikdy zásady jsou také k dispozici. |Ve výchozím nastavení se položky v mezipaměti nevyprší, ale dá se vypršení platnosti na základě za zápis pomocí přetížení mezipaměti sady. |
-| Oblasti a označování |Oblasti jsou podskupiny pro položky v mezipaměti. Oblasti také podporují poznámky z položek v mezipaměti s další popisné řetězce značky. Oblasti podporují možnost provádět operace vyhledávání na všechny položky označené v této oblasti. Všechny položky v rámci oblasti jsou umístěné v rámci jednoho uzlu clusteru mezipaměti. |Azure pro Redis Cache se skládá z jednoho uzlu (Pokud je povoleno Redis cluster) tak koncept oblasti služby Managed Cache Service se nevztahují. Redis podporuje vyhledávání a operacím se zástupnými znaky při načítání klíče, takže popisná klíčová slova můžete vkládán názvy klíčů a používá se k načtení položky později. Příklad implementace označení řešení s využitím Redis, naleznete v tématu [implementaci mezipaměti značení s využitím Redisu](http://stackify.com/implementing-cache-tagging-redis/). |
+| Oblasti a označování |Oblasti jsou podskupiny pro položky v mezipaměti. Oblasti také podporují poznámky z položek v mezipaměti s další popisné řetězce značky. Oblasti podporují možnost provádět operace vyhledávání na všechny položky označené v této oblasti. Všechny položky v rámci oblasti jsou umístěné v rámci jednoho uzlu clusteru mezipaměti. |Azure pro Redis Cache se skládá z jednoho uzlu (Pokud je povoleno Redis cluster) tak koncept oblasti služby Managed Cache Service se nevztahují. Redis podporuje vyhledávání a operacím se zástupnými znaky při načítání klíče, takže popisná klíčová slova můžete vkládán názvy klíčů a používá se k načtení položky později. Příklad implementace označení řešení s využitím Redis, naleznete v tématu [implementaci mezipaměti značení s využitím Redisu](https://stackify.com/implementing-cache-tagging-redis/). |
 | Serializace |Managed Cache podporuje NetDataContractSerializer, BinaryFormatter a použití vlastní serializátory. Výchozí hodnota je NetDataContractSerializer. |Zodpovídá za klientské aplikace k serializaci objektů .NET před uvedením do mezipaměti s výběru serializátoru až do vývojář aplikace klienta. Další informace a ukázky kódu najdete v tématu [práce s objekty .NET v mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
 | Emulátor mezipaměti |Managed Cache poskytuje emulátor místní mezipaměti. |Mezipaměti Redis Azure nemá emulátoru, ale můžete [místní spuštění sestavení MSOpenTech redis server.exe](cache-faq.md#cache-emulator) a poskytovalo vám emulátoru. |
 

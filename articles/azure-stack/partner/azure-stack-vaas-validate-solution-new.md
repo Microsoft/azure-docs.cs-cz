@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 12/20/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 7949e764baa7a4e20eb988c78817b6b4f0045593
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e6cfdca207b114871a478262f14ea960be5985df
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333764"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104960"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>Ověření nové řešení Azure Stack
 
@@ -35,32 +35,53 @@ Chcete-li certifikovat vašeho řešení, spusťte pracovní postup řešení ov
 ## <a name="create-a-solution-validation-workflow"></a>Vytvořit pracovní postup řešení ověření
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-solution](includes/azure-stack-vaas-workflow-step_select-solution.md)]
-2. Vyberte **Start** na **ověření řešení** dlaždici.
+
+3. Vyberte **Start** na **ověření řešení** dlaždici.
 
     ![Dlaždice řešení ověření pracovního postupu](media/tile_validation-solution.png)
 
-3. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
-4. Vyberte **konfigurace řešení**.
+4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
+
+5. Vyberte **konfigurace řešení**.
     - **Minimální**: řešení má nakonfigurovanou Minimální podporovaný počet uzlů.
     - **Maximální**: řešení má nakonfigurovanou maximální podporovaný počet uzlů.
-5. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
+6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
 
     ![Informace o ověření řešení](media/workflow_validation-solution_info.png)
 
-6. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
+7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
     > Po vytvoření pracovního postupu není možné měnit parametry prostředí.
 
-7. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
-8. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
+8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
+9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
     Budete přesměrováni na stránku Souhrn testů.
 
-## <a name="execute-solution-validation-tests"></a>Spustit testy pro ověření řešení
+## <a name="run-solution-validation-tests"></a>Spustit testy pro ověření řešení
 
-V **souhrn testů pro ověření řešení** stránky, zobrazí se seznam testů, které jsou potřebné k dokončení ověření.
+V **řešení ověřovací testy Souhrn** stránky, zobrazí se seznam testů, které jsou potřebné k dokončení ověření.
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+V pracovních postupech ověřování **plánování** testu používá společné parametry úrovni pracovního postupu, které jste zadali při vytváření pracovního postupu (viz [společných parametrů pracovních postupů pro Azure Stack ověření jako služba](azure-stack-vaas-parameters.md)). Pokud některý z hodnoty parametrů testu stane neplatným, je nutné resupply podle pokynů v tématu [upravit parametry pracovního postupu](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+
+> [!NOTE]
+> Při plánování ověřovací test existující instance vytvoří novou instanci namísto původní instanci na portálu. Protokoly pro původní instanci se zachovají, ale nejsou přístupné z portálu.  
+Po úspěšném dokončení testu **plán** akce bude zakázáno.
+
+1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
+2. Vyberte následující testy:
+    - Simulace modulu cloudu
+    - COMPUTE provozní sady SDK
+    - Test identifikace disku
+    - Provozní sady SDK rozšíření služby KeyVault
+    - Provozní sady SDK služby KeyVault
+    - Provozní sadě SDK sítě
+    - Provozní sady SDK účtu úložiště
+
+3. Vyberte **plán** z místní nabídky otevřete příkazový řádek pro plánování testovací instance.
+
+4. Zkontrolujte parametry testu a pak vyberte **odeslat** naplánování test po dobu provádění.
 
 ![Plán řešení ověřovací test](media/workflow_validation-solution_schedule-test.png)
 

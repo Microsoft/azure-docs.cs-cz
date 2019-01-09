@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e6c5f4623f3483dcfb0dde0f55b77161eee2c562
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: aff3f47624fe21e1d0f020e8e5732e60b4b53657
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035391"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084051"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které můžou vést k virtuálnímu počítači v Azure se to týká: Neplánovaná údržba hardwaru, neočekávaný výpadek a plánovaná údržba.
@@ -32,7 +32,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 
 * [Konfigurace více virtuálních počítačů ve skupině dostupnosti pro zajištění redundance]
 * [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti]
-* [Pomocí naplánovaných událostí proaktivně odpověď na virtuální počítač vliv na události ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Pomocí naplánovaných událostí proaktivně odpovědět na virtuální počítač vliv na události](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [Konfigurace jednotlivých vrstev aplikace v samostatných skupinách dostupnosti]
 * [Kombinace nástroje pro vyrovnávání zatížení se skupinami dostupnosti]
 * [Zóny dostupnosti se používají k ochraně před datacenter selhání na úrovni]
@@ -65,6 +65,10 @@ Pokud se chystáte používat virtuální počítače s [nespravovanými disky](
 1. **Uchovávejte všechny disky (s operačním systémem i s daty) přidružené k virtuálnímu počítači ve stejném účtu úložiště.**
 2. Než začnete přidávat další virtuální pevné disky do účtu úložiště, **zkontrolujte [omezení](../articles/storage/common/storage-scalability-targets.md) počtu nespravovaných disků v účtu služby Storage**.
 3. **Pro každý virtuální počítač ve skupině dostupnosti použijte samostatný účet úložiště.** Nesdílejte účty služby Storage mezi více virtuálními počítači ve stejné skupině dostupnosti. Je to přijatelné pro virtuální počítače v různých skupinách dostupnosti sdílení účtů úložiště, pokud nepoužijí nad osvědčené postupy ![nespravované disky doménami selhání](./media/virtual-machines-common-manage-availability/umd-updated.png)
+
+## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Pomocí naplánovaných událostí proaktivně reagovat na virtuální počítač vliv na události
+
+Když se přihlásíte k odběru [naplánované události](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events), váš virtuální počítač je oznámení o události nadcházející údržby, které může mít vliv na váš virtuální počítač. Pokud jsou povolené naplánované události, váš virtuální počítač dostane minimální množství času, před provedením aktivity údržby. Například aktualizace hostitelského operačního systému, které může mít vliv na váš virtuální počítač je ve frontě jako události, které určují dopad, stejně jako čas, kdy bude provedena Údržba, pokud nebyla provedena žádná akce. Události plánu se také zařadí do fronty když Azure zjistí selhání bezprostřední hardwaru, který může mít vliv na váš virtuální počítač, který umožňuje rozhodnout, kdy opravy je třeba provést. Zákazníci můžou používat události a provádět úlohy před údržby, jako například ukládání stavu, převzetí služeb při selhání na sekundární a tak dále. Po dokončení svoji logiku pro řádně zpracování události údržby můžete schválit nezpracovaných naplánované události povolit platformu a pokračujte údržby.
 
 ## <a name="configure-each-application-tier-into-separate-availability-sets"></a>Konfigurace jednotlivých vrstev aplikace v samostatných skupinách dostupnosti
 Pokud jsou všechny vaše virtuální počítače téměř identické a pro vaši aplikaci slouží stejnému účelu, doporučujeme nakonfigurovat skupinu dostupnosti pro každou vrstvu aplikace.  Pokud do stejné skupiny dostupnosti umístíte dvě různé vrstvy, bude možné restartovat všechny virtuální počítače na stejné úrovni aplikace. Nakonfigurováním alespoň dvou virtuálních počítačů ve skupině dostupnosti pro každou vrstvu můžete zajistit, že v každé skupině dostupnosti bude k dispozici alespoň jeden virtuální počítač.

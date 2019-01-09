@@ -1,5 +1,5 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 4: Vytvoření relací | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services Lekce 4: Vytvoření relací | Dokumentace Microsoftu'
 description: Popisuje, jak vytvořit relace v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e791514cc25c645775de260e7f190ee20812d4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d37b30708e3817460e5aa01f045c1e9f9032532e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428486"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117737"
 ---
 # <a name="create-relationships"></a>Vytvoření relací
 
@@ -22,10 +22,10 @@ V této lekci ověříte relace, které se automaticky vytvořily při importu d
 Odhadovaný čas dokončení této lekce: **10 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 3: Označení jako tabulky kalendářních dat](../tutorials/aas-lesson-3-mark-as-date-table.md). 
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 3: Označit jako tabulku kalendářních dat](../tutorials/aas-lesson-3-mark-as-date-table.md). 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>Kontrola existujících relací a přidání nových relací  
-Při importu dat pomocí funkce Získání dat jste z databáze AdventureWorksDW2014 získali sedm tabulek. Obecně platí, že při importu dat z relačního zdroje se společně s daty automaticky importují i existující relace. Aby mohla funkce Získání dat automaticky vytvořit relace v datovém modelu, musí existovat relace mezi tabulkami ve zdroji dat.
+Při importu dat pomocí funkce Získání dat jste z databáze AdventureWorksDW2014 získali sedm tabulek. Obecně platí, že při importu dat z relačního zdroje se společně s daty automaticky importují i existující relace. Mohl získat Data automaticky vytvořit relace v datovém modelu musí existovat relace mezi tabulkami ve zdroji dat.
 
 Než budete pokračovat ve vytváření modelu, měli byste ověřit správné vytvoření těchto relací mezi tabulkami. Pro účely tohoto kurzu také přidáte tři nové relace.  
 
@@ -60,7 +60,7 @@ Než budete pokračovat ve vytváření modelu, měli byste ověřit správné v
     |Ano|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |Ano|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    Pokud jakákoli z těchto relací chybí, ověřte, že váš model obsahuje následující tabulky: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory a FactInternetSales. Pokud se tabulky ze stejného připojení ke zdroji dat importují v různou dobu, případné relace mezi těmito tabulkami se nevytvoří a musí být vytvořeny ručně. Pokud se nezobrazí žádné relace, znamená to, že ve zdroji dat nejsou žádné relace. Můžete je vytvořit ručně v datovém modelu.
+    Pokud jakákoli z těchto relací chybí, ověřte, zda že váš model obsahuje následující tabulky: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory a FactInternetSales. Pokud se tabulky ze stejného připojení ke zdroji dat importují v různou dobu, případné relace mezi těmito tabulkami se nevytvoří a musí být vytvořeny ručně. Pokud se nezobrazí žádné relace, znamená to, že ve zdroji dat nejsou žádné relace. Můžete je vytvořit ručně v datovém modelu.
 
 ### <a name="take-a-closer-look"></a>Bližší prozkoumání
 V zobrazení diagramu si všimněte šipky, hvězdičky a čísla na čárách znázorňujících relace mezi tabulkami.
@@ -95,7 +95,7 @@ V některých případech můžete potřebovat vytvořit mezi tabulkami ve vaše
      ![aas-lesson4-newinactive](../tutorials/media/aas-lesson4-newinactive.png)
   
 ## <a name="whats-next"></a>Co dále?
-[Lekce 5: Vytvoření počítaných sloupců](../tutorials/aas-lesson-5-create-calculated-columns.md)
+[Lekce 5: Vytváření počítaných sloupců](../tutorials/aas-lesson-5-create-calculated-columns.md).
   
   
   

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0135f3ab79852e55187874ce1d5a0695238de207
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074831"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117073"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigace a řídicí panely na portálu Application Insights
-Až budete mít [nastavení Application Insights v projektu](../../application-insights/app-insights-overview.md), telemetrická data o výkonu a využití vaší aplikace se zobrazí v projektu prostředek Application Insights [webu Azure portal](https://portal.azure.com).
+Až budete mít [nastavení Application Insights v projektu](../../azure-monitor/app/app-insights-overview.md), telemetrická data o výkonu a využití vaší aplikace se zobrazí v projektu prostředek Application Insights [webu Azure portal](https://portal.azure.com).
 
 ## <a name="find-your-telemetry"></a>Najít telemetrii
 Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do prostředku Application Insights, který jste vytvořili pro vaši aplikaci.
@@ -34,7 +34,7 @@ Okno přehledu (stránky) pro vaše aplikace zobrazuje souhrn klíčových diagn
 Můžete přizpůsobit kteroukoliv z grafy a mřížky a připnout na řídicí panel. Tímto způsobem můžete mít pohromadě klíčové telemetrická data z různých aplikací na centrálním řídicím panelu.
 
 ## <a name="dashboards"></a>Řídicí panely
-První věc, kterou se po přihlášení k [portálu Microsoft Azure](https://portal.azure.com) je řídicí panel. Tady můžete kombinovat grafy, které jsou pro vás nejdůležitější ve všech vašich prostředků Azure, včetně telemetrie z [Azure Application Insights](../../application-insights/app-insights-overview.md).
+První věc, kterou se po přihlášení k [portálu Microsoft Azure](https://portal.azure.com) je řídicí panel. Tady můžete kombinovat grafy, které jsou pro vás nejdůležitější ve všech vašich prostředků Azure, včetně telemetrie z [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 ![Přizpůsobeného řídicího panelu.](./media/app-insights-dashboards/31.png)
 

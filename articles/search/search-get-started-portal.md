@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001783"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121545"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Rychlý start: Integrované nástroje portálu použijte pro import Azure Search, indexování a dotazy
 
@@ -48,7 +48,7 @@ Mnoho zákazníků začíná s bezplatnou službou. Tato verze je omezená na t�
 
 Oddíly na řídicím panelu služby zobrazit, kolik indexů, indexerů a zdrojů dat už máte. 
 
-! [Seznam indexy, indexery a zdroje dat] [media/search-get-started-portal/tiles-indexers-datasources2.png]
+![Seznam indexy, indexery a zdroje dat](media/search-get-started-portal/tiles-indexers-datasources2.png)
 
 ## <a name="create-index"></a>Vytvoření indexu a načtení dat
 
@@ -124,9 +124,13 @@ Může trvat několik minut, než se na portál a aktualizujte stránku, ale bys
 
 ## <a name="view-the-index"></a>Zobrazení indexu
 
-**Indexy** stávající indexy, včetně seznamu jsou uvedeny *realestate-us-sample* index, který jste právě vytvořili v průvodci.
+Na stránce hlavní služba obsahuje odkazy na prostředky vytvořené v rámci služby Azure Search.  Chcete-li zobrazit index, který jste právě vytvořili, klikněte na tlačítko **indexy** ze seznamu odkazů. 
 
-Z tohoto seznamu můžete zobrazit schéma indexu a volitelně přidat nová pole, ale existující pole nemůžete změnit. Existující pole mají v Azure Search fyzickou reprezentaci, takže se nedají změnit, dokonce ani v kódu. K zásadním způsobem mění stávající pole, vytvořte nový index, vyřadit původní.
+   ![Seznam indexů na řídicím panelu služby](media/search-get-started-portal/indexes-list.png)
+
+Z tohoto seznamu, můžete kliknout na *realestate-us-sample* index, který jste právě vytvořili, zobrazit schéma indexu. a volitelně přidat nová pole. 
+
+**Pole** karta zobrazuje schéma indexu. Přejděte do dolní části seznamu zadejte nové pole. Ve většině případů nelze změnit existující pole. Existující pole mají v Azure Search fyzickou reprezentaci, takže se nedají změnit, dokonce ani v kódu. K zásadním způsobem mění stávající pole, vytvořte nový index, vyřadit původní.
 
    ![Ukázková definice indexu](media/search-get-started-portal/sample-index-def.png)
 
@@ -137,6 +141,8 @@ Vyhraďte si chvilku na prostudování možností definice indexu, abyste dobře
 ## <a name="query-index"></a> Dotazování pomocí Průzkumníka služby Search
 
 Teď už byste měli mít vyhledávací index, který je připravený na dotazování pomocí integrované stránky dotazů [**Průzkumník služby Hledání**](search-explorer.md). Ta obsahuje vyhledávací pole, ve kterém si můžete otestovat libovolné řetězce dotazů.
+
+**Průzkumník služby Search** je umožňuje zpracovat jenom [požadavků na rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), ale přijímá syntaxi pro [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a [kompletní analyzátor dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), a navíc všechny parametry vyhledávání k dispozici v [REST API služby Search dokumentu](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) operace.
 
 > [!TIP]
 > Následující kroky jsou předvedené ve [videu s přehledem Azure Search](https://channel9.msdn.com/Events/Connect/2016/138) přibližně 6 min 8 s od zahájení.
@@ -150,11 +156,9 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
    ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
-3. Na panelu hledání zadejte uvedené řetězce dotazu a klikněte na **Hledat**.
+3. Do vyhledávacího pole vložte uvedené řetězce dotazu a klikněte na tlačítko **hledání**.
 
-    > [!NOTE]
-    > **Průzkumník služby Search** je umožňuje zpracovat jenom [požadavků na rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Přijímá syntaxi pro [jednoduché dotazy](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) i [kompletní analyzátor dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) a navíc všechny parametry hledání, které jsou dostupné pro operace [hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-    >
+   ![Tlačítko řetězec a vyhledávací dotaz](media/search-get-started-portal/search-explorer-query-string-example.png)
 
 ## <a name="example-queries"></a>Příklady dotazů
 

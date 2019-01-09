@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 57c0b930982f3a8b82ef7c077bfcdae6dfa23aac
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5873907485633753eb471855e443d452e4118b26
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077109"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120746"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro .NET konzolové aplikace
-[Application Insights](../../application-insights/app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
 
 Musíte mít předplatné s [Microsoft Azure](https://azure.com). Přihlaste se pomocí účtu Microsoft, které můžete mít zřízen pro Windows, Xbox Live a dalším cloudovým službám Microsoftu. Váš tým může mít předplatné pro společnosti do Azure: Požádejte vlastníka, aby vás přidal k ní pomocí svého účtu Microsoft.
 

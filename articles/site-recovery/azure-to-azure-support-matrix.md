@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: raynew
-ms.openlocfilehash: 40ee4fe15b2fde917c1d056a1454b95b9655b465
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 09d3b698edfc99b9340772aa0ffc4e8de20b286d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999726"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103757"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -44,6 +44,9 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 
 Můžete replikovat a obnovovat virtuální počítače mezi všechny dvou oblastí ve stejné zeměpisné clusteru. Geografické clustery jsou definovány dodržujte při tom suverenita a data latence.
 
+>[!NOTE]
+>Pokud nejste schopni zobrazit oblast v rámci zeměpisné clusteru při povolení replikace a ujistěte se, že má vaše předplatné přístup k vytvoření virtuálního počítače v dané oblasti. Pokud ne, než je žádost o podporu v rámci předplatného "Typ problému".
+>
 **Geografické clusteru** | **Oblasti Azure**
 -- | --
 Americké | Kanada – východ, Kanada – Jih, střed USA (střed), střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2, střed USA, USA (střed) – sever

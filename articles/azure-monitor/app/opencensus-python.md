@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aa71d171bbb2125a61cc6fec6b07639a5c340796
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 885f4da5ec9b360605a3e46ee8be8d338a638ede
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003252"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102665"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Shromažďovat distribuované trasování z Pythonu (Preview)
 
@@ -204,4 +204,4 @@ Jsme probrali pouze základní informace o zapojení do OpenCensus pro Python s 
 
 * [Použití Průvodce OpenCensus Pythonu](https://opencensus.io/api/python/trace/usage.html)
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
-* [Sledování výkonu začátku do konce](./../../application-insights/app-insights-tutorial-performance.md)
+* [Sledování výkonu začátku do konce](./../../azure-monitor/learn/tutorial-performance.md)

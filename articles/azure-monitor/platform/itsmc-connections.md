@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 7184a5e1e9b41653cfe23aa863f8e4e4ea86c620
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a07512c801d8e6c0f0ff3242fe1b94eeab5b2534
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409237"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104994"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů a služeb s IT Service Management Connector
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -222,9 +222,9 @@ Pomocí následujícího postupu vytvořte připojení ServiceNow:
 | **Název připojení**   | Zadejte název instance ServiceNow, kterou chcete připojit pomocí ITSMC.  Tento název použijete později v Log Analytics při konfigurování pracovních položek v tomto ITSM / zobrazit podrobné log analytics. |
 | **Typ partnera**   | Vyberte **ServiceNow**. |
 | **Uživatelské jméno**   | Integrace uživatelské jméno, které jste vytvořili v aplikaci ServiceNow a podporují připojení k ITSMC typ. Další informace: [Umožňuje vytvořit roli uživatele aplikace ServiceNow](#create-integration-user-role-in-servicenow-app).|
-| **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:**: Uživatelské jméno a heslo slouží ke generování tokenů ověřování jenom a nejsou nikde uložené ve službě ITSMC.  |
+| **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:** Uživatelské jméno a heslo slouží ke generování tokenů ověřování jenom a nejsou nikde uložené ve službě ITSMC.  |
 | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, kterou chcete připojit k ITSMC. |
-| **ID klienta**   | Zadejte ID klienta, který chcete použít pro ověřování OAuth2, který jste vygenerovali dříve.  Další informace o generování ID klienta a tajný kód:   [Instalace OAuth](http://wiki.servicenow.com/index.php?title=OAuth_Setup). |
+| **ID klienta**   | Zadejte ID klienta, který chcete použít pro ověřování OAuth2, který jste vygenerovali dříve.  Další informace o generování ID klienta a tajný kód:   [Instalace OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Tajný klíč klienta**   | Zadejte tajný kód klienta vygenerovaný pro toto ID.   |
 | **Rozsah synchronizace dat**   | Vyberte pracovní položky ServiceNow, které chcete synchronizovat s Azure Log Analytics prostřednictvím ITSMC.  Vybrané hodnoty jsou importovány do log analytics.   **Možnosti:**  Incidenty a žádosti o změnu.|
 | **Synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |

@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: b996d42e5c543235d09b46d29889bc5eaeafd52a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413297"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118971"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Vysvětlení běžných chybových zpráv při správě virtuálních počítačů v Azure
 
@@ -178,7 +178,7 @@ Tato část uvádí běžné chybové zprávy, se můžete setkat při správě 
 |  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač "{0}" nebylo dokončeno v přiděleném čase. Virtuální počítač může dokončit úspěšně. Zkontrolujte prosím stav zřizování později.  |
 |  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač "{0}" nebylo dokončeno v přiděleném čase. Virtuální počítač může dokončit úspěšně. Zkontrolujte prosím stav zřizování později. Také se ujistěte, že image správně připravila (generalizovala).   <ul><li>Pokyny pro Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač "{0}" nebylo dokončeno v přiděleném čase. Agent hosta virtuálního počítače, ale byla zjištěna systémem. To naznačuje, že hostovaný operační systém nebyl správně připravený k použití jako image virtuálního počítače (pomocí CreateOption = FromImage). Chcete-li tento problém vyřešit, použijte virtuální pevný disk, jak je s CreateOption = Attach nebo správně připravený k použití jako image:   <ul><li>Pokyny pro Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OverConstrainedAllocationRequest  |  Požadovaná velikost virtuálního počítače není v tuto chvíli na vybraném umístění dostupná.  |
+|  OverConstrainedAllocationRequest  |  Požadovaná velikost virtuálního počítače není aktuálně k dispozici ve vybraném umístění.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Prostředek nelze aktualizovat v tuto chvíli z důvodu probíhající platform update. Zkuste to prosím znova později.  |
 |  StorageAccountLimitation  |  Účet úložiště '{0}"nepodporuje objekty BLOB stránky, které jsou nutné k vytváření disků.  |
 |  StorageAccountLimitation  |  Účet úložiště '{0}"překročil jemu přidělenou kvótu.  |

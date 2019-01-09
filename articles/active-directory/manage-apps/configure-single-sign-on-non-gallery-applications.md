@@ -1,37 +1,33 @@
 ---
-title: Konfigurace jednotného přihlašování k Azure AD pro aplikace | Dokumentace Microsoftu
-description: Zjistěte, jak připojit aplikace do Azure Active Directory pomocí SAML a jednotné přihlašování pomocí hesla k samoobslužné funkce
+title: Jednotné přihlašování – aplikace mimo Galerii – Azure Active Directory | Dokumentace Microsoftu
+description: Nakonfigurovat jednotné přihlašování (SSO) tak, aby aplikace mimo galerii v Azure Active Directory (Azure AD)
 services: active-directory
 author: barbkess
-documentationcenter: na
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2018
+ms.date: 01/08/2019
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd42f6317f684fcc5ad9da94c1b09ab1870ccf76
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: bb2fcbad3d415a8ac7a8e0c3237fcb97042defd7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408119"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121341"
 ---
-# <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Nakonfigurovat jednotné přihlašování do aplikace mimo galerii v Azure Active Directory
 
-Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím není k dispozici v galerii aplikací Azure Active Directory *bez psaní kódu*. Tato funkce byla vydána z 18. listopadu 2015 technical preview a je součástí [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md). Pokud místo toho hledáte informace pro vývojáře o tom, jak integrace vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro službu Azure AD](../develop/authentication-scenarios.md).
+Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím není k dispozici v galerii aplikací Azure Active Directory *bez psaní kódu*. Pokud místo toho hledáte informace pro vývojáře o tom, jak integrace vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro službu Azure AD](../develop/authentication-scenarios.md).
 
 Galerie aplikací Azure Active Directory poskytuje seznam aplikací, které jsou známé pro podporu formou jednotné přihlašování s Azure Active Directory, jak je popsáno v [v tomto článku](what-is-single-sign-on.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) najdete aplikace, kterou chcete připojit, můžete začít podle podrobných pokynů uvedené na webu Azure Portal můžete povolit jednotné přihlašování.
 
-Zákazníci s [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) licenci získáte také tyto další funkce:
+Tyto možnosti jsou dostupné, podle vaší licenční smlouvě. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/). 
 
-* Samoobslužná integrace každou aplikaci, která podporuje zprostředkovatelů identity SAML 2.0 (iniciovaného Zprostředkovatelem přihlašování nebo zahájené pomocí IdP)
-* Samoobslužná integrace webové aplikace, který je založený na jazyce HTML přihlašovací stránky pomocí [jednotného přihlašování pomocí hesla](what-is-single-sign-on.md#password-based-sso)
+- Samoobslužná integrace každou aplikaci, která podporuje zprostředkovatelů identity SAML 2.0 (iniciovaného Zprostředkovatelem přihlašování nebo zahájené pomocí IdP)
+- Samoobslužná integrace webové aplikace, který je založený na jazyce HTML přihlašovací stránky pomocí [jednotného přihlašování pomocí hesla](what-is-single-sign-on.md#password-based-sso)
 * Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([je zde popsáno,](use-scim-to-provision-users-and-groups.md))
 * Možnost přidání odkazů do libovolné aplikace v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](what-is-single-sign-on.md#linked-sso)
 

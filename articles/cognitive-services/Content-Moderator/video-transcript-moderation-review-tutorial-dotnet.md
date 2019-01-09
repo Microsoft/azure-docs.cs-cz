@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Moderování videí a přepisy v technologii .NET – Content Moderator'
+title: 'Kurz: Moderování videa a záznamy o studiu v rozhraní .NET – Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Jak používat Content Moderator k moderování videí a přepisů v technologii .NET.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 1/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: d156c481e3c16105ad85cbc793d93306a310d5ef
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567107"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118570"
 ---
-# <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
+# <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videa a přepis
 
 Rozhraní API pro video v Content Moderatoru umožňují moderování videí a vytváření kontrol videí v nástroji pro kontroly prováděné člověkem. 
 
@@ -530,7 +530,7 @@ Přepis se publikuje jako prostředek AMS. Pokud chcete prohledat přepis, jestl
         }
         catch
         {   //TODO:  Logging
-            Console.WriteLine("Exception occured while generating index for video.");
+            Console.WriteLine("Exception occurred while generating index for video.");
             throw;
         }
     }

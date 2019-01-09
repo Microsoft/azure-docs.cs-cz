@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2afed85c0c86e541c281f579294676fa889d4f27
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5c809153b3b86a5460bd2c235d9f6226fb50a024
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041437"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118791"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET ve službě Application Insights
 Pokud chcete použít NLog, log4Net nebo System.Diagnostics.Trace pro diagnostické trasování v aplikaci ASP.NET, může mít vaše protokoly odeslané do [Azure Application Insights][start], kde můžete prozkoumat a hledat je. Protokoly se sloučí s další telemetrická data přicházející z vaší aplikace tak, aby identifikovat trasování přidružené k obsluze jednotlivých požadavků uživatele a korelovat je s dalšími události a sestavy výjimek.
@@ -207,4 +207,4 @@ Pokud vaše aplikace odešle velké množství dat a používáte Application In
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
 [qna]: ../../azure-monitor/app/troubleshoot-faq.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md

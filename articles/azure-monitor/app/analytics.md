@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c41444f94e4685d246de225500c8a5beefc74944
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065609"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120882"
 ---
 # <a name="analytics-in-application-insights"></a>Analýzy ve službě Application Insights
-Analýza je výkonný nástroj hledání a dotaz z [Application Insights](../../application-insights/app-insights-overview.md). Analytics je webový nástroj, takže není zapotřebí žádné nastavení. Pokud jste již nakonfigurovali Application Insights pro některé z aplikací, můžete analyzovat data vaší aplikace tak, že otevřete Analytics z vaší aplikace [okno přehledu](../../azure-monitor/app/app-insights-dashboards.md).
+Analýza je výkonný nástroj hledání a dotaz z [Application Insights](../../azure-monitor/app/app-insights-overview.md). Analytics je webový nástroj, takže není zapotřebí žádné nastavení. Pokud jste již nakonfigurovali Application Insights pro některé z aplikací, můžete analyzovat data vaší aplikace tak, že otevřete Analytics z vaší aplikace [okno přehledu](../../azure-monitor/app/app-insights-dashboards.md).
 
 ![Otevřené stránce portal.azure.com otevřete prostředek Application Insights a klikněte na tlačítko Analytics.](./media/analytics/001.png)
 

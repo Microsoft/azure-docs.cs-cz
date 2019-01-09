@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 57cde41bf65c370f86ebc57a39e917b95721ca81
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: a9decacc3b22676d94726e3cf979198b3486d270
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892156"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104637"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Přidat Dlaždicovou vrstvu mapy
 
@@ -24,7 +24,7 @@ Zatížení vrstvy dlaždic na dlaždicích ze serveru. Tyto Image můžete buď
 
 * X, Y, zápis přiblížení – podle úrovně přiblížení, x je sloupec a y je pozice řádku dlaždice v mřížce dlaždice.
 * Zápis Quadkey – kombinace x, y, informace o zvětšení na jednu řetězcovou hodnotu, která je jedinečný identifikátor pro dlaždici.
-* Ohraničující rámeček – pole souřadnice ohraničujícího je možné zadat image ve formátu `{west},{south},{east},{north}` které běžně používá [webové mapování služby (WMS)](http://www.opengeospatial.org/standards/wms).
+* Ohraničující rámeček – pole souřadnice ohraničujícího je možné zadat image ve formátu `{west},{south},{east},{north}` které běžně používá [webové mapování služby (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) je skvělý způsob, jak vizualizovat velké sady dat na mapě. Pouze Dlaždicovou vrstvu se dá vygenerovat na bitovou kopii, ale vektorová data lze také vykreslit jako Dlaždicovou vrstvu příliš. Vykreslením vektorová data jako Dlaždicovou vrstvu mapový ovládací prvek potřebuje pouze k načtení dlaždic, které mohou být velikosti souboru mnohem menší, než vektorová data, které reprezentují. Tato technika je používána mnoho, kteří potřebují k vykreslení millons řádky dat na mapě.
@@ -38,9 +38,9 @@ Adresa URL dlaždice předaná do vrstvy dlaždic musí být adresa URL protokol
 * `{bbox-epsg-3857}` -Ohraničující pole řetězce ve formátu `{west},{south},{east},{north}` systému EPSG 3857 prostorové Reference.
 * `{subdomain}` -Zástupný symbol místo, kam bude přidána subdoménu hodnoty, pokud zadaný.
 
-## <a name="add-a-tile-layer"></a>Přidat Dlaždicovou vrstvu
+## <a name="add-a-tile-layer"></a>Přidání vrstvy dlaždic
 
- Tento příklad ukazuje, jak vytvořit Dlaždicovou vrstvu, která odkazuje na sadu dlaždic, které používají x, y, systém dělení do bloků přiblížení. Zdroj této vrstvy dlaždic je překrytím této možnosti taky přemýšlíte o počasí od [Iowa prostředí Mesonet z Iowa State University](http://mesonet.agron.iastate.edu/ogc/).
+ Tento příklad ukazuje, jak vytvořit Dlaždicovou vrstvu, která odkazuje na sadu dlaždic, které používají x, y, systém dělení do bloků přiblížení. Zdroj této vrstvy dlaždic je překrytím této možnosti taky přemýšlíte o počasí od [Iowa prostředí Mesonet z Iowa State University](https://mesonet.agron.iastate.edu/ogc/).
 
 <br/>
 

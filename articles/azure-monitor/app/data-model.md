@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 85541d649a0b2720e3d33b98cea7883b3725f609
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025143"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120661"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetrie datového modelu
 
-[Azure Application Insights](../../application-insights/app-insights-overview.md) odesílá telemetrii z vaší webové aplikace na webu Azure portal, takže můžete analyzovat výkon a využití vaší aplikace. Telemetrická data modelu je standardizované. aby bylo možné vytvořit monitorování nezávislým na jazyku a platformě. 
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá telemetrii z vaší webové aplikace na webu Azure portal, takže můžete analyzovat výkon a využití vaší aplikace. Telemetrická data modelu je standardizované. aby bylo možné vytvořit monitorování nezávislým na jazyku a platformě. 
 
 Modely dat shromážděných službou Application Insights tento model provádění Typická aplikace:
 

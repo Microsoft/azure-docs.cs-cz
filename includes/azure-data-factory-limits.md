@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 1/8/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 856d702bcf1f566d0cc455cdd2676e6c2e23d179
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 203168f27e06d58c192bc5009db077461738011a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53326660"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54122781"
 ---
 Data factory je víceklientská služba, která má následující výchozí omezení na místě zajistit, aby chránily zákaznických předplatných z druhé strany úlohy. Mnoho omezení můžete snadno navýšit pro vaše předplatné až do maximálního limitu tak, že kontaktujete podporu.
 
@@ -23,7 +23,7 @@ Data factory je víceklientská služba, která má následující výchozí ome
 | -------- | ------------- | ------------- |
 | Datových továren v předplatném Azure | 50 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Celkový počet entit (kanál, datové sady, aktivační události, propojené služby, prostředí Integration Runtime) v rámci služby data factory | 5000 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Celkový počet jader procesoru pro prostředí Azure-SSIS Integration Runtime(s) v rámci jednoho předplatného | 128 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Celkový počet jader procesoru pro prostředí Azure-SSIS Integration Runtime(s) v rámci jednoho předplatného | 256 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Spuštění souběžných kanálu na objekt pro vytváření dat (sdílené mezi všechny kanály v objektu pro vytváření) | 10 000  | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maximální počet aktivit za kanál (obsahuje vnitřní aktivity pro kontejnery) | 40 | 40 |
 | Maximální počet parametrů na kanálu | 50 | 50 |

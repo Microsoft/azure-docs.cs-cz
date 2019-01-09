@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d062108dbb27095e978b4973cb7bc5172a4d814
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a2213ac9b31623aed18855ce87e7e00870b05247
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186272"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107221"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -28,11 +28,11 @@ Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analyt
 
 ### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>DOTAZ: Jaký je rozdíl mezi nové prostředí pro protokoly a Log Analytics?
 
-ODPOVĚĎ: Jsou to samé. [Log Analytics je integrované jako funkci ve službě Azure Monitor](../../azure-monitor/azure-monitor-rebrand.md) poskytnout více sjednocené prostředí pro monitorování. Nové prostředí protokolů ve službě Azure Monitor je přesně stejný jako dotazy Log Analytics, které už jste dosud používali mnoho zákazníků.
+Odpověď: Jsou to samé. [Log Analytics je integrované jako funkci ve službě Azure Monitor](../../azure-monitor/azure-monitor-rebrand.md) poskytnout více sjednocené prostředí pro monitorování. Nové prostředí protokolů ve službě Azure Monitor je přesně stejný jako dotazy Log Analytics, které už jste dosud používali mnoho zákazníků.
 
 ### <a name="q-can-i-still-use-log-search"></a>DOTAZ: Pomocí prohledávání protokolů 
 
-ODPOVĚĎ: Hledání v protokolu je stále k dispozici na portálu OMS a na webu Azure Portal v části názvu aktuálně **protokoly (classic)**. Na portálu OMS se oficiálně dostupné jenom do 15. ledna 2019. Klasickým prostředím protokolů na webu Azure portal postupně vyřadíme a nahradí nové protokoly prostředí. 
+Odpověď: Hledání v protokolu je stále k dispozici na portálu OMS a na webu Azure Portal v části názvu aktuálně **protokoly (classic)**. Na portálu OMS se oficiálně dostupné jenom do 15. ledna 2019. Klasickým prostředím protokolů na webu Azure portal postupně vyřadíme a nahradí nové protokoly prostředí. 
 
 ### <a name="q-can-i-still-use-advanced-analytics-portal"></a>Otázka: Použití portálu Advanced Analytics 
 Nové prostředí protokolů na webu Azure Portal je založen na portálu pro pokročilé analýzy, ale stále k němu mimo na webu Azure portal. Plán služby vyřazení z provozu tento portál externí bude brzy oznámena.
@@ -43,30 +43,30 @@ Nové prostředí protokolů na webu Azure Portal je založen na portálu pro po
 
 ### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>Otázka: Jak se extrahovat vlastní pole v novém prostředí protokoly? 
 
-ODPOVĚĎ: Vlastní pole extrakce jsou aktuálně podporované ve classic protokoly prostředí. 
+Odpověď: Vlastní pole extrakce jsou aktuálně podporované ve classic protokoly prostředí. 
 
 ### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>Otázka: Kde najít seznam v nové protokoly? 
 
-ODPOVĚĎ: Zobrazení seznamu není k dispozici v nové protokoly. Je šipka vlevo jednomu záznamu v tabulce výsledků. Klepnutím na šipku otevřete podrobnosti konkrétního záznamu. 
+Odpověď: Zobrazení seznamu není k dispozici v nové protokoly. Je šipka vlevo jednomu záznamu v tabulce výsledků. Klepnutím na šipku otevřete podrobnosti konkrétního záznamu. 
 
 ### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>Otázka: Po spuštění dotazu se zobrazí seznam filtrů, ale neobsahuje všechny filtry. Jak můžete zobrazit zbývající? 
 
-ODPOVĚĎ: Co se nyní zobrazí je ve verzi preview novou implementaci filtry. To je teď na základě sady úplné výsledků namísto podle limit 10 000 záznamů uživatelského rozhraní. Toto je momentálně seznam nejpopulárnější filtry a 10 nejběžnějších hodnot u každého filtru. 
+Odpověď: Co se nyní zobrazí je ve verzi preview novou implementaci filtry. To je teď na základě sady úplné výsledků namísto podle limit 10 000 záznamů uživatelského rozhraní. Toto je momentálně seznam nejpopulárnější filtry a 10 nejběžnějších hodnot u každého filtru. 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>Otázka: Proč dochází k chybě: "Zaregistrujte poskytovatele prostředků"Microsoft.Insights' pro toto předplatné chcete povolit tento dotaz "v protokolech, při procházení se změnami z virtuálního počítače? 
 
-ODPOVĚĎ: Ve výchozím nastavení řada poskytovatelů prostředků jsou automaticky registrované, ale budete muset ručně zaregistrovat někteří poskytovatelé prostředků. Tím se nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../../azure-resource-manager/resource-manager-supported-services.md#portal).
+Odpověď: Ve výchozím nastavení řada poskytovatelů prostředků jsou automaticky registrované, ale budete muset ručně zaregistrovat někteří poskytovatelé prostředků. Tím se nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../../azure-resource-manager/resource-manager-supported-services.md#portal).
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>Otázka: Proč mi Power BI Desktop zobrazuje žádná chybová zpráva přístup při přístupu k protokoly ze stránky virtuálního počítače? 
 
-ODPOVĚĎ: Chcete-li zobrazit protokoly virtuálního počítače, budete muset udělit oprávnění ke čtení pro pracovní prostory, které se ukládají protokoly virtuálního počítače. V těchto případech se musí udělit správce oprávnění v Azure vám.
+Odpověď: Chcete-li zobrazit protokoly virtuálního počítače, budete muset udělit oprávnění ke čtení pro pracovní prostory, které se ukládají protokoly virtuálního počítače. V těchto případech se musí udělit správce oprávnění v Azure vám.
 
 ### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>Otázka: Proč mám může přístup pracovního prostoru v portálu OMS, ale zobrazí chyba "nemáte přístup" na webu Azure Portal?  
 
-ODPOVĚĎ: Pro přístup k pracovní prostor v Azure, musíte mít oprávnění Azure, které jsou přiřazeny. Existují případy, kdy nemusí mít odpovídající přístupová oprávnění. V těchto případech musí správce udělit oprávnění v Azure.See [portálu OMS do Azure](/../../azure-monitor/platform/oms-portal-transition.md) Další informace.
+Odpověď: Pro přístup k pracovní prostor v Azure, musíte mít oprávnění Azure, které jsou přiřazeny. Existují případy, kdy nemusí mít odpovídající přístupová oprávnění. V těchto případech musí správce udělit oprávnění v Azure.See [portálu OMS do Azure](/../../azure-monitor/platform/oms-portal-transition.md) Další informace.
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>Otázka: Proč nelze nezobrazují položky Návrhář zobrazení v protokolech? 
-ODPOVĚĎ: Návrhář zobrazení je dostupná jenom v protokolech pro uživatelé s oprávněním Přispěvatel nebo vyšší.
+Odpověď: Návrhář zobrazení je dostupná jenom v protokolech pro uživatelé s oprávněním Přispěvatel nebo vyšší.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>Otázka: Použití portálu Analytics mimo Azure
 A. Ano, na stránce protokoly v Azure a portál pro pokročilou analýzu jsou založeny na stejný kód. Log Analytics je integrované jako funkci ve službě Azure Monitor k poskytování více jednotné možnosti monitorování. Můžete nadále přistupovat pomocí adresy URL portálu Analytics: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
@@ -77,20 +77,20 @@ A. Ano, na stránce protokoly v Azure a portál pro pokročilou analýzu jsou za
 
 ### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>Otázka: Jak lze zobrazit Moje zobrazení a řešení na webu Azure portal? 
 
-ODPOVĚĎ: Seznam zobrazení a nainstalované řešení jsou k dispozici na webu Azure portal. Klikněte na **Všechny služby**. V seznamu prostředků vyberte **monitorování**, pak klikněte na tlačítko **... Další**. Naposledy použité pracovní prostor je vybráno, ale můžete vybrat jiný pracovní prostor. 
+Odpověď: Seznam zobrazení a nainstalované řešení jsou k dispozici na webu Azure portal. Klikněte na **Všechny služby**. V seznamu prostředků vyberte **monitorování**, pak klikněte na tlačítko **... Další**. Naposledy použité pracovní prostor je vybráno, ale můžete vybrat jiný pracovní prostor. 
 
 ### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>Otázka: Proč nelze vytvořit pracovní prostory v oblasti Středozápad USA? 
 
-ODPOVĚĎ: Tato oblast je v dočasné kapacity. Limit se plánuje se zákazníky a vyřešené v první polovině roku 2019.
+Odpověď: V této oblasti bylo dosaženo dočasného omezení kapacity. Toto omezení plánujeme vyřešit v první polovině roku 2019.
 
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Otázka: Používá Log Analytics stejný agent, kterého jako Azure Security Center?
 
-ODPOVĚĎ: Června 2017 začal Azure Security Center ke shromažďování a ukládání dat pomocí agenta Microsoft Monitoring Agent. Další informace najdete v tématu [Azure Security Center platformy migrace – nejčastější dotazy](../../security-center/security-center-enable-data-collection.md).
+Odpověď: Června 2017 začal Azure Security Center ke shromažďování a ukládání dat pomocí agenta Microsoft Monitoring Agent. Další informace najdete v tématu [Azure Security Center platformy migrace – nejčastější dotazy](../../security-center/security-center-enable-data-collection.md).
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>Otázka: AD provádí jaké kontroly a řešení pro posouzení SQL?
 
-ODPOVĚĎ: Následující dotaz zobrazí popis všech aktuálně provádí kontroly:
+Odpověď: Následující dotaz zobrazí popis všech aktuálně provádí kontroly:
 
 ```
 (Type=SQLAssessmentRecommendation OR Type=ADAssessmentRecommendation) | dedup RecommendationId | select FocusArea, ActionArea, Recommendation, Description | sort Type, FocusArea,ActionArea, Recommendation
@@ -100,17 +100,17 @@ Výsledky lze exportovat do Excelu pro další kontrolu.
 
 ### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>Otázka: Proč se zobrazuje něco jiného než OMS v konzole nástroje System Center Operations Manager?
 
-ODPOVĚĎ: V závislosti na tom, jaké aktualizace souhrnu nástroje Operations Manager na, může se zobrazit uzel pro *System Center Advisor*, *Operational Insights*, nebo *Log Analytics*.
+Odpověď: V závislosti na tom, jaké aktualizace souhrnu nástroje Operations Manager na, může se zobrazit uzel pro *System Center Advisor*, *Operational Insights*, nebo *Log Analytics*.
 
 Aktualizace textu řetězce *OMS* je zahrnuta v sadě management pack, které se mají importovat ručně. Pokud chcete zobrazit aktuální text a funkce, postupujte podle pokynů na nejnovější systém System Center Operations Manager aktualizace znalostní BÁZE kumulativní článku a aktualizací konzoly nástroje.
 
 ### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>DOTAZ: Existuje místní verzi služby Log Analytics?
 
-ODPOVĚĎ: Ne. Log Analytics je škálovatelná Cloudová služba, která zpracovává a ukládá velké objemy dat. 
+Odpověď: Ne. Log Analytics je škálovatelná Cloudová služba, která zpracovává a ukládá velké objemy dat. 
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>Otázka: Jak řešit Pokud Log Analytics je už shromažďování dat?
 
-ODPOVĚĎ: Pro předplatné a pracovní prostor vytvořený před 2. dubnem 2018, tj. v *Free* cenovou úroveň, pokud je za jeden den odeslána víc než 500 MB dat, shromažďování dat zastaví zbytek dne. Dosažení denního limitu je běžným důvodem Log Analytics se zastaví shromažďování dat, nebo se zdá být chybějící data.  
+Odpověď: Pro předplatné a pracovní prostor vytvořený před 2. dubnem 2018, tj. v *Free* cenovou úroveň, pokud je za jeden den odeslána víc než 500 MB dat, shromažďování dat zastaví zbytek dne. Dosažení denního limitu je běžným důvodem Log Analytics se zastaví shromažďování dat, nebo se zdá být chybějící data.  
 
 Log Analytics, vytváří událost typu *prezenčního signálu* a slouží k určení, pokud se shromažďování dat zastaví. 
 
@@ -133,7 +133,7 @@ Log Analytics používá čas UTC a spustí každý den o půlnoci UTC. Pokud pr
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Otázka: Jak si nastavím upozorňování při zastavení shromažďování dat?
 
-ODPOVĚĎ: Pomocí kroků popsaných v [vytvořit nové oznámení protokolu](../../azure-monitor/platform/alerts-metric.md) která vás upozorní, když se shromažďování dat zastaví.
+Odpověď: Pomocí kroků popsaných v [vytvořit nové oznámení protokolu](../../azure-monitor/platform/alerts-metric.md) která vás upozorní, když se shromažďování dat zastaví.
 
 Při vytváření upozornění pro při zastavení shromažďování dat, nastavte:
 
@@ -176,14 +176,14 @@ Nelze přesunout data z jednoho pracovního prostoru Log Analytics do jiného ne
 
 ### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>DOTAZ: Jak mohu přidat Log Analytics na System Center Operations Manager?
 
-ODPOVĚĎ:  Aktualizace na nejnovější kumulativní aktualizaci a import sad management Pack vám umožní připojit Operations Manageru k Log Analytics.
+Odpověď:  Aktualizace na nejnovější kumulativní aktualizaci a import sad management Pack vám umožní připojit Operations Manageru k Log Analytics.
 
 >[!NOTE]
 >Připojení nástroje Operations Manager ke službě Log Analytics je dostupná jenom pro System Center Operations Manager 2012 SP1 a novější.
 
 ### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>DOTAZ: Jak můžete ověřit, že agent je schopen komunikovat s Log Analytics?
 
-ODPOVĚĎ: Aby bylo zajištěno, že agent může komunikovat s OMS, přejděte na: Ovládací prvek panelu, zabezpečení a nastavení, **agenta Microsoft Monitoring Agent**.
+Odpověď: Aby bylo zajištěno, že agent může komunikovat s OMS, přejděte na: Ovládací prvek panelu, zabezpečení a nastavení, **agenta Microsoft Monitoring Agent**.
 
 V části **Azure Log Analytics (OMS)** kartu, vyhledejte zelená značka zaškrtnutí. Ikona s zelenou značku zaškrtnutí potvrdí, že agent není schopen komunikovat se službou Azure.
 
@@ -191,19 +191,19 @@ V části **Azure Log Analytics (OMS)** kartu, vyhledejte zelená značka zaškr
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>DOTAZ: Jak můžu Zastavit agenta v komunikaci se službou Log Analytics?
 
-ODPOVĚĎ: V nástroji System Center Operations Manager odeberte počítač ze seznamu spravovaných počítačů OMS. Nástroj Operations Manager aktualizuje konfiguraci agenta k již ukládání dat do Log Analytics. U agentů přímo připojené ke službě Log Analytics můžete zastavit komunikaci prostřednictvím: Ovládací prvek panelu, zabezpečení a nastavení, **agenta Microsoft Monitoring Agent**.
+Odpověď: V nástroji System Center Operations Manager odeberte počítač ze seznamu spravovaných počítačů OMS. Nástroj Operations Manager aktualizuje konfiguraci agenta k již ukládání dat do Log Analytics. U agentů přímo připojené ke službě Log Analytics můžete zastavit komunikaci prostřednictvím: Ovládací prvek panelu, zabezpečení a nastavení, **agenta Microsoft Monitoring Agent**.
 V části **Azure Log Analytics (OMS)**, odeberte všechny pracovní prostory uvedené.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>DOTAZ: Proč se při pokusu o přesunutí Můj pracovní prostor z jednoho předplatného Azure na jiný dochází k chybě?
 
-ODPOVĚĎ: Pokud chcete přesunout pracovní prostor na jiné předplatné nebo skupinu prostředků, musíte nejprve zrušit propojení účtu Automation v pracovním prostoru. Zrušení propojení účtu Automation vyžaduje odebrání těchto řešení, pokud jsou nainstalovány v pracovním prostoru: Update Management, Change Tracking nebo spuštění/zastavení virtuálních počítačů mimo špičku, se odeberou. Po odebrání těchto řešení zrušení propojení účtu Automation vyberte **propojené pracovní prostory** v levém podokně v automatizaci účtu prostředek a klikněte na tlačítko **zrušit propojení pracovního prostoru** na pásu karet.
+Odpověď: Pokud chcete přesunout pracovní prostor na jiné předplatné nebo skupinu prostředků, musíte nejprve zrušit propojení účtu Automation v pracovním prostoru. Zrušení propojení účtu Automation vyžaduje odebrání těchto řešení, pokud jsou nainstalovány v pracovním prostoru: Update Management, Change Tracking nebo spuštění/zastavení virtuálních počítačů mimo špičku, se odeberou. Po odebrání těchto řešení zrušení propojení účtu Automation vyberte **propojené pracovní prostory** v levém podokně v automatizaci účtu prostředek a klikněte na tlačítko **zrušit propojení pracovního prostoru** na pásu karet.
  > Odebrat řešení je třeba znovu nainstalovat v pracovním prostoru a propojení služby Automation s pracovním prostorem musí revidovat po přesunutí.
 
 Ujistěte se, že máte oprávnění v obou předplatných Azure.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>DOTAZ: Proč se při pokusu aktualizovat elementu SavedSearch dochází k chybě?
 
-ODPOVĚĎ: Je třeba přidat 'etag' v těle rozhraní API nebo vlastností šablony Azure Resource Manageru:
+Odpověď: Je třeba přidat 'etag' v těle rozhraní API nebo vlastností šablony Azure Resource Manageru:
 ```
 "properties": {
    "etag": "*",
@@ -219,7 +219,7 @@ A. Plán free Nastaví denní limit 500 MB za jednotlivé pracovní prostory. Pl
 
 Agenta Log Analytics byla navržena k zajištění, že má malou stopu. Objem dat se liší v závislosti na řešení, které povolíte. Můžete najít podrobné informace o objemu dat a zobrazit rozpis řešením v [využití](../../azure-monitor/platform/data-usage.md) stránky.
 
-Další informace si můžete přečíst [zákazníka blogu](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) zobrazující jejich výsledky po vyhodnocení využití prostředků (nároky na místo) agenta OMS.
+Další informace si můžete přečíst [zákazníka blogu](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) zobrazující jejich výsledky po vyhodnocení využití prostředků (nároky na místo) agenta OMS.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>Otázka: Jak velkou šířku pásma sítě se používá ve Microsoft Management Agent (MMA), při odesílání dat do služby Log Analytics?
 

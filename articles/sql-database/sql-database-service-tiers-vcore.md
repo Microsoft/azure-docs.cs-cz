@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 01/02/2019
-ms.openlocfilehash: f756f043a7ab3c9086b21b8bdb88a5a6a7ed60df
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 6a5902b8c442d83c86142bad516b862febd6522c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001596"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118196"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
 
@@ -66,6 +66,10 @@ Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi 
 V nákupní model založený na virtuálních jádrech mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
 
 ![Ceny](./media/sql-database-service-tiers/pricing.png)
+
+Pokud chcete využívat svoje současné licence v místním systému SQL Server, můžete platit jen základní cena základní infrastrukturu Azure (třeba virtuální počítač Azure se spuštěným systémem databáze) při SQL Server Database engine licence nebudou zahrnuty ve vašem vyúčtování. V určité období můžete použít místní licence pro SQL Server a Azure SQL Database. V opačném případě náklady na licence pro databázový stroj SQL Server se zahrne do ceny dané databázi nebo instanci. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure k vytvoření nebo aktualizaci vaší databáze nebo instance, existují dvě cenové možnosti, které můžete použít:
+- **BasePrice** znamená, že máte platnou licenci systému SQL Server, který chcete použít jako součást [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) a chcete platíte jenom náklady na základní infrastruktury.
+- **LicenseIncluded** znamená, že buď nemáte on-premises licenci na SQL Server, nebo nechcete používat vaše místní licence pro database nebo spravované Instance. V takovém případě se zahrnou licenci na SQL Server je ve vyúčtování. 
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Migrace z modelu DTU do modelu virt. jader
 

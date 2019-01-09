@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: e0c50046cd3cdb4db7c9e7e3961124b891b3c0a4
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 44b25263dbeb0d787120ae3a86076b2f888ed46f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019336"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107476"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurace Redis clusteringu pro Azure Cache úrovně Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Tento článek popisuje, jak nakonfigurovat řízení clusterů v Azure Cache úrovně premium pro instanci Redis.
@@ -27,12 +27,12 @@ Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flex
 Informace o dalších prémiových funkcí mezipaměti, naleznete v tématu [Úvod do mezipaměti Azure Redis na úrovni Premium](cache-premium-tier-intro.md).
 
 ## <a name="what-is-redis-cluster"></a>Co je Cluster redis Cache?
-Cluster Redis jako nabízí Azure mezipaměti Redis [implementované v Redis](http://redis.io/topics/cluster-tutorial). S clusterem Redis získáte následující výhody: 
+Cluster Redis jako nabízí Azure mezipaměti Redis [implementované v Redis](https://redis.io/topics/cluster-tutorial). S clusterem Redis získáte následující výhody: 
 
 * Možnost automaticky rozdělí vaši datovou sadu mezi více uzlů. 
 * Možnost pokračovat v operaci při podmnožině uzlů dochází k chybám nebo se nám navázat komunikaci s ostatními členy clusteru. 
-* Větší propustnost: propustnost se lineárně zvyšuje zvýšit počet horizontálních oddílů. 
-* Další velikosti paměti: zvyšuje lineárně zvýšit počet horizontálních oddílů.  
+* Větší propustnost: Propustnost se lineárně zvyšuje, zvýšit počet horizontálních oddílů. 
+* Další velikosti paměti: Zvyšuje lineárně zvýšit počet horizontálních oddílů.  
 
 Clustering nezvyšuje počet připojení, které jsou k dispozici pro clusterové mezipaměti. Další informace o velikosti, propustnosti a šířky pásma u prémiových mezipamětí najdete v tématu [pro velikost a kterou nabídku Redis jaké Azure Cache mám použít?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
@@ -101,7 +101,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy o mezipaměti
 ### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>Je potřeba dělat žádné změny Moje klientská aplikace použít clustering?
 * Pokud je povoleno clustering, je k dispozici pouze databáze 0. Pokud vaše klientská aplikace používá několik databází a pokusu o čtení nebo zápis do jiné databáze než 0, je vyvolána následující výjimka. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
-  Další informace najdete v tématu [specifikaci clusteru Redis - implementované dílčí](http://redis.io/topics/cluster-spec#implemented-subset).
+  Další informace najdete v tématu [specifikaci clusteru Redis - implementované dílčí](https://redis.io/topics/cluster-spec#implemented-subset).
 * Pokud používáte [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/), je nutné použít 1.0.481 nebo novější. Připojení k mezipaměti pomocí stejných [koncových bodů, porty a klíče](cache-configure.md#properties) , který používáte při připojení k mezipaměti, ve kterém není povoleným clusteringem. Jediným rozdílem je, že všechny operace čtení a zápisů je třeba provést pro databázi 0.
   
   * Jiní klienti můžou mít různé požadavky. Zobrazit [všichni klienti Redis nepodporují clustering?](#do-all-redis-clients-support-clustering)
@@ -109,14 +109,14 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy o mezipaměti
 * Pokud používáte zprostředkovatel stavu relací ASP.NET Redis je nutné použít 2.0.1 nebo vyšší. Zobrazit [slouží vytváření clusterů se zprostředkovatele stavu relace ASP.NET Redis a ukládání výstupu do mezipaměti?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Jak se distribuují klíče v clusteru?
-Za Redis [modelu distribučního klíče](http://redis.io/topics/cluster-spec#keys-distribution-model) dokumentaci: klíče místo je rozděleno do 16384 sloty. Každý klíč je mají hodnotu hash a přiřadí k jednomu z těchto slotů, které jsou distribuovány napříč uzly clusteru. Můžete nakonfigurovat, které součástí klíče se po zahašování použije k zajištění, že více klíčů jsou umístěné ve stejném horizontálním oddílu pomocí značek hash.
+Za Redis [modelu distribučního klíče](https://redis.io/topics/cluster-spec#keys-distribution-model) dokumentaci: Klíče místo je rozděleno do 16384 sloty. Každý klíč je mají hodnotu hash a přiřadí k jednomu z těchto slotů, které jsou distribuovány napříč uzly clusteru. Můžete nakonfigurovat, které součástí klíče se po zahašování použije k zajištění, že více klíčů jsou umístěné ve stejném horizontálním oddílu pomocí značek hash.
 
-* Klíče hash značkou – libovolná součást klíč je uzavřen do `{` a `}`, pouze tuto část klíče se po zahašování použije pro účely stanovení slotu hash klíče. Například následující 3 klíče by nacházet ve stejném horizontálním oddílu: `{key}1`, `{key}2`, a `{key}3` protože pouze `key` se po zahašování použije část názvu. Úplný seznam klíčů hash značky specifikace, naleznete v tématu [klíče hash značky](http://redis.io/topics/cluster-spec#keys-hash-tags).
+* Klíče hash značkou – libovolná součást klíč je uzavřen do `{` a `}`, pouze tuto část klíče se po zahašování použije pro účely stanovení slotu hash klíče. Například následující 3 klíče by nacházet ve stejném horizontálním oddílu: `{key}1`, `{key}2`, a `{key}3` protože pouze `key` se po zahašování použije část názvu. Úplný seznam klíčů hash značky specifikace, naleznete v tématu [klíče hash značky](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Klíče bez značky hash - celý název klíče se používá k výpočtu hodnoty hash. Výsledkem je statisticky rovnoměrná distribuce napříč horizontálními oddíly mezipaměti.
 
 Pro nejlepší výkon a propustnosti doporučujeme rovnoměrně distribuovat klíče. Pokud používáte klíče jsou rovnoměrně distribuovaných zodpovídá aplikace zajistit klíče hash značku.
 
-Další informace najdete v tématu [modelu distribučního klíče](http://redis.io/topics/cluster-spec#keys-distribution-model), [horizontální dělení dat Redis Cluster](http://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding), a [klíče hash značky](http://redis.io/topics/cluster-spec#keys-hash-tags).
+Další informace najdete v tématu [modelu distribučního klíče](https://redis.io/topics/cluster-spec#keys-distribution-model), [horizontální dělení dat Redis Cluster](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding), a [klíče hash značky](https://redis.io/topics/cluster-spec#keys-hash-tags).
 
 Ukázkový kód pro práci s clustering a nalezení klíče ve stejném horizontálním oddílu s klient StackExchange.Redis, najdete v článku [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) část [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) vzorku.
 
@@ -124,7 +124,7 @@ Ukázkový kód pro práci s clustering a nalezení klíče ve stejném horizont
 Maximální velikost mezipaměti úrovně premium je 53 GB. Můžete vytvořit až 10 horizontálními oddíly, získáte tak maximální velikost 530 GB. Pokud potřebujete větší velikost můžete [požádat o další](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Další informace najdete v tématu [mezipaměti Azure redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/).
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Všichni klienti Redis podporují clustering?
-V současné době není veškerou podporu klientů Redis, clustering. StackExchange.Redis je ten, který podporuje pro něj. Další informace o jiných klientů najdete v článku [přehrávání s clusterem](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) část [kurzu ke clusteru Redis](http://redis.io/topics/cluster-tutorial). 
+V současné době není veškerou podporu klientů Redis, clustering. StackExchange.Redis je ten, který podporuje pro něj. Další informace o jiných klientů najdete v článku [přehrávání s clusterem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) část [kurzu ke clusteru Redis](https://redis.io/topics/cluster-tutorial). 
 
 Protokol clusteringu Redis vyžaduje každého klienta pro připojení k každý horizontální oddíl v režimu clusteru. Pokus o použití klienta, který nepodporuje clusteringu pravděpodobně bude mít v spoustu [PŘESUNUTÍ přesměrování výjimky](https://redis.io/topics/cluster-spec#moved-redirection).
 
@@ -137,7 +137,7 @@ Protokol clusteringu Redis vyžaduje každého klienta pro připojení k každý
 Můžete se připojit k mezipaměti pomocí stejných [koncové body](cache-configure.md#properties), [porty](cache-configure.md#properties), a [klíče](cache-configure.md#access-keys) , který používáte při připojení k mezipaměti, ve kterém není povoleným clusteringem. Redis spravuje clustering pro back-endu, takže není nutné spravovat z vašeho klienta.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Můžu přímo se připojit do jednotlivých horizontálních oddílů Moje mezipaměti?
-Clusteringu protokol vyžaduje, aby klient připojení správné horizontálních oddílů. Proto klienta by měl udělat správně za vás. To ale nutné dodat každý horizontální oddíl se skládá z dvojice primární/replika mezipaměti, souhrnně označované jako instanci mezipaměti. Můžete se připojit k tyto instance mezipaměti pomocí nástroje rozhraní příkazového řádku redis v [nestabilní](http://redis.io/download) větev úložiště Redis v Githubu. Implementuje základní podpory při spuštění s touto verzí `-c` přepnout. Další informace najdete v části [přehrávání s clusterem](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [ http://redis.io ](http://redis.io) v [kurzu ke clusteru Redis](http://redis.io/topics/cluster-tutorial).
+Clusteringu protokol vyžaduje, aby klient připojení správné horizontálních oddílů. Proto klienta by měl udělat správně za vás. To ale nutné dodat každý horizontální oddíl se skládá z dvojice primární/replika mezipaměti, souhrnně označované jako instanci mezipaměti. Můžete se připojit k tyto instance mezipaměti pomocí nástroje rozhraní příkazového řádku redis v [nestabilní](https://redis.io/download) větev úložiště Redis v Githubu. Implementuje základní podpory při spuštění s touto verzí `-c` přepnout. Další informace najdete v části [přehrávání s clusterem](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [ https://redis.io ](https://redis.io) v [kurzu ke clusteru Redis](https://redis.io/topics/cluster-tutorial).
 
 Bez ssl použijte následující příkazy.
 

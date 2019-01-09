@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 14c21db9e1da23e97815953937f434fe7f25e354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c6d373fd294645605815d8a8d380259982d90e7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725316"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118179"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy Azure provozní zabezpečení
 Azure operational security odkazuje na služby, ovládací prvky a funkce, které jsou dostupné pro uživatele k ochraně svých dat, aplikací a dalších prostředků v Azure. Provozní zabezpečení Azure je založen na rozhraní, která zahrnuje poznatky získané díky funkcím, které jsou jedinečné pro Microsoft, včetně [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl), [Microsoft Security Response Center](https://www.microsoft.com/msrc?rtc=1) programu a hloubkové povědomí o zabezpečení.
@@ -87,7 +87,7 @@ Můžete použít [Azure Resource Manageru](https://azure.microsoft.com/document
 - Ujistěte se, že vaše aplikace dokáže zpracovat provoz pro další spuštění nebo marketingové kampani.
 
 **Osvědčený postup**: Monitorování výkonu aplikací.  
-**Podrobnosti o**: [Azure Application Insights](../application-insights/app-insights-overview.md) je služby extensible application performance management (APM) pro webovým vývojářům na více platforem. Monitorování živé webové aplikace pomocí Application Insights. Automaticky zjišťuje anomálie výkonu. Zahrnuje analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé dělají s vaší aplikací. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
+**Podrobnosti o**: [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) je služby extensible application performance management (APM) pro webovým vývojářům na více platforem. Monitorování živé webové aplikace pomocí Application Insights. Automaticky zjišťuje anomálie výkonu. Zahrnuje analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé dělají s vaší aplikací. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>Omezení rizik a chránit proti před útoky DDoS
 Distribuované s cílem odepření služeb (DDoS) je typ útoku, který se pokouší vyčerpání prostředků aplikace. Cílem je mít vliv na dostupnost vaší aplikace a její schopnost zpracovávat oprávněné požadavky. Tyto útoky se stávají propracované a větší velikost a dopad. Můžete ji cílit na libovolný koncový bod, který je veřejně dostupný prostřednictvím Internetu.

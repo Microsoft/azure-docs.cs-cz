@@ -13,22 +13,22 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 6d8570c78fcf28a236374579a9cb85c7c27f6ec8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076973"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118519"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
-Které funkce vašich webových nebo mobilních aplikací jsou nejoblíbenější? Vaši uživatelé dosáhli svých cílů s vaší aplikací? Odešli na konkrétní body a vrátit později?  [Azure Application Insights](../../application-insights/app-insights-overview.md) umožňuje okamžitý přehled o tom, jak ostatní využívají vaše aplikace. Při každé aktualizaci aplikace můžete vyhodnotit, jak dobře funguje pro uživatele. Tyto znalosti dokážete na základě rozhodnutí o další vývojové cykly dat.
+Které funkce vašich webových nebo mobilních aplikací jsou nejoblíbenější? Vaši uživatelé dosáhli svých cílů s vaší aplikací? Odešli na konkrétní body a vrátit později?  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) umožňuje okamžitý přehled o tom, jak ostatní využívají vaše aplikace. Při každé aktualizaci aplikace můžete vyhodnotit, jak dobře funguje pro uživatele. Tyto znalosti dokážete na základě rozhodnutí o další vývojové cykly dat.
 
 ## <a name="send-telemetry-from-your-app"></a>Odesílání telemetrie z vaší aplikace
 
 Dosažení co nejlepších výsledků je získat nainstalováním služby Application Insights v kódu serveru vaší aplikace a na webových stránkách. Klientské a serverové komponenty vaší aplikace odesílat telemetrii zpět na webu Azure portal pro analýzu.
 
-1. **Kód serveru:** Nainstalujte příslušný modul pro vaše [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../application-insights/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), nebo [jiných](../../azure-monitor/app/platforms.md) aplikace.
+1. **Kód serveru:** Nainstalujte příslušný modul pro vaše [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), nebo [jiných](../../azure-monitor/app/platforms.md) aplikace.
 
     * *Nechcete, aby instalace serveru kód? Právě [vytvoří prostředek služby Azure Application Insights](../../azure-monitor/app/create-new-resource.md ).*
 

@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/21/2016
+ms.date: 01/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c906f313ae367fcc660d1ce1df0b3d667c7f04a3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016100"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119268"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Export datového modelu
-V této tabulce jsou uvedeny vlastnosti objektu telemetrická data odesílaná z [Application Insights](../../application-insights/app-insights-overview.md) sady SDK k portálu.
+V této tabulce jsou uvedeny vlastnosti objektu telemetrická data odesílaná z [Application Insights](../../azure-monitor/app/app-insights-overview.md) sady SDK k portálu.
 Zobrazí se vám tyto vlastnosti v datovým výstupem z [průběžný Export](export-telemetry.md).
 Jsou také uvedeny v filtry vlastností v [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) a [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md).
 
@@ -130,9 +130,11 @@ Všechny typy telemetrie doplňují oddíl kontextu. Všechna tato pole jsou př
 | Context.Device.Locale |řetězec |de-DE, en-GB... |
 | Context.Device.Network |řetězec | |
 | context.device.oemName |řetězec | |
+| Context.Device.OS |řetězec | |
 | context.device.osVersion |řetězec |Hostitelský operační systém |
 | context.device.roleInstance |řetězec |ID hostitelského serveru |
 | context.device.roleName |řetězec | |
+| context.device.screenResolution |řetězec | |
 | Context.Device.Type |řetězec |Počítač, prohlížeč... |
 | Context.Location |objekt |Odvozený od clientip. |
 | Context.location.City |řetězec |Odvozený od clientip, pokud jsou známé |
@@ -146,10 +148,13 @@ Všechny typy telemetrie doplňují oddíl kontextu. Všechna tato pole jsou př
 | Context.Session.ID |řetězec |ID skupiny operací z jednoho zdroje. 30 minut bez operace signalizuje ukončení relace. |
 | context.session.isFirst |Boolean | |
 | context.user.accountAcquisitionDate |řetězec | |
+| context.user.accountId |řetězec | |
 | context.user.anonAcquisitionDate |řetězec | |
 | context.user.anonId |řetězec | |
 | context.user.authAcquisitionDate |řetězec |[Ověřený uživatel](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |řetězec | |
 | context.user.isAuthenticated |Boolean | |
+| context.user.storeRegion |řetězec | |
 | internal.data.documentVersion |řetězec | |
 | internal.data.ID |řetězec | Jedinečný identifikátor, který je přidělen položky se ingestuje do služby Application Insights |
 
@@ -347,6 +352,6 @@ Namísto předem agregovat metriky, můžete použít [vzorkování](../../azure
 Pokud není uvedeno jinak, jinak jsou reprezentovány doby trvání v desetiny úrovni mikrosekund tak, aby 10000000.0 znamená, že jedna sekunda.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Application Insights](../../application-insights/app-insights-overview.md)
+* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [Průběžný Export.](export-telemetry.md)
 * [Ukázky kódu](export-telemetry.md#code-samples)

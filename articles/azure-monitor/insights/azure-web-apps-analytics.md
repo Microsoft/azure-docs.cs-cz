@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 57cc1d25f38c1aec7495a3ea542a7b467829dc41
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1ebe0b9d3cbe14bf35e05db3349a5aebb11b5716
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184708"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120100"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Zobrazení analytických dat pro metriky ve všech prostředcích Azure Web App
 
@@ -28,4 +28,4 @@ ms.locfileid: "53184708"
 > Řešení Azure Web App Analytics byla přesunuta do podpory prostřednictvím komunity.  
 >- Řešení už nejsou k dispozici z webu Azure Marketplace, ale můžete ji nainstalovat z [šablon rychlého startu Azure](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) kde je podporován komunitou.
 >- Zákazníci, kteří už jste nainstalovali řešení můžete nadále používat ji se změnami.  
->- Microsoft doporučuje, abyste použili [Application Insights](../../application-insights/app-insights-overview.md) monitorování webových aplikací.
+>- Microsoft doporučuje, abyste použili [Application Insights](../../azure-monitor/app/app-insights-overview.md) monitorování webových aplikací.

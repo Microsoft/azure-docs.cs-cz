@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 06a9cf124708984444bc2bc19f2529a3c0f75283
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4115ec5add9ac523852b4c60c4f9d750bc430a37
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074355"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121443"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Zkoumat data HockeyApp v Application Insights
 
 > [!NOTE]
 > HockeyApp už nejsou k dispozici pro nové aplikace. Stávající nasazení HockeyApp budou nadále fungovat. Visual Studio App Center je teď doporučená služba od Microsoftu pro monitorování nových mobilních aplikací. [Další informace o nastavení aplikace pomocí App Center a Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
 
-[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) je služba pro sledování živého desktopových a mobilních aplikací. Z HockeyApp můžete odeslat vlastní a sledovat telemetrii ke sledování využití a pomoct s diagnostikou (navíc k získávání dat o chybách). Tento datový proud telemetrických dat může být dotázán pomocí výkonný [Analytics](../../azure-monitor/app/analytics.md) funkce [Azure Application Insights](../../application-insights/app-insights-overview.md). Kromě toho můžete [exportovat vlastní a sledovat telemetrii](export-telemetry.md). Pokud chcete povolit tyto funkce, nastavení mostu, který předává HockeyApp vlastních dat do Application Insights.
+[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) je služba pro sledování živého desktopových a mobilních aplikací. Z HockeyApp můžete odeslat vlastní a sledovat telemetrii ke sledování využití a pomoct s diagnostikou (navíc k získávání dat o chybách). Tento datový proud telemetrických dat může být dotázán pomocí výkonný [Analytics](../../azure-monitor/app/analytics.md) funkce [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Kromě toho můžete [exportovat vlastní a sledovat telemetrii](export-telemetry.md). Pokud chcete povolit tyto funkce, nastavení mostu, který předává HockeyApp vlastních dat do Application Insights.
 
 ## <a name="the-hockeyapp-bridge-app"></a>Aplikace HockeyApp Bridge
 Aplikace HockeyApp Bridge je základní funkce, která umožňuje přístup k vlastní HockeyApp a telemetrická data trasování v Application Insights prostřednictvím funkce analýzu a průběžný Export. Vlastní a trasování událostí shromážděných za HockeyApp po vytvoření aplikace HockeyApp Bridge bude přístupné z těchto funkcí. Podívejme se na tom, jak nastavit jednu z těchto aplikací mostu.

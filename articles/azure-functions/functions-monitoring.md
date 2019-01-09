@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 62ee1c880987d0f9ad358f1a0d31af4a73263725
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d0c24fbd749a344d9041e9c50c34e6e58ab8fd38
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017969"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121218"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
-[Služba Azure Functions](functions-overview.md) nabízí integrovanou integraci s [Azure Application Insights](../application-insights/app-insights-overview.md) pro monitorovacích funkcí. Tento článek ukazuje postup při konfiguraci funkcí pro systémem generované soubory protokolu posílat do Application Insights.
+[Služba Azure Functions](functions-overview.md) nabízí integrovanou integraci s [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) pro monitorovacích funkcí. Tento článek ukazuje postup při konfiguraci funkcí pro systémem generované soubory protokolu posílat do Application Insights.
 
 ![Průzkumník metrik Application Insights](media/functions-monitoring/metrics-explorer.png)
 
@@ -121,7 +121,7 @@ V [Průzkumníka metrik](../azure-monitor/app/metrics-explorer.md), můžete vyt
 
 Na [selhání](../azure-monitor/app/asp-net-exceptions.md) kartu, můžete vytvořit grafy a výstrah na základě selhání funkce a server výjimky. **Název operace** je název funkce. Selhání v závislosti se nezobrazují, Pokud implementujete [vlastní telemetrii](#custom-telemetry-in-c-functions) pro závislosti.
 
-![Počet selhání](media/functions-monitoring/failures.png)
+![Selhání](media/functions-monitoring/failures.png)
 
 Na [výkonu](../azure-monitor/app/performance-counters.md) kartu, můžete analyzovat problémy s výkonem.
 
@@ -414,7 +414,7 @@ Tady je ukázka JSON s reprezentací provedených `customDimensions` dat:
 Ve skriptu funkcí jazyka C#, můžete použít `LogMetric` rozšiřující metody na `ILogger` vytvořit vlastní metriky v Application Insights. Tady je ukázka volání metody:
 
 ```csharp
-logger.LogMetric("TestMetric", 1234); 
+logger.LogMetric("TestMetric", 1234);
 ```
 
 Tento kód se o alternativu k volání `TrackMetric` pomocí [rozhraní API Application Insights pro .NET](#custom-telemetry-in-c-functions).
@@ -429,10 +429,10 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="logging-custom-metrics"></a>Protokolování vlastních metrik  
 
-Ve funkcích Node.js, můžete použít `context.log.metric` metodu pro vytvoření vlastní metriky v Application Insights. Tady je ukázka volání metody:
+Při spuštění na [verzi 1.x](functions-versions.md#creating-1x-apps) modul runtime služby Functions, pomocí funkce Node.js `context.log.metric` metodu pro vytvoření vlastní metriky v Application Insights. Tato metoda není podporována aktuálně ve verzi 2.x. Tady je ukázka volání metody:
 
 ```javascript
-context.log.metric("TestMetric", 1234); 
+context.log.metric("TestMetric", 1234);
 ```
 
 Tento kód se o alternativu k volání `trackMetric` pomocí [sady Node.js SDK pro Application Insights](#custom-telemetry-in-javascript-functions).

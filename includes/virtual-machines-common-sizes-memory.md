@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dc78c8794923a180264058fc984a58aa29171c58
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b992947245175803f8f2f8c6a5aba70fe13bde2c
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978721"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084017"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -30,16 +30,16 @@ Paměťově optimalizované velikosti nabídky virtuálních počítačů vysok�
 
 ## <a name="esv3-series"></a>Esv3-series 
 
-ACU: 160-190 <sup>1</sup>
+ACU: 160 190 <sup>1</sup>
 
-Storage úrovně Premium: podporováno
+Premium Storage:  Podporováno
 
-Ukládání do mezipaměti služby Premium Storage: podporováno
+Premium Storage ukládání do mezipaměti:  Podporováno
 
 Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell), jejichž frekvence se s technologií Intel Turbo Boost 2.0 může zvýšit až na 3,5 GHz, a používají službu Premium Storage. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
 
-| Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standard_E2s_v3 | 2      | 16          | 32             | 4              | 4 000 / 32 (50)                                                       | 3 200 / 48                                | 2 / 1,000                                   |
 | Standard_E4s_v3&nbsp;<sup>2</sup> | 4      | 32          | 64             | 8              | 8 000 / 64 (100)                                                      | 6 400 / 96                                | 2 / 2,000                                   |
@@ -60,11 +60,11 @@ Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-267
 
 ## <a name="ev3-series"></a>Ev3-series 
 
-ACU: 160-190 <sup>1</sup>
+ACU: 160 - 190 <sup>1</sup>
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
 Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) a s technologií Intel Turbo Boost 2.0 se jejich frekvence může zvýšit až na 3,5 GHz. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
@@ -91,15 +91,15 @@ Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673
 
 ## <a name="m-series"></a>M-Series 
 
-ACU: 160 – 180 <sup>1</sup>
+ACU: 160 180 <sup>1</sup>
 
-Storage úrovně Premium: podporováno
+Premium Storage:  Podporováno
 
-Ukládání do mezipaměti služby Premium Storage: podporováno
+Premium Storage ukládání do mezipaměti:  Podporováno
 
-Akcelerátor zápisu: [podporována](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Akcelerátor zápisu:  [Podporuje se](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-| Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
 | Typu Standard_M8ms&nbsp;<sup>3</sup>    | 8  | 218.75 | 256  | 8  | 10 000 nebo 100 (793)  | 5 000 / 125 | 4 / 2000 |
 | Typu Standard_M16ms&nbsp;<sup>3</sup>   | 16 | 437.5  | 512  | 16 | 20 000 / 200 (1,587) | 10 000 / 250 | 8 / 4 000 |
@@ -109,7 +109,7 @@ Akcelerátor zápisu: [podporována](https://docs.microsoft.com/azure/virtual-ma
 | Standard_M64s  | 64 | 1,024   | 2 048 | 64 | 80,000 / 800 (6,348)| 40 000 / 1 000 | 8 / 16,000          |
 | Typu Standard_M64ls  | 64 | 512    | 2 048 | 64 | 80,000 / 800 (6,348) | 40 000 / 1 000 | 8 / 16,000 |
 | Standard_M64ms&nbsp;<sup>3</sup>  | 64   | 1,792 | 2 048 | 64 | 80,000 / 800 (6,348)| 40 000 / 1 000 | 8 / 16,000          |
-| Standard_M128s&nbsp;<sup>2,&nbsp;3</sup> | 128  | 2 048        | 4 096  | 64 | 160 000 / 1 600 (12 696) | 80 000 / 2 000                            | 8 / 30,000          |
+| Standard_M128s&nbsp;<sup>2</sup> | 128  | 2 048        | 4 096  | 64 | 160 000 / 1 600 (12 696) | 80 000 / 2 000                            | 8 / 30,000          |
 | Standard_M128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3,892  | 4 096 | 64 | 160 000 / 1 600 (12 696) | 80 000 / 2 000                            | 8 / 30,000          |
 | Standard_M64   | 64  | 1,024 | 7,168  | 64 | 80,000 / 800 (1,228) | 40 000 / 1 000 | 8 / 16,000 |
 | Standard_M64m  | 64  | 1,792 | 7,168  | 64 | 80,000 / 800 (1,228) | 40 000 / 1 000 | 8 / 16,000 |
@@ -129,13 +129,13 @@ Akcelerátor zápisu: [podporována](https://docs.microsoft.com/azure/virtual-ma
 
 ## <a name="gs-series"></a>Řada GS 
 
-ACU: 180-240 <sup>1</sup>
+ACU: 180 - 240 <sup>1</sup>
 
-Storage úrovně Premium: podporováno
+Premium Storage:  Podporováno
 
-Ukládání do mezipaměti služby Premium Storage: podporováno
+Premium Storage ukládání do mezipaměti:  Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_GS1 |2 |28 |56 |8 |10 000 / 100 (264) |5 000 / 125 |2 / 2 000 |
 | Standard_GS2 |4 |56 |112 |16 |20 000 / 200 (528) |10 000 / 250 |2 / 4 000 |
@@ -143,7 +143,7 @@ Ukládání do mezipaměti služby Premium Storage: podporováno
 | Standard_GS4&nbsp;<sup>3</sup> |16 |224 |448 |64 |80 000 / 800 (2 112) |40 000 / 1 000 |8 / 16 000 |
 | Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> |32 |448 |896 |64 |160 000 / 1 600 (4 224) |80 000 / 2 000 |8 / 20 000 |
 
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se GS-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md). 
+<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se GS-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md). 
 
 <sup>2</sup> instance je izolovaná na hardware vyhrazený pro jediného zákazníka.
 
@@ -153,13 +153,13 @@ Ukládání do mezipaměti služby Premium Storage: podporováno
 
 ## <a name="g-series"></a>G-series
 
-ACU: 180–240
+ACU: 180 - 240
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
-| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 8 / 8 × 500                       | 2 / 2 000                     |
 | Standard_G2  | 4         | 56          | 768            | 12000 / 187 / 93                                         | 16 / 16 × 500                       | 2 / 4 000                     |
@@ -175,11 +175,11 @@ Premium Storage ukládání do mezipaměti: Není podporováno
 
 ACU: 210 – 250 <sup>1</sup>
 
-Storage úrovně Premium: podporováno
+Premium Storage:  Podporováno
 
-Ukládání do mezipaměti služby Premium Storage: podporováno
+Premium Storage ukládání do mezipaměti:  Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2&nbsp;<sup>3</sup> |2 |14 |28 |8 |8 000 / 64 (72) |6 400 / 96 |2 / 1 500 |
 | Standard_DS12_v2&nbsp;<sup>3</sup> |4 |28 |56 |16 |16 000 / 128 (144) |12 800 / 192 |4 / 3 000 |
@@ -188,7 +188,7 @@ Ukládání do mezipaměti služby Premium Storage: podporováno
 | Standard_DS15_v2&nbsp;<sup>2</sup> |20 |140 |280 |64 |80 000 / 640 (720) |64 000 / 960 |8 / 25000&nbsp;<sup>4</sup>
 
 
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se DSv2-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
+<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se DSv2-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md).
 
 <sup>2</sup> instance je izolovaná na hardware vyhrazený pro jediného zákazníka.
 
@@ -200,13 +200,13 @@ Ukládání do mezipaměti služby Premium Storage: podporováno
 
 ## <a name="dv2-series-11-15"></a>Řady Dv2-series 11-15
 
-ACU: 210–250
+ACU: 210 – 250
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
-| Velikost              | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost              | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11_v2   | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 500                     |
 | Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 3 000                     |

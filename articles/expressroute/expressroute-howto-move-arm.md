@@ -1,19 +1,19 @@
 ---
-title: 'Přesun okruhů z modelu nasazení classic do Resource Manageru – ExpressRoute: prostředí PowerShell: Azure | Dokumentace Microsoftu'
+title: 'Přesun okruhů z klasické na Resource Manager – ExpressRoute: PowerShell: Azure | Dokumentace Microsoftu'
 description: Tato stránka popisuje přesun okruhu klasického modelu nasazení Resource Manageru pomocí Powershellu.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/07/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: fae5ad4a9045115c0e7a68b0164593f639824073
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 984ccfa9bad99281418ba891ce188536ae13d8e5
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141488"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106762"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Přesun okruhů ExpressRoute z klasického modelu nasazení Resource Manageru pomocí Powershellu
 
@@ -29,7 +29,7 @@ Pro účely okruhu ExpressRoute i klasické modely nasazení a modely nasazení 
 
 ## <a name="move-an-expressroute-circuit"></a>Přesun okruhu ExpressRoute
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Krok 1: Shromáždění podrobností okruhu z modelu nasazení classic
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Krok 1: Shromažďování podrobností okruhu z modelu nasazení classic
 
 Přihlaste se k prostředí Azure classic a získat klíč služby.
 
@@ -48,8 +48,8 @@ Přihlaste se k prostředí Azure classic a získat klíč služby.
 3. Importujte další moduly Powershellu pro Azure a ExpressRoute.
 
   ```powershell
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
+  Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+  Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
   ```
 
 4. Použijte následující rutinu se získat klíče služby u všech okruhů ExpressRoute. Po načtení klíčů, zkopírujte **klíč služby** okruhu, který chcete přesunout do modelu nasazení Resource Manager.
@@ -80,7 +80,7 @@ Přihlaste se k Resource Manageru prostředí a vytvořit novou skupinu prostře
   New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
   ```
 
-### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: Přesunutí okruhu ExpressRoute do modelu nasazení Resource Manageru
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: Přesun okruhu ExpressRoute do modelu nasazení Resource Manageru
 
 Nyní jste připraveni na přesun okruhů ExpressRoute z modelu nasazení classic do modelu nasazení Resource Manageru. Než budete pokračovat, přečtěte si informace uvedené v [přesun okruhu ExpressRoute z klasického modelu nasazení Resource Manageru](expressroute-move.md).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9aa77caa690bfb51dd0e5d43e15d246614f1cc71
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 8536cce8de79f396b5d60058dd41f733d2627c87
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050179"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119131"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafy metrik ve službě Application Insights
 
@@ -46,7 +46,7 @@ Stačí provést jednou pro organizaci služeb Azure DevOps. Poznámky k verzi l
 
 Je nutné získat samostatný klíč rozhraní API pro každé šablony vydané verze služby Azure DevOps.
 
-1. Přihlaste se k [Microsoft Azure Portal](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaše aplikace. (Nebo [založte si ho teď](../../application-insights/app-insights-overview.md), pokud jste tak ještě neučinili.)
+1. Přihlaste se k [Microsoft Azure Portal](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaše aplikace. (Nebo [založte si ho teď](../../azure-monitor/app/app-insights-overview.md), pokud jste tak ještě neučinili.)
 2. Otevřít **přístup přes rozhraní API**, **Id aplikace Insights**.
    
     ![Na stránce portal.azure.com otevřete prostředek Application Insights a vyberte nastavení. Otevřete přístup přes rozhraní API. Zkopírujte ID aplikace](./media/annotations/20.png)

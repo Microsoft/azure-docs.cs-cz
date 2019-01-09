@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 21e5642f738fa1c90e22422e204d9a04d968f072
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c96899fc46cd9cf6377894de773785dac14f3345
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075460"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121562"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -69,7 +69,7 @@ Pokud ukládáte cenná data, musíte provést několik kroků. Informace o zabe
 - Poskytuje standardní možnosti správy Azure prostřednictvím portálu, Azure CLI nebo PowerShellu.
 - Automatizuje určité úlohy prováděné s certifikáty, které jste zakoupili od veřejných certifikačních autorit, třeba jejich registraci a obnovení.
 
-Kromě toho trezory klíčů Azure umožňují oddělení tajných klíčů aplikací. Aplikace můžou přistupovat pouze k trezoru, ke kterému mají povolený přístup, a provádět pouze určité operace. Službu Azure Key Vault můžete vytvořit pro jednotlivé aplikace a omezit přístup k tajným klíčům uloženým ve službě Key Vault na konkrétní aplikaci a tým vývojářů.
+Kromě toho trezory klíčů Azure umožňují oddělení tajných klíčů aplikací. Aplikace můžou přistupovat pouze k trezoru, můžou získat přístup, a je možné provádět pouze určité operace. Službu Azure Key Vault můžete vytvořit pro jednotlivé aplikace a omezit přístup k tajným klíčům uloženým ve službě Key Vault na konkrétní aplikaci a tým vývojářů.
 
 ### <a name="integrate-with-other-azure-services"></a>Integrace s ostatními službami Azure
 

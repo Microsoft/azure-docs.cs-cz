@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: 901e12e989bb5a6f18c79e086357624648b1b7b9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028216"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117652"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
-[Application Insights](../../application-insights/app-insights-overview.md) automaticky upozorní téměř v reálném čase, zda prostředích vašich webových aplikací neobvykle zvýší počet neúspěšných žádostí. Zjistí neobvyklý nárůst míry požadavků protokolu HTTP nebo volání závislostí, které se ohlásí jako neúspěšný. Pro požadavků neúspěšných požadavků jsou obvykle s kódy odpovědí 400 nebo vyšší. Umožňují posuzovat a diagnostikovat potíže, analýzu povaze chyby a související telemetrii najdete v oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Funkce potřebuje žádné instalace ani konfigurace, protože používá algoritmy strojového učení k předpovědi normální míra neúspěchů.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) automaticky upozorní téměř v reálném čase, zda prostředích vašich webových aplikací neobvykle zvýší počet neúspěšných žádostí. Zjistí neobvyklý nárůst míry požadavků protokolu HTTP nebo volání závislostí, které se ohlásí jako neúspěšný. Pro požadavků neúspěšných požadavků jsou obvykle s kódy odpovědí 400 nebo vyšší. Umožňují posuzovat a diagnostikovat potíže, analýzu povaze chyby a související telemetrii najdete v oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Funkce potřebuje žádné instalace ani konfigurace, protože používá algoritmy strojového učení k předpovědi normální míra neúspěchů.
 
 Tato funkce funguje pro jazyk Java a ASP.NET webových aplikací hostovaných v cloudu nebo na vašich vlastních serverech. Funguje i pro každou aplikaci, která generuje telemetrická data požadavku nebo závislost – například pokud máte role pracovního procesu, která volá [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) nebo [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
 
-Po nastavení [Application Insights pro váš projekt](../../application-insights/app-insights-overview.md), a pokud vaše aplikace generuje určité minimální množství telemetrických dat, inteligentní detekci anomálií selhání trvá další normálního chování aplikace, než bude 24 hodin Přepnout a odesílání oznámení.
+Po nastavení [Application Insights pro váš projekt](../../azure-monitor/app/app-insights-overview.md), a pokud vaše aplikace generuje určité minimální množství telemetrických dat, inteligentní detekci anomálií selhání trvá další normálního chování aplikace, než bude 24 hodin Přepnout a odesílání oznámení.
 
 Tady je ukázka upozornění.
 

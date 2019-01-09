@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 01/08/2019
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820354"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119046"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží ve službě Azure Container Instances
 
@@ -24,13 +24,13 @@ Tento článek ukazuje, jak řešení běžných potíží pro řízení a nasaz
 
 Při definování vašeho kontejneru specifikace, vyžadují některé parametry dodržování omezení pojmenování. Níže je tabulka s konkrétní požadavky pro kontejner vlastnosti skupiny. Další informace o vytváření názvů Azure najdete v tématu [zásady vytváření názvů] [ azure-name-restrictions] v Azure Architecture Center.
 
-| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný model | Příklad |
+| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný model | Příklad: |
 | --- | --- | --- | --- | --- | --- | --- |
 | Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Porty kontejneru | Mezi 1 a 65535. |Celočíselná hodnota |Celé číslo mezi 1 a 65535. |`<port-number>` |`443` |
+| Porty kontejneru | Mezi 1 a 65535. |Integer |Celé číslo mezi 1 a 65535. |`<port-number>` |`443` |
 | Popisek názvu DNS | 5 63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>` |`frontend-site1` |
-| Proměnná prostředí | 1-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a kdekoli s výjimkou první ani poslední znak podtržítka (_) |`<name>` |`MY_VARIABLE` |
+| Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a kdekoli s výjimkou první ani poslední znak podtržítka (_) |`<name>` |`MY_VARIABLE` |
 | Název svazku | 5 63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a spojovníky kdekoli s výjimkou první ani poslední znak. Nesmí obsahovat dvě po sobě jdoucí pomlčky. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>Verze operačního systému z bitové kopie není podporována
@@ -48,7 +48,7 @@ Pokud zadáte bitovou kopii, která nepodporuje Azure Container Instances, `OsVe
 
 K této chybě nejčastěji dochází při nasazení Image Windows, které jsou založeny na půlroční kanál (SAC) verze. Například Windows verze 1709 a 1803 jsou SAC verze a generování této chyby při nasazování.
 
-Služba Azure Container Instances podporuje pouze na základě dlouhodobé údržby kanálu (LTSC) verze Image Windows. Chcete-li tento problém zmírnit, při nasazování kontejnerů Windows, vždy nasazení na základě LTSC imagí.
+Služba Azure Container Instances v současné době podporuje pouze na základě Image Windows **systému Windows Server 2016 dlouhodobé údržby kanálu (LTSC)** release. Chcete-li tento problém zmírnit, při nasazování kontejnerů Windows, vždy nasazení založené na Windows serveru 2016 LTSC imagí. Imagí založených na Windows serveru. 2019 (LTSC) nejsou podporovány.
 
 Podrobnosti o LTSC a SAC verzích Windows najdete v tématu [přehled Windows serveru prostřednictvím půlročního kanálu][windows-sac-overview].
 

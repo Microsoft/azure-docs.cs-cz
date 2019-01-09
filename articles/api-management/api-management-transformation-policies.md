@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 87d2ebcf6a12f51775b15e906ea7813962e3630f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3a8b0ecefe9e314e8056c941c9ef4ce32d1cbb75
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965372"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119369"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -318,7 +318,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 </set-body>
 ```
 
-#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Příklad přístup k textu jako JObject. Všimněte si, že přepínač, protože jsme se rezervace původní text požadavku accesing ho později v kanálu způsobí výjimku.
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Příklad přístup k textu jako JObject. Mějte na paměti, protože jsme se rezervace původní text požadavku přístup později v kanálu způsobí výjimku.
 
 ```xml
 <set-body> 

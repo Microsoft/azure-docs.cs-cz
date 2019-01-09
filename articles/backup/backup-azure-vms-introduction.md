@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: ebb8d5d141dab39e73297342907d4439b30a9fbf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042474"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107425"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -30,7 +30,7 @@ Zde je, jak Azure Backup dokončení zálohování pro virtuální počítače A
     - Rozšíření se nainstaluje při prvním zálohování virtuálního počítače.
     - K instalaci rozšíření, musí být virtuální počítač spuštěný.
     - Pokud virtuální počítač není spuštěný, služba Backup pořídí snímek základního úložiště (protože aplikace neprovádí žádné zápisy, když je virtuální počítač zastavený).
-4. Rozšíření zálohování pořídí snímek úroveň úložiště, konzistentní.
+4. Rozšíření zálohování pořídí snímek konzistentní vzhledem k aplikacím/konzistentní při selhání úroveň úložiště.
 5. Po pořízení snímku data se přenesou do trezoru. Pro maximalizaci efektivity služba identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování (rozdílového).
 5. Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 

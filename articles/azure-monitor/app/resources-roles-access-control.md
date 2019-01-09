@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: cb63b2490731aa00efb683e002768bf390d36045
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 023f0e560900aa582be1f28e553358adb0c87b1e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028246"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118468"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu ve službě Application Insights
 
@@ -119,4 +119,4 @@ Pokud uživatel, kterého chcete, aby se v adresáři, můžete pozvat kdokoli s
 [account]: https://account.microsoft.com
 [group]: ../../azure-resource-manager/resource-group-overview.md
 [portal]: https://portal.azure.com/
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md

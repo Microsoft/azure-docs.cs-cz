@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 09/01/2016
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: f882cc9414f5230a6d0e74afd602bdaa1b779941
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0aee18115f34c86e84054f1aeddcc99d563f5f64
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073930"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116513"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Developer Analytics: jazyky, platformy a integrace
-Tyto položky jsou implementace [Application Insights](../../application-insights/app-insights-overview.md), o kterých jsme se dozvěděli. Zahrnují také některé, které dodávají třetí strany.
+Tyto položky jsou implementace [Application Insights](../../azure-monitor/app/app-insights-overview.md), o kterých jsme se dozvěděli. Zahrnují také některé, které dodávají třetí strany.
 
 ## <a name="languages---officially-supported-by-application-insights-team"></a>Jazyky – oficiálně podporované týmem služby Application Insights
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)

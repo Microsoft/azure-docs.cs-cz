@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 4ebd6eb860a6b102d1a3b12642510c429c18baa7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9bf445b54ab6ac2d3edf53fcc4bbcc39ee475a81
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259150"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119097"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -136,7 +136,7 @@ Azure Migrate collector PowerCLI stáhne a nainstaluje na zařízení. Chyba př
 2. Přejděte do adresáře C:\ProgramFiles\ProfilerService\VMWare\Scripts\
 3. Spusťte skript InstallPowerCLI.ps1
 
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Došlo k chybě k interní chybě UnhandledException: System.IO.FileNotFoundException
+### <a name="error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception"></a>Došlo k chybě k interní chybě UnhandledException: System.IO.FileNotFoundException
 
 Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Postupujte podle níže uvedený postup k vyřešení daného problému:
 

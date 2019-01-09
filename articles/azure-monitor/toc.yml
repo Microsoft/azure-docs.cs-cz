@@ -47,11 +47,11 @@ items:
   - name: Vyhledání běhových výjimek aplikací
     href: learn/tutorial-runtime-exceptions.md
   - name: Vyhledání potíží s výkonem aplikací
-    href: ../application-insights/app-insights-tutorial-performance.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-performance.md
   - name: Upozornění na stav aplikace
     href: learn/tutorial-alert.md
   - name: Vysvětlení uživatelů aplikací
-    href: ../application-insights/app-insights-tutorial-users.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-users.md
   - name: Vytvoření vlastních řídicích panelů
     href: learn/tutorial-app-dashboards.md
 - name: Ukázky
@@ -93,7 +93,7 @@ items:
     - name: Application Insights
       items:
       - name: Přehled
-        href: ../application-insights/app-insights-overview.md?toc=/azure/azure-monitor/toc.json
+        href: app/app-insights-overview.md
       - name: DevOps
         href: app/detect-triage-diagnose.md
       - name: Distribuované trasování
@@ -161,7 +161,7 @@ items:
     - name: Monitorování aplikací
       items:
       - name: Hloubková diagnostika webových aplikací a služeb
-        href: ../application-insights/app-insights-devops.md?toc=/azure/azure-monitor/toc.json
+        href: app/devops.md
       - name: Sledování výkonu webových aplikací
         href: app/web-monitor-performance.md
       - name: Samostatný vývoj, testování a provoz
@@ -342,7 +342,7 @@ items:
         - name: Filtrování telemetrie
           href: app/java-filter-telemetry.md
         - name: Metriky v mikrometrech
-          href: ../application-insights/micrometer-java.md?toc=/azure/azure-monitor/toc.json
+          href: app/micrometer-java.md
       - name: Aplikace v Node.js
         items:
         - name: Node.js
@@ -907,7 +907,7 @@ items:
     - name: Korelace telemetrie
       href: app/correlation.md
     - name: Balíčky NuGet
-      href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
+      href: app/nuget.md
     - name: Podpora platformy
       href: app/platforms.md
   - name: Datový model Application Insights
@@ -1005,9 +1005,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: daba9eb12d568e3eb49a7aa4d21f1d2eaa367ab8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 02748b429bf7122dd0f1531d45c8af1217ceaa43
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074610"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120917"

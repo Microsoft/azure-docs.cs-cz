@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 01/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837167"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121188"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory
-Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS nespravovaného adresáře v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virálního" registraci služby najdete v tématu [co je Samoobslužná registrace do služby Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
+Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS nespravovaného adresáře v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virálního" registrace pro službu, najdete v článku [co je Samoobslužná registrace do služby Azure Active Directory?](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Rozhodnutí o způsobu převzít kontrolu nad nespravovaného adresáře
 Během procesu převzetí správce můžete vlastnictví prokázat způsobem popsaným v tématu [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md). Další části popisují prostředí pro správu podrobněji, ale tady je shrnutí:
@@ -41,7 +41,7 @@ Některé produkty, které obsahují služby SharePoint a OneDrive, jako je Offi
 
 3. Potvrzení e-mailu z Power BI, vyberte **Ano, to jsem já**.
 
-4. Přihlaste se k [centra pro správu Office 365](https://portal.office.com/adminportal/Home) pomocí uživatelského účtu Power BI. Obdržíte zprávu, která dává pokyn k **stát se správcem** názvu domény, který už je ověřený v nespravovaného tenanta. Vyberte **Ano, chci se stát správcem**.
+4. Přihlaste se k [centra pro správu Office 365](https://portal.office.com/admintakeover) pomocí uživatelského účtu Power BI. Obdržíte zprávu, která dává pokyn k **stát se správcem** názvu domény, který už je ověřený v nespravovaného tenanta. Vyberte **Ano, chci se stát správcem**.
   
   ![První obrazovka pro stát se správcem](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -53,9 +53,9 @@ Při ověření záznamů DNS TXT vašeho registrátora názvu domény můžete 
 
 Po dokončení předchozích kroků nyní jste globální správce tenanta Fourth Coffee v Office 365. Název domény integrovat s dalšími službami Azure, můžete ho odebrat z Office 365 a přidejte ho do jiného tenanta spravované v Azure.
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Přidání názvu domény do nespravovaného tenanta na spravovaného ve službě Azure AD 
+### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Přidání názvu domény do nespravovaného tenanta na spravovaného ve službě Azure AD
 
-1. Otevřít [centra pro správu Office 365](https://portal.office.com/adminportal/Home).
+1. Otevřít [centra pro správu Office 365](https://portal.office.com/admintakeover).
 2. Vyberte **uživatelé** kartu a vytvořit nový uživatelský účet s názvem, jako je *user@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastního názvu domény. 
 3. Ujistěte se, že nový uživatelský účet má oprávnění globálního správce pro tenanta Azure AD.
 4. Otevřít **domén** kartě v Centru pro správu Office 365, vyberte název domény a vyberte **odebrat**. 

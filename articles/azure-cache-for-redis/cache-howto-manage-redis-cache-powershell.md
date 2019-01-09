@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 0186882183ed0848fd8b14d186b55ad1a5ff58ea
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 746e1c082d370cdcf1fca6597923b0e38b9a6d62
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019373"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105232"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Spravovat Azure mezipaměti Redis pomocí Azure Powershellu
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Toto téma ukazuje, jak provádět běžné úkoly jako je například vytvořen
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Další informace o modelu nasazení classic najdete v tématu [Azure Resource Manageru a klasického nasazení: vysvětlení modelů nasazení a stavu prostředků](../azure-resource-manager/resource-manager-deployment-model.md).
+Další informace o modelu nasazení classic najdete v tématu [Azure Resource Manageru a klasického nasazení: Vysvětlení modelů nasazení a stavu prostředků](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud jste již nainstalovali Azure PowerShell, musíte mít Azure PowerShell verze 1.0.0 nebo novějším. Můžete zkontrolovat verzi Azure Powershellu, který jste nainstalovali pomocí tohoto příkazu na příkazovém řádku prostředí Azure PowerShell.
@@ -130,14 +130,14 @@ Následující tabulka obsahuje vlastnosti a popisy pro běžně používané pa
 | ResourceGroupName |Název skupiny prostředků, ve kterém chcete vytvořit mezipaměť | |
 | Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1GB |
 | ShardCount |Počet horizontálních oddílů k vytvoření při vytváření cache ve verzi premium s aktivovaným clusteringem. Platné hodnoty jsou: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| Skladová jednotka (SKU) |Určuje skladovou Položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium |Standard |
+| Skladová jednotka (SKU) |Určuje skladovou Položku mezipaměti. Platné hodnoty jsou: Basic, Standard a Premium |Standard |
 | RedisConfiguration |Určuje nastavení konfigurace Redis. Podrobnosti o každém nastavení, naleznete na následujícím [RedisConfiguration vlastnosti](#redisconfiguration-properties) tabulky. | |
 | EnableNonSslPort |Určuje, zda je povoleno port bez SSL. |False |
 | MaxMemoryPolicy |Tento parametr se již nepoužívá – místo toho použijte RedisConfiguration. | |
 | StaticIP |Při hostování mezipaměti ve virtuální síti, určuje jedinečnou IP adresu v podsíti pro ukládání do mezipaměti. Pokud se nezadá, jeden je vybrán pro vás z podsítě. | |
 | Podsíť |Při hostování mezipaměti ve virtuální síti, určuje název podsítě, ve které se má nasadit do mezipaměti. | |
 | VirtualNetwork |Při hostování mezipaměti ve virtuální síti, určuje Identifikátor prostředku virtuální sítě, ve které se má nasadit do mezipaměti. | |
-| Typ klíče |Určuje, které přístupový klíč se znovu vygenerovat při obnovování přístupových klíčů. Platné hodnoty jsou: primární, sekundární | |
+| Typ klíče |Určuje, které přístupový klíč se znovu vygenerovat při obnovování přístupových klíčů. Platné hodnoty jsou: Primární, sekundární | |
 
 ### <a name="redisconfiguration-properties"></a>Vlastnosti RedisConfiguration
 | Vlastnost | Popis | Cenové úrovně |
@@ -148,11 +148,11 @@ Následující tabulka obsahuje vlastnosti a popisy pro běžně používané pa
 | vyhrazené maxmemory. |Konfiguruje [paměti vyhrazená](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro procesy nesouvisející s mezipamětí |Standard a Premium |
 | zásady maxmemory. |Konfiguruje [zásadu vyřazení](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro ukládání do mezipaměti |Všechny cenové úrovně |
 | oznámení události prostor klíčů |Nakonfiguruje [oznámení keyspace](cache-configure.md#keyspace-notifications-advanced-settings) |Standard a Premium |
-| Hodnota hash maximální ziplist položky |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
-| max-ziplist – hodnoty hash |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
-| set-max-intset – položky |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
-| zset maximální ziplist položky |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
-| zset-max-ziplist-value |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| Hodnota hash maximální ziplist položky |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| max-ziplist – hodnoty hash |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| set-max-intset – položky |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| zset maximální ziplist položky |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| zset-max-ziplist-value |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
 | databáze |Konfiguruje počet databází. Tuto vlastnost lze nastavit pouze při vytvoření mezipaměti. |Standard a Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Vytvoření Azure Cache pro Redis
@@ -237,7 +237,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `New-Azu
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Pokud chcete vytvořit mezipaměť s výchozími parametry, spusťte následující příkaz.
 
@@ -317,7 +317,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `Set-Azu
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 `Set-AzureRmRedisCache` Rutina slouží k aktualizaci vlastností, jako `Size`, `Sku`, `EnableNonSslPort`a `RedisConfiguration` hodnoty. 
 
@@ -421,7 +421,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `Get-Azu
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Chcete-li vrátit informace o všech mezipamětí v aktuálním předplatném, spusťte `Get-AzureRmRedisCache` bez parametrů.
 
@@ -488,7 +488,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `Get-Azu
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Chcete-li získat klíče pro mezipaměť, zavolejte `Get-AzureRmRedisCacheKey` rutiny a předejte mu název mezipaměti název skupiny prostředků, která obsahuje mezipaměti.
 
@@ -533,7 +533,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `New-Azu
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Chcete-li znovu vygenerovat primární nebo sekundární klíč pro mezipaměť, zavolejte `New-AzureRmRedisCacheKey` rutiny a předejte název skupiny prostředků a zadat buď `Primary` nebo `Secondary` pro `KeyType` parametr. V následujícím příkladu je znovu vygenerovat sekundární přístupový klíč pro mezipaměť.
 
@@ -584,7 +584,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `Remove-
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 V následujícím příkladu, s názvem mezipaměti `myCache` se odebere.
 
@@ -648,7 +648,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `Import-
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 Následující příkaz importuje data z objektu blob určený identifikátor uri SAS do mezipaměti Azure pro Redis.
@@ -707,7 +707,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `Export-
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 Následující příkaz exportuje data z Azure Cache pro instanci Redis do kontejneru určený identifikátor uri SAS.
@@ -768,7 +768,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popisy pro `Reset-A
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 Následující příkaz restartuje oba uzly zadané mezipaměti.
@@ -783,7 +783,7 @@ Další informace o použití prostředí Windows PowerShell s Azure, najdete v 
 * [Mezipaměť Azure Redis rutiny dokumentaci na webu MSDN](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)
 * [Rutiny Azure Resource Manageru](https://go.microsoft.com/fwlink/?LinkID=394765): Zjistěte, jak pomocí rutin v modulu Azure Resource Manageru.
 * [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): Zjistěte, jak vytvářet a spravovat skupiny prostředků na webu Azure Portal.
-* [Blog o Azure](https://azure.microsoft.com/blog/): informace o nových funkcích v Azure.
-* [Blog o Windows Powershellu](https://blogs.msdn.com/powershell): informace o nových funkcích v prostředí Windows PowerShell.
-* ["Hey, Scripting Guy!" Blog](http://blogs.technet.com/b/heyscriptingguy/): Získejte skutečné tipy a triky od komunity prostředí Windows PowerShell.
+* [Blog o Azure](https://azure.microsoft.com/blog/): Informace o nových funkcích v Azure.
+* [Blog o Windows Powershellu](https://blogs.msdn.com/powershell): Informace o nových funkcích v prostředí Windows PowerShell.
+* ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): Získejte skutečné tipy a triky od komunity prostředí Windows PowerShell.
 

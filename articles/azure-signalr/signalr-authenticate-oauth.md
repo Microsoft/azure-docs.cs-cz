@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd872e7aa9ada8c46b0af897b4d7ad137b767514
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599855"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103787"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Kurz: Ověřování pomocí služby Azure SignalR Service
 
@@ -547,7 +547,7 @@ Pokud chcete nasadit váš kód, spusťte následující příkazy v Git Shellu.
 
 Poslední věcí, která zbývá, je aktualizace nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace** aplikace OAuth GitHubu, aby odkazovaly na novou hostovanou aplikaci.
 
-1. Otevřete [http://github.com](http://github.com) v prohlížeči a přejděte k **Nastavení** > **Nastavení pro vývojáře** > **Oauth Apps (Aplikace OAuth)**.
+1. Otevřete [https://github.com](https://github.com) v prohlížeči a přejděte k **Nastavení** > **Nastavení pro vývojáře** > **Oauth Apps (Aplikace OAuth)**.
 
 2. Klikněte na vaši ověřovací aplikaci a aktualizujte nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace**, jak je uvedeno dál:
 

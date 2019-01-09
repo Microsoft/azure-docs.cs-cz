@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: da84d6361d80db8aea797827ed3d7bc612e2eda3
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2c8edd73a287d5bca2f3deb68448ba951b7a3367
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999046"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106558"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí sady Python SDK
 
@@ -76,7 +76,7 @@ Před instalací sady SDK doporučujeme vytvořit izolované prostředí Pythonu
 
 Nainstalujte sadu SDK do aktivovaných prostředí Conda. Tento kód nainstaluje základní komponenty sady SDK služby Machine Learning. Nainstaluje taky aplikace Jupyter Notebook server v prostředí conda. Instalace trvá několik minut na dokončení závislosti na konfiguraci vašeho počítače.
 
-```sh
+```shell
 # Install Jupyter
 conda install nb_conda
 
@@ -86,7 +86,7 @@ pip install azureml-sdk[notebooks]
 
 Další klíčová slova můžete použít k instalaci dalších součástí sady SDK:
 
-```sh
+```shell
 # Install the base SDK and auto ml components
 pip install azureml-sdk[automl]
 
@@ -97,13 +97,8 @@ pip install azureml-sdk[explain]
 pip install azureml-sdk[contrib]
 ```
 
-V prostředí Azure Databricks pomocí následujícího příkazu nainstalujte místo toho:
-
-```
-# Install the base SDK and automl components in the Azure Databricks environment.
-# For more information, see https://github.com/Azure/MachineLearningNotebooks/tree/master/databricks.
-pip install azureml-sdk[databricks]
-```
+V prostředí Azure Databricks používat [instalační postup, který Databricks](how-to-configure-environment.md#azure-databricks
+) místo.
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
@@ -143,11 +138,7 @@ pip install azureml-sdk[databricks]
 
 Uložte podrobnosti pracovního prostoru v konfiguračním souboru do aktuálního adresáře. Tento soubor se nazývá *aml_config\config.json*.  
 
-Tento konfigurační soubor pracovního prostoru usnadňuje stejného pracovního prostoru načíst později. Můžete ho načíst s jinými poznámkovými bloky a skripty ve stejném adresáři nebo podadresáři. 
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
-
-Volání rozhraní API `write_config()` vytvoří konfigurační soubor v aktuálním adresáři. *Config.json* soubor obsahuje následující skript:
+Volání rozhraní API `write_config()` vytvoří konfigurační soubor v aktuálním adresáři. *Config.json* soubor obsahuje následující:
 
 ```json
 {
@@ -156,6 +147,12 @@ Volání rozhraní API `write_config()` vytvoří konfigurační soubor v aktuá
     "workspace_name": "myworkspace"
 }
 ```
+
+Tento konfigurační soubor pracovního prostoru usnadňuje stejného pracovního prostoru načíst později. Můžete ho načíst s jinými poznámkovými bloky a skripty ve stejném adresáři nebo podadresáři. 
+
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
+
+
 
 ## <a name="use-the-workspace"></a>Použití pracovního prostoru
 
@@ -190,7 +187,7 @@ Použití kódu kurzy Machine Learning, potřebujete pár dalších balíčků v
 
 1. Zavřete poznámkový blok v prohlížeči.
 1. V okně příkazového řádku vyberte Ctrl + C zastavte aplikace Jupyter Notebook server.
-1. Instalace dalších balíčků.
+1. Instalace dalších balíčků.  Pokud jste nenainstalovali `azureml-sdk[automl]` výše, ujistěte se, že je to teď.
 
     ```shell
     conda install -y cython matplotlib scikit-learn pandas numpy

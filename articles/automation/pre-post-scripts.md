@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d84596b586ea54dd4a64faf46b32226862d83198
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: edbb953111fb4589539369bd9b2519b48b9b70eb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584616"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121307"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
@@ -100,10 +100,7 @@ Následuje příklad předané do řetězce JSON **SoftwareUpdateConfigurationRu
    }
 ```
 
-Kompletní příklad se všechny vlastnosti najdete tady: [konfigurace aktualizace softwaru - získat podle názvu](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)
-
-> [!NOTE]
-> Počítače přidat do nasazení s použitím [dynamické skupiny (preview)](automation-update-management.md#using-dynamic-groups) nejsou aktuálně součástí **SoftwareUpdateConfigurationRunContext** parametru.
+Kompletní příklad se všechny vlastnosti najdete na následujících stránkách: [Konfigurace aktualizace softwaru - Get podle názvu](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)
 
 ## <a name="samples"></a>Ukázky
 

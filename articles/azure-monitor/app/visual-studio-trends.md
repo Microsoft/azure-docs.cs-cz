@@ -15,12 +15,12 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fe4a3a4c5bbb1954fb44bd94d33d108b81ba3893
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 898f0974a6a29abde5c84d611adc8d50c3873141
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54056899"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121067"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analýza trendů v sadě Visual Studio
 Nástroj Trendy Application Insights vizualizuje průběžné změny důležitých telemetrických událostí ve vaší webové aplikaci. Díky tomu můžete rychle identifikovat problémy a anomálie. Nástroj Trendy vám dodá podrobnější diagnostické informace, abyste mohli zlepšit výkon aplikace, sledovat příčiny výjimek a získat přehledy z vlastních událostí.
@@ -29,7 +29,7 @@ Nástroj Trendy Application Insights vizualizuje průběžné změny důležitý
 
 ## <a name="configure-your-web-app-for-application-insights"></a>Konfigurace webové aplikace pro Application Insights
 
-Pokud jste to ještě neudělali, [nakonfigurujte svou webovou aplikaci pro Application Insights](../../application-insights/app-insights-overview.md). Umožní vám to odesílat telemetrii na portál Application Insights. Z něj čte telemetrii nástroj Trendy.
+Pokud jste to ještě neudělali, [nakonfigurujte svou webovou aplikaci pro Application Insights](../../azure-monitor/app/app-insights-overview.md). Umožní vám to odesílat telemetrii na portál Application Insights. Z něj čte telemetrii nástroj Trendy.
 
 Nástroj Trendy Application Insights je dostupný v sadě Visual Studio 2015 s aktualizací Update 3 a vyšší.
 
@@ -69,7 +69,7 @@ Potom klikněte na **Analyzovat telemetrii** a spusťte dotaz.
 Pokud chcete přecházet mezi bublinami ve vizualizaci, postupujte následovně:
 
 * Kliknutím vyberte bublinu, která aktualizuje filtry v dolní části okna a shrnuje jenom události, které nastaly během konkrétního časového období.
-* Poklikáním na bublinu přejděte do nástroje hledání a zobrazte všechny jednotlivé telemetrické události, které během tohoto časového období nastaly.
+* Poklikáním na bublinu přejděte do nástroje hledání a zobrazte všechny jednotlivé telemetrické události, ke kterým došlo během tohoto časového období
 * Pokud chcete zrušit výběr bubliny ve vizualizaci, podržte klávesu Ctrl a klikněte na bublinu.
 
 > [!TIP]
@@ -94,7 +94,7 @@ Pokud chcete zrušit používání jednoho z těchto filtrů, klikněte u přís
 ![Několik filtrů](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Nalezení anomálií
-Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání s jinými bublinami ve stejné časové řadě neobvyklé. V rozevírací nabídce Typ zobrazení vyberte **Počty v časovém intervalu (zvýraznit anomálie)** nebo **Procenta v časovém intervalu (zvýraznit anomálie)**. Červené bubliny označují anomálie. Anomálie se definují jako bubliny s poměrem počty/procenta, který je vyšší než 2,1 násobek směrodatné odchylky poměru počty/procenta, ke kterým došlo v posledních dvou časových obdobích (48 hodin, pokud zobrazujete posledních 24 hodin atd.).
+Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání s jinými bublinami ve stejné časové řadě neobvyklé. V rozevírací nabídce Typ zobrazení vyberte **Počty v časovém intervalu (zvýraznit anomálie)** nebo **Procenta v časovém intervalu (zvýraznit anomálie)**. Červené bubliny označují anomálie. Anomálie se definují jako bubliny s počty/procenta, vyšší než 2,1 násobek směrodatné odchylky poměru počty/procenta, ke kterým došlo v minulosti dvou časových obdobích (48 hodin, pokud zobrazujete posledních 24 hodin atd.).
 
 ![Barevné tečky označují anomálie.](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 0978e906467fd5b16f25bd2e053980dda4510127
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 906ab6c433df7cf452d1f5ab4660abce8d4674fc
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019390"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107508"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Úvod do mezipaměti Azure Redis na úrovni Premium
 Mezipaměť Azure pro Redis je distribuovaná spravovaná mezipaměť, která pomáhá díky mimořádně rychlému přístupu k datům vytvářet vysoce škálovatelné a rychle reagující aplikace. 
@@ -34,7 +34,7 @@ Nová úroveň Premium je úroveň připravená pro podnikové, které obsahuje 
 Další informace o velikosti, propustnosti a šířky pásma u prémiových mezipamětí najdete v tématu [mezipaměti Azure redis Cache – nejčastější dotazy](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 ## <a name="redis-data-persistence"></a>Trvalost dat Redis
-Úroveň Premium umožňuje zachovat data v mezipaměti v účtu služby Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. V případě základní infrastruktury existuje problémy můžou být potenciální ztráty dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat. Mezipaměti Redis Azure nabízí RDB a AOF (už brzo) možnosti v [trvalost Redis](http://redis.io/topics/persistence). 
+Úroveň Premium umožňuje zachovat data v mezipaměti v účtu služby Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. V případě základní infrastruktury existuje problémy můžou být potenciální ztráty dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat. Mezipaměti Redis Azure nabízí RDB a AOF (už brzo) možnosti v [trvalost Redis](https://redis.io/topics/persistence). 
 
 Pokyny týkající se konfigurace trvalosti najdete v tématu [konfigurace trvalosti pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-persistence.md).
 
