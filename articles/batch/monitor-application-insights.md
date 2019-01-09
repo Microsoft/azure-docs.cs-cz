@@ -11,16 +11,16 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 69ba67eb74333e8316b739fc2f264434643cab95
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 986a05dab29226ff492269587ab6c0f49585cef6
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075137"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119903"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí nástroje Application Insights
 
-[Application Insights](../application-insights/app-insights-overview.md) poskytuje elegantní a účinný způsob pro vývojáře k monitorování a ladění aplikace nasazené do služeb Azure. Pomocí Application Insights do monitorování čítače výkonu a výjimek, jakož i nástrojem váš kód vlastní metriky a trasování. Integrace Application Insights s vaší aplikací Azure Batch umožňuje získat podrobný přehled o chování a prozkoumat problémy v téměř reálném čase.
+[Application Insights](../azure-monitor/app/app-insights-overview.md) poskytuje elegantní a účinný způsob pro vývojáře k monitorování a ladění aplikace nasazené do služeb Azure. Pomocí Application Insights do monitorování čítače výkonu a výjimek, jakož i nástrojem váš kód vlastní metriky a trasování. Integrace Application Insights s vaší aplikací Azure Batch umožňuje získat podrobný přehled o chování a prozkoumat problémy v téměř reálném čase.
 
 Tento článek popisuje postup přidání a konfigurace knihovny služby Application Insights do vašeho řešení Azure Batch .NET a nástroje, kód vaší aplikace. Také ukazuje, jak můžete monitorovat své aplikace prostřednictvím portálu Azure portal a vytvářet vlastní řídicí panely. Application Insights podpory v jiných jazycích, podívejte se na [jazyky, platformy a integrace dokumentaci](../azure-monitor/app/platforms.md).
 
@@ -342,7 +342,7 @@ Z důvodu ve velkém měřítku povaha služby Azure Batch aplikace běžící v
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [Application Insights](../application-insights/app-insights-overview.md).
+* Další informace o [Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 * Application Insights podpory v jiných jazycích, podívejte se na [jazyky, platformy a integrace dokumentaci](../azure-monitor/app/platforms.md).
 

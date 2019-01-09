@@ -1,5 +1,5 @@
 ---
-title: Postup konfigurace hybridních zařízení připojených k Azure Active Directory | Microsoft Docs
+title: Jak naplánovat implementaci připojení k hybridní službě Azure Active Directory v Azure Active Directory (Azure AD) | Dokumentace Microsoftu
 description: Zjistěte, jak nakonfigurovat hybridní zařízení připojená k Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 02699e5072801dbb8f4a8f97c88db006d31e6e0f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bddd183c517c611373afd1df64f22bfcd6a0cea8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022032"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102274"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak naplánovat vaši implementaci připojení k hybridní službě Azure Active Directory
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 
 Zařízení se podobně jako uživatel stávají další identitou, kterou chcete chránit a pomocí které zároveň chcete nepřetržitě chránit své prostředky, ať jsou kdekoli. Můžete toho docílit tím, že pomocí některé z následujících metod přenesete identity vašich zařízení do Azure AD:
 
@@ -54,7 +54,6 @@ K naplánování vaší implementace hybridní služby Azure AD, které byste se
 
 
  
-
 
 ## <a name="review-supported-devices"></a>Zkontrolujte podporované zařízení 
 
@@ -112,7 +111,7 @@ Pokud vaše organizace potřebuje přístup k internetu přes ověřený odchoz�
 
 Připojení k hybridní službě Azure AD je proces, na zařízení připojeném k doméně místní zařízení automaticky zaregistrovalo s Azure AD. Existují případy, kdy nechcete, aby všechna svá zařízení zaregistrovat automaticky. Pokud je to pro vás platí, přečtěte si téma [řízení připojení k hybridní službě Azure AD. zařízení](hybrid-azuread-join-control.md).
 
-Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices) do svého tenanta, měli byste zvážit odebrání tohoto stavu před povolením připojení k hybridní službě Azure AD. Duální stav připojení k hybridní Azure Ad a Azure AD zaregistrované zařízení se nepodporuje. Od verze Windows 10 1809 se provedly následující změny, aby tento duální stav: 
+Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices) do svého tenanta, měli byste zvážit odebrání tohoto stavu před povolením připojení k hybridní službě Azure AD. Duální stav zařízení na obě, připojení k hybridní službě Azure AD a Azure AD registrované se nepodporuje. Od verze Windows 10 1809 se provedly následující změny, aby tento duální stav: 
  - Všechny stávající stav registrováno v Azure AD by být automaticky odstraněna po zařízení je připojená k hybridní Azure AD. 
  - Vám může zakázat zařízení připojené k vaší doméně Azure AD registrované přidáním tohoto klíče registru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001
 
@@ -149,17 +148,17 @@ Azure AD Connect od verze 1.1.819.0 nabízí průvodce konfigurací hybridního 
  Pokud instalaci požadované verze služby Azure AD Connect není pro vás, přečtěte si téma [postup při ruční konfiguraci registrace zařízení](../device-management-hybrid-azuread-joined-devices-setup.md). 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Podpora alternativní Id přihlášení v připojení k hybridní službě Azure AD
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Podpora alternativní přihlašovací ID v připojení k hybridní službě Azure AD
 
-Připojení k Windows 10 hybridní Azure AD poskytuje omezenou podporu pro [alternativní ID přihlášení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na základě typu alternativního přihlašovacího id [metodu ověřování](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typ domény a verzi Windows 10. Existují dva typy alternativního přihlašovacího ID, které může existovat ve vašem prostředí.
+Připojení k Windows 10 hybridní Azure AD poskytuje omezenou podporu pro [alternativní ID přihlášení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na základě typu alternativního přihlašovacího ID [metodu ověřování](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typ domény a verzi Windows 10. Existují dva druhy alternativního přihlašovacího ID, která může existovat ve vašem prostředí:
 
- - Směrovatelné alternativního přihlašovacího id: Směrovatelné alternativního přihlašovacího id má platný ověřenou doménu, který je zaregistrovaný u registrátora domény. Například pokud primární doména je contoso.com contoso.org a contoso.co.uk jsou platné domény, které jsou majetkem společnosti Contoso a [ověřit ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
+ - Směrovatelné alternativního přihlašovacího ID: Směrovatelné alternativního přihlašovacího ID má platný ověřenou doménu, který je zaregistrovaný u registrátora domény. Například pokud primární doména je contoso.com contoso.org a contoso.co.uk jsou platné domény, které jsou majetkem společnosti Contoso a [ověřit ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
  
- - Non směrovatelné alternativního přihlašovacího id: Nesměrovatelných alternativního přihlašovacího id nemá žádné ověřené doméně. To platí pouze v privátní síti vaší organizace. Například pokud primární doména je contoso.com contoso.local není ověřitelný doménu v Internetu ale se používá v rámci sítě společnosti Contoso.
+ - Non směrovatelné alternativního přihlašovacího ID: Nesměrovatelných alternativního přihlašovacího ID nemá žádné ověřené doméně. To platí pouze v privátní síti vaší organizace. Například pokud primární doména je contoso.com contoso.local není ověřitelný doménu v Internetu ale se používá v rámci sítě společnosti Contoso.
  
-Následující tabulka obsahuje podrobnosti o podpoře pro některý z těchto alternativních přihlašovacích ID v systému Windows 10 hybridní službě Azure AD join
+Následující tabulka obsahuje podrobnosti o podpoře pro některý z těchto alternativních přihlašovacích ID v připojení k hybridní službě Azure AD Windows 10
 
-|Typ alternativního přihlašovacího id|Typ domény|Verze Windows 10|Popis|
+|Typ alternativního přihlašovacího ID|Typ domény|Verze Windows 10|Popis|
 |-----|-----|-----|-----|
 |Směrovatelné|Federovaná |Od verze 1703|Obecně dostupná|
 |Směrovatelné|Spravované|Od verze 1709|Aktuálně ve verzi private preview. Samoobslužné resetování HESLA Azure AD se nepodporuje. |

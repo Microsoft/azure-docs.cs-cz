@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 55cb1eee1c0319f9b1037476da208de377e0c47b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7b0a837bf23145c5ac5e5775d4324582fa3a6b20
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971167"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120831"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -139,7 +139,7 @@ Azure Load Balancer ve výchozím nastavení rovnoměrně distribuuje síťový 
 
 ### <a name = "internalloadbalancer"></a>Interní Load Balancer
 
-Interní Load Balancer směruje provoz pouze k prostředkům, které jsou ve virtuální síti nebo které přistupují k infrastruktuře Azure prostřednictvím sítě VPN. V tomto ohledu se interní Load Balancer liší od veřejného Load Balanceru. Infrastruktura Azure omezuje přístup k front-endovým IP adresám virtuální sítě s vyrovnáváním zatížení. Internetový koncový bod nemá nikdy přímý přístup k front-endovým IP adresám ani virtuálním sítím. Interní obchodní aplikace se spouštějí v Azure a přistupuje se k nim v rámci Azure nebo z místních prostředků.
+Interní Load Balancer směruje provoz pouze k prostředkům, které jsou ve virtuální síti nebo které přistupují k infrastruktuře Azure prostřednictvím sítě VPN. V tomto ohledu se interní Load Balancer liší od veřejného Load Balanceru. Infrastruktura Azure omezuje přístup k front-endovým IP adresám virtuální sítě s vyrovnáváním zatížení. front-endové IP adresy a virtuální sítě jsou přístupné nesmí nikdy přímo do koncového bodu sítě internet. Interní obchodní aplikace se spouštějí v Azure a přistupuje se k nim v rámci Azure nebo z místních prostředků.
 
 Interní Load Balancer umožňuje následující typy vyrovnávání zatížení:
 

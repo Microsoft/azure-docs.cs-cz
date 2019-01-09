@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 915c57033209ff982946163c408cf8557515e2f5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999196"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106837"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Zpracování dat a uživatelsky definované funkce
 
@@ -102,6 +102,15 @@ Uživatelem definované funkce může být napsán v jazyce JavaScript. Pomocné
 - Připojte grafu metadat do senzoru čtení před odesláním oznámení.
 
 Další informace najdete v tématu [použití uživatelem definovaných funkcí](./how-to-user-defined-functions.md).
+
+
+#### <a name="examples"></a>Příklady
+
+[Úložiště GitHub pro digitální dvojče C# ukázka](https://github.com/Azure-Samples/digital-twins-samples-csharp/) obsahuje několik příkladů uživatelem definované funkce:
+- [Tato funkce](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) hledá oxidu uhličitého pohybu a teplotní hodnoty k určení, zda je k dispozici s těmito hodnotami v rozsahu místnosti. [Kurzy pro digitální dvojče](tutorial-facilities-udf.md) tuto funkci podrobněji prozkoumat. 
+- [Tato funkce](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) vyhledá data ze senzorů více pohybu a určuje, že místo je k dispozici, pokud žádná z nich zjistí všechny pohybu. Můžete snadno nahradit uživatelem definovaná funkce používá buď [rychlý Start](quickstart-view-occupancy-dotnet.md), nebo [kurzy](tutorial-facilities-setup.md), tím, že změny uvedené v oddílu pro komentáře na souboru. 
+
+
 
 ### <a name="role-assignment"></a>Přiřazení role
 

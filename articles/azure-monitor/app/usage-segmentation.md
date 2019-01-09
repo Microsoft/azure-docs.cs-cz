@@ -13,16 +13,16 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: a2917ebeeb8e5c3da649e2416894cd2a81f4a3a1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053938"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119863"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Uživatelé, relace a události analýzy ve službě Application Insights
 
-Přečtěte si, když uživatelé používají webové aplikace, které stránky se nejvíce zajímají, kde se nachází vaši uživatelé, a jaké prohlížeče a operační systémy používají. Analýza telemetrie obchodní a využití pomocí [Azure Application Insights](../../application-insights/app-insights-overview.md).
+Přečtěte si, když uživatelé používají webové aplikace, které stránky se nejvíce zajímají, kde se nachází vaši uživatelé, a jaké prohlížeče a operační systémy používají. Analýza telemetrie obchodní a využití pomocí [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 ![Snímek obrazovky uživatele Application Insights](./media/usage-segmentation/0001-users.png)
 

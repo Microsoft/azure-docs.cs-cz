@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 0e325de3a9a28d824ea9a6bfb7b3346bf9285e58
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9a1d328f79405b14ffd84e07cb915566bd686c8e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033311"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120950"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Digitální dvojče Swagger referenční dokumentace k Azure
 
@@ -55,7 +55,7 @@ Můžete vybrat jednotlivých uvedených objektový model pro podrobnější př
 
 ![Swagger model][3]
 
-Vygenerovaný objektové modely Swaggeru je pohodlné zobrazíte všechny dostupné Azure digitální dvojče [objekty a rozhraní API](./concepts-objectmodel-spatialgraph.md). Vývojáři mohli při jejich sestavování řešení v Azure digitální dvojče pomocí tohoto prostředku.
+Vygenerovaný objektové modely Swaggeru je pohodlné zobrazíte všechny dostupné Azure digitální dvojče [objekty a rozhraní API](./concepts-objectmodel-spatialgraph.md). Při vytváření řešení na Azure digitální dvojče mohou vývojáři použít tento prostředek.
 
 ## <a name="endpoint-summary"></a>Souhrn koncového bodu
 
@@ -79,7 +79,7 @@ Když vyberete určitý koncový bod, zobrazí se **vyzkoušet**.
 
 ![Zkuste swagger][5]
 
-Rozbalte tuto část, abyste vyvolali vstupní pole pro každý parametr požadované a volitelné. Zadejte hodnoty odpovídajícím způsobem a vyberte **Execute**.
+Rozbalte tuto část, abyste vyvolali vstupní pole pro každý parametr požadované a volitelné. Zadejte správné hodnoty a vyberte **Execute**.
 
 ![Pokusili swagger][6]
 

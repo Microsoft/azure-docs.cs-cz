@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: f6f804ea9121d1728e31f1e694280e841f4b7f4e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 9683eb8cbfcabb946f8b364ac9cc8aeeb167d023
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946540"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120287"
 ---
-# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Rychlý start: Zabezpečení webového rozhraní API službou Azure Active Directory
+# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Rychlý start: Zabezpečení webového rozhraní API pomocí Azure Active Directory
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -106,9 +106,9 @@ Další informace o individuálním nastavení konfigurace najdete v dokumentaci
 
 ### <a name="implement-the-server"></a>Implementace serveru
 
-Modul [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) používá dvě strategie ověřování: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) a [Bearer](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy). Server, který implementujeme v tomto článku, používá k zabezpečení koncového bodu rozhraní API strategii nosičů.
+[Passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) dvou strategií ověření funkce modulu: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) a [nosiče](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) strategie. Server, který implementujeme v tomto článku, používá k zabezpečení koncového bodu rozhraní API strategii nosičů.
 
-### <a name="step-1-import-dependencies"></a>1. krok: Import závislostí
+### <a name="step-1-import-dependencies"></a>Krok 1: Importujte závislosti
 
 Vytvořte nový soubor s názvem `app.js` a vložte do něj následující text:
 
@@ -132,7 +132,7 @@ V této části kódu:
 - Vytvoří se pole, do kterého se budou ukládat uživatelské tokeny `authenticatedUserTokens` předávané zabezpečeným koncovým bodům.
 - Hodnota `serverPort` je buď definovaná portem prostředí daného procesu, nebo se vezme z konfiguračního souboru.
 
-### <a name="step-2-instantiate-an-authentication-strategy"></a>2. krok: Vytvoření instance ověřovací strategie
+### <a name="step-2-instantiate-an-authentication-strategy"></a>Krok 2: Vytvoření instance strategie ověření
 
 Při zabezpečení koncového bodu musíte zadat strategii, která zodpovídá za zjištění, jestli aktuální požadavek pochází od ověřeného uživatele. Proměnná `authenticatonStrategy` je instancí třídy `passport-azure-ad` `BearerStrategy`. Za výraz `require` přidejte následující kód.
 
@@ -161,19 +161,19 @@ Jakmile vytvoříte novou instanci strategie, musíte ji předat Passportu metod
 passport.use(authenticationStrategy);
 ```
 
-### <a name="step-3-server-configuration"></a>3. krok: Konfigurace serveru
+### <a name="step-3-server-configuration"></a>Krok 3: Konfigurace serveru
 
 Jakmile máte definovanou ověřovací strategii, můžete provést základní nastavení serveru Restify a nastavit používání bezpečnostního middlewaru Passport.
 
 ```JavaScript
-const server = restify.createServer({ name: 'Azure Active Directroy with Node.js Demo' });
+const server = restify.createServer({ name: 'Azure Active Directory with Node.js Demo' });
 server.use(restifyPlugins.authorizationParser());
 server.use(passport.initialize());
 server.use(passport.session());
 ```
 Server je inicializovaný a nakonfigurovaný na parsování autorizačních hlaviček a pak nastavený na používání Passportu.
 
-### <a name="step-4-define-routes"></a>4. krok: Definování tras
+### <a name="step-4-define-routes"></a>Krok 4: Definování tras
 
 Teď můžete definovat trasy a rozhodnout se, jaké z nich zabezpečíte službou Azure AD. V tomto projektu jsou dvě trasy, které jsou otevřené na kořenové úrovni. Trasa `/api` je nastavená tak, aby vyžadovala ověřování.
 
@@ -221,7 +221,7 @@ Pokud jste server nakonfigurovali správně, měla by odpověď vypadat podobně
 
 ```shell
 HTTP/1.1 200 OK
-Server: Azure Active Directroy with Node.js Demo
+Server: Azure Active Directory with Node.js Demo
 Content-Type: application/json
 Content-Length: 49
 Date: Tue, 10 Oct 2017 18:35:13 GMT
@@ -240,7 +240,7 @@ Pokud jste server nakonfigurovali správně, měl by odpovědět stavem `Unautho
 
 ```shell
 HTTP/1.1 401 Unauthorized
-Server: Azure Active Directroy with Node.js Demo
+Server: Azure Active Directory with Node.js Demo
 WWW-Authenticate: token is not found
 Date: Tue, 10 Oct 2017 16:22:03 GMT
 Connection: keep-alive
@@ -251,7 +251,7 @@ Unauthorized
 
 Vytvořili jste zabezpečené rozhraní API. Teď můžete implementovat klienta, který ověřovací tokeny předává rozhraní API.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Musíte implementovat klientský protějšek, který se připojuje k serveru. Tento server zajišťuje přihlášení, odhlášení a správu tokenů. Příklady kódu najdete v klientských aplikacích pro [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) a [Androidu](https://github.com/MSOpenTech/azure-activedirectory-library-for-android).
 * Podrobný kurz najdete v článku o [přihlášení k webové aplikaci Node.js a odhlášení z ní službou Azure AD](quickstart-v1-openid-connect-code.md).

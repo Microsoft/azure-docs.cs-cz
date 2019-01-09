@@ -3,7 +3,7 @@ title: Přidání uživatelů pro AD FS Azure Stack | Dokumentace Microsoftu
 description: Zjistěte, jak přidat uživatele pro nasazení služby AD FS služby Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: patricka
+author: PatAltimore
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: patricka
 ms.reviewer: unknown
-ms.openlocfilehash: f8abacbcb05d1346931b5c2e1097660cfbd8e594
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ee571ec14a93653b524401d1d304021178ecd794
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344162"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120808"
 ---
 # <a name="add-azure-stack-users-in-ad-fs"></a>Přidat uživatele Azure stacku ve službě AD FS
 Můžete použít **Active Directory Users and Computers** modul snap-in pro přidání dalších uživatelů do prostředí Azure Stack využití služby AD FS jako zprostředkovatele identity.

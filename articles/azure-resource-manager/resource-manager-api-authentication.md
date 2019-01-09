@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d7beab66bdaed312f32adef74ceb4b2944e6853e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956336"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103877"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným
 ## <a name="introduction"></a>Úvod
@@ -156,7 +156,7 @@ Následující příklad ukazuje požadavek pro token grant kódu pomocí hesla 
 
 Při práci s přihlašovacími údaji certifikát, vytvořte JSON Web Token (JWT) a znak (RSA SHA256) pomocí soukromého klíče přihlašovacích údajů pro certifikát vaší aplikace. Vytváření tento token se zobrazí v [tok přihlašovacích údajů klienta](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#second-case-access-token-request-with a-certificate).  Odkaz, najdete v článku [Active Directory ověřování Library (.NET) kód](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) k podepisování tokenů JWT kontrolní výraz klienta.
 
-Zobrazit [Open ID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) podrobnosti o ověření klienta.
+Zobrazit [Open ID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) podrobnosti o ověření klienta.
 
 Následující příklad ukazuje požadavek pro token grant kódu s certifikát přihlašovacích údajů:
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1df9b07d5a0a9e5018fc024038e65723c606ef71
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ae51151bd20d2c715d868e916f7bc633040efa40
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442977"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121516"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurace vymezených synchronizace z Azure AD do spravované domény
 V tomto článku se dozvíte, jak nakonfigurovat pouze konkrétní uživatelské účty, které se mají synchronizovat z adresáře služby Azure AD do spravované domény služby Azure AD Domain Services.
@@ -59,9 +59,9 @@ Proveďte následující kroky konfigurace na základě skupin s vymezeným obor
 
 1. Proveďte následující úkoly:
   * [Úloha 1: Nainstalujte požadované moduly Powershellu](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules).
-  * [Úkol 2: Vytvoření požadované instančního objektu v adresáři služby Azure AD](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
-  * [Úloha 3: Vytvoření a konfigurace skupiny "Správci AAD DC"](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
-  * [Úloha 4: Zaregistrujte poskytovatele prostředků služby Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
+  * [Úloha 2: Vytvoření instančního objektu požadovaná služba v adresáři služby Azure AD](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
+  * [Úloha 3: Vytvořte a nakonfigurujte skupinu "Správci AAD DC"](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
+  * [Úloha 4: Registrace poskytovatele prostředků služby Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
   * [Úloha 5: Vytvořte skupinu prostředků](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
   * [Krok 6: Vytvoření a konfigurace virtuální sítě](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
 
@@ -79,7 +79,7 @@ Proveďte následující kroky konfigurace na základě skupin s vymezeným obor
   > V seznamu skupiny nakonfigurované pro synchronizaci s vymezeným oborem musí obsahovat skupinu "Správci AAD DC". Pokud není zadána tuto skupinu, budou spravované domény nepoužitelné.
   >
 
-4. Teď vytvořte spravovanou doménu a povolte na základě skupin s vymezeným oborem synchronizace pro spravovanou doménu. Zahrnout vlastnost ```"filteredSync" = "Enabled"``` v ```Properties``` parametru. Pro instanci, najdete v následující fragment skriptu zkopírovanými z [úloh 7: zřízení spravované doméně služby Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
+4. Teď vytvořte spravovanou doménu a povolte na základě skupin s vymezeným oborem synchronizace pro spravovanou doménu. Zahrnout vlastnost ```"filteredSync" = "Enabled"``` v ```Properties``` parametru. Pro instanci, najdete v následující fragment skriptu zkopírovanými z [7 úloh: Zřízení spravované doméně služby Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
 
   ```powershell
   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -173,7 +173,7 @@ foreach ($id in $newGroupIds)
     }
     catch
     {
-        Write-Error "Exception occured assigning Object-ID: $id. Exception: $($_.Exception)."
+        Write-Error "Exception occurred assigning Object-ID: $id. Exception: $($_.Exception)."
     }
 }
 

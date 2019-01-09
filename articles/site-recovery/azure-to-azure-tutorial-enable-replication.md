@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc6a1bcbcc4de455597eabc4d793656770c3a6dc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038717"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103494"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -172,7 +172,8 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 
 5. V **vlastní**vyberte **Ano** konzistence více virtuálních počítačů, pokud chcete přidat virtuální počítače do nové nebo existující replikační skupiny. Chcete-li virtuální počítače součástí replikační skupiny. Pak klikněte na **OK**.
 
-    - Všechny počítače v replikační skupině budou mít v případě převzetí služeb při selhání sdílené body obnovení konzistentní pro případ chyby a konzistentní vzhledem k aplikacím. Povolení konzistence napříč několika virtuálními počítači může mít vliv na výkon úloh a mělo by se použít pouze v případě, že je na počítačích spuštěná stejná úloha a potřebujete konzistenci napříč několika počítači.
+    - Všechny počítače v replikační skupině budou mít v případě převzetí služeb při selhání sdílené body obnovení konzistentní pro případ chyby a konzistentní vzhledem k aplikacím. Povolení konzistence více virtuálních počítačů může mít vliv na výkon úloh (jako je intenzivní nároky na procesor) a musí být použity pouze v případě, že počítačích běží stejná úloha a potřebujete konzistenci napříč několika počítači.
+    - Můžete mít maximálně 16 virtuálních počítačů v replikační skupině.
     - Pokud povolíte konzistenci napříč několika virtuálními počítači, budou spolu počítače v replikační skupině komunikovat přes port 20004. Ujistěte se, že žádné zařízení brány firewall neblokuje interní komunikaci mezi virtuálními počítači přes port 20004. Pokud chcete do replikační skupiny zahrnout virtuální počítače s Linuxem, nezapomeňte ručně otevřít odchozí provoz na portu 20004 podle pokynů ke konkrétní verzi Linuxu.
 
 ### <a name="configure-encryption-settings"></a>Konfigurace nastavení šifrování

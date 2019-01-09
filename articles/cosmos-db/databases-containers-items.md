@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 23400331db3bd63eeeb843c9772604fabf5a87d1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d5714e43c9ba58cdec33ca5fd1eae31eb6a88f51
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043766"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107731"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Práce s databází Azure Cosmos, kontejnery a položek
 
@@ -45,7 +45,7 @@ Můžete pracovat s databází Azure Cosmos pomocí následující rozhraní API
 
 ## <a name="azure-cosmos-containers"></a>Kontejnery služby Azure Cosmos
 
-Kontejner služby Azure Cosmos je jednotka škálovatelnost pro obě zřízenou propustnost a úložiště položek. Kontejner je horizontálně dělené do oddílů a pak replikuje napříč několika oblastmi. Položky, přidáte do kontejneru a požadované propustnosti, že by na něm jsou automaticky distribuovány mezi sadu logické oddíly na základě klíče oddílu. Další informace o vytváření oddílů a klíč oddílu, naleznete v tématu [logické oddíly](partition-data.md) článku. 
+Kontejner služby Azure Cosmos je jednotka škálovatelnost pro obě zřízenou propustnost a úložiště položek. Kontejner je horizontálně dělené do oddílů a pak replikuje napříč několika oblastmi. Položky, které přidáte do kontejneru a propustnost, kterou zřídíte v něm automaticky distribuují do sady logické oddíly na základě klíče oddílu. Další informace o vytváření oddílů a klíč oddílu, naleznete v tématu [logické oddíly](partition-data.md) článku. 
 
 Při vytváření kontejneru Azure Cosmos, nakonfigurujete propustnost v jednom z těchto režimů:
 

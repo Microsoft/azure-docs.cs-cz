@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
-ms.openlocfilehash: d74f552395a80509c76adf70aef0581260126b49
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 60f9baf7fb54706dc9d31c6920c0df24173d7b35
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019367"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105832"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace trvalosti dat pro Azure Cache úrovně Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Tento článek popisuje postup konfigurace trvalosti v Azure Cache úrovně premium pro instanci Redis.
@@ -130,7 +130,7 @@ RDB a AOF trvalosti:
 
 * Když provedete škálování na větší velikost, nebude to mít žádný vliv.
 * Pokud provedete škálování menší velikost a máte vlastní [databází](cache-configure.md#databases) nastavení, která je větší než [limit databáze](cache-configure.md#databases) pro novou velikost, neobnoví se data v těchto databázích. Další informace najdete v tématu [je Moje vlastní databáze nastavení ovlivněných během změny měřítka?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
-* Pokud provedete škálování menší velikost a menší velikost pro uložení všech dat z poslední zálohy není dostatek místa, během procesu obnovení, obvykle s využitím bude vyloučena klíče [allkeys lru](http://redis.io/topics/lru-cache) zásady vyřazení.
+* Pokud provedete škálování menší velikost a menší velikost pro uložení všech dat z poslední zálohy není dostatek místa, během procesu obnovení, obvykle s využitím bude vyloučena klíče [allkeys lru](https://redis.io/topics/lru-cache) zásady vyřazení.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Můžete změnit po vytvoření mezipaměti požadovanou četnost zálohování RDB?
 Ano, můžete změnit četnost zálohování RDB trvalosti na **trvalost dat Redis** okno. Pokyny najdete v tématu [konfigurovat Redis persistence](#configure-redis-persistence).

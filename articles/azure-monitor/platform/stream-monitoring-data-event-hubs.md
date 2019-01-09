@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a39d497c90f49f8699b9d27be175e501973804c5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7225bc8121ddab8809ebb1c409a3af59dbcc42f2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811507"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118383"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -26,7 +26,7 @@ Platforma Azure Monitor poskytuje jeden kanál pro získání přístupu ke vše
 V rámci prostředí Azure existuje několik "vrstvy" dat monitorování a způsob přístupu k datům z každé vrstvy se mírně liší. Obvykle tyto vrstvy lze popsat jako:
 
 - **Monitorování data aplikací:** Data o výkonu a funkce kódu sami napsali a běží v Azure. Příklady monitorování dat aplikací: trasování výkonu a protokoly aplikací a telemetrii uživatelů. Monitorování dat aplikace se shromažďují v jednom z následujících způsobů:
-  - Upravením kódu pomocí sady SDK [Application Insights SDK](../../application-insights/app-insights-overview.md).
+  - Upravením kódu pomocí sady SDK [Application Insights SDK](../../azure-monitor/app/app-insights-overview.md).
   - Spuštěním agenta monitorování, která naslouchá novou aplikaci protokoly na počítači provozování vaší aplikace, jako [Windows agenta diagnostiky Azure](./../../azure-monitor/platform/diagnostics-extension-overview.md) nebo [agenta diagnostiky Azure Linux](../../virtual-machines/extensions/diagnostics-linux.md).
 - **Data monitorování hostovaného operačního systému:** Data o operačním systému, na kterém je aplikace spuštěna. Příklady data monitorování hostovaného operačního systému by události systému Windows nebo protokolu syslog v Linuxu. Pokud chcete shromažďovat data tohoto typu, je potřeba nainstalovat agenta, jako [Windows agenta diagnostiky Azure](./../../azure-monitor/platform/diagnostics-extension-overview.md) nebo [agenta diagnostiky Azure Linux](../../virtual-machines/extensions/diagnostics-linux.md).
 - **Data monitorování prostředků Azure:** Data o provozu prostředku Azure. Pro některé typy prostředků Azure, jako jsou virtuální počítače je hostovaný operační systém a aplikace pro monitorování v rámci této služby Azure. Za další prostředky Azure, jako jsou skupiny zabezpečení sítě zdroje dat monitorování je na nejvyšší úrovni nejsou k dispozici data (protože neexistuje žádný hostovaný operační systém nebo aplikace běžící v těchto prostředků). Tato data lze shromažďovat pomocí [nastavení diagnostiky prostředků](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
@@ -98,7 +98,7 @@ Je potřeba nainstalovat agenta k odeslání dat monitorování operačního sys
 
 ## <a name="application-monitoring-data"></a>Data monitorování aplikace
 
-Monitorování dat aplikací vyžaduje, že váš kód je instrumentovaná pomocí sady SDK, proto není k dispozici pro obecné účely řešení, které směrování application monitoring data do centra událostí v Azure. Ale [Azure Application Insights](../../application-insights/app-insights-overview.md) je jedna služba, která slouží ke shromažďování dat Azure úrovni aplikace. Pokud používáte Application Insights, můžete Streamovat data monitorování do centra událostí následujícím způsobem:
+Monitorování dat aplikací vyžaduje, že váš kód je instrumentovaná pomocí sady SDK, proto není k dispozici pro obecné účely řešení, které směrování application monitoring data do centra událostí v Azure. Ale [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) je jedna služba, která slouží ke shromažďování dat Azure úrovni aplikace. Pokud používáte Application Insights, můžete Streamovat data monitorování do centra událostí následujícím způsobem:
 
 1. [Nastavte si průběžný export](../../azure-monitor/app/export-telemetry.md) dat Application Insights do účtu úložiště.
 
@@ -108,7 +108,7 @@ Monitorování dat aplikací vyžaduje, že váš kód je instrumentovaná pomoc
 
 Směrování dat monitorování do centra událostí pomocí Azure Monitor umožňuje snadnou integraci s partnerem SIEM a monitorovací nástroje. Většina nástrojů vyžaduje určitá oprávnění k předplatnému Azure číst data z centra událostí a připojovací řetězec centra událostí. Tady je seznam několika nástrojů s integrací Azure Monitoru:
 
-* **IBM QRadar** – The Microsoft Azure DSM a Microsoft Azure Event Hub protokolu jsou k dispozici ke stažení z [webu podpory IBM](http://www.ibm.com/support). [Další informace o integraci s Azure získáte tady](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+* **IBM QRadar** – The Microsoft Azure DSM a Microsoft Azure Event Hub protokolu jsou k dispozici ke stažení z [webu podpory IBM](https://www.ibm.com/support). [Další informace o integraci s Azure získáte tady](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
 * **Splunk** – v závislosti na nastavení Splunk existují dvě metody:
     1. [Monitorování rozšíření Azure umožňující Splunk](https://splunkbase.splunk.com/app/3534/) je k dispozici v Splunkbase a projekt open source. [Tady je dokumentace](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
     2. Pokud doplněk nemůžete nainstalovat ve vaší instanci Splunk (např.) Pokud používáte proxy server nebo v cloudu Splunk spuštěna), můžete tyto události do protokolu událostí Splunk HTTP pomocí přeposílat [tuto funkci, která se spustí pomocí nové zprávy do centra událostí](https://github.com/Microsoft/AzureFunctionforSplunkVS).

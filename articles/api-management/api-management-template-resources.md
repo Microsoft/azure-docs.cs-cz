@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cfbb04ea56eacfd859b6ce520da5396ad91d9abf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970327"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121290"
 ---
 # <a name="azure-api-management-template-resources"></a>Šablony prostředků Azure API Management
 Azure API Management nabízí následující typy prostředků pro použití v vývojář šablon portálu.  
@@ -108,7 +108,7 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Opravdu chcete odebrat aplikaci?|  
 |WebDevelopersAppNotPublished|Nepublikováno|  
-|WebDevelopersAppNotSubminted|Neodeslané|  
+|WebDevelopersAppNotSubmitted|Neodeslané|  
 |WebDevelopersAppTableCategoryHeader|Kategorie|  
 |WebDevelopersAppTableNameHeader|Název|  
 |WebDevelopersAppTableStateHeader|Stav|  
@@ -287,7 +287,7 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |OAuth2SendingMethod_QueryParam|Parametr dotazu|  
 |OAuth2AuthorizationServerGeneralException|Došlo k chybě při autorizaci přístupu přes {0}|  
 |OAuth2AuthorizationServerCommunicationException|Připojení HTTP k autorizačnímu serveru nebylo možné navázat, nebo bylo neočekávaně zavřeno.|  
-|WebDocumentationOAuth2GeneralErrorMessage|Došlo k neočekávané chybě.|  
+|WebDocumentationOAuth2GeneralErrorMessage|Došlo k neočekávané chybě|  
 |AuthorizationServerCommunicationException|Došlo k výjimce komunikace autorizační server. Obraťte se prosím na správce.|  
 |TextblockSubscriptionKeyHeaderDescription|Klíč předplatného, který poskytuje přístup k tomuto rozhraní API. Součástí vaší < href ='/ developer'\>profilu < /a\>.|  
 |TextblockOAuthHeaderDescription|Přístupový token OAuth 2.0 získaný od < i\>{0}< /i\>. Podporované typy udělení: < můžu\>{1}< /i\>.|  
@@ -361,7 +361,7 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |WebProductsUsageLimitsHeader|Limity využití|  
 |WebProductsYouAreNotSubscribed|Tento produkt máte předplacený.|  
 |WebProductsYouRequestedSubscription|Požádali jste o předplatné tohoto produktu.|  
-|ErrorYouNeedtoAgreeWithLegalTerms|Před pokračováním musíte souhlasit s podmínkami používání.|  
+|ErrorYouNeedtoAgreeWithLegalTerms|Před pokračováním musíte souhlasit s podmínkami použití.|  
 |ButtonLabelAddSubscription|Přidat předplatné|  
 |LinkLabelChangeSubscriptionName|změnit|  
 |ButtonLabelConfirm|Potvrdit|  
@@ -481,7 +481,7 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |CheckboxLabelUserRegistrationTermsConsentRequired|Souhlasím `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`.|  
 |TextblockUserRegistrationTermsProvided|Najdete v tématu `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
 |DialogHeadingTermsOfUse|Podmínky použití|  
-|ValidationMessageConsentNotAccepted|Před pokračováním musíte souhlasit s podmínkami používání.|  
+|ValidationMessageConsentNotAccepted|Před pokračováním musíte souhlasit s podmínkami použití.|  
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   

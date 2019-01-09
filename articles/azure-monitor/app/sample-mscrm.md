@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 12b4a4639991628265a19a5d45f3abdef590efcd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077925"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121154"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Průvodce: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
 V tomto článku se dozvíte, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Provedeme procesem kompletní proces přidávání skript Application Insights do vaší aplikace, zachycení dat a vizualizace dat.
@@ -133,6 +133,6 @@ Můžete provést i hlubší analýzu, pokud jste [export dat do Microsoft Power
 [Tady je ukázka řešení implementované v aplikaci Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="learn-more"></a>Další informace
-* [Co je Application Insights?](../../application-insights/app-insights-overview.md)
+* [Co je Application Insights?](../../azure-monitor/app/app-insights-overview.md)
 * [Application Insights pro webové stránky](../../azure-monitor/app/javascript.md)
-* [Další ukázky a návody](../../application-insights/app-insights-overview.md)
+* [Další ukázky a návody](../../azure-monitor/app/app-insights-overview.md)

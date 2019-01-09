@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 8f76c53964d062db76ea7d40cdb0ced2d015fc79
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 926a339bc8214c989da4ef934ae41012eea58d1e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716003"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120729"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -25,10 +25,10 @@ Azure Active Directory (Azure AD) obsahuje Proxy aplikace služby, který umož�
 V tomto kurzu:
 
 > [!div class="checklist"]
-> * Otevře porty pro odchozí provoz a umožňuje přístup ke konkrétní adresy URL
-> * Konektor se nainstaluje na Windows serveru a zaregistruje ho s Proxy aplikací
-> * Ověří konektor nainstalován a správně zaregistrován
-> * Přidá místní aplikace do svého tenanta Azure AD
+> * Otevře porty pro odchozí provoz a umožňuje přístup ke konkrétní adresy URL.
+> * Konektor se nainstaluje na Windows serveru a zaregistruje ho s Proxy aplikací.
+> * Ověří konektor nainstalován a správně zaregistrována.
+> * Přidá místní aplikace do svého tenanta Azure AD.
 > * Ověřuje, že testovací uživatel může přihlásit k aplikaci pomocí účtu služby Azure AD.
 
 ## <a name="before-you-begin"></a>Před zahájením

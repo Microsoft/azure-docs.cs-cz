@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 946d0895ff25509a0e35695fe27c783b3c50784b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a6937b5b6b3b85dd51d80a928de02a00c361cc0e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999573"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117601"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
-V řadě mikroslužby každé logické operace vyžaduje práci v různých součástí služby. Každá z těchto součástí samostatně lze pomocí [Application Insights](../../application-insights/app-insights-overview.md). Součást webové aplikace komunikuje s součást zprostředkovatele ověřování k ověření přihlašovacích údajů uživatele a s komponentou rozhraní API k získání dat pro vizualizaci. Komponentu rozhraní API v jeho důsledku můžete dotazovat data z jiných služeb a používat komponenty zprostředkovatele mezipaměti a upozornění fakturace komponenty o tomto volání. Application Insights podporuje distribuované telemetrie korelace. Umožňuje zjistit, jaká součást je zodpovědná za selhání nebo snížení výkonu.
+V řadě mikroslužby každé logické operace vyžaduje práci v různých součástí služby. Každá z těchto součástí samostatně lze pomocí [Application Insights](../../azure-monitor/app/app-insights-overview.md). Součást webové aplikace komunikuje s součást zprostředkovatele ověřování k ověření přihlašovacích údajů uživatele a s komponentou rozhraní API k získání dat pro vizualizaci. Komponentu rozhraní API v jeho důsledku můžete dotazovat data z jiných služeb a používat komponenty zprostředkovatele mezipaměti a upozornění fakturace komponenty o tomto volání. Application Insights podporuje distribuované telemetrie korelace. Umožňuje zjistit, jaká součást je zodpovědná za selhání nebo snížení výkonu.
 
 Tento článek vysvětluje používané službou Application Insights k harmonizaci telemetrická data odesílaná více komponent datového modelu. Zabývá se kontext šíření techniky a protokoly. Věnuje se také provádění koncepty korelace v různých jazycích a platformách.
 

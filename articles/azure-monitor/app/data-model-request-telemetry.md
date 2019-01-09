@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 1f9a108a91a2fa917ec58e6cff487c6dca71130f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076395"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117142"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: Datový model Application Insights
 
-Položky telemetrie požadavku (v [Application Insights](../../application-insights/app-insights-overview.md)) představuje Logická posloupnost spuštění aktivuje externí žádostí do vaší aplikace. Každé provedení požadavku je identifikován jedinečný `ID` a `url` obsahující všechny parametry spuštění. Požadavky můžete seskupovat podle logického `name` a definovat `source` této žádosti. Spuštění kódu může vést k `success` nebo `fail` a má určitou `duration`. Auditování úspěšných a neúspěšných spuštění může být seskupené podle `resultCode`. Počáteční čas pro telemetrie žádostí, které jsou definované na úrovni obálky.
+Položky telemetrie požadavku (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje Logická posloupnost spuštění aktivuje externí žádostí do vaší aplikace. Každé provedení požadavku je identifikován jedinečný `ID` a `url` obsahující všechny parametry spuštění. Požadavky můžete seskupovat podle logického `name` a definovat `source` této žádosti. Spuštění kódu může vést k `success` nebo `fail` a má určitou `duration`. Auditování úspěšných a neúspěšných spuštění může být seskupené podle `resultCode`. Počáteční čas pro telemetrie žádostí, které jsou definované na úrovni obálky.
 
 Žádost o telemetrii podporuje standardní rozšiřitelném modelu používání vlastní `properties` a `measurements`.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 333fec5b9459979d7735f0dd292d7367d86353fe
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7c5bfa96e7f9ef7812b8487c479b34d926633287
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326010"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105912"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schéma konfigurace Azure Diagnostics 1.0
 > [!NOTE]
@@ -25,7 +25,7 @@ Diagnostika Azure se používá s dalšími produkty Microsoftu diagnostiky jako
 
 Konfigurační soubor diagnostiky Azure definuje hodnoty, které se používají k inicializaci monitorování diagnostiky. Tento soubor slouží k inicializaci konfigurace diagnostiky nastavení při spuštění monitorování diagnostiky.  
 
- Ve výchozím nastavení, je nainstalován soubor schématu konfigurace diagnostiky Azure do `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` adresáře. Nahraďte `<version>` s nainstalovanou verzí [sady Azure SDK](http://www.windowsazure.com/develop/downloads/).  
+ Ve výchozím nastavení, je nainstalován soubor schématu konfigurace diagnostiky Azure do `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` adresáře. Nahraďte `<version>` s nainstalovanou verzí [sady Azure SDK](https://www.windowsazure.com/develop/downloads/).  
 
 > [!NOTE]
 >  Konfigurační soubor diagnostiky se obvykle používá pomocí úlohy po spuštění, které vyžadují diagnostických dat, které se mají shromažďovat dříve v procesu spouštění. Další informace o použití diagnostiky Azure najdete v tématu [shromažďování dat protokolování pomocí diagnostiky Azure pomocí](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  

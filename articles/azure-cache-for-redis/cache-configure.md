@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: ff6a3f32d9163be01483e8b8c743caa4e5bb573c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581245"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104671"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Postup konfigurace mezipaměti Azure Redis
 Toto téma popisuje dostupné konfigurace pro mezipaměť Azure pro instance Redis. Toto téma také popisuje výchozí konfigurace serveru Redis pro mezipaměť Azure pro instance Redis.
@@ -147,7 +147,7 @@ Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. 
 * `volatile-ttl`
 * `noeviction`
 
-Další informace o `maxmemory` zásady, najdete v článku [zásady vyřazení](http://redis.io/topics/lru-cache#eviction-policies).
+Další informace o `maxmemory` zásady, najdete v článku [zásady vyřazení](https://redis.io/topics/lru-cache#eviction-policies).
 
 **Vyhrazené maxmemory** nastavení konfiguruje množství paměti v Megabajtech, který je vyhrazený pro operace nesouvisející s mezipamětí, jako je replikace během převzetí služeb při selhání. Pokud tuto hodnotu nastavíte umožňuje mít více konzistentní prostředí serveru Redis při zatížení se liší. Tato hodnota by měla být nastavená na vyšší pro úlohy, které jsou zápisu náročná na výkon. Když paměti je vyhrazen pro tyto operace, není k dispozici pro úložiště dat uložených v mezipaměti.
 
@@ -170,7 +170,7 @@ Redis jsou oznámení nakonfigurovaná na prostor klíčů **upřesňující nas
 > 
 > 
 
-Další informace najdete v tématu [Redis oznámení Keyspace](http://redis.io/topics/notifications). Ukázkový kód, naleznete v tématu [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) soubor [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) vzorku.
+Další informace najdete v tématu [Redis oznámení Keyspace](https://redis.io/topics/notifications). Ukázkový kód, naleznete v tématu [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) soubor [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) vzorku.
 
 
 <a name="recommendations"></a>
@@ -406,7 +406,7 @@ Novou mezipaměť Azure pro instance Redis jsou nakonfigurovány s následujíc�
 | `maxmemory-samples` |3 |Šetří paměť, minimální hodnota TTL algoritmy LRU a jsou přibližně algoritmy místo přesné algoritmy. Ve výchozím nastavení Redis tři klíče kontroly a vyskladnění ten, který byl použit méně nedávno. |
 | `lua-time-limit` |5 000 |Maximální doba spuštění skript Lua v milisekundách. Při dosažení maximální doba spuštění Redis zaznamená, že skript je stále v provádění po maximální povolenou dobu a spustí odpovídání na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Omezení vyrovnávací paměti výstupního klienta slouží k vynucení odpojení klienti, kteří nejsou čtení dat ze serveru dostatečně rychle z nějakého důvodu (běžným důvodem je, že klient Pub/Sub nemůže využívat zprávy tak rychle, jak vydavatele zapříčinit). Další informace najdete na adrese [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Omezení vyrovnávací paměti výstupního klienta slouží k vynucení odpojení klienti, kteří nejsou čtení dat ze serveru dostatečně rychle z nějakého důvodu (běžným důvodem je, že klient Pub/Sub nemůže využívat zprávy tak rychle, jak vydavatele zapříčinit). Další informace najdete na adrese [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>limit `databases` se liší pro každý mezipaměti Azure Redis cenovou úroveň a můžete nastavit při vytváření mezipaměti. Pokud ne `databases` nastavení zadané během vytváření mezipaměti, výchozí hodnota je 16.
@@ -424,7 +424,7 @@ Novou mezipaměť Azure pro instance Redis jsou nakonfigurovány s následujíc�
   * P2 (13 GB 130 GB) – až 32 databází
   * P3 (26 GB – 260 GB) – až 48 databází
   * P4 (53 GB 530 GB) – až 64 databází
-  * Všechny mezipaměti úrovně premium s clusterem Redis povoleny – Redis cluster podporuje pouze používání databáze 0 proto `databases` limit pro všechny úrovně premium mezipaměti s clusterem Redis povoleno je v podstatě 1 a [vyberte](http://redis.io/commands/select) není povolen příkaz. Další informace najdete v tématu [potřeba dělat žádné změny Moje klientská aplikace použít clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * Všechny mezipaměti úrovně premium s clusterem Redis povoleny – Redis cluster podporuje pouze používání databáze 0 proto `databases` limit pro všechny úrovně premium mezipaměti s clusterem Redis povoleno je v podstatě 1 a [vyberte](https://redis.io/commands/select) není povolen příkaz. Další informace najdete v tématu [potřeba dělat žádné změny Moje klientská aplikace použít clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 Další informace o databázích, naleznete v tématu [co jsou databáze Redis?](cache-faq.md#what-are-redis-databases)
 
@@ -473,14 +473,14 @@ Další informace o databázích, naleznete v tématu [co jsou databáze Redis?]
 > 
 > 
 
-Další informace o příkazech Redis najdete v tématu [ http://redis.io/commands ](http://redis.io/commands).
+Další informace o příkazech Redis najdete v tématu [ https://redis.io/commands ](https://redis.io/commands).
 
 ## <a name="redis-console"></a>Konzola redis
 Příkazy můžete bezpečně posílat do mezipaměti Azure Redis instance pomocí **konzola Redis**, která je k dispozici na webu Azure Portal pro všechny úrovně mezipaměti.
 
 > [!IMPORTANT]
 > - Konzola Redis nebude fungovat s [VNET](cache-how-to-premium-vnet.md). Pokud vaše mezipaměť je součástí virtuální sítě, pouze klienti ve virtuální síti mají přístup k mezipaměti. Protože se spouští konzola Redis v prohlížeči místní, což je mimo virtuální síť, se nemůže připojit k vaší mezipaměti.
-> - Ne všechny příkazy Redis podporují v Azure mezipaměti Redis. Seznam Redis příkazy, které jsou pro Azure Cache zakázán pro Redis, najdete v předchozím [Redis nepodporuje v mezipaměti Azure Redis příkazy](#redis-commands-not-supported-in-azure-cache-for-redis) oddílu. Další informace o příkazech Redis najdete v tématu [ http://redis.io/commands ](http://redis.io/commands).
+> - Ne všechny příkazy Redis podporují v Azure mezipaměti Redis. Seznam Redis příkazy, které jsou pro Azure Cache zakázán pro Redis, najdete v předchozím [Redis nepodporuje v mezipaměti Azure Redis příkazy](#redis-commands-not-supported-in-azure-cache-for-redis) oddílu. Další informace o příkazech Redis najdete v tématu [ https://redis.io/commands ](https://redis.io/commands).
 > 
 > 
 

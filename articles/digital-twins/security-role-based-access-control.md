@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: lyrana
-ms.openlocfilehash: c1e48f6cb7ca4f26b8cafc31605bc9441ed047d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 94217deace731f6650db8003d2e1e3c6c63dcb66
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807597"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121018"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Řízení přístupu podle role v Azure digitální dvojče
 
@@ -83,4 +83,4 @@ Udělení oprávnění pro příjemce, vytvořte přiřazení role. Odvolat opr�
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o vytváření a správa Azure digitální dvojče přiřazení rolí, přečtěte si téma [vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md).
+- Další informace o vytváření a správa Azure digitální dvojče přiřazení rolí, přečtěte si téma [vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md).

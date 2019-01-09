@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: e1dc637d2f629b5002c2e8796fbd29a95478c392
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b48de6a6eeed997fe162cabe4d57e6770e016971
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035227"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54122798"
 ---
 Azure Virtual Machines (VM), projděte si různé stavy, které lze zařadit do *zřizování* a *power* stavy. Cílem tohoto článku je popisují tyto stavy a konkrétně zvýraznit, když se zákazníkům účtuje pro instanci využití. 
 
@@ -108,7 +108,7 @@ Instance fakturaci využití
  ]</code><br>
 </td>
 <td>
-<p><b>Není účtuje.&#42;</b></p>
+<p><b>Účtuje&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -151,7 +151,7 @@ Instance fakturaci využití
 </table>
 
 
-&#42;Některé prostředky Azure, jako je například disků a sítí, budou účtovat poplatky za bez ohledu na stav instance. 
+&#42;Některé prostředky Azure, jako je například disků a sítí, se vám účtovat poplatky. Softwarové licence na instanci nejsou spojené náklady.
 
 ## <a name="provisioning-states"></a>Stavy zřizování
 
@@ -244,7 +244,7 @@ Tady jsou stavy přechodné operaci po platformu přijal akce zahájená uživat
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>Poznámka:</b>: zřizování operačního systému můžete přejít na **neúspěšné** Pokud dojde k selhání operačního systému nebo v čase není nainstalován operační systém. Zákazníkům se účtuje nasazených virtuálních počítačů na infrastruktuře.</p>
+<p><b>Poznámka:</b> Zřizování operačního systému můžete přejít na **neúspěšné** Pokud dojde k selhání operačního systému nebo v čase není nainstalován operační systém. Zákazníkům se účtuje nasazených virtuálních počítačů na infrastruktuře.</p>
 </td>
 </tr>
 </table>
@@ -287,7 +287,7 @@ Po dokončení operace virtuálního počítače přejde do jedné z následují
 
 Zobrazení instance rozhraní API poskytuje informace o stavu spuštění virtuálních počítačů. Další informace najdete v tématu [Virtual Machines – zobrazení Instance](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) dokumentace k rozhraní API.
 
-Průzkumník prostředků Azure poskytuje jednoduché uživatelské rozhraní pro zobrazení stavu spuštění virtuálního počítače: [Průzkumníka prostředků](https://resources.azure.com/).
+Průzkumník prostředků Azure poskytuje jednoduché uživatelské rozhraní pro zobrazení stavu spuštění virtuálního počítače: [Průzkumník prostředků](https://resources.azure.com/).
 
 Stavy zřizování jsou viditelná ve vlastnostech virtuálního počítače a instance zobrazení. Stavy napájení jsou k dispozici v zobrazení instance virtuálního počítače. 
 

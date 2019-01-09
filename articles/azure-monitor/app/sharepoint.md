@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5c050ce33e9e5b4df7d5bdd50ca1bfd6a775b4a8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 027d5485b29deb434953470023d8a290cc0af58a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045752"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120921"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorování webu SharePointu pomocí Application Insights
 Služba Azure Application Insights monitoruje dostupnost, výkon a využití vaší aplikace. Zde se dozvíte, jak připravit prostředí pro web SharePointu.
@@ -145,7 +145,7 @@ function onRequestFail(sender, args) {
 
 ## <a name="next-steps"></a>Další kroky
 * [Webové testy](../../azure-monitor/app/monitor-web-app-availability.md) k monitorování dostupnosti vašeho webu
-* [Application Insights](../../application-insights/app-insights-overview.md) pro jiné typy aplikace.
+* [Application Insights](../../azure-monitor/app/app-insights-overview.md) pro jiné typy aplikace.
 
 <!--Link references-->
 

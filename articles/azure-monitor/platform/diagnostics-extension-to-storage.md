@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.component: diagnostic-extension
-ms.openlocfilehash: 616738b60f4a26b15c8245136860692f84349cc4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: f0d1a51a3c787bd4d9602eeaad9ac92eda7bacb7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326029"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103736"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Ukládání a zobrazení diagnostických dat v Azure Storage
 Diagnostická data nejsou ukládána trvale, pokud přenos pro emulátor úložiště Microsoft Azure nebo do úložiště Azure. Jednou v úložišti, bude možné dokument zobrazit s jedním z několika dostupných nástrojů.
@@ -75,7 +75,7 @@ Několik nástroje jsou k dispozici k zobrazení dat po převedení do úložiš
 
 * Průzkumník serveru v sadě Visual Studio – Pokud jste nainstalovali nástroje Azure pro sadu Microsoft Visual Studio, můžete uzlu služby Azure Storage v Průzkumníku serveru k zobrazení jen pro čtení objektů blob a tabulky data z vašich účtů úložiště Azure. Můžete zobrazit data z vašeho účtu emulátor místního úložiště a také z účtů úložiště jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumníku serveru](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, os x a Linuxu.
-* [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) zahrnuje správce diagnostiky Azure, které umožňuje zobrazit, stáhnout a spravovat diagnostická data shromážděná z aplikací spuštěných v Azure.
+* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) zahrnuje správce diagnostiky Azure, které umožňuje zobrazit, stáhnout a spravovat diagnostická data shromážděná z aplikací spuštěných v Azure.
 
 ## <a name="next-steps"></a>Další kroky
 [Trasování toku do aplikace cloudové služby pomocí diagnostiky Azure](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
