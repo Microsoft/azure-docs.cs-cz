@@ -120,10 +120,16 @@ items:
       href: job-state-events-cli-how-to.md
   - name: Ochrana obsahu
     items:
-    - name: S využitím AES-128 – .NET
+    - name: Dynamické šifrování AES-128 – .NET
       href: protect-with-aes128.md
-    - name: S využitím DRM – .NET
+    - name: Dynamické šifrování DRM – .NET
       href: protect-with-drm.md
+    - name: FairPlay pro iOS v offline režimu
+      href: offline-fairplay-for-ios.md
+    - name: Widevine pro Android v offline režimu
+      href: offline-widevine-for-android.md
+    - name: PlayReady pro Windows 10 v offline režimu
+      href: offline-plaready-streaming-for-windows-10.md
   - name: Vytváření filtrů
     items:
     - name: S využitím .NET
@@ -192,9 +198,9 @@ items:
     href: release-notes.md
   - name: Nejčastější dotazy
     href: frequently-asked-questions.md
-ms.openlocfilehash: 2ea45acd19909c6bcdcca7a68b9dce45fa272f08
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c168b5d2097e8fe1d6e79e271f8ff84af48cb049
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034977"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121630"

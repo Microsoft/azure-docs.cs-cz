@@ -11,7 +11,7 @@ items:
     href: search-create-service-portal.md
   - name: Portál
     items:
-    - name: Import – Index – Search
+    - name: Import, indexování a dotazování s využitím nástrojů
       href: search-get-started-portal.md
     - name: Vyzkoušení kognitivního vyhledávání
       href: cognitive-search-quickstart-blob.md
@@ -60,12 +60,12 @@ items:
   items:
   - name: Kognitivní vyhledávání (Preview)
     items:
+    - name: Připojení prostředku služeb Cognitive Services
+      href: cognitive-search-attach-cognitive-services.md
     - name: Definování dovedností
       href: cognitive-search-defining-skillset.md
     - name: Odkaz na poznámku
       href: cognitive-search-concept-annotations-syntax.md
-    - name: Přidružení Cognitive Services k sadě dovedností
-      href: cognitive-search-attach-cognitive-services.md
     - name: Mapování na pole indexu
       href: cognitive-search-output-field-mapping.md
     - name: Zpracování a extrahování informací z obrázků
@@ -287,9 +287,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 4bf8c36945d1a02d87ca6b0602de14d7f9694594
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d6b670b1302ec4363ebdf1853ae93677268724f7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999386"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121273"
