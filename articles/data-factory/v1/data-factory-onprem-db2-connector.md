@@ -21,7 +21,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54015130"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z databáze DB2 pomocí aktivity kopírování objekt pro vytváření dat Azure
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](data-factory-onprem-db2-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-db2.md)
 
