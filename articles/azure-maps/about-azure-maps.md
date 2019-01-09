@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 9bf168a0f06d662526d172687e54327b55d50bd8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165960"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104263"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -62,7 +62,7 @@ Služba Search poskytuje také pokročilé funkce, jako je hledání podél tras
 
 ### <a name="time-zone-service"></a>Služba Time Zone
 
-Služba Time Zone umožňuje získávat aktuální, historické i budoucí informace související s časovými pásmy buď podle zeměpisné šířky a délky, nebo [ID organizace IANA](http://www.iana.org/). Služba časových pásem také umožňuje převod ID časových pásem Microsoft Windows na ID organizace IANA, zjištění rozdílu časového pásma od UTC a získání aktuálního času v zadaném časovém pásmu. Typická odpověď JSON na dotaz na službu Time Zone Service vypadá jako v následující ukázce:
+Služba Time Zone umožňuje získávat aktuální, historické i budoucí informace související s časovými pásmy buď podle zeměpisné šířky a délky, nebo [ID organizace IANA](https://www.iana.org/). Služba časových pásem také umožňuje převod ID časových pásem Microsoft Windows na ID organizace IANA, zjištění rozdílu časového pásma od UTC a získání aktuálního času v zadaném časovém pásmu. Typická odpověď JSON na dotaz na službu Time Zone Service vypadá jako v následující ukázce:
 
 ```JSON
 {
@@ -109,7 +109,7 @@ Kromě toho Azure Maps nabízí pohodlný [mapový ovládací prvek v JavaScript
 
 ## <a name="usage"></a>Využití
 
-Přístup ke službám Maps je otázkou přechodu na web [Azure Portal](http://portal.azure.com) a vytvoření účtu Azure Maps.
+Přístup ke službám Maps je otázkou přechodu na web [Azure Portal](https://portal.azure.com) a vytvoření účtu Azure Maps.
 
 V Azure Maps se používá schéma ověřování založeného na klíčích. V účtu budou pro vás předem vygenerované dva klíče. Při zahájení integrace těchto polohových služeb do vaší aplikace můžete v požadavku na službu Azure Maps použít kterýkoli z obou klíčů.
 
@@ -126,7 +126,7 @@ Rozhraní Azure Maps API jsou v současné době k dispozici ve všech zemích s
 
 Zkontrolujte, že umístění aktuální IP adresy není v jedné z uvedených nepodporovaných zemí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o nových funkcích Azure Maps:
 

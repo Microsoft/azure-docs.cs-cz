@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 9d9e97d81e33487a5f23197912eba3802e83a32e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 07f77a8390edcde1128a7381a54d622611637d78
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257372"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118298"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -27,7 +27,7 @@ V následující tabulce jsou uvedeny rozdíly mezi identity dvě možnosti:
 |Fakturace|Musí být kapacity<br> Pouze Enterprise Agreement (EA)|Kapacita nebo platbami jako využití<br>EA nebo poskytovatele Cloud Solution Provider (CSP)|
 |Identita|Musí být služba AD FS|Azure AD nebo AD FS|
 |Marketplace |Podporováno<br>BYOL licencování|Podporováno<br>BYOL licencování|
-|Registrace|Doporučuje, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Automatizované|
+|Registrace|Povinné, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Automatizované|
 |Opravy a aktualizace|Povinné, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Balíček aktualizace si můžete stáhnout přímo<br> z Internetu do služby Azure Stack.|
 
 > [!IMPORTANT]

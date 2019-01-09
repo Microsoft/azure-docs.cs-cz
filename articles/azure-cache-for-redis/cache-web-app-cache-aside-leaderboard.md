@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: wesmc
-ms.openlocfilehash: 21f6f729cef6478c190c9e8b872723e4ae67fb1e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: da99d446da1451c2b05f6ecab8ba19eaa1e2bfa3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019024"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104943"
 ---
-# <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření tabulky výsledků s principem s doplňováním mezipaměti aplikací v ASP.NET
+# <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření žebříčkové s doplňováním mezipaměti technologie ASP.NET
 
 V tomto kurzu budete aktualizovat *ContosoTeamStats* ASP.NET webovou aplikaci vytvořenou v [ASP.NET quickstart pro Azure Cache pro Redis](cache-web-app-howto.md), aby zahrnoval žebříček, který používá [doplňování mezipaměti vzor](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) s mezipamětí Azure pro Redis. Ukázková aplikace zobrazí seznam týmových statistik z databáze a ukazuje různé způsoby použití mezipaměti Redis Azure k ukládání a načítání dat z mezipaměti ke zlepšení výkonu. Po dokončení tohoto kurzu budete mít funkční webovou aplikaci, která přečtených a zapsaných do databáze, je optimalizovaná pomocí Azure Cache pro Redis a je hostovaná v Azure.
 
@@ -520,7 +520,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
     ```csharp
     // POST: Teams/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Create([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
@@ -544,7 +544,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
     ```csharp
     // POST: Teams/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Edit([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
@@ -584,7 +584,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
 
 1. V **Průzkumníku řešení** rozbalte složku **Zobrazení**, poté složku **Týmy**, a dvakrát klikněte na soubor **Index.cshtml**.
 
-    ![Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
+    ![Soubor Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
 
 1. V horní části souboru vyhledejte následující element odstavce:
 
@@ -630,7 +630,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
     ```
     Tento řádek zobrazuje hodnotu `ViewBag.Msg` obsahující zprávu o stavu aktuální operace. Hodnota `ViewBag.Msg` se nastaví po kliknutí na některý z odkazů na akce z předchozího kroku.
 
-    ![Stavová zpráva](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
+    ![Zpráva o stavu](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
 
 1. Projekt sestavíte stisknutím klávesy **F6**.
 
@@ -699,7 +699,7 @@ V tomto kroku kurzu publikujete aktualizace aplikace do Azure a spustíte ji v c
 
 1. V sadě Visual Studio klikněte pravým tlačítkem na projekt **ContosoTeamStats** a vyberte **Publikovat**.
 
-    ![Publikovat](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![Publikování](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
 2. Klikněte na **Publikovat**, aby se použil stejný profil publikování, který jste vytvořili v rychlém startu.
 
@@ -709,7 +709,7 @@ V tomto kroku kurzu publikujete aktualizace aplikace do Azure a spustíte ji v c
 
     Následující tabulka popisuje každý odkaz na akci v ukázkové aplikaci:
 
-    | akce | Popis |
+    | Akce | Popis |
     | --- | --- |
     | Vytvořit nový |Vytvoření nového týmu. |
     | Odehrát sezónu |Odehrání sezóny her, aktualizace týmových statistik a vymazání zastaralých dat z mezipaměti. |
@@ -735,7 +735,7 @@ Po dokončení ukázkové aplikace můžete odstranit použité prostředky Azur
 2. Zadejte název vaší skupiny prostředků do textového pole **Filtrování položek...**.
 3. Klikněte na **...** napravo od skupiny prostředků a klikněte na **Odstranit skupinu prostředků**.
 
-    ![Odstranit](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![Odstranění](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
 

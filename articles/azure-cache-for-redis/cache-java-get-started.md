@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 0a407cdfd6786848825a114ff5667ccaff91fe71
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: bd0bb1c967885aa5e74728156a073e9ccc0ca48f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556862"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105878"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Rychlý start: Použití mezipaměti Azure pro Redis s Javou
 
@@ -38,7 +38,7 @@ K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor 
 
 ## <a name="prerequisites"></a>Požadavky
 
-[Apache Maven](http://maven.apache.org/)
+[Apache Maven](https://maven.apache.org/)
 
 
 

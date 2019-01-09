@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: bb240437870ce5457e40e8dcc3b31f3909b546fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607128"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103362"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure do horké cesty s využitím služby Event Hubs
 Diagnostika Azure nabízí flexibilní možnosti, jak shromažďovat metriky a protokoly z cloudové služby virtuálních počítačů (VM) a přenést výsledky do služby Azure Storage. Od března 2016 (SDK 2.9) časový rámec, můžete odeslání diagnostiky do vlastní zdroje dat a přenos dat kritickou cestu během několika sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -316,7 +316,7 @@ namespace EventHubListener
     Nejprve se ujistěte, že události rozbočovače a konfigurační informace, které je správný, jak bylo popsáno dříve. Někdy **PrivateConfig** obnovit v nasazení aktualizace. Doporučené opravy je, aby všechny změny *.wadcfgx* v projektu a nabízených oznámení aplikace dokončena a aktualizace. Pokud to není možné, ujistěte se, že aktualizace diagnostiky nabízených oznámení dokončení **PrivateConfig** , který obsahuje klíč SAS.  
 * Byl proveden o návrhy a centra událostí není funkční.
 
-    Zkuste se podívat v tabulce Azure Storage, který obsahuje chyby a protokolování Azure Diagnostics, vlastní: **WADDiagnosticInfrastructureLogsTable**. Jednou z možností je použít nástroj, jako například [Průzkumníka služby Azure Storage](http://www.storageexplorer.com) pro připojení k tomuto účtu úložiště, zobrazit tuto tabulku a přidat dotaz pro časové razítko za posledních 24 hodin. Nástroj můžete exportovat soubor CSV a otevřít ji v aplikaci jako je třeba aplikace Microsoft Excel. Excelu umožňuje snadno hledat řetězce volání karty, jako například **EventHubs**, abyste si zobrazili, jaká chyba se nahlásí.  
+    Zkuste se podívat v tabulce Azure Storage, který obsahuje chyby a protokolování Azure Diagnostics, vlastní: **WADDiagnosticInfrastructureLogsTable**. Jednou z možností je použít nástroj, jako například [Průzkumníka služby Azure Storage](https://www.storageexplorer.com) pro připojení k tomuto účtu úložiště, zobrazit tuto tabulku a přidat dotaz pro časové razítko za posledních 24 hodin. Nástroj můžete exportovat soubor CSV a otevřít ji v aplikaci jako je třeba aplikace Microsoft Excel. Excelu umožňuje snadno hledat řetězce volání karty, jako například **EventHubs**, abyste si zobrazili, jaká chyba se nahlásí.  
 
 ## <a name="next-steps"></a>Další postup
 • [Další informace o službě Event Hubs](https://azure.microsoft.com/services/event-hubs/)

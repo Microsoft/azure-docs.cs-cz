@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: af002035bb0ab56a985e38d02ad374b23d177583
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 300f0ddc8b738b5fd8578ed0b33cc15000c1098a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081022"
+ms.locfileid: "54101781"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorování a upozornění na stav aplikace pomocí Azure Application Insights
 
@@ -94,4 +94,4 @@ Podrobnosti týkající se vytvoření aplikace logiky s využitím Application 
 Teď, když jste zjistili, jak upozorní na problémy, přejděte k dalšímu kurzu, kde se naučíte, jak analyzovat, jak uživatelé interagují s vaší aplikací.
 
 > [!div class="nextstepaction"]
-> [Pochopení uživatelů](../../application-insights/app-insights-tutorial-users.md)
+> [Pochopení uživatelů](../../azure-monitor/learn/tutorial-users.md)

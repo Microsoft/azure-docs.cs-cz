@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: c55a80749506b0a03af2f8c5f0179b67c8a78d15
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: bad87931feb11012f23f0ef19bd853b38566c07c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016736"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106820"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení pro import rozhraní API a známé problémy
 ## <a name="about-this-list"></a>Informace o tomto seznamu
@@ -47,6 +47,7 @@ Soubory WSDL se používají k rozhraní API protokolu SOAP předávací Generov
 * **WCF wsHttpBinding** -SOAP služby vytvořené pomocí Windows Communication Foundation by měl používat basicHttpBinding – wsHttpBinding nepodporuje.
 * **MTOM** – služby pomocí MTOM <em>může</em> fungovat. V tuto chvíli není dostupná podpora oficiální.
 * **Rekurze** – typy, které jsou definované rekurzivně (například odkazovat na pole samy o sobě) nejsou podporovány APIM.
+* **Více oborů názvů** – více oborů názvů, je možné ve schématu, ale jenom cílový obor názvů lze definovat části zprávy. Obory názvů než je cíl, které se používají k definování dalších vstupních nebo výstupních prvky nejsou zachovány. I když je možné importovat dokument WSDL, při exportu všechny části zprávy bude mít cílový obor názvů schématu WSDL.
 
 ## <a name="wadl"> </a>WADL
 V současné době nejsou žádné známé problémy při importu WADL.

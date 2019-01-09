@@ -10,21 +10,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 1/07/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8e0009bf0fc34d3e0d22755d93d941b85db62ffd
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c90b81cdb6df5477d658d53dc93d0c3bbc47c1ff
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334461"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106439"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Ověření aktualizace softwaru od Microsoftu
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Microsoft pravidelně vydá aktualizace softwaru Azure Stack. Tyto aktualizace jsou k dispozici pro partnery společné technikům Azure Stack s předstihem prováděné veřejně dostupné, takže můžete ověřit aktualizací před jejich řešení a zasílat připomínky do Microsoftu.
+Microsoft pravidelně vydá aktualizace softwaru Azure Stack. Tyto aktualizace jsou k dispozici ke službě Azure Stack coengineering partnerů. Aktualizace jsou součástí zálohy veřejně k dispozici. Můžete zkontrolovat aktualizace pro vaše řešení a zasílat připomínky do Microsoftu.
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
@@ -34,11 +34,15 @@ Microsoft pravidelně vydá aktualizace softwaru Azure Stack. Tyto aktualizace j
 
 ## <a name="create-a-workflow"></a>Vytvoření pracovního postupu
 
-Ověření aktualizace pomocí stejného postupu jako **ověřování balíčku**. Postupujte podle pokynů na adrese [vytvořit pracovní postup ověření balíčku](azure-stack-vaas-validate-oem-package.md#create-a-package-validation-workflow).
+Ověření aktualizace pomocí stejného postupu jako **ověření řešení**.
 
-## <a name="run-tests"></a>Spuštění testů
+## <a name="run-tests"></a>Spouštění testů
 
-Ověření aktualizace pomocí stejného postupu jako **ověřování balíčku**. Postupujte podle pokynů na adrese [testy spustit ověření balíčku](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests).
+1. Ověření aktualizace pomocí stejného postupu jako **ověření řešení**. 
+
+2. Postupujte podle pokynů na adrese [testy spustit ověření řešení](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests). Místo toho vyberte následující testy:
+    - Měsíční aktualizace ověřovací služby Azure Stack
+    - Simulace modulu cloudu
 
 Není nutné požádat o podpis pro ověření aktualizace balíčku.
 

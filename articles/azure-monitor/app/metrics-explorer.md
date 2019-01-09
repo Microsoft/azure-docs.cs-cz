@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6341ffe33984a7f40f9d4120ca6726a082463474
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 752f28eed3a6be5f7f136999c66e405bf7785a42
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039703"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120967"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Zkoumání metrik ve službě Application Insights
 Metriky na [Application Insights] [ start] měřené hodnoty a počty událostí, které se odesílají v telemetrii z vaší aplikace. Pomáhají zjišťovat problémy s výkonem a sledovat trendy ve využití vaší aplikace. Existuje širokou škálu standardních metrik a můžete také vytvořit své vlastní metriky a události.
@@ -193,7 +193,7 @@ Z grafu metrik můžete kliknout na ikonu Analytics získat přímo na ekvivalen
 
     Pokud chcete nastavit filtry, jiné na různých grafů, vytvořte je v jiné listy, uložte jako samostatné Oblíbené položky. Pokud chcete, můžete ho připnout na řídicí panel, tak, aby si ji můžete zobrazit vedle sebe navzájem.
 * Pokud seskupíte podle vlastnosti, která není definována na metriku grafu, pak nebude nic v grafu. Vymažte "Seskupit podle", nebo zvolte jinou seskupení vlastnost.
-* Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro Java webových služeb, aplikací klasické pracovní plochy Windows [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md), a [Azure Cloud Services](../../application-insights/app-insights-overview.md). Není k dispozici pro Azure websites.
+* Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro Java webových služeb, aplikací klasické pracovní plochy Windows [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md), a [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Není k dispozici pro Azure websites.
 
 ## <a name="video"></a>Video
 
@@ -206,5 +206,5 @@ Z grafu metrik můžete kliknout na ikonu Analytics získat přímo na ekvivalen
 <!--Link references-->
 
 [alerts]: ../../azure-monitor/app/alerts.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md

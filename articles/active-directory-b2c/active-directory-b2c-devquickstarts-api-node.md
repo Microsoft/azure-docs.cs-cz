@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15526cc829d556457a7069df613bb6a8d2a2b23b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847656"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117907"
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Zabezpečení webového rozhraní API pomocí Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -267,11 +267,11 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 
 `IdentityMetadata`: Tady `passport-azure-ad` hledá konfigurační data pro zprostředkovatele identity. Také zde hledá klíče pro ověření webových tokenů JSON.
 
-`audience`: Identifikátor URI z portálu, který identifikuje vaši volající aplikaci.
+`audience`: Identifikátor URI (URI) z portálu, který identifikuje vaši volající aplikaci.
 
 `tenantName`: Název vašeho klienta (například **contoso.onmicrosoft.com**).
 
-`policyName`: Zásada, kterou chcete použít k ověřování tokenů přicházejících na váš server. Tato zásada by měla být stejná jako ta, kterou používáte pro přihlašování na klientské aplikaci.
+`policyName`: Zásady, které chcete k ověřování tokenů přicházejících na váš server. Tato zásada by měla být stejná jako ta, kterou používáte pro přihlašování na klientské aplikaci.
 
 > [!NOTE]
 > Použijte stejné zásady v nastavení klienta i serveru. Pokud jste již dokončili návod a tyto zásady jste už vytvořili, nemusíte to dělat znovu. Vzhledem k tomu, že jste návod dokončili, nemělo by být třeba nastavovat nové zásady u návodů pro klienty na této stránce.
@@ -341,7 +341,7 @@ Tento model schématu je jednoduchý. Podle potřeby ho můžete rozšířit.
 
 `Text`: Vlastní úloha. Tento objekt je typu **string**.
 
-`date`: Doba, kdy se má úloha vykonat. Tento objekt je typu **datetime**.
+`date`: Datum, které je třeba provést úlohy. Tento objekt je typu **datetime**.
 
 `completed`: Pokud je úloha dokončena. Tento objekt je typu **Boolean**.
 
@@ -549,7 +549,7 @@ Restify a Express poskytují široké možnosti přizpůsobení serveru REST API
 
 
 var server = restify.createServer({
-    name: "Microsoft Azure Active Directroy TODO Server",
+    name: "Microsoft Azure Active Directory TODO Server",
     version: "2.0.1"
 });
 

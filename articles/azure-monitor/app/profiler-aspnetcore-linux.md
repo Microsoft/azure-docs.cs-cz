@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: bfd6f59ca61d14bc8187aa7c56c29ac44b40b8e9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: cb294f0a3c22d52bc40f30e1d8655aed185857c6
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074272"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118485"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilování webových aplikací ASP.NET Core Azure s Linuxem pomocí Application Insights Profiler
 
 Tato funkce je aktuálně ve verzi Preview.
 
-Zjistěte, jak dlouho se stráven v každé metody živé webové aplikace při používání [Application Insights](../../application-insights/app-insights-overview.md). Application Insights Profiler je teď k dispozici pro webové aplikace ASP.NET Core, které jsou hostované v systému Linux ve službě Azure App Service. Tento průvodce obsahuje podrobný návod jak se můžou shromažďovat trasování Profiler pro ASP.NET Core Linuxové webové aplikace.
+Zjistěte, jak dlouho se stráven v každé metody živé webové aplikace při používání [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler je teď k dispozici pro webové aplikace ASP.NET Core, které jsou hostované v systému Linux ve službě Azure App Service. Tento průvodce obsahuje podrobný návod jak se můžou shromažďovat trasování Profiler pro ASP.NET Core Linuxové webové aplikace.
 
 Po dokončení tohoto návodu, vaše aplikace může shromažďovat trasování Profiler jako trasování, které jsou uvedené na obrázku. V tomto příkladu trasování Profiler označuje, že je na konkrétní webový požadavek pomalé z důvodu čekací čas strávený. *Kritickou cestu* v kódu, který je zpomalení aplikace je označené ikonou bezpečnostní opatření. **o** metoda ve **HomeController** části zpomaluje webové aplikace, protože volání metody **Thread.Sleep** funkce.
 

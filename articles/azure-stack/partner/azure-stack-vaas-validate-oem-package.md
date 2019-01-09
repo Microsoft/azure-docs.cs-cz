@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e3b0de577186cb7eb032a2042d234a0ffa2e3bb9
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261798"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105538"
 ---
 # <a name="validate-oem-packages"></a>Ověření balíčky výrobce OEM
 
@@ -70,7 +70,7 @@ Při vytváření **ověřování balíčku** pracovního postupu portálu VaaS,
 
 Použití **SAS URL objektu Blob** při spouštění nového **ověřování balíčku** pracovního postupu portálu VaaS.
 
-#### <a name="option-2-using-public-read-container"></a>Možnost 2: Použití veřejného kontejneru pro čtení
+#### <a name="option-2-using-public-read-container"></a>Možnost 2: Pomocí veřejné čtení kontejneru
 
 > [!CAUTION]
 > Tato možnost otevře se váš kontejner pro anonymní přístup jen pro čtení.
@@ -113,9 +113,23 @@ Použití **SAS URL objektu Blob** při spouštění nového **ověřování bal
 
 ## <a name="run-package-validation-tests"></a>Spustit testy pro ověření balíčku
 
-V **balíček ověřovacími testy, které jsou souhrnné** stránky, zobrazí se seznam testů, které jsou potřebné k dokončení ověření. Spustit testy v tomto pracovním postupu přibližně 24 hodin.
+1. V **ověřování balíčku testuje SOUHRN** stránky, zobrazí se seznam testů, které jsou potřebné k dokončení ověření. Spustit testy v tomto pracovním postupu přibližně 24 hodin.
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+    V pracovních postupech ověřování **plánování** testu používá společné parametry úrovni pracovního postupu, které jste zadali při vytváření pracovního postupu (viz [společných parametrů pracovních postupů pro Azure Stack ověření jako služba](azure-stack-vaas-parameters.md)). Pokud některý z hodnoty parametrů testu stane neplatným, je nutné resupply podle pokynů v tématu [upravit parametry pracovního postupu](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+
+    > [!NOTE]
+    > Při plánování ověřovací test existující instance vytvoří novou instanci namísto původní instanci na portálu. Protokoly pro původní instanci se zachovají, ale nejsou přístupné z portálu.  
+    Po úspěšném dokončení testu **plán** akce bude zakázáno.
+
+2. Vyberte agenta, který se spustí test. Další informace o přidávání místní testovací agenti spuštění, naleznete v tématu [nasazení místní agent](azure-stack-vaas-local-agent.md).
+
+3. Pro každou z následujících testů kroku 4 a 5:
+    - Ověřování balíčků rozšíření výrobce OEM
+    - Simulace modulu cloudu
+
+4. Vyberte **plán** z místní nabídky otevřete příkazový řádek pro plánování testovací instance.
+
+5. Zkontrolujte parametry testu a pak vyberte **odeslat** naplánování test po dobu provádění.
 
 Název řešení VaaS a ověřování balíčku pro odeslání, když všechny testy byly úspěšně dokončeny, [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) na žádost o podepsání balíčku.
 

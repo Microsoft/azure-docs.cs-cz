@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: cff742688c307becf4bf87cced15036b25fa10c8
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f47b1d35ada061601233506222903742393c6830
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554618"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101747"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>Rychlý start: Použití mezipaměti Azure pro Redis s využitím Node.js
 
@@ -42,7 +42,7 @@ Nainstalujte [node_redis](https://github.com/mranney/node_redis):
 
     npm install redis
 
-Tento kurz používá [node_redis](https://github.com/mranney/node_redis). Příklady použití dalších klientů Node.js najdete v individuální dokumentaci pro klienty Node.js uvedené v [klientech Node.js Redis](http://redis.io/clients#nodejs).
+Tento kurz používá [node_redis](https://github.com/mranney/node_redis). Příklady použití dalších klientů Node.js najdete v individuální dokumentaci pro klienty Node.js uvedené v [klientech Node.js Redis](https://redis.io/clients#nodejs).
 
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
@@ -77,7 +77,7 @@ Nevytvářejte nová připojení pro každou operaci v kódu. Raději co nejvíc
 
 Vytvořte nový soubor skriptu s názvem *redistest.js*.
 
-Přidejte následující příklad JavaScriptu do souboru. Tento kód ukazuje, jak se připojit k Azure Cache pro instanci Redis pomocí mezipaměti název hostitele a proměnných prostředí klíče. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. Pro další příklady použití Redis pomocí klienta [node_redis](https://github.com/mranney/node_redis) se podívejte na [http://redis.js.org/](http://redis.js.org/).
+Přidejte následující příklad JavaScriptu do souboru. Tento kód ukazuje, jak se připojit k Azure Cache pro instanci Redis pomocí mezipaměti název hostitele a proměnných prostředí klíče. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. Pro další příklady použití Redis pomocí klienta [node_redis](https://github.com/mranney/node_redis) se podívejte na [https://redis.js.org/](https://redis.js.org/).
 
 ```js
 var redis = require("redis");

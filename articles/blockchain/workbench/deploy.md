@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 12/4/2018
+ms.date: 1/8/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5f2f262d5ec4b9e8884e47c6c064927da2af4790
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2c5e3664a9ef26319eb8a51d03ddef6a5392ffa9
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876145"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102988"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
@@ -61,7 +61,7 @@ Azure Blockchain Workbench vyžaduje konfiguraci a uplatnění registrace Azure 
 Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench. Následující oddíly popisují postup nasazení rozhraní framework.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V pravém rohu a přepnout na požadovanou Azure AD tenanta, ve které chcete nasadit Azure Blockchain Workbench vyberte svůj účet.
+2. V pravém horním rohu vyberte svůj účet a přepnout na požadovanou tenanta Azure AD, ve které chcete nasadit Azure Blockchain Workbench.
 3. V levém podokně vyberte **vytvořit prostředek**. Vyhledejte `Azure Blockchain Workbench` v **Hledat na Marketplace** panelu hledání. 
 
     ![Panel hledání Marketplace](media/deploy/marketplace-search-bar.png)
@@ -119,7 +119,7 @@ Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench
 
     | Nastavení | Popis  |
     |---------|--------------|
-    | Koncový bod Etherea RPC | Zadejte koncový bod existující síť blockchain PoA RPC. Koncový bod začíná na https:// nebo http:// a končí číslem portu. Například `https://network.westus.cloudapp.com:8540`. |
+    | Koncový bod Etherea RPC | Zadejte koncový bod existující síť blockchain PoA RPC. Koncový bod začíná na https:// nebo http:// a končí číslem portu. Například `http<s>://<network-url>:<port>`. |
     | Nastavení služby Azure Active Directory | Zvolte **později přidat**.</br>Poznámka: Pokud jste se rozhodli [předem nakonfigurovat služby Azure AD](#azure-ad-configuration) nebo opětovného nasazení, zvolit *přidat nyní*. |
     | Výběr VM | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. |
 
@@ -194,7 +194,7 @@ Blockchain Workbench umožňuje nasazení vyžaduje registrace aplikace Azure AD
 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte svůj účet v pravém horním rohu a přepnout na požadovanou Azure AD tenanta. Klient by měl být správce předplatného tenanta předplatného, ve kterém je nasazená aplikace Workbench a máte dostatečná oprávnění k registraci aplikace.
+2. V pravém horním rohu vyberte svůj účet a přepněte do požadované služby Azure AD tenanta. Klient by měl být správce předplatného tenanta předplatného, ve kterém je nasazená aplikace Workbench a máte dostatečná oprávnění k registraci aplikace.
 3. V levém navigačním podokně vyberte službu **Azure Active Directory**. Vyberte **registrace aplikací** > **registrace nové aplikace**.
 
     ![Registrace aplikace](media/deploy/app-registration.png)
@@ -216,7 +216,7 @@ Blockchain Workbench umožňuje nasazení vyžaduje registrace aplikace Azure AD
 Dále je třeba upravit manifest pro použití aplikačních rolí v rámci Azure AD k určení Blockchain Workbench umožňuje správci.  Další informace o manifestech aplikace naleznete v tématu [manifest aplikace Azure Active Directory](../../active-directory/develop/reference-app-manifest.md).
 
 1. Pro aplikace, které jste zaregistrovali, vyberte **Manifest** v podokně podrobností registrované aplikaci.
-2. Generování identifikátoru GUID. Můžete vygenerovat identifikátor GUID, pomocí příkazu prostředí PowerShell [identifikátor guid]:: NewGuid () nebo rutiny New-GUID. Další možností je použití webu generátor identifikátor GUID.
+2. Generování identifikátoru GUID. Můžete generovat identifikátor GUID, pomocí příkazu prostředí PowerShell [identifikátor guid]:: (NewGuid) nebo rutiny New-GUID. Další možností je použití webu generátor identifikátor GUID.
 3. Chcete aktualizovat **appRoles** manifestu. V podokně úpravy manifestu vyberte **upravit** a nahraďte `"appRoles": []` pomocí zadaného kódu JSON. Nezapomeňte nahradit hodnotu **id** pole identifikátoru GUID, který jste vygenerovali. 
 
     ![Upravit manifest](media/deploy/edit-manifest.png)

@@ -11,12 +11,12 @@ ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 tags: connectors
 ms.topic: article
 ms.date: 01/08/2019
-ms.openlocfilehash: 369bdba063f8582b8343682dcbbc990d2f63e21a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a1f89ca6e9dc2d05180df14ff0f4dc52729a7e03
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078061"
+ms.locfileid: "54107833"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Vytváření a spouštění opakovaných úloh a pracovních postupů s Azure Logic Apps
 
@@ -39,7 +39,7 @@ Tato aktivační událost podporuje mnoho vzory, třeba:
 
 Když se trigger opakování aktivuje pokaždé, když, Logic Apps vytvoří a spustí novou instanci pracovního postupu aplikace logiky. 
 
-Okamžitě aktivovat svou aplikaci logiky a spusťte jednou bez opakovaného najdete v tématu [spuštění úlohy jednou](#run-once) dále v tomto tématu.
+Aktivaci vaší aplikace logiky a spustit pouze jednou v budoucnu najdete v tématu [spuštění úlohy jednou](#run-once) dále v tomto tématu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -141,8 +141,8 @@ Tady je příklad [definice aktivační události opakování](../logic-apps/log
 
 <a name="run-once"></a>
 
-**DOTAZ:** Co když chci spustit okamžitě a jednou pouze aplikaci logiky? </br>
-**ODPOVĚĎ:** K aktivaci vaší aplikace logiky hned a spusťte jednou bez opakování, můžete použít **plánovače: Spustit jednou úlohy** šablony. Po vytvoření nové aplikace logiky, ale před otevřením v návrháři pro Logic Apps **šablony** části z **kategorie** seznamu vyberte **plán**a pak vyberte šablony:
+**DOTAZ:** Co když chci pouze v budoucnu jednou spustili aplikaci logiky? </br>
+**ODPOVĚĎ:** K aktivaci vaší aplikace logiky a spusťte jednou bez opakování, můžete použít **plánovače: Spustit jednou úlohy** šablony. Po vytvoření nové aplikace logiky, ale před otevřením v návrháři pro Logic Apps **šablony** části z **kategorie** seznamu vyberte **plán**a pak vyberte šablony:
 
 ![Vyberte "plánovače: Spustit jednou úlohy"šablony](./media/connectors-native-recurrence/choose-run-once-template.png)
 

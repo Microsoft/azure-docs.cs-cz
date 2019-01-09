@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2387af0ddd9f6f3ecbe91afaaca66d89f070c036
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 690822848fa2c6524f98c9bbd32e6d2890e4a9c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076036"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118758"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -34,7 +34,7 @@ ms.locfileid: "54076036"
 
 *Můžu [nainstalované monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md) na webovém serveru k monitorování stávajících aplikací. Se mi nezobrazují žádné výsledky.*
 
-* Zobrazit [řešení potíží s monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights). 
+* Zobrazit [řešení potíží s monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot). 
 
 ## <a name="q01"></a>Žádná možnost Přidat Application Insights v sadě Visual Studio
 *Když pravým tlačítkem myši existující projekt v Průzkumníku řešení, se mi nezobrazují žádné možnosti Application Insights.*
@@ -154,7 +154,7 @@ Data pocházejí z skripty na webových stránkách.
 Zobrazit [telemetrických závislostí](../../azure-monitor/app/asp-net-dependencies.md) a [telemetrie výjimek](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Žádná data o výkonu
-Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro [webových služeb v Javě](../../azure-monitor/app/java-collectd.md), [aplikací klasické pracovní plochy Windows](../../azure-monitor/app/windows-desktop.md), [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md), a [Azure Cloud Services](../../application-insights/app-insights-overview.md). najdete ji v části nastavení serverů.
+Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro [webových služeb v Javě](../../azure-monitor/app/java-collectd.md), [aplikací klasické pracovní plochy Windows](../../azure-monitor/app/windows-desktop.md), [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md), a [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). najdete ji v části nastavení serverů.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Žádná data (server), protože jsem publikoval aplikaci ke svému serveru
 * Ve skutečnosti zkopírování všech Microsoft zkontrolujte. ApplicationInsights knihovny DLL na serveru, spolu s Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll

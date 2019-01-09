@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 1/8/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5920ec5ec8e864b5bdb986544a3cdc259e7344da
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c1dfc4ed969735be26ae075900cd850e016afffa
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053632"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107578"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak spustit a zastavit prostředí Azure-SSIS Integration Runtime podle plánu
 Tento článek popisuje, jak naplánovat spuštění a zastavení prostředí Azure-SSIS Integration Runtime (IR) pomocí Azure Data Factory (ADF). Prostředí Azure-SSIS IR je ADF výpočetní prostředky, které jsou vyhrazené pro spouštění balíčků SQL Server Integration Services (SSIS). Spuštění prostředí Azure-SSIS IR s náklady s ním spojená. Proto je obvykle chcete spustit prostředí IR jenom v případě, že budete muset spouštění balíčků služby SSIS v Azure a zastavit prostředí IR, když ho už není nutné. Můžete použít ADF uživatelské rozhraní (UI) / aplikaci nebo prostředí Azure PowerShell potřeba [ručně spustit nebo zastavit prostředí IR](manage-azure-ssis-integration-runtime.md)).
@@ -54,7 +54,7 @@ Pokud vytvoříte třetí aktivační událost, která je naplánované spoušt�
  
    Název vašeho ADF musí být globálně jedinečný. Pokud se zobrazí následující chyba, změňte název vaší ADF (například na Vaše_jméno_myazuressisdatafactory) a zkuste vytvořit znova. Zobrazit [služby Data Factory – pravidla pojmenování](naming-rules.md) článku se dozvíte o pravidla pojmenování artefaktů ADF.
   
-   `Data factory name �MyAzureSsisDataFactory� is not available`
+   `Data factory name MyAzureSsisDataFactory is not available`
       
 4. Vyberte si Azure **předplatné** pod kterou chcete vytvořit váš ADF. 
 5. V části **Skupina prostředků** proveďte jeden z následujících kroků:
@@ -86,23 +86,21 @@ Pokud vytvoříte třetí aktivační událost, která je naplánované spoušt�
    
 2. V **aktivity** sady nástrojů, rozbalte **Obecné** nabídky a přetáhnout **webové** aktivity na plochu návrháře kanálu. V **Obecné** kartě okna vlastnosti aktivity, změňte název aktivity na **startMyIR**. Přepnout na **nastavení** kartu, a proveďte následující akce.
 
-    1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, který se spustí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`.
+    1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, který se spustí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. Alternativně je můžete také zkopírujte a vložte ID prostředku prostředí IR z jeho monitorování stránky na ADF uživatelského rozhraní nebo aplikaci nahradit následující část výše zobrazenou adresu URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
     
-    Alternativně je můžete také zkopírujte a vložte ID prostředku prostředí IR z jeho monitorování stránky na ADF uživatelského rozhraní nebo aplikaci nahradit následující část výše zobrazenou adresu URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
-    
-   ![ID prostředku prostředí IR služby SSIS ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
+       ![ID prostředku prostředí IR služby SSIS ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
     2. Pro **metoda**vyberte **příspěvek**. 
     3. Pro **tělo**, zadejte `{"message":"Start my IR"}`. 
     4. Pro **ověřování**vyberte **MSI** pomocí spravované identity pro vaše ADF naleznete v části [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) najdete další informace.
-    5. Pro **prostředků**, zadejte `https://management.azure.com/`. 
+    5. Pro **prostředků**, zadejte `https://management.azure.com/`.
     
-   ![Plán ADF webové aktivity SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
+       ![Plán ADF webové aktivity SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
 3. Klonovat první kanál vytvořit druhý certifikát, mění se název aktivity na **stopMyIR** a nahraďte následující vlastnosti.
 
     1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, která ukončí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
-  
+    
     2. Pro **tělo**, zadejte `{"message":"Stop my IR"}`. 
 
 4. Vytvoření kanálu třetí, přetažením **spuštění balíčku služby SSIS** aktivita z **aktivity** nástrojů do návrháře kanálu plochu a nakonfigurujte ho podle pokynů v [ Vyvolání balíčků SSIS pomocí aktivity spustit balíčků služby SSIS ve službě ADF](how-to-invoke-ssis-package-ssis-activity.md) článku.  Alternativně můžete použít **uložená procedura** aktivity místo a nakonfigurujte ho podle pokynů v [vyvolání balíčků SSIS pomocí aktivity uložených procedur ve službě ADF](how-to-invoke-ssis-package-stored-procedure-activity.md) článku.  V dalším kroku řetězit aktivity spuštění služby SSIS balíčku/uložené procedury mezi dvě aktivity webu, které prostředí IR, podobně jako tyto aktivity webu v kanálech první nebo druhé spuštění/zastavení.

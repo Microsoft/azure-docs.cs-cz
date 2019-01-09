@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: mavoge
-ms.openlocfilehash: 443a697a576aa26fe352d8ad47d9e61214c3fcf3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2b4f9bf87122f047e496dca1dbd425db8ad7c16c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024106"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119964"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Povolení víceklientské aplikace s Azure digitální dvojče
 
@@ -41,7 +41,7 @@ V tomto scénáři, zvažte vývojář sestavování řešení s Azure digitáln
 Problém:
 
 - Při **zákazníka** přihlásí k **pro vývojáře**vaší aplikace, aplikace nemůže získat tokeny pro **zákazníka**od uživatele bude možné ověřit pomocí rozhraní API Správce Dvojčat digitální Azure.
-- Výjimka se vystaví v Azure Active Directory označující, že digitální dvojče Azure nebyl rozpoznán v rámci **zákazníka**na adresář.
+- Výjimky vydané v Azure Active Directory označující, že digitální dvojče Azure nebyl rozpoznán v rámci **zákazníka**na adresář.
 
 ## <a name="problem-solution"></a>Řešení potíží
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 702ebdc0966a72396ac644b154ba13d2321fd5d4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a4671d383c46bf0b932ce528f4eacb7255bad5e7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631341"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105402"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Zařízení připojená k tom, jak spravovat místní skupiny administrators na Azure AD
 
@@ -64,7 +64,10 @@ Chcete-li upravit roli Správce zařízení, nakonfigurovat **zařízení připo
 
 ![Další místní správci](./media/assign-local-admin/10.png)
 
- 
+>[!NOTE]
+> Tato možnost vyžaduje tenanta služby Azure AD Premium. 
+
+
 Správci zařízení přiřazených k zařízení připojených k všechny Azure AD. Nelze určit obor Správci zařízení na konkrétní sadu zařízení. Aktualizuje se role Správce zařízení nemá nutně bezprostřední dopad na ovlivněných uživatelů. Pro zařízení uživatel je již přihlášení, Probíhá aktualizace oprávnění:
      
 

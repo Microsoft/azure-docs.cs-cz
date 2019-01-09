@@ -8,13 +8,13 @@ ms.author: maxluk
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: a6ab4d751be74b66d9e75a37f88bc8d441f9b003
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/08/2019
+ms.openlocfilehash: d1eeedfd91dfe1d4a174a3cbed2c0db826a8d5ab
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653726"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117856"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optimalizace úloh Apache Spark
 
@@ -24,7 +24,7 @@ Následující části popisují běžné úlohy optimalizace Spark a doporučen
 
 ## <a name="choose-the-data-abstraction"></a>Zvolte abstrakce dat
 
-Spark využívá 1.x Rdd k abstraktní data a poté Spark 2.x zavedené datových rámců a datové sady. Vezměte v úvahu následující relativní věci:
+Starší verze Sparku pomocí Rdd abstraktní data, Spark 1.3 a zavedl 1.6 datových rámců a datové sady, v uvedeném pořadí. Vezměte v úvahu následující relativní věci:
 
 * **Datových rámců**
     * Ve většině případů je nejlepší volbou.
@@ -42,7 +42,7 @@ Spark využívá 1.x Rdd k abstraktní data a poté Spark 2.x zavedené datovýc
     * Vysoké režijní náklady na uvolňování paměti.
     * Ukončí generování kódu celé fázi.
 * **Rdd**
-    * Ve Spark 2.x, není potřeba použít Rdd, pokud budete muset vytvořit nové vlastní RDD.
+    * Není potřeba použít Rdd, pokud budete muset vytvořit nové vlastní RDD.
     * Bez optimalizace dotazů prostřednictvím zprostředkující.
     * Generování kódu celé fázi.
     * Vysoké režijní náklady na uvolňování paměti.

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7b0e3bc14c97c874b9d5936c025f4534665a461e
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: adac498b2f1e3331497c08f41558575c06b5823c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752618"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102934"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Predikce služby batch spouštět rozsáhlé datové sady se službou Azure Machine Learning
 
@@ -185,7 +185,7 @@ model = Model.register(
 ## <a name="write-your-scoring-script"></a>Zápis hodnoticí skript
 
 >[!Warning]
->Následující kód je jenom ukázka co je součástí [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/batch_score.py) používané [ukázkový poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-batch-scoring.ipynb). Budete muset vytvořit vlastní hodnoticí skript pro váš scénář.
+>Následující kód je jenom ukázka co je součástí [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) používané [ukázkový poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb). Budete muset vytvořit vlastní hodnoticí skript pro váš scénář.
 
 `batch_score.py` Skript přijímá vstupní image *dataset_path*, které je předem vytrénované modelů v *model_dir,* a vypíše *výsledky label.txt* k *output_dir*.
 

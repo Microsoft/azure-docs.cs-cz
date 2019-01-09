@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18be454c93c32e0902a55a08748045c26d649ce7
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322035"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117431"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Nastaví přehled automatického škálování díky škálování virtuálních počítačů Azure
 Škálovací sady virtuálních počítačů Azure můžete automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, na kterých běží vaše aplikace. Toto chování automatizované a elastické snižuje režie na správu pro monitorování a optimalizace výkonu vaší aplikace. Můžete vytvořit pravidla, která definují přijatelný výkon pro pozitivní zkušenosti. Pokud jsou splněny tyto definované prahové hodnoty, pravidla automatického škálování provést akci Upravit kapacitu škálovací sady. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity škálovací sady na pevnou časy. Tento článek obsahuje základní informace o výkonu, které metriky jsou k dispozici a jaké akce automatického škálování můžete provádět.
@@ -91,7 +91,7 @@ Pravidla automatického škálování se pak zobrazí, když metriky se porovná
 | Operátor                 |
 |--------------------------|
 | Větší než             |
-| Je větší nebo rovno |
+| Větší než nebo rovno |
 | Méně než                |
 | Je menší nebo rovno    |
 | Rovno                 |
@@ -122,7 +122,7 @@ Další informace najdete v článcích popisujících povolení diagnostického
 ## <a name="application-level-metrics-with-app-insights"></a>Metriky na úrovni aplikace pomocí App Insights
 Pokud chcete získat další viditelnosti v výkon vašich aplikací, můžete použít Application Insights. Nainstalujete malý Instrumentační balíček ve vaší aplikaci, která monitoruje aplikace a odesílá telemetrická data do Azure. Můžete monitorovat metriky, jako je doba odezvy aplikace, stav zatížení stránky a počítá relace. Tyto metriky aplikace lze použít k vytvoření pravidla automatického škálování na úrovni detailní a vložené při aktivaci pravidla založená na užitečné přehledy, které může mít vliv na prostředí pro zákazníky.
 
-Další informace o službě App Insights najdete v tématu [Co je Application Insights](../application-insights/app-insights-overview.md).
+Další informace o službě App Insights najdete v tématu [Co je Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 
 ## <a name="scheduled-autoscale"></a>Plánovaným automatickým Škálováním

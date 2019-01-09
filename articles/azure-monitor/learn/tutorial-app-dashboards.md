@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: af4e9d0ec90c203a83acf142dd9c81494fe5bc47
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: e008a53ce71a55b344dfc3a76bdb4ae39b954c46
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081043"
+ms.locfileid: "54104875"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
 
@@ -167,4 +167,4 @@ Vzhledem k tomu, že Azure Application Insights Analytics je samostatná služba
 Teď, když jste se naučili vytvářet vlastní řídicí panely, podívejte se na zbytek dokumentace Application Insights včetně případové studie.
 
 > [!div class="nextstepaction"]
-> [Hloubková diagnostika](../../application-insights/app-insights-devops.md)
+> [Hloubková diagnostika](../../azure-monitor/app/devops.md)

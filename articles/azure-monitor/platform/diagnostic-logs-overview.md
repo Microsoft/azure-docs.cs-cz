@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 50eb70799506ecd5203ff4fd0c2649726658b3e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 08ad8964fee2d94677832fa664ed2e18cb9f772c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551300"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104977"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -83,7 +83,7 @@ Je možné povolit shromažďování diagnostických protokolů [při vytvářen
 
 Po vytvoření prostředku tak, že přejdete ke konkrétnímu prostředku nebo tak, že přejdete do Azure monitoru, můžete povolit shromažďování protokolů diagnostiky prostředků na webu Azure Portal. Aby to bylo prostřednictvím služby Azure Monitor:
 
-1. V [webu Azure portal](http://portal.azure.com), přejděte do Azure monitoru a klikněte na **nastavení diagnostiky**
+1. V [webu Azure portal](https://portal.azure.com), přejděte do Azure monitoru a klikněte na **nastavení diagnostiky**
 
     ![Monitorování bodu služby Azure Monitor](media/diagnostic-logs-overview/diagnostic-settings-blade.png)
 

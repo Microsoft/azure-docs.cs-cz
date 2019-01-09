@@ -1,33 +1,35 @@
 ---
 title: Vytvoření blockchainové aplikace v Azure Blockchain Workbench
-description: Postup vytvoření blockchainové aplikace v Azure Blockchain Workbench.
+description: Kurz týkající se vytvoření blockchainové aplikace v Azure Blockchain Workbench.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 1/8/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: a7ca3f42874bc844bc0036e37a790ffebdc5f8d8
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 570d7a51bd6796a6360a4e52e637e1621a29deea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242403"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104382"
 ---
-# <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Vytvoření blockchainové aplikace v Azure Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Kurz: Vytvoření blockchainové aplikace v Azure Blockchain Workbench
 
 Azure Blockchain Workbench můžete použít k vytvoření blockchainové aplikace, které představují více stran pracovní postupy definované konfigurace a inteligentní kontraktu kódu.
 
-Získáte informace o těchto tématech:
+Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
 > * Konfigurace blockchainové aplikace
 > * Vytvořte soubor inteligentní kontraktu kódu
 > * Přidání aplikace blockchain k Blockchain Workbench
 > * Přidání členů do blockchainové aplikace
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -236,56 +238,17 @@ Přidejte následující direktivy pragma verze v horní části `HelloBlockchai
   pragma solidity ^0.4.20;
   ```
 
-### <a name="base-class"></a>Základní třída
-
-**WorkbenchBase** základní třída umožňuje Blockchain Workbench a jak vytvářet a aktualizovat kontrakt. Základní třída je povinné pro Blockchain Workbench konkrétních smart kontraktu kódu. Kontrakt musí dědit z **WorkbenchBase** základní třídy.
-
-V `HelloBlockchain.sol` inteligentní smlouvy soubor kódu, přidejte **WorkbenchBase** třídy na začátku souboru. 
-
-```
-contract WorkbenchBase {
-    event WorkbenchContractCreated(string applicationName, string workflowName, address originatingAddress);
-    event WorkbenchContractUpdated(string applicationName, string workflowName, string action, address originatingAddress);
-
-    string internal ApplicationName;
-    string internal WorkflowName;
-
-    function WorkbenchBase(string applicationName, string workflowName) internal {
-        ApplicationName = applicationName;
-        WorkflowName = workflowName;
-    }
-
-    function ContractCreated() internal {
-        WorkbenchContractCreated(ApplicationName, WorkflowName, msg.sender);
-    }
-
-    function ContractUpdated(string action) internal {
-        WorkbenchContractUpdated(ApplicationName, WorkflowName, action, msg.sender);
-    }
-}
-```
-Základní třída zahrnuje dvě důležité funkce:
-
-|Funkci základní třídy  | Účel  | Kdy se má volat  |
-|---------|---------|---------|
-| ContractCreated() | Upozorní byl vytvořen kontrakt Blockchain Workbench | Před ukončením konstruktoru kontraktu |
-| ContractUpdated() | Upozorní Blockchain Workbench se aktualizoval stav smlouvy | Před ukončením funkce kontraktu |
-
 ### <a name="configuration-and-smart-contract-code-relationship"></a>Konfigurace a vztah inteligentní kontraktu kódu
 
 K vytvoření blockchainové aplikace používá Blockchain Workbench konfigurační soubor a soubor kódu inteligentní kontraktu. Existuje vztah mezi definovaná v konfiguraci a kód v inteligentní kontraktu. Podrobnosti o kontraktu, funkce, parametry a typy musí odpovídat k vytvoření aplikace. Blockchain Workbench programu ověří soubory před vytvářením aplikací. 
 
 ### <a name="contract"></a>Kontrakt
 
-Blockchain Workbench, třeba dědit z kontraktů **WorkbenchBase** základní třídy. Při deklarování smlouvy, musíte předat název aplikace a název pracovního postupu jako argumenty.
-
-Přidat **kontraktu** záhlaví vaše `HelloBlockchain.sol` inteligentní smlouvy soubor kódu. 
+Přidat **kontraktu** záhlaví vaše `HelloBlockchain.sol` inteligentní smlouvy soubor kódu.
 
 ```
-contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') {
+contract HelloBlockchain {
 ```
-
-Kontrakt musí dědit z **WorkbenchBase** základní třídy a předat parametry **ApplicationName** a pracovní postup **název** definované v konfiguraci soubor. V tomto případě název aplikace a název pracovního postupu jsou stejné.
 
 ### <a name="state-variables"></a>Stav proměnné
 
@@ -312,8 +275,6 @@ Konstruktor definuje vstupní parametry pro novou inteligentní smlouvy instanci
 
 Napište veškeré obchodní logiky v funkce konstruktoru, že který chcete provést před vytvořením smlouvy. Například inicializujte proměnné stavu s počáteční hodnoty.
 
-Před ukončením funkce konstruktoru, zavolejte `ContractCreated()` funkce. Tato funkce upozorní Blockchain Workbench byl vytvořen kontrakt.
-
 Přidání funkce konstruktoru do vaší smlouvy v vaše `HelloBlockchain.sol` inteligentní smlouvy soubor kódu. 
 
 ```
@@ -323,9 +284,6 @@ Přidání funkce konstruktoru do vaší smlouvy v vaše `HelloBlockchain.sol` i
         Requestor = msg.sender;
         RequestMessage = message;
         State = StateType.Request;
-    
-        // call ContractCreated() to create an instance of this workflow
-        ContractCreated();
     }
 ```
 
@@ -334,8 +292,6 @@ Přidání funkce konstruktoru do vaší smlouvy v vaše `HelloBlockchain.sol` i
 Funkce jsou jednotky spustitelného souboru obchodní logiky v rámci smlouvy. Požadované parametry pro funkci jsou definovány jako parametry funkce v konfiguračním souboru. Počet, pořadí a typ parametrů musí odpovídat na oba soubory. Funkce jsou přidružené k přechodů v pracovním postupu Blockchain Workbench v konfiguračním souboru. Přechod je akce provést, přejděte do další fáze aplikace pracovního postupu, jak určuje smlouva.
 
 Zapisovat všechny obchodní logiku, že kterou chcete provést ve funkci. Například změně hodnoty proměnné stavu.
-
-Před ukončením funkce, zavolejte `ContractUpdated()` funkce. Funkce upozorní Blockchain Workbench se aktualizoval stav smlouvy. Pokud chcete vrátit zpět stav změny ve funkci, zavolejte revert(). Vrátit zpět změny provedené od posledního volání ContractUpdated() stavu zahození.
 
 1. Přidejte následující funkce do vaší smlouvy vaší `HelloBlockchain.sol` inteligentní smlouvy soubor kódu. 
 
@@ -347,12 +303,8 @@ Před ukončením funkce, zavolejte `ContractUpdated()` funkce. Funkce upozorní
             {
                 revert();
             }
-    
             RequestMessage = requestMessage;
             State = StateType.Request;
-    
-            // call ContractUpdated() to record this action
-            ContractUpdated('SendRequest');
         }
     
         // call this function to send a response
@@ -360,10 +312,8 @@ Před ukončením funkce, zavolejte `ContractUpdated()` funkce. Funkce upozorní
         {
             Responder = msg.sender;
     
-            // call ContractUpdated() to record this action
             ResponseMessage = responseMessage;
             State = StateType.Respond;
-            ContractUpdated('SendResponse');
         }
     }
     ```

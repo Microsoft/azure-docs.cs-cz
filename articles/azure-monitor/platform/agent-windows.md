@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c90c85f667e18a80c4673a73867ee2d6b3b6294
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d4760eb6490ce458e699ad9bc59a57cb473ef6d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189893"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104118"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 
@@ -128,9 +128,9 @@ Následující příklad nainstaluje agenta 64bitovým kompilátorem identifikov
 
 32bitové a 64bitové verze balíček agenta mají jiný produkt kódy a vydání nové verze také mít jedinečnou hodnotu.  Kód produktu je identifikátor GUID, který je základní identifikátor aplikace nebo produktu a je reprezentována Instalační služby systému Windows **ProductCode** vlastnost.  `ProductId` Hodnotu **MMAgent.ps1** skriptu musí odpovídat kód produktu z instalačního balíčku 32bitová nebo 64bitová verze agenta.
 
-Chcete-li načíst kód přímo z instalačního balíčku agenta, můžete použít Orca.exe z [Windows vývojáři sady SDK součásti pro Windows Installer](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , který je součástí sady Windows Software Development Kit nebo pomocí Prostředí PowerShell následující [ukázkový skript](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsané pomocí Microsoft Valuable Professional (MVP).  Kterýkoliv přístup, musíte nejprve k extrakci **MOMagent.msi** souboru z instalačního balíčku MMASetup.  To je ukázáno dříve v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
+Chcete-li načíst kód přímo z instalačního balíčku agenta, můžete použít Orca.exe z [Windows vývojáři sady SDK součásti pro Windows Installer](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , který je součástí sady Windows Software Development Kit nebo pomocí Prostředí PowerShell následující [ukázkový skript](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsané pomocí Microsoft Valuable Professional (MVP).  Kterýkoliv přístup, musíte nejprve k extrakci **MOMagent.msi** souboru z instalačního balíčku MMASetup.  To je ukázáno dříve v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
 
-1. Import DSC xPSDesiredStateConfiguration modulu z [ http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
+1. Import DSC xPSDesiredStateConfiguration modulu z [ https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
 2.  Vytvoření proměnných assetů Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* ID pracovního prostoru Log Analytics a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč pracovního prostoru.
 3.  Zkopírujte skript a uložte ho jako MMAgent.ps1.
 

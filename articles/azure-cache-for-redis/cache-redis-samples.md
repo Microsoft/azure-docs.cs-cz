@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c9a2d569641ab0f8f6aa1d7234da1d3cbb0ab147
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e14e76be50fc71738779e0196b2034ca4f8e0097
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744985"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103873"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Ukázky služby Azure Cache for Redis
 Toto téma obsahuje seznam mezipaměti Azure Redis ukázek, pokrývající scénářů, jako je připojení k mezipaměti, čtení a zápis dat do a z mezipaměti a pomocí ukládání do mezipaměti Azure technologie ASP.NET pro poskytovatele Redis. Některé z ukázek jsou ke stažení projekty a některé poskytují podrobné pokyny a zahrnovat fragmenty kódu, ale není odkaz na projekt ke stažení.
@@ -47,7 +47,7 @@ Další informace najdete v tématu [StackExchange.Redis](https://github.com/Sta
 [Práce s objekty .NET v mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache) ukazuje jeden způsob, jak k serializaci objektů .NET vám umožní jejich k zápisu a čtení z Azure pro instanci Redis Cache. 
 
 ## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Použití Azure Cache pro Redis jako propojovací rozhraní škálování pro funkci SignalR technologie ASP.NET
-[Použití mezipaměti Azure Redis jako propojovací rozhraní škálování pro funkce SignalR technologie ASP.NET](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) ukázka demonstruje, jak používat Azure Cache pro Redis jako propojovací rozhraní systému SignalR. Další informace o propojovací rozhraní systému najdete v tématu [škálování aplikace SignalR službou Redis](http://www.asp.net/signalr/overview/performance/scaleout-with-redis).
+[Použití mezipaměti Azure Redis jako propojovací rozhraní škálování pro funkce SignalR technologie ASP.NET](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) ukázka demonstruje, jak používat Azure Cache pro Redis jako propojovací rozhraní systému SignalR. Další informace o propojovací rozhraní systému najdete v tématu [škálování aplikace SignalR službou Redis](https://www.asp.net/signalr/overview/performance/scaleout-with-redis).
 
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Mezipaměť Azure Redis zákazníka dotazu ukázku
 Tato ukázka předvádí, porovná výkon mezi přístup k datům z mezipaměti a přístup k datům z trvalého úložiště. Tato ukázka má dva projekty.

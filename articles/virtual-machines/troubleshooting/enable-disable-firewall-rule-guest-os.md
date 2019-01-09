@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: cb2c548a94a91fe9126f684e382e9626adb93dd6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
+ms.lasthandoff: 01/08/2019
 ms.locfileid: "52319460"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-a-azure-vm-guest-os"></a>Povolit nebo zakázat pravidlo brány firewall na hostovaný operační systém virtuálního počítače Azure
@@ -35,7 +35,7 @@ Jak nakonfigurovat pravidla brány firewall, závisí na úroveň přístupu k v
 
 ### <a name="online-troubleshooting"></a>Řešení potíží s online 
 
-#### <a name="mitigation-1-custom-script-extension"></a>Zmírnění 1: Rozšíření vlastních skriptů
+#### <a name="mitigation-1-custom-script-extension"></a>Zmírnění dopadů 1: Rozšíření vlastních skriptů
 
 1.  Vytvořte váš skript pomocí následující šablony.
 
@@ -51,7 +51,7 @@ Jak nakonfigurovat pravidla brány firewall, závisí na úroveň přístupu k v
 
 2.  Uložení v Azure portal pomocí tohoto skriptu [rozšíření vlastních skriptů](../extensions/custom-script-windows.md) funkce. 
 
-#### <a name="mitigation-2-remote-powershell"></a>Zmírnění dopadů 2: Vzdálený PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Zmírnění dopadů 2: Vzdáleného prostředí PowerShell
 
 Pokud virtuální počítač je v režimu online a je přístupný jinému virtuálnímu počítači ve stejné virtuální síti, můžete provést podle zmírnění pomocí druhým virtuálním Počítačem.
 
@@ -73,7 +73,7 @@ Pokud virtuální počítač je v režimu online a je přístupný jinému virtu
         exit
         ```
 
-#### <a name="mitigation-3-pstools-commands"></a>Zmírnění 3: Příkazy PSTools
+#### <a name="mitigation-3-pstools-commands"></a>Zmírnění dopadů 3: Příkazy PSTools
 
 Pokud virtuální počítač je v režimu online a je přístupný jinému virtuálnímu počítači ve stejné virtuální síti, můžete provést podle zmírnění pomocí druhým virtuálním Počítačem.
 
@@ -93,7 +93,7 @@ Pokud virtuální počítač je v režimu online a je přístupný jinému virtu
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-4-remote-registry"></a>Zmírnění 4: Vzdálený registr
+#### <a name="mitigation-4-remote-registry"></a>Zmírnění dopadů 4: Vzdálený registr
 
 Pokud virtuální počítač je v režimu online a je přístupný jinému virtuálnímu počítači ve stejné virtuální síti, můžete použít [Remote Registry](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) na jiný virtuální počítač.
 

@@ -1,25 +1,33 @@
 ---
 title: Používání aplikací v Azure Blockchain Workbench
-description: Smlouvy o tom, jak používat aplikace v aplikaci Azure Blockchain Workbench.
+description: Kurz k používání aplikace smlouvy v aplikaci Azure Blockchain Workbench.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 1/8/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4fe6f164882ffce7bf22ec0c0b94107abcf6a20e
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b43b125f7e96ac58a9094fc1e0e18b38f10d3e2f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242405"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107068"
 ---
-# <a name="using-applications-in-azure-blockchain-workbench"></a>Používání aplikací v Azure Blockchain Workbench
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Kurz: Používání aplikací v Azure Blockchain Workbench
 
 Blockchain Workbench můžete vytvářet a provádět s nimi akce smluv. Můžete také zobrazit podrobnosti, jako je historie stavu a transakce smlouvy.
+
+Dozvíte se, jak provést tyto akce:
+
+> [!div class="checklist"]
+> * Vytvoření nové smlouvy
+> * Provedení akce s kontraktem
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,7 +44,7 @@ Musíte se přihlásit jako člen Blockchain Workbench. Pokud nejsou žádné ap
 
 Pokud chcete vytvořit nové smlouvy, musíte být členem zadané jako kontrakt **iniciátoru**. Definování rolí aplikace a iniciátory pro kontrakt informace najdete v tématu [pracovních postupů v přehledu konfigurace](configuration.md#workflows). Informace o přiřazování členů do aplikačních rolí, najdete v části [přidat člena do aplikace](manage-users.md#add-member-to-application).
 
-1. V části aplikace Blockchain Workbench vyberte dlaždici aplikace, která obsahuje smlouvu, kterou chcete vytvořit. Zobrazí seznam aktivních smluv.
+1. V části aplikace Blockchain Workbench vyberte dlaždici aplikace, která obsahuje smlouvu, kterou chcete vytvořit. Zobrazí se seznam aktivních smluv.
 
 2. Chcete-li vytvořit nové smlouvy, vyberte **nové smlouvy**.
 
@@ -82,4 +90,4 @@ V závislosti na stavu je kontrakt, členové mohli podniknout kroky k přechodu
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Řešení potíží s Azure Blockchain Workbench](troubleshooting.md)
+> [Azure Blockchain Workbench správy verzí aplikací](version-app.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 581d5ddc0930a84bad4dd74a0e8dbcc3787f1a16
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: a791ac5424a0c0e70ba5480e51f5e21fe3c061ea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652060"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104739"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../../security/security-microsoft-trust-center.md).  
@@ -124,8 +124,8 @@ Vývoj softwaru Log Analytics a týmu service jsou aktivně pracuje s týmy Micr
 ## <a name="certifications-and-attestations"></a>Certifikací a atestací
 Azure Log Analytics splňuje následující požadavky:
 
-* [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
-* [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
+* [ISO/IEC 27001](https://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
+* [ISO/IEC 27018:2014](https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * [Platebních karet (PCI kompatibilní) Data zabezpečení standardního (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) podle PCI Security Standards Council.
 * [Ovládací prvky SOC (Service Organization) 1 typu 1 a SOC 1 typ 2](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) předpisy

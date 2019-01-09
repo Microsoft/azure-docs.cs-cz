@@ -1,6 +1,6 @@
 ---
-title: Ukládání do protokolů IIS ve službě Azure Monitor | Dokumentace Microsoftu
-description: Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžou shromažďovat službou Azure Monitor.  Tento článek popisuje, jak konfigurovat shromažďování protokolů služby IIS a podrobnosti o záznamy vytvořené ve službě Azure Monitor.
+title: Ukládání do protokolů IIS ve službě Log Analytics | Dokumentace Microsoftu
+description: Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Log Analytics.  Tento článek popisuje, jak konfigurovat shromažďování protokolů služby IIS a podrobnosti o záznamy vytvořené v Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: cd28eef249ae6b07b9e3f74b80c32a4b53370215
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cd63c63344f322f7d761a2907f52e97f1009e3b8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436734"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101951"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďování protokolů IIS ve službě Azure Monitor
-Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Azure Monitor a uložená jako [můžete vytvářet protokoly dat](data-collection.md).
+# <a name="collect-iis-logs-in-log-analytics"></a>Shromažďování protokolů IIS ve službě Log Analytics
+Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které mohou být shromážděná službou Log Analytics a uloží jako [můžete vytvářet protokoly dat](data-collection.md).
 
 ![Protokoly IIS](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>Konfigurace služby IIS protokoly
-Azure Monitor provádí sběr položky ze souborů protokolů, které jsou vytvořené službou IIS, takže je potřeba [konfigurace služby IIS pro protokolování](https://technet.microsoft.com/library/hh831775.aspx).
+Log Analytics shromažďuje položky z soubory protokolů vytvořené službou IIS, takže je potřeba [konfigurace služby IIS pro protokolování](https://technet.microsoft.com/library/hh831775.aspx).
 
-Azure Monitor pouze podporuje uložit ve formátu W3C soubory protokolu služby IIS a nepodporuje vlastní pole nebo rozšířené protokolování internetové informační služby. Neshromažďuje protokoly ve formátu native NCSA nebo služby IIS.
+Log Analytics pouze podporuje uložit ve formátu W3C soubory protokolu služby IIS a nepodporuje vlastní pole nebo rozšířené protokolování internetové informační služby. Neshromažďuje protokoly ve formátu native NCSA nebo služby IIS.
 
-Konfigurace protokolů IIS ve službě Azure Monitor z [nabídky Rozšířené nastavení](agent-data-sources.md#configuring-data-sources).  Není nutná žádná konfigurace jiné než výběrem **soubory protokolů IIS ve formátu W3C shromažďovat**.
+Konfigurace služby IIS protokolů v Log Analytics [nabídky Rozšířené nastavení](agent-data-sources.md#configuring-data-sources).  Není nutná žádná konfigurace jiné než výběrem **soubory protokolů IIS ve formátu W3C shromažďovat**.
 
 
 ## <a name="data-collection"></a>Shromažďování dat
-Azure Monitor shromažďuje z každého agenta pokaždé, když je uzavřen do protokolu a nového vytvoření záznamů protokolu IIS. Tato četnost se řídí **plán změna souboru protokolu** nastavení pro web služby IIS, který je jednou za den ve výchozím nastavení. Například, pokud je nastavení **hodinové**, pak Azure Monitor shromáždí do protokolu každou hodinu.  Pokud je nastavení **denní**, pak Azure Monitor bude shromažďovat protokolu každých 24 hodin.
+Log Analytics shromažďuje z každého agenta, se vytvoří pokaždé, když je uzavřen do protokolu a nové záznamy protokolu IIS. Tato četnost se řídí **plán změna souboru protokolu** nastavení pro web služby IIS, který je jednou za den ve výchozím nastavení. Například, pokud je nastavení **hodinové**, pak Log Analytics shromažďovat do protokolu každou hodinu.  Pokud je nastavení **denní**, pak Log Analytics shromažďovat protokolu každých 24 hodin.
 
 
 ## <a name="iis-log-record-properties"></a>Vlastnosti záznamů protokolu IIS
@@ -76,5 +76,5 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 | W3CIISLog &#124; shrnout sum(csBytes) počítačem &#124; trvat 500000 |Celkový počet bajtů přijatých jednotlivými počítači IIS. |
 
 ## <a name="next-steps"></a>Další postup
-* Konfigurace služby Azure Monitor ke shromažďování dalších [zdroje dat](agent-data-sources.md) pro analýzu.
+* Konfigurace Log Analytics ke shromažďování dalších [zdroje dat](agent-data-sources.md) pro analýzu.
 * Další informace o [protokolu dotazy](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.

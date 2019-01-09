@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: a66917f1ab4e554dbb5a8cd1fb9013e111970714
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: b6713eabec62b1658b54dcb29231ddbfb2faceb7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999811"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107493"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -169,7 +169,7 @@ Disk sdíleného clusteru hosta/server | Ne
 Host/server systému souborů NFS | Ne
 Host/serveru protokolu SMB 3.0 | Ne
 Host/server RDM | Ano<br/><br/> Není k dispozici pro fyzické servery
-Disk Host/serveru > 1 TB | Ano<br/><br/>Až 4 095 GB
+Disk Host/serveru > 1 TB | Ano<br/><br/>Až 4 095 GB<br/><br/> Disk musí být větší než 1 024 MB.
 Host/server na disku s velikost fyzického sektoru 4K logické a 4 kB | Ano
 Disk s 4 kB logického typu Host/server a velikost fyzického sektoru 512 bajtů | Ano
 Host/server svazek s prokládané disk > 4 TB <br/><br/>Správa logických svazků (LVM)| Ano

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 1/8/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: f8f3584475415cf9ca19458f6da78d34df37f438
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 34731bb96a83a901b3fc1a59ce1846083d69bfd7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614357"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103379"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integrace zasílání zpráv Azure Blockchain Workbench
 
@@ -87,7 +87,7 @@ Příklad úspěšné **vytvořit uživatele** neodpověděla Blockchain Workben
 } 
 ```
 
-Pokud požadavek nebyl úspěšný, podrobnosti o chybě jsou zahrnout další informace.
+Pokud požadavek nebyl úspěšný, podrobnosti o chybě jsou zahrnuty v další informace.
 
 ``` json
 {
@@ -156,7 +156,7 @@ Blockchain Workbench vrátí odpověď se následující pole:
 | ID připojení             | Jedinečný identifikátor pro připojení k blockchainu                               |
 | messageSchemaVersion     | Zasílání zpráv verze schématu                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
-| status                   | Stav požadavku na vytvoření kontraktu.  Možné hodnoty: **odesláno**, **potvrzeno**, **selhání**.  |
+| status                   | Stav požadavku na vytvoření kontraktu.  Možné hodnoty: **Odeslání**, **potvrzené**, **selhání**.  |
 | AdditionalInformation    | Další informace najdete na základě stavu                              |
 
 Příklad odeslané **vytvoření kontraktu** neodpověděla Blockchain Workbench:
@@ -189,7 +189,7 @@ Příklad potvrzené **vytvoření kontraktu** neodpověděla Blockchain Workben
 }
 ```
 
-Pokud požadavek nebyl úspěšný, podrobnosti o chybě jsou zahrnout další informace.
+Pokud požadavek nebyl úspěšný, podrobnosti o chybě jsou zahrnuty v další informace.
 
 ``` json
 {
@@ -216,7 +216,7 @@ Požadavek vyžaduje následující pole:
 | **Název**                 | **Popis**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | ID žádosti                | Klientem poskytnutý identifikátor GUID |
-| UserChainIdentifier      | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, je to uživatele **v řetězu** adresu. |
+| UserChainIdentifier      | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, tato adresa je uživatele **v řetězu** adresu. |
 | ContractLedgerIdentifier | Adresa kontraktu na hlavní knihy |
 | WorkflowFunctionName     | Název funkce pracovního postupu |
 | parameters               | Vstupní parametry pro vytvoření kontraktu |
@@ -257,7 +257,7 @@ Blockchain Workbench vrátí odpověď se následující pole:
 | ID připojení          | Jedinečný identifikátor pro připojení k blockchainu |
 | messageSchemaVersion  | Zasílání zpráv verze schématu |
 | messageName           | **CreateContractActionUpdate** |
-| status                | Stav požadavku na akce kontraktu. Možné hodnoty: **odesláno**, **potvrzeno**, **selhání**.                         |
+| status                | Stav požadavku na akce kontraktu. Možné hodnoty: **Odeslání**, **potvrzené**, **selhání**.                         |
 | AdditionalInformation | Další informace najdete na základě stavu |
 
 Příklad odeslané **vytvoření kontraktu akce** neodpověděla Blockchain Workbench:
@@ -288,7 +288,7 @@ Příklad potvrzené **vytvoření kontraktu akce** neodpověděla Blockchain Wo
 }
 ```
 
-Pokud požadavek nebyl úspěšný, podrobnosti o chybě jsou zahrnout další informace.
+Pokud požadavek nebyl úspěšný, podrobnosti o chybě jsou zahrnuty v další informace.
 
 ``` json
 {
@@ -319,7 +319,7 @@ Pokud požadavek nebyl úspěšný, podrobnosti o chybě jsou zahrnout další i
 - Kontrakt {označeny identifikátorem účetní knihy} nemá žádné funkce {název funkce pracovního postupu}
 - UserChainIdentifier neexistuje.
 
-**Kód chyby: 4090: Chyba v konfliktu**
+**Kód chyby: 4090: Chyba konfliktu**
 - Uživatel už existuje.
 - Smlouva již existuje.
 - Kontrakt akce již existuje.
@@ -345,8 +345,8 @@ Pokud chce uživatel pomocí služby Event Grid oznámení o události, ke kter�
 
 ### <a name="consuming-event-grid-events-with-logic-apps"></a>Spotřebovávajících událostí služby Event Grid pomocí funkce Logic Apps
 
-1.  Vytvořte nový **aplikace logiky Azure** na webu Azure Portal.
-2.  Při otevření aplikace logiky Azure na portálu, se výzva k výběru aktivační události. Vyberte **Azure Event Grid – při výskytu události prostředku**.
+1. Vytvořte nový **aplikace logiky Azure** na webu Azure Portal.
+2. Při otevření aplikace logiky Azure na portálu, se výzva k výběru aktivační události. Vyberte **Azure Event Grid – při výskytu události prostředku**.
 3. Po zobrazení návrháře postupu provádění se výzva k přihlášení.
 4. Vyberte předplatné. Prostředek jako **Microsoft.EventGrid.Topics**. Vyberte **název prostředku** z názvu zdroje ze skupiny prostředků Azure Blockchain Workbench.
 5. Vyberte službu Event Grid ze skupiny prostředků Blockchain Workbench.
@@ -355,11 +355,11 @@ Pokud chce uživatel pomocí služby Event Grid oznámení o události, ke kter�
 
 Témata služby Service Bus je možné informovat uživatele o události, ke kterým dochází v Blockchain Workbench. 
 
-1.  Přejděte na Service Bus v rámci skupiny prostředků v aplikaci Workbench.
-2.  Vyberte **témata**.
-3.  Vyberte **externí aplikace workbench**.
-4.  Vytvořte nový odběr tohoto tématu. Získáte klíče pro něj.
-5.  Vytvořte program, který se přihlásí k odběru událostí z tohoto předplatného.
+1. Přejděte na Service Bus v rámci skupiny prostředků v aplikaci Workbench.
+2. Vyberte **témata**.
+3. Vyberte **odchozího přenosu dat tématu**.
+4. Vytvořte nový odběr tohoto tématu. Získáte klíče pro něj.
+5. Vytvořte program, který se přihlásí k odběru událostí z tohoto předplatného.
 
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Přijímat zprávy služby Service Bus s Logic Apps
 
@@ -373,240 +373,531 @@ Témata služby Service Bus je možné informovat uživatele o události, ke kte
 
 V závislosti na tom **OperationName**, zprávy s oznámením některou z následujících typů zpráv.
 
-### <a name="accountcreated"></a>AccountCreated
+### <a name="block-message"></a>Zpráva o blokování.
 
-Označuje, že nový účet byl požádán o přidají do zadaného řetězce.
-
-| Název    | Popis  |
-|----------|--------------|
-| UserId  | ID uživatele, který byl vytvořen. |
-| ChainIdentifier | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, jde uživatele **v řetězu** adresu. |
-
-``` csharp
-public class NewAccountRequest : MessageModelBase
-{
-  public int UserID { get; set; }
-  public string ChainIdentifier { get; set; }
-}
-```
-
-### <a name="contractinsertedorupdated"></a>ContractInsertedOrUpdated
-
-Označuje, že byla podána žádost Vložit či aktualizovat kontrakt na distribuované účetní knihy.
+Obsahuje informace o jednotlivých bloků. *BlockMessage* obsahuje části s informace na úrovni bloku a část s informací o transakcích.
 
 | Název | Popis |
-|-----|--------------|
-| ChainID | Jedinečný identifikátor pro řetězec přidružený k požadavku |
-| Blockid % | Jedinečný identifikátor pro blok na hlavní knihy |
-| ContractId | Jedinečný identifikátor pro kontrakt |
-| ContractAddress |       Adresa smlouvy na hlavní knihy |
-| TransactionHash  |     Hodnota hash transakce na hlavní knihy |
-| OriginatingAddress |   Adresa odesílatel požadavku dostane informaci transakce |
-| Název akce       |     Název akce |
-| IsUpdate        |      Určuje, zda jde o aktualizaci |
-| Parametry       |     Seznam objektů, které identifikují název, hodnotu a datový typ parametrů odeslané na akci |
-| TopLevelInputParams |  V situacích, kdy kontrakt připojen k jedné nebo více jiných smluv jedná se parametry z nejvyšší úrovně kontraktu. |
+|------|-------------|
+| blokovat | Obsahuje [blokovat informace](#block-information) |
+| transakcí | Obsahuje kolekci [informací o transakcích](#transaction-information) pro blok |
+| ID připojení | Jedinečný identifikátor pro připojení |
+| messageSchemaVersion | Zasílání zpráv verze schématu |
+| messageName | **BlockMessage** |
+| AdditionalInformation | Další informace, které jsou k dispozici |
 
-``` csharp
-public class ContractInsertOrUpdateRequest : MessageModelBase
+#### <a name="block-information"></a>Informace o bloku
+
+| Název              | Popis |
+|-------------------|-------------|
+| Blockid %           | Jedinečný identifikátor pro blok uvnitř Azure Blockchain Workbench |
+| BlockNumber       | Jedinečný identifikátor pro blok na hlavní knihy |
+| BlockHash         | Hodnota hash bloku |
+| previousBlockHash | Hodnota hash předchozího bloku |
+| BlockTimestamp    | Časové razítko bloku |
+
+#### <a name="transaction-information"></a>Informace o transakci
+
+| Název               | Popis |
+|--------------------|-------------|
+| Identifikátor TransactionId      | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
+| TransactionHash    | Hodnota hash transakce na hlavní knihy |
+| od               | Jedinečný identifikátor na účetní knihy pro původ transakce |
+| na                 | Jedinečný identifikátor na účetní knihy pro cíl transakce |
+| ProvisioningStatus | Určuje aktuální stav procesu zřízení pro transakce. Možné hodnoty: </br>0 – transakce byla vytvořena pomocí rozhraní API v databázi</br>1 – transakce byl odeslán na účetní knize</br>2 – transakce byla úspěšně do hlavní knihy</br>3 nebo 4 – transakce se nepodařilo potvrdit do hlavní knihy</br>5 - transakce se úspěšně potvrdilo do hlavní knihy |
+
+Příklad *BlockMessage* z Blockchain Workbench:
+
+``` json
 {
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public int ContractId { get; set; }
-    public string ContractAddress { get; set; }
-    public string TransactionHash { get; set; }
-    public string OriginatingAddress { get; set; }
-    public string ActionName { get; set; }
-    public bool IsUpdate { get; set; }
-    public List<ContractProperty> Parameters { get; set; }
-    public bool IsTopLevelUpdate { get; set; }
-    public List<ContractInputParameter> TopLevelInputParams { get; set; }
+    "block": {
+        "blockId": 123
+        "blockNumber": 1738312,
+        "blockHash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
+        "previousBlockHash": null,
+        "blockTimestamp": "2018-10-09T23:35:58Z",
+    },
+    "transactions": [
+        {
+            "transactionId": 234
+            "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": null,
+            "provisioningStatus": 1
+        },
+        {
+            "transactionId": 235
+            "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+            "from": "0xadd97e1e595916e29ea94fda894941574000ffff",
+            "to": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff",
+            "provisioningStatus": 2
+        }
+    ],
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "BlockMessage",
+    "additionalInformation": {}
 }
 ```
 
-#### <a name="updatecontractaction"></a>UpdateContractAction
+### <a name="contract-message"></a>Kontrakt zprávy
 
-Označuje, že požadavek byl proveden provádění akce u konkrétních kontraktu na distribuované účetní knihy.
+Obsahuje informace o smlouvě o. Zpráva obsahuje oddíl s vlastnostmi smlouvy a část s informací o transakcích. V části transakce jsou zahrnuté všechny transakce, které byly upraveny smlouvy pro konkrétní blok.
 
-| Název                     | Popis                                                                                                                                                                   |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ContractActionId         | Jedinečný identifikátor pro tuto akci kontraktu |
-| ChainIdentifier          | Jedinečný identifikátor pro řetězce |
-| ID připojení             | Jedinečný identifikátor pro připojení |
-| UserChainIdentifier      | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, tato adresa je uživatele **v řetězu** adresu. |
-| ContractLedgerIdentifier | Adresa kontraktu na hlavní knihy |
-| WorkflowFunctionName     | Název funkce pracovního postupu |
-| WorkflowName             | Název pracovního postupu |
-| WorkflowBlobStorageURL   | Adresa url kontraktu v úložišti objektů blob |
-| ContractActionParameters | Parametry pro akce kontraktu |
-| TransactionHash          | Hodnota hash transakce na hlavní knihy |
-| Stav zřizování      | Aktuální stav zřizování akce.</br>0 – vytvořeno</br>1 – v procesu</br>2 – dokončení</br> Označuje dokončení potvrzení z hlavní knihy, které toto byl úspěšně přidán |
+| Název | Popis |
+|------|-------------|
+| Blockid % | Jedinečný identifikátor pro blok uvnitř Azure Blockchain Workbench |
+| BlockHash | Hodnota hash bloku |
+| modifyingTransactions | [Transakcí, které upravit](#modifying-transaction-information) kontraktu |
+| ContractId | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
+| ContractLedgerIdentifier | Jedinečný identifikátor pro kontrakt na hlavní knihy |
+| contractProperties | [Vlastnosti smlouvy](#contract-properties) |
+| isNewContract | Určuje, zda byl tento kontrakt nově vytvořen. Možné hodnoty jsou: true: Tato smlouva se vytvoří nové smlouvy. FALSE: této smlouvy je aktualizace smlouvy. |
+| ID připojení | Jedinečný identifikátor pro připojení |
+| messageSchemaVersion | Zasílání zpráv verze schématu |
+| messageName | **ContractMessage** |
+| AdditionalInformation | Další informace, které jsou k dispozici |
 
-```csharp
-public class ContractActionRequest : MessageModelBase
+#### <a name="modifying-transaction-information"></a>Úprava informací o transakcích
+
+| Název               | Popis |
+|--------------------|-------------|
+| Identifikátor TransactionId | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
+| TransactionHash | Hodnota hash transakce na hlavní knihy |
+| od | Jedinečný identifikátor na účetní knihy pro původ transakce |
+| na | Jedinečný identifikátor na účetní knihy pro cíl transakce |
+
+#### <a name="contract-properties"></a>Vlastnosti smlouvy
+
+| Název               | Popis |
+|--------------------|-------------|
+| WorkflowPropertyId | Jedinečný identifikátor pro vlastnosti pracovního postupu uvnitř Azure Blockchain Workbench |
+| jméno | Název vlastnosti pracovního postupu |
+| hodnota | Hodnota vlastnosti pracovního postupu |
+
+Příklad *ContractMessage* z Blockchain Workbench:
+
+``` json
 {
-    public int ContractActionId { get; set; }
-    public int ConnectionId { get; set; }
-    public string UserChainIdentifier { get; set; }
-    public string ContractLedgerIdentifier { get; set; }
-    public string WorkflowFunctionName { get; set; }
-    public string WorkflowName { get; set; }
-    public string WorkflowBlobStorageURL { get; set; }
-    public IEnumerable<ContractActionParameter> ContractActionParameters { get; set; }
-    public string TransactionHash { get; set; }
-    public int ProvisioningStatus { get; set; }
+    "blockId": 123,
+    "blockhash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
+    "modifyingTransactions": [
+        {
+            "transactionId": 234,
+            "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": "0xf8559473b3c7197d59212b401f5a9f07ffff"
+        },
+        {
+            "transactionId": 235,
+            "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": "0xf8559473b3c7197d59212b401f5a9f07b429ffff"
+        }
+    ],
+    "contractId": 111,
+    "contractLedgerIdentifier": "0xf8559473b3c7197d59212b401f5a9f07b429ffff",
+    "contractProperties": [
+        {
+            "workflowPropertyId": 1,
+            "name": "State",
+            "value": "0"
+        },
+        {
+            "workflowPropertyId": 2,
+            "name": "Description",
+            "value": "1969 Dodge Charger"
+        },
+        {
+            "workflowPropertyId": 3,
+            "name": "AskingPrice",
+            "value": "30000"
+        },
+        {
+            "workflowPropertyId": 4,
+            "name": "OfferPrice",
+            "value": "0"
+        },
+        {
+            "workflowPropertyId": 5,
+            "name": "InstanceAppraiser",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 6,
+            "name": "InstanceBuyer",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 7,
+            "name": "InstanceInspector",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 8,
+            "name": "InstanceOwner",
+            "value": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff"
+        },
+        {
+            "workflowPropertyId": 9,
+            "name": "ClosingDayOptions",
+            "value": "[21,48,69]"
+        }
+    ],
+    "isNewContract": false,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "ContractMessage",
+    "additionalInformation": {}
 }
 ```
 
-### <a name="updateuserbalance"></a>UpdateUserBalance
+### <a name="event-message-contract-function-invocation"></a>Zpráva o události: Volání funkce kontraktu
 
-Označuje, že byl proveden požadavek aktualizace zůstatku uživatele na konkrétní distribuované účetní knihy.
+Obsahuje informace, když je vyvolána funkce smlouvy, jako je název funkce, vstupní parametry a volající funkce.
 
-> [!NOTE]
-> Tato zpráva je vygenerována pouze pro tyto účetní knihy, které vyžadují financování účty.
-> 
+| Název | Popis |
+|------|-------------|
+| eventName                   | **ContractFunctionInvocation** |
+| volající                      | [Informace o volajícím](#caller-information) |
+| ContractId                  | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
+| ContractLedgerIdentifier    | Jedinečný identifikátor pro kontrakt na hlavní knihy |
+| functionName                | Název funkce |
+| parameters                  | [Informace o parametrech](#parameter-information) |
+| Transakce                 | [Informace o transakci](#eventmessage-transaction-information) |
+| inTransactionSequenceNumber | Pořadové číslo sady transakcí v bloku |
+| ID připojení                | Jedinečný identifikátor pro připojení |
+| messageSchemaVersion        | Zasílání zpráv verze schématu |
+| messageName                 | **Zpráva události** |
+| AdditionalInformation       | Další informace, které jsou k dispozici |
 
-| Název    | Popis                              |
-|---------|------------------------------------------|
-| Adresa | Adresa uživatele, který byl financování |
-| Zůstatek | Zůstatek Zůstatek na účtu uživatele         |
-| ChainID | Jedinečný identifikátor pro řetězce     |
+#### <a name="caller-information"></a>Informace o volajícím
 
+| Název | Popis |
+|------|-------------|
+| type | Zadejte volajícího, jako je uživatel nebo kontrakt |
+| id | Jedinečný identifikátor volajícího uvnitř Azure Blockchain Workbench |
+| ledgerIdentifier | Jedinečný identifikátor volajícího na hlavní knihy |
 
-``` csharp
-public class UpdateUserBalanceRequest : MessageModelBase
+#### <a name="parameter-information"></a>Informace o parametrech
+
+| Název | Popis |
+|------|-------------|
+| jméno | Název parametru |
+| hodnota | Hodnota parametru |
+
+#### <a name="event-message-transaction-information"></a>Informace o transakcích zprávy událostí
+
+| Název               | Popis |
+|--------------------|-------------|
+| Identifikátor TransactionId      | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
+| TransactionHash    | Hodnota hash transakce na hlavní knihy |
+| od               | Jedinečný identifikátor na účetní knihy pro původ transakce |
+| na                 | Jedinečný identifikátor na účetní knihy pro cíl transakce |
+
+Příklad *zpráva události ContractFunctionInvocation* z Blockchain Workbench:
+
+``` json
 {
-    public string Address { get; set; }
-    public decimal Balance { get; set; }
-    public int ChainID { get; set; }
+    "eventName": "ContractFunctionInvocation",
+    "caller": {
+        "type": "User",
+        "id": 21,
+        "ledgerIdentifier": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60ffff"
+    },
+    "contractId": 34,
+    "contractLedgerIdentifier": "0xf8559473b3c7197d59212b401f5a9f07b429ffff",
+    "functionName": "Modify",
+    "parameters": [
+        {
+            "name": "description",
+            "value": "a new description"
+        },
+        {
+            "name": "price",
+            "value": "4567"
+        }
+    ],
+    "transaction": {
+        "transactionId": 234,
+        "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+        "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+        "to": "0xf8559473b3c7197d59212b401f5a9f07b429ffff"
+    },
+    "inTransactionSequenceNumber": 1,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation": { }
 }
 ```
 
-### <a name="insertblock"></a>InsertBlock
+### <a name="event-message-application-ingestion"></a>Zpráva o události: Příjem aplikace
 
-Zpráva znamená, že byla podána žádost a přidejte do bloku na distribuované účetní knihy.
+Obsahuje informace při nahrání aplikace do aplikace Workbench, jako například název a verze aplikace nahraje.
 
-| Název           | Popis                                                            |
-|----------------|------------------------------------------------------------------------|
-| ChainId        | Jedinečný identifikátor řetězce, do které byl přidán bloku             |
-| Blockid %        | Jedinečný identifikátor pro blok uvnitř Azure Blockchain Workbench |
-| BlockHash      | Hodnota hash bloku                                                 |
-| BlockTimeStamp | Časové razítko bloku                                            |
+| Název | Popis |
+|------|-------------|
+| eventName | **ApplicationIngestion** |
+| ApplicationId | Jedinečný identifikátor pro aplikaci v Azure Blockchain Workbench |
+| ApplicationName | Název aplikace |
+| ApplicationDisplayName | Zobrazovaný název aplikace |
+| ApplicationVersion | Verze aplikace |
+| applicationDefinitionLocation | Adresa URL, kde se nachází konfigurační soubor aplikace |
+| contractCodes | Kolekce [smlouva kódech](#contract-code-information) pro aplikaci |
+| ApplicationRoles | Kolekce [aplikační role](#application-role-information) pro aplikaci |
+| applicationWorkflows | Kolekce [pracovní postupy aplikace](#application-workflow-information) pro aplikaci |
+| ID připojení | Jedinečný identifikátor pro připojení |
+| messageSchemaVersion | Zasílání zpráv verze schématu |
+| messageName | **Zpráva události** |
+| AdditionalInformation | Další informace, které jsou k dispozici zde zahrnuje stavy pracovního postupu aplikace a informace o přechodu. |
 
-``` csharp
-public class InsertBlockRequest : MessageModelBase
+#### <a name="contract-code-information"></a>Informace o kódu kontraktu
+
+| Název | Popis |
+|------|-------------|
+| id | Jedinečný identifikátor souboru kontraktu kódu uvnitř Azure Blockchain Workbench |
+| LedgerId | Jedinečný identifikátor pro knihy uvnitř Azure Blockchain Workbench |
+| location | Adresa URL, kde je umístěn soubor kódu kontraktu |
+
+#### <a name="application-role-information"></a>Informace o rolích aplikace
+
+| Název | Popis |
+|------|-------------|
+| id | Jedinečný identifikátor pro aplikační role v Azure Blockchain Workbench |
+| jméno | Název role aplikace |
+
+#### <a name="application-workflow-information"></a>Informace o aplikaci pracovního postupu
+
+| Název | Popis |
+|------|-------------|
+| id | Jedinečný identifikátor pro pracovní postupy aplikace v Azure Blockchain Workbench |
+| jméno | Název pracovního postupu aplikace |
+| displayName | Zobrazovaný název aplikace pracovního postupu |
+| functions | Kolekce [funkce pro pracovní postupy aplikace ](#workflow-function-information)|
+| stavy | Kolekce [stavy pracovního postupu aplikace](#workflow-state-information) |
+| properties | Aplikace [informace o vlastnostech pracovního postupu](#workflow-property-information) |
+
+##### <a name="workflow-function-information"></a>Informace o pracovním postupu – funkce
+
+| Název | Popis |
+|------|-------------|
+| id | Jedinečný identifikátor pro funkce aplikace pracovního postupu uvnitř Azure Blockchain Workbench |
+| jméno | Název funkce |
+| parameters | Parametry pro tuto funkci |
+
+##### <a name="workflow-state-information"></a>Informace o stavu pracovního postupu
+
+| Název | Popis |
+|------|-------------|
+| jméno | Název státu |
+| displayName | Název stavu zobrazení |
+| Styl | Stav stylu (úspěch nebo neúspěch) |
+
+##### <a name="workflow-property-information"></a>Informace o vlastnosti pracovního postupu
+
+| Název | Popis |
+|------|-------------|
+| id | Jedinečný identifikátor pro vlastnosti pracovního postupu aplikace v Azure Blockchain Workbench |
+| jméno | Název vlastnosti |
+| type | Typ vlastnosti |
+
+Příklad *zpráva události ApplicationIngestion* z Blockchain Workbench:
+
+``` json
 {
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public string BlockHash { get; set; }
-    public int BlockTimestamp { get; set; }
+    "eventName": "ApplicationIngestion",
+    "applicationId": 31,
+    "applicationName": "AssetTransfer",
+    "applicationDisplayName": "Asset Transfer",
+    "applicationVersion": “1.0”,
+    "applicationDefinitionLocation": "http://url"
+    "contractCodes": [
+        {
+            "id": 23,
+            "ledgerId": 1,
+            "location": "http://url"
+        }
+    ],
+    "applicationRoles": [
+            {
+                "id": 134,
+                "name": "Buyer"
+            },
+            {
+                "id": 135,
+                "name": "Seller"
+            }
+       ],
+    "applicationWorkflows": [
+        {
+            "id": 89,
+            "name": "AssetTransfer",
+            "displayName": "Asset Transfer",
+            "functions": [
+                {
+                    "id": 912,
+                    "name": "",
+                    "parameters": [
+                        {
+                            "name": "description",
+                            "type": {
+                                "name": "string"
+                             }
+                        },
+                        {
+                            "name": "price",
+                            "type": {
+                                "name": "int"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 913,
+                    "name": "modify",
+                    "parameters": [
+                        {
+                            "name": "description",
+                            "type": {
+                                "name": "string"
+                             }
+                        },
+                        {
+                            "name": "price",
+                            "type": {
+                                "name": "int"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "states": [ 
+                 {
+                      "name": "Created",
+                      "displayName": "Created",
+                      "style" : "Success"
+                 },
+                 {
+                      "name": "Terminated",
+                      "displayName": "Terminated",
+                      "style" : "Failure"
+                 }
+            ],
+            "properties": [
+                {
+                    "id": 879,
+                    "name": "Description",
+                    "type": {
+                                "name": "string"
+                     }
+                },
+                {
+                    "id": 880,
+                    "name": "Price",
+                    "type": {
+                                "name": "int"
+                     }
+                }
+            ]
+        }
+    ]
+    "connectionId": [ ],
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation":
+        {
+            "states" :
+            [
+                {
+                    "Name": "BuyerAccepted",
+                    "Transitions": [
+                        {
+                            "DisplayName": "Accept"
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "InstanceOwner" ],
+                            "Function": "Accept",
+                            "NextStates": [ "SellerAccepted" ]
+                        }
+                    ]
+                }
+            ]
+        }
 }
 ```
 
-### <a name="inserttransaction"></a>InsertTransaction
+### <a name="event-message-role-assignment"></a>Zpráva o události: Přiřazení role
 
-Zpráva obsahuje podrobnosti o žádosti o přidání transakce na distribuované účetní knihy.
+Obsahuje informace, když uživatel má přiřazenou roli v aplikaci Workbench, například kdo vykonal přiřazení role a název role a příslušné aplikace.
 
-| Název            | Popis                                                            |
-|-----------------|------------------------------------------------------------------------|
-| ChainId         | Jedinečný identifikátor řetězce, do které byl přidán bloku             |
-| Blockid %         | Jedinečný identifikátor pro blok uvnitř Azure Blockchain Workbench |
-| TransactionHash | Hodnota hash transakce                                           |
-| Od            | Adresa odesílatel požadavku dostane informaci transakce                      |
-| Akce              | Adresa příjemce transakce              |
-| Hodnota           | Hodnota součástí transakce                                 |
-| IsAppBuilderTx  | Určuje, zda toto je transakce Blockchain Workbench                         |
+| Název | Popis |
+|------|-------------|
+| eventName | **RoleAssignment** |
+| ApplicationId | Jedinečný identifikátor pro aplikaci v Azure Blockchain Workbench |
+| ApplicationName | Název aplikace |
+| ApplicationDisplayName | Zobrazovaný název aplikace |
+| ApplicationVersion | Verze aplikace |
+| applicationRole        | Informace o [aplikační role](#roleassignment-application-role) |
+| Pověřující osoby               | Informace o [Pověřující osoby](#roleassignment-assigner) |
+| pověřené osoby               | Informace o [pověřené osoby](#roleassignment-assignee) |
+| ID připojení           | Jedinečný identifikátor pro připojení |
+| messageSchemaVersion   | Zasílání zpráv verze schématu |
+| messageName            | **Zpráva události** |
+| AdditionalInformation  | Další informace, které jsou k dispozici |
 
-``` csharp
-public class InsertTransactionRequest : MessageModelBase
+#### <a name="roleassignment-application-role"></a>RoleAssignment aplikační role
+
+| Název | Popis |
+|------|-------------|
+| id | Jedinečný identifikátor pro aplikační role v Azure Blockchain Workbench |
+| jméno | Název role aplikace |
+
+#### <a name="roleassignment-assigner"></a>Přidělovač RoleAssignment
+
+| Název | Popis |
+|------|-------------|
+| id | Jedinečný identifikátor uživatele v Azure Blockchain Workbench |
+| type | Typ Pověřující osoby |
+| ChainIdentifier | Jedinečný identifikátor uživatele v hlavní knihy |
+
+#### <a name="roleassignment-assignee"></a>RoleAssignment pověřené osoby
+
+| Název | Popis |
+|------|-------------|
+| id | Jedinečný identifikátor uživatele v Azure Blockchain Workbench |
+| type | Typ pověřené osoby |
+| ChainIdentifier | Jedinečný identifikátor uživatele v hlavní knihy |
+
+Příklad *zpráva události RoleAssignment* z Blockchain Workbench:
+
+``` json
 {
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public string TransactionHash { get; set; }
-    public string From { get; set; }
-    public string To { get; set; }
-    public decimal Value { get; set; }
-    public bool IsAppBuilderTx { get; set; }
-}
-```
-
-### <a name="assigncontractchainidentifier"></a>AssignContractChainIdentifier
-
-Poskytuje podrobné informace o přiřazení identifikátor řetězce pro kontrakt. Například v Etherea blockchain, adresu kontraktu na hlavní knihy.
-
-| Název            | Popis                                                                       |
-|-----------------|-----------------------------------------------------------------------------------|
-| ContractId      | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
-| ChainIdentifier | Identifikátor pro kontrakt pro řetězec                             |
-
-``` csharp
-public class AssignContractChainIdentifierRequest : MessageModelBase
-{
-    public int ContractId { get; set; }
-    public string ChainIdentifier { get; set; }
-}
-```
-
-## <a name="classes-used-by-message-types"></a>Třídy používané typy zpráv
-
-### <a name="messagemodelbase"></a>MessageModelBase
-
-Základní model pro všechny zprávy.
-
-| Název          | Popis                          |
-|---------------|--------------------------------------|
-| OperationName | Název operace           |
-| ID žádosti     | Jedinečný identifikátor pro požadavek |
-
-``` csharp
-public class MessageModelBase
-{
-    public string OperationName { get; set; }
-    public string RequestId { get; set; }
-}
-```
-
-### <a name="contractinputparameter"></a>ContractInputParameter
-
-Obsahuje název, hodnotu a typ parametru.
-
-| Název  | Popis                 |
-|-------|-----------------------------|
-| Název  | Název parametru  |
-| Hodnota | Hodnota parametru |
-| Typ  | Typ parametru  |
-
-``` csharp
-public class ContractInputParameter
-{
-    public string Name { get; set; }
-    public string Value { get; set; }
-    public string Type { get; set; }
-}
-```
-
-#### <a name="contractproperty"></a>ContractProperty
-
-Obsahuje ID, název, hodnotu a typ vlastnosti.
-
-| Název  | Popis                |
-|-------|----------------------------|
-| ID    | ID vlastnosti    |
-| Název  | Název vlastnosti  |
-| Hodnota | Hodnota vlastnosti. |
-| Typ  | Typ vlastnosti  |
-
-``` csharp
-public class ContractProperty
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Value { get; set; }
-    public string DataType { get; set; }
+    "eventName": "RoleAssignment",
+    "applicationId": 31,
+    "applicationName": "AssetTransfer",
+    "applicationDisplayName": "Asset Transfer",
+    "applicationVersion": “1.0”,
+    "applicationRole": {
+        "id": 134,
+        "name": "Buyer"
+    },
+    "assigner": {
+        "id": 1,
+        "type": null,
+        "chainIdentifier": "0xeFFC7766d38aC862d79706c3C5CEEf089564ffff"
+    },
+    "assignee": {
+        "id": 3,
+        "type": null,
+        "chainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff"
+    },
+    "connectionId": [ ],
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation": { }
 }
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Vzory integrace inteligentní kontraktu](integration-patterns.md)
+- [Vzory integrace inteligentní kontraktu](integration-patterns.md)

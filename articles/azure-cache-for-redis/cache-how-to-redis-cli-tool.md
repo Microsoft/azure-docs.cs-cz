@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: wesmc
-ms.openlocfilehash: 4cefae50482547b910c6468854a251b0f61ce558
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 68c533235480ec49e3c561d99095d5722f6f69a4
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019334"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106320"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak používat nástroj příkazového řádku Redis s mezipamětí Azure pro Redis
 
@@ -26,7 +26,7 @@ ms.locfileid: "53019334"
 
 Nástroj je k dispozici pro platformy Windows, stáhněte si [Redis nástroje příkazového řádku pro Windows](https://github.com/MSOpenTech/redis/releases/). 
 
-Pokud chcete spustit nástroj příkazového řádku na jiné platformě, mezipaměť pro stahování Azure pro Redis z [ http://redis.io/download ](https://redis.io/download).
+Pokud chcete spustit nástroj příkazového řádku na jiné platformě, mezipaměť pro stahování Azure pro Redis z [ https://redis.io/download ](https://redis.io/download).
 
 ## <a name="gather-cache-access-information"></a>Shromážděte informace o přístupu k mezipaměti
 

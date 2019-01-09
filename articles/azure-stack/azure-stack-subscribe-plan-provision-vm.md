@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 01/09/2019
 ms.author: sethm
-ms.openlocfilehash: b6739a194f6374cf90e6508f4a4316892daaf3dd
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7de32573ac6c0d084be3fdd6ff2c3641559fc31f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079238"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118818"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Vytvářet předplatná na nabídky ve službě Azure Stack
 
@@ -32,11 +32,11 @@ Poté co [vytvořte nabídku](azure-stack-create-offer.md), uživatelé potřebu
 
 ## <a name="create-a-subscription-as-a-cloud-operator"></a>Vytvoření odběru jako operátor cloudu
 
-Operátoři cloudu slouží k vytvoření předplatného na nabídku pro uživatele na portálu pro správu.  Můžete vytvářet předplatných pro členy vašeho vlastního tenanta adresáře.  Když [víceklientská](azure-stack-enable-multitenancy.md) je povolené, můžete také vytvářet odběry pro uživatele v tenantech další adresář.
+Operátoři cloudu slouží k vytvoření předplatného na nabídku pro uživatele na portálu pro správu. Můžete vytvářet předplatných pro členy vašeho vlastního tenanta adresáře. Když [víceklientská](azure-stack-enable-multitenancy.md) je povolené, můžete také vytvářet odběry pro uživatele v tenantech další adresář.
 
 Pokud nechcete, aby vaši klienti vytvářet své vlastní odběry, soukromá svoje nabídky a pak vytvořte odběry pro vaše klienty. Tento přístup je běžný při integraci s externím fakturace nebo systémů katalogu služby Azure Stack.
 
-Až vytvoříte odběr pro uživatele, se přihlaste k portálu user portal a zkontrolujte, se už zaregistrovali nabídku.  
+Po vytvoření předplatného pro uživatele, mohou přihlásit k portálu user portal a zobrazit, že jsou přihlášení k odběru nabídky.  
 
 ### <a name="to-create-a-subscription-for-a-user"></a>Jak vytvoříte odběr pro uživatele
 
@@ -48,17 +48,17 @@ Až vytvoříte odběr pro uživatele, se přihlaste k portálu user portal a zk
 
      - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
-     - **SLUŽBA AD FS:** `<user1>@<azurestack.local>` 
+     - **SLUŽBA AD FS:** `<user1>@<azurestack.local>`
 
    - **Adresář tenanta** – vyberte tenantu Active directory, pokud je uživatelský účet členem. Pokud jste ještě nepovolili více tenantů, je k dispozici pouze vašeho místního adresáře tenanta.
 
 3. Vyberte **nabízejí**. V části **nabízí**, zvolte **nabízejí** pro toto předplatné. Vzhledem k tomu, že vytváříte předplatné pro uživatele, vyberte **privátní** jako stav usnadnění.
 
-4. Vyberte **vytvořit** vytvoření odběru. Zobrazí se vám nový odběr v rámci **předplatné uživatele**. Když uživatel přihlásí k portálu user portal mohou zobrazit podrobnosti o předplatném.
+4. Vyberte **vytvořit** vytvoření odběru. Nové předplatné se zobrazí v části **předplatné uživatele**. Když uživatel přihlásí k portálu user portal, mohou zobrazit podrobnosti o předplatném.
 
 ### <a name="to-make-an-add-on-plan-available"></a>Chcete-li zpřístupnit doplňkový plán
 
-Operátor cloudu můžete přidat do dříve vytvořené předplatné kdykoli doplňkový plán:
+Operátor cloudu můžete přidat plán na předplatné s dříve vytvořenou v každém okamžiku:
 
 1. V portálu pro správu, vyberte **všechny služby** a potom v části **prostředky pro správu** vyberte **předplatná uživatelů**. Vyberte předplatné, které chcete změnit.
 
@@ -71,11 +71,11 @@ Operátor cloudu můžete přidat do dříve vytvořené předplatné kdykoli do
 Jako uživatel můžete se přihlásit k portálu user portal k vyhledání a přihlášení k odběru nabídky veřejné a doplňkové plány pro vašeho tenanta adresáře (organizace).
 
 >[!NOTE]
->Pokud vaše prostředí Azure Stack podporuje [víceklientská](azure-stack-enable-multitenancy.md) také k odběru nabídky z klienta vzdáleného adresáře.
+>Pokud vaše prostředí Azure Stack podporuje [víceklientská](azure-stack-enable-multitenancy.md), také k odběru nabídky z klienta vzdáleného adresáře.
 
 ### <a name="to-subscribe-to-an-offer"></a>K odběru nabídky
 
-1. [Přihlaste se](azure-stack-connect-azure-stack.md) k portálu user portal pro Azure Stack (https://portal.local.azurestack.external) a vyberte **pořiďte si předplatné**.
+1. [Přihlaste se](azure-stack-connect-azure-stack.md) k [portálu user portal pro Azure Stack](https://portal.local.azurestack.external) a vyberte **pořiďte si předplatné**.
 
    ![Získat předplatné](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
@@ -84,19 +84,19 @@ Jako uživatel můžete se přihlásit k portálu user portal k vyhledání a p�
    ![Vytvoření nabídky](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
 3. Jakmile se přihlásíte k odběru nabídky, aktualizujte stránku portálu, abyste zjistili, které služby jsou součástí nového předplatného.
+
 4. Chcete-li zobrazovat předplatné, které jste vytvořili, vyberte **všechny služby** a potom v části **Obecné** vyberte kategorii **předplatná**. Vyberte předplatné zobrazíte podrobnosti o předplatném.  
 
 ### <a name="to-subscribe-to-an-add-on-plan"></a>Přihlaste se k doplňkový plán odběru
 
 Pokud nabídka má doplňkový plán, můžete přidat tento plán k vašemu předplatnému kdykoli.  
 
-1. Na portálu user portal, vyberte **všechny služby**. Části **Obecné** vyberte kategorii **předplatná**a potom vyberte předplatné, který chcete změnit. Pokud jsou k dispozici žádné doplňkové plány **+ přidat plán** je aktivní a dlaždice pro **doplňkové plány**.
+1. Na portálu user portal, vyberte **všechny služby**. Části **Obecné** vyberte **předplatná**a potom vyberte předplatné, který chcete změnit. Pokud jsou k dispozici žádné doplňkové plány **+ přidat plán** je aktivní a dlaždice pro **doplňkové plány**. 
 
-   >[!NOTE]
-   >Pokud **+ přidat plán** není aktivní, pak nejsou k dispozici žádné doplňkové plány pro nabídku spojený s tímto předplatným.
+   Pokud **+ přidat plán** není aktivní, pak nejsou žádné doplňkové plány pro nabídku spojený s tímto předplatným.
 
 1. Vyberte **+ přidat plán** nebo **doplňkové plány** dlaždici. V části **doplňkové plány**, vyberte plán, které chcete přidat.
 
 ## <a name="next-steps"></a>Další postup
 
-[Zřízení virtuálního počítače](azure-stack-provision-vm.md)
+- [Zřízení virtuálního počítače](azure-stack-provision-vm.md)

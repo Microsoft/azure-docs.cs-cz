@@ -1,6 +1,6 @@
 ---
 title: Shromažďovat vlastní data JSON ve službě Azure Monitor | Dokumentace Microsoftu
-description: Vlastní zdroje dat JSON se můžou shromažďovat do služby Azure Monitor pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON jako curl nebo jeden z jeho FluentD více než 300 moduly plug-in. Tento článek popisuje konfigurace požadované pro tuto kolekci data.
+description: Vlastní zdroje dat JSON dají shromažďovat do Log Analytics pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON jako curl nebo jeden z jeho FluentD více než 300 moduly plug-in. Tento článek popisuje konfigurace požadované pro tuto kolekci data.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 64f1d7b1437ea018a25db18e5f92bffaac8f7099
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 36f914109d8d3879d23511cb37055d20db4d670c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438451"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105215"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Shromažďovat vlastní zdroje dat JSON pomocí agenta Log Analytics pro Linux ve službě Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Vlastní zdroje dat JSON dají shromažďovat do [protokoly Azure monitoru](data-collection.md) pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON, jako [curl](https://curl.haxx.se/) nebo jeden z [FluentD na více než 300 moduly plug-in](http://www.fluentd.org/plugins/all). Tento článek popisuje konfigurace požadované pro tuto kolekci data.
+
+Vlastní zdroje dat JSON dají shromažďovat do [Log Analytics](data-collection.md) pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON, jako [curl](https://curl.haxx.se/) nebo jeden z [FluentD na více než 300 moduly plug-in](http://www.fluentd.org/plugins/all). Tento článek popisuje konfigurace požadované pro tuto kolekci data.
+
 
 > [!NOTE]
 > Agenta log Analytics pro Linux v1.1.0-217 + je třeba použít vlastní Data JSON
@@ -31,7 +33,7 @@ Vlastní zdroje dat JSON dají shromažďovat do [protokoly Azure monitoru](data
 
 ### <a name="configure-input-plugin"></a>Konfigurace vstupu modulu plug-in
 
-Chcete-li shromažďovat data JSON ve službě Azure Monitor, přidejte `oms.api.` začátek FluentD značku ve vstupu modulu plug-in.
+Chcete-li shromažďovat data JSON ve službě Log Analytics, přidejte `oms.api.` začátek FluentD značku ve vstupu modulu plug-in.
 
 Například tady je samostatného konfiguračního souboru `exec-json.conf` v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Tady se používá modul plug-in FluentD `exec` ke spuštění příkazu curl každých 30 sekund.  Výstup tohoto příkazu se shromažďují pomocí modulu plug-in výstup JSON.
 
@@ -85,9 +87,9 @@ Restartujte agenta Log Analytics pro služby service pro Linux pomocí následuj
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Výstup
-Data budou shromážděna v protokolech Azure Monitor s typem záznamu `<FLUENTD_TAG>_CL`.
+Data se shromažďují v Log Analytics s typem záznamu `<FLUENTD_TAG>_CL`.
 
-Například vlastní značku `tag oms.api.tomcat` ve službě Azure Monitor s typem záznamu `tomcat_CL`.  Může načíst všechny záznamy z tohoto typu s následující dotaz protokolu.
+Například vlastní značku `tag oms.api.tomcat` v Log Analytics s typem záznamu `tomcat_CL`.  Může načíst všechny záznamy z tohoto typu s následující dotaz protokolu.
 
     Type=tomcat_CL
 

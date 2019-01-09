@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 6d28eea434b081602f0e2455b22fcc58022a800e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343839"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117109"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Spravovat registraci klientů ve službě Azure Stack
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Tento článek obsahuje podrobnosti o registraci operace. Můžete použít tyto operace:
 - Spravovat registrace tenanta
@@ -51,7 +51,7 @@ Další informace o službě Azure Stack a profily rozhraní API najdete v téma
 |---                         | --- |
 | registrationSubscriptionID | Předplatné Azure použité pro počáteční registraci. |
 | customerSubscriptionID     | Předplatné Azure (ne Azure Stack) patřící do zákazníků k registraci. Musí být vytvořená v nabídce Cloud Service Provider (CSP) prostřednictvím partnerského centra. Pokud zákazník má více než jednoho tenanta, vytvoří předplatné pro příslušného tenanta pro přihlášení ke službě Azure Stack. |
-| Skupina prostředků              | Skupina prostředků v Azure, ve kterém je uložené registrace. |
+| resourceGroup              | Skupina prostředků v Azure, ve kterém je uložené registrace. |
 | registrationName           | Název registrace služby Azure Stack. Jde o objekt uložená v Azure. Název se obvykle formulář azurestack-CloudID, kde je CloudID ID cloudu nasazení Azure Stack. |
 
 > [!Note]  
@@ -59,7 +59,7 @@ Další informace o službě Azure Stack a profily rozhraní API najdete v téma
 
 ### <a name="powershell"></a>PowerShell
 
-Pomocí rutiny New-AzureRmResource můžete provést upgrade prostředku registrace. Přihlaste se k Azure (`Add-AzureRmAccount`) pomocí účtu, který jste použili při počáteční registraci. Tady je příklad toho, jak přidat tenanta:
+Pomocí rutiny New-AzureRmResource můžete provést upgrade prostředku registrace. Tady je příklad toho, jak přidat tenanta:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -67,11 +67,11 @@ Pomocí rutiny New-AzureRmResource můžete provést upgrade prostředku registr
 
 ### <a name="api-call"></a>Volání rozhraní API
 
-**Operace**: Vložit  
+**Operace**: PUT  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**Odpověď**: 201 vytvořili  
-**Text odpovědi**: prázdné  
+**Odpověď**: 201 – vytvořeno  
+**Text odpovědi**: Prázdné  
 
 ## <a name="list-all-registered-tenants"></a>Vypsat všechny registrované tenanty
 
@@ -85,7 +85,7 @@ Získání seznamu všech tenantů, které byly přidány na registraci.
 | Parametr                  | Popis          |
 |---                         | ---                  |
 | registrationSubscriptionId | Předplatné Azure použité pro počáteční registraci.   |
-| Skupina prostředků              | Skupina prostředků v Azure, ve kterém je uložené registrace.    |
+| resourceGroup              | Skupina prostředků v Azure, ve kterém je uložené registrace.    |
 | registrationName           | Název registrace služby Azure Stack. Jde o objekt uložená v Azure. Název je obvykle ve formě **azurestack**-***CloudID***, kde ***CloudID*** je ID cloudu nasazení Azure Stack.   |
 
 ### <a name="powershell"></a>PowerShell
@@ -100,7 +100,7 @@ Použijte rutinu Get-AzureRmResource vypsat všechny registrované tenanty. Při
 
 Můžete získat seznam všech mapování tenanta pomocí operace GET
 
-**Operace**: získání  
+**Operace**: GET  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?  
 api-version=2017-06-01 HTTP/1.1`  
@@ -135,7 +135,7 @@ Odstraněním tenanta, který byl přidán do registrace. Pokud tohoto tenanta p
 | Parametr                  | Popis          |
 |---                         | ---                  |
 | registrationSubscriptionId | ID předplatného pro registraci.   |
-| Skupina prostředků              | Skupina prostředků pro registraci.   |
+| resourceGroup              | Skupina prostředků pro registraci.   |
 | registrationName           | Název registrace.  |
 | customerSubscriptionId     | ID předplatného zákazníka.  |
 
@@ -149,12 +149,12 @@ Odstraněním tenanta, který byl přidán do registrace. Pokud tohoto tenanta p
 
 Můžete odebrat mapování tenanta pomocí operace odstranění.
 
-**Operace**: odstranit  
+**Operace**: DELETE  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
 **Odpověď**: 204 žádný obsah.  
-**Text odpovědi**: prázdné
+**Text odpovědi**: Prázdné
 
 ## <a name="next-steps"></a>Další postup
 

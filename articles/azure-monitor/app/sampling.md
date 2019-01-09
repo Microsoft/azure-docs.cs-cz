@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 10/02/2018
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 7b25495973502f1b28aedf8b99c84ca45a5ac898
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0b56451231f1fda4e5bd156d0aded6e84c9c0162
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028197"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117448"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
 
-Vzorkování je funkce [Azure Application Insights](../../application-insights/app-insights-overview.md). Je doporučený postup ke snížení provozu telemetrie a úložiště, zachováním statisticky správné analýzy dat aplikací. Položky, které se týkají, vybere filtr tak, aby můžete procházet mezi položkami při provádění diagnostiky šetření.
+Vzorkování je funkce [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Je doporučený postup ke snížení provozu telemetrie a úložiště, zachováním statisticky správné analýzy dat aplikací. Položky, které se týkají, vybere filtr tak, aby můžete procházet mezi položkami při provádění diagnostiky šetření.
 Když metriky počty se zobrazují na portálu, jsou renormalized vzít v úvahu vzorkování, chcete-li minimalizovat žádný vliv na Statistika.
 
 Vzorkování snižuje náklady na provoz a data a pomůže vám vyhnout se omezení.

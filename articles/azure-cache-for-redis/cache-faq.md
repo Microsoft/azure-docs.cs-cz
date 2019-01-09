@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: aee91f6d9b8d16db7f14bbc2372d7c465377ce28
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 444f1aaee496666745be548bcdfadf3a4f162699
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971524"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104059"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis.
@@ -90,7 +90,7 @@ Existuje několik způsobů, jimiž můžete začít s Azure Cache pro Redis.
 
 * Můžete vyzkoušet jedno z našich kurzů, které jsou k dispozici pro [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md), a [Python](cache-python-get-started.md).
 * Můžete sledovat [tom, jak vytvářet výkonné aplikace pomocí Microsoft Azure Cache pro Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Si můžete prohlédnout v dokumentaci klienta pro klienty, které odpovídají vývojový jazyk projektu naleznete v tématu Jak používat Redis. Existuje mnoho klientů Redis, které je možné s mezipamětí Azure Redis. Seznam klientů Redis najdete v tématu [ http://redis.io/clients ](http://redis.io/clients).
+* Si můžete prohlédnout v dokumentaci klienta pro klienty, které odpovídají vývojový jazyk projektu naleznete v tématu Jak používat Redis. Existuje mnoho klientů Redis, které je možné s mezipamětí Azure Redis. Seznam klientů Redis najdete v tématu [ https://redis.io/clients ](https://redis.io/clients).
 
 Pokud ještě nemáte účet Azure, můžete:
 
@@ -210,7 +210,7 @@ Obvykle jsou výchozí hodnoty klienta dostatečná. Můžete podrobně upravit 
       * Tyto pokyny mohou vést k více zjednodušené latencí na `ConnectionMultiplexer`.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Jaké mezipaměti Azure Redis klientů můžete použít?
-Jednou z nejlepších věcí na Redis je, že existují mnoho klientů podporuje mnoho různých programovacích jazyků. Aktuální seznam klientů najdete v tématu [klienti Redis](http://redis.io/clients). Kurzy, které zahrnují několik různých jazycích a klientů najdete na stránce [použití mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka selektoru v horní části tohoto článku.
+Jednou z nejlepších věcí na Redis je, že existují mnoho klientů podporuje mnoho různých programovacích jazyků. Aktuální seznam klientů najdete v tématu [klienti Redis](https://redis.io/clients). Kurzy, které zahrnují několik různých jazycích a klientů najdete na stránce [použití mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka selektoru v horní části tohoto článku.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -236,12 +236,12 @@ Neexistuje žádné místní emulátor pro mezipaměť Azure Redis, ale může s
         }
 
 
-Volitelně můžete nakonfigurovat [redis.conf](http://redis.io/topics/config) souboru tak, aby lépe odpovídaly [výchozí nastavení mezipaměti](cache-configure.md#default-redis-server-configuration) pro vaše online mezipaměti Azure Redis v případě potřeby.
+Volitelně můžete nakonfigurovat [redis.conf](https://redis.io/topics/config) souboru tak, aby lépe odpovídaly [výchozí nastavení mezipaměti](cache-configure.md#default-redis-server-configuration) pro vaše online mezipaměti Azure Redis v případě potřeby.
 
 <a name="cache-commands"></a>
 
 ### <a name="how-can-i-run-redis-commands"></a>Jak mohu spustit příkazy Redis?
-Můžete použít některý z příkazů uvedený na [příkazy Redis](http://redis.io/commands#) s výjimkou příkazy uvedené v [Redis nepodporuje v mezipaměti Azure Redis příkazy](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis). Máte několik možností, jak spouštět příkazy Redis.
+Můžete použít některý z příkazů uvedený na [příkazy Redis](https://redis.io/commands#) s výjimkou příkazy uvedené v [Redis nepodporuje v mezipaměti Azure Redis příkazy](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis). Máte několik možností, jak spouštět příkazy Redis.
 
 * Pokud máte Standard nebo Premium mezipaměti můžete spouštět příkazy Redis pomocí [konzola Redis](cache-configure.md#redis-console). Konzola Redis poskytuje zabezpečený způsob, jak spouštět příkazy Redis na webu Azure Portal.
 * Můžete také použít nástroje příkazového řádku Redis. K jejich použití, proveďte následující kroky:
@@ -257,7 +257,7 @@ Můžete použít některý z příkazů uvedený na [příkazy Redis](http://re
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Proč Azure mezipaměti Redis nemá MSDN knihovny tříd jako některé z dalších služeb Azure?
-Microsoft Azure Cache Redis je založená na oblíbené open source mezipaměti Azure pro Redis a je možný přes celou řadu [klienti Redis](http://redis.io/clients) pro řadu programovacích jazyků. Každý klient má své vlastní rozhraní API, která provede volání do mezipaměti Azure Redis pomocí instance [příkazy Redis](http://redis.io/commands).
+Microsoft Azure Cache Redis je založená na oblíbené open source mezipaměti Azure pro Redis a je možný přes celou řadu [klienti Redis](https://redis.io/clients) pro řadu programovacích jazyků. Každý klient má své vlastní rozhraní API, která provede volání do mezipaměti Azure Redis pomocí instance [příkazy Redis](https://redis.io/commands).
 
 Protože každá klient se liší, není jednu centrální třída reference na webu MSDN a každý klient udržuje svůj vlastní referenční dokumentaci. Kromě referenční dokumentaci jsou k dispozici několik kurzů ukazuje, jak začít pracovat s mezipamětí Azure pro Redis používající různé jazyky a ukládat do mezipaměti klientů. Pro přístup k tyto kurzy, naleznete v tématu [použití mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka selektoru v horní části tohoto článku.
 
@@ -310,7 +310,7 @@ Pokyny ke stahování nástroje Redis, najdete v článku [jak mohu spustit př�
 * Redis funguje nejlépe s menší hodnoty, proto zvažte dělení větší data do více klíčů. V [této diskuse Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ), 100 kb se považují za velké. Čtení [v tomto článku](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) pro problém s příklad, který může být způsobeno velké hodnoty.
 * Konfigurace vašeho [nastavení fondu vláken](#important-details-about-threadpool-growth) aby se zabránilo vypršení časového limitu.
 * Použijte alespoň connectTimeout výchozí hodnoty 5 sekund. Tento interval pohrál StackExchange.Redis dostatek času pro opětovné vytvoření připojení v případě blip sítě.
-* Mějte na náklady výkonu související s různé operace, které jsou spuštěné. Například `KEYS` příkaz O(n) operace a mělo by se vyhnout. [Redis.io lokality](http://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
+* Mějte na náklady výkonu související s různé operace, které jsou spuštěné. Například `KEYS` příkaz O(n) operace a mělo by se vyhnout. [Redis.io lokality](https://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
 
 #### <a name="configuration-and-concepts"></a>Konfigurace a koncepty
 * Použití úrovně Standard a Premium pro produkční systémy. Úroveň Basic je jeden uzel systém se žádná data replikace a žádná smlouva SLA. Také můžete použijte mezipaměť o velikosti alespoň C1. C0 mezipaměti se obvykle používají pro scénáře vývoje/testování jednoduché.
@@ -329,7 +329,7 @@ Pokyny ke stahování nástroje Redis, najdete v článku [jak mohu spustit př�
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Jaké jsou některé aspekty při používání běžné příkazy Redis?
 * Byste neměli spouštět některé příkazy Redis, což trvat dlouhou dobu pro dokončení bez informací o dopadu těchto příkazů.
-  * Například, nespouštějte [klíče](http://redis.io/commands/keys) příkaz v produkčním prostředí, protože to může trvat dlouhou dobu vrátit v závislosti na počtu klíčů. Redis je server s jedním vláknem a zpracovává příkazy jeden po druhém. Pokud máte další příkazy vydané po klíče, nebudou zpracovány dokud Redis zpracuje příkaz klíče. [Redis.io lokality](http://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
+  * Například, nespouštějte [klíče](https://redis.io/commands/keys) příkaz v produkčním prostředí, protože to může trvat dlouhou dobu vrátit v závislosti na počtu klíčů. Redis je server s jedním vláknem a zpracovává příkazy jeden po druhém. Pokud máte další příkazy vydané po klíče, nebudou zpracovány dokud Redis zpracuje příkaz klíče. [Redis.io lokality](https://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
 * Velikostí klíče - použít klíč/hodnota malé nebo velké klíč/hodnota? Obecně platí závisí na scénáři. Pokud vaše situace vyžaduje větší klíče, můžete upravit hodnota ConnectionTimeout a opakujte hodnot a upravit svoji logiku opakování. Z pohledu serveru Redis jsou dodržovány menší hodnoty mít lepší výkon.
 * Tyto aspekty neznamenají, že nemůžete uložit vyšší hodnoty v Redis; musíte být vědomi následující aspekty. Bude vyšší latencí. Pokud máte jednu sadu dat, která je větší a ten, který je menší, můžete použít několik instancí ConnectionMultiplexer, každý nakonfigurován s jinou sadou hodnot časového limitu a zkuste to znovu, jak je popsáno v předchozí [co dělat StackExchange.Redis Možnosti konfigurace proveďte](#cache-configuration) oddílu.
 

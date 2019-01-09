@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/08/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255971"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104198"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -63,7 +63,7 @@ Kolekce musí úspěšně projít několik kontroly splnění podmínek se můž
     - Vyberte Azure globální, pokud máte v úmyslu migrovat do komerčním cloudu Azure.
     - Založené na cloudu tady zadané, pošle zařízení zjištěná metadata do příslušných koncových bodů.
 - **Zkontrolujte připojení k Internetu**: Kolektor může připojit k Internetu přímo nebo prostřednictvím proxy serveru.
-    - Kontrola předpokladů ověří připojení k [povinné a nepovinné adresy URL](#connect-to-urls).
+    - Kontrola předpokladů ověří připojení k [povinné a nepovinné adresy URL](#urls-for-connectivity).
     - Pokud máte přímé připojení k Internetu, není žádná konkrétní akce požadované, než je zajistit, aby kolektor přístup požadované adresy URL.
     - Pokud připojujete přes proxy server, Všimněte si, [níže uvedené požadavky](#connect-via-a-proxy).
 - **Zkontrolujte synchronizaci času**: Kolektor synchronizovat s internetovým časovým serverem k zajištění, že ověření požadavků na službu.
@@ -105,7 +105,7 @@ Kolekce musí úspěšně projít několik kontroly splnění podmínek se můž
 
 
 
-### <a name="connect-to-urls"></a>Připojení k adresám URL
+### <a name="urls-for-connectivity"></a>Adresy URL pro připojení
 
 Kontrola připojení se ověří pomocí připojení k seznamu adres URL.
 

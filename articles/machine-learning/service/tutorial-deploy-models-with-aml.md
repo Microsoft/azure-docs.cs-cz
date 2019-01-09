@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: d93eadd1053cfbc88b2d0748f2f22e359694baa7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: a5f13bfa4d0e9962622565cc5ac9c80372b50123
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579647"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107680"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: Nasadit model klasifikace obrázků ve službě Azure Container Instances
 
@@ -342,8 +342,6 @@ plt.show()
 Tento výsledek je z jednoho náhodného vzorku imagím pro testování:
 
 ![Obrázek znázorňující výsledky](./media/tutorial-deploy-models-with-aml/results.png)
-
-![Výsledky](./media/tutorial-deploy-models-with-aml/results.png)
 
 Můžete také odeslat nezpracovaná požadavku HTTP k otestování webové služby:
 

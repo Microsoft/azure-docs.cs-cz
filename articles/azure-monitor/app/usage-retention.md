@@ -13,16 +13,16 @@ ms.date: 05/03/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 4b21632f936093c0a48abf2d13389f22306045cc
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052900"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121358"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analýza uživatelů uchovávání informací pro webové aplikace pomocí Application Insights
 
-Funkce uchování v [Azure Application Insights](../../application-insights/app-insights-overview.md) pomáhá analyzovat kolik uživatelů do vaší aplikace vracejí, a jak často provádět konkrétní úlohy nebo cílů. Například pokud spustíte her lokality, může porovnat počtu uživatelů, kteří vraťte se na web po ztrátě hry s použitím čísla, kteří se vrátí po soutěže winning. Tyto znalosti pomáhá vylepšovat uživatelské prostředí a strategii.
+Funkce uchování v [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) pomáhá analyzovat kolik uživatelů do vaší aplikace vracejí, a jak často provádět konkrétní úlohy nebo cílů. Například pokud spustíte her lokality, může porovnat počtu uživatelů, kteří vraťte se na web po ztrátě hry s použitím čísla, kteří se vrátí po soutěže winning. Tyto znalosti pomáhá vylepšovat uživatelské prostředí a strategii.
 
 ## <a name="get-started"></a>Začínáme
 

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 01/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 947e5d4004565fd10e81e703111daf26fce10368
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d33f50239f6385dc1e331aa44fe5a62e02dac1db
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973515"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107034"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
@@ -68,11 +68,12 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Úložiště** > **Backup a Site Recovery (OMS)**.
-2. Jako **Název** zadejte popisný název pro identifikaci trezoru. Pro tuto sadu kurzů používáme název **ContosoVMVault**.
-3. V části **Skupina prostředků** používáme **contosoRG**.
-4. V části **Umístění** používáme oblast **Západní Evropa**.
-5. Pokud chcete mít k trezoru rychlý přístup z řídicího panelu, vyberte **Připnout na řídicí panel** > **Vytvořit**.
+1. Na webu Azure Portal, klikněte na tlačítko **+ vytvořit prostředek**a na Marketplace vyhledejte **služby Recovery services**.
+2. Klikněte na tlačítko **Backup a Site Recovery (OMS)** a v klikněte na stránce Backup a Site Recovery na **vytvořit**. 
+1. V **trezor služby Recovery Services** > **název**, zadejte popisný název pro identifikaci trezoru. Pro tuto sadu kurzů používáme název **ContosoVMVault**.
+2. V **skupiny prostředků**, vyberte existující skupinu prostředků nebo vytvořte novou. Pro účely tohoto kurzu používáme **contosoRG**.
+3. V **umístění**, vyberte oblast, ve kterém by měl být umístěn v trezoru. používáme oblast **Západní Evropa**.
+4. Pokud chcete mít k trezoru rychlý přístup z řídicího panelu, vyberte **Připnout na řídicí panel** > **Vytvořit**.
 
    ![Vytvoření nového trezoru](./media/tutorial-prepare-azure/new-vault-settings.png)
 

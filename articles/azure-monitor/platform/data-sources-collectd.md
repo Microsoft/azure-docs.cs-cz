@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat z shromážděná ve službě Azure Monitor | Dokumentace Microsoftu
-description: Shromážděná je linuxového démona otevřít zdroj, který pravidelně shromažďuje data z aplikací a informace na úrovni systému.  Tento článek obsahuje informace o shromažďování dat z shromážděná ve službě Azure Monitor.
+title: Shromažďovat data shromážděná v Log Analytics | Dokumentace Microsoftu
+description: Shromážděná je linuxového démona otevřít zdroj, který pravidelně shromažďuje data z aplikací a informace na úrovni systému.  Tento článek obsahuje informace o shromažďování dat z shromážděná v Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 72f47794d8798c6d4b7bcc1c75c3c6d4dc41e6a3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3ccb307eb028170f2dc65fd7cf90edf3115ae9a7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434599"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102682"
 ---
-# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná na agentech pro Linux ve službě Azure Monitor
-[Shromážděná](https://collectd.org/) je linuxového démona otevřít zdroj, který pravidelně shromažďuje metriky výkonu z aplikace a informace na úrovni systému. Příklad aplikace obsahují Java Virtual Machine (JVM), MySQL Server a Nginxu. Tento článek obsahuje informace o shromažďování dat výkonu z shromážděná ve službě Azure Monitor.
+# <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Shromažďovat data shromážděná na agentech pro Linux ve službě Log Analytics
+[Shromážděná](https://collectd.org/) je linuxového démona otevřít zdroj, který pravidelně shromažďuje metriky výkonu z aplikace a informace na úrovni systému. Příklad aplikace obsahují Java Virtual Machine (JVM), MySQL Server a Nginxu. Tento článek obsahuje informace o shromažďování dat výkonu z shromážděná v Log Analytics.
 
 Úplný seznam dostupných modulů plug-in najdete v [tabulky moduly plug-in](https://collectd.org/wiki/index.php/Table_of_Plugins).
 
@@ -57,7 +57,7 @@ Konfigurace shromážděná používá výchozí`write_http` modul plug-in, kter
 > [!NOTE]
 > V případě potřeby lze nastavit na vlastní port tohoto portu.
 
-Agenta Log Analytics pro Linux také naslouchá na portu 26000 shromážděná metriky a převede je do schématu metrik Azure monitoru. Tady je agenta Log Analytics pro Linux konfiguraci `collectd.conf`.
+Agenta Log Analytics pro Linux také naslouchá na portu 26000 shromážděná metriky a převede je do Log Analytics schématu metrik. Tady je agenta Log Analytics pro Linux konfiguraci `collectd.conf`.
 
     <source>
       type http
@@ -71,12 +71,12 @@ Agenta Log Analytics pro Linux také naslouchá na portu 26000 shromážděná m
 
 
 ## <a name="versions-supported"></a>Verze podporováno
-- Azure Monitor v současné době podporuje shromážděná verze 4,8 a vyšší.
+- Log Analytics v současné době podporuje shromážděná verze 4,8 a vyšší.
 - Je vyžadováno pro shromažďování metrik shromážděná agenta log Analytics pro Linux v1.1.0-217 nebo novější.
 
 
 ## <a name="configuration"></a>Konfigurace
-Tady jsou základní kroky pro konfiguraci kolekce shromážděná data ve službě Azure Monitor.
+Tady jsou základní postup pro konfiguraci kolekce shromážděná data v Log Analytics.
 
 1. Nakonfigurujte shromážděná k odesílání dat do agenta Log Analytics pro Linux s využitím modulu plug-in write_http.  
 2. Konfigurace agenta Log Analytics pro Linux pro naslouchání shromážděná data na příslušný port.
@@ -107,10 +107,10 @@ Tady jsou základní kroky pro konfiguraci kolekce shromážděná data ve služ
 
     sudo služby shromážděná restartování sudo /opt/microsoft/omsagent/bin/service_control restartování
 
-## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Shromážděná metriky k převodu schématu Azure Monitor
+## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>Shromážděná metriky k převodu schématu Log Analytics
 Chcete-li zachovat známým modelem mezi metriky infrastruktury ještě shromažďují pomocí agenta Log Analytics pro Linux a nové metriky shromážděné shromážděná následující schéma mapování se používá:
 
-| Metrika shromážděná pole | Azure Monitor pole |
+| Metrika shromážděná pole | Log Analytics pole |
 |:--|:--|
 | hostitel | Počítač |
 | Modul plug-in | Žádný |

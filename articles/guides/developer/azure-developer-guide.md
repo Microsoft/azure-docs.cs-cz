@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 84d8d3838740ec5d448b14b5c4539f7d78c96b5e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c4eefa09f0a70d42601a5b1fe8694500b5c6be2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714351"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118247"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -178,7 +178,7 @@ Vaši aplikaci a běží v Azure můžete potřebovat moct sledovat výkon, pod�
 
 -   **Visual Studio Application Insights**: Hostované v Azure rozšiřitelnou analytickou službu, která se integruje se sadou Visual Studio k monitorování živé webové aplikace. Poskytuje data, která je potřeba průběžně vylepšovat výkon a použitelnost aplikací, ať už hostovaný na Azure, nebo ne.
 
-    >**Začínáme**: Postupujte podle [Application Insights kurzu](../../application-insights/app-insights-overview.md).
+    >**Začínáme**: Postupujte podle [Application Insights kurzu](../../azure-monitor/app/app-insights-overview.md).
 
 -   **Azure Monitor**: Služba, která vám umožní vizualizovat, dotazy, směrovat, archivování a jednat na základě metrik a protokolů, které jsou generovány infrastrukturu Azure a prostředky. Monitor poskytuje zobrazení dat najdete v článku na webu Azure Portal a je jediným zdrojem pro monitorování prostředků Azure.
  

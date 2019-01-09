@@ -12,24 +12,24 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 039ebe9d38b4ac4f63b078489a9c442e08aff0b0
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075103"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116530"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromážděná: Metriky výkonu systému Linux ve službě Application Insights
 
 
-Prozkoumat metriky výkonu systému Linux v [Application Insights](../../application-insights/app-insights-overview.md), nainstalujte [shromážděná](https://collectd.org/)společně s jeho modul plug-in Application Insights. Toto řešení open source shromáždí různé systémové a síťové statistiky.
+Prozkoumat metriky výkonu systému Linux v [Application Insights](../../azure-monitor/app/app-insights-overview.md), nainstalujte [shromážděná](https://collectd.org/)společně s jeho modul plug-in Application Insights. Toto řešení open source shromáždí různé systémové a síťové statistiky.
 
 Obvykle použijete shromážděná, pokud už máte [instrumentována webová služba jazyka Java pomocí Application Insights][java]. Poskytuje víc dat, která umožňují zvýšit výkon vaší aplikace nebo diagnostiky problémů. 
 
 ![Ukázkové grafy](./media/java-collectd/sample.png)
 
 ## <a name="get-your-instrumentation-key"></a>Získejte klíč instrumentace
-V [portálu Microsoft Azure](https://portal.azure.com), otevřete [Application Insights](../../application-insights/app-insights-overview.md) prostředků, ve kterém chcete data zobrazit. (Nebo [vytvořit nový prostředek](../../azure-monitor/app/create-new-resource.md ).)
+V [portálu Microsoft Azure](https://portal.azure.com), otevřete [Application Insights](../../azure-monitor/app/app-insights-overview.md) prostředků, ve kterém chcete data zobrazit. (Nebo [vytvořit nový prostředek](../../azure-monitor/app/create-new-resource.md ).)
 
 Pořiďte si klíč instrumentace, který identifikuje prostředek.
 

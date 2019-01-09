@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b6264d47c7627d72b8746c79e7e050fd468171de
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582707"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105113"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorovat Azure mezipaměti Redis
 Mezipaměť Azure pro použití Redis [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) poskytnout několik možností, jak pro monitorování vaší instance mezipaměti. Můžete zobrazit metriky, připnout grafy metrik na úvodní panel, přizpůsobení datum a čas, množství grafy monitorování, přidání a odebrání grafy metrik a nastavit upozornění při splnění určitých podmínek. Tyto nástroje umožňují monitorování stavu vaší mezipaměti Azure pro instance Redis a snadněji tak můžete spravovat ukládání do mezipaměti aplikace.
 
-Shromažďování metrik pro mezipaměť Azure pro instance Redis pomocí Redis [informace](http://redis.io/commands/info) příkaz přibližně dvakrát za minutu a automaticky ukládají po dobu 30 dnů (naleznete v tématu [exportovat metriky mezipaměti](#export-cache-metrics) ke konfiguraci jiné zásady uchovávání informací), mohou být zobrazeny v grafy metrik a vyhodnoceny pomocí pravidel upozornění. Další informace o různých informace hodnoty používané pro jednotlivé metriky mezipaměti najdete v tématu [dostupných metrik a vytváření sestav intervalech](#available-metrics-and-reporting-intervals).
+Shromažďování metrik pro mezipaměť Azure pro instance Redis pomocí Redis [informace](https://redis.io/commands/info) příkaz přibližně dvakrát za minutu a automaticky ukládají po dobu 30 dnů (naleznete v tématu [exportovat metriky mezipaměti](#export-cache-metrics) ke konfiguraci jiné zásady uchovávání informací), mohou být zobrazeny v grafy metrik a vyhodnoceny pomocí pravidel upozornění. Další informace o různých informace hodnoty používané pro jednotlivé metriky mezipaměti najdete v tématu [dostupných metrik a vytváření sestav intervalech](#available-metrics-and-reporting-intervals).
 
 <a name="view-cache-metrics"></a>
 
@@ -98,7 +98,7 @@ Jednotlivé metriky zahrnuje dvě verze. Jedna metrika měří výkon pro celou 
 
 | Metrika | Popis |
 | --- | --- |
-| Přístupy do mezipaměti |Počet úspěšných hledání klíčů během zadaného intervalu sestavy. To se mapuje na `keyspace_hits` z Redis [informace](http://redis.io/commands/info) příkazu. |
+| Přístupy do mezipaměti |Počet úspěšných hledání klíčů během zadaného intervalu sestavy. To se mapuje na `keyspace_hits` z Redis [informace](https://redis.io/commands/info) příkazu. |
 | Latence mezipaměti (Preview) | Latence mezipaměti počítají vypnout latence mezi uzly mezipaměti. Tato metrika se měří v mikrosekundách a má tři dimenze: "Avg", "Min" a "Max", které představují průměrné, minimální a maximální čekací doba mezipaměti v uvedeném pořadí během zadaného intervalu sestavy. |
 | Neúspěšné přístupy do mezipaměti |Počet neúspěšných hledání klíčů během zadaného intervalu sestavy. To se mapuje na `keyspace_misses` z Redis informace o příkazu. Neúspěšné přístupy do mezipaměti neznamená nutně, že se vyskytl problém s mezipamětí. Například při použití s doplňováním mezipaměti programovací model, aplikace vyhledá první do mezipaměti pro položku. Pokud položka není (Neúspěšné přístupy do mezipaměti), položka je načtena z databáze a přidají se do mezipaměti pro další použití. Neúspěšné přístupy do mezipaměti jsou normálního chování pro doplňování mezipaměti programovací model. Pokud se počet nezdařených přístupů k mezipaměti je vyšší, než se očekávalo, prozkoumejte aplikační logiky, která naplní a načte z mezipaměti. Pokud položek se vyřazuje z mezipaměti z důvodu tlaku na paměť pak mohou být některé Neúspěšné přístupy do mezipaměti, ale lepší metriku k monitorování pro tlaku na paměť by `Used Memory` nebo `Evicted Keys`. |
 | Čtení z mezipaměti |Objem dat je načten z mezipaměti v MB za sekundu (MB/s) během zadaného intervalu sestavy. Tato hodnota pochází z karty síťového rozhraní, které podporují virtuální počítač, který je hostitelem mezipaměti a není konkrétní Redis. **Tato hodnota odpovídá šířky pásma sítě používané tuto mezipaměť. Pokud chcete nastavit výstrahy pro omezení šířky pásma sítě na straně serveru, vytvořte ji pomocí tohoto `Cache Read` čítače. Zobrazit [Tato tabulka](cache-faq.md#cache-performance) mezí zjištěnou šířky pásma pro různé cenové úrovně a velikosti mezipaměti.** |

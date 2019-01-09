@@ -6,12 +6,12 @@ author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 667dbab6613b83d0e72762b8bbad738d0d7697d8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: dd62e0f4ff110ec8454031f1b66b56025328c33c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034433"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101475"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Vytváření oddílů a horizontální škálování ve službě Azure Cosmos DB
 
@@ -23,13 +23,11 @@ Logický oddíl se skládá ze sady položek se stejným klíčem oddílu. Před
 
 Kontejner ve službě Azure Cosmos DB, je základní jednotkou škálovatelnosti. Data přidaná do kontejneru a propustnost, kterou zřídíte v kontejneru se automaticky (vodorovně) rozdělené mezi sadu logické oddíly. Se dělí na základě klíče oddílu, který zadáte pro kontejneru Cosmos. Další informace najdete v tématu [určení klíče oddílu pro váš kontejner Cosmos](how-to-create-container.md) článku.
 
-Logický oddíl definuje obor transakce databáze. Položky v rámci logického oddílu můžete aktualizovat pomocí transakce s izolací snímku.
-
-Při přidání nových položek do kontejneru, nebo je vyšší propustnosti zřízené v kontejneru, nové logické oddíly transparentně vytvořených systémem.
+Logický oddíl definuje obor transakce databáze. Položky v rámci logického oddílu můžete aktualizovat pomocí transakce s izolací snímku. Při přidání nové položky do kontejneru, nové logické oddíly transparentně vytvořených systémem.
 
 ## <a name="physical-partitions"></a>Fyzické oddíly
 
-Díky distribuci dat a propustnost velkým počtem logické oddíly se škálovat kontejneru Cosmos. Interně, jeden nebo více logické oddíly se mapují na **fyzický oddíl** , který se skládá ze sady replik se označuje také jako sady replik. Každé sady replik je hostitelem instance databázového stroje Cosmos. Sady replik díky tomu budou data uložená v rámci oddílu fyzického odolné, vysoce dostupné a konzistentní vzhledem k aplikacím. Fyzický oddíl podporuje pevné, maximální velikost úložiště a RU. Každá replika zahrnující fyzický oddíl dědí kvóty úložiště. A všechny repliky fyzický oddíl souhrnně podporují propustnost přidělené na fyzický oddíl. Následující obrázek znázorňuje, jak logické oddíly se mapují na fyzické oddíly, které jsou globálně distribuované:
+Kontejner Azure Cosmos je škálování díky distribuci dat a propustnost velkým počtem logické oddíly. Interně, jeden nebo více logické oddíly se mapují na **fyzický oddíl** , který se skládá ze sady replik se označuje také jako sady replik. Každé sady replik je hostitelem instance databázového stroje Azure Cosmos. Sady replik díky tomu budou data uložená v rámci oddílu fyzického odolné, vysoce dostupné a konzistentní vzhledem k aplikacím. Fyzický oddíl podporuje pevné, maximální velikost úložiště a RU. Každá replika zahrnující fyzický oddíl dědí kvóty úložiště. A všechny repliky fyzický oddíl souhrnně podporují propustnost přidělené na fyzický oddíl. Následující obrázek znázorňuje, jak logické oddíly se mapují na fyzické oddíly, které jsou globálně distribuované:
 
 ![Dělení služby Azure Cosmos DB](./media/partition-data/logical-partitions.png)
 

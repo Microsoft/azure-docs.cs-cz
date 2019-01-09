@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 21b72a6999b58e7896a79766073ba5a8fa35a734
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 812478c13ef39b369471a731c52dc38ba6a4368c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023001"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119743"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -202,7 +202,7 @@ Nedoporučujeme explicitním nastavením nezbytně nutné, protože toto může 
 |.NET | Podporované, konfigurace se liší podle verze. | Podrobnou konfiguraci informace o .NET 4.7 a předchozími verzemi najdete [tyto pokyny](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Monitorování stavu | Podporované, vyžaduje se konfigurace | Monitorování stavu spoléhá na [konfigurace operačního systému](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfigurace .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) pro podporu protokolu TLS 1.2.
 |Node.js |  Podporované v v10.5.0, konfigurace mohou být vyžadovány. | Použití [oficiální dokumentaci k Node.js TLS/SSL](https://nodejs.org/api/tls.html) pro jakékoli konkrétní konfigurace aplikace. |
-|Java | Podporované, JDK podpora protokolu TLS 1.2 bylo přidáno v [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Používá sadu JDK 8 [TLS 1.2 ve výchozím nastavení](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+|Java | Podporované, JDK podpora protokolu TLS 1.2 bylo přidáno v [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Používá sadu JDK 8 [TLS 1.2 ve výchozím nastavení](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Linuxové distribuce mají tendenci přináší setrvávání u [OpenSSL](https://www.openssl.org) pro podporu protokolu TLS 1.2.  | Zkontrolujte [protokolu změn OpenSSL](https://www.openssl.org/news/changelog.html) pro potvrzení, vaše verze OpenSSL není podporovaná.|
 | Windows 8.0 10 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
 | Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
@@ -297,5 +297,5 @@ Tento produkt obsahuje GeoLite2 data vytvořená systémem MaxMind, k dispozici 
 [platforms]: ../../azure-monitor/app/platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 

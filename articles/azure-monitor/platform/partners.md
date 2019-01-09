@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 95e4140125f064d4e279c90f60b390c4762e8cf8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6ed8bae2e1571722f7a9a0030a48e64c4f7fbc60
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580208"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106660"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů Azure Monitor
 | Partneři |  |  |
@@ -126,7 +126,7 @@ PagerDuty, špičkové řešení pro správu incidentů, poskytuje prvotřídní
 [Přejděte k dokumentaci.][pagerduty-doc]
 
 ## <a name="qradar"></a>QRadar
-DSM od společnosti Microsoft Azure a Microsoft Azure Event Hub protokolu jsou k dispozici ke stažení z [webu podpory IBM](http://www.ibm.com/support). Je možné [Další informace o integraci s Azure zde][qradar-doc].
+DSM od společnosti Microsoft Azure a Microsoft Azure Event Hub protokolu jsou k dispozici ke stažení z [webu podpory IBM](https://www.ibm.com/support). Je možné [Další informace o integraci s Azure zde][qradar-doc].
 
 ## <a name="sciencelogic"></a>ScienceLogic
 ScienceLogic přináší nové generace IT služby assurance platforma pro správu libovolné technologii, kdekoli. ScienceLogic zajišťuje škálování, zabezpečení, automatizaci a odolnosti nezbytné pro zjednodušení úloh správy IT prostředky, služby a aplikace. Platforma ScienceLogic používá rozhraní API služby Azure pro rozhraní s Microsoft Azure. ScienceLogic poskytuje přehled v reálném čase do služby Azure a prostředky. Abyste věděli, když něco nefunguje a můžete je rychleji vyřešit. Azure můžete spravovat také vedle vašeho cloudů a datových center systémů a služeb.
@@ -230,8 +230,8 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric úvod."
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
-[cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix úvod."
-[datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Dokumentace služby Datadog."
+[cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix úvod."
+[datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Dokumentace služby Datadog."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace dokumentaci."
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastické dokumentaci."
 [grafana-doc]: ./grafana-plugin.md "Integrace se službou Azure Monitor Grafana."

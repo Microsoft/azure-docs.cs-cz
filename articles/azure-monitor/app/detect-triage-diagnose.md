@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: c7b9485d9a7da6479e65689fbcab67e10dec5cb2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d5cba3b21ff6099a4132a7ebfab38d1ead9afded
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052270"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118078"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
-Pomocí [Application Insights](../../application-insights/app-insights-overview.md) můžete rychle zjistit, jak vaše aplikace funguje a jak se používá, když je v provozu. Pokud dojde k problému, upozorní vás na něj a pomůže vám posoudit dopad a určit příčinu.
+Pomocí [Application Insights](../../azure-monitor/app/app-insights-overview.md) můžete rychle zjistit, jak vaše aplikace funguje a jak se používá, když je v provozu. Pokud dojde k problému, upozorní vás na něj a pomůže vám posoudit dopad a určit příčinu.
 
 Tady je zpráva od týmu, který vyvíjí webové aplikace:
 
@@ -230,6 +230,6 @@ V závislosti na vlastnostech vaší aplikace můžete začít několika způsob
 * [Webová aplikace ASP.NET](../../azure-monitor/app/asp-net.md)
 * [Webová aplikace Java](../../azure-monitor/app/java-get-started.md)
 * [Webová aplikace Node.js](../../azure-monitor/app/nodejs.md)
-* Již nasazené aplikace hostované ve [službě IIS](../../azure-monitor/app/monitor-web-app-availability.md), na platformě [J2EE](../../azure-monitor/app/java-live.md) nebo v [Azure](../../application-insights/app-insights-overview.md).
+* Již nasazené aplikace hostované ve [službě IIS](../../azure-monitor/app/monitor-web-app-availability.md), na platformě [J2EE](../../azure-monitor/app/java-live.md) nebo v [Azure](../../azure-monitor/app/app-insights-overview.md).
 * [Webové stránky](../../azure-monitor/app/javascript.md) – Samostatná webová stránka nebo obyčejná webová stránka – tuto možnost můžete použít samotnou nebo společně s jakoukoli z možností serveru.
 * [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) pro účely testování aplikace z veřejného internetu.

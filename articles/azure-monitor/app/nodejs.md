@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8414633ae90cccdf4496826bee673e82e3c80460
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 075f08f89e0bbdefa76623a284971f46a1b3966a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035538"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119794"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
-[Azure Application Insights](../../application-insights/app-insights-overview.md) monitoruje po nasazení vaše služby a komponenty back-end a tím vám pomáhá [zjišťovat a rychle diagnostikovat problémy nejen s výkonem](../../azure-monitor/app/detect-triage-diagnose.md). Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje po nasazení vaše služby a komponenty back-end a tím vám pomáhá [zjišťovat a rychle diagnostikovat problémy nejen s výkonem](../../azure-monitor/app/detect-triage-diagnose.md). Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
 
 Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte do svého kódu sadu SDK a pak v Azure nastavte odpovídající prostředek Application Insights. Sada SDK do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
 

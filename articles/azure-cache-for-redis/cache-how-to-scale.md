@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 46f94a512ea78016a327357a3d0ee25a91ad607e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 009fbd3b86518758e9654fab547bab99bec369de
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019363"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105198"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Postup škálování Azure mezipaměti Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti je možné škálovat velikost a cenovou úroveň mezipaměti, pokud se změní požadavky aplikace. Tento článek popisuje, jak se dá škálovat mezipaměť pomocí webu Azure portal a nástrojů, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
@@ -136,7 +136,7 @@ Ne, název mezipaměti a klíče jsou beze změny během operace škálování.
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>Přijdu o data z mezipaměť během změny měřítka?
 * Když **základní** mezipaměti se mění podle nové velikosti, dojde ke ztrátě všech dat a mezipaměť není k dispozici během operace škálování.
 * Při **základní** mezipaměti škálovat tak, aby **standardní** mezipaměti, data v mezipaměti je obvykle zachovány.
-* Když **standardní** mezipaměti je škálovat na větší velikost nebo vrstvy, nebo **Premium** mezipaměti je škálovat pro větší velikost, obvykle se zachovají všechna data. Při horizontálním škálování **standardní** nebo **Premium** mezipaměti na menší velikost dat může dojít ke ztrátě v závislosti na tom, kolik dat je v mezipaměti je horizontální související s novou velikost. Pokud dojde ke ztrátě dat při škálování, použití klíče se vyřadí [allkeys lru](http://redis.io/topics/lru-cache) zásady vyřazení. 
+* Když **standardní** mezipaměti je škálovat na větší velikost nebo vrstvy, nebo **Premium** mezipaměti je škálovat pro větší velikost, obvykle se zachovají všechna data. Při horizontálním škálování **standardní** nebo **Premium** mezipaměti na menší velikost dat může dojít ke ztrátě v závislosti na tom, kolik dat je v mezipaměti je horizontální související s novou velikost. Pokud dojde ke ztrátě dat při škálování, použití klíče se vyřadí [allkeys lru](https://redis.io/topics/lru-cache) zásady vyřazení. 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Je Moje vlastní databáze nastavení ovlivněných během změny měřítka?
 Pokud jste nakonfigurovali vlastní hodnotu `databases` nastavení během vytváření mezipaměti, uvědomte si, že některé cenové úrovně mají odlišné [databáze omezení](cache-configure.md#databases). Tady jsou některé aspekty při horizontálním škálování v tomto scénáři:

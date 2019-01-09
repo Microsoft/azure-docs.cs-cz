@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1ddadcf17a5733767e24505b970b2ac21c8d7fa8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325997"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103940"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží diagnostiky Azure
 Tento článek popisuje informace o odstraňování potíží, které se týkají pomocí Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -118,7 +118,7 @@ Konfigurace diagnostiky obsahuje pokyny pro určitý typ dat, které se mají sh
 #### <a name="is-the-host-generating-data"></a>Hostitele generuje data?
 - **Čítače výkonu**: Otevřete perfmon a čítač.
 
-- **Protokoly trasování**:  Vzdálený přístup k virtuálnímu počítači a přidejte TextWriterTraceListener do konfiguračního souboru aplikace.  Zobrazit http://msdn.microsoft.com/library/sk36c28t.aspx nastavení naslouchacího procesu text.  Ujistěte se, `<trace>` element má `<trace autoflush="true">`.<br />
+- **Protokoly trasování**:  Vzdálený přístup k virtuálnímu počítači a přidejte TextWriterTraceListener do konfiguračního souboru aplikace.  Zobrazit https://msdn.microsoft.com/library/sk36c28t.aspx nastavení naslouchacího procesu text.  Ujistěte se, `<trace>` element má `<trace autoflush="true">`.<br />
 Pokud nevidíte protokoly trasování se generuje, přečtěte si téma [Další informace o protokolech trasování chybí](#more-about-trace-logs-missing).
 
 - **Trasování ETW**: Vzdálený přístup k virtuálnímu počítači a nainstalujte nástroje PerfView.  V PerfView, spusťte **souboru** > **uživatelský příkaz** > **naslouchání etwprovder1** > **etwprovider2**, a tak dále. **Naslouchání** příkaz je velká a malá písmena a nesmí být mezery mezi čárkou oddělený seznam zprostředkovatelů trasování událostí pro Windows. Příkaz selže-li, můžete vybrat **protokolu** tlačítko v pravém dolním rohu nástroje Perfview naleznete v tématu co proběhl pokus o spuštění a jaké výsledkem bylo.  Za předpokladu, že je správný vstup, otevře nové okno. Během několika sekund můžete začít zobrazení trasování ETW.
@@ -217,9 +217,9 @@ Alternativně použijte vzdálenou plochu do počítače a podívejte se, která
 
 V obou případech vyhledejte **Microsoft.Azure.Diagnostics**a potom **xmlCfg** nebo **WadCfg** pole.
 
-Pokud hledáte na virtuálním počítači a **WadCfg** pole je k dispozici, znamená to konfigurace je ve formátu JSON. Pokud **xmlCfg** pole je k dispozici, znamená to konfigurace je ve formátu XML a je s kódováním base64. Je potřeba [dekódovat](http://www.bing.com/search?q=base64+decoder) zobrazíte XML, který byl načten pomocí diagnostiky.
+Pokud hledáte na virtuálním počítači a **WadCfg** pole je k dispozici, znamená to konfigurace je ve formátu JSON. Pokud **xmlCfg** pole je k dispozici, znamená to konfigurace je ve formátu XML a je s kódováním base64. Je potřeba [dekódovat](https://www.bing.com/search?q=base64+decoder) zobrazíte XML, který byl načten pomocí diagnostiky.
 
-Role cloudové služby, pokud vybrat konfigurace z disku, data je kódováním base64, proto musíte [dekódovat](http://www.bing.com/search?q=base64+decoder) zobrazíte XML, který byl načten pomocí diagnostiky.
+Role cloudové služby, pokud vybrat konfigurace z disku, data je kódováním base64, proto musíte [dekódovat](https://www.bing.com/search?q=base64+decoder) zobrazíte XML, který byl načten pomocí diagnostiky.
 
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure Diagnostics modulu plug-in ukončovací kódy
 Modul plug-in vrátí následující kódy ukončení:

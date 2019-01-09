@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 6fe7152e43640a809ab9f4de39b1c6b599975a20
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ced306b00a5761ae096e918b43a8e67e649580dd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969943"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106014"
 ---
 # <a name="common-questions---azure-to-azure-replication"></a>Časté otázky – replikace z Azure do Azure
 
@@ -62,7 +62,7 @@ Site Recovery Ne, nevyžaduje připojení k Internetu, ale přístup k adresám 
 ## <a name="replication-policy"></a>Zásady replikace
 
 ### <a name="what-is-a-replication-policy"></a>Co jsou zásady replikace?
-Definuje nastavení pro obnovení bodu uchování historie a aplikace konzistentní frekvence pořizování snímků. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozím nastavením ' 24 hodin pro uchování bodu obnovení a "60 minut, než se frekvence snímků konzistentní vzhledem k aplikacím aplikace.
+Definuje nastavení pro obnovení bodu uchování historie a aplikace konzistentní frekvence pořizování snímků. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozím nastavením ' 24 hodin pro uchování bodu obnovení a "60 minut, než se frekvence snímků konzistentní vzhledem k aplikacím aplikace. [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings) jak nakonfigurovat zásady replikace]
 
 ### <a name="what-is-crash-consistent-recovery-point"></a>Co je bod obnovení konzistentní pro případ chyby?
 Bod obnovení konzistentní pro případ chyby představuje data na disku, jako kdyby došlo k chybě virtuální počítač nebo napájecí kabel byl stažen ze serveru v době pořízení snímku. Neměl by zahrnovat cokoli, co byl v paměti při pořízení snímku. V současné době většina aplikací můžete obnovit také ze snímky konzistentní s havárií. Bod obnovení konzistentní při selhání je dostatečně obvykle pro žádné databáze operační systémy a aplikace jako souborové servery, servery DHCP, tiskových serverů a tak dále.
@@ -96,6 +96,24 @@ V případě počáteční replikace první bod obnovení, který získá vygene
 
 ### <a name="does-increasing-recovery-points-retention-windows-increases-the-storage-cost"></a>Prodloužení interval uchovávání bodů obnovení zvyšuje požadavky náklady na úložiště?
 Ano, je-li zvýšit dobu uchování 24 hodin až 72 hodin uložte Site Recovery se body obnovení pro přidání 48 hodin, které se účtují vám poplatky za úložiště. Například pokud je bod obnovení jednoho rozdílové změny na 10 GB a za gigabajt je 0.16 $ za měsíc, pak by se jednat o $1.6 * 48 další poplatky za měsíc.
+
+## <a name="multi-vm-consistency"></a>Konzistence více virtuálních počítačů 
+
+### <a name="what-is-multi--vm-consistency"></a>Co je konzistence s více virtuálních počítačů?
+Znamená to, a ujistěte se, že je bod obnovení konzistentní vzhledem k aplikacím na všech replikovaných virtuálních počítačů.
+Site Recovery poskytuje možnost "Konzistence více virtuálních počítačů" který pokud vybrané vytvoří replikační skupinu pro všechny počítače replikovat společně, které jsou součástí skupiny.
+Všechny virtuální počítače budou mít sdílené body obnovení pro případ chyby a konzistentní při převzetí služeb při selhání.
+Projděte si kurz k [povolit "" konzistenci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication).
+
+### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Je možné převzetí služeb při selhání jednoho virtuálního počítače v replikační skupině konzistence "Pro více virtuálních počítačů"?
+Výběrem možnosti "Konzistence více virtuálních počítačů" jsou oznamující, že aplikace obsahuje závislost na všechny virtuální počítače v rámci skupiny. Převzetí služeb při selhání na jeden virtuální počítač proto není povolen. 
+
+### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-multi-vm-consistency-replication-group"></a>Kolik virtuálních počítačů můžete replikovat jako součást skupiny replikace "Pro více virtuálních počítačů" konzistence?
+Můžete replikovat 16 virtuálního počítače společně v replikační skupině.
+
+### <a name="when-should-i-enable-multi-vm-consistency-"></a>Pokud by měl povolit konzistence více virtuálních počítačů?
+Povolení konzistence více virtuálních počítačů může mít vliv na výkon úloh (jako je intenzivní nároky na procesor) a měli použít pouze v případě počítačích běží stejná úloha a potřebujete konzistenci napříč několika počítači. Například pokud máte 2 sql servery a 2 webové servery v aplikaci pak můžete by měl mít "" konzistenci pro jenom servery sql.
+
 
 ## <a name="failover"></a>Převzetí služeb při selhání
 

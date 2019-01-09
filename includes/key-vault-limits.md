@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: efa367157a8fd896cdc9680bf2ab6ba6a9e3dbb0
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429941"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084000"
 ---
 Klíč transakce (maximální počet povolených za 10 sekund za transakcí úložiště na oblast<sup>1</sup>):
 
@@ -23,6 +23,9 @@ Klíč transakce (maximální počet povolených za 10 sekund za transakcí úlo
 |ECC P-521|5|1000|10|2000|
 |ECC SECP256K1|5|1000|10|2000|
 |
+
+> [!NOTE]
+> Výše uvedené mezní hodnoty jsou váha a vynucení je na jejich součet. 125 RSA-HSM - 4 tisíc operací a 0 RSA-HSM - 2 kb / s, nebo 124 RSA-HSM - 4 kB a 16 RSA-HSM - 2k můžete provést. Následně ve stejném intervalu 10 sekundách žádné jiné operace způsobí výjimku AKV klienta.
 
 > [!NOTE]
 > Když se podíváte v následující tabulce, uvidíte, že pro podporovaný software klíče povolujeme, že 2000 transakce za 10 sekund a za HSM 2048bitových klíčů umožňujeme 1000 transakcí za 10 sekund. Poměr podporovaný software transakce 3072 klíče 2048 klíče je 500/2000 nebo 0.4. To znamená, pokud zákazníka nemá 500 3072 klíče transakce za 10 sekund, aby dosáhnout maximálního limitu a nemůže provádět žádné další klíčové operace. 

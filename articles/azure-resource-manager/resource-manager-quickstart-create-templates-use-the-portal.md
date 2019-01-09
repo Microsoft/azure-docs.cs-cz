@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 515ab6a4ee832c702cfe19f2aca9022f208b409d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612784"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104722"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal
+# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal
 
 Přečtěte si, jak si můžete na webu Azure Portal vygenerovat první šablonu Azure Resource Manageru a jak ji můžete na webu Azure Portal upravit a nasadit. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Podle pokynů v tomto kurzu vytvoříte účet služby Azure Storage. Stejným postupem můžete vytvořit i další prostředky Azure.
 
@@ -97,7 +97,7 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Pokud zadá
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "location": {
@@ -145,9 +145,9 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Pokud zadá
     - **Skupina prostředků**: Zadejte jedinečný název skupiny prostředků.
     - **Umístění:**: Vyberte umístění pro skupinu prostředků.
     - **Umístění:**: Vyberte umístění pro účet úložiště.  Můžete použít stejné umístění jako u skupiny prostředků.
-    - **Typ účtu**: V tomto rychlém startu zadejte **Standard_LRS**.
-    - **Druh:** V tomto rychlém startu zadejte **StorageV2**.
-    - **Přístup k úrovni:** V tomto rychlém startu zadejte **Horká**.
+    - **Typ účtu**: Zadejte **Standard_LRS** pro tento rychlý start.
+    - **Druh**: Zadejte **StorageV2** pro tento rychlý start.
+    - **Přístup k úrovni**: Zadejte **Hot** pro tento rychlý start.
     - **Povolen pouze přenos HTTPS**:  V tomto rychlém startu vyberte **true**.
     - **Souhlasím s podmínkami a ujednáními uvedenými nahoře**: Toto políčko zaškrtněte.
 
@@ -164,7 +164,7 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Pokud zadá
 
     ![Skupina prostředků nasazení šablon Azure Resource Manageru](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
 
-    Jak vidíte, nasazení proběhlo úspěšně a skupina prostředků obsahuje pouze jeden účet úložiště. Název účtu úložiště je jedinečný řetězec vygenerovaný šablonou. Další informace o používání účtů úložiště Azure najdete v tématu [Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí webu Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+    Jak vidíte, nasazení proběhlo úspěšně a skupina prostředků obsahuje pouze jeden účet úložiště. Název účtu úložiště je jedinečný řetězec vygenerovaný šablonou. Další informace o používání účtů služby Azure storage najdete v tématu [rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí webu Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

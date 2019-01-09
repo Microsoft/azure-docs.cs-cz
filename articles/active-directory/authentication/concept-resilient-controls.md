@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: b6640e4ef9751e235c0310b0d725cd7e27ff2b40
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53746004"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101917"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
 
@@ -230,7 +230,7 @@ Je nutné vrátit zpět změny provedené v rámci aktivované plán řešení n
 Pokud vaše organizace používá starší verzi zásad MFA na uživatele, můžete zvážit následující alternativní:
 
 1. Pokud máte podnikové síti odchozí IP adresa, můžete je přidat jako důvěryhodné IP adresy, pokud chcete povolit ověřování pouze k podnikové síti.
- 2. Pokud nemáte inventáře odchozí IP adresy nebo vyžaduje pro povolení přístupu uvnitř i mimo podnikovou síť, můžete přidat celého adresního prostoru IPv4 jako důvěryhodné IP adresy v zápisu CIDR (třeba 192.168.1.1/24).
+ 2. Pokud nemáte inventáře odchozí IP adresy nebo vyžaduje pro povolení přístupu uvnitř i mimo podnikovou síť, můžete přidat celého adresního prostoru IPv4 jako důvěryhodné IP adresy zadáním 0.0.0.0/1 a 128.0.0.0/1.
 
 >[!IMPORTANT]
  > Pokud můžete rozšířit důvěryhodné IP adresy pro odblokování přístupu, nebude vygenerováno rizikové události přidružené IP adresy (například neuskutečnitelné cesty nebo neznámých míst).

@@ -10,16 +10,16 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e68e236c54083862bbe1524ec2f7fc3ee6c52ef2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bc04748f2a5b8caa8f589140dd46f0650b7b390
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002208"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102971"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
 
-Nástupu moderních cloudových a [mikroslužeb](http://azure.com/microservices) architektury vyvolalo jednoduchého, samostatně nasaditelných služeb, které pomáhají snižovat náklady a současně zvýšit dostupnost a propustnost. Ale Přestože tyto pohybů plb typu jsme usnadnili individuálních služeb, a pochopit jako celek, tuším celkové systémy obtížnější odůvodnitelný a ladění.
+Nástupu moderních cloudových a [mikroslužeb](https://azure.com/microservices) architektury vyvolalo jednoduchého, samostatně nasaditelných služeb, které pomáhají snižovat náklady a současně zvýšit dostupnost a propustnost. Ale Přestože tyto pohybů plb typu jsme usnadnili individuálních služeb, a pochopit jako celek, tuším celkové systémy obtížnější odůvodnitelný a ladění.
 
 V monolitické architektury jste získali jsme použili až po ladění zásobníky volání. Zásobníky volání jsou vynikající nástroje pro zobrazení toku provádění (metoda volaná metoda B, který volá metodu C), spolu s detaily a parametry, které o každé z těchto volání. To je skvělé pro monolitické nebo služby spuštěné v jednom procesu, ale jak kdy budeme ladit je hranice procesu, nikoli pouze odkaz na místní zásobník volání? 
 
@@ -59,4 +59,4 @@ Web OpenCensus udržuje referenční dokumentace rozhraní API pro [Python](http
 
 * [Použití Průvodce OpenCensus Pythonu](https://opencensus.io/api/python/trace/usage.html)
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
-* [Sledování výkonu začátku do konce](./../../application-insights/app-insights-tutorial-performance.md)
+* [Sledování výkonu začátku do konce](./../../azure-monitor/learn/tutorial-performance.md)

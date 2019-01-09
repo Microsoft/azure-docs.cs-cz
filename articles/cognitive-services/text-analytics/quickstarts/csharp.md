@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 4b772d4251ec2017a4ff0d4abfa3f54b58e9bebe
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/02/2019
+ms.author: assafi
+ms.openlocfilehash: 7c26117c9c36b3004df0d85b1a739fcebd9a1e4e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050361"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119403"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí C# zavolat Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>
@@ -28,10 +28,10 @@ Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní A
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace. 
+Dále musíte mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace.
 
 
-## <a name="install-the-nuget-sdk-package"></a>Instalace balíčku NuGet sady SDK
+## <a name="install-the-nuget-sdk-package"></a>Nainstalovat balíček NuGet sady SDK
 1. Vytvořte nové konzolové řešení v sadě Visual Studio.
 1. Klikněte na řešení pravým tlačítkem a pak klikněte na **Spravovat balíčky NuGet pro řešení**.
 1. Zaškrtněte políčko **Zahrnout předběžné verze**.
@@ -47,9 +47,9 @@ Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-a
 
 
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>Volání rozhraní API pro analýzu textu s využitím sady SDK
-1. Nahraďte soubor Program.cs níže uvedeným kódem. Tento program předvádí možnosti rozhraní API pro analýzu textu ve 3 částech (extrakce jazyka, extrakce klíčových frází a analýza mínění).
+1. Nahraďte soubor Program.cs níže uvedeným kódem. Tento program předvádí možnosti rozhraní API pro analýzu textu ve třech částech (jazyk extrakce, extrakce klíčových frází – to a analýza mínění).
 1. Hodnotu hlavičky `Ocp-Apim-Subscription-Key` nahraďte přístupovým klíčem platným pro vaše předplatné.
-1. Nahraďte umístění v proměnné `Endpoint` za koncový bod, který jste si zaregistrovali. Koncový bod najdete v příslušném prostředku na webu Azure Portal. Koncový bod obvykle začíná na https://[oblast].api.cognitive.microsoft.com a v tomto případě použijte pouze protokol a název hostitele.
+1. Nahraďte umístění v proměnné `Endpoint` za koncový bod, který jste si zaregistrovali. Najít koncový bod u prostředku Azure portal. Koncový bod obvykle začíná řetězcem "https://[region].api.cognitive.microsoft.com" a pouze sem patří protokol a název hostitele.
 1. Spusťte program.
 
 ```csharp
@@ -68,13 +68,14 @@ namespace ConsoleApp1
     {
         /// <summary>
         /// Container for subscription credentials. Make sure to enter your valid key.
-        static string subscriptionKey = ""; //Insert your Text Anaytics subscription key
+        private const string SubscriptionKey = ""; //Insert your Text Anaytics subscription key
+
         /// </summary>
         class ApiKeyServiceClientCredentials : ServiceClientCredentials
         {
             public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                request.Headers.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
                 return base.ProcessHttpRequestAsync(request, cancellationToken);
             }
         }
@@ -104,7 +105,7 @@ namespace ConsoleApp1
             // Printing language results.
             foreach (var document in result.Documents)
             {
-                Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
+                Console.WriteLine($"Document ID: {document.Id} , Language: {document.DetectedLanguages[0].Name}");
             }
 
             // Getting key-phrases
@@ -122,13 +123,13 @@ namespace ConsoleApp1
             // Printing keyphrases
             foreach (var document in result2.Documents)
             {
-                Console.WriteLine("Document ID: {0} ", document.Id);
+                Console.WriteLine($"Document ID: {document.Id} ");
 
                 Console.WriteLine("\t Key phrases:");
 
                 foreach (string keyphrase in document.KeyPhrases)
                 {
-                    Console.WriteLine("\t\t" + keyphrase);
+                    Console.WriteLine($"\t\t{keyphrase}");
                 }
             }
 
@@ -149,7 +150,7 @@ namespace ConsoleApp1
             // Printing sentiment results
             foreach (var document in result3.Documents)
             {
-                Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);
+                Console.WriteLine($"Document ID: {document.Id} , Sentiment Score: {document.Score:0.00}");
             }
 
 
@@ -166,13 +167,13 @@ namespace ConsoleApp1
             // Printing entities results
             foreach (var document in result4.Documents)
             {
-                Console.WriteLine("Document ID: {0} ", document.Id);
+                Console.WriteLine($"Document ID: {document.Id} ");
 
                 Console.WriteLine("\t Entities:");
 
                 foreach (EntityRecordV2dot1 entity in document.Entities)
                 {
-                    Console.WriteLine("\t\t" + entity.Name);
+                    Console.WriteLine($"\t\t{entity.Name}\t\t{entity.WikipediaUrl}\t\t{entity.Type}\t\t{entity.SubType}");
                 }
             }
 
@@ -187,8 +188,7 @@ namespace ConsoleApp1
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Další informace najdete v tématech
 
- [Přehled rozhraní API pro analýzu textu](../overview.md)  
- [Nejčastější dotazy](../text-analytics-resource-faq.md)
+ [Přehled analýzy textu](../overview.md) [– nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)
 

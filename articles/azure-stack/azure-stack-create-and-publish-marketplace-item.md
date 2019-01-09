@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: e2acccfdf45fcacae6e380e95c75f77a3a48b994
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: b2520864589558a530f4f9dbfed83a9f3b8c727a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074746"
+ms.locfileid: "54104093"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Vytvoření a publikování položky Marketplace
 
@@ -132,7 +132,7 @@ ms.locfileid: "54074746"
 | --- | --- | --- | --- | --- |
 | Název |X |Řetězec |[A-Za-z0-9]+ | |
 | Vydavatel |X |Řetězec |[A-Za-z0-9]+ | |
-| Verze |X |Řetězec |[SemVer v2](http://semver.org/) | |
+| Verze |X |Řetězec |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
 
