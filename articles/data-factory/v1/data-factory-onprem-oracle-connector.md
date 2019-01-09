@@ -22,7 +22,7 @@ ms.locfileid: "54024905"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do nebo z Oracle místní pomocí služby Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](data-factory-onprem-oracle-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-oracle.md)
 
