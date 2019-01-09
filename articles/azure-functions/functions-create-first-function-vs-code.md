@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce887c6d9e4e625d8fe08ee3acfc179cd903d187
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054057"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104518"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Vytvoření první funkce pomocí Visual Studio Code
 
@@ -93,7 +93,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
     ![Odezva místního hostitele funkce v prohlížeči](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
 
-1. Pokud chcete ladění zastavit, stiskněte Shift + F1.
+1. Pokud chcete zastavit ladění, stiskněte Shift + F5.
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 

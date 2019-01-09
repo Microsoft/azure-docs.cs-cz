@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714317"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118988"
 ---
 # <a name="article-top"></a>Migrace existující mobilní služby Azure do služby Azure App Service
 S [Obecná dostupnost služby Azure App Service], weby, Azure Mobile Services můžete snadno migrovat místní využívat všechny funkce služby Azure App Service.  Tento dokument popisuje, co očekávat při migraci webu z Azure Mobile Services do služby Azure App Service.
@@ -374,7 +374,7 @@ Teď, když vaše aplikace je migrovat do služby App Service, existují ještě
 
 <!-- Links -->
 [Ceny služeb App Service]: https://azure.microsoft.com/pricing/details/app-service/
-[Application Insights]: ../application-insights/app-insights-overview.md
+[Application Insights]: ../azure-monitor/app/app-insights-overview.md
 [Automatické škálování]: ../app-service/web-sites-scale.md
 [Azure App Service]: ../app-service/overview.md
 [portál Azure Classic]: https://manage.windowsazure.com
