@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5459786ccf69c51fec1630d612fd37b1b78c36c9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017000"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189928"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Řešení potíží s analýzami v nástroji Application Insights
 Problémy s [Application Insights Analytics](analytics.md)? Začněte tady. Analytics je nástroj výkonné hledání služby Azure Application Insights.
 
 ## <a name="limits"></a>Omezení
 * V současné době jsou omezené jenom za týden posledních dat výsledků dotazu.
-* Testujeme v prohlížečích: nejnovější verze prohlížečů Chrome, Edge a Internet Explorer.
+* Testujeme v prohlížečích: nejnovější verze prohlížečů Chrome, Microsoft Edge a Internet Explorer.
 
 ## <a name="known-incompatible-browser-extensions"></a>Rozšíření známé nekompatibilní prohlížeč
 * Ghostery
@@ -54,7 +54,7 @@ Došlo k chybě související s ověřováním (během ověřování nebo při g
 2. Použili jste k otevření portálu Analytics oblíbenou položku, záložku nebo uložený odkaz? Jste přihlášeni s použitím jiných přihlašovacích údajů než těch, které jste použili při uložení odkazu?
 3. Zkuste se přihlásit v soukromém nebo anonymním okně prohlížeče (před tím všechna taková okna zavřete). Budete muset zadat své přihlašovací údaje. 
 4. Otevřete (další obyčejné) okno prohlížeče a přejděte na [Azure](https://portal.azure.com). Odhlaste se. Pak otevřete svůj odkaz a přihlaste se pomocí správných přihlašovacích údajů.
-5. Uživatelům používajícím Microsoft Edge a Internet Explorer se tato chyba může zobrazit i v případě, že nejsou podporována nastavení důvěryhodné zóny.
+5. Uživatelé Microsoft Edge a Internet Explorer můžete také získat tuto chybu, když nejsou podporována nastavení důvěryhodné zóny.
    
     Jak ověřit [portál Analytics](https://portal.azure.com) a [portálu Azure Active Directory](https://portal.azure.com) jsou ve stejné zóně zabezpečení:
    
