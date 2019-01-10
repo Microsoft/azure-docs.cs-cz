@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ef981686143299b41960e81cf827459493c868f6
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ca41f209cab6d2f8d3b4930d3a464fb6a9421132
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356582"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191849"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Potíže při přihlašování k aplikaci Galerie Azure AD konfigurované pro heslo jednotného přihlašování
 
@@ -41,7 +41,7 @@ Pro jednotné přihlašování založené na heslech může být koncového uži
 -   Firefox 26.0 nebo později – na Windows XP SP2 nebo novější a v systému Mac OS X 10,6 nebo novější
 
 >[!NOTE]
->Rozšíření založené na heslech jednotného přihlašování k dispozici pro Microsoft Edge ve Windows 10 při rozšíření prohlížeče stát podporované pro okraj.
+>Rozšíření založené na heslech jednotného přihlašování k dispozici pro Microsoft Edge ve Windows 10 při rozšíření prohlížeče se nepodporuje pro Microsoft Edge.
 >
 >
 
@@ -77,7 +77,7 @@ Požadované součásti patří:
 
 -   Nastavíte [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), a vaši uživatelé počítačů se připojili k vaší doméně.
 
--   Musíte mít oprávnění "Upravit nastavení" k úpravě objektu zásad skupiny (GPO). Ve výchozím nastavení, členy z těchto skupin zabezpečení mají toto oprávnění: Domain Administrators, Enterprise Administrators a Group Policy Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Musíte mít oprávnění "Upravit nastavení" k úpravě objektu zásad skupiny (GPO). Ve výchozím nastavení mají toto oprávnění členy z těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Group Policy Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
 Postupujte podle kurzu [jak pro aplikaci Internet Explorer pomocí zásad skupiny nasadit rozšíření přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) pro podrobné pokyny o tom, jak nakonfigurovat zásady skupiny a nasadit je uživatelům.
 
@@ -171,7 +171,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle názvu nebo e-mailová adresa** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
+12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
 
 13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 

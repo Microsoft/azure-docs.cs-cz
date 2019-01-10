@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 11/01/2018
+ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 4c425e4da99774be5da8c060a8243bc34ec08f5a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7544da2357e5b30ef54260d56cd8c969901f893e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547782"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189163"
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Vytvoření serveru Azure Database for MySQL pomocí Azure CLI
 Tento rychlý start popisuje, jak za pět minut vytvořit pomocí Azure CLI server Azure Database for MySQL ve skupině prostředků Azure. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
@@ -57,19 +57,21 @@ admin-password | *bezpečné heslo* | Heslo uživatele, který je správcem. Mus
 
 
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen4_4` se mapuje na úroveň Basic 4. generace se 4 virtuálními jádry.
++ `--sku-name B_Gen4_1` mapuje se na Basic, Gen 4 a 1 virtuální jádro.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
 Vysvětlení platných hodnot pro jednotlivé oblasti a úrovně najdete v dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md).
 
 Následující příklad vytvoří server MySQL 5.7 v umístění Západní USA, `mydemoserver` ve vaší skupině prostředků `myresourcegroup` a s přihlašovacím jménem správce serveru `myadmin`. Jedná se o **Univerzální** server **4. generace** se 2 **virtuálními jádry**. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
+
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 5.7
 ```
 
-
-
+> [!NOTE]
+> Zvažte použití cenové úrovni Basic Pokud nízký výpočetní a vstupně-výstupní operace jsou dostatečné pro vaši úlohu. Všimněte si, že servery vytvořené v cenové úrovni Basic nelze později škálovat pro obecné účely nebo optimalizované pro paměť. Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/mysql/) Další informace.
+> 
 
 ## <a name="configure-firewall-rule"></a>Konfigurace pravidla brány firewall
 Vytvořte pravidlo brány firewall na úrovni serveru pro Azure Database for MySQL pomocí příkazu **[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)**. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj příkazového řádku **mysql.exe** nebo MySQL Workbench, aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure MySQL. 

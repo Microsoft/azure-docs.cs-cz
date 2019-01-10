@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5c42b54cf41eed3df9ffe1fbd082ac6c27035769
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2ed6d23d9fe89715e41c8a40f70534f5edc44236
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139074"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189979"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute
 
@@ -29,6 +29,7 @@ Tento článek pomůže při vytváření a správě konfigurace směrování pr
 > * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
 > 
 
+Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (soukromý Azure, veřejný Azure a Microsoft) pro okruh ExpressRoute. Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. Další informace o směrování domény a vztahy, naleznete v tématu [o okruzích a partnerské vztahy](expressroute-circuit-peerings.md).
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
 
@@ -42,8 +43,6 @@ Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejí
 > Aktuálně prostřednictvím portálu pro správu služeb neinzerujeme partnerské vztahy nakonfigurované poskytovateli služeb. Pracujeme na tom, aby tato možnost brzy fungovala. Před konfigurací partnerských vztahů protokolu BGP, obraťte se na svého poskytovatele služeb.
 > 
 > 
-
-Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (soukromý Azure, veřejný Azure a Microsoft) pro okruh ExpressRoute. Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. Další informace o směrování domény a vztahy, naleznete v tématu [domény směrování ExpressRoute](expressroute-circuit-peerings.md).
 
 ## <a name="msft"></a>Partnerský vztah Microsoftu
 
@@ -65,9 +64,9 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
   * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy, kterou vlastníte a která je registrovaná u RIR/IRR. Z této podsítě bude přiřadit nedodržíte první IP adresu směrovače jak společnost Microsoft používá druhou IP použitelný pro jeho směrovače.
   * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN. Odkazy na primární a sekundární musí používat stejné ID sítě VLAN.
   * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-  * Inzerované předpony: Musíte poskytnout seznam všech předpon, které plánujete inzerovat přes relaci protokolu BGP. Přijímají se jenom předpony veřejných IP adres. Pokud chcete odeslat sadu předpon, můžete odeslat seznam oddělený čárkami. Tyto předpony musí být v RIR/IRR zaregistrované na vás.
+  * Inzerované předpony: Je nutné zadat seznam všech předpon, které plánujete inzerovat přes relaci protokolu BGP. Přijímají se jenom předpony veřejných IP adres. Pokud chcete odeslat sadu předpon, můžete odeslat seznam oddělený čárkami. Tyto předpony musí být v RIR/IRR zaregistrované na vás.
   * **Volitelné –** zákaznické číslo ASN: Pokud inzerujete předpony, které nejsou registrované na číslo AS partnerského vztahu, můžete zadat číslo AS, do kterého jsou registrované.
-  * Název registru směrování: Můžete zadat RIR/IRR, kde jsou předpony a číslo AS registrované.
+  * Název registru směrování: Můžete zadat RIR / IRR, kde AS jsou registrované předpony a číslo.
   * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
 3. Můžete vybrat partnerský vztah, který chcete nakonfigurovat, jak je znázorněno v následujícím příkladu. Vyberte řádek partnerského vztahu Microsoftu.
 

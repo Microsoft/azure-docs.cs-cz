@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3971311bff90d0b005acd516336e13766028cccf
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4b5b00da1c920d249283625e4970510ea00bafc8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001564"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190720"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Rychlý start: Vytvoření serveru – PowerShell
 
@@ -21,8 +21,8 @@ Tento rychlý start popisuje použití PowerShellu z příkazového řádku k vy
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
-- **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory a musíte mít účet v tomto adresáři. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+- **Předplatné Azure**: Navštivte [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) vytvoření účtu služby.
+- **Azure Active Directory**: Předplatné musí být přidružen k tenantovi Azure Active Directory a účet musí mít v tomto adresáři. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 - **Modul Azure PowerShell verze 4.0 nebo novější**. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="import-azurermanalysisservices-module"></a>Import modulu AzureRm.AnalysisServices
@@ -73,4 +73,4 @@ V tomto rychlém startu jste zjistili, jak pomocí PowerShellu vytvořit server 
 > [!div class="nextstepaction"]
 > [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
-> [Kurz: Přidání ukázkového modelu na server](analysis-services-create-sample-model.md)
+> [Kurz: Přidání ukázkový model na server](analysis-services-create-sample-model.md)

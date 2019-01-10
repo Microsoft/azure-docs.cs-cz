@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d727c9c3a9add701263e799dba778b37e637adef
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc9892882cfd4c3f68118648baaaf278133bb2a8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194279"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191917"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -438,7 +438,7 @@ Další informace naleznete v tématu:
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Proxy aplikace  
-**Funkce produktu:** Access Control
+**Funkce produktu:** Řízení přístupu
  
 Podpora pro rutiny Proxy aplikací je teď v modul Powershell GA Module. To vyžaduje, abyste aktualizace v prostředí Powershell moduly – Pokud je více než rok, některé rutiny můžou přestat fungovat. 
 
@@ -857,7 +857,7 @@ Rozšíření prohlížeče Moje aplikace je teď dostupná přes praktický ná
 - Umožňuje přímo se přihlásit k aplikacím na základě heslo – jednotné přihlašování z aplikace přihlašovací stránky
 - Spuštění libovolné aplikace pomocí funkce rychlého vyhledávání
 - Klávesové zkratky pro naposledy použité aplikace z rozšíření
-- Rozšíření je k dispozici pro Edge, Chrome a Firefox.
+- Rozšíření je k dispozici pro Microsoft Edge, Chrome a Firefox.
  
 Další informace najdete v tématu [Moje aplikace zabezpečené přihlašování rozšíření](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension).
 

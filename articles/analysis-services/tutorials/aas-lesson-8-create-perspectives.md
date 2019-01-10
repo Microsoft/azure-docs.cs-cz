@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e92e86f59058f1f226c67f873530cd9c06b5d5fc
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c26da5d047a1e904510f96b44d81632b6e98689e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428330"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190965"
 ---
 # <a name="create-perspectives"></a>Vytvoření perspektiv
 
@@ -23,10 +23,10 @@ Perspektiva Internet Sales, kterou v této lekci vytvoříte, nebude zahrnovat o
   
 Cílem této lekce je popsat, jakým způsobem můžete vytvořit perspektivu a seznámit se s nástroji pro vytváření tabulkových modelů. Pokud tento model rozbalíte později, abyste mohli přidat další tabulky, můžete vytvořit další perspektivy pro definování jiných přehledů modelu, např. Inventory and Sales.  
   
-Odhadovaný čas dokončení této lekce: **5 minut**  
+Odhadovaný čas dokončení této lekce: **Pět minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 7: Vytvoření klíčových ukazatelů výkonu](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 7: Vytvoření klíčových ukazatelů výkonu](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
   
 ## <a name="create-perspectives"></a>Vytvoření perspektiv  
   
@@ -45,7 +45,7 @@ Toto téma je součástí kurzu tabulkového modelování, který by se měl dok
     V další lekci použijete funkci Analyzovat v aplikaci Excel k otestování této perspektivy. Seznam polí kontingenční tabulky Excelu obsahuje všechny tabulky kromě tabulky DimCustomer.  
 
 ## <a name="whats-next"></a>Co dále?
-[Lekce 9: Vytvoření hierarchií](../tutorials/aas-lesson-9-create-hierarchies.md)
+[Lekce 9: Vytvoření hierarchií](../tutorials/aas-lesson-9-create-hierarchies.md).
   
   
   

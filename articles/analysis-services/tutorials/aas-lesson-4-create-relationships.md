@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d37b30708e3817460e5aa01f045c1e9f9032532e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4a595e4c955b08bda6fcf49b9ca6a050e8440621
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117737"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187497"
 ---
 # <a name="create-relationships"></a>Vytvoření relací
 

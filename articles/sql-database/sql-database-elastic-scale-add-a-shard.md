@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 0a6a4d8a2f2100f967cdc5ead84f56bfb15f564b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d73951fa0ded48961e74c4c0c752de37dca62618
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043545"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188024"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Přidání horizontálního oddílu pomocí nástrojů pro elastické databáze
 
@@ -29,7 +29,7 @@ Nový rozsah hodnot klíčů již není součástí mapování stávající, jde
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Příklad: Přidání horizontálního oddílu a rozsah jeho do existující mapy horizontálních oddílů
 
-Tento příklad používá TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)), CreateRangeMapping ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metody a vytvoří instanci ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.)) třídy. V ukázce níže, databázi s názvem **sample_shard_2** a všechny objekty nezbytné schématu uvnitř této byly vytvořeny pro uložení rozsah [300, 400).  
+Tento příklad používá TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metody a vytvoří instanci ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.)) třídy. V ukázce níže, databázi s názvem **sample_shard_2** a všechny objekty nezbytné schématu uvnitř této byly vytvořeny pro uložení rozsah [300, 400).  
 
 ```csharp
 // sm is a RangeShardMap object.

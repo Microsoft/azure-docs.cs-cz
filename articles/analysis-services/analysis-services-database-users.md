@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ab238e31ba022427dc55fec842f3e89e72fa530a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238875"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189792"
 ---
 # <a name="manage-database-roles-and-users"></a>Spravovat databázové role a uživatele
 
@@ -45,7 +45,7 @@ Při vytváření projektu s tabelárním modelem, vytvářet role a přidat už
   
     |Oprávnění|Popis|  
     |----------------|-----------------|  
-    |**None**|Členy nelze upravit schéma modelu a nelze zadávat dotazy na data.|  
+    |**Žádné**|Členy nelze upravit schéma modelu a nelze zadávat dotazy na data.|  
     |**Čtení**|Členy můžete zadávat dotazy na data (podle filtry řádků), ale nelze změnit schéma modelu.|  
     |**Číst a zpracovat**|Členové můžou dotazy na data (na základě filtrů na úrovni řádků) a spusťte proces a proces všechny operace, ale nelze změnit schéma modelu.|  
     |**Proces**|Členy můžete spustit proces a proces všechny operace. Nelze změnit schéma modelu a nelze zadávat dotazy na data.|  
@@ -63,6 +63,7 @@ Při vytváření projektu s tabelárním modelem, vytvářet role a přidat už
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Chcete-li přidat nebo spravovat role a uživatele v aplikaci SSMS
+
 K přidání rolí a uživatelů do nasazené modelovou databázi, musíte být připojeni k serveru jako správce serveru nebo již v databázi roli s oprávněními správce.
 
 1. V objektu Exporer, klikněte pravým tlačítkem na **role** > **novou roli**.
@@ -83,6 +84,7 @@ K přidání rolí a uživatelů do nasazené modelovou databázi, musíte být 
 5. Pokud vámi vytvářené role má oprávnění ke čtení, můžete přidat filtry řádků pomocí vzorce DAX. Klikněte na tlačítko **filtry řádků**, vyberte tabulku a potom zadat vzorec jazyka DAX v **filtr jazyka DAX** pole. 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Chcete-li přidat role a uživatele pomocí skriptu TMSL
+
 V okně XMLA v aplikaci SSMS nebo Powershellu můžete spustit skript TMSL. Použití [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) příkazu a [role](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) objektu.
 
 **Ukázkový skript TMSL**
@@ -116,6 +118,7 @@ V této ukázce B2B externího uživatele a skupiny se přidají do role analyti
 ```
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Chcete-li přidat role a uživatele pomocí Powershellu
+
 [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) modul obsahuje rutiny pro správu databáze specifické pro úlohy a pro obecné účely rutinu Invoke-ASCmd, který přijímá dotazu tabulkový Model skriptování jazyk TMSL () nebo skript. Pro správu databázových rolí a uživatelů se používají následující rutiny.
   
 |Rutina|Popis|
@@ -125,6 +128,7 @@ V této ukázce B2B externího uživatele a skupiny se přidají do role analyti
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Spusťte skript TMSL.|
 
 ## <a name="row-filters"></a>Filtry řádků  
+
 Filtry řádků definovat, které řádky v tabulce může být dotázán členy určité role. Filtry řádků jsou definované pro každou tabulku v modelu pomocí vzorce DAX.  
   
 Filtry řádků lze definovat pouze pro role se pro čtení a číst a oprávnění procesu. Ve výchozím nastavení Pokud pro konkrétní tabulku, není definován řádkový filtr členy můžete dotazovat všechny řádky v tabulce pokud křížové filtrování platí z jiné tabulky.
@@ -144,6 +148,7 @@ Filtry řádků platí pro zadané řádky a související řádky. Pokud má ta
  Filtr, můžete použít *=FALSE()*, odepření přístupu pro všechny řádky pro celou tabulku.
 
 ## <a name="next-steps"></a>Další postup
+
   [Správa správců serveru](analysis-services-server-admins.md)   
   [Správa služby Azure Analysis Services pomocí Powershellu](analysis-services-powershell.md)  
   [Tabular Model Scripting Reference jazyka (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)

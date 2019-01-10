@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 6750276cf31d0c804b38cdf3ea6e41a4505c93f1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971814"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187413"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway (public preview)
 
 Hlavičky protokolu HTTP umožňují klienta a serveru předat další informace o požadavku nebo odpovědi. Přepsání těchto HTTP záhlaví vám pomáhá s několik důležitých scénářů, jako je například přidávání bezpečnostních záhlaví pole jako HSTS / X-XSS ochrany nebo odebrání pole hlavičky odpovědi, což může vést k odhalení citlivých informací, jako je název serveru back-endu.
 
-Služba Application Gateway nyní podporuje schopnosti přepsat záhlaví příchozí HTTP požadavky i odchozí odpovědi protokolu HTTP. Budete moct přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP požadavku nebo odpovědi pakety přesunout mezi klientem a back-endové fondy. Je možné přepsat standardní (definované v [dokumentu RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)) a také pole nestandardní hlavičky.
+Služba Application Gateway nyní podporuje schopnosti přepsat záhlaví příchozí HTTP požadavky i odchozí odpovědi protokolu HTTP. Budete moct přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP požadavku nebo odpovědi pakety přesunout mezi klientem a back-endové fondy. Je možné přepsat obě pole standardní, jakož i nestandardní hlavičky.
 
 > [!NOTE] 
 >
@@ -84,7 +84,11 @@ Je možné přepsat hodnotou v hlavičkách na:
 
 - Kombinace výše.
 
-Proměnné serveru uvedeného výše jsou proměnné, které poskytují informace o serveru, připojení klienta a aktuální požadavek na připojení. Tato funkce podporuje přepis adres hlavičky pro následující proměnné na serveru:
+## <a name="server-variables"></a>Serverové proměnné
+
+Serverové proměnné ukládat užitečné informace na webovém serveru. Tyto proměnné poskytují informace o serveru, připojení s klientem a aktuální požadavek na připojení, jako je například IP adresa klienta nebo typ webového prohlížeče. Tyto změny dynamicky, například při načtení nové stránky nebo odeslání formuláře.  Pomocí těchto uživatelů proměnným lze nastavit hlavičky požadavku, jakož i hlavičky odpovědi. 
+
+Tato funkce podporuje přepis adres hlavičky pro následující proměnné na serveru:
 
 | Podporované serverové proměnné | Popis                                                  |
 | -------------------------- | :----------------------------------------------------------- |
@@ -100,7 +104,7 @@ Proměnné serveru uvedeného výše jsou proměnné, které poskytují informac
 | HTTP_STATUS                | Stav relace, třeba: 200, 400, 403 atd.                       |
 | http_version               | žádost o protokol, obvykle "HTTP verze 1.0", "HTTP/1.1" nebo "HTTP/2.0" |
 | QUERY_STRING               | seznam hodnota proměnné páry čísel, které následují "?" v požadované adrese URL. |
-| received_byte              | délka požadavku (včetně řádek požadavku, záhlaví a text žádosti) |
+| received_bytes             | délka požadavku (včetně řádek požadavku, záhlaví a text žádosti) |
 | request_query              | argumenty v řádku požadavku                                |
 | request_scheme             | schéma požadavku, "http" nebo "https"                            |
 | request_uri                | původní identifikátor URI požadavku (s argumenty)                   |

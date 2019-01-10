@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/13/2018
+ms.date: 12/13/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 79f6a15bd4b56d9d7ee8b7ee741c0a4460231dfe
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: a750992cade95f9a2719d89c7ff587daf6bfe34d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023164"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191050"
 ---
 # <a name="shared-image-galleries-overview"></a>Přehled sdíleného Galerie obrázků
 
@@ -31,4 +31,4 @@ ms.locfileid: "50023164"
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak nasadit pomocí sdílené bitové kopie [rozhraní příkazového řádku Azure](shared-images-cli.md)
+Zjistěte, jak nasadit pomocí sdílené bitové kopie [rozhraní příkazového řádku Azure](shared-images-cli.md) a [prostředí Azure PowerShell](shared-images-powershell.md)

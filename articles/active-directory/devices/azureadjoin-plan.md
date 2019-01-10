@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b891995fab9e7def4b9b72f8bd8630d6b7e11d27
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023852"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189509"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 
@@ -167,7 +167,7 @@ Důležité informace týkající se různých typů aplikací a prostředků v 
 
 ### <a name="cloud-based-applications"></a>Cloudové aplikace
 
-Pokud je aplikace přidána do Galerie aplikací Azure AD, uživatelé získají jednotné přihlašování prostřednictvím zařízení připojených k Azure AD. Není nutná žádná další konfigurace. Uživatelé získat jednotné přihlašování u obou, prohlížeče Edge a Chrome. Pro Chrome, budete muset nasadit [účty systému Windows 10 rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
+Pokud je aplikace přidána do Galerie aplikací Azure AD, uživatelé získají jednotné přihlašování prostřednictvím zařízení připojených k Azure AD. Není nutná žádná další konfigurace. Uživatelé získat jednotné přihlašování, jak Microsoft Edge a Chrome prohlížečů. Pro Chrome, budete muset nasadit [účty systému Windows 10 rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
 
 Všechny aplikace systému Win32, který:
 

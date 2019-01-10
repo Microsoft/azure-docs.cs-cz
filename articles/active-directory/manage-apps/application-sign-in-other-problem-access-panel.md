@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 830fc1d96825e28aad41aac9afee499b9bc1f7ae
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 02aa4eb37437861d428c6f361b3ff21def56b49b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356576"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189826"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Potíže při přihlašování do aplikace na přístupovém panelu
 
@@ -68,7 +68,7 @@ Pro jednotné přihlašování založené na heslech může být koncového uži
 
 -   Aplikace Internet Explorer 8, 9, 10, 11 – ve Windows 7 nebo novější
 
--   Edge ve Windows 10 Anniversary Edition nebo novější
+-   Microsoft Edge ve Windows 10 Anniversary Edition nebo novější
 
 -   Chrome – Ve Windows 7 nebo novější a v systému MacOS X nebo novější
 
@@ -96,7 +96,7 @@ Rozšíření lze stáhnout z následující přímé odkazy taky pro Chrome a M
 
 -   [Rozšíření Chrome přístupového panelu](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Rozšíření Edge přístupového panelu](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+-   [Rozšíření Microsoft Edge přístupového panelu](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
 ## <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak nakonfigurovat federované jednotné přihlašování pro aplikaci Galerie Azure AD
 
@@ -285,7 +285,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pro aplikace, které nejs
 
   1. Pokud chcete nakonfigurovat aplikace jako jednotné přihlašování zahájené pomocí IdP, zadejte příslušnou odpovědní adresu URL a identifikátoru.
 
-  2. **Volitelné:** konfigurace aplikace jako iniciovaného Zprostředkovatelem přihlašování jednotného přihlašování, přihlašovací adresa URL je povinná hodnota.
+  2. **Volitelné:** Konfigurace aplikace jako iniciovaného Zprostředkovatelem přihlašování jednotného přihlašování, přihlašovací adresa URL je povinná hodnota.
 
 12. V **atributy uživatele**, vyberte jedinečný identifikátor pro vaši uživatelé v **identifikátor uživatele** rozevíracího seznamu.
 
@@ -500,7 +500,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle názvu nebo e-mailová adresa** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
+12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
 
 13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 

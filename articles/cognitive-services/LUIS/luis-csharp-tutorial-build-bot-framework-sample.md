@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 951a202f8d57c736af8c17af91859ce89e9efc7d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4e2feb1f5b0cad9a05f796d160a0a641622d6b59
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717955"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189215"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v C# pomocí rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
@@ -161,6 +161,8 @@ Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https
 ## <a name="next-steps"></a>Další postup
 
 Přidání záměrů LUIS a Bot service dialogová okna pro zpracování **pomáhají**, **zrušit**, a **pozdrav** záměry. Nezapomeňte si školení, publikovat a [sestavení](#build-the-bot) použijete web app bot. Služba LUIS a robot by měl mít stejné záměry.
+
+Další informace naleznete v [ukázky](https://github.com/Microsoft/AI) s konverzační robotů. 
 
 > [!div class="nextstepaction"]
 > [Přidání záměrů](./luis-how-to-add-intents.md)

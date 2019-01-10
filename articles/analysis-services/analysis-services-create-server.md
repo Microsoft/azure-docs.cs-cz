@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ef4099130878813378fb277c45b5d352cbe822a7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4e9080cfc863b4253a4eb4d427f21df74bb08874
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000167"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186732"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Rychlý start: Vytvoření serveru – portál
 
@@ -21,30 +21,30 @@ Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru
 
 ## <a name="prerequisites"></a>Požadavky 
 
-* **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
-* **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory. Zároveň musíte být přihlášeni k Azure pod účtem v této službě Azure Active Directory. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+* **Předplatné Azure**: Navštivte [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) vytvoření účtu služby.
+* **Azure Active Directory**: Předplatné musí být přidružen k tenantovi Azure Active Directory. Zároveň musíte být přihlášeni k Azure pod účtem v této službě Azure Active Directory. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal 
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal 
 
 [Přihlaste se k portálu](https://portal.azure.com)
 
 
 ## <a name="create-a-server"></a>Vytvoření serveru
 
-1. Klikněte na **+ Vytvořit prostředek** > **Data a analýzy** > **Analysis Services**.
+1. Klikněte na tlačítko **+ vytvořit prostředek** > **Analytics** > **služby Analysis Services**.
 
     ![Portál](./media/analysis-services-create-server/aas-create-server-portal.png)
 
 2. V části **Analysis Services** vyplňte požadovaná pole a pak stiskněte **Vytvořit**.
    
-   * **Název serveru:** Zadejte jedinečný název, který slouží jako odkaz na server.
-   * **Předplatné:** Vyberte předplatné, ke kterému se tento server přidruží.
-   * **Skupina prostředků:** Vytvořte novou skupinu prostředků nebo vyberte jednu z těch, které už máte. Skupiny prostředků jsou navržené tak, aby pomáhaly se správou kolekcí prostředků Azure. Další informace najdete v tématu věnovaném [skupinám prostředků](../azure-resource-manager/resource-group-overview.md).
-   * **Umístění:** Toto umístění datacentra Azure je hostitelem serveru. Zvolte umístění co nejblíže vaší největší uživatelské základně.
-   * **Cenová úroveň:** Vyberte cenovou úroveň. Pokud provádíte testování a chcete nainstalovat ukázkovou modelovou databázi, vyberte bezplatnou úroveň **D1**. Další informace najdete v tématu [Ceny služby Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). 
-    * **Správce:** Toto bude ve výchozím nastavení účet, pod kterým jste přihlášeni. Můžete zvolit jiný účet z vaší služby Azure Active Directory.
-    * **Nastavení úložiště zálohování:** Volitelné. Pokud už máte [účet úložiště](../storage/common/storage-introduction.md), můžete ho zadat jako výchozí účet úložiště pro zálohování modelové databáze. Později můžete zadat také nastavení [zálohování a obnovení](analysis-services-backup.md).
-    * **Vypršení platnosti klíče úložiště:** Volitelné. Zadejte dobu platnosti klíče úložiště.
+   * **Název serveru**: Zadejte jedinečný název, který slouží k odkazování na serveru.
+   * **Předplatné**: Vyberte předplatné, které budou přidruženy tento server.
+   * **Skupina prostředků**: Vytvořte novou skupinu prostředků nebo vyberte ten, který už máte. Skupiny prostředků jsou navržené tak, aby pomáhaly se správou kolekcí prostředků Azure. Další informace najdete v tématu věnovaném [skupinám prostředků](../azure-resource-manager/resource-group-overview.md).
+   * **Umístění**: Toto umístění datového centra Azure je hostitelem serveru. Zvolte umístění co nejblíže vaší největší uživatelské základně.
+   * **Cenová úroveň**: Vyberte cenovou úroveň. Pokud provádíte testování a chcete nainstalovat ukázkovou modelovou databázi, vyberte bezplatnou úroveň **D1**. Další informace najdete v tématu [Ceny služby Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). 
+   * **Správce**: Ve výchozím nastavení bude jednat o účet, ke kterému jste přihlášeni s. Můžete zvolit jiný účet z vaší služby Azure Active Directory.
+   * **Nastavení úložiště zálohování**: Volitelné. Pokud už máte [účet úložiště](../storage/common/storage-introduction.md), můžete ho zadat jako výchozí účet úložiště pro zálohování modelové databáze. Později můžete zadat také nastavení [zálohování a obnovení](analysis-services-backup.md).
+   * **Vypršení platnosti klíče úložiště**: Volitelné. Zadejte dobu platnosti klíče úložiště.
 
 Vytvoření serveru obvykle trvá necelou minutu. Pokud jste vybrali možnost **Přidat na portál**, přejděte na portál a prohlédněte si nový server. Případně přejděte do části **Všechny služby** > **Analysis Services** a zkontrolujte, jestli je server připravený.
 
@@ -61,4 +61,4 @@ V tomto rychlém startu jste zjistili, jak vytvořit server v předplatném Azur
 > [!div class="nextstepaction"]
 > [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   
 > [!div class="nextstepaction"]
-> [Kurz: Přidání ukázkového modelu na server](analysis-services-create-sample-model.md)
+> [Kurz: Přidání ukázkový model na server](analysis-services-create-sample-model.md)

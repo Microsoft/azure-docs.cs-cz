@@ -10,12 +10,12 @@ ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 07f77a8390edcde1128a7381a54d622611637d78
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ff7fb909e3f6e26846114c4b7bfdddccd07526ec
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118298"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188892"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -278,7 +278,7 @@ Pokud se rozhodnete ručně spuštěním příkazů, postupujte podle těchto kr
    > [!IMPORTANT]  
    > Konfigurace autorizačních pravidel vystavování, při použití systému Windows Server 2012 nebo 2012 R2 AD FS musíte použít modul snap-in konzoly MMC AD FS.
 
-4. Pokud používáte Internet Explorer nebo Microsoft Edge prohlížeč pro přístup k Azure zásobníku, musí ignorovat token vazby. V opačném případě se nezdaří pokusy o přihlášení. Na vaše instance služby AD FS nebo členem farmy spusťte následující příkaz:
+4. Pokud používáte Internet Explorer nebo v prohlížeči Microsoft Edge pro přístup k Azure Stack, musí ignorovat tokenu vazby. V opačném případě se nezdaří pokusy o přihlášení. Na vaše instance služby AD FS nebo členem farmy spusťte následující příkaz:
 
    > [!note]  
    > Tento krok není použitelné při použití systému Windows Server 2012 nebo 2012 R2 AD FS. Je bezpečné tento příkaz přeskočit a pokračovat pomocí integrace rozhraní.

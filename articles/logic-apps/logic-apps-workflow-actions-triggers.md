@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 613423c02de7f1140674c28ee57bd471c3a52b96
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 27c074b12d2b151015e6946c483302387726dfc5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158240"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190808"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Aktivační událost a akce referenční typy pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -2706,7 +2706,7 @@ V `parameters` části pro definici aplikace logiky, definování parametrů pou
 },
 ```
 
-Pokud už vytváříte nebo pomocí šablony nasazení Azure Resource Manageru, je také nutné zahrnout vnějším `parameters` části definice šablony. Další informace o zabezpečení parametry najdete v tématu [zabezpečený přístup k aplikacím logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow). 
+Pokud už vytváříte nebo pomocí šablony nasazení Azure Resource Manageru, je také nutné zahrnout vnějším `parameters` části definice šablony. Další informace o zabezpečení parametry najdete v tématu [zabezpečený přístup k aplikacím logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 5/4/18
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: aa0602ec0ecb97e9174fe6ef552b88fc30900d09
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 46f1d49e210a483b8e7645d7eba84ad21ed477da
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356399"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190511"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření prohlížeče přístupového panelu
 
@@ -36,7 +36,7 @@ Minimálně na přístupovém panelu vyžaduje prohlížeč, který podporuje Ja
 
 Pro jednotné přihlašování pomocí hesla můžete použít některý z následujících prohlížečů:
 
-- **Edge**: Windows 10 Anniversary Edition nebo novější. 
+- **Microsoft Edge**: Windows 10 Anniversary Edition nebo novější. 
 - **Chrome**: ve Windows 7 nebo novější a v systému MacOS X nebo novější.
 - **Firefox 26.0 nebo novější**: ve Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
 
@@ -59,10 +59,10 @@ Pokud chcete nainstalovat rozšíření prohlížeče přístupového panelu, po
 
 7.  Přihlaste se na přístupovém panelu a kontrola budete moct zobrazit, zda lze spustit jednotného přihlašování aplikace založené na heslech.
 
-Můžete také stáhnout rozšíření pro Chrome a Microsoft Edge přímo z následujících webů:
+Můžete také stáhnout rozšíření pro Chrome a Microsoft Edgem přímo z následujících webů:
 
 - [Rozšíření Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Rozšíření Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Rozšíření Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Použití Moje aplikace zabezpečené přihlašování rozšíření
 * Pokud používáte Moje adresy URL aplikací jiných než `https://myapps.microsoft.com`, nakonfigurujte adresu URL svého výchozí následujícím způsobem:
@@ -93,7 +93,7 @@ Můžete také stáhnout rozšíření pro Chrome a Microsoft Edge přímo z ná
     4. Teď můžete přejít na adresu URL interní společnosti i v průběhu vzdálené
 
 > [!NOTE]
-> Předchozí možnosti jsou dostupné pouze pro Edge, Chrome a Firefox.
+> Předchozí možnosti jsou dostupné jenom pro Microsoft Edge, Chrome a Firefox.
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>Nastavení zásad skupiny pro aplikaci Internet Explorer
 
@@ -112,7 +112,7 @@ Podrobné pokyny týkající se konfigurace zásad skupiny a jeho nasazení pro 
 Přístup k nástroje pro diagnostiku a informace o konfiguraci rozšíření pro aplikaci Internet Explorer, naleznete v tématu [řešení potíží s rozšířením panel přístupu pro aplikaci Internet Explorer](manage-access-panel-browser-extension.md).
 
 > [!NOTE]
-> Internet Explorer je na omezenou podporu a už nebude dostávat nové aktualizace softwaru. Edge je doporučené prohlížeče.
+> Internet Explorer je na omezenou podporu a už nebude dostávat nové aktualizace softwaru. Microsoft Edge je doporučené prohlížeče.
 
 ## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>Pokud problém nelze vyřešit pomocí předchozích kroků
 

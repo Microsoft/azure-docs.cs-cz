@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 8f88bf6b0de8296de14dccd51b38ee6ca480f059
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 2bae07643407e8672ef26fb59da588661eb9f0d1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065082"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191815"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
@@ -21,16 +21,16 @@ ms.locfileid: "54065082"
 Na rozdíl od hostoval statický web, jsou dynamické weby, které závisí na kódu na straně serveru nejlépe hostované pomocí [služby Azure App Service](/azure/app-service/overview).
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
-Při povolení statického webu hostování na vašem účtu úložiště, vyberte název výchozího souboru a volitelně můžete zadat cestu k vlastní stránka 404. Protože tato funkce zapnutá, kontejner s názvem *$web* se vytvoří, pokud ještě neexistuje. 
+Při povolení statického webu hostování na vašem účtu úložiště, vyberte název výchozího souboru a volitelně můžete zadat cestu k vlastní stránka 404. Protože tato funkce zapnutá, kontejner s názvem *$web* se vytvoří, pokud ještě neexistuje.
 
 Soubory *$web* kontejneru jsou:
 
 - odesílání prostřednictvím žádosti o anonymní přístup
 - k dispozici pouze prostřednictvím objektu operace čtení
 - malá a velká písmena
-- k dispozici pro veřejné webové podle tohoto vzoru: 
+- k dispozici pro veřejné webové podle tohoto vzoru:
     - `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
-- k dispozici prostřednictvím koncového bodu úložiště objektů Blob podle tohoto vzoru: 
+- k dispozici prostřednictvím koncového bodu úložiště objektů Blob podle tohoto vzoru:
     - `https://<ACCOUNT_NAME>.blob.core.windows.net/$web/<FILE_NAME>`
 
 Koncový bod služby Blob storage slouží k nahrávání souborů. Například soubor nahrát do tohoto umístění:
@@ -100,7 +100,7 @@ az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEn
 Nahrání objektů *$web* kontejneru ze zdrojového adresáře. Ujistěte se, zda jste správně řídicí odkaz na *$web* kontejneru v příkazu. Například pokud používáte Azure CLI z cloud Shell na webu Azure Portal, řídicí *$web* kontejneru, jak je znázorněno:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE_PATH> -d `$web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Nasazení
@@ -120,7 +120,7 @@ K zapnutí metrik na stránkách statický web, klikněte na **nastavení** > **
 
 Můžete například měřená data jsou generovány zapojení do různých metrik rozhraní API. Na portálu se zobrazí pouze členové rozhraní API použít v daném časovém rámci, abychom se mohli zaměřit jenom na členy, které nevracejí data. Aby se zajistilo, že budete moct vybrat nezbytné člena rozhraní API, prvním krokem je rozšířit časový rámec.
 
-Klikněte na tlačítko časový rámec a vyberte **posledních 24 hodin** a potom klikněte na tlačítko **použít** 
+Klikněte na tlačítko časový rámec a vyberte **posledních 24 hodin** a potom klikněte na tlačítko **použít**
 
 ![Metriky Azure Storage statických webů časový rozsah](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 

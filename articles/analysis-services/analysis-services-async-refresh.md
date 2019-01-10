@@ -5,17 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f10bae780ebb05d3450f4dab7e53fa87fe25b022
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958665"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189549"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
+
 S použitím programovací jazyk, který podporuje volání REST, můžete provádět operace asynchronní aktualizace dat na vašich tabulkových modelů služby Azure Analysis Services. To zahrnuje synchronizaci repliky jen pro čtení pro horizontální navýšení kapacity dotazu. 
 
 Operace aktualizace dat může chvíli trvat v závislosti na řadě faktorů včetně objem dat, úroveň optimalizace pomocí oddíly atd. Tyto operace tradičně vyvolání s existující metody, jako je třeba použití [Petr](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (tabulkový objektový Model), [PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) rutin, nebo [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (tabulkový Model Skriptovací jazyk). Tyto metody však může vyžadovat často nespolehlivé, dlouhotrvajících připojení prostřednictvím protokolu HTTP.
@@ -94,6 +95,7 @@ Text může vypadat takto:
 ```
 
 ### <a name="parameters"></a>Parametry
+
 Zadání parametrů se nevyžaduje. Výchozí hodnota je použita.
 
 |Název  |Typ  |Popis  |Výchozí  |
@@ -184,11 +186,11 @@ Pokud chcete zkontrolovat stav operace synchronizace, použijte příkaz GET ID 
 
 Hodnoty pro `syncstate`:
 
-- 0: replikace. Databází se replikují do cílové složky.
-- 1: rehydratace. Databáze se nedosadí data na počet instancí serveru jen pro čtení.
-- 2: dokončeno. Operace synchronizace byla úspěšně dokončena.
-- 3: se nezdařilo. Operace synchronizace se nezdařila.
-- 4: dokončení. Operace synchronizace byla dokončena, ale provádí vyčištění.
+- 0: Replikace. Databází se replikují do cílové složky.
+- 1: Rehydratace. Databáze se nedosadí data na počet instancí serveru jen pro čtení.
+- 2: Dokončeno Operace synchronizace byla úspěšně dokončena.
+- 3: Selhalo Operace synchronizace se nezdařila.
+- 4: Dokončování. Operace synchronizace byla dokončena, ale provádí vyčištění.
 
 ## <a name="code-sample"></a>Ukázka kódu
 

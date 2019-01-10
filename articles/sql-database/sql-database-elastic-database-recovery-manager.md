@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: f6c289c87f4f58fdad8950bdf61fa68016fe8d3e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d5bb914de1cded7c70516bfb4bfdaa93c83fe0e4
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042066"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188670"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Oprava problémů s mapováním horizontálních oddílů pomocí třídy RecoveryManager
 
-[RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) třída umožňuje ADO.Net aplikace snadno zjistit a opravit nekonzistence mezi mapy horizontálních oddílů globální (GSM) a mapy horizontálních oddílů místní (LSM) v prostředí s horizontálně dělené databáze.
+[RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) třída umožňuje ADO.Net aplikace snadno zjistit a opravit nekonzistence mezi mapy horizontálních oddílů globální (GSM) a mapy horizontálních oddílů místní (LSM) v prostředí s horizontálně dělené databáze.
 
 GSM a LSM sledovat mapování jednotlivých databází v horizontálně dělené prostředí. V některých případech dojde GSM až LSM k přerušení. V takovém případě pomocí třídy RecoveryManager k rozpoznání a opravě přerušení.
 
@@ -49,7 +49,7 @@ Další informace o nástrojích elastické databáze Azure SQL Database, geogra
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Načítání z ShardMapManager RecoveryManager
 
-Prvním krokem je vytvoření RecoveryManager instance. [GetRecoveryManager metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) vrátí recovery manager pro aktuální [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) instance. Chcete-li vyřešit jakékoli nekonzistence mapy horizontálních oddílů, musí nejdřív načtěte RecoveryManager pro konkrétní horizontálního dělení mapu.
+Prvním krokem je vytvoření RecoveryManager instance. [GetRecoveryManager metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) vrátí recovery manager pro aktuální [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) instance. Chcete-li vyřešit jakékoli nekonzistence mapy horizontálních oddílů, musí nejdřív načtěte RecoveryManager pro konkrétní horizontálního dělení mapu.
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
@@ -83,7 +83,7 @@ Protože se předpokládá, že odstranění databáze je to tak úmyslně, posl
 
 ## <a name="to-detect-mapping-differences"></a>Chcete-li zjistit rozdíly mapování
 
-[DetectMappingDifferences metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) vybere a vrátí jednu z mapy horizontálních oddílů (místní nebo globální) jako zdroj pravdivých informací a sloučí mapování na obou mapy horizontálních oddílů (GSM a LSM).
+[DetectMappingDifferences metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) vybere a vrátí jednu z mapy horizontálních oddílů (místní nebo globální) jako zdroj pravdivých informací a sloučí mapování na obou mapy horizontálních oddílů (GSM a LSM).
 
    ```java
    rm.DetectMappingDifferences(location, shardMapName);
@@ -94,19 +94,19 @@ Protože se předpokládá, že odstranění databáze je to tak úmyslně, posl
 
 ## <a name="to-resolve-mapping-differences"></a>Chcete-li vyřešit rozdíly mapování
 
-[ResolveMappingDifferences metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) vybere jeden z mapy horizontálních oddílů (místní nebo globální) jako zdroj pravdivých informací a sloučí mapování na obou mapy horizontálních oddílů (GSM a LSM).
+[ResolveMappingDifferences metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) vybere jeden z mapy horizontálních oddílů (místní nebo globální) jako zdroj pravdivých informací a sloučí mapování na obou mapy horizontálních oddílů (GSM a LSM).
 
    ```java
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
 * *RecoveryToken* parametru zobrazí rozdíly GSM a LSM pro konkrétní horizontálních oddílů v mapování.
-* [MappingDifferenceResolution výčet](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) se používá k označení metodu pro překlad rozdíl mezi mapování horizontálních oddílů.
+* [MappingDifferenceResolution výčet](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) se používá k označení metodu pro překlad rozdíl mezi mapování horizontálních oddílů.
 * **MappingDifferenceResolution.KeepShardMapping** se doporučuje, když LSM obsahuje mapování přesné, a proto by měla sloužit mapování v horizontálním oddílu. Toto je obvykle tento případ, pokud dojde k selhání: horizontálního oddílu je umístěn na nový server. Protože horizontálního oddílu musí být nejprve odebrány z GSM (pomocí metody RecoveryManager.DetachShard), mapování na GSM již existuje. Proto LSM použije pro opětovné vytvoření mapování horizontálních oddílů.
 
 ## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Připojení k ShardMap horizontálního oddílu, po obnovení do horizontálního oddílu
 
-[AttachShard metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) připojí dané horizontálními oddíly mapy horizontálních oddílů. Potom jakékoli nekonzistence mapy horizontálních oddílů a aktualizuje mapování tak, aby odpovídaly horizontálních oddílů Přejme během obnovení horizontálních oddílů. Předpokládá se, že databáze je také přejmenovat tak, aby odrážely původní název databáze (dříve, než se obnovila horizontální oddíl), protože výchozí obnovení bodu v čase do nové databáze s časové razítko.
+[AttachShard metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) připojí dané horizontálními oddíly mapy horizontálních oddílů. Potom jakékoli nekonzistence mapy horizontálních oddílů a aktualizuje mapování tak, aby odpovídaly horizontálních oddílů Přejme během obnovení horizontálních oddílů. Předpokládá se, že databáze je také přejmenovat tak, aby odrážely původní název databáze (dříve, než se obnovila horizontální oddíl), protože výchozí obnovení bodu v čase do nové databáze s časové razítko.
 
    ```java
    rm.AttachShard(location, shardMapName)

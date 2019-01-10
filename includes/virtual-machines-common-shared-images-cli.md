@@ -8,18 +8,24 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 830deb7569772b610b7e6abde649830b7ad67a92
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 547e0b08b2a57b4b9192f11907f77160142d4466
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047265"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54192121"
 ---
-## <a name="before-you-begin"></a>Než začnete
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-K dokončení příkladu v tomto článku, musíte mít existující spravované image zobecněného virtuálního počítače. Další informace najdete v tématu [kurz: vytvoření vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-## <a name="preview-register-the-feature"></a>Ve verzi Preview: Zaregistrovat funkci
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+
+## <a name="before-you-begin"></a>Před zahájením
+
+K dokončení příkladu v tomto článku, musíte mít existující spravované image zobecněného virtuálního počítače. Další informace najdete v tématu [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
+
+## <a name="preview-register-the-feature"></a>Verze Preview: Zaregistrovat funkci
 
 Sdílené Galerie obrázků je ve verzi preview, ale budete muset zaregistrovat funkci, než budete moct použít. Postup pro registraci Galerie obrázků sdílené funkce:
 

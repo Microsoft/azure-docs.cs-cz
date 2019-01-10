@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 24c7ddff1eea16fc2be3f99d04abd90ee0791f4c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f3d171a8f0e353d5860f410a8c32149f8872338
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247292"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189384"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
 Tento článek obsahuje odpovědi na některé otázky, které správce IT může mít informace o nastavení a synchronizace dat aplikace.
@@ -31,13 +31,13 @@ Tento článek obsahuje odpovědi na některé otázky, které správce IT můž
 
 * *Motiv*, což zahrnuje funkce, jako je nastavení motivu a na hlavním panelu na ploše.
 * *Nastavení aplikace Internet Explorer*, včetně naposledy otevřených karet a Oblíbené položky.
-* *Okraj nastavení prohlížeče*, jako je například oblíbené položky a čtení seznamu.
+* *Nastavení prohlížeče Microsoft Edge*, jako je například oblíbené položky a čtení seznamu.
 * *Hesla*, včetně Internet hesla, profilů sítě Wi-Fi a další.
 * *Jazykové předvolby*, což zahrnuje nastavení pro rozložení klávesnice, jazyk systému, datum a čas a další.
 * *Snadné získat přístup k funkcím*, jako je například motiv s vysokým kontrastem a program Předčítání, Lupa.
 * *Další nastavení Windows*, jako je například nastavení myši.
 
-**Data aplikací**: Universal Windows apps můžete zapisovat do složky cestovního nastavení data a všechny data zapsaná do této složky se budou automaticky synchronizovat. Záleží jen na jednotlivé aplikace pro vývojáře k návrhu aplikace, abyste mohli využít tuto funkci. Další podrobnosti o tom, jak vývoj aplikace pro Universal Windows, který používá roaming, najdete v článku [API úložiště appdata](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) a [roaming blog pro vývojáře aplikací Windows 8](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Data aplikací**: Univerzální aplikace pro Windows můžete zapisovat do složky cestovního nastavení data a všechny data zapsaná do této složky se budou automaticky synchronizovat. Záleží jen na jednotlivé aplikace pro vývojáře k návrhu aplikace, abyste mohli využít tuto funkci. Další podrobnosti o tom, jak vývoj aplikace pro Universal Windows, který používá roaming, najdete v článku [API úložiště appdata](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) a [roaming blog pro vývojáře aplikací Windows 8](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Který účet se používá pro synchronizaci nastavení?
 Synchronizace nastavení ve Windows 8.1, vždy používá účty zákazníků Microsoftu. Podnikoví uživatelé měli možnost připojení k účtu v doméně služby Active Directory k získání přístupu k synchronizaci nastavení účtu Microsoft. Ve Windows 10 připojené to účet Microsoft, že funkce je nahrazen účtu primárního/sekundárního framework.
@@ -63,7 +63,7 @@ Pokud jsou připojeny k doméně služby Active Directory s Windows 8.1 připoje
 
 Pokud místní domény služby Active Directory s Azure AD connect, zařízení se pokusí o synchronizaci nastavení pomocí připojeném účtu služby Azure AD. Pokud správce Azure AD neumožňuje Enterprise State Roaming, vaše připojení účtu služby Azure AD se zastaví, synchronizovat nastavení. Pokud jste uživatelem systému Windows 10 a přihlaste se pomocí identity Azure AD, se spustí, synchronizovat nastavení systému windows, poté, co váš správce povolí synchronizaci nastavení přes Azure AD.
 
-Pokud jste si uložili všechny osobní údaje na firemní zařízení, byste měli vědět, že operační systém Windows a data aplikací se začnou synchronizují do služby Azure AD. To má následující důsledky:
+Pokud jste si uložili všechny osobní údaje na firemní zařízení, byste měli vědět, že operační systém Windows a data aplikací se začnou synchronizují do služby Azure AD. Má to následující důsledky:
 
 * Osobní nastavení účtu Microsoft bude odchylek kromě nastavení na váš pracovní nebo školní účty Azure AD. Důvodem je, že účet Microsoft a nastavení služby Azure AD synchronizovat nyní používají samostatné účty.
 * Osobní údaje, jako jsou hesla Wi-Fi, webových přihlašovacích údajů a Oblíbené položky aplikace Internet Explorer, které byly dříve synchronizovaná přes propojeném účtu Microsoft se budou synchronizovat prostřednictvím služby Azure AD.

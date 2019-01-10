@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630457"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191594"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 
@@ -131,7 +131,7 @@ Pokud vaše služba ASE s ILB je název domény *contoso.net* a je název vaší
 
 ## <a name="functions-and-web-jobs"></a>Funkce a webové úlohy ##
 
-Funkce a webových úloh závisí na web SCM. podporují se ale pro použití na portálu i v případě, že vaše aplikace nacházely ve službě ASE s ILB, tak dlouho, dokud váš prohlížeč může kontaktovat web SCM.  Pokud používáte certifikát podepsaný svým držitelem se vaše služba ASE s ILB, je potřeba povolit váš prohlížeč důvěřovat certifikátu.  Pro aplikaci Internet Explorer a Microsoft Edge, tzn. certifikát musí být v úložišti počítače vztah důvěryhodnosti.  Pokud používáte Chrome, pak to znamená, že jste dříve přijali certifikátu v prohlížeči stisknutím pravděpodobně web scm přímo.  Nejlepším řešením je použití komerční certifikát, který je v řetězu certifikátů prohlížeče vztah důvěryhodnosti.  
+Funkce a webových úloh závisí na web SCM. podporují se ale pro použití na portálu i v případě, že vaše aplikace nacházely ve službě ASE s ILB, tak dlouho, dokud váš prohlížeč může kontaktovat web SCM.  Pokud používáte certifikát podepsaný svým držitelem se vaše služba ASE s ILB, je potřeba povolit váš prohlížeč důvěřovat certifikátu.  Pro IE a Microsoft Edge, tzn. certifikát musí být v úložišti počítače vztah důvěryhodnosti.  Pokud používáte Chrome, pak to znamená, že jste dříve přijali certifikátu v prohlížeči stisknutím pravděpodobně web scm přímo.  Nejlepším řešením je použití komerční certifikát, který je v řetězu certifikátů prohlížeče vztah důvěryhodnosti.  
 
 ## <a name="ase-ip-addresses"></a>Služba ASE IP adresy ##
 

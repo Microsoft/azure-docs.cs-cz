@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001968"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190817"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -38,7 +38,7 @@ Tyto kroky používají Avere ovládacích panelech. Čtení [přístup ke clust
 
 ## <a name="create-a-core-filer"></a>Vytvořit filtr core
 
-"Základní filtr" je termín označující vFXT úložný systém back-endu. Úložiště může jednat o hardwaru zařízení NAS jako je NetApp nebo Isilon nebo může být objekt cloudového úložiště. Další informace o filtrech core najdete [v Avere clusteru nastavení průvodce](http://library.averesystems.com/ops_guide/4_7/settings_overview.html#managing-core-filers).
+"Základní filtr" je termín označující vFXT úložný systém back-endu. Úložiště může jednat o hardwaru zařízení NAS jako je NetApp nebo Isilon nebo může být objekt cloudového úložiště. Další informace o filtrech core najdete [v Avere clusteru nastavení průvodce](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
 
 Přidat filtr core, vyberte jednu z dva hlavní typy křížového core:
 
@@ -70,7 +70,7 @@ Takto přidejte filtr core NAS:
   
    * Klikněte na tlačítko **Další** a vyberte zásady mezipaměti. 
    * Klikněte na tlačítko **přidat filtr**.
-   * Podrobnější informace o [přidání nového serveru NAS základní filer](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html) v Avere clusteru nastavení průvodce.
+   * Podrobnější informace o [přidání nového serveru NAS základní filer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html) v Avere clusteru nastavení průvodce.
 
 Potom pokračujte [vytvořit spojení](#create-a-junction).  
 
@@ -133,7 +133,7 @@ Chcete-li přidat úložiště objektů Blob po vytvoření clusteru, postupujte
    | Předplatné | ID předplatného |
    | Přístupový klíč k úložišti | Klíč účtu úložiště Azure (zkopírovali v předchozím kroku) | 
 
-   Klikněte na tlačítko **odeslat**.
+   Klikněte na **Submit** (Odeslat).
 
    ![Vyplnění formuláře pro přihlašovacích údajů cloudu v Ovládacích panelech Avere](media/avere-vfxt-new-credential-submit.png)
 
@@ -156,7 +156,7 @@ Chcete-li přidat úložiště objektů Blob po vytvoření clusteru, postupujte
    * Volitelně můžete nastavit **typ šifrování** k **žádný**.  Azure Storage se šifrují ve výchozím nastavení.
    * Klikněte na tlačítko **přidat filtr**.
 
-  Podrobnější informace, přečtěte si [přidává nový filtr základní cloudové](<http://library.averesystems.com/ops_guide/4_7/new_core_filer_cloud.html>) v Průvodci konfigurací Avere clusteru. 
+  Podrobnější informace, přečtěte si [přidává nový filtr základní cloudové](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) v Průvodci konfigurací Avere clusteru. 
 
 Na stránce se aktualizuje nebo můžete aktualizovat na stránce zobrazit vaše nové základní filtr.
 
@@ -168,7 +168,7 @@ Spojení je cesta, kterou vytvoříte pro klienty. Klienti připojit cestu a př
 
 Můžete například vytvořit `/avere/files` mapovat na vaší základní filer NetApp `/vol0/data` exportovat a `/project/resources` podadresáře.
 
-Další informace o spojovacích bodech najdete v [oboru názvů část Průvodce konfigurací clusteru Avere](http://library.averesystems.com/ops_guide/4_7/gui_namespace.html).
+Další informace o spojovacích bodech najdete v [oboru názvů část Průvodce konfigurací clusteru Avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 
 Postupujte podle kroků v nastavení rozhraní Avere ovládací panely:
 
