@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6a9b8e25b8c64d39606ee5c2582098839e349630
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317904"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189758"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Vytvořit úložiště s využitím Azure Maps
 
@@ -109,7 +109,7 @@ Chcete-li vytvořit projekt, můžete použít [sady Visual Studio](https://visu
 
 K vytvoření uživatelského rozhraní, přidejte kód pro *index.html*:
 
-1. Přidejte následující `meta` klíčová slova `head` z *index.html*. Značky definují znakové sady (UTF-8), řekněte Internet Explorerem a Edgem pomocí nejnovější verze prohlížeče a zadejte oblast zobrazení, která funguje dobře pro responzivní rozložení.
+1. Přidejte následující `meta` klíčová slova `head` z *index.html*. Značky definují znakové sady (UTF-8), informace aplikace Internet Explorer a Microsoft Edge použít nejnovější verze prohlížeče a zadejte oblast zobrazení, která funguje dobře pro responzivní rozložení.
 
     ```HTML
     <meta charset="utf-8" /> 

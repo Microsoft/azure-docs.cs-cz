@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190631"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157169"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -101,7 +101,7 @@ Zobrazí typ každou proměnnou a první několik hodnot v datové sadě.
 
     data$spam <- as.factor(data$spam)
 
-Chcete-li provést průzkumné analýzy, použijte [ggplot2](http://ggplot2.org/) balíček, Oblíbené grafovým knihovny pro R, který je už nainstalovaný na virtuálním počítači. Mějte na paměti, z souhrnná data zobrazí dříve, vidíme, že souhrnné statistiky týkající se četnosti znak vykřičník. Pojďme vykreslení těchto frekvencí tady pomocí následujících příkazů:
+Chcete-li provést průzkumné analýzy, použijte [ggplot2](https://ggplot2.tidyverse.org/) balíček, Oblíbené grafovým knihovny pro R, který je už nainstalovaný na virtuálním počítači. Mějte na paměti, z souhrnná data zobrazí dříve, vidíme, že souhrnné statistiky týkající se četnosti znak vykřičník. Pojďme vykreslení těchto frekvencí tady pomocí následujících příkazů:
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)

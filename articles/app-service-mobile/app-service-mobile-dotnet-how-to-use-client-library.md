@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 30eb458b9d0584b467479163d8312d7bd5456be1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409730"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157324"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -651,7 +651,7 @@ Příklady jsou k dispozici pro následující vzory ověřování toku na stran
 Active Directory Authentication Library (ADAL) můžete použít k ověření spusťte uživatelů z klienta pomocí ověřování Azure Active Directory.
 
 1. Podle konfigurace váš back-end mobilní aplikace pro přihlašování AAD [Postup konfigurace služby App Service pro přihlašování služby Active Directory] kurzu. Ujistěte se, že k dokončení volitelný krok registrace nativní klientské aplikace.
-2. V sadě Visual Studio nebo Xamarin Studio, otevřete si projekt a přidejte odkaz na `Microsoft.IdentityModel.CLients.ActiveDirectory` balíček NuGet. Při hledání, zahrnout předběžné verze.
+2. V sadě Visual Studio nebo Xamarin Studio, otevřete si projekt a přidejte odkaz na `Microsoft.IdentityModel.Clients.ActiveDirectory` balíček NuGet. Při hledání, zahrnout předběžné verze.
 3. Přidejte následující kód do vaší aplikace, podle platformy, které používáte. V každém proveďte následující nahrazení:
 
    * Nahraďte **INSERT-AUTORITY-KORENOVA** s názvem tenanta, ve kterém jste zřídili vaší aplikace. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com. Tuto hodnotu je možné zkopírovat ze záložky domény ve službě Azure Active Directory v [Azure Portal].

@@ -1,5 +1,5 @@
 ---
-title: Nasazení pro virtuální počítače ve verzi Preview Azure Monitor | Dokumentace Microsoftu
+title: Nasazení Azure Monitor pro virtuální počítače (preview) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak nasadit a nakonfigurovat monitorování Azure pro virtuální počítače, abyste je mohli začít, pochopení, jaký je výkon distribuované aplikace a problémy se stavem, které byly identifikovány.
 services: azure-monitor
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 3d408c2a2f9de69d8a12a394df68acff8f3d0bf7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 3c1caa2485437768781ada2c7271445ccd3c19e1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121647"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190320"
 ---
-# <a name="deploy-azure-monitor-for-vms-preview"></a>Nasazení Azure Monitor pro virtuální počítače ve verzi Preview
-Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače. Služba monitoruje stav operačního systému Azure virtuální počítače (VM) a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí. Toto monitorování zahrnuje zjišťování a mapování závislostí aplikace, které mohou být hostovány na nich.
+# <a name="deploy-azure-monitor-for-vms-preview"></a>Nasazení Azure Monitor pro virtuální počítače (preview)
+Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače. Služba monitoruje stav operačního systému Azure virtuální počítače (VM) a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí. Toto monitorování zahrnuje zjišťování a mapování závislostí aplikace, které mohou být hostovány na nich. 
 
 Azure Monitor povolíte pro virtuální počítače pomocí jedné z následujících metod:
 
