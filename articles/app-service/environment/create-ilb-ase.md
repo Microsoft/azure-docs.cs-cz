@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9c44e2564c26a16d632a16195d3e53b8ce83d735
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: edea614065d67bab23de29e5cef3b56c69905a90
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629879"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188603"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -188,7 +188,7 @@ Služba ASE s interním nástrojem pro vyrovnávání zatížení podporuje slu�
 
 Pokud ve službě ASE s interním nástrojem pro vyrovnávání zatížení používáte službu Azure Functions, může se vám zobrazit tato chybová zpráva: „V tuto chvíli nedokážeme načíst vaše funkce. Zkuste to prosím znovu později.“ K této chybě dochází, protože uživatelské rozhraní služby Functions používá web SCM přes protokol HTTPS a kořenový certifikát není v řetězu certifikátů prohlížeče. Webové úlohy mají podobné potíže. Pokud se chcete těmto potížím vyhnout, můžete provést jeden z těchto kroků:
 
-- Přidejte certifikát do úložiště důvěryhodných certifikátů. To odblokujete aplikace Edge a Internet Explorer.
+- Přidejte certifikát do úložiště důvěryhodných certifikátů. To odblokujete aplikace Microsoft Edge a Internet Explorer.
 - Otevřete prohlížeč Chrome a nejdřív přejděte na web SCM, potom přijměte nedůvěryhodný certifikát a přejděte na portál.
 - Použijte komerční certifikát, který je v řetězu certifikátů vašeho prohlížeče.  Tato možnost je nejlepší.  
 

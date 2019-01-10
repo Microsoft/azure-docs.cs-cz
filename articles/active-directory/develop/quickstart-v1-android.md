@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 7f7ae858f633a910b796f544ed69a582e749beaf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d5d284e8f7756e3e9bff5b08d28a8ed911a60572
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311061"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158869"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -127,7 +127,7 @@ Veškerou konfiguraci tohoto ukázkového kódu najdete v souboru ***src/main/ja
 
 1. Pokud chcete získat další informace o mechanismech knihovny a způsobu konfigurace nových scénářů a funkcí, projděte si [stránku Wiki knihovny ADAL pro Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki).
 2. V nativních scénářích bude aplikace používat vložené webové zobrazení Webview a neopustí aplikaci. Identifikátor URI pro přesměrování může být libovolný.
-3. Došlo k problémům nebo máte nějaký požadavek? Můžete buď vytvořit problém, nebo vytvořit příspěvek na Stack Overflow se značkou `azure-active-directory`.
+3. Došlo k problémům nebo máte nějaký požadavek? Můžete vytvořit chybu nebo publikovat na webu Stack Overflow pomocí značky `azure-active-directory`.
 
 ### <a name="cross-app-sso"></a>Jednotné přihlašování napříč aplikacemi
 
