@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dcb2d1741a8e62bd317881d3f224d3358cad8778
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: c7d236769d5e9adca0402affc2d0eccdf78a6837
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557202"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107748"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-ad"></a>Migrace z federace na předávací ověřování pro službu Azure AD
 Následující dokument obsahuje pokyny k přechod ze služby AD FS na předávací ověřování.
@@ -121,9 +121,9 @@ Před převodem z federativní na spravované, byste se podívat úzce na způso
 |-|-|
 | Chystáte se zachovat služby AD FS pro tyto aplikace.| Budete používat AD FS a Azure AD a muset vzít v úvahu činnost koncového uživatele ve výsledku. Uživatelé mohou potřebovat k ověření dvakrát v některých scénářích, jakmile do služby Azure AD (kde dostanou jednotného přihlašování a vyšší do jiných aplikací, jako je Office 365) a opakujte pro všechny aplikace stále vázaná na službu AD FS jako vztah důvěryhodnosti předávající strany. |
 | Služba AD FS je silně přizpůsobený a závislé na konkrétní vlastní nastavení v souboru onload.js, která nemůže být duplicitní ve službě Azure AD (například jste změnili přihlašovací prostředí tak, aby uživatelé pouze zadat formátu SamAccountName pro své uživatelské jméno, nikoli na UPN, nebo máte silně brandingem přihlašovací prostředí)| Je potřeba ověřit, že aktuální požadavků na přizpůsobení mohou být splněny Azure AD, než budete pokračovat. Naleznete v částech Branding pro AD FS a vlastního nastavení AD FS pro další informace a pokyny.|
-| Se blokování klientů starší verze ověřování pomocí služby AD FS.| Zvažte nahrazení ovládací prvky pro blokování starší verze ověřování klientů, které jsou aktuálně k dispozici ve službě AD FS s kombinací [řídí podmíněného přístupu pro starší verze ověřování](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [Exchange Online Client Access Pravidla](http://aka.ms/EXOCAR). |
+| Se blokování klientů starší verze ověřování pomocí služby AD FS.| Zvažte nahrazení ovládací prvky pro blokování starší verze ověřování klientů, které jsou aktuálně k dispozici ve službě AD FS s kombinací [řídí podmíněného přístupu pro starší verze ověřování](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [Exchange Online Client Access Pravidla](https://aka.ms/EXOCAR). |
 | Vyžadujete, aby uživatelům s místním MFA server řešením provádíte MFA při ověřování se službou AD FS.| Nebudete mít vložení výzvu MFA prostřednictvím místní řešení vícefaktorového ověřování do tok ověření pro spravované domény, ale může využívat služby Azure MFA k tomu od nynějška jednou domény je převeden. Pokud uživatelé nepoužívají vícefaktorové ověřování Azure ještě dnes, to bude zahrnovat registračního kroku jednorázově koncového uživatele, který budete muset připravit a komunikovat se svým koncovým uživatelům. |
-| Zásady řízení přístupu (pravidel AuthZ) už dnes používáte ve službě AD FS pro řízení přístupu k Office 365.| Zvažte nahrazení těchto prvků s ekvivalentní Azure AD [zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) a [Exchange Online pravidla klientského přístupu](http://aka.ms/EXOCAR).|
+| Zásady řízení přístupu (pravidel AuthZ) už dnes používáte ve službě AD FS pro řízení přístupu k Office 365.| Zvažte nahrazení těchto prvků s ekvivalentní Azure AD [zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) a [Exchange Online pravidla klientského přístupu](https://aka.ms/EXOCAR).|
 
 ### <a name="considerations-for-common-ad-fs-customizations"></a>Důležité informace týkající se běžných vlastní nastavení služby AD FS
 
@@ -333,7 +333,7 @@ Převod se provádí pomocí modulu Azure AD PowerShell.
 
 Při vašeho tenanta se použití federace, uživatelé byly získávání přesměrován na přihlašovací stránku Azure AD do vašeho prostředí služby AD FS. Teď, když klient je nakonfigurován pro použití předávací ověřování namísto federace, uživatelé nebudou získat přesměrováno do služby AD FS a místo toho budou přihlašovat přímo pomocí na přihlašovací stránku Azure AD.
 
-Spusťte aplikaci Internet Explorer v režimu InPrivate vyhnout bezproblémového jednotného přihlašování, budete automaticky přihlášení a přejít na přihlašovací stránku Office 365 ([http://portal.office.com](http://portal.office.com/)). Typ **UPN** uživatele a klikněte na tlačítko **Další**. Ujistěte se, že zadejte hlavní název uživatele hybridní uživatele, který byl synchronizované z Active Directory vaše místní a který byl dříve federované. Uživateli se zobrazí na obrazovce k zadávání uživatelského jména a hesla.
+Spusťte aplikaci Internet Explorer v režimu InPrivate vyhnout bezproblémového jednotného přihlašování, budete automaticky přihlášení a přejít na přihlašovací stránku Office 365 ([https://portal.office.com](https://portal.office.com/)). Typ **UPN** uživatele a klikněte na tlačítko **Další**. Ujistěte se, že zadejte hlavní název uživatele hybridní uživatele, který byl synchronizované z Active Directory vaše místní a který byl dříve federované. Uživateli se zobrazí na obrazovce k zadávání uživatelského jména a hesla.
 
 ![Obrázek 18](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
 
