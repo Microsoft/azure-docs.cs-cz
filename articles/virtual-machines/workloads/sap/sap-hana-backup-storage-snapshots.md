@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 031cb10e476ba068f7e3d7baf3b19f7703caf170
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580031"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159923"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Zálohování SAP HANA založené na snímcích úložiště
 
@@ -52,7 +52,7 @@ Na disku zobrazí snímku se v adresáři dat SAP HANA.
 
 Jeden má zajistit, že konzistence systému souborů je také zaručeno, že před spuštěním snímků úložiště SAP HANA je v režimu přípravy snímku. Zobrazit _konzistence dat SAP HANA při pořizování snímků úložiště_ v příslušném článku [Průvodci zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md).
 
-Po dokončení snímků úložiště je velmi důležité pro potvrzení snímek SAP HANA. Neexistuje odpovídající příkaz jazyka SQL spustit: zavřít SNÍMKU zálohování dat (naleznete v tématu [dat zavřít SNÍMKU příkaz BACKUP (zálohování a obnovení)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
+Po dokončení snímků úložiště je velmi důležité pro potvrzení snímek SAP HANA. Neexistuje odpovídající příkaz jazyka SQL spustit: Zavřít SNÍMKU zálohování dat (viz [dat zavřít SNÍMKU příkaz BACKUP (zálohování a obnovení)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
 
 > [!IMPORTANT]
 > Potvrďte HANA snímku. Z důvodu &quot;kopie při zápisu,&quot; SAP HANA potřebovat další místo na disku v přípravě snímku režimu a není možné spustit nové zálohování, dokud není potvrzené snímek SAP HANA.

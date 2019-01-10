@@ -9,8 +9,8 @@ items:
   - name: Jak služba funguje
     displayName: architecture concepts definitions
     href: concept-azure-machine-learning-architecture.md
-  - name: Co se děje s Workbenchem?
-    displayName: desktop ui
+  - name: Co se stalo s aplikací Workbench?
+    displayName: desktop ui Workbench upgrade update transfer
     href: overview-what-happened-to-workbench.md
   - name: Poznámky k verzi
     displayName: what's new issues bugs
@@ -142,6 +142,9 @@ items:
   - name: Použití CLI služby Machine Learning
     displayName: cli command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
+  - name: Export a odstranění dat
+    displayName: gdpr
+    href: how-to-export-delete-data.md
 - name: Referenční informace
   items:
   - name: Sada Machine Learning SDK
@@ -166,213 +169,11 @@ items:
     href: resource-known-issues.md
   - name: Získat podporu
     href: support-for-aml-services.md
-  - name: Export a odstranění dat
-    displayName: gdpr
-    href: how-to-export-delete-data.md
-  - name: Zastaralé dokumenty
-    items:
-    - name: Migrace z aplikace Workbench
-      displayName: Workbench upgrade update transfer
-      href: how-to-migrate.md
-    - name: Export nebo odstranění dat účtu (zastaralé)
-      href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Rychlý start pro aplikaci Workbench (zastaralé)
-      href: ../desktop-workbench/quickstart-installation.md
-    - name: 'Kurz 1: Příprava dat'
-      href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
-    - name: 'Kurz 2: Sestavení modelů'
-      href: ../desktop-workbench/tutorial-classifying-iris-part-2.md
-    - name: 'Kurz 3: Modely nasazení'
-      href: ../desktop-workbench/tutorial-classifying-iris-part-3.md
-    - name: 'Kurz 4: Pokročilá příprava dat'
-      href: ../desktop-workbench/tutorial-bikeshare-dataprep.md
-    - name: Přehled správy modelů
-      href: ../desktop-workbench/model-management-overview.md
-    - name: Hlavní úlohy rozhraní příkazového řádku
-      href: ../desktop-workbench/cli-for-azure-machine-learning.md
-    - name: Použití aplikace Workbench
-      items:
-      - name: Práce s integrovanými vývojovými prostředími Pythonu
-        href: ../desktop-workbench/how-to-configure-your-IDE.md
-      - name: Použití poznámkových bloků Jupyter
-        href: ../desktop-workbench/how-to-use-jupyter-notebooks.md
-      - name: Integrace s úložišti Git
-        href: ../desktop-workbench/using-git-ml-project.md
-      - name: Strukturování projektů s TDSP
-        href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
-      - name: Roaming a spolupráce
-        href: ../desktop-workbench/roaming-and-collaboration.md
-    - name: Použití rozšíření IDE
-      items:
-      - name: Použití Visual Studio Tools pro AI
-        href: ../desktop-workbench/quickstart-visual-studio-tools.md
-      - name: Použití sady Visual Studio Code Tools pro AI
-        href: ../desktop-workbench/quickstart-visual-studio-code-tools.md
-    - name: Použití sady AI Toolkit pro Azure IoT Edge
-      href: ../desktop-workbench/use-azure-iot-edge-ai-toolkit.md
-    - name: Konfigurace výpočetního prostředí
-      items:
-      - name: Konfigurace experimentování
-        href: ../desktop-workbench/experimentation-service-configuration.md
-      - name: Vytvoření clusteru DSVM a HDI Spark
-        href: ../desktop-workbench/how-to-create-dsvm-hdi.md
-      - name: Trénování s grafickými procesory
-        href: ../desktop-workbench/how-to-use-gpu.md
-    - name: Získání dat a jejich pochopení
-      items:
-      - name: Přidání zdroje dat
-        href: ../desktop-workbench/data-source-wizard.md
-      - name: Průvodce přípravou dat
-        href: ../desktop-workbench/data-prep-getting-started.md
-      - name: Pokročilá příprava dat
-        href: ../desktop-workbench/data-prep-user-guide.md
-      - name: Transformace při přípravě dat
-        href: ../desktop-workbench/data-prep-appendix3-supported-transforms.md
-        items:
-        - name: Sloučení sloupců podle příkladu
-          href: ../desktop-workbench/data-prep-combine-columns-by-example.md
-        - name: Odvození sloupce podle příkladu
-          href: ../desktop-workbench/data-prep-derive-column-by-example.md
-        - name: Rozdělení sloupce podle příkladu
-          href: ../desktop-workbench/data-prep-split-column-by-example.md
-        - name: Rozbalení notace JSON
-          href: ../desktop-workbench/data-prep-expand-json.md
-    - name: Vývoj modelů
-      items:
-      - name: Klasifikace Iris s využitím rozhraní příkazového řádku
-        href: ../desktop-workbench/tutorial-iris-azure-cli.md
-      - name: Sledování historie spuštění a metrik modelů
-        href: ../desktop-workbench/how-to-use-run-history-model-metrics.md
-      - name: Vyhledání spuštění s největší přesností
-        href: ../desktop-workbench/how-to-find-best-accuracy-cli.md
-      - name: Čtení a zápis souborů
-        href: ../desktop-workbench/how-to-read-write-files.md
-      - name: Použití knihovny MMLSpark
-        href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: Nasazení a používání modelů
-      items:
-      - name: Nastavení správy modelů
-        href: ../desktop-workbench/deployment-setup-configuration.md
-      - name: Škálování clusterů a služeb
-        href: ../desktop-workbench/how-to-scale-clusters.md
-      - name: Povolení protokolu SSL v clusteru MLC
-        href: ../desktop-workbench/how-to-setup-ssl-on-mlc.md
-      - name: Nasazení webové služby
-        href: ../desktop-workbench/model-management-service-deploy.md
-      - name: Přizpůsobení kontejneru
-        href: ../desktop-workbench/model-management-custom-container.md
-      - name: Nasazení do zařízení IoT Edge
-        href: ../desktop-workbench/deploy-to-iot-edge-device.md
-      - name: Využívání webové služby
-        href: ../desktop-workbench/model-management-consumption.md
-      - name: Shromažďování dat modelů
-        href: ../desktop-workbench/how-to-use-model-data-collection.md
-      - name: Průvodce řešením problémů s nasazením
-        href: ../desktop-workbench/how-to-deploy-troubleshooting-guide.md
-    - name: Staré příklady
-      items:
-      - name: Analýza kolekce dokumentů
-        href: ../desktop-workbench/scenario-document-collection-analysis.md
-      - name: Porovnání otázek a odpovědí
-        href: ../desktop-workbench/scenario-qna-matching.md
-      - name: Prediktivní údržba
-        href: ../desktop-workbench/scenario-predictive-maintenance.md
-      - name: Klasifikace leteckých snímků
-        href: ../desktop-workbench/scenario-aerial-image-classification.md
-      - name: Prognózování úloh serveru s terabajty dat
-        href: ../desktop-workbench/scenario-big-data.md
-      - name: Prognózování poptávky po energiích v čase
-        href: ../desktop-workbench/scenario-time-series-forecasting.md
-      - name: Distribuované ladění hyperparametrů
-        href: ../desktop-workbench/scenario-distributed-tuning-of-hyperparameters.md
-      - name: Předpověď výpovědi zákazníků
-        href: ../desktop-workbench/scenario-churn-prediction.md
-      - name: Analýza mínění s hloubkovým učením
-        href: ../desktop-workbench/scenario-sentiment-analysis-deep-learning.md
-      - name: Rozpoznávání biomedicínských entit – projekt TDSP
-        href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
-      - name: Klasifikace příjmů v USA – projekt TDSP
-        href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
-      - name: Klasifikace obrázků s využitím CNTK
-        href: ../desktop-workbench/scenario-image-classification-using-cntk.md
-      - name: Hloubkové učení pro prediktivní údržbu
-        href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
-    - name: Starý odkaz
-      items:
-      - name: Rozšíření Pythonu pro přípravu dat
-        href: ../desktop-workbench/data-prep-python-extensibility-overview.md
-      - name: Podporované zdroje dat
-        href: ../desktop-workbench/data-prep-appendix2-supported-data-sources.md
-      - name: Načtení Azure Cosmos DB jako zdroje dat
-        href: ../desktop-workbench/data-prep-load-azure-cosmos-db.md
-      - name: Podporované kontroly
-        href: ../desktop-workbench/data-prep-appendix4-supported-inspectors.md
-      - name: Podporované datové cíle
-        href: ../desktop-workbench/data-prep-appendix5-supported-destinations.md
-      - name: Podporované kombinace prostředí dat a spuštění
-        href: ../desktop-workbench/data-prep-supported-runtime-data-environments.md
-      - name: Ukázka výrazu filtru v Pythonu
-        href: ../desktop-workbench/data-prep-appendix6-sample-filter-expressions-python.md
-      - name: Ukázka vlastních transformací toku dat v Pythonu
-        href: ../desktop-workbench/data-prep-appendix7-sample-transform-data-flow-python.md
-      - name: Ukázka připojení zdroje v Pythonu
-        href: ../desktop-workbench/data-prep-appendix8-sample-source-connections-python.md
-      - name: Ukázka připojení cíle v Pythonu
-        href: ../desktop-workbench/data-prep-appendix9-sample-destination-connections-python.md
-      - name: Ukázka transformací sloupců v Pythonu
-        href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
-      - name: Rozhraní API pro spuštění přípravy dat
-        href: ../desktop-workbench/data-prep-python-execution-api.md
-      - name: Konfigurace služby Experimentování
-        href: ../desktop-workbench/experimentation-service-configuration-reference.md
-      - name: Protokolování rozhraní API
-        href: ../desktop-workbench/reference-logging-api.md
-      - name: Šablona služby Experimentování
-        href: ../desktop-workbench/experimentation-service-template.md
-      - name: Rozhraní API pro správu modelů
-        href: ../desktop-workbench/model-management-api-reference.md
-      - name: Rozhraní příkazového řádku správy modelů
-        href: ../desktop-workbench/model-management-cli-reference.md
-      - name: Rozhraní API pro shromažďování dat modelů
-        href: ../desktop-workbench/model-data-collection-api-reference.md
-    - name: Balíčky pro domény
-      href: ../desktop-workbench/reference-python-package-overview.md
-      items:
-      - name: Zastarání balíčku pro počítačové zpracování obrazu
-        items:
-        - name: Instalace balíčku
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision
-        - name: Sestavení a nasazení modelu
-          items:
-          - name: Klasifikace obrázků
-            href: ../desktop-workbench/how-to-build-deploy-image-classification-models.md
-          - name: Detekce objektů
-            href: ../desktop-workbench/how-to-build-deploy-object-detection-models.md
-          - name: Podobnost obrázků
-            href: ../desktop-workbench/how-to-build-deploy-image-similarity-models.md
-          - name: Zpřesnění modelu
-            href: ../desktop-workbench/how-to-improve-accuracy-for-computer-vision-models.md
-      - name: Zastarání balíčku pro prognózování
-        items:
-        - name: Přehled a instalace
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview
-        - name: Vytváření a nasazování modelů prognóz
-          href: ../desktop-workbench/how-to-build-deploy-forecast-models.md
-      - name: Balíček akcelerace FPGA
-        href: reference-fpga-package-overview.md
-      - name: Balíček pro analýzy textu
-        items:
-        - name: Zastarání přehledu a instalace
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
-        - name: Vytváření a nasazování modelů klasifikace textu
-          href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
-    - name: Nejčastější dotazy
-      href: ../desktop-workbench/frequently-asked-questions.md
-    - name: Starší problémy
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 4af9d970fe07370200d9c6472366ea3dab16a76c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+  - name: Porovnání produktů ML v Microsoftu
+    href: overview-more-machine-learning.md
+ms.openlocfilehash: eb989777a0cf7fac41db64d05fa71a24efd34b5c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079217"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158955"

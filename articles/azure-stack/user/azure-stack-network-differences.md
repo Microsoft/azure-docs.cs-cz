@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: de98387b0c7d5eb3c5ca99f9aa31619397e2aadf
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 4aa62319ee37b2f82455d1a3c7ad2d224988d93e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944575"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160059"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Důležité informace týkající se sítích Azure stacku
 
@@ -25,7 +25,7 @@ Sítě Azure Stack má mnoho z funkcí poskytovaných službou sítě Azure. Exi
 
 Tento článek poskytuje přehled o jedinečných důležité informace o sítích Azure stacku a jeho funkcí. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
 
-## <a name="cheat-sheet-networking-differences"></a>Tahák: rozdíly sítě
+## <a name="cheat-sheet-networking-differences"></a>Tahák: Rozdíly sítě
 
 | Služba | Funkce | Azure (globální) | Azure Stack |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -54,7 +54,6 @@ Tento článek poskytuje přehled o jedinečných důležité informace o sítí
 |  | Výchozí server brány | Azure podporuje konfiguraci výchozí web pro vynucené tunelování. | Ještě není podporované. |
 |  | Změna velikosti brány | Azure podporuje změnu velikosti brány po nasazení. | Znovu velikosti není podporované. |
 |  | Aktivní/aktivní konfigurace | Podporováno | Ještě není podporované. |
-|  | Zásady protokolu IKE a IPSec | Azure podporuje vlastní konfigurací zásad protokolu IPSec. | Ještě není podporované. |
 |  | UsePolicyBasedTrafficSelectors | Azure podporuje používání selektorů přenosu na základě zásad s připojeními trasové brány. | Ještě není podporované. |
 | Nástroj pro vyrovnávání zatížení | Skladová jednotka (SKU) | Základní a podporovaných nástrojů pro vyrovnávání zatížení | Je podporován pouze Load balanceru úrovně Basic.  Vlastnost SKU se nepodporuje. |
 |  | Zóny | Zóny dostupnosti jsou podporovány. | Není dosud podporován. |
@@ -65,11 +64,9 @@ Tento článek poskytuje přehled o jedinečných důležité informace o sítí
 |  | Získat efektivní seznamy ACL | Podporováno | Ještě není podporované. |
 |  | Povolit akcelerované síťové služby | Podporováno | Ještě není podporované. |
 |  | Předávání IP | Ve výchozím nastavení zakázané.  Je možné povolit. | Při přepnutí tohoto nastavení se nepodporuje.  Na ve výchozím nastavení. |
-|  | Více konfigurací protokolu IP na rozhraní | Podporováno | Ještě není podporované. |
 |  | Skupiny zabezpečení aplikací | Podporováno | Ještě není podporované. |
 |  | Popisek názvu interního serveru DNS | Podporováno | Ještě není podporované. |
 |  | Verze privátní IP adresa | Jsou podporovány IPv6 a IPv4. | Podporovaný je jenom protokol IPv4. |
-|  | Konfigurace primární IP adresy | Podporuje se. Určuje primární konfiguraci protokolu IP v rozhraní. | Ještě není podporované. |
 | Network Watcher | Možnosti monitorování sítě tenanta sledovací proces sítě | Podporováno | Ještě není podporované. |
 | CDN | Profily síť pro doručování obsahu | Podporováno | Ještě není podporované. |
 | Application Gateway | Vyrovnávání zatížení vrstvy 7 | Podporováno | Ještě není podporované. |

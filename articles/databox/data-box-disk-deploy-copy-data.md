@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/01/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: 10750b5005810ec9034d2b4c7907578949ca6821
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913799"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155197"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na Azure Data Box Disk a jejich ověření
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na disku Azure Data Box a ověřit
 
 Tento kurz popisuje, jak zkopírovat data z hostitelského počítače a potom vygenerovat kontrolní součty k ověření jejich integrity.
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
-- Máte za sebou [Kurz: Instalace a konfigurace Azure Data Box Disku](data-box-disk-deploy-set-up.md).
+- Dokončili jste [kurzu: Instalace a konfigurace vašeho disku Azure Data Box](data-box-disk-deploy-set-up.md).
 - Vaše disky jsou odemknuté a připojené ke klientskému počítači.
 - Klientský počítač, který se používá ke kopírování dat na disky, musí používat [podporovaný operační systém](data-box-disk-system-requirements.md##supported-operating-systems-for-clients).
 - Ujistěte se, že zamýšlený typ úložiště pro vaše data odpovídá [podporovaným typům úložiště](data-box-disk-system-requirements.md#supported-storage-types).
@@ -148,19 +148,32 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
     C:\Users>
     ```
  
+    Pokud chcete optimalizovat výkon, použijte při kopírování dat následující parametry robocopy.
+
+    |    Platforma    |    Vetšinou malé soubory (< 512 kB)                           |    Většinou středně velké soubory (512 kB až 1 MB)                      |    Většinou velké soubory (> 1 MB)                             |   
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
+    |    Data Box Disk        |    4 Robocopy relace * <br> 16 vláken na relaci    |    2 Robocopy relace * <br> 16 vláken na relaci    |    2 Robocopy relace * <br> 16 vláken na relaci    |  |
     
-7. Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování došlo k nějakým chybám, stáhněte si soubory protokolu, abyste mohli vyřešit případné potíže. Soubory protokolu jsou uložené v umístění, které udává příkaz robocopy.
+    **Každou relaci nástroje Robocopy můžou mít maximálně 7 000 adresářů a souborů milionů 150.*
+    
+    >[!NOTE]
+    > Parametry navrhované výše jsou založené na prostředí použité při inhouse testování.
+    
+    Další informace o příkazu Robocopy najdete v článku [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Robocopy a několik příkladů).
+
+6. Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování došlo k nějakým chybám, stáhněte si soubory protokolu, abyste mohli vyřešit případné potíže. Soubory protokolu jsou uložené v umístění, které udává příkaz robocopy.
  
-
-
 > [!IMPORTANT]
 > - Je vaší povinností ujistit se, že jste data zkopírovali do složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do složky určené pro objekty blob bloku. Pokud formát dat neodpovídá příslušné složce (typu úložiště), pozdější nahrávání dat do Azure se nezdaří.
-> -  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení Azure Storage a Data Box Disku](data-box-disk-limits.md). 
+> -  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení Azure Storage a Data Box Disku](data-box-disk-limits.md).
 > - Pokud data nahrávaná Data Box Diskem zároveň nahrávají jiné aplikace mimo Data Box Disk, může to způsobit selhání úlohy nahrávání a poškození dat.
 
 ### <a name="split-and-copy-data-to-disks"></a>Rozdělení a kopírování dat na disky
 
 Tento volitelný postup můžete použít v případě, že používáte více disků a máte velkou datovou sadu, kterou je potřeba rozdělit a zkopírovat mezi všechny disky. Nástroj Data Box Split Copy pomáhá rozdělit a kopírovat data na počítači s Windows.
+
+>[!IMPORTANT]
+> Nástroj pro kopírování rozdělit pole data také ověří vaše data. Pokud použijete nástroj pro kopírování dat pole rozdělení pro kopírování dat, můžete přeskočit [krok ověření](#validate-data).
 
 1. Ujistěte se, že na počítači s Windows máte stažený nástroj Data Box Split Copy, který je extrahovaný v místní složce. Tento nástroj se stáhnul při stahování sady nástrojů Data Box Disk pro Windows.
 2. Otevřete Průzkumníka souborů. Poznamenejte si písmeno jednotky zdroje dat a písmeno jednotky přiřazené k Data Box Disku. 
@@ -176,26 +189,26 @@ Tento volitelný postup můžete použít v případě, že používáte více d
 
          ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
-4. Přejděte do složky s extrahovaným softwarem. V této složce vyhledejte soubor SampleConfig.json. Jedná se o soubor jen pro čtení, který můžete upravit a uložit.
+4. Přejděte do složky s extrahovaným softwarem. Vyhledejte `SampleConfig.json` soubor v této složce. Jedná se o soubor jen pro čtení, který můžete upravit a uložit.
 
    ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
-5. Upravte soubor SampleConfig.json.
+5. Upravit `SampleConfig.json` souboru.
  
     - Zadejte název úlohy. Tím se na Data Box Disku vytvoří složka, ze které se nakonec stane kontejner v účtu úložiště Azure přidruženém k těmto diskům. Název úlohy musí být v souladu se zásadami vytváření názvů kontejnerů v Azure. 
-    - Do souboru SampleConfigFile.json zadejte zdrojovou cestu a poznamenejte si její formát. 
+    - Zadejte cestu ke zdroji a poznamenejte si formát cesty v `SampleConfigFile.json`. 
     - Zadejte písmena jednotek odpovídající cílovým diskům. Data se načtou ze zdrojové cesty a zkopírují se mezi několik disků.
-    - Zadejte cestu pro soubory protokolů. Ve výchozím nastavení se odesílají do aktuálního adresáře, ve kterém se nachází soubor .exe.
+    - Zadejte cestu pro soubory protokolů. Ve výchozím nastavení, je odeslána do aktuálního adresáře kde `.exe` nachází.
 
      ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. Pokud chcete zkontrolovat formát souboru, přejděte do nástroje JSONlint. Uložte soubor jako ConfigFile.json. 
+6. Pokud chcete ověřovat formát souboru, přejděte na `JSONlint`. Uložte soubor jako `ConfigFile.json`. 
 
      ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Otevřete okno příkazového řádku. 
 
-8. Spusťte DataBoxDiskSplitCopy.exe. Typ
+8. Spustit `DataBoxDiskSplitCopy.exe`. Typ
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -214,7 +227,7 @@ Tento volitelný postup můžete použít v případě, že používáte více d
     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-10.png)
     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
-    Když blíže prozkoumáte obsah jednotky n:, uvidíte, že se vytvořily dvě podsložky odpovídající datům ve formátu objektu blob bloku a objektu blob stránky.
+    Je-li zkontrolovat obsah `n:` jednotka další, uvidíte, že se vytvoří dvě podsložky odpovídající objekt blob bloku a objektů blob stránky formát data.
     
      ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
@@ -222,15 +235,14 @@ Tento volitelný postup můžete použít v případě, že používáte více d
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+Jakmile se kopírování dat dokončí, můžete přejít k ověření vaše data. Pokud jste použili nástroj pro kopírování rozdělení, přeskočit ověření (nástroj také ověří rozdělení kopie) a přejděte k dalšímu kurzu.
 
-Po dokončení kopírování dat je dalším krokem ověření dat. 
 
+## <a name="validate-data"></a>Ověření dat
 
-## <a name="validate-data"></a>Ověření dat 
+Pokud nástroj pro kopírování rozdělení není použili ke kopírování dat, je potřeba ověřit vaše data. Data ověříte následujícím postupem.
 
-Data ověříte následujícím postupem.
-
-1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce. 
+1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce.
     
     ![Výstup ověřovacího nástroje Data Box Disku](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -240,11 +252,11 @@ Data ověříte následujícím postupem.
 
     > [!TIP]
     > - Mezi dvěma spuštěními nástroj resetujte.
-    > - Možnost 1 použijte k ověření souborů jen při zpracování velkých datových sad obsahujících malé soubory (v řádu kB). V těchto případech může generování kontrolního součtu trvat velmi dlouho a výkon může být velmi pomalý.
+    > - Možnost 1 použijte, pokud pracujete s rozsáhlou sadou dat obsahující malých souborů (~ znalostní báze). Tuto možnost pouze ověří soubory, protože kontrolní součet generování může trvat velmi dlouho a výkon může být velmi pomalé.
 
 3. Pokud používáte víc disků, spusťte příkaz pro každý disk.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 
@@ -256,4 +268,3 @@ V dalším kurzu se dozvíte, jak poslat Data Box Disk zpátky a ověřit nahrá
 
 > [!div class="nextstepaction"]
 > [Odeslání Azure Data Boxu zpátky Microsoftu](./data-box-disk-deploy-picked-up.md)
-

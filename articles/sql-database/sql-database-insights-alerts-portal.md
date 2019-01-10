@@ -1,28 +1,31 @@
 ---
-title: Pomocí webu Azure portal k vytvoření databáze SQL upozornění | Dokumentace Microsoftu
+title: Nastavit výstrahy a oznámení pomocí webu Azure portal | Dokumentace Microsoftu
 description: Pomocí webu Azure portal k vytvoření databáze SQL výstrah, které můžete aktivovat upozornění nebo automatizace při splnění zadané podmínky.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634605"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156898"
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Vytvoření výstrah pro Azure SQL Database a Data Warehouse pomocí webu Azure portal
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Vytvoření výstrah pro Azure SQL Database a Data Warehouse s využitím webu Azure portal
 
 ## <a name="overview"></a>Přehled
-V tomto článku se dozvíte, jak nastavit službu Azure SQL Database a datovým skladem vykazovaných výstrah pomocí webu Azure portal. Tento článek také obsahuje osvědčené postupy pro nastavení výstrah období.    
+V tomto článku se dozvíte, jak nastavit službu Azure SQL Database a datovým skladem vykazovaných výstrah pomocí webu Azure portal. Oznámení můžete odesílat e-mailu nebo volat webhook, pokud některé metriky (například velikost databáze nebo využití procesoru) dosáhne prahové hodnoty. Tento článek také obsahuje osvědčené postupy pro nastavení výstrah období.    
+
+> [!IMPORTANT]
+> Tato funkce není k dispozici ve spravované instanci. Jako alternativu můžete používat agenta systému SQL pro odeslání výstrah emailů pro některé metriky na základě [zobrazení dynamické správy](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
 Obdržíte výstrahu na základě monitorování metrik pro nebo události v rámci služeb Azure.
 

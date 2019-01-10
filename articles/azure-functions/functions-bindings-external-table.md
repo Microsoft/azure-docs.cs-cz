@@ -10,23 +10,23 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 38f0d03698ff8b11e1a6a06dc29102f407e0e90f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997815"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156863"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Vazba externí tabulky pro službu Azure Functions (experimentální)
 
-Tento článek vysvětluje, jak fungují s tabulkovými daty na poskytovatelé SaaS, jako jsou Sharepoint a Dynamics ve službě Azure Functions. Azure Functions podporuje vstupní a výstupní vazby pro externí tabulky.
+Tento článek vysvětluje, jak fungují s tabulkovými daty na poskytovatelé SaaS, jako jsou SharePoint a Dynamics ve službě Azure Functions. Azure Functions podporuje vstupní a výstupní vazby pro externí tabulky.
 
 > [!IMPORTANT]
 > Vazba externí tabulky je experimentální a může být nikdy nedorazí stav všeobecně dostupná (GA). Je zahrnuta pouze v Azure Functions 1.x a nejsou žádné plány přidat do služby Azure Functions 2.x. Pro scénáře, které vyžadují přístup k datům v poskytovatelé SaaS, zvažte použití [aplikace logiky, které volají do funkce](functions-twitter-email.md).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="api-connections"></a>Připojení rozhraní API
+## <a name="api-connections"></a>Připojení API
 
 Vazby tabulek využívat externí připojení rozhraní API k ověření pomocí poskytovatelů SaaS třetích stran. 
 
@@ -166,7 +166,7 @@ GO
 
 ### <a name="google-sheets-data-source"></a>Zdroj dat v tabulkách Google
 
-Pokud chcete vytvořit tabulku a použít v tomto příkladu v dokumenty Google, vytvořte tabulku s listem s názvem `Contact`. Zobrazovaný název tabulky nelze použít tento konektor. Interní název (tučně) potřeba použít jako dataSetName, například: `docs.google.com/spreadsheets/d/` **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** přidat názvy sloupců `Id`, `LastName`, `FirstName` na první řádek, pak naplnění dat na následné řádky.
+Pokud chcete vytvořit tabulku a použít v tomto příkladu v dokumenty Google, vytvořte tabulku s listem s názvem `Contact`. Zobrazovaný název tabulky nelze použít tento konektor. Požadavky vnitřní název (tučně) má být použit jako dataSetName, například: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** Přidat názvy sloupců `Id`, `LastName`, `FirstName` na první řádek, pak naplnění dat v dalších řádcích.
 
 ### <a name="salesforce"></a>Salesforce
 

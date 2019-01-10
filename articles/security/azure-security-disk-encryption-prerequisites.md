@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/17/2018
+ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57136ac267af078068f33df6ee85dfccd287606a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537694"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156506"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption
 
@@ -67,12 +67,10 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Instalace Azure Powershellu pro použití v místním počítači (volitelné): 
 1. Postupujte podle pokynů v odkazech pro váš operační systém, pokračujte ale zbytek postupu níže.      
-    - [Instalace a konfigurace Azure Powershellu pro Windows](/powershell/azure/install-azurerm-ps). 
+    - [Instalace a konfigurace Azure Powershellu pro Windows](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0). 
         - Instalace modulu PowerShellGet, prostředí Azure PowerShell a načtení modulu AzureRM. 
-    - [Instalace a konfigurace Azure Powershellu v systémech macOS a Linux](/powershell/azure/install-azurermps-maclinux).
-        -  Instalace Powershellu Core, Azure Powershellu pro .NET Core a načtení modulu Az.
 
-2. Ověření nainstalovanou verzí modulu AzureRM. V případě potřeby [aktualizace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
+2. Ověření nainstalovanou verzí modulu AzureRM. V případě potřeby [aktualizace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0#update-the-azure-powershell-module).
     -  Verze modulu AzureRM musí být 6.0.0 nebo novější.
     - Pomocí nejnovější verze modulu AzureRM se doporučuje.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d716a27cc2b4879451a8d5edbca46ca1bbfeaf40
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 96b0c44ff36dac3832e518deeed7f07b11e78c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968983"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160042"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operací v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:
@@ -208,7 +208,7 @@ Při instalaci virtuálních počítačů pro spuštění SAP HANA, třeba virtu
 
 Ale pro nasazení, které jsou enduring, budete muset vytvořit virtuální datové centrum síťové architektury v Azure. Tato architektura se doporučuje oddělení brány virtuální sítě Azure, která se připojuje k místním do samostatné virtuální sítě Azure. Tento samostatný virtuální sítě by měl hostovat veškerý provoz, které se zasílají buď místní nebo k Internetu. Tento přístup umožňuje nasadit software pro auditování a protokolování provoz, který zadá virtuální datové centrum Azure v tento samostatný virtuální síti centra. Je proto nutné jednu virtuální síť, který je hostitelem veškerý software a konfigurace, které se týkají in - a odchozí provoz do nasazení vašeho řešení Azure.
 
-Články [virtuální datové centrum Azure: síť perspektivy A](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) a [virtuální datové centrum Azure a rovina podnikového řízení](https://docs.microsoft.com/azure/architecture/vdc/) poskytují další informace o přístupu virtuální datové centrum a související Návrh virtuální sítě Azure.
+Články [virtuální datové centrum Azure: Z hlediska sítě](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) a [virtuální datové centrum Azure a rovina podnikového řízení](https://docs.microsoft.com/azure/architecture/vdc/) poskytují další informace o virtuální datové centrum a související návrh virtuální sítě Azure.
 
 
 >[!NOTE]
@@ -403,8 +403,8 @@ Zobrazit další informace o akcelerovaných síťových služeb Azure [zde](htt
 
 Podle DT 2.0 nejlepších praktik propustnost vstupně-výstupních operací disku by měl být minimální 50 MB/s každé fyzické jádro. Prohlížení specifikace pro dva typy virtuálních počítačů Azure, které jsou podporovány pro DT 2.0, jeden disk maximální limit propustnosti vstupně-výstupních operací pro virtuální počítač zobrazí:
 
-- E32sv3: 768 MB/s (bez mezipaměti) to znamená poměr 48 MB za sekundu podle počtu fyzických jader
-- M64 32ms: 1000 MB/sec (bez mezipaměti) to znamená, že poměr 62,5 MB za sekundu podle počtu fyzických jader
+- E32sv3:   768 MB/s (bez mezipaměti) to znamená, že poměr 48 MB za sekundu podle počtu fyzických jader
+- M64 32MS:  1 000 MB za sekundu (bez mezipaměti) to znamená, že poměr 62,5 MB za sekundu podle počtu fyzických jader
 
 Je potřeba připojit k virtuálnímu počítači 2.0 DT více disků v Azure a vytvořit software raid (prokládáním) na úrovni operačního systému k dosažení maximálního limitu propustnost disků jednotlivých virtuálních počítačů. Jeden disk Azure nemůže poskytnout propustnost pro dosažení maximálního limitu virtuálních počítačů v této souvislosti. Azure Premium storage je povinné pro spuštění DT 2.0. 
 

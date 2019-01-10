@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: f18af40c67195ee2e1e74c04c0834eea06fb14d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1f5eb085239ac985aa3355b1e91dac9639827339
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191950"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155069"
 ---
 # <a name="contoso-migration-overview"></a>Migrace Contoso: Přehled
 
@@ -39,7 +39,7 @@ Strategie pro migraci do cloudu dělí do čtyř kategorií: opětovným hostov�
 **Opětovným hostováním** | Často označuje jako migrace "lift and shift". Tato možnost nevyžaduje změny kódu a umožňuje migraci stávajících aplikací do Azure rychle. Každé aplikaci, která se migrovaly jako je těžit z výhod cloudu bez rizik a náklady spojené s změny kódu. | Když potřebujete rychle přesunout aplikace do cloudu.<br/><br/> Pokud chcete přesunout aplikace bez její změny.<br/><br/> Pokud vaše aplikace dokáže tak, aby můžete využít [Azure IaaS](https://azure.microsoft.com/overview/what-is-iaas/) škálovatelnost po migraci.<br/><br/> Pokud aplikace jsou důležité pro vaši firmu, ale není nutné okamžité změny možnosti aplikace.
 **Refaktoring** | Často označuje jako "opakovanému balení", refaktoring vyžaduje minimální změny aplikace, tak, aby se mohli připojit k [Azure PaaS](https://azure.microsoft.com/overview/what-is-paas/)a používání cloudových nabídek.<br/><br/> Například můžete migrovat existující aplikace do služby Azure App Service nebo Azure Kubernetes Service (AKS).<br/><br/> Nebo do možnosti, například Azure SQL Database Managed Instance, Azure Database for MySQL – Azure Database for PostgreSQL a Azure Cosmos DB může Refaktorovat relačních a nerelačních databází. | Pokud vaše aplikace můžete snadno vytvořen nový balíček pro práci v Azure.<br/><br/> Pokud chcete použít inovativních postupů DevOps poskytovaný platformou Azure, nebo uvažujete o DevOps s využitím kontejnerové strategie pro úlohy.<br/><br/> Pro operaci refaktoringu, je potřeba uvažovat o přenositelnost vaší existující základ kódu a dovednosti v oblasti k dispozici vývoje.
 **Změna architektury** | Změna architektury pro migraci se zaměřuje na úpravách a rozšíření funkcí aplikace a kódové základny pro optimalizaci aplikací architektura škálovatelnosti cloudu.<br/><br/> Můžete třeba rozdělit jednolitou aplikací na skupinu mikroslužeb, které spolupracují a snadno škálovat.<br/><br/> Nebo může úprava architektury relačních a nerelačních databází do plně spravované řešení DBaaS, jako je Azure SQL Database Managed Instance, Azure Database for MySQL – Azure Database for PostgreSQL a Azure Cosmos DB. | Když aplikace potřebují hlavní revize začlenit nové funkce, nebo efektivně pracovat na cloudové platformě.<br/><br/> Pokud chcete použít stávající investice do aplikací, splnění požadavků na škálovatelnost, zavádět inovativní postupy Azure DevOps a minimalizovat použití virtuálních počítačů.
-**Opětovné sestavení** | Opětovné sestavení má věci a krok ještě znovu sestavit aplikaci od začátku pomocí technologií, cloudu Azure.<br/><br/> Například může vytvořit zelené louce aplikací pomocí cloudových technologií, jako je Azure Functions, Azure AI, Azure SQL Database Managed Instance a Azure Cosmos DB. | Pokud chcete rychlý vývoj a stávající aplikace mají omezené funkce a životnost.<br/><br/> Až budete připravení urychlit obchodní inovace (včetně postupů DevOps, které poskytuje Azure), sestavovat nové aplikace pomocí technologií nativní pro cloud a využijte výhod rozvoj AI, Blockchain a IoT.
+**Opětovné sestavení** | Opětovné sestavení má věci a krok ještě znovu sestavit aplikaci od začátku pomocí technologií, cloudu Azure.<br/><br/> Například může vytvářet aplikace zelené louce [nativní pro cloud](http://azure.com/cloudnative) technologie, jako je Azure Functions, Azure AI, Azure SQL Database Managed Instance a Azure Cosmos DB. | Pokud chcete rychlý vývoj a stávající aplikace mají omezené funkce a životnost.<br/><br/> Až budete připravení urychlit obchodní inovace (včetně postupů DevOps, které poskytuje Azure), sestavovat nové aplikace pomocí technologií nativní pro cloud a využijte výhod rozvoj AI, Blockchain a IoT.
 
 ## <a name="migration-articles"></a>Články týkající se migrace
 

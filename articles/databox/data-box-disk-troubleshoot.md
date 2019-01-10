@@ -4,30 +4,27 @@ description: Popisuje, jak řešit potíže s Azure Data Box Diskem.
 services: databox
 author: alkohli
 ms.service: databox
-ms.topic: overview
-ms.date: 10/09/2018
+ms.subservice: disk
+ms.topic: article
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 776108b109bc27e0f8059d287e87c67aeca9fbd2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 83b3a271006df38744b9de49ed6350bea3aeef4d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091842"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159379"
 ---
-# <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Řešení potíží s Azure Data Box Diskem (Preview)
+# <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Řešení potíží v disku Azure Data Box
 
-Tento článek se týká služby Microsoft Azure Data Box ve verzi Preview. Popisuje některé komplexní pracovní postupy a úlohy správy, které lze provádět v rámci služby Data Box a se zařízením Data Box Disk. 
+V tomto článku se vztahuje na Microsoft Azure Data Box Disk a popisuje pracovních postupech, používat k řešení problémů, na které se zobrazí při nasazení tohoto řešení. 
 
-Data Box Disk je možné spravovat prostřednictvím webu Azure Portal. Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Azure Portal můžete použít ke správě objednávek a zařízení a ke sledování stavu objednávek až do jejich dokončení.
+Tento článek obsahuje následující oddíly:
 
-Tento článek obsahuje následující návody:
-
-- Stažení protokolů diagnostiky
+- Stažení diagnostických protokolů
 - Dotazy na protokoly aktivit
-
-
-> [!IMPORTANT]
-> Data Box je ve verzi Preview. Než toto řešení nasadíte, přečtěte si [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+- Chyby odemykacího nástroje Data Box Disku
+- Chyby nástroje rozdělení/kopírování Data Box Disku
 
 ## <a name="download-diagnostic-logs"></a>Stažení diagnostických protokolů
 
@@ -74,23 +71,23 @@ Protokoly aktivit se uchovávají 90 dnů. Můžete se dotazovat na libovolný r
 | Žádný<br><br>Odemykací nástroj Data Box Disku skončí s chybou.                                                                            | BitLocker není nainstalovaný. Ujistěte se, že na hostitelském počítači, na kterém běží odemykací nástroj Data Box Disku, je nainstalovaný nástroj BitLocker.                                                                            |
 | Aktuální rozhraní .NET Framework není podporováno. Podporovány jsou verze 4.5 a vyšší.<br><br>Nástroj skončí s chybovou zprávou.  | Rozhraní .NET 4.5 není nainstalováno. Na hostitelský počítač, na kterém běží odemykací nástroj Data Box Disku, nainstalujte rozhraní .NET 4.5 nebo novější.                                                                            |
 | Nepodařilo se odemknout nebo ověřit žádné svazky. Obraťte se na podporu Microsoftu.  <br><br>Nástroji se nepodařilo odemknout nebo ověřit žádnou uzamčenou jednotku. | Nástroji se s použitím zadaného klíče nepodařilo odemknout žádnou ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu.                                                |
-| Následující svazky jsou odemčené a ověřené. <br>Písmena jednotek: E:<br>Nepodařilo se odemknout žádné svazky s použitím následujících klíčů: werwerqomnf, qwerwerqwdfda <br><br>Nástroj odemkl některé jednotky a zobrazil písmena úspěšných a neúspěšných jednotek.| Částečný úspěch. Nástroji se s použitím zadaného klíče nepodařilo odemknout některé ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu. |
+| Následující svazky jsou odemčené a ověřené. <br>Svazek písmena jednotek: E:<br>Nepodařilo se odemknout žádné svazky s použitím následujících klíčů: werwerqomnf, qwerwerqwdfda <br><br>Nástroj odemkl některé jednotky a zobrazil písmena úspěšných a neúspěšných jednotek.| Částečný úspěch. Nástroji se s použitím zadaného klíče nepodařilo odemknout některé ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu. |
 | Nepovedlo se najít zamčené svazky. Zkontrolujte, že je disk od Microsoftu správně připojený a zamčený.          | Nástroji se nepodařilo najít žádné zamčené jednotky. Buď jsou jednotky už odemčené, nebo nebyly nalezeny. Zkontrolujte, že jsou jednotky připojené a zamčené.                                                           |
-| Závažná chyba: Neplatný parametr<br>Název parametru: invalid_arg<br>POUŽITÍ:<br>DataBoxDiskUnlock /PassKeys:<seznam_klíčů_oddělený_středníky><br><br>Příklad: DataBoxDiskUnlock /PassKeys:klíč1;klíč2;klíč3<br>Příklad: DataBoxDiskUnlock /SystemCheck<br>Příklad: DataBoxDiskUnlock /Help<br><br>/PassKeys:       Tento klíč najdete v objednávce služby Azure Data Box Disk. Klíč vaše disky odemkne.<br>/Help:           Tato možnost poskytuje nápovědu k použití rutiny a příklady.<br>/SystemCheck:    Tato možnost zkontroluje, jestli váš systém splňuje požadavky na spuštění nástroje.<br><br>Nástroj ukončíte stisknutím libovolné klávesy. | Byl zadán neplatný parametr. Jediné povolené parametry jsou /SystemCheck /PassKey a /Help.                                                                            |
+| Závažná chyba: Neplatný parametr<br>Název parametru: invalid_arg<br>POUŽITÍ:<br>DataBoxDiskUnlock /PassKeys:<seznam_klíčů_oddělený_středníky><br><br>Příklad: DataBoxDiskUnlock /PassKeys:passkey1; passkey2; passkey3<br>Příklad: DataBoxDiskUnlock /SystemCheck<br>Příklad: / Help DataBoxDiskUnlock<br><br>/ Klíčů:       Tento klíč získáte z objednávka disku Azure DataBox. Klíč vaše disky odemkne.<br>/ Help:           Tato možnost poskytuje nápovědy k rutině využití a příklady.<br>/ SystemCheck:    Tato možnost zkontroluje, pokud váš systém splňuje požadavky na spuštění nástroje.<br><br>Nástroj ukončíte stisknutím libovolné klávesy. | Byl zadán neplatný parametr. Jediné povolené parametry jsou /SystemCheck /PassKey a /Help.                                                                            |
 
 ## <a name="data-box-disk-split-copy-tool-errors"></a>Chyby nástroje rozdělení/kopírování Data Box Disku
 
 |Chybová zpráva / upozornění  |Doporučení |
 |---------|---------|
 |[Info] Načítání hesla nástroje BitLocker pro svazek: m <br>[Chyba] Došlo k výjimce při načítání klíče nástroj BitLocker pro svazek m:<br> Sekvence neobsahuje žádné prvky.|Tato chyba je vyvolána, pokud je cílový Data Box Disk offline. <br> Používejte nástroj `diskmgmt.msc` na disky, které jsou online.|
-|[Chyba] Došlo k výjimce: Operace WMI selhala:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=Formát poskytnutého hesla pro obnovení je neplatný. <br>Hesla pro obnovení nástroje BitLocker mají 48 číslic. <br>Zkontrolujte, jestli je heslo pro obnovení ve správném formátu, a pak to zkuste znovu.|Pomocí odemykacího nástroje Data Box Disku nejdřív disk odemkněte a pak zkuste příkaz znovu. Další informace najdete v článcích <li> [Odemknutí Data Box Disku pro klienty Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Odemknutí Data Box Disku pro klienty Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
-|[Chyba] Došlo k výjimce: Na cílové jednotce existuje soubor DriveManifest.xml. <br> To signalizuje, že cílový disk mohl být připraven s jiným souborem deníku. <br>Pokud chcete přidat další data na stejnou jednotku, použijte předchozí soubor deníku. Pokud chcete odstranit existující data a znovu použít cílovou jednotku pro novou úlohu importu, odstraňte soubor DriveManifest.xml na jednotce. Spusťte tento příkaz znovu s novým souborem deníku.| Tato chyba se zobrazí, když se pokusíte použít stejnou sadu jednotek pro více relací importu. <br> Používejte jednu sadu jednotek jenom pro jednu relaci rozdělení a kopírování.|
-|[Chyba] Došlo k výjimce: CopySessionId importdata-sept-test-1 odkazuje na předchozí relace kopírování a nejde znovu použít pro novou relaci kopírování.|Tato chyba se zobrazí, když se pokusíte použít pro novou úlohu stejný název jako měla předchozí úspěšně dokončená úloha.<br> Přiřaďte nové úloze jedinečný název.|
+|[Chyba] Došlo k výjimce: Operace WMI se nezdařilo:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=Formát poskytnutého hesla pro obnovení je neplatný. <br>Hesla pro obnovení nástroje BitLocker mají 48 číslic. <br>Zkontrolujte, jestli je heslo pro obnovení ve správném formátu, a pak to zkuste znovu.|Pomocí odemykacího nástroje Data Box Disku nejdřív disk odemkněte a pak zkuste příkaz znovu. Další informace najdete v článcích <li> [Odemknutí Data Box Disku pro klienty Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Odemknutí Data Box Disku pro klienty Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
+|[Chyba] Došlo k výjimce: DriveManifest.xml soubor existuje na cílové jednotce. <br> To signalizuje, že cílový disk mohl být připraven s jiným souborem deníku. <br>Pokud chcete přidat další data na stejnou jednotku, použijte předchozí soubor deníku. Pokud chcete odstranit existující data a znovu použít cílovou jednotku pro novou úlohu importu, odstraňte soubor DriveManifest.xml na jednotce. Spusťte tento příkaz znovu s novým souborem deníku.| Tato chyba se zobrazí, když se pokusíte použít stejnou sadu jednotek pro více relací importu. <br> Používejte jednu sadu jednotek jenom pro jednu relaci rozdělení a kopírování.|
+|[Chyba] Došlo k výjimce: Data importu CopySessionId – září test-1 odkazuje na předchozí relace kopírování a nesmí znovu použít pro novou relaci kopírování.|Tato chyba se zobrazí, když se pokusíte použít pro novou úlohu stejný název jako měla předchozí úspěšně dokončená úloha.<br> Přiřaďte nové úloze jedinečný název.|
 |[Info] Název cílového souboru nebo adresáře překračuje limit délky platný v systému souborů NTFS. |Tato zpráva je nahlášena, když byl cílový soubor přejmenován z důvodu příliš dlouhé cesty.<br> Toto chování můžete řídit úpravou možnosti disposition v souboru `config.json`.|
-|[Chyba] Došlo k výjimce: Chybná řídicí sekvence JSON. |Tato zpráva je nahlášena, když má soubor config.json neplatný formát. <br> Před uložením ověřte platnost souboru `config.json` pomocí nástroje [JSONlint](https://jsonlint.com/).|
+|[Chyba] Došlo k výjimce: Chybný JSON řídicí sekvence. |Tato zpráva je nahlášena, když má soubor config.json neplatný formát. <br> Před uložením ověřte platnost souboru `config.json` pomocí nástroje [JSONlint](https://jsonlint.com/).|
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si, jak [spravovat Data Box Disk pomocí webu Azure Portal](data-box-portal-ui-admin.md).

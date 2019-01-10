@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
-ms.translationtype: MT
+ms.openlocfilehash: 613423c02de7f1140674c28ee57bd471c3a52b96
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044769"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158240"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Aktivační událost a akce referenční typy pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -47,15 +47,15 @@ Aktivační události mají tyto prvky nejvyšší úrovně, i když některé j
 },
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*Název aktivační události*> | Řetězec | Název aktivační události | 
 | <*Typ aktivační události*> | Řetězec | Typ aktivační události, jako je například "Http" nebo "ApiConnection" | 
 | <*vstupy triggeru*> | JSON – objekt | Vstupy, které definují chování triggeru | 
-| <*Časová jednotka*> | Řetězec | Jednotka času, který popisuje, jak často se trigger spustí: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
-| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíce: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minuty: 1-72,000 minut </br>-Druhý: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
+| <*Časová jednotka*> | Řetězec | Jednotka času, který popisuje, jak často se trigger spustí: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
+| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
 |||| 
 
 *Volitelné*
@@ -127,16 +127,16 @@ Kontroluje, Tato aktivační událost nebo *hlasování* koncový bod pomocí [r
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | Řetězec | Název aktivační události | 
 | <*Název připojení*> | Řetězec | Název připojení spravovaného rozhraní API, která používá pracovní postup | 
-| <*Typ metody*> | Řetězec | Metoda HTTP pro komunikaci s rozhraním API pro spravované: "GET", "Vložit", "POST", "Opravy", "Odstranit" | 
+| <*Typ metody*> | Řetězec | Metoda HTTP pro komunikaci s spravované rozhraní API: "GET", "VLOŽIT", "POST", "OPRAVY", "ODSTRANIT" | 
 | <*operace rozhraní API*> | Řetězec | Operace rozhraní API pro volání | 
-| <*Časová jednotka*> | Řetězec | Jednotka času, který popisuje, jak často se trigger spustí: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
-| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíce: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minuty: 1-72,000 minut </br>-Druhý: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
+| <*Časová jednotka*> | Řetězec | Jednotka času, který popisuje, jak často se trigger spustí: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
+| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
 |||| 
 
 *Volitelné*
@@ -155,7 +155,7 @@ Kontroluje, Tato aktivační událost nebo *hlasování* koncový bod pomocí [r
  
 | Element | Typ | Popis |
 |---------|------|-------------| 
-| hlavičky | JSON – objekt | Hlavičky z odpovědi | 
+| Záhlaví | JSON – objekt | Hlavičky z odpovědi | 
 | hlavní část | JSON – objekt | Text z odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
@@ -221,7 +221,7 @@ Tato aktivační událost odešle žádost předplatné na koncový bod pomocí 
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -300,14 +300,14 @@ Tento trigger zkontroluje nebo dotazuje zadaný koncový bod na základě plánu
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*Typ metody*> | Řetězec | Metoda HTTP pro účely dotazování určeném koncovém bodě: "GET", "Vložit", "POST", "Opravy", "Odstranit" | 
+| <*Typ metody*> | Řetězec | Metoda HTTP pro účely dotazování zadaný koncový bod: "GET", "VLOŽIT", "POST", "OPRAVY", "ODSTRANIT" | 
 | <*Adresa URL koncového bodu*> | Řetězec | HTTP nebo HTTPS URL pro koncový bod dotazování <p>Maximální velikost řetězce: 2 KB | 
-| <*Časová jednotka*> | Řetězec | Jednotka času, který popisuje, jak často se trigger spustí: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
-| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíce: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minuty: 1-72,000 minut </br>-Druhý: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
+| <*Časová jednotka*> | Řetězec | Jednotka času, který popisuje, jak často se trigger spustí: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
+| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
 |||| 
 
 *Volitelné*
@@ -328,7 +328,7 @@ Tento trigger zkontroluje nebo dotazuje zadaný koncový bod na základě plánu
 
 | Element | Typ | Popis |
 |---------|------|-------------| 
-| hlavičky | JSON – objekt | Hlavičky z odpovědi | 
+| Záhlaví | JSON – objekt | Hlavičky z odpovědi | 
 | hlavní část | JSON – objekt | Text z odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
@@ -397,7 +397,7 @@ Aktivační události chování závisí na oddíly, které můžete použít ne
 
 Některé hodnoty, jako například <*typ metody*>, jsou k dispozici pro obě `"subscribe"` a `"unsubscribe"` objekty.
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -423,7 +423,7 @@ Některé hodnoty, jako například <*typ metody*>, jsou k dispozici pro obě `"
 
 | Element | Typ | Popis |
 |---------|------|-------------| 
-| hlavičky | JSON – objekt | Hlavičky z odpovědi | 
+| Záhlaví | JSON – objekt | Hlavičky z odpovědi | 
 | hlavní část | JSON – objekt | Text z odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
@@ -491,19 +491,19 @@ Tato aktivační událost spouští podle plánu zadané opakování na základ�
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*Časová jednotka*> | Řetězec | Jednotka času, který popisuje, jak často se trigger spustí: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
-| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíce: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minuty: 1-72,000 minut </br>-Druhý: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
+| <*Časová jednotka*> | Řetězec | Jednotka času, který popisuje, jak často se trigger spustí: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
+| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
 |||| 
 
 *Volitelné*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | Řetězec | Počáteční datum a čas v tomto formátu: <p>RRRR-MM-ddTHH při zadání časového pásma <p>-nebo- <p>RRRR-MM-: ssZ, pokud nechcete zadat časové pásmo <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00" a zadejte časové pásmo, jako je například "Standardního tichomořského času", nebo zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tato počáteční čas musí následovat [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Pokud nechcete zadat časové pásmo, je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). <p>U jednoduchých plánů, počáteční čas je první výskyt, zatímco u složitějších plánů aktivační událost neaktivuje všechny dříve než čas spuštění. Další informace o spuštění data a časy, naleznete v tématu [vytvořit a naplánovat pravidelné spouštění úloh](../connectors/connectors-native-recurrence.md). | 
+| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | Řetězec | Počáteční datum a čas v tomto formátu: <p>RRRR-MM-ddTHH při zadání časového pásma <p>-nebo- <p>RRRR-MM-: ssZ, pokud nechcete zadat časové pásmo <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00" a zadejte časové pásmo, jako je například "Standardního tichomořského času", nebo zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas musí následovat [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Pokud nechcete zadat časové pásmo, je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). <p>U jednoduchých plánů, počáteční čas je první výskyt, zatímco u složitějších plánů aktivační událost neaktivuje všechny dříve než čas spuštění. Další informace o spuštění data a časy, naleznete v tématu [vytvořit a naplánovat pravidelné spouštění úloh](../connectors/connectors-native-recurrence.md). | 
 | <*časové pásmo*> | Řetězec | Platí, pouze pokud zadáte čas spuštění protože nepřijme tento trigger [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Určete časové pásmo, které chcete použít. | 
 | <*jedna nebo více--. hodinu*> | Integer nebo celočíselné pole | Pokud zadáte "Day" nebo "Týden" pro `frequency`, můžete určit jeden nebo více celá čísla od 0 do 23, oddělených čárkami, jako hodin dne, kdy chcete spustit pracovní postup. <p>Například pokud zadáte "číslo 10", "12" a "14", získáte 10 AM, 12 hodin a 14: 00 jako značky hodinu. | 
 | <*jeden nebo více minutu – značky*> | Integer nebo celočíselné pole | Pokud zadáte "Day" nebo "Týden" pro `frequency`, můžete určit jeden nebo více celá čísla od 0 do 59, oddělených čárkami, jako minuty v hodině, kdy chcete spustit pracovní postup. <p>Například můžete zadat "30" jako značku minutu a použijeme předchozí příklad hodin dne, získáte 10:30:00, 12:30 odp. a 2:30 odp. | 
@@ -600,7 +600,7 @@ Chcete-li volat tuto aktivační událost, musíte použít `listCallbackUrl` ro
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -612,7 +612,7 @@ Chcete-li volat tuto aktivační událost, musíte použít `listCallbackUrl` ro
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*Typ metody*> | Řetězec | Metoda, která se příchozí požadavky musí používat volat aplikaci logiky: "GET", "Vložit", "POST", "Opravy", "Odstranit" |
+| <*Typ metody*> | Řetězec | Metoda příchozí požadavky musí používat volat aplikaci logiky: "GET", "VLOŽIT", "POST", "OPRAVY", "ODSTRANIT" |
 | <*relativní cesta pro – přijetí – parametr*> | Řetězec | Relativní cesta pro parametr, který může přijmout váš koncový bod adresy URL | 
 | <*požadované vlastnosti*> | Pole | Jednu nebo více vlastností, které vyžadují hodnoty | 
 | <*maximální počet spuštění*> | Integer | Ve výchozím instancí pracovních postupů logic app spustí ve stejnou dobu nebo paralelní až [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Chcete-li tento limit změnit tak, že nastavíte nový <*počet*> hodnota naleznete v tématu [souběžnosti aktivační události změnit](#change-trigger-concurrency). | 
@@ -773,7 +773,7 @@ Akce mají tyto základní prvky, i když některé jsou volitelné:
 },
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------|
@@ -886,7 +886,7 @@ Tato akce odešle požadavek HTTP [rozhraní API spravovaná Microsoftem](../con
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -966,12 +966,12 @@ Tato akce odešle žádost o předplatné prostřednictvím protokolu HTTP na ko
 
 Některé hodnoty, jako například <*typ metody*>, jsou k dispozici pro obě `"subscribe"` a `"unsubscribe"` objekty.
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*Název akce*> | Řetězec | Název akce zadaný konektorem | 
-| <*Typ metody*> | Řetězec | Metoda HTTP pro přihlášení k odběru nebo odpovězeno koncový bod: "GET", "Vložit", "POST", "Opravy" nebo "Odstranit" | 
+| <*Typ metody*> | Řetězec | Metoda HTTP, který se má použít pro přihlášení k odběru nebo odpovězeno koncový bod: "GET", "Vložit", "POST", "Opravy" nebo "Odstranit" | 
 | <*– přihlášení odběru – adresy URL rozhraní API*> | Řetězec | Identifikátor URI pro přihlášení k odběru do rozhraní API | 
 |||| 
 
@@ -1006,7 +1006,7 @@ Pak můžete výstup akce v dalších akcí.
 },
 ```
 
-*Vyžaduje* 
+*Požadováno* 
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -1067,7 +1067,7 @@ Tato akce vyžaduje dříve vytvořeného [funkce Azure Functions](../azure-func
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------|  
@@ -1138,7 +1138,7 @@ Tato akce odešle žádost na určeném koncovém bodě a zkontroluje odpověď 
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -1189,7 +1189,7 @@ Tato akce vytvoří řetězec ze všech položek v poli a tyto položky odděluj
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -1233,7 +1233,7 @@ Tato akce vytvoří uživatelsky přívětivé pole nebo *tokeny* z vlastností 
 },
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -1335,12 +1335,12 @@ Tato akce vytvoří pole z položek v jiném poli na základě zadaných podmín
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*Pole*> | Pole | Pole nebo výraz, který obsahuje zdrojové položky. Pokud chcete zadat výraz, použijte tento výraz s dvojitými uvozovkami. |
-| <*podmínka nebo filtru*> | Řetězec | Podmínkou použitou pro filtrování položek v zdrojové pole <p>**Poznámka:**: Pokud žádné hodnoty splňují zadanou podmínku a akce vytvoří prázdné pole. |
+| <*podmínka nebo filtru*> | Řetězec | Podmínkou použitou pro filtrování položek v zdrojové pole <p>**Poznámka:** Pokud žádné hodnoty splňují zadanou podmínku, tato akce vytvoří prázdné pole. |
 |||| 
 
 *Příklad*
@@ -1376,7 +1376,7 @@ Tato akce vytvoří datové části pro odpovědi na požadavek HTTP.
 },
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -1451,11 +1451,11 @@ Tato akce vytvoří pole objektů JSON pomocí transformace položky z jiného o
 },
 ```
 
-*Vyžaduje* 
+*Požadováno* 
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*Pole*> | Pole | Pole nebo výraz, který obsahuje zdrojové položky. Zajistěte, aby že použijte výraz v uvozovkách. <p>**Poznámka:**: Pokud zdrojové pole je prázdné, tato akce vytvoří prázdné pole. | 
+| <*Pole*> | Pole | Pole nebo výraz, který obsahuje zdrojové položky. Zajistěte, aby že použijte výraz v uvozovkách. <p>**Poznámka:** Pokud zdrojové pole je prázdné, tato akce vytvoří prázdné pole. | 
 | <*Název klíče*> | Řetězec | Název vlastnosti, které jsou přiřazené k výsledku z <*výraz*> <p>Přidat nové vlastnosti ve všech objektech v poli výstup, zadejte <*název klíče*> pro tuto vlastnost a <*výraz*> pro hodnotu vlastnosti. <p>Chcete-li odebrat vlastnost ze všech objektů v poli, vynechejte <*název klíče*> pro tuto vlastnost. | 
 | <*Výraz*> | Řetězec | Výraz, který transformuje položku v poli zdroje a přiřadí výsledek do <*název klíče*> | 
 |||| 
@@ -1549,12 +1549,12 @@ Tato akce vytvoří tabulku CSV nebo HTML z pole. Pro pole s objekty JSON tato a
 }
 ```
 
-*Vyžaduje* 
+*Požadováno* 
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | < sdíleného svazku clusteru *nebo* HTML >| Řetězec | Formát pro tabulku, kterou chcete vytvořit | 
-| <*Pole*> | Pole | Pole nebo výraz, který obsahuje zdrojové položky tabulky <p>**Poznámka:**: Pokud zdrojové pole je prázdné, tato akce vytvoří prázdná tabulka. | 
+| <*Pole*> | Pole | Pole nebo výraz, který obsahuje zdrojové položky tabulky <p>**Poznámka:** Pokud je zdroj pole prázdné, akce vytvoří prázdná tabulka. | 
 |||| 
 
 *Volitelné*
@@ -1662,11 +1662,11 @@ Tato akce zastaví spuštění pro instanci pracovního postupu aplikace logiky,
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*Stav*> | Řetězec | Stav má být vrácen pro spuštění: "Failed", "Zrušeno" nebo "ÚSPĚCH" |
+| <*status*> | Řetězec | Stav, který má být vrácen pro spuštění: "Se nezdařilo", "Zrušeno" nebo "Bylo dokončeno" |
 |||| 
 
 *Volitelné*
@@ -1732,12 +1732,12 @@ Tato akce pozastaví provádění pracovního postupu, nebo dokud zadanou dobu, 
 },
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*počet jednotek*> | Integer | Pro **zpoždění** akce, počet jednotek čekání | 
-| <*interval*> | Řetězec | Pro **zpoždění** akce, interval čekání: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
+| <*interval*> | Řetězec | Pro **zpoždění** akce, interval čekání: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
 | <*časové razítko*> | Řetězec | Pro **zpoždění až** akce, datum a čas pokračovat v provádění. Musíte použít tuto hodnotu [formát času UTC datum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). | 
 |||| 
 
@@ -1805,7 +1805,7 @@ Modul Logic Apps ověří přístup k aktivační události, kterou chcete volat
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -1882,7 +1882,7 @@ Tato akce opakování Iteruje přes pole a provede akce pro každou položku pol
 }
 ```
 
-*Vyžaduje* 
+*Požadováno* 
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
@@ -2045,7 +2045,7 @@ Tato akce logicky skupin akcí do *obory*, který získá svůj vlastní stav za
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------|  
@@ -2086,14 +2086,14 @@ Tuto akci, označované také jako *switch – příkaz*, slouží k uspořádá
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*výraz – objekt nebo token*> | Se liší | Výraz, objekt JSON nebo token k vyhodnocení | 
+| <*výraz – objekt nebo token*> | Různé | Výraz, objekt JSON nebo token k vyhodnocení | 
 | <*Název akce*> | Řetězec | Název akce ke spuštění pro odpovídající proces | 
 | <*definice akce*> | JSON – objekt | Definice pro akci spuštění pro odpovídající proces | 
-| <*odpovídající hodnota*> | Se liší | Hodnota určená k porovnání s vyhodnocený výsledek | 
+| <*odpovídající hodnota*> | Různé | Hodnota určená k porovnání s vyhodnocený výsledek | 
 |||| 
 
 *Volitelné*
@@ -2350,9 +2350,9 @@ Tady je příklad, který omezuje souběžných spuštění na 10 instancí:
 
 1. V pravém horním rohu aktivační události, klikněte na tlačítko se třemi tečkami (...) a klikněte na tlačítko **nastavení**.
 
-2. V části **řízení souběžnosti**, nastavte **přepsat výchozí** k **na**. 
+2. V části **řízení souběžnosti**, nastavte **Limit** k **na**. 
 
-3. Přetáhněte **stupeň paralelismu** posuvník na hodnotu, kterou chcete. 
+3. Přetáhněte **stupeň paralelismu** posuvník na hodnotu, kterou chcete. Chcete-li aplikace logiky se spouští sekvenčně, přetáhněte hodnota posuvníku, která má **1**.
 
 <a name="change-for-each-concurrency"></a>
 
@@ -2387,9 +2387,9 @@ Tady je příklad, který omezuje souběžných spuštění k iteracím v 10:
 
 1. V **pro každou** akce v pravém horním rohu klikněte na tlačítko se třemi tečkami (...) a klikněte na tlačítko **nastavení**.
 
-2. V části **řízení souběžnosti**, nastavte **přepsat výchozí** k **na**. 
+2. V části **řízení souběžnosti**, nastavte **řízení souběžnosti** k **na**. 
 
-3. Přetáhněte **stupeň paralelismu** posuvník na hodnotu, kterou chcete. 
+3. Přetáhněte **stupeň paralelismu** posuvník na hodnotu, kterou chcete. Chcete-li aplikace logiky se spouští sekvenčně, přetáhněte hodnota posuvníku, která má **1**.
 
 <a name="change-waiting-runs"></a>
 
@@ -2465,7 +2465,7 @@ Nastavte `operationOptions` vlastnost `SingleInstance`:
 
 1. V pravém horním rohu aktivační události, klikněte na tlačítko se třemi tečkami (...) a klikněte na tlačítko **nastavení**.
 
-2. V části **řízení souběžnosti**, nastavte **přepsat výchozí** k **na**. 
+2. V části **řízení souběžnosti**, nastavte **Limit** k **na**. 
 
 3. Přetáhněte **stupeň paralelismu** posuvník číslo `1`. 
 
@@ -2516,7 +2516,7 @@ Nastavte `operationOptions` vlastnost `Sequential`:
 
 1. V **pro každou** akce v pravém horním rohu klikněte na tlačítko se třemi tečkami (...) a klikněte na tlačítko **nastavení**.
 
-2. V části **řízení souběžnosti**, nastavte **přepsat výchozí** k **na**. 
+2. V části **řízení souběžnosti**, nastavte **řízení souběžnosti** k **na**. 
 
 3. Přetáhněte **stupeň paralelismu** posuvník číslo `1`. 
 

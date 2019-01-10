@@ -6,27 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 874142df31d96de36b2b5be81a863c2f31317c52
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229607"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158036"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
+# <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
 Řešení Microsoft Azure Data Box Disk umožňuje odesílat do Azure rychle, levně a bezpečně terabajty místních dat. Rychlejší bezpečný přenos dat je zajišťován pomocí 1 až 5 disků SSD (Solid-State Disk), které dostanete. Tyto 8TB šifrované disky jsou odeslány do vašeho datacentra prostřednictvím místní přepravní služby. 
 
 Tyto disky můžete pomocí služby Data Box na portálu Azure Portal rychle nakonfigurovat, připojit a odemknout. Data zkopírujete na disky a ty pošlete zpět do Azure. V datacentru Azure se vaše data automaticky nahrají z disků do cloudu pomocí rychlého nahrávacího propojení privátní sítě.
-
-
-> [!IMPORTANT]
-> - Data Box Disk je ve verzi Preview. Před nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze platformy Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - V této službě se musíte zaregistrovat. Pokud se chcete zaregistrovat, přejděte na [portál Preview](https://aka.ms/azuredataboxfromdiskdocs).
-> - Po dobu platnosti verze Preview je možné disky poslat zákazníkům služby Data Box Disk v USA a Evropské unii. Další informace najdete v části [Regionální dostupnost](#region-availability).
 
 ## <a name="use-cases"></a>Případy použití
 
@@ -95,7 +89,7 @@ Další informace najdete v článku, který se věnuje [zabezpečení a ochran�
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Po dobu platnosti verze Preview může služba Data Box Disk přenášet data do následujících oblastí Azure:
+Aktuálně disku Data Box můžou přenášet data do následující oblasti Azure:
 
 
 |Oblast Azure  |Oblast Azure  |
@@ -103,18 +97,18 @@ Po dobu platnosti verze Preview může služba Data Box Disk přenášet data do
 |Západní střed USA     |Kanada – střed       |        
 |Západní USA 2     |Kanada – východ         |     
 |Západní USA     | Západní Evropa        |      
-|Střed USA – jih   |Severní Evropa     |         
+|Středojižní USA   |Severní Evropa     |         
 |USA – střed     |Austrálie – východ|
-|Střed USA – sever  |Austrálie – jihovýchod   |
+|Středoseverní USA  |Austrálie – jihovýchod   |
 |USA – východ      |Austrálie – střed |
 |USA – východ 2     |Austrálie – střed 2|
 
 
 ## <a name="pricing"></a>Ceny
 
-Informace o cenách najdete na stránce s [cenami verze Preview](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+Informace o cenách najdete v části [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Projděte si [požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Disk](data-box-disk-limits.md).

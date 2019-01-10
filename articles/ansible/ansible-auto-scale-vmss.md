@@ -5,15 +5,15 @@ ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, škálování, automatické škálování, virtuálních počítačů, škálovací sadu virtuálních počítačů, vmss
 author: tomarchermsft
 manager: jeconnoc
-ms.author: yuwzho, kyliel
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.openlocfilehash: b573eecb2f5c67014901f0006cf1087a261cf9c4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7721dba37131616122f8a5a902e3c63de5c7157f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049941"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157050"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Automatické škálování virtuálního počítače škálovací sady v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat škálovací sadu virtuálních počítačů v Azure stejně jako jakékoli jiné prostředky Azure. 
@@ -29,7 +29,7 @@ Při vytváření škálovací sady definujete počet instancí virtuálních po
 > Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. 
 
 ## <a name="auto-scale-based-on-a-schedule"></a>Automatické škálování podle plánu   
-Pokud chcete povolit automatické škálování na škálovací sadě, je nejdříve potřeba definovat profil automatického škálování. Tento profil definuje výchozí, minimální a maximální kapacitu škálovací sady. Tato omezení umožňují řídit náklady tím, že nedochází k nepřetržitému vytváření instancí virtuálních počítačů, a vyvažují přijatelný výkon s minimálním počtem instancí, které zůstanou v události horizontálního snížení kapacity. 
+Pokud chcete povolit automatické škálování na škálovací sadě, je nejdříve potřeba definovat profil automatického škálování. Tento profil definuje výchozí, minimální a maximální kapacitu škálovací sady. Tato omezení umožňují řídit náklady tím, že vytvoříte ne průběžně instancí virtuálních počítačů a vyvážení přijatelný výkon s minimální počet instancí, které zůstávají v případě škálování na méně instancí. 
 
 Můžete škálovat v a škálování na více instancí ve Škálovací sady virtuálních počítačů podle opakovaného plánu nebo podle konkrétního data. Tato část představuje playbook Ansible vzorku, který vytvoří nastavení automatického škálování, které zvýší počet instancí virtuálních počítačů na tři ve vaší škálovací sady na 10:00 každé pondělí tichomořském časovém pásmu. 
 

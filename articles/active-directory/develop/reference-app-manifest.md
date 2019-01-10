@@ -17,12 +17,12 @@ ms.date: 12/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: a971806b453d34aa8459cb30090024bfca96d342
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d89a80ac6d6e81fd9cc68e1dc04d4461691994fd
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631180"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157968"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -47,12 +47,9 @@ Konfigurace manifestu aplikace:
 > [!NOTE]
 > Pokud nevidíte **příklad hodnotu** sloupec za **popis**, maximalizujte okno prohlížeče a přejděte/prstem, dokud se nezobrazí **příklad hodnotu** sloupec.
 
->[!div class="mx-tdBreakAll"]
->[!div class="mx-tdCol2BreakAll"]
-
 | Klíč  | Typ hodnoty | Popis  | Příklad hodnoty |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | S povolenou hodnotou Null Int32 | Určuje verzi token přijatý přístup pro aktuální prostředku rozhraní API. Možné hodnoty jsou 1, 2, hodnotu null. Výchozí hodnota je null, která bude zacházeno jako 2. | `2` |
+| `accessTokenAcceptedVersion` | S povolenou hodnotou Null Int32 | Určuje verzi tokenu přístupu očekává prostředkem. Tím se změní na verzi a formát token JWT vytváří nezávisle na koncový bod nebo klienta používá k žádostem o přístupový token.<br/><br/>Použitý koncový bod, verze 1.0 nebo 2.0, je vybrán klientem a ovlivní pouze verze id_tokens. Prostředky je potřeba explicitně konfigurovat `accesstokenAcceptedVersion` udávajících formát tokenu přístupu podporované.<br/><br/>Možné hodnoty pro `accesstokenAcceptedVersion` jsou 1, 2 nebo hodnotu null. Pokud je hodnota null, je výchozí hodnota 1, která odpovídá koncový bod verze 1.0. | `2` |
 | `allowPublicClient` | Boolean | Určuje typ použití náhradní lokality aplikace. Azure AD odvodí typ aplikace z replyUrlsWithType ve výchozím nastavení. Určitých scénářů, kde Azure AD nelze určit typ klientské aplikace (například [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) toku, kde se stane požadavku HTTP bez adresy URL přesměrování). V těchto případech se služby Azure AD interpretovat typ aplikace na základě hodnoty této vlastnosti. Pokud tato hodnota nastavena na hodnotu true, typ použití náhradní lokality aplikace je nastaven jako veřejné klienta, jako je nainstalované aplikace běžící na mobilních zařízeních. Výchozí hodnota je false, což znamená, že je typ použití náhradní lokality aplikace důvěrnému klientovi, například webové aplikace. | `false` |
 | `appId` | Identifikátor řetězce | Určuje jedinečný identifikátor pro aplikaci, kterou přiřadí k aplikaci Azure AD. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | Typ pole | Určuje kolekci rolí, které může aplikace deklarovat. Tyto role můžete přiřadit na uživatele, skupiny nebo instanční objekty. Další příklady a informace o najdete v tématu [přidání rolí aplikace ve vaší aplikaci a přijímat je v tokenu](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |

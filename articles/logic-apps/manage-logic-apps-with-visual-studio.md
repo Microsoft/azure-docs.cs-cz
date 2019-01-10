@@ -3,20 +3,20 @@ title: Správa aplikací logiky pomocí sady Visual Studio – Azure Logic Apps 
 description: Správa aplikací logiky a další prostředky Azure pomocí Průzkumníka cloudu Visual Studio
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d4de75238e48b8eb955095b5a3823f2fed799fae
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: dbb38336f0521f8f8e526ad3f5e13829075e7cca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445639"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158141"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky pomocí sady Visual Studio
 
@@ -62,10 +62,10 @@ V sadě Visual Studio můžete najít všechny aplikace logiky, které jsou při
 
 2. Závislosti na tom, jestli hledáte podle **skupiny prostředků** nebo **typy prostředků**, postupujte podle těchto kroků:
 
-   * **Skupiny prostředků**: v rámci vašeho předplatného Azure, Průzkumník cloudu se zobrazí všechny skupiny prostředků, které jsou spojeny s tímto předplatným. 
+   * **Skupiny prostředků**: V rámci vašeho předplatného Azure zobrazuje Průzkumník cloudu všechny skupiny prostředků, které jsou spojeny s tímto předplatným. 
    Rozbalte skupinu prostředků, která obsahuje vaši aplikaci logiky a pak vyberte svou aplikaci logiky.
 
-   * **Typy prostředků**: v rámci vašeho předplatného Azure, rozbalte **Logic Apps**. Po Průzkumník cloudu se zobrazí všechny nasazené logic apps, které jsou spojené s vaším předplatným, vyberte svou aplikaci logiky.
+   * **Typy prostředků**: V rámci vašeho předplatného Azure, rozbalte **Logic Apps**. Po Průzkumník cloudu se zobrazí všechny nasazené logic apps, které jsou spojené s vaším předplatným, vyberte svou aplikaci logiky.
 
 <a name="open-designer"></a>
 
@@ -171,7 +171,14 @@ Odstranění aplikace logiky na webu Azure Portal, v Průzkumníku cloudu otevř
 ![Odstranění aplikace logiky](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
 
 > [!NOTE]
-> Při odstranění aplikace logiky jsou vytvořena žádná nová spuštění. Zrušení všech probíhajících a čeká se na spuštění. Pokud máte tisíce spuštění, zrušení, může trvat spoustu času k dokončení. 
+> Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění. Všechna probíhající a čekající spuštění se zruší. Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu. 
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Při otevření projektu aplikace logiky v návrháři pro Logic Apps, nemusí mít možnost pro výběr vašeho předplatného Azure. Místo toho svou aplikaci logiky se otevře s předplatným Azure, který není ten, který chcete použít. K tomuto chování dochází po otevření souboru .json aplikace logiky, Visual Studio ukládá do mezipaměti první vybrané předplatné pro budoucí použití. Chcete-li tento problém vyřešit, zkuste použijte jeden z těchto kroků:
+
+* Přejmenujte soubor .json aplikace logiky. Mezipaměť předplatného závisí na názvu souboru. 
+* Chcete-li odebrat dříve vybraná předplatná pro *všechny* odstranění aplikace logiky ve vašem řešení *skryté* .vs složky v adresáři vašeho řešení. Toto umístění ukládá informace o vašem předplatném. 
 
 ## <a name="next-steps"></a>Další postup
 

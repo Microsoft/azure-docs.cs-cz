@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c6472b824eefdd1954f3645c69090d1fb5455de
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fb1ac992f174327d08a606549da7b2b094a7a88e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754454"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157985"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení s využitím Azure Machine Learning SDK
 
@@ -26,8 +26,7 @@ Kanály, které vytvoříte jsou viditelná pro členy vaší služby Azure Mach
 
 Kanály pomocí cílových výpočetních prostředí vzdálené pro výpočetní výkon a úložný pomocných a konečného data související s příslušný kanál. Kanály může číst a zapisovat data do a z podporované [služby Azure Storage](https://docs.microsoft.com/azure/storage/) umístění.
 
->[!Note]
->Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree).
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -101,35 +100,138 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-### <a name="set-up-compute"></a>Nastavte výpočetní prostředky
+## <a name="set-up-compute-target"></a>Nastavení cílové výpočetní prostředí
 
-V Azure Machine Learning termín *compute* (nebo *cílové výpočetní prostředí*) odkazuje na počítačích nebo clustery, které provádějí výpočetní kroky ve vašem kanálu machine learning. Můžete například vytvořit výpočetní Azure Machine Learning pro spouštění svých kroků.
+V Azure Machine Learning termín __compute__ (nebo __cílové výpočetní prostředí__) odkazuje na počítačích nebo clustery, které provádějí výpočetní kroky ve vašem kanálu machine learning.   Zobrazit [cílových výpočetních prostředí pro trénování modelu](how-to-set-up-training-targets.md) úplný seznam cílových výpočetních prostředí a jak vytvořit a připojit je k vašemu pracovnímu prostoru.  Proces pro vytvoření a připojení cílového výpočetního prostředí je stejný bez ohledu na to, jestli trénování modelu, nebo spuštěním kroku profilace. Po vytvoření a připojení vaší cílové výpočetní prostředí, použijte `ComputeTarget` objekt vaše [kanálu krok](#steps).
+
+Níže jsou uvedené příklady vytvoření a připojení cílových výpočetních prostředí pro:
+
+* Azure Machine Learning Compute
+* Azure Databricks 
+* Azure Data Lake Analytics
+
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
+
+Výpočetní Azure Machine Learning pro spouštění svých kroků můžete vytvořit.
+
+    ```python
+    compute_name = "aml-compute"
+     if compute_name in ws.compute_targets:
+        compute_target = ws.compute_targets[compute_name]
+        if compute_target and type(compute_target) is AmlCompute:
+            print('Found compute target: ' + compute_name)
+    else:
+        print('Creating a new compute target...')
+        provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                    min_nodes = 1, 
+                                                                    max_nodes = 4)
+         # create the compute target
+        compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+        
+        # Can poll for a minimum number of nodes and for a specific timeout. 
+        # If no min node count is provided it will use the scale settings for the cluster
+        compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+        
+         # For a more detailed view of current cluster status, use the 'status' property    
+        print(compute_target.status.serialize())
+    ```
+
+### <a id="databricks"></a>Azure Databricks
+
+Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Lze jej použít jako cílové výpočetní prostředí pomocí kanálu služby Azure Machine Learning.
+
+Vytvoření pracovního prostoru Azure Databricks před jeho použitím. Vytvoření těchto prostředků najdete v tématu [spuštění úlohy Spark job v Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) dokumentu.
+
+Pokud chcete připojit jako cílové výpočetní prostředí Azure Databricks, zadejte následující informace:
+
+* __Název compute Databricks__: Název, který chcete přiřadit tento výpočetní prostředek.
+* __Název pracovního prostoru Databricks__: Název pracovního prostoru Azure Databricks.
+* __Přístupový token Databricks__: Přístupový token pro ověření do Azure Databricks. K vygenerování přístupového tokenu, najdete v článku [ověřování](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
+
+Následující kód ukazuje, jak se připojit jako cílové výpočetní prostředí pomocí sady SDK Azure Machine Learning Azure Databricks:
 
 ```python
-compute_name = "aml-compute"
- if compute_name in ws.compute_targets:
-    compute_target = ws.compute_targets[compute_name]
-    if compute_target and type(compute_target) is AmlCompute:
-        print('Found compute target: ' + compute_name)
-else:
-    print('Creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
-                                                                min_nodes = 1, 
-                                                                max_nodes = 4)
-     # create the compute target
-    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+import os
+from azureml.core.compute import ComputeTarget, DatabricksCompute
+from azureml.exceptions import ComputeTargetException
+
+databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
+databricks_workspace_name = os.environ.get("AML_DATABRICKS_WORKSPACE", "<databricks_workspace_name>")
+databricks_resource_group = os.environ.get("AML_DATABRICKS_RESOURCE_GROUP", "<databricks_resource_group>")
+databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
+
+try:
+    databricks_compute = ComputeTarget(workspace=ws, name=databricks_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('databricks_compute_name {}'.format(databricks_compute_name))
+    print('databricks_workspace_name {}'.format(databricks_workspace_name))
+    print('databricks_access_token {}'.format(databricks_access_token))
+
+    # Create attach config
+    attach_config = DatabricksCompute.attach_configuration(resource_group = databricks_resource_group,
+                                                           workspace_name = databricks_workspace_name,
+                                                           access_token = databricks_access_token)
+    databricks_compute = ComputeTarget.attach(
+             ws,
+             databricks_compute_name,
+             attach_config
+         )
     
-    # Can poll for a minimum number of nodes and for a specific timeout. 
-    # If no min node count is provided it will use the scale settings for the cluster
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    databricks_compute.wait_for_completion(True)
+```
+### <a id="adla"></a>Azure Data Lake Analytics
+
+Azure Data Lake Analytics je platforma analýzy velkých objemů dat v cloudu Azure. Lze jej použít jako cílové výpočetní prostředí pomocí kanálu služby Azure Machine Learning.
+
+Vytvoření účtu Azure Data Lake Analytics před jeho použitím. Chcete-li vytvořit tento prostředek, najdete v článku [Začínáme s Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) dokumentu.
+
+Připojit Data Lake Analytics jako cílové výpočetní prostředí, musíte používat sadu SDK Azure Machine Learning a zadejte následující informace:
+
+* __Název COMPUTE__: Název, který chcete přiřadit tento výpočetní prostředek.
+* __Skupina prostředků__: Skupina prostředků obsahující účet Data Lake Analytics.
+* __Název účtu__: Název účtu Data Lake Analytics.
+
+Následující kód ukazuje, jak se připojit Data Lake Analytics jako cílové výpočetní prostředí:
+
+```python
+import os
+from azureml.core.compute import ComputeTarget, AdlaCompute
+from azureml.exceptions import ComputeTargetException
+
+
+adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
+adla_resource_group = os.environ.get("AML_ADLA_RESOURCE_GROUP", "<adla_resource_group>")
+adla_account_name = os.environ.get("AML_ADLA_ACCOUNT_NAME", "<adla_account_name>")
+
+try:
+    adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('adla_compute_name {}'.format(adla_compute_name))
+    print('adla_resource_id {}'.format(adla_resource_group))
+    print('adla_account_name {}'.format(adla_account_name))
+    # create attach config
+    attach_config = AdlaCompute.attach_configuration(resource_group = adla_resource_group,
+                                                     account_name = adla_account_name)
+    # Attach ADLA
+    adla_compute = ComputeTarget.attach(
+             ws,
+             adla_compute_name,
+             attach_config
+         )
     
-     # For a more detailed view of current cluster status, use the 'status' property    
-    print(compute_target.status.serialize())
+    adla_compute.wait_for_completion(True)
 ```
 
-## <a name="construct-your-pipeline-steps"></a>Vytvoření postupu kanálu k
+> [!TIP]
+> Azure Machine Learning kanály funguje jenom s daty uloženými v úložišti dat výchozího účtu Data Lake Analytics. Pokud data, je potřeba pracovat s je v jiné než výchozí úložiště, můžete použít [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) ke kopírování dat před školení.
 
-Nyní jste připraveni definovat kroku profilace. Nejsou k dispozici prostřednictvím sady SDK Azure Machine Learning mnoho předdefinovaných kroků. Je nejzákladnější z těchto kroků `PythonScriptStep`, která spouští skript Pythonu v cílové výpočetní prostředí zadané.
+## <a id="steps"></a>Vytvoření postupu kanálu k
+
+Po vytvoření a připojení k vašemu pracovnímu prostoru cílového výpočetního prostředí, budete chtít definovat kroku profilace. Nejsou k dispozici prostřednictvím sady SDK Azure Machine Learning mnoho předdefinovaných kroků. Je nejzákladnější z těchto kroků [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), která spouští skript Pythonu v cílové výpočetní prostředí zadané.
 
 ```python
 trainStep = PythonScriptStep(
@@ -155,13 +257,36 @@ compareModels = [trainStep, extractStep, compareStep]
 pipeline1 = Pipeline(workspace=ws, steps=[compareModels])
 ```
 
+Následující příklad používá cílového výpočetního prostředí Azure Databricks vytvořili dříve: 
+
+```python
+dbStep = DatabricksStep(
+    name="databricksmodule",
+    inputs=[step_1_input],
+    outputs=[step_1_output],
+    num_workers=1,
+    notebook_path=notebook_path,
+    notebook_params={'myparam': 'testparam'},
+    run_name='demo run name',
+    databricks_compute=databricks_compute,
+    allow_reuse=False
+)
+# List of steps to run
+steps = [dbStep]
+
+# Build the pipeline
+pipeline1 = Pipeline(workspace=ws, steps=steps)
+```
+
 ## <a name="submit-the-pipeline"></a>Odeslat kanálu
 
 Při odesílání kanál služby Azure Machine Learning kontroluje závislosti pro každý krok a odešle snímek zdrojový adresář, který jste zadali. Pokud není zadán žádný zdrojový adresář, se nahraje aktuální místní adresář.
 
+
 ```python
 # Submit the pipeline to be run
 pipeline_run1 = Experiment(ws, 'Compare_Models_Exp').submit(pipeline1)
+pipeline_run.wait_for_completion()
 ```
 
 Při prvním spuštění kanálu, Azure Machine Learning:

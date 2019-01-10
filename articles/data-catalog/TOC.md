@@ -28,6 +28,7 @@
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=data-catalog)
 ## [REST](/rest/api/datacatalog/)
+## [Šablona Resource Manageru](/azure/templates/microsoft.datacatalog/catalogs)
 ## [Reference k syntaxi služby Search](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Koncepce pro vývojáře](data-catalog-developer-concepts.md)
 

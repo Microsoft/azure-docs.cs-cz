@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Získání alternativních překladů, Python – Translator Text API'
+title: 'Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pro zadaný text vyhledat alternativní překlady a příklady použití pomocí Pythonu a rozhraní REST API služby Translator Text.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: ab8a6d5b6d4bb52863e77b844a4008bb80d840be
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 52820a9162a20b680b85d07f8c49ac5305d4979a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993922"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158003"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>Rychlý start: Získání alternativních překladů pomocí služby Translator Text API a Pythonu
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Pythonu
 
 V tomto rychlém startu se dozvíte, jak pro zadaný text vyhledat alternativní překlady a příklady použití pomocí Pythonu a rozhraní REST API služby Translator Text.
 
@@ -69,7 +69,7 @@ V současné době je pro službu Translator Text dostupný jeden koncový bod, 
 `params` slouží k nastavení jazyků zdroje a výstupu. V této ukázce používáme angličtinu a španělštinu: `en` a `es`.
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Slovníkové vyhledávání](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Vyhledávání slovníku](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

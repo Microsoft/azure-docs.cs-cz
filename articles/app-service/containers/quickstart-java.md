@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 0c72318f6c80563d138d9c885ea5984a22c5c7fa
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fe134591a979569048072877632260ea9728b4fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653896"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159753"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření aplikace v Javě ve službě App Service v Linuxu
 
@@ -108,7 +108,7 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili Maven k vytvoření aplikace v Javě, nakonfigurována [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), pak nasadili webovou aplikaci Java archivu zabalené do služby App Service v Linuxu. Odkazovat na následující kurzy a články s návody pro další informace o hostování aplikací v Javě ve službě App v Linuxu.
+V tomto rychlém startu jste použili Maven k vytvoření aplikace v Javě, nakonfigurována [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), pak nasadili webovou aplikaci Java archivu zabalené do služby App Service v Linuxu. Odkazovat na následující kurzy a články s návody pro další informace o hostování aplikací v Javě ve službě App Service v Linuxu.
 
 - [Kurz: Nasazení aplikace v Javě podnikové aplikace s PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 - [Konfigurace zdroje dat Tomcat](app-service-linux-java.md#connecting-to-data-sources)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 478b1352d0bf2eec9af62e519b50e61dea6cc8fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584872"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158427"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady API managementu
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -449,7 +449,7 @@ status code and media type. If no example or schema found, the content is empty.
 > [!NOTE]
 >  Když pouze `interval` není zadána, **oprava** interval opakování probíhají.
 > Když pouze `interval` a `delta` jsou určené, **lineární** interval opakování algoritmus se používá, kde se počítá čekat mezi opakovanými pokusy podle následující vzorec – `interval + (count - 1)*delta`.
-> Když `interval`, `max-interval` a `delta` nejsou zadány, **exponenciální** interval opakování algoritmus použije, pokud doba čekání mezi opakované pokusy řešení roste exponenciálně každým z hodnoty `interval` do Hodnota `max-interval` podle následujících forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
+> Když `interval`, `max-interval` a `delta` nejsou zadány, **exponenciální** interval opakování algoritmus použije, pokud doba čekání mezi opakované pokusy řešení roste exponenciálně každým z hodnoty `interval` do Hodnota `max-interval` podle následující vzorec – `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
 
 ### <a name="usage"></a>Využití
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Všimněte si, že podřízená omezení použití zásad zdědí tyto zásady.
@@ -649,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Atribut|Popis|Požaduje se|Výchozí|
 |---------------|-----------------|--------------|-------------|
 |režim = "řetězec"|Určuje, zda se jedná novou žádost o nebo kopii aktuálního požadavku. V odchozí režim režim = kopírování neinicializuje datovou část požadavku.|Ne|Nová|
-|Název proměnné odpovědi = "řetězec"|Název kontextové proměnné, která bude dostávat objektu odpovědi. Pokud proměnná neexistuje, vytvoří se po úspěšném spuštění zásad a budou přístupné prostřednictvím [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) kolekce.|Ano|neuvedeno|
+|Název proměnné odpovědi = "řetězec"|Název kontextové proměnné, která bude dostávat objektu odpovědi. Pokud proměnná neexistuje, vytvoří se po úspěšném spuštění zásad a budou přístupné přes [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) kolekce.|Ano|neuvedeno|
 |časový limit = "celočíselné"|Interval časového limitu v sekundách, než volání adresy URL se nezdaří.|Ne|60|
 |Ignorovat chybu|Pokud true a výsledky požadavku k chybě:<br /><br /> – Pokud je název proměnné odpovědi byla zadána, bude obsahovat hodnotu null.<br />– Pokud nebyl zadán název proměnné odpovědi, kontext. Požadavek se nebude aktualizovat.|Ne|false (nepravda)|
 |jméno|Určuje název hlavičky, která se má nastavit.|Ano|neuvedeno|
@@ -959,7 +959,7 @@ Všimněte si použití [vlastnosti](api-management-howto-properties.md) jako ho
 
 |Atribut|Popis|Požaduje se|Výchozí|
 |---------------|-----------------|--------------|-------------|
-|pro|Určuje, zda `wait` zásady vyčká pro všechny zásady bezprostřední podřízený jako dokončené nebo jen jeden. Povolené hodnoty jsou:<br /><br /> -   `all` -čekat na dokončení všech zásad bezprostřední podřízený<br />-žádné – počkejte jakékoli bezprostřední podřízený zásadu pro dokončení. Po dokončení první zásady bezprostřední podřízený `wait` dokončení zásad a provádění dalších zásad bezprostřední podřízený se ukončí.|Ne|all|
+|for|Určuje, zda `wait` zásady vyčká pro všechny zásady bezprostřední podřízený jako dokončené nebo jen jeden. Povolené hodnoty jsou:<br /><br /> -   `all` -čekat na dokončení všech zásad bezprostřední podřízený<br />-žádné – počkejte jakékoli bezprostřední podřízený zásadu pro dokončení. Po dokončení první zásady bezprostřední podřízený `wait` dokončení zásad a provádění dalších zásad bezprostřední podřízený se ukončí.|Ne|all|
 
 ### <a name="usage"></a>Využití
 

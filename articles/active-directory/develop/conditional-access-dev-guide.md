@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 9f0a4369d794eda047185844d5fafa49bc8a2e0d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24644faab85305f18fe4b657d3e982a306a41c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337916"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157067"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Informace pro vývojáře pro podmíněný přístup Azure Active Directory
 
@@ -92,7 +92,7 @@ Následující části popisují běžných scénářů, které jsou složitěj�
 
 ## <a name="scenario-app-accessing-microsoft-graph"></a>Scénář: Aplikace přístup k Microsoft Graphu
 
-V tomto scénáři dozvíte, jak webová aplikace žádá o přístup k Microsoft Graphu. Zásady podmíněného přístupu v tomto případě může přiřadit ke službě SharePoint, Exchange nebo některé jiné službě, která je přístupná jako úlohy prostřednictvím Microsoft Graphu. V tomto příkladu předpokládejme, že je zásady podmíněného přístupu na Sharepoint Online.
+V tomto scénáři dozvíte, jak webová aplikace žádá o přístup k Microsoft Graphu. Zásady podmíněného přístupu v tomto případě může přiřadit ke službě SharePoint, Exchange nebo některé jiné službě, která je přístupná jako úlohy prostřednictvím Microsoft Graphu. V tomto příkladu předpokládejme, že je zásady podmíněného přístupu na SharePoint Online.
 
 ![Aplikace přístup k Microsoft Graphu vývojový diagram](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
 

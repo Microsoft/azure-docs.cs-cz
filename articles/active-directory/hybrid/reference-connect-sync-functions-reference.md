@@ -1,5 +1,5 @@
 ---
-title: 'Synchronizace Azure AD Connect: Reference k funkcím | Dokumentace Microsoftu'
+title: 'Synchronizace Azure AD Connect: Funkce Reference | Dokumentace Microsoftu'
 description: Odkaz na výrazů deklarativního zřizování ve službě Azure AD Connect sync.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425689"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157475"
 ---
-# <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizace Azure AD Connect: Functions – Reference
+# <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizace Azure AD Connect: Reference k funkcím
 Ve službě Azure AD Connect funkce se používají k práci s hodnotu atributu během synchronizace.  
 Syntaxe funkce je vyjádřena pomocí následujícího formátu:  
 `<output type> FunctionName(<input type> <position name>, ..)`
@@ -146,7 +146,7 @@ CDate – funkce vrací hodnotu DateTime UTC z řetězce. Datum a čas se nejedn
 **Syntaxe:**  
 `dt CDate(str value)`
 
-* Hodnota: Řetězec s datum, čas a volitelně časové pásmo
+* Hodnota: Řetězec datum, čas a volitelně časové pásmo
 
 **Poznámky:**  
 Vrácený řetězec je vždy ve standardu UTC.
@@ -166,7 +166,7 @@ Vrátí hodnoty Oid pro všechny kritické rozšíření objekt certifikátu.
 
 **Syntaxe:**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certformat"></a>CertFormat
@@ -175,7 +175,7 @@ Vrátí název formátu tento certifikát x.509 v3.
 
 **Syntaxe:**  
 `str CertFormat(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certfriendlyname"></a>CertFriendlyName
@@ -184,7 +184,7 @@ Vrátí související alias pro certifikát.
 
 **Syntaxe:**  
 `str CertFriendlyName(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certhashstring"></a>CertHashString
@@ -193,7 +193,7 @@ Vrátí hodnotu hash SHA1 pro certifikát x.509 v3 jako šestnáctkový řetěze
 
 **Syntaxe:**  
 `str CertHashString(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certissuer"></a>CertIssuer
@@ -202,7 +202,7 @@ Vrátí název certifikační autority, která vydala certifikát x.509 v3.
 
 **Syntaxe:**  
 `str CertIssuer(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certissuerdn"></a>CertIssuerDN
@@ -211,7 +211,7 @@ Vrátí rozlišující název vystavitele certifikátu.
 
 **Syntaxe:**  
 `str CertIssuerDN(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certissueroid"></a>CertIssuerOid
@@ -220,7 +220,7 @@ Vrátí identifikátor Oid vystavitele certifikátu.
 
 **Syntaxe:**  
 `str CertIssuerOid(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
@@ -229,7 +229,7 @@ Vrátí informace o algoritmus klíče pro tento certifikát x.509 v3 jako řet�
 
 **Syntaxe:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
@@ -238,7 +238,7 @@ Vrátí parametry algoritmus klíče pro certifikát x.509 v3 jako šestnáctkov
 
 **Syntaxe:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certnameinfo"></a>CertNameInfo
@@ -247,7 +247,7 @@ Vrátí předmět a vystavitele názvy z certifikátu.
 
 **Syntaxe:**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 *   X509NameType: X509NameType hodnoty pro předmět.
 *   includesIssuerName: true, pokud chcete zahrnout název vystavitele; v opačném případě hodnota false.
 
@@ -258,7 +258,7 @@ Vrátí datum v místní čase, po kterém certifikát již není platný.
 
 **Syntaxe:**  
 `dt CertNotAfter(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certnotbefore"></a>CertNotBefore
@@ -267,7 +267,7 @@ Vrátí datum v místní čase, kdy certifikát vstupuje v platnost.
 
 **Syntaxe:**  
 `dt CertNotBefore(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
@@ -276,7 +276,7 @@ Vrátí identifikátor veřejné klíče pro certifikát x.509 v3.
 
 **Syntaxe:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
@@ -285,7 +285,7 @@ Vrátí identifikátor Oid parametrů veřejného klíče pro certifikát x.509 
 
 **Syntaxe:**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certserialnumber"></a>CertSerialNumber
@@ -294,7 +294,7 @@ Vrátí sériové číslo certifikátu x.509 v3.
 
 **Syntaxe:**  
 `str CertSerialNumber(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
@@ -303,7 +303,7 @@ Vrátí identifikátor Oid algoritmus použitý k vytvoření podpisu certifiká
 
 **Syntaxe:**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certsubject"></a>CertSubject
@@ -312,7 +312,7 @@ Získá název subjektu rozlišující z certifikátu.
 
 **Syntaxe:**  
 `str CertSubject(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
@@ -321,7 +321,7 @@ Vrátí název subjektu rozlišující z certifikátu.
 
 **Syntaxe:**  
 `str CertSubjectNameDN(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
@@ -330,7 +330,7 @@ Vrátí identifikátor názvu subjektu z certifikátu.
 
 **Syntaxe:**  
 `str CertSubjectNameOid(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certthumbprint"></a>certThumbprint
@@ -339,7 +339,7 @@ Vrátí kryptografický otisk certifikátu.
 
 **Syntaxe:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="certversion"></a>CertVersion
@@ -348,7 +348,7 @@ Vrátí verzi formátu X.509 certifikátu.
 
 **Syntaxe:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 
 - - -
 ### <a name="cguid"></a>CGuid
@@ -393,7 +393,7 @@ ConvertFromBase64 funkce převede hodnotu zadaného kódovanou jako base64 regul
 `str ConvertFromBase64(str source)` -předpokládá Unicode pro kódování  
 `str ConvertFromBase64(str source, enum Encoding)`
 
-* Zdroj: řetězec s kódováním Base64  
+* Zdroj: Řetězec kódovaný ve formátu Base64  
 * Kódování: Unicode, ASCII, UTF-8
 
 **Příklad**  
@@ -410,7 +410,7 @@ ConvertFromUTF8Hex funkce převede zadanou hodnotu kódovaný Hex UTF8 na řetě
 **Syntaxe:**  
 `str ConvertFromUTF8Hex(str source)`
 
-* Zdroj: kódovaný stingu 2 byte UTF8
+* Zdroj: Kódovaný stingu 2 byte UTF8
 
 **Poznámky:**  
 Rozdíl mezi této funkce a ConvertFromBase64([],UTF8), výsledkem je popisný pro atribut rozlišující název.  
@@ -485,7 +485,7 @@ CStr – funkce převede na datový typ string.
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
-* hodnota: může být číselnou hodnotu, atribut odkaz nebo datový typ Boolean.
+* Hodnota: Může být číselnou hodnotu, atribut odkaz nebo datový typ Boolean.
 
 **Příklad:**  
 `CStr([dn])`  
@@ -499,7 +499,7 @@ Vrátí hodnotu data obsahující datum, do které byl přidán zadaný časový
 **Syntaxe:**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* interval: řetězcový výraz, který je interval času, které chcete přidat. Řetězec musí obsahovat jednu z následujících hodnot:
+* interval: Řetězcový výraz představující dobu, kterou chcete přidat. Řetězec musí obsahovat jednu z následujících hodnot:
   * RRRR rok
   * q čtvrtletí
   * m měsíc
@@ -510,8 +510,8 @@ Vrátí hodnotu data obsahující datum, do které byl přidán zadaný časový
   * h hodinu
   * n minutách
   * s druhou
-* hodnoty: počet jednotek, které chcete přidat. Může být (Chcete-li získat data v budoucnosti) kladná nebo záporná (Chcete-li získat data v minulosti).
-* datum: data a času představující datum, do kterého se přidá interval.
+* Hodnota: Počet jednotek, které chcete přidat. Může být (Chcete-li získat data v budoucnosti) kladná nebo záporná (Chcete-li získat data v minulosti).
+* datum: Data a času představující datum, do kterého se přidá interval.
 
 **Příklad:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
@@ -600,7 +600,7 @@ Funkce FormatDateTime slouží k formátování datum a čas na řetězec pomoc�
 * formát: řetězec představující převést na formát.
 
 **Poznámky:**  
-Možné hodnoty pro formát najdete tady: [formátu data a času definované uživatelem (formát funkce)](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+Možné hodnoty pro formát najdete tady: [Vlastní datum a čas pro formátování funkce formátů](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Příklad:**  
 
@@ -714,7 +714,7 @@ Vrátí true, pokud lze serializovat nezpracovaných dat do objektů .NET X509Ce
 
 **Syntaxe:**  
 `bool CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
+*   certificateRawData: Bajtové pole reprezentace certifikátu X.509. Bajtové pole může být kódovaný binární soubor (DER) nebo data s kódováním Base64 X.509.
 - - -
 ### <a name="isempty"></a>IsEmpty
 **Popis:**  
@@ -852,8 +852,8 @@ Funkce připojení k více Vážíme si toho řetězec a vrátí řetězec s jed
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* Atribut: více Vážíme si toho atribut obsahující řetězce, který se má spojit.
-* oddělovač: libovolný řetězec použitý k oddělení podřetězců ve vráceném řetězci. Pokud tento parametr vynechán, znak mezery ("") se používá. Oddělovač je řetězec nulové délky ("") nebo nic, všechny položky v seznamu jsou spojeny s žádné oddělovače.
+* Atribut: Více Vážíme si toho atribut obsahující řetězce, který se má spojit.
+* oddělovač: Libovolný řetězec použitý k oddělení podřetězců ve vráceném řetězci. Pokud tento parametr vynechán, znak mezery ("") se používá. Oddělovač je řetězec nulové délky ("") nebo nic, všechny položky v seznamu jsou spojeny s žádné oddělovače.
 
 **Poznámky**  
 Mezi funkce připojení a rozdělení je rovnocenné. Funkce spojení přijímá pole řetězců a připojí je k vrácení jednoho řetězce, pomocí řetězec oddělovače. Funkce rozdělení řetězce a odděluje na oddělovač, jak vrátit pole řetězců. Klíčovým rozdílem je však, že připojení lze zřetězit řetězce s libovolný řetězec oddělovače, rozdělení můžete oddělit pouze řetězce pomocí jednoho znaku oddělovače.
@@ -982,13 +982,13 @@ PadLeft funkce vlevo-dotyková zařízení a řetězce na určenou délku pomoc�
 `str PadLeft(str string, num length, str padCharacter)`
 
 * řetězec: řetězec pro vyplnění.
-* Délka: celé číslo představující požadovanou délku řetězce.
-* padCharacter: řetězec sestávající z jednoho znaku pro použití jako znak panel
+* Délka: Celé číslo představující požadovanou délku řetězce.
+* padCharacter: Řetězec sestávající z jednoho znaku pro použití jako znak panel
 
 **Poznámky:**
 
 * Pokud délka řetězce je menší než délka, pak padCharacter opakovaně připojí do začátku (vlevo) řetězce dokud má délku rovna délce.
-* PadCharacter může být znak mezery, ale nemůže být hodnota null.
+* padCharacter může být znak mezery, ale nemůže být hodnota null.
 * Pokud délka řetězce je roven nebo větší než délka, řetězec je vrácen beze změny.
 * Pokud řetězec má délku větší než nebo rovna délce, vrátí se stejný řetězec jako řetězec.
 * Pokud délka řetězce je menší než délka, je vrácena nový řetězec má požadovanou délku obsahující řetězce, aby bylo vytvořeno padCharacter.
@@ -1007,8 +1007,8 @@ PadRight – funkce vpravo-dotyková zařízení a řetězce na určenou délku 
 `str PadRight(str string, num length, str padCharacter)`
 
 * řetězec: řetězec pro vyplnění.
-* Délka: celé číslo představující požadovanou délku řetězce.
-* padCharacter: řetězec sestávající z jednoho znaku pro použití jako znak panel
+* Délka: Celé číslo představující požadovanou délku řetězce.
+* padCharacter: Řetězec sestávající z jednoho znaku pro použití jako znak panel
 
 **Poznámky:**
 
@@ -1077,7 +1077,7 @@ Funkce Replace nahradí všechny výskyty řetězce do jiného řetězce.
 **Syntaxe:**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* řetězec: řetězec pro nahrazení hodnot v.
+* Řetězec: Řetězec k nahrazení hodnoty.
 * OldValue: Řetězec, který chcete vyhledat a nahradit.
 * NewValue: Řetězec, který má nahradit.
 
@@ -1100,7 +1100,7 @@ Funkce ReplaceChars nahradí všechny výskyty znaků v řetězci ReplacePattern
 **Syntaxe:**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* řetězec: řetězec pro nahrazení znaků.
+* Řetězec: Řetězec pro nahrazení znaků.
 * ReplacePattern: řetězec obsahující slovníku pomocí znaků pro nahrazení.
 
 Formát je {zdroj1}: {target1}, {zdroj2}: {target2}, {zdrojN}, {targetN} kde zdroj je znak, který má vyhledat a cílit na řetězec, který má nahradit.
@@ -1172,7 +1172,7 @@ Proces všechny hodnoty ve více Vážíme si toho atribut (nebo výstupní výr
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
-* Položka: reprezentuje element v vícehodnotového atributu
+* Položka: Reprezentuje element v vícehodnotového atributu
 * Atribut: vícehodnotového atributu
 * výraz: výraz, který vrací kolekci hodnot
 * Podmínka: všechny funkce, která dokáže zpracovávat položky v atributu
@@ -1222,8 +1222,8 @@ Přepínač funkce se používá k vrácení jednu hodnotu podle vyhodnocených 
 **Syntaxe:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* výraz: výraz typu Variant, kterou chcete vyhodnotit.
-* hodnota: hodnota, která má být vrácena, pokud odpovídající výraz hodnotu True.
+* výraz: Varianty výraz, který chcete vyhodnotit.
+* Hodnota: Hodnota má být vrácena, pokud je odpovídající výraz hodnotu True.
 
 **Poznámky:**  
 Seznam argumentů funkce přepínače se skládá z dvojice výrazů a hodnoty. Výrazy jsou vyhodnocovány zleva doprava a vrátí se hodnota přidružená k první výraz k vyhodnocení na hodnotu True. Pokud součásti nejsou správně spárované, dojde k chybě za běhu.
@@ -1279,7 +1279,7 @@ Vrátí část hodnoty z více Vážíme si toho atribut (nebo výstup výrazu) 
 **Syntaxe:**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
-* Položka: reprezentuje element v vícehodnotového atributu
+* Položka: Reprezentuje element v vícehodnotového atributu
 * Atribut: vícehodnotového atributu
 * Podmínka: libovolný výraz, který lze vyhodnotit na hodnotu true nebo false
 * výraz: výraz, který vrací kolekci hodnot
@@ -1295,9 +1295,9 @@ Funkce s poskytuje způsob, jak zjednodušit složitý výraz pomocí proměnné
 
 **Syntaxe:**
 `With(var variable, exp subExpression, exp complexExpression)`  
-* Proměnná: představuje dílčí výraz.
+* Proměnná: Představuje dílčí výraz.
 * dílčí výraz: dílčí výraz reprezentována proměnné.
-* complexExpression: složitý výraz.
+* complexExpression: Složitý výraz.
 
 **Příklad:**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
@@ -1335,5 +1335,5 @@ Vrátí "má"
 
 ## <a name="additional-resources"></a>Další prostředky
 * [Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Azure AD Connect Sync: Možnosti přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace služby Azure AD Connect: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

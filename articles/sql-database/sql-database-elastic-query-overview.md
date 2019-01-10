@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 139bf169a00f1c529e95499124358c447d0de8c5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a1ad976be258c418c115d0dbd79d4d6700a15b31
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044667"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158410"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled služby Azure SQL Database elastic query (preview)
 
@@ -146,7 +146,7 @@ Elastický dotaz je zahrnuté do ceny za databází Azure SQL Database. Všimně
 
 ## <a name="feedback"></a>Váš názor
 
-Váš názor na vaše zkušenosti s elastickými dotazy s námi níže, na fórech MSDN nebo na Stackoverflow. Nás zajímají všechny druhy zpětnou vazbu týkající se služby (vad, hrubé okraje, funkce).
+Sdílení zpětné vazby na vaše zkušenosti s elastickými dotazy s námi níže, na fórech MSDN nebo na webu Stack Overflow. Nás zajímají všechny druhy zpětnou vazbu týkající se služby (vad, hrubé okraje, funkce).
 
 ## <a name="next-steps"></a>Další postup
 

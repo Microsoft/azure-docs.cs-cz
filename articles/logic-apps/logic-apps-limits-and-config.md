@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c7eaecf74f56035c39267407e6a965c57897b1ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e5c5d1a3e0316c96a6df7e01e6d6796d6a72506a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015436"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159022"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -85,10 +85,10 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Souběžnosti triggeru | 50 | Výchozí limit je 20. Tato omezení popisuje maximální počet instancí aplikace logiky, spuštěné ve stejnou dobu nebo paralelně. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [souběžnosti aktivační události změnit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [aktivovat instance postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
-| Maximální čekací spuštění | 100 | Výchozí limit je 10. Tato omezení popisuje maximální počet instancí aplikace logiky, které mohou čekat na spustit, když vaše aplikace logiky je již spuštěn maximální počet souběžných instancí. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 0 a 100 (včetně), [omezit spuštění čekajících změn](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
-| Položky foreach | 100 000 | Tato omezení popisuje maximální počet položek pole, které může zpracovat smyčka "for each". <p><p>K filtrování větších polí, můžete použít [akce dotazu](../connectors/connectors-native-query.md). | 
-| Foreach souběžnosti | 50 | Výchozí limit je 20. Popisuje tento limit maximálního počtu "pro každý" iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [změnit "for each" souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Souběžnosti triggeru | 50, když omezíte souběžnosti | Když zapnete řízení souběžnosti pro aktivační událost, výchozí limit je 25. Tato omezení popisuje maximální počet instancí aplikace logiky, spuštěné ve stejnou dobu nebo paralelně. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [omezení souběžnosti aktivační události změnit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [aktivovat instance postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maximální čekací spuštění | Když omezíte souběžnosti 100 | Když zapnete řízení souběžnosti pro aktivační událost, výchozí limit je 10. Tato omezení popisuje maximální počet instancí aplikace logiky, které mohou čekat na spustit, když vaše aplikace logiky je již spuštěn maximální počet souběžných instancí. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 0 a 100 (včetně), [omezit spuštění čekajících změn](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Pole položek foreach | 100 000 | Tato omezení popisuje maximální počet položek pole, které může zpracovat smyčka "for each". <p><p>K filtrování větších polí, můžete použít [akce dotazu](../connectors/connectors-native-query.md). | 
+| Foreach souběžnosti | 50, když omezíte souběžnosti | Když zapnete řízení souběžnosti pro tuto smyčku, je výchozí limit 20. Popisuje tento limit maximálního počtu "pro každý" iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [změnit "for each" souběžnosti limit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | Položky SplitOn | 100 000 | | 
 | Do iterací | 5 000 | | 
 |||| 
@@ -119,9 +119,9 @@ Ambice tato omezení v normálním zpracování nebo spustit zátěžové testov
 
 | Název | Omezení | Poznámky |
 |------|-------|-------|
-| FTP | 50 MB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
-| SFTP | 50 MB | Chcete-li toto omezení obejít, použijte [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md) nebo naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
-| SFTP-SSH | 1 GB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+| FTP | 50 MB | Tento limit překročí, naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+| SFTP | 50 MB | Chcete-li překročí tento limit, použijte [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md) nebo naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+| SFTP-SSH | 1 GB | Tento limit překročí, naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
 |||| 
 
 <a name="request-limits"></a>

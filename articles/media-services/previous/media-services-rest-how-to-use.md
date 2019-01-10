@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako;johndeu
-ms.openlocfilehash: 38310ce64335e03c6728092bf1b8ce4752740a83
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233459"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159736"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled rozhraní REST API služby Media Services operace
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "50233459"
 
 Služba Media Services poskytuje rozhraní REST API, která přijímá JSON nebo atom + pub formátu XML. REST API služby Media Services vyžaduje konkrétní hlavičky protokolu HTTP, které každý klient musí odesílat při připojování ke službě Media Services, jakož i sadu volitelná záhlaví. Následující části popisují záhlaví a příkazy HTTP, můžete použít při vytváření žádostí o a příjem odpovědí ze služby Media Services.
 
-Ověřování rozhraní REST API služby Media se provádí pomocí ověřování Azure Active Directory, který je popsaný v článku [ověřování pomocí služby Azure AD pro přístup k rozhraní API Azure Media Services pomocí REST](media-services-rest-connect-with-aad.md)
+Ověřování rozhraní REST API pro Media Services se provádí pomocí ověřování Azure Active Directory, který je popsaný v článku [ověřování pomocí služby Azure AD pro přístup k rozhraní API Azure Media Services pomocí REST](media-services-rest-connect-with-aad.md)
 
 ## <a name="considerations"></a>Požadavky
 
@@ -58,9 +58,9 @@ Pro každé volání, které provedete do Media Services je sada požadované hl
 | Hlavička | Typ | Hodnota |
 | --- | --- | --- |
 | Autorizace |Nosiče |Nosiče je pouze přijaté autorizační mechanismus. Hodnota musí obsahovat také přístupový token poskytovaný službou Azure Active Directory. |
-| x-ms-version |Decimal |2.17 (nebo nejnovější verze)|
-| DataServiceVersion |Decimal |3.0 |
-| MaxDataServiceVersion |Decimal |3.0 |
+| x-ms-version |Desítkově |2.17 (nebo nejnovější verze)|
+| DataServiceVersion |Desítkově |3.0 |
+| MaxDataServiceVersion |Desítkově |3.0 |
 
 > [!NOTE]
 > Protože Media Services využívá k tomu jeho rozhraní REST API OData, záhlaví DataServiceVersion a MaxDataServiceVersion, měly by být součástí všech požadavků. ale pokud nejsou, pak aktuálně Media Services se předpokládá, že DataServiceVersion používá hodnotu 3.0.
@@ -73,7 +73,7 @@ Následuje sadu volitelné hlavičky:
 | --- | --- | --- |
 | Datum |RFC 1123 datum |Časové razítko požadavku |
 | Přijmout |Typ obsahu |Požadovaný typ obsahu pro odpověď, jako je následující:<p> -application/json; odata = verbose<p> -application/atom + xml<p> Odpovědi může mít jiný typ obsahu, jako je například načtení objektu blob, kde úspěšná odpověď obsahuje objekt blob datového proudu jako datovou část. |
-| Přijmout kódování |GZIP, deflate |GZIP a DEFLATE kódování, pokud se používá. Poznámka: Pro velké prostředky, Media Services může ignorovat toto záhlaví a vrátit nekomprimované data. |
+| Přijmout kódování |GZIP, deflate |GZIP a DEFLATE kódování, pokud se používá. Poznámka: Pro velké prostředky může ignorovat tuto hlavičku Media Services a vrátit nekomprimované data. |
 | Přijměte jazyka |"en", "es" a tak dále. |Určuje upřednostňovaný jazyk pro odpověď. |
 | Přijměte znaková sada |Znaková sada typ jako "UTF-8" |Výchozí hodnota je UTF-8. |
 | X-HTTP-Method |Metoda HTTP |Umožňuje klientům NAT nebo branami firewall, které nepodporují metod HTTP PUT nebo DELETE používat tyto metody, tunelové propojení prostřednictvím volání GET. |

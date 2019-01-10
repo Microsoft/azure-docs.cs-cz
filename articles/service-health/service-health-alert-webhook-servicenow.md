@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 3f8e0e94cf3b63b3ea409b46cb9eec3d5d97eb6f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c1de3a914e3505e46ab0a4eeae4f3b2c8fe84790
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580317"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158359"
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurace výstrah stavu služby s použitím ServiceNow
 
@@ -78,7 +78,7 @@ Tento článek ukazuje, jak integrovat výstrah stavu služby Azure s použitím
                     short_description += " - Service Issue - ";
                 } else if (event.data.context.activityLog.properties.incidentType == "Maintenance") {
                     short_description += " - Planned Maintenance - ";
-                } else if (event.data.context.activityLog.properties.incidentType == "Information" || event.data.context.activityLog.properties.incidentType == "ActionRequired") {
+                } else if (event.data.context.activityLog.properties.incidentType == "Informational" || event.data.context.activityLog.properties.incidentType == "ActionRequired") {
                     short_description += " - Health Advisory - ";
                 }
                 short_description += event.data.context.activityLog.properties.title;

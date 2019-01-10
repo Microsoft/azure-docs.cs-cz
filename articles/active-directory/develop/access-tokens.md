@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 164fc42d905c9354a58ea6f66a739ea05f12e601
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979229"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157764"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory přístupové tokeny
 
@@ -38,7 +38,7 @@ Naleznete v následujících částech se dozvíte, jak ověřit a používat de
 
 ## <a name="sample-tokens"></a>Ukázka tokeny
 
-tokeny V1.0 a v2.0 vypadají velmi podobně jako a obsahují mnoho stejné deklarací identity. Příklad každého je k dispozici zde.
+tokeny V1.0 a v2.0 vypadat podobně jako a obsahují mnoho stejné deklarací identity. Příklad každého je k dispozici zde.
 
 ### <a name="v10"></a>v1.0
 
@@ -79,7 +79,7 @@ Deklarace identity jsou k dispozici pouze v případě, že existuje hodnota do 
 | `nonce` | Řetězec | Jedinečný identifikátor sloužící k ochraně před útoky opětovného přehrání tokenu. Váš prostředek můžete zaznamenat tato hodnota k ochraně proti riziko. |
 | `alg` | Řetězec | Určuje algoritmus, který se použil k podepsání token, například "RS256" |
 | `kid` | Řetězec | Určuje kryptografický otisk pro veřejný klíč, který se používá k podepsání tento token. Zaznamenávány do v1.0 a v2.0 přístupové tokeny. |
-| `x5t` | Řetězec | Funguje stejně (se používají a hodnota) jako `kid`. Toto je starší verze deklarace identity, protože ho pouze v v1.0 přístupové tokeny pro účely kompatibility. |
+| `x5t` | Řetězec | Funguje stejně (se používají a hodnota) jako `kid`. `x5t` je vygenerován starších deklarace identity jenom v v1.0 přístupové tokeny pro účely kompatibility. |
 
 ### <a name="payload-claims"></a>Datová část deklarace identity
 
@@ -121,7 +121,7 @@ Následující deklarace identity se zahrnou v1.0 tokeny, pokud je k dispozici, 
 | Deklarovat | Formát | Popis |
 |-----|--------|-------------|
 | `ipaddr`| Řetězec | Uživatel se ověřil z IP adresy |
-| `onprem_sid`| Řetězec v [formát čísel SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | V případech, kde má uživatel místní ověřování poskytuje tato deklarace identifikátoru SID. To lze použít pro ověření ve starší verzi aplikace. |
+| `onprem_sid`| Řetězec v [formát čísel SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | V případech, kde má uživatel místní ověřování poskytuje tato deklarace identifikátoru SID. Můžete použít `onprem_sid` pro ověření ve starší verzi aplikace. |
 | `pwd_exp`| int, UNIXOVÉ časové razítko | Určuje, kdy vyprší platnost hesla uživatele. |
 | `pwd_url`| Řetězec | Adresa URL odešle uživatelům resetovat své heslo. |
 | `in_corp`|Boolean | Signály, pokud je klient přihlašování z podnikové sítě. Pokud nejsou, není součástí deklarace identity. |
@@ -200,7 +200,7 @@ Obchodní logiky vaší aplikace bude určovat tento krok, některé běžné me
 * Ověřit stav ověření volajícího klienta pomocí `appidacr` -by neměl být 0, pokud veřejní klienti nejsou povoleny pro volání rozhraní API.
 * Zkontrolujte seznam z minulosti `nonce` deklarací identity k ověření tokenu není právě znovu přehrát.
 * Zkontrolujte, že `tid` odpovídá tenanta, která může volat rozhraní API.
-* Použití `acr` deklarace identity, chcete-li ověřit, uživatel provedl vícefaktorové ověřování. Všimněte si, že to by se měly vynucovat použití [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+* Použití `acr` deklarace identity, chcete-li ověřit, uživatel provedl vícefaktorové ověřování. To by se měly vynucovat použití [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 * Pokud jste požadovali `roles` nebo `groups` deklarací identity v tokenu přístupu, ověřte, že uživatel je ve skupině oprávnění k provedení této akce.
   * Pro tokeny pomocí implicitního toku načíst, bude pravděpodobně nutné k dotazování [Microsoft Graphu](https://developer.microsoft.com/graph/) pro tato data, protože je často token příliš velká. 
 
@@ -225,7 +225,7 @@ Aktualizovat tokeny můžete platnost nebo kdykoli pro celou řadu důvodů odvo
 
 ### <a name="revocation"></a>Odvolání
 
-|   | Heslo na základě souborů cookie | Založené na token | Heslo bez souborů cookie s využitím | Na základě tokenu bez hesla | Token důvěrnému klientovi| 
+|   | Soubor cookie založené na heslech | Token založené na heslech | Soubory cookie bez hesla podle | Heslo nezaložené token | Token důvěrnému klientovi| 
 |---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
 | Vypršení platnosti hesla | Zůstane aktivní| Zůstane aktivní | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
 | Heslo změněno uživatelem | Odvoláno | Odvoláno | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |

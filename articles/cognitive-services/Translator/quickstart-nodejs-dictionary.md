@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Získání alternativních překladů, Node.js – Translator Text API'
+title: 'Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku, Node.js – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pro zadaný text vyhledat alternativní překlady a příklady použití pomocí Node.js a rozhraní REST API služby Translator Text.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 191afcdfb7a401755fffc028ce4119526f1e693d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: f7f779ccd10eeffc9ddfcba5dbb9abde00e1f735
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035624"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160008"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-with-nodejs"></a>Rychlý start: Získání alternativních překladů pomocí služby Translator Text API a Node.js
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Node.js
 
 V tomto rychlém startu se dozvíte, jak pro zadaný text vyhledat alternativní překlady a příklady použití pomocí Node.js a rozhraní REST API služby Translator Text.
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám umožňuje předat metodu HTTP, adresu URL, parametry požadavku, hlavičky a text JSON jako objekt `options`. V tomto fragmentu kódu nakonfigurujeme požadavek:
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Slovníkové vyhledávání](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Vyhledávání slovníku](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ```javascript
 let options = {
@@ -151,12 +151,12 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapomeňte po dokončení tohoto rychlého startu tento klíč předplatného odebrat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady Node.js na GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 Kromě rozpoznávání jazyka můžete pomocí služby Translator Text API provádět také následující úlohy:
 

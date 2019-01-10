@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 321a69768935a9cb220bf5c2ae96c30274dc590d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257601"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159448"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžící na Windows serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všechny virtuální počítače nebo počítače se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů Windows serveru, už to jsou v místním prostředí nebo jakýkoli jiný poskytovatel cloudu. Service Fabric nabízí instalační balíček pro vytváření clusterů Service Fabric volá samostatného balíčku Windows serveru.
@@ -61,7 +61,7 @@ Několik ukázkových konfiguračních souborů clusteru se nainstaluje spolu s 
 
 V rámci tohoto článku vytvořili cluster není zabezpečený.  Každý se může anonymně připojit a provádět operace správy, proto by produkční clustery vždy měly být zabezpečené pomocí certifikátů X.509 nebo zabezpečení systému Windows.  Zabezpečení se konfiguruje jenom při vytváření clusteru a není možné povolit zabezpečení po vytvoření clusteru. Aktualizace konfiguračního souboru povolit [certifikátu zabezpečení](service-fabric-windows-cluster-x509-security.md) nebo [zabezpečení Windows](service-fabric-windows-cluster-windows-security.md). V článku [Zabezpečení clusteru](service-fabric-cluster-security.md) najdete další informace o zabezpečení clusteru Service Fabric.
 
-### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>Krok 1A: vytvořit nezabezpečený místního vývojového clusteru
+### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>Krok 1A: Vytvořte zabezpečená místního vývojového clusteru
 Service Fabric je nasadit na jeden počítač vývojový cluster pomocí *ClusterConfig.Unsecure.DevCluster.json* souboru zahrnutém v [ukázky](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 Rozbalit samostatného balíčku do počítače, zkopírovat ukázkový konfigurační soubor do místního počítače a potom spusťte *CreateServiceFabricCluster.ps1* skriptu prostřednictvím relaci prostředí PowerShell správce ze složky samostatného balíčku .
@@ -74,7 +74,7 @@ V části nastavení prostředí v [plánování a příprava vašeho nasazení 
 
 Pokud dokončíte spuštěné vývojové scénáře, můžete odebrat cluster Service Fabric z počítače pomocí kroků v části "[odebrat cluster](#removecluster_anchor)". 
 
-### <a name="step-1b-create-a-multi-machine-cluster"></a>Krok 1B: vytvoření clusteru s více počítači
+### <a name="step-1b-create-a-multi-machine-cluster"></a>Krok 1B: Vytvoření clusteru s více počítači
 Poté, co jste prošli plánování a podrobné kroky přípravy na [plánování a příprava vašeho nasazení clusteru](service-fabric-cluster-standalone-deployment-preparation.md), jste připraveni vytvořit cluster produkčním prostředí pomocí souboru konfigurace clusteru.
 
 Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslušném počítači oprávnění správce. Service Fabric nelze nainstalovat na řadič domény.
@@ -85,7 +85,7 @@ Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslu�
     .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
     ```
 
-    Byste měli vidět výstup podobný následujícímu. Pokud pole dolní "Předán" se vrátí jako "PRAVDA", vhodnosti kontroly proběhly a cluster vypadá jako nasaditelný podle konfigurace vstupu.
+    Zobrazený výstup by měl vypadat přibližně takto: Pokud pole dolní "Předán" se vrátí jako "PRAVDA", vhodnosti kontroly proběhly a cluster vypadá jako nasaditelný podle konfigurace vstupu.
 
     ```powershell
     Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
@@ -104,7 +104,7 @@ Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslu�
     Passed                     : True
     ```
 
-2. Vytvoření clusteru: Spusťte *CreateServiceFabricCluster.ps1* skript k nasazení clusteru Service Fabric v každém počítači v konfiguraci. 
+2. Vytvoření clusteru:  Spustit *CreateServiceFabricCluster.ps1* skript k nasazení clusteru Service Fabric v každém počítači v konfiguraci. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -114,7 +114,7 @@ Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslu�
 > 
 > 
 
-### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>Krok 1C: vytvořit cluster v režimu offline (internet odpojen)
+### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>Krok 1C: Vytvořit cluster v režimu offline (internet odpojen)
 Při vytváření clusteru se automaticky stáhne balíček modulu runtime Service Fabric. Při nasazování clusteru na počítače bez připojení k Internetu, je potřeba stáhnout balíček modulu runtime Service Fabric samostatně a zadejte cestu k němu při vytváření clusteru.
 Balíček modulu runtime se dají stáhnout samostatně, z jiného počítače připojené k Internetu, na [stáhnout odkaz – modul Runtime Service Fabric – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Pokud nasazujete offline clusteru ze a vytvořte cluster spuštěním zkopírujte balíček modulu runtime `CreateServiceFabricCluster.ps1` s `-FabricRuntimePackagePath` parametr zahrnuty, jak je znázorněno v tomto příkladu: 
 
@@ -150,7 +150,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Krok 3: Vizualizace clusteru pomocí Service Fabric explorer
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Krok 3: Vizualizace clusteru pomocí Service Fabric Exploreru
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je nástroj vhodný pro vizualizaci clusteru a správu aplikací.  Service Fabric Explorer je služba, která se spustí v clusteru, které máte přístup prostřednictvím prohlížeče, že přejdete na [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer).
 
 Řídicí panel clusteru poskytuje přehled o clusteru včetně souhrnu stavu aplikací a uzlů. Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód.

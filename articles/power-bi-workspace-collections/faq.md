@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: eed970d46c8a895001ce0a6d7d7f37acf6c02a55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83f4ebd9c3f5ad05173b045b3fa15804ddc88df6
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249196"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157560"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI pracovního prostoru kolekce – nejčastější dotazy
 
@@ -77,7 +77,7 @@ V modelu s kolekcí pracovních prostorů Power BI neexistuje žádný explicitn
 Vývojáři/zaměstnanci pracující na nebo vytváření vaší aplikace musí mít uživatelský účet AAD, když ke správě vašeho předplatného Azure a kolekce pracovních prostorů prostřednictvím webu Azure portal. Programových rozhraní API a umožňuje vývojářům import sestav, úpravě připojovací řetězce a získat vložení místo adresy URL využívání tokenů aplikace k ověřování a kvůli tomu, aby AAD.
 
 ## <a name="where-can-i-learn-more"></a>Kde získám další informace?
-Můžete přejít [stránce dokumentace s kolekcí pracovních prostorů Power BI](get-started.md). Abyste mohli zůstat si přehled o tom, tato služba [blogu Power BI](https://powerbi.microsoft.com/blog/) nebo stačí navštívit středisko pro vývojáře Power BI najdete na webu dev.powerbi.com. Můžete také klást otázky v [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi).
+Můžete přejít [stránce dokumentace s kolekcí pracovních prostorů Power BI](get-started.md). Abyste mohli zůstat si přehled o tom, tato služba [blogu Power BI](https://powerbi.microsoft.com/blog/) nebo stačí navštívit středisko pro vývojáře Power BI najdete na webu dev.powerbi.com. Můžete také klást otázky v [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi).
 
 ## <a name="how-do-i-get-started"></a>Jak mám začít?
 Můžete začít zdarma teď! Pokud máte předplatné Azure, můžete nyní zřídit kolekce pracovních prostorů Power BI na webu Azure Portal přímo. Můžete také vytvořit váš [bezplatný účet Azure](https://azure.microsoft.com/free/). Jakmile zřídíte služba kolekce pracovních prostorů Power BI, můžete snadno používat rozhraní REST API Power BI přímo, nebo použít developer SDK, které jsou k dispozici na [Githubu](https://go.microsoft.com/fwlink/?LinkID=746472). Ukázky jsou k dispozici na tom, jak využít pro vývojáře sady SDK.

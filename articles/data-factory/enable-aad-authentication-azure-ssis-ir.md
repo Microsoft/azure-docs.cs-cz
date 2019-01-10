@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 1/8/2019
+ms.date: 1/9/2019
 ms.author: douglasl
-ms.openlocfilehash: be26aa95ddac7b63293cee234209ac52243f110a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5cc625e07f1c92c53491e83f4049bad12cd9d1a1
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104331"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158257"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS Integration Runtime
 
@@ -187,6 +187,17 @@ Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio]
     ```
     
     Příkaz je úspěšně dokončena, poskytování spravovanou identitu pro vaši ADF možnost vytvářet databáze (SSISDB).
+
+8.  Pokud vaše databáze SSISDB byl vytvořen pomocí ověřování SQL a chcete přejít k němu přístup pomocí ověřování Azure AD pro Azure-SSIS IR, klikněte pravým tlačítkem na **SSISDB** databáze a vyberte **nový dotaz**.
+
+9.  V okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
+
+    ```sql
+    CREATE USER [{the managed identity name}] FOR LOGIN [{the managed identity name}] WITH DEFAULT_SCHEMA = dbo
+    ALTER ROLE db_owner ADD MEMBER [{the managed identity name}]
+    ```
+
+    Příkaz je úspěšně dokončena, poskytování spravovanou identitu pro vaši ADF možnost přístupu k SSISDB.
 
 ## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Zřízení Azure-SSIS IR v aplikaci Azure portal/ADF
 

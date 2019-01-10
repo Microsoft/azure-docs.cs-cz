@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: cfbb04ea56eacfd859b6ce520da5396ad91d9abf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4a7e3e9ff414c8f7ba1c49924f1d8659d72ae3e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121290"
+ms.locfileid: "54158206"
 ---
 # <a name="azure-api-management-template-resources"></a>Šablony prostředků Azure API Management
 Azure API Management nabízí následující typy prostředků pro použití v vývojář šablon portálu.  
@@ -275,7 +275,7 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |OAuth2TokenType_ImplicitGrant_AuthorizationResponse|POVINNÉ. Typ vystaveného tokenu.|  
 |OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|POVINNÉ. Typ vystaveného tokenu.|  
 |OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|POVINNÉ. Uživatelské jméno vlastníka prostředku.|  
-|OAuth2UnsupportedTokenType|Token typu '{0}' není podporovaný.|  
+|OAuth2UnsupportedTokenType|Token typu '{0}' není podporován.|  
 |OAuth2InvalidState|Neplatná odpověď od autorizačního serveru|  
 |OAuth2GrantType_AuthorizationCode|Autorizační kód|  
 |OAuth2GrantType_Implicit|Implicitní|  
@@ -361,7 +361,7 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |WebProductsUsageLimitsHeader|Limity využití|  
 |WebProductsYouAreNotSubscribed|Tento produkt máte předplacený.|  
 |WebProductsYouRequestedSubscription|Požádali jste o předplatné tohoto produktu.|  
-|ErrorYouNeedtoAgreeWithLegalTerms|Před pokračováním musíte souhlasit s podmínkami použití.|  
+|ErrorYouNeedToAgreeWithLegalTerms|Před pokračováním musíte souhlasit s podmínkami použití.|  
 |ButtonLabelAddSubscription|Přidat předplatné|  
 |LinkLabelChangeSubscriptionName|změnit|  
 |ButtonLabelConfirm|Potvrdit|  
@@ -517,7 +517,7 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |WebDevelopersSecondaryKey|Sekundární klíč|  
 |ButtonLabelShowKey|Zobrazit|  
 |ButtonLabelRenewSubscription|Obnovit|  
-|WebDevelopersSubscriptionReqested|Datum žádosti {0}|  
+|WebDevelopersSubscriptionRequested|Datum žádosti {0}|  
 |WebDevelopersSubscriptionRequestedState|Požadováno|  
 |WebDevelopersSubscriptionTableNameHeader|Název|  
 |WebDevelopersSubscriptionTableStateHeader|Stav|  

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: ec8fabfce8c26aef98217947da33a56222288b3c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6399e1838b00fc533ab42a76e4f1f1667e3a434a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077558"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159515"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Vytvoření plánu ve službě Azure Stack
 
@@ -28,9 +28,9 @@ ms.locfileid: "49077558"
 
 [Plány](azure-stack-key-features.md) představují seskupení jedné nebo více služeb. Jako poskytovatel můžete vytvořit plány, které nabídnete uživatelům. Uživatelé pak předplatit nabídek, aby mohli používat plány a služby, které patří mezi ně. Tento příklad ukazuje, jak vytvořit plán, který obsahuje výpočty, síť a poskytovatele prostředků úložiště. Tento plán poskytuje předplatitele možnost zřizování virtuálních počítačů.
 
-1. Přihlaste se k portálu Správce služby Azure Stack (https://adminportal.local.azurestack.external).
+1. Přihlaste se k [portálu Správce služby Azure Stack](https://adminportal.local.azurestack.external).
 
-2. Chcete-li vytvořit plán a nabídku, uživatelé mohou přihlásit k odběru, vyberte **+ vytvořit prostředek** > **nabízí + plány** > **plán**.
+2. Chcete-li vytvořit plán a nabídku, uživatelé mohou přihlásit k odběru, vyberte **+ vytvořit prostředek**, pak **nabízí + plány**, pak **plán**.
   
    ![Vybrat plán](media/azure-stack-create-plan/select-plan.png)
 
@@ -72,4 +72,4 @@ ms.locfileid: "49077558"
 
 ## <a name="next-steps"></a>Další postup
 
-[Vytvoření nabídky](azure-stack-create-offer.md)
+* [Vytvoření nabídky](azure-stack-create-offer.md)

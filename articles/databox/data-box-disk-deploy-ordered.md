@@ -6,41 +6,46 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 961352dc99a164b8537fb588e038ad1b385941cc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: db10361707d83fcda20f0e4bf2adc2abc4176808
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567447"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156167"
 ---
-# <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Kurz: Objednání služby Azure Data Box Disk (Preview)
+# <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: Pořadí disku Azure Data Box
 
 Azure Data Box Disk je řešení hybridního cloudu, které vám umožňuje rychle, snadno a spolehlivě importovat místní data do Azure. Svoje data přesunete na disky SSD (Solid-State Disk), které dostanete od Microsoftu, a tyto disky pak pošlete zpět. Data se potom nahrají do Azure.
 
 Tento kurz popisuje, jak Azure Data Box Disk objednat. V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Registrace služby Data Box Disk
 > * Objednání služby Data Box Disk
 > * Sledování objednávky
 > * Zrušení objednávky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+## <a name="prerequisites"></a>Požadavky
 
-> [!IMPORTANT]
-> - Data Box Disk je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - Ve verzi preview můžete Data Box Disk odeslané zákazníky v USA, západní a Severní Evropa, Kanadě a Austrálii. Další informace najdete v části [Regionální dostupnost](data-box-disk-overview.md#region-availability).
+Před nasazením, zajistěte splnění následujících požadavků konfigurace pro službu Data Box a disku Data Box.
 
-## <a name="sign-up"></a>Registrace
+### <a name="for-service"></a>Služba
 
-Data Box Disk je ve verzi Preview a musíte se v ní zaregistrovat. Následujícím postupem si zaregistrujte službu Data Box:
+Než začnete, ujistěte se, že:
+- Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
+- Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
+    - Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
+    - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+- Pokud chcete vytvořit objednávku Data Boxu, potřebujete mít u předplatného přístup vlastníka nebo přispěvatele.
 
-1. Přihlaste se k portálu Azure Portal na adrese: [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs).
-2. Vyberte předplatné, které chcete povolit pro verzi Preview. Odpovězte na otázky týkající velikosti dat, země trvalého umístění dat, časového rámce a frekvence přenosu dat. Klikněte na **Chci se zaregistrovat**.
-3. Po registraci a povolení verze Preview si můžete objednat službu Data Box Disk.
+### <a name="for-device"></a>Zařízení
+
+Než začnete, ujistěte se, že:
+- Budete mít klientský počítač, který je k dispozici, ze kterého můžete zkopírovat data. Klientský počítač musí splňovat tyto požadavky:
+    - Musí na něm běžet [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+    - Musí na něm být nainstalovaný [požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients), pokud jde o klienta pro Windows.  
 
 ## <a name="order-data-box-disk"></a>Objednání služby Data Box Disk
 
@@ -97,7 +102,7 @@ Službu Data Box Disk si objednejte na portálu [Azure Portal](https://aka.ms/az
  
 ## <a name="track-the-order"></a>Sledování objednávky
 
-Po odeslání objednávky můžete její stav sledovat na portálu Azure Preview Portal. Přejděte na objednávku a potom do části **Přehled**, kde se můžete podívat na stav. Na portálu se úloha zobrazuje ve stavu **Objednáno**. 
+Po odeslání objednávky můžete její stav sledovat na webu Azure Portal. Přejděte na objednávku a potom do části **Přehled**, kde se můžete podívat na stav. Na portálu se úloha zobrazuje ve stavu **Objednáno**. 
 
 ![Služba Data Box Disk ve stavu Objednáno](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -111,17 +116,15 @@ Jakmile budou disky připraveny, stav objednávky na portálu se změní na **Zp
 
 Microsoft potom připraví a odešle disky přes místní přepravní službu. Po odeslání disků obdržíte číslo pro sledování zásilky. Stav objednávky na portálu se změní na **Odesláno**.
 
-
-
 ## <a name="cancel-the-order"></a>Zrušení objednávky
 
-Pokud chcete tuto objednávku zrušit, přejděte na portálu Azure Preview Portal do části **Přehled** a na panelu příkazů klikněte na **Zrušit**. 
+Pokud chcete tuto objednávku zrušit, přejděte na webu Azure Portal do části **Přehled** a na panelu příkazů klikněte na **Zrušit**. 
 
 Objednávku můžete zrušit pouze při objednávání disků a při zpracování objednávky k odeslání. Jakmile je objednávka zpracována, už ji nelze zrušit. 
 
 ![Zrušení objednávky](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
-Pokud chcete odstranit zrušenou objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**. 
+Pokud chcete odstranit zrušenou objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další postup
@@ -129,7 +132,6 @@ Pokud chcete odstranit zrušenou objednávku, přejděte do části **Přehled**
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
-> * Registrace služby Data Box Disk
 > * Objednání služby Data Box Disk
 > * Sledování objednávky
 > * Zrušení objednávky

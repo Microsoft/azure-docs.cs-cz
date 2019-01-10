@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 2fc81cc06063c0fee0a4f875b4b0f8bd1343cf85
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 789f58699f39f4b7eac453f4cf79ea55a5bfc8d3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810453"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s místní SharePoint, prove�
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
     > [!Note]
-    > Mějte prosím na paměti dolů cesta k souboru, do které jste stáhli soubor certifikátu je potřeba pro použití v pozdější části skriptu prostředí PowerShell pro konfiguraci.
+    > Poznámka: cesta k souboru, kam jste stáhli soubor certifikátu. Budete potřebovat soubor v pozdější části skriptu prostředí PowerShell pro konfiguraci.
 
 6. Na **nastavit místní SharePoint** tématu, zkopírujte příslušné adresy URL podle vašich požadavků. Pro **jednotné přihlašování – adresa URL služby**, použijte hodnotu následujícímu vzoru: `https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
@@ -175,7 +175,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s místní SharePoint, prove�
     ![Konfigurace poskytovatele ověřování](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
-    > Někteří uživatelé externí není schopna použít tuto integraci jednotné přihlašování, protože jejich hlavní název uživatele bude mít pozměnění něco jako hodnota `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Brzy budeme zákazníkům umožní konfigurace aplikace o tom, jak zpracovat hlavní název uživatele v závislosti na typu uživatele. Po, který by měl být všichni uživatelé typu Host moct používat jednotné přihlašování bez problémů jako zaměstnance organizace.
+    > Některé externí uživatelé nebudou moct používat Tato integrace jednotné přihlašování s jejich hlavní název uživatele bude mít pozměnění hodnotu jako `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Co nejdříve povolíme konfigurace vlastní aplikace pro zpracování hlavní název uživatele v závislosti na typu uživatele. Po, který by měl být všichni uživatelé typu Host moct používat jednotné přihlašování bez problémů jako zaměstnance organizace.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 

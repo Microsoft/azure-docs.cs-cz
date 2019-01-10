@@ -3,22 +3,17 @@ title: Rychlý start – Směrování webového provozu pomocí služby Azure Ap
 description: Přečtěte si o tom, jak pomocí Azure PowerShellu vytvořit aplikační bránu Azure Application Gateway, která bude směrovat webový provoz na virtuální počítače v back-endovém fondu.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: azurepowershell
 ms.topic: quickstart
-ms.workload: infrastructure-services
-ms.date: 12/26/2018
+ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dc6e24df0480a43b1195a7b327b499ffebac978a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: cb5a6a21cd6d33316e0560d7641bee99b2102373
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079115"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159821"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure PowerShell
 
@@ -43,19 +38,19 @@ V Azure přidělení související prostředky do skupiny prostředků. Vytvořt
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Vytvoření virtuální sítě tak, aby službě application gateway může komunikovat s ostatními prostředky. V tomto příkladu se vytvoří dvě podsítě: jednu pro aplikační bránu a druhé pro back-end serverů. 
+Vytvoření virtuální sítě tak, aby službě application gateway může komunikovat s ostatními prostředky. V tomto příkladu se vytvoří dvě podsítě: jednu pro aplikační bránu a druhé pro back-end serverů. Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.
 
 1. Vytvořte Konfigurace podsítí voláním [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig).
 2. Vytvoření virtuální sítě s konfigurací podsítě voláním [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork).
 3. Vytvoření veřejné IP adresy pomocí volání [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress).
 
 ```azurepowershell-interactive
-$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
   -Name myAGSubnet `
   -AddressPrefix 10.0.1.0/24
-$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
   -AddressPrefix 10.0.2.0/24
 New-AzureRmVirtualNetwork `
@@ -63,7 +58,7 @@ New-AzureRmVirtualNetwork `
   -Location eastus `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
-  -Subnet $backendSubnetConfig, $agSubnetConfig
+  -Subnet $agSubnetConfig, $backendSubnetConfig
 New-AzureRmPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
@@ -83,7 +78,8 @@ V tomto příkladu vytvoříte dva virtuální počítače pro Azure a použít 
 Při spuštění následující vzorový kód k vytvoření virtuálních počítačů Azure vás vyzve k zadání přihlašovacích údajů. Zadejte *azureuser* jako uživatelské jméno a *Azure123456!* pro heslo:
     
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
+$vnet   = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork myVNet -Name myBackendSubnet
 $cred = Get-Credential
 for ($i=1; $i -le 2; $i++)
 {
@@ -91,7 +87,7 @@ for ($i=1; $i -le 2; $i++)
     -Name myNic$i `
     -ResourceGroupName myResourceGroupAG `
     -Location EastUS `
-    -SubnetId $vnet.Subnets[1].Id
+    -SubnetId $subnet.Id
   $vm = New-AzureRmVMConfig `
     -VMName myVM$i `
     -VMSize Standard_DS2_v2
@@ -134,9 +130,9 @@ for ($i=1; $i -le 2; $i++)
 3. Použití [New-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendport) přiřadit port 80 pro přístup k službě application gateway.
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
-$pip = Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress 
-$subnet=$vnet.Subnets[0]
+$vnet   = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork myVNet -Name myAGSubnet
+$pip    = Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress 
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
   -Name myAGIPConfig `
   -Subnet $subnet

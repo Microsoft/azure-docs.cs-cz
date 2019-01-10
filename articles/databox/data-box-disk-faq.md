@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 12/11/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: f437f1fd61cfdaa4d2ff908f6e294fa0c679b9a5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4320e56b04761c6adcae1db259eeecf332fbd781
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273048"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158784"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
+# <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
 Cloudové řešení Microsoft Azure Data Box Disk umožňuje odesílat do Azure rychle, levně a bezpečně terabajty dat. Tyto nejčastější dotazy obsahují otázky a odpovědi, které se týkají používání disků Data Box Disk na webu Azure Portal. 
 
@@ -27,8 +27,6 @@ Otázky a odpovědi jsou uspořádané do těchto kategorií:
 - Migrace dat 
 - Ověření a nahrání dat 
 
-> [!IMPORTANT]
-> Data Box Disk je ve verzi Preview. Před nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze platformy Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="about-the-service"></a>O službě
 
@@ -44,19 +42,19 @@ Disky jsou šifrované pomocí nástroje Microsoft BitLocker Drive Encryption a 
 A. Pokud máte 40 TB dat (nebo méně), které chcete přenést do Azure, je pro vás použití disků Data Box Disk výhodné.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>Otázka: Jaká je cena disků Data Box Disk?
-A. Informace o cenách Data Box Disků najdete na [stránce s cenami verze Preview](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+A. Další informace o cenách disků Data Box [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>Otázka: Jak lze disky Data Box Disk získat? 
-A.  Pokud chcete získat disky Azure Data Box Disk, nejprve si zaregistrujte [Data Box Disk ve verzi Preview](https://aka.ms/AzureDataBox). Pak se přihlaste na web Azure Portal a vytvořte objednávku disků Data Box. Zadejte svoje kontaktní údaje a podrobnosti o oznámení. Po provedení objednávky vám budou disky dodány podle dostupnosti do 10 dnů.   
+A.  Disky Azure Data Box, přihlaste se do portálu Azure portal a vytvoření objednávky zařízení Data Box pro disky. Zadejte svoje kontaktní údaje a podrobnosti o oznámení. Po provedení objednávky vám budou disky dodány podle dostupnosti do 10 dnů.
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>Otázka: Jaký je maximální objem dat, který se dá přenést pomocí disků Data Box Disk v jedné instanci?
-A. Při 5 discích, kdy každý má velikost 8 TB (7 TB využitelné kapacity), je maximální využitelná kapacita 35 TB. V jedné instanci je tedy možné přenést 35 TB dat.  Pro přenos většího objemu dat je nutné objednat další disky.
+A. Při 5 discích, kdy každý má velikost 8 TB (7 TB využitelné kapacity), je maximální využitelná kapacita 35 TB. V jedné instanci je tedy možné přenést 35 TB dat. Pro přenos většího objemu dat je nutné objednat další disky.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>Otázka: Jak zjistím, jestli jsou disky Data Box Disk dostupné v mojí oblasti? 
-A.  Disky Data Box Disk jsou během období Preview dostupné v USA, Kanadě, Austrálii a ve všech zemích Evropské unie.  
+A.  Disků data Box jsou aktuálně dostupné v USA, Kanadě, Austrálii a všechny země, v rámci Evropské unie.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Otázka: Ve kterých oblastech lze data ukládat pomocí disků Data Box Disk?
-A. Data Box Disk ve verzi Preview se podporuje ve všech oblastech USA, v Kanadě, Austrálii a v oblastech Západní Evropa a Severní Evropa. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
+A. Data Box Disk se podporuje pro všechny oblasti v USA, Kanadě, Austrálii a oblasti západní Evropa a Severní Evropa. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Otázka: Na koho se mám obrátit, když narazím na nějaké problémy s disky Data Box Disk?
 A. Pokud narazíte na případné problémy s disků Data Box, [obraťte se na Microsoft Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -75,7 +73,7 @@ Podrobný postup najdete v článku o [odemknutí disků v klientovi pro Windows
 A.  Ano. K připojení a zkopírování dat na Data Box Disky je možné použít klienty pro Linux i Windows. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-disk-system-requirements.md) hostitelského počítače.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>Otázka: Moje disky se odeslaly, ale já teď chci tuto objednávku zrušit. Proč není dostupné tlačítko pro zrušení?
-A.  Objednávku lze po vytvoření zrušit jenom do doby její expedice. Jakmile se disky odešlou, není už možné danou objednávku zrušit. V období Preview lze disky bezplatně vrátit, ale až bude toto řešení obecně dostupné, pravděpodobně se to změní. 
+A.  Objednávku lze po vytvoření zrušit jenom do doby její expedice. Jakmile se disky odešlou, není už možné danou objednávku zrušit. Mohou však vrátit disky za poplatek. 
 
 ### <a name="q-can-i-connect-multiple-data-box-disks-at-the-same-to-the-host-computer-to-transfer-data"></a>Otázka: Můžu pro přenos dat připojit k hostitelskému počítači více disků Data Box Disk současně?
 A. Ano. Pro přenos dat lze k jednomu hostitelskému počítači připojit více disků Data Box Disk a několik úloh kopírování může běžet paralelně.
@@ -91,10 +89,10 @@ A.  Microsoft přikládá k balíčku s disky Data Box Disk expediční štítek
 ## <a name="migrate-data"></a>Migrace dat
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>Otázka: Jaká je maximální velikost dat, která se dá použít s disky Data Box Disk?  
-A.  Řešení s disky Data Box Disk může mít až 5 disků s maximální využitelnou kapacitou 35 TB. Samotné disky mají velikost 8 TB (využitelných je 7 TB). 
+A.  Řešení s disky Data Box Disk může mít až 5 disků s maximální využitelnou kapacitou 35 TB. Samotné disky mají velikost 8 TB (využitelných je 7 TB).
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>Otázka: Jaké maximální velikosti objektu blob bloku a objektu blob stránky disky Data Box Disk podporují? 
-A.  Maximální velikosti se řídí omezeními služby Azure Storage. Maximální velikost objektu blob bloku je přibližně 4,768 TiB a maximální velikost objektu blob stránky je 8 TiB. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage](../storage/common/storage-scalability-targets.md). 
+A.  Maximální velikosti se řídí omezeními služby Azure Storage. Maximální velikost objektu blob bloku je přibližně 4,768 TiB a maximální velikost objektu blob stránky je 8 TiB. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage](../storage/common/storage-scalability-targets.md).
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>Otázka: Jaká je u disků Data Box Disk rychlost přenosu dat?
 A. Při testování s disky připojenými přes USB 3.0 byl výkon disku až 430 MB/s. Skutečné hodnoty se liší v závislosti na velikosti použitých souborů. U menších souborů může být výkon nižší.
@@ -103,7 +101,7 @@ A. Při testování s disky připojenými přes USB 3.0 byl výkon disku až 430
 A.  Disky Data Box Disk se šifrují pomocí 128bitového šifrování AES nástroje BitLocker a klíč je dostupný jenom na webu Azure Portal. Pokud chcete tento klíč získat, přihlaste se na web Azure Portal pomocí přihlašovacích údajů k účtu. Po spuštění nástroje pro odemykání disků Data Box Disk zadejte tento klíč.
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>Otázka: Jak můžu kopírovat data na disky Data Box Disk? 
-A.  Ke kopírování dat na disky použijte nástroj pro kopírování SMB, například Robocopy, Diskboss nebo třeba i přetažení v Průzkumníkovi souborů Windows. 
+A.  Ke kopírování dat na disky použijte nástroj pro kopírování SMB, například Robocopy, Diskboss nebo třeba i přetažení v Průzkumníkovi souborů Windows.
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Otázka: Máte nějaké tipy pro zrychlení kopírování dat?
 A.  Pokud chcete zrychlit proces kopírování:
@@ -121,9 +119,19 @@ A.  Pokud chcete zrychlit proces kopírování:
 - Připojte ho k virtuálnímu počítači.
 - Zkopírujte soubory na disk tohoto virtuálního počítače.
 
-
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>Otázka: Můžu s disky Data Box Disk používat více účtů úložiště?
-A.  Ne. Pro použití s disky Data Box Disk se momentálně podporuje jenom jeden účet úložiště, obecný nebo klasický. Podporují se horké i studené objekty blob. Během období Preview se podporují jenom účty úložiště ve veřejném cloudu Azure v USA a v oblastech Západní Evropa a Severní Evropa.
+A.  Ne. Pro použití s disky Data Box Disk se momentálně podporuje jenom jeden účet úložiště, obecný nebo klasický. Podporují se horké i studené objekty blob. V současné době jsou podporované jenom účty úložiště v USA, západní Evropa a Severní Evropa ve veřejném cloudu Azure.
+
+### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Otázka: Co je sada nástrojů, které jsou k dispozici pro data s datovými disky pole?
+A. Sada nástrojů dostupná s datovým diskem pole obsahuje tři nástroje:
+ - **Data Box Disk odemknutí nástroj**: Tento nástroj použijte k odemknutí zašifrované disky, které se dodávají od Microsoftu. Při odemykání disky pomocí nástroje, je třeba zadat klíč k dispozici v objednávka disku Data Box na webu Azure Portal. 
+ - **Data Box Disk ověření nástroj**: Použití tohoto nástroje můžete ověřit, velikost, formátu a objektů blob pojmenuje podle názvy convnetions v Azure. Také vygeneruje kontrolní součty pro zkopírovaná data, která se následně použijí k ověření, nahrát data do Azure.
+ - **Nástroj pro kopírování rozdělení disku pole data**: Tento nástroj použijte, pokud používáte několik disků a mají velkou datovou sadu, kterou je potřeba rozdělit a zkopírovali na všech discích. Tento nástroj je momentálně dostupná pro Windows.
+
+Sada nástrojů je k dispozici pro Windows i Linux. Si můžete stáhnout na sadu nástrojů:
+ - [Stáhnout sadu nástrojů Data Box Disk pro Windows](https://aka.ms/databoxdisktoolswin) 
+ - [Stáhnout sadu nástrojů Data Box Disk pro Linux](https://aka.ms/databoxdisktoolslinux)
+
 
 ## <a name="verify-and-upload"></a>Ověření a nahrání
 
@@ -131,7 +139,7 @@ A.  Ne. Pro použití s disky Data Box Disk se momentálně podporuje jenom jede
 A.  Jakmile se daná objednávka kopírování dat zobrazí jako dokončená, měli byste mít přístup k vašim datům.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Otázka: Kde v Azure se moje data po nahrání nachází?
-A.  Při kopírování dat ve složkách *BlockBlob* a *PageBlob* na vašem disku se pro každou podsložku ve složkách *BlockBlob* a *PageBlob* vytvoří kontejner v účtu Azure Storage. Pokud jste zkopírovali soubory ve složkách *BlockBlob* a *PageBlob* přímo, pak se v účtu Azure Storage nachází ve výchozím kontejneru *$root*. 
+A.  Při kopírování dat ve složkách *BlockBlob* a *PageBlob* na vašem disku se pro každou podsložku ve složkách *BlockBlob* a *PageBlob* vytvoří kontejner v účtu Azure Storage. Pokud jste zkopírovali soubory ve složkách *BlockBlob* a *PageBlob* přímo, pak se v účtu Azure Storage nachází ve výchozím kontejneru *$root*.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Otázka: Zjistil(a) jsem, že jsem nedodržel(a) požadavky Azure na názvy kontejnerů. Znamená to, že nahrání mých dat do Azure se nezdaří?
 A. Pokud názvy kontejnerů obsahují velká písmena, automaticky se převedou na malá písmena. Pokud názvy nedodržují jiné požadavky (speciální znaky, ostatní jiné jazyky atd.), nahrání se nezdaří. Další informace najdete v článku o [zásadách vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions).
@@ -150,8 +158,6 @@ A. Ano. Pokud jste se rozhodli ověřovat data (což doporučujeme), bude nutné
 
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>Otázka: Využil(a) jsem k přenosu dat všechny svoje disky a potřebuji objednat další disky. Existuje nějaký rychlý způsob, jak tuto objednávku vytvořit?
 A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoří stejná objednávka, jako byla ta předchozí. Podrobnosti této objednávky však můžete upravit. Nebudete tedy muset znovu zadávat adresu, kontaktní údaje a podrobnosti o oznámení. 
-
-
 
 ## <a name="next-steps"></a>Další postup
 

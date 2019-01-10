@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 408d43f07179f9f18c05f22fdd4ea36a3a90cb49
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c5f71e104e97ab886483d50760f0a42936a16717
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075987"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157305"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB liveCache a nasazení obsahu serveru na virtuálních počítačích Azure
 
@@ -331,14 +331,14 @@ Aktualizovaný seznam SAP MaxDB dokumentaci najdete v následujících SAP Note 
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfigurace MaxDB SAP pro instalace SAP na virtuálních počítačích Azure
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Konfigurace úložiště
-Osvědčené postupy Azure storage pro SAP MaxDB podle obecná doporučení uvedených v kapitole [strukturu nasazení relační databázový systém][dbms-guide-2].
+Osvědčené postupy Azure storage pro SAP MaxDB podle obecná doporučení uvedených v kapitole [strukturu úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
 
 > [!IMPORTANT]
-> Stejně jako ostatní databáze má SAP MaxDB také dat a souborů protokolu. V terminologii SAP MaxDB je správný výraz "svazek" (ne "file"). Existují třeba SAP MaxDB datových svazků a svazky s protokoly. Aktuální kvóta IOPS na disku je dostatek, je možné ukládat všechny soubory databáze na jednom jednoho disku. 
+> Stejně jako ostatní databáze má SAP MaxDB také dat a souborů protokolu. V terminologii SAP MaxDB je správný výraz "svazek" (ne "file"). Existují třeba SAP MaxDB datových svazků a svazky s protokoly. Nezaměňujte je s svazků disku operačního systému. 
 > 
 > 
 
-Výkon důležité informace také najdete kapitoly "Data zabezpečení a důležité informace o výkonu pro databázi adresáře" v průvodců instalací SAPU.
+Stručně řečeno budete muset:
 
 * Pokud používáte účty Azure Storage, nastavte účet úložiště Azure, který obsahuje SAP MaxDB dat a protokolů svazky (dat a souborů protokolu) na **místní redundantní úložiště (LRS)** podle zadání v [důležité informace týkající se Azure Virtual Počítače nasazení DBMS pro úlohy SAP](dbms_guide_general.md).
 * Samostatné cesty vstupně-výstupních operací pro SAP MaxDB datové svazky (datové soubory) v cestě vstupně-výstupních operací pro svazky s protokoly (soubory protokolů). To znamená, že SAP MaxDB datové svazky (datové soubory) bylo nutné instalovat na jedné logické jednotky a svazky s protokoly SAP MaxDB (soubory protokolů) je potřeba je instalovat na jiné logické jednotce.
@@ -458,7 +458,7 @@ Tady máte dvě možnosti:
 
 1. **Klient je back-end systém SAP** Pokud systém SAP back-end je nakonfigurovaná pro přístup k obsahu serveru SAP, SAP systému je klient. Jako systém SAP a SAP serveru obsahu jsou nasazené ve stejné oblasti Azure, ve stejném datacentru Azure, jsou fyzicky blízko u sebe. Proto není nutné mít vyhrazený Server mezipaměti SAP. Klienti SAP uživatelského rozhraní (SAP GUI nebo webový prohlížeč) přímo přistupovat do systému SAP a systém SAP načte dokumenty ze serveru obsahu SAP.
 2. **Klient je v místním webovém prohlížeči** The Server obsahu SAP dá přistupovat přímo ve webovém prohlížeči. V tomto případě je webový prohlížeč v místním klientovi obsahu serveru SAP. Místním datovým centrem a datacentra Azure jsou umístěny v různých fyzických umístění (ideálně blízko u sebe). Vašeho místního datového centra je připojení k Azure přes Azure VPN typu Site-to-Site nebo ExpressRoute. Přestože obě možnosti nabízí zabezpečené připojení k síti VPN do Azure, připojení sítě site-to-site se nebude poskytovat SLA síťové šířky pásma a latencí mezi místním datovým centrem a datového centra Azure. Ke zrychlení přístupu k dokumentům, proveďte jednu z následujících akcí:
-   1. Nainstalovat místní Server SAP mezipaměti, Zavřít v místním webovém prohlížeči (možnost [to] [ dbms-guide-900-sap-cache-server-on-premises] obrázek)
+   1. Instalace serveru SAP mezipaměti on-premises blízko v místním webovém prohlížeči (možnost na obrázku níže)
    2. Konfigurace Azure ExpressRoute, které nabízí nízkou latenci a vysokorychlostní vyhrazené síťové připojení mezi místním datovým centrem a datového centra Azure.
 
 ![Možnost instalace místním serverem SAP mezipaměti](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)

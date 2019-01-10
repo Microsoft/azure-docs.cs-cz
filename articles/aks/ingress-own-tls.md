@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: iainfou
-ms.openlocfilehash: 4e3f2f33cfffeacbcbeccc4f17f55b7d0e1a985c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c4a79571d22276f4874d6b8bb5fda3d86ca5f929
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097847"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154976"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče příchozího přenosu dat protokolu HTTPS a používat vlastní certifikáty TLS ve službě Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Můžete také:
 - [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
 - Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy] [ aks-ingress-tls] nebo [se statickou veřejnou IP adresu][aks-ingress-static-tls]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek používá Helm k instalaci serveru NGINX kontroler příchozího přenosu dat a ukázkovou webovou aplikaci. Musíte mít Helm inicializován v rámci clusteru AKS a pomocí účtu služby pro Tiller. Ujistěte se, že používáte nejnovější verzi nástroje Helm. Pokyny k upgradu, najdete v článku [Helm instalace dokumentace][helm-install]. Další informace o konfiguraci a použití Helm, naleznete v tématu [instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)][use-helm].
 
@@ -179,7 +179,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-*- V* parametr v našich `curl` příkaz vypíše podrobné informace, včetně certifikát TLS přijata. Poloviny pomocí curl výstupu, můžete ověřit, že byl použit vlastní certifikát TLS. *-K* parametru pokračuje v načítání stránky, i když používáme certifikát podepsaný svým držitelem. Následující příklad ukazuje, že *vystavitele: CN=demo.azure.com; O = aks – příchozí přenos dat – protokol tls* certifikát se používá:
+*- V* parametr v našich `curl` příkaz vypíše podrobné informace, včetně certifikát TLS přijata. Poloviny pomocí curl výstupu, můžete ověřit, že byl použit vlastní certifikát TLS. *-K* parametru pokračuje v načítání stránky, i když používáme certifikát podepsaný svým držitelem. Následující příklad ukazuje, že *vystavitele: CN=Demo.Azure.com; O = aks – příchozí přenos dat – protokol tls* certifikát se používá:
 
 ```
 [...]
@@ -192,7 +192,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-Nyní přidejte */hello-world-two* cestě na adresu, jako například *https://demo.azure.com/hello-world-two*. Vrátí druhou ukázkové aplikace s vlastní název, jak je znázorněno v následujícím výstupu zhuštěnému příkladu:
+Nyní přidejte */hello-world-two* cestě na adresu, jako například `https://demo.azure.com/hello-world-two`. Vrátí druhou ukázkové aplikace s vlastní název, jak je znázorněno v následujícím výstupu zhuštěnému příkladu:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two

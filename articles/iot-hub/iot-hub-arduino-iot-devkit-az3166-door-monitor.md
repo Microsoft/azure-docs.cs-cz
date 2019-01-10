@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 501dc942fc41a4e06aa13fba2eb670f8bc0f8a21
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 293c2325f57f04c3a77b0b2b8ec2ef30e8c912b8
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597816"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156234"
 ---
 # <a name="door-monitor"></a>Dvířka knihovny monitorování          
 
@@ -68,11 +68,11 @@ Vyplnění registračního formuláře:
 
    * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid, nebo použijte již existující. Zobrazit [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-portal.md).
 
-   * **Název**: název vaší služby SendGrid. Vyberte jedinečný název, který je odlišný od jiných služeb, které máte uzavřeny.
+   * **Název**: Název vaší služby SendGrid. Vyberte jedinečný název, který je odlišný od jiných služeb, které máte uzavřeny.
 
-   * **Heslo**: služba vyžaduje, aby heslo, které se nepoužije pro všechno, co je v tomto projektu.
+   * **Heslo**: Služba vyžaduje, aby heslo, které se nepoužije pro všechno, co je v tomto projektu.
 
-   * **E-mailu**: služby SendGrid pošle ověření na této e-mailovou adresu.
+   * **e-mailu**: Služby SendGrid pošle ověření na této e-mailovou adresu.
 
 Zkontrolujte **připnout na řídicí panel** umožňuje jednodušeji najít v budoucnu tuto aplikaci a pak klikněte na **nákupní** odeslat přihlašovací formulář.
  
@@ -108,11 +108,11 @@ Přejít k vyplnění polí na formuláři pro registraci.
 
    * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid, nebo použijte již existující. Zobrazit [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-portal.md).
 
-   * **Název centra IOT**: název služby IoT hub. Vyberte jedinečný název, který je odlišný od jiných služeb, které máte uzavřeny.
+   * **Název centra IOT**: Název služby IoT hub. Vyberte jedinečný název, který je odlišný od jiných služeb, které máte uzavřeny.
 
-   * **IOT Hub Sku**: F1 (omezeno na jeden do každého předplatného) je zdarma. Další informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
+   * **Sku služby IOT Hub**: F1 (omezeno na jeden do každého předplatného) je zdarma. Další informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-   * **Z e-mailu**: Toto pole musí mít stejnou e-mailovou adresu, které jste použili při nastavování služby SendGrid.
+   * **Z e-mailu**: Toto pole musí mít stejné e-mailovou adresu, kterou jste použili při nastavování služby SendGrid.
 
 Zkontrolujte **připnout na řídicí panel** umožňuje jednodušeji najít v budoucnu tuto aplikaci a pak klikněte na **nákupní** až budete připravení pokračovat k dalšímu kroku.
  
@@ -162,7 +162,7 @@ Dále odešlete kód pro zařízení.
 
 #### <a name="macos"></a>macOS
 
-1. Přepnout do režimu konfigurace, DevKit: podržte tlačítko A pak nabízených oznámení a uvolněte tlačítko Obnovení nastavení. Na obrazovce se zobrazí "Configuration".
+1. Přepněte DevKit do režimu konfigurace: Podržte tlačítko A pak push a uvolněte tlačítko Obnovení nastavení. Na obrazovce se zobrazí "Configuration".
 
 2. Klikněte na tlačítko `Cmd+P` spuštění `task device-upload`.
 
@@ -177,7 +177,7 @@ VS Code pak spustí ověření a nahrajete Arduino náčrt DevKit.
 DevKit restartuje a spustí kód.
 
 > [!NOTE]
-> V některých případech se může zobrazit "Chyba: AZ3166: Neznámý balíček" chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tuto chybu vyřešit, přečtěte si [části vývoj nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> V některých případech se může zobrazit "Chyba: AZ3166 SE: Neznámý balíček"chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tuto chybu vyřešit, přečtěte si [části vývoj nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testování projektu
 
@@ -185,16 +185,16 @@ Program nejprve inicializuje po DevKit za přítomnosti stabilní magnetické po
 
 Po inicializaci `Door closed` se zobrazí na obrazovce. Když dojde ke změně v magnetické pole, se stav změní na `Door opened`. Pokaždé, když změny stavu dveří, dostanete e-mailové oznámení. (Tyto e-mailové zprávy může trvat až pět minut, než k přijetí.)
 
-![Magnets blízko senzor: uzavřeno dveře](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magnets blízko senzor: dveře uzavřeno")
+![Magnets blízko senzor: Dvířka uzavřeno](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magnets blízko senzor: Dvířka knihovny uzavřeno")
 
-![Magnet přesunout mimo senzor: otevřít dvířka](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "Magnet přesunout mimo senzor: otevřít dvířka knihovny")
+![Přesunout mimo senzor magnet: Dvířka otevřen](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "Magnet přesunout mimo senzor: Otevřít dvířka knihovny")
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
 Pokud narazíte na potíže, přečtěte si [nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následujících kanálů:
 
 * [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup
 

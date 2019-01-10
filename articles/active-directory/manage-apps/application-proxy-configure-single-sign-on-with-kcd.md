@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 565e7379ad12222e459bd61ed50fa38f9f9b12fc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 26b0bd3c6bec2427cd95deb05cc19c4dd3b22aa3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136236"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159532"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování do aplikací pomocí Proxy aplikace
 
@@ -66,13 +66,15 @@ Konfigurace služby Active Directory se liší v závislosti na tom, zda váš k
 1. Seznam požadovaných součástí pro práci s KCD napříč doménami, najdete v části [omezeného delegování protokolu Kerberos napříč doménami](https://technet.microsoft.com/library/hh831477.aspx).
 2. Použití `principalsallowedtodelegateto` vlastnost na serveru konektoru pro povolení Proxy aplikace pro delegování pro server konektoru. Aplikační server je `sharepointserviceaccount` a delegování server `connectormachineaccount`. Pro Windows 2012 R2 tento kód použijte jako příklad:
 
-        $connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+```powershell
+$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
 
-        Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-        Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+```
 
-Sharepointserviceaccount může být účet počítače aktualizace Service PACKU nebo účet služby, pod kterým běží fond aplikací aktualizace Service PACKU.
+`sharepointserviceaccount` může být účet počítače aktualizace Service PACKU nebo účet služby, pod kterým běží fond aplikací aktualizace Service PACKU.
 
 ## <a name="configure-single-sign-on"></a>Konfigurace jednotného přihlašování 
 1. Publikování aplikace podle pokynů v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md). Je nutné vybrat **Azure Active Directory** jako **metoda předběžného ověření**.

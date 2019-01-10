@@ -11,12 +11,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 2ab583a2cdef5df3816f6da7e0a57ee20f087a49
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043137"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158699"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB – sestavení uživatelského rozhraní pomocí Angular
 
@@ -417,7 +417,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
 2. Ve Visual Studio Code přejděte zpět do souboru **heroes.components.ts**. Všimněte si, že na řádku `constructor(private heroService: HeroService) {}` (řádek 13) má `HeroService` červené podtržení. Klikněte na `HeroService` a na levé straně bloku kódu se zobrazí žárovka. Klikněte na žárovku a pak klikněte na **Importovat HeroService z umístění ./hero.service**. nebo **Importovat HeroService z umístění /app/hero.service**.
 
-    Kliknutím na žárovku se vloží nový řádek kódu na řádku 2. Pokud řádek 2 odkazuje na složku /app/hero.service, upravte ho tak, aby odkazoval na soubor hero v místní složce (./hero.service). Řádek 2 by měl vypadat takto:
+    Kliknutím na žárovku se vloží nový řádek kódu na řádku 2. Pokud řádek 2 odkazuje na složku /app/hero.service, ho upravit tak, aby odkazoval na soubor hero v místní složce (. / hero.service). Řádek 2 by měl vypadat takto:
     
     ```javascript
     import { HeroService } from "./hero.service"

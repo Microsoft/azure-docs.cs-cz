@@ -6,24 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/28/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: f4ea5e282e9b915cffeac7daff07f5934be1a424
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 6b6d0d1a7e14035f7a1b7998ec4b3e68761539f5
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974985"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158104"
 ---
-# <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>Správa Data Box Disku (Preview) pomocí webu Azure Portal
+# <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Pomocí webu Azure portal ke správě vašeho disku Data Box
 
 Kurzy v tomto článku se týkají Microsoft Azure Data Box Disku ve verzi Preview. Článek popisuje některé komplexní pracovní postupy a úlohy správy, které se dají provádět v Data Box Disku. 
 
 Data Box Disk je možné spravovat prostřednictvím webu Azure Portal. Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Azure Portal můžete použít ke správě objednávek a disků a ke sledování stavu objednávek až do koncové fáze.
-
-> [!IMPORTANT]
-> Data Box Disk je ve verzi Preview. Než toto řešení nasadíte, přečtěte si [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="cancel-an-order"></a>Zrušení objednávky
 
@@ -80,7 +76,7 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
      ![Odstranění objednávky Data Box Disku 2](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Stáhnout expediční štítek
+## <a name="download-shipping-label"></a>Stažení expedičního štítku
 
 Pokud se zpětný expediční štítek zaslaný s vašimi disky někam zatoulá nebo ztratí, můžete si expediční štítek stáhnout. 
 
@@ -107,7 +103,7 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
     ![Úprava dodací adresy 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Upravit podrobnosti o oznámení
+## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
 
 Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí disku. Jiný uživatel zase může potřebovat oznámení o dokončení kopírování dat, aby mohl zkontrolovat, jestli se data nacházejí na účtu služby Azure Storage, a potom je odstranit ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
 

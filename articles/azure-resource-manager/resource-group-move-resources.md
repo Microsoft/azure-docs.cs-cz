@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7734ff6c5992ebb27ff63c0329afa03e5bf96a2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995078"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158852"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
-Tento článek ukazuje, jak Azure prostředky přesunout do jiného předplatného Azure nebo jiné skupiny prostředků ve stejném předplatném. Webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API můžete použít k přesunutí prostředků. 
+Tento článek ukazuje, jak Azure prostředky přesunout do jiného předplatného Azure nebo jiné skupiny prostředků ve stejném předplatném. Webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API můžete použít k přesunutí prostředků.
 
 Během operace přesunu jsou zamknuté skupiny zdrojové i cílové skupině. Zápis a odstranění operace jsou blokovány o skupinách prostředků, až do dokončení přechodu. Tento Zámek znamená, že nelze přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků, ale neznamená, že prostředky jsou zmražená. Například při přesunutí serveru SQL Server a jeho databázi do nové skupiny prostředků, aplikace, která používá databázi prostředí bez výpadků. Můžete nadále číst a zapisovat do databáze.
 
@@ -98,7 +98,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Portálu řídicích panelů
 * Power BI – jak Power BI Embedded a Power BI pracovního prostoru kolekce
 * Veřejná IP adresa – základní veřejnou IP adresu SKU je možné přesunout. Standardní veřejné IP adresy skladové položky nelze přesunout.
-* Trezor služby Recovery Services - vám musí být zaregistrované ve verzi private preview. Zobrazit [omezení Recovery Services](#recovery-services-limitations).
+* Trezor služby Recovery Services - vám musí být zaregistrované v [omezené veřejné verzi preview](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 * Mezipaměť Azure pro Redis - li ukládání do mezipaměti Azure pro instanci Redis je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).
 * Scheduler
 * Search – několik hledání prostředky nejde přesunout v různých oblastech v rámci jedné operace. Místo toho přesuňte je v samostatné operace.
@@ -305,9 +305,9 @@ Operace může běžet několik minut.
 
 ### <a name="recovery-services-limitations"></a>Omezení Recovery Services
 
-Chcete-li přesunout trezor služby Recovery Services, musíte se zaregistrovat ve verzi private preview. Vyzkoušejte si to, zapisovat do AskAzureBackupTeam@microsoft.com.
+Pro přesun trezoru služby Recovery Services, musíte se zaregistrovat [omezené veřejné verzi preview](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 
-V současné době můžete přesunout jeden trezor služby Recovery Services na oblast, najednou. Nelze přesunout trezorů, které se zálohování souborů Azure, Azure File Sync nebo SQL na virtuálních počítačích IaaS. 
+V současné době můžete přesunout jeden trezor služby Recovery Services na oblast, najednou. Nelze přesunout trezorů, které se zálohování souborů Azure, Azure File Sync nebo SQL na virtuálních počítačích IaaS.
 
 Pokud virtuální počítač čárka nepohybuje v trezoru, aktuálním bodům obnovení virtuálního počítače zůstat v trezoru, dokud nevyprší jejich platnost. Jestli se virtuální počítač přesunul v trezoru, nebo Ne, můžete obnovit virtuální počítač z historie zálohování v trezoru.
 

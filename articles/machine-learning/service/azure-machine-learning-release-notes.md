@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a67a20beff306cd23b08e1d651ab5dc4c779fd2
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: MT
+ms.openlocfilehash: a43481bf6d9c95efdb9c4bc38ed400c5fe782c17
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742758"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157509"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -271,85 +271,7 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 
 Nové aktualizace verze služby Azure Machine Learning: Další informace o této vydané verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
-## <a name="older-notes-sept-2017---jun-2018"></a>Starší poznámky: Září 2017 – červen 2018
-### <a name="2018-05-sprint-5"></a>2018-05 (sprint 5)
-
-V této verzi služby Azure Machine Learning můžete:
-+ Obrázky Vytrénovaných kvantizované verzi modelem ResNet 50 trénování klasifikátor založených na těchto funkcích a [nasazení modelu FPGA v Azure](../service/how-to-deploy-fpga-web-service.md) pro odvozování mimořádně nízkou latencí.
-
-+ Rychle sestavovat a nasazovat modely obsáhlého learningu pomocí s velmi přesnými strojového učení a [vlastní vydání balíčky Azure Machine Learning](../desktop-workbench/reference-python-package-overview.md)
-
-### <a name="2018-03-sprint-4"></a>2018-03 (sprintu 4)
-**Číslo verze**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-Mnohé z následující aktualizace probíhají jako přímé výsledky váš názor. Novoroční předsevzetí!
-
-**Důležité nové funkce a změny**
-
-- Podpora pro spouštění vašich skriptů na vzdálenou virtuální počítače s Ubuntu nativně ve svém vlastním prostředí kromě vzdáleného dockeru na základě spuštění.
-- Nové prostředí pro prostředí v aplikaci Workbench umožňuje vytvoření cílových výpočetních prostředí a spuštění konfigurace kromě naše prostředí na základě rozhraní příkazového řádku.
-![Karta prostředí](media/azure-machine-learning-release-notes/environment-page.png)
-- Přizpůsobitelné historie spuštění sestavy ![obrázek nové spuštění sestavy historie](media/azure-machine-learning-release-notes/new-run-history-reports.png)
-
-**Podrobné aktualizace**
-
-Tady je seznam podrobné aktualizace v každé oblasti komponenty služby Azure Machine Learning v tomto sprintu.
-
-#### <a name="workbench-ui"></a>Aplikace Workbench uživatelského rozhraní
-- Upravitelné sestavy historie spuštění
-  - Konfiguraci vylepšené grafu historie spuštění sestav
-    - Je možné změnit používané vstupní body
-    - Filtry nejvyšší úrovně lze přidávat a upravovat ![přidat filtry](media/azure-machine-learning-release-notes/add-filters.jpg)
-    - Grafy a statistiky můžete přidat nebo upravit (a změnit jejich uspořádání přetažením).
-    ![Vytváření nových grafů](media/azure-machine-learning-release-notes/configure-charts.png)
-
-  - CRUD pro sestavy historie spuštění
-  - Přesunout všechny existující zobrazením seznamu historie spuštění konfiguračních souborů na sestavu na straně serveru, který se chová jako kanály na spuštění z bodů vybranou položku.
-
-- Karta prostředí
-  - Snadno přidat nové cílové výpočetní prostředí a spusťte konfigurační soubory do projektu ![nový cíl Compute](media/azure-machine-learning-release-notes/add-new-environments.png)
-  - Spravovat a aktualizovat konfigurační soubory pomocí jednoduchého, založené na formulářích UX
-  - Příprava prostředí pro spuštění nové tlačítko
-
-- Vylepšení výkonu do seznamu souborů na bočním panelu
-
-#### <a name="data-preparation"></a>Příprava dat 
-- Azure Machine Learning Workbench umožňuje prohledávat pomocí známých sloupec název pro sloupec.
-
-
-#### <a name="experimentation"></a>Experimentování
-- Azure Machine Learning Workbench teď podporuje spouštění vašich skriptů nativně ve svém vlastním prostředí python nebo pyspark. Pro tuto funkci uživatel vytvoří a spravuje vlastní prostředí na vzdáleném virtuálním počítači a pomocí Azure Machine Learning Workbench můžete spouštět své skripty na, které cílí. Zobrazit [konfigurace služby experimentování ve službě Azure Machine Learning](../desktop-workbench/experimentation-service-configuration.md) 
-
-#### <a name="model-management"></a>Správa modelů
-- Podpora pro vlastní nastavení nasazení kontejnerů: Povolí, přizpůsobení image kontejneru tím, že instalace pomocí apt-get a další externí knihovny. Už nejsou omezené na pip Instalovatelné knihovny. Zobrazit [dokumentaci](../desktop-workbench/model-management-custom-container.md) pro další informace.
-  - Použití `--docker-file myDockerStepsFilename` příznak a název souboru manifestu, image nebo příkazy vytváření služby.
-  - Základní image je Ubuntu a nejde změnit.
-  - Příklad příkazu: 
-  
-    ```shell
-    $ az ml image create -n myimage -m mymodel.pkl -f score.py --docker-file mydockerstepsfile
-    ```
-
-### <a name="2018-01-sprint-3"></a>2018-01 (sprint 3) 
-**Číslo verze**: 0.1.1712.18263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-Níže jsou aktualizace a vylepšení v tomto sprintu. U velké části těchto aktualizací probíhají jako přímý výsledek zpětné vazby uživatelů. 
-
-### <a name="2017-12-sprint-2"></a>12. 2017 (sprint 2)
-**Číslo verze**: 0.1.1711.15263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-Tato verze je třetí aktualizace služby Azure Machine Learning. Tato aktualizace zahrnuje vylepšení v aplikaci workbench, rozhraní příkazového řádku (CLI) a back endové služby. Děkujeme pro odesílání úsměvy a frowns. Mnohé z následující aktualizace probíhají jako přímé výsledky váš názor. 
-
-### <a name="2017-11-sprint-1"></a>2017-11 (sprint 1) 
-**Číslo verze**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-V této verzi jsme provedli jsme vylepšení týkající se zabezpečení, stability a udržovatelnosti v aplikaci workbench, rozhraní příkazového řádku a vrstva back endové služby. 
-
-### <a name="2017-10-sprint-0"></a>2017 – 10 (sprint 0) 
-**Číslo verze**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-Tato verze je první aktualizací Azure Machine Learning Workbench po naše počáteční verzi public preview na konferenci Microsoft Ignite 2017. Spolehlivost a stabilizace jsou hlavní aktualizace v této verzi opravy. 
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si přehled služby [Azure Machine Learning](../service/overview-what-is-azure-ml.md).
+Přehled pro [služby Azure Machine Learning](../service/overview-what-is-azure-ml.md).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 3a8b0ecefe9e314e8056c941c9ef4ce32d1cbb75
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119369"
+ms.locfileid: "54159787"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -353,7 +353,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 ```
 
 ### <a name="using-liquid-templates-with-set-body"></a>Použití šablon Liquid se nastavit text
-`set-body` Zásad může být nakonfigurován pro použití [Liquid](https://shopify.github.io/liquid/basics/introduction/) šablon jazyka transfom tělo požadavku nebo odpovědi. To může být velmi účinné, pokud je potřeba zcela změnit tvar formát zprávy.
+`set-body` Zásad může být nakonfigurován pro použití [Liquid](https://shopify.github.io/liquid/basics/introduction/) šablon jazyka pro transformaci textu žádosti nebo odpovědi. To může být velmi účinné, pokud je potřeba zcela změnit tvar formát zprávy.
 
 > [!IMPORTANT]
 > Při provádění kapaliny `set-body` zásady nakonfigurované v "režimu C#". To je zvlášť důležité při věci, jako je například filtrování. Jako příklad použití Filtr kalendářních dat vyžaduje použití Pascal velká a malá písmena a C# data, například formátování:

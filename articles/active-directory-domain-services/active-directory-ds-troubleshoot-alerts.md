@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c30e18c42f310172b07995e0ad88a505a01c4218
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036134"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159600"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – řešení výstrah
 Tento článek obsahuje Průvodce řešením potíží pro všechny výstrahy, které mohou nastat ve vaší spravované doméně.
@@ -67,7 +67,7 @@ Tato chyba je obvykle způsobeno nesprávně přesun předplatného Azure na nov
 
 Tato chyba Neopravitelná. Pokud chcete vyřešit, je nutné [odstranit svoji existující spravovanou doménu](active-directory-ds-disable-aadds.md) a znovu ho vytvořte v novém adresáři. Pokud máte potíže při odstraňování, kontaktujte produktový tým na Azure Active Directory Domain Services [pro podporu](active-directory-ds-contact-us.md).
 
-## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C je spuštěna v tomto adresáři
+## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C běží v tomto adresáři
 **Zpráva s výstrahou:**
 
 *Azure AD Domain Services nelze povolit v adresáři Azure AD B2C.*
@@ -114,7 +114,7 @@ Ve virtuální síti může být počítače požadavky na prostředky Azure, kt
 4. Připojení k doméně virtuálních počítačů, aby vaše nová doména, postupujte podle [Tato příručka](active-directory-ds-admin-guide-join-windows-vm-portal.md).
 8. K zajištění, že výstraha vyřeší, zkontrolujte stav vaší domény do dvou hodin.
 
-## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Vaše předplatné Azure se nenašel.
+## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Předplatné Azure se nenašlo
 
 **Zpráva s výstrahou:**
 
@@ -128,7 +128,7 @@ Azure AD Domain Services vyžaduje předplatné funkce a nelze jej přesunout do
 2. [Odstranit vaši spravovanou doménu](active-directory-ds-disable-aadds.md) z existujícího adresáře Azure AD.
 3. Postupujte podle [Začínáme](active-directory-ds-getting-started.md) průvodce znovu vytvořit spravovanou doménu.
 
-## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Vaše předplatné Azure je deaktivované.
+## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Předplatné Azure se zakázalo
 
 **Zpráva s výstrahou:**
 
@@ -140,7 +140,7 @@ Azure AD Domain Services vyžaduje předplatné funkce a nelze jej přesunout do
 1. [Obnovení vašeho předplatného Azure](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
 2. Po prodloužení předplatného služby Azure AD Domain Services přijde oznámení z Azure na opětovné povolení vaší spravované domény.
 
-## <a name="aadds108-subscription-moved-directories"></a>AADDS108: Předplatné přesunulo adresáře
+## <a name="aadds108-subscription-moved-directories"></a>AADDS108: Přesunout předplatné adresáře
 
 **Zpráva s výstrahou:**
 
@@ -150,7 +150,7 @@ Azure AD Domain Services vyžaduje předplatné funkce a nelze jej přesunout do
 
 Přesuňte předplatné spojené s zpět na předchozí adresář Azure AD Domain Services, nebo je potřeba [odstranit vaši spravovanou doménu](active-directory-ds-disable-aadds.md) z existujícího adresáře a znovu ho vytvořte v adresáři zvolené (buď nové předplatné nebo změnit adresář Azure AD Domain Services je vaše instance ve).
 
-## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: Prostředky vaší spravované domény nebyl nalezen.
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: Nepovedlo se najít prostředky pro spravovanou doménu
 
 **Zpráva s výstrahou:**
 
@@ -179,7 +179,7 @@ Azure AD Domain Services vytvoří konkrétní prostředky při nasazování moh
 
 Tato chyba Neopravitelná. Pokud chcete vyřešit, je nutné [odstranit svoji existující spravovanou doménu](active-directory-ds-disable-aadds.md) a [znovu vytvořit vaši spravovanou doménu](active-directory-ds-getting-started.md)
 
-## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: Instanční objekt není autorizovaný.
+## <a name="aadds111-service-principal-unauthorized"></a>AADDS111: Instanční objekt není autorizovaný.
 
 **Zpráva s výstrahou:**
 
@@ -193,7 +193,7 @@ Naše instanční objekty potřebují přístup k mohli spravovat a vytvářet p
 2. Zkontrolovat přístup, který instanční objekt s ID ```abba844e-bc0e-44b0-947a-dc74e5d09022``` a udělit přístup, který byl odepřen v dřívějšímu datu.
 
 
-## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Není k dispozici dostatek IP adresa ve spravované doméně
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Ve spravované doméně není dostatek IP adres
 
 **Zpráva s výstrahou:**
 
@@ -234,7 +234,7 @@ Tato chyba Neopravitelná. Pokud chcete vyřešit, je nutné [odstranit svoji ex
 
 Tato chyba Neopravitelná. Pokud chcete vyřešit, je nutné [odstranit svoji existující spravovanou doménu](active-directory-ds-disable-aadds.md) a [znovu vytvořit vaši spravovanou doménu](active-directory-ds-getting-started.md).
 
-## <a name="aadds115-resources-are-locked"></a>AADDS115: Prostředků jsou uzamčené.
+## <a name="aadds115-resources-are-locked"></a>AADDS115: Prostředky jsou zamknuté.
 
 **Zpráva s výstrahou:**
 
@@ -245,7 +245,7 @@ Tato chyba Neopravitelná. Pokud chcete vyřešit, je nutné [odstranit svoji ex
 1.  Protokoly operací kontroly Resource Manageru na síťové prostředky (to měl dát informace na uzamčení, které brání změny).
 2.  Odeberte zámky u prostředků, tak, aby instanční objekt služby Azure AD Domain Services můžete pracovat s nimi.
 
-## <a name="aadds116-resources-are-unusable"></a>AADDS116: Jsou prostředky nepoužitelné
+## <a name="aadds116-resources-are-unusable"></a>AADDS116: Prostředky nepoužitelné
 
 **Zpráva s výstrahou:**
 
@@ -272,7 +272,7 @@ Tady je několik běžných příčin, proč se synchronizace zastaví ve spravo
 - Připojení k síti je blokován ve spravované doméně. Další informace o kontrole vaší síti pro problémy, přečtěte si, jak k [řešení potíží se skupinami zabezpečení sítě](active-directory-ds-troubleshoot-nsg.md) a [síťové požadavky pro Azure AD Domain Services](active-directory-ds-networking.md).
 -  Synchronizace hesel se nikdy nastavení nebo dokončení. Nastavení synchronizace hesel, přečtěte si téma [v tomto článku](active-directory-ds-getting-started-password-sync.md).
 
-## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: Zálohu záloha nějakou dobu
+## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: Záloha ve chvíli zálohování
 
 **Zpráva s výstrahou:**
 

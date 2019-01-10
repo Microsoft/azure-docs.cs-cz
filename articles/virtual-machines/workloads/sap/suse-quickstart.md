@@ -3,8 +3,8 @@ title: Testování SAP Netweaveru na virtuálních počítačích Microsoft Azur
 description: Testování SAP NetWeaveru na virtuálních počítačích Microsoft Azure se SUSE Linuxem
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermanndms
-manager: jeconnoc
+author: msjuergent
+manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,17 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
-ms.author: hermannd
-ms.openlocfilehash: 8a16fa9f639a6a4a17d6904d6bc9a0e31f774e0c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: juergent
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 032ab2a221f64d01af25056a4eff3ee3384de0c3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950042"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157220"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Provoz SAP NetWeaveru na virtuálních počítačích Microsoft Azure se SUSE Linuxem
-Tento článek popisuje různé věci k uvážení při používáte SAP NetWeaver na virtuálních počítačích Microsoft Azure s operačním systémem SUSE Linuxem (VM). Od 19. května 2016 se oficiálně podporuje SAP NetWeaver na virtuálních počítačích s operačním systémem SUSE Linux v Azure. Všechny podrobnosti týkající se verze Linuxu, verze jádra SAP a další požadavky najdete v SAP 1928533 poznámka "aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure".
-Další dokumentaci k SAPU ve virtuálních počítačích s Linuxem najdete tady: [použití SAPU ve virtuálních počítačů s Linuxem (VM)](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tento článek popisuje různé věci k uvážení při používáte SAP NetWeaver na virtuálních počítačích Microsoft Azure s operačním systémem SUSE Linuxem (VM). Od 19. května 2016 se oficiálně podporuje SAP NetWeaver na virtuálních počítačích s operačním systémem SUSE Linux v Azure. Všechny podrobnosti týkající se verze Linuxu, verze jádra SAP a další požadavky najdete v SAP 1928533 poznámka "aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure ".
+Další dokumentaci k SAPU ve virtuálních počítačích s Linuxem najdete tady: [Použití SAP na virtuálních počítačích s Linuxem (VM)](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Tyto informace by měly umožňuje vyhnout se některé potenciálních problémech.
 
@@ -75,7 +76,7 @@ Agentovi nazvaném WALinuxAgent je součástí SLES imagí v Tržišti Azure Mar
 * [SUSE](https://www.suse.com/communities/blog/suse-linux-enterprise-server-configuration-for-windows-azure/)
 
 ## <a name="sap-enhanced-monitoring"></a>SAP "enhanced monitoring"
-SAP "rozšířené, monitorování" je povinné předpokladem pro spuštění SAP v Azure. Podívejte se na podrobnosti v SAP mějte na paměti, 2191498 "SAP v Linuxu pomocí Azure: Enhanced Monitoring".
+SAP "rozšířené, monitorování" je povinné předpokladem pro spuštění SAP v Azure. Zkontrolujte podrobnosti v SAP mějte na paměti 2191498 "SAP v Linuxu se službou Azure: Rozšířené monitorování".
 
 ## <a name="attaching-azure-data-disks-to-an-azure-linux-vm"></a>Připojení Azure datové disky na virtuálním počítači Azure s Linuxem
 Nikdy připojení Azure datové disky na virtuálním počítači Azure s Linuxem s použitím ID zařízení. Místo toho použijte univerzálně jedinečným identifikátorem (UUID). Buďte opatrní při použití grafické nástroje pro připojení Azure datových disků, např. Zkontrolujte položky v /etc/fstab.
@@ -125,7 +126,7 @@ Další informace o Azure classic CLI a Azure Resource Manageru najdete v témat
 Oficiální certifikaci SAP Azure byla zavedena nový mechanismus pro výpočet SAP hardwarový klíč, který se používá pro licence SAP. Jádra SAP musel být upraveny, aby využívání nový algoritmus. Dřívější verze SAP jádra pro Linux neobsahuje tuto změnu kódu. Proto v určitých situacích (třeba virtuální počítač Azure změnou velikosti), změnit hardwarový klíč SAP a se už nebude platná licence SAP. Řešení je součástí novější SAP Linuxových jádrech.  Podrobné jádra opravy SAP jsou popsány v Poznámka SAP 1928533.
 
 ## <a name="suse-sapconf-package--tuned-adm"></a>Balíček operačního systému SUSE sapconf / vyladěný adm
-SUSE obsahuje balíček s názvem "sapconf", který spravuje sadu nastavení specifická pro SAP. Další informace o činnosti tohoto balíčku a jak nainstalovat a používat ho najdete v tématu: [používání sapconf k přípravě SUSE Linux Enterprise Server ke spouštění systémů SAP](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/) a [co sapconf nebo jak připravit operačním systémem SUSE Linux Enterprise Server pro systémy SAP? ](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems).
+SUSE obsahuje balíček s názvem "sapconf", který spravuje sadu nastavení specifická pro SAP. Další informace o činnosti tohoto balíčku a jak nainstalovat a používat ho naleznete v tématu:  [Příprava SUSE Linux Enterprise Server ke spouštění systémů SAP pomocí sapconf](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/) a [co sapconf nebo jak připravit operačním systémem SUSE Linux Enterprise Server pro systémy SAP?](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems).
 
 Do té doby je nový nástroj, který nahradí "sapconf – vyladěný adm". Jeden najdete další informace o tomto nástroji na dva odkazy:
 

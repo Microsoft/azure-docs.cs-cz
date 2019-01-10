@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: georgel
-ms.openlocfilehash: ca924494231f422d6edc8990ef851c9ef454cd1d
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c7b002a0730e94e9507aed273b9be4fe35de5bf0
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119998"
+ms.locfileid: "54159396"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků MySQL ve službě Azure Stack
 
@@ -45,7 +45,7 @@ Existuje několik předpokladů, které musí být splněné před nasazením po
 
   |Minimální verze služby Azure Stack|Verze poskytovatele prostředků MySQL|
   |-----|-----|
-  |Verze 1811 (1.1811.0.101)|[Poskytovatele prostředků MySQL verze 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|  
+  |Verze. 1808 (1.1808.0.97)|[Poskytovatele prostředků MySQL verze 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|  
   |Verze. 1808 (1.1808.0.97)|[Poskytovatele prostředků MySQL verze 1.1.30.0](https://aka.ms/azurestackmysqlrp11300)|
   |Verzi 1804 (1.0.180513.1)|[Poskytovatele prostředků MySQL verze 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
   |     |     |

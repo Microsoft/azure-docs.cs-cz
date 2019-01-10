@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 728152c8f9e7d4cceb4b1c8165bbf087927f58e8
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063314"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159481"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvoření cyklů, které opakování akce pracovního postupu nebo zpracování pole v Azure Logic Apps
 
@@ -42,7 +42,7 @@ Tady jsou některé aspekty při použití smyčky "Foreach":
 
 * Ve smyčkách vnořené iterací vždy postupně, ne při paralelním spuštění. Pro spouštění operací pro položky ve smyčce vnořené paralelně, vytvořit a [volat aplikaci logiky podřízené](../logic-apps/logic-apps-http-endpoint.md).
 
-* Předvídatelné výsledky z operací pro proměnné ve smyčkách získáte spuštěním těchto smyčky postupně.
+* Předvídatelné výsledky z operací pro proměnné při každé iteraci smyčky získáte spuštěním těchto smyčky postupně. Například při souběžně běžících smyčky skončí, přírůstek, snížení a připojí k proměnné operace vrátíte předvídatelné výsledky. Ale při každé iteraci ve smyčce současně spuštěné tyto operace může vrátit neočekávané výsledky. 
 
 * Použití opakování akce v "Foreach" [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
 výraz, který se odkazuje a zpracovat každou položku v poli. Pokud chcete zadat data, která není v poli, pracovní postup aplikace logiky se nezdaří. 
@@ -130,9 +130,9 @@ Ve výchozím nastavení cykly ve smyčce "Foreach" běžet paralelně. Každý 
 
    ![Smyčka "Foreach" tlačítko "..." > "Nastavení"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. Zapnout **řízení souběžnosti** nastavení. Přesunout **stupeň paralelismu** posuvníku **1**a zvolte **provádí**.
+1. V části **řízení souběžnosti**, zapnout **řízení souběžnosti** nastavení **na**. Přesunout **stupeň paralelismu** posuvníku **1**a zvolte **provádí**.
 
-   ![Zapněte nastavení "Řízení souběžnosti"](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
+   ![Zapněte řízení souběžnosti](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
 Pokud pracujete s definice JSON vaší aplikace logiky, můžete použít `Sequential` možnost tak, že přidáte `operationOptions` parametru, například:
 

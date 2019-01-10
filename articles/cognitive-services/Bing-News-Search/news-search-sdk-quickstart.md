@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: d116f2553ce35c2d4041f37cc3fe4567e1595adc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5b3e68765fbcff12dcb5337aec38623b8994882c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258759"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156795"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Rychlý start: Pomocí sady SDK vyhledávání zpráv Bingu pro vyhledávání zprávC#
 
@@ -35,14 +35,14 @@ Instalací [balíčku NuGet sady SDK Bingu pro vyhledávání zpráv](https://ww
 * Newtonsoft.Json
 
 ## <a name="news-search-client"></a>Klient pro vyhledávání zpráv
-Pokud chcete vytvořit instanci klienta `NewsSearchAPI`, přidejte direktivu using:
+Chcete-li vytvořit instanci `NewsSearchClient`, přidávat direktiva using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
 
 ```
 Potom vytvořte instanci klienta:
 ```
-var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
@@ -56,7 +56,7 @@ Parsujte zprávy vrácené ve výsledcích předchozího dotazu:
 ```
 if (newsResults.Value.Count > 0)
 {
-    var firstNewsResult = newsResults.Value.First();
+    var firstNewsResult = newsResults.Value[0];
 
     Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
     Console.WriteLine($"News result count: {newsResults.Value.Count}");
@@ -64,7 +64,7 @@ if (newsResults.Value.Count > 0)
     Console.WriteLine($"First news url: {firstNewsResult.Url}");
     Console.WriteLine($"First news description: {firstNewsResult.Description}");
     Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-    Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
+    Console.WriteLine($"First news provider: {firstNewsResult.Provider[0].Name}");
 }
 
 else
@@ -88,7 +88,7 @@ namespace NewsSrchSDK
     {
         static void Main(string[] args)
         {
-            var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+            var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
             try
             {
@@ -141,7 +141,7 @@ namespace NewsSrchSDK
 ## <a name="recent-news-freshness-and-sortby-parameters"></a>Nejnovější zprávy a parametry freshness a sortBy
 Následující kód vyhledá nejnovější zprávy pro výraz „Artificial Intelligence“ (Umělá inteligence) s využitím parametrů `freshness` a `sortBy`. Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše celkový odhadovaný počet shod (`totalEstimatedMatches`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název (`name`) zprostředkovatele.
 ```
-        public static void NewsSearchWithFilters(NewsSearchAPI client)
+        public static void NewsSearchWithFilters(NewsSearchClient client)
         {
             try
             {
@@ -184,7 +184,7 @@ Následující kód vyhledá nejnovější zprávy pro výraz „Artificial Inte
 ## <a name="category-news-safe-search"></a>Zprávy z kategorie a bezpečné hledání
 Následující kód vyhledá zprávy z kategorie filmů a televizní zábavy s využitím bezpečného hledání.  Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše kategorii (`category`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název (`name`) zprostředkovatele.
 ```
-        public static void NewsCategory(NewsSearchAPI client)
+        public static void NewsCategory(NewsSearchClient client)
         {
             try
             {
@@ -226,7 +226,7 @@ Následující kód vyhledá zprávy z kategorie filmů a televizní zábavy s v
 ## <a name="trending-topics"></a>Populární témata
 Následující kód vyhledá populární témata zpráv v Bingu. Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše název (`name`), text dotazu (`text of query`), adresu URL webu (`webSearchUrl`), adresu URL zprávy (`newsSearchUrl`) a adresu URL obrázku(`image.Url`).
 ```
-        public static void TrendingTopics(NewsSearchAPI client)
+        public static void TrendingTopics(NewsSearchClient client)
         {
             try
             {

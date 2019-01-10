@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: douglasl
-ms.openlocfilehash: 974b45566255154bddc969b2a5ab3db0d2bf4f31
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: MT
+ms.openlocfilehash: 1b9821a0115aba96f4588049273bd7a157121ded
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019278"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156625"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure ve službě Azure Data Factory
 
@@ -25,7 +25,7 @@ Aktivita funkce Azure vám umožní spustit [Azure Functions](../azure-functions
 
 ## <a name="azure-function-linked-service"></a>Služba Azure propojené – funkce
 
-Návratový typ funkce Azure musí být platný JObject. Cokoli, se nezdaří a vyvolá chybu obecný uživatel *Chyba volání koncového bodu*.
+Návratový typ funkce Azure musí být platný JObject. (Mějte na paměti, která [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) je *není* JObject.) Cokoli, se nezdaří a vyvolá chybu obecný uživatel *Chyba volání koncového bodu*.
 
 | **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |

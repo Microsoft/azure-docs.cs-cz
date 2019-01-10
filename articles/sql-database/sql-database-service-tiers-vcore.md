@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: 6a5902b8c442d83c86142bad516b862febd6522c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.date: 01/08/2019
+ms.openlocfilehash: 9d5a1493316fbfa9a703655f37a40276ee3ffaf7
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118196"
+ms.locfileid: "54156812"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
 
@@ -67,9 +67,28 @@ V nákupní model založený na virtuálních jádrech mohou vyměňovat své so
 
 ![Ceny](./media/sql-database-service-tiers/pricing.png)
 
-Pokud chcete využívat svoje současné licence v místním systému SQL Server, můžete platit jen základní cena základní infrastrukturu Azure (třeba virtuální počítač Azure se spuštěným systémem databáze) při SQL Server Database engine licence nebudou zahrnuty ve vašem vyúčtování. V určité období můžete použít místní licence pro SQL Server a Azure SQL Database. V opačném případě náklady na licence pro databázový stroj SQL Server se zahrne do ceny dané databázi nebo instanci. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure k vytvoření nebo aktualizaci vaší databáze nebo instance, existují dvě cenové možnosti, které můžete použít:
-- **BasePrice** znamená, že máte platnou licenci systému SQL Server, který chcete použít jako součást [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) a chcete platíte jenom náklady na základní infrastruktury.
-- **LicenseIncluded** znamená, že buď nemáte on-premises licenci na SQL Server, nebo nechcete používat vaše místní licence pro database nebo spravované Instance. V takovém případě se zahrnou licenci na SQL Server je ve vyúčtování. 
+S programem Azure Hybrid Benefit můžete platit jenom za základní infrastrukturu Azure pomocí stávající licence SQL Server pro databázový stroj SQL samotný (**BasePrice**) nebo platby za základní infrastrukturu a licenci systému SQL Server (**LicenseIncluded**). Můžete vybrat nebo změnit váš licenční model pomocí webu Azure portal nebo pomocí jedné z následujících rozhraní API.
+
+- Nastavení nebo aktualizaci typu licence pomocí Powershellu:
+
+  - [Nové AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
+  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
+  - [Nové AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
+
+- Nastavení nebo aktualizaci typu licence pomocí Azure CLI:
+
+  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
+  - [Vytvoření az sql mi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
+  - [aktualizace mi az sql](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+
+- Nastavení nebo aktualizaci typu licence pomocí rozhraní REST API:
+
+  - [Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
+  - [Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/update)
+  - [Spravované instance - vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
+  - [Spravovaná instance – aktualizace](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Migrace z modelu DTU do modelu virt. jader
 

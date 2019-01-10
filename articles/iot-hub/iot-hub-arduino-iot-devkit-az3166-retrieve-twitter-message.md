@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055234"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158920"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Zatřeste, zatřeste tweetu – načtení zprávy Twitteru s využitím Azure Functions
 
@@ -118,7 +118,7 @@ Nyní je nastaven připojovací řetězec, ověří a nahraje aplikace pak ji sp
 
 2. DevKit restartuje a spustí kód.
 
-Může se zobrazit "Chyba: AZ3166: Neznámý balíček" chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tento problém vyřešit, zkontrolujte ["Neznámý balíček" chyby v nejčastějších Dotazech IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+Může se zobrazit "Chyba: AZ3166 SE: Neznámý balíček"chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tento problém vyřešit, zkontrolujte ["Neznámý balíček" chyby v nejčastějších Dotazech IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testování projektu
 
@@ -167,7 +167,7 @@ Pro účely testování, tento ukázkový projekt používá předem nakonfiguro
 
 3. Použití [některé nástroje](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) k vygenerování tokenu nosiče Twitteru z těchto dvou klíčů.
 
-4. V [webu Azure portal](https://portal.azure.com/){: target = "_blank"}, dostat do **skupiny prostředků** a najít funkce Azure Functions (typ: služby App Service) pro váš projekt "Zatřesením, zatřesením". Název obsahuje vždy "zatřesením..." řetězec.
+4. V [webu Azure portal](https://portal.azure.com/){: target = "_blank"}, dostat do **skupiny prostředků** a najít funkce Azure Functions (typ: App Service) pro váš projekt "Zatřesením, zatřesením". Název obsahuje vždy "zatřesením..." řetězec.
 
    ![Funkce Azure functions](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
@@ -202,7 +202,7 @@ Nebo při spuštění kódu, existují některé blips, které způsobí restart
 Pokud máte jiné potíže, přečtěte si [nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujete nás prostřednictvím následujících kanálů:
 
 * [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ed3d21719908a4c16b92d610b8ac75ac0b235ec1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4a9ffdd9f81a7d46d3476f3395a4456dea6c0341
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968701"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156727"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Vytvoření nové instance služby Azure API Management
 
@@ -69,12 +69,12 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 1. Na webu Azure Portal vyberte **Všechny služby**.
 2. Do vyhledávacího pole zadejte `resource groups` a klikněte na výsledek.
 
-    ![Navigace do skupiny prostředků](./media/get-started-create-service-instance/00-DeleteResource-01.png)
+    ![Navigace skupin prostředků](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
 3. Vyhledejte svou skupinu prostředků a klikněte na ni.
 4. Klikněte na **Odstranit skupinu prostředků**.
 
-    ![Navigace do skupiny prostředků](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+    ![Navigace skupin prostředků](./media/get-started-create-service-instance/00-DeleteResource-02.png)
 
 5. Potvrďte odstranění zadáním názvu vaší skupiny prostředků.
 6. Klikněte na **Odstranit**.

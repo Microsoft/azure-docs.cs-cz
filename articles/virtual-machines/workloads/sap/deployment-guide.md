@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 8a552356163e9c585ce9fea18e8cd5208c26a8be
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1332a06cf955be3fe2a77194f455c9315993998c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956353"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159906"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 
@@ -113,7 +113,7 @@ ms.locfileid: "49956353"
 [deployment-guide-3.1.2]:deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab (Nasazení virtuálního počítače s použitím vlastní image)
 [deployment-guide-3.2]:deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 (Scénář 1: Nasazení virtuálního počítače na webu Azure Marketplace pro SAP)
 [deployment-guide-3.3]:deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 (Scénář 2: Nasazení virtuálního počítače s použitím vlastní image pro SAP)
-[deployment-guide-3.4]:deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (Scénář 3: Přesunutí virtuálního počítače pomocí virtuálního pevného disku není zobecněný Azure s řešením SAP v místním)
+[deployment-guide-3.4]:deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (Scénář 3: Přesun virtuálního počítače pomocí virtuálního pevného disku není zobecněný Azure s řešením SAP v místním)
 [deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e (Scénáře nasazení virtuálních počítačů pro SAP v Microsoft Azure)
 [deployment-guide-4.1]:deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (Zavedení rutin Azure Powershellu)
 [deployment-guide-4.2]:deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (Stáhnout a importovat rutiny Powershellu příslušných SAP)
@@ -421,30 +421,30 @@ Nejjednodušší způsob, jak vytvořit nový virtuální počítač pomocí ima
 Průvodce vás provede nastavením povinné parametry pro vytvoření virtuálního počítače, kromě všechny požadované prostředky, jako jsou síťovým rozhraním a účty úložiště. Zde jsou některé z těchto parametrů:
 
 1. **Základy**:
- * **Název**: název prostředku (název virtuálního počítače).
+ * **Název**: Název prostředku (název virtuálního počítače).
  * **Typ disku virtuálního počítače**: Vyberte typ disku disk s operačním systémem. Pokud chcete používat Premium Storage pro datové disky, doporučujeme používat Premium Storage pro disk s operačním systémem i.
  * **Uživatelské jméno a heslo** nebo **veřejný klíč SSH**: Zadejte uživatelské jméno a heslo uživatele, který se vytvoří během zřizování. Pro virtuální počítač s Linuxem můžete zadat veřejný klíč Secure Shell (SSH), který používáte k přihlášení k počítači.
  * **Předplatné**: Vyberte předplatné, pro kterou chcete použít ke zřízení nového virtuálního počítače.
- * **Skupina prostředků**: název skupiny prostředků pro virtuální počítač. Můžete zadat název nové skupiny prostředků nebo název skupiny prostředků, který již existuje.
- * **Umístění**: kde nasadíte nový virtuální počítač. Pokud chcete virtuální počítač připojit k vaší místní sítě, ujistěte se, že vyberete umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [síťových služeb Microsoft Azure] [ planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace SAP Netweaveru] [ planning-guide].
+ * **Skupina prostředků**: Název skupiny prostředků pro virtuální počítač. Můžete zadat název nové skupiny prostředků nebo název skupiny prostředků, který již existuje.
+ * **Umístění**: Kde nasadíte nový virtuální počítač. Pokud chcete virtuální počítač připojit k vaší místní sítě, ujistěte se, že vyberete umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [síťových služeb Microsoft Azure] [ planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace SAP Netweaveru] [ planning-guide].
 1. **Velikost**:
 
-     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage] [ planning-guide-azure-premium-storage] v [ Azure Virtual Machines, plánování a implementace SAP Netweaveru][planning-guide].
+     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage] [ planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 
 1. **Nastavení**:
   * **Storage**
     * **Typ disku**: Vyberte typ disku disk s operačním systémem. Pokud chcete používat Premium Storage pro datové disky, doporučujeme používat Premium Storage pro disk s operačním systémem i.
     * **Použití spravovaných disků**: Pokud chcete používat službu Managed Disks, vyberte Ano. Další informace o službě Managed Disks, naleznete v kapitole [Managed Disks] [ planning-guide-managed-disks] v Průvodci plánem.
-    * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte novou. Ne všechny typy úložišť fungovat pro provozování aplikací SAP. Další informace o typech úložiště najdete v tématu [Microsoft Azure Storage] [ dbms-guide-2.3] v [nasazení DBMS virtuálních počítačů Azure pro SAP NetWeaver] [ dbms-guide].
+    * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte novou. Ne všechny typy úložišť fungovat pro provozování aplikací SAP. Další informace o typech úložiště najdete v tématu [strukturu úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
   * **Síť**
-    * **Virtuální síť** a **podsítě**: virtuální počítač integrovat intranetu, vyberte virtuální síť, která je připojená k vaší místní síti.
+    * **Virtuální síť** a **podsítě**: Virtuální počítač integrovat intranetu, vyberte virtuální síť, který je připojený k vaší místní síti.
     * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejné IP adresy můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že vytvoříte skupinu zabezpečení sítě můžete líp zabezpečit přístup k vašemu virtuálnímu počítači.
     * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě s použitím skupin zabezpečení sítě][virtual-networks-nsg].
-  * **Rozšíření**: můžete nainstalovat rozšíření virtuálního počítače tak, že přidáte do nasazení. Nemusíte přidávat rozšíření v tomto kroku. Rozšíření vyžadované pro podporu SAP jsou nainstalovány později. Naleznete v kapitole [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [ deployment-guide-4.5] v této příručce.
+  * **Rozšíření**: Jejich přidáním do nasazení, můžete nainstalovat rozšíření virtuálního počítače. Nemusíte přidávat rozšíření v tomto kroku. Rozšíření vyžadované pro podporu SAP jsou nainstalovány později. Naleznete v kapitole [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [ deployment-guide-4.5] v této příručce.
   * **Vysoká dostupnost**: Vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupinami dostupnosti Azure][planning-guide-3.2.3].
   * **Monitorování**
-    * **Diagnostika spouštění**: můžete vybrat **zakázat** pro diagnostiku spouštění.
-    * **Diagnostika hostovaného operačního systému**: můžete vybrat **zakázat** pro monitorování diagnostiky.
+    * **Diagnostika spouštění**: Můžete vybrat **zakázat** pro diagnostiku spouštění.
+    * **Diagnostika hostovaného operačního systému**: Můžete vybrat **zakázat** pro monitorování diagnostiky.
 
 1. **Souhrn**:
 
@@ -472,29 +472,29 @@ Virtuální počítač můžete vytvořit pomocí jedné z šablony SAP publikov
 Na webu Azure Portal zadejte následující parametry pro šablonu:
 
 1. **Základy**:
-  * **Předplatné**: předplatné, které chcete použít k nasazení šablony.
-  * **Skupina prostředků**: Skupina prostředků k nasazení šablony. Můžete vytvořit novou skupinu prostředků, nebo můžete vybrat existující skupinu prostředků v předplatném.
+  * **Předplatné**: Předplatné se má použít k nasazení šablony.
+  * **Skupina prostředků**: Skupina prostředků chcete použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků, nebo můžete vybrat existující skupinu prostředků v předplatném.
   * **Umístění**: Pokud chcete nasadit šablonu. Pokud jste vybrali existující skupinu prostředků, se používá umístění této skupiny prostředků.
 
 1. **Nastavení**:
   * **ID systému SAP**: ID systému SAP (SID).
-  * **Typ operačního systému**: operačního systému, kterou chcete nasadit, například Windows Server 2012 R2, operačním systémem SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7.2 (RHEL 7.2) nebo Oracle Linux 7.2.
+  * **Typ operačního systému**: Operační systém, které chcete nasadit, například Windows Server 2012 R2, operačním systémem SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7.2 (RHEL 7.2) nebo Oracle Linux 7.2.
 
     Zobrazení seznamu nezobrazuje, že všechny podporované operační systémy. Další informace o podporovaných operačních systémech pro nasazení softwaru SAP, viz poznámka SAP [1928533].
-  * **Velikost systému SAP**: velikost systému SAP.
+  * **Velikost systému SAP**: Velikost systému SAP.
 
     Počet protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP bude systém vyžadovat, požádejte SAP technologické partnery nebo systémový integrátor.
-  * **Dostupnost systému** (pouze šablona třívrstvé): dostupnost systému.
+  * **Dostupnost systému** (pouze šablona třívrstvé): Dostupnost systému.
 
     Vyberte **HA** pro konfiguraci, která je vhodná pro instalaci s vysokou dostupností. Vytvoří se dvěma servery databáze a dva servery pro ABAP SAP Central Services (ASCS).
-  * **Typ úložiště** (pouze šablona dvouvrstvé): typ úložiště používat.
+  * **Typ úložiště** (pouze šablona dvouvrstvé): Typ úložiště používat.
 
     Pro větší systémy důrazně doporučujeme využít Azure Premium Storage. Další informace o typech úložiště naleznete v následujících zdrojích:
       * [Použití Azure Premium Storage SSD pro instanci SAP DBMS][2367194]
-      * [Microsoft Azure Storage] [ dbms-guide-2.3] v [nasazení DBMS virtuálních počítačů Azure pro SAP NetWeaver][dbms-guide]
+      * [Struktury úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
-  * **Uživatelské jméno správce** a **heslo správce**: uživatelské jméno a heslo.
+  * **Uživatelské jméno správce** a **heslo správce**: Uživatelské jméno a heslo.
     Nový uživatel je vytvořený pro přihlášení k virtuálnímu počítači.
   * **Nové nebo existující podsíti**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo použít existující podsítě. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá takto: /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
@@ -561,29 +561,29 @@ Nejjednodušší způsob, jak vytvořit nový virtuální počítač z bitové k
 Průvodce vás provede nastavením povinné parametry pro vytvoření virtuálního počítače, kromě všechny požadované prostředky, jako jsou síťovým rozhraním a účty úložiště. Zde jsou některé z těchto parametrů:
 
 1. **Základy**:
- * **Název**: název prostředku (název virtuálního počítače).
+ * **Název**: Název prostředku (název virtuálního počítače).
  * **Typ disku virtuálního počítače**: Vyberte typ disku disk s operačním systémem. Pokud chcete používat Premium Storage pro datové disky, doporučujeme používat Premium Storage pro disk s operačním systémem i.
  * **Uživatelské jméno a heslo** nebo **veřejný klíč SSH**: Zadejte uživatelské jméno a heslo uživatele, který se vytvoří během zřizování. Pro virtuální počítač s Linuxem můžete zadat veřejný klíč Secure Shell (SSH), který používáte k přihlášení k počítači.
  * **Předplatné**: Vyberte předplatné, pro kterou chcete použít ke zřízení nového virtuálního počítače.
- * **Skupina prostředků**: název skupiny prostředků pro virtuální počítač. Můžete zadat název nové skupiny prostředků nebo název skupiny prostředků, který již existuje.
- * **Umístění**: kde nasadíte nový virtuální počítač. Pokud chcete virtuální počítač připojit k vaší místní sítě, ujistěte se, že vyberete umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [síťových služeb Microsoft Azure] [ planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace SAP Netweaveru] [ planning-guide].
+ * **Skupina prostředků**: Název skupiny prostředků pro virtuální počítač. Můžete zadat název nové skupiny prostředků nebo název skupiny prostředků, který již existuje.
+ * **Umístění**: Kde nasadíte nový virtuální počítač. Pokud chcete virtuální počítač připojit k vaší místní sítě, ujistěte se, že vyberete umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [síťových služeb Microsoft Azure] [ planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace SAP Netweaveru] [ planning-guide].
 1. **Velikost**:
 
-     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage] [ planning-guide-azure-premium-storage] v [ Azure Virtual Machines, plánování a implementace SAP Netweaveru][planning-guide].
+     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage] [ planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 
 1. **Nastavení**:
   * **Storage**
     * **Typ disku**: Vyberte typ disku disk s operačním systémem. Pokud chcete používat Premium Storage pro datové disky, doporučujeme používat Premium Storage pro disk s operačním systémem i.
     * **Použití spravovaných disků**: Pokud chcete používat službu Managed Disks, vyberte Ano. Další informace o službě Managed Disks, naleznete v kapitole [Managed Disks] [ planning-guide-managed-disks] v Průvodci plánem.
   * **Síť**
-    * **Virtuální síť** a **podsítě**: virtuální počítač integrovat intranetu, vyberte virtuální síť, která je připojená k vaší místní síti.
+    * **Virtuální síť** a **podsítě**: Virtuální počítač integrovat intranetu, vyberte virtuální síť, který je připojený k vaší místní síti.
     * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejné IP adresy můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že vytvoříte skupinu zabezpečení sítě můžete líp zabezpečit přístup k vašemu virtuálnímu počítači.
     * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě s použitím skupin zabezpečení sítě][virtual-networks-nsg].
-  * **Rozšíření**: můžete nainstalovat rozšíření virtuálního počítače tak, že přidáte do nasazení. Nepotřebujete přidat rozšíření v tomto kroku. Rozšíření vyžadované pro podporu SAP jsou nainstalovány později. Naleznete v kapitole [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [ deployment-guide-4.5] v této příručce.
+  * **Rozšíření**: Jejich přidáním do nasazení, můžete nainstalovat rozšíření virtuálního počítače. Nepotřebujete přidat rozšíření v tomto kroku. Rozšíření vyžadované pro podporu SAP jsou nainstalovány později. Naleznete v kapitole [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [ deployment-guide-4.5] v této příručce.
   * **Vysoká dostupnost**: Vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupinami dostupnosti Azure][planning-guide-3.2.3].
   * **Monitorování**
-    * **Diagnostika spouštění**: můžete vybrat **zakázat** pro diagnostiku spouštění.
-    * **Diagnostika hostovaného operačního systému**: můžete vybrat **zakázat** pro monitorování diagnostiky.
+    * **Diagnostika spouštění**: Můžete vybrat **zakázat** pro diagnostiku spouštění.
+    * **Diagnostika hostovaného operačního systému**: Můžete vybrat **zakázat** pro monitorování diagnostiky.
 
 1. **Souhrn**:
 
@@ -611,29 +611,29 @@ Vytvoření nasazení s použitím privátní image operačního systému z webu
 Na webu Azure Portal zadejte následující parametry pro šablonu:
 
 1. **Základy**:
-  * **Předplatné**: předplatné, které chcete použít k nasazení šablony.
-  * **Skupina prostředků**: Skupina prostředků k nasazení šablony. Můžete vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků v předplatném.
+  * **Předplatné**: Předplatné se má použít k nasazení šablony.
+  * **Skupina prostředků**: Skupina prostředků chcete použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků v předplatném.
   * **Umístění**: Pokud chcete nasadit šablonu. Pokud jste vybrali existující skupinu prostředků, se používá umístění této skupiny prostředků.
 1. **Nastavení**:
   * **ID systému SAP**: ID systému SAP
-  * **Typ operačního systému**: typ operačního systému, kterou chcete nasadit (Windows nebo Linuxem).
-  * **Velikost systému SAP**: velikost systému SAP.
+  * **Typ operačního systému**: Typ operačního systému, kterou chcete nasadit (Windows nebo Linuxem).
+  * **Velikost systému SAP**: Velikost systému SAP.
 
     Počet protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP bude systém vyžadovat, požádejte SAP technologické partnery nebo systémový integrátor.
-  * **Dostupnost systému** (pouze šablona třívrstvé): dostupnost systému.
+  * **Dostupnost systému** (pouze šablona třívrstvé): Dostupnost systému.
 
     Vyberte **HA** pro konfiguraci, která je vhodná pro instalaci s vysokou dostupností. Vytvoří se dvěma servery databáze a dva servery pro ASC.
-  * **Typ úložiště** (pouze šablona dvouvrstvé): typ úložiště používat.
+  * **Typ úložiště** (pouze šablona dvouvrstvé): Typ úložiště používat.
 
     Pro větší systémy důrazně doporučujeme využít Azure Premium Storage. Další informace o typech úložiště najdete v článku na následujících odkazech:
       * [Použití Azure Premium Storage SSD pro instanci SAP DBMS][2367194]
-      * [Microsoft Azure Storage] [ dbms-guide-2.3] v [nasazení DBMS virtuálních počítačů Azure pro SAP NetWeaver][dbms-guide]
+      * [Struktury úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
-  * **Uživatelská image URI virtuálního pevného disku** (pouze šablona nespravovaný disk image): identifikátor URI privátní operační systém obrazu virtuálního pevného disku, třeba https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
-  * **Účet úložiště bitových kopií uživatele** (pouze šablona nespravovaný disk image): název účtu úložiště, kde privátní image operačního systému uložena, například &lt;accountname > v https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
-  * **userImageId** (pouze šablona image spravovaného disku): Id image spravovaného disku, kterou chcete použít
-  * **Uživatelské jméno správce** a **heslo správce**: uživatelské jméno a heslo.
+  * **Uživatelská image URI virtuálního pevného disku** (pouze šablona nespravovaný disk image): Identifikátor URI privátní operačního systému image virtuálního pevného disku, třeba https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
+  * **Účet úložiště bitových kopií uživatele** (pouze šablona nespravovaný disk image): Název účtu úložiště, kde privátní image operačního systému uložena, například &lt;accountname > v https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
+  * **userImageId** (pouze šablona image spravovaného disku): ID image spravovaného disku, kterou chcete použít
+  * **Uživatelské jméno správce** a **heslo správce**: Uživatelské jméno a heslo.
 
     Nový uživatel je vytvořený pro přihlášení k virtuálnímu počítači.
   * **Nové nebo existující podsíti**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo použít existující podsítě. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
@@ -656,7 +656,7 @@ Pokud nasazení vašeho řešení Azure je připojené k místní službě Activ
 
 V závislosti na konfiguraci místní sítě můžete potřebovat nastavit proxy server na virtuálním počítači. Pokud se váš virtuální počítač je připojený k vaší místní síti prostřednictvím sítě VPN nebo ExpressRoute, virtuální počítač nemusí být možné získat přístup k Internetu a nebudou moct stáhnout požadované rozšíření nebo shromažďování dat monitorování. Další informace najdete v tématu [proxy server nakonfigurovat][deployment-guide-configure-proxy].
 
-#### <a name="configure-monitoring"></a>Konfigurace monitorování
+#### <a name="configure-monitoring"></a>Konfigurace sledování
 
 Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Kontrola předpokladů pro monitorování SAP a požadované minimální verze jádra SAP a SAP hostitele agenta, v prostředcích uvedených v [SAP prostředky][deployment-guide-2.2].
 
@@ -665,9 +665,9 @@ Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pr
 Zkontrolujte, zda monitorování funguje, jak je popsáno v [kontroly a řešení potíží pro nastavení monitorování začátku do konce][deployment-guide-troubleshooting-chapter].
 
 
-### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>Scénář 3: Přesunutí místní virtuální počítač pomocí virtuálního pevného disku není zobecněný Azure s řešením SAP
+### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>Scénář 3: Přechod místní virtuální počítač s využitím virtuálního pevného disku není zobecněný Azure s řešením SAP
 
-V tomto scénáři máte v úmyslu přesunout konkrétního systému SAP z místního prostředí do Azure. Můžete to provést tak, že nahrajete virtuálního pevného disku obsahujícího operační systém, binární soubory SAP a nakonec DBMS binární soubory a navíc virtuální pevné disky se soubory protokolu a data DBMS, do Azure. Na rozdíl od podle scénáře popsaného v [scénář 2: nasazení virtuálního počítače s použitím vlastní image pro SAP][deployment-guide-3.3], v tomto případě zachovat název hostitele, SAP SID a SAP uživatelské účty ve virtuálním počítači Azure, protože bylo nakonfigurováno v v místním prostředí. Nemusíte zobecní operační systém. Tento scénář týká nejčastěji mezi různými místy situacích, kdy běží v místním součástí prostředí SAP a jeho součástí běží na Azure.
+V tomto scénáři máte v úmyslu přesunout konkrétního systému SAP z místního prostředí do Azure. Můžete to provést tak, že nahrajete virtuálního pevného disku obsahujícího operační systém, binární soubory SAP a nakonec DBMS binární soubory a navíc virtuální pevné disky se soubory protokolu a data DBMS, do Azure. Na rozdíl od podle scénáře popsaného v [scénář 2: Nasazení virtuálního počítače s použitím vlastní image pro SAP][deployment-guide-3.3], v tomto případě zachovat název hostitele, SAP SID a SAP uživatelské účty ve virtuálním počítači Azure, protože bylo nakonfigurováno v místním prostředí. Nemusíte zobecní operační systém. Tento scénář týká nejčastěji mezi různými místy situacích, kdy běží v místním součástí prostředí SAP a jeho součástí běží na Azure.
 
 V tomto scénáři je Agent virtuálního počítače **není** automaticky instalovanými během nasazení. Protože Agent virtuálního počítače a rozšířené monitorování rozšíření Azure pro SAP jsou potřeba ke spouštění SAP NetWeaver v Azure, musíte stáhnout, nainstalovat a povolit obě komponenty ručně po vytvoření virtuálního počítače.
 
@@ -706,24 +706,24 @@ K vytvoření nasazení pomocí privátních disk s operačním systémem na web
 Na webu Azure Portal zadejte následující parametry pro šablonu:
 
 1. **Základy**:
-  * **Předplatné**: předplatné, které chcete použít k nasazení šablony.
-  * **Skupina prostředků**: Skupina prostředků k nasazení šablony. Můžete vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků v předplatném.
+  * **Předplatné**: Předplatné se má použít k nasazení šablony.
+  * **Skupina prostředků**: Skupina prostředků chcete použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků v předplatném.
   * **Umístění**: Pokud chcete nasadit šablonu. Pokud jste vybrali existující skupinu prostředků, se používá umístění této skupiny prostředků.
 1. **Nastavení**:
   * **ID systému SAP**: ID systému SAP
-  * **Typ operačního systému**: typ operačního systému, kterou chcete nasadit (Windows nebo Linuxem).
-  * **Velikost systému SAP**: velikost systému SAP.
+  * **Typ operačního systému**: Typ operačního systému, kterou chcete nasadit (Windows nebo Linuxem).
+  * **Velikost systému SAP**: Velikost systému SAP.
 
     Počet protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP bude systém vyžadovat, požádejte SAP technologické partnery nebo systémový integrátor.
-  * **Typ úložiště** (pouze šablona dvouvrstvé): typ úložiště používat.
+  * **Typ úložiště** (pouze šablona dvouvrstvé): Typ úložiště používat.
 
     Pro větší systémy důrazně doporučujeme využít Azure Premium Storage. Další informace o typech úložiště najdete v článku na následujících odkazech:
       * [Použití Azure Premium Storage SSD pro instanci SAP DBMS][2367194]
-      * [Microsoft Azure Storage] [ dbms-guide-2.3] v [nasazení DBMS virtuálního počítače Azure pro SAP NetWeaver][dbms-guide]
+      * [Struktury úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
-  * **Identifikátor URI VHD disku operačního systému** (pouze šablona nespravovaných disků): identifikátor URI soukromý disk s operačním systémem, třeba https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
-  * **Id disku spravovaného disku operačního systému** (pouze šablona spravovaného disku): Id spravovaného disku operačního systému disku /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
+  * **Identifikátor URI VHD disku operačního systému** (pouze šablona nespravovaných disků): Identifikátor URI soukromý disk s operačním systémem, třeba https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
+  * **Id disku spravovaného disku operačního systému** (pouze šablona spravovaného disku): Id disku spravovaných disků operačního systému /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
   * **Nové nebo existující podsíti**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo použít existující podsítě. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá takto: /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
 
@@ -746,7 +746,7 @@ Pokud nasazení vašeho řešení Azure je připojené k místní službě Activ
 
 V závislosti na konfiguraci místní sítě můžete potřebovat nastavit proxy server na virtuálním počítači. Pokud se váš virtuální počítač je připojený k vaší místní síti prostřednictvím sítě VPN nebo ExpressRoute, virtuální počítač nemusí být možné získat přístup k Internetu a nebudou moct stáhnout požadované rozšíření nebo shromažďování dat monitorování. Další informace najdete v tématu [proxy server nakonfigurovat][deployment-guide-configure-proxy].
 
-#### <a name="configure-monitoring"></a>Konfigurace monitorování
+#### <a name="configure-monitoring"></a>Konfigurace sledování
 
 Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Kontrola předpokladů pro monitorování SAP a požadované minimální verze jádra SAP a SAP hostitele agenta, v prostředcích uvedených v [SAP prostředky][deployment-guide-2.2].
 
@@ -1036,7 +1036,7 @@ Tato kontrola zajišťuje, že všechny metriky výkonu, které se zobrazí uvni
 
 1.  Přihlaste se k virtuálnímu počítači Azure (pomocí účtu správce není nutné).
 1.  Otevřete okno příkazového řádku.
-1.  Na příkazovém řádku změňte adresář na instalační složku rozšířené monitorování rozšíření Azure pro SAP: C:\\balíčky\\moduly plug-in\\ Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;verze >\\vyřadit
+1.  Na příkazovém řádku změňte adresář na instalační složku rozšířené monitorování rozšíření Azure pro SAP: C:\\balíčky\\moduly plug-in\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;verze >\\vyřadit
 
   *Verze* v cestě k rozšíření monitorování se může lišit. Pokud se zobrazí složek pro více verzí rozšíření monitorování v instalační složce Nástroje, zkontrolujte konfiguraci služby AzureEnhancedMonitoring Windows a pak přejděte do složky, které jsou označeny jako *cesta ke spustitelnému souboru* .
 
@@ -1083,15 +1083,15 @@ Pokud **stav** hodnota není **OK**, postupujte podle pokynů v [Kontrola stavu 
 
   a.  Spusťte `more /var/lib/AzureEnhancedMonitor/PerfCounters`.
 
-   **Očekávaný výsledek**: vrátí seznam čítačů výkonu. Soubor by neměl být prázdný.
+   **Očekávaný výsledek**: Vrátí seznam čítačů výkonu. Soubor by neměl být prázdný.
 
  b. Spusťte `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`.
 
-   **Očekávaný výsledek**: vrátí jeden řádek, kde je chyba **žádný**, například **3; konfigurace; Chyba; 0; 0; NONE; 0; 1456416792; tst servercs;**
+   **Očekávaný výsledek**: Vrátí jeden řádek, kde je chyba **žádný**, například **3; konfigurace; Chyba; 0; 0; NONE; 0; 1456416792; tst servercs;**
 
   c. Spusťte `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`.
 
-    **Očekávaný výsledek**: vrací jako prázdný nebo neexistuje.
+    **Očekávaný výsledek**: Vrací jako prázdný nebo neexistuje.
 
 Pokud se předchozí kontrola neproběhne úspěšně, spusťte tyto další kontroly:
 
@@ -1099,21 +1099,21 @@ Pokud se předchozí kontrola neproběhne úspěšně, spusťte tyto další kon
 
   a.  Spusťte `sudo ls -al /var/lib/waagent/`.
 
-      **Očekávaný výsledek**: uvádí obsah waagent adresáře.
+      **Očekávaný výsledek**: Obsahuje seznam obsahu waagent adresáře.
 
   b.  Spusťte `ps -ax | grep waagent`.
 
-   **Očekávaný výsledek**: zobrazí podobná jednu položku: `python /usr/sbin/waagent -daemon`
+   **Očekávaný výsledek**: Zobrazí jednu položku podobně jako: `python /usr/sbin/waagent -daemon`
 
 1.   Ujistěte se, že Azure Enhanced Monitoring rozšíření je nainstalovaná a spuštěná.
 
   a.  Spusťte `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`.
 
-    **Očekávaný výsledek**: uvádí obsah adresáře rozšíření rozšířené monitorování Azure.
+    **Očekávaný výsledek**: Obsahuje seznam obsahu adresáře rozšíření rozšířené monitorování Azure.
 
   b. Spusťte `ps -ax | grep AzureEnhanced`.
 
-     **Očekávaný výsledek**: zobrazí podobná jednu položku: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
+     **Očekávaný výsledek**: Zobrazí jednu položku podobně jako: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. Nainstalujte agenta hostitele SAP, jak je popsáno v Poznámka SAP [1031096]a zkontrolujte výstup `saposcol`.
 

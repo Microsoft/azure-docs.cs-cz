@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 7aa5ccb402bf8648668a5eb00d6a740caf7bf3d4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055145"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157628"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -553,6 +553,16 @@ V případech, kdy existuje mnoho za chyby synchronizace souborů, může relace
 
 Ujistěte se, že cesta existuje, je na místním svazku NTFS a není to spojovací bod nebo existující koncový bod serveru.
 
+<a id="-2134375817"></a>**Synchronizace se nezdařila, protože verze ovladače filtru není kompatibilní s verzí agenta**  
+| | |
+|-|-|
+| **HODNOTA HRESULT** | 0x80C80277 |
+| **HRESULT (decimální)** | -2134375817 |
+| **Text chyby** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
+| **Požadována náprava** | Ano |
+
+K této chybě dochází, protože načíst verze vrstvení cloudu (StorageSync.sys) ovladače filtru není kompatibilní se službou agenta synchronizace úložiště (FileSyncSvc). Pokud byl upgradován agenta Azure File Sync, restartujte server k dokončení instalace. Pokud chyba přetrvává, odinstalujte agenta, restartujte server a znovu nainstalujte agenta Azure File Sync.
+
 <a id="-2134376373"></a>**Služba je momentálně není k dispozici.**  
 | | |
 |-|-|
@@ -875,5 +885,5 @@ Pokud není problém vyřešen, spusťte nástroj AFSDiag:
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 - [Služba soubory Azure – nejčastější dotazy](storage-files-faq.md)
-- [Řešení potíží s Azure Files problémy ve Windows](storage-troubleshoot-windows-file-connection-problems.md)
+- [Řešení potíží se službou Azure Files ve Windows](storage-troubleshoot-windows-file-connection-problems.md)
 - [Řešení potíží s Azure Files v Linuxu](storage-troubleshoot-linux-file-connection-problems.md)

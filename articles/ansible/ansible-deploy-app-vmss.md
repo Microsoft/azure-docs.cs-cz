@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: fc6b1484d43d0798f9ff70049017c8d360f027d4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4f3712a45fdb2474eedeb8d4eac034060723010d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050400"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156540"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Nasazování aplikací do škálovacích sad virtuálních počítačů v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete nasadit své aplikace do Azure. V tomto článku se dozvíte, jak do škálovací sady virtuálních počítačů (VMSS) Azure nasadit aplikaci v Javě.  
@@ -150,7 +150,7 @@ Playbook Ansible v následující části nainstaluje Java Runtime Environment v
 Předchozí ukázkový playbook Ansible můžete uložit jako `vmss-setup-deploy.yml` nebo si můžete [stáhnout úplný ukázkový playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss). 
 
 Pokud chcete použít typ připojení SSH s hesly, musíte nainstalovat program sshpass. 
-  - V případě Ubuntu 16.04 spusťte příkaz `apt-get install sshpass`.
+  - Ubuntu 16.04, spusťte příkaz `apt-get install sshpass`.
   - V případě CentOS 7.4 spusťte příkaz `yum install sshpass`.
 
 Možná se zobrazí chyba jako **Není možné použít heslo SSH místo klíče, protože je povolená kontrola klíče hostitele a sshpass tuto funkci nepodporuje. Pokud chcete tohoto hostitele spravovat, přidejte otisk tohoto hostitele do souboru known_hosts.** Pokud se zobrazí tato chyba, můžete kontrolu klíče hostitele zakázat přidáním následujícího řádku do souboru `/etc/ansible/ansible.cfg` nebo `~/.ansible.cfg`:

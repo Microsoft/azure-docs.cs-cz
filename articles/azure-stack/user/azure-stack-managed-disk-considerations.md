@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: e86e1d862644aa143046045e74ec994d42a5598e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3445974cf832b7ed594f704615482e1d9b0e351c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050162"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159362"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: rozdíly a aspekty
 
@@ -29,7 +29,7 @@ Tento článek shrnuje známé rozdíly mezi [Azure Stack Managed Disks](azure-s
 Spravované disky zjednodušují správu disků pro virtuální počítače IaaS pomocí správy [účty úložiště](../azure-stack-manage-storage-accounts.md) přidružené k diskům virtuálních počítačů.
 
 > [!Note]  
-> Spravované disky ve službě Azure Stack je k dispozici od verze. 1808.
+> Spravované disky ve službě Azure Stack je k dispozici aktualizace. 1808. Je povolené ve výchozím nastavení při vytváření virtuálních počítačů pomocí portálu Azure Stack od 1811 aktualizace.
   
 
 ## <a name="cheat-sheet-managed-disk-differences"></a>Tahák: Spravovaného disku rozdíly
@@ -67,7 +67,7 @@ Služba Azure Managed Disks zásobníku podporuje následující verze rozhraní
 
 ## <a name="known-issues"></a>Známé problémy
 
-Po použití [aktualizovat 1811](../azure-stack-update-1811.md), může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+Po použití aktualizací po. 1808, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
 
 - Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
    1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.

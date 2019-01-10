@@ -1,26 +1,23 @@
 ---
 title: Microsoft Azure Data Box Disk – přehled | Microsoft Docs
-description: Tento článek popisuje Azure Data Box Disk, cloudové řešení, které umožňuje přenést do Azure velké objemy dat
+description: Tento článek popisuje službu Azure Data Box Disk, což je cloudové řešení, které umožňuje přenášet velké objemy dat do Azure.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569442f5dfdf96f03a95f7210bfe1ed7dc3af8de
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091483"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159685"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection-preview"></a>Zabezpečení a ochrana dat Azure Data Box Disku (Preview)
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk zabezpečení a ochranu dat.
 
 Tento článek popisuje bezpečnostní funkce Azure Data Box Disku, které pomáhají chránit všechny komponenty řešení Data Box i uložená data. 
-
-> [!IMPORTANT]
-> Data Box Disk je ve verzi Preview. Než toto řešení nasadíte, přečtěte si [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="data-flow-through-components"></a>Tok dat přes jednotlivé komponenty
 
@@ -93,7 +90,7 @@ Azure Data Box Disk shromažďuje a zobrazuje osobní údaje v následujících 
 Další informace najdete v Zásadách ochrany osobních údajů společnosti Microsoft v [Centru zabezpečení](https://www.microsoft.com/trustcenter).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Projděte si [požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Disk](data-box-disk-limits.md).

@@ -3,22 +3,17 @@ title: Rychlý start – Směrování webového provozu pomocí služby Azure Ap
 description: Přečtěte si o tom, jak pomocí Azure CLI vytvořit službu Azure Application Gateway, která bude směrovat webový provoz na virtuální počítače v back-endovém fondu.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: azurecli
 ms.topic: quickstart
-ms.workload: infrastructure-services
-ms.date: 12/13/2018
+ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 59c7781efa8aaa6405ef3cb021ca2123d94ad61b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d14b8c9c752c9d41a42f092662c5f3aa88840dc5
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035487"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157713"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – rozhraní příkazového řádku Azure
 
@@ -42,7 +37,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Když vytvoříte virtuální síť, application gateway může komunikovat s ostatními prostředky. Virtuální síť můžete vytvořit současně s aplikační bránou. V tomto příkladu vytvoříte dvě podsítě: jednu pro application gateway a druhou pro virtuální počítače. 
+Když vytvoříte virtuální síť, application gateway může komunikovat s ostatními prostředky. Virtuální síť můžete vytvořit současně s aplikační bránou. V tomto příkladu vytvoříte dvě podsítě: jednu pro application gateway a druhou pro virtuální počítače. Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.
 
 Pokud chcete vytvořit virtuální síť a podsíť, můžete použít [az network vnet vytvořit](/cli/azure/network/vnet#az-network-vnet-create). Spustit [az network public-ip vytvořit](/cli/azure/network/public-ip#az-public-ip-create) vytvořit veřejnou IP adresu.
 

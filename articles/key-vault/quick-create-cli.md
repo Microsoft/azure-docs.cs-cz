@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 01/08/2019
 ms.author: barclayn
-ms.openlocfilehash: cf43dd5e0dde2a878d2668e8de27414f0bbe507a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9b57dfcd6ecd00f9f1bb8ec752e0996ee52305db
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078928"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159039"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí rozhraní příkazového řádku Azure
 
@@ -43,7 +43,7 @@ Další informace o možnostech přihlášení přes rozhraní příkazového ř
 Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *ContosoResourceGroup* v umístění *eastus*.
 
 ```azurecli
-az group create --name 'ContosoResourceGroup' --location eastus
+az group create --name "ContosoResourceGroup" --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
@@ -55,7 +55,7 @@ Dále ve skupině prostředků vytvořené v předchozím kroku vytvoříte slu�
 - Umístění **Východní USA**
 
 ```azurecli
-az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGroup' --location eastus
+az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
 ```
 
 Výstup této rutiny zobrazuje vlastnosti nově vytvořené služby Key Vault. Poznamenejte si hodnoty dvou vlastností uvedených níže:
@@ -72,7 +72,7 @@ Pokud chcete do trezoru přidat tajný klíč, stačí provést několik další
 Zadáním následujících příkazů vytvořte ve službě Key Vault tajný klíč **ExamplePassword**, který bude uchovávat hodnotu **Pa$$w0rd**:
 
 ```azurecli
-az keyvault secret set --vault-name 'Contoso-Vault2' --name 'ExamplePassword' --value 'Pa$$w0rd'
+az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "Pa$$w0rd"
 ```
 
 Nyní na toto heslo, které jste přidali do služby Azure Key Vault, můžete odkazovat pomocí jeho identifikátoru URI. Aktuální verzi získáte pomocí **https://ContosoVault.vault.azure.net/secrets/ExamplePassword**. 
@@ -80,7 +80,7 @@ Nyní na toto heslo, které jste přidali do služby Azure Key Vault, můžete o
 Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 
 ```azurecli
-az keyvault secret show --name 'ExamplePassword' --vault-name 'Contoso-Vault2'
+az keyvault secret show --name "ExamplePassword" --vault-name "Contoso-Vault2"
 ```
 
 Právě jste vytvořili službu Key Vault, uložili jste tajný klíč a načetli jste ho.

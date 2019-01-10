@@ -1,5 +1,5 @@
 ---
-title: 'QuickStart: Získejte alternativní překlady C# – Translator Text API'
+title: 'Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu dozvíte víc o získání alternativní překlady pro podmínku a také příklady použití těchto alternativní překlady pomocí rozhraní Translator Text API a .NET Core.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 034b6e102d008039ddd138798900dbee17faf51d
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 3460c1c62f26e2bb0a4a14238e110cdd363a7a87
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887946"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159566"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-c"></a>Rychlý start: Použijte k získání alternativní překlady pomocí rozhraní Translator Text APIC#
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníkuC#
 
 V tomto rychlém startu dozvíte víc o získání alternativní překlady pro podmínku a také příklady použití těchto alternativní překlady pomocí rozhraní Translator Text API a .NET Core.
 

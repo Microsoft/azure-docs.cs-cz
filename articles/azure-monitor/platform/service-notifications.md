@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2017
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: 8603ccf4643d7b1abd977cc372cde3fe24f98e07
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.openlocfilehash: e4cb22866fa2885208b912c88d56243ac7826480
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724851"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159243"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazit oznámení o stavu služby pomocí webu Azure portal
 
@@ -49,12 +49,12 @@ category | Tato vlastnost je vždy **ServiceHealth**.
 resourceId | ID prostředku ovlivněných prostředků.
 Properties.Title | Lokalizovaný název pro tuto komunikaci. Výchozí hodnota je angličtina.
 Properties.Communication | Lokalizované podrobnosti o komunikaci s značka jazyka HTML. Výchozí hodnota je angličtina.
-Properties.incidentType | Jeden z následujících hodnot: **Je vyžadována akce**, **informace**, **Incident**, **údržby**, nebo **zabezpečení**.
+Properties.incidentType | Jeden z následujících hodnot: **Je vyžadována akce**, **informační**, **Incident**, **údržby**, nebo **zabezpečení**.
 Properties.trackingId | Incident, ke kterému tato událost je přidružena. Použijte ke korelaci událostí souvisejících s incidentem.
 Properties.impactedServices | Uvozený uvozovacím znakem blob JSON, s popisem služby a oblasti vliv incident. Vlastnost obsahuje seznam služeb, z nichž každá má **ServiceName**a seznam ovlivněných oblastí, z nichž každá má **RegionName**.
 Properties.defaultLanguageTitle | Komunikace v angličtině.
 Properties.defaultLanguageContent | Komunikace v angličtině jako značka jazyka HTML nebo prostého textu.
-Properties.Stage | Možné hodnoty parametru **Incident**, a **zabezpečení** jsou **aktivní,** **Vyřešeno** nebo **RCA**. Pro **je vyžadována akce** nebo **informace** je jediná hodnota **aktivní.** Pro **údržby** jsou: **Aktivní**, **plánované**, **InProgress**, **zrušena**, **přeplánovat**, **přeložit**, nebo **kompletní**.
+Properties.Stage | Možné hodnoty parametru **Incident**, a **zabezpečení** jsou **aktivní,** **Vyřešeno** nebo **RCA**. Pro **je vyžadována akce** nebo **informativní** je jediná hodnota **aktivní.** Pro **údržby** jsou: **Aktivní**, **plánované**, **InProgress**, **zrušena**, **přeplánovat**, **přeložit**, nebo **kompletní**.
 Properties.communicationId | Komunikace, ke kterému tato událost je přidružena.
 
 ### <a name="details-on-service-health-level-information"></a>Podrobné informace o stavu úrovni služby
@@ -71,7 +71,7 @@ Properties.communicationId | Komunikace, ke kterému tato událost je přidruže
             <dd>Standardní plánovaná údržba</dd>
         </dl>
     </li>
-    <li><b>Informace o</b> (properties.incidentType == informace) <dl>
+    <li><b>Informace o</b> (properties.incidentType == informační) <dl>
             <dt>Informační</dt>
             <dd>Správce může být nutné zabránilo dopadu na stávající služby</dd>
         </dl>

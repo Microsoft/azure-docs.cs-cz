@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou SAP NetWeaver | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory se SAP Netweaverem | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP NetWeaver.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: fac22508e679c1e1c93ec62a5b120ba9c7c52317
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 607d05818966e62407795640d223f1aed2f59bbb
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162340"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156744"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Kurz: Integrace Azure Active Directory se službou SAP NetWeaver
+# <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Kurz: Integrace Azure Active Directory se SAP Netweaverem
 
 V tomto kurzu se dozvíte, jak integrovat SAP NetWeaver pomocí Azure Active Directory (Azure AD).
 
@@ -142,7 +142,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Odkaz ke stažení certifikátu](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
-6. Nahraďte **název zprostředkovatele** z T01122 k **http://T01122** a klikněte na **Uložit**.
+6. Nahraďte **název zprostředkovatele** z T01122 k `http://T01122` a klikněte na **Uložit**.
 
     > [!NOTE]
     > Ve výchozím nastavení název zprostředkovatele pochází jako <sid> <client> formátu, ale Azure AD očekává název ve formátu <protocol>://<name>, chcete-li zachovat název zprostředkovatele jako https:// doporučenými<sid> <client> povolit více SAP Moduly NetWeaver ABAP nakonfigurovat ve službě Azure AD.
@@ -215,9 +215,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 15. Na **nastavit SAP NetWeaver** tématu, zkopírujte adresu URL odpovídající podle vašich požadavků.
 
-    a. Adresa URL pro přihlášení
+    a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure AD
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -285,7 +285,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/claimsaad1.png)
 
-    ####<a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>Scénář: Vyberte SAP id uživatele na základě nakonfigurovaných e-mailové adresy v SU01. Id e-mailu v tomto případě musí být nakonfigurovaný v su01 pro každý uživatel, který vyžaduje jednotného přihlašování.
+    ####<a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>Scénář: Vyberte nakonfigurovaný e-mailovou adresu v SU01 podle id uživatele SAP. Id e-mailu v tomto případě musí být nakonfigurovaný v su01 pro každý uživatel, který vyžaduje jednotného přihlašování.
 
     a.  Snímek obrazovky podrobností NameID od SAPU.
 
@@ -377,7 +377,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     `https://<sapurl>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#`
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

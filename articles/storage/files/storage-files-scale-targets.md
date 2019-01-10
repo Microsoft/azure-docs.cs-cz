@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: af738b655b4070da1cfe7555daff82c0e40ff91c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138581"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159162"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Tento článek popisuje škálovatelnost a výkonnostní cíle pro soubory Azure a Azure File Sync.
@@ -39,11 +39,11 @@ Pomocí služby Azure File Sync jsme jste se pokusili co nejvíc návrhu pro neo
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-performance-metrics"></a>Metriky výkonu služby Azure File Sync
-Agenta Azure File Sync běží na počítače s Windows serverem, který se připojuje k sdílené složky Azure, výkonu efektivní synchronizace závisí na řadě faktorů ve vaší infrastruktuře: Windows Server a základní konfiguraci disku, šířka pásma sítě mezi serverem a Azure storage, velikost souboru, velikost celkového datové sady a aktivit na datové sadě. Protože Azure File Sync funguje na úrovni souboru, výkonové charakteristiky řešení založené na Azure File Sync se lépe měří v počet objektů (soubory a adresáře) zpracovaných za sekundu. 
+Agenta Azure File Sync běží na počítače s Windows serverem, který se připojuje k sdílené složky Azure, výkonu efektivní synchronizace závisí na řadě faktorů ve vaší infrastruktuře: Windows Server a základní konfiguraci disku, šířky pásma sítě mezi serverem a Azure storage, soubor velikost, velikost celkového datové sady a aktivity na datové sadě. Protože Azure File Sync funguje na úrovni souboru, výkonové charakteristiky řešení založené na Azure File Sync se lépe měří v počet objektů (soubory a adresáře) zpracovaných za sekundu. 
  
 Výkon pro Azure File Sync, je důležité ve dvou fázích:
 1. **Počáteční jednorázové zřizování**: Optimalizace výkonu v počátečním zřizování, najdete v tématu [připojování pomocí služby Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) podrobnosti optimální nasazení.
-2. **Probíhající synchronizace**: po dat je zpočátku nasadí do sdílené složky Azure, Azure File Sync udržuje několik koncových bodů synchronizované.
+2. **Probíhající synchronizace**: Po dat je zpočátku nasadí do sdílené složky Azure, Azure File Sync udržuje několik koncových bodů synchronizované.
 
 Při plánování nasazení pro každou z fází, níže jsou výsledky pozorovány při interním testování v systému, konfigurace
 
@@ -60,8 +60,8 @@ Při plánování nasazení pro každou z fází, níže jsou výsledky pozorov�
 | Počet objektů | 10 milionů objektů | 
 | Velikost datové sady| ~ 4 TB |
 | Průměrná velikost souboru | ~ 500 KiB (největší soubor: 100 GB) |
-| Nahrát propustnost | 15 objekty za sekundu |
-| Namespace stahování propustnost * | 350 objekty za sekundu |
+| Nahrát propustnost | 20 objekty za sekundu |
+| Namespace stahování propustnost * | 400 objekty za sekundu |
  
 * Když se vytvoří nový koncový bod serveru, agenta Azure File Sync nebude stahovat žádný obsah souboru. Nejprve synchronizuje úplný obor názvů a pak aktivační události na pozadí spojené s vracením ke stažení souborů, buď v plné výši nebo vrstvení cloudu, pokud je povoleno, nastavte na koncovém bodu serveru zásad vrstvení cloudu.
 
@@ -70,8 +70,8 @@ Při plánování nasazení pro každou z fází, níže jsou výsledky pozorov�
 | Počet objektů, které jsou synchronizovány| 125,000 objekty (klidové vytížení ~ 1 %) | 
 | Velikost datové sady| 50 GB |
 | Průměrná velikost souboru | ~ 500 KiB |
-| Nahrát propustnost | 20 objekty za sekundu |
-| Úplné stažení propustnost * | objekty 30 za sekundu |
+| Nahrát propustnost | objekty 30 za sekundu |
+| Úplné stažení propustnost * | 60 objekty za sekundu |
  
 * Pokud cloudu ovládání datových vrstev je povolená, budete pravděpodobně sledovat lepší výkon jako pouze některá data se stáhne soubor. Azure File Sync stáhne jenom data uložená v mezipaměti souborů, když se změní na žádném z koncových bodů. Vrstvené nebo nově vytvořené soubory agent nebude stahovat data souborů a místo toho synchronizuje pouze obor názvů pro všechny koncové body serveru. Agent také podporuje částečné stažení vrstvené soubory jsou přístupné uživatelem. 
  

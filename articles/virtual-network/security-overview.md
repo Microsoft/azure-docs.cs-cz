@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: b6b3111928baf7fa52a5d87d818e15302b96e790
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 52cac856fbec79842cc4661f38342cb972ea40df
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025891"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159056"
 ---
 # <a name="security-groups"></a>Skupiny zabezpečení
 <a name="network-security-groups"></a>
@@ -71,15 +71,18 @@ Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro v
 * **MicrosoftContainerRegistry** (pouze Resource Manager): Tato značka označuje předpony adres služby Microsoft Container Registry. Pokud jako hodnotu zadáte *MicrosoftContainerRegistry*, provoz směřující do služby Microsoft Container Registry se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Microsoft Container Registry pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: MicrosoftContainerRegistry.[název_oblasti]. 
 * **AzureContainerRegistry** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure Container Registry. Pokud jako hodnotu zadáte *AzureContainerRegistry*, provoz směřující do služby Azure Container Registry se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Azure Container Registry pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AzureContainerRegistry.[název_oblasti]. 
 * **Služby App Service** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure AppService. Pokud jako hodnotu zadáte *AppService*, provoz směřující do služby App Service se povolí nebo zakáže. Pokud chcete povolit přístup ke službě App Service pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AppService.[název_oblasti]. 
-* **AppServiceManagement** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure App Service Management. Pokud jako hodnotu zadáte *AppServiceManagement*, provoz směřující do služby pro správu služby App Service se povolí nebo zakáže. Pokud chcete povolit přístup ke službě pro správu služby App Service pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AppServiceManagement.[název_oblasti]. 
-* **ApiManagement** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure Api Management. Pokud jako hodnotu zadáte *ApiManagement*, provoz směřující do služby API Management se povolí nebo zakáže. Pokud chcete povolit přístup ke službě API Management pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: ApiManagement.[název_oblasti]. 
+* **AppServiceManagement** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure App Service Management. Pokud jako hodnotu zadáte *AppServiceManagement*, provoz směřující do služby pro správu služby App Service se povolí nebo zakáže. 
+* **ApiManagement** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure Api Management. Pokud jako hodnotu zadáte *ApiManagement*, provoz směřující do služby API Management se povolí nebo zakáže.  
 * **AzureConnectors** (pouze Resource Manager): Tato značka označuje předpony adres služeb Azure konektory. Pokud jako hodnotu zadáte *AzureConnectors*, provoz směřující do konektorů Azure se povolí nebo zakáže. Pokud chcete povolit přístup ke konektorům Azure pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AzureConnectors.[název_oblasti]. 
-* **GatewayManager** (pouze Resource Manager): Tato značka označuje předpony adres služeb Azure Správce brány. Pokud jako hodnotu zadáte *GatewayManager*, provoz směřující do služby Správce brány se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Správce brány pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: GatewayManager.[název_oblasti]. 
+* **GatewayManager** (pouze Resource Manager): Tato značka označuje předpony adres služeb Azure Správce brány. Pokud jako hodnotu zadáte *GatewayManager*, provoz směřující do služby Správce brány se povolí nebo zakáže.  
 * **AzureDataLake** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure Data Lake. Pokud jako hodnotu zadáte *AzureDataLake*, provoz směřující do služby Azure Data Lake se povolí nebo zakáže. 
 * **AzureActiveDirectory** (pouze Resource Manager): Tato značka označuje předpony adres AzureActiveDirectory služby. Pokud jako hodnotu zadáte *AzureActiveDirectory*, provoz směřující do služby Azure Active Directory se povolí nebo zakáže.  
+* **AzureMonitor** (pouze Resource Manager): Tato značka označuje předpony adres AzureMonitor služby. Pokud zadáte *AzureMonitor* pro hodnotu, je povolené nebo zakázané AzureMonitor přenosy. 
+* **ServiceFabric** (pouze Resource Manager): Tato značka označuje předpony adres služby ServiceFabric. Pokud zadáte *ServiceFabric* pro hodnotu, je povolené nebo zakázané ServiceFabric přenosy. 
+* **AzureMachineLearning** (pouze Resource Manager): Tato značka označuje předpony adres AzureMachineLearning služby. Pokud zadáte *AzureMachineLearning* pro hodnotu, je povolené nebo zakázané AzureMachineLearning přenosy. 
 
 > [!NOTE]
-> Značky služeb služeb Azure, označuje předpony adres z konkrétní cloudu se používají. Místní značky služeb se nepodporují v národních cloudech, pouze v globálním formátu. Například *Storage* a *Sql*.
+> Značky služeb služeb Azure, označuje předpony adres z konkrétní cloudu se používají. 
 
 > [!NOTE]
 > Pokud implementujete [koncový bod služby virtuální sítě](virtual-network-service-endpoints-overview.md) pro službu, jako je Azure Storage nebo Azure SQL Database, Azure pro tuto službu přidá [trasu](virtual-networks-udr-overview.md#optional-default-routes) k podsíti virtuální sítě. Předpony adres pro trasu jsou stejné předpony adres nebo rozsahy CIDR jako u odpovídající značky služby.

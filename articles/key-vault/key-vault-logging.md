@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: e4d5004deeff43e83406ecb5d06b2857817531c6
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2a36993e9406613ad9182d01c3681056114dca18
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074270"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159957"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vault
 
@@ -38,7 +38,7 @@ Tento kurz vám pomůže začít s protokolováním v Azure Key Vault, vytvořen
 > [!NOTE]
 > Tento kurz neobsahuje pokyny k vytvoření trezorů klíčů, klíčů nebo tajných klíčů. Další informace naleznete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) Pokyny pro rozhraní příkazového řádku pro různé platformy naleznete v [tomto ekvivalentním kurzu](key-vault-manage-with-cli2.md).
 >
-> V současné době nelze Azure Key Vault konfigurovat na portálu Azure. Místo toho použijte tyto pokyny pro Azure PowerShell.
+> Tento článek obsahuje pokyny pro Azure PowerShell pro aktualizaci protokolování diagnostiky. Ale stejné můžete povolit pomocí Azure monitoru na webu Azure Portal v **diagnostické protokoly** oddílu. 
 >
 >
 

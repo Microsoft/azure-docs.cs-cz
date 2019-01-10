@@ -8,12 +8,12 @@ ms.subservice: blob
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 61d3bcf8fd046ec1b68637bfdcc9827bb5b5d084
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 271be60bc26cf6bc9a64c459d030818d9e493a22
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263822"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158444"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Řešení pro přenos periodických dat.
  
@@ -54,7 +54,7 @@ Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 
 | Funkce                                       | Brána pole dat (preview) | Data Box Edge (preview)  | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
-| Uspořádání formuláře                                   | Virtuální zařízení             | Fyzické zařízení          | Služby na webu Azure portal, místního agenta                                                            |
+| Uspořádání formuláře                                   | Virtuální zařízení             | Fyzické zařízení          | Služby webu Azure Portal, místního agenta                                                            |
 | Hardware                                      | Vaše hypervisoru            | Získáte ho od Microsoftu    | Není k dispozici                                                            |
 | Počáteční nastavení úsilí                          | Nízká (< 30 min.)            | Střední (~ spárovat hodin) | Velké (~ dnů)                                                 |
 | Formát dat                                   | Objekty BLOB Azure, služba soubory Azure   | Objekty BLOB Azure, služba soubory Azure | [Podporuje 70 datové konektory pro úložiště dat a formáty](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|

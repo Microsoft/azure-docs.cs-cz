@@ -1,5 +1,5 @@
 ---
-title: 'QuickStart: Získejte alternativní překlady, Javy – Translator Text API'
+title: 'Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku, Javy – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu dozvíte víc o získání alternativní překlady pro podmínku a také příklady použití těchto alternativní překlady pomocí Javy a rozhraní Translator Text API.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 2c5517b470e46423631f6a63a24ceccf5de0a919
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 001aa2a813816562cdc5e95a00b858d8958a6756
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888816"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157815"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-java"></a>Rychlý start: Použití rozhraní Translator Text API zobrazíte alternativní překlady pomocí Javy
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Javy
 
 V tomto rychlém startu dozvíte víc o získání alternativní překlady pro podmínku a také příklady použití těchto alternativní překlady pomocí Javy a rozhraní Translator Text API.
 

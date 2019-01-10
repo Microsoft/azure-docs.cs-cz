@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0ad9179c5a6589df1168c5cebc3dcbd5496b9870
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: a8c371d9d221ac6232c9293f6ca3192f163dfacb
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121120"
+ms.locfileid: "54156285"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -44,7 +44,7 @@ ms.locfileid: "54121120"
 * [Cloudové služby v Azure](../../azure-monitor/app/cloudservices.md)
 * [Servery aplikace spuštěné v Dockeru](../../azure-monitor/app/docker.md)
 * [Webové jednostránkové aplikace](../../azure-monitor/app/javascript.md)
-* [Sharepoint](sharepoint.md)
+* [SharePoint](sharepoint.md)
 * [Aplikace pro klasickou plochu Windows](../../azure-monitor/app/windows-desktop.md)
 * [Jiné platformy](../../azure-monitor/app/platforms.md)
 

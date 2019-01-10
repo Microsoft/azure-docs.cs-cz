@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
-ms.translationtype: MT
+ms.openlocfilehash: 7c3a37ede07f98174191c8a4847c8a3d9075b21a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753944"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156302"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid
 
@@ -170,8 +170,8 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Typ odběratele** |  automaticky generovaný |  Předdefinovaný jako webhook. |
     | **Koncový bod odběratele** | automaticky generovaný | Použijte adresu URL koncového bodu, která se vygeneruje. | 
     | **Název** | imageresizersub | Název identifikující nový odběr událostí. | 
-
-4. Přidejte odběr událostí kliknutím na **Vytvořit**. Vytvoří se odběr událostí, který při přidání objektu blob do kontejneru *images* aktivuje funkci `imageresizerfunc`. Tato funkce změní velikost obrázků a přidá je do kontejneru *thumbnails*.
+4. *Volitelné:* V případě, že je potřeba vytvořit další kontejnery ve stejném úložišti objektů blob pro jiné účely v budoucnu, můžete použít **na základě práv subjektů filtrování** funkce v **filtry** kartu pro podrobnější cílení na objektu blob události, aby vaše aplikace function app je volána, pouze pokud objekty BLOB jsou přidány do **imagí** kontejneru zvlášť. 
+5. Přidejte odběr událostí kliknutím na **Vytvořit**. Vytvoří se odběr událostí, který při přidání objektu blob do kontejneru *images* aktivuje funkci `imageresizerfunc`. Tato funkce změní velikost obrázků a přidá je do kontejneru *thumbnails*.
 
 Teď máte nakonfigurované back-endové služby a můžete funkci změny velikosti obrázků otestovat v ukázkové webové aplikaci. 
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6357640ceeb7c5f1bde4eea85aa5265990935f4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257203"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157152"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Publikovat nabídku na Cortana Intelligence pomocí portál Cloud Partner
 
@@ -59,7 +59,7 @@ Toto ID je viditelný v adresách URL produktu. Může se skládat jenom z malý
 
 **Příklad:**
 
-Pokud vydavatel **contoso** vytvoří v rámci nabídky s ID nabídky *ukázka Cortana Intelligence*, se zobrazí v AppSource jako "https://appsource.microsoft.com/marketplace/apps/**contoso**.*Ukázka Cortana Intelligence* ? tab = Overview ".
+Pokud vydavatel **contoso** vytvoří v rámci nabídky s ID nabídky *ukázka Cortana Intelligence*, se zobrazí v AppSource jako "https://appsource.microsoft.com/marketplace/apps/**contoso**. *Ukázka Cortana Intelligence*? tab = Overview ".
 
 ### <a name="publisher-id"></a>ID vydavatele
 
@@ -153,8 +153,8 @@ Vyberte obchodní procesy, které nejlépe popisují vaše řešení. Pokud je v
 
 ### <a name="trial-info"></a>Informace o zkušební verzi
 
--   **Adresa URL zkušební verze SaaS:** zadejte adresu URL pro zkušební prostředí vaší aplikace.
--   **Adresa URL pro test jednotky zkušební verze:** zadejte adresu URL pro vaši aplikaci Test Drive prostředí.
+-   **Adresa URL zkušební verzi pro SaaS:** Zadejte adresu URL pro zkušební prostředí vaší aplikace.
+-   **Test jednotky zkušební adresa URL:** Zadejte adresu URL pro vaši aplikaci Test Drive prostředí.
 
 Další informace o zkušebních verzích najdete v tématu **typ aplikace** v další části tohoto článku.
 
@@ -292,7 +292,7 @@ Zadejte podmínky použití vaší aplikace. Zákazníci AppSource je potřeba p
 
 Vyberte systému CRM, kam se budou ukládat vaše potenciálních zákazníků. 
 
-Vyberte **Azure Table** Pokud pracujete s některou z těchto systémů CRM: Microsoft Dynamics CRM, Salesforce nebo Marketo. 
+Vyberte **Azure Table** Pokud pracujete s některou z těchto systémů CRM: Salesforce nebo Marketo, Microsoft Dynamics CRM. 
 
 Pokud chcete získat další informace o systému CRM, které chcete použít, vyberte jednu z podporovaných systémů prostřednictvím následujících odkazů.
 

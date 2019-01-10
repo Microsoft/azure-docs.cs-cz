@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 47d597188c761921817bf7e2155548157e0d2eb3
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185422"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159651"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery 
 Díky Azure monitoru pro kontejnery můžete použít grafy výkonu a stavu ke sledování těchto úloh své clustery Azure Kubernetes Service (AKS) za dvou hledisek, přímo z clusteru AKS nebo všechny AKS clusterů v rámci předplatného Azure Monitorování. Zobrazení služby Azure Container Instances (ACI) je také možné, při sledování konkrétní clusteru AKS.
@@ -98,6 +98,8 @@ Graf výkonu zobrazí čtyři metriky výkonu:
 - **Počet uzlů**: Počet uzlů a stav ze Kubernetes. Stavy uzlů clusteru, který je reprezentován *všechny*, *připravené*, a *Nepřipraveno* a můžete filtrovat jednotlivě nebo kombinaci v modulu pro výběr nad grafem. 
 - **Počet podů aktivit**: Počet podů a stav ze Kubernetes. Stavy podů reprezentované *všechny*, *čekající*, *systémem*, a *neznámý* a můžete filtrovat jednotlivě nebo v kombinaci selektor nad grafem. 
 
+Klávesy šipka vlevo/vpravo můžete cyklicky procházet každý datový bod na grafu a šipka nahoru/dolů k cyklování skrze percentilu řádky.
+
 Když přejdete na **uzly**, **řadiče**, a **kontejnery** kartu, automaticky zobrazí na pravé straně stránky se podokno vlastností.  Zobrazuje vlastnosti položky vybrané, včetně popisků definujete uspořádat objekty Kubernetes. Klikněte na **>>** propojit v podokně view\hide podokna.  
 
 ![Podokno vlastností perspektivy příklad Kubernetes](./media/container-insights-analyze/perspectives-preview-pane-01.png)
@@ -129,7 +131,7 @@ Ve výchozím nastavení, údaje o výkonu podle posledních 6 hodin, ale může
 
 ![Výběr percentilu pro filtrování dat](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
-Když najedete myší pruhový graf pod položkou **Trend** sloupce, každý panel ukazuje využití procesoru nebo paměti, podle toho, která je vybraná Metrika ukázka lhůtě 15 minut.  
+Když najedete myší pruhový graf pod položkou **Trend** sloupce, každý panel ukazuje využití procesoru nebo paměti, podle toho, která je vybraná Metrika ukázka lhůtě 15 minut. Když vyberete graf trendu pomocí klávesnice, vám pomůže kláves Alt + Page Up nebo Alt + PageDown cyklicky procházet všechny jednotlivě a získat stejné informace, jako byste to zvládli mouseover.
 
 ![Trend panelu příklad graf při přechodu myší](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: d9d94a7ece4b3758792cc0df8e013d14ac40c027
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276351"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156676"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Vytvoření ILB ASE pomocí šablon Azure Resource Manageru
 
@@ -42,7 +42,7 @@ Jsou k dispozici na Githubu příklad šablony Azure Resource Manageru a její p
 
 Většina parametrů v *azuredeploy.parameters.json* souboru jsou společné pro vytváření služeb ase s ILB, jak služby ase vázán na veřejných virtuálních IP adres.  Seznam níže volá výstupní parametry zejména nebo které jsou jedinečné, při vytváření prostředí ILB ASE:
 
-* *interalLoadBalancingMode*:  Ve většině případů sadě tuto hodnotu na 3, což znamená, že přenosy HTTP/HTTPS na portech 80/443 a ovládací prvek/datový kanál, který porty naslouchali službou FTP služby ase, bude vázán k ILB přidělenou adresu interní virtuální síti.  Pokud místo toho tato vlastnost nastavena na 2, pak pouze služba FTP související s porty (ovládací prvek a data kanály) bude vázán k adresu ILB, zatímco zůstane na veřejných virtuálních IP adres se přenosy HTTP/HTTPS.
+* *internalLoadBalancingMode*:  Ve většině případů sadě tuto hodnotu na 3, což znamená, že přenosy HTTP/HTTPS na portech 80/443 a ovládací prvek/datový kanál, který porty naslouchali službou FTP služby ase, bude vázán k ILB přidělenou adresu interní virtuální síti.  Pokud místo toho tato vlastnost nastavena na 2, pak pouze služba FTP související s porty (ovládací prvek a data kanály) bude vázán k adresu ILB, zatímco zůstane na veřejných virtuálních IP adres se přenosy HTTP/HTTPS.
 * *příponu DNS*:  Tento parametr definuje výchozí kořenové domény, který se přiřadí služby ASE.  Ve veřejné variantu služby Azure App Service, výchozí kořenové domény pro všechny webové aplikace je *azurewebsites.net*.  Ale protože ILB ASE je interní virtuální síti zákazníka, nemá smysl použít veřejné služby výchozí kořenovou doménu.  Místo toho službu ASE by měl mít výchozí kořenové domény, který dává smysl pro použití v rámci interní virtuální síti vaší společnosti.  Hypotetický společnosti Contoso Corporation může například použít výchozí kořenové domény *interní contoso.com* pro aplikace, které jsou určeny pouze byly přeložitelný a přístupná v rámci virtuální sítě společnosti Contoso. 
 * *ipSslAddressCount*:  Tento parametr je automaticky nastavena na výchozí hodnotu 0 v *azuredeploy.json* protože služeb ase s ILB mít pouze jednu adresu ILB.  Nejsou žádné explicitní adresy IP SSL pro službu ASE a proto fondu adres IP SSL pro službu ASE musí být nastavena na hodnotu nula, jinak dojde k chybě zřizování. 
 

@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 12/21/2018
+ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f9bae7ec39b8c9d52feb846360deda5a6367e3e6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 16e23f77509d2402f765981b39a30e08a2309f68
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038564"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156523"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure portal
 
@@ -54,7 +54,7 @@ U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální s
 
     - **Adresní prostor**: Zadejte *10.0.0.0/16* pro adresní prostor virtuální sítě.
 
-    - **Název podsítě**: Zadejte *myAGSubnet* název podsítě.
+    - **Název podsítě**: Zadejte *myAGSubnet* název podsítě.<br>Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.
 
     - **Rozsah adres podsítě**: Zadejte *10.0.0.0/24* pro rozsah adres podsítě.
 

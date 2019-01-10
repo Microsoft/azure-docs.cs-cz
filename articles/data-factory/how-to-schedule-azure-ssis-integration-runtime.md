@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 1/8/2019
+ms.date: 1/9/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: c1dfc4ed969735be26ae075900cd850e016afffa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9f1ee309156a39078ffdfeed2c75d86476ac8b48
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107578"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158648"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak spustit a zastavit prostředí Azure-SSIS Integration Runtime podle plánu
 Tento článek popisuje, jak naplánovat spuštění a zastavení prostředí Azure-SSIS Integration Runtime (IR) pomocí Azure Data Factory (ADF). Prostředí Azure-SSIS IR je ADF výpočetní prostředky, které jsou vyhrazené pro spouštění balíčků SQL Server Integration Services (SSIS). Spuštění prostředí Azure-SSIS IR s náklady s ním spojená. Proto je obvykle chcete spustit prostředí IR jenom v případě, že budete muset spouštění balíčků služby SSIS v Azure a zastavit prostředí IR, když ho už není nutné. Můžete použít ADF uživatelské rozhraní (UI) / aplikaci nebo prostředí Azure PowerShell potřeba [ručně spustit nebo zastavit prostředí IR](manage-azure-ssis-integration-runtime.md)).
@@ -86,7 +86,7 @@ Pokud vytvoříte třetí aktivační událost, která je naplánované spoušt�
    
 2. V **aktivity** sady nástrojů, rozbalte **Obecné** nabídky a přetáhnout **webové** aktivity na plochu návrháře kanálu. V **Obecné** kartě okna vlastnosti aktivity, změňte název aktivity na **startMyIR**. Přepnout na **nastavení** kartu, a proveďte následující akce.
 
-    1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, který se spustí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. Alternativně je můžete také zkopírujte a vložte ID prostředku prostředí IR z jeho monitorování stránky na ADF uživatelského rozhraní nebo aplikaci nahradit následující část výše zobrazenou adresu URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
+    1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, který se spustí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` Alternativně může zkopírujte a vložte ID prostředku prostředí IR z jeho monitorování stránky na ADF uživatelského rozhraní nebo aplikaci nahradit následující část výše zobrazenou adresu URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
        ![ID prostředku prostředí IR služby SSIS ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
@@ -99,7 +99,7 @@ Pokud vytvoříte třetí aktivační událost, která je naplánované spoušt�
   
 3. Klonovat první kanál vytvořit druhý certifikát, mění se název aktivity na **stopMyIR** a nahraďte následující vlastnosti.
 
-    1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, která ukončí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
+    1. Pro **URL**, zadejte následující adresu URL pro rozhraní REST API, která ukončí prostředí Azure-SSIS IR, nahrazení `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, a `{integrationRuntimeName}` skutečnými hodnotami pro vaše prostředí IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
     2. Pro **tělo**, zadejte `{"message":"Stop my IR"}`. 
 

@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f971a1bed0391e809e19ff5bb0508d153319faf4
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 357fa8a34afc8b426d308940462e22895130169f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093999"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158767"
 ---
-# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrácení Azure Data Box Disku a ověření nahrání dat do Azure
+# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrátí disku Azure Data Box a ověřte nahrání dat do Azure
 
-Toto je poslední kurz ze série Nasazení Azure Data Box Disku. V tomto kurzu se naučíte, jak:
+Toto je poslední kurzu této série: Nasazení disku Azure Data Box. V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > * Odeslání Data Box Disku do Microsoftu
@@ -27,7 +27,7 @@ Toto je poslední kurz ze série Nasazení Azure Data Box Disku. V tomto kurzu s
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že jste dokončili [kurz, který se týká kopírování dat na Azure Data Box Disk a ověření](data-box-disk-deploy-copy-data.md).
+Než začnete, ujistěte se, že jste dokončili [kurzu: Kopírování dat do Azure Data Box Disk a ověřte](data-box-disk-deploy-copy-data.md).
 
 ## <a name="ship-data-box-disk-back"></a>Odeslání Data Box Disku zpátky
 
@@ -80,7 +80,7 @@ Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiš
 
 Jakmile se kopírování dokončí a ověříte, že data jsou v účtu úložiště Azure, disky se bezpečně vymažou v souladu se standardem NIST. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d3b039c30557499233eec72d7c560ad4bf49a776
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747911"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157203"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
@@ -168,15 +168,15 @@ SELECT * FROM devices.modules
 Nepovolit jsme spojení mezi zařízeními a devices.modules kolekce. Pokud chcete dotaz dvojčaty modulů napříč zařízeními, můžete to udělat na základě značek. Tento dotaz vrátí všechny dvojčaty modulů napříč všemi zařízeními se stavem prohledávání:
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning'
+SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 ```
 
 Tento dotaz vrátí všechny dvojčaty modulů s kontroly stavu, ale pouze na zadané určité podskupiny zařízení:
 
 ```sql
-Select * from devices.modules 
-  where properties.reported.status = 'scanning' 
-  and deviceId IN ['device1', 'device2']
+SELECT * FROM devices.modules 
+  WHERE properties.reported.status = 'scanning' 
+  AND deviceId IN ['device1', 'device2']
 ```
 
 ### <a name="c-example"></a>Příklad jazyka C#
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM – klauzule
 
-**z < from_specification >** klauzule může převzít jenom dvě hodnoty: **ze zařízení** na dvojčata zařízení dotazu, nebo **z devices.jobs** na podrobnosti o dotazu úlohy na zařízení.
+**z < from_specification >** klauzule může převzít jenom dvě hodnoty: **ZE zařízení** na dvojčata zařízení dotazu, nebo **z devices.jobs** na podrobnosti o dotazu úlohy na zařízení.
 
 
 ## <a name="where-clause"></a>Klauzule WHERE

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vyhledání alternativních překladů, Go – Translator Text API'
+title: 'Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku přejít – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí rozhraní Translator Text API s Go.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: bcda716d143bd675f9510b1ecf5974ab9c28a394
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c1a75a32e60e337d07bda9d6f6d39efa58c679e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000591"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158563"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-go"></a>Rychlý start: Použití rozhraní Translator Text API zobrazíte alternativní překlady pomocí jazyka Go
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí jazyka Go
 
 V tomto rychlém startu budete zjistěte, jak najít alternativní překlady a příklady použití pro zadaný text pomocí Go a rozhraní REST Translator Text API.
 
@@ -102,7 +102,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Slovníkové vyhledávání](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Vyhledávání slovníku](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury vaší tělo žádosti
 

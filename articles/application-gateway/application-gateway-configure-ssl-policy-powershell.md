@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: 7afa628ea455aa28f1717de8da66b631baeee4f1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a93a3db3010fb9e9d2270414cadeae86b70bb8d0
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870449"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157458"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurace protokolu SSL verze zásad a šifer sady ve službě Application Gateway
 
@@ -106,7 +106,7 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>Nakonfigurovat vlastní zásady protokolu SSL
 
-Když konfigurujete vlastní zásady protokolu SSL, můžete předat následující parametry: PolicyType, MinProtocolVersion, CipherSuite a aplikační brány. Pokud se pokusíte předat další parametry, dojde k chybě při vytváření nebo aktualizaci Application Gateway. 
+Když konfigurujete vlastní zásady protokolu SSL, předejte následující parametry: PolicyType, MinProtocolVersion, CipherSuite a aplikační brány. Pokud se pokusíte předat další parametry, dojde k chybě při vytváření nebo aktualizaci Application Gateway. 
 
 Následující příklad nastaví vlastní zásady protokolu SSL ve službě application gateway. Nastaví verzi protokolu minimální `TLSv1_1` a umožňuje následující šifrovací sady:
 
@@ -139,7 +139,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Vytvoření služby application gateway s předem definované zásady protokolu SSL
 
-Při konfiguraci zásad předdefinované SSL, můžete předat následující parametry: PolicyType, PolicyName a aplikační brány. Pokud se pokusíte předat další parametry, dojde k chybě při vytváření nebo aktualizaci Application Gateway.
+Konfigurace zásad SSL předdefinované, předáte následující parametry: PolicyType, PolicyName a aplikační brány. Pokud se pokusíte předat další parametry, dojde k chybě při vytváření nebo aktualizaci Application Gateway.
 
 Následující příklad vytvoří novou aplikační bránu s předem definované zásady protokolu SSL.
 
@@ -196,7 +196,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName $rg.Re
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Aktualizace existující aplikační bráně pomocí předdefinované zásady protokolu SSL
 
-Pokud chcete nastavit vlastní zásady protokolu SSL, předat následující parametry: **PolicyType**, **MinProtocolVersion**, **CipherSuite**, a **ApplicationGateway**. Nastavení zásad protokolu SSL předdefinované, předat následující parametry: **PolicyType**, **PolicyName**, a **ApplicationGateway**. Pokud se pokusíte předat další parametry, dojde k chybě při vytváření nebo aktualizaci Application Gateway.
+Pokud chcete nastavit vlastní zásady protokolu SSL, předejte následující parametry: **PolicyType**, **MinProtocolVersion**, **CipherSuite**, a **ApplicationGateway**. Nastavení zásad protokolu SSL předdefinované, předejte následující parametry: **PolicyType**, **PolicyName**, a **ApplicationGateway**. Pokud se pokusíte předat další parametry, dojde k chybě při vytváření nebo aktualizaci Application Gateway.
 
 V následujícím příkladu jsou ukázky kódu pro vlastní zásady a předdefinovaných zásad. Zrušením komentáře u zásady, kterou chcete použít.
 
@@ -207,7 +207,7 @@ $RG = "YourResourceGroupName"
 
 $AppGw = get-azurermapplicationgateway -Name $AppGWname -ResourceGroupName $RG
 
-# Choose either custom policy or prefedined policy and uncomment the one you want to use.
+# Choose either custom policy or predefined policy and uncomment the one you want to use.
 
 # SSL Custom Policy
 # Set-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256" -ApplicationGateway $AppGw
