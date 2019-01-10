@@ -5,17 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6280544a42d0d5012b01446ec8c3bc386ef861dd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7673b115a3ad2e6ca7aec34b1cfabfb38d2a16f4
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428415"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191356"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
+
 Služba Azure Analysis Services použije Azure Active Directory (Azure AD) pro ověření identity management a uživatele. Každý uživatel vytváření, Správa nebo připojení k Azure Analysis Services server musí mít platné uživatelské identity [tenanta Azure AD](../active-directory/fundamentals/active-directory-administer.md) ve stejném předplatném.
 
 Služba Azure Analysis Services podporuje [spolupráce B2B ve službě Azure AD](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md). S B2B uživatele mimo organizaci pracovního prostoru může pozvat jako hosty do adresáře služby Azure AD. Hosté může být z jiného tenanta adresáře Azure AD nebo libovolnou platnou e-mailovou adresu. Jednou pozvat a uživatel přijme podmínky e-mailové pozvánce odeslat e-mailem z Azure, identitu uživatele se přidá do tenanta adresáře. Tyto identity se dají přidat do skupiny zabezpečení nebo jako členy role serveru správce nebo databáze.
@@ -23,6 +24,7 @@ Služba Azure Analysis Services podporuje [spolupráce B2B ve službě Azure AD]
 ![Architektura ověřování služby Azure Analysis Services](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
 ## <a name="authentication"></a>Authentication
+
 Všechny klientské aplikace a nástroje použít jeden nebo více služby Analysis Services [klientské knihovny](analysis-services-data-providers.md) (AMO, MSOLAP, ADOMD) pro připojení k serveru. 
 
 Všechny tři klientské knihovny pro podporu interaktivní tok Azure AD a metod jako neinteraktivní ověřování. Dvě metody jako neinteraktivní, Active Directory heslo a metody Integrované ověřování Active Directory můžete použít v aplikacích využívající AMOMD a MSOLAP. Tyto dvě metody nikdy způsobit automaticky otevíraná okna.
@@ -36,6 +38,7 @@ Power BI Desktopu, SSDT a SSMS podporují univerzálního ověřování Active D
 Pokud se přihlášení do Azure pomocí účtu Windows a univerzální ověřování není vybraná nebo k dispozici (Excel), [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) je povinný. S federací Azure AD a ověření pomocí místních přihlašovacích údajů uživatele služeb Office 365 a mít přístup k prostředkům Azure.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
+
 Servery služby Azure Analysis Services podporují připojení od [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a vyšší s použitím ověřování Windows, ověřování hesla Active Directory a univerzálního ověřování Active Directory. Obecně se doporučuje, že protože se pomocí univerzálního ověřování Active Directory:
 
 *  Podporuje metody interaktivní i neinteraktivní ověřování.
@@ -45,12 +48,15 @@ Servery služby Azure Analysis Services podporují připojení od [SSMS V17.1](h
 *  Podporuje Vícefaktorové ověřování (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím s celou řadou možností ověření: telefonní hovor, textová zpráva, čipové karty s PIN kódu nebo oznámení přes mobilní aplikaci. Interaktivní MFA s Azure AD může vést k místní dialogové okno pro ověření.
 
 ### <a name="sql-server-data-tools-ssdt"></a>SQL Server Data Tools (SSDT)
+
 Rozšíření SSDT připojuje ke službě Azure Analysis Services pomocí univerzálního ověřování Active Directory podporující vícefaktorové ověřování. Uživatelům se výzva k přihlášení do Azure při prvním nasazení. Uživatelé musí přihlásit do Azure pomocí účtu s oprávněními správce serveru na serveru jsou nasazení. Při přihlašování do Azure poprvé, se přiřadí token. Rozšíření SSDT ukládá do mezipaměti token v paměti pro budoucí připojování.
 
 ### <a name="power-bi-desktop"></a>Power BI Desktopu
+
 Power BI Desktop se připojí ke službě Azure Analysis Services pomocí univerzálního ověřování Active Directory podporující vícefaktorové ověřování. Uživatelům se výzva k přihlášení k Azure pro první připojení. Uživatelé se musíte přihlásit do Azure pomocí účtu, který je součástí Správce serveru nebo databázové role.
 
 ### <a name="excel"></a>Excel
+
 Uživatelé aplikace Excel můžete připojit k serveru pomocí účtu Windows, organizace ID (e-mailovou adresu) nebo externí e-mailovou adresu. Identity externího e-mailu musí existovat ve službě Azure AD jako uživatele typu Host.
 
 ## <a name="user-permissions"></a>Uživatelská oprávnění
@@ -65,15 +71,12 @@ Uživatelé aplikace Excel můžete připojit k serveru pomocí účtu Windows, 
 
 Role na této úrovni se vztahují na uživatele nebo účty, které potřebují k provádění úloh, které je možné dokončit na portálu nebo pomocí šablon Azure Resource Manageru. Další informace najdete v tématu [řízení přístupu na základě Role](../role-based-access-control/overview.md). 
 
-
 ## <a name="database-roles"></a>Databázové role
 
  Role definované pro tabulkový model jsou databázové role. To znamená role obsahují členy skládající se z Azure AD, uživatelé a skupiny zabezpečení, které mají konkrétní oprávnění, které definují akce tyto členy můžete provést modelové databáze. Databázová role se vytvoří jako samostatný objekt v databázi a použije se pouze na databázi, ve které byla vytvořena.   
   
  Ve výchozím nastavení při vytváření nového projektu tabulkového modelu, model projektu nemá žádné role. Role je možné definovat pomocí Správce rolí dialogových oken v sadě SSDT. Pokud role jsou definované při návrhu modelu projektu, budou použity pouze do databáze pracovního prostoru modelu. Pokud je model nasazený, stejné role se použijí na nasazeného modelu. Po nasazení model serveru a databáze správci můžou spravovat role a členy s použitím aplikace SSMS. Další informace najdete v tématu [spravovat databázové role a uživatele](analysis-services-database-users.md).
   
-
-
 ## <a name="next-steps"></a>Další postup
 
 [Správa přístupu k prostředkům pomocí skupin Azure Active Directory](../active-directory/fundamentals/active-directory-manage-groups.md)   

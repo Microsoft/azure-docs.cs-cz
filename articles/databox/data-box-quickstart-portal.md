@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 10/04/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: ae6ab0eb4c966ef57c7859098217b5b6b560614b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385832"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188551"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Boxu pomocí webu Azure Portal
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box pomocí webu Azure portal
 
 Tento rychlý start popisuje, jak nasadit Azure Data Box pomocí webu Azure Portal. V tomto postupu najdete informace o zapojení, konfiguraci a kopírování dat do Data Boxu, aby se data nahrála do služby Azure. Rychlý start se provádí na webu Azure Portal a přes místní webové uživatelské rozhraní zařízení.
 
-Podrobné pokyny k nasazení a sledování najdete v článku [Kurz: Objednání Azure Data Boxu](data-box-deploy-ordered.md).
+Pro podrobné podrobný postup nasazení a pokyny pro sledování, přejděte na [kurzu: Objednávky zařízení Azure Data Box](data-box-deploy-ordered.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,7 +28,6 @@ Než začnete:
 - Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
     - Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Consumption – průběžné platby. Další informace o [předplatných Azure s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/).
     - Microsoft Azure Sponsorship. Získejte další informace o [programu Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 
 - Pokud chcete vytvořit objednávku Data Boxu, potřebujete mít u předplatného přístup vlastníka nebo přispěvatele.
@@ -42,7 +41,7 @@ Než začnete:
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
     - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
 
@@ -127,7 +126,7 @@ Dokončení tohoto kroku trvá 2 až 3 minuty.
 
 - Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno**, můžete objednávku odstranit. Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili Azure Data Box, který vám má pomoci s importem dat do Azure. Další informace o správě Azure Data Boxu získáte v následujícím kurzu: 
 

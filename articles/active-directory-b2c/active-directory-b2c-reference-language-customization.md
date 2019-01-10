@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e5bf7cc199fc8a439b5071faa89cce2e3ed47a75
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e115db18770ef304d823ff9c35d7d2cf302d5ccf
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724311"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187758"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -27,8 +27,8 @@ Pomocí přizpůsobení jazyka vyberte jazyky, které je k dispozici v toku uži
 Nemusíte tuto úroveň kontroly nad jaké jazyky se zobrazí vaše zákazníky. Pokud nezadáte `ui_locales` parametr, závisí uživatelské prostředí nastavení svého prohlížeče.  Můžete řídit jazyky, které toku uživatele si je přeložit na tak, že ho přidáte jako podporovaný jazyk. Pokud prohlížeč zákazníka je nastavena na Zobrazit jazyk, který nechcete podporu, zobrazí se místo toho jazyk, který jste vybrali jako výchozí v podporované jazykové verze.
 
 - **Zadaný jazyk uživatelského rozhraní národní prostředí**: Po povolení přizpůsobení jazyka toku uživatele si je přeložit na jazyk, který je zde uveden.
-- **Prohlížeč požadovaný jazyk**: Pokud žádná `ui_locales` byl zadán parametr, toku uživatele si je přeložit na jazyk prohlížeče požadovaný *Pokud daný jazyk podporován*.
-- **Výchozí jazyk zásad**: Pokud v prohlížeči neurčuje jazyk nebo Určuje jednu, která není podporována, tok uživatele se překládá na výchozí jazyk toku uživatele.
+- **Prohlížeč požadovaný jazyk**: Pokud ne `ui_locales` byl zadán parametr, toku uživatele si je přeložit na jazyk prohlížeče požadovaný *Pokud daný jazyk podporován*.
+- **Výchozí jazyk zásad**: Pokud v prohlížeči neurčuje jazyk nebo Určuje jednu, která není podporována, tok uživatele je přeložit na výchozí jazyk tok uživatele.
 
 >[!NOTE]
 >Pokud používáte vlastní uživatelské atributy, budete muset zadat svoje vlastní překlady. Další informace najdete v tématu [přizpůsobení vašich řetězců](#customize-your-strings).
@@ -175,7 +175,7 @@ Microsoft aktuálně neposkytuje podporu pro jazyky zprava doleva. Můžete to p
 ### <a name="social-identity-provider-translations"></a>Překlady zprostředkovatele sociálních identit
 Společnost Microsoft poskytuje `ui_locales` OIDC parametr přihlašování přes sociální sítě. Ale někteří poskytovatelé sociálních identit, včetně Facebooku nebo Googlu, není případném dalším sdílení dodržovat je. 
 ### <a name="browser-behavior"></a>Chování prohlížeče
-Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podporovaný jazyk, zobrazí se před výchozí. Edge aktuálně neuvede v požadavku jazyk a přejde přímo na výchozí jazyk.
+Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podporovaný jazyk, zobrazí se před výchozí. Microsoft Edge aktuálně neuvede v požadavku jazyk a přejde přímo na výchozí jazyk.
 
 ### <a name="supported-languages"></a>Podporované jazyky
 

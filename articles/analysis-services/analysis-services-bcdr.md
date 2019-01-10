@@ -5,21 +5,22 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 657800c6f96560c68e690ccbd1dfb166c5034812
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 51a0f560a0e4b6ff791d5ed3f9f221eb2eeb9b4d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430132"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191339"
 ---
 # <a name="analysis-services-high-availability"></a>Vysoká dostupnost služby analýzy
+
 Tento článek popisuje, je ujištěním, vysoká dostupnost pro servery služby Azure Analysis Services. 
 
-
 ## <a name="assuring-high-availability-during-a-service-disruption"></a>Zajišťuje vysokou dostupnost během přerušení služby
+
 Když taková situace vzácná, datové centrum Azure může dojít k výpadku. Pokud dojde k výpadku, dojde k narušení provozu, které může trvat několik minut nebo hodin trvat. Vysoké dostupnosti se dosahuje nejčastěji s redundancí serveru. Pomocí služby Azure Analysis Services můžete dosáhnout redundance tím, že vytvoříte další, sekundární servery v jedné nebo několika oblastech. Při vytváření redundantních serverech, aby bylo zaručeno dat a metadat na těchto serverech je v synchronizaci se serverem v oblasti, který přešel do stavu offline, můžete:
 
 * Nasazování modelů na redundantních serverech v jiných oblastech. Tato metoda vyžaduje, zpracování dat na primárním serveru i redundantních serverech v paralelní, je ujištěním, všechny servery jsou synchronizovaná.
@@ -31,6 +32,7 @@ V obou případech se primární server dojde k výpadku, musíte změnit připo
 Aby se nemusela změnit připojovací řetězce na klienti oznamující, vytvoříte server [alias](analysis-services-server-alias.md) pro primární server. Pokud primární server přestane fungovat, můžete změnit aliasu, aby odkazoval na záložní server v jiné oblasti. Můžete automatizovat alias pro název serveru kódu pro kontrolu stavu koncových bodů na primárním serveru. Pokud se nezdaří Kontrola stavu stejný koncový bod může směrovat na záložní server v jiné oblasti. 
 
 ## <a name="related-information"></a>Související informace
+
 [Zálohování a obnovení](analysis-services-backup.md)   
 [Správa služby Azure Analysis Services](analysis-services-manage.md)   
 [Názvy serveru aliasů](analysis-services-server-alias.md) 

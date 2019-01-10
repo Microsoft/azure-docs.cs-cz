@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2295ed6d3d1b22d70f95d0c9ac4542b59c7ddc09
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e0ad51bd2370cd8b7569d76e5d91b606928eea6d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972086"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189350"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z portálu Azure portal pro zařízení s Windows – preview
 
@@ -63,7 +63,7 @@ Zařízení IoT Edge:
   * Windows Server 2019
 * Povolit virtualizaci tak, aby vaše zařízení může hostovat kontejnery
    * Pokud je počítač Windows, povolte funkci containers. Na úvodní panel, přejděte na **Windows zapnout nebo vypnout funkce** a zaškrtněte políčko vedle položky **kontejnery**.
-   * Pokud je virtuální počítač, povolte [vnořená virtualizace](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) a přidělit nejméně 2 GB paměti.
+   * Pokud je virtuální počítač, povolte [vnořená virtualizace](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) a vyhradit alespoň 2 GB paměti.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -113,7 +113,7 @@ Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické
 Nainstalujte na své zařízení IoT Edge modul runtime Azure IoT Edge a nakonfigurujte v něm připojovací řetězec zařízení.
 ![Diagram - Start modul runtime na zařízení](./media/quickstart/start-runtime.png)
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. **Proces démon zabezpečení IoT Edge**, který se spustí při každém restartování a spuštění zařízení Edge tím, že se spustí agent IoT Edge. **Agent IoT Edge** umožňuje nasadit a monitorovat moduly na zařízení IoT Edge, včetně centra služby IoT Edge. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. **Démon zabezpečení IoT Edge** spustí pokaždé, když zařízení IoT Edge se spustí a bootstraps zařízení spuštěním agenta IoT Edge. **Agenta IoT Edge** spravuje nasazení a monitorování modulů na zařízení IoT Edge, včetně hraničních zařízeních IoT hub. **Centrum IoT Edge** zpracovává komunikaci mezi moduly v hraničním zařízením IoT a mezi zařízením a centrem IoT.
 
 Instalační skript také zahrnuje modul kontejner volá Moby, který spravuje imagí kontejneru na vašem zařízení IoT Edge. 
 
@@ -175,14 +175,16 @@ Vaše zařízení IoT Edge je teď nakonfigurované. Je připravené na spoušt�
 
 ## <a name="deploy-a-module"></a>Nasazení modulu
 
-Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit modul, který bude odesílat telemetrická data do služby IoT Hub.
+Spravujte vaše zařízení Azure IoT Edge z cloudu do nasazení modulu, který odesílá telemetrická data do služby IoT Hub.
 ![Diagram – nasazení modulu z cloudu do zařízení](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
-V tomto rychlém startu jste vytvořili nové zařízení IoT Edge a nainstalovali jste na něj modul runtime IoT Edge. Pak jste použili Azure Portal k doručení modulu IoT Edge a jeho spuštění na zařízení, aniž byste museli měnit samotné zařízení. V tomto případě doručený modul vytvoří data o prostředí, která použijete pro tyto kurzy.
+V tomto rychlém startu zaregistrované zařízení IoT Edge a na něm nainstalován modul runtime IoT Edge. Pak jste použili na webu Azure portal k nasazení modulu IoT Edge pro spuštění na zařízení bez nutnosti provádět změny samotné zařízení. 
+
+V takovém případě vytvoří modul, který jste odeslali ukázková data, která můžete použít pro testování. Modul simulované teplotní snímač generuje dat prostředí, který můžete použít pro testování později. Monitoruje simulovaných senzorů na počítači a prostředí kolem počítače. Senzor se například může být v místnosti serverů, na výrobním závodě nebo větrné turbíny. Zpráva obsahuje okolní teploty a vlhkosti, počítač teploty a tlaku a časové razítko. V kurzech IoT Edge pomocí dat vytvořil tento modul, protože testovací data pro analýzu.
 
 Zkontrolujte, že na zařízení IoT Edge běží modul, který jste nasadili z cloudu.
 
@@ -204,6 +206,7 @@ iotedge logs SimulatedTemperatureSensor -f
    ![Zobrazení dat z modulu](./media/quickstart/iotedge-logs.png)
 
 Můžete rovněž sledovat zprávy dorazí ve službě IoT hub pomocí [rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit). 
+
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -230,26 +233,9 @@ Odeberte modul runtime IoT Edge. Pokud plánujete přeinstalaci IoT Edge, vynech
    Uninstall-SecurityDaemon -DeleteConfig -DeleteMobyDataRoot
    ```
 
-Při odebrání modulu runtime IoT Edge se zastaví kontejnery, které vytvořil, ale na zařízení se zachovají. Zobrazte všechny kontejnery.
-
-   ```powershell
-   docker -H npipe:////./pipe/iotedge_moby_engine ps -a
-   ```
-
-   >[!TIP]
-   >**-H** příznak (hostitel) v příkazy dockeru odkazovat na modul moby, která byla nainstalována společně s runtime IoT Edge. Pokud používáte docker a moby ve stejném počítači, příznak hostitele můžete zadat které modul, který používáte pro daný příkaz. Pokud chcete použít moby, můžete nastavit **DOCKER_HOST** proměnnou prostředí tak, aby odkazoval na npipe:///./pipe/iotedge_moby_engine.
-
-Odstraňte kontejnery, které na vašem zařízení vytvořil modul runtime IoT Edge. 
-
-   ```powershell
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f SimulatedTemperatureSensor
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeHub
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeAgent
-   ```
-   
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili nové zařízení IoT Edge a použili jste cloudové rozhraní Azure IoT Edge k nasazení kódu do zařízení. Teď máte testovací zařízení, které generuje nezpracovaná data o prostředí.
+V tomto rychlém startu jste vytvořili zařízení IoT Edge a použít rozhraní Azure IoT Edge cloud k nasazení kódu do zařízení. Teď máte testovací zařízení, které generuje nezpracovaná data o prostředí.
 
 Jste připraveni pokračovat některým z dalších kurzů, ve kterých se seznámíte s dalšími způsoby, jak vám může Azure IoT Edge pomoct přeměnit data na obchodní informace na hraničním zařízení.
 

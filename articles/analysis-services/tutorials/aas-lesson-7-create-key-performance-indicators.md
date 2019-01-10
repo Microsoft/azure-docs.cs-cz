@@ -1,19 +1,19 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 7: Vytvoření klíčových ukazatelů výkonu | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services Lekce 7: Vytvoření klíčových ukazatelů výkonu | Dokumentace Microsoftu'
 description: Popisuje, jak vytvořit klíčové ukazatele výkonu v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1e7fc5cd684610a5d96b5986f5c169741055c9b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d238b3bf159a5e540eb9c72ecbcee188bd357b05
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426806"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186528"
 ---
 # <a name="create-key-performance-indicators"></a>Vytvoření klíčových ukazatelů výkonu
 
@@ -22,7 +22,7 @@ V této lekci vytvoříte klíčové ukazatele výkonu (KPI). Klíčové ukazate
 Odhadovaný čas dokončení této lekce: **15 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 6: Vytvoření měr](../tutorials/aas-lesson-6-create-measures.md).   
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 6: Vytváření měr](../tutorials/aas-lesson-6-create-measures.md).   
   
 ## <a name="create-key-performance-indicators"></a>Vytvoření klíčových ukazatelů výkonu  
   
@@ -76,6 +76,6 @@ Toto téma je součástí kurzu tabulkového modelování, který by se měl dok
 6.  V části **Vybrat styl ikony** vyberte typ ikony – kosočtverec (červený), trojúhelník (žlutý), kolečko (zelený) – a pak klikněte na **OK**.  
   
 ## <a name="whats-next"></a>Co dále?
-[Lekce 8: Vytvoření perspektiv](../tutorials/aas-lesson-8-create-perspectives.md)
+[Lekce 8: Vytvoření perspektiv](../tutorials/aas-lesson-8-create-perspectives.md).
   
   

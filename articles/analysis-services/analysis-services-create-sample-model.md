@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a492085984eba165bc7cfc5839fa4e1705e823c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 78b309336b21c3b6a58a37b1729f675db111c5d0
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001643"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190540"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -25,7 +25,7 @@ V tomto kurzu přidáte na server ukázkovou tabulkovou modelovou databázi Adve
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -74,6 +74,6 @@ Tento postup popisuje odstranění modelu ze serveru pomocí SQL Server Manageme
 V tomto kurzu jste se naučili, jak na server přidat základní ukázkový model. Teď, když máte modelovou databázi, se k ní můžete připojit z SQL Server Management Studia a přidat uživatelské role. Pokud chcete vědět víc, pokračujte dalším kurzem.
 
 > [!div class="nextstepaction"]
-> [Kurz: Konfigurace správce serveru a uživatelských rolí](analysis-services-database-users.md)
+> [Kurz: Konfigurace role serveru správce a uživatele](analysis-services-database-users.md)
 
 

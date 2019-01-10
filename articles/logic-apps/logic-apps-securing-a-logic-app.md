@@ -1,6 +1,6 @@
 ---
 title: Zabezpečený přístup k Azure Logic Apps | Dokumentace Microsoftu
-description: Ochrana přístupu k aktivačních událostí, vstupů a výstupů, parametry akce a služby v pracovních postupech pro Azure Logic Apps
+description: Přidání zabezpečení pro Azure Logic Apps, včetně aktivačních událostí, vstupů a výstupů, parametry a další služby
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,262 +9,362 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.date: 11/22/2016
-ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/08/2019
+ms.openlocfilehash: a7d34b76eb6184e546c8217aa6b3723819be70be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232592"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189526"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Zabezpečený přístup v Azure Logic Apps
 
-Způsoby, abyste měli zabezpečený přístup k různým součástem ve vaší aplikaci logiky:
+Tady jsou prvky v aplikaci logiky, ve kterém se dají zabezpečit přístup:
 
-* Zabezpečený přístup, která aktivuje pracovní postup aplikace logiky s triggerem požadavku HTTP.
-* Zabezpečený přístup pro správu, úpravy nebo načítání aplikace logiky.
-* Zabezpečený přístup k obsahu uvnitř vstupů a výstupů pro běh aplikace logiky.
-* Zabezpečte parametry nebo vstupy pro akce pracovní postup aplikace logiky.
-* Zabezpečený přístup ke službám, které přijímají požadavky z pracovního postupu aplikace logiky.
+* [Požadavek nebo triggery Webhooků](#secure-triggers)
+* [Operace, jako je správa, úpravách nebo prohlížení](#secure-operations) aplikace logiky
+* [Vstupy a výstupy](#secure-run-history) historie spuštění vaší aplikace logiky
+* [Parametry akce a vstupy](#secure-action-parameters)
+* [Služby, které žádosti o získání](#secure-requests) vaší aplikace logiky
 
-## <a name="secure-access-to-trigger"></a>Zabezpečený přístup k aktivaci
+<a name="secure-triggers"></a>
 
-Při práci s využitím aplikace logiky, který se aktivuje v požadavku HTTP ([žádosti](../connectors/connectors-native-reqres.md) nebo [Webhooku](../connectors/connectors-native-webhook.md)), můžete omezit přístup tak, aby pouze autorizovaní klienti můžou aktivovat aplikaci logiky. Všechny žádosti do aplikace logiky jsou zašifrované a zabezpečené pomocí protokolu SSL.
+## <a name="secure-access-to-request-triggers"></a>Zabezpečený přístup k vyžádání aktivace
 
-### <a name="shared-access-signature"></a>Sdílený přístupový podpis
+Když vaše aplikace logiky používá triggerem založené na požadavku HTTP, jako [požadavek](../connectors/connectors-native-reqres.md) nebo [Webhooku](../connectors/connectors-native-webhook.md) aktivační událost, můžete omezit přístup pouze autorizovaní klienti můžou začít svou aplikaci logiky. Všechny požadavky přijaté aplikací logiky je šifrovaný a zabezpečený pomocí vrstvy SSL (Secure Sockets) protokolů. Tady jsou různé způsoby, jak můžete zabezpečit přístup k tomuto typu triggeru:
 
-Každý požadavek koncový bod pro aplikaci logiky. zahrnuje [sdíleného přístupového podpisu (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) jako část adresy URL. Každá adresa URL obsahuje `sp`, `sv`, a `sig` parametr dotazu. Oprávnění jsou určena podle `sp`a odpovídat na metody HTTP povolené, `sv` je verze použitá ke generování, a `sig` se používá k ověření přístupu k aktivaci. Podpis je generována algoritmem SHA256 s tajným klíčem na cestách URL a vlastnosti. Tajný klíč je nikdy vystavena a publikování a zůstane zašifrované a uložené jako součást aplikace logiky. Aplikace logiky pouze autorizuje aktivačních událostí, které obsahují platný podpis vytvořené pomocí tajného klíče.
+* [Generování sdílených přístupových podpisů](#sas)
+* [Omezit příchozí IP adresy](#restrict-incoming-IP)
+* [Přidat Azure Active Directory, OAuth nebo jiných zabezpečení](#add-authentication)
+
+<a name="sas"></a>
+
+### <a name="generate-shared-access-signatures"></a>Generování sdílených přístupových podpisů
+
+Každý koncový bod žádosti na aplikace logiky zahrnuje [sdíleného přístupového podpisu (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) v adrese URL koncového bodu. Obsahuje všechny adresy URL `sp`, `sv`, a `sig` parametr dotazu:
+
+* `sp` Určuje oprávnění, která mapují na povolené metody HTTP pro použití.
+* `sv` Určuje verzi sloužit ke generování podpis.
+* `sig` slouží k ověřování přístupu k triggeru.
+
+Podpis je generována pomocí algoritmus SHA256 s tajný přístupový klíč na cestách URL a vlastnosti. Tajný klíč není vystavený ani publikování a zůstane zašifrované a uložené s aplikací logiky. Aplikace logiky autorizuje pouze triggery, které obsahují platný podpis vytvořené pomocí tajného klíče. 
+
+Zde jsou další informace o zabezpečení přístupu pomocí sdíleného přístupového podpisu:
+
+* [Opětovné vygenerování přístupových klíčů](#access-keys)
+* [Vytvoření, u nichž vyprší platnost adresy URL zpětného volání](#expiring-URLs)
+* [Vytvoření adresy URL s primární nebo sekundární klíč](#primary-secondary-key)
+
+<a name="access-keys"></a>
 
 #### <a name="regenerate-access-keys"></a>Opětovné vygenerování přístupových klíčů
 
-Nové zabezpečený klíč na kdykoli přes rozhraní REST API nebo Azure portal můžete vygenerovat znovu. Všechny aktuální adresy URL, které byly generovány dříve pomocí starého klíče jsou zneplatněny a už nemá oprávnění, která se aktivuje aplikace logiky.
+Pokud chcete znovu vygenerovat nový klíč zabezpečený přístup kdykoli, použijte rozhraní Azure REST API nebo webu Azure portal. Všechny dříve vygenerovaný adresy URL, které používá starý klíč nejsou zneplatněny a nadále již nebudou oprávnění ke spuštění aplikace logiky. Adresy URL, kterou načtete po obnovení jsou podepsány pomocí nového přístupového klíče.
 
-1. Na webu Azure Portal otevřete aplikaci logiky, kterou chcete znovu vygenerovat klíč
-1. Klikněte na tlačítko **přístupové klíče** položky nabídky v části **nastavení**
-1. Zvolte klíč znovu vygenerujte a dokončení procesu
+1. Na webu Azure Portal otevřete aplikaci logiky, který má klíč, který chcete znovu vygenerovat.
 
-Adresy URL, kterou načtete po obnovení jsou podepsány pomocí nového přístupového klíče.
+1. V nabídce aplikace logiky podle **nastavení**vyberte **přístupové klíče**.
 
-#### <a name="creating-callback-urls-with-an-expiration-date"></a>Vytváří se datum vypršení platnosti adresy URL zpětného volání
+1. Vyberte klíč, který chcete znovu vygenerovat a dokončení procesu.
 
-Pokud sdílíte s ostatními stranami adresu URL, můžete vytvořit adresy URL s konkrétní klíče a data vypršení platnosti podle potřeby. Můžete pak bezproblémově vrátit klíče, nebo zajistěte, aby přístup k aktivuje aplikace je omezen na určité časové rozpětí. Můžete zadat datum vypršení platnosti adresy URL prostřednictvím [logic apps rozhraní REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers):
+<a name="expiring-urls"></a>
 
-``` http
-POST 
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
-```
+#### <a name="create-callback-urls-with-expiration-dates"></a>Vytvoření adresy URL zpětného volání s datem vypršení platnosti
 
-V textu, patří vlastnost `NotAfter` jako řetězec data JSON, který vrátí adresu URL zpětného volání, která je jenom platné až do `NotAfter` datum a čas.
-
-#### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>Vytvoření adresy URL s primární a sekundární tajný klíč
-
-Při generování nebo seznamu adres URL zpětného volání pro triggery založené na požadavku, můžete také zadat klávesy, která se má použít k podepsání adresu URL.  Můžete generovat podepsány konkrétního klíče prostřednictvím adresy URL [logic apps rozhraní REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) následujícím způsobem:
+Pokud adresa URL koncového bodu na základě požadavku triggeru s jiné smluvní strany, můžete vygenerovat URL zpětného volání konkrétní klíče a data vypršení platnosti podle potřeby. Můžete pak bezproblémově vrátit klíče, nebo omezit přístup pro spuštění aplikace logiky na konkrétní časový interval. Datum vypršení platnosti můžete zadat adresu URL pomocí [rozhraní REST API služby Logic Apps](https://docs.microsoft.com/rest/api/logic/workflowtriggers), například:
 
 ``` http
 POST 
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
 ```
 
-V textu, patří vlastnost `KeyType` jako `Primary` nebo `Secondary`.  Vrátí adresu URL podepsány zabezpečené zadaný klíč.
+V textu, zahrnout `NotAfter`vlastnost JSON pomocí data řetězce. Tato vlastnost vrátí adresu URL zpětného volání, který je platný pouze dokud `NotAfter` datum a čas.
+
+<a name="primary-secondary-key"></a>
+
+#### <a name="create-urls-with-primary-or-secondary-secret-key"></a>Vytvoření adresy URL s primární a sekundární tajný klíč
+
+Při generování nebo seznam adres URL zpětného volání pro triggery založené na požadavku, můžete také zadat klíče pro podepisování adresu URL. Můžete generovat adresu URL, která je podepsána s použitím konkrétního klíče [rozhraní REST API služby Logic Apps](https://docs.microsoft.com/rest/api/logic/workflowtriggers), například:
+
+``` http
+POST 
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
+```
+
+V textu, zahrnout `KeyType` vlastnost jako buď `Primary` nebo `Secondary`. Tato vlastnost vrátí adresu URL, která je podepsána zadaným zabezpečený klíč.
+
+<a name="restrict-incoming-ip"></a>
 
 ### <a name="restrict-incoming-ip-addresses"></a>Omezit příchozí IP adresy
 
-Kromě sdíleného přístupového podpisu můžete chtít omezit volání aplikace logiky pouze z konkrétních klientů.  Například pokud váš koncový bod prostřednictvím služby Azure API Management spravujete, můžete omezit aplikace logiky tak, aby přijímal pouze žádost, když požadavek pochází z IP adresy instance API Management.
+Spolu se sdíleným přístupovým podpisem můžete chtít omezit konkrétních klientů, které může volat aplikaci logiky.  
+Pokud spravujete vašeho požadavku koncového bodu ve službě Azure API Management, můžete omezit aplikace logiky tak, aby přijímal požadavky jenom z IP adresy instance API Management. 
 
-Tato nastavení se dá nakonfigurovat v nastavení aplikace logiky:
+#### <a name="set-ip-ranges---azure-portal"></a>Nastavení rozsahů IP adres – Azure portal
 
-1. Na webu Azure Portal otevřete aplikaci logiky, které chcete přidat omezení podle IP adresy
-1. Klikněte na tlačítko **nastavení pracovního postupu** položky nabídky v části **nastavení**
-1. Zadejte seznam rozsahů IP adres na přijetí aktivační událost
+Nastavit toto omezení na webu Azure Portal, přejděte do nastavení aplikace logiky: 
 
-Platný rozsah IP adres má formát `192.168.1.1/32`. Pokud chcete aplikaci logiky tak, aby se aktivovaly jenom jako vnořenou aplikaci logiky, vyberte **pouze jiných funkcí logic apps** možnost. Tato možnost zapíše prázdné pole k prostředku význam jen volá službu samotnou (nadřazená aplikace logiky) úspěšně vyvolat.
+1. Na webu Azure Portal otevřete svůj prostředek v návrháři aplikace logiky. 
+
+1. V nabídce aplikace logiky podle **nastavení**vyberte **nastavení pracovního postupu**.
+
+1. V části **konfigurace řízení přístupu** > 
+**povolené příchozí IP adresy**vyberte **konkrétními rozsahy IP adres**.
+
+1. V části **rozsahy IP adres pro triggery**, zadejte rozsahy IP adres, které přijímá aktivační událost. Platný rozsah IP adres používá tyto formáty: *x.x.x.x/x* nebo *x.x.x.x x.x.x.x.* 
+
+Pokud chcete svou aplikaci logiky, která se aktivuje pouze jako vnořenou aplikaci logiky, z **povolené příchozí IP adresy** seznamu vyberte **pouze jiných funkcí Logic Apps**. Tato možnost zapíše prázdné pole prostředek aplikace logiky, takže pouze volání ze služby Logic Apps (nadřazený logiky aplikace), mohou aktivovat vnořenou aplikaci logiky.
 
 > [!NOTE]
-> Můžete spustit aplikaci logiky s triggerem požadavku prostřednictvím rozhraní REST API nebo správu `/triggers/{triggerName}/run` bez ohledu na IP. Tento scénář vyžaduje ověřování pomocí rozhraní Azure REST API a všechny události se objeví v protokolu auditu Azure. Zásady řízení přístupu sady odpovídajícím způsobem.
+> Bez ohledu na IP adresu, můžete spustit aplikaci logiky, který má aktivační událost na základě požadavku s použitím `/triggers/{triggerName}/run` prostřednictvím rozhraní Azure REST API nebo prostřednictvím služby API Management. Ale tento scénář stále vyžaduje ověřování pomocí rozhraní Azure REST API a zobrazí všechny události do protokolu auditu v Azure. Ujistěte se, že je odpovídajícím způsobem nastavit zásady řízení přístupu.
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Nastavení rozsahů IP adres v definici prostředků
+#### <a name="set-ip-ranges---logic-app-deployment-template"></a>Nastavení rozsahů IP adres – šablony nasazení aplikace logiky
 
-Pokud používáte [šablonu nasazení](logic-apps-create-deploy-template.md) automatizovat vaše nasazení, nastavení rozsahu IP adresy lze nakonfigurovat podle šablony prostředků.  
+Pokud používáte automatizaci nasazení aplikací logiky s použitím [šablony nasazení Azure Resource Manageru](logic-apps-create-deploy-template.md), rozsahy IP adres můžete nastavit v šabloně, například:
 
 ``` json
 {
-    "properties": {
-        "definition": {
-        },
-        "parameters": {},
-        "accessControl": {
-            "triggers": {
-                "allowedCallerIpAddresses": [
-                    {
-                        "addressRange": "192.168.12.0/23"
-                    },
-                    {
-                        "addressRange": "2001:0db8::/64"
-                    }
-                ]
-            }
-        }
-    },
-    "type": "Microsoft.Logic/workflows"
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "accessControl": {
+         "triggers": {
+            "allowedCallerIpAddresses": [
+               {
+               "addressRange": "192.168.12.0/23"
+               },
+               {
+                  "addressRange": "2001:0db8::/64"
+               }
+            ]
+         }
+      }
+   },
+   "type": "Microsoft.Logic/workflows",
 }
-
 ```
 
-### <a name="adding-azure-active-directory-oauth-or-other-security"></a>Přidání služby Azure Active Directory, OAuth nebo jiných zabezpečení
+<a name="add-authentication"></a>
 
-Chcete-li přidat další ověřovací protokoly na aplikaci logiky, [Azure API Management](https://azure.microsoft.com/services/api-management/) nabízí bohaté možnosti monitorování, zabezpečení, zásady a dokumentace pro libovolný koncový bod s možností zveřejnit aplikaci logiky jako rozhraní API. Azure API Management můžete zveřejnit koncový bod veřejné nebo soukromé pro aplikaci logiky, která může použít Azure Active Directory, certifikát, OAuth nebo jiné standardy zabezpečení. Při přijetí požadavku Azure API Management předá tento požadavek na aplikaci logiky (provádí se všechny potřebné transformace nebo omezení vydávaných za pochodu). Příchozí nastavení rozsahu IP adresy na aplikaci logiky můžete povolit jenom aplikace logiky, až se spustí ze služby API Management.
+### <a name="add-azure-active-directory-oauth-or-other-security"></a>Přidat Azure Active Directory, OAuth nebo jiných zabezpečení
 
-## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Zabezpečený přístup ke správě nebo úprava aplikací logiky
+Chcete-li přidat další ověřovací protokoly do aplikace logiky, zvažte použití [Azure API Management](https://azure.microsoft.com/services/api-management/). Tato služba nabízí bohaté možnosti monitorování, zabezpečení, zásady a dokumentace pro libovolný koncový bod a poskytuje schopnost zpřístupnit vaše aplikace logiky jako rozhraní API. API Management můžete zveřejnit koncový bod veřejné nebo soukromé pro aplikaci logiky, která pak můžete použít Azure Active Directory, OAuth, certifikát nebo jiné standardy zabezpečení. Žádost o přijetí rozhraní API správy služby odešle požadavek na aplikaci logiky, což také všechny potřebné transformace nebo omezení na cestě. Umožňuje pouze rozhraní API Management aktivaci vaší aplikace logiky můžete svou aplikaci logiky nastavení rozsahu příchozí IP adresy. 
 
-Můžete omezit přístup k operace správy v aplikaci logiky tak, aby jenom konkrétní uživatelé nebo skupiny můžou provádět operace u daného prostředku. Pomocí Azure Logic apps [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md) funkcí a je možné přizpůsobit pomocí stejných nástrojů.  Existuje několik předdefinovaných rolí, které můžou přiřazovat členy vašeho předplatného, které se také:
+<a name="secure-operations"></a>
 
-* **Přispěvatel aplikace logiky** – poskytuje přístup k zobrazit, upravit a aktualizovat aplikace logiky.  Nelze odebrat prostředek nebo provádění operací správy.
-* **Operátor aplikace logiky** – můžete zobrazit aplikace logiky a historie spuštění a povolit nebo zakázat.  Nelze upravovat nebo aktualizovat definici.
+## <a name="secure-access-to-logic-app-operations"></a>Zabezpečený přístup k operacím aplikace logiky
 
-Můžete také použít [zámek prostředku Azure](../azure-resource-manager/resource-group-lock-resources.md) zabránit změně nebo odstranění aplikace logiky. Tato možnost je důležité zabránit produkční prostředky z změny nebo odstranění.
+Aby mohl jenom konkrétní uživatelé nebo skupiny spuštění operace na svou aplikaci logiky, můžete omezit přístup na úlohy, jako je správa, úpravy a zobrazení. Logic Apps podporuje [Azure Role-Based řízení přístupu (RBAC)](../role-based-access-control/role-assignments-portal.md), které můžete přizpůsobit nebo přiřazení předdefinované role pro členy ve vašem předplatném, například:
 
-## <a name="secure-access-to-contents-of-the-run-history"></a>Zabezpečený přístup k obsahu z historie spuštění
+* **Přispěvatel aplikace logiky**: Uživatelé mohou zobrazit, upravit a aktualizovat aplikace logiky. Tuto roli nejde odstranit aplikaci logiky ani spouštět operace správce.
+* **Operátor aplikace logiky**: Uživatelům můžete svou aplikaci logiky a historie spuštění, zobrazit a povolit nebo zakázat svou aplikaci logiky. Tato role se nedají upravit ani aktualizovat aplikaci logiky.
 
-Můžete omezit přístup k obsahu vstupy nebo výstupy z předchozích spuštění na konkrétní rozsahy IP adres.  
+Pokud chcete zabránit ostatním uživatelům změna nebo odstranění aplikace logiky, můžete použít [zámek prostředku Azure](../azure-resource-manager/resource-group-lock-resources.md). Tato funkce umožňuje zabránit ostatním uživatelům měnit nebo odstraňovat produkční prostředky.
 
-Všechna data v rámci běh pracovního postupu se šifrují přenášená i neaktivní uložená. Pokud je uskutečněn hovor na historie spuštění, službě ověří žádost a poskytuje odkazy na žádostí a odpovědí vstupy a výstupy. Tento odkaz se dají chránit obsah vrátit pouze požadavky, chcete-li zobrazit obsah z určeného rozsahu IP adres. Tuto funkci můžete použít pro řízení přístupu na další. Můžete zadat i IP adresy jako `0.0.0.0` tak nemá nikdo přístup vstupy/výstupy. Jenom člověk s oprávněními správce může odebrat toto omezení, poskytuje možnost "just-in-time" přístup k obsahu pracovního postupu.
+<a name="secure-run-history"></a>
 
-Tato nastavení se dá nakonfigurovat v rámci nastavení prostředků na webu Azure portal:
+## <a name="secure-access-to-logic-app-run-history"></a>Zabezpečený přístup k historii spuštění aplikace logiky
 
-1. Na webu Azure Portal otevřete aplikaci logiky, které chcete přidat omezení podle IP adresy
-2. Klikněte na tlačítko **konfigurace řízení přístupu** položky nabídky v části **nastavení**
-3. Zadejte seznam rozsahů IP adres pro přístup k obsahu
+Pokud chcete chránit obsah se předává jako vstupy nebo výstupy z předchozích spuštění aplikace logiky, můžete omezit přístup na konkrétní rozsahy IP adres. Tato funkce nabízí další řízení přístupu. Všechna data při spuštění aplikace logiky se šifrují během přenosu a v klidovém stavu. Pokud budete požadovat historie spouštění vaší aplikace logiky, Logic Apps ověřuje žádosti a obsahuje odkazy na vstupy a výstupy z požadavků a odpovědí v pracovním postupu vaší aplikace logiky. Tyto odkazy můžete chránit tak vrátit pouze požadavky z konkrétní IP adresu tohoto obsahu. Například může dokonce zadat IP adresu jako `0.0.0.0-0.0.0.0` tak, aby nemá nikdo přístup vstupy a výstupy. Pouze osoba s oprávněním správce můžete odebrat toto omezení, poskytuje možnost "just-in-time" přístup k obsahu vaší aplikace logiky.
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Nastavení rozsahů IP adres v definici prostředků
+### <a name="set-ip-ranges---azure-portal"></a>Nastavení rozsahů IP adres – Azure portal
 
-Pokud používáte [šablonu nasazení](logic-apps-create-deploy-template.md) automatizovat vaše nasazení, nastavení rozsahu IP adresy lze nakonfigurovat podle šablony prostředků.  
+Nastavit toto omezení na webu Azure Portal, přejděte do nastavení aplikace logiky:
+
+1. Na webu Azure Portal otevřete svůj prostředek v návrháři aplikace logiky. 
+
+1. V nabídce aplikace logiky podle **nastavení**vyberte **nastavení pracovního postupu**.
+
+1. V části **konfigurace řízení přístupu** > 
+**povolené příchozí IP adresy**vyberte **konkrétními rozsahy IP adres**.
+
+1. V části **rozsahy IP adres pro obsah**, zadejte rozsahy IP adres, které můžete přístup k obsahu z vstupy a výstupy. Platný rozsah IP adres používá tyto formáty: *x.x.x.x/x* nebo *x.x.x.x x.x.x.x.* 
+
+### <a name="set-ip-ranges---logic-app-deployment-template"></a>Nastavení rozsahů IP adres – šablony nasazení aplikace logiky
+
+Pokud používáte automatizaci nasazení aplikací logiky s využitím [šablony nasazení Azure Resource Manageru](logic-apps-create-deploy-template.md), rozsahy IP adres můžete nastavit v šabloně, například:
 
 ``` json
 {
-    "properties": {
-        "definition": {
-        },
-        "parameters": {},
-        "accessControl": {
-            "contents": {
-                "allowedCallerIpAddresses": [
-                    {
-                        "addressRange": "192.168.12.0/23"
-                    },
-                    {
-                        "addressRange": "2001:0db8::/64"
-                    }
-                ]
-            }
-        }
-    },
-    "type": "Microsoft.Logic/workflows"
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "accessControl": {
+         "contents": {
+            "allowedCallerIpAddresses": [
+               {
+               "addressRange": "192.168.12.0/23"
+               },
+               {
+                  "addressRange": "2001:0db8::/64"
+               }
+            ]
+         }
+      }
+   },
+   "type": "Microsoft.Logic/workflows",
 }
 ```
 
-## <a name="secure-parameters-and-inputs-within-a-workflow"></a>Zabezpečení parametry a vstupy v rámci pracovního postupu
+<a name="secure-action-parameters"></a>
 
-Můžete chtít parametrizovat některé aspekty definice pracovního postupu pro nasazení napříč prostředími. Některé parametry můžou být zabezpečené parametry, které nechcete zobrazit při úpravách pracovního postupu, jako je například ID klienta a tajný kód klienta pro [ověřování Azure Active Directory](../connectors/connectors-native-http.md#authentication) akce HTTP.
+## <a name="secure-action-parameters-and-inputs"></a>Zabezpečení parametry akce a vstupy
 
-### <a name="using-parameters-and-secure-parameters"></a>Pomocí parametrů a zabezpečené parametry
+Při nasazení v různých prostředích, můžete chtít parametrizovat konkrétní aspekty v definici pracovního postupu aplikace logiky. Například můžete zadat parametry v [šablony nasazení Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Chcete-li získat přístup k prostředku hodnota parametru za běhu, můžete použít `@parameters('parameterName')` výraz, který je poskytován [jazyka definice pracovního postupu](https://aka.ms/logicappsdocs). 
 
-Pro přístup k hodnotě parametru prostředků v době běhu [jazyka definice pracovního postupu](https://aka.ms/logicappsdocs) poskytuje `@parameters()` operace. Můžete také [zadejte parametry v šabloně prostředku nasazení](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ale pokud zadáte typ parametru jako `securestring`, parametr se nevrátí se zbytkem definice prostředku a zobrazením prostředek po nasazení budou nepřístupná.
+Také můžete svázat konkrétní parametry, které nechcete zobrazí při úpravách pracovního postupu aplikace logiky, když použijete `securestring` typ parametru. Například můžete zabezpečit parametry, jako je například ID klienta a tajný kód klienta používá k ověřování akce HTTP s [Azure Active Directory](../connectors/connectors-native-http.md#authentication).
+Pokud zadáte parametr na typ jako `securestring`, parametr nevrátí s definicí prostředků a není přístupná zobrazením prostředek po nasazení. 
 
 > [!NOTE]
-> Pokud váš parametr se používá v záhlaví a text žádosti, může být parametr viditelné díky přístupu do historie spouštění a odchozí požadavek HTTP. Ujistěte se, že se odpovídajícím způsobem nastavit zásady přístup k obsahu.
-> Autorizační hlavičky nejsou nikdy zobrazit vstupy nebo výstupy. Proto pokud tajný klíč je používán existuje, není získat tajný kód.
+> Při použití parametru v záhlaví a text požadavku tento parametr může být viditelný, při přístupu k historii spuštění aplikace logiky a odchozí požadavek HTTP. Ujistěte se, že odpovídajícím způsobem nastavit zásady přístup k obsahu.
+> Autorizační hlavičky nejsou nikdy zobrazit vstupy nebo výstupy. Takže pokud tajného kódu je použita tam, není možné získat tajný kód.
 
-#### <a name="resource-deployment-template-with-secrets"></a>Šablona nasazení prostředků s tajnými kódy
+Tento příklad ukazuje šablonu nasazení Azure Resource Manageru, která používá více než jeden parametr modulu runtime s `securestring` typu: 
 
-Následující příklad ukazuje nasazení, které odkazuje parametr zabezpečené `secret` za běhu. V souboru oddělené parametry můžete zadat hodnotu prostředí `secret`, nebo použijte [trezor klíčů Azure Resource Manageru](../azure-resource-manager/resource-manager-keyvault-parameter.md) načíst tajné kódy v nasazení čas.
+* `armTemplatePasswordParam`, který je vstupem pro definici aplikace logiky `logicAppWfParam` parametr
 
-``` json
+* `logicAppWfParam`, což je zadání údajů pro akce HTTP pomocí základního ověřování
+
+V souboru oddělené parametry můžete zadat hodnotu prostředí `armTemplatePasswordParam` parametr, nebo můžete načíst tajné kódy v době nasazení pomocí [trezor klíčů Azure Resource Manageru](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Vnitřní `parameters` části patří k definici pracovního postupu aplikace logiky, při vnější `parameters` části patří do šablony nasazení.
+
+```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "secretDeploymentParam": {
-         "type": "securestring"
+      "logicAppName": {       
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 80,
+         "metadata": {         
+            "description": "Name of the Logic App."       
+         }     
+      },
+      "armTemplatePasswordParam": {
+         "type": "securestring"     
+      },     
+      "logicAppLocation": {       
+         "type": "string",
+         "defaultValue": "[resourceGroup().location]",
+         "allowedValues": [         
+            "[resourceGroup().location]",
+            "eastasia",
+            "southeastasia",
+            "centralus",
+            "eastus",
+            "eastus2",
+            "westus",
+            "northcentralus",
+            "southcentralus",
+            "northeurope",
+            "westeurope",
+            "japanwest",
+            "japaneast",
+            "brazilsouth",
+            "australiaeast",
+            "australiasoutheast",
+            "southindia",
+            "centralindia",
+            "westindia",
+            "canadacentral",
+            "canadaeast",
+            "uksouth",
+            "ukwest",
+            "westcentralus",
+            "westus2"
+         ],
+         "metadata": {
+            "description": "Location of the Logic App."
+         }
       }
    },
    "variables": {},
-   "resources": [ {
-      "name": "secret-deploy",
-      "type": "Microsoft.Logic/workflows",
-      "location": "westus",
-      "tags": {
-         "displayName": "LogicApp"
-      },
-      "apiVersion": "2016-06-01",
-      "properties": {
-         "definition": {
-            "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-            "actions": {
-               "Call_External_API": {
-                  "type": "Http",
-                  "inputs": {
-                     "headers": {
-                        "Authorization": "@parameters('secret')"
+   "resources": [
+      {       
+         "name": "[parameters('logicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('logicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {
+               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-0601/workflowdefinition.json#",
+               "actions": {
+                  "HTTP": {
+                     "type": "Http",
+                     "inputs": {
+                        "method": "GET",
+                        "uri": "http://www.microsoft.com",
+                        "authentication": {
+                           "type": "Basic",
+                           "username": "username",
+                              "password": "@parameters('logicAppWfParam')"
+                        }
                      },
-                     "body": "This is the request"
-                  },
                   "runAfter": {}
-               }
+                  }
+               },
+               "parameters": { 
+                  "logicAppWfParam": {
+                     "type": "securestring"
+                  }
+               },
+               "triggers": {
+                  "manual": {
+                     "type": "Request",
+                     "kind": "Http",
+                     "inputs": {
+                        "schema": {}
+                     }
+                  }
+               },
+               "contentVersion": "1.0.0.0",
+               "outputs": {}
             },
             "parameters": {
-               "secret": {
-                  "type": "SecureString"
+               "logicAppWfParam": {
+                  "value": "[parameters('armTemplatePasswordParam')]"
                }
-            },
-            "triggers": {
-               "manual": {
-                  "type": "Request",
-                  "kind": "Http",
-                  "inputs": {
-                     "schema": {}
-                  }
-               }
-            },
-            "contentVersion": "1.0.0.0",
-            "outputs": {}
-         },
-         "parameters": {
-            "secret": {
-               "value": "[parameters('secretDeploymentParam')]"
             }
          }
       }
-   } ],
-   "outputs": {}
-}
+   ],
+   "outputs": {} 
+}   
 ```
 
-## <a name="secure-access-to-services-receiving-requests-from-a-workflow"></a>Zabezpečený přístup ke službám přijímání požadavků z pracovního postupu
+<a name="secure-requests"></a>
 
-Existuje mnoho způsobů pomáhají zabezpečit libovolný koncový bod, který potřebuje přístup k aplikaci logiky.
+## <a name="secure-access-to-services-receiving-requests"></a>Zabezpečený přístup ke službám, které přijímají požadavky
 
-### <a name="using-authentication-on-outbound-requests"></a>Použití ověřování na odchozí žádosti
+Tady je několik způsobů, jak se dají zabezpečit libovolný koncový bod, kde vaše aplikace logiky potřebuje přístup a požadavky bude odesílat.
 
-Při práci s HTTP, HTTP + Swagger (Open API) nebo akce Webhooku, můžete přidat ověřování na žádost o odeslání. Můžete zahrnout základní ověřování, ověřování pomocí certifikátu nebo ověřování Azure Active Directory. Najdete podrobnosti o tom, jak nakonfigurovat ověřování [v tomto článku](../connectors/connectors-native-http.md#authentication).
+### <a name="add-authentication-on-outbound-requests"></a>Přidání ověřování pro odchozí požadavky
 
-### <a name="restricting-access-to-logic-app-ip-addresses"></a>Omezení přístupu na IP adresy aplikace logiky
+Při práci s HTTP, HTTP + Swagger (Open API) nebo akce Webhooku, přidejte do žádosti odeslané aplikací logiky ověřování. Můžete například základní ověřování, ověřování pomocí certifikátu nebo ověřování Azure Active Directory. Další informace najdete v tématu [ověření aktivační události nebo akce](logic-apps-workflow-actions-triggers.md#connector-authentication) a [ověřování pro akce HTTP](../connectors/connectors-native-http.md#authentication).
 
-Všechna volání z aplikace logiky pocházet z konkrétní sady IP adres v jedné oblasti. Můžete přidat další filtrování pouze přijímání požadavků z aplikace tyto určené IP adresy. Seznam těchto IP adres najdete v tématu [logic app omezení a konfigurace](logic-apps-limits-and-config.md#configuration).
+### <a name="restrict-access-to-logic-app-ip-addresses"></a>Omezení přístupu na IP adresy aplikace logiky
 
-### <a name="on-premises-connectivity"></a>Místní připojení
+Všechna volání z aplikace logiky pocházet z konkrétní určené IP adres podle oblasti. Můžete přidat filtrování, které přijímají požadavky jenom z těchto IP adres. Tyto IP adresy, naleznete v tématu [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md#configuration).
 
-Logic apps poskytují integraci s několika službami a zajistit bezpečné a spolehlivé místní komunikace.
+### <a name="secure-on-premises-connectivity"></a>Zabezpečené místní připojení
+
+Služba Azure Logic Apps poskytuje integraci s těmito službami pro bezpečné a spolehlivé místní komunikace.
 
 #### <a name="on-premises-data-gateway"></a>Místní brána dat
 
-Mnoho spravované konektory pro logic apps poskytují zabezpečené připojení do místních systémů, včetně systému souborů, SQL, SharePoint, DB2 a další. Brána přenášet data z místních zdrojů přes šifrované kanálů prostřednictvím služby Azure Service Bus. Veškerý provoz pochází jako zabezpečené odchozího provozu z agenta brány. Další informace o [jak brána dat funguje](logic-apps-gateway-install.md#gateway-cloud-service).
+Mnoho spravované konektory pro Azure Logic Apps poskytuje zabezpečené připojení k místním systémům, jako je například systém souborů, SQL, SharePoint, DB2 a další. Brána odešle data z místních zdrojů přes šifrované kanálů prostřednictvím služby Azure Service Bus. Veškerý provoz pochází jako zabezpečené odchozího provozu z agenta brány. Přečtěte si [jak místní brána dat funguje](logic-apps-gateway-install.md#gateway-cloud-service).
 
 #### <a name="azure-api-management"></a>Azure API Management
 
-[Azure API Management](https://azure.microsoft.com/services/api-management/) má místní možnosti připojení, včetně integrace site-to-site VPN a ExpressRoute pro zabezpečené proxy a komunikace s místními systémy. V návrháři aplikace logiky můžete rychle vybrat rozhraní API zveřejní ze služby Azure API Management v pracovním postupu, poskytuje rychlý přístup k místním systémům.
+[Azure API Management](https://azure.microsoft.com/services/api-management/) poskytuje možnosti místního připojení, jako je například virtuální privátní sítě site-to-site a ExpressRoute integrace pro zabezpečené proxy a komunikace s místními systémy. V návrháři aplikace logiky můžete vybrat rozhraní API z pracovního postupu aplikace logiky, vystavený službou API Management poskytuje rychlý přístup k místním systémům.
 
 ## <a name="next-steps"></a>Další postup
-[Vytvoření šablony nasazení](logic-apps-create-deploy-template.md)  
-[Zpracování výjimek](logic-apps-exception-handling.md)  
-[Monitorování aplikací logiky](logic-apps-monitor-your-logic-apps.md)  
-[Diagnostikování selhání aplikací logiky a problémů](logic-apps-diagnosing-failures.md)  
+
+* [Vytvoření šablony nasazení](logic-apps-create-deploy-template.md)  
+* [Zpracování výjimek](logic-apps-exception-handling.md)  
+* [Monitorování aplikací logiky](logic-apps-monitor-your-logic-apps.md)  
+* [Diagnostikování selhání aplikací logiky a problémů](logic-apps-diagnosing-failures.md)  

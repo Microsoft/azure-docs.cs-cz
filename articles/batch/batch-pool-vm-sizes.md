@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/07/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: a1d733e918d4b53ea9dd220f5e379e0c8133c03a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 787c10ab75a3534a73e04f1bd60462ea02fcf42a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540652"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191713"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Výběr velikosti virtuálního počítače pro výpočetní uzly ve fondu služby Azure Batch
 
@@ -42,6 +42,16 @@ Fondy služby batch v konfiguraci virtuálního počítače podporují všechny 
 | Základní A-series | Basic_A0 (A0) |
 | A-Series | Standard_A0 |
 | B-Series | Vše |
+| Řada DC | Vše | 
+| Extrémní optimalizované z hlediska paměti | Vše |
+| Řada HB<sup>1</sup> | Vše | 
+| Hybridní připojení řady<sup>1</sup> | Vše |
+| Řada Lsv2 | Vše |
+| Řada NDv2<sup>1</sup> | Vše |
+| Řada NVv2<sup>1</sup> | Vše |
+| SAP HANA | Vše |
+
+<sup>1</sup> není aktuálně podporováno, ale bude podporovat v budoucnu.
 
 Tyto velikosti virtuálních počítačů jsou podporovány pouze pro uzly s nízkou prioritou:
 

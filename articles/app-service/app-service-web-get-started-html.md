@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 11/20/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ae37befe2ae2220feaf17ae4354b6fc780147f7e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2a6378406272f502af107a151e69fe33954f7780
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634231"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187855"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
@@ -31,22 +31,6 @@ ms.locfileid: "53634231"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-web-app-extension-for-cloud-shell"></a>Instalace rozšíření webové aplikace pro Cloud Shell
-
-Pro absolvování tohoto rychlého startu je potřeba přidat [rozšíření webové aplikace az](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add). Pokud už máte rozšíření nainstalované, aktualizujte je na nejnovější verzi. To provedete zadáním `az extension update -n webapp`.
-
-Rozšíření webové aplikace nainstalujete spuštěním tohoto příkazu:
-
-```bash
-az extension add --name webapp
-```
-
-Jakmile se rozšíření nainstaluje, zobrazí se ve službě Cloud Shell informace podobná tomuto příkladu:
-
-```bash
-The installed extension 'webapp' is in preview.
-```
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 

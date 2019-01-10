@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 1a0bf0e6057f26fd8d38dadde5689e41b4f1e165
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 23114a1d2fff081c802ddedc7bf5430938c45b3b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017272"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191781"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
@@ -161,7 +161,7 @@ Existují dva způsoby, jak zpracovat tajné klíče:
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udělit oprávnění k agentovi Azure kanály
-Úloha služby Azure Key Vault může selhat při prvním s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění k agentovi Azure kanály. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
+Úloha služby Azure Key Vault může selhat čas Runtimest fIntegration s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění k agentovi Azure kanály. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
 
 ### <a name="update-active-triggers"></a>Aktualizace active aktivační události
 Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační události. K aktualizaci aktivního aktivačních událostí, budete muset ručně zastavit a spustit po nasazení. K tomuto účelu můžete přidat úkol prostředí Azure Powershell, jak je znázorněno v následujícím příkladu:
@@ -183,7 +183,7 @@ Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační udá
 Můžete podobným způsobem a použijte podobně jako kód (s `Start-AzureRmDataFactoryV2Trigger` funkce) po nasazení restartovat aktivační události.
 
 > [!IMPORTANT]
-> Scénáře nasazení a průběžnou integraci typ modulu Runtime integrace napříč různými prostředími musí být stejné. Pokud máte například *v místním prostředí* stejné prostředí IR Integration Runtime (IR) ve vývojovém prostředí, musí být typu *v místním prostředí* v jiných prostředích, jako je například testovací a produkční také. Podobně pokud sdílíte prostředí integration Runtime v několika fázích, budete muset nakonfigurovat IRs jako *propojené v místním prostředí* ve všech prostředích, jako je vývoj, testování a produkce.
+> Scénáře nasazení a průběžnou integraci typ modulu Runtime integrace napříč různými prostředími musí být stejné. Pokud máte například *v místním prostředí* stejné prostředí IR Integration Runtime (IR) ve vývojovém prostředí, musí být typu *v místním prostředí* v jiných prostředích, jako je například testovací a produkční také. Podobně pokud sdílíte prostředí integration Runtime v několika fázích, budete muset nakonfigurovat prostředí Integration runtime jako *propojené v místním prostředí* ve všech prostředích, jako je vývoj, testování a produkce.
 
 ## <a name="sample-deployment-template"></a>Ukázková šablona nasazení
 
@@ -853,7 +853,7 @@ Můžete definovat vlastní parametry pro šablonu Resource Manageru. Chcete-li 
 
 Zde jsou uvedeny pokyny pro použití při vytváření souboru vlastních parametrů. Podívejte se na příklady syntaxe, naleznete v následující části [ukázkový soubor vlastní parametry](#sample).
 
-1. Když zadáte pole v definičním souboru, určujete, že odpovídající vlastnost v šabloně je pole. Data Factory Iteruje přes všechny objekty v poli pomocí definice zadaná v první objektu array. Druhý objekt, řetězec, se stane názvem vlastnosti, která se používá jako název parametru pro každou iteraci.
+1. Když zadáte pole v definičním souboru, určujete, že odpovídající vlastnost v šabloně je pole. Data Factory Iteruje přes všechny objekty v poli pomocí definice zadané v objektu Runtimest fIntegration pole. Druhý objekt, řetězec, se stane názvem vlastnosti, která se používá jako název parametru pro každou iteraci.
 
     ```json
     ...
@@ -988,3 +988,23 @@ Propojené Resource Manageru šablony mají obvykle hlavní šablonu a sadu šab
 Nezapomeňte přidat skripty služby Data Factory v kanálu CI/CD před a po nasazení úloh.
 
 Pokud nemáte nakonfigurované Git, jsou přístupné přes propojenými šablonami **šablony ARM exportovat** gest.
+
+## <a name="best-practices-for-cicd"></a>Osvědčené postupy pro CI/CD
+
+Pokud používáte integrace Gitu pomocí služby data factory a máte kanál CI/CD, který přesouvá změny z vývojového do testu a pak do produkčního prostředí, doporučujeme následující osvědčené postupy:
+
+-   **Integrace Gitu**. Jenom je potřeba nakonfigurovat svou datovou továrnu vývoj integrace Gitu. Změny v provozním i testovacím prostředí jsou nasazené prostřednictvím CI/CD a nepotřebují mít integrace Gitu.
+
+-   **Data Factory CI/CD skript**. Před krokem nasazení Resource Manageru v CI/CD musí postará o věci, jako je zastavení aktivační události a jiný druh vyčištění objekt pro vytváření. Doporučujeme používat [tento skript](#sample-script-to-stop-and-restart-triggers-and-clean-up) jako postará těchto věcí. Spuštění skriptu před nasazení jednou a jednou po použití příslušnými příznaky.
+
+-   **Prostředí Integration runtime a sdílení**. Prostředí Integration runtime jsou jedním z infrastruktury komponenty ve službě data factory, které ke změnám méně často a jsou podobné ve všech fázích v CI/CD. V důsledku toho objekt pro vytváření dat očekává, že budete mít stejný název a stejného typu prostředí Integration runtime ve všech fázích CI/CD. Pokud chcete sdílet prostředí Integration runtime ve všech fázích – například místním prostředí Integration runtime – jedním ze způsobů sdílení je hostování místní prostředí IR v objekt Ternární pouze pro obsahující sdílený prostředí Integration runtime. Potom můžete je v Dev/testovací/produkční jako typ propojené reakcí na Incidenty.
+
+-   **Trezor klíčů**. Pokud používáte doporučenou propojené služby založené na službě Azure Key Vault, můžete zvolit, jeho výhody úroveň další potenciálně udržováním samostatné trezorům klíčů pro vývoj/testovací/produkční. Můžete také nakonfigurovat samostatnou oprávnění úrovně pro každý z nich. Možná nebudete chtít členům týmu, má oprávnění k tajným kódům produkčního prostředí. Doporučujeme také udržovat stejnou názvů tajných klíčů ve všech fázích. Pokud uchováváte stejné názvy, nemusíte změnit své šablony Resource Manageru přes CI/CD, protože jediné, co je třeba změnit název trezoru klíčů, což je jeden z parametrů šablony Resource Manageru.
+
+## <a name="unsupported-features"></a>Nepodporované funkce
+
+-   Vybrané prostředky, nelze publikovat, protože jsou na sobě navzájem závislé entit datové továrny. Například aktivační procedury závisí na kanály, kanály, závisí na datové sady a další kanály, atd. Sledování závislosti měnící je obtížné. Pokud bylo možné vybrat prostředky pro publikování ručně, by bylo možné vybrat jenom podmnožinu celá sada změn, které by mohlo dojít k neočekávanému chování věci po publikování.
+
+-   Nejde publikovat z soukromé větve.
+
+-   Projekty v Bitbucketu nelze hostovat.

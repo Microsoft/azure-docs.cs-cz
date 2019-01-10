@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: b4229ca7ff96a9806ac82cf9452de496d858f6b4
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: a761e6a42e478aafca75709689a022edec2a64db
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705680"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191021"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Řešení potíží s přístupem k a používání portálu MyApps
 
@@ -49,7 +49,7 @@ Na portálu MyApps vyžaduje prohlížeč, který podporuje JavaScript a má pov
 
 Zaškrtněte, pokud chcete zajistit, že jsou splňuje následující požadavky na prohlížeč:
 
-- **Edge**: Windows 10 Anniversary Edition nebo novější.
+- **Microsoft Edge**: Windows 10 Anniversary Edition nebo novější.
 - **Chrome**: ve Windows 7 nebo novější a v Mac OS X nebo novější.
 - **Firefox 26.0 nebo novější**: ve Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
 - **Internet Explorer 11**: Windows 7 nebo novější (omezená podpora).
@@ -90,7 +90,7 @@ Pokud máte nainstalované rozšíření a i nadále dochází k problémům, zk
        Poslední tři aplikace využili jste se zobrazují v **naposledy použité** zástupce seznamu.
 
 > [!NOTE]
-> Tyto možnosti jsou k dispozici pouze pro Edge, Chrome a Firefox.
+> Tyto možnosti jsou dostupné jenom pro Microsoft Edge, Chrome a Firefox.
 
 ## <a name="how-do-i-add-a-new-app"></a>Jak přidat novou aplikaci?
 

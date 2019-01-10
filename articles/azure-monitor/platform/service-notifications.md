@@ -5,15 +5,15 @@ author: dkamstra
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2017
+ms.date: 4/12/2018
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: e4cb22866fa2885208b912c88d56243ac7826480
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 2dec2b1f9bdca8c83669b753d424204218f7a9ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159243"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190693"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazit oznámení o stavu služby pomocí webu Azure portal
 
@@ -58,43 +58,27 @@ Properties.Stage | Možné hodnoty parametru **Incident**, a **zabezpečení** j
 Properties.communicationId | Komunikace, ke kterému tato událost je přidružena.
 
 ### <a name="details-on-service-health-level-information"></a>Podrobné informace o stavu úrovni služby
-  <ul>
-    <li><b>Požaduje se akce</b> (properties.incidentType == je vyžadována akce) <dl>
-            <dt>Informační</dt>
-            <dd>Akce správce vyžaduje, aby se zabránilo dopadu na stávající služby</dd>
-        </dl>
-    </li>
-    <li><b>Údržba</b> (properties.incidentType == udržování) <dl>
-            <dt>Upozornění</dt>
-            <dd>Nouzový údržby<dd>
-            <dt>Informační</dt>
-            <dd>Standardní plánovaná údržba</dd>
-        </dl>
-    </li>
-    <li><b>Informace o</b> (properties.incidentType == informační) <dl>
-            <dt>Informační</dt>
-            <dd>Správce může být nutné zabránilo dopadu na stávající služby</dd>
-        </dl>
-    </li>
-    <li><b>Zabezpečení</b> (properties.incidentType == zabezpečení) <dl>
-            <dt>Chyba</dt>
-            <dd>Plánuje problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.</dd>
-            <dt>Upozornění</dt>
-            <dd>Problémy s přístupem k určitým službám a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.</dd>
-            <dt>Informační</dt>
-            <dd>Problémy s vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.</dd>
-        </dl>
-    </li>
-    <li><b>Služba problémy</b> (properties.incidentType == Incident) <dl>
-            <dt>Chyba</dt>
-            <dd>Plánuje problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.</dd>
-            <dt>Upozornění</dt>
-            <dd>Problémy s přístupem k určitým službám a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.</dd>
-            <dt>Informační</dt>
-            <dd>Problémy s vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.</dd>
-        </dl>
-    </li>
-  </ul>
+
+**Požaduje se akce** (properties.incidentType == je vyžadována akce)
+    - Informativní – akce správce vyžaduje, aby se zabránilo dopadu na stávající služby
+    
+**Údržba** (properties.incidentType == udržování)
+    - Upozornění: Nouzový údržby
+    - Informační - standard plánovaná údržba
+
+**Informace o** (properties.incidentType == informace)
+    - Informační – správce může být nutné zabránilo dopadu na stávající služby
+
+**Zabezpečení** (properties.incidentType == zabezpečení)
+    - Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
+    - Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
+    - Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
+
+**Služba problémy** (properties.incidentType == Incident)
+    - Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
+    - Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
+    - Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
+
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Zobrazit oznámení o stavu služby na webu Azure Portal
 1.  V [webu Azure portal](https://portal.azure.com)vyberte **monitorování**.

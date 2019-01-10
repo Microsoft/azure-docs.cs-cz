@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753485"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191237"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu 
 
@@ -51,7 +51,7 @@ Následující tabulka shrnuje nativní podpora DRM na různých platformách a 
 | **Klientskou platformu** | **Nativní DRM** | **ROZŠÍŘENÍ EME** |
 | --- | --- | --- | --- |
 | **Smart TV, externích zařízení** | PlayReady, Widevine, nebo jiné | Vložený prohlížeče/EME PlayReady nebo Widevine|
-| **Windows 10** | PlayReady | MS Edge/11 pro PlayReady|
+| **Windows 10** | PlayReady | Microsoft Edge/11 pro PlayReady|
 | **Zařízení s androidem (telefony, tablety, TV)** |Widevine |Chrome pro Widevine |
 | **iOS** | FairPlay | Safari pro FairPlay (od verze iOS 11.2) |
 | **macOS** | FairPlay | Safari pro FairPlay (od verze Safari 9 + na Mac OS X 10.11 + El Capitan)|

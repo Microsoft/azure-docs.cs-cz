@@ -1,19 +1,19 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 6: Vytvoření měr | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services lekce 6: Vytvoření měr | Dokumentace Microsoftu'
 description: Popisuje, jak vytvořit míry v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ce38cac7a0b175004fbb670069ddbeefb53e96e7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0e9f798917b557d99259ece4773cce0853b15237
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428568"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191679"
 ---
 # <a name="create-measures"></a>Vytvoření měr
 
@@ -28,7 +28,7 @@ V této lekci vytvoříte míry zadáním vzorce DAX do řádku vzorců a také 
 Odhadovaný čas dokončení této lekce: **30 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 5: Vytvoření počítaných sloupců](../tutorials/aas-lesson-5-create-calculated-columns.md).  
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 5: Vytváření počítaných sloupců](../tutorials/aas-lesson-5-create-calculated-columns.md).  
   
 ## <a name="create-measures"></a>Vytvoření měr  
   
@@ -122,6 +122,6 @@ Toto téma je součástí kurzu tabulkového modelování, který by se měl dok
 Míry vytvořené pro tabulku FactInternetSales slouží k analýze kritických finančních dat, jako jsou například prodeje, náklady a zisková marže pro položky definované uživatelem vybraným filtrem.  
   
 ## <a name="whats-next"></a>Co dále?
-[Lekce 7: Vytvoření klíčových ukazatelů výkonu](../tutorials/aas-lesson-7-create-key-performance-indicators.md)  
+[Lekce 7: Vytvoření klíčových ukazatelů výkonu](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
 
   

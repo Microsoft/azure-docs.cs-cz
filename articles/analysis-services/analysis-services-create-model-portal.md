@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 837601a55bbe97e904f3dece9f4c87563d6dd4e9
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 0b613a978c15715519ecc0f130ff6ff3ee84e306
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092673"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186961"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Vytvoření modelu na webu Azure portal
 
@@ -23,7 +23,7 @@ Funkce návrháře (preview) webové služby Azure Analysis Services na webu Azu
 > Tato funkce je zastaralá. Může být odebrán nebo významně změnil v budoucí aktualizaci. Doporučuje se, že přestat udržovat kompatibilitu s budoucími aktualizacemi použití této funkce v nové i stávající projekty. Pro pokročilejší model vývoje a testování je nejvhodnější použít Visual Studio (SSDT) a SQL Server Management Studio (SSMS).
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 - Váš server Azure Analysis Services musí být na úrovni Standard a Developer. Nové modely vytvořené pomocí webový Návrhář se DirectQuery, podporuje pouze tyto úrovně.
 - Azure SQL Database, Azure SQL Data Warehouse nebo soubor Power BI Desktopu (.pbix) jako zdroj. Nové modely vytvořené z Power BI Desktopu soubory podpory Azure SQL Database a Azure SQL Data Warehouse.

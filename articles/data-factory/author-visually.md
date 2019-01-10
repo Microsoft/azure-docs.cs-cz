@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/7/2018
+ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: afaa5ae622f962dcffec52dbdbea8a754ba260ab
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025381"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188490"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -76,17 +76,17 @@ Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v p
 
 ![Konfigurovat nastavení úložiště kódu pro vytváření uživatelského rozhraní](media/author-visually/configure-repo-2.png)
 
-## <a name="use-a-different-azure-active-directory-tenant"></a>Použít na jiného tenanta Azure Active Directory
+### <a name="use-a-different-azure-active-directory-tenant"></a>Použít na jiného tenanta Azure Active Directory
 
 Úložišti Git v úložišti Azure můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jinou tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
 
-## <a name="use-your-personal-microsoft-account"></a>Použití osobního účtu Microsoft
+### <a name="use-your-personal-microsoft-account"></a>Použití osobního účtu Microsoft
 
 Použití osobního účtu Microsoft k integraci Gitu, můžete propojit s osobním úložišti Azure Active Directory vaší organizace.
 
 1. Přidejte svůj osobní účet Microsoft do služby Active Directory vaší organizace v roli hosta. Další informace najdete v tématu [uživatele přidat Azure Active Directory s B2B spolupráce na webu Azure Portal](../active-directory/b2b/add-users-administrator.md).
 
-2. Přihlaste se k webu Azure Portal pomocí svého osobního účtu Microsoft. Přepněte se do služby Active Directory vaší organizace.
+2. Přihlaste se k webu Azure portal pomocí osobního účtu Microsoft. Přepněte se do služby Active Directory vaší organizace.
 
 3. Přejděte do části Azure DevOps, kde uvidíte vaše osobní úložiště. Vyberte úložiště a připojte se službou Active Directory.
 
@@ -94,7 +94,7 @@ Po provedení těchto kroků konfigurace při nastavování integrace Gitu v Už
 
 Další informace o připojení úložiště Azure do služby Active Directory vaší organizace najdete v tématu [organizaci Azure DevOps se připojit ke službě Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
-## <a name="switch-to-a-different-git-repo"></a>Přepnout na jiné úložiště Git
+### <a name="switch-to-a-different-git-repo"></a>Přepnout na jiné úložiště Git
 
 Přepnout na jiné úložiště Git, vyhledejte ikonu v pravém horním rohu na stránce Přehled služby Data Factory, jak je znázorněno na následujícím snímku obrazovky. Pokud nevidíte ikonu, vymažte mezipaměť místní prohlížeče. Vyberte ikonu a odebere přidružení aktuální úložiště.
 
@@ -102,7 +102,7 @@ Po odebrání přidružení k aktuální úložiště, můžete nakonfigurovat n
 
 ![Odebere přidružení aktuálního úložiště Git](media/author-visually/remove-repo.png)
 
-## <a name="use-version-control"></a>Správa verzí
+### <a name="use-version-control"></a>Správa verzí
 Systémy správy verzí (označované také jako _správy zdrojového kódu_) umožňují vývojářům spolupráce na kódu a sledování změn provedených na kód základní. Správy zdrojového kódu je to důležitý nástroj pro vývojáře více projekty.
 
 Každé úložiště Git v Azure úložiště, který je spojen s data factory má větev spolupráci. (`master` je výchozím nastavení spolupráci větev). Uživatelé mohou také vytvářet větve funkcí kliknutím **+ novou větev** a vývoj v větve funkcí.
@@ -113,7 +113,7 @@ Jakmile budete připraveni s vývojem pro funkce ve vaší větvi funkce, může
 
 ![Vytvořte novou žádost o přijetí změn](media/author-visually/create-pull-request.png)
 
-## <a name="configure-publishing-settings"></a>Konfigurace nastavení publikování
+### <a name="configure-publishing-settings"></a>Konfigurace nastavení publikování
 
 Konfigurace publikování větve – to znamená, větev, ve kterém se uloží šablon Resource Manageru – přidání `publish_config.json` soubor do kořenové složky ve větvi spolupráci. Data Factory čtení tohoto souboru, vyhledá pole `publishBranch`a vytvoří novou větev s zadaná hodnota (pokud ještě neexistuje). Pak uloží všechny šablony Resource Manageru do zadaného umístění. Příklad:
 
@@ -131,13 +131,39 @@ Pokud chcete zadat novou větev publikovat, nedojde k odstranění předchozí v
 
 Pouze načte datovou továrnu `publish_config.json` souboru, když načte objekt pro vytváření. Pokud už máte příslušný objekt pro vytváření načíst na portálu, aktualizujte prohlížeč, aby provedené změny projevily.
 
-## <a name="publish-code-changes"></a>Publikování změn kódu
+### <a name="publish-code-changes"></a>Publikování změn kódu
 Poté, co mají sloučit změny do větve spolupráce (`master` je výchozí nastavení), vyberte **publikovat** ručního publikování změn kódu v hlavní větvi do služby Data Factory.
 
 ![Publikujte změny do služby Data Factory](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
 > Hlavní větev se nemusí shodovat s co je nasazená ve službě Data Factory. V hlavní větvi *musí* ručně publikovat do služby Data Factory.
+
+### <a name="advantages-of-git-integration"></a>Výhody integrace Gitu
+
+-   **Správa zdrojového kódu**. Objekt pro vytváření úloh data jsou důležitá, byste to svým objektem pro vytváření integrovat Git využívat několik výhod zdrojový ovládací prvek vypadat asi takto:
+    -   Umožňuje sledovat a auditovat změny.
+    -   Možnost vrácení změn, které zavedeny chyby.
+-   **Částečné uloží**. Při provádění velké množství změn ve výrobě, bude Uvědomte si, že v pravidelných ŽIVÉM režimu, nelze uložit změny jako koncept, protože nejste připraveni nebo nechcete přijít o provedené změny v případě, že dojde k chybě v počítači. Integrace Gitu můžete pokračovat v ukládání změny postupně a pouze v případě, že jste připraveni publikovat k objektu pro vytváření. Git funguje jako pracovní místo, kde vaši práci, dokud jste otestovali změny vašich potřeb.
+-   **Spolupráce a ovládací prvek**. Pokud máte více členy týmu podílejících se na stejný objekt pro vytváření, můžete chtít nechat vašeho týmu spolupracovat s kolegy přes proces revize kódu. Svým objektem pro vytváření můžete také nastavit tak, že ne každý Přispěvatel k objektu pro vytváření nemá oprávnění k nasazení pro vytváření. Členové týmu mohou být pouze povoleno provádět změny přes Git, ale pouze určité osoby v týmu můžou "Publikovat" změny k objektu pro vytváření.
+-   **Zobrazuje rozdíly**. Režim Git, získáte zobrazíte nice diff datové části, která se týká chcete publikovat pro vytváření. Tento rozdíl ukazuje všechny prostředky a entity, které máte změnit/přidat/odstranit od posledního, kterou jste publikovali objektem pro vytváření. Podle tohoto rozdílu, můžete pokračovat dále s publikování, nebo přejděte zpět a zkontrolujte provedené změny a pak se vraťte později.
+-   **Lepší CI/CD**. Pokud používáte režim Git, můžete nakonfigurovat kanál pro vydávání verzí pro co nejdříve spustit automaticky, protože jsou všechny změny provedené v objektu pro vytváření vývoj. Získáte také přizpůsobit vlastnosti ve výrobě, které jsou k dispozici jako parametry v šabloně Resource Manageru. Může být užitečné zachovat pouze požadované sadu vlastností, které jako parametry a mít vše, co jinak pevné programového.
+-   **Vyšší výkon**. Objekt pro vytváření průměrné načte časy 10 x rychlejší režim Git než v pravidelných ŽIVÉM režimu, protože prostředky se stáhnou přes Git.
+
+### <a name="best-practices-for-git-integration"></a>Osvědčené postupy pro integraci Gitu
+
+-   **Oprávnění**. Obvykle nechcete, aby všichni členové týmu mít oprávnění k aktualizaci objekt pro vytváření.
+    -   Všichni členové týmu by měl mít oprávnění ke čtení s datovou továrnou.
+    -   Jenom vybraná sada uživatelů má povolený pro publikování na objekt pro vytváření a pro, musí se jednat o část role "Přispěvatel Data Factory" na objekt pro vytváření.
+    -   Jedním z osvědčených postupů správy zdrojového kódu je také nepovoluje přímou vrácení se změnami do větve spolupráci. Tento požadavek brání chyby při každém vrácení se změnami prochází proces žádosti o přijetí změn.
+-   **Přepínání režimů**.
+    -    Až se režim Git, nedoporučujeme vám přepínat do živého režimu primárně, protože všechny změny provedené v ŽIVÉM režimu, se projeví, když přepnete zpět do Gitu. Pokuste se provést změny v Gitu režimu samotné a publikujte je prostřednictvím uživatelského rozhraní.
+    -   Podobně nepoužívejte rutiny prostředí powershell objekt pro vytváření dat, protože, stejného výsledku dosáhnout přímo při použití zadané změn živé objekt pro vytváření.
+-   **Používat hesla ze služby Azure Key Vault**.
+    -   Důrazně doporučujeme používat AzureKeyVault pro uložení všech připojovací řetězce nebo hesla pro propojené služby DataFactory.
+    -   Neukládáme těchto tajných informací v úložišti Git (z bezpečnostních důvodů), takže všechny změny propojené služby jsou publikovány hned za objekt pro vytváření. Tato okamžité publikování někdy nežádoucí, protože nemusí mohli otestovat změny, které poráží účel Git.
+    -   Všechny tyto tajné klíče v důsledku toho musí být získána z propojené služby, která používá na základě služby Azure Key Vault.
+    -   Některé další výhody používání služby Key Vault je, že to usnadňuje CICD, tím, že zajišťují těchto tajných kódů správce prostředků během nasazování šablony.
 
 ## <a name="author-with-github-integration"></a>Autor integrace Githubu
 

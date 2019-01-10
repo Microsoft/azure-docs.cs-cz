@@ -1,23 +1,23 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 11: Vytvoření rolí | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services lekce 11: Vytvoření rolí | Dokumentace Microsoftu'
 description: Popisuje, jak vytvořit role v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1a9ecea835e42c90ce7d71617666d210182fe465
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5b89051cab7e89f79a2b62a392173e6dc234e48d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428897"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189741"
 ---
 # <a name="create-roles"></a>Vytvoření rolí
 
-V této lekci vytvoříte role. Role poskytují objekt databáze modelu a zabezpečení dat tím, že omezují přístup pouze na uživatele, kteří jsou členy dané role. Každá role je definována s jediným oprávněním: Žádné, Čtení, Čtení a zpracování, Zpracování nebo Správce. Role je možné definovat při vytváření modelu pomocí Správce rolí. Po nasazení modelu můžete role spravovat pomocí aplikace SQL Server Management Studio (SSMS). Další informace najdete v tématu [Role](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
+V této lekci vytvoříte role. Role poskytují objekt databáze modelu a zabezpečení dat tím, že omezují přístup pouze na uživatele, kteří jsou členy dané role. Každá role je definována s jediným oprávněním: Žádné, čtení, čtení a procesu, proces nebo správce. Role je možné definovat při vytváření modelu pomocí Správce rolí. Po nasazení modelu můžete role spravovat pomocí aplikace SQL Server Management Studio (SSMS). Další informace najdete v tématu [Role](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
   
 > [!NOTE]  
 > Vytvoření rolí není nezbytné pro dokončení tohoto kurzu. Ve výchozím nastavení má účet, ke kterému jste právě přihlášeni, oprávnění správce modelu. Aby však mohli data procházet pomocí klienta sestav ostatní uživatelé ve vaší organizaci, musíte vytvořit alespoň jednu roli s oprávněním Čtení a přidat tyto uživatele jako členy.  
@@ -30,12 +30,12 @@ Vytvoříte tři role:
   
 -   **Správce** – Tato role může zahrnovat uživatele, u kterých chcete, aby měli oprávnění Správce, což jim poskytne neomezený přístup a oprávnění k provádění úloh správy s databází modelu.  
   
-Protože jsou účty uživatelů a skupin systému Windows ve vaší organizaci jedinečné, můžete mezi členy přidat účty z konkrétní organizace. Pro účely tohoto kurzu však můžete členy také ponechat prázdné. Účinky jednotlivých rolí otestujete později v lekci 12: Analýza v aplikaci Excel.  
+Protože jsou účty uživatelů a skupin systému Windows ve vaší organizaci jedinečné, můžete mezi členy přidat účty z konkrétní organizace. Pro účely tohoto kurzu však můžete členy také ponechat prázdné. Testovat účinky jednotlivých rolí později v lekci 12: Analyzujte v aplikaci Excel.  
   
 Odhadovaný čas dokončení této lekce: **15 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabelárního modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 10: Vytvoření oddílů](../tutorials/aas-lesson-10-create-partitions.md).  
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 10: Vytvoření oddílů](../tutorials/aas-lesson-10-create-partitions.md).  
   
 ## <a name="create-roles"></a>Vytvoření rolí  
   
@@ -84,7 +84,7 @@ Toto téma je součástí kurzu tabelárního modelování, který by se měl do
   
   
 ## <a name="whats-next"></a>Co dále?
-[Lekce 12: Analýza v aplikaci Excel](../tutorials/aas-lesson-12-analyze-in-excel.md)
+[Lekce 12: Analyzovat v aplikaci Excel](../tutorials/aas-lesson-12-analyze-in-excel.md).
 
   
   

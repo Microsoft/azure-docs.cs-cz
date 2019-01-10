@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 12/20/2018
 ms.author: rolyon
-ms.openlocfilehash: 0a5d58d0403471d591ce2aa2ed9de9092127ea15
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 859d81239cfad9eb5396a30f5db316bc73285831
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744101"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188418"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -263,7 +263,7 @@ Tady je seznam podporovaných platforem a software.
 > |  | iOS | Android | Windows 10 | Ostatní |
 > | --- | --- | --- | --- | --- |
 > | **Nativní aplikace** | Ano | Ano | Ano |  |
-> | **Edge** | Ano | Ano | Ano |  |
+> | **Microsoft Edge** | Ano | Ano | Ano |  |
 > | **Aplikace Internet Explorer** | Ano | Ano | Ano |  |
 > | **(S příponou) pro Chrome** | Ano | Ano | Ano |  |
 
@@ -341,44 +341,44 @@ Můžete nakonfigurovat zásady podmíněného přístupu pro aplikaci registrac
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**DOTAZ: Jak můžu zobrazit kdy / jestli uživatel přijal podmínky použití?**<br />
-ODPOVĚĎ: V podmínkách použití okna, klikněte na číslo v části **přijato**. Můžete také zobrazit nebo Hledat přijmout aktivity ve službě Azure AD protokoly auditu. Další informace najdete v tématu [zobrazit sestavu kteří je přijali a odmítli](#view-who-has-accepted-and-declined) a [protokolů auditu Azure AD zobrazení](#view-azure-ad-audit-logs).
+**Otázka: Jak můžu zobrazit kdy / jestli uživatel přijal podmínky použití?**<br />
+Odpověď: V podmínkách použití okna, klikněte na číslo v části **přijato**. Můžete také zobrazit nebo Hledat přijmout aktivity ve službě Azure AD protokoly auditu. Další informace najdete v tématu [zobrazit sestavu kteří je přijali a odmítli](#view-who-has-accepted-and-declined) a [protokolů auditu Azure AD zobrazení](#view-azure-ad-audit-logs).
 
-**DOTAZ: Jak dlouho je informace uložené?**<br />
-ODPOVĚĎ: Uživatel se počítá v podmínkách použití sestavy a na koho se přijata nebo odmítnuta se uchovávají po dobu životnosti podmínky použití. Po dobu 30 dnů se ukládají protokoly auditu Azure AD.
+**Otázka: Jak dlouho je informace uložené?**<br />
+Odpověď: Uživatel se počítá v podmínkách použití sestavy a na koho se přijata nebo odmítnuta se uchovávají po dobu životnosti podmínky použití. Po dobu 30 dnů se ukládají protokoly auditu Azure AD.
 
-**DOTAZ: Proč vidím jiný počet souhlasy v podmínkách použití sestav a služby Azure AD protokoly auditu**<br />
-ODPOVĚĎ: Podmínky použití sestavy se ukládají po dobu platnosti této podmínky použití při auditování Azure AD, které protokoly se ukládají po dobu 30 dnů. Podmínky použití sestavy také zobrazí pouze aktuální stav souhlasu uživatele. Například pokud uživatel odmítne a pak přijme, podmínky použití sestavy se zobrazí pouze jeho přijetí. Pokud chcete zobrazit historii, můžete použít Azure AD protokoly auditu.
+**Otázka: Proč vidím jiný počet souhlasy v podmínkách použití sestav a služby Azure AD protokoly auditu**<br />
+Odpověď: Podmínky použití sestavy se ukládají po dobu platnosti této podmínky použití při auditování Azure AD, které protokoly se ukládají po dobu 30 dnů. Podmínky použití sestavy také zobrazí pouze aktuální stav souhlasu uživatele. Například pokud uživatel odmítne a pak přijme, podmínky použití sestavy se zobrazí pouze jeho přijetí. Pokud chcete zobrazit historii, můžete použít Azure AD protokoly auditu.
 
-**DOTAZ: Pokud jsem upravit podrobnosti podmínek použití, je potřeba, aby uživatelé přijali znovu?**<br />
-ODPOVĚĎ: Ne, pokud správce upraví podrobnosti pro podmínky použití (název, zobrazovaný název, vyžadovat, aby uživatelé rozbalili nebo přidat jazyk), aby uživatelé znovu přijali jako nové podmínky.
+**Otázka: Pokud jsem upravit podrobnosti podmínek použití, je potřeba, aby uživatelé přijali znovu?**<br />
+Odpověď: Ne, pokud správce upraví podrobnosti pro podmínky použití (název, zobrazovaný název, vyžadovat, aby uživatelé rozbalili nebo přidat jazyk), aby uživatelé znovu přijali jako nové podmínky.
 
-**DOTAZ: Můžete aktualizovat existující podmínky použití dokumentů**<br />
-ODPOVĚĎ: V současné době nelze aktualizovat existující podmínky použití dokumentů. Chcete-li změnit podmínky použití dokumentů, budete muset vytvořit nové podmínky použití instance.
+**Otázka: Můžete aktualizovat existující podmínky použití dokumentů**<br />
+Odpověď: V současné době nelze aktualizovat existující podmínky použití dokumentů. Chcete-li změnit podmínky použití dokumentů, budete muset vytvořit nové podmínky použití instance.
 
-**DOTAZ: Pokud jsou hypertextové odkazy v podmínkách použití dokumentů PDF, koncoví uživatelé uvidí na ně?**<br />
-ODPOVĚĎ: Soubor PDF se vykreslí ve výchozím nastavení ve formátu JPEG, takže hypertextové odkazy nejsou po kliknutí. Uživatelé mají možnost vybrat si **máte problémy se zobrazením? Kliknutím sem**, který vykreslí PDF nativně kde hypertextové odkazy jsou podporovány.
+**Otázka: Pokud jsou hypertextové odkazy v podmínkách použití dokumentů PDF, koncoví uživatelé uvidí na ně?**<br />
+Odpověď: Soubor PDF se vykreslí ve výchozím nastavení ve formátu JPEG, takže hypertextové odkazy nejsou po kliknutí. Uživatelé mají možnost vybrat si **máte problémy se zobrazením? Kliknutím sem**, který vykreslí PDF nativně kde hypertextové odkazy jsou podporovány.
 
-**DOTAZ: Podmínky použití může podporovat více jazycích?**<br />
-ODPOVĚĎ: Ano. Aktuálně nejsou 108 různé jazyky, které správce může nakonfigurovat pro jeden podmínky použití. Správce můžete nahrát několik dokumentů PDF a označte tyto dokumenty pomocí odpovídající jazyk (až 108). Když se koncoví uživatelé přihlásí, jsme podívejte se na jejich upřednostňovaný jazyk prohlížeče a zobrazí odpovídající dokumentu. Pokud není nalezena žádná shoda, zobrazí výchozí dokument, který je první dokument, který se odeslal.
+**Otázka: Podmínky použití může podporovat více jazycích?**<br />
+Odpověď: Ano. Aktuálně nejsou 108 různé jazyky, které správce může nakonfigurovat pro jeden podmínky použití. Správce můžete nahrát několik dokumentů PDF a označte tyto dokumenty pomocí odpovídající jazyk (až 108). Když se koncoví uživatelé přihlásí, jsme podívejte se na jejich upřednostňovaný jazyk prohlížeče a zobrazí odpovídající dokumentu. Pokud není nalezena žádná shoda, zobrazí výchozí dokument, který je první dokument, který se odeslal.
 
-**DOTAZ: Kdy se podmínky použití aktivují?**<br />
-ODPOVĚĎ: Podmínky použití se aktivují během přihlašovací prostředí.
+**Otázka: Kdy se podmínky použití aktivují?**<br />
+Odpověď: Podmínky použití se aktivují během přihlašovací prostředí.
 
-**DOTAZ: Jaké aplikace je možné cílit podmínkami použití?**<br />
-ODPOVĚĎ: Můžete vytvořit zásady podmíněného přístupu pro podnikové aplikace používající moderní ověřování. Další informace najdete v tématu věnovaném [podnikovým aplikacím](./../manage-apps/view-applications-portal.md).
+**Otázka: Jaké aplikace je možné cílit podmínkami použití?**<br />
+Odpověď: Můžete vytvořit zásady podmíněného přístupu pro podnikové aplikace používající moderní ověřování. Další informace najdete v tématu věnovaném [podnikovým aplikacím](./../manage-apps/view-applications-portal.md).
 
-**DOTAZ: Můžete pro konkrétního uživatele nebo aplikaci přidat několikero podmínek použití?**<br />
-ODPOVĚĎ: Ano, tak, že vytvoříte několik zásad podmíněného přístupu cílí na tyto skupiny nebo aplikace. Pokud uživatel spadá do rozsahu několika podmínek použití, přijetí jedné podmínky použití v čase.
+**Otázka: Můžete pro konkrétního uživatele nebo aplikaci přidat několikero podmínek použití?**<br />
+Odpověď: Ano, tak, že vytvoříte několik zásad podmíněného přístupu cílí na tyto skupiny nebo aplikace. Pokud uživatel spadá do rozsahu několika podmínek použití, přijetí jedné podmínky použití v čase.
 
-**DOTAZ: Co se stane, když uživatel odmítne podmínky použití?**<br />
-ODPOVĚĎ: Uživatel je zablokovaný přístup k aplikaci. Uživatel musel znovu přihlásit a přijměte podmínky získal přístup.
+**Otázka: Co se stane, když uživatel odmítne podmínky použití?**<br />
+Odpověď: Uživatel je zablokovaný přístup k aplikaci. Uživatel musel znovu přihlásit a přijměte podmínky získal přístup.
 
-**DOTAZ: Je možné unaccept podmínky použití, které byly dříve přijali službu?**<br />
-ODPOVĚĎ: Je možné [kontrola dříve přijali podmínky použití](#how-users-can-review-their-terms-of-use), ale aktuálně není k dispozici způsob, jak unaccept.
+**Otázka: Je možné unaccept podmínky použití, které byly dříve přijali službu?**<br />
+Odpověď: Je možné [kontrola dříve přijali podmínky použití](#how-users-can-review-their-terms-of-use), ale aktuálně není k dispozici způsob, jak unaccept.
 
-**DOTAZ: Co se stane, pokud také používám Intune podmínky a ujednání?**<br />
-ODPOVĚĎ: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intune podmínky a ujednání](/intune/terms-and-conditions-create), uživatel bude muset přijmout. Další informace najdete v tématu [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+**Otázka: Co se stane, pokud také používám Intune podmínky a ujednání?**<br />
+Odpověď: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intune podmínky a ujednání](/intune/terms-and-conditions-create), uživatel bude muset přijmout. Další informace najdete v tématu [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ## <a name="next-steps"></a>Další postup
 

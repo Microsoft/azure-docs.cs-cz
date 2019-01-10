@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: dcedf27f6105dcc1ea6e43feb32d254b491842c7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9d91ccd04ed06fb6c256a2d9911202d7df6d08a5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974433"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188296"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Procesem offline předvyplnění Azure Backup můžete používat disky k odesílání dat offline zálohování do Azure.
@@ -109,7 +109,7 @@ Tato část popisuje pracovní postup offline zálohování tak, aby vaše data 
     * Kopírování počítač získá přístup k pracovní umístění pro pracovní postup offline předvyplnění pomocí stejné cesty sítě, která byla součástí **zahájení offline zálohování** pracovního postupu.
     * Povolení nástroje BitLocker v počítači kopírování.
     * Je nainstalovaný Azure PowerShell 3.7.0.
-    * Jsou nainstalované nejnovější kompatibilní prohlížeče (Edge nebo Internet Explorer 11) a je povolen jazyk JavaScript. 
+    * Jsou nainstalované nejnovější kompatibilní prohlížeče (Microsoft Edge nebo Internet Explorer 11) a je povolen jazyk JavaScript. 
     * Počítač kopírování získá přístup k webu Azure portal. V případě potřeby kopírování počítač může být stejný jako zdrojový počítač.
     
     > [!IMPORTANT] 

@@ -1,19 +1,19 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 13: Nasazení | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services lekce 13: Nasazení | Dokumentace Microsoftu'
 description: Popisuje, jak nasadit projekt Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f0528af5f3a6b7309d81c36ca5bc7a3faccfa293
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427106"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188381"
 ---
 # <a name="deploy"></a>Nasazení
 
@@ -22,7 +22,7 @@ V této lekci nakonfigurujete vlastnosti nasazení – zadáte server služby Az
 Odhadovaný čas dokončení této lekce: **5 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Tento článek je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 12: Analýza v aplikaci Excel](../tutorials/aas-lesson-12-analyze-in-excel.md).  
+Tento článek je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 12: Analyzovat v aplikaci Excel](../tutorials/aas-lesson-12-analyze-in-excel.md).  
 
 > [!IMPORTANT]  
 > Abyste mohli nasadit vzdálený server služby Analysis Services, musíte k němu mít [oprávnění správce](../analysis-services-server-admins.md).  

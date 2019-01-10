@@ -1,25 +1,25 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 2: Získání dat | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services Lekce 2: Získání dat | Dokumentace Microsoftu'
 description: Popisuje, jak získat a importovat data v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7aaadb6237a3b16d166d3bc931fddc70fb4a792
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6643d0851be1ad9d2827f51af3662a469020654c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427616"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189316"
 ---
 # <a name="get-data"></a>Získání dat
 
 V této lekci se pomocí funkce získání dat v SSDT připojíte k ukázkové databázi AdventureWorks, vyberete data, zobrazíte jejich náhled, použijete filtr a potom je naimportujete do pracovního prostoru modelu.  
   
-Pomocí funkce Získání dat můžete importovat data z celé řady zdrojů: Azure SQL Database, Oracle, Sybase, kanál OData, Teradata, soubory a další. Data umožňují také dotazy pomocí výrazu se vzorci Power Query M.
+Pomocí získat Data můžete importovat data z nejrůznějších zdrojů: Azure SQL Database, Oracle, Sybase, kanál OData, Teradata, soubory a další. Data umožňují také dotazy pomocí výrazu se vzorci Power Query M.
 
 > [!NOTE]
 > Úlohy a obrázky v tomto kurzu ukazují připojení k databázi AdventureWorksDW2014 na místním serveru. V některých případech se databáze AdventureWorks v Azure může lišit.
@@ -27,7 +27,7 @@ Pomocí funkce Získání dat můžete importovat data z celé řady zdrojů: Az
 Odhadovaný čas dokončení této lekce: **10 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 1: Vytvoření nového projektu s tabelárním modelem](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 1: Vytvoření nového projektu s tabelárním modelem](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
 ## <a name="create-a-connection"></a>Vytvoření připojení  
   
@@ -52,7 +52,7 @@ Toto téma je součástí kurzu tabulkového modelování, který by se měl dok
   
 5.  V části Navigátor vyberte databázi **AdventureWorksDW2014** a klikněte na **OK**. Tím se vytvoří připojení k databázi. 
   
-6.  V části Navigátor zaškrtněte políčko u následujících tabulek: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, a **FactInternetSales**a potom klikněte na tlačítko **upravit**.
+6.  V části Navigátor zaškrtněte políčko u následujících tabulek: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**,  **DimProductSubcategory**, a **FactInternetSales**a potom klikněte na tlačítko **upravit**.
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
@@ -151,7 +151,7 @@ Je důležité projekt s modelem často ukládat.
 -   Klikněte na **Soubor** > **Uložit vše**.  
   
 ## <a name="whats-next"></a>Co dále?
-[Lekce 3: Označení jako tabulky kalendářních dat](../tutorials/aas-lesson-3-mark-as-date-table.md)
+[Lekce 3: Označit jako tabulku kalendářních dat](../tutorials/aas-lesson-3-mark-as-date-table.md).
 
   
   

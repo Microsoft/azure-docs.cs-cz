@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 146467ef50c605f730fe6f65c349fc8a3a1fd045
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 92bab3e6dcea0b6b234d361a346698be15088fc0
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426239"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191509"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Kurz Adventure Works
 
@@ -45,7 +45,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 -   [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md) s **ukázkovou databází AdventureWorksDW**, nebo SQL Server Data Warehouse s [ukázkovou databází Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks).
 
-    **Důležité:** Pokud instalujete ukázkovou databázi na místní SQL Server Data Warehouse a model nasazujete na server Azure Analysis Services, vyžaduje se [místní brána dat](../analysis-services-gateway.md).
+    **Důležité:** Pokud instalujete ukázkovou databázi místní SQL Server Data Warehouse a model nasazujete na server služby Azure Analysis Services [On-premises data gateway](../analysis-services-gateway.md) je povinný.
 
 -   Nejnovější verzi [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) pro Visual Studio.
 
@@ -93,7 +93,7 @@ Tyto lekce nejsou vyžadovány pro absolvování kurzu, ale můžete díky nim l
 
   
 ## <a name="next-steps"></a>Další postup  
-Pokud chcete začít, přejděte k [lekci 1: Vytvoření nového projektu s tabelárním modelem](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Abyste mohli začít, najdete v článku [Lekce 1: Vytvoření nového projektu s tabelárním modelem](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
   
   

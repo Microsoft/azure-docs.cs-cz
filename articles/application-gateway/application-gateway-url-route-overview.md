@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: d5d8ed09da2b05de079bc1b62066bb4008a659d8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118355"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188755"
 ---
 # <a name="url-path-based-routing-overview"></a>Přehled směrování na základě cest URL
 
@@ -65,7 +65,7 @@ Prvek UrlPathMap slouží k určení vzorů cest pro mapování fondů back-end 
 
 PathPattern je seznam vzorů cest tak, aby odpovídaly. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec k předávaný cesta neobsahuje žádný text po prvním? nebo # a tyto znaky tady nejsou povolené. V opačném případě PathPattern může všech znaků v adrese URL.
 
-Tyto vzory se dají nepodporuje závisí na kterém, jestli nasazujete Application Gateway v1 nebo v2:
+Podporované vzory jsou závislé na tom, jestli nasazujete Application Gateway v1 nebo v2:
 
 #### <a name="v1"></a>V1
 

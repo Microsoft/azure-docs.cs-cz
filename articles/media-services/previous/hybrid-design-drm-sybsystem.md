@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: willzhan;juliako
-ms.openlocfilehash: 84e2eb6a16ce9ee4889eacbf394754c5c2544f7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9026cab0651cd5f8433f9a8a7db0366a6ab13464
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245303"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190251"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybridní návrh systému DRM subsystem(s)
 
@@ -68,8 +68,8 @@ Jako součást komplexní cloudové video platformy Azure Media Services DRM má
 
 ### <a name="drm-license-delivery"></a>Doručování licencí DRM
 
-* AMS: Licence DRM zasílá službu doručování licencí AMS.
-* Třetí strany: Licence DRM zasílá licenčního serveru DRM třetích stran mimo AMS.
+* AMS: Licence DRM dodává službu doručování licencí AMS.
+* Třetí strany: Licence DRM dodává licenčního serveru DRM třetích stran mimo AMS.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Konfigurace na základě vaší hybridní scénáře
 
@@ -102,7 +102,7 @@ Podle vysvětlení v předchozí části, následujících pět hybridních scé
 |AMS|Třetí strany|Vnější|Ne|Ne|Ukázka 4|
 |Třetí strany|Třetí strany|AMS|Ano|Ne|    
 
-V ukázkách ochranou PlayReady vyhovuje DASH a smooth streaming. Video níže uvedených adres URL jsou technologie smooth streaming adresy URL. Získat odpovídající adresy URL DASH, stačí přidat "(format = mpd-time-csf)". Můžete použít [testování azure media player](https://aka.ms/amtest) otestovat v prohlížeči. Umožňuje vám nakonfigurovat které protokol streamování chcete použít, podle které tech. Podpora technologie PlayReady přes EME IE11 a MS Edge ve Windows 10. Další informace najdete v tématu [podrobné informace o nástroji test](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+V ukázkách ochranou PlayReady vyhovuje DASH a smooth streaming. Video níže uvedených adres URL jsou technologie smooth streaming adresy URL. Získat odpovídající adresy URL DASH, stačí přidat "(format = mpd-time-csf)". Můžete použít [testování azure media player](https://aka.ms/amtest) otestovat v prohlížeči. Umožňuje vám nakonfigurovat které protokol streamování chcete použít, podle které tech. Podpora technologie PlayReady přes EME IE11 a Microsoft Edge ve Windows 10. Další informace najdete v tématu [podrobné informace o nástroji test](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>Ukázka 1
 

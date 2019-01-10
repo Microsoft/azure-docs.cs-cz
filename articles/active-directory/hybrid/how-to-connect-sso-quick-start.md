@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ed3271eb2fdae1b89013f0145b0e08de49792305
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 2a842646d2696c0d7d26ad7218d298d2df0be1a1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062872"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187634"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: Rychlý start
 
@@ -200,7 +200,7 @@ Použití rozšíření zásad skupiny služby Active Directory třetích stran 
 
 #### <a name="known-browser-limitations"></a>Omezení známé prohlížeče
 
-Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení prohlížeče Firefox a hraničními zařízeními. Je také nebude fungovat v Internet Exploreru Pokud prohlížeč běží v rozšířené chráněný režim.
+Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení na prohlížeče Firefox a Microsoft Edge. Je také nebude fungovat v Internet Exploreru Pokud prohlížeč běží v rozšířené chráněný režim.
 
 ## <a name="step-4-test-the-feature"></a>Krok 4: Otestovat funkci
 

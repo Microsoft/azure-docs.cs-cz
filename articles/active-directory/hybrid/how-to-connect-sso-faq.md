@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e47dcda90682bd1f83dbb5fdc6a106f80853d2d0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0672fc06130ce58ae3155672c66ac06ae96bc7b9
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424829"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190627"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -107,7 +107,7 @@ Proveďte tyto kroky na místním serveru, kde je spuštěn nástroj Azure AD Co
 
 ### <a name="step-1-disable-the-feature-on-your-tenant"></a>Krok 1. Zakázat funkci ve svém tenantovi
 
-#### <a name="option-a-disable-using-azure-ad-connect"></a>Odpověď: možnost Zakázat pomocí služby Azure AD Connect
+#### <a name="option-a-disable-using-azure-ad-connect"></a>Možnost A: Zakázat pomocí služby Azure AD Connect
 
 1. Spusťte Azure AD Connect, zvolte **změnit uživatelské přihlašovací stránku** a klikněte na tlačítko **Další**.
 2. Zrušte zaškrtnutí políčka **povolit jednotné přihlašování** možnost. Pokračujte v průvodci.
@@ -118,7 +118,7 @@ Po dokončení průvodce, se zakážou bezproblémového jednotného přihlašov
 
 Dokončete proces vyčištění proveďte kroky 2 a 3 na na místním serveru, kde je spuštěn nástroj Azure AD Connect.
 
-#### <a name="option-b-disable-using-powershell"></a>Možnost B: zakázat pomocí Powershellu
+#### <a name="option-b-disable-using-powershell"></a>Možnost B: Zakázat pomocí Powershellu
 
 Provedením následujících kroků na místní server, kde je spuštěn nástroj Azure AD Connect:
 

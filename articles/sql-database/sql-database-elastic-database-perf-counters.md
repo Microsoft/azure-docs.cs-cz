@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 84bd1283020492ef6724aabd7daad4e153b11717
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ce5ba5f827b790e4ca91d1aed91dfad47cedac4e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043681"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191390"
 ---
 # <a name="performance-counters-for-shard-map-manager"></a>Čítače výkonu pro správce mapování horizontálních oddílů
 
@@ -34,7 +34,7 @@ Můžete zaznamenávat výkon [správce mapování horizontálních oddílů](sq
 
 ## <a name="create-performance-category-and-counters"></a>Vytvoření kategorie výkonu a čítače
 
-K vytvoření čítače, zavolejte metodu CreatePerformanceCategoryAndCounters [ShardMapManagementFactory třídy](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Metodu lze spustit pouze správce:
+K vytvoření čítače, zavolejte metodu CreatePerformanceCategoryAndCounters [ShardMapManagementFactory třídy](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory). Metodu lze spustit pouze správce:
 
     ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 
@@ -42,7 +42,7 @@ Můžete také použít [to](https://gallery.technet.microsoft.com/scriptcenter/
 Metoda vytvoří následující čítače výkonu:  
 
 * **Uložit do mezipaměti mapování**: Počet mapování pro mapy horizontálních oddílů v mezipaměti uloženy.
-* **DDR operací za sekundu**: Rychlost operací závislých směrování dat pro mapy horizontálních oddílů. Tento čítač je aktualizována při volání [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) má za následek úspěšné připojení k cílové horizontálních oddílů.
+* **DDR operací za sekundu**: Rychlost operací závislých směrování dat pro mapy horizontálních oddílů. Tento čítač je aktualizována při volání [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) má za následek úspěšné připojení k cílové horizontálních oddílů.
 * **Mapování přístupy do mezipaměti vyhledávání/s**: Rychlost operací vyhledávání úspěšné mezipaměti pro mapování horizontálních oddílů.
 * **Mapování Neúspěšné přístupy do mezipaměti vyhledávání za sekundu**: Rychlost operací vyhledávání neúspěšné mezipaměti pro mapování horizontálních oddílů.
 * **Mapování přidán nebo aktualizován v mezipaměti za sekundu**: Rychlost, na které mapování jsou přidáním nebo aktualizací v mezipaměti pro mapy horizontálních oddílů.
@@ -54,7 +54,7 @@ Metoda vytvoří následující čítače výkonu:
 
 Tyto události spustit vytvoření čítače výkonu:  
 
-* Inicializace [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) s [předběžné načítání](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx)v případě, ShardMapManager obsahuje všechny mapy horizontálních oddílů. Patří mezi ně [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) a [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx) metody.
+* Inicializace [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) s [předběžné načítání](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy)v případě, ShardMapManager obsahuje všechny mapy horizontálních oddílů. Patří mezi ně [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) a [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) metody.
 * Úspěšné vyhledávání mapy horizontálních oddílů (pomocí [GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) nebo [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)).
 * Úspěšné vytvoření mapy horizontálních oddílů pomocí CreateShardMap().
 

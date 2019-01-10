@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 42850cc5f8280b29811f9607557f38507262694a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1fff32896ef794a26f223cae4ae491a2995d9acf
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034399"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191135"
 ---
 # <a name="working-with-javascript-language-integrated-query-api-with-azure-cosmos-db"></a>Práce s dotazem integrovaný jazyk JavaScript API ve službě Azure Cosmos DB
 
@@ -64,7 +64,7 @@ Následující tabulka uvádí různé dotazy SQL a odpovídající dotazy jazyk
 
 Přečtěte si další koncepty a postupy: zápis a pomocí uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB:
 
-- [Jak napsat uložených procedur a aktivačních událostí pomocí rozhraní API pro dotazy jazyka Javascript](how-to-write-javascript-query-api.md#)
+- [Jak napsat uložených procedur a aktivačních událostí pomocí rozhraní API pro dotazy jazyka Javascript](how-to-write-javascript-query-api.md)
 - [Práce s Azure Cosmos DB uložené procedury, triggery a uživatelem definovaných funkcí](stored-procedures-triggers-udfs.md)
 - [Jak používat uložené procedury, aktivační události, uživatelem definovaných funkcí ve službě Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 - [Azure Cosmos DB na straně serveru rozhraní API reference na JavaScript na](https://azure.github.io/azure-cosmosdb-js-server)

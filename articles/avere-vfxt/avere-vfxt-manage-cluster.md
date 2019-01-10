@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999066"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189605"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Správa clusteru Avere vFXT
 
@@ -63,11 +63,11 @@ Vypnout, restartovat nebo odebrání uzlu, uzlu v seznamu vyhledejte na **FXT uz
 > [!NOTE] 
 > IP adresy se mohou pohybovat mezi uzly clusteru při změně počtu aktivních uzlů.
 
-Čtení [Cluster > uzly FXT](<http://library.averesystems.com/ops_guide/4_7/gui_fxt_nodes.html#gui-fxt-nodes>) v Průvodci Avere clusteru nastavení pro další informace.
+Čtení [Cluster > uzly FXT](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) v Průvodci Avere clusteru nastavení pro další informace.
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Zastavení nebo restartování clusteru pomocí Avere ovládací panely
 
-**Údržbě systému** stránka nastavení obsahuje příkazy pro restartování služby clusteru, restartování clusteru nebo bezpečné provozování clusteru dolů. Čtení [správy > Údržba systému](<http://library.averesystems.com/ops_guide/4_7/gui_system_maintenance.html#gui-system-maintenance>) (v Avere clusteru nastavení průvodce) podrobnosti.
+**Údržbě systému** stránka nastavení obsahuje příkazy pro restartování služby clusteru, restartování clusteru nebo bezpečné provozování clusteru dolů. Čtení [správy > Údržba systému](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (v Avere clusteru nastavení průvodce) podrobnosti.
 
 Cluster se vypíná, odešle stavové zprávy pro **řídicí panel** kartu v první. Po chvíli se relace Avere ovládací panely, přestane reagovat, což znamená, že byl vypnut clusteru.
 
@@ -83,7 +83,7 @@ Jako Avere ovládací panely zkuste vfxt.py operace Ujistěte se, že je změně
 
 vfxt.PY je předinstalován v řadiči clusteru virtuálních počítačů. <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
-Průvodce kompletní vfxt.py využití je k dispozici na Githubu: [Správa clusteru s vfxt.py v cloudu](https://github.com/azure/averesdk/blob/master/docs/README.md)
+Průvodce kompletní vfxt.py využití je k dispozici na Githubu: [Cloudová Správa clusteru s vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Přidat uzly clusteru s vfxt.py
 

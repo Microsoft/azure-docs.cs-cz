@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: juliako
-ms.openlocfilehash: f9ad7fcf414e90acc40ee5cd42e322a3b9e47f17
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 93222129b80592ef5b4e1ed2e1420d975fe9f108
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380997"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190715"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>Generování miniatur sprite 
 
@@ -70,7 +70,7 @@ Zde naleznete příklad:
 
 1.  Není možné vygenerovat sprite image s jeden řádek obrázků (SpriteColumn = 1 výsledky do image s jedním sloupcem).
 2.  Bloků sprite imagí do středně velkých obrázků JPEG se ještě nepodporuje. Proto musí být věnovat pozornost omezit počet miniatur a jejich velikost tak, aby výsledný stitched Sprite miniaturu po 8 pixelech M nebo i rychleji.
-3.  Azure Media Player podporuje prvky, které budou v prohlížeči Edge, Chrome a Firefox. Analýza VTT není podporována v IE11.
+3.  Azure Media Player podporuje prvky, které budou v prohlížeči Microsoft Edge, Chrome a Firefox. Analýza VTT není podporována v IE11.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviwer: japere,asteen
-ms.openlocfilehash: ac07a0aa9c324c7e44d68ea2674d0fa2af5dbba5
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d2670d8f018fc26b7017fba40b5aff4310900dab
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356539"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188687"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Potížím při přihlašování k webu přístupového panelu
 
@@ -64,7 +64,7 @@ Pro jednotné přihlašování založené na heslech může být koncového uži
 
 -   Aplikace Internet Explorer 8, 9, 10, 11 – ve Windows 7 nebo novější
 
--   Edge ve Windows 10 Anniversary Edition nebo novější 
+-   Microsoft Edge ve Windows 10 Anniversary Edition nebo novější 
 
 -   Chrome – Ve Windows 7 nebo novější a v systému MacOS X nebo novější
 

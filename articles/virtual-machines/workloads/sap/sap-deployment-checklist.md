@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd28e071fca37b120349ec3b471662909b323a0c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 29ec56f3b360a4a19269555c1504ae7ff6446f8e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082645"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189146"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
 
@@ -84,7 +84,7 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
 
 1.  Optimalizujte přenosy dat do Azure. Vysoce závislé na přenos případů zákazníka prostřednictvím [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) z místního byl nejrychlejší, pokud má dostatečnou šířku pásma okruhu Express. S ostatními zákazníky prostřednictvím Internetu naplánujete bude rychlejší
 2.  V případě SAP migrace heterogenní platformy, která zahrnuje exportu a importu dat z databáze, otestovat a optimalizovat export a import fází. Pro velké migrace zahrnující systému SQL Server jako cílové platformy, můžete najít doporučení [tady](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). Můžete provést migraci monitorování/SWPM přístup v případě, že není nutné kombinované vydání upgradu nebo [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) při kombinování migrace se upgrade verze SAP a splnění určitých zdrojová a cílová platforma DBMS kombinace popsáno, například v [možnost migrace databáze (DMO) ze SOUČTU 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872). 
-    1.  Exportujte export, Zajišťujeme nahrání souboru exportu do Azure a Import výkon.  Maximalizovat překrývají exportu a importu
+    1.  Exportovat do zdroje, nahrání souboru exportu do Azure a Import výkon.  Maximalizovat překrývají exportu a importu
     2.  Vyhodnocení objemu databáze mezi cíle a cílové platformy, aby bylo zřejmé ve velikosti infrastruktury    
     3.  Ověřte a optimalizujte časování 
 3.  Technické ověření 

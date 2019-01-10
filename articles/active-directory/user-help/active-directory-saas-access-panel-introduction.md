@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f51fb1d92fdec93fdb57fd25f8ca1cbaeb4fc46
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834702"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188925"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co je na portálu MyApps?
 
@@ -45,7 +45,7 @@ Dostanete tak, že přejdete na portálu MyApps `https://myapps.microsoft.com`.
 
 Pokud máte vlastní značka nakonfigurovaná pro přihlašovací stránku, můžete načíst branding přidáním domény vaší organizace na adresu URL (například `https://myapps.microsoft.com/<your domain>.com`).
 
-Můžete použít libovolný název aktivní nebo ověřené domény, který byl nakonfigurovaný do webu Azure portal, jak je znázorněno zde: ![Wingtip Toys název domény][2]  
+Můžete použít libovolný název aktivní nebo ověřené domény, který byl nakonfigurovaný do webu Azure portal, jak je znázorněno zde: ![Název domény Wingtip Toys][2]  
 
 Distribuujte adresy URL pro všechny uživatele, kteří přihlašovat do aplikací, které jsou integrované s Azure AD.
 
@@ -65,7 +65,7 @@ Instalační program je specifické pro architekturu. Pokud kliknete odkaz ke st
 
 
 Rozšíření portálu MyApps je aktuálně k dispozici pro:
-- **Edge**: Windows 10 Anniversary Edition nebo novější. 
+- **Microsoft Edge**: Windows 10 Anniversary Edition nebo novější. 
 - **Chrome**: ve Windows 7 nebo novější a v systému MacOS X nebo novější.
 - **Firefox 26.0 nebo novější**: ve Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
 - **Internet Explorer 11**: Windows 7 nebo novější (omezená podpora).
@@ -79,7 +79,7 @@ Pro přihlášení k založené na heslech jednotného přihlašování, je nutn
 - Můžete použít interní firemní adresy URL při vzdálené prostřednictvím [Proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
 > [!NOTE]
-> Další funkce jsou dostupné pouze pro Edge, Chrome a Firefox.
+> Další funkce jsou dostupné jenom pro Microsoft Edge, Chrome a Firefox.
 >
 Rozšíření si můžete stáhnout přímo z následujících webů:
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)

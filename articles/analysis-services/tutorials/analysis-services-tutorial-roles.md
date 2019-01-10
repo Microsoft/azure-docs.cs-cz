@@ -5,17 +5,17 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: a1e6e04c4019086d56cc0eb25176a507e514c477
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4c1a3f52c37dcaad4bc2f84d6d2fa04b61376cf1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000633"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188772"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace role serveru správce a uživatele
 
  V tomto kurzu se pomocí SQL Server Management Studia (SSMS) připojíte k serveru v Azure a nakonfigurujete správce serveru a role modelové databáze. Zároveň se seznámíte s jazykem [TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL je skriptovací jazyk založený na JSON pro tabulkové modely na úrovni kompatibility 1200 a vyšších. Dá se použít k automatizaci mnoha úkolů při tabulkovém modelování. Jazyk TMSL se často používá s PowerShellem, v tomto kurzu ale použijete editor dotazů XMLA v SQL Server Management Studiu. V tomto kurzu dokončíte tyto úkoly: 
   
@@ -144,5 +144,5 @@ Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete j
 V tomto kurzu jste zjistili, jak se připojit k serveru Azure AD a prozkoumat ukázkové modelové databáze adventureworks a vlastnosti v SQL Server Management Studiu. Zároveň jste se naučili přidat uživatele nebo skupiny do existujících a nových rolí pomocí SQL Server Management Studia a skriptů TMSL. Teď, když máte pro server a ukázkovou modelovou databázi nakonfigurovaná uživatelská oprávnění, můžete se k nim spolu s dalšími uživateli připojit pomocí klientských aplikací, jako je Power BI. Pokud chcete vědět víc, pokračujte dalším kurzem. 
 
 > [!div class="nextstepaction"]
-> [Kurz: Připojení pomocí Power BI Desktopu](analysis-services-tutorial-pbid.md)
+> [Kurz: Spojte se s Power BI Desktopu](analysis-services-tutorial-pbid.md)
 

@@ -231,8 +231,10 @@ items:
     - name: Galerie sdílených imagí (Preview)
       href: shared-image-galleries.md
       items:
-      - name: Vytváření sdílených imagí s využitím CLI
+      - name: Rozhraní příkazového řádku
         href: shared-images-cli.md
+      - name: PowerShell
+        href: shared-images-powershell.md
       - name: Řešení potíží se sdílenými imagemi
         href: troubleshooting-shared-images.md
     - name: Vertikální škálování ve škálovací sadě
@@ -279,9 +281,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-vm-scale-set
-ms.openlocfilehash: 3f53c4655d1b8b89450e42a9ae4bdb5382f62e2a
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0f633c6ed77d20f5b2de78687297d4f9a8d5094a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742622"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189911"

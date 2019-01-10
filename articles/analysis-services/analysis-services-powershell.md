@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b4aec7ff560b0695175a18c9c7e429a8ab733345
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9e7683883963db2cf1911405225fcdbf289de2bb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633704"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187520"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa služby Azure Analysis Services pomocí Powershellu
 
@@ -22,11 +22,13 @@ Tento článek popisuje rutiny prostředí PowerShell použít k serveru Azure A
 Úlohy správy serveru jako je vytvoření nebo odstranění serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služby (vrstvy) pomocí rutiny Azure Resource Manageru (prostředků) a rutiny služby Analysis Services (server). Další úlohy správy databází, jako jsou přidávání nebo odebírání členů rolí, zpracování nebo dělení používají rutiny v modulu SqlServer jako SQL Server Analysis Services.
 
 ## <a name="permissions"></a>Oprávnění
-Většina úkolů prostředí PowerShell vyžaduje, že máte oprávnění správce na serveru Analysis Services, které spravujete. Naplánované úlohy prostředí PowerShell jsou Bezobslužná operace. Princip účtu nebo službě spuštěný Plánovač musí mít oprávnění správce na serveru Analysis Services. 
+
+Většina úkolů prostředí PowerShell vyžaduje, že máte oprávnění správce na serveru Analysis Services, které spravujete. Naplánované úlohy prostředí PowerShell jsou Bezobslužná operace. Účet nebo instanční objekt s plánovači musí mít oprávnění správce na serveru Analysis Services. 
 
 Pro operace serveru pomocí rutin AzureRm, váš účet nebo účet, který spouští Plánovač musí také patřit do role vlastníka prostředku v [Azure Role-Based řízení přístupu (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="resource-management-operations"></a>Operace správy zdrojů 
+
 Modul – [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices)
 
 |Rutina|Popis| 

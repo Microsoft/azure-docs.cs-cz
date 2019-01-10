@@ -1,19 +1,19 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 10: Vytvoření oddílů | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services lekce 10: Vytvoření oddílů | Dokumentace Microsoftu'
 description: Popisuje, jak vytvořit oddíly v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aaaee6f9a69f9cb619935f18f614d7572a755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 11be6d10589d981335d1f63d06933dba5265348a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429679"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191832"
 ---
 # <a name="create-partitions"></a>Vytvoření oddílů
 
@@ -22,7 +22,7 @@ V této lekci vytvoříte oddíly pro rozdělení tabulky FactInternetSales na m
 Odhadovaný čas dokončení této lekce: **15 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 9: Vytvoření hierarchií](../tutorials/aas-lesson-9-create-hierarchies.md).  
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 9: Vytvoření hierarchií](../tutorials/aas-lesson-9-create-hierarchies.md).  
   
 ## <a name="create-partitions"></a>Vytvoření oddílů  
   
@@ -40,7 +40,7 @@ Toto téma je součástí kurzu tabulkového modelování, který by se měl dok
 
     ![aas-lesson10-query-editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  V dialogovém okně Filtrovat řádky v části **Zobrazit řádky, kde: OrderDate** ponechte možnost **je po nebo přesně** a do pole kalendářního data zadejte **1. 1. 2010**. Ponechte vybraný operátor **A**, vyberte možnost **je před**, do pole kalendářního data zadejte **1. 1. 2011** a klikněte na **OK**.
+6.  V dialogovém okně Filtrovat řádky v **zobrazit řádky, kde: OrderDate**, ponechte **je po nebo rovno**a potom do pole kalendářního data zadejte **1/1/2010**. Ponechte vybraný operátor **A**, vyberte možnost **je před**, do pole kalendářního data zadejte **1. 1. 2011** a klikněte na **OK**.
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     
@@ -109,4 +109,4 @@ Ve správci oddílů si všimněte, že sloupec **Poslední zpracování** pro k
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
  ## <a name="whats-next"></a>Co dále?
-Přejděte na další lekci: [Lekce 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md). 
+Přejdete na další lekci: [Lekce 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md). 

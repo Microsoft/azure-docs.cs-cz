@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 63671b38c952f5297be88f7b50ad9d6f9341fc72
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 395aff83c8983c4f61ca0b1fd1da276de17ec98b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034416"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190046"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade aplikace použít nejnovější Klientská knihovna elastic database
 
@@ -55,7 +55,7 @@ Provedením těchto kroků v pořadí zajistí, že starší verze klientské kn
 
 ***Možnost 2: Upgrade s využitím metadatC#***
 
-Můžete také vytvořit aplikaci Visual Studio, která otevře vaše ShardMapManager Iteruje přes všechny horizontální oddíly a provede upgrade metadat voláním metody [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore.aspx) a [UpgradeGlobalStore ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore.aspx) jako v následujícím příkladu:
+Můžete také vytvořit aplikaci Visual Studio, která otevře vaše ShardMapManager Iteruje přes všechny horizontální oddíly a provede upgrade metadat voláním metody [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) a [UpgradeGlobalStore ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) jako v následujícím příkladu:
 
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager

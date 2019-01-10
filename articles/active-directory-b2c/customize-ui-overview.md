@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 94f7239bdcdc5ddc91f3ed8b49b59378309711e8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 08cd16cb9edc5606a18fc5d425910185f7747179
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844953"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187517"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informace o přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Než začnete, projděte si následující pokyny:
 - Azure AD B2C sloučí obsah HTML stránky. Nemáte zkopírujte a pokuste se změnit výchozí obsah, který poskytuje Azure AD B2C. Doporučujeme vytvářet obsah HTML úplně od začátku a použít výchozí obsah jako odkaz.
 - Z bezpečnostních důvodů nejsou povoleny zahrnout jazyka JavaScript v obsahu.
 - Podporovaný prohlížeč verze jsou: 
-    - Aplikace Internet Explorer 11, 10 a hraničními zařízeními
+    - Aplikace Internet Explorer 11, 10 a Microsoft Edge
     - Omezená podpora pro Internet Explorer 9 a 8
     - Google Chrome 42.0 a vyšší
     - Mozilla Firefox 38.0 a vyšší
@@ -118,6 +118,6 @@ Příklady přizpůsobení, stáhněte a přečtěte si tyto [ukázkové soubory
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud používáte toky uživatelů, můžete začít přizpůsobení uživatelského rozhraní s kurzem: [přizpůsobení uživatelského rozhraní svých aplikací v Azure Active Directory B2C](tutorial-customize-ui.md).
-- Pokud používáte vlastní zásady, můžete začít přizpůsobením uživatelského rozhraní s článkem: [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+- Pokud používáte toky uživatelů, můžete začít přizpůsobení uživatelského rozhraní s kurzem: [Přizpůsobení uživatelského rozhraní svých aplikací v Azure Active Directory B2C](tutorial-customize-ui.md).
+- Pokud používáte vlastní zásady, můžete začít přizpůsobením uživatelského rozhraní s následujícím článku: [Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
 

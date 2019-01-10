@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 333edfc4041e7ab0dfbe6d45f306b1450e6b9946
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 1558d8e8392ff49e2661e9f8bc41e41c5bbc6dd5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103142"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189844"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentace webových aplikací za běhu pomocí monitorování stavu Application Insights
 
@@ -88,6 +88,23 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
 
 
 ## <a name="troubleshoot"></a>Řešení potíží
+
+### <a name="confirm-a-valid-installation"></a>Zkontrolujte platná instalace 
+
+Toto jsou některé kroky, které můžete provádět potvrďte, že vaše instalace byla úspěšná.
+
+- Zkontrolujte, jestli soubor applicationInsights.config je k dispozici v cílovém adresáři aplikace a obsahuje váš Instrumentační klíč.
+
+- Pokud máte podezření, že data budou chybějící jednoduchý dotaz můžete spustit [Analytics](../log-query/get-started-portal.md) vypsat všechny role v cloudových procesech právě odesílá telemetrická data.
+
+```Kusto
+union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+```
+
+- Pokud je potřeba potvrdit, že je Application Insights se úspěšně připojil můžete spustit [Sysinternals popisovač](https://docs.microsoft.com/sysinternals/downloads/handle) příkazového okna a potvrdí, že applicationinsights.dll se načetl službou IIS.
+
+`handle.exe /p w3wp.exe`
+
 
 ### <a name="cant-connect-no-telemetry"></a>Nelze se připojit? Žádná telemetrie?
 

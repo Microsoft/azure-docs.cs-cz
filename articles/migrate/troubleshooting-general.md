@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9bf445b54ab6ac2d3edf53fcc4bbcc39ee475a81
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119097"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189492"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -245,14 +245,14 @@ Shromažďovat události trasování pro Windows, postupujte takto:
 2. Stisknutím klávesy F12 ke spuštění nástroje pro vývojáře. V případě potřeby zrušte nastavení **Vymazat položky při navigaci**.
 3. Klikněte na tlačítko **sítě** kartu a spustit zachytávání síťového provozu:
  - V prohlížeči Chrome, vyberte **zachovat protokolu**. Tento záznam má spustit automaticky. Červené kolečko označuje, že provoz probíhá zachytávání. Pokud se nezobrazí, klikněte na kruh černé spuštění
- - Záznam Edge/IE, má spustit automaticky. Pokud tomu tak není, klikněte na zelené tlačítko Přehrát.
+ - V aplikaci Microsoft Edge/IE, záznam má spustit automaticky. Pokud tomu tak není, klikněte na zelené tlačítko Přehrát.
 4. Zkuste chybu reprodukovat.
 5. Poté, co jste došlo k chybě při nahrávání, zastavit záznam a uložit kopii zaznamenaná aktivita:
  - V prohlížeči Chrome, klikněte pravým tlačítkem myši a klikněte na tlačítko **uložit jako HAR s obsahem**. To zips a exportuje protokoly jako soubor .har.
- - V aplikaci Edge/IE, klikněte na tlačítko **Export zachycené provoz** ikonu. To zips a exportuje do protokolu.
+ - V aplikaci Microsoft Edge/IE, klikněte **Export zachycené provoz** ikonu. To zips a exportuje do protokolu.
 6. Přejděte **konzoly** kartu zkontrolujte všechna upozornění a chyby. Uložení protokolu konzoly:
  - V prohlížeči Chrome klikněte pravým tlačítkem na libovolné místo v protokolu konzoly. Vyberte **uložit jako**, abyste mohli exportovat a zip do protokolu.
- - V aplikaci Edge/IE, klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
+ - V aplikaci Microsoft Edge/IE, klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
 7. Zavřít Developer Tools.
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Kódy chyb kolekcí a doporučené akce

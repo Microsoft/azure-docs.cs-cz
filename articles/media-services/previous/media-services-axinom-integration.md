@@ -1,6 +1,6 @@
 ---
-title: Při doručování licence na Widevine do služby Azure Media Services pomocí Axinom | Microsoft Docs
-description: Tento článek popisuje, jak můžete použít Azure Media Services (AMS) k poskytování datový proud, který je dynamicky šifrovat pomocí PlayReady a Widevine technologiemi DRM AMS. Licence PlayReady pochází z Media Services PlayReady licenčního serveru a licence Widevine doručuje Axinom licenční server.
+title: Doručování licencí Widevine pro Azure Media Services pomocí Axinomu | Dokumentace Microsoftu
+description: Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) k zajištění datového proudu, která je dynamicky šifrovat pomocí AMS pomocí technologie PlayReady a Widevine technologiemi DRM. Licence PlayReady pochází ze serveru pro správu licencí Media Services PlayReady a licencování Widevine se doručí Axinom licenční server.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 81247863eb86752113989f6e48e79f5c8bc75505
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d269818e82261c51b63379bb41f69efdc21de18a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061150"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191254"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí Axinomu
 > [!div class="op_single_selector"]
@@ -29,53 +29,53 @@ ms.locfileid: "37061150"
 > 
 
 ## <a name="overview"></a>Přehled
-Azure Media Services (AMS) přidala Google Widevine dynamické ochrany (viz [Mingfei na blogu](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) podrobnosti). Kromě toho je Azure Media Player (AMP) také přidána podpora Widevine (viz [AMP dokumentu](http://amp.azure.net/libs/amp/latest/docs/) podrobnosti). Toto je hlavní byly potřebné při streamování DASH obsah chráněný CENC s více-native technologiemi DRM (PlayReady a Widevine) na vybaven MSE a EME moderní prohlížeče.
+Azure Media Services (AMS) přidala dynamická ochrany Google Widevine (viz [Mingfei na blogu](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) podrobnosti). Navíc Azure Media Player (AMP) má také přidanou podporu Widevine (viz [AMP dokumentu](http://amp.azure.net/libs/amp/latest/docs/) podrobnosti). Toto je hlavní splnění ve streamování DASH obsah chráněný šifrování CENC s více-native variant DRM (PlayReady a Widevine) pro moderní prohlížeče vybavené MSE a EME.
 
-Spuštění pomocí .NET SDK služby Media Services verze 3.5.2, Media Services umožňuje konfigurovat šablonu licence Widevine a získání licence na Widevine. Licence Widevine vám také mohou doručit následující partneři AMS : [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
+Počínaje Media Services .NET SDK verze 3.5.2, Media Services umožňuje konfigurovat šablonu licence Widevine a získání licencí Widevine. Můžete také použít následující partneři AMS při distribuci licencí Widevine: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
 
-Tento článek popisuje, jak integrovat a otestovat spravuje Axinom Widevine licenční server. Konkrétně obsahuje:  
+Tento článek popisuje, jak tak integrují a testují spravuje Axinom serveru pro správu licencí Widevine. Konkrétně zahrnuje:  
 
-* Konfigurace běžného dynamického šifrování s více technologiemi DRM (PlayReady a Widevine) s odpovídající získání adresy URL licence;
-* Generování JWT token pro splnění požadavků serveru licencí;
-* Vývoj aplikace Azure Media Player, která zpracovává získání licence s ověření pomocí tokenu JWT;
+* Konfigurace běžného dynamického šifrování pomocí několika variant DRM (PlayReady a Widevine) pomocí adresy URL pro získání odpovídající licence;
+* Chcete-li splnit požadavky na licenční server; generování tokenu JWT
+* Vývoj aplikace v Azure Media Player, která zpracovává získání licence pomocí ověřování tokenu JWT;
 
-Celý systém a toku obsahu klíče, klíče ID, klíče počáteční hodnoty, JTW token a jeho deklarace identity mohou být nejlépe popsány následující diagram:
+Celý systém a tok klíče k obsahu, klíč ID, počáteční hodnota klíče, JTW token a jeho deklarace identity může být nejlepší popsal následující diagram:
 
 ![DASH a šifrování CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
 ## <a name="content-protection"></a>Content Protection
-Konfigurace dynamické ochrany a zásady doručení klíče, najdete v tématu Mingfei na blogu: [postup konfigurace balení Widevine pomocí služby Azure Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services).
+Pro konfiguraci dynamické ochrany a zásad doručení klíče, podrobnosti najdete na blogu od Mingfei: [Konfigurace balení Widevine pomocí služby Azure Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services).
 
-Můžete nakonfigurovat dynamické ochrany CENC s více technologiemi DRM pro DASH streamování má oba následující kroky:
+Můžete nakonfigurovat dynamické ochranu CENC s více technologiemi DRM pro streamování, pokud máte obě z následujících DASH:
 
-1. PlayReady ochranu MS Edge a IE11, která by mohla mít omezení tokenu autorizace. Zásady omezení tokenem musí být doplněny tokenem vydaným podle zabezpečení tokenu služby (STS), jako je Azure Active Directory;
-2. Pro Chrome Widevine ochranu, se může vyžadovat ověření pomocí tokenu s tokenem vydaným službou tokenů zabezpečení jiné. 
+1. Ochrana technologií PlayReady pro Microsoft Edge a IE11, která by mohla mít omezení autorizační token. Zásady omezení tokenem musí být doplněny tokenem vydaným podle zabezpečení Token služby (STS), jako je Azure Active Directory;
+2. Widevine ochrany pro Chrome, se vyžadují ověřování pomocí tokenu s tokenem vydaným službou tokenů zabezpečení jiného. 
 
-V tématu [generování tokenů JWT](media-services-axinom-integration.md#jwt-token-generation) části Proč nelze použít Azure Active Directory jako služby tokenů zabezpečení pro Axinom na Widevine licenční server.
+Zobrazit [generování tokenů JWT](media-services-axinom-integration.md#jwt-token-generation) části Proč nelze použít Azure Active Directory jako služba STS na Axinom Widevine licenčního serveru.
 
 ### <a name="considerations"></a>Požadavky
-1. Je nutné použít Axinom zadaný počáteční hodnoty klíče (8888000000000000000000000000000000000000) a vaše generovaného nebo vybrané klíče ID ke generování klíče obsahu pro konfiguraci služby doručení klíče. Všechny licence obsahující obsahu klíče založené na stejné počáteční klíče, která je platná pro testování a produkci vydá Axinom licenční server.
-2. Licence Widevine získání adresy URL pro testování: [ https://drm-widevine-licensing.axtest.net/AcquireLicense ](https://drm-widevine-licensing.axtest.net/AcquireLicense). Protokol HTTP a HTTS jsou povoleny.
+1. Je nutné použít Axinom zadaná počáteční hodnota klíče (8888000000000000000000000000000000000000) a vygenerovaný nebo vybrané klíče ID k vygenerování klíče k obsahu pro konfiguraci služby doručení klíče. Všechny licence obsahující obsahu klíče založené na stejné klíče jádro, který je platný pro testování a produkci vydá Axinom licenční server.
+2. URL pro získání licence Widevine pro testování: [ https://drm-widevine-licensing.axtest.net/AcquireLicense ](https://drm-widevine-licensing.axtest.net/AcquireLicense). HTTP a HTTS jsou povoleny.
 
 ## <a name="azure-media-player-preparation"></a>Příprava Azure Media Player
-AMP v1.4.0 podporuje přehrávání AMS obsahu, který je dynamicky spojených s technologií PlayReady a Widevine DRM.
-Pokud server licence Widevine nevyžaduje ověření pomocí tokenu, neexistuje žádné další, že musíte udělat testování DASH obsah chráněný Widevine. Pro příklad, týmem AMP poskytuje jednoduchou [ukázka](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html), kde uvidíte jejich práce v hraniční a IE11 s technologií PlayReady) a Chrome (s technologií Widevine.
-Zadaný server licence Widevine ve Axinom vyžaduje ověření pomocí tokenu JWT. JWT token musí být odeslána s požadavek na licenční prostřednictvím záhlaví HTTP "X-AxDRM – zpráva". Pro tento účel je nutné přidat následující javascript na webové stránce hostování AMP před nastavením zdroje:
+AMP v1.4.0 podporuje přehrávání obsahu AMS, která je dynamicky zabalený pomocí technologie PlayReady a Widevine DRM.
+Pokud serveru pro správu licencí Widevine nevyžaduje ověření tokenu, neexistuje žádné další, že musíte udělat testování DASH obsah chráněný pomocí Widevine. Příklad, tým AMP poskytuje jednoduchý [ukázka](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html), kde můžete sledovat, jak funguje v Microsoft Edge a IE11 pomocí technologie PlayReady a Chrome s technologií Widevine.
+Server licence Widevine poskytovaný platformou Axinom vyžaduje ověřování pomocí tokenu JWT. JWT token musí odeslat požadavek na licenční prostřednictvím HTTP hlavičce "X-AxDRM-Message". K tomuto účelu budete muset přidat následující javascript na webové stránce hostování AMP před nastavením zdroje:
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
 
-Zbytek AMP kód je standardní rozhraní API AMP jako dokument AMP [zde](http://amp.azure.net/libs/amp/latest/docs/).
+Zbývající část kódu AMP je standardní rozhraní API AMP stejně jako v dokumentu AMP [tady](http://amp.azure.net/libs/amp/latest/docs/).
 
-Výše uvedené javascript pro nastavení vlastní autorizace záhlaví je stále krátkodobé přístup před oficiální dlouhodobý přístup v AMP vydání.
+Výše uvedené jazyka javascript pro vlastní autorizační hlavičky. nastavení je stále krátkodobé přístup před vydáním oficiální dlouhodobý přístup v knihovně AMP.
 
 ## <a name="jwt-token-generation"></a>Generování tokenů JWT
-Server licence Axinom Widevine pro testování vyžaduje ověření pomocí tokenu JWT. Kromě toho je jedna z deklarací z tokenu JWT komplexní objekt typu místo primitivní datový typ.
+Server licence Widevine Axinomu pro testování vyžaduje ověřování pomocí tokenu JWT. Kromě toho jedna z deklarací identity v tokenu JWT je komplexní objekt typu místo primitivní datový typ.
 
-Bohužel Azure AD mohou pouze vystavovat tokeny JWT s primitivními typy. Podobně rozhraní .NET Framework API (System.IdentityModel.Tokens.SecurityTokenHandler a JwtPayload) lze pouze vstupní komplexní objekt typu jako deklarace identity. Deklarace identity jsou stále serializovat jako řetězec. Proto jsme nemůžete použít žádnou z těchto dvou pro generování token JWT pro požadavek na licenční Widevine.
+Bohužel Azure AD můžete pouze vystavovat tokeny JWT s primitivními typy. Obdobně rozhraní .NET Framework API (System.IdentityModel.Tokens.SecurityTokenHandler a JwtPayload) pouze umožňuje zadat typ komplexní objekt jako deklarace identity. Deklarace identity jsou stále serializovat jako datový typ string. Proto jsme nemohou použít žádný z nich pro vygenerování tokenu JWT pro žádosti o licenci Widevine.
 
 Jan Sheehan [balíček JWT NuGet](https://www.nuget.org/packages/JWT) splňuje potřeby, takže jsme se chystáte použít tento balíček NuGet.
 
-Dole je kód pro generování token JWT s potřebné deklarace podle požadavků Axinom Widevine licenční server pro testování:
+Níže je kód pro generování tokenů JWT token s potřebné deklarace identity podle požadavků serveru pro správu licencí Axinom Widevine pro testování:
 
     using System;
     using System.Collections.Generic;
@@ -128,7 +128,7 @@ Dole je kód pro generování token JWT s potřebné deklarace podle požadavků
 
     }  
 
-Axinom Widevine licenčního serveru
+Serveru pro správu licencí Widevine Axinomu
 
     <add key="ax:laurl" value="http://drm-widevine-licensing.axtest.net/AcquireLicense" />
     <add key="ax:com_key_id" value="69e54088-e9e0-4530-8c1a-1eb6dcd0d14e" />
@@ -136,13 +136,13 @@ Axinom Widevine licenčního serveru
     <add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
 
 ### <a name="considerations"></a>Požadavky
-1. I když služba doručování licencí AMS PlayReady vyžaduje, aby "nosiče =" předcházející ověřovací token, Axinom Widevine licenční server nepoužívá se.
-2. Klíč Axinom komunikace se používá jako podpisového klíče. Klíč je šestnáctkový řetězec, ale musí být považované jako řadu bajtů není řetězec při kódování. Toho se dosáhne metodu ConvertHexStringToByteArray.
+1. I když službu doručování licencí AMS PlayReady vyžaduje "nosiče =" předcházející ověřovací token, serveru pro správu licencí Axinom Widevine nepoužije.
+2. Klíč Axinom komunikace se používá jako podpisový klíč. Klíč je hexadecimální řetězec však musí být zpracována jako řadu bajtů není řetězec při kódování. Toho lze dosáhnout metodou ConvertHexStringToByteArray.
 
 ## <a name="retrieving-key-id"></a>Načítání ID klíče
-Jste si všimli, že v kódu pro generování token JWT je požadováno ID tokenu, klíče. Vzhledem k tomu, že klíč JWT token musí být připravené před načítání AMP přehrávač, vyžaduje se ID mají být načteny, aby bylo možné vygenerovat JWT token.
+Mohli jste si všimnout, že v kódu pro generování token JWT token, key ID je povinné. Token JWT token musí být připraveno před načítání AMP player klíče musí ID se má načíst, aby bylo možné generovat JWT token.
 
-Samozřejmě existuje více způsoby, jak získat uchování klíče ID. Například může uložit jeden klíč ID společně s metadata obsahu v databázi. Nebo můžete načíst klíč ID ze souboru MPD DASH (popis prezentace média). Následující kód je k tomu.
+Samozřejmě existují několika způsoby, jak získat blokování klíč ID. Například může ukládat jeden klíč ID spolu s metadata obsahu v databázi. Nebo můžete načíst klíč ID ze souboru MPD pomlčka (popis prezentace média). Následující kód je k tomu.
 
     //get key_id from DASH MPD
     public static string GetKeyID(string dashUrl)
@@ -176,22 +176,22 @@ Samozřejmě existuje více způsoby, jak získat uchování klíče ID. Napří
     }
 
 ## <a name="summary"></a>Souhrn
-Nejnovější přidáním podpory Widevine v Azure Media Services ochranu obsahu a přehrávač médií Azure se snažíme se implementovat streamování DASH + více-native technologiemi DRM (PlayReady a Widevine) s obou PlayReady licenční služby v AMS a Widevine licenci Server z Axinom pro následující moderní prohlížeče:
+Uveďte nejnovější Widevine podpory v Azure Media Services Content Protection a Azure Media Player nejsme schopni implementovat streamování DASH + více-native variant DRM (PlayReady a Widevine) pomocí obou PlayReady licenční služby AMS a Widevine licencí Server z Axinom pro následující moderní prohlížeče:
 
 * Chrome
 * Microsoft Edge ve Windows 10
 * IE 11 na Windows 8.1 a Windows 10
-* Firefox (Desktop) a Safari v systému Mac (ne iOS) jsou podporovány také prostřednictvím Silverlight a stejnou adresu URL s Azure Media Player
+* (Desktop) Firefox a Safari v systému Mac (ne iOS) jsou také podporovány prostřednictvím programu Silverlight a stejnou adresu URL pomocí Azure Media Player
 
-Na serveru licence Axinom Widevine využívání zkrácená řešení se vyžadují následující parametry. S výjimkou klíč ID, zbytek parametrů jsou poskytovány na základě jejich nastavení serveru Widevine Axinom.
+Ve zkrácené řešení využitím Axinomu Widevine licenčního serveru se vyžadují následující parametry. S výjimkou klíč ID, zbývající parametry jsou k dispozici v Axinom na základě svých nastavení serveru Widevine.
 
-| Parametr | Jak se používají |
+| Parametr | Jak se používá |
 | --- | --- |
-| Komunikace klíče ID |Musí být zahrnut jako hodnota deklarace identity "com_key_id" v tokenu JWT (viz [to](media-services-axinom-integration.md#jwt-token-generation) části). |
-| Klíč komunikace |Musí být použity jako podpisový klíč tokenu JWT (najdete v části [to](media-services-axinom-integration.md#jwt-token-generation) části). |
-| Počáteční hodnoty klíče |Musíte použít ke generování klíče obsahu s obsahem, daný klíč ID (najdete v části [to](media-services-axinom-integration.md#content-protection) části). |
-| Adresa URL pro získání licence Widevine |Je třeba použít konfigurace zásad doručení assetu pro streamování DASH (najdete v části [to](media-services-axinom-integration.md#content-protection) části). |
-| ID obsahu klíče |Musí být součástí hodnoty deklarace identity nárocích zpráva tokenu JWT (viz [to](media-services-axinom-integration.md#jwt-token-generation) části). |
+| ID klíče komunikace |Musí být zahrnut jako hodnota deklarace identity "com_key_id" v tokenu JWT (viz [to](media-services-axinom-integration.md#jwt-token-generation) části). |
+| Klíč komunikace |Musíte použít jako podpisový klíč tokenu JWT (naleznete v tématu [to](media-services-axinom-integration.md#jwt-token-generation) části). |
+| Počáteční hodnota klíče |Použije k vygenerování klíče k obsahu s obsahem, daný klíč ID (naleznete v tématu [to](media-services-axinom-integration.md#content-protection) části). |
+| URL pro získání licence Widevine |Musí být použita v konfigurace zásad doručení assetu pro datové proudy DASH (viz [to](media-services-axinom-integration.md#content-protection) části). |
+| ID klíče obsahu |Musí být zahrnut jako součást hodnoty deklarace identity nárok zpráva tokenu JWT (viz [to](media-services-axinom-integration.md#jwt-token-generation) části). |
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -199,6 +199,6 @@ Na serveru licence Axinom Widevine využívání zkrácená řešení se vyžadu
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Potvrzování
-Rádi bychom se na vědomí následující osob, které podílí k vytvoření tohoto dokumentu: Kristjan Jõgi z Axinom, Mingfei Jan a Amitu Rajput.
+### <a name="acknowledgments"></a>Potvrzení
+Rádi bychom se na vědomí následující osob, které přispívají k vytvoření tohoto dokumentu: Kristjan Jõgi Axinom Mingfei Jan a Amitu Rajput.
 

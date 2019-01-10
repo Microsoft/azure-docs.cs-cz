@@ -1,19 +1,19 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Doplňková lekce: Dynamické zabezpečení | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services doplňková lekce: Dynamické zabezpečení | Dokumentace Microsoftu'
 description: Popisuje, jak používat dynamické zabezpečení s využitím filtrů řádků v kurzu služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1908d655064a4a320191695c048271246951c29c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235917"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187480"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Doplňková lekce – Dynamické zabezpečení
 
@@ -21,7 +21,7 @@ V této doplňkové lekci vytvoříte další roli, která implementuje dynamick
   
 Za účelem implementace dynamického zabezpečení přidáte do svého modelu tabulku obsahující uživatelská jména uživatelů, kteří se můžou připojit k modelu a procházet objekty a data modelu. Model, který pomocí tohoto kurzu vytvoříte, je v kontextu Adventure Works. Pro absolvování tohoto kurzu však budete muset přidat tabulku obsahující uživatele z vaší vlastní domény. Pro přidaná uživatelská jména nepotřebujete hesla. K vytvoření tabulky EmployeeSecurity s malým vzorkem uživatelů z vaší vlastní domény použijete funkci Vložit, pomocí které vložíte data zaměstnanců z tabulky aplikace Excel. V reálném scénáři by tabulka obsahující uživatelská jména obvykle byla tabulka ze skutečné databáze jako zdroje dat, například skutečná tabulka DimEmployee.  
   
-K implementaci dynamického zabezpečení použijete dvě funkce DAX: [funkci USERNAME (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) a [funkci LOOKUPVALUE (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Tyto funkce použité ve vzorci filtru řádků jsou definované v nové roli. Pomocí funkce LOOKUPVALUE vzorec určuje hodnotu z tabulky EmployeeSecurity. Vzorec pak tuto hodnotu předá do funkce USERNAME, která určí, jestli uživatelské jméno přihlášeného uživatele patří do této role. Uživatel pak může procházet pouze data určená filtrem řádků role. V tomto scénáři určíte, že zaměstnanci prodeje můžou procházet pouze data o internetovém prodeji pro prodejní oblasti, ve kterých jsou členem.  
+K implementaci dynamického zabezpečení použijete dvě funkce DAX: [Funkce USERNAME (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) a [funkce LOOKUPVALUE (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Tyto funkce použité ve vzorci filtru řádků jsou definované v nové roli. Pomocí funkce LOOKUPVALUE vzorec určuje hodnotu z tabulky EmployeeSecurity. Vzorec pak tuto hodnotu předá do funkce USERNAME, která určí, jestli uživatelské jméno přihlášeného uživatele patří do této role. Uživatel pak může procházet pouze data určená filtrem řádků role. V tomto scénáři určíte, že zaměstnanci prodeje můžou procházet pouze data o internetovém prodeji pro prodejní oblasti, ve kterých jsou členem.  
   
 Úkoly specifické pro tento scénář tabelárního modelu Adventure Works, které se ale nutně netýkají reálného scénáře, jsou jako takové označeny. Každý úkol obsahuje další informace s popisem účelu daného úkolu.  
   
@@ -37,7 +37,7 @@ Pokud chcete implementovat dynamické zabezpečení pro tento scénář Adventur
   
 1.  V části Průzkumník tabelárních modelů > **Zdroje Dat** klikněte pravým tlačítkem na vaše připojení a potom klikněte na **Importovat nové tabulky**.  
 
-    Pokud se zobrazí dialogové okno Přihlašovací údaje k zosobnění, zadejte přihlašovací údaje k zosobnění, které jste použili v lekci 2: Přidání dat.
+    Pokud se zobrazí dialogové okno pověření ke zosobnění, zadejte přihlašovací údaje k zosobnění, které jste použili v lekci 2: Přidáte Data.
   
 2.  V části Navigátor vyberte tabulku **DimSalesTerritory** a klikněte na **OK**.    
   
@@ -107,7 +107,7 @@ V tomto úkolu skryjete tabulku EmployeeSecurity a tím zabráníte jejímu zobr
 V tomto úkolu vytvoříte roli uživatele. Tato role zahrnuje filtr řádků definující, které řádky tabulky DimSalesTerritory jsou viditelné pro uživatele. Filtr se pak použije ve směru relace 1:N na všechny další tabulky související s tabulkou DimSalesTerritory. Použijete také filtr, který zabezpečí celou tabulku EmployeeSecurity před dotazy uživatelů, kteří jsou členy této role.  
   
 > [!NOTE]  
-> Role Zaměstnanci prodeje podle oblasti, kterou vytvoříte v této lekci, omezuje možnost uživatelů procházet (nebo dotazovat) data pouze na prodejní data pro prodejní oblast, ke které patří. Pokud do role Zaměstnanci prodeje podle oblasti přidáte uživatele, který je zároveň členem role vytvořené v [lekci 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md), získáte kombinaci oprávnění. Pokud je uživatel členem více rolí, pak jsou oprávnění a filtry řádků definované pro každou roli kumulativní. To znamená, že uživatel má větší oprávnění daná kombinací rolí.  
+> Role Zaměstnanci prodeje podle oblasti, kterou vytvoříte v této lekci, omezuje možnost uživatelů procházet (nebo dotazovat) data pouze na prodejní data pro prodejní oblast, ke které patří. Pokud chcete přidat uživatele jako člena zaměstnanci prodeje podle území role, která také existuje jako člen role vytvořené v [lekce 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md), získáte kombinaci oprávnění. Pokud je uživatel členem více rolí, pak jsou oprávnění a filtry řádků definované pro každou roli kumulativní. To znamená, že uživatel má větší oprávnění daná kombinací rolí.  
   
 #### <a name="to-create-a-sales-employees-by-territory-user-role"></a>Vytvoření role uživatele Zaměstnanci prodeje podle oblasti  
   

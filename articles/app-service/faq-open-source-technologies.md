@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3057368ca76a0a9ad90c3c1890cffd139b6b13a2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159804"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191441"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie Open source nejčastější dotazy k Web Apps v Azure
 
@@ -219,4 +219,4 @@ Po zajištění, že tento MySQL v aplikaci je spuštěná, zkuste použít phpm
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>Při pokusu o import a export databázi MySQL v aplikaci prostřednictvím phpmyadmin zobrazuje zobrazí chybu HTTP 403. Jak to můžu vyřešit?
 
-Pokud používáte starší verzi Chrome, může dojít k známého problému. Chcete-li vyřešit tento problém, upgradujte na novější verzi Chrome. Zkuste taky pomocí jiného prohlížeče, jako je Internet Explorer nebo Microsoft Edge, kde problému nedojde.
+Pokud používáte starší verzi Chrome, může dojít k známého problému. Chcete-li vyřešit tento problém, upgradujte na novější verzi Chrome. Zkuste taky použít jiný prohlížeč, jako je Internet Explorer nebo Microsoft Edge, ve kterém tento problém nevyskytuje.

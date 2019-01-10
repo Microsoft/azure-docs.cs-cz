@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 1b9821a0115aba96f4588049273bd7a157121ded
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 0fd9b679411dd06336fd65bcb400b152316146fa
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156625"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188636"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure ve službě Azure Data Factory
 
@@ -25,7 +25,7 @@ Aktivita funkce Azure vám umožní spustit [Azure Functions](../azure-functions
 
 ## <a name="azure-function-linked-service"></a>Služba Azure propojené – funkce
 
-Návratový typ funkce Azure musí být platný JObject. (Mějte na paměti, která [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) je *není* JObject.) Cokoli, se nezdaří a vyvolá chybu obecný uživatel *Chyba volání koncového bodu*.
+Návratový typ funkce Azure musí být platný `JObject`. (Mějte na paměti, která [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) je *není* `JObject`.) Žádný návratový typ jiný než `JObject` selže a vyvolá chybu obecný uživatel *Chyba volání koncového bodu*.
 
 | **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |

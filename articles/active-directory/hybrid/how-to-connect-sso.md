@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b74cf533c0fe59a0967b7063791df2cfc9a7a77
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: c0533f0609539645c462c9e6f5b514a82f1162a1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913927"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187565"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -60,7 +60,7 @@ Bezproblémové jednotné přihlašování je možné kombinovat s buď [synchro
 - Je funkci a není nutné žádné placené edice Azure AD, aby ho použít.
 - Podporováno od webovými klienty založené na prohlížeči a klienti Office, které podporují [moderní ověřování](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) na platformy a prohlížeče podporující ověřování protokolu Kerberos:
 
-| OS\Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
+| OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Ano\*|Ne|Ano|Ano\*\*\*|neuvedeno
 |Windows 8.1|Ano\*|neuvedeno|Ano|Ano\*\*\*|neuvedeno

@@ -1,19 +1,19 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 12: Analýza v aplikaci Excel | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services lekce 12: Analyzovat v aplikaci Excel | Dokumentace Microsoftu'
 description: Popisuje, jak používat funkci Analýza v aplikaci Excel v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 425c3a351c75c63cb07df66d6122f4d900b4932e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e5ac04c7bd8174f823cacc67401af8a98b3d8170
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429758"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186477"
 ---
 # <a name="analyze-in-excel"></a>Analyzovat v aplikaci Excel
 
@@ -21,10 +21,10 @@ V této lekci pomocí funkce Analýza v aplikaci Excel otevřete aplikaci Micros
   
 K dokončení této lekce je nutné, aby byl Excel nainstalovaný na stejném počítači jako Visual Studio.
   
-Odhadovaný čas dokončení této lekce: **5 minut**  
+Odhadovaný čas dokončení této lekce: **Pět minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md).  
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md).  
   
 ## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Procházení s využitím výchozí perspektivy a perspektivy Internet Sales  
 V rámci těchto prvních úkolů budete procházet model s využitím výchozí perspektivy, která zahrnuje všechny objekty modelu, a také s využitím perspektivy Internet Sales, kterou jste vytvořili dříve. Perspektiva Internet Sales nezahrnuje objekt tabulky se zákazníky.  
@@ -69,7 +69,7 @@ Role jsou důležitou součástí každého tabelárního modelu. Pokud nemáte 
 3.  Zavřete aplikaci Excel bez ukládání sešitu.  
   
 ## <a name="whats-next"></a>Co dále?
-Přejděte na další lekci: [Lekce 13: Nasazení](../tutorials/aas-lesson-13-deploy.md).
+Přejdete na další lekci: [Lekce 13: Nasazení](../tutorials/aas-lesson-13-deploy.md).
 
   
   

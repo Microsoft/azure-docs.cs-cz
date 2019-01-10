@@ -1,19 +1,19 @@
 ---
-title: 'Kurz služby Azure Analysis Services – Lekce 5: Vytvoření počítaných sloupců | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Analysis Services Lekce 5: Vytváření počítaných sloupců | Dokumentace Microsoftu'
 description: Popisuje, jak vytvořit počítané sloupce v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2d92edd0bda15ecd57a5a29375adae3a51c661c2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bb0a17d4b7e11dd83439d943abf0bdd34ef915ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428126"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187446"
 ---
 # <a name="create-calculated-columns"></a>Vytvoření počítaných sloupců
 
@@ -26,7 +26,7 @@ V této lekci také poprvé použijete jazyk DAX (Data Analysis Expressions). DA
 Odhadovaný čas dokončení této lekce: **15 minut**  
   
 ## <a name="prerequisites"></a>Požadavky  
-Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci byste měli mít dokončenou předchozí lekci: [Lekce 4: Vytvoření relací](../tutorials/aas-lesson-4-create-relationships.md). 
+Toto téma je součástí kurzu tabulkového modelování, který by se měl dokončit v daném pořadí. Před provedením úkolů v této lekci, měli mít dokončenou předchozí lekci: [Lekce 4: Vytvoření relací](../tutorials/aas-lesson-4-create-relationships.md). 
   
 ## <a name="create-calculated-columns"></a>Vytvoření počítaných sloupců  
   
@@ -42,7 +42,7 @@ Toto téma je součástí kurzu tabulkového modelování, který by se měl dok
   
     Nový sloupec **Počítaný sloupec 1** se vloží nalevo od sloupce **CalendarQuarter**.  
   
-4.  Na řádku vzorců nad tabulkou zadejte následující vzorec DAX: automatické dokončování vám pomůže zadat plně kvalifikované názvy sloupců a tabulek a vypíše dostupné funkce.  
+4.  V řádku vzorců nad tabulkou zadejte následující vzorec DAX: Automatické dokončování vám pomůže zadat plně kvalifikované názvy sloupců a tabulek a seznam funkcí, které jsou k dispozici.  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  
@@ -125,7 +125,7 @@ Počítaný sloupec ProductCategoryName slouží k vytvoření hierarchie v tabu
     Počítaný sloupec Margin slouží k analýze ziskových marží u jednotlivých prodejů.  
   
 ## <a name="whats-next"></a>Co dále?
-[Lekce 6: Vytvoření měřítek](../tutorials/aas-lesson-6-create-measures.md)
+[Lekce 6: Vytváření měr](../tutorials/aas-lesson-6-create-measures.md).
   
   
   
