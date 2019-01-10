@@ -19,7 +19,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54025721"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity uložená procedura SQL serveru ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-stored-proc-activity.md)
 > * [Aktuální verze](transform-data-using-stored-procedure.md)
 
