@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 577147ad91c6a35a45fd40ca9e6424863ea196d6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c2ffa623ad7a6c6da5b799d2c7d5f35c9f65e503
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340772"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215401"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
 
@@ -96,9 +96,9 @@ Všechna rozhraní API HTTP implementováno rozšíření zkuste následující 
 | taskHub    | Řetězec dotazu    | Název [centra úloh](durable-functions-task-hubs.md). Pokud není zadán, předpokládá se název centra úloh aktuální aplikaci funkcí. |
 | připojení | Řetězec dotazu    | **Název** připojovacího řetězce pro účet úložiště. Pokud není zadán, předpokládá se výchozí připojovací řetězec pro danou aplikaci funkcí. |
 | systemKey  | Řetězec dotazu    | Autorizační klíč požadované k vyvolání rozhraní API. |
-| showInput  | Řetězec dotazu    | Volitelný parametr. Pokud hodnotu `false`, provádění vstup nebudou zahrnuty do datové části odpovědi.|
-| showHistory| Řetězec dotazu    | Volitelný parametr. Pokud hodnotu `true`, historie spouštění Orchestrace budou zahrnuty do datové části odpovědi.|
-| showHistoryOutput| Řetězec dotazu    | Volitelný parametr. Pokud hodnotu `true`, že výstupem aktivity budou zahrnuty do historie spouštění Orchestrace.|
+| showInput  | Řetězec dotazu    | Volitelný parametr; pouze jednou instancí požadavku. Pokud hodnotu `false`, provádění vstup nebudou zahrnuty do datové části odpovědi.|
+| showHistory| Řetězec dotazu    | Volitelný parametr; pouze jednou instancí požadavku. Pokud hodnotu `true`, historie spouštění Orchestrace budou zahrnuty do datové části odpovědi.|
+| showHistoryOutput| Řetězec dotazu    | Volitelný parametr; pouze jednou instancí požadavku. Pokud hodnotu `true`, že výstupem aktivity budou zahrnuty do historie spouštění Orchestrace.|
 | createdTimeFrom  | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtruje seznam vrácená instance, které byly vytvořeny na nebo za dané časové razítko ISO8601.|
 | createdTimeTo    | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtruje seznam vrácená instance, které byly vytvořeny pozici nebo před daným časovým razítkem ISO8601.|
 | runtimeStatus    | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtry seznamu vrácených instancí na základě jejich stav modulu runtime. Pokud chcete zobrazit seznam hodnot stavu modulu runtime je to možné, naleznete v tématu [dotazování instance](durable-functions-instance-management.md) tématu. |
@@ -146,7 +146,7 @@ Datová část odpovědi **HTTP 200** a **HTTP 202** případech je objekt JSON 
 | output          | JSON      | Výstup JSON instance. Toto pole je `null` Pokud instance není v dokončeném stavu. |
 | čas vytvoření     | řetězec    | Čas, kdy byla vytvořena instance. Využívá rozšířené notace formátu ISO 8601. |
 | lastUpdatedTime | řetězec    | Čas, ve kterém instance poslední trvale uložena. Využívá rozšířené notace formátu ISO 8601. |
-| historyEvents   | JSON      | Pole JSON obsahující historii spouštění Orchestrace. Toto pole je `null` není-li `showHistory` parametru řetězce dotazu je nastavena `true`.  |
+| historyEvents   | JSON      | Pole JSON obsahující historii spouštění Orchestrace. Toto pole je `null` není-li `showHistory` parametru řetězce dotazu je nastavena `true`. |
 
 Tady je datovou část odpovědi příklad včetně Orchestrace provádění historie a aktivita výstupy (ve formátu pro lepší čitelnost):
 

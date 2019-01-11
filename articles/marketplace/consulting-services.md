@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 85f88d9234acbb1831ea76188d06ef47199703ca
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074083"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213617"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytuje partnerů Microsoftu, cíl připojení zákazníků služby na podporu a rozšiřují jejich používání Azure a obchodních cílů. 
@@ -69,7 +69,7 @@ Partneři musí mít **stříbrné nebo zlaté úrovně kompetence** v příslu�
 |Dynamics 365 pro Finance and Operations, Enterprise edition  |  Stříbrné nebo zlaté úrovně [plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetence a minimální příjmy z $25 tisíc v cloudové operace koncové 12 měsíců.       |
 |Dynamics 365 pro Finance and Operations, verze Business edition  |  Slouží jako [Cloud Service Provider (CSP)](https://partner.microsoft.com/cloud-solution-provider) nebo [digitální DPOR Partner of Record ()](https://partner.microsoft.com/membership/digital-partner-of-record) pro alespoň jednoho odběratele      |
 |Power BI, Power BI vlastní Vizuály | Splnění [Solution Partner kritéria](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
-|PowerApps | Máte publikování [prezentaci partnerů]() řešení
+|PowerApps | Máte publikování [prezentaci partnerů](https://appsource.microsoft.com/partners) řešení
 
 <b> Další informace najdete v tématu [činnost prostřednictvím programu Microsoft Partner Network](https://partner.microsoft.com/membership/competencies). </b>
  

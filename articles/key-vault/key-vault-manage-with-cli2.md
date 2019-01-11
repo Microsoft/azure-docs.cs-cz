@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 3d97ce7588642462920e98eb90c5c6b5d3748067
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9ebfb01071257c8879531c1879b6f8b3ba4493ef
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076359"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198894"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Správa služby Key Vault pomocí rozhraní příkazového řádku Azure 
 
@@ -103,7 +103,7 @@ Další informace o konfiguraci rozhraní příkazového řádku pro různé pla
 Pokud používáte Azure Resource Manageru, všechny související prostředky vytváří v uvnitř skupiny prostředků. Vytvoření trezoru klíčů v existující skupinu prostředků. Pokud chcete použít novou skupinu prostředků, můžete vytvořit nový.
 
 ```azurecli
-az group create -n 'ContosoResourceGroup' -l 'East Asia'
+az group create -n "ContosoResourceGroup" -l "East Asia"
 ```
 
 První parametr je název skupiny prostředků a druhý parametr je umístění. Chcete-li získat seznam všech možných zadejte umístění:
@@ -127,7 +127,7 @@ Použití `az keyvault create` příkaz pro vytvoření trezoru klíčů. Tento 
 Chcete-li vytvořit nový trezor s názvem **ContosoKeyVault**, ve skupině prostředků **ContosoResourceGroup**, nacházejícím se v **východní Asie** umístění, zadejte: 
 
 ```azurecli
-az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East Asia"
 ```
 
 Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, kterou jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
@@ -142,13 +142,13 @@ Váš účet Azure je nyní oprávněn provádět nad tímto trezorem klíčů v
 Pokud chcete Azure Key Vault vytvořila softwarově chráněný klíč pro vás, použijte `az key create` příkazu.
 
 ```azurecli
-az keyvault key create --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey' --protection software
+az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
 ```
 
 Pokud máte existující klíč v souboru .pem, nahrajte ho do služby Azure Key Vault. Můžete k ochraně klíče se software nebo modulu hardwarového zabezpečení. Použijte následující postup k importovali klíč ze souboru .pem a chránit je pomocí softwaru:
 
 ```azurecli
-az keyvault key import --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey' --pem-file './softkey.pem' --pem-password 'Pa$$w0rd' --protection software
+az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "Pa$$w0rd" --protection software
 ```
 
 Teď můžete odkazovat na klíč, který vytvoříte nebo nahrajete do služby Azure Key Vault pomocí jeho identifikátoru URI. Použití **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** vždy získáte aktuální verzi. Použití https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] získat tuto konkrétní verzi. Příklad: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
@@ -156,7 +156,7 @@ Teď můžete odkazovat na klíč, který vytvoříte nebo nahrajete do služby 
 Přidání tajného klíče do trezoru, což je hesla s názvem SQLPassword a hodnotou Pa$ $w0rd na trezory klíčů Azure. 
 
 ```azurecli
-az keyvault secret set --vault-name 'ContosoKeyVault' --name 'SQLPassword' --value 'Pa$$w0rd'
+az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "Pa$$w0rd"
 ```
 
 Na toto heslo odkazujete pomocí jeho identifikátoru URI. Použití **https://ContosoVault.vault.azure.net/secrets/SQLPassword** vždy získáte aktuální verzi a https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] získat tuto konkrétní verzi. Příklad: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
@@ -164,7 +164,7 @@ Na toto heslo odkazujete pomocí jeho identifikátoru URI. Použití **https://C
 Importujte certifikát do trezoru pomocí .pem nebo .pfx.
 
 ```azurecli
-az keyvault certificate import --vault-name 'ContosoKeyVault' --file 'c:\cert\cert.pfx' --name 'ContosoCert' --password 'Pa$$w0rd'
+az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "Pa$$w0rd"
 ```
 
 Podívejme se klíč, tajný klíč nebo certifikát, který jste vytvořili:
@@ -172,19 +172,19 @@ Podívejme se klíč, tajný klíč nebo certifikát, který jste vytvořili:
 * Chcete-li zobrazit vaše klíče, zadejte: 
 
 ```azurecli
-az keyvault key list --vault-name 'ContosoKeyVault'
+az keyvault key list --vault-name "ContosoKeyVault"
 ```
 
 * Chcete-li zobrazit tajné klíče, zadejte: 
 
 ```azurecli
-az keyvault secret list --vault-name 'ContosoKeyVault'
+az keyvault secret list --vault-name "ContosoKeyVault"
 ```
 
 * Pokud chcete zobrazit certifikáty, zadejte: 
 
 ```azurecli
-az keyvault certificate list --vault-name 'ContosoKeyVault'
+az keyvault certificate list --vault-name "ContosoKeyVault"
 ```
 
 ## <a name="registering-an-application-with-azure-active-directory"></a>Registrace aplikace v Azure Active Directory
@@ -203,7 +203,7 @@ Podrobné pokyny k registraci aplikace v Azure Active Directory si můžete proj
 Pro registraci aplikace ve službě Azure Active Directory:
 
 ```azurecli
-az ad sp create-for-rbac -n "MyApp" --password 'Pa$$w0rd' --skip-assignment
+az ad sp create-for-rbac -n "MyApp" --password "Pa$$w0rd" --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 
@@ -214,33 +214,35 @@ Chcete-li autorizovat aplikaci přístup k klíče nebo tajného klíče v trezo
 Například pokud je trezor s názvem ContosoKeyVault, má aplikace appID hodnotu 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed a chcete autorizovat aplikaci k dešifrování a podepisování pomocí klíčů v trezoru, použijte následující příkaz:
 
 ```azurecli
-az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --key-permissions decrypt sign
+az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --key-permissions decrypt sign
 ```
 
 Pro stejnou aplikaci autorizujte pro čtení tajných klíčů v trezoru, zadejte následující příkaz:
 
 ```azurecli
-az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
+az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
 ## <a name="bkmk_KVperCLI"></a> Nastavení trezoru klíčů pokročilé zásady přístupu
 
-Použití [az keyvault update](/cli/azure/keyvault#az-keyvault-update) povolit pokročilé zásady pro trezor klíčů. 
+Použití [az keyvault update](/cli/azure/keyvault#az-keyvault-update) povolit pokročilé zásady pro trezor klíčů.
 
  Povolení služby Key Vault pro nasazení: Umožňuje virtuálních počítačů k načítání certifikátů uložených jako tajné kódy z trezoru.
+
  ```azurecli
- az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-deployment 'true'
- ``` 
+ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
+ ```
 
 Povolení služby Key Vault pro šifrování disku: Požaduje se při použití trezoru pro Azure Disk encryption.
 
  ```azurecli
- az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-disk-encryption 'true'
+ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"
  ```  
 
 Povolení služby Key Vault pro šablonu nasazení: Umožňuje Resource Manageru k načítání tajných kódů z trezoru.
- ```azurecli 
- az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
+
+```azurecli 
+ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
  ```
 
 ## <a name="working-with-hardware-security-modules-hsms"></a>Práce s moduly hardwarového zabezpečení (HSM)
@@ -252,25 +254,25 @@ Chcete-li vytvořit těchto klíčů chráněných pomocí HSM, musíte mít př
 Když vytvoříte trezor klíčů, přidejte parametr "sku":
 
 ```azurecli
-az keyvault create --name 'ContosoKeyVaultHSM' --resource-group 'ContosoResourceGroup' --location 'East Asia' --sku 'Premium'
+az keyvault create --name "ContosoKeyVaultHSM" --resource-group "ContosoResourceGroup" --location "East Asia" --sku "Premium"
 ```
 
 Do tohoto trezoru můžete přidat klíče chráněné softwarem (jak jsme ukázali výše) a klíče chráněné pomocí HSM. Pokud chcete vytvořit klíč chráněný HSM, nastavte parametr Destination roven na "HSM":
 
 ```azurecli
-az keyvault key create --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --protection 'hsm'
+az keyvault key create --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --protection "hsm"
 ```
 
 Následující příkaz můžete použít pro import klíče ze souboru .pem ve vašem počítači. Tento příkaz importuje klíč do HSM ve službě Key Vault:
 
 ```azurecli
-az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --pem-file '/.softkey.pem' --protection 'hsm' --pem-password 'PaSSWORD'
+az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --pem-file "/.softkey.pem" --protection "hsm" --pem-password "PaSSWORD"
 ```
 
 Další příkaz importuje balíček „přineste si vlastní klíč“ (BYOK). To vám umožní vygenerovat klíč v místním HSM a jeho přenesení do HSM ve službě Key Vault, aniž by klíč opustil hranice HSM.
 
 ```azurecli
-az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --byok-file './ITByok.byok' --protection 'hsm'
+az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --byok-file "./ITByok.byok" --protection "hsm"
 ```
 
 Podrobnější pokyny o tom, jak generovat tento balíček BYOK naleznete v tématu [použití HSM-Protected klíčů se službou Azure Key Vault](key-vault-hsm-protected-keys.md).
@@ -280,13 +282,13 @@ Podrobnější pokyny o tom, jak generovat tento balíček BYOK naleznete v tém
 Pokud již nepotřebujete trezor klíčů a jeho klíče nebo tajné kódy, můžete odstranit trezor klíčů s použitím `az keyvault delete` příkaz:
 
 ```azurecli
-az keyvault delete --name 'ContosoKeyVault'
+az keyvault delete --name "ContosoKeyVault"
 ```
 
 Nebo můžete odstranit celou skupinu prostředků Azure, která zahrnuje trezor klíčů a všechny další prostředky, které jste do skupiny zahrnuli.
 
 ```azurecli
-az group delete --name 'ContosoResourceGroup'
+az group delete --name "ContosoResourceGroup"
 ```
 
 ## <a name="miscellaneous-azure-cross-platform-command-line-interface-commands"></a>Příkazy různé rozhraní příkazového řádku Azure Cross-Platform
@@ -296,31 +298,31 @@ Další příkazy, které můžou být užitečné pro správu služby Azure Key
 Tento příkaz vypíše tabelární zobrazení všech klíčů a vybraných vlastností:
 
 ```azurecli
-az keyvault key list --vault-name 'ContosoKeyVault'
+az keyvault key list --vault-name "ContosoKeyVault"
 ```
 
 Tento příkaz zobrazí úplný seznam vlastností pro zadaný klíč:
 
 ```azurecli
-az keyvault key show --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey'
+az keyvault key show --vault-name "ContosoKeyVault" --name "ContosoFirstKey"
 ```
 
 Tento příkaz vypíše tabelární zobrazení všech názvů tajných klíčů a vybraných vlastností:
 
 ```azurecli
-az keyvault secret list --vault-name 'ContosoKeyVault'
+az keyvault secret list --vault-name "ContosoKeyVault"
 ```
 
 Tady je příklad odebrání určitého klíče:
 
 ```azurecli
-az keyvault key delete --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey'
+az keyvault key delete --vault-name "ContosoKeyVault" --name "ContosoFirstKey"
 ```
 
 Tady je příklad odebrání určitého tajného klíče:
 
 ```azurecli
-az keyvault secret delete --vault-name 'ContosoKeyVault' --name 'SQLPassword'
+az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
 ```
 
 ## <a name="next-steps"></a>Další postup

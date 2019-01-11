@@ -1,7 +1,7 @@
 ---
 title: Zónově redundantní virtuálních počítačů pomocí Azure CLI můžete vyvažovat zatížení u
 titlesuffix: Azure Load Balancer
-description: Zjistěte, jak vytvořit veřejné služby Load Balancer Standard s zóny redundantních front-endu pomocí Azure CLI
+description: Zjistěte, jak vytvořit veřejný Load Balancer Standard s zóny redundantních front-endu pomocí Azure CLI
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: 82bb0387d8f1603b4b436bfe70d75d19b88f28b1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7359be235135098779478eebc8a8927e34904ac1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250803"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197789"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Nástroj pro vyrovnávání zatížení virtuálních počítačů ve všech zónách dostupnosti pomocí Azure CLI
 
-Tento článek popisuje postup vytvořením veřejné [Load balancer úrovně Standard](https://aka.ms/azureloadbalancerstandard) s zónově redundantních front-endu zajistit redundanci zón bez závislosti na několik záznamů DNS. Jedna IP adresa front-endu je automaticky zónově redundantní.  Nástroj pro vyrovnávání zatížení, jednu IP adresu pomocí redundantních front-endu zóny můžete nyní přistupovat jakýkoli virtuální počítač ve virtuální síti v rámci oblasti, která je ve všech zónách dostupnosti. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
+Tento článek popisuje postup vytvořením veřejné [Load balanceru úrovně Standard](https://aka.ms/azureloadbalancerstandard) s zónově redundantních front-endu zajistit redundanci zón bez závislosti na několik záznamů DNS. Jedna IP adresa front-endu je automaticky zónově redundantní.  Nástroj pro vyrovnávání zatížení, jednu IP adresu pomocí redundantních front-endu zóny můžete nyní přistupovat jakýkoli virtuální počítač ve virtuální síti v rámci oblasti, která je ve všech zónách dostupnosti. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
 
 Další informace o používání zón dostupnosti s Load Balancerem úrovně Standard najdete v tématu o [Load Balanceru úrovně Standard a zónách dostupnosti](load-balancer-standard-availability-zones.md).
 
@@ -60,7 +60,7 @@ az network public-ip create \
 --sku Standard
 ```
 
-## <a name="create-azure-load-balancer-standard"></a>Vytvořit Azure Load Balancer úrovně Standard
+## <a name="create-azure-standard-load-balancer"></a>Vytvořit Azure Load balancer úrovně Standard
 Tato část podrobně popisuje vytvoření a konfiguraci následujících komponent nástroje pro vyrovnávání zatížení:
 - Front-endový fond IP adres, který přijímá příchozí síťový provoz do nástroje pro vyrovnávání zatížení.
 - Back-endový fond IP adres, kam front-endový fond odesílá síťový provoz s vyrovnáváním zatížení.

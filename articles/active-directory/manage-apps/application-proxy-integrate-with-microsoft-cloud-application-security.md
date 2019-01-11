@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 33da0b09339460d66650c492ec125461bc0980b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3be75f2fe004939eff6bf6cc960759db69bfb93a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731001"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215095"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurace aplikací v reálném čase přístup k monitorování pomocí Microsoft Cloud App Security a Azure Active Directory
 Nakonfigurujte místní aplikace v Azure Active Directory (Azure AD) pro použití Microsoft Cloud App Security (MCAS) pro monitorování v reálném čase. MCAS používá Conditional Access App Control k monitorování a řízení relace v reálném čase podle zásady podmíněného přístupu. Tyto zásady můžete použít k místním aplikacím, které používají Proxy aplikací v Azure Active Directory (Azure AD).
@@ -27,7 +27,7 @@ Tady je několik příkladů typů zásad, které můžete vytvořit pomocí MCA
 - Pomocí klientských certifikátů nebo dodržování předpisů zařízením zablokovat přístup pro konkrétní aplikace z nespravovaných zařízení.
 - Omezte uživatelské relace z jiných podnikových sítích. Omezený přístup můžete rozdat uživatelům přístup k aplikaci z vnějšku podnikové sítě. Například tento omezený přístup můžete zablokovat uživatele stahování citlivé dokumenty.
 
-Další informace najdete v tématu [ochrana aplikací pomocí Microsoft Cloud App Security Conditional Access App Control](/cloud-app-security/proxy-intro-aad.md).
+Další informace najdete v tématu [ochrana aplikací pomocí Microsoft Cloud App Security Conditional Access App Control](/cloud-app-security/proxy-intro-aad).
 
 ## <a name="requirements"></a>Požadavky
 

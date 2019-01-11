@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f5663842a4d861ed6eb76de859b870aa7114cb04
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3968b05f119227552f88a50e96d3acbce6a19143
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063637"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199115"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -397,7 +397,7 @@ Je několik běžných příčin, které modul nemusí úspěšně importovat do
 * Struktura neodpovídá struktuře Automation musí být v.
 * Modul je závislá na jiný modul, který nebyl nasazen do vašeho účtu Automation.
 * Modul chybí jeho závislosti do složky.
-* `New-AzureRmAutomationModule` Rutina se používá k odeslání modulu a have't úložiště úplné cesty nebo nebyly načteny modulu pomocí adresy URL veřejně přístupná.
+* `New-AzureRmAutomationModule` Rutina se používá k nahrání modulu a nedali úložiště úplnou cestu nebo nebyly načteny modulu pomocí adresy URL veřejně přístupná.
 
 #### <a name="resolution"></a>Řešení
 

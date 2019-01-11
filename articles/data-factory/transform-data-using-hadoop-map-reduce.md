@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 7ba1c4e0f358a2168c06ab9172229525cd4c136c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4543982f731feb44a8f02581c11714dec2b206f9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016127"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214500"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hadoop MapReduce ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,9 +25,9 @@ ms.locfileid: "54016127"
 
 Aktivita HDInsight MapReduce ve službě Data Factory [kanálu](concepts-pipelines-activities.md) vyvolá MapReduce program na [vlastní](compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace.
 
-Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služby Azure Data Factory](introduction.md) a udělat kurz: [Kurz: transformace dat](tutorial-transform-data-spark-powershell.md) před čtením tohoto článku. 
+Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služby Azure Data Factory](introduction.md) a udělat kurz: [Kurz: transformace dat](tutorial-transform-data-spark-powershell.md) před čtením tohoto článku.
 
-Zobrazit [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-using-hadoop-hive.md) Další informace o spouštění Pigu a Hivu skripty v HDInsight clusteru z kanálu pomocí aktivity HDInsight Pigu a Hivu. 
+Zobrazit [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-using-hadoop-hive.md) Další informace o spouštění Pigu a Hivu skripty v HDInsight clusteru z kanálu pomocí aktivity HDInsight Pigu a Hivu.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -49,10 +49,10 @@ Zobrazit [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-using
         "jarFilePath": "MyAzureStorage/jars/sample.jar",
         "getDebugInfo": "Failure",
         "arguments": [
-          "-SampleHadoopJobArgument1"
+            "-SampleHadoopJobArgument1"
         ],
         "defines": {
-          "param1": "param1Value"
+            "param1": "param1Value"
         }
     }
 }
@@ -79,7 +79,7 @@ Zobrazit [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-using
 ## <a name="example"></a>Příklad:
 Aktivita MapReduce HDInsight můžete použít ke spuštění souboru jar jakékoli MapReduce v clusteru HDInsight. V následující definici JSON ukázkový kanál je nakonfigurován na aktivitu HDInsight umožňuje spustit soubor Mahout JAR.
 
-```json   
+```json
 {
     "name": "MapReduce Activity for Mahout",
     "description": "Custom MapReduce to generate Mahout result",
@@ -113,7 +113,7 @@ Aktivita MapReduce HDInsight můžete použít ke spuštění souboru jar jakék
 Můžete zadat všechny argumenty pro MapReduce program **argumenty** oddílu. Za běhu, se zobrazí několik dalších argumentů (například: mapreduce.job.tags) z rozhraní MapReduce. K rozlišení vaše argumenty s argumenty MapReduce, zvažte použití možnosti a hodnoty jako argumenty, jak je znázorněno v následujícím příkladu (- s, – vstup, – výstup atd., jsou možnosti bezprostředně následovat jejich hodnoty).
 
 ## <a name="next-steps"></a>Další postup
-Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby: 
+Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby:
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)
 * [Aktivita hivu](transform-data-using-hadoop-hive.md)

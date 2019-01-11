@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1a2ec0e0513e0bcdcc3427a9e24385dc415ae651
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624654"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215027"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -45,7 +45,7 @@ Tento článek obsahuje přehled sestavy auditu.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Auditování Azure AD protokoly obsahují záznamy aktivit systému kvůli dodržování předpisů. Pro přístup k sestavě auditu, vyberte **protokoly auditu** v **aktivity** část **Azure Active Directory**. 
+Auditování Azure AD protokoly obsahují záznamy aktivit systému kvůli dodržování předpisů. Pro přístup k sestavě auditu, vyberte **protokoly auditu** v **aktivity** část **Azure Active Directory**. Všimněte si, že protokoly auditu mohou latenci až hodinu, tak může trvat dlouho to pro data aktivit auditu se zobrazí na portálu po dokončení úlohy.
 
 ![Protokoly auditu](./media/concept-audit-logs/61.png "Protokoly auditu")
 

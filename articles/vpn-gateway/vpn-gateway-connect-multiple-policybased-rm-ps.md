@@ -1,5 +1,5 @@
 ---
-title: 'Připojení Azure VPN Gateway k několika místním na základě zásad zařízení VPN: Azure Resource Manageru: PowerShell | Dokumentace Microsoftu'
+title: 'Připojení Azure VPN Gateway k několika místním na základě zásad zařízení VPN: Azure Resource Manageru: Prostředí PowerShell | Dokumentace Microsoftu'
 description: Konfigurace služby Azure založené na směrování VPN gateway k několika založené na zásadách zařízením VPN pomocí Azure Resource Manageru a Powershellu.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
-ms.openlocfilehash: 46555bf121e674b82c0c7dd39f74ee3708fc4439
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4996fa23e28b4ba840cc8c97e167484be08a0573
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850633"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199456"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení Azure VPN Gateway k několika místním založené na zásadách zařízením VPN pomocí Powershellu
 
@@ -69,7 +69,7 @@ Pracovní postup pro povolení tato připojení:
 3. Když vytvoříte připojení typu S2S nebo VNet-to-VNet, použijte zásady a **povolit selektory provozu na základě zásad** připojení
 4. Pokud se připojení vytvoří, můžete použít nebo aktualizovat zásady na existující připojení
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 
@@ -83,7 +83,7 @@ Ujistěte se, že jste dokončili [část 3 z článku o zásadách konfigurace 
 
 #### <a name="1-connect-to-your-subscription-and-declare-your-variables"></a>1. Připojení k vašemu předplatnému a deklarace proměnných
 
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 Deklarujte proměnné. Pro toto cvičení můžeme použít následující proměnné:
 
@@ -147,7 +147,7 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 > Je potřeba vytvořit zásady IPsec/IKE, chcete-li povolit možnost "UsePolicyBasedTrafficSelectors" připojení.
 
 Následující příklad vytvoří zásady IPsec/IKE pomocí těchto algoritmů a parametrů:
-* IKEv2: AES256, SHA384, DHGroup24
+* IKEv2: DHGroup24 AES256, SHA384
 * Protokol IPsec: AES256, SHA256, PFS24, doba života přidružení zabezpečení. 3600 sekund & 2048KB
 
 ```azurepowershell-interactive

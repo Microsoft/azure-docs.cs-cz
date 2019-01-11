@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 0112853bf36c6b7b594400d303234d204b2ea24a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108290"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198639"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Jak provádět dotazy digitální dvojče API služby Azure pro běžné úlohy
 
@@ -26,7 +26,7 @@ Tento článek popisuje vzory dotazů vám pomůže při realizaci běžné scé
 
 Tato část ukazuje ukázkové dotazy, chcete-li získat další informace o zřízené mezery. Proveďte ověřené žádosti GET HTTP s ukázkové dotazy, zástupné texty nahraďte hodnotami z vašeho nastavení. 
 
-- Získejte kořenové uzly.
+- Získejte prostory, které jsou kořenové uzly.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
@@ -38,7 +38,7 @@ Tato část ukazuje ukázkové dotazy, chcete-li získat další informace o zř
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Získejte prostory, jejichž nadřazený prvek je na dané místo ID a zahrnout závislosti. 
+- Získat prostorů a jejich zařízení a senzorů, jejichž nadřazený prvek je na dané místo ID a které jsou na úrovni přibližně 2 až 5 [vzhledem k dané místo](how-to-navigate-apis.md#api-navigation). 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
@@ -91,7 +91,7 @@ Tato část uvádí některé dotazy, chcete-li získat další informace o rol�
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
     ```
 
-## <a name="queries-for-device-management"></a>Dotazy pro správu zařízení
+## <a name="queries-for-devices"></a>Dotazy na zařízení
 
 Tato část uvádí některé příklady použití rozhraní API pro správu k získání konkrétních informací o vašich zařízeních. Všechna volání rozhraní API musí být ověřené žádosti GET HTTP.
 
@@ -167,7 +167,7 @@ Tato část uvádí některé příklady použití rozhraní API pro správu k z
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- Získání připojovacího řetězce centra IoT pro konkrétní zařízení.
+- Získání připojovacího řetězce zařízení služby IoT Hub pro vaše zařízení.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString

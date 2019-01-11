@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/21/2018
-ms.openlocfilehash: b8ff482f2aec406ef4c1c545db7844a861317518
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 1/9/2019
+ms.openlocfilehash: b11eb08a960e81ab938a9b15a1153c44706231c5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994415"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198283"
 ---
 # <a name="quickstart-create-an-azure-sql-database-in-the-azure-portal"></a>Rychlý start: Vytvoření databáze SQL Azure na webu Azure Portal
 
 Azure SQL Database je *Database-as-a-Service* , který umožňuje spouštět a škálovat vysoce dostupné databáze SQL serveru v cloudu. V tomto rychlém startu se dozvíte, jak začít vytvořením a potom dotazování Azure SQL database pomocí webu Azure portal. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
 Pro všechny kroky v tomto rychlém startu, přihlaste se k [webu Azure portal](https://portal.azure.com/).
 
@@ -35,36 +35,36 @@ Chcete-li vytvořit databázi SQL obsahující ukázková data AdventureWorksLT:
 
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
    
-1. Vyberte **databází**a pak vyberte **SQL Database**.
+1. Vyberte **databází** a pak vyberte **SQL Database**.
    
-1. V **SQL Database** formuláři zadejte nebo vyberte následující hodnoty: 
+1. V **vytvořit databázi SQL** formuláři zadejte nebo vyberte následující hodnoty: 
    
-   - **Název databáze**: Typ *mySampleDatabase*.
-   - **Předplatné**: Rozevírací seznam a vyberte správné předplatné, pokud se nezobrazí.  
+   - **Název databáze**: Zadejte *mySampleDatabase*.
+   - **Předplatné**: Rozevírací seznam a vyberte správné předplatné, pokud se nezobrazí.
    - **Skupina prostředků**: Vyberte **vytvořit nový**, typ *myResourceGroup*a vyberte **OK**. 
-   - **Výběr zdroje**: Rozevírací seznam a vyberte **ukázka (AdventureWorksLT)**. 
-   
-   >[!IMPORTANT]
-   >Je nutné vybrat **ukázka (AdventureWorksLT)** dat, takže můžete postupovat podle tato a další rychlé starty Azure SQL Database, která tato data použít. 
-   
+   - **Výběr zdroje**: Rozevírací seznam a vyberte **ukázka (AdventureWorksLT)**.
+    
+    >[!IMPORTANT]
+    >Je nutné vybrat **ukázka (AdventureWorksLT)** dat, takže můžete postupovat podle tato a další rychlé starty Azure SQL Database, která tato data použít.
+  
    ![Vytvoření databáze Azure SQL](./media/sql-database-get-started-portal/create-database-1.png)
    
-1. Vyberte **Server**a pak vyberte **vytvořit nový server**. 
+1. V části **Server**vyberte **vytvořit nový**. 
    
 1. V **nový server** formuláři zadejte nebo vyberte následující hodnoty: 
    
-   - **Název serveru**: Typ *můjsqlserver*.
+   - **Název serveru**: Zadejte *můjsqlserver*.
    - **Přihlašovací jméno správce serveru**: Typ *azureuser*. 
-   - **Heslo**: Typ *Azure1234567*. 
+   - **Heslo**: Zadejte *Azure1234567*. 
    - **Potvrzení hesla**: Zadejte heslo znovu.
    - **Umístění**: Rozevírací seznam a vyberte jakékoli platné umístění.  
    
    >[!IMPORTANT]
-   >Si zapamatujte nebo poznamenejte přihlašovací jméno správce serveru a heslo, takže se můžete přihlásit k serveru a databáze pro tuto a další rychlé starty. Pokud zapomenete přihlašovací jméno nebo heslo, můžete získat přihlašovací jméno nebo heslo na **systému SQL server** stránky. Chcete-li otevřít **systému SQL server** vyberte název serveru v databázi, **přehled** stránku po vytvoření databáze.
+   >Nezapomeňte si poznamenat přihlašovací jméno správce serveru a heslo, takže se můžete přihlásit k serveru a databáze pro tuto a další rychlé starty. Pokud zapomenete přihlašovací jméno nebo heslo, můžete získat přihlašovací jméno nebo heslo na **systému SQL server** stránky. Chcete-li otevřít **systému SQL server** vyberte název serveru v databázi, **přehled** stránku po vytvoření databáze.
    
-1. Vyberte **vyberte**.
-   
-   ![Vytvoření serveru](./media/sql-database-get-started-portal/create-database-server.png)
+    ![Vytvoření serveru](./media/sql-database-get-started-portal/create-database-server.png)
+
+1. Zvolte **Vybrat**.
    
 1. Na **SQL Database** formuláře, vyberte **cenová úroveň**. Prozkoumejte množství Dtu a velikosti úložiště k dispozici pro jednotlivé úrovně služby.
    
@@ -92,7 +92,7 @@ Teď, když vytvoříte databázi Azure SQL, můžete použijte integrovaný dot
 
 1. Na **SQL Database** stránce pro vaši databázi, vyberte **editor dotazů (preview)** v levé nabídce. 
    
-   ![Přihlaste se k editoru dotazů](./media/sql-database-get-started-portal/query-editor-login.png)
+   ![Přihlaste se k dotazování editoru](./media/sql-database-get-started-portal/query-editor-login.png)
    
 1. Zadejte přihlašovací údaje a vyberte **OK**.
    
@@ -113,18 +113,18 @@ Teď, když vytvoříte databázi Azure SQL, můžete použijte integrovaný dot
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Zachovat tuto skupinu prostředků, SQL server a SQL database, pokud chcete přejít na [další kroky](#next-steps) a informace o připojení a dotazování databáze pomocí několika způsoby. 
+Pokud chcete přejít na zachovat tuto skupinu prostředků, SQL server a SQL database [další kroky](#next-steps). Následující kroky ukazují, jak k připojení a dotazování databáze pomocí různých metod. 
 
 Jakmile budete hotovi, tyto prostředky používá, můžete je odstranit následujícím způsobem:
 
 1. V nabídce vlevo na webu Azure Portal vyberte **skupiny prostředků**a pak vyberte **myResourceGroup**.
 1. Na stránce skupiny prostředků, vyberte **odstranit skupinu prostředků**. 
-1. Typ *myResourceGroup* v poli a pak vyberte **odstranit**.
+1. Zadejte *myResourceGroup* v poli a pak vyberte **odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 
-- Musíte vytvořit pravidlo brány firewall na úrovni serveru pro připojení k databázi Azure SQL z místní nebo vzdálené nástroje. Další informace najdete v tématu [vytvořit pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md).
-- Po vytvoření pravidla brány firewall na úrovni serveru můžete [připojení a dotazování](sql-database-connect-query.md) vaší databáze pomocí několika různých nástrojů a jazyků. 
+- Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k databázi Azure SQL z místní nebo vzdálené nástroje. Další informace najdete v tématu [vytvořit pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md).
+- Po vytvoření pravidla brány firewall na úrovni serveru, [připojení a dotazování](sql-database-connect-query.md) vaší databáze pomocí několika různých nástrojů a jazyků. 
   - [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)
   - [Připojení a dotazování pomocí Azure Data Studia](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Vytvoření databáze Azure SQL pomocí Azure CLI najdete v tématu [ukázky v Azure CLI](sql-database-cli-samples.md).

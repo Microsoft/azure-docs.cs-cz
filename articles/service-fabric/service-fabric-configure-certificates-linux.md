@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 503b0dffa00c6cba973f4bc51d8e3b2f3a7b8c57
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386633"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200407"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certifikáty a zabezpečení na clusterech s Linuxem
 
@@ -43,7 +43,7 @@ U některých služeb můžete nakonfigurovat certifikáty X.509 v [složce Conf
 
 ### <a name="using-x509-securitycredentialstype"></a>Pomocí X509 SecurityCredentialsType
 
-.NET nebo sady Java SDK, můžete zadat **X509** pro **SecurityCredentialsType**. To odpovídá `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric._x509_credentials)) typ `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric._security_credentials)).
+.NET nebo sady Java SDK, můžete zadat **X509** pro **SecurityCredentialsType**. To odpovídá `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) typ `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
 
 **X509** odkaz vyhledá certifikát v úložišti certifikátů. Následující kód XML ukazuje parametrů použitých k zadání umístění certifikátu:
 
@@ -74,7 +74,7 @@ Zobrazí se následující XML **TransportSettings** části podle tento styl:
 
 ### <a name="using-x5092-securitycredentialstype"></a>Pomocí X509_2 SecurityCredentialsType
 
-Pomocí sady Java SDK, můžete určit **X509_2** pro **SecurityCredentialsType**. To odpovídá `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric._x509_credentials2)) typ `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric._security_credentials)). 
+Pomocí sady Java SDK, můžete určit **X509_2** pro **SecurityCredentialsType**. To odpovídá `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) typ `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
 
 Pomocí **X509_2** odkaz, zadáte parametr cesty, aby certifikát můžete vyhledat v adresáři jiné než */var/lib/sfcerts*.  Následující kód XML ukazuje parametrů použitých k zadání umístění certifikátu: 
 

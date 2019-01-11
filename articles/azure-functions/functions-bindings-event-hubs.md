@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: bc7ed9051f95877760bccec65ff2fa7f49e44993
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5a5154d8d3a4922dead686c3d5002eaae818ff5a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002146"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201359"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 
@@ -59,9 +59,9 @@ Když vaše funkce je nejprve povolené, existuje pouze jedna instance funkce. P
 
 * **Nové instance funkce nejsou potřeba**: `Function_0` je schopná zpracovat všechny události 1000 před funkce škálování logiky aktivuje. V tomto případě jsou zpracovány všechny zprávy 1000 `Function_0`.
 
-* **Přidat další funkce instance**: funkcí škálování logiku, která určuje `Function_0` má víc zpráv, než dokáže zpracovat. V tomto případě novou instanci aplikace – funkce (`Function_1`) se vytvoří společně s novou [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instance. Event Hubs zjistí, že nové instance hostitele se pokouší číst zprávy. Vyrovnává zatížení Event Hubs oddílů napříč její instance hostitele. Například oddíly 0-4 přiřazeni k `Function_0` a oddíly 5 až 9 k `Function_1`.
+* **Přidat další funkce instance**: Funkce škálování logiku, která určuje `Function_0` má víc zpráv, než dokáže zpracovat. V tomto případě novou instanci aplikace – funkce (`Function_1`) se vytvoří společně s novou [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instance. Event Hubs zjistí, že nové instance hostitele se pokouší číst zprávy. Vyrovnává zatížení Event Hubs oddílů napříč její instance hostitele. Například oddíly 0-4 přiřazeni k `Function_0` a oddíly 5 až 9 k `Function_1`.
 
-* **N přidají další instance funkce**: funkcí škálování logiky zjistí, že oba `Function_0` a `Function_1` mít víc zpráv, než dokáže zpracovat. Nové instance aplikace funkce `Function_2`... `Functions_N` vytvářejí, kde `N` je větší než počet oddílů centra událostí. V našem příkladu Event Hubs znovu vyrovnává zatížení oddílů, v tomto případě mezi instancemi `Function_0`... `Functions_9`.
+* **N přidají další instance funkce**: Funkce škálování logiky zjistí, že oba `Function_0` a `Function_1` mít víc zpráv, než dokáže zpracovat. Nové instance aplikace funkce `Function_2`... `Functions_N` vytvářejí, kde `N` je větší než počet oddílů centra událostí. V našem příkladu Event Hubs znovu vyrovnává zatížení oddílů, v tomto případě mezi instancemi `Function_0`... `Functions_9`.
 
 Všimněte si, že funkce se škáluje, aby `N` instancí, což je číslo větší než počet oddílů centra událostí. To se provádí, abyste měli jistotu, že existují vždy [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instance k dispozici získat zámky u oddílů, jakmile budou dostupné z jiných instancí. Budou účtovat pouze prostředky při spustí instanci funkce; se vám neúčtují poplatky pro toto bylo potřeba zřizovat.
 
@@ -452,7 +452,7 @@ Zobrazit [příklady kódu](#trigger---example) , které používají tyto vlast
 
 Pomocí služby Event Hubs výstupní vazbu zapsat události do datového proudu událostí. Musíte mít oprávnění Odeslat do centra událostí zapsat události do něj.
 
-Ujistěte se odkazy na požadované balíčky jsou na místě: [funkce 1.x](#packages---functions-1.x) nebo [funkce 2.x](#packages---functions-2.x)
+Ujistěte se, odkazy na požadované balíčky jsou na místě: [Funkce 1.x](#packages---functions-1.x) nebo [funkce 2.x](#packages---functions-2.x)
 
 ## <a name="output---example"></a>Výstup – příklad
 
@@ -659,7 +659,7 @@ public String sendTime(
  }
  ```
 
-V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@EventHubOutput` poznámku o parametrech, jehož hodnota bude poublished do centra událostí.  Parametr musí být typu `OutputBinding<T>` , kde T je objekt POJO nebo nativní typ jazyka Java.
+V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@EventHubOutput` poznámku o parametrech, jehož hodnota se budou publikovat do centra událostí.  Parametr musí být typu `OutputBinding<T>` , kde T je objekt POJO nebo nativní typ jazyka Java.
 
 ## <a name="output---attributes"></a>Výstup – atributy
 

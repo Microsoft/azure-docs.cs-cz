@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 6d15715379b06f55e1e190ebf5410995e3703d70
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3b49d568b1ca19a99359314bb181712f56ca5615
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053326"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201053"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -418,7 +418,7 @@ Tady jsou hlavní kroky vzor služby tokenů:
 4. Zařízení a modul použije token přímo prostřednictvím služby IoT hub.
 
 > [!NOTE]
-> Můžete použít třídu .NET [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) nebo třídy jazyka Java [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth._iot_hub_service_sas_token) k vytvoření tokenu v tokenu služby.
+> Můžete použít třídu .NET [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) nebo třídy jazyka Java [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) k vytvoření tokenu v tokenu služby.
 
 Token služby můžete podle potřeby nastavit vypršení platnosti tokenu. Když vyprší platnost tokenu, služby IoT hub přeruší připojení k zařízení nebo modulů. Potom zařízení a modul musí požádat o nový token od služby tokenů. Čas vypršení platnosti krátký zvyšuje zatížení zařízení nebo modulů a služba tokenů.
 

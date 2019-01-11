@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: 67dd91d7555ebd1e72cea168fc8b841bf4ed9175
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 53dc9b90fd06cf4b6feb1e394f5fbfc5f257be4d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249511"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215248"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Rychlý start: Vyhledávání obrázků s využitím REST API pro vyhledávání Bingu obrázků aC#
 
@@ -101,12 +101,12 @@ namespace BingSearchApisQuickstart
 
 V metodě `BingImageSearch` proveďte následující kroky.
 
-1. Sestavte URI pro žádost o vyhledávání. Všimněte si, že hledaný výraz `toSearch` musí být formátovaný, než se připojí k řetězci.
+1. Sestavte URI pro žádost o vyhledávání. Všimněte si, že hledaný výraz `SearchTerm` musí být formátovaný, než se připojí k řetězci.
 
     ```csharp
-    static SearchResult BingImageSearch(string toSearch){
+    static SearchResult BingImageSearch(string SearchTerm){
 
-        var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(toSearch);
+        var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(SearchTerm);
     //...
     ```
 
@@ -156,7 +156,6 @@ V metodě `BingImageSearch` proveďte následující kroky.
     Console.WriteLine("URL for the first image result: " + firstJsonObj["webSearchUrl"]+"\n");
     ```  
 
-3. Nezapomeňte odebrat klíč předplatného z kódu aplikace.
 
 ## <a name="json-response"></a>Odpověď JSON
 

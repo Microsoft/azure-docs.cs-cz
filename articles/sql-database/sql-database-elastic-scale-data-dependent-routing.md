@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 2a862a6f1165b0cdd4dfe46e638dc6b10eae9ee5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 46febbeb2675c38bf68c6ba0b911f799b268e208
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191322"
+ms.locfileid: "54201104"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Použijte závislé na datech směrování směrovat dotaz k příslušné databázi
 
@@ -68,7 +68,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * **Klíč** parametr se používá jako klíč vyhledávání do mapy horizontálních oddílů k určení příslušné databázi pro požadavek.
 * **ConnectionString** slouží k předání pouze uživatelská pověření pro požadovaného připojení. Žádný název databáze nebo název serveru je zahrnuté v tomto *connectionString* vzhledem k tomu, že tato metoda určí, databáze a serveru pomocí **ShardMap**.
-* **ConnectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) by mělo být nastavené **ConnectionOptions.Validate** Pokud prostředí, ve kterém může mapy horizontálních oddílů změnit a řádků může přesunout do jiné databáze jako výsledek operace dělené tunelové propojení nebo sloučení. Toto ověření zahrnuje stručný dotaz, který mapy místní horizontálních oddílů v cílové databázi (nikoli do mapy horizontálních oddílů globální) před připojení se doručí do aplikace.
+* **ConnectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) by mělo být nastavené **ConnectionOptions.Validate** Pokud prostředí, ve kterém může mapy horizontálních oddílů změnit a řádků může přesunout do jiné databáze jako výsledek operace dělené tunelové propojení nebo sloučení. Toto ověření zahrnuje stručný dotaz, který mapy místní horizontálních oddílů v cílové databázi (nikoli do mapy horizontálních oddílů globální) před připojení se doručí do aplikace.
 
 Selže-li ověření proti mapy horizontálních oddílů místní (což znamená, že mezipaměť je nesprávné), správce mapování horizontálních oddílů dotazuje mapy horizontálních oddílů globální získat nové správnou hodnotu pro vyhledávání, aktualizace mezipaměti a získat a vrátit připojení k příslušné databázi .
 

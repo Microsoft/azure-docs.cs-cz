@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3897225ef6ed7fcc0db75e82058e5b5b273ccbd4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679519"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214024"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -82,11 +82,11 @@ Po povolení správy aktualizací pro počítače, můžete zobrazit informace o
 
 Počítače, které se nedávno byly povoleny pro řízení aktualizace nemusí mít neposoudil. Stav stavu dodržování předpisů pro tyto počítače je **nevyhodnoceno**. Tady je seznam možných hodnot pro stav dodržování předpisů:
 
-- **Kompatibilní**: počítače, které jsou nechybí kritické aktualizace nebo aktualizace zabezpečení.
+- **Kompatibilní**: Počítače, které jsou nechybí kritické aktualizace nebo aktualizace zabezpečení.
 
-- **Nekompatibilní**: počítače, kterým chybí minimálně jedna kritická aktualizace nebo aktualizace zabezpečení.
+- **Nedodržující předpisy**: Počítače, kterým chybí minimálně jedna kritická aktualizace nebo aktualizace zabezpečení.
 
-- **Nevyhodnoceno**: data o posouzení aktualizací nebyla přijata od počítače v očekávaném časovém rámci. Pro počítače s Linuxem je časový rámec expect za poslední 3 hodiny. Pro počítače s Windows je očekávaném časovém rámci za posledních 12 hodin.
+- **Nevyhodnoceno**: Data o posouzení aktualizací nebyla přijata od počítače v očekávaném časovém rámci. Pro počítače s Linuxem je časový rámec expect za poslední 3 hodiny. Pro počítače s Windows je očekávaném časovém rámci za posledních 12 hodin.
 
 Chcete-li zobrazit stav agenta, klikněte na odkaz ve **připravenost agenta aktualizací** sloupce. Výběrem této možnosti se otevře **Hybrid Worker** podokně a zobrazuje stav procesu Hybrid Worker. Následující obrázek ukazuje příklad agenta, který nebyl připojen ke správě aktualizací pro delší časové období:
 
@@ -113,7 +113,11 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
-Kontrola provádí dvakrát denně pro každý spravovaný počítač s Windows. Každých 15 minut se volá rozhraní Windows API dotazu na čas poslední aktualizace k určení, jestli se změnil stav. Pokud se stav změnil, zahájí se kontrola kompatibility. Kontrola provádí každé tři hodiny pro každý spravovaný počítač s Linuxem.
+Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
+
+Mimo plán kontrol je zahájeno kontroly dodržování předpisů pro aktualizace do 15 minut po restartování, před instalací aktualizací a po instalaci aktualizací agenta MMA.
+
+Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nastavení provádí každé tři hodiny. Pokud restartování agenta MMA, kontroly dodržování předpisů je zahájeno do 15 minut.
 
 Může trvat 30 minut až 6 hodin na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
 
@@ -126,9 +130,9 @@ V části naplánovat nové nasazení aktualizací pro jeden nebo více virtuál
 V **nové nasazení aktualizací** podokně zadejte následující informace:
 
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
-- **Operační systém**: vyberte **Windows** nebo **Linux**.
-- **Skupiny, které se mají aktualizovat (Preview)**: Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek a vytvořte dynamickou skupinu virtuálních počítačů Azure, která se má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management.md#using-dynamic-groups).
-- **Počítače k aktualizaci**: Zvolte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
+- **Operační systém**: Vyberte **Windows** nebo **Linux**.
+- **Skupiny, které se aktualizace (preview)**: Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management.md#using-dynamic-groups).
+- **Počítače k aktualizaci**: Vyberte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
 
@@ -144,13 +148,13 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 
 - **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku **Zahrnout nebo vyloučit**. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o tom, jak se zahrnutí provádí, najdete v tématu o [chování zahrnutí](automation-update-management.md#inclusion-behavior).
 
-- **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete také zadat jiný čas.
+- **Nastavení plánu**: Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete také zadat jiný čas.
 
    Můžete také určit, jestli nasazení proběhne jednou nebo opakovaně. V části Nastavení plánu opakování **opakování**vyberte **periodický**.
 
    ![Dialogové okno Nastavení plánu](./media/manage-update-multi/update-set-schedule.png)
 
-- **Předzálohovací a pozálohovací skripty**: Vyberte skripty, které se mají spustit před vaším nasazením a po něm. Další informace najdete v tématu týkajícím se [správy předzálohovacích a pozálohovacích skriptů](pre-post-scripts.md).
+- **Skripty před a po skripty**: Vyberte skripty spouštěné před a po nasazení. Další informace najdete v tématu týkajícím se [správy předzálohovacích a pozálohovacích skriptů](pre-post-scripts.md).
 - **Časové období údržby (minuty)**: Zadejte dobu, po které má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
 
 - **Restartovat ovládací prvek** – toto nastavení určuje, jak se zpracovává restartování počítače pro nasazení aktualizace.
@@ -181,9 +185,9 @@ Pokud chcete zobrazit řídicí panel pro nasazení aktualizace, vyberte dokonč
 
 **Aktualizovat výsledky** podokno zobrazuje celkový počet aktualizací a výsledků nasazení pro virtuální počítač. V tabulce vpravo je podrobný rozpis všech aktualizací a výsledků instalace. Výsledkem instalace může být jedna z následujících hodnot:
 
-- **Nebyl proveden pokus**: aktualizace se nenainstalovala, protože byl dostatek času k dispozici podle definovaného časového období údržby.
-- **Úspěch:** Aktualizace byla úspěšná.
-- **Neúspěch:** Aktualizace se nezdařila.
+- **Nebyl proveden pokus**: Aktualizace se nenainstalovala, protože byl dostatek času k dispozici podle definovaného časového období údržby.
+- **Úspěšné**: Aktualizace byla úspěšná.
+- **Nepovedlo**: Aktualizace se nezdařila.
 
 Výběrem možnosti **Všechny protokoly** zobrazíte všechny položky protokolu, které toto nasazení vytvořilo.
 

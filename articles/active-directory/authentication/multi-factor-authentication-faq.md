@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: eb0fa1edaadddfe055f3fc53a6d232e5a1293490
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 46d8a26398ed63bef4fa101fbaf0be9087880109
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424931"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214143"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -23,7 +23,7 @@ Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se Azure Mu
 
 ## <a name="general"></a>Obecné
 
-**Otázka: jak zpracovávat ověřování Azure Multi-Factor Authentication Server uživatelská data?**
+**Otázka: Jak Azure Multi-Factor Authentication Server zpracovává data uživatelů?**
 
 Multi-Factor Authentication Server uživatelská data uloží jenom na místních serverech. V cloudu se neukládají žádná trvalá data. Když uživatel provádí dvoustupňové ověřování, ověřování Multi-Factor Authentication Server odešle data do cloudové služby Azure Multi-Factor Authentication pro ověřování. Komunikace mezi Multi-Factor Authentication Server a cloudovou službou Multi-Factor Authentication používá vrstvy SSL (Secure Sockets) nebo zabezpečení TLS (Transport Layer) přes port 443 odchozí.
 
@@ -44,7 +44,7 @@ Volitelná pole je možné nakonfigurovat na serveru Multi-Factor Authentication
 
 Výsledek ověření (úspěch nebo odmítnutí) a důvod, pokud byl odepřen, je uložen s ověřovacími údaji. Tato data jsou k dispozici k ověřování a v sestavách využití.
 
-**Otázka: jaké krátký kódy SMS se používají pro zasílání zpráv SMS pro moje uživatele?**
+**Otázka: Jaké krátké kódy SMS se používají pro zasílání zpráv SMS pro moje uživatele?**
 
 V USA Microsoft používá následující kódy krátký SMS:
 
@@ -64,13 +64,13 @@ Microsoft nezaručuje konzistentní SMS nebo ověřování službou Multi-Factor
 
 Většina fakturaci může zodpoví odkazující na buď [stránce s cenami ověřování službou Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) nebo v dokumentaci o [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
-**Otázka: je Moje organizace, účtují se poplatky za odesílání telefonní hovory a textové zprávy, které se používají k ověřování?**
+**Otázka: Účtuje se Moje organizace pro odesílání telefonní hovory a textové zprávy, které se používají k ověřování?**
 
 Ne, se neúčtují jednotlivé telefonní hovory nebo textové zprávy odeslané uživatelům prostřednictvím ověřování Azure Multi-Factor Authentication. Pokud používáte poskytovatele MFA podle ověřování, se účtují pro každé ověření, ale ne pro metodu použít.
 
 Uživatelé můžou účtovat telefonní hovory nebo textové zprávy, kterou obdrží, podle jejich osobní telefonní služby.
 
-**Otázka: model fakturace za uživatele za mi všechny povolené uživatele nebo pouze ty, které provádí dvoustupňové ověřování?**
+**Otázka: Model fakturace za uživatele účtuje se mi všechny povolené uživatele nebo pouze ty, které provádí dvoustupňové ověřování?**
 
 Účtování vychází z počtu uživatelů nakonfigurována pro použití služby Multi-Factor Authentication, bez ohledu na to, jestli se provádí dvoustupňové ověřování tento měsíc.
 
@@ -82,7 +82,7 @@ Když si koupíte předplatné pro Azure Multi-Factor Authentication, vaše orga
 
 Další informace o možnostech [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
-**Otázka: existuje bezplatná verze Azure Multi-Factor Authentication?**
+**Otázka: Existuje bezplatná verze Azure Multi-Factor Authentication?**
 
 V některých případech Ano.
 
@@ -90,7 +90,7 @@ Ověřování službou Multi-Factor Authentication pro správce Azure nabízí p
 
 Multi-Factor Authentication pro uživatele Office 365 nabízí podmnožinu funkcí Azure MFA bez poplatků pro přístup ke službám Office 365, jako jsou Exchange Online a SharePoint Online. Tato nabídka platí pro uživatele, kteří mají přiřazen, když odpovídající instance služby Azure Active Directory nemá plnou verzi Azure MFA prostřednictvím licenci MFA, sadu nebo samostatný založenou na skutečné spotřebě poskytovatelem licence k Office 365.
 
-**Otázka: Moje organizace přepínat mezi jednotlivých uživatelů nebo ověření spotřeby modely fakturace kdykoli?**
+**Otázka: Přepínat mezi jednotlivých uživatelů nebo ověření spotřeby modely fakturace kdykoli mé organizaci?**
 
 Pokud vaše organizace zakoupí MFA jako samostatná služba s využitím fakturace založený na spotřebě, zvolte model fakturace při vytváření poskytovatele MFA. Model fakturace nelze změnit po vytvoření poskytovatele MFA. Můžete však poskytovatele MFA odstranit a pak vytvořte jiný model fakturace.
 
@@ -100,7 +100,7 @@ Pokud je poskytovatel MFA *není* propojený s tenantem Azure AD nebo propojení
 
 Další informace o poskytovatelích MFA v [Začínáme s poskytovatelem služby Azure Multi-Factor Auth](concept-mfa-authprovider.md).
 
-**Otázka: Moje organizace přepínat mezi založenou na skutečné spotřebě fakturace a předplatných (na základě licenční model) kdykoli?**
+**Otázka: Moje organizace přepínat mezi založenou na skutečné spotřebě fakturace a předplatných (na základě licenční model) v čase?**
 
 V některých případech Ano.
 
@@ -108,7 +108,7 @@ Pokud má váš adresář *uživatelská* poskytovatele ověřování Azure Mult
 
 Pokud má váš adresář *podle ověřování* poskytovatele ověřování Azure Multi-Factor Authentication, je vždy se účtují pro každé ověření tak dlouho, dokud se k předplatnému připojený poskytovatele MFA. Můžete přiřadit licence MFA pro uživatele, ale budete pořád se vám účtovat každou žádost o dvoustupňové ověření, zda pochází od uživatele s licencí MFA, nebo nemáte přiřazené.
 
-**Otázka: Moje organizace muset použít a synchronizaci identit pomocí Azure Multi-Factor Authentication?**
+**Otázka: Má Moje organizace používat a synchronizaci identit pomocí Azure Multi-Factor Authentication?**
 
 Pokud vaše organizace používá model fakturace založený na spotřebě, Azure Active Directory je volitelné, ale nejsou vyžadována. Pokud poskytovatel MFA není propojený s tenantem Azure AD, můžete nasadit jenom ověřování Azure Multi-Factor Authentication Server lokálně.
 
@@ -116,9 +116,11 @@ Azure Active Directory je požadovaná pro licenční model, protože licence se
 
 ## <a name="manage-and-support-user-accounts"></a>Správa a podpora uživatelských účtů
 
-**Otázka: co by měl poznám, že uživatelé dělat, když není neobdrží odpověď na svůj telefon nebo nemají svůj telefon s nimi?**
+**Otázka: Co říct Moji uživatelé dělat, když nedostávají odpovědi na svůj telefon?**
 
-Všichni uživatelé nakonfigurovaní snad více než jednu metodu ověřování. Řekněte jim, aby se zkusili znovu přihlásit, ale na přihlašovací stránce vybrali jinou metodu ověření.
+Požádejte uživatele, pokus až 5krát během 5 minut. Chcete-li získat telefonního hovoru nebo SMS pro ověření. Společnost Microsoft používá několik poskytovatelů pro doručování hovory a SMS zpráv. Pokud to nebude fungovat otevřete případ podpory s Microsoftem-li dále řešit.
+
+Pokud výše uvedené kroky nefungují snad všichni uživatelé nakonfigurovaní více než jednu metodu ověřování. Řekněte jim, aby se zkusili znovu přihlásit, ale na přihlašovací stránce vybrali jinou metodu ověření.
 
 Pak můžete uživatelům [Průvodce odstraňováním potíží s koncovým uživatelem](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
 
@@ -149,7 +151,7 @@ Pokud mají vaši uživatelé často potíže se spolehlivým příjmem textový
 
 Pokud je nutné použít textové zprávy, doporučujeme používat jednosměrná zpráva SMS, spíše než obousměrné služby SMS, pokud je to možné. Jednosměrné služby SMS je spolehlivější a zabraňuje uživatelům v poplatků globální služby SMS v odpovědi na textovou zprávu, která byla odeslána z jiné země.
 
-**Otázka: Mohu změnit dobu Moji uživatelé muset před systému vypršením časového limitu zadejte ověřovací kód z textové zprávy?**
+**Otázka: Můžete změnit dobu Moji uživatelé muset před systému vypršením časového limitu zadejte ověřovací kód z textové zprávy?**
 
 V některých případech Ano. 
 
@@ -165,7 +167,7 @@ Pro obousměrné služby SMS s Azure MFA serverem můžete nakonfigurovat nastav
 
 Pro jednosměrná zpráva SMS s Azure MFA v cloudu (včetně adaptéru služby AD FS nebo rozšíření serveru Network Policy Server) nemůže nakonfigurovat nastavení časového limitu. Ověřovací kód, který ukládá služba Azure AD pro 180 sekund. 
 
-**Otázka: Mohu použít hardwarové tokeny serverem Azure Multi-Factor Authentication?**
+**Otázka: Můžete používat tokeny hardwaru serverem Azure Multi-Factor Authentication?**
 
 Pokud používáte ověřování Azure Multi-Factor Authentication Server, můžete importovat tokeny na základě času, jednorázové heslo (TOTP) otevřete ověřování (OATH) třetích stran a budete je moct používat k dvoustupňovému ověřování.
 
@@ -176,17 +178,17 @@ Můžete importovat tokeny OATH TOTP třetích stran pomocí následujících fo
 - Kontejner přenosný symetrického klíče (PSKC)  
 - Sdílený svazek clusteru, pokud soubor obsahuje sériové číslo, tajný klíč ve formátu Base 32 a časový interval  
 
-**Otázka: Mohu použít Server Azure Multi-Factor Authentication pro zabezpečené Terminálové služby?**
+**Otázka: Můžete použít Azure Multi-Factor Authentication Server pro zabezpečené Terminálové služby**
 
 Ano, ale pokud používáte Windows Server 2012 R2 nebo novější můžete pouze zabezpečené Terminálové služby s použitím služby Brána vzdálené plochy (Brána VP).
 
 Změny zabezpečení ve Windows serveru 2012 R2 změnit, jak se Azure Multi-Factor Authentication Server připojí k balíčku zabezpečení místního úřadu zabezpečení (LSA) v systému Windows Server 2012 a dřívějších verzích. Pro Terminálové služby v systému Windows Server 2012 nebo starší verze, můžete [zabezpečení aplikace s ověřováním Windows](howto-mfaserver-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure). Pokud používáte Windows Server 2012 R2, je třeba Brána VP.
 
-**Otázka: jsem nakonfiguroval ID volajícího MFA serveru, ale uživatelé stále přijímat hovor služby Multi-Factor Authentication z anonymní volajícího.**
+**Otázka: Jsem nakonfiguroval ID volajícího MFA serveru, ale uživatelé stále přijímat hovor služby Multi-Factor Authentication z anonymní volajícího.**
 
 Při volání služby Multi-Factor Authentication jsou umístěny přes veřejnou telefonní síť, někdy se směrují prostřednictvím operátora, který nepodporuje ID volajícího. Z tohoto důvodu není zaručeno ID volajícího, i když systém Multi-Factor Authentication je vždy posílá.
 
-**Otázka: Proč svým uživatelům se výzva k registraci jejich informace o zabezpečení?**
+**Otázka: Proč svým uživatelům se výzva k registraci informací o jejich zabezpečení?**
 Tady je několik důvodů, že by mohla uživatelé vyzváni k registraci jejich zabezpečení informací:
 
 - Uživatel byl povolen pro MFA podle jejich správce ve službě Azure AD, ale neobsahuje informace o zabezpečení, které jste se nezaregistrovali pro svůj účet.
@@ -199,7 +201,7 @@ Tady je několik důvodů, že by mohla uživatelé vyzváni k registraci jejich
 
 ## <a name="errors"></a>Chyby
 
-**Otázka: co uživatelé dělat, když se zobrazí chybová zpráva "žádost o ověření není pro aktivovaný účet", při použití oznámení mobilní aplikace?**
+**Otázka: Co uživatelé dělat, když se zobrazí chybová zpráva "žádost o ověření není pro aktivovaný účet", při použití oznámení mobilní aplikace?**
 
 Řekněte jim, aby pomocí následujícího postupu odebrat svůj účet z mobilní aplikace a pak ji znovu přidat:
 
@@ -208,7 +210,7 @@ Tady je několik důvodů, že by mohla uživatelé vyzváni k registraci jejich
 3. Odeberte existující účet z mobilní aplikace.
 4. Klikněte na tlačítko **konfigurovat**a pak postupujte podle pokynů k překonfigurování mobilní aplikace.
 
-**Otázka: co uživatelé dělat, když vidí 0x800434D4L chybová zpráva při přihlášení k aplikaci nezaložené na prohlížeči?**
+**Otázka: Co uživatelé dělat, když se zobrazí chybová zpráva 0x800434D4L při přihlášení k aplikaci nezaložené na prohlížeči?**
 
 Při pokusu o přihlášení k aplikaci nezaložené na prohlížeči, nainstalované na místním počítači, který nefunguje s účty, které vyžadují dvoustupňové ověření, dojde k chybě 0x800434D4L.
 

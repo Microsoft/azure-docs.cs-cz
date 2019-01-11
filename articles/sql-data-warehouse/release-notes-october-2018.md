@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9160a5f4e3a452682787ff500199e43e7fad0c77
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966819"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213685"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Říjen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v října 2018.
@@ -41,7 +41,7 @@ Pokročilé ladění pro Azure SQL Data Warehouse (SQL data Warehouse), stačí 
 Azure SQL Data Warehouse Accelerated databáze obnovení (ADR) je teď ve verzi Public Preview. Pravidla automatického nasazení je nový modul serveru SQL, která výrazně zlepšuje dostupnost databáze, zejména v přítomnost dlouhotrvající transakce, tak zcela realizace aktuální proces obnovení zdola nahoru. Hlavní výhody pravidla automatického nasazení se obnovení databáze rychlé a konzistentní vzhledem k aplikacím a odvolání okamžité transakce.
 
 ## <a name="azure-monitor-diagnostics-logs"></a>Protokoly diagnostiky Azure Monitor
-SQL Data Warehouse (SQL data Warehouse) teď umožňuje lepší přehled o analytické úlohy díky integraci přímo s diagnostické protokoly Azure monitoru. Tato nová funkce vývojářům umožňuje analyzovat chování úloh s za delší časové období a provádět informovaná rozhodnutí týkající se správy optimalizace nebo kapacity dotazu. Zavedli jsme teď na externí protokolování procesu prostřednictvím [diagnostické protokoly Azure monitoru](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) , poskytování dalších přehledů o vašich úloh datového skladu. Jediným kliknutím na tlačítko, je nyní možné konfigurace diagnostických protokolů pro řešení potíží s použitím možnosti výkonu dotazů na historii [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Diagnostické protokoly Azure monitoru podporu přizpůsobitelné období uložením protokoly do účtu úložiště pro účely auditování možnost streamování protokolů do služby event hubs téměř přehledy v reálném čase telemetrii a možnost Analýza protokolů pomocí služby Log Analytics s [protokolu dotazy](). Diagnostické protokoly se skládají z telemetrických zobrazení vašeho datového skladu, která jsou ekvivalentní nejčastěji využívaným zobrazením dynamické správy pro řešení potíží s výkonem pro SQL Data Warehouse. Pro tato počáteční verze jsme povolili zobrazení pro následující systémová zobrazení dynamické správy:
+SQL Data Warehouse (SQL data Warehouse) teď umožňuje lepší přehled o analytické úlohy díky integraci přímo s diagnostické protokoly Azure monitoru. Tato nová funkce vývojářům umožňuje analyzovat chování úloh s za delší časové období a provádět informovaná rozhodnutí týkající se správy optimalizace nebo kapacity dotazu. Zavedli jsme teď na externí protokolování procesu prostřednictvím [diagnostické protokoly Azure monitoru](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) , poskytování dalších přehledů o vašich úloh datového skladu. Jediným kliknutím na tlačítko, je nyní možné konfigurace diagnostických protokolů pro řešení potíží s použitím možnosti výkonu dotazů na historii [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Diagnostické protokoly Azure monitoru podporu přizpůsobitelné období uložením protokoly do účtu úložiště pro účely auditování možnost streamování protokolů do služby event hubs téměř přehledy v reálném čase telemetrii a možnost Analýza protokolů pomocí služby Log Analytics pomocí dotazů na protokoly. Diagnostické protokoly se skládají z telemetrických zobrazení vašeho datového skladu, která jsou ekvivalentní nejčastěji využívaným zobrazením dynamické správy pro řešení potíží s výkonem pro SQL Data Warehouse. Pro tato počáteční verze jsme povolili zobrazení pro následující systémová zobrazení dynamické správy:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)

@@ -2,7 +2,6 @@
 title: Ověření nastavení Azure Traffic Manageru
 description: Tento článek vám pomůže ověřit nastavení Traffic Manageru.
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: b37022f79feafc2110366446752675e7c42188f3
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1e954e3c4ebba245d91cfb84ab583b314150e5b2
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054019"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200781"
 ---
 # <a name="verify-traffic-manager-settings"></a>Ověření nastavení Traffic Manageru
 

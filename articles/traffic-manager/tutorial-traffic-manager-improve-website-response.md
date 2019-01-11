@@ -2,7 +2,6 @@
 title: Kurz – směrování provozu ke zlepšení odezvy webu pomocí služby Azure Traffic Manager
 description: Tento kurz článek popisuje postup vytvoření profilu Traffic Manageru k vytvoření webu s velmi rychlou odezvou.
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: fcbacb14ae1cf0d8fa31d84e281c96fab5e3b0d3
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1b12e17bb8dd666bd48e937b7fed40e40f22ecf0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052083"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200764"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Kurz: Zlepšení odezvy webu pomocí služby Traffic Manager 
 

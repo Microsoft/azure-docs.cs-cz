@@ -1,5 +1,5 @@
 ---
-title: Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí Azure Powershellu
+title: Vytvoření Load Balanceru s zónově redundantních front-endu – Azure PowerShell
 titlesuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit veřejný Load balancer úrovně Standard s zónově redundantní veřejné IP adresy front-endu pomocí Powershellu
 services: load-balancer
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: kumud
-ms.openlocfilehash: b6730b624cc0416354fecfdbe747f643540f9e89
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ccf30e435ef04f1e4e874c1b7fc78c86a494a3d9
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138735"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198112"
 ---
-#  <a name="create-a-standard-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Vytvoření Balanceru úrovně Standard s zónově redundantních front-endu pomocí Azure Powershellu
+#  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí Azure Powershellu
 
-Tento článek popisuje postup vytvořením veřejné [Load balancer úrovně Standard](https://aka.ms/azureloadbalancerstandard) s zónově redundantních front-endu pomocí standardní veřejné IP adresy.
+Tento článek popisuje postup vytvořením veřejné [Load balanceru úrovně Standard](https://aka.ms/azureloadbalancerstandard) s zónově redundantních front-endu pomocí standardní veřejné IP adresy.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -86,7 +86,7 @@ $probe = New-AzureRmLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http
 ```
 
 ## <a name="create-a-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
-Vytvoření Load balancer úrovně Standard pomocí následujícího příkazu:
+Vytvořte Standard pro vyrovnávání zatížení pomocí následujícího příkazu:
 
 ```powershell
 $lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalancer' -Location westeurope `

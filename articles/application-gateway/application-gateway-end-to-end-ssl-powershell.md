@@ -2,22 +2,17 @@
 title: Konfigurace-kompletního protokolu SSL pomocí Azure Application Gateway
 description: Tento článek popisuje, jak nakonfigurovat-kompletního protokolu SSL pomocí Azure Application Gateway pomocí Powershellu
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 32dd31c659e1906e8cf59f4c6d06c2b4436284cd
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945327"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214058"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu
 
@@ -25,7 +20,7 @@ ms.locfileid: "49945327"
 
 Azure Application Gateway podporuje – koncové šifrování provozu. Služba Application Gateway ukončuje připojení protokolem SSL ve službě application gateway. Brána pak použije na provoz pravidla směrování, znovu zašifruje paket a předá tento paket k příslušnému back-end serveru, na základě pravidel směrování definované. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem.
 
-Služba Application Gateway podporuje, definování vlastních možností protokolu SSL. Také podporuje následující verze protokolu zakázání: **TLSv1.0**, **TLSv1.1**, a **TLSv1.2**a definování, které šifrovací sady používat a pořadí podle priority . Další informace o konfigurovatelných možností protokolu SSL, najdete v článku [přehled zásad protokolu SSL](application-gateway-SSL-policy-overview.md).
+Služba Application Gateway podporuje, definování vlastních možností protokolu SSL. Podporuje také zakázání následujících verzí protokolu: **TLSv1.0**, **TLSv1.1**, a **TLSv1.2**a definování, které šifrovací sady používat a pořadí podle priority. Další informace o konfigurovatelných možností protokolu SSL, najdete v článku [přehled zásad protokolu SSL](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > Protokol SSL 2.0 a protokol SSL 3.0 jsou ve výchozím nastavení zakázané a nejde povolit. Tyto považovány za nezabezpečené a nelze použít s Application Gateway.
@@ -43,11 +38,11 @@ Tento scénář bude:
 * Vytvořit dvě podsítě, které volá **appgwsubnet** a **appsubnet**.
 * Vytvoření malou aplikaci brány podpůrné začátku do konce šifrování SSL tohoto omezení verze protokolu SSL a šifrovacích sad.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Ke konfiguraci-kompletního protokolu SSL s aplikační bránou, certifikát je vyžadován pro bránu a certifikáty jsou nutné k back-end serverů. Certifikát brány se používá k šifrování a dešifrování přenosů do něj odesílají pomocí protokolu SSL. Certifikát brány musí být ve formátu Personal Information Exchange (PFX). Tento formát souboru umožňuje exportovat soukromý klíč, který vyžaduje službu application gateway šifrování a dešifrování přenosů.
+Ke konfiguraci-kompletního protokolu SSL s aplikační bránou, certifikát je vyžadován pro bránu a certifikáty jsou nutné k back-end serverů. Certifikát brány se používá k odvození symetrický klíč podle specifikace protokolu SSL. Symetrický klíč je pak používat zašifrování a dešifrování provoz odeslaný na bránu. Certifikát brány musí být ve formátu Personal Information Exchange (PFX). Tento formát souboru umožňuje exportovat soukromý klíč, který vyžaduje službu application gateway šifrování a dešifrování přenosů.
 
-Pro šifrování SSL začátku do konce back-end musí být povolené ve službě application gateway. Budete muset nahrát veřejný certifikát back-end serverů ke službě application gateway. Přidání certifikátu se zajistí, že službu application gateway komunikuje pouze se známými back endových instancí. To dále zabezpečuje komunikaci začátku do konce.
+Pro šifrování SSL začátku do konce back-end musí být povolené ve službě application gateway. Odešlete veřejný certifikát back-end serverů ke službě application gateway. Přidání certifikátu se zajistí, že službu application gateway komunikuje pouze se známými back endových instancí. To dále zabezpečuje komunikaci začátku do konce.
 
 Proces konfigurace je popsána v následujících částech.
 
@@ -258,7 +253,7 @@ V předchozích krocích trvalo vás provedou vytvořením aplikace s protokolem
 
    ```
 
-   3. Nakonec aktualizujte brány. Všimněte si, že tento poslední krok je dlouho běžící úlohy. Po dokončení, je nakonfigurované – kompletního protokolu SSL ve službě application gateway.
+   3. Nakonec aktualizujte brány. Tento poslední krok je dlouho běžící úlohy. Po dokončení, je nakonfigurované – kompletního protokolu SSL ve službě application gateway.
 
    ```powershell
    $gw | Set-AzureRmApplicationGateway

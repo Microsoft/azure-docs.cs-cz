@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 3fdbac019849bc97e8d336b75f26a8fe0a05c449
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ca7ce29adb0b83215b64065ef83ff476025b8e81
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713110"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199710"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
-Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Pomocí spravované identity, můžete ověřit u jakékoli služby, který podporuje ověřování Azure AD bez nutnosti přihlašovací údaje ve vašem kódu. Připravujeme k integrační spravovaných identit pro prostředky Azure a ověřování Azure AD v Azure. Zkontrolujte back často aktualizací.
+Spravované identity pro prostředky Azure poskytují služby Azure se automaticky spravované identity v Azure Active Directory. Pomocí spravované identity, můžete ověřit u jakékoli služby, který podporuje ověřování Azure AD bez nutnosti přihlašovací údaje ve vašem kódu. Připravujeme k integrační spravovaných identit pro prostředky Azure a ověřování Azure AD v Azure. Zkontrolujte back často aktualizací.
 
 > [!NOTE]
 > Spravované identity prostředků Azure jsou novým názvem služby, která se dříve jmenovala Identita spravované služby (MSI).
@@ -27,28 +27,125 @@ Spravované identity pro prostředky Azure poskytuje služby Azure se automatick
 
 Následující služby Azure podporují spravované identity pro prostředky Azure:
 
-| Služba | Systém přiřadil stav | uživatel přiřazen stav| Konfigurace | Získání tokenu |
-| ------- | ------ | ---- | --------- | ----------- |
-| Azure Virtual Machines | K dispozici. | Preview | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash nebo nástroj Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| Virtual Machine Scale Sets | K dispozici. | Preview | [Azure Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Šablony Azure Resource Manageru](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash nebo nástroj Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
-| Azure App Service | Windows: K dispozici. <br> Linux: Preview | Preview | [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell)  |
-| Azure Functions | K dispozici. | Preview | [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell) |
-| Azure Logic Apps | K dispozici. | Není k dispozici. | [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#deployment-template) |  |
-| Azure Data Factory V2 | K dispozici. | Není k dispozici. | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-| Azure API Management | K dispozici. | Není k dispozici. | [Šablona Azure Resource Manageru](/azure/api-management/api-management-howto-use-managed-service-identity) |
-| Azure Container Instances | Linux: Preview<br>Windows: Není k dispozici. | Linux: Preview<br>Windows: Není k dispozici. | [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)<br>[Šablona Azure Resource Manageru](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)<br>[YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file) |  |
+### <a name="azure-virtual-machines"></a>Azure Virtual Machines
+
+|Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Přiřazeno systémem | K dispozici. | Preview | Preview | Preview | Preview |
+| Přiřazeno uživatelem | Preview | Preview | Preview | Preview | Preview
+
+Najdete v následujícím seznamu ke konfiguraci spravované identity pro virtuální počítače Azure (v oblastech dostupné):
+
+- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure CLI](qs-configure-cli-windows-vm.md)
+- [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
+
+### <a name="azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets
+
+|Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Přiřazeno systémem | K dispozici. | Preview | Preview | Preview |
+| Přiřazeno uživatelem | Preview | Preview | Preview | Preview
+
+Najdete v následujícím seznamu ke konfiguraci spravované identity pro Škálovací sady virtuálních počítačů Azure (v oblastech dostupné):
+
+- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure CLI](qs-configure-cli-windows-vm.md)
+- [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
+
+### <a name="azure-app-service"></a>Azure App Service
+
+|Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Přiřazeno systémem | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
+| Přiřazeno uživatelem | Preview | Není k dispozici. | Není k dispozici. | Není k dispozici.
+
+Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro službu Azure App Service (v oblastech dostupné):
+
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-functions"></a>Azure Functions
+
+Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Přiřazeno systémem | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
+| Přiřazeno uživatelem | Preview | Není k dispozici. | Není k dispozici. | Není k dispozici.
+
+Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro službu Azure Functions (v oblastech dostupné):
+
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-logic-apps"></a>Azure Logic Apps
+
+Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Přiřazeno systémem | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
+| Přiřazeno uživatelem | Není k dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici.
+
+Najdete v následujícím seznamu ke konfiguraci spravované identity Azure Logic Apps (v oblastech dostupné):
+
+- [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#deployment-template)
+
+### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
+
+Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Přiřazeno systémem | K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
+| Přiřazeno uživatelem | Není k dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici.
+
+Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro Azure Data Factory verze 2 (v oblastech dostupné):
+
+- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)
+- [Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk)
+
+### <a name="azure-api-management"></a>Azure API Management
+
+Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Přiřazeno systémem | K dispozici. | K dispozici. | Není k dispozici. | Není k dispozici. |
+| Přiřazeno uživatelem | Není k dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici.
+
+Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro službu Azure API Management (v oblastech dostupné):
+
+- [Šablona Azure Resource Manageru](/azure/api-management/api-management-howto-use-managed-service-identity)
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Přiřazeno systémem | Linux: Preview<br>Windows: Není k dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
+| Přiřazeno uživatelem | Linux: Preview<br>Windows: Není k dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici.
+
+Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro Azure Container Instances (v oblastech dostupné):
+
+- [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
+- [Šablona Azure Resource Manageru](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Podpora služby Azure AD ověření služby Azure
 
 Tyto služby podporují ověřování Azure AD a prošel testováním s využitím klientské služby, které používají spravované identity pro prostředky Azure.
 
-| Služba | ID prostředku | Status | Datum | Přiřazení přístupu |
+| Služba | ID prostředku | Status | Přiřazení přístupu |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | `https://management.azure.com/` | K dispozici. | Září 2017 | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) <br>[Šablona Azure Resource Manageru](../../role-based-access-control/role-assignments-template.md) |
-| Azure Key Vault | `https://vault.azure.net` | K dispozici. | Září 2017 | |
-| Azure Data Lake | `https://datalake.azure.net/` | K dispozici. | Září 2017 | |
-| Azure SQL | `https://database.windows.net/` | K dispozici. | Říjen 2017 | |
-| Azure Event Hubs | `https://eventhubs.azure.net` | Preview | Prosinec 2017 | |
-| Azure Service Bus | `https://servicebus.azure.net` | Preview | Prosinec 2017 | |
-| Azure Storage | `https://storage.azure.com/` | Preview | Květen 2018 | |
+| Azure Resource Manager | `https://management.azure.com/` | K dispozici. | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) <br>[Šablona Azure Resource Manageru](../../role-based-access-control/role-assignments-template.md) |
+| Azure Key Vault | `https://vault.azure.net` | K dispozici. |  
+| Azure Data Lake | `https://datalake.azure.net/` | K dispozici. |
+| Azure SQL | `https://database.windows.net/` | K dispozici. |
+| Azure Event Hubs | `https://eventhubs.azure.net` | Preview |
+| Azure Service Bus | `https://servicebus.azure.net` | Preview |
+| Azure Storage | `https://storage.azure.com/` | Preview |

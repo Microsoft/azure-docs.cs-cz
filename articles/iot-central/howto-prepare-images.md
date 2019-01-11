@@ -1,29 +1,29 @@
 ---
 title: Nahrávání obrázků do aplikace Azure IoT Central | Dokumentace Microsoftu
 description: Jako tvůrce informace o přípravě a nahrávání imagí do aplikace Azure IoT Central.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: b55b9929129b882f893b1fea58b7061131daffb8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+manager: philmea
+ms.openlocfilehash: 9d4de2a8be13718f7989f064b76b586407ca3a48
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005134"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198605"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Přípravě a nahrávání imagí do aplikace Azure IoT Central
 
 Tento článek popisuje, jak, jako tvůrce, můžete přizpůsobit aplikaci Azure IoT Central tak, že nahrajete vlastní Image. Například můžete přizpůsobit řídicí panel zařízení se obrázek zařízení.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Aplikace Azure IoT Central. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
+1. Aplikace Azure IoT Central. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 1. Nástroj pro změnu měřítka a změna velikosti soubory s obrázky.
 
 ## <a name="choose-where-to-use-custom-images"></a>Rozhodnete, jak použít vlastní Image
@@ -58,7 +58,7 @@ Následující tabulka shrnuje velikosti obrázků, které můžete použít:
 
 | Umístění | Velikosti |
 | -------- | ------ |
-| Správce aplikací | 268 x 160 px |
+| Application Manager | 268 x 160 px |
 | Šablona zařízení | 64 × 64 pixelů |
 | Domovská stránka a dlaždice řídicího panelu | Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px |
 

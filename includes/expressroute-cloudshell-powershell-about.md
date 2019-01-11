@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/25/2018
+ms.date: 01/09/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 874643c5149cf6a222ab6d244dd561e5c4da5a84
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4d9f05ad1913646e7ca09690af965042817ef7ec
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251392"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193346"
 ---
 Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter. Existuje několik způsobů, jak Cloud Shell spustit:
 
@@ -26,4 +26,4 @@ Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit ru
 
 Pokud nechcete použít Azure Cloud Shell, můžete nainstalovat prostředí PowerShell místně místo. Pokud se rozhodnete nainstalovat a používat PowerShell místně, nezapomeňte nainstalovat nejnovější verzi rutin Powershellu pro Azure Resource Manager. Rutiny Powershellu se často aktualizují a obvykle budete muset aktualizovat zobrazíte nejnovější funkce rutiny Powershellu. Pokud rutiny PowerShellu neaktualizujete, zadané hodnoty nemusí fungovat. 
 
-Najít verzi prostředí PowerShell, které spouštíte místně, použijte rutinu "Get-Module - ListAvailable AzureRM". Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+Najít verzi prostředí PowerShell, které spouštíte místně, použijte rutinu "Get-Module - ListAvailable AzureRM". Pokud chcete aktualizovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/overview).

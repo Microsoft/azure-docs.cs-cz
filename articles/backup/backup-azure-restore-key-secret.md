@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ac3c3d8f2a5ae37f1d32f9781f0cdbec0b293e8
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: b3bcd752f14f5d43c8cb8f686534e016690c7c40
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054005"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198061"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení služby Key Vault klíč a tajný klíč pro šifrované virtuální počítače pomocí služby Azure Backup
 Tento článek pojednává o pomocí zálohování virtuálních počítačů Azure k provedení obnovení šifrovaných virtuálních počítačů Azure, pokud klíč a tajný klíč neexistují v trezoru klíčů. Tyto kroky je možné také pokud chcete udržovat samostatnou kopii klíč (šifrovací klíč klíče) a tajný klíč (šifrovací klíč nástroje BitLocker) pro obnovený virtuální počítač.
@@ -28,8 +28,8 @@ Tento článek pojednává o pomocí zálohování virtuálních počítačů Az
 
 > [!NOTE]
 > Jakmile pro šifrovaný virtuální počítač se obnovila disku, ujistěte se, že:
-> 1. $details se vyplní podrobnosti úlohy obnovení disku, jak je uvedeno v [Powershellu kroky obnovení disků části](backup-azure-vms-automation.md#restore-an-azure-vm)
-> 2. Virtuální počítač by měl být vytvořen z obnovených disků pouze **po obnovení klíče a tajného klíče do trezoru klíčů**.
+> * $details se vyplní podrobnosti úlohy obnovení disku, jak je uvedeno v [Powershellu kroky obnovení disků části](backup-azure-vms-automation.md#restore-an-azure-vm)
+> * Virtuální počítač by měl být vytvořen z obnovených disků pouze **po obnovení klíče a tajného klíče do trezoru klíčů**.
 >
 >
 
@@ -61,7 +61,10 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 ```
 
 ## <a name="restore-secret"></a>Obnovit tajný klíč
-Pomocí souboru JSON generované nad něj a získat název tajného kódu a hodnotu můžete nastavit tajných kódů rutiny umístění tajný kód (klíče BEK) zpět do služby key vault. **Tyto rutiny použijte, pokud je váš virtuální počítač šifrovaný pomocí klíče BEK a KEK.**
+
+Pokud je váš virtuální počítač Azure bez Azure AD je šifrovaný pomocí klíče BEK pouze (pro Windows a virtuální počítače s Linuxem), generovat název tajného kódu a hodnotné výše uvedených příkazů a něj nastavit tajných kódů rutiny umístění tajný klíč (klíče BEK) zpět do služby key vault.
+
+**Tyto rutiny použijte, pokud je váš virtuální počítač Windows šifrovaný pomocí klíče BEK a KEK.**
 
 ```
 PS C:\> $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -71,17 +74,27 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Pokud je váš virtuální počítač **šifrované pomocí klíče BEK pouze**, generovat soubor tajného kódu objektu blob z JSON a něj obnovení tajných kódů rutiny umístění tajný klíč (klíče BEK) zpět do služby key vault.
+**Tyto rutiny použijte, pokud je šifrovaný pomocí klíče BEK a KEK virtuálního počítače s Linuxem.**
+
+```
+PS C:\> $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
+PS C:\> $Secret = ConvertTo-SecureString -String $secretdata -AsPlainText -Force
+PS C:\> $secretname = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA'
+PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKeyFileName' = 'LinuxPassPhraseFileName';'DiskEncryptionKeyEncryptionKeyURL' = $encryptionObject.OsDiskKeyAndSecretDetails.KeyUrl;'MachineName' = 'vm-name'}
+PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
+```
+
+Pokud je váš virtuální počítač Azure s využitím AD **šifrované pomocí klíče BEK pouze**, generovat soubor tajného kódu objektu blob z JSON a něj obnovení tajných kódů rutiny umístění tajný klíč (klíče BEK) zpět do služby key vault.
 
 ```
 PS C:\> $secretDestination = 'C:\secret.blob'
 PS C:\> [io.file]::WriteAllBytes($secretDestination, [System.Convert]::FromBase64String($encryptionObject.OsDiskKeyAndSecretDetails.KeyVaultSecretBackupData))
 PS C:\> Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $secretDestination -Verbose
-```
+  ```
 
 > [!NOTE]
-> 1. Hodnota $secretname lze získat odkaz na výstup $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl a použitím textu po tajných kódů / například výstup adresa URL tajného kódu je https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 a název tajného kódu je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> 2. Hodnota značky DiskEncryptionKeyFileName je stejná jako název tajného kódu.
+> * Hodnota $secretname lze získat odkaz na výstup $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl a použitím textu po tajných kódů / například výstup adresa URL tajného kódu je https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 a název tajného kódu je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * Hodnota značky DiskEncryptionKeyFileName je stejná jako název tajného kódu.
 >
 >
 
@@ -111,9 +124,9 @@ PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secr
 ```
 
 > [!NOTE]
-> 1. Hodnota pro $secretname je možné získat odkaz na výstup $rp1. KeyAndSecretDetails.SecretUrl a pomocí textu po tajných klíčů / například výstup tajný kód je adresa URL https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 a název tajného kódu je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> 2. Hodnota značky DiskEncryptionKeyFileName je stejná jako název tajného kódu.
-> 3. Hodnota pro DiskEncryptionKeyEncryptionKeyURL lze získat z trezoru klíčů po obnovení zpět klíče a pomocí [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) rutiny
+> * Hodnota pro $secretname je možné získat odkaz na výstup $rp1. KeyAndSecretDetails.SecretUrl a pomocí textu po tajných klíčů / například výstup tajný kód je adresa URL https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 a název tajného kódu je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * Hodnota značky DiskEncryptionKeyFileName je stejná jako název tajného kódu.
+> * Hodnota pro DiskEncryptionKeyEncryptionKeyURL lze získat z trezoru klíčů po obnovení zpět klíče a pomocí [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) rutiny
 >
 >
 

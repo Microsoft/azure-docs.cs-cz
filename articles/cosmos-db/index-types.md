@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 50e8e63c9508aa9e81222f242ca330637075e42d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034080"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199064"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Typy indexu ve službě Azure Cosmos DB
 
@@ -29,6 +29,9 @@ Azure Cosmos DB podporuje hodnoty Hash index a rozsah index pro každou cestu, k
 
 - **Hash index** podporuje efektivní rovnosti a dotazy spojení. Pro většinu případů použití nepotřebujete indexy Hash vyšší přesností než na výchozí hodnotu 3 bajtů. Datový typ může být řetězec nebo číslo.
 
+  > [!NOTE]
+  > Kontejnery služby Azure Cosmos podporuje nové rozložení index, který se již nepoužívá index typu Hash. Pokud chcete zadat index typu Hash na zásady indexování, CRUD požadavků na kontejner, bude tiše ignorovat typ indexu a odpověď z kontejneru obsahuje pouze index typu rozsah. Všechny nové kontejnery Cosmos použít nové rozložení index ve výchozím nastavení. 
+  
 - **Index rozsahu** podporuje dotazy na rovnost efektivní, dotazy na rozsah (pomocí >, <>, =, < =,! =) a dotazy klauzule ORDER BY. Dotazy klauzule ORDER By ve výchozím nastavení také vyžadovat maximální index přesnosti (-1). Datový typ může být řetězec nebo číslo.
 
 - **Prostorový index** podporuje efektivní spatial (v rámci a vzdálenost) dotazy. Datový typ může být bodu mnohoúhelníku či LineString. Azure Cosmos DB podporuje také typ prostorového indexu pro každou cestu, která se dá nastavit pro datové typy, které bod mnohoúhelníku či LineString. Hodnota v zadané cestě musí být platný fragment GeoJSON jako {"type": "Point", "coordinates": [0.0, 10.0]}. Azure Cosmos DB podporuje automatické indexování bodu mnohoúhelníku a LineString datových typů.
@@ -58,6 +61,9 @@ Tady jsou příklady dotazů, které hodnoty Hash, rozsah, a prostorové indexy 
 - Prostorové indexy vždy používat výchozí přesnost index pro všechny typy (Point, LineString a mnohoúhelníku). Nelze přepsat výchozí přesnost index pro prostorové indexy.
 
 Azure Cosmos DB vrátí chybu při dotazu pomocí klauzule ORDER BY ale není zaškrtnuta možnost index na rozsah proti dotazované cestu s nejvyšší přesností.
+
+> [!NOTE]
+> Kontejnery služby Azure Cosmos podporuje nové rozložení index, který se už nevyžaduje vlastního indexového přesností než value(-1) maximální přesnost. Pomocí této metody vždy jsou cesty indexované Maximální přesnost. Pokud zadáte hodnotu přesnost na zásady indexování, žádosti CRUD kontejnerům, bude tiše ignorovat hodnota přesnosti a odpověď z kontejneru obsahuje pouze value(-1) maximální přesnost.  Všechny nové kontejnery Cosmos použít nové rozložení index ve výchozím nastavení.
 
 ## <a name="next-steps"></a>Další postup
 

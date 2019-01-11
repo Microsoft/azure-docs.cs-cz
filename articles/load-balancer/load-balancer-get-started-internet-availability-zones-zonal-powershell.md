@@ -1,7 +1,7 @@
 ---
-title: Vytvoření veřejný Standard Load balancer úrovně Standard s oblastmi front-endová IP - prostředí Azure PowerShell
+title: Vytvoření Load Balanceru s oblastmi front-endu – Azure PowerShell
 titlesuffix: Azure Load Balancer
-description: Zjistěte, jak vytvořit veřejný Load balancer úrovně Standard s oblastmi front-end adresa veřejnou IP adresu pomocí Azure Powershellu
+description: Zjistěte, jak vytvořit Load balancer úrovně Standard s oblastmi front-endu pomocí Azure Powershellu
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: da30bce34425d3537f9610c6e1f64ded4a836fd7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fdbc69bee936b94f3683a8a90b4f58e467a8863f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100680"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197926"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-powershell"></a>Vytvoření veřejné služby Load Balancer Standard s oblastmi front-endu pomocí Azure Powershellu
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Vytvoření Load Balanceru úrovně Standard s oblastmi front-endu pomocí Azure Powershellu
 
-Tento článek popisuje postup vytvořením veřejné [Load balancer úrovně Standard](https://aka.ms/azureloadbalancerstandard) s oblastmi front-endu pomocí standardní veřejné IP adresy. Vysvětlení fungování zón dostupnosti s Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md). 
+Tento článek popisuje postup vytvořením veřejné [Load balanceru úrovně Standard](https://aka.ms/azureloadbalancerstandard) s oblastmi front-endu pomocí standardní veřejné IP adresy. Vysvětlení fungování zón dostupnosti s Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -86,7 +86,7 @@ $probe = New-AzureRmLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http
 ```
 
 ## <a name="create-a-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
-Vytvoření Load balancer úrovně Standard pomocí následujícího příkazu:
+Vytvořte Standard pro vyrovnávání zatížení pomocí následujícího příkazu:
 
 ```powershell
 $lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `

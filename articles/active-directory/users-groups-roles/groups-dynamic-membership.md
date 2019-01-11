@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a64f92df7592b4df419e5f70a32f631ca0504c6c
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 148a657b1a5db5b1b33c94e27d695e7c24dfb265
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994211"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214637"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -348,7 +348,7 @@ Můžete použít následující atributy zařízení.
  accountEnabled | Hodnota TRUE, false | (device.accountEnabled - eq true)
  displayName | Libovolnou hodnotou řetězce |(device.displayName - eq "Rob Iphone")
  deviceOSType | Libovolnou hodnotou řetězce | (device.deviceOSType - eq "iPad")- nebo (device.deviceOSType - eq "iPhone")
- deviceOSVersion | Libovolnou hodnotou řetězce | (zařízení. OSVersion - eq "9.1")
+ deviceOSVersion | Libovolnou hodnotou řetězce | (device.deviceOSVersion - eq "9.1")
  deviceCategory | Název kategorie platné zařízení | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | Libovolnou hodnotou řetězce | (device.deviceManufacturer - eq "Samsung")
  deviceModel | Libovolnou hodnotou řetězce | (device.deviceModel - eq "iPad Air")

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631851"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214993"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -125,6 +125,15 @@ Další informace o způsobu aktualizace sad management Pack řešení najdete v
 > [!NOTE]
 > Pro systémy s agentem Operations Manageru abyste mohli plně spravovat pomocí správy aktualizací, je zapotřebí agenta aktualizovat tak, aby Microsoft Monitoring Agent. Zjistěte, jak aktualizovat agenta, najdete v článku [postup upgradu agenta nástroje Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
 
+## <a name="onboard"></a>Povolení řešení Update Management
+
+Pokud chcete začít, opravami systémů, je potřeba povolit řešení Update Management. Existuje mnoho způsobů, jak připojit počítače k Update Management. Následující jsou doporučené a podporované způsoby začlenění řešení:
+
+* [Z virtuálního počítače](automation-onboard-solutions-from-vm.md)
+* [Z procházení více počítačů](automation-onboard-solutions-from-browse.md)
+* [Ve svém účtu Automation](automation-onboard-solutions-from-automation-account.md)
+* [Pomocí runbooku Azure Automation](automation-onboard-solutions.md)
+  
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Ověřte, zda připojení počítače mimo Azure
 
 Potvrďte, že jsou přímo připojené počítače nekomunikují s Log Analytics, po několika minutách můžete spustit jeden následující prohledávání protokolů.

@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f09b9a93956c9d23e17c742c5f6ec4730591933b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 365b15f11409f985b71c9bba4372552321f162f2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302309"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212545"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Navrhování tabulek ve službě Azure SQL Data Warehouse
 
@@ -103,7 +103,7 @@ Dělenou tabulku ukládá a provede operace s řádky tabulky podle oblasti dat.
 ## <a name="columnstore-indexes"></a>Indexy Columnstore
 Ve výchozím nastavení SQL Data Warehouse ukládá tabulku jako s clusterovaným indexem columnstore. Tato forma úložiště dat dosahuje vysoké údaje komprese při přenosu a výkonu dotazování u velkých tabulek.  Clusterovaný index columnstore je většinou nejlepší volbou, ale v některých případech je clusterovaný index nebo haldu vhodnou strukturu.
 
-Seznam funkcí columnstore, naleznete v tématu [co je nového v případě indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-whats-new). Ke zlepšení výkonu index columnstore, naleznete v tématu [maximalizuje kvality skupiny řádků v případě indexů columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Seznam funkcí columnstore, naleznete v tématu [co je nového v případě indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Ke zlepšení výkonu index columnstore, naleznete v tématu [maximalizuje kvality skupiny řádků v případě indexů columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistika
 Optimalizace dotazů používá Statistika na úrovni sloupce při vytváření plánu pro provedení dotazu. Pokud chcete zlepšit výkon dotazů, je důležité vytvořit statistiku pro jednotlivé sloupce, zejména sloupce použité v dotazu spojení. Vytváření a aktualizaci statistik neprobíhá automaticky. [Vytvoření statistiky](/sql/t-sql/statements/create-statistics-transact-sql) po vytvoření tabulky. Aktualizujte statistiku po velký počet řádků jsou přidány nebo změněny. Například aktualizujte statistiku po zatížení. Další informace najdete v tématu [statistiky pokyny](sql-data-warehouse-tables-statistics.md).
@@ -133,7 +133,7 @@ SQL Data Warehouse podporuje mnoho, ale ne všechny funkce tabulky nabízené os
 - [Indexovaná zobrazení](/sql/relational-databases/views/create-indexed-views)
 - [Pořadí](/sql/t-sql/statements/create-sequence-transact-sql)
 - [Zhuštěný sloupec](/sql/relational-databases/tables/use-sparse-columns)
-- [Náhradní klíče](). Implementace s [Identity](sql-data-warehouse-tables-identity.md).
+- Náhradní klíče. Implementace s [Identity](sql-data-warehouse-tables-identity.md).
 - [Synonyma](/sql/t-sql/statements/create-synonym-transact-sql)
 - [Triggery](/sql/t-sql/statements/create-trigger-transact-sql)
 - [Jedinečné indexy](/sql/t-sql/statements/create-index-transact-sql)

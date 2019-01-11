@@ -16,12 +16,12 @@ ms.workload: ''
 ms.date: 05/02/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 2b8766a5353b015030872176e9032034afb7cb9d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: a0153cf11c3fe817ce397b4d0c47a786a4334f39
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779530"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214806"
 ---
 # <a name="azure-policy-sample-templates-for-virtual-network"></a>Ukázkové šablony služby Azure Policy pro Virtual Network
 
@@ -43,7 +43,7 @@ Následující tabulka obsahuje odkazy na ukázkové šablony služby [Azure Pol
 | [Vyžadování shody se vzorem](../azure-policy/scripts/enforce-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Zajistí, aby názvy prostředků odpovídaly danému vzoru pro názvy. |
 | [Vyžadování shody značky se vzorem](../azure-policy/scripts/enforce-tag-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Zajistí, aby hodnota značky odpovídala textovému vzoru. |
 |**Značky**||
-| [Iniciativa zásad fakturačních značek](../azure-policy/scripts/billing-tags-policy-init.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Vyžaduje zadání hodnot značek pro nákladové středisko a název produktu. S využitím předdefinovaných zásad používá a vynucuje požadované značky. Pro značky zadáte požadované hodnoty.  |
+| [Iniciativa zásad fakturačních značek](../governance/policy/samples/billing-tags-policy-initiative.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Vyžaduje zadání hodnot značek pro nákladové středisko a název produktu. S využitím předdefinovaných zásad používá a vynucuje požadované značky. Pro značky zadáte požadované hodnoty.  |
 | [Vynucení značky a její hodnoty ve skupinách prostředků](../azure-policy/scripts/enforce-tag-rg.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Vyžaduje značku a hodnotu u skupiny prostředků. Zadejte požadovaný název a hodnotu značky.  |
 | [Vynucení použití značky a její hodnoty](../azure-policy/scripts/enforce-tag-val.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Vyžaduje určený název a hodnotu značky. Zadáte název a hodnotu značky, které se mají vynutit.  |
 | [Použití značky a její výchozí hodnoty](../azure-policy/scripts/apply-tag-def-val.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Připojí název a hodnotu zadané značky v případě, že se tato značka neposkytne. Zadáte název a hodnotu značky, které se mají použít.  |

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7251ec6e20dcbc9169c2dab2247386ff500760e7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2e251e534e0c79feb995fd181d6bb207873e4fdb
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033872"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212579"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -132,7 +132,7 @@ sections:
     items:
     - html: Další informace o <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">vlastností hardwaru a omezení</a> a <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">rozdílů jazyka Transact-SQL</a>.
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurace</a> virtuální síť Azure, kde bude nasazen Managed Instance.
-    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration.md#modify-an-existing-virtual-network-for-managed-instances">Ověření</a> , lze použít existující virtuální sítě Azure k nasazení spravované instance.
+    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#modify-an-existing-virtual-network-for-managed-instances">Ověření</a> , lze použít existující virtuální sítě Azure k nasazení spravované instance.
     - html: Připojte se k instanci pomocí <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">virtuálního počítače Azure</a> nebo <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">připojeníPoint-to-site</a>, nebo <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikací</a>.
     - html: Ověřte, že databáze můžete použít k migraci <a href="https://www.microsoft.com/download/details.aspx?id=53595">Asisstant migrace dat</a> nebo <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Pomocník pro experimentování ve službě Database</a>.
     - html: Přenést vaše databáze do Managed Instance pomocí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">nativní obnovení</a> nebo <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Database Migration Service</a>.

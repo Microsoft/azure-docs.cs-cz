@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: af45081df280f5542b5ba70892ee74c05b3e99cc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2d0f3292a12505249ebc8594c58234a0c6e81a8a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808108"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212494"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Přenos dat pomocí AzCopy v10 (Preview)
 
@@ -55,7 +55,7 @@ AzCopy v10 nevyžaduje instalaci. Otevřete upřednostňované aplikace příkaz
 
 AzCopy v10 umožňuje při ověřování pomocí služby Azure Storage, použijte následující možnosti:
 - **Azure Active Directory [podporováno na objektech Blob a ADLS Gen2]**. Použití ```.\azcopy login``` k přihlášení pomocí Azure Active Directory.  Uživatel by měl mít [přiřazenou roli "Přispěvatel dat objektu Blob úložiště"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) k zápisu do úložiště objektů Blob pomocí ověřování Azure Active Directory.
-- **Tokeny SAS [podporované ve službě Blob a souboru]**. Do cesty objektu blob na příkazovém řádku ji používat, připojte SAS token. Můžete vygenerovat token SAS pomocí webu Azure Portal [Průzkumníka služby Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [Powershellu](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStorageblobsastoken), nebo jiné nástroje podle vašeho výběru. Další informace najdete v tématu [příklady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **Tokeny SAS [podporované ve službě Blob a souboru]**. Do cesty objektu blob na příkazovém řádku ji používat, připojte SAS token. Můžete vygenerovat token SAS pomocí webu Azure Portal [Průzkumníka služby Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [Powershellu](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), nebo jiné nástroje podle vašeho výběru. Další informace najdete v tématu [příklady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 ## <a name="getting-started"></a>Začínáme
 

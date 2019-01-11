@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 77d3bdd755e7c8d68115e12c6bee318fda652b09
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 38f20f74f8c553c134a6ef91151aa49b99ad45b5
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972197"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213497"
 documentType: LandingData
 title: Dokumentace k Azure Storage
 metadata:
@@ -67,9 +67,9 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
     - title: Data Lake Storage Gen2
       values:
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-the-azure-portal
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-powershell
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-azure-cli
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-azure-cli
       - href: 
       - href: 
       - href: 
@@ -83,7 +83,7 @@ sections:
     - title: Objekty blob
       html: <p>Nahrání a zpracování dat obrázků v cloudu</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Nahrání a načtení dat obrázků v cloudu</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Aktivace Azure Functions pro zpracování objektů blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Zabezpečení dat aplikací</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitorování a odstraňování potíží s úložištěm</a></li></ul><p>Návrh aplikace pro zajištění vysoké dostupnosti</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Zajištění vysoké dostupnosti dat aplikace</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Vyhledávání nestrukturovaných dat ve službě Azure Storage</a></p>
     - title: Data Lake Storage Gen2
-      html: <p><a href="/azure/storage/blobs/handle-data-using-databricks">Extrakce, transformace a načítání dat pomocí Azure Databricks</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Přístup k datům Azure Data Lake Storage Gen2 se službou DataBricks s využitím Sparku</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight</a></p>
+      html: <p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Extrakce, transformace a načítání dat pomocí Azure Databricks</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Přístup k datům Azure Data Lake Storage Gen2 se službou DataBricks s využitím Sparku</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight</a></p>
 - title: Ukázky
   items:
   - type: paragraph

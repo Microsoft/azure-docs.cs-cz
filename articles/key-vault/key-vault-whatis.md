@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Key Vault? -Azure Key Vault | Dokumentace Microsoftu
-description: Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí Azure Key Vault můžou zákazníci šifrovat klíče a tajné klíče (např. ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM).
+description: Azure Key Vault ochrana kryptografických klíčů a tajných kódů používaných cloudovými aplikacemi a službami. Ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, můžou zákazníci šifrovat. Soubory PFX a hesla, pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM).
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3c198ab8a17df019f1735a9b62e27f1051f64c5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 889f12b935eaad72eb7637524ab578f28fbc412f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076327"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198486"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -76,7 +76,7 @@ Trezory klíčů může vytvářet a používat každý, kdo má předplatné Az
 
 Tento správce potom poskytne vývojářům identifikátory URI, které mohou volat z aplikací, a správcům zabezpečení poskytne informace o protokolování používání klíčů. 
 
-! [Přehled služby Azure Key Vault] [1]
+! [Přehled toho, jak funguje Azure Key Vault] [1]
 
 Vývojáři také mohou spravovat klíče přímo, pomocí rozhraní API. Další informace najdete v [příručce pro vývojáře Key Vault](key-vault-developers-guide.md).
 

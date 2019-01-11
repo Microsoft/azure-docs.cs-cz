@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 3c7b855588b45cd61bb13848720d6e926bbecba4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d17b1b754afc5067a885025dba83cd0fba2370d5
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121103"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214568"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
@@ -233,7 +233,7 @@ Určuje maximální velikost v Megabajtech, která je vymezena do trvalého úlo
 
 #### <a name="local-forwarder"></a>Místní předávání
 
-[Místní server pro předávání](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder) je agenta, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrická data z různých sad SDK a architektur a směruje je do služby Application Insights. Je schopný běžet pod Windows a Linux. Když pomocí Application Insights Java SDK s velkou provázaností místní předávání poskytuje plnou podporu pro [Live Metrics](../../azure-monitor/app/live-stream.md) a adaptivní vzorkování.
+[Místní server pro předávání](opencensus-local-forwarder.md) je agenta, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrická data z různých sad SDK a architektur a směruje je do služby Application Insights. Je schopný běžet pod Windows a Linux. Když pomocí Application Insights Java SDK s velkou provázaností místní předávání poskytuje plnou podporu pro [Live Metrics](../../azure-monitor/app/live-stream.md) a adaptivní vzorkování.
 
 ```xml
 <Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">

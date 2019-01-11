@@ -10,18 +10,18 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 63d13235ec7244978193ed97aac8d11b2ff65eeb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790771"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198129"
 ---
 # <a name="what-is-conversation-learner"></a>Co je Conversation Learner?
 
 Konverzace Learner umožňuje vytvářet a naučit konverzační rozhraní, které se učí z příkladu interakce. 
 
-Na rozdíl od tradiční přístupy konverzace Learner bere v úvahu kontext začátku do konce dialogu za účelem zlepšení odezvy a zajištění více poutavé prostředí uživatele. Pokrývání uzlů širokou škálu orientovaných případy použití, konverzace Learner platí strojového učení na pozadí, aby roboty a inteligentní agentů méně pravděpodobné, že frustrovat uživatele, vynakládá dalších zákaznických služeb a více podporují více intuitivní interakce.
+Na rozdíl od tradiční přístupy konverzace Learner bere v úvahu kontext začátku do konce dialogu za účelem zlepšení odezvy a zajištění více poutavé prostředí uživatele. Pokrývání uzlů širokou škálu orientovaných případy použití, konverzace Learner platí strojového učení na pozadí, aby roboty a inteligentní agentů méně pravděpodobné, že frustrovat uživatele, vynakládá dalších zákaznických služeb a podporují intuitivnější interakce.
 
 Vývojáři, začněte zadáním typický dialogová okna, které chtějí napodobují. Model se učí se zadal další dialogová okna. Jakmile Model funguje dobře, robota může nasadit koncovým uživatelům. Konverzace Learner protokoly konverzace s uživateli a vývojáři můžou Seznamte se s nimi. Pokud jsou nanese chyby, vývojář může opravu na místě, a je model retrained a dostupné k použití okamžitě.
 

@@ -3,17 +3,17 @@ title: Spravovat z portálu Azure IoT Central | Dokumentace Microsoftu
 description: Spravujte z portálu Azure IoT Central.
 services: iot-central
 ms.service: iot-central
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/30/2018
 ms.topic: conceptual
-manager: peterpr
-ms.openlocfilehash: 20b1c7500587324f6f7dbb5cc679a3603eff56bd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+manager: philmea
+ms.openlocfilehash: 73c8d64c53e23601b19a775a07b0b630c675b91f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963823"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200460"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Spravovat z portálu Azure IoT Central 
 Vedle vytváření a správu aplikací IoT Central z webu IoT Central, můžete také spravovat IoT Central z portálu Azure portal. V tomto článku najdete pomocí co je možné a jak na to.
@@ -33,7 +33,7 @@ Klikněte na řádek – položku aplikace IoT Central ve výsledcích hledání
 
 Nyní klepněte na tlačítko "Vytvořit" Zobrazit formulář, který je potřeba vyplnit.
 
-![Portál pro správu: prostředků IoT Central](media/howto-manage-iot-central-from-portal/image0c.png)
+![Portál pro správu: IoT Central prostředků](media/howto-manage-iot-central-from-portal/image0c.png)
 
 Vyplňte všechna pole ve formuláři. Tento formulář je podobná formuláři, které je potřeba vyplnit k vytvoření aplikace z webu IoT Central. Další informace o tom, jak vyplnit každé pole, podívejte se [vytvořit aplikace IoT Central](quick-deploy-iot-central.md) rychlý start. 
 

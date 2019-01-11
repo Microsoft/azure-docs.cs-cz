@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 3dc574b3aab3600895376c0271b5c6224a70d3b6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119203"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213997"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
@@ -92,7 +92,7 @@ I když řešení pro správu výstrah zůstává k dispozici, doporučujeme vá
 Mobilní aplikaci OMS bude sunsetted spolu se na portálu OMS. Místo mobilní aplikaci OMS přístup k informacím o vašich IT infrastruktury, řídicí panely a uložené dotazy, můžete přistupovat na webu Azure portal přímo z prohlížeče v mobilním zařízení. Abyste mohli dostávat upozornění, měli byste nakonfigurovat [skupiny akcí Azure](../../azure-monitor/platform/action-groups.md) pro příjem oznámení ve formě SMS nebo hlasový hovor
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector a řešení
-[Application Insights Connector](../../azure-monitor/platform/app-insights-connector.md) poskytuje způsob, jak zahrnout data Application Insights do pracovního prostoru Log Analytics. Tato duplikace dat nebyla nutná k zajištění viditelnost napříč dat infrastruktury a aplikací. Rozšířená podpora uchovávání dat v březnu. května 2019 Application Insights a schopnost provádět [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md), není nutné duplikovat data z vašich prostředků Application Insights a odesílat do Log Analytics. Kromě toho konektor odešle podmnožinu vlastností aplikace ke službě Log Analytics, zatímco dotazy napříč prostředky poskytuje lepší flexibilitu.  
+[Application Insights Connector](../../azure-monitor/platform/app-insights-connector.md) poskytuje způsob, jak zahrnout data Application Insights do pracovního prostoru Log Analytics. Tato duplikace dat nebyla nutná k zajištění viditelnost napříč dat infrastruktury a aplikací. Rozšířená podpora uchovávání dat v březnu. května 2019 Application Insights a schopnost provádět [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md) vedle možnosti [zobrazení více prostředků služby Azure Monitor Application Insights ](../log-query/unify-app-resource-data.md), není nutné duplikovat data z vašich prostředků Application Insights a odesílat do Log Analytics. Kromě toho konektor odešle podmnožinu vlastností aplikace ke službě Log Analytics, zatímco dotazy napříč prostředky poskytuje lepší flexibilitu.  
 
 V důsledku toho Application Insights Connector bude zastaralé a odebrána z Azure Marketplace spolu s vyřazení portálu OMS na 30. března 2019 v době, kdy existující připojení budou i nadále fungovat až do 30. června 2019. S vyřazení portálu OMS neexistuje žádný způsob, jak nakonfigurovat a odeberte existující připojení z portálu. Tato funkčnost bude podporovaná pomocí rozhraní REST API, která bude k dispozici v lednu, 2019 a oznámení se publikuje na [aktualizace Azure](https://azure.microsoft.com/updates/). 
 

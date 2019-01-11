@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: fc9ceb06eb51d1e88306f0971ad055facd05f9fb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: df7f3dfa525c59ff8862c3b1a46f70be53a93a32
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437261"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198741"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Linuxem
 
@@ -74,7 +74,7 @@ Služba Scheduled Events se systémovou správou verzí. Verze jsou povinné; ak
 
 | Verze | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - | 
-| 2017-08-01 | Všeobecná dostupnost | Vše | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače Iaas<br><li>Požadavek na metadata záhlaví vynucovat pro všechny požadavky | 
+| 2017-08-01 | Všeobecná dostupnost | Vše | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače IaaS<br><li>Požadavek na metadata záhlaví vynucovat pro všechny požadavky | 
 | 2017-03-01 | Preview | Vše | <li>Původní vydaná verze
 
 

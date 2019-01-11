@@ -1,90 +1,83 @@
 ---
-title: 'Stáhněte si skripty konfigurace zařízení VPN pro připojení k síti VPN S2S: Azure Resource Manager | Microsoft Docs'
-description: Tento článek vás provede stahování skripty konfigurace zařízení VPN pro připojení k síti VPN S2S s Azure VPN Gateway pomocí Azure Resource Manager.
+title: 'Stažení skriptů konfigurace zařízení VPN pro připojení S2S VPN: Azure Resource Manageru | Dokumentace Microsoftu'
+description: Tento článek vás provede stažením konfiguračních skriptů zařízení VPN pro připojení k síti VPN S2S s bránami Azure VPN Gateway pomocí Azure Resource Manageru.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: 254f5012bfbf827aebc20d90405636dcb204193c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0b0a7ce63fa2d0154300dd2e8f9cf88d985a8a0a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30317768"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200513"
 ---
-# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Stáhněte si skripty konfigurace zařízení VPN pro připojení k síti VPN S2S
+# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Stažení skriptů konfigurace zařízení VPN pro připojení k síti VPN S2S
 
-Tento článek vás provede stahování skripty konfigurace zařízení VPN pro připojení k síti VPN S2S s Azure VPN Gateway pomocí Azure Resource Manager. Následující diagram znázorňuje pracovní postup vysoké úrovně.
+Tento článek vás provede stažením konfiguračních skriptů zařízení VPN pro připojení k síti VPN S2S s bránami Azure VPN Gateway pomocí Azure Resource Manageru. Následující diagram znázorňuje pracovní postup vysoké úrovně.
 
-![skript stažení](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
+![stažení skriptu](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
 
 Tato zařízení mají k dispozici skriptů:
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>O skriptech konfigurace zařízení VPN
+## <a name="about"></a>Informace o konfiguračních skriptů zařízení VPN
 
-Připojení VPN mezi různými místy se skládá z bránu VPN Azure VPN, místní zařízení VPN a připojení dvě tunelové propojení IPsec S2S VPN. Typické pracovní postup obsahuje následující kroky:
+Připojení k síti VPN mezi různými místy se skládá z Azure VPN gateway, místním zařízením VPN a tunel IPsec S2S VPN spojuje. Typický pracovní postup zahrnuje následující kroky:
 
 1. Vytvoření a konfigurace služby Azure VPN gateway (Brána virtuální sítě)
-2. Vytvořte a nakonfigurujte bránu Azure místní sítě, který představuje místní sítí a zařízení VPN
-3. Vytvořit a nakonfigurovat připojení k Azure VPN mezi Azure VPN gateway a bránu místní sítě
-4. Nakonfigurujte místní zařízení VPN reprezentována bránu místní sítě k vytvoření skutečné tunelu S2S VPN s Azure VPN gateway
+2. Vytvoření a konfigurace brány místní sítě Azure, který představuje vaše místní sítě a zařízením VPN
+3. Vytvoření a konfigurace připojení k Azure VPN mezi Azure VPN gateway a bránu místní sítě
+4. Konfigurace místního zařízení VPN reprezentována bránu místní sítě pro vytvoření skutečné tunelu S2S VPN pomocí služby Azure VPN gateway
 
-Můžete provést kroky 1 až 3 pomocí Azure [portál](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [prostředí PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md), nebo [rozhraní příkazového řádku](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Poslední krok zahrnuje konfiguraci místní zařízení VPN mimo Azure. Tato funkce umožňuje stáhnout konfigurační skript pro vaše zařízení VPN s odpovídajícími hodnotami vaší brány Azure VPN, virtuální sítě a předpony adres místní sítě a vlastnosti připojení VPN, již vyplněno atd. Můžete použít skript jako počáteční bod, nebo použít skript přímo pro vaše místní zařízení VPN prostřednictvím konzoly configuration.
+Můžete provést kroky 1 až 3 pomocí Azure [portál](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md), nebo [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Poslední krok zahrnuje konfiguraci místních zařízení VPN mimo Azure. Tato funkce umožňuje stáhnout konfigurační skript zařízení VPN s odpovídajícími hodnotami vaše brána Azure VPN gateway, virtuální sítě a předpony adres místní sítě a vlastnosti připojení VPN, už vytvořilo atd. Můžete použít skript jako výchozí bod, nebo použijte skript přímo pro vaše místní zařízení VPN přes konzolu configuration.
 
 > [!IMPORTANT]
-> * Syntaxe pro každý skript pro konfiguraci zařízení VPN je jiné a silně závislá na modely a verzí firmwaru. Věnujte zvláštní pozornost vaše zařízení modelu a informace o verzi proti dostupné šablony.
-> * Některé hodnoty parametru musí být jedinečný v zařízení a nelze určit bez přístupu k zařízení. Generované Azure konfigurační skripty předem vyplnit tyto hodnoty, ale je potřeba zajistit, že zadané hodnoty jsou platné ve vašem zařízení. Příklady:
+> * Syntaxe pro každý konfigurační skript zařízení VPN je jiné a silně závisí na modely a verzemi firmwaru. Věnujte zvláštní pozornost váš model a verze informací o zařízení proti dostupných šablon.
+> * Chybí některé hodnoty parametrů musí být jedinečný na zařízení a nemůže dá určit bez přístupu k zařízení. Azure generovaných konfiguračních skriptů předem zadejte tyto hodnoty, ale je potřeba zajistit, že zadané hodnoty jsou platné ve vašem zařízení. Příklady:
 >    * Čísla rozhraní
 >    * Čísla v seznamu řízení přístupu
 >    * Názvy zásad nebo čísla, atd.
-> * Vyhledejte – klíčové slovo, "**nahradit**" vložený v skript, který chcete najít parametry, je třeba ověřit před použitím skriptu.
-> * Některé šablony zahrnují "**čištění**" části můžete použít k odebrání konfigurace. Ve výchozím nastavení jsou komentované části čištění.
+> * Vyhledejte klíčové slovo "**nahradit**" vložený v skript, který chcete najít parametry, je třeba ověřit před použitím skriptu.
+> * Některé šablony zahrnují "**VYČIŠTĚNÍ**" části můžete použít k odebrání konfigurace. Vyčištění oddíly jsou označené jako komentář ve výchozím nastavení.
 
-## <a name="download-the-configuration-script-from-azure-portal"></a>Stáhnout konfigurační skript z portálu Azure
+## <a name="download-the-configuration-script-from-azure-portal"></a>Stáhnout konfigurační skript z webu Azure portal
 
-Vytvořte bránu VPN Azure VPN, brána místní sítě a prostředek připojení dvě připojení. Na následující stránce vás provede kroky:
+Vytvoření služby Azure VPN gateway, bránu místní sítě a prostředek připojení spojuje. Na následující stránce provede vás těmito kroky:
 
-* [Na portálu Azure vytvořit připojení Site-to-Site](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Vytvoření připojení Site-to-Site na webu Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
-Po vytvoření prostředek připojení postupujte podle pokynů ke stažení skripty konfigurace zařízení VPN:
+Jakmile se vytvoří prostředek připojení, postupujte podle níže uvedených pokynů ke stažení konfiguračních skriptů zařízení VPN:
 
-1. V prohlížeči přejděte na [portál Azure](http://portal.azure.com) a v případě potřeby, přihlaste se pomocí účtu Azure
-2. Přejděte na prostředek připojení, kterou jste vytvořili. Seznam všech prostředků připojení můžete najít tak, že kliknete "Všechny služby" a "Sítě", "Připojení".
+1. V prohlížeči přejděte [webu Azure portal](http://portal.azure.com) a v případě potřeby, přihlaste se pomocí svého účtu Azure
+2. Přejdete k prostředku připojení, které jste vytvořili. Seznam všech prostředků připojení můžete najít kliknutím na "Všechny služby" a "Sítě" a "Připojení".
 
     ![seznam připojení](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
 
-3. Klikněte na připojení, které chcete nakonfigurovat.
+3. Klikněte na připojení, které chcete konfigurovat.
 
-    ![připojení – přehled](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
+    ![Přehled připojení](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
 
-4. Klikněte na odkaz "Stáhnout konfigurace" jako zvýrazněné červeně na stránce Přehled připojení; Otevře se stránka "Stahování konfigurace".
+4. Klikněte na odkaz "Stáhnout konfiguraci" jako zvýrazněné červeně na stránce Přehled připojení; Otevře se stránka "Download configuration".
 
     ![stažení skriptu-1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
 
-5. Vyberte verzi modelu rodiny a firmware pro vaše zařízení VPN a potom klikněte na tlačítko "Stáhnout konfigurace".
+5. Vybrat verzi modelu řady a firmware pro vaše zařízení VPN a potom klikněte na tlačítko "Stáhnout konfigurace".
 
-    ![download66-script-2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
+    ![download66. skript 2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
 
-6. Zobrazí se výzva k uložení stažených skriptu (textový soubor) z prohlížeče.
-7. Jakmile jste stáhli konfigurační skript, otevřete jej pomocí textového editoru a vyhledejte – klíčové slovo "Nahradit" k identifikaci a zkontrolujte parametry, které může být nutné vyměnit.
+6. Zobrazí se výzva k uložení staženého skriptu (textového souboru) z prohlížeče.
+7. Po stažení skriptů konfigurace otevřete jej pomocí textového editoru a vyhledejte – klíčové slovo "Nahradit" k identifikaci a zkontrolujte parametry, které možná bude nutné vyměnit.
 
-    ![edit-script](./media/vpn-gateway-download-vpndevicescript/editscript.png)
+    ![Upravit skript](./media/vpn-gateway-download-vpndevicescript/editscript.png)
 
-## <a name="download-the-configuration-script-using-azure-powershell"></a>Stáhnout konfigurační skript pomocí Azure PowerShell
+## <a name="download-the-configuration-script-using-azure-powershell"></a>Stáhnout konfigurační skript pomocí prostředí Azure PowerShell
 
-Můžete také stáhnout konfigurační skript pomocí Azure PowerShell, jak je znázorněno v následujícím příkladu:
+Můžete také stáhnout konfigurační skript pomocí prostředí Azure PowerShell, jak je znázorněno v následujícím příkladu:
 
 ```azurepowershell-interactive
 $RG          = "TestRG1"
@@ -100,8 +93,8 @@ Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connectio
 
 ## <a name="apply-the-configuration-script-to-your-vpn-device"></a>Použít konfigurační skript zařízení VPN
 
-Po stáhnout a ověřit konfigurační skript, dalším krokem je použít skript zařízení VPN. Skutečný postup se liší podle díky zařízení VPN a modely. Poraďte příručky pro operaci nebo na stránkách instrukce pro vaše zařízení VPN.
+Po stažení a ověří konfigurační skript, dalším krokem je použít skript zařízení VPN. Skutečné postup se liší v závislosti na modely a využívá zařízení sítě VPN. Vaše zařízení VPN najdete příručky pro operace nebo na stránkách instrukce.
 
 ## <a name="next-steps"></a>Další postup
 
-Pokračujte v konfiguraci vaší [připojení Site-to-Site](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Pokračovat v konfiguraci vaší [připojení Site-to-Site](vpn-gateway-howto-site-to-site-resource-manager-portal.md).

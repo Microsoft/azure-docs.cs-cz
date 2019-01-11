@@ -4,14 +4,14 @@ description: Nejčastější dotazy k Azure Migrate adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/10/2019
 ms.author: snehaa
-ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0d01715922286743b9442ae1c656b34c37a7d795
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975470"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201189"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -136,6 +136,17 @@ Pokud máte prostředí, které se sdílejí napříč tenanty a nechcete ke zji
 
 Je možné vyhledat 1 500 virtuálních počítačů v jedné migrace projektu. Pokud máte další počítače ve vašem místním prostředí [Další](how-to-scale-assessment.md) o způsob, jak můžete zjišťovat velký prostředí ve službě Azure Migrate.
 
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Posilte zabezpečení zařízení Azure Migrate, jaké jsou doporučené výjimky antivirové ochrany v programu (AV)?
+
+Je třeba vyloučit následující složky v zařízení pro antivirové kontroly:
+
+- Složka, která obsahuje binární soubory pro služby Azure Migrate. Vylučte všechny podsložky.
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate webové aplikace. Vylučte všechny podsložky.
+  %SystemDrive%\inetpub\wwwroot
+- Místní mezipaměť pro databáze a soubory protokolů. Azure migrate služba potřebuje čtení a zápis do této složky.
+  %SystemDrive%\Profiler
+
 ## <a name="assessment"></a>Posouzení
 
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Odhad nákladů podpory Azure Migrate na základě smlouvy Enterprise (EA)?
@@ -144,6 +155,13 @@ Azure Migrate aktuálně nepodporuje odhad nákladů pro [nabídky Enterprise Ag
 
   ![Sleva](./media/resources-faq/discount.png)
 
+### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Jaký je rozdíl mezi jako on-premises velikost a velikost na základě výkonu?
+
+Pokud určíte kritérium určení velikosti bude jako typu místní – místní změny velikosti, Azure Migrate nebere v úvahu data o výkonu virtuálních počítačů a velikosti virtuálních počítačů založených na místní konfiguraci. Pokud kritérium určení velikosti na základě výkonu, velikost se provádí na základě dat využití. Například, pokud existuje místní virtuální počítač se 4 jádry a 8 GB paměti s 50 % využití CPU a využití paměti 50 %. Pokud je kritérium určení velikosti jako místní změny velikosti skladovou Položku virtuálního počítače Azure se 4 jádry a 8GB paměti se doporučuje, ale pokud je kritérium určení velikosti na základě výkonu jako skladovou Položku virtuálního počítače 2 jádra a 4 GB by se nedoporučuje používat jako procentuální hodnota využití se považuje za během Doporučujeme velikost. Podobně disků, velikosti disku závisí na dvě vlastnosti posouzení – Změna velikosti kritéria a úložiště typu. Pokud je kritérium určení velikosti na základě výkonu a úložiště typu je automatické, hodnoty IOPS a propustnost disku jsou považovány za identifikaci cílový typ disku (Standard nebo Premium). Pokud je kritérium určení velikosti na základě výkonu a premium je úložiště typu, se doporučuje disk úrovně premium, disk úrovně premium, které vybrali SKU v Azure na základě velikosti na místním disku. Stejnou logiku slouží k určení velikosti disku, pokud je kritérium určení velikosti jako v místním nastavení velikosti a typu úložiště je standard nebo premium.
+
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Doporučení velikosti jaký vliv má percentilu a historii využití výkonu?
+
+Tyto vlastnosti platí jenom pro určení velikosti na základě výkonu. Azure Migrate shromažďuje historie výkonu místních počítačů a použije ho k doporučujeme typ velikosti a disku virtuálního počítače v Azure. Zařízení kolektoru průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase každých 20 sekund. Zařízení shrnuje ukázky 20 sekund a vytvoří jeden datový bod pro každých 15 minut. Pokud chcete vytvořit jeden datový bod, zařízení vybere nejvyšší hodnota ze všech ukázek 20 sekund a odesílá je do Azure. Při vytváření posouzení v Azure, na základě dobu trvání výkonu a hodnota percentilu historie výkonu, Azure Migrate vypočítá hodnotu efektivní využití a použije ho k nastavení velikosti. Například pokud nastavíte dobu trvání výkonu 1 den a percentil hodnoty 95. percentilu, Azure Migrate použije body odesílaných kolekcí pro poslední den, seřazený ve vzestupném pořadí a vybere 95. percentil hodnoty jako efektivní ut vzorku 15 minut ilization. 95. percentil hodnoty zajistí, že se ignoruje všechny odlehlé hodnoty, které můžou mít, pokud vyberete 99. percentilu. Pokud chcete vybrat dobu využití ve špičce a nechcete neproběhly žádné odlehlé hodnoty, měli byste vybrat 99. percentilu.
 
 ## <a name="dependency-visualization"></a>Vizualizace závislostí
 

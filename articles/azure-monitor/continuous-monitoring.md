@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: a7b91bfdc616e19fde9f74246d05cf14ecbd335e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5ba596a85abbb529990efdf7b15ac50515de011b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117261"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214449"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování prostřednictvím služby Azure Monitor
 
@@ -47,7 +47,7 @@ Aplikace jsou pouze stejně spolehlivá jako svoje základní infrastruktury. M�
 - Přidat [řešení monitorování](insights/solutions-inventory.md) pro různé aplikace a služby ve vašem prostředí.
 
 
-[Infrastruktura jako kód](/devops/learn/what-is-infrastructure-as-code) je správa infrastruktury v popisném modelu, jak týmy DevOps používají pro zdrojový kód pomocí stejné správy verzí. Přidá spolehlivosti a škálovatelnosti pro vaše prostředí a umožňuje vám to využívat podobné procesy, které používá ke správě vašich aplikací.
+[Infrastruktura jako kód](/azure/devops/learn/what-is-infrastructure-as-code) je správa infrastruktury v popisném modelu, jak týmy DevOps používají pro zdrojový kód pomocí stejné správy verzí. Přidá spolehlivosti a škálovatelnosti pro vaše prostředí a umožňuje vám to využívat podobné procesy, které používá ke správě vašich aplikací.
 
 -  Použití [šablon Resource Manageru](platform/template-workspace-configuration.md) k povolení monitorování a konfigurace upozornění přes velkou sadu prostředků.
 - Použití [Azure Policy](../governance/policy/overview.md) do u vašich prostředků vynucují různá pravidla. Tím se zajistí, že tyto prostředky i nadále odpovídaly vašim firemním standardům a smlouvám o úrovni. 
@@ -63,7 +63,7 @@ Průběžná integrace / průběžné nasazování umožňuje automaticky integr
 
 
 - Použití [kanály Azure](/azure/devops/pipelines) implementovat průběžné nasazování a automatizovat celý proces od potvrzení změn kódu do produkčního prostředí založené na vaše testy CI/CD.
-- Použití [brány kvality](/devops/pipelines/release/approvals/gates) integrovat monitorování do před nasazením nebo po nasazení. Tím se zajistí, že vaše aplikace přesunout z dev do produkčního prostředí a případné rozdíly v prostředí infrastruktury nebo škálování není mít negativní vliv klíčových ukazatelů výkonu naplňujete metriky stavu a výkonu (KPI).
+- Použití [brány kvality](/azure/devops/pipelines/release/approvals/gates) integrovat monitorování do před nasazením nebo po nasazení. Tím se zajistí, že vaše aplikace přesunout z dev do produkčního prostředí a případné rozdíly v prostředí infrastruktury nebo škálování není mít negativní vliv klíčových ukazatelů výkonu naplňujete metriky stavu a výkonu (KPI).
 - [Udržovat samostatné monitorování instance](../azure-monitor/app/separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../azure-monitor/platform/metrics-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Log Analytics](log-query/cross-workspace-query.md).
 
 

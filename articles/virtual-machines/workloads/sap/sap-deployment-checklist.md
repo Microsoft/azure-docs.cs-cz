@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29ec56f3b360a4a19269555c1504ae7ff6446f8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189146"
+ms.locfileid: "54201325"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
 
@@ -83,7 +83,7 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
 Pilotní nasazení můžete spustit před nebo v paralelní k plánování a příprava projektu. Fáze slouží také k testování přístupy a usnadnění návrhu s dobrou ve fázi plánování a příprava. Pilotní fázi můžete roztažen tak, aby skutečné testování konceptů. Doporučuje se nastavit a ověřit úplné HA/DR řešení a také návrh zabezpečení během pilotního nasazení. V některých případech zákazníka škálovatelnost testů také mohou být prováděna v této fázi. Další zákazníků používá jako pilotní fázi nasazení systémů SAP izolovaného prostoru. Takže předpokládáme, identifikovat systému, který chcete migrovat do Azure za účelem spouštění pilotní nasazení.
 
 1.  Optimalizujte přenosy dat do Azure. Vysoce závislé na přenos případů zákazníka prostřednictvím [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) z místního byl nejrychlejší, pokud má dostatečnou šířku pásma okruhu Express. S ostatními zákazníky prostřednictvím Internetu naplánujete bude rychlejší
-2.  V případě SAP migrace heterogenní platformy, která zahrnuje exportu a importu dat z databáze, otestovat a optimalizovat export a import fází. Pro velké migrace zahrnující systému SQL Server jako cílové platformy, můžete najít doporučení [tady](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). Můžete provést migraci monitorování/SWPM přístup v případě, že není nutné kombinované vydání upgradu nebo [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) při kombinování migrace se upgrade verze SAP a splnění určitých zdrojová a cílová platforma DBMS kombinace popsáno, například v [možnost migrace databáze (DMO) ze SOUČTU 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872). 
+2.  V případě SAP migrace heterogenní platformy, která zahrnuje exportu a importu dat z databáze, otestovat a optimalizovat export a import fází. Pro velké migrace zahrnující systému SQL Server jako cílové platformy, můžete najít doporučení [tady](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). Můžete provést migraci monitorování/SWPM přístup v případě, že není nutné kombinované vydání upgradu nebo [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) při kombinování migrace se upgrade verze SAP a splnění určitých zdrojová a cílová platforma DBMS kombinace popsáno, například v [možnost migrace databáze (DMO) ze SOUČTU 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152). 
     1.  Exportovat do zdroje, nahrání souboru exportu do Azure a Import výkon.  Maximalizovat překrývají exportu a importu
     2.  Vyhodnocení objemu databáze mezi cíle a cílové platformy, aby bylo zřejmé ve velikosti infrastruktury    
     3.  Ověřte a optimalizujte časování 

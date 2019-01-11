@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: cb97725d61f899f2408dbb44d052c1dd4e6bc561
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189492"
+ms.locfileid: "54201291"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -28,6 +28,18 @@ Průběžná zjišťování zařízení průběžně pouze shromažďuje údaje 
    ![Zastavit zjišťování](./media/troubleshooting-general/stop-discovery.png)
 
 - Odstranění virtuálních počítačů: Kvůli způsobu, jakým je navržena na zařízení se neprojeví odstranění virtuálních počítačů i v případě zastavení a spuštění zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+
+### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Odstranění projektů Azure Migrate a přidružené pracovní prostor Log Analytics
+
+Po odstranění projektu Azure Migrate, odstraní se projekt migrace skupin a posouzení. Ale pokud jste přiřadili pracovní prostor Log Analytics do projektu, neodstraní automaticky pracovní prostor Log Analytics. Je to proto, že stejný pracovní prostor Log Analytics může být použit pro více případů použití. Pokud chcete odstranit pracovní prostor Log Analytics i, je potřeba ji ručně.
+
+1. Přejděte do pracovního prostoru Log Analytics, které jsou přiřazeny k projektu.
+   a. Pokud ještě nebyly odstraněny projekt migrace, najdete odkaz do pracovního prostoru ze stránky přehledu projektu v části základní údaje.
+   
+   ![Pracovního prostoru LA](./media/troubleshooting-general/LA-workspace.png)
+
+   b. Pokud jste již odstranili projekt migrace, klikněte na tlačítko **skupiny prostředků** v levém podokně webu Azure portal a přejděte do skupiny prostředků, ve kterém byla vytvořena pracovní prostor a pak na ni přejít pomocí.
+2. Postupujte podle pokynů [v tomto článku](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) odstranit pracovní prostor.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Vytvoření projektu Migrace selhala s chybou *požadavky musí obsahovat hlavičky identity uživatele*
 
@@ -80,7 +92,7 @@ Můžete přejít na **Essentials** tématu **přehled** stránce projektu k ide
 
    ![Umístění projektu](./media/troubleshooting-general/geography-location.png)
 
-## <a name="collector-errors"></a>Chyby kolektoru
+## <a name="collector-issues"></a>Problémy s kolekcí
 
 ### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Nasazení služby Azure Migrate Collector se nezdařilo s chybou: Zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF.
 
@@ -156,6 +168,17 @@ Pokud problém pořád probíhá na nejnovější verzi, je možné, protože po
 2. Pokud krok 1 selže, zkuste se k serveru vCenter připojit přes IP adresu.
 3. Zjistěte správné číslo portu pro připojení k serveru vCenter.
 4. Nakonec zkontrolujte, jestli server vCenter je spuštěný.
+
+### <a name="antivirus-exclusions"></a>Výjimky antivirové ochrany
+
+Posilte zabezpečení zařízení Azure Migrate, budete muset z antivirové kontroly vyloučit následující složky v zařízení:
+
+- Složka, která obsahuje binární soubory pro služby Azure Migrate. Vylučte všechny podsložky.
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate webové aplikace. Vylučte všechny podsložky.
+  %SystemDrive%\inetpub\wwwroot
+- Místní mezipaměť pro databáze a soubory protokolů. Azure migrate služba potřebuje čtení a zápis do této složky.
+  %SystemDrive%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>Problémy s vizualizace závislostí
 

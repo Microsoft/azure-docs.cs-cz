@@ -1,22 +1,22 @@
 ---
 title: Definování nového typu zařízení v aplikaci Azure IoT Central | Microsoft Docs
 description: Tento kurz vám jako tvůrci ukáže, jak definovat nový typ zařízení v aplikaci Azure IoT Central. Pro váš typ definujete telemetrická data, stav, vlastnosti a nastavení.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+manager: philmea
+ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963586"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199965"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definování nového typu zařízení v aplikaci Azure IoT Central
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central
 
 Tento kurz vám jako tvůrci ukáže, jak pomocí šablony zařízení definovat nový typ zařízení v aplikaci Microsoft Azure IoT Central. Šablona zařízení definuje telemetrická data, stav, vlastnosti a nastavení pro váš typ zařízení.
 
@@ -405,7 +405,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Název        | Teplota |
+    | Titul        | Teplota |
     | Časové rozmezí   | Posledních 30 minut |
     | Měření     | Teplota (zvolte **Visibility** (Viditelnost) vedle **temperature**) |
 
@@ -417,7 +417,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Název        | Události |
+    | Titul        | Události |
     | Časové rozmezí   | Posledních 30 minut |
     | Měření     | Chyba motoru ventilátoru (zvolte **Visibility** (Viditelnost) vedle **Fan Motor Error**) |
 
@@ -429,7 +429,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Název        | Režim ventilátoru |
+    | Titul        | Režim ventilátoru |
     | Časové rozmezí   | Posledních 30 minut |
     | Měření | Režim ventilátoru (zvolte **Visibility** (Viditelnost) vedle **Fan Mode**) |
 
@@ -445,7 +445,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení                 | Hodnota         |
     | ----------------------- | ------------- |
-    | Název                   | Nastavení cílové teploty |
+    | Titul                   | Nastavení cílové teploty |
     | Nastavení a vlastností | Nastavená teplota |
 
     V části Available Columns (Dostupné sloupce) se zobrazí nastavení a vlastnosti, které jste definovali dříve na stránkách Settings (Nastavení) a Properties (Vlastnosti). 
@@ -462,7 +462,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení                 | Hodnota         |
     | ----------------------- | ------------- |
-    | Název                   | Sériové číslo |
+    | Titul                   | Sériové číslo |
     | Nastavení a vlastností | Sériové číslo |
 
     ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings5.png)
@@ -477,7 +477,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení                 | Hodnota            |
     | ----------------------- | ---------------- |
-    | Název                   | Verze firmwaru |
+    | Titul                   | Verze firmwaru |
     | Nastavení a vlastností | Verze firmwaru |
 
     ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings6.png)
@@ -486,7 +486,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
 1. Pokud chcete řídicí panel zobrazit jako operátor, vypněte **Edit Template** (Upravit šablonu) v pravé horní části stránky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

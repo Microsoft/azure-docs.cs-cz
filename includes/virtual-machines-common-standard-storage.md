@@ -5,15 +5,15 @@ services: storage
 author: yuemlu
 ms.service: storage
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264021"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193345"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Nákladově efektivní úložiště úrovně Standard a spravované a nespravované disky virtuálních počítačů Azure
 
@@ -27,7 +27,7 @@ Existují dva způsoby, jak vytvořit standardní disky pro virtuální počíta
 
 **Nespravované disky**: Tento typ disku je původní metody, kde budete spravovat účty úložiště používané pro uložení souborů virtuálního pevného disku, které odpovídají na disky virtuálního počítače. Soubory virtuálního pevného disku se ukládají jako objekty BLOB stránky v účtech úložiště. Nespravované disky můžete připojit k libovolné velikosti virtuálního počítače Azure, včetně virtuálních počítačů, které se primárně používají službu Premium Storage, jako je řada DSv2 a GS. Virtuální počítače Azure podporují připojení několik standardních disků, což až 256 TB úložiště na každý virtuální počítač. Pokud používáte velikosti disků ve verzi preview, můžete mít až přibližně 2 PiB úložiště na každý virtuální počítač.
 
-[**Služba Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Tato funkce spravuje účty úložiště používané pro disky virtuálních počítačů za vás. Zadejte typ (Premium SSD, SSD na úrovni Standard nebo standardní HDD) a velikost disku je nutné, a Azure vytvoří a spravuje disk za vás. Není nutné se starat o umisťováním disků ve více účtech úložiště, aby se vejdete do limitů škálovatelnosti pro účty úložiště – se postará Azure, který pro vás.
+[**Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Tato funkce slouží ke správě účty úložiště používané pro disky virtuálních počítačů za vás. Zadejte typ (Premium SSD, SSD na úrovni Standard nebo standardní HDD) a velikost disku je nutné, a Azure vytvoří a spravuje disk za vás. Není nutné se starat o umisťováním disků ve více účtech úložiště, aby se vejdete do limitů škálovatelnosti pro účty úložiště – se postará Azure, který pro vás.
 
 I když oba typy disků jsou k dispozici, doporučujeme použít Managed Disks a využít výhod jejich mnoho funkcí.
 
@@ -42,15 +42,15 @@ Informace o tom, jak vytvořit virtuální počítač se spravovanými disky naj
 
 Pojďme se podívat na některé z funkcí úložiště úrovně Standard. Další podrobnosti najdete v tématu [Úvod do služby Azure Storage](../articles/storage/common/storage-introduction.md).
 
-**Storage úrovně standard**: úložiště Azure úrovně Standard podporuje disky Azure, Azure Blobs, soubory Azure, tabulky Azure a fronty Azure. Použití služby Storage úrovně Standard, začněte s [vytvoření účtu služby Azure Storage](../articles/storage/common/storage-quickstart-create-account.md).
+**Storage úrovně standard**: Azure Storage úrovně Standard podporuje disky Azure, Azure Blobs, soubory Azure, tabulky Azure a fronty Azure. Použití služby Storage úrovně Standard, začněte s [vytvoření účtu služby Azure Storage](../articles/storage/common/storage-quickstart-create-account.md).
 
-**Standardní disky SSD:** disků SSD na úrovni Standard nabízí spolehlivější výkon než standardní HDD disky a jsou aktuálně k dispozici. Další informace o dostupnosti oblast disků SSD na úrovni Standard najdete v tématu [regionální dostupnost disků SSD na úrovni Standard](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+**Standardní disky SSD:** Standardní disky SSD nabízí spolehlivější výkon než standardní HDD disky a jsou aktuálně k dispozici. Další informace o dostupnosti oblast disků SSD na úrovni Standard najdete v tématu [regionální dostupnost disků SSD na úrovni Standard](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
 
-**Disky Standard HDD:** standardní HDD disků je možné připojit ke všem virtuálním počítačům Azure včetně velikost series virtuálních počítačů použít díky službě Premium Storage, jako je řada DSv2 a GS. Standardní pevného disku lze připojit pouze k jednomu virtuálnímu počítači. Ale můžete připojit jeden nebo více z těchto disků k virtuálnímu počítači, až do maximální disku počet definovaný pro velikost tohoto virtuálního počítače. V následující části na Standard Storage škálovatelnost a výkonnostní cíle popisujeme specifikace podrobněji.
+**Standardní HDD disky:** Disky Standard pevný disk lze připojit ke všem virtuálním počítačům Azure včetně velikost series virtuálních počítačů použít díky službě Premium Storage, jako je řada DSv2 a GS. Standardní pevného disku lze připojit pouze k jednomu virtuálnímu počítači. Ale můžete připojit jeden nebo více z těchto disků k virtuálnímu počítači, až do maximální disku počet definovaný pro velikost tohoto virtuálního počítače. V následující části na Standard Storage škálovatelnost a výkonnostní cíle popisujeme specifikace podrobněji.
 
-**Objekt blob stránky standardní**: objekty BLOB standardní stránky se používají k uložení trvalé disky pro virtuální počítače a je přístupný také přímo prostřednictvím REST podobně jako ostatní typy objektů BLOB Azure. [Objekty BLOB stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) jsou kolekce stránek 512 bajtů, které jsou optimalizované pro náhodné čtení a zápisu operace. 
+**Objekt blob stránky standardní**: Objekty BLOB standardní stránky se používají k uložení trvalé disky virtuálních počítačů a je přístupný také přímo prostřednictvím REST podobně jako ostatní typy objektů BLOB Azure. [Objekty BLOB stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) jsou kolekce stránek 512 bajtů, které jsou optimalizované pro náhodné čtení a zápisu operace. 
 
-**Replikace úložiště:** ve většině oblastí, data v účtu úložiště úrovně standard může být replikované místně nebo geograficky replikovaného napříč několika datových centrech. Čtyři typy replikace je k dispozici jsou místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště přístup pro čtení (RA-GRS). Spravované disky v Storage úrovně Standard je místně redundantní úložiště (LRS) aktuálně podporují pouze. Další informace najdete v tématu [replikace úložiště mezi](../articles/storage/common/storage-redundancy.md).
+**Replikace úložiště:** Ve většině oblastí lze data v účtu úložiště úrovně standard replikované místně nebo geograficky replikovaného napříč několika datových centrech. Čtyři typy replikace je k dispozici jsou místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště přístup pro čtení (RA-GRS). Spravované disky v Storage úrovně Standard je místně redundantní úložiště (LRS) aktuálně podporují pouze. Další informace najdete v tématu [replikace úložiště mezi](../articles/storage/common/storage-redundancy.md).
 
 ## <a name="scalability-and-performance-targets"></a>Cíle škálovatelnost a výkonnosti
 
@@ -75,15 +75,7 @@ Potřeb svojí aplikace překročení cíle škálovatelnosti z jednoho účtu �
 
 ### <a name="standard-disks-limits"></a>Disky Standard omezení
 
-Na rozdíl od prémiové disky nebyly zřízeny vstupně výstupní operace za sekundu (IOPS) a propustnost (šířka pásma) disky Standard. Výkon standardní disky se liší podle velikosti virtuálního počítače, na který je připojený disk, nikoli na velikosti disku. Očekáváte může dosáhnout až do limitu výkonu uvedené v následující tabulce.
-
-**Omezení standardní disky (spravované a nespravované)**
-
-| **Úroveň virtuálního počítače**            | **Virtuální počítač na základní úrovni** | **Standardní úroveň virtuálního počítače** |
-|------------------------|-------------------|----------------------|
-| Velikost disku Max          | 32 767 giB           | 32 767 giB        |
-| Maximálně 8 KB IOPS na disk | Až 2 000         | Až 2 000        |
-| Maximální šířka pásma na disku | Až 500 MB/s     | Až 500 MB/s      |
+Na rozdíl od prémiové disky nebyly zřízeny vstupně výstupní operace za sekundu (IOPS) a propustnost (šířka pásma) disky Standard. Výkonu disky standard se liší podle velikosti virtuálního počítače, na který je připojený disk a velikost disku.
 
 Pokud vaše úloha vyžaduje podporu vysoce výkonných disků s nízkou latencí, zvažte použití služby Premium Storage. Už víte, další výhody služby Premium Storage, najdete v tématu [vysoce výkonné úložiště úrovně Premium a disky virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md).
 
@@ -117,18 +109,18 @@ Pokud používáte Storage úrovně Standard, platí následující aspekty fakt
 * Přenosy odchozích dat
 * Transakce
 
-**Nespravovaného úložiště dat a velikost disku:** pro nespravované disky a další data (objekty BLOB, tabulky, fronty a soubory), bude se vám účtovat jenom množství místa, kterou používáte. Například pokud máte virtuální počítač, jehož objektů blob stránky je zřízená jako 127 GB, ale virtuální počítač je ve skutečnosti pouze pomocí 10 GB místa, se účtují za 10 GB místa. Storage úrovně Standard podporuje až 8191 GB a standardní nespravované disky až 4 095 GB. 
+**Nespravovaného úložiště dat a velikost disku:** Pro nespravované disky a další data (objekty BLOB, tabulky, fronty a soubory) bude se vám účtovat jenom množství místa, které používáte. Například pokud máte virtuální počítač, jehož objektů blob stránky je zřízená jako 127 GB, ale virtuální počítač je ve skutečnosti pouze pomocí 10 GB místa, se účtují za 10 GB místa. Storage úrovně Standard podporuje až 8191 GB a standardní nespravované disky až 4 095 GB. 
 
-**Spravované disky:** fakturace za spravované disky úrovně standard závisí na velikosti zřízeného disku. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost Managed Disks uvedená v následujících tabulkách. Každý spravovaný disk mapuje na jednu z podporovaných velikostí zřízené a účtuje se odpovídajícím způsobem. Například pokud vytvoříte standardní spravovaný disk a zadejte zřízená velikost 200 GB, účtuje se vám ceníku typ s.15 disku.
+**Spravované disky:** Fakturace za spravované disky úrovně standard závisí na velikosti zřízeného disku. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost Managed Disks uvedená v následujících tabulkách. Každý spravovaný disk mapuje na jednu z podporovaných velikostí zřízené a účtuje se odpovídajícím způsobem. Například pokud vytvoříte standardní spravovaný disk a zadejte zřízená velikost 200 GB, účtuje se vám ceníku typ s.15 disku.
 
 Velikosti označený hvězdičkou jsou aktuálně ve verzi preview.
 
 | **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16,385 giB (16 TB) | 32 767 giB (32 TB) |
+| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB) | 16,385 giB (16 TB) | 32 767 giB (32 TB) |
 
 
-**Snímky**: snímky disků standard se účtují další zvýšení kapacity používané snímky. Informace o snímků, najdete v části [vytvoření snímku objektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+**Snímky**: Snímky disků standard se účtují další zvýšení kapacity používané snímky. Informace o snímků, najdete v části [vytvoření snímku objektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 **Přenosy odchozích dat**: [přenosy odchozích dat](https://azure.microsoft.com/pricing/details/data-transfers/) (data odcházející z Datacenter Azure) jsou zpoplatněné využití šířky pásma.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d36179685e2098455e00186827d35e6de18bf975
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 8d0ad34496963c32c842033e81bdffb375a27412
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892152"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214670"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Přidejte na mapu vrstva s obrázkem
 
@@ -29,9 +29,9 @@ Tento článek popisuje, jak můžete překryv obrázku, který má pevně danou
 > [!TIP]
 > [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) je rychlý snadný způsob, jak překryvný obrázek na mapě. Ale pokud je velký obrázek, v prohlížeči může usilovat o to, ho načíst. V takovém případě zvažte rozdělení svou image do dlaždice a jejich načtení do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
 
-## <a name="add-an-image-layer"></a>Přidat vrstva s obrázkem
+## <a name="add-an-image-layer"></a>Přidání vrstvy obrázků
 
-Tento příklad ukazuje, jak překryvný obrázek [mapování Newyorském New Jersey z 1922]((https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)) na mapě.
+Tento příklad ukazuje, jak překryvný obrázek [mapování Newyorském New Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapě.
 
 <br/>
 

@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 17ca5430a0fdba0bf11d7c2caecd19ec0a402c0e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b9f3561155038e91bc278f5d7ddc995adb53ad78
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556692"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197993"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure čas Series Insights
 
@@ -106,7 +106,7 @@ Pomocí ID aplikace a klíč ve vaší aplikaci k ověřování pomocí Azure Ti
 
 ## <a name="next-steps"></a>Další postup
 - Ukázkový kód, který volá rozhraní API čas Series Insights, naleznete v tématu [dotazování dat pomocí jazyka C#](time-series-insights-query-data-csharp.md).
-- Referenční informace rozhraní API najdete v tématu [referenční dokumentace rozhraní API pro dotazy](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
+- Referenční informace rozhraní API najdete v tématu [referenční dokumentace rozhraní API pro dotazy](/rest/api/time-series-insights/ga-query-api).
 
 > [!div class="nextstepaction"]
 > [Vytvoření instančního objektu služby](../active-directory/develop/howto-create-service-principal-portal.md)

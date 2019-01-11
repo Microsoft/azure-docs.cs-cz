@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 01/10/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 8fec963dfce8c55cc618f2ce6877d4d591a9cf27
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054915"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215214"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Pomocí sady Visual Studio 2017 na vývoj a ladění modulů jazyka C# pro Azure IoT Edge (Preview)
 
@@ -27,8 +27,11 @@ Nástroje Azure IoT Edge pro Visual Studio nabízí následující výhody:
 - Přitom má všechny výhody vývoj sady Visual Studio Code modulů Azure IoT v jazyce C#.
 - Správa zařízení Azure IoT Edge a moduly pomocí uživatelského rozhraní.
 
-V tomto článku se dozvíte, jak pomocí nástroje Azure IoT Edge pro Visual Studio 2017 na vývoj modulů IoT Edge v jazyce C#. Také se dozvíte, jak nasadit svůj projekt na vaše zařízení Azure IoT Edge.
+V tomto článku se dozvíte, jak pomocí nástroje Azure IoT Edge pro Visual Studio 2017 na vývoj modulů IoT Edge v jazyce C#. Také se dozvíte, jak nasadit svůj projekt na vaše zařízení Azure IoT Edge. 
 
+  > [!TIP]
+  > Struktura projektu IoT Edge, vytvořené pomocí sady Visual Studio není stejný jako v aplikaci Visual Studio Code.
+  
 ## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení.

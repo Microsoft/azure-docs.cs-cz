@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/20/2018
 ms.author: sharadag
-ms.openlocfilehash: c4032f7c33cec7b7a7864ccff07a05b87c945949
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 68da9a0255cde6cbad5c675901c80193888bf255
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988579"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214874"
 ---
 # <a name="how-to-set-up-a-geo-filtering-policy-for-your-front-door"></a>Nastavení zásady geografického filtrování pro službu Front Door
 V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit ukázkovou zásadu geografického filtrování a přidružit ji k existujícímu hostiteli front-endu služby Front Door. Tato ukázková zásada geografického filtrování bude blokovat požadavky ze všech zemí s výjimkou USA.
@@ -47,7 +47,7 @@ Install-Module -Name AzureRM.FrontDoor -AllowPrerelease
 ```
 
 ## <a name="2-define-geo-filtering-match-conditions"></a>2. Definice podmínek shody geografického filtrování
-Nejprve vytvořte ukázkovou podmínku shody, která vybere požadavky, které nepochází z oblasti USA. Informace o parametrech při vytváření podmínky shody najdete v [příručce](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoormatchconditionobject) k PowerShellu. Dvoupísmenné kódy zemí pro mapování země najdete [tady](/Protection/GeoFiltering).
+Nejprve vytvořte ukázkovou podmínku shody, která vybere požadavky, které nepochází z oblasti USA. Informace o parametrech při vytváření podmínky shody najdete v [příručce](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoormatchconditionobject) k PowerShellu. Dvoupísmenné kódy zemí pro mapování země najdete [tady](front-door-geo-filtering.md).
 
 ```
 $nonUSGeoMatchCondition = New-AzureRmFrontDoorMatchConditionObject -MatchVariable RemoteAddr -OperatorProperty GeoMatch -NegateCondition $true -MatchValue "US"
@@ -89,7 +89,7 @@ Set-AzureRmFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > [!NOTE] 
 > K propojení zásady ochrany s hostitelem front-endu služby Front Door stačí nastavit vlastnost WebApplicationFirewallPolicyLink pouze jednou. Další aktualizace zásad se budou u hostitele front-endu uplatňovat automaticky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si o [zabezpečení aplikační vrstvy pomocí služby Front Door](front-door-application-security.md).
 - Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).

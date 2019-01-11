@@ -2,7 +2,6 @@
 title: Monitorování koncových bodů v Azure Traffic Manager | Dokumentace Microsoftu
 description: V tomto článku vám pomůžou pochopit, jak Traffic Manager pomocí monitorování koncových bodů a koncový bod automatické převzetí služeb při selhání pomáhá zákazníkům Azure nasazovat aplikací s vysokou dostupností
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 27057f16d10d0859a486551091e135bfb9160813
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 923c2aae6d426e736e34c06fc84025ca98fe4f48
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890343"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199626"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
@@ -37,7 +36,7 @@ Pokud chcete nakonfigurovat monitorování koncových bodů, je nutné zadat ná
 
     ![Monitorování koncových bodů Traffic Manageru](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **Obrázek: Monitorování koncových bodů Traffic Manageru**
+    **Obrázek:  Monitorování koncových bodů Traffic Manageru**
 
 ## <a name="how-endpoint-monitoring-works"></a>Jak funguje monitorování koncových bodů
 
@@ -112,7 +111,7 @@ Další informace o řešení problémů s neúspěšné kontroly najdete v tém
 
 ![Pořadí převzetí služeb při selhání a navrácení služeb po obnovení koncových bodů Traffic Manageru](./media/traffic-manager-monitoring/timeline.png)
 
-**Obrázek: Traffic manager koncový bod převzetí služeb při selhání a obnovení pořadí**
+**Obrázek:  Traffic manager koncový bod převzetí služeb při selhání a obnovení pořadí**
 
 1. **ZÍSKAT**. Pro každý koncový bod monitorování systému Traffic Manageru provede požadavek GET na cestě zadané v nastavení monitorování.
 2. **Zadaný profil služby Traffic Manager nastavení sledování rozsahu 200 OK nebo vlastní kód** . Systém monitorování očekává, že HTTP 200 OK nebo nebo vlastní kód rozsah zadaný profil služby Traffic Manager monitorování nastavení zpráv, který se má vrátit do 10 sekund. Když tuto odpověď přijme, rozpozná, že služba je k dispozici.

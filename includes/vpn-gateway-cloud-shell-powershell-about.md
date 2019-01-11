@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/25/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6a0ea318f2e9b8f392ac7c0a1f1091c062c59d41
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d0f43a4e031ccd24ced5bc66ea33564e3a0e44c3
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852351"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193344"
 ---
 Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter. Existuje několik způsobů, jak Cloud Shell spustit:
 
@@ -26,4 +26,4 @@ Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit ru
 
 Pokud nechcete použít Azure Cloud Shell, můžete nainstalovat prostředí PowerShell místně místo. Pokud se rozhodnete nainstalovat a používat PowerShell místně, nezapomeňte nainstalovat nejnovější verzi rutin Powershellu pro Azure Resource Manager k získání nejnovější funkce.
 
-Najít verzi prostředí PowerShell, které spouštíte místně, použijte rutinu "Get-Module - ListAvailable AzureRM". Pokud chcete aktualizovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+Najít verzi prostředí PowerShell, které spouštíte místně, použijte rutinu "Get-Module - ListAvailable AzureRM". Pokud chcete aktualizovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/overview).

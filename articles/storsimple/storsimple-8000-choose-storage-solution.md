@@ -7,20 +7,20 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: alkohli
-ms.openlocfilehash: c28eaf22d05bfda5085f9e269bda85ca0d46a7d3
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b5ced2814aff51317304cd44c41b04ab9a954844
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578108"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213191"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porovnat s Azure File Sync a okraj pole Data možnosti přenosu dat StorSimple 
  
 Tento dokument obsahuje přehled možností pro přenos místních dat do Azure, porovnání: Data Box Edge vs. Azure File Sync vs. StorSimple řady 8000.
 
-- **[Data Box Edge](/azure/databox-online/data-box-edge-overview.md)**  – okraj pole dat je zařízení místní sítě, který přesouvá data do a z Azure a má povolené AI hraniční výpočetní předběžně zpracovat data při nahrávání. Jsme představili na konferenci Ignite 2018 a je ve verzi public preview. Brána pole dat je virtuální verzi zařízení pomocí stejné funkce přenosu dat.
-- **[Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide.md)**  – Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Obecná dostupnost služby Azure File Sync jsme představili dříve v roce 2018.
-- **[StorSimple](/azure/storsimple/storsimple-overview.md)**  – StorSimple je hybridní zařízení, která pomáhá podnikům, že se úzce integruje konsolidovat svou infrastrukturu úložiště pro primární úložiště, ochranu dat, archivaci a zotavení po havárii v jediném řešení Úložiště Azure. Životní cyklus produktu pro StorSimple najdete [tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
+- **[Data Box Edge](/azure/databox-online/data-box-edge-overview)**  – okraj pole dat je zařízení místní sítě, který přesouvá data do a z Azure a má povolené AI hraniční výpočetní předběžně zpracovat data při nahrávání. Jsme představili na konferenci Ignite 2018 a je ve verzi public preview. Brána pole dat je virtuální verzi zařízení pomocí stejné funkce přenosu dat.
+- **[Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)**  – Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Obecná dostupnost služby Azure File Sync jsme představili dříve v roce 2018.
+- **[StorSimple](/azure/storsimple/storsimple-overview)**  – StorSimple je hybridní zařízení, která pomáhá podnikům, že se úzce integruje konsolidovat svou infrastrukturu úložiště pro primární úložiště, ochranu dat, archivaci a zotavení po havárii v jediném řešení Úložiště Azure. Životní cyklus produktu pro StorSimple najdete [tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
 
 ## <a name="comparison-summary"></a>Souhrn porovnání
 

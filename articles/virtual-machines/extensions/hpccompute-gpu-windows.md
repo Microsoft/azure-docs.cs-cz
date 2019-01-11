@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/5/2018
+ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 2a29cae6e7f391dfee75e89ea91525268db3fa62
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4bb27959bb57f3d59621e5bbbfaba9aa0c331432
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971959"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200679"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Grafický procesor NVIDIA ovladač rozšíření pro Windows
 
@@ -37,7 +37,7 @@ Toto rozšíření podporuje následující OSs:
 
 | Distribuce | Verze |
 |---|---|
-| Windows 10 | Jádro |
+| Windows 10 (až do verze 1803)| Jádro |
 | Windows Server 2016 | Jádro |
 | Windows Server 2012R2 | Jádro |
 
@@ -163,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | Úspěšná operace |
 | 1 | Operace byla úspěšná. Vyžaduje se restartování. |
-| 100 | Operace není podporována nebo nebylo možné dokončit. | Možné příčiny: verze Powershellu není podporována, velikost virtuálního počítače není virtuálního počítače s N-series, stahování dat selhání. Zkontrolujte soubory protokolu a zjistěte příčinu chyby. |
+| 100 | Operace není podporována nebo nebylo možné dokončit. | Možné příčiny: Nepodporovaná verze prostředí PowerShell, velikost virtuálního počítače není virtuálního počítače s N-series, stahování dat selhání. Zkontrolujte soubory protokolu a zjistěte příčinu chyby. |
 | 240, 840 | Časový limit operace. | Zkuste operaci znovu. |
 | -1 | Došlo k výjimce. | Zkontrolujte soubory protokolu a zjistěte příčinu výjimky. |
 | -5 x | Operace byla přerušena z důvodu čeká na restartování. | Restartování virtuálního počítače. Instalace bude pokračovat po restartování počítače. Odinstalace by mělo být vyvoláno ručně. |

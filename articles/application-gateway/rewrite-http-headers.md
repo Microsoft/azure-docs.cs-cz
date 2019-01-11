@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187413"
+ms.locfileid: "54198521"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway (public preview)
 
@@ -116,8 +116,6 @@ Tato funkce podporuje přepis adres hlavičky pro následující proměnné na s
 ## <a name="limitations"></a>Omezení
 
 - Tuto možnost přepsání hlavičky protokolu HTTP je momentálně dostupná jenom prostřednictvím Azure Powershellu, rozhraní API služby Azure a Azure SDK. Brzy bude k dispozici podporu prostřednictvím portálu a Azure CLI.
-
-- Po provedení revize záhlaví ve službě Application Gateway byste neměli používat na portálu pro vytváření žádné následné změny do této brány Application, dokud funkce se podporuje na portálu. Používáte-li provést změny ke službě Application Gateway po použití pravidlo pro přepis adres na portálu, můžete přepsat hlavičku pravidlo. Můžete pokračovat v provádění změn pomocí Azure Powershellu, rozhraní API služby Azure nebo Azure SDK.
 
 - Podpora přepsání hlavičky protokolu HTTP je podporována pouze na nové SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). Možnost nebude podporovat staré skladové položky.
 

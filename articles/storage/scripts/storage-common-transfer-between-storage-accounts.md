@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 2c83526ac5fd6fb6c757bffab08414d940694998
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: eddf85df3f9efb6a742e226e9582e2e284cbd4cf
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635421"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215129"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrace objektů blob mezi účty úložiště pomocí AzCopy ve Windows
 
@@ -68,8 +68,8 @@ Tento skript ke kopírování dat z jednoho účtu úložiště do jiného použ
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzStorageContainer](/powershell/module/azure.storage/Get-AzStorageContainer) | Vrátí kontejnery přidružené k tomuto účtu úložiště. |
-| [Nové AzStorageContext](/powershell/module/azure.storage/New-AzStorageContext) | Vytvoří kontext služby Azure Storage. |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Vrátí kontejnery přidružené k tomuto účtu úložiště. |
+| [Nové AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Vytvoří kontext služby Azure Storage. |
 
 ## <a name="next-steps"></a>Další postup
 

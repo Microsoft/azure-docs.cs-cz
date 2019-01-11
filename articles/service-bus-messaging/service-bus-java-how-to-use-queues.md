@@ -13,12 +13,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 804e0dd4b510b40c1ebbc5790308a429c2715724
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8d168e4171c96441162f1090a215cab8a70b7d1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573310"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198690"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Jak používat fronty služby Service Bus pomocí Javy
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -109,7 +109,7 @@ public void run() throws Exception {
 
 ```
 
-Zprávy odeslané a přijaté ze služby Service Bus jsou fronty instance [zpráva](/java/api/com.microsoft.azure.servicebus._message?view=azure-java-stable) třídy. Zpráva objekty mají sadu standardních vlastností (třeba popisek a hodnota TimeToLive), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s libovolnými aplikačními daty. Aplikace může tělo zprávy nastavit tak předá jakýkoli serializovatelný objekt do konstruktoru zprávy a příslušný serializátor pak bude sloužit k serializaci objektu. Alternativně můžete zadat **java. VSTUPNĚ-VÝSTUPNÍCH OPERACÍ. InputStream** objektu.
+Zprávy odeslané a přijaté ze služby Service Bus jsou fronty instance [zpráva](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) třídy. Zpráva objekty mají sadu standardních vlastností (třeba popisek a hodnota TimeToLive), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s libovolnými aplikačními daty. Aplikace může tělo zprávy nastavit tak předá jakýkoli serializovatelný objekt do konstruktoru zprávy a příslušný serializátor pak bude sloužit k serializaci objektu. Alternativně můžete zadat **java. VSTUPNĚ-VÝSTUPNÍCH OPERACÍ. InputStream** objektu.
 
 
 Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených ve frontě není omezený, ale celková velikost zpráv držených ve frontě omezená je. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB.
@@ -179,7 +179,7 @@ Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb
 
 K dispozici je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), Service Bus zprávu automaticky odemkne a díky tomu k dispozici pro další přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než **deleteMessage** požadavku a pak je víckrát do aplikace při restartování. To se často nazývá *zpracování nejméně jednou*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá **getMessageId** metoda zprávy, která zůstává konstantní pokusu o doručení.
+V případě, že aplikace spadne po zpracování zprávy, ale předtím, než **deleteMessage** požadavku a pak je víckrát do aplikace při restartování. Tomu se často říká *Zpracování nejméně jednou* – to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích se může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá **getMessageId** metoda zprávy, která zůstává konstantní pokusu o doručení.
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste se seznámili se základy front Service Bus, najdete v článku [fronty, témata a odběry] [ Queues, topics, and subscriptions] Další informace.

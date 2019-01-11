@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 67d81387a347bb2061457bfd24553f304e965f38
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107425"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198758"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -132,11 +132,10 @@ Operace obnovení se skládá ze dvou hlavních úloh: kopírování dat z trezo
 
 Doporučujeme následující tyto postupy při konfiguraci záloh virtuálních počítačů:
 
-- Trezory upgradujte na rychlé předávající strany. Přečtěte si tyto [výhody](backup-upgrade-to-vm-backup-stack-v2.md), [aspekty](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)a poté proveďte upgrade pomocí těchto [pokyny](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
 - Zvažte úpravy výchozích zásad čas k dispozici (pro příklad. Pokud je vaše výchozí zásady čas 12:00 dop. zvažte jeho zvýšením v minutách) pořizování snímků dat k zajištění optimální používání prostředků.
 - Pro virtuální počítač Premium přiděluje zálohy na funkci bez – rychlé RP přibližně 50 % celkový účet prostor úložiště. Služba Backup vyžaduje tento prostor ke zkopírování snímku do stejného účtu úložiště a přenosu do trezoru.
 - Pro obnovení virtuálních počítačů z jediného trezoru, důrazně doporučujeme použít jiný [účty storage v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) zajistit cílový účet úložiště není získat omezené. Například každý virtuální počítač musí mít jiný účet úložiště (Pokud 10 virtuálních počítačů se obnoví a zvažte použití 10 jiný účet úložiště).
-- Obnovení z úložné vrstvy 1. úrovně (snímek) dokončí se během několika minut (protože jde o stejný účet úložiště) proti úložné vrstvy 2. úrovně (trezor), to může trvat hodiny. Doporučujeme, abyste použili [rychlé RP](backup-upgrade-to-vm-backup-stack-v2.md) funkce pro rychlejší obnovení pro případ, ve kterém jsou data dostupná ve vrstvě 1 (Pokud data obsahují pro obnovení z trezoru pak bude trvat dobu).
+- Obnovení z úložné vrstvy 1. úrovně (snímek) dokončí se během několika minut (protože jde o stejný účet úložiště) proti úložné vrstvy 2. úrovně (trezor), to může trvat hodiny. Doporučujeme, abyste použili [rychlé obnovení](backup-instant-restore-capability.md) funkce pro rychlejší obnovení pro případ, ve kterém jsou data dostupná ve vrstvě 1 (Pokud data obsahují pro obnovení z trezoru pak bude trvat dobu).
 - Vzhledem k jak velké disky přistupuje aplikace běžící na virtuálním počítači IaaS je limit na počet disků v účtu úložiště. Ověření, pokud více disků jsou hostované na jeden účet úložiště. Obecně platí Pokud je 5 až 10 disků nebo více na jeden účet úložiště, Vyrovnávání zatížení přesunutím některé disky do samostatné účty úložiště.
 
 ## <a name="backup-costs"></a>Náklady na zálohování

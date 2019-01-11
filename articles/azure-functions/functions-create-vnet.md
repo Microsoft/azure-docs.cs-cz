@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: alkarche
-ms.openlocfilehash: 042d41e9125e5d4fa0af04fd6edeba5f0b33123a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1140c23a0aa5344119c35434316ec73cc3918f90
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001588"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198367"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Integrace aplikace Function App s Azure Virtual Network
 Tento podrobný kurz ukazuje, jak pomocí služby Azure Functions pro připojení k prostředkům ve virtuální síti Azure. 
@@ -117,7 +117,7 @@ Aplikace Function App je připojený k Internetu a virtuální síť. Proxy serv
 
 ## <a name="next-steps"></a>Další kroky
 
-Běžící na App Service plány jsou spuštěny na stejnou službu jako webové aplikace Azure Functions, takže všechno documnention pro webové aplikace se uplatní na vyhrazené funkce.
+Běžící na App Service plány jsou spuštěny na stejnou službu jako webové aplikace Azure Functions, takže všechny dokumentace k Web Apps platit pro vyhrazené funkce.
 
 1. [Další informace o integraci virtuální sítě pomocí služby App Service / funkce zde](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 1. [Další informace o virtuálních sítí v Azure](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)

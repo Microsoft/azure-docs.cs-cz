@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 18b5f82a5181f0bbf7024b302b802684ef676c8f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b24871a12020d351eceef2bb556e12ca5c137f5e
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255326"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197743"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s Standard pro vyrovnávání zatížení pomocí webu Azure portal
 
-Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. Tento kurz popisuje kroky při vytváření veřejného Load Balanceru úrovně Standard, který vyrovnává zatížení virtuálních počítačů napříč zónami dostupnosti. Tento proces zvyšuje ochranu aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra. Díky redundanci zón zůstane cesta k datům dostupná i v případě, že dojde k selhání jedné nebo několika zón (pokud alespoň jedna zóna v oblasti zůstane v pořádku). Získáte informace o těchto tématech:
+Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. Tento kurz vás provede vytvořením veřejného Load balanceru úrovně Standard, který se načítá vyrovnává virtuálních počítačů napříč zónami dostupnosti. Tento proces zvyšuje ochranu aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra. Díky redundanci zón zůstane cesta k datům dostupná i v případě, že dojde k selhání jedné nebo několika zón (pokud alespoň jedna zóna v oblasti zůstane v pořádku). Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření Load Balanceru úrovně Standard
@@ -40,7 +40,7 @@ Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](load-balan
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
 

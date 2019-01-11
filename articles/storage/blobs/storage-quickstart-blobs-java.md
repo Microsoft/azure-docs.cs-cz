@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 342b19927d290f5ff519d3fae5b84bcfa2b9d9cf
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 98b7481c22cc5f3c233de4c516d4be5f64bbe143
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711748"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198010"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>Jak nahrávání, stahování a výpis objektů BLOB pomocí sady Java SDK v7
 
@@ -96,7 +96,7 @@ Dále si projdeme vzorový kód, abyste pochopili, jak funguje.
 
 První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty se vzájemně využívají a každý z nich je využívaný dalším objektem v seznamu.
 
-* Vytvořte instanci objektu [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage._storage_account), která odkazuje na účet úložiště.
+* Vytvořte instanci objektu [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount), která odkazuje na účet úložiště.
 
     Objekt **CloudStorageAccount** je reprezentace vašeho účtu úložiště a umožňuje nastavení a přístup k vlastnostem účtu úložiště prostřednictvím kódu programu. Pomocí objektu **CloudStorageAccount** můžete vytvořit instanci objektu **CloudBlobClient**, která je nezbytná pro přístup ke službě Blob.
 

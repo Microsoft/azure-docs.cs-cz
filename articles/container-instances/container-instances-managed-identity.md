@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 1f93a186db7685f7e4e159ae1796c4287de74373
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578667"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213054"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravované identity s Azure Container Instances
 
@@ -80,7 +80,7 @@ az keyvault secret set --name SampleSecret --value "Hello Container Instances!" 
 
 Pokračujte v následujících příkladech přístup ke Key Vault, buď pomocí uživatelsky přiřazené nebo systém přiřadil spravovanou identitu ve službě Azure Container Instances.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Příklad 1: Použití uživatelsky přiřazené identity pro přístup k Azure Key Vault
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Příklad 1: Použít uživatelsky přiřazené identity pro přístup k Azure Key Vault
 
 ### <a name="create-an-identity"></a>Vytvoření identity
 
@@ -134,7 +134,7 @@ az container show --resource-group myResourceGroup --name mycontainer
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Udělení přístupu uživatelsky přiřazené identity do služby Key Vault
 
-Spusťte následující příkaz [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) příkaz pro nastavení zásad přístupu ke službě Key Vault. Následující příklad umožňuje uživatelsky přiřazené identity k získání tajné kódy z trezoru klíčů:
+Spusťte následující příkaz [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)(/ cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) příkaz pro nastavení zásad přístupu ke službě Key Vault. Následující příklad umožňuje uživatelsky přiřazené identity k získání tajné kódy z trezoru klíčů:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
@@ -179,7 +179,7 @@ Odpověď bude vypadat podobně jako následujícím zobrazující tajný kód. 
 {"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Příklad 2: Použijte systém přiřadil identitu pro přístup k Azure Key Vault
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Příklad 2: Používat systém přiřadil identitu pro přístup k Azure Key Vault
 
 ### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Povolit systém přiřadil identitou pro skupinu kontejnerů
 
@@ -216,7 +216,7 @@ spID=$(az container show --resource-group myResourceGroup --name mycontainer --q
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Udělení přístupu ke kontejneru skupiny pro Key Vault
 
-Spusťte následující příkaz [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) příkaz pro nastavení zásad přístupu ke službě Key Vault. Následující příklad umožňuje identity spravované systému získat tajné kódy z trezoru klíčů:
+Spusťte následující příkaz [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) příkaz pro nastavení zásad přístupu ke službě Key Vault. Následující příklad umožňuje identity spravované systému získat tajné kódy z trezoru klíčů:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get

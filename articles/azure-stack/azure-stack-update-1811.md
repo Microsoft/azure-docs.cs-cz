@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/11/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f5826b2a6935bb448a7a3ef94d9a5f27f1ed9426
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055162"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214585"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -82,9 +82,9 @@ Azure Stack vydává opravy hotfix v pravidelných intervalech. Nezapomeňte nai
     then resume the update.
     Exception: The Certificate path does not exist: [certificate path here]` 
  
-    Jakmile správně naimportujete certifikáty povinné rozšíření hostitele, můžete obnovit 1811 aktualizace z portálu správce. Když Microsoft vás informuje o tom operátorům Azure stacku umožní jednotka škálování uvést do režimu údržby během procesu aktualizace, selhání z důvodu chybějící certifikáty hostitele rozšíření by neměla mít vliv existující úlohy nebo služby.  
+    Jakmile správně naimportujete certifikáty povinné rozšíření hostitele, můžete obnovit 1811 aktualizace z portálu správce. Když Microsoft vás informuje o tom operátorům Azure stacku k naplánování okna údržby během procesu aktualizace, selhání z důvodu chybějící certifikáty hostitele rozšíření by neměla mít vliv existující úlohy nebo služby.  
 
-    Při instalaci této aktualizace není k dispozici na portálu user portal pro Azure Stack, zatímco hostitel rozšíření je konfigurován. Konfigurace hostitele rozšíření může trvat až 5 hodin. Během této doby můžete zkontrolovat stav příkazu update nebo pokračování instalace aktualizace se nezdařila pomocí [Powershellu Azure Stack správce nebo privileged koncový bod](azure-stack-monitor-update.md).
+    Při instalaci této aktualizace není k dispozici na portálu user portal pro Azure Stack, zatímco hostitel rozšíření je konfigurován. Konfigurace hostitele rozšíření může trvat až 5 hodin. Během této doby můžete zkontrolovat stav aktualizace nebo obnovit instalaci neúspěšné aktualizace pomocí [Azure Stack PowerShellu s oprávněními správce nebo privilegovaného koncového bodu](azure-stack-monitor-update.md).
 
 ## <a name="new-features"></a>Nové funkce
 
@@ -195,7 +195,7 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 
 - Při spuštění [testovací AzureStack](azure-stack-diagnostic-test.md), pokud **AzsInfraRoleSummary** nebo **AzsPortalApiSummary** test se nezdaří, zobrazí se výzva ke spuštění  **Test-AzureStack** s `-Repair` příznak.  Pokud spustíte tento příkaz, selže s následující chybová zpráva:  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`  Tento problém bude opraven v budoucí verzi.
 
-- Během instalace aktualizace 1811 použijte portál Azure Stack není k dispozici, když konfigurujete hostitele rozšíření. Konfigurace hostitele rozšíření může trvat až 5 hodin. Během této doby můžete zkontrolovat stav příkazu update nebo pokračování instalace aktualizace se nezdařila pomocí [Powershellu Azure Stack správce nebo privileged koncový bod](azure-stack-monitor-update.md). 
+- Během instalace aktualizace 1811 použijte portál Azure Stack není k dispozici, když konfigurujete hostitele rozšíření. Konfigurace hostitele rozšíření může trvat až 5 hodin. Během této doby můžete zkontrolovat stav aktualizace nebo obnovit instalaci neúspěšné aktualizace pomocí [Azure Stack PowerShellu s oprávněními správce nebo privilegovaného koncového bodu](azure-stack-monitor-update.md). 
 
 - Během instalace aktualizace 1811 řídicímu panelu portálu uživatele nemusí být k dispozici a vlastní nastavení může dojít ke ztrátě. Řídicí panel můžete obnovit výchozí nastavení po dokončení aktualizace, že otevřete nastavení portálu a vyberete **obnovit výchozí nastavení**.
 
@@ -254,6 +254,12 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 ### <a name="compute"></a>Compute
 
 - Při vytváření nového Windows virtuální počítač (virtuálního počítače), **nastavení** vyžaduje okně vyberte veřejné příchozí port aby bylo možné pokračovat. V 1811 toto nastavení je povinný, ale nemá žádný vliv. Je to proto závisí na Brána Firewall služby Azure, které není implementované ve službě Azure Stack. Můžete vybrat **žádné veřejné příchozí porty**, nebo některou z možností a pokračujte ve vytváření virtuálních počítačů. Nastavení nebude mít žádný efekt.
+
+- Při vytváření virtuálního počítače pro nové Windows (VM), může se zobrazit následující chyba:
+
+   `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
+
+   Pokud povolíte diagnostiku spouštění na virtuálním počítači, ale odstraníte účet úložiště diagnostiky spouštění dojde k chybě. Chcete-li tento problém obejít, znovu vytvořte účet úložiště se stejným názvem, jako jste použili dříve.
 
 <!-- 3235634 – IS, ASDK -->
 - K nasazení virtuálních počítačů s velikostí, který obsahuje **v2** přípony; například **Standard_A2_v2**, zadejte příponu jako **Standard_A2_v2** (malá písmena v). Nepoužívejte **Standard_A2_V2** (velká písmena V). To funguje v globální Azure a nekonzistence ve službě Azure Stack.

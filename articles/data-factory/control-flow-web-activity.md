@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: d42b6b857f04c191ebdfb1687c8ee2adcad95d26
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054279"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214296"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivita webu ve službě Azure Data Factory
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup.
@@ -115,7 +115,7 @@ Zadejte obsah souboru PFX a heslo s kódováním base64.
 
 ### <a name="managed-identity"></a>Spravovaná identita
 
-Zadejte identifikátor uri prostředku, pro kterou přístupový token bude vyžádána pomocí spravované identity služby data factory. Chcete-li volat rozhraní API pro správu prostředků Azure, použijte `https://management.azure.com/`.
+Zadejte identifikátor uri prostředku, pro kterou přístupový token bude vyžádána pomocí spravované identity služby data factory. Chcete-li volat rozhraní API pro správu prostředků Azure, použijte `https://management.azure.com/`. Pro další informace o tom, jak spravované identity funguje, najdete [spravovaných identit pro prostředky Azure stránka s přehledem](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {

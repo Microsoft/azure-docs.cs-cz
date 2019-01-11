@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/12/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408914"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213208"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -51,15 +51,14 @@ Následující Linuxových distribucích se oficiálně podporuje. Agenta pro Li
 * Debian GNU/Linux 8 a 9
 * Ubuntu Linux 14.04 LTS a 16.04 LTS
 
-## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
+## <a name="onboard"></a>Povolení řešení Change Tracking a Inventory
 
-Pokud chcete začít, sledování změn, je potřeba povolit řešení Change Tracking a Inventory pro svůj účet Automation.
+Pokud chcete začít, sledování změn, je potřeba povolit řešení Change Tracking a Inventory. Existuje mnoho způsobů, jak připojit počítače k řešení Change Tracking a Inventory. Následující jsou doporučené a podporované způsoby začlenění řešení.
 
-1. Na webu Azure Portal přejděte na svůj účet služby Automation
-2. Vyberte **Change Tracking** pod **konfigurace**.
-3. Vyberte existující pracovní prostor Log analytics nebo **vytvořit nový pracovní prostor** a klikněte na tlačítko **povolit**.
-
-To umožňuje řešení pro svůj účet automation. Řešení může trvat až 15 minut na povolit. Modrý banner vás upozorní, když bude řešení povoleno. Přejděte zpět **řešení Change Tracking** stránky pro správu řešení.
+* [Z virtuálního počítače](automation-onboard-solutions-from-vm.md)
+* [Z procházení více počítačů](automation-onboard-solutions-from-browse.md)
+* [Ve svém účtu Automation](automation-onboard-solutions-from-automation-account.md)
+* [Pomocí runbooku Azure Automation](automation-onboard-solutions.md)
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurace řešení Change Tracking a Inventory
 

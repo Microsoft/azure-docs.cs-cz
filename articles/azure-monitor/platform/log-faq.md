@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: a2213ac9b31623aed18855ce87e7e00870b05247
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107221"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214738"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -63,7 +63,7 @@ Odpověď: Chcete-li zobrazit protokoly virtuálního počítače, budete muset 
 
 ### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>Otázka: Proč mám může přístup pracovního prostoru v portálu OMS, ale zobrazí chyba "nemáte přístup" na webu Azure Portal?  
 
-Odpověď: Pro přístup k pracovní prostor v Azure, musíte mít oprávnění Azure, které jsou přiřazeny. Existují případy, kdy nemusí mít odpovídající přístupová oprávnění. V těchto případech musí správce udělit oprávnění v Azure.See [portálu OMS do Azure](/../../azure-monitor/platform/oms-portal-transition.md) Další informace.
+Odpověď: Pro přístup k pracovní prostor v Azure, musíte mít oprávnění Azure, které jsou přiřazeny. Existují případy, kdy nemusí mít odpovídající přístupová oprávnění. V těchto případech musí správce udělit oprávnění v Azure.See [portálu OMS do Azure](oms-portal-transition.md) Další informace.
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>Otázka: Proč nelze nezobrazují položky Návrhář zobrazení v protokolech? 
 Odpověď: Návrhář zobrazení je dostupná jenom v protokolech pro uživatelé s oprávněním Přispěvatel nebo vyšší.

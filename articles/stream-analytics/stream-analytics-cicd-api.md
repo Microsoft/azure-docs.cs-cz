@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 727c1ce79fbd20252f7455f95ad00a6c44d67c65
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f22a4c4d0159efa2ac42d15ff6afdadc2d6755d0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090512"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215044"
 ---
 # <a name="implement-cicd-for-stream-analytics-using-apis"></a>Implementujte CI/CD pro Stream Analytics pomocí rozhraní API
 
@@ -253,7 +253,7 @@ Ukázka manifestu nasazení:
 } 
 ```
 
-Po konfiguraci manifest nasazení, přečtěte si [moduly nasazení Azure IoT Edge pomocí Azure CLI](/iot-edge/how-to-deploy-modules-cli.md) pro nasazení.
+Po konfiguraci manifest nasazení, přečtěte si [moduly nasazení Azure IoT Edge pomocí Azure CLI](../iot-edge/how-to-deploy-modules-cli.md) pro nasazení.
 
 
 ## <a name="next-steps"></a>Další postup 

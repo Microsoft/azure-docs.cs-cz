@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: d8d8e344ce9ee317a7f864492514162b1dc085f9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882380"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213123"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Doba příjem dat v Log Analytics
 Azure Log Analytics je vysoce škálované datové služby ve službě Azure Monitor, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data k dispozici ve službě Log Analytics po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
@@ -46,7 +46,7 @@ Agenti a řešení pro správu používají různé strategie ke shromažďován
 K zajištění, že agenta Log Analytics je jednoduché, agent ukládá do vyrovnávací paměti protokoly a pravidelně je odesílá do služby Log Analytics. Nahrát frekvence se pohybuje mezi 30 sekund a 2 minuty. záleží na typu dat. Většina dat je nahraný v části 1 minuta. Stavy sítě může mít nepříznivý vliv latence těchto dat k dosažení bodem ingestování Log Analytics.
 
 ### <a name="azure-logs-and-metrics"></a>Metriky a protokoly Azure 
-Data protokolu aktivit, bude trvat přibližně 5 minut do režimu k dispozici ve službě Log Analytics. Data z diagnostické protokoly a metriky může trvat 1 – 5 minut, než bude k dispozici, v závislosti na službu Azure. Pak bude trvat dalších 30 – 60 sekund pro protokoly a metriky pro data 3 minuty, k odeslání do Log Analytics ingestování datových bodů.
+Data protokolu aktivit, bude trvat přibližně 5 minut do režimu k dispozici ve službě Log Analytics. Data z diagnostické protokoly a metriky může trvat 1 – 15 minutách k dispozici pro zpracování, v závislosti na službu Azure. Až bude k dispozici, pak bude trvat dalších 30 – 60 sekund pro protokoly a metriky pro data 3 minuty, k odeslání do Log Analytics ingestování datových bodů.
 
 ### <a name="management-solutions-collection"></a>Kolekce řešení správy
 Některá řešení neshromažďují svá data z agenta a mohou používat metodu kolekce, která zavádí další latenci. Některá řešení bez pokusu o kolekci téměř v reálném čase shromažďovat data v pravidelných intervalech. Konkrétní příklady patří:
@@ -73,22 +73,60 @@ Tento proces aktuálně trvá přibližně 5 minut. Pokud je malé množství da
 
 
 ## <a name="checking-ingestion-time"></a>Kontrola ingestování času
-Můžete použít **prezenčního signálu** tabulky k výpočtu odhadu latence pro data z agentů. Od prezenčního signálu je po odeslání minutu, rozdíl mezi aktuálním časem a poslední záznam prezenčního signálu v ideálním případě bude co nejblíže minutu nejvíce.
+Ingestování doba může lišit pro různé prostředky za různých okolností. Protokol dotazů můžete použít k identifikaci konkrétní chování vašeho prostředí.
 
-Použijte tento dotaz můžete vytvořit seznam počítačů s nejvyšší latencí.
+### <a name="ingestion-latency-delays"></a>Zpoždění latence příjmu
+Můžete měření latence konkrétní záznam porovnáním výsledek [ingestion_time()](/azure/kusto/query/ingestiontimefunction) funkce _TimeGenerated_ pole. Tato data je možné pomocí různých agregacích najít chování latence příjmu dat. Prozkoumejte některé percentilu času ingestování získat přehledy pro velký objem dat. 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | top 50 by IngestionTime asc
+Například následující dotaz zobrazí počítače, které má nejvyšší doba ingestování za aktuální den: 
 
+``` Kusto
+Heartbeat
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc  
+```
  
-Pomocí následujícího dotazu ve velkých prostředích shrnutí latence pro různé procenta celkový počet počítačů.
+Pokud chcete k podrobnostem na příjem čas pro určitý počítač po určitou dobu, použijte následující dotaz, který také vizualizuje data v grafu: 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | summarize percentiles(IngestionTime, 50,95,99)
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart  
+```
+ 
+Chcete-li zobrazit čas ingestování počítače podle země, že se nacházejí ve které je na základě jejich IP adresy použijte tento dotaz: 
 
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+```
+ 
+Různé datové typy, které pocházejí z agenta může mít různé ingestování čekací dobu, tak předchozí dotazy můžete použít jiné typy. Použijte tento dotaz k prozkoumání době příjmu různé služby Azure: 
 
+``` Kusto
+AzureDiagnostics 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+```
+
+### <a name="resources-that-stop-responding"></a>Prostředky, které přestanou reagovat 
+V některých případech se může zastavit prostředku odesílá data. Vysvětlení, pokud prostředek je odesílání dat, nebo Ne, podívejte se na jeho poslední záznam, který lze identifikovat podle standardu _TimeGenerated_ pole.  
+
+Použití _prezenčního signálu_ tabulky ke kontrole dostupnosti virtuálního počítače, protože prezenční signál agentovi odesílají jednou za minutu. Použijte tento dotaz můžete vytvořit seznam aktivních počítačů, kteří nehlásili nedávno prezenčního signálu: 
+
+``` Kusto
+Heartbeat  
+| where TimeGenerated > ago(1d) //show only VMs that were active in the last day 
+| summarize NoHeartbeatPeriod = now() - max(TimeGenerated) by Computer  
+| top 20 by NoHeartbeatPeriod desc 
+```
 
 ## <a name="next-steps"></a>Další postup
 * Čtení [smlouvu o úrovni (SLA) služeb](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) ke službě Log Analytics.

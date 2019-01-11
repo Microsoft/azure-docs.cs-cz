@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2299dd6c723aa3059c293170c655918e5236ca0e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138156"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213446"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nelze RDP na virtuálních počítačích Azure, protože služba Klient DHCP je zakázána.
 
@@ -30,14 +30,14 @@ Tento článek popisuje problém, který se po zakázání služby Klient DHCP v
 
 Nemůžete provádět připojení ke vzdálené ploše virtuálního počítače v Azure protože ve virtuálním počítači je zakázána služba Klient DHCP. Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, uvidíte, že virtuální počítač se spustí normálně a čeká se přihlašovací údaje na přihlašovací obrazovce. Vzdáleně Zkontrolujte protokoly událostí ve virtuálním počítači s použitím prohlížeče události. Uvidíte, že služba Klient DHCP není spuštěná nebo nepodaří spustit. Následující ukázka protokolu:
 
-**Název protokolu**: systému </br>
-**Zdroj**: správce řízení služeb </br>
+**Název protokolu**: Systémový </br>
+**Zdroj**: Správce řízení služeb </br>
 **Datum**: 12/16/2015 11:19:36 AM </br>
 **ID události**: 7022 </br>
-**Úloha kategorie**: žádné </br>
+**Úloha kategorie**: Žádný </br>
 **Úroveň**: Chyba </br>
 **Klíčová slova**: Classic</br>
-**Uživatel**: není k dispozici </br>
+**Uživatel**: neuvedeno </br>
 **Počítač**: myvm.cosotos.com</br>
 **Popis**: Služba Klient DHCP přestala během spouštění reagovat.</br>
 
@@ -62,7 +62,7 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
 
 ### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
 
-1. Připojte se k [sériové konzoly a otevřené instance CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+1. Připojte se k [sériové konzoly a otevřené instance CMD](serial-console-windows.md#use-cmd-or-powershell-in-serial-console).
 ). Pokud konzole sériového portu není povolená na virtuálním počítači, přečtěte si téma [resetování síťové rozhraní](reset-network-interface.md).
 2. Zaškrtněte, pokud služba DHCP je zakázána na síťovém rozhraní:
 
@@ -95,7 +95,7 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>Klientská služba DHCP zastavená chyba přístup odepřen
 
-1. Připojte se k [konzoly sériového portu](serial-console-windows.md#) a otevřete instance prostředí PowerShell.
+1. Připojte se k [konzoly sériového portu](serial-console-windows.md) a otevřete instance prostředí PowerShell.
 2. Stáhněte si nástroj pro monitorování procesu spuštěním následujícího skriptu:
 
    ```

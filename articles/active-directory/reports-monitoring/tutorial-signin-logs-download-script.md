@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8b9097a62ca4bfa67fb5eb35e06f7834df6691e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 07239e3411bc8df06cdff731343649867b59a3c9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622801"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213089"
 ---
 # <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Kurz: Jak si stáhnout a použít skript, který přístup k protokolům přihlášení
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak se vygenerovat skript ke stažení všechny přih
 
 Potřebuješ
 
-* Tenanta služby Azure Active Directory premium (P1/P2) licenci. 
+* Tenanta služby Azure Active Directory premium (P1/P2) licenci. Všimněte si, že pokud nemáte žádná data aktivity před upgradem, bude trvat několik dní daná data zobrazit v sestavách po upgradu na licenci premium. 
 * Uživatel, který je v **globálního správce**, **správce zabezpečení**, **Čtenář zabezpečení** nebo **čtečky sestav** role pro příslušného tenanta. Každý uživatel můžete navíc použít vlastní přihlášení. 
 * Pokud chcete spustit na počítači s Windows 10, staženého skriptu [nastavení modulu AzureRM a nastavte zásady spouštění](concept-sign-ins.md#running-the-script-on-a-windows-10-machine).
 

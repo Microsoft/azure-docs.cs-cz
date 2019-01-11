@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: a287f985ce015ac6b886f4e5c2b86d6b3793e7d5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b5d931225edce92590b9c2b7f28ad39630362e6d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721831"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213820"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -26,7 +26,27 @@ Synchronizace dat SQL je služba založená na Azure SQL Database, která umož�
 > [!IMPORTANT]
 > Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
 
-## <a name="architecture-of-sql-data-sync"></a>Architektura synchronizace dat SQL
+## <a name="when-to-use-data-sync"></a>Kdy použít synchronizace dat
+
+Synchronizace dat je užitečné v případech, kdy data musí být pořád aktuální napříč několika databázemi Azure SQL nebo databáze systému SQL Server. Tady jsou hlavní svědectví pro synchronizaci dat:
+
+-   **Hybridní synchronizace dat:** Pomocí synchronizace dat můžete zachovat data synchronizovat mezi vaším místním databázím a Azure SQL Database umožňuje hybridní aplikace. Tato funkce může odvolat zákazníkům, kteří jsou zvažujete Přesun do cloudu a chcete poskládali z jejich aplikace v Azure.
+
+-   **Distribuované aplikace:** V mnoha případech je užitečné oddělit různé úlohy napříč různými databázemi. Například pokud máte velké provozní databáze, ale budete potřebovat ke spuštění úlohy vytváření sestav, nebo analýzy těchto dat, je užitečné mít druhý databáze pro tento další úlohy. Tento přístup minimalizuje dopad na výkon na vaše produkční úlohy. Synchronizace dat můžete ponechat tyto dvě databáze synchronizované.
+
+-   **Globálně distribuované aplikace:** Řada podniků zahrnují několik oblastí a dokonce i v několika zemích. Kvůli minimalizaci latence sítě, je nejvhodnější pro vaše data v oblasti blízko vás. Pomocí synchronizace dat se snadnou vejdou databází v oblastech po celém světě synchronizované.
+
+Synchronizace dat není preferovaným řešením v následujících scénářích:
+
+| Scénář | Některé doporučená řešení. |
+|----------|----------------------------|
+| Zotavení po havárii | [Geograficky redundantní zálohy Azure](sql-database-automated-backups.md) |
+| Škálování pro čtení | [Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)](sql-database-read-scale-out.md) |
+| ETL (OLTP na OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| Migrace z místního SQL serveru do Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+|||
+
+## <a name="overview-of-sql-data-sync"></a>Přehled synchronizace dat SQL
 
 Synchronizace dat vychází kolem koncepce skupině synchronizace. Skupina synchronizace se skupinou databází, které se mají synchronizovat.
 
@@ -49,26 +69,6 @@ Skupina synchronizace má následující vlastnosti:
 -   **Interval synchronizace** popisuje, jak často dochází k synchronizaci.
 
 -   **Zásada řešení konfliktů** je úroveň zásad skupiny, které mohou být *centra wins* nebo *člen wins*.
-
-## <a name="when-to-use-data-sync"></a>Kdy použít synchronizace dat
-
-Synchronizace dat je užitečné v případech, kdy data musí být pořád aktuální napříč několika databázemi Azure SQL nebo databáze systému SQL Server. Tady jsou hlavní svědectví pro synchronizaci dat:
-
--   **Hybridní synchronizace dat:** Pomocí synchronizace dat můžete zachovat data synchronizovat mezi vaším místním databázím a Azure SQL Database umožňuje hybridní aplikace. Tato funkce může odvolat zákazníkům, kteří jsou zvažujete Přesun do cloudu a chcete poskládali z jejich aplikace v Azure.
-
--   **Distribuované aplikace:** V mnoha případech je užitečné oddělit různé úlohy napříč různými databázemi. Například pokud máte velké provozní databáze, ale budete potřebovat ke spuštění úlohy vytváření sestav, nebo analýzy těchto dat, je užitečné mít druhý databáze pro tento další úlohy. Tento přístup minimalizuje dopad na výkon na vaše produkční úlohy. Synchronizace dat můžete ponechat tyto dvě databáze synchronizované.
-
--   **Globálně distribuované aplikace:** Řada podniků zahrnují několik oblastí a dokonce i v několika zemích. Kvůli minimalizaci latence sítě, je nejvhodnější pro vaše data v oblasti blízko vás. Pomocí synchronizace dat se snadnou vejdou databází v oblastech po celém světě synchronizované.
-
-Synchronizace dat není preferovaným řešením v následujících scénářích:
-
-| Scénář | Některé doporučená řešení. |
-|----------|----------------------------|
-| Zotavení po havárii | [Geograficky redundantní zálohy Azure](sql-database-automated-backups.md) |
-| Škálování pro čtení | [Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)](sql-database-read-scale-out.md) |
-| ETL (OLTP na OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
-| Migrace z místního SQL serveru do Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
-|||
 
 ## <a name="how-does-data-sync-work"></a>Jak funguje synchronizace dat? 
 

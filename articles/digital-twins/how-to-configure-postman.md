@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
-ms.openlocfilehash: 824c0caf0d54e8484093304c39c9f5dc05c83298
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 705d96225c699c6e9824dadbd7fa1272ba5ddb2d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117515"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213276"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postup konfigurace nástroje Postman pro digitální dvojče Azure
 
@@ -52,7 +52,7 @@ Konfigurace aplikace Azure Active Directory pro používání služby flow impli
 
 V dalším kroku nastavení a konfigurace nástroje Postman pro získání tokenu Azure Active Directory. Digitální dvojče Azure pomocí tokenu získaného proveďte později, ověřeného požadavku HTTP:
 
-1. Přejděte na [www.getpostman.com]([https://www.getpostman.com/) stažení aplikace.
+1. Přejděte na [www.getpostman.com](https://www.getpostman.com/) stažení aplikace.
 1. Ověřte, že vaše **autorizace URL** je správná. Mělo by to trvat formátu:
 
     ```plaintext

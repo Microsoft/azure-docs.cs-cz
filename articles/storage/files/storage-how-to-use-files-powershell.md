@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a8ac01850c090b36a5b9d896f6de6c122edfbcaa
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 64e041d61c628a54b7a55b11fceba0973f3f427b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628421"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214959"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytváření a správě sdílené složky Azure pomocí Azure Powershellu 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -51,7 +51,7 @@ $storageAcct = New-AzStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-Teď můžete vytvořit svou první sdílenou složku Azure. Můžete vytvořit pomocí sdílení souborů [New-AzStorageShare](/powershell/module/azure.storage/new-AzStorageshare) rutiny. Tento příklad vytvoří sdílenou složku `myshare`.
+Teď můžete vytvořit svou první sdílenou složku Azure. Můžete vytvořit pomocí sdílení souborů [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) rutiny. Tento příklad vytvoří sdílenou složku `myshare`.
 
 ```azurepowershell-interactive
 New-AzStorageShare `
@@ -81,7 +81,7 @@ Ve většině případů budete se sdílenou složkou Azure pracovat přes proto
 Následující příklady ukazují, jak použít modul Azure PowerShell k manipulaci s vaší sdílenou složku Azure pomocí REST souboru protokolu. 
 
 #### <a name="create-directory"></a>Vytvoření adresáře
-Chcete-li vytvořit nový adresář s názvem *myDirectory* v kořenovém adresáři sdílené složky Azure, použijte [New-AzStorageDirectory](/powershell/module/azure.storage/new-AzStoragedirectory) rutiny.
+Chcete-li vytvořit nový adresář s názvem *myDirectory* v kořenovém adresáři sdílené složky Azure, použijte [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) rutiny.
 
 ```azurepowershell-interactive
 New-AzStorageDirectory `
@@ -91,7 +91,7 @@ New-AzStorageDirectory `
 ```
 
 #### <a name="upload-a-file"></a>Nahrání souboru
-K předvedení jak nahrát soubor pomocí [Set-AzStorageFileContent](/powershell/module/azure.storage/set-AzStoragefilecontent) rutiny, musíme nejprve vytvořit soubor pomocné jednotce služby Cloud Shell s Powershellem odešlete. 
+K předvedení jak nahrát soubor pomocí [Set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent) rutiny, musíme nejprve vytvořit soubor pomocné jednotce služby Cloud Shell s Powershellem odešlete. 
 
 Tento příklad do nového souboru v pomocné jednotce vloží aktuální datum a čas a pak soubor nahraje do sdílené složky.
 
@@ -109,14 +109,14 @@ Set-AzStorageFileContent `
 
 Pokud používáte PowerShell místně, musíte nahradit `C:\Users\ContainerAdministrator\CloudDrive\` za cestu, která existuje na vašem počítači.
 
-Po nahrání souboru, můžete použít [Get-AzStorageFile](/powershell/module/Azure.Storage/Get-AzStorageFile) rutiny ověřte, že soubor byl nahrán do sdílené složky Azure. 
+Po nahrání souboru, můžete použít [Get-AzStorageFile](/powershell/module/Az.Storage/Get-AzStorageFile) rutiny ověřte, že soubor byl nahrán do sdílené složky Azure. 
 
 ```azurepowershell-interactive
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDirectory" 
 ```
 
 #### <a name="download-a-file"></a>Stažení souboru
-Můžete použít [Get-AzStorageFileContent](/powershell/module/azure.storage/get-AzStoragefilecontent) rutiny stáhnout kopii souboru, který jste právě nahráli do pomocné jednotky vaší služby Cloud Shell.
+Můžete použít [Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) rutiny stáhnout kopii souboru, který jste právě nahráli do pomocné jednotky vaší služby Cloud Shell.
 
 ```azurepowershell-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists because you've run this example before.
@@ -139,7 +139,7 @@ Get-ChildItem -Path "C:\Users\ContainerAdministrator\CloudDrive"
 ``` 
 
 #### <a name="copy-files"></a>Kopírování souborů
-Jednou z běžných úloh je kopírování souborů z jedné sdílené složky do jiné nebo do a z kontejneru úložiště objektů blob v Azure. Abychom si předvedli tuto funkci, můžete vytvořit novou sdílenou složku a zkopírovat soubor, který jste právě nahráli do této nové sdílené složky pomocí [Start AzStorageFileCopy](/powershell/module/azure.storage/start-AzStoragefilecopy) rutiny. 
+Jednou z běžných úloh je kopírování souborů z jedné sdílené složky do jiné nebo do a z kontejneru úložiště objektů blob v Azure. Abychom si předvedli tuto funkci, můžete vytvořit novou sdílenou složku a zkopírovat soubor, který jste právě nahráli do této nové sdílené složky pomocí [Start AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) rutiny. 
 
 ```azurepowershell-interactive
 New-AzStorageShare `
@@ -173,7 +173,7 @@ Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete prov
 - [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) v případě systémů souborů Windows, jako jsou NTFS a ReFS.
 - Snímky [Správce logických svazků (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) v případě systémů Linux.
 - Snímky [systému souborů Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) v případě macOS. 
- Snímek sdílené složky sdílené složky můžete vytvořit pomocí `Snapshot` metodu na objektu Powershellu pro sdílenou složku, kterou načtete pomocí [Get-AzStorageShare](/powershell/module/azure.storage/get-AzStorageshare) rutiny. 
+ Snímek sdílené složky sdílené složky můžete vytvořit pomocí `Snapshot` metodu na objektu Powershellu pro sdílenou složku, kterou načtete pomocí [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) rutiny. 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name "myshare"
@@ -213,7 +213,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Odstranění snímku sdílené složky
-Snímek sdílené složky můžete odstranit pomocí [odebrat AzStorageShare](/powershell/module/azure.storage/remove-AzStorageshare) rutiny s proměnnou obsahující `$snapshot` odkaz `-Share` parametr.
+Snímek sdílené složky můžete odstranit pomocí [odebrat AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) rutiny s proměnnou obsahující `$snapshot` odkaz `-Share` parametr.
 
 ```azurepowershell-interactive
 Remove-AzStorageShare -Share $snapshot

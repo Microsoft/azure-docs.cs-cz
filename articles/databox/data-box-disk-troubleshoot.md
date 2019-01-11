@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 13e42ae9b25c769a468a8c9839fd1aaf0abf2787
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191696"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213140"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Řešení potíží v disku Azure Data Box
 
@@ -96,12 +96,11 @@ Tato část podrobně popisuje některé z hlavních problémů při používán
 
 To může být způsobeno systém souborů musí provést. 
 
-- Jednotky pro čtení opakovanému připojení nebude fungovat s disků Data Box. Tento scénář není podporován s jednotkami dislocker dešifrovat. 
-- Pro čtení i zápis opakovanému připojení nebude fungovat. Vám může mít úspěšně znovu připojí zařízení, pomocí následujícího příkazu: 
+Jednotky pro čtení i zápis opakovanému připojení nebude fungovat s disků Data Box. Tento scénář není podporován s jednotkami dislocker dešifrovat. Vám může mít úspěšně znovu připojí zařízení, pomocí následujícího příkazu: 
 
     `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
 
-   I když opakovanému připojení bylo úspěšné, data nezachovají.
+I když opakovanému připojení bylo úspěšné, data nezachovají.
 
 **Řešení**
 
@@ -125,11 +124,11 @@ Pokud zjistíte, že jednotka nemá data poté, co byla odpojit (v případě, �
  
 Pokud je to tento případ, podívat na řešení pro [jednotky získávání připojit jako jen pro čtení](#issue-drive-getting-mounted-as-read-only).
 
-Pokud, který nebyl případě [stáhnout protokoly diagnostiky](#download-diagnostic-logs) z vašeho systému a [obraťte se na Microsoft Support](data-box-disk-contact-microsoft-support.md).
+Pokud, který nebyl tento případ, zkopírovat protokoly ze složky, která se má nástroj Data Box Disk odemknutí a [obraťte se na Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="deployment-issues-for-windows"></a>Problémy při nasazení pro Windows
 
-Tato část podrobně popisuje některé z hlavních problémů, kterým čelí během nasazení disku Data Box při používání klienta Linux pro kopírování dat
+Tato část podrobně popisuje některé z hlavních problémů, kterým čelí během nasazení disku Data Box při používání klienta Windows pro kopírování dat
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Problém: Nepovedlo se odemknout jednotku z nástroje BitLocker
  
@@ -139,7 +138,7 @@ Použili jste heslo v dialogovém okně nástroje BitLocker a pokusu o odemknut�
 
 **Řešení**
 
-Odemknout disků Data Box, budete muset použít nástroj Data Box Disk odemknutí a zadejte heslo z portálu Azure portal.
+Odemknout disků Data Box, budete muset použít nástroj Data Box Disk odemknutí a zadejte heslo z portálu Azure portal. Další informace najdete v části [kurzu: Rozbalit, připojení a odemknutí disku Azure Data Box](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Problém: Nepodařilo se odemknout nebo ověřit některé svazky. Obraťte se na podporu Microsoftu.
  
@@ -155,7 +154,7 @@ To znamená, že jsou pravděpodobně chybí odpovídající verzi prostředí W
 
 Můžete nainstalovat [v prostředí Windows PowerShell 5.0](https://www.microsoft.com/download/details.aspx?id=54616) a zkuste operaci zopakovat.
  
-Pokud jste pořád nejste schopni odemknout na svazcích, [obraťte se na Microsoft Support](data-box-disk-contact-microsoft-support.md).
+Pokud jste pořád nejste schopni odemknout svazky, zkopírovat protokoly ze složky, který má nástroj Data Box Disk odemknutí a [obraťte se na Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>Další postup
 

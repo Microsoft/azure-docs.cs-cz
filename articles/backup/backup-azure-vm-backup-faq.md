@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ec7de756a5b3c8e713fa8e73c18cebee32b83e28
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041284"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201308"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Nejčastější dotazy – Azure Backup
 
@@ -57,14 +57,13 @@ Pokud skupinu prostředků, služby Azure Backup nelze odstranit starší body o
 Ne. Datum a čas v místním počítači je místní s aktuální letní použít. Času nastavenému pro naplánované zálohování se mohou lišit od místního času z důvodu letního času.
 
 ### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Kolik datových disků můžete připojit k virtuálnímu počítači zálohovat službou Azure Backup?
-Azure Backup můžete zálohovat virtuální počítače s až 16 disků. Podpora pro 16 disků najdete v [nejnovější verzi](backup-upgrade-to-vm-backup-stack-v2.md) V2 v zásobníku zálohování virtuálních počítačů Azure.
+Azure Backup můžete zálohovat virtuální počítače s až 16 disků. Podpora pro 16 disků najdete v [rychlé obnovení](backup-instant-restore-capability.md).
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Fakturuje se u Azure podporuje zálohování SSD spravovaných disků úrovně standard?
-Azure Backup podporuje [SSD na úrovni standard managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD spravované disky pro virtuální počítače Azure poskytují nový typ trvalého úložiště. Podporu pro disky SSD spravované je součástí [nejnovější verzi](backup-upgrade-to-vm-backup-stack-v2.md) V2 v zásobníku zálohování virtuálních počítačů Azure.
+Azure Backup podporuje [SSD na úrovni standard managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD spravované disky pro virtuální počítače Azure poskytují nový typ trvalého úložiště. Podporu pro disky SSD spravované je součástí [rychlé obnovení](backup-instant-restore-capability.md).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Můžete nám zálohování virtuálního počítače s diskem WA akcelerátor zápisu povolené?
-Na disku povoleno WA nelze vytvářet snímky. Služba Azure Backup však můžete vyloučit disk WA povolené ze zálohy. Vyloučení disku pro virtuální počítače s podporou WA disky se podporuje jenom pro předplatná upgradovat na zásobník záloh virtuálních počítačů Azure V2. Upgrade na zásobník záloh virtuálních počítačů Azure V2, najdete v tomto [článku](backup-upgrade-to-vm-backup-stack-v2.md). Tato funkce je aktuálně dostupná v oblasti Japonsko – východ, Severní Evropa, jihovýchodní Asie, východní USA, západní USA 2, západní Evropa a východní USA 2.
-
+Na disku povoleno WA nelze vytvářet snímky. Služba Azure Backup však můžete vyloučit disk WA povolené ze zálohy. Vyloučení disku pro virtuální počítače s podporou WA disky se podporuje jenom pro předplatná upgradovat na rychlé obnovení.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Mám virtuálního počítače s disky zápisu akcelerátorů (WA) a nainstalovat SAP HANA. Jak můžu zálohovat?
 Azure Backup nejde zálohovat disk WA povolené, ale můžete vyloučit ze zálohy. Zálohování však nebude poskytovat konzistence databáze, protože na disku povoleno WA informace se nezálohuje. Pokud chcete disk s operačním systémem, zálohování a zálohování disků, které nejsou povolené WA, můžete zálohování disků s touto konfigurací.
@@ -104,7 +103,7 @@ Ano. I v případě, že odstraníte virtuální počítač, můžete přejít n
 Pro spravovaného disku virtuální počítač Azure obnovení do skupin dostupnosti je povoleno tím, že poskytuje možnost v šabloně při obnovování jako spravované disky. Tato šablona obsahuje vstupní parametr s názvem **dostupnosti**.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Jak jsme získat rychlejší možnosti obnovení?
-Pro rychlejší obnovení výkon, doporučujeme přesunout na zásobník záloh virtuálních počítačů V2 a používat [funkce rychlých RP](backup-upgrade-to-vm-backup-stack-v2.md).
+Pro rychlejší obnovení jsme se přesouvají [rychlé obnovení](backup-instant-restore-capability.md) funkce.
 
 ## <a name="manage-vm-backups"></a>Správa záloh virtuálních počítačů
 

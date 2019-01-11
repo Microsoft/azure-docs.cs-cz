@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: d4e3419241d44744f8a692896848edb6cebb56a0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 84a495274ffadfe816ced21cd095f7a5e18d7f89
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049690"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199540"
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
 > [!div class="op_single_selector"]
@@ -40,9 +40,9 @@ Pokud je potřeba ho nastavit, přejděte na [Začínáme na počítači Mac](se
 Chcete-li začít s Reliable Services, stačí pochopit pár základních konceptů:
 
 * **Typ služby**: Toto je vaše implementace služby. Je definován třídou napíšete, která rozšiřuje `StatelessService` a jakékoli další kód nebo závislosti v něm používat společně s název a číslo verze.
-* **Instance služby s názvem**: ke spuštění služby, můžete vytvořit pojmenované instance typu služby mnohem jako vytvoříte instance objektů typu třídy. Instance služby, které jsou ve skutečnosti objekt instancí třídy služby, který píšete.
-* **Hostitel služby**: instance pojmenovanou službu vytvoříte potřebujete ke spuštění v hostiteli. Hostitel služby je právě proces, ve kterém můžete spustit instance vaší služby.
-* **Registrace služby**: registrace spojuje všechno. Typ služby musí být zaregistrovaná s modulem runtime Service Fabric v hostiteli služby umožňuje Service Fabric pro vytvoření instancí jeho spuštění.  
+* **Instance služby s názvem**: Ke spuštění služby, můžete vytvořit pojmenované instance typu služby podobně jako vytvoříte instance objektů typu třídy. Instance služby, které jsou ve skutečnosti objekt instancí třídy služby, který píšete.
+* **Hostitel služby**: Instance s názvem služby, které vytvoříte třeba spustit v hostiteli. Hostitel služby je právě proces, ve kterém můžete spustit instance vaší služby.
+* **Registrace služby**: Registrace spojuje všechno. Typ služby musí být zaregistrovaná s modulem runtime Service Fabric v hostiteli služby umožňuje Service Fabric pro vytvoření instancí jeho spuštění.  
 
 ## <a name="create-a-stateless-service"></a>Vytvoření bezstavové služby
 Začněte vytvořením aplikace Service Fabric. Sada Service Fabric SDK pro Linux zahrnuje Yeoman generátor kvůli generování uživatelského rozhraní pro aplikace Service Fabric s bezstavovou službu. Spusťte následující Yeoman spuštěním příkazu:
@@ -201,7 +201,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) je implementaci slovníku, který můžete použít ke spolehlivému uložení stavu ve službě. S platformou Service Fabric a spolehlivé HashMaps můžete ukládat data přímo do vaší služby bez nutnosti externí trvalého úložiště. Spolehlivé HashMaps vytvořit data s vysokou dostupností. Service Fabric dosahuje tak, že vytváření a správě více *repliky* služby za vás. Také poskytuje rozhraní API, který vyčleňuje složitých úkolů při správě tyto repliky a jejich přechodů mezi stavy.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) je implementaci slovníku, který můžete použít ke spolehlivému uložení stavu ve službě. S platformou Service Fabric a spolehlivé HashMaps můžete ukládat data přímo do vaší služby bez nutnosti externí trvalého úložiště. Spolehlivé HashMaps vytvořit data s vysokou dostupností. Service Fabric dosahuje tak, že vytváření a správě více *repliky* služby za vás. Také poskytuje rozhraní API, který vyčleňuje složitých úkolů při správě tyto repliky a jejich přechodů mezi stavy.
 
 Reliable Collections ukládat jakýkoli typ Javy, včetně vašich vlastních typů pomocí několika upozornění:
 

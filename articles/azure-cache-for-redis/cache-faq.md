@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 444f1aaee496666745be548bcdfadf3a4f162699
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5d70e4beb97a23212bc85d529382d8e89f09336d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104059"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199912"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis.
@@ -120,7 +120,7 @@ Následují faktory pro výběr variant mezipaměti.
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Mezipaměť Azure Redis výkonu
-Následující tabulka uvádí maximální šířka pásma hodnotami zjištěnými při testování různých velikostí úrovně Standard a Premium ukládá do mezipaměti pomocí `redis-benchmark.exe` z virtuálního počítače Iaas s mezipamětí Azure Redis koncového bodu. Propustnost SSL používá redis srovnávacích testů s stunnelu pro připojení k mezipaměti Azure pro koncový bod Redis.
+Následující tabulka uvádí maximální šířka pásma hodnotami zjištěnými při testování různých velikostí úrovně Standard a Premium ukládá do mezipaměti pomocí `redis-benchmark.exe` z virtuálního počítače IaaS s mezipamětí Azure Redis koncového bodu. Propustnost SSL používá redis srovnávacích testů s stunnelu pro připojení k mezipaměti Azure pro koncový bod Redis.
 
 >[!NOTE] 
 >Tyto hodnoty není zaručeno a neexistuje žádná smlouva SLA pro tyto čísla, ale musí být typické. By se měly načíst otestovat vlastní aplikaci k určení velikosti mezipaměti správné pro vaši aplikaci.

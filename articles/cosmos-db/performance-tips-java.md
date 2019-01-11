@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 62b561d35d4cacd27555163ce666e98c12d792d8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 221dd8a26f0d01d79d066c214bd53f7e881e5554
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044123"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201211"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a Javou
 
@@ -31,10 +31,10 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
 1. **Režim připojení: Použití DirectHttps**
 
-    Jak se klient připojí ke službě Azure Cosmos DB má důležité vliv na výkon, hlavně z hlediska pozorované latence na straně klienta. Existuje jeden klíč konfigurační nastavení pro konfiguraci klienta k dispozici [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) – [ConnectionMode](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode).  Dvě dostupné ConnectionModes jsou:
+    Jak se klient připojí ke službě Azure Cosmos DB má důležité vliv na výkon, hlavně z hlediska pozorované latence na straně klienta. Existuje jeden klíč konfigurační nastavení pro konfiguraci klienta k dispozici [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy) – [ConnectionMode](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode).  Dvě dostupné ConnectionModes jsou:
 
-   1. [Brána (výchozí)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode)
-   2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode)
+   1. [Brána (výchozí)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode)
+   2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode)
 
     Režim brány se podporuje na všech platformách sady SDK a je nakonfigurované výchozí nastavení.  Pokud je aplikace spuštěná v rámci podnikové sítě s omezeními striktní brány firewall, brána je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Tento režim brány zahrnuje směrování další síti pokaždé, když se data číst nebo zapisovat do služby Azure Cosmos DB je ale úkor výkonu. Z tohoto důvodu režimu DirectHttps nabízí lepší výkon z důvodu menší počet segmentů směrování. 
 
@@ -69,28 +69,28 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     Se sadami SDK služby Azure Cosmos DB se neustále vylepšují pro zajištění nejlepšího výkonu. Najdete v článku [Azure Cosmos DB SDK](documentdb-sdk-java.md) stránky pro určení nejnovější sady SDK a zkontrolujte vylepšení.
 2. **Použití klienta služby Azure Cosmos DB jednotlivý prvek po dobu životnosti vaší aplikace**
 
-    Každý [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) instance je bezpečná pro vlákno a provádí připojení efektivní správu a ukládání adres do mezipaměti při fungování v přímém režimu. Povolit správu efektivní připojení a lepší výkon pomocí DocumentClient, doporučujeme použít jednu instanci DocumentClient na doménu aplikace po dobu životnosti aplikace.
+    Každý [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient) instance je bezpečná pro vlákno a provádí připojení efektivní správu a ukládání adres do mezipaměti při fungování v přímém režimu. Povolit správu efektivní připojení a lepší výkon pomocí DocumentClient, doporučujeme použít jednu instanci DocumentClient na doménu aplikace po dobu životnosti aplikace.
 
    <a id="max-connection"></a>
 3. **Zvýšit MaxPoolSize na hostitele, když používáte režim brány**
 
-    Azure Cosmos DB požadavků probíhají přes protokol HTTPS nebo rozhraní REST, když používáte režim brány a jsou vystaveny výchozí limit pro připojení za název hostitele nebo IP adresu. Budete muset nastavit MaxPoolSize na vyšší hodnotu (200-1000) tak, aby Klientská knihovna může využívat více současných připojení ke službě Azure Cosmos DB. V sadě Java SDK, výchozí hodnota pro [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.getmaxpoolsize) je 100. Použití [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) ke změně hodnoty.
+    Azure Cosmos DB požadavků probíhají přes protokol HTTPS nebo rozhraní REST, když používáte režim brány a jsou vystaveny výchozí limit pro připojení za název hostitele nebo IP adresu. Budete muset nastavit MaxPoolSize na vyšší hodnotu (200-1000) tak, aby Klientská knihovna může využívat více současných připojení ke službě Azure Cosmos DB. V sadě Java SDK, výchozí hodnota pro [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) je 100. Použití [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) ke změně hodnoty.
 
 4. **Ladění používejte u dělených kolekcí paralelní dotazy**
 
     Azure Cosmos DB SQL Java SDK verze 1.9.0 a novější paralelní dotazy podpory, které vám umožní dotazovat do dělené kolekce paralelně. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) týkající se práce spolu se sadami SDK. Paralelní dotazy jsou navržené ke zlepšení latence dotazu a propustnost nad jejich protějšky sériového portu.
 
-    (a) ***ladění setMaxDegreeOfParallelism\:***  paralelní dotazy pracovní dotazováním více oddílů souběžně. Data z jednotlivých dělené kolekce je však načíst sériově s ohledem na dotaz. Ano, použít [setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options.setmaxdegreeofparallelism) chcete nastavit počet oddílů, který má maximální příležitost dosáhnout největší výkonných dotazů, k dispozici všechny ostatní podmínky systém zůstávají stejné. Pokud si nejste jisti počet oddílů, setMaxDegreeOfParallelism můžete použít k nastavení vysoké číslo a systém zvolí jako maximální volnost paralelismu minimální (počet oddílů, vstup uživatele, které jsou k dispozici). 
+    (a) ***ladění setMaxDegreeOfParallelism\:***  paralelní dotazy pracovní dotazováním více oddílů souběžně. Data z jednotlivých dělené kolekce je však načíst sériově s ohledem na dotaz. Ano, použít [setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) chcete nastavit počet oddílů, který má maximální příležitost dosáhnout největší výkonných dotazů, k dispozici všechny ostatní podmínky systém zůstávají stejné. Pokud si nejste jisti počet oddílů, setMaxDegreeOfParallelism můžete použít k nastavení vysoké číslo a systém zvolí jako maximální volnost paralelismu minimální (počet oddílů, vstup uživatele, které jsou k dispozici). 
 
     Je důležité si uvědomit, že paralelní dotazy vytvořit nejlepší výhody, pokud je data rovnoměrně rozdělené mezi všechny oddíly s ohledem na dotaz. Pokud dělené kolekce je rozdělit na oddíly tak, že se soustřeďuje všechny nebo většina dat vrácených dotazem v několika oddílech (jeden oddíl v nejhorším případě) a pak výkon dotazu by bottlenecked podle těchto oddílů.
 
-    (b) ***ladění setMaxBufferedItemCount\:***  paralelní dotaz byl navržen k předběžného načítání výsledků během zpracování dávky aktuální výsledky klientem. Předběžné načítání pomáhá zvyšování celkové latence dotazu. setMaxBufferedItemCount omezuje počet předem počet získaných výsledků. Nastavením [setMaxBufferedItemCount](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options.setmaxbuffereditemcount) očekávaný počet výsledků vrácených (nebo vyššího čísla), díky tomu dotazu pro příjem maximální výhody z předběžného načítání.
+    (b) ***ladění setMaxBufferedItemCount\:***  paralelní dotaz byl navržen k předběžného načítání výsledků během zpracování dávky aktuální výsledky klientem. Předběžné načítání pomáhá zvyšování celkové latence dotazu. setMaxBufferedItemCount omezuje počet předem počet získaných výsledků. Nastavením [setMaxBufferedItemCount](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) očekávaný počet výsledků vrácených (nebo vyššího čísla), díky tomu dotazu pro příjem maximální výhody z předběžného načítání.
 
     Předběžné načítání funguje stejným způsobem bez ohledu na to, z MaxDegreeOfParallelism a jednu vyrovnávací paměti pro data ze všech oddílů.  
 
 5. **Implementace omezení rychlosti intervalech getRetryAfterInMilliseconds**
 
-    Během testování výkonnosti, měli byste zvýšit zatížení dokud malý počet žádostí o získání omezené. Když omezený, klientská aplikace má omezení rychlosti na omezení pro interval opakování zadaný server. Respektování omezení rychlosti zajistí, že strávíte co nejkratším čase čekat mezi opakovanými pokusy. Podpora zásad opakování je součástí verze 1.8.0 a nad z [sady Java SDK](documentdb-sdk-java.md). Další informace najdete v tématu [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception.getretryafterinmilliseconds).
+    Během testování výkonnosti, měli byste zvýšit zatížení dokud malý počet žádostí o získání omezené. Když omezený, klientská aplikace má omezení rychlosti na omezení pro interval opakování zadaný server. Respektování omezení rychlosti zajistí, že strávíte co nejkratším čase čekat mezi opakovanými pokusy. Podpora zásad opakování je součástí verze 1.8.0 a nad z [sady Java SDK](documentdb-sdk-java.md). Další informace najdete v tématu [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds).
 
 6. **Horizontální navýšení kapacity vašich úloh klienta**
 
@@ -103,17 +103,17 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
    <a id="tune-page-size"></a>
 8. **Vyladěním stránek pro informační kanály pro zajištění lepšího výkonu dotazů/čtení**
 
-    Funkce při provádění hromadné čtení dokumentů s použitím čtení kanálu (třeba [readDocuments]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.readdocuments#com_microsoft_azure_documentdb__document_client_readDocuments_String_FeedOptions_c) nebo při vydání příkazu jazyka SQL, výsledky se vrátí segmentovaným způsobem, pokud sada výsledků je příliš velký. Ve výchozím nastavení výsledky jsou vráceny v blocích 100 položek nebo 1 MB, podle omezení dosáhnete první.
+    Funkce při provádění hromadné čtení dokumentů s použitím čtení kanálu (třeba [readDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocuments#com.microsoft.azure.documentdb.documentclient.readDocumentsStringFeedOptionsc)) nebo při vydání příkazu jazyka SQL, výsledky se vrátí segmentovaným způsobem, pokud sada výsledků je příliš velký. Ve výchozím nastavení výsledky jsou vráceny v blocích 100 položek nebo 1 MB, podle omezení dosáhnete první.
 
     Abyste snížili počet sítě zaokrouhlit zkracuje dobu odezvy potřebný k načtení všech platných výsledky, můžete zvýšit velikost stránky pomocí [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) hlavičku požadavku na až 1000. V případech, kdy potřebujete zobrazit jenom pár výsledky například pokud vaše uživatelské rozhraní nebo aplikací rozhraní API vrátí jenom 10 výsledky čas, může také snížit velikost stránky na 10 ke snížení propustnosti využité pro dotazy a čtení.
 
-    Můžete také nastavit velikost stránky pomocí [setPageSize metoda](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options_base.setpagesize#com_microsoft_azure_documentdb__feed_options_base_setPageSize_Integer).
+    Můžete také nastavit velikost stránky pomocí [setPageSize metoda](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptionsbase.setpagesize#com.microsoft.azure.documentdb.feedoptionsbase.setPageSizeInteger).
 
 ## <a name="indexing-policy"></a>Zásada indexování
  
 1. **Vyloučit cesty nevyužité indexování pro rychlejší zápisy**
 
-    Zásady indexování služby Azure Cosmos DB umožňuje určit, které dokumentu cesty pro zahrnutí nebo vyloučení z indexování s využitím indexování cesty ([setIncludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._indexing_policy.setincludedpaths) a [setExcludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._indexing_policy.setexcludedpaths)). Použití indexování cesty může nabídnout zápisu lepší výkon a dolní index úložiště pro scénáře, ve kterých vzory dotazů znám předem, jako jsou indexování náklady přímo korelační počtu jedinečné cesty indexované.  Například následující kód ukazuje, jak vyloučit celý oddíl dokumenty (označovaný také jako podstrom) z indexování pomocí "*" zástupný znak.
+    Zásady indexování služby Azure Cosmos DB umožňuje určit, které dokumentu cesty pro zahrnutí nebo vyloučení z indexování s využitím indexování cesty ([setIncludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths) a [setExcludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)). Použití indexování cesty může nabídnout zápisu lepší výkon a dolní index úložiště pro scénáře, ve kterých vzory dotazů znám předem, jako jsou indexování náklady přímo korelační počtu jedinečné cesty indexované.  Například následující kód ukazuje, jak vyloučit celý oddíl dokumenty (označovaný také jako podstrom) z indexování pomocí "*" zástupný znak.
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -138,7 +138,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
     Složitost dotazu má vliv na tom, kolik jednotek žádosti se spotřebovávají pro operaci. Počet predikátů, povaze predikáty, počet funkcí UDF a velikost zdrojové datové sady všech ovlivnit náklady na operace dotazů.
 
-    K měření nároky na jakékoli operace (vytvoření, aktualizace nebo odstranění), zkontrolujte [x-ms žádost poplatek](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) záhlaví (nebo ekvivalentní vlastnost RequestCharge v [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) nebo [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response) měření počtu jednotek žádosti spotřebovaná těchto operací.
+    K měření nároky na jakékoli operace (vytvoření, aktualizace nebo odstranění), zkontrolujte [x-ms žádost poplatek](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) záhlaví (nebo ekvivalentní vlastnost RequestCharge v [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) nebo [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) měření počtu jednotek žádosti spotřebovaná těchto operací.
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);
@@ -158,7 +158,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
     Sady SDK všechny implicitně zachytit tuto odpověď, respektují zadaný server hlavičkou retry-after a opakujte žádost. Pokud váš účet je současně přistupuje více klientů, bude při dalším pokusu úspěšné.
 
-    Pokud máte více než jednoho klienta kumulativně provozní konzistentně výše je frekvence požadavků, nemusí stačit výchozí počet opakování aktuálně nastavená na 9 interně klientem; v tomto případě klient vyvolá [DocumentClientException](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception) se stavem kódu 429 do aplikace. Výchozí počet opakování můžete změnit pomocí [setRetryOptions](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setretryoptions) na [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) instance. Ve výchozím nastavení je vrácena DocumentClientException se stavovým kódem 429 po uplynutí určité doby kumulativní Počkejte 30 sekund, pokud požadavek dál pracovat nad frekvence požadavků. K tomu dojde i v případě aktuální počet opakování je menší než počet opakování, jde o výchozí hodnotu 9 nebo uživatelem definovanou hodnotu.
+    Pokud máte více než jednoho klienta kumulativně provozní konzistentně výše je frekvence požadavků, nemusí stačit výchozí počet opakování aktuálně nastavená na 9 interně klientem; v tomto případě klient vyvolá [DocumentClientException](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception) se stavem kódu 429 do aplikace. Výchozí počet opakování můžete změnit pomocí [setRetryOptions](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions) na [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy) instance. Ve výchozím nastavení je vrácena DocumentClientException se stavovým kódem 429 po uplynutí určité doby kumulativní Počkejte 30 sekund, pokud požadavek dál pracovat nad frekvence požadavků. K tomu dojde i v případě aktuální počet opakování je menší než počet opakování, jde o výchozí hodnotu 9 nebo uživatelem definovanou hodnotu.
 
     Při automatické opakování chování pomáhá zlepšit odolnost proti chybám a použitelnost pro většinu aplikací, zřejmě na odds při provádění srovnávací testy výkonu, zejména v případě měření latence.  Klienta pozorované latence se dosahuje, pokud experiment narazí na server omezení a způsobí, že klientská sada SDK tiše opakování. Aby se zabránilo latence dosahující během výkonu experimenty, měřit poplatek vrácený každou operaci a ujistěte se, jsou požadavky funguje pod sazbu žádost o rezervovanou. Další informace najdete v tématu [jednotky žádostí](request-units.md).
 3. **Návrh pro zajištění vyšší propustnost menších dokumentů**

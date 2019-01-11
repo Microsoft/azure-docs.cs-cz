@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 6d679cc3d24e2f0f2cb79eb2c9f02422d0818c80
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994959"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215265"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Osvědčené postupy pro nastavení sítě pro úlohy migrovat do Azure
 
@@ -185,7 +185,7 @@ Při nastavování site-to-site VPN, postupujte takto:
 **Víc se uč:**
 
 - [Kontrola](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) kompatibilní s místními zařízeními VPN.
-- [Získejte přehled](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateway) bran VPN.
+- [Získejte přehled](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) bran VPN.
 - [Další informace o](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable) vysoce dostupných připojení VPN.
 - [Další informace o](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) plánování a navrhování bránu VPN.
 - [Kontrola](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku) nastavení služby VPN gateway.

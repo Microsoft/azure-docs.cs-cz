@@ -10,21 +10,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 5127b748111f993f95f940f4add81c42a032e038
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ad38bdf30d04f309bedaf9a7cc8b3d5b1aad6df7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722084"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215061"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Tento článek obsahuje seznam velikostí virtuálních počítačů (VM), které jsou k dispozici ve službě Azure Stack.
+
+Disk IOPS (vstupně-výstupní operace za sekundu) ve službě Azure Stack je funkce velikost virtuálního počítače místo typu disku. To znamená, že Standard_Fs řady virtuálních počítačů, bez ohledu na to, zda zvolíte SSD nebo pevný disk pro typ disku je limit vstupně-výstupních operací pro jeden další datový disk 2300 vstupně-výstupních operací. Omezení vstupně-výstupních operací je limit (maximální možná) Chcete-li zabránit "hlučným sousedům". Se nedá jistotou, vstupně-výstupních operací, který se zobrazí na konkrétní velikosti virtuálního počítače.
 
 ## <a name="general-purpose"></a>Obecné účely
 

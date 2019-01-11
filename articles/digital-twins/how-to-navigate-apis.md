@@ -2,18 +2,18 @@
 title: Přejděte rozhraní API Azure digitální dvojče | Dokumentace Microsoftu
 description: Zjistěte, jak běžné vzory dotazů na rozhraní API pro správu Azure digitální dvojče.
 author: dsk-2015
-manager: bertvanhoof
+manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 2221e8b22450a353da42564e5b93342a11e59f71
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108318"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200951"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak používat rozhraní API pro správu Azure digitální dvojče
 
@@ -25,11 +25,11 @@ Následující seznam obsahuje součásti digitální dvojče rozhraní API.
 
 * [/ prostory](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Tato rozhraní API používat fyzických umístěních v nastavení aplikace. Ty umožňují vytvářet, odstraňovat a Správa digitální mapování fyzické umístění ve formě [prostorový graf](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
 
-* [/Resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Tato rozhraní API můžete nastavit prostředky, jako jsou centra IoT pro vaši instanci digitální dvojče.
-
 * [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Tato rozhraní API komunikovat se zařízeními ve vašem nastavení. Tato zařízení můžou spravovat jeden nebo více senzory. Například zařízení může být váš telefon nebo pod senzor Raspberry Pi nebo brány Lora atd.
 
 * [/Sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Tato rozhraní API umožňují komunikovat s senzorů spojené s vaším zařízením a fyzických umístěních. Snímačům zaznamenávat a odesílat okolí hodnoty, které lze použít k manipulaci s prostorových prostředí.  
+
+* [/Resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Tato rozhraní API můžete nastavit prostředky, jako jsou centra IoT pro vaši instanci digitální dvojče.
 
 * [/ typy](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Tato rozhraní API umožňují přidružit Rozšířené typy digitální dvojče objekty, chcete-li přidat specifické vlastnosti na tyto objekty. Tyto typy umožňují snadné filtrování a seskupování objektů v uživatelském rozhraní a vlastní funkce, které zpracovávají vaše telemetrická data. Příkladem rozšířeného typy jsou *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType* , *SpaceBlobType*, *SpaceResourceType*, a tak dále.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9a36859a2c6f42e02dccb76a514f09a705f37f56
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156506"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200424"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption
 
@@ -35,7 +35,7 @@ Azure Disk Encryption je podporována v následujících operačních systémech
 - Azure Disk Encryption je pouze podporované na konkrétní Galerie Azure Linux server distribucích a verzích. Seznam aktuálně podporovaných verzí najdete [nejčastější dotazy týkající se Azure Disk Encryption](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
 - Azure Disk Encryption vyžaduje, aby váš trezor klíčů a virtuální počítače jsou umístěny ve stejné oblasti Azure a předplatné. Konfigurace prostředků v oblastech způsobí selhání při povolování funkce Azure Disk Encryption.
 
-## <a name="bkmk_LinuxPrereq"></a> Další požadavky pro virtuální počítače Iaas s Linuxem 
+## <a name="bkmk_LinuxPrereq"></a> Další požadavky pro virtuální počítače IaaS s Linuxem 
 
 - Azure Disk Encryption pro Linux vyžaduje 7 GB paměti RAM ve virtuálním počítači povolit šifrování disku operačního systému na [podporované obrázky](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Po dokončení procesu šifrování disku operačního systému virtuálního počítače může být nakonfigurován pro spouštění s méně paměti.
 - Před povolením šifrování, třeba správně zobrazeny v /etc/fstab datových disků k šifrování. Použijte název zařízení trvalé bloku pro tuto položku jako zařízení, které názvy ve formátu "/ dev/sdX" nelze spoléhat na přidruženy stejném disku mezi restartováními, zejména po šifrování se použije. Další podrobnosti o tomto chování najdete v článku: [Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem](../virtual-machines/linux/troubleshoot-device-names-problems.md)

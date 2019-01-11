@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134433"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213107"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blokuje příchozí provoz Azure brána firewall hostovaného operačního systému virtuálního počítače
 
@@ -112,8 +112,8 @@ Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](s
 
     > [!Note]
     > Následující pokyny se vztahují zásady brány firewall, v závislosti na tom, jak je nastavit:
-    >    * *BlockInbound*: veškerý příchozí provoz se zablokuje, pokud nemáte v platnosti pravidla povolení provozu.
-    >    * *BlockInboundAlways*: ignorují se všechna pravidla brány firewall a veškerý provoz se zablokuje.
+    >    * *BlockInbound*: Veškerý příchozí provoz se zablokuje, pokud nemáte v platnosti pravidla povolení provozu.
+    >    * *BlockInboundAlways*: Bude ignorovat všechna pravidla brány firewall a veškerý provoz se zablokuje.
 
 2.  Upravit *DefaultInboundAction* nastavit tyto profily **povolit** provoz. Chcete-li to provést, spusťte následující příkaz:
 
@@ -142,7 +142,7 @@ Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](s
 
 #### <a name="mitigation-1"></a>Zmírnění dopadů 1
 
-Zobrazit [jak do brány Firewall povolte nebo zakažte pravidlo v dokumentu operačního systému hosta]().
+Zobrazit [jak do brány Firewall povolte nebo zakažte pravidlo v operačním systému hosta](enable-disable-firewall-rule-guest-os.md).
 
 #### <a name="mitigation-2"></a>Zmírnění dopadů 2
 

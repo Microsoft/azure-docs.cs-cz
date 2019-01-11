@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/02/2018
+ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: b6aaf98ca3b5581691b6c70783be5250b506056c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 53945559be01b6e9f5778f5df096f7fcbb24a03f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990956"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214483"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Linuxem s Akcelerovanými síťovými službami
 
 V tomto kurzu se dozvíte, jak vytvořit virtuální počítač s Linuxem (VM) s Akcelerovanými síťovými službami. Vytvoření virtuálního počítače s Windows s Akcelerovanými síťovými službami, najdete v tématu [vytvoření virtuálního počítače s Windows s Akcelerovanými síťovými službami](create-vm-accelerated-networking-powershell.md). Akcelerované síťové služby umožňuje jeden kořenový vstupně-výstupních operací virtualizaci (rozhraní SR-IOV) k virtuálnímu počítači, výrazně zlepšit sítě. Tato cesta výkonné obchází hostitele z datapath, snížení latence, zpoždění a využití procesoru pro použití s nejnáročnějších úloh sítě na podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikace mezi dvěma virtuálními počítači a nemusíte akcelerované síťové služby:
 
-![porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
+![Porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
 Bez akcelerované síťové služby, musí procházet veškerý síťový provoz do a z virtuálního počítače hostitele a virtuálního přepínače. Virtuální přepínač poskytuje všechny vynucení zásad, jako jsou skupiny zabezpečení sítě, seznamy řízení přístupu, izolace a jiné síťové virtualizované služby pro síťový provoz. Další informace o virtuální přepínače, [virtualizace sítě Hyper-V a virtuálního přepínače](https://technet.microsoft.com/library/jj945275.aspx) článku.
 
-S akcelerovanými síťovými službami, síťový provoz dorazí na síťové rozhraní Virtuálního počítače (NIC) a pak se předávají do virtuálního počítače. Všechny zásady sítě, které se vztahuje virtuální přepínač se teď se sníženou zátěží a použít v hardwaru. Použití zásad v hardwaru umožňuje síťovou kartu pro provoz sítě přímo k virtuálnímu počítači, vynechání hostitele a virtuálního přepínače, při zachování všech zásad, který se použije na hostiteli.
+S akcelerovanými síťovými službami, síťový provoz dorazí na síťové rozhraní virtuálního počítače (NIC) a pak se předávají do virtuálního počítače. Všechny zásady sítě, které se vztahuje virtuální přepínač se teď se sníženou zátěží a použít v hardwaru. Použití zásad v hardwaru umožňuje síťovou kartu pro provoz sítě přímo k virtuálnímu počítači, vynechání hostitele a virtuálního přepínače, při zachování všech zásad, který se použije na hostiteli.
 
-Výhody akcelerované síťové služby se vztahují jenom na virtuální počítač, který je zapnutá. Pro nejlepší výsledky je ideální k povolení této funkce na alespoň dva virtuální počítače připojené ke stejné virtuální síti Azure (VNet). Při komunikaci mezi virtuálními sítěmi nebo připojení v místním, tato funkce má minimální dopad na celkové latenci.
+Výhody akcelerované síťové služby se vztahují jenom na virtuální počítač, který je zapnutá. Pro nejlepší výsledky je ideální k povolení této funkce na alespoň dva virtuální počítače připojené ke stejné Azure virtual network (VNet). Při komunikaci mezi virtuálními sítěmi nebo připojení v místním, tato funkce má minimální dopad na celkové latenci.
 
 ## <a name="benefits"></a>Výhody
-* **Nižší latenci za vyšší pakety za sekundu (pps):** odebrání virtuálního přepínače datapath eliminuje čas věnovat paketů na hostiteli pro zpracování zásad a zvyšuje počet paketů, které mohou být zpracovány v tomto virtuálním počítači.
-* **Snižuje zpoždění:** virtuální přepínač zpracování závisí na množství zásady, které je potřeba použít a zatížení procesoru, který provádí zpracování. Snižování zátěže vynucení zásad hardwaru odebere této variabilitě poskytováním pakety přímo k virtuálnímu počítači, odebrání hostitele tak, aby komunikace virtuálních počítačů a všechny softwaru přerušení a přepnutí kontextu.
-* **Snížení využití procesoru:** obcházení virtuální přepínač na hostiteli vede k méně využití procesoru pro zpracování síťového provozu.
+* **Nižší latenci za vyšší pakety za sekundu (pps):** Odebrání virtuálního přepínače datapath odebere čas, kdy pakety výdajů v hostiteli pro zpracování zásad a zvyšuje počet paketů, které mohou být zpracovány v tomto virtuálním počítači.
+* **Zmenšit zpoždění:** Virtuální přepínač zpracování závisí na množství zásady, které je potřeba použít a zatížení procesoru, který provádí zpracování. Snižování zátěže vynucení zásad hardwaru odebere této variabilitě poskytováním pakety přímo k virtuálnímu počítači, odebrání hostitele tak, aby komunikace virtuálních počítačů a všechny softwaru přerušení a přepnutí kontextu.
+* **Snížení využití procesoru:** Obcházení virtuální přepínač na hostiteli vede k méně využití procesoru pro zpracování síťového provozu.
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 Připravených v galerii Azure jsou podporovány následující distribuce: 
@@ -53,17 +53,18 @@ Připravených v galerii Azure jsou podporovány následující distribuce:
 ## <a name="limitations-and-constraints"></a>Omezení a omezení
 
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
-Akcelerované síťové služby se podporuje na nejvíce obecné účely a velikostí optimalizovaných pro výpočetní instance s 2 nebo více virtuálních procesorů.  Jsou tyto podporované řady: D/DSv2 a F/Fs
+Akcelerované síťové služby se podporuje na nejvíce obecné účely a velikostí optimalizovaných pro výpočetní instance s 2 nebo více virtuálních procesorů.  Tyto podporované řady jsou: D/DSv2 a F/Fs
 
-U instancí, které podporují hyperthreadingem Akcelerovanými síťovými službami se podporuje na instancích virtuálních počítačů s 4 nebo více virtuálních procesorů. Jsou podporované řady: D/DSv3, E nebo ESv3, Fsv2 a Ms a Mms.
+U instancí, které podporují hyperthreadingem Akcelerovanými síťovými službami se podporuje na instancích virtuálních počítačů s 4 nebo více virtuálních procesorů. Podporované řady jsou: D/DSv3 E/ESv3, Fsv2 a Ms a Mms.
 
 Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálního počítače s Linuxem](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="regions"></a>Oblasti
 K dispozici ve všech veřejných oblastech Azure i Azure Government Clouds.
 
-### <a name="network-interface-creation"></a>Vytvoření rozhraní sítě 
-Akcelerované síťové služby jde Povolit jenom pro nový síťový adaptér. Není možné pro existující síťovou kartu
+<!-- ### Network interface creation 
+Accelerated networking can only be enabled for a new NIC. It cannot be enabled for an existing NIC.
+removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Povolení Akcelerovanými síťovými službami spuštěného virtuálního počítače
 Podporované velikosti virtuálního počítače bez povolenými akcelerovanými síťovými službami může mít jenom funkce povolena, když se zastaví a uvolní.  
 ### <a name="deployment-through-azure-resource-manager"></a>Nasazení prostřednictvím Azure Resource Manageru

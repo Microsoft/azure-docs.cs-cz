@@ -1,6 +1,7 @@
 ---
-title: Vytvoření veřejné služby Load Balancer Standard s oblastmi front-endu pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit veřejné služby Load Balancer Standard s oblastmi front-endu pomocí Azure CLI
+title: Vytvoření Load Balanceru s oblastmi front-endu – rozhraní příkazového řádku Azure
+titlesuffix: Azure Load Balancer
+description: Zjistěte, jak vytvořit Load balanceru úrovně Standard s oblastmi front-endu pomocí Azure CLI
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -11,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 3a0fc37b8e2865163ae6c55813d145a568d796e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 466fa37b8ed7a182eb8bd6bc4fe68e0715056398
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414478"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200866"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Vytvoření veřejné služby Load Balancer Standard s oblastmi front-endu pomocí Azure CLI
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Vytvoření Load Balanceru úrovně Standard s oblastmi front-endu pomocí Azure CLI
 
-Tento článek popisuje postup vytvořením veřejné [Load balancer úrovně Standard](https://aka.ms/azureloadbalancerstandard) s oblastmi front-endu. S oblastmi front-endu znamená, že všechny příchozí nebo odchozí tok je obsluhuje jednu zónu v oblasti. Nástroj pro vyrovnávání zatížení můžete vytvořit s oblastmi front-endu pomocí oblastmi standardní veřejnou IP adresou ve své konfiguraci front-endu. Vysvětlení fungování zón dostupnosti s Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md). 
+Tento článek popisuje postup vytvořením veřejné [Load balanceru úrovně Standard](https://aka.ms/azureloadbalancerstandard) s oblastmi front-endu. S oblastmi front-endu znamená, že všechny příchozí nebo odchozí tok je obsluhuje jednu zónu v oblasti. Nástroj pro vyrovnávání zatížení můžete vytvořit s oblastmi front-endu pomocí oblastmi standardní veřejnou IP adresou ve své konfiguraci front-endu. Vysvětlení fungování zón dostupnosti s Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -50,7 +51,7 @@ az network public-ip create --resource-group myResourceGroupZLB --name myPublicI
 
 ## <a name="create-a-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Vytvoření veřejný Load balancer úrovně Standard se standardní veřejnou IP Adresou, kterou jste vytvořili v předchozím kroku, pomocí následujícího příkazu:
+Vytvořte veřejný Load Balancer Standard s standardní veřejnou IP adresu, kterou jste vytvořili v předchozím kroku, pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az network lb create --resource-group myResourceGroupZLB --name myLoadBalancer --public-ip-address myPublicIPZonal --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool --sku Standard

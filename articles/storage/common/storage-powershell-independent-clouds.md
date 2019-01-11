@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 842a9354cf20648393c3262736c0a1e9654a3c70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f7d5fcf1905200bc214a3ff42db9b7b511768dd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628336"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214891"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v Azure nezávislé cloudů pomocí Powershellu
 
@@ -37,7 +37,7 @@ V příkladech vyžadují Azure PowerShell verze modulu Az 0.7 nebo novější. 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Spustit [Get-AzEnvironment](/powershell/module/az.profile/get-Azenvironment) rutiny zobrazíte dostupné prostředí Azure:
+Spustit [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) rutiny zobrazíte dostupné prostředí Azure:
    
 ```powershell
 Get-AzEnvironment
@@ -71,7 +71,7 @@ Přípona koncového bodu pro každou z těchto prostředí se liší od Azure v
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Získání koncového bodu pomocí Get-AzEnvironment 
 
-Načíst pomocí koncového bodu přípona [Get-AzEnvironment](/powershell/module/az.profile/get-azenvironment). Koncový bod je *StorageEndpointSuffix* vlastnost prostředí. Následující fragmenty kódu ukazují, jak to udělat. Všechny tyto příkazy vracely něco jako "core.cloudapp.net" nebo "core.cloudapi.de" atd. Nový kód přidejte do služby storage pro přístup k této službě. Například "queue.core.cloudapi.de" se přístup ke službě fronty v německém cloudu.
+Načíst pomocí koncového bodu přípona [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment). Koncový bod je *StorageEndpointSuffix* vlastnost prostředí. Následující fragmenty kódu ukazují, jak to udělat. Všechny tyto příkazy vracely něco jako "core.cloudapp.net" nebo "core.cloudapi.de" atd. Nový kód přidejte do služby storage pro přístup k této službě. Například "queue.core.cloudapi.de" se přístup ke službě fronty v německém cloudu.
 
 Tento fragment kódu načte všechna prostředí a přípona koncového bodu pro každé z nich.
 

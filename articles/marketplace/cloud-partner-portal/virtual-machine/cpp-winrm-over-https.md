@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1a341bf36842e49faf8e39f4056232c97cc4232c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b2c0dbfbf474cccdf2d1253b77869c59fd449591
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196709"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214551"
 ---
 # <a name="windows-remote-management-over-https"></a>Vzdálená správa Windows přes protokol HTTPS
 
 Tato část vysvětluje postup konfigurace virtuálního počítače s hostovaným v Azure, na základě Windows tak, aby ho můžete spravovat a nasazovat vzdáleně pomocí Powershellu.  Pokud chcete povolit vzdálenou komunikaci prostředí PowerShell, cílový virtuální počítač musí vystavit koncový bod HTTPS Vzdálená správa Windows (WinRM).  Další informace o vzdálené komunikace Powershellu najdete v tématu [spouštění vzdálených příkazů](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Další informace týkající se WinRM, naleznete v tématu [Vzdálená správa Windows](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 
-Pokud jste vytvořili virtuální počítač pomocí jednoho z postupů "klasickém" Azure – na portálu Service Manager Azure nebo zastaralé [Azure Service Management API] (https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)– je automaticky nakonfigurován s koncovým bodem služby WinRM.  Ale pokud vytvoříte virtuální počítač pomocí kteréhokoli z těchto přístupů "moderní" Azure a pak se váš virtuální počítač *není* nakonfigurovat pro WinRM prostřednictvím protokolu HTTPS.  
+Pokud jste vytvořili virtuální počítač pomocí jednoho z postupů "klasickém" Azure – na portálu Service Manager Azure nebo zastaralá [Azure Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))– je automaticky nakonfigurován s koncovým bodem služby WinRM.  Ale pokud vytvoříte virtuální počítač pomocí kteréhokoli z těchto přístupů "moderní" Azure a pak se váš virtuální počítač *není* nakonfigurovat pro WinRM prostřednictvím protokolu HTTPS.  
 
 - Použití [webu Azure portal](https://portal.azure.com/), typicky ze schválených base, jak je popsáno v části [vytvoření virtuálního pevného disku kompatibilního s Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
 - [Pomocí šablon Azure Resource Manageru](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)

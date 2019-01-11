@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1558d8e8392ff49e2661e9f8bc41e41c5bbc6dd5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 463b2e8c7e349fa46737a9d630bd027fb28e7780
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189844"
+ms.locfileid: "54199381"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentace webových aplikací za běhu pomocí monitorování stavu Application Insights
 
@@ -96,14 +96,14 @@ Toto jsou některé kroky, které můžete provádět potvrďte, že vaše insta
 - Zkontrolujte, jestli soubor applicationInsights.config je k dispozici v cílovém adresáři aplikace a obsahuje váš Instrumentační klíč.
 
 - Pokud máte podezření, že data budou chybějící jednoduchý dotaz můžete spustit [Analytics](../log-query/get-started-portal.md) vypsat všechny role v cloudových procesech právě odesílá telemetrická data.
-
 ```Kusto
 union * | summarize count() by cloud_RoleName, cloud_RoleInstance
 ```
 
 - Pokud je potřeba potvrdit, že je Application Insights se úspěšně připojil můžete spustit [Sysinternals popisovač](https://docs.microsoft.com/sysinternals/downloads/handle) příkazového okna a potvrdí, že applicationinsights.dll se načetl službou IIS.
-
-`handle.exe /p w3wp.exe`
+```cmd
+handle.exe /p w3wp.exe
+```
 
 
 ### <a name="cant-connect-no-telemetry"></a>Nelze se připojit? Žádná telemetrie?
@@ -113,17 +113,17 @@ union * | summarize count() by cloud_RoleName, cloud_RoleInstance
 ### <a name="unable-to-login"></a>Nelze se přihlásit
 
 * Pokud monitorování stavu, se nemůžou přihlásit, postupujte příkazového řádku nainstalujte místo toho. Monitorování stavu se pokouší přihlásit ke shromažďování svůj Instrumentační klíč, ale můžete zadat ručně pomocí příkazu: 
-```
+```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll
 Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000
 ```
 
 ### <a name="could-not-load-file-or-assembly-systemdiagnosticsdiagnosticsource"></a>Nepovedlo se načíst soubor nebo sestavení "System.Diagnostics.DiagnosticSource.
 
-Tato chyba může zobrazit po povolení aplikace Insights. Je to proto, že instalační program nahradí tuto knihovnu dll v adresáři bin.
+Tato chyba může zobrazit po povolení Application Insights. Je to proto, že instalační program nahradí tuto knihovnu dll v adresáři bin.
 Chcete-li vyřešit aktualizaci souboru web.config:
 
-```
+```xml
 <dependentAssembly>
     <assemblyIdentity name="System.Diagnostics.DiagnosticSource" publicKeyToken="cc7b13ffcd2ddd51"/>
     <bindingRedirect oldVersion="0.0.0.0-4.*.*.*" newVersion="4.0.2.1"/>

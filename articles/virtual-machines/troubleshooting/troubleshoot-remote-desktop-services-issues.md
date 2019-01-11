@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957689"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215112"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Vzdálená plocha nespouští na Virtuálním počítači Azure
 
 Tento článek popisuje, jak začít řešit potíže s připojení k Azure virtuální počítač (VM) a služby Vzdálená plocha nebo inicializace, se nepouští nebo se nepodaří spustit.
 
 > [!NOTE]  
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manageru a Klasický model](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje pomocí modelu nasazení Resource Manager. Doporučujeme použít tento model pro nových nasazení namísto modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje pomocí modelu nasazení Resource Manager. Doporučujeme použít tento model pro nových nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -37,16 +37,16 @@ Při pokusu o připojení k virtuálnímu počítači se vyskytnout následujíc
 
 - Vzdáleně Zkontrolujte protokoly událostí ve virtuálním počítači s použitím prohlížeče události. Uvidíte, že služby Vzdálená plocha, inicializace, se nepouští nebo se nepodaří spustit. Následující protokol je ukázka:
 
-    **Název protokolu**: systému </br>
-    **Zdroj**: správce řízení služeb </br>
-    **Datum**: 12/16/2017 11:19:36 AM</br>
-    **ID události**: 7022</br>
-    **Úloha kategorie**: žádné</br>
-    **Úroveň**: Chyba</br>
-    **Klíčová slova**: Classic</br>
-    **Uživatel**: není k dispozici</br>
+    **Název protokolu**:      Systémový </br>
+    **Zdroj**:        Správce řízení služeb </br>
+    **Datum**:          12/16/2017 11:19:36 AM</br>
+    **ID události**:      7022</br>
+    **Úloha kategorie**: Žádný</br>
+    **Úroveň**:         Chyba</br>
+    **Klíčová slova**:      Classic</br>
+    **Uživatel**:          neuvedeno</br>
     **Počítač**: vm.contoso.com</br>
-    **Popis**: služby Vzdálená plocha služby přestala během spouštění reagovat. 
+    **Popis**: Služba Vzdálená plocha přestala během spouštění reagovat. 
 
     Můžete také použít funkci konzoly sériového portu přístup k vyhledání těchto chybách spuštěním následujícího dotazu: 
 
@@ -112,7 +112,7 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>Inicializace je zastavena kvůli problému přístup odepřen
 
-1. Připojte se k [konzoly sériového portu](serial-console-windows.md#) a otevřete instance prostředí PowerShell.
+1. Připojte se k [konzoly sériového portu](serial-console-windows.md) a otevřete instance prostředí PowerShell.
 2. Stáhněte si nástroj pro monitorování procesu spuštěním následujícího skriptu:
 
    ```
@@ -221,6 +221,6 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
 
 4. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Zkontrolujte, zda je problém vyřešen.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) k vyřešení problému.

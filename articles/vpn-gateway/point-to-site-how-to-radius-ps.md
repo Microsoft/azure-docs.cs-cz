@@ -1,5 +1,5 @@
 ---
-title: 'Připojení počítače k virtuální síti pomocí ověřování Point-to-Site a protokolu RADIUS: PowerShell | Azure'
+title: 'Připojení počítače k virtuální síti pomocí Point-to-Site a ověřování pomocí protokolu RADIUS: Prostředí PowerShell | Azure'
 description: Připojování klientů Windows a Mac OS X k virtuální síti pomocí ověřování P2S a protokolu RADIUS.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: b5d69b8f9f004da93e5bed05b86e46f6e4214d63
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bd74aca180d291042e597ba6893009c38aa22555
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847350"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200900"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím ověřování pomocí protokolu RADIUS: PowerShell
 
@@ -64,27 +64,27 @@ Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure
 
 ### <a name="sign-in"></a>Přihlášení
 
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ### <a name="example"></a>Příklady hodnot
 
 Příklady hodnot můžete použít k vytvoření testovacího prostředí nebo můžou sloužit k lepšímu pochopení příkladů v tomto článku. Můžete buď využít kroky jako podrobný postup a převzít hodnoty beze jejich změny, nebo je změnit tak, aby odpovídaly vašemu prostředí.
 
-* **Název: VNet1**
+* **Jméno: Ze sítě VNet1**
 * **Adresní prostor: 192.168.0.0/16** a **10.254.0.0/16**<br>V tomto příkladu se používá více adresních prostorů k ilustraci, že tato konfigurace funguje s více adresními prostory. Více adresních prostorů pro ni ale není potřeba.
-* **Název podsítě: FrontEnd**
+* **Název podsítě: Front-endu**
   * **Rozsah adres podsítě: 192.168.1.0/24**
-* **Název podsítě: BackEnd**
+* **Název podsítě: Back-endu**
   * **Rozsah adres podsítě: 10.254.1.0/24**
-* **Název podsítě: GatewaySubnet**<br>Název podsítě *GatewaySubnet* je pro správnou funkci brány VPN Gateway povinný.
+* **Název podsítě: Podsíť brány**<br>Název podsítě *GatewaySubnet* je pro správnou funkci brány VPN Gateway povinný.
   * **Rozsah adres podsítě brány: 192.168.200.0/24** 
 * **Fond adres klienta VPN: 172.16.201.0/24**<br>Klienti VPN, kteří se budou k síti VNet připojovat pomocí tohoto připojení Point-to-Site, dostanou IP adresu ze zadaného fondu adres klienta VPN.
-* **Předplatné:** Ujistěte se, že máte správné předplatné, pokud máte více než jedno.
+* **Předplatné:** Pokud máte více než jedno předplatné, ověřte, že používáte tu správnou.
 * **Skupina prostředků: TestRG**
-* **Umístění: Východní USA**
-* **Serveru DNS: IP adresa** serveru DNS, který chcete použít pro překlad názvů pro vaši virtuální síť. (volitelné)
-* **Název brány: Vnet1GW**
-* **Název veřejné IP adresy: VNet1GWPIP**
+* **Umístění: USA – východ**
+* **DNS Server: IP adresa** serveru DNS, který chcete použít pro překlad názvů pro vaši virtuální síť. (volitelné)
+* **Název brány: Brány Vnet1GW**
+* **Název veřejné IP: VNet1GWPIP**
 * **Typ sítě VPN: RouteBased** 
 
 ## 1. <a name="vnet"></a>Vytvořte skupinu prostředků, virtuální sítě a veřejné IP adresy

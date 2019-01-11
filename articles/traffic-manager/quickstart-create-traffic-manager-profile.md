@@ -2,8 +2,7 @@
 title: Rychlý start – Vytvoření profilu služby Traffic Manager pro zajištění vysoké dostupnosti aplikací pomocí webu Azure Portal
 description: Tento článek Rychlý start popisuje, jak vytvořit profil služby Traffic Manager umožňující vytváření vysoce dostupných webových aplikací.
 services: traffic-manager
-documentationcenter: ''
-author: kumudd
+dauthor: kumudd
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.openlocfilehash: 5520b78ce3899c39167663ac426fa6702369c944
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f24bcebb04c3cb17b5e0420695504541c54e88f3
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634774"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198215"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>Rychlý start: Vytvoření profilu služby Traffic Manager pro vysoce dostupnou webovou aplikaci
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>Rychlý start: Vytvoření profilu Traffic Manageru s vysokou dostupností webové aplikace
 
 Tento rychlý start popisuje, jak vytvořit profil služby Traffic Manager, který poskytuje vysokou dostupnost pro vaši webovou aplikaci.
 
@@ -27,7 +26,7 @@ V tomto rychlém startu nemusíte se věnovat čtení o dvou instancí webové a
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 

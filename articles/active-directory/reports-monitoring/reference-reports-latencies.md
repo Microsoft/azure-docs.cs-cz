@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c6d36f3e1cef4fffbe38b0a70d42069577590627
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623174"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212256"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latence generování sestav Azure Active Directory.
 
@@ -40,10 +40,14 @@ V následující tabulce jsou uvedeny informace o latenci pro sestavy aktivit.
 > **Latence (95. percentil)** odkazuje na čas, podle kterého se ohlásí 95 % protokolů, a **latenci (99. percentilu)** odkazuje na čas, podle kterého se ohlásí 99 % protokoly. 
 >
 
-| Sestava | Latence (95. percentil) |Latenci (99. percentilu)|
-| :-- | --- | --- | 
-| Protokoly auditu | 2 minuty  | 5 minut  |
-| Přihlášení | 2 minuty  | 5 minut |
+| Sestava | Latence (95. percentil) |Latenci (99. percentilu)|Časový rozsah, ve kterém se ohlásí protokoly|
+| :-- | --- | --- | --- |
+| Protokoly auditu | 2 minuty  | 5 minut  | 2 až 60 minut |
+| Přihlášení | 2 minuty  | 5 minut | 2 – 120 minut. |
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak rychle můžete zobrazit data aktivity po získání licence premium?
+
+Pokud již máte data aktivity s bezplatnou licencí, pak uvidíte ho okamžitě při upgradu. Pokud nemáte k dispozici žádná data, bude to trvat jeden nebo dva dny pro daná data zobrazit v sestavách po upgradu na licenci premium.
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
 

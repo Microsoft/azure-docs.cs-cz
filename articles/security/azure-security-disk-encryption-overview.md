@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1674a54ea78e7fea2cc39cb26fefc52b8764bc4c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093280"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200849"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption pro virtuální počítače IaaS
 
-Microsoft Azure se zaměřuje na zajištění ochrany osobních údajů a suverenity dat. Azure umožňuje řídit data hostovaných v Azure prostřednictvím celou řadu technologie šifrování, řídit a spravovat šifrovací klíče a řízení a auditování přístupu k datům. Tento ovládací prvek poskytuje zákazníkům Azure s volnost ve výběru řešení, které nejlíp vyhovují jejich potřebám firmy. Tento článek vás seznámí s technologické řešení: "Řešení Azure Disk Encryption pro Windows a Linuxem v režimu IaaS virtuální počítače (VM)." Tato technologie pomáhá zabezpečit a chránit vaše data pro splnění vaší organizace na zabezpečení a závazky dodržování předpisů. 
+Microsoft Azure se zaměřuje na zajištění ochrany osobních údajů a suverenity dat. Azure umožňuje řídit data hostovaných v Azure prostřednictvím celou řadu technologie šifrování, řídit a spravovat šifrovací klíče a řízení a auditování přístupu k datům. Tento ovládací prvek poskytuje zákazníkům Azure s volnost ve výběru řešení, které nejlíp vyhovují jejich potřebám firmy. Tento článek vás seznámí s technologické řešení: "Azure Disk Encryption pro Windows a Linuxem v režimu IaaS virtual machines (VM)." Tato technologie pomáhá zabezpečit a chránit vaše data pro splnění vaší organizace na zabezpečení a závazky dodržování předpisů. 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -59,7 +59,7 @@ Pokud používáte Azure Security Center, budete upozorněni, pokud máte virtu�
 Řešení podporuje následující scénáře pro virtuální počítače IaaS, pokud jsou povolena ve službě Microsoft Azure:
 
 * Integrace se službou Azure Key Vault.
-* Virtuální počítače úrovně Standard: [A, D, DS, G, GS, F a tak dále, řadu virtuálních počítačů IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/). [Virtuální počítače s Linuxem](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) v rámci těchto úrovních, musí splňovat minimální požadovaná paměť 7 GB.
+* Úroveň Standard virtuálních počítačů: [A, D, DS, G, GS, F a tak dále, řadu virtuálních počítačů IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/). [Virtuální počítače s Linuxem](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) v rámci těchto úrovních, musí splňovat minimální požadovaná paměť 7 GB.
 * Povolení šifrování na Windows a virtuálních počítačů IaaS s Linuxem, spravovaný disk a škálovací sady virtuálních počítačů podporované Image Galerie Azure.
 * Zakázat šifrování na jednotkách operačního systému a dat pro virtuální počítače IaaS s Windows, škálování virtuální počítače a spravovaných disků virtuálních počítačů.
 * Zakázat šifrování na datových jednotkách pro Linuxové virtuální počítače IaaS, škálování virtuální počítače a spravovaných disků virtuálních počítačů.
@@ -81,7 +81,7 @@ Toto řešení nepodporuje následující scénáře, funkce a technologie:
 
 * Úroveň Basic virtuální počítače IaaS.
 * Zakážete šifrování na disku s operačním systémem pro virtuální počítače IaaS s Linuxem.
-* Zakážete šifrování na datový disk, když je šifrované jednotky operačního systému pro virtuální počítače Iaas s Linuxem.
+* Zakážete šifrování na datový disk, když je šifrované jednotky operačního systému pro virtuální počítače IaaS s Linuxem.
 * Virtuální počítače IaaS, které jsou vytvořeny pomocí klasické metody vytvoření virtuálního počítače.
 * Povolte šifrování zákazníka vlastních imagí na virtuální počítače IaaS s Linuxem.
 * Integrace s vaší místní systémem správy klíčů.

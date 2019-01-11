@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager – nejčastější dotazy | Dokumentace Microsoftu
+title: Azure Traffic Manager – nejčastější dotazy
 description: Tento článek obsahuje odpovědi na nejčastější dotazy o Traffic Manageru
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a6a8fee942edf4cec98a6d2f46eb2f63b7595c09
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963568"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200043"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -437,8 +437,8 @@ Neexistuje žádné negativní vliv na použití vnořených profilů cenu.
 
 Fakturace Traffic Manageru má dvě součásti: kontrolám stavu koncových bodů a milionů dotazů DNS
 
-* Kontroly stavu koncových bodů: neplatí žádné poplatky pro podřízené profil při nakonfigurovaný jako koncový bod v nadřazené profilu. Monitorování koncových bodů v podřízených profilu se účtuje obvyklým způsobem.
-* Dotazy DNS: každý dotaz se počítá pouze jednou. Dotaz vůči nadřazené profilu, která vrací koncový bod z podřízených profilu se započítává jenom profil nadřazené.
+* Kontroly stavu koncových bodů: Neplatí žádné poplatky pro podřízené profil při nakonfigurovaný jako koncový bod v nadřazené profilu. Monitorování koncových bodů v podřízených profilu se účtuje obvyklým způsobem.
+* Dotazy DNS: Každý dotaz se počítá pouze jednou. Dotaz vůči nadřazené profilu, která vrací koncový bod z podřízených profilu se započítává jenom profil nadřazené.
 
 Úplné podrobnosti najdete v tématu [Traffic Manageru stránce s cenami](https://azure.microsoft.com/pricing/details/traffic-manager/).
 

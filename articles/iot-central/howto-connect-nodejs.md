@@ -1,29 +1,29 @@
 ---
 title: Připojit obecný klientská aplikace Node.js do Azure IoT Central | Dokumentace Microsoftu
 description: Jako vývojář zařízení jak se připojit k aplikaci Azure IoT Central Obecné zařízení Node.js.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 9d97b14d52a33d6879ee92b38993f4526823c4a0
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+manager: philmea
+ms.openlocfilehash: 4d61810adb24bb56b849a0a07ad1f097a1c33744
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963981"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198078"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
 Tento článek popisuje, jak jako vývojář zařízení připojit Obecná aplikace Node.js představující fyzické zařízení na aplikaci Microsoft Azure IoT Central.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Aplikace Azure IoT Central. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
+1. Aplikace Azure IoT Central. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 1. Vývojovém počítači s [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější. Můžete spustit `node --version` na příkazovém řádku k ověření verze. Node.js je k dispozici pro širokou škálu operačních systémů.
 
 ## <a name="create-a-device-template"></a>Vytvoření šablony zařízení

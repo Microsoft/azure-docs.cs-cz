@@ -5,20 +5,20 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 012/5/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 4d817e71cffd782bdcfdfb91492dbd5d08fb8479
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e426e38ce5366f7c0d8b8bc20a639d827ea9e261
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967091"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200512"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Použití Azure DNS pro privátní domény
 
 Domain Name System nebo DNS, je zodpovědný za převod (nebo řešení) název služby na jeho IP adresu. Hostitelská služba určená pro domény DNS, poskytuje Azure DNS překlad názvů s využitím infrastruktury Microsoft Azure. Kromě podpory domén DNS směřujících k Internetu, Azure DNS teď podporuje také privátní DNS domény jako funkci ve verzi preview.
 
-Azure DNS poskytuje spolehlivou a zabezpečenou službu DNS pro správu a řešení názvů domén ve virtuální síti, aniž byste museli přidat vlastního řešení DNS. S využitím privátních zón DNS, můžete použít vlastní názvy vlastních domén, místo ještě dnes dostupných názvů poskytovaných Azure. Pomocí vlastních názvů domén vám umožní přizpůsobit Architektura virtuální sítě podle potřeb vaší organizace. Nabízí řešení názvů pro virtuální počítače (VM) v rámci virtuální sítě a mezi virtuálními sítěmi. Navíc můžete konfigurovat názvy zón s rozděleným zobrazením, což umožňuje, aby privátní a veřejné zóny DNS sdílely stejný název.
+Azure DNS poskytuje spolehlivou a zabezpečenou službu DNS pro správu a řešení názvů domén ve virtuální síti, aniž byste museli přidat vlastního řešení DNS. S využitím privátních zón DNS, můžete použít vlastní názvy vlastních domén, místo ještě dnes dostupných názvů poskytovaných Azure. Pomocí vlastních názvů domén vám umožní přizpůsobit Architektura virtuální sítě podle potřeb vaší organizace. Nabízí řešení názvů pro virtuální počítače (VM) v rámci virtuální sítě a mezi virtuálními sítěmi. Navíc můžete konfigurovat názvy zón s rozděleným zobrazením, což umožňuje, aby privátní a veřejné zóny DNS název sdílené složky.
 
 Pokud chcete zadat registrační virtuální síť, záznamy DNS pro virtuální počítače z této virtuální sítě, které jsou registrovány k privátní zóně nejsou zobrazitelné nebo získat z prostředí Azure Powershell a rozhraní API pro rozhraní příkazového řádku Azure, ale záznamy virtuálního počítače jsou ve skutečnosti zaregistrované a bude úspěšně vyřešte.
 
@@ -61,7 +61,7 @@ Azure DNS poskytuje následující možnosti:
 
 ## <a name="limitations"></a>Omezení
 
-Azure DNS je v souladu s těmito omezeními:
+Azure DNS má následující omezení:
 
 * Jednu privátní zónu je povolen pouze jeden registrační virtuální síť.
 * Až 10 řešení virtuálních sítí jsou povoleny jednu privátní zónu.
@@ -70,14 +70,14 @@ Azure DNS je v souladu s těmito omezeními:
 * Pokud chcete zadat registrační virtuální síť, nejsou záznamy DNS pro virtuální počítače z této virtuální sítě, které jsou registrovány k privátní zóně zobrazitelné nebo získat z prostředí Azure Powershell a rozhraní API pro Azure CLI. Záznamy virtuálního počítače jsou ve skutečnosti zaregistrované a vyřeší úspěšně.
 * Reverzní DNS funguje pouze pro privátní adresní prostor IP v registrační virtuální síť.
 * Reverzní DNS pro privátní IP adresa, která není registrována v privátní zóny (například privátní IP adresy pro virtuální počítač ve virtuální síti, který se propojí jako virtuální síť pro překlad pro privátní zóny) vrátí *internal.cloudapp.net* jako příponu DNS. Tato přípona však není možné přeložit.
-* Virtuální síť musí být prázdná (to znamená virtuální počítač neexistují žádné záznamy) při ho původně (to znamená, poprvé) odkazy na privátní zóně jako virtuální síť registraci nebo řešení. Však může být virtuální síť pak neprázdný pro budoucí propojení jako virtuální síť registraci nebo řešení, k jiné privátní zóny.
-* V tuto chvíli nepodporuje podmíněné předávání (například pro povolení rozlišení mezi sítěmi Azure a místního prostředí). Informace o tom, jak umožňuje zákazníkům realizovat tento scénář prostřednictvím jiné mechanismy, naleznete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+* Virtuální síť musí být úplně prázdná poprvé, můžete ho propojit s privátní zóně jako virtuální síť registraci nebo řešení. Však může být virtuální síť pak neprázdný pro budoucí propojení jako virtuální síť registraci nebo řešení, k jiné privátní zóny.
+* Podmíněné předávání v současné době nepodporuje (například pro povolení rozlišení mezi sítěmi Azure a místního prostředí). Informace o tom, jak umožňuje zákazníkům realizovat tento scénář prostřednictvím jiné mechanismy, naleznete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 Pro běžné otázky a odpovědi k privátní zóny v Azure DNS, včetně konkrétní chování registrace a překlad DNS můžete očekávat pro některé typy operací, najdete v článku [nejčastější dotazy k](./dns-faq.md#private-dns).  
 
 ## <a name="pricing"></a>Ceny
 
-Funkci privátní zóny DNS je ve verzi public preview zdarma. Období všeobecné dostupnosti funkci nabídne podle využití cenový model podobný existující DNS Azure nabízí. 
+Funkci privátní zóny DNS je ve verzi public preview zdarma. Období všeobecné dostupnosti tato funkce nabízí podle využití cenový model podobná stávající Azure DNS nabídky. 
 
 ## <a name="next-steps"></a>Další postup
 

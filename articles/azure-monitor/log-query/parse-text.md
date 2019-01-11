@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 03268981bcfe90f14f35c74effe5799dd31e4ac0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185779"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214126"
 ---
 # <a name="parse-text-data-in-log-analytics"></a>Analýza textových dat v Log Analytics
 Některá data shromážděná službou Log Analytics bude obsahovat více kusů informace v jedné vlastnosti. Analýza těchto dat do více vlastností usnadňují použít v dotazech. Běžným příkladem jsou [vlastního protokolu](../../log-analytics/log-analytics-data-sources-custom-logs.md) položku celý protokol s více hodnotami, které shromažďuje do vlastnosti jediné. Vytvoření samostatné vlastnosti pro různé hodnoty, můžete hledat a agregace v každém.
@@ -98,7 +98,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>Regulární výrazy
-Pokud vaše data lze identifikovat s regulárním výrazem, můžete použít [funkcí, které používají regulární výrazy](/azure/kusto/query/re2) extrahovat jednotlivé hodnoty. Následující příklad používá [extrahovat](/kusto/query/extractfunction) rozdělit _UPN_ pole z _AzureActivity_ záznamy a pak se vraťte jedinečných uživatelů.
+Pokud vaše data lze identifikovat s regulárním výrazem, můžete použít [funkcí, které používají regulární výrazy](/azure/kusto/query/re2) extrahovat jednotlivé hodnoty. Následující příklad používá [extrahovat](/azure/kusto/query/extractfunction) rozdělit _UPN_ pole z _AzureActivity_ záznamy a pak se vraťte jedinečných uživatelů.
 
 ```Kusto
 AzureActivity

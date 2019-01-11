@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření Load Balanceru úrovně Standard – Azure Portal | Microsoft Docs'
+title: 'Rychlý start: vytvoření Load balanceru úrovně Standard – webu Azure portal'
+titlesuffix: Azure Load Balancer
 description: Tento rychlý start ukazuje, jak vytvořit nástroj pro vyrovnávání zatížení úrovně Standard pomocí webu Azure Portal.
 services: load-balancer
 documentationcenter: na
@@ -17,20 +18,20 @@ ms.workload: infrastructure-services
 ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: df79581f4ad6af3dc420e7c7895acf46b5e3d997
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 89c0c409927e49934652176c5d6faadcde73693e
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615204"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199591"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí portálu Azure Portal
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí webu Azure Portal
 
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. K vytvoření nástroje pro vyrovnávání zatížení virtuálních počítačů můžete použít web Azure Portal. V tomto rychlém startu se dozvíte, jak vyrovnávat zatížení virtuálních počítačů pomocí Load Balanceru úrovně Standard.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
 
@@ -79,7 +80,7 @@ V této části vytvoříte virtuální síť a dva virtuální počítače pro 
     1. Zkontrolujte, že je vybraná virtuální síť *myVNet* a podsíť *myBackendSubnet*.
     2. V části **Veřejná IP adresa** v podokně **Vytvořit veřejnou IP adresu** vyberte **Standard** a pak vyberte **OK**.
     3. V části **Skupina zabezpečení sítě** vyberte **Upřesnit** a pak postupujte následovně:
-        1. Vyberte \*Skupina zabezpečení sítě (brána firewall)\*\* a na stránce **Vyberte skupinu zabezpečení sítě** vyberte **Vytvořit novou**. 
+        1. Vyberte \*Skupina zabezpečení sítě (brána firewall) a na stránce **Vyberte skupinu zabezpečení sítě** vyberte **Vytvořit novou**. 
         2. Na stránce **Vytvořit skupinu zabezpečení sítě** jako **Název** zadejte *myNetworkSecurityGroup* a pak vyberte **OK**.
 5. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
 6. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.

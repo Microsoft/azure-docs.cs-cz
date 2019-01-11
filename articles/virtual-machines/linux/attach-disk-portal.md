@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2823772787adf56dfbe216a68161f633eadba255
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 519fd063e52d1e202ea76db0fd4be15ebd117cd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001612"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214925"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači s Linuxem pomocí portálu 
 Tento článek ukazuje, jak připojit nové i stávající disků pro virtuální počítač s Linuxem na webu Azure portal. Můžete také [připojení datového disku k virtuálnímu počítači s Windows na webu Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -28,7 +28,7 @@ Tento článek ukazuje, jak připojit nové i stávající disků pro virtuáln�
 Než budete disky připojit k virtuálnímu počítači, přečtěte si tyto typy:
 
 * Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Pokud chcete používat Premium storage, budete potřebovat virtuální počítač řady DS nebo GS-series. Pomocí těchto virtuálních počítačů můžete použít disky Standard i Premium. Premium storage je dostupné v určitých oblastech. Podrobnosti najdete v tématu [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Pokud chcete používat Premium storage, budete potřebovat virtuální počítač řady DS nebo GS-series. Pomocí těchto virtuálních počítačů můžete použít disky Standard i Premium. Premium storage je dostupné v určitých oblastech. Podrobnosti najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory .vhd uložené v Azure. Podrobnosti najdete v tématu [informace o discích a virtuálních pevných disků pro virtuální počítače](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Po připojení disku, je nutné [připojení virtuálního počítače s Linuxem připojit nový disk](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
@@ -96,7 +96,12 @@ Výstup se podobá následujícímu příkladu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Tady *sdc* je disk, který chceme. Rozdělit disk s `fdisk`, nastavte ji primárním disku v oddílu 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` zpracovat na */dev/sdc*:
+Tady *sdc* je disk, který chceme. 
+
+### <a name="partion-a-new-disk"></a>Partion nový disk
+Pokud používáte stávající disk, který obsahuje data, přejděte k připojování disku. Pokud připojujete nový disk, budete muset rozdělte disk na oddíly.
+
+Použití `fdisk` rozdělte disk na oddíly, nastavte ji primárním disku v oddílu 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` zpracovat na */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
@@ -176,8 +181,8 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
-
-Teď vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následující příklad vytvoří adresář na */datadrive*:
+### <a name="mount-the-disk"></a>Připojit disk
+Vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následující příklad vytvoří adresář na */datadrive*:
 
 ```bash
 sudo mkdir /datadrive

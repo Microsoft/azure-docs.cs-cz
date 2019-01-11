@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c37ed908b61ca54957affed3f81526353bc3f53b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c8056bd4912605a4cd3ee333b1be87d4f3a6d5ba
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389560"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198044"
 ---
 # <a name="the-iot-edge-module-certification-process"></a>Proces certifikace modul IoT Edge
 
@@ -118,7 +118,7 @@ Níže jsou uvedené hlavní požadavky, které musí být splněny pro modul Io
     - [C\#](https://hub.docker.com/_/mysql/)
     - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
     - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-    - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._product_info?view=azure-java-stable)
+    - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
 -   Pro moduly, které nepoužívají sady SDK modulu IoT jsou k dispozici prostřednictvím portál partnerů cloudu méně přesné insights. Třeba počet souborů ke stažení.
 

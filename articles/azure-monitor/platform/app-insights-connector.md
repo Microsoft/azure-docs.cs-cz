@@ -11,21 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c9fe269ffa351c1efdb3f94a15a10bae65432d8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121409"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199646"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy Application Insights Connector (Preview)
 
 ![Application Insights symbol](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Díky podpoře [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md), řešení pro správu konektoru služby Application Insights se už nevyžaduje a přestanou používat. Od července se nebudou moct propojit nové prostředky Application Insights do pracovních prostorů Log Analytics. Existující odkazy a řídicí panely, budou nadále fungovat až do listopadu 2018. Další informace najdete v tématu [portálu OMS do Azure](../../azure-monitor/platform/oms-portal-transition.md).
+> Díky podpoře [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md) a [zobrazování více prostředků Azure monitoru Application Insights](../log-query/unify-app-resource-data.md), řešení pro správu konektoru služby Application Insights se nevyžaduje. Application Insights Connector bude zastaralé a odeberou z Azure Marketplace spolu s OMS portal vyřazení oficiálně ukončení provozu služby na 15. ledna 2019 komerčním cloudu Azure a cloudu Azure pro státní správu USA, je oficiálně vyřadí dne 30, 2019. Existující připojení budou nadále fungovat až do 30. června 2019. S vyřazení portálu OMS neexistuje žádný způsob, jak nakonfigurovat a odeberte existující připojení z portálu. Tato funkčnost bude podporovaná pomocí rozhraní REST API, která bude k dispozici v lednu, 2019 a oznámení se publikuje na [aktualizace Azure](https://azure.microsoft.com/updates/). Další informace najdete v tématu [portálu OMS do Azure](../../azure-monitor/platform/oms-portal-transition.md).
 
 Aplikace Insights Connector řešení vám pomůže diagnostikovat problémy s výkonem a pochopit, co uživatelé dělají s vaší aplikací při se monitoruje s [Application Insights](../../azure-monitor/app/app-insights-overview.md). Zobrazení stejné aplikace telemetrická data, která vývojářům zobrazit ve službě Application Insights jsou k dispozici ve službě Log Analytics. Však při integraci vašich aplikací služby Application Insights s Log Analytics se zvýší viditelnost vaší aplikace tím, že data o operacích a aplikacích na jednom místě. S stejného zobrazení vám umožňuje spolupracovat s vývojáři vaší aplikace. Obecná zobrazení může pomoct snížit čas a vyřešte aplikace od problémů platformy.
 

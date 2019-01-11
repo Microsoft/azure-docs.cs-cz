@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52dc78b03a1be73763b5a3c494404f4d439d04ca
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139020"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198027"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů
 
@@ -73,11 +73,11 @@ Skupiny konektorů pro aplikace nainstalované na IaaS pro přístup k cloudu, p
 
 Provést třeba, že organizace, která má několik virtuální počítače připojené k vlastní IaaS hostované virtuální sítě. Umožňuje uživatelům používat tyto aplikace jsou těchto privátních sítí připojené k podnikové síti prostřednictvím sítě site-to-site VPN. Nabízí kvalitní prostředí pro zaměstnance, kteří se nacházejí na místních. Ale nemusí být ideální pro vzdálení zaměstnanci, protože vyžaduje další místní infrastruktury pro směrování přístup, jak je vidět na následujícím diagramu:
 
-![Síť Azure AD Iaas](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Síť Azure AD IaaS](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Pomocí skupiny konektorů Proxy aplikací Azure AD můžete povolit běžné služby k zabezpečení přístupu ke všem aplikacím bez vytvoření další závislosti ve vaší podnikové síti:
 
-![Dodavatele Cloudů Iaas více AzureAD](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Dodavatele Cloudů IaaS více AzureAD](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Více doménových struktur – skupiny různých konektorů pro každou doménovou strukturu
 

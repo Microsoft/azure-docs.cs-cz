@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2d4808aaccd704f4c54d44cfe7d45ddd84cf0e17
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438757"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198673"
 ---
-# <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure Load balancer úrovně Standard
+# <a name="azure-standard-balancer-overview"></a>Přehled služby Azure balanceru úrovně Standard
 
 Nástroj Azure Load Balancer umožňuje škálovat svoje aplikace a poskytovat vysokou dostupnost vaší služby. Nástroj pro vyrovnávání zatížení lze použít pro příchozí i odchozí scénáře a poskytuje nízkou latenci a vysokou propustnost a škálování až na úrovni milionů toků pro všechny aplikace TCP a UDP. 
 
@@ -89,7 +89,7 @@ Load balancer úrovně standard poskytuje vícedimenzionálních metrik přes Az
 
 | Metrika | Popis |
 | --- | --- |
-| Dostupnost virtuálních IP adres | Load balancer úrovně Standard vykonává nepřetržitě na cestu k datům z v rámci oblasti nástroji pro vyrovnávání zatížení front-endu k sadě komponent SDN, který podporuje váš virtuální počítač. Za předpokladu, zůstanou v dobrém stavu instance, měření se řídí stejnou cestu jako provoz s vyrovnáváním zatížení vaší aplikace. Na cestu k datům, která používají vaši zákazníci je také ověřován. Měření není viditelný pro vaši aplikaci a nebude v konfliktu s dalšími operacemi.|
+| Dostupnost virtuálních IP adres | Load balancer úrovně Standard průběžně uplatní na cestu k datům z v rámci oblasti nástroji pro vyrovnávání zatížení front-endu k sadě komponent SDN, který podporuje váš virtuální počítač. Za předpokladu, zůstanou v dobrém stavu instance, měření se řídí stejnou cestu jako provoz s vyrovnáváním zatížení vaší aplikace. Na cestu k datům, která používají vaši zákazníci je také ověřován. Měření není viditelný pro vaši aplikaci a nebude v konfliktu s dalšími operacemi.|
 | Dostupnost vyhrazené IP adresy | Load balancer úrovně Standard používá distribuované stavu testování služba, která monitoruje stav vašeho koncového bodu aplikace podle nastavení konfigurace. Tato metrika poskytuje agregace nebo za koncový bod filtrované zobrazení každé jednotlivé instance koncového bodu v nástroji pro vyrovnávání zatížení fondu.  Uvidíte jak nástroj pro vyrovnávání zatížení zobrazení stavu aplikace, jak je uvedeno ve vaší konfiguraci sondy stavu.
 | SYN pakety | Load balancer úrovně Standard není ukončit připojení TCP nebo pracovat s TCP nebo UDP paketů toky. Toky a jejich počet metod handshake jsou vždy mezi zdrojem a instanci virtuálního počítače. Lepší řešení potíží s scénáře protokol TCP, které můžete využít SYN čítače paketů o tom, kolik připojení TCP pokusy. Metrika hlásí počet TCP SYN pakety, které byly přijaty.|
 | Připojení SNAT | Load balancer úrovně Standard hlásí počet odchozích toků, které jsou masqueraded veřejné IP adresy front-endu. SNAT porty jsou vyčerpatelným prostředků. Tato metrika se mohou vyjádřit údaj o tom, jak často se aplikace spoléhá na SNAT pro odchozí toky s původem.  Čítače pro úspěšné i neúspěšné odchozích toků SNAT označené a slouží k odstranění potíží a porozumět stavu vašich odchozích toků.|
@@ -202,7 +202,7 @@ Skladové jednotky se nedají mutable. Postupujte podle kroků v této části p
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Load balancer úrovně Standard je teď dostupná v všech oblastech veřejného cloudu.
+Load balancer úrovně Standard je aktuálně k dispozici ve všech veřejných cloudových oblastech.
 
 ## <a name="sla"></a>SLA
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 09de0a3aa0303e169d0b90690016909b29dc4a9b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d8ca70efd3b1ba77b1b1bb0e11a9234e5fd440c4
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190964"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201376"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -91,9 +91,9 @@ Příkladem je nasazení služby Azure Resource Manageru, kde aplikace spoléhá
 
 ### <a name="multife"></a> Několik front-endů pro odchozí toky
 
-#### <a name="load-balancer-standard"></a>Load Balancer úrovně Standard
+#### <a name="standard-load-balancer"></a>Load Balancer úrovně Standard
 
-Load balancer úrovně Standard používá všechny kandidáty pro odchozích toků na stejný čas, kdy [několika (veřejných) IP front-endů](load-balancer-multivip-overview.md) je k dispozici. Každá front-endu vynásobí počet dostupných portů předběžně přidělené SNAT Pokud pravidlo Vyrovnávání zatížení je povolené pro odchozí připojení.
+Nástroje pro vyrovnávání zatížení používá všechny kandidáty pro odchozích toků na stejný čas, kdy [několika (veřejných) IP front-endů](load-balancer-multivip-overview.md) je k dispozici. Každá front-endu vynásobí počet dostupných portů předběžně přidělené SNAT Pokud pravidlo Vyrovnávání zatížení je povolené pro odchozí připojení.
 
 Můžete potlačit použitím front-endové IP adresy z používán pro odchozí připojení s novou možností pravidlo Vyrovnávání zatížení:
 

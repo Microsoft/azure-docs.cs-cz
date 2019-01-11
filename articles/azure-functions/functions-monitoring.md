@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: d0c24fbd749a344d9041e9c50c34e6e58ab8fd38
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 2734021ffd55bb0d16d14e17ec0329e449aa86a0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121218"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201342"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -580,7 +580,7 @@ namespace functionapp0915
             telemetryClient.TrackDependency(dependency);
         }
         
-        // This correllates all telemetry with the current Function invocation
+        // This correlates all telemetry with the current Function invocation
         private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
         {
             context.Operation.Id = functionContext.InvocationId.ToString();

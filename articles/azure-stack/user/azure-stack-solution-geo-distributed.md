@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 917f9a5ff2f6f9f6101b19dccee05fe5ab25c5a9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714844"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214772"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack
 
@@ -106,7 +106,7 @@ Aktualizujte DNS zóny souboru foCreate webové aplikace a publishr domény. Azu
 Nastavení hybridní CI/CD a nasazení webové aplikace do Azure a Azure Stack a předávání změn pro oba cloudy, auto.
 
 > [!Note]  
-> Azure Stack pomocí správné imagí syndikovat do běhu (Windows Server a SQL) a nasazení služby App Service jsou povinné. Projděte si dokumentaci k App Service "[před zahájením práce s App Service ve službě Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" část pro operátor Azure stacku.
+> Azure Stack pomocí správné imagí syndikovat do běhu (Windows Server a SQL) a nasazení služby App Service jsou povinné. Projděte si dokumentaci k App Service [před zahájením práce s App Service ve službě Azure Stack](../azure-stack-app-service-before-you-get-started.md) oddílu pro operátor Azure stacku.
 
 #### <a name="add-code-to-azure-repos"></a>Přidání kódu do úložiště Azure
 

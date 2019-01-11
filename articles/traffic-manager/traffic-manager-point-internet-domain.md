@@ -1,22 +1,21 @@
 ---
-title: Nasměrování internetové domény společnosti na název domény Azure Traffic Manager | Dokumentace Microsoftu
+title: Nasměrování internetové domény společnosti na název domény Azure Traffic Manageru
 description: Tento článek vám pomůže nasměrovat název domény společnosti na název domény Traffic Manageru.
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 2b9b718a61d13790de38ea82f9b479e372e9de63
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c11d8ddcd9a1c1f051ab779a66710ab3d968acab
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052679"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200577"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Nasměrování internetové domény společnosti na doménu Azure Traffic Manageru
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 6e75e549486fb260f3ccbdead7fe1dea02593f3c
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 16095dabb0e5e3e303e82126c7f57cb4ff3fe8dd
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707142"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200917"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Kurz: Streamování dat do Azure Databricks pomocí služby Event Hubs
 
@@ -98,7 +98,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
     * Zadejte název clusteru.
     * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0**.
-    * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po \_\_ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
+    * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po __ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
     Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -168,7 +168,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 ## <a name="send-tweets-to-event-hubs"></a>Odeslání tweetů do služby Event Hubs
 
-Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů služby Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
+V **SendTweetsToEventHub** Poznámkový blok, vložte následující kód a nahraďte zástupné symboly hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
 
 ```scala
     import java.util._
@@ -384,4 +384,4 @@ V tomto kurzu jste se naučili:
 Pokračujte k dalšímu kurzu, kde se seznámíte s prováděním analýzy mínění na streamovaných datech pomocí Azure Databricks a [rozhraní API služeb Microsoft Cognitive Services](../cognitive-services/text-analytics/overview.md).
 
 > [!div class="nextstepaction"]
->[Analýza mínění na streamovaných datech pomocí Azure Databricks](databricks-sentiment-analysis-cognitive-services.md)
+>[Analýza mínění na streamovaných datech pomocí Azure Databricks ](databricks-sentiment-analysis-cognitive-services.md)

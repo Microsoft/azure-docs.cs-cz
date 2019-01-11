@@ -1,84 +1,105 @@
 ---
-title: Škálování clusteru služby Azure Kubernetes služby (AKS)
-description: Škálování clusteru služby Azure Kubernetes služby (AKS).
+title: Škálování clusteru Azure Kubernetes Service (AKS)
+description: Zjistěte, jak škálovat počet uzlů v clusteru služby Azure Kubernetes Service (AKS).
 services: container-service
-author: gabrtv
-manager: jeconnoc
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/15/2017
-ms.author: gamonroy
-ms.custom: mvc
-ms.openlocfilehash: 577fff2e659759647ffc7e96158ebcbe5a88ab25
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 01/10/2019
+ms.author: iainfoulds
+ms.openlocfilehash: 558a3b6dc15293ab9a0895aa4f9f709ba2d0a51f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934682"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214619"
 ---
-# <a name="scale-an-azure-kubernetes-service-aks-cluster"></a>Škálování clusteru služby Azure Kubernetes služby (AKS)
+# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Škálovat počet uzlů v clusteru služby Azure Kubernetes Service (AKS)
 
-Cluster AKS je možné snadno škálovat na různý počet uzlů.  Vyberte požadovaný počet uzlů a spusťte příkaz `az aks scale`.  Při zvětšení velikosti, uzly budou pečlivě [cordoned a k nečekaně] [ kubernetes-drain] minimalizovat přerušení spuštěných aplikací.  Během vertikálního navyšování kapacity `az`příkaz čeká na označení uzlů`Ready` clusterem Kubernetes.
+Pokud prostředek požadavkům vašich aplikací změnit, můžete ručně škálovat cluster AKS ke spuštění jiný počet uzlů. Když vertikálně snížit kapacitu, jsou uzly pečlivě [uzavřené a Vyprázdněné] [ kubernetes-drain] aby se minimalizovalo přerušení spuštěných aplikací. Když vertikálně navýšit kapacitu, `az` příkaz čeká na označení uzlů `Ready` clusterem Kubernetes.
 
 ## <a name="scale-the-cluster-nodes"></a>Škálování uzlů clusteru
 
-Uzly clusteru můžete škálovat pomocí příkazu `az aks scale`. Následující příklad škáluje cluster s názvem *myAKSCluster* do jednoho uzlu.
+Nejprve získejte *název* nodepool pomocí [az aks zobrazit] [ az-aks-show] příkazu. Následující příklad získá nodepool název pro cluster s názvem *myAKSCluster* v *myResourceGroup* skupina prostředků:
 
 ```azurecli-interactive
-az aks scale --name myAKSCluster --resource-group myResourceGroup --node-count 1
+az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-Výstup:
+Následující příklad výstupu ukazuje, že *název* je *nodepool1*:
+
+```console
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
+
+[
+  {
+    "count": 1,
+    "maxPods": 110,
+    "name": "nodepool1",
+    "osDiskSizeGb": 30,
+    "osType": "Linux",
+    "storageProfile": "ManagedDisks",
+    "vmSize": "Standard_DS2_v2"
+  }
+]
+```
+
+Uzly clusteru můžete škálovat pomocí příkazu `az aks scale`. Následující příklad škáluje cluster *myAKSCluster* do jednoho uzlu. Zadejte vlastní *nodepool – název* z předchozího příkazu, jako například *nodepool1*:
+
+```azurecli-interactive
+az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
+```
+
+Následující příklad výstupu ukazuje clusteru má byla úspěšně škálována na jeden uzel, jak je znázorněno *agentPoolProfiles* části:
 
 ```json
 {
-  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "properties": {
-    "accessProfiles": {
-      "clusterAdmin": {
-        "kubeConfig": "..."
-      },
-      "clusterUser": {
-        "kubeConfig": "..."
-      }
-    },
-    "agentPoolProfiles": [
-      {
-        "count": 1,
-        "dnsPrefix": null,
-        "fqdn": null,
-        "name": "myAKSCluster",
-        "osDiskSizeGb": null,
-        "osType": "Linux",
-        "ports": null,
-        "storageProfile": "ManagedDisks",
-        "vmSize": "Standard_D2_v2",
-        "vnetSubnetId": null
-      }
-    ],
-    "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.7.7",
-    "linuxProfile": {
-      "adminUsername": "azureuser",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "..."
-          }
-        ]
-      }
-    },
-    "provisioningState": "Succeeded",
-    "servicePrincipalProfile": {
-      "clientId": "e70c1c1c-0ca4-4e0a-be5e-aea5225af017",
-      "keyVaultSecretRef": null,
-      "secret": null
+  "aadProfile": null,
+  "addonProfiles": null,
+  "agentPoolProfiles": [
+    {
+      "count": 1,
+      "maxPods": 110,
+      "name": "nodepool1",
+      "osDiskSizeGb": 30,
+      "osType": "Linux",
+      "storageProfile": "ManagedDisks",
+      "vmSize": "Standard_DS2_v2",
+      "vnetSubnetId": null
+    }
+  ],
+  "dnsPrefix": "myAKSClust-myResourceGroup-19da35",
+  "enableRbac": true,
+  "fqdn": "myaksclust-myresourcegroup-19da35-0d60b16a.hcp.eastus.azmk8s.io",
+  "id": "/subscriptions/<guid>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
+  "kubernetesVersion": "1.9.11",
+  "linuxProfile": {
+    "adminUsername": "azureuser",
+    "ssh": {
+      "publicKeys": [
+        {
+          "keyData": "[...]"
+        }
+      ]
     }
   },
+  "location": "eastus",
+  "name": "myAKSCluster",
+  "networkProfile": {
+    "dnsServiceIp": "10.0.0.10",
+    "dockerBridgeCidr": "172.17.0.1/16",
+    "networkPlugin": "kubenet",
+    "networkPolicy": null,
+    "podCidr": "10.244.0.0/16",
+    "serviceCidr": "10.0.0.0/16"
+  },
+  "nodeResourceGroup": "MC_myResourceGroup_myAKSCluster_eastus",
+  "provisioningState": "Succeeded",
   "resourceGroup": "myResourceGroup",
+  "servicePrincipalProfile": {
+    "clientId": "[...]",
+    "secret": null
+  },
   "tags": null,
   "type": "Microsoft.ContainerService/ManagedClusters"
 }
@@ -96,3 +117,4 @@ Další informace o nasazení a správě AKS najdete v kurzech AKS.
 
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
+[az-aks-show]: /cli/azure/aks#az-aks-show

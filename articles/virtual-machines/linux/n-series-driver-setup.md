@@ -3,7 +3,7 @@ title: Azure instalace ovladačů v instancích N-series GPU pro Linux | Dokumen
 description: Jak nastavit ovladače NVIDIA GPU pro virtuální počítače řady N-series s Linuxem v Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 01/09/2019
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bd9f8508f67a3c4b87533fb514854b5f66a5f6b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: df78852e309054bb5c27a779b37bb2310d9f7a01
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017259"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201036"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Linuxem
 
@@ -51,9 +51,9 @@ Zobrazí se výstup jako v následujícím příkladu (zobrazuje se karty, kter�
 
 Potom spusťte instalaci příkazů specifických pro vaši distribuci.
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+### <a name="ubuntu"></a>Ubuntu 
 
-1. Stáhněte a nainstalujte CUDA ovladače.
+1. Stáhnout a nainstalovat z webu NVIDIA CUDA ovladače. Například pro Ubuntu 16.04 LTS:
   ```bash
   CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
@@ -97,7 +97,7 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS nebo Red Hat Enterprise Linux 7.3 nebo 7.4
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS nebo Red Hat Enterprise Linux
 
 1. Aktualizujte jádra (doporučeno). Pokud se rozhodnete neaktualizovat jádra, ujistěte se, že verze `kernel-devel` a `dkms` jsou vhodné pro vaše jádra.
 
@@ -174,7 +174,7 @@ Nasazení podporující RDMA virtuálních počítačů řady N-series z někter
 
 Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady NVv2, vytvořte připojení SSH ke všem virtuálním počítačům a postupujte podle kroků pro vaši Linuxovou distribuci. 
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+### <a name="ubuntu"></a>Ubuntu 
 
 1. Spusťte příkaz `lspci`. Ověřte, že karty NVIDIA M60 nebo karty se zobrazují jako PCI zařízení.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Tableau Online | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Tableau Online | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a tableau. představují Online.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 10b82a6c51f8fc31b5b6f4b8c661f764fc6b309d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421725"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198826"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Integrace Azure Active Directory se službou Tableau Online
+# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Integrace Azure Active Directory s Tableau Online
 
 V tomto kurzu se dozvíte, jak integrovat Tableau Online se službou Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Tableau Online, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Tableau. představují Online jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Tableau Online do služby Azure AD, budete muset přidat T
 
 **Chcete-li přidat Tableau Online z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -154,7 +154,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/attributesection2.png)
 
-    f. Ke zkopírování namesapce hodnoty pro e-mailu a příjmení, postupujte podle předchozích kroků.
+    f. Kopírování obor názvů hodnoty pro e-mailu a příjmení, postupujte podle předchozích kroků.
 
     g. Přepnout do režimu Online Tableau aplikace a pak nastavit **Online atributy Tableau** části následujícím způsobem:
      * E-mailu: **e-mailu** nebo **userprincipalname**
@@ -242,7 +242,7 @@ Cílem této části je testování konfigurace jednotného přihlašování k A
 
 Po kliknutí na dlaždici Tableau Online na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Tableau Online.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

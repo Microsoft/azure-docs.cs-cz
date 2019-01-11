@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0ed23c8efcf43213b288945c2910edf4c97bb63e
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753128"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214466"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zásady uchování sestav Azure Active Directory
 
@@ -40,6 +40,18 @@ V tomto článku se dozvíte o zásad uchovávání dat pro různé aktivity ses
 
 - **Okamžitě** – Pokud již pracujete se sestavami na webu Azure Portal.
 - **Do 2 hodin** – Pokud jste nezapnuli generování sestav na webu Azure Portal.
+
+---
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak rychle můžete zobrazit data aktivity po získání licence premium?
+
+Pokud již máte data aktivity s bezplatnou licencí, pak uvidíte ho okamžitě při upgradu. Pokud nemáte k dispozici žádná data, bude to trvat jeden nebo dva dny pro daná data zobrazit v sestavách po upgradu na licenci premium.
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžete zobrazit data poslední měsíc po získání licenci Azure AD premium?
+
+Pokud nedávno přešli na verzi premium (včetně zkušební verze), uvidíte data až na 7 dní původně. Když se data hromadí, se zobrazí data za posledních 30 dnů.
 
 ---
 

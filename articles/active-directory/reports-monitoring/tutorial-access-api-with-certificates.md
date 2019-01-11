@@ -15,14 +15,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7535aad95f7410d25ada232b4946fe52ebc4ba67
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5714ed552c81d28a253aa57ad6e2ba1d67e543a1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961956"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214262"
 ---
-# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: Získání dat pomocí Azure Active Directory API pro vytváření sestav s certifikáty
+# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
 [Rozhraní API pro generování sestav v Azure Active Directory (Azure AD)](concept-reporting-api.md) poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. Pokud chcete získat přístup Azure AD API pro generování sestav bez zásahu uživatele, musíte nakonfigurovat váš přístup k používání certifikátů.
 
@@ -30,24 +30,28 @@ V tomto kurzu se dozvíte, jak používat testovací certifikát pro přístup k
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Nejprve dokončete [požadavky pro přístup k API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md). 
+1. Pro přístup k datům přihlašování, ujistěte se, že máte tenanta služby Azure Active Directory premium (P1/P2) licenci. Zobrazit [Začínáme se službou Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) upgradovat edici Azure Active Directory. Všimněte si, že pokud nemáte žádná data aktivity před upgradem, bude trvat několik dní daná data zobrazit v sestavách po upgradu na licenci premium. 
 
-2. Stáhněte a nainstalujte [Azure AD PowerShell verze 2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md).
+2. Vytvořit nebo přepnout na uživatelský účet v **globálního správce**, **správce zabezpečení**, **Čtenář zabezpečení** nebo **čtečky sestav** role pro příslušného tenanta. 
 
-3. Nainstalujte [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Tento modul poskytuje několik rutin nástrojů, jako jsou:
+3. Dokončení [požadavky pro přístup k API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md). 
+
+4. Stáhněte a nainstalujte [Azure AD PowerShell verze 2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md).
+
+5. Nainstalujte [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Tento modul poskytuje několik rutin nástrojů, jako jsou:
     - Knihovny ADAL, které jsou potřebné pro ověřování
     - Přístupové tokeny od uživatele, klíče aplikace a certifikáty pomocí ADAL
     - Rozhraní Graph API zpracovávající stránkové výsledky
 
-4. Pokud je vaše první přihlášení pomocí modulu spustit **instalace MSCloudIdUtilsModule**, jinak jej importujte **Import-Module** příkaz prostředí Powershell. Vaše relace by měla vypadat podobně jako tato obrazovka: ![prostředí Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Pokud je vaše první přihlášení pomocí modulu spustit **instalace MSCloudIdUtilsModule**, jinak jej importujte **Import-Module** příkaz prostředí Powershell. Vaše relace by měl vypadat podobně jako tato obrazovka: ![Prostředí Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-5. Použití **New-SelfSignedCertificate** rutinu Powershellu k vytvoření testovacího certifikátu.
+7. Použití **New-SelfSignedCertificate** rutinu Powershellu k vytvoření testovacího certifikátu.
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-6. Použití **Export certifikátu** rutiny a jejich export do souboru certifikátu.
+8. Použití **Export certifikátu** rutiny a jejich export do souboru certifikátu.
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"

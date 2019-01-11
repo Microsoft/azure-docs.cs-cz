@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 697815aeca9b8a07e3cece877d610436b2b8ac83
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c60f835939b790a05bb536388b961a277e3101e3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278283"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215333"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Spuštění, zastavení a vytváření sestav o tento Chaos se dá testovat službu.
@@ -47,9 +47,9 @@ Pokud chcete získat další segment události chaosu, můžete zadat token Cont
 |Argument|Popis|
 | --- | --- |
 | --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
-| --koncový. čas utc | Windows soubor času představující čas ukončení časový rozsah, pro kterou má vygenerovat sestava Chaos. Poraďte [DateTime.ToFileTimeUtc metoda](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) podrobnosti. |
+| --koncový. čas utc | Windows soubor času představující čas ukončení časový rozsah, pro kterou má vygenerovat sestava Chaos. Poraďte [DateTime.ToFileTimeUtc metoda](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) podrobnosti. |
 | – maximální počet výsledků | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
-| --spuštění. čas utc | Windows soubor času představující čas zahájení časový rozsah, pro kterou má vygenerovat sestava Chaos. Poraďte [DateTime.ToFileTimeUtc metoda](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) podrobnosti. |
+| --spuštění. čas utc | Windows soubor času představující čas zahájení časový rozsah, pro kterou má vygenerovat sestava Chaos. Poraďte [DateTime.ToFileTimeUtc metoda](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) podrobnosti. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty

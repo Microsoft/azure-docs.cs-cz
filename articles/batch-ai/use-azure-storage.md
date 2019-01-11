@@ -12,12 +12,12 @@ ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c1ebcae04b51fbf18da22872e3e4160a37a7e2fe
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407996"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201155"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Store vstup úlohy služby Batch AI a výstup s Azure Storage
 
@@ -79,7 +79,7 @@ Chcete-li připojení svazku služby Azure Storage do úlohy vytvořené pomocí
 - < FILE_SHARE_NAME - > název sdílené složky
 - < BLOB_CONTAINER_NAME - > název kontejneru objektů Blob
 
-Chcete-li připojit svazky úložiště Azure spolu se sadami SDK služby Azure Batch AI, nastavte `mount_volumes` (Python) nebo `MountVolumes` (C#, Java) vlastnost `JobCreateParameters`. Při připojování svazků pomocí sady SDK služby Azure Batch AI je nutné zadat přihlašovací údaje účtu úložiště. Zobrazení schémat pro připojení svazků v [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python), [jazyka C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet), a [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai._mount_volumes?view=azure-java-stable).
+Chcete-li připojit svazky úložiště Azure spolu se sadami SDK služby Azure Batch AI, nastavte `mount_volumes` (Python) nebo `MountVolumes` (C#, Java) vlastnost `JobCreateParameters`. Při připojování svazků pomocí sady SDK služby Azure Batch AI je nutné zadat přihlašovací údaje účtu úložiště. Zobrazení schémat pro připojení svazků v [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python), [jazyka C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet), a [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai.mountvolumes?view=azure-java-stable).
 
 ### <a name="mount-volumes-to-a-cluster"></a>Připojit svazky na cluster
 

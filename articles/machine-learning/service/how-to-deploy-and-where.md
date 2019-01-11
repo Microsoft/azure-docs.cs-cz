@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0c171ff768395540c123c4ef2a19168d926b0661
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b656a82bab9be6f6c24ba0d418df9142a6a6c117
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633823"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199761"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -385,6 +385,10 @@ from azureml.core.webservice import Webservice
 service_name = 'aci-mnist-3'
 # Retrieve existing service
 service = Webservice(name = service_name, workspace = ws)
+
+# point to a different image
+new-image = Image(workspace = ws, id="myimage2:1")
+
 # Update the image used by the service
 service.update(image = new-image)
 print(service.state)

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2c4c2982febf1d81aaaa81bb9c894785b860503b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789853"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200082"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -52,7 +52,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 * Tento problém může také dojít, pokud se aktivují více záloh za den. Aktuálně doporučujeme pouze jedna záloha za den jako rychlé RPs se uchovávají po dobu 7 dní a pouze 18 rychlé RPs můžou být spojené s virtuálním počítači v daném okamžiku. <br>
 
 Doporučená akce:<br>
-Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků virtuálního počítače a zkuste operaci zopakovat a aktivovat čištění. 
+Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků virtuálního počítače a zkuste operaci zopakovat a aktivovat čištění.
 > [!NOTE]
     > Služba Backup vytvoří samostatné skupiny prostředků než skupina prostředků virtuálního počítače k uložení kolekci bodů obnovení. Zákazníkům doporučujeme není zamknout skupiny prostředků vytvořené pro použití službou Backup. Formát názvu skupiny prostředků vytvořené pomocí služby Backup je: AzureBackupRG_`<Geo>`_`<number>` např: AzureBackupRG_northeurope_1
 
@@ -105,14 +105,14 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 **Kód chyby:**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: Azure Backup momentálně nepodporuje disky větší než 1023 GB <br>
 
-Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 1023GB, protože trezoru není upgradována na zásobník záloh virtuálních počítačů Azure V2. Upgrade na zálohování virtuálních počítačů Azure zásobníku poskytované V2 podporují až 4 TB. Přečtěte si tyto [výhody](backup-upgrade-to-vm-backup-stack-v2.md), [aspekty](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)a poté proveďte upgrade pomocí těchto [pokyny](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
+Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 1023GB, protože trezoru není upgradována rychlé obnovení. Upgrade na rychlé obnovení bude poskytovat podporu až na 4TB, najdete v tomto [článku](backup-instant-restore-capability.md).  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – aktuálně Azure Backup nepodporuje disky SSD na úrovni Standard
 
 **Kód chyby:**: UserErrorStandardSSDNotSupported <br>
 **Chybová zpráva**: Azure Backup momentálně nepodporuje disky SSD na úrovni Standard <br>
 
-Azure Backup nyní podporuje disky SSD na úrovni Standard pouze pro trezory služby, které jsou upgradovány na zásobník záloh virtuálních počítačů Azure V2. Přečtěte si tyto [výhody](backup-upgrade-to-vm-backup-stack-v2.md), [aspekty](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)a poté proveďte upgrade pomocí těchto [pokyny](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).
+Azure Backup teď podporuje disky SSD na úrovni Standard pouze pro trezory služby, které jsou upgradovány na [rychlé obnovení](backup-instant-restore-capability.md).
 
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení

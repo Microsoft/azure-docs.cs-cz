@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 7656d8247cfb16df9989638b7e8ad2ffd3ff445f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 2c035734d443eba01af6f167681ae289401dbcb4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51851666"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212868"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Javy
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a Java
 
 V tomto rychlém startu použijete rozhraní Azure REST API pro rozpoznávání tváře s Javou detekovat lidské tváře v obrázku.
 
@@ -31,8 +31,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="create-the-java-project"></a>Vytvoření projektu jazyka Java
 
 Vytvoření nové aplikace v Javě příkazového řádku v prostředí IDE a přidejte **hlavní** třídy s **hlavní** metoda. Potom, stáhněte si následující globální knihovny z úložiště Maven k `lib` adresáře vašeho projektu:
-* `org.apache.httpcomponents:httpclient:4.2.4`
+* `org.apache.httpcomponents:httpclient:4.5.6`
+* `org.apache.httpcomponents:httpcore:4.4.10`
 * `org.json:json:20170516`
+* `commons-logging:commons-logging:1.1.2`
 
 ## <a name="add-face-detection-code"></a>Přidejte kód pro rozpoznávání tváře detekce
 
@@ -54,7 +56,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -92,7 +94,7 @@ private static final String faceAttributes =
 Přidejte následující metodu do **hlavní** metody. Sestaví volání REST API pro rozpoznávání tváře k detekci informací o rozpoznávání tváře ve bitovou vzdálenou ( `faceAttributes` řetězec Určuje, které pro rozpoznávání tváře atributy k načtení). Pak zapíše výstupní data na řetězec formátu JSON.
 
 ```Java
-HttpClient httpclient = new DefaultHttpClient();
+HttpClient httpclient = HttpClientBuilder.create().build();
 
 try
 {

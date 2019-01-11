@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: fef6858383028d62a16472bd530bf456d01ee7d3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634418"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213225"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue storage pomocí Azure Powershellu
 
@@ -77,7 +77,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-Následující příklad nejprve vytvoří připojení k Azure Storage pomocí kontext účtu úložiště, který obsahuje název účtu úložiště a jeho přístupový klíč. Dále volá [New-AzStorageQueue](/powershell/module/azure.storage/new-AzStoragequeue) rutiny můžete vytvořit frontu s názvem "queuename".
+Následující příklad nejprve vytvoří připojení k Azure Storage pomocí kontext účtu úložiště, který obsahuje název účtu úložiště a jeho přístupový klíč. Dále volá [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) rutiny můžete vytvořit frontu s názvem "queuename".
 
 ```powershell
 $queueName = "howtoqueue"
@@ -88,7 +88,7 @@ Informace o vytváření názvů pro službu front Azure, najdete v části [poj
 
 ## <a name="retrieve-a-queue"></a>Načíst do fronty
 
-Můžete vyhledat a načíst konkrétní frontu nebo seznam všech front v účtu úložiště. Následující příklady ukazují, jak načíst všechny fronty v účtu úložiště a konkrétní fronty; Oba příkazy používají [Get-AzStorageQueue](/powershell/module/azure.storage/get-AzStoragequeue) rutiny.
+Můžete vyhledat a načíst konkrétní frontu nebo seznam všech front v účtu úložiště. Následující příklady ukazují, jak načíst všechny fronty v účtu úložiště a konkrétní fronty; Oba příkazy používají [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) rutiny.
 
 ```powershell
 # Retrieve a specific queue

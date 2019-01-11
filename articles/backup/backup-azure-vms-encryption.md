@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40f8f1e9470201292c9dee27187d2155c879e13b
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6793a83002029c009e3d4e124b4386feabecd5f8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583064"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201070"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup
 Tento článek se hovoří o tom, jak zálohovat a obnovovat virtuální počítače (VM) s využitím Azure Backup. Poskytuje také informace o podporované scénáře, požadavky a kroky při řešení potíží pro případy chyb.
@@ -128,6 +128,8 @@ Následujícím postupem zajistit odpovídající oprávnění k zálohování p
 Po úspěšně jsou k dispozici oprávnění, můžete pokračovat s povolením backup pro šifrované virtuální počítače.
 
 ## <a name="restore-an-encrypted-vm"></a>Obnovení šifrovaných virtuálních počítačů
+Obnovení Azure Backup nyní podporuje [Azure šifrovaný virtuální počítač bez Azure AD](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad) kromě předchozí nabídky obnovení podpory k Azure šifrovaný virtuální počítač s Azure AD.<br>
+
 Chcete-li obnovit šifrovaný virtuální počítač, nejdříve obnovit disky podle postupu v části "Obnovte zálohovanou disky" v [zvolte virtuální počítač obnovit konfiguraci](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Potom můžete použít jednu z následujících možností:
 
 * Postupujte podle kroků jako v prostředí PowerShell [vytvořit virtuální počítač z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) vytvoří úplný virtuální počítač z obnovených disků.

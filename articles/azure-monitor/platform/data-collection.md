@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b96a00fb5dbf96a7b57adbaaacf24af319d86950
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718958"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215384"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -156,7 +156,7 @@ Azure Monitor může shromažďovat data protokolu z různých zdrojů v rámci 
 Všechna data protokolu ve službě Azure Monitor jsou načítány s použitím [dotaz protokolu](../log-query/log-query-overview.md) napsané pomocí [Průzkumník dat dotazovací jazyk](../log-query/get-started-queries.md), která umožňuje rychle načítat, konsolidovat a analýzy shromážděných dat. Použití [Log Analytics](../log-query/portals.md) k psaní a testování dotazů na webu Azure Portal. Můžete interaktivně pracovat s výsledky nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst protokoly pomocí [Azure, rozhraní REST API pro monitorování](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 > [!IMPORTANT]
-> Data ze služby Application Insights se ukládají v samostatném oddílu než jiná data protokolu ve službě Azure Monitor. Tento atribut podporuje stejné funkce jako jiná data protokolu, ale je nutné použít [konzoly Application Insights](/azure-monitor/app/analytics.md) nebo [API pro Application Insights](https://dev.applicationinsights.io/) pro přístup k těmto datům. Můžete použít [napříč prostředky dotazu](../log-query/cross-workspace-query.md) k analýze dat aplikací společně s další data protokolu.
+> Data ze služby Application Insights se ukládají v samostatném oddílu než jiná data protokolu ve službě Azure Monitor. Tento atribut podporuje stejné funkce jako jiná data protokolu, ale je nutné použít [konzoly Application Insights](../app/analytics.md) nebo [API pro Application Insights](https://dev.applicationinsights.io/) pro přístup k těmto datům. Můžete použít [napříč prostředky dotazu](../log-query/cross-workspace-query.md) k analýze dat aplikací společně s další data protokolu.
 
 ![Logs](media/data-collection/logs.png)
 

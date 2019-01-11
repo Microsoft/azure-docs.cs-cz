@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 18ca854f1e04127a900c1b753245ed6e2a331d68
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b98b42be170c37710435d1aad61707a4ed01851f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628164"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214416"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Odstranění kontejnerů na základě předpony názvu kontejneru
 
@@ -49,8 +49,8 @@ Tento skript k odstranění kontejnerů na základě předpony názvu kontejneru
 | Příkaz | Poznámky |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Získá zadaný účet úložiště nebo všechny účty úložišť ve skupině prostředků nebo předplatného. |
-| [Get-AzStorageContainer](/powershell/module/azure.storage/get-AzStoragecontainer) | Vypíše kontejnery úložiště přidružené k účtu úložiště. |
-| [Odebrat AzStorageContainer](/powershell/module/azure.storage/remove-AzStoragecontainer) | Odebere zadané úložiště kontejnerů. |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Vypíše kontejnery úložiště přidružené k účtu úložiště. |
+| [Odebrat AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | Odebere zadané úložiště kontejnerů. |
 
 ## <a name="next-steps"></a>Další postup
 
