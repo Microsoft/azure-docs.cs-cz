@@ -19,7 +19,7 @@ ms.lasthandoff: 01/11/2019
 ms.locfileid: "54213803"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-use-custom-activities.md)
 > * [Aktuální verze](transform-data-using-dotnet-custom-activity.md)
 
