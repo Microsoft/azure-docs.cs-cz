@@ -122,8 +122,8 @@ items:
         href: backup-azure-vms-encryption.md
       - name: Povolení zálohování virtuálních počítačů během vytváření virtuálních počítačů
         href: backup-during-vm-creation.md
-      - name: Upgrade na zásobník záloh virtuálních počítačů V2
-        href: backup-upgrade-to-vm-backup-stack-v2.md
+      - name: Funkce okamžité obnovy
+        href: backup-instant-restore-capability.md
     - name: Správa a monitorování virtuálních počítačů
       items:
       - name: Správa záloh virtuálních počítačů Azure na webu Azure Portal
@@ -240,6 +240,8 @@ items:
     href: /rest/api/backup/
   - name: REST – trezor služby Recovery Services
     href: /rest/api/recoveryservices/
+  - name: Šablona Resource Manageru
+    href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Zdroje a prostředky
   items:
   - name: Plány Azure do budoucna
@@ -254,9 +256,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: dfa3bca01fc237aa62cc893e707aa08b9055dd7d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 44ab1f24ba3bcae8902d8fa953b09f48630e7822
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104808"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199237"

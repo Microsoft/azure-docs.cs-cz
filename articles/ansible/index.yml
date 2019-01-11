@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5e2b31671a8f08bae1cba66e05d6ae72f960cf9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7225fece81672e539858567039e1ff086d97c2c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050927"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197721"
 documentType: LandingData
 title: Dokumentace k Ansible v Azure
 metadata:
@@ -53,6 +53,9 @@ sections:
     - html: <a href="./ansible-deploy-app-vmss">Nasaďte aplikace do škálovacích sad virtuálních počítačů v Azure.</a>
     - html: <a href="./ansible-create-configure-aks">Vytvářejte a spravujte clustery Azure Kubernetes Service.</a>
     - html: <a href="./ansible-create-configure-application-gateway">Spravujte webový provoz s využitím služby Azure Application Gateway.</a>
+    - html: <a href="./ansible-auto-scale-vmss">Automatické škálování škálovací sady virtuálních počítačů v Azure pomocí Ansible.</a>
+    - html: <a href="./ansible-scale-azure-web-apps">Škálování webových aplikací Azure App Service pomocí Ansible.</a>
+    - html: <a href="./ansible-create-configure-route-table">Vytvoření, změna nebo odstranění směrovací tabulky Azure pomocí Ansible.</a>
 - title: Referenční informace
   items:
   - type: list
