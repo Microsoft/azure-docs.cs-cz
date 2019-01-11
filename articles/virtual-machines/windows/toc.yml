@@ -30,16 +30,16 @@ items:
     href: tutorial-create-vmss.md
   - name: 7. Vyrovnávání zatížení virtuálních počítačů
     href: tutorial-load-balancer.md
-  - name: 8. Sítě pro virtuální počítače
+  - name: 8. Správa sítě
     href: tutorial-virtual-network.md
   - name: 9. Zálohování virtuálních počítačů
     href: tutorial-backup-vms.md
-  - name: 10. Správa virtuálních počítačů
+  - name: 10. Řízení virtuálních počítačů
     displayName: scope policy RBAC lock tag
     href: tutorial-govern-resources.md
   - name: 11. Monitorování a aktualizace virtuálních počítačů
     href: tutorial-monitoring.md
-  - name: '12: Security Center pro virtuální počítače'
+  - name: 12. Správa zabezpečení virtuálních počítačů
     href: tutorial-azure-security.md
   - name: 13. Instalace zásobníku SQL\IIS\.NET
     href: tutorial-iis-sql.md
@@ -244,6 +244,8 @@ items:
       items:
       - name: Přehled
         href: shared-image-galleries.md
+      - name: Vytváření sdílených imagí s využitím PowerShellu
+        href: shared-images.md
       - name: Vytváření sdílených imagí s využitím CLI
         href: ../linux/shared-images.md
       - name: Řešení potíží se sdílenými imagemi
@@ -409,6 +411,8 @@ items:
         href: migration-classic-resource-manager-community-tools.md
       - name: Nejčastější dotazy
         href: migration-classic-resource-manager-faq.md
+- name: Řešení potíží
+  href: ../troubleshooting/index.md
 - name: Referenční informace
   items:
   - name: Azure CLI
@@ -447,11 +451,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Nejčastější dotazy
     href: faq.md
-- name: Řešení potíží
-  href: ../troubleshooting/index.md
-ms.openlocfilehash: bb8bf3fdd1b49987013fbb6b2f508019cedc811e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ca927f422da31c1ab34523aad61f8008d12ddd83
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958248"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189233"

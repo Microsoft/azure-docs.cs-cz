@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: dc1de1bb43295d2ff9f260613ae568cdd2fbe6ae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103476"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198775"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Vlastní protokolů v Log Analytics
 Zdroj dat vlastních protokolů v Log Analytics umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog. Po shromáždění, můžete analyzovat data do jednotlivých polí v dotazech nebo extrahovat data během shromažďování u jednotlivých polí.
@@ -164,6 +164,18 @@ Pomocí dotazu *typ = MyApp_CL* vrátit všechny záznamy z shromážděného pr
 Používáme vlastní pole k definování *čas události*, *kód*, *stav*, a *zpráva* pole a můžeme vidět rozdíl v záznamech které jsou vrácené dotazem.
 
 ![Dotaz protokol o vlastní pole](media/data-sources-custom-logs/query-02.png)
+
+## <a name="alternatives-to-custom-logs"></a>Alternativy k vlastní protokoly
+Vlastní protokoly jsou užitečné, pokud odpovídá kritérií uvedených o vašich dat, ale existují případy, například následující, kdy potřebujete další strategie:
+
+- Data se nevejde požadované struktury, jako je například s časové razítko v jiném formátu.
+- Soubor protokolu nebude dodržovat požadavky, jako je například kódování souborů nebo strukturu složky.
+- Data vyžaduje předběžného zpracování nebo filtrování před kolekce. 
+
+V případech, kdy není možné shromáždit vaše data s vlastními protokoly vezměte v úvahu následující alternativní strategií:
+
+- Použít vlastní skript nebo jiné metody zapsat data do [události Windows](data-sources-windows-events.md) nebo [Syslog](data-sources-syslog.md) který jsou shromážděná službou Log Analytics. 
+- Odeslat data přímo do Log Analytics pomocí [rozhraní API kolekce dat HTTP](data-collector-api.md). Příklad použití sady runbook ve službě Azure Automation je k dispozici v [shromažďování dat v Log Analytics runbooku Azure Automation](runbook-datacollect.md).
 
 ## <a name="next-steps"></a>Další postup
 * Zobrazit [textových dat v Log Analytics analyzovat](../log-query/parse-text.md) metody pro parsování každý importovat položky protokolu do více vlastností.

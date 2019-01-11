@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a1e9647e64556a7c7f2444fa2711a2eb61d230a3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 36c16cd48ffba704b9cc8b0884491c3b92543b5c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874561"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215486"
 ---
 # <a name="azure-logging-and-auditing"></a>Protokolování a auditování Azure
 
@@ -187,9 +187,9 @@ Analýza úložiště protokoluje následující typy ověřený a anonymních p
 ### <a name="azure-networking-logs"></a>Síťových protokolů Azure
 Síť protokolování a monitorování v Azure je komplexní a zahrnuje dvě rozsáhlé kategorie:
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): monitorování sítě založené na scénářích se poskytuje zároveň s funkcí ve službě Network Watcher. Tato služba zahrnuje zachycení paketu, další směrování, IP tok ověřit, zobrazení skupin zabezpečení, protokoly toků NSG. Scénář úrovně monitorování poskytuje komplexní přehled síťové prostředky, na rozdíl od sledování jednotlivých síťových prostředků.
+* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Monitorování sítě založené na scénářích je součástí funkce ve službě Network Watcher. Tato služba zahrnuje zachycení paketu, další směrování, IP tok ověřit, zobrazení skupin zabezpečení, protokoly toků NSG. Scénář úrovně monitorování poskytuje komplexní přehled síťové prostředky, na rozdíl od sledování jednotlivých síťových prostředků.
 
-* [Sledování prostředků](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): sledování na úrovni prostředků obsahuje čtyři funkce, diagnostické protokoly, metriky, řešení potíží a stav prostředku. Všechny tyto funkce jsou sestaveny na úrovni síťových prostředků.
+* [Sledování prostředků](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Sledování na úrovni prostředků obsahuje čtyři funkce, diagnostické protokoly, metriky, řešení potíží a stav prostředku. Všechny tyto funkce jsou sestaveny na úrovni síťových prostředků.
 
 ![Síťových protokolů Azure](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -219,19 +219,19 @@ Network Watcher dává zobrazení protokolů Diagnostika. Toto zobrazení obsahu
 
 
 Kromě výše uvedených protokolování možností Network Watcher aktuálně má následující možnosti:
-- [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): poskytuje přehled úrovni sítě, který zobrazuje různá propojení a přidružení mezi síťové prostředky ve skupině prostředků.
+- [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Poskytuje přehled úrovni sítě, který zobrazuje různá propojení a přidružení mezi síťové prostředky ve skupině prostředků.
 
-- [Proměnné zachytávání paketů](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): zaznamená data o paketů do a z virtuálního počítače. Rozšířené možnosti filtrování a upřesnění ovládací prvky, jako je například nastavení omezení času a velikost, poskytují flexibility. Paket data mohou být uloženy v úložišti objektů blob nebo na místním disku v *CAP* formát souboru.
+- [Proměnné zachytávání paketů](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Zaznamená data o paketů do a z virtuálního počítače. Rozšířené možnosti filtrování a upřesnění ovládací prvky, jako je například nastavení omezení času a velikost, poskytují flexibility. Paket data mohou být uloženy v úložišti objektů blob nebo na místním disku v *CAP* formát souboru.
 
-* [Ověření IP toku](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): zkontroluje, jestli je paket povolený nebo zakázaný podle informace 5 řazené kolekce členů paketů parametry toku (to znamená, cílová IP adresa, Zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud paketu je skupina zabezpečení, je vrácena pravidlo a skupiny, které paket zamítlo.
+* [Ověření IP toku](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Zkontroluje, jestli je paket povolený nebo zakázaný podle informace 5 řazené kolekce členů paketů parametry toku (to znamená, cílová IP adresa, Zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud paketu je skupina zabezpečení, je vrácena pravidlo a skupiny, které paket zamítlo.
 
-* [Další směrování](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Určuje další segment pro pakety směrovány v prostředcích infrastruktury sítě Azure, takže můžete diagnostikovat všechny správně nakonfigurovaný. trasy definované uživatelem.
+* [Směrování](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Určuje další segment směrování paketů směrovány v prostředcích infrastruktury sítě Azure, takže můžete diagnostikovat všechny nesprávně nakonfigurované trasy definované uživatelem.
 
-* [Zobrazení skupin zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): získá pravidla efektivní a použité zabezpečení, které se použijí na virtuálním počítači.
+* [Zobrazení skupin zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): Získá pravidla efektivní a použité zabezpečení, které se použijí na virtuálním počítači.
 
-* [Brána virtuální sítě a řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): vám pomohou s řešením brány virtuální sítě a připojení.
+* [Brána virtuální sítě a řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Pomáhá při řešení problémů brány virtuální sítě a připojení.
 
-* [Sítě limity předplatného](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): umožňuje zobrazit využití prostředků sítě proti omezení.
+* [Sítě limity předplatného](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): Umožňuje zobrazit využití prostředků sítě proti omezení.
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -251,19 +251,19 @@ Služba Application Insights je zaměřená na vývojový tým. Pomáhá pochopi
 
 * **Výjimky**: Analýza souhrnné statistiky nebo vyberte konkrétní instance a přejít k podrobnostem trasování zásobníku a souvisejících požadavcích. Hlásí se výjimky serveru i prohlížeče.
 
-* **Zobrazení stránek a výkonu načítání**: získání sestav z prohlížečů uživatelů.
+* **Zobrazení stránek a výkonu načítání**: Získání sestav z prohlížečů uživatelů.
 
-* **Volání AJAX**: sazby webovou stránku, doby odezvy a míra selhání.
+* **Volání AJAX**: Získejte kurzy webovou stránku, doby odezvy a míra selhání.
 
 * **Počty uživatelů a relací**.
 
-* **Čítače výkonu**: získání dat z Windows nebo Linuxem serverový počítač, například CPU, paměť a využití sítě.
+* **Čítače výkonu**: Získání dat z Windows nebo Linuxem serverový počítač, jako je například procesor, paměť a využití sítě.
 
-* **Diagnostika hostitele**: získání dat z Dockeru nebo Azure.
+* **Diagnostika hostitele**: Získání dat z Dockeru nebo Azure.
 
-* **Protokoly trasování diagnostiky**: získání dat z vaší aplikace tak, aby události trasování můžete porovnat s požadavky.
+* **Protokoly trasování diagnostiky**: Získání dat z vaší aplikace tak, aby události trasování můžete porovnat s požadavky.
 
-* **Vlastní události a metriky**: získání dat, které napíšete sami v kódu klienta nebo serveru, ke sledování obchodních událostí, například prodané položky nebo Vyhrané hry.
+* **Vlastní události a metriky**: Získání dat, které napíšete sami v kódu klienta nebo serveru, ke sledování obchodních událostí, například prodané položky nebo Vyhrané hry.
 
 Následující tabulka uvádí a popisuje scénáře integrace:
 
@@ -271,9 +271,9 @@ Následující tabulka uvádí a popisuje scénáře integrace:
 | --------------------- | :---------- |
 |[Mapa aplikace](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|Komponenty vaší aplikace, včetně klíčových metrik a výstrah.||
 |[Diagnostické vyhledávání pro instanci dat](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Události vyhledávání a filtrování, jako jsou třeba požadavky, výjimky, volání závislosti, trasování protokolů a zobrazení stránek.||
-|[Průzkumník metrik pro agregovaná data](https://docs.microsoft.com/azure/application-insights/app-insights-metrics-explorer)|Prozkoumání, filtrování a segmentace agregovaných dat, jako jsou třeba frekvence požadavků, selhání a výjimek, doby odezvy a časy načtení stránek.||
+|[Průzkumník metrik pro agregovaná data](https://docs.microsoft.com/azure/azure-monitor/app/metrics-explorer)|Prozkoumání, filtrování a segmentace agregovaných dat, jako jsou třeba frekvence požadavků, selhání a výjimek, doby odezvy a časy načtení stránek.||
 |[Řídicí panely](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|Propojení dat z různých zdrojů a jejich sdílení s ostatními. Ideální pro aplikace s více komponentami a pro nepřetržité zobrazení v týmové místnosti.||
-|[Live Metrics Stream](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)|Při nasazování nového sestavení sledujte tyto ukazatele výkonu téměř v reálném čase, abyste se ujistili, že všechno funguje podle očekávání.||
+|[Live Metrics Stream](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)|Při nasazování nového sestavení sledujte tyto ukazatele výkonu téměř v reálném čase, abyste se ujistili, že všechno funguje podle očekávání.||
 |[Analýzy](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|Tento výkonný dotazovací jazyk umožňuje odpovědět na složité dotazy týkající se využití a výkonu vaší aplikace.||
 |[Automatické a ruční výstrahy](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|Automatické výstrahy se přizpůsobí běžným vzorům telemetrie vaší aplikace a se zobrazí, když něco neobvyklého. Výstrahy se také dají nastavit pro konkrétní úrovně vlastních nebo standardních metrik.||
 |[Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)|Zobrazit data o výkonu v kódu. Ke kódu je možné přejít z trasování zásobníku.||
@@ -288,11 +288,11 @@ Detekce hrozeb služby Azure Security Center funguje tak, že se automaticky shr
 
 Služba Security Center využívá pokročilou analýzu zabezpečení, která daleko překračuje možnosti detekce založené na signaturách či příznacích. Použije prorazit ve velkých objemů dat a [strojového učení](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technologie k vyhodnocování událostí v rámci prostředků cloudové infrastruktury. Tímto způsobem detekuje hrozby, které by jinak nebylo možné identifikovat pomocí manuálních metod a předvídání vývoje útoků. Do této analýzy zabezpečení patří:
 
-* **Integrovaná analýza hrozeb**: hledá známých útočníků použitím globální analýzu hrozeb z produktů společnosti Microsoft a služby, Microsoft Digital Crimes Unit (DCU), Microsoft Security Response Center (MSRC) a externích informačních kanálů.
+* **Integrovaná analýza hrozeb**: Vyhledá známých útočníků použitím globální analýzu hrozeb z produktů společnosti Microsoft a služby, Microsoft Digital Crimes Unit (DCU), Microsoft Security Response Center (MSRC) a externích informačních kanálů.
 
-* **Behaviorální analýza**: používá známá schémata k odhalování škodlivého chování.
+* **Behaviorální analýza**: Používá známá schémata k odhalování škodlivého chování.
 
-* **Detekce anomálií**: pomocí statistické profilace sestavení historické standardní hodnoty. Upozorní na odchylky od zavedených standardních hodnot, které mají potenciál útoku.
+* **detekce anomálií**: Pomocí statistické profilace sestavení historické standardní hodnoty. Upozorní na odchylky od zavedených standardních hodnot, které mají potenciál útoku.
 
 Mnoho operací zabezpečení a reakce na incidenty týmy využívají řešení SIEM jako výchozí bod pro třídění a prošetřování výstrah zabezpečení. S integrací protokolů Azure můžete synchronizovat výstrahy Security Center a události zabezpečení virtuálních počítačů, shromážděné Azure protokolů diagnostiky a auditu, pomocí řešení Log Analytics nebo systému SIEM téměř v reálném čase.
 
@@ -323,7 +323,7 @@ Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby 
 |Application Insights||     Spojovací čára|  Spojovací čára|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [konektoru (Preview)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Účty Azure Automation| Microsoft.Automation/<br>AutomationAccounts|    Diagnostika||       [Další informace](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Účty služby Azure Batch|  Microsoft.Batch/<br>batchAccounts|  Diagnostika|    Diagnostika||
-|Klasické cloudové služby||       Úložiště||       [Další informace](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
+|Klasické cloudové služby||       Storage||       [Další informace](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
 |Cognitive Services|    Microsoft.CognitiveServices/<br>accounts|       Diagnostika|||
 |Azure Data Lake Analytics| Microsoft.DataLakeAnalytics/<br>accounts|   Diagnostika|||
 |Azure Data Lake Store| Microsoft.DataLakeStore/<br>accounts|   Diagnostika|||
@@ -337,10 +337,10 @@ Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby 
 |Trezory služby Recovery|   Microsoft.RecoveryServices/<br>trezory služby|||[Analýza (Preview) služby Azure Recovery Services](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Služby hledání|   Microsoft.Search/<br>searchServices|    Diagnostika|    Diagnostika||
 |Obor názvů služby Service Bus| Microsoft.ServiceBus/<br>Obory názvů|    Diagnostika|Diagnostika|    [Služba Service Bus Analytics (Náhled)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-|Service Fabric||       Úložiště||    [Analýza služby Service Fabric (verze Preview)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
+|Service Fabric||       Storage||    [Analýza služby Service Fabric (verze Preview)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>servery pro /<br>databáze||       Diagnostika||
 ||Microsoft.Sql/<br>servery pro /<br>elasticPools||||
-|Úložiště|||         Skript| [Analýza úložiště Azure (Preview)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
+|Storage|||         Skript| [Analýza úložiště Azure (Preview)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
 |Azure Virtual Machines|    Microsoft.Compute/<br>virtuálních počítačů|  Linka|  Linka||
 ||||Diagnostika||
 |Škálovací sady virtuálních počítačů|    Microsoft.Compute/<br>virtuálních počítačů    ||Diagnostika||
@@ -371,20 +371,20 @@ Integrace protokolů aktivit Azure v současné době podporuje integrace protok
 
 Scénáře integrace SIEM:
 
-* [Partner kroky konfigurace](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/): Tento příspěvek na blogu se dozvíte, jak konfigurovat integraci protokolů Azure pro práci s partnerskými řešeními Splunk, HP ArcSight a IBM QRadar.
+* [Partner kroky konfigurace](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/): Tento příspěvek na blogu ukazuje postup při konfiguraci integrace protokolů Azure pro práci s partnerskými řešeními Splunk, HP ArcSight a IBM QRadar.
 
-* [Nejčastější dotazy k Azure Log Integration](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq): Tento článek obsahuje odpovědi na otázky týkající se integrace protokolů Azure.
+* [Integrace protokolů Azure – nejčastější dotazy](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq): Tento článek obsahuje odpovědi na otázky týkající se integrace protokolů Azure.
 
-* [Integrace výstrah služby Security Center s integrací protokolů Azure](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): Tento článek popisuje, jak synchronizovat výstrahy Security Center, události zabezpečení virtuálních počítačů shromažďuje protokoly diagnostiky Azure a protokolů auditu Azure pomocí Log Analytics nebo systému SIEM řešení.
+* [Integrace výstrah služby Security Center s integrací protokolů Azure](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): Tento článek popisuje, jak synchronizovat výstrahy Security Center, události zabezpečení virtuálních počítačů shromažďuje protokoly diagnostiky Azure a protokolů auditu Azure v rámci řešení pro Log Analytics nebo systému SIEM.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Auditování a protokolování](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): ochrana dat tak, že Údržba viditelnost a rychle reagovat na výstrahy zabezpečení včas.
+- [Auditování a protokolování](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): Ochrana dat tak, že Údržba viditelnost a rychle reagovat na výstrahy zabezpečení včas.
 
-- [Shromažďování protokolování a auditování protokolu zabezpečení v rámci Azure](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): vynuťte tato nastavení zajistit, že vaše instance Azure jsou shromažďování správné protokolů zabezpečení a audit.
+- [Shromažďování protokolování a auditování protokolu zabezpečení v rámci Azure](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): Vynuťte tato nastavení zajistit, že vaše instance Azure jsou shromažďování správné protokolů zabezpečení a audit.
 
 - [Konfigurace nastavení auditu pro kolekci webů](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Pokud jste správcem kolekce webů, načíst historii akcí jednotlivých uživatelů a historii akcí provedených během určité období. 
 
-- [Prohledání protokolu auditování v centru dodržování předpisů a zabezpečení Office 365](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): použít centru dodržování předpisů a zabezpečení Office 365 k vyhledání protokolu auditu jednotné a zobrazit aktivit uživatelů a správce ve vaší organizaci Office 365.
+- [Prohledání protokolu auditování v centru dodržování předpisů a zabezpečení Office 365](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): Použijte k vyhledání protokolu auditu jednotné a zobrazit aktivit uživatelů a správce ve vaší organizaci Office 365 Office 365 zabezpečení a dodržování předpisů.
 
 

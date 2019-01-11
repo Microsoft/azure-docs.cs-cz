@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 5ff8f5c51f17375208fdb32e521bfc85ee3f0c77
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6db4de61f84280b7e34f8a9d5c3290ff6d4f97ab
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880212"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200065"
 ---
-# <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
+# <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace on-premises na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
 
 Tento článek ukazuje, jak společnosti Contoso ke kolizi SmartHotel360 aplikace v Azure. Contoso migruje front-endové aplikace virtuálního počítače na Virtuálním počítači Azure a databáze aplikace Azure SQL Server VM spuštěného v clusteru převzetí služeb při selhání Windows serveru s gGroups dostupnosti AlwaysOn pro SQL Server.
 
@@ -31,9 +31,9 @@ Tento dokument je jednou z řady článků, které ukazují, jak fiktivní spole
 Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server | Contoso migruje aplikace SmartHotel360. Společnost Contoso využívá Site Recovery k migraci virtuálních počítačů aplikace. Jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn využívá službu Database Migration Service. | V tomto článku
 [Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso dokončení migrace lift and shift aplikace osTicket Linux do virtuálních počítačů Azure pomocí Azure Site Recovery | K dispozici.
 [Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure serveru MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Azure Site Recovery a migraci databáze aplikace na instanci serveru Azure MySQL pomocí aplikace MySQL Workbench. | K dispozici.
-[Článek 9: Refaktorujte aplikace na Azure Web Apps a Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace do instance serveru SQL Azure pomocí Pomocníka s migrací databáze | K dispozici.
-[Článek 10: Refaktorujte Linuxovou aplikaci na Azure Web Apps a Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje osTicket své Linuxové aplikace do webové aplikace Azure v několika oblastech Azure pomocí Azure Traffic Manageru, integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici. 
-[Článek 11: Refaktorovat TFS na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migrovat své místní nasazení serveru Team Foundation Server ke službám Azure DevOps v Azure. | K dispozici.
+[Článek 9: Refaktorovat aplikace na Azure Web Apps a Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace do instance serveru SQL Azure pomocí Pomocníka s migrací databáze | K dispozici.
+[Článek 10: Refaktorovat Linuxovou aplikaci na Azure Web Apps a Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje osTicket své Linuxové aplikace do webové aplikace Azure v několika oblastech Azure pomocí Azure Traffic Manageru, integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici. 
+[Článek 11: Refaktorujte TFS na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migrovat své místní nasazení serveru Team Foundation Server ke službám Azure DevOps v Azure. | K dispozici.
 [Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a databázi Azure SQL Database. | K dispozici.
 [Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
 [Článek 14: Škálování migrace do Azure](contoso-migration-scale.md) | Po vyzkoušení kombinace migrace, Contoso připraví škálovat na plné migraci do Azure. | K dispozici.
@@ -46,11 +46,11 @@ V tomto článku se migruje Contoso dvouvrstvé aplikace SmartHotel360 Windows .
 Vedení IT úzké spolupráci s obchodními partnery pochopit, co chtějí dosáhnout s tato migrace:
 
 - **Adresa obchodní růst**: Contoso roste a kvůli tomu je tlak na místních systémů a infrastruktury.
-- **Zvýšení efektivity**: Contoso musí odebrat nepotřebné postupy a zjednodušte procesy pro vývojáře a uživatele.  Obchodní potřeby IT bude rychlé a ne produkovaného odpadu čas nebo peníze, tím rychlejší doručování na požadavky zákazníků.
-- **Zvýšení flexibility**: Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změn na webu Marketplace, aby úspěch v globální ekonomiku.  IT nesmí získat způsobem, nebo se Staňte obchodní blokování.
-- **Škálování**: růstem podniku zvládla úspěšně, musíte zadat Contoso IT systémy, které mohou rozšířit stejným tempem.
+- **Zvýšení efektivity**: Contoso je potřeba odebrat nepotřebné postupy a zjednodušte procesy pro vývojáře a uživatele.  Obchodní potřeby IT bude rychlé a ne produkovaného odpadu čas nebo peníze, tím rychlejší doručování na požadavky zákazníků.
+- **Zvýšení flexibility**:  Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změn na webu Marketplace, aby úspěch v globální ekonomiku.  IT nesmí získat způsobem, nebo se Staňte obchodní blokování.
+- **Škálování**: Růstem podniku zvládla úspěšně, musíte zadat Contoso IT systémy, které mohou rozšířit stejným tempem.
 
-## <a name="migration-goals"></a>Migrace cíle
+## <a name="migration-goals"></a>Cíle migrace
 
 Tým cloudových Contoso má připnutou dolů cíle pro tuto migraci. Tyto cíle se používaly pro určení nejlepší metody migrace:
 
@@ -95,7 +95,7 @@ V tomto scénáři:
 
 ### <a name="database-considerations"></a>Důležité informace o databázi
 
-Jako součást procesu návrhu řešení nebyla Contoso porovnání funkcí mezi službou Azure SQL Database a SQL Server. Následující důležité informace o tom se rozhodnout pro virtuální počítač Azure Iaas systémem SQL Server:
+Jako součást procesu návrhu řešení nebyla Contoso porovnání funkcí mezi službou Azure SQL Database a SQL Server. Následující důležité informace o tom se rozhodnout pro virtuální počítač Azure IaaS systémem SQL Server:
 
  - Použití virtuálního počítače Azure s SQL serverem se zdá být optimální řešení, pokud Contoso potřebuje k přizpůsobení operačního systému nebo databázový server, nebo může být vhodné umístit společně a spouštění aplikací třetích stran na jednom virtuálním počítači.
  - Pomocí Data Migration Assistant, Contoso můžete snadno posoudit a migrovat do služby Azure SQL Database.
@@ -152,16 +152,16 @@ Zde je, co Contoso je potřeba udělat pro tento scénář.
 Tady je způsob spuštění migrace Contoso:
 
 > [!div class="checklist"]
-> * **Krok 1: Příprava clusteru**: vytvořit cluster k nasazení dvou uzlech virtuálního počítače s SQL serverem v Azure.
+> * **Krok 1: Příprava clusteru**: Vytvořte cluster k nasazení dvou uzlech virtuálního počítače s SQL serverem v Azure.
 > * **Krok 2: Nasazení a nastavení clusteru**: Příprava clusteru služby Azure SQL Server.  Databáze se migrují do tohoto clusteru předem vytvořené.
-> * **Krok 3: Nasazení nástroje pro vyrovnávání zatížení**: nasadit nástroj pro vyrovnávání zatížení k vyrovnávání provozu na uzly serveru SQL Server.
-> * **Krok 4: Příprava Azure Site Recovery**: vytvoření účtu služby Azure storage k ukládání replikovaných dat a trezor služby Recovery Services. 
+> * **Krok 3: Nasazení nástroje pro vyrovnávání zatížení**: Nasaďte nástroj pro vyrovnávání zatížení vyrovnávat přenosy do uzlů serveru SQL Server.
+> * **Krok 4: Příprava Azure Site Recovery**: Vytvoření účtu služby Azure storage k ukládání replikovaných dat a trezor služby Recovery Services. 
 > * **Krok 5: Příprava VMware v místním prostředí pro Site Recovery**: Příprava účty pro virtuální počítač zjišťování a instalaci agenta. Příprava místních virtuálních počítačů tak, aby uživatelé mohli připojit k virtuálním počítačům Azure po m; migrace.
-> * **Krok 6: Replikace virtuálních počítačů**: virtuální počítač povolit replikaci do Azure.
+> * **Krok 6: Replikace virtuálních počítačů**: Povolení replikace virtuálních počítačů do Azure.
 > * **Krok 7: Instalace DMA**: Stáhněte a nainstalujte Pomocníka s migrací databáze.
 > * **Krok 7: Migrace databáze pomocí DMA**: Migrace databáze do Azure.
-> * **Krok 9: Ochrana databáze**: vytvoření skupiny dostupnosti Always On pro cluster.
-> * **Krok 10: Migrace webové aplikace virtuální počítač**: spuštění testovacího převzetí služeb při Ujistěte se, že vše funguje podle očekávání. Potom spusťte úplnou převzetí služeb při selhání do Azure. 
+> * **Krok 9: Nastavit ochranu databáze**: Vytvoření skupiny dostupnosti Always On pro cluster.
+> * **Krok 10: Migrace virtuálního počítače webové aplikace**: Otestujete převzetí služeb při selhání, abyste měli jistotu, že všechno funguje, jak má. Potom spusťte úplnou převzetí služeb při selhání do Azure. 
 
 
 ## <a name="step-1-prepare-a-sql-server-alwayson-availability-group-cluster"></a>Krok 1: Příprava clusteru skupiny dostupnosti AlwaysOn systému SQL Server
@@ -277,7 +277,7 @@ Správce společnosti Contoso se teď chcete nasadit interní nástroj pro vyrov
 
 Nástroje pro vyrovnávání zatížení, vytvořte následujícím způsobem:
 
-1. Na webu Azure portal > **sítě** > **Load Balancer**, nastavené nové nástroje pro vyrovnávání zatížení interní: **ILB-PROD-DB-EUS2-SQLAOG**.
+1. Na webu Azure portal > **sítě** > **Load Balancer**, nastavené nové interního nástroje load balancer: **ILB-PROD-DB-EUS2-SQLAOG**.
 2. Nástroje pro vyrovnávání zatížení, umístěte do produkční sítě **připojení typu VNET-PROD-EUS2**, v podsíti databáze **PROD-DB-EUS2**.
 3. Přiřadily se statickou IP adresu: 10.245.40.100.
 4. Jako prvek sítě nasadí nástroj pro vyrovnávání zatížení ve skupině síťových prostředků **ContosoNetworkingRG**.
@@ -317,7 +317,7 @@ Nyní Contoso správci nastavit pravidlo služby load balancer pro definování 
 
 Pravidla vytvářejí následujícím způsobem:
 
-1. V nastavení nástroje pro vyrovnávání zatížení na portálu, přidávají nová pravidla Vyrovnávání zatížení: **SQLAlwaysOnEndPointListener**.
+1. V nastavení nástroje pro vyrovnávání zatížení na portálu přidávají nová pravidla Vyrovnávání zatížení: **SQLAlwaysOnEndPointListener**.
 2. Nastavují front-endu naslouchací proces k přijímání příchozího provozu klienta SQL na portu TCP 1433.
 3. Určí back-endový fond, do které přenosy budou směrovat a port, na kterém virtuální počítače naslouchají provoz.
 4. Umožňují plovoucí IP adresa (přímá odpověď ze serveru vrácené). Toto je vždy vyžadován pro SQL AlwaysOn.
@@ -496,7 +496,7 @@ Správce společnosti Contoso, teď můžete vytvořit zásady replikace.
 
 1. V **připravit infrastrukturu** > **nastavení replikace** > **zásady replikace** >  **vytvořit a Přidružit**, vytvoří zásadu **ContosoMigrationPolicy**.
 2. Používají výchozí nastavení:
-    - **Prahová hodnota cíle bodu obnovení**: výchozí hodnotu 60 minut. Tato hodnota určuje, jak často se tvoří body obnovení. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
+    - **Prahová hodnota cíle bodu obnovení**: Výchozí hodnotu 60 minut. Tato hodnota určuje, jak často se tvoří body obnovení. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
     - **Uchování bodu obnovení**. Výchozí hodnotu 24 hodin. Tato hodnota určuje, jak dlouho je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu.
     - **Frekvence snímků konzistentní vzhledem k**. Výchozí jednu hodinu. Tato hodnota určuje frekvenci, s jakou se vytvořit snímky konzistentní s aplikací.
  
@@ -538,7 +538,7 @@ Správce společnosti Contoso nyní můžete spustit replikaci WebVM.
 - Další informace o [povolení replikace](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication).
 
 
-## <a name="step-7-install-the-database-migration-assistant-dma"></a>Krok 7: Instalace Pomocníka s migrací databáze (DMA)
+## <a name="step-7-install-the-database-migration-assistant-dma"></a>Krok 7: Nainstalovat pomocníka s migrací databáze (DMA)
 
 Správce společnosti Contoso provede migraci databáze SmartHotel360 do virtuálního počítače Azure **SQLAOG1** pomocí DMA. Nastavené DMA následujícím způsobem:
 
@@ -704,7 +704,7 @@ Bezpečnostní tým Contoso kontroly WEBVM virtuální počítače Azure, SQLAOG
 ## <a name="bcdr"></a>BCDR
 
  Společnosti Contoso pro provozní kontinuitu a zotavení po havárii (BCDR), provede následující akce:
- - Byla data v bezpečí: Contoso zálohuje data na WEBVM a SQLAOG1 SQLAOG2 virtuálních počítačů pomocí služby Azure Backup. [Další informace].
+ - Bezpečnost dat: Contoso zálohuje data na WEBVM a SQLAOG1 SQLAOG2 virtuálních počítačů pomocí služby Azure Backup. [Další informace].
 (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - Contoso se také informace o tom, jak používat Azure Storage pro zálohování serveru SQL Server přímo do úložiště objektů blob. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore).
 - Udržujte aplikace rychle zprovoznit: Contoso replikuje aplikace virtuální počítače v Azure do sekundární oblasti vzdálené používání služby Site Recovery. [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).

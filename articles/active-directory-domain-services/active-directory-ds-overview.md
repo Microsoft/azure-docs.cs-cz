@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
+ms.date: 01/10/2019
 ms.author: ergreenl
-ms.openlocfilehash: c424ae1865a710593e509372dc2424c0b8b516a0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: ed89954836fe262ba60f7401bd7b040e87b60101
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155163"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215180"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Doména služby Azure Active Directory (AD)
 ## <a name="overview"></a>Přehled
@@ -65,10 +65,10 @@ Několik nejdůležitějšími aspekty spravované domény, zřízenou se služb
 ### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Azure AD Domain Services pro hybridní organizace
 Organizace s hybridní infrastruktury IT využívat kombinaci prostředků cloudu a místních prostředků. Tyto organizace synchronizovat informace o identitě ze svého místního adresáře do svého tenanta Azure AD. Jak hybridní organizace vypadat více migraci místních aplikací do cloudu, zejména starší verze adresářové aplikace, může být užitečné k nim Azure AD Domain Services.
 
-Společnost litware má nasazený [Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), synchronizovat informace o identitě ze svého místního adresáře do svého tenanta Azure AD. Informace o identitě, který je synchronizován obsahuje uživatelské účty, jejich hodnoty hash přihlašovacích údajů pro ověřování (synchronizace hesla) a členství ve skupinách.
+Společnost litware má nasazený [Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), synchronizovat informace o identitě ze svého místního adresáře do svého tenanta Azure AD. Informace o identitě, který je synchronizován obsahuje uživatelské účty, jejich hodnoty hash přihlašovacích údajů pro ověřování (synchronizace hodnot hash hesel) a členství ve skupinách.
 
 > [!NOTE]
-> **Synchronizace hesla je povinné pro hybridní organizace používat službu Azure AD Domain Services**. Tento požadavek je vzhledem k tomu, že jsou vyžadována pověření uživatelů ve spravované doméně poskytovaných službou Azure AD Domain Services k ověřování těchto uživatelů prostřednictvím metody pro ověřování protokolů NTLM nebo Kerberos.
+> **Synchronizace hodnot hash hesel je povinné pro hybridní organizace používat službu Azure AD Domain Services**. Tento požadavek je vzhledem k tomu, že jsou vyžadována pověření uživatelů ve spravované doméně poskytovaných službou Azure AD Domain Services k ověřování těchto uživatelů prostřednictvím metody pro ověřování protokolů NTLM nebo Kerberos.
 >
 >
 

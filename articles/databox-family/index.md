@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: fcda4fba376fbe1f527d60aa5a27f7e7f0713e3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977702"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157101"
 ---
 <h1>Azure Data Box</h1>
 <p>Řada Azure Data Box nabízí produkty s různou úložnou kapacitou, které pomáhají rychle, spolehlivě a bez velkých nákladů odesílat do Azure terabajty (TB) dat. Microsoft urychluje zabezpečený přenos dat dodávkou vlastnických úložných zařízení, která umožňují přenos dat offline nebo přes síť.</p>
@@ -35,7 +35,7 @@ ms.locfileid: "46977702"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk <SUP>Preview</SUP></b> pro velikosti dat < 40 TB. Microsoft vám dodá 1 až 5 šifrovaných jednotek SSD (solid-state drive), na které zkopírujete data a vrátíte je zpátky.</p>
+                            <p><b>Data Box Disk</b> pro velikosti dat < 40 TB. Microsoft vám dodá 1 až 5 šifrovaných jednotek SSD (solid-state drive), na které zkopírujete data a vrátíte je zpátky.</p>
                         </div>
                     </div>
                 </div>

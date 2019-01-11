@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 898080f445c54c93543a481bdd0487c70e772160
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994330"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214387"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Úvod do služby Azure Data Lake Storage Gen2 ve verzi Preview
 
@@ -51,7 +51,7 @@ Azure Storage je škálovatelné záměrné, ať už přistupujete prostřednict
 
 ### <a name="cost-effectiveness"></a>Finanční efektivita
 
-Jednou z mnoha výhod stavění úložiště objektů Blob v Azure Data Lake Storage Gen2 je nízké náklady sady kapacitou úložiště a transakce. Na rozdíl od jiných cloudových službách úložiště není nutné být přesunut nebo před provedením analýzy dat uložených v Data Lake Storage Gen2. Další informace o cenách najdete v tématu [ceny za Azure Storage]((https://azure.microsoft.com/pricing/details/storage)).
+Jednou z mnoha výhod stavění úložiště objektů Blob v Azure Data Lake Storage Gen2 je nízké náklady sady kapacitou úložiště a transakce. Na rozdíl od jiných cloudových službách úložiště není nutné být přesunut nebo před provedením analýzy dat uložených v Data Lake Storage Gen2. Další informace o cenách najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 Kromě toho funkce, jako [hierarchického oboru názvů](data-lake-storage-namespace.md) výrazně zlepšit výkon mnoho úloh analytics. K tomuto zlepšení výkonu znamená, že vyžadují méně výpočetní výkon pro zpracování stejné množství dat, jejichž výsledkem je snížení celkových nákladů na vlastnictví (TCO) na začátku do konce analytics úlohy.
 
