@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: cb97725d61f899f2408dbb44d052c1dd4e6bc561
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: a018740a44424fd138b787b86b0f527d897f4188
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201291"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230539"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -35,7 +35,7 @@ Po odstranění projektu Azure Migrate, odstraní se projekt migrace skupin a po
 
 1. Přejděte do pracovního prostoru Log Analytics, které jsou přiřazeny k projektu.
    a. Pokud ještě nebyly odstraněny projekt migrace, najdete odkaz do pracovního prostoru ze stránky přehledu projektu v části základní údaje.
-   
+
    ![Pracovního prostoru LA](./media/troubleshooting-general/LA-workspace.png)
 
    b. Pokud jste již odstranili projekt migrace, klikněte na tlačítko **skupiny prostředků** v levém podokně webu Azure portal a přejděte do skupiny prostředků, ve kterém byla vytvořena pracovní prostor a pak na ni přejít pomocí.

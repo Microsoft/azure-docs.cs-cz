@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186493"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232919"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery tak, aby přirozeným způsobem: jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy, příchozí a odchozí připojení čekací doba a požadované porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta.
@@ -29,7 +29,7 @@ Tento článek popisuje podrobnosti o zařazení do systému a použitím řeše
 >Pokud jste už nasadili řešení Service Map, můžete také prohlédnout vaše mapy ve službě Azure Monitor pro virtuální počítače, který obsahuje další funkce, které chcete sledovat výkon a stav virtuálního počítače. Další informace najdete v tématu [monitorování Azure pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md).
 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="enable-service-map"></a>Povolení řešení Service Map
@@ -269,7 +269,7 @@ Integrace řešení Service Map se zabezpečení a Audit je automatické, pokud 
 ![Podokno zabezpečení počítače](media/service-map/machine-security.png)
 
 ## <a name="updates-integration"></a>Aktualizace integrace
-Řešení Service Map integrace se správu aktualizací je automatické, když jsou povolené a nakonfigurované ve vašem pracovním prostoru protokolu Anlaytics obě řešení.
+Řešení Service Map integrace se správu aktualizací je automatické, pokud jsou obě řešení povolené a nakonfigurované ve vašem pracovním prostoru Log Analytics.
 
 **Aktualizace počítače** podokně se zobrazí data z řešení Update Management pro vybraný server. V podokně obsahuje souhrnný seznam všechny chybějící aktualizace pro server během vybraného časového úseku.
 

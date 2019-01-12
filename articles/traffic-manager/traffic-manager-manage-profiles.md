@@ -5,18 +5,19 @@ services: traffic-manager
 documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
+manager: twooley
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: 19f8f1f89031ba392b8d986fbcb0725c5c8f212f
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 01c295ac12886e9a3a93cfbf5f4f3e96545cd5ec
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138476"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229503"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Správa profilu Azure Traffic Manageru
 
@@ -67,7 +68,7 @@ Existující profil můžete zakázat, aby Traffic Manager neodkazoval požadavk
 3. Klikněte na **Přehled** > **Odstranit**.
 4. Potvrďte odstranění profilu služby Traffic Manager.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Přidání koncového bodu](traffic-manager-endpoints.md)
 * [Konfigurace metody prioritního směrování](traffic-manager-configure-priority-routing-method.md)

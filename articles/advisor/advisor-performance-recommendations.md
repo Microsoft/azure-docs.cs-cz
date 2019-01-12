@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 963960657fb8c16307dbf062c0b16cd74a4a7b3f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 53571fa0c29c4b9bf5493a1e558356eba38fe617
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101713"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244412"
 ---
 # <a name="advisor-performance-recommendations"></a>Poradce doporučení k výkonu
 
@@ -32,7 +32,7 @@ Azure Advisor určí profily Traffic Manageru s delší TTL nakonfigurovaný a d
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Zvyšte výkon databáze pomocí SQL DB Advisoru.
 
-Advisor vám poskytuje konzistentní vzhledem k aplikacím, konsolidované zobrazení doporučení pro všechny vaše prostředky Azure. Integruje se službou SQL Database Advisor a přináší vám doporučení pro vylepšení výkonu vaší databáze SQL Azure. SQL Database Advisor vyhodnocuje výkon vašich databází SQL Azure díky analýze historii využití. Potom nabízí doporučení, která jsou nejvhodnější pro spuštění typické zatížení databáze. 
+Advisor vám poskytuje konzistentní vzhledem k aplikacím, konsolidované zobrazení doporučení pro všechny vaše prostředky Azure. Integruje se službou SQL Database Advisor a přináší vám doporučení pro vylepšení výkonu vaší databáze SQL Azure. SQL Database Advisor vyhodnocuje výkon vašich databází SQL Azure díky analýze historii využití. Potom nabízí doporučení, která jsou nejvhodnější pro spuštění typické zatížení databáze.
 
 > [!NOTE]
 > Pokud chcete získat doporučení, musí mít databázi o týden využití a v daném týdnu musí být některé aktivity konzistentní vzhledem k aplikacím. SQL Database Advisor můžete optimalizovat snadněji pro vzory dotazů konzistentní než pro náhodné nárůstům aktivity.
@@ -43,7 +43,7 @@ Další informace o službě SQL Database Advisor najdete v tématu [služby SQL
 
 Azure Advisor se integruje se doporučené postupy pro zlepšení prostředí služby App Services a zajištění příslušné možnosti. Příklady doporučení App Services:
 * Zjišťování instancí, ve kterém vyčerpání paměti nebo prostředků procesoru podle moduly runtime aplikace s možnostmi omezení rizik.
-* Zjišťování instancí, kde tyto zdroje, jako jsou webové aplikace a databáze můžete zvýšit výkon a nižší náklady. 
+* Zjišťování instancí, kde tyto zdroje, jako jsou webové aplikace a databáze můžete zvýšit výkon a nižší náklady.
 
 Další informace o doporučeních App Services najdete v tématu [osvědčené postupy pro službu Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
 
@@ -75,7 +75,9 @@ Advisor určí tabulek, které nejsou replikované tabulky, ale je výhodná př
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Migrace účtu úložiště do Azure Resource Manageru a mějte všechny nejnovější funkce Azure
 
-Migrace účtu úložiště modelu nasazení k Azure Resource Manageru (ARM) výhod nasazení šablon, další možnosti zabezpečení a možnosti upgradu na účet GPv2 pro využití nejnovějších funkcích Azure Storage. Advisor bude identifikovat všechny samostatné účty, které používají model nasazení Classic a doporučuje migrace do modelu nasazení ARM. 
+Migrace účtu úložiště modelu nasazení k Azure Resource Manageru (ARM) výhod nasazení šablon, další možnosti zabezpečení a možnosti upgradu na účet GPv2 pro využití nejnovějších funkcích Azure Storage. Advisor bude identifikovat všechny samostatné účty, které používají model nasazení Classic a doporučuje migrace do modelu nasazení ARM.
+
+Klasických upozornění ve službě Azure Monitor je oznámena vyřadit z provozu v červnu 2019, doporučuje se upgradovat svůj účet klasického úložiště na ARM, pokud chcete zachovat výstrah funkce s novou platformu upozornění. Další informace najdete v tématu [klasického upozornění vyřazení](https://azure.microsoft.com/en-us/updates/classic-alerting-monitoring-retirement/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučení k výkonu v Advisoru
 
@@ -92,4 +94,3 @@ Další informace o doporučení Advisoru, naleznete v tématu:
 * [Náklady na doporučení advisoru](advisor-performance-recommendations.md)
 * [Poradce doporučení k vysoké dostupnosti](advisor-high-availability-recommendations.md)
 * [Bezpečnostní doporučení advisoru](advisor-security-recommendations.md)
-

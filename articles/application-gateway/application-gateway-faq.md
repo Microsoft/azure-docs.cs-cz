@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/6/2018
+ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d80e1394d4c4159c17eabff93ff44fdefbaf21b7
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994840"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247499"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -25,7 +25,7 @@ Azure Application Gateway je Application Delivery Controller (ADC) jako službu,
 
 ### <a name="what-features-does-application-gateway-support"></a>Jaké funkce Application Gateway podporuje?
 
-Služba Application Gateway podporuje automatické škálování, snižování zátěže protokolu SSL a kompletního protokolu SSL, Firewall webových aplikací, spřažení relace na základě souborů cookie, adresa url na základě cest směrování, hostování několika webů a ostatní. Úplný seznam podporovaných funkcí najdete v tématu [seznámení se službou Application Gateway](application-gateway-introduction.md).
+Služba Application Gateway podporuje automatické škálování, snižování zátěže protokolu SSL a kompletního protokolu SSL, Firewall webových aplikací, spřažení relace na základě souborů cookie, adresu url na základě cest směrování, ve více lokalitách hostování a ostatní. Úplný seznam podporovaných funkcí najdete v tématu [seznámení se službou Application Gateway](application-gateway-introduction.md).
 
 ### <a name="what-is-the-difference-between-application-gateway-and-azure-load-balancer"></a>Jaký je rozdíl mezi Application Gateway a nástroje pro vyrovnávání zatížení Azure?
 
@@ -53,7 +53,7 @@ Back-endové fondy se může skládat ze síťových rozhraní škálovací sady
 
 ### <a name="what-regions-is-the-service-available-in"></a>Jaké oblasti je k dispozici ve službě?
 
-Služba Application Gateway je k dispozici ve všech oblastech Azure globální. Je také k dispozici v [Azure China](https://www.azure.cn/) a [Azure Government](https://azure.microsoft.com/overview/clouds/government/)
+Služba Application Gateway je k dispozici ve všech oblastech Azure globální. Je také k dispozici v [Azure China 21Vianet](https://www.azure.cn/) a [Azure Government](https://azure.microsoft.com/overview/clouds/government/)
 
 ### <a name="is-this-a-dedicated-deployment-for-my-subscription-or-is-it-shared-across-customers"></a>Je to vyhrazená nasazení pro mé předplatné nebo je sdílen mezi zákazníky?
 
@@ -126,7 +126,7 @@ Ne, ale můžete nasadit další služby application Gateway v podsíti.
 
 Skupiny zabezpečení sítě (Nsg) podporují na podsítě služby application gateway s následujícími omezeními:
 
-* Výjimky musí být umístěno v pro příchozí provoz na portech 65503 65534 pro službu Application Gateway v1 SKU a porty 65200 – 65 535 pro v2 SKU. Tento rozsah portů je nutné pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebude možné zahájit žádné změny na tyto koncové body.
+* Výjimky musí být umístěno v pro příchozí provoz na portech 65503 65534 pro službu Application Gateway v1 SKU a porty 65200 – 65 535 pro v2 SKU. Tento rozsah portů je nutné pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebudou se moct k zahájení změny činnost těchto koncových bodů.
 
 * Odchozí připojení k Internetu, nejde blokovat.
 
@@ -137,6 +137,8 @@ Skupiny zabezpečení sítě (Nsg) podporují na podsítě služby application g
 Trasy definované uživatelem (udr) jsou podporované na podsítě služby application gateway, za předpokladu, nijak nemění komunikace začátku do konce žádostí a odpovědí.
 
 Například trasu UDR v podsítě služby application gateway můžete nastavit tak, aby odkazoval na zařízení brány firewall pro kontrolu paketů, ale musíte zajistit, aby paketu přístup jeho příspěvku kontrole požadovaného cíle. K tomu může dojít nesprávný stav testu nebo provoz směrování chování. To zahrnuje zjištěné trasy nebo výchozí trasy 0.0.0.0/0 šířeny přes ExpressRoute nebo bran VPN ve virtuální síti.
+
+Trasy definované uživatelem na podsítě služby application gateway se **není** v2 SKU podporované. Další informace najdete v tématu [automatické škálování a zónově redundantní služba Application Gateway (Public Preview)](application-gateway-autoscaling-zone-redundant.md#known-issues-and-limitations).
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Jaká jsou omezení ve službě Application Gateway? Můžete tyto limity zvýšit?
 
@@ -206,11 +208,11 @@ Ano, SKU v2 Application Gateway podporuje automatické škálování. Další in
 
 ### <a name="does-manual-scale-updown-cause-downtime"></a>Je ruční škálování nahoru/dolů příčina výpadku?
 
-Neexistuje žádný výpadek, instance se distribuují napříč upgradovací doménami a doménami selhání.
+Neexistuje žádný výpadek. Instance se distribuují napříč upgradovací doménami a doménami selhání.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Služba Application Gateway podporuje vyprázdnění připojení?
 
-Ano. Můžete nakonfigurovat vyprázdnění Chcete-li změnit členy v rámci fondu back-end bez přerušení připojení. To vám umožní existující připojení a pokračujte v odešlou do jejich předchozího cíle, dokud nebude tento připojení se ukončilo nebo konfigurovatelný časový limit vyprší. Vyprázdnění připojení pouze čeká vydávaných za pochodu aktuální počet připojení k dokončení. Služba Application Gateway nemá žádné informace o stavu relace aplikace.
+Ano. Můžete nakonfigurovat vyprázdnění Chcete-li změnit členy v rámci fondu back-end bez přerušení připojení. To umožňuje existující připojení a pokračujte v odešlou do jejich předchozího cíle, dokud nebude tento připojení se ukončilo nebo konfigurovatelný časový limit vyprší. Vyprázdnění připojení pouze čeká vydávaných za pochodu aktuální počet připojení k dokončení. Služba Application Gateway nemá žádné informace o stavu relace aplikace.
 
 ### <a name="what-are-application-gateway-sizes"></a>Co jsou aplikace velikosti brány?
 
@@ -292,7 +294,7 @@ Ano, [konfiguraci šifrovací sady](application-gateway-ssl-policy-overview.md) 
 
 ### <a name="how-many-ssl-certificates-are-supported"></a>Jak velký počet certifikátů SSL jsou podporovány?
 
-Certifikáty jsou podporovány až 20 SSL.
+Certifikáty jsou podporovány až 100 SSL.
 
 ### <a name="how-many-authentication-certificates-for-backend-re-encryption-are-supported"></a>Kolik ověřovacích certifikátů pro back-endu znovu šifrovat jsou podporovány?
 
@@ -374,13 +376,13 @@ Ano, služba Application Gateway podporuje výstrahy. Konfigurují se upozorněn
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Jak analyzovat statistiku provozu pro službu Application Gateway?
 
-Můžete zobrazit a analyzovat protokoly přístupu přes celou řadou mechanismy, jako je Azure Log Analytics, Excel, Power BI atd.
+Můžete zobrazit a analyzovat protokoly přístupu přes několik mechanismy, jako je Azure Log Analytics, Excel, Power BI atd.
 
 Také jsme publikovali šablony Resource Manageru, který nainstaluje a spustí Oblíbené [GoAccess](https://goaccess.io/) protokolu analyzátoru protokolů Application Gateway přístup. GoAccess poskytuje cenné statistiku provozu HTTP jako je například jedinečných návštěvníků, vyžádané soubory, hostitele, operační systémy, prohlížeče, stavové kódy HTTP a další. Další podrobnosti najdete [souboru Readme do složky šablony Resource Manageru v Githubu](https://aka.ms/appgwgoaccessreadme).
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>Stav back-endu vrátí stav neznámý, co by mohlo být příčinou tohoto stavu?
 
-Nejběžnějším důvodem je, blokuje přístup k back-endové skupiny zabezpečení sítě nebo vlastní DNS. Zobrazit [back-endu stav, protokolování diagnostiky a metriky pro službu Application Gateway](application-gateway-diagnostics.md) Další informace.
+Nejběžnějším důvodem je, skupiny zabezpečení sítě nebo vlastní DNS je blokován přístup k back-endu. Zobrazit [back-endu stav, protokolování diagnostiky a metriky pro službu Application Gateway](application-gateway-diagnostics.md) Další informace.
 
 ## <a name="next-steps"></a>Další kroky
 

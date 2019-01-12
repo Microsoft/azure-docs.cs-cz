@@ -1,23 +1,18 @@
 ---
-title: Přístup k protokolům monitorování, protokolování výkonu, stav back endu a metriky pro službu Application Gateway
-description: Zjistěte, jak povolit a spravovat přístup k protokolům a protokolování výkonu pro službu Application Gateway
+title: Přístup k protokolům monitorování, protokolování výkonu, stav back endu a metriky pro službu Azure Application Gateway
+description: Zjistěte, jak povolit a spravovat přístup k protokolům a protokolování výkonu služby Azure Application Gateway
 services: application-gateway
-author: amitsriva
-manager: rossort
-tags: azure-resource-manager
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 1/11/2019
 ms.author: amitsriva
-ms.openlocfilehash: 45a13bca32593895e51fa7fe3c5bd7ce1ba547e6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6cd21448742778b0a2a27aea41f7940b1a216cdc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437465"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231100"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -98,7 +93,7 @@ Následující fragment kódu ukazuje příklad odpovědi:
 Můžete použít různé typy protokolů v Azure pro správu a řešení potíží s application Gateway. Některé z těchto protokolů jsou přístupné z webu Azure Portal. Všechny protokoly je možné extrahovat z úložiště objektů Blob v Azure a zobrazit v různých nástrojů, jako například [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Excelu a Power BI. Vám může Další informace o různých typech protokoly z následujícího seznamu:
 
 * **Protokol aktivit**: Můžete použít [protokolů aktivit Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dříve označované jako provozní protokoly a protokoly auditu) Chcete-li zobrazit všechny operace, které se pošlou do vašeho předplatného Azure a jejich stav. Položky protokolu aktivit se ve výchozím nastavení shromažďují a můžete si je zobrazit na webu Azure Portal.
-* **Přístup k protokolu**: Zobrazit vzory přístupu k Application Gateway a analyzovat důležité informace, včetně IP volajícího, požadovanou adresu URL, latence odpovědi, návratový kód a bajtů dovnitř a ven můžete použít tento protokol. Přístup k protokolu shromažďovaných každých 300 sekund. Tento protokol obsahuje jeden záznam za instance služby Application Gateway. Instance Application Gateway lze identifikovat podle vlastnosti ID instance.
+* **Přístup k protokolu**: Tento protokol můžete zobrazit vzory přístupu k Application Gateway a analyzovat důležité informace. To zahrnuje volajícího IP, požadovanou adresu URL, latence odpovědi, návratový kód a bajtů a oddálení. Přístup k protokolu shromažďovaných každých 300 sekund. Tento protokol obsahuje jeden záznam za instance služby Application Gateway. Instance Application Gateway je identifikován vlastnost ID instance.
 * **V protokolu výkonu**: Chcete-li zobrazit, jaký výkon instancí Application Gateway můžete použít tento protokol. Tento protokol zaznamenává informace o výkonu pro každou instanci, včetně celkový počet požadavků, které jsou poskytovány, propustnost v bajtech, celkový počet požadavků obsluhovat, počet neúspěšných požadavků a počet instancí back-end v pořádku a není v pořádku. Protokolování výkonu shromažďovaných každých 60 sekund.
 * **Brány firewall protokolu**: Tento protokol můžete zobrazit požadavky, které jsou zaznamenány pomocí detekce a ochrany před únikem informací režim služby application gateway, která je nakonfigurovaná s firewallem webových aplikací.
 
@@ -217,7 +212,7 @@ V protokolu výkonu se vygeneruje pouze v případě, že je povolená pro každ
 |HealthyHostCount     | Počet v dobrém stavu hostitelů ve fondu back-end.        |
 |unHealthyHostCount     | Počet není v pořádku hostitelů ve fondu back-end.        |
 |RequestCount     | Počet požadavků, které obsluhují.        |
-|latence | Latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
+|latence | Průměrná latence (v milisekundách) žádostí z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí.|
 |Propustnost| Průměrná propustnost od poslední protokolu v bajtech za sekundu.|
 

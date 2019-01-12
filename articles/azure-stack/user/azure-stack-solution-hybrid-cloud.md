@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/18/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: e4da34be5b1e9eb2675f540fe4069cfd3dc1d056
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.reviewer: anajod
+ms.openlocfilehash: 95fcb98e9ca6ff85e37ee88d5a5122ffa6887bb4
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49410082"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245204"
 ---
-# <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Kurz: Nasazení hybridní cloudové řešení s využitím Azure a Azure Stack
+# <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Kurz: Nasazení řešení s hybridní cloud s Azure a Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
@@ -194,7 +194,7 @@ Další informace o tom, jak služby App Service integruje s virtuálními sít�
 
 Brána místní sítě ve virtuální síti Azure Stack je potřeba nakonfigurovat pro směrování provozu z rozsahu adres point-to-site služby App Service.
 
-1. Ve službě Azure Stack, přejděte na **bránu místní sítě**. V části **nastavení**vyberte **konfigurace**.
+1. Ve službě Azure Stack, přejděte na **bránu místní sítě**. V části **Nastavení** vyberte **Konfigurace**.
 
     ![Možnost konfigurace brány](media/azure-stack-solution-hybrid-cloud/image14.png)
 
@@ -308,7 +308,7 @@ Při vytváření webové aplikace ve službě App Service environment začne s 
 
     ![Povolit automatické škálování](media/azure-stack-solution-hybrid-cloud/image17.png)
 
-3. Zadejte název pro **název nastavení automatického škálování**. Pro **výchozí** pravidlo automatického škálování, vyberte **škálování podle metriky**. Nastavte **limity instancí** k **Minimum: 1**, **maximální: 10**, a **výchozí: 1**.
+3. Zadejte název pro **název nastavení automatického škálování**. Pro **výchozí** pravidlo automatického škálování, vyberte **škálování podle metriky**. Nastavte **limity instancí** k **minimálně: 1**, **maximální: 10**, a **výchozí: 1**.
 
     ![Konfiguraci automatického škálování](media/azure-stack-solution-hybrid-cloud/image18.png)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6f1cd08e3c786a1d163a22b5da5150fde5f45b95
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 22678a44cda38b52982e977281d3310efde15831
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135334"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247247"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Kurz: Konfigurace směrování zpráv pomocí služby IoT Hub
 
@@ -629,4 +629,4 @@ V tomto kurzu jste se naučili, jak používat směrování zpráv služby IoT H
 V dalším kurzu se dozvíte, jak spravovat stav zařízení IoT. 
 
 > [!div class="nextstepaction"]
-[Konfigurace zařízení z back-endové služby](tutorial-device-twins.md)
+[Nastavení a Diagnostika a metriky pomocí služby IoT Hub](tutorial-use-metrics-and-diags.md)

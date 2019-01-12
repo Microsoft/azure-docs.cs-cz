@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 8d477997e71843307f6c756a6974a23267842015
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754539"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244966"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -99,7 +99,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 <!--  TBD – IS, ASDK --> 
 - *Základní A* velikostí virtuálních počítačů byly ukončeny pro [vytvoření škálovací sady virtuálních počítačů](azure-stack-compute-add-scalesets.md) (VMSS) prostřednictvím portálu. Pokud chcete vytvořit VMSS se tato velikost, pomocí Powershellu nebo šablony.  
 
-### <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures
+### <a name="common-vulnerabilities-and-exposures"></a>Běžnými ohroženími zabezpečení a rizika
 
 Tuto aktualizaci nainstaluje následující aktualizace:  
 
@@ -254,6 +254,8 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Operátory Azure stacku, pokud se zobrazí upozornění na nedostatek paměti a virtuální počítače klientů selhání nasazení **Chyba při vytváření virtuálních počítačů Fabric**, je možné, že toto razítko Azure Stack je nedostatek dostupné paměti. Použití [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) nejlépe pochopit dostupné kapacity pro vaše úlohy.
 
 ### <a name="compute"></a>Compute
+
+- Při vytváření [virtuální počítače Dv2-series](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), D11-14v2 virtuálních počítačů vám umožňují vytvářet 4, 8, 16 a 32 datových disků v uvedeném pořadí. V podokně virtuální počítač vytvořit se však zobrazí 8, 16, 32 a 64 datových disků.
 
 <!-- 3164607 – IS, ASDK -->
 - Opětovné odpojený disk do stejného virtuálního počítače (VM) se stejným názvem a logická jednotka se nezdaří s chybou jako **nelze připojit datový disk "datadisk" k virtuálnímu počítači "vm1"**. Protože disk je v tuto chvíli odpojuje nebo poslední operace odpojení nebyla úspěšná, dojde k chybě. Počkejte, dokud je zcela odpojit disk a potom opakujte operaci nebo odstraňte nebo odpojte disk explicitně znovu. Alternativním řešením je se znovu připojit s jiným názvem nebo na různých logických jednotkách. 

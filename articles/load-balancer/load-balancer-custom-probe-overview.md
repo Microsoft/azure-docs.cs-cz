@@ -5,6 +5,7 @@ description: Informace o používání sond stavu k monitorování instancí za 
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: 51d781f331bcbc08642dc32c21baa150e9e5eee6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fb8b3ac69797400af962ae40816943d6a32b8ec6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538681"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245544"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 

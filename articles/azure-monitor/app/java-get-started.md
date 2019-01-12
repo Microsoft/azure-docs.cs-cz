@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 01/10/2019
 ms.author: lagayhar
-ms.openlocfilehash: b662f5c4baa9c4c6e7689f3f463761dbd456f33f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: eb44c7d3e605f3d9cfc5cc30cd5cbcc8e9c1ae42
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074168"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230981"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -358,6 +358,14 @@ Chcete-li shromažďovat data o dalších výjimkách, máte dvě možnosti:
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Volání metody monitorování a externí závislosti
 [Nainstalujte agenta Java](java-agent.md) k protokolování určených vnitřních metod a volání provedená prostřednictvím JDBC s daty časování.
+
+## <a name="w3c-distributed-tracing"></a>Distribuované trasování W3C
+
+Application Insights Java SDK teď podporuje [W3C distribuované trasování](https://w3c.github.io/trace-context/).
+
+Příchozí konfigurace sady SDK je vysvětleno dále v náš článek věnovaný tomu [korelace](correlation.md#w3c-distributed-tracing).
+
+Odchozí konfigurace sady SDK je definována v [AI Agent.xml](java-agent.md) souboru.
 
 ## <a name="performance-counters"></a>Čítače výkonu
 Klikněte na **Nastavení**, **Servery** a uvidíte rozsah čítačů výkonu.

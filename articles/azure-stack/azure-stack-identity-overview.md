@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/09/2018
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: 1bc4fcda360a899fb2f58e2ac26270d160227a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.reviewer: unknown
+ms.openlocfilehash: 53c739c17007b99d90cd146e6bf01ea4a120cabd
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902837"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245680"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Přehled identity pro službu Azure Stack
 
@@ -33,8 +33,8 @@ Režim, ve kterém nasadíte Azure Stack mohou být určena podle vašeho výbě
 
 Další informace o možnostech, které závisí na vašem prostředí Azure Stack, najdete v následujících článcích:
 
-- Nasazení sady pro Azure Stack: [Identity aspekty](azure-stack-datacenter-integration.md#identity-considerations).
-- Integrované systémy Azure Stack: [integrované systémy pro nasazení, plánování rozhodnutí pro službu Azure Stack](azure-stack-deployment-decisions.md).
+- Sada nasazení Azure Stack: [Důležité informace o identitu](azure-stack-datacenter-integration.md#identity-considerations).
+- Integrované systémy Azure Stack: [Integrované systémy pro nasazení, plánování rozhodnutí pro službu Azure Stack](azure-stack-deployment-decisions.md).
 
 ## <a name="common-concepts-for-identity"></a>Koncepty používané v identity
 
@@ -80,17 +80,17 @@ Můžou registrovat aplikace do Azure AD nebo AD FS a potom ve své organizaci n
 
 Použití patří:
 
-- **Webová aplikace**: Příklady Azure Resource Manageru a webu Azure portal. Volání webového rozhraní API podporují.
-- **Nativní klient systému**: Příklady Azure Powershellu, sady Visual Studio a rozhraní příkazového řádku Azure.
+- **Webová aplikace**: Mezi příklady patří Azure Resource Manageru a webu Azure portal. Volání webového rozhraní API podporují.
+- **Nativní klient systému**: Mezi příklady patří prostředí Azure PowerShell, sady Visual Studio a rozhraní příkazového řádku Azure.
 
 Aplikace podporuje dva typy tenantů:
 
-- **Jednoho tenanta**: podporuje uživatele a služby pouze ze stejného adresáře, ve kterém aplikace bude zaregistrovaná.
+- **Jednoho tenanta**: Podporuje uživatele a služby pouze ze stejného adresáře, ve kterém aplikace bude zaregistrovaná.
 
   > [!NOTE]
   > Vzhledem k tomu, že služba AD FS podporuje pouze jeden adresář, aplikace, které vytvoříte v topologii AD FS jsou, návrh aplikace s jedním tenantem.
 
-- **Víceklientské**: podporuje použití podle uživatele a služby z adresáře, ve kterém aplikace bude zaregistrovaná a další tenanta adresáře. Pomocí aplikace s více tenanty uživatelé z jiného tenanta adresáře (s jiným tenantem Azure AD) můžou přihlašovat do vaší aplikace. 
+- **Víceklientské**: Podporuje použití podle uživatele a služby z adresáře, ve kterém aplikace bude zaregistrovaná a další tenanta adresáře. Pomocí aplikace s více tenanty uživatelé z jiného tenanta adresáře (s jiným tenantem Azure AD) můžou přihlašovat do vaší aplikace. 
 
   Další informace o víceklientské architektury, najdete v části [povolení víceklientské architektury](azure-stack-enable-multitenancy.md).
 
@@ -98,9 +98,9 @@ Aplikace podporuje dva typy tenantů:
 
 Když si zaregistrujete aplikaci, můžete vytvořit dva objekty:
 
-- **Objekt aplikace**: globální reprezentace aplikace ve všech tenantech. Tento vztah 1: 1 s aplikací softwaru a existuje pouze v adresáři, ve kterém je aplikace nejprve registrována.
+- **Objekt aplikace**: Globální reprezentace aplikace ve všech tenantech. Tento vztah 1: 1 s aplikací softwaru a existuje pouze v adresáři, ve kterém je aplikace nejprve registrována.
 
-- **Instanční objekt**: přihlašovací údaj, který je vytvořen pro aplikaci v adresáři, ve kterém je aplikace nejprve registrována. Instanční objekt služby se také vytvoří v adresáři každý další klient, kde se tato aplikace používá. Tento vztah může být jeden mnoho s softwarová aplikace.
+- **Instanční objekt**: Přihlašovací údaj, který je vytvořen pro aplikaci v adresáři, ve kterém je aplikace nejprve registrována. Instanční objekt služby se také vytvoří v adresáři každý další klient, kde se tato aplikace používá. Tento vztah může být jeden mnoho s softwarová aplikace.
 
 Další informace o aplikaci a instanční objekty, najdete v článku [aplikace a instanční objekty v Azure Active Directory](/azure/active-directory/develop/active-directory-application-objects).
 
@@ -155,10 +155,10 @@ Pro aplikace a uživatele je popsán čtyři vrstvy architektury Azure Stack. In
 
 Ověřování pomocí zprostředkovatele identity a přijímat webového tokenu JSON, musíte mít následující informace:
 
-1. **Adresa URL pro systém identit (autorita)**: adresa URL, na které se dá kontaktovat zprostředkovatele identity. Příklad: *https://login.windows.net*.
-2. **Identifikátor URI ID aplikace pro Azure Resource Manager**: Jedinečný identifikátor pro Azure Resource Manageru, který je zaregistrovaný u vašeho zprostředkovatele identity. Je také jedinečná pro každou instalaci Azure Stack.
-3. **Přihlašovací údaje**: přihlašovací údaje, které použijete k ověřování pomocí zprostředkovatele identity.
-4. **Adresa URL pro Azure Resource Manager**: adresa URL je umístění služby Azure Resource Manageru. Například *https://management.azure.com* nebo *https://management.local.azurestack.external*.
+1. **Adresa URL pro systém identit (autorita)**: Adresa URL, na které se dá kontaktovat zprostředkovatele identity. Příklad: *https://login.windows.net*.
+2. **Identifikátor URI ID aplikace pro Azure Resource Manageru**: Jedinečný identifikátor pro Azure Resource Manageru, který je zaregistrovaný u vašeho zprostředkovatele identity. Je také jedinečná pro každou instalaci Azure Stack.
+3. **přihlašovací údaje**: Přihlašovací údaje, které použijete k ověřování pomocí zprostředkovatele identity.
+4. **Adresa URL pro Azure Resource Manageru**: Adresa URL je umístění služby Azure Resource Manageru. Například *https://management.azure.com* nebo *https://management.local.azurestack.external*.
 
 Pokud objekt zabezpečení (klienta, aplikace nebo uživatele) odešle požadavek na ověření pro přístup k prostředku, musí zahrnovat požadavek:
 

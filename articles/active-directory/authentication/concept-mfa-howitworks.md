@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 4e1dc4ded48330f19a11db193fa5fe400326b420
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114154"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232817"
 ---
-# <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: ověřování Azure Multi-Factor Authentication
+# <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: Azure Multi-Factor Authentication
 
 Zabezpečení dvoustupňové ověřování spočívá v jeho vrstveného přístupu. Tím bylo narušeno několika faktory ověřování představuje velkou výzvou pro útočníky. I v případě, že útočník dokázal další heslo uživatele, je zbytečné bez nutnosti vlastnictví dodatečnou metodu ověřování. Funguje tak, že vyžaduje dva nebo více z následujících metod ověřování:
 
@@ -27,7 +27,7 @@ Zabezpečení dvoustupňové ověřování spočívá v jeho vrstveného příst
 
 <center>![Koncepční ověřovací metody image](./media/concept-mfa-howitworks/methods.png)</center>
 
-Azure Multi-Factor Authentication (MFA) pomáhá chránit přístup k datům a aplikacím při zachování jednoduchosti pro uživatele. Poskytuje dodatečné zabezpečení vyžadováním druhou formu ověřování a poskytuje silné ověřování přes celou řadu snadno použitelné [metody ověřování](concept-authentication-methods.md).
+Azure Multi-Factor Authentication (MFA) pomáhá chránit přístup k datům a aplikacím při zachování jednoduchosti pro uživatele. Poskytuje dodatečné zabezpečení vyžadováním druhou formu ověřování a poskytuje silné ověřování přes celou řadu snadno použitelné [metody ověřování](concept-authentication-methods.md). Uživatelé můžou nebo nemusí být ovlivňuje vícefaktorové ověřování na základě konfigurace rozhodnutí, které provádí správce.
 
 ## <a name="how-to-get-multi-factor-authentication"></a>Jak získat ověření službou Multi-Factor Authentication?
 

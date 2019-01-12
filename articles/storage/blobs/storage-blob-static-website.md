@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 2bae07643407e8672ef26fb59da588661eb9f0d1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0663f569edd0dec47949053b6ecf7fe49fa24a17
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191815"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229298"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
@@ -144,7 +144,7 @@ A konečně, zaškrtněte políčko vedle položky **GetWebContent** v *hodnoty*
 
 ![Azure Storage metrics statických webů GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-Jeden povolený, statistiku provozu na soubory v *$web* kontejneru hlášené v řídicím panelu metrik.
+Po povolení provozu statistiky na soubory v *$web* kontejneru jsou hlášeny v řídicím panelu metrik.
 
 ## <a name="faq"></a>Nejčastější dotazy
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.reviewer: unknown
+ms.openlocfilehash: d4c5def3cc61c1920ae99d5aa9f97b46cbda0045
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185728"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244490"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Klíčových funkcích a konceptech v Azure stacku
 Pokud se službou Microsoft Azure Stack teprve začínáte, může být užitečné tyto podmínky a popis funkcí.

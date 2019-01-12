@@ -13,12 +13,13 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c4a4b70e39731b3a78fd42078bfa1b7340343f9a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4107b18046b57d5b02fcd9d88be1752922735a08
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334367"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245578"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Monitorování a správa testů na portálu VaaS
 

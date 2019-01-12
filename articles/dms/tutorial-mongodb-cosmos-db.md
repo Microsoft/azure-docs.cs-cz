@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Offline migrace MongoDB do rozhraní API Mongodb služby Azure Cosmos DB pomocí Azure Database Migration Service | Dokumentace Microsoftu'
-description: Zjistěte, jak migrovat z MongoDB v místním Azure Cosmos DB Mongo rozhraní API do offline režimu s využitím Azure Database Migration Service.
+title: 'Kurz: Offline migrace MongoDB API služby Azure Cosmos DB pro MongoDB pomocí Azure Database Migration Service | Dokumentace Microsoftu'
+description: Zjistěte, jak migrovat místních MongoDB API služby Azure Cosmos DB pro MongoDB do offline režimu s využitím Azure Database Migration Service.
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/11/2018
-ms.openlocfilehash: 4651c9afab99577622af71297e1fb6465a20097f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b4f8d2bdbce20fc7a932280edc26cb3ddfbe6471
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713093"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247601"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-mongo-api-offline-using-dms"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB Mongo offline pomocí DMS
-Azure Database Migration Service můžete použít k provedení offline migrace (jednorázová) databází z místní nebo cloudové instance MongoDB do rozhraní API Mongodb služby Azure Cosmos DB.
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB pro MongoDB offline pomocí DMS
+Azure Database Migration Service můžete použít k provedení offline migrace (jednorázová) databází z místní nebo cloudové instance MongoDB API služby Azure Cosmos DB pro MongoDB.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -28,11 +28,11 @@ V tomto kurzu se naučíte:
 > * Spuštění migrace
 > * Monitorování migrace
 
-V tomto kurzu, migrujete **vás Wingtips** datové sady do databáze MongoDB hostované ve virtuálním počítači Azure do služby Azure Cosmos DB pro rozhraní MongoDB API s využitím Azure Database Migration Service. Pokud nemáte zdroji MongoDB již nastaveny, najdete v článku [nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb).
+V tomto kurzu migrujete datové sady v databáze MongoDB hostované ve virtuálním počítači Azure do Azure Cosmos DB přes rozhraní API pro MongoDB s využitím Azure Database Migration Service. Pokud nemáte zdroji MongoDB již nastaveny, najdete v článku [nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb).
 
 ## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu je potřeba provést následující:
-- [Vytvoření účtu rozhraní MongoDB API služby Azure Cosmos DB](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
+- [Vytvoření rozhraní API služby Azure Cosmos DB pro účet MongoDB](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
 - Vytvořte pro službu Azure Database Migration Service virtuální síť s použitím modelu nasazení Azure Resource Manager, který poskytuje možnosti připojení typu Site-to-Site k místním zdrojovým serverům prostřednictvím [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo sítě [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 - Ujistěte se, že vaše pravidla virtuální sítě (VNET) skupiny zabezpečení sítě Azure není blokovat následující komunikační porty: 53, 443, 9354, 445 a 12000. Další podrobnosti o filtrování provozu pomocí skupiny zabezpečení virtuální sítě Azure najdete v článku [Filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Otevřete bránu Windows firewall a povolit službu Azure Database Migration Service přístup k serveru MongoDB zdroj, který ve výchozím nastavení je TCP port 27017.
@@ -66,7 +66,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 5. Vyberte existující virtuální síť nebo vytvořte novou.
 
-    Virtuální síť poskytuje službě Azure Database Migration Service přístup ke zdrojovému SQL Serveru a cílové instanci služby Azure SQL Database.
+    Virtuální síť poskytuje Azure Database Migration Service přístup k instanci MongoDB zdrojového a cílového účtu služby Azure Cosmos DB.
 
     Další informace o vytvoření virtuální sítě na webu Azure Portal najdete v článku [Vytvoření virtuální sítě pomocí webu Azure Portal](https://aka.ms/DMSVnet).
 
@@ -103,7 +103,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
    Můžete také použít režim připojovacího řetězce a zadejte umístění pro kontejner úložiště souboru blogu, ve kterém jste zálohované dat kolekce, kterou chcete migrovat.
 
    > [!NOTE]
-   > Azure Database Migration Service můžete také migrovat bson dokumentů nebo dokumentů json do kolekce rozhraní API Mongodb služby Azure Cosmos DB.
+   > Azure Database Migration Service můžete také migrovat bson dokumentů nebo dokumentů json do rozhraní API služby Azure Cosmos DB pro MongoDB kolekce.
     
    V situacích, kdy není možný překlad názvů DNS, můžete použít také IP adresu.
 
@@ -112,7 +112,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 2. Vyberte **Uložit**.
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
-1. Na **podrobnosti o cíli migrace** obrazovky, zadat podrobnosti připojení pro cíl účtu Azure Cosmos DB, který je předem zřízená účtu Azure Cosmos DB MongoDB, do kterého budete migrovat MongoDB data.
+1. Na **podrobnosti o cíli migrace** obrazovky, zadat podrobnosti připojení pro cíl účtu Azure Cosmos DB, který je předem zřízené služby Azure Cosmos DB pro rozhraní API pro účet MongoDB, do kterého budete migrovat MongoDB data.
 
     ![Zadání podrobností o cíli](media/tutorial-mongodb-to-cosmosdb/dms-specify-target.png)
 
@@ -163,7 +163,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 ## <a name="verify-data-in-cosmos-db"></a>Ověření dat ve službě Cosmos DB
 
-- Po dokončení migrace můžete zkontrolovat, Azure Cosmos DB pro rozhraní MongoDB API účet ověřit, že se úspěšně migrovaly všechny kolekce.
+- Po dokončení migrace můžete zkontrolovat svůj účet služby Azure Cosmos DB k ověření, že se úspěšně migrovaly všechny kolekce.
 
     ![Stav aktivity dokončeno](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 

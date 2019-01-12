@@ -4,14 +4,14 @@ description: Nejčastější dotazy k Azure Migrate adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 0d01715922286743b9442ae1c656b34c37a7d795
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2efa450b6b0cfa299370df3941224f4f64e91b4b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201189"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230760"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -53,6 +53,7 @@ Azure Migrate aktuálně podporuje Evropa, Spojené státy a Azure Government ja
 **Zeměpisné oblasti** | **Umístění úložiště metadat**
 --- | ---
 Azure Government | USA (Gov) – Virginia
+Asie | Jihovýchodní Asie
 Evropa | Severní Evropa a západní Evropa
 Sjednotí stavy | Východní USA střed USA – západ
 
@@ -63,6 +64,17 @@ Připojení může být přes internet nebo pomocí veřejného partnerského vz
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Můžete posílit ochranu virtuálních počítačů s OVA šablony?
 
 Další součásti (například antivirový program) je možné přidat do šablony pro soubory OVA tak dlouho, dokud komunikaci a pravidel brány firewall vyžadované pro zařízení Azure Migrate pro práci se ponechán beze změny.   
+
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Posilte zabezpečení zařízení Azure Migrate, jaké jsou doporučené výjimky antivirové ochrany v programu (AV)?
+
+Je třeba vyloučit následující složky v zařízení pro antivirové kontroly:
+
+- Složka, která obsahuje binární soubory pro služby Azure Migrate. Vylučte všechny podsložky.
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate webové aplikace. Vylučte všechny podsložky.
+  %SystemDrive%\inetpub\wwwroot
+- Místní mezipaměť pro databáze a soubory protokolů. Azure migrate služba potřebuje čtení a zápis do této složky.
+  %SystemDrive%\Profiler
 
 ## <a name="discovery"></a>Zjišťování
 
@@ -136,16 +148,6 @@ Pokud máte prostředí, které se sdílejí napříč tenanty a nechcete ke zji
 
 Je možné vyhledat 1 500 virtuálních počítačů v jedné migrace projektu. Pokud máte další počítače ve vašem místním prostředí [Další](how-to-scale-assessment.md) o způsob, jak můžete zjišťovat velký prostředí ve službě Azure Migrate.
 
-### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Posilte zabezpečení zařízení Azure Migrate, jaké jsou doporučené výjimky antivirové ochrany v programu (AV)?
-
-Je třeba vyloučit následující složky v zařízení pro antivirové kontroly:
-
-- Složka, která obsahuje binární soubory pro služby Azure Migrate. Vylučte všechny podsložky.
-  %ProgramFiles%\ProfilerService  
-- Azure Migrate webové aplikace. Vylučte všechny podsložky.
-  %SystemDrive%\inetpub\wwwroot
-- Místní mezipaměť pro databáze a soubory protokolů. Azure migrate služba potřebuje čtení a zápis do této složky.
-  %SystemDrive%\Profiler
 
 ## <a name="assessment"></a>Posouzení
 

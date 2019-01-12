@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 1dbfd668c2d233d299ee673da92ca203e72942fe
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: unknown
+ms.openlocfilehash: af959507fc2e0d1b68f547d2856eb7020d3ed5c6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957414"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247568"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Reference k rutinám Start AzsReadinessChecker
 
@@ -169,7 +169,7 @@ Start-AzsReadinessChecker
 
 ## <a name="examples"></a>Příklady
 
-### <a name="example-generate-certificate-signing-request"></a>Příklad: Generování žádosti o podepsání certifikátu
+### <a name="example-generate-certificate-signing-request"></a>Příklad: Vytvořit žádost o podepsání certifikátu
 
 ```PowerShell
 $regionName = 'east'
@@ -198,7 +198,7 @@ Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $passwor
 
 V tomto příkladu nasazení a podporu heslo souboru PFX se zobrazí výzva k zadání bezpečně a počáteční AzsReadinessChecker kontroluje relativní složka "Certifikáty" pro certifikáty platné pro nasazení, kde četlo identity, oblasti a externí plně kvalifikovaný název domény nasazení dat. soubor JSON vygenerovaný pro nasazení. 
 
-### <a name="example-validate-paas-certificates"></a>Příklad: Ověřování certifikátů PaaS
+### <a name="example-validate-paas-certificates"></a>Příklad: Ověření certifikátů PaaS
 
 ```PowerShell
 $PaaSCertificates = @{
@@ -268,7 +268,7 @@ Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -Registra
 
 V tomto příkladu přihlašovací údaje vlastníka předplatného se výzva k zadání bezpečně a Start AzsReadinessChecker pak provede ověření pro daný účet a předplatné měli jistotu, že je možné pro registraci Azure Stack kde jsou další podrobnosti čtení ze souboru JSON nasazení dat. vygenerovaný pro nasazení.
 
-### <a name="example-importexport-pfx-package"></a>Příklad: Import/Export PFX balíčku
+### <a name="example-importexport-pfx-package"></a>Příklad: Balíček PFX Import/Export
 
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString

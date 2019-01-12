@@ -74,6 +74,7 @@
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [Python](https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python)
 ## [REST](/rest/api/datalakeanalytics/)
+## [Šablona Resource Manageru](/azure/templates/microsoft.datalakeanalytics/allversions)
 ## [Rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/dla)
 
 # Zdroje a prostředky

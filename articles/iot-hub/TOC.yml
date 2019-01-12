@@ -37,6 +37,8 @@ items:
   items:
   - name: Směrování zpráv
     href: tutorial-routing.md
+  - name: Použití metrik a diagnostických protokolů
+    href: tutorial-use-metrics-and-diags.md
   - name: Provedení ručního převzetí služeb při selhání
     href: tutorial-manual-failover.md
   - name: Konfigurace vašich zařízení
@@ -418,9 +420,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 79e13d2f753dc2f407e614033cd9370159d854a0
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7ac517a2d2963993d40899183c020570b2934f80
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154959"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247329"

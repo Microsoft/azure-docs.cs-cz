@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 21689cf7fe3df7ca7e362ba49824fadd5daaa3ea
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 5df3b9541dafad64e012519802b09b19ef199a03
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888762"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231730"
 ---
 # <a name="add-html-markers-to-the-map"></a>Přidejte značky HTML do mapy
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak přidat vlastního HTML, jako je například soubor 
 > Ke zdrojům dat se nepřipojí značky HTML. Místo toho informací o poloze se přidá přímo do značky a značky se přidá do mapy `markers` vlastnost, která je [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest).
 
 > [!IMPORTANT]
-> Na rozdíl od většiny vrstvy v ovládací prvek map Web Azure, které používají WebGL pro vykreslování značky HTML pomocí tradičních prvků modelu DOM pro vykreslování. V důsledku toho přidali další značky HTML stránku, víc elementů modelu DOM, existují. Po přidání několika značek hundered HTML může snížit výkon. Pro větší sady dat vezměte v úvahu clustering vaše data nebo pomocí symbolu nebo bublinu vrstvy.
+> Na rozdíl od většiny vrstvy v ovládací prvek map Web Azure, které používají WebGL pro vykreslování značky HTML pomocí tradičních prvků modelu DOM pro vykreslování. V důsledku toho přidali další značky HTML stránku, víc elementů modelu DOM, existují. Po přidání několika stovek značky HTML může snížit výkon. Pro větší sady dat vezměte v úvahu clustering vaše data nebo pomocí symbolu nebo bublinu vrstvy.
 
 ## <a name="add-an-html-marker"></a>Přidat značku HTML
 

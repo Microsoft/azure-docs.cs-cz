@@ -5,6 +5,7 @@ description: Tento kurz ukazuje, jak na webu Azure Portal vytvořit Load Balance
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: b24871a12020d351eceef2bb556e12ca5c137f5e
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: d2e81e4f2eda730dc064699f42ba7bfb49648082
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197743"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230828"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s Standard pro vyrovnávání zatížení pomocí webu Azure portal
 

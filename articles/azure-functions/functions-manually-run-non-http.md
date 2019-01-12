@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 00a72c8c7fb42c763a8b0bad1fa3914ac27c496f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406926"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247108"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ruční spuštění funkce neaktivované protokolem HTTP
 
@@ -51,19 +51,20 @@ Po zkopírování hlavního klíče, klikněte na název funkce se vraťte do ok
 
 Otevřete nástroj Postman a postupujte podle těchto kroků:
 
-1. Zadejte **žádost o umístění v textovém poli Adresa URL**. 
-2. **Klikněte na tlačítko** na **záhlaví** kartu.
-3. Zadejte **x-functions-key** jako první **klíč** a vložte do hlavního klíče (ze schránky) **hodnotu** pole.
-4. Zadejte **Content-Type** jako druhý **klíč** a zadejte **application/json** jako **hodnota**.
+1. Zadejte **žádost o umístění v textovém poli Adresa URL**.
+2. Zkontrolujte metodu HTTP je nastavená na **příspěvek**.
+3. **Klikněte na tlačítko** na **záhlaví** kartu.
+4. Zadejte **x-functions-key** jako první **klíč** a vložte do hlavního klíče (ze schránky) **hodnotu** pole.
+5. Zadejte **Content-Type** jako druhý **klíč** a zadejte **application/json** jako **hodnota**.
 
     ![Nastavení nástroje postman záhlaví](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-5. **Klikněte na tlačítko** na **tělo** kartu.
-6. Zadejte **{"vstup": "test"}** jako text žádosti.
+6. **Klikněte na tlačítko** na **tělo** kartu.
+7. Zadejte **{"vstup": "test"}** jako text žádosti.
 
     ![Nastavení nástroje postman textu](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-7. Klikněte na tlačítko **odeslat**.
+8. Klikněte na tlačítko **odeslat**.
 
     ![Posílá se žádost o pomocí nástroje Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2018
 ms.author: diberry
-ms.openlocfilehash: 9a8bfa2e89e6bc0cbbd5af2efdff60aa406b3f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e75fa6560feb01ae912ad2040df7a8748ed0077b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714198"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246547"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
@@ -84,6 +84,14 @@ Systém by měl používat nejvyšší hodnocení záměr bez ohledu na jeho hod
 Celkový počet koncových bodů přístupů na řídicím panelu vaší aplikace jsou pravidelně aktualizovány, ale metriky související s vaší klíče koncového bodu služby LUIS na webu Azure Portal se aktualizuje častěji.
 
 Pokud se nezobrazí aktualizované koncový bod přístupů na řídicím panelu, přihlaste se k webu Azure portal a najít prostředek přidružený klíč koncového bodu služby LUIS a otevřete **metriky** vyberte **volání celkem** metriku. Pokud klíč koncového bodu se používá pro více než jednu aplikaci LUIS, metriky na webu Azure Portal zobrazí souhrnný počet volání ze všech aplikací LUIS, které ji používají.
+
+### <a name="is-there-a-powershell-command-to-the-endpoint-quota"></a>Je k dispozici příkaz prostředí PowerShell pro koncový bod kvóty?
+
+Příkaz prostředí PowerShell můžete zobrazit kvóty koncový bod:
+
+```powershell
+Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moje aplikace LUIS pracoval včerejšího dne, ale ještě dnes se zobrazují chyby 403. Můžu aplikaci nezměnila. Jak ho mám opravit?
 Následující [pokyny](#how-do-i-create-and-assign-a-luis-endpoint-key) v další nejčastější dotazy k vytvoření klíče koncového bodu služby LUIS a přiřaďte ho do aplikace. Pak musíte změnit požadavek HTTP na koncový bod, který [používání nového klíče koncového bodu](luis-concept-keys.md#use-endpoint-key-in-query).
@@ -194,6 +202,12 @@ Pokud vyberete šablonu služby LUIS a vyberte **vyberte** tlačítko v podokně
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Jaké oblasti LUIS podporují dočištění řeči Bot Framework?
 [Rozpoznávání řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) je podporována pouze pro aplikace LUIS v instanci střed (USA).
+
+## <a name="api-programming-strategies"></a>Strategie programování rozhraní API
+
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Jak prostřednictvím kódu programu získat oblasti LUIS prostředku? 
+
+Použijte ukázku služby LUIS [najít oblast](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programově pomocí C# nebo Node.Js. 
 
 ## <a name="luis-service"></a>Služba LUIS
 

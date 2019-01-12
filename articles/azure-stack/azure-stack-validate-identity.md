@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 61562450d484f34385b4e6e111bf62326eaca159
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.reviewer: unknown
+ms.openlocfilehash: 2cfa789b9817562eba5224257a365f8552cdf833
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888371"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245936"
 ---
 # <a name="validate-azure-identity"></a>Ověření identit Azure 
 Použijte nástroj Kontrola připravenosti Azure Stack (AzsReadinessChecker) Chcete-li ověřit, že Azure Active Directory (Azure AD) připravený k použití s Azure Stack. Ověřte vaše řešení Azure identity před zahájením nasazení služby Azure Stack.  
@@ -137,7 +137,7 @@ Invoke-AzsAzureIdentityValidation Completed
 ````
 **Příčina** – účet nemůže přihlásit do zadaného Azure Active Directory (AADDirectoryTenantName). V tomto příkladu *AzureChinaCloud* je stanoveno, *AzureEnvironment*.
 
-**Rozlišení** – ověřte, že účet je platný pro zadaný prostředí Azure. V prostředí PowerShell, spusťte následující příkaz k ověření účtu je platný pro konkrétní prostředí: Login-AzureRmAccount-EnvironmentName AzureChinaCloud 
+**Rozlišení** – ověřte, že účet je platný pro zadaný prostředí Azure. V prostředí PowerShell spusťte následující příkaz k ověření, že účet je platný pro konkrétní prostředí:   Login-AzureRmAccount-EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>Účet nemá oprávnění správce 
  
 ````PowerShell

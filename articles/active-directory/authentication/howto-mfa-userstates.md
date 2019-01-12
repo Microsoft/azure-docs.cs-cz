@@ -5,19 +5,20 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4726383d96b0bd17f346f7391ed968c5f96bef1e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 5b88fda9252b4547a87b192ef662330912d67d1a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239249"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247210"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak vyžadovat dvoustupňové ověřování pro uživatele
+
 Můžete využít jeden ze dvou následujících metod pro vyžadováním dvoustupňového ověřování, které vyžadují pomocí účtu globálního správce. První možností je povolit jednotlivé uživatele pro Azure Multi-Factor Authentication (MFA). Pokud uživatelé jsou povolené jednotlivě, jejich provedení dvoustupňového ověřování pokaždé, když se přihlásí (s několika výjimkami, jako je například, když se přihlásí z důvěryhodných IP adres nebo když _zapamatovaných zařízeních_ funkce je zapnutá). Druhou možností je nastavit zásady podmíněného přístupu, která vyžaduje dvoustupňové ověření za určitých podmínek.
 
 > [!TIP]
@@ -25,7 +26,7 @@ Můžete využít jeden ze dvou následujících metod pro vyžadováním dvoust
 
 ## <a name="choose-how-to-enable"></a>Zvolte, jak povolit
 
-**Povolené tak, že změníte stav uživatele** – Toto je tradiční metody pro vyžadováním dvoustupňového ověřování a je popsána v tomto článku. Funguje to i Azure MFA v cloudu a Azure MFA serveru. Pomocí této metody vyžaduje, aby uživatelé dvoustupňové ověřování **pokaždé, když** přihlásit a přepisuje zásady podmíněného přístupu.
+**Povolené tak, že změníte stav uživatele** – Toto je tradiční metody pro vyžadováním dvoustupňového ověřování a je popsána v tomto článku. Funguje to i Azure MFA v cloudu a Azure MFA serveru. Pomocí této metody vyžaduje, aby uživatelé dvoustupňové ověřování **pokaždé, když** přihlásit a přepisuje zásady podmíněného přístupu. Toto je metoda pro ty, které mají licence Office 365 nebo Microsoft 365 Business používat, protože neobsahují funkce podmíněného přístupu.
 
 Povolené zásady podmíněného přístupu – Toto je nejflexibilnější způsob, jak zapnout dvoustupňové ověřování pro vaše uživatele. Povolení používat pouze zásady podmíněného přístupu se dá použít pro Azure MFA v cloudu a je Prémiová funkce služby Azure AD. Další informace o této metody můžete najít v [nasazení cloudového ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md).
 

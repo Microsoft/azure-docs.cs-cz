@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jeffgilb
-ms.reviewer: ''
+ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: d106d9f79498678f08142f952e09c5125c6e5d6c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7c4f8fd3d7a4885893a126c63776a5e241dc0f91
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721513"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246530"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Kurz: zpřístupníte virtuálních počítačů pro vaše uživatele Azure stacku
 
@@ -52,7 +52,7 @@ Nabídky jsou skupiny jednoho nebo několika plánů, které poskytovatelé pře
 
 1. V **nová nabídka**, zadejte **zobrazovaný název** a **název prostředku**a pak vyberte novou nebo existující **skupiny prostředků**. Zobrazovaný název představuje popisný název nabídky. Název prostředku, což je název, který správci používají pro práci s nabídkou jako s prostředkem Azure Resource Manageru můžete zobrazit pouze operátor cloudu.
 
-   ![Zobrazovaný název](media/azure-stack-tutorial-tenant-vm/image02.png)
+   ![Zobrazované jméno](media/azure-stack-tutorial-tenant-vm/image02.png)
 
 1. Vyberte **základní plány**a **plán** vyberte **přidat** pro přidání do nabídky nový plán.
 

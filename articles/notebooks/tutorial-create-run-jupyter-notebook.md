@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106667"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244576"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter s využitím Pythonu
 
@@ -411,17 +411,13 @@ Jakmile budete hotovi s poznámkového bloku, použijte **souboru** > **zavřít
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Ladění pomocí Visual Studio Code poznámkové bloky
 
-Pokud kód buňky v poznámkovém bloku není chovají způsobem, jakým jste očekávali, můžete mít kód chyby nebo jiné chyby. Ale jiné než pomocí `print` příkazy k zobrazení hodnot proměnných, poznámkového bloku Jupyter nenabízí žádné ladění zařízení.
+Pokud kód buňky v poznámkovém bloku není chovají způsobem, jakým jste očekávali, můžete mít kód chyby nebo jiné chyby. Ale jiné než pomocí `print` příkazy k zobrazení hodnot proměnných, typické prostředí Jupyter nenabízí žádné ladění zařízení.
 
-Naštěstí rozšíření Pythonu pro Visual Studio Code je může přímo importovat Poznámkový blok Jupyter jako soubor jeden kód buňkám Markdownu v komentářích. Spusťte ladicí program Visual Studio Code krokovat kód, nastavit zarážky, zkontrolujte stav a tak dále. 
+Naštěstí můžete stáhnout poznámkového bloku *.ipynb* souboru a potom ho otevřete v aplikaci Visual Studio Code pomocí rozšíření Python. Rozšíření přímo importuje poznámkového bloku jako soubor jeden kód zachování vaší Markdownu buněk v komentářích. Po importu Poznámkový blok, můžete použít ladicí program Visual Studio Code krokovat kód, nastavit zarážky, zkontrolujte stav a tak dále. Po provedení oprav kódu, pak exportujete *.ipynb* soubor z aplikace Visual Studio Code a nahrajte ho zpátky do poznámkových bloků Azure.
 
-Po provedení oprav kódu, uložte *.ipynb* souboru a pak ho nahrát do poznámkových bloků Azure.
+Další informace najdete v tématu [ladění Poznámkový blok Jupyter](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) v dokumentaci k Visual Studio Code.
 
-Další informace naleznete v následujících článcích v dokumentaci k Visual Studio Code:
-
-- [Přehled poznámkové bloky Jupyter v nástroji VS Code](https://code.visualstudio.com/docs/languages/python#_jupyter-notebooks)
-- [Pythonu pro tento kurz – konfigurace a spuštění ladicího programu](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger)
-- [Úpravy - buňky kódu Jupyter](https://code.visualstudio.com/docs/python/editing#_jupyter-code-cells)
+Viz také [Visual Studio Code – podpora Jupyter](https://code.visualstudio.com/docs/python/jupyter-support) doplňkových funkcí sady Visual Studio Code pro poznámkové bloky Jupyter.
 
 ## <a name="next-steps"></a>Další postup
 

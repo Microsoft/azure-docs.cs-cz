@@ -5,6 +5,7 @@ description: V tomto kurzu si ukážeme, jak vytvořit Standard Load Balancer se
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: dd4600d77373894cdc9d6225ae008a8bd677fb59
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 76e55c643378e689f12d485100a81ccefa4196f4
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262091"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229808"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů v zóně dostupnosti s využitím Load balanceru úrovně Standard s využitím webu Azure portal
 
@@ -38,7 +39,7 @@ Další informace o používání zón dostupnosti se Standard Load Balancerem n
 
 K tomuto kurzu také můžete použít [Azure CLI](load-balancer-standard-public-zonal-cli.md).
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
 

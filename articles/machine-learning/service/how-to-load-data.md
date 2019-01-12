@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fda0f600fa7cb130511f2bd8b53543acfbcc7759
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 87096e1507c080f68652ea27b368364d9ac7952a
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054285"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232494"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 
@@ -27,7 +27,19 @@ V tomto článku se dozvíte, načítání dat pomocí různých metod [sady SDK
 * Převod typu pomocí odvození během načítání souboru
 * Podpora připojení pro MS SQL Server a úložiště Azure Data Lake
 
-## <a name="load-text-line-data"></a>Načtení dat řádku textu 
+## <a name="load-data-automatically"></a>Načtení dat automaticky
+
+Chcete-li automaticky načíst data bez zadání typu souboru, použijte `auto_read_file()` funkce. Automaticky se odvodit typ souboru a argumenty potřebné k jeho čtení.
+
+```python
+import azureml.dataprep as dprep
+
+dataflow = dprep.auto_read_file(path='./data/any-file.txt')
+```
+
+Tato funkce je užitečná, pokud není explicitně známý typ souboru. Příklad použití je adresář, který obsahuje soubory mají být převedeny do toku dat objektů různých typů. Iterace přes každé cesty souboru a volání `auto_read_file()` umožňuje snadno zpracovat soubory v adresáři do seznamu objektů datového toku.
+
+## <a name="load-text-line-data"></a>Načtení dat řádku textu
 
 Chcete-li čtení dat jednoduchý text do toku dat, použijte `read_lines()` bez zadání volitelné parametry.
 
@@ -188,7 +200,7 @@ dataflow = dprep.read_fwf('./data/fixed_width_file.txt',
 
 Sady SDK můžete také načíst data ze zdroje SQL. V současné době se podporuje jenom Microsoft SQL Server. Chcete-li čtení dat z SQL serveru, vytvořte `MSSQLDataSource` objekt, který obsahuje parametry připojení. Parametr hesla `MSSQLDataSource` přijímá `Secret` objektu. Můžete vytvořit objekt tajných kódů dvěma způsoby:
 
-* Prováděcí modul zaregistrujte tajný kód a její hodnotu. 
+* Prováděcí modul zaregistrujte tajný kód a její hodnotu.
 * Vytvoření tajného kódu s pouze `id` (Pokud hodnota tajného klíče už je zaregistrovaný v prostředí pro spouštění) pomocí `dprep.create_secret("[SECRET-ID]")`.
 
 ```python
@@ -232,7 +244,7 @@ az account show --query tenantId
 dataflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dataflow.head(5) head
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Pokud váš uživatelský účet je členem více než jednoho tenanta Azure, budete muset zadat tenanta ve formátu název hostitele adresy URL AAD.
 
 ### <a name="create-a-service-principal-with-the-azure-cli"></a>Vytvoření instančního objektu pomocí Azure CLI
@@ -256,7 +268,7 @@ Ke konfiguraci seznamu ACL pro systém souborů Azure Data Lake Storage, použij
 az ad sp show --id "8dd38f34-1fcb-4ff9-accd-7cd60b757174" --query objectId
 ```
 
-Ke konfiguraci `Read` a `Execute` přístup pro systém souborů Azure Data Lake Storage, můžete nakonfigurovat seznam ACL pro soubory a složky jednotlivě. Toto je skutečnost, že základní model řízení přístupu HDFS nepodporuje dědičnosti. 
+Ke konfiguraci `Read` a `Execute` přístup pro systém souborů Azure Data Lake Storage, můžete nakonfigurovat seznam ACL pro soubory a složky jednotlivě. Toto je skutečnost, že základní model řízení přístupu HDFS nepodporuje dědičnosti.
 
 ```azurecli
 az dls fs access set-entry --account dpreptestfiles --acl-spec "user:e37b9b1f-6a5e-4bee-9def-402b956f4e6f:r-x" --path /

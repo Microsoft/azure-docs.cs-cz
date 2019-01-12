@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: 048f2f40714fd7675c073337825d75443e58039b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2b655e488b15b4520bc1de24b730f97269bddb4b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255427"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231797"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Kurz: Moderování obsahu Facebooku s Content Moderator
 
@@ -152,10 +152,6 @@ Toto řešení odešle všechny obrázky a texty zveřejněné na vaší Faceboo
 ## <a name="license"></a>Licence
 
 Všechny sady SDK služeb Microsoft Cognitive Services a ukázky jsou licencovány licencí MIT. Další podrobnosti najdete v [LICENCI](https://microsoft.mit-license.org/).
-
-## <a name="developer-code-of-conduct"></a>Pravidla chování vývojáře
-
-Vývojáři, kteří používají Cognitive Services, včetně této klientské knihovny a ukázky, by měli postupovat podle pravidel chování vývojářů pro Microsoft Cognitive Services, která se nacházejí na adrese http://go.microsoft.com/fwlink/?LinkId=698895.
 
 ## <a name="next-steps"></a>Další postup
 

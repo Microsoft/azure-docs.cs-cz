@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 056c44de4f89b04149c275b1508c7ea8f397d6e6
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.reviewer: unknown
+ms.openlocfilehash: cd44aa1dcc0ac5f97d39dee91fb547a333cb6ccf
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810775"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247703"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Hostované operační systémy podporované ve službě Azure Stack
 

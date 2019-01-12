@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8d0ad34496963c32c842033e81bdffb375a27412
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 5396fefca3a60dea7a503f8b4e84cc575753ea30
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214670"
+ms.locfileid: "54229111"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Přidejte na mapu vrstva s obrázkem
 
@@ -40,7 +40,7 @@ Tento příklad ukazuje, jak překryvný obrázek [mapování Newyorském New Je
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
-V druhém bloku kódu [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) vytvoří předá adresu URL do obrázku a souřadnice pro čtyři rohy ve formátu `[Top Left Corner, Top Right Corner, Bottom Right Conter, Bottom Left Corner]`.
+V druhém bloku kódu [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) vytvoří předá adresu URL do obrázku a souřadnice pro čtyři rohy ve formátu `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
 
 ## <a name="import-a-kml-ground-overlay"></a>Importovat překrytí základu KML
 

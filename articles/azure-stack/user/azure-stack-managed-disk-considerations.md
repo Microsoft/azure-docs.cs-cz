@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 3445974cf832b7ed594f704615482e1d9b0e351c
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 78cb969aa96378dd84243545be1678ae4eaf0e0e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159362"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232528"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: rozdíly a aspekty
 
@@ -65,14 +65,14 @@ Služba Azure Managed Disks zásobníku podporuje následující verze rozhraní
 
 - 2017-03-30
 
-## <a name="known-issues"></a>Známé problémy
+## <a name="configuration"></a>Konfigurace
 
-Po použití aktualizací po. 1808, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+Po použití. 1808 update nebo novější, je třeba provést následující konfiguraci před použitím spravovaných disků:
 
-- Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
+- Pokud odběr byl vytvořen ještě před aktualizací. 1808, postupujte podle následujících kroků provedete aktualizaci odběru. V opačném případě nasazování virtuálních počítačů v tomto předplatném může selhat s chybovou zprávou "Vnitřní chyba ve Správci disků."
    1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
    2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
-- Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Pokud chcete chybu vyřešit, postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
+- Pokud používáte prostředí s více tenanty, požádejte vašeho cloudu – operátor (května ve vaší vlastní organizaci nebo od poskytovatele služeb), změna konfigurace všech vašich adresářů hosta, postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). V opačném případě nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s chybovou zprávou "Vnitřní chyba ve Správci disků."
 
 
 ## <a name="next-steps"></a>Další postup

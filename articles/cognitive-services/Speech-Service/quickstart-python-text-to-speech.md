@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/16/2018
+ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 00f57ccc0e02c8805e9a41fc5bce8f0ca4a3303a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6bc8966113fd1d5ac855ed8c12aa5ad4b387b211
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542522"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247231"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převést převod textu na řeč pomocí Pythonu
 
@@ -38,6 +38,7 @@ Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém 
 
 ```python
 import os, requests, time
+from xml.etree import ElementTree
 ```
 
 > [!NOTE]
@@ -113,10 +114,15 @@ def save_audio(self):
         'Authorization': 'Bearer ' + self.access_token,
         'Content-Type': 'application/ssml+xml',
         'X-Microsoft-OutputFormat': 'riff-24khz-16bit-mono-pcm',
-        'User-Agent': 'YOUR_RESOURCE_NAME',
-        'cache-control': 'no-cache'
+        'User-Agent': 'YOUR_RESOURCE_NAME'
     }
-    body = "<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>" + self.tts + "</voice></speak>"
+    xml_body = ElementTree.Element('speak', version='1.0')
+    xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
+    voice = ElementTree.SubElement(xml_body, 'voice')
+    voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
+    voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+    voice.text = self.tts
+    body = ElementTree.tostring(xml_body)
 
     response = requests.post(constructed_url, headers=headers, data=body)
     if response.status_code == 200:
@@ -125,7 +131,6 @@ def save_audio(self):
             print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
     else:
         print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
-
 ```
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady

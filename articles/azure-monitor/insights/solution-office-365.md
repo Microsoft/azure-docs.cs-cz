@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: a97a3330ff99cada3921f98b76cf08ed7a464bcc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 3eb1228ed9d15fb976f94df114f8725a8c41599d
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156557"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230454"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -516,7 +516,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | Operace | Název aktivity uživatele nebo správce.  |
 | Kódu organizace | Identifikátor GUID pro tenanta Office 365 vaší organizace. Tato hodnota bude vždy stejné pro svou organizaci, bez ohledu na služby Office 365, ve kterém se vyskytuje. |
 | Typ záznamu | Typ operace provést. |
-| ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, PartiallySucceded nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
+| ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, částečně úspěšném nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
 | UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
 | UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Rezervováno<br>ServicePrincipal<br>Systémový |

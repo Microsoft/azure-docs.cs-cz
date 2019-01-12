@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: 504cd5a0bfbae1ff91f7914abe12aa35b699ee80
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bbb8e39e60500a2d8310159cfbac5659964fc387
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104756"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230012"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -46,6 +46,9 @@ Instalace poskytovatele prostředků App Service má aspoň hodinu. Čas potřeb
  - Vytvořte záznamy a zóny DNS pro službu App Service.
  - Zaregistrujte poskytovatele prostředků App Service.
  - Registrace položek galerie služby App Service.
+
+ > [!IMPORTANT]
+ > Před nasazením poskytovatele prostředků, přečtěte si poznámky k verzi pro další informace o nové funkce, opravy a známých problémech, které můžou ovlivnit nasazení.
 
 Nasazení poskytovatele prostředků App Service, postupujte podle těchto kroků:
 

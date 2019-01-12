@@ -15,12 +15,12 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 1c8af3e0d3d5d29531a2ba81abc745fcdca5fb08
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715766"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231899"
 ---
 # <a name="understand-role-definitions"></a>Vysvětlení definic rolí
 
@@ -173,6 +173,10 @@ Zobrazení a práce s operace s daty, musí mít správné verze prvků nástroj
 | [Azure pro Python](/python/azure) | 0.40.0 nebo novější |
 | [Azure SDK pro Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 nebo novější |
 
+Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah front a objektů Blob v kontejnerech přes Azure AD ve verzi preview prostředí. Sledujte a spravujte obsah kontejneru fronty nebo objektu Blob klikněte na odkaz "Prozkoumat data pomocí Azure AD ve verzi preview" v účtu úložiště – Přehled.
+
+![Prozkoumejte službu front a objektů Blob kontejnerů pomocí Azure AD ve verzi preview](./media/role-definitions/rbac-dataactions-browsing.png)
+
 ## <a name="actions"></a>Akce
 
 `Actions` Oprávnění určuje, které role umožňuje provádět operace správy. Jde o kolekci operace řetězců, které identifikují zabezpečitelných operace poskytovatele prostředků Azure. Tady je několik příkladů operace správy, které lze použít v `Actions`.
@@ -185,7 +189,7 @@ Zobrazení a práce s operace s daty, musí mít správné verze prvků nástroj
 | `Microsoft.Compute/virtualMachines/*` | Uděluje přístup ke všem operacím virtuálních počítačů a jeho podřízené typy prostředků.|
 | `microsoft.web/sites/restart/Action` | Uděluje přístup k restartování webové aplikace.|
 
-## <a name="notactions"></a>notActions
+## <a name="notactions"></a>NotActions
 
 `NotActions` Oprávnění určuje operace správy, které jsou vyloučené z povolených `Actions`. Použití `NotActions` oprávnění, pokud sadu operací, které chcete povolit je mnohem snazší definované s výjimkou operace s omezeným přístupem. Udělení přístupu podle role (efektivní oprávnění) je vypočítána odečtením `NotActions` operací `Actions` operace.
 

@@ -5,6 +5,7 @@ description: Tento kurz ukazuje, jak vytvořit a spravovat Standard Load Balance
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: I want to create and Standard Load balancer so that I can load balance internet traffic to VMs and add and remove VMs from the load-balanced set.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 76d7f0b959037808c3358c2b78b837a783117457
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c22f69764447ffd4f8b67e9162fd8b45b40b175b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260000"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230029"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Kurz: Zatížení vyrovnávat přenosy z Internetu k virtuálním počítačům pomocí webu Azure portal
 
@@ -195,7 +196,7 @@ Na virtuálních počítačích, na kterých je vaše aplikace spuštěná, mož
 2. V části **Nastavení** klikněte na **Back-endové fondy** a v seznamu back-endového fondu klikněte na **myBackendPool**.
 3. Pokud chcete odebrat *VM1* z back-endu, klikněte na stránce **myBackendPool** v části **Target network IP configurations** (Cílové konfigurace protokolu IP sítě) na ikonu pro odstranění vedle položky **Virtual machine:myVM1** (Virtuální počítač:myVM1).
 
-Když už *myVM1* není v back-endovém fondu adres, můžete na *myVM1* provádět všechny úlohy údržby, jako jsou třeba instalace aktualizací softwaru. Protože teď není dostupný * VM1 **, vyrovnává se zatížení s použitím *myVM2* a *myVM3*. 
+Když už *myVM1* není v back-endovém fondu adres, můžete na *myVM1* provádět všechny úlohy údržby, jako jsou třeba instalace aktualizací softwaru. Protože teď není dostupný *VM1**, vyrovnává se zatížení s použitím *myVM2* a *myVM3*. 
 
 Když budete chtít přidat *myVM1* zpátky do back-endového fondu, postupujte podle pokynů v části *Přidání virtuálních počítačů do back-endového fondu* v tomto článku.
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 9cc08920c5b8814a3e4b649f4518dce78c7cb38e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0cf301b98e5fa530b234dbd5953746241c0021ee
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160596"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244235"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Nastavení upozornění na metriky pro službu Azure Database pro MariaDB pomocí webu Azure portal
 
@@ -25,10 +25,9 @@ Můžete nakonfigurovat výstrahu při aktivaci provést následující akce:
 * Volání webhooku
 
 Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [Rozhraní příkazového řádku (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
-* [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Vytvoření pravidla upozornění na metriku
 1. V [webu Azure portal](https://portal.azure.com/), vyberte serveru Azure Database for MariaDB chcete monitorovat.
@@ -49,7 +48,7 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
    
    ![Vyberte metriku](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut", a **frekvence**.
+7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut") a **frekvence**.
    
    Vyberte **provádí** po dokončení.
 

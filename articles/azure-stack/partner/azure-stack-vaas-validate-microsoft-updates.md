@@ -13,12 +13,13 @@ ms.topic: tutorial
 ms.date: 1/07/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c90b81cdb6df5477d658d53dc93d0c3bbc47c1ff
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8ea0f36f3d167109fc0dc0d91707a08cff1c6a17
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106439"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243980"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Ověření aktualizace softwaru od Microsoftu
 

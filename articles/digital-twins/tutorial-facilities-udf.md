@@ -6,14 +6,14 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/26/2018
+ms.date: 12/27/2018
 ms.author: dkshir
-ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 465dd2a69ad42b8b6a88268eb35a1aa7d8d922c5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556097"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229392"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Kurz: Zřízení sestavení a sledování práce pomocí digitální dvojče Azure
 
@@ -30,6 +30,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že máte [dokončení nastavení Azure digitální dvojče](tutorial-facilities-setup.md). Než budete pokračovat, ujistěte se, že máte následující:
+
 - [Účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Spuštěná instance služby Digital Twins. 
 - Pracovní počítač se staženými a extrahovanými [ukázkami služby Digital Twins v jazyce C#](https://github.com/Azure-Samples/digital-twins-samples-csharp). 
@@ -37,6 +38,7 @@ V tomto kurzu se předpokládá, že máte [dokončení nastavení Azure digitá
 - [Visual Studio Code](https://code.visualstudio.com/) pro zkoumání vzorového kódu. 
 
 ## <a name="define-conditions-to-monitor"></a>Definice podmínek, které se mají monitorovat
+
 Můžete definovat sadu konkrétní podmínky pro monitorování v datech ze senzorů nebo zařízení volá *procesy pro hledání shody*. Potom můžete definovat funkce volané *uživatelem definované funkce*. Uživatelem definované funkce spustit vlastní logiku na data, která pochází z mezery a zařízení, když dojde k podmínky určené procesy pro hledání shody. Další informace najdete v článku [zpracování dat a uživatelem definovaných funkcí](concepts-user-defined-functions.md). 
 
 Z **obsazení quickstart** ukázkový projekt, otevřete soubor **src\actions\provisionSample.yaml** ve Visual Studio Code. Všimněte si části, která začíná typem **matchers** (Pravidla shody). Každá položka v rámci tohoto typu se zadaným vytvoří předávaný **název**. Předávaný bude monitorovat senzoru typu **dataTypeValue**. Všimněte si, jak souvisí s prostor s názvem *fokus místnosti A1*, který má **zařízení** uzel, který obsahuje pár senzory. Ke zřízení předávaný, který bude sledovat jednu z těchto senzorů, ujistěte se, že jeho **dataTypeValue** odpovídá senzoru **datový typ**. 
@@ -48,14 +50,15 @@ Přidejte následující předávaný pod stávající procesy pro hledání sho
         dataTypeValue: Temperature
 ```
 
-Tato předávaný bude sledovat SAMPLE_SENSOR_TEMPERATURE senzor, který jste přidali v [první kurz](tutorial-facilities-setup.md). Tyto řádky jsou taky k dispozici v *provisionSample.yaml* souboru jako komentovaná řádky. Můžete je Odkomentujte tak, že odeberete `#` před každý řádek znak. 
+Tato předávaný bude sledovat SAMPLE_SENSOR_TEMPERATURE senzor, který jste přidali v [první kurz](tutorial-facilities-setup.md). Tyto řádky jsou taky k dispozici v *provisionSample.yaml* souboru jako komentovaná řádky. Můžete je Odkomentujte tak, že odeberete `#` před každý řádek znak.
 
-<a id="udf" />
+<a id="udf"></a>
 
 ## <a name="create-a-user-defined-function"></a>Vytvoření uživatelem definované funkce
+
 Uživatelem definované funkce můžete použít k přizpůsobení zpracování dat snímače. Jsou to vlastní kód jazyka JavaScript, který můžete spustit v rámci vaší instance Azure digitální dvojče při splnění konkrétních podmínek jak je popsáno procesy pro hledání shody. Můžete vytvořit procesy pro hledání shody a uživatelem definované funkce pro každou senzor, který chcete monitorovat. Další informace najdete v článku [zpracování dat a uživatelem definovaných funkcí](concepts-user-defined-functions.md). 
 
-V souboru se vzorovým provisionSample.yaml, vyhledejte oddíl, který začíná s typem **userdefinedfunctions**. Uživatelem definované funkce se zřídí v této části danou **název**. Tato UDF funguje na seznam procesy pro hledání shody v rámci **matcherNames**. Všimněte si, že pro uživatelem definovanou funkci můžete v elementu **script** zadat vlastní soubor JavaScriptu. 
+V souboru se vzorovým provisionSample.yaml, vyhledejte oddíl, který začíná s typem **userdefinedfunctions**. Uživatelem definované funkce se zřídí v této části danou **název**. Tato UDF funguje na seznam procesy pro hledání shody v rámci **matcherNames**. Všimněte si, že pro uživatelem definovanou funkci můžete v elementu **script** zadat vlastní soubor JavaScriptu.
 
 Všimněte si také části **roleassignments**. Uživatelem definované funkce přiřazuje role místo správce. Tato role umožňuje přistupovat k událostem, které pocházejí z některého z zřízené mezery. 
 
@@ -188,7 +191,7 @@ Všimněte si také části **roleassignments**. Uživatelem definované funkce 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva podobná "vstupně-výstupní operace byla přerušena z důvodu ukončení vlákna nebo na žádost aplikace" uprostřed zřizování, spusťte příkaz znovu. K tomu může dojít v případě, že klient HTTP vypršel časový limit z potíže se sítí.
 
-<a id="simulate" />
+<a id="simulate"></a>
 
 ## <a name="simulate-sensor-data"></a>Simulace dat ze senzorů
 
@@ -202,13 +205,13 @@ V této části použijete projektu s názvem *připojení zařízení* ve vzork
     dotnet restore
     ```
 
-1. Otevřít **appSettings.json** souboru ve svém editoru a upravte následující hodnoty:
+1. Otevřít [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) souboru ve svém editoru a upravte následující hodnoty:
 
    a. **DeviceConnectionString**: Přiřaďte hodnotu `ConnectionString` v okně výstup z předchozí části. Zkopírujte tento řetězec kompletně v uvozovkách, tak simulátor můžete připojit správně prostřednictvím služby IoT hub.
 
    b. **HardwareId** v rámci **senzorů** pole: Protože jste simulace událostí ze senzorů zřízené k vaší instanci Azure digitální dvojče, by měl odpovídat ID hardwaru a názvy snímačů v tomto souboru `sensors` uzel provisionSample.yaml souboru.
 
-      Přidáte novou položku senzoru teploty. **Senzorů** uzlu v souboru appSettings.json by měl vypadat nějak takto:
+      Přidáte novou položku senzoru teploty. **Senzorů** uzlu v souboru appsettings.json by měl vypadat nějak takto:
 
       ```JSON
       "Sensors": [{
@@ -233,6 +236,7 @@ V této části použijete projektu s názvem *připojení zařízení* ve vzork
    > Protože ukázkové simulace nekomunikuje přímo s vaší instancí digitální dvojče, nevyžaduje ověření.
 
 ## <a name="get-results-of-the-user-defined-function"></a>Načte výsledky uživatelem definované funkce
+
 Uživatelem definovaná funkce se spustí pokaždé, když vaše instance přijme data ze senzorů a zařízení. Tato část se dotazuje vaší instanci Azure digitální dvojče k získání požadovaných výsledků uživatelem definované funkce. Zobrazí se vám skoro v reálném čase, pokud je k dispozici, že vzduchu je aktuální a teploty je vhodné místnosti. 
 
 1. Otevřete okno příkazového řádku, který jste použili ke zřízení ukázku nebo nové příkazové okno a přejděte na **obsazení quickstart\src** složky ukázku znovu.

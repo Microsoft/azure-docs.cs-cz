@@ -9,18 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 01/07/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39682ac04b914809aec36f46889feb5c4b59af51
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139682"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243878"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Odstranit tenanta služby Azure Active Directory
+
 Při odstranění tenanta se také odstraní všechny prostředky, které jsou obsaženy v tenantovi. Je třeba připravit klienta minimalizací její přidružené prostředky před odstraněním. Jenom globální správce Azure Active Directory (Azure AD) můžete odstranit tenanta služby Azure AD z portálu.
 
 ## <a name="prepare-the-tenant-for-deletion"></a>Příprava tenanta pro odstranění
@@ -59,17 +60,17 @@ Stav předplatného | Data | Přístup k datům
 Aktivní (30denní zkušební verze)  | Data dostupná pro všechny    | <li>Uživatelé mají normální přístup k Office 365 souborech nebo aplikacích<li>Správci mají normální přístup k centru pro správu Office 365 a prostředky 
 Vypršela platnost (30 dnů)   | Data dostupná pro všechny    | <li>Uživatelé mají normální přístup k Office 365 souborech nebo aplikacích<li>Správci mají normální přístup k centru pro správu Office 365 a prostředky
 Zakázáno (30 dnů) | Data dostupná pouze správci  | <li>Uživatelé nemají přístup k Office 365 souborech nebo aplikacích<li>Správci můžou přístup k centru pro správu Office 365, ale nelze přiřadit licence nebo aktualizace uživatelů
-Zruší (30 dnů po zakázáno) | Odstranění dat (automaticky odstraněn, pokud žádné služby se používá) | <li>Uživatelé nemají přístup k Office 365 souborech nebo aplikacích<li>Správci můžou přístup k centru pro správu Office 365 si kupovat a spravovat další předplatná 
+Zruší (30 dnů po zakázáno) | Odstranění dat (automaticky odstraněn, pokud žádné služby se používá) | <li>Uživatelé nemají přístup k Office 365 souborech nebo aplikacích<li>Správci můžou přístup k centru pro správu Office 365 si kupovat a spravovat další předplatná
 
 Můžete vložit do předplatného **Deprovisoned** stavu odstraníme za 3 dny. pomocí Microsoft Store pro firmy centra pro správu. Tato funkce už brzy bude k centru pro správu Office 365.
 
 1. Přihlaste se k [Microsoft Store pro firmy centra pro správu](https://businessstore.microsoft.com/manage/) pomocí účtu, který je globálním správcem tenanta. Pokud se pokoušíte odstranit tenanta "Contoso", který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlásit se hlavní název uživatele, jako admin@contoso.onmicrosoft.com.
 
-2. Přejděte **spravovat** kartě a vyberte **produktů a služeb**, zvolte předplatné, které chcete zrušit. Po kliknutí na **zrušit**, aktualizujte stránku.
+2. Přejděte **spravovat** kartě a vyberte **produktů a služeb**, zvolte předplatné, které chcete zrušit a vyberte **odstranit**.
   
   ![Odstranit odkaz pro odstranění předplatného](./media/directory-delete-howto/delete-command.png)
   
-3. Vyberte **odstranit** k odstranění předplatného a přijali podmínky a ujednání. Všechna data budou trvale odstraněny do tří dnů. Předplatné období třídenní můžete znovu aktivovat, pokud změníte své rozhodnutí.
+3. Vyberte **odstranit odběr** přijali podmínky a ujednání a odstraňte odběr. Do tří dnů se trvale odstraní všechna data. Pokud změníte své rozhodnutí, můžete znovu aktivovat předplatné během následujících tří dnů.
   
   ![podmínky a ujednání](./media/directory-delete-howto/delete-terms.png)
 

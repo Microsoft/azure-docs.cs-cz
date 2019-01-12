@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: d4701143a24fdf89b1c61744a9661fffdbb61ed3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d6096967c33866f9498f413a4a73fc1d7eae9ede
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278045"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231355"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Log Analytics.  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
@@ -255,7 +255,7 @@ Přidat přidružení skupiny akcí na výstrahu, zadejte jedinečné ID Azure R
       "properties": {
         "Type": "Alert",
         "Name": "test-alert",
-        "Description": "I need to put a descriptio here",
+        "Description": "I need to put a description here",
         "Threshold": {
           "Operator": "gt",
           "Value": 12
@@ -289,7 +289,7 @@ Ve výchozím nastavení je předmět e-mailu pro výstrahy: Oznámení o upozor
       "properties": {
         "Type": "Alert",
         "Name": "test-alert",
-        "Description": "I need to put a descriptio here",
+        "Description": "I need to put a description here",
         "Threshold": {
           "Operator": "gt",
           "Value": 12
@@ -323,7 +323,7 @@ Podrobnosti o vlastní webhooku nemusejí odeslat spolu s podrobnostmi skupina a
       "properties": {
         "Type": "Alert",
         "Name": "test-alert",
-        "Description": "I need to put a descriptio here",
+        "Description": "I need to put a description here",
         "Threshold": {
           "Operator": "gt",
           "Value": 12

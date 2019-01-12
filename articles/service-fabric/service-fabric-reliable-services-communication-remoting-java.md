@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: eb991df64f0454fa6103c9104e5c0e9991503a43
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 686d736798a4d949e3590d988f399d7da82d4fee
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198265"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231984"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Vzdálená komunikace služby v Javě s využitím Reliable Services
 > [!div class="op_single_selector"]
@@ -91,8 +91,8 @@ Platforma pro vzdálenou spolupráci šíří výjimek vyvolaných na službu do
 Vytvoření ServiceProxy je nenáročná operace, takže si můžete vytvořit tolik, je nutné. Instance Proxy služby můžete použít opakovaně, dokud se v případě potřeby zapíná. Pokud vzdálené volání procedury vyvolá výjimku, stále můžete znovu použít stejnou instanci proxy serveru. Každý ServiceProxy obsahuje komunikace klienta používaný k posílání zpráv přenosu. Při vyvolávání vzdálené volání, jsou provedeny interní kontroly k určení, zda komunikace klienta je platný. Na základě výsledků kontrol komunikaci klienta se znovu vytvořit v případě potřeby. Proto pokud dojde k výjimce, nepotřebujete znovu vytvořit `ServiceProxy`.
 
 ### <a name="serviceproxyfactory-lifetime"></a>Doba života ServiceProxyFactory
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabric_service_proxy_factory) je objekt factory, který vytvoří proxy pro různé vzdálené komunikace rozhraní. Pokud používáte rozhraní API `ServiceProxyBase.create` k vytváření proxy serveru, pak framework vytvoří `FabricServiceProxyFactory`.
-Je vhodné vytvořit jeden ručně, když budete chtít přepsat [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.service_remoting_client_factory) vlastnosti.
+[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) je objekt factory, který vytvoří proxy pro různé vzdálené komunikace rozhraní. Pokud používáte rozhraní API `ServiceProxyBase.create` k vytváření proxy serveru, pak framework vytvoří `FabricServiceProxyFactory`.
+Je vhodné vytvořit jeden ručně, když budete chtít přepsat [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) vlastnosti.
 Objekt pro vytváření je náročná operace. `FabricServiceProxyFactory` udržuje mezipaměť komunikace klientů.
 Osvědčeným postupem je do mezipaměti `FabricServiceProxyFactory` pro co nejdéle.
 
@@ -102,7 +102,8 @@ Všechny vzdálené výjimky vyvolané rozhraní API služby jako runtimeexcepti
 ServiceProxy zpracovávat všechny výjimky převzetí služeb při selhání pro službu oddíl, který je vytvořen pro. Znovu řeší koncových bodů při převzetí služeb při selhání Exceptions(Non-Transient Exceptions) a opakování volání se na správný koncový bod. Počet opakovaných pokusů pro převzetí služeb při selhání. Výjimka je nekonečno.
 V případě TransientExceptions jenom znovu zkusí volání.
 
-Výchozí parametry opakování se poskytují pomocí [OperationRetrySettings]. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operation_retry_settings) Můžete nakonfigurovat tyto hodnoty předá objekt OperationRetrySettings ServiceProxyFactory konstruktoru.
+Výchozí parametry opakování se poskytují pomocí [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+Tyto hodnoty můžete nakonfigurovat předáním objektu OperationRetrySettings ServiceProxyFactory konstruktoru.
 
 ## <a name="next-steps"></a>Další postup
 * [Zabezpečení komunikace pro služby Reliable Services](service-fabric-reliable-services-secure-communication-java.md)

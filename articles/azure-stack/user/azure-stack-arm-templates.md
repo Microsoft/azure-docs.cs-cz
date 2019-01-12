@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 38e85ede1e984aa3d26fe509d68b4582d11b6c26
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.reviewer: justini
+ms.openlocfilehash: 3738cd6387c22ca0917fa257a942aaa1009ee08c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636216"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246666"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Použití šablon Azure Resource Manageru ve službě Azure Stack
 

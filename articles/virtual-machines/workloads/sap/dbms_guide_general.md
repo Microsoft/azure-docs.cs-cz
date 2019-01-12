@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e514f35567f4be0932c7bcc591cbd0f05cd9814
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606754"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246870"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -133,7 +133,11 @@ Azure vynucuje kvóty vstupně-výstupních operací na datový disk. Tyto kvót
 
 > [!NOTE]
 > Aby bylo možné využívat Azure je jedinečné [jednotné SLA k virtuálním počítačům](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) všechny disky připojené musí být typu Azure Premium Storage, včetně základní virtuální pevný disk.
->
+
+
+> [!NOTE]
+> Není možné hostitele hlavní databáze (soubory protokolu a data) databází SAP na hardwaru úložiště, který se nachází v datových centrech společně umístěné třetích stran sousední k datovým centrům Azure. Pro úlohy SAP pouze se úložiště, který je reprezentován jako nativní Azure služba nepodporuje pro soubory protokolů dat a transakcí databází SAP.
+> 
 
 Umístění databázových souborů a soubory protokolů a znovu a typu úložiště Azure, musí být definován podle požadavků na vstupně-výstupních operací, latenci a propustnost. Pokud chcete mít dostatek vstupně-výstupních operací, mohlo by být vynuceno využívat více disků nebo použít větší disk Storage úrovně Premium. V případě používání více disků, postavíte softwaru zapisují prokládaně na discích, které obsahují datové soubory nebo soubory protokolů a znovu. V takových případech jsou kumulativní pro výslednou sadu stripe IOPS a propustnost disku smlouvy SLA základní disky Premium Storage nebo maximální dosažitelný disků vstupně-výstupních operací z Azure Storage úrovně Standard.
 

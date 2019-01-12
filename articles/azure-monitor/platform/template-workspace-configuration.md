@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: 4a56812a8a10e890f50afb669a54291ea064098d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: e402cc214f25447407754bc6269300f4f052af4f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102704"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232732"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Správa služby Log Analytics pomocí šablon Azure Resource Manageru
 Můžete použít [šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory Log Analytics. Mezi příklady úloh, které můžete provádět pomocí šablony patří:
@@ -117,7 +117,7 @@ Následující parametry nastavení výchozí hodnoty:
     ```
 2. Upravte šablonu podle svých požadavků.  Kontrola [Microsoft.OperationalInsights/workspaces šablony](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referenční dokumentace se dozvíte, jaké vlastnosti a hodnoty jsou podporovány. 
 3. Uložte soubor jako **deploylaworkspacetemplate.json** do místní složky.
-4. Jste připraveni k nasazení této šablony. Můžete použít PowerShell nebo příkazového řádku pro cretae pracovního prostoru.
+4. Jste připraveni k nasazení této šablony. Vytvořit pracovní prostor používáte PowerShell nebo příkazového řádku.
 
    * Pro prostředí PowerShell ze složky obsahující šablonu použijte následující příkazy:
    

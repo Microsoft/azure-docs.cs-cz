@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 01/12/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 463ab617051bf97bb3b1c38ed431c4b6936a9c90
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5abc13a39db3f1061e3df76857645d8075feade5
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118689"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245748"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Azure IoT Edge
 
@@ -133,7 +133,7 @@ Pokud vyvíjíte v C#, Node.js nebo Java, modul vyžaduje použití **ModuleClie
 
 ### <a name="set-up-iot-edge-simulator-for-iot-edge-solution"></a>Nastavení simulátoru IoT Edge pro řešení IoT Edge
 
-Ve vývojovém počítači můžete spustit simulátor IoT Edge místo instalace démona zabezpečení IoT Edge, aby mohla spustit vaše řešení IoT Edge.
+Na svém vývojovém počítači můžete začít IoT Edge simulátor místo instalace démona zabezpečení IoT Edge, aby mohla spustit vaše řešení IoT Edge.
 
 1. V Průzkumníku zařízení na levé straně, klikněte pravým tlačítkem na vaše ID zařízení IoT Edge a pak vyberte **nastavení IoT Edge simulátor** spusťte simulátor připojovacím řetězcem zařízení.
 1. Uvidíte, že simulátor IoT Edge se úspěšně nastavila najdete podrobnosti o pokroku v integrovaném terminálu.
@@ -160,7 +160,7 @@ Pokud chcete nastavit a spusťte simulátor, spusťte příkaz **Azure IoT Edge:
        dotnet build
        ```
 
-     - Otevřete soubor `program.cs` a přidejte zarážku.
+     - Otevřete soubor `Program.cs` a přidejte zarážku.
 
      - Přejděte do zobrazení ladění Visual Studio Code tak, že vyberete **zobrazení > ladění**. Vyberte konfiguraci ladění  ***&lt;název modulu&gt;* místní ladění (.NET Core)** z rozevíracího seznamu.
 
@@ -222,7 +222,7 @@ Ve vývojovém počítači můžete spustit simulátor IoT Edge místo instalace
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Sestavit a spustit kontejner pro ladění a ladění v připojení režimu
 
-1. Otevřete soubor modulu (`program.cs`, `app.js`, `App.java`, nebo `<your module name>.cs`) a přidejte zarážku.
+1. Otevřete soubor modulu (`Program.cs`, `app.js`, `App.java`, nebo `<your module name>.cs`) a přidejte zarážku.
 
 1. V okně Průzkumník kódu Visual Studio klikněte pravým tlačítkem myši `deployment.debug.template.json` pro vaše řešení a potom vyberte možnost **sestavení a spuštění hraničních zařízeních IoT řešení v simulátoru**. Můžete sledovat všechny kontejneru modulu protokoly ve stejném okně. Můžete také přejít do zobrazení Dockeru a sledujte stav kontejneru.
 
@@ -241,17 +241,17 @@ Ve vývojovém počítači můžete spustit simulátor IoT Edge místo instalace
 >
 > Pro moduly napsanými v C#, včetně Azure Functions, tento příklad vychází ladicí verze `Dockerfile.amd64.debug`, což zahrnuje příkazového řádku debugger .NET Core (VSDBG) ve vaší imagi kontejneru při jeho vytváření. Po ladění vašeho C# moduly, doporučujeme vám, že používáte přímo soubor Dockerfile bez VSDBG pro moduly IoT Edge připravené pro produkční prostředí.
 
-## <a name="debug-a-module-with-iot-edge-runtime"></a>Ladění modulu runtime IoT Edge
+## <a name="debug-a-module-with-the-iot-edge-runtime"></a>Ladění modulu s modulem runtime IoT Edge
 
 Ve složce každého modulu existuje několik souborů Docker pro typy jiný kontejner. Použijte některý ze souborů, které končí příponou **.debug** vytvořit váš modul pro testování.
 
-Při ladění modulů s modul runtime IoT Edge, moduly jsou spuštěné na modul runtime IoT Edge. Zařízení IoT Edge a VS Code může být ve stejném počítači, nebo se jsou v různých počítačích (VS Code je v počítači pro vývoj a modul runtime IoT Edge a moduly jsou spuštěny v jiného fyzického počítače). Následující postup je třeba provést pro relaci ladění ve VS Code.
+Při ladění moduly, tímto způsobem, jsou spuštěné moduly na modul runtime IoT Edge. Zařízení IoT Edge a Visual Studio Code může být ve stejném počítači, nebo se Visual Studio Code je na vývojovém počítači a modul runtime IoT Edge a moduly se provozují na jiný fyzický počítač. Pokud chcete ladit z Visual Studio Code, musíte mít:
 
-- Nastavit vaše zařízení IoT Edge, vytvářet moduly IoT Edge se **.debug** soubor Dockerfile a nasadit do zařízení IoT Edge. 
-- Zveřejnit IP adresy a portu modulu pro ladicí program připojit.
-- Aktualizace `launch.json` souboru tak, že VS Code můžete připojit k procesu v kontejneru ve vzdáleném počítači.
+- Nastavit vaše zařízení IoT Edge, sestavení vašeho moduly IoT Edge se **.debug** soubor Dockerfile a následně nasadíte do zařízení IoT Edge.
+- Zpřístupňují IP adresy a portu modulu, takže je možné připojit ladicí program.
+- Aktualizace `launch.json` tak, aby Visual Studio Code může připojit k procesu v kontejneru na vzdáleném počítači. Tento soubor je umístěn v `.vscode` složky v pracovním prostoru a aktualizace pokaždé, když přidáte nový modul, který podporuje ladění.
 
-### <a name="build-and-deploy-your-module-and-deploy-to-iot-edge-device"></a>Sestavení a nasazení modulu a nasazení do zařízení IoT Edge
+### <a name="build-and-deploy-your-module-to-the-iot-edge-device"></a>Sestavení a nasazení modulu do zařízení IoT Edge
 
 1. V sadě Visual Studio Code otevřete `deployment.debug.template.json` soubor, který obsahuje ladicí verze vaší bitové kopie modulu správné `createOptions` hodnoty nastavené.
 
@@ -294,34 +294,55 @@ Při ladění modulů s modul runtime IoT Edge, moduly jsou spuštěné na modul
 1. V **zařízení Azure IoT Hub** část zobrazení Průzkumníka Visual Studio Code:
    1. Klikněte pravým tlačítkem na ID zařízení IoT Edge a pak vyberte **vytvoření nasazení pro jedno zařízení**.
 
+      > [!TIP]
+      > Abyste se ujistili, že zařízení, kterou jste zvolili zařízení IoT Edge, vyberte ji a rozbalte seznam modulů a ověřte existenci **$edgeHub** a **$edgeAgent**. Každé zařízení IoT Edge zahrnuje tyto dva moduly.
+
    1. Přejděte do svého řešení **config** složky, vyberte `deployment.debug.amd64.json` souboru a pak vyberte **vyberte Manifest nasazení Edge**.
 
 Zobrazí se vám nasazení s ID nasazení v integrovaném terminálu se úspěšně vytvořil.
 
-Stav kontejneru můžete zkontrolovat spuštěním `docker ps` příkazu v terminálu. Pokud prostředí runtime VS Code a IoT Edge běží na stejném počítači, můžete také zkontrolovat stav v okně Visual Studio Code Dockeru.
+Stav kontejneru můžete zkontrolovat spuštěním `docker ps` příkazu v terminálu. Pokud váš modul runtime Visual Studio Code a IoT Edge běží na stejném počítači, můžete také zkontrolovat stav v okně Visual Studio Code Dockeru.
 
-### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger-to-attach"></a>Vystavení IP adresy a portu modulu pro ladicí program připojit
+### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger"></a>Zveřejnění IP adresy a portu modulu pro ladicí program
 
-Pokud moduly jsou spuštěné ve stejném počítači jako VS Code. Použijete localhost pro připojení kontejneru a je již nastavení správný port **.debug** souboru Docker, kontejner modulu CreateOptions field, a `launch.json`. Tuto část přeskočit. Pokud moduly a VS Code běží v samostatných počítačů, postupujte podle kroků níže pro jednotlivé jazyky.
+Vám může přeskočit, pokud moduly jsou spuštěny na stejném počítači jako Visual Studio Code, použijete localhost pro připojení ke kontejneru a nastavení správný port už máte v **.debug** soubor Dockerfile, modul. kontejner `createOptions` nastavení, a `launch.json` souboru. Pokud v samostatných počítačích běží moduly a Visual Studio Code, postupujte podle kroků pro vývojový jazyk.
 
-  - **C#, C# Funkce**: [Nakonfigurujte kanál SSH na počítači pro vývoj a zařízení IoT Edge](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes), upravit `launch.json` soubor určený k připojení.
-  - **Node.js**: Ujistěte se, že modul je připravený pro ladicí programy pro připojení a port 9229 počítače laděný proces je dostupné z oblasti mimo. Můžete to ověřit tak, že otevřete [http://%3cdebuggee-machine-IP%3e:9229/json] http:// < laděného procesu IP počítače >: 9229/json na počítači ladicího programu. Tato adresa URL by se zobrazit informace o Node.js až po ladění. A pak na počítači, ladicí program, otevřete VS Code, upravte `launch.json` souboru, které řeší hodnotu profilu "< název modulu > vzdáleného ladění (Node.js)" (nebo "< název modulu > vzdáleného ladění (Node.js v kontejneru Windows)" Profilovat, pokud je modul spuštěn jako Kontejner Windows) je IP adresa počítače laděného procesu.
-  - **Java**: Sestavení ssh tunel pro hraniční zařízení spuštěním `ssh -f <username>@<edgedevicehost> -L 5005:127.0.0.1:5005 -N`, upravte `launch.json` soubor určený k připojení. Další informace o nastavení [tady](https://code.visualstudio.com/docs/java/java-debugging). 
-  - **Python**: V kódu `ptvsd.enable_attach(('0.0.0.0', 5678))`, změňte 0.0.0.0 na IP adresu zařízení IoT Edge. Sestavení, push a znovu nasadit moduly IoT Edge. V `launch.json` ve vývojovém počítači, aktualizace `"host"` `"localhost"` změnit `"localhost"` s veřejnou IP adresu vzdáleného zařízení IoT Edge.
+- **C#, včetně Azure Functions**
 
+  [Nakonfigurujte kanál SSH na počítači pro vývoj a zařízení IoT Edge](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes) a pak upravte `launch.json` soubor určený k připojení.
+
+- **Node.js**
+
+  - Ujistěte se, že modul na počítači za účelem ladění je spuštěný a připravený pro ladicí programy pro připojení a zda je port 9229 externě dostupný. Můžete to ověřit tak, že otevřete `http://<target-machine-IP>:9229/json` na počítači ladicího programu. Tato adresa URL by se zobrazit informace o modul Node.js chcete ladit.
+  
+  - Na svém vývojovém počítači, otevřete Visual Studio Code a pak upravte `launch.json` tak, aby hodnota adresu  ***&lt;název modulu&gt;* vzdálené ladění (Node.js)** profil (nebo  ***&lt;název modulu&gt;* vzdálené ladění (Node.js v kontejneru Windows)** Profilovat, pokud je modul spuštěn jako kontejner Windows) je IP počítač, který se právě ladí.
+
+- **Java**
+
+  - Vytvoření tunelu SSH k počítači, který chcete ladit spuštěním `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`.
+  
+  - Na svém vývojovém počítači, otevřete Visual Studio Code a upravit  ***&lt;název modulu&gt;* vzdálené ladění (Java)** profil v `launch.json` tak, aby se můžete připojit k cílový počítač. Další informace o úpravách `launch.json` a ladění v Javě pomocí Visual Studio Code, naleznete v části [konfigurace ladicí program](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
+
+- **Python**
+
+  - Ujistěte se, že je port 5678 na počítači za účelem ladění otevřené a dostupný.
+
+  - V kódu `ptvsd.enable_attach(('0.0.0.0', 5678))` , který jste předtím vložili do `main.py`, změňte **0.0.0.0** na IP adresu počítače, abyste mohli ladit. Sestavení, push a znovu nasaďte modul IoT Edge.
+
+  - Na svém vývojovém počítači, otevřete Visual Studio Code a pak upravte `launch.json` tak, aby `host` hodnotu  ***&lt;název modulu&gt;* vzdálené ladění (Python)** profil používá IP adresu cílového počítače namísto `localhost`.
 
 ### <a name="debug-your-module"></a>Ladění modulu
-
-Visual Studio Code uchovává informace o konfiguraci v ladění `launch.json` soubor umístěný ve `.vscode` složky v pracovním prostoru. To `launch.json` soubor byl vygenerován při vytvoření nového řešení IoT Edge. Aktualizuje pokaždé, když přidáte nový modul, který podporuje ladění.
 
 1. V zobrazení ladění Visual Studio Code vyberte konfigurační soubor ladění pro modul. Název možnosti ladění by měl být podobný  ***&lt;název modulu&gt;* vzdálené ladění**
 
 1. Otevřete soubor modulu pro vývojový jazyk a přidejte zarážku:
-   - **C#, C# Funkce**: Otevřete soubor `Program.cs` a přidejte zarážku.
-   - **Node.js**: Otevřete soubor `app.js` a přidejte breakpont.
-   - **Java**: Otevřete soubor `App.java` a přidejte zarážku.
-   - **Python**: Otevřít `main.py` a přidejte zarážku v metodě zpětného volání, které jste přidali `ptvsd.break_into_debugger()` řádku.
-   - **C**: Otevřete soubor `main.c` a přidejte zarážku.
+
+   - **Funkce Azure Functions (C#)**: Přidejte zarážku do souboru `<your module name>.cs`.
+   - **C#**: Přidejte zarážku do souboru `Program.cs`.
+   - **Node.js**: Přidejte zarážku do souboru `app.js`.
+   - **Java**: Přidejte zarážku do souboru `App.java`.
+   - **Python**: Přidejte zarážku do souboru `main.py`v metodě zpětného volání, které jste přidali `ptvsd.break_into_debugger()` řádku.
+   - **C**: Přidejte zarážku do souboru `main.c`.
 
 1. Vyberte **spustit ladění** nebo vyberte **F5**. Vyberte proces pro připojení.
 

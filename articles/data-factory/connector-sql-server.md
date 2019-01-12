@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 776b1eb71b4f15c3376644de92205a4eeb77e4b2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1c58c77cb20f269c3a11615ccebf0bdc9cce0d86
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020519"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230797"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat do a z SQL serveru pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -531,7 +531,7 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
     Zobrazit [povolení nebo zakázání síťového protokolu serveru](https://msdn.microsoft.com/library/ms191294.aspx) podrobnosti a alternativní způsoby povolení protokolu TCP/IP.
 
 3. Ve stejném okně, dvakrát klikněte na panel **TCP/IP** spustit **vlastností protokolu TCP/IP** okna.
-4. Přepněte **IP adresy** kartu. Posuňte se dolů viz **IPAll** oddílu. Poznamenejte si ** TCP Port ** (výchozí hodnota je **1433**).
+4. Přepněte **IP adresy** kartu. Posuňte se dolů viz **IPAll** oddílu. Poznamenejte si **TCP Port** (výchozí hodnota je **1433**).
 5. Vytvoření **pravidla pro bránu Windows Firewall** na počítači za účelem povolený příchozí provoz přes tento port.  
 6. **Ověření připojení**: Pro připojení k SQL serveru pomocí plně kvalifikovaného názvu, použijte SQL Server Management Studio z různých počítačů. Například: `"<machine>.<domain>.corp.<company>.com,1433"`.
 

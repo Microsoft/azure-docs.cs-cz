@@ -14,27 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: bad87931feb11012f23f0ef19bd853b38566c07c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a4f9147008ceb0de32e0f5879a194b45bd4c6421
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106820"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245391"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení pro import rozhraní API a známé problémy
 ## <a name="about-this-list"></a>Informace o tomto seznamu
 Při importu rozhraní API, může setkat určitá omezení nebo identifikovat problémy, které je potřeba opravit, bylo možné úspěšně naimportovat. Tento článek dokumenty, uspořádány podle formát importu rozhraní API.
 
 ## <a name="open-api"> </a>OpenAPI/Swagger
-Pokud se vám zobrazuje chyby, Import dokumentu OpenAPI, ujistěte se, jste ověřili jeho – buď pomocí návrháře na webu Azure Portal (návrh - front-endu – Editor specifikace OpenAPI), nebo s třetími stranami nástroj, jako <a href="https://editor.swagger.io">editoru Swagger</a>.
 
-* Je podporován jen formát JSON OpenAPI.
-* Požadované parametry napříč cestu a dotaz musí mít jedinečné názvy. (V OpenAPI název parametru pouze musí být jedinečný v rámci umístění, třeba cestu, dotaz, záhlaví.  Ale ve službě API Management umožňujeme operace rozlišované cestu a dotaz parametry (které OpenAPI nepodporuje). Proto požadujeme, aby názvy parametrů být jedinečný v rámci celou adresu URL šablony.)
-* Schémata odkazovat pomocí **$ref** vlastnosti nemůže obsahovat jiné **$ref** vlastnosti.
+Pokud se zobrazuje chyby importu OpenAPI dokumentu, ujistěte se, že jste se ověřili předem. Můžete to udělat buď pomocí návrháře na webu Azure Portal (Editor specifikace OpenAPI návrhu - front-endu -) nebo pomocí nástroje třetích stran, jako <a href="https://editor.swagger.io">editoru Swagger</a>.
+
+### <a name="open-api-general"> </a>Obecné
+
+* Požadované parametry napříč cestu a dotaz musí mít jedinečné názvy. (V OpenAPI název parametru pouze musí být jedinečný v rámci umístění, třeba cestu, dotaz, záhlaví. Ale ve službě API Management jsme umožní operace, které mají být rozlišované cestu a dotaz parametry (které OpenAPI nepodporuje). That's důvod, proč požadujeme, aby názvy parametrů být jedinečný v rámci celou adresu URL šablony.)
 * **$ref** ukazatelé nemohou odkazovat na externí soubory.
 * **x-ms cesty** a **servery x** jsou jediné podporované přípony.
 * Vlastní rozšíření jsou ignorovány při importu a nejsou uloženy ani zachovají pro export.
-* **Rekurze** – definice, které jsou definované rekurzivně (například odkazují samy na sebe) nejsou podporovány APIM.
+* **Rekurze** – API Management nepodporuje rekurzivní definice (například odkazující na sebe).
+* Adresa URL souboru zdroje (Pokud je k dispozici) se použije pro relativní serverové adresy URL.
+
+### <a name="open-api-v2"> </a>OpenAPI verze 2
+
+* Je podporován jen formát JSON.
+
+### <a name="open-api-v3"> </a>OpenAPI verze 3
+
+* Pokud mnoho **servery** nejsou zadány, API Management se pokusí vyberte první adresa URL protokolu HTTPs. Pokud nejsou k dispozici žádné adresy URL HTTPs - první adresa URL protokolu HTTP. Pokud nejsou k dispozici žádné adresy URL protokolu HTTP – adresa URL serveru bude prázdný.
+* **Příklady** není podporován, ale **příklad** je.
+* **Multipart/formulář data** se nepodporuje.
 
 > [!IMPORTANT]
 > Důležité informace a tipy týkající se importu OpenAPI najdete v tomto [dokumentu](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/).

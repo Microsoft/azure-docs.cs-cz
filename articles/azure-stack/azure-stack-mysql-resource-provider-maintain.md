@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 76a164ffcf918ebedcf4647f24a61ca3a271e967
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.openlocfilehash: e0de6b26499b4a5166db411eccee543be43c8352
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361911"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245986"
 ---
 # <a name="mysql-resource-provider-maintenance-operations"></a>Operace údržby poskytovatele prostředků MySQL
 

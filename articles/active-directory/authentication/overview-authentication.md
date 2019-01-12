@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 0b232ed8bacfeb896fd5ee6ff9e2a58b71dc1517
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
-ms.translationtype: HT
+ms.openlocfilehash: 92c493a59cc14d61b09e59bdf0fa23be72b7137a
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162954"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232545"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Které metody ověřování jsou dostupné?
 
 Občas můžete slyšet ve zprávách, jak někdo ukradne hesla nebo dojde k ohrožení zabezpečení identit. Zabezpečení organizace můžete kromě běžného hesla okamžitě zvýšit vynucením dvoufaktorového ověřování. Microsoft Azure Active Directory (Azure AD) obsahuje funkce, jako je Azure Multi-Factor Authentication (Azure MFA) a samoobslužné resetování hesla Azure AD (SSPR), které s dalšími metodami ověřování pomáhají správcům chránit organizace a uživatele.
 
-Když uživatelé potřebují přístup k citlivé aplikaci, resetovat heslo nebo povolit Windows Hello, může se jim zobrazit výzva s dodatečným ověřením, aby se ověřilo, že jsou to skutečně oni.
+Existuje mnoho scénářů, které zahrnují: přihlášení k aplikaci, resetování hesla, povolení Windows Hello, společně s dalšími, uživatelé mohou požádáni o zadání dalšího ověření, že jsou kdo, Řekněme, že jsou.
 
 Dodatečné ověřování může mít podobu jedné z těchto metod ověřování:
 
@@ -42,20 +42,20 @@ Samoobslužné resetování hesla dává uživatelům v případě potřeby mož
 
 Samoobslužné resetování hesla zahrnuje:
 
-* **Změnu hesla:** Znám svoje heslo, ale chci ho změnit na nové.
-* **Resetování hesla:** Nemůžu se přihlásit a chci si heslo pomocí jedné ze schválených metod ověřování resetovat.
-* **Odemknutí účtu:** Nemůžu se přihlásit ke svému účtu, protože je uzamčený a chci ho jednou ze schválených metod ověřování odemknout.
+* **Změna hesla:** Jsem vím svoje heslo, ale chcete ho změnit na něco nového.
+* **Resetování hesla:** Mám nemůže přihlásit a chcete resetovat heslo pomocí metody jeden nebo více schválených ověřování.
+* **Odemknutí účtu:** Nemůžu se přihlásit vzhledem k tomu, že je můj účet uzamčen a chcete odemknout pomocí jednoho nebo více schválených ověřovacích metod.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Použitím metod ověřování schválených správcem pomáhá Azure MFA chránit přístup k datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Dalším krokem je začít a nakonfigurovat samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication.
 
 Jak začít používat samoobslužné resetování hesla najdete v článku [Rychlé nasazení samoobslužného resetování hesla Azure AD](quickstart-sspr.md).
 
-Další informace o samoobslužném resetování hesla najdete v článku o [fungování samoobslužného resetování hesla Azure AD](concept-sspr-howitworks.md)
+Další informace o samoobslužné resetování hesla ve článku [jak to funguje: Azure AD samoobslužné resetování hesla](concept-sspr-howitworks.md)
 
-Více informací o ověřování Azure Multi-Factor Authentication najdete v článku o [fungování ověřování Azure Multi-Factor Authentication](concept-mfa-howitworks.md)
+Další informace o ověřování Azure Multi-Factor Authentication v následujícím článku [jak to funguje: Azure Multi-Factor Authentication](concept-mfa-howitworks.md)

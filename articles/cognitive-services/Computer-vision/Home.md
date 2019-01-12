@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4c952c847aa56b385065a878b664b3d1d98763f4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cd4eca669936a206241069f1f8a8d9440f45be33
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584016"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229774"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -69,6 +69,10 @@ Počítačové zpracování obrazu dokáže analyzovat obrázky, které splňuj�
 - Velikost souboru obrázku musí být menší než 4 megabajty (MB).
 - Rozměry obrázku musí být větší než 50 × 50 pixelů.  
   Pro účely OCR musí mít vstupní obrázek rozměry 50 × 50 až 4200 × 4200 pixelů.
+
+## <a name="data-privacy-and-security"></a>Ochrany osobních údajů a zabezpečení
+
+Jako se všemi služeb Cognitive Services, vývojáře, kteří používají službu pro počítačové zpracování obrazu měli vědět zásady společnosti Microsoft na zákaznická data. Zobrazit [stránku služeb Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) na webu Microsoft Trust Center další informace.
 
 ## <a name="next-steps"></a>Další postup
 

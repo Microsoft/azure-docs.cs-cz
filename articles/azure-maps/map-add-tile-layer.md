@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b61602d221c71fd756a23f338f2817561e9f5d09
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8e18822fff852a82b367acfa45e3d55048b4e54c
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215078"
+ms.locfileid: "54232596"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Přidat Dlaždicovou vrstvu mapy
 
@@ -27,7 +27,7 @@ Zatížení vrstvy dlaždic na dlaždicích ze serveru. Tyto Image můžete buď
 * Ohraničující rámeček – pole souřadnice ohraničujícího je možné zadat image ve formátu `{west},{south},{east},{north}` které běžně používá [webové mapování služby (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
-> A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) je skvělý způsob, jak vizualizovat velké sady dat na mapě. Pouze Dlaždicovou vrstvu se dá vygenerovat na bitovou kopii, ale vektorová data lze také vykreslit jako Dlaždicovou vrstvu příliš. Vykreslením vektorová data jako Dlaždicovou vrstvu mapový ovládací prvek potřebuje pouze k načtení dlaždic, které mohou být velikosti souboru mnohem menší, než vektorová data, které reprezentují. Tato technika je používána mnoho, kteří potřebují k vykreslení millons řádky dat na mapě.
+> A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) je skvělý způsob, jak vizualizovat velké sady dat na mapě. Pouze Dlaždicovou vrstvu se dá vygenerovat na bitovou kopii, ale vektorová data lze také vykreslit jako Dlaždicovou vrstvu příliš. Vykreslením vektorová data jako Dlaždicovou vrstvu mapový ovládací prvek potřebuje pouze k načtení dlaždic, které mohou být velikosti souboru mnohem menší, než vektorová data, které reprezentují. Tato technika je používána mnoho, kteří potřebují k vykreslení milionů řádků dat na mapě.
 
 Adresa URL dlaždice předaná do vrstvy dlaždic musí být adresa URL protokolu http/https do prostředku TileJSON nebo šablonu adresa URL dlaždice, která používá následující parametry: 
 

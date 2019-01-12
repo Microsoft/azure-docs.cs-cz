@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a20e4d713440ca6fe1adaf5b89bff347a8fd0bde
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ed720b0db68a11c573a763c4269349db97977eff
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744084"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231066"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Správa nákladů a využití pro Log Analytics
 
@@ -99,6 +99,25 @@ Následující kroky popisují, jak nakonfigurovat jak dlouho protokol dat se uc
 
 Zákazníci se smlouvou Enterprise podepsaná před 1. červencem 2018 nebo kteří už vytvořili pracovní prostor Log Analytics v rámci předplatného, budete mít dál přístup k *Free* plánu. Pokud vaše předplatné není vázaný na existující registraci smlouvy Enterprise, *Free* úroveň není k dispozici, když vytvoříte pracovní prostor v rámci nového předplatného po 2. dubna 2018.  Je omezený na 7denní doba uchování dat *Free* vrstvy.  Pro starší *samostatné* nebo *na jeden uzel* úrovně, jakož i aktuálním 2018 jednu cenovou úroveň, shromážděných dat je k dispozici za posledních 31 dní. *Free* úroveň má denního limitu příjmu 500 MB, a pokud najdete konzistentně překročení částky povolený objem pracovního prostoru lze změnit na jiný plán, ke shromažďování dat nad tento limit. 
 
+> [!NOTE]
+> Chcete-li používat nároky z nákupu OMS E1 Suite, sadu E2 OMS nebo doplňku OMS pro System Center, zvolte Log Analytics *na jeden uzel* cenovou úroveň.
+
+## <a name="changing-pricing-tier"></a>Změna cenové úrovně
+
+Pokud váš pracovní prostor Log Analytics má přístup ke starší verzi cenové úrovně, chcete-li změnit mezi starší verze cenové úrovně:
+
+1. Na webu Azure Portal v podokně předplatná Log Analytics vyberte pracovní prostor.
+
+2. V podokně pracovní prostor v rámci **Obecné**vyberte **cenová úroveň**.  
+
+3. V části **cenová úroveň**, vyberte cenovou úroveň a potom klikněte na tlačítko **vyberte**.  
+    ![Vybraná cenový plán](media/manage-cost-storage/workspace-pricing-tier-info.png)
+
+Pokud chcete přesunout do aktuální cenová úroveň pracovního prostoru, budete muset [změnit cenový model ve službě Azure Monitor monitorování vašeho předplatného](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model) který změní cenovou úroveň všech pracovních prostorů v tomto předplatném.
+
+> [!NOTE]
+> Pokud je váš pracovní prostor propojený s účtem Automation, musíte před tím, než budete moci vybrat cenovou úroveň *Standalone (za GB)*, odstranit všechna řešení **Automation and Control** a zrušit propojení s účtem Automation. V okně pracovního prostoru v části **Obecné** klikněte na **Řešení**. Zobrazí se řešení a můžete je odstranit. Propojení s účtem Automation zrušíte kliknutím na název účtu Automation v okně **Cenová úroveň**.
+
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží způsobujících Log Analytics je už shromažďování dat
 Pokud jsou na starší verzi cenové úrovně Free a odeslali více než 500 MB dat za den, zastaví shromažďování dat pro zbytek dne. Dosažení denního limitu je běžným důvodem Log Analytics se zastaví shromažďování dat, nebo se zdá být chybějící data.  Log Analytics, vytváří událost typu operace při shromažďování dat spustí a zastaví. Spuštěním následujícího dotazu ve službě search zkontrolujte, jestli jsou dosažení denního limitu a chybějící data: 
@@ -136,22 +155,55 @@ Můžete přejít na trendy v datech najdete konkrétní datové typy, napříkl
 
 ### <a name="nodes-sending-data"></a>Uzlů odesílajících data
 
-Chcete-li undersand počet uzlů vykazujících data za poslední měsíc, použijte
+Chcete-li pochopit počet počítačů (uzlů), vytváření sestav dat každý den během posledního měsíce, použijte
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Pokud chcete zobrazit počet událostí může ingestovat počítače, použijte
+Zobrazíte seznam počítačů odesílajících **účtuje datové typy** (některé typy dat jsou zdarma), využívat `_IsBilled` vlastnost:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+
+Pomocí těchto `union withsource = tt *` střídmě dotazy jsou nákladné ke spuštění kontrol napříč typres dat data. 
+
+To je možné rozšířit na vrátí počet počítačů za hodinu, které odesílají účtuje datové typy:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+
+Pokud chcete zobrazit **velikost** účtovaných událostí může ingestovat počítače, použijte `_BilledSize` vlastnost, která poskytuje velikost v bajtech:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+
+Tento dotaz nahrazuje starý způsob dotazování to s datovým typem využití. 
+
+Pokud chcete zobrazit **počet** událostí může ingestovat počítače, použijte
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-Pomocí tohoto dotazu opatrně, jako je nákladné ke spuštění. Pokud chcete zobrazit typy dat, které jsou sendng dat k určitému počítači, použijte:
+Pokud chcete zobrazit počet účtovaných událostí může ingestovat počítače, použijte 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+Pokud chcete vidět, že počet účtovaných datové typy jsou odesílání dat k určitému počítači, použijte:
 
 `union withsource = tt *
-| where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 > [!NOTE]
 > Některá pole datového typu využití, zatímco stále ve schématu, jsou zastaralé a bude, že jejich hodnoty jsou již nejsou naplněny. Jedná se o **počítače** a také související s příjmem pole (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** a **AverageProcessingTimeMs**.

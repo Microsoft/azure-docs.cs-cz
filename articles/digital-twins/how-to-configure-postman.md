@@ -6,27 +6,30 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/10/2019
 ms.author: adgera
-ms.openlocfilehash: 705d96225c699c6e9824dadbd7fa1272ba5ddb2d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: a5d0b6abdee44bdd1e174fa2c8551fbeac768e5d
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213276"
+ms.locfileid: "54232630"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postup konfigurace nástroje Postman pro digitální dvojče Azure
 
 Tento článek popisuje, jak nakonfigurovat klienta Postman REST k interakci s a testování Azure digitální dvojče rozhraní API pro správu. Konkrétně popisuje:
 
 * jak nakonfigurovat aplikaci služby Azure Active Directory pro použití tok implicitní grant OAuth 2.0.
-* jak nakonfigurovat klienta Postman REST aby token vliv požadavků HTTP pro vaše rozhraní API pro správu.
+* Jak použít klienta Postman REST aby token vliv požadavků HTTP pro vaše rozhraní API pro správu.
+* Jak použít nástroj Postman, aby vícedílné zprávy standardu požadavky POST pro vaše rozhraní API pro správu.
 
 ## <a name="postman-summary"></a>Souhrn postman
 
 Začít používat Azure digitální dvojče pomocí klientský nástroj REST [Postman](https://www.getpostman.com/) Příprava místní testovací prostředí. Klient nástroje Postman pomáhá rychle vytvářet složité požadavky HTTP. Stáhnout tak, že přejdete v desktopové verzi klienta Postman [www.getpostman.com/apps](https://www.getpostman.com/apps).
 
-[Postman](https://www.getpostman.com/) REST testuje nástroj, který vyhledá klíčových funkcích požadavek HTTP do užitečné ploše a na základě modul plug-in grafického uživatelského rozhraní. Prostřednictvím klienta Postman vývojáři řešení můžete zadat typ požadavku HTTP (*příspěvek*, *získat*, *aktualizace*, *oprava*a  *Odstranit*), koncový bod rozhraní API pro volání a použití protokolu SSL. Postman podporuje taky přidávání hlaviček požadavků HTTP, parametry, data formuláře a těla.
+[Postman](https://www.getpostman.com/) REST testuje nástroj, který vyhledá klíčových funkcích požadavek HTTP do užitečné ploše a na základě modul plug-in grafického uživatelského rozhraní. 
+
+Prostřednictvím klienta Postman vývojáři řešení můžete zadat typ požadavku HTTP (*příspěvek*, *získat*, *aktualizace*, *oprava*a  *Odstranit*), koncový bod rozhraní API pro volání a použití protokolu SSL. Postman podporuje taky přidávání hlaviček požadavků HTTP, parametry, data formuláře a těla.
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Konfigurace služby Azure Active Directory použít tok implicitní grant OAuth 2.0
 
@@ -46,9 +49,9 @@ Konfigurace aplikace Azure Active Directory pro používání služby flow impli
 
       ![Adresa URL odpovědi Azure Active Directory][2]
 
-1. Zkopírujte a udržovat **ID aplikace** aplikace Azure Active Directory. Používá se pod.
+1. Zkopírujte a udržovat **ID aplikace** aplikace Azure Active Directory. Používá se v následujících kroků.
 
-### <a name="configure-the-postman-client"></a>Konfigurace klienta nástroje Postman
+## <a name="obtain-an-oauth-20-token"></a>Získat token OAuth 2.0
 
 V dalším kroku nastavení a konfigurace nástroje Postman pro získání tokenu Azure Active Directory. Digitální dvojče Azure pomocí tokenu získaného proveďte později, ověřeného požadavku HTTP:
 
@@ -75,27 +78,52 @@ V dalším kroku nastavení a konfigurace nástroje Postman pro získání token
     | Stav | Ponechte prázdné |
     | Ověřování klientů | `Send as Basic Auth header` |
 
-1. Klient by teď měl vypadat podobně jako:
+1. Klient by měl nyní vypadat jako:
 
    ![Příklad klientského nástroje postman][3]
 
 1. Vyberte **požádat o Token**.
 
-    >[!NOTE]
+    >[!TIP]
     >Pokud se zobrazí chybová zpráva "Nebylo možné dokončit OAuth 2", zkuste následující:
     > * Nástroj Postman, zavřete a znovu ho otevřete a akci opakujte.
   
 1. Přejděte dolů a vyberte možnost **použijte Token**.
 
+<div id="multi"></div>
+
+## <a name="make-a-multipart-post-request"></a>Ujistěte se, požadavek POST s více částmi.
+
+Po dokončení předchozích kroků konfigurace nástroje Postman aby ověřeného požadavku POST vícedílné zprávy standardu HTTP:
+
+1. V části **záhlaví** kartu, přidejte klíčem hlavičku požadavku HTTP **Content-Type** s hodnotou `multipart/mixed`.
+
+   ![Typ obsahu multipart/mixed][4]
+
+1. Serializace dat bez textu do souborů. JSON data by mělo být uloženo jako soubor JSON.
+1. V části **tělo** kartu, přidejte každý soubor přiřazením **klíč** název, vyberete `file` nebo `text`.
+1. Vyberte soubor prostřednictvím **zvolit soubor** tlačítko.
+
+   ![Příklad klientského nástroje postman][5]
+
+   >[!NOTE]
+   > * Postman klient nevyžaduje, že ručně přiřazených bloků dat s více částmi **Content-Type** nebo **Content-Disposition**.
+   > * Nemusíte určit tyto hlavičky pro každou část.
+   > * Musíte vybrat `multipart/mixed` nebo další odpovídající **Content-Type** pro celou žádost.
+
+1. A konečně, klikněte na tlačítko **odeslat** k odeslání žádosti HTTP POST s více částmi.
+
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o rozhraní API pro správu digitálních Dvojčata a způsob jejich použití, přečtěte si [způsob použití rozhraní API pro správu Azure digitální dvojče](how-to-navigate-apis.md).
 
-- Další informace o ověřování pomocí rozhraní API pro správu, přečtěte si [ověřování pomocí rozhraní API](./security-authenticating-apis.md). 
+- Použít s více částmi. požadavky na [přidat objekty BLOB Azure digitální dvojče entity](./how-to-add-blobs.md).
 
-
+- Další informace o ověřování pomocí rozhraní API pro správu, přečtěte si [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
 
 <!-- Images -->
 [1]: media/how-to-configure-postman/implicit-flow.png
 [2]: media/how-to-configure-postman/reply-url.png
 [3]: media/how-to-configure-postman/postman-oauth-token.png
+[4]: media/how-to-configure-postman/content-type.png
+[5]: media/how-to-configure-postman/form-body.png

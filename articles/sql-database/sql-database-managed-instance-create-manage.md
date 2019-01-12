@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 30efbcd5ba36ea912a7238eef9e300085cb1d3d1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/11/2019
+ms.openlocfilehash: 43ee1cb33d5d747671cde7463c8f2fcb6e020662
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040196"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246513"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Spravovaná reference k rozhraní API pro Azure SQL Database Managed instance
 
@@ -62,7 +62,6 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall s [rozh
 |[Vytvoření az sql midb](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Vytvoří spravovanou databázovou|
 |[seznam midb az sql](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Seznamy, které jsou k dispozici spravované databáze|
 |[obnovení midb az sql](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Obnovení spravované databáze|
-|[aktualizace midb az sql](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-update)|Aktualizace spravované databáze|
 |[Odstranit midb az sql](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Odebere spravované databáze|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Příkaz Transact-SQL: Správa logických serverů a databází

@@ -5,6 +5,7 @@ description: Tento rychlý start ukazuje, jak vytvořit veřejné Load Balancer 
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e7055e016abd06d20206d25cb1d7b9eac35142f0
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 64c0a42ac3cc074e5fd9e2824180009431b11e1e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260221"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231967"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření veřejného load balanceru úrovně Basic pomocí webu Azure portal
 

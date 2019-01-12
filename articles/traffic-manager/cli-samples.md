@@ -4,7 +4,7 @@ description: Ukázky Azure CLI
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-ms.assetid: ''
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: kumud
-ms.openlocfilehash: 9656ebf831a39a94a06681798e981a6ba748ba3c
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6bff7bc2b8bfc5ef280c5782945fbc7932f800f8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985280"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230437"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>Ukázky v Azure CLI pro Traffic Manager
 

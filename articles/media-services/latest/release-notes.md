@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 11/21/2018
+ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: a16360fe74efe7394c061118bc4e6fa34e484858
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: bf80f78cc464fe274e83eca2f8afa420c2a8c453
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198538"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229952"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -33,6 +33,15 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 > V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-sdk), rozhraní příkazového řádku, nebo jeden z podporovaných sad SDK.
 
 Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Media Services v2 na v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="december-2018"></a>Prosinec 2018
+
+Aktualizace z verze GA z rozhraní API V3 zahrnují:
+       
+* **PresentationTimeRange** již nejsou požadovány pro vlastnosti **AssetFilters** a **AccountFilters**. 
+* Možnosti pro dotaz $top a $skip **úlohy** a **transformuje** byly odebrány a byla přidána $orderby. Při přidání nové funkce řazení bylo zjištěno, že možnosti $top a $skip došlo omylem byl zpřístupněn dříve i v případě, že nejsou implementované.
+* Rozšíření výčtu se znovu povolil. Tato funkce bylo povoleno ve verzi preview verze sady SDK a je teď ve verzi GA omylem zakázán.
+* Dvě předdefinované datové proudy zásady byly přejmenovány. **SecureStreaming** je nyní **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** je nyní **Predefined_MultiDrmStreaming**.
 
 ## <a name="november-2018"></a>. Listopadu 2018
 

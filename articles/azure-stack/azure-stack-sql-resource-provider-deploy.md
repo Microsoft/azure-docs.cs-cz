@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/11/2019
+ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 035284e23d3b600cbf1cbd5500a9821c2c628b05
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: jiahan
+ms.openlocfilehash: ea8669189b5fc8d797fc03f579ea52e7c11a7078
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156200"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246955"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků SQL serveru ve službě Azure Stack
 
@@ -59,8 +60,11 @@ _Pro integrované systémy instalace pouze_. Je nutné zadat certifikát SQL Paa
 
 ## <a name="deploy-the-sql-resource-provider"></a>Nasazení poskytovatele prostředků SQL
 
-Jakmile máte nainstalovány požadované součásti, spusťte **DeploySqlProvider.ps1** skriptu pro nasazení poskytovatele prostředků SQL. Jako součást binární poskytovatele prostředků SQL, který jste stáhli pro vaši verzi sady Azure Stack je extrahován DeploySqlProvider.ps1 skriptu.
+Po instalaci všech požadavků, můžete spustit **DeploySqlProvider.ps1** skriptu pro nasazení poskytovatele prostředků SQL. Jako součást binární poskytovatele prostředků SQL, který jste stáhli pro vaši verzi sady Azure Stack je extrahován DeploySqlProvider.ps1 skriptu.
 
+ > [!IMPORTANT]
+ > Před nasazením poskytovatele prostředků, přečtěte si poznámky k verzi pro další informace o nové funkce, opravy a známých problémech, které můžou ovlivnit nasazení.
+ 
 Chcete-li nasazení poskytovatele prostředků SQL, otevřete **nové** se zvýšenými oprávněními okno prostředí PowerShell (není prostředí PowerShell ISE) a změn do adresáře, které jste extrahovali binární soubory poskytovatele prostředků SQL. Doporučujeme použít nové okno prostředí PowerShell, aby potenciální potíže způsobené aktivitami moduly Powershellu, které jsou už načteny.
 
 Spusťte skript DeploySqlProvider.ps1, který dokončí následující úkoly:
@@ -133,6 +137,10 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Clear the existing login information from the Azure PowerShell context.
+Clear-AzureRMContext -Scope CurrentUser -Force
+Clear-AzureRMContext -Scope Process -Force
 
 # Change to the directory folder where you extracted the installation files. Do not provide a certificate on ASDK!
 . $tempDir\DeploySQLProvider.ps1 `

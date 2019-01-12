@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: ea78176b9e35643698acf3901b30520b7c7be3c2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: a43988f8d4d6ae318f409cf1e79d8ad2ff8c8af1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214384"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247822"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -101,9 +101,9 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
 
 Můžete přidávat a odebírat rozsahy adres pro virtuální síť. Rozsah adres musí zadat v notaci CIDR a nemůže překrývat s rozsahy jiných adres v rámci stejné virtuální síti. Rozsahy adres, které definujete, může být veřejné a privátní (RFC 1918). Zda definovat rozsah adres jako veřejný nebo privátní, rozsah adres je dostupný pouze z v rámci virtuální sítě z propojených virtuálních sítí a ze všech místních sítí připojené k virtuální síti. 
 
-<!-- You can decrease the address range for a given virtual network if you don't have any subnets associated with it. Otherwise, you can only extend the address range; for example, changing a /16 to /8 is possible. We recommend that you begin with a small address range, and then extend it later or add additional ranges.
+Rozsah adres pro virtuální síť můžete zmenšit, pokud nemáte k dispozici žádné podsítě s ním spojená. V opačném případě můžete pouze rozšířit rozsah adres, například změna /16 k /8. Může začínat malé adresu rozsahu a potom ji dále rozšířit nebo přidat další oblasti.
 
-the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 Nelze přidat následující rozsahy adres:
 

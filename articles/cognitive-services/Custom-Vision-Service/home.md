@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: overview
-ms.date: 10/26/2018
+ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 5e8e675b32bfd4c741b82b1ab341a80adbb0529d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: d9b5473e87d83912dd2f33c00e983e346226e4aa
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741636"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54242943"
 ---
 # <a name="what-is-azure-custom-vision"></a>Co je Azure Custom Vision?
 
@@ -27,7 +27,7 @@ Služba Custom Vision s využitím algoritmu strojového učení klasifikuje obr
 
 ### <a name="classification-and-object-detection"></a>Klasifikace a detekce objektů
 
-Funkce služby Custom Vision je možné rozdělit do dvou funkcí. **Klasifikace obrázků** přiřadí ke každému obrázku distribuci klasifikací. **Detekce objektů** funguje podobně, ale také vrací souřadnice na obrázku, kde se vyskytují použité značky.
+Funkce služby Custom Vision je možné rozdělit do dvou funkcí. **Klasifikace obrázků** přiřadí ke každému obrázku distribuci klasifikací. Multiclass (jedna značka za image) i klasifikaci multilabel (libovolný počet značek na image) jsou podporované modely. **Objekt detekce** je podobný multilabel klasifikace, ale také vrátí souřadnice na obrázku kde lze nalézt použité popisky.
 
 ### <a name="optimization"></a>Optimalizace
 
@@ -40,6 +40,10 @@ Služba Custom Vision je dostupná jako sada nativních sad SDK i prostřednictv
 
 ![Domovská stránka služby Custom Vision v okně prohlížeče Chrome](media/browser-home.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="data-privacy-and-security"></a>Ochrany osobních údajů a zabezpečení
+
+Jako se všemi služeb Cognitive Services, vývojáře, kteří používají Custom Vision service měli vědět zásady společnosti Microsoft na zákaznická data. Zobrazit [stránku služeb Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) na webu Microsoft Trust Center další informace.
+
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete začít používat službu Custom Vision na webu, postupujte podle příručky věnované [sestavení klasifikátoru](getting-started-build-a-classifier.md), nebo absolvujte [kurz klasifikace obrázků](csharp-tutorial.md), kde se dozvíte, jak scénář implementovat v kódu.

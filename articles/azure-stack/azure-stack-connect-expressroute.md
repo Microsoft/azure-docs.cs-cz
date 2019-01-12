@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/22/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: e9365008c47c2aac71d3983a16db37b0c5ea62ea
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.reviewer: unknown
+ms.openlocfilehash: ee247dcadd7ba8574bbdae1e25b0e39ca1ebc2da
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648101"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246224"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Připojení k Azure pomocí Azure ExpressRoute Azure Stack
 
@@ -82,7 +82,7 @@ K nastavení prostředí Azure Stack pro první tenanta, postupujte podle kroků
 
 ![Nastavení sítě Azure Stack](media/azure-stack-connect-expressroute/image2.png)
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 Předtím, než se pustíte do konfigurace služby Azure Stack, budete potřebovat:
 
@@ -134,7 +134,7 @@ Použijte následující postupy k vytvoření požadovaných síťových prost�
 1. V části **Azure Marketplace**vyberte **sítě**.
 1. V seznamu síťových prostředků vyberte **bránu virtuální sítě**.
 1. V **název** zadejte **GW1**.
-1. Vyberte **virtuální síť**.
+1. Vyberte **Virtuální síť**.
 1. Vyberte **Tenant1VNet1** z rozevíracího seznamu.
 1. Vyberte **veřejnou IP adresu**, pak **zvolte veřejnou IP adresu**a potom klikněte na tlačítko **vytvořit nový**.
 1. V **název** zadejte **GW1-PiP**a potom klikněte na tlačítko **OK**.

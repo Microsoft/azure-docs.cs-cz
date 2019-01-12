@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4d311794c1c0f2dd6b9a0b2a44983b47bfeef362
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 66f33dd0edc44a490c3ccaf989d6d9308e615bb0
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040536"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246105"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -58,6 +58,7 @@ Pokud chcete použít zpětný zápis hesla, musí mít jeden z přiřazené ve 
 * Microsoft 365 E3 nebo A3
 * Microsoft 365 E5 nebo A5
 * Microsoft 365 F1
+* Microsoft 365 Business
 
 > [!WARNING]
 > Office 365 samostatné licenční plány *nepodporují "Samoobslužné heslo resetování/změna/odemknutí přes místní zpětný zápis"* a vyžadují, abyste měli jeden z předchozích plánů pro tuto funkci pracovat.

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 917f9a5ff2f6f9f6101b19dccee05fe5ab25c5a9
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.reviewer: anajod
+ms.openlocfilehash: 85400269be13295161aaff5936a6ae8c7d503b34
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214772"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245867"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack
 

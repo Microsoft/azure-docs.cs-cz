@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 976b46a26d95b5e252b0df2383ea94b4dd280d24
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094181"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229621"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Vysvětlení modulů Azure IoT Edge
 
@@ -30,7 +30,7 @@ Azure IoT Edge umožňuje nasazovat a spravovat obchodní logiku na hraničních
 Bitové kopie modulu IoT Edge obsahují aplikace, které budou využívat správu, zabezpečení a komunikační funkce modulu runtime IoT Edge. Můžete vyvíjet vlastní bitové kopie modulu nebo exportovat z podporované služby Azure, jako je Azure Stream Analytics.
 Obrázky existovat v cloudu a může být aktualizován, změnit a nasazené v různých řešeních pro. Například modul, který využívá strojové učení k předpovědi výrobní linky výstup existuje jako samostatná bitová kopie než modul, který se používá k řízení dron pro počítačové zpracování obrazu. 
 
-Pokaždé, když modul image je nasazená na zařízení a tím, že modul runtime IoT Edge je vytvořena nová instance tohoto modulu. Dvě zařízení v různých částech světa použít stejnou image modulem; ale každý má své vlastní instance modulu při spuštění modulu na zařízení. 
+Pokaždé, když modul image je nasazená na zařízení a tím, že modul runtime IoT Edge je vytvořena nová instance tohoto modulu. Dvě zařízení v různých částech světa použít stejnou image modulu. Každé zařízení by však mít svoji vlastní instanci modulu při spuštění modulu na zařízení. 
 
 ![Diagram - bitové kopie modulu v cloudu, instancí modulu na zařízeních](./media/iot-edge-modules/image_instance.png)
 
@@ -53,7 +53,7 @@ Je zřejmé ve scénářích když potřebujete nasadit jednu image modul více 
 
 Každá instance modulu má také odpovídající dvojčete modulu, který vám pomůže nakonfigurovat instanci modulu. Instance a dvojčeti jsou spojeny s navzájem prostřednictvím modulu identity. 
 
-Dvojče modulu je dokument JSON, který ukládá vlastnosti informace a konfigurace modulu. Tento koncept parallels [dvojče zařízení](../iot-hub/iot-hub-devguide-device-twins.md) koncept ze služby IoT Hub. Struktura dvojčete modulu je přesně dvojčete zařízení. Rozhraní API používaná pro interakci s oběma typy dvojčat jsou také stejné. Jediným rozdílem mezi těmito dvěma je identity použité k vytvoření instance klientskou sadou SDK. 
+Dvojče modulu je dokument JSON, který ukládá vlastnosti informace a konfigurace modulu. Tento koncept parallels [dvojče zařízení](../iot-hub/iot-hub-devguide-device-twins.md) koncept ze služby IoT Hub. Struktura tohoto dvojčete modulu je stejný jako dvojčete zařízení. Rozhraní API používaná pro interakci s oběma typy dvojčat jsou také stejné. Jediným rozdílem mezi těmito dvěma je identity použité k vytvoření instance klientskou sadou SDK. 
 
 ```csharp
 // Create a ModuleClient object. This ModuleClient will act on behalf of a 
@@ -73,9 +73,9 @@ Azure IoT Edge podporuje offline operace s vašimi zařízeními IoT Edge. Tyto 
 Moduly IoT Edge může být offline delší dobu, za předpokladu splnění následujících požadavků: 
 
 * **Zpráva time to live (TTL) nevypršela platnost**. Výchozí hodnota TTL zprávy je dvě hodiny, ale může být změněné vyšší nebo nižší v Store a přeposlat konfiguraci ve službě IoT Edge hub nastavení. 
-* **Moduly není nutné donutit s centrem IoT Edge v režimu offline**. Moduly lze pouze ověření s centry Edge, které mají aktivní připojení k službě IoT hub. Moduly se muset znovu ověřovat, pokud se restartují z jakéhokoli důvodu. Moduly může i dál posílat zprávy do centra Edge po vypršení platnosti tokenu SAS. Po obnovení připojení Centrum Edge vyžádá nový token z modulu a ověřuje prostřednictvím služby IoT hub. V případě úspěchu se že Centrum Edge předává zprávy modulu, které jsou uloženy, dokonce i zprávy, které byly odeslány, zatímco byl vypršela platnost tokenu modulu. 
-* **Modul, který odeslané zprávy při offline je stále funkční po obnovení připojení**. Při opětovném připojení ke službě IoT Hub, je potřeba ověřit nový token modulu (Pokud předchozí platnost) předtím, než nebude moct přesměrovávat zprávy modulu Centrum Edge. Pokud modul není k dispozici nový token, Centrum Edge nemůže reagovat na zprávy uložené modulu. 
-* **Centrum Edge se místo na disku pro uložení zpráv**. Ve výchozím nastavení zprávy jsou uloženy v systému souborů kontejneru Edge hub. Neexistuje parametr konfigurace pro specifikování připojený svazek pro uložení zpráv místo. V obou případech musí být místa pro ukládání zpráv pro odložené doručování do služby IoT Hub.  
+* **Moduly není nutné donutit s centrem IoT Edge v režimu offline**. Moduly lze pouze ověření pomocí centra IoT Edge, které mají aktivní připojení k službě IoT hub. Moduly nutné donutit, pokud se restartují z jakéhokoli důvodu. Moduly může i dál posílat zprávy do centra IoT Edge po vypršení platnosti tokenu SAS. Po obnovení připojení k centru IoT Edge vyžádá nový token z modulu a ověřuje prostřednictvím služby IoT hub. V případě úspěchu, že Centrum IoT Edge předává zprávy modulu, které jsou uloženy, dokonce i zprávy, které byly odeslány, zatímco byl vypršela platnost tokenu modulu. 
+* **Modul, který odeslané zprávy při offline je stále funkční po obnovení připojení**. Při opětovném připojení ke službě IoT Hub, je potřeba ověřit nový token modulu (Pokud předchozí platnost) předtím, než nebude moct přesměrovávat zprávy modulu Centrum IoT Edge. Pokud modul není k dispozici nový token, Centrum IoT Edge nemůže reagovat na zprávy uložené modulu. 
+* **Centrum IoT Edge je místo na disku pro uložení zpráv**. Ve výchozím nastavení zprávy jsou uloženy v systému souborů kontejneru centra IoT Edge. Neexistuje parametr konfigurace pro specifikování připojený svazek pro uložení zpráv místo. V obou případech musí být místa pro ukládání zpráv pro odložené doručování do služby IoT Hub.  
 
 Další možnosti offline jsou dostupné ve verzi public preview. Další informace najdete v tématu [porozumění rozšířené offline možnosti pro IoT Edge, zařízení, moduly a podřízená zařízení](offline-capabilities.md).
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/07/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 509125e7c93f34b9ce28c58cb1ec96db1074d995
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 315e050f9ff8768cfeb8ff5417834e8e163ce334
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119641"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231423"
 ---
 # <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Přidružte prostředek služeb Cognitive Services k dovedností v Azure Search 
 
-Algoritmy AI řízení [kognitivního vyhledávání](cognitive-search-concept-intro.md) kanálů pro zpracování nestrukturovaných dat, které jsou založeny na [ **prostředků služeb Cognitive Services**](https://azure.microsoft.com/services/cognitive-services/). Zdroje, jako jsou [ **pro počítačové zpracování obrazu** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) poskytují image analýzy a optického rozpoznávání znaků (OCR) extrahování textu a struktura mimo soubory obrázků, zatímco [ **Text Analytics** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) poskytuje například entity rozpoznávání a extrakci klíčových frází, další zpracování přirozeného jazyka.
+Algoritmy AI řízení [kognitivního vyhledávání kanály](cognitive-search-concept-intro.md) pro zpracovávání nestrukturovaných dat, které jsou založeny na [ **prostředků služeb Cognitive Services**](https://azure.microsoft.com/services/cognitive-services/). Zdroje, jako jsou [ **pro počítačové zpracování obrazu** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) poskytují analýzu obrázků a optického rozpoznávání znaků (OCR) pro extrahování textu a struktura mimo soubory obrázků, zatímco [ **Text Analytics** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) poskytuje například entity rozpoznávání a extrakci klíčových frází, další zpracování přirozeného jazyka.
 
-Můžete zdarma obohatit omezený počet dokumentů nebo připojíte fakturovatelné prostředku služeb Cognitive Services pro větší a častější úlohy. V tomto článku se dozvíte, jak chcete přidružit vaše kognitivní dovednosti a obohacení dat během indexování prostředku služeb Cognitive Services.
+Můžete zdarma rozšiřovat omezený počet dokumentů nebo připojit fakturovatelné prostředku služeb Cognitive Services pro větší a častější úlohy. V tomto článku se dozvíte, jak chcete přidružit vaše kognitivní dovednosti a obohacení dat během indexování prostředku služeb Cognitive Services.
 
 Pokud váš kanál se skládá pouze z [vlastních dovedností](cognitive-search-create-custom-skill-example.md), není potřeba připojení prostředku služeb Cognitive Services.
 

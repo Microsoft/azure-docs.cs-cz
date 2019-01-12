@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.openlocfilehash: d6e293b80df1ab227a3100040a54b189f48d8027
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 541095ddff19f16e3050d79846a339d4e5bad2b8
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102805"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244286"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamování do služby Event Hubs pro Apache Kafka
 Tento rychlý start ukazuje, jak streamovat do služby Event Hubs s podporou Kafka, aniž byste museli měnit klienty protokolů nebo provozovat vlastní clustery. Zjistíte, jak prostou změnou konfigurace aplikací zajistit komunikaci producentů a příjemců se službou Event Hubs s podporou Kafka. Azure Event Hubs podporuje [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html).
@@ -34,13 +34,13 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs s podporou Kafka
 
-1. Přihlaste se k webu [Azure Portal][Azure Portal] a v levém horním rohu obrazovky klikněte na **Vytvořit prostředek**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a klikněte na tlačítko **vytvořit prostředek** v levém horním rohu obrazovky.
 
 2. Vyhledejte službu Event Hubs a vyberte zde uvedené možnosti:
     
     ![Vyhledání služby Event Hubs na portálu](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Zadejte jedinečný název a povolte Kafka pro obor názvů. Klikněte na možnost **Vytvořit**.
+3. Zadejte jedinečný název a povolte Kafka pro obor názvů. Klikněte na možnost **Vytvořit**. Poznámka: Event Hubs pro Kafka je pouze podporovány standardní a Event Hubs úrovně Dedicated. Event Hubs úrovně Basic vrátí chybu ověření téma v reakci na jakékoli operace Kafka.
     
     ![Vytvoření oboru názvů](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  

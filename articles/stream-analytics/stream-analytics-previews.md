@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: 9b721ab614bf1797604fe342de117c78ba703f96
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 01/10/2019
+ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557593"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232120"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -26,10 +26,6 @@ Následující funkce jsou ve verzi public preview. Můžete využít výhod tě
 ### <a name="integration-with-azure-machine-learning"></a>Integrace s Azure Machine Learning
 
 Je možné škálovat úlohy Stream Analytics s funkcemi Machine Learning (ML). Další informace o použití funkce ML v úloze Stream Analytics, najdete v tématu [škálovat úlohy Stream Analytics s funkcemi Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Podívejte se na skutečném scénáři s [provádět analýzu subjektivního hodnocení s využitím Azure Stream Analytics a Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
-
-### <a name="session-windows"></a>Relace systému windows
-
-Stream Analytics má nativní podporu pro okny, umožňuje vývojářům Autor zpracování komplexních datových proudů úloh s minimálním úsilím. [Relace windows](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics) skupině událostí, které dorazí ve stejné době, odfiltrováním časová období tam, kde není žádná data. Další informace o okny, najdete v tématu [Úvod do služby Stream Analytics okny](stream-analytics-window-functions.md).
 
 ### <a name="blob-output-partitioning-by-custom-time"></a>Objekt BLOB výstup dělení podle vlastní čas
 

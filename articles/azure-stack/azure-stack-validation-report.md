@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/23/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 1b2b06c02dc54c4369dd8490b714d1444d4b3b01
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.reviewer: unknown
+ms.openlocfilehash: 0eed7943d782bda134c2df2de6cf9eeeb58bfa3b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986181"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243861"
 ---
 # <a name="azure-stack-validation-report"></a>Sestava ověření služby Azure Stack
 Použijte nástroj prerequisite Checker připravenosti Azure Stack spustit ověření, které podporují nasazení a údržby prostředí Azure Stack. Nástroj zapisuje výsledky do sestavy soubor .json. Sestava zobrazí podrobné a souhrnné údaje o stavu všech požadovaných součástí pro nasazení služby Azure Stack. Sestava také zobrazí informace o otočení tajné kódy pro existující nasazení Azure Stack.  

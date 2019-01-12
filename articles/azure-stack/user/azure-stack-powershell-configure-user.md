@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
-ms.reviewer: Balsu.G
-ms.openlocfilehash: cf0d0f5bb87d1a7750775d3e22c8c50dcd8cf24d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: bganapa
+ms.openlocfilehash: bc6d48e0b805d8efa2efe88242aff53f797a6a12
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159430"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243895"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>Připojení ke službě Azure Stack pomocí prostředí PowerShell jako uživatel
 

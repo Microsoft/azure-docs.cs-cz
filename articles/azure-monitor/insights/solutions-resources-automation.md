@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d2a1be55f00b1b31609f44bd0187fd839340773
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a72df28fbaed89076976f567774bd5fdb15bc2f9
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185117"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229485"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředků služby Azure Automation do řešení pro správu (Preview)
 > [!NOTE]
@@ -397,7 +397,7 @@ Ukázka používá [standardní řešení parametry]( solutions-solution-file.md
         "scheduleStartTime": {
           "type": "string",
           "metadata": {
-            "Description": "Start time for shedule."
+            "Description": "Start time for schedule."
           }
         },
         "scheduleTimeZone": {

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/08/2019
 ms.author: mabrigg
-ms.reviewer: alfredo
-ms.openlocfilehash: 6d28eea434b081602f0e2455b22fcc58022a800e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.reviewer: alfredop
+ms.openlocfilehash: af3858ae283213de1591cf8f3c4e2acb307ce182
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117109"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246122"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Spravovat registraci klientů ve službě Azure Stack
 

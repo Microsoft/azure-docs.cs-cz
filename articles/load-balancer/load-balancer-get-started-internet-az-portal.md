@@ -5,6 +5,7 @@ description: Zjistěte, jak vytvořit veřejný Load Balancer Standard s zónov�
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: bdd890d85fa72098fecaf86a2782a25ceee783b7
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2b898a9228e251003a049b2d82c0b1039eb54114
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201121"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247431"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí webu Azure portal
 

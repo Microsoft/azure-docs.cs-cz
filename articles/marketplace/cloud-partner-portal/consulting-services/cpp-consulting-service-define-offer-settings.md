@@ -14,48 +14,49 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972167"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231933"
 ---
 # <a name="offer-settings-tab"></a>Karta nastavení nabídky
 
 Na **nová nabídka** obrazovky, prvním krokem je vytvoření identity nabídky. Nabídka identity se skládá ze tří částí: **ID nabídky**, **ID vydavatele**, a **název**. Každá z těchto částí je popsané v následujících částech.
 
-![Vytváří se nová konzultační služby nabídka – karta nastavení nabídky](media/consultingoffer-settings-tab.png)
+![Vytvořit novou nabídku konzultační služby – nabízí karta nastavení](media/consultingoffer-settings-tab.png)
 
-*ID nabídky*
+### <a name="offer-id"></a>ID nabídky
 
-Tento identifikátor je jedinečný název, který vytvoříte, když nejdřív odešlete nabídky. Musí obsahovat jenom malé alfanumerické znaky, pomlčky nebo podtržítka. **ID nabídky** se nebude zobrazovat v adrese URL a dopady modul výsledky hledání. Například *yourcompanyname_exampleservice*
+Tento identifikátor je jedinečný název, který vytvoříte, když nejdřív odešlete nabídky. Musí obsahovat jenom malé alfanumerické znaky, pomlčky nebo podtržítka. **ID nabídky** je zobrazen v adrese URL a ovlivňuje výsledků vyhledávacích webů. Příkladem je *yourcompanyname_exampleservice*.
 
-Jak je znázorněno v příkladu **ID nabídky** získá připojí k vašemu ID vydavatele k vytvoření jedinečného identifikátoru. To je vystavena jako trvalý odkaz, který může být zapsán a je indexované podle vyhledávací weby.
+Jak je znázorněno v příkladu **ID nabídky** se připojí k vašemu ID vydavatele k vytvoření jedinečného identifikátoru. Tento jedinečný identifikátor vystavena jako trvalý odkaz, který může být zapsán a je indexované podle vyhledávací weby.
 
-*Po nabídky je v provozu, nejde aktualizovat její identifikátor*
+>[!Note]
+>Po za provozu v rámci nabídky identifikátoru se nedá aktualizovat.
 
-*ID vydavatele*
+### <a name="publisher-id"></a>ID vydavatele
 
-Tento identifikátor se vztahuje k vašemu účtu. Pokud jste se přihlásili pomocí účtu organizace vaše **vydavatele** ID se zobrazí v rozevírací nabídce.
+Tento identifikátor se vztahuje k vašemu účtu. Po přihlášení pomocí účtu organizace vaše **ID vydavatele** se zobrazí v rozevírací nabídce.
 
-*Název*
+### <a name="name"></a>Název
 
-Tento řetězec představuje, co se zobrazí jako název nabídky na AppSource nebo Azure Marketplace. *Název* pole je omezen na 50 znaků.  Kontrolor možná muset upravit svým názvem umožňující připojení název nabídky s dobou trvání a typ nabídky.
+Tento řetězec se zobrazí jako název nabídky na AppSource nebo na webu Azure Marketplace. **Název** pole je omezen na 50 znaků. Revidující může být nutné upravit dobu trvání připojení a nabízet typu na název nabídky svým názvem.
 
-Následující příklad pomocí Edgewater Fullscope ukazuje, jak je sestavena název nabídky. Název nabídky se zobrazí jako:
+Následující příklad ukazuje, jak je sestavena název nabídky. 
 
-![Vytváří se nová nabídka konzultační služby](media/cppsampleconsultingoffer.png)
+![Vytvořit novou nabídku konzultační služby](media/cppsampleconsultingoffer.png)
 
 Název nabídky se skládá ze čtyř částí:
 
--   **Doba trvání:** – definované v **podrobnosti z prodejních míst** karta editoru. Doba trvání může být vyjádřena v hodinách, dnech nebo týdnech.
--   **Typ služby:** – definované v **podrobnosti z prodejních míst** karta editoru. Typy služeb jsou `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, a `Workshop`.
--   **Mezerami:** – recenzentem vložené:
--   **Název:** – definován **nabízejí nastavení** stránky.
+-   **Doba trvání:** Založený na **podrobnosti z prodejních míst** karta editoru. Doba trvání může být vyjádřena v hodinách, dnech nebo týdnech.
+-   **Typ služby:** Založený na **podrobnosti z prodejních míst** karta editoru. Typy služeb jsou `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, a `Workshop`.
+-   **Mezerami:** Vložit kontrolor.
+-   **Jméno:** Založený na **nabízejí nastavení** stránky.
 
 >[!Note]
->Pole názvu je omezená na 50 znaků. Název, který odešlete může být potřeba upravovat kontrolorovi povolit po dobu trvání a typ připojeným k názvu nabídky.
+>**Název** pole je omezen na 50 znaků. Revidující může být nutné upravit dobu trvání připojení a nabízet typu na název nabídky svým názvem.
 
 Následující seznam obsahuje několik názvů dobře pojmenované nabídky:
 
@@ -71,8 +72,8 @@ Následující seznam obsahuje několik názvů dobře pojmenované nabídky:
 -   Rychlý start CRM: Seminář 1 den
 -   Dynamics 365 for Sales: Posouzení 2 dny
 
-Po dokončení **nabízejí nastavení** kartu, můžete uložit své podání. Název nabídky se teď budou zobrazovat nad editoru, a najdete ho zpátky do všech nabízí.
+Po vyplnění **nabízejí nastavení** kartu, uložte své podání. Název nabídky se zobrazí nad editoru, a najdete ho v **všechny nabízí**.
 
-**Další kroky**
+## <a name="next-steps"></a>Další postup
 
 Nyní můžete zadat [z prodejních míst podrobností a zjistit, jestli se má publikovat na webu Azure Marketplace nebo AppSource](./cpp-consulting-service-storefront-details.md).

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
+ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: c0478b320afca1b82a79fa43e7b60c29a2cb2e7c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: ceab5152d6dc6db573a7fea8c673157068009ebe
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997924"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228805"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycené výjimky a časy spuštění metody do webové aplikace v Javě
 
@@ -89,6 +89,32 @@ Nastavení obsahu souboru xml. Podle následujícího příkladu lze zahrnout ne
 Je nutné povolit sestavy výjimku a metoda časování pro jednotlivé metody.
 
 Ve výchozím nastavení `reportExecutionTime` má hodnotu true a `reportCaughtExceptions` má hodnotu false.
+
+### <a name="spring-boot-agent-additional-config"></a>Jarní další konfigurace spouštění agenta
+
+`java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
+
+> [!NOTE]
+> AI Agent.xml a soubor jar agenta musí být ve stejné složce. Jsou často umístěny společně v `/resources` složky projektu. 
+
+#### <a name="enable-w3c-distributed-tracing"></a>Povolit distribuované trasování W3C
+
+Přidejte následující AI – Agent.xml:
+
+```xml
+<Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+        </BuiltIn>
+    </Instrumentation>
+```
+
+> [!NOTE]
+> Ve výchozím nastavení je povolený režim zpětná kompatibilita a enableW3CBackCompat parametr je nepovinný a by měla sloužit pouze v případě, že chcete vypnout. 
+
+To v ideálním případě by být případ, kdy všechny vaše služby byly aktualizovány na novější verzi sady SDK pro podporu protokolu W3C. Důrazně doporučujeme co nejdříve přejít na novější verzi sady SDK s podporou W3C.
+
+Ujistěte se, že **obě [příchozí](correlation.md#w3c-distributed-tracing) a odchozí (agent) konfigurace** se přesně shoduje.
 
 ## <a name="view-the-data"></a>Zobrazení dat
 V prostředku Application Insights se zobrazí agregovaná vzdálené závislosti a způsob spuštění s úspěšností [pod dlaždice výkon][metrics].

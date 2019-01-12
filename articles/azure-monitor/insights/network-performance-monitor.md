@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 7f7fe545c10d80fc5a201923679b7d61623786fb
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193786"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229842"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -109,7 +109,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
 
 4. Na **nastavení** stránce zobrazí možnost instalace agentů Log Analytics a konfigurace agentů pro monitorování v **obecná nastavení** zobrazení. Jak bylo vysvětleno dříve, pokud jste nainstalovali a nakonfigurovali agentů Log Analytics, vyberte **nastavení** zobrazení ke konfiguraci možností, kterou chcete použít. 
 
-   **Sledování výkonu**: Vyberte protokol pro syntetické transakce ve **výchozí** pravidlo monitorování výkonu a vyberte **uložit a pokračovat**. Tento výběr protokolu obsahuje pouze pro systémem generované výchozí pravidlo. Musíte zvolit protokol pokaždé, když explicitně vytvořit pravidlo monitorování výkonu. Můžete vždycky přesunout **výchozí** pravidla nastavení u **sledování výkonu** kartu (zobrazí se po dokončení konfigurace den-0) a později změnit protokol. Pokud nechcete, aby rPerfomance funkce monitorování, můžete zakázat výchozí pravidlo z **výchozí** pravidla nastavení u **sledování výkonu** kartu.
+   **Sledování výkonu**: Vyberte protokol pro syntetické transakce ve **výchozí** pravidlo monitorování výkonu a vyberte **uložit a pokračovat**. Tento výběr protokolu obsahuje pouze pro systémem generované výchozí pravidlo. Musíte zvolit protokol pokaždé, když explicitně vytvořit pravidlo monitorování výkonu. Můžete vždycky přesunout **výchozí** pravidla nastavení u **sledování výkonu** kartu (zobrazí se po dokončení konfigurace den-0) a později změnit protokol. Pokud nechcete, aby funkce monitorování výkonu, můžete zakázat výchozí pravidlo z **výchozí** pravidla nastavení u **sledování výkonu** kartu.
 
    ![Zobrazení monitorování výkonu](media/network-performance-monitor/npm-synthetic-transactions.png)
     
@@ -249,7 +249,7 @@ Topologie zobrazené na mapě se topologie vrstvy 3 a neobsahuje vrstvy 2 zaří
 
 ## <a name="log-analytics-search"></a>Hledání log Analytics 
 
-Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu. Běžné  **dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
+Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu.  **Běžné dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
 
 ## <a name="alerts"></a>Výstrahy
 
@@ -270,7 +270,7 @@ Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím webu Azure P
 4. Po úspěšném vytvoření výstrahy můžete spravovat výstrahy odkaz jak spravovat upozornění. 
 
 Pokaždé, když vytvoříte upozornění, NPM vytvoří pravidlo upozornění na základě dotazu protokolu ve službě Azure Monitor. Tento dotaz je triggerred ve výchozím nastavení každých 5 minut. Azure monitor není účtovat prvních 250 pravidel upozornění, které jsou vytvořené protokolů a všechna pravidla upozornění výše uvedené omezení 250 pravidel upozornění protokolů se budou účtovat podle jako [výstrahy ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/monitor/).
-Oznámení se účtují samostatně podle [oznámení ceny na stránce Azure Monitor pricig](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Oznámení se účtují samostatně podle [oznámení ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 
 
 ## <a name="pricing"></a>Ceny

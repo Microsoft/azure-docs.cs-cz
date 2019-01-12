@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 71987fcde08c5098d98d21405ce79e61d3094424
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6c8f48ce71e11d1de0c28b4dab5327ab03e54f28
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186051"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231780"
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 
@@ -40,7 +40,7 @@ V současné době pracovní prostor nabízí:
 
 * Zeměpisné umístění úložiště dat
 * Izolace dat k definování různých uživatelská přístupová práva
-* Obor pro konfiguraci nastavení, jako je uchovávání informací a dat malá a velká
+* Obor pro konfiguraci nastavení, jako jsou [cenovou úroveň](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [uchování](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) a [malá a velká data](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#daily-cap) 
 
 Z využití pohledu doporučujeme, abyste že nejdříve vytvoříte jako několik pracovních prostorů. Správa a práce s dotazy díky jednodušší a rychlejší. Ale podle výše uvedených charakteristik, můžete chtít vytvořit víc pracovních prostorů, pokud:
 
@@ -145,96 +145,6 @@ Pomocí těchto rolí můžete uživatelům udělit přístup v různých oborec
 - Prostředek – Přístup pouze k zadanému pracovnímu prostoru
 
 Doporučujeme provést přiřazení na úrovni prostředků (pracovního prostoru), abyste zajistili přesné řízení přístupu.  Pomocí [vlastních rolí](../../role-based-access-control/custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
-
-## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Připojení existujícího pracovního prostoru k předplatnému Azure
-Všechny pracovní prostory vytvořené po 26. září 2016 musí být propojené s předplatným Azure v okamžiku vytvoření. Pracovní prostory vytvořené před tímto datem je potřeba propojit s předplatným při přihlášení. Když vytváříte pracovní prostor z webu Azure Portal nebo propojujete pracovní prostor s předplatným Azure, služba Azure Active Directory se propojí jako účet vaší organizace.
-
-### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Propojení pracovního prostoru s předplatným Azure na webu Azure Portal
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.  
-
-2. V podokně předplatná Log Analytics, klikněte na tlačítko **přidat**.  
-
-    ![Seznam pracovních prostorů](./media/manage-access/workspace-link-existing-01.png)
-
-3. Z **pracovní prostor Log Analytics** podokně klikněte na tlačítko **propojit stávající**.  
-
-4. Klikněte na **Configure required settings** (Konfigurovat požadovaná nastavení).  
-
-5. Uvidíte seznam pracovních prostorů, které ještě nejsou propojené s vaším účtem Azure. Vyberte pracovní prostor.  
-   
-6. Je-li to třeba, můžete změnit hodnoty následujících položek:
-   * Předplatné
-   * Skupina prostředků
-   * Umístění
-   * Cenová úroveň  
-
-7. Klikněte na **OK**. Pracovní prostor je teď propojený s vaším účtem Azure.
-
-> [!NOTE]
-> Pokud nevidíte pracovní prostor, s kterým chcete účet propojit, znamená to, že vaše předplatné Azure nemá přístup k pracovnímu prostoru, který jste vytvořili na portálu OMS.  Informace o udělení přístupu k tomuto účtu z portálu OMS najdete v části [Přidání uživatele do existujícího pracovního prostoru](#add-a-user-to-an-existing-workspace).
->
->
-
-## <a name="upgrade-a-workspace-to-a-paid-plan"></a>Upgrade pracovního prostoru na placený tarif
-Existují tři tarify pracovního prostoru OMS: **Bezplatné**, **samostatné**, a **OMS**.  Pokud používáte tarif *Free*, existuje limit 500 MB pro odesílání dat do služby Log Analytics.  Pokud toto množství překročíte, budete muset přejít na placený tarif, aby se vám neshromažďovala data nad tento limit. Svůj tarif můžete kdykoli změnit.  Informace o cenách OMS najdete na stránce [podrobností o cenách](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-pricing).
-
-### <a name="using-entitlements-from-an-oms-subscription"></a>Používání nároků z předplatného OMS
-Pokud chcete používat nároky z nákupu OMS E1, OMS E2 OMS nebo doplňku OMS pro System Center, zvolte tarif *OMS* služby OMS Log Analytics.
-
-Když si koupíte předplatné OMS, nároky se přidají do vaší smlouvy Enterprise. Jakékoli předplatné vytvořené v rámci této smlouvy může tento nárok uplatnit. Všechny pracovní prostory v těchto předplatných uplatňují nárok na OMS.
-
-Pokud se chcete ujistit, že váš pracovní prostor využívá nárok plynoucí z předplatného OMS, proveďte následující:
-
-1. Vytvořte pracovní prostor v předplatném Azure, které je součástí smlouvy Enterprise obsahující předplatné OMS.
-
-2. Vyberte pro pracovní prostor tarif *OMS*.
-
-> [!NOTE]
-> Pokud jste pracovní prostor vytvořili před 26. zářím 2016 a cenový tarif služby Log Analytics je *Premium*, bude tento pracovní prostor uplatňovat nárok z doplňku OMS pro System Center. Své nároky můžete využít také tak, že přejdete na cenovou úroveň *OMS*.
->
->
-
-Nároky na předplatné OMS nejsou viditelné na webu Azure Portal. Tento nárok uvidíte jen na webu Enterprise Portal.  
-
-Pokud potřebujete změnit předplatné Azure, se kterým je pracovní prostor propojený, můžete použít rutinu prostředí Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx).
-
-### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>Využití závazků Azure ze smlouvy Enterprise
-Pokud nemáte předplatné OMS, platíte za každou součást OMS zvlášť a využití se zobrazí na faktuře Azure.
-
-Pokud jsou vaše předplatná Azure propojena se smlouvou Enterprise s finančním závazkem, využití služby Log Analytics se bude automaticky strhávat ze zbývajícího finančního závazku.
-
-Pokud potřebujete změnit předplatné Azure, se kterým je pracovní prostor propojený, můžete použít rutinu prostředí Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx).  
-
-### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Změna pracovního prostoru na placenou cenovou úroveň na webu Azure Portal
-1. Na webu Azure Portal v podokně předplatná Log Analytics vyberte pracovní prostor.
-
-2. V podokně pracovní prostor v rámci **Obecné**vyberte **cenová úroveň**.  
-
-3. V části **cenová úroveň**, vyberte cenovou úroveň a potom klikněte na tlačítko **vyberte**.  
-    ![Vybraná cenový plán](./media/manage-access/workspace-pricing-tier-info.png)
-
-> [!NOTE]
-> Pokud je váš pracovní prostor propojený s účtem Automation, musíte před tím, než budete moci vybrat cenovou úroveň *Standalone (za GB)*, odstranit všechna řešení **Automation and Control** a zrušit propojení s účtem Automation. V okně pracovního prostoru v části **Obecné** klikněte na **Řešení**. Zobrazí se řešení a můžete je odstranit. Propojení s účtem Automation zrušíte kliknutím na název účtu Automation v okně **Cenová úroveň**.
->
->
-
-### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-oms-portal"></a>Změna pracovního prostoru na placenou cenovou úroveň na portálu OMS
-
-Pokud chcete změnit cenovou úroveň pomocí portálu OMS, musíte mít předplatné Azure.
-
-1. Na portálu OMS klikněte na dlaždici **Nastavení**.
-
-2. Klikněte na kartu **Accounts** (Účty) a potom na kartu **Azure Subscription & Data Plan** (Předplatné a datový tarif Azure).
-
-3. Klikněte na cenovou úroveň, kterou chcete použít.
-
-4. Klikněte na **Uložit**.  
-
-    ![Předplatné a datové tarify](./media/manage-access/subscription-tab.png)
-
-Váš nový datový tarif se zobrazí pásu karet portálu OMS v horní části webové stránky.
-
-![Pás karet OMS](./media/manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>Další postup
 * Zobrazit [přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.

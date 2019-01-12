@@ -4,8 +4,7 @@ description: Tento článek obsahuje přehled služby Azure Traffic Manager. Zji
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: jeconnoc
-editor: ''
+manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 236137b87351e3c3a95c1103f7464256f41b9159
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
-ms.translationtype: HT
+ms.openlocfilehash: 1698b89cd32fd7fd90a178ece25ee6869c1aa3e7
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397211"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229689"
 ---
 # <a name="what-is-traffic-manager"></a>Co je Traffic Manager?
 Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na základě DNS, který umožňuje optimálně distribuovat provoz do služeb napříč globálními oblastmi Azure při zajištění vysoké dostupnosti a rychlosti odezvy.
@@ -56,7 +55,7 @@ Při použití [vnořených profilů služby Traffic Manager](traffic-manager-ne
 Informace o cenách najdete v tématu [Ceny služby Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [vytvořit profil služby Traffic Manager](traffic-manager-create-profile.md).
 - Zjistěte, [jak služba Traffic Manager funguje](traffic-manager-how-it-works.md).

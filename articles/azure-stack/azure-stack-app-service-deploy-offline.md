@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: a3703133e5dc5f0525638562fab98f9416bcf26e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: db4c0f2d1197a190b33bd297bb597fd19057d875
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104654"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230335"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Přidání poskytovatele prostředků App Service pro odpojené prostředí Azure Stack zabezpečené službou AD FS
 
@@ -27,14 +27,15 @@ ms.locfileid: "54104654"
 
 > [!IMPORTANT]
 > Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.4.
->
->
 
 Podle pokynů v tomto článku, můžete nainstalovat [poskytovatele prostředků App Service](azure-stack-app-service-overview.md) do prostředí Azure Stack, která je:
 
 - nejsou připojené k Internetu
 - zabezpečené službou Active Directory Federation Services (AD FS).
 
+ > [!IMPORTANT]
+ > Před nasazením poskytovatele prostředků, přečtěte si poznámky k verzi pro další informace o nové funkce, opravy a známých problémech, které můžou ovlivnit nasazení.
+ 
 Chcete-li přidat poskytovatele prostředků App Service do offline nasazení Azure Stack, musíte dokončit tyto úkoly nejvyšší úrovně:
 
 1. Dokončení [požadované kroky](azure-stack-app-service-before-you-get-started.md) (například nákupu certifikátů, což může trvat několik dnů nebo přijímat).

@@ -1,9 +1,11 @@
 ---
-title: Vnořené profily Traffic Manageru | Dokumentace Microsoftu
+title: Vnořené profily Traffic Manageru v Azure
+titlesuffix: Azure Traffic Manager
 description: Tento článek vysvětluje funkce "vnořených profilů Azure Traffic Manageru
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648594"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228822"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Vnořené profily Traffic Manageru
 
@@ -28,7 +30,7 @@ Následující příklady ukazují, jak použít vnořené profily Traffic Manag
 
 ## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Příklad 1: Kombinování "Výkonu" a "Vážená" směrování provozu
 
-Předpokládejme, že jste nasadili aplikace v následujících oblastech Azure: západní USA, západní Evropa a východní Asie. Metody směrování provozu Traffic Manageru "Výkonu" použijete k distribuci provozu na oblast nejbližší uživatelům.
+Předpokládejme, že jste nasadili aplikace v následujících oblastech Azure: USA – Západ, západní Evropa a východní Asie. Metody směrování provozu Traffic Manageru "Výkonu" použijete k distribuci provozu na oblast nejbližší uživatelům.
 
 ![Profil služby Traffic Manager jedním][4]
 
@@ -83,7 +85,7 @@ Místo přidání více koncových bodů v oblasti západní Evropa, tyto koncov
 
 ![Směrování s vlastní provozu v oblasti distribuce provozu "výkon.][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Příklad 5: Nastavení monitorování za koncový bod
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Příklad 5: Nastavení za koncový bod monitorování
 
 Předpokládejme, že používáte Traffic Manageru hladce migrovat provoz ze starší verze v místním webovém serveru na novou verzi založené na cloudu hostovaná v Azure. Pro starší verze serveru chcete použít na domovské stránce identifikátor URI pro sledování stavu lokality. Pro novou cloudovou verzi, implementujete vlastní monitorování stránky, ale (cesta: / monitor.aspx "), který obsahuje další kontroly.
 

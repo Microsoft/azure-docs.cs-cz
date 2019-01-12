@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584441"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232749"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>Kurz: Sestavte image zpracování aplikace - C&#35;
 
@@ -97,9 +97,6 @@ Můžete spustit ukázkovou aplikaci, pokud chcete zobrazit, jak komunikuje se s
    |Rozpoznání textu (OCR) | Používá [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) operace rozpoznat a extrahovat vytisknout text z obrázku. Můžete zvolte jazyk, který chcete použít, nebo nechat pro počítačové zpracování obrazu automatické rozpoznání jazyka. |
    |Rozpoznávání textu V2 (v angličtině) | Používá [rozpoznat Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) a [získat rozpoznat výsledek operace Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) operace asynchronně rozpoznat a extrahovat tištěné nebo rukou psaný text z obrázku. |
    |Získat miniaturu | Používá [získat miniaturu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) operaci pro vygenerování miniaturu pro místní nebo vzdálené image. |
-
-   > [!IMPORTANT]
-   > Společnost Microsoft obdrží Image nahrajete a může je použít ke zkvalitnění rozhraní API pro počítačové zpracování obrazu a související služby. Odesláním obrázku potvrzujete, že jste dodržovali naše [pravidla chování vývojářů](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
 
    Na následujícím snímku obrazovky ukazuje na stránku pro scénář analyzovat bitové kopie k dispozici po analýze Ukázkový obrázek.
    ![Snímek obrazovky stránky analyzovat image](../Images/Analyze_Image_Example.PNG)

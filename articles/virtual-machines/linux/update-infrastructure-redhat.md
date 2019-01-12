@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 1a1038bec66cd90e2cd0cbc8b125857403317d89
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 61d2c82f875c4f40e370515fd249e23601e91678
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078248"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232052"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure pro virtuální počítače na vyžádání Red Hat Enterprise Linuxem v Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umožňuje poskytovateli cloudu, jako je Azure, které zrcadlí obsahu úložiště hostované v systému Red Hat, vytvořte vlastní úložiště s týkající se Azure obsahu a ji dejte k dispozici pro virtuální počítače koncového uživatele.
@@ -27,6 +27,8 @@ ms.locfileid: "54078248"
 Image Red Hat Enterprise Linux (RHEL) průběžných plateb (PAYG) jsou předem nakonfigurovaný pro přístup k Azure RHUI. Je potřeba žádná další konfigurace. Chcete-li získat nejnovější aktualizace, spusťte `sudo yum update` po RHEL instance je připravený. Tato služba je součástí poplatky za software RHEL průběžné platby.
 
 Další informace pro Image RHEL v Azure, včetně publikování a zásady uchovávání informací jsou k dispozici [tady](./rhel-images.md).
+
+Informace o zásadách podpory Red Hat pro všechny verze systému RHEL můžete najít na [Red Hat Enterprise Linux životního cyklu](https://access.redhat.com/support/policy/updates/errata) stránky.
 
 ## <a name="important-information-about-azure-rhui"></a>Důležité informace o Azure RHUI
 * Azure RHUI aktuálně podporuje pouze nejnovější podverzi v každé rodině RHEL (počítače RHEL6 nebo RHEL7). Pokud chcete upgradovat instanci virtuálního počítače RHEL připojené k RHUI nejnovější dílčí verzi, spusťte `sudo yum update`.
@@ -218,4 +220,4 @@ Tento postup je k dispozici pouze pro referenci. Image RHEL PAYG už máte sprá
 ## <a name="next-steps"></a>Další postup
 * Vytvoření virtuálního počítače s Red Hat Enterprise Linuxem z image Azure Marketplace s průběžnými PLATBAMI a použít RHUI hostovaných v Azure, přejděte [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/).
 * Další informace o Image Red Hat v Azure, přejděte [stránky dokumentace](./rhel-images.md).
-
+* Informace o zásadách podpory Red Hat pro všechny verze systému RHEL můžete najít na [Red Hat Enterprise Linux životního cyklu](https://access.redhat.com/support/policy/updates/errata) stránky.

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0bc44dc31de4a45127468b956d01d7c3f8d92985
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122815"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54242359"
 ---
 Můžete využít výhod množství příležitostí k monitorování virtuálních počítačů shromažďování, zobrazení a analýza diagnostických a protokolovat data. Provést jednoduché [monitorování](../articles/azure-monitor/overview.md) vašeho virtuálního počítače, můžete použít obrazovka s přehledem pro virtuální počítač na webu Azure Portal. Můžete použít [rozšíření](../articles/virtual-machines/windows/extensions-features.md) ke konfiguraci diagnostiky na virtuálních počítačích shromažďovat další data metriky. Můžete použít také pokročilejší možnosti monitorování, jako například [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) a [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -31,7 +31,7 @@ Můžete vytvořit a monitorovat kolekce [diagnostická data](https://docs.micro
 
 ## <a name="alerts"></a>Výstrahy
 
-Můžete vytvořit [výstrahy](../articles/azure-monitor/platform/alerts-overview.md) podle konkrétních metrik výkonu. Příklady problémy, se kterými můžete dostat upozornění: když průměrné využití procesoru překročí určitou prahovou hodnotu nebo volné místo na disku klesne pod určitou dobu. Upozornění se dá nakonfigurovat v [webu Azure portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)s použitím [prostředí Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md), nebo [rozhraní příkazového řádku Azure](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md).
+Můžete vytvořit [výstrahy](../articles/azure-monitor/platform/alerts-overview.md) podle konkrétních metrik výkonu. Příklady problémy, se kterými můžete dostat upozornění: když průměrné využití procesoru překročí určitou prahovou hodnotu nebo volné místo na disku klesne pod určitou dobu. Upozornění se dá nakonfigurovat v [webu Azure portal](../articles/azure-monitor/platform/alerts-classic-portal.md)s použitím [prostředí Azure PowerShell](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell), nebo [rozhraní příkazového řádku Azure](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli).
 
 ## <a name="azure-service-health"></a>Azure Service Health
 

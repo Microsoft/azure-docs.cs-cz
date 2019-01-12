@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d9f25b7a10b7a50663198120a895220b02818d7b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994942"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247237"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací ve službě Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, back-endů mobilních a API apps v [webu Azure portal](https://portal.azure.com).
@@ -72,7 +72,7 @@ Pro aplikace jsou k dispozici metriky:
 | Metrika | Popis |
 | --- | --- |
 | **Průměrná doba odezvy** | Průměrná doba pro aplikaci pro požadavků, v milisekundách. |
-| **Průměrná pracovní sada paměti** | Průměrná velikost paměti, používat aplikace v mebibytes (MiB). |
+| **Průměrná pracovní sada paměti** | Průměrné množství paměti používané aplikace, v megabajtech (MiB). |
 | **Čas procesoru** | Procento využití procesoru používané aplikace v řádu sekund. Další informace o tuto metriku, naleznete v tématu [vs procesoru procentuální hodnota času procesoru](#cpu-time-vs-cpu-percentage). |
 | **Data v** | Množství příchozích šířky pásma používané aplikace v MiB. |
 | **Výstupní data** | Množství využité aplikací v MiB odchozí šířky pásma. |
@@ -141,14 +141,12 @@ Další informace o metrikách najdete v tématu [monitorujete metriky služeb](
 ## <a name="alerts-and-autoscale"></a>Výstrahy a automatické škálování
 Metriky pro aplikaci nebo plán služby App Service můžete využívat na výstrahy. Další informace naleznete v tématu [Doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-Hostované v úrovně Basic, Standard nebo Premium služby App Service podporu automatického škálování plánů služby App Service aplikace. S automatickým Škálováním můžete nakonfigurovat pravidla, která umožňuje monitorovat metriky plánu služby App Service. Pravidla můžete zvýšit nebo snížit počet instancí, které můžou poskytovat další prostředky podle potřeby. Pravidla i vám může pomoct ušetřit peníze, když aplikace je nadměrně zřízený. 
+Hostované v úrovně Basic, Standard nebo Premium služby App Service podporu automatického škálování plánů služby App Service aplikace. S automatickým Škálováním můžete nakonfigurovat pravidla, která umožňuje monitorovat metriky plánu služby App Service. Pravidla můžete zvýšit nebo snížit počet instancí, které můžou poskytovat další prostředky podle potřeby. Pravidla i vám může pomoct ušetřit peníze, když aplikace je nadměrně zřízený.
 
 Další informace o automatické škálování najdete v tématu [škálování](../monitoring-and-diagnostics/insights-how-to-scale.md) a [osvědčené postupy pro automatické škálování Azure monitoru](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
-
-
 
 <!-- Images. -->
 [http403]: ./media/web-sites-monitor/http403.png

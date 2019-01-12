@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6d7c8aa73f72f6db93c6ef78c333c36e1d26b74e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 805df837d5d33c5f21799e39145c62e71afdb4b5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995061"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231389"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data.
@@ -73,6 +73,8 @@ Chcete obnovit autorizaci, **Zastavit** úlohy > přejděte na výstup do Data L
 | Uživatelské jméno | Uživatelské jméno, která má přístup k zápisu do databáze. Stream Analytics podporuje jenom ověřování SQL. |
 | Heslo | Heslo pro připojení k databázi. |
 | Table | Název tabulky, kde je zapsán výstup. Název tabulky je velká a malá písmena a schéma této tabulky musí přesně shodovat počet polí a jejich typy generovaná výstupu úlohy. |
+|Dědit schéma oddílu| To umožňuje dědit schéma rozdělení oddílů v předchozím kroku dotazu umožňuje paralelní plně topologie s více zapisovačů do tabulky. Další informace najdete v tématu [výstupu Azure Stream Analytics ke službě Azure SQL Database](stream-analytics-sql-output-perf.md).|
+|Odpovídá počet v dávce| Několik doporučených horní limit záznamů odeslané s každou hromadné vložení transakce.|
 
 > [!NOTE]
 > Nabídka Azure SQL Database je aktuálně podporovány pro výstup úlohy ve Stream Analytics. Ale není podporované systémem SQL Server s databází připojený virtuální počítač Azure. To se může v budoucích verzích změnit.

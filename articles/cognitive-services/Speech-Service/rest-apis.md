@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: bae4c0dccb0ce336c319fe94936be72ab6fc9a8e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338886"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230369"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 
@@ -272,7 +272,7 @@ Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod ř
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Váš klíč předplatného Speech Service. | Buď toto záhlaví nebo `Authorization` je povinný. |
 | `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví nebo `Ocp-Apim-Subscription-Key` je povinný. |
-| `Content-type` | Popisuje formátu a kodek zadaná zvuková data. Platné hodnoty jsou `audio/wav; codec=audio/pcm; samplerate=16000` a `audio/ogg; codec=audio/pcm; samplerate=16000`. | Požaduje se |
+| `Content-type` | Popisuje formátu a kodek zadaná zvuková data. Platné hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus`. | Požaduje se |
 | `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Nepovinné |
 | `Expect` | Pokud pomocí přenosu v bloku, pošlete `Expect: 100-continue`. Speech Service uznává v prvotní žádosti a čeká další data.| Požadováno při odesílání bloku zvuková data. |
 | `Accept` | Pokud je zadán, musí být `application/json`. Speech Service poskytuje výsledky ve formátu JSON. Některé webové žádosti platformy poskytují nekompatibilní výchozí hodnotu, pokud není zadán, takže je dobrým zvykem vždy zahrnovat `Accept`. | Volitelné, ale doporučené. |
@@ -296,7 +296,7 @@ Toto je typická požadavku HTTP. Následující ukázka obsahuje název hostite
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codecs=audio/pcm; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
@@ -330,7 +330,7 @@ Tento vzorový kód ukazuje, jak posílat zvuk v blocích. Zvukový soubor záhl
     request.Method = "POST";
     request.ProtocolVersion = HttpVersion.Version11;
     request.Host = host;
-    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
     request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
     request.AllowWriteStreamBuffering = false;
 

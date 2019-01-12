@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: overview
 ms.date: 10/22/2018
 ms.author: sajagtap
-ms.openlocfilehash: 076948e7434802af7f0ad47f279335009817d40e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: fabbbace7aeefd708a58a0874f9bbfa316d2b3f2
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209580"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230798"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 
@@ -58,6 +58,9 @@ Služba Content Moderator zahrnuje také webový [nástroj pro kontrolu provád�
 
 Pomocí rozhraní API pro kontrolu můžete nastavit týmové kontroly textu, obrázků a videí v závislosti na zadaných filtrech. Konečné rozhodnutí o moderování pak můžou provést lidští moderátoři. Lidský přínos neslouží k trénování služby, ale kombinace práce služby a lidského posuzovacího týmu umožní vývojářům dosáhnout správné rovnováhy mezi efektivitou a přesností.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="data-privacy-and-security"></a>Ochrany osobních údajů a zabezpečení
+Jako se všemi služeb Cognitive Services, vývojáře, kteří používají službu Content Moderator měli vědět zásady společnosti Microsoft na zákaznická data. Zobrazit [stránku služeb Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) na webu Microsoft Trust Center další informace.
+
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete začít používat Content Moderator, postupujte podle tohoto [rychlého startu](quick-start.md).

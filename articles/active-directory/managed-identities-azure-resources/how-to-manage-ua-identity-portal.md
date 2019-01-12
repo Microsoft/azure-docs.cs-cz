@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: d54820acf8742ad2f95e8cc8527d9e252ffe3c30
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 971d0181cb8e38b952c3dd3dd1d7e5e1cbec5128
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720129"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244643"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytváření, výpisu, odstranit nebo přiřadit roli uživatele přiřazeny spravovanou identitu pomocí webu Azure portal
 
@@ -43,8 +43,8 @@ Pro vytvoření uživatelsky přiřazené identity spravované, musí váš úč
 3. Klikněte na tlačítko **přidat** a zadejte hodnoty do následujících polí v rámci **přiřazené uživateli vytvořit spravované** podokně identity:
    - **Název prostředku**: Toto je název pro váš uživatel přiřazenou spravovanou identitu, třeba UAI1.
    - **Předplatné**: Vyberte předplatné, pro vytvoření uživatelsky přiřazené spravované identity v části
-   - **Skupina prostředků**: Vytvořte novou skupinu prostředků a obsahovat vaše spravovaná identita uživatelsky přiřazené nebo zvolte **použít existující** vytvoření uživatelsky přiřazené spravovanou identitu ve stávající skupině prostředků.
-   - **Umístění**: Vyberte umístění, kam chcete nasadit uživatelsky přiřazené spravovanou identitu, třeba **USA – západ**.
+   - **Skupina prostředků**: Vytvořit novou skupinu prostředků a obsahovat vaše spravovaná identita uživatelsky přiřazené nebo zvolte **použít existující** vytvoření uživatelsky přiřazené spravovanou identitu ve stávající skupině prostředků.
+   - **Umístění**: Zvolte umístění pro nasazení uživatelsky přiřazené spravovanou identitu, třeba **USA – západ**.
 4. Klikněte na možnost **Vytvořit**.
 
 ![Vytvoření spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
@@ -62,6 +62,8 @@ Do seznamu/čtení uživatelsky přiřazené spravovanou identitu, musí váš �
 ## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživateli
 
 Pokud chcete odstranit spravovanou identitu uživatele přiřazeny, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
+
+Odstraňování identity přiřazené uživateli ho neodeberete z virtuálního počítače nebo prostředek, který byl přiřazen.  Odebrání virtuálního počítače najdete identity přiřazené uživateli [z virtuálního počítače odeberte uživatelsky přiřazené spravovanou identitu](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) použití účet spojený s předplatným Azure pro odstranění spravované identity přiřazené uživateli.
 2. Vyberte spravované uživatelsky přiřazené identity a klikněte na tlačítko **odstranit**.

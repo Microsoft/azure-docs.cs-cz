@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d322a0027f786be0603e7147eb3ba24341dd7fbf
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214857"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245085"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -233,6 +233,12 @@ Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se p
 Možnost **Přihlášení** poskytuje úplný přehled o všech událostech přihlašování pro vaše aplikace.
 
 ![Aktivita přihlašování](./media/concept-sign-ins/11.png "Aktivita přihlašování")
+
+## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
+
+Můžete zobrazit protokoly aktivit Office 365 z [centrum pro správu Office 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). I když aktivita Office 365 a Azure AD aktivity protokoly sdílejí velké množství prostředků adresáře pouze Office 365 centru pro správu poskytuje úplný přehled protokolů aktivit Office 365. 
+
+Programově pomocí protokolů aktivit Office 365 se dá dostat taky [rozhraní API pro správu Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Další postup
 

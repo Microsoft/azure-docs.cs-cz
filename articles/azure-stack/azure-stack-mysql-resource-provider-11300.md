@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 2f300e496873c0b048ccc1acc078bf1650e6bd9c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.reviewer: jiahan
+ms.openlocfilehash: 0b8bf94ba99f36662f03a48ca1f09366ddf2aa40
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166281"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243504"
 ---
 # <a name="mysql-resource-provider-11300--release-notes"></a>Poznámky k verzi poskytovatele 1.1.30.0 prostředků MySQL
 

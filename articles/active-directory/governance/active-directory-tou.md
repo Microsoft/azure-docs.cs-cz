@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/20/2018
+ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: 859d81239cfad9eb5396a30f5db316bc73285831
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 341565bf621fa63ad578489cd04bcfff3510265b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188418"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229468"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -87,9 +87,7 @@ Jakmile dokončíte dokument podmínek použití, přidejte ho pomocí následuj
 
 1. Nastavit tak, aby vyžadovala koncovým uživatelům zobrazit podmínky použití před přijetím je **vyžadují, aby uživatelé rozbalili podmínky použití** k **na**.
 
-1. Nastavit tak, aby vyžadovala koncoví uživatelé tak, aby přijímal vaše podmínky použití na všech zařízeních přistupují z **vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních** k **na**.
-
-    Pokud se nezobrazí **vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních** nastavení, bude to, že tato funkce nebyla ještě nasazena do vaší oblasti. Tato funkce by měl plně nasazení pomocí dřívější ledna 2019. Další informace najdete v tématu [jednotlivá zařízení podmínky použití](#per-device-terms-of-use).
+1. Nastavit tak, aby vyžadovala koncoví uživatelé tak, aby přijímal vaše podmínky použití na všech zařízeních přistupují z **vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních** k **na**. Další informace najdete v tématu [jednotlivá zařízení podmínky použití](#per-device-terms-of-use).
 
 1. Pokud chcete ukončit platnost podmínky použití souhlasí podle plánu, nastavte **vyprší souhlasy** k **na**. Pokud nastavíte hodnotu na, jsou zobrazeny dvě další nastavení.
 
@@ -253,9 +251,6 @@ Následující postup popisuje, jak přidat podmínky použití jazyka.
 ## <a name="per-device-terms-of-use"></a>Na zařízení podmínky použití
 
 **Vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních** nastavení umožňuje vyžadují, aby koncoví uživatelé tak, aby přijímal vaše podmínky použití na všech zařízeních přistupují z. Koncový uživatel se vyžaduje pro připojení zařízení ve službě Azure AD. Když se zařízení připojí, ID zařízení se používá k vynucení podmínek použití na všech zařízeních.
-
-> [!NOTE]
-> Pokud se nezobrazí **vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních** nastavení při vytváření nové podmínky použití, je, protože tato funkce nebyla ještě nasazena do vaší oblasti. Tato funkce by měl plně nasazení pomocí dřívější ledna 2019.
 
 Tady je seznam podporovaných platforem a software.
 

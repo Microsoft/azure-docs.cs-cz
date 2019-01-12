@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: e4e1701a145a36fce93db3812b67c307b342da5c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.reviewer: unknown
+ms.openlocfilehash: 754a0002aca52462910abe50825cff0254a7068f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127478"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244150"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Přehled nabízených služeb ve službě Azure Stack
 
@@ -47,11 +47,11 @@ Chcete-li tyto služby poskytovat vašim uživatelům, musíte vytvořit [plán�
 
 Když máte v plánu vaší nabídky, berte v úvahu následující body:
 
-**Nabídky zkušebních verzí**: nabídky zkušebních verzí můžete použít jak zaujmout nové uživatele, kteří potom můžete upgradovat na další služby. Vytvořit nabídku na zkušební verzi, vytvořte malé [základní plán](azure-stack-plan-offer-quota-overview.md#base-plan) s volitelné větší doplňkový plán.
+**Nabídky zkušebních verzí**: Nabídky zkušebních verzí můžete použít jak zaujmout nové uživatele, kteří potom můžete upgradovat na další služby. Vytvořit nabídku na zkušební verzi, vytvořte malé [základní plán](azure-stack-plan-offer-quota-overview.md#base-plan) s volitelné větší doplňkový plán.
 
-**Plánování kapacity**: je možné dotyčného o uživatelích, které vzít velké množství prostředků a zdokonaleným systému pro všechny uživatele. Chcete-li vám pomůže zvýšit výkon, můžete [nakonfigurovat své plány s kvótami](azure-stack-plan-offer-quota-overview.md#plans) limit využití.
+**Plánování kapacity**: Můžete mít obavy o uživatelích, které vzít velké množství prostředků a zdokonaleným systému pro všechny uživatele. Chcete-li vám pomůže zvýšit výkon, můžete [nakonfigurovat své plány s kvótami](azure-stack-plan-offer-quota-overview.md#plans) limit využití.
 
-**Delegované poskytovatele**: ostatním uživatelům můžete udělit možnost vytvoření nabídky ve vašem prostředí. Například pokud jste poskytovatel služeb, můžete [delegovat](azure-stack-delegated-provider.md) tato schopnost váš prodejce. Nebo, pokud už organizace, můžete delegovat na jiné oddělení a pobočky.
+**Delegované poskytovatele**: Můžete udělit jiným, které nabízí možnost vytvořit ve vašem prostředí. Například pokud jste poskytovatel služeb, můžete [delegovat](azure-stack-delegated-provider.md) tato schopnost váš prodejce. Nebo, pokud už organizace, můžete delegovat na jiné oddělení a pobočky.
 
 ## <a name="next-steps"></a>Další postup
 

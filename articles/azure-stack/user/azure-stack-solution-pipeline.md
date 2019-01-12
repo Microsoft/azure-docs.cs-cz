@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 12f9ed6d5b5d4c8dc7e5b0b68a0a394749cc72bd
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: anajod
+ms.openlocfilehash: 49f1d7e1fac1125984f7376cffdcaf2e60f5611b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714606"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247873"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: Nasazení aplikací na platformy Azure a Azure Stack
 

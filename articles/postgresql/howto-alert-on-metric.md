@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 26b7e92bf8fa6c42320f604643bc996794ed52ca
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/11/2019
+ms.openlocfilehash: a999553d7ba26daba674534b1656e90ad0de4f5f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540720"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243963"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Nastavte si upozornění na metriky pro službu Azure Database for PostgreSQL pomocí webu Azure portal 
 
@@ -25,48 +25,54 @@ Můžete nakonfigurovat výstrahu při aktivaci provést následující akce:
 * Volání webhooku.
 
 Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
-* [Rozhraní příkazového řádku (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
-* [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla upozornění na metriky na webu Azure Portal
 1. V [webu Azure portal](https://portal.azure.com/), vyberte serveru Azure Database for PostgreSQL chcete monitorovat.
 
-2. V části **monitorování** části bočního panelu, vyberte **pravidla upozornění** uvedeno:
+2. V části **monitorování** části bočního panelu, vyberte **výstrahy** uvedeno:
 
-   ![Vybrat pravidla upozornění](./media/howto-alert-on-metric/1-alert-rules.png)
+   ![Vybrat pravidla upozornění](./media/howto-alert-on-metric/2-alert-rules.png)
 
-3. Vyberte **přidat upozornění metriky** (ikony +). 
+3. Vyberte **přidat upozornění metriky** (ikony +).
 
-4. **Přidat pravidlo** otevře se stránka, jak je znázorněno níže.  Vyplňte požadované informace:
+4. **Vytvořit pravidlo** otevře se stránka, jak je znázorněno níže. Vyplňte požadované informace:
 
-   ![Přidat upozornění metriky formulář](./media/howto-alert-on-metric/2-add-rule-form.png)
+   ![Přidat upozornění metriky formulář](./media/howto-alert-on-metric/4-add-rule-form.png)
 
-   | Nastavení | Popis  |
-   |---------|---------|
-   | Název | Zadejte název pravidla upozornění. Tato hodnota posílá oznámení e-mailu. |
-   | Popis | Zadejte krátký popis pravidla výstrahy. Tato hodnota posílá oznámení e-mailu. |
-   | Výstraha při | Zvolte **metriky** pro tento typ výstrahy. |
-   | Předplatné | Toto pole je předem vyplněná odběr, který je hostitelem vaší službě Azure Database for PostgreSQL. |
-   | Skupina prostředků | Toto pole je předem s vybranou skupinou prostředků služby Azure Database for PostgreSQL. |
-   | Prostředek | Toto pole je předem vyplněná název služby Azure Database for PostgreSQL. |
-   | Metrika | Vyberte, kterou chcete vydat výstrahu pro metriku. Například **procento úložiště**. |
-   | Podmínka | Vyberte podmínku pro metriku, která se má porovnat s. Například **větší než**. |
-   | Prahová hodnota | Prahová hodnota pro metriky, například 85 (procenta). |
-   | Období | Časový úsek, která pravidlo metriky musí být splněna před výstrah aktivační události. Například **za posledních 30 minut**. |
+5. V rámci **podmínku** vyberte **přidat podmínku**.
 
-   Na základě příkladu, výstrahu hledá procento úložiště vyšší než 85 % po dobu 30 minut. Toto upozornění se aktivuje, když průměrné procento úložiště byla vyšší než 85 % po dobu 30 minut. Jakmile dojde k první aktivační událost, aktivuje akci při průměrnou procentuální hodnotu úložiště je nižší než 85 % více než 30 minut.
+6. Vyberte ze seznamu signálů, které se mají generovat výstrahy na metriku. V tomto příkladu vyberte "Procenta úložiště".
+   
+   ![Vyberte metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-5. Zvolte jako metodu oznamování, kterou chcete použít pro pravidlo upozornění. 
+7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut") a **frekvence**.
+   
+   Vyberte **provádí** po dokončení.
 
-   Zkontrolujte **e-mailu vlastníci, přispěvatelé a čtenáři** možnost, pokud chcete, aby správci předplatného a spolusprávci e-mailem odešle, když se aktivuje upozornění.
+   ![Vyberte metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
-   Pokud chcete další e-maily přijímat oznámení, když se aktivuje upozornění, přidejte je **další email(s) správce** pole. Více e-mailů oddělujte středníkem -  *email@contoso.com;email2@contoso.com*
+8. V rámci **skupiny akcí** vyberte **vytvořit nový** k vytvoření nové skupiny pro příjem oznámení o výstraze.
 
+9. Vyplňte formulář "Přidat skupinu akcí" s názvem, krátký název, předplatné a skupinu prostředků.
+
+10. Konfigurace **e-mailu/SMS nebo nabízená/hlasové** typ akce.
+    
+   Zvolte "E-mailu Azure Resource Manager roli" k výběru předplatného vlastníci, přispěvatelé a čtenáři dostávat oznámení.
+   
    Volitelně zadejte platný identifikátor URI, **Webhooku** pole, pokud chcete, volá se, když se aktivuje upozornění.
 
-6. Vyberte **OK** k vytvoření upozornění.
+   Vyberte **OK** po dokončení.
+
+   ![Skupina akcí](./media/howto-alert-on-metric/10-action-group-type.png)
+
+11. Zadejte název pravidla výstrahy, popis a závažnosti.
+
+   ![Skupina akcí](./media/howto-alert-on-metric/11-name-description-severity.png) 
+
+12. Vyberte **vytvořit pravidlo upozornění** k vytvoření upozornění.
 
    Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 

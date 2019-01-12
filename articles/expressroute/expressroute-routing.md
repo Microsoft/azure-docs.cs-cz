@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 01/11/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 5dde36bb8710190627a8780ed740957e62a57da0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 72489ea48aef9317d97e4d6f19b465db6a9a039d
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994577"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245663"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -215,7 +215,7 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | Azure globální služby * | 12076:5050 |
 | Jiné online služby Office 365 | 12076:5100 |
 
-***Globální služby Azure zahrnuje Azure DevOps**
+* Azure služeb Global Services obsahuje pouze Azure DevOps v tuto chvíli.
 
 
 > [!NOTE]

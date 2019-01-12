@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.openlocfilehash: 68665cc588f8a6340de393330c7a248503b07125
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364083"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244983"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>Operace údržby poskytovatele prostředků SQL
 
@@ -32,16 +32,6 @@ Poskytovatele prostředků SQL není Údržba v rámci služby Azure Stack, prot
 ### <a name="provider-virtual-machine"></a>Virtuální počítač poskytovatele
 
 Protože poběží poskytovatele prostředků *uživatele* virtuální počítač, budete muset použít vyžadovaných oprav a aktualizací po jejich uvedení na trh. Můžete balíčky aktualizací Windows, které jsou k dispozici jako součást cyklu aktualizace a opravy aktualizací pro virtuální počítač.
-
-## <a name="backuprestoredisaster-recovery"></a>Zálohování/obnovení nebo zotavení po havárii
-
- Protože se jedná součást doplňku, poskytovatele prostředků SQL nejsou zálohovány jako součást procesu Azure Stack obchodní kontinuity podnikových procesů po havárii pro zotavení (BCDR). Skripty, poskytneme vám pro tyto operace:
-
-- Zálohování informací o stavu (uložený v účtu úložiště Azure Stack.)
-- Obnovení poskytovatele prostředků, pokud plnohodnotných obnovení je povinný.
-
->[!NOTE]
->Pokud je nutné provést obnovení, databázové servery musí obnovit před obnovením poskytovatele prostředků.
 
 ## <a name="updating-sql-credentials"></a>Aktualizují se přihlašovací údaje SQL
 
@@ -122,7 +112,7 @@ Při použití poskytovatele prostředků SQL nebo MySQL pomocí služby Azure S
 
 ### <a name="known-issues"></a>Známé problémy
 
-**Problém**: tajné kódy rotace protokolů.<br>
+**Problém**: Tajné kódy rotace protokolů.<br>
 Protokoly pro rotaci tajné klíče se neshromažďují automaticky selhání vlastních skriptů tajných kódů otočení při jejím spuštění.
 
 **Alternativní řešení**:<br>

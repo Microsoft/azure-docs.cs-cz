@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 70bbade2877b62c3d211600f69e1825677f12040
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: unknown
+ms.openlocfilehash: 0fcdb2324868528e62e69fa0ce24ab2334052ced
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721865"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245408"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položek z marketplace z Azure do služby Azure Stack
 

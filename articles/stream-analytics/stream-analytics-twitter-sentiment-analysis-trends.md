@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: de0ddbc041d6f177e5bfcd24d593b8d63a8e1e23
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248723"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231134"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>V reálném čase analýza sentimentu na Twitteru ve službě Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Nástroje pro analýzu sociálních médií pomoct organizacím porozumět popul
 
 Analýza trendů v reálném čase Twitter je skvělé příkladem analytických nástrojů, protože model předplatného hashtag umožňuje poslouchat určitá klíčová slova (hashtagy) a vývoj analýzu subjektivního hodnocení ve informačního kanálu.
 
-## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scénář: Analýza mínění sociálních médií v reálném čase
+## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scénář: Analýza subjektivního hodnocení sociálních médií v reálném čase
 
 Společnost, která má sdělovacích webu má zájem o získání výhodu před konkurencí podle zobrazujících obsahu webu, který je okamžitě relevantní své čtenáře. Společnost používá analýza sociálních médií na témata, která jsou relevantní pro čtenáře tímto způsobem analýzu subjektivního hodnocení v reálném čase ve dat Twitteru.
 
@@ -36,7 +36,7 @@ V tomto kurzu použijete klientská aplikace, která se připojí k Twitteru a v
 * Předplatné Azure
 * Účet na Twitteru 
 * Aplikace Twitter a [přístupového tokenu OAuth](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) pro danou aplikaci. Zajišťuje základní pokyny k vytvoření aplikace Twitter později.
-* Aplikace TwitterWPFClient, která čte informační kanál sítě Twitter. Pokud chcete získat tuto aplikaci, stáhněte si [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) soubor z Githubu a pak rozbalte balíček do složky v počítači. Pokud chcete zobrazit zdrojový kód a spusťte aplikaci v ladicí program, můžete získat zdrojový kód z [Githubu](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* Aplikace TwitterWPFClient, která čte informační kanál sítě Twitter. Pokud chcete získat tuto aplikaci, stáhněte si [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) soubor z Githubu a pak rozbalte balíček do složky v počítači. Pokud chcete zobrazit zdrojový kód a spusťte aplikaci v ladicí program, můžete získat zdrojový kód z [Githubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient). 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>Vytvoření centra událostí pro vstupní Stream Analytics
 
@@ -214,13 +214,13 @@ Teď, když jsou události tweet streamování v reálném čase z Twitteru, mů
 
 2. V **vstupy** okna, klikněte na tlačítko  **+ &nbsp;přidat** a potom vyplňte okno s těmito hodnotami:
 
-    * **Vstupní alias**: použijte název `TwitterStream`. Pokud použijete jiný název, poznamenejte to protože ji budete potřebovat později.
-    * **Typ zdroje**: vyberte **datový proud**.
-    * **Zdroj**: vyberte **centra událostí**.
-    * **Možnost importu**: vyberte **použijte Centrum událostí z aktuálního předplatného**. 
+    * **Vstupní alias**: Použijte název `TwitterStream`. Pokud použijete jiný název, poznamenejte to protože ji budete potřebovat později.
+    * **Typ zdroje**: Vyberte **datový proud**.
+    * **Zdroj**: Vyberte **centra událostí**.
+    * **Možnost importu**: Vyberte **použijte Centrum událostí z aktuálního předplatného**. 
     * **Obor názvů služby Service bus**: Vyberte obor názvů centra událostí, který jste vytvořili dříve (`<yourname>-socialtwitter-eh-ns`).
-    * **Centrum událostí**: vyberte Centrum událostí, který jste vytvořili dříve (`socialtwitter-eh`).
-    * **Název zásady centra událostí**: vyberte zásady přístupu, kterou jste vytvořili (`socialtwitter-access`).
+    * **Centrum událostí**: Vyberte Centrum událostí, který jste vytvořili dříve (`socialtwitter-eh`).
+    * **Název zásady centra událostí**: Vyberte zásady přístupu, kterou jste vytvořili (`socialtwitter-access`).
 
     ![Vytvořit nový vstup pro úlohu Stream Analytics](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
@@ -297,9 +297,9 @@ V tomto kurzu můžete zapisovat události agregované tweet z dotazu úlohy do 
 
 2. V **výstupy** okna, klikněte na tlačítko  **+ &nbsp;přidat** a potom vyplňte okno s těmito hodnotami:
 
-    * **Alias pro výstup**: použijte název `TwitterStream-Output`. 
-    * **Jímka**: vyberte **úložiště objektů Blob**.
-    * **Možnosti importu**: vyberte **používání úložiště blob z aktuálního předplatného**.
+    * **Alias pro výstup**: Použijte název `TwitterStream-Output`. 
+    * **Jímka**: Vyberte **Úložiště objektů blob**.
+    * **Možnosti importu**: Vyberte **používání úložiště blob z aktuálního předplatného**.
     * **Účet úložiště**. Vyberte **vytvořit nový účet úložiště.**
     * **Účet úložiště** (druhého pole). Zadejte `YOURNAMEsa`, kde `YOURNAME` je vaše jméno nebo jiný jedinečný řetězec. Název lze použít pouze malá písmena a číslice a musí být jedinečné v Azure. 
     * **Kontejner**. Zadejte `socialtwitter`.

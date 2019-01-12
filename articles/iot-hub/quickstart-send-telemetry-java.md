@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 417fd1d74072164600ad14b8363f2e02828a1c81
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 2527f6df8294c81816ade8708c6240714bcabc3d
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515331"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244847"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-java"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT a čtení telemetrických dat z centra pomocí back-endové aplikace (Java)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub a čtení s back endové aplikace (Java)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -61,16 +61,16 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Ve službě Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření rozhraní příkazového řádku IoT Hub a vytvoření identity zařízení. 
 
-   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
+   **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
-   **MyJavaDevice:** Toto je název přidělený zaregistrovanému zařízení. Použijte uvedený název MyJavaDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
+   **MyJavaDevice** : Toto je název pro registrovaná zařízení. Použijte uvedený název MyJavaDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
     ```
 
-2. Spuštěním následujících příkazů ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali: **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
+2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:  **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyJavaDevice --output table
@@ -84,7 +84,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 3. Dále potřebujete _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč vlastníka centra IoT_ z centra IoT, abyste umožnili back-endové aplikaci připojit se k centru IoT a načíst zprávy. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
-     **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
+     **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
@@ -164,4 +164,4 @@ V tomto rychlém startu jste nastavili centrum IoT, zaregistrovali zařízení, 
 Informace o tom, jak řídit simulované zařízení z back-endové aplikace, najdete v dalším rychlém startu.
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Řízení zařízení připojeného k centru IoT](quickstart-control-device-java.md)
+> [Rychlý start: Řízení zařízení připojeném do služby IoT hub](quickstart-control-device-java.md)

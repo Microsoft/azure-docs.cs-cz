@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1d092d0afcb4c9689a55f9af2940884867a17089
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b5f1247c43dcbd836c684dbf41bafd0d319e5f7c
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104586"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230471"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1.3 a novější schéma konfigurace
 > [!NOTE]
@@ -613,7 +613,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**celé číslo bez znaménka**|Volitelné. Určuje maximální velikost úložiště v systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilterr**|**řetězec**|Volitelné. Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**, který převede všechny protokoly. Další možné hodnoty (v pořadí podle nejvíce alespoň informace) jsou **Verbose**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
+|**scheduledTransferLogLevelFilter**|**řetězec**|Volitelné. Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**, který převede všechny protokoly. Další možné hodnoty (v pořadí podle nejvíce alespoň informace) jsou **Verbose**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
 |**Hodnota scheduledTransferPeriod**|**Doba trvání**|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhluje nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
 |**jímky** |**řetězec**| Přidat do 1.5. Volitelné. Odkazuje na umístění jímky a také posílat diagnostická data. Například Application Insights nebo Event Hubs.|  
 

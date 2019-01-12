@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: anajod
+ms.openlocfilehash: 88c72994ec0c6cfc6222ccb31cabae7e354412eb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969528"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245527"
 ---
-# <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení pro analýzu pracovních dat s využitím Azure a Azure Stack 
+# <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Kurz: Vytvořit řešení analýzy pracovních dat s využitím Azure a Azure Stack 
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
@@ -81,25 +81,25 @@ Zvažte, jak vývojářské nástroje a správy zdrojových kódů vám umožní
 
 3.  Pro účet, použijte následující informace:
 
-    a.  Název: **podle vašeho výběru**
+    a.  Název: **Nějaké si zvolte**
 
-    b.  Model nasazení: **Resource Manageru**
+    b.  Model nasazení: **Resource Manager**
 
-    c.  Druh účtu: **úložiště (pro obecné účely V1)**
+    c.  Druh účtu: **Storage (pro obecné účely V1)**
 
-    d.  Umístění: **USA – západ**
+    d.  Umístění: **Západní USA**
 
-    e.  Replikace: **místně redundantní úložiště (LRS)**
+    e.  Replikace: **Místně redundantní úložiště (LRS)**
 
     f.  Výkon: **Standard**
 
-    g.  Vyžádání bezpečného přenosu: **zakázáno**
+    g.  Vyžádání bezpečného přenosu: **Disabled** (Zakázáno)
 
-    h.  Předplatné: Vyberte jednu
+    h.  Předplatné: Zvolte účet
 
-    i.  Skupina prostředků: Zadejte novou skupinu prostředků nebo vyberte existující skupinu prostředků
+    i.  Skupina zdrojů: Zadejte novou skupinu prostředků nebo vyberte existující skupinu prostředků
 
-    j.  Konfigurovat virtuální sítě: **zakázáno**
+    j.  Konfigurovat virtuální sítě: **Disabled** (Zakázáno)
 
 4.  Vyberte **chcete vytvořit účet úložiště vytvořte**.
 
@@ -113,9 +113,9 @@ Zvažte, jak vývojářské nástroje a správy zdrojových kódů vám umožní
 
     ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image2.png)
 
-8.  Název: **podle vašeho výběru**
+8.  Název: **Podle vašeho výběru**
 
-9.  Úroveň veřejného přístupu: **kontejneru** (anonymní přístup pro čtení kontejnerům a objektům BLOB)
+9.  Úroveň veřejného přístupu: **Kontejner** (anonymní přístup pro čtení kontejnerům a objektům BLOB)
 
 10.  Vyberte **OK**.
 
@@ -168,7 +168,7 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
     ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image4.png)
 
-3.  Vyberte **C\#**  jako jazyk a název funkce: `upload-to-azure` nastavte plán `0 0 * * * *`, který v procesu CRON zápis je jednou za hodinu.
+3.  Vyberte **C\#**  jako jazyk a název funkce: `upload-to-azure`  Nastavte plán `0 0 * * * *`, který v procesu CRON zápis je jednou za hodinu.
 
     ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image5.png)
 

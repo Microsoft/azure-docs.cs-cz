@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: f5826b2a6935bb448a7a3ef94d9a5f27f1ed9426
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4f5558d17e2f290ed7255350f304ed2057a6d783
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214585"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247618"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -40,9 +40,9 @@ Tento článek popisuje obsah balíčku 1811 aktualizace. Balíček aktualizace 
 Azure Stack vydává opravy hotfix v pravidelných intervalech. Nezapomeňte nainstalovat [nejnovější opravy hotfix Azure Stack](#azure-stack-hotfixes) pro 1809 před aktualizací služby Azure Stack na 1811.
 
 > [!TIP]  
-> Předplatit následující *RRS* nebo *Atom* kanály, držet krok s Azure Stack opravy hotfix:
-> - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
-> - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
+> Předplatit následující *RSS* nebo *Atom* kanály, držet krok s Azure Stack opravy hotfix:
+> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### <a name="azure-stack-hotfixes"></a>Azure Stack opravy hotfix
 
@@ -162,7 +162,7 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
 
 - Přejmenování stávajících období rutina pro načtení klíče pro obnovení Bitlockeru v 1811 z Get-AzsCsvsRecoveryKeys do Get-AzsRecoveryKeys. Další informace o tom, jak načíst klíče pro obnovení Bitlockeru, naleznete v tématu [pokyny, jak k načtení klíčů](azure-stack-security-bitlocker.md).
 
-## <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures
+## <a name="common-vulnerabilities-and-exposures"></a>Běžnými ohroženími zabezpečení a rizika
 
 Tuto aktualizaci nainstaluje následující aktualizace:  
 
@@ -260,6 +260,8 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
 
    Pokud povolíte diagnostiku spouštění na virtuálním počítači, ale odstraníte účet úložiště diagnostiky spouštění dojde k chybě. Chcete-li tento problém obejít, znovu vytvořte účet úložiště se stejným názvem, jako jste použili dříve.
+
+- Při vytváření [virtuální počítače Dv2-series](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), D11-14v2 virtuálních počítačů vám umožňují vytvářet 4, 8, 16 a 32 datových disků v uvedeném pořadí. V podokně virtuální počítač vytvořit se však zobrazí 8, 16, 32 a 64 datových disků.
 
 <!-- 3235634 – IS, ASDK -->
 - K nasazení virtuálních počítačů s velikostí, který obsahuje **v2** přípony; například **Standard_A2_v2**, zadejte příponu jako **Standard_A2_v2** (malá písmena v). Nepoužívejte **Standard_A2_V2** (velká písmena V). To funguje v globální Azure a nekonzistence ve službě Azure Stack.

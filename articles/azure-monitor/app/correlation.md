@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/10/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: a6937b5b6b3b85dd51d80a928de02a00c361cc0e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8b31a85abf1c6034aaff511f23d96fae9ee64561
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117601"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230046"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -101,6 +101,43 @@ public void ConfigureServices(IServiceCollection services)
     // ....
 }
 ```
+
+#### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Povolit podporu W3C distribuované trasování pro aplikace v Javě
+
+Příchozí:
+
+**Aplikace J2EE** přidejte následující text do `<TelemetryModules>` značky uvnitř ApplicationInsights.xml
+
+```xml
+<Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule>
+   <Param name = "W3CEnabled" value ="true"/>
+   <Param name ="enableW3CBackCompat" value = "true" />
+</Add>
+```
+
+**Spring Boot aplikace** přidejte následující vlastnosti:
+
+`azure.application-insights.web.enable-W3C=true`
+`azure.application-insights.web.enable-W3C-backcompat-mode=true`
+
+Odchozí:
+
+Přidejte následující AI – Agent.xml:
+
+```xml
+<Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+        </BuiltIn>
+    </Instrumentation>
+```
+
+> [!NOTE]
+> Ve výchozím nastavení je povolený režim zpětná kompatibilita a enableW3CBackCompat parametr je nepovinný a by měla sloužit pouze v případě, že chcete vypnout. 
+
+To v ideálním případě by být případ, kdy všechny vaše služby byly aktualizovány na novější verzi sady SDK pro podporu protokolu W3C. Důrazně doporučujeme co nejdříve přejít na novější verzi sady SDK s podporou W3C. 
+
+Ujistěte se, že oba **příchozí a odchozí konfigurace jsou přesně stejné**.
 
 ## <a name="open-tracing-and-application-insights"></a>Otevřít trasování a Application Insights
 

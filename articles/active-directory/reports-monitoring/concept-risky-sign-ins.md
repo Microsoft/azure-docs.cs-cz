@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e4406a75ea1d9f1968d994ae2294b39ca7613d5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623855"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244711"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -85,12 +85,11 @@ Tato sestava také nabízí možnost:
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/93.png)
 
-
 ## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Sestavy rizikových přihlášení pro edice premium služby Azure AD
 
 Sestavy rizikových přihlášení v edicích premium služby Azure AD vám nabízí:
 
-- Agregované informace o [typech rizikových událostí](concept-risk-events.md), které byly zjištěné
+- Agregované informace o [typech rizikových událostí](concept-risk-events.md) , který byl zjištěn. S **edice Azure AD Premium P1**, detekce, které nejsou pokryty všemi licence se zobrazí jako rizikovou událost **přihlášení s dalšími riziky zjistil**. S **edice Azure AD Premium P2**, získáte nejpodrobnější informace o základní všechna nalezení.
 
 - Možnost stažení sestavy
 

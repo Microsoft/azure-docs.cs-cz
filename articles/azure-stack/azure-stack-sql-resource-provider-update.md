@@ -11,30 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: b39cc799218a4c6f865acac8b98f5fb977c83bdc
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.reviewer: jiahan
+ms.openlocfilehash: 00a7644663b4628d20dbe598def158bc120a7aee
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117788"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245447"
 ---
 # <a name="update-the-sql-resource-provider"></a>Aktualizace poskytovatele prostředků SQL
 
 *Platí pro: Integrované systémy Azure Stack.*
 
-Nového poskytovatele prostředků SQL může být uvolněna při aktualizaci služby Azure Stack pro nové sestavení. I když existující adaptéru i nadále fungovat, doporučujeme aktualizuje na nejnovější verzi co nejdřív.
+Nového poskytovatele prostředků SQL může být uvolněna při aktualizaci služby Azure Stack pro nové sestavení. I když stávajícího poskytovatele prostředků i nadále fungovat, doporučujeme aktualizuje na nejnovější verzi co nejdřív. 
 
-> [!IMPORTANT]
-> Je třeba nainstalovat aktualizace v pořadí, ve kterém jejich uvedení na trh. Verze nelze přeskočit. Přečtěte si seznam verzí v [nasazení požadavky na poskytovatele prostředků](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
-
-## <a name="overview"></a>Přehled
+Od verze verze 1.1.33.0 poskytovatele prostředků SQL, aktualizace jsou kumulativní a nemusí být nainstalován v pořadí, ve kterém byly vydány; tak dlouho, dokud jste od verze 1.1.24.0 nebo novější. Například pokud používáte verzi 1.1.24.0 poskytovatele prostředků SQL, pak můžete upgradovat na verzi 1.1.33.0 nebo později bez nutnosti nejprve nainstalujte verzi 1.1.30.0. Pokud chcete zkontrolovat verze zprostředkovatele dostupných prostředků a verze se podporují ve službě Azure Stack, najdete v seznamu verzí v [nasazení požadavky na poskytovatele prostředků](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 Chcete-li aktualizovat poskytovatele prostředků, použijte *UpdateSQLProvider.ps1* skriptu. Tento skript je součástí ke stažení nového poskytovatele prostředků SQL. Aktualizace proces je podobný procesu pro [nasazení poskytovatele prostředků](./azure-stack-sql-resource-provider-deploy.md). Skript aktualizace používá stejné argumenty jako skript DeploySqlProvider.ps1 a budete muset zadat informace o certifikátu.
 
-### <a name="update-script-processes"></a>Aktualizace skriptu procesy
+ > [!IMPORTANT]
+ > Před upgradem poskytovatele prostředků, přečtěte si poznámky k verzi pro další informace o nové funkce, opravy a známých problémech, které můžou ovlivnit nasazení.
+
+## <a name="update-script-processes"></a>Aktualizace skriptu procesy
 
 *UpdateSQLProvider.ps1* skript vytvoří nový virtuální počítač (VM) s nejnovějším kódem poskytovatele prostředků.
 
@@ -47,11 +47,26 @@ Po *UpdateSQLProvider.ps1* skript vytvoří nový virtuální počítač, skript
 * hostování informace o serveru
 * vyžaduje záznam DNS
 
-### <a name="update-script-powershell-example"></a>Aktualizovat ukázkový skript prostředí PowerShell
+## <a name="update-script-parameters"></a>Aktualizovat parametry skriptu
 
-Můžete upravit a spustit následující skript z se zvýšenými oprávněními ISE Powershellu. 
+Můžete zadat následující parametry z příkazového řádku při spuštění **UpdateSQLProvider.ps1** skript prostředí PowerShell. Pokud ne, nebo pokud libovolný parametr ověření nezdaří, budete vyzváni k poskytnutí požadovaných parametrů.
 
-Nezapomeňte změnit informace o účtu a hesla podle potřeby pro vaše prostředí.
+| Název parametru | Popis | Komentář nebo výchozí hodnotu |
+| --- | --- | --- |
+| **CloudAdminCredential** | Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegovaným koncový bod. | _Požadováno_ |
+| **AzCredential** | Přihlašovací údaje pro účet správce služby Azure Stack. Použijte stejné přihlašovací údaje, které jste použili k nasazení Azure Stack. | _Požadováno_ |
+| **VMLocalCredential** | Přihlašovací údaje pro účet místního správce poskytovatele prostředků SQL virtuálního počítače. | _Požadováno_ |
+| **PrivilegedEndpoint** | IP adresa nebo název DNS privileged koncového bodu. |  _Požadováno_ |
+| **AzureEnvironment** | Prostředí Azure účet správce služby, které jste použili k nasazení Azure Stack. Vyžaduje se jenom pro nasazení služby Azure AD. Názvy prostředí podporované jsou **AzureCloud**, **AzureUSGovernment**, nebo pokud používáte Čína Azure AD, **AzureChinaCloud**. | AzureCloud |
+| **DependencyFilesLocalPath** | Také je nutné umístit váš soubor PFX certifikátu v tomto adresáři. | _Volitelné pro jeden uzel, ale povinné pro více uzly_ |
+| **DefaultSSLCertificatePassword** | Heslo pro certifikát PFX. | _Požadováno_ |
+| **MaxRetryCount** | Počet pokusů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 |
+| **RetryDuration** |Časový interval mezi opakovanými pokusy, během několika sekund. | 120 |
+| **Odinstalace** | Odebere poskytovatele prostředků a všechny související prostředky. | Ne |
+| **Režim DebugMode** | Zabraňuje automatickému čištění při selhání. | Ne |
+
+## <a name="update-script-powershell-example"></a>Aktualizovat ukázkový skript prostředí PowerShell
+Následuje příklad použití *UpdateSQLProvider.ps1* skript, který můžete spustit z konzole Powershellu se zvýšenými oprávněními. Nezapomeňte změnit informace o proměnných a hesla podle potřeby:  
 
 > [!NOTE]
 > Tento proces aktualizace platí jenom pro integrované systémy Azure Stack.
@@ -101,24 +116,6 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -DependencyFilesLocalPath $tempDir\cert `
 
  ```
-
-## <a name="updatesqlproviderps1-parameters"></a>Parametry UpdateSQLProvider.ps1
-
-Při spuštění skriptu můžete zadat následující parametry z příkazového řádku. Pokud ne, nebo pokud libovolný parametr ověření nezdaří, budete vyzváni k poskytnutí požadovaných parametrů.
-
-| Název parametru | Popis | Komentář nebo výchozí hodnotu |
-| --- | --- | --- |
-| **CloudAdminCredential** | Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegovaným koncový bod. | _Požadováno_ |
-| **AzCredential** | Přihlašovací údaje pro účet správce služby Azure Stack. Použijte stejné přihlašovací údaje, které jste použili k nasazení Azure Stack. | _Požadováno_ |
-| **VMLocalCredential** | Přihlašovací údaje pro účet místního správce poskytovatele prostředků SQL virtuálního počítače. | _Požadováno_ |
-| **PrivilegedEndpoint** | IP adresa nebo název DNS privileged koncového bodu. |  _Požadováno_ |
-| **AzureEnvironment** | Prostředí Azure účet správce služby, které jste použili k nasazení Azure Stack. Vyžaduje se jenom pro nasazení služby Azure AD. Názvy prostředí podporované jsou **AzureCloud**, **AzureUSGovernment**, nebo pokud používáte Čína Azure AD, **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | Také je nutné umístit váš soubor PFX certifikátu v tomto adresáři. | _Volitelné pro jeden uzel, ale povinné pro více uzly_ |
-| **DefaultSSLCertificatePassword** | Heslo pro certifikát PFX. | _Požadováno_ |
-| **MaxRetryCount** | Počet pokusů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 |
-| **RetryDuration** |Časový interval mezi opakovanými pokusy, během několika sekund. | 120 |
-| **Odinstalace** | Odebere poskytovatele prostředků a všechny související prostředky. | Ne |
-| **Režim DebugMode** | Zabraňuje automatickému čištění při selhání. | Ne |
 
 ## <a name="next-steps"></a>Další postup
 

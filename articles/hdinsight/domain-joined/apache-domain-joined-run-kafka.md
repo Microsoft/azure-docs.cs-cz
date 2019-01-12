@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 753be2b1738e57d5dcef033f8e51043c7ab37eb2
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438604"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247414"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Nakonfigurovat zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package (Preview)
 
@@ -50,7 +50,7 @@ V tomto kurzu se naučíte:
 
 V tématu [vytvoření clusteru HDInsight s balíčkem zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-domain-joined-hdinsight-cluster) se naučíte vytvořit uživatele domény **sales_user** a **marketing_user**. V produkční scénáři uživatelé domény pocházejí z vašeho klienta služby Active Directory.
 
-## <a name="create-ranger-policy"></a>Vytvoření zásady Ranger 
+## <a name="create-ranger-policy"></a>Vytvoření zásady Ranger
 
 Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
@@ -74,7 +74,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
    ![Zásada vytvoření uživatelského rozhraní správce Apache Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE]   
+   >[!NOTE]
    >Pokud uživatel domény v části **Select User** (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
 
 4. Kliknutím na **Přidat** uložte zásadu.
@@ -94,17 +94,15 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Vytvoření témat v clusteru Kafka pomocí ESP
 
-Abyste vytvořili dvě témata **salesevents** a **marketingspend**:
+K vytvoření dvou tématech `salesevents` a `marketingspend`:
 
 1. Navažte připojení SSH ke clusteru použitím následujícího příkazu:
 
    ```bash
-   ssh SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net
+   ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Místo `SSHUSER` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH. Další informace o použití `scp` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix).
-
-   V produkčním scénáři mohou uživatelé domény nakonfigurovaní během vytváření clusteru získat přístup do clusteru přes SSH.
+   Nahraďte `DOMAINADMIN` s uživatele s rolí správce pro cluster nakonfigurovaná v průběhu [vytvoření clusteru](https://docs.microsoft.com/en-us/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-hdinsight-cluster-with-esp)a nahraďte `CLUSTERNAME` s názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte heslo pro uživatelský účet správce. Další informace o použití `SSH` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix).
 
 2. Pomocí následujících příkazů uložte název clusteru do proměnné a nainstalujte nástroj pro parsování JSON `jq`. Po zobrazení výzvy zadejte název clusteru Kafka.
 
@@ -113,14 +111,15 @@ Abyste vytvořili dvě témata **salesevents** a **marketingspend**:
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. Chcete-li získat zprostředkovatele Kafka, hostitele a hostitele Apache Zookeeper použijte následující příkazy. Po zobrazení výzvy zadejte heslo účtu správce clusteru.
+3. Chcete-li získat hostiteli zprostředkovatele Kafka použijte následující příkazy. Po zobrazení výzvy zadejte heslo účtu správce clusteru.
 
    ```bash
-   export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]  
-> Než budete pokračovat, možná budete muset nastavit své vývojové prostředí, pokud jste to ještě neudělali. Budete potřebovat komponenty, jako jsou sada Java JDK, Apache Maven a klient SSH s scp. Další podrobnosti najdete v těchto [pokynech k instalaci](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+
+   > [!Note]  
+   > Než budete pokračovat, možná budete muset nastavit své vývojové prostředí, pokud jste to ještě neudělali. Budete potřebovat komponenty, jako jsou sada Java JDK, Apache Maven a klient SSH s scp. Další podrobnosti najdete v tématu [instalační pokyny](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+   
 1. Stáhněte si [příklady pro producenta a konzumenta Apache Kafka připojené k doméně](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
 1. Postupujte podle kroků 2 a 3 v části **sestavovat a nasazovat v příkladu** v [kurzu: Použití Apache Kafka Producer and Consumer API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)
@@ -132,13 +131,9 @@ Abyste vytvořili dvě témata **salesevents** a **marketingspend**:
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE]   
-   >Pouze vlastník procesu služby Kafka, jako je například root, může zapisovat do z-uzlů Zookeeperu `/config/topics`. Zásady Ranger nejsou vynucovány, pokud uživatel bez oprávnění vytvoří téma. Je to proto, že skript `kafka-topics.sh` při tvorbě tématu komunikuje přímo s Zookeeperem. Položky jsou přidány do uzlů Zookeeperu, zatímco sledovací procesy na straně zprostředkovatele monitorují a tvoří témata odpovídajícím způsobem. Autorizaci není možné provést pomocí plug-inu Ranger a výše uvedený příkaz je spuštěn pomocí `sudo` prostřednictvím zprostředkovatele Kafka.
-
-
 ## <a name="test-the-ranger-policies"></a>Testování zásad Ranger
 
-Na základě nakonfigurovaných zásad Ranger, mohou uživatelé **sales_user** tvořit nebo využívat téma **salesevents**, ale ne téma **marketingspend**. Naopak uživatel **marketing_user** může tvořit nebo využívat téma **marketingspend**, ale ne téma **salesevents**.
+Na základě zásad Ranger nakonfigurovaná, **sales_user** produktu/využívají tématu `salesevents` , ale ne tématu `marketingspend`. Naopak **marketing_user** produktu/využívají tématu `marketingspend` , ale ne tématu `salesevents`.
 
 1. Otevřete nové připojení SSH ke clusteru. Pomocí následujícího příkazu se přihlaste jako uživatel **sales_user1**:
 
@@ -152,59 +147,51 @@ Na základě nakonfigurovaných zásad Ranger, mohou uživatelé **sales_user** 
    export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
    ```
 
-3. Pomocí názvů zprostředkovatele a Zookeepera z předchozí části nastavte následující proměnné prostředí:
+3. Nastavte následující proměnné prostředí pomocí názvů zprostředkovatele v předchozí části:
 
    ```bash
-   export KAFKABROKERS=<brokerlist>:9092 
+   export KAFKABROKERS=<brokerlist>:9092
    ```
 
    Příklad: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
+4. Postupujte podle kroku 3 v části **sestavovat a nasazovat v příkladu** v [kurzu: Použití Apache Kafka Producer and Consumer API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) zajistit, aby `kafka-producer-consumer.jar` dostupná je i **sales_user**.
+
+5. Ověřte, že **sales_user1** může vytvořit téma `salesevents` spuštěním následujícího příkazu:
+
    ```bash
-   export KAFKAZKHOSTS=<zklist>:2181
+   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-   Příklad: `export KAFKAZKHOSTS=zk1-khdicl.contoso.com:2181,zk2-khdicl.contoso.com:2181`
-
-4. Ověřte, že **sales_user1** může tvořit v tématu **salesevents**.
-   
-   Spuštěním následujícího příkazu spusťte využití konzoly pro téma **salesevents**:
+6. Spusťte následující příkaz k využívání z tématu `salesevents`:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic salesevents --security-protocol SASL_PLAINTEXT
+   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
-   Poté zadejte několik zpráv v konzole. Stisknutím kláves **Ctrl + C** ukončíte konzoly výrobce.
+   Ověřte, že můžete ke čtení zpráv.
 
-5. Spuštěním následujícího příkazu umožníte využívání tématu **salesevents**:
-
-   ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic salesevents --security-protocol PLAINTEXTSASL --from-beginning
-   ```
- 
-6. Ověřte, že se zobrazují zprávy, které jste zadali v předchozím kroku, a že **sales_user1** nesmí tvořit v tématu **marketingspend**.
-
-   Ze stejného okna SSH jako dříve spusťte následující příkaz, kterým je možné tvořit v tématu **marketingspend**:
+7. Ověřte, že **sales_user1** nesmí vytvořit téma `marketingspend` spuštěním následujícího ve stejném ssh okno:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic marketingspend --security-protocol SASL_PLAINTEXT
+   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
-   Dojde k chybě autorizace, kterou můžete ignorovat. 
+   Dojde k chybě autorizace, kterou můžete ignorovat.
 
-7. Všimněte si, že **marketing_user1** nemůže využívat téma **salesevents**.
+8. Všimněte si, že **marketing_user1** moci spotřebovat z tématu `salesevents`.
 
-   Zopakujte kroky 1 až 3 výše, ale tentokrát jako **marketing_user1**.
+   Opakujte kroky 1 – 4 výše, ale tentokrát jako **marketing_user1**.
 
-   Spuštěním následujícího příkazu umožníte využívání tématu **salesevents**:
+   Spusťte následující příkaz k využívání z tématu `salesevents`:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic marketingspend --security-protocol PLAINTEXTSASL --from-beginning
+   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    Předchozí zprávy nejsou zobrazeny.
 
-8. Zobrazte události přístupu k auditu v uživatelském rozhraní Ranger.
+9. Zobrazte události přístupu k auditu v uživatelském rozhraní Ranger.
 
    ![Audit zásad uživatelského rozhraní Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 

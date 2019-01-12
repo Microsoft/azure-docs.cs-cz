@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ff068ff5aa4401a80f2220df79fdac93db21cfb3
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982993"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232868"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Přidat další škálovací jednotku uzly ve službě Azure Stack
 
@@ -105,6 +105,7 @@ Stav jednotky škálování a škálovací jednotku uzly se dá načíst pomocí
 
 ### <a name="status-for-the-add-node-operation"></a>Stav uzlu operace přidání 
 **Pro jednotku škálování:**
+
 |Status               |Popis  |
 |---------------------|---------|
 |Spuštěno              |Všechny uzly jsou aktivně účasti v jednotce škálování.|
@@ -115,6 +116,7 @@ Stav jednotky škálování a škálovací jednotku uzly se dá načíst pomocí
 
 
 **Pro uzel jednotky škálování:**
+
 |Status                |Popis  |
 |----------------------|---------|
 |Spuštěno               |Uzel je aktivně účasti v jednotce škálování.|
@@ -128,17 +130,17 @@ Stav jednotky škálování a škálovací jednotku uzly se dá načíst pomocí
 ## <a name="troubleshooting"></a>Řešení potíží
 Tady jsou běžné problémy, kterým dochází při přidávání uzlu. 
 
-**Scénář 1:** selže operace uzel jednotky škálování přidat, ale jeden nebo více uzlů, které jsou uvedeny ve stavu Zastaveno.  
-- Náprava: Použití operace opravy opravit jeden nebo více uzlů. Najednou lze spustit pouze jeden opravnou operaci.
+**Scénář 1:**  Přidat škálovací jednotku uzel nezdaří, ale jeden nebo více uzlů, které jsou uvedeny ve stavu Zastaveno.  
+- Náprava: Pomocí operace opravy opravit jeden nebo více uzlů. Najednou lze spustit pouze jeden opravnou operaci.
 
-**Scénář 2:** byly přidány jeden nebo více uzlů jednotek škálování, ale rozšíření úložiště se nezdařilo. V tomto scénáři objekt škálovací jednotky uzel hlásí stav spuštění, ale není spuštěna úloha konfigurace úložiště.  
+**Scénář 2:** Byly přidány jeden nebo více uzlů jednotek škálování, ale rozšíření úložiště se nezdařilo. V tomto scénáři objekt škálovací jednotky uzel hlásí stav spuštění, ale není spuštěna úloha konfigurace úložiště.  
 - Náprava: Použijte privilegovaný koncový bod Pokud chcete zkontrolovat stav úložiště spuštěním následující rutiny Powershellu:
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
  
-**Scénář 3:** obdržíte výstrahu, která označuje neúspěšná úloha horizontální navýšení kapacity úložiště.  
-- Náprava: V tomto případě plánovaného úložiště se nezdařilo. Tento problém, musíte se obrátit na podporu.
+**Scénář 3:** Obdrželi jste výstrahu, která označuje neúspěšná úloha horizontální navýšení kapacity úložiště.  
+- Náprava: Úloha konfigurace úložiště v tomto případě se nezdařila. Tento problém, musíte se obrátit na podporu.
 
 
 ## <a name="next-steps"></a>Další postup 

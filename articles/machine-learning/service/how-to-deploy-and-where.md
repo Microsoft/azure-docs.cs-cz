@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b656a82bab9be6f6c24ba0d418df9142a6a6c117
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2c71b0abd5069aeb00b63fde8b76e5bb0fc0beda
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199761"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246428"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -410,3 +410,4 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)
 * [Jak spustit predikcí služby batch](how-to-run-batch-predictions.md)
+* [Použití služby Azure Machine Learning s Azure Virtual Network](how-to-enable-virtual-network.md)

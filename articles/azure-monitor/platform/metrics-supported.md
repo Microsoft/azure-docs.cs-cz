@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02678738c225742db1795a2e168b6eac1320aead
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549628"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232885"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -65,7 +65,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ProcessingPoolIdleIOJobThreads|Vlákna: Nečinná vlákna úloh vstupně-výstupní operace fondu zpracování|Počet|Průměr|Počet nečinných vláken pro vstupně-výstupní úlohy do fondu vláken zpracování.|ServerResourceType|
 |ProcessingPoolIdleNonIOThreads|Vlákna: Nečinná vlákna jiných vstupně-fondu zpracování|Počet|Průměr|Počet nečinných vláken ve fondu vláken zpracování vyhrazeném pro úlohy bez vstupně.|ServerResourceType|
 |QueryPoolIdleThreads|Vlákna: Nečinná vlákna fondu dotazů|Počet|Průměr|Počet nečinných vláken pro vstupně-výstupní úlohy do fondu vláken zpracování.|ServerResourceType|
-|QueryPoolJobQueueLength|Vlákna: Élka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů.|ServerResourceType|
+|QueryPoolJobQueueLength|Vlákna: Délka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů.|ServerResourceType|
 |ShortParsingBusyThreads|Vlákna: Zaneprázdněná vlákna krátkého parsování|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken krátkého parsování.|ServerResourceType|
 |ShortParsingIdleThreads|Vlákna: Nečinná vlákna krátkého parsování|Počet|Průměr|Počet nečinných vláken ve fondu vláken krátkého parsování.|ServerResourceType|
 |ShortParsingJobQueueLength|Vlákna: Krátkého parsování délka fronty úloh|Počet|Průměr|Počet úloh ve frontě fondu vláken krátkého parsování.|ServerResourceType|
@@ -121,10 +121,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |PoolDeleteCompleteEvent|Události dokončení odstranění fondu|Počet|Celkem|Celkový počet odstranění fondu, které byly dokončeny|Žádné dimenze|
 |JobDeleteCompleteEvent|Události dokončení odstranění úlohy|Počet|Celkem|Celkový počet úloh, které byly úspěšně odstraněny.|Žádné dimenze|
 |JobDeleteStartEvent|Události spuštění odstranění úlohy|Počet|Celkem|Celkový počet úloh, které bylo vyžádáno odstranit.|Žádné dimenze|
-|JobDisableCompleteEvent|Události dokončení úlohy zakázat|Počet|Celkem|Celkový počet úloh, které byly úspěšně zakázán.|Žádné dimenze|
+|JobDisableCompleteEvent|Události dokončení úlohy zakázat|Počet|Celkem|Celkový počet úloh, které bylo úspěšně zakázáno.|Žádné dimenze|
 |JobDisableStartEvent|Úlohy zakázat zahájení události|Počet|Celkem|Celkový počet úloh, které bylo vyžádáno deaktivuje.|Žádné dimenze|
-|JobStartEvent|Události spuštění úlohy|Počet|Celkem|Celkový počet úloh, které byly úspěšně spuštěna.|Žádné dimenze|
-|JobTerminateCompleteEvent|Úloha ukončení dokončení události|Počet|Celkem|Celkový počet úloh, které byly úspěšně ukončen.|Žádné dimenze|
+|JobStartEvent|Události spuštění úlohy|Počet|Celkem|Celkový počet úloh, které byla úspěšně spuštěna.|Žádné dimenze|
+|JobTerminateCompleteEvent|Úloha ukončení dokončení události|Počet|Celkem|Celkový počet úloh, které se úspěšně ukončily.|Žádné dimenze|
 |JobTerminateStartEvent|Úloha ukončení zahájení události|Počet|Celkem|Celkový počet úloh, které bylo vyžádáno ukončení.|Žádné dimenze|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
@@ -816,7 +816,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ClusterDataCapacityFactor|Využití mezipaměti|Procento|Průměr|Úroveň využití v rámci clusteru|Žádné dimenze|
 |QueryDuration|Doba trvání dotazu|Milisekundy|Průměr|Dotazy doba trvání v sekundách|QueryStatus|
 |IngestionsLoadFactor|Ingestování využití|Procento|Průměr|Poměr používané ingestování sloty v clusteru|Žádné dimenze|
-|IsEngineAnsweringQuery|Zachování|Počet|Průměr|Kontrola správnosti označuje respondes clusteru do dotazů|Žádné dimenze|
+|IsEngineAnsweringQuery|Zachování|Počet|Průměr|Kontrola správnosti označuje, že cluster odpoví na dotazy|Žádné dimenze|
 |IngestCommandOriginalSizeInMb|Ingestování svazek (v MB)|Počet|Celkem|Celkový objem přijatých dat do clusteru (v MB)|Žádné dimenze|
 |EventAgeSeconds|Latence příjmu dat (v sekundách)|Sekundy|Průměr|Ingestování čas ze zdroje (například je zpráva EventHub) do clusteru během několika sekund|Žádné dimenze|
 |EventReceivedFromEventHub|Události byly zpracovány (pro službu Event Hubs)|Počet|Celkem|Počet události byly zpracovány v clusteru při ingestování z centra událostí|Žádné dimenze|

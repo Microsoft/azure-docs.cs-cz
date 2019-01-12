@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4cbbc482a05e125f92efd98b0824ec38ae1ddefd
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077959"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244692"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -81,7 +81,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 > [!IMPORTANT]  
 > Pokud máte bránu firewall, která neumožňuje připojení z veřejné sítě VIP k souborovému serveru, tato změna způsobí, že infrastruktura zálohování se nezdaří s "Chyba 53 cesta sítě nebyla nalezena." Toto je zásadní změnu, která nemá žádné rozumné řešení. Microsoft se na základě názorů zákazníků, vrátí tuto změnu v opravu hotfix. Podívejte se prosím [publikovat aktualizace krokům](#post-update-steps) pro další informace o dostupných oprav hotfix pro 1809. Jakmile je k dispozici oprava hotfix, nezapomeňte použít po aktualizaci na 1809 pouze v případě, že vaše zásady sítě neumožňují veřejnou síť virtuálních IP adres pro přístup k prostředků infrastruktury. v 1811 tato změna uplatní na všech systémech. Pokud jste použili v 1809 opravy hotfix, není vyžadována žádná další akce.  
 
-### <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures
+### <a name="common-vulnerabilities-and-exposures"></a>Běžnými ohroženími zabezpečení a rizika
 
 Tuto aktualizaci nainstaluje následující aktualizace:  
 
@@ -251,6 +251,8 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Operátory Azure stacku, pokud se zobrazí upozornění na nedostatek paměti a virtuální počítače klientů selhání nasazení **Chyba při vytváření virtuálních počítačů Fabric**, je možné, že toto razítko Azure Stack je nedostatek dostupné paměti. Použití [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) nejlépe pochopit dostupné kapacity pro vaše úlohy.
 
 ### <a name="compute"></a>Compute
+
+- Při vytváření [virtuální počítače Dv2-series](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), D11-14v2 virtuálních počítačů vám umožňují vytvářet 4, 8, 16 a 32 datových disků v uvedeném pořadí. V podokně virtuální počítač vytvořit se však zobrazí 8, 16, 32 a 64 datových disků.
 
 <!-- 3235634 – IS, ASDK -->
 - K nasazení virtuálních počítačů s velikostí, který obsahuje **v2** přípony; například **Standard_A2_v2**, zadejte příponu jako **Standard_A2_v2** (malá písmena v). Nepoužívejte **Standard_A2_V2** (velká písmena V). To funguje v globální Azure a nekonzistence ve službě Azure Stack.

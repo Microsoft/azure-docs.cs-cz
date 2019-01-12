@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 140e45270cf29eec48df260efa29b8aacac2d855
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cb8964bdbdfe575630f6e65a79d53aac76a76d45
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580463"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232103"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Analyzování videí v reálném čase
 Tato příručka ukazuje, jak provádět analýzu snímků z živého video streamu v téměř reálném čase. Takový systém funguje následovně:
@@ -194,15 +194,9 @@ Pokud chcete s touto ukázkou začít, postupujte takto:
     - U aplikace LiveCameraSample se klíče zadávají do panelu s nastavením aplikace. Uloží se pro následné relace jako uživatelská data.
         
 
-Až budete připravení integrovat, **jednoduše odkažte na knihovnu VideoFrameAnalyzer ze svých vlastních projektů**. 
+Až budete připravení integrovat, **stačí do vlastních projektů přidat odkaz na knihovnu VideoFrameAnalyzer**. 
 
-
-
-## <a name="developer-code-of-conduct"></a>Pravidla chování vývojáře
-Jako u všech kognitivních služeb musí vývojáři, kteří k vývoji používají naše rozhraní API a ukázky, dodržovat [pravidla chování vývojářů pro Microsoft Cognitive Services](https://azure.microsoft.com/support/legal/developer-code-of-conduct/). 
-
-
-Funkce knihovny VideoFrameAnalyzer pro rozpoznávání obrazu, hlasu, videa nebo textu využívají službu Azure Cognitive Services. Microsoft bude přijímat obrázky, zvuk, video a další data, která (přes tuto aplikaci) nahrajete, a může je používat pro účely vylepšování služeb. Žádáme vás o pomoc při ochraně uživatelů, jejichž data vaše aplikace odesílá do služeb Azure Cognitive Services. 
+Funkce knihovny VideoFrameAnalyzer pro rozpoznávání obrazu, hlasu, videa nebo textu využívají služby Azure Cognitive Services. Microsoft bude přijímat obrázky, zvuk, video a další data, která (přes tuto aplikaci) nahrajete, a může je používat pro účely vylepšování služeb. Žádáme vás o pomoc při ochraně uživatelů, jejichž data vaše aplikace odesílá do služeb Azure Cognitive Services. 
 
 
 ## <a name="summary"></a>Souhrn

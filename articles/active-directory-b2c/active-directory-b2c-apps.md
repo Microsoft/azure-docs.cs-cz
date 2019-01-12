@@ -7,21 +7,21 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/11/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5d90e9440758f457aca591e5c2792c6670868685
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721965"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245476"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
 Azure Active Directory (Azure AD) B2C podporuje ověřování pro celou řadu architektur moderních aplikací. Všechny jsou založeny na standardních oborových protokolech [OAuth 2.0](active-directory-b2c-reference-protocols.md) nebo [OpenID Connect](active-directory-b2c-reference-protocols.md). Tento dokument popisuje typy aplikací, které můžete sestavit, nezávisle na jazyk nebo platformu dáváte přednost. Také pomáhá pochopit scénáře vysoké úrovně, než začnete sestavovat aplikace.
 
-Každá aplikace, která používá Azure AD B2C musí být zaregistrovaný ve vaší [tenanta Azure AD B2C](active-directory-b2c-get-started.md) pomocí [webu Azure Portal](https://portal.azure.com/). Proces registrace aplikace shromáždí a přiřadí hodnoty, jako například:
+Každá aplikace, která používá Azure AD B2C musí být zaregistrovaný ve vaší [tenanta Azure AD B2C](active-directory-b2c-get-started.md) pomocí [webu Azure portal](https://portal.azure.com/). Proces registrace aplikace shromáždí a přiřadí hodnoty, jako například:
 
 * **ID aplikace** , který jednoznačně identifikuje vaši aplikaci.
 * A **adresy URL odpovědi** , který lze použít k cílení odpovědí zpět do vaší aplikace.
@@ -41,7 +41,7 @@ Tyto kroky může mírně lišit v závislosti na typu aplikace, kterou vytvář
 
 ## <a name="web-applications"></a>Webové aplikace
 
-U webových aplikací (včetně .NET, PHP, Java, Ruby, Python a Node.js), které jsou hostované na serveru a přístupných prostřednictvím prohlížeče Azure AD B2C podporuje [OpenID Connect](active-directory-b2c-reference-protocols.md) pro všechny uživatelské prostředí. To zahrnuje přihlášení, registraci a správu profilů. Webové aplikace v Azure AD B2C implementaci OpenID Connect, inicializuje tyto uživatelské prostředí pomocí žádosti o ověření do služby Azure AD. Výsledkem požadavku je `id_token`. Tento token zabezpečení představuje identitu uživatele. Poskytuje také informace o uživateli ve formě deklarací identity:
+U webových aplikací (včetně .NET, PHP, Java, Ruby, Python a Node.js), které jsou hostované na serveru a přístupných prostřednictvím prohlížeče Azure AD B2C podporuje [OpenID Connect](active-directory-b2c-reference-protocols.md) pro všechny uživatelské prostředí. Webové aplikace v Azure AD B2C implementaci OpenID Connect, inicializuje uživatelského prostředí pomocí žádosti o ověření do služby Azure AD. Výsledkem požadavku je `id_token`. Tento token zabezpečení představuje identitu uživatele. Poskytuje také informace o uživateli ve formě deklarací identity:
 
 ```
 // Partial raw id_token
@@ -68,7 +68,7 @@ Ve webové aplikaci se každé spuštění [zásady](active-directory-b2c-refere
 6. `id_token` Je ověřen a nastavení souboru cookie relace.
 7. Zabezpečenou stránku se vrátí uživateli.
 
-Ověření `id_token` pomocí veřejného podpisového klíče přijatého z Azure AD je dostačující k ověření identity uživatele. Zároveň se nastaví soubor cookie relace, který lze použít k identifikaci uživatele pro požadavky na dalších stránkách.
+Ověření `id_token` pomocí veřejného podpisového klíče přijatého z Azure AD je dostačující k ověření identity uživatele. Tento proces také nastaví soubor cookie relace, který slouží k identifikaci uživatele požadavky na dalších stránkách.
 
 Pokud chcete zobrazit tento scénář v akci, zkuste použít jeden z ukázek kódu přihlášení webové aplikace v našem [oddílu Začínáme](active-directory-b2c-overview.md).
 
@@ -124,58 +124,18 @@ Pokud chcete nastavit tok přihlašovacích údajů klienta, přečtěte si [tok
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Řetězení webových rozhraní API (tok on-behalf-of)
 
-Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat podřízené webové rozhraní API, přičemž obě jsou zabezpečené pomocí Azure AD B2C. Tento scénář je častý u nativních klientů s back-endem v podobě webového rozhraní API. To poté zavolá online službu Microsoftu, jako je například Azure AD Graph API.
+Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat podřízené webové rozhraní API, přičemž obě jsou zabezpečené pomocí Azure AD B2C. Tento scénář je častý u nativních klientů, které mají back endem webového rozhraní API a zavolá online službu Microsoftu, jako je například Azure AD Graph API.
 
 Tento scénář zřetězených webových rozhraní API může být podporován pomocí udělení přihlašovacích údajů nosiče OAuth 2.0 JWT, označovaného také jako tok on-behalf-of.  Nicméně tok on-behalf-of není v současné době v Azure AD B2C implementován.
 
-### <a name="reply-url-values"></a>Hodnoty adresy URL odpovědi
-
-Aktuálně je u aplikací zaregistrovaných pomocí Azure AD B2C omezená sada hodnot adresy URL odpovědi. Adresa URL odpovědi pro webové aplikace a služby musí začínat schématem `https` a všechny adresy URL odpovědi musí sdílet jednu doménu DNS. Například nemůžete zaregistrovat webovou aplikaci s některou z těchto adres URL odpovědi:
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-Registrační systém porovnává celý název DNS stávající adresy URL odpovědi s názvem DNS adresy URL odpovědi, kterou přidáváte. Požadavek na přidání názvu DNS selže, pokud platí některá z následujících podmínek:
-
-- Celý název DNS nové adresy URL odpovědi neodpovídá názvu DNS stávající adresy URL odpovědi.
-- Celý název DNS nové adresy URL odpovědi není subdoménou stávající adresy URL odpovědi.
-
-Pokud má aplikace například tuto adresu URL odpovědi:
-
-`https://login.contoso.com`
-
-Můžete ji přidat tímto způsobem:
-
-`https://login.contoso.com/new`
-
-V tomto případě se název DNS přesně shoduje. Nebo můžete provést toto:
-
-`https://new.login.contoso.com`
-
-V tomto případě odkazujete na subdoménu DNS login.contoso.com. Pokud chcete mít aplikaci s adresami URL odpovědi login-east.contoso.com a login-west.contoso.com, musíte tyto adresy URL odpovědi přidat v následujícím pořadí:
-
-`https://contoso.com`
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-Druhé dvě adresy URL odpovědi můžete přidat, protože jsou subdoménami první adresy URL odpovědi contoso.com. 
-
-Při vytváření mobilní/nativní aplikace, můžete definovat **identifikátor URI pro přesměrování** místo **opětovného přehrání URL**. Existují dva důležité aspekty při výběru identifikátor URI přesměrování:
-
-- **Jedinečnost:** Schéma identifikátoru URI přesměrování by mělo být pro každou aplikaci jedinečné. V příkladu `com.onmicrosoft.contoso.appname://redirect/path`, `com.onmicrosoft.contoso.appname` schéma com.onmicrosoft.contoso.appname. Tento model má následovat. Pokud dvě aplikace sdílejí stejné schéma, uživateli se zobrazí **zvolte aplikaci,** dialogového okna. Pokud uživatel použije nesprávnou volbu, přihlášení se nezdaří.
-- **Úplnost:** Identifikátor URI přesměrování musí mít schéma a cestu. Cesta musí obsahovat za doménou alespoň jedno lomítko. Například `//contoso/` funguje a `//contoso` selže. Ujistěte se, že nejsou žádné speciální znaky jako podtržítka identifikátor URI pro přesměrování.
-
 ### <a name="faulted-apps"></a>Chybné aplikace
 
-Aplikace Azure AD B2C se nesmí upravovat:
+Neprovádět úpravy aplikace Azure AD B2C následujícími způsoby:
 
 - Na jiných portálech pro správu aplikací, jako [portál pro registraci aplikací](https://apps.dev.microsoft.com/).
 - Pomocí rozhraní Graph API nebo Powershellu.
 
-Pokud upravíte aplikace Azure AD B2C mimo na webu Azure portal, stane se chybnou aplikací a už není použitelná s Azure AD B2C. Je nutné aplikaci odstranit a znovu ji vytvořit.
+Pokud upravíte aplikace Azure AD B2C mimo na webu Azure portal, stane se chybnou aplikací a už není použitelná s Azure AD B2C. Aplikaci odstranit a znovu ji vytvořit.
 
 Pokud chcete aplikaci odstranit, přejděte na [portál pro registraci aplikací](https://apps.dev.microsoft.com/) a tam ji odstraňte. Aby byla aplikace viditelná, musíte být vlastníkem aplikace (nestačí být pouze správcem tenanta).
 

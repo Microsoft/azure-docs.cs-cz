@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 26c0353bddb9455b1bda8961f3c05e0f6c7cc176
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e5b2d8d46066a849e01b479867c4287f0da5ee5b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647710"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245221"
 documentType: LandingData
 title: Dokumentace ke službě partnera Azure Stack
 metadata:
@@ -20,7 +20,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/25/2018
   ms.author: mabrigg
-  ms.reviewer: John.Haskin
+  ms.reviewer: johnhas
 abstract:
   description: Ověření slouží jako službu k zkontrolujte, jestli váš hardware pro použití se službou Azure Stack. Služba je nativní Azure služba určená pro použití řešení partnerů, kteří jsou společně technické nabídek Azure Stack s Microsoftem.
 sections:

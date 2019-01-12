@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 88904b27e114c27dc7b1051c755d3c831c90554f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286686"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232461"
 ---
 # <a name="about-v20"></a>Informace o v2.0
 
@@ -30,13 +30,13 @@ Koncový bod a platforma v2.0 je k dispozici ve verzi Preview a průběžně se 
 > [!NOTE]
 > Funkce knihoven MSAL pro Android, iOS a .NET se zatím stále vyvíjejí. Můžete je vyzkoušet při vytváření aplikací a poslat nám svoje připomínky a názory.
 
-Prostředí webu Azure Portal pro vývojáře se výrazně aktualizovalo, aby zahrnovalo veškeré vaše aplikace vytvořené prostřednictvím knihoven ADAL nebo MSAL a aby nabízelo možnosti pro širší použitelnost.
+Na webu Azure portal [registrace aplikací (preview)](quickstart-register-app.md) prostředí výrazně aktualizovali jsme teď obsahuje všechny aplikace vytvořené pomocí knihovny ADAL nebo MSAL a použitelnosti.
 
 Vývojáři aplikací, kteří chtěli v minulosti ze služby Azure Active Directory (Azure AD) podporovat osobní i pracovní účty Microsoft, museli integrovat řešení v rámci dvou samostatných systémů. Koncový bod a platforma v2.0 přináší verzi rozhraní API pro ověřování, která tento proces zjednodušuje. Umožňuje přihlášení přes oba typy účtů, přičemž se integruje v rámci jediného systému. Aplikace s podporou koncového bodu v2.0 zároveň můžou využívat rozhraní REST API přes rozhraní [Microsoft Graph API](https://developer.microsoft.com/graph) prostřednictvím obou typů účtu.
 
 ## <a name="getting-started"></a>Začínáme
 
-V následujícím seznamu zvolte svoji oblíbenou platformu pro vytvoření aplikace pomocí knihoven a architektury Microsoft Open Source. Zároveň můžete pomocí protokolů OAuth 2.0 a OpenID Connect přímo (bez použití knihovny ověřování) odesílat a přijímat zprávy protokolu.
+Zvolte vaši oblíbenou platformu z následujícího seznamu k sestavení aplikace s použitím Microsoft otevřete source knihoven a architektur:
 
 [!INCLUDE [v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
 
@@ -46,14 +46,12 @@ Zjistěte, jaké možnosti nabízí koncový bod služby Azure AD v2.0:
 
 * Podívejte se na [typy aplikací, které můžete pomocí koncového bodu služby Azure AD v2.0 vytvořit](v2-app-types.md).
 * Seznamte se s [limity a omezeními](active-directory-v2-limitations.md), které může koncový bod Azure AD v2.0 představovat.
-* Základní informace o koncovém bodu Azure AD v2.0 získáte v tomto videu:
 
->[!VIDEO https://channel9.msdn.com/Events/Build/2017/P4031/player]
-
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 Prostudujte si podrobné informace týkající se v2.0:
 
+* [O platforma identit Microsoft](about-microsoft-identity-platform.md)
 * [informace o protokolech v2.0](active-directory-v2-protocols.md)
 * [informace o přístupových tokenech](access-tokens.md)
 * [informace o tokenech ID](id-tokens.md)

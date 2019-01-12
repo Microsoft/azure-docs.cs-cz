@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713603"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246207"
 ---
 # <a name="overview-of-azure-notebooks"></a>Přehled Azure poznámkové bloky
 
@@ -57,7 +57,7 @@ Stručně řečeno poznámkových bloků Azure vám pomůže provádět práci e
 
 Poznámkových bloků Azure je bezplatná služba, ale každý projekt je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití. Oprávněným uživatelům, které tyto limity překročit najdete v článku v rámci kontroly Captcha k pokračování ve spouštění poznámkových bloků.
 
-Uvolnit všechna omezení, postupu přidružte svůj účet s předplatným Azure, které vám umožní vybrat výpočetní úrovně premium.
+Uvolnit všechna omezení, přihlaste se poznámkových bloků Azure pomocí účtu služby pomocí Azure Active Directory (například účet organizace). Pokud tento účet je přidružený předplatnému Azure, můžete použít virtuální počítač Azure datové vědy výpočetní úrovně.
 
 ## <a name="available-kernels-and-environments"></a>Dostupná jádra a prostředí
 

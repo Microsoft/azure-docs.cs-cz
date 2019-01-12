@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 68f7df2ab004477fae5df1d200fcd44929465e93
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233119"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232239"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Vytvořit nebo připojit k paralelní větve pro akce pracovního postupu ve službě Azure Logic Apps
 
@@ -37,7 +37,7 @@ Ke spuštění nezávislých kroků ve stejnou dobu, můžete přidat paralelní
 
 ![Kroky při paralelním spuštění](media/logic-apps-control-flow-branches/parallel.png)
 
-Počká, pro všechny větve na dokončení před pokračováním pracovní postup aplikace logiky. Paralelní větve spustit jenom v případě jejich `runAfter` hodnoty vlastností odpovídá stavu na dokončení nadřazené krok. Například obě `branchAction1` a `branchAction2` jsou nastavena pro spuštění pouze tehdy, když `parentAction` dokončí s `Succeded` stav.
+Počká, pro všechny větve na dokončení před pokračováním pracovní postup aplikace logiky. Paralelní větve spustit jenom v případě jejich `runAfter` hodnoty vlastností odpovídá stavu na dokončení nadřazené krok. Například obě `branchAction1` a `branchAction2` jsou nastavena pro spuštění pouze tehdy, když `parentAction` dokončí s `Succeeded` stav.
 
 > [!NOTE]
 > Než začnete, aplikace logiky musí už mít krok ve kterém můžete přidat paralelních větvích.

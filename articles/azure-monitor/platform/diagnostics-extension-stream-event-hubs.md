@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ddef3ba2f1fa14445b0a06670d8f18abe76911ab
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103362"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230352"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure do horké cesty s využitím služby Event Hubs
 Diagnostika Azure nabízí flexibilní možnosti, jak shromažďovat metriky a protokoly z cloudové služby virtuálních počítačů (VM) a přenést výsledky do služby Azure Storage. Od března 2016 (SDK 2.9) časový rámec, můžete odeslání diagnostiky do vlastní zdroje dat a přenos dat kritickou cestu během několika sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -35,7 +35,7 @@ Tento článek ukazuje, jak konfigurovat diagnostiku Azure pomocí služby Event
 * Řešení potíží s připojení  
 
 ## <a name="prerequisites"></a>Požadavky
-Event Hubs receieving data z Azure Diagnostics se podporuje v cloudových služeb, virtuálních počítačů, Škálovací sady virtuálních počítačů a spuštění v Azure SDK 2.9 a odpovídající nástroje Azure pro sadu Visual Studio Service Fabric.
+Event Hubs příjem dat z Azure Diagnostics se podporuje v cloudových služeb, virtuálních počítačů, Škálovací sady virtuálních počítačů a spuštění v Azure SDK 2.9 a odpovídající nástroje Azure pro sadu Visual Studio Service Fabric.
 
 * Rozšíření Azure Diagnostics 1.6 ([sady Azure SDK pro .NET 2.9 nebo novější](https://azure.microsoft.com/downloads/) cílí to ve výchozím nastavení)
 * [Visual Studio 2013 nebo novější](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)

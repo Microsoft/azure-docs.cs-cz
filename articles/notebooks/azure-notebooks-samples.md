@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f71f1e086e584d1d26b067de001bf83d15bf7961
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971712"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243674"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Zjistit a použít ukázkové poznámkové bloky
 
@@ -33,7 +33,7 @@ Jakmile identifikujete Poznámkový blok, který chcete prozkoumat, tady je něk
 
 - [Sady starter Azure poznámkových bloků](https://notebooks.azure.com/#sample-redirect) obsahuje úvodní informace k Pythonu, R, a F#, spolu s představením toho, přístup k datům, Azure Machine Learning Services a několik data science cvičení poznámkových bloků.
 - [Úvod do poznámkových bloků Jupyter](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [Úvod do datových věd](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings) podle Jake Vanderplas.
+- [Úvod do datových věd](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) podle Jake Vanderplas.
 - [Galerie zajímavé poznámkových bloků](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projektu na Githubu)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Fyzika instrukce z [fyzika oddělení ve britských College London](https://notebooks.azure.com/cvanbreu/libraries)

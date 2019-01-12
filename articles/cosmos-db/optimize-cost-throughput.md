@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 279f029dee9e49985805a383fb4fefb82a4f4ebd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 476e39d0ced465d75e44098b9508472b87b0e7b8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038326"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230165"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Optimalizace propustnosti nákladů ve službě Azure Cosmos DB
 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 Nativním sadám SDK (.NET/.NET Core, Javy, Node.js a Python) implicitně zachytit tuto odpověď, respektují zadaný server hlavičkou retry-after a opakujte žádost. Pokud váš účet je současně přistupuje více klientů, bude při dalším pokusu úspěšné.
 
-Pokud máte více než jednoho klienta kumulativně provozní konzistentně výše je frekvence požadavků výchozí počet opakování aktuálně, který je aktuálně nastavený na 9 bot pravděpodobně dostatečná. V takovém případě se vyvolá klienta `DocumentClientException` se stavem kódu 429 do aplikace. Výchozí počet opakování můžete změnit tak, že nastavíte `RetryOptions` ConnectionPolicy instance. Ve výchozím nastavení je vrácena DocumentClientException se stavovým kódem 429 po uplynutí určité doby kumulativní Počkejte 30 sekund, pokud požadavek dál pracovat nad frekvence požadavků. K tomu dojde i v případě aktuální počet opakování je menší než počet opakování, jde o výchozí hodnotu 9 nebo uživatelem definovanou hodnotu. 
+Pokud máte více než jednoho klienta kumulativně provozní konzistentně výše je frekvence požadavků, nemusí být dostatečné výchozí počet opakování aktuálně, který je aktuálně nastavený na 9. V takovém případě se vyvolá klienta `DocumentClientException` se stavem kódu 429 do aplikace. Výchozí počet opakování můžete změnit tak, že nastavíte `RetryOptions` ConnectionPolicy instance. Ve výchozím nastavení je vrácena DocumentClientException se stavovým kódem 429 po uplynutí určité doby kumulativní Počkejte 30 sekund, pokud požadavek dál pracovat nad frekvence požadavků. K tomu dojde i v případě aktuální počet opakování je menší než počet opakování, jde o výchozí hodnotu 9 nebo uživatelem definovanou hodnotu. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryAtte) nastavená na 3, tak v takovém případě pokud operace požadavku je rychlostně omezena překračuje rezervovanou propustnost pro kolekce, operace požadavku se opakuje třikrát před vyvoláním výjimka k aplikaci.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) nastavena na 60, tak v tomto případě pokud čeká kumulativní opakovat po dobu v sekundách od prvního požadavku překročí 60 sekund, je vyvolána výjimka.
 

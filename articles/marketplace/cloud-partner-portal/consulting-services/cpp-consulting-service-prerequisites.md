@@ -14,25 +14,25 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 126ad48ee5df9212d65750abde71dfc18b82566f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 786be89b575246b92903ec968e956e9b25337ab8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346021"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230080"
 ---
 # <a name="consulting-service-prerequisites"></a>Požadavky na konzultační služby
 
-Odeslat nabídky konzultační služby pro některý z níže uvedených produktů, musíte nejdřív splnit jednu nebo více odpovídajících požadavků.
+K odeslání, konzultační služby nabízí pro některý z těchto produktů, splnění nejméně jeden z odpovídající požadavky:
 
-* **Dynamics 365 pro customer engagement**: Partneři musí mít pro úřady stříbrné nebo zlaté úrovně [řízení vztahů se zákazníky Cloud competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency). 
-* **Dynamics 365 pro finance a operace**: Partneři musí mít pro úřady stříbrné nebo zlaté úrovně [kompetenci pro plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a minimální příjmy z $25 tisíc v cloudové operace koncové 12 měsíců.
-* **Dynamics 365 business central**: Partneři musí mít funguje jako Cloud Solution Provider (CSP) nebo digitální DPOR Partner of Record () pro alespoň jednoho zákazníka.
-    * **ZPROSTŘEDKOVATEL KRYPTOGRAFICKÝCH SLUŽEB**: Naleznete v tématu [získat spuštění CSP](https://partner.microsoft.com/cloud-solution-provider/get-started) jak se zprostředkovatel kryptografických služeb.
-    * **PARTNERA DPOR**: Zobrazit [přehled partnera DPOR](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1) požadavky na DPOR.
-* **Power BI**: Dostaňte se na seznam v prezentaci partnerů Power BI. Zobrazit [Solution Partner kritéria](https://powerbi.microsoft.com/become-a-partner) Další informace.
-* **PowerApps**: Partneři musí mít řešení publikováno [prezentaci partnerů](https://powerapps.microsoft.com/partner-showcase).
+* **Dynamics 365 for Customer Engagement**: Partneři musí mít pro úřady stříbrné nebo zlaté úrovně [řízení vztahů se zákazníky Cloud competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency). 
+* **Dynamics 365 pro Finance a operace**: Partneři musí mít pro úřady stříbrné nebo zlaté úrovně [kompetenci pro plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency). Partneři také musí mít minimální příjmy 25 000 $ v cloudové operace koncové 12 měsíců.
+* **Dynamics 365 Business Central**: Partneři musí mít funguje jako Cloud Solution Provider (CSP) nebo digitální DPOR Partner of Record () pro alespoň jednoho zákazníka.
+    * **ZPROSTŘEDKOVATEL KRYPTOGRAFICKÝCH SLUŽEB**: Informace o tom, jak se zprostředkovatel kryptografických služeb najdete v tématu [Začínáme jako odběratel CSP](https://partner.microsoft.com/cloud-solution-provider/get-started).
+    * **PARTNERA DPOR**: Požadavky na partnera DPOR, najdete v článku [přehled partnera DPOR](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1).
+* **Power BI**: Dostaňte se na seznam v prezentaci partnerů Power BI. Další informace najdete v tématu [Solution Partner kritéria](https://powerbi.microsoft.com/become-a-partner).
+* **PowerApps**: Partneři musí mít datum publikování řešení [prezentaci partnerských řešení](https://powerapps.microsoft.com/partner-showcase).
 
-**Další kroky**
+## <a name="next-steps"></a>Další postup
 
-Pokud jsou výše uvedené požadavky splněny, budete chtít [vytvořit nabídku na konzultační služby](./cpp-consulting-service-create-offer.md).
+Pokud vám předchozí požadavky splněny, jste připraveni [vytvořit nabídku na konzultační služby](./cpp-consulting-service-create-offer.md).

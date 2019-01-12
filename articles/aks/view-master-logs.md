@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a8fefdf352507f0e0c0757625297f667907eb9bc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040740"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230590"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
@@ -36,6 +36,19 @@ Log Analytics je povolit a spravovat na webu Azure Portal. Pokud chcete povolit 
     * Pokud je potřeba vytvořit pracovní prostor, zadejte název, skupinu prostředků a umístění.
 1. V seznamu dostupných protokolů vyberte protokoly, které si přejete povolit. Ve výchozím nastavení *kube apiserver*, *správce kontroléru kube*, a *kube Plánovač* protokoly jsou povolené. Můžete povolit dodatečné protokolování, *kube auditu* a *clusteru bylo*. Můžete vrátit a změnit shromažďovat protokoly, jakmile budou povolené Log Analytics.
 1. Až to budete mít, vyberte **Uložit** povolení kolekce vybraných protokolů.
+
+> [!NOTE]
+> AKS zaznamená pouze protokoly auditu pro clustery, které jsou vytvořeny nebo upgradovat po povolení příznak funkce v rámci předplatného. K registraci *AKSAuditLog* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+>
+> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
+>
+> Počkejte na zobrazení stavu *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az] [ az-feature-list] příkaz:
+>
+> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
+>
+> Až to budete mít, aktualizovat registraci poskytovatele prostředků AKS pomocí [az provider register] [ az-provider-register] příkaz:
+>
+> `az provider register --namespace Microsoft.ContainerService`
 
 Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnostiky* časového intervalu a poté možnost vytvoření pracovního prostoru služby Log Analytics:
 
@@ -133,3 +146,6 @@ V tomto článku jste zjistili, jak povolit a zkontrolovat protokoly pro Kuberne
 [analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

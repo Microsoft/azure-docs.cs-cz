@@ -14,30 +14,30 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cb3730718c366cbf3fe9caecceeb4e65855ac8c4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dae86dcdd3ada10164be0120b49a8f5f7b642ccd
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346032"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231627"
 ---
-# <a name="publish-consulting-service-offer"></a>Publikovat nabídku konzultační služby
+# <a name="publish-a-consulting-service-offer"></a>Publikovat nabídku na konzultační služby
 
-Po dokončení **nabízejí nastavení**, **podrobnosti z prodejních míst**, a **kontakty**vyberte **publikovat** a zadejte e-mailovou adresu. Když Microsoft je připravená k publikování vaší nabídky, dostanete e-mailu můžete zobrazit jeho náhled dříve, než přejde za provozu. Můžete se vrátit na portál a zkontrolovat stav vaší nabídky v libovolném bodě v čase.
+Po dokončení **nabízejí nastavení**, **podrobnosti z prodejních míst**, a **kontakty**vyberte **publikovat** a zadejte e-mailovou adresu. Microsoft je připravená k publikování vaší nabídky, dostanete e-mailu můžete zobrazit jeho náhled dříve, než přejde za provozu. Můžete se vrátit na portál a zkontrolovat stav vaší nabídky kdykoli.
 
-Nabídky se může zobrazit v "Publikování bylo zrušeno" nebo "Publikování se nezdařilo" stav během procesu publikování. Tento stav je součástí normálního procesu a umožňuje provádět úpravy nabídky společnosti Microsoft. Pokud se zobrazí vaše nabídka v "Publikování bylo zrušeno", nechat ji ve stav.
+Nabídky se může zobrazit v "Publikování bylo zrušeno" nebo "Publikování se nezdařilo" stav během procesu publikování. Tyto názvy jsou součástí normálního procesu a povolit Microsoft provést úpravy pro vaši nabídku. Pokud vaše nabídka se zobrazí jako "Publikování bylo zrušeno", ponechte tento stav.
 
-**Vedoucí cíl**
+## <a name="lead-destination"></a>Vedoucí cíl
 
-Můžete vybrat systému CRM, kam se budou ukládat vaše potenciálních zákazníků. Systému CRM, zde je, kde napíšeme podrobnosti koncových uživatelů, kteří vyzkouší vaši aplikaci na AppSource (zájemce).
+Můžete zvolit uložení informací o zájemcích systému CRM. Systému CRM, zde je, kde jsme zapisovat informace o uživatelích, kteří vyzkouší vaši aplikaci na AppSource.
 
-V závislosti na systému CRM, které vyberete klikněte na odpovídající následující adresu URL pro informace o tom, jak projít další sadu polí
+Založený na systému CRM, které zvolíte, vyberte odpovídající adresu URL z následujícího seznamu informace o tom, jak vyplnit další sadu polí.
 
-* Vyberte [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Pokud některou z následujících systémů CRM: Salesforce, Marketo, Microsoft Dynamics CRM. 
+Vyberte [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Pokud některou z následujících systémů CRM:  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
-**Další kroky**
+## <a name="next-steps"></a>Další postup
 
-Přejděte k publikování nabídky.
+Pokračujte na další informace o publikování vaší nabídky.

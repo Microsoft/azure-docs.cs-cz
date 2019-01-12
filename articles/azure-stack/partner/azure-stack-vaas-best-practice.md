@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
-ms.reviewer: John.Haskin
-ms.openlocfilehash: d83eb501bbe685890decb3acbb8116164f4199db
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.reviewer: johnhas
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8b7d2b6d2aef4567197fe18607cb50d1e9a4206b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422656"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247232"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>Osvědčené postupy pro ověření jako služba
 
@@ -48,7 +49,7 @@ Použijte konzistentní zásady vytváření názvů pro všechny VaaS běhů pr
 
 |Číslo (hlavní) sestavení | Datum | Velikost řešení | Název pracovního postupu
 |---|---|---| ---|
-. 1808 | 081518 | 4NODE | 1808_081518_4NODE
+1808 | 081518 | 4NODE | 1808_081518_4NODE
 
 ## <a name="next-steps"></a>Další postup
 

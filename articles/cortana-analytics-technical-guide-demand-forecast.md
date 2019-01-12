@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d055b6775c9c788ecbb3a868055fa2402a537a83
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427059"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231168"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technický průvodce do šablony řešení Cortana Intelligence pro energie prognózy poptávky
 ## <a name="overview"></a>**Přehled**
@@ -163,7 +163,7 @@ Následující kroky vás provedou jak vizualizace dat v reálném čase výstup
 
 1. Přidáte výstup Power BI v Azure Stream Analytics (ASA).
 
-   * Budete muset postupovat podle pokynů v [Azure Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data v reálném čase viditelnost](stream-analytics/stream-analytics-power-bi-dashboard.md) nastavit výstup úlohy Azure Stream Analytics jako řídicí panel Power BI .
+   * Budete muset postupovat podle pokynů v [Azure Stream Analytics a Power BI: Řídicí panel analýzy v reálném čase pro streamovaná data v reálném čase viditelnost](stream-analytics/stream-analytics-power-bi-dashboard.md) nastavit výstup úlohy Azure Stream Analytics jako řídicí panel Power BI.
    * Vyhledejte úlohu stream analytics ve vaší [webu Azure portal](https://portal.azure.com). Název úlohy musí být: YourSolutionName + "streamingjob" + náhodné číslo + "asapbi" (to znamená demostreamingjob123456asapbi).
    * Přidáte výstup Power BI pro úlohu Azure Stream Analytics. Nastavte **výstup Alias** jako **"PBIoutput"**. Nastavte vaše **název datové sady** a **název tabulky** jako **"EnergyStreamData"**. Po přidání výstup, klikněte na tlačítko **"Start"** v dolní části stránky a spusťte úlohu Stream Analytics. Měli byste obdržet potvrzovací zpráva (například "spuštění úlohy stream analytics myteststreamingjob12345asablob bylo úspěšné").
 2. Přihlaste se k [Power BI online](https://www.powerbi.com)
@@ -185,7 +185,7 @@ Následující kroky vás provedou jak vizualizace dat v reálném čase výstup
 V trase datového kanálu základní cílem je získat prognózu poptávky každé oblasti. Power BI se připojí ke službě Azure SQL database jako zdroj dat, kde jsou uloženy výsledky předpovědí.
 
 > [!NOTE]
-> 1) Trvá několik hodin shromažďovat dostatečně předpokládané výsledky pro řídicí panel. Doporučujeme, abyste že tento proces začněte 2 – 3 hodiny po něco generátor dat. (2) v tomto kroku kontrolu požadovaných součástí je ke stažení a instalaci tohoto bezplatného softwaru [Power BI desktopu](https://powerbi.microsoft.com/desktop).
+> (1) trvá několik hodin shromažďovat dostatečně předpokládané výsledky pro řídicí panel. Doporučujeme, abyste že tento proces začněte 2 – 3 hodiny po něco generátor dat. (2) v tomto kroku kontrolu požadovaných součástí je ke stažení a instalaci tohoto bezplatného softwaru [Power BI desktopu](https://powerbi.microsoft.com/desktop).
 >
 >
 

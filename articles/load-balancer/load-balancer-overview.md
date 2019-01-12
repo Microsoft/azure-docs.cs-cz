@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 7b0a837bf23145c5ac5e5775d4324582fa3a6b20
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e66acd6a94b891ac3f727fddb7a88a9c56f465d3
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120831"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246564"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -153,7 +153,13 @@ Interní Load Balancer umožňuje následující typy vyrovnávání zatížení
 *Obrázek: Vícevrstvé aplikace s použitím veřejné a vnitřní nástroj pro vyrovnávání zatížení pro vyrovnávání zatížení*
 
 ## <a name="pricing"></a>Ceny
-Využití Load Balanceru úrovně Standard se účtuje na základě počtu nakonfigurovaných pravidel vyrovnávání zatížení a množství zpracovaných příchozích a odchozích dat. Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [cenami za Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).
+
+Standardní použití nástroje pro vyrovnávání zatížení se účtuje.
+
+- Počet nakonfigurovaných Vyrovnávání zatížení a odchozí pravidla pravidla (pravidla příchozího překladu adres nezapočítávají celkový počet pravidel)
+- Objem dat zpracovaných příchozích a odchozích bez ohledu na pravidlo. 
+
+Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [cenami za Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 Load Balancer úrovně Basic se nabízí zdarma.
 

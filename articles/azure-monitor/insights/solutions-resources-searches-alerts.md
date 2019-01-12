@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f16325183f0a13382dd4533fd867a518f1750c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a2c45807f846dbe9d1c6bd91ce8c87958949ab17
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344291"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231321"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -153,7 +153,7 @@ Existují dva typy akcí prostředek určený souborem **typ** vlastnost.  Plán
 Akce upozornění mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
 
-```
+```json
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Alert').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
@@ -290,7 +290,7 @@ Vlastnosti pro prostředky akce Webhooku jsou popsány v následujících tabulk
 |:--|:--|:--|
 | type | Ano | Typ akce.  Toto je **Webhooku** pro akce webhooku. |
 | jméno | Ano | Zobrazovaný název této akce.  To se nezobrazí v konzole. |
-| wehookUri | Ano | Identifikátor URI pro webhook. |
+| WebhookUri | Ano | Identifikátor URI pro webhook. |
 | customPayload | Ne | Vlastní datová část odeslání k webhooku. Formát závisí na co se očekává se webhook. |
 
 
@@ -304,7 +304,7 @@ Tady je příklad řešení, které obsahuje následující zdroje:
 
 Ukázka používá [standardní řešení parametry]( solutions-solution-file.md#parameters) proměnné, které používají ho většinou v řešení, na rozdíl od hodnoty hardcoding v definicích prostředků.
 
-```
+```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
@@ -462,7 +462,7 @@ Ukázka používá [standardní řešení parametry]( solutions-solution-file.md
 ```
 
 Následující soubor parametrů obsahuje hodnoty vzorky pro toto řešení.
-```
+```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",

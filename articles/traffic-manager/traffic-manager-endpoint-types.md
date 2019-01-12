@@ -4,6 +4,7 @@ description: Tento článek vysvětluje různé typy koncových bodů, které lz
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: acdae15af1e81bf194bb9e599b97152af98ef5d4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: fb8922424de064bc63f793479d8c3a98b506b844
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139784"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232511"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 Microsoft Azure Traffic Manager umožňuje řídit, jak je zatížení sítě distribuováno do nasazení aplikace spuštěné v různých datových centrech. Konfigurace nasazení každé aplikace jako "koncový bod' v Traffic Manageru. Když Traffic Manager obdrží žádost o DNS, vybere dostupný koncový bod vrátit v odpovědi DNS. Volba Traffic Manageru založen na aktuální stav koncového bodu a metodu směrování provozu. Další informace najdete v tématu [jak funguje Traffic Manager](traffic-manager-how-it-works.md).

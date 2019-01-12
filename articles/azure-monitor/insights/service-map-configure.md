@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: ee0de5d03de29adddd8f77efbe7491603cc0e4c4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ea1c44d95dfb00fdb2b0af9e5cd8560fdee3d361
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188788"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231338"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -335,7 +335,7 @@ Node localhost
 ```
 
 ## <a name="remove-the-dependency-agent"></a>Odebrat agenta závislostí
-### <a name="uinstall-agent-on-windows"></a>Odinstalování serveru agenta ve Windows
+### <a name="uninstall-agent-on-windows"></a>Odinstalujte agenta na Windows
 Správce můžete odinstalovat agenta závislosti pro Windows pomocí ovládacích panelů.
 
 Správce může také spustit %Programfiles%\Microsoft Agent\Uninstall.exe závislostí pro odinstalaci agenta závislostí.

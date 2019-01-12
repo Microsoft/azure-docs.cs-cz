@@ -1,5 +1,5 @@
 ---
-title: Průzkumník služby Search na webu Azure portal k dotazování indexů – Azure Search
+title: Nástroj Průzkumník hledání pro dotazování na data na webu Azure portal – Azure Search
 description: Použijte Azure portal nástrojů, jako je Průzkumník služby Search na dotaz indexy ve službě Azure Search. Zadejte hledané termíny nebo plně kvalifikovaný vyhledávacích řetězců s rozšířené syntaxe.
 manager: cgronlun
 author: HeidiSteen
@@ -9,48 +9,25 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2aa372d1f917608de753007cc75ab0d608cafbba
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 85e574a56380384b10d0916385a8816fd26c2eeb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188721"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244796"
 ---
-# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Použití Průzkumníka služby Search na dotaz indexy ve službě Azure Search 
+# <a name="search-explorer-for-querying-data-in-azure-search"></a>Průzkumník služby Search pro dotazování na data ve službě Azure Search 
 
-V tomto článku se dozvíte, jak zadávat dotazy na existující index Azure Search pomocí **Průzkumníka služby Search** na webu Azure Portal. Průzkumník služby Search můžete odesílat jednoduché nebo úplné řetězce dotazů Lucene do jakéhokoli existujícího indexu ve službě.
-
-## <a name="start-search-explorer"></a>Spusťte Průzkumníka služby Search
-
-1. V [webu Azure portal](https://portal.azure.com), otevřete stránku vyhledávací služby z řídicího panelu nebo [svou službu vyhledejte](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v seznamu služeb.
-
-2. Na stránce Přehled služby, klikněte na tlačítko **Průzkumníka služby Search**.
+V tomto článku se dozvíte, jak zadávat dotazy na existující index Azure Search pomocí **Průzkumníka služby Search** na webu Azure Portal. Průzkumník služby Search můžete odesílat jednoduché nebo úplné řetězce dotazů Lucene do jakéhokoli existujícího indexu ve službě. 
 
    ![Příkaz Průzkumníka služby hledání portálu](./media/search-explorer/search-explorer-cmd2.png "příkaz Průzkumníka služby hledání na portálu")
 
-3. Vyberte index dotazu.
 
-   ![Vyberte index dotazu](./media/search-explorer/search-explorer-changeindex-se2.png "vyberte index")
-
-4. Volitelně můžete nastavte verzi rozhraní API. Ve výchozím nastavení je vybrána aktuální obecně dostupná verze rozhraní API, ale můžete použít ve verzi preview nebo starší rozhraní API, pokud syntaxi, kterou chcete použít, je specifické pro verzi.
-
-5. Jednou index a vybrané verze rozhraní API, zadejte hledané výrazy nebo výrazy plně kvalifikovaný dotazů na panelu hledání a klikněte na tlačítko **hledání** ke spuštění.
-
-   ![Zadejte hledaný text a klikněte na tlačítko Hledat](./media/search-explorer/search-explorer-query-string-example.png "vyhledávání zadejte podmínky a klikněte na tlačítko Hledat")
-
-Tipy pro hledání v **Průzkumníka služby Search**:
-
-+ Výsledky jsou vráceny jako podrobné dokumenty JSON tak, aby dokument konstrukce a obsah, můžete zobrazit v celém rozsahu. Můžete použít výrazy dotazu, je znázorněno v příkladu, k omezení, která pole jsou vráceny.
-
-+ Dokumenty se skládají ze všech polí označených jako **Retrievable** v indexu. Chcete-li zobrazit atributy indexu na portálu, klikněte na tlačítko *realestate-us-sample* v **indexy** seznamu na stránce Přehled hledání.
-
-+ Dotazy volného tvaru, podobně jako například zadat v komerční webový prohlížeč, jsou vhodné pro testovací prostředí koncového uživatele. Například za předpokladu, že integrované realestate ukázkového indexu, můžete například zadat "Seattle objekty apartment lake washington", a pak vám pomůže Ctrl + F lze najít termíny ve výsledcích hledání. 
-
-+ Výrazy dotazu a filtrovat musí kloubové v syntaxi podporovány službou Azure Search. Výchozí hodnota je [jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale můžete volitelně použít [úplné Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) pro výkonnějších dotazů. [Filtr výrazů](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) jsou syntaxe OData.
+Pomoc v začátcích, naleznete v tématu [Průzkumníka služby Start Search](#start-search-explorer).
 
 ## <a name="basic-search-strings"></a>Základní hledání řetězce
 
-Následující příklady předpokládají integrované realestate ukázkového indexu. Další informace o vytvoření tohoto indexu najdete v tématu [rychlý start: Import, index a dotaz na webu Azure portal](search-get-started-portal.md).
+Následující příklady předpokládají integrované realestate ukázkového indexu. Nápovědu k vytvoření tohoto indexu najdete v tématu [rychlý start: Import, index a dotaz na webu Azure portal](search-get-started-portal.md).
 
 ### <a name="example-1---empty-search"></a>Příklad 1 - prázdné vyhledávání
 
@@ -128,6 +105,37 @@ Přidat **$orderby** seřadit výsledky podle jiného pole kromě skóre vyhled�
    ![Výraz OrderBy](./media/search-explorer/search-explorer-example-ordery.png "změňte pořadí řazení")
 
 Obě **$filter** a **$orderby** jsou výrazy konstrukcí OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+
+<a name="start-search-explorer"></a>
+
+## <a name="how-to-start-search-explorer"></a>Jak spustit Průzkumníka služby Search
+
+1. V [webu Azure portal](https://portal.azure.com), otevřete stránku vyhledávací služby z řídicího panelu nebo [svou službu vyhledejte](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v seznamu služeb.
+
+2. Na stránce Přehled služby, klikněte na tlačítko **Průzkumníka služby Search**.
+
+   ![Příkaz Průzkumníka služby hledání portálu](./media/search-explorer/search-explorer-cmd2.png "příkaz Průzkumníka služby hledání na portálu")
+
+3. Vyberte index dotazu.
+
+   ![Vyberte index dotazu](./media/search-explorer/search-explorer-changeindex-se2.png "vyberte index")
+
+4. Volitelně můžete nastavte verzi rozhraní API. Ve výchozím nastavení je vybrána aktuální obecně dostupná verze rozhraní API, ale můžete použít ve verzi preview nebo starší rozhraní API, pokud syntaxi, kterou chcete použít, je specifické pro verzi.
+
+5. Jednou index a vybrané verze rozhraní API, zadejte hledané výrazy nebo výrazy plně kvalifikovaný dotazů na panelu hledání a klikněte na tlačítko **hledání** ke spuštění.
+
+   ![Zadejte hledaný text a klikněte na tlačítko Hledat](./media/search-explorer/search-explorer-query-string-example.png "vyhledávání zadejte podmínky a klikněte na tlačítko Hledat")
+
+Tipy pro hledání v **Průzkumníka služby Search**:
+
++ Výsledky jsou vráceny jako podrobné dokumenty JSON tak, aby dokument konstrukce a obsah, můžete zobrazit v celém rozsahu. Můžete použít výrazy dotazu, je znázorněno v příkladu, k omezení, která pole jsou vráceny.
+
++ Dokumenty se skládají ze všech polí označených jako **Retrievable** v indexu. Chcete-li zobrazit atributy indexu na portálu, klikněte na tlačítko *realestate-us-sample* v **indexy** seznamu na stránce Přehled hledání.
+
++ Dotazy volného tvaru, podobně jako například zadat v komerční webový prohlížeč, jsou vhodné pro testovací prostředí koncového uživatele. Například za předpokladu, že integrované realestate ukázkového indexu, můžete například zadat "Seattle objekty apartment lake washington", a pak vám pomůže Ctrl + F lze najít termíny ve výsledcích hledání. 
+
++ Výrazy dotazu a filtrovat musí kloubové v syntaxi podporovány službou Azure Search. Výchozí hodnota je [jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale můžete volitelně použít [úplné Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) pro výkonnějších dotazů. [Filtr výrazů](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) jsou syntaxe OData.
+
 
 ## <a name="next-steps"></a>Další postup
 

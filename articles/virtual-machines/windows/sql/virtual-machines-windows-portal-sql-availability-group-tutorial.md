@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1605fdc5e49d2b8e95a2876dea8dff378ee33e2e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51238071"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232273"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
 
@@ -109,7 +109,7 @@ Přidáte do clusteru SQL serveru.
     >[!WARNING]
    >Pokud používáte prostory úložiště a není zrušte zaškrtnutí políčka **přidat do clusteru veškeré oprávněné úložiště**, Windows odpojí virtuální disky se během procesu clusteringu. Proto dokud prostory úložiště se odebral z clusteru se nezobrazují ve Správci disků nebo Průzkumníka a znovu připojit pomocí Powershellu. Prostory úložiště seskupit několik disků do fondů úložiště. Další informace najdete v tématu [prostory úložiště](https://technet.microsoft.com/library/hh831739).
 
-1. Klikněte na tlačítko **Další**.
+1. Klikněte na **Další**.
 
 1. Klikněte na **Dokončit**.
 
@@ -133,9 +133,9 @@ V tomto příkladu Windows cluster používá sdílené složky k vytvoření kv
 
    Použití **Průvodce vytvořením sdílené složky** vytvoření sdílené složky.
 
-1. Na **cesta ke složce**, klikněte na tlačítko **Procházet** a najděte nebo vytvořte cestu ke sdílené složce. Klikněte na tlačítko **Další**.
+1. Na **cesta ke složce**, klikněte na tlačítko **Procházet** a najděte nebo vytvořte cestu ke sdílené složce. Klikněte na **Další**.
 
-1. V **název, popis a nastavení** ověřte název sdílené složky a cesta. Klikněte na tlačítko **Další**.
+1. V **název, popis a nastavení** ověřte název sdílené složky a cesta. Klikněte na **Další**.
 
 1. Na **oprávnění ke sdílené složce** nastavit **přizpůsobit oprávnění**. Klikněte na tlačítko **vlastní...** .
 
@@ -170,9 +170,9 @@ Dále nastavte kvorum clusteru.
    >[!TIP]
    >Windows Server 2016 podporuje Cloudová kopie clusteru. Pokud se rozhodnete tento typ určující sdílené složky, není nutné soubor sdílet s kopií clusteru. Další informace najdete v tématu [nasazení cloudové kopie clusteru pro převzetí služeb při selhání clusteru](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Tento kurz používá určující sdílenou složku souboru, který není podporovaný ve starších operačních systémech.
 
-1. Na **nakonfigurovat určující sdílenou složku**, zadejte cestu ke sdílené složce, které jste vytvořili. Klikněte na tlačítko **Další**.
+1. Na **nakonfigurovat určující sdílenou složku**, zadejte cestu ke sdílené složce, které jste vytvořili. Klikněte na **Další**.
 
-1. Ověřte nastavení na **potvrzení**. Klikněte na tlačítko **Další**.
+1. Ověřte nastavení na **potvrzení**. Klikněte na **Další**.
 
 1. Klikněte na **Dokončit**.
 
@@ -235,9 +235,9 @@ Repeat these steps on the second SQL Server.
 
    Použití **Průvodce vytvořením sdílené složky** vytvoření sdílené složky.
 
-1. Na **cesta ke složce**, klikněte na tlačítko **Procházet** a vyhledat nebo vytvořit cestu pro sdílenou složku záloh databáze. Klikněte na tlačítko **Další**.
+1. Na **cesta ke složce**, klikněte na tlačítko **Procházet** a vyhledat nebo vytvořit cestu pro sdílenou složku záloh databáze. Klikněte na **Další**.
 
-1. V **název, popis a nastavení** ověřte název sdílené složky a cesta. Klikněte na tlačítko **Další**.
+1. V **název, popis a nastavení** ověřte název sdílené složky a cesta. Klikněte na **Další**.
 
 1. Na **oprávnění ke sdílené složce** nastavit **přizpůsobit oprávnění**. Klikněte na tlačítko **vlastní...** .
 
@@ -273,7 +273,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti. použijte následují
 
     ![Spuštění Průvodce vytvořením skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
-2. V **ÚVOD** klikněte na **Další**. V **zadejte název skupiny dostupnosti** stránky, zadejte název pro skupinu dostupnosti, například **AG1**v **název skupiny dostupnosti**. Klikněte na tlačítko **Další**.
+2. V **ÚVOD** klikněte na **Další**. V **zadejte název skupiny dostupnosti** stránky, zadejte název pro skupinu dostupnosti, například **AG1**v **název skupiny dostupnosti**. Klikněte na **Další**.
 
     ![Průvodce vytvořením skupin dostupnosti, zadejte název AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
@@ -296,7 +296,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti. použijte následují
 
     ![Průvodce novou skupinu dostupnosti, vyberte počáteční Data synchronizace](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. V **vybrat počáteční synchronizaci dat** stránce **úplné** a zadejte do sdíleného síťového umístění. Pro umístění, použijte [zálohování sdílené složky, kterou jste vytvořili](#backupshare). V příkladu pochází **\\\\\<první Server SQL\>\Backup\**. Klikněte na tlačítko **Další**.
+8. V **vybrat počáteční synchronizaci dat** stránce **úplné** a zadejte do sdíleného síťového umístění. Pro umístění, použijte [zálohování sdílené složky, kterou jste vytvořili](#backupshare). V příkladu pochází  **\\ \\ \<první Server SQL\>\Backup\\**. Klikněte na **Další**.
 
    >[!NOTE]
    >Úplná synchronizace trvá úplné zálohování databáze na první instanci systému SQL Server a obnoví k druhé instanci. U velkých databází úplnou synchronizaci nedoporučuje, protože to může trvat dlouhou dobu. Nyní můžete snížit ruční vytvoření zálohy databáze a obnovení s `NO RECOVERY`. Pokud již obnovení databáze s `NO RECOVERY` na druhém serveru SQL před konfigurací skupiny dostupnosti, zvolte **připojit pouze k**. Pokud chcete vytvořit zálohu po dokončení konfigurace skupiny dostupnosti, zvolte **přeskočit počáteční synchronizaci**.

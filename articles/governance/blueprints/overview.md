@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f1ebbc10109563b771c5417a0449efec12138526
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967687"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246241"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -48,7 +48,7 @@ Podrobný plán je balíček nebo kontejner pro sestavování sad standardů, vz
 
 Zahrnutí zásad do podrobného plánu umožňuje vytvořit správný vzor nebo návrh při přiřazování podrobného plánu. Zahrnutí zásad zajišťuje, že je možné provést jenom schválené nebo očekáváné změny prostředí, aby se zajistila ochrana trvalého dodržování záměru podrobného plánu.
 
-Zásady je možné zahrnout jako jeden z mnoha _artefaktů_ v definici podrobných plánů. Podrobné plány podporují také používání parametrů se zásadami a iniciativami.
+Zásada může být zahrnut jako jeden z mnoha _artefakty_ v definici podrobného plánu. Podrobné plány podporují také používání parametrů se zásadami a iniciativami.
 
 ## <a name="blueprint-definition"></a>Definice podrobného plánu
 

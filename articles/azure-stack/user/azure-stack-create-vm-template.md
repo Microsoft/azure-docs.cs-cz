@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/13/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 7780cfde52cb429503e57216e2543807d3fb1d1d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.reviewer: unknown
+ms.openlocfilehash: 2f769706b5f6a9fa4326a0efeb9e8afb2edd8296
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632454"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246156"
 ---
 # <a name="tutorial-create-a-vm-using-a-community-template"></a>Kurz: vytvoření virtuálního počítače s využitím komunitní šablony
 
