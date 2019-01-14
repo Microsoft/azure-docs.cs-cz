@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: hector.linares
-ms.openlocfilehash: ab55ed73c7364b48f3159672ebee5d934365c92c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.reviewer: hectorl
+ms.openlocfilehash: 45e22f19c6e2da26105615da6a775eed4f8676f0
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191525"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243628"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrana virtuálních počítačů nasazených v Azure stacku
 
@@ -53,7 +53,7 @@ Každý cloud služby Azure Stack je nasazený na jednom datacentru. Vyžaduje s
 
 Plánování strategie obnovení zálohování a zotavení po havárii pro každou aplikaci k určení cíle pro každou aplikaci. Plán obnovení pomůže vaší organizaci správné velikosti úložiště kapacita požadovaná místní a projekt spotřebu ve veřejném cloudu.
 
-|  | Global Azure | Azure Stack nasazené v datacentru CSP a provozuje CSP | Azure Stack nasazuje do datového centra zákazníka a provozuje zákaznická |
+|  | Globální Azure | Azure Stack nasazené v datacentru CSP a provozuje CSP | Azure Stack nasazuje do datového centra zákazníka a provozuje zákaznická |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | **Azure Stack nasazené v datacentru CSP a provozuje CSP** | Virtuální počítače uživatele se nasadí do CSP provozovat Azure Stack.<br><br>Virtuální počítače uživatele obnovit ze zálohy nebo převzetí služeb při selhání do Azure. | Zprostředkovatel kryptografických služeb pracuje primární a sekundární instance služby Azure Stack v jejich vlastních datových center.<br><br>Virtuální počítače uživatele jsou obnovení nebo převzetí služeb při selhání mezi dvěma instancemi služby Azure Stack. | Zprostředkovatel kryptografických služeb pracuje Azure Stack v primární lokalitě.<br><br>Datovým centrem zákazníka je cíl obnovení nebo převzetí služeb při selhání. |
 | **Azure Stack nasazuje do datového centra zákazníka a provozuje zákaznická** | Virtuální počítače uživatele se nasadí do zákazník provozované služby Azure Stack.<br><br>Virtuální počítače uživatele obnovit ze zálohy nebo převzetí služeb při selhání do Azure. | Zákazník používá Azure Stack v primární lokalitě.<br><br>Datacentra CSP je cíl obnovení nebo převzetí služeb při selhání. | Zákazník funguje primární a sekundární instance služby Azure Stack v jejich vlastních datových center.<br><br>Virtuální počítače uživatele jsou obnovení nebo převzetí služeb při selhání mezi dvěma instancemi služby Azure Stack. |

@@ -19,7 +19,13 @@ items:
   items:
   - name: 1 – Vytvoření tenanta B2C
     href: tutorial-create-tenant.md
-  - name: 2 – Ověření účtů
+  - name: 2 – Registrace aplikací
+    href: tutorial-register-applications.md
+  - name: 3 – Vytvoření toků uživatele
+    href: tutorial-create-user-flows.md
+  - name: 4 – Přizpůsobení uživatelského rozhraní
+    href: tutorial-customize-ui.md
+  - name: Ověření účtů
     items:
     - name: ASP.NET
       href: active-directory-b2c-tutorials-web-app.md
@@ -27,7 +33,7 @@ items:
       href: active-directory-b2c-tutorials-desktop-app.md
     - name: Samostatná stránka
       href: active-directory-b2c-tutorials-spa.md
-  - name: 3 – Udělení přístupu k rozhraní API
+  - name: Udělení přístupu k rozhraní API
     items:
     - name: ASP.NET
       href: active-directory-b2c-tutorials-web-api.md
@@ -35,8 +41,6 @@ items:
       href: active-directory-b2c-tutorials-desktop-app-webapi.md
     - name: Samostatná stránka
       href: active-directory-b2c-tutorials-spa-webapi.md
-  - name: Přizpůsobení uživatelského rozhraní
-    href: tutorial-customize-ui.md
 - name: Ukázky
   href: code-samples.md
 - name: Koncepty
@@ -45,16 +49,12 @@ items:
     href: active-directory-b2c-apps.md
   - name: Protokoly pro ověřování
     href: active-directory-b2c-reference-protocols.md
-  - name: Toky uživatele
-    href: active-directory-b2c-reference-policies.md
   - name: Architektura prostředí identit
     items:
     - name: Vlastní zásady
       href: active-directory-b2c-overview-custom.md
     - name: Přístup uživatelů
       href: manage-user-access.md
-    - name: Uživatelská data
-      href: manage-user-data.md
   - name: OAuth 2.0
     href: active-directory-b2c-reference-oauth-code.md
   - name: OpenId Connect
@@ -65,6 +65,10 @@ items:
     href: active-directory-b2c-reference-tokens.md
   - name: Uživatelské účty
     href: user-overview.md
+  - name: Uživatelská data
+    href: manage-user-data.md
+  - name: Toky uživatele
+    href: active-directory-b2c-reference-policies.md
   - name: Přizpůsobení uživatelského rozhraní
     href: customize-ui-overview.md
 - name: Návody
@@ -264,8 +268,6 @@ items:
     href: active-directory-b2c-access-tokens.md
   - name: Předávání přístupového tokenu
     href: idp-pass-through-user-flow.md
-  - name: Registrace vaší aplikace
-    href: active-directory-b2c-app-registration.md
   - name: Hlášení využití
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: Přihlašovací údaje vlastníka prostředku s heslem
@@ -316,9 +318,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: b8a8db0dc15877cc772efbb1e9656c12f27f426a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c7f7036e52c5c9d0f9d7c51a882474028ba63aef
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788277"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244388"

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 26bccc07e402288db696bce8a2371cab9ef7aff9
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1ae0be44be524e4cb4e8d446e2279a1bfd800a04
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055077"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231610"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -40,7 +40,7 @@ Existují _sady SDK pro zařízení_ dostupné pro různé jazyky, které vám u
 ## <a name="azure-iot-service-sdks"></a>Sady SDK pro služby Azure IoT
 Existují _služby sady SDK_ dostupné pro různé jazyky, které vám umožní vytvořit [back endové aplikace](#back-end-app) , které komunikovat s centrem IoT. IoT Hub kurzy ukazují, jak pomocí sady SDK pro tyto služby. V tomto Githubu můžete najít zdrojový kód a další informace o sadách SDK služby [úložiště](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-tools"></a>Nástroje Azure IoT
+## <a name="azure-iot-tools"></a>Azure IoT Tools
 [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) je různé platformy, open source rozšíření Visual Studio Code, který vám pomůže spravovat zařízení v nástroji VS Code a Azure IoT Hub. Nástroje pro Azure IoT může IoT vývojáři vyvíjet pro projekty IoT v nástroji VS Code s lehkostí a elegancí.
 
 ## <a name="azure-portal"></a>portál Azure
@@ -59,7 +59,7 @@ Existují _služby sady SDK_ dostupné pro různé jazyky, které vám umožní 
 [Azure Storage](../storage/common/storage-introduction.md) je řešení cloudového úložiště. Zahrnuje ve službě Blob Storage, který můžete použít k uložení nestrukturovaných dat objektů. Nějaké kurzy služby IoT Hub pomocí úložiště objektů blob.
 
 ## <a name="back-end-app"></a>Back endové aplikace
-V rámci [služby IoT Hub](#iot-hub), back endové aplikace je aplikace, která se připojuje k jednomu z koncových bodů určených pro služby ve službě IoT hub. Například může načíst back endové aplikace [typu zařízení cloud](#device-to-cloud)zprávy nebo spravovat [registr identit](#identity-registry). Obvykle back endové aplikace spouští v cloudu, ale v mnoha z kurzů back endové aplikace jsou aplikace konzoly spuštěné v místním vývojovém počítači.
+V rámci [služby IoT Hub](#iot-hub), back endové aplikace je aplikace, která se připojuje k jednomu z koncových bodů určených pro služby ve službě IoT hub. Například může načíst back endové aplikace [typu zařízení cloud](#device-to-cloud) zprávy nebo spravovat [registr identit](#identity-registry). Obvykle back endové aplikace spouští v cloudu, ale v mnoha z kurzů back endové aplikace jsou aplikace konzoly spuštěné v místním vývojovém počítači.
 
 ## <a name="built-in-endpoints"></a>Integrované koncové body
 Každé centrum IoT obsahuje integrovaný [koncový bod](iot-hub-devguide-endpoints.md) , který je kompatibilní s centrem událostí. Můžete použít libovolný mechanismus, který funguje s Event Hubs slouží ke čtení zpráv typu zařízení cloud z tohoto koncového bodu.

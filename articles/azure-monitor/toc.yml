@@ -750,6 +750,8 @@ items:
         items:
         - name: Konfigurace upozornění pro analytický dotaz
           href: platform/alerts-log.md
+        - name: Dotazy na upozornění protokolu
+          href: platform/alerts-log-query.md
         - name: Akce webhooku pro výstrahy protokolu
           href: platform/alerts-log-webhook.md
         - name: Řešení potíží s výstrahami protokolu
@@ -1007,9 +1009,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 18a79275cc100cddce1687451168946d2cb2b85e
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ab0a3de001a775480f46f5a434a313f62e82623d
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215231"
+ms.locfileid: "54231049"

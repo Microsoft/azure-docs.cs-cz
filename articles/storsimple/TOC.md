@@ -209,7 +209,7 @@
 ## Referenční informace
 ### [REST API](https://docs.microsoft.com/rest/api/storsimple)
 ### [Rutiny prostředí Windows PowerShell pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx)
-
+### [Šablona Resource Manageru](/azure/templates/microsoft.storsimple/allversions)
 
 # Správce dat StorSimple
 
