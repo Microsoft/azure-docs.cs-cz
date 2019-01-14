@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54024827"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Version1 ](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Aktuální verze](connector-azure-sql-data-warehouse.md)
 
