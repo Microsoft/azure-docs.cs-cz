@@ -1,6 +1,7 @@
 ---
-title: Přehled – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Přehled nástroje Azure ML Studio, který umožňuje přetahováním rychle vytvářet modely z předpřipravených knihoven algoritmů a modulů
+title: Co je
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning Studio je nástroj přetažení myší rychle vytvářet modely z připravené k použití knihovny algoritmů a modulů.
 keywords: azure machine learning,azure ml,ml studio
 services: machine-learning
 documentationcenter: ''
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: b1c0d3da6dba4bf56baaf583d89c58fdc13ef83f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 04c9803909fb5dfd1072840a0c1d7e33814ad1a3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250514"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264356"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -152,10 +153,10 @@ Jakmile model natrénujete, vyhodnotíte ho na zbývajících testovacích datec
 * **Klasifikace**: Model pro uspořádání datových bodů do kategorií podle datové sady, pro které kategorii seskupení již znám.
 * **konstrukce funkcí**: Proces extrahování nebo výběru příznaků či související s datovou sadou s cílem zvýšit její a vylepšit výsledky. Například využitelnost dat o leteckých tarifech lze vylepšit určením dnů v týdnu a svátků. Viz [Výběr a konstruování příznaků v Azure Machine Learning](../team-data-science-process/create-features.md).
 * **modul**: Funkční součást modelu Machine Learning Studio, například modul pro zadávání dat, který umožňuje zadávat a upravovat malé datové sady. Určitým typem modulu v nástroji Machine Learning Studio je i algoritmus.
-* **Model**: Učení modelu je produkt experiment sestává z trénovacích dat, algoritmického modulu a funkčních modulů, jako je modul určení skóre modelu strojového učení.
+* **model**: Učení modelu je produkt experiment sestává z trénovacích dat, algoritmického modulu a funkčních modulů, jako je modul určení skóre modelu strojového učení.
 * **Číselná data**: Data, která mají význam jako měření (spojitá data) nebo počty (diskrétní neboli nespojitá data). Označují se také jako *kvantitativní data*.
 * **oddíl**: Metoda, podle které data rozdělíte do vzorků. Další informace naleznete v tématu [Rozdělení a vzorky](https://msdn.microsoft.com/library/azure/dn905960.aspx).
-* **predikce**: Předpovězené hodnoty nebo hodnot z modelu strojového učení. Možná jste se také setkali s termínem „predikované skóre“. To však nepředstavuje konečný výstup modelu. Podle skóre se řídí vyhodnocení modelu.
+* **prediction**: Předpovězené hodnoty nebo hodnot z modelu strojového učení. Možná jste se také setkali s termínem „predikované skóre“. To však nepředstavuje konečný výstup modelu. Podle skóre se řídí vyhodnocení modelu.
 * **Regrese**: Model pro predikci hodnoty na základě nezávislých proměnných, například předpověď ceny automobilu na základě jeho roku a provést.
 * **skóre**: Předpovězená hodnota generovaná z natrénovaného klasifikačního nebo regresního modelu pomocí [modul určení skóre modelu](https://msdn.microsoft.com/library/azure/dn905995.aspx) v nástroji Machine Learning Studio. Klasifikační modely rovněž vracejí skóre pro pravděpodobnost předpovězené hodnoty. Po vygenerování skóre z modelu můžete vyhodnotit jeho přesnost pomocí [modulu pro vyhodnocení modelu](https://msdn.microsoft.com/library/azure/dn905915.aspx).
 * **Ukázka**: Část datové sady, by měla představovat celek. Vzorky lze vybírat náhodně nebo podle konkrétních příznaků či atributů datové sady.

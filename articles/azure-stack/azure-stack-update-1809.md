@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 4cbbc482a05e125f92efd98b0824ec38ae1ddefd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: d47a90851777b3256474a88e5881afd8f52547f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244692"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263318"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -79,7 +79,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 - Služba backup infrastruktury přesune z [síťové infrastruktury veřejných](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) k [síť veřejných virtuálních IP adres](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Zákazníci se musí zajistit služby má přístup k umístění úložiště zálohy z veřejné sítě VIP.  
 
 > [!IMPORTANT]  
-> Pokud máte bránu firewall, která neumožňuje připojení z veřejné sítě VIP k souborovému serveru, tato změna způsobí, že infrastruktura zálohování se nezdaří s "Chyba 53 cesta sítě nebyla nalezena." Toto je zásadní změnu, která nemá žádné rozumné řešení. Microsoft se na základě názorů zákazníků, vrátí tuto změnu v opravu hotfix. Podívejte se prosím [publikovat aktualizace krokům](#post-update-steps) pro další informace o dostupných oprav hotfix pro 1809. Jakmile je k dispozici oprava hotfix, nezapomeňte použít po aktualizaci na 1809 pouze v případě, že vaše zásady sítě neumožňují veřejnou síť virtuálních IP adres pro přístup k prostředků infrastruktury. v 1811 tato změna uplatní na všech systémech. Pokud jste použili v 1809 opravy hotfix, není vyžadována žádná další akce.  
+> Pokud máte bránu firewall, která neumožňuje připojení z veřejné sítě VIP k souborovému serveru, tato změna způsobí, že infrastruktura zálohování se nezdaří s "Chyba 53 cesta sítě nebyla nalezena." Toto je zásadní změnu, která nemá žádné rozumné řešení. Microsoft se na základě názorů zákazníků, vrátí tuto změnu v opravu hotfix. Podívejte se prosím [publikovat aktualizace krokům](#post-update-steps) pro další informace o dostupných oprav hotfix pro 1809. Jakmile je k dispozici oprava hotfix, nezapomeňte použít po aktualizaci na 1809 pouze v případě, že vaše zásady sítě neumožňují síť veřejných virtuálních IP adres pro přístup k prostředkům infrastruktury. v 1811 tato změna uplatní na všech systémech. Pokud jste použili v 1809 opravy hotfix, není vyžadována žádná další akce.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Běžnými ohroženími zabezpečení a rizika
 

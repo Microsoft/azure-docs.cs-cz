@@ -1,26 +1,8 @@
 ---
-title: Vytvoření více modelů z jednoho experimentu Studio - Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Použití Powershellu k vytvoření více modelů Machine Learning a webových koncových bodů služby se stejný algoritmus, ale s jinou cvičných datových sad.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/04/2017
-ms.openlocfilehash: f54f9f9ff4b55ef1e2e68f61b709cef6635dc231
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250259"
+Název: Vytvoření více modelů z jednoho experimentu titleSuffix Studio: Azure Machine Learning Studio Popis: Použití Powershellu k vytvoření více modelů Machine Learning a webových koncových bodů služby se stejný algoritmus, ale s jinou cvičných datových sad.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/04/2017
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Použití Powershellu k vytvoření Studio modely a koncových bodů webové služby z jednoho experimentu
 

@@ -8,20 +8,20 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 790f49f0fae98162b3443c78d813b1070e4514a0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063909"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303883"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Kurz integrace protokolů Azure: Zpracování událostí služby Azure Key Vault pomocí Event Hubs
 
 >[!IMPORTANT]
-> Funkce integrace protokolů Azure se přestanou používat podle 06/01/2019. Soubory ke stažení AzLog se deaktivuje 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkce integrace protokolů Azure se přestanou používat podle 06/01/2019. Soubory ke stažení AzLog byly deaktivovány 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Integrace protokolů Azure slouží k načtení protokolovaných událostí a zpřístupněte je do vašeho systému pro správu (SIEM) událostí zabezpečení. Tento kurz ukazuje příklad použití Azure Log Integration pro zpracování protokoly získané prostřednictvím služby Azure Event Hubs.
 
@@ -56,21 +56,21 @@ Před dokončením kroků v tomto článku, budete potřebovat následující:
  
 1. Systém s přístupem k Internetu, který splňuje požadavky na instalaci integrace protokolů Azure. Systém může být v cloudové službě nebo na místně hostovaném.
 
-1. [Integrace protokolů Azure](https://www.microsoft.com/download/details.aspx?id=53324) nainstalované. K jeho instalaci:
+1. Integrace s Azure Log nainstalované. K jeho instalaci:
 
    a. Použití vzdálené plochy pro připojení k systému uvedené v kroku 2.   
-   b. Zkopírujte instalační program pro integraci protokolů Azure do systému. Je možné [stáhnout instalační soubory](https://www.microsoft.com/download/details.aspx?id=53324).   
-   c. Spusťte instalační program a přijměte licenční podmínky pro Software společnosti Microsoft.   
-   d. Pokud vám poskytne informace o telemetrii, nechte toto políčko zaškrtnuté. Pokud místo toho by není odeslat informace o využití do Microsoftu, zrušte zaškrtnutí políčka.
-   
+   b. Zkopírujte instalační program pro integraci protokolů Azure do systému. c. Spusťte instalační program a přijměte licenční podmínky pro Software společnosti Microsoft.
+
+1. Pokud vám poskytne informace o telemetrii, nechte toto políčko zaškrtnuté. Pokud místo toho by není odeslat informace o využití do Microsoftu, zrušte zaškrtnutí políčka.
+
    Další informace o integraci protokolů Azure a jak ji nainstalovat, naleznete v tématu [integrace protokolů Azure s protokolování diagnostiky Azure a předávání událostí Windows](security-azure-log-integration-get-started.md).
 
 1. Nejnovější verze prostředí PowerShell.
- 
+
    Pokud máte nainstalovaný Windows Server 2016, pak je mít minimálně PowerShell 5.0. Pokud používáte jiná verze systému Windows Server, bude pravděpodobně starší verzi prostředí PowerShell nainstalovaný. Můžete zkontrolovat verzi tak, že zadáte ```get-host``` v okně Powershellu. Pokud nemáte nainstalovaný PowerShell 5.0, můžete si [si ho stáhnout](https://www.microsoft.com/download/details.aspx?id=50395).
 
    Až budete mít alespoň Powershellu 5.0, můžete přejít k instalaci nejnovější verze:
-   
+
    a. V okně Powershellu, zadejte ```Install-Module Azure``` příkazu. Dokončete instalaci.    
    b. Zadejte ```Install-Module AzureRM``` příkazu. Dokončete instalaci.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074712"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261141"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikace SaaS nabízí průvodce publikováním
 
@@ -40,7 +40,7 @@ Aplikace SaaS jsou k dispozici v obou prodejních míst Azure následující tab
 | Nabídky SaaS aplikace | Obchodní požadavky | Technické požadavky |  
 | --- | --- | --- |  
 | **Kontaktujte nás** | Ano | Ne |  
-| **Power BI nebo Dynamics** | Ano | Ano (integrace služby Azure AD) |  
+| **PowerBI / Dynamics** | Ano | Ano (integrace služby Azure AD) |  
 | **Aplikace SaaS**| Ano | Ano (integrace služby Azure AD) |     
 
 ## <a name="saas-list"></a>Seznam SaaS

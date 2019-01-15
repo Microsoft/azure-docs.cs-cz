@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 6b73cf04d768381bcc0e27cc76b6c2a25d4d9a2c
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341051"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265613"
 ---
 # <a name="azure-stack-telemetry"></a>Telemetrická data Azure Stack
 
@@ -33,7 +33,7 @@ Telemetrie pro operátory Azure stacku, můžou poskytovat cenné informace v po
 > [!NOTE]
 > Můžete také nakonfigurovat služby Azure Stack k předávání informací o využití do Azure pro účely fakturace. Toto je nezbytné pro Azure Stack Několikauzlovými zákazníky, kteří zvolte platit jako využití fakturace. Generování sestav o využívání je řízen nezávisle z telemetrických dat a nevyžaduje pro zákazníky s několika uzly, kteří se rozhodnou kapacitního modelu, nebo pro uživatele Azure Stack Development Kit. Pro tyto scénáře vytváření sestav využití může být vypnuto [pomocí registrace skriptu](https://docs.microsoft.com/azure/azure-stack/azure-stack-usage-reporting).
 
-Telemetrická data Azure Stack je založená na Windows serveru 2016 připojené uživatelské prostředí a Telemetrie součásti, která používá [trasování událostí pro Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technologie ke shromažďování a ukládání události a data. Komponenty služby Azure Stack pomocí stejné technologie publikovat události a data shromáždit pomocí veřejného operačního systému protokolování událostí a trasování rozhraní API. Příklady těchto součástí Azure stacku tito poskytovatelé: síťovému prostředku, prostředek úložiště, sledování prostředků a aktualizace prostředku. Součást připojené uživatelské prostředí a Telemetrie zašifruje data pomocí protokolu SSL a používá Připnutí certifikátu k přenosu dat prostřednictvím protokolu HTTPS na službu pro správu dat společnosti Microsoft.
+Telemetrická data Azure Stack je založená na Windows serveru 2016 připojené uživatelské prostředí a Telemetrie součásti, která používá [trasování událostí pro Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technologie ke shromažďování a ukládání události a data. Komponenty služby Azure Stack pomocí stejné technologie publikovat události a data shromáždit pomocí veřejného operačního systému protokolování událostí a trasování rozhraní API. Tyto součásti služby Azure Stack příklady tito poskytovatelé: Síťového prostředku, prostředek úložiště, sledování prostředků a provést upgrade prostředku. Součást připojené uživatelské prostředí a Telemetrie zašifruje data pomocí protokolu SSL a používá Připnutí certifikátu k přenosu dat prostřednictvím protokolu HTTPS na službu pro správu dat společnosti Microsoft.
 
 > [!IMPORTANT]
 > Pokud chcete povolit tok telemetrických dat, musí být otevřený ve vaší síti port 443 (HTTPS). Součásti připojené uživatelské prostředí a Telemetrie připojí ke službě správy dat společnosti Microsoft na https://v10.vortex-win.data.microsoft.com. Součásti připojené uživatelské prostředí a Telemetrie se také připojuje k https://settings-win.data.microsoft.com ke stažení informací o konfiguraci.
@@ -112,7 +112,7 @@ Editor registru Windows můžete ručně nastavit úroveň telemetrie na fyzick�
 Před nasazením služby Azure Stack na hostiteli development kit, spusťte v CloudBuilder.vhdx a v okně PowerShell se zvýšenými oprávněními spusťte následující skript:
 
 ```powershell
-### Get current AllowTelmetry value on DVM Host
+### Get current AllowTelemetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ### Set & Get updated AllowTelemetry value for ASDK-Host

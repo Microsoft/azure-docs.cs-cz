@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 1c58c77cb20f269c3a11615ccebf0bdc9cce0d86
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 54db7cc65e05b383b251c21aa95569c6c2d58194
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230797"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306161"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat do a z SQL serveru pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ Můžete kopírovat data z/do databáze SQL serveru do jakékoli podporovaného 
 
 Konkrétně tento konektor SQL serveru podporuje:
 
-- SQL Server verze 2016, 2014, 2012, 2008 R2, 2008 a 2005
+- SQL Server version 2016, 2014, 2012, 2008 R2, 2008, and 2005
 - Kopírování dat pomocí **SQL** nebo **Windows** ověřování.
 - Jako zdroj načítání dat pomocí jazyka SQL nebo uloženou proceduru.
 - Jako jímku přidávání dat do cílové tabulky nebo volání uložené procedury s vlastní logikou během kopírování.
@@ -53,7 +53,7 @@ Pro propojenou službu SQL serveru jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Systému SQL Server** | Ano |
+| type | Vlastnost type musí být nastavená na: **SqlServer** | Ano |
 | připojovací řetězec |Zadejte připojovací řetězec informace potřebné pro připojení k databázi SQL serveru pomocí ověřování SQL nebo ověřování Windows. Přečtěte si v následujícím příkladu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
@@ -95,11 +95,11 @@ Pro propojenou službu SQL serveru jsou podporovány následující vlastnosti:
                 "type": "SecureString",
                 "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
             },
-             "userName": "<domain\\username>",
-             "password": {
+            "userName": "<domain\\username>",
+            "password": {
                 "type": "SecureString",
                 "value": "<password>"
-             }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -238,9 +238,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -343,8 +343,8 @@ Tato část poskytuje příklad, který kopíruje data ze zdrojové tabulky s ž
 ```sql
 create table dbo.SourceTbl
 (
-       name varchar(100),
-       age int
+    name varchar(100),
+    age int
 )
 ```
 
@@ -353,9 +353,9 @@ create table dbo.SourceTbl
 ```sql
 create table dbo.TargetTbl
 (
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
+    identifier int identity(1,1),
+    name varchar(100),
+    age int
 )
 ```
 
@@ -475,7 +475,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 Uložená procedura funkce využívá možnosti [Table-Valued parametry](https://msdn.microsoft.com/library/bb675163.aspx).
 
 >[!NOTE]
->Při zápisu na datový typ Money/Smallmoney ve vyvolání uložené procedury, může se zaokrouhlí hodnoty. Zadejte odpovídající typ dat v TVP jako desetinné místo peníze/Smallmoney zmírnit. 
+>Při zápisu na datový typ Money/Smallmoney ve vyvolání uložené procedury, může se zaokrouhlí hodnoty. Zadejte odpovídající typ dat v TVP jako desetinné místo peníze/Smallmoney zmírnit.
 
 ## <a name="data-type-mapping-for-sql-server"></a>Datový typ mapování pro SQL server
 
@@ -534,7 +534,6 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
 4. Přepněte **IP adresy** kartu. Posuňte se dolů viz **IPAll** oddílu. Poznamenejte si **TCP Port** (výchozí hodnota je **1433**).
 5. Vytvoření **pravidla pro bránu Windows Firewall** na počítači za účelem povolený příchozí provoz přes tento port.  
 6. **Ověření připojení**: Pro připojení k SQL serveru pomocí plně kvalifikovaného názvu, použijte SQL Server Management Studio z různých počítačů. Například: `"<machine>.<domain>.corp.<company>.com,1433"`.
-
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

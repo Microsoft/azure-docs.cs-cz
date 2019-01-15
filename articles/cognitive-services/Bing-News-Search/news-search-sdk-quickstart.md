@@ -8,263 +8,87 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
-ms.date: 01/30/2018
+ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 5b3e68765fbcff12dcb5337aec38623b8994882c
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 66f743273f9937902c3d39a0fc4dd2f034ab8d10
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156795"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260240"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Rychlý start: Pomocí sady SDK vyhledávání zpráv Bingu pro vyhledávání zprávC#
 
-Sada SDK Bingu pro vyhledávání zpráv obsahuje funkce rozhraní REST API pro dotazy na zprávy a parsování výsledků. 
+Pomocí tohoto rychlého startu zahájíte zpráv pomocí sady SDK vyhledávání zpráv Bingu pro vyhledávání C#. Při vyhledávání zpráv Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch).
 
-[Zdrojový kód ukázek sady SDK Bingu pro vyhledávání zpráv v jazyce C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch) je k dispozici na GitHubu.
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="application-dependencies"></a>Závislosti aplikace
-Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).  
+* Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
+* Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](http://www.mono-project.com/).
+
+* [Balíček NuGet sady SDK pro vyhledávání zpráv Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). Instaluje se tento balíček nainstaluje taky následující:
+    * Microsoft.Rest.ClientRuntime
+    * Microsoft.Rest.ClientRuntime.Azure
+    * Newtonsoft.Json
 
 Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Bingu pro vyhledávání zpráv, přejděte v sadě Visual Studio v Průzkumníku řešení na možnost `Manage NuGet Packages`.  Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.NewsSearch`.
 
-Instalací [balíčku NuGet sady SDK Bingu pro vyhledávání zpráv](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0) se také nainstalují závislosti, včetně:
-* Microsoft.Rest.ClientRuntime
-* Microsoft.Rest.ClientRuntime.Azure
-* Newtonsoft.Json
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-## <a name="news-search-client"></a>Klient pro vyhledávání zpráv
-Chcete-li vytvořit instanci `NewsSearchClient`, přidávat direktiva using:
-```
-using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-```
-Potom vytvořte instanci klienta:
-```
-var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
+1. Vytvořte nový C# konzole řešení v sadě Visual Studio. Pak přidejte následující kód do souboru hlavní kód.
+    
+    ```csharp
+    using System;
+    using System.Linq;
+    using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
+    ```
 
-```
-Pomocí klienta vyhledejte text dotazu:
-```
-var newsResults = client.News.SearchAsync(query: "Quantum  Computing", market: "en-us", count: 10).Result;
-Console.WriteLine("Search news for query \"Quantum  Computing\" with market and count");
+2. Vytvořte proměnnou pro vaše rozhraní API key hledaný termín a potom vytvořte instanci klienta hledání zpráv s ním.
 
-```
-Parsujte zprávy vrácené ve výsledcích předchozího dotazu:
-```
-if (newsResults.Value.Count > 0)
-{
-    var firstNewsResult = newsResults.Value[0];
+    ```csharp
+    var key = "YOUR-ACCESS-KEY";
+    var searchTerm = "Quantum Computing";
+    var client = new NewsSearchClient(new ApiKeyServiceClientCredentials(key));
+    ```
 
-    Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
-    Console.WriteLine($"News result count: {newsResults.Value.Count}");
-    Console.WriteLine($"First news name: {firstNewsResult.Name}");
-    Console.WriteLine($"First news url: {firstNewsResult.Url}");
-    Console.WriteLine($"First news description: {firstNewsResult.Description}");
-    Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-    Console.WriteLine($"First news provider: {firstNewsResult.Provider[0].Name}");
-}
+## <a name="send-a-request-and-parse-the-result"></a>Odešle žádost a analyzovat výsledky
 
-else
-{
-    Console.WriteLine("Couldn't find news results!");
-}
+1. Odeslat žádost o vyhledávání službě Bingu pro vyhledávání zpráv pomocí klienta:
+    ```csharp
+    var newsResults = client.News.SearchAsync(query: searchTerm, market: "en-us", count: 10).Result;
+    ```
 
-```
-## <a name="complete-console-application"></a>Kompletní konzolová aplikace
+2. Pokud nebyly vráceny žádné výsledky, analyzovat je:
 
-Následující konzolová aplikace spustí dříve definovaný dotaz a vyhledá zprávy pro výraz „Quantum Computing“ (Kvantové výpočty). Požadavek obsahuje parametry `market` a `count`. Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše celkový odhadovaný počet shod (`totalEstimatedMatches`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název (`name`) zprostředkovatele (`provider`).
-
-```
-using System;
-using System.Linq;
-using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
-
-namespace NewsSrchSDK
-{
-    class Program
+    ```csharp
+    if (newsResults.Value.Count > 0)
     {
-        static void Main(string[] args)
-        {
-            var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
-
-            try
-            {
-                var newsResults = client.News.SearchAsync(query: "Quantum  Computing", market: "en-us", count: 10).Result;
-                Console.WriteLine("Search news for query \"Quantum  Computing\" with market and count");
-
-                if (newsResults == null)
-                {
-                    Console.WriteLine("Didn't see any news result data..");
-                }
-                else
-                {
-                    if (newsResults.Value.Count > 0)
-                    {
-                        var firstNewsResult = newsResults.Value.First();
-
-                        Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
-                        Console.WriteLine($"News result count: {newsResults.Value.Count}");
-                        Console.WriteLine($"First news name: {firstNewsResult.Name}");
-                        Console.WriteLine($"First news url: {firstNewsResult.Url}");
-                        Console.WriteLine($"First news description: {firstNewsResult.Description}");
-                        Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-                        Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find news results!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-
-            // Include these methods to run queries explained under headings following.
-            // NewsSearchWithFilters(client);
-            // NewsCategory(client);
-            // TrendingTopics(client);
-
-            Console.WriteLine("Any key to exit...");
-            Console.ReadKey();
-        }
-
+        var firstNewsResult = newsResults.Value[0];
+    
+        Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
+        Console.WriteLine($"News result count: {newsResults.Value.Count}");
+        Console.WriteLine($"First news name: {firstNewsResult.Name}");
+        Console.WriteLine($"First news url: {firstNewsResult.Url}");
+        Console.WriteLine($"First news description: {firstNewsResult.Description}");
+        Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
+        Console.WriteLine($"First news provider: {firstNewsResult.Provider[0].Name}");
     }
-}
-
-```
-## <a name="recent-news-freshness-and-sortby-parameters"></a>Nejnovější zprávy a parametry freshness a sortBy
-Následující kód vyhledá nejnovější zprávy pro výraz „Artificial Intelligence“ (Umělá inteligence) s využitím parametrů `freshness` a `sortBy`. Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše celkový odhadovaný počet shod (`totalEstimatedMatches`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název (`name`) zprostředkovatele.
-```
-        public static void NewsSearchWithFilters(NewsSearchClient client)
-        {
-            try
-            {
-                var newsResults = client.News.SearchAsync(query: "Artificial Intelligence", market: "en-us", freshness: "Week", sortBy: "Date").Result;
-                Console.WriteLine("Search most recent news for query \"Artificial Intelligence\" with freshness and sortBy");
-
-                if (newsResults == null)
-                {
-                    Console.WriteLine("Didn't see any news result data..");
-                }
-                else
-                {
-                    if (newsResults.Value.Count > 0)
-                    {
-                        var firstNewsResult = newsResults.Value.First();
-
-                        Console.WriteLine($"\r\nTotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
-                        Console.WriteLine($"News result count: {newsResults.Value.Count}");
-                        Console.WriteLine($"First news name: {firstNewsResult.Name}");
-                        Console.WriteLine($"First news url: {firstNewsResult.Url}");
-                        Console.WriteLine($"First news description: {firstNewsResult.Description}");
-                        Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-                        Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find news results!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-        }
-
-```
-
-## <a name="category-news-safe-search"></a>Zprávy z kategorie a bezpečné hledání
-Následující kód vyhledá zprávy z kategorie filmů a televizní zábavy s využitím bezpečného hledání.  Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše kategorii (`category`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název (`name`) zprostředkovatele.
-```
-        public static void NewsCategory(NewsSearchClient client)
-        {
-            try
-            {
-                var newsResults = client.News.CategoryAsync(category: "Entertainment_MovieAndTV", market: "en-us", safeSearch: "strict").Result;
-                Console.WriteLine("Search category news for movie and TV entertainment with safe search");
-
-                if (newsResults == null)
-                {
-                    Console.WriteLine("Didn't see any news result data..");
-                }
-                else
-                {
-                    if (newsResults.Value.Count > 0)
-                    {
-                        var firstNewsResult = newsResults.Value.First();
-
-                        Console.WriteLine($"\r\nNews result count: {newsResults.Value.Count}");
-                        Console.WriteLine($"First news category: {firstNewsResult.Category}");
-                        Console.WriteLine($"First news name: {firstNewsResult.Name}");
-                        Console.WriteLine($"First news url: {firstNewsResult.Url}");
-                        Console.WriteLine($"First news description: {firstNewsResult.Description}");
-                        Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-                        Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find news results!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-        }
-
-```
-## <a name="trending-topics"></a>Populární témata
-Následující kód vyhledá populární témata zpráv v Bingu. Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše název (`name`), text dotazu (`text of query`), adresu URL webu (`webSearchUrl`), adresu URL zprávy (`newsSearchUrl`) a adresu URL obrázku(`image.Url`).
-```
-        public static void TrendingTopics(NewsSearchClient client)
-        {
-            try
-            {
-                var trendingTopics = client.News.TrendingAsync(market: "en-us").Result;
-                Console.WriteLine("Search news trending topics in Bing");
-
-                if (trendingTopics == null)
-                {
-                    Console.WriteLine("Didn't see any news trending topics..");
-                }
-                else
-                {
-                    if (trendingTopics.Value.Count > 0)
-                    {
-                        var firstTopic = trendingTopics.Value.First();
-
-                        Console.WriteLine($"\r\nTrending topics count: {trendingTopics.Value.Count}");
-                        Console.WriteLine($"First topic name: {firstTopic.Name}");
-                        Console.WriteLine($"First topic query: {firstTopic.Query.Text}");
-                        Console.WriteLine($"First topic image url: {firstTopic.Image.Url}");
-                        Console.WriteLine($"First topic webSearchUrl: {firstTopic.WebSearchUrl}");
-                        Console.WriteLine($"First topic newsSearchUrl: {firstTopic.NewsSearchUrl}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find news trending topics!");
-                    }
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-        }
-
-```
+    
+    else
+    {
+        Console.WriteLine("Couldn't find news results!");
+    }
+    Console.WriteLine("Enter any key to exit...");
+    Console.ReadKey();
+    ```
 
 ## <a name="next-steps"></a>Další postup
 
-[Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+> [!div class="nextstepaction"]
+[Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

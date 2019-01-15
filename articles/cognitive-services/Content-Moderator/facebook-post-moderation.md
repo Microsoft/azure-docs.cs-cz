@@ -1,25 +1,25 @@
 ---
 title: 'Kurz: Moderování obsahu Facebooku - Azure Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Moderování stránek Facebook pomocí Content Moderatoru.
+description: V tomto kurzu se dozvíte, jak používat na základě machine learningu Content Moderator moderování příspěvků na Facebooku a komentáře.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 09/18/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 2b655e488b15b4520bc1de24b730f97269bddb4b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 085ddaf757f2a11b4db4aadb22ad16009d29231e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231797"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260431"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Kurz: Moderování obsahu Facebooku s Content Moderator
 
-V tomto kurzu zjistíme, jak pomocí Content Moderatoru založeného na strojovém učení moderovat příspěvky a komentáře na Facebooku.
+V tomto kurzu se dozvíte, jak používat na základě machine learningu Content Moderator moderování příspěvků na Facebooku a komentáře.
 
 Tento kurz vás provede následujícími kroky:
 
@@ -35,7 +35,7 @@ Následující obrázek znázorňuje stavební kameny řešení.
 
 ## <a name="create-a-content-moderator-team"></a>Vytvoření týmu Content Moderatoru
 
-Na stránce [Rychlý start](quick-start.md) se můžete registrovat do Content Moderatoru a vytvořit tým.
+Odkazovat [zkuste Content Moderator na webu](quick-start.md) rychlého startu pro registraci pro Content Moderator a vytvoření týmu.
 
 ## <a name="configure-image-moderation-workflow-threshold"></a>Konfigurace pracovního postupu pro moderování obrázků (prahová hodnota)
 

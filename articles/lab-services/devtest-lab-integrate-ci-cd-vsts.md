@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bcc39f2d8cf1ca0440f8028464d9041435914477
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082947"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263403"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Azure DevTest Labs integrovat do Azure DevOps, průběžná integrace a doručování kanálu
 Můžete použít *úloh Azure DevTest Labs* rozšíření, které je nainstalovaný Azure DevOps na snadno integrovat vaše sestavení a vydání kanálu CI/CD s Azure DevTest Labs. Rozšíření nainstaluje tři úkoly: 
@@ -85,7 +85,7 @@ Tato část popisuje postup vytvoření šablony Azure Resource Manageru, který
 
 1. Skript vrácení se změnami do systému správy zdrojů. Název na něco jako **GetLabVMParams.ps1**.
 
-   Při spuštění tohoto skriptu na agentovi v rámci procesu vydávání verzí, a pokud použijete kroky úloh, jako *Azure File Copy* nebo *prostředí PowerShell na cílových počítačích*, skript shromažďuje hodnoty, které potřebujete nasazení aplikace do virtuálního počítače. Tyto úlohy obvykle použijete k nasazení aplikace na Virtuálním počítači Azure. Úkoly vyžadují hodnoty, jako je název skupiny prostředků virtuálního počítače, IP adresy a plně kvalifikovaný název domény (plně kvalifikovaného názvu domény).
+   Při spuštění tohoto skriptu na agentovi v rámci procesu vydávání verzí, a pokud použijete kroky úloh, jako *Azure File Copy* nebo *prostředí PowerShell na cílových počítačích*, skript shromažďuje hodnoty, které potřebujete nasazení aplikace do virtuálního počítače. Tyto úlohy obvykle použijete k nasazení aplikace na Virtuálním počítači Azure. Úkoly vyžadují hodnoty, jako je název skupiny prostředků virtuálního počítače, IP adresy a plně kvalifikovaný název domény (FQDN).
 
 ## <a name="create-a-release-pipeline-in-release-management"></a>Vytvořte vydávání v produktu Release Management
 Pokud chcete vytvořit kanál pro vydávání verzí, postupujte takto:
@@ -138,7 +138,7 @@ Další fáze nasazení je vytvoření virtuálního počítače, který chcete 
 1. Kanál pro vydávání verzí, vyberte **přidat úkoly** a pak klikněte na **nasadit** kartu, přidejte *prostředí Azure PowerShell* úloh. Úkol nakonfigurujte následujícím způsobem:
 
    > [!NOTE]
-   > Shromažďování podrobností virtuálního počítače DevTest Labs, najdete v článku [nasazení: Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) a spusťte tento skript.
+   > Shromažďování podrobností virtuálního počítače DevTest Labs, najdete v článku [nasazení: Prostředí Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) a spusťte tento skript.
 
    a. Pro **typ připojení Azure**vyberte **Azure Resource Manageru**.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 53f9850d794061f5aaebc556743291ae8f3305fb
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e4f2362e6baca14c540070a47b2c71fd99465f33
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721285"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305413"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru
 
@@ -50,15 +50,15 @@ Když použijete spravované identity pro prostředky Azure, může kód získat
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí spravované identity přiřazené systémem virtuálního počítače a jeho použití k volání Azure Resource Manageru 
 
-V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nemáte nainstalovaný, stáhněte si ho [odtud](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1). 
+V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nemáte nainstalovaný, stáhněte si ho [odtud](https://docs.microsoft.com/powershell/azure/overview). 
 
 1.  Na portálu přejděte na **Virtuální počítače**, přejděte na svůj virtuální počítač s Windows a v části **Přehled** klikněte na **Připojit**. 
 2.  Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
 3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**. 
-4.  Pomocí příkazu Invoke-WebRequest v PowerShellu požádejte místní spravovanou identitu o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.
+4.  Pomocí rutiny Invoke-WebRequest, vytvořte žádost na místní spravovanou identitu pro koncový bod prostředků Azure získat přístupový token pro Azure Resource Manageru.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
@@ -75,7 +75,7 @@ V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nem�
     $ArmToken = $content.access_token
     ```
     
-    Nakonec proveďte pomocí přístupového tokenu volání Azure Resource Manageru. V tomto příkladu také používáme Invoke-WebRequest v PowerShellu pro provedení volání do Azure Resource Manageru a zahrnujeme přístupový token do autorizační hlavičky.
+    Nakonec proveďte pomocí přístupového tokenu volání Azure Resource Manageru. V tomto příkladu jsme také používáte rutiny Invoke-WebRequest volání do Azure Resource Manageru a zahrnout přístupového tokenu v autorizační hlavičce.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content

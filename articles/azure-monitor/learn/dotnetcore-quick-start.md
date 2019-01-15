@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 2db8784432398c8e913705d73b0232e36db44084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 14295bca12e64174d03cfd1c2bd8d214d801e8e5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081207"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261056"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
@@ -87,7 +87,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Graf analýzy uživatelských požadavků za časové období](./media/dotnetcore-quick-start/0007-dc.png)
 
-4. Vraťte se na stránku **Přehled** a prozkoumejte řídicí panely klíčových ukazatelů výkonu.  Tento řídicí panel poskytuje statistické údaje o stavu vaší aplikace, včetně počtu příchozích požadavků, doby jejich trvání a všech chyb, ke kterým došlo. 
+4. Vraťte se **přehled** stránce a prozkoumejte řídicích panelů klíčového ukazatele výkonu.  Tento řídicí panel poskytuje statistické údaje o stavu vaší aplikace, včetně počtu příchozích požadavků, doby jejich trvání a všech chyb, ke kterým došlo. 
 
    ![Graf s časovou osou přehledu stavu](./media/dotnetcore-quick-start/overview-graphs.png)
 

@@ -1,23 +1,23 @@
 ---
 title: Moderování úloh a kontrol lidských v the smyčky – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Jistotu lidské platí pro moderování s podporou počítače pro dosažení co nejlepších výsledků.
+description: Kombinace moderování s podporou počítače s možnostmi lidských v the smyčky pomocí Azure Content Moderator revize API k získání nejlepších výsledků pro vaši firmu.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 1/21/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a348b18d1ecc9c0e4405c54a8e554d932781ec92
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223249"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265341"
 ---
-# <a name="moderation-jobs-and-reviews"></a>Moderování úloh a kontrol
+# <a name="content-moderation-jobs-and-reviews"></a>Moderování obsahu úloh a kontrol
 
 Kombinace moderování s podporou počítače s možnostmi lidských v the smyčky pomocí Azure Content Moderator [revizi rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) k dosažení nejlepších výsledků pro vaši firmu.
 
@@ -55,12 +55,12 @@ Použití `Job.Get` operace a identifikátor úlohy pro získání podrobností 
 
 Zadání uveďte následující informace:
 
-- ID revize týmu: identifikátor úlohy vrácené z předchozí operace
+- ID revize týmu: Identifikátor úlohy vrácené z předchozí operace
 
 Odpověď obsahuje následující informace:
 
 - Identifikátor revize vytvořili. (Toto ID použít k získání požadovaných výsledků konečnou kontrolu.)
-- Stav úlohy (dokončení nebo probíhající): moderování přiřazené značky (páry klíč hodnota).
+- Stav úlohy (dokončení nebo probíhající): Moderování přiřazené značky (páry klíč hodnota).
 - Sestava spuštění úlohy.
  
  
@@ -110,7 +110,7 @@ Odpověď obsahuje následující informace:
             ]
         }
  
-![Obrázek kontroly pro lidských moderátorů](images/ocr-sample-image.PNG)
+![Kontrola obrázku lidskými moderátory](images/ocr-sample-image.PNG)
 
 ## <a name="review-operations"></a>Operace kontroly
 

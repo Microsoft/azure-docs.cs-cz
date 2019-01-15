@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384679"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265886"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace časovaných metadat v živém streamování
 
@@ -89,7 +89,7 @@ Jednoduchý režim RTMP Media Services podporuje jednu zprávu upozornění tuk 
 
 ---------------------------
 
-#### <a name="211-cancelation-and-updates"></a>2.1.1 zrušení a aktualizace
+#### <a name="211-cancellation-and-updates"></a>2.1.1 zrušení a aktualizace
 
 Možné zrušit nebo aktualizaci zasláním více zpráv se stejnými čas prezentace a ID zprávy Čas prezentace a ID jednoznačné určení události, a poslední zprávy přijaté pro konkrétní prezentace dobu, která splňuje omezení před je zpráva, která je reagovali na ni. Aktualizovaná událost nahradí všechny dříve přijaté zprávy. Před omezení je čtyři sekundy. Zprávy přijaté alespoň čtyři sekundy před jejich prezentaci se má akce provést.
 
@@ -157,7 +157,7 @@ Do pole MediaDataBox (mdat) musí mít následující formát:
 ------------------------------
 
 
-### <a name="224-cancelation-and-updates"></a>2.2.4 zrušení a aktualizace
+### <a name="224-cancellation-and-updates"></a>2.2.4 zrušení a aktualizace
 Možné zrušit nebo aktualizaci zasláním více zpráv se stejnými čas prezentace a ID zprávy  Čas prezentace a ID jednoznačné určení události. Poslední zprávy přijaté pro konkrétní prezentace času, která splňuje omezení před, je zpráva, která je reagovali na ni. Aktualizované zpráva nahradí všechny dříve přijaté zprávy.  Před omezení je čtyři sekundy. Zprávy přijaté alespoň čtyři sekundy před jejich prezentaci se má akce provést. 
 
 
@@ -392,7 +392,7 @@ Ingestování technologie Smooth Streaming, které musí obsahovat Data Box méd
 
 **[DASH]**  ISO/IEC 23009 1 2014 – informačních technologií – dynamické adaptivní streamování přes HTTP (DASH) – část 1: Popis a segment média prezentace formátů, 2 edition
 
-**[HLS]**  ["HTTP Live Streaming", draft-pantos-http-live-streaming-14, 14. října 2014,](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
+**[HLS]** [“HTTP Live Streaming”, draft-pantos-http-live-streaming-14, October 14, 2014,](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
 **[MS-SSTR]**  ["Microsoft Smooth Streaming protokol", 15. května 2014](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 

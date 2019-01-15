@@ -1,26 +1,7 @@
 ---
-title: Nasazení a využití – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Azure Machine Learning můžete použít k nasazení pracovních postupů machine learning a modely jako webové služby. Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: ed57f80a210cdb9c7ff8e77da2269d8494892fcc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268423"
+Název: Nasazení a využití titleSuffix: Azure Machine Learning Studio Popis: Azure Machine Learning můžete použít k nasazení pracovních postupů machine learning a modely jako webové služby. Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu. Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio webové služby: Nasazení a využití
 Azure Machine Learning můžete použít k nasazení pracovních postupů machine learning a modely jako webové služby. Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes Internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu. Protože jsou webové služby RESTful, můžete je volat z různé programovací jazyky a platformy, jako je .NET nebo Javě a z aplikace, jako je Excel.

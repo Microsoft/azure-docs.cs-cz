@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 7c7881f08828572c01a5e0decb270c653416ef9b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: de11ebdc38ae5085fef274181084310ccc02a329
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024259"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304002"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -31,7 +31,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se spouští vaše prostředky v Azure. Abyste vytvořili skupinu prostředků pomocí [vytvořit skupiny az] [ az-group-create] příkazu.
+Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. Toto umístění je uložení metadat skupiny prostředků, je také kde prostředky běží v Azure, pokud nezadáte jiné oblasti při vytváření prostředku. Abyste vytvořili skupinu prostředků pomocí [vytvořit skupiny az] [ az-group-create] příkazu.
 
 Následující příklad vytvoří skupinu prostředků *myAKSCluster* v umístění *eastus* (USA – východ).
 
@@ -268,7 +268,7 @@ V tomto rychlém startu předem vytvořené Image kontejnerů byly použity k vy
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci.
+V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci.  [Přístup k řídicímu panelu Kubernetes webové] [ kubernetes-dashboard] pro cluster, který jste právě vytvořili.
 
 Další informace o službě AKS a podrobné vysvětlení kompletního příkladu od kódu až po nasazení najdete v kurzu clusteru Kubernetes.
 
@@ -297,3 +297,4 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [azure-portal]: https://portal.azure.com
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services
+[kubernetes-dashboard]: kubernetes-dashboard.md

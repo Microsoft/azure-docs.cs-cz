@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a50cb5dc204a209c2b9d899c50ae7def55f4deb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4f8929182995445ff0b327bc22a9cdf75ec5641b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118162"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262573"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](https://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -29,7 +29,7 @@ Export dat Application Insights do Power BI třemi způsoby:
 * [**Power BI adaptér**](#power-pi-adapter). Předdefinovaná sada grafy, ale můžete přidat vlastní dotazy z jiných zdrojů.
 
 > [!NOTE]
-> Adaptér pro Power BI je nyní **zastaralé**. Předdefinované grafy pro toto řešení se vyplní statické nelze upravovat dotazy. Nemáte možnost upravit tyto dotazy a v závislosti na určitých vlastností objektu data je možné pro připojení k Power BI a být úspěšné, ale je vyplněný žádná data. To je způsobeno kritéria vyloučení, které jsou nastavené v rámci pevně zakódované dotazu. Když toto řešení může i nadále fungovat pro některé zákazníky, vzhledem k absenci flexiblity adaptéru doporučené řešení je použít [ **exportovat dotaz Analytics** ](#export-analytics-queries) funkce.
+> Adaptér pro Power BI je nyní **zastaralé**. Předdefinované grafy pro toto řešení se vyplní statické nelze upravovat dotazy. Nemáte možnost upravit tyto dotazy a v závislosti na určitých vlastností objektu data je možné pro připojení k Power BI a být úspěšné, ale je vyplněný žádná data. To je způsobeno kritéria vyloučení, které jsou nastavené v rámci pevně zakódované dotazu. Když toto řešení může i nadále fungovat pro některé zákazníky, vzhledem k absenci flexibilitu adaptéru doporučené řešení je použít [ **exportovat dotaz Analytics** ](#export-analytics-queries) funkce.
 
 ## <a name="export-analytics-queries"></a>Export analytických dotazů
 Tato trasa umožňuje psát jakýkoli dotaz Analytics nebo exportovat z trychtýře využití a export, který na řídicí panel Power BI. (Můžete přidat na řídicí panel vytvořený adaptér.)
@@ -98,7 +98,7 @@ To může nastat, pokud ještě není aktualizovaný obnovovací token. Proveďt
 
  Pokud máte přístup a aktualizovat přihlašovací údaje nelze použít, otevřete prosím lístek podpory.
 
-### <a name="bad-gateway-502"></a>Chybná brána (502)
+### <a name="bad-gateway-502"></a>Bad Gateway (502)
 To je obvykle způsobeno dotazu Analytics, která vrací data příliš mnoho. Zkuste použít menší časový rozsah dotazu. 
 
 Pokud snižování datové sady z dotazu Analytics nesplňuje vaše požadavky, zvažte použití [API](https://dev.applicationinsights.io/documentation/overview) přetahování větší datové sady. Tady je postup převedení export M dotaz k používání rozhraní API.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 17/07/2018
 ms.author: sedusch
-ms.openlocfilehash: 2a0934fa3bb46eebba02029a8292b9bee6b12c62
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: d5d344f47fa46e9fe0adea048db200ec67a3fadc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728221"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262574"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -100,23 +100,23 @@ Otevřít web, který SAP LaMa a přejděte do infrastruktury. Přejděte na kar
 
 * Popisek: Zvolte název pro instanci konektoru
 * Uživatelské jméno: ID aplikace instančního objektu
-* Heslo: Heslo klíče instanční objekt služby
-* Adresa URL: Zachovat výchozí https://management.azure.com/
+* Heslo: Instanční objekt služby klíč nebo heslo
+* Adresa URL: Ponechat výchozí https://management.azure.com/
 * Monitorování Interval (sekundy): By měl být alespoň 300
 * ID předplatného: ID předplatného Azure
-* Azure Active Directory ID Tenanta: ID tenanta Active Directory
-* Proxy hostitele: název hostitele proxy serveru, pokud SAP LaMa potřebuje pro připojení k Internetu proxy server
+* ID Tenanta Azure Active Directory: ID tenanta Active Directory
+* Proxy hostitele: Název hostitele proxy serveru, pokud SAP LaMa potřebuje pro připojení k Internetu proxy server
 * Port proxy serveru: TCP port proxy serveru
 
 Klikněte na konfigurace testů a ověřit svůj vstup. Měli byste vidět
 
-Úspěšné připojení: připojení k Microsoft cloud bylo úspěšné. Najít 7 skupiny prostředků (požadované jenom 10 skupin)
+Úspěšné připojení: Připojení k Microsoft cloud bylo úspěšné. Najít 7 skupiny prostředků (požadované jenom 10 skupin)
 
 v dolní části tohoto webu.
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>Zřízení nového adaptivní systému SAP
 
-Ruční nasazení nového virtuálního počítače nebo použijte jednu z šablon Azure v [rychlém úložišti](https://github.com/Azure/azure-quickstart-templates). Obsahuje šablony pro [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [aplikační servery SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)a [databáze](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-db). Tyto šablony můžete použít také ke zřízení nového hostitele jako součást kopírování/klonu systému atd.
+Ruční nasazení nového virtuálního počítače nebo použijte jednu z šablon Azure v [rychlém úložišti](https://github.com/Azure/azure-quickstart-templates). Obsahuje šablony pro [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [aplikační servery SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)a [databáze](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database). Tyto šablony můžete použít také ke zřízení nového hostitele jako součást kopírování/klonu systému atd.
 
 Doporučujeme použít samostatnou podsíť pro všechny virtuální počítače, že chcete spravovat pomocí LaMa SAP a nepoužívejte dynamické IP adresy, aby se zabránilo IP adresa "zcizování" při nasazení nových virtuálních počítačů a instancí SAP neupravený.
 
@@ -182,45 +182,45 @@ Součásti jsou potřeba k nasazení šablony. Nejjednodušší způsob, jak zp�
 
 Šablony mají následující parametry:
 
-* sapSystemId: ID The SAP systému. Používá se k vytvoření disku rozložení (například/USR/sap/\<sapsid >).
+* sapSystemId: ID systému SAP Používá se k vytvoření disku rozložení (například/USR/sap/\<sapsid >).
 
-* computerName: název počítače na nový virtuální počítač. Tento parametr se používá také podle LaMa SAP. Při použití této šablony zřídit nový virtuální počítač jako součást kopie systému SAP LaMa počká, až se dá kontaktovat hostitele s tímto názvem počítače.
+* název počítače: Název počítače na nový virtuální počítač. Tento parametr se používá také podle LaMa SAP. Při použití této šablony zřídit nový virtuální počítač jako součást kopie systému SAP LaMa počká, až se dá kontaktovat hostitele s tímto názvem počítače.
 
-* osType: typ operačního systému, kterou chcete nasadit.
+* osType: Typ operačního systému, kterou chcete nasadit.
 
-* Hodnota výčtu DbType: typ databáze. Tento parametr slouží k určení, kolik dalších konfigurací protokolu IP je potřeba přidat a jak by měl vypadat rozložení disků.
+* Hodnota výčtu DbType: Typ databáze. Tento parametr slouží k určení, kolik dalších konfigurací protokolu IP je potřeba přidat a jak by měl vypadat rozložení disků.
 
-* sapSystemSize: velikost systému SAP, kterou chcete nasadit. Používá se k určení typu instance virtuálního počítače a velikosti.
+* sapSystemSize: Velikost systému SAP, kterou chcete nasadit. Používá se k určení typu instance virtuálního počítače a velikosti.
 
-* adminUsername: uživatelské jméno pro virtuální počítač.
+* adminUsername: Uživatelské jméno pro virtuální počítač.
 
-* adminPassword: heslo pro virtuální počítač. Můžete také zadat veřejný klíč pro SSH.
+* adminPassword: Heslo pro virtuální počítač. Můžete také zadat veřejný klíč pro SSH.
 
-* sshKeyData: klíč veřejné SSH pro virtuální počítače. Podporováno pouze pro operační systémy a Linux.
+* sshKeyData: Veřejný klíč SSH pro virtuální počítače. Podporováno pouze pro operační systémy a Linux.
 
 * subnetId: ID podsítě, kterou chcete použít.
 
-* deployEmptyTarget: Pokud chcete využívat virtuální počítač jako cíl pro přemístit instance nebo podobné můžete nasadit prázdný cíl. V tomto případě jsou připojeny žádné další disky nebo konfigurace protokolu IP.
+* deployEmptyTarget: Pokud chcete využívat virtuální počítač jako cíl pro přemístit instance nebo podobné, můžete nasadit prázdný cíl. V tomto případě jsou připojeny žádné další disky nebo konfigurace protokolu IP.
 
-* sapcarLocation: nasazení umístění sapcar aplikaci, která odpovídá operačnímu systému. sapcar slouží k extrakci archivy, které zadáte v dalších parametrů.
+* sapcarLocation: Umístění pro sapcar aplikaci, která odpovídá operačnímu systému, který nasadíte. sapcar slouží k extrakci archivy, které zadáte v dalších parametrů.
 
-* sapHostAgentArchiveLocation: umístění archivu Agent hostitele SAP. Agent hostitele SAP je nasazen jako součást nasazení této šablony.
+* sapHostAgentArchiveLocation: Umístění archivu Agent hostitele SAP. Agent hostitele SAP je nasazen jako součást nasazení této šablony.
 
-* sapacExtLocation: umístění adaptivní rozšíření SAP. Poznámka SAP [2343511] uvádí minimální úrovně oprav vyžadované pro Azure.
+* sapacExtLocation: Umístění adaptivní rozšíření SAP. Poznámka SAP [2343511] uvádí minimální úrovně oprav vyžadované pro Azure.
 
-* vcRedistLocation: umístění modulu Runtime jazyka VC, které jsou potřebné k instalaci rozšíření adaptivní SAP. Tento parametr je pouze vyžadované pro Windows.
+* vcRedistLocation: Umístění modulu Runtime jazyka VC, které jsou potřebné k instalaci rozšíření adaptivní SAP. Tento parametr je pouze vyžadované pro Windows.
 
-* odbcDriverLocation: umístění ovladače ODBC, kterou chcete nainstalovat. Je podporován pouze ovladač Microsoft ODBC pro SQL Server.
+* odbcDriverLocation: Umístění, které chcete nainstalovat ovladač ODBC. Je podporován pouze ovladač Microsoft ODBC pro SQL Server.
 
-* sapadmPassword: heslo pro uživatele sapadm.
+* sapadmPassword: Heslo pro uživatele sapadm.
 
 * sapadmId: ID uživatele Linuxu sapadm uživatele. Nevyžaduje se pro Windows.
 
-* sapsysGid: ID skupiny Linuxu sapsys skupiny. Nevyžaduje se pro Windows.
+* sapsysGid: ID skupiny Linux sapsys skupiny. Nevyžaduje se pro Windows.
 
-* _artifactsLocation: základní identifikátor URI, kde se nachází artefakty, které vyžadují tuto šablonu. Při nasazení šablony pomocí doprovodných skriptů použije privátního umístění v rámci předplatného a tato hodnota se automaticky vygeneruje. Potřeba pouze v případě nenasazujte šablony z Githubu.
+* _artifactsLocation: Základní identifikátor URI, kde se nachází artefakty, které vyžadují tuto šablonu. Při nasazení šablony pomocí doprovodných skriptů použije privátního umístění v rámci předplatného a tato hodnota se automaticky vygeneruje. Potřeba pouze v případě nenasazujte šablony z Githubu.
 
-* _artifactsLocationSasToken: sasToken vyžadovaných pro přístup k _artifactsLocation. Při nasazení šablony pomocí doprovodných skriptů sasToken budou automaticky generovány. Potřeba pouze v případě nenasazujte šablony z Githubu.
+* _artifactsLocationSasToken: SasToken vyžadovaných pro přístup k _artifactsLocation. Při nasazení šablony pomocí doprovodných skriptů sasToken budou automaticky generovány. Potřeba pouze v případě nenasazujte šablony z Githubu.
 
 ### <a name="sap-hana"></a>SAP HANA
 
@@ -360,7 +360,7 @@ Použití *as1-di-0* pro *název hostitele Instance Pa adresy* v dialogovém okn
 
 * Došlo k výjimce v ověřování HDB úložiště userstore  
   * Zobrazit Log Vieweru.  
-    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: výjimka ve validátoru s ID "RuntimeHDBConnectionValidator" (ověření: "VALIDATION_HDB_USERSTORE"): nepovedlo se načíst hdbuserstore  
+    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Výjimka ve validátoru s ID "RuntimeHDBConnectionValidator" (ověření: "VALIDATION_HDB_USERSTORE"): Nepovedlo se načíst hdbuserstore  
     Úložiště userstore HANA není ve správném umístění
   * Řešení  
     Ujistěte se, že tento /usr/sap/AH1/hdbclient/install/installation.ini je správný
@@ -373,19 +373,19 @@ Použití *as1-di-0* pro *název hostitele Instance Pa adresy* v dialogovém okn
     Vytvořit zálohu všech databází ve zdroji systém HANA
 
 * Krok kopie systému *Start* instance databáze
-  * Operace agenta hostitele '000D3A282BC91EE8A1D76CF1F92E2944' se nezdařila (OperationException. FaultCode: "127", zpráva: "spuštění příkazu se nezdařilo. : [Microsoft] [SQL Server ovladače ODBC] [SQL Server] uživatel nemá oprávnění změnit databázi 'AS2', databáze neexistuje nebo databáze není ve stavu umožňujícím kontroly přístupu. ")
+  * Operace agenta hostitele '000D3A282BC91EE8A1D76CF1F92E2944' se nezdařila (OperationException. FaultCode: "127", zpráva: "Spuštění příkazu se nezdařilo. : [Microsoft] [SQL Server ovladače ODBC] [SQL Server] uživatel nemá oprávnění změnit databázi 'AS2', databáze neexistuje nebo databáze není ve stavu umožňujícím kontroly přístupu. ")
   * Řešení  
     Ujistěte se, že *NT AUTHORITY\SYSTEM* má přístup k SQL serveru. Viz poznámka SAP [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>Chyby a upozornění během klonování systému
 
 * Došlo k chybě při pokusu o registraci instance agenta v kroku *vynucené registrace a spuštění agenta Instance* aplikačního serveru nebo ASC
-  * Při pokusu o registraci instance agenta došlo k chybě. (RemoteException: "Nepovedlo se načíst instance data z profilu"\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0': Nelze získat přístup k profilu "\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0': žádný odpovídající soubor nebo adresář.")
+  * Při pokusu o registraci instance agenta došlo k chybě. (RemoteException: "Nepovedlo se načíst instance data z profilu"\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0':  Nelze získat přístup k profilu "\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0': Žádný odpovídající soubor nebo adresář. ")
   * Řešení  
    Ujistěte se, že sapmnt sdílené složky na ASCS/SCS má plný přístup pro SAP_AS1_GlobalAdmin
 
 * Chyba v kroku *povolení ochrany po spuštění pro klon*
-  * Nepovedlo se otevřít soubor "\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0' příčina: žádný odpovídající soubor nebo adresář
+  * Nepovedlo se otevřít soubor "\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0' příčina: Žádný odpovídající soubor nebo adresář
   * Řešení  
     Účet počítače serveru aplikace potřebuje oprávnění k zápisu do profilu
 
@@ -409,36 +409,36 @@ Použití *as1-di-0* pro *název hostitele Instance Pa adresy* v dialogovém okn
     Přidáte že ASCS exportuje ASCS HostAgent profilu. Viz poznámka SAP [2628497]
 
 * Není implementováno po přemístění ASCS – funkce
-  * Výstup příkazu: exportfs: hostitele: / usr/sap/AX1: funkce není implementována
+  * Výstup příkazu: exportfs: hostitele: / usr/sap/AX1: Funkce není implementována
   * Řešení  
     Ujistěte se, že je na cílovém virtuálním počítači přemístit povolená služba server systému souborů NFS
 
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Chyby a upozornění během instalace serveru aplikace
 
 * Chyba při provádění kroku SAPinst: getProfileDir
-  * Chyba: (poslední chybu v kroku: byla zachycena ESAPinstException ve volání modulu: validátoru krok ' | NW_DI | ajít | ajít | ajít | ajít | 0 | 0 | NW_GetSidFromProfiles | ajít | ajít | ajít | ajít | getSid | 0 | NW_readProfileDir | ajít | ajít | ajít | ajít | readProfile | 0 | getProfileDir "oznámil chybu: uzel \\\as1-ascs\sapmnt\AS1\SYS\profile neexistuje. Spusťte v interaktivním režimu pro vyřešení tohoto problému SAPinst)
+  * CHYBA: (Poslední Chyba hlášená kroku: Zachycené ESAPinstException ve volání modulu: Program pro ověření kroku ' | NW_DI | ajít | ajít | ajít | ajít | 0 | 0 | NW_GetSidFromProfiles | ajít | ajít | ajít | ajít | getSid | 0 | NW_readProfileDir | ajít | ajít | ajít | ajít | readProfile | 0 | getProfileDir "oznámil chybu: Uzel \\\as1-ascs\sapmnt\AS1\SYS\profile neexistuje. Spusťte v interaktivním režimu pro vyřešení tohoto problému SAPinst)
   * Řešení  
     Ujistěte se, že SWPM je spuštěn jako uživatel, který má přístup k profilu. Dá se tento uživatel v Průvodci instalací serveru aplikace
 
 * Chyba při provádění kroku SAPinst: askUnicode
-  * Chyba: (poslední chybu v kroku: byla zachycena ESAPinstException ve volání modulu: validátoru krok ' | NW_DI | ajít | ajít | ajít | ajít | 0 | 0 | NW_GetSidFromProfiles | ajít | ajít | ajít | ajít | getSid | 0 | NW_getUnicode | ajít | ajít | ajít | ajít | unicode | 0 | askUnicode "oznámil chybu: SAPinst spusťte v interaktivním režimu pro vyřešení tohoto problému)
+  * CHYBA: (Poslední Chyba hlášená kroku: Zachycené ESAPinstException ve volání modulu: Program pro ověření kroku ' | NW_DI | ajít | ajít | ajít | ajít | 0 | 0 | NW_GetSidFromProfiles | ajít | ajít | ajít | ajít | getSid | 0 | NW_getUnicode | ajít | ajít | ajít | ajít | unicode | 0 | askUnicode "oznámil chybu: Spusťte v interaktivním režimu pro vyřešení tohoto problému SAPinst)
   * Řešení  
     Pokud používáte novější jádro SAP, SWPM nelze určit, zda je systém unicode systému už server zpráv ascs. Viz poznámka SAP [2445033] další podrobnosti.  
     Tento problém bude opraven v nové podpory balíčku nebo opravu z LaMa SAP.  
     Nastavte profil parametr OS_UNICODE = uc ve výchozím profilu systému SAP a chcete tento problém vyřešit.
 
 * Chyba při provádění kroku SAPinst: dCheckGivenServer
-  * Chyba při provádění kroku SAPinst: dCheckGivenServer "verze ="1.0"Chyba: (poslední Chyba hlášená krok: \<p > Instalace byla zrušena uživatelem. \</p >
+  * Chyba při provádění kroku SAPinst: dCheckGivenServer "verze ="1.0"Chyba: (Poslední Chyba hlášená krok: \<p > Instalace byla zrušena uživatelem. \</p>
   * Řešení  
     Ujistěte se, že SWPM je spuštěn jako uživatel, který má přístup k profilu. Dá se tento uživatel v Průvodci instalací serveru aplikace
 
 * Chyba při provádění kroku SAPinst: checkClient
-  * Chyba při provádění kroku SAPinst: checkClient "verze ="1.0"Chyba: (poslední Chyba hlášená krok: \<p > Instalace byla zrušena uživatelem. \</p >)
+  * Chyba při provádění kroku SAPinst: checkClient "verze ="1.0"Chyba: (Poslední Chyba hlášená krok: \<p > Instalace byla zrušena uživatelem. \</p>)
   * Řešení  
     Ujistěte se, že ovladač Microsoft ODBC pro SQL Server je nainstalovaný na virtuálním počítači, na kterém chcete nainstalovat aplikační server
 
 * Chyba při provádění kroku SAPinst: copyScripts
-  * Poslední krok Hlášená chyba: volání systému se nezdařilo. Podrobnosti: Chyba 13 (0x0000000d) (oprávnění odepřeno) při provádění systému volání 'fopenU"s parametrem (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w), řádek (494) v souboru (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/ src/syslib/FileSystem/syxxcfstrm2.cpp), trasování zásobníku:  
+  * Poslední chybu v kroku: Došlo k chybě. PODROBNOSTI: Chyba 13 (0x0000000d) (oprávnění odepřeno) při provádění systému volání 'fopenU"s parametrem (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w), řádek (494) v souboru (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib / filesystem/syxxcfstrm2.cpp), trasování zásobníku:  
   CThrThread.cpp: 85: CThrThread::threadFunction()  
   CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
   CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
@@ -450,13 +450,13 @@ Použití *as1-di-0* pro *název hostitele Instance Pa adresy* v dialogovém okn
   syxxcfile.cpp: 233: CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
   syxxcfstrm.cpp: 29: CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
   syxxcfstrm.cpp: 265: CSyFileStreamImpl::open()  
-  syxxcfstrm2.cpp: 58: CSyFileStream2Impl::CSyFileStream2Impl (const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd 0x4)  
+  syxxcfstrm2.cpp: 58: CSyFileStream2Impl::CSyFileStream2Impl(const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd, 0x4)  
   syxxcfstrm2.cpp: 456: CSyFileStream2Impl::open()
   * Řešení  
     Ujistěte se, že SWPM je spuštěn jako uživatel, který má přístup k profilu. Dá se tento uživatel v Průvodci instalací serveru aplikace
 
 * Chyba při provádění kroku SAPinst: askPasswords
-  * Poslední krok Hlášená chyba: volání systému se nezdařilo. Podrobnosti: Chyba 5 (0x00000005) (přístup byl odepřen.) při provádění volání systému "NetValidatePasswordPolicy" s parametrem (...), řádek (359) v souboru (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), trasování zásobníku:  
+  * Poslední chybu v kroku: Došlo k chybě. PODROBNOSTI: Chyba 5 (0x00000005) (přístup byl odepřen.) při provádění volání systému "NetValidatePasswordPolicy" s parametrem (...), řádek (359) v souboru (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), trasování zásobníku:  
   CThrThread.cpp: 85: CThrThread::threadFunction()  
   CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
   CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
@@ -470,7 +470,7 @@ Použití *as1-di-0* pro *název hostitele Instance Pa adresy* v dialogovém okn
   iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect::callMemberFunction (iastring const & název, args_t const & args)  
   iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect::validatePasswordPolicy (args_t const & _args)  
   iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
-  synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,***) const)
+  synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
   * Řešení  
     Ujistěte se, že přidáte pravidlo hostitele v kroku *izolace* umožňující navázat komunikaci z virtuálního počítače pro řadič domény
 

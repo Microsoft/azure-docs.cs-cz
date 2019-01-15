@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 12219e2df875d317aece73cabebdfb55115f7b41
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 51f9d2dbc8a0aef6dc84e76755a71eeb73149192
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021080"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262740"
 ---
 # <a name="border-connectivity"></a>Připojení k ohraničení 
 Plánování integrace sítě je důležitá povinná součást pro úspěšné nasazení Azure Stack integrované systémy, provoz a správu. Plánování připojení ohraničení začíná výběru, jestli se mají použít s dynamickým směrováním pomocí protokolu border gateway protocol (BGP). To vyžaduje přiřazení 16bitové číslo autonomního systému protokolu BGP (veřejné nebo soukromé) nebo pomocí statické směrování, kde výchozí statické trasy je přiřazená zařízení ohraničení.
@@ -29,7 +29,7 @@ Plánování integrace sítě je důležitá povinná součást pro úspěšné 
 > Horní části přepínače (TOR rack) vyžadují odchozí připojení vrstvy 3 s IP adresami Point-to-Point (/ 30 sítě) nakonfigurované na fyzických rozhraní. Není možné použít odchozí připojení vrstvy 2 pomocí přepínače TOR podporují operace služby Azure Stack. 
 
 ## <a name="bgp-routing"></a>Směrování protokolu BGP
-Pomocí o dynamický směrovací protokol, jako je protokol BGP zaručuje, že váš systém je vždy vědom změn v síti a usnadňuje správu. Pro rozšířené zabezpečení heslo může být nastaven na protokol BGP partnerský vztah mezi TOR a ohraničení. 
+Pomocí o dynamický směrovací protokol, jako je protokol BGP zaručuje, že váš systém je vždy vědom změn v síti a usnadňuje správu. Pro zvýšení zabezpečení heslo může být nastaven na protokol BGP partnerský vztah mezi TOR a ohraničení. 
 
 Jak je znázorněno v následujícím diagramu, reklamní privátní IP adresy místo v přepínači TOR je blokováno pomocí seznam předpon. Seznam předpon zakazuje oznámení o inzerovaném programu privátní sítě a použije se jako mapu trasy pro připojení mezi TOR a ohraničení.
 

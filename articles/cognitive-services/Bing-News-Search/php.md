@@ -8,29 +8,31 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f34f86fe7fba09bfbc5a05814fb4e39ee40c003b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cd9dabfc7e462eace8fb8ae5d01359d19010c137
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252435"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261821"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí PHP a rozhraní API REST vyhledávání zpráv Bingu
 
-Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv, které je součástí služeb Microsoft Cognitive Services v Azure. V tomto článku se sice používá PHP, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
+V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScriptu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
-Ukázka kódu byla napsaná tak, aby fungovala v PHP 5.6.
-
-Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
+Zatímco tato aplikace je napsaný v jazyce PHP, je rozhraní API RESTful webových služeb kompatibilní většina programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* PHP 5.6 nebo novější
 
-## <a name="bing-news-search"></a>Vyhledávání zpráv Bingu
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
+
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+
+## <a name="run-the-application"></a>Spuštění aplikace
 
 [Rozhraní API Bingu pro vyhledávání zpráv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) vrací výsledky zpráv z vyhledávače Bing.
 
@@ -198,8 +200,4 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Stránkování zpráv](paging-news.md)
-> [Zvýraznění textu pomocí dekoračních značek](hit-highlighting.md)
-> [Hledání zpráv na internetu](search-the-web.md)  
-> [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+[Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

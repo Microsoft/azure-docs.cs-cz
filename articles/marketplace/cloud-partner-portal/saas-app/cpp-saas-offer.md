@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fa1b043f94897e752f3aa6b638995d3c2aa1eae5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 74f6d5989d86cc92371b060caf164f895b75511f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196741"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263624"
 ---
 # <a name="azure-saas-application-offer"></a>Nabídka Azure aplikace SaaS
 
@@ -49,7 +49,7 @@ Tato část popisuje elementy publikování nabídky SaaS a slouží jako vodít
 
 - [Požadavky](./cpp-prerequisites.md) – je uveden seznam technických a obchodních požadavků před vytvořením nebo publikování nabídky SaaS. 
 - [Vytvořte svou nabídku](./cpp-create-offer.md) – obsahuje kroky potřebné k vytvoření nové položky nabídky SaaS pomocí portál partnerů cloudu. 
-- [Publikování nabídky](./cpp-publish-offer.md) -Exlains jak odeslat nabídku k publikování na webu Azure Marketplace. 
+- [Publikování nabídky](./cpp-publish-offer.md) – vysvětluje, jak odeslat nabídku k publikování na webu Azure Marketplace. 
 
 ## <a name="saas-publishing-process"></a>Proces publikování SaaS 
 

@@ -1,6 +1,6 @@
 ---
-title: Ukázka skriptu Azure CLI - vyrovnávat zatížení více webů pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Ukázka skriptu Azure CLI - vyrovnávat zatížení více webů na jednom virtuálním počítači
+title: Ukázkový skript Azure CLI – vyvažovat zatížení u více webů pomocí Azure CLI | Dokumentace Microsoftu
+description: Ukázkový skript Azure CLI – vyvažovat zatížení u více webů na stejný virtuální počítač
 services: load-balancer
 documentationcenter: load-balancer
 author: KumudD
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 72a780f1870d05a714aaeec879004b6f06d8bb7f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f85d8461e79727ed46f3ad9afdc65ec004455f79
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29849133"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263897"
 ---
-# <a name="load-balance-multiple-websites"></a>Vyrovnávat zatížení více webů
+# <a name="load-balance-multiple-websites"></a>Vyvažovat zatížení u více webů
 
-Tento ukázkový skript vytvoří virtuální síť s dva virtuální počítače (VM), které jsou členy skupiny dostupnosti. Nástroj pro vyrovnávání zatížení bude směrovat provoz pro dva samostatné IP adresy na dva virtuální počítače. Po spuštění skriptu, můžete nasadit software webového serveru do virtuálních počítačů a hostitelů více webových serverů, každý s vlastní IP adresu.
+Tento ukázkový skript vytvoří virtuální síť s dva virtuální počítače (VM), které jsou členy skupiny dostupnosti. Nástroj pro vyrovnávání zatížení přesměruje provoz pro dvě samostatné IP adresy na tyto dva virtuální počítače. Po spuštění skriptu můžete na tyto virtuální počítače nasadit software webového serveru a hostovat více webů, přičemž každý z nich bude mít vlastní IP adresu.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -45,26 +45,26 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, virtuální sítě, Vyrovnávání zatížení a všechny související prostředky. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá k vytvoření skupiny prostředků, virtuální sítě, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Vytvoření sítě vnet az](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Vytvoří virtuální síť Azure a podsíť. |
-| [Vytvoření veřejné sítě az-ip](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_create) | Vytvoří veřejnou IP adresu se statickou IP adresu a přidružené název DNS. |
-| [Vytvoření sítě lb az](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_create) | Vytvoří k nástroji pro vyrovnávání zatížení Azure. |
-| [Vytvoření az sítě lb testu](https://docs.microsoft.com/cli/azure/network/lb/probe#az_network_lb_probe_create) | Vytvoří sondu nástroje pro vyrovnávání zatížení. Sondu nástroje pro vyrovnávání zatížení se používá k monitorování jednotlivých virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. Pokud žádné virtuální počítače bude nedostupné, není provoz směruje na virtuální počítač. |
-| [Vytvořit pravidlo lb az sítě](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | Vytvoří pravidlo Vyrovnávání zatížení. V této ukázce se vytvoří pravidlo pro port 80. Jako HTTP přenos dorazí na nástroje pro vyrovnávání zatížení, se směruje na portu 80 mezi virtuálními počítači v sadě nástroje pro vyrovnávání zatížení. |
-| [Vytvoření az sítě lb ip front-endu-](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_create) | Vytvoření IP adresy front-endu nástroje pro vyrovnávání zatížení. |
-| [Vytvoření az sítě lb fond adres](https://docs.microsoft.com/cli/azure/network/lb/address-pool#az_network_lb_address_pool_create) | Vytvoří fond back-end adresy. |
-| [Vytvoření az síťových adaptérů sítě](https://docs.microsoft.com/cli/azure/network/nic#az_network_nic_create) | Vytvoří virtuální síťové karty a připojí jej virtuální sítě a podsítě. |
-| [Vytvoření virtuálního počítače az sady dostupnosti.](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | Vytvoří skupinu dostupnosti. Skupiny dostupnosti zajistěte doba provozu aplikací tak, že se virtuální počítače napříč fyzické prostředky tak, že pokud dojde k selhání, není provedena celou sadu. |
-| [Seskupování síťových az ip-config vytvořit](https://docs.microsoft.com/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create) | Vytvoří confiuration IP. Musí mít funkci Microsoft.Network/AllowMultipleIpConfigurationsPerNic pro vaše předplatné povolený. Konfiguraci pouze jednoho může být určen jako primární konfiguraci IP adresy pro síťový adaptér, pomocí--příznak změnit na primární. |
-| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Vytvoří virtuální počítač a připojí jej k síťové karty, virtuální sítě, podsítě a NSG. Tento příkaz také určuje image virtuálního počítače jako přihlašovací údaje použité a správu.  |
+| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Vytvoří virtuální síť Azure a podsíť. |
+| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_create) | Vytvoří veřejnou IP adresu se statickou IP adresou a přidruženým názvem DNS. |
+| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_create) | Vytvoří Azure Load Balancer. |
+| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#az_network_lb_probe_create) | Vytvoří sondu nástroje pro vyrovnávání zatížení. Sonda nástroje pro vyrovnávání zatížení se používá k monitorování jednotlivých virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. Pokud nějaký virtuální počítač přestane být přístupný, nebude se do něj směrovat provoz. |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | Vytvoří pravidlo nástroje pro vyrovnávání zatížení. V této ukázce se vytvoří pravidlo pro port 80. Když nástroj pro vyrovnávání zatížení přijme přenos HTTP, přesměruje ho na port 80 některého z virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. |
+| [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_create) | Vytvoří front-endovou IP adresu pro Load Balancer. |
+| [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool#az_network_lb_address_pool_create) | Vytvoří fond back-endových adres. |
+| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az_network_nic_create) | Vytvoří virtuální síťovou kartu a připojí ji k virtuální síti a podsíti. |
+| [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | Vytvoří skupinu dostupnosti. Skupiny dostupnosti zajišťují dostupnost aplikace rozmístěním virtuálních počítačů napříč fyzickými prostředky, aby v případě selhání nebyla ovlivněná celá sada. |
+| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create) | Vytvoří konfiguraci IP. Je nutné, aby byla pro vaše předplatné povolená funkce Microsoft.Network/AllowMultipleIpConfigurationsPerNic. Jako primární konfiguraci IP adresy lze pro každý síťový adaptér určit jenom jednu konfiguraci, používá se k tomu příznak --make-primary. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další síťové ukázky skriptu rozhraní příkazového řádku najdete v [přehled sítě Azure dokumentaci](../cli-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Další ukázkové skripty CLI pro sítě najdete v [dokumentaci se základními informacemi k sítím Azure](../cli-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

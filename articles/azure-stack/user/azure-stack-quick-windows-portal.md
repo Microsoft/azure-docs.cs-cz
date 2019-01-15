@@ -6,16 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: c23778a6c7fd864cf741bad41c455dbb3314563a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 37cd6eaec5b3d4bd6dfbbb7e7b6657d139ccea07
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243198"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303016"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>Rychlý start: vytvoření virtuálního počítače s Windows serverem pomocí portálu Azure Stack
 

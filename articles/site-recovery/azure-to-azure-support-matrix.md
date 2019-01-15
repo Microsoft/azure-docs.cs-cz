@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: raynew
-ms.openlocfilehash: 09d3b698edfc99b9340772aa0ffc4e8de20b286d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7e5f72ca637cb657369a3b384aee666e0935b9d0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103757"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263540"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -44,9 +44,7 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 
 Můžete replikovat a obnovovat virtuální počítače mezi všechny dvou oblastí ve stejné zeměpisné clusteru. Geografické clustery jsou definovány dodržujte při tom suverenita a data latence.
 
->[!NOTE]
->Pokud nejste schopni zobrazit oblast v rámci zeměpisné clusteru při povolení replikace a ujistěte se, že má vaše předplatné přístup k vytvoření virtuálního počítače v dané oblasti. Pokud ne, než je žádost o podporu v rámci předplatného "Typ problému".
->
+
 **Geografické clusteru** | **Oblasti Azure**
 -- | --
 Americké | Kanada – východ, Kanada – Jih, střed USA (střed), střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2, střed USA, USA (střed) – sever
@@ -59,9 +57,13 @@ Německo | Německo – střed, Německo – severovýchod
 
 >[!NOTE]
 >
-> Pro oblast Brazílie – jih můžete replikaci a převzetí služeb při selhání pro jeden z následujících akcí: Střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever.
->
-> Je třeba poznamenat, Site Recovery je povolena pouze oblasti Brazílie – Jih, který se použije jako zdrojové oblasti, ze které se dají chránit virtuální počítače. Nelze použít jako cíl zotavení po Havárii oblasti pro všechny oblasti Azure, jako jsou střed USA – jih. Důvod je ten latence zjištěnými z důvodu geografické vzdálenosti doporučujeme vybrat oblasti žádné další Ameriky, než Brazílie – jih.
+> - Pro **Brazílie – jih** oblasti, můžete replikaci a převzetí služeb při selhání na jednu z následujících akcí: Střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever. Je třeba poznamenat, Site Recovery je povolena pouze oblasti Brazílie – Jih, který se použije jako zdrojové oblasti, ze které se dají chránit virtuální počítače. To **nelze použít jako cíl zotavení po Havárii oblasti** pro všechny oblasti Azure, jako jsou střed USA – jih. Důvod je ten latence zjištěnými z důvodu geografické vzdálenosti doporučujeme vybrat oblasti žádné další Ameriky, než Brazílie – jih.
+> 
+> - Pokud jste **zobrazíte v oblasti není možné** místo, kam chcete **pro vytvoření trezoru** pak Ujistěte se, že má vaše předplatné přístup k vytváření prostředků v dané oblasti. Příklad: Pokud nejste schopni vytvořit trezor v Francie – jih pak vaše předplatné nemá do oblasti Francie – jih přístup. Zadejte soubor lístek podpory v části problém typu "Správa předplatného" a problém na předmět "ostatní obecné dotazy" "whitlelist předplatné XXX oblasti Azure"
+> 
+> - Pokud jste **zobrazíte v oblasti není možné** v rámci zeměpisné clusteru **při povolení replikace** pak Ujistěte se, že má vaše předplatné přístup k vytvoření virtuálního počítače v dané oblasti. Příklad: Pokud se pokoušíte ochránit virtuální počítače před Francie – střed Francie – jih a nezobrazí v oblasti Francie – jih rozevírací seznam, pak vaše předplatné nemá přístup k nasazení virtuálního počítače v dané oblasti. Zadejte soubor lístek podpory v části problém typu "Správa předplatného" a problém na předmět "ostatní obecné dotazy" "whitlelist předplatné XXX oblasti Azure"
+> - Nelze vybrat oblasti napříč geografické clustery uvedených výše.
+
 
 ## <a name="cache-storage"></a>Úložiště mezipaměti
 
@@ -90,14 +92,14 @@ Windows Server 2008 R2 | S aktualizací SP1 nebo novější
 
 **Operační systém** | **Podrobnosti**
 --- | ---
-Red Hat Enterprise Linux | 6.7 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
+Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
 CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
 Ubuntu 14.04 LTS Server | [Verze podporovaných jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Server se systémem Ubuntu 16.04 LTS | [Verze podporovaných jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu servery s použitím ověřování pomocí hesla a přihlášení a cloud-init balíček ke konfiguraci cloudu virtuálních počítačů, může být deaktivovány převzetí služeb při selhání (v závislosti na konfiguraci cloudinit) přihlášení založené na heslech. Přihlášení pomocí hesla, která může být na virtuálním počítači znovu zapnout resetováním hesla z podpory > Poradce při potížích s > nabídky nastavení (služby se převzaly virtuálního počítače na webu Azure Portal.
+Ubuntu 16.04 LTS Server | [Verze podporovaných jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu servery s použitím ověřování pomocí hesla a přihlášení a cloud-init balíček ke konfiguraci cloudu virtuálních počítačů, může být deaktivovány převzetí služeb při selhání (v závislosti na konfiguraci cloudinit) přihlášení založené na heslech. Přihlášení pomocí hesla, která může být na virtuálním počítači znovu zapnout resetováním hesla z podpory > Poradce při potížích s > nabídky nastavení (služby se převzaly virtuálního počítače na webu Azure Portal.
 Debian 7 | [Verze podporovaných jádra](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Verze podporovaných jádra](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1, SP2 SP3. [(Jádra podporované verze)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 11 | S AKTUALIZACÍ SP3<br/><br/> Upgrade replikace počítačů z SP3 do SP4 se nepodporuje. Pokud byl upgradován replikovaného počítače, musíte zakázat replikaci a znovu povolte replikaci po upgradu.
+SUSE Linux Enterprise Server 12 | SP1,SP2,SP3. [(Jádra podporované verze)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 11 | SP3<br/><br/> Upgrade replikace počítačů z SP3 do SP4 se nepodporuje. Pokud byl upgradován replikovaného počítače, musíte zakázat replikaci a znovu povolte replikaci po upgradu.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> Systém Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3).
 
@@ -107,12 +109,12 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 14.04 LTS | 9.21 | 3.13.0-24-Generic k 3.13.0-163-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.15.0-1023-Azure k 4.15.0-1035-azure |
-14.04 LTS | 9,20 | 3.13.0-24-Generic k 3.13.0-161-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.15.0-1023-Azure k 4.15.0-1030-azure |
+14.04 LTS | 9.20 | 3.13.0-24-Generic k 3.13.0-161-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.15.0-1023-Azure k 4.15.0-1030-azure |
 14.04 LTS | 9.19 | 3.13.0-24-Generic k 3.13.0-153-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-131-generic |
 14.04 LTS | 9.18 | 3.13.0-24-Generic k 3.13.0-151-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-128-generic |
 |||
 16.04 LTS | 9.21 | 4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-42-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1035-azure|
-16.04 LTS | 9,20 | 4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-38-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1030-azure|
+16.04 LTS | 9.20 | 4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-38-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1030-azure|
 16.04 LTS | 9.19 | 4.4.0-21-Generic k 4.4.0-131-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-30-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1019-azure|
 16.04 LTS | 9.18 | 4.4.0-21-Generic k 4.4.0-128-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure |
 
@@ -123,7 +125,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 --- | --- | --- |
 Debian 7 | 9.18,9.19,9.20,9.21 | 3.2.0-4-amd64 k 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9,20, 9.21 | 3.16.0-4-amd64 k 3.16.0-7-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.20, 9.21 | 3.16.0-4-amd64 k 3.16.0-7-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.8-amd64 |
 Debian 8 | 9.19 | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.7-amd64 |
 Debian 8 | 9.18 | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.6-amd64 |
 
@@ -132,7 +134,7 @@ Debian 8 | 9.18 | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.21 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.72-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9,20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.69-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.69-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default k 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default k 4.4.138-94.39-default |
 
@@ -175,7 +177,7 @@ Tato tabulka je automaticky shrnutý podporu pro disk operačního systému virt
 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Maximální velikost disku operačního systému | 2 048 GB | [Další informace](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms) o discích virtuálních počítačů.
+Maximální velikost disku operačního systému | 2048 GB | [Další informace](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms) o discích virtuálních počítačů.
 Dočasný disk | Nepodporuje se | Dočasný disk je vždy z replikace vyloučit.<br/><br/> Nemáte žádná trvalá data na dočasném disku. [Další informace](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk).
 Maximální velikost datového disku | 4095 GB |
 Maximální číslo datového disku | Až 64, v souladu s podporou pro určité velikosti virtuálních počítačů Azure | [Další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.

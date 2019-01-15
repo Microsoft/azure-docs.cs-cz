@@ -5,17 +5,17 @@ manager: jeconnoc
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.author: zarhoads
-ms.date: 01/18/2019
+ms.date: 01/11/2019
 ms.topic: tutorial
 description: Vysvětluje, jak nakonfigurovat aplikaci Pivotal Cloud Foundry pro použití zprostředkovatele Open Service Broker pro databázi Azure
 keywords: Pivotal Cloud Foundry, Cloud Foundry, otevřete Service Broker, Open Service Broker for Azure
 tags: Cloud-Foundry
-ms.openlocfilehash: cbaf1bc65950abb88630e90a62c4c1f5a8d3e7ec
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: d553cd09ef42e47e3a10fb96039063b8aae665cb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244082"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258856"
 ---
 # <a name="tutorial-use-an-open-service-broker-for-azure-database-with-an-application-on-pivotal-cloud-foundry"></a>Kurz: Použití zprostředkovatele Open Service Broker pro službu Azure database s aplikací na Pivotal Cloud Foundry
 

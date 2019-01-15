@@ -1,26 +1,8 @@
 ---
-title: Machine Learning Studio – nejčastější dotazy (FAQ) – Azure | Dokumentace Microsoftu
-description: 'Azure Machine Learning Studio: Časté otázky k fakturaci, schopnostem a omezením cloudové služby pro efektivní prediktivní modelování.'
-keywords: úvod ke strojovému učení, prediktivní modelování, co je strojové učení
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/02/2017
-ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091275"
+Název: Machine Learning Studio – nejčastější dotazy (FAQ) titleSuffix: Azure Machine Learning Studio Popis: "Azure Machine Learning Studio: Časté otázky k fakturaci, schopnostem a omezením cloudové služby pro efektivní prediktivní modelování. "
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: koncepční
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 06/02/2017
 ---
 # <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Azure Machine Learning Studio – nejčastější dotazy: Fakturace, schopnosti, omezení a podpora
 Zde jsou některé nejčastější dotazy (a příslušné odpovědi) týkající se cloudové služby Azure Machine Learning, která slouží k vývoji prediktivních modelů a zprovozňování řešení prostřednictvím webových služeb. Najdete tu dotazy ke způsobu používání této služby, včetně modelu fakturace, možností, omezení a podpory.
@@ -55,8 +37,8 @@ Webové služby Machine Learning poskytují rozhraní mezi aplikací a modelem M
 
 Azure Machine Learning zahrnuje dva typy webových služeb:
 
-* Služba Request-Response (RRS): Služba s nízkou latencí, která je vysoce škálovatelná a poskytuje rozhraní pro bezstavové modely, které byly vytvořené a nasazené pomocí Machine Learning Studia.
-* Služba Batch Execution (BES): Asynchronní služba pro vyhodnocování dávek datových záznamů.
+* Služba Request-Response (RRS): Nízká latence, vysoce škálovatelná služba, která poskytuje rozhraní pro bezstavové modely vytvořené a nasazené pomocí Machine Learning Studio.
+* Služba batch Execution (BES): Asynchronní služba pro vyhodnocování dávek datových záznamů.
 
 Existuje několik způsobů, jak využít REST API a komunikovat s webovou službou. Můžete například napsat aplikaci v jazyce C#, R nebo Python s pomocí ukázkového kódu, který se vygeneroval při nasazení webové služby.
 
@@ -271,7 +253,7 @@ Pro datové sady větší než několik GB nahrajte data do úložiště Azure n
 
 **Existují nějaká omezení velikosti vektoru?**
 
-Řádky i sloupce jsou omezeny na omezení Max Int v rozhraní .NET: 2 147 483 647.
+Řádky i sloupce jsou každý omezeny na omezení Max Int rozhraní .NET: 2,147,483,647.
 
 **Je možné upravit velikost virtuálního počítače, na kterém běží webová služba?**
 
@@ -312,7 +294,7 @@ Azure Machine Learning má i fórum komunity na webu MSDN, kde se můžete ptát
 ## <a name="billing-questions"></a>Dotazy k fakturaci
 **Jak se Machine Learning fakturuje?**
 
-Azure Machine Learning má dvě komponenty: Machine Learning Studio a webové služby Machine Learning.
+Azure Machine Learning má dvě součásti: Webové služby Machine Learning Studio a strojové učení.
 
 Dokud vyhodnocujete využívání Machine Learning Studia, nemusíte za něj na úrovni Free platit. Úroveň Free mimo jiné umožňuje nasadit webovou službu Classic s omezenou kapacitou.
 
@@ -438,7 +420,7 @@ Nové fakturační plány jsou dostupné ve třech produkčních oblastech, kde 
 
 Ano. Ceny plánů se podle oblasti liší. Pokud webovou službu nasadíte do jiné oblasti, je potřeba k ní přiřadit plán určený právě pro tuto oblast. Další informace najdete v tématu [Dostupné produkty v jednotlivých oblastech]( https://azure.microsoft.com/regions/services/).
 
-### <a name="new-web-services-overages"></a>Nové webové služby: nadlimitní využití
+### <a name="new-web-services-overages"></a>Nové webové služby: Překročení limitu
 **Jak můžu ověřit, jestli webové služby nevyužívám nadlimitně?**
 
 Využití všech plánů najdete na stránce Plány na portálu Azure Machine Learning Web Services. Přihlaste se k portálu a v nabídce klikněte na možnost **Plány**.
@@ -483,20 +465,20 @@ Služba Azure Machine Learning API se účtuje s ohledem na to, jestli jde o kla
 
 Následující poplatky se v rámci předplatného započítávají za jednotlivé pracovní prostory.
 
-* Předplatné za pracovní prostor Machine Learning: Předplatné za pracovní prostor Machine Learning je měsíční poplatek, který umožňuje přístup k pracovnímu prostoru Machine Learning Studia. Zároveň se bez něho neobejdete, pokud chcete spouštět experimenty ve Studiu nebo využívat rozhraní API produkčního prostředí.
-* Hodiny experimentování se službou ML Studio: Sčítá veškeré poplatky za výpočetní kapacitu související se spouštěním experimentů v Machine Learning Studiu nebo voláním produkčního rozhraní API v přípravném prostředí.
+* Předplatné pracovního prostoru Machine Learning: Předplatné pracovního prostoru Machine Learning je měsíční poplatek, který poskytuje přístup k pracovnímu prostoru Machine Learning Studio. Zároveň se bez něho neobejdete, pokud chcete spouštět experimenty ve Studiu nebo využívat rozhraní API produkčního prostředí.
+* Hodiny experimentování Studio: Tento měřič agreguje všechny poplatky za výpočetní prostředky, které jsou operace vzniklé spouštěním experimentů v Machine Learning studiu a spouštěním voláním produkčního rozhraní API v přípravném prostředí.
 * Pro účely trénování a hodnocení ve vašich modelech využijte pro přístup k datům připojení k místnímu serveru se spuštěným SQL Serverem.
 * U klasických webových služeb:
-  * Výpočetní hodiny v rozhraní API produkčního prostředí: Měří poplatky za výpočetní kapacitu využitou webovými službami spuštěnými v produkčním prostředí.
-  * Transakce v rozhraní API produkčního prostředí (v tisících): Měří poplatky za volání webové služby v produkčním prostředí.
+  * Produkční výpočetní hodiny API úrovně: Tento měřič zahrnuje poplatky za výpočetní kapacitu využitou webovými službami spuštěnými v produkčním prostředí.
+  * Transakce v rozhraní API produkčního prostředí (v 1000s): Tento měřič zahrnuje poplatky za volání webové služby v produkčním prostředí.
 
 Vedle výše uvedených poplatků se v případě webových služeb využívajících Resource Manager poplatky souhrnně započítávají do vybraného plánu:
 
-* Plán API úrovně Standard S1/S2/S3 (jednotky): Reprezentuje typ instance vybraný pro webové služby využívajících Resource Manager.
-* Nadlimitní výpočetní hodiny API úrovně Standard S1/S2/S3: Zahrnuje poplatky za výpočetní kapacitu, kterou webové služby využívající Resource Manager a spuštěné v produkčním prostředí využijí potom, co se vyčerpá množství zahrnuté v existujících instancích. Další využívání se účtuje podle nadlimitní sazby přiřazené k plánům úrovně S1/S2/S3.
-* Nadlimitní transakce plánu API úrovně Standard S1/S2/S3 (v tisících): Zahrnuje poplatky za volání webové služby využívající Resource Manager v produkčním prostředí potom, co se vyčerpá množství zahrnuté v existujících instancích. Další využívání se účtuje podle nadlimitní sazby přiřazené k plánům úrovně S1/S2/S3.
-* Zahrnuté množství výpočetních hodin API: U webových služeb využívajících Resource Manager představuje zahrnuté množství výpočetních hodin API.
-* Zahrnuté množství transakcí API (v tisících): U webových služeb využívajících Resource Manager představuje zahrnuté množství transakcí API.
+* Plán API úrovně Standard S1/S2/S3 (jednotky): Představuje typ instance vybraný pro webové služby využívající Resource Manager.
+* Standard S1/S2/S3 Nadlimitní výpočetní hodiny API úrovně: Tento měřič zahrnuje poplatky za výpočetní kapacitu využitou využívající Resource Manager webové služby, které běží v produkčním prostředí po vyčerpání množství zahrnutého v existujících instancích. Další využívání se účtuje podle nadlimitní sazby přiřazené k plánům úrovně S1/S2/S3.
+* Transakce za Nadlimitní využití API úrovně Standard S1/S2/S3 (v 1,000s): Tento měřič zahrnuje poplatky za volání webové služby využívající Resource Manager v produkčním prostředí po vyčerpání množství zahrnutého v existujících instancích. Další využívání se účtuje podle nadlimitní sazby přiřazené k plánům úrovně S1/S2/S3.
+* Zahrnuté množství výpočetních hodin API: Pomocí Resource Manageru webových služeb představuje zahrnuté množství výpočetních hodin API.
+* Zahrnuté množství transakcí API (v 1,000s): Pomocí Resource Manageru webových služeb představuje zahrnuté množství transakcí API.
 
 **Jak se ve službě Azure Machine Learning zaregistrovat k úrovni Free?**
 

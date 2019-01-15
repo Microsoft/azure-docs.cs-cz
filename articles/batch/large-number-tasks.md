@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: a3327c2c6f9684efe0d86b0cf923886f7310e1b0
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: fae5b9ee84c9352bbeb6f14b1f3a6006ce4804e8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199780"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261668"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Odeslání velkého počtu úkolů pro úlohu služby Batch
 
@@ -65,7 +65,7 @@ Můžete přidat velké kolekce úkolů do úlohy – například nějakou dobu 
 
 Následující fragmenty C# zobrazit nastavení pro konfiguraci při přidávání velký počet úkolů pomocí rozhraní Batch .NET API.
 
-Pokud chcete zvýšit propustnost úkolu, zvyšte hodnotu [z MaxDegreeofParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) vlastnost [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet). Příklad:
+Pokud chcete zvýšit propustnost úkolu, zvyšte hodnotu [z MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) vlastnost [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet). Příklad:
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()

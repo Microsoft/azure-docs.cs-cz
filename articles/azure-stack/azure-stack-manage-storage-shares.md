@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d4a40b07ef70d8dd43eb410ba396057551cd483
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249893"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304387"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Správa kapacity úložiště pro službu Azure Stack 
 
@@ -79,7 +79,7 @@ Pomocí Powershellu nebo portálu pro správu k monitorování sdílených slož
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 Jako operátor cloudu, můžete sledovat kapacitu úložiště sdílené složky pomocí Powershellu **Get-AzsStorageShare** rutiny. Rutina Get-AzsStorageShare vrátí celkový počet, přidělené a volné místo v bajtech ve všech sdílených složek na.   
-![Příklad: Vrátit volného místa pro sdílené složky](media/azure-stack-manage-storage-shares/free-space.png)
+![Příklad: Vrátí volného místa pro sdílené složky](media/azure-stack-manage-storage-shares/free-space.png)
 
 - **Celková kapacita** je místo na celkový počet bajtů, které jsou k dispozici na sdílené složce. Zde se používá pro data a metadata, která se spravuje pomocí služby úložiště.
 - **Kapacita využitá** je množství dat v bajtech, která se používá všechny rozsahy ze souborů, které ukládají data tenanta a přidružená metadata.
@@ -90,7 +90,7 @@ Jako operátor cloudu můžete na portálu pro správu k zobrazení všech sdíl
 1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
 2. Vyberte **všechny služby** > **úložiště** otevřete seznam souborů sdílené složky, kde můžete zobrazit informace o využití. 
 
-  ![Příklad: Úložiště sdílené složky](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+  ![Příklad: Sdílené složky úložiště](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - **Celkový počet** je místo na celkový počet bajtů, které jsou k dispozici na sdílené složce. Zde se používá pro data a metadata, která se spravuje pomocí služby úložiště.
   - **POUŽÍT** je množství dat v bajtech, která se používá všechny rozsahy ze souborů, které ukládají data tenanta a přidružená metadata.
@@ -101,12 +101,12 @@ Při použití portálu pro správu se zobrazí oznámení o sdílených složk�
 > [!IMPORTANT]
 > Jako operátor cloudu zachovat dosažení úplné využití sdílené složky. Když sdílenou složku je 100 % optimalizováno úložiště služby už funkce pro tuto sdílenou složku. Volné místo obnovení a obnovení operací ve sdílené složce, která je 100 % využít, je nutné kontaktovat podporu Microsoftu.
 
-**Upozornění**: při sdílení souborů je více než 80 % využití, se zobrazí *upozornění* výstrah v portálu pro správu: ![příklad: upozorňující výstraha](media/azure-stack-manage-storage-shares/alert-warning.png)
+**Upozornění**: Když sdílenou složku je více než 80 % využít, zobrazí se *upozornění* výstrah v portálu pro správu: ![Příklad: Upozorňující výstraha](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-**Kritické**: když sdílené složky je více než 90 % využít, zobrazí se *kritické* výstrah v portálu pro správu: ![příklad: Kritická výstraha](media/azure-stack-manage-storage-shares/alert-critical.png)
+**Kritické**: Když sdílenou složku je více než 90 % využít, zobrazí se *kritický* výstrah v portálu pro správu: ![Příklad: Kritická výstraha](media/azure-stack-manage-storage-shares/alert-critical.png)
 
-**Zobrazit podrobnosti o**: V portálu pro správu můžete otevřít podrobnosti o výstraze zobrazíte možnosti omezení rizik: ![příklad: zobrazení podrobností výstrah](media/azure-stack-manage-storage-shares/alert-details.png)
+**Zobrazit podrobnosti o**: V portálu pro správu můžete otevřít podrobnosti o výstraze zobrazíte možnosti omezení rizik: ![Příklad: Zobrazit podrobnosti výstrahy](media/azure-stack-manage-storage-shares/alert-details.png)
 
 
 ## <a name="manage-available-space"></a>Správa dostupného místa
@@ -119,7 +119,7 @@ Můžete získat zpět kapacita použitá účtům tenantů, které byly odstran
 
 Další informace najdete v tématu [uvolnit kapacity](azure-stack-manage-storage-accounts.md#reclaim) v spravovat prostředky úložiště.
 
-### <a name="migrate-a-container-between-volumes"></a>Migrace mezi svazky kontejneru
+### <a name="migrate-a-container-between-volumes"></a>Migrace kontejneru mezi svazky
 *Tato možnost se vztahuje pouze na nasazení na víc uzlů.*
 
 Z důvodu vzorů využití tenanta nějaké sdílené složky klienta pomocí více místa než jiné. Výsledkem může být sdílenou složku, která běží na mezeru před další sdílené složky, které nejsou používány relativně nízký.
@@ -188,7 +188,7 @@ Migrace konsoliduje všechny kontejnery blob na novou sdílenou složku.
   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
   ````
 
-  ![Příklad: Migrace stavu](media/azure-stack-manage-storage-shares/migration-status1.png)
+  ![Příklad: Stav migrace](media/azure-stack-manage-storage-shares/migration-status1.png)
 
 6.  Zrušit úlohu migrace probíhá. Zrušit migraci, které úlohy jsou zpracovávány asynchronně. Zrušení můžete sledovat pomocí $jobid:
 
@@ -196,7 +196,7 @@ Migrace konsoliduje všechny kontejnery blob na novou sdílenou složku.
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
   ````
 
-  ![Příklad: Vrátit zpět stav](media/azure-stack-manage-storage-shares/rollback.png)
+  ![Příklad: Stav odvolání](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. Spuštěním příkazu v kroku 6 znovu, dokud se potvrdí stav úlohy migrace je **zrušeno**:  
 

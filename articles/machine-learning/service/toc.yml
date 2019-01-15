@@ -112,14 +112,14 @@ items:
       href: how-to-build-deploy-onnx.md
   - name: Modely nasazení
     items:
-    - name: Kam se mají modely nasadit
+    - name: Kde a jak nasadit
       displayName: publish azure kubernetes azure container instances
       href: how-to-deploy-and-where.md
     - name: FPGA
       href: how-to-deploy-fpga-web-service.md
     - name: Řešení potíží
       href: how-to-troubleshoot-deployment.md
-    - name: Zabezpečení pomocí protokolu SSL
+    - name: Zabezpečení webových služeb pomocí SSL
       href: how-to-secure-web-service.md
   - name: Využívání webových služeb
     items:
@@ -139,7 +139,7 @@ items:
   - name: Správa kvót prostředků
     displayName: limits
     href: how-to-manage-quotas.md
-  - name: Použití se službou Virtual Networks
+  - name: Zabezpečení s využitím služby Virtual Networks
     displayName: vnet
     href: how-to-enable-virtual-network.md
   - name: Použití CLI služby Machine Learning
@@ -174,9 +174,9 @@ items:
     href: support-for-aml-services.md
   - name: Porovnání produktů ML v Microsoftu
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 84f4c2ec1d9f361cdf030b724860aea89f5c9cc3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 098c8a9f9bc8d0458490adf4d80e2eaf69dd9f7f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247363"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266072"

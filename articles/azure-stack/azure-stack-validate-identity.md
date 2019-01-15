@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 2cfa789b9817562eba5224257a365f8552cdf833
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9ca777275aa4aa09a16c0248f6e3b1ecc76ac5b2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245936"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267330"
 ---
 # <a name="validate-azure-identity"></a>Ověření identit Azure 
 Použijte nástroj Kontrola připravenosti Azure Stack (AzsReadinessChecker) Chcete-li ověřit, že Azure Active Directory (Azure AD) připravený k použití s Azure Stack. Ověřte vaše řešení Azure identity před zahájením nasazení služby Azure Stack.  
@@ -48,7 +48,7 @@ Následující požadavky musí být splněné.
 **Prostředí Azure Active Directory:**
  - Identifikace účtu služby Azure AD bude používat pro službu Azure Stack a ujistěte se, že je Azure Active Directory globálního správce.
  - Určete název vašeho Tenanta Azure AD. Název tenanta musí být *primární* názvu domény pro Azure Active Directory. Například *contoso.onmicrosoft.com*. 
- - Identifikujte AzureEnvironement budete používat. Podporované hodnoty pro parametr name prostředí jsou AzureCloud, AzureChinaCloud nebo AzureUSGovernment, podle které předplatné používáte.
+ - Identifikujte AzureEnvironment budete používat. Podporované hodnoty pro parametr name prostředí jsou AzureCloud, AzureChinaCloud nebo AzureUSGovernment, podle které předplatné používáte.
 
 ## <a name="validate-azure-identity"></a>Ověření identit Azure 
 1. Na počítači, který splňuje požadavky otevřete Správce příkazový řádek Powershellu a spusťte následující příkaz k instalaci AzsReadinessChecker:  
@@ -137,7 +137,7 @@ Invoke-AzsAzureIdentityValidation Completed
 ````
 **Příčina** – účet nemůže přihlásit do zadaného Azure Active Directory (AADDirectoryTenantName). V tomto příkladu *AzureChinaCloud* je stanoveno, *AzureEnvironment*.
 
-**Rozlišení** – ověřte, že účet je platný pro zadaný prostředí Azure. V prostředí PowerShell spusťte následující příkaz k ověření, že účet je platný pro konkrétní prostředí:   Login-AzureRmAccount-EnvironmentName AzureChinaCloud 
+**Rozlišení** – ověřte, že účet je platný pro zadaný prostředí Azure. V prostředí PowerShell spusťte následující příkaz k ověření, že účet je platný pro konkrétní prostředí:   Login-AzureRmAccount – EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>Účet nemá oprávnění správce 
  
 ````PowerShell

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cfcb33f9586033db9f4197a341227365d43601cc
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 0a18bcf9f9e1217b674bda5f5ae698908f1911a8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232715"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262910"
 ---
 # <a name="publish-azure-application-offer"></a>Publikovat nabídku aplikací Azure
 
@@ -41,7 +41,7 @@ Následující tabulka uvádí a popisuje jednotlivé kroky pro publikování a 
 | Ověření testů jednotky          | < 2 hodiny   | (Volitelné) Pokud Test Drive je k dispozici, Microsoft ověřuje, že je nasadit a replikovat.  |
 | Balení a registrace generování potenciálních zákazníků | < 1 hodina  | Technické prostředky nabídky jsou zabaleny pro používání zákazníka a systémy potenciálních zákazníků jsou konfigurovány a nasazeny. |
 |  Odhlášení vydavatele             |  Ruční    | Zkontrolujte poslední vydavatele a potvrzení před uvedete nabídky. Nabídka je teď dostupná ve verzi preview.  Ověřit, zda splňuje všechny požadavky, můžete nasadit vaši nabídku ve vybraných předplatných (v krocích informace nabídky).  Po ověření tuto nabídku, vyberte **aktivace** tak vaši nabídku můžete přesunout k dalšímu kroku. |
-| Microsoft revize                | 7 – 14 dnů * | Microsoft holistické zkontroluje vaše aplikace Azure a odešle e-mail, pokud jsou zjištěny problémy.  * Tento krok zřídka, může trvat déle než 14 dní, v závislosti na složitosti aplikace a problémů zjištěných.  |
+| Microsoft review                | 7 – 14 dnů * | Microsoft holistické zkontroluje vaše aplikace Azure a odešle e-mail, pokud jsou zjištěny problémy.  * Tento krok zřídka, může trvat déle než 14 dní, v závislosti na složitosti aplikace a problémů zjištěných.  |
 | Živé                           | < 1 den | Nabídka je uvolněna, replikovaná do oblastí, zadaný a veřejně k dispozici. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
  
@@ -70,7 +70,7 @@ Chcete-li zobrazit tyto položky VSTS v zpětné vazby z revize, musí být vyda
 1. Shromážděte následující informace:
     - Název vydavatele a ID
     - Nabízí typ (aplikace Azure), název a ID skladové položky
-    - Žádost o přijetí změn propojit, třeba `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/jfrog/pullrequest/<number>`.  Tuto adresu URL můžete získat z zprávy oznámení nebo adresu skončí odpovědí 401 stránky.
+    - Žádost o přijetí změn propojit, například: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  Tuto adresu URL můžete získat z zprávy oznámení nebo adresu skončí odpovědí 401 stránky.
     - E-mailové adresy osob, od publikování organizace, které chcete udělit přístup.  Ty by měly zahrnovat vlastníka adresy, které jste zadali při registraci jako vydavatel na portál partnerů cloudu.
 2. Vytvořte incident podpory.  V záhlaví na portál Cloud Partner, vyberte **pomáhají** tlačítko a pak zvolte **podporu** z nabídky.  Výchozí webové prohlížeče by měl spustit a přejděte na stránku Microsoft nové podpory incidentů.  (Může mít pro první přihlášení.)
 3. Zadejte **typ problému** jako **marketplace připojování** a **kategorie** jako **potíže při přístupu k**a pak vyberte **Start žádost o**.
@@ -78,7 +78,7 @@ Chcete-li zobrazit tyto položky VSTS v zpětné vazby z revize, musí být vyda
     ![Kategorie lístku podpory](./media/support-incident1.png)
 
 4. V **krok 1 z 2** stránky, zadejte svoje kontaktní informace a vyberte **pokračovat**.
-5. V **krok 2 ze 2** zadejte název incidentu a zadat informace shromážděné v prvním kroku (viz výše).  Přečtěte si a přijměte smlouvu a pak vyberte **odeslat**.
+5. V **krok 2 ze 2** stránky, zadejte název incidentu (například `Request VSTS access`) a zadejte informace shromážděné v prvním kroku (viz výše).  Přečtěte si a přijměte smlouvu a pak vyberte **odeslat**.
 
 Pokud vytvářet incidenty byl úspěšný, zobrazí se stránka s potvrzením.  Uložte informace o potvrzení pro vaši informaci.  Podpora Microsoftu by měl odpovídat vaše žádost o přístup do několika pracovních dnů.
 

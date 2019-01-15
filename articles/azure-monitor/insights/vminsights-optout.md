@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: f0addcc0b6220bcf877c3cac20f2d1376eb19e61
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191067"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263352"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Zakázání monitorování virtuálních počítačů pomocí Azure monitoru pro virtuální počítače (preview)
 
@@ -31,7 +31,7 @@ Azure Monitor pro virtuální počítače se spoléhá na následující součá
 * Pracovní prostor Log Analytics, která ukládá data monitorování se shromažďují z virtuálních počítačů a dalších zdrojů.
 * Shromažďování čítačů výkonu, které jsou nakonfigurované v pracovním prostoru, která aktualizuje konfiguraci monitorování pro všechny virtuální počítače připojené k pracovnímu prostoru.
 * Dvě řešení monitorování, které jsou nakonfigurované v pracovním prostoru - **InfrastructureInsights** a **ServiceMap**, které aktualizace konfigurace monitorování pro všechny virtuální počítače připojené k pracovnímu prostoru.
-* Dvě rozšíření virtuálního počítače Azure **MicrosoftMonitoringAgent** a **DepenendencyAgent**, která shromažďují a zasílají data do pracovního prostoru.
+* Dvě rozšíření virtuálního počítače Azure **MicrosoftMonitoringAgent** a **DependencyAgent**, která shromažďují a zasílají data do pracovního prostoru.
 
 Při přípravě zakázat monitorování virtuálních počítačů pomocí Azure monitoru pro virtuální počítače, zvažte následující:
 
@@ -43,7 +43,7 @@ Při přípravě zakázat monitorování virtuálních počítačů pomocí Azur
 
 ## <a name="complete-removal-of-azure-monitor-for-vms"></a>Dokončení odstranění služby Azure Monitor pro virtuální počítače
 
-Následující kroky popisují, jak úplně odebrat monitorování Azure pro virtuální počítače, pokud pořád budete potřebovat pracovní prostor Log Analytics. Chcete odebrat **InfastructureInsights** a **ServiceMap** řešení z pracovního prostoru.  
+Následující kroky popisují, jak úplně odebrat monitorování Azure pro virtuální počítače, pokud pořád budete potřebovat pracovní prostor Log Analytics. Chcete odebrat **InfrastructureInsights** a **ServiceMap** řešení z pracovního prostoru.  
 
 >[!NOTE]
 >Pokud jste používali Service Map monitorovacího řešení před povolením monitorování Azure pro virtuální počítače a stále spoléhat na to, neodebírejte toto řešení, jak je popsáno v kroku 6 níže.  

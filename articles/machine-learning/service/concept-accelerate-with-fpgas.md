@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 10/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: bc08025f070fb31d83fed26bfec00cec11cee061
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3aa98026d7293f1486f5450cc9ab17057807c031
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313628"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306112"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>Co jsou FPGA a Project Brainwave?
 
@@ -39,7 +39,7 @@ Následující diagram a tabulka ukazují, jak porovnat FPGA do dalších proces
 
 ## <a name="project-brainwave-on-azure"></a>Project Brainwave v Azure
 
-[Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) je architektura hardware od společnosti Microsoft. Je založen na zařízeních společnosti Intel FPGA, které datových vědců a vývojářů, použijte k urychlení výpočtů v reálném čase AI. Tato architektura povolené FPGA nabízí výkon, flexibilitu a velikost a je k dispozici v Azure.
+[Project Brainwave](https://www.microsoft.com/en-us/research/project/project-brainwave/) je architektura hardware od společnosti Microsoft. Je založen na zařízeních společnosti Intel FPGA, které datových vědců a vývojářů, použijte k urychlení výpočtů v reálném čase AI. Tato architektura povolené FPGA nabízí výkon, flexibilitu a velikost a je k dispozici v Azure.
 
 FPGA umožňují dosáhnout nízké latence pro požadavky v reálném čase odvozování. Asynchronní požadavků (dávkování) nejsou potřeba. Dávkové zpracování může způsobit latence, protože více dat je potřeba zpracovat. Project Brainwave implementace neuronových sítí zpracování jednotek nevyžadují dávkování; latence proto může být v mnoha případech nižší ve srovnání s procesory CPU a GPU.
 

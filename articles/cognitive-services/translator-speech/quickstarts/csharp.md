@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozhraní Translator Speech API v jazyce C#'
+title: 'Rychlý start: Translator Speech APIC#'
 titlesuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a05ab716c8aea958e13ebba0dc9ceb09bf3d7cce
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: b873dbd3132e549c529280400d5a9644174232f9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913525"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259018"
 ---
-# <a name="quickstart-translator-speech-api-with-c"></a>Rychlý start: Rozhraní Translator Speech API v jazyce C# 
+# <a name="quickstart-translator-speech-api-with-c"></a>Rychlý start: Translator Speech API sC# 
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak použít rozhraní Translator Speech API k př
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.) Pokud používáte Mac OS nebo Linux, můžete jako alternativu použít také textový editor [Visual Studio Code] (https://code.visualstudio.com/Download).
+Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.) Pokud používáte Mac OS nebo Linux můžete také použít textový editor [Visual Studio Code](https://code.visualstudio.com/Download) jako alternativu.
 
 Budete potřebovat soubor .wav s názvem „speak.wav“ ve stejné složce jako spustitelný soubor, který zkompilujete z níže uvedeného kódu. Tento soubor .wav musí být ve standardním 16bitovém, 16kHz monofonním formátu PCM.
 
@@ -152,12 +152,12 @@ namespace TranslateSpeechQuickStart
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Kurz ke službě Translator Speech](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
 [Přehled služby Translator Speech](../overview.md)
 [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

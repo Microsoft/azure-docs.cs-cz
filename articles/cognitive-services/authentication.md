@@ -7,14 +7,14 @@ author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 81a902c6cf6b9b3491933e4bc14dc1e774185869
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726286"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305447"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověření požadavků ve službě Azure Cognitive Services
 
@@ -58,6 +58,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+Toto video ukazuje použití klíče služeb Cognitive Services. 
+
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Ověření s klíčem víc služeb předplatného
 
 >[!WARNING]
@@ -66,6 +68,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 Tato možnost také používá k ověřování žádostí zasílaných klíč předplatného. Hlavní rozdíl je, že klíč předplatného se neváže ke konkrétní službě, jeden klíč můžete místo toho použije k ověření žádosti pro více služeb Cognitive Services. Zobrazit [ceny služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) informace o místní dostupnosti, podporované funkce a ceny.
 
 Klíč předplatného je součástí každého požadavku, jako `Ocp-Apim-Subscription-Key` záhlaví.
+
+[![Víc služeb předplatného ukázku klíče pro služby Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>Podporované oblasti
 
@@ -107,7 +111,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 Několik služeb Azure Cognitive Services přijmout a v některých případech vyžadovat, ověřovací token. Tyto služby v současné době podporují ověřování tokenů:
 
-* Rozhraní API pro překlad textu
+* Text Translation API
 * Hlasové služby: Rozhraní REST Speech to text API
 * Hlasové služby: Převod textu na řeč REST API
 

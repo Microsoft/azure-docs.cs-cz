@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: lagayhar
-ms.openlocfilehash: eb44c7d3e605f3d9cfc5cc30cd5cbcc8e9c1ae42
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e16432022c8c8525c95fab46bc61197f67fb8f37
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230981"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260053"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -161,7 +161,7 @@ Application Insights SDK hledá klíče v tomto pořadí:
 
 1. Systémová vlastnost: -DAPPLICATION_INSIGHTS_IKEY=váš_ikey
 2. Proměnné prostředí: APPLICATION_INSIGHTS_IKEY
-3. Konfigurační soubor: Soubor ApplicationInsights.xml
+3. Konfigurační soubor: ApplicationInsights.xml
 
 Můžete ho taky [nastavit v kódu](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
 
@@ -441,7 +441,7 @@ Každý [čítač výkonu systému Windows](https://msdn.microsoft.com/library/w
 </Channel>
 ```
 
-Pokud používáte SpringBoot starter, přidejte následující konfigurační soubor (application.properies):
+Pokud používáte SpringBoot starter, přidejte následující konfigurační soubor (souboru application.properties):
 
 ```yml
 azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->

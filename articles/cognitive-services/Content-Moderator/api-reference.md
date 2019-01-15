@@ -1,7 +1,7 @@
 ---
 title: Reference k rozhraní API – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Další informace o moderování obsahu a projděte si rozhraní API pro Content Moderator.
+description: Další informace o různých moderování obsahu a projděte si rozhraní API pro Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
@@ -10,19 +10,19 @@ ms.component: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a64b2f7ce54d5ace26ad18c0ca1a9facb66245e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229743"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266956"
 ---
 # <a name="content-moderator-api-reference"></a>Referenční informace k rozhraní API Content Moderatoru
 
-Začínáme s Azure Content Moderator API následujícím způsobem: (viz také [Správa přihlašovacích údajů](review-tool-user-guide/credentials.md).)
+Asi začít pracovat s Azure Content Moderator API následujícími způsoby: (Viz také [Správa přihlašovacích údajů](review-tool-user-guide/credentials.md).)
 
 - Na webu Azure Portal [předplatit rozhraní API Content Moderatoru](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
-- Zaregistrovat [nástroj pro kontrolu Content Moderator](https://contentmoderator.cognitive.microsoft.com/). Zobrazit [rychlý Start](quick-start.md).
+- Zaregistrovat [nástroj pro kontrolu Content Moderator](https://contentmoderator.cognitive.microsoft.com/). Zobrazit [zkuste Content Moderator na webu](quick-start.md).
 
 ## <a name="moderation-apis"></a>Rozhraní API pro moderování
 

@@ -1,40 +1,41 @@
 ---
-title: Konfigurace nastavení nástroj pro kontrolu Content Moderator | Dokumentace Microsoftu
-description: Konfiguraci nebo požádejte o svůj tým, značky, konektory, pracovní postupy a přihlašovací údaje.
+title: Konfigurace nastavení nástroj pro revizi Content Moderator – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Konfigurace nebo načtení týmu, značky, konektory, pracovní postupy a přihlašovací údaje.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 06/25/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 2ffed5e561cf9988ec10ecb7e10318d148281057
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8717eb58538889e99938164f97f10c010f87d6a5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51851533"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262944"
 ---
-# <a name="review-tool-settings"></a>Zkontrolujte nastavení nástroje #
+# <a name="configure-review-tool-settings"></a>Konfigurace nastavení nástroj pro revizi
 
 Na kartě nastavení na řídicím panelu nástrojů kontroly, je snadné k definování a změnit mnoho komponent.
 
 ![Content Moderator zkontrolovat nastavení](images/settings-1.png)
 
-## <a name="team-and-subteams"></a>Tým a Podtýmy ## 
+## <a name="team-and-subteams"></a>Tým a Podtýmy
 
 Spravujte svůj tým a podtýmy na této kartě. Můžete mít jenom jeden tým, ale můžete [vytvořit více podtýmy](subteams.md) a odeslání pozvánky pro budoucí členy. Poté, co se poslala pozvánky, monitorovat je a změnit oprávnění pro členy týmu pozvat další uživatele. Po členové týmu přijali vaši pozvánku, můžete přiřadit jiný podtýmy členy. Můžete nastavit členové týmu role administrators nebo kontrolorů: Správci může pozvat ostatní uživatele, zatímco nelze revidující.
 
 ![Moderátor nastavení týmu obsahu](images/settings-2-team.png)
 
-## <a name="tags"></a>Značky ##
+## <a name="tags"></a>Značky
 
 To je, kde můžete [definovat vlastní značky](tags.md) tak, že zadáte krátký kód, název a popis pro svá klíčová slova. Po vytvoření ho je k dispozici během kontroly. Různých klíčových slov můžete použít pro jiné kontroly to zapnutím viditelnost odhlásit a znovu přihlásit.
 
 ![Content Moderator značky nastavení](images/settings-3-tags.png)
 
-## <a name="connectors"></a>Konektory ##
+## <a name="connectors"></a>Konektory
 
 Pracovní postupy přidat funkce pomocí konektorů ke komunikaci se nástroj pro recenze. Nástroj pro recenze zavolá rozhraní API moderátor obsah s výchozí pracovní postup pro moderování obsahu. Při registraci pro nástroj pro recenze, se automaticky – zřizuje Moderator API přihlašovací údaje za vás. Také podporuje integraci další konektor API, za předpokladu, konektor je k dispozici. Provedli jsme několik konektorů k dispozici ihned.
 
@@ -42,13 +43,13 @@ Pracovní postupy přidat funkce pomocí konektorů ke komunikaci se nástroj pr
 
 ![Content Moderator konektory nastavení](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Pracovní postupy ##
+## <a name="workflows"></a>Pracovní postupy
 
 Správa pracovních postupů z karty pracovních postupů. Pracovní postupy můžete otestovat tím, že nahrajete do ní ukázkový soubor. Můžete také [definovat vlastní pracovní postupy](workflows.md) pro obrázků a textu s použitím dostupných konektorů API (tuto možnost najdete na kartě konektory). 
 
 ![Content Moderator nastavení pracovního postupu](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>Přihlašovací údaje ##
+## <a name="credentials"></a>Přihlašovací údaje
 
 Tato karta poskytuje rychlý přístup k vašemu klíči předplatného Content Moderator, který budete muset použít zahrnutá rozhraní API s Content Moderatorem (moderování obrázků, moderování textu, Správa seznamu, pracovních postupů a revizi rozhraní API).
  

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 61e85861ab5829620699d07fe24b1ebfdfc7cbdc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 928fb5421297fedbffabc45db35a89a74026477e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839501"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305067"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Poradce doporučení k vysoké dostupnosti
 
@@ -35,20 +35,16 @@ Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva 
 
 Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Advisor určí skupiny dostupnosti, které obsahují jeden virtuální počítač a doporučuje přidání jednoho nebo více virtuálních počítačů k němu. Tato konfigurace zajistí, že během buď plánované i neplánované údržby, alespoň jeden virtuální počítač je k dispozici a splňuje SLA pro Azure virtual Machines. Můžete k vytvoření virtuálního počítače nebo přidat existující virtuální počítač do skupiny dostupnosti.  
 
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Používání spravovaných disků ke zvýšení spolehlivosti dat
+Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sdílejí účty úložiště nebo jednotky škálování úložiště nejsou během výpadků odolné vůči selhání jednotky škálování jednoho úložiště. Advisor vyhledá tyto skupiny dostupnosti a doporučí migrace na Azure Managed Disks. Tím se zajistí, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované, aby se zabránilo jediný bod selhání. 
+
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Zajištění odolnosti proti chybám application gateway
+
 Zajištění kontinuity obchodních procesů klíčových aplikací, které využívají služby application Gateway, identifikuje Advisor bránu instance aplikace, které nejsou konfigurovány pro odolnost proti chybám a navrhne nápravné akce, které můžete provést. Advisor určuje střední a velké aplikace s jedinou instancí brány a doporučí přidávání nejméně jedna další instance. Také určuje instance jednoho nebo více malých aplikačních bran a doporučuje migrace na střední nebo velké skladové položky. Advisor doporučuje tyto akce, které vaše aplikace instance brány jsou nakonfigurujte tak, aby splňovat požadavky na aktuální smlouvy SLA pro tyto prostředky.
-
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>Zvýšit výkon a spolehlivost disků virtuálního počítače.
-
-Advisor identifikuje virtuální počítače s disky standard a doporučuje upgrade na disky premium.
- 
-Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých běží I intenzivních vstupně-výstupních operací. Disky virtuálních počítačů, které používají účty služby premium storage ukládat data na jednotky SSD (Solid-State Drive). Pro zajištění nejlepšího výkonu pro vaši aplikaci doporučujeme migrovat všechny disky virtuálního počítače, které vyžadují vysokou vstupně-výstupních operací na premium storage. 
-
-Pokud vaše disky nevyžadují vysoké IOPS, můžete omezit náklady na údržbu ve standardním úložišti. Storage úrovně Standard ukládá data na disku virtuálního počítače na jednotky pevných disků (HDD) namísto jednotky SSD. Můžete k migraci disků vašich virtuálních počítačů na disky premium. Disky Premium podporují ve většině skladových položek virtuálních počítačů. Ale v některých případech, pokud chcete použít disky úrovně premium, potřebujete k upgradu vašeho skladových položek virtuálních počítačů i.
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Ochrana před náhodným odstraněním dat virtuálního počítače
 
-Nastavení zálohování virtuálních počítačů zajistí dostupnost důležitých podnikových dat a poskytuje ochranu proti náhodnému odstranění nebo poškození.  Advisor identifikuje virtuální počítače, kde není povolené zálohování, a doporučí povolení zálohování. 
+Nastavení zálohování virtuálních počítačů zajistí dostupnost důležitých podnikových dat a poskytuje ochranu proti náhodnému odstranění nebo poškození. Advisor identifikuje virtuální počítače, kde není povolené zálohování, a doporučí povolení zálohování. 
 
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Zajistěte, že abyste měli přístup k odborníkům cloudu Azure, kdykoli ji potřebujete
 
@@ -69,6 +65,10 @@ Pokud se profil služby Traffic Manager je nakonfigurovaný pro geografické sm�
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Použití obnovitelného odstranění na vašem účtu úložiště Azure k uložení a obnovení dat v případě náhodnému přepsání nebo odstranění
 
 Povolit [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na vašem účtu úložiště tak, aby odstranit objekty BLOB přechod do stavu obnovitelného odstranění namísto trvale odstraní. Pokud data se přepíší, obnovitelně odstraněného snímku se vygeneruje pro uložení stavu přepsaná data. To vám umožní provést obnovení v případě náhodnému odstranění nebo přepíše. Advisor určí účtech úložiště Azure, které nemají povolené obnovitelné odstranění a naznačuje, že ho povolíte.
+
+## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Nakonfigurovat bránu VPN typu aktivní aktivní pro odolnost připojení
+
+V konfiguraci aktivní aktivní navážou obě instance brány sítě VPN tunely S2S VPN na vaše místní zařízení VPN. Pokud k události plánované údržbě nebo neplánované události dojde k jedné, provoz se měl přepnout na druhý aktivní tunel IPsec automaticky. Azure Advisor vyhledá bran VPN, které nejsou nakonfigurované jako aktivní aktivní a navrhnout, můžete nakonfigurovat pro zajištění vysoké dostupnosti.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučení k vysoké dostupnosti v Advisoru
 

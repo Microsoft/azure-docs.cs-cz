@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0b27cd314dd03375b2d2e6ba537cda74e2ec4310
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c01d911a59647956914518aa62a616823241ab3b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313237"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304920"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrace protokolů auditu Azure Active Directory
 
@@ -28,7 +28,7 @@ Události auditování Azure Active Directory (Azure AD) mohli snadno identifiko
 
 
 >[!IMPORTANT]
-> Funkce integrace protokolů Azure se přestanou používat podle 06/01/2019. Soubory ke stažení AzLog se deaktivuje 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkce integrace protokolů Azure se přestanou používat podle 06/01/2019. Soubory ke stažení AzLog byly deaktivovány 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Protokoly auditu kroků k integraci služby Azure Active Directory
 
@@ -73,7 +73,7 @@ Můžete také otevřít [žádost o podporu](../azure-supportability/how-to-cre
 ## <a name="next-steps"></a>Další postup
 Další informace o integraci protokolů Azure najdete v tématu:
 
-* [Integrace protokolů Microsoft Azure pro protokoly Azure](https://www.microsoft.com/download/details.aspx?id=53324): stránka této služby Stažení softwaru poskytuje podrobnosti, požadavky na systém a pokyny k instalaci pro integraci protokolů Azure.
-* [Úvod do služby Azure Log Integration](security-azure-log-integration-overview.md): Tento článek vás seznámí s integrací protokolů Azure, jejích klíčových funkcích a jak to funguje.
-* [Nejčastější dotazy k Azure Log Integration](security-azure-log-integration-faq.md): Tento článek obsahuje odpovědi na otázky týkající se integrace protokolů Azure.
+* [Integrace protokolů Microsoft Azure pro protokoly Azure](https://www.microsoft.com/download/details.aspx?id=53324): Tato stránka Download Center poskytuje podrobnosti, požadavky na systém a pokyny k instalaci pro integraci protokolů Azure.
+* [Úvod do integrace protokolů Azure](security-azure-log-integration-overview.md): Tento článek vás seznámí s integrací protokolů Azure, jejích klíčových funkcích a jak to funguje.
+* [Integrace protokolů Azure – nejčastější dotazy](security-azure-log-integration-faq.md): Tento článek obsahuje odpovědi na otázky týkající se integrace protokolů Azure.
 * [Protokoly auditu nových funkcí pro diagnostiku Azure a Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Tento příspěvek na blogu vás seznámí s protokoly auditování Azure a dalších funkcí, které vám pomohou získat přehled o operacích vašich prostředků Azure.

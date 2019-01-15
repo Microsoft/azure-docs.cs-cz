@@ -1,26 +1,8 @@
 ---
-title: Azure AI Galerie oborová řešení – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Části obory v galerii Azure AI v sobě spojuje různým prostředkům, které jsou specifické pro takové odvětví jako maloobchodní prodej, výroby, bankovnictví a zdravotní péče.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-editor: cgronlun
-ms.assetid: fd2ecf9a-ff76-4a0f-8d68-7f762249648c
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.custom: previous-ms.author=garye, previous-author=garyericson
-ms.author: amlstudiodocs
-ms.openlocfilehash: 4f9495027c7027f659f877930b6aabc72b361ae8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269324"
+Název: Azure AI Galerie oborové řešení titleSuffix: Azure Machine Learning Studio Popis: Části obory v galerii Azure AI v sobě spojuje různým prostředkům, které jsou specifické pro takové odvětví jako maloobchodní prodej, výroby, bankovnictví a zdravotní péče.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=garye, předchozí Autor = garyericson ms.date: 03/31/2017
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Vyhledání konkrétní obory můžete využít řešení v galerii Azure AI
 

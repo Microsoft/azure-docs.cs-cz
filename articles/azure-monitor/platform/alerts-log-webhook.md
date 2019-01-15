@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: e7676213f9eee781fa7b8c19a30c6505ca5bf2ac
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 26c98a87b736132eb50cddffd06c1173d205c34d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720301"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265426"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolů
 Když [upozornění protokolu se vytvoří v Azure](alerts-log.md), máte možnost [konfigurace pomocí skupin akcí](action-groups.md) provést jednu nebo více akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o tom, jak nakonfigurovat vlastní webhooku založenými na JSON.
@@ -198,7 +198,7 @@ Následuje ukázkovou datovou část pro akce webhooku vlastní žádné upozorn
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [upozornění protokolů ve výstrahách Azure ](alerts-unified-log.md)
-- Vysvětlení [managaing protokolu upozornění v Azure](alerts-log.md)
+- Vysvětlení [Správa upozornění protokolů v Azure](alerts-log.md)
 - Vytvoření a správa [skupiny akcí v Azure](action-groups.md)
 - Další informace o [Application Insights](../../azure-monitor/app/analytics.md)
 - Další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 

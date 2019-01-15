@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.openlocfilehash: 3a78e8c5d29db12e1ee1966ec96ba5668344f474
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 71e92816ad98a46a5c8c56b603a63951ab30cc8d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318469"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267058"
 ---
 # <a name="allowed-application-gateway-skus"></a>Povolené skladové položky aplikační brány
 
@@ -36,7 +36,7 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name "applicaiton-gateway-skus" -DisplayName "Allowed Application Gateway SKUs" -description "This policy enables you to specify a set of application Gateway SKUs that your organization can deploy." -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/applicaiton-gateway-skus/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/applicaiton-gateway-skus/azurepolicy.parameters.json' -Mode All
+$definition = New-AzureRmPolicyDefinition -Name "application-gateway-skus" -DisplayName "Allowed Application Gateway SKUs" -description "This policy enables you to specify a set of application Gateway SKUs that your organization can deploy." -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/applicaiton-gateway-skus/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/applicaiton-gateway-skus/azurepolicy.parameters.json' -Mode All
 $definition
 $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> -PolicyDefinition $definition
 $assignment
@@ -55,9 +55,9 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
 ```azurecli-interactive
-az policy definition create --name 'applicaiton-gateway-skus' --display-name 'Allowed Application Gateway SKUs' --description 'This policy enables you to specify a set of application Gateway SKUs that your organization can deploy.' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/applicaiton-gateway-skus/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/applicaiton-gateway-skus/azurepolicy.parameters.json' --mode All
+az policy definition create --name 'application-gateway-skus' --display-name 'Allowed Application Gateway SKUs' --description 'This policy enables you to specify a set of application Gateway SKUs that your organization can deploy.' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/applicaiton-gateway-skus/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/applicaiton-gateway-skus/azurepolicy.parameters.json' --mode All
 
-az policy assignment create --name <assignmentname> --scope <scope> --policy "applicaiton-gateway-skus"
+az policy assignment create --name <assignmentname> --scope <scope> --policy "application-gateway-skus"
 ```
 
 ### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI

@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/4/2018
+ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: f9cc6f5c35b528d3a545293b9a946bc3eda3d7ac
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339328"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259960"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -28,12 +28,15 @@ Tento článek vysvětluje, jak jsou nakonfigurované zásady zabezpečení a ja
 
 Pokyny o tom, jak nastavit zásady pomocí Powershellu najdete v tématu [rychlý start: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí modulu Azure RM Powershellu](../azure-policy/assign-policy-definition-ps.md).
 
+>[!NOTE]
+> Security Center začít své integraci s Azure Policy. Stávající zákazníci budou automaticky migrovat na nové integrované podnět ve službě Azure Policy, namísto předchozí zásady zabezpečení ve službě Security Center. Tato změna nebude mít vliv na prostředky nebo prostředí s výjimkou přítomnost nové aktivity ve službě Azure Policy.
+
 ## <a name="what-are-security-policies"></a>Co jsou zásady zabezpečení?
 Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení. Ve službě Azure Policy můžete definovat zásady pro vaše předplatná Azure a je typu úlohy nebo citlivosti dat. přizpůsobit. Aplikace, které používají regulovaná data, jako jsou identifikovatelné osobní údaje, například může vyžadovat vyšší úroveň zabezpečení než jiné úlohy. Nastavit zásady napříč předplatnými nebo skupin pro správu, je nastavit [Azure Policy](../azure-policy/azure-policy-introduction.md).
 
-
-
 Zásady zabezpečení vliv na doporučení zabezpečení, získáte v Azure Security Center. Můžete monitorovat dodržování zásad v nich můžete najít potenciální nedostatky zabezpečení a zmírnit hrozby. Další informace o tom, jak určit, která možnost je pro vás vhodná, najdete v seznamu [integrované bezpečnostní zásady](security-center-policy-definitions.md).
+
+Když povolíte Security Center, zásady zabezpečení, která je integrovaná do služby Security Center se projeví ve službě Azure Policy jako integrované iniciativy v rámci kategorie Security Center. Integrované podnětu se automaticky přiřadí na všechny odběry registrované Security Center (úrovně Free nebo Standard). Integrované iniciativy obsahuje pouze zásady auditu. 
 
 
 ### <a name="management-groups"></a>Skupiny pro správu
@@ -57,8 +60,6 @@ Zásada Azure se skládá z následujících součástí:
 - **Iniciativy** je kolekce zásady.
 - **Přiřazení** je o iniciativy nebo zásady aplikace pro konkrétní obor (skupiny pro správu, předplatné nebo skupinu prostředků).
 
-U prostředku se vyhodnotí zásady, které jsou k němu přiřazené, a ten pak získá koeficient dodržování předpisů podle počtu zásad, jejichž předpisy dodržuje.
-
 ## <a name="view-security-policies"></a>Zobrazení zásad zabezpečení
 
 Zobrazení zásad zabezpečení ve službě Security Center:
@@ -76,12 +77,9 @@ Zobrazení zásad zabezpečení ve službě Security Center:
   Ve sloupcích tabulky se zobrazuje:
 
  - **Přiřazení iniciativy zásad** – Security Center [integrované zásady](security-center-policy-definitions.md) a iniciativy, které jsou přiřazeny předplatné nebo skupinu pro správu.
- - **Dodržování předpisů** – celkové skóre dodržování předpisů pro skupinu pro správu, předplatného nebo pracovního prostoru. Skóre je váženým průměrem přiřazení. Tento vážený průměr ovlivňuje počet zásad v jednom přiřazení a počet prostředků, na které se přiřazení vztahuje.
-
- Například pokud předplatné obsahuje dva virtuální počítače a má přiřazenou iniciativu s pěti zásadami, pak máte v předplatném 10 interních hodnocení. Pokud jeden z virtuálních počítačů nedodržuje předpisy dvou zásad, pak je celkové skóre dodržování předpisů přiřazení vašeho předplatného 80 %.
-
  - **Pokrytí** – identifikuje cenové úrovně Free nebo Standard, která skupina pro správu, předplatné nebo pracovní prostor běží na.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
  - **Nastavení** – předplatné má odkaz **upravit nastavení**. Výběr **upravit nastavení** vám umožní aktualizovat vaše [nastavení Centra zabezpečení](security-center-policies-overview.md) pro každé předplatné nebo skupinu pro správu.
+ - **Zabezpečené skóre** – [zabezpečené skóre](security-center-secure-score.md) poskytují měřítko zabezpečené stavu zabezpečení vašich úloh a pomůže vám určit prioritu doporučení pro vylepšení.
 
 2. Vyberte předplatné nebo správu skupinu, jejichž zásady, které chcete zobrazit.
 

@@ -1,27 +1,8 @@
 ---
-title: Zkopírujte ostatních vědy příkladů dat – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: 'Tajemství pro datové vědy: Získejte ostatním uživatelům práci za vás. Získání příkladů strojového učení v galerii Azure AI.'
-keywords: data science příklady, machine learning například clustering algoritmu clusteringu příklad algoritmus
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/05/2018
-ms.openlocfilehash: acd0899396ac5a47dade5fac16e451b2029ec0c2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260374"
+Název: Zkopírujte ostatních data science příklady titleSuffix: Azure Machine Learning Studio Popis: "Tajemství datové vědy: Získejte ostatním uživatelům práci za vás. Získání příkladů strojového učení v galerii Azure AI. "
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/05/2018
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopírování práce jiných lidí pro vědecké zkoumání dat
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Datová věda pro začátečníky řady

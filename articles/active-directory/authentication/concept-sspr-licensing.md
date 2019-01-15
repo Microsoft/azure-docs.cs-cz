@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6d6a06af90c02dee0a7711d7362d0604018cb4a5
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 12c75d67d9c58dd80796caac04a6a57303675cba
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246581"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303343"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetovat licenčních požadavcích pro hesla pomocí samoobslužné služby Azure AD
 
@@ -50,7 +50,7 @@ Další licenční informace, včetně nákladů, najdete na následujících st
 * [Azure Active Directory funkce a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
-* [Popis služby Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-business-service-description.md)
+* [Popis služby Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Povolit skupiny nebo licencování na základě uživatele
 

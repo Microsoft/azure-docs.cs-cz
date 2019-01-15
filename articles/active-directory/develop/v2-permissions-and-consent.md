@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 5283782188eaebe3997b6de31b087da74cf10486
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: e118249cf2aaf07aeb4f337636a46d088102bca8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620128"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261175"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v2.0
 
@@ -145,7 +145,7 @@ Pokud vaše aplikace vyžaduje přístup k správce s omezením obory pro organi
 
 Pokud aplikace požaduje vysokou úrovní oprávnění delegovaná oprávnění a správce udělí oprávnění prostřednictvím koncového bodu souhlas správce, je udělit souhlas pro všechny uživatele v tenantovi.
 
-Pokud aplikace požaduje oprávnění aplikací a správce udělí, že tato oprávnění prostřednictvím Správce souhlasit koncový bod, není Hotovo tomuto grantu jménem žádné konkrétní uživatele. Místo toho klientská aplikace jsou udělena oprávnění *přímo*. Tyto typy oprávnění se obecně používají pouze tak, že démon procesu služby a další jako neinteraktivní aplikace, které běží na pozadí.
+Pokud aplikace požaduje oprávnění aplikací a správce udělí, že tato oprávnění prostřednictvím Správce souhlasit koncový bod, není Hotovo tomuto grantu jménem žádné konkrétní uživatele. Místo toho klientská aplikace jsou udělena oprávnění *přímo*. Tyto typy oprávnění se obecně používají pouze tak, že démon, služeb a jiných neinteraktivní aplikace, které běží na pozadí.
 
 ## <a name="using-the-admin-consent-endpoint"></a>Pomocí koncového bodu souhlasu správce
 
@@ -164,7 +164,7 @@ Konfigurace seznamu staticky požadovaná oprávnění pro aplikaci:
 2. Vyhledejte **oprávnění Microsoft Graphu** a pak přidejte oprávnění, která vaše aplikace vyžaduje.
 3. **Uložit** registraci aplikace.
 
-### <a name="recommended-sign-the-user-in-to-your-app"></a>Doporučeno: Přihlášení uživatele do vaší aplikace
+### <a name="recommended-sign-the-user-in-to-your-app"></a>Doporučené: Přihlášení uživatele do vaší aplikace
 
 Obvykle když vytvoříte aplikaci, která používá koncový bod souhlas správce, aplikace musí stránku nebo zobrazení, ve kterém může správce schválení oprávnění aplikace. Tato stránka může být součástí registrace toku aplikace, součást aplikace nastavení, nebo může být vyhrazený tok "připojení". V mnoha případech je vhodné pro aplikace, aby to předvedli "připojení" Zobrazit pouze poté, co uživatel má přihlášení pomocí pracovního nebo školního účtu Microsoft.
 
@@ -254,4 +254,4 @@ Další informace o protokolu OAuth 2.0 a jak získat přístupové tokeny, najd
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud vy nebo uživatelé vaší aplikace se zobrazují neočekávaných chyb během procesu souhlasu, použijte odkaz tohoto článku pro řešení potíží: [Neočekávaná chyba při povolování spuštění aplikace](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+Pokud vy nebo uživatelé vaší aplikace se zobrazují neočekávaných chyb během procesu souhlas, najdete v tomto článku pro řešení potíží: [Neočekávaná chyba při povolování spuštění aplikace](../manage-apps/application-sign-in-unexpected-user-consent-error.md).

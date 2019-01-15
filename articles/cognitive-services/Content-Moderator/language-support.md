@@ -1,21 +1,21 @@
 ---
 title: Podpora jazyků – Content Moderator API
 titleSuffix: Azure Cognitive Services
-description: Seznam podporovaných Content Moderator API přirozeného jazyka.
+description: Toto je seznam přirozeného jazyka, které podporuje rozhraní Content Moderator API.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5c170fd2871d0e487f705e1e7274fdfdda4049e6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 95e7f5ce52f4bcf45153b4e455c1427f7117641c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276369"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263649"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Podpora jazyků pro Content Moderator API
 
@@ -57,7 +57,7 @@ ms.locfileid: "52276369"
 | Kurdština (latinka) | Estonština
 | Lepčské písmo | Filipínština
 | Limbu | Finština
-| Logická jednotka | Francouzština
+| Lu | Francouzština
 | Lycian | Galicijština
 | Lydian | Gruzínština
 | Mycenaean (řečtina) | Němčina
@@ -91,7 +91,7 @@ ms.locfileid: "52276369"
 | Uzbečtina (latinka) | Lucemburština
 | Vai | Makedonština
 | Yi | Malajština
-| Čuangština | Malajálamština
+| Zhuang, Chuang | Malajálamština
 | | Maltština
 | | Maorština
 | | Maráthština
@@ -108,14 +108,14 @@ ms.locfileid: "52276369"
 | | Pulaar
 | | Paňdžábština
 | | paňdžábština (Pákistán)
-| | kečuánština (Peru)
+| | Kečuánština (Peru)
 | | Rumunština
 | | ruština
 | | Skotská gaelština
 | | Srbština (cyrilice)
 | | Srbština (cyrilice, Bosna a Hercegovina)
 | | Srbština (latinka)
-| | Severní
+| | Sesotho
 | | Severní sótština
 | | Setswanština
 | | sindhština

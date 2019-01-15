@@ -13,19 +13,19 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4fd7d47313b67a0014919b14546926f5d78972a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3fc09255c38b4bbe8d416b97ea14a77a4b3014a0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240320"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305583"
 ---
 # <a name="create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Vytvoření datové továrny Azure a kanálu pomocí rozhraní REST API
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](quickstart-create-data-factory-rest-api.md)
 
-Azure Data Factory je cloudová služba pro integraci dat umožňující vytváření pracovních postupů řízených daty v cloudu za účelem orchestrace a automatizace přesunu a transformace dat. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (nazývané kanály) se schopností ingestovat data z různorodých úložišť dat, zpracovat a transformovat tato data pomocí výpočetních služeb, jako je Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning, a publikovat výstupní data do úložišť dat, jako je Azure SQL Data Warehouse, aby je mohly využívat aplikace business intelligence (BI). 
+Azure Data Factory je cloudová služba pro integraci dat umožňující vytváření pracovních postupů řízených daty v cloudu za účelem orchestrace a automatizace přesunu a transformace dat. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (nazývané kanály) se schopností ingestovat data z různorodých úložišť dat, zpracovat a transformovat tato data pomocí výpočetních služeb, jako je Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning, a publikovat výstupní data do úložišť dat, jako je Azure SQL Data Warehouse, aby je mohly využívat aplikace business intelligence (BI).
 
 Tento rychlý start popisuje použití rozhraní REST API k vytvoření datové továrny Azure. Kanál v této datové továrně kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure.
 
@@ -44,10 +44,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu.
 
     Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
-        
+    
     ```powershell
     Connect-AzureRmAccount
-    ```        
+    ```
     Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet:
 
     ```powershell
@@ -56,7 +56,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **SubscriptionId** použijte ID vašeho předplatného Azure:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
     ```
 2. Po nahrazení zástupných znaků vlastními hodnotami spusťte následující příkazy, které nastaví globální proměnné pro použití v dalších krocích.
 
@@ -82,7 +82,7 @@ $authHeader = @{
 'Content-Type'='application/json'
 'Accept'='application/json'
 'Authorization'=$result.CreateAuthorizationHeader()
-} 
+}
 ```
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
@@ -112,17 +112,15 @@ Je třeba počítat s následujícím:
     ```
     Data factory name "ADFv2QuickStartDataFactory" is not available.
     ```
-* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 Tady je ukázková odezva:
 
 ```json
-
 {
-    "name":  "<dataFactoryName>",
+    "name": "<dataFactoryName>",
     "tags": {
-
-            },
+    },
     "properties":  {
         "provisioningState":  "Succeeded",
         "loggingStorageAccountKey":  "**********",
@@ -137,8 +135,7 @@ Tady je ukázková odezva:
     "id":  "dataFactoryName",
     "type":  "Microsoft.DataFactory/factories",
     "location":  "East US"
-} 
-
+}
 ```
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
@@ -176,11 +173,11 @@ Tady je ukázkový výstup:
     "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/linkedservices/AzureStorageLinkedService",
     "name":  "AzureStorageLinkedService",
     "properties":  {
-                       "type":  "AzureStorage",
-                       "typeProperties":  {
-                                              "connectionString":  "@{value=**********; type=SecureString}"
-                                          }
-                   },
+        "type":  "AzureStorage",
+        "typeProperties":  {
+            "connectionString":  "@{value=**********; type=SecureString}"
+        }
+    },
     "etag":  "0000c552-0000-0000-0000-59b1459c0000"
 }
 ```
@@ -225,25 +222,25 @@ Tady je ukázkový výstup:
     "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/datasets/BlobDataset",
     "name":  "BlobDataset",
     "properties":  {
-                       "type":  "AzureBlob",
-                       "typeProperties":  {
-                                              "folderPath":  "@{value=@{dataset().path}; type=Expression}"
-                                          },
-                       "linkedServiceName":  {
-                                                 "referenceName":  "AzureStorageLinkedService",
-                                                 "type":  "LinkedServiceReference"
-                                             },
-                       "parameters":  {
-                                          "path":  "@{type=String}"
-                                      }
-                   },
+        "type":  "AzureBlob",
+        "typeProperties":  {
+            "folderPath":  "@{value=@{dataset().path}; type=Expression}"
+        },
+        "linkedServiceName":  {
+            "referenceName":  "AzureStorageLinkedService",
+            "type":  "LinkedServiceReference"
+        },
+        "parameters":  {
+            "path":  "@{type=String}"
+        }
+    },
     "etag":  "0000c752-0000-0000-0000-59b1459d0000"
 }
 ```
 
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
-V tomto příkladu tento kanál obsahuje jednu aktivitu a přebírá dva parametry – cestu ke vstupnímu objektu blob a cestu k výstupnímu objektu blob. Hodnoty pro tyto parametry se nastaví při aktivaci nebo spuštění kanálu. Aktivita kopírování odkazuje na stejnou datovou sadu objektů blob, kterou jste vytvořili v předchozím kroku jako vstup a výstup. Když se tato datová sada použije jako vstupní, zadá se vstupní cesta. A když se tato datová sada použije jako výstupní, zadá se výstupní cesta. 
+V tomto příkladu tento kanál obsahuje jednu aktivitu a přebírá dva parametry – cestu ke vstupnímu objektu blob a cestu k výstupnímu objektu blob. Hodnoty pro tyto parametry se nastaví při aktivaci nebo spuštění kanálu. Aktivita kopírování odkazuje na stejnou datovou sadu objektů blob, kterou jste vytvořili v předchozím kroku jako vstup a výstup. Když se tato datová sada použije jako vstupní, zadá se vstupní cesta. A když se tato datová sada použije jako výstupní, zadá se výstupní cesta.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
@@ -305,14 +302,14 @@ Tady je ukázkový výstup:
     "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/pipelines/Adfv2QuickStartPipeline",
     "name":  "Adfv2QuickStartPipeline",
     "properties":  {
-                       "activities":  [
-                                          "@{name=CopyFromBlobToBlob; type=Copy; inputs=System.Object[]; outputs=System.Object[]; typeProperties=}"
-                                      ],
-                       "parameters":  {
-                                          "inputPath":  "@{type=String}",
-                                          "outputPath":  "@{type=String}"
-                                      }
-                   },
+        "activities":  [
+            "@{name=CopyFromBlobToBlob; type=Copy; inputs=System.Object[]; outputs=System.Object[]; typeProperties=}"
+        ],
+        "parameters":  {
+            "inputPath":  "@{type=String}",
+            "outputPath":  "@{type=String}"
+        }
+    },
     "etag":  "0000c852-0000-0000-0000-59b1459e0000"
 }
 ```
@@ -375,19 +372,19 @@ Tady je ukázkový výstup:
         "dataFactoryName":  "<dataFactoryName>",
         "pipelineName":  "Adfv2QuickStartPipeline",
         "parameters":  [
-                        "inputPath: <inputBlobPath>",
-                        "outputPath: <outputBlobPath>"
-                    ],
+            "inputPath: <inputBlobPath>",
+            "outputPath: <outputBlobPath>"
+        ],
         "parametersCount":  2,
         "parameterNames":  [
-                            "inputPath",
-                            "outputPath"
-                        ],
+            "inputPath",
+            "outputPath"
+        ],
         "parameterNamesCount":  2,
         "parameterValues":  [
-                                "<inputBlobPath>",
-                                "<outputBlobPath>"
-                            ],
+            "<inputBlobPath>",
+            "<outputBlobPath>"
+        ],
         "parameterValuesCount":  2,
         "runStart":  "2017-09-07T13:12:00.3710792Z",
         "runEnd":  "2017-09-07T13:12:39.5561795Z",
@@ -410,24 +407,24 @@ Tady je ukázkový výstup:
     ```json
     {
         "value":  [
-                    {
-                        "id":  "000000000-0000-0000-0000-00000000000",
-                        "timestamp":  "2017-09-07T13:12:38.4780542Z",
-                        "pipelineRunId":  "000000000-0000-00000-0000-0000000000000",
-                        "pipelineName":  "Adfv2QuickStartPipeline",
-                        "status":  "Succeeded",
-                        "failureType":  "",
-                        "linkedServiceName":  "",
-                        "activityName":  "CopyFromBlobToBlob",
-                        "activityType":  "Copy",
-                        "activityStart":  "2017-09-07T13:12:02.3299261Z",
-                        "activityEnd":  "2017-09-07T13:12:38.4780542Z",
-                        "duration":  36148,
-                        "input":  "@{source=; sink=}",
-                        "output":  "@{dataRead=331452208; dataWritten=331452208; copyDuration=22; throughput=14712.9; errors=System.Object[]; effectiveIntegrationRuntime=DefaultIntegrationRuntime (West US); usedDataIntegrationUnits=2; billedDuration=22}",
-                        "error":  "@{errorCode=; message=; failureType=; target=CopyFromBlobToBlob}"
-                    }
-                ]
+            {
+                "id":  "000000000-0000-0000-0000-00000000000",
+                "timestamp":  "2017-09-07T13:12:38.4780542Z",
+                "pipelineRunId":  "000000000-0000-00000-0000-0000000000000",
+                "pipelineName":  "Adfv2QuickStartPipeline",
+                "status":  "Succeeded",
+                "failureType":  "",
+                "linkedServiceName":  "",
+                "activityName":  "CopyFromBlobToBlob",
+                "activityType":  "Copy",
+                "activityStart":  "2017-09-07T13:12:02.3299261Z",
+                "activityEnd":  "2017-09-07T13:12:38.4780542Z",
+                "duration":  36148,
+                "input":  "@{source=; sink=}",
+                "output":  "@{dataRead=331452208; dataWritten=331452208; copyDuration=22; throughput=14712.9; errors=System.Object[]; effectiveIntegrationRuntime=DefaultIntegrationRuntime (West US); usedDataIntegrationUnits=2; billedDuration=22}",
+                "error":  "@{errorCode=; message=; failureType=; target=CopyFromBlobToBlob}"
+            }
+        ]
     }
     ```
 
@@ -438,16 +435,16 @@ Použijte Průzkumníka služby Azure Storage a zkontrolujte, že se objekty blo
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete odstranit [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md), což zahrnuje odstranění všech prostředků v této skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze datovou továrnu, kterou jste vytvořili v tomto kurzu.
 
-Spuštěním následujícího příkazu odstraníte celou skupinu prostředků: 
+Spuštěním následujícího příkazu odstraníte celou skupinu prostředků:
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-Spuštěním následujícího příkazu odstraníte pouze datovou továrnu: 
+Spuštěním následujícího příkazu odstraníte pouze datovou továrnu:
 
 ```powershell
 Remove-AzureRmDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<NameOfResourceGroup>"
 ```
 
-## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích. 
+## <a name="next-steps"></a>Další postup
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

@@ -11,16 +11,34 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: a7a15e4cd8670e71e1000bc6b1827a4b9292302b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200611"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304089"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning. 
+
+## <a name="2019-01-14"></a>2019-01-14
+
+### <a name="azure-machine-learning-sdk-for-python-v108"></a>Azure Machine Learning sady SDK pro Python v1.0.8
+
++ **Referenční dokumentace sady SDK**: https://aka.ms/aml-sdk
+
++ **Opravy chyb**: Tato verze obsahuje většinou menšími opravami chyb
+
+### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Sada SDK v1.0.7 pro přípravu dat Azure Machine Learning
+
++ **Referenční dokumentace sady SDK**: https://aka.ms/data-prep-sdk
+
++ **Nové funkce**
+  + Vylepšení úložiště dat (popsané v [úložiště dat k postupy – průvodce](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
+    + Přidání možnosti číst z a zapisovat do sdílené složky Azure a úložiště ADLS v vertikálně navýšit kapacitu.
+    + Při použití úložiště, přípravy dat pomocí ověřování instančních objektů místo interaktivní ověřování teď podporuje.
+    + Přidání podpory pro wasb a wasbs adresy URL.
 
 ## <a name="2019-01-09"></a>2019-01-09
 
@@ -116,7 +134,7 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
   + Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md)
   + Zjistěte, jak [spouštění predikcí služby batch pomocí kanálů](how-to-run-batch-predictions.md)
 + Cílové výpočetní prostředí Azure Machine Learning
-  + [Ukázkové poznámkové bloky] (https://aka.ms/aml-notebooks) jsou nyní aktualizované na používání nové spravované výpočetní prostředky.
+  + [Ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) jsou nyní aktualizované na používání nové spravované výpočetní prostředky.
   + [Další informace o tomto výpočetní](how-to-set-up-training-targets.md#amlcompute)
 
 ### <a name="azure-portal-new-features"></a>Azure portal: nové funkce
@@ -137,7 +155,7 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
 
 + **Rozbíjející změny v** 
   * *azureml.Train.widgets* obor názvů se přesunula do *azureml.widgets*.
-  * *azureml.core.compute.AmlCompute* zastarání následující třídy – *azureml.core.compute.BatchAICompute* a *azureml.core.compute.DSVMCompute*. Tato třída se odebere v dalších verzích. Třída AmlCompute má nyní jednodušší definici a jednoduše potřebuje vm_size a max_nodes a automatické škálování clusteru od 0 do max_nodes, když je úloha odeslána. Naše [ukázkové poznámkové bloky] (https://github.com/Azure/MachineLearningNotebooks/tree/master/training) byly aktualizovány s těmito informacemi a by vám měl dát příklady použití. Věříme, že je třeba toto zjednodušení a spoustu další zajímavé funkce, které chcete se dělí na novější verzi!
+  * *azureml.core.compute.AmlCompute* zastarání následující třídy – *azureml.core.compute.BatchAICompute* a *azureml.core.compute.DSVMCompute*. Tato třída se odebere v dalších verzích. Třída AmlCompute má nyní jednodušší definici a jednoduše potřebuje vm_size a max_nodes a automatické škálování clusteru od 0 do max_nodes, když je úloha odeslána. Naše [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) byly aktualizovány s těmito informacemi a by vám měl dát příklady použití. Věříme, že je třeba toto zjednodušení a spoustu další zajímavé funkce, které chcete se dělí na novější verzi!
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Sada SDK v0.5.1 pro přípravu dat Azure Machine Learning 
 

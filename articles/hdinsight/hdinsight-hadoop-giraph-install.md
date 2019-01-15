@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ee1cfaa9e5eb08b2fe6ee7d210dcb84a8c39d78
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715320"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260483"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalace a využít Apache Giraph u clusterů HDInsight se systémem Windows
 
@@ -153,7 +153,7 @@ K předvedení na úrovni basic použijeme příklad SimpleShortestPathsComputat
 
     ![Vykreslení objektů jako kroužky s nejkratší cesty mezi](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
-## <a name="install-giraph-using-aure-powershell"></a>Nainstalovat Giraph pomocí Azure Powershellu
+## <a name="install-giraph-using-azure-powershell"></a>Nainstalovat Giraph pomocí Azure Powershellu
 Zobrazit [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Vzorek ukazuje, jak nainstalovat Apache Sparkem s využitím Azure Powershellu. Je třeba přizpůsobit skript, který chcete použít [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
 
 ## <a name="install-giraph-using-net-sdk"></a>Nainstalovat Giraph pomocí sady .NET SDK

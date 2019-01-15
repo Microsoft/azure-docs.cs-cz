@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 1e7b6ed7c401bed741142dfc02efc7990cf67f6e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118808"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302421"
 ---
 # <a name="public-preview-service-limits"></a>Omezení služby ve verzi Public Preview
 
@@ -35,7 +35,7 @@ Každé předplatné Azure ve verzi public preview, můžete vytvořit nebo spus
 
 Každá instance Azure digitální dvojče zase může mít:
 
-- Přesně jeden **IoTHub** prostředků.
+- Právě jeden vložený **IoTHub** prostředek, který se automaticky vytvoří během zřizování služby.
 - Přesně jeden **EventHub** koncový bod pro typ události **DeviceMessage**.
 - Až tři **EventHub**, **služby Service Bus**, nebo **EventGrid** koncové body typu události **SensorChange**, **SpaceChange** , **TopologyOperation**, nebo **UdfCustom**.
 

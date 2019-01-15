@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: a476af9ceb1b664a458f7f07a5a7b3945b1ad881
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 601c23bbcddeaeff89e1d1b1a4be8cb6b0256e51
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036558"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258777"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Další informace o šablonách škálovacích sad virtuálních počítačů
 [Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. V této sérii kurzů ukazuje, jak vytvořit šablonu minimální přijatelné škálovací sady a jak upravit tuto šablonu tak, aby odpovídala různé scénáře. Všechny příklady pocházejí z tohoto [úložiště GitHub](https://github.com/gatneil/mvss). 
@@ -70,7 +70,7 @@ Dále je část zdroje šablony. Tady můžete definovat, co vlastně chcete nas
    "resources": [
 ```
 
-Všechny prostředky vyžadují `type`, `name`, `apiVersion`, a `location` vlastnosti. První prostředek v tomto příkladu má typ [Microsft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)a názvem `myVnet`a verze rozhraní API `2016-03-30`. (Nejnovější verze rozhraní API pro typ prostředku, najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).)
+Všechny prostředky vyžadují `type`, `name`, `apiVersion`, a `location` vlastnosti. První prostředek v tomto příkladu má typ [sítí Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)a názvem `myVnet`a verze rozhraní API `2016-03-30`. (Nejnovější verze rozhraní API pro typ prostředku, najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).)
 
 ```json
      {

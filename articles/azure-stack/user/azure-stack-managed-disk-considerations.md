@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 78cb969aa96378dd84243545be1678ae4eaf0e0e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ecbd555809799619d61a7ff33911b7f28dcb3005
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232528"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262706"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: rozdíly a aspekty
 
@@ -44,7 +44,7 @@ Spravované disky zjednodušují správu disků pro virtuální počítače IaaS
 |Disky Premium  |Plně podporované. |Je možné zřídit, ale bez omezení výkonu nebo záruk  |
 |Prémiové disky vstupně-výstupních operací  |Závisí na velikosti disku  |2300 IOPs na disk |
 |Propustnost disků úrovně Premium |Závisí na velikosti disku |145 MB za sekundu na disk |
-|Velikost disku  |Disk Azure typu Premium: P4 (32 GB) na P80 (32 TB)<br>Disk Azure SSD na úrovni Standard: E10 (128 GB) na E80 (32 TB)<br>Pevný disk Azure standardní Disk: S4 (32 GB) na S80 (32 TB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 GB |
+|Velikost disku  |Disk Azure typu Premium: P4 (32 GB) na P80 (32 TB)<br>Disk Azure SSD na úrovni Standard: E10 (128 GB) na E80 (32 TB)<br>Pevný disk Azure standardní Disk: S4 (32 GB) na S80 (32 TB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 GiB |
 |Kopie snímků disků|Pořízení snímku Azure připojené do spuštěného virtuálního počítače nepodporuje spravované disky|Není dosud podporován. |
 |Výkon disků analýzy |Agregace metrik a metriky pro disk podporované |Není dosud podporován. |
 |Migrace      |Poskytuje nástroj pro migraci z existující nespravovaná správce prostředků virtuálních počítačů Azure bez nutnosti znovu vytvořte virtuální počítač  |Není dosud podporován. |
@@ -72,7 +72,7 @@ Po použití. 1808 update nebo novější, je třeba provést následující kon
 - Pokud odběr byl vytvořen ještě před aktualizací. 1808, postupujte podle následujících kroků provedete aktualizaci odběru. V opačném případě nasazování virtuálních počítačů v tomto předplatném může selhat s chybovou zprávou "Vnitřní chyba ve Správci disků."
    1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
    2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
-- Pokud používáte prostředí s více tenanty, požádejte vašeho cloudu – operátor (května ve vaší vlastní organizaci nebo od poskytovatele služeb), změna konfigurace všech vašich adresářů hosta, postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). V opačném případě nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s chybovou zprávou "Vnitřní chyba ve Správci disků."
+- Pokud používáte prostředí s více tenanty, požádejte vašeho cloudu – operátor (může být ve vaší vlastní organizaci nebo od poskytovatele služeb) změna konfigurace všech vašich adresářů hosta, proveďte tyto kroky v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). V opačném případě nasazování virtuálních počítačů v rámci služby předplacené přidružené k tomuto adresáři hosta může selhat s chybovou zprávou "Vnitřní chyba ve Správci disků."
 
 
 ## <a name="next-steps"></a>Další postup

@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 40df81d496e04ab2d549923cc0645afb8eddaf57
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b907098f9d6471a7df5ca43f76cd9109ee4dea8e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724449"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263946"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Použití nástrojů pro přenos dat pro úložiště Azure Stack
 
@@ -160,7 +160,7 @@ Tento příklad předpokládá, že jste úspěšně [nainstalované prostředí
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
 $ARMEndPoint = "https://management.local.azurestack.external" 
-$GraphAudiance = "https://graph.windows.net/" 
+$GraphAudience = "https://graph.windows.net/" 
 $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com" 
 
 $SubscriptionName = "basic" # Update with the name of your subscription.
@@ -169,7 +169,7 @@ $StorageAccountName = "azsblobcontainer" # Give a name to your new storage accou
 $Location = "Local" # Choose "Local" as an example.
 $ContainerName = "photo" # Give a name to your new container.
 $ImageToUpload = "C:\temp\Hello.jpg" # Prepare an image file and a source directory in your local computer.
-$DestinationFolder = "C:\temp\downlaod" # A destination directory in your local computer.
+$DestinationFolder = "C:\temp\download" # A destination directory in your local computer.
 
 # Import the Connect PowerShell module"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
@@ -307,7 +307,7 @@ Microsoft Azure storage explorer je samostatná aplikace od Microsoftu. Umožňu
 
 ## <a name="blobfuse"></a>Blobfuse 
 
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) je ovladač virtuálním souborovém systému pro Azure Blob Storage, což vám umožní přistupovat k existující data objektů blob bloku v účtu úložiště v systému Linux. Je služba pro úložiště objektů Azure Blob Storage a proto nemá hierarchického oboru názvů. Tento obor názvů používá schéma virtuální direcectory s použitím lomítky poskytuje Blobfuse `/` jako oddělovač. Blobfuse funguje na platformě Azure a Azure Stack. 
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) je ovladač virtuálním souborovém systému pro Azure Blob Storage, což vám umožní přistupovat k existující data objektů blob bloku v účtu úložiště v systému Linux. Je služba pro úložiště objektů Azure Blob Storage a proto nemá hierarchického oboru názvů. Tento obor názvů používá schéma virtuální adresář s použitím lomítky poskytuje Blobfuse `/` jako oddělovač. Blobfuse funguje na platformě Azure a Azure Stack. 
 
 Další informace o připojení úložiště objektů Blob jako systém souborů s Blobfuse v Linuxu najdete v tématu [postup připojení služby Blob storage jako systém souborů s Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux). 
 

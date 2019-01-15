@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: fb0ad8efcd73b304ea5c68f0d3c45a38ce1b80e8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557277"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304903"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele
 
@@ -50,7 +50,7 @@ Přehled:
 * Použijte službu RESTful v cestě uživatele.
 * Odeslání vstupních deklarací identity a přečtěte si je ve vašem kódu.
 * Ověřte uživatelské jméno.
-* Odešlete zpět celou věrnostních programů. 
+* Odešlete zpět celou věrnostních programů.
 * Přidáte číslo loajalitu na JSON Web Token (JWT).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -77,11 +77,11 @@ Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Příprava koncový bod rozhraní REST API
 
 ### <a name="step-21-add-data-models"></a>Krok 2.1: Přidat datové modely
-Modely představují mezi vstupními deklaracemi identity a deklarací výstupní data ve službě RESTful. Váš kód načítá vstupní data pomocí deserializace modelu vstupních deklarací identity z řetězce JSON na objekt jazyka C# (modelu). ASP.NET web API automaticky deserializuje model deklarací výstupu zpět do formátu JSON a pak zapíše serializovaná data do textu zprávy s odpovědí HTTP. 
+Modely představují mezi vstupními deklaracemi identity a deklarací výstupní data ve službě RESTful. Váš kód načítá vstupní data pomocí deserializace modelu vstupních deklarací identity z řetězce JSON na objekt jazyka C# (modelu). ASP.NET web API automaticky deserializuje model deklarací výstupu zpět do formátu JSON a pak zapíše serializovaná data do textu zprávy s odpovědí HTTP.
 
 Vytvoření modelu, který představuje vstupních deklarací identity s následujícím způsobem:
 
-1. Pokud Průzkumník řešení již není otevřen, vyberte **zobrazení** > **Průzkumníka řešení**. 
+1. Pokud Průzkumník řešení již není otevřen, vyberte **zobrazení** > **Průzkumníka řešení**.
 2. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Modely**, vyberte **Přidat** a pak vyberte **Třída**.
 
     ![Přidání modelu](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
@@ -128,7 +128,7 @@ Vytvoření modelu, který představuje vstupních deklarací identity s násled
                 this.userMessage = message;
                 this.status = (int)status;
                 this.version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }    
+            }
         }
     }
     ```
@@ -241,20 +241,20 @@ Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HT
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>Krok 5: Přidat zprostředkovatele deklarací identity 
-Každý zprostředkovatele deklarací identity, musí mít nejmíň jeden technické profily, které určíte, koncové body a protokoly, které jsou potřeba ke komunikaci s zprostředkovatele deklarací identity. 
+## <a name="step-5-add-a-claims-provider"></a>Krok 5: Přidat zprostředkovatele deklarací identity
+Každý zprostředkovatele deklarací identity, musí mít nejmíň jeden technické profily, které určíte, koncové body a protokoly, které jsou potřeba ke komunikaci s zprostředkovatele deklarací identity.
 
-Zprostředkovatel deklarací může mít více technické profily z různých důvodů. Například více technické profily mohou být definovány, protože více protokolů podporuje zprostředkovatel deklarací, koncové body mohou mít různé možnosti nebo vydané verze může obsahovat deklarace identity, které mají různé úrovně záruky. Může být přijatelný uvolnit citlivých deklarací identity v cestě jednoho uživatele, ale ne v jiném. 
+Zprostředkovatel deklarací může mít více technické profily z různých důvodů. Například více technické profily mohou být definovány, protože více protokolů podporuje zprostředkovatel deklarací, koncové body mohou mít různé možnosti nebo vydané verze může obsahovat deklarace identity, které mají různé úrovně záruky. Může být přijatelný uvolnit citlivých deklarací identity v cestě jednoho uživatele, ale ne v jiném.
 
 Následující fragment kódu XML obsahuje uzel poskytovatele deklarací identity dva technické profily:
 
-* **Technický profil Id = "REST API SignUp"**: Definuje vaši službu RESTful. 
-   * `Proprietary` je popsána jako protokol pro zprostředkovatele na základě RESTful. 
-   * `InputClaims` definuje deklarace, které se odešlou do služby REST z Azure AD B2C. 
+* **TechnicalProfile Id="REST-API-SignUp"**: Definuje vaši službu RESTful.
+   * `Proprietary` je popsána jako protokol pro zprostředkovatele na základě RESTful.
+   * `InputClaims` definuje deklarace, které se odešlou do služby REST z Azure AD B2C.
 
    V tomto příkladu obsah deklarace identity `givenName` odešle službě REST jako `firstName`, obsah se deklarace `surname` odešle službě REST jako `lastName`, a `email` odešle je. `OutputClaims` Element definuje deklarace identity, které jsou načteny z služba RESTful zpět do Azure AD B2C.
 
-* **Technický profil Id = "LocalAccountSignUpWithLogonEmail"**: Technický profil ověření přidá do stávající technický profil (definováno v základních zásadách). Technický profil ověření během registrace cesty, vyvolá předchozí technický profil. Pokud služba RESTful vrátí chybu HTTP 409 (konflikt chyba), zobrazí se chybová zpráva pro uživatele. 
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**: Technický profil ověření přidá do stávající technický profil (definováno v základních zásadách). Technický profil ověření během registrace cesty, vyvolá předchozí technický profil. Pokud služba RESTful vrátí chybu HTTP 409 (konflikt chyba), zobrazí se chybová zpráva pro uživatele.
 
 Vyhledejte `<ClaimsProviders>` uzel a potom přidejte následující fragment kódu XML v rámci `<ClaimsProviders>` uzlu:
 
@@ -329,7 +329,7 @@ Po přidání nových deklarací identity, předávající strana kódu vypadá 
 
 2. Vyberte **architekturu rozhraní identit**.
 
-3. Otevřít **všechny zásady**. 
+3. Otevřít **všechny zásady**.
 
 4. Vyberte **nahrát zásady**.
 
@@ -354,7 +354,7 @@ Po přidání nových deklarací identity, předávající strana kódu vypadá 
 
     ![Vaše zásada testování](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4.  V **křestní jméno** zadejte název (jiné než "Test").  
+4. V **křestní jméno** zadejte název (jiné než "Test").  
     Azure AD B2C přihlásí uživatele a pak loyaltyNumber odesílá do vaší aplikace. Všimněte si čísla ve tento token JWT.
 
 ```
@@ -381,7 +381,7 @@ Po přidání nových deklarací identity, předávající strana kódu vypadá 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(Volitelné) Stažení kompletní zásady souborů a kódu
 * Po dokončení [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) návodu, doporučujeme vám vytvořit váš scénář s využitím vlastních zásad pro soubory. Pro srovnání si uvádíme [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
 * Můžete stáhnout kompletní kód z [řešení sady Visual Studio ukázkový pro referenci](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
-    
+
 ## <a name="next-steps"></a>Další postup
 * [Zabezpečení rozhraní RESTful API pomocí základního ověřování (uživatelské jméno a heslo)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [Zabezpečení rozhraní RESTful API pomocí klientských certifikátů](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

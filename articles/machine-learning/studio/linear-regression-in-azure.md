@@ -1,27 +1,7 @@
 ---
-title: Použití lineární regrese v nástroji Machine Learning Studio – Azure | Dokumentace Microsoftu
-description: Porovnání modelů lineární regrese v aplikaci Excel a nástroji Azure Machine Learning Studio
-metakeywords: ''
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276669"
+Název: Použití lineární regrese v nástroji Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Porovnání modelů lineární regrese v Excelu a služby Azure Machine Learning Studio: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/20/2017
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Použití lineární regrese v nástroji Azure Machine Learning Studio
 > *Kate Baroni* a *Robert Boatman* jsou podnikové architekty řešení ve společnosti Microsoft Data Insights bez System Center. V tomto článku popisují práci migrace sady existující regresní analýzy na cloudové řešení, které využívá Azure Machine Learning. 

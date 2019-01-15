@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6409011c1a7c125dd03bb706f49ccad1a1fd49a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8a5c11df1b6353a100dd5f1cf388308b9c048932
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538867"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258860"
 ---
 # <a name="quickstart-create-reviews-using-net"></a>Rychlý start: Vytvoření kontroly pomocí .NET
 
@@ -30,8 +30,7 @@ Tento článek předpokládá, že už máte zkušenosti se sadou Visual Studio 
 
 ## <a name="sign-up-for-content-moderator"></a>Registrace do Content Moderatoru
 
-Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného.
-Informace o tom, jak klíč získat, najdete v [Rychlém startu](quick-start.md).
+Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného. Podle pokynů v tématu [Vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru Content Moderatoru a získejte svůj klíč.
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrace účtu nástroje pro kontrolu, pokud jste se nezaregistrovali v předchozím kroku
 

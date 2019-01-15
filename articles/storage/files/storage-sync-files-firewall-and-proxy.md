@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: 3a1cc0a28ef5a4861d86373ce39258936639baab
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: aa01ffc196ba6ece41fac9a95db04b58ad962060
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333338"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259814"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
@@ -86,7 +86,7 @@ Konfigurace nastavení proxy pro celý počítač, použijte následující post
 
       filesyncsvc net stop
 
-      Poznámka: Službu agenta synchronizace úložiště (filesyncsvc) se automaticky spouštěná jednou zastavena.
+      Poznámka: Služba agenta synchronizace úložiště (filesyncsvc) se automaticky spouštěná jednou zastavena.
 
 ## <a name="firewall"></a>Brána firewall
 Jak je uvedeno v předchozí části, otevřít odchozí port 443 musí být. Na základě zásad v datovém centru, větvi nebo oblasti, další omezení provozu přes tento port na vybrané domény může být požadovaného nebo vyžaduje.
@@ -100,7 +100,7 @@ Následující tabulka popisuje požadovaných domén pro komunikace:
 | **Azure Active Directory** | https://graph.windows.net/ | Jako součást nasazení Azure File Sync se vytvoří instanční objekt služby ve službě Active Directory předplatného Azure. Pro, který se používá tuto adresu URL. Tento objekt se používá pro delegování minimální sadu práv ve službě Azure File Sync. Uživatel provádějící počáteční nastavení služby Azure File Sync musí být ověřený uživatel s oprávněními vlastníka předplatného. |
 | **Azure Storage** | &ast;.core.windows.net | Pokud server stáhne soubor, pak server provede tento přesun dat efektivněji přímo s sdílené složky Azure v účtu úložiště. Server má klíč SAS, která povoluje jenom pro přístup ke sdílené složce cílového souboru. |
 | **Azure File Sync** | &ast;.one.microsoft.com | Po registraci počáteční server přijímá na serveru místní adresu URL instance služby Azure File Sync v dané oblasti. Server může komunikovat přímo a efektivně s instancí zpracování synchronizace. použijte adresu URL. |
-| **Infrastruktura veřejných KLÍČŮ Microsoft** | http://www.microsoft.com/pki/mscorp  http://ocsp.msocsp.com | Po instalaci agenta Azure File Sync se adresa URL infrastruktury veřejných KLÍČŮ se používá ke stahování zprostředkující certifikáty vyžadované pro komunikaci se službou Azure File Sync a sdílené složky Azure. Adresa URL protokolu OCSP se používá ke kontrole stavu certifikátu. |
+| **Microsoft PKI** | http://ocsp.msocsp.com | Po instalaci agenta Azure File Sync se adresa URL infrastruktury veřejných KLÍČŮ se používá ke stahování zprostředkující certifikáty vyžadované pro komunikaci se službou Azure File Sync a sdílené složky Azure. Adresa URL protokolu OCSP se používá ke kontrole stavu certifikátu. |
 
 > [!Important]
 > Při povolení provozu na &ast;. one.microsoft.com, provoz do více než jen synchronizační služby je možné ze serveru. Nejsou k dispozici v části subdomény mnoho další služby Microsoftu.
@@ -130,7 +130,7 @@ Pro provozní kontinuitu a po havárii (BCDR) obnovení důvodů jste zadali, ž
 
 - Pokud používáte účty globálně redundantní úložiště (GRS), povolte tři adresy URL.
 
-**Příklad:** nasazení služby synchronizace úložiště v `"West US"` a zaregistrovat svůj server. Adresy URL, aby server ke komunikaci se pro tento případ jsou:
+**Příklad:** Nasazení služby synchronizace úložiště v `"West US"` a zaregistrovat svůj server. Adresy URL, aby server ke komunikaci se pro tento případ jsou:
 
 > - https://kailani.one.microsoft.com (primární koncový bod: USA – západ)
 > - https://kailani1.one.microsoft.com (spárované oblasti převzetí služeb při selhání: USA – východ)

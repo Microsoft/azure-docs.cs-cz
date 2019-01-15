@@ -1,26 +1,8 @@
 ---
-title: Azure poznámkové bloky Jupyter Galerie AI – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Objevte poznámkové bloky Jupyter v galerii Azure AI. Poznámkové bloky ve galerii poskytují kurzy a podrobné vysvětlení pokročilých machine learningu, techniky a řešení.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 556e0671-1b50-4bcb-92eb-889962310633
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: b927b63744c9871c2a2d5451c685714c2d2ea6de
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268219"
+Název: Azure AI Galerie Jupyter notebooks titleSuffix: Azure Machine Learning Studio Popis: Objevte poznámkové bloky Jupyter v galerii Azure AI. Poznámkové bloky ve galerii poskytují kurzy a podrobné vysvětlení pokročilých machine learningu, techniky a řešení.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/31/2017
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Zjistit poznámkové bloky Jupyter v galerii Azure AI
 

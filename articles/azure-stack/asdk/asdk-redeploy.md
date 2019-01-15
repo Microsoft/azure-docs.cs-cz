@@ -16,12 +16,12 @@ ms.custom: ''
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: ecdfb0f062ebad903d35401a2f5303d3e6d04b5d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 91ac75f3cb41f73ea18595138969dfb7b1444173
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037375"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263507"
 ---
 # <a name="redeploy-the-asdk"></a>Opětovné nasazení ASDK
 V tomto článku se dozvíte, jak znovu nasadit Azure Stack Development Kit (ASDK) v neprodukčním prostředí. Protože upgrade ASDK není podporován, budete muset zcela jej přesunout na novější verzi znovu nasadit. Můžete také znovu nasadit ASDK kdykoli, který chcete začít znovu od začátku.
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak znovu nasadit Azure Stack Development Kit (ASD
 ## <a name="remove-azure-registration"></a>Odebrat registraci Azure 
 Pokud jste dříve zaregistrovali ASDK instalace s Azure, měli byste odebrat registrace prostředků před znovu se nasazuje ASDK. Opětovná registrace ASDK při opětovném nasazování ASDK povolit dostupnost položky na webu Marketplace. Pokud jste se ještě nezaregistrovali dříve ASDK ve vašem předplatném Azure, můžete tuto část přeskočit.
 
-K odebrání prostředků registrace, použijte **odebrat AzsRegistration** rutiny ke zrušení registrace Azure Stack. Potom použijte **odebrat AzureRMRsourceGroup** rutiny z vašeho předplatného Azure odstranit skupinu prostředků Azure Stack:
+K odebrání prostředků registrace, použijte **odebrat AzsRegistration** rutiny ke zrušení registrace Azure Stack. Potom použijte **Remove-AzureRMResourceGroup** rutiny z vašeho předplatného Azure odstranit skupinu prostředků Azure Stack:
 
 1. Otevřete konzolu Powershellu s oprávněními správce na počítači, který má přístup k privilegovaným koncový bod. Pro ASDK, který je hostitelský počítač development kit.
 

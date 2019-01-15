@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 39dd475c776a3cdb4f2281b9b5468968745024ac
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215163"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265205"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení několik prostředků Azure monitoru Application Insights 
 Tento článek popisuje, jak dotaz a zobrazit všechna data protokolů Application Insights aplikaci na jednom místě, i když se nachází v různých předplatných Azure, jako náhrada vyřazení Application Insights Connector.  
@@ -64,7 +64,7 @@ applicationsScoping //this brings data from Application Insights resources
 | where success == 'False' 
 | where duration > 1000 
 | union ( 
-    ApplicationInsights //this is Application Insights data in Log Analytics worspace 
+    ApplicationInsights //this is Application Insights data in Log Analytics workspace 
     | where TimeGenerated < (datetime("2018-12-01") 
     | where RequestSuccess == 'False' 
     | where RequestDuration > 1000 
@@ -82,11 +82,11 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 
 | Vlastnosti pracovního prostoru analýzy protokolů| Vlastnosti prostředku Application Insights|
 |------------|------------| 
-| AnonUserId | USER_ID|
+| AnonUserId | user_id|
 | ApplicationId | appId|
-| ApplicationName | AppName|
+| ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
-| AvailabilityCount | Vlastnost ItemCount |
+| AvailabilityCount | itemCount |
 | AvailabilityDuration | doba trvání |
 | AvailabilityMessage | zpráva |
 | AvailabilityRunLocation | location |
@@ -98,23 +98,23 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 | Když | client_IP |
 | Počítač | cloud_RoleInstance | 
 | Země | client_CountryOrRegion | 
-| CustomEventCount | Vlastnost ItemCount | 
+| CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | jméno | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
-| ExceptionCount | Vlastnost ItemCount | 
+| ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | zpráva | 
 | ExceptionType | type |
 | ID operace | operation_id |
-| OperationName | opeation_Name | 
+| OperationName | operation_Name | 
 | Operační systém | client_OS | 
-| PageViewCount | Vlastnost ItemCount |
+| PageViewCount | itemCount |
 | PageViewDuration | doba trvání | 
 | PageViewName | jméno | 
-| ParentOpeartionID | operation_Id | 
-| RequestCount | Vlastnost ItemCount | 
+| ParentOperationID | operation_Id | 
+| RequestCount | itemCount | 
 | RequestDuration | doba trvání | 
 | ID žádosti | id | 
 | RequestName | jméno | 
@@ -125,7 +125,7 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 | ID relace | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
-| zprostředkovatele identity | adresy _url |
+| zprostředkovatele identity | _url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>Další postup

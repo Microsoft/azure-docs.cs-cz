@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: e1575afde326875558cea437de775515b8606f01
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d3f8e5ac1f85483d04da99744809f4bc72295024
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980581"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266190"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování v Application Insights Java
 Pokud již používáte, Logback nebo Log4J (verze 1.2 nebo 2.0) pro trasování, může mít protokoly trasování automaticky odesílaných do Application Insights, kde můžete prozkoumat a hledat v nich.
@@ -60,7 +60,7 @@ Pak obnovte závislosti projektu, k získání stažených binárních souborů.
     </dependencies>
 ```
 
-*Verze 1.2 Log4J*
+*Log4J v1.2*
 
 ```XML
 
@@ -91,20 +91,20 @@ Pak obnovte závislosti projektu, k získání stažených binárních souborů.
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Verze 1.2 Log4J**
+**Log4J v1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
 ```
 
 #### <a name="otherwise-"></a>V opačném případě...
-Postupujte podle pokynů k ručně nainstalovat sadu Application Insights Java SDK, stažení soubor jar pro příslušné appenderu protokolovacího (po posuzování na stránce Centrální Maven klikněte na odkaz "jar" v části stažení) a přidejte do projektu soubor jar stažené appenderu protokolovacího.
+Postupujte podle pokynů ručně nainstalovat sadu Application Insights Java SDK, stáhněte si soubor jar (po přicházejících u Maven centrální stránku kliknutím na odkaz "jar" v části stažení) pro příslušné appenderu protokolovacího a přidejte do projektu soubor jar stažené appenderu protokolovacího.
 
 | Protokolovací nástroj | Ke stažení | Knihovna |
 | --- | --- | --- |
-| Logback |[Appenderu protokolovacího Logback Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights. protokolování logback |
+| Logback |[Appenderu protokolovacího Logback Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v2.0 |[Appenderu protokolovacího v2 Log4J Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Verze 1.2 Log4j |[Appenderu protokolovacího v1.2 Log4J Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Log4j v1.2 |[Appenderu protokolovacího v1.2 Log4J Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>Přidat appenderu protokolovacího protokolovacího rozhraní
@@ -138,7 +138,7 @@ Jak začít využívat trasování, sloučí relevantní fragment kódu do konfi
     </Configuration>
 ```
 
-*Verze 1.2 Log4J*
+*Log4J v1.2*
 
 ```XML
 
@@ -156,7 +156,7 @@ Appenders Application Insights může odkazovat všechny nakonfigurovaného prot
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>Prozkoumat trasování na portálu Application Insights
 Teď, když jste nakonfigurovali projekt k odesílání trasování do Application Insights, můžete zobrazit a hledání v těchto trasování v portálu služby Application Insights [hledání] [ diagnostic] okno.
 
-Odeslán výjimky prostřednictvím protokolovacích nástrojů se zobrazí na portálu jako Telemetrie výjimek.
+Výjimky veškerého protokolovacích nástrojů se zobrazí na portálu jako Telemetrie výjimek.
 
 ![Na portálu Application Insights otevřete hledání](./media/java-trace-logs/10-diagnostics.png)
 

@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: 2e3cec4564c509cd225a9bcd43185f6f5b344e8c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 473fb95de5da4a14c81d0fa3a5aafa33302d9ab2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833447"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258675"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Zřízení disku úložiště virtuálního počítače ve službě Azure Stack
 
@@ -70,25 +70,25 @@ Každý nespravovaný disk, který přidáte měly být umístěny v samostatný
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Použití portálu k vytvoření a připojení nového datového disku
 
 1.  Na portálu, vyberte **virtuálních počítačů**.    
-    ![Příklad: Řídicího panelu virtuálního počítače](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+    ![Příklad: Řídicí panel virtuálního počítače](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2.  Vyberte virtuální počítač, která dříve byla zřízena.   
     ![Příklad: Vyberte virtuální počítač na řídicím panelu](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
 3.  Pro virtuální počítač vyberte **disky** > **připojit nový**.       
-    ![Příklad: Připojte nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+    ![Příklad: Připojit nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
 4.  V **připojit nový disk** vyberte **umístění**. Ve výchozím umístění se nastaví do kontejneru, který obsahuje disk s operačním systémem.      
     ![Příklad: Nastavte na místo na disku](media/azure-stack-manage-vm-disks/disk-location.png)
 
 5.  Vyberte **účtu úložiště** používat. V dalším kroku vyberte **kontejneru** kam chcete umístit datový disk. Z **kontejnery** stránky, můžete vytvořit nový kontejner. Pokud chcete. Pak můžete změnit umístění nového disku do vlastního kontejneru. Pokud použijete samostatný kontejner pro každý disk, je distribuovat umístění datový disk, který může zlepšit výkon. Zvolte **vyberte** a uložte výběr.     
-    ![Příklad: Vyberete kontejner](media/azure-stack-manage-vm-disks/select-container.png)
+    ![Příklad: Vyberte kontejner](media/azure-stack-manage-vm-disks/select-container.png)
 
 6.  V **připojit nový disk** stránce, aktualizujte **název**, **typ**, **velikost**, a **hostovat ukládání do mezipaměti** nastavení disku. Potom vyberte **OK** uložte novou konfiguraci disku pro virtuální počítač.  
-    ![Příklad: Dokončení disku přílohy](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
+    ![Příklad: Kompletní disků](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
 
 7.  Poté, co Azure Stack disk vytvoří a připojí ho k virtuálnímu počítači, nový disk je uvedený v nastavení disku virtuálního počítače v rámci **datové disky**.   
-    ![Příklad: Zobrazení disk](media/azure-stack-manage-vm-disks/view-data-disk.png)
+    ![Příklad: Zobrazení disku](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 
 ### <a name="attach-an-existing-data-disk-to-a-vm"></a>Připojit stávající datový disk k virtuálnímu počítači
@@ -96,7 +96,7 @@ Každý nespravovaný disk, který přidáte měly být umístěny v samostatný
 1.  [Připravte soubor VHD](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd) pro použití jako datového disku virtuálního počítače. Nahrání souboru VHD do účtu úložiště, který používáte s virtuálním Počítačem, který chcete připojit soubor .vhd.
 
   Plán, který chcete použít jiný kontejner pro uložení souboru .vhd než kontejner, který obsahuje disk s operačním systémem.   
-  ![Příklad: Odeslání souboru VHD](media/azure-stack-manage-vm-disks/upload-vhd.png)
+  ![Příklad: Nahrání souboru VHD](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
 2.  Po nahrání souboru VHD, budete chtít připojit virtuální pevný disk k virtuálnímu počítači. V nabídce na levé straně vyberte **virtuálních počítačů**.  
  ![Příklad: Vyberte virtuální počítač na řídicím panelu](media/azure-stack-manage-vm-disks/vm-dashboard.png)
@@ -105,19 +105,19 @@ Každý nespravovaný disk, který přidáte měly být umístěny v samostatný
   ![Příklad: Vyberte virtuální počítač na řídicím panelu](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
 4.  Na stránce pro virtuální počítač vyberte **disky** > **připojit existující**.   
-  ![Příklad: Připojit stávající disk](media/azure-stack-manage-vm-disks/attach-disks2.png)
+  ![Příklad: Připojení stávajícího disku](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
 5.  V **připojit stávající disk** stránce **souboru virtuálního pevného disku**. **Účty úložiště** otevře se stránka.    
   ![Příklad: Vyberte soubor virtuálního pevného disku](media/azure-stack-manage-vm-disks/select-vhd.png)
 
 6.  V části **účty úložiště**, vyberte účet, který chcete použít a pak zvolte kontejner, který obsahuje soubor .vhd, který byl dříve odeslán. Vyberte soubor VHD a klikněte na tlačítko **vyberte** a uložte výběr.    
-  ![Příklad: Vyberete kontejner](media/azure-stack-manage-vm-disks/select-container2.png)
+  ![Příklad: Vyberte kontejner](media/azure-stack-manage-vm-disks/select-container2.png)
 
 7.  V části **připojit stávající disk**, vybraný soubor je uvedený v části **souboru virtuálního pevného disku**. Aktualizace **hostovat ukládání do mezipaměti** nastavení disku a pak vyberte **OK** uložte novou konfiguraci disku pro virtuální počítač.    
   ![Příklad: Připojit soubor virtuálního pevného disku](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  Poté, co Azure Stack disk vytvoří a připojí ho k virtuálnímu počítači, nový disk je uvedený v nastavení disku virtuálního počítače v rámci **datové disky**.   
-  ![Příklad: Dokončení disk attach](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
+  ![Příklad: Kompletní připojit disk](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
 
 
 ## <a name="use-powershell-to-add-multiple-unmanaged-disks-to-a-vm"></a>Chcete-li přidat více nespravované disky virtuálního počítače pomocí Powershellu
@@ -129,45 +129,45 @@ Prostředí PowerShell můžete použít pro zřízení virtuálního počítač
 Následující příklady používají příkazy prostředí PowerShell k vytvoření virtuálního počítače pomocí tří datových disků, každý umístěny do jiného kontejneru.
 
 První příkaz vytvoří objekt virtuálního počítače a uloží jej v *$VirtualMachine* proměnné. Příkaz přiřadí název a velikost virtuálního počítače.
-  ```
+  ```powershell
   $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine" `
                                       -VMSize "Standard_A2"
   ```
 
 Následující tři příkazy přiřadit cesty tří datových disků, aby *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, a *$DataDiskVhdUri03* proměnné. Definujte název jiné cestě v adrese URL pro distribuci discích, které mají různé kontejnery.     
-  ```
+  ```powershell
   $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
   ```
 
-  ```
+  ```powershell
   $DataDiskVhdUri02 = "https://contoso.blob.local.azurestack.external/test2/data2.vhd"
   ```
 
-  ```
+  ```powershell
   $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.vhd"
   ```
 
 Poslední tři příkazy přidat datové disky virtuálního počítače uloženého v *$VirtualMachine*. Každý příkaz určuje název, umístění a další vlastnosti disku. Identifikátor URI každý disk je uložený v *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, a *$DataDiskVhdUri03*.
-  ```
+  ```powershell
   $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' `
                   -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 `
                   -VhdUri $DataDiskVhdUri01 -CreateOption Empty
   ```
 
-  ```
+  ```powershell
   $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk2' `
                  -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 `
                  -VhdUri $DataDiskVhdUri02 -CreateOption Empty
   ```
 
-  ```
+  ```powershell
   $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' `
                   -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 `
                   -VhdUri $DataDiskVhdUri03 -CreateOption Empty
   ```
 
 Pomocí následujících příkazů Powershellu k přidání konfigurace operačního systému disku a sítě k virtuálnímu počítači a pak spusťte nový virtuální počítač.
-  ```
+  ```powershell
   #set variables
   $rgName = "myResourceGroup"
   $location = "local"
@@ -192,7 +192,7 @@ Pomocí následujících příkazů Powershellu k přidání konfigurace operač
   $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
       -AllocationMethod Dynamic
 
-  # Create a network security group cnfiguration
+  # Create a network security group configuration
   $nsgName = "myNsg"
   $rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
       -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
@@ -218,34 +218,34 @@ Pomocí následujících příkazů Powershellu k přidání konfigurace operač
 ### <a name="add-data-disks-to-an-existing-virtual-machine"></a>Přidat datové disky existujícího virtuálního počítače
 Následující příklady používají příkazy Powershellu přidáte tři datové disky existujícího virtuálního počítače.
 První příkaz načte virtuální počítač s názvem virtuální počítač s použitím **Get-AzureRmVM** rutiny. Příkaz uloží virtuální počítač *$VirtualMachine* proměnné.
-  ```
+  ```powershell
   $VirtualMachine = Get-AzureRmVM -ResourceGroupName "myResourceGroup" `
                                   -Name "VirtualMachine"
   ```
 Následující tři příkazy přiřadit $DataDiskVhdUri01 $DataDiskVhdUri02 a $DataDiskVhdUri03 proměnné cest ke třem datovým diskům.  Názvy jinou cestu v vhduri ukazují různé kontejnery pro umístění disku.
-  ```
+  ```powershell
   $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
   ```
-  ```
+  ```powershell
   $DataDiskVhdUri02 = "https://contoso.blob.local.azurestack.external/test2/data2.vhd"
   ```
-  ```
+  ```powershell
   $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.vhd"
   ```
 
 
   Následující tři příkazy přidat datové disky virtuálního počítače uloženého v *$VirtualMachine* proměnné. Každý příkaz určuje název, umístění a další vlastnosti disku. Identifikátor URI každý disk je uložený v *$DataDiskVhdUri01*, *$DataDiskVhdUri02*, a *$DataDiskVhdUri03*.
-  ```
+  ```powershell
   Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" `
                         -VhdUri $DataDiskVhdUri01 -LUN 0 `
                         -Caching ReadOnly -DiskSizeinGB 10 -CreateOption Empty
   ```
-  ```
+  ```powershell
   Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk2" `
                         -VhdUri $DataDiskVhdUri02 -LUN 1 `
                         -Caching ReadOnly -DiskSizeinGB 11 -CreateOption Empty
   ```
-  ```
+  ```powershell
   Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk3" `
                         -VhdUri $DataDiskVhdUri03 -LUN 2 `
                         -Caching ReadOnly -DiskSizeinGB 12 -CreateOption Empty
@@ -253,7 +253,7 @@ Následující tři příkazy přiřadit $DataDiskVhdUri01 $DataDiskVhdUri02 a $
 
 
   Poslední příkaz aktualizuje stav virtuálního počítače uloženého v *$VirtualMachine* v -*ResourceGroupName*.
-  ```
+  ```powershell
   Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
   ```
 <!-- Pending scripts  

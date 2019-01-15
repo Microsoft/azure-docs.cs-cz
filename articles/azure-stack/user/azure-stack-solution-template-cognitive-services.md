@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.openlocfilehash: 5af508714b5eae5cdd23c940af0ae21300c0c5b8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bf056c162684c021e3a8408edfdf82fe4590be48
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194660"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260630"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Nasazení služby Azure Cognitive Services k Azure Stack
 
@@ -41,7 +41,7 @@ Kontejnerizace je přístup k distribuci softwaru, ve kterém aplikace nebo slu�
   Poskytují aplikace uživatelům na verzi a aktualizace modelů nasazení v jejich řešení.
 
 - **Přenosné architektury**  
-  Umožňují vytvářet architektury přenosné aplikace tak, aby vaše řešení můžete nasadit do veřejného cloudu, privátního cloudu na pracoviště nebo na hraničních zařízeních. Kontejner můžete nasadit do služby Azure Kubernetes Service, Azure Container Instances, nebo do clusteru Kubernetes ve službě Azure Stack. Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+  Povolit vytváření architektury přenosné aplikace tak, aby vaše řešení můžete nasadit do veřejného cloudu, k privátnímu cloudu, místně nebo na hraničních zařízeních. Kontejner můžete nasadit do služby Azure Kubernetes Service, Azure Container Instances, nebo do clusteru Kubernetes ve službě Azure Stack. Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 
 - **Vysoká propustnost a nízká latence**  
    Umožní uživatelům vaší aplikace ke škálování se špičkám provozu, nízké latence a Vysoká propustnost. Povolení služby Cognitive Services ke spuštění ve službě Azure Kubernetes Service fyzicky blízko jejich aplikační logiku a data.
@@ -140,7 +140,7 @@ Podrobnosti o klíčová pole:
 | Pole | Poznámky |
 | --- | --- |
 | replicaNumber | Definuje počáteční repliky instance, které chcete vytvořit. Změníte její škálu seděl později po dokončení nasazení. |
-| Vlastnost imageLocation | Určuje umístění konkrétní služby cognitive Services image kontejneru v ACR. Například služba pro rozpoznávání tváře: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
+| ImageLocation | Určuje umístění konkrétní služby cognitive Services image kontejneru v ACR. Například služba pro rozpoznávání tváře: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |Adresa URL koncového bodu, které jste si poznamenali v kroku [vytvoření prostředků Azure](#create-azure-resources) |
 | ApiKey | Klíč předplatného jste si poznamenali v kroku [vytvoření prostředků Azure](#create-azure-resources) |
 | secretName | Název tajného kódu, který právě jste si poznamenali v kroku [vytvořit secrete získat přístup k registru kontejneru soukromého](#create-secrete-to-access-the-private-container-registry) |

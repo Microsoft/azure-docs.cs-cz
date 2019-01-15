@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 716ddcaf61c4d7db40821056dc759667f9376023
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871318"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261498"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -67,7 +67,7 @@ Klikněte na dlaždice (s výjimkou úložiště záloh) otevřete příslušné
 
 ![Výstrahy záloh nabídky filtrují pro kritické výstrahy](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-V nabídce výstrahy zálohování, na obrázku výše, se filtrují podle: stav je aktivní, závažnost je důležité a čas je předchozích 24 hodin.
+V nabídce výstrahy zálohování, na obrázku výše, je filtrováno podle: Stav je aktivní, závažnost je důležité a čas je předchozích 24 hodin.
 
 ## <a name="manage-backup-alerts"></a>Spravovat výstrahy zálohování
 
@@ -85,8 +85,8 @@ Výstrahy zálohování seznamu zobrazí vybrané informace o filtrované výstr
 
 | Úroveň výstrahy | Události, které generují výstrahy |
 | ----------- | ----------- |
-| Kritická | Obdržíte kritické upozornění pro případ: zálohování úlohy převzetí služeb při selhání úloh obnovení a při zastavení ochrany na serveru, ale zachovat data.|
-| Upozornění | Zobrazí se upozornění upozornění pro případ: dokončení úloh zálohování s upozorněními, třeba když méně než 100 souborů nejsou zálohovány z důvodu problémů s poškozením, nebo pokud je to více než 1 000 000 soubory úspěšně zazálohovala). |
+| Kritická | Obdržíte kritické upozornění pro případ: Selhání úlohy zálohování, dojít k selhání úloh obnovení a při zastavení ochrany na serveru, ale zachovat data.|
+| Upozornění | Zobrazí se upozornění upozornění pro případ: Úlohy zálohování dokončí s upozorněním, třeba když méně než 100 souborů nejsou zálohovány z důvodu problémů s poškozením, nebo pokud je to více než 1 000 000 soubory úspěšně zazálohovala). |
 | Informační | používá se v současné době nejsou žádné informační výstrahy. |
 
 ### <a name="viewing-alert-details"></a>Zobrazení podrobností výstrah
@@ -239,7 +239,7 @@ Můžete zobrazit všechny stavy nebo jeden. Nelze vybrat dvě nebo tři stavy. 
 * Zrušeno
 * Dokončeno s upozorněními
 
-#### <a name="start-time"></a>Čas spuštění
+#### <a name="start-time"></a>Počáteční čas
 
 Datum a čas, který začíná dotazu. Výchozí hodnota je 24 hodin.
 
@@ -251,7 +251,7 @@ Datum a čas ukončení dotazu.
 
 Použití **exportovat úlohy** vytvořit tabulku obsahující všechny informace o nabídce úlohy. Tabulka má jeden seznam, který obsahuje souhrn všech úloh a jednotlivým listům pro každou úlohu.
 
-Export úloh informace do tabulky, klikněte na tlačítko **exportovat úlohy**. Služba vytvoří speadsheet pomocí názvu trezor data a času, ale můžete změnit název.
+Export úloh informace do tabulky, klikněte na tlačítko **exportovat úlohy**. Služba vytvoří tabulku pomocí názvu trezor data a času, ale můžete změnit název.
 
 ## <a name="monitor-backup-usage"></a>Monitorovat využití zálohování
 
@@ -281,9 +281,9 @@ Odpověď 3. Ano. V následujících situacích nedocházelo k jejich odesílán
 
 ## <a name="troubleshooting-monitoring-issues"></a>Řešení potíží s problémy s monitorováním
 
-**Problém:** úlohy nebo výstrahy z agenta Azure Backup se nezobrazují na portálu.
+**Problém:** Úlohy a/nebo výstrahy z agenta Azure Backup se nezobrazují na portálu.
 
-**Řešení potíží:** procesu ```OBRecoveryServicesManagementAgent```, odešle data úlohy a výstrahy ve službě Azure Backup. Čas od času může tento proces zablokovány nebo vypnutí.
+**Řešení potíží:** Proces, ```OBRecoveryServicesManagementAgent```, odešle data úlohy a výstrahy ve službě Azure Backup. Čas od času může tento proces zablokovány nebo vypnutí.
 
 1. Chcete-li ověřit, proces není spuštěn, otevřete **Správce úloh**a zkontrolujte ```OBRecoveryServicesManagementAgent``` běží.
 

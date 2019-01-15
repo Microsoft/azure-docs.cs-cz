@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: adgera
-ms.openlocfilehash: a5d0b6abdee44bdd1e174fa2c8551fbeac768e5d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 49b073952b0923b940204b19680dcc9a1ffa44b5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232630"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259270"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postup konfigurace nástroje Postman pro digitální dvojče Azure
 
@@ -102,7 +102,7 @@ Po dokončení předchozích kroků konfigurace nástroje Postman aby ověřené
 
 1. Serializace dat bez textu do souborů. JSON data by mělo být uloženo jako soubor JSON.
 1. V části **tělo** kartu, přidejte každý soubor přiřazením **klíč** název, vyberete `file` nebo `text`.
-1. Vyberte soubor prostřednictvím **zvolit soubor** tlačítko.
+1. Vyberte každého souboru prostřednictvím **zvolit soubor** tlačítko.
 
    ![Příklad klientského nástroje postman][5]
 

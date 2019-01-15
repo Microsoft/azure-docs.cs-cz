@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5a5d052052be447ea2ccbd9231d3b03d38c7615c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420077"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266939"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Instalace tomcat7 na virtuální počítač s Linuxem pomocí Azure
 Apache Tomcat (nebo jednoduše Tomcat, také dříve se označovaly jako Jakarta Tomcat) je otevřít zdrojový webový server a servletový kontejner vyvinuté pomocí Apache Software Foundation (amp). Tomcat implementuje Java Servlet a JavaServer Pages (JSP) specifikace z Sun Microsystems. Tomcat poskytuje čistě Java HTTP prostředí webového serveru ke spouštění kódu v Javě. V nejjednodušší konfiguraci Tomcat běží v procesu jeden operační systém. Tento proces spouští Java virtual machine (JVM). Každý požadavek protokolu HTTP z prohlížeče na Tomcat je zpracován jako samostatného vlákna v procesu Tomcat.  
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manageru a Klasický model](../../../resource-manager-deployment-model.md). Tento článek popisuje, jak pomocí modelu nasazení classic. Doporučujeme, aby většina nových nasazení používala model Resource Manager. Použití šablony Resource Manageru k nasazení virtuálního počítače s Ubuntu s otevřít sadu JDK a Tomcat, naleznete v tématu [v tomto článku](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager a classic](../../../resource-manager-deployment-model.md). Tento článek popisuje, jak pomocí modelu nasazení classic. Doporučujeme, aby většina nových nasazení používala model Resource Manager. Použití šablony Resource Manageru k nasazení virtuálního počítače s Ubuntu s otevřít sadu JDK a Tomcat, naleznete v tématu [v tomto článku](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 V tomto článku se bude instalace Tomcat7 na image Linuxu a nasaďte ji v Azure.  
@@ -78,7 +78,7 @@ Postupujte podle těchto kroků vygenerujete ověřovací klíč SSH.
 ## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>Fáze 2: Příprava virtuálního počítače pro Tomcat7
 V této fázi nakonfigurujte koncový bod pro provoz Tomcat a připojte se k novému virtuálnímu počítači.
 
-### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Krok 1: Otevření portu HTTP pro povolení webového přístupu
+### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Krok 1: Otevřete port HTTP pro povolení webového přístupu
 Koncové body v Azure se skládají z protokol TCP nebo UDP, také veřejné a privátní port. Privátní port je port, na kterém služba naslouchá na virtuálním počítači. Veřejný port je port, který Cloudová služba Azure naslouchá externě pro příchozí, internetový provoz.  
 
 TCP port 8080 je výchozí číslo portu, který Tomcat používá k naslouchání. Pokud je tento port otevřít s koncový bod Azure, můžete a dalších internetoví klienti měli přístup k Tomcat stránky.  
@@ -98,7 +98,7 @@ TCP port 8080 je výchozí číslo portu, který Tomcat používá k naslouchán
       ![Snímek obrazovky z uživatelského rozhraní, který zobrazuje přidat příkaz veřejný Port a privátní Port][7]
 4. Klikněte na tlačítko **OK** ke svému virtuálnímu počítači přidat koncový bod.
 
-### <a name="step-2-connect-to-the-image-you-created"></a>Krok 2: Připojení k image, kterou jste vytvořili
+### <a name="step-2-connect-to-the-image-you-created"></a>Krok 2: Připojte se k image, kterou jste vytvořili
 Můžete použít jakýkoli nástroj SSH pro připojení k virtuálnímu počítači. V tomto příkladu používáme PuTTY.  
 
 1. Získejte název DNS virtuálního počítače z portálu.
@@ -114,7 +114,7 @@ Můžete použít jakýkoli nástroj SSH pro připojení k virtuálnímu počít
 4. Po stažení, klikněte na spustitelný soubor Putty.exe. V konfigurace PuTTY základní možnosti konfigurace s názvem hostitele a portu číslo, které se získává z vlastnosti virtuálního počítače.   
 ![Snímek obrazovky, který ukazuje možnosti názvu a portu hostitele konfigurace PuTTY][9]
 
-5. V levém podokně klikněte na tlačítko **připojení** > **SSH** > **Auth**a potom klikněte na tlačítko **Procházet** zadat umístění souboru privateKey.ppk. Soubor privateKey.ppk obsahuje privátní klíč, který je generován PuTTYgen dříve v "fáze 1: vytvoření image" části tohoto článku.  
+5. V levém podokně klikněte na tlačítko **připojení** > **SSH** > **Auth**a potom klikněte na tlačítko **Procházet** zadat umístění souboru privateKey.ppk. Obsahuje privátní klíč, který je generován PuTTYgen dříve v souboru privateKey.ppk "fáze 1: Vytvoření image"části tohoto článku.  
 ![Snímek obrazovky zobrazující hierarchii adresářů připojení a tlačítko pro procházení][10]
 
 6. Klikněte na **Otevřít**. Upozorní může být okno se zprávou. Pokud jste nakonfigurovali DNS název a číslo portu správně, klikněte na tlačítko **Ano**.
@@ -123,7 +123,7 @@ Můžete použít jakýkoli nástroj SSH pro připojení k virtuálnímu počít
 7. Zobrazí se výzva k zadání vašeho uživatelského jména.  
 ![Snímek obrazovky, který ukazuje, kam je třeba zadat uživatelské jméno][12]
 
-8. Zadejte uživatelské jméno, které jste použili k vytvoření virtuálního počítače "fáze 1: vytvoření image" dříve v tomto článku. Zobrazí se přibližně takto:  
+8. Zadejte uživatelské jméno, které jste použili k vytvoření virtuálního počítače "fáze 1: Vytvoření image"části výše v tomto článku. Zobrazí se přibližně takto:  
 ![Snímek obrazovky zobrazující potvrzení ověřování][13]
 
 ## <a name="phase-3-install-software"></a>Fáze 3: Instalace softwaru
@@ -135,13 +135,13 @@ Tomcat je napsána v jazyce Java. Zobrazit [Azure nepodporuje JDK](https://aka.m
 
 #### <a name="install-azure-supported-jdk"></a>Instalace Azure nepodporuje JDK
 
-Postupujte podle `apt-get` popsané na pokyny pro instalaci [Azul Zulu rozlehlé sítě pro Azure](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) webu.
+Postupujte podle `apt-get` popsané na pokyny pro instalaci [Azul Zulu Enterprise pro Azure](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) webu.
 
 #### <a name="confirm-that-java-installation-is-successful"></a>Potvrďte, jestli se úspěšně dokončila instalaci Javy
 Pokud chcete otestovat, jestli je správně nainstalované prostředí Java runtime můžete použít příkaz podobný tomuto:  
     Java – verze  
 
-Zobrazí se zpráva podobná této: ![zpráva OpenJDK úspěšná instalace][14]
+Zobrazí zpráva podobná následující: ![Úspěšná instalace zpráva OpenJDK][14]
 
 
 ### <a name="install-tomcat7"></a>Instalace Tomcat7
@@ -212,7 +212,7 @@ Po připojení by měl vypadat nějak takto:
 
   * Port pro naslouchání Tomcat není stejný jako privátní port koncového bodu virtuálního počítače pro provoz Tomcat.  
 
-     Zkontrolujte veřejný port a privátní port nastavení koncového bodu a ujistěte se, že privátní port je že stejné jako Tomcat port pro naslouchání. Viz "fáze 1: vytvoření image" části tohoto článku Další pokyny ke konfiguraci koncových bodů pro virtuální počítač.  
+     Zkontrolujte veřejný port a privátní port nastavení koncového bodu a ujistěte se, že privátní port je že stejné jako Tomcat port pro naslouchání. Viz "fáze 1: Vytvoření image"části tohoto článku Další pokyny ke konfiguraci koncových bodů pro virtuální počítač.  
 
      Ke zjištění portu naslouchání Tomcat, otevřete /etc/httpd/conf/httpd.conf (verze Red Hat) nebo /etc/tomcat7/server.xml (Debian vydaná verze). Výchozí port pro naslouchání Tomcat je 8080. Zde naleznete příklad:  
 

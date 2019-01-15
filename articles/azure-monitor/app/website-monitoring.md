@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ce8c25ce6bb728c9d3a365821b3606613e322c11
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2f16a8fdb124cd2ee69fbdef74f3999800b55157
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081232"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261992"
 ---
 # <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
 
 Azure Monitor Application Insights umožňuje snadné monitorování webu z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Application Insights nabízí monitorování na straně serveru i možnosti monitorování na straně klienta nebo prohlížeče.
 
-Tento rychlý start vás provede přidáním [open source sady Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS), která vám umožní porozumět prostředí na straně klienta nebo prohlížeče, se kterým pracují návštěvníci vašeho webu.
+Tento rychlý start vás provede přidáním [projektu open source sadu Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) tomu porozumět prostředí a prohlížeči klientů pro návštěvníky na váš web.
 
 ## <a name="prerequisites"></a>Požadavky
 

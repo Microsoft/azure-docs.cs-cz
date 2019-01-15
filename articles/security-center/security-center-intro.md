@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/5/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 88aa9a9003363f86db9214c62adff962bbd345cf
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1c948527c919ed8f81f16cf30a986591b414662
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344155"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263554"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -52,9 +52,11 @@ Kromě toho Security Center chrání servery umístěné mimo Azure a virtuáln�
 
 Události shromážděné z agentů a z Azure se korelují v modulu analýzy zabezpečení zajistit, že přizpůsobená doporučení (posílení zabezpečení úloh), že by měl postupovat podle zajistit, aby že vaše úlohy jsou v bezpečí a výstrahy detekce hrozeb. Měli byste prošetřit tyto výstrahy co nejdříve a ujistěte se, že útoky se zlými úmysly nejsou probíhat ve vašich úloh.
 
+Když povolíte Security Center, zásady zabezpečení, která je integrovaná do služby Security Center se projeví ve službě Azure Policy jako integrované iniciativy v rámci kategorie Security Center. Integrované iniciativy se automaticky přiřadí na všechny odběry registrované Security Center (úrovně Free nebo Standard). Integrované iniciativy obsahuje pouze zásady auditu. Další informace o zásady služby Security Center ve službě Azure Policy najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
+
 ## <a name="strengthen-security-posture"></a>Posílení stavu zabezpečení
 
-Azure Security Center umožňuje posílení stavu zabezpečení. To znamená, že pomáhá identifikovat a provádět úlohy posílení zabezpečení doporučujeme jako osvědčený postup zabezpečení a implementovat počítačů, datových služeb a aplikací. To zahrnuje správu a vynucování zásad zabezpečení a zajištění virtuálních počítačů Azure, mimo Azure serverů a služeb Azure PaaS jsou kompatibilní. Security Center vám poskytuje nástroje, je potřeba mít pohled z ptačí perspektivy na vaše úlohy s fokusem viditelnost na místo zabezpečení vaší sítě.
+Azure Security Center umožňuje posílení stavu zabezpečení. To znamená, že pomáhá identifikovat a provádět úlohy posílení zabezpečení doporučujeme jako osvědčený postup zabezpečení a implementovat počítačů, datových služeb a aplikací. To zahrnuje správu a vynucování zásad zabezpečení a zajištění virtuálních počítačů Azure, mimo Azure serverů a služeb Azure PaaS jsou kompatibilní. Security Center vám poskytuje nástroje, je potřeba mít pohled z ptačí perspektivy na vaše úlohy s fokusem viditelnost na místo zabezpečení vaší sítě. 
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Správa zásad zabezpečení organizace a dodržování předpisů
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 53571fa0c29c4b9bf5493a1e558356eba38fe617
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244412"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266741"
 ---
 # <a name="advisor-performance-recommendations"></a>Poradce doporučení k výkonu
 
@@ -77,7 +77,8 @@ Advisor určí tabulek, které nejsou replikované tabulky, ale je výhodná př
 
 Migrace účtu úložiště modelu nasazení k Azure Resource Manageru (ARM) výhod nasazení šablon, další možnosti zabezpečení a možnosti upgradu na účet GPv2 pro využití nejnovějších funkcích Azure Storage. Advisor bude identifikovat všechny samostatné účty, které používají model nasazení Classic a doporučuje migrace do modelu nasazení ARM.
 
-Klasických upozornění ve službě Azure Monitor je oznámena vyřadit z provozu v červnu 2019, doporučuje se upgradovat svůj účet klasického úložiště na ARM, pokud chcete zachovat výstrah funkce s novou platformu upozornění. Další informace najdete v tématu [klasického upozornění vyřazení](https://azure.microsoft.com/en-us/updates/classic-alerting-monitoring-retirement/).
+> [!NOTE]
+> Klasických upozornění ve službě Azure Monitor je oznámena vyřadit z provozu v červnu 2019, doporučuje se upgradovat svůj účet klasického úložiště na ARM, pokud chcete zachovat výstrah funkce s novou platformu. Další informace najdete v tématu [klasického upozornění vyřazení](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučení k výkonu v Advisoru
 

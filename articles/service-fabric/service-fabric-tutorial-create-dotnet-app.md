@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2018
+ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
-ms.translationtype: HT
+ms.openlocfilehash: 4ba55d58a24045141800efb97a0f523d2a9cd242
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078490"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304495"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -454,12 +454,7 @@ V tomto kroku propojíte tyto dvě služby a nastavíte front-end webovou aplika
 
 Service Fabric nabízí naprostou flexibilitu způsobu, jakým komunikujete se spolehlivými službami. V rámci jedné aplikace můžete mít služby přístupné přes protokol TCP. Další služby můžou být přístupné přes rozhraní HTTP REST API a ještě další služby můžou být přístupné přes webové sokety. Další informace o dostupných možnostech a souvisejících kompromisech najdete v tématu [Komunikace se službami](service-fabric-connect-and-communicate-with-services.md).
 
-Tento kurz používá rozhraní [ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) a [reverzní proxy Service Fabric](service-fabric-reverseproxy.md), aby front-end webová služba VotingWeb mohla komunikovat s back-end službou VotingData. Reverzní proxy server je ve výchozím nastavení nakonfigurovaný na použití portu 19081 a měl by v tomto kurzu fungovat. Port je nastavený v šabloně ARM používané k nastavení clusteru. Pokud chcete najít port, který se používá, podívejte se do šablony clusteru v prostředku **Microsoft.ServiceFabric/clusters** nebo na element HttpApplicationGatewayEndpoint v manifestu clusteru.
-
-> [!NOTE]
-> Reverzní proxy server je podporovaný jenom v clusteru se systémem Windows 8 a novějším nebo Windows Server 2012 a novějším.
-
-<u>Prostředek Microsoft.ServiceFabric/clusters reverseProxyEndpointPort</u>
+Tento kurz používá rozhraní [ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) a [reverzní proxy Service Fabric](service-fabric-reverseproxy.md), aby front-end webová služba VotingWeb mohla komunikovat s back-end službou VotingData. Reverzní proxy server je ve výchozím nastavení nakonfigurovaný na použití portu 19081 a měl by v tomto kurzu fungovat. Port reverzního proxy je nastavenou v šabloně Azure Resource Managerem použít ke konfiguraci clusteru. Pokud chcete zjistit, který port se používá, podívejte se do šablony clusteru v prostředku **Microsoft.ServiceFabric/clusters**: 
 
 ```json
 "nodeTypes": [
@@ -472,13 +467,10 @@ Tento kurz používá rozhraní [ASP.NET Core Web API](service-fabric-reliable-s
           }
         ],
 ```
-Pokud chcete zobrazit element HttpApplicationGatewayEndpoint v místním manifestu clusteru Service Fabric:
-1. Otevřete okno prohlížeče a přejděte na adresu http://localhost:19080.
-2. Klikněte na **Manifest**.
+Chcete-li najít port reverzního proxy serveru používají ve vašem místním vývojovém clusteru, zobrazte **HttpApplicationGatewayEndpoint** elementu v manifestu místního clusteru Service Fabric:
+1. Otevřete okno prohlížeče a přejděte do http://localhost:19080 otevřete nástroj Service Fabric Explorer.
+2. Vyberte **clusteru -> Manifest**.
 3. Poznamenejte si port elementu HttpApplicationGatewayEndpoint. Ve výchozím nastavení by to měl být port 19081. Pokud to port 19081 není, bude nutné ho změnit v metodě GetProxyAddress následujícího kódu VotesController.cs.
-
-
-
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 
@@ -622,9 +614,9 @@ Při ladění aplikace v sadě Visual Studio používáte místní vývojový cl
 
 Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 
-1. Otevřete soubor **VotingWeb\VotesController.cs** a nastavte zarážku v metodě **Put** webového rozhraní API (řádek 63).
+1. Otevřít **VotingWeb\VotesController.cs** souboru a nastavte zarážku ve webovém rozhraní API **umístit** – metoda (řádek 72).
 
-2. Otevřete soubor **VotingData\VoteDataController.cs** a nastavte zarážku v metodě **Put** tohoto webového rozhraní API (řádek 53).
+2. Otevřít **VotingData\VoteDataController.cs** souboru a nastavte zarážku v této webové rozhraní API **umístit** – metoda (řádek 54).
 
 3. Stisknutím **F5** spusťte aplikaci v režimu ladění.
 
@@ -651,7 +643,7 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 
 Pokud chcete zastavit ladicí relaci, stiskněte **Shift + F5**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

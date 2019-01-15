@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 94769ea0ff05565ee11f7c167e28f239ca304d3d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: cea5cb924914cff1195520d6bd28a8b62fce8698
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213735"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264406"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
 Tento článek obsahuje přehled dostupných metod, která bude vizualizovat data protokolů a metrik uložené ve službě Azure Monitor.
@@ -35,7 +35,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 - Kombinovat data z víc zdrojů, včetně výstup z [Průzkumníka metrik](../azure-monitor/platform/metrics-charts.md), [dotazy Log Analytics](../azure-monitor/log-query/log-query-overview.md), a [mapuje](../azure-monitor/app/app-map.md) a dostupnost ve službě Application Insights.
 - Možnost pro osobní nebo sdílené řídicí panely. Díky integraci s Azure [ověřování na základě role (RBAC)](../role-based-access-control/overview.md).
 - Automatická aktualizace. Aktualizace metrik závisí na časový rozsah s minimálně pět minut. Aktualizovat protokoly na jednu minutu.
-- Podle řídicí panely metriky s časovým razítkem a vlastní parametry.
+- Řídicí panely metriky s časovým razítkem a vlastní parametry s parametry.
 - Možnosti flexibilní rozložení.
 - Režim zobrazení na celé obrazovce.
 
@@ -48,7 +48,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 - Žádná interakce s daty řídicího panelu.
 - Omezené kontextové procházení.
 
-## <a name="azure-monitor-views"></a>Azure Monitor zobrazení
+## <a name="azure-monitor-views"></a>Azure Monitor Views
 [Zobrazení ve službě Azure Monitor](../log-analytics/log-analytics-view-designer.md) vám umožňují vytvářet vlastní vizualizace se data protokolu. Jsou používány [řešení monitorování](insights/solutions.md) data můžete prezentovat tak jejich shromažďování.
 
 ![Zobrazení](media/visualizations/view.png)
@@ -70,7 +70,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 
 
 
-## <a name="application-insights-workbooks"></a>Sešity Application Insights
+## <a name="application-insights-workbooks"></a>Application Insights Workbooks
 [Sešity](../azure-monitor/app/usage-workbooks.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich dat, prozkoumání a spolupráci v týmu. Konkrétní příklady, kde jsou užitečné sešity jsou řešení potíží s pokyny a incident postmortem.
 
 ![Sešit](media/visualizations/workbook.png)

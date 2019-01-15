@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 45baa709e715cb94c8c9c6ac7548b89813c8194b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3ec4e0b047e94dc7481c51390c6e4370fdea5efa
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196697"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258794"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Nasazení virtuálního počítače z Azure Marketplace
 
@@ -43,7 +43,7 @@ Tento článek vysvětluje, jak nasadit předem nakonfigurovaného virtuálního
 | vmName                | Název virtuálního počítače                                    |
 | VaultName             | Název trezoru klíčů.                             |
 | vaultResourceGroup    | Skupina prostředků trezoru klíčů.                   |
-| certificateUrl        | Adresa URL pro certifikát, včetně verze v trezoru klíčů, například  https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7 |
+| certificateUrl        | Adresa URL pro certifikát, včetně verze v trezoru klíčů, například  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |
 
 

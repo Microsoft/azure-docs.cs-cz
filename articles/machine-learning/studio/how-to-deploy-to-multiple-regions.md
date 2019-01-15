@@ -1,26 +1,8 @@
 ---
-title: Nasazení webové služby Studio do několika oblastí - Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Postup nasazení (kopie) nové webové služby do jiné oblasti. Snadno Nasaďte webovou službu do více oblastí, bez nutnosti více předplatná a pracovní prostory.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-editor: cgronlun
-ms.assetid: 36c60411-f2db-4ee2-9b66-b1f1d77a8f44
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.openlocfilehash: 742f462ebc3bd191a045be2a0213b1d8bc52adc5
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252673"
+Název: Nasazení sady Studio webové služby pro více oblastí titleSuffix: Azure Machine Learning Studio Popis: Postup nasazení (kopie) nové webové služby do jiné oblasti. Snadno Nasaďte webovou službu do více oblastí, bez nutnosti více předplatná a pracovní prostory.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service-to-multiple-regions"></a>Nasazení webové služby Azure Machine Learning Studio do více oblastí
 

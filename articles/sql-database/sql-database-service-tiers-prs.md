@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/13/2018
-ms.openlocfilehash: 98b1072dc560de79e40fc4f802203459633dda28
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e6ce99e70d57fd8d29b0f5cb2bd1084accfc4757
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440937"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262961"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Úroveň služby Azure SQL Database úrovně Premium RS (preview) se vyřazuje – možnosti pro migraci
 
@@ -27,7 +27,7 @@ Následují migrace cíle a cenové možnosti, které může být vhodný pro ú
 
 - vCore úrovně služeb
 
-  **Obecné** a **pro důležité obchodní informace** v úrovních služeb [model nákupu založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Tyto dvě úrovně jsou obecné dostupnosti. Nákupní model založený na virtuálních jádrech také nabízí **Hyperškálovatelného** úroveň služby (ve verzi public preview), která se přizpůsobí na vyžádání podle potřeb vašich úloh s automatickým Škálováním až 100 TB na databázi. Úroveň služby Hyperškálovatelného poskytuje srovnatelné služby na úrovni Premium ve vstupně-výstupním výkonem [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) za cenu blíže na úroveň Premium RS služby.
+  **Obecné** a **pro důležité obchodní informace** v úrovních služeb [model nákupu založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Tyto dvě úrovně jsou obecně dostupné. Nákupní model založený na virtuálních jádrech také nabízí **Hyperškálovatelného** úroveň služby (ve verzi public preview), která se přizpůsobí na vyžádání podle potřeb vašich úloh s automatickým Škálováním až 100 TB na databázi. Úroveň služby Hyperškálovatelného poskytuje srovnatelné služby na úrovni Premium ve vstupně-výstupním výkonem [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) za cenu blíže na úroveň Premium RS služby.
 - Ceny pro vývoj/testování
 
   [Ceny pro vývoj/testování](https://azure.microsoft.com/pricing/dev-test/) nabízí úspory až 55 % oproti ceně licenci, jsou míry s vaším předplatným sady Visual Studio.
@@ -50,19 +50,19 @@ Pro úlohy náročné na výpočetní úroveň Premium RS doporučujeme migrovat
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|
-|Úroveň Premium RS 1|Obecné účely 1 vCore (Gen 4)|Standardní 3|
-|Úroveň Premium RS 2|Obecné účely, 2 virtuální jádra (Gen 4)|Standard 4|
-|Úroveň Premium RS 4|Virtuální jádra pro obecné účely 4 (Gen4)|Standardní 6|
-|Úroveň Premium RS 6|Virtuální jádra pro obecné účely 6 (Gen4)|Standardní 7|
+|Premium RS 1|Obecné účely 1 vCore (Gen 4)|Standard 3|
+|Premium RS 2|Obecné účely, 2 virtuální jádra (Gen 4)|Standard 4|
+|Premium RS 4|Virtuální jádra pro obecné účely 4 (Gen4)|Standard 6|
+|Premium RS 6|Virtuální jádra pro obecné účely 6 (Gen4)|Standard 7|
 
 ### <a name="premium-rs-pools"></a>Fondy úrovně Premium RS
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|
-|125 DTU fondu Premium RS|Obecné účely 1 vCore (Gen 4)|Fond Standard 100 Edtu|
-|250 DTU fondu Premium RS|Obecné účely, 2 virtuální jádra (Gen 4)|Jednotky Edtu fondu úrovně Standard 250|
-|500 DTU fondu Premium RS|Virtuální jádra pro obecné účely 4 (Gen4)|Standardní fond 500 Edtu|
-|1 000 DTU fondu Premium RS|Virtuální jádra pro obecné účely 8 (Gen4)|Fond Standard 1000 Edtu|
+|Premium RS pool 125 DTU|Obecné účely 1 vCore (Gen 4)|Fond Standard 100 Edtu|
+|Premium RS pool 250 DTU|Obecné účely, 2 virtuální jádra (Gen 4)|Jednotky Edtu fondu úrovně Standard 250|
+|Premium RS pool 500 DTU|Virtuální jádra pro obecné účely 4 (Gen4)|Standardní fond 500 Edtu|
+|Premium RS pool 1000 DTU|Virtuální jádra pro obecné účely 8 (Gen4)|Fond Standard 1000 Edtu|
 
 ## <a name="optimize-savings-and-performance-for-your-io-intensive-workloads"></a>Optimalizace úspory a výkonu pro úlohy náročné na vstupně-výstupních operací
 
@@ -70,17 +70,17 @@ Doporučujeme migrovat vaše izolované databáze náročné na vstupně-výstup
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|
-|Úroveň Premium RS 1|(Preview) VCore Hyperškálovatelného 1 (Gen 4) nebo – 1 kritické obchodní vCore (Gen 4)|Premium 1|
-|Úroveň Premium RS 2|(Preview) Velkokapacitní 2 virtuální jádra (Gen 4) nebo kritické obchodní 2 virtuální jádra (Gen 4|Premium 2|
-|Úroveň Premium RS 4|(Preview) Velkokapacitní 4 virtuální jádra (Gen 4) nebo kritické obchodní 4 virtuální jádra (Gen4)|Premium 4
-|Úroveň Premium RS 6|(Preview) Velkokapacitní 6 virtuální jádra (Gen 4) nebo virtuální jádra pro důležité obchodní 6 (Gen4)|Premium 6|
+|Premium RS 1|(Preview) VCore Hyperškálovatelného 1 (Gen 4) nebo – 1 kritické obchodní vCore (Gen 4)|Premium 1|
+|Premium RS 2|(Preview) Velkokapacitní 2 virtuální jádra (Gen 4) nebo kritické obchodní 2 virtuální jádra (Gen 4|Premium 2|
+|Premium RS 4|(Preview) Velkokapacitní 4 virtuální jádra (Gen 4) nebo kritické obchodní 4 virtuální jádra (Gen4)|Premium 4
+|Premium RS 6|(Preview) Velkokapacitní 6 virtuální jádra (Gen 4) nebo virtuální jádra pro důležité obchodní 6 (Gen4)|Premium 6|
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|
-|125 DTU fondu Premium RS|Obchodní důležité 2 virtuální jádra (Gen4)|Jednotky Edtu fondu 125 Premium|
-|250 DTU fondu Premium RS|Obchodní důležité 2 virtuální jádra (Gen4)|Jednotky Edtu fondu 250 Premium|
-|500 DTU fondu Premium RS|Obchodní kritické 4 virtuální jádra (Gen4)|Fond 500 Edtu úrovně Premium|
-|1 000 DTU fondu Premium RS|Obchodní kritické 8 virtuálních jader (Gen4)|Jednotky Edtu fondu 1000 Premium|
+|Premium RS pool 125 DTU|Obchodní důležité 2 virtuální jádra (Gen4)|Jednotky Edtu fondu 125 Premium|
+|Premium RS pool 250 DTU|Obchodní důležité 2 virtuální jádra (Gen4)|Jednotky Edtu fondu 250 Premium|
+|Premium RS pool 500 DTU|Obchodní kritické 4 virtuální jádra (Gen4)|Fond 500 Edtu úrovně Premium|
+|Premium RS pool 1000 DTU|Obchodní kritické 8 virtuálních jader (Gen4)|Jednotky Edtu fondu 1000 Premium|
 
 ## <a name="take-advantage-of-our-new-offers"></a>Využijte naše nové nabídky
 

@@ -1,27 +1,8 @@
 ---
-title: Rychlý úvodní kurz pro jazyk R pro Machine Learning Studio – Azure | Dokumentace Microsoftu
-description: V tomto kurzu programovacího jazyka R můžete začít rychle používat jazyk R s Azure Machine Learning Studio k vytvoření řešení Prognózování.
-keywords: Rychlý start, jazyk r, programovací jazyk r, kurz programovacího jazyka r
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/06/2017
-ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278657"
+Název: Rychlý úvodní kurz pro titleSuffix jazyka R: Azure Machine Learning Studio Popis: V tomto kurzu programovacího jazyka R můžete začít rychle používat jazyk R s Azure Machine Learning Studio k vytvoření řešení Prognózování.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 01/06/2017
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Rychlý úvodní kurz pro programovací jazyk pro Azure Machine Learning Studio R
 
@@ -1231,7 +1212,7 @@ RStudio poměrně dobře zdokumentovat, takže v tomto dodatku mi poskytne něko
 V tomto kurzu programovacího jazyka R vysvětluje co je potřeba použít jazyka R s Azure Machine Learning Studio. Pokud nejste obeznámeni s jazykem R, jsou k dispozici na CRAN dvě úvodní informace:
 
 * R pro začátečníky podle Emmanuel Paradis je dobrým začátkem v http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
-* Úvod do jazyka R W. n. Venables et. Al. Přejde do větší hloubky, v http://cran.r-project.org/doc/manuals/R-intro.html.
+* Úvod do jazyka R W. n. Venables et. al. Přejde do větší hloubky, v http://cran.r-project.org/doc/manuals/R-intro.html.
 
 Existuje mnoho knih v R, které může pomoci vám začít. Tady je několik, které se mi najít užitečné:
 

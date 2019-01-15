@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2019
+ms.date: 01/15/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 4f5558d17e2f290ed7255350f304ed2057a6d783
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247618"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267313"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -263,6 +263,14 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 - Při vytváření [virtuální počítače Dv2-series](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), D11-14v2 virtuálních počítačů vám umožňují vytvářet 4, 8, 16 a 32 datových disků v uvedeném pořadí. V podokně virtuální počítač vytvořit se však zobrazí 8, 16, 32 a 64 datových disků.
 
+- Použití záznamů ve službě Azure Stack může obsahovat neočekávané malá a velká písmena; Příklad:
+
+   `{"Microsoft.Resources":{"resourceUri":"/subscriptions/<subid>/resourceGroups/ANDREWRG/providers/Microsoft.Compute/
+   virtualMachines/andrewVM0002","location":"twm","tags":"null","additionalInfo":
+   "{\"ServiceType\":\"Standard_DS3_v2\",\"ImageType\":\"Windows_Server\"}"}}`
+
+   V tomto příkladu by měl být název skupiny prostředků **AndrewRG**. Tato nekonzistence můžete bezpečně ignorovat.
+
 <!-- 3235634 – IS, ASDK -->
 - K nasazení virtuálních počítačů s velikostí, který obsahuje **v2** přípony; například **Standard_A2_v2**, zadejte příponu jako **Standard_A2_v2** (malá písmena v). Nepoužívejte **Standard_A2_V2** (velká písmena V). To funguje v globální Azure a nekonzistence ve službě Azure Stack.
 
@@ -337,7 +345,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Na portálu, je-li přidat příchozí pravidlo zabezpečení a vyberte **značka služby** jako zdroj, se zobrazí několik možností, jak v **značka zdroje** seznamu, které nejsou k dispozici pro službu Azure Stack. Pouze možnosti, které jsou platné ve službě Azure Stack jsou následující:
 
     - **Internet**
-    - **Virtuální síť**
+    - **VirtualNetwork**
     - **AzureLoadBalancer**
   
     Další možnosti nejsou podporovány jako zdroj značky ve službě Azure Stack. Obdobně je-li přidat odchozí pravidlo zabezpečení a vyberte **značka služby** jako cíl stejný seznam možností pro **značka zdroje** se zobrazí. Pouze platné možnosti jsou stejné jako v případě **značka zdroje**, jak je popsáno v předchozím seznamu.

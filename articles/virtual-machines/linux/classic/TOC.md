@@ -1,4 +1,4 @@
-# [Přehled](../overview.md)
+# Přehled
 ## [Rozšíření virtuálních počítačů](agents-and-extensions-classic.md)
 ## [Dostupnost](configure-availability-classic.md)
 ## [Nejčastější dotazy](faq-classic.md)
@@ -49,7 +49,6 @@
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
-## [Tvorba šablon Resource Manageru](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Komunitní šablony](https://azure.microsoft.com/documentation/templates)
 ## [Rozhraní REST pro Compute](https://msdn.microsoft.com/library/jj157206.aspx)
 ## [Rozhraní REST pro službu Network](https://msdn.microsoft.com/library/jj157182.aspx)

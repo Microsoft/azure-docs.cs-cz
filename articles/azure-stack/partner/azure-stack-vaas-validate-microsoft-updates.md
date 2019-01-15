@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/07/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8ea0f36f3d167109fc0dc0d91707a08cff1c6a17
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: bcb56789b2781cd1d081af8c112222a1f1269a74
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243980"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304886"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Ověření aktualizace softwaru od Microsoftu
 

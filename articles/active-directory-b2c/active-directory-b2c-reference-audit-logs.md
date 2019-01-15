@@ -10,19 +10,19 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31f0517cd4d61fa324072eae954404c899451cc3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 93ca61c610856ebba64bff46b2338090f317ad56
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117397"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302030"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
 Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující aktivitu informací o prostředcích B2C, vydané tokeny a přístup správce. Tento článek poskytuje stručný přehled informací dostupných prostřednictvím protokolů auditu a pokyny o tom, jak přístup k těmto datům pro vašeho tenanta Azure AD B2C.
 
 > [!IMPORTANT]
-> Protokoly auditu se zachovají jenom po dobu sedmi dní. Plán stažení a ukládat vaše protokoly pomocí jedné z metod je uvedeno níže, pokud budete potřebovat delší doba uchovávání informací. 
+> Protokoly auditu se zachovají jenom po dobu sedmi dní. Plán stažení a ukládat vaše protokoly pomocí jedné z metod je uvedeno níže, pokud budete potřebovat delší doba uchovávání informací.
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Přehled aktivit, které jsou k dispozici v kategorii B2C protokolů auditu
 **B2C** kategorie z protokolů auditu obsahuje následující typy aktivit:
@@ -43,7 +43,7 @@ Následující příklad ukazuje data zaznamenaná, když se uživatel přihlás
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>Přístup k protokolům auditu na webu Azure Portal
 1. Přejděte na [Azure Portal](https://portal.azure.com). Ujistěte se, že máte ve svém adresáři B2C.
-2. Klikněte na **Azure Active Directory** na panel Oblíbené položky na levé straně 
+2. Klikněte na **Azure Active Directory** na panel Oblíbené položky na levé straně
     
     ![Protokoly auditu – tlačítko AAD](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
@@ -56,14 +56,14 @@ Následující příklad ukazuje data zaznamenaná, když se uživatel přihlás
 
     ![Protokoly auditu – kategorie](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
-Zobrazí se seznam aktivit přihlášení za posledních sedm dní. 
+Zobrazí se seznam aktivit přihlášení za posledních sedm dní.
 - Použití **typ prostředku aktivity** rozevírací seznam můžete filtrovat podle typů aktivit uvedených výše
 - Použití **rozsah** rozevírací seznam pro filtrování rozsah aktivit zobrazí
 - Pokud kliknete na konkrétní řádek v seznamu, kontextové pole na pravé straně se zobrazí další atributy, které jsou přidružená k aktivitě
 - Klikněte na **Stáhnout** stáhnete aktivity jako soubor csv
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Přístup k protokolům auditu prostřednictvím rozhraní API pro generování sestav Azure AD
-Protokoly auditu se publikují do stejné kanálu další aktivity pro Azure Active Directory, takže k nim může přistupovat prostřednictvím [Azure Active Directory API pro vytváření sestav](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference). 
+Protokoly auditu se publikují do stejné kanálu další aktivity pro Azure Active Directory, takže k nim může přistupovat prostřednictvím [Azure Active Directory API pro vytváření sestav](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference).
 
 ### <a name="prerequisites"></a>Požadavky
 K ověření na rozhraní API pro generování sestav Azure AD musíte nejprve registrovat aplikaci. Ujistěte se, že podle kroků v [požadavky pro přístup k rozhraní API pro generování sestav Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
@@ -82,7 +82,7 @@ Následující skript představuje příklad použití Powershellu k dotazován�
 # Constants
 $ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a Globally Unique ID (registered by Global Admin)
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client Key/Secret string
-$loginURL       = "https://login.microsoftonline.com"     
+$loginURL       = "https://login.microsoftonline.com"
 $tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # AAD B2C Tenant; for example, contoso.onmicrosoft.com
 $resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -93,13 +93,13 @@ $body       = @{grant_type="client_credentials";resource=$resource;client_id=$Cl
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
 # Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
-if ($oauth.access_token -ne $null) {   
+if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago 
+    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago
 
     # loop through each query page (1 through n)
-    Do{
+    Do {
         # display each event on the console window
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
@@ -117,4 +117,3 @@ if ($oauth.access_token -ne $null) {
     Write-Host "ERROR: No Access Token"
 }
 ```
-

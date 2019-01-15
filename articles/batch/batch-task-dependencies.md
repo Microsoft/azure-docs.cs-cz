@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 40e925fff9d87d8590ea3a83be9e7d93a84d6e26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865229"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266650"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytvoření závislosti úkolů ke spuštění úlohy, které závisí na jiné úkoly
 
@@ -77,9 +77,9 @@ Existují tři scénáře závislost základní úlohy, které můžete použít
 
 | Scénář&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad: |  |
 |:---:| --- | --- |
-|  [1: 1](#one-to-one) |*Úkolb* závisí na *úkolu a* <p/> *Úkolb* pro provádění, dokud nebude naplánováno *úkolu a* byla úspěšně dokončena |![Diagram: 1: 1 závislostí][1] |
+|  [One-to-one](#one-to-one) |*Úkolb* závisí na *úkolu a* <p/> *Úkolb* pro provádění, dokud nebude naplánováno *úkolu a* byla úspěšně dokončena |![Diagram: 1: 1 závislostí][1] |
 |  [Jeden mnoho](#one-to-many) |*ÚkolC* závisí na *úkoluA* a *úkoluB* <p/> *Úkolc* nebude nutné naplánovat provedení do obou *úkolu a* a *Úkolb* byly úspěšně dokončeny |![Diagram: závislost na více úkolů][2] |
-|  [Rozsah ID úkolu](#task-id-range) |*Úkold* závisí na mnoha různých úkolů <p/> *Úkold* nebude nutné naplánovat provedení až do úlohy s ID *1* prostřednictvím *10* byly úspěšně dokončeny |![Diagramu: Závislost rozsah id][3] |
+|  [Rozsah ID úkolu](#task-id-range) |*Úkold* závisí na mnoha různých úkolů <p/> *Úkold* nebude nutné naplánovat provedení až do úlohy s ID *1* prostřednictvím *10* byly úspěšně dokončeny |![Diagram: Rozsah id závislostí][3] |
 
 > [!TIP]
 > Můžete vytvořit **many-to-many** vztahů, například pokud úkoly C, D, E a F každý závisí na úlohy A a B. To je užitečné, například v paralelizované předběžného zpracování scénářů, kde podřízené úlohy závisí na výstupu několik úkolů nadřazený.
@@ -123,7 +123,7 @@ K vytvoření závislost, zadejte první a poslední úlohy ID v rozsahu, který
 > [!IMPORTANT]
 > Při použití úkolů ID rozsahy pro závislosti pouze úlohy s ID představující celočíselné hodnoty nebude zvolen podle oblasti. Takže rozsahu `1..10` vybere úlohy `3` a `7`, ale ne `5flamingoes`. 
 > 
-> Úvodní nuly. nejsou nejvýznamnější při vyhodnocování závislostí rozsah, tak úkoly s řetězec identifikátory `4`, `04` a `004` budou všechny *v rámci* rozsahu a budou všechny považovány za úkol `4`, takže vyhoví první z nich k dokončení závislost.
+> Úvodní nuly. nejsou důležité při vyhodnocování závislostí rozsah, tak úkoly s řetězec identifikátory `4`, `04` a `004` budou všechny *v rámci* rozsahu a budou všechny považovány za úkol `4`, takže vyhoví první z nich k dokončení závislost.
 > 
 > Každý úkol v rozsahu musí splňovat závislost, úspěšně dokončit nebo s chybou, který je namapovaný na závislost akcí nastavenou na dokončení **Satisfy**. Zobrazit [závislostí akcí](#dependency-actions) podrobné informace.
 >

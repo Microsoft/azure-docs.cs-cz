@@ -3,43 +3,39 @@ items:
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Vyhledávání zpráv Bingu?
+  - name: Co je rozhraní API Bingu pro vyhledávání zpráv?
     href: search-the-web.md
-- name: Rychlá zprovoznění pro REST API
-  items:
-  - name: Začínáme
-    href: quickstart.md
-  - name: C#
-    href: csharp.md
-  - name: Java
-    href: java.md
-  - name: Node.js
-    href: nodejs.md
-  - name: PHP
-    href: php.md
-  - name: Python
-    href: python.md
-  - name: Ruby
-    href: ruby.md
   expanded: true
-- name: Rychlá zprovoznění pro SDK
+- name: Šablony Rychlý start
   items:
-  - name: Přehled ukázek SDK
-    href: sdk.md
-  - name: Rychlé zprovoznění sady SDK pro Vyhledávání zpráv v C#
-    href: news-search-sdk-quickstart.md
-  - name: Rychlé zprovoznění sady SDK pro Vyhledávání zpráv v Node.js
-    href: news-search-sdk-node-quickstart.md
-  - name: Rychlé zprovoznění sady SDK pro Vyhledávání zpráv v Pythonu
-    href: news-sdk-python-quickstart.md
-  - name: Rychlé zprovoznění sady SDK pro Vyhledávání zpráv v Javě
-    href: news-sdk-java-quickstart.md
+  - name: REST API
+    items:
+    - name: Pomocí C#
+      href: csharp.md
+    - name: Pomocí Javy
+      href: java.md
+    - name: Pomocí Node.js
+      href: nodejs.md
+    - name: Pomocí PHP
+      href: php.md
+    - name: Pomocí Pythonu
+      href: python.md
+    - name: Pomocí Ruby
+      href: ruby.md
+  - name: Sada SDK
+    items:
+    - name: Pomocí C#
+      href: news-search-sdk-quickstart.md
+    - name: Pomocí Node.js
+      href: news-search-sdk-node-quickstart.md
+    - name: Pomocí Pythonu
+      href: news-sdk-python-quickstart.md
+    - name: Pomocí Javy
+      href: news-sdk-java-quickstart.md
 - name: Kurzy
   items:
-  - name: Jednostránková webová aplikace
+  - name: Vytvoření jednostránkové webové aplikace
     href: tutorial-bing-news-search-single-page-app.md
-  - name: Jednostránková webová aplikace (zdrojový kód)
-    href: tutorial-bing-news-search-single-page-app-source.md
 - name: Ukázky
   items:
   - name: Ukázky kódů
@@ -54,12 +50,18 @@ items:
     href: paging-news.md
   - name: Změna velikosti a oříznutí miniatur
     href: resize-and-crop-thumbnails.md
-  - name: Upgrade z v5 na v7
+  - name: Upgrade rozhraní API z v5 na v7
     href: bing-news-upgrade-guide-v5-to-v7.md
   - name: Práce se sadou Visual Studio
     items:
     - name: Použití připojené služby Vyhledávání zpráv Bingu
       href: vs-bing-news-search-connected-service.md
+- name: Koncepty
+  items:
+  - name: Odesílání dotazů pro vyhledávání
+    href: concepts/send-search-queries.md
+  - name: Vyhledávání zpráv
+    href: concepts/search-for-news.md
 - name: Referenční informace
   items:
   - name: Rozhraní API Bingu pro vyhledávání zpráv v7
@@ -102,9 +104,9 @@ items:
     href: language-support.md
   - name: Analýzy pro rozhraní API Bingu pro vyhledávání zpráv
     href: bing-news-stats.md
-ms.openlocfilehash: 9f702884dba94169eae71f98253a3ae1a94d8510
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ed425db68d5c617f6442e9757531f02b0ab1cd38
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790534"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266208"

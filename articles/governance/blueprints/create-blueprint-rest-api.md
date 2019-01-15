@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9e44a44b76e79375076f71cf808d6d30eebc5cdb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 999df06e7a22201ee9c1134ec3eb04fced43a2f5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311418"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265817"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
@@ -68,7 +68,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
-- Proměnnou `{YourMG}` nahraďte názvem skupiny pro správu.
+- `{YourMG}` -Nahraďte ID skupiny pro správu 
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 1. Vytvořte počáteční objekt _blueprint_. **Text požadavku** obsahuje vlastnosti podrobného plánu, vytvářené skupiny prostředků a všechny parametry na úrovni podrobného plánu. Tyto parametry se nastaví při přiřazení a používají je artefakty přidané v dalších krocích.

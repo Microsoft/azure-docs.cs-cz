@@ -1,22 +1,23 @@
 ---
-title: Přihlašovací údaje v Azure Content Moderator | Dokumentace Microsoftu
-description: Správa přihlašovacích údajů Content Moderator pro použití s rozhraním API.
+title: Správa přihlašovacích údajů v Azure Content Moderator – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Správa přihlašovacích údajů Content Moderator, které budete muset použít rozhraní API.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 06/25/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5910961ee54c953ea241baf9bce78b79b0dfeaea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3d183870938f44cd71f1dab4105eec390ba12d94
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260087"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266141"
 ---
-# <a name="manage-credentials"></a>Správa přihlašovacích údajů
+# <a name="manage-content-moderator-service-credentials"></a>Správa přihlašovacích údajů služby Content Moderator
 
 Vaše přihlašovací údaje Content Moderatoru se vytvoří v následujících umístěních:
 

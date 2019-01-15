@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: c6bcc5a7948e87a8b887bd0ebd3abc8fc3d3a517
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e31c957e9ef24079d6917109ec9c5f85928bfbd7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545310"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260971"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -57,7 +57,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL diagnostické protokoly](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Cognitive Services | Schéma není k dispozici. |
 | Content Delivery Network | [Diagnostické protokoly Azure CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
-| CosmosDB | [Protokolování služby Azure Cosmos DB](../../cosmos-db/logging.md) |
+| CosmosDB | [Azure Cosmos DB Logging](../../cosmos-db/logging.md) |
 | Data Factory | [Monitorovat datové továrny pomocí Azure monitoru](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Přístup k protokolům diagnostiky pro Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Zobrazení diagnostických protokolů pro Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
@@ -94,10 +94,10 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.ClassicNetwork/networksecuritygroups|Událost toku pravidel skupiny zabezpečení sítě|Událost toku pravidel skupiny zabezpečení sítě|
 |Microsoft.CognitiveServices/accounts|Auditování|Protokoly auditu|
 |Microsoft.CognitiveServices/accounts|Operace RequestResponse|Protokoly požadavků a odpovědí|
-|Microsoft.ContainerService/managedClusters|kube apiserver|Server rozhraní API Kubernetes|
-|Microsoft.ContainerService/managedClusters|Správce kontroléru kube|Správce kontroleru Kubernetes|
-|Microsoft.ContainerService/managedClusters|cluster automatického škálování|Automatické škálování clusteru Kubernetes|
-|Microsoft.ContainerService/managedClusters|kube scheduleru|Plánovač Kubernetes|
+|Microsoft.ContainerService/managedClusters|kube-apiserver|Server rozhraní API Kubernetes|
+|Microsoft.ContainerService/managedClusters|kube-controller-manager|Správce kontroleru Kubernetes|
+|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Automatické škálování clusteru Kubernetes|
+|Microsoft.ContainerService/managedClusters|kube-scheduler|Plánovač Kubernetes|
 |Microsoft.ContainerService/managedClusters|Guard|Ověřovací webhook|
 |Microsoft.CustomerInsights/hubs|Použitím objektů Auditevent|Použitím objektů Auditevent|
 |Microsoft.DataFactory/factories|ActivityRuns|Kanál protokolu spuštění aktivit|
@@ -108,7 +108,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.DataLakeStore/accounts|Auditování|Protokoly auditu|
 |Microsoft.DataLakeStore/accounts|Požadavky|Vyžádat protokoly|
 |Microsoft.DBforMySQL/servers|MySqlSlowLogs|Protokoly serveru MySQL|
-|Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|Protokoly serveru PostgreSQL|
+|Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL Server Logs|
 |Microsoft.Devices/IotHubs|Připojení|Připojení|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Telemetrie zařízení|
 |Microsoft.Devices/IotHubs|C2DCommands|Příkazy C2D|
@@ -200,12 +200,12 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Sql/managedInstances/databases|Chyby|Chyby|
 |Microsoft.StreamAnalytics/streamingjobs|Spouštěcí|Spouštěcí|
 |Microsoft.StreamAnalytics/streamingjobs|Vytváření obsahu|Vytváření obsahu|
-|Microsoft.Web/Sites|FunctionExecutionLogs|Protokoly spuštění – funkce|
-|Microsoft.Web/Sites/slots|FunctionExecutionLogs|Protokoly spuštění – funkce|
+|microsoft.web/sites|FunctionExecutionLogs|Protokoly spuštění – funkce|
+|microsoft.web/sites/slots|FunctionExecutionLogs|Protokoly spuštění – funkce|
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o diagnostických protokolů](../../azure-monitor/platform/diagnostic-logs-overview.md)
 * [Stream protokolů diagnostiky prostředků k **Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
-* [Změnit nastavení diagnostiky prostředků pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Změnit nastavení diagnostiky prostředků pomocí REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

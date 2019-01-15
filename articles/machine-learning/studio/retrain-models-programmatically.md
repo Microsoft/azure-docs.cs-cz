@@ -1,26 +1,8 @@
 ---
-title: Programové přeučování modelů Machine Learning Studio – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak prostřednictvím kódu programu programovém přeučení modelů pomocí C# a provedení dávky služby Machine Learning service.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257389"
+Název: Obsloužených Machine Learning Studio modelů titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak prostřednictvím kódu programu programovém přeučení modelů pomocí C# a provedení dávky služby Machine Learning service.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---
 # <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Programově přeučit modely Azure Machine Learning Studio
 V tomto návodu se dozvíte, jak prostřednictvím kódu programu přeučování webové služby Azure Machine Learning Studio pomocí C# a provedení dávky služby Machine Learning service.

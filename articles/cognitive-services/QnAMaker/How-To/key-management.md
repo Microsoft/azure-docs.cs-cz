@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 3984ac84271728b9066aba15a582065ea3121c76
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 2b199e10b1a70bc44065d422d32acd3bea182721
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581755"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302047"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>Správa klíčů v nástroje QnA Maker
 
@@ -42,7 +42,7 @@ Můžete zobrazit a obnovit klíče předplatného z portálu Azure, ve které j
 
 Klíče koncového bodu je možné spravovat z [portál QnA Maker](https://qnamaker.ai).
 
-1. Přihlaste se k [portál QnA Maker](https://qnamaker.ai)a přejděte na **nastavení služby**.
+1. Přihlaste se k [portál QnA Maker](https://qnamaker.ai), přejděte na svůj profil a potom klikněte na tlačítko **nastavení služby**.
 
     ![Klíč koncového bodu](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 

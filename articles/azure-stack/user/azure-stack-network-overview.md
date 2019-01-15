@@ -6,15 +6,15 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: ac842507cc52c9677e755d32b09758f787c5a1fb
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: f70b60d73b542065d4f737faf515679386cc69a7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584556"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303169"
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Úvod do práce se sítěmi na platformě Azure Stack
 

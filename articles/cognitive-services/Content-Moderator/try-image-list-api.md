@@ -1,42 +1,42 @@
 ---
-title: Moderování obrázků s použitím vlastních seznamů s konzolou rozhraní API – Content Moderator
+title: Moderování obrázků pomocí vlastních seznamů a rozhraní API konzoly – Content Moderator
 titlesuffix: Azure Content Moderator
-description: Vyzkoušejte si vlastním seznamem obrázků v konzole nástroje Content Moderator API.
+description: Rozhraní API pro správu seznamu v Azure Content Moderator použijete k vytvoření vlastních seznamů obrázků.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5e573262879b6a16e3cd530757900b86228ae299
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c42fdb037e1803db8255518f5c7ae7b2abd90c60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219953"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259355"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Střední s vlastním seznamem obrázků v konzole pro rozhraní API
 
 Můžete použít [rozhraní API pro správu seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) v Azure Content Moderator k vytvoření vlastních seznamů obrázků. Vlastní seznam imagí pomocí rozhraní API pro moderování obrázků. Operace pro moderování obrázků vyhodnotí bitové kopie. Pokud vytvoříte vlastní seznamy, operace se taky porovnává do bitové kopie ve vlastních seznamů. Vlastní seznamy můžete použít k blokování nebo povolení bitovou kopii.
 
 > [!NOTE]
-> Je maximální limit **seznamy obrázků 5** s každou seznamu **není delší než 10 000 obrázků**.
+> Limit je maximálně **5 seznamů obrázků** a v každém seznamu může být **maximálně 10 000 obrázků**.
 >
 
 Rozhraní API pro správu seznamu můžete provádět následující úlohy:
 
-- Vytvoření seznamu.
+- Vytvoření seznamu
 - Přidání obrázků do seznamu.
 - Obrázky obrazovky s obrázky v seznamu.
 - Odstraňte Image ze seznamu.
-- Odstranění seznamu.
-- Upravte informace o seznamu.
-- Aktualizujte index tak, aby se změny provedené v seznamu jsou součástí nové skenování.
+- Odstranění seznamu
+- Úprava informací o seznamu
+- Aktualizace indexu tak, aby změny provedené v seznamu byly součástí nového porovnávání
 
 ## <a name="use-the-api-console"></a>Pomocí rozhraní API konzoly
-Předtím, než můžete vyzkoušet rozhraní API v konzole online, budete potřebovat klíč předplatného. To je umístěn na **nastavení** kartě **Ocp-Apim-Subscription-Key** pole. Další informace najdete v tématu [přehled](overview.md).
+Předtím, než můžete vyzkoušet rozhraní API v konzole online, budete potřebovat klíč předplatného. To je umístěn na **nastavení** kartě **Ocp-Apim-Subscription-Key** pole. Další informace najdete v tématu [Přehled](overview.md).
 
 ## <a name="refresh-search-index"></a>Aktualizujte index vyhledávání
 
@@ -121,7 +121,7 @@ Odstraňuje se obrázek nebo seznamu je jednoduché. Rozhraní API můžete prov
 
 - Odstranění image. (**Obrázek – odstranit**)
 - Odstraňte všechny Image v seznamu bez odstranění seznamu. (**Obrázek – odstranit všechny image**)
-- Odstraňte seznam a veškerý jeho obsah. (**Seznamy obrázků - Delete**)
+- Odstranění seznamu a veškerého jeho obsahu. (**Seznamy obrázků - Delete**)
 
 Tento příklad odstraní jedné image:
 

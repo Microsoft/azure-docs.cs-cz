@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 49f1d7e1fac1125984f7376cffdcaf2e60f5611b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 984f6713445b53429758d616945a6e64245b42bc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247873"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263216"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: Nasazení aplikací na platformy Azure a Azure Stack
 
@@ -254,7 +254,7 @@ Tím, že vytvoříte koncové body, Visual Studio Online (VSTO) build aplikace 
 2. Na **nastavení**vyberte **zabezpečení**.
 3. V **skupin služby Azure DevOps**vyberte **koncový bod Creators**.
 
-    ![Koncový bod NorthwindCloud Tvůrce](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
+    ![NorthwindCloud Endpoint Creators](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
 
 4. Na **členy** kartu, vyberte možnost **přidat**.
 
@@ -264,7 +264,7 @@ Tím, že vytvoříte koncové body, Visual Studio Online (VSTO) build aplikace 
 6. Vyberte **uložit změny**.
 7. V **skupin služby Azure DevOps** seznamu vyberte **koncový bod správci**.
 
-    ![Koncový bod NorthwindCloud správci](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
+    ![NorthwindCloud Endpoint Administrators](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
 
 8. Na **členy** kartu, vyberte možnost **přidat**.
 9. V **přidávat uživatele a skupiny**, zadejte uživatelské jméno a vyberte uživatele ze seznamu uživatelů.
@@ -360,7 +360,7 @@ Hybridní CI/CD můžete použít kód aplikace a kódu infrastruktury. Použit�
 
 1. Přihlaste se ke službám Azure DevOps s organizací, které můžete vytvořit kanál sestavení.
 
-2. Přejděte **sestavit Web Express** stránky pro projekt.
+2. Přejděte **sestavit webovou aplikaci** stránky pro projekt.
 
 3. V **argumenty**, přidejte **- r win10-x64** kódu. To se vyžaduje k aktivaci samostatná nasazení s.Net Core.
 

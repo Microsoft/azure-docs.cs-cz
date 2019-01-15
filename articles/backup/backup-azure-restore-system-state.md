@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 31784c44d7561c690278aa4764e98992fbca73ae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0b880d77004013d3b3eb1999b7e9344577b9fb4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230780"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266480"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -86,7 +86,7 @@ Zahrnuje terminologii používané v těchto krocích:
 3. Klikněte na tlačítko **obnovit Data** k zahájení pracovního postupu.
 4. Vyberte **jiný server**
 
-    ![Jiný Server](./media/backup-azure-restore-system-state/anotherserver.png)
+    ![Another Server](./media/backup-azure-restore-system-state/anotherserver.png)
 
 5. Zadejte soubor přihlašovacích údajů trezoru, který odpovídá *ukázka trezor*. Pokud soubor s přihlašovacími údaji trezoru je neplatný (nebo jejichž platnost vypršela), stáhněte si nový soubor přihlašovacích údajů trezoru z *ukázka trezor* na webu Azure Portal. Když soubor s přihlašovacími údaji trezoru je k dispozici, zobrazí se trezor služby Recovery Services přidružený soubor s přihlašovacími údaji trezoru.
 
@@ -157,7 +157,7 @@ Jednou zotavily stavu systému jako soubory pomocí agenta Azure Recovery Servic
 
 10. Umístění obnovení stavu systému, vyberte **původního umístění**a klikněte na tlačítko **Další**.
 
-11. Projděte si podrobnosti o potvrzení, ověřte restartování nastavení a klikněte na tlačítko **obnovit** k applly obnovený stav systému souborů.
+11. Projděte si podrobnosti o potvrzení, ověřte restartování nastavení a klikněte na tlačítko **obnovit** použít obnovený stav systému souborů.
 
     ![spuštění obnovení stavu systému souborů](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 

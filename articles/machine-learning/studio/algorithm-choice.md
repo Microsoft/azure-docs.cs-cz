@@ -1,23 +1,21 @@
 ---
-title: Jak zvolit algoritmy pro Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Jak zvolit algoritmus
+titleSuffix: Azure Machine Learning Studio
 description: Jak zvolit algoritmy Azure Machine Learning Studio u dozorovaných, tak i u nedozorovaných učení v clustering, klasifikační nebo regresní experimentů.
 services: machine-learning
-author: ericlicoding
-ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.author: amlstudiodocs
-editor: cgronlun
-tags: ''
-ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 9e601464f97a7717a2ccef0e60172357d3169697
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 20debfe2a1f3cf92e1a90867ca2b3a01852f7f9c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256923"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267347"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak zvolit algoritmy pro Azure Machine Learning Studio
 
@@ -133,13 +131,13 @@ Některé studijní algoritmy určité domněnky o struktuře dat nebo požadova
 | [neurálních sítí](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Další přizpůsobení je možné](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Zobrazit vlastnosti vybrané metody dvěma třídami |
 | **Regrese** | | | | | |
-| [Lineární](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
+| [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
 | [Bayesova lineární](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
 | [rozhodovací les](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [Posílený rozhodovací strom](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Velké paměťové nároky |
 | [quantile rychlé doménové struktury](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Distribuce spíše než bodu predikcí |
 | [neurálních sítí](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Další přizpůsobení je možné](https://go.microsoft.com/fwlink/?LinkId=402867) |
-| [Poissonovo](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technicky protokolu lineární. Pro odhad počtu |
+| [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technicky protokolu lineární. Pro odhad počtu |
 | [Pořadí](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Pro predikci, pořadí řazení |
 | **Detekce anomálií** | | | | | |
 | [počítač vektorové podpory](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Zvlášť vhodná pro velké funkce sad |

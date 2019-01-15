@@ -1,27 +1,8 @@
 ---
-title: Diagram s přehledem možností nástroje Machine Learning Studio – Azure | Dokumentace Microsoftu
-description: Vytisknutelný diagram možností nástroje Azure Machine Learning Studio, který ukazuje, jak s jeho pomocí vyvinout experiment prediktivní analýzy a zprovoznit ho v cloudu Azure
-keywords: machine learning studio, diagram s přehledem, stažení
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: garye
-editor: cgronlun
-ms.assetid: 5b302c6c-41fd-4551-a4ae-0f5b450e1e6b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
-ms.date: 04/04/2017
-ms.openlocfilehash: ce842d11d47529eca2be894a230b60417cea102f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278011"
+Název: Diagram s přehledem nástroje Machine Learning Studio možnosti titleSuffix: Azure Machine Learning Studio Popis: Vytisknutelný diagram možností nástroje Azure Machine Learning Studio, který ukazuje, jak s jeho pomocí vyvinout experiment prediktivní analýzy a zprovoznit ho v cloudu Azure
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: Přehled
+
+Autor: garyericson ms.author: garye ms.custom: předchozí ms.author=haining, předchozí Autor = hning86 ms.date: 04/04/2017
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Diagram s přehledem možností nástroje Machine Learning Studio
 Diagram s **přehledem možností nástroje Machine Learning Studio** nastiňuje na nejvyšší úrovni, jak pomocí nástroje Machine Learning Studio vyvinout model prediktivní analýzy a zprovoznit ho v cloudu Azure.

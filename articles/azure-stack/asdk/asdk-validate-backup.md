@@ -1,6 +1,6 @@
 ---
 title: Ověření zálohování Azure stacku pomocí ASDK | Dokumentace Microsoftu
-description: Jak ověřit zálohu systémy integerated Azure Stack pomocí ASDK.
+description: Jak ověřit zálohu integrované systémy Azure Stack pomocí ASDK.
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 181f37fb72584e18cc963ba1ffde070379a1b0c6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 12d5c2448bc6a5241f6aa4e283acdf9c5a0f602a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961415"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265647"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Použít ASDK k ověření zálohování Azure stacku
 Po nasazení služby Azure Stack a zřizování uživatelů prostředky, jako jsou nabídky, plány, kvót a předplatných, měli byste [povolit zálohování infrastruktury Azure stacku](../azure-stack-backup-enable-backup-console.md). Plánování a spouštění pravidelných infrastruktura zálohování se zajistí, že infrastruktura správy nedojde ke ztrátě dat při katastrofických hardwaru nebo Chyba služby.
 
 > [!TIP]
-> Doporučujeme, který jste [spustit zálohování na vyžádání](../azure-stack-backup-back-up-azure-stack.md) před zahájením tohoto postupu zkontrolujte máte kopii nejnovější infrastrcuture data k dispozici. Ujistěte se, že k zaznamenání ID zálohy, až se zálohování úspěšně dokončí. Toto ID se bude vyžadovat během obnovení cloudu. 
+> Doporučujeme, který jste [spustit zálohování na vyžádání](../azure-stack-backup-back-up-azure-stack.md) před zahájením tohoto postupu k zajištění, že máte kopii nejnovější data infrastruktury k dispozici. Ujistěte se, že k zaznamenání ID zálohy, až se zálohování úspěšně dokončí. Toto ID se bude vyžadovat během obnovení cloudu. 
 
 Zálohování infrastruktury Azure stacku obsahují důležitá data o vašem cloudu, které je možné obnovit během opětovné nasazení Azure stacku. ASDK můžete použít k ověření tyto zálohy bez dopadu na produkční cloudu. 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b7201f2a5d2e1b3967bd84ddb78797debdf14aeb
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 29d99a6114f1a8dafa2e3a837fe807a1bbee1343
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065694"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Kurz: Integrace Azure Active Directory s použitím ServiceNow
 
@@ -214,7 +214,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s použitím ServiceNow, prov
         * Kopírování **domovské stránky ServiceNow** hodnota a vložte ji **přihlašovací adresa URL** textového pole v **ServiceNow domény a adresy URL** části na webu Azure portal.
 
             > [!NOTE]
-            > Na domovské stránce instance ServiceNow je tvořen vaše **adresy URL tenanta ServieNow** a **/navpage.do** (například:`https://fabrikam.service-now.com/navpage.do`).
+            > Na domovské stránce instance ServiceNow je tvořen vaše **adresy URL tenanta ServiceNow** a **/navpage.do** (například:`https://fabrikam.service-now.com/navpage.do`).
 
         * Kopírování **Entity ID / vystavitele** hodnota a vložte ji **identifikátor** textového pole v **ServiceNow domény a adresy URL** části na webu Azure portal.
 
@@ -373,7 +373,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s použitím ServiceNow, prov
 
     ![Konfigurace jednotného přihlašování](./media/servicenow-tutorial/ic7694982ex.png "nakonfigurovat jednotné přihlašování")
 
-    a. V **název** textového pole zadejte název pro vaši konfiguraci (například: **PROTOKOL SAML 2.0**).
+    a. V **název** textového pole zadejte název pro vaši konfiguraci (například: **SAML 2.0**).
 
     b. V **adresa URL zprostředkovatele Identity** pole, vložte hodnotu **ID zprostředkovatele Identity**, který jste zkopírovali z portálu Azure portal.
 

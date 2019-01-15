@@ -1,26 +1,8 @@
 ---
-title: Používání webové služby v aplikaci Excel – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Azure Machine Learning Studio usnadňuje volání webové služby přímo z aplikace Excel bez nutnosti psát jakýkoli kód.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 3f3cdd2f-1816-487e-ab78-530e01e9788f
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/01/2018
-ms.openlocfilehash: ad7eae16c2933790aefba3cee1551be29ee457be
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276923"
+Název: Používání webové služby v aplikaci Excel titleSuffix: Azure Machine Learning Studio Popis: Azure Machine Learning Studio usnadňuje volání webové služby přímo z aplikace Excel bez nutnosti psát jakýkoli kód.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Využívání webové služby Azure Machine Learning Studio z Excelu
 

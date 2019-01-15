@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: e9b547b6b582e38a51196815522132dd807c971b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 93ed7620636535d45791a657d012a9c7056be09d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079030"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303186"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Úvod do integrace protokolů Azure
 
 >[!IMPORTANT]
-> Funkce integrace protokolů Azure se přestanou používat podle 06/01/2019. Soubory ke stažení AzLog se deaktivuje 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkce integrace protokolů Azure se přestanou používat podle 06/01/2019. Soubory ke stažení AzLog byly deaktivovány 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Integrace protokolů Azure byl k dispozici pro zjednodušení úloh s integrací Azure protokolů pomocí vašeho místního systému informace o zabezpečení a správu událostí (SIEM).
 

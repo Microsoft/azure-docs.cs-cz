@@ -1,26 +1,8 @@
 ---
-title: Soutěže zaměřené na Cortana Intelligence – nejčastější dotazy – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Nejčastější dotazy ohledně Microsoft Cortana Intelligence soutěže.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/18/2017
-ms.openlocfilehash: fe4da412aa779e9861446f8dcbb8a807c282c7c6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268899"
+Název: Cortana Intelligence soutěže nejčastější dotazy k titleSuffix: Azure Machine Learning Studio Popis: Nejčastější dotazy ohledně Microsoft Cortana Intelligence soutěže.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 12/18/2017
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Nejčastější dotazy k soutěžím Microsoft Cortana Intelligence Competitions
 **Co je Cortana Intelligence soutěže?**

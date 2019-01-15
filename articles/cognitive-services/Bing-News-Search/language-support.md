@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: a8f7ccdb199f934011b6d64d813eb36cc9dff952
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 1d8a46287d2b84735ffb6d5159346cb9b8243472
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804544"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263986"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Podpora jazyka a oblasti pro rozhraní API pro vyhledávání zpráv Bingu
 
@@ -46,19 +46,19 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 |Malajsie|Angličtina|cs MY|
 |Nový Zéland|Angličtina|cs NZ|
 |Filipínská republika|Angličtina|cs PH|
-|Singapur|Angličtina|cs SG|
-|Spojené státy|Angličtina|cs-CZ|
-|Angličtina|Obecné|cs TT|
-|Angličtina|Obecné|cs XA|
-|Jihoafrická republika|Angličtina|cs ZA|
-|Argentina|Španělština|ES AR|
-|Chile|Španělština|ES-CL|
+|Singapur|Angličtina|en-SG|
+|Spojené státy|Angličtina|en-US|
+|Angličtina|Obecné|en-WW|
+|Angličtina|Obecné|en-XA|
+|Jižní Afrika|Angličtina|en-ZA|
+|Argentina|Španělština|es-AR|
+|Chile|Španělština|es-CL|
 |Španělsko|Španělština|es-ES|
 |Mexiko|Španělština|es-MX|
-|Spojené státy|Španělština|ES US|
-|Španělština|Obecné|ES XL|
+|Spojené státy|Španělština|es-US|
+|Španělština|Obecné|es-XL|
 |Finsko|Finština|fi-FI|  
-|Francie|Francouzština|FR-být|
+|Francie|Francouzština|fr-BE|
 |Kanada|Francouzština|fr-CA|
 |Belgie|Holandština|nl-BE|
 |Švýcarsko|Francouzština|FR-CH|
@@ -86,11 +86,11 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 |Německo|Němčina|de-DE|
 |Austrálie|Angličtina|cs AU|
 |Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
-|Angličtina|Obecné|cs TT|
-|Chile|Španělština|ES-CL|
+|Spojené státy|Angličtina|en-US|
+|Angličtina|Obecné|en-WW|
+|Chile|Španělština|es-CL|
 |Mexiko|Španělština|es-MX|
-|Spojené státy|Španělština|ES US|
+|Spojené státy|Španělština|es-US|
 |Finsko|Finština|fi-FI|  
 |Kanada|Francouzština|fr-CA|
 |Francie|Francouzština|fr-FR|  
@@ -108,7 +108,7 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 |Německo|Němčina|de-DE|
 |Austrálie|Angličtina|cs AU|
 |Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
+|Spojené státy|Angličtina|en-US|
 |Kanada|Angličtina|cs CA|
 |Indie|Angličtina|en-IN|
 |Francie|Francouzština|fr-FR|
@@ -127,8 +127,8 @@ Následují kódů země/oblasti, které můžete zadat v `cc` parametr dotazu. 
 |Argentina|AR|  
 |Austrálie|AU|  
 |Rakousko|AT|  
-|Belgie|BÝT|  
-|Brazílie|BRAZÍLIE|  
+|Belgie|BE|  
+|Brazílie|BR|  
 |Kanada|CA|  
 |Chile|CL|  
 |Dánsko|DK|  
@@ -136,27 +136,27 @@ Následují kódů země/oblasti, které můžete zadat v `cc` parametr dotazu. 
 |Francie|FR|  
 |Německo|DE|  
 |Hongkong – zvláštní správní oblast|HK|  
-|Indie|INDIE|  
+|Indie|IN|  
 |Indonésie|ID|  
 |Itálie|IT|  
 |Japonsko|JP|  
-|Jižní Korea|KOREA|  
-|Malajsie|MOJE|  
+|Jižní Korea|KR|  
+|Malajsie|MY|  
 |Mexiko|MX|  
 |Nizozemsko|NL|  
 |Nový Zéland|NZ|  
-|Norsko|NE|  
+|Norsko|NO|  
 |Čínská lidová republika|CN|  
 |Polsko|PL|  
 |Portugalsko|PT|  
 |Filipínská republika|PH|  
 |Rusko|RU|  
 |Saúdská Arábie|SA|  
-|Jihoafrická republika|ZA|  
+|Jižní Afrika|ZA|  
 |Španělsko|ES|  
 |Švédsko|SE|  
 |Švýcarsko|CH|  
-|Tchaj-wan|TRADIČNÍ ČÍNŠTINA|  
+|Tchaj-wan|TW|  
 |Turecko|TR|  
 |Spojené království|GB|  
 |Spojené státy|USA|

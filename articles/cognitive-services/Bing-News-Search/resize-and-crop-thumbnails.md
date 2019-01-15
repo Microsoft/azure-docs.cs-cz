@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 04565b9eabdff214e27b5f29bb1355f6db236d20
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5b9088b0d998aab373767280627900f1e397cf26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251194"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259100"
 ---
 # <a name="resizing-and-cropping-thumbnail-images"></a>Změna velikosti a oříznutí obrázků miniatur
 

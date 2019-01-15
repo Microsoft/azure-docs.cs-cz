@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: ceab5152d6dc6db573a7fea8c673157068009ebe
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: dbca662f38f13833a4b9e642a4d8f690017d999a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54228805"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262128"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycené výjimky a časy spuštění metody do webové aplikace v Javě
 
@@ -34,7 +34,7 @@ Pokud máte [instrumentována webové aplikace Java pomocí Application Insights
 Pokud chcete používat agenta Java, nainstalujte na server. Svoje webové aplikace musí být neinstrumentují službou [Application Insights Java SDK][java]. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Instalace agenta služby Application Insights pro Java
-1. Na počítači spuštěný serveru Java [stáhnout agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Zkontrolujte, zda Pokud chcete stáhnout stejné verson agenta Java jako balíčky core a web Application Insights Java SDK.
+1. Na počítači spuštěný serveru Java [stáhnout agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Ujistěte se prosím ke stažení stejnou verzi agenta Java jako balíčky core a web Application Insights Java SDK.
 2. Upravte spouštěcí skript serveru aplikace a přidejte následující JVM:
    
     `javaagent:`*Úplná cesta k souboru JAR agenta*

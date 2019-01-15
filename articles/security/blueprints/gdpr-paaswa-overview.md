@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 805c983c0c2db4256dade641f32363ca6514023c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1a99ffb751414d255f2aacfe514e5a8f474255bd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600807"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267211"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-gdpr"></a>Zabezpečení Azure a dodržování předpisů – PaaS webovou aplikaci pro GDPR
 
@@ -35,7 +35,7 @@ Tato referenční architektura, Průvodce přidružené implementací a model hr
 ## <a name="architecture-diagram-and-components"></a>Diagram architektury a komponenty
 Toto řešení poskytuje referenční architektura pro webové aplikace PaaS s back-endu Azure SQL Database. Webové aplikace je hostována v izolované Azure App Service Environment, což je privátním a vyhrazeném prostředí v datovém centru Azure. Prostředí rozloží provoz pro webovou aplikaci ve virtuálních počítačích spravovaných na Azure. Tato architektura také zahrnuje skupiny zabezpečení sítě, Application Gateway, Azure DNS a nástroje pro vyrovnávání zatížení. Kromě toho Azure Monitor poskytuje analýzy v reálném čase o stavu systému. **Azure doporučuje nakonfigurovat připojení VPN nebo ExpressRoute pro správu a data importovat do podsítě referenční architektury.**
 
-![PaaS Web Express pro diagram referenční architektury GDPR](images/gdpr-paaswa-architecture.png?raw=true "PaaS Web Express pro GDPR diagram referenční architektury")
+![Webová aplikace PaaS pro diagram referenční architektury GDPR](images/gdpr-paaswa-architecture.png?raw=true "PaaS webovou aplikaci pro GDPR diagram referenční architektury")
 
 Toto řešení používá následující služby Azure. Podrobnosti o architektura nasazení jsou umístěné v [architektura nasazení](#deployment-architecture) oddílu.
 
@@ -62,7 +62,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 ## <a name="deployment-architecture"></a>Architektura nasazení
 Následující část podrobně popisuje nasazení a implementaci prvky.
 
-**Azure Resource Manageru**: [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) umožňuje zákazníkům pracovat s prostředky v řešení jako se skupinou. Zákazníci mohou nasadit, aktualizovat nebo odstranit všechny prostředky pro řešení v rámci jediné koordinované operace. Zákazníci pomocí šablony pro nasazení a tato šablona může fungovat v různých prostředích, jako je například testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje zabezpečení, auditování a označování příznaky funkcí, které pomáhá zákazníkům spravovat svoje prostředky po nasazení.
+**Azure Resource Manager**: [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) umožňuje zákazníkům pracovat s prostředky v řešení jako se skupinou. Zákazníci mohou nasadit, aktualizovat nebo odstranit všechny prostředky pro řešení v rámci jediné koordinované operace. Zákazníci pomocí šablony pro nasazení a tato šablona může fungovat v různých prostředích, jako je například testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje zabezpečení, auditování a označování příznaky funkcí, které pomáhá zákazníkům spravovat svoje prostředky po nasazení.
 
 **App Service Environment v2**: [Azure App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro) je funkce služby App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací služby App Service ve velkém měřítku.
 
@@ -181,7 +181,7 @@ Kromě toho jsou součástí této architektury řešení následující monitor
 
 Diagram toku dat pro tuto referenční architekturu je k dispozici pro [Stáhnout](https://aka.ms/gdprPaaSdfd) nebo najdete níže. Tento model může pomoci zákazníkům pochopit body potenciální riziko v infrastruktuře systému při provádění změn.
 
-![PaaS Web Express pro model hrozeb GDPR](images/gdpr-paaswa-threat-model.png?raw=true "PaaS Web Express pro model hrozeb GDPR")
+![Webová aplikace PaaS pro model hrozeb GDPR](images/gdpr-paaswa-threat-model.png?raw=true "PaaS webovou aplikaci pro model hrozeb GDPR")
 
 ## <a name="compliance-documentation"></a>Dokumentace ke službě dodržování předpisů
 [Azure zabezpečení a dodržování předpisů – matice odpovědnosti zákazníka GDPR](https://aka.ms/gdprCRM) uvádí kontroleru a procesor odpovědnost za všechny články podle nařízení GDPR. Mějte prosím na paměti, že pro služby Azure, je zákazník obvykle kontroleru a vystupuje Microsoft jako zpracovatel.

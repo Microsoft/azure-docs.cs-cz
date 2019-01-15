@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
+ms.date: 12/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: b4023d45c3628df5006d076e01f32bb8f3aa80a6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e4538127b39e01f2e30f8b219c2ccee56cb4d2bc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846245"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262893"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptivní řízení aplikací v Azure Security Center
 Pomocí tohoto názorného postupu zjistíte, jak nakonfigurovat řízení aplikací v Azure Security Center.
@@ -105,7 +105,7 @@ Po výběru vytvořit Azure Security Center automaticky vytvoří příslušná 
 
   - **Název**: Název předplatného a skupiny
   - **VIRTUÁLNÍ POČÍTAČE:** Počet virtuálních počítačů ve skupině.
-  - **Režim**: režimu Audit se budou protokolovat pokusy o spuštění není na seznamu povolených aplikací; Vynutit bude neumožní spouštění aplikací seznamu povolených
+  - **Režim**: Režim auditování se budou protokolovat pokusy o spuštění není na seznamu povolených aplikací. Vynutit bude neumožní spouštění aplikací seznamu povolených
   - **Výstrahy**: všechna aktuální porušení pravidel
 
 2. Klikněte na skupinu a provést změny **upravit zásadu řízení aplikací** stránky.
@@ -122,7 +122,7 @@ Po výběru vytvořit Azure Security Center automaticky vytvoří příslušná 
    > - Jak už jsme zmínili, ve výchozím nastavení se nová zásada řízení aplikací vždy nakonfiguruje v režimu *Audit*. 
    >
 
-4. V části **rozšíření zásady**, můžete přidat libovolnou aplikaci cestu, kterou chcete povolit. Po přidání těchto cest, Security Center aktualizuje zásady whielisting aplikací na virtuálních počítačích v rámci vybrané skupiny virtuálních počítačů a vytvoří příslušná pravidla pro tyto aplikace pravidla, která jsou už zavedené.
+4. V části **rozšíření zásady**, můžete přidat libovolnou aplikaci cestu, kterou chcete povolit. Po přidání těchto cest, Security Center aktualizace zásad na seznam povolených aplikací na virtuálních počítačích v rámci vybrané skupiny virtuálních počítačů a vytvoří příslušná pravidla pro tyto aplikace pravidla, která už jsou na místě.
 
 5. Zkontrolujte aktuální porušení pravidel uvedených v **nedávné** oddílu. Klikněte na každý řádek přesměrování **výstrahy** stránku v rámci Azure Security Center a zobrazit všechny výstrahy, které byly zjištěny službou Azure Security Center na přidružených virtuálních počítačích.
   - **Výstrahy**: Zaprotokolovaná porušení pravidel.
@@ -130,9 +130,9 @@ Po výběru vytvořit Azure Security Center automaticky vytvoří příslušná 
 
 6. V části **pravidla přidávání vydavatele na seznam povolených**, **pravidla přidávání cest na seznam povolených**, a **pravidla přidávání na seznam povolených algoritmu Hash** uvidíte pravidla jsou v tuto chvíli které seznamu povolených aplikací nakonfigurovaný na virtuálních počítačích v rámci skupiny, podle typů kolekcí pravidel. Pro každé pravidlo můžete zobrazit:
 
-  - **Pravidlo**: konkrétní parametry, podle kterých je aplikace vyšetřených funkcí Applockeru k určení, pokud je povoleno spuštění aplikace.
-  - **Typ souboru**: typy souborů, které se vztahuje konkrétní pravidlo. Tou může být kterákoli z následujících akcí: EXE, skript, MSI nebo jakékoli permutaci tyto typy souborů.
-  - **Uživatelé**: název nebo počet uživatelů, kteří mají povoleno spouštění aplikace, která se vztahuje pravidlo na seznam povolených aplikací.
+  - **Pravidlo**: Konkrétní parametry, podle kterých je aplikace vyšetřených funkcí Applockeru k určení, pokud je povoleno spuštění aplikace.
+  - **Typ souboru**: Typy souborů, které se vztahuje konkrétní pravidlo. To může být kterýkoli z následujících: Typy souborů EXE, skript, MSI nebo jakékoli permutaci z nich.
+  - **Uživatelé**: Název nebo počet uživatelů, kteří mají povoleno spouštění aplikace, která se vztahuje pravidlo na seznam povolených aplikací.
 
    ![Pravidla přidávání na seznam povolených](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 

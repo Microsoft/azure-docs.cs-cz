@@ -14,15 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5f6334f80b9c48832facba97b816d254baeb94bc
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b5cb1fe623062816955278da7b0a9e63cbc19254
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341299"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258471"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Vysvětlení doporučení kontejneru služby Azure Security Center
 
+Při migraci vašich aplikací monolitu ke spuštění klíčových, kontejnerizovaných aplikací nativních pro cloud v produkčním prostředí, můžete využít funkce kontejnerů, včetně snadné a rychlé nasazení a aktualizace. V průběhu počet kontejnerů ke zvýšení zabezpečení řešení musí být ve místo, kde můžete poskytnout přehled o stavu zabezpečení vašich kontejnerů a pomáhá chránit před hrozbami.
+
+Azure Security Center poskytuje následující možnosti a pomáhá vám zabezpečit vaše kontejnery:
+
+- **Přehled kontejnerů, které jsou hostované na počítačích IaaS s Linuxem**<br>Na kartě kontejnery ve službě Azure Security Center, zobrazují všechny virtuální počítače nasazené pomocí Docker. Při zkoumání problémů se zabezpečením na virtuálním počítači, Security Center poskytuje další informace související s kontejnery v počítači, jako je například verze Dockeru a počtu imagí, spuštěných na hostiteli.
+
+    ![Karta kontejneru](./media/security-center-container-recommendations/docker-recommendation.png)
+
+
+- **Doporučení zabezpečení podle srovnávacích testů CIS pro Docker**<br>Security Center prohledává vaše konfigurace Dockeru a budete mít přehled o chybné konfigurace tím, že poskytuje seznam všech pravidel, která selhala, které byly vyhodnoceny. Security Center obsahuje pokyny, které vám pomůžou tyto problémy rychle vyřešit a ušetřit čas. Security Center průběžně vyhodnocuje konfigurace Dockeru a poskytne vám jejich nejnovější stav.
+
+    ![Karta kontejneru](./media/security-center-container-recommendations/container-cis-benchmark.png)
+
+- **Zjišťování hrozeb v reálném čase kontejneru**<br> Security Center poskytuje detekci hrozeb v reálném čase pro vaše kontejnery na počítačích s Linuxem pomocí AuditD komponenty. Výstrahy Identifikujte několik podezřelých aktivit Dockeru, jako je například vytvoření privilegovaných kontejneru na hostiteli, údaj o běžící uvnitř kontejneru Dockeru nebo s využitím kryptografických modulů pro dolování server Secure Shell (SSH). Tyto informace můžete rychle opravit problémy se zabezpečením a zlepšit zabezpečení kontejnerů.
+
+    ![Karta kontejneru](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>Doporučení
 V následujících tabulkách použijte jako vám pomůžou pochopit dostupné kontejnery, které jsou hostované na počítače s Linuxem IaaS a vyhodnocení zabezpečení jejich konfigurace Dockeru.

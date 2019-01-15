@@ -8,59 +8,68 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
-ms.date: 02/12/2018
+ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 0fa78474d6400f890626859c32915c8657f92d4e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8f45e0921748092af4702e03d557e52153a78ec0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249341"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258658"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Rychlý start: Provádění sadou SDK pro vyhledávání zpráv Bingu pro vyhledávání zpráv pro Node.js
 
-Sada SDK Bingu pro vyhledávání zpráv obsahuje funkce rozhraní REST API pro dotazy na zprávy a parsování výsledků. 
+V tomto rychlém startu pomocí zahájíte hledání zpráv pomocí sady SDK vyhledávání zpráv Bingu pro Node.js. Při vyhledávání zpráv Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
 
-[Zdrojový kód pro ukázky sady SDK Bingu pro vyhledávání zpráv v Node](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) je dostupný na GitHubu.
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="application-dependencies"></a>Závislosti aplikace
-Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+* [Node.js](https://nodejs.org/en/)
 
 Nastavení konzolovou aplikaci pomocí sady SDK vyhledávání zpráv Bingu:
-* Spustit `npm install ms-rest-azure` ve vašem vývojovém prostředí.
-* Spustit `npm install azure-cognitiveservices-newssearch` ve vašem vývojovém prostředí.
+1. Spustit `npm install ms-rest-azure` ve vašem vývojovém prostředí.
+2. Spustit `npm install azure-cognitiveservices-newssearch` ve vašem vývojovém prostředí.
 
-## <a name="news-search-client"></a>Klient pro vyhledávání zpráv
-Načtěte si pod *Search* (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Vytvoření instance `CognitiveServicesCredentials`:
-```
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
-```
-Potom vytvořte instanci klienta:
-```
-const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
-let client = new NewsSearchAPIClient(credentials);
-```
-Pomocí klienta vyhledejte text dotazu, v tomto případě „Winter Olympics“.
-```
-client.newsOperations.search('Winter Olympics').then((result) => {
-    console.log(result.value);
-}).catch((err) => {
-    throw err;
-});
 
-```
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
+
+## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
+
+1. Vytvořte instanci `CognitiveServicesCredentials`. Vytváření proměnných pro váš klíč susbcription a hledaný termín.
+
+    ```javascript
+    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
+    let search_term = 'Winter Olympics'
+    ```
+
+2. Vytvořit instanci klienta:
+    
+    ```javascript
+    const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
+    let client = new NewsSearchAPIClient(credentials);
+    ```
+
+## <a name="send-a-search-query"></a>Odeslat vyhledávací dotaz
+
+3. Pomocí klienta na hledání termín dotazu, v tomto případě "Olympijské hry":
+    
+    ```javascript
+    client.newsOperations.search(search_term).then((result) => {
+        console.log(result.value);
+    }).catch((err) => {
+        throw err;
+    });
+    ```
+
 Kód vytiskne položky `result.value` do konzoly bez analýzy textu. Případné výsledky podle kategorií budou zahrnovat tyto položky:
-- _typ: "NewsArticle.
-- _typ: "Webová stránka.
-- _typ: "VideoObject.
-- _typ: "ImageObject.
 
-<!-- Remove until we can replace with santized version
-![News results](media/node-sdk-quickstart-results.png)
--->
+- `_type: 'NewsArticle'`
+- `_type: 'WebPage'`
+- `_type: 'VideoObject'`
+- `_type: 'ImageObject'`
 
 ## <a name="next-steps"></a>Další postup
 
-[Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [!div class="nextstepaction"]
+[Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

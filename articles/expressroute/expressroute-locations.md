@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2018
 ms.author: pareshmu
-ms.openlocfilehash: f1f4e835a4ff51a8b68627c5abe8b9505aa8f6a0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 05acd62e87a81fc195a0840681668fe56f4ae1e7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231695"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262298"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -83,7 +83,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporováno |Podporováno |Amsterdam, Chicago, Dallas, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Podporováno |Podporováno |Montreal, Toronto, Quebec City |
 | **[British Telecom](https://globalservices.bt.com/en/solutions/products/bt-compute-for-microsoft-azure)** |Podporováno |Podporováno |Amsterdam, Hongkong, Londýn, Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
-| **[C3ntro](https://c3ntro.com/data/express-route/)** |Již brzy |Již brzy |Miami |
+| **C3ntro** |Již brzy |Již brzy |Miami |
 | **CDC** | Podporováno | Podporováno | Canberra, Canberra2 |
 | **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Podporováno |Podporováno |Las Vegas, New York, San Antonio, Silicon Valley, Tokio, Toronto |
 | **China Telecom Global** |Podporováno |Nepodporuje se |Hongkong |
@@ -130,13 +130,13 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Podporováno |Podporováno |Amsterdam, Sao Paulo |
 | **[Telehouse – KDDI](http://www.telehouse.net/solutions/cloud-services/cloud-link)** |Podporováno |Podporováno |Londýn |
 | **Telenor** |Podporováno |Podporováno |Amsterdam, Londýn |
-| **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | Podporováno | Podporováno |Amsterdam, Chicago, Dallas, Londýn, Washington DC |
+| **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | Podporováno | Podporováno |Amsterdam, Chicago, Dallas, London, Washington DC |
 | **Telmex Uninet**| Již brzy | Již brzy | Dallas+ |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Podporováno |Podporováno |Melbourne, Singapur, Sydney |
 | **[Telus](http://www.telus.com)** |Podporováno |Podporováno |Montreal, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Podporováno |Podporováno |Kapské město, Johannesburg |
 | **TIME dotCom** | Podporováno | Podporováno | Kuala Lumpur |
-| **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |Podporováno |Podporováno |Sao Paulo |
+| **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Podporováno |Podporováno |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Podporováno |Podporováno |Amsterdam, Chicago, Dallas, Hongkong, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Podporováno |Nepodporuje se |Londýn, Singapur |
 | **Vodafone Idea** | Podporováno | Podporováno | Bombaj2 |
@@ -240,7 +240,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **[ThinkTel](http://www.thinktel.ca/services/agile-ix-data/expressroute/)** | Equinix | Toronto | 
 | **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | Dallas, Los Angeles |  
 | **[United Information Highway (UIH)](https://www.uih.co.th/en/internet-solution/cloud-direct/uih-cloud-direct-for-microsoft-azure-expressroute)**| Equinix | Singapur |
-| **[Venha Pra Nuvem](http://venhapranuvem.com.br/infraestrutura/oferta-especial-digital-edge-expressroute/)** | Equinix | Sao Paulo |
+| **[Venha Pra Nuvem](http://venhapranuvem.com.br/)** | Equinix | Sao Paulo |
 | **[Webair](https://www.webair.com/microsoft-express-route-partnership/)**| Megaport | New York |
 | **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix | Chicago, Silicon Valley, Washington DC |
 | **Zain** |Equinix |Londýn|
@@ -296,7 +296,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | Severní Amerika |
 | **[Presidio](http://info.presidio.com/microsoft-azure-expressroute)** | Severní Amerika |
 | **[sol-tec](https://www.sol-tec.com/services)** | Evropa |
-| **[Venha Pra Nuvem](http://venhapranuvem.com.br/infraestrutura/oferta-especial-digital-edge-expressroute/)** | Jižní Amerika |
+| **[Venha Pra Nuvem](http://venhapranuvem.com.br/)** | Jižní Amerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Austrálie |
 
 ## <a name="next-steps"></a>Další postup

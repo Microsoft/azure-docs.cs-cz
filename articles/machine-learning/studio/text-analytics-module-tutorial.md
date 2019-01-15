@@ -1,26 +1,7 @@
 ---
-title: Vytvoření modelů analýzy - Azure Machine Learning Studio textu | Dokumentace Microsoftu
-description: Postup vytvoření modelů analýzy textu v Azure Machine Learning Studio pomocí moduly pro předzpracování textu, N-gramy nebo hashování
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: ''
-ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2018
-ms.openlocfilehash: 11f4ad4ff1e8e2eab688596d393e63009f7e5624
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255478"
+Název: Vytvoření titleSuffix modely analýzy textu: Azure Machine Learning Studio Popis: Postup vytvoření modelů analýzy textu v Azure Machine Learning Studio pomocí moduly pro předzpracování, N-gramy text nebo funkce hash služby: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2018
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Vytvoření modelů analýzy textu v nástroji Azure Machine Learning Studio
 Azure Machine Learning můžete sestavovat a zprovozňovat modely analýzy textu. Tyto modely vám může pomoct vyřešit, například problémy analýzy dokumentu klasifikace nebo mínění.

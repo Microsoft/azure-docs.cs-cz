@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 1b6326f9b3d9565739d97b32b119a2f362f24e65
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 7d456ed76ea425f8870b2045283df5cc307d05fd
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954619"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302472"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Vytvoření datové továrny a kanálu pomocí Pythonu
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 2.  Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/), vytvořte kontejner **adfv2tutorial** a v něm složku **input**. Potom do složky **input** odešlete soubor **input.txt**.
 
 ## <a name="install-the-python-package"></a>Instalace balíčku Pythonu
-1. Otevřete terminál nebo příkazový řádek s oprávněními správce. 
+1. Otevřete terminál nebo příkazový řádek s oprávněními správce. 
 2. Nejdřív nainstalujte balíček Pythonu pro prostředky správy Azure:
 
     ```
@@ -97,18 +97,18 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     def print_activity_run_details(activity_run):
         """Print activity run details."""
         print("\n\tActivity run details\n")
-        print("\tActivity run status: {}".format(activity_run.status))    
+        print("\tActivity run status: {}".format(activity_run.status))
         if activity_run.status == 'Succeeded':
-            print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))       
-            print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))           
-            print("\tCopy duration: {}".format(activity_run.output['copyDuration']))           
+            print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))
+            print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))
+            print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
 
     ```
-3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy DataFactoryManagementClient. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu. Proměnnou **subscription_id** nastavte na ID vašeho předplatného Azure. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy DataFactoryManagementClient. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu. Proměnnou **subscription_id** nastavte na ID vašeho předplatného Azure. Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
-    ```python   
+    ```python
     def main():
 
         # Azure subscription ID
@@ -126,7 +126,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 
         rg_params = {'location':'eastus'}
-        df_params = {'location':'eastus'}    
+        df_params = {'location':'eastus'}
     ```
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
@@ -203,7 +203,7 @@ Do metody **Main** přidejte následující kód, který vytvoří **kanál s ak
 
 ```python
     # Create a copy activity
-    act_name =  'copyBlobtoBlob'
+    act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
     dsin_ref = DatasetReference(ds_name)
@@ -211,7 +211,7 @@ Do metody **Main** přidejte následující kód, který vytvoří **kanál s ak
     copy_activity = CopyActivity(act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     #Create a pipeline with the copy activity
-    p_name =  'copyPipeline'
+    p_name = 'copyPipeline'
     params_for_pipeline = {}
     p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)
     p = adf_client.pipelines.create_or_update(rg_name, df_name, p_name, p_obj)
@@ -271,7 +271,7 @@ def print_item(group):
         print("\tTags: {}".format(group.tags))
     if hasattr(group, 'properties'):
         print_properties(group.properties)
-    print("\n")        
+    print("\n")
 
 def print_properties(props):
     """Print a ResourceGroup properties instance."""
@@ -283,11 +283,11 @@ def print_properties(props):
 def print_activity_run_details(activity_run):
     """Print activity run details."""
     print("\n\tActivity run details\n")
-    print("\tActivity run status: {}".format(activity_run.status))    
+    print("\tActivity run status: {}".format(activity_run.status))
     if activity_run.status == 'Succeeded':
-        print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))       
-        print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))           
-        print("\tCopy duration: {}".format(activity_run.output['copyDuration']))           
+        print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))
+        print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))
+        print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
     else:
         print("\tErrors: {}".format(activity_run.error['message']))
 
@@ -300,7 +300,7 @@ def main():
     rg_name = '<Azure resource group name>'
 
     # The data factory name. It must be globally unique.
-    df_name = '<Your data factory name>'        
+    df_name = '<Your data factory name>'
 
     # Specify your Active Directory client ID, client secret, and tenant ID
     credentials = ServicePrincipalCredentials(client_id='<Active Directory client ID>', secret='<client secret>', tenant='<tenant ID>')
@@ -349,7 +349,7 @@ def main():
     print_item(dsOut)
 
     # Create a copy activity
-    act_name =  'copyBlobtoBlob'
+    act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
     dsin_ref = DatasetReference(ds_name)
@@ -357,7 +357,7 @@ def main():
     copy_activity = CopyActivity(act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     # Create a pipeline with the copy activity
-    p_name =  'copyPipeline'
+    p_name = 'copyPipeline'
     params_for_pipeline = {}
     p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)
     p = adf_client.pipelines.create_or_update(rg_name, df_name, p_name, p_obj)
@@ -373,7 +373,7 @@ def main():
     time.sleep(30)
     pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
     print("\n\tPipeline run status: {}".format(pipeline_run.status))
-    activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
+    activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1), datetime.now() + timedelta(1)))
     print_activity_run_details(activity_runs_paged[0])
 
 # Start the main method

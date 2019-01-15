@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 85400269be13295161aaff5936a6ae8c7d503b34
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: da6c9fa416d19916243860178d15619306aaf3c0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245867"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305311"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack
 
@@ -41,7 +41,7 @@ Se vzorkem geograficky distribuované můžete aplikace zahrnuje oblasti. Použ�
 
 #### <a name="scalability-considerations"></a>Aspekty zabezpečení
 
-Řešení, které vytvoříte v tomto kurzu se zohlednit škálovatelnost. Nicméně pokud použijete v kombinaci s dalšími řešeními a technologie Azure a místní zvládne požadavky na škálovatelnost. Informace týkající se vytvoření hyrbid řešení s automatickým Škálováním pomocí traffic Manageru najdete v tématu [vytvářet řešení škálování cloudu s Azure](azure-stack-solution-cloud-burst.md).
+Řešení, které vytvoříte v tomto kurzu se zohlednit škálovatelnost. Nicméně pokud použijete v kombinaci s dalšími řešeními a technologie Azure a místní zvládne požadavky na škálovatelnost. Informace týkající se vytvoření hybridní řešení s automatickým Škálováním pomocí traffic Manageru najdete v tématu [vytvářet řešení škálování cloudu s Azure](azure-stack-solution-cloud-burst.md).
 
 #### <a name="availability-considerations"></a>Aspekty dostupnosti
 
@@ -93,7 +93,7 @@ Předplatné Azure a instalace služby Azure Stack se vyžadují.
 
 ### <a name="obtain-a-custom-domain-and-configure-dns"></a>Získat vlastní doménu a konfigurace DNS
 
-Aktualizujte DNS zóny souboru foCreate webové aplikace a publishr domény. Azure AD pak můžete ověřit vlastnictví názvu vlastní domény. Použití [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) Azure nebo Office 365/externí záznamů DNS v rámci Azure, nebo přidejte položku DNS na [různých registrátora DNS](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
+Aktualizace souboru zóny DNS pro doménu. Azure AD pak můžete ověřit vlastnictví názvu vlastní domény. Použití [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) Azure nebo Office 365/externí záznamů DNS v rámci Azure, nebo přidejte položku DNS na [různých registrátora DNS](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
 
 1. Zaregistrujte vlastní doménu veřejného registru.
 
@@ -273,7 +273,7 @@ Aktualizace souboru zóny DNS pro doménu. Azure AD ověří vlastnictví vlastn
 
 -   Aktualizace souboru zóny DNS pro doménu tak, že přidáte položku DNS poskytuje Azure AD.
 
-Například přidejte www.northwindcloud.com fornorthwindcloud.comand záznamy DNS, nakonfigurujte nastavení DNS pro kořenovou doménu thenorthwindcloud.com.
+Například mohli přidat záznamy DNS pro northwindcloud.com a www.northwindcloud.com, nakonfigurujte nastavení DNS pro kořenovou doménu northwindcloud.com.
 
 > [!Note]  
 >  Název domény je možné zakoupit pomocí [webu Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).  
@@ -302,7 +302,7 @@ Následující snímek obrazovky obsahuje příklad stránky záznamů DNS:
 
 2.  Přidejte záznam CNAME pro mapování subdomény na výchozí název hostitele aplikace.
 
-  Například www.northwindcloud.comdomain, přidejte záznam CNAME, který se mapuje namewwwto < aplikace\_název >. azurewebsites.net.
+  Pro příklad domény www.northwindcloud.com přidejte záznam CNAME, který mapuje název na < aplikace\_název >. azurewebsites.net.
 
 Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následujícím příkladu:
 
@@ -549,7 +549,7 @@ Na stránce webové aplikace, vyberte **SL nastavení**. Pak v části **Pouze H
 
 Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na aplikaci. Příklad:
 
--   http://<APP_NAME>.azurewebsites.NET
+-   http://<app_name>.azurewebsites.net
 -   http://northwindcloud.com
 -   <http://www.northwindcloud.com>
 

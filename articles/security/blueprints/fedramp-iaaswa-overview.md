@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: f5ba6a001f8933283e0867367ef7bd8d3918c3fd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 59a3a92640c7f0bc434881921e520d1b9cb352c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405374"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265486"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů: IaaS webové aplikace pro FedRAMP
 
@@ -54,16 +54,16 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 - Skupiny dostupnosti
     - (1) řadiče domény active Directory
     - (1) uzly clusteru SQL
-    - (1) web/IIS
+    - (1) Web/IIS
 - Azure Virtual Network
     - (((1) /16 virtuálních sítí
     - (5) /24 podsítě
-    - Nastavení DNS jsou nastaveny na obou řadičích domény
+    - DNS settings are set to both domain controllers
 - Nástroj pro vyrovnávání zatížení Azure
 - Azure Application Gateway
     - (1) Aplikační brána WAF povoleno
         - Režim brány firewall: ochrany před únikem informací
-        - Sada pravidel, která: OWASP 3.0
+        - Sada pravidel: OWASP 3.0
         - Naslouchacího procesu: port 443
 - Azure Storage
     - (7) účty geograficky redundantní úložiště
@@ -79,7 +79,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 
 Následující část podrobně popisuje prvky k vývoji a implementaci.
 
-**Bastion host**: hostitel bastionu je jediný bod položku, která poskytuje zabezpečené připojení pro Správci nasazení přístup k prostředkům. Bastionu hostitele NSG umožňuje připojení pouze na portu TCP 3389 pro protokol RDP. Zákazníci můžou nakonfigurovat další bastionu hostitele pro splnění požadavků pro posilování systému organizace.
+**Bastion host**: Bastion host je jediný bod položku, která poskytuje zabezpečené připojení pro Správci nasazení přístup k prostředkům. Bastionu hostitele NSG umožňuje připojení pouze na portu TCP 3389 pro protokol RDP. Zákazníci můžou nakonfigurovat další bastionu hostitele pro splnění požadavků pro posilování systému organizace.
 
 ### <a name="virtual-network"></a>Virtuální síť
 Architektura definuje privátní virtuální síť s adresním prostorem 10.200.0.0/16.
@@ -95,13 +95,13 @@ Každé z podsítí má skupina zabezpečení vyhrazené sítě (NSG):
 - 1 skupina NSG pro servery SQL Server (SQLNSG)
 - 1 skupina NSG pro webová vrstva (WEBNSG)
 
-**Podsítě**: Každá podsíť je přidružený k jeho odpovídající skupiny zabezpečení sítě.
+**Podsítě**: Každá podsíť je přidružený jeho odpovídající skupiny zabezpečení sítě.
 
 ### <a name="data-at-rest"></a>Neaktivní uložená data
 
 Architektura chrání data v klidovém stavu pomocí několika měr šifrování.
 
-**Azure Storage**: abyste splnili požadavky na šifrování dat v klidovém stavu, použijte všechny účty úložiště [šifrování služby Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+**Azure Storage**: Abyste splnili požadavky na šifrování dat v klidovém stavu, použijte všechny účty úložiště [šifrování služby Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
 
 **SQL Server**: SQL Server je nakonfigurován pro použití [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption), který provádí v reálném čase šifrování a dešifrování dat a souborů protokolu k ochraně informací v klidovém stavu. Transparentní šifrování dat poskytuje jistotu, že se ukládají data nebyla v souladu s před neoprávněným přístupem.
 
@@ -113,7 +113,7 @@ Zákazníci mohou také nakonfigurovat následující bezpečnostní opatření 
 -   [Funkce Always Encrypted sloupce](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) Ujistěte se, že citlivá data nezobrazí jako prostý text v databázi systému. Po povolení šifrování dat, můžou jenom klientských aplikací nebo serverů aplikace s přístupem ke klíčům k datům ve formátu prostého textu.
 -   [Maskování dynamických dat SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) lze provést po referenční architektura nasazuje. Zákazníci, bude nutné upravit nastavení dodržovat svoje schéma databáze maskování dynamických dat.
 
-**Azure Disk Encryption**: Azure Disk Encryption se používá šifrování disků virtuálních počítačů IaaS s Windows. [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) využívá funkci BitLocker systému Windows k poskytování šifrování disků s operačním systémem a daty. Toto řešení je integrovaná se službou Azure Key Vault pomáhá řídit a spravovat klíče šifrování disku.
+**Azure Disk Encryption**: Azure Disk Encryption umožňuje šifrovanými disky virtuálních počítačů IaaS s Windows. [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) využívá funkci BitLocker systému Windows k poskytování šifrování disků s operačním systémem a daty. Toto řešení je integrovaná se službou Azure Key Vault pomáhá řídit a spravovat klíče šifrování disku.
 
 ### <a name="identity-management"></a>Správa identit
 
@@ -128,9 +128,9 @@ Tyto technologie nabízejí identity možnosti správy v prostředí Azure:
 
 **Správa oprav**: Windows virtuálních počítačů nasazených v tomto zabezpečení Azure a dodržování předpisů podrobného plánu Automation jsou standardně nakonfigurovaní tak příjem automatických aktualizací ze služby Windows Update. Toto řešení také nasadí řešení Azure Automation, přes který můžete vytvořit nasazení aktualizací pro nasazení opravy na servery Windows, v případě potřeby.
 
-**Ochrana proti malwaru**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) pro Virtual Machines poskytuje možnost ochrany v reálném čase, že pomáhá zjistit a odebrat viry, spyware a jiný škodlivý software, se dají konfigurovat výstrahy Pokud známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit na chráněných virtuálních počítačů.
+**Ochrana proti malwaru**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) pro Virtual Machines poskytuje funkce ochrany v reálném čase, který pomáhá zjistit a odebrat viry, spyware a jiný škodlivý software, se dají konfigurovat výstrahy, když známé škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit na chráněných virtuálních počítačů.
 
-**Služba Application Gateway**: architektura omezuje riziko ohrožení zabezpečení pomocí služby Application Gateway s firewallem webových aplikací (WAF) a sady pravidel OWASP povolena. Další možnosti patří:
+**Application Gateway**: Architektura snižuje riziko ohrožení zabezpečení pomocí služby Application Gateway s firewallem webových aplikací (WAF) a sady pravidel OWASP, povolené. Další možnosti patří:
 
 - [End-to-End-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - Povolit [přesměrování zpracování SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
@@ -140,30 +140,30 @@ Tyto technologie nabízejí identity možnosti správy v prostředí Azure:
 
 ### <a name="business-continuity"></a>Kontinuita podnikových procesů
 
-**Vysoká dostupnost**: alespoň jeden virtuální počítač je k dispozici během událostí plánované i neplánované údržby, splňuje 99,95 % Azure SLA. Toto řešení nasadí všechny webové vrstvy a dat úroveň virtuálních počítačů v [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Skupiny dostupnosti zajišťují distribuci virtuálních počítačů napříč několika izolovanými hardwarovými clustery pro zlepšení dostupnosti. Kromě toho toto řešení nasadí virtuální počítače systému SQL Server ve skupině dostupnosti jako [skupiny dostupnosti AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview). Poskytuje funkci dostupnosti skupin Always On pro možnosti vysoké dostupnosti a zotavení po havárii.
+**Vysoká dostupnost**: Nejméně jeden virtuální počítač je k dispozici během událostí plánované i neplánované údržby, splňuje 99,95 % Azure SLA. Toto řešení nasadí všechny webové vrstvy a dat úroveň virtuálních počítačů v [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Skupiny dostupnosti zajišťují distribuci virtuálních počítačů napříč několika izolovanými hardwarovými clustery pro zlepšení dostupnosti. Kromě toho toto řešení nasadí virtuální počítače systému SQL Server ve skupině dostupnosti jako [skupiny dostupnosti AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview). Poskytuje funkci dostupnosti skupin Always On pro možnosti vysoké dostupnosti a zotavení po havárii.
 
-**Trezor služby Recovery Services**: [trezor služby Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) jsou uloženy zálohovaných dat a chrání všechny konfigurace virtuálních počítačů Azure v této architektuře. Pomocí trezoru služby Recovery Services zákazníci obnovit soubory a složky z virtuálního počítače IaaS bez obnovení virtuálního počítače umožňuje rychlejší obnovení.
+**Trezor služby Recovery Services**: [Trezor služby Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) jsou uloženy zálohovaných dat a chrání všechny konfigurace virtuálních počítačů Azure v této architektuře. Pomocí trezoru služby Recovery Services zákazníci obnovit soubory a složky z virtuálního počítače IaaS bez obnovení virtuálního počítače umožňuje rychlejší obnovení.
 
-**Cloud s kopií clusteru**: [disk s kopií cloudu](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) je typ určující disk kvora clusteru převzetí služeb při selhání ve Windows serveru 2016, která využívá Azure jako arbitrážní bod. Disk s kopií cloudu, stejně jako všechny ostatní určující disky kvora, může hlasovat a účastnit se výpočtů kvora, ale používá standardní veřejně dostupné úložiště objektů Blob Azure. Tím se eliminují režii navíc Údržba virtuálních počítačů hostovaných ve veřejném cloudu.
+**Cloud s kopií clusteru**: [Cloud s kopií clusteru](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) je typ určující disk kvora clusteru převzetí služeb při selhání ve Windows serveru 2016, která využívá Azure jako arbitrážní bod. Disk s kopií cloudu, stejně jako všechny ostatní určující disky kvora, může hlasovat a účastnit se výpočtů kvora, ale používá standardní veřejně dostupné úložiště objektů Blob Azure. Tím se eliminují režii navíc Údržba virtuálních počítačů hostovaných ve veřejném cloudu.
 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
 Log Analytics poskytuje rozsáhlou protokolování systémových a uživatelských aktivit a také stav systému. [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) řešení shromažďuje a analyzuje data vygenerovaná prostředky v Azure a místním prostředí.
 
-- **Protokoly aktivit:**[protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operace prováděné s prostředky v rámci předplatného.   Protokoly aktivit, vám pomůže určit operace iniciátoru čas výskytu a stav.
-- **Diagnostické protokoly:**[diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly, protože ho vygeneroval každý prostředek.   Tyto protokoly patří protokoly událostí systému Windows, protokoly služby Azure storage, protokoly auditu služby Key Vault a protokolů Application Gateway přístup a brány firewall.
-- **Archivace protokolu:** všechny diagnostické protokoly zápis do účtu centralizovaný a šifrovaného úložiště Azure pro archivaci. Uchovávání je uživatelem konfigurovatelné, až do 730 dnů pro splnění požadavků na uchovávání specifické pro organizaci. Tyto protokoly se připojit ke službě Azure Log Analytics pro zpracování, ukládání a vytváření sestav na řídicím.
+- **Protokoly aktivit:**  [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operace prováděné s prostředky v rámci předplatného. Protokoly aktivit, vám pomůže určit operace iniciátoru čas výskytu a stav.
+- **Diagnostické protokoly:**  [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly, protože ho vygeneroval každý prostředek. Tyto protokoly patří protokoly událostí systému Windows, protokoly služby Azure storage, protokoly auditu služby Key Vault a protokolů Application Gateway přístup a brány firewall.
+- **Archivace protokolu:**  Všechny diagnostické protokoly zápis do účtu centralizovaný a šifrovaného úložiště Azure pro archivaci. Uchovávání je uživatelem konfigurovatelné, až do 730 dnů pro splnění požadavků na uchovávání specifické pro organizaci. Tyto protokoly se připojit ke službě Azure Log Analytics pro zpracování, ukládání a vytváření sestav na řídicím.
 
 Kromě toho jsou nainstalovány následující řešení monitorování v rámci této architektury. Všimněte si, že se jedná o odpovědnosti zákazníka ke konfiguraci těchto řešení, aby bylo v souladu s ovládacími prvky zabezpečení FedRAMP:
--   [Posouzení AD](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): The Active Directory Health řešení Check posuzuje rizika a stav prostředí serveru v pravidelných intervalech a poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazený server infrastruktury.
--   [Posouzení antimalwaru](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): The Antimalwarovým řešením hlásí stav malwaru, ohrožení a ochrana.
--   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): řešení Azure Automation ukládá, spouští a spravuje sady runbook.
--   [Zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): řídicí panel zabezpečení a Audit poskytuje podrobný pohled na stav zabezpečení prostředků tím, že poskytuje metriky na zabezpečení domény, významné problémy, detekce, analýza hrozeb a běžné dotazy na zabezpečení.
--   [Posouzení SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): řešení SQL Health Check posuzuje v pravidelných intervalech rizika a stav prostředí serveru a poskytuje zákazníkům s uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.
--   [Správa aktualizací](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): řešení Update Management umožňuje správu zákazníka aktualizace zabezpečení operačního systému, včetně proces instalace požadovaných aktualizací a stav dostupných aktualizací.
--   [Stav agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): řešení Agent Health sestavy, kolik agentů je nasazených a zeměpisné rozšíření, jakož i kolik agentů, které jsou reagovat a počet agentů, které jsou odesílání provozních dat.
--   [Protokoly aktivit Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): The Activity Log Analytics řešení pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure zákazníka.
--   [Sledování změn](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): řešení Change Tracking umožňuje zákazníkům snadno identifikovat změny v prostředí.
+-   [Posouzení AD](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Kontrola stavu služby Active Directory řešení posuzuje rizika a stav prostředí serveru v pravidelných intervalech a poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.
+-   [Posouzení antimalwaru](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): Antimalwarové řešení hlásí stav malwaru, hrozeb a ochranu.
+-   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Řešení služby Azure Automation ukládá, spouští a spravuje sady runbook.
+-   [Zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): Řídicí panel zabezpečení a Audit poskytuje podrobný pohled na stav zabezpečení prostředků tím, že poskytuje metriky na zabezpečení domény, významné problémy, detekce, analýza hrozeb a běžné dotazy na zabezpečení.
+-   [Posouzení SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Řešení SQL Health Check posuzuje v pravidelných intervalech rizika a stav prostředí serveru a poskytuje zákazníkům s uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.
+-   [Správa aktualizací](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Řešení Update Management umožňuje správu zákazníka aktualizace zabezpečení operačního systému, včetně proces instalace požadovaných aktualizací a stav dostupných aktualizací.
+-   [Stav agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Řešení Agent Health sestavy, kolik agentů je nasazených a zeměpisné rozšíření, jakož i kolik agentů, které jsou reagovat a počet agentů, které jsou odesílání provozních dat.
+-   [Protokoly aktivit Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Řešení Activity Log Analytics pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure zákazníka.
+-   [Sledování změn](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Řešení Change Tracking umožňuje zákazníkům snadno identifikovat změny v prostředí.
 
 **Azure Monitor**
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) pomáhá uživatelům sledování výkonu, zabezpečení a rozpoznávání trendů tím, že umožňuje organizacím auditovat, vytvářet upozornění a archivovat data, včetně sledování volání rozhraní API v prostředcích zákazníků Azure.
@@ -171,7 +171,7 @@ Kromě toho jsou nainstalovány následující řešení monitorování v rámci
 ## <a name="threat-model"></a>Model hrozeb
 Diagram toku dat pro tuto referenční architekturu je k dispozici pro [Stáhnout](https://aka.ms/fedrampWAdfd) nebo najdete níže. Tento model může pomoci zákazníkům pochopit body potenciální riziko v infrastruktuře systému při provádění změn.
 
-![Webová aplikace IaaS pro model hrozeb FedRAMP](images/fedramp-iaaswa-threat-model.png?raw=true "IaaS Web Express pro model hrozeb FedRAMP")
+![Webová aplikace IaaS pro model hrozeb FedRAMP](images/fedramp-iaaswa-threat-model.png?raw=true "IaaS webové aplikace pro FedRAMP model hrozeb")
 
 ## <a name="compliance-documentation"></a>Dokumentace ke službě dodržování předpisů
 

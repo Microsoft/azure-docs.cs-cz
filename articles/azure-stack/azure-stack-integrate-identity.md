@@ -10,12 +10,12 @@ ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: ff7fb909e3f6e26846114c4b7bfdddccd07526ec
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 63ac30728cceae76f869f5529905cd6d3dde9ae2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188892"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263782"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -66,7 +66,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|CustomADGlobalCatalog|Plně kvalifikovaný název domény cílové doménové struktuře služby Active Directory<br>Chcete integrovat s|contoso.com|
+|CustomADGlobalCatalog|Plně kvalifikovaný název domény cílové doménové struktuře služby Active Directory<br>Chcete integrovat s|Contoso.com|
 |CustomADAdminCredentials|Uživatel s oprávněním ke čtení protokolu LDAP|YOURDOMAIN\graphservice|
 
 ### <a name="configure-active-directory-sites"></a>Konfigurace lokalit služby Active Directory
@@ -122,8 +122,8 @@ Služba Graph ve službě Azure Stack používá následující protokoly a port
 |---------|---------|---------|
 |LDAP|389|TCP A UDP|
 |LDAP SSL|636|TCP|
-|GLOBÁLNÍ KATALOG LDAP|3268|TCP|
-|SSL GLOBÁLNÍ KATALOG LDAP|3269|TCP|
+|LDAP GC|3268|TCP|
+|LDAP GC SSL|3269|TCP|
 
 ## <a name="setting-up-ad-fs-integration-by-downloading-federation-metadata"></a>Nastavení integrace služby AD FS stažením federačních metadat
 
@@ -171,7 +171,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
 |CustomAdfsName|Název zprostředkovatele deklarací identity. Zobrazí se tak na cílové stránce služby AD FS.|Contoso|
-|CustomADFSFederationMetadataFileContent|Metadata obsahu|$using: federationMetadataFileContent|
+|CustomADFSFederationMetadataFileContent|Metadata obsahu|$using:federationMetadataFileContent|
 
 ### <a name="create-federation-metadata-file"></a>Vytvořit soubor metadat federace
 
@@ -319,7 +319,7 @@ Pokud dojde k chybě, která nechává prostředí ve stavu, ve kterém můžete
 2. Potom spusťte následující rutinu:
 
    ```PowerShell  
-   Reset-DatacenterIntegationConfiguration
+   Reset-DatacenterIntegrationConfiguration
    ```
 
    Po spuštění akce vrácení zpět, budou vráceny všechny změny konfigurace. Pouze ověřování pomocí integrovaného **CloudAdmin** uživatele je možné.

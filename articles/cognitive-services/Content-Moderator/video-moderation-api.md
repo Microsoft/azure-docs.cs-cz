@@ -1,5 +1,5 @@
 ---
-title: Analýza videa obsah pro nežádoucím vC#
+title: Analýza videa obsah pro nežádoucím v C# – Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Jak analyzovat obsah videa pro různé nežádoucím pomocí sady obsahu Moderator SDK pro .NET
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 80635354b228edc1a8c1334e5d59cf530a10083e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 70fe30e53635203d80aca2406c52b2ec08d0035c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008279"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265511"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analýza videa obsah pro nežádoucím vC#
 
@@ -24,7 +24,7 @@ Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
-- Libovolná edice [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
+- Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="set-up-azure-resources"></a>Nastavení prostředků Azure
 
@@ -55,18 +55,18 @@ Azure Media Services Explorer je uživatelsky přívětivé front-endu pro AMS. 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
 1. V sadě Visual Studio vytvořte nový **Konzolová aplikace (.NET Framework)** projektu a pojmenujte ho **VideoModeration**. 
-1. Pokud existují jiné projekty v řešení, vyberte tento jako jeden spouštěný projekt.
-1. Získáte požadované balíčky NuGet. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a vyberte **spravovat balíčky NuGet**; poté vyhledejte a nainstalujte následující balíčky:
+1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
+1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na svůj projekt v Průzkumníku řešení a vyberte **Spravovat balíčky NuGet**. Potom vyhledejte a nainstalujte následující balíčky:
     - windowsazure.mediaservices
-    - windowsazure.mediaservices.Extensions
+    - windowsazure.mediaservices.extensions
 
 ## <a name="add-video-moderation-code"></a>Přidejte kód moderování videa
 
-Budete v dalším kroku zkopírujte a vložte kód z Tento průvodce do vašeho projektu k implementaci scénáře základní moderování obsahu.
+Dále zkopírováním kódu z této příručky a jeho vložením do svého projektu implementujete základní scénář moderování obsahu.
 
 ### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
-Přidejte následující `using` příkazy na začátek vašeho _Program.cs_ souboru.
+Na začátek souboru _Program.cs_ přidejte následující příkazy `using`.
 
 ```csharp
 using System;
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Nastavte odkazy na prostředky
 
-Přidejte následující statické pole na **Program** třídy v _Program.cs_. Tato pole pojmout informace potřebné pro připojení k vašemu předplatnému AMS. Vyplní jejich hodnoty, které jste získali v předchozích krocích. Všimněte si, že `CLIENT_ID` je **ID aplikace** hodnotu vaše aplikace Azure AD a `CLIENT_SECRET` je hodnota "VideoModKey", který jste vytvořili pro tuto aplikaci.
+Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole pojmout informace potřebné pro připojení k vašemu předplatnému AMS. Vyplní jejich hodnoty, které jste získali v předchozích krocích. Všimněte si, že `CLIENT_ID` je **ID aplikace** hodnotu vaše aplikace Azure AD a `CLIENT_SECRET` je hodnota "VideoModKey", který jste vytvořili pro tuto aplikaci.
 
 ```csharp
 // declare constants and globals

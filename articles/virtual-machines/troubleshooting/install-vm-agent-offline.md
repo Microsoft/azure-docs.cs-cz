@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192052"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259678"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Nainstalujte agenta virtuálního počítače Azure v režimu offline 
 
@@ -35,6 +35,14 @@ Nainstalujte agenta virtuálního počítače v režimu offline v následující
 ## <a name="how-to-install-the-vm-agent-in-offline-mode"></a>Jak nainstalovat agenta virtuálního počítače v offline režimu
 
 Následujícím postupem nainstalujte agenta virtuálního počítače v režimu offline.
+
+> [!NOTE]
+> Můžete automatizovat proces instalace agenta virtuálního počítače v režimu offline.
+> Chcete-li to provést, použijte [skripty pro zotavení virtuálních počítačů Azure](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md). Pokud se rozhodnete používat skripty pro zotavení virtuálního počítače Azure, můžete použít následující postup:
+> 1. Krok 1 přeskočte pomocí skriptů pro připojení disku s operačním systémem virtuálního počítače ovlivněný virtuální počítač pro obnovení.
+> 2. Postupujte podle kroků 2 až 10 použít zmírnění.
+> 3. Přeskočte krok 11 pomocí skriptů pro virtuální počítač znovu sestavit.
+> 4. Pomocí kroku 12.
 
 ### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Krok 1: Připojte disk s operačním systémem virtuálního počítače jako datový disk k jinému virtuálnímu počítači
 
@@ -74,7 +82,7 @@ Následujícím postupem nainstalujte agenta virtuálního počítače v režimu
     1. Z Poradce při potížích se virtuální počítač exportujte následující podklíče registru formát (.reg): 
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
-        - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\RdAgent
+        - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
           ![Export podklíče registru](./media/install-vm-agent-offline/backup-reg.png)
 

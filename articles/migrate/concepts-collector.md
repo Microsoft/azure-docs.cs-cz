@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104198"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262604"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -112,8 +112,8 @@ Kontrola připojení se ověří pomocí připojení k seznamu adres URL.
 **Adresa URL** | **Podrobnosti**  | **Kontrola požadovaných součástí**
 --- | --- | ---
 *.portal.azure.com | Vztahuje se na Azure Global. Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
-*. portal.azure.us | Platí jenom pro Azure Government. Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Použít ke stažení modulu PowerShell vCenter PowerCLI. | Přístup k adresám URL, které jsou volitelné.<br/><br/> K selhání kontroly požadavků.<br/><br/> Instalace modulu automatické na virtuálním počítači Kolektoru se nezdaří. Bude nutné ručně nainstalovat modul.
+*.portal.azure.us | Platí jenom pro Azure Government. Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Použít ke stažení modulu PowerShell vCenter PowerCLI. | Přístup k adresám URL, které jsou volitelné.<br/><br/> K selhání kontroly požadavků.<br/><br/> Instalace modulu automatické na virtuálním počítači Kolektoru se nezdaří. Bude nutné ručně nainstalovat modul.
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>Ruční instalace VMware PowerCLI modulu
@@ -126,12 +126,9 @@ Kontrola připojení se ověří pomocí připojení k seznamu adres URL.
 
 Kolektor se připojí k serveru vCenter a dotazy na metadata virtuálního počítače a čítače výkonu. Zde je, co potřebujete pro připojení.
 
-- Jsou podporovány pouze vCenter Server verze 5.5, 6.0 a 6.5.
+- Jsou podporovány pouze vCenter Server verze 5.5, 6.0, 6.5 a 6.7.
 - Potřebujete účet jen pro čtení s oprávnění uvedená níže pro zjišťování. Zjišťování je přístupný pouze datacentra, které jsou přístupné pomocí účtu.
 - Ve výchozím nastavení připojení k serveru vCenter s plně kvalifikovaný název domény nebo IP adresu. Pokud systém vCenter Server naslouchá na jiném portu, k němu připojíte pomocí formuláře *IPAddress:Port_Number* nebo *FQDN:Port_Number*.
-- Ke shromažďování dat výkonu úložiště a sítě, nastavení Statistika pro vCenter Server musí být nastavené na úroveň 3.
-- Pokud úroveň je nižší než tři, Princip zjišťování, ale data o výkonu nebudou shromažďovány. Mohou být shromažďovány čítače, ale druhý se nastaví na hodnotu nula.
-- Pokud nejsou shromažďována data o výkonu úložiště a sítě, jsou doporučení pro interní hodnocení velikost dat na základě výkonu procesoru a paměti a na konfigurační data pro disk a síťové adaptéry.
 - Kolekce by měly mít síť dohled k serveru vCenter.
 
 #### <a name="account-permissions"></a>Oprávnění účtu
@@ -223,7 +220,7 @@ Zařízení kolektoru zjistí následující metadat konfigurace pro každý vir
 
 **Counter** |  **Dopad na posouzení**
 --- | ---
-CPU.Usage.average | Doporučené velikosti virtuálních počítačů a náklady  
+cpu.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
 mem.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
 virtualDisk.read.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
 virtualDisk.write.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače

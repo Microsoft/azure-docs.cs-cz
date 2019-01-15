@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bbfa5ce0e277df3648e98be29fe91a44b15a52b7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137833"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262281"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Brána firewall operačního systému hosta virtuálního počítače Azure je špatně nakonfigurovaný.
 
@@ -51,9 +51,9 @@ Následující pravidla lze upravovat, buď umožňuje přístup k virtuálnímu
 
 *   Vzdálená plocha (TCP-In): Toto je standardní pravidlo, které poskytuje primární přístup do virtuálního počítače tím, že protokol RDP v Azure.
 
-*   Vzdálená správa Windows (HTTP-In): Toto pravidlo umožňuje připojení k virtuálnímu počítači pomocí Powershellu. V Azure, tento typ přístupu umožňuje používat skriptovací aspekt vzdálené skriptování a řešení potíží.
+*   Vzdálená správa Windows (HTTP-In): Toto pravidlo umožňuje vám umožní připojit se k virtuálnímu počítači pomocí Powershellu. V Azure, tento typ přístupu vám umožní používat skriptovací aspekt vzdálené skriptování a řešení potíží.
 
-*   Sdílení souborů a tiskáren (SMB-In): Toto pravidlo umožňuje přístup ke sdílené složce sítě jako možnost řešení potíží.
+*   Sdílení souborů a tiskáren (SMB-In): Toto pravidlo aktivuje přístup ke sdílené složce sítě jako možnost řešení potíží.
 
 *   Sdílení souborů a tiskáren (žádost o odezvu – ICMPv4-In): Toto pravidlo umožňuje příkaz ping virtuálnímu počítači.
 
@@ -68,7 +68,7 @@ V případě sériový přístup ke konzole může dotazovat aktuální stav pra
 *   Dotazování s použitím místní Port, který aplikace používá:
 
     ```cmd
-    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICAITON PORT>)" -context 9,4 | more
+    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICATION PORT>)" -context 9,4 | more
     ```
 
 *   Dotazování s použitím místní IP adresu, která aplikace používá:

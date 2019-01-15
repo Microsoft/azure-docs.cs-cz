@@ -1,27 +1,27 @@
 ---
 title: 'Kurz: Moderování videa a záznamy o studiu v rozhraní .NET – Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Jak používat Content Moderator k moderování videí a přepisů v technologii .NET.
+description: Tento kurz vám pomůže porozumět jak sestavit kompletní řešení moderování videa a přepis moderování s podporou počítače a vytvoření revize lidských v the smyčky.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 1/27/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6f5a6c6ac4bd125fd7aa6358fe92f9453a0314b1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118570"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266770"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videa a přepis
 
 Rozhraní API pro video v Content Moderatoru umožňují moderování videí a vytváření kontrol videí v nástroji pro kontroly prováděné člověkem. 
 
-Tento podrobný kurz vám pomůže pochopit, jak sestavit kompletní řešení pro moderování videa a přepisu pomocí moderování s podporou počítače a vytvoření kontroly HITL (human-in-the-loop).
+Tento kurz vám pomůže porozumět jak sestavit kompletní řešení moderování videa a přepis moderování s podporou počítače a vytvoření revize lidských v the smyčky.
 
 Pro účely tohoto kurzu si stáhněte [konzolovou aplikaci C#](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp). Konzolová aplikace s pomocí sady SDK a souvisejících balíčků provádí následující úlohy:
 

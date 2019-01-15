@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 09be96a4a6fd4e36412e4e0958683a14873e172d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3b83f6df85271f7f4c38a87c48ec4537025af053
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961820"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305515"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partneři pro integraci dat SQL Data Warehouse
 K vytvoření vašeho řešení datového skladu, vyberte z široké škály špičkové nástroje. Tento článek se soustředí partnerských společností Microsoft s řešení pro integraci dat podporuje Azure SQL Data Warehouse.
@@ -82,7 +82,7 @@ Další informace o dalších partnerů, naleznete v tématu [Business Intellige
 
 <!--[bryte_systems_marketplace]:https://azure.microsoft.com/marketplace/partners/bryte/bryteflow-cdc-free-trial/--> 
 
-[informatica_Cloud_Services_marketplace]:https://azuremarketplace.microsoft.com/marketplace/partners/informatica/informatica-cloud-services/
+[informatica_Cloud_Services_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.ics-byol
 
 <!--[informatica_PowerCenter_std_marketplace]:https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-standard-10-0pc-std-10-0-windows/
 [informatica_PowerCenter_adv_marketplace]:https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-advanced-10-0pc-adv-10-0-ubuntu/-->

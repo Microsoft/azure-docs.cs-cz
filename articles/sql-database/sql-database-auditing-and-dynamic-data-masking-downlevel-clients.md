@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 41509c1f35d42a1e8558299b4244ad515c36ec17
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 607351718ddffbea5fa4dbbae333d81aac230f9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816051"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258947"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database – podpora klientů nižší úrovně a změny koncových bodů IP pro auditování tabulek
 
@@ -43,7 +43,7 @@ Upravené server plně kvalifikovaný název domény v připojovacím řetězci:
 * JDBC (zatímco JDBC podporují TDS 7.4, funkce přesměrování protokolu TDS není plně podporovány)
 * Tedious (pro Node.JS)
 
-**Poznámka:** výše uvedeném serveru plně kvalifikovaného názvu domény změny mohou být užitečné také pro použití zásady auditování služby SQL Server úroveň bez potřebu konfigurační krok v každé databázi (dočasná omezení rizik).
+**Poznámka:** Výše uvedeném serveru úpravy plně kvalifikovaný název domény může být užitečné také při použití zásad auditování služby SQL Server úroveň nemusejí pro krok konfigurace v každé databázi (dočasná omezení rizik).
 
 ## <a id="subheading-2"></a>Koncový bod IP adresy se změní při zapínání auditování
 Mějte prosím na paměti, že když povolíte auditování tabulek, dojde ke změně koncový bod IP adresy vaší databáze. Pokud máte nastavení striktní brány firewall, aktualizujte prosím tato nastavení brány firewall odpovídajícím způsobem.

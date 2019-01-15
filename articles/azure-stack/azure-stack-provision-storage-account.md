@@ -5,20 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 608525a1f06a396c7df7d764f236f33af77dccc6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 66a6fa88956db40ced9ee3fd13a0f74585c528fc
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235339"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303203"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Účty úložiště v Azure Stack
 Účty úložiště zahrnují služby Blob service a Table service a unikátní obor názvů pro datové objekty úložiště. Ve výchozím nastavení jsou data ve vašem účtu dostupná pouze pro vás, vlastníka účtu úložiště.

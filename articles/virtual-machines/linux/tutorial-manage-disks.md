@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 69ffd2dd4df8ca0a64036f7a96c88d5c83353211
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 2716838b28bc6dc5155ab7fbb6e1b4966b63f4dc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685363"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266106"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Kurz – Správa disků v Azure pomocí Azure CLI
 
@@ -126,7 +126,7 @@ Po připojení disku k virtuálnímu počítači je třeba nakonfigurovat opera�
 Vytvořte připojení SSH k virtuálnímu počítači. Ukázkovou IP adresu nahraďte veřejnou IP adresou virtuálního počítače.
 
 ```azurecli-interactive
-ssh azureuser@52.174.34.95
+ssh 10.101.10.10
 ```
 
 Rozdělte disk na oddíly pomocí příkazu `fdisk`.
@@ -196,12 +196,16 @@ Když pořídíte snímek disku, Azure vytvoří kopii disku k danému okamžiku
 Před vytvořením snímku disku virtuálního počítače potřebujete ID nebo název disku. Ke zjištění ID disku můžete použít příkaz [az vm show](/cli/azure/vm#az-vm-show). V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
 
 ```azurecli-interactive
-osdiskid=$(az vm show -g myResourceGroupDisk -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+osdiskid=$(az vm show \
+   -g myResourceGroupDisk \
+   -n myVM \
+   --query "storageProfile.osDisk.managedDisk.id" \
+   -o tsv)
 ```
 
 Jakmile máte ID disku virtuálního počítače, můžete jeho snímek vytvořit pomocí následujícího příkazu.
 
-```azurcli
+```azurecli-interactive
 az snapshot create \
     --resource-group myResourceGroupDisk \
     --source "$osdiskid" \
@@ -213,7 +217,10 @@ az snapshot create \
 Tento snímek pak můžete převést na disk a jeho pomocí znovu vytvořit virtuální počítač.
 
 ```azurecli-interactive
-az disk create --resource-group myResourceGroupDisk --name mySnapshotDisk --source osDisk-backup
+az disk create \
+   --resource-group myResourceGroupDisk \
+   --name mySnapshotDisk \
+   --source osDisk-backup
 ```
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Obnovení virtuálního počítače ze snímku
@@ -221,7 +228,9 @@ az disk create --resource-group myResourceGroupDisk --name mySnapshotDisk --sour
 Abychom si předvedli obnovení virtuálního počítače, odstraníme napřed existující virtuální počítač.
 
 ```azurecli-interactive
-az vm delete --resource-group myResourceGroupDisk --name myVM
+az vm delete \
+--resource-group myResourceGroupDisk \
+--name myVM
 ```
 
 Nový virtuální počítač vytvoříme ze snímku disku.
@@ -241,13 +250,19 @@ K virtuálnímu počítači bude potřeba znovu připojit všechny datové disky
 Napřed zjistěte název datového disku pomocí příkazu [az disk list](/cli/azure/disk#az-disk-list). V tomto příkladu se název disku uloží do proměnné s názvem *datadisk*, která se použije v dalším kroku.
 
 ```azurecli-interactive
-datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')].[name]" -o tsv)
+datadisk=$(az disk list \
+   -g myResourceGroupDisk \
+   --query "[?contains(name,'myVM')].[id]" \
+   -o tsv)
 ```
 
 Disk můžete připojit pomocí příkazu [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach).
 
 ```azurecli-interactive
-az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
+az vm disk attach \
+   –g myResourceGroupDisk \
+   --vm-name myVM \
+   --disk $datadisk
 ```
 
 ## <a name="next-steps"></a>Další postup

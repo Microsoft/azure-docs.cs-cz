@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: a018740a44424fd138b787b86b0f527d897f4188
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: f91f6386df01050cc67968d05a1e1562e0f9ed01
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230539"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261226"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -98,7 +98,7 @@ Můžete přejít na **Essentials** tématu **přehled** stránce projektu k ide
 
 1. Ověření, pokud je soubor Azure Migrate Collector OVA správně stáhnout tak, že zkontrolujete jeho hodnotu hash. Informace o tom, jak zkontrolovat hodnotu hash, najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Pokud hodnota hash neodpovídá, znovu stáhnout soubor OVA a pokusem o nasazení.
 2. Pokud se zase nepodaří a pokud nasazujete soubor OVF pomocí klienta VMware vSphere, zkuste ho nasadit pomocí webového klienta vSphere. Pokud stále nedaří, zkuste použít jiný webový prohlížeč.
-3. Pokud používáte webovém klientovi vSphere a chcete nasadit virtuální počítač na serveru vCenter Server verze 6.5, zkuste nasazení OVA přímo na hostiteli ESXi pomocí následujících následujících kroků:
+3. Pokud používáte webovém klientovi vSphere a chcete nasadit virtuální počítač na serveru vCenter Server verze 6.5 nebo 6.7, zkuste nasazení OVA přímo na hostiteli ESXi pomocí následujících následujících kroků:
   - Připojení k hostiteli ESXi přímo (namísto serveru vCenter) pomocí webového klienta (https:// <*hostitele IP adresy*> /ui)
   - Přejděte na domovskou stránku > inventáře
   - Klikněte na soubor > šablony OVF nasazení > přejděte na soubor OVA a dokončit nasazení

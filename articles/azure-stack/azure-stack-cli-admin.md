@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: c2827a4badd61aeb8de556795834dee39769e85e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ba8bed71d24c1b4ed71611b5cd2dfeb7800408b8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554499"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304019"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku
 

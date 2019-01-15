@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: 50a49a8bcb6bec6c177823ea61cc340da6876357
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9bfd748e6b10106587e3fce64e15d7f1f6d50e59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602082"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261583"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů: PaaS webové aplikace pro FedRAMP
 
@@ -53,7 +53,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 ## <a name="deployment-architecture"></a>Architektura nasazení
 Následující část podrobně popisuje nasazení a implementaci prvky.
 
-**Azure Resource Manageru**: [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) umožňuje zákazníkům pracovat s prostředky v řešení jako se skupinou. Zákazníci mohou nasadit, aktualizovat nebo odstranit všechny prostředky pro řešení v rámci jediné koordinované operace. Zákazníci pomocí šablony pro nasazení a tato šablona může fungovat v různých prostředích, jako je například testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje zabezpečení, auditování a označování příznaky funkcí, které pomáhá zákazníkům spravovat svoje prostředky po nasazení.
+**Azure Resource Manager**: [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) umožňuje zákazníkům pracovat s prostředky v řešení jako se skupinou. Zákazníci mohou nasadit, aktualizovat nebo odstranit všechny prostředky pro řešení v rámci jediné koordinované operace. Zákazníci pomocí šablony pro nasazení a tato šablona může fungovat v různých prostředích, jako je například testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje zabezpečení, auditování a označování příznaky funkcí, které pomáhá zákazníkům spravovat svoje prostředky po nasazení.
 
 **App Service Environment v2**: [Azure App Service Environment (ASE)](https://docs.microsoft.com/azure/app-service/environment/intro) je funkce služby App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací služby App Service ve velkém měřítku.
 
@@ -165,7 +165,7 @@ Kromě toho jsou součástí této architektury řešení následující monitor
 
 Diagram toku dat pro tuto referenční architekturu je k dispozici pro [Stáhnout](https://aka.ms/fedrampPaaSWebAppDFD) nebo najdete níže. Tento model může pomoci zákazníkům pochopit body potenciální riziko v infrastruktuře systému při provádění změn.
 
-![Webová aplikace PaaS pro model hrozeb FedRAMP](images/fedramp-paaswa-threat-model.png?raw=true "PaaS Web Express pro model hrozeb FedRAMP")
+![Webová aplikace PaaS pro model hrozeb FedRAMP](images/fedramp-paaswa-threat-model.png?raw=true "PaaS webové aplikace pro FedRAMP model hrozeb")
 
 ## <a name="compliance-documentation"></a>Dokumentace ke službě dodržování předpisů
 [Azure zabezpečení a dodržování předpisů – FedRAMP vysokou zákazníka odpovědnost matice](https://aka.ms/blueprinthighcrm) vypisuje všechny ovládací prvky zabezpečení vyžadované FedRAMP High směrného plánu. Matice označuje, zda provádění každý ovládací prvek zodpovídá za Microsoft, Zákazník, nebo sdílet mezi nimi.

@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 860294ebc7fbadd3eeefc4298ec740ca7f704587
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: HT
+ms.openlocfilehash: 2b114a4aed812a91a9f6c4ed43f57411e47ea677
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714390"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260024"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node 
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webovou aplikaci v Node 
 
 V tomto rychlém startu se dozvíte, jak uložit tajný klíč ve službě Key Vault a jak ho načíst pomocí webové aplikace. Pokud chcete zobrazit hodnotu tajného klíče, musíte webovou aplikaci spustit v Azure. V tomto rychlém startu se používá Node.js a spravované identity pro prostředky Azure.
 
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak uložit tajný klíč ve službě Key V
 Než budete pokračovat, ujistěte se, že znáte [základní koncepty](key-vault-whatis.md#basic-concepts).
 
 >[!NOTE]
-Abyste pochopili, proč následující kurz představuje osvědčený postup, je potřeba porozumět několika konceptům. Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace nebo uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba pravidelně obměňovat také tento první tajný klíč. Při použití [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) se však aplikacím spouštěným v Azure udělí identita, kterou automaticky spravuje Azure. To vám pomůže vyřešit **problém se zavedením tajného klíče** a tím umožníte uživatelům a aplikacím dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
+Abyste pochopili, proč následující kurz představuje osvědčený postup, je potřeba porozumět několika konceptům. Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace nebo uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba pravidelně obměňovat také tento první tajný klíč. Ale [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) aplikace, které běží v Azure jsou uvedeny identitu, která je automaticky spravuje Azure. To vám pomůže vyřešit **problém se zavedením tajného klíče** a tím umožníte uživatelům a aplikacím dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -195,7 +195,7 @@ git push azure master
 Když teď přejdete na adresu https://<název_aplikace>.azurewebsites.net, zobrazí se hodnota tajného kódu.
 Ujistěte se, že jste nahradili název <YourKeyVaultName> názvem vašeho trezoru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Domovská stránka služby Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 * [Dokumentace ke službě Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)

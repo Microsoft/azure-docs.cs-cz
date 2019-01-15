@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: d2021873b36a55bd36cf500eff168fe7311d944c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579426"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265630"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro generování sestav pro podnikové zákazníky
 Rozhraní API pro vytváření sestav umožňují zákazníkům Enterprise Azure prostřednictvím kódu programu o přijetí změn využití a fakturace data do nástrojů pro analýzu dat upřednostňované. Podnikoví zákazníci si zaregistrovali [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) s Azure a ujistěte se, vyjednávaný peněžní závazky a získat přístup k získání vlastních cen pro prostředky Azure.
@@ -58,7 +58,7 @@ V odpovědi všechna rozhraní API výše vrátí se značek ETag. Změna v Etag
 |401| Neautorizováno| Klíč rozhraní API nebyl nalezen, není platný, vypršela platnost atd.|
 |404| Není dostupný| Koncový bod sestavy nebyl nalezen|
 |400| Chybný požadavek| Neplatné parametry – rozsahy kalendářních dat, EA čísel atd.|
-|500| Chyba serveru| Unexoected při zpracování požadavků| 
+|500| Chyba serveru| Zpracování žádosti došlo k neočekávané chybě| 
 
 
 

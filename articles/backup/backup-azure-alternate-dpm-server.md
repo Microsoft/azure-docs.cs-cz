@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: adigan
-ms.openlocfilehash: aa2796ab8e4cd9b8ab5e7fc3b4804f5535ac3518
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 66d78be296d0786626325df36aa133d277131b3b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254447"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267092"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
 Použití Azure Backup serveru k obnovení dat, které jste zálohovali pro trezor služby Recovery Services. Proces pro to tak je integrovaná Konzola pro správu Azure Backup serveru a je podobný postupu obnovení pro jiné komponenty Azure Backup.
 
 > [!NOTE]
-> Tento článek je možné použít [System Center Data Protection Manager 2012 R2 s UR7 nebo novější] (https://support.microsoft.com/en-us/kb/3065246)kombinované s [nejnovější verzi agenta Azure Backup](https://aka.ms/azurebackup_agent).
+> Tento článek týká se to [System Center Data Protection Manager 2012 R2 s UR7 nebo novější](https://support.microsoft.com/en-us/kb/3065246)kombinované s [nejnovější verzi agenta Azure Backup](https://aka.ms/azurebackup_agent).
 >
 >
 
@@ -82,10 +82,10 @@ Chcete-li obnovit data ze Azure Backup serveru:
 ## <a name="troubleshooting-error-messages"></a>Řešení potíží s chybové zprávy
 | Ne. | Chybová zpráva | Postup při řešení potíží |
 |:---:|:--- |:--- |
-| 1. |Tento server není registrovaný pro trezor určený přihlašovacími údaji. |**Příčina:** tato chyba se zobrazí, když vybraný soubor přihlašovacích údajů trezoru nepatří do trezoru služby Recovery Services, které jsou spojené s Azure Backup Server, na kterém dojde k pokusu o obnovení. <br> **Řešení:** stáhnout soubor přihlašovacích údajů trezoru služby Recovery Services vault do Azure Backup Server je zaregistrovaný. |
-| 2. |Buď obnovitelná data nejsou k dispozici, nebo vybraný server není DPM server. |**Příčina:** neexistují žádné jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, nebo na serverech ještě nepřidali metadata nebo vybraný server není Server služby Azure Backup (označuje se také jako Windows Server nebo klienta Windows). <br> **Řešení:** vyvstanou jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup. <br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu odešlete metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
-| 3. |Žádným jiným serverem aplikace DPM je registrované k tomuto trezoru. |**Příčina:** nejsou žádné další Azure Backup servery, které jsou zaregistrované do trezoru, ze kterého je Probíhá pokus o obnovení.<br>**Řešení:** vyvstanou jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup.<br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu ukládání metadat pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
-| 4. |Zadané šifrovací heslo neodpovídá heslu přidruženému k následujícímu serveru: **<server name>** |**Příčina:** heslo šifrování Probíhá šifrování dat od Azure Backup Server, který se obnovuje neodpovídá zadané šifrovací heslo. Agent se nemůže data dešifrovat. Proto obnovení není úspěšné.<br>**Řešení:** zadejte přesně stejné šifrovací heslo přidružené k Azure Backup serveru, jehož data obnovena. |
+| 1. |Tento server není registrovaný pro trezor určený přihlašovacími údaji. |**Příčina:** Tato chyba se zobrazí, když vybraný soubor přihlašovacích údajů trezoru nepatří do trezoru služby Recovery Services, které jsou spojené s Azure Backup Server, na kterém dojde k pokusu o obnovení. <br> **Řešení:** Stáhněte si soubor s přihlašovacími údaji trezoru z trezoru služby Recovery Services, na které je registrované Azure Backup serveru. |
+| 2. |Buď obnovitelná data nejsou k dispozici, nebo vybraný server není DPM server. |**Příčina:** Nejsou že žádné jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, nebo na serverech ještě nepřidali metadata nebo vybraný server není Server služby Azure Backup (označuje se také jako Windows Server nebo klienta Windows). <br> **Řešení:** Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup. <br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu odešlete metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
+| 3. |Žádným jiným serverem aplikace DPM je registrované k tomuto trezoru. |**Příčina:** Nejsou žádné další Azure Backup servery, které jsou zaregistrované do trezoru, ze kterého je Probíhá pokus o obnovení.<br>**Řešení:** Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup.<br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu ukládání metadat pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
+| 4. |Zadané šifrovací heslo neodpovídá heslu přidruženému k následujícímu serveru: **<server name>** |**Příčina:** Šifrovací heslo použít Probíhá šifrování dat od Azure Backup Server, který se obnovuje neodpovídá zadané šifrovací heslo. Agent se nemůže data dešifrovat. Proto obnovení není úspěšné.<br>**Řešení:** Zadejte prosím přesné stejné šifrovací heslo přidružené k Azure Backup serveru, jehož data obnovena. |
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

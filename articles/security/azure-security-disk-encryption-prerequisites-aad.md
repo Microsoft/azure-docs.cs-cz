@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/09/2019
+ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: cadd78102eab5c057458b3f7705a531e762f2f89
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f992b4539711d66c51e423eae94c40a325842241
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199268"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267160"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -147,7 +147,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 ## <a name="prerequisite-workflow-for-key-vault-and-the-azure-ad-app"></a>Požadované pracovní postup pro Key Vault a aplikace Azure AD
 
-Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption Key Vault a Azure AD, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Další informace o používání skriptu požadavky najdete v článku [šifrování virtuálního počítače Quickstart](quick-encrypt-vm-powershell.md) a [Azure Disk Encryption příloha](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
+Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption Key Vault a Azure AD, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Další informace o používání skriptu požadavky najdete v článku [šifrování virtuálního počítače Quickstart](quick-encrypt-vm-powershell.md) a [Azure Disk Encryption příloha](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
 1. Vytvoření trezoru klíčů 
 2. Nastavení aplikace Azure AD a instanční objekt služby.

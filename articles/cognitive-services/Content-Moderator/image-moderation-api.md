@@ -1,23 +1,23 @@
 ---
 title: Obrázek moderování – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Moderování nevhodných obrázků pomocí moderování obrázků
+description: Pomocí Content Moderator moderování obrázků s podporou počítače a nástroj pro recenze lidských v the smyčky pro moderování obrázků pro dospělé nebo pikantního obsahu.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 044aa9a127aa8130340719147314961ddb38167a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 952777af0a233f0233f14c749fe0ebfdeaa8344a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852703"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262927"
 ---
-# <a name="image-moderation"></a>Moderování obrázků
+# <a name="learn-image-moderation-concepts"></a>Další koncepty moderování obrázků
 
 Použít moderování obrázků s podporou počítače Content Moderator a [nástroj pro recenze lidských v the smyčky](Review-Tool-User-Guide/human-in-the-loop.md) pro moderování obrázků pro dospělé nebo pikantního obsahu. Kontroly imagí pro textový obsah a extrahovat text a rozpoznávání tváří. Můžete odpovídat bitové kopie na základě vlastních seznamů a provádět další akci.
 

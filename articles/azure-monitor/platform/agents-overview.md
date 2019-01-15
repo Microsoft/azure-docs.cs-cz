@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 5a40e215c6dd5bf4dc1178595716f95ae21adcb4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: dececc961e40d83cf44442dc61054bc8833208f0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438196"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265024"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:

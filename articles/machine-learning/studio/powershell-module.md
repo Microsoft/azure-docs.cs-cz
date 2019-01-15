@@ -1,27 +1,8 @@
 ---
-title: Modul PowerShell pro Machine Learning Studio – Azure | Dokumentace Microsoftu
-description: Modul PowerShell pro Azure Machine Learning je dostupný v režimu veřejné zkušební verze. Pomocí Powershellu vytvářet a spravovat pracovní prostory, experimenty, webové služby a další.
-keywords: experiment,lineární regrese,algoritmy Machine Learningu,kurz Machine Learningu,techniky prediktivního modelování,experiment z oblasti datové vědy
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/15/2017
-ms.openlocfilehash: 6539ec36c23feccfa52c8214784590106fa5a01e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257518"
+Název: Modul PowerShell pro Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Modul PowerShell pro Azure Machine Learning je dostupný v režimu veřejné zkušební verze. Pomocí Powershellu vytvářet a spravovat pracovní prostory, experimenty, webové služby a další.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=haining, předchozí Autor = hning86 ms.date: 03/15/2017
 ---
 # <a name="powershell-module-for-azure-machine-learning-studio"></a>Modul PowerShell pro Azure Machine Learning Studio
 Modul PowerShell pro Azure Machine Learning je výkonný nástroj, který umožňuje použití Windows Powershellu ke správě pracovní prostory, experimenty, datové sady, klasické webové služby a další.

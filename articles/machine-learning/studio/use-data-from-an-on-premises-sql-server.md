@@ -1,26 +1,8 @@
 ---
-title: Místní SQL Server – aplikace Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Data z místní databáze systému SQL Server použijte k provádění pokročilých analýz Azure Machine Learning Studio.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 08e4610d-02b6-4071-aad7-a2340ad8e2ea
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/13/2017
-ms.openlocfilehash: dccea7c5d7967af2e81ab4728704a5a104a007b5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269273"
+Název: V místním systému SQL Server titleSuffix: Azure Machine Learning Studio Popis: Data z místní databáze systému SQL Server použijte k provádění pokročilých analýz Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/13/2017
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Provádět analýzy k místní databázi SQL serveru pomocí Azure Machine Learning Studio
 

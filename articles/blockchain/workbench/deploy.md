@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 2c5e3664a9ef26319eb8a51d03ddef6a5392ffa9
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102988"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266583"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
@@ -29,9 +29,9 @@ Blockchain Workbench umožňuje nasadit blockchain účetní kniha společně se
 
 * Téma 1 event gridu
 * Namespace 1 Service Bus
-* 1 application Insights
+* 1 Application Insights
 * 1 SQL Database (Standard S0)
-* 2 app Services (Standard)
+* 2 App Services (Standard)
 * 2 trezory klíčů azure
 * 2 účtů služby azure Storage (Standard LRS)
 * 2 škálovací sady virtuálních počítačů (pro program pro ověření a pracovní uzly)
@@ -119,7 +119,7 @@ Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench
 
     | Nastavení | Popis  |
     |---------|--------------|
-    | Koncový bod Etherea RPC | Zadejte koncový bod existující síť blockchain PoA RPC. Koncový bod začíná na https:// nebo http:// a končí číslem portu. Například `http<s>://<network-url>:<port>`. |
+    | Ethereum RPC Endpoint | Zadejte koncový bod existující síť blockchain PoA RPC. Koncový bod začíná na https:// nebo http:// a končí číslem portu. Například `http<s>://<network-url>:<port>`. |
     | Nastavení služby Azure Active Directory | Zvolte **později přidat**.</br>Poznámka: Pokud jste se rozhodli [předem nakonfigurovat služby Azure AD](#azure-ad-configuration) nebo opětovného nasazení, zvolit *přidat nyní*. |
     | Výběr VM | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. |
 
@@ -240,7 +240,7 @@ Dále je třeba upravit manifest pro použití aplikačních rolí v rámci Azur
     > [!IMPORTANT]
     > Hodnota **správce** , je potřeba identifikovat Blockchain Workbench umožňuje správci.
 
-4. V manifestu, také změnit **Oauth2AllowImplictFlow** hodnota, která se **true**.
+4. V manifestu, také změnit **Oauth2AllowImplicitFlow** hodnota, která se **true**.
 
     ``` json
     "oauth2AllowImplicitFlow": true,

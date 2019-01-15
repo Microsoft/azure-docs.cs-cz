@@ -1,26 +1,7 @@
 ---
-title: Soutěže zaměřené na galerii - Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Vyhledat soutěže v galerii Azure AI. Poskytuje skvělou příležitost soutěžit s komunitou odborníků přes data řešit složité problémy.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: ef74f411-bce4-4b02-aa34-902fc8d7b519
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: 5d38205ca614fef2ea9c10e9ad2fb94bdf3481cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277784"
+Název: Galerie titleSuffix soutěže: Azure Machine Learning Studio Popis: Vyhledat soutěže v galerii Azure AI. Poskytuje skvělou příležitost soutěžit s komunitou odborníků přes data řešit složité problémy.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku  
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/31/2017
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Vyhledat soutěže v galerii Azure AI
 

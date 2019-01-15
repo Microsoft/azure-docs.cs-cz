@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 2d760286e8f1d65f9f454980429ecc5872c4e48a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 928e4c7b6f7711dcad8190b6c368bd7f1df2b66c
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245850"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305889"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Správa kapacity fyzické paměti pro službu Azure Stack
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: a4f9147008ceb0de32e0f5879a194b45bd4c6421
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 251caa840446e75ff13d9b4dcebcbae3a36473c8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245391"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265443"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení pro import rozhraní API a známé problémy
 ## <a name="about-this-list"></a>Informace o tomto seznamu
@@ -35,7 +35,7 @@ Pokud se zobrazuje chyby importu OpenAPI dokumentu, ujistěte se, že jste se ov
 * **$ref** ukazatelé nemohou odkazovat na externí soubory.
 * **x-ms cesty** a **servery x** jsou jediné podporované přípony.
 * Vlastní rozšíření jsou ignorovány při importu a nejsou uloženy ani zachovají pro export.
-* **Rekurze** – API Management nepodporuje rekurzivní definice (například odkazující na sebe).
+* **Rekurze** – API Management nepodporuje rekurzivní definice (například schémata odkazující na sebe).
 * Adresa URL souboru zdroje (Pokud je k dispozici) se použije pro relativní serverové adresy URL.
 
 ### <a name="open-api-v2"> </a>OpenAPI verze 2

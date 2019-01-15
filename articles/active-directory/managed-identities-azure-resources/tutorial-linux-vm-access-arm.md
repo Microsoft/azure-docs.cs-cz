@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 24975fe0e3c423a3f356bd4a5a961456c511c96b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3cc61cfdfb131babb7fdf4e48553706da1d6ec76
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253030"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303798"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
 
@@ -55,12 +55,12 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
 
 1. Na portálu přejděte ke svému linuxovému virtuálnímu počítači a v části **Přehled** klikněte na **Připojit**.  
 2. **Připojte** se vybraným klientem SSH k virtuálnímu počítači. 
-3. V okně terminálu pomocí příkazu CURL, vytvořte žádost na místní spravovaných identit pro koncový bod prostředků Azure získat přístupový token pro Azure Resource Manageru.  
+3. V okně terminálu pomocí `curl`, vytvořte žádost na místní spravovaných identit pro koncový bod prostředků Azure získat přístupový token pro Azure Resource Manageru.  
  
-    Žádost CURL o přístupový token je níže.  
+    `curl` Žádost o přístupový token je níže.  
     
     ```bash
-    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]

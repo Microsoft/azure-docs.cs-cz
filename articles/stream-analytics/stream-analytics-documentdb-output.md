@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c5017817c0f823a149dd0f9bced48ecca9f3c488
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106562"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267126"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Výstup Azure Stream Analytics ke službě Azure Cosmos DB  
 Stream Analytics můžete směrovat [služby Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) výstup ve formátu JSON, povolení archivace a s nízkou latencí dotazy na data nestrukturovaných dat JSON. Tento dokument uvádí i některé doporučené postupy pro implementaci této konfigurace.
@@ -58,16 +58,17 @@ Pro pevné kolekce Azure Cosmos DB Stream Analytics umožňuje žádný způsob,
 Zápis na pevné více kontejnerů se vyřazuje a není doporučený postup pro horizontální navýšení kapacity vaší úlohy Stream Analytics. Tento článek [dělení a škálování ve službě Cosmos DB](../cosmos-db/sql-api-partition-data.md) poskytuje další podrobnosti.
 
 ## <a name="cosmos-db-settings-for-json-output"></a>Nastavení služby cosmos DB pro výstup ve formátu JSON
-Vytváření služby Cosmos DB jako výstup ve službě Stream Analytics generuje řádku informace, jak je vidět níže. Tato část obsahuje vysvětlení definici vlastnosti.
 
+Vytváření služby Cosmos DB jako výstup ve službě Stream Analytics generuje řádku informace, jak je vidět níže. Tato část obsahuje vysvětlení definici vlastnosti.
 
 ![documentdb stream analytics výstupní obrazovky](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-Pole           | Popis 
--------------   | -------------
-Alias pro výstup    | Alias odkazovat tento výstup v dotazu Azure Stream Analytics   
-Název účtu    | Název nebo identifikátor URI účtu služby Azure Cosmos DB koncového bodu 
-Klíč účtu     | Sdílený přístupový klíč pro účet služby Azure Cosmos DB
-Databáze        | Název databáze Azure Cosmos DB
-Název kolekce | Název kolekce pro kolekci, který se má použít. `MyCollection` je platný vstup ukázkové – jednu kolekci s názvem `MyCollection` musí existovat.  
-ID dokumentu     | Volitelné. Název sloupce ve výstupních událostech používaný jako jedinečný klíč, na které insert nebo update musí být operace založené. Pokud pole ponecháte prázdné, všechny události se vloží, bez možnosti aktualizace.
+|Pole           | Popis|
+|-------------   | -------------|
+|Alias pro výstup    | Alias pro najdete na tomto výstup v dotazu Azure Stream Analytics.|
+|Předplatné    | Zvolte vaše předplatné Azure.|
+|Account ID      | Název nebo identifikátor URI účtu služby Azure Cosmos DB koncového bodu.|
+|Klíč účtu     | Sdílený přístupový klíč pro účet služby Azure Cosmos DB.|
+|Databáze        | Název databáze Azure Cosmos DB.|
+|Vzor názvu kolekce | Název kolekce pro kolekci, který se má použít. `MyCollection` je platný vstup ukázkové – jednu kolekci s názvem `MyCollection` musí existovat.  |
+|ID dokumentu     | Volitelné. Název sloupce ve výstupních událostech používaný jako jedinečný klíč, na které insert nebo update musí být operace založené. Pokud pole ponecháte prázdné, všechny události se vloží, bez možnosti aktualizace.|

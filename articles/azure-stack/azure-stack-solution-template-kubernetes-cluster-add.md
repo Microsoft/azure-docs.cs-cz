@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 0cac5658d5f6f32795b5988008b3b895024ecc06
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e89575323b87ba28ef4f062da098fea4f0e27035
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960530"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264050"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Přidat Kubernetes na webu Marketplace služby Azure Stack
 
@@ -73,10 +73,10 @@ Přidejte následující image Ubuntu Server na webu Marketplace:
 1. Zadejte `UbuntuServer`.
 
 1. Vyberte nejnovější verzi serveru. Zkontrolujte na plnou verzi a ujistěte se, že máte nejnovější verzi:
-    - **Vydavatel**: Canonical
+    - **Publisher**: Canonical
     - **Nabízejí**: UbuntuServer
-    - **Verze**: 16.04.201806120
-    - **SKLADOVÁ POLOŽKA**: 16.04 LTS
+    - **Verze**: 16.04.201806120 (nebo novější)
+    - **SKLADOVÁ POLOŽKA**: 16.04-LTS
 
 1. Vyberte **stáhnout.**
 
@@ -93,12 +93,12 @@ Přidáte rozhraní Kubernetes na Marketplace:
 1. Zadejte `Custom Script for Linux`.
 
 1. Vyberte skript, který se následující profil:
-    - **Nabízejí**: vlastní skript pro Linux 2.0
-    - **Verze**: 2.0.6
-    - **Vydavatel**: Microsoft Corp.
+    - **Nabízejí**: Vlastní skript pro Linux 2.0
+    - **Verze**: 2.0.6 (nebo novější)
+    - **Publisher**: Microsoft Corp
 
     > [!Note]  
-    > Může být uvedeno více než jednu verzi vlastních skriptů pro Linux. Je potřeba přidat verzi, která odpovídá. Kubernetes vyžaduje přesné verze položky.
+    > Může být uvedeno více než jednu verzi vlastních skriptů pro Linux. Je potřeba přidat nejnovější verze položky.
 
 1. Vyberte **stáhnout.**
 
@@ -149,7 +149,5 @@ Odebrat položku Kubernetes:
 ## <a name="next-steps"></a>Další postup
 
 [Nasazení Kubernetes pro Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
-
-
 
 [Přehled nabízených služeb ve službě Azure Stack](azure-stack-offer-services-overview.md)

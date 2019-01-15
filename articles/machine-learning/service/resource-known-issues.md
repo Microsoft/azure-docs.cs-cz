@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4a4f1691162ab9c9fbd5bc8802ecf7ebc4894d74
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 25131fdbc7a3633bf4ba9af05fdff9163f41f26b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193667"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265103"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
  
@@ -62,7 +62,7 @@ Problémy s Databricks a Azure Machine Learning.
    Alternativní řešení: import knihovny Python `numpy==1.14.5` k vaší Databricks pomocí clusteru vytvořte knihovnu pro [nainstalujte a připojte](https://docs.databricks.com/user-guide/libraries.html#create-a-library).
 
 ## <a name="azure-portal"></a>portál Azure
-Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiného pracovního prostoru, alternativním řešením je přejít přímo na [webu Azure portal](https://portal.azure.com) a vyhledejte název pracovního prostoru.
+Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud je potřeba jiný pracovní prostor zobrazit, alternativním řešením je přejít přímo na [webu Azure portal](https://portal.azure.com) a vyhledejte název pracovního prostoru.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Zde je, kde live soubory protokolu:

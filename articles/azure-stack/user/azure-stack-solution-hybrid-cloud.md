@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/18/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 95fcb98e9ca6ff85e37ee88d5a5122ffa6887bb4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1629c4b62fb04e057c38261a33fd3bc759b279c1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245204"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267398"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Kurz: Nasazení řešení s hybridní cloud s Azure a Azure Stack
 
@@ -64,7 +64,7 @@ Než začnete tento kurz, ujistěte se, že splňujete následující požadavky
   - Image Windows serveru 2016
   - Windows Server 2016 s bitovou kopii systému Microsoft SQL Server
   - Příslušné plány a nabídky
- - Název domény pro webovou aplikaci. Pokud nemáte název domény můžete zakoupit od poskytovatele domény, jako je například GoDaddy, Bluehost a InMotion.
+ - A domain name for your web application. Pokud nemáte název domény můžete zakoupit od poskytovatele domény, jako je například GoDaddy, Bluehost a InMotion.
 - Certifikát SSL od důvěryhodné certifikační autority, jako je například LetsEncrypt vaší domény.
 - Webové aplikace, která komunikuje s databází serveru SQL Server a podporuje Application Insights. Můžete stáhnout [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) ukázkovou aplikaci z Githubu.
 - Hybridní síť mezi virtuální sítí Azure a virtuální sítě Azure Stack. Podrobné pokyny najdete v tématu [konfigurace připojení k hybridní cloud s Azure a Azure Stackem](azure-stack-solution-hybrid-connectivity.md).
@@ -77,7 +77,7 @@ Než začnete tento kurz, ujistěte se, že splňujete následující požadavky
 
 2. Na **řídicí panel**vyberte **Marketplace**.
 
-    ![Marketplace Auzure zásobníku](media/azure-stack-solution-hybrid-cloud/image1.png)
+    ![Marketplace služby Azure Stack](media/azure-stack-solution-hybrid-cloud/image1.png)
 
 3. V **Marketplace**vyberte **Compute**a klikněte na tlačítko **Další**. V části **Další**, vyberte **bezplatná licence SQL serveru: SQL Server 2017 Developer v systému Windows Server** bitové kopie.
 
@@ -208,7 +208,7 @@ Tím, že správně nakonfigurujete DNS pro různé cloudové aplikace, uživate
 
 Tento kurz používá Azure DNS ke správě DNS. (Domény služby app Service nebude fungovat.)
 
-### <a name="create-subdomains"></a>Vytvoření subdomény
+### <a name="create-subdomains"></a>Create subdomains
 
 Vzhledem k tomu, že Traffic Manager závisí na záznamy DNS CNAME, je potřeba subdomény správné směrování provozu do koncových bodů. Další informace o mapování domén a záznamů DNS najdete v tématu [mapování domén s Traffic Managerem](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager-custom-domain-name)
 

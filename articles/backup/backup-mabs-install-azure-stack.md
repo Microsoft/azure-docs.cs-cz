@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: raynew
-ms.openlocfilehash: 1e8c8efa590b6cce4543255dd33afbfd79aecef6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 31052276f06c5afdf78bf094637b7f60be4acbec
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877163"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262723"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -36,7 +36,7 @@ Azure Backup Server chrání následující úlohy virtuálních počítačů Az
 | Půlroční kanál Windows Server částečně - Datacenter nebo Enterprise/Standard | Svazky, soubory a složky |
 | Windows Server 2016 - Datacenter nebo Enterprise/Standard | Svazky, soubory a složky |
 | Windows Server 2012 R2 – Datacenter nebo Enterprise/Standard | Svazky, soubory a složky |
-| Windows Server 2012 – Datacenter/Entprise/Standard | Svazky, soubory a složky |
+| Windows Server 2012 – Datacenter nebo Enterprise/Standard | Svazky, soubory a složky |
 | Windows Server 2008 R2 – Datacenter nebo Enterprise/Standard | Svazky, soubory a složky |
 | SQL Server 2016 | Databáze |
 | SQL Server 2014 | Databáze |

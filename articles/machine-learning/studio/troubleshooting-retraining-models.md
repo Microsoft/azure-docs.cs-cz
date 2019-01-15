@@ -1,26 +1,8 @@
 ---
-title: Řešení potíží s přetrénování klasickou webovou službou Machine Learning Studio – Azure | Dokumentace Microsoftu
-description: Identifikovat a vyřešit běžné problémy k chybě, když jsou přetrénování modelu pro webové služby Azure Machine Learning Studio.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/01/2017
-ms.openlocfilehash: 97116c4ad6efbaad28aec6451b02fc0dee1ac79f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054856"
+Název: Řešení potíží s přetrénování titleSuffix klasické webové služby Machine Learning Studio: Azure Machine Learning Studio Popis: Identifikovat a vyřešit běžné problémy k chybě, když jsou přetrénování modelu pro webové služby Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 11/01/2017
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Řešení potíží s přeučováním klasické webové služby Azure Machine Learning Studio
 ## <a name="retraining-overview"></a>Přeškolení – přehled
@@ -49,7 +31,7 @@ Dali všechno na místě jsou hlavní kroky, které je třeba provést při prog
 ### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Zkontrolujte, jestli máte správnou adresu URL oprava
 Oprava adresa URL, které používáte musí být přidružený k nový bodovací koncový bod, který jste přidali do hodnoticí webové služby. Existuje mnoho způsobů, jak získat adresu URL opravy:
 
-**Možnost 1: Programově**
+**Option 1: Programově**
 
 Chcete-li získat správnou adresu URL opravy:
 
@@ -60,7 +42,7 @@ Chcete-li získat správnou adresu URL opravy:
 3. Vložte adresu URL do prohlížeče přejděte na stránku, která obsahuje odkazy na nápovědu pro webovou službu.
 4. Klikněte na tlačítko **aktualizace prostředku** odkaz k otevření stránky s nápovědou opravy.
 
-**Možnost 2: Použití portálu Azure Machine Learning Web Services**
+**Option 2: Použití portálu Azure Machine Learning Web Services**
 
 1. Přihlaste se k [Azure Machine Learning Web Services](https://services.azureml.net/) portálu.
 2. Klikněte na tlačítko **webových služeb** nebo **klasické webové služby** v horní části.

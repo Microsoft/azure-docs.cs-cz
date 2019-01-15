@@ -13,13 +13,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 045314980d0051e8b5ef71bdf95023084eff1880
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 01/12/2019
+ms.openlocfilehash: 716c4caa1b28cc40470d366e5fc6901de9462f9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063863"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267262"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure auditem SQL Database Managed Instance
 
@@ -172,9 +172,9 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
 - Použít funkci systému `sys.fn_get_audit_file` (T-SQL) vrátit data protokolu auditování v tabulkovém formátu. Další informace o použití této funkce najdete v článku [sys.fn_get_audit_file dokumentaci](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
-- Protokoly auditu můžete prozkoumat pomocí nástroje, jako je Průzkumník služby Azure Storage. Ve službě Azure storage se ukládají protokoly auditování jako kolekce souborů, objektů blob v kontejneru s názvem sqldbauditlogs. Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku odkaz formát protokolu auditování objektů Blob.
+- Protokoly auditu můžete prozkoumat pomocí nástroje [Průzkumníka služby Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer/). Ve službě Azure storage se ukládají protokoly auditování jako kolekce souborů, objektů blob v kontejneru s názvem sqldbauditlogs. Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku [odkaz na formát protokolu auditování objektů Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing).
+- Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
 
 > [!IMPORTANT]
 > Zobrazení záznamů auditu na webu Azure Portal (záznamy auditu podokno) je nyní k dispozici pro Managed Instance.

@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Začínáme s Content Moderatorem'
+title: 'Rychlý start: Vyzkoušejte si Content Moderator na web – Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Jak začít pracovat s Content Moderatorem.
+description: V tomto rychlém startu použijete online nástroje pro recenze Content Moderator, k otestování základní funkce Content Moderator bez nutnosti psát jakýkoli kód.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 259919f3b7cb0b614450c94f876cff933a5e01e8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 382401bd8ca073bec6f77fadf1096e42ab1e1d72
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852686"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266463"
 ---
-# <a name="quickstart-get-familiar-with-content-moderator"></a>Rychlý start: Seznamte se s Content Moderatorem
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý start: Vyzkoušejte si Content Moderator na webu
 
 V tomto rychlém startu použijete online nástroje pro recenze Content Moderator, k otestování základní funkce Content Moderator bez nutnosti psát jakýkoli kód. Pokud chcete integrovat tuto službu do aplikace rychleji, viz další rychlé starty v [další kroky](#next-steps) oddílu.
 

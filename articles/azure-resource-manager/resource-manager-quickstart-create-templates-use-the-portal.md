@@ -10,33 +10,37 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f989a006251313a8439432861477dc133374af35
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104722"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304665"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal
 
-Přečtěte si, jak si můžete na webu Azure Portal vygenerovat první šablonu Azure Resource Manageru a jak ji můžete na webu Azure Portal upravit a nasadit. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Podle pokynů v tomto kurzu vytvoříte účet služby Azure Storage. Stejným postupem můžete vytvořit i další prostředky Azure.
+Zjistěte, jak vytvořit šablonu Resource Manageru pomocí webu Azure portal a proces úpravy a nasazení šablony z portálu. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
+
+Po dokončení tohoto kurzu nasadíte účet služby Azure Storage. Stejný postup lze použít k nasazení dalších prostředků Azure.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="generate-a-template-using-the-portal"></a>Vygenerování šablony na portálu
 
-V této části vytvoříte účet úložiště pomocí portálu Azure Portal. Než nasadíte účet úložiště, máte možnost prozkoumat šablonu, kterou portál vygeneroval podle vaší konfigurace. Šablonu pak můžete uložit, abyste ji mohli v budoucnu znovu použít.
+Vytvoření šablony Resource Manageru od začátku není snadný úkol, zejména v případě, že jsou pro vás nové nasazení v Azure a se ještě neznají formátu JSON. Pomocí webu Azure portal, můžete nakonfigurovat prostředek, například účet služby Azure Storage. Před nasazením prostředek, můžete exportovat konfiguraci do šablony Resource Manageru. Šablonu pak můžete uložit, abyste ji mohli v budoucnu znovu použít.
+
+Mnoho vývojářů zkušení šablony pomocí této metody můžete generovat pracovní šablony při pokusu o nasazení prostředků Azure, které nejsou obeznámeni s.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Vytvořit prostředek** > **Storage** > **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
 
     ![Vytvoření účtu Azure Storage na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
-3. Zadejte následující informace. 
+3. Zadejte následující informace:
 
-    - **Skupina prostředků**: Vytvořte novou skupinu prostředků Azure s požadovaným názvem. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*.
+    - **Skupina prostředků**: Vyberte **vytvořit nový**a zadejte název skupiny prostředků podle svého výběru. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*. Skupina prostředků je kontejner pro prostředky Azure. Skupiny prostředků usnadňuje správu prostředků Azure.
     - **Název**: Zadejte jedinečný název účtu úložiště. Na snímku obrazovky má účet název *mystorage1016*.
 
     Pro zbývající vlastnosti můžete použít výchozí hodnoty.
@@ -46,14 +50,14 @@ V této části vytvoříte účet úložiště pomocí portálu Azure Portal. N
     > [!NOTE]
     > Některé exportované šablony vyžadují před nasazením nějaké úpravy.
 
-4. V dolní části obrazovky vyberte **Zkontrolovat a vytvořit**. 
+4. V dolní části obrazovky vyberte **Zkontrolovat a vytvořit**.
 5. V dolní části stránky vyberte **Stáhnout šablonu pro automatizaci**. Na portálu se zobrazí vygenerovaná šablona:
 
     ![Vygenerování šablony na portálu](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    Šablona se zobrazí v hlavním podokně. Jedná se o soubor JSON se čtyřmi elementy nejvyšší úrovně – `schema`, `contentVersion`, `parameters` a `resources`. Další informace najdete v článku, který se zabývá [strukturou a syntaxí šablon Azure Resource Manageru](./resource-group-authoring-templates.md).
+    Šablona se zobrazí v hlavním podokně. Představuje soubor JSON se čtyřmi nejvyšší úrovně prvky - `schema`, `contentVersion`, `parameters`, `variables`, `resources`, a `output`. Další informace najdete v článku, který se zabývá [strukturou a syntaxí šablon Azure Resource Manageru](./resource-group-authoring-templates.md).
 
-    Existuje šest definovaných parametrů. Jeden z nich má název **storageAccountName**. Druhá zvýrazněná část ukazuje použití tohoto parametru v šabloně. V další části upravíte šablonu tak, aby používala vygenerovaný název účtu úložiště.
+    Existuje šest definovaných parametrů. Jeden z nich má název **storageAccountName**. Druhá část zvýrazněný na předchozím snímku obrazovky ukazuje, jak odkazovat na tento parametr v šabloně. V další části upravíte šablonu tak, aby používala vygenerovaný název účtu úložiště.
 
     Šablona obsahuje jeden definovaný prostředek Azure. Jeho typ je [Microsoft.Storage/storageAccounts]. Prohlédněte si způsob a strukturu definice tohoto prostředku.
 6. Vyberte **Download** (Stáhnout). Uložte soubor **template.json** ze staženého balíčku do svého počítače. V další části šablonu upravíte pomocí nástroje Template deployment.
@@ -61,13 +65,13 @@ V této části vytvoříte účet úložiště pomocí portálu Azure Portal. N
 
     ![Vygenerování šablony na portálu](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
-    Pomocí šablony a souborů parametrů můžete vytvořit účet služby Azure Storage.
+    Pomocí šablony a souborů parametrů, můžete vytvořit prostředek, v tomto kurzu se účet úložiště Azure.
 
 ## <a name="edit-and-deploy-the-template"></a>Úprava a nasazení šablony
 
-Na webu Azure Portal je možné provádět několik základních úprav šablon. V tomto rychlém startu použijete nástroj portálu *Template deployment*. Pokud chcete upravit složitější šablonu, zvažte použití editoru [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), který poskytuje více funkcí úprav.
+Na webu Azure Portal je možné provádět několik základních úprav šablon. V tomto rychlém startu použijete nástroj portálu *Template deployment*. *Nasazení šablony* se používá v tomto kurzu, aby mohl dokončit celý kurz pomocí jednoho rozhraní – na webu Azure portal. Chcete-li upravit šablonu pro složitější, zvažte použití [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), který nabízí bohatší funkce upravit.
 
-Azure vyžaduje, aby každá služba Azure měla jedinečný název. Pokud zadáte název účtu úložiště, který už existuje, nasazení selže. Pokud se chcete tomuto problému vyhnout, můžete vygenerovat jedinečný název účtu úložiště zavoláním funkce šablony `uniquestring()`.
+Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení může selhat, pokud zadaný název účtu úložiště, který již existuje. K tomuto problému vyhnout, upravte šablonu, kterou chcete použít volání šablony funkce `uniquestring()` ke generování jedinečným názvem účtu úložiště.
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek**.
 2. Do pole **Hledat na Marketplace** zadejte **template deployment** a stiskněte **ENTER**.
@@ -84,7 +88,7 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Pokud zadá
     ```
     ![Šablony Azure Resource Manageru](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-    Používají se zde dvě funkce: `concat()` a `uniqueString()`.
+    Zde jsou použity dvě funkce šablony: `concat()` a `uniqueString()`.
 
 8. Odeberte parametr **storageAccountName** zvýrazněný na předchozím snímku obrazovky.
 9. Aktualizujte element name prostředku **Microsoft.Storage/storageAccounts** tak, aby se místo parametru použila nově definovaná proměnná:
@@ -142,9 +146,9 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Pokud zadá
 7. Vyberte **Uložit**.
 8. Zadejte následující hodnoty:
 
-    - **Skupina prostředků**: Zadejte jedinečný název skupiny prostředků.
-    - **Umístění:**: Vyberte umístění pro skupinu prostředků.
-    - **Umístění:**: Vyberte umístění pro účet úložiště.  Můžete použít stejné umístění jako u skupiny prostředků.
+    - **Skupina prostředků**: vyberte **vytvořit nový** a pojmenujte novou skupinu prostředků s jedinečným názvem.
+    - **Umístění:**: Vyberte umístění pro skupinu prostředků. Například **USA (střed)**. 
+    - **Umístění:**: Vyberte umístění pro účet úložiště. Například **USA (střed)**.
     - **Typ účtu**: Zadejte **Standard_LRS** pro tento rychlý start.
     - **Druh**: Zadejte **StorageV2** pro tento rychlý start.
     - **Přístup k úrovni**: Zadejte **Hot** pro tento rychlý start.
@@ -156,7 +160,7 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Pokud zadá
     ![Nasazení šablon Azure Resource Manageru](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-deploy.png)
 
 10. Vyberte **Koupit**.
-11. Stav nasazení zobrazíte tak, že nahoře na obrazovce vyberete ikonu zvonku (oznámení). Počkejte na dokončení nasazení.
+11. Stav nasazení zobrazíte tak, že nahoře na obrazovce vyberete ikonu zvonku (oznámení). Měly by se zobrazit **probíhá nasazení**. Počkejte na dokončení nasazení.
 
     ![Oznámení nasazení šablon Azure Resource Manageru](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
 

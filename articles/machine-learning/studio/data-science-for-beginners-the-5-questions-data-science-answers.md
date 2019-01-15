@@ -1,27 +1,8 @@
 ---
-title: Datová věda pro začátečníky – aplikace Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Vědecké zpracování dat pro začátečníky je vás naučí základní koncepce při 5 krátkých videí, počínaje The 5 odpovídá vědecké zkoumání dat pro dotazy. Ze služby Azure Machine Learning.
-keywords: provádění datových věd, začátečníky datové vědy, datové vědy pro začátečníky, základní informace o datové vědy, data science dotazy, data science video, datové vědy Úvod
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: 9f6d951dcbb0a0a01961bf3f6c924a0c40fd4d29
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252911"
+Název: Datová věda pro začátečníky titleSuffix: Azure Machine Learning Studio Popis: Vědecké zpracování dat pro začátečníky je vás naučí základní koncepce při 5 krátkých videí, počínaje The 5 odpovídá vědecké zkoumání dat pro dotazy. Ze služby Azure Machine Learning.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Datová věda pro začátečníky – video 1: 5 otázky, které odpovídá vědecké zkoumání dat
 Rychlý úvod do datových věd z *datová věda pro začátečníky* v pěti krátkých videích z hlavní vědec. Tato videa jsou užitečné, ale základní, ať už vás zajímá datových věd nebo pracujete s odborníky přes data.

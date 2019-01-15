@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 5e83eb46a4d62c6aaf0862d4bb1aa046c5d64dde
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 02780a9e9702a41f677595d74b9861ea6a51b572
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120509"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260426"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Kurz: Připojení, nastavit, aktivovat Azure Data Box Gateway (Preview) 
 
@@ -86,7 +86,7 @@ Teď jste na **řídicí panel** vašeho zařízení.
     - Síťové rozhraní můžete nakonfigurovat jako pro protokol IPv4.
 
     >[!NOTE] 
-    > Doporučujeme přepnutí místní IP adresu rozhraní netowrk ze statické na server, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud pomocí některé síťové rozhraní a můžete přepnout na DHCP, by existovat žádný způsob, jak určit adresu ze serveru DHCP. Pokud chcete změnit adresu DHCP, počkat, dokud se zařízení zaregistruje ve službě a potom změňte. Pak můžete zobrazit IP adresy všech adpaters v **vlastnosti zařízení** na webu Azure Portal pro vaši službu.
+    > Doporučujeme přepnutí místní IP adresa síťového rozhraní ze statické na protokol DHCP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud pomocí některé síťové rozhraní a můžete přepnout na DHCP, by existovat žádný způsob, jak určit adresu ze serveru DHCP. Pokud chcete změnit adresu DHCP, počkat, dokud se zařízení zaregistruje ve službě a potom změňte. Pak můžete zobrazit IP adresy všech adpaters v **vlastnosti zařízení** na webu Azure Portal pro vaši službu.
 
 4. (Volitelně) nakonfigurujte váš webový proxy server. Sice volitelné konfigurace webového proxy serveru, mějte na paměti, že pokud používáte webový proxy server, můžete pouze nakonfigurovat ji sem.
    
@@ -94,7 +94,7 @@ Teď jste na **řídicí panel** vašeho zařízení.
    
    V **webového proxy serveru** stránky:
    
-   1. Zadat **webová adresa URL proxy serveru** v tomto formátu: *http://&lt;hostitele IP adresu nebo plně kvalifikovaného názvu domény&gt;: číslo portu*. Všimněte si, že nejsou podporovány adresy URL HTTPS.
+   1. Zadat **webová adresa URL proxy serveru** v tomto formátu: *http://&lt;hostitele IP adresu nebo plně kvalifikovaný název domény&gt;: číslo portu*. Všimněte si, že nejsou podporovány adresy URL HTTPS.
    2. Zadejte **ověřování** jako **základní** nebo **žádný**.
    3. Pokud používáte ověřování, budete také muset poskytnout **uživatelské jméno** a **heslo**.
    4. Klikněte na tlačítko **Použít**. Bude to ověřit a použít nastavení nakonfigurované webového proxy serveru.

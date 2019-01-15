@@ -8,19 +8,19 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.date: 08/25/2018
-ms.openlocfilehash: 0c30ffec58b1542fa80cf0c9873a0e6df8641104
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/13/2019
+ms.openlocfilehash: b58059727a383e978691bfbbee77a1f6b04692ce
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232541"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264322"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
 Pomocí konektoru systému souborů a Azure Logic Apps můžete vytvořit automatizovaných úloh a pracovních postupů, které vytvořit a spravovat soubory na soubor v místním sdílet, například:  
 
-- Vytvořit, získat, přidat, aktualizovat a odstranit soubory
+- Vytvořit, získat, přidat, aktualizovat a odstraňovat soubory.
 - Seznam souborů ve složkách nebo kořenových složek.
 - Získáte obsah souboru a metadata.
 
@@ -28,13 +28,17 @@ Tento článek popisuje, jak můžete připojit k systému souborů v místním 
 
 ## <a name="prerequisites"></a>Požadavky
 
+V příkladu, budete potřebovat tyto položky:
+
 * Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
 * Než se aplikace logiky můžete připojit k místním systémům například souborového serveru systému, je potřeba [instalace a nastavení místní brány dat](../logic-apps/logic-apps-gateway-install.md). Tímto způsobem můžete používat instalaci brány při vytváření připojení systému souborů z aplikace logiky.
 
-* A [Drobox účet](https://www.dropbox.com/) a pověření uživatele
+* A [Drobox účet](https://www.dropbox.com/) a přihlašovacích údajů k účtu. Vaše přihlašovací údaje k Dropboxu jsou nezbytné pro vytvoření připojení mezi vaší aplikace logiky a Drobox účet. 
 
-  Vaše přihlašovací údaje autorizaci na vytvoření připojení a přístup k vašemu účtu Drobox aplikace logiky. 
+* Svoje přihlašovací údaje pro počítač, který má v systému souborů, kterému chcete získat přístup. Například pokud se instalace brány dat na stejném počítači jako systém souborů, pak potřebujete přihlašovací údaje účtu pro daný počítač. 
+
+* E-mailový účet od poskytovatele podporovaného v Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit. 
 
 * Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). V tomto příkladu je třeba prázdné aplikace logiky.
 
@@ -44,7 +48,7 @@ Tento článek popisuje, jak můžete připojit k systému souborů v místním 
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-1. Do vyhledávacího pole zadejte jako filtr "dropboxu". Ze seznamu triggerů vyberte tento trigger: **při vytvoření souboru** 
+1. Do vyhledávacího pole zadejte jako filtr "dropboxu". Ze seznamu triggerů vyberte tento trigger: **Když se vytvoří soubor** 
 
    ![Vyberte trigger Dropboxu](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
@@ -56,7 +60,7 @@ Tento článek popisuje, jak můžete připojit k systému souborů v místním 
 
 ## <a name="add-actions"></a>Přidání akce
 
-1. Pod triggerem zvolte **další krok**. Do vyhledávacího pole zadejte jako filtr "systém souborů". Ze seznamu akcí vyberte tuto akci: **vytvořit soubor – systém souborů**
+1. Pod triggerem zvolte **další krok**. Do vyhledávacího pole zadejte jako filtr "systém souborů". Ze seznamu akcí vyberte tuto akci: **Vytvořte soubor – systém souborů**
 
    ![Vyhledání konektoru systému souborů](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -67,11 +71,11 @@ Tento článek popisuje, jak můžete připojit k systému souborů v místním 
    | Vlastnost | Požaduje se | Hodnota | Popis | 
    | -------- | -------- | ----- | ----------- | 
    | **Název připojení** | Ano | <*Název připojení*> | Název, který chcete použít pro připojení | 
-   | **Kořenová složka** | Ano | <*název kořenové složky*> | Kořenová složka pro systém souborů, jako je například místní složky v počítači, kde je nainstalována na místní bránu dat, nebo složku pro sdílené síťové složky můžete přistupovat k počítači. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazené složky, který se používá pro relativní cesty pro všechny akce související se soubory. | 
-   | **Typ ověřování** | Ne | <*Typ ověření*> | Typ ověřování, který využívá systém souborů, například **Windows** | 
-   | **Uživatelské jméno** | Ano | <*domény*>\\<*uživatelské jméno*> | Uživatelské jméno pro vaši bránu data dříve nainstalované | 
-   | **Heslo** | Ano | <*vaše heslo*> | Heslo pro vaši bránu data dříve nainstalované | 
-   | **Brány** | Ano | <*nainstalované název brány*> | Název pro dříve nainstalovanou bránu | 
+   | **Kořenová složka** | Ano | <*název kořenové složky*> | Kořenová složka pro systém souborů, například, pokud jste nainstalovali bránu místní data jako je například místní složka na počítači, kde je nainstalován na místní bránu dat, nebo složku pro sdílené síťové složky můžete přistupovat k počítači. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazené složky, který se používá pro relativní cesty pro všechny akce související se soubory. | 
+   | **Typ ověřování** | Ne | <*auth-type*> | Typ ověřování, který využívá systém souborů, například **Windows** | 
+   | **Uživatelské jméno** | Ano | <*domény*>\\<*uživatelské jméno*> | Uživatelské jméno pro počítač, kde máte systému souborů | 
+   | **Heslo** | Ano | <*your-password*> | Heslo k počítači, kde máte systému souborů | 
+   | **gateway** | Ano | <*installed-gateway-name*> | Název pro dříve nainstalovanou bránu | 
    ||| 
 
 1. Jakmile budete hotoví, vyberte **Vytvořit**. 

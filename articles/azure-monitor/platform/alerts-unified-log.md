@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: b3949fefac1cc230a98687b3b5ff9c7a01c6a0e9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8b56c338a62e88748be2a140e743c43b54da4b2d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789571"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259865"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
 Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
 
-Upozornění protokolu se skládá z prohledávání protokolů pravidel vytvořených pro [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostic-events). Další informace o jejich využití najdete v tématu [vytvoření upozornění protokolu v Azure](../../azure-monitor/platform/alerts-log.md)
+Upozornění protokolu se skládá z prohledávání protokolů pravidel vytvořených pro [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Další informace o jejich využití najdete v tématu [vytvoření upozornění protokolu v Azure](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
 > Data z oblíbených protokolů [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) je teď taky dostupná na platformě metriky ve službě Azure Monitor. Pro zobrazení podrobností o [upozornění metriky pro protokoly](../../azure-monitor/platform/alerts-metric-logs.md)
@@ -38,7 +38,7 @@ Pravidla vyhledávání protokolů jsou definovány následující podrobnosti:
 - **Frekvence**.  Určuje, jak často se má spustit dotaz. Může být libovolná hodnota mezi 5 minutami a 24 hodinami. By měla být větší nebo menší než toto časové období.  Pokud je hodnota větší než časové období, riskujete záznamy se vynechalo.<br>*Představte si třeba po dobu 30 minut a frekvenci 60 minut.  Pokud je dotaz spuštěn v 1:00, vrátí záznamy 12:30 až 1:00 PM.  Při příštím spuštění dotazu by je 2:00, kdy vracel záznamy 1:30 až 2:00.  Záznamy, které vytvoří až 1:00, 1:30 by nikdy být vyhodnocena.*
 - **Prahová hodnota**.  K určení, zda má být vytvořena výstraha se vyhodnocují výsledky prohledávání protokolů.  Prahová hodnota se liší pro různé typy pravidel upozornění na prohledávání protokolu.
 
-Pravidla vyhledávání protokolů už to pro [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostic-events), mohou být dvou typů. Každý z těchto typů je podrobně popsány v následující části.
+Pravidla vyhledávání protokolů už to pro [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events), mohou být dvou typů. Každý z těchto typů je podrobně popsány v následující části.
 
 - **[Počet výsledků](#number-of-results-alert-rules)**. Jediná výstraha vytvořena, když počet záznamů vrácených prohledávání protokolů překročí zadaný počet.
 - **[Metriky měření](#metric-measurement-alert-rules)**.  Upozornění bylo vytvořeno pro každý objekt ve výsledcích prohledávání protokolů s hodnotami, které překročí zadanou prahovou hodnotu.

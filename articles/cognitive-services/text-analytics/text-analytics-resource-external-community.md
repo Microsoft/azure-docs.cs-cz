@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: heidist
-ms.openlocfilehash: fbea686ba0f67cdab79f1553344bd99dd105fc00
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 139699fac1a84273174f2c3bd30da2a911de46b8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605245"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302252"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>E & xterní komunity obsah pro Text Analytics služby Cognitive Services
 
@@ -25,15 +25,15 @@ ms.locfileid: "45605245"
 
 + [Text Analytics API původní oznámení (blog o Azure)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
 
-+ [Použití klíče frázi Cognitive Services API pro analýzu textu z prostředí PowerShell (MSDN blog)](https://blogs.msdn.microsoft.com/riteshmodi/2017/03/24/text-analytics-key-phrase-cognitive-services-powershell/)
++ [Pomocí Text Analytics klíč frázi API služeb Cognitive Services z prostředí PowerShell (AutomationNext blogu)](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [Rychlý R tip: Microsoft Cognitive Services Text Analytics API (bloggerům R)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [Rychlé R tip: Microsoft Cognitive Services Text Analytics API (bloggerům R)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
 + [Analýza subjektivního hodnocení do aplikace logiky pomocí systému SQL Server data (blog na TechNetu)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
 + [Analýza subjektivního hodnocení s Dynamics 365 CRM Online (MSDN blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ Blog Power BI: extrahování klíče slovní spojení z zpráv na Facebooku: [část 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) a [část 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ PowerBI blog: Extrakce klíčových frází z zpráv na Facebooku: [1. část](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) a [2. část](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
 ## <a name="videos"></a>Videa
 

@@ -1,21 +1,21 @@
 ---
 title: Vytvoření pomocí rozhraní .NET – Content Moderator videa revize
 titlesuffix: Azure Cognitive Services
-description: Jak vytvořit videa kontroly pomocí Content Moderator SDK pro .NET
+description: Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat Content Moderator SDK s C# vytvoření videa revize.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/18/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 284ee24bbb0a15d107acf85e2d58072a0ecbbc6e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e9fb82c864c721a9df2e3b31d04e68c824404f81
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219036"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262507"
 ---
 # <a name="create-video-reviews-using-net"></a>Vytvoření videa kontroly pomocí .NET
 
@@ -33,22 +33,21 @@ Tento článek předpokládá, že máte [který video (viz rychlý start)](vide
 
 Tento článek také předpokládá, že jste již obeznámeni s Visual Studio a C#.
 
-## <a name="sign-up-for-content-moderator"></a>Zaregistrujte si Content Moderatoru
+## <a name="sign-up-for-content-moderator"></a>Registrace do Content Moderatoru
 
-Než budete moct použít služby Content Moderator přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
-Odkazovat [rychlý Start](quick-start.md) se dozvíte, jak můžete získat klíč.
+Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného. Podle pokynů v tématu [Vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru Content Moderatoru a získejte svůj klíč.
 
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Zaregistrovat účet nástroj pro kontrolu, pokud nebyla dokončena v předchozím kroku
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrace účtu nástroje pro kontrolu, pokud jste se nezaregistrovali v předchozím kroku
 
-Pokud jste získali Content Moderator z webu Azure portal, také [zaregistrujte si účet nástroj pro revize](https://contentmoderator.cognitive.microsoft.com/) a vytvořte tým kontroly. Budete potřebovat Id týmu a nástroje pro recenze pro volání rozhraní API přezkoumání a spuštění úlohy a zobrazíte recenzí v nástroj pro recenze.
+Pokud jste Content Moderator získali na portálu Azure Portal, [zaregistrujte si i účet nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) a vytvořte posuzovací tým. Abyste mohli zavolat rozhraní API pro kontroly a tím zahájit úlohu a zobrazit kontroly v nástroji pro kontrolu, budete potřebovat ID týmu a nástroj pro kontrolu.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Ujistěte se, že svůj klíč rozhraní API můžete volat rozhraní API pro kontrolu pro vytvoření revize
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Kontrola, že klíč rozhraní API může volat rozhraní API pro kontroly, aby se mohla vytvořit kontrola
 
-Po dokončení předchozích kroků, můžete uvíznout dva klíče Content Moderator Pokud jste spustili z webu Azure portal. 
+Pokud jste začínali na portálu Azure Portal, můžete po dokončení předchozích kroků získat dva klíče Content Moderatoru. 
 
-Pokud máte v plánu používat klíč rozhraní API poskytuje Azure ve vaší ukázce sady SDK, postupujte podle pokynů uvedených v [klíče služby Azure pomocí rozhraní API pro kontrolu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) oddílu, aby vaše aplikace volat rozhraní API pro kontrolu a vytvořit revize.
+Pokud plánujete ve své ukázkové sadě SDK používat klíč rozhraní API poskytnutý službou Azure, postupujte podle pokynů v části o [použití klíče Azure s rozhraním API pro kontroly](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api), aby aplikace mohla volat rozhraní API pro kontroly a vytvářet kontroly.
 
-Pokud používáte bezplatné zkušební verze klíč vygenerovaný pomocí nástroje pro recenze, váš účet nástroj pro revize již ví o klíči a proto nejsou požadované žádné další kroky.
+Pokud použijete klíč bezplatné zkušební verze vygenerovaný nástrojem pro kontrolu, váš účet nástroje pro kontrolu už klíč zná, proto není nutné dělat nic dalšího.
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Připravit vaše video a snímky videí k revizi
 
@@ -69,13 +68,13 @@ Pro snímky videa (imagí) použijte následující Image:
 | :---: | :---: | :---: |
 [Orámování 1](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [Orámování 2](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [Rámec 3](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidat nový **Konzolová aplikace (.NET Framework)** do svého řešení projekt.
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
 
 1. Pojmenujte projekt **VideoReviews**.
 
-1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
+1. Projekt vyberte jako jediný spouštěný projekt řešení.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -86,7 +85,7 @@ Nainstalujte následující balíčky NuGet pro projekt TermLists.
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace programu v nástrojích příkazy
+### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
 Upravit program společnosti příkazy následujícím způsobem.
 
@@ -100,7 +99,7 @@ Upravit program společnosti příkazy následujícím způsobem.
     using Newtonsoft.Json;
 
 
-### <a name="add-private-properties"></a>Přidáním vlastních vlastností
+### <a name="add-private-properties"></a>Přidání soukromých vlastností
 
 Přidejte následující soukromé vlastnosti do oboru názvů VideoReviews, třídu programu.
 
@@ -168,7 +167,7 @@ Přidejte následující definici metody do oboru názvů VideoReviews, třídu 
 
 ## <a name="create-a-video-review"></a>Vytváření video kontroly
 
-Vytvořit kontrolu videa s **ContentModeratorClient.Reviews.CreateVideoReviews**. Další informace najdete v tématu [reference k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Vytvořit kontrolu videa s **ContentModeratorClient.Reviews.CreateVideoReviews**. Další informace najdete v [referenčních informacích k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **CreateVideoReviews** má následující povinné parametry:
 1. Řetězec obsahující typ MIME, které by se měly "application/json". 
@@ -217,13 +216,13 @@ Přidejte následující definici metody do oboru názvů VideoReviews, třídu 
     }
 
 > [!NOTE]
-> Klíč služby Content Moderator má požadavků za druhé omezení četnosti (předávajících stran) a při překročení limitu, vyvolá výjimku s kódem chyby 429, sady SDK. 
+> Klíč služby Content Moderator má limit četnosti žádostí za sekundu (RPS), a pokud ho překročíte, sada SDK zobrazí výjimku s chybovým kódem 429. 
 >
-> Klíč úroveň free má omezení četnosti jeden RPS.
+> Klíč úrovně Free má limit nastavený na 1 RPS.
 
 ## <a name="add-video-frames-to-the-video-review"></a>Přidat snímky videí do video revize
 
-Přidat snímky videí do video recenzi s **ContentModeratorClient.Reviews.AddVideoFrameUrl** (Pokud je vaše video snímků jsou hostované online) nebo **ContentModeratorClient.Reviews.AddVideoFrameStream** () Pokud vaše video snímků jsou hostované místně). Tento rychlý start předpokládá videa snímků hostují online a proto používá **AddVideoFrameUrl**. Další informace najdete v tématu [reference k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
+Přidat snímky videí do video recenzi s **ContentModeratorClient.Reviews.AddVideoFrameUrl** (Pokud je vaše video snímků jsou hostované online) nebo **ContentModeratorClient.Reviews.AddVideoFrameStream** () Pokud vaše video snímků jsou hostované místně). Tento rychlý start předpokládá videa snímků hostují online a proto používá **AddVideoFrameUrl**. Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
 
 **AddVideoFrameUrl** má následující povinné parametry:
 1. Řetězec obsahující typ MIME, které by se měly "application/json".
@@ -373,7 +372,7 @@ Přidejte následující definici metody do oboru názvů VideoReviews, třídu 
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>Vložení všechno dohromady
+## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
 
 Přidat **hlavní** definici metody do oboru názvů VideoReviews, třídu programu. A konečně zavřete třídu Program a VideoReviews oboru názvů.
 
@@ -407,7 +406,7 @@ Přidat **hlavní** definici metody do oboru názvů VideoReviews, třídu progr
         }
     }
 
-## <a name="run-the-program-and-review-the-output"></a>Spusťte program a prohlédněte si výstup
+## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 Při spuštění aplikace, zobrazí se výstup na následující řádky:
 
     Creating a video review.

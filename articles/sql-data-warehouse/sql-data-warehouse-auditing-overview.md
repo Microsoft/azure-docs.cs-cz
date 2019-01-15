@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d35ac7cac5c14a7bd57913046e8f4c09a22f177a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260376"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267432"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -107,7 +107,7 @@ Před nastavením auditování zaškrtněte, pokud používáte auditu ["Starš�
 
 5. Klikněte na tlačítko **OK** tlačítko Uložit podrobnosti o konfiguraci úložiště.
 6. V části **protokolování podle událostí**, klikněte na tlačítko **úspěch** a **selhání** protokolovaly všechny události, nebo zvolte kategorie jednotlivých událostí.
-7. Pokud konfigurujete auditování pro databáze, budete muset změnit připojovací řetězec k zajištění, že data auditování je správně zachytit váš klient. Zkontrolujte [upravit FDQN serveru v připojovacím řetězci](sql-data-warehouse-auditing-downlevel-clients.md) tématu pro připojení klientů nižší úrovně.
+7. Pokud konfigurujete auditování pro databáze, budete muset změnit připojovací řetězec k zajištění, že data auditování je správně zachytit váš klient. Zkontrolujte [upravit název FQDN serveru v připojovacím řetězci](sql-data-warehouse-auditing-downlevel-clients.md) tématu pro připojení klientů nižší úrovně.
 8. Klikněte na **OK**.
 
 ## <a id="subheading-3"></a>Analýza protokolů auditu a sestavy
@@ -196,7 +196,7 @@ Pro "Klienty nižší úrovně", které podporují TDS verzi 7.3 a níže, změn
 * JDBC (zatímco JDBC podporují TDS 7.4, funkce přesměrování protokolu TDS není plně podporovány)
 * Tedious (pro Node.JS)
 
-**Poznámka:** předchozí server plně kvalifikovaného názvu domény změny mohou být užitečné také pro použití zásady auditování služby SQL Server úroveň bez potřebu konfigurační krok v každé databázi (dočasná omezení rizik).     
+**Poznámka:** Předchozí server úpravy plně kvalifikovaný název domény může být užitečné také při použití zásad auditování služby SQL Server úroveň nemusejí pro krok konfigurace v každé databázi (dočasná omezení rizik).     
 
 
 

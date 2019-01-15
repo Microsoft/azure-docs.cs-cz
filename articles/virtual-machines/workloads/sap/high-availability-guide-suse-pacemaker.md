@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2cec9e9b9724ca401778d4493d03def2aefc4ee9
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074372"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304478"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -483,7 +483,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 Využitím techniky STONITH zařízení využívá instanční objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit instanční objekt služby.
 
-1. Přejděte na < https\://portal.azure.com >
+1. Přejít na [https://portal.azure.com](https://portal.azure.com)
 1. Otevře se okno Azure Active Directory  
    Přejděte do vlastností a poznamenejte si ID adresáře. Toto je **ID tenanta**.
 1. Klikněte na možnost registrace aplikací

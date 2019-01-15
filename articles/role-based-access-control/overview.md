@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c614ae9d157c6e4121701cb22213706020ee20a7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867894"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303306"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co je řízení přístupu na základě role (RBAC)?
 
@@ -78,7 +78,7 @@ Azure zavádí datové operace (momentálně ve verzi Preview), které vám umo�
 
 ### <a name="scope"></a>Rozsah
 
-*Obor* je hranice, pro kterou přístup platí. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
+*Obor* je sadu prostředků, které se vztahuje na přístup. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
 
 V Azure můžete zadat obor na více úrovních: na úrovni [skupiny pro správu](../azure-resource-manager/management-groups-overview.md), předplatného, skupiny prostředků nebo prostředku. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor.
 
@@ -99,6 +99,12 @@ Následující diagram znázorňuje příklad přiřazení role. V tomto příkl
 ![Přiřazení role za účelem řízení přístupu](./media/overview/rbac-overview.png)
 
 Přiřazení rolí můžete vytvořit pomocí portálu Azure Portal, Azure CLI, Azure PowerShellu, sad Azure SDK nebo rozhraní REST API. V každém předplatném můžete mít až 2 000 přiřazení rolí. K vytváření a odebírání přiřazení rolí musíte mít oprávnění `Microsoft.Authorization/roleAssignments/*`. Toto oprávnění se uděluje prostřednictvím role [Vlastník](built-in-roles.md#owner) nebo [Správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
+
+## <a name="multiple-role-assignments"></a>Více přiřazení rolí
+
+Co se tak stane, když máte více překrývající se přiřazení rolí? RBAC je model sčítání tak, aby byly vaše skutečná oprávnění přidání přiřazení role. Podívejte se na následující příklad, kde je uživatel udělil roli Přispěvatel v oboru předplatného a role čtenáře na skupinu prostředků. Přidání oprávnění přispěvatele a čtenáře oprávnění je v podstatě role přispěvatele pro skupinu prostředků. Proto se v tomto případě přiřazení role Čtenář nemá žádný vliv.
+
+![Více přiřazení rolí](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>Přiřazení zamítnutí
 
@@ -126,7 +132,7 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 
 ## <a name="next-steps"></a>Další postup
 
-- [Rychlý start: Udělení přístupu pro uživatele pomocí RBAC a webu Azure Portal](quickstart-assign-role-user-portal.md)
+- [Rychlý start: Udělení přístupu pro uživatele pomocí RBAC a webu Azure portal](quickstart-assign-role-user-portal.md)
 - [Správa přístupu pomocí RBAC a portálu Azure Portal](role-assignments-portal.md)
 - [Vysvětlení různých rolí v Azure](rbac-and-directory-admin-roles.md)
-- [Přechod na podnikový cloud: Správa přístupu k prostředkům v Azure](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)
+- [Přechodu na podnikový Cloud: Správa přístupu k prostředkům v Azure](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

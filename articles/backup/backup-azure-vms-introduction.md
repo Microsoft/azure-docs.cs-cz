@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 67d81387a347bb2061457bfd24553f304e965f38
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 09464342bd39e57f6e637ce90adc7190d08340a9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198758"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265409"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -55,6 +55,10 @@ Azure Backup pořídí pořizovat snímky jsou spuštěné aplikace, snímky kon
         [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
         ""USEVSSCOPYBACKUP"="TRUE"
         ```
+        - Spustit následující příkaz z příkazového řádku se zvýšenými oprávněními (jako správce), chcete-li nastavit výše uvedené klíče registru:
+          ```
+          REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f
+          ```
 - **Virtuální počítače s Linuxem**: Aby se zajistilo, že jsou vaše virtuální počítače s Linuxem konzistentní při Azure Backup pořídí snímek, můžete použít rozhraní Linux předzálohovací a pozálohovací skript. Můžete napsat vlastní skripty zajistit konzistenci při pořízení snímku virtuálního počítače.
     -  Azure Backup vyvolá pouze před a po skriptech psaných vámi.
     - Pokud se předzálohovací skript a pozálohovacích skriptů proběhl úspěšně, Azure Backup označí bod obnovení jako konzistentní s aplikací. Však si nakonec odpovědné za konzistentnost aplikací při použití vlastních skriptů.

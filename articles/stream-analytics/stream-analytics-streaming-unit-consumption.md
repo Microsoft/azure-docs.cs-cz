@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 84f0c000f54852bbab60a53ecb686656ac86b3de
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002650"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304835"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -58,6 +58,8 @@ Další informace o výběru správné číslo su najdete na této stránce: [Š
 Základní sada operátorů stavová služba Stream Analytics k dispozici jsou prvky dočasných dotazů (orientované na čas). Stream Analytics spravuje stav tyto operace interně jménem uživatele tím, že spravuje spotřebu paměti, vytváření kontrolních bodů pro zajištění odolnosti a obnovení stavu během upgradu služby. I když Stream Analytics plně řídí stavy, existují některé z doporučených osvědčených postupů, které uživatelé měli zvážit.
 
 Mějte na paměti, že úloha s logikou složitého dotazu může mít vysokou % využití SU i v případě, že není přijímání průběžně vstupních událostí. K tomu může dojít po náhlá Špička v vstupní a výstupní události. Úloha může nadále zachovat stav v paměti, pokud je složitý dotaz.
+
+% Využití SU může najednou umístit do 0 na krátkou dobu před vracející se zpět do očekávané úrovně. K tomu dochází z důvodu přechodných chyb nebo systém byl iniciován upgrady.
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Stavových dotazů logiky v elementech dočasné
 Jeden jedinečné funkce úlohy Azure Stream Analytics je stavové zpracování, jako jsou agregace v okně, dočasné spojení a dočasné analytických funkcí. Každý z těchto operátorů uchovává informace o stavu. Je maximální velikost okna pro tyto elementy dotazu je sedm dní. 

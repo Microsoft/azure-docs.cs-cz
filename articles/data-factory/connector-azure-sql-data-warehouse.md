@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3d82becf209e44fe66711c964f825ce78d691b2d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 48f33dcf66c282ee75fe665531e1c9a4eb0d5382
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024827"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305940"
 ---
-#  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+# <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
 > * [Version1 ](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Aktuální verze](connector-azure-sql-data-warehouse.md)
 
@@ -336,9 +336,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -410,19 +410,19 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 
     ```json
     "typeProperties": {
-       "folderPath": "<blobpath>",
-       "format": {
-           "type": "TextFormat",
-           "columnDelimiter": "<any delimiter>",
-           "rowDelimiter": "\n",
-           "nullValue": "",
-           "encodingName": "utf-8",
-           "firstRowAsHeader": <any>
-       },
-       "compression": {
-           "type": "GZip",
-           "level": "Optimal"
-       }
+        "folderPath": "<blobpath>",
+        "format": {
+            "type": "TextFormat",
+            "columnDelimiter": "<any delimiter>",
+            "rowDelimiter": "\n",
+            "nullValue": "",
+            "encodingName": "utf-8",
+            "firstRowAsHeader": <any>
+        },
+        "compression": {
+            "type": "GZip",
+            "level": "Optimal"
+        }
     },
     ```
 

@@ -1,6 +1,6 @@
 ---
 title: Šablona řešení ethereum během testování pracovní consortium
-description: Pomocí šablony řešení Consortium Etherereum testování pracovní nasazení a konfiguraci sítě konsorcia několika člen ethereum během
+description: Pomocí šablony řešení Consortium ethereum během testování pracovní nasazení a konfiguraci sítě konsorcia několika člen ethereum během
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231793"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260529"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Šablona řešení ethereum během testování pracovní consortium
 
@@ -67,7 +67,7 @@ Tento proces vyžaduje předplatné Azure, které podporují nasazení několika
 
 Po přihlášení k odběru je zabezpečená, přejděte na web Azure portal. Vyberte **+ vytvořit prostředek**, Marketplace (Zobrazit vše) a vyhledejte **ethereum během testování pracovní Consortium**.
 
-Šablona nasazení vás provede procesem konfigurace první člen nároky na místo v síti. Tok nasazení se dělí na pět kroků: základy, Operations Management Suite, oblastí nasazení, velikost síťových a výkonu, ethereum během nastavení.
+Šablona nasazení vás provede procesem konfigurace první člen nároky na místo v síti. Tok nasazení se dělí na pět kroků: Základní informace o Operations Management Suite, oblasti nasazení, velikost síťových a výkonu, ethereum během nastavení.
 
 ### <a name="basics"></a>Základy
 
@@ -112,8 +112,8 @@ Název parametru| Popis| Povolené hodnoty |Výchozí hodnoty
 ---|---|---|---
 Číslo oblasti| Počet oblastí k nasazení sítě konsorcia|1, 2, 3, 4, 5| 2
 První oblasti| První oblasti k nasazení sítě konsorcia|Všechny povolené oblastí Azure| Západní USA
-Druhé oblasti |Druhé oblasti k nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 2)|Všechny povolené oblastí Azure| USA – východ
-Třetí oblasti| Třetí oblast pro nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 3)|Všechny povolené oblastí Azure| USA – střed
+Druhé oblasti |Druhé oblasti k nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 2)|Všechny povolené oblastí Azure| Východ USA
+Třetí oblasti| Třetí oblast pro nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 3)|Všechny povolené oblastí Azure| Střední USA
 Čtvrtý oblasti| Čtvrtý oblast pro nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 4)|Všechny povolené oblastí Azure| Východní USA 2
 Pátý oblasti| Pátý oblast pro nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 5)|Všechny povolené oblastí Azure| Západní USA 2
 
@@ -127,10 +127,10 @@ Název parametru |Popis |Povolené hodnoty| Výchozí hodnoty
 ---|---|---|---
 Počet uzlů dolování|Počet uzlů dolování, které jsou nasazené v jedné oblasti|2 - 15| 2
 Výkon úložiště uzel dolování|Typ spravovaný disk, na kterém každý z nasazených dolování uzlů.|Úrovně Standard nebo Premium|Standard
-Velikost virtuálního počítače uzlu dolování|Velikost virtuálního počítače pro uzly dolování.|Standardní A <br />Standardní D <br />Standardní D-v2 <br />Standardní řada F <br />Standard DS <br />a Standard služby FS|Standardní D1v2
+Velikost virtuálního počítače uzlu dolování|Velikost virtuálního počítače pro uzly dolování.|Standardní A <br />Standardní D <br />Standardní D-v2 <br />Standardní řada F <br />Standard DS <br />and Standard FS|Standardní D1v2
 Počet uzlů transakce s vyrovnáváním zatížení|Počet uzlů transakci ke zřízení jako části sítě.|1 - 5| 2
 Výkon transakcí uzlu úložiště|Typ spravovaný disk, na kterém každý z uzlů nasazené transakce.|Úrovně Standard nebo Premium|Standard
-Velikost virtuálního počítače uzlu transakce|Velikost virtuálního počítače pro uzly transakce.|Standardní A <br />Standardní D <br />Standardní D-v2 <br />Standardní řada F <br />Standard DS <br />a Standard služby FS|Standardní D1v2
+Velikost virtuálního počítače uzlu transakce|Velikost virtuálního počítače pro uzly transakce.|Standardní A <br />Standardní D <br />Standardní D-v2 <br />Standardní řada F <br />Standard DS <br />and Standard FS|Standardní D1v2
 
 ### <a name="ethereum-settings"></a>Ethereum během nastavení
 
@@ -141,14 +141,14 @@ V části Další **ethereum během nastavení**, zadejte nastavení konfigurace
 Název parametru |Popis |Povolené hodnoty|Výchozí hodnoty
 ---|---|---|---
 ConsortiumMember ID|ID přidružené k kolizí, aby každý člen účastnících se sítě konsorcia slouží ke konfiguraci adresní prostory IP adres. <br /><br />ID člena musí být jedinečné v různých organizacích ve stejné síti. Unique – člen ID je potřeba i v případě, že stejné organizace nasadí do víc oblastí.<br /><br />Poznamenejte si hodnotu tohoto parametru vzhledem k tomu je potřeba sdílet s ostatními spojovacího členy.|0 - 255
-ID sítě ethereum během|ID sítě pro síť consortium ethereum během nasazení. Každá síť Etherea má svůj vlastní ID sítě, kdy 1 je ID pro veřejnou síť. I když dolování uzly omezen přístup k síti, přesto doporučujeme využívat velké množství, abyste zabránili kolizím.|5 - 999 999 999| 10101010
+ID sítě ethereum během|ID sítě pro síť consortium ethereum během nasazení. Každá síť Etherea má svůj vlastní ID sítě, kdy 1 je ID pro veřejnou síť. I když dolování uzly omezen přístup k síti, přesto doporučujeme využívat velké množství, abyste zabránili kolizím.|5 - 999,999,999| 10101010
 Vlastní genesis bloku|Možnost automaticky vygenerovat genesis bloku nebo zadat vlastní.|Ano/Ne| Ne
 Heslo účtu Etherea (vlastní genesis bloku = No)|Heslo správce používá k zabezpečení účtu ethereum během importu do každého uzlu. Heslo musí obsahovat následující: 1 velké písmeno, 1 malé písmeno a 1 číslici.|12 znaků|Není k dispozici
 Heslo privátního klíče Etherea (vlastní genesis bloku = No)|Heslo použité ke generování privátního klíče ECC spojené s výchozím Etherea účet, který je generován. Není potřeba explicitně předávat v předem vygenerovaný soukromý klíč.<br /><br />Vezměte v úvahu přístupové heslo s dostatečnou náhodnost silným privátním klíčem a překrytí s ostatními členy consortium. Heslo musí obsahovat minimálně následující: 1 velké písmeno, 1 malé písmeno a 1 číslici.<br /><br />Mějte na paměti, pokud dva členy používat stejné heslo v účtech generovaných budou stejné. Stejné heslo je užitečné, pokud jedna organizace se pokouší o nasazení v oblastech a chce sdílet jeden účet (základní mince) napříč všemi uzly.|12 znaků|Není k dispozici
 Blok Genesis (vlastní genesis bloku = Ano)|Řetězec JSON představující vlastní genesis bloku. Další podrobnosti o formátu bloku genesis tady, najdete v části vlastní sítě.<br /><br />Při zadávání blok vlastní genesis stále vytvoření účtu Etherea. Zvažte zadání prefunded Etherea účtu v bloku genesis není čekat dolování.|Platný kód JSON |Není k dispozici
 Sdílený klíč pro připojení|Sdílený klíč pro připojení bran virtuálních sítí.| 12 znaků|Není k dispozici
 Adresa URL Consortium dat|Adresa URL odkazující na konfigurační data relevantní consortium poskytované jiný člen nasazení. <br /><br />Tato informace jsou poskytovány již připojené člena, který má nasazení. Pokud jste nasadili zbytku sítě, adresa URL je výstup nasazení šablony, s názvem CONSORTIUM DATA.||Není k dispozici
-Brána virtuální sítě pro připojení k|Cesta prostředku brány virtuální sítě pro připojení.<br />Tato informace jsou poskytovány již připojené člena, který má nasazení. Pokud jste nasadili zbytku sítě, adresa URL je ve výstupu šablony nasazení s názvem CONSORTIUM_MEMBER_GATEWAY_ID. Poznámka: Stejného člena consortium data adresy URL a bránu virtuální sítě resource musí použít.||Není k dispozici
+Brána virtuální sítě pro připojení k|Cesta prostředku brány virtuální sítě pro připojení.<br />Tato informace jsou poskytovány již připojené člena, který má nasazení. Pokud jste nasadili zbytku sítě, adresa URL je ve výstupu šablony nasazení s názvem CONSORTIUM_MEMBER_GATEWAY_ID. Poznámka: Je nutné použít stejný člen consortium data adresy URL a bránu virtuální sítě resource.||Není k dispozici
 Koncový bod sdílené informace registrátora|Sdílená informace o koncový bod nasazení jiného člena|Platný koncový bod prvního člena v W3C|Není k dispozici
 Doménový Registrátor informace sdílené klíče|Sdílená informace o primární klíč poskytuje jiný člen nasazení|Platný primární klíč prvního člena v consortium|Není k dispozici
 
@@ -215,9 +215,9 @@ Příklad:
 
 Název hostitele Azure portal| Skutečný název hostitele
 ---|---
-Mn. ethwvu reg1_0| Mn. ethwvu reg1000000
-Mn. ethwvu reg1_1 |Mn. ethwvu reg1000001
-Mn. ethwvu reg1_2 |Mn. ethwvu reg1000002
+mn-ethwvu-reg1_0| mn-ethwvu-reg1000000
+mn-ethwvu-reg1_1 |mn-ethwvu-reg1000001
+mn-ethwvu-reg1_2 |mn-ethwvu-reg1000002
 
 ## <a name="adding-a-new-consortium-member"></a>Přidání nového člena W3C
 
@@ -225,13 +225,13 @@ Mn. ethwvu reg1_2 |Mn. ethwvu reg1000002
 
 Jako první člen (nebo připojených člen) konsorcia potřebujete poskytovat ostatním členům několik údaje, aby se můžete připojit a jejich připojení. Zejména:
 
-1. **Sdílená Data konfigurace Consortium**: existuje sada dat, která se používá k orchestraci ethereum během připojení mezi dvěma členy. Potřebné informace, včetně genesis bloku, consortium ID sítě a spouštěcí uzly, se zapisují do souboru na uzlech transakce se vedoucí instancí nebo jiné nasazené člena. Umístění tohoto souboru je uveden v parametr výstupu šablony nasazení s názvem **CONSORTIUM DATA**.
-2. **Vytvoření partnerského vztahu koncového bodu údaje**: The sdílené informace o registrátora koncový bod se získat informace o všech uzlů již připojen k síti Etherea od vedoucích nebo jiný člen nasazení. Úložiště databáze sadu informace týkající se každý uzel připojení v síti, informace, jako je název hostitele uzlu, privátní IP adresu atd. Toto je parametr výstupu šablony nasazení s názvem **PEER_INFO_ENDPOINT**.
-3. **Vytvoření partnerského vztahu primární klíč**: The sdílené informace registrátora primární klíč slouží k získání přístupu se vedoucí instancí nebo jiný člen sdílené informace o primárním klíči. Toto je parametr výstupu šablony nasazení s názvem **PEER_INFO_PRIMARY_KEY**.
+1. **Sdílená Data konfigurace Consortium**: Existuje sada dat, která se používá k orchestraci ethereum během připojení mezi dvěma členy. Potřebné informace, včetně genesis bloku, consortium ID sítě a spouštěcí uzly, se zapisují do souboru na uzlech transakce se vedoucí instancí nebo jiné nasazené člena. Umístění tohoto souboru je uveden v parametr výstupu šablony nasazení s názvem **CONSORTIUM DATA**.
+2. **Vytvoření partnerského vztahu koncového bodu údaje**: Informace o sdílené registrátora koncový bod se získat informace o všech uzlů již připojen k síti Etherea od vedoucích nebo jiný člen nasazení. Úložiště databáze sadu informace týkající se každý uzel připojení v síti, informace, jako je název hostitele uzlu, privátní IP adresu atd. Toto je parametr výstupu šablony nasazení s názvem **PEER_INFO_ENDPOINT**.
+3. **Vytvoření partnerského vztahu primární klíč**: Primární klíč registrátora sdílené informace o slouží k získání přístupu k se vedoucí instancí nebo jiný člen Peer primární klíč. Toto je parametr výstupu šablony nasazení s názvem **PEER_INFO_PRIMARY_KEY**.
 
 
-4. **Brána virtuální sítě**: každý člen naváže připojení k síti celý blockchainu pomocí existujícího člena. Pro připojení virtuální sítě, budete potřebovat cestu prostředku k bráně virtuální sítě členu, ke kterému se připojujete. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
-5. **Sdílený klíč**: A předem vytvořit tajný mezi dva členy sítě konsorcia, které jsou navazování připojení. Toto je alfanumerický řetězec (mezi 1 až 128 znaků), který byl dohodnutých mimo kontext nasazení. (Například **MySharedKeyAbc123**)
+4. **VNET Gateway**: Každý člen naváže připojení k síti celý blockchainu pomocí existujícího člena. Pro připojení virtuální sítě, budete potřebovat cestu prostředku k bráně virtuální sítě členu, ke kterému se připojujete. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
+5. **Sdílený klíč**: Předem zavedené tajný kód mezi dva členy sítě konsorcia, které jsou navazování připojení. Toto je alfanumerický řetězec (mezi 1 až 128 znaků), který byl dohodnutých mimo kontext nasazení. (Například **MySharedKeyAbc123**)
 
 ### <a name="acceptance-of-new-member"></a>Přijetí nového člena
 
@@ -243,7 +243,7 @@ Další informace o tom, jak začít pracovat s rutinami Azure Powershellu a Azu
 
 Budete potřebovat nejnovější verzi rutin Azure místně nainstalovaný a relace otevřít. Ujistěte se, že pro přihlášení do relace pomocí svých přihlašovacích údajů předplatného Azure.
 
-**Powershellu: Připojení**
+**PowerShell: Vytvoření připojení**
 
 Stáhnout modul prostředí PowerShell a uložte ho místně. Zadané umístění modulu prostředí PowerShell jako **PÁR brány PS modulu** nasazení šablony výstupní parametr.
 
@@ -261,24 +261,24 @@ Dále naimportujte modul:
 
 Nakonec spusťte funkci pomocí odpovídající vstup:
 
-- **MyGatewayResourceId:** cestu prostředku brány. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId:** cestu prostředku brány připojující člena. To poskytuje spojovacího člena a má také parametr výstupu šablony nasazení z název **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **ConnectionName:** název k identifikaci tohoto připojení brány.
-- **Sdílený klíč:** předem zavedené tajný kód mezi dvěma členy sítě konsorcia, které jsou navazování připojení.
+- **MyGatewayResourceId:** Cesta prostředku brány. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** Cesta prostředku brány připojující člena. To poskytuje spojovacího člena a má také parametr výstupu šablony nasazení z název **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **ConnectionName:** Název k identifikaci tohoto připojení brány.
+- **Sdílený klíč:** Předem zavedené tajný kód mezi dvěma členy sítě konsorcia, které jsou navazování připojení.
 
 **CreateConnection** -MyGatewayResourceId <resource path of your Gateway> - OtherGatewayResourceId < cesta prostředku brány připojující člena > - ConnectionName Mojepripojeni - SharedKey "MySharedKeyAbc123"
 
-**xPlat CLI: vytvoření připojení**
+**xPlat CLI: Vytvoření připojení**
 
 Stáhněte si skript rozhraní příkazového řádku Azure a uložte ho místně. Umístění skriptu rozhraní příkazového řádku Azure je zadaný v parametru šablony nasazení s názvem **PÁR-GATEWAY-AZURE-skript rozhraní příkazového řádku**.
 
 Spusťte skript s odpovídající vstup:
 
-- **MyGatewayResourceId:** cestu prostředku brány. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId:** cestu prostředku brány připojující člena. To, kterou pomocí spojovacího členu, je parametr šablony nasazení jejich nasazení také s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **ConnectionName:** název k identifikaci tohoto připojení brány.
-- **Sdílený klíč:** předem zavedené tajný kód mezi dvěma členy sítě konsorcia, které jsou navazování připojení.
-- **Umístění:** oblasti Azure, ve které se nasadí váš prostředek brány.
+- **MyGatewayResourceId:** Cesta prostředku brány. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** Cesta prostředku brány připojující člena. To, kterou pomocí spojovacího členu, je parametr šablony nasazení jejich nasazení také s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **ConnectionName:** Název k identifikaci tohoto připojení brány.
+- **Sdílený klíč:** Předem zavedené tajný kód mezi dvěma členy sítě konsorcia, které jsou navazování připojení.
+- **Umístění:** Oblasti Azure, ve které se nasadí váš prostředek brány.
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group

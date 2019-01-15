@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 1e447f149c54e4c095d376db3f06dc0a0c399542
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f37a54652c234e2d91b317eae7ee334efb2de773
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104909"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262842"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Vytvořit pracovní prostor Log Analytics pomocí Azure Powershellu
 

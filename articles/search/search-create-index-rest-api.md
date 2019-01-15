@@ -1,6 +1,6 @@
 ---
 title: Vytvořte index v kódu pomocí rozhraní REST API – Azure Search
-description: Vytvoření textu v plném znění prohledávatelný index v kódu pomocí HTTP reqeusts a rozhraní REST API Azure Search.
+description: Vytvoření textu v plném znění prohledávatelný index v kódu pomocí žádosti protokolu HTTP a rozhraní REST API Azure Search.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f47aead95d7135e2528fea11c116effa93df4c4c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b4d85d3b8ee7e6a872fdd6bf07917770c4d2ee9e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309208"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265256"
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Vytvoření indexu Azure Search pomocí rozhraní REST API
 > [!div class="op_single_selector"]

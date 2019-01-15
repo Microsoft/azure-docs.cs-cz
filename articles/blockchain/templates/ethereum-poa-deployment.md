@@ -1,6 +1,6 @@
 ---
 title: Ethereum během testování of-Authority Consortium – Azure
-description: Testování of-Authority Etherereum Consortium mohli řešení používat, nasazení a konfiguraci sítě konsorcia několika člen ethereum během
+description: Ethereum během testování of-Authority Consortium mohli řešení používat, nasazení a konfiguraci sítě konsorcia několika člen ethereum během
 services: azure-blockchain
 keywords: ''
 author: CodyBorn
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 47f9dfea24dc3134e6a2f476affaaff7e60efe8c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974042"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260376"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum během testování of-authority W3C
 
@@ -272,8 +272,8 @@ Podrobný popis každého parametru takto:
 
   Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
   ---|---|---|---
-ID člena W3C|ID přidružené k kolizí, aby každý člen účastnících se sítě konsorcia slouží ke konfiguraci adresní prostory IP adres. V případě privátní sítě musí být ID člena jedinečná napříč různými organizacemi ve stejné síti.  Unique – člen ID je potřeba i v případě, že stejné organizace nasadí do víc oblastí. Poznamenejte si hodnotu tohoto parametru vzhledem k tomu je potřeba sdílet s ostatními spojovacího členy zajistit, že není žádná kolizí.|0 – 255|Není k dispozici
-ID sítě|ID sítě pro síť consortium ethereum během nasazení.  Každá síť Etherea má svůj vlastní ID sítě, kdy 1 je ID pro veřejnou síť.|5 - 999 999 999|10101010
+ID člena W3C|ID přidružené k kolizí, aby každý člen účastnících se sítě konsorcia slouží ke konfiguraci adresní prostory IP adres. V případě privátní sítě musí být ID člena jedinečná napříč různými organizacemi ve stejné síti.  Unique – člen ID je potřeba i v případě, že stejné organizace nasadí do víc oblastí. Poznamenejte si hodnotu tohoto parametru vzhledem k tomu je potřeba sdílet s ostatními spojovacího členy zajistit, že není žádná kolizí.|0-255|Není k dispozici
+ID sítě|ID sítě pro síť consortium ethereum během nasazení.  Každá síť Etherea má svůj vlastní ID sítě, kdy 1 je ID pro veřejnou síť.|5 - 999,999,999|10101010
 Adresa správce ethereum během|Adresa účtu Etherea, který slouží k účasti v PoA zásad správného řízení.  Doporučujeme používat MetaMask ke generování adresy Etherea.|42 alfanumerických znaků počínaje 0 x|Není k dispozici
 Upřesnit možnosti|Rozšířené možnosti pro ethereum během nastavení|Povolit nebo zakázat|Zakázat
 Veřejná IP adresa (Upřesnit možnosti = Enable)|Nasadí sítě bránou virtuální sítě a odebere partnerského vztahu přístup. Pokud je vybraná tato možnost, všichni členové musíte použít pro připojení brány virtuální sítě jako kompatibilní.|Veřejnou IP adresu privátní virtuální sítě|Veřejná IP adresa
@@ -314,7 +314,7 @@ Až se nasazení dokončí, budete mít přístup k potřebné parametry potvrze
 
 -   Adresu URL řídicího panelu zásad správného řízení
 
--   Adresa URL Azure Monitor
+-   Azure Monitor URL
 
 -   Adresy URL dat
 
@@ -463,7 +463,7 @@ Z bezpečnostních důvodů se přístup k portu SSH ve výchozím nastavení za
 
 3.  Vyberte \"povolit-ssh\" pravidlo
 
-    ![SSH – povolit](./media/ethereum-poa-deployment/ssh-allow.png)
+    ![ssh-allow](./media/ethereum-poa-deployment/ssh-allow.png)
 
 4.  Změna \"akce\" umožňující
 
@@ -508,7 +508,7 @@ Vyberte kartu koncové body a klikněte na tlačítko Přidat. Zadejte jedinečn
 
 Opakujte pro každou oblast v nasazené sítě. Jakmile jsou koncové body v \"povolené\" stavu, bude možné načíst automaticky a oblasti s vyrovnáváním na název DNS traffic Manageru. Teď můžete použít tento název DNS, místo \[CONSORTIUM\_DATA\_URL\] parametr v dalších krocích dokumentu.
 
-### <a name="data-api"></a>Rozhraní API pro data
+### <a name="data-api"></a>Data API
 
 Každý člen consortium hostuje informace potřebné pro ostatní uživatele pro připojení k síti. Existujícího člena poskytne [CONSORTIUM_DATA_URL] před jejich nasazením člen. Při nasazování spojovacího člena se načtou informace o rozhraní JSON na následující koncový bod:
 

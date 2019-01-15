@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5f2ecd2cdff0ae5f3f5f086bde0741f7f6d2dbb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e5477807e4cff6dc745ccfd0383fd216719a7aa5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121613"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259598"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>Kurz: Připojení, nastavení a aktivovat Azure Data Box Edge (preview) 
 
@@ -95,7 +95,7 @@ Teď jste na řídicím panelu vašeho zařízení.
    
    Na **nastavení proxy webu** stránce, postupujte takto:
    
-   a. V **webová adresa URL proxy serveru** zadejte adresu URL v tomto formátu: `http://host-IP address or FDQN:Port number`. Adresy URL HTTPS nejsou podporovány.
+   a. V **webová adresa URL proxy serveru** zadejte adresu URL v tomto formátu: `http://host-IP address or FQDN:Port number`. Adresy URL HTTPS nejsou podporovány.
 
    b. V části **ověřování**vyberte **žádný** nebo **NTLM**.
 

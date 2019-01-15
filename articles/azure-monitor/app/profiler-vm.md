@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e8f80e7d19a961c22b4e1e88556ac165d2558034
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 764088e7f463f0c249f176514d485944d9c9d76e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082611"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264627"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Profil webové aplikace běžící na virtuálním počítači Azure nebo škálovací sady virtuálních počítačů pomocí Application Insights Profiler
 Můžete také nasadit Application Insights profiler za tyto služby:
@@ -53,7 +53,7 @@ Tato stránka vás provede kroky potřebuje získat Application Insights profile
 
    Chcete-li použít změny, obvykle zahrnuje kompletní šablonu nasazení nebo je Cloudová služba založená publikovat prostřednictvím rutin prostředí PowerShell nebo sady Visual Studio.  
 
-   Následující příkazy powershellu jsou alternativní přístup pro stávající virtuální počítače, které se týkají pouze rozšíření Azure Diagnostics. Stačí přidat ProfilerSink, jak bylo uvedeno výše ke konfiguraci, která je vrácena pomocí příkazu Get-AzureRmVMDiagnosticsExtension. Předejte do příkazu Set-AzureRmVMDiagnosticsExcension aktualizované konfigurace.
+   Následující příkazy powershellu jsou alternativní přístup pro stávající virtuální počítače, které se týkají pouze rozšíření Azure Diagnostics. Stačí přidat ProfilerSink, jak bylo uvedeno výše ke konfiguraci, která je vrácena pomocí příkazu Get-AzureRmVMDiagnosticsExtension. Předejte do příkazu Set-AzureRmVMDiagnosticsExtension aktualizované konfigurace.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()

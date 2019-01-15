@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.openlocfilehash: ac34cc467cc8ff7d231551683da130c0f7565800
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 294dd56a7eb62510c30f4fbb0dbeeafc81b790f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340534"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264764"
 ---
 # <a name="log-analytics-for-service-providers"></a>Log Analytics pro poskytovatele služeb
 Log Analytics může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
@@ -63,7 +63,7 @@ Nevýhody této architektury jsou:
 * Může být obtížné oddělit data mezi zákazníky, když jsou sloučeny do jednoho pracovního prostoru. Je jediným dobrým metodu počítače plně kvalifikovaný název domény (FQDN) nebo prostřednictvím předplatného Azure ID. 
 * Všechna data ze všech zákazníků budou uloženy ve stejné oblasti pomocí faktury a stejné nastavení uchování a konfigurace.
 * Prostředky infrastruktury Azure a PaaS služby, například Azure Diagnostics a protokoly auditování Azure vyžaduje pracovní prostor a být ve stejném tenantovi jako prostředek, proto, že aby nemohli odesílat protokoly do centrální pracovního prostoru.
-* Všichni agenti virtuálního počítače od všech zákazníků bude ověřen na pracovním prostoru cental pomocí stejné ID pracovního prostoru a klíč. Neexistuje žádná metoda blokování protokoly z konkrétního zákazníka, aniž by to ovlivnilo ostatní zákazníci.
+* Všichni agenti virtuálního počítače od všech zákazníků bude ověřen ve službě centrální pomocí stejné ID pracovního prostoru a klíč pracovního prostoru. Neexistuje žádná metoda blokování protokoly z konkrétního zákazníka, aniž by to ovlivnilo ostatní zákazníci.
 
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hybridní - protokoly se ukládají v pracovním prostoru umístěný v tenantovi zákazníka a některé z nich se berou do centrálního umístění.

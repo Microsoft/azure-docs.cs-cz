@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253427"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260315"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Poznámky k verzi pro služby Azure BizTalk Services
 
@@ -35,10 +35,10 @@ Poznámky k verzi pro služby Microsoft Azure BizTalk Services obsahují známé
 ## <a name="update-history"></a>Historie aktualizace
 ### <a name="october-update"></a>Říjen aktualizace
 * Jsou podporovány účty organizace:  
-  * **Scénář**: zaregistrovaný nasazení služby BizTalk pomocí účtu Microsoft (třeba user@live.com). V tomto scénáři můžete spravovat pouze uživatelé s Account Microsoft službu BizTalk pomocí portálu BizTalk Services. Nelze použít účet organizace.  
-  * **Scénář**: zaregistrovaný nasazení služby BizTalk pomocí účtu organizace v Azure Active Directory (například user@fabrikam.com nebo user@contoso.com). V tomto scénáři můžete spravovat pouze uživatelé Azure Active Directory v rámci stejné organizace služby BizTalk pomocí portálu BizTalk Services. Nelze použít účet Microsoft.  
+  * **Scénář**: Jste zaregistrovali nasazení služby BizTalk pomocí účtu Microsoft (třeba user@live.com). V tomto scénáři můžete spravovat pouze uživatelé s Account Microsoft službu BizTalk pomocí portálu BizTalk Services. Nelze použít účet organizace.  
+  * **Scénář**: Jste zaregistrovali nasazení služby BizTalk pomocí účtu organizace v Azure Active Directory (například user@fabrikam.com nebo user@contoso.com). V tomto scénáři můžete spravovat pouze uživatelé Azure Active Directory v rámci stejné organizace služby BizTalk pomocí portálu BizTalk Services. Nelze použít účet Microsoft.  
 * Při vytváření služby BizTalk, budete automaticky zaregistrováni v portálu BizTalk Services.
-  * **Scénář**: přihlášení k Azure, vytvořte službu BizTalk a pak vyberte **spravovat** velmi poprvé. Při otevření portálu BizTalk Services, služba BizTalk automaticky zaregistruje a je připravená pro vaše nasazení.  
+  * **Scénář**: Přihlášení k Azure, vytvořte službu BizTalk a pak vyberte **spravovat** velmi poprvé. Při otevření portálu BizTalk Services, služba BizTalk automaticky zaregistruje a je připravená pro vaše nasazení.  
     Zobrazit [registrace a aktualizace nasazení služby BizTalk na BizTalk Services – portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
 ### <a name="august-14-update"></a>14. srpna aktualizace
@@ -87,7 +87,7 @@ Sledování události mají zachytávat až po zpracování zprávy EDI a jakák
 X12 příjem a odesílání nastavení ([vytvořit příslušný X12 smlouvy o utajení, služby Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) poskytují informace o fázi protokolu.  
 
 ### <a name="update-agreement"></a>Aktualizace smlouvy
-Portálu BizTalk Services umožňuje změnit kvalifikátor identitu, pokud je nakonfigurovaná smlouvu. To může způsobit inconsistence vlastnosti. Například je pomocí ZZ:1234567 a ZZ:7654321 kvalifikátor smlouvu. V nastavení profilu portálu BizTalk Services můžete změnit ZZ:1234567 bude 01:ChangedValue. Otevřete smlouvu a zobrazí se místo ZZ:1234567 01:ChangedValue.
+Portálu BizTalk Services umožňuje změnit kvalifikátor identitu, pokud je nakonfigurovaná smlouvu. To může způsobit nekonzistentní vlastnosti. Například je pomocí ZZ:1234567 a ZZ:7654321 kvalifikátor smlouvu. V nastavení profilu portálu BizTalk Services můžete změnit ZZ:1234567 bude 01:ChangedValue. Otevřete smlouvu a zobrazí se místo ZZ:1234567 01:ChangedValue.
 Upravit kvalifikátor identitu, odstranit smlouvu, aktualizujte **identit** profil partnera a pak znovu vytvořte smlouvy.  
 
 > AZURE. Upozornění: Toto chování má vliv na X12 a AS2.  
@@ -97,7 +97,7 @@ Upravit kvalifikátor identitu, odstranit smlouvu, aktualizujte **identit** prof
 ### <a name="as2-attachments"></a>Přílohy AS2
 Přílohy pro AS2 zpráv nejsou podporovány v odeslání nebo přijetí. Konkrétně jsou přílohy tiše ignorováno a text zprávy je zpracovávat jako regulární zpráva AS2.  
 
-### <a name="resources-remembering-path"></a>Zdroje: Pamatovat cestu
+### <a name="resources-remembering-path"></a>Prostředky: Příslušná cesta
 Při přidávání **prostředky**, dialogové okno nemusí si vzpomenout na cestu dříve použít k přidání prostředku. Pamatovat cestu dříve používali, zkuste přidat k webu portálu BizTalk Services **Důvěryhodné servery** v aplikaci Internet Explorer.  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Je-li přejmenovat název entity most a zavřít projekt bez uložení změn, znovu otevřete entitu způsobí chybu
@@ -178,13 +178,13 @@ Zvažte následující scénáře:
 **Scénář 1: Použití certifikátů na základě kryptografického otisku pro přenos zpráv z most do koncového bodu služby zabezpečení**  
 Představte si třeba situaci, kdy používat certifikáty založené na kryptografický otisk v projektu služby BizTalk. Aktualizace certifikátu v portálu BizTalk Services se stejným názvem, ale jiný kryptografický otisk, ale neaktualizují projektu služby BizTalk odpovídajícím způsobem. V takovém scénáři může nadále most zpracování zpráv, protože starší data certifikátu může být stále v mezipaměti kanálu. Potom se nezdaří zpracování zpráv.  
 
-**Alternativní řešení**: aktualizace certifikátu v projektu služby BizTalk a projekt znovu nasadit.  
+**Alternativní řešení**: Aktualizace certifikátu v projektu služby BizTalk a projekt znovu nasadit.  
 
-**Scénář 2: Použití chování na základě název k identifikaci certifikáty pro zabezpečení přenosu zpráv z most do koncového bodu služby**
+**Scénář 2: Pomocí chování na základě název k identifikaci certifikáty pro zabezpečení přenosu zpráv z most do koncového bodu služby**
 
 Představte si třeba situaci, kde používáte chování na základě název pro identifikaci certifikáty v projektu služby BizTalk. Aktualizace certifikátu v portálu BizTalk Services, ale neaktualizují projektu služby BizTalk odpovídajícím způsobem. V takovém scénáři může nadále most zpracování zpráv, protože starší data certifikátu může být stále v mezipaměti kanálu. Potom se nezdaří zpracování zpráv.  
 
-**Alternativní řešení**: aktualizace certifikátu v projektu služby BizTalk a projekt znovu nasadit.  
+**Alternativní řešení**: Aktualizace certifikátu v projektu služby BizTalk a projekt znovu nasadit.  
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Mosty pokračovat ve zpracování zprávy i v případě, že databáze SQL je offline
 Mosty BizTalk Services i nadále zpracovávat zprávy na dobu, i v případě, že Microsoft Azure SQL Database (která obsahuje provozní informace, například nasazené artefakty a kanály), je offline. Toto je vzhledem k tomu BizTalk Services se používá v mezipaměti artefakty a konfigurace mostu.
@@ -199,22 +199,22 @@ Zprávy odeslané do most pomocí technologie WCF škálování. Pokud chcete š
 ### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>UPGRADE: Chyba zprostředkovatele tokenu po upgradu portálu BizTalk Services ve verzi Preview do obecné dostupnosti (GA)
 Existuje smlouvy AS2 nebo EDI s aktivní dávky. Když službu BizTalk se upgraduje z verze Preview verzi GA, může dojít k následující:
 
-* Chyba: Poskytovatel tokenu nemohl poskytnout token zabezpečení. Poskytovatel tokenů vrátil zprávu: vzdálený název nelze rozpoznat.
+* Chyba: Poskytovatel tokenu nemohl poskytnout token zabezpečení. Poskytovatel tokenů vrátil zprávu: Vzdálený název se nedá rozpoznat.
 * Úkoly služby batch se zruší.
 
-**Alternativní řešení**: za službu BizTalk se aktualizuje na obecné dostupnosti (GA), smlouva znovu nasadit.  
+**Alternativní řešení**: Po aktualizaci na obecné dostupnosti (GA) službě BizTalk znovu nasaďte smlouvy.  
 
-### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>UPGRADE: Panelu nástrojů zobrazí staré ikony most po upgradu sadu SDK pro BizTalk Services
+### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>UPGRADE: Panel nástrojů zobrazí staré ikony most po upgradu sadu SDK pro BizTalk Services
 Poté, co upgradujete dřívější verzi sady SDK služby BizTalk měli staré ikony reprezentující překročení mostu, panelu pořád zobrazovat staré ikony přemostění. Ale pokud přidáte mostu na plochu návrháře projektu služby BizTalk, na plochu ukazuje na ikonu nový.  
 
 **Alternativní řešení**. Tento problém můžete obejít tak, že odstraníte soubory do .tbd <system drive>: \Users\<uživatele > \AppData\Local\Microsoft\VisualStudio\11.0.  
 
-### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>UPGRADE: Aktualizace BizTalk portálu z verze Preview verzi GA, může zobrazit chyba oznamující, že není k dispozici možnost EDI
+### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>UPGRADE: Aktualizace portálu BizTalk z verze Preview verzi GA, může zobrazit chyba oznamující, že není k dispozici možnost EDI
 Pokud jste přihlášení do portálu BizTalk Services a BizTalk Services se upgraduje z verze Preview verzi GA, může na portálu zobrazí následující chyba:  
 
 Tato možnost není k dispozici jako součást této edici systému Microsoft Azure BizTalk Services. Chcete-li použít tyto možnosti přepnout na příslušnou verzi.  
 
-**Rozlišení**: při odhlášení z portálu, zavřít a otevřít v prohlížeči a pak přihlásit se do portálu.  
+**Řešení:** Odhlaste se z portálu, zavřete a otevřete prohlížeč a přihlaste se do portálu.  
 
 ### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>UPGRADE: Nová data sledování nezobrazuje po BizTalk Services se upgraduje na verzi GA
 Účely Předpokládejme scénář, kde se nachází XML most nasazené v předplatném BizTalk Services ve verzi Preview. Odesílat zprávy na most a odpovídající sledování dat je k dispozici na portálu BizTalk Services. Nyní pokud modul runtime bits portálu BizTalk Services a BizTalk Services jsou upgradovány na verzi GA a odeslat zprávu o stejný koncový bod most předtím nasadili, data sledování není uveden pro zprávy odeslané po upgradu.  

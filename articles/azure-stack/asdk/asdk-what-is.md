@@ -16,12 +16,12 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 345d62f4045e7b9279d52acf70cc340d088f5db0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d2e849b4a6101cd10ce17e52056efdfe2f903381
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961327"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267109"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Co je Azure Stack Development Kit?
 [Microsoft Azure Stack integrované systémy](../azure-stack-poc.md) rozsah od 4 až 16 uzlů a společně podporuje hardwarových partnerů a Microsoft. Použijte integrované systémy Azure Stack umožňuje nové scénáře pro vaše produkční úlohy. Pokud je pro vás, operátorovi služby Azure Stack, který spravuje integrovaných systémů infrastruktury a nabízí služby, přečtěte si naše [dokumentace operátora k](https://docs.microsoft.com/azure/azure-stack).
@@ -48,7 +48,7 @@ Jednouzlový ASDK nasazení se liší od nasazení Azure Stack na víc uzlů v n
 |Popis|ASDK|Azure Stack s několika uzly|
 |-----|-----|-----|
 |**Škálování**|Na počítači jedním uzlem serveru jsou nainstalovány všechny součásti.|Může být v rozsahu od 4 až 16 uzlů.|
-|**Odolnost**|Konfigurace s jedním uzlem nebude poskytovat vysokou dostupnost|[Zajistit vysokou dostupnost](../azure-stack-key-features.md#high-availability-for-azure-stack) funkce jsou podporovány.|
+|**Odolnost**|Konfigurace s jedním uzlem nebude poskytovat vysokou dostupnost|[Vysoká dostupnost](../azure-stack-key-features.md#high-availability-for-azure-stack) funkce jsou podporovány.|
 |**Sítě**|ASDK používá virtuální počítač s názvem AzS-BGPNAT01 směrovat veškerý přenos v síti ASDK. Neexistují žádné požadavky na další přepínače.|Virtuální počítač AzS-BGPNAT01 neexistuje v nasazení na víc uzlů. Složitější [síťová infrastruktura směrování](../azure-stack-network.md#network-infrastructure) je nezbytné včetně Top-Of-Rack (TOR), řadiče pro správu základní desky (BMC) a přepínače ohraničení (síti datového centra).|
 |**Proces opravy a aktualizace**|Pokud chcete přesunout na novou verzi ASDK, je nutné znovu nasadit ASDK na hostitelském počítači development kit.|[Opravy a aktualizace](../azure-stack-updates.md) proces používá k aktualizaci nainstalované verze služby Azure Stack.|
 |**Podpora**|Fóra MSDN Azure Stack. Podpora Microsoft zákaznický servis a podporu šablon stylů CSS je *není* k dispozici pro neprodukční prostředí.|[Fóra MSDN Azure Stack](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) a podporu celé šablon stylů CSS.|
@@ -60,7 +60,7 @@ Jako operátor Azure stacku je potřeba vědět, služby, které můžete zpří
 ### <a name="foundational-services"></a>Základní služby
 Ve výchozím nastavení, služby Azure Stack zahrnuje následující "základní služby" při nasazování ASDK:
 - Compute
-- Úložiště
+- Storage
 - Sítě
 - Key Vault
 

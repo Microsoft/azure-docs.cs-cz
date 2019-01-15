@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: jroth
-ms.openlocfilehash: 5ffee3bb5cbeff4e2222307e2a1afb4691ae93d5
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3d2873d83274e4f9bfd8aee7668162237083f452
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053036"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303050"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Automatizace úloh správy ve službě Azure Virtual Machines pomocí rozšíření agenta SQL serveru (Resource Manager)
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ Požadavky pro použití rozšíření agenta SQL Server IaaS na vašem virtuál
 * SQL Server 2014
 * SQL Server 2016
 
-**Prostředí Azure PowerShell**:
+**Azure PowerShell**:
 
 * [Stáhnout a nakonfigurovat nejnovější příkazy Azure Powershellu](/powershell/azure/overview)
 
@@ -74,7 +74,7 @@ Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "
 ```
 
 > [!IMPORTANT]
-> Pokud rozšíření ještě není nainstalovaná, instalaci rozšíření restartuje službu systému SQL Server.
+> Pokud rozšíření ještě není nainstalovaná, instalaci rozšíření restartuje službu systému SQL Server. Aktualizuje se rozšíření SQL IaaS však nerestartuje služby SQL Server. 
 
 > [!NOTE]
 > Rozšíření agenta SQL Server IaaS je podporována pouze na [Image virtuálního počítače s SQL serverem z Galerie](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (s průběžnými platbami nebo přeneste svůj – používání vlastní licence). Pokud ručně instalovat SQL Server na virtuálním počítači pouze pro operační systém Windows Server nebo nasadit vlastní VHD virtuálního počítače SQL serveru není podporována. V těchto případech je možné nainstalovat a spravovat rozšíření ručně pomocí Powershellu, ale nelze získat nastavení konfigurace SQL serveru na webu Azure Portal. Důrazně však doporučujeme místo toho nainstalovat image virtuálního počítače s SQL serverem z galerie a pak ji přizpůsobit.

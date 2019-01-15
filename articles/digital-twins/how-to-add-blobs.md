@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 8b17d1ce4ae0b9c37f6ce8d64ecebd25c5c70db3
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231185"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263063"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidat objekty BLOB na objekty v digitální dvojče Azure
 
@@ -24,7 +24,7 @@ Azure podporuje digitální dvojče objekty BLOB se připojuje k zařízení, me
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
-## <a name="uploading-blobs-an-overview"></a>Nahrání objektů blob: Přehled
+## <a name="uploading-blobs-overview"></a>Nahrává se objekty BLOB – přehled
 
 S více částmi. požadavky můžete použít k nahrání objektů blob pro konkrétní koncové body a jejich příslušné funkce.
 
@@ -38,13 +38,94 @@ Kromě **Content-Type** a **Content-Disposition**, digitální dvojče Azure blo
 
 ![Schémat JSON][1]
 
+Metadata objektu blob JSON odpovídá následující model:
+
+```JSON
+{
+    "parentId": "00000000-0000-0000-0000-000000000000",
+    "name": "My First Blob",
+    "type": "Map",
+    "subtype": "GenericMap",
+    "description": "A well chosen description",
+    "sharing": "None"
+  }
+```
+
+| Atribut | Typ | Popis |
+| --- | --- | --- |
+| **parentId** | Řetězec | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
+| **Jméno** |Řetězec | Lidské – popisný název pro objekt blob |
+| **type** | Řetězec | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
+| **typeId** | Integer | ID typu objektu blob - nelze použít *typ* a *identifikátor typeId.* |
+| **Podtyp** | Řetězec | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
+| **subtypeId** | Integer | Podtyp ID pro tento objekt blob - nemůžou používat *podtyp* a *subtypeId* |
+| **description** | Řetězec | Vlastní popis objektu blob |
+| **sdílení** | Řetězec | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
+
+Metadata objektu BLOB se vždy uvedené jako první blok s **Content-Type** `application/json` nebo stejně jako `.json` souboru. Data souborů zadaný v druhém bloků dat a může být libovolný podporovaný typ MIME.
+
 Swagger dokumentace popisuje tato schémata modelu ve všech podrobností.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 Další informace o použití najdete v referenční dokumentaci [použití Swagger](./how-to-use-swagger.md).
 
-### <a name="examples"></a>Příklady
+<div id="blobModel"></div>
+
+### <a name="blobs-response-data"></a>Data odpovědi objekty BLOB
+
+Jednotlivě vrácené objekty BLOB splňovat následující schéma JSON:
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "name": "string",
+  "parentId": "00000000-0000-0000-0000-000000000000",
+  "type": "string",
+  "subtype": "string",
+  "typeId": 0,
+  "subtypeId": 0,
+  "sharing": "None",
+  "description": "string",
+  "contentInfos": [
+    {
+      "type": "string",
+      "sizeBytes": 0,
+      "mD5": "string",
+      "version": "string",
+      "lastModifiedUtc": "2019-01-12T00:58:08.689Z",
+      "metadata": {
+        "additionalProp1": "string",
+        "additionalProp2": "string",
+        "additionalProp3": "string"
+      }
+    }
+  ],
+  "fullName": "string",
+  "spacePaths": [
+    "string"
+  ]
+}
+```
+
+| Atribut | Typ | Popis |
+| --- | --- | --- |
+| **id** | Řetězec | Jedinečný identifikátor pro objekt blob |
+| **Jméno** |Řetězec | Lidské – popisný název pro objekt blob |
+| **parentId** | Řetězec | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
+| **type** | Řetězec | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
+| **typeId** | Integer | ID typu objektu blob - nelze použít *typ* a *identifikátor typeId.* |
+| **Podtyp** | Řetězec | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
+| **subtypeId** | Integer | Podtyp ID pro tento objekt blob - nemůžou používat *podtyp* a *subtypeId* |
+| **sdílení** | Řetězec | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
+| **description** | Řetězec | Vlastní popis objektu blob |
+| **contentInfos** | Pole | Určuje informace nestrukturovaných metadata, včetně verze |
+| **fullName** | Řetězec | Úplný název objektu blob |
+| **spacePaths** | Řetězec | Místo cesty |
+
+Metadata objektu BLOB se vždy uvedené jako první blok s **Content-Type** `application/json` nebo stejně jako `.json` souboru. Data souborů zadaný v druhém bloků dat a může být libovolný podporovaný typ MIME.
+
+### <a name="blob-multipart-request-examples"></a>Příklady s více částmi. žádost o objekt BLOB
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
@@ -92,6 +173,7 @@ var metadataContent = new StringContent(JsonConvert.SerializeObject(metaData), E
 metadataContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
 multipartContent.Add(metadataContent, "metadata");
 
+//MY_BLOB.txt is the String representation of your text file
 var fileContents = new StringContent("MY_BLOB.txt");
 fileContents.Headers.ContentType = MediaTypeHeaderValue.Parse("text/plain");
 multipartContent.Add(fileContents, "contents");
@@ -99,15 +181,27 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
-V obou příkladech:
+A konečně [cURL](https://curl.haxx.se/) stejným způsobem mohou uživatelé provádět požadavky vícedílného formuláře:
 
-1. Ověřte, že hlavičky zahrnují: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-1. Ověřte, zda je textu vícedílné zprávy standardu:
+![Objekty BLOB zařízení][5]
 
-   - První část obsahuje metadata objektu blob vyžaduje.
-   - Druhá část obsahuje textového souboru.
+```bash
+curl
+ -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs"
+ -H "Authorization: Bearer YOUR_TOKEN"
+ -H "Accept: application/json"
+ -H "Content-Type: multipart/form-data"
+ -F "meta={\"ParentId\": \"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\": \"A well chosen description\", \"Sharing\": \"None\"};type=application/json"
+ -F "text=PATH_TO_FILE;type=text/plain"
+```
 
-1. Ověřte, že je textový soubor zadaný jako `Content-Type: text/plain`.
+| Hodnota | Nahradit hodnotou |
+| --- | --- |
+| YOUR_TOKEN | Neplatný token OAuth 2.0 |
+| YOUR_SPACE_ID | ID místo pro objekt blob se přidružení |
+| PATH_TO_FILE | Cesta k souboru text |
+
+Úspěšné příspěvek vrátí ID nového objektu blob (zvýrazněný červenou barvou dříve).
 
 ## <a name="api-endpoints"></a>Koncové body rozhraní API
 
@@ -129,15 +223,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | ID požadované objektů blob |
 
-Úspěšné požadavky vracet **DeviceBlob** objektu JSON v odpovědi. **DeviceBlob** objekty v souladu s následující schéma JSON:
-
-| Atribut | Typ | Popis | Příklady |
-| --- | --- | --- | --- |
-| **DeviceBlobType** | Řetězec | Kategorie objektu blob, který lze připojit k zařízení | `Model` a `Specification` |
-| **DeviceBlobSubtype** | Řetězec | Podkategorii objektů blob, který je specifičtější než **DeviceBlobType** | `PhysicalModel`, `LogicalModel`, `KitSpecification`, a `FunctionalSpecification` |
-
-> [!TIP]
-> V předchozí tabulce použijte ke zpracování dat úspěšně vrácený požadavek.
+Úspěšné požadavky vrácení objektu JSON jako [bylo popsáno dříve](#blobModel).
 
 ### <a name="spaces"></a>Spaces
 
@@ -155,14 +241,9 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | ID požadované objektů blob |
 
-Požadavek PATCH na stejný koncový bod aktualizuje popisů metadat a vytvoří nové verze objektu blob. Se požadavek HTTP pomocí metody PATCH, spolu s všechny nezbytné metadat a dat vícedílného formuláře.
+Úspěšné požadavky vrácení objektu JSON jako [bylo popsáno dříve](#blobModel).
 
-Úspěšné operace vrátit **SpaceBlob** objekt, který odpovídá následujícím schématu. Můžete ho využívat vrácená data.
-
-| Atribut | Typ | Popis | Příklady |
-| --- | --- | --- | --- |
-| **SpaceBlobType** | Řetězec | Kategorie objektu blob, který lze připojit k mezeru | `Map` a `Image` |
-| **SpaceBlobSubtype** | Řetězec | Podkategorii objektů blob, který je specifičtější než **SpaceBlobType** | `GenericMap`, `ElectricalMap`, `SatelliteMap`, a `WayfindingMap` |
+Požadavek PATCH na stejný koncový bod aktualizuje popisů metadat a vytvoří verzí objektu blob. Se požadavek HTTP pomocí metody PATCH, spolu s všechny nezbytné metadat a dat vícedílného formuláře.
 
 ### <a name="users"></a>Uživatelé
 
@@ -180,16 +261,11 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | ID požadované objektů blob |
 
-Vrácený JSON (**UserBlob** objekty) odpovídají následující modely JSON:
-
-| Atribut | Typ | Popis | Příklady |
-| --- | --- | --- | --- |
-| **UserBlobType** | Řetězec | Kategorie objektů blob, který lze připojit k uživateli | `Image` a `Video` |
-| **UserBlobSubtype** |  Řetězec | Podkategorii objektů blob, který je specifičtější než **UserBlobType** | `ProfessionalImage`, `VacationImage`, a `CommercialVideo` |
+Úspěšné požadavky vrácení objektu JSON jako [bylo popsáno dříve](#blobModel).
 
 ## <a name="common-errors"></a>Běžné chyby
 
-Běžnou chybou je tak, aby nezahrnovala informace správné hlavičky:
+Běžnou chybou zahrnuje není poskytující informace správné hlavičky:
 
 ```JSON
 {
@@ -199,6 +275,13 @@ Běžnou chybou je tak, aby nezahrnovala informace správné hlavičky:
     }
 }
 ```
+
+Chcete-li tuto chybu vyřešit, ověřte, zda celkový požadavek má odpovídající **Content-Type** hlavičky:
+
+* `multipart/mixed`
+* `multipart/form-data`
+
+Také ověřte, zda každý s více částmi. blok má odpovídající **Content-Type** podle potřeby.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -211,3 +294,4 @@ Běžnou chybou je tak, aby nezahrnovala informace správné hlavičky:
 [2]: media/how-to-add-blobs/blobs-device-api.PNG
 [3]: media/how-to-add-blobs/blobs-space-api.PNG
 [4]: media/how-to-add-blobs/blobs-users-api.PNG
+[5]: media/how-to-add-blobs/curl.PNG

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ab8841e2c5cb01e28264edc2b5ab3306d611a9c7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 737dc40bafa519d59bcbc0ff6510a89cb3a840fa
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232069"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263196"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -29,7 +29,7 @@ Azure Migrate vám pomůže s následujícími úlohami:
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- Vhodnost k migraci na virtuální počítače Azure můžete posuzovat pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware musí být spravované přes vCenter Server (verze 5.5, 6.0 nebo 6.5).
+- Vhodnost k migraci na virtuální počítače Azure můžete posuzovat pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware se musí spravovat přes vCenter Server (verze 5.5, 6.0, 6.5 nebo 6.7).
 - Pokud chcete posoudit fyzické servery a virtuální počítače Hyper-V, použijte [Plánovač nasazení služby Azure Site Recovery](https://aka.ms/asr-dp-hyperv-doc) pro Hyper-V a [partnerské nástroje](https://azure.microsoft.com/migration/partners/) pro fyzické počítače.
 - Je možné vyhledat až 1 500 virtuálních počítačů v rámci jednoho zjišťování a až 1 500 virtuálních počítačů v jednom projektu. Kromě toho můžete v rámci jednoho interního hodnocení vyhodnotit až 1 500 virtuálních počítačů.
 - Pokud chcete provést zjišťování u velkého prostředí, můžete zjišťování rozdělit a vytvořit několik projektů. [Další informace](how-to-scale-assessment.md). Azure Migrate podporuje až 20 projektů na jedno předplatné.

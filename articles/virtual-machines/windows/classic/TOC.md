@@ -1,5 +1,6 @@
 # Přehled
-## [O virtuálních počítačích](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [Rozšíření virtuálních počítačů](agents-and-extensions-classic.md)
+## [Dostupnost](configure-availability-classic.md)
 ## [Nejčastější dotazy](faq-classic.md)
 
 # Začínáme
@@ -29,20 +30,17 @@
 ### [Údržba](planned-maintenance-schedule-classic.md)
 
 ## Spravovat
-### [Migrace z Classicu na Resource Manager](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+### [Migrace z Classicu na Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-deep-dive)
 ### [Správa virtuálních počítačů přes Azure PowerShell](manage-psh-classic.md)
 ### [O agentech a rozšířeních virtuálních počítačů](agents-and-extensions-classic.md)
 ### [Správa rozšíření virtuálních počítačů](manage-extensions-classic.md)
 
 ## Správa úloh
-### [Vysokovýkonné výpočetní prostředí (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
+### Vysokovýkonné výpočetní prostředí (HPC)
 #### [Automatické škálování prostředků](hpcpack-cluster-node-autogrowshrink.md)
 #### [Správa výpočetních uzlů](hpcpack-cluster-node-manage.md)
 #### [Vytvoření clusteru](hpcpack-cluster-powershell-script.md)
 #### [Nastavení clusteru pro spouštění aplikací MPI](hpcpack-rdma-cluster.md)
-#### [Spuštění úloh aplikace Excel a SOA](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [Vytvoření hlavního uzlu s imagí Marketplace](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
-#### [Odeslání úloh z místního prostředí do Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MySQL](mysql-2008r2.md)
 ### [Tomcat](java-run-tomcat-app-server.md)
 
@@ -57,7 +55,6 @@
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
-## [Tvorba šablon Resource Manageru](../../../resource-group-authoring-templates.md)
 ## [Komunitní šablony](https://azure.microsoft.com/documentation/templates)
 ## [Rozhraní REST pro Compute](https://msdn.microsoft.com/library/jj157206.aspx)
 ## [Rozhraní REST pro službu Network](https://msdn.microsoft.com/library/jj157182.aspx)

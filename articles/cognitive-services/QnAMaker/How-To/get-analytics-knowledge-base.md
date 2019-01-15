@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: tulasim88
-ms.openlocfilehash: f3ca99a92d12acbf880a3a95098a90569e2a0f84
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d3b110e1135d69c1693b3cc6804bb51ec0ec0bc6
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309383"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267007"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Získání analýz pro znalostní bázi
 

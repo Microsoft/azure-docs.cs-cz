@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: dbf62d460a6bc8f8c98080411b2148b81b42e415
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7f70ab407e38797aae24530ea8fa5193e4fffda1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232800"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260903"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Monitorování připojení Azure pro kontejnery  
 Tento článek popisuje, jak nastavit službu Azure Monitor k monitorování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostitelem pro kontejnery [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
@@ -275,7 +275,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
        "contentVersion": "1.0.0.0",
        "parameters": {
          "aksResourceId": {
-           "value": "/subscriptions/<SubscriptiopnId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
+           "value": "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
        },
        "aksResourceLocation": {
          "value": "<aksClusterLocation>"

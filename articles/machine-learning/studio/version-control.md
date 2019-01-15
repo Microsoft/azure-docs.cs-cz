@@ -1,27 +1,7 @@
 ---
-title: Správa životního cyklu aplikací – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Použít osvědčené postupy správy životního cyklu aplikací v nástroji Azure Machine Learning Studio
-keywords: Služba Azure ML, správu životního cyklu aplikací, ALM, AML, Správa verzí
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1be6577d-f2c7-425b-b6b9-d5038e52b395
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2016
-ms.openlocfilehash: f331ebb85e1cf47dc1235138376704b08d217e82
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249749"
+Název: TitleSuffix správy životního cyklu aplikace: Azure Machine Learning Studio Popis: Použít osvědčené postupy správy životního cyklu aplikací služby Azure Machine Learning Studio: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=haining, předchozí Autor = hning86 ms.date: 10/27/2016
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Správa životního cyklu aplikací v nástroji Azure Machine Learning Studio
 Azure Machine Learning Studio je nástroj pro vývoj experimenty machine learning, které se mají zprovoznit v cloudové platformy Azure. Je třeba Visual Studio IDE a škálovatelné cloudové služby sloučena do jedné platformy. Standardní postupy Application Lifecycle Management (ALM) ze správy verzí můžete začlenit různých prostředků a na automatické spuštění a nasazení do Azure Machine Learning Studio. Tento článek popisuje některé z možností a přístupů.

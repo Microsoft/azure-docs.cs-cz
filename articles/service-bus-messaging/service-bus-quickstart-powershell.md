@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – Odesílání a přijímání zpráv Azure Service Bus | Microsoft Docs
-description: V tomto rychlém startu se naučíte odesílat a přijímat zprávy Service Bus pomocí PowerShellu a klientské knihovny .NET Standard.
+title: Rychlý start – pomocí prostředí Azure PowerShell můžete vytvořit frontu služby Service Bus | Dokumentace Microsoftu
+description: V tomto rychlém startu se dozvíte, jak používat Azure PowerShell k vytvoření fronty služby Service Bus. Pak použijete ukázkovou aplikaci k odesílání a příjem zpráv z fronty.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,17 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 2669b3ad9abc2370b4ecb66596d6edde17c82ddd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9fe9952c3885e0e6145141bac7db13694dcdbd11
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242428"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259661"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>Rychlý start: Odesílání a přijímání zpráv pomocí PowerShellu a knihovny .NET
-
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí Azure Powershellu
 Microsoft Azure Service Bus je podniková integrace zprostředkovatele zpráv, která zajišťuje zabezpečené odesílání a přijímání zpráv a absolutní spolehlivost. Typický scénář služby Service Bus obvykle zahrnuje vzájemné oddělení dvou nebo více aplikací, služeb nebo procesů a převedení stavu nebo změny dat. Mezi takové scénáře může patřit plánování několika dávkových úloh v jiné aplikaci nebo službě či spuštění vyřizování objednávek. Maloobchod může například odeslat data o prodeji administrativní podpoře (back office) nebo oblastnímu distribučním centru, aby došlo k doplnění a aktualizaci zásob. V tomto scénáři klientská aplikace odesílá zprávy do fronty služby Service Bus a přijímá je z ní.
 
 ![fronta](./media/service-bus-quickstart-powershell/quick-start-queue.png)
@@ -256,7 +255,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu souvisejícího s odesíláním a přijímáním zpráv získáte, když budete pokračovat následujícím kurzem služby Service Bus:
 

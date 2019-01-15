@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/12/2018
+ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: f10a3c02e98db5777b5231aec04951a7ed1ad9ad
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b6d0b702a334bf1127f570bff026fa4332331209
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310658"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260113"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
@@ -103,7 +103,7 @@ Než začnete, projděte si [požadavky](azure-security-disk-encryption-prerequi
      ```
 
 ### <a name="bkmk_prereq-script"></a> Pomocí skriptu Powershellu požadavky Azure Disk Encryption
-Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Příklad použití tento skript Powershellu, najdete v článku [šifrování virtuálního počítače Quickstart](quick-encrypt-vm-powershell.md). Komentáře můžete odebrat z část skriptu, počínaje řádkem 211, k šifrování všech disků pro stávající virtuální počítače v existující skupinu prostředků. 
+Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Příklad použití tento skript Powershellu, najdete v článku [šifrování virtuálního počítače Quickstart](quick-encrypt-vm-powershell.md). Komentáře můžete odebrat z část skriptu, počínaje řádkem 211, k šifrování všech disků pro stávající virtuální počítače v existující skupinu prostředků. 
 
 V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu prostředí PowerShell: 
 

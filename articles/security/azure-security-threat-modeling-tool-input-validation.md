@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: da2e742f0dde0cb4b98bfb107d18eca779d10021
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dd2914c675d3bca32ca8951ffca1b04e23786400
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234591"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266898"
 ---
-# <a name="security-frame-input-validation--mitigations"></a>Zabezpečení Frame: Ověřování vstupu | Zmírnění rizik 
+# <a name="security-frame-input-validation--mitigations"></a>Zabezpečení rámce: Ověřování vstupu | Zmírnění rizik 
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Webové aplikace** | <ul><li>[Zakázat skriptování všechny transformace pomocí nedůvěryhodného šablony stylů XSLT](#disable-xslt)</li><li>[Ujistěte se, že každé stránce, které by mohly obsahovat obsah může ovládat uživatel požádá o mimo automatické sledování toku dat MIME](#out-sniffing)</li><li>[Posílení nebo zakázat rozlišení Entity XML](#xml-resolution)</li><li>[Aplikace využívající http.sys provedení převodu do kanonického tvaru ověření adresy URL](#app-verification)</li><li>[Ujistěte se, že odpovídající ovládací prvky jsou na místě při přijetí soubory od uživatelů](#controls-users)</li><li>[Ujistěte se, že se používají parametry zajišťující bezpečnost typů ve webové aplikaci pro přístup k datům](#typesafe)</li><li>[Použít samostatný model vazby třídy nebo aby se zabránilo ohrožení zabezpečení hromadné přiřazení MVC seznamy vazby filtru](#binding-mvc)</li><li>[Kódování výstupu nedůvěryhodném webovém před vykreslování](#rendering)</li><li>[Provedení ověření vstupu a filtrování na všechny řetězce typu vlastnosti modelu](#typemodel)</li><li>[Sanitizace bude použito na pole formuláře, které přijímají všechny znaky, např., editor formátovaného textu](#richtext)</li><li>[Nepřiřazujte elementů modelu DOM do jímky, které nemají integrované kódování](#inbuilt-encode)</li><li>[Ověřit, zda všechny jsou uzavřeny nebo bezpečně provést přesměrování v rámci aplikace](#redirect-safe)</li><li>[Implementace ověření vstupu na všechny parametry typu řetězec přijal metody Kontroleru](#string-method)</li><li>[Nastavit časový limit horní mez pro zpracování, aby se zabránilo DoS z důvodu chybné regulárních výrazů regulární výraz](#dos-expression)</li><li>[Vyhněte se použití Html.Raw v zobrazení Razor](#html-razor)</li></ul> | 
 | **Database** | <ul><li>[Nepoužívejte dynamické dotazy v uložených procedurách](#stored-proc)</li></ul> |
 | **Webové rozhraní API** | <ul><li>[Ujistěte se, že ověření modelu se provádí na metody webového rozhraní API](#validation-api)</li><li>[Implementace ověření vstupu na všechny parametry typu řetězec přijal metody webového rozhraní API](#string-api)</li><li>[Ujistěte se, že jsou typově bezpečné parametry použity ve webové rozhraní API pro přístup k datům](#typesafe-api)</li></ul> | 
-| **Azure Documentdb** | <ul><li>[Dotazy podle SQL použít pro službu Azure Cosmos DB](#sql-docdb)</li></ul> | 
+| **Azure Documentdb** | <ul><li>[Použití parametrizovaných dotazů SQL pro službu Azure Cosmos DB](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[Ověření vstupu WCF prostřednictvím vazbu schémat](#schema-binding)</li><li>[Zadání WCF ověřování prostřednictvím parametru kontroly](#parameters)</li></ul> |
 
 ## <a id="disable-xslt"></a>Zakázat skriptování všechny transformace pomocí nedůvěryhodného šablony stylů XSLT
@@ -38,8 +38,8 @@ ms.locfileid: "51234591"
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Zabezpečení XSLT](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [vlastnost XsltSettings.EnableScript](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **Kroky** | XSLT podporuje skriptování uvnitř šablony stylů pomocí `<msxml:script>` elementu. To umožňuje vlastní funkce, který se má použít v transformaci XSLT. Skript se spustí v kontextu procesu provádění transformací, která se. Musí se zakázat skriptu XSLT v nedůvěryhodných prostředí tak, aby spuštění nedůvěryhodného kódu. *Pokud používáte .NET:* ve výchozím nastavení je zakázáno skriptování XSLT, ale musíte zajistit, že jej nepovolil explicitně prostřednictvím `XsltSettings.EnableScript` vlastnost.|
+| **Odkazy**              | [XSLT Security](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings.EnableScript Property](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
+| **Kroky** | XSLT podporuje skriptování uvnitř šablony stylů pomocí `<msxml:script>` elementu. To umožňuje vlastní funkce, který se má použít v transformaci XSLT. Skript se spustí v kontextu procesu provádění transformací, která se. Musí se zakázat skriptu XSLT v nedůvěryhodných prostředí tak, aby spuštění nedůvěryhodného kódu. *Pokud používáte .NET:* Ve výchozím nastavení; je zakázáno skriptování XSLT ale musíte zajistit, že jej nepovolil explicitně prostřednictvím `XsltSettings.EnableScript` vlastnost.|
 
 ### <a name="example"></a>Příklad: 
 
@@ -191,7 +191,7 @@ settings.MaxCharactersFromEntities = 1000;
 settings.XmlResolver = null;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Všimněte si, že v MSXML6, ProhibitDTD nastavena na hodnotu true (zakázání zpracování deklarace DTD) ve výchozím nastavení. Pro Apple OSX/iOS kódu, jsou dvě analyzátorů XML můžete použít: NSXMLParser a libXML2. 
+Všimněte si, že v MSXML6, ProhibitDTD nastavena na hodnotu true (zakázání zpracování deklarace DTD) ve výchozím nastavení. Pro Apple OSX/iOS kód existují dvě analyzátorů XML, které můžete použít: NSXMLParser a libXML2. 
 
 ## <a id="app-verification"></a>Aplikace využívající http.sys provedení převodu do kanonického tvaru ověření adresy URL
 
@@ -392,7 +392,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
-| **Použitelných technologiích** | Obecné, MVC5, MVC6 |
+| **Použitelných technologiích** | Generic, MVC5, MVC6 |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Přidání ověřování](http://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [ověřování modelu dat v aplikaci MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [zásady pro vaše aplikace ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
 | **Kroky** | <p>Vstupní parametry musí ověřit dříve, než se používají v aplikaci k zajištění, že aplikace je chráněna proti uživatel se zlými úmysly vstupy. Ověřte vstupní hodnoty, které pomocí regulárního výrazu ověření na straně serveru se strategií ověření seznamu povolených IP adres. Unsanitized uživatelské vstupy / parametry předané do metod může způsobit kódu vkládání chyb zabezpečení.</p><p>Pro webové aplikace vstupních bodů použít také pole formuláře, řetězci dotazu, soubory cookie, hlavičky protokolu HTTP a parametry webové služby.</p><p>Po vazbě modelu se musí provádět následující kontroly ověření vstupu:</p><ul><li>Vlastnosti projektu by měl být komentována atributem regulární výraz poznámky pro příjem povolených znaků a maximální povolenou délku</li><li>Metody kontroleru by měl provádět ModelState platnosti</li></ul>|
@@ -447,7 +447,7 @@ Nepoužívejte `innerHtml`; místo toho použijte `innerText`. Podobně, nikoli 
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
-| **Použitelných technologiích** | Obecné, MVC5, MVC6 |
+| **Použitelných technologiích** | Generic, MVC5, MVC6 |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Ověřování modelu dat v aplikaci MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [zásady pro vaše aplikace ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
 | **Kroky** | Pro metody, které stačí přijmout primitivní datový typ a ne modely jako argument musí být provedeno ověření vstupu pomocí regulárního výrazu. Regex.IsMatch – je třeba použít tady se vzorem platný regulární výraz. Pokud vstup neodpovídá zadanému regulárnímu výrazu, ovládací prvek nesmí pokračovat a má být zobrazena odpovídající upozornění týkající se selhání ověření.| 
@@ -653,7 +653,7 @@ myCommand.Fill(userDataset);
 ```
 V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 znaků. Pokud data není v souladu s typem nebo délkou určené parametrem, třída SqlParameter vyvolá výjimku. 
 
-## <a id="sql-docdb"></a>Dotazy podle SQL použít pro službu Cosmos DB
+## <a id="sql-docdb"></a>Použití parametrizovaných dotazů SQL pro službu Cosmos DB
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |

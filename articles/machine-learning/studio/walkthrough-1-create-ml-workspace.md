@@ -1,26 +1,8 @@
 ---
-title: 'Krok 1: Vytvoření pracovního prostoru - Azure Machine Learning Studio | Dokumentace Microsoftu'
-description: 'Vývoj prediktivního řešení návod krok 1: Zjistěte, jak vytvořit nový pracovní prostor Azure Machine Learning Studio.'
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cgronlun
-ms.assetid: b3c97e3d-16ba-4e42-9657-2562854a1e04
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: bc83fa6e3fa7d5ef31515309f5c1cd0b025c8906
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256362"
+Název: "Krok 1: Vytvoření pracovního prostoru "titleSuffix: Azure Machine Learning Studio Popis: "Krok 1 vývoj prediktivního řešení názorný postup: Zjistěte, jak vytvořit nový pracovní prostor Azure Machine Learning Studio. "
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/23/2017
 ---
 # <a name="walkthrough-step-1-create-an-azure-machine-learning-studio-workspace"></a>Krok 1 průvodce: Vytvoření pracovního prostoru Azure Machine Learning Studio
 Toto je první krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md).

@@ -1,27 +1,8 @@
 ---
-title: Spuštění skriptů strojového učení Pythonu – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Jsou podrobněji popsány dále návrh zásadami pro podporu pro skripty Python v Azure Machine Learning Studio a scénáře základní informace o využití, možnosti a omezení.
-keywords: Python strojového učení, balíčky pandas, pandas v pythonu, skriptů pythonu, spouštění skriptů pythonu
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/29/2017
-ms.openlocfilehash: f0fa2401e37e15137e9d5387d1395baf64b0fe61
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274067"
+Název: Spusťte Python strojového učení titleSuffix skriptů: Azure Machine Learning Studio Popis: Jsou podrobněji popsány dále návrh zásadami pro podporu pro skripty Python v Azure Machine Learning Studio a scénáře základní informace o využití, možnosti a omezení.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 11/29/2017
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 
@@ -67,7 +48,7 @@ Obrázek 1. **Execute Python Script** modulu.
 [Execute Python Script] [ execute-python-script] modulu ve službě Azure ML Studio přijímá až tři vstupů a vytvoří až dva výstupy (probíranou v následující sekci), stejně jako jeho analogové R [spustit R Skript] [ execute-r-script] modulu. Ke spuštění kódu Pythonu se zadá do pole parametru jako speciálně s názvem vstupního bodu funkce volaná `azureml_main`. Tady jsou klíčové MSDL používaný k implementaci tohoto modulu:
 
 1. *Musí být idiomatickou pro Python uživatele.* Většina uživatelů Python faktor svůj kód jako funkce uvnitř modulů. Proto uvedením spoustu spustitelné příkazy nejvyšší úrovně modulu je poměrně vzácný. V důsledku toho pole skript také využívá speciálně pojmenované funkce Pythonu na rozdíl od sekvenci příkazů. Objekty zveřejněné ve funkci, jako jsou typy standardní knihovny Pythonu [Pandas](http://pandas.pydata.org/) datových rámců a [NumPy](http://www.numpy.org/) pole.
-2. *Musí mít vysokou věrností mezi místním a cloudovým spuštění.* Je back-endu ke spuštění kódu Pythonu na základě [Anaconda](https://store.continuum.io/cshop/anaconda/), často se využívá napříč platformami vědecké distribuci jazyka Python. Obsahuje blízko 200 nejběžnější balíčky Pythonu. Odborníci přes data proto můžete ladit a kvalifikovat svůj kód na místní prostředí Azure Machine Learning kompatibilní Anaconda. Použít existující vývojové prostředí, například [IPython](http://ipython.org/) Poznámkový blok nebo [Python Tools for Visual Studio](https://aka.ms/ptvs), spustíte ho v rámci experimentu Azure ML. `azureml_main` Vstupním bodem je vanilla funkce jazyka Python a proto **** dají se vytvářet bez kódu pro Azure ML konkrétní nebo nainstalovaná sada SDK.
+2. *Musí mít vysokou věrností mezi místním a cloudovým spuštění.* Je back-endu ke spuštění kódu Pythonu na základě [Anaconda](https://store.continuum.io/cshop/anaconda/), často se využívá napříč platformami vědecké distribuci jazyka Python. Obsahuje blízko 200 nejběžnější balíčky Pythonu. Odborníci přes data proto můžete ladit a kvalifikovat svůj kód na místní prostředí Azure Machine Learning kompatibilní Anaconda. Použít existující vývojové prostředí, například [IPython](http://ipython.org/) Poznámkový blok nebo [Python Tools for Visual Studio](https://aka.ms/ptvs), spustíte ho v rámci experimentu Azure ML. `azureml_main` Vstupním bodem je vanilla funkce jazyka Python a proto *** dají se vytvářet bez kódu pro Azure ML konkrétní nebo nainstalovaná sada SDK.
 3. *Musí být bez problémů sestavitelný s ostatními moduly Azure Machine Learning.* [Execute Python Script] [ execute-python-script] modul přijímá jako vstup a výstup, standardní datové sady Azure Machine Learning. Základní architektury transparentně a efektivně přemosťuje moduly runtime Azure ML a Python. Python je tak možné ve spojení s existující pracovní postupy Azure ML, včetně těch, které volají do R a SQLite. Výsledek, odborník přes data mohou vytvářet pracovní postupy, které:
    * pro data předběžného zpracování a čištění pomocí Pythonu a Pandas
    * informační kanál dat k transformaci SQL, spojování více datových sad funkcí formuláře

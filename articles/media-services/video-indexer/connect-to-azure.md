@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: f220aee3fa0d9a79723383fc31fec0eed2554bb4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833682"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261549"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
 
@@ -68,7 +68,7 @@ Vyhledejte **Microsoft.Media** a **Microsoft.EventGrid**. Pokud není ve stavu "
 
     ![Video Indexer připojení k Azure](./media/create-account/connect-vi-to-azure-subscription.png)
 
-4. Vyberte oblast Azure z podporovaných umístění: západní USA 2, Severní Evropa nebo jihovýchodní Asie.
+4. Vyberte oblast Azure z podporovaných umístění: Západní USA 2, Severní Evropa nebo jihovýchodní Asie.
 5. V části **účtu Azure Media Services**, zvolte jednu z těchto možností:
 
     * Chcete-li vytvořit nový účet Media Services, vyberte **vytvořit novou skupinu prostředků**. Zadejte název vaší skupiny prostředků.
@@ -97,6 +97,9 @@ Vyhledejte **Microsoft.Media** a **Microsoft.EventGrid**. Pokud není ve stavu "
 ## <a name="connect-to-azure-manually-advanced-option"></a>Připojení k Azure ručně (Upřesnit možnosti)
 
 Pokud se nezdařilo připojení k Azure, můžete opakovat pokus o potíží připojení ručně.
+
+> [!NOTE]
+> Důrazně doporučujeme mít následující tři účty ve stejné oblasti: účet služby Video Indexer, který se připojujete pomocí účtu Media Services, jakož i účet úložiště Azure připojené k stejný účet Media Services.
 
 ### <a name="create-and-configure-a-media-services-account"></a>Vytvoření a konfigurace účtu Azure Media Services
 
@@ -168,7 +171,7 @@ Platí následující aspekty související služby Azure Media Services:
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete pracovat prostřednictvím kódu programu pomocí zkušebního účtu nebo s Video Indexer účty, které jsou připojené do azure pomocí následujících pokynů: [pomocí rozhraní API](video-indexer-use-apis.md).
+Můžete pracovat prostřednictvím kódu programu pomocí zkušebního účtu nebo s Video Indexer účty, které jsou připojené do azure pomocí následujících pokynů: [Použití rozhraní API](video-indexer-use-apis.md).
 
 Měli byste použít stejné uživatele Azure AD, který jste použili při připojování ke službě Azure.
 

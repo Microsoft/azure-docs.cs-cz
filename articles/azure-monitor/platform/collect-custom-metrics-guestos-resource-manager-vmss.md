@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 529a79fbc7b70ba6ea6a07a0ab6c523a193387a2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 1513ea1c212d526b7fe2659855d4a80eabc9949b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325989"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261702"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metrik hostovaného operačního systému k úložišti Azure Monitor metriky s použitím šablony Azure Resource Manageru pro škálovací sadu virtuálních počítačů s Windows
 
@@ -42,7 +42,7 @@ V tomto příkladu můžete použít veřejně dostupné [Ukázková šablona](h
 
 Stáhněte a uložte místně oba soubory. 
 
-###  <a name="modify-azuredeployparametersjson"></a>Upravit azuredeploy.parameters.json
+###  <a name="modify-azuredeployparametersjson"></a>Modify azuredeploy.parameters.json
 Otevřít **azuredeploy.parameters.json** souboru:  
  
 - Zadejte **vmSKU** chcete nasadit. Doporučujeme, abyste Standard_D2_v3. 
@@ -52,7 +52,7 @@ Otevřít **azuredeploy.parameters.json** souboru:
 - Zadejte hodnoty pro **adminUsername** a **adminPassword** škálování virtuálního počítače nastavte. Tyto parametry se používají pro vzdálený přístup k virtuálním počítačům ve škálovací sadě. Abyste se vyhnuli nutnosti váš virtuální počítač zachycena, **nejsou** použít dotazy v této šabloně. Roboti prohledávání Internetu uživatelských jmen a hesel ve veřejných úložištích GitHub. Jsou to pravděpodobně testovat virtuální počítače s tyto výchozí hodnoty. 
 
 
-###  <a name="modify-azuredeployjson"></a>Upravit azuredeploy.json
+###  <a name="modify-azuredeployjson"></a>Modify azuredeploy.json
 Otevřít **azuredeploy.json** souboru. 
 
 Přidejte proměnnou pro uchování informací o účtu úložiště v šabloně Resource Manageru. Všechny protokoly a čítače výkonu zadaný v konfigurační soubor diagnostiky se zapisují do úložiště metrik Azure monitoru a účet úložiště, kterou zde zadáte: 
@@ -89,7 +89,7 @@ Následující kód z rozšíření MSI také přidává se diagnostické rozš�
           "extensionProfile": { 
             "extensions": [ 
             // BEGINNING of added code  
-            // Managed identites for Azure resources   
+            // Managed identities for Azure resources   
                 { 
                  "name": "VMSS-WAD-extension", 
                  "properties": { 

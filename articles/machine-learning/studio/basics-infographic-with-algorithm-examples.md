@@ -1,27 +1,8 @@
 ---
-title: Příklady algoritmů - Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Přehled snadno pochopit základy machine learning obsahuje příklady algoritmů. Infografika ke stažení obsahuje většina strojového učení dotazy.
-keywords: Machine learning základy příklady algoritmů strojového učení pro začátečníky, machine learning dotazy, Oblíbené algoritmy, algoritmus infografika
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: seodc18
-ms.author: garye
-editor: cgronlun
-ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/18/2017
-ms.openlocfilehash: df628447a441d1580fa1a3862275f2b461f8d18a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275733"
+Název: Příklady titleSuffix algoritmus: Azure Machine Learning Studio Popis: Přehled snadno pochopit základy machine learning obsahuje příklady algoritmů. Infografika ke stažení obsahuje většina strojového učení dotazy.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: garyericson ms.author: garye ms.custom: seodc18 ms.date: 12/18/2017
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Machine learning s příklady algoritmů základy
 Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine learning základní informace o další informace o Oblíbené algoritmy, které jsou použity jako odpovědi na běžné dotazy machine learning. Příklady algoritmů pomoct pochopit, jaké algoritmy mají použít, a co slouží pro začátečníky learning počítače.

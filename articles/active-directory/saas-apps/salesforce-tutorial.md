@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 9d9f9d1e9a87802960fd2f004f3e19f47fdd3fe0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5be86017926e09b5db5fd08f1c33d316b9031bc4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971797"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Kurz: Integrace Azure Active Directory se Salesforce
 
@@ -180,7 +180,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí služby Salesforce, p
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-11. V **konfigurace ověřování** části, zkontrolujte **AzureSSO** jako **ověřování Provisioning** Konfigurace jednotného přihlašování SAML, a pak klikněte na tlačítko **uložit** .
+11. V **konfigurace ověřování** části, zkontrolujte **AzureSSO** jako **ověřovací službu** Konfigurace jednotného přihlašování SAML, a pak klikněte na tlačítko  **Uložit**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-auth-config.png)
 

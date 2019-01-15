@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: f8c0adf96d027f58a35dbe570f1b19c311cd84b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 794b3c83ff58967ef8169bed98f7b369335029ae
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246510"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259831"
 ---
 # <a name="pool-create-event"></a>Událost vytvoření fondu
 
@@ -59,7 +59,7 @@ ms.locfileid: "51246510"
 |targetDedicated|Datový typ Int32|Počet výpočetních uzlů, které jsou požadovány pro fond.|
 |enableAutoScale|BOOL|Určuje, zda se velikost fondu automaticky přizpůsobí v čase.|
 |enableInterNodeCommunication|BOOL|Určuje, zda fond je nastaven pro přímou komunikaci mezi uzly.|
-|isAutoPool|BOOL|Speficies Určuje, zda byl fond vytvořen prostřednictvím mechanismu AutoPool úlohy.|
+|isAutoPool|BOOL|Určuje, zda že byl fond vytvořen prostřednictvím mechanismu AutoPool úlohy.|
 |maxTasksPerNode|Datový typ Int32|Maximální počet úloh, které můžou běžet souběžně na jedné výpočetních uzlech ve fondu.|
 |vmFillType|Řetězec|Definuje způsob, jakým služba Batch distribuuje úkoly mezi výpočetní uzly ve fondu. Platné hodnoty jsou rozloženy nebo aktualizací Service Pack.|
 
@@ -74,7 +74,7 @@ ms.locfileid: "51246510"
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|[Element imageReference](#bk_imgref)|Komplexní typ|Určuje informace o platformě nebo image Marketplace, které chcete použít.|
+|[imageReference](#bk_imgref)|Komplexní typ|Určuje informace o platformě nebo image Marketplace, které chcete použít.|
 |nodeAgentSKUId|Řetězec|SKU agenta uzlu služby Batch zřízené na výpočetním uzlu.|
 |[windowsConfiguration](#bk_winconf)|Komplexní typ|Určuje nastavení operačního systému Windows na virtuálním počítači. Tato vlastnost nesmí být zadaná, pokud element imageReference odkazuje na image operačního systému Linux.|
 
@@ -84,7 +84,7 @@ ms.locfileid: "51246510"
 |------------------|----------|-----------|
 |vydavatele|Řetězec|Vydavatel image.|
 |nabídka|Řetězec|Nabídka image.|
-|Skladová položka|Řetězec|Skladová položka image.|
+|SKU|Řetězec|Skladová položka image.|
 |version|Řetězec|Verze image.|
 
 ###  <a name="bk_winconf"></a> windowsConfiguration

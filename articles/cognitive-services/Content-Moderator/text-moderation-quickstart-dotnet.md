@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza problematického materiálu v obsahu textu v jazyce C#'
+title: 'Rychlý start: Analýza textu v obsahu C# – Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Postup analýzy různého problematického materiálu v obsahu textu pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 10/31/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 74c2142e8f6839422446767cd0c70b34daa3f1ad
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1502b3b33d8ab9af7509a7b63e87f80927c528ce
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103243"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266667"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza problematického materiálu v obsahu textu v jazyce C# 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza pro nežádoucím v textový obsahC# 
 
 Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dozvíte se, jak provádět filtrování založené na termínech a klasifikaci obsahu textu za účelem moderování potenciálně problematického materiálu.
 

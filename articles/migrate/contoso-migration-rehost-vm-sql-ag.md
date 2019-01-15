@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6db4de61f84280b7e34f8a9d5c3290ff6d4f97ab
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c1fdd09023c07808226c95ed82d0c22e09d09ec4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200065"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267381"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace on-premises na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
 

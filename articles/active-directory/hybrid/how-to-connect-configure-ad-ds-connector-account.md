@@ -7,19 +7,19 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/14/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c7b1d74c7750a281f8c961789d39a7ae323f304e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809875"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304036"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
-Nový modul prostředí PowerShell s názvem [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) byla zavedena v systému sestavení 1.1.880.0 (vydané spolu. srpna 2018), který obsahuje sadu rutin, které vám pomohou nakonfigurovat správné oprávnění služby Active Directory pro vaši službu Azure AD Připojení nasazení. 
+Modul prostředí PowerShell s názvem [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) byla zavedena v systému sestavení 1.1.880.0 (vydané spolu. srpna 2018), který obsahuje sadu rutin, které vám pomohou nakonfigurovat správné oprávnění služby Active Directory pro vaši službu Azure AD Připojení nasazení. 
 
 ## <a name="overview"></a>Přehled 
 Následující rutiny prostředí PowerShell slouží k nastavení oprávnění služby Active Directory účtu AD DS konektor pro každé funkce, můžete předstírat, že chcete povolit ve službě Azure AD Connect. Pokud chcete zabránit případné problémy, připravte si oprávnění služby Active Directory předem pokaždé, když chcete nainstalovat Azure AD Connect s použitím vlastní doménový účet pro připojení k doménové struktuře. Tento modul ADSyncConfig lze také nakonfigurovat oprávnění po nasazení služby Azure AD Connect.
@@ -280,7 +280,7 @@ Příklad:
 
 ``` powershell
 $credential = Get-Credential 
-Set-ADSyncRestrictedPermissions -ObjectDN 'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
+Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
 ```
 
 Tato rutina se nastavit následující oprávnění: 

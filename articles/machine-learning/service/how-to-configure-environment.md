@@ -1,7 +1,7 @@
 ---
 title: Nastavení vývojového prostředí Pythonu
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak nakonfigurovat prostředí pro vývoj, při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvoření konfiguračních souborů a konfigurace poznámkové bloky Jupyter, poznámkových bloků Azure, Integrovaná vývojová prostředí, editory kódu a virtuální počítač pro datové vědy.
+description: Zjistěte, jak nakonfigurovat prostředí pro vývoj, při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvořit konfigurační soubory a konfigurace poznámkové bloky Jupyter, poznámkových bloků Azure, Azure Databricks, Integrovaná vývojová prostředí, editory kódu a virtuální počítač pro datové vědy.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/14/2018
 ms.custom: seodec18
-ms.openlocfilehash: 46a1872d2ac5d1670620148edf7ee273580826d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: db853be456dbf893163f53bbc797cf12172d38b7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811269"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261090"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -242,9 +242,50 @@ Vlastní verzi sady Azure Machine Learning SDK pro Azure Databricks můžete pou
 
 Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
 
-1. Vytvoření [Databricks pro cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s verzí modulu runtime Databricks 4.x (vysoká souběžnosti upřednostňované) s Python 3. 
+1. Vytvoření [Databricks pro cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s následujícím nastavením:
 
-1. K instalaci a připojení sady SDK Azure Machine Learning pro Python `azureml-sdk[databricks]` PyPi balíček ke svému clusteru [vytvořit knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library).  
+    | Nastavení | Hodnota |
+    |----|---|
+    | Název clusteru | yourclustername |
+    | Modul runtime Databricks | Any non ML runtime (non ML 4.x, 5.x) |
+    | Verze Pythonu | 3 |
+    | Pracovní procesy | 2 nebo vyšší |
+
+    Použijte tato nastavení jenom v případě, že budete používat automatizované strojového učení v Databricks:
+    
+    |   Nastavení | Hodnota |
+    |----|---|
+    | Typy virtuálních počítačů uzlů pracovního procesu | Optimalizované pro paměť virtuálního počítače upřednostňované |
+    | Povolení automatického škálování | Zrušte zaškrtnutí políčka |
+    
+    Počet pracovních uzlů v clusteru Databricks určuje maximální počet souběžných iterací v nastavení automatického ML.  
+
+    Bude trvat několik minut pro vytvoření clusteru. Počkejte, než je cluster spuštěn, než budete pokračovat.
+
+1. Nainstalujte a připojte balíček sady SDK Azure Machine Learning k vašemu clusteru.  
+
+    * [Vytvoření knihovny](https://docs.databricks.com/user-guide/libraries.html#create-a-library) s jedním z těchto nastavení (zvolte pouze jednu z těchto možností):
+    
+        * Instalace sady SDK Azure Machine Learning bez automatizované strojového učení funkce:
+            | Nastavení | Hodnota |
+            |----|---|
+            |Zdroj | Nahrát Python Egg nebo PyPI
+            |Název PyPi | azureml-sdk[databricks]
+    
+        * Instalace sady SDK Azure Machine Learning pomocí automatizovaných machine learning:
+            | Nastavení | Hodnota |
+            |----|---|
+            |Zdroj | Nahrát Python Egg nebo PyPI
+            |Název PyPi | azureml-sdk[automl_databricks]
+    
+    * Nesmí být zvolen **automaticky připojí k všechny clustery**
+
+    * Vyberte **připojit** vedle vašeho názvu clusteru
+
+    * Ujistěte se, dokud se stav změní na nejsou žádné chyby **připojené**. To může trvat několik minut.
+
+    Pokud máte starší verzi sady SDK, zrušte zaškrtnutí možnosti z nainstalovaných knihoven clusteru a přesunout do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po této dochází k nějakému problému, odpojit a znovu ho připojte svůj cluster.
+
     Jakmile budete hotovi, knihovny je připojený, jak je znázorněno na následujícím obrázku. Mějte na paměti tyto [běžných potíží s Databricks](resource-known-issues.md#databricks).
 
    ![Sada SDK nainstalované v Databricks ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
@@ -257,13 +298,12 @@ Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
 
    c. Na **knihovny** kartu, vyberte možnost **restartovat**.
 
-1. Stáhněte si [soubor archivu poznámkových bloků Azure Databricks a Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/databricks/Databricks_AMLSDK_github.dbc).
+1. Stáhněte si [soubor archivu poznámkových bloků Azure Databricks a Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc).
 
    >[!Warning]
    > Mnoho ukázkové poznámkové bloky jsou k dispozici pro použití se službou Azure Machine Learning. Pouze [tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) fungují s Azure Databricks.
-   > 
 
-1.  [Importování tohoto souboru archivu](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do vaší Databricks clusteru a začít prozkoumávat, jak je popsáno na [poznámkových bloků Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) stránky.
+1.  [Importovat soubor archivu](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do vaší Databricks clusteru a začít prozkoumávat, jak je popsáno na [poznámkových bloků Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) stránky.
 
 
 ## <a id="workspace"></a>Vytvořte konfigurační soubor pracovního prostoru
@@ -311,6 +351,6 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
 
 ## <a name="next-steps"></a>Další postup
 
-- [Trénování modelu v Azure Machine Learning s datovou sadou mnist ručně](tutorial-train-models-with-aml.md)
-- [Azure Machine Learning sady SDK pro Python](https://aka.ms/aml-sdk)
-- [Sada SDK pro přípravu dat Azure Machine Learning](https://aka.ms/data-prep-sdk)
+- [Trénování modelu](tutorial-train-models-with-aml.md) v Azure Machine Learning s datovou sadou mnist ručně]
+- Zobrazení [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) odkaz
+- Další informace o [sady SDK pro přípravu dat Azure Machine Learning](https://aka.ms/data-prep-sdk)

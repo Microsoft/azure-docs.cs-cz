@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 4795de2126a34907ecdec69e87a059dbadd0c3d0
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: cddf301db847a5e62afb4383c4da9b10edbfe82f
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380382"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306011"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý start: vytvoření virtuálního počítače s Windows serverem pomocí prostředí PowerShell ve službě Azure Stack
 

@@ -9,12 +9,12 @@ ms.date: 01/10/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8fec963dfce8c55cc618f2ce6877d4d591a9cf27
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 3091e53b47d85e3e58c32b255dc9dcebd54ab2c5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215214"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264933"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Pomocí sady Visual Studio 2017 na vývoj a ladění modulů jazyka C# pro Azure IoT Edge (Preview)
 
@@ -61,7 +61,7 @@ Poté, co Visual Studio 2017 je připraven, budete potřebovat následující ko
 
 1. Z **nástroje** nabídce vyberte možnost **rozšíření a aktualizace**. Rozbalte **nainstalováno > Nástroje** zjistíte **nástroje Azure IoT Edge** a **Cloud Explorer for Visual Studio**.
 
-1. Poznamenejte si verzi nainstalovaného. Můžete porovnat tato verze na nejnovější verzi na Visual Studio Marketplace ([Průzkumníka cloudu](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS), [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge))
+1. Poznamenejte si verzi nainstalovaného. Můžete porovnat tato verze na nejnovější verzi na Visual Studio Marketplace ([Průzkumníka cloudu](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS), [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools))
 
 1. Pokud je vaše verze starší než co je k dispozici na webu Visual Studio Marketplace, aktualizujte své nástroje v sadě Visual Studio, jak je znázorněno v následující části.
 

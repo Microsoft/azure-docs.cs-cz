@@ -1,26 +1,8 @@
 ---
-title: Jak model Machine Learning Studio stane webové služby – Azure | Dokumentace Microsoftu
-description: Přehled o mechanismu jak experimentovat vaše postupuje model Azure Machine Learning z vývojového zprovozněné webové službě.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253863"
+Název: Jak model Machine Learning Studio se stane titleSuffix služby web: Azure Machine Learning Studio Popis: Přehled o mechanismu jak experimentovat vaše postupuje model Azure Machine Learning z vývojového zprovozněné webové službě.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 03/20/2017
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu ke zprovozněné službě webové
 Azure Machine Learning Studio poskytuje interaktivní plátno, která umožňuje vyvíjet, spouštět, testovat a iterovat ***experimentovat*** představující model prediktivní analýzy. Existují nejrůznější moduly, které můžete:

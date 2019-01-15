@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 1/9/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 98d2d29e7822d9ca97ba488fcf67298a0b40efbf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608830"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265460"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
 
@@ -74,10 +74,10 @@ Podporují se také virtuální počítače, na kterých běží v cloudové slu
 |Prostředí|Azure|Mimo službu Azure|Azure|Mimo službu Azure|
 |Výstrahy detekce hrozeb VMBA|✔|✔|✔ (o podporovaných verzích)|✔|
 |Výstrahy detekce hrozeb založené na síti|✔|X|✔|X|
-|Ochrana ATP v programu Windows Defender integrace *|✔ (o podporovaných verzích)|✔|X|X|
+|Integrace ochrany ATP v programu Windows Defender|✔ (o podporovaných verzích)|✔|X|X|
 |Chybějící opravy|✔|✔|✔|✔|
 |Konfigurace zabezpečení|✔|✔|✔|✔|
-|Antimalwarové programy|✔|✔|X|X|
+|Ochrana koncových bodů|✔|✔|X|X|
 |Přístup k virtuálnímu počítači podle potřeby|✔|X|✔|X|
 |Adaptivní řízení aplikací|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
@@ -88,8 +88,27 @@ Podporují se také virtuální počítače, na kterých běží v cloudové slu
 |Mapování sítě|✔|X|✔|X|
 |Ovládací prvky pro adaptivní síť|✔|X|✔|X|
 
-\* Tyto funkce jsou aktuálně podporované ve verzi public preview.
 
+### <a name="supported-endpoint-protection-solutions"></a>Řešení ochrany koncových bodů podporované
+
+Následující tabulka obsahuje matici:
+ - Určuje, zda můžete použít Azure Security Center k instalaci jednotlivá řešení za vás.
+ - Můžete zjistit, které endpoint protection řešení Security Center. Pokud je jedno z těchto řešení endpoint protection zjistí, nebude Security Center doporučit instalace.
+
+| Endpoint Protection (Ochrana koncových bodů)| Platformy | Instalace Security Center | Zjišťování Security Center |
+|------|------|-----|-----|
+| Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
+| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
+| Trend Micro – všechny verze | Řada Windows Serverů  | Ne | Ano |
+| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
+| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
+| Kaspersky| Řada Windows Serverů  | Ne | Ne  |
+| Sophos| Řada Windows Serverů  | Ne | Ne  |
+
+> [!NOTE]
+> - Zjišťování nástroje System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows serverem 2008 R2 vyžaduje SCEP k instalaci prostředí PowerShell 3.0 (nebo horním verze).
+>
+>
 
 ## <a name="supported-paas-features"></a>Podporované funkce PaaS 
 
@@ -97,8 +116,8 @@ Podporují se také virtuální počítače, na kterých běží v cloudové slu
 |Služba|Doporučení|Detekce hrozeb|
 |----|----|----|
 |SQL|✔| ✔|
-|PostGreSQL *|✔| ✔|
-|MySQL *|✔| ✔|
+|PostGreSQL*|✔| ✔|
+|MySQL*|✔| ✔|
 |Azure Blob storage účty *|✔| ✔|
 |Aplikační služby|✔| ✔|
 |Cloud Services|✔| X|
@@ -109,6 +128,8 @@ Podporují se také virtuální počítače, na kterých běží v cloudové slu
 |Předplatné|✔| ✔|
 
 \* Tyto funkce jsou aktuálně podporované ve verzi public preview. 
+
+
 
 ## <a name="next-steps"></a>Další postup
 

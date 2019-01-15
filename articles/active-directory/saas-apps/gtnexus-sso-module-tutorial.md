@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Flex globální přehled | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a flexibilní globální zobrazení.
+title: 'Kurz: Integrace Azure Active Directory s systém jednotného přihlašování GTNexus | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a systém GTNexus jednotného přihlašování.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: ae466dc4bce6ab7068622272651c22d70fc84fff
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 646c9b1c3a1f10cae678e6788379eb6bbd144e78
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54068890"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263488"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-flex-global-view"></a>Kurz: Integrace Azure Active Directory s Flex globální zobrazení
+# <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Kurz: Integrace Azure Active Directory s GTNexus systém jednotného přihlašování
 
-V tomto kurzu se dozvíte, jak integrovat Flex globální Přehled služby Azure Active Directory (Azure AD).
-Flexibilní globální Přehled integrace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat GTNexus systém jednotného přihlašování s Azure Active Directory (Azure AD).
+Integrace systému GTNexus jednotného přihlašování s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Flex globální zobrazení.
-* Uživatelům se automaticky přihlášeni k Flex globální zobrazení (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete řídit ve službě Azure AD, který má přístup k systému GTNexus jednotného přihlašování.
+* Uživatelům se automaticky přihlášeni k GTNexus systém jednotného přihlašování (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
 Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,22 +35,22 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Flex globální zobrazení, potřebujete následující položky:
+Konfigurace integrace Azure AD s GTNexus systém jednotného přihlašování, budete potřebovat následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Flexibilní globální zobrazení jednotné přihlašování povolená předplatného
+* Systém jednotného přihlašování GTNexus jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* Pružné podporuje globální zobrazení **IDP** jednotné přihlašování zahájené pomocí
+* Podporuje systém jednotného přihlašování GTNexus **IDP** jednotné přihlašování zahájené pomocí
 
-## <a name="adding-flex-global-view-from-the-gallery"></a>Přidání Flex globální zobrazení z Galerie
+## <a name="adding-gtnexus-sso-system-from-the-gallery"></a>Přidání GTNexus systém jednotného přihlašování z Galerie
 
-Ke konfiguraci integrace Flex globální zobrazení do služby Azure AD, budete muset přidat Flex globální zobrazení z Galerie na váš seznam spravovaných aplikací SaaS.
+Konfigurace integrace systému GTNexus jednotné přihlašování do služby Azure AD, budete muset přidat GTNexus systém jednotného přihlašování na váš seznam spravovaných aplikací SaaS z galerie.
 
-**Flexibilní globální zobrazení přidat z galerie, postupujte následovně:**
+**Chcete-li přidat GTNexus systém jednotného přihlašování z galerie, postupujte následovně:**
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
@@ -64,31 +64,31 @@ Ke konfiguraci integrace Flex globální zobrazení do služby Azure AD, budete 
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Flex globální zobrazení**vyberte **Flex globální zobrazení** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **systém jednotného přihlašování GTNexus**vyberte **systém jednotného přihlašování GTNexus** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Flexibilní globální zobrazení v seznamu výsledků](common/search-new-app.png)
+     ![Systém GTNexus jednotného přihlašování v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Flex globální zobrazení založené na test uživateli **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Flex globální zobrazení.
+V této části, konfigurace a testování služby Azure AD jednotné přihlašování s GTNexus jednotného přihlašování systém založený na uživateli testu **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelem v systému GTNexus jednotného přihlašování.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Flex globální zobrazení, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s GTNexus systém jednotného přihlašování, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Nakonfigurujte flexibilní globální zobrazení jednotného přihlašování](#configure-flex-global-view-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Konfigurace GTNexus jednotného přihlašování systému Single Sign-On](#configure-gtnexus-sso-system-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Flex globální zobrazení](#create-flex-global-view-test-user)**  – Pokud chcete mít protějšek Britta Simon Flex globální zobrazení, které souvisí s Azure AD reprezentace uživatele.
+5. **[Vytvořit testovacího uživatele systém jednotného přihlašování GTNexus](#create-gtnexus-sso-system-test-user)**  – Pokud chcete mít protějšek Britta Simon v systému GTNexus jednotného přihlašování, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Flex globální zobrazení, proveďte následující kroky:
+Chcete-li nakonfigurovat systém GTNexus jednotného přihlašování Azure AD jednotného přihlašování, postupujte následovně:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Flex globální zobrazení** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **systém jednotného přihlašování GTNexus** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
@@ -110,7 +110,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Flex globální zobrazení,
 
     ![image](common/browse-upload-metadata.png)
 
-    c. Po úspěšném odeslání souboru metadat **identifikátor** a **adresy URL odpovědi** hodnoty získat automaticky vyplní v textovém poli Flex globální zobrazení části:
+    c. Po úspěšném odeslání souboru metadat **identifikátor** a **adresy URL odpovědi** hodnoty získat automaticky vyplní v textovém poli části GTNexus systém jednotného přihlašování:
 
     ![image](common/idp-intiated.png)
 
@@ -121,9 +121,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s Flex globální zobrazení,
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-### <a name="configure-flex-global-view-single-sign-on"></a>Nakonfigurujte flexibilní globální přehled jednotného přihlašování
+### <a name="configure-gtnexus-sso-system-single-sign-on"></a>Konfigurace jednotného přihlašování GTNexus systém jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Flex globální zobrazení** straně, je nutné odeslat **kód XML metadat federace** k [tým podpory Flex globální zobrazení](mailto:support@gtnexus.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **systém jednotného přihlašování GTNexus** straně, je nutné odeslat **kód XML metadat federace** k [systém jednotného přihlašování GTNexus tým podpory](mailto:support@gtnexus.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -152,15 +152,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Flex globální zobrazení.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k systému GTNexus jednotného přihlašování.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Flex globální zobrazení**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **systém jednotného přihlašování GTNexus**.
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Flex globální zobrazení**.
+2. V seznamu aplikací vyberte **systém jednotného přihlašování GTNexus**.
 
-    ![Odkaz Flex globální zobrazení v seznamu aplikací](common/all-applications.png)
+    ![Systém jednotného přihlašování GTNexus odkaz v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
@@ -176,17 +176,17 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-### <a name="create-flex-global-view-test-user"></a>Vytvořit testovacího uživatele Flex globální zobrazení
+### <a name="create-gtnexus-sso-system-test-user"></a>Vytvořit systém jednotného přihlašování GTNexus testovacího uživatele
 
-V této části vytvořte uživatele Britta Simon v Flex globální zobrazení. Práce s [tým podpory Flex globální zobrazení](mailto:support@gtnexus.com) přidat uživatele na platformě Flex globální zobrazení. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon systému GTNexus jednotného přihlašování. Práce s [tým podpory systém jednotného přihlašování GTNexus](mailto:support@gtnexus.com) přidat uživatele na platformě GTNexus systém jednotného přihlašování. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Flex globální zobrazení na přístupovém panelu, vám by měl být automaticky přihlášeni Flex globální zobrazení, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici GTNexus systém jednotného přihlašování na přístupovém panelu, můžete by měl být automaticky přihlášeni k systému GTNexus jednotného přihlašování, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 
 - [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

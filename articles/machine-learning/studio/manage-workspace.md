@@ -1,26 +1,7 @@
 ---
-title: Správa pracovního prostoru Machine Learning Studio | Dokumentace Microsoftu
-description: Správa přístupu k pracovních prostorů Azure Machine Learning a nasazovat a spravovat služby webového rozhraní API ML
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: daf3d413-7a77-4beb-9a7a-6b4bdf717719
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/27/2017
-ms.openlocfilehash: 8c5dfd82a7bf0d1985869c8de4e3b313ef885947
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270769"
+Název: Spravujte titleSuffix pracovního prostoru Machine Learning Studio: Azure Machine Learning Studio Popis: Spravovat přístup do pracovních prostorů Azure Machine Learning a nasazovat a spravovat služby služby webového rozhraní API ML: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 02/27/2017
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Správa pracovního prostoru Azure Machine Learning Studio
 

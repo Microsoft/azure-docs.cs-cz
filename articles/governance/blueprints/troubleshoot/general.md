@@ -4,17 +4,17 @@ description: Informace o řešení problémů vytvářet a přiřazovat podrobn�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40668fed2fcc2a04e39fa3a4d7e8e8923c75ae05
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 04c038eb11cc40cec3552feff183bea55b22bb57
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315517"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261923"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení potíží s chybami pomocí Azure podrobné plány
 
@@ -52,6 +52,20 @@ Zásady dojít ke konfliktu se nasazení pro z několika důvodů:
 #### <a name="resolution"></a>Řešení
 
 Podrobný plán měnit, takže není v konfliktu se zásadami v podrobnostech o chybě. Pokud tuto změnu není možné, je alternativní možnost oboru přiřazení zásady změněna tak podrobný plán je již nejsou v konfliktu s zásady.
+
+### <a name="escape-function-parameter"></a>Scénář: Parametr podrobného plánu se funkce
+
+#### <a name="issue"></a>Problém
+
+Parametry podrobného plánu, které jsou funkce se zpracovávají před předáním artefakty.
+
+#### <a name="cause"></a>Příčina
+
+Předá parametr podrobného plánu, který používá funkce, jako například `[resourceGroup().tags.myTag]`do artefakt výsledky zpracování výsledku funkce nastavena na artefakt místo dynamickou funkci.
+
+#### <a name="resolution"></a>Řešení
+
+Funkce prostřednictvím předat jako parametr, řídicí celý řetězec s `[` tak, aby parametr podrobného plánu vypadá jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že podrobné plány. při zpracování podrobný plán považovat hodnotu jako řetězec. Podrobné plány. pak vloží funkci na artefakt, což umožňuje být dynamické podle očekávání.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,21 +1,21 @@
 ---
 title: Spouštění úloh moderování obsahu s konzolou rozhraní API – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak spouštět úlohy moderování obsahu v konzole pro rozhraní API.
+description: Ke spuštění úlohy začátku do konce pro moderování obsahu pro obsah image nebo text v Azure Content Moderator použijte operace úlohy revizi rozhraní API.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4d1f96cbf7a94c59476f077cc4e72a26ee9c8296
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227097"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259109"
 ---
 # <a name="start-a-moderation-job-from-the-api-console"></a>Spustit úlohu moderování z konzoly pro rozhraní API
 
@@ -32,9 +32,9 @@ Přejděte [nástroji pro kontrolu](https://contentmoderator.cognitive.microsoft
 ## <a name="use-the-api-console"></a>Pomocí rozhraní API konzoly
 Mohli vyzkoušet rozhraní API pomocí konzole online, budete potřebovat několik hodnot, zadejte do konzoly:
     
-- `teamName`: Použijte v případě `Id` pole z obrazovky nástroj zkontrolujte přihlašovací údaje. 
-- `ContentId`: Tento řetězec je předán rozhraní API a vrátí přes zpětného volání. **ContentId** je užitečná pro interní identifikátory nebo metadata přidružení výsledky úlohy moderování.- `Workflowname`: název [pracovního postupu, který jste vytvořili](Review-Tool-User-Guide/Workflows.md) v předchozí části.
-- `Ocp-Apim-Subscription-Key`: Umístěn na **nastavení** kartu. Další informace najdete v tématu [přehled](overview.md).
+- `teamName`: Použití `Id` pole z obrazovky nástroj zkontrolujte přihlašovací údaje. 
+- `ContentId`: Tento řetězec je předán rozhraní API a vrátí přes zpětného volání. **ContentId** je užitečné pro přidružení k výsledky úlohy moderování interní identifikátory nebo metadata.- `Workflowname`: Název [pracovního postupu, který jste vytvořili](Review-Tool-User-Guide/Workflows.md) v předchozí části.
+- `Ocp-Apim-Subscription-Key`: Na **nastavení** kartu. Další informace najdete v tématu [Přehled](overview.md).
 
 Přístup k rozhraní API konzoly je z **pověření** okna.
 

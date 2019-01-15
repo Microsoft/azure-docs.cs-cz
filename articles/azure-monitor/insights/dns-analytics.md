@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 5641792c058d10bba1bfd468f3c5c90b9217226e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 29b76620494fbb325f8c43bf90a07c9df0faff56
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187649"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266329"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -76,11 +76,11 @@ Na řídicím panelu řešení, klikněte na tlačítko **konfigurace** otevřet
 
 Pokud používáte Microsoft Monitoring Agent pro připojení k pracovnímu prostoru Log Analytics, je nainstalována následující sady management pack:
 
-- Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
+- Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
 
 Pokud vaši skupinu pro správu Operations Manageru je připojený k pracovnímu prostoru Log Analytics, nainstaluje se následující sady management Pack v nástroji Operations Manager při přidání tohoto řešení. Neexistuje žádná požadované konfigurace ani Údržba těchto sad management Pack:
 
-- Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
+- Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
 - Konfigurace DNS Analytics Microsoft System Center Advisor (Microsoft.IntelligencePack.Dns.Configuration)
 
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).

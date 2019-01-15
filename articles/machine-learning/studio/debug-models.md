@@ -1,34 +1,17 @@
 ---
-title: Ladění modelu - Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Jak ladit chyby, vytvořené moduly Train Model a Score Model v Azure Machine Learning Studio.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2017
-ms.openlocfilehash: 0464dec9e747e57e4b95a691aeb5a0992cf8d9cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268882"
+Název: Ladění vašeho modelu titleSuffix: Azure Machine Learning Studio Popis: Jak ladit chyby, vytvořené moduly Train Model a Score Model v Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2017
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Ladění modelu ve službě Azure Machine Learning Studio
 
-Tento článek vysvětluje potenciální důvody, proč některý z následujících dvou chyby můžou nastat při spuštění modelu:
+Při spuštění modelu, můžete narazit následující chyby:
 
 * [Train Model] [ train-model] modulu dojde k chybě 
 * [Score Model] [ score-model] modulu produkuje nesprávné výsledky 
 
+Tento článek vysvětluje možné příčiny pro tyto chyby.
 
 
 ## <a name="train-model-module-produces-an-error"></a>Modul trénování modelu dojde k chybě
@@ -38,11 +21,11 @@ Tento článek vysvětluje potenciální důvody, proč některý z následujíc
 [Train Model] [ train-model] modul očekávají dva vstupy:
 
 1. Typ modelu strojového učení z kolekce modelů poskytované Azure Machine Learning.
-2. Trénovacích dat s zadaný sloupec popisek, který určuje proměnnou k předpovědi (další sloupce, které jsou považovány za funkce).
+2. Trénovacích dat pomocí zadaného popisku sloupec, který určuje proměnnou k předpovědi (další sloupce, které jsou považovány za funkce).
 
 Tento modul může vést k chybě v následujících případech:
 
-1. Popisek sloupce je nesprávně zadán. To může nastat, pokud jako popisek byl vybrán více než jednoho sloupce nebo je vybrané nesprávné sloupce indexu. Druhém případě by například platí v případě, že index sloupce 30 se používá s vstupní datovou sadu, která má jen 25 sloupce.
+1. Popisek sloupce je nesprávně zadán. To může nastat, pokud jako popisek byl vybrán více než jednoho sloupce nebo je vybrané nesprávné sloupce indexu. Druhém případě by například platí v případě, že index sloupce 30 se používá s vstupní datovou sadu, která má jen 25 sloupců.
 
 2. Datová sada neobsahuje žádné sloupce. Například pokud vstupní datová sada obsahuje pouze jeden sloupec, který je označený jako sloupec popisek, by existovat žádné funkce, pomocí kterého se má sestavení modelu. V takovém případě [Train Model] [ train-model] modulu dojde k chybě.
 
@@ -59,15 +42,15 @@ V typické experimentu trénování a testování pro učení [rozdělení dat] 
 1. Výstup trénovaného modelu z [Train Model] [ train-model] modulu.
 2. Vyhodnocení sady dat se liší od datové sady pro trénování modelu.
 
-Je možné, že i když podaří experiment, [Score Model] [ score-model] modulu produkuje nesprávné výsledky. Několik scénářů může způsobit, že k tomu dojde:
+Je možné, že i když podaří experiment, [Score Model] [ score-model] modulu produkuje nesprávné výsledky. Několik scénářů může způsobit, že tento problém, která se provede:
 
 1. Pokud zadaným popiskem je zařazená do kategorií a regresní model se trénuje na data, by bylo vytvořeno nesprávný výstup, tak [Score Model] [ score-model] modulu. Je to proto, že regresní vyžaduje proměnnou průběžné odpovědi. V takovém případě by bylo vhodnější použít model klasifikace. 
 
-2. Podobně pokud model klasifikace jsou trénovaná na datovou sadu s plovoucí desetinnou čárkou ve sloupci popisek, může způsobit nežádoucí výsledky. Je to proto, že klasifikace vyžaduje proměnnou diskrétní odpověď, která povoluje jenom hodnoty tohoto rozsahu v rámci omezené a obvykle poměrně malé sady tříd.
+2. Podobně pokud model klasifikace jsou trénovaná na datovou sadu s plovoucí desetinnou čárkou ve sloupci popisek, může způsobit nežádoucí výsledky. Je to proto, že klasifikace vyžaduje proměnnou diskrétní odpověď, která povoluje jenom hodnoty tohoto rozsahu konečná a malé, sadu tříd.
 
 3. Pokud bodování datová sada neobsahuje všechny funkce využívají k tréninku modelu, [Score Model] [ score-model] dojde k chybě.
 
-4. Pokud řádek v hodnoticí datová sada obsahuje chybějící hodnota nebo nekonečnou hodnotu pro některou z jejích funkcí [Score Model] [ score-model] nevytvoří žádný výstup odpovídající na daném řádku.
+4. Pokud řádek v hodnoticí datová sada obsahuje chybějící hodnota nebo nekonečnou hodnotu pro některou z jejích funkcí [Score Model] [ score-model] nevytváří žádný výstup odpovídající na daném řádku.
 
 5. [Score Model] [ score-model] mohou mít identické výstupy pro všechny řádky v hodnoticí datové sadě. Tato situace může nastat například při pokusu o klasifikaci pomocí rozhodnutí doménovými strukturami, pokud je minimální počet vzorků za uzel typu list je zvolená být vyšší než počet dostupných příkladů školení.
 

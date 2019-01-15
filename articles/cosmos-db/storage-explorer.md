@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: d19aaa6e486732cb1453e3299c8e598e8fd2f507
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 24df1cb5b7a9cc1209940bbaaa1217a80ea74918
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044616"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259644"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Správa prostředků Azure Cosmos DB pomocí Průzkumníka služby Azure Storage
 
@@ -266,7 +266,7 @@ Pokud nemůžete odebrat účet nebo pokud odkaz na opětovné ověření nic ne
   - .extaccounts
 - Pokud chcete odebrat prostředky služby Storage připojené sdíleným přístupovým podpisem, odstraňte:
   - Složku %AppData%/StorageExplorer ve Windows.
-  - Složku /Users/<vaše_jméno>/Library/Applicaiton Support/StorageExplorer v systému Mac.
+  - Složku /Users/ < vaše_jméno >/Library/Application SUpport/StorageExplorer v systému Mac.
   - Složku ~/.config/StorageExplorer v Linuxu.
   - Pokud tyto soubory odstraníte, **budete muset zadat všechny své přihlašovací údaje znovu**.
 

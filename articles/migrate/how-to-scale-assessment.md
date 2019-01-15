@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 809d892c6238441f5a0bd93382acd7a783a4f0e9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2bc6f14eeb974ded462b8dcaf65d5401cc35291d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260714"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262213"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -19,7 +19,7 @@ Azure Migrate má limit 1 500 počítačů pro každý projekt, tento článek p
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **VMware**: Virtuální počítače, které plánujete migrovat se musí spravovat přes vCenter Server verze 5.5, 6.0 nebo 6.5. Kromě toho potřebujete jednoho hostitele ESXi ve verzi 5.0 nebo novější. Chcete-li nasadit virtuální počítač kolektoru.
+- **VMware**: Virtuální počítače, které plánujete migrovat se musí spravovat přes vCenter Server verze 5.5, 6.0, 6.7 nebo 6.5. Kromě toho potřebujete jednoho hostitele ESXi ve verzi 5.0 nebo novější. Chcete-li nasadit virtuální počítač kolektoru.
 - **účet vCenter**: Potřebujete účet jen pro čtení pro přístup k systému vCenter Server. Azure Migrate ho použije ke zjištění místních virtuálních počítačů.
 - **Oprávnění**: V systému vCenter Server budete potřebovat oprávnění k vytvoření virtuálního počítače pomocí importu souboru ve formátu OVA.
 - **Nastavení statistiky**: Tento požadavek platí pouze pro [model jednorázového zjišťování](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods) který je nyní zastaralý. Před zahájením nasazování, by měla pro model jednorázového zjišťování, nastavit nastavení statistiky systému vCenter Server na úroveň 3. Úroveň statistiky má být nastavena na hodnotu 3 pro každý den, týden a měsíc kolekce intervalech. Pokud úroveň je nižší než 3 pro všechny tři sběru dat, posouzení bude fungovat, ale nebudou shromažďovat data o výkonu pro úložiště a sítě. Doporučené velikosti bude potom založena na údaje o výkonu pro využití procesoru a paměti a konfigurační data pro disk a síťové adaptéry.
@@ -286,7 +286,7 @@ Zařízení kolektoru shromažďuje následující čítače výkonu pro každý
 
 **Counter** |  **Dopad na posouzení**
 --- | ---
-CPU.Usage.average | Doporučené velikosti virtuálních počítačů a náklady  
+cpu.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
 mem.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
 virtualDisk.read.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
 virtualDisk.write.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače

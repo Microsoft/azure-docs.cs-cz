@@ -1,21 +1,21 @@
 ---
-title: Moderovat obsah pomocí rozhraní API konzoly – Content Moderator recenze prováděné lidmi
+title: Moderování obsahu pomocí rozhraní API konzoly – Content Moderator recenze prováděné lidmi
 titlesuffix: Azure Cognitive Services
-description: Informace o vytvoření recenze prováděné lidmi v konzole nástroje Content Moderator API.
+description: Operace kontroly API zkontrolujte můžete využít k vytvoření image nebo text kontroly pro lidské moderování.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: bb95341a09f09ce8020f34476e720270fd401909
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9d2daad06ad6cb97fe562db98cab57c4ed970a60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219749"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260205"
 ---
 # <a name="create-reviews-from-the-api-console"></a>Vytvoření kontroly z konzoly pro rozhraní API
 
@@ -26,10 +26,10 @@ Poté, co lidské moderátory kontroly automaticky přiřazená značky a data p
 ## <a name="use-the-api-console"></a>Pomocí rozhraní API konzoly
 Mohli vyzkoušet rozhraní API pomocí konzole online, budete potřebovat několik hodnot, zadejte do konzoly:
 
-- **teamName**: název týmu, který jste vytvořili při nastavování účtu nástroj pro revize. 
+- **teamName**: Název týmu, který jste vytvořili při nastavování účtu nástroj pro revize. 
 - **ContentId**: Tento řetězec je předán rozhraní API a vrátí přes zpětného volání. ID je užitečné pro přidružení výsledky úlohy moderování interní identifikátory nebo metadata.
-- **Metadata**: vlastní páry klíč hodnota vrácená do vašeho koncového bodu rozhraní API během zpětného volání. Pokud je klíč krátký kód, který je definován v nástroj pro recenze, zobrazí se jako značku.
-- **OCP-Apim-Subscription-Key**: na **nastavení** kartu. Další informace najdete v tématu [přehled](overview.md).
+- **Metadata**: Vrátí do vašeho koncového bodu rozhraní API během zpětného volání vlastní páry klíč hodnota. Pokud je klíč krátký kód, který je definován v nástroj pro recenze, zobrazí se jako značku.
+- **Ocp-Apim-Subscription-Key**: Na **nastavení** kartu. Další informace najdete v tématu [Přehled](overview.md).
 
 Nejjednodušší způsob, jak přistupovat k testovací konzoly je z **pověření** okna.
 

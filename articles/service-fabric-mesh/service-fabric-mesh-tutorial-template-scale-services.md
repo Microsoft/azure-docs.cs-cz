@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: af733b75780787f07ec28ff45bda6810c3d96baa
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 70620b5ec57f6bf4403ac959c4c69026ae80b887
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888116"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261396"
 ---
-# <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Kurz: Škálování aplikace spuštěné ve službě Service Fabric Mesh
+# <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Kurz: Škálovat aplikaci spuštěnou ve službě Service Fabric Mesh
 
 Tento kurz je druhá část série. Zjistěte, jak můžete ručně škálovat počet instancí služby aplikace, která byla [předtím nasazena do služby Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md). Až budete hotovi, budete mít front-endovou službu se třemi instancemi a datovou službu se dvěma instancemi.
 
@@ -53,7 +53,7 @@ Než začnete s tímto kurzem:
 
 Jednou z hlavních výhod nasazení aplikací do služby Service Fabric Mesh je možnost snadného horizontálního snížení nebo navýšení kapacity služeb. Tuto možnost byste měli používat ke zvládnutí různých objemů zatížení vašich služeb nebo ke zlepšení dostupnosti.
 
-Tento kurz používá ukázku To Do List jako příklad, který byl [dříve nasazen](service-fabric-mesh-tutorial-template-deploy-app.md) a teď by měl běžet. Aplikace má dvě služby: WebFrontEnd a ToDoService. Každá z těchto služeb byla původně nasazena s jednou replikou.  Pokud chcete zobrazit počet spuštěných replik pro službu WebFrontEnd, spusťte následující příkaz:
+Tento kurz jako příklad používá ukázku Seznam úkolů, která se [nasadila dříve](service-fabric-mesh-tutorial-template-deploy-app.md) a teď by měla být spuštěná. Aplikace má dvě služby: WebFrontEnd a ToDoService. Každá z těchto služeb byla původně nasazena s jednou replikou.  Pokud chcete zobrazit počet spuštěných replik pro službu WebFrontEnd, spusťte následující příkaz:
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp --query "replicaCount"

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/10/2018
-ms.openlocfilehash: 4598c0ab02e7dcbb8fbc963a2939ab6f812832db
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/15/2019
+ms.openlocfilehash: cab1e47d6d0b40fab881d7948381b6294f52546d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713438"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303373"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrace místního SQL serveru do Azure SQL Database pomocí prostředí Azure PowerShell
 V tomto článku, migrujete **Adventureworks2012** databáze obnovit k místní instanci systému SQL Server 2016 nebo novějším ke službě Azure SQL Database pomocí prostředí Azure PowerShell. Můžete migrovat databáze z místní instance systému SQL Server do Azure SQL Database s použitím `AzureRM.DataMigration` modulu v prostředí Azure PowerShell.
@@ -61,7 +61,7 @@ Můžete vytvořit novou instanci služby Azure Database Migration Service pomoc
 - *Název skupiny prostředků Azure*. Můžete použít [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-4.4.1) příkazu vytvořte skupinu prostředků Azure, jak bylo dříve uvedeno a zadejte jeho název jako parametr.
 - *Název služby*. Řetězec, který odpovídá název požadovaného jedinečná služba Azure Database Migration Service 
 - *Umístění*. Určuje umístění služby. Zadejte umístění centra služby Azure data, třeba západní USA nebo jihovýchodní Asie
-- *Skladová položka*. Tento parametr odpovídá názvu DMS Sku. Současný název Sku je *GeneralPurpose_4vCores*.
+- *Sku*. Tento parametr odpovídá názvu DMS Sku. Současný název Sku je *GeneralPurpose_4vCores*.
 - *Identifikátor virtuální podsítě*. Můžete použít rutinu [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-4.4.1) vytvořit podsíť. 
 
 Následující příklad vytvoří službu s názvem *MyDMS* ve skupině prostředků *MyDMSResourceGroup* umístěné v *USA – východ* pomocí virtuální sítě s názvem oblasti *MyVNET* a podsítě s názvem *MySubnet*.
@@ -204,6 +204,13 @@ if (($mytask.ProjectTask.Properties.State -eq "Running") -or ($mytask.ProjectTas
 {
   write-host "migration task running"
 }
+```
+
+## <a name="deleting-the-dms-instance"></a>Odstranění DMS instance
+Po dokončení migrace můžete odstranit instanci Azure DMS:
+
+```powershell
+Remove-AzureRmDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
 ## <a name="next-steps"></a>Další postup

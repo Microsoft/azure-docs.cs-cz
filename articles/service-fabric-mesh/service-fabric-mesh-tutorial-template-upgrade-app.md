@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f617be79cb61932f79728feef76f056ce72ae0ab
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d27cc555a8cf96a07818e83b342cf145d9e98a96
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891125"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265903"
 ---
-# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Kurz: Upgrade aplikace Service Fabric spuštěné ve službě Service Fabric Mesh
+# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Kurz: Upgrade aplikace Service Fabric spuštěné v Service Fabric mřížky
 
 Tento kurz je třetí částí série. Dozvíte se, jak upgradovat aplikaci Service Fabric, která se [předtím nasadila do služby Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md), a to zvýšením množství přidělených prostředků CPU.  Jakmile budete hotovi, budete mít webová front-end služba spuštěná s vyšší prostředků procesoru.
 
@@ -53,7 +53,7 @@ Než začnete s tímto kurzem:
 
 Jednou z hlavních výhod nasazování aplikací do služby Service Fabric Mesh je možnost snadné aktualizace konfigurace aplikace.  Jedná se například o prostředky CPU nebo paměti pro vaše služby.
 
-Tento kurz jako příklad používá ukázku Seznam úkolů, která se [nasadila dříve](service-fabric-mesh-tutorial-template-deploy-app.md) a teď by měla být spuštěná. Aplikace obsahuje dvě služby: WebFrontEnd a ToDoService. Každá z těchto služeb byla původně nasazená s prostředky CPU nastavenými na hodnotu 0,5.  Pokud chcete zobrazit prostředky CPU pro službu WebFrontEnd, spusťte následující příkaz:
+Tento kurz jako příklad používá ukázku Seznam úkolů, která se [nasadila dříve](service-fabric-mesh-tutorial-template-deploy-app.md) a teď by měla být spuštěná. Aplikace má dvě služby: WebFrontEnd a ToDoService. Každá z těchto služeb byla původně nasazená s prostředky CPU nastavenými na hodnotu 0,5.  Pokud chcete zobrazit prostředky CPU pro službu WebFrontEnd, spusťte následující příkaz:
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp

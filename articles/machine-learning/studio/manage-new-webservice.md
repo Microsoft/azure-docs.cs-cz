@@ -1,26 +1,8 @@
 ---
-title: Použití portálu webových služeb Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: b62cf2ca-dd2a-4a83-bb54-469f948fb026
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2017
-ms.openlocfilehash: cf5a15ba88a3a4d678e6856d270b98697ecf5a3d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271772"
+Název: Použití portálu titleSuffix webových služeb Azure Machine Learning Studio: Azure Machine Learning Studio Popis: Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 02/28/2017
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Správa webové služby pomocí portálu webových služeb Azure Machine Learning Studio
 Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.

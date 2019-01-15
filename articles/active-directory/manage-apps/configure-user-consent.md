@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 991199747f51f379ee6f3efe8009ab9166c33ac7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 65ab6b62b1da925880b3197036f52407e868ece7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832002"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263584"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Nakonfigurovat způsob, jakým koncoví uživatelé souhlas k aplikaci v Azure Active Directory
 Zjistěte, jak nakonfigurovat způsob, jakým uživatelé udělit souhlas s oprávnění aplikace. Činnost koncového uživatele můžete zjednodušit tím, že udělíte souhlas správce. Tento článek poskytuje různé způsoby, jak můžete nakonfigurovat souhlasu uživatele. Metody se vztahují na všechny koncové uživatele ve vašem tenantovi Azure Active Directory (Azure AD). 
@@ -26,6 +26,8 @@ Další informace o souhlas aplikacím, najdete v části [rozhraní Azure Activ
 ## <a name="prerequisites"></a>Požadavky
 
 Udělení souhlasu správce vyžaduje, abyste se přihlásit jako globální správce, správce aplikace nebo správce cloudové aplikace.
+
+Pokud chcete omezit přístup k aplikacím, budete muset vyžadují přiřazení uživatelů a pak přiřaďte uživatele nebo skupiny k aplikaci.  Další informace najdete v tématu [metody pro přiřazení uživatelům a skupinám](methods-for-assigning-users-and-groups.md).
 
 ## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>Udělit souhlas správce pro firemní aplikace na webu Azure Portal
 

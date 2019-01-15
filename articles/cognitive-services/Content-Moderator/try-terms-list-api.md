@@ -1,44 +1,44 @@
 ---
 title: Moderování textu se výraz vlastní seznamy – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Vyzkoušejte si seznamy vlastní termínů v konzole nástroje Content Moderator API.
+description: Chcete-li vytvořit vlastní seznamy termínů pro použití s rozhraním API pro moderování textu pomocí rozhraní API pro správu seznamu.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 99df9fda2cc56f169a61ec215a976de28fc13d27
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fea671df0609b9c4dca9eaae99d1bfe667616837
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220274"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259423"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Střední se seznamy vlastní termín v konzole pro rozhraní API
 
-Výchozí globální seznam termínů v Azure Content Moderator je dostačující pro potřeby z hlediska většina obsahu moderování. Ale můžete potřebovat obrazovky pro podmínky, které jsou specifické pro vaši organizaci. Například můžete chtít konkurence názvy značek pro další kontrolu. 
+Výchozí globální seznam výrazů v Azure Content Moderatoru je dostačující pro většinu potřeb z hlediska moderování obsahu. Možná ale budete potřebovat vyhledat výrazy, které jsou specifické pro vaši organizaci. Například můžete chtít označit názvy konkurentů k další kontrole. 
 
 Použít [rozhraní API pro správu seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) vytvořit vlastní seznamy termínů pro použití s rozhraním API pro moderování textu. **Text – obrazovky** operace prohledá textu pro vulgárních výrazů a také porovná text před vlastní a sdílené seznamů zakázaných položek.
 
 > [!NOTE]
-> Je maximální limit **5 termín uvádí** s každou seznamu **není delší než 10 000 podmínky**.
+> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů**.
 >
 
 Rozhraní API pro správu seznamu můžete provádět následující úlohy:
-- Vytvoření seznamu.
-- Přidání podmínky do seznamu.
-- Obrazovka podmínky s výrazy v seznamu.
-- Odstraňte podmínky ze seznamu.
-- Odstranění seznamu.
-- Upravte informace o seznamu.
-- Aktualizujte index tak, aby se změny provedené v seznamu jsou součástí nové skenování.
+- Vytvoření seznamu
+- Přidání výrazů do seznamu
+- Porovnání výrazů s výrazy v seznamu
+- Odstranění výrazů ze seznamu
+- Odstranění seznamu
+- Úprava informací o seznamu
+- Aktualizace indexu tak, aby změny provedené v seznamu byly součástí nového porovnávání
 
 ## <a name="use-the-api-console"></a>Pomocí rozhraní API konzoly
 
-Předtím, než můžete vyzkoušet rozhraní API v konzole online, budete potřebovat klíč předplatného. Tento klíč se nachází na **nastavení** kartě **Ocp-Apim-Subscription-Key** pole. Další informace najdete v tématu [přehled](overview.md).
+Předtím, než můžete vyzkoušet rozhraní API v konzole online, budete potřebovat klíč předplatného. Tento klíč se nachází na **nastavení** kartě **Ocp-Apim-Subscription-Key** pole. Další informace najdete v tématu [Přehled](overview.md).
 
 ## <a name="refresh-search-index"></a>Aktualizujte index vyhledávání
 
@@ -58,7 +58,7 @@ Po provedení změn na seznam termínů, je nutné aktualizovat jeho index pro z
 
   ![Seznamy termínů API – Index vyhledávání aktualizace konzoly pole obsahu odpovědi](images/try-terms-list-refresh-1.png)
 
-## <a name="create-a-term-list"></a>Vytvoření seznamu termínů
+## <a name="create-a-term-list"></a>Vytvoření seznamu výrazů
 1.  Přejděte [referenční dokumentace rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). 
 
   **Obsahuje seznam termínů – vytvořit** otevře se stránka.
@@ -119,13 +119,13 @@ Po provedení změn na seznam termínů, je nutné aktualizovat jeho index pro z
  
 13. Přidáte pár další podmínky. Teď, když vytvoříte vlastní seznam termínů, zkuste [prohledávání nějaký text](try-text-api.md) pomocí seznamu vlastní termín. 
 
-## <a name="delete-terms-and-lists"></a>Odstranit podmínky a seznamy
+## <a name="delete-terms-and-lists"></a>Odstranění výrazů a seznamů
 
-Odstraňuje se termín nebo seznamu je jednoduché. Rozhraní API můžete provádět následující úlohy:
+Odstranění výrazu nebo seznamu je jednoduché. Rozhraní API můžete provádět následující úlohy:
 
-- Odstraňte termín. (**Termín – odstranit**)
-- Odstraňte všechny podmínky v seznamu bez odstranění seznamu. (**Termín – odstranit všechny podmínky**)
-- Odstraňte seznam a veškerý jeho obsah. (**Seznamy termínů - Delete**)
+- Odstranění výrazu. (**Termín – odstranit**)
+- Odstranění všech výrazů v seznamu bez odstranění seznamu. (**Termín – odstranit všechny podmínky**)
+- Odstranění seznamu a veškerého jeho obsahu. (**Seznamy termínů - Delete**)
 
 Tento příklad odstraní jeden termín.
 

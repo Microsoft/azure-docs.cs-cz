@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: 7f7071c9f87528eddbfe3d541cd85624e308948f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 77e0a9fc12519615765e1846ac8808bb3fbb27f0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633381"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260647"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Obnovitelné odstranění pro objekty BLOB služby Azure Storage
 Azure Storage teď nabízí obnovitelného odstranění pro objekty blob, takže můžete snadno obnovit data, když je chybně změněného nebo odstraněného aplikaci nebo jiný uživatel účet úložiště.
@@ -71,10 +71,10 @@ Následující tabulka obsahuje podrobnosti o očekávané chování při zapnut
 | Operace rozhraní REST API | Typ prostředku | Popis | Změna chování |
 |--------------------|---------------|-------------|--------------------|
 | [Odstranění](/rest/api/storagerp/StorageAccounts/Delete) | Účet | Odstraní účet úložiště, včetně všech kontejnerů a objektů BLOB, které obsahuje.                           | Žádná změna. Kontejnery a objekty BLOB v rámci odstraněného účtu nejsou zotavit. |
-| [Odstranění kontejneru](/rest/api/storageservices/delete-container) | Kontejner | Odstraní kontejner, včetně všech objektů BLOB, které obsahuje. | Žádná změna. Objekty BLOB v kontejneru odstraněné nejsou zotavit. |
+| [Delete Container](/rest/api/storageservices/delete-container) | Kontejner | Odstraní kontejner, včetně všech objektů BLOB, které obsahuje. | Žádná změna. Objekty BLOB v kontejneru odstraněné nejsou zotavit. |
 | [Vložení objektu Blob](/rest/api/storageservices/put-blob) | Přidat blok, a objekty BLOB stránky | Vytvoří nový objekt blob nebo nahradí existující objekt blob v kontejneru | Pokud se používá k nahrazení existujícímu objektu blob, je automaticky vygenerován snímek objektu blob stavu před voláním. To platí i pro dříve obnovitelně odstraněných objektů blob a pouze v případě nahrazuje objekt blob (bloku, doplňovací nebo stránky) stejného typu. Pokud je nahrazen jiného typu objektu blob, všechny existující obnovitelně odstraněná data trvale vypršela. |
 | [Odstranit objekt Blob](/rest/api/storageservices/delete-blob) | Přidat blok, a objekty BLOB stránky | Označí objekt blob nebo snímek objektu blob k odstranění. Objekt blob nebo snímek je později odstranit během uvolňování paměti | Pokud se používá k odstranit snímek objektu blob, tento snímek je označen jako obnovitelné odstranění. Pokud chcete odstranit objekt blob, tohoto objektu blob je označen jako obnovitelné odstranění. |
-| [Zkopírování objektu Blob](/rest/api/storageservices/copy-blob) | Přidat blok, a objekty BLOB stránky | Zkopíruje zdrojový objekt blob do cílové objektů blob ve stejném účtu úložiště nebo do jiného účtu úložiště. | Pokud se používá k nahrazení existujícímu objektu blob, je automaticky vygenerován snímek objektu blob stavu před voláním. To platí i pro dříve obnovitelně odstraněných objektů blob a pouze v případě nahrazuje objekt blob (bloku, doplňovací nebo stránky) stejného typu. Pokud je nahrazen jiného typu objektu blob, všechny existující obnovitelně odstraněná data trvale vypršela. |
+| [Copy Blob](/rest/api/storageservices/copy-blob) | Přidat blok, a objekty BLOB stránky | Zkopíruje zdrojový objekt blob do cílové objektů blob ve stejném účtu úložiště nebo do jiného účtu úložiště. | Pokud se používá k nahrazení existujícímu objektu blob, je automaticky vygenerován snímek objektu blob stavu před voláním. To platí i pro dříve obnovitelně odstraněných objektů blob a pouze v případě nahrazuje objekt blob (bloku, doplňovací nebo stránky) stejného typu. Pokud je nahrazen jiného typu objektu blob, všechny existující obnovitelně odstraněná data trvale vypršela. |
 | [Vložit blok](/rest/api/storageservices/put-block) | Objekty blob bloku | Vytvoří nový blok pro potvrzení jako součást objektu blob bloku. | Pokud se používá k potvrzení do objektu blob, která je aktivní blok není žádná změna. Pokud se používá k potvrzení bloku do objektu blob, který se obnovitelného odstranění, se vytvoří nový objekt blob a k zaznamenání stavu obnovitelně odstraněného objektu blob je automaticky vygenerován snímek. |
 | [Vložit blokovaných webů.](/rest/api/storageservices/put-block-list) | Objekty blob bloku | Potvrzení objektu blob tak, že zadáte sadu bloku ID, které tvoří objekt blob bloku. | Pokud se používá k nahrazení existujícímu objektu blob, je automaticky vygenerován snímek objektu blob stavu před voláním. To platí i pro dříve obnovitelně odstraněných objektů blob a pouze v případě je objekt Blob bloku. Pokud je nahrazen jiného typu objektu blob, všechny existující obnovitelně odstraněná data trvale vypršela. |
 | [Vložit stránky](/rest/api/storageservices/put-page) | Objekty blob stránky | Zapíše rozsah stránek do objektů Blob stránky. | Žádná změna. Data objektů Blob stránky, která se přepíšou nebo vymazání pomocí této operace se neuloží a nepůjde obnovit. |
@@ -198,7 +198,7 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
-K vyhledání zásady uchovávání informací aktuálního obnovitelné odstranění, použijte následující příkaz:
+Pokud chcete najít aktuální zásady uchovávání informací obnovitelné odstranění, použijte následující příkaz:
 
 ```azurepowershell-interactive
    $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount

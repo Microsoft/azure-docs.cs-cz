@@ -1,26 +1,8 @@
 ---
-title: 'Řešení potíží: Vytvořit, připojit k pracovnímu prostoru Machine Learning Studio – Azure | Dokumentace Microsoftu'
-description: Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1a8aec4b-35f9-44e8-9570-2575b8979ab1
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 878b26b72263ddd640e1cfa936c1e4ade1af6d68
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275274"
+Název: "Řešení potíží: Vytvořit, připojit k pracovnímu prostoru Machine Learning Studio se titleSuffix: Azure Machine Learning Studio Popis: Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/20/2017
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>Průvodce odstraňováním potíží: Vytvoření a připojení k pracovnímu prostoru Azure Machine Learning Studio
 Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.

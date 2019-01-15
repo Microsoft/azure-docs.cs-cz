@@ -1,23 +1,21 @@
 ---
-title: Služby Machine learning tahák k algoritmům - Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Strojové učení tahák k algoritmům
+titleSuffix: Azure Machine Learning Studio
 description: Tisknutelný strojového učení tahák k algoritmům pomůže vám zvolit správný algoritmus pro prediktivní model Azure Machine Learning Studio.
-keywords: tahák k algoritmům, tahák, algoritmu strojového učení
 services: machine-learning
-author: ericlicoding
-ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 7ddc3a9829dc05ac1c1df450091789e4cad2b2f5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 69b085faf10b9e22618fa248460d269bd2efdb73
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274499"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264304"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning tahák pro Azure Machine Learning Studio
 
@@ -25,7 +23,7 @@ ms.locfileid: "53274499"
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) má velké knihovny algoritmů z ***regrese***, ***klasifikace***, ***clustering***, a  ***detekce anomálií*** rodiny. Každý se zaměřuje na řešení jiného typu problému machine learning.
 
-## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Stažení: Strojové učení tahák k algoritmům
+## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Ke stažení: Strojové učení tahák k algoritmům
 
 **Stáhněte si tahák tady: [Ve službě Machine Learning Tahák k algoritmům (11 × 17 palců)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 

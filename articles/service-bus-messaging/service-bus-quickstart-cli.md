@@ -1,22 +1,22 @@
 ---
-title: Rychlý start – Odesílání a přijímání zpráv Azure Service Bus pomocí Azure CLI a Javy | Microsoft Docs
-description: V tomto rychlém startu se naučíte odesílat a přijímat zprávy Azure Service Bus pomocí Azure CLI a ukázkové aplikace v Javě.
+title: Rychlý start – použití rozhraní příkazového řádku Azure můžete vytvořit frontu služby Service Bus | Dokumentace Microsoftu
+description: V tomto rychlém startu se dozvíte, jak používat rozhraní příkazového řádku Azure k vytvoření fronty služby Service Bus. Potom pomocí ukázkové aplikace v Javě pro odesílání a příjem zpráv z fronty.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 781bca5c3083df9db326e4dc71438c71a7c02bc3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998672"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258320"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Rychlý start: Odesílání a příjem zpráv pomocí rozhraní příkazového řádku Azure a Javou
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí Azure CLI
 
 Microsoft Azure Service Bus je podniková integrace zprostředkovatele zpráv, která zajišťuje zabezpečené zasílání a přijímání zpráv a spolehlivost. Typický scénář služby Service Bus obvykle zahrnuje vzájemné oddělení dvou nebo více aplikací, služeb či procesů (aplikace nemusí být online ve stejnou dobu), převedení stavu nebo změny dat a zasílání zpráv mezi aplikacemi. 
 
@@ -24,7 +24,7 @@ Maloobchod může například odeslat data o prodeji administrativní podpoře (
 
 ![fronta](./media/service-bus-quickstart-cli/quick-start-queue.png)
 
-Tento rychlý start popisuje, jak odesílat a přijímat zprávy Service Bus pomocí Azure CLI a knihovny Java Service Bus. Pokud vás zajímají techničtější podrobnosti, můžete si [přečíst vysvětlení](#understand-the-sample-code) klíčových prvků vzorového kódu.
+Tento rychlý start popisuje způsob odesílání a příjem zpráv pomocí Service Bus pomocí Azure CLI a knihovny Service Bus v Javě. Pokud vás zajímají techničtější podrobnosti, můžete si [přečíst vysvětlení](#understand-the-sample-code) klíčových prvků vzorového kódu.
 
 Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][] před tím, než začnete.
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný úč
 
 Klikněte na tlačítko Cloud Shell v nabídce v pravém horním rohu webu Azure Portal a z rozevíracího seznamu **Vybrat prostředí** vyberte **Bash**. 
 
-## <a name="use-cli-to-create-resources"></a>Použití CLI k vytvoření prostředků
+## <a name="use-the-azure-cli-to-create-resources"></a>Vytvoření prostředků pomocí Azure CLI
 
 Ve službě Cloud Shell zřiďte v příkazovém řádku Bash pomocí následujících příkazů prostředky služby Service Bus. Nezapomeňte všechny zástupné symboly nahradit příslušnými hodnotami:
 
@@ -266,7 +266,7 @@ void registerReceiver(QueueClient queueClient) throws Exception {
 V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu souvisejícího s odesíláním a přijímáním zpráv získáte, když budete pokračovat následujícím kurzem služby Service Bus:
 
 > [!div class="nextstepaction"]
-> [Aktualizace zásob pomocí Azure CLI a Javy](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [Aktualizovat inventáře pomocí Azure CLI a jazyka Java](./service-bus-tutorial-topics-subscriptions-cli.md)
 
 [bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/14/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: d4c5def3cc61c1920ae99d5aa9f97b46cbda0045
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1b533c945fdcfc3d1072a7d8a513126ca3f1f72a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244490"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303580"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Klíčových funkcích a konceptech v Azure stacku
 Pokud se službou Microsoft Azure Stack teprve začínáte, může být užitečné tyto podmínky a popis funkcí.
@@ -129,23 +129,13 @@ Každý objekt blob se organizuje podle kontejneru. Kontejnery také nabízejí 
 Trezor klíčů RP poskytuje správu a auditování tajné kódy, jako jsou hesla a certifikáty. Jako příklad tenanta můžete KeyVault RP uvést správce hesel nebo klíčů během nasazení virtuálního počítače.
 
 ## <a name="high-availability-for-azure-stack"></a>Vysoká dostupnost pro Azure Stack
-*Platí pro: Azure Stack 1802 nebo vyšší verze*
+Abyste dosáhli vysoké dostupnosti systému produkčního prostředí více virtuálních počítačů v Azure, umístěte virtuální počítače [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) se šíří mezi různými doménami selhání a aktualizačních doménách. V menších škálování služby Azure Stack doménu selhání ve skupině dostupnosti je definován jako jeden uzel v jednotce škálování.  
 
-Abyste dosáhli vysoké dostupnosti systému produkčního prostředí více virtuálních počítačů v Azure, jsou virtuální počítače umístěné ve skupině dostupnosti, který se šíří mezi různými doménami selhání a aktualizačních doménách. Tímto způsobem [virtuální počítače nasazené ve skupinách dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) jsou fyzicky izolované od sebe navzájem na samostatný server stojany povolit pro odolnost proti chybám selhání, jak je znázorněno v následujícím diagramu:
-
-  ![Vysoká dostupnost služby Azure Stack](media/azure-stack-key-features/high-availability.png)
-
-### <a name="availability-sets-in-azure-stack"></a>Skupiny dostupnosti ve službě Azure Stack
 Infrastruktury služby Azure Stack je již odolné vůči selhání, základní technologie (clustering převzetí služeb při selhání) stále způsobí některé výpadek pro virtuální počítače na ovlivněné fyzickém serveru, pokud dojde k selhání hardwaru. Azure Stack podporuje s dostupnosti s délkou maximálně tři domény selhání pro zajištění konzistence s Azure.
 
 - **Domény selhání**. Virtuální počítače umístěné ve skupině dostupnosti budou fyzicky izolované od sebe navzájem tím, že rozprostírá co nejrovnoměrněji rozložené přes víc domén selhání (uzly Azure Stack). Pokud dojde k selhání hardwaru, virtuálních počítačů z neúspěšných doména bude být restartování v jiných doménách selhání, ale pokud je to možné udržovat v samostatných doménách selhání z jiných virtuálních počítačů ve stejné sadě dostupnosti. Když hardware vrátí do režimu online, virtuálních počítačů bude možné znovu vyrovnána udržet vysokou dostupnost. 
  
 - **Aktualizační domény**. Aktualizační domény jsou jiné Azure pojem, který poskytuje vysokou dostupnost ve skupinách dostupnosti. Aktualizační doména je logická skupina hardwarových komponent, které můžete provést údržbu ve stejnou dobu. Virtuální počítače umístěné ve stejné aktualizační domény je bude během plánované údržby restartují společně. Tenanti vytvářet virtuální počítače v rámci skupiny dostupnosti, Platforma Azure automaticky zajistí distribuci s virtuální počítače mezi nimi aktualizačními doménami. Ve službě Azure Stack jsou virtuální počítače za provozu migrovat na jiné online hostitelích v clusteru předtím, než se aktualizuje jejich základního hostitele. Protože neexistuje žádný výpadek tenanta při aktualizaci hostitele, funkci aktualizace domény ve službě Azure Stack existuje pouze pro šablony kompatibilitu s Azure. 
-
-### <a name="upgrade-scenarios"></a>Scénáře upgradu 
-Virtuální počítače ve skupině dostupnosti, které byly vytvořeny před verzí Azure Stack 1802 jsou uvedeny výchozí počet selhání a aktualizačními doménami (1 a 1 v uvedeném pořadí). Abyste dosáhli vysoké dostupnosti pro virtuální počítače v těchto již existující skupiny dostupnosti, musíte nejprve odstranit stávající virtuální počítače a znovu nasadit do novou skupinu s správné počty selhání a aktualizační domény, jak je popsáno v dostupnosti [změnit skupinu dostupnosti pro virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set). 
-
-Pro škálovací sady virtuálních počítačů se interně vytvoří skupinu dostupnosti s výchozí domény a aktualizace počtu domén selhání (3 až 5 v uvedeném pořadí). Vrátí výchozí doména selhání a aktualizačními všechny škálovací sady virtuálních počítačů vytvořené před aktualizace 1802 budou umístěny ve skupině dostupnosti s (1 a 1 v uvedeném pořadí). K aktualizaci těchto instancí škálovací sady virtuálních počítačů k dosažení novější spread, horizontální navýšení kapacity škálovací sady virtuálních počítačů podle počtu instancí, které existovaly před aktualizace 1802 a pak odstranit starší instance škálovací sady virtuálních počítačů. 
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě rolí
 Můžete použít RBAC pro udělení přístupu systému oprávněným uživatelům, skupinám a službám přiřazením role na předplatné, skupinu prostředků nebo úrovni jednotlivých prostředků. Každá role určuje požadovanou úroveň přístupu uživatele, skupiny nebo služby má prostředky Microsoft Azure Stack.

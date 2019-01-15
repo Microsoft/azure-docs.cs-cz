@@ -1,26 +1,8 @@
 ---
-title: Použití ukázkových datových sad - Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Popis datové sady použité v ukázkových modelů, které jsou zahrnuté v nástroji Machine Learning Studio. Tyto ukázkové datové sady můžete použít pro vaše experimenty.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
-ms.openlocfilehash: 2fde43417ffc907a93b4e568b90ebbda228c4cfe
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270480"
+Název: Použití titleSuffix ukázkové datové sady: Azure Machine Learning Studio Popis: Popis datové sady použité v ukázkových modelů, které jsou zahrnuté v nástroji Machine Learning Studio. Tyto ukázkové datové sady můžete použít pro vaše experimenty.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 01/19/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
 [top]: #machine-learning-sample-datasets
@@ -101,7 +83,7 @@ Dárcovského data obsahují měsíců od poslední odběr) a četnost nebo celk
 <p></p>
 <b>Použití:</b> Cílem je k předpovědi pomocí klasifikace, zda dárcovského věnován krve 2007 dne, kde 1 označuje dárcovského během období cíl a 0 bez dárcovského. 
 <p></p>
-<b>Související zdroje informací:</b> Já, systémem, (2008). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy
+<b>Související zdroje informací:</b> Yeh, I.C., (2008). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy
 <p></p>
 Já jsem-Cheng, Yang, King-Jang a Nocení, jde značku, "Knowledge discovery na aktualizace modelu s použitím Bernoulliho pořadí,"Expert systémy s aplikacemi, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -114,7 +96,7 @@ Jeden ze tří rakoviny souvisejících datových sad poskytované radiology ús
 <p></p>
 <b>Použití:</b> Umožňuje klasifikovat typ rakoviny, na základě 9 atributů, z nichž některé jsou lineární a některé jsou zařazené do kategorií. 
 <p></p>
-<b>Související zdroje informací:</b> O.L. Wohlberg, čísel, ulici, W.N. & Mangasarian, (1995). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související zdroje informací:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -167,7 +149,7 @@ Kolekce profily simulované energie, založené na 12 vytváření různých tva
 <p></p>
 <b>Použití:</b> Aby předpovídal hodnocení energetickou účinnost na základě jako jeden ze dvou reálné Vážíme si toho odpovědi pomocí regrese nebo klasifikaci. Pro klasifikaci roc se zaokrouhlí proměnné odpovědi na nejbližší celé číslo. 
 <p></p>
-<b>Související zdroje informací:</b> Xifara A. & Tsanas A. (2012). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související zdroje informací:</b> Xifara, A. & Tsanas, A. (2012). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -205,7 +187,7 @@ Obsahuje data o počasí, jako je například teploty a vlhkosti indexy a rychlo
 <p></p>
 <b>Související zdroje informací:</b> Cortez P. & Morais A. (2008). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy
 <p></p>
-[Cortez a Morais 2007] P. Cortez a A. Morais. Data Mining přístup k předvídání lesních požárech pomocí meteorologická Data. V J. Neves, M. F. Santos a J. Machado Edit.:, nových trendů v umělé inteligence, in: Proceedings of 13 EPIA 2007 – portugalština Conference on umělé inteligence, dne, 523-Guimarães, Portugalsko, str. 512, 2007. APPIA, ISBN-13 978-989-95618-0-9. K dispozici na: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
+[Cortez a Morais 2007] P. Cortez a A. Morais. Data Mining přístup k předvídání lesních požárech pomocí meteorologická Data. In J. Neves, M. F. Santos a J. Machado Edit.:, nových trendů v umělé inteligence, in: Proceedings of 13 EPIA 2007 – portugalština Conference on umělé inteligence, dne, 523-Guimarães, Portugalsko, str. 512, 2007. APPIA, ISBN-13 978-989-95618-0-9. K dispozici na: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
   </td>
 </tr>
 
@@ -306,7 +288,7 @@ Tato datová sada obsahuje řadu záznamů z oceli žíhání zkušební verze. 
 <p></p>
 Oceli známek použijte standardní sadu definovaném SAE a jiných společností. Hledáte konkrétní "třída" (třída proměnná) a chcete pochopit, jaké hodnoty potřebné. 
 <p></p>
-<b>Související zdroje informací:</b> Sterling, d & Buntine, W. (NENÍ K DISPOZICI). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy
+<b>Související zdroje informací:</b> Sterling, D. & Buntine, W. (NA). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy
 <p></p>
 Užitečný průvodce oceli známek najdete tady: <a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>

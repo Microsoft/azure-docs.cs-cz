@@ -12,19 +12,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2018
+ms.date: 1/9/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1948cee033ecb8b50fdd75513a07766490568600
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3c2da9830a8ddbce842d959ba086bf4eb30d5fdb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337253"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258760"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Poskytnutí podrobností kontaktů zabezpečení ve službě Azure Security Center
 Azure Security Center vám doporučí poskytnutí podrobností kontaktů zabezpečení pro vaše předplatné Azure, pokud jste tak již neučinili. Prostřednictvím tohoto kontaktu se na vás společnost Microsoft obrátí, pokud středisko Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka nezákonně nebo neoprávněně přistupovala třetí strana. Střediska MSRC provádí monitorování zabezpečení vyberte síť Azure a infrastrukturou a přijímá threat intelligence a zneužití stížností od třetích stran.
 
-E-mailové oznámení se odešle při prvním výskytu výstrahy a pouze u výstrah s vysokou závažností. Předvolby e-mailu lze konfigurovat pouze pro zásady předplatného. Skupiny prostředků v rámci předplatného zdědí tato nastavení.
+E-mailové oznámení se odešle při prvním výskytu výstrahy a pouze u výstrah s vysokou závažností. Předvolby e-mailu lze konfigurovat pouze pro zásady předplatného. Skupiny prostředků v rámci předplatného zdědí tato nastavení. 
+
+Upozornění e-mailová oznámení jsou zasílány:
+- Pouze pro upozornění s vysokou závažností
+- Příjemci jednoho e-mailu na typ výstrahy za den  
+- Více než 3 zprávy e-mailu se odesílají do jednoho příjemce v jeden den
+- Každou e-mailová zpráva obsahuje jedinou výstrahu, není souhrn výstrah
+ 
+Například pokud už se e-mailovou zprávu poslala upozornila vás útok na protokol RDP, neobdržíte žádné jiné e-mailovou zprávu o útok RDP ve stejný den i v případě, že se aktivuje upozornění na jiný. 
+ 
 
 > [!NOTE]
 > Tento dokument vám tuto službu představí formou ukázkového nasazení.  Není to podrobný průvodce.

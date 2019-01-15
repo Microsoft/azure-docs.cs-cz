@@ -85,8 +85,6 @@ items:
       href: gallery-collections.md
     - name: Vlastní moduly
       href: gallery-custom-modules.md
-    - name: Zobrazení a odstranění dat účtu
-      href: ai-gallery-control-personal-data-dsr.md
 - name: Koncepty
   items:
   - name: Správa modelů
@@ -214,18 +212,20 @@ items:
       href: consume-web-service-with-web-app-template.md
     - name: Použití fondu Batch
       href: dedicated-capacity-for-bes-jobs.md
+  - name: Zobrazení a odstranění dat účtu
+    href: ai-gallery-control-personal-data-dsr.md
 - name: Referenční informace
   items:
+  - name: Referenční materiály k modulům a algoritmům
+    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
   - name: Modul Azure PowerShell (nový)
     href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
   - name: Modul Azure PowerShell (klasický)
     href: powershell-module.md
-  - name: Referenční materiály k modulům a algoritmům
-    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
-  - name: Rozhraní PRI pro správu REST
-    href: /rest/api/machinelearning
   - name: Kódy chyb webových služeb
     href: web-service-error-codes.md
+  - name: Rozhraní PRI pro správu REST
+    href: /rest/api/machinelearning
 - name: Zdroje a prostředky
   items:
   - name: Ceny
@@ -240,9 +240,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: Příručka pro vývojáře v R
     href: ../r-developers-guide.md
-ms.openlocfilehash: 16c610345c063be9149d841c71d27f73e22d143d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c7b407e7db087992a2b667162aaf4572d657f380
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974111"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303493"

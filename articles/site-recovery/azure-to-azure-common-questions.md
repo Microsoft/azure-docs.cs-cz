@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 20311f904356f16b34f64d0aaf6ed438ba692857
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155146"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260460"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
 
@@ -74,10 +74,16 @@ Bod obnovení konzistentní při selhání představuje data na disku, jako kdyb
 
 V současné době většina aplikací můžete obnovit také ze snímků konzistentních při chybě. Bod obnovení konzistentní při selhání je dostatečně obvykle ne databáze operační systémy a aplikace jako souborové servery, servery DHCP a tiskových serverů.
 
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Co je frekvence generování bod obnovení konzistentní při selhání?
+Site Recovery vytvoří bod obnovení konzistentní při selhání každých 5 minut.
+
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Co je bod obnovení konzistentní? 
 Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentních s aplikací. Konzistentní snímky zachycují stejná data jako snímky konzistentní při selhání, a uveďte všechna data v paměti a všechny probíhající transakce. 
 
 Kvůli další obsah snímky konzistentními se nejvíce podílejí a trvat nejdéle provádět. Doporučujeme, abyste body obnovení konzistentní pro databázi operačních systémů a aplikací, jako je SQL Server.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Co je minimální frekvenci generování bod obnovení konzistentní s aplikací?
+Site Recovery můžete vytvoří bod obnovení konzistentní s minimální frekvenci za 1 hodinu.
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Jak se body obnovení vygenerovat a uložit?
 K pochopení, jak Site Recovery vytvoří body obnovení, Pojďme se na příklad zásady replikace, který má bodu okno uchování 24 hodin a snímek konzistentní vzhledem k frekvenci 1 hodina.
@@ -153,6 +159,9 @@ Ano. Site Recovery zpracovává všechny čekající data před selháním, prot
 
 ### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Pokud replikuji mezi dvěma oblastmi Azure, co se stane, když můj primární oblasti dojde k nečekanému výpadku?
 Můžete aktivovat převzetí služeb při selhání po výpadek. Site Recovery nepotřebuje připojení z primární oblasti provést převzetí služeb při selhání.
+
+### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Co je RTO převzetí služeb při selhání virtuálního počítače?
+Site Recovery obsahuje [RTO smlouva SLA na úrovni 2 hodiny](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Ale ve většině případů, Site Recovery převzetí služeb při selhání virtuálních počítačů během několika minut. Můžete vypočítat RTO tak, že přejdete převzetí služeb při selhání úlohy, která ukazuje čas, jakou trvalo a zobrazte si virtuální počítač. Obnovení plánování RTO, přečtěte si níže část. 
 
 ## <a name="recovery-plan"></a>Plán obnovení
 

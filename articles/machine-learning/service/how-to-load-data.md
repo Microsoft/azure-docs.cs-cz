@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 87096e1507c080f68652ea27b368364d9ac7952a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2478a5dd3f5d685253ef9145bec0a68ff324c6c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232494"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263811"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 
@@ -37,7 +37,13 @@ import azureml.dataprep as dprep
 dataflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
-Tato funkce je užitečná, pokud není explicitně známý typ souboru. Příklad použití je adresář, který obsahuje soubory mají být převedeny do toku dat objektů různých typů. Iterace přes každé cesty souboru a volání `auto_read_file()` umožňuje snadno zpracovat soubory v adresáři do seznamu objektů datového toku.
+Tato funkce je užitečná pro automatické zjišťování typu souboru, kódování a ostatních parsování argumentů vše z jednoho pohodlný vstupní bod. Funkce také automaticky provede následující kroky běžně provádějí při načítání s oddělovači dat:
+
+* Odvození a nastavení oddělovač
+* Přeskakuje se prázdné záznamy v horní části souboru
+* Odvození a nastavení záhlaví řádku
+
+Případně pokud znáte souboru zadejte předem domluvili a chcete explicitně kontrolovat způsob, jakým je analyzován, dál za nabízí tento článek a zobrazit tak, že že specializované funkce sady SDK.
 
 ## <a name="load-text-line-data"></a>Načtení dat řádku textu
 

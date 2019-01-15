@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 5aa998ef7af157f84a3985fdb458c2800f2575f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ecc29e9422c1d427dd76059f1a427f3d49da38f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249366"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262367"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Příprava virtuálního počítače se SLES nebo openSUSE pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -49,7 +49,7 @@ Jako alternativu k vytváření vlastní virtuální pevné disky, SUSE, publiku
         # sudo zypper update
 5. Nainstalujte agenta Azure Linux z SLES úložiště:
    
-        # sudo zypper install WALinuxAgent
+        # sudo zypper install python-azure-agent
 6. Vrácení se změnami chkconfig Pokud waagent nastavená na "on" a pokud ne, ji povolit pro automatické spuštění:
    
         # sudo chkconfig waagent on
@@ -82,7 +82,7 @@ Jako alternativu k vytváření vlastní virtuální pevné disky, SUSE, publiku
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 11. Je doporučeno na úpravy souboru "/ etc/sysconfig/network/dhcp" a změňte `DHCLIENT_SET_HOSTNAME` parametr takto:
     
-     DHCLIENT_SET_HOSTNAME = "no"
+     DHCLIENT_SET_HOSTNAME="no"
 12. V "/ etc/sudoers" okomentovat nebo odstranit následující řádky, pokud existují:
     
      Výchozí hodnota targetpw # požádat o heslo cílový uživatel tedy kořenové všechny ALL=(ALL) všechny # upozornění! Jen to používají společně s 'Targetpw výchozí hodnoty'!
@@ -132,15 +132,15 @@ Jako alternativu k vytváření vlastní virtuální pevné disky, SUSE, publiku
         # sudo zypper install WALinuxAgent
 6. Upravte řádek pro spuštění jádra v konfiguraci grub tak, aby zahrnout další jádra parametry pro Azure. Chcete-li to provést, otevřete "/ boot/grub/menu.lst" v textovém editoru a ujistěte se, že výchozí jádra zahrnuje následující parametry:
    
-     Konzola = ttyS0 earlyprintk = ttyS0 rootdelay = 300
+     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
    Tím se zajistí všechny zprávy konzoly se odesílají do první sériového portu, který vám může pomoct Azure odborné pomoci s laděním problémů. Kromě toho odeberte tyto parametry z řádek pro spuštění jádra, pokud existují:
    
      libata.atapi_enabled=0 reserve=0x1f0,0x8
 7. Je doporučeno na úpravy souboru "/ etc/sysconfig/network/dhcp" a změňte `DHCLIENT_SET_HOSTNAME` parametr takto:
    
-     DHCLIENT_SET_HOSTNAME = "no"
-8. **Důležité:** v "/ etc/sudoers", okomentovat nebo odstranit následující řádky, pokud existují:
+     DHCLIENT_SET_HOSTNAME="no"
+8. **Důležité:** V "/ etc/sudoers" okomentovat nebo odstranit následující řádky, pokud existují:
    
      Výchozí hodnota targetpw # požádat o heslo cílový uživatel tedy kořenové všechny ALL=(ALL) všechny # upozornění! Jen to používají společně s 'Targetpw výchozí hodnoty'!
 9. Zajistěte, aby SSH server je nainstalován a nakonfigurován na spuštění při spuštění.  Obvykle se jedná o výchozí nastavení.

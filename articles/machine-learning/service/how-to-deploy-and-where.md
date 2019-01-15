@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2c71b0abd5069aeb00b63fde8b76e5bb0fc0beda
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 3341dbc486ebd184979381fa6bef05ec9404aa98
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246428"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304093"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
 Služby Azure Machine Learning poskytuje několik způsobů, jak můžete nasadit trénovaného modelu pomocí sady SDK. V tomto dokumentu zjistěte, jak model nasadit jako webovou službu v cloudu Azure nebo na hraničních zařízeních IoT.
+
+> [!IMPORTANT]
+> Nasazení modelu jako webové služby se momentálně nepodporuje prostředků mezi zdroji (CORS) pro sdílení obsahu.
 
 Můžete nasadit modely do následující cílových výpočetních prostředí:
 
@@ -31,41 +34,34 @@ Můžete nasadit modely do následující cílových výpočetních prostředí:
 | [Azure IoT Edge](#iotedge) | Modul IoT | Nasaďte modely na zařízeních IoT. Odvozování se stane v zařízení. |
 | [Pole programmable gate array (FPGA)](#fpga) | Webová služba | Mimořádně nízkou latenci pro odvozování v reálném čase. |
 
+Proces nasazení modelu se podobá všech cílových výpočetních prostředí:
+
+1. Trénování a zaregistrujte model.
+1. Konfigurace a registrace bitovou kopii, která používá model.
+1. Nasazení bitové kopie do cílového výpočetního prostředí.
+1. Otestování nasazení
+
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Kwk3]
+
+
+Další informace o konceptech pracovního postupu nasazení, najdete v části [spravovat, nasazovat a monitorovat modely pomocí služby Azure Machine Learning](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
+- Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+
 - Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Další informace o získání těchto nezbytných podmínkách používání [Začínáme s Azure Machine Learning quickstart](quickstart-get-started.md).
 
-- V obou pickle trénovaného modelu (`.pkl`) nebo ONNX (`.onnx`) formát. Pokud nemáte trénovaného modelu, postupujte podle kroků v [trénování modelů](tutorial-train-models-with-aml.md) kurzu pro trénování a zaregistrovat ve službě Azure Machine Learning.
+- Trénovaného modelu. Pokud nemáte trénovaného modelu, postupujte podle kroků v [trénování modelů](tutorial-train-models-with-aml.md) kurzu pro trénování a zaregistrovat ve službě Azure Machine Learning.
 
-- Části kódu se předpokládá, že `ws` odkazuje na váš pracovní prostor machine learning. Například, `ws = Workspace.from_config()`.
+    > [!NOTE]
+    > Zatímco služba Azure Machine Learning můžete pracovat s obecný model, který lze načíst v Python 3, příklady v tomto dokumentu ukazují uložené ve formátu pickle modelu.
+    > 
+    > Další informace o použití modely ONNX, najdete v článku [ONNX a Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentu.
 
-## <a name="deployment-workflow"></a>Pracovní postup nasazení
+## <a id="registermodel"></a> Registrace trénovaného modelu
 
-Proces nasazení modelu se podobá všech cílových výpočetních prostředí:
-
-1. Trénování modelu.
-1. Zaregistrujte model.
-1. Vytvořte konfiguraci bitové kopie.
-1. Vytvořte image.
-1. Nasazení bitové kopie do cílového výpočetního prostředí.
-1. Otestování nasazení
-1. (Volitelné) Odstraňte artefakty.
-
-    * Když **nasadit jako webovou službu**, existují tři možnosti nasazení:
-
-        * [Nasazení](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-): Při použití této metody, není potřeba zaregistrujte model nebo vytvoření této image. Ale nemůžeme mít pod kontrolou název modelu nebo bitové kopie nebo přidružené značky a popisy.
-        * [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-): Při použití této metody, není potřeba vytvořit bitovou kopii. Ale nemáte kontrolu nad název obrázku, který je vytvořen.
-        * [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-): Zaregistrujte model a před použitím této metody vytvoření bitové kopie.
-
-        V příkladech v tomto dokumentu pomocí `deploy_from_image`.
-
-    * Když **nasazení jako modul IoT Edge**, je potřeba zaregistrujte model a vytvořit bitovou kopii.
-
-## <a name="register-a-model"></a>Zaregistrujte model
-
-Je možné nasadit jenom trénované modely. Model lze trénuje pomocí Azure Machine Learning nebo jiné služby. K registraci modelu ze souboru, použijte následující kód:
+Model registru je způsob, jak ukládat a uspořádat natrénované modely v cloudu Azure. Modely jsou registrované ve vašem pracovním prostoru služby Azure Machine Learning. Model lze trénuje pomocí Azure Machine Learning nebo jiné služby. K registraci modelu ze souboru, použijte následující kód:
 
 ```python
 from azureml.core.model import Model
@@ -77,16 +73,15 @@ model = Model.register(model_path = "model.pkl",
                        workspace = ws)
 ```
 
-> [!NOTE]
-> Při použití modelu uložen jako soubor pickle ukazuje příklad, můžete také používá modely ONNX. Další informace o použití modely ONNX, najdete v článku [ONNX a Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentu.
+**Časový odhad**: Přibližně 10 sekund.
 
 Další informace najdete v tématu v referenční dokumentaci [třída modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
-## <a id="configureimage"></a> Vytvořit konfiguraci bitové kopie
+## <a id="configureimage"></a> Vytvoření a registrace bitovou kopii
 
 Nasazených modelů jsou dodávány jako obrázek. Bitová kopie obsahuje závislosti potřebné ke spuštění modelu.
 
-Pro **Azure Container Instance**, **Azure Kubernetes Service**, a **Azure IoT Edge** nasazení `azureml.core.image.ContainerImage` třída se používá k vytvořit konfiguraci bitové kopie. Obrázek konfigurace, pak se k vytvoření nové image Dockeru. 
+Pro **Azure Container Instance**, **Azure Kubernetes Service**, a **Azure IoT Edge** nasazení, [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) třída se používá k vytvořit konfiguraci bitové kopie. Obrázek konfigurace, pak se k vytvoření nové image Dockeru. 
 
 Následující kód ukazuje, jak vytvořit novou konfiguraci bitové kopie:
 
@@ -102,24 +97,101 @@ image_config = ContainerImage.image_configuration(execution_script = "score.py",
                                                  )
 ```
 
-Tato konfigurace používá `score.py` souboru předat požadavky do modelu. Tento soubor obsahuje dvě funkce:
+**Časový odhad**: Přibližně 10 sekund.
 
-* `init()`: Tuto funkci obvykle načte modelu do globálního objektu. Tato funkce se spustí jenom jednou, a to při spuštění kontejneru Dockeru. 
+Důležité parametry v tomto příkladu jsou popsané v následující tabulce:
 
-* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy spuštění obvykle pro serializaci a deserializaci používají JSON, ale podporují se i další formáty.
-
-Příklad `score.py` souboru, najdete v článku [kurz klasifikace obrázků](tutorial-deploy-models-with-aml.md#make-script). Příklad použití modelu ONNX, najdete v článku [ONNX a Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentu.
-
-`conda_file` Parametr slouží k poskytování souboru prostředí conda. Tento soubor definuje prostředí conda nasazeného modelu. Další informace o vytvoření tohoto souboru najdete v tématu [vytvořit soubor prostředí (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file).
+| Parametr | Popis |
+| ----- | ----- |
+| `execution_script` | Určuje skript v jazyce Python, který se používá pro příjem požadavků odeslaných do služby. V tomto příkladu je součástí skriptu `score.py` souboru. Další informace najdete v tématu [provádění skriptu](#script) oddílu. |
+| `runtime` | Označuje, že image používá Python. Další možností je `spark-py`, která používá Python s Apache Sparkem. |
+| `conda_file` | Umožňuje poskytnout soubor prostředí conda. Tento soubor definuje prostředí conda nasazeného modelu. Další informace o vytvoření tohoto souboru najdete v tématu [vytvořit soubor prostředí (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file). |
 
 Další informace najdete v tématu v referenční dokumentaci [ContainerImage třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)
 
-## <a id="createimage"></a> Vytvoření bitové kopie
+### <a id="script"></a> Provádění skriptu
 
-Po vytvoření konfigurace image můžete vytvořit image. Tento image je uložen v registru kontejneru pro váš pracovní prostor. Po vytvoření můžete nasadit stejnou bitovou kopii k více službám.
+Spuštění skriptu přijímá data odeslaná do nasazené bitové kopie a předává je do modelu. Potom trvá odpovědi vrácené modelu a vrátí ji do klienta. Skript je specifický pro váš model; data, která očekává, že model a vrátí ji musíte rozumět. Skript obvykle obsahuje dvě funkce, které načíst a spustit model:
+
+* `init()`: Tuto funkci obvykle načte modelu do globálního objektu. Tato funkce se spustí jenom jednou, a to při spuštění kontejneru Dockeru. 
+
+* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. K serializaci a rušení serializace, vstupy a výstupy spustit obvykle používají JSON. Můžete také pracovat s Nezpracovaná binární data. Můžete transformovat data, před odesláním do modelu, nebo před vrácením klientovi. 
+
+#### <a name="working-with-json-data"></a>Práce s daty JSON
+
+Tady je ukázkový skript, který přijímá a vrací JSON data. `run` Funkce transformuje data z JSON do formátu, očekává, že model a potom transformuje před jeho vrácením odpovědi do formátu JSON:
 
 ```python
-# Create the image from the image configuration
+# import things required by this script
+import json
+import numpy as np
+import os
+import pickle
+from sklearn.externals import joblib
+from sklearn.linear_model import LogisticRegression
+
+from azureml.core.model import Model
+
+# load the model
+def init():
+    global model
+    # retrieve the path to the model file using the model name
+    model_path = Model.get_model_path('sklearn_mnist')
+    model = joblib.load(model_path)
+
+# Passes data to the model and returns the prediction
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    # make prediction
+    y_hat = model.predict(data)
+    return json.dumps(y_hat.tolist())
+```
+
+#### <a name="working-with-binary-data"></a>Práce s binárními daty
+
+Pokud váš model přijímá __binární data__, použijte `AMLRequest`, `AMLResponse`, a `rawhttp`. Následuje příklad skriptu, který přijímá binárních dat a vrátí obrácený bajtů pro požadavky POST. Pro požadavky GET vrátí úplnou adresu URL v těle odpovědi:
+
+```python
+from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+# Accept and return binary data
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    # handle GET requests
+    if request.method == 'GET':
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    # handle POST requests
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        respBody = bytearray(reqBody)
+        respBody.reverse()
+        respBody = bytes(respBody)
+        return AMLResponse(respBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `azureml.contrib` Oboru názvů změní často, protože pracujeme na vylepšení služby. V důsledku toho cokoli, co je v tomto oboru názvů by měl být považovány za verzi preview a nejsou plně podporovány společností Microsoft.
+>
+> Pokud je potřeba otestovat na místním vývojovém prostředí, můžete nainstalovat komponenty `contrib` oboru názvů pomocí následujícího příkazu: 
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+### <a id="createimage"></a> Registrace na obrázku
+
+Po vytvoření bitové kopie konfigurace můžete zaregistrovat bitovou kopii. Tento image je uložen v registru kontejneru pro váš pracovní prostor. Po vytvoření můžete nasadit stejnou bitovou kopii k více službám.
+
+```python
+# Register the image from the image configuration
 image = ContainerImage.create(name = "myimage", 
                               models = [model], #this is the model object
                               image_config = image_config,
@@ -133,7 +205,7 @@ Image se systémovou správou verzí automaticky při registraci více bitových
 
 Další informace najdete v tématu v referenční dokumentaci [ContainerImage třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
 
-## <a name="deploy-the-image"></a>Nasazení bitové kopie
+## <a id="deploy"></a> Nasazení bitové kopie
 
 Při přechodu na krok nasazení se mírně liší v závislosti na cílové výpočetní prostředí, který nasadíte do procesu. Použijte informace v následujících částech Další informace o nasazení do:
 
@@ -141,6 +213,17 @@ Při přechodu na krok nasazení se mírně liší v závislosti na cílové vý
 * [Služby Azure Kubernetes](#aks)
 * [Project Brainwave (pole programmable gate Array)](#fpga)
 * [Zařízení Azure IoT Edge](#iotedge)
+
+> [!NOTE]
+> Když **nasadit jako webovou službu**, existují tři způsoby nasazení můžete použít:
+>
+> | Metoda | Poznámky |
+> | ----- | ----- |
+> | [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) | Je potřeba zaregistrujte model a vytvořit bitovou kopii před použitím této metody. |
+> | [Nasazení](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) | Při použití této metody, není potřeba zaregistrujte model nebo vytvoření této image. Ale nemůžeme mít pod kontrolou název modelu nebo bitové kopie nebo přidružené značky a popisy. |
+> | [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) | Při použití této metody, není potřeba vytvořit bitovou kopii. Ale nemáte kontrolu nad název obrázku, který je vytvořen. |
+>
+> V příkladech v tomto dokumentu pomocí `deploy_from_image`.
 
 ### <a id="aci"></a> Nasazení do služby Azure Container Instances
 
@@ -179,75 +262,82 @@ Azure Kubernetes Service poskytuje následující možnosti:
 * Shromažďování dat modelů
 * Rychlá doba odezvy pro webové služby
 
-Pokud chcete nasadit do služby Azure Kubernetes Service, postupujte následovně:
+#### <a name="create-a-new-cluster"></a>Vytvoření nového clusteru
 
-1. K vytvoření clusteru AKS, použijte následující kód:
+Chcete-li vytvořit nový cluster Azure Kubernetes Service, použijte následující kód:
 
-    > [!IMPORTANT]
-    > Vytvoření clusteru AKS je čas procesu pro váš pracovní prostor. Po vytvoření můžete znovu použít tento cluster pro více nasazení. Při odstranění clusteru nebo skupinu prostředků, který jej obsahuje, pak musíte vytvořit nový cluster, které se budete muset nasadit.
-    > Pro [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), pokud vyberete vlastní hodnoty agent_count a vm_size, je třeba Ujistěte se, že agent_count vynásobené vm_size je větší než nebo roven 12 virtuálních procesorů. Například pokud použijete vm_size "Standard_D3_v2", který má 4 virtuální procesory, pak měli byste vybrat agent_count 3 nebo vyšší.
+> [!IMPORTANT]
+> Vytvoření clusteru AKS je čas procesu pro váš pracovní prostor. Po vytvoření můžete znovu použít tento cluster pro více nasazení. Při odstranění clusteru nebo skupinu prostředků, který jej obsahuje, pak musíte vytvořit nový cluster, které se budete muset nasadit.
+> Pro [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), pokud vyberete vlastní hodnoty agent_count a vm_size, je třeba Ujistěte se, že agent_count vynásobené vm_size je větší než nebo roven 12 virtuálních procesorů. Například pokud použijete vm_size "Standard_D3_v2", který má 4 virtuální procesory, pak měli byste vybrat agent_count 3 nebo vyšší.
 
-    ```python
-    from azureml.core.compute import AksCompute, ComputeTarget
+```python
+from azureml.core.compute import AksCompute, ComputeTarget
 
-    # Use the default configuration (you can also provide parameters to customize this)
-    prov_config = AksCompute.provisioning_configuration()
+# Use the default configuration (you can also provide parameters to customize this)
+prov_config = AksCompute.provisioning_configuration()
 
-    aks_name = 'aml-aks-1' 
-    # Create the cluster
-    aks_target = ComputeTarget.create(workspace = ws, 
-                                        name = aks_name, 
-                                        provisioning_configuration = prov_config)
+aks_name = 'aml-aks-1' 
+# Create the cluster
+aks_target = ComputeTarget.create(workspace = ws, 
+                                    name = aks_name, 
+                                    provisioning_configuration = prov_config)
 
-    # Wait for the create process to complete
-    aks_target.wait_for_completion(show_output = True)
-    print(aks_target.provisioning_state)
-    print(aks_target.provisioning_errors)
-    ```
+# Wait for the create process to complete
+aks_target.wait_for_completion(show_output = True)
+print(aks_target.provisioning_state)
+print(aks_target.provisioning_errors)
+```
 
-    **Časový odhad**: Přibližně 20 minut.
+**Časový odhad**: Přibližně 20 minut.
 
-    > [!TIP]
-    > Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.11. *, ve kterém můžete nasadit svou image. Následující kód ukazuje, jak se připojit k existujícímu clusteru do pracovního prostoru:
-    >
-    > ```python
-    > from azureml.core.compute import AksCompute, ComputeTarget
-    > # Set the resource group that contains the AKS cluster and the cluster name
-    > resource_group = 'myresourcegroup'
-    > cluster_name = 'mycluster'
-    > 
-    > # Attatch the cluster to your workgroup
-    > attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-    >                                          cluster_name = cluster_name)
-    > aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
-    > 
-    > # Wait for the operation to complete
-    > aks_target.wait_for_completion(True)
-    > ```
+#### <a name="use-an-existing-cluster"></a>Použít existující cluster
 
-2. Pokud chcete nasadit image vytvořené v [vytvoření bitové kopie](#createimage) části tohoto dokumentu, použijte následující kód:
+Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.11. *, ve kterém můžete nasadit svou image. Následující kód ukazuje, jak se připojit k existujícímu clusteru do pracovního prostoru:
 
-    ```python
-    from azureml.core.webservice import Webservice, AksWebservice
+```python
+from azureml.core.compute import AksCompute, ComputeTarget
+# Set the resource group that contains the AKS cluster and the cluster name
+resource_group = 'myresourcegroup'
+cluster_name = 'mycluster'
 
-    # Set configuration and service name
-    aks_config = AksWebservice.deploy_configuration()
-    aks_service_name ='aks-service-1'
-    # Deploy from image
-    service = Webservice.deploy_from_image(workspace = ws, 
-                                                name = aks_service_name,
-                                                image = image,
-                                                deployment_config = aks_config,
-                                                deployment_target = aks_target)
-    # Wait for the deployment to complete
-    service.wait_for_deployment(show_output = True)
-    print(service.state)
-    ```
+# Attatch the cluster to your workgroup
+attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+                                         cluster_name = cluster_name)
+aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 
-    > [!TIP]
-    > Pokud nejsou chyby během nasazení, použijte `service.get_logs()` k zobrazení protokolů služby AKS. Zaznamenané informace může ukazovat na příčinu chyby.
+# Wait for the operation to complete
+aks_target.wait_for_completion(True)
+```
 
-Další informace najdete v tématu v referenční dokumentaci [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py) třídy.
+**Časový odhad**: Přibližně 3 minuty.
+
+#### <a name="deploy-the-image"></a>Nasazení bitové kopie
+
+K nasazení bitové kopie vytvořené v [vytvoření bitové kopie](#createimage) část tohoto dokumentu na Azure Kubernetes Server cluster pomocí následujícího kódu:
+
+```python
+from azureml.core.webservice import Webservice, AksWebservice
+
+# Set configuration and service name
+aks_config = AksWebservice.deploy_configuration()
+aks_service_name ='aks-service-1'
+# Deploy from image
+service = Webservice.deploy_from_image(workspace = ws, 
+                                            name = aks_service_name,
+                                            image = image,
+                                            deployment_config = aks_config,
+                                            deployment_target = aks_target)
+# Wait for the deployment to complete
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
+
+**Časový odhad**: Přibližně 3 minuty.
+
+> [!TIP]
+> Pokud nejsou chyby během nasazení, použijte `service.get_logs()` k zobrazení protokolů služby AKS. Zaznamenané informace může ukazovat na příčinu chyby.
+
+Další informace najdete v tématu v referenční dokumentaci [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) třídy.
 
 ### <a id="fpga"></a> Nasazení do pole programmable gate Array (FPGA)
 
@@ -375,7 +465,9 @@ prediction = service.run(input_data = test_sample)
 print(prediction)
 ```
 
-## <a name="update-the-web-service"></a>Aktualizovat webovou službu
+Webové služby je rozhraní REST API, abyste mohli vytvořit klientských aplikací v řadě programovacích jazyků. Další informace najdete v tématu [vytvořit klientskou aplikaci vykreslující](how-to-consume-web-service.md).
+
+## <a id="update"></a> Aktualizovat webovou službu
 
 Pokud chcete aktualizovat webovou službu, použijte `update` metody. Následující kód ukazuje, jak aktualizovat webovou službu, která používá novou bitovou kopii:
 
@@ -397,6 +489,8 @@ print(service.state)
 > [!NOTE]
 > Když aktualizujete bitovou kopii, webová služba se neaktualizuje automaticky. Každá služba, kterou chcete použít novou bitovou kopii je nutné ručně aktualizovat.
 
+Další informace najdete v tématu v referenční dokumentaci [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třídy.
+
 ## <a name="clean-up"></a>Vyčištění
 
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
@@ -405,9 +499,14 @@ Chcete-li odstranit bitovou kopii, použijte `image.delete()`.
 
 Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
+Další informace najdete v tématu v referenční dokumentaci [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--), a [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
+
 ## <a name="next-steps"></a>Další postup
 
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)
 * [Jak spustit predikcí služby batch](how-to-run-batch-predictions.md)
+* [Monitorování vašich modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
+* [Shromažďování dat modelů v produkčním prostředí](how-to-enable-data-collection.md)
+* [Sady SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 * [Použití služby Azure Machine Learning s Azure Virtual Network](how-to-enable-virtual-network.md)

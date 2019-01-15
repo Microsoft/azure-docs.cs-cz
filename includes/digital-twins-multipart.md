@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/10/2019
+ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 47f66fc61fdd397350efb934bf21f488960a27a2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54233055"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267724"
 ---
 > [!NOTE]
 > Požadavky na vícedílné zprávy standardu obvykle vyžadují tři údaje:
@@ -26,11 +26,11 @@ ms.locfileid: "54233055"
 >
 > **Content-Type** a **Content-Disposition** budou lišit v závislosti na scénáři použití.
 
-S více částmi. požadavky můžete provést prostřednictvím kódu programu (prostřednictvím C#), pomocí klienta REST nebo nástroj, jako [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). Nástroje klienta REST může mít různé úrovně podpory pro složité požadavky s více částmi. Ověřte, který nástroj nejlépe vyhovuje vašim potřebám.
+S více částmi. požadavky můžete provést prostřednictvím kódu programu (prostřednictvím C#), pomocí klienta REST nebo nástroj, jako [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). Nástroje klienta REST může mít různé úrovně podpory pro složité požadavky s více částmi. Nastavení konfigurace může nástroj mírně lišit. Ověřte, který nástroj nejlépe vyhovuje vašim potřebám.
 
 > [!IMPORTANT]
 > S více částmi. požadavky na rozhraní API Správce Dvojčat digitální Azure obvykle mít dvě části:
-> * Metadata objektu BLOB (například přidružený typ MIME), která je deklarována pomocí **Content-Type** a **Content-Disposition**
+> * Metadata objektu BLOB (například přidružený typ MIME), která je deklarována pomocí **Content-Type** a/nebo **Content-Disposition**
 > * Obsah objektu BLOB, které zahrnují nestrukturovaný obsah souboru k odeslání
 >
 > Ani jeden ze dvou částí, je třeba **oprava** požadavky. Jsou potřeba pro **příspěvek** nebo operace vytvoření.

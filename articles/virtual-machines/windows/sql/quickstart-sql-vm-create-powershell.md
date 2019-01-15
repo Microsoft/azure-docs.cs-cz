@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/15/2018
+ms.date: 12/21/2018
 ms.author: jroth
-ms.openlocfilehash: 6c8751bdfd0a9d1c49a2d759f3674b17562513e5
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 313f77481025f0851fb1fd09033dc198072b2190
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199302"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259440"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače se systémy Windows a SQL Server v prostředí Azure PowerShell
 
@@ -47,11 +47,11 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
    Connect-AzureRmAccount
    ```
 
-1. Měla by se objevit obrazovka pro zadání přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
+1. Měli byste vidět obrazovku pro zadání přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Definujte proměnnou s jedinečným názvem skupiny prostředků. Pro zjednodušení dalšího procesu používají následující příkazy tento název jako základ pro ostatní názvy prostředků.
+1. Definujte proměnnou s jedinečným názvem skupiny prostředků. Pro zjednodušení zbývající části tohoto rychlého startu, Zbývající příkazy tento název použít jako základ pro ostatní názvy prostředků.
 
    ```PowerShell
    $ResourceGroupName = "sqlvm1"
@@ -122,11 +122,11 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
 
 ## <a name="create-the-sql-vm"></a>Vytvoření virtuálního počítače pro SQL
 
-1. Definujte přihlašovací údaje pro přihlášení k virtuálnímu počítači. Uživatelské jméno bude „azureadmin“. Nezapomeňte před spuštěním příkazu změnit heslo.
+1. Definujte přihlašovací údaje pro přihlášení k virtuálnímu počítači. Uživatelské jméno bude "azureadmin". Ujistěte se, že změníte \<heslo > před spuštěním příkazu.
 
    ``` PowerShell
    # Define a credential object
-   $SecurePassword = ConvertTo-SecureString 'Change.This!000' `
+   $SecurePassword = ConvertTo-SecureString '<password>' `
       -AsPlainText -Force
    $Cred = New-Object System.Management.Automation.PSCredential ("azureadmin", $securePassword)
    ```
@@ -136,7 +136,7 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
    ```PowerShell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13 | `
+   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
       Set-AzureRmVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
       Set-AzureRmVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
       Add-AzureRmVMNetworkInterface -Id $Interface.Id
@@ -150,7 +150,7 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
 
 ## <a name="install-the-sql-iaas-agent"></a>Instalace agenta SQL IaaS
 
-Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Agenta na nově vytvořený virtuální počítač nainstalujete spuštěním následujícího příkazu.
+Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete nainstalovat agenta k novému virtuálnímu počítači, spusťte následující příkaz, po vytvoření virtuálního počítače.
 
    ```PowerShell
    Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
@@ -158,37 +158,37 @@ Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je 
 
 ## <a name="remote-desktop-into-the-vm"></a>Připojení k virtuálnímu počítači pomocí Vzdálené plochy
 
-1. Pomocí následujícího příkazu získáte veřejnou IP adresu nového virtuálního počítače.
+1. Použijte následující příkaz pro načtení veřejnou IP adresu nového virtuálního počítače.
 
    ```PowerShell
    Get-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
-1. Potom vezměte tuto IP adresu a použijte ji na příkazovém řádku jako parametr příkazu **mstsc** pro spuštění relace vzdálené plochy nového virtuálního počítače.
+1. Předat jako parametr příkazového řádku pro tuto IP adresu **mstsc** spustit relaci vzdálené plochy nového virtuálního počítače.
 
    ```
    mstsc /v:<publicIpAddress>
    ```
 
-1. Po zobrazení výzvy k zadání přihlašovacích údajů vyberte zadání přihlašovacích údajů k jinému účtu. Zadejte uživatelské jméno se zpětným lomítkem na začátku (například `\azureadmin`) a heslo, které jste nastavili dříve v tomto postupu.
+1. Po zobrazení výzvy k zadání přihlašovacích údajů vyberte zadání přihlašovacích údajů k jinému účtu. Zadejte uživatelské jméno se zpětným lomítkem na začátku (například `\azureadmin`) a heslo, které jste nastavili dříve v tomto rychlém startu.
 
 ## <a name="connect-to-sql-server"></a>Připojení k SQL Serveru
 
-1. Po přihlášení do relace vzdálené plochy spusťte **SQL Server Management Studio 2017** z nabídky Start.
+1. Po přihlášení k relaci vzdálené plochy spusťte **SQL Server Management Studio 2017** z nabídky start.
 
-1. V dialogovém okně **Připojit k serveru** ponechte výchozí údaje. Název serveru je shodný s názvem virtuálního počítače. Ověřování je nastavené na **Ověřování systému Windows**. Klikněte na **Připojit**.
+1. V **připojit k serveru** dialogového okna nechte výchozí hodnoty. Název serveru je shodný s názvem virtuálního počítače. Ověřování je nastavené na **Ověřování systému Windows**. Vyberte **Connect** (Připojit).
 
-Teď jste připojení k systému SQL Server místně. Pokud se chcete připojit vzdáleně, je nutné [nakonfigurovat připojení](virtual-machines-windows-sql-connect.md) z portálu nebo ručně.
+Jste teď připojeni k serveru SQL Server místně. Pokud chcete připojit vzdáleně, je nutné [konfigurace připojení k](virtual-machines-windows-sql-connect.md) z portálu nebo ručně.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nepotřebujete, aby virtuální počítač VM běžel nepřetržitě, můžete se vyhnout zbytečným poplatkům: když počítač nepoužíváte, zastavte ho. Následující příkaz zastaví virtuální počítač, ale ponechá ho k dispozici pro budoucí použití.
+Pokud nepotřebujete, virtuálnímu počítači spouštět nepřetržitě, byste se vyhnout zbytečným poplatkům? zastavte ho, když se nepoužívá. Následující příkaz zastaví virtuální počítač, ale ponechá ho k dispozici pro budoucí použití.
 
 ```PowerShell
 Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači odstraněním příslušné skupiny prostředků na portálu příkazem **Remove-AzureRmResourceGroup**. Tím trvale odstraníte i virtuální počítač, proto tento příkaz používejte opatrně.
+Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači odstraněním příslušné skupiny prostředků na portálu příkazem **Remove-AzureRmResourceGroup**. Tím trvale odstraní virtuální počítač, proto tento příkaz používejte s opatrností.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: d2bdb351b72c9280a223381b62c01fff7ca5ca00
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 800e41fe26cb58840c7371606ed746c149f7024d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244728"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304138"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Kurz: Vytvoření řešení škálování cloudu s Azure
 

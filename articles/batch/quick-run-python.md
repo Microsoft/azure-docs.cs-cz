@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 13ed37dddefc5e71e972248545c3e9242bd233ad
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: f1d949c4ea13cd9329f1e1049a1de7778246e7f6
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678196"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302438"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -33,7 +33,7 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 * Účet Azure Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
@@ -64,8 +64,6 @@ _BATCH_ACCOUNT_URL = 'https://mybatchaccount.mybatchregion.batch.azure.com'
 _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
-
-[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 

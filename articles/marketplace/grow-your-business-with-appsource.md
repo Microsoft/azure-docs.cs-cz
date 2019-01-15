@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2a4343b036716e6c49f7a05a8a480c6e74463760
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 33607043e9b462c4611106c72192f41f1d56c0b8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077993"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305906"
 ---
 # <a name="grow-your-business-with-appsource"></a>Rozvíjejte své podnikání s využitím AppSource  
 Použijte AppSource, pokud zapojení firemním zákazníkům najít, zkuste a získejte-obchodní software jako služba (SaaS) aplikací a implementace služeb a pomůže zlepšit výsledky firmy a zkrácení doby uvedení na hodnotu.  
@@ -67,7 +67,7 @@ Kvalita publikace aplikace a závazku zaměřeného na zákazníky vyžádání 
 Následující kontrolní seznam obsahuje osvědčené postupy marketing a prostředky, které je třeba zvážit při vytváření nabídky pro publikování na AppSource:  
 *   **Mějte na paměti Trademark Microsoft & pravidla značky.**  
     Výběr názvu aplikace a odkazující na ochranné známky společnosti Microsoft a názvy softwaru společnosti Microsoft, produktů a služeb, postupujte při Trademark Microsoft a pravidla značky, jakož i relevantní pokyny specifické pro produkt.  
-    *   Další informace o ochranných známek Microsoftu a značky, navštivte Microsoft Trademark a pravidla značky stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).  
+    *   Další informace o ochranných známek Microsoftu a značky, navštivte Microsoft Trademark a pravidla značky stránky na [ https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/ ](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/).
 *   **Povolit get teď vyzkoušejte, bezplatná zkušební verze nebo test jednotky prostředí pro vaši aplikaci.**  
     Podnikoví uživatelé mají první ruky – přímo prostředí vaší aplikace.  
 *   **Vytvářejte návrh silné hodnoty.**  
@@ -104,7 +104,7 @@ Každý krok vyplňování svůj výpis nabídky jsou podrobně popsané v násl
 
 | Nabídka nastavení | Osvědčené postupy | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Název** | **Pojmenování nabídky**<br />Volba názvu pro vaše aplikace je klíčová rozhodnutí. Na základě výhody názvy jsou účinnější než popisné názvy. Název vaší aplikace měl sdělit, že že základní hodnotu zákazníkům. Včetně klíčová slova pro vyhledávání v název vaší aplikace může také pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů. Postupujte podle Trademark Microsoft a pravidla značky, jakož i relevantní specifické pro produkt pokyny k odkazování na ochranné známky společnosti Microsoft a názvy, softwaru, produktů a služeb Microsoft.<ul> <li>Další informace o ochranných známek Microsoftu a značky, navštivte Microsoft Trademark a pravidla značky stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
+| **Název** | **Pojmenování nabídky**<br />Volba názvu pro vaše aplikace je klíčová rozhodnutí. Na základě výhody názvy jsou účinnější než popisné názvy. Název vaší aplikace měl sdělit, že že základní hodnotu zákazníkům. Včetně klíčová slova pro vyhledávání v název vaší aplikace může také pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů. Postupujte podle Trademark Microsoft a pravidla značky, jakož i relevantní specifické pro produkt pokyny k odkazování na ochranné známky společnosti Microsoft a názvy, softwaru, produktů a služeb Microsoft.<ul> <li>Další informace o ochranných známek Microsoftu a značky, navštivte Microsoft Trademark a pravidla značky stránky na [ https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/ ](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/).</li> </ul> |
 
 **Prezentace podrobnosti – podrobnosti o nabídce**  
 

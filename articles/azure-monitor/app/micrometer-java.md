@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 95a76cd46a86f70213ca381df4d52463666ace8d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108451"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259593"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak používat Micrometer pomocí Azure Application Insights Java SDK
 Micrometer monitorování míry metriky aplikací pro aplikace založené na JVM kódu a umožňuje exportovat data do své oblíbené systémy pro monitorování. V tomto článku se dozvíte, jak používat Micrometer pro Spring Boot a aplikace Spring Boot s využitím Application Insights.
@@ -27,7 +27,7 @@ Do souboru pom.xml nebo build.gradle přidejte následující závislosti:
 * [Application Insights aplikace spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-BETA nebo novější
 * Micrometer Azure registru 1.1.0 nebo novější
 * [Starší verze micrometer Spring](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (v tomto zpětné autoconfig kódu v rámci Spring).
-* [Prostředek ApplicationInsights](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights Resource](../../azure-monitor/app/create-new-resource.md )
 
 Kroky
 
@@ -65,7 +65,7 @@ Do souboru pom.xml nebo build.gradle přidejte následující závislosti:
 
 * Application Insights Spring boot starter 2.1.2 nebo novější
 * Azure-spring spouštěcí metrics spouštěčů 2.0.7 nebo novější  
-* [Prostředek služby Application Insights](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights Resource](../../azure-monitor/app/create-new-resource.md )
 
 Kroky:
 
@@ -89,7 +89,7 @@ Výchozí metriky:
 *    Automaticky nakonfiguruje metriky pro Tomcat, JVM, Logback metriky, Log4J metriky, dobu provozu metriky, metriky procesoru, FileDescriptorMetrics.
 *    Například pokud je k dispozici v cestě třída netflix hystrix získáme i tyto metriky. 
 *    Přidáním odpovídajících lusků může být k dispozici následující metriky. 
-        - CacheMetrics (CaffineCache EhCache2, GuavaCache, HazelcaseCache, Jcache)     
+        - CacheMetrics (CaffeineCache EhCache2, GuavaCache, HazelcaseCache, Jcache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
@@ -101,19 +101,19 @@ Výchozí metriky:
 Jak chcete-li vypnout automatické metriky kolekce: 
  
 - Metriky JVM: 
-    - Management.Metrics.binders.JVM.Enabled=false 
+    - management.metrics.binders.jvm.enabled=false 
 - Logback metriky: 
-    - Management.Metrics.binders.logback.Enabled=false
+    - management.metrics.binders.logback.enabled=false
 - Metriky dostupnosti: 
-    - Management.Metrics.binders.UpTime.Enabled=false 
+    - management.metrics.binders.uptime.enabled=false 
 - Metriky procesoru:
-    -  Management.Metrics.binders.Processor.Enabled=false 
+    -  management.metrics.binders.processor.enabled=false 
 - FileDescriptorMetrics:
-    - Management.Metrics.binders.Files.Enabled=false 
+    - management.metrics.binders.files.enabled=false 
 - Metriky Hystrix Pokud knihovny v cestě: 
-    - Management.Metrics.binders.hystrix.Enabled=false 
+    - management.metrics.binders.hystrix.enabled=false 
 - Metriky AspectJ Pokud knihovny v cestě: 
-    - Spring.aop.Enabled=false 
+    - spring.aop.enabled=false 
 
 > [!NOTE]
 > Zadejte vlastnosti výše v souboru application.properties nebo application.yml aplikace Spring Boot
@@ -126,7 +126,7 @@ Do souboru pom.xml nebo build.gradle přidejte následující závislosti:
 * [Application Insights webové 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) nebo novější
 * [Registrace webového filtru](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * Micrometer Azure registru 1.1.0 nebo novější
-* [Prostředek služby Application Insights](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights Resource](../../azure-monitor/app/create-new-resource.md )
 
 Kroky:
 

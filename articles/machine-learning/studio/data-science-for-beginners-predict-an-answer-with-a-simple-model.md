@@ -1,27 +1,8 @@
 ---
-title: Předpověď odpovědi pomocí regresních modelů - Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Jak vytvořit jednoduchý regresní model k predikci cenu v datová věda pro začátečníky č. 4. Zahrnuje lineární regrese s daty cíl.
-keywords: Vytvoření modelu, jednoduchého modelu, predikcí cena, jednoduché regresní model
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: e2c49b9da215c038cfa47689f11da22b2dffc2dc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253571"
+Název: Předpověď odpovědi pomocí regresní modely titleSuffix: Azure Machine Learning Studio Popis: Jak vytvořit jednoduchý regresní model k predikci cenu v datová věda pro začátečníky č. 4. Zahrnuje lineární regrese s daty cíl.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Předpovídání odpovědi pomocí jednoduchého modelu
 ## <a name="video-4-data-science-for-beginners-series"></a>Video 4: Datová věda pro začátečníky řady

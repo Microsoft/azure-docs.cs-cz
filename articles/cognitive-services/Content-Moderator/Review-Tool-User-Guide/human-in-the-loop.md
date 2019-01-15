@@ -1,22 +1,23 @@
 ---
-title: Moderování obsahu s podporou počítače a recenze prováděné lidmi v Content Moderator | Dokumentace Microsoftu
+title: Začlenit do moderování obsahu – Content Moderator recenze prováděné lidmi
+titlesuffix: Azure Cognitive Services
 description: Jak počítače a lidí společně poskytují nejlepší výsledky pro moderování obsahu
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
-ms.date: 03/16/2018
+ms.date: 01/10/2019
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: f1a3a401363866bdd803093e894615d90536f408
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7d2e87ac5353f103e654f4dcb6656916e4b271ae
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854216"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264729"
 ---
-# <a name="review-tool-overview"></a>Přehled nástroje pro revize
+# <a name="learn-about-the-review-tool"></a>Další informace o nástroje pro recenze
 
 Nejlepší výsledky získáte, když lidí a počítačů pracovat společně na moderování obsahu. Počítače efektivně rozšiřovat recenze prováděné lidmi, kde má predikce s asistencí nebo korigovat v kontextu reálného světa. Výsledkem je hybridní proces moderování obsahu, který vrací lepší výsledky než pokud lidí nebo počítače pracovali samostatně.
 

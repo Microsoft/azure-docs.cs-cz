@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza problematického materiálu v obsahu obrázků v jazyce C#'
+title: 'Rychlý start: Díky analýze obrázků na problematický obsah v C# – Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Postup analýzy různého problematického materiálu v obsahu obrázků pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 10/26/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7a8341d4189b90a67525fd0fba25aa0f321b21b1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e11e037e7be8ca308f7924654c4f28b1634dc5fd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084749"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260767"
 ---
-# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza problematického materiálu v obsahu obrázků v jazyce C#
+# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>Rychlý start: Analyzovat obsah obrázků pro nežádoucím vC#
 
 Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dozvíte se, jak hledat nevhodný obsah nebo obsah pro dospělé, extrahovatelný text a lidské tváře za účelem moderování potenciálně problematického materiálu.
 

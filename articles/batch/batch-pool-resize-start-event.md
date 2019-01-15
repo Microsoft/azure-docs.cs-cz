@@ -1,6 +1,6 @@
 ---
-title: Počáteční událost velikosti fondu Azure Batch | Microsoft Docs
-description: Referenční dokumentace pro událost počáteční změny velikosti fondu Batch.
+title: Zahájit událost Azure změny velikosti fondu služby Batch | Dokumentace Microsoftu
+description: Referenční informace pro událost zahájení změny velikosti fondu služby Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: b4412764c313669dc154fccaa56f22417262994d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3cabf18cfd771151e62d64dc1d2b47b250ac5471
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312605"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258267"
 ---
 # <a name="pool-resize-start-event"></a>Událost zahájení změny velikosti fondu
 
- Tato událost je vygenerované při bylo zahájeno změny velikosti fondu. Vzhledem k tomu, že změny velikosti fondu je asynchronní událostí, můžete očekávat, že událost complete změny velikosti fondu pro vypuštění po dokončení operace změny velikosti.
+ Tato událost je vygenerován po spuštění změny velikosti fondu. Protože asynchronní událost změny velikosti fondu, můžete očekávat událost dokončení změny velikosti fondu emitování po dokončení operace změny velikosti.
 
- Následující příklad ukazuje text počáteční událost změny velikosti fondu pro fondu změnu velikosti od 0 do 2 uzlů se ruční změny velikosti.
+ Následující příklad ukazuje textu událost zahájení změny velikosti fondu pro fondu změnu velikosti od 0 do 2 uzly s ruční změny velikosti.
 
 ```
 {
@@ -39,8 +39,8 @@ ms.locfileid: "30312605"
 |Element|Typ|Poznámky|
 |-------------|----------|-----------|
 |poolId|Řetězec|Id fondu.|
-|nodeDeallocationOption|Řetězec|Určuje, kdy může odebrat uzly ve fondu, pokud zmenšování velikosti fondu.<br /><br /> Možné hodnoty:<br /><br /> **requeue** – ukončí se všechny spuštěné úlohy a znovu je. Úkoly se znovu spustí, když bude povolena úloha. Odeberte uzly, jakmile úkoly ukončí.<br /><br /> **Ukončit** – ukončit spuštěné úkoly. Úkoly se znovu nespustí. Odeberte uzly, jakmile úkoly ukončí.<br /><br /> **taskcompletion** – povolit aktuálně spuštěných úloh k dokončení. Plánovat žádné nové úkoly při čekání. Odeberte uzly po dokončení všech úloh.<br /><br /> **Retaineddata** -povolit aktuálně spuštěných úkolů dokončily. pak počkejte, než všech úkolů období uchovávání dat vyprší. Plánovat žádné nové úkoly při čekání. Odeberte uzly, pokud vypršela platnost období uchovávání všech úloh.<br /><br /> Výchozí hodnota je requeue.<br /><br /> Pokud je zvýšení velikosti fondu, pak je hodnota nastavená **neplatný**.|
-|currentDedicated|Int32|Počet aktuálně přiřazená k fondu výpočetních uzlů.|
-|targetDedicated|Int32|Počet výpočetních uzlů, které jsou požadovány pro fond.|
-|enableAutoScale|Logická hodnota (Bool)|Určuje, zda velikost fondu automaticky přizpůsobí v čase.|
-|isAutoPool|Logická hodnota (Bool)|Speficies jestli fondu se vytvořil prostřednictvím mechanismu AutoPool úlohy.|
+|nodeDeallocationOption|Řetězec|Určuje, když uzlů může být odebrán z fondu, pokud se snižuje velikost fondu.<br /><br /> Možné hodnoty:<br /><br /> **znovuzařazení do fronty** – ukončí běžící úlohy a zařadí. Úkoly se znovu spustí, když je úloha povolená. Odebrání uzlů co nejdříve po ukončení úkolů.<br /><br /> **Ukončit** – spuštěné úkoly ukončit. Úkoly se nespustí. Odebrání uzlů co nejdříve po ukončení úkolů.<br /><br /> **taskcompletion** – povolit aktuálně spuštěné úkoly k dokončení. Plánovat žádné nové úkoly při čekání. Odebrání uzlů po dokončení všech úloh.<br /><br /> **Retaineddata** -povolit aktuálně spuštěným úkolům se dokončily. pak všech úkolů období uchovávání dat se vypršení platnosti. Plánovat žádné nové úkoly při čekání. Odebrání uzlů po období uchovávání všech úkolů vypršela.<br /><br /> Výchozí hodnota je znovuzařazení do fronty.<br /><br /> Pokud je zvýšení velikosti fondu, pak je hodnota nastavena na **neplatný**.|
+|currentDedicated|Datový typ Int32|Počet aktuálně přiřazená k fondu výpočetních uzlů.|
+|targetDedicated|Datový typ Int32|Počet výpočetních uzlů, které jsou požadovány pro fond.|
+|enableAutoScale|BOOL|Určuje, zda se velikost fondu automaticky přizpůsobí v čase.|
+|isAutoPool|BOOL|Určuje, zda že byl fond vytvořen prostřednictvím mechanismu AutoPool úlohy.|

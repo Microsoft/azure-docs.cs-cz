@@ -9,18 +9,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/21/2018
-ms.openlocfilehash: 623d03c96866392ef245fb924cbf6600e7850ffe
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057885"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303271"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Výstup Azure Stream Analytics ke službě Azure SQL Database
 
 Tento článek popisuje tipy, jak dosahovat lepšího výkonu, propustnosti zápis při načítání dat do databáze SQL Azure pomocí Azure Stream Analytics.
 
-Výstup SQL ve službě Azure Stream Analytics podporuje zápis paralelně jako možnost. Tato možnost umožňuje [plně paralelní](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) topologie, kde jsou více oddílů výstupu zápisu do cílové tabulky paralelní úlohy. Povolením této možnosti v Azure Stream Analytics ale nemusí být dostatečné pro dosažení vyšší propustnost, protože výrazně závisí na vaší konfiguraci databáze SQL Azure a schéma tabulky. Volba indexů, clustering klíč, faktor plnění index a komprese mít vliv na dobu načítání tabulek. Další informace o tom, jak optimalizovat vaše databáze SQL Azure ke zlepšení dotazu a načtení založené na interní srovnávací testy výkonu najdete v tématu [SQL database – Průvodce výkonem](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance).
+Výstup SQL ve službě Azure Stream Analytics podporuje zápis paralelně jako možnost. Tato možnost umožňuje [plně paralelní](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) topologie, kde jsou více oddílů výstupu zápisu do cílové tabulky paralelní úlohy. Povolením této možnosti v Azure Stream Analytics ale nemusí být dostatečné pro dosažení vyšší propustnost, protože výrazně závisí na vaší konfiguraci databáze SQL Azure a schéma tabulky. Volba indexů, clustering klíč, faktor plnění index a komprese mít vliv na dobu načítání tabulek. Další informace o tom, jak optimalizovat vaše databáze SQL Azure ke zlepšení dotazu a načtení založené na interní srovnávací testy výkonu najdete v tématu [SQL database – Průvodce výkonem](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance). Řazení zápisů není zaručeno, že při zápisu paralelní k databázi SQL Azure.
 
 Tady jsou některé konfigurace v rámci jednotlivých služeb, který může pomoct zlepšit celkovou propustnost vašeho řešení.
 

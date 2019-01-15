@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: 3b9c8ea3dba5fdbd3e25293873ab1ae6854b3b83
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5397ab76afa8c28623f1522ffa773b0895e19f02
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728104"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303934"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
 
@@ -38,8 +38,8 @@ Funkce spravovaných identit prostředků Azure je bezplatnou součástí Azure 
 
 V rámci spravovaných identit pro prostředky Azure dokumentaci sady se používají následující termíny:
 
-- **Id klienta** – jedinečný identifikátor generovaný aplikací Azure AD, která se váže k instančnímu objektu služby a aplikace během počátečního zřízení.
-- **Id objektu zabezpečení** – id objektu instanční objekt pro vaši spravovanou identitu, která se používá k udělení přístupu na základě role k prostředku Azure.
+- **ID klienta** – jedinečný identifikátor generovaný aplikací Azure AD, která se váže k instančnímu objektu služby a aplikace během počátečního zřízení.
+- **ID objektu zabezpečení** – ID objektu instanční objekt pro vaši spravovanou identitu, která se používá k udělení přístupu na základě role k prostředku Azure.
 - **Azure Instance Metadata služby (IMDS)** – koncový bod REST, která je přístupná pro všechny virtuální počítače IaaS vytvořené prostřednictvím Azure Resource Manageru. Koncový bod je k dispozici na dobře známé nesměrovatelných IP adrese (169.254.169.254), který je přístupný pouze z v rámci virtuálního počítače.
 
 ## Jak funguje spravovaných identit pro prostředky Azure?<a name="how-does-it-work"></a>

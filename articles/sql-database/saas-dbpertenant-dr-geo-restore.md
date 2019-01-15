@@ -1,5 +1,5 @@
 ---
-title: 'Aplikace SaaS: Azure SQL Database geograficky redundantní zálohy pro zotavení po havárii | Dokumentace Microsoftu'
+title: 'Aplikace SaaS: Geograficky redundantní zálohy Azure SQL Database pro zotavení po havárii | Dokumentace Microsoftu'
 description: Naučte se používat Azure SQL Database geograficky redundantní zálohy k obnovení v případě výpadku víceklientské aplikace SaaS
 services: sql-database
 ms.service: sql-database
@@ -12,18 +12,18 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: a78632ed6215c467f53938569621cfb18f9e51ca
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352927"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264746"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geografické obnovení použijte k obnovení ze zálohy databáze víceklientské aplikace SaaS
 
 Tento kurz se věnuje celé zotavení po havárii pro víceklientské aplikace SaaS s databází na tenanta modelu implementovaná. Použijete [geografické obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups) obnovovat databáze katalogu a tenanta z automaticky udržována geograficky redundantní zálohy do určitá alternativní oblast. Jakmile se výpadek vyřeší, použijete [geografickou replikaci](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) repatriovat základní změny databáze do jejich původního oblasti.
 
-![Architektura geografické obnovení](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![Geo-restore-architecture](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 Geografické obnovení je řešení zotavení po havárii nejnižšími náklady pro službu Azure SQL Database. Nicméně obnovení z geograficky redundantní zálohy může dojít ke ztrátě až jednu hodinu. Může trvat docela dlouho, v závislosti na velikosti každé databázi. 
 
@@ -114,7 +114,7 @@ V této úloze spustí se proces synchronizovat konfiguraci serverů, elastický
 
 3. Nastavte následující hodnotu:
 
-    $DemoScenario = 1: spuštění úlohy na pozadí, která se synchronizuje tenanta serveru a informace o konfiguraci fondu do katalogu.
+    $DemoScenario = 1: Spuštění úlohy na pozadí, která se synchronizuje tenanta serveru a informace o konfiguraci fondu do katalogu.
 
 4. Pro spuštění skriptu synchronizovat, stisknutím klávesy F5. 
 
@@ -174,7 +174,7 @@ Představte si, že dojde k výpadku v oblasti, ve kterém je aplikace nasazené
 
 1. V prostředí PowerShell ISE v ...\Learning Modules\Business kontinuity podnikových procesů a po havárii Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 skriptu, nastavte následující hodnotu:
 
-    $DemoScenario = 2: obnovení z geograficky redundantní zálohy obnovit aplikaci do oblasti pro zotavení.
+    $DemoScenario = 2: Obnovení z geograficky redundantní zálohy obnovte aplikaci do oblasti pro zotavení.
 
 2. Pro spuštění skriptu, stisknutím klávesy F5.  
 
@@ -209,7 +209,7 @@ Ještě předtím, než se obnoví databází tenantů, můžete zřídit nové 
 
 1. V prostředí PowerShell ISE v ...\Learning Modules\Business kontinuity podnikových procesů a po havárii Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 skriptu, nastavte následující vlastnost:
 
-    $DemoScenario = 3: zřízení nového tenanta v oblasti obnovení.
+    $DemoScenario = 3: Zřízení nového tenanta v oblasti obnovení.
 
 2. Pro spuštění skriptu, stisknutím klávesy F5.
 
@@ -262,7 +262,7 @@ V této úloze můžete aktualizovat některou z obnovené tenantských databáz
 
 2. V prostředí PowerShell ISE v ...\Learning Modules\Business kontinuity podnikových procesů a po havárii Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 skriptu, nastavte následující hodnotu:
 
-    $DemoScenario = 4: odstranění události z tenanta v oblasti obnovení.
+    $DemoScenario = 4: Odstraňte událost z klienta v oblasti obnovení.
 
 3. Spustit skript, stisknutím klávesy F5.
 
@@ -320,13 +320,13 @@ Pokud jste postupovali podle tohoto kurzu, skript okamžitě znovu aktivuje Fabr
   
 1. V prostředí PowerShell ISE v ...\Learning skript Modules\Business kontinuity podnikových procesů a Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po havárii ověřte, že se proces synchronizace katalogu běží pořád v jeho instance prostředí PowerShell. V případě potřeby restartujte nastavením:
 
-    $DemoScenario = 1: zahájení synchronizace serveru tenanta, fondu a informace o konfiguraci databáze do katalogu.
+    $DemoScenario = 1: Zahájení synchronizace serveru tenanta, fondu a informace o konfiguraci databáze do katalogu.
 
     Pro spuštění skriptu, stisknutím klávesy F5.
 
 2.  Pokud chcete spustit proces navracení, nastavte:
 
-    $DemoScenario = 5: repatriovat základní aplikaci do jeho původního oblasti.
+    $DemoScenario = 5: Repatriovat základní aplikaci do jeho původního oblasti.
 
     Ke spuštění skriptu pro obnovení v novém okně prostředí PowerShell, stisknutím klávesy F5. Navracení trvá několik minut a můžete ji sledovat v okně Powershellu.
 
@@ -352,7 +352,7 @@ Proces obnovení vytvoří recovery prostředky ve skupině prostředků pro obn
 
 1. V prostředí PowerShell ISE ...\Learning skriptu Modules\Business kontinuity podnikových procesů a Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po havárii nastavte:
     
-    $DemoScenario = 6: odstranění zastaralých prostředky z oblasti pro zotavení.
+    $DemoScenario = 6: Odstraňte zastaralé prostředky z oblasti pro zotavení.
 
 2. Pro spuštění skriptu, stisknutím klávesy F5.
 
@@ -376,6 +376,6 @@ V tomto kurzu jste se naučili:
 
 Zkuste [zotavení po havárii pro víceklientské aplikace SaaS s využitím geografické replikace databáze](saas-dbpertenant-dr-geo-replication.md) kurzu se dozvíte, jak pomocí georeplikace výrazně zkracuje dobu potřebnou k obnovení víceklientské aplikace ve velkém měřítku.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 [Další kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)

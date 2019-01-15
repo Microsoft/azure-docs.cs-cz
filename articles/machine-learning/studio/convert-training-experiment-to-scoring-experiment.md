@@ -1,26 +1,8 @@
 ---
-title: Příprava modelů nasazení – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Jak připravit trénovaného modelu pro nasazení jako webové služby převedením vašeho výukového experimentu Machine Learning studia na prediktivní experiment.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: ef54281b91147060e9c00bcc6e45e0db0fb8933a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273098"
+Název: Příprava nasazení titleSuffix modelu: Azure Machine Learning Studio Popis: Jak připravit trénovaného modelu pro nasazení jako webové služby převedením vašeho výukového experimentu Machine Learning studia na prediktivní experiment.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.date: 03/28/2017
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Příprava vašeho modelu pro nasazení v Azure Machine Learning Studio
 

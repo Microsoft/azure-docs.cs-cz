@@ -1,27 +1,8 @@
 ---
-title: Položit otázku dat dokáže odpovědět - Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Zjistěte, jak formulovat otázku sharp data science v datová věda pro začátečníky videa 3. Obsahuje porovnání klasifikačních a regresních dotazy.
-keywords: data science problémy data science dotazy, mohli formulovat otázky, otázky regrese, klasifikace dotazy, sharp otázku
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cjgronlund
-ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250973"
+Název: Položte že otázku dat dokáže odpovědět titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak formulovat otázku sharp data science v datová věda pro začátečníky videa 3. Obsahuje porovnání klasifikačních a regresních dotazy.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: garyericson ms.author: garye ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 01/03/2018
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Položení otázky, na kterou lze odpovědět pomocí dat
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Datová věda pro začátečníky řady

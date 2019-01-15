@@ -1,27 +1,8 @@
 ---
-title: Import dat ze souboru – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Zjistěte, jak nahrát soubor trénovací data z pevného disku do Azure Machine Learning Studio. Tím se vytvoří datová sada modulu v pracovním prostoru.
-keywords: Importujte dat, formát dat, datové typy, zdroje dat, trénovacích dat
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: c0dd9e90-23c4-4f64-8b8f-489ad79f047b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 096d2d4a8c1ee1727b124a5416ec77e8281c97d7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254856"
+Název: Importovat data ze souboru titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak nahrát soubor trénovací data z pevného disku do Azure Machine Learning Studio. Tím se vytvoří datová sada modulu v pracovním prostoru.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---
 # <a name="import-training-data-from-a-file-on-your-hard-drive-into-azure-machine-learning-studio"></a>Import trénovacích dat ze souboru na pevném disku do Azure Machine Learning Studio
 

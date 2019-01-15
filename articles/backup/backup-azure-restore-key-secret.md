@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3bcd752f14f5d43c8cb8f686534e016690c7c40
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 85c284c2a0e49d7fa20c0ec342878ffdf9d47387
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198061"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261158"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení služby Key Vault klíč a tajný klíč pro šifrované virtuální počítače pomocí služby Azure Backup
 Tento článek pojednává o pomocí zálohování virtuálních počítačů Azure k provedení obnovení šifrovaných virtuálních počítačů Azure, pokud klíč a tajný klíč neexistují v trezoru klíčů. Tyto kroky je možné také pokud chcete udržovat samostatnou kopii klíč (šifrovací klíč klíče) a tajný klíč (šifrovací klíč nástroje BitLocker) pro obnovený virtuální počítač.
@@ -62,7 +62,7 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 
 ## <a name="restore-secret"></a>Obnovit tajný klíč
 
-Pokud je váš virtuální počítač Azure bez Azure AD je šifrovaný pomocí klíče BEK pouze (pro Windows a virtuální počítače s Linuxem), generovat název tajného kódu a hodnotné výše uvedených příkazů a něj nastavit tajných kódů rutiny umístění tajný klíč (klíče BEK) zpět do služby key vault.
+Pomocí souboru JSON generované nad něj a získat název tajného kódu a hodnotu můžete nastavit tajných kódů rutiny umístění tajný kód (klíče BEK) zpět do služby key vault. Tyto rutiny použít, pokud vaše **virtuální počítač je zašifrovaný pomocí klíče BEK a KEK**.
 
 **Tyto rutiny použijte, pokud je váš virtuální počítač Windows šifrovaný pomocí klíče BEK a KEK.**
 
@@ -84,7 +84,7 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Pokud je váš virtuální počítač Azure s využitím AD **šifrované pomocí klíče BEK pouze**, generovat soubor tajného kódu objektu blob z JSON a něj obnovení tajných kódů rutiny umístění tajný klíč (klíče BEK) zpět do služby key vault.
+Pomocí souboru JSON generované nad něj a získat název tajného kódu a hodnotu můžete nastavit tajných kódů rutiny umístění tajný kód (klíče BEK) zpět do služby key vault. Tyto rutiny použít, pokud vaše **virtuální počítač je zašifrovaný pomocí klíče BEK** pouze.
 
 ```
 PS C:\> $secretDestination = 'C:\secret.blob'

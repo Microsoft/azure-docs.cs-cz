@@ -8,19 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: tutorial
-ms.date: 10/30/2017
+ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 311abe4583d29098ebd26dfcf2214553aa1fe1c9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 02cfd00b8ab1f51c46e745dae480e39dee2ed710
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262040"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262332"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření webové jednostránkové aplikace
 
-Rozhraní API Bingu pro vyhledávání zpráv umožňuje hledat na webu a získávat výsledky v podobě zpráv relevantních pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API Bingu pro vyhledávání zpráv k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
+Rozhraní API Bingu pro vyhledávání zpráv umožňuje hledat na webu a získávat výsledky v podobě zpráv relevantních pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API Bingu pro vyhledávání zpráv k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
 <!-- Remove until we can replace it with sanitized copy
 ![Single-page Bing News Search app](media/news-search-singlepage.png)
@@ -39,8 +39,6 @@ Ukázková aplikace předvádí, jak:
 > * Zpracovat chyby, které můžou nastat
 
 Stránka kurzu je zcela nezávislá. Nepoužívá žádná externí rozhraní, šablony stylů ani soubory obrázků. Používá jenom běžně podporované funkce jazyka JavaScript a funguje s aktuálními verzemi všech hlavních webových prohlížečů.
-
-V tomto kurzu probereme vybrané části zdrojového kódu. K dispozici je kompletní [zdrojový kód](tutorial-bing-news-search-single-page-app-source.md). Pokud chcete spustit příklad, zkopírujte a vložte zdrojový kód do textového editoru a uložte ho jako `bing.html`.
 
 ## <a name="app-components"></a>Komponenty aplikace
 Stejně jako každá jednostránková webová aplikace i tato aplikace zahrnuje tři části:

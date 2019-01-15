@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: d1b15e634cae0758f1f872750ffd9dd569e83a8e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2769b78632e1a7f776359f2a4d768154c224aab5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036235"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264610"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze rozhraní API poskytovatele prostředků podporované profily ve službě Azure Stack
 
@@ -121,7 +121,7 @@ Rozhraní API Azure Compute poskytují programový přístup k virtuálním poč
 | Umístění/vmSizes | 2016-03-30 |
 | Operace | 2016-03-30 |
 | Virtuální počítače | 2016-03-30 |
-| Virtuální počítače/rozšíření | 2016-03-30 |
+| Virtual Machines/extensions | 2016-03-30 |
 | Virtual Machine Scale Sets | 2016-03-30 |
 | Virtual Machine Scale Sets/rozšíření | 2016-03-30 |
 | Virtual Machine Scale Sets/síťová rozhraní | 2016-03-30 |
@@ -213,10 +213,10 @@ Azure Resource Manager umožňuje nasadit a spravovat infrastrukturu pro vaše �
 | Výsledky předplatná/operace | 2016-09-01 |
 | Předplatná a poskytovatelé | 2017-08-01 |
 | Předplatných nebo skupinách prostředků | 2016-09-01 |
-| Předplatné/resourceGroups/prostředky | 2016-09-01 |
+| Subscriptions/resourceGroups/resources | 2016-09-01 |
 | Předplatná a prostředky | 2016-09-01 |
-| Předplatné/tagNames | 2016-09-01 |
-| Předplatné/tagNames/tagValues | 2016-09-01 |
+| Subscriptions/tagNames | 2016-09-01 |
+| Subscriptions/tagNames/tagValues | 2016-09-01 |
 | Tenanti | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
@@ -229,7 +229,7 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | Umístění | 2016-01-01 |
 | Umístění a kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
-| storageAccounts | 2016-01-01 |
+| StorageAccounts | 2016-01-01 |
 | Použití | 2016-01-01 |
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Podrobnosti o 2018-03-01hybridní
@@ -259,7 +259,7 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | Umístění/vmSizes | 2016-03-30 |
 | Operace | 2016-03-30 |
 | Virtuální počítače | 2016-03-30 |
-| Virtuální počítače/rozšíření | 2016-03-30 |
+| Virtual Machines/extensions | 2016-03-30 |
 | Virtual Machine Scale Sets | 2016-03-30 |
 | Virtual Machine Scale Sets/rozšíření | 2016-03-30 |
 | Virtual Machine Scale Sets/síťová rozhraní | 2016-03-30 |
@@ -310,10 +310,10 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | Výsledky předplatná/operace | 2016-09-01 |
 | Předplatná a poskytovatelé | 2017-08-01 |
 | Předplatných nebo skupinách prostředků | 2016-09-01 |
-| Předplatné/resourceGroups/prostředky | 2016-09-01 |
+| Subscriptions/resourceGroups/resources | 2016-09-01 |
 | Předplatná a prostředky | 2016-09-01 |
-| Subscriptiosn/tagNames | 2016-09-01 |
-| Předplatné/tagNames/tagValues | 2016-09-01 |
+| Subscriptions/tagNames | 2016-09-01 |
+| Subscriptions/tagNames/tagValues | 2016-09-01 |
 | Tenanti | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage
@@ -324,7 +324,7 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | Umístění | 2016-01-01 |
 | Umístění a kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
-| storageAccounts | 2016-01-01 |
+| StorageAccounts | 2016-01-01 |
 | Použití | 2016-01-01 |
 
 ## <a name="next-steps"></a>Další postup

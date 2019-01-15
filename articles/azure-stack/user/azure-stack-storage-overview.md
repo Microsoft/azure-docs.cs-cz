@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 13fdf3257ed44212f45eeb3d2820a2022f54d777
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 5df10ce2bb7508aad0abe7f9972ffc9b886a098d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585234"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302353"
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Úvod do úložiště Azure Stack
 

@@ -8,96 +8,85 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 17307aaac531924b02c92ac37151d10bfbc48143
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 82769655741fe6dcf1ccbd988e1ad0bfa2a5ec42
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252299"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262163"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Node.js a rozhraní API REST vyhledávání zpráv Bingu
 
-Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv, které je součástí služeb Microsoft Cognitive Services v Azure. V tomto článku se sice používá Node.js, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
+V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScriptu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
-Příklad je napsaný v JavaScriptu a běží pod Node.js 6.
+I když je tato aplikace napsaná v JavaScriptu a běží v Node.js, jsou toto rozhraní API a webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).
+Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
-## <a name="bing-news-search"></a>Vyhledávání zpráv Bingu
+* [Knihovna žádostí o jazyka JavaScript](https://github.com/request/request)
 
-[Rozhraní API Bingu pro vyhledávání zpráv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) vrací výsledky zpráv z vyhledávače Bing.
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Node.js.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-```javascript
-'use strict';
+## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-let https = require('https');
+1. Vytvořte ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru nový soubor JavaScriptu a nastavte striktnost a požadavky protokolu HTTPS.
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```javascript
+    'use strict';
+    let https = require('https');
+    ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'enter key here';
+2. Vytvořte proměnné pro koncový bod rozhraní API, cestu k rozhraní API pro vyhledávání obrázků, klíč předplatného a hledaný výraz.
+    ```javascript
+    let subscriptionKey = 'enter key here';
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/news/search';
+    let term = 'Microsoft';
+    ```
 
-// Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-// search APIs.  In the future, regional endpoints may be available.  If you
-// encounter unexpected authorization errors, double-check this host against
-// the endpoint for your Bing Search instance in your Azure dashboard.
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/news/search';
+## <a name="handle-and-parse-the-response"></a>Zpracování a parsování odpovědi
 
-let term = 'Microsoft';
+1. Definujte funkci s názvem `response_handler`, která jako parametr přijímá volání protokolu HTTP `response`. V rámci této funkce proveďte následující kroky:
 
-let response_handler = function (response) {
-    let body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        console.log('\nRelevant Headers:\n');
-        for (var header in response.headers)
-            // header keys are lower-cased by Node.js
-            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                 console.log(header + ": " + response.headers[header]);
-        body = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log('\nJSON Response:\n');
-        console.log(body);
-    });
-    response.on('error', function (e) {
-        console.log('Error: ' + e.message);
-    });
-};
+    1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
 
-let bing_news_search = function (search) {
-  console.log('Searching news for: ' + term);
-  let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + '?q=' + encodeURIComponent(search),
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+    2. Uložte text odpovědi při volání příznaku **data**.
+        ```javascript
+        response.on('data', function (d) {
+            body += d;
+        });
+        ```
 
-    let req = https.request(request_params, response_handler);
-    req.end();
-}
-bing_news_search(term);
-```
+    3. Když **end** signalizována příznak, JSON a záhlaví lze zobrazit.
 
-**Odpověď**
+        ```javascript
+        response.on('end', function () {
+            console.log('\nRelevant Headers:\n');
+            for (var header in response.headers)
+                // header keys are lower-cased by Node.js
+                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                     console.log(header + ": " + response.headers[header]);
+            body = JSON.stringify(JSON.parse(body), null, '  ');
+            console.log('\nJSON Response:\n');
+            console.log(body);
+         });
+        ```
+
+## <a name="json-response"></a>Odpověď JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -195,8 +184,4 @@ bing_news_search(term);
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Stránkování zpráv](paging-news.md)
-> [Zvýraznění textu pomocí dekoračních značek](hit-highlighting.md)
-> [Hledání zpráv na internetu](search-the-web.md)  
-> [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+[Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

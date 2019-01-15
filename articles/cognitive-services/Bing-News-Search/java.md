@@ -8,107 +8,103 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9933f1c54e6081ed3f1004712543610a7883736b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f8a98133d68cb73958664dd04bb2d959c97195cf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260952"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263845"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Javy a rozhraní API REST vyhledávání zpráv Bingu
 
-Tento článek vám ukazuje, jak používat rozhraní API pro vyhledávání Bingu, což je součást Microsoft Cognitive Services v Azure. V tomto článku se sice používá Java, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
+V tomto rychlém startu můžete provést první volání do rozhraní API pro vyhledávání zpráv Bingu a zobrazit odpověď JSON. Tato jednoduchá aplikace Java odešle dotaz vyhledávání zpráv na rozhraní API a zobrazí odpovědi.
 
-Příklad kódu je napsaný tak, aby běžel pod Javou 7 jako konzolová aplikace.
+Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).
+Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure. Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* [Java Development Kit (JDK) 7 nebo 8](https://aka.ms/azure-jdks)
 
-## <a name="bing-news-search"></a>Vyhledávání zpráv Bingu
+* [Knihovna Gson](https://github.com/google/gson)
 
-[Rozhraní API Bingu pro vyhledávání zpráv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) vrací výsledky zpráv z vyhledávače Bing.
 
-1. Stáhněte si nebo nainstalujte [knihovnu gson](https://github.com/google/gson).
-2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java.
-3. Přidejte níže uvedený kód.
-4. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-5. Spusťte program.
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-```java
-import java.net.*;
-import java.util.*;
-import java.io.*;
-import javax.net.ssl.HttpsURLConnection;
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- *
- * Once you have compiled or downloaded gson-2.8.1.jar, assuming you have placed it in the
- * same folder as this file (BingNewsSearch.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac BingNewsSearch.java -classpath .;gson-2.8.1.jar -encoding UTF-8
- * java -cp .;gson-2.8.1.jar BingNewsSearch
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-public class BingNewsSearch {
+1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny.
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```java
+    import java.net.*;
+    import java.util.*;
+    import java.io.*;
+    import javax.net.ssl.HttpsURLConnection;
+    import com.google.gson.Gson;
+    import com.google.gson.GsonBuilder;
+    import com.google.gson.JsonObject;
+    import com.google.gson.JsonParser;
+    ```
 
-    // Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "enter key here";
+2. Vytvořte novou třídu s proměnné pro koncový bod rozhraní API, váš klíč předplatného a hledané výrazy.
 
-    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-    // search APIs.  In the future, regional endpoints may be available.  If you
-    // encounter unexpected authorization errors, double-check this value against
-    // the endpoint for your Bing Web search instance in your Azure dashboard.
-    static String host = "https://api.cognitive.microsoft.com";
-    static String path = "/bing/v7.0/news/search";
-
-    static String searchTerm = "Microsoft";
-
+    ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
-        // construct URL of search request (endpoint + query string)
+        static String subscriptionKey = "enter key here";
+        static String host = "https://api.cognitive.microsoft.com";
+        static String path = "/bing/v7.0/news/search";
+        static String searchTerm = "Microsoft";
+    //...
+    }
+    ```
+
+## <a name="construct-the-search-request-and-recieve-a-json-response"></a>Vytvořit žádost o vyhledávání a přijetí odpovědi JSON
+
+1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro žádost rozhraní API. Hledaný termín musí být zakódovaný do adresy URL předtím, než se připojí k této žádosti.
+
+    ```java
+    public static SearchResults SearchNews (String searchQuery) throws Exception {
+        // construct the search request URL (in the form of URL + query string)
         URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
         HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
         connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-        // receive JSON body
-        InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
-
-        // construct result object for return
-        SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-
-        // extract Bing-related HTTP headers
-        Map<String, List<String>> headers = connection.getHeaderFields();
-        for (String header : headers.keySet()) {
-            if (header == null) continue;      // may have null key
-            if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
-                results.relevantHeaders.put(header, headers.get(header).get(0));
-            }
-        }
-
-        stream.close();
-        return results;
     }
+    ```
 
+2. Přijata odpověď JSON z rozhraní API pro vyhledávání zpráv Bingu a vytvořit objekt výsledku.
+
+    ```java
+    // receive JSON body
+    InputStream stream = connection.getInputStream();
+    String response = new Scanner(stream).useDelimiter("\\A").next();
+    // construct result object for return
+    SearchResults results = new SearchResults(new HashMap<String, String>(), response);
+    ```
+
+## <a name="process-the-json-response"></a>Zpracovat odpověď JSON
+
+1. Oddělení hlavičky protokolu HTTP související Bingu od datové části JSON a ukončení datového proudu a vrátí odpověď rozhraní API.
+    ```java
+    // extract Bing-related HTTP headers
+    Map<String, List<String>> headers = connection.getHeaderFields();
+    for (String header : headers.keySet()) {
+        if (header == null) continue;      // may have null key
+        if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
+            results.relevantHeaders.put(header, headers.get(header).get(0));
+        }
+    }
+    stream.close();
+    return results;
+    ```
+
+2. Vytvořte metodu k analýze a reserialize JSON
+    ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
         JsonParser parser = new JsonParser();
@@ -116,39 +112,23 @@ public class BingNewsSearch {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
     }
+    ```
 
-    public static void main (String[] args) {
-        try {
-            System.out.println("Searching the Web for: " + searchTerm);
-
-            SearchResults result = SearchNews(searchTerm);
-
-            System.out.println("\nRelevant HTTP Headers:\n");
-            for (String header : result.relevantHeaders.keySet())
-                System.out.println(header + ": " + result.relevantHeaders.get(header));
-
-            System.out.println("\nJSON Response:\n");
-            System.out.println(prettify(result.jsonResponse));
-        }
-        catch (Exception e) {
-            e.printStackTrace(System.out);
-            System.exit(1);
-        }
+3. V hlavní metodě vaší aplikace zavolejte metodu vyhledávání a zobrazení výsledků.
+    ```csharp
+   public static void main (String[] args) {
+       System.out.println("Searching the Web for: " + searchTerm);
+       SearchResults result = SearchNews(searchTerm);
+    
+       System.out.println("\nRelevant HTTP Headers:\n");
+       for (String header : result.relevantHeaders.keySet())
+             System.out.println(header + ": " + result.relevantHeaders.get(header));  
+    System.out.println("\nJSON Response:\n");
+    System.out.println(prettify(result.jsonResponse));
     }
-}
+    ```
 
-// Container class for search results encapsulates relevant headers and JSON data
-class SearchResults{
-    HashMap<String, String> relevantHeaders;
-    String jsonResponse;
-    SearchResults(HashMap<String, String> headers, String json) {
-        relevantHeaders = headers;
-        jsonResponse = json;
-    }
-}
-```
-
-**Odpověď**
+## <a name="json-response"></a>Odpověď JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -247,8 +227,4 @@ class SearchResults{
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Stránkování zpráv](paging-news.md)
-> [Zvýraznění textu pomocí dekoračních značek](hit-highlighting.md)
-> [Hledání zpráv na internetu](search-the-web.md)   
-> [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+> [Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

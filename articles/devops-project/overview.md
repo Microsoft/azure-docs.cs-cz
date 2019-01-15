@@ -1,6 +1,6 @@
 ---
-title: Přehled projektu Azure DevOps | Microsoft Docs
-description: Vysvětlení výhod projektu Azure DevOps
+title: Přehled projekty Azure DevOps | Dokumentace Microsoftu
+description: Zaměstnanci chápou hodnotu pro projekty Azure DevOps
 services: devops-project
 documentationcenter: ''
 author: mlearned
@@ -14,63 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: 39dffad597b8382dea4df6fa1b0726d9582d67d1
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 9e425662a698f077c3a1b9b3ff1270384fd61374
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44293622"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261243"
 ---
-# <a name="overview-of-azure-devops-project"></a>Přehled projektu Azure DevOps
+# <a name="overview-of-azure-devops-projects"></a>Přehled Azure DevOps Projects
 
-Díky projektu Azure DevOps můžete v Azure snadno začít pracovat. Prostředek Projekt DevOps umožňuje spustit váš oblíbený typ aplikace ve službě Azure podle vlastního výběru pomocí několika rychlých kroků na webu Azure Portal. Projekt DevOps nastaví vše potřebné pro vývoj, nasazení a monitorování aplikace.
-Řídicí panel projektu DevOps umožňuje monitorovat potvrzení kódu, sestavení a nasazení z jednoho zobrazení na portálu Azure Portal.
+ Azure DevOps Projects umožňuje snadno začít používat Azure. Pomůže vám spouštět své oblíbené aplikace na službu Azure podle vašeho výběru v pouze několika rychlých krocích z portálu Azure portal. 
 
-## <a name="why-should-i-use-the-azure-devops-project"></a>Proč projekt Azure DevOps používat?
+ Projekty DevOps nastaví všechno, co potřebujete pro vývoj, nasazování a sledování vaší aplikace. Mohou pomocí řídicího panelu DevOps Projects monitorování potvrzení kódu, sestavení a nasazení, vše z jednoho zobrazení na webu Azure Portal.
 
-Projekt Azure DevOps automatizuje nastavení celého kanálu kontinuální integrace (CI) a průběžného doručování (CD) do Azure.  Můžete začít se svým stávajícím kódem nebo použít některou z poskytovaných ukázkových aplikací a pak ji rychle nasadit do různých služeb Azure, jako jsou virtuální počítače, App Service, Azure Container Service, Azure SQL Database a Azure Service Fabric.  
+## <a name="why-should-i-use-devops-projects"></a>Proč je vhodné použít projekty DevOps?
 
-Projekt Azure DevOps odvede všechnu práci s počáteční konfigurací kanálu DevOps včetně všeho od nastavení počátečního úložiště Git přes konfiguraci kanálu CI/CD, vytvoření prostředku Application Insights pro monitorování až po zobrazení celého řešení na jednom místě v řídicím panelu projektu Azure DevOps na webu Azure Portal.
+  Projekt DevOps automatizuje nastavení celý kontinuální integrace (CI) a kanál průběžného doručování (CD) do Azure.  Můžete spustit s existujícím kódem nebo použít jednu z poskytnutého ukázkových aplikací. Pak můžete rychle nasadit tuto aplikaci do různých služeb Azure, jako jsou virtuální počítače, služby App Service, služby Azure Kubernetes (AKS), Azure SQL Database a Azure Service Fabric.  
 
-Projekt Azure DevOps vám umožní:
+  Projekty DevOps vykonává všechnu práci pro počáteční konfiguraci kanálu DevOps vše od nastavení počátečním úložišti Git, včetně konfigurace kanálu CI/CD, vytváří se prostředek Application Insights pro monitorování a poskytuje jeden Zobrazit celé řešení při vytváření řídicího panelu DevOps Projects na webu Azure Portal.
+
+Projekty DevOps, můžete použít:
 
 * Rychle nasadit aplikace do Azure
-* Automatizovat nastavení kanálu Azure CI/CD
-* Použít projekt DevOps jako šablonu, která vám umožní zjistit a pochopit, jak správně nastavit CI/CD do Azure pomocí Azure DevOps
-* Začít s kanálem CI/CD do Azure a pak kanál verze dál přizpůsobit podle konkrétních scénářů
+* Automatizace nastavení kanálu CI/CD
+* Zobrazení a pochopit, jak správně nastavit kanál CI/CD
+* Dále přizpůsobte podle konkrétních scénářů kanály pro vydávání
 
-## <a name="how-do-i-use-the-azure-devops-project"></a>Jak projekt Azure DevOps používat?
+## <a name="how-do-i-use-devops-projects"></a>Použití projekty DevOps
 
-Projekt Azure DevOps je k dispozici na portálu Azure Portal.  Prostředek Projekt Azure DevOps vytvoříte stejně jako jakýkoli jiný prostředek Azure z portálu.  Projekt DevOps nabízí prostředí podobné průvodci s podrobnými kroky pro různé možnosti konfigurace.  
+  Projekty DevOps je k dispozici na webu Azure Portal. Vytvoříte prostředek projekty DevOps stejně jako můžete vytvořit libovolné prostředky Azure z portálu. Projekty DevOps poskytuje podrobný průvodce jako prostředí pro různé možnosti konfigurace.  
 
-V rámci počátečního nastavení zvolíte několik možností konfigurace.  K těmto možnostem patří:
+V rámci počátečního nastavení zvolíte několik možností konfigurace. K těmto možnostem patří:
 
-* Použití poskytnuté ukázková aplikace nebo vlastního kódu
-* Zvolení jazyka aplikace
-* Zvolení rozhraní aplikace na základě jazyka
-* Zvolení služby Azure (cíle nasazení)
-* Organizace Azure DevOps (nová nebo existující)
-* Zvolte svoje předplatné Azure.
-* Výběr umístění služeb Azure
+* Pomocí zadaného ukázkovou aplikaci nebo přenesení vlastního kódu
+* Výběr jazyka aplikace
+* Výběr rozšiřovatelnou platformu pro aplikace založené na jazyce
+* Výběr služby Azure (cíl nasazení)
+* Vytváří se nová organizace Azure DevOps nebo použití existující organizaci 
+* Výběr předplatného Azure
+* Výběr umístění služby Azure
 * Výběr z různých cenových úrovní služeb Azure
 
-Po použití projektu Azure DevOps Azure můžete také všechny prostředky odstranit z jednoho místa v řídicím panelu projektu Azure DevOps na portálu Azure Portal.
+Když použijete projekty DevOps a můžete také odstranit všechny prostředky z jednoho místa na řídicím panelu projekty DevOps na webu Azure portal.
 
-## <a name="azure-devops-project-and-azure-devops-integration"></a>Integrace projektu Azure DevOps a Azure DevOps
+## <a name="devops-projects-and-azure-devops-integration"></a>Integrace s projekty DevOps a Azure DevOps
 
-Projekty DevOps využívají Azure DevOps.  Projekt DevOps automatizuje všechnu práci, která se v Azure DevOps vyžaduje k nastavení CI/CD do Azure.  V nové nebo existující organizaci Azure DevOps se vytvoří úložiště Git.  Projekt DevOps potvrdí ukázkovou aplikaci nebo váš stávající kód do nového úložiště Git.  Automatizace také vytvoří aktivační událost CI pro sestavení tak, aby každé nové potvrzení kódu inicializovalo sestavení.  Projekt DevOps také vytvoří trigger CD a nasadí každý nový úspěšný build do služby Azure podle vašeho výběru.  Kanály buildu a verze se dají přizpůsobit pro další scénáře.  Kanály buildu a verze můžete také naklonovat a použít v jiných projektech.
+Projekty DevOps využívá k tomu Azure DevOps. Projekty DevOps automatizuje všechnu práci, který je nezbytný v kanálech Azure k nastavení kanálu CI/CD. Vytvoří úložiště Git v nové nebo existující organizaci Azure DevOps a potom potvrzení ukázkovou aplikaci nebo existující kód do nového úložiště Git.  
+
+Automatizace také vytvoří aktivační událost CI pro sestavení tak, aby každé nové potvrzení kódu inicializuje sestavení. Projekty DevOps vytvoří aktivační událost CD a nasadí každé nové úspěšné sestavení do služby Azure podle vašeho výběru.  
+
+Kanály buildu a verze se dají přizpůsobit pro další scénáře. Kromě toho můžete naklonovat sestavování a vydávání kanálů pro použití v jiných projektech.
 
 Po vytvoření projektu DevOps můžete:
 
 * Přizpůsobit kanál sestavení a verzí
 * Pomocí žádostí o přijetí změn spravovat tok kódu a udržovat vysokou kvalitu
 * Testovat a sestavovat každé potvrzení před sloučením kódu kvůli zvýšení kvality
-* Sledovat backlog a problémy projektu přímo s aplikací
+* Sledování nevyřízených položek a problémy přímo spolu s vaší aplikace
 
-## <a name="how-do-i-start-using-the-azure-devops-project"></a>Jak projekt Azure DevOps začít používat?
+## <a name="how-do-i-start-using-devops-projects"></a>Jak můžu začít používat projekty DevOps?
 
-* [Začínáme s projektem Azure DevOps](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
+* [Začínáme s projekty DevOps](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
 
-## <a name="azure-devops-project-videos"></a>Videa pro projekt Azure DevOps
+##  <a name="devops-projects-videos"></a>Videa o DevOps Projects
 
-* [Vytvoření CI/CD s využitím projektu Azure DevOps](https://channel9.msdn.com/Events/Connect/2017/T174/player/)
+* [Vytvoření CI/CD pomocí projektů Azure DevOps](https://channel9.msdn.com/Events/Connect/2017/T174/player/)

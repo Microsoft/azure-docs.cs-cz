@@ -1,26 +1,21 @@
 ---
-title: Analýza výpovědi zákazníků – Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Analýza výpovědi zákazníků
+titleSuffix: Azure Machine Learning Studio
 description: Případová studie vývoje modelu integrované analýzy a vyhodnocování výpovědi zákazníků pomocí Azure Machine Learning Studio.
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
 ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 48e3ca0b9910b673491e20e834b38170308aa132
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: dbe853172c0f0e49408bd4a2dd630a69659421d3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272163"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260597"
 ---
 # <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Analýza výpovědí zákazníků pomocí Azure Machine Learning Studio
 ## <a name="overview"></a>Přehled
@@ -220,7 +215,7 @@ Tento dokument popisuje rozumné přístup k řešení běžných problémů vý
 
 [2] článku na wikipedii: [Přesnost](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [OSTRÉ DM 1.0: Průvodce krok za krokem dat dolování](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0: Průvodce krok za krokem dat dolování](http://www.the-modeling-agency.com/crisp-dm.pdf)   
 
 [4] [Marketing velké objemy dat: Upoutat zákazníky efektivněji a posílení hodnoty](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 

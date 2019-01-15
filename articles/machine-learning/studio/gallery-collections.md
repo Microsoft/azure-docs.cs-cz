@@ -1,26 +1,7 @@
 ---
-title: Kolekce Azure galerii AI – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Kolekce můžete použít v galerii Azure AI k seskupení experimentů, rozhraní API a další položky galerie, které používáte pro konkrétní řešení nebo koncept. Můžete seskupit je pomocí, uložit pro pozdější použití nebo sdílení.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: b88489f826bbeab636903c7c9918f34d16b2f122
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271354"
+Název: Azure AI Galerie kolekce titleSuffix: Azure Machine Learning Studio Popis: Kolekce můžete použít v galerii Azure AI k seskupení experimentů, rozhraní API a další položky galerie, které používáte pro konkrétní řešení nebo koncept. Můžete seskupit je pomocí, uložit pro pozdější použití nebo sdílení.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku  
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 03/31/2017
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Sdílet kolekce v galerii Azure AI
 

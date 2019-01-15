@@ -1,21 +1,21 @@
 ---
 title: Pracovní postupy pro moderování obsahu z rozhraní API konzoly – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Další informace o použití pracovních postupů pro moderování obsahu z konzoly pro rozhraní API.
+description: Operace pracovního postupu můžete využít v Azure Content Moderator k vytvoření nebo aktualizaci pracovního postupu nebo získat podrobnosti pracovního postupu pomocí rozhraní API pro kontrolu.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4ef8951b30fa7aede08a1af3c834192b5ed18649
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 24c451dda398cfa65dd24a4500871c67943b79bf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223846"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259445"
 ---
 # <a name="workflows-from-the-api-console"></a>Pracovní postupy z konzoly pro rozhraní API
 
@@ -80,9 +80,9 @@ Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje va
 
 Zadejte hodnoty pro **týmu**, **workflowname**, a **Ocp-Apim-Subscription-Key** (váš klíč předplatného):
 
-- **tým**: ID týmu, který jste vytvořili při nastavování vašeho [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: název pracovního postupu. Použití `default`.
-- **OCP-Apim-Subscription-Key**: na **nastavení** kartu. Další informace najdete v tématu [přehled](overview.md).
+- **Tým**: ID týmu, který jste vytvořili při nastavování vašeho [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
+- **workflowname**: Název pracovního postupu. Použití `default`.
+- **Ocp-Apim-Subscription-Key**: Na **nastavení** kartu. Další informace najdete v tématu [Přehled](overview.md).
 
   ![Parametry dotazu a hlavičky](images/workflow-get-default.PNG)
 
@@ -138,9 +138,9 @@ Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje va
 
 Zadejte hodnoty pro **týmu**, **workflowname**, a **Ocp-Apim-Subscription-Key** (váš klíč předplatného):
 
-- **tým**: ID týmu, který jste vytvořili při nastavování vašeho [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: název nového pracovního postupu.
-- **OCP-Apim-Subscription-Key**: na **nastavení** kartu. Další informace najdete v tématu [přehled](overview.md).
+- **Tým**: ID týmu, který jste vytvořili při nastavování vašeho [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
+- **workflowname**: Název nového pracovního postupu.
+- **Ocp-Apim-Subscription-Key**: Na **nastavení** kartu. Další informace najdete v tématu [Přehled](overview.md).
 
   ![Pracovní postup - vytvořit parametry dotazu nebo aktualizace konzoly a hlavičky](images/workflow-console-parameters.PNG)
 

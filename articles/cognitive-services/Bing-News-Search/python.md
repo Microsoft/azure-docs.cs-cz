@@ -8,73 +8,72 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8ce8353df9a6f8354c56d9c9115645c0b7f2136a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6d5f21bd2ddcc08296551f061f02d792a5a545a7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251653"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260665"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Pythonu a rozhraní API REST vyhledávání zpráv Bingu
 
-Tento návod představuje jednoduchý příklad volání rozhraní API Bingu pro vyhledávání zpráv a následného zpracování výsledného objektu JSON. Další informace najdete v [dokumentaci k vyhledávání zpráv Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
+V tomto rychlém startu můžete provést první volání do rozhraní API pro vyhledávání zpráv Bingu a získejte odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScript odešle vyhledávací dotaz na rozhraní API a zpracovává výsledky. Zatímco tato aplikace je napsaný v Pythonu, je rozhraní API RESTful webových služeb kompatibilní většina programovacích jazyků.
 
-Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu: 
+Tento vzorový kód můžete spouštět jako poznámkového bloku Jupyter [MyBinder](https://mybinder.org) kliknutím na spustit vazače označení: 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
+Zdrojový kód pro tuto ukázku je také k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py).
+
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Budete potřebovat přístupový klíč k dispozici při aktivaci vaší bezplatné zkušební verze.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-## <a name="running-the-walkthrough"></a>Spuštění návodu
-Nejprve nastavte `subscription_key` na váš klíč rozhraní API pro službu rozhraní API Bingu.
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
+## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-```python
-subscription_key = None
-assert subscription_key
-```
-
-Pak ověřte, že koncový bod `search_url` je správný. V tomto návodu se pro rozhraní API Bingu pro vyhledávání používá pouze jeden koncový bod. Pokud se při autorizaci objeví chyby, znovu zkontrolujte tuto hodnotu a porovnejte ji s koncovým bodem vyhledávání Bingu na řídicím panelu Azure.
-
-
-```python
-search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
-```
-
-Nastavte `search_term` na hledání novinových článků o Microsoftu.
-
-
-```python
-search_term = "Microsoft"
-```
-
-Následující blok používá knihovnu `requests` v Pythonu, pomocí které zavolá rozhraní API Bingu pro vyhledávání a vrátí výsledky jako objekt JSON. Všimněte si, že klíč rozhraní API předáváme prostřednictvím slovníku `headers` a hledaný výraz prostřednictvím slovníku `params`. Pokud si chcete zobrazit úplný seznam možností, které můžete použít k filtrování výsledků hledání, přečtěte si dokumentaci rozhraní [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
-
+1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a importujte modul požadavku. Vytváření proměnných pro váš klíč předplatného, koncový bod a hledaný termín. Vyhledání vašeho koncového bodu na řídicím panelu Azure.
 
 ```python
 import requests
 
-headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
-response = requests.get(search_url, headers=headers, params=params)
-response.raise_for_status()
-search_results = response.json()
+subscription_key = "your subscription key"
+search_term = "Microsoft"
+search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 ```
 
-Objekt `search_results` obsahuje relevantní novinové články spolu s obsáhlými metadaty. Třeba následující řádek kódu extrahuje popisy článků.
+### <a name="create-parameters-for-the-request"></a>Parametry pro žádost o vytvoření
 
+1. Přidat váš klíč předplatného do nového slovníku, pomocí `"Ocp-Apim-Subscription-Key"` jako klíč. Proveďte totéž pro parametry hledání.
 
-```python
-descriptions = [article["description"] for article in search_results["value"]]
-```
+    ```python
+    headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
+    params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
+    ```
+
+## <a name="send-a-request-and-get-a-response"></a>Odešle žádost a získejte odpověď
+
+1. Použijte knihovnu žádosti pro volání API Bingu pro vizuální vyhledávání pomocí váš klíč předplatného a slovníku objekty vytvořené v předchozím kroku.
+
+    ```python
+    response = requests.get(search_url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = response.json()
+    ```
+
+2. `search_results` obsahuje odpověď z rozhraní API jako objekt JSON. Získat přístup k popisu článků obsažených v odpovědi.
+    
+    ```python
+    descriptions = [article["description"] for article in search_results["value"]]
+    ```
+
+## <a name="displaying-the-results"></a>Zobrazení výsledků
 
 Tyto popisy se potom dají vykreslit jako tabulka s vyhledávaným klíčovým slovem zvýrazněným **tučným písmem**.
-
 
 ```python
 from IPython.display import HTML
@@ -85,10 +84,4 @@ HTML("<table>"+rows+"</table>")
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Stránkování zpráv](paging-news.md)
-> [Zvýraznění textu pomocí dekoračních značek](hit-highlighting.md)
-
-## <a name="see-also"></a>Další informace najdete v tématech 
-
- [Vyhledávání zpráv na internetu](search-the-web.md)  
- [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
+[Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

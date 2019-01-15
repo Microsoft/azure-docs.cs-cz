@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Spuštění úloh moderování pomocí technologie .NET – Content Moderator'
+title: 'Rychlý start: Spuštění úloh moderování pomocí rozhraní .NET – Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Jak zahájit úlohy moderování pomocí sady Azure Content Moderator SDK pro technologii .NET
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6045d6daf2abace6e2b38bd6fd6e22516e3a60a0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: f55906aa9de6faa5979ecedbc3ef288f164fd6c8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227420"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261941"
 ---
-# <a name="quickstart-start-moderation-jobs-using-net"></a>Rychlý start: Spuštění úloh moderování pomocí technologie .NET
+# <a name="quickstart-start-moderation-jobs-using-net"></a>Rychlý start: Spuštění úloh moderování pomocí .NET
 
 Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k následujícím účelům:
  
@@ -30,8 +30,7 @@ Tento článek předpokládá, že už máte zkušenosti se sadou Visual Studio 
 
 ## <a name="sign-up-for-content-moderator"></a>Registrace do Content Moderatoru
 
-Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného.
-Informace o tom, jak klíč získat, najdete v [Rychlém startu](quick-start.md).
+Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného. Podle pokynů v tématu [Vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru Content Moderatoru a získejte svůj klíč.
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrace účtu nástroje pro kontrolu, pokud jste se nezaregistrovali v předchozím kroku
 
@@ -319,6 +318,6 @@ Zobrazí se odpověď, která vypadá přibližně takto:
     }
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

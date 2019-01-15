@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8dbf7b6f6741998972070234d90e87baca1154a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 19abd905bbc5e8ab724f7a2f25cb6da90db82841
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042457"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262638"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v odolná služba Functions v Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "54042457"
 
 ## <a name="starting-instances"></a>Spouští se instance
 
-[StartNewAsync] (https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) nebo `startNew` na `DurableOrchestrationClient` (JavaScript) spouští novou instanci třídy funkce orchestrátoru. Instance této třídy lze získat pomocí `orchestrationClient` vazby. Interně tato to metoda zařadí zprávu do fronty, ovládací prvek, který potom aktivuje spuštění funkce se zadaným názvem, který používá `orchestrationTrigger` aktivovat vazby.
+[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) nebo `startNew` na `DurableOrchestrationClient` (JavaScript) spouští novou instanci třídy funkce orchestrátoru. Instance této třídy lze získat pomocí `orchestrationClient` vazby. Interně tato to metoda zařadí zprávu do fronty, ovládací prvek, který potom aktivuje spuštění funkce se zadaným názvem, který používá `orchestrationTrigger` aktivovat vazby.
 
 Tato asynchronní operace dokončí, když se úspěšně naplánovala procesu Orchestrace. Během 30 sekund se měl spustit proces Orchestrace. Pokud to trvá déle, `TimeoutException` je vyvolána výjimka.
 
@@ -109,7 +109,7 @@ Metoda vrátí objekt JSON s následujícími vlastnostmi:
 
 * **Název**: Název funkce orchestrátoru.
 * **instanceId**: ID instance orchestraci (by měl být stejný jako `instanceId` vstupu).
-* **Čas vytvoření**: Čas, ve kterém funkce nástroje orchestrator spuštěn.
+* **CreatedTime**: Čas, ve kterém funkce nástroje orchestrator spuštěn.
 * **LastUpdatedTime**: Čas, kdy orchestraci poslední kontrolní bod.
 * **Vstup**: Vstup funkce jako hodnotu JSON. Toto pole nebudou naplněné, pokud `showInput` má hodnotu false.
 * **CustomStatus**: Stav vlastní Orchestrace ve formátu JSON.

@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 786fc427e4cb631c4aedd0f795daebebd9fb15bc
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3554151490215f128efc6725b7aaa0628d503366
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077432"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260110"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z Githubu do služby Azure App Service pomocí Jenkinse průběžnou integraci a nasazování
 
@@ -64,7 +64,7 @@ K dokončení tohoto kurzu, budete potřebovat tyto položky:
    - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
    - [Zdroj větve na Githubu](https://plugins.jenkins.io/github-branch-source)
    - Jenkins [Injector prostředí modulu plug-in](https://plugins.jenkins.io/envinject)
-   - [Přihlašovací údaje Azure](https://plugins.jenkins.io/azure-credentials)
+   - [Azure Credentials](https://plugins.jenkins.io/azure-credentials)
 
    Pokud se tyto moduly plug-in nezobrazují, ujistěte se, že jste ještě není nainstalované kontrolou **nainstalováno** kartu.
 
@@ -164,10 +164,10 @@ Zde je výstup generovaný **`create-for-rbac`** příkaz:
 
    | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------| 
-   | **ID předplatného** | <*yourAzureSubscription ID*> | Hodnota identifikátoru GUID pro vaše předplatné Azure <p>**Tip**: Pokud si nejste jisti ID vašeho předplatného Azure, spusťte tento příkaz rozhraní příkazového řádku Azure z příkazového řádku nebo ve službě Cloud Shell a potom použijte `id` hodnota identifikátoru GUID: <p>`az account list` | 
-   | **ID klienta** | <*yourAzureServicePrincipal ID*> | `appId` GUID hodnota dříve generovány instančního objektu služby Azure | 
+   | **ID předplatného** | <*yourAzureSubscription-ID*> | Hodnota identifikátoru GUID pro vaše předplatné Azure <p>**Tip**: Pokud si nejste jisti ID vašeho předplatného Azure, spusťte tento příkaz rozhraní příkazového řádku Azure z příkazového řádku nebo ve službě Cloud Shell a potom použijte `id` hodnota identifikátoru GUID: <p>`az account list` | 
+   | **ID klienta** | <*yourAzureServicePrincipal-ID*> | `appId` Hodnota identifikátoru GUID dříve generovány instančního objektu služby Azure | 
    | **Tajný klíč klienta** | <*yourSecurePassword*> | `password` Hodnotu "tajný klíč" můžete zadat nebo instančního objektu služby Azure | 
-   | **ID tenanta** | <*yourAzureActiveDirectoryTenant ID*> | `tenant` Hodnota identifikátoru GUID pro vašeho tenanta Azure Active Directory | 
+   | **ID tenanta** | <*yourAzureActiveDirectoryTenant-ID*> | `tenant` Hodnota identifikátoru GUID pro vašeho tenanta Azure Active Directory | 
    | **ID** | <*yourAzureServicePrincipalName*> | `displayName` Hodnotu instančního objektu služby Azure | 
    |||| 
 

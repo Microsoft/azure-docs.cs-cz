@@ -1,6 +1,6 @@
 ---
 title: Scénář rozpočtu správy nákladů a fakturací Azure | Dokumentace Microsoftu
-description: Další informace o použití Azure automatation vypnutí virtuálních počítačů založených na specifické prahové hodnoty.
+description: Další informace o použití služby Azure automation pro vypnutí virtuálních počítačů založených na specifické prahové hodnoty.
 services: billing
 documentationcenter: ''
 author: Erikre
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0c67b100b0d44b539a37a8ea54954d58bba38cb5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094809"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267194"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
 
@@ -125,7 +125,7 @@ Následující kroky jsou potřeba k vytvoření aplikace logiky, která bude pr
 
 Jakmile Azure nasadí vaši aplikaci logiky **návrhář pro Logic Apps** otevře a zobrazí okno s úvodním videa a běžně používané aktivační události. 
 
-### <a name="add-a-trigger"></a>Přidání triggeru
+### <a name="add-a-trigger"></a>Přidat trigger
 
 Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu. Akce jsou všechny kroky, ke kterým dochází po aktivaci triggeru. 
 

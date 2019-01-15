@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: f4b5fccefb08597a13fcc91eda11bbf3eb122914
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 994f321a0bfcb6b8e9b7abc6f4b1f61abed618e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394841"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262009"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Projděte si podnikové registrace fakturace pomocí rozhraní REST API
 
 Rozhraní API pro generování sestav pomoc Azure prohlížet a spravovat náklady na Azure.
 
-V tomto článku zjistíte, jak získat fakturační údaje související s fakturační účty, oddělení nebo enterprtise smlouvy (EA) registračních účtů pomocí rozhraní REST API služby Azure. 
+V tomto článku zjistíte, jak získat fakturační údaje související s fakturační účty, oddělení nebo podnikových účtů registrace smlouvy (EA) s využitím rozhraní Azure REST API. 
 
 ## <a name="individual-account-billing"></a>Fakturace individuálního účtu
 

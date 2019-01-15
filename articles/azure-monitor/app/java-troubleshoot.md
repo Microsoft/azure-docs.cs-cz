@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1b2e1300c200619f5d1177e9761ad948c62c1239
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4e9e9b76469554f5519626eed37a5b64586f5eb4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013804"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265392"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde jsou některé tipy.

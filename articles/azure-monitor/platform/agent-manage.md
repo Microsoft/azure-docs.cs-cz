@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 0680140d9f4f4e77b5029c30c37f4c531652c6f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119114"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262485"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta Log Analytics pro Windows a Linux
 
@@ -175,7 +175,7 @@ Pomocí jednoho z následujících postupů odinstalujte agenta Windows nebo Lin
 Stažený soubor pro agenta je samostatný instalační balíček vytvořen s IExpress. Instalační program pro agenta a jeho podpůrné soubory jsou obsažené v balíčku a potřeba extrahovat, aby bylo možné správně, odinstalujte ji pomocí příkazového řádku je znázorněno v následujícím příkladu.
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
-2. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými oprávněními spusťte `extract MMASetup-<platform>.exe` a zobrazí výzvu pro cestu k extrakci souborů. Případně lze zadat cestu předáním argumentů `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Další informace o příkazového řádku swtiches IExpress podporuje, najdete v článku [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a pak aktualizujte příklad tak, aby odpovídala vašim potřebám.
+2. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými oprávněními spusťte `extract MMASetup-<platform>.exe` a zobrazí výzvu pro cestu k extrakci souborů. Případně lze zadat cestu předáním argumentů `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Další informace o podporovaných IExpress přepínače příkazového řádku najdete v tématu [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a pak aktualizujte příklad tak, aby odpovídala vašim potřebám.
 3. Na příkazovém řádku zadejte `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
 
 ### <a name="linux-agent"></a>Agenta pro Linux

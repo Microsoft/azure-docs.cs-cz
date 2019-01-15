@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – Odesílání a přijímání zpráv Azure Service Bus pomocí webu Azure Portal | Microsoft Docs
-description: V tomto rychlém startu se naučíte odesílat a přijímat zprávy Service Bus pomocí webu Azure Portal.
+title: Rychlý start – použití webu Azure portal můžete vytvořit frontu služby Service Bus | Dokumentace Microsoftu
+description: V tomto rychlém startu se dozvíte, jak můžete vytvořit frontu služby Service Bus pomocí webu Azure portal. Ukázková klientská aplikace pak použijete k odesílání a příjem zpráv z fronty.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,17 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: bfe6c48b2e83c1ebbbad446f79cebd1f513db57e
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 69c9a6d2d059ffbac5fe3e0ddb103eaec51123c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002667"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264016"
 ---
-# <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Rychlý start: Odesílání a příjem zpráv pomocí webu Azure portal a .NET
-
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí webu Azure portal
 Microsoft Azure Service Bus je podniková integrace zprostředkovatele zpráv, která zajišťuje zabezpečené odesílání a přijímání zpráv a absolutní spolehlivost. Typický scénář služby Service Bus obvykle zahrnuje vzájemné oddělení dvou nebo více aplikací, služeb nebo procesů a převedení stavu nebo změny dat. Mezi takové scénáře může patřit plánování několika dávkových úloh v jiné aplikaci nebo službě či spuštění vyřizování objednávek. Maloobchod může například odeslat data o prodeji administrativní podpoře (back office) nebo oblastnímu distribučním centru, aby došlo k doplnění a aktualizaci zásob. V tomto scénáři klientská aplikace odesílá zprávy do fronty služby Service Bus a přijímá je z ní.  
 
 ![fronta](./media/service-bus-quickstart-portal/quick-start-queue.png)

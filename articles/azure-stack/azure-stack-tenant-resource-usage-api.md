@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ab5dad550e590cd70f54ad5c8d4727d0f6370190
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 5a9859fda2c6cac6acf08c8dcca3a0ce205d2e15
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379708"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302727"
 ---
 # <a name="tenant-resource-usage-api"></a>Rozhraní API využití prostředků tenanta
 
@@ -31,7 +31,7 @@ Můžete použít rutinu prostředí Windows PowerShell **Get-UsageAggregates** 
 ### <a name="request"></a>Žádost
 Požadavek získá podrobnosti o využití pro požadované předplatné a pro požadovaný časový rámec. Není k dispozici není datová část požadavku.
 
-| **– Metoda** | **Identifikátor URI žádosti** |
+| **Metoda** | **Identifikátor URI žádosti** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/usageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&api-version= 2015-06-01-preview & continuationToken = {hodnota tokenu} |
 
@@ -76,13 +76,13 @@ Získejte /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?repor
 ### <a name="response-details"></a>Podrobnosti o odpovědi
 | **Argument** | **Popis** |
 | --- | --- |
-| *ID* |Jedinečné ID agregace využití |
+| *id* |Jedinečné ID agregace využití |
 | *Jméno* |Název agregace využití |
 | *type* |Definice prostředků |
-| *ID předplatného* |Identifikátor předplatného Azure uživatele |
+| *subscriptionId* |Identifikátor předplatného Azure uživatele |
 | *usageStartTime* |Čas UTC počáteční čas využití kontejneru, do které patří tato agregace využití |
 | *usageEndTime* |Čas ukončení UTC využití kontejneru, do které patří tato agregace využití |
-| *instanceData* |Páry klíč hodnota Podrobnosti instance (v novém formátu):<br>  *resourceUri*: plně kvalifikované ID prostředku, včetně skupin prostředků a název instance <br>  *umístění*: oblast, ve kterém byla tato služba spuštěna <br>  *značky*: značky prostředku, které uživatel zadá <br>  *additionalInfo*: více podrobností o prostředku, který spotřebovával, například typ obrázku nebo verze operačního systému |
+| *instanceData* |Páry klíč hodnota Podrobnosti instance (v novém formátu):<br>  *resourceUri*: Plně kvalifikované ID prostředku, včetně skupin prostředků a název instance <br>  *Umístění*: Oblast, ve kterém byla tato služba spuštěna <br>  *Značky*: Značky prostředků, které uživatel zadá <br>  *additionalInfo*: Zadejte další podrobnosti o prostředku, který spotřebovával, například verzi operačního systému nebo bitové kopie |
 | *Množství* |Množství spotřeby prostředků, ke které došlo v tohoto časového rámce |
 | *MeterId* |Jedinečné ID prostředku, který spotřebovával (také nazývané *ResourceID*) |
 

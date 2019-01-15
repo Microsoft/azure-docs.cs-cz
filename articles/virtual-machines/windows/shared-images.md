@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/11/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 1e51d55fcc20230dff20ca18d58a13e6ed32905b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ecac7216582fa07e9c25492ddeb25e9f155da563
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192174"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305144"
 ---
 # <a name="preview-create-a-shared-image-gallery-with-azure-powershell"></a>Verze Preview: Vytvořením Galerie sdílené bitové kopie pomocí Azure Powershellu 
 
@@ -49,7 +49,7 @@ K dokončení příkladu v tomto článku, musíte mít existující spravované
  
 ## <a name="create-vms-from-an-image"></a>Vytvoření virtuálních počítačů z image
 
-Complte po verzi image můžete vytvořit jeden nebo více nových virtuálních počítačů. Pomocí parametru zjednodušené nastavit pro [New-AzureRMVM]() rutiny, stačí zadat ID bitové kopie verze image. 
+Po dokončení se verze image můžete vytvořit jeden nebo více nových virtuálních počítačů. Pomocí parametru zjednodušené nastavit pro [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm) rutiny, stačí zadat ID bitové kopie verze image. 
 
 Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage*v *myResourceGroup* v *USA – východ* datového centra.
 

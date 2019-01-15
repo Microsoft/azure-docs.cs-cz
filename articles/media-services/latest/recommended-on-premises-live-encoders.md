@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 12/14/2018
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d1110669bd0ca8c0ba0caf34ef41861c500bdd33
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4d25e4cd94fec35f31594544b619aa054a35d58d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790024"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302336"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené datové proudy kodéry
 
@@ -46,16 +46,16 @@ Služba Media Services se doporučuje používat jednu z následující kodéry,
 - Telestream Wirecast S
 - Řez Teradek 756
 - TriCaster 8000
-- Tricaster Mini HD, High Density-4
+- Tricaster Mini HD-4
 - VMIX
 - xStream
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Kodéry pro kódování, jejichž výstupem fragmentovaný soubor MP4
 
-Služba Media Services se doporučuje používat jednu z následující kodéry, které mají s více přenosovými rychlostmi technologie Smooth Streaming (fragmentovaný soubor MP4) jako výstup. Jsou podporované schémata URL `rtmp://` nebo `rtmps://`.
+Služba Media Services se doporučuje používat jednu z následující kodéry, které mají s více přenosovými rychlostmi technologie Smooth Streaming (fragmentovaný soubor MP4) jako výstup. Jsou podporované schémata URL `http://` nebo `https://`.
 
 - Ateme TITAN za provozu
-- Cisco digitální Media Encoderu 2200
+- Cisco Digital Media Encoder 2200
 - Elemental Live
 - Envivio 4Caster C4 obecné III
 - Imagine Communications Selenio MCP3

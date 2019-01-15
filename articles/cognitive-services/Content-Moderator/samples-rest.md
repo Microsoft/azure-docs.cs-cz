@@ -1,23 +1,23 @@
 ---
 title: Ukázky kódu – Content Moderator, C#
 titlesuffix: Azure Cognitive Services
-description: Používejte Content Moderator ve svých aplikacích
+description: Content Moderator použijte ve svých aplikacích pomocí volání rozhraní REST API.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: sample
-ms.date: 01/10/2018
+ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: cf259842091e0b3ee6127f9139cfc325687e8676
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 92e3f087d5ec4d1233243cee381b64c6fedb3be0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343125"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264236"
 ---
-# <a name="rest-api-samples-in-c"></a>Ukázky REST API v C#
+# <a name="content-moderator-rest-samples-in-c"></a>Content Moderator REST vzorků vC#
 
 Následující seznam obsahuje odkazy na ukázky kódu, které jsou vytvořené pomocí rozhraní API Azure Content Moderatoru.
 
