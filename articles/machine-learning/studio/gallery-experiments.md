@@ -1,26 +1,7 @@
 ---
-title: Experimenty Azure galerii AI – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Zjišťování a sdílení experimenty v galerii Azure AI. Experiment je plátna v nástroji Machine Learning Studio, který vám pomůže vytvořit tak model prediktivní analýzy
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/26/2017
-ms.openlocfilehash: 12fb45b00848e5e34760ccb0691998c1f72237b8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269280"
+Název: Galerie Azure AI experimenty titleSuffix: Azure Machine Learning Studio Popis: Zjišťování a sdílení experimenty v galerii Azure AI. Experiment je plátna v nástroji Machine Learning Studio, můžete použít k vytvoření služby modelu prediktivní analýzy: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/26/2017
 ---
 # <a name="discover-azure-machine-learning-studio-experiments-in-azure-ai-gallery"></a>Objevte Azure Machine Learning Studio experimenty v galerii Azure AI
 

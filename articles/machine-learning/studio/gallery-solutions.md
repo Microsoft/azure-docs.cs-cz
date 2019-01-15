@@ -1,26 +1,8 @@
 ---
-title: Řešení galerii Azure AI – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Vyhledání řešení v galerii Azure AI. Řešení poskytuje úvodního kurzu JumpStart týkajícího k rychlému vytvoření řešení Cortana Intelligence z předkonfigurovaných řešení, referenčních architektur a vzorů návrhu.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: 8bfcbac45dd50ebed5491b0411d5f1faa5b5f078
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271330"
+Název: Azure AI Galerie řešení titleSuffix: Azure Machine Learning Studio Popis: Vyhledání řešení v galerii Azure AI. Řešení poskytuje úvodního kurzu JumpStart týkajícího k rychlému vytvoření řešení Cortana Intelligence z předkonfigurovaných řešení, referenčních architektur a vzorů návrhu.
+Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/31/2017
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Vyhledání řešení v galerii Azure AI
 

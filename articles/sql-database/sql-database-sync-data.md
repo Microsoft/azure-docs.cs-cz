@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: b5d931225edce92590b9c2b7f28ad39630362e6d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 2afdd3f78a99d9aae5e84bc2fdf1b21cbdc150d2
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213820"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306382"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -79,6 +79,14 @@ Skupina synchronizace má následující vlastnosti:
 -   **Řešení konfliktů:** Poskytuje dvě možnosti pro řešení konfliktů synchronizace dat *centra wins* nebo *člen wins*.
     -   Pokud vyberete *centra wins*, změny v centru vždy přepsat změny provedené v členu.
     -   Pokud vyberete *člen wins*, změny v změn přepsání člena v centru. Pokud existuje více než jednoho člena, konečná hodnota závisí na člen, který synchronizuje poprvé.
+
+## <a name="compare-data-sync-with-transactional-replication"></a>Porovnání synchronizace dat s využitím transakční replikace
+
+| | Synchronizace dat | Transakční replikace |
+|---|---|---|
+| Výhody | – Podpora aktivní aktivní<br/>Obousměrné mezi místními a Azure SQL Database | -Nižší latence<br/>-Transakční konzistence<br/>-Znovu použít existující topologie po migraci |
+| Nevýhody | -5 minut nebo další latence<br/>-Žádné transakční konzistence<br/>-Vyšší dopad na výkon | -Nelze publikovat z jedné databáze Azure SQL Database<br/>-Vysoké náklady na údržbu |
+| | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>Začínáme se synchronizací dat SQL
 

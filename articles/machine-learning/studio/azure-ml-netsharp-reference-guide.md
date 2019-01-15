@@ -1,26 +1,8 @@
 ---
-title: 'NET # Neuronové sítě – Azure Machine Learning Studio | Dokumentace Microsoftu'
-description: 'Syntaxe Net # neuronových sítí specifikačnímu jazyku, spolu s příklady toho, jak vytvořit model vlastní neuronové sítě pomocí Net # s Azure Machine Learning Studio.'
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: reference
-ms.date: 03/01/2018
-ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631121"
+Název: Neuronových sítí NET # titleSuffix: Azure Machine Learning Studio Popis: Syntaxe Net # neuronových sítí specifikačnímu jazyku, spolu s příklady toho, jak vytvořit model vlastní neuronové sítě pomocí Net # s Azure Machine Learning Studio.
+služby: machine learningu ms.service: ms.component strojového učení: studio ms.topic: referenční dokumentace
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
@@ -457,7 +439,7 @@ output Digit [10] from Hid3 all;
 + Net obsahuje třetí skryté vrstvě `Hid3`, což je plně připojení k druhé skryté vrstvě `Conv2`.
 + Vrstva výstup `Digit`, je připojený jenom k třetí skryté vrstvě `Hid3`. Klíčové slovo `all` označuje, že výstupní vrstvě plně připojení k `Hid3`.
 + Arita konvoluce je třetí: délka řazené kolekce členů `InputShape`, `KernelShape`, `Stride, and `sdílení ". 
-+ Počet váhy za jádra je `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. nebo `26 * 50 = 1300`.
++ Počet váhy za jádra je `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Or `26 * 50 = 1300`.
 + Uzly v každé skryté vrstvě můžete vypočítat následujícím způsobem:
 
     `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426250"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306484"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence řešení šablony Playbook pro prognózování poptávky po energii
 ## <a name="executive-summary"></a>Shrnutí
@@ -107,7 +107,7 @@ Následující tabulka porovnává STLF a LTLF z hlediska vašich nejdůležitě
 
 | Atribut | Zatížení krátkodobou předpověď | Dlouhodobé předpověď zatížení |
 | --- | --- | --- |
-| Prognózy Horizon |Od 1 hodiny do 48 hodin |Od 1 do 6 měsíců |
+| Forecast Horizon |Od 1 hodiny do 48 hodin |Od 1 do 6 měsíců |
 | Členitost dat |Každou hodinu |Každou hodinu nebo každý den |
 | Typické případy použití |<ul><li>/ Poptávky vyrovnávání</li><li>Vyberte hodinu Prognózování</li><li>Poptávka reaguje</li></ul> |<ul><li>Dlouhodobé plánování</li><li>Plánování prostředků mřížky</li><li>Plánování prostředků</li></ul> |
 | Typické prediktory |<ul><li>Dne nebo týdne</li><li>hodiny dne</li><li>Hodinové teploty</li></ul> |<ul><li>Měsíc roku</li><li>Den v měsíci</li><li>Dlouhodobé teploty a klimatu</li></ul> |
@@ -172,7 +172,7 @@ V mnoha případech může být zákazník zájem obchodní odůvodnění pro da
 
 Na druhé straně jedna by měl mít dostatečné povědomí o obchodní hodnoty jazyka provoz poptávku po energii Prognózování (krátkodobého nebo dlouhodobého hlediska). Ve skutečnosti je důležité si uvědomit obchodní hodnotu každé prognózy operace. Například přesné Prognózování napájecí zátěž dobu následujících 24 hodin může zabránit nadbytečné produkce nebo může pomoct zabránit přetížení mřížky a to může být vyjadřuje z hlediska finanční úspora každý den.
 
-Základní vzorce pro výpočet finanční výhody vyžádání prognózy řešením může být: ![základního vzorce pro výpočet finanční výhody vyžádání prognózy řešení](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+Základní vzorce pro výpočet finanční výhody vyžádání prognózy řešením může být: ![Základní vzorce pro výpočet finanční výhody vyžádání prognózy řešení](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
 Protože Cortana Intelligence Suite poskytuje cenového modelu s průběžnými platbami, není nutné pro něj hradit fixní částku součásti na tento vzorec. Tento vzorec může vypočítat každý den, měsíční nebo roční.
 
@@ -269,14 +269,14 @@ Cortana Intelligence Suite může podporovat nejběžnějších formátů dat ja
 ### <a name="data-ingestion"></a>Přijímání dat
 Protože energie prognóza poptávky je neustále a často předpovědět, jsme musíte zajistit, že nezpracovaná data se přenášejí prostřednictvím procesu ingestování dat solid a spolehlivé. Zpracování příjmu musí zaručit, že nezpracovaná data jsou k dispozici pro proces Prognózování v požadované době. To znamená, že frekvence ingestování dat musí být větší než frekvence prognóz.
 
-Příklad: Pokud naše řešení Prognózování poptávky vygeneruje nový předpovědi v 8:00 hodin denně, potřebujeme zajistit, že všechna data, která byla shromážděna během posledních 24 hodin se ingestují plně do tohoto bodu a musíme ještě obsahovat poslední hodiny  data.
+Příklad: Pokud naše řešení Prognózování poptávky vygeneruje nový předpovědi v 8:00 hodin denně jsme muset ujistit, že všechna data, která byla shromážděna během posledních 24 hodin, byl plně přijatých až do tohoto bodu a musí obsahovat i poslední hodina data.
 
 Aby bylo možné dosáhnout, Cortana Intelligence Suite nabízí různé způsoby, jak proces ingestování spolehlivé data. To dál probereme v **nasazení** část tohoto dokumentu.
 
 ### <a name="data-quality"></a>Kvalita dat
 Zdroj nezpracovaných dat, která je požadována pro provádění Prognózování poptávky spolehlivé a přesné, musí splňovat kritéria kvality některé základní data. Pokročilé statistické metody lze jako kompenzaci za některý problém kvality dat, ale stále potřebujeme zajistit, že jsme jsou při ingestování nových dat překročení prahové hodnoty některých základních dat kvality. Tady je několik důležitých informací týkající se kvality nezpracovaná data:
 
-* **Chybí hodnota** – to se vztahuje na situaci po konkrétní měření nebyl shromážděn. Základním požadavkem je, že chybí hodnota frekvence nesmí být větší než 10 % pro jakékoli dané časové období. V případě, že jedna hodnota je chybějící by měl být označeny pomocí předdefinované hodnoty (například: "9999.) a nikoli"0", který může být platná hodnota.
+* **Chybí hodnota** – to se vztahuje na situaci po konkrétní měření nebyl shromážděn. Základním požadavkem je, že chybí hodnota frekvence nesmí být větší než 10 % pro jakékoli dané časové období. V případě, že jedna hodnota je chybějící by měl být označeny pomocí předdefinované hodnoty (například: "9999"), nikoli "0", který může být platná hodnota.
 * **Přesnost měření** – skutečnou hodnotu spotřeby nebo teploty by měly být zaznamenány přesně. Nesprávné rozměry způsobí nepřesné prognózy. Chyba měření obvykle by mělo být menší než 1 % vzhledem k hodnotu true.
 * **Čas měření** – je vyžadován, časové razítko data shromážděna nesmí lišit o více než 10 sekund vzhledem k true čas skutečné měření.
 * **Synchronizace** – když jsou používány více zdrojů dat (*třeba*, spotřebě a teploty) jsme musíte zajistit, že neexistují žádné synchronizaci času problémy mezi nimi. To znamená, že časový rozdíl mezi shromážděné časové razítko z jakékoli dva nezávislé datové zdroje nesmí být delší než více než 10 sekund.
@@ -287,7 +287,7 @@ Jakmile se ingestují nezpracovaná data (naleznete v tématu **Ingestování**)
 
 V této části uvádíme některé běžné funkce data, které jsou součástí energie prognózy poptávky modely.
 
-**Čas řízené funkce:** tyto funkce jsou odvozeny z data datum a časové razítko. Ty se extrahují a převést do kategorií funkcí, jako jsou:
+**Čas řízené funkce:** Tyto funkce jsou odvozeny z data datum a časové razítko. Ty se extrahují a převést do kategorií funkcí, jako jsou:
 
 * Čas denní – to je hodina dne, který má hodnoty od 0 do 23
 * Den v týdnu – to představuje den v týdnu a má hodnoty od 1 (neděle) do 7 (sobota)
@@ -297,16 +297,16 @@ V této části uvádíme některé běžné funkce data, které jsou součást�
 * Sváteční – Toto je binární hodnotu funkce, která přebírá hodnotu 0 pro pravidelné den nebo 1 pro svátek
 * Podmínky Fourierova – Fourierova podmínky jsou váhy, které jsou odvozeny z časové razítko a slouží k zaznamenávání sezónnosti (cykly) v datech. Protože jsme v našich datech pravděpodobně více sezóny potřebujeme Fourierova podmínek. Roční, týdenní a denní období/cykly následkem toho 3 Fourierova podmínek může mít třeba, hodnoty poptávky.
 
-**Funkce nezávislého měřicího:** nezávislé funkce zahrnují všechny datové prvky, které jsme chtěli použít jako prediktory v náš model. Tady jsme vyloučit závislé funkce, která by potřebujeme k předpovědi.
+**Nezávislé měření funkce:** Nezávislé funkce zahrnují všechny datové prvky, které jsme chtěli použít jako prediktory v náš model. Tady jsme vyloučit závislé funkce, která by potřebujeme k předpovědi.
 
 * Funkce Lag – jedná se o dobu posunuta hodnoty skutečné poptávce. Funkce lag 1 například bude obsahovat hodnota požadavku do předchozí hodiny (za předpokladu, že data po hodinách) vzhledem k aktuální časové razítko. Podobně, jsme můžete přidat prodleva 2, 3, prodleva *atd*. Vyhodnocení výsledků modelu stanovuje během fáze modelování skutečné kombinací prodleva funkce, které se používají.
 * Dlouhodobé populární – tato funkce představuje lineární nárůstu poptávky mezi roky.
 
-**Závislé funkce:** závislé funkce je datový sloupec, který rádi bychom náš model k predikci. S [pod dohledem strojového učení](https://en.wikipedia.org/wiki/Supervised_learning), musíme nejprve trénování modelu s použitím závislé součásti (která se také označuje jako popisky). Díky tomu model další vzory v datech přidružené závislé funkce. V odhadovat poptávku po energii obvykle chcete předpovídat skutečné poptávce a proto jsme by použít jako závislé funkce.
+**Závislé funkce:** Závislé funkce je datový sloupec, který rádi bychom náš model k predikci. S [pod dohledem strojového učení](https://en.wikipedia.org/wiki/Supervised_learning), musíme nejprve trénování modelu s použitím závislé součásti (která se také označuje jako popisky). Díky tomu model další vzory v datech přidružené závislé funkce. V odhadovat poptávku po energii obvykle chcete předpovídat skutečné poptávce a proto jsme by použít jako závislé funkce.
 
-**Manipulace s chybějící hodnoty:** během fáze přípravy dat, musíme určit nejlepší strategii pro zpracování chybějící hodnoty. To se většinou provádí pomocí různých statistických [metody imputace dat](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). V případě energie Prognózování poptávky, jsme obvykle dává chybějící hodnoty pomocí klouzavý průměr z předchozí dostupných datových bodů.
+**Manipulace s chybějící hodnoty:** Během fáze přípravy dat můžeme nutné určit nejlepší strategii pro zpracování chybějící hodnoty. To se většinou provádí pomocí různých statistických [metody imputace dat](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). V případě energie Prognózování poptávky, jsme obvykle dává chybějící hodnoty pomocí klouzavý průměr z předchozí dostupných datových bodů.
 
-**Normalizace data:** normalizaci dat je jiný typ transformace, který se používá k zajištění všech číselná data, jako je prognóza poptávky podobné škálování. To obvykle pomáhá zlepšit přesnost modelu a přesnosti. By obvykle děláme to vydělí rozsah dat skutečnou hodnotu.
+**Normalizace dat:** Normalizace dat je jiný typ transformace, který se používá k zajištění všech číselná data, jako je prognóza poptávky podobné škálování. To obvykle pomáhá zlepšit přesnost modelu a přesnosti. By obvykle děláme to vydělí rozsah dat skutečnou hodnotu.
 To se snížit na původní hodnotu do má menší rozsah, obvykle mezi -1 a 1.
 
 ## <a name="modeling"></a>Modelování
@@ -320,21 +320,21 @@ V případě uděláme Prognózování poptávky pomocí historických dat, kter
 V posledních letech pokročilých algoritmů byly vyvinuty tak, aby vyhovovaly prognózy časových řad a zvyšte přesnost předpovědi. Stručně několik z nich tady probereme.
 
 > [!NOTE]
-> Tento oddíl není určena pro použití jako strojové učení a Prognózování přehled, ale spíše jako krátký dotazník modelování techniky, které se obvykle používají pro prognózování poptávky. Další informace a vzdělávací materiály o prognózy časových řad, důrazně doporučujeme online knihy [Prognózování: zásady a přístup k](https://www.otexts.org/book/fpp).
+> Tento oddíl není určena pro použití jako strojové učení a Prognózování přehled, ale spíše jako krátký dotazník modelování techniky, které se obvykle používají pro prognózování poptávky. Další informace a vzdělávací materiály o prognózy časových řad, důrazně doporučujeme online knihy [Prognózování: zásady a přístup k](https://www.otexts.org/).
 > 
 > 
 
-#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (klouzavý průměr)**](https://www.otexts.org/fpp/6/2)
+#### <a name="ma-moving-average"></a>**MA (klouzavý průměr)**
 Klouzavý průměr je jedním z první analytické techniky, které již byly použity pro prognózy časových řad a je to stále jedním z nejčastěji používaných technik k dnešnímu dni. Je také základem pro pokročilejší Prognózování techniky. S klouzavý průměr jsme se Prognózování další datový bod zprůměrováním přes K nejnovější body, ve kterém K označuje pořadí klouzavý průměr.
 
 Klouzavý průměr postup má za následek vyhlazování prognózy a nemusí proto zpracovat i velké volatility v datech.
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (exponenciální vyhlazování)**](https://www.otexts.org/fpp/7/5)
-Exponenciální vyhlazování (ETS) je řada různých metod, které používají vážený průměr poslední datových bodů, aby bylo možné předpovědět další datový bod. Cílem je přiřaďte vyšší váhu na novější hodnoty a postupně klesat tento váha pro starší měřené hodnoty. Existuje několik různých metod s Tato řada, některé z nich patří například zpracování sezónnost v datech [sezónní metoda Holt-Winters](https://www.otexts.org/fpp/7/5).
+#### <a name="ets-exponential-smoothing"></a>**ETS (exponenciální vyhlazování)**
+Exponenciální vyhlazování (ETS) je řada různých metod, které používají vážený průměr poslední datových bodů, aby bylo možné předpovědět další datový bod. Cílem je přiřaďte vyšší váhu na novější hodnoty a postupně klesat tento váha pro starší měřené hodnoty. Existuje několik různých metod s Tato řada, některé z nich data, jako jsou sezónní metoda Holt-Winters zahrňte zpracování sezónnosti.
 
 Některé z těchto metod také zvážit sezónnosti data.
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (regrese automaticky integrovaný pohyblivý průměr)**](https://www.otexts.org/fpp/8)
+#### <a name="arima-auto-regression-integrated-moving-average"></a>**ARIMA (regrese automaticky integrovaný pohyblivý průměr)**
 Automatické regrese integrované přesun průměr (ARIMA) je jiné řady metod, které se běžně používá pro předpovědi časové řady. Prakticky kombinuje metody Automatické regrese s klouzavý průměr. Auto-regression metody používají regresních modelů provedením předchozích časových řad hodnoty k výpočtu dalšího bodu datum. Metody ARIMA platí také rozdílové metody, které zahrnují výpočet rozdílu mezi datovými body a jejich namísto původní naměřenou hodnotu použití. Nakonec ARIMA také využívá technik klouzavý průměr, které jsou popsané výše. Kombinace všechny tyto metody v různých způsobů, jak je, co vytvoří rodinu metody ARIMA.
 
 ETS a ARIMA se často používají ještě dnes k Prognózování poptávky po energii a mnoho dalších problémů prognóz. V mnoha případech jsou zkombinované dohromady a poskytovat velmi přesné výsledky.

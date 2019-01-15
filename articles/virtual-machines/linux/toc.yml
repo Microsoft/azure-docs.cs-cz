@@ -392,12 +392,7 @@ items:
       - name: MS SQL v Linuxu
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: Vysokovýkonné výpočetní prostředí (HPC)
-      href: hpcpack-cluster-options.md
-      items:
-      - name: Spuštění NAMD
-        href: classic/hpcpack-cluster-namd.md
-      - name: Instalace ovladačů NVIDIA GPU
-        href: n-series-driver-setup.md
+      href: https://docs.microsoft.com/powershell/high-performance-computing/overview
     - name: IBM Db2 pureScale
       items:
       - name: Architektura
@@ -550,9 +545,9 @@ items:
     href: faq.md
 - name: Řešení potíží
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 2f7608114083aaabe9cb611aaab348435cd72698
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: c6668017755f748a0c9b1ac1b9e816a222abf9d1
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247638"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306569"

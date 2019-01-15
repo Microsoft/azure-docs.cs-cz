@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/09/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.reviewer: unknown
-ms.openlocfilehash: 53c739c17007b99d90cd146e6bf01ea4a120cabd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.reviewer: fiseraci
+ms.openlocfilehash: 4ffbf552b2c35039ceadfdf6940873a22cb194aa
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245680"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306535"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Přehled identity pro službu Azure Stack
 
 Azure Stack vyžaduje Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS), podporovaný službou Active Directory jako zprostředkovatele identity. Výběr zprostředkovatele je jednorázový rozhodnutí, která učiníte při prvním nasazení Azure Stack. Koncepty a podrobnosti o ověřování v tomto článku můžete vybrat mezi zprostředkovatele identity.
 
-Režim, ve kterém nasadíte Azure Stack mohou být určena podle vašeho výběru Azure AD nebo AD FS:
+Azure AD nebo AD FS podle vašeho výběru se určuje podle režimu, ve kterém nasadíte Azure Stack:
 
 - Při nasazení v režimu připojení, můžete použít buď Azure AD nebo AD FS.
 - Při nasazení v odpojeném režimu, bez připojení k Internetu, je podporována pouze služba AD FS.

@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 945c5df9aa76cef6d55b759e3cef7c00bf54e1c4
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: fe516d1d34496d190ae45e00893deb646fc08408
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078326"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306552"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -40,7 +40,7 @@ Tento článek není prozkoumejte všechny možnosti, které jsou k dispozici pr
 
 Vytvořte hlavní část žádosti formátována pomocí typ obsahu x-www-form-urlencoded sloužící k získání přístupového tokenu. POŠLE požadavek na koncový bod REST ověřování Azure a přihlaste se.
 
-### <a name="uri"></a>URI
+### <a name="uri"></a>Identifikátor URI
 
 ```bash  
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
@@ -65,10 +65,10 @@ grant_type=password
 
 Pro každou hodnotu:
 
- - **Parametr grant_type**  
+ - **grant_type**  
     Typ schématu ověřování budete používat. V tomto příkladu je hodnota `password`
 
- - **prostředek**  
+ - **resource**  
     Prostředek přistupuje k tokenu. Najít prostředek pomocí dotazu na koncový bod metadat pro správu služby Azure Stack. Podívejte se na **cílovým skupinám na místě** oddílu
 
  - **Koncový bod pro správu Azure Stack**  
