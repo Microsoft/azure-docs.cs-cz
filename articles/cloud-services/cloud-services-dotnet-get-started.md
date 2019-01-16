@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 59354b7f4a1a82d1fa2fd105bd743ecb73526434
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 966536b7129a91f4c6fd8dd7bf0270be660bdf81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716102"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332060"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -357,7 +357,7 @@ Po vytvoření řešení zkontrolujete kód, který je pro projekty cloudových 
 
 ### <a name="set-project-references"></a>Nastavení odkazů na projekty
 1. V projektu ContosoAdsWeb nastavte odkaz na projekt ContosoAdsCommon. Klikněte pravým tlačítkem na projekt ContosoAdsWeb a potom klikněte na **Odkazy** - **Přidat odkazy**. V dialogovém okně **Správce odkazů** vyberte v levém podokně **Řešení – projekty**, vyberte **ContosoAdsCommon** a potom klikněte na tlačítko **OK**.
-2. V projektu ContosoAdsWorker nastavte odkaz na projekt ContosAdsCommon.
+2. V projektu ContosoAdsWorker nastavte odkaz na projekt ContosoAdsCommon.
 
     ContosoAdsCommon bude obsahovat datový model a třídu kontextu Entity Framework, které použije front-end i back-end.
 3. V projektu ContosoAdsWorker nastavte odkaz na `System.Drawing`.
@@ -380,7 +380,7 @@ V této části budete konfigurovat službu Azure Storage a připojovací řet�
 3. Klikněte v projektu ContosoAdsCloudService pravým tlačítkem v části **Role** na ContosoAdsWeb a potom klikněte na **Vlastnosti**.
 
     ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. V okně vlastností **ContosAdsWeb [Role]** klikněte na kartu **Nastavení** a potom na **Přidat nastavení**.
+4. V **ContosoAdsWeb [Role]** okně Vlastnosti klikněte na tlačítko **nastavení** kartu a potom klikněte na tlačítko **přidat nastavení**.
 
     Možnost **Konfigurace služby** nechte nastavenou na **Všechny konfigurace**.
 5. Přidejte nastavení s názvem *StorageConnectionString*. Nastavte **Typ** na *ConnectionString* a možnost **Hodnota** nastavte na *UseDevelopmentStorage=true*.
