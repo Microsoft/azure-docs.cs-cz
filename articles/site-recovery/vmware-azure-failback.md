@@ -1,17 +1,18 @@
 ---
 title: Selhání obnovení z Azure při zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Naučte se vrátí zpátky v místní lokalitě po převzetí služeb při selhání do Azure během zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure.
-author: nsoneji
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
-ms.author: nisoneji
-ms.openlocfilehash: 1c5d5b97465c6747e5f766a1ce8272579d37993d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: 7773a2f43eb076075be484d92fde31094a2b584b
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850274"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320034"
 ---
 # <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>Navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů z Azure do místní lokality
 

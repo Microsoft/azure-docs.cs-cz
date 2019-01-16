@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021114"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331805"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -86,7 +86,7 @@ Stáhněte si balíček MSI Instalační program z můžete nainstalovat místn�
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Instalace a registrace v místním prostředí IR ze služby Stažení softwaru
 
 1. Přejděte [stránku pro stažení modulu runtime integrace Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Vyberte **Stáhnout**, vyberte odpovídající verzi (**32-bit** nebo **64-bit**) a vyberte **Další**.
+2. Vyberte **Stáhnout**, vyberte 64bitové verze (32bitová verze není podporována) a vyberte **Další**.
 3. Spusťte instalační soubor MSI přímo, nebo ho uložit na pevný disk a spusťte jej.
 4. Na **úvodní** stránky, vyberte jazyk a vyberte **Další**.
 5. Přijměte licenční podmínky pro Software společnosti Microsoft a vyberte **Další**.

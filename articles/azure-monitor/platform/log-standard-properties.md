@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: d2db9d426da58b3783b07210165a55cc6ec27658
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: abcf3100dc5252db9e3a5e7b446417333a9b37ca
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185949"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321887"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Standardní vlastnosti v záznamech Log Analytics
 Data v [Log Analytics](../log-query/log-query-overview.md) se ukládá jako sady záznamů, každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
@@ -84,6 +84,70 @@ AzureActivity
    | summarize LoggedOnAccounts = makeset(Account) by _ResourceId 
 ) on _ResourceId  
 ```
+
+## <a name="isbillable"></a>\_IsBillable
+ **\_IsBillable** vlastnost určuje, zda přijatých dat se dají fakturovat. Data s  **\_IsBillable** rovna _false_ se shromažďují zadarmo a není účtují ke svému účtu Azure.
+
+### <a name="examples"></a>Příklady
+Pokud chcete získat seznam počítačů odesílajících billed datové typy, použijte následující dotaz:
+
+> [!NOTE]
+> Použití dotazů s `union withsource = tt *` střídmě prohledávání dat typům dat je vždycky provést. 
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
+
+To je možné rozšířit na vrátí počet počítačů za hodinu, které odesílají účtuje datové typy:
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
+
+## <a name="billedsize"></a>\_BilledSize
+ **\_BilledSize** vlastnost určuje velikost v bajtech data, která se ke svému účtu Azure účtovat, pokud  **\_IsBillable** má hodnotu true.
+
+### <a name="examples"></a>Příklady
+Pokud chcete zobrazit velikost účtovaných událostí může ingestovat počítače, použijte `_BilledSize` vlastnost, která poskytuje velikost v bajtech:
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
+```
+
+Pokud chcete zobrazit počet událostí může ingestovat počítače, použijte následující dotaz:
+
+```Kusto
+union withsource = tt *
+| summarize count() by Computer | sort by count_ nulls last
+```
+
+Pokud chcete zobrazit počet účtovaných událostí může ingestovat počítače, použijte tento dotaz: 
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last
+```
+
+Pokud chcete vidět, že počet účtovaných datové typy jsou odesílání dat k určitému počítači, použijte následující dotaz:
+
+```Kusto
+union withsource = tt *
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last 
+```
+
 
 ## <a name="next-steps"></a>Další postup
 
