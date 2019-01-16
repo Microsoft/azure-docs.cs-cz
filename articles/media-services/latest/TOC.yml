@@ -124,6 +124,8 @@ items:
       href: protect-with-aes128.md
     - name: Dynamické šifrování DRM – .NET
       href: protect-with-drm.md
+    - name: Získání zásad symetrických klíčů – .NET
+      href: get-content-key-policy-dotnet-howto.md
     - name: FairPlay pro iOS v offline režimu
       href: offline-fairplay-for-ios.md
     - name: Widevine pro Android v offline režimu
@@ -158,6 +160,8 @@ items:
       href: https://aka.ms/ams-v3-nodejs-ref
     - name: Přejít
       href: https://aka.ms/ams-v3-go-ref
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.media/allversions
   - name: Schémata Event Gridu
     href: media-services-event-schemas.md
   - name: Licence DRM
@@ -200,9 +204,9 @@ items:
     href: frequently-asked-questions.md
   - name: Oblasti a cloudy Azure
     href: azure-clouds-regions.md
-ms.openlocfilehash: cf378c4575bdb295330d9ab4696c0277cb597dd5
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 72c57397a4c79aceec62b279d0f19cd20295eca9
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305787"
+ms.locfileid: "54321333"

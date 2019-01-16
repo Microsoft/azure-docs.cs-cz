@@ -23,14 +23,12 @@ items:
   items:
   - name: Delegování rolí správce Azure AD
     href: roles-concept-delegation.md
-  - name: Základy licencování na základě skupin
-    href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
   - name: Porovnání výchozích uživatelských oprávnění
     href: /azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Role správce Azure a Azure AD
+  - name: Porovnání rolí Azure a Azure AD
     href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Limity a omezení služeb
-    href: directory-service-limits-restrictions.md
+  - name: Základy licencování na základě skupin
+    href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
   expanded: true
 - name: Návody
   items:
@@ -96,6 +94,8 @@ items:
       href: groups-restore-deleted.md
     - name: Správa nastavení skupin
       href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Nastavení samoobslužných funkcí pro skupiny
+      href: groups-self-service-management.md
     - name: Dynamické skupiny
       items:
       - name: Vytvoření dynamické skupiny
@@ -104,8 +104,6 @@ items:
         href: groups-dynamic-membership.md
       - name: Změna typu členství ve skupině
         href: groups-change-type.md
-    - name: Nastavení skupin vytvořených uživatelem
-      href: groups-self-service-management.md
   - name: Přiřazení licencí
     items:
     - name: Přiřazení licencí ke skupině
@@ -120,7 +118,7 @@ items:
       href: licensing-group-advanced.md
     - name: Skupinové licencování s využitím PowerShellu
       href: licensing-ps-examples.md
-    - name: ID plánů služeb a produktů
+    - name: ID plánů služeb pro licencování
       href: licensing-service-plan-reference.md
   - name: Role správce Azure AD
     items:
@@ -161,9 +159,11 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell pro Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: e2244b8058c53ff8d921bc54bfed71d6fe4d0df9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+  - name: Omezení služby Azure AD
+    href: directory-service-limits-restrictions.md
+ms.openlocfilehash: 5556185bfad0cebf409b5f95fa5c26f6779d5903
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133566"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329935"

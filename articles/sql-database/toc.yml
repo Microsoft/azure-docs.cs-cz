@@ -307,6 +307,12 @@ items:
         href: sql-database-performance.md
       - name: Doporučení ohledně výkonu pro nástroj Database Advisor
         href: sql-database-advisor.md
+  - name: Načtení a přesun dat
+    items:
+    - name: Synchronizace dat SQL
+      href: sql-database-sync-data.md
+    - name: Transakční replikace
+      href: sql-database-managed-instance-transactional-replication.md
   - name: Funkce databází
     items:
     - name: Funkce databází
@@ -329,7 +335,7 @@ items:
       href: sql-database-cloud-migrate.md
     - name: Správa SQL Database po migraci
       href: sql-database-manage-after-migration.md
-    - name: Konfigurace transakční replikace
+    - name: Konfigurace replikace
       href: replication-to-sql-database.md
     - name: Konfigurace zjišťování hrozeb
       href: sql-database-threat-detection.md
@@ -439,8 +445,6 @@ items:
       href: sql-database-export.md
     - name: Synchronizace dat
       items:
-      - name: Synchronizace dat SQL
-        href: sql-database-sync-data.md
       - name: Agent synchronizace dat
         href: sql-database-data-sync-agent.md
       - name: Replikace změn schématu
@@ -682,9 +686,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 500fd22c19e0aab2cbecf0267329d5a86a5ccda2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 634018a1807e23700141ac11a961bd1b1411b8a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230897"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331397"

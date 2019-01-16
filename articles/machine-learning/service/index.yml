@@ -1,68 +1,49 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: da46b78d764465d8b9e5ce438b0843e0b79e16a9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9fe3efba6cc18839f7d65d2f19dfb165bbdecc05
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271143"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331278"
 documentType: LandingData
 title: Dokumentace ke službě Azure Machine Learning
 metadata:
   title: Dokumentace – Azure Machine Learning – kurzy, reference k rozhraní API | Microsoft Docs
   description: Přečtěte si, jak do aplikací a webů zabudovat inteligentní algoritmy. K sestavení modelu strojového učení a jeho trénování místně nebo v cloudu použijte Scikit-learn, Tensorflow, Pytorch nebo libovolnou jinou architekturu založenou na Pythonu. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.
   services: machine-learning
-  author: j-martens
-  manager: jhubbard
   ms.service: machine-learning
   ms.component: core
+  ms.topic: landing-page
+  manager: jhubbard
+  author: j-martens
+  ms.author: jmartens
+  ms.date: 12/04/2018
+  ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 12/04/2018
-  ms.author: jmartens
-  ms.custom: seodec18
 abstract:
   description: Přečtěte si, jak do aplikací a webů zabudovat inteligentní algoritmy. K sestavení modelu strojového učení a jeho trénování místně nebo v cloudu použijte Scikit-learn, Tensorflow, Pytorch nebo libovolnou jinou architekturu založenou na Pythonu. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsFTitle
-    items:
-    - title: Začněte se seznamovat se službou Azure Machine Learning
-      href: /azure/machine-learning/service/overview-what-is-azure-ml
-      image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-        href: /azure/machine-learning/service/overview-what-is-azure-ml
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: Nastavte vaše prostředky pro službu Azure Machine Learning.
+    text: 'Naučte se, jak pomocí rychlého zprovoznění nastavit pracovní prostor a prostředky pro službu Azure Machine Learning:'
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-get-started.md">Začínáme s využitím webu Azure Portal</a>
-    - html: <a href="quickstart-create-workspace-with-python.md">Začínáme s využitím Pythonu</a>
+    - html: Začínáme s využitím webu <a href="quickstart-get-started">Azure Portal</a>
+    - html: Začínáme s využitím <a href="quickstart-create-workspace-with-python">Pythonu</a>
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Přečtěte si, jak nastavit experiment a zprovoznit vaše modely.
-  - type: paragraph
-    text: <b>Kurz klasifikace dat s využitím dat MNIST:</b>
+    text: 'Naučte se připravovat data, nastavovat experimenty a zprovoznit vaše modely strojového učení:'
   - type: list
     style: unordered
     items:
-    - html: Část 1&#58; <a href="tutorial-train-models-with-aml">Trénování vlastního modelu strojového učení</a>
-    - html: Část 2&#58; <a href="tutorial-deploy-models-with-aml">Nasazení tohoto modelu</a>
+    - html: <a href="tutorial-train-models-with-aml">Trénování a nasazování modelů klasifikace obrázků</a> (<b>dvoudílná série</b>)
+    - html: <a href="tutorial-data-prep">Příprava dat a použití automatizovaného strojového učení</a> k trénování a vyladění regresních modelů (<b>dvoudílná série</b>)<br>&nbsp;
   - type: paragraph
-    text: <b>Kurz modelování regrese s využitím dat newyorské taxislužby:</b>
-  - type: list
-    style: unordered
-    items:
-    - html: Část 1&#58; <a href="tutorial-data-prep">Příprava dat newyorské taxislužby pro modelování</a>
-    - html: Část 2&#58; <a href="tutorial-auto-train-models">Vytváření modelů s využitím automatizovaného strojového učení</a>
-  - type: paragraph
-    text: '<b>Ukázkové poznámkové bloky</b>: Prozkoumání služeb s jejich využitím <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://aka.ms/aml-notebooks">Poznámkové bloky Jupyter</a> na GitHubu'
+    text: '<b>Ukázky</b>: Projděte si tuto službu s využitím těchto <a href="https://aka.ms/aml-notebooks">poznámkových bloků Jupyter</a> na GitHubu.'
 - title: Referenční informace
   items:
   - type: list
