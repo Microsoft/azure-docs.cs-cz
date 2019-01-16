@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.openlocfilehash: 3760e2a5ccae1d21574412ec223cade03bebda1e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/15/2019
+ms.openlocfilehash: 49c9d908970425165fcdd76171c20ab65454f42a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548921"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318572"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL cenové úrovně
 
@@ -20,7 +20,7 @@ Serveru Azure Database for PostgreSQL můžete vytvořit v jednom ze tří různ
 |    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
 |:---|:----------|:--------------------|:---------------------|
 | Generace výpočetních funkcí | Gen 4, generace 5 | Gen 4, generace 5 | Gen 5 |
-| Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32 nebo 64 |2, 4, 8, 16, 32 |
+| Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
 | Typ úložiště | Azure Storage úrovně Standard | Azure Premium Storage | Azure Premium Storage |
@@ -53,14 +53,14 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 | Středojižní USA | X | X |
 | Západní USA | X | X |
 | Západní USA 2 |  | X |
+| Brazílie – jih | X | X |
 | Kanada – střed | X | X |
 | Kanada – východ | X | X |
-| Brazílie – jih | X | X |
 | Severní Evropa | X | X |
 | Západní Evropa |  | X |
 | Francie – střed |  | X |
-| Spojené království – západ |  | X |
 | Velká Británie – jih |  | X |
+| Spojené království – západ |  | X |
 | Východní Asie | X | X |
 | Jihovýchodní Asie | X | X |
 | Austrálie – východ |  | X |
@@ -68,17 +68,22 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 | Austrálie – střed 2 |  | X |
 | Austrálie – jihovýchod |  | X |
 | Střed Indie | X | X |
-| Indie – západ | X | X |
 | Indie – jih |  | X |
+| Indie – západ | X | X |
 | Japonsko – východ | X | X |
 | Japonsko – západ | X | X |
 | Jižní Korea – střed |  | X |
 | Jižní Korea – jih |  | X |
+| Východní Čína 1 | X |  |
+| Čína – východ 2 |  | X |
+| Čína – sever 1 | X |  |
+| Čína – sever 2 |  | X |
 | Německo – střed |  | X |
 | US DoD – střed  | X |  |
 | US DoD – východ  | X |  |
 | USA (Gov) – Arizona |  | X |
 | USA (Gov) – Texas |  | X |
+| USA (Gov) – Virginia |  | X |
 
 ## <a name="storage"></a>Storage
 

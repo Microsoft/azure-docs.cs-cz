@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: ccb34dac88825877a925b99d51ce5af9b10331d0
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 661df6039948539d6b50b4c8caf8ca7bd9b58730
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201208"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321483"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 
@@ -181,7 +181,7 @@ V dalším kroku v systému Windows Server 2016 Datacenter virtuální počíta�
 1. Spusťte následující příkaz:
 
    ```powershell
-   Install-Module -Name Az -AllowClobber
+   Install-Module -Name AzureRm
    ```
 
    > [!NOTE]
@@ -200,7 +200,7 @@ V dalším kroku v systému Windows Server 2016 Datacenter virtuální počíta�
 
 1. Odpověď **Ano** nebo **Ano všem** pokračujte v instalaci.
 
-Modul `Az` je kumulativní modul pro rutiny Azure PowerShellu. Jeho instalace stáhne všechny dostupné moduly Azure Resource Manageru a zpřístupní jejich rutiny k použití.
+Modul `AzureRM` je kumulativní modul pro rutiny Azure PowerShellu. Jeho instalace stáhne všechny dostupné moduly Azure Resource Manageru a zpřístupní jejich rutiny k použití.
 
 V tomto okamžiku jste nastavili prostředí pro tento kurz. Jste připraveni nasadit službu synchronizace úložiště.
 

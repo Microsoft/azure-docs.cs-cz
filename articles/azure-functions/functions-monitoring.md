@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 2734021ffd55bb0d16d14e17ec0329e449aa86a0
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ba82aeff1ce699efaa850e50d6840fa0d5483f20
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201342"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321088"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -658,7 +658,7 @@ Azure CLI použijte následující příkazy přihlásit, zvolte předplatné a 
 ```azurecli
 az login
 az account list
-az account set <subscriptionNameOrId>
+az account set --subscription <subscriptionNameOrId>
 az webapp log tail --resource-group <resource group name> --name <function app name>
 ```
 

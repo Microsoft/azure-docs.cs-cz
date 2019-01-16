@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dadf3241b1f1c88deca0f4ca27c0ee463d5517b4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 01df34025c0389a4ea8bcd5eceaa29f0351df5f7
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247170"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329686"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -68,7 +68,7 @@ sections:
 - title: Nové a funkce ve verzi preview
   items:
   - type: paragraph
-    text: 'Nepovedlo se průběžně zlepšení Managed Instance pomocí nové funkce:'
+    text: 'Průběžně vylepšujeme Managed Instance s novými funkcemi:'
   - type: list
     style: unordered
     items:

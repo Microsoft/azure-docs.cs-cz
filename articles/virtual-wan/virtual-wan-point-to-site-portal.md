@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 9d5533932ef9ab521b623c18a0c3a27b663c56f8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 05f4b0b7accc3b13984864e82589c6fa639ce88d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077398"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321649"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření připojení typu Point-to-Site pomocí Azure virtuální sítě WAN (Preview)
 
@@ -117,7 +117,7 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 4. Zaškrtněte možnost **Include point-to-site gateway** (Zahrnout bránu point-to-site).
 5. Vyberte **Gateway scale units** (Jednotky škálování brány) a pro klienty vyberte **Point-to-site configuration** (Konfigurace point-to-site) a **Address pool** (Fond adres).
 6. Klikněte na **Confirm** (Potvrdit). 
-7. Dokončení této operace může trvat až 30 minut.
+7. Operace může trvat až 30 minut.
 
 ## <a name="vnet"></a>6. Připojení virtuální sítě k rozbočovači
 

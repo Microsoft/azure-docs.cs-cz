@@ -6,22 +6,22 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7aeb9a9557694f8773af4fe67f47950bf82afe87
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d91a7ba8d2c05e2d24738764438ce91325743699
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621407"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330853"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Prostředků certifikátů ve službě Azure Automation
 
 Certifikáty můžou být uložené bezpečně v Azure Automation, jsou dostupné sady runbook nebo konfigurace DSC pomocí **Get-AzureRmAutomationCertificate** aktivity pro prostředky Azure Resource Manageru. Tato funkce vám umožní vytvořit runboocích a konfiguracích DSC, které používají certifikáty k ověřování nebo přidá je do Azure nebo prostředky třetích stran.
 
 >[!NOTE]
->Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč uložený ve službě Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu.
+>Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč je uložen v systému spravované služby Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu. Tento proces se spravuje přes Azure Automation.
 
 ## <a name="azurerm-powershell-cmdlets"></a>Rutiny AzureRM Powershellu
 Pro AzureRM rutiny v následující tabulce se používají k vytváření a správě prostředků přihlašovacích údajů automation pomocí prostředí Windows PowerShell. Se dodávají jako součást [modulu Azure RM.Automation](/powershell/azure/overview) která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
@@ -57,7 +57,7 @@ Funkce v následující tabulce slouží k přístupu k certifikáty v sadě run
 
 ## <a name="creating-a-new-certificate"></a>Vytváří se nový certifikát
 
-Když vytvoříte nový certifikát, můžete nahrát soubor .cer nebo .pfx do Azure Automation. Pokud označíte jako exportovatelný certifikátu, můžete ho převést z úložiště certifikátů služby Azure Automation. Pokud není exportovatelný, pak ho jde použít jenom pro podepisování v runbooku nebo konfigurace DSC. Vyžaduje certifikát, který chcete mít zprostředkovatele služby Azure Automation: **Microsoft Enhanced RSA a AES Cryptographic Provider**.
+Když vytvoříte nový certifikát, můžete nahrát soubor .cer nebo .pfx do Azure Automation. Pokud označíte jako exportovatelný certifikátu, můžete ho převést z úložiště certifikátů služby Azure Automation. Pokud není exportovatelný, pak ho jde použít jenom pro podepisování v runbooku nebo konfigurace DSC. Azure Automation vyžaduje certifikát, který chcete mít zprostředkovatele: **Microsoft Enhanced RSA a AES Cryptographic Provider**.
 
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Chcete-li vytvořit nový certifikát pomocí webu Azure portal
 

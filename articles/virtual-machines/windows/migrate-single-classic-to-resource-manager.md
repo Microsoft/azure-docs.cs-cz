@@ -1,6 +1,6 @@
 ---
-title: Migrace klasické virtuální počítač do virtuálních počítačů spravovaných disků ARM | Microsoft Docs
-description: Migrujte jeden virtuální počítač Azure z modelu nasazení classic k spravovaná diskům v modelu nasazení Resource Manager.
+title: Migrace klasického virtuálního počítače na spravovaného disku virtuálního počítače ARM | Dokumentace Microsoftu
+description: Migrace jednoho virtuálního počítače Azure z modelu nasazení classic na Managed Disks v modelu nasazení Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,165 +15,192 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943577"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329765"
 ---
-# <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Ruční migraci Classic virtuálního počítače do nového ARM spravované disku virtuálního počítače z virtuálního pevného disku 
+# <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>Migrace klasického virtuálního počítače pro použití spravovaného disku 
 
 
-V této části vám umožňuje migrovat existující virtuální počítače Azure z modelu nasazení classic do [spravované disky](managed-disks-overview.md) v modelu nasazení Resource Manager.
+V této části vám umožní migrovat stávající virtuální počítače Azure z modelu nasazení classic na [Managed Disks](managed-disks-overview.md) v modelu nasazení Resource Manager.
 
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>Plánování migrace na spravované disky
+## <a name="plan-for-the-migration-to-managed-disks"></a>Plánování migrace do služby Managed Disks
 
-V této části můžete vytvořit nejlepší rozhodnutí o typech virtuálního počítače a disku.
+V této části vám umožní nejlepší rozhodnutí o typech virtuálních počítačů a disk.
 
 
 ### <a name="location"></a>Umístění
 
-Vyberte umístění, kde Azure spravované disky jsou dostupné. Při migraci disků spravovaných Premium také zajistíte, že úložiště Premium je k dispozici v oblasti, kde máte v úmyslu migrovat. V tématu [služeb Azure byRegion](https://azure.microsoft.com/regions/#services) aktuální informace o dostupných umístění.
+Vyberte umístění, kde jsou k dispozici Managed Disks. Pokud provádíte migraci na spravovaný Disk storage úrovně Premium se opírá o, ujistěte se také, že Premium storage je dostupné v dané oblasti. Zobrazit [Azure Services byRegion](https://azure.microsoft.com/regions/#services) aktuální informace o dostupných umístění.
 
 ### <a name="vm-sizes"></a>Velikost virtuálních počítačů
 
-Pokud provádíte migraci na disky spravované Premium, budete muset aktualizovat velikost virtuálního počítače do Storage úrovně Premium podporující velikost dostupné v oblasti, kde je umístěn virtuální počítač. Zkontrolujte velikosti virtuálních počítačů, které jsou podporující Storage úrovně Premium. Specifikace velikosti virtuálního počítače Azure, jsou uvedeny v [velikosti virtuálních počítačů](sizes.md).
-Zkontrolujte vlastnosti výkonu virtuálních počítačů, které pracovat Storage úrovně Premium a vyberete nejvhodnější velikost virtuálního počítače, který nejlépe vyhovuje vaší zatížení. Ujistěte se, že je dostatečnou šířku pásma dostupné na vašem virtuálním počítači k řízení provozu disku.
+Pokud provádíte migraci do služby Managed Disks použití služby Premium storage, budete muset aktualizovat velikost virtuálního počítače do Premium Storage podporuje velikost dostupná v oblasti, kde je umístěn virtuální počítač. Kontrola velikosti virtuálních počítačů, které jsou schopné Premium Storage. Specifikace velikosti virtuálního počítače Azure jsou uvedeny v [velikosti virtuálních počítačů](sizes.md).
+Zkontrolujte charakteristiky výkonu virtuálních počítačů, které pracují se službou Premium Storage a zvolte nejvhodnější velikosti virtuálního počítače, který nejlépe vyhovuje vaší úlohy. Ujistěte se, že je dostatečná šířka pásma dostupné na virtuálním počítači Centrum umožňující prosazovat diskové přenosy.
 
 ### <a name="disk-sizes"></a>Velikost disků
 
-**Premium spravované disky**
+**Premium**
 
-Existují sedm typy disků spravované premium, které lze použít s vaší virtuálních počítačů a každá z nich má konkrétní IOPs a propustnost omezení. Vezměte v úvahu tyto limity při výběru typu Premium disku pro virtuální počítač na základě potřeb vaší aplikace z hlediska kapacity, výkon, škálovatelnost a načte ve špičce.
+Existuje sedm typů úložiště Premium Storage, který lze použít s virtuálním Počítačem a obsahují konkrétní IOPs a propustnost omezení. Při výběru disk typu Premium pro virtuální počítač na základě potřeb vaší aplikace z hlediska kapacity, výkon, škálovatelnost, zvažte tato omezení a načte ve špičce.
 
-| Disky typu Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+| Typ disky Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 
+| Velikost disku           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
+| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 
 
-**Standardní disky spravované**
+**Standard**
 
-Existují sedm typy spravované standardní disky, které lze použít s virtuálního počítače. Každý z nich mají různé kapacity ale mít stejné IOPS a omezení propustnosti. Vyberte typ standardní spravovaných disků na základě potřeb kapacitu vaší aplikace.
+Existuje sedm typů standardní disky, které lze použít s virtuálním Počítačem. Každý z nich mít jiné kapacitě, ale mají stejné vstupně-výstupních operací a omezení propustnosti. Zvolte typ služby Standard Managed disks na základě potřeb kapacity vaší aplikace.
 
-| Disk typu Standard  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
+| Disk typu Standard  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| Velikost disku           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
-| Vstupně-výstupní operace za sekundu / disk       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
+| Velikost disku           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| Vstupně-výstupní operace za sekundu / disk       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
 | Propustnost / disk | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 
 
 
 ### <a name="disk-caching-policy"></a>Zásady ukládání do mezipaměti na disku 
 
-**Premium spravované disky**
+**Premium Managed Disks**
 
-Ve výchozím nastavení, je disk ukládání do mezipaměti zásad *jen pro čtení* pro všechny Premium datových disků, a *pro čtení a zápis* pro disk operačního systému Premium připojen k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro dosažení optimálního výkonu pro vaše aplikace IOs. Těžký zápisu nebo pouze pro zápis datové disky (například soubory protokolu serveru SQL Server) zakažte ukládání do mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace.
+Ve výchozím nastavení, disk zásady ukládání do mezipaměti je *jen pro čtení* pro všechny úrovně Premium datové disky, a *čtení a zápis* pro disk s operačním systémem Premium připojené k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro zajištění optimálního výkonu pro vaše aplikace IOs. Náročné na zápis nebo jen pro zápis datové disky (jako jsou například soubory protokolu serveru SQL Server) Zakázání používání mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace.
 
 ### <a name="pricing"></a>Ceny
 
-Zkontrolujte [ceny pro spravované disky](https://azure.microsoft.com/pricing/details/managed-disks/). Ceny disků spravované Premium je stejný jako nespravované prémiové disky. Ale ceny pro standardní disky spravované se liší od standardní nespravované disky.
+Zkontrolujte [ceny pro Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). Ceny za spravované disky úrovně Premium je stejná jako disky úrovně premium. Ale ceny za spravované disky úrovně standard se liší od nespravované disky standard.
 
 
 ## <a name="checklist"></a>Kontrolní seznam
 
-1.  Pokud provádíte migraci na prémiové disky spravovat, zkontrolujte, zda že je k dispozici v oblast, kterou provádíte migraci do.
+1.  Pokud provádíte migraci do služby Managed Disks úrovně Premium, ujistěte se, že je k dispozici v oblasti, kterou provádíte migraci do.
 
-2.  Rozhodněte, nové řadu virtuálních počítačů, kterou budete používat. Pokud provádíte migraci na prémiové disky spravované by mělo být schopný úložiště Premium.
+2.  Rozhodněte, nových řadách virtuálních počítačů, které budete používat. Pokud provádíte migraci na Managed Disks úrovně Premium, měla by být Premium Storage podporuje.
 
-3.  Rozhodněte, přesný velikost virtuálního počítače, které budete používat, které jsou k dispozici v oblast, kterou provádíte migraci do. Velikost virtuálního počítače musí být dostatečně velký pro podporu většímu počtu datových disků, které máte. Například pokud máte čtyři datové disky, virtuální počítač musí mít dva nebo víc jader. Zvažte také výpočetní výkon, paměti a šířky pásma sítě musí.
+3.  Rozhodněte, přesnou velikost virtuálního počítače, které se použijí, které jsou dostupné v oblastech, které při migraci na. Velikost virtuálního počítače musí být dostatečně velký, aby podporoval počet datových disků, které máte. Například pokud máte čtyři datové disky, virtuální počítač musí mít dva nebo více jader. Zvažte také zpracování výkon, paměť a požadavky na šířku pásma sítě.
 
-4.  Máte aktuální podrobnosti o virtuálních počítačů, které jsou užitečné, včetně seznamu disků a odpovídající BLOB VHD.
+4.  Máte aktuální podrobnosti o virtuálním počítači, které jsou po ruce, včetně seznamu disků a odpovídající objekty BLOB VHD.
 
-Připravte aplikaci výpadek. K provedení čisté migrace, budete muset zastavit veškeré zpracování v aktuálním systému. Pak můžete získat do konzistentního stavu, které můžete migrovat na nové platformě. Doba trvání výpadku závisí na množství dat na discích k migraci.
-
-
-## <a name="migrate-the-vm"></a>Migraci virtuálního počítače
-
-Připravte aplikaci výpadek. K provedení čisté migrace, budete muset zastavit veškeré zpracování v aktuálním systému. Pak můžete získat do konzistentního stavu, které můžete migrovat na nové platformě. Doba trvání výpadku závisí množství dat na discích k migraci.
-
-Tato část vyžaduje prostředí Azure PowerShell verze modulu 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Budete také muset spustit `Connect-AzureRmAccount` vytvořit připojení s Azure.
+Příprava aplikace pro výpadek. Pokud chcete provést čistou migrace, je nutné zastavit veškeré zpracování v aktuálním systému. Teprve pak můžete získat do konzistentního stavu, které můžete migrovat na novou platformu. Doba trvání výpadku závisí na množství dat na discích, které chcete migrovat.
 
 
-1.  Nastavte nejprve, běžné parametry:
+## <a name="migrate-the-vm"></a>Migrace virtuálního počítače
 
-    ```powershell
-    $resourceGroupName = 'yourResourceGroupName'
+Příprava aplikace pro výpadek. Pokud chcete provést čistou migrace, je nutné zastavit veškeré zpracování v aktuálním systému. Teprve pak můžete získat do konzistentního stavu, které můžete migrovat na novou platformu. Doba trvání výpadku závisí množství dat na discích, které chcete migrovat.
+
+Tato část vyžaduje modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Musíte také spustit příkaz `Connect-AzureRmAccount`, abyste vytvořili připojení k Azure.
+
+
+Vytváření proměnných pro společné parametry.
+
+```powershell
+$resourceGroupName = 'yourResourceGroupName'
+
+$location = 'your location' 
+
+$virtualNetworkName = 'yourExistingVirtualNetworkName'
+
+$virtualMachineName = 'yourVMName'
+
+$virtualMachineSize = 'Standard_DS3'
+
+$adminUserName = "youradminusername"
+
+$adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
+
+$imageName = 'yourImageName'
+
+$osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
+
+$dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
+
+$dataDiskName = 'dataDisk1'
+```
+
+Vytvoření spravovaného disku operačního systému pomocí virtuálního pevného disku z klasického virtuálního počítače. Ujistěte se, zda jste zadali úplný identifikátor URI virtuálního pevného disku operačního systému k parametru $osVhdUri. Také zadejte **- AccountType** jako **Premium_LRS** nebo **Standard_LRS** založené na typu disků (premium nebo standard) při migraci na.
+
+```powershell
+$osDisk = New-AzureRmDisk -DiskName $osDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreateOption Import '
+   -SourceUri $osVhdUri) '
+   -ResourceGroupName $resourceGroupName
+```
+
+Připojte disk s operačním systémem k novému virtuálnímu počítači.
+
+```powershell
+$VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
+$VirtualMachine = Set-AzureRmVMOSDisk '
+   -VM $VirtualMachine '
+   -ManagedDiskId $osDisk.Id '
+   -StorageAccountType Premium_LRS '
+   -DiskSizeInGB 128 '
+   -CreateOption Attach -Windows
+```
+
+Vytvoření spravovaného datového disku z datového souboru virtuálního pevného disku a přidejte ho do nového virtuálního počítače.
+
+```powershell
+$dataDisk1 = New-AzureRmDisk '
+   -DiskName $dataDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreationOption Import '
+   -SourceUri $dataVhdUri ) '
+   -ResourceGroupName $resourceGroupName
     
-    $location = 'your location' 
-    
-    $virtualNetworkName = 'yourExistingVirtualNetworkName'
-    
-    $virtualMachineName = 'yourVMName'
-    
-    $virtualMachineSize = 'Standard_DS3'
-    
-    $adminUserName = "youradminusername"
-    
-    $adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
-    
-    $imageName = 'yourImageName'
-    
-    $osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-    
-    $dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
-    
-    $dataDiskName = 'dataDisk1'
-    ```
+$VirtualMachine = Add-AzureRmVMDataDisk '
+   -VM $VirtualMachine '
+   -Name $dataDiskName '
+   -CreateOption Attach '
+   -ManagedDiskId $dataDisk1.Id '
+   -Lun 1
+```
 
-2.  Vytvoření spravovaného disku operačního systému pomocí virtuálního pevného disku z klasického virtuálního počítače.
+Vytvořit nový virtuální počítač tak, že nastavíte veřejné IP adresy, virtuální sítě a síťovou kartu
 
-    Zkontrolujte, zda jste zadali úplný identifikátor URI virtuálního pevného disku operačního systému na parametr $osVhdUri. Zadejte také **- AccountType** jako **Premium_LRS** nebo **Standard_LRS** na základě typu disků (Standard nebo Premium) při migraci do.
-
-    ```powershell
-    $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
-    -ResourceGroupName $resourceGroupName
-    ```
-
-3.  Připojte disk operačního systému na nový virtuální počítač.
-
-    ```powershell
-    $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
-    $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
-    ```
-
-4.  Vytvoření disku spravovaná data z datového souboru virtuálního pevného disku a přidat jej do nového virtuálního počítače.
-
-    ```powershell
-    $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
-    -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
+```powershell
+$publicIp = New-AzureRmPublicIpAddress '
+   -Name ($VirtualMachineName.ToLower()+'_ip') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -AllocationMethod Dynamic
     
-    $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '
-    -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
-    ```
-
-5.  Vytvoření nového virtuálního počítače pomocí nastavení veřejné IP adresy, virtuální sítě a síťový adaptér.
-
-    ```powershell
-    $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') '
-    -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
+$vnet = Get-AzureRmVirtualNetwork '
+   -Name $virtualNetworkName '
+   -ResourceGroupName $resourceGroupName
     
-    $vnet = Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
+$nic = New-AzureRmNetworkInterface '
+   -Name ($VirtualMachineName.ToLower()+'_nic') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -SubnetId $vnet.Subnets[0].Id '
+   -PublicIpAddressId $publicIp.Id
     
-    $nic = New-AzureRmNetworkInterface -Name ($VirtualMachineName.ToLower()+'_nic') '
-    -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id '
-    -PublicIpAddressId $publicIp.Id
+$VirtualMachine = Add-AzureRmVMNetworkInterface '
+   -VM $VirtualMachine '
+   -Id $nic.Id
     
-    $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
-    
-    New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $resourceGroupName -Location $location
-    ```
+New-AzureRmVM -VM $VirtualMachine '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location
+```
 
 > [!NOTE]
->Mohou existovat další kroky nezbytné pro podporu vaší aplikace, která je nesmí být zahrnuté v této příručce.
+>Můžou existovat další kroky nutné k podpoře vaší aplikace, která je jako nepokrytý této příručce.
 >
 >
 
 ## <a name="next-steps"></a>Další postup
 
-- Připojte k virtuálnímu počítači. Pokyny najdete v tématu [jak se připojit a přihlásit se na virtuálním počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Připojte se k virtuálnímu počítači. Pokyny najdete v tématu [jak se připojit a přihlaste se na virtuálním počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

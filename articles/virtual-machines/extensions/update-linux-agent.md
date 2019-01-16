@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: roiyz
-ms.openlocfilehash: 0926859037c358aaf94ec51d9614cc9c02629e7f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7f1b84f62bae3640e7ac20c2e4a395033d1d687c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451931"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319350"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Jak aktualizovat agenta Azure Linux ve virtuálním počítači
 
@@ -162,7 +162,7 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 sudo systemctl restart walinuxagent.service
 ```
 
-## <a name="red-hat--centos"></a>Red Hat nebo CentOS
+## <a name="red-hat--centos"></a>Red Hat / CentOS
 
 ### <a name="rhelcentos-6"></a>RHEL/CentOS 6
 

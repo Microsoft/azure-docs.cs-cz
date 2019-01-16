@@ -12,30 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 8ca9f0b75627e7ad366b3c02ec3126713a283ed2
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233731"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321400"
 ---
 # <a name="application-architecture-on-azure"></a>Aplikační architektura v Azure
 Pomáhají zabezpečit vaše Cloudová řešení v Microsoft Azure, základnu architektury je důležité. Architekty, návrháři a implementátoři výhodou silného znalosti architektury aplikací a služeb. Tyto základní znalosti vám pomůže seznámení s komponentami vaší cloudové řešení a bylo snazší integrovat do všech aspektů návrhu a implementaci zabezpečení.
 
 Máme k dispozici následující vám pomůže při vyšetřování architektury a návrhů:
 
-* Infografika architektury
 * Plány architektury
 * Cloudové a podnikové sadu symbolů
 * Šablona aplikace Visio 3D plán
-
-## <a name="architectural-infographics"></a>Infografika architektury
-Microsoft zveřejňuje několik architektury související plakáty/infografika. Patří mezi ně:
-
-* [Sestavování skutečných cloudových aplikací](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
-* [Škálování s cloudovými službami](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
 ## <a name="architectural-blueprints"></a>Plány architektury
 Microsoft zveřejňuje sadu vysoké úrovně [plány architektury](https://aka.ms/azblueprints) ukazující, jak sestavit konkrétní typy systémů používajících produkty společnosti Microsoft.

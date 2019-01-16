@@ -1,6 +1,6 @@
 ---
 title: Jak se integruje s Azure Cloud Foundry | Dokumentace Microsoftu
-description: Popisuje, jak Cloud Foundry může utlize Azure services a zlepšit tak prostředí Enterprice
+description: Popisuje, jak využít služby Azure a zlepšit tak prostředí Enterprice Cloud Foundry
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 908b7e40c0509d7034b86985ac0775635726a6b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406139"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329799"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrace Cloud Foundry s Azure
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) je spuštěn na platformě poskytovatelů cloudu IaaS platformě PaaS. Nabízí komfortem při nasazování aplikace konzistentní napříč poskytovatelů cloudových služeb. Kromě toho můžete také integrovat s různými službami Azure, podnikové vysokou dostupnost, škálovatelnost a úspor nákladů.
-Existují [6 subsystémy Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), může být flexibilní škálování online, včetně: směrování, ověřování, Správa životního cyklu aplikací, správa, monitorování a zasílání zpráv. Pro každou subsystémů můžete nakonfigurovat Cloud Foundry využívat zpravodaj služby Azure. 
+Existují [6 subsystémy Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), který může být flexibilně škálování online, včetně: Směrování, ověřování, Správa životního cyklu aplikací, správa, monitorování a zasílání zpráv. Pro každou subsystémů můžete nakonfigurovat Cloud Foundry využívat zpravodaj služby Azure. 
 
 ![Cloud Foundry v Azure integrace architektury](media/CFOnAzureEcosystem-colored.png)
 

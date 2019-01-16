@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1ffd1b96e721707f69c47a7cbf11d60f17f3a7d2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105419"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320476"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Aktuální verze](connector-mongodb.md)
 
@@ -104,7 +104,7 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 
 ```json
 {
-     "name":  "MongoDbDataset",
+    "name": "MongoDbDataset",
     "properties": {
         "type": "MongoDbCollection",
         "linkedServiceName": {
@@ -184,7 +184,7 @@ Při kopírování dat z MongoDB, se používají následující mapování z Mo
 | NumberLong |Int64 |
 | ObjectID |Řetězec |
 | Řetězec |Řetězec |
-| IDENTIFIKÁTOR UUID |Guid |
+| UUID |Guid |
 | Objekt |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
 
 > [!NOTE]
@@ -208,7 +208,7 @@ Například ExampleTable tady je tabulka MongoDB, která má jeden sloupec s pol
 | ID _ovládacího | Jméno zákazníka | Faktury | Úroveň služby | Hodnocení |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", položka: "toaster"; price: "456", slevy: "0.2"}, {invoice_id: "124", položka: "sušárně"; price: slevy "1235": "0.2"}] |Stříbrný |[5,6] |
-| 2222 |XYZ |[{invoice_id: položky "135": "ledničky"; price: "12543", slevy: "0,0"}] |Zlatá |[1,2] |
+| 2222 |XYZ |[{invoice_id: položky "135": "ledničky"; price: "12543", slevy: "0.0"}] |Zlatá |[1,2] |
 
 Ovladač vygeneruje více virtuální tabulky k reprezentaci této jediné tabulce. První virtuální tabulky je základní tabulku s názvem "ExampleTable" v příkladu. Základní tabulka obsahuje všechna data v původní tabulce, ale data z pole byl vynechán a rozbalen virtuální tabulky.
 
@@ -239,7 +239,6 @@ Následující tabulky popisují virtuální tabulky, které představují půvo
 | 1111 |1 |6 |
 | 2222 |0 |1 |
 | 2222 |1 |2 |
-
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

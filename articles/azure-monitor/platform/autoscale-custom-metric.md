@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 2aa0b152a4fd50e8023df00ec5dd59d1b2a6e6b0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 275c954ac54aab5ab4b41f4d6f6610a01573483f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262230"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319065"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Začínáme s automatické škálování na vlastní metrika v Azure
 Tento článek popisuje, jak škálovat prostředek vlastní metriky na webu Azure portal.
@@ -39,7 +39,7 @@ Tento článek předpokládá, že máte webové aplikace pomocí application in
 > Poznámka: V případě dojde k nějakému problému čtení metrik prostředku a aktuální kapacita bude pod výchozí kapacitou, pak a zajistit tak dostupnost prostředků, automatického škálování se horizontální navýšení kapacity na výchozí hodnotu. Pokud už je aktuální kapacita vyšší než výchozí kapacita pro dotazy, automatické škálování neprovede horizontální snížení.
 - Klikněte na "uložit.
 
-Blahopřejeme. Teď byl úspěšně vytvořen vaše nastavení automatického škálování škálovat webové aplikace na základě vlastní metriky.
+Blahopřejeme. Jste teď úspěšně vytvořili škálovací nastavení automatického škálování webové aplikace na základě vlastní metriky.
 
 > Poznámka: Stejný postup platí pro začít pracovat s rolí služby VMSS nebo v cloudu.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 092ffa5ed34a8e0a05b69c3fae86ab7299760ac2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 213190863702ec5a7f2ae764c8e2d892764740f9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233095"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332196"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Kurz: Šifrování a dešifrování objektů BLOB ve službě Microsoft Azure Storage pomocí Azure Key Vault
 ## <a name="introduction"></a>Úvod
@@ -184,14 +184,14 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> Existuje několik dalších typů pro usnadnění správy klíčů, včetně překladače: AggregateKeyResolver a CachingKeyResolver.
+> Existuje několik dalších typů překladače pro usnadnění správy klíčů, včetně: AggregateKeyResolver a CachingKeyResolver.
 > 
 > 
 
 ## <a name="use-key-vault-secrets"></a>Použití tajných kódů služby Key Vault
 Způsob, jak pomocí šifrování na straně klienta tajný kód je prostřednictvím třídy SymmetricKey, protože tajného kódu je v podstatě symetrický klíč. Ale jak bylo uvedeno výše, tajný klíč ve službě Key Vault není namapovaná na SymmetricKey přesně. Chcete-li pochopit některé věci:
 
-* Klíč SymmetricKey musí být pevná délka: 128, 192, 256, 384 nebo 512 bitů.
+* Klíč SymmetricKey musí být pevné délky: 128, 192, 256, 384 nebo 512 bitů.
 * Klíč v SymmetricKey by měl být kódovaný ve formátu Base64.
 * Key Vault tajný klíč, který se použije jako SymmetricKey musí mít obsah typ "application/octet-stream" ve službě Key Vault.
 
@@ -208,7 +208,7 @@ $enc = [System.Convert]::ToBase64String($b)
 $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
 
 // Substitute the VaultName and Name in this command.
-$secret = Set-AzureKeyVaultSecret -VaultName 'ContoseKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
+$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 ```
 
 Z vaší konzolové aplikace můžete použít stejné volání jako před načíst tento tajný kód jako SymmetricKey.

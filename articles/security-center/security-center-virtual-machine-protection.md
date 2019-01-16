@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9c1eff58be52b0b4bd9561db51986c9f509d64ee
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723225"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321582"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana vašich počítačů a aplikací ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
@@ -44,7 +44,6 @@ V části **výpočty a aplikace**, existují následující karty:
 - **Cloudové služby:** Seznam webových a pracovních rolí monitorovaných službou Security Center
 - **App Service (Preview)**: seznam prostředí App service a aktuální stav zabezpečení jednotlivých.
 - **Kontejnery (Preview)**: seznam kontejnerů hostované na počítače s Linuxem IaaS a vyhodnocení zabezpečení jejich konfigurace Dockeru.
-- **Služby VM scale sets (Preview)**: seznam škálovacích sad a doporučení pro každý.
 - **Výpočetní prostředky (Preview)**: seznam doporučení pro vaše výpočetní prostředky, jako je například clustery Service Fabric a Event hubs.
 
 Chcete-li pokračovat, vyberte **výpočty a aplikace** pod **hygeine zabezpečení prostředků**.
@@ -162,24 +161,6 @@ Existují tři typy ikon v tomto seznamu:
 
     ![Náprava služby App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets-preview"></a>Škálovací sady virtuálních počítačů (Preview)
-Security Center automaticky zjišťuje, zda máte sad škálování a doporučí vám jeho instalaci agenta Microsoft Monitoring Agent v těchto škálovacích sadách. 
-
-Chcete-li nainstalovat agenta Microsoft Monitoring Agent: 
-
-1. Vyberte toto doporučení **nainstalovat agenta monitorování na škálovací sadu virtuálních počítačů**. Můžete získat seznam nemonitorované škálovací sady.
-2. Vyberte není v pořádku, škálovací sady. Postupujte podle pokynů k instalaci agenta monitorování pomocí existujícího mají údaj vyplněný pracovního prostoru nebo vytvořte novou. Ujistěte se, že nastavení pracovního prostoru [cenovou úroveň](security-center-pricing.md) Pokud není nastavená.
-
- ![Nainstalujte MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
-
-Pokud chcete nastavit nové škálovací sady můžete automaticky nainstalovat agenta Microsoft Monitoring Agent:
-1. Přejděte ke službě Azure Policy a klikněte na tlačítko **definice**.
-2. Hledat zásady **agenta nasazení Log Analytics pro škálovací sady virtuálních počítačů Windows** a klikněte na něj.
-3. Klikněte na **Přiřadit**.
-4. Nastavte **oboru** a **pracovní prostor Log Analytics** a klikněte na tlačítko **přiřadit**.
-
-Pokud chcete nastavit všechny stávající škálovací sady, chcete-li nainstalovat agenta Microsoft Monitoring Agent, ve službě Azure Policy, přejděte na **nápravy** a použít stávající zásady k existující škálovací sady.
-
 
 ## <a name="compute-and-app-recommendations"></a>Doporučení pro výpočetní prostředky a aplikace
 |Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
@@ -238,11 +219,7 @@ Pokud chcete nastavit všechny stávající škálovací sady, chcete-li nainsta
 |Počítač|30|Nainstalujte řešení Posouzení ohrožení zabezpečení na virtuální počítače.|Nainstalujte řešení Posouzení ohrožení zabezpečení na virtuální počítače.|
 |Počítač|1|Migrovat virtuální počítače do nové prostředky Azure Resource Manageru|Kvůli vylepšení zabezpečení pomocí Azure Resource Manageru pro vaše virtuální počítače: silnější access control (RBAC), lepší auditování, nasazení založené na Resource Manageru a zásad správného řízení, přístup ke spravovaným identitám přístup k trezoru klíčů pro tajné klíče, Ověřování Azure AD na základě a podpora značek a skupiny prostředků pro snadnější správu zabezpečení. |
 |Počítač|30|Náprava ohrožení zabezpečení pomocí řešení posouzení ohrožení zabezpečení|Virtuální počítače, u kterých je 3. stran řešení posouzení ohrožení zabezpečení nasazení průběžně hodnotí proti aplikace a ohrožení zabezpečení operačního systému. Pokaždé, když se najde takovýmto ohrožením zabezpečení, jsou dostupné pro více informací v rámci doporučení.|
-|Škálovací sada virtuálních počítačů |4|Povolení protokolování diagnostiky ve Virtual Machine Scale Sets|Povolení protokolů a udrželi si je pro až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření. To je užitečné, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|Škálovací sada virtuálních počítačů|35|Náprava ohrožení zabezpečení v konfiguraci zabezpečení na vaši škálovací sady virtuálních počítačů|Pokud chcete chránit své škálovací sady virtuálních počítačů před útoky, napravte v konfiguraci zabezpečení ohrožení zabezpečení. |
-|Škálovací sada virtuálních počítačů|5|Oprava chyby stavu endpoint protection do škálovací sady virtuálních počítačů|Napravte problémy se stavem Endpoint Protection ve škálovacích sadách virtuálních počítačů, aby se chránily před hrozbami a ohroženími zabezpečení. |
-|Škálovací sada virtuálních počítačů|10|Nainstalujte řešení ochrany koncových bodů na škálovací sady virtuálních počítačů|Nainstalujte řešení ochrany koncových bodů na vaši škálovací sady virtuálních počítačů, pro ochranu před hrozbami a ohrožení zabezpečení. |
-|Škálovací sada virtuálních počítačů|40|Nainstalovat aktualizace systému ve virtual machine scale sets|Nainstalujte chybějící aktualizace zabezpečení systému a kritické aktualizace, aby se zabezpečily škálovací sady virtuálních počítačů s Windows a Linuxem. |
+
  
 
 

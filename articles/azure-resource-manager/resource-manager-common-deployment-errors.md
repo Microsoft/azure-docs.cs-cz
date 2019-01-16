@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: bbe957d4327770daee51f8a46d90978373fed53a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3363b0bbd98b125f0108ca842d5c0b6b9941bf9e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317011"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330377"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení potíží s běžnými chybami nasazení v Azure pomocí Azure Resource Manageru
 
@@ -71,7 +71,7 @@ Tento článek popisuje některé běžné chyby nasazení v Azure a poskytuje i
 | RequestDisallowedByPolicy | Vaše předplatné zahrnuje zásady prostředků, která brání akci, kterou se pokoušíte provést během nasazení. Vyhledejte zásadu, která blokuje akce. Pokud je to možné upravení vašeho nasazení plnit omezení ze zásad. | [Vyřešit zásady](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Zadejte název prostředku, který neobsahuje vyhrazený název. | [Názvy vyhrazené prostředků](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Počkejte na dokončení odstranění. | |
-| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Už musí existovat ve vašem předplatném. Zkontrolujte kontext vašeho předplatného. | [Azure CLI](/cli/azure/account?#az-account-set) [prostředí PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Už musí existovat ve vašem předplatném. Zkontrolujte kontext vašeho předplatného. | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
 | ResourceNotFound | Nasazení odkazuje na prostředek, který nelze přeložit. Ověřte, že vaše užívání **odkaz** parametrů požadovaných pro váš scénář zahrnuje funkce. | [Přeložení odkazů.](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Nasazení se pokouší vytvořit prostředky, které překročí kvótu pro předplatné, skupinu prostředků nebo oblasti. Pokud je to možné upravte infrastrukturu zůstat v rámci kvóty. V opačném případě zvažte žádosti o změnu do vaší kvóty. | [Vyřešit kvóty](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Vyberte skladovou Položku (například velikost virtuálního počítače), který je k dispozici pro umístění, které jste vybrali. | [Vyřešit SKU](resource-manager-sku-not-available-errors.md) |
@@ -250,5 +250,7 @@ Nebo Předpokládejme, že narazíte na chyby nasazení, které si myslíte, že
 
 
 ## <a name="next-steps"></a>Další postup
+
+* Absolvovat kurz řešení potíží, najdete v článku [kurzu: Řešení potíží s nasazení šablon Resource Manageru](./resource-manager-tutorial-troubleshoot.md)
 * Další informace o auditování akcí najdete v tématu [Audit operací pomocí Resource Manageru](resource-group-audit.md).
 * Další informace o akcích, chcete-li zjistit chyby během nasazení najdete v tématu [zobrazení operací nasazení](resource-manager-deployment-operations.md).

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: a4b1b4a7e106ad9dcd1746030daac562d7f123bc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6fbfaaa82095fbf093560e65076b40a392356da8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041522"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330156"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do jednoho a ve fondu databází SQL Database
 
@@ -57,7 +57,7 @@ Replikace systému SQL Server lze konfigurovat pro databáze ve fondu a jeden pr
 
 ## <a name="replication-architecture"></a>Architektura replikace  
 
-![replikace do sql database](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Scénáře  
 
@@ -111,6 +111,7 @@ Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématu:
 
 ## <a name="see-also"></a>Viz také  
 
+- [Transakční replikace](sql-database-managed-instance-transactional-replication.md)
 - [Vytvořit publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Vytvořit nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [Typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)

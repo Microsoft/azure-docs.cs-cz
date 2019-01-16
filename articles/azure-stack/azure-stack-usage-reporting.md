@@ -11,24 +11,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/16/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: e4e1b3cb823d08948c31aa6486c08a930a377dfa
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 147242e7d5d62204198360f580848cd997850d09
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161952"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332519"
 ---
-# <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack využití dat sestavy do Azure 
+# <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack využití dat sestavy do Azure
 
-Data o využití, nazývané také data o spotřebě, představuje objem prostředků používá. 
+Data o využití, nazývané také data o spotřebě, představuje objem prostředků používá.
 
 Azure Stack systémech s více uzly, které používají model fakturace založený na spotřebě hlásit data o využití do Azure pro účely fakturace. Operátoři Azure stacku měli nakonfigurovat svou instanci služby Azure Stack data využívání na Azure.
 
-> [!NOTE]
-> Generování sestav dat využití je vyžadován pro uživatele Azure stacku více uzly, kteří licencí v rámci modelu plateb jako využití. Zadání je volitelné pro zákazníky, kteří licencují v rámci modelu kapacity (najdete v článku [jak koupit](https://azure.microsoft.com/overview/azure-stack/how-to-buy/). Pro uživatele Azure Stack Development Kit můžete operátorům Azure stacku sestavy dat o využití a otestovat funkci. Uživatelé se však nebude účtovat za jakékoliv využití, které způsobují. 
+> [!IMPORTANT]
+> Všechny úlohy [musí být nasazen v rámci předplatného tenanta](#are-users-charged-for-the-infrastructure-vms) pro dosažení souladu s licenční podmínky služby Azure Stack.
+
+Generování sestav dat využití je vyžadován pro uživatele Azure stacku více uzly, kteří licencí v rámci modelu plateb jako využití. Zadání je volitelné pro zákazníky, kteří licencují v rámci modelu kapacity (najdete v článku [jak koupit](https://azure.microsoft.com/overview/azure-stack/how-to-buy/). Pro uživatele Azure Stack Development Kit můžete operátorům Azure stacku sestavy dat o využití a otestovat funkci. Uživatelé se však nebude účtovat za jakékoliv využití, které způsobují.
 
 ![fakturační toku](media/azure-stack-usage-reporting/billing-flow.png)
 

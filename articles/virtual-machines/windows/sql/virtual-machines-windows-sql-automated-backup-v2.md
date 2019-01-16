@@ -3,7 +3,7 @@ title: Automatizované zálohování v2 pro virtuální počítače Azure s SQL 
 description: Vysvětluje funkci automatizované zálohování pro SQL Server 2016 a 2017 virtuální počítače spuštěné v Azure. Tento článek je určený speciálně pro virtuální počítače pomocí Resource Manageru.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: jroth
-ms.openlocfilehash: 664a0036b8aa753de9636688d22afff0163f031f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 432df6d73b2eaa42645fe25ad9c743b7fcef06a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246816"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331640"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro Azure Virtual Machines (Resource Manager)
 
@@ -41,8 +42,8 @@ Pomocí automatizovaného zálohování v2, projděte si následující požadav
 
 **Verze a edice systému SQL Server**:
 
-- Systému SQL Server 2016: Developer, Standard nebo Enterprise
-- Systému SQL Server 2017: Developer, Standard nebo Enterprise
+- SQL Server 2016: Developer, Standard nebo Enterprise
+- SQL Server 2017: Developer, Standard nebo Enterprise
 
 > [!IMPORTANT]
 > Automatizované zálohování v2 funguje s SQL serverem 2016 nebo novější. Pokud používáte SQL Server 2014, můžete použít v1 automatizovaného zálohování k zálohování databází. Další informace najdete v tématu [automatizované zálohování pro SQL Server 2014 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
@@ -73,7 +74,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 
 | Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
-| **Zálohování databáze systému** | Povolí nebo zakáže (zakázáno) | Pokud povolena, tato funkce také vytvoří zálohu systémové databáze: hlavní server, databázi MSDB a modelu. Databáze MSDB a Model ověřte, že jsou v režimu úplného obnovení, pokud chcete, aby Povolí provedení záloh protokolů. Zálohy protokolů se nikdy neobsadila. pro hlavní server. A žádné zálohy jsou prováděny pro databázi TempDB. |
+| **Zálohování databáze systému** | Povolí nebo zakáže (zakázáno) | Pokud povolena, tato funkce také vytvoří zálohu systémové databáze: Hlavní server, databázi MSDB a modelu. Databáze MSDB a Model ověřte, že jsou v režimu úplného obnovení, pokud chcete, aby Povolí provedení záloh protokolů. Zálohy protokolů se nikdy neobsadila. pro hlavní server. A žádné zálohy jsou prováděny pro databázi TempDB. |
 | **Plán zálohování** | Ruční nebo automatizované (automatizované) | Ve výchozím nastavení plán zálohování automaticky závisí na protokolu růst. Ruční plán zálohování umožňuje uživateli zadat časový interval pro zálohy. V takovém případě zálohy provádět pouze v zadaných intervalech a během zadaného časového intervalu daného dne. |
 | **Frekvence úplného zálohování** | Denně nebo týdně | Frekvence úplného zálohování. V obou případech úplné zálohování začít během časového intervalu pro dalším naplánovaném čase. Při výběru týdenních záloh může trvají více dní, dokud všechny databáze úspěšně zálohovali. |
 | **Čas spuštění úplného zálohování** | 00:00 – 23:00 (01:00) | Počáteční čas daného dne, během které úplné zálohování lze provést. |
@@ -88,9 +89,9 @@ Máte virtuálního počítače SQL serveru, který obsahuje počet velkých dat
 
 V pondělí povolíte automatizované zálohování v2 s následujícím nastavením:
 
-- Plán zálohování: **ruční**
-- Úplné četnost záloh: **týdenní**
-- Čas spuštění zálohování úplné: **01:00**
+- Plán zálohování: **Ruční**
+- Frekvence úplného zálohování: **Každý týden**
+- Čas spuštění úplného zálohování: **01:00**
 - Časový interval úplného zálohování: **1 hodina**
 
 To znamená, že dalšího intervalu zálohování k dispozici je úterý v 1: 00 1 hodinu. V tu chvíli začne automatizovaného zálohování, zálohování databází jeden po druhém. V tomto scénáři vaše databáze jsou dostatečně velký, úplné zálohy dokončit první několik databází. Ale po jedné hodině všechny databáze byly zálohovány.
@@ -106,9 +107,9 @@ Máte virtuálního počítače SQL serveru, který obsahuje počet velkých dat
 
 V pondělí povolíte automatizované zálohování v2 s následujícím nastavením:
 
-- Plán zálohování: ruční
-- Úplné četnost záloh: denně
-- Čas spuštění zálohování úplné: 22:00
+- Plán zálohování: Ručně
+- Frekvence úplného zálohování: Denně
+- Čas spuštění úplného zálohování: 22:00
 - Časový interval úplného zálohování: 6 hodin
 
 To znamená, že dalšího intervalu zálohování k dispozici od pondělí ve 22: 00, 6 hodin. V tu chvíli začne automatizovaného zálohování, zálohování databází jeden po druhém.
@@ -331,7 +332,7 @@ Další možností je využít integrované funkce databázového e-mailu pro oz
 ## <a name="next-steps"></a>Další postup
 Automatizované zálohování v2 nakonfiguruje spravovaného zálohování na virtuálních počítačích Azure. Proto je důležité [najdete v dokumentaci spravovaného zálohování systému](https://msdn.microsoft.com/library/dn449496.aspx) vám pomohou pochopit chování a důsledky.
 
-Můžete najít další zálohování a obnovení doprovodné materiály pro SQL Server na virtuálních počítačích Azure v následujícím článku: [zálohování a obnovení pro SQL Server ve službě Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
+Můžete najít další zálohování a obnovení doprovodné materiály pro SQL Server na virtuálních počítačích Azure v následujícím článku: [Zálohování a obnovení pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-backup-recovery.md).
 
 Informace o dalších úlohách dostupných automation najdete v tématu [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).
 

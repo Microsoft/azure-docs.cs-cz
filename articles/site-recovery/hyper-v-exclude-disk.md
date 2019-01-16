@@ -1,17 +1,19 @@
 ---
 title: Vyloučení disků z replikace při nastavování zotavení po havárii pomocí služby Azure Site Recovery | Dokumentace Microsoftu
 description: Popisuje, jak vyloučit disky virtuálních počítačů z replikace během zotavení po havárii do Azure.
-author: nsoneji
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 7de9dc497b1c9ee29b46aa0d645b7b28676cb22d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 01/19/2019
+ms.author: mayg
+ms.openlocfilehash: 9b26c80b59a57b4a9b2423e1a9028cf723f40fb1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849016"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321224"
 ---
 # <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 Tento článek popisuje, jak vyloučit disky z replikace. Takové vyloučení může optimalizovat jak využití šířky pásma potřebné pro replikaci, tak i prostředků využívaných na cílové straně těmito disky.
@@ -194,7 +196,7 @@ Tady je nastavení stránkovacího souboru na virtuálním počítači Azure:
 
 ![Nastavení stránkovacího souboru na virtuálním počítači Azure](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Případ 2: Stránkovací soubor je nakonfigurovaný na jiné jednotce (než je D:)
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Případ 2: Stránkovací soubor je nakonfigurován na jiné jednotce (než je D:)
 
 Tady je konfigurace disků zdrojového virtuálního počítače:
 

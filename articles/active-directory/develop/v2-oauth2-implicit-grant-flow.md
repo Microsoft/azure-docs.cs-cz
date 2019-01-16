@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ce54ad77893557b595f9777dfc82939aacf41608
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962575"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321513"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>verze 2.0 protokolů – SPA pomocí implicitní tok
 
@@ -54,7 +54,7 @@ Následující diagram znázorňuje vypadá celý implicitní přihlášení tok
 Pro počáteční přihlášení uživatele do vaší aplikace, můžete odeslat [OpenID Connect](v2-protocols-oidc.md) žádost o autorizaci a získat `id_token` z koncového bodu v2.0.
 
 > [!IMPORTANT]
-> Úspěšně požádat o token ID registrace aplikace v [portál pro registraci](https://apps.dev.microsoft.com) musí mít **povolit implicitní tok** pro webového klienta povolena. Pokud není povolen, `unsupported_response` se vrátí Chyba: **poskytnutá hodnota pro 'typ odpovědi' vstupní parametr není povolený pro tohoto klienta. Očekávaná hodnota je "kód"**
+> Úspěšně požádat o token ID registrace aplikace v [portál pro registraci](https://apps.dev.microsoft.com) musí mít **povolit implicitní tok** pro webového klienta povolena. Pokud není povolen, `unsupported_response` se vrátí Chyba: **Zadaná hodnota pro 'typ odpovědi' vstupní parametr není povolený pro tohoto klienta. Očekávaná hodnota je "kód"**
 
 ```
 // Line breaks for legibility only
@@ -111,7 +111,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | `token_type` |Pokud zahrnutý `response_type` zahrnuje `token`. Bude vždy `Bearer`. |
 | `expires_in`|Pokud zahrnutý `response_type` zahrnuje `token`. Určuje počet sekund, po které je token platný, pro účely ukládání do mezipaměti. |
 | `scope` |Pokud zahrnutý `response_type` zahrnuje `token`. Označuje počet rozsahů:, pro které bude platit access_token. Nemusí obsahovat celou obory požadováno, pokud nebyla pro uživatele (v případě jen AAD obory žádá při použití osobního účtu přihlásit). |
-| `id_token` | Podepsané JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** pouze zadaný if `openid` byl vyžádán oboru. |
+| `id_token` | Podepsané JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** Pouze zadaný if `openid` byl vyžádán oboru. |
 | `state` |Pokud parametr stavu je zahrnutý v požadavku, by se zobrazit stejnou hodnotu v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 #### <a name="error-response"></a>Odpověď na chybu
@@ -192,7 +192,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | `token_type` | Bude vždy `Bearer`. |
 | `expires_in` | Určuje počet sekund, po které je token platný, pro účely ukládání do mezipaměti. |
 | `scope` | Označuje počet rozsahů:, pro které bude platit access_token. Nemusí obsahovat celou obory požadováno, pokud nebyla pro uživatele (v případě jen AAD obory žádá při použití osobního účtu přihlásit). |
-| `id_token` | Podepsané JSON Web Token (JWT). Pokud zahrnutý `response_type` zahrnuje `id_token`. Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token` odkaz](id-tokens.md). <br> **Poznámka:** pouze zadaný if `openid` byl vyžádán oboru. |
+| `id_token` | Podepsané JSON Web Token (JWT). Pokud zahrnutý `response_type` zahrnuje `id_token`. Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token` odkaz](id-tokens.md). <br> **Poznámka:** Pouze zadaný if `openid` byl vyžádán oboru. |
 | `state` |Pokud parametr stavu je zahrnutý v požadavku, by se zobrazit stejnou hodnotu v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 

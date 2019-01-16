@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 54e562cca800a19829b985e3fd529368350104a1
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211532"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329474"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikovat a vyřešit problémy přiřazení licencí pro skupinu v Azure Active Directory
 
@@ -53,17 +53,17 @@ Následující části poskytují popis každý potenciální problém a způsob
 
 ## <a name="not-enough-licenses"></a>Nedostatek licencí
 
-**Problém:** nejsou k dispozici dostatek dostupné licence pro některý z produktů, které je určené ve skupině. Budete muset zakoupit další licence k produktu nebo uvolnit nevyužitých licencí od jiných uživatelů nebo skupin.
+**Problém:** Nejsou k dispozici dostatek dostupné licence pro některý z produktů, které je určené ve skupině. Budete muset zakoupit další licence k produktu nebo uvolnit nevyužitých licencí od jiných uživatelů nebo skupin.
 
 Pokud chcete zobrazit, kolik licencí je k dispozici, přejděte na **Azure Active Directory** > **licence** > **všechny produkty**.
 
 Pokud chcete zobrazit, kteří uživatelé a skupiny spotřebovávají licence, vyberte produkt. V části **licencovaní uživatelé**, zobrazí se seznam všech uživatelů, kteří měli licence přiřazené přímo nebo prostřednictvím jedné nebo více skupin. V části **licencované skupiny**, se zobrazí všechny skupiny, které mají tento produkty přiřazené.
 
-**Prostředí PowerShell:** rutin prostředí PowerShell, oznamte tuto chybu jako _CountViolation_.
+**PowerShell:** Rutiny prostředí PowerShell, oznamte tuto chybu jako _CountViolation_.
 
 ## <a name="conflicting-service-plans"></a>Konfliktní plány služeb
 
-**Problém:** obsahuje některý z produktů, které je zadaná ve skupině pro plán služby, který je v konfliktu s jinou plán služeb, který je již přiřazen uživateli prostřednictvím různých produktů. Některé nabízené plány služeb jsou nakonfigurovány tak, že nelze přiřadit jednomu uživateli jako jiné služby související plán.
+**Problém:** Obsahuje některý z produktů, které je zadaná ve skupině pro plán služby této je v konfliktu s jinou plán služeb, který je již přiřazen uživateli prostřednictvím různých produktů. Některé nabízené plány služeb jsou nakonfigurovány tak, že nelze přiřadit jednomu uživateli jako jiné služby související plán.
 
 Představte si následující příklad. Uživatel má licenci pro Office 365 Enterprise *E1* přímo, přiřazené všechny plány povolena. Uživatel přidal do skupiny, která má Office 365 Enterprise *E3* produktu přiřazené k němu. Produkt E3 obsahuje plány služby, které se nesmí překrývat s plány, které jsou součástí E1, tak skupiny přiřazení licence nezdaří s chybou "Konfliktní plány služeb". V tomto příkladu jsou konfliktní plány služeb:
 
@@ -74,25 +74,25 @@ Pokud chcete tento konflikt vyřešit, je nutné zakázat, dva plány. Můžete 
 
 Rozhodnutí o tom, jak vyřešit konfliktní licence na produkty vždy patří správci. Azure AD nebude automaticky vyřešit konflikty licence.
 
-**Prostředí PowerShell:** rutin prostředí PowerShell, oznamte tuto chybu jako _MutuallyExclusiveViolation_.
+**PowerShell:** Rutiny prostředí PowerShell, oznamte tuto chybu jako _MutuallyExclusiveViolation_.
 
 ## <a name="other-products-depend-on-this-license"></a>Na této licenci závisí další produkty.
 
-**Problém:** obsahuje některý z produktů, které je zadaná ve skupině pro plán služby, který musí být povolené pro plán služby, v jiném produktu pro funkci. K této chybě dochází, když se pokusí odebrat základní plán služby Azure AD. Například to může nastat při odebrání uživatele ze skupiny.
+**Problém:** Plán služby, který musí být povolené pro plán služby, v jiném produktu pro funkci obsahuje některý z produktů, které je zadaná ve skupině. K této chybě dochází, když se pokusí odebrat základní plán služby Azure AD. Například to může nastat při odebrání uživatele ze skupiny.
 
 Chcete-li tento problém vyřešit, budete muset Ujistěte se, že vyžaduje plán se stále přiřadí uživatelům pomocí některé jiné metody nebo, že závislé služby je zakázáno pro tyto uživatele. Po to provedete, můžete z těchto uživatelů správně odebrat skupiny licencí.
 
-**Prostředí PowerShell:** rutin prostředí PowerShell, oznamte tuto chybu jako _DependencyViolation_.
+**PowerShell:** Rutiny prostředí PowerShell, oznamte tuto chybu jako _DependencyViolation_.
 
 ## <a name="usage-location-isnt-allowed"></a>Místo použití není povolené.
 
-**Problém:** některých služeb společnosti Microsoft nejsou dostupné ve všech umístěních kvůli místní zákony a předpisy. Předtím, než můžete přiřadit licenci uživateli, je nutné zadat **místo využívání** vlastnost pro daného uživatele. Můžete zadat umístění v rámci **uživatele** > **profilu** > **nastavení** části webu Azure Portal.
+**Problém:** Některé služby nejsou k dispozici ve všech umístěních kvůli místní zákony a předpisy. Předtím, než můžete přiřadit licenci uživateli, je nutné zadat **místo využívání** vlastnost pro daného uživatele. Můžete zadat umístění v rámci **uživatele** > **profilu** > **nastavení** části webu Azure Portal.
 
 Když Azure AD se pokusí přiřadit licenci skupiny na uživatele, jejichž využití umístění se nepodporuje, se nezdaří a zaznamená chybu na uživatele.
 
 Chcete-li tento problém vyřešit, odeberte uživatele z nepodporované umístění z licencované skupiny. Případně pokud aktuální hodnoty umístění využití není představují umístění skutečné uživatele, můžete upravit je tak, aby licence jsou správně přiřazené příště (Pokud se podporuje na nové umístění).
 
-**Prostředí PowerShell:** rutin prostředí PowerShell, oznamte tuto chybu jako _ProhibitedInUsageLocationViolation_.
+**PowerShell:** Rutiny prostředí PowerShell, oznamte tuto chybu jako _ProhibitedInUsageLocationViolation_.
 
 > [!NOTE]
 > Pokud Azure AD přiřadí skupinu licencí, zdědí všechny uživatele bez použití zadaného umístění umístění adresáře. Doporučujeme správcům nastavit správné použití hodnoty umístění uživatelů před použitím skupinové licence pro dosažení souladu s místními zákony a předpisy.
@@ -117,6 +117,12 @@ Pro skupinu můžete přiřadit více než jednu licenci na produkt. Například
 Azure AD se pokusí přiřadit všechny licence, které jsou zadány ve skupině k jednotlivým uživatelům. Pokud Azure AD nejde přiřadit některý z produktů z důvodu problémů obchodní logiky, nebude by buď přidělit jiným licencím ve skupině. Příkladem je, pokud nejsou k dispozici dostatek licencí pro všechny, nebo pokud je v konfliktu s ostatními službami, které jsou povolené na uživatele.
 
 Zobrazí se uživatelům, kteří se nepodařilo přiřadit a zkontrolovat, které produkty jsou tento problém ovlivňuje.
+
+## <a name="what-happens-when-a-group-with-licenses-assigned-is-deleted"></a>Co se stane, když skupinu přiřazené licence je odstranit?
+
+Musíte odebrat všechny licence přiřazené ke skupině před odstraněním skupiny. Odebrání licencí od všech uživatelů ve skupině může trvat dobu. Při odebírání přiřazení licencí ze skupiny, může být selhání, pokud má uživatel přiřazenou licenci závislé nebo pokud je problém konflikt adres proxy serveru, který zakazuje odebrání licencí. Pokud má uživatel licenci, která závisí na licenci, která se odebírá z důvodu odstranění skupiny, přiřazení licence uživateli je převést z zděděné pro přesměrování.
+
+Představte si třeba skupinu, která má Office 365 E3 nebo E5 přiřazena pomocí Skypu pro firmy plán služby povolena. Představte si také, že několik členů skupiny mají přímo přiřazené licence zvuk konference. Při odstranění skupiny licencování na základě skupiny pokusí se odebrat všechny uživatele Office 365 E3 nebo E5. Protože konference zvuk je závislá na Skype pro firmy, pro všechny uživatele s zvuk konference přiřazené, na základě skupin licencí převede licence Office 365 E3 nebo E5 na přímé přiřazení licencí.
 
 ## <a name="how-do-you-manage-licenses-for-products-with-prerequisites"></a>Jak budete spravovat licence pro produkty s požadavky?
 
@@ -146,8 +152,6 @@ Od této chvíle přidané do této skupiny uživatele používat jednu licenci 
 
 > [!TIP]
 > Můžete vytvořit více skupin pro jednotlivé požadované služby. Například pokud používáte Office 365 Enterprise E1 a Office 365 Enterprise E3 pro vaše uživatele, můžete vytvořit dvě skupiny, abyste získali licenci pro Microsoft Workplace Analytics: ten, který používá E1 jako předpoklad a druhý, který se používá E3. Tímto způsobem můžete distribuovat doplněk E1 a E3 uživatelům nutnosti využít další licence.
-
-
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Jak můžete vynutit zpracování licencí skupiny pro vyřešení chyb?
 

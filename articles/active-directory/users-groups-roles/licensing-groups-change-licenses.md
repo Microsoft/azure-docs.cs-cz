@@ -1,10 +1,10 @@
 ---
-title: Tom, jak bezpečně migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory | Dokumentace Microsoftu
-description: Popisuje doporučený postup pro migraci uživatelů mezi licencemi různých produktů (Office 365 Enterprise E1 a E3) pomocí licencování na základě skupin
+title: Migrace uživatelů mezi licencemi produktů se skupinami – Azure Active Directory | Dokumentace Microsoftu
+description: Doporučený postup pro migraci uživatelů mezi licencemi různých produktů (Office 365 Enterprise E1 a E3) popisuje použití skupinové licence
 services: active-directory
 keywords: Licencování Azure AD
 documentationcenter: ''
-author: piotrci
+author: curtand
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/29/2018
-ms.author: piotrci
-ms.openlocfilehash: 643339545dac6ec35ab44f2a05fbe417dea2bb71
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 01/14/2019
+ms.author: curtand
+ms.reviewer: sumitp
+ms.openlocfilehash: 68d4cdf3c7ba08f7cf37132936c6769c99c177cc
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211787"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319414"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Tom, jak bezpečně migrace uživatelů mezi licencemi produktů pomocí licencování na základě skupin
 
@@ -32,7 +33,7 @@ Tento článek popisuje doporučenou metodou pro přesun uživatelů mezi licenc
 
 Tento článek obsahuje ukázkový kód Powershellu, který slouží k provedení kroků migrace a ověření. Kód je užitečné zejména pro rozsáhlé operace, kde není praktické kroky provést ručně.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Než začnete s migrací, je důležité ověřit, že některé předpoklady platí pro všechny uživatele, které chcete migrovat. Nejsou-li předpoklady platí pro všechny uživatele, může migrace selhat pro některé. Díky tomu někteří uživatelé možná ztratíte přístup ke službám nebo datům. Je třeba ověřit následující předpoklady:
 
 -   Uživatelé mají *zdroj licence* , která je přiřazena pomocí licencování na základě skupiny. Licence k produktu pro přesun směrem z dědí z jedné zdrojové skupiny a nejsou přímo přiřadit.
@@ -66,15 +67,15 @@ Cíl migrace je změna uživatelské licence pomocí licencování na základě 
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>Migrace jednoho uživatele pomocí webu Azure portal
 Toto je jednoduché návod, jak migrovat jenom jednoho konkrétního uživatele.
 
-**Krok 1**: uživatel má *zdroj licence* , který je zděděno od skupiny. Nejsou žádné přímé přiřazení licence:
+**KROK 1**: Uživatel má *zdroj licence* , který je zděděno od skupiny. Nejsou žádné přímé přiřazení licence:
 
 ![Uživatel s licencí zdrojové, zděděná ze skupiny](./media/licensing-groups-change-licenses/UserWithSourceLicenseInherited.png)
 
-**Krok 2**: uživatel je přidán do cílové skupiny a licencování na základě skupiny zpracovává změny. Uživatel nyní má i *zdroj licence* a *cílové licence* , která se dědí ze skupin:
+**KROK 2**: Uživatel je přidán do cílové skupiny a licencování na základě skupiny zpracovává změny. Uživatel nyní má i *zdroj licence* a *cílové licence* , která se dědí ze skupin:
 
 ![Uživatel s licencí zdrojovém i cílovém zděděno od skupiny](./media/licensing-groups-change-licenses/UserWithBothSourceAndTargetLicense.png)
 
-**Krok 3**: uživatel je odebrán ze skupiny pro zdroj a licencování na základě skupiny zpracovává změny. Uživatel nyní má pouze *cílové licence*:
+**KROK 3**: Uživatel je odebrán ze skupiny pro zdroj a licencování na základě skupiny zpracovává změny. Uživatel nyní má pouze *cílové licence*:
 
 ![Uživatel s licencí cílové zděděné ze skupiny](./media/licensing-groups-change-licenses/UserWithTargetLicenseAssigned.png)
 
@@ -176,7 +177,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>Migrace uživatelů mezi produkty, které mají konfliktní plány služeb
-Cíl migrace je změna uživatelské licence pomocí licencování na základě skupiny *zdroj licence* (v tomto příkladu: Office 365 Enterprise E1) k *cílové licence* (v tomto příkladu: Office 365 Enterprise E3). Tyto dva produkty v tomto scénáři obsahují konfliktní plány služeb, takže budete muset vyřešit konflikt hladce migrovat uživatele. Další informace o těchto konfliktech najdete v tématu [licencování řešení problému skupiny služby Active Directory: konfliktní plány služeb](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). V žádném bodě během migrace by uživatelé ztratit přístup ke službám nebo datům. Migrace se provádí malých dávkách"." Můžete ověřovat výsledek pro jednotlivé dávky a minimalizovat rozsahu potíží, které mohou nastat během procesu. Celkově procesu vypadá takto:
+Cíl migrace je změna uživatelské licence pomocí licencování na základě skupiny *zdroj licence* (v tomto příkladu: Office 365 Enterprise E1) k *cílové licence* (v tomto příkladu: Office 365 Enterprise E3). Tyto dva produkty v tomto scénáři obsahují konfliktní plány služeb, takže budete muset vyřešit konflikt hladce migrovat uživatele. Další informace o těchto konfliktech najdete v tématu [licencování řešení problému skupiny služby Active Directory: Konfliktní plány služeb](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). V žádném bodě během migrace by uživatelé ztratit přístup ke službám nebo datům. Migrace se provádí malých dávkách"." Můžete ověřovat výsledek pro jednotlivé dávky a minimalizovat rozsahu potíží, které mohou nastat během procesu. Celkově procesu vypadá takto:
 
 1.  Uživatelé jsou členy skupiny zdroje a dědí *zdroj licence* z této skupiny.
 
@@ -195,15 +196,15 @@ Cíl migrace je změna uživatelské licence pomocí licencování na základě 
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>Migrace jednoho uživatele pomocí webu Azure portal
 Toto je jednoduché návod, jak migrovat jenom jednoho konkrétního uživatele.
 
-**Krok 1**: uživatel má *zdroj licence* , který je zděděno od skupiny. Nejsou žádné přímé přiřazení licence:
+**KROK 1**: Uživatel má *zdroj licence* , který je zděděno od skupiny. Nejsou žádné přímé přiřazení licence:
 
 ![Uživatel s licencí zdrojové, zděděná ze skupiny](./media/licensing-groups-change-licenses/UserWithSourceLicenseInheritedConflictScenario.png)
 
-**Krok 2**: uživatel je přidán do cílové skupiny a licencování na základě skupiny zpracovává změny. Vzhledem k tomu, že uživatel má stále *zdroj licence*, *cílové licence* je v chybovém stavu kvůli konfliktu:
+**KROK 2**: Uživatel je přidán do cílové skupiny a licencování na základě skupiny zpracovává změny. Vzhledem k tomu, že uživatel má stále *zdroj licence*, *cílové licence* je v chybovém stavu kvůli konfliktu:
 
 ![Uživatel s licencí zdrojové, zděděná ze skupiny a cíl licence v chybovém stavu](./media/licensing-groups-change-licenses/UserWithSourceLicenseAndTargetLicenseInConflict.png)
 
-**Krok 3**: uživatel je odebrán ze skupiny pro zdroj a licencování na základě skupiny zpracovává změny. *Cílové licence* platí pro uživatele:
+**KROK 3**: Uživatel je odebrán ze skupiny pro zdroj a licencování na základě skupiny zpracovává změny. *Cílové licence* platí pro uživatele:
 
 ![Uživatel s licencí cílové zděděné ze skupiny](./media/licensing-groups-change-licenses/UserWithTargetLicenseAssignedConflictScenario.png)
 

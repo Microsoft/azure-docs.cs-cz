@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 3a0b4db77e6dfb8be3a2f943052925001e5f7715
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 32606f988152b061fa1923c409207b2a650e64ba
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259779"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332451"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Použití dat služby Azure Blockchain Workbench v aplikaci SQL Server Management Studio
 
@@ -34,7 +34,7 @@ Microsoft SQL Server Management Studio umožňuje rychlé psaní a testování d
 
 3. Do dialogového okna **Připojení k serveru** zadejte název serveru a přihlašovací údaje k databázi.
 
-    Pokud používáte přihlašovací údaje vytvořené při nasazení služby Azure Blockchain Workbench, pak uživatelským jménem bude **dbadmin** a heslo bude stejné jako to, které jste zadali při nasazení.
+    Pokud používáte přihlašovací údaje vytvořené při nasazení služby Azure Blockchain Workbench, pak uživatelským jménem je **dbadmin** a heslo je stejné jako to, které jste při zadali nasazení.
 
     ![Zadání přihlašovacích údajů SQL](./media/data-sql-management-studio/sql-creds.png)
 
@@ -43,7 +43,7 @@ Microsoft SQL Server Management Studio umožňuje rychlé psaní a testování d
     ![Seznam databází](./media/data-sql-management-studio/db-list.png)
 
 5. Pokud chcete zobrazit data související s libovolným zobrazením databáze, můžete pomocí následujících kroků automaticky vygenerovat a vybrat příkaz.
-6. Klikněte v Průzkumníku objektů pravým tlačítkem na libovolné zobrazení databáze.
+6. Klikněte pravým tlačítkem na libovolné zobrazení databáze v Průzkumníku objektů.
 7. Vyberte **Script View as** (Zobrazit skript jako).
 8. Zvolte **SELECT to** (VYBRAT do).
 9. Vyberte **New Query Editor Window** (Nové okno Editoru dotazů).

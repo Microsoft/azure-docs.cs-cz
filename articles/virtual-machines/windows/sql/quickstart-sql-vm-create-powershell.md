@@ -3,7 +3,7 @@ title: Vytvoření virtuálního počítače s Windows a SQL Serverem pomocí Az
 description: V tomto kurzu se dozvíte, jak vytvořit virtuální počítač se systémy Windows a SQL Server 2017 v prostředí Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
-ms.author: jroth
-ms.openlocfilehash: 313f77481025f0851fb1fd09033dc198072b2190
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: aa4ea4e724ec383fc9f22bd56572d2fd0e844abc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259440"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332434"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače se systémy Windows a SQL Server v prostředí Azure PowerShell
 

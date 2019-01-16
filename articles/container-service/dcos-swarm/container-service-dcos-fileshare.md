@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 728f8ddbda35f27c0f89e1d72e98fd2d7669320e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999866"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329816"
 ---
 # <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(NEPOUŽÍVANÉ) Vytvořit a připojit sdílenou složku na clusteru DC/OS
 
@@ -35,7 +35,7 @@ Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spu�
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Vytvoření sdílené složky v Microsoft Azure
 
-Než začnete používat sdílenou složku Azure s clusterem ACS DC/OS, je potřeba vytvořit účet úložiště a sdílenou složku. Spuštěním následujícího skriptu vytvořte úložiště a sdílenou složku. Aktualizujte parametry s použitím hodnot z vašeho prostředí.
+Než začnete používat sdílenou složku Azure s clusterem ACS DC/OS, je potřeba vytvořit účet úložiště a sdílenou složku. Spuštěním následujícího skriptu vytvořte úložiště a sdílenou složku. Aktualizujte parametry s těmi, která z vašeho prostředí.
 
 ```azurecli-interactive
 # Change these four parameters

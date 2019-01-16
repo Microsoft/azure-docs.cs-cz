@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/11/2019
-ms.openlocfilehash: 5db9e1f348fed9592d33e9240180db7f2667bb56
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: e658eba29368530c4c221496de98823c002985fe
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244541"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329459"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Replikace SQL Database Managed Instance
 
@@ -29,13 +29,13 @@ Obecně platí vydavatelem a distributorem musí být buď v cloudu nebo místn�
 
 - **Vydavatele s místní distributor na spravovanou instanci**
 
-   ![Replication-with-Azure-SQL-DB-Single-Managed-instance-Publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+   ![Replication-with-azure-sql-db-single-managed-instance-publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
    Vydavateli a distributorovi databáze se konfiguruje v jedné spravované instance.
 
 - **Vydavatele s vzdáleného distributora na spravovanou instanci**
 
-   ![Replication-with-Azure-SQL-DB-separate-Managed-instances-Publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
+   ![Replication-with-azure-sql-db-separate-managed-instances-publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
    Vydavateli a distributorovi konfigurují na dvou spravované instance. V této konfiguraci:
 
@@ -45,7 +45,7 @@ Obecně platí vydavatelem a distributorem musí být buď v cloudu nebo místn�
 
 - **Vydavateli a distributorovi místně pomocí odběratele na spravovanou instanci**
 
-   ![Replication-from-On-Premises-to-Azure-SQL-DB-Subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
+   ![Replication-from-on-premises-to-azure-sql-db-subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
 
    V této konfiguraci služby Azure SQL database je odběratel. Tato konfigurace podporuje migraci z místního do Azure. V roli odběratele SQL database nevyžaduje Managed Instance, ale můžete jako krok při migraci z místního Azure SQL Database Managed Instance. Další informace o Azure SQL Database předplatitele najdete v tématu [replikace do služby SQL Database](replication-to-sql-database.md).
 
@@ -199,4 +199,5 @@ Nejsou podporovány následující funkce:
 
 ## <a name="see-also"></a>Viz také
 
+- [Transakční replikace](sql-database-managed-instance-transactional-replication.md)
 - [Co je Managed Instance?](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

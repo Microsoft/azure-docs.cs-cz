@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 5a1883412a5285c4916c43a5c6ad81168096dd7f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1e4c978a8767154fb6a1f9a822cb0dd8d1b8796e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993552"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331023"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(NEPOUŽÍVANÉ) Vyrovnání zatížení kontejnerů v clusteru služby Azure Container Service DC/OS
 
@@ -97,7 +97,7 @@ Potom vytvořte soubor s názvem *hello-web.json* a zkopírujte do něj následu
 }
 ```
 
-Pomocí rozhraní příkazového řádku DC/OS spusťte aplikaci. Ve výchozím nastavení nasadí Marathon aplikaci do privátního clusteru. To znamená, že výše popsané nasazení je přístupné jenom přes nástroj pro vyrovnávání zatížení, což je obvykle žádoucí chování.
+Pomocí rozhraní příkazového řádku DC/OS spusťte aplikaci. Ve výchozím nastavení Marathon nasadí aplikaci na soukromý cluster. To znamená, že výše popsané nasazení je přístupné jenom přes nástroj pro vyrovnávání zatížení, což je obvykle žádoucí chování.
 
 ```azurecli-interactive
 dcos marathon app add hello-web.json

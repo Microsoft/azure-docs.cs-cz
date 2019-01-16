@@ -6,14 +6,14 @@ author: jamesbak
 ms.service: storage
 ms.author: jamesbak
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 6b2812e31174c4e5d61ae9941563e39357de9522
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: e4e75c65178c4bbedcf781c2fbf2149a94a702cd
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107085"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321190"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 
@@ -42,6 +42,30 @@ Pro absolvování tohoto kurzu potřebujete:
 * [Vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 * Stáhněte si soubor s ukázkovými daty (**small_radio_json.json**) z úložiště [příkladů a sledování problémů U-SQL](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) a poznamenejte si cestu, kam jste tento soubor uložili.
 * Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
+## <a name="set-aside-storage-account-configuration"></a>Odložení konfigurace účtu úložiště
+
+Budete potřebovat název účtu úložiště a koncovým bodem systému souborů identifikátoru URI.
+
+Pokud chcete získat název účtu úložiště na webu Azure Portal, zvolte **všechny služby** a filtrováním podle termín *úložiště*. Vyberte **účty úložiště** a vyhledejte svůj účet úložiště.
+
+Pokud chcete získat koncový bod systému souborů identifikátoru URI, zvolte **vlastnosti**a v podokně vlastností najít hodnotu **primární ADLS koncový bod SOUBOROVÉ systému** pole.
+
+Vložte obě tyto hodnoty do textového souboru. Brzy je budete potřebovat.
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
+
+Vytvoření instančního objektu služby podle pokynů v tomto tématu: [Postup: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
+
+:heavy_check_mark: Při provádění kroků v [vytvoření aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) části tohoto článku, nezapomeňte nastavit **přihlašovací adresa URL** pole **vytvořit** dialogové okno pro identifikátor URI koncového bodu právě shromažďují.
+
+:heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, nezapomeňte přiřadit aplikaci do **Role Přispěvatel úložiště objektů Blob**.
+
+:heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
 
 ## <a name="create-the-workspace"></a>Vytvořit pracovní prostor
 
@@ -101,35 +125,36 @@ Nejprve vytvořte ve vašem pracovním prostoru Azure Databricks Poznámkový bl
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do pracovního prostoru Azure Databricks, který jste vytvořili a vyberte **spustit pracovní prostor**.
 
-1. Na levé straně vyberte **pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
+2. Na levé straně vyberte **pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
 
     ![Vytvoření poznámkového bloku v Databricks](./media/data-lake-storage-handle-data-using-databricks/databricks-create-notebook.png "vytvoření poznámkového bloku v Databricks")
 
-1. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Vyberte jazyk **Scala** a vyberte cluster Spark, který jste vytvořili v předchozí části.
+3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Vyberte jazyk **Scala** a vyberte cluster Spark, který jste vytvořili v předchozí části.
 
     ![Zadejte podrobnosti pro poznámkového bloku v Databricks](./media/data-lake-storage-handle-data-using-databricks/databricks-notebook-details.png "zadejte podrobnosti pro poznámkového bloku v Databricks")
 
     Vyberte **Vytvořit**.
 
-1. Zadejte následující kód do první buňky Poznámkový blok a spouštění kódu. Nahraďte zástupné symboly v závorce v ukázce vlastními hodnotami:
+4. Zkopírujte a vložte následující blok kódu do první buňky, ale není ještě tento kód spustit.
 
     ```scala
-    %python%
-    configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-     
+    val configs = Map(
+    "fs.azure.account.auth.type" -> "OAuth",
+    "fs.azure.account.oauth.provider.type" -> "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+    "fs.azure.account.oauth2.client.id" -> "<application-id>",
+    "fs.azure.account.oauth2.client.secret" -> "<authentication-key>"),
+    "fs.azure.account.oauth2.client.endpoint" -> "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+    "fs.azure.createRemoteFileSystemDuringInitialization"->"true")
+
     dbutils.fs.mount(
-        source = "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/[<directory-name>]",
-        mount_point = "/mnt/<mount-name>",
-        extra_configs = configs)
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<directory-name>",
+    mountPoint = "/mnt/<mount-name>",
+    extraConfigs = configs)
     ```
 
-1. Vyberte klávesy Shift + Enter pro spuštění kódu.
+5. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` zástupné hodnoty hodnotami, které jste shromáždili, když jste dokončili kroky v v tomto bloku kódu [vyhradit účet úložiště konfigurace](#config) a [vytvoření instančního objektu](#service-principal) částech tohoto článku. Nastavte `file-system-name`, `directory-name`, a `mount-name` zástupné hodnoty tak, aby odkazoval na libovolné názvy, kterému chcete udělit systému souborů, adresáře a připojení.
 
-Tím vytvoříte systém souborů pro účet úložiště.
+6. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
 ## <a name="upload-the-sample-data"></a>Nahrání ukázkových dat
 

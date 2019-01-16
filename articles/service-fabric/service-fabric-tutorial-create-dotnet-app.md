@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4ba55d58a24045141800efb97a0f523d2a9cd242
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304495"
+ms.locfileid: "54321734"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -325,8 +325,6 @@ V Průzkumníku řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifes
 ```
 
 Aktualizujte také hodnotu vlastnosti Application URL (Adresa URL aplikace) v projektu Voting, aby se webový prohlížeč při ladění aplikace otevřel na správném portu.  V Průzkumníkovi řešení vyberte projekt **Voting** a aktualizujte vlastnost **Application URL** na **8080**.
-
-![Adresa URL aplikace](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ### <a name="deploy-and-run-the-voting-application-locally"></a>Místní nasazení a spuštění aplikace Voting
 Teď můžete aplikaci Voting spustit a ladit. V sadě Visual Studio stiskněte **F5**, aby se aplikace nasadila do místního clusteru Service Fabric v režimu ladění. Aplikace se nenasadí, pokud jste předtím Visual Studio neotevřeli jako **správce**.

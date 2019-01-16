@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992548"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331431"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(NEPOUŽÍVANÉ) Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service pomocí nástroje Docker Swarm pomocí služby Azure DevOps
 
@@ -137,7 +137,7 @@ Další kroky definování pracovního postupu sestavení. Existuje pět imagí 
 * ProductsApi
 * Proxy server
 * RatingsApi
-* RecommandationsApi
+* RecommendationsApi
 * ShopFront
 
 Musíte přidat dva kroky Dockeru pro každé bitové kopie, jeden pro sestavení image a jeden nasdílejte image do registru kontejneru Azure. 
@@ -172,7 +172,7 @@ Musíte přidat dva kroky Dockeru pro každé bitové kopie, jeden pro sestaven�
 
 1. Klikněte na tlačítko **Uložit** a název vašeho kanálu sestavení.
 
-## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Vytvoření kanál pro vydávání verzí
+## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Vytvořit kanál pro vydávání verzí
 
 Služby Azure DevOps vám umožní [správě vydávání verzí napříč prostředími](https://www.visualstudio.com/team-services/release-management/). Můžete povolit průběžné nasazování, abyste měli jistotu, že vaše aplikace bude nasazena v různých prostředích (třeba dev, test, předprodukčních a produkčních) smooth způsobem. Můžete vytvořit nové prostředí, která představuje váš cluster Azure Container Service Docker Swarm.
 

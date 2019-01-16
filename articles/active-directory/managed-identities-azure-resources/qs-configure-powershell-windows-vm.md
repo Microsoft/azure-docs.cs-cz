@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: a29980da64775ca39f103b7430239f38c98a43fc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 4d4775169c40190e4cffb7b93c04abd58babc928
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578448"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320919"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu
 
@@ -88,6 +88,34 @@ Aby systém přiřadil spravovaná identita na virtuálním počítači, který 
    ```
     > [!NOTE]
     > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.
+
+### <a name="add-vm-system-assigned-identity-to-a-group"></a>Přidejte identitu přiřazenou systémem virtuálního počítače do skupiny
+
+Po povolení na virtuálním počítači identitu přiřazenou systémem, přidáte jej do skupiny.  Následující procedura přidá identitou přiřazenou systémem Virtuálního počítače do skupiny.
+
+1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
+
+   ```powershell
+   Login-AzureRmAccount
+   ```
+
+2. Načíst a poznamenejte si `ObjectID` (jak je uvedeno v `Id` pole vrácené hodnoty) z instančního objektu Virtuálního počítače:
+
+   ```powerhshell
+   Get-AzureRmADServicePrincipal -displayname "myVM"
+   ```
+
+3. Načíst a poznamenejte si `ObjectID` (jak je uvedeno v `Id` pole vrácené hodnoty) skupiny:
+
+   ```powershell
+   Get-AzureRmADGroup -searchstring "myGroup"
+   ```
+
+4. Přidání instančního objektu Virtuálního počítače do skupiny:
+
+   ```powershell
+   Add-AzureADGroupMember -ObjectId "<objectID of group>" -RefObjectId "<object id of VM service principal>"
+   ```
 
 ## <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Zakázat spravovanou identitu systém přiřadil z virtuálního počítače Azure
 

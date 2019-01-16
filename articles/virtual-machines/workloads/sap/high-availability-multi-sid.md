@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9d7fb03cf5dbcd7455f0d4e8f4a69bb1c6d23a83
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0440d1b0c3045feb6d670dae2645590febfa5bc6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497089"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320153"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvořte konfiguraci několika identifikátorů SID služby SAP NetWeaver
 
@@ -471,7 +471,7 @@ Cílem je nainstalovat více SAP ABAP ASCS nebo SAP Java SCS Clusterované insta
 >Maximální počet instancí SAP ASCS/SCS v jednom clusteru služby WSFC je rovna hodnotě maximální počet privátní front-endové IP adresy pro každý nástroj pro vyrovnávání zatížení Azure interní.
 >
 
-Další informace o omezeních nástroj pro vyrovnávání zatížení, najdete v části "privátní front-endové IP adresy na nástroj pro vyrovnávání zatížení" v [omezení sítě: Azure Resource Manageru][networking-limits-azure-resource-manager].
+Další informace o omezeních nástroj pro vyrovnávání zatížení, najdete v části "privátní front-endové IP adresy na nástroj pro vyrovnávání zatížení" v [síťová omezení: Azure Resource Manageru][networking-limits-azure-resource-manager].
 
 Kompletní prostředí s dvěma systémy vysoké dostupnosti SAP bude vypadat takto:
 
@@ -489,7 +489,7 @@ Připravíte infrastrukturu, můžete nainstalovat další instance SAP ASCS/SCS
 
 | Název parametru | Hodnota |
 | --- | --- |
-| SAP ASCS/SCS SID |PR1-lb ASC |
+| SAP ASCS/SCS SID |pr1-lb-ascs |
 | K SAP DBMS interní nástroj pro vyrovnávání zatížení | PR5 |
 | Název virtuálního hostitele SAP | pr5-sap-cl |
 | Hostování SAP ASCS/SCS virtuální IP adresa (IP adresa nástroje pro vyrovnávání zatížení Další Azure) | 10.0.0.50 |
@@ -607,7 +607,7 @@ foreach ($Port in $Ports) {
 
 $ILB | Set-AzureRmLoadBalancer
 
-Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
+Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
 Po spuštění skriptu, výsledky se zobrazí na webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky:
@@ -668,6 +668,6 @@ Podrobný postup je následující:
 
 ## <a name="next-steps"></a>Další postup
 
-- [Síťová omezení: Azure Resource Manageru][networking-limits-azure-resource-manager]
+- [Síťová omezení: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Více virtuálních IP adres Azure Load Balancer][load-balancer-multivip-overview]
 - [Příručka pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích s Windows][sap-ha-guide]

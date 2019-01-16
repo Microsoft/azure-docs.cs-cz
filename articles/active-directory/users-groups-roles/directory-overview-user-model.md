@@ -1,23 +1,23 @@
 ---
-title: Uživatelé, skupiny, licencování a role pro velké organizace v Azure Active Directory | Microsoft Docs
+title: Uživatelé, skupiny, licencování a Přehled role – Azure Active Directory | Dokumentace Microsoftu
 description: Vztah mezi uživateli a přiřazenými licencemi, role správců a členství ve skupinách v Azure Active Directory
 keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 10/01/2018
+ms.date: 01/14/2019
 ms.topic: overview
 ms.service: active-directory
 ms.workload: identity
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: 7f588766ead19f2cbca22aab596e6dc9d0210791
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
-ms.translationtype: HT
+ms.openlocfilehash: 2689ec400b7d29c9f086481056e5f554d7fde95a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019914"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321955"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
 
@@ -68,7 +68,7 @@ Azure AD nabízí také podrobné řízení dat, která proudí mezi aplikací a
 * spustit a zastavit službu zřizování Azure AD pro aplikaci, vymazat mezipaměť zřizování nebo restartovat službu,
 * zobrazit **sestavu aktivit zřizování**, která poskytuje protokol všech uživatelů a skupin vytvořených, aktualizovaných a odebraných mezi Azure AD a aplikací, a **sestavu o chybách zřizování**, která poskytuje podrobnější chybové zprávy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste začínající správce Azure AD, přečtěte si základní informací v článku [Základní dokumentace ke službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index).
 

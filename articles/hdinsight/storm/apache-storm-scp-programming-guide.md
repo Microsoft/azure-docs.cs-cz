@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631817"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332094"
 ---
 # <a name="scp-programming-guide"></a>Průvodce programováním pro spojovací bod služby
 Spojovací bod služby je platformou můžete tvořit v reálném čase spolehlivé a konzistentní a zpracování dat vysoce výkonné aplikace. Systém orchard je založen na horní [Apache Storm](https://storm.incubator.apache.org/) – systém ve komunity OSS pro zpracování datových proudů. Storm je určen Nathan marz a byla open source služba Twitter. Využívá [Apache ZooKeeper](https://zookeeper.apache.org/), jiný projekt Apache umožňující vysoce spolehlivých distribuovaných správy koordinace a stavu. 
@@ -228,7 +228,7 @@ Spojovací bod služby aplikace mohou používat `State` objekt a zachová někt
     /// <summary>
     /// Retrieve all states that were previously uncommitted, excluding all aborted states 
     /// </summary>
-    /// <returns>Uncommited States</returns>
+    /// <returns>Uncommitted States</returns>
     public IEnumerable<State> GetUnCommitted();
 
     /// <summary>
@@ -249,7 +249,7 @@ Spojovací bod služby aplikace mohou používat `State` objekt a zachová někt
     /// List all the committed states
     /// </summary>
     /// <returns>Registries contain the Committed State </returns> 
-    public IEnumerable<Registry> Commited();
+    public IEnumerable<Registry> Committed();
 
     /// <summary>
     /// List all the Aborted State in the StateStore
@@ -354,13 +354,13 @@ SCP.NET přidal následující funkce pro definování transakční topologie:
 
 | **Nové funkce** | **Parametry** | **Popis** |
 | --- | --- | --- |
-| **TX topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definujte transakční topologii s názvem topologie &nbsp;spouts definice mapování a mapování definice funkce bolts |
-| **spojovací bod služby. tx spout** |Exec – název<br />args<br />pole |Definujte transakční spout. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro spout |
-| **spojovací bod služby tx-batch-bolt** |Exec – název<br />args<br />pole |Definujte transakční dávky Bolt. Spuštění aplikace s ***exec-name*** pomocí ***args.***<br /><br />Pole je výstupních polí pro bolt. |
-| **spojovací bod služby tx potvrzení bolt** |Exec – název<br />args<br />pole |Definujte bolt transakční potvrzení. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro bolt |
-| **nontx topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definovat topologii netransakční s názvem topologie&nbsp; spouts definice mapování a mapování definice funkce bolts |
-| **spout spojovací bod služby** |Exec – název<br />args<br />pole<br />parameters |Definujte netransakční spout. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro spout<br /><br />***Parametry*** jsou volitelné, jeho použití k zadání některých parametrů, třeba "nontransactional.ack.enabled". |
-| **spojovací bod služby bolt** |Exec – název<br />args<br />pole<br />parameters |Definujte netransakční Bolt. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro bolt<br /><br />***Parametry*** jsou volitelné, jeho použití k zadání některých parametrů, třeba "nontransactional.ack.enabled". |
+| **tx-topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definujte transakční topologii s názvem topologie &nbsp;spouts definice mapování a mapování definice funkce bolts |
+| **scp-tx-spout** |Exec – název<br />args<br />pole |Definujte transakční spout. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro spout |
+| **scp-tx-batch-bolt** |Exec – název<br />args<br />pole |Definujte transakční dávky Bolt. Spuštění aplikace s ***exec-name*** pomocí ***args.***<br /><br />Pole je výstupních polí pro bolt. |
+| **scp-tx-commit-bolt** |Exec – název<br />args<br />pole |Definujte bolt transakční potvrzení. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro bolt |
+| **nontx-topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definovat topologii netransakční s názvem topologie&nbsp; spouts definice mapování a mapování definice funkce bolts |
+| **scp-spout** |Exec – název<br />args<br />pole<br />parameters |Definujte netransakční spout. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro spout<br /><br />***Parametry*** jsou volitelné, jeho použití k zadání některých parametrů, třeba "nontransactional.ack.enabled". |
+| **scp-bolt** |Exec – název<br />args<br />pole<br />parameters |Definujte netransakční Bolt. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro bolt<br /><br />***Parametry*** jsou volitelné, jeho použití k zadání některých parametrů, třeba "nontransactional.ack.enabled". |
 
 SCP.NET má definovaný následující klíčová slova:
 
@@ -368,9 +368,9 @@ SCP.NET má definovaný následující klíčová slova:
 | --- | --- |
 | **: název** |Definovat název topologie |
 | **: topologie** |Definovat topologii pomocí předchozí funkce a sestavení v těch, které jsou. |
-| **: p** |Definujte paralelismu nápovědu pro každý funkcích spout nebo bolt. |
-| **: Konfigurace** |Definování konfigurace parametru nebo aktualizovat existující |
-| **: schéma** |Definujte schéma Stream. |
+| **:p** |Definujte paralelismu nápovědu pro každý funkcích spout nebo bolt. |
+| **:config** |Definování konfigurace parametru nebo aktualizovat existující |
+| **:schema** |Definujte schéma Stream. |
 
 A často používaných parametry:
 
@@ -517,7 +517,7 @@ Součást bodu připojení služby zahrnuje straně Java a C\# straně. Aby bylo
    
    Metoda serializace v Javě na straně musí být zadán v specifikace souboru:
    
-     (spojovací bod služby spout
+     (scp-spout
    
        {
          "plugin.name" "HybridTopology.exe"
@@ -542,7 +542,7 @@ Součást bodu připojení služby zahrnuje straně Java a C\# straně. Aby bylo
            public List<Object> Deserialize(List<ByteBuffer> dataList);
        }
 
-## <a name="scp-host-mode"></a>Režim bodu připojení služby hostitele
+## <a name="scp-host-mode"></a>SCP Host Mode
 V tomto režimu může uživatel kompilaci jejich kódy, které knihovny DLL a SCPHost.exe poskytované spojovací bod služby používat k odesílání topologie. Specifikace souboru bude vypadat přibližně takto:
 
     (scp-spout
@@ -561,7 +561,7 @@ Tady `plugin.name` je zadán jako `SCPHost.exe` poskytované spojovací bod slu�
 V režimu hostitele uživatelský kód je zkompilován jako knihovnu DLL a vyvolání platformou spojovací bod služby. Spojovací bod služby platformy tak můžete získat plnou kontrolu nad celou zpracování logiky. Proto doporučujeme, abyste našim zákazníkům odeslat topologii v režimu spojovacího bodu služby hostitele, protože můžete zjednodušit vývojové prostředí a nám novější verze také přináší větší flexibilitu a zpětnou kompatibilitu.
 
 ## <a name="scp-programming-examples"></a>Příklady programování spojovací bod služby
-### <a name="helloworld"></a>Hello World
+### <a name="helloworld"></a>HelloWorld
 **HelloWorld** je jednoduchý příklad, který znázorňuje představu o tom SCP.Net. Používá netransakční topologie s spout volá **generátor**a dvě funkce bolts volá **rozdělovač** a **čítač**. Spout **generátor** náhodně generuje věty a posílat tyto věty a **rozdělovač**. Bolt **rozdělovač** rozdělí vět do slov a generování těchto slov chcete **čítač** bolt. Bolt "čítač" slovník používá k zaznamenání počet výskytů jednotlivých slov.
 
 Existují dva specifikace soubory **HelloWorld.spec** a **HelloWorld\_EnableAck.spec** pro účely tohoto příkladu. V C\# kódu, ho můžete zjistit, zda je povoleno potvrzení tím, že získáme pluginConf ze strany Java.

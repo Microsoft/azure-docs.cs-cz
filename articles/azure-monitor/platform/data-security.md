@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 01/15/2019
 ms.author: magoedte
-ms.openlocfilehash: a791ac5424a0c0e70ba5480e51f5e21fe3c061ea
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7152582a73dbaf07eca4aae066c9ac3ab82c3135
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104739"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319048"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../../security/security-microsoft-trust-center.md).  
@@ -174,7 +174,13 @@ Jak je popsáno výše, data ze serveru pro správu nebo přímo připojených a
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Služba Log Analytics přijímá a zpracovává data
 Služba Log Analytics zajišťuje, že příchozí data z důvěryhodného zdroje pomocí ověřování certifikátů a integritu dat s ověřováním Azure. Nezpracované nezpracovaná data se pak ukládá v Centru událostí Azure v oblasti, které nakonec se uloží data v klidovém stavu. Typ dat, která je uložena závisí na typech řešení, které byly naimportovány a používá ke shromažďování dat. Log Analytics pak služby procesy nezpracovaných dat a ingestuje do databáze.
 
-Doba uchování shromážděná data uložená v databázi, závisí na vybrané cenového plánu. Pro *Free* vrstvy, shromážděných dat je k dispozici sedm dní. Pro *Paid* úrovni shromažďovat data po dobu 31 dnů ve výchozím nastavení je k dispozici, ale je možné rozšířit na 730 dnů. Data jsou uložena v klidovém stavu ve službě Azure storage k zajištění důvěrnosti data zašifrovaná a data se replikují v rámci místní oblasti pomocí místně redundantního úložiště (LRS). Poslední dva týdny dat jsou také uloženy v mezipaměti založené na jednotkách SSD a tato mezipaměť není aktuálně zašifrovaný.  Aktuálně pracujeme na podporují šifrování mezipaměti založené na jednotkách SSD.      
+Doba uchování shromážděná data uložená v databázi, závisí na vybrané cenového plánu. Pro *Free* vrstvy, shromážděných dat je k dispozici sedm dní. Pro *Paid* úrovni shromažďovat data po dobu 31 dnů ve výchozím nastavení je k dispozici, ale je možné rozšířit na 730 dnů. Data jsou uložena v klidovém stavu ve službě Azure storage k zajištění důvěrnosti data zašifrovaná a data se replikují v rámci místní oblasti pomocí místně redundantního úložiště (LRS). Poslední dva týdny dat jsou také uloženy v mezipaměti založené na jednotkách SSD a tato mezipaměť je zašifrovaný, s výjimkou v těchto oblastech:
+
+* Západní střed USA
+* Západní USA 2
+* Velká Británie – jih 
+
+Aktuálně pracujeme na zahrnují podporu těchto oblastí.     
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Přístup k datům pomocí Log Analytics
 Pro přístup k pracovním prostoru Log Analytics, přihlášení k webu Azure portal pomocí účtu organizace nebo účtu Microsoft, který jste dřív nastavili. Všechny přenosy mezi portálem a službou Log Analytics se odesílají prostřednictvím zabezpečeného kanálu protokolu HTTPS. Během používání portálu, se vygeneruje ID relace na straně klienta uživatelské (webový prohlížeč) a data se ukládají do místní mezipaměti, dokud nebude ukončena relace. Když byla ukončena, odstraní se mezipaměť. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny HTTPOnly, která jsou zabezpečená. Po předem určené období nečinnosti je Azure portal relace ukončena.

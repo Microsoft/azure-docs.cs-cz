@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4020500e20973e8818320424833815c1b5224f6c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 0d806491c58c4b1881adc2fd830de7c7b9f0859d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242393"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331924"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Získání informací o databázi služby Azure Blockchain Workbench
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak získáte podrobné informace o databázi služby A
 
 ## <a name="overview"></a>Přehled
 
-Informace o spouštění aplikací, pracovních postupů a chytrých kontraktů se poskytují pomocí zobrazení databáze SQL služby Blockchain Workbench. Vývojáři mohou tyto informace využívat, když pracují s nástroji jako je Microsoft Excel, Power BI, Visual Studio a SQL Server Management Studio.
+Informace o spouštění aplikací, pracovních postupů a chytrých kontraktů se poskytují pomocí zobrazení databáze SQL služby Blockchain Workbench. Vývojáři mohou pomocí těchto informací při používání nástrojů, jako je například aplikace Microsoft Excel, Power BI, Visual Studio a SQL Server Management Studio.
 
 Aby se vývojář mohl k této databázi připojit, potřebuje:
 
@@ -34,7 +34,7 @@ Aby se vývojář mohl k této databázi připojit, potřebuje:
 
 K databázi se připojíte takto:
 
-1. Přihlaste se k Azure Portalu pod účtem, který má oprávnění **Vlastník** k prostředkům služby Azure Blockchain Workbench.
+1. Přihlaste se k webu Azure portal pomocí účtu, který má **vlastníka** oprávnění pro prostředky Azure Blockchain Workbench.
 2. V levém navigačním podokně zvolte **Skupiny prostředků**.
 3. Zvolte název skupiny prostředků svého nasazení služby Blockchain Workbench.
 4. Výběrem možnosti **Typ** tento seznam prostředků seřaďte a pak zvolte **SQL Server**. V seřazeném seznamu na dalším snímku obrazovky se zobrazují dvě databáze SQL – jedna „master“ a jedna, která jako **předponu prostředku** používá „lhgn“.

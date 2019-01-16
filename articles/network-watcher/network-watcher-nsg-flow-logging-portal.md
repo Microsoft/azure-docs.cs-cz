@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ce2d69e26909231383f3538d51387f27d8202a43
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822462"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332468"
 ---
-# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí portálu Azure Portal
+# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí webu Azure portal
 
 Skupina zabezpečení sítě (NSG) umožňuje filtrovat příchozí provoz do a odchozí provoz z virtuálního počítače. Můžete protokolovat síťový provoz procházející skupinou zabezpečení sítě pomocí funkce protokolu toku NSG služby Network Watcher. V tomto kurzu se naučíte:
 
@@ -38,7 +38,7 @@ Skupina zabezpečení sítě (NSG) umožňuje filtrovat příchozí provoz do a 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 > [!NOTE] 
-> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Konfigurace je k dispozici prostřednictvím webu Azure portal a rozhraní REST API. Povolení verze 2 protokoly v nepodporované oblasti způsobí verze 1 protokoly do účtu úložiště.
+> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Povolení verze 2 protokoly v nepodporované oblasti výsledkem bude výstupem do vašeho účtu úložiště protokolů verze 1.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -212,7 +212,7 @@ Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, kte
 | T            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
 | O            | Směr              | Jestli byl provoz příchozí (I) nebo odchozí (O).                                     |
 | A            | Akce                 | Jestli byl provoz povolený (A) nebo odmítnutý (D).  
-| C            | Stav toku **pouze verze 2** | Zaznamenat stav toku. Možné stavy **B**: Begin, když se vytvoří tok. Nejsou zadány Statistika. **C**: pokračování pro probíhající toku. Statistiky jsou k dispozici v intervalech 5 minut. **Elektronické**: ukončení, když tok je ukončen. Statistiky jsou k dispozici. |
+| C            | Stav toku **pouze verze 2** | Zaznamenat stav toku. Možné stavy **B**: Proces, při vytváření toku. Nejsou zadány Statistika. **C**: Pokračování pro probíhající toku. Statistiky jsou k dispozici v intervalech 5 minut. **E**: Ukončit, pokud tok je ukončen. Statistiky jsou k dispozici. |
 | 30 | Pakety odeslané - zdrojového do cílového umístění **pouze verze 2** | Celkový počet TCP nebo UDP odeslaných paketů za sekundu ze zdroje do cíle od poslední aktualizace. |
 | 16978 | Počet odeslaných bajtů - zdrojového do cílového umístění **pouze verze 2** | Celkový počet TCP nebo UDP paketů bajtů odeslaných ze zdroje do cíle od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části. | 
 | 24 | Pakety odeslané – cílový zdroj **pouze verze 2** | Celkový počet TCP nebo UDP pakety odeslané z cílového zdroje od poslední aktualizace. |

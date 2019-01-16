@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 44703a2547f685aaa0b6c583c39c08ef6a570d56
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3a255b21e8bfd7d78954603e9aa6e5ca39cee95b
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016524"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321989"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidat odolnost proti chybám v aktivitě kopírování přeskočením nekompatibilních řádků
 
@@ -61,8 +61,8 @@ Následující příklad uvádí definici JSON konfigurace přeskočení nekompa
     },
     "sink": {
         "type": "SqlSink",
-    },         
-    "enableSkipIncompatibleRow": true,           
+    },
+    "enableSkipIncompatibleRow": true,
     "redirectIncompatibleRowSettings": {
         "linkedServiceName": "BlobStorage",
         "path": "redirectcontainer/erroroutput"

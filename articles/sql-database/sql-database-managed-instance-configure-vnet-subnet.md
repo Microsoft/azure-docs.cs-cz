@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed Instance konfigurace existující virtuální síť/podsíť | Dokumentace Microsoftu
-description: Toto téma popisuje postup konfigurace existující virtuální síť (VNet) a podsíti, kde můžete nasadit Azure SQL Database Managed Instance.
+title: Konfigurace existující virtuální sítě pro Azure SQL Database Managed Instance | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nakonfigurovat stávající virtuální síť a podsíť, kde můžete nasadit Azure SQL Database Managed Instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,21 +12,26 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 1718177a0902bc7049eb6986e5a1d128eeb3f233
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 16684619ccf542783e425852a075eaa74e96e592
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040954"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332179"
 ---
-# <a name="configure-an-existing-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace stávající virtuální síť pro Azure SQL Database Managed Instance
+# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurace existující virtuální sítě pro Azure SQL Database Managed Instance
 
-Azure SQL Database Managed Instance musí být nasazen v rámci Azure [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) a podsíť vyhrazené jenom pro Managed instance. Můžete použít existující virtuální síť a podsíť, pokud je nakonfigurovaný podle [požadavky na spravované instanci virtuální síť](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+Azure SQL Database Managed Instance musí být nasazen v rámci Azure [virtuální sítě](../virtual-network/virtual-networks-overview.md) a podsíť vyhrazené jenom pro Managed instance. Můžete použít existující virtuální síť a podsíť, pokud je nakonfigurovaný podle [požadavky na virtuální síť Managed Instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
-Pokud máte novou podsíť, která ještě není nakonfigurovaná, si nejste jisti je podsíť v souladu s [požadavky](sql-database-managed-instance-connectivity-architecture.md#network-requirements), nebo chcete provést kontrolu je podsíť i nadále dodržovalo [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po Některé změny, které jste provedli, můžete ověřovat a upravovat pomocí skriptů je popsáno v této části.
+Pokud jeden z následujících případech se na vás vztahuje, můžete ověřovat a upravovat vaší sítě pomocí skriptů je popsáno v tomto článku:
 
-  > [!Note]
-  > Managed Instance můžete vytvořit pouze ve virtuálním sítím Resource Manageru. Azure virtuální sítě nasazené pomocí modelu nasazení Classic nejsou zkonstruovat. Ujistěte se, že vypočítat velikost podsítě podle pokynů v [určit velikost podsítě pro Managed instance](sql-database-managed-instance-determine-size-vnet-subnet.md) článek, protože podsíť velikost nelze změnit po nasazení spolehlivým prostředkům.
+* Máte novou podsíť, která ještě není nakonfigurovaná.
+* Si nejste jistí, že podsíť je v souladu s [požadavky](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+* Chcete zkontrolovat, že podsíť stále splňuje [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po provedení změny.
+
+
+> [!Note]
+> Managed Instance můžete vytvořit pouze v virtuálními sítěmi vytvořenými prostřednictvím modelu nasazení Azure Resource Manageru. Azure virtuálních sítí vytvořených prostřednictvím modelu nasazení classic nejsou podporovány. Vypočítá velikost podsítě podle pokynů v [určit velikost podsítě pro Managed instance](sql-database-managed-instance-determine-size-vnet-subnet.md) článku. Poté, co nasadíte prostředky v nejde jeho velikost změnit podsíť.
 
 ## <a name="validate-and-modify-an-existing-virtual-network"></a>Ověřovat a upravovat stávající virtuální síť
 
@@ -45,14 +50,14 @@ $parameters = @{
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
-Příprava podsítě se provádí ve třech jednoduchých krocích:
+Skript připraví podsítě ve třech krocích:
 
-1. Ověření – pro Managed Instance, požadavky na síť ověřit vybranou virtuální síť a podsíť.
-2. Potvrďte – uživatel je zobrazen sady změn, které je potřeba provedené při přípravě podsíť Managed Instance nasazení a zobrazí výzva ho o souhlas.
-3. Příprava – správně nakonfigurována virtuální síť a podsíť.
+1. Ověření: Ověřuje vybraná virtuální síť a podsíť pro Managed Instance požadavky na síť.
+2. Potvrzení: Uživatel zobrazuje sadu změn, které je třeba provést při přípravě na podsíť Managed Instance nasazení. Také požádá ho o souhlas.
+3. Příprava: Řádně nakonfiguruje virtuální síť a podsíť.
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled najdete v tématu [co je Managed Instance](sql-database-managed-instance.md)
-- Kurz ukazuje, jak vytvořit virtuální síť, vytvoříte Managed Instance a obnovit databázi ze zálohy databáze, najdete v tématu [vytvoření Azure SQL Database Managed Instance](sql-database-managed-instance-get-started.md).
+- Přehled najdete v tématu [co je Managed Instance?](sql-database-managed-instance.md).
+- Kurz ukazuje, jak vytvořit virtuální síť, vytvoříte Managed Instance a obnovit databázi ze zálohy databáze, najdete v tématu [vytvořit Azure SQL Database Managed Instance](sql-database-managed-instance-get-started.md).
 - Problémy s DNS, najdete v části [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md).

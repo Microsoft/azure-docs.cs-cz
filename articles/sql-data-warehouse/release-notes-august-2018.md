@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c52fcd544e22c274d0e9053da93d2b9dee0df695
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286628"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320357"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Srpen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v srpna 2018.
@@ -23,9 +23,9 @@ Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje
 ## <a name="automatic-intelligent-insights"></a>Automatické Intelligent Insights
 Microsoft zavedl [automatické intelligent insights](https://azure.microsoft.com/blog/automatic-intelligent-insights-to-optimize-performance-with-sql-data-warehouse/) k poskytování automatizace pro datový sklad v oblasti cloudu. Musíte již monitorování datového skladu pro data tabulky nerovnoměrné rozdělení a neoptimální statistiku. Bez dalších poplatků SQL Data Warehouse poskytuje informace o inteligentní přehledy pro všemi instancemi Gen2. Díky integraci s [Azure Advisoru](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), se automaticky zobrazí doporučení osvědčených postupů pro zlepšení výkonu aktivní úlohy. SQL Data Warehouse analyzuje vaše úlohy a zpřístupňují doporučení na základě využití. Tato analýza se stane, denní umožňuje sledovat využití sestav a doporučení pro vylepšení vaší úloze.
 
-Na portálu Azure Advisor můžete zobrazit doporučení: ![Azure Advisor portál doporučení pro Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
+Na portálu Azure Advisor můžete zobrazit doporučení: ![Doporučení Azure Advisoru portálu pro Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
-Můžete zobrazit podrobnosti jednotlivých kategorií můžete zobrazit doporučení pro konkrétní výstrahu: ![Azure Advisor portál podrobnosti o doporučení pro Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+Můžete zobrazit podrobnosti jednotlivých kategorií můžete zobrazit doporučení pro konkrétní výstrahu: ![Podrobnosti o portálu doporučení Azure Advisor pro Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
 
 
 ## <a name="bug-fixes"></a>Opravy chyb
@@ -33,7 +33,7 @@ Můžete zobrazit podrobnosti jednotlivých kategorií můžete zobrazit doporu�
 | Titul | Popis |
 |:---|:---|
 | **Při překročení maximálního limitu počtu rozdělení potenciální chyby dotazu** |Při překročení limitu rozdělení souboru horní mez 1 milion stroj SQL pro výpis způsobila neošetřenou výjimku a všechny dotazy se nezdařilo. Tato oprava adresou problém tak, že správně zpracování výjimek a vrátit chybu, aniž by to způsobilo dotazů. |
-| **Větší ExternalMoveReadersPerNode výchozí hodnotu pro zlepšení výkonu zatížení** |Tento problém byl způsobený ExternalMoveReadersPerNode nastavení vlastnosti nejsou synchronizovány s využitím service fabric nastavení. Tento regresní způsobit snížení výkonu zatížení Gen2. Oprava přináší výkon načítání Gen2 za parametry optimalizované návrhu.|
+| **Větší ExternalMoveReadersPerNode výchozí hodnotu pro zlepšení výkonu načítání** |Tento problém byl způsobený ExternalMoveReadersPerNode nastavení vlastnosti nejsou synchronizovány s využitím service fabric nastavení. Tento regresní způsobit snížení výkonu zatížení Gen2. Oprava přináší výkon načítání Gen2 za parametry optimalizované návrhu.|
 
 
 ## <a name="next-steps"></a>Další postup

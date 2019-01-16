@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 3540d68491d6f2c8282aa1ef0b385300aaa190cf
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3e7a03f1235dab7eefd63b6611890897285d86ea
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822479"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332332"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurace protokolů toku skupiny zabezpečení sítě pomocí Azure CLI
 
@@ -34,7 +34,7 @@ Protokoly toku skupin zabezpečení sítě jsou funkce služby Network Watcher, 
 K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure pro Mac, Linux a Windows (CLI)](/cli/azure/install-azure-cli).
 
 > [!NOTE] 
-> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Konfigurace je k dispozici prostřednictvím webu Azure Portal a rozhraní REST API. Povolení verze 2 protokoly v nepodporované oblasti výsledkem bude výstupem do vašeho účtu úložiště protokolů verze 1.
+> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Povolení verze 2 protokoly v nepodporované oblasti výsledkem bude výstupem do vašeho účtu úložiště protokolů verze 1.
 
 ## <a name="register-insights-provider"></a>Registrace poskytovatele Insights
 
@@ -50,6 +50,8 @@ Příkaz povolení protokolů toku můžete vidět v následujícím příkladu:
 
 ```azurecli
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
+# Configure 
+az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName  --format JSON --log-version 2
 ```
 
 Účet úložiště, který zadáte, nemůže mít pravidel sítě nakonfigurována, které omezují přístup k síti jenom na služby nebo konkrétní virtuální sítě. Účet úložiště může být ve stejné nebo jiné předplatné Azure, než skupina zabezpečení sítě, která umožňují v protokolu toku. Pokud používáte různých předplatných, musí být obě přidružené ke stejnému tenantovi Azure Active Directory. Musíte mít účet, který používáte pro každé předplatné [potřebná oprávnění](required-rbac-permissions.md). 
@@ -68,7 +70,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 Umístění úložiště protokolů toku je definován při vytvoření. Praktický nástroj pro přístup k těmto protokolů toku uložit do účtu úložiště je Microsoft Azure Storage Explorer, které je možné stáhnout tady:  http://storageexplorer.com/
 
-Pokud je určen účet úložiště, jsou uloženy soubory zachytávání paketů do účtu úložiště v následujícím umístění:
+Pokud je určen účet úložiště, jsou uloženy soubory protokolů toku do účtu úložiště v následujícím umístění:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json

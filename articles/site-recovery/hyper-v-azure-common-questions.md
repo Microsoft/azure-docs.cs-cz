@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 8ba188db87ffc0d428c7349c902cf60bec65d30f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 11e29aa8d85ed7e3cf5ce7b4a8360e4b5eb628f9
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788476"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319213"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté otázky – Hyper-V do Azure zotavení po havárii
 
@@ -140,7 +140,7 @@ Pro účely replikace virtuálních počítačů Hyper-V musí běžet podporova
 Virtuální počítače Hyper-V je možné replikovat každých 30 sekund (s výjimkou storage úrovně premium), 5 minut nebo 15 minut.
 
 ###<a name="can-i-extend-replication"></a>Je možné rozšířit replikaci?
-Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).
+Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Můžete provést offline počáteční replikaci?
 Toto není podporováno. Žádost o tuto funkci [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).

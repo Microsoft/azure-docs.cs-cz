@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/23/2018
+ms.date: 01/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 1f3d6434c7226465f9e054d5e5bf35fbb228b311
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c14bf7c108251a4ec00f5e2f0b1254f83121866e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014483"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321105"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z databáze MySQL pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-onprem-mysql-connector.md)
 > * [Aktuální verze](connector-mysql.md)
 
@@ -30,7 +30,7 @@ Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat
 
 Kopírování dat z databáze MySQL do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Konkrétně tento konektor MySQL podporuje MySQL **verze 5.1 a novější**.
+Konkrétně tento konektor MySQL podporuje MySQL **verze 5.6 a 5.7**.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -59,7 +59,7 @@ Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=
 | Vlastnost | Popis | Možnosti | Požaduje se |
 |:--- |:--- |:--- |:--- |:--- |
 | SSLMode | Tato možnost určuje, jestli ovladač používá šifrování pomocí protokolu SSL a ověřování při připojení k MySQL. Například `SSLMode=<0/1/2/3/4>`| ZAKÁZÁNO (0) / upřednostňované (1) **(výchozí)** / požadované (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
-| useSystemTrustStore | Tato možnost určuje, jestli se má používat certifikát certifikační Autority z úložiště důvěryhodných systému, nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| (1) povolený / zakázaný (0) **(výchozí)** | Ne |
+| UseSystemTrustStore | Tato možnost určuje, jestli se má používat certifikát certifikační Autority z úložiště důvěryhodných systému, nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| (1) povolený / zakázaný (0) **(výchozí)** | Ne |
 
 **Příklad:**
 
@@ -70,8 +70,8 @@ Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=
         "type": "MySql",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+                "type": "SecureString",
+                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
             }
         },
         "connectVia": {
@@ -227,7 +227,6 @@ Při kopírování dat z databáze MySQL, se používají následující mapová
 | `tinytext` |`String` |
 | `varchar` |`String` |
 | `year` |`Int` |
-
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

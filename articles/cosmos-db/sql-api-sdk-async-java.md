@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 1/15/2019
 ms.author: moderakh
-ms.openlocfilehash: e64820377421a3eae80d77d464e48979a3bb30a5
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 760a54a09dd612cef93de0de1e8ac2fd59b04b26
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198622"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329374"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -50,6 +50,11 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
+* Zpracování odpovědi na dotazy velmi velké opravy.
+* Při vytváření instance klienta opravy zpracování tokenu prostředku ([githubu #78](https://github.com/Azure/azure-cosmosdb-java/issues/78)).
+* Upgradovat zranitelné závislost jackson-databind ([githubu #77](https://github.com/Azure/azure-cosmosdb-java/pull/77)).
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 * Opravili jsme chybu nevrácení prostředků.
@@ -125,6 +130,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |15. ledna 2019|--- |
 | [2.3.0](#2.3.0) |29. listopadu 2018|--- |
 | [2.2.2](#2.2.2) |8. listopadu 2018|--- |
 | [2.2.1](#2.2.1) |2. listopadu 2018|--- |

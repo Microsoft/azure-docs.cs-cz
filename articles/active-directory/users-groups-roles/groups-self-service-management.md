@@ -1,5 +1,5 @@
 ---
-title: Nastavení samoobslužné správy přístupu k aplikacím ve službě Azure Active Directory | Microsoft Docs
+title: Nastavení samoobslužné správy skupin ve službě Azure AD | Dokumentace Microsoftu
 description: Vytváření a správa skupin zabezpečení nebo skupin Office 365 ve službě Azure Active Directory a žádosti o členství ve skupině zabezpečení nebo skupině Office 365
 services: active-directory
 documentationcenter: ''
@@ -10,21 +10,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: get-started-article
-ms.date: 09/11/2018
+ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 7966705df2a352f2011d5f7611277e92d8e2d11a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 541de125ea16b853a6fc6b3dd5a3e75e3bb9b065
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294233"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319371"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Nastavení služby Azure Active Directory pro samoobslužnou správu skupin
+
 Vaši uživatelé můžou vytvářet a spravovat své vlastní skupiny zabezpečení nebo skupiny Office 365 ve službě Azure Active Directory (Azure AD). Uživatelé mohou také požádat o členství ve skupině zabezpečení nebo ve skupině Office 365. Vlastník skupiny pak může členství schválit nebo odepřít. Každodenní řízení členství ve skupině můžete delegovat na uživatele, kteří chápou obchodní kontext takového členství. Funkce samoobslužné správy skupin jsou dostupné jenom pro skupiny zabezpečení a skupiny Office 365. Nejsou dostupné pro skupiny zabezpečení s povoleným e-mailem a pro distribuční seznamy.
 
-Samoobslužná správa skupin v současné době obsluhuje dva základní scénáře: delegovanou správu skupin a samoobslužnou správu skupin.
+Samoobslužná správa skupin služby dva scénáře: 
 
 * **Delegovaná správa skupin** – příkladem je správce, který spravuje přístup k aplikaci SaaS, kterou používá jeho společnost. Správa těchto přístupových práv je čím dál náročnější, takže správce požádá majitele firmy, aby vytvořil novou skupinu. Správce přiřadí nové skupině přístup k aplikaci a do této skupiny přidá všechny uživatele, kteří už přístup k aplikaci mají. Majitel firmy potom může přidat další uživatele a tito uživatelé budou automaticky přiřazeni k aplikaci. Kvůli správě přístupu pro uživatele tak majitel firmy nemusí čekat na správce. Pokud správce udělí stejné oprávnění správci v jiné firemní skupině, potom tato osoba může spravovat také přístup svých vlastních uživatelů. Majitel firmy ani správce nemůžou zobrazit nebo spravovat uživatele toho druhého. Správce může stále vidět všechny uživatele, kteří mají přístup k aplikaci, a v případě potřeby je může zablokovat.
 * **Samoobslužná správa skupin** – příkladem tohoto scénáře jsou dva uživatelé, kteří mají nezávisle nastavené weby SharePoint Online. Oba chtějí týmu toho druhého poskytnout přístup na svůj web. Aby toho dosáhli, můžou vytvořit jednu skupinu v Azure AD a potom v SharePointu Online každý z nich vybere tu skupinu, které chce poskytnout přístup na svůj web. Pokud chce uživatel získat přístup, požádá o něj na přístupovém panelu a po schválení získá přístup k oběma webům SharePoint Online automaticky. Později se jeden z nich rozhodne, že všichni uživatelé s přístupem k webu by měli získat přístup i k určité aplikaci SaaS. Správce aplikace SaaS může přidat přístupová práva k aplikacím na web SharePoint Online. Od toho okamžiku získají veškeré jím schválené žádosti přístup na oba weby SharePoint Online a také k této aplikaci SaaS.
@@ -41,7 +42,7 @@ Pomocí možností **Uživatelé, kteří můžou spravovat skupiny zabezpečen�
 
 Pomocí možnosti **Skupina, která může spravovat skupiny zabezpečení** nebo **Skupina, která může spravovat skupiny Office 365** můžete také určit jednu skupinu, jejíž členové můžou používat samoobslužné funkce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Následující články poskytují další informace o službě Azure Active Directory.
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)

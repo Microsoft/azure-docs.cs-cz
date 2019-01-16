@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: 522f1cff2d735081daecc8be6384badcd378fd75
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 547291fa5c4a49adff7a080db985388ef152d0b8
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599582"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319779"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Pochopit, jak a kdy používat verzi služby LUIS
 
-Verze v LUIS, jsou podobné verze v tradiční programování. Každá verze je snímku v čase aplikace. Před prováděním změn do aplikace, vytvořte novou verzi. Je snazší přejděte zpět na přesné aplikace, pak se pokuste unpeel a záměr vaší aplikace a projevy do předchozího stavu. 
+Verze v LUIS, jsou podobné verze v tradiční programování. Každá verze je snímku v čase aplikace. Před prováděním změn do aplikace, vytvořte novou verzi. Je jednodušší, přejděte zpět na přesnou verzi a potom zkuste odebrat záměry a projevy do předchozího stavu.
 
 Vytvořit stejnou aplikaci pomocí různých modelů [verze](luis-how-to-manage-versions.md). 
 

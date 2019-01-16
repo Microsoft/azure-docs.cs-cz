@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 4809c09b5aa7b8212981cc13589602a365a23a37
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: d82e80530d375a9d0f0a6d3f491d3070942ca02f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113610"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331907"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Vytvoření funkce v Azure aktivované časovačem
 
@@ -43,15 +43,15 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-a-timer-triggered-function"></a>Vytvoření funkce aktivované časovačem
 
-1. Rozbalte aplikaci Function App a klikněte na tlačítko **+** vedle položky **Funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte možnost **Vlastní funkce**. Zobrazí se kompletní sada šablon funkcí.
+1. Rozbalte aplikaci Function App a klikněte na tlačítko **+** vedle položky **Funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte **Na portálu** a potom **Pokračovat**. V opačném případě přejděte ke třetímu kroku.
 
-    ![Stručný úvod do služby Functions na webu Azure Portal](./media/functions-create-scheduled-function/add-first-function.png)
+   ![Stručný úvod do služby Functions na webu Azure Portal](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
-2. Do vyhledávacího pole zadejte `timer` a zvolte jazyk požadovaný pro šablonu funkce aktivované časovačem. 
+2. Zvolte **Další šablony** a potom **Dokončit a zobrazit šablony**.
 
-    ![Vyberte šablonu funkce aktivované časovačem.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+    ![Rychlý start služby Functions – výběr dalších šablon](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. Nakonfigurujte novou aktivační událost s nastaveními uvedenými v tabulce pod obrázkem.
+3. Do vyhledávacího pole zadejte `timer` a nakonfigurujte novou aktivační událost s nastaveními uvedenými v tabulce pod obrázkem.
 
     ![Vytvořte na portálu Azure Portal funkci aktivovanou časovačem.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
@@ -60,13 +60,13 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | **Název** | Výchozí | Určuje název funkce aktivované časovačem. |
     | **Plán** | 0 \*/1 \* \* \* \* | Pole [Výraz CRON](functions-bindings-timer.md#cron-expressions) v šestkové soustavě, ve kterém naplánujete spouštění funkce každou minutu. |
 
-2. Klikněte na možnost **Vytvořit**. Ve zvoleném jazyce se vytvoří funkce, která se bude spouštět každou minutu.
+4. Klikněte na možnost **Vytvořit**. Ve zvoleném jazyce se vytvoří funkce, která se bude spouštět každou minutu.
 
-3. Podívejte se na informace o trasování zaznamenané v protokolech a ověřte provedení.
+5. Podívejte se na informace o trasování zaznamenané v protokolech a ověřte provedení.
 
     ![Prohlížeč protokolu funkcí na webu Azure Portal.](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
-Teď můžete změnit plán funkce tak, aby se spouštěla jednou za hodinu (a ne jednou za minutu). 
+Teď můžete změnit plán funkce tak, aby se spouštěla jednou za hodinu (a ne jednou za minutu).
 
 ## <a name="update-the-timer-schedule"></a>Aktualizace plánu časovače
 
@@ -82,7 +82,7 @@ Teď máte funkci, která se spouští jednou za hodinu.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořili jste funkci, která se spouští na základě plánu.
 

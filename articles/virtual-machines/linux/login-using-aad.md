@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: bc556991cc304aa8c5edc04dba1d333dc77ad230
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c242d8dd64dc58b0c20b6fb15747f201f85cc482
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073403"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320923"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -45,10 +45,13 @@ Následující distribucí systému Linux jsou aktuálně podporované ve verzi 
 
 | Distribuce | Verze |
 | --- | --- |
-| CentOS | CentOS 6.9 a CentOS 7.4 |
+| CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
-| Red Hat Enterprise Linux | RHEL 6, RHEL 7 | 
+| openSUSE | openSUSE skok 42.3 |
+| RedHat Enterprise Linux | RHEL 6, RHEL 7 | 
+| SUSE Linux rozlehlé sítě serveru | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04, Ubuntu Server 17.10 a Ubuntu Server 18.04 |
+
 
 Následující oblasti Azure jsou aktuálně podporované ve verzi preview tato funkce:
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/08/2019
-ms.openlocfilehash: 9e153cca321e94233cfda2a03cf52ba85a0f6b02
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.date: 01/15/2019
+ms.openlocfilehash: e9f1b1a3df92c08b913a56aadc8eb8a9e80c7fdf
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102801"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320051"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Stav migrace scénáře podporované službou Azure Database Migration Service
 Azure Database Migration Service je navržen pro podporu různých scénářů migrace (párů zdroj/cíl) pro obě do offline režimu (jednorázová) a migrace online (Průběžná synchronizace). V čase se rozšiřuje pokrytí scénáři poskytuje Azure Database Migration Service. V pravidelných intervalech se neustále přidávají nové scénáře. Tento článek identifikuje scénáře migrace, které jsou aktuálně podporovány službou Azure Database Migration Service a stav (privátní [nebo omezené] ve verzi Preview ve verzi Public Preview a obecně dostupné) nebo jednotlivé scénáře.
@@ -40,18 +40,18 @@ V následující tabulce jsou uvedeny Azure Database Migration Service podporu p
 | Cíl  | Zdroj | Podpora |
 | ------------- | ------------- | :-------------: |
 | **Azure SQL DB**  | SQL Server | ✔ |
-|   | SQL VZDÁLENÉ PLOCHY  |  ✔ |
+|   | RDS SQL  |  ✔ |
 |   | Oracle  |   |
 | **Azure SQL DB MI**  | SQL Server  | ✔ |
-|   | SQL VZDÁLENÉ PLOCHY  | ✔ |
+|   | RDS SQL  | ✔ |
 |   | Oracle  | ✔  |
-| **Virtuální počítač Azure SQL**  | SQL Server  | ✔ |
+| **Azure SQL VM**  | SQL Server | ✔ |
 |   | Oracle  |   |
-| **Databáze Cosmos**  | MongoDB  | ✔ |
-| **K Azure DB for MySQL**  | MySLQ  |  |
+| **Databáze Cosmos**  | MongoDB | ✔ |
+| **Azure DB for MySQL**  | MySQL |  |
 |   | RDS MySQL  |  |
 | **K Azure DB for PostgresSQL**  | PostgreSQL |  |
-|  | PostgreSQL vzdálené plochy  |  |
+|  | RDS PostgreSQL  |  |
 
 ### <a name="online-continuous-sync-migration-support"></a>Podpora migrace online (Průběžná synchronizace)
 Podpora Azure Database Migration Service online migrace naleznete v následující tabulce.
@@ -59,18 +59,18 @@ Podpora Azure Database Migration Service online migrace naleznete v následujíc
 | Cíl  | Zdroj | Podpora |
 | ------------- | ------------- | :-------------: |
 | **Azure SQL DB**  | SQL Server | ✔ |
-|   | SQL VZDÁLENÉ PLOCHY  |   |
+|   | RDS SQL  |   |
 |   | Oracle  |  ✔ |
 | **Azure SQL DB MI**  | SQL Server  | ✔ |
-|   | SQL VZDÁLENÉ PLOCHY  |  |
+|   | RDS SQL  |  |
 |   | Oracle  | ✔  |
-| **Virtuální počítač Azure SQL**  | SQL Server  |   |
+| **Azure SQL VM**  | SQL Server  |   |
 |   | Oracle  | ✔  |
 | **Databáze Cosmos**  | MongoDB  | ✔ |
-| **K Azure DB for MySQL**  | MySLQ  | ✔ |
+| **Azure DB for MySQL**  | MySQL | ✔ |
 |   | RDS MySQL  | ✔ |
 | **K Azure DB for PostgresSQL**  | PostgreSQL | ✔ |
-|  | PostgreSQL vzdálené plochy  | ✔ |
+|  | RDS PostgreSQL  | ✔ |
 
 ## <a name="next-steps"></a>Další postup
 Přehled služby Azure Database Migration Service a dostupnosti v jednotlivých oblastech najdete v článku [co je Azure Database Migration Service](dms-overview.md). 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: ef1180a8e8c833648e3b61705abf354cb4dfaed3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d0bc4f5877a09380a2c7053134ae0505b31ae685
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117482"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330938"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>Kurz: Počítače API Java pro zpracování obrazu
 

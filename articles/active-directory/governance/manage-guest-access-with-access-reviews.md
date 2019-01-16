@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4d1a9696587ae128b35970414c6c8753179c3f81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385121"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332570"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hostů pomocí Azure AD kontroly přístupu
 
@@ -43,11 +43,11 @@ Můžete také zadávat do kontrolovat svůj vlastní přístup uživatelů typu
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Vytvoření a provedení kontroly přístupu hostů
 
-Nejprve povolte na přístupových panelech kontrolora zobrazení kontrol přístupu. Jako globální správce nebo správce uživatelských účtů přejděte na [stránku kontrol přístupu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
+Zaprvé, jako globální správce nebo správce uživatelských účtů, přejděte [stránku kontrol přístupu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) zajistit, že je připravený pro vaši organizaci kontroly přístupu. 
 
 Azure AD umožňuje několik scénářů pro zkontrolujete uživatelů typu Host.
 
-Vyberte jednu z následujících akcí:
+Projděte si buď:
 
  - Skupiny ve službě Azure AD, který má nejméně hosty jako členy.
  - Aplikaci připojenou k Azure AD, která má přiřazenou jednu nebo více uživatele typu Host. 
@@ -66,7 +66,7 @@ Kontroly přístupu můžete použít k zajištění, že uživatelé, kteří s
 
 3. Jakmile revidující poskytnou potřebné informace, zastavte kontrolu přístupu a proveďte příslušné změny. Další informace najdete v popisu [dokončení kontroly přístupu](complete-access-review.md).
 
-4. Kromě uživatelé, kteří vlastní potřebu přístup byl odepřen můžete také odebrat uživatele, kteří neodpověděl. Uživatelé bez reagovat potenciálně už nebude dostávat e-mailu.
+4. Kromě uživatelé, kteří odepřen vlastní musí pro přístup, můžete také odebrat uživatele, kteří neodpověděl. Uživatelé bez reagovat potenciálně už nebude dostávat e-mailu.
 
 5. Pokud skupina se nepoužívá pro správu přístupu, můžete také odebrat uživatele, kteří nebyly zvoleny k účasti v revizi, protože se svou pozvánku nepřijal. Nepřijímá může znamenat, že e-mailová adresa pozvaného uživatele měli překlep. Pokud skupina slouží jako distribuční seznam, například některé uživatele typu Host nebyly zvoleny k účasti, protože jsou to objekty kontaktů.
 
@@ -86,7 +86,7 @@ Kontroly přístupu můžete použít k zajištění, že uživatelé, kteří b
 
 1. Zahájení kontroly přístupu pro aplikaci, vyberte revizi hosté pouze a, uživatelé si svůj vlastní přístup. Další informace najdete v popisu [vytvoření kontroly přístupu](create-access-review.md).
 
-2. Požádejte každý hostem a kontrolovat svůj vlastní přístup k aplikaci. Ve výchozím nastavení každého typu Host, kteří přijmout pozvánku obdrží e-mailu ze služby Azure AD s odkazem na kontrolu přístupu ve vaší organizaci přístupového panelu. Azure AD obsahuje pokyny pro hosty do [zkontrolujte svůj přístup](perform-access-review.md).
+2. Požádejte každý hostem a kontrolovat svůj vlastní přístup k aplikaci. Ve výchozím nastavení každého typu Host, kteří přijmout pozvánku obdrží e-mailu ze služby Azure AD. Tento e-mail obsahuje odkaz na kontrolu přístupu ve vaší organizaci přístupového panelu. Azure AD obsahuje pokyny pro hosty do [zkontrolujte svůj přístup](perform-access-review.md).
 
 3. Jakmile revidující poskytnou potřebné informace, zastavte kontrolu přístupu a proveďte příslušné změny. Další informace najdete v popisu [dokončení kontroly přístupu](complete-access-review.md).
 
@@ -109,7 +109,7 @@ V některých organizacích hosté se nemusíte být vědomi jejich členství v
 > [!NOTE]
 > Starší verze na webu Azure portal neměli povolit přístup pro správu uživatelů s UserType hosta. V některých případech se správcem v adresáři se mohlo změnit hodnotu UserType o hostovaný na člen pomocí prostředí PowerShell. Pokud dříve k této změně došlo ve vašem adresáři, předchozí dotaz nemusí obsahovat všechny uživatele typu Host, kteří v minulosti bylo pro správu přístupových práv. V takovém případě potřebujete změnit UserType hosta nebo hosta ručně zahrnout do členství ve skupině.
 
-1. Vytvořte skupinu zabezpečení ve službě Azure AD s hosté jako členové, pokud ještě neexistuje vhodný skupiny. Můžete například vytvořit skupinu s ručně udržována členství hostů. Nebo můžete vytvořit dynamické skupiny s názvem jako je například "Hosté Contoso" pro uživatele v tenantovi Contoso, kteří mají hodnotu atribut UserType hosta.  Účinnost ověřte, že je skupina převážně hosté – nevybírejte skupinu, která má uživatele, kteří se nemusíte být.
+1. Vytvořte skupinu zabezpečení ve službě Azure AD s hosté jako členové, pokud ještě neexistuje vhodný skupiny. Můžete například vytvořit skupinu s ručně udržována členství hostů. Nebo můžete vytvořit dynamické skupiny s názvem jako je například "Hosté Contoso" pro uživatele v tenantovi Contoso, kteří mají hodnotu atribut UserType hosta.  Účinnost ověřte, že je skupina převážně hosté – nevybírejte skupinu, která obsahuje členské uživatele jako člena uživatelé nemuseli být.  Také mějte na paměti, že uživatel typu Host, který je členem skupiny můžete zobrazit ostatní členy skupiny.
 
 2. Zahájení kontroly přístupu pro tuto skupinu, vyberte revidující mají stát členy sami. Další informace najdete v popisu [vytvoření kontroly přístupu](create-access-review.md).
 

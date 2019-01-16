@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ba102e161ae627c621b1d1f33bf3321eedc4f54d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: 58fd09726f05ba442c66387ecbd6cfad37f598e1
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239683"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332553"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Co je Azure Blockchain Workbench?
 
@@ -49,7 +49,7 @@ U stávajících blockchainových protokolů jsou blockchainové identity vyjád
 
 Azure Blockchain Workbench usnadňuje analýzu blockchainových událostí a dat tím, že automaticky synchronizuje blockchainová data s nezřetězeným úložištěm. Místo extrahování dat přímo z blockchainu můžete vytvářet dotazy do nezřetězených databázových systémů, jako je SQL Server. To znamená, že koncoví uživatelé, kteří chtějí analyzovat data, nemusejí mít s blockchainem praktické zkušenosti. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Architektura Azure Blockchain Workbench](architecture.md)

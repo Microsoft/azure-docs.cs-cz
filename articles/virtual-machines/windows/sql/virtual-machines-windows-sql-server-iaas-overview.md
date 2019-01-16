@@ -3,7 +3,7 @@ title: Přehled SQL Serveru na virtuálních počítačích Azure s Windows | Do
 description: Můžete se dozvědět, jak spouštět úplné edice SQL Serveru virtuálních počítačích Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
@@ -13,13 +13,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2018
-ms.author: jroth
-ms.openlocfilehash: 416d1c7d45902735f58e397dd9195185ba0867df
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: e9edf4cd9a1dd0a110e89187b2fca3f85745fe56
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315243"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330480"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 

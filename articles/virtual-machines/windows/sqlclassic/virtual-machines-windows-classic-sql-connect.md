@@ -3,7 +3,7 @@ title: Připojte se k virtuálnímu počítači SQL serveru v Azure (Classic) | 
 description: Zjistěte, jak se připojit k SQL serveru spuštěné na virtuálním počítači v Azure. Toto téma používá model nasazení classic. Scénáře se liší v závislosti na konfiguraci sítě a umístění klienta.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.assetid: 416948af-454f-4cfe-8fd2-7cf971cbd3e9
@@ -13,14 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
-ms.author: jroth
+ms.author: mathoma
+ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: c856c8c67d410a3b528c4f8b12b1225cf395bca4
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d766465f8319b83cd614bfcf24018ef901923429
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "29398365"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329681"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Připojení k virtuálnímu počítači s SQL Serverem v Azure (klasické nasazení)
 > [!div class="op_single_selector"]

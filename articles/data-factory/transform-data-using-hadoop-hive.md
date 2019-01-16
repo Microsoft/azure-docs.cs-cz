@@ -8,18 +8,19 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: 6dc702b4bcffc0d1dec299093aa05ba480e9bbf8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d9a649e3b49c71a24d06656e0667765ef9cc5508
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019975"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321326"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hivu Hadoop ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-hive-activity.md)
 > * [Aktuální verze](transform-data-using-hadoop-hive.md)
 
@@ -55,17 +56,18 @@ Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služb
 }
 ```
 ## <a name="syntax-details"></a>Podrobnosti o syntaxi
-| Vlastnost            | Popis                              | Požaduje se |
-| ------------------- | ---------------------------------------- | -------- |
-| jméno                | Název aktivity                     | Ano      |
-| description         | Text popisující, k čemu aktivita slouží | Ne       |
-| type                | Pro aktivitu Hive je aktivitu typu HDinsightHive | Ano      |
+| Vlastnost            | Popis                                                  | Požaduje se |
+| ------------------- | ------------------------------------------------------------ | -------- |
+| jméno                | Název aktivity                                         | Ano      |
+| description         | Text popisující, k čemu aktivita slouží                | Ne       |
+| type                | Pro aktivitu Hive je aktivitu typu HDinsightHive        | Ano      |
 | linkedServiceName   | Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku. | Ano      |
 | scriptLinkedService | Odkaz na propojená služba Azure Storage se využívá k uložení skriptu Hive, který se spustí. Pokud nezadáte tuto propojenou službu, použije se propojená služba Azure Storage, definované v propojené službě HDInsight. | Ne       |
-| ScriptPath          | Zadejte cestu k souboru skriptu ve službě Azure Storage odkazuje scriptLinkedService. Název souboru je velká a malá písmena. | Ano      |
+| scriptPath          | Zadejte cestu k souboru skriptu ve službě Azure Storage odkazuje scriptLinkedService. Název souboru je velká a malá písmena. | Ano      |
 | getDebugInfo        | Určuje, kdy se zkopírují soubory protokolů do služby Azure Storage používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné. | Ne       |
 | argumenty           | Určuje pole argumentů pro úlohy Hadoopu. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
 | definuje             | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       |
+| queryTimeout        | Hodnota časového limitu dotazu (v minutách).  Vztahuje se po clusteru HDInsight s balíčkem Enterprise Security Package povolena. | Ne       |
 
 ## <a name="next-steps"></a>Další postup
 Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby: 

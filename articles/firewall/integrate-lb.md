@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 1/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9d10383b84cbd1b85216cb9ae4582db4c7a10743
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 079790952263ae2ef68abc8e426b0330fef1c53f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54268070"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321768"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace brány Firewall na Azure s Azure Load balancer úrovně Standard
 
@@ -26,7 +26,7 @@ S nástrojem veřejný load balancer se nasadí nástroj pro vyrovnávání zat�
 
 ### <a name="asymmetric-routing"></a>Asymetrické směrování
 
-Asymetrické směrování je, když paket, který přijímá jednu cestu do cíle a používá jinou cestu při návratu ke zdroji. Problému může dojít, pokud má podsíť brány firewall na privátní IP adresa a nástroj pro vyrovnávání zatížení veřejnou výchozí trasa. V takovém případě příchozí provoz nástroje pro vyrovnávání zatížení je přijatá přes jeho veřejné IP adresy, ale návratový cesty prochází brány firewall na privátní IP adresu. Vzhledem k tomu, že brána firewall je stavový, zruší vracející paketů, protože brána firewall nemá žádné informace o navázanou relaci.
+Asymetrické směrování je, když paket, který přijímá jednu cestu do cíle a používá jinou cestu při návratu ke zdroji. Tento problém nastane, pokud má podsíť výchozí trasu na privátní IP adresu brány firewall a používáte nástroj pro vyrovnávání zatížení veřejnou. V takovém případě příchozí provoz nástroje pro vyrovnávání zatížení je přijatá přes jeho veřejné IP adresy, ale návratový cesty prochází brány firewall na privátní IP adresu. Vzhledem k tomu, že brána firewall je stavový, zruší vracející paketů, protože brána firewall nemá žádné informace o navázanou relaci.
 
 ### <a name="fix-the-routing-issue"></a>Opravte chybu směrování
 

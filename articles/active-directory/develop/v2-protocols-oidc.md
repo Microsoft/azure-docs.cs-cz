@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 756d00786005fb6de26ff363d4e233fc28b48687
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 01d73d9c42f99dde02a801af9967430c9735932d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426838"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320952"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 a protokolu OpenID Connect
 
@@ -86,7 +86,7 @@ Pokud vaše webová aplikace potřebuje k ověření uživatele, můžete nasmě
 * Musí zahrnovat požadavek `nonce` parametru.
 
 > [!IMPORTANT]
-> Aby úspěšně požádat o token ID registrace aplikace v [portál pro registraci](https://apps.dev.microsoft.com) musí mít **[implicitní grant](v2-oauth2-implicit-grant-flow.md)** pro webového klienta povolena. Pokud není povolen, `unsupported_response` se vrátí Chyba: "pro vstupní parametr 'typ odpovědi' zadaná hodnota není povolena pro tohoto klienta. Očekávaná hodnota je "kód" "
+> Aby bylo možné úspěšně požádat o token ID registrace aplikace v [portál pro registraci](https://apps.dev.microsoft.com) musí mít **[implicitní grant](v2-oauth2-implicit-grant-flow.md)** pro webového klienta povolena. Pokud není povolen, `unsupported_response` se vrátí Chyba: "Pro vstupní parametr 'typ odpovědi' zadaná hodnota není povolena pro tohoto klienta. Očekávaná hodnota je "kód" "
 
 Příklad:
 
@@ -109,7 +109,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| tenanta |Požaduje se |Můžete použít `{tenant}` hodnota v cestě požadavku řídit, kdo může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další informace najdete v tématu [protokol Základy](active-directory-v2-protocols.md#endpoints). |
+| tenant |Požaduje se |Můžete použít `{tenant}` hodnota v cestě požadavku řídit, kdo může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další informace najdete v tématu [protokol Základy](active-directory-v2-protocols.md#endpoints). |
 | client_id |Požaduje se |ID aplikace, které [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
 | response_type |Požaduje se |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může taky obsahovat další `response_type` hodnoty, jako například `code`. |
 | redirect_uri |Doporučené |Identifikátor URI přesměrování vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Se musí přesně odpovídat jednu registraci na portálu pro identifikátory URI přesměrování s tím rozdílem, že ho musí mít kódování URL. |
@@ -167,7 +167,7 @@ Následující tabulka popisuje chybové kódy, které mohou být vráceny v `er
 | --- | --- | --- |
 | invalid_request |Chyba protokolu, jako je například chybějící, povinný parametr. |Opravte a odešlete požadavek znovu. Toto je chyba vývoj, která je zachycena obvykle během počátečního testování. |
 | unauthorized_client |Klientská aplikace nemůže požádat o autorizační kód. |K tomu obvykle dojde, když klientská aplikace není zaregistrovaný ve službě Azure AD nebo se nepřidal do tenanta služby Azure AD daného uživatele. Aplikace může vyzvat uživatele s pokyny k instalaci aplikace a přidejte ji do služby Azure AD. |
-| ACCESS_DENIED |Vlastník prostředku odepřen souhlas. |Klientská aplikace může upozornit uživatele, který nemůže pokračovat, dokud uživatel souhlasí. |
+| access_denied |Vlastník prostředku odepřen souhlas. |Klientská aplikace může upozornit uživatele, který nemůže pokračovat, dokud uživatel souhlasí. |
 | unsupported_response_type |Autorizační server nepodporuje typ odpovědi v požadavku. |Opravte a odešlete požadavek znovu. Toto je chyba vývoj, která je zachycena obvykle během počátečního testování. |
 | server_error |Na serveru došlo k neočekávané chybě. |Zkuste požadavek. Tyto chyby můžou být výsledkem dočasné situace. Klientská aplikace může vysvětlit uživatelům, že odpověď se zpožďuje kvůli dočasné chybě. |
 | temporarily_unavailable |Server je dočasně příliš zaneprázdněn a nemůže žádost zpracovat. |Zkuste požadavek. Klientská aplikace může vysvětlit uživateli, odpověď se zpožďuje kvůli dočasnému chybovému stavu. |
@@ -207,13 +207,13 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 Pokud má uživatel přesměrovat `end_session_endpoint`, koncový bod v2.0 vymaže relace uživatele z prohlížeče. Však uživatel stále být přihlášeni k ostatním aplikacím, které používají účty Microsoft pro ověřování. Povolení aplikací pro přihlášení uživatele out současně, verze 2.0 koncový bod odešle požadavek HTTP GET na zaregistrovanou `LogoutUrl` všech aplikací, které uživatel je aktuálně přihlášený k. Aplikace musí odpovědět na tuto žádost zrušíte všechny relace, který identifikuje uživatele a vrácení `200` odpovědi. Pokud chcete podporovat odhlašování ve vaší aplikaci jedním, je nutné implementovat takové `LogoutUrl` v kódu vaší aplikace. Můžete nastavit `LogoutUrl` z portálu pro registraci aplikace.
 
-## <a name="protocol-diagram-access-token-acquisition"></a>Diagram protokolu: přístup k získání tokenu
+## <a name="protocol-diagram-access-token-acquisition"></a>Diagram protokolu: Získání tokenu přístupu
 
 Mnoho webových aplikací muset nejen přihlásit uživatele v, ale také pro přístup k webové službě jménem uživatele pomocí OAuth. Tento scénář spojuje OpenID Connect pro ověřování uživatelů při získávání současně autorizační kód, který můžete použít k získání přístupových tokenů, pokud používáte toku kódu autorizace OAuth.
 
 Úplné přihlášení a získání tokenu tok OpenID Connect vypadá podobně jako následující diagram. Popisujeme každý krok podrobně v další části tohoto článku.
 
-![Protokol OpenID Connect: získání tokenu](./media/v2-protocols-oidc/convergence_scenarios_webapp_webapi.png)
+![Protokol OpenID Connect: Získání tokenu](./media/v2-protocols-oidc/convergence_scenarios_webapp_webapi.png)
 
 ## <a name="get-access-tokens"></a>Získání přístupových tokenů
 Chcete-li získat přístupové tokeny, upravte žádost o přihlášení:

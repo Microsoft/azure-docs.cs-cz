@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: Yaniv.Lavi
+ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: b9b56145c13cb83b1686004ce215b1960caced14
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: df75ff9a359620781743732f4f12a6d3e7ec51c6
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182991"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331670"
 ---
 # <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-private-preview"></a>Upozornění s dynamickými prahovými hodnotami ve službě Azure Monitor (omezená privátní verze Preview)
 
@@ -96,8 +96,8 @@ Upozornění s dynamickými prahovými hodnotami, které je možné nakonfigurov
 
 - DOTAZ: Pokud metrika pomalu mění v průběhu času, aktivuje toto upozornění s dynamickými prahovými hodnotami?
 
-- ODPOVĚĎ: Pravděpodobně ne. Jsou vhodné pro zjištění významné odchylky, spíše než pomalu se vyvíjejí problémy s dynamickými prahovými hodnotami.
+- Odpověď: Pravděpodobně ne. Jsou vhodné pro zjištění významné odchylky, spíše než pomalu se vyvíjejí problémy s dynamickými prahovými hodnotami.
 
 - DOTAZ: Můžete nakonfigurovat dynamickými prahovými hodnotami pomocí rozhraní API?
 
-- ODPOVĚĎ: Pracujeme na něj.
+- Odpověď: Pracujeme na něj.

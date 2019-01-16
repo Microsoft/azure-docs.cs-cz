@@ -13,18 +13,35 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 735f1d7cce8621a29e5a582917d3eea8ee399b8f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106269"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319643"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Zpráva k vydání verze pro ověření jako služba
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Tento článek obsahuje poznámky k verzi pro Azure Stack ověření jako služba.
+
+## <a name="version-402"></a>Verze 4.0.2
+
+2019 dne 7
+
+Pokud používáte Azure Stack měsíční aktualizace ověření pracovního postupu a verze pro aktualizace balíčku výrobce OEM není 1810 nebo vyšší, obdržíte chybu po načtení krok aktualizace výrobce OEM. Jedná se o chybu. Oprava se vyvíjejí. Kroky pro zmírnění rizika jsou následující:
+
+1.  Výrobce OEM aktualizaci spusťte jako za normálních okolností.
+2.  Spustit Test AzureStack po úspěšném použití balíčku a uložte si výstup.
+3.  Zrušení testu.
+4.  Odeslat uložený výstup do VaaSHelp@microsoft.com přijímat předávání výsledky spuštění.
+
+## <a name="version-402"></a>Verze 4.0.2
+
+30. listopadu 2018
+
+- Interní opravy chyb
 
 ## <a name="version-401"></a>Verze 4.0.1
 

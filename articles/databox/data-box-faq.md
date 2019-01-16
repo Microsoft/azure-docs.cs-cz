@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: e03d913e1887bceb9267207e3a9abea93ab6d000
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 09d982c98e830b957be8db43974e3a44df505967
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568026"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321054"
 ---
-# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
+# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
 Hybridní řešení Microsoft Azure Data Box umožňuje odesílat do Azure rychle, levně a bezpečně terabajty dat prostřednictvím přenosového zařízení. Tyto nejčastější dotazy obsahují otázky a odpovědi, které se týkají používání služby Data Box na webu Azure Portal. 
 
@@ -47,7 +47,7 @@ A. Data Box pro vás bude výhodný, pokud máte 40–500 TB dat, která chcete 
 A. Zařízení Data Box je k dispozici na 10 dnů za stanovený poplatek. Když při vytváření objednávky na webu Azure Portal vyberete model produktu, zobrazí se poplatek za zařízení. Také dodání je zdarma, ale platí se za úložiště Azure. Další informace nejdete v článku o [cenách služeb Azure Data Box](https://azure.microsoft.com/pricing/details/storage/databox/). 
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-in-one-instance"></a>Otázka: Jaký maximální objem dat můžu naráz přenést prostřednictvím zařízení Data Box?
-A. Data Box má hrubou kapacitu 100 TB a využitelnou kapacitu 80 TB. Na zařízení Data Box tedy můžete přenést až 80 TB dat. Pokud chcete přenést více dat, musíte objednat více zařízení.
+A. Data Box má hrubou kapacitu 100 TB a využitelnou kapacitu 80 TB. Můžou přenášet až 80 TB dat pomocí zařízení Data Box. Pokud chcete přenést více dat, musíte objednat více zařízení.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>Otázka: Jak zjistím, jestli je Data Box dostupný v mojí oblasti? 
 A.  Informace o zemích, ve kterých je Data Box dostupný, najdete v části o [dostupnosti v oblastech](data-box-overview.md#region-availability).  
@@ -86,7 +86,7 @@ A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoř�
 ## <a name="configure-and-connect"></a>Konfigurace a připojení
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>Otázka: Jak se Data Box odemyká? 
-A.  Na webu Azure Portal přejděte k objednávce zařízení Data Box a otevřete **Detaily zařízení**. Zkopírujte si heslo pro odemčení. Toto heslo použijte při přihlášení k místnímu webovému uživatelskému rozhraní Data Boxu. Další informace najdete v [kurzu věnovanému rozbalení, zapojení a připojení k Azure Data Boxu](data-box-deploy-set-up.md).
+A.  Na webu Azure Portal přejděte k objednávce zařízení Data Box a otevřete **Detaily zařízení**. Zkopírujte si heslo pro odemčení. Toto heslo použijte při přihlášení k místnímu webovému uživatelskému rozhraní Data Boxu. Další informace najdete v části [kurzu: Rozbalení, zapojení, připojení zařízení Azure Data Box](data-box-deploy-set-up.md).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>Otázka: Můžu se k zařízení Data Box připojit a kopírovat do něj data z hostitelského počítače s Linuxem?
 A.  Ano. Data Box můžete připojit ke klientům SMB a NFS. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-system-requirements.md) hostitelského počítače.
@@ -95,7 +95,7 @@ A.  Ano. Data Box můžete připojit ke klientům SMB a NFS. Další informace z
 A.  Objednávka se dá zrušit po objednání zařízení Data Box, dokud není objednávka zpracovaná. Zpracovanou objednávku zařízení Data Box nemůžete zrušit. 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>Otázka: Můžu Data Box současně připojit k více hostitelským počítačům, ze kterých chci přenášet data?
-A. Ano. K zařízení Data Box může být připojených více hostitelských počítačů, ze kterých budete přenášet data, a několik úloh kopírování může běžet současně. Další informace nejdete v [kurzu o kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
+A. Ano. K zařízení Data Box může být připojených více hostitelských počítačů, ze kterých budete přenášet data, a několik úloh kopírování může běžet současně. Další informace najdete v části [kurzu: Kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -129,7 +129,7 @@ A. Na webu Azure Portal přejděte k objednávce Data Boxu a pak přejděte na *
 ## <a name="migrate-data"></a>Migrace dat
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box"></a>Otázka: Kolik dat se vejde do zařízení Data Box?  
-A.  Data Box má využitelné úložiště o kapacitě 80 TB. Jedno zařízení Data Box můžete použít pro data o velikosti 40–80 TB. Pokud máte data do 500 TB, můžete objednat několik zařízení Data Box. Pokud data přesahují 500 TB, zaregistrujte se do služby Data Box Heavy.  
+A.  Data Box má využitelné úložiště o kapacitě 80 TB. Jedno zařízení Data Box můžete použít pro data o velikosti 40–80 TB. Pro větší množství dat o velikosti až 500 TB, můžete si objednat více zařízení Data Box. Pokud data přesahují 500 TB, zaregistrujte se do služby Data Box Heavy.  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>Otázka: Jak velké objekty blob bloku a objekty blob stránky Data Box podporuje? 
 A.  Maximální velikosti se řídí omezeními služby Azure Storage. Maximální velikost objektu blob bloku je přibližně 4,768 TiB a maximální velikost objektu blob stránky je 8 TiB. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage](../storage/common/storage-scalability-targets.md). 
@@ -142,12 +142,12 @@ A.  Pokud používáte klienta SMB, můžete k přetažení a zkopírování dat
 
 Pokud používáte klienta NSF, můžete použít [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/). 
 
-Další informace nejdete v [kurzu o kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
+Další informace najdete v části [kurzu: Kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Otázka: Máte nějaké tipy pro zrychlení kopírování dat?
 A.  Pokud chcete zrychlit proces kopírování:
 
-- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o přesných používaných příkazech najdete v [kurzu o kopírování dat do služby Azure Data Box a jejich ověření](data-box-deploy-copy-data.md).
+- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o přesný příkaz použitý, přejděte na [kurzu: Kopírování dat do služby Azure Data Box a ověřte](data-box-deploy-copy-data.md).
 - Použijte více relací.
 - Místo kopírování dat přes sdílenou síťovou složku (při kterém můžete být omezeni rychlostí sítě) zajistěte, aby byla data přímo na počítači, ke kterému je zařízení Data Box připojené.
 - Proveďte srovnávací testy výkonu počítače, který se používá ke kopírování dat. Pro srovnávací testy výkonu hardwaru serveru si stáhněte a používejte [nástroj Bluestop FIO](https://bluestop.org/fio/).

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou KnowledgeOwl | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s KnowledgeOwl | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a KnowledgeOwl.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: e902f5969611dd3b1074e899003abe5067857c04
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80d8d1664100cdfbbf6d537b41823c2db0204040
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446133"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318913"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Kurz: Integrace Azure Active Directory se službou KnowledgeOwl
+# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Kurz: Integrace Azure Active Directory s KnowledgeOwl
 
 V tomto kurzu se dozvíte, jak integrovat KnowledgeOwl s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s KnowledgeOwl, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - KnowledgeOwl jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace KnowledgeOwl do služby Azure AD, budete muset přidat Kno
 
 **Chcete-li přidat KnowledgeOwl z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -150,9 +150,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 1. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku a proveďte následující kroky:
     
-    | Název atributu | Hodnota atributu | Názvový prostor|
+    | Název atributu | Hodnota atributu | Obor názvů|
     | ------------------- | -------------------- | -----|
-    | ssoid | User.Mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | ssoid | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
     
@@ -186,7 +186,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
 
-1. Přejděte dolů až **integraci jednotného přihlašování SAML** a proveďte následující kroky:
+1. Přejděte k položce **integraci jednotného přihlašování SAML** a proveďte následující kroky:
     
     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
 
@@ -254,7 +254,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 Cílem této části je vytvořte uživatele Britta Simon v KnowledgeOwl. KnowledgeOwl podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k KnowledgeOwl, pokud ještě neexistuje.
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory KnowledgeOwl](mailto:support@knowledgeowl.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory KnowledgeOwl](mailto:support@knowledgeowl.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -286,7 +286,7 @@ V této části je povolit Britta Simon k udělení přístupu k KnowledgeOwl po
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

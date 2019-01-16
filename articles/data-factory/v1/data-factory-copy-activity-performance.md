@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 632e605a6f7c9885f3854ca1f7b69ed337a1eacc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025874"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331636"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 
@@ -72,7 +72,7 @@ Jako odkaz níže uvedená tabulka zobrazuje číslo kopírování propustnost v
     </tr>
     <tr>
         <td>Síť</td>
-        <td>Internetové rozhraní: 10 GB/s; rozhraní sítě intranet: 40 GB/s</td>
+        <td>Internetové rozhraní: 10 GB/s; rozhraní sítě intranet: 40 Gbps</td>
     </tr>
     </table>
 
@@ -108,7 +108,7 @@ A **jednotka pohybu dat v cloudu (DMU)** je míru, která představuje výkon (k
 Chcete-li přepsat toto výchozí nastavení, zadejte hodnotu **cloudDataMovementUnits** vlastnost následujícím způsobem. **Povolené hodnoty** pro **cloudDataMovementUnits** vlastnosti jsou 2, 4, 8, 16, 32. **Skutečný počet cloudu DMUs** , že operace kopírování používá za běhu je rovna nebo menší než nakonfigurovaná hodnota, v závislosti na vašich dat vzor. Informace o úrovni výkonu, může se zobrazit při konfiguraci víc jednotek pro konkrétní kopírovat zdroje a jímky, najdete v článku [výkonu](#performance-reference).
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -135,7 +135,7 @@ Chcete-li přepsat toto výchozí nastavení, zadejte hodnotu **cloudDataMovemen
 ### <a name="parallelcopies"></a>parallelCopies
 Můžete použít **parallelCopies** vlastnost umožňující označit, které chcete aktivitou kopírování pomocí paralelismu. Tato vlastnost si můžete představit jako maximální počet vláken v aktivitě kopírování, který může číst ze zdroje nebo zapisovat do svá úložiště dat jímky paralelně.
 
-Pro každé spuštění aktivity kopírování Data Factory určuje počet paralelních kopií pro použití ke kopírování dat ze zdroje dat, ukládání a cílového datového úložiště. Výchozí počet paralelních kopie, které používá závisí na typu zdroje a jímky, kterou používáte.  
+Pro každé spuštění aktivity kopírování Data Factory určuje počet paralelních kopií pro použití ke kopírování dat ze zdroje dat, ukládání a cílového datového úložiště. Výchozí počet paralelních kopie, které používá závisí na typu zdroje a jímky, kterou používáte.
 
 | Zdroje a jímky | Výchozí počet paralelních kopií určené služby |
 | --- | --- |
@@ -146,7 +146,7 @@ Pro každé spuštění aktivity kopírování Data Factory určuje počet paral
 Obvykle výchozí chování by vám měl dát nejlepší propustnost. Však řídit zatížení na počítačích, které jsou hostiteli vaše data ukládá, nebo pro optimalizaci výkonu kopírování, můžete výchozí hodnotu přepsat a zadat hodnotu **parallelCopies** vlastnost. Hodnota musí být mezi 1 a 32 (obojí včetně). V době běhu pro zajištění nejlepšího výkonu, aktivita kopírování používá hodnotu, která je menší než nebo rovna hodnotě, kterou jste nastavili.
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -176,7 +176,7 @@ Odkazuje na mějte na paměti:
 >
 >
 
-Pro lepší využití tyto dvě vlastnosti a vylepšit propustnost přesunu dat najdete v tématu [vzorové případy použití](#case-study-use-parallel-copy). Není nutné konfigurovat **parallelCopies** využít výchozí chování. Pokud nakonfigurujete a **parallelCopies** je příliš malá, více cloudu DMUs nemusí plně využít.  
+Pro lepší využití tyto dvě vlastnosti a vylepšit propustnost přesunu dat najdete v tématu [vzorové případy použití](#case-study-use-parallel-copy). Není nutné konfigurovat **parallelCopies** využít výchozí chování. Pokud nakonfigurujete a **parallelCopies** je příliš malá, více cloudu DMUs nemusí plně využít.
 
 ### <a name="billing-impact"></a>Dopad fakturace
 Má **důležité** pamatovat, že se vám účtuje podle celkové doby trvání operace kopírování. Pokud úloha kopírování používá k trvat jednu hodinu jednotku na jeden cloud a teď trvá 15 minut s čtyři jednotky cloudu, bude celkové vyúčtování skoro stejné zůstane. Například použití čtyř jednotek v cloudu. První Cloudová jednotka stráví 10 minut, je druhý řádek 10 minut, třetí příkaz 5 minut a čtvrtý, ten 5 minut, poběží v jednou aktivitou kopírování. Bude vám účtována čas celkový kopírování (přesunu dat), což je 10 + 10 + 5 + 5 = 30 minut. Pomocí **parallelCopies** nemá vliv na fakturaci.
@@ -216,7 +216,7 @@ Konfigurace **enableStaging** nastavení k určení, jestli chcete data budou um
 Tady je ukázková definice aktivity kopírování s vlastnostmi, které jsou popsány v předchozí tabulce:
 
 ```json
-"activities":[  
+"activities":[
 {
     "name": "Sample copy activity",
     "type": "Copy",
@@ -273,9 +273,9 @@ Doporučujeme vám, že je provést tyto kroky pro optimalizaci výkonu služby 
 3. **Rozbalte položku konfigurace pro celou datovou sadu**. Jakmile budete spokojeni s výsledky spuštění a výkonem, můžete rozbalit definice a aktivní období kanálu pro celou datovou sadu.
 
 ## <a name="considerations-for-data-management-gateway"></a>Důležité informace týkající se brány správy dat
-**Instalační program brány**: Doporučujeme použít vyhrazený počítač na hostitele brány správy dat. Zobrazit [důležité informace týkající se pomocí brány správy dat](data-factory-data-management-gateway.md#considerations-for-using-gateway).  
+**Instalační program brány**: Doporučujeme použít vyhrazený počítač na hostitele brány správy dat. Zobrazit [důležité informace týkající se pomocí brány správy dat](data-factory-data-management-gateway.md#considerations-for-using-gateway).
 
-**Monitorování brány a nahoru/Škálováním**: Jedné logické brány pomocí jednoho nebo více uzlů brány může sloužit několika spustí aktivita kopírování ve stejnou dobu současně. Téměř v reálném čase snímek využití prostředků (procesoru, paměti, network(in/out) atd.) můžete zobrazit na počítači brány a počet souběžných úloh spuštěných oproti limit na webu Azure Portal, najdete v článku [monitorování brány na portálu](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Pokud nemáte náročné požadavky na přesun hybridních dat s velkým počtem souběžných kopírování spuštění aktivit nebo pomocí velkého objemu dat ke kopírování, zvažte pro [vertikálně nebo horizontálně navýšit kapacitu brány](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) tak, aby lépe využít váš prostředek nebo ke zřízení Další zdroje pro kopírování. 
+**Monitorování brány a nahoru/Škálováním**: Jedné logické brány pomocí jednoho nebo více uzlů brány může sloužit několika spustí aktivita kopírování ve stejnou dobu současně. Téměř v reálném čase snímek využití prostředků (procesoru, paměti, network(in/out) atd.) můžete zobrazit na počítači brány a počet souběžných úloh spuštěných oproti limit na webu Azure Portal, najdete v článku [monitorování brány na portálu](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Pokud nemáte náročné požadavky na přesun hybridních dat s velkým počtem souběžných kopírování spuštění aktivit nebo pomocí velkého objemu dat ke kopírování, zvažte pro [vertikálně nebo horizontálně navýšit kapacitu brány](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) tak, aby lépe využít váš prostředek nebo ke zřízení Další zdroje pro kopírování.
 
 ## <a name="considerations-for-the-source"></a>Důležité informace pro zdroj
 ### <a name="general"></a>Obecné
@@ -404,7 +404,7 @@ V takovém případě může být komprese dat bzip2 zpomalení celého kanálu.
 
 **Scénář II**: Zkopírujte 20 objektů BLOB 500 MB z úložiště objektů Blob do Data Lake Store Analytics a pak ladění výkonu.
 
-**Analýza a optimalizace výkonu**: V tomto scénáři objektu pro vytváření dat zkopíruje data z úložiště objektů Blob do Data Lake Store s použitím jedné kopie (**parallelCopies** nastavena na hodnotu 1) a jednotky přesunu dat jeden cloud. Propustnost můžete sledovat blízko, který najdete v [výkonu informační části](#performance-reference).   
+**Analýza a optimalizace výkonu**: V tomto scénáři objektu pro vytváření dat zkopíruje data z úložiště objektů Blob do Data Lake Store s použitím jedné kopie (**parallelCopies** nastavena na hodnotu 1) a jednotky přesunu dat jeden cloud. Propustnost můžete sledovat blízko, který najdete v [výkonu informační části](#performance-reference).
 
 ![Scénář 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 

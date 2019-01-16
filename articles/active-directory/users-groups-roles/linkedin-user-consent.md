@@ -1,5 +1,5 @@
 ---
-title: LinkedIn účtu připojení souhlasu uživatele pro data v Azure Active Directory pro sdílení obsahu | Dokumentace Microsoftu
+title: LinkedIn integrace dat v Azure Active Directory pro sdílení obsahu | Dokumentace Microsoftu
 description: Vysvětluje, jak se s účtem LinkedIn sdílet data pomocí aplikací Microsoftu v Azure Active Directory
 services: active-directory
 author: curtand
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3f11ae3d5f6e686133b0f5ef355734ce09c00fed
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 25060f41528c59d252adbc854704c6060becd907
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734637"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319117"
 ---
 # <a name="user-consent-and-linkedin-account-connections-data-sharing"></a>Souhlas uživatele a sdílení dat prostřednictvím připojení se účet LinkedIn
 

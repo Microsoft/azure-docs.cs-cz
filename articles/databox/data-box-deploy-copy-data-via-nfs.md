@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/20/2018
 ms.author: alkohli
-ms.openlocfilehash: 7ba6bc2cf3cf5286719bc6da519aabb364302af3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 646acca7eeb2e811f8683a1d35ff8c6efae130da
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550526"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319007"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím systému souborů NFS 
 
@@ -38,7 +38,7 @@ Než začnete, ujistěte se, že:
 
 ## <a name="connect-to-data-box"></a>Připojení k Data Boxu
 
-V závislosti na vybraném účtu úložiště vytvoří Data Box až:
+Založené na vybraný účet úložiště, zařízení Data Box vytvoří až:
 - Tři sdílené složky pro každý přidružený účet úložiště GPv1 a GPv2.
 - Jednu sdílenou složku pro účet úložiště Premium nebo účet úložiště objektů blob. 
 
@@ -47,8 +47,8 @@ Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou enti
 Představte si následující příklad. 
 
 - Účet úložiště: *Mystoracct*
-- Sdílené složky pro objekt blob bloku: *Mystoracct_BlockBlob/my kontejneru/objektů blob*
-- Sdílené složky pro objekt blob stránky: *Mystoracct_PageBlob/my kontejneru/objektů blob*
+- Sdílené složky pro objekt blob bloku: *Mystoracct_BlockBlob/my-container/blob*
+- Sdílené složky pro objekt blob stránky: *Mystoracct_PageBlob/my-container/blob*
 - Sdílené složky pro soubor: *Mystoracct_AzFile/my-share*
 
 Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího postupu nakonfigurujte Data Box tak, aby povoloval přístup klientům systému souborů NFS.

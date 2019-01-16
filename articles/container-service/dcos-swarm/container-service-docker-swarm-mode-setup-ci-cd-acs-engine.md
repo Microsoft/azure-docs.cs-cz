@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 52d20004f43b5c553a17c44f3f35d30fd5693286
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4befcbb6b2297c6f80fb577b1fe22053a8c77ada
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995058"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331074"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(NEPOUŽÍVANÉ) Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service s modulem ACS a režimu Docker Swarm pomocí Azure DevOps
 
@@ -131,7 +131,7 @@ Existuje pět imagí kontejnerů k sestavení pro *MyShop* aplikace. Každá ima
 * ProductsApi
 * Proxy server
 * RatingsApi
-* RecommandationsApi
+* RecommendationsApi
 * ShopFront
 
 Budete potřebovat dva kroky Dockeru pro každé bitové kopie, jeden pro sestavení image a jeden nasdílejte image do registru kontejneru Azure. 
@@ -189,7 +189,7 @@ Budete potřebovat dva kroky Dockeru pro každé bitové kopie, jeden pro sestav
 
   ![Azure DevOps – sestavení proběhlo úspěšně](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
-## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Vytvoření kanál pro vydávání verzí
+## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Vytvořit kanál pro vydávání verzí
 
 Azure DevOps vám umožní [správě vydávání verzí napříč prostředími](https://www.visualstudio.com/team-services/release-management/). Můžete povolit průběžné nasazování, abyste měli jistotu, že vaše aplikace bude nasazena v různých prostředích (třeba dev, test, předprodukčních a produkčních) smooth způsobem. Můžete vytvořit prostředí, která představuje váš cluster Azure Container Service režimu Docker Swarm.
 
@@ -243,7 +243,7 @@ Pracovní postup vydávání se skládá ze dvou úkolů, které přidáte.
     >
 3. Uložte tento nový kanál pro vydávání verzí.
 
-## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4: Testování kanálu CI/CD
+## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4: Test kanálu CI/CD
 
 Teď, když jste hotovi s konfigurací, je čas k otestování tohoto nového kanálu CI/CD. Nejjednodušší způsob, jak ji otestovat je aktualizovat zdrojový kód a potvrzení změn do vašeho úložiště GitHub. Několik sekund poté, co vložíte kód, zobrazí se nové sestavení spuštěné v Azure DevOps. Po úspěšném dokončení novou verzi se aktivuje a nasadili novou verzi aplikace v clusteru Azure Container Service.
 

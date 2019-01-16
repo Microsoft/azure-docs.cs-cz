@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1cd7e504a614203218cb06b337becf36b992cf1d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2d586f28b426732433c027c950f8193e7503c72b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018224"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330800"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopírování dat do a z v místním systému souborů pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-onprem-file-system-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-file-system.md)
 
@@ -41,7 +41,7 @@ Může kopírovat data z následujících datových skladů **na systém soubor�
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
-> Aktivita kopírování nedojde k odstranění zdrojového souboru, co se úspěšně zkopíruje do cíle. Pokud je potřeba odstranit zdrojový soubor po úspěšném kopírování, vytvoření vlastní aktivity a stejný soubor odstranit také pomocí aktivity v kanálu. 
+> Aktivita kopírování nedojde k odstranění zdrojového souboru, co se úspěšně zkopíruje do cíle. Pokud je potřeba odstranit zdrojový soubor po úspěšném kopírování, vytvoření vlastní aktivity a stejný soubor odstranit také pomocí aktivity v kanálu.
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
 Data Factory podporuje připojení do a z v místním systému souborů prostřednictvím **brána správy dat**. Musíte nainstalovat bránu správy dat v místním prostředí pro službu Data Factory se připojit k jakékoli úložiště dat podporovaných místních včetně systému souborů. Další informace o bráně pro správu dat a zobrazit podrobné pokyny pro nastavení brány najdete v tématu [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](data-factory-move-data-between-onprem-and-cloud.md). Kromě Brána pro správu dat není třeba žádné binární soubory ke komunikaci do a z v místním systému souborů. Musíte nainstalovat a používat bránu správy dat i v případě, že systém souborů je na virtuálním počítači Azure IaaS. Podrobné informace o bráně, naleznete v tématu [brána správy dat](data-factory-data-management-gateway.md).
@@ -57,7 +57,7 @@ Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, 
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvoření **služby data factory**. Datová továrna může obsahovat jeden nebo víc kanálů. 
+1. Vytvoření **služby data factory**. Datová továrna může obsahovat jeden nebo víc kanálů.
 2. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory. Pokud jsou kopírování dat z Azure blob storage na systém souborů na místě, například vytvoříte dvě propojené služby k propojení vaší místní systém souborů a účet úložiště Azure pro vytváření dat. Vlastnosti propojené služby, které jsou specifické pro systém souborů v místním, naleznete v tématu [vlastnostem propojených služeb](#linked-service-properties) oddílu.
 3. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. V příkladu uvedených v posledním kroku vytvoříte datovou sadu, která zadejte kontejner objektů blob a složku obsahující vstupní data. A vytvořte jinou datovou sadu, která zadejte složku a název souboru (volitelné) v systému souborů. Vlastnosti datové sady, které jsou specifické pro systém souborů v místním, naleznete v tématu [vlastnosti datové sady](#dataset-properties) oddílu.
 4. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. V příkladu již bylo zmíněno dříve pomocí BlobSource jako zdroj a FileSystemSink jako jímka pro aktivitu kopírování. Podobně pokud kopírujete z místního systému souborů do úložiště objektů Blob Azure, můžete použít FileSystemSource a BlobSink v aktivitě kopírování. Kopírovat vlastnosti aktivity, které jsou specifické pro systém souborů v místním, naleznete v tématu [vlastnosti aktivity kopírování](#copy-activity-properties) oddílu. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku klikněte na odkaz v předchozí části datového úložiště.
@@ -76,7 +76,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 | ID uživatele |Zadejte ID uživatele, který má přístup k serveru. |Ne (když zvolíte encryptedCredential) |
 | heslo |Zadejte heslo pro uživatele (ID uživatele). |Ne (když zvolíte encryptedCredential |
 | encryptedCredential |Zadejte zašifrované přihlašovací údaje, které můžete získat spuštěním rutiny New-AzureRmDataFactoryEncryptValue. |Ne (když se rozhodnete zadat ID uživatele a heslo jako prostý text) |
-| Název brány |Určuje název brány, které služby Data Factory měla použít pro připojení k serveru v místním souboru. |Ano |
+| gatewayName |Určuje název brány, které služby Data Factory měla použít pro připojení k serveru v místním souboru. |Ano |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Ukázkové propojené služby a definicích datových sad
@@ -129,7 +129,7 @@ V části typeProperties se liší pro každý typ datové sady. Poskytuje infor
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | folderPath |Určuje dílčí cestou ke složce. Použijte řídicí znak "\' pro zvláštní znaky v řetězci. Filtr zástupných znaků není podporován. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano |
-| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není zadán v aktivita jímky název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt) |Ne |
+| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není zadán v aktivita jímky název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů. <br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: "fileFilter": "* .log"<br/>Příklad 2: "fileFilter": 2014 - 1-?. TXT"<br/><br/>Všimněte si, že fileFilter se dá použít pro vstupní datovou sadu sdílení souborů. |Ne |
 | partitionedBy |PartitionedBy můžete použít k určení dynamické folderPath/fileName pro data časových řad. Příkladem je folderPath s parametry pro každou hodinu data. |Ne |
 | formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
@@ -161,7 +161,7 @@ V tomto příkladu {řez} se nahradí hodnotu proměnné systému služby Data F
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
@@ -254,7 +254,7 @@ Doporučujeme použít **encryptedCredential** vlastnost místo toho **userid** 
 
 **V místním souboru systému vstupní datové sady:**
 
-Data je převzata z nového souboru každou hodinu. Vlastnosti folderPath a název souboru se určují podle času spuštění řezu.  
+Data je převzata z nového souboru každou hodinu. Vlastnosti folderPath a název souboru se určují podle času spuštění řezu.
 
 Nastavení `"external": "true"` služby Data Factory informuje, že datová sada je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
 
@@ -383,13 +383,13 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
 Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **FileSystemSource**, a **jímky** je typ nastaven na **BlobSink**.
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2015-06-01T18:00:00",
     "end":"2015-06-01T19:00:00",
     "description":"Pipeline for copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "OnpremisesFileSystemtoBlob",
         "description": "copy activity",
@@ -423,8 +423,8 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
           "timeout": "01:00:00"
         }
       }
-     ]
-   }
+    ]
+  }
 }
 ```
 
@@ -572,13 +572,13 @@ Data zkopírována do nového souboru každou hodinu. FolderPath a název soubor
 Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **SqlSource**a **jímky** je typ nastaven na **FileSystemSink**. Dotaz SQL, který je určen pro **SqlReaderQuery** vlastnost vybere data za poslední hodinu pro kopírování.
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2015-06-01T18:00:00",
     "end":"2015-06-01T20:00:00",
     "description":"pipeline for copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "AzureSQLtoOnPremisesFile",
         "description": "copy activity",
@@ -613,11 +613,10 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
           "timeout": "01:00:00"
         }
       }
-     ]
-   }
+    ]
+  }
 }
 ```
-
 
 Můžete také namapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky v definici aktivity kopírování. Podrobnosti najdete v tématu [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
 

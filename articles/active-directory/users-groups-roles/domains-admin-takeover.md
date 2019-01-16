@@ -1,5 +1,5 @@
 ---
-title: Správce převzetí nespravovaného adresáře nebo stínové tenanta v Azure Active Directory | Dokumentace Microsoftu
+title: Převzetí - správce – nespravovaného adresáře Azure Active Directory | Dokumentace Microsoftu
 description: Jak převzít kontrolu nad název domény DNS nespravovaného adresáře (stínové tenanta) v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 44fe3b54e2dfedb71b50a75befce96121ecebe05
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121188"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320238"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory
 Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS nespravovaného adresáře v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virálního" registrace pro službu, najdete v článku [co je Samoobslužná registrace do služby Azure Active Directory?](directory-self-service-signup.md)
@@ -118,7 +118,7 @@ Když provádíte externí převzetí, Power BI obsah, který byl vytvořen ješ
 Zobrazí se tyto rutiny používané v [příklad Powershellu](#powershell-example).
 
 
-Rutiny | Využití 
+cmdlet | Využití 
 ------- | -------
 `connect-msolservice` | Po zobrazení výzvy, přihlaste se do nespravovaného tenanta.
 `get-msoldomain` | Zobrazuje názvy domén spojené s aktuálním tenantovi.

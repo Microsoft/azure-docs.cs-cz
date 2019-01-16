@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d95534cceb11f7bf20f6966e0205694fc1db021d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: af528f210f4464c973d88fab7eeb1572effc87bc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017595"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330383"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Přesun dat do a ze služby Azure Cosmos DB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,9 +28,9 @@ ms.locfileid: "54017595"
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor služby Azure Cosmos DB ve verzi V2](../connector-azure-cosmos-db.md).
 
-Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat do a z Azure Cosmos DB (rozhraní SQL API). Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování. 
+Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat do a z Azure Cosmos DB (rozhraní SQL API). Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
 
-Můžete zkopírovat data z libovolné podporované zdrojové úložiště dat do služby Azure Cosmos DB nebo ze služby Azure Cosmos DB k jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. 
+Můžete zkopírovat data z libovolné podporované zdrojové úložiště dat do služby Azure Cosmos DB nebo ze služby Azure Cosmos DB k jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky.
 
 > [!IMPORTANT]
 > Konektor služby Azure Cosmos DB podporuje pouze rozhraní SQL API.
@@ -42,17 +42,17 @@ Vytvoření kanálu s aktivitou kopírování, která přesunuje data ze služby
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
-Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky: 
+Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
 1. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory.
-2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. 
-3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. 
+2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování.
+3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup.
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Ukázky s definicemi JSON entit služby Data Factory, které se používají ke kopírování dat do a ze služby Cosmos DB najdete v tématu [JSON příklady](#json-examples) části tohoto článku. 
+Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON. Ukázky s definicemi JSON entit služby Data Factory, které se používají ke kopírování dat do a ze služby Cosmos DB najdete v tématu [JSON příklady](#json-examples) části tohoto článku.
 
-Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní ke službě Cosmos DB: 
+Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní ke službě Cosmos DB:
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro služby Azure Cosmos DB propojený.
@@ -105,7 +105,7 @@ Příklad:
 }
 ```
 ### <a name="schema-by-data-factory"></a>Schéma službou Data Factory
-Služba Data Factory pro úložišť dat bez schématu, jako je Azure Cosmos DB, odvodí schéma v jednom z následujících způsobů:  
+Služba Data Factory pro úložišť dat bez schématu, jako je Azure Cosmos DB, odvodí schéma v jednom z následujících způsobů:
 
 1. Pokud určíte strukturu dat pomocí **struktura** vlastnost v definici datové sady, služba Data Factory respektuje tato struktura jako schéma. V takovém případě pokud řádku neobsahuje hodnotu pro sloupec, hodnotu null, poskytneme vám pro něj.
 2. Pokud nezadáte strukturu dat s použitím **struktura** vlastnost v definici datové sady, služba Data Factory odvodí schéma pomocí prvního řádku v datech. V takovém případě pokud první řádek obsahuje úplného schématu, některé sloupce bude chybět ve výsledku operace kopírování.
@@ -142,7 +142,7 @@ Pomocí tohoto konektoru služby Cosmos DB, můžete snadno
 * Exportujte dokumentů JSON do různých úložišť založená na souborech z collecton Cosmos DB.
 * Migrace dat mezi dvě kolekce Cosmos DB jako-je.
 
-Abyste dosáhli takové kopírování dogmaticky na schématu 
+Abyste dosáhli takové kopírování dogmaticky na schématu
 * Při použití Průvodce kopírováním, zkontrolujte **"exportovat jako-soubory JSON nebo kolekce Cosmos DB"** možnost.
 * Při použití, úpravy v editoru JSON, nezadávejte oddílu "struktura" v Cosmos DB publikovaných ani vlastnost "nestingSeparator" ve službě Cosmos DB zdroje/jímky v aktivitě kopírování. Z Importovat / exportovat soubory JSON, v datové sadě úložiště souboru zadejte typ formátu jako "JsonFormat", "filePattern" config a přeskočit zbývající nastavení formátu naleznete v tématu [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format) části na podrobnosti.
 
@@ -249,13 +249,13 @@ Ukázkový dokument JSON v kolekci osoby v databázi Cosmos DB:
 ```
 Cosmos DB podporuje dotazování dokumentů pomocí syntaxe typu SQL přes hierarchické dokumentů JSON.
 
-Příklad: 
+Příklad:
 
 ```sql
 SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
 ```
 
-Následující kanál kopíruje data z kolekce osoby v databázi Azure Cosmos DB do objektu blob Azure. Jako součást aktivity kopírování vstup a výstup nejsou zadané datové sady.  
+Následující kanál kopíruje data z kolekce osoby v databázi Azure Cosmos DB do objektu blob Azure. Jako součást aktivity kopírování vstup a výstup nejsou zadané datové sady.
 
 ```JSON
 {
@@ -298,7 +298,7 @@ Následující kanál kopíruje data z kolekce osoby v databázi Azure Cosmos DB
   }
 }
 ```
-## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Příklad: Kopírování dat z Azure Blob do služby Azure Cosmos DB 
+## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Příklad: Kopírování dat z Azure Blob do služby Azure Cosmos DB
 Následující příklad ukazuje:
 
 1. Propojené služby typu [DocumentDb](#azure-documentdb-linked-service-properties).
@@ -434,7 +434,7 @@ Následující kanál kopíruje data z objektu Blob Azure do kolekce osoby v Cos
             "nestingSeparator": ".",
             "writeBatchSize": 2,
             "writeBatchTimeout": "00:00:00"
-          }
+          },
           "translator": {
               "type": "TabularTranslator",
               "ColumnMappings": "FirstName: Name.First, MiddleName: Name.Middle, LastName: Name.Last, BusinessEntityID: BusinessEntityID, PersonType: PersonType, NameStyle: NameStyle, Title: Title, Suffix: Suffix, EmailPromotion: EmailPromotion, rowguid: rowguid, ModifiedDate: ModifiedDate"
@@ -487,7 +487,7 @@ Azure Cosmos DB je úložiště NoSQL pro dokumenty JSON, ve kterém jsou povole
     **Odpověď:** Ne.
 2. **Otázka:** Jak opakování kopie do služby Azure Cosmos DB vypořádat se už zkopírovaný záznamy?
 
-    **Odpověď:** Pokud záznamy mají pole "ID" a operace kopírování se pokusí vložit záznam se stejným ID, operace kopírování vyvolá chybu.  
+    **Odpověď:** Pokud záznamy mají pole "ID" a operace kopírování se pokusí vložit záznam se stejným ID, operace kopírování vyvolá chybu.
 3. **Otázka:** Data Factory podporuje [rozsahu nebo dělení na základě hodnoty hash dat](../../cosmos-db/sql-api-partition-data.md)?
 
     **Odpověď:** Ne.

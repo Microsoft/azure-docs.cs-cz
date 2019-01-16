@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 893f8393c3ed7c50e7c9fafe28eef9a6ede45653
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 82ce7c4d61870a10daad22c61759084c75c3aae6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261311"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318844"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření aplikace webového portálu Service Manager pomocí automatického skriptu
 
@@ -201,7 +201,7 @@ try
 
     $adApp = New-AzureRmADApplication -DisplayName $siteName -HomePage $azureSite -IdentifierUris $azureSite -Password $clientSecret
 
-    Write-Host "AzureAD application created succesfully!!"
+    Write-Host "AzureAD application created successfully!!"
 }
 catch
 {

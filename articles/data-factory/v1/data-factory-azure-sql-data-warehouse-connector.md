@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: def99a1b98970c09f28e7bfc7f44084c0f5b3c6e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 72a666db6157300942b966b88d9c3369495b9fd4
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018390"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331230"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.locfileid: "54018390"
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor Azure SQL Data Warehouse ve verzi V2](../connector-azure-sql-data-warehouse.md).
 
-Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat do a z Azure SQL Data Warehouse. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.  
+Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat do a z Azure SQL Data Warehouse. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
 
 > [!TIP]
 > K dosažení nejlepšího výkonu dosáhnete, načtení dat do Azure SQL Data Warehouse pomocí PolyBase. [Použití PolyBase k načítání dat do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) část obsahuje podrobné informace o. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v oblasti 15 minut](data-factory-load-sql-data-warehouse.md).
@@ -62,7 +62,7 @@ Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kr
 3. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. V příkladu uvedených v posledním kroku vytvoříte datovou sadu, která zadejte kontejner objektů blob a složku obsahující vstupní data. A vytvořte jinou datovou sadu, která určit tabulku ve službě Azure SQL data warehouse, obsahující data zkopírovaná z úložiště objektů blob. Vlastnosti datové sady, které jsou specifické pro Azure SQL Data Warehouse, najdete v části [vlastnosti datové sady](#dataset-properties) oddílu.
 4. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. V příkladu již bylo zmíněno dříve pomocí BlobSource jako zdroj a SqlDWSink jako jímka pro aktivitu kopírování. Podobně pokud kopírujete z Azure SQL Data Warehouse do Azure Blob Storage, můžete použít SqlDWSource a BlobSink v aktivitě kopírování. Kopírovat vlastnosti aktivity, které jsou specifické pro Azure SQL Data Warehouse, najdete v části [vlastnosti aktivity kopírování](#copy-activity-properties) oddílu. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku klikněte na odkaz v předchozí části datového úložiště.
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Ukázky s definicemi JSON entit služby Data Factory, které se používají ke kopírování dat do a z Azure SQL Data Warehouse najdete v tématu [JSON příklady](#json-examples-for-copying-data-to-and-from-sql-data-warehouse) části tohoto článku.
+Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON. Ukázky s definicemi JSON entit služby Data Factory, které se používají ke kopírování dat do a z Azure SQL Data Warehouse najdete v tématu [JSON příklady](#json-examples-for-copying-data-to-and-from-sql-data-warehouse) části tohoto článku.
 
 Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory, které jsou specifické pro Azure SQL Data Warehouse:
 
@@ -132,9 +132,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -194,29 +194,29 @@ SQL Data Warehouse PolyBase přímo podporují objektů Blob v Azure a Azure Dat
 
 Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a automaticky přejde zpět k hromadné vložení mechanismus pro přesun dat.
 
-1. **Zdroj propojené služby** je typu: **AzureStorage** nebo **AzureDataLakeStore s ověřování instančních objektů**.  
+1. **Zdroj propojené služby** je typu: **AzureStorage** nebo **AzureDataLakeStore s ověřování instančních objektů**.
 2. **Vstupní datová sada** je typu: **AzureBlob** nebo **AzureDataLakeStore**a formát, zadejte v části `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat** s následující konfigurací:
 
-   1. `rowDelimiter` musí být **\n**.
-   2. `nullValue` je nastavena na **prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastavena na **true**.
-   3. `encodingName` je nastavena na **utf-8**, což je **výchozí** hodnotu.
-   4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, a `skipLineCount` nejsou zadány.
-   5. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
+    1. `rowDelimiter` musí být **\n**.
+    2. `nullValue` je nastavena na **prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastavena na **true**.
+    3. `encodingName` je nastavena na **utf-8**, což je **výchozí** hodnotu.
+    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, a `skipLineCount` nejsou zadány.
+    5. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
 
     ```JSON
     "typeProperties": {
-       "folderPath": "<blobpath>",
-       "format": {
-           "type": "TextFormat",     
-           "columnDelimiter": "<any delimiter>",
-           "rowDelimiter": "\n",       
-           "nullValue": "",           
-           "encodingName": "utf-8"    
-       },
-       "compression": {  
-           "type": "GZip",  
-           "level": "Optimal"  
-       }  
+        "folderPath": "<blobpath>",
+        "format": {
+            "type": "TextFormat",
+            "columnDelimiter": "<any delimiter>",
+            "rowDelimiter": "\n",
+            "nullValue": "",
+            "encodingName": "utf-8"
+        },
+        "compression": {
+            "type": "GZip",
+            "level": "Optimal"
+        }
     },
     ```
 
@@ -234,7 +234,7 @@ Pokud vaše zdrojová data nesplňuje kritéria představíme v předchozí čá
 Pokud chcete tuto funkci používat, vytvořte [propojenou službu Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) , který odkazuje na účet úložiště Azure, který má úložiště objektů blob v mezičase, zadejte `enableStaging` a `stagingSettings` vlastnosti pro aktivitu kopírování, jak je znázorněno v Následující kód:
 
 ```json
-"activities":[  
+"activities":[
 {
     "name": "Sample copy activity from SQL Server to SQL Data Warehouse via PolyBase",
     "type": "Copy",
@@ -281,7 +281,7 @@ Následující tabulka obsahuje příklady o tom, jak zadat **tableName** vlastn
 | vlastník databáze |My.Table |[My.Table] nebo [dbo]. [My.Table] |
 | dbo1 |My.Table |[dbo1]. [My.Table] |
 
-Pokud se zobrazí následující chyba, můžou být problémy s hodnotou, kterou jste zadali pro vlastnost tableName. Viz tabulka pro správný způsob, jak určit hodnoty pro vlastnost tableName JSON.  
+Pokud se zobrazí následující chyba, můžou být problémy s hodnotou, kterou jste zadali pro vlastnost tableName. Viz tabulka pro správný způsob, jak určit hodnoty pro vlastnost tableName JSON.
 
 ```
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
@@ -293,7 +293,7 @@ Funkce PolyBase ve službě Data Factory v současné době přijímá pouze ste
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
-Hodnota NULL je zvláštní forma výchozí hodnotu. Pokud je sloupec s možnou hodnotou Null, vstupní data (v objektu blob) pro tento sloupec může být prázdný (nelze chybí vstupní datové sady). PolyBase vloží NULL u nich ve službě Azure SQL Data Warehouse.  
+Hodnota NULL je zvláštní forma výchozí hodnotu. Pokud je sloupec s možnou hodnotou Null, vstupní data (v objektu blob) pro tento sloupec může být prázdný (nelze chybí vstupní datové sady). PolyBase vloží NULL u nich ve službě Azure SQL Data Warehouse.
 
 ## <a name="auto-table-creation"></a>Automatické vytvoření tabulky
 Pokud použijete Průvodce kopírováním ke zkopírování dat z Azure SQL Database nebo SQL serveru do Azure SQL Data Warehouse a tabulku, která odpovídá zdrojová tabulka neexistuje v cílovém úložišti, Data Factory automaticky vytvořit tabulky v datovém skladu podle u SING schématu zdrojové tabulky.
@@ -515,13 +515,13 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
 Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **SqlDWSource** a **jímky** je typ nastaven na **BlobSink**. Zadaná pro dotaz SQL **SqlReaderQuery** vlastnost vybere data za poslední hodinu pro kopírování.
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline for copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "AzureSQLDWtoBlob",
         "description": "copy activity",
@@ -545,7 +545,7 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
             "type": "BlobSink"
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -556,8 +556,8 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
           "timeout": "01:00:00"
         }
       }
-     ]
-   }
+    ]
+  }
 }
 ```
 > [!NOTE]
@@ -699,13 +699,13 @@ Ukázce kopíruje data do tabulky s názvem "MyTable" ve službě Azure SQL Data
 Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **BlobSource** a **jímky** je typ nastaven na **SqlDWSink**.
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline with copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "AzureBlobtoSQLDW",
         "description": "Copy Activity",
@@ -730,7 +730,7 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
             "allowPolyBase": true
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -741,8 +741,8 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
           "timeout": "01:00:00"
         }
       }
-      ]
-   }
+    ]
+  }
 }
 ```
 Návod, najdete v části Viz [načtení 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v oblasti 15 minut](data-factory-load-sql-data-warehouse.md) a [načtení dat pomocí Azure Data Factory](../../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md) článek v dokumentaci k Azure SQL Data Warehouse.

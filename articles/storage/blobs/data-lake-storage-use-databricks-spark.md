@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: dineshm
-ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e72a4f71a42a892d14fad076b124426f0c32ac7d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548982"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321802"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k verzi Preview služby Data Lake Storage Gen2 dat pomocí Azure Databricks pomocí Spark
 
@@ -36,12 +36,31 @@ V tomto kurzu si ukážeme, jak využívat a dotazovat se na data o odletech aer
 2. Vyberte **Stáhnout** a uložte výsledky do svého počítače.
 3. Poznamenejte si název souboru a cestu souboru ke stažení; Tyto informace v pozdějším kroku budete potřebovat.
 
-K dokončení tohoto kurzu, budete potřebovat účet úložiště s možností analýzy jednotlivých. Doporučujeme, abyste dokončení našich [rychlý Start](data-lake-storage-quickstart-create-account.md) k tomuto tématu, aby bylo možné vytvořit. Po vytvoření ho, přejděte na účet úložiště k načtení nastavení konfigurace.
+K dokončení tohoto kurzu, budete potřebovat účet úložiště s možností analýzy jednotlivých. Doporučujeme, abyste dokončení našich [rychlý Start](data-lake-storage-quickstart-create-account.md) k tomuto tématu, aby bylo možné vytvořit. 
 
-1. V části **nastavení**vyberte **přístupové klíče**.
-2. Vyberte **kopírování** vedle **key1** na hodnotu klíče si zkopírujte.
+## <a name="set-aside-storage-account-configuration"></a>Odložení konfigurace účtu úložiště
 
-Název účtu a klíč budete potřebovat v dalších krocích tohoto kurzu. Otevřete textový editor a poznamenejte si do něj název účtu a klíč k pozdějšímu použití.
+Budete potřebovat název účtu úložiště a koncovým bodem systému souborů identifikátoru URI.
+
+Pokud chcete získat název účtu úložiště na webu Azure Portal, zvolte **všechny služby** a filtrováním podle termín *úložiště*. Vyberte **účty úložiště** a vyhledejte svůj účet úložiště.
+
+Pokud chcete získat koncový bod systému souborů identifikátoru URI, zvolte **vlastnosti**a v podokně vlastností najít hodnotu **primární ADLS koncový bod SOUBOROVÉ systému** pole.
+
+Vložte obě tyto hodnoty do textového souboru. Brzy je budete potřebovat.
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
+
+Vytvoření instančního objektu služby podle pokynů v tomto tématu: [Postup: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
+
+:heavy_check_mark: Při provádění kroků v [vytvoření aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) části tohoto článku, nezapomeňte nastavit **přihlašovací adresa URL** pole **vytvořit** dialogové okno pro identifikátor URI koncového bodu právě shromažďují.
+
+:heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, nezapomeňte přiřadit aplikaci do **Role Přispěvatel úložiště objektů Blob**.
+
+:heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
 
 ## <a name="create-a-databricks-cluster"></a>Vytvoření clusteru Databricks
 
@@ -63,22 +82,24 @@ Dalším krokem je vytvoření clusteru Databricks vytvořit pracovní prostor d
 14. Zadejte název zvoleného v **název** pole a vyberte **Python** jako jazyk.
 15. Ve všech ostatních polích můžete nechat výchozí hodnoty.
 16. Vyberte **Vytvořit**.
-17. Vložte následující kód do **Cmd 1** buňky. Nahraďte zástupné symboly v závorce v ukázce vlastními hodnotami:
+17. Zkopírujte a vložte následující blok kódu do první buňky, ale není ještě tento kód spustit.
 
-    ```scala
-    %python%
+    ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-        
+           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+           "fs.azure.account.oauth2.client.id": "<application-id>",
+           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
+
     dbutils.fs.mount(
-        source = "abfss://dbricks@<account-name>.dfs.core.windows.net/folder1",
-        mount_point = "/mnt/flightdata",
-        extra_configs = configs)
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    mount_point = "/mnt/flightdata",
+    extra_configs = configs)
     ```
-18. Stiskněte **SHIFT+ENTER** a spusťte kód v buňce.
+18. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` zástupné hodnoty hodnotami, které jste shromáždili, když jste dokončili kroky v v tomto bloku kódu [vyhradit účet úložiště konfigurace](#config) a [vytvoření instančního objektu](#service-principal) částech tohoto článku. Nahradit `file-system-name` zástupný symbol libovolný název, který chcete udělit systému souborů.
+
+19. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
 ## <a name="ingest-data"></a>Ingestace dat
 

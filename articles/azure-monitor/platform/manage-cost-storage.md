@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ed720b0db68a11c573a763c4269349db97977eff
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231066"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332315"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Správa nákladů a využití pro Log Analytics
 
@@ -67,7 +66,7 @@ Následující kroky popisují, jak nakonfigurovat limit Správa objemu dat, kte
 
 1. V levém podokně vašeho pracovního prostoru vyberte **Využití a odhadované náklady**.
 2. Na **využití a odhadované náklady** stránek pro vybraný pracovní prostor, klikněte na tlačítko **Správa objemu dat** z horní části stránky. 
-5. Denní limit je **OFF** ve výchozím nastavení – klikněte na tlačítko **ON** ji povolit, a pak nastavit limit objemu dat v GB za den.<br><br> ![Konfigurace omezení dat log Analytics](media/manage-cost-storage/set-daily-volume-cap-01.png)
+3. Denní limit je **OFF** ve výchozím nastavení – klikněte na tlačítko **ON** ji povolit, a pak nastavit limit objemu dat v GB za den.<br><br> ![Konfigurace omezení dat log Analytics](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-daily-cap-reached"></a>Pošle upozornění, když denní limit dosažen
 Zatímco Představujeme vizuální upozornění na webu Azure Portal, pokud je dodržena prahová hodnota pro omezení vašich dat, toto chování není nutně zarovnat spravujete provozní problémy, které vyžadují okamžitou pozornost.  Pokud chcete dostávat oznámení výstrah, můžete vytvořit nové pravidlo výstrah ve službě Azure Monitor.  Další informace najdete v tématu [vytvoření, zobrazení a Správa výstrah](alerts-metric.md).      
@@ -161,7 +160,7 @@ Chcete-li pochopit počet počítačů (uzlů), vytváření sestav dat každý 
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Zobrazíte seznam počítačů odesílajících **účtuje datové typy** (některé typy dat jsou zdarma), využívat `_IsBilled` vlastnost:
+Zobrazíte seznam počítačů odesílajících **účtuje datové typy** (některé typy dat jsou zdarma), využívat [_IsBillable](log-standard-properties.md#isbillable) vlastnost:
 
 `union withsource = tt * 
 | where _IsBillable == true 

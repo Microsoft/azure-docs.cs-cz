@@ -7,19 +7,19 @@ ms.author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.openlocfilehash: c820d2172c3e38d9d744e645d7c0e8b4749b42cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/14/2019
+ms.openlocfilehash: 49039e742ebd4354f9a52572ffdc69e95bf7f85e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743370"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321207"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí webu Azure portal
 
-V tomto rychlém startu se dozvíte, jak použít Azure Databricks ke spuštění úlohy Apache Spark, abyste mohli analyzovat data uložená v účtu úložiště s povolenou službou Azure Data Lake Storage Gen2 Preview.
+V tomto rychlém startu se dozvíte, jak se spouští úloha Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu úložiště, který má povolenou verzí preview služby Azure Data Lake Storage Gen2.
 
-V úloze Spark budete analyzovat data o předplatných rozhlasové stanice, abyste získali přehled o bezplatném a placeném používání podle demografických údajů.
+V rámci úlohy Spark analyzujete data o předplatných rozhlasových a získejte přehled o bezplatném a placeném využití na základě demografických údajů.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -27,12 +27,31 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 - [Vytvoření účtu úložiště s povolenou službou Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 
+<a id="config"/>
+
 ## <a name="set-aside-storage-account-configuration"></a>Odložení konfigurace účtu úložiště
 
-> [!IMPORTANT]
-> Během tohoto kurzu musíte mít přístup k názvu účtu a přístupovému klíči úložiště. Na webu Azure Portal vyberte **Všechny služby** a vyfiltrujte *úložiště*. Vyberte **Účty úložiště** a najděte účet, který jste vytvořili pro tento kurz.
->
-> Z **přehledu** zkopírujte **název** účtu úložiště do textového editoru. Pak vyberte **Přístupové klíče** a zkopírujte hodnotu **key1** do textového editoru. Obě hodnoty budete potřebovat v pozdějších příkazech.
+Budete potřebovat název účtu úložiště a koncovým bodem systému souborů identifikátoru URI.
+
+Pokud chcete získat název účtu úložiště na webu Azure Portal, zvolte **všechny služby** a filtrováním podle termín *úložiště*. Vyberte **účty úložiště** a vyhledejte svůj účet úložiště.
+
+Pokud chcete získat koncový bod systému souborů identifikátoru URI, zvolte **vlastnosti**a v podokně vlastností najít hodnotu **primární ADLS koncový bod SOUBOROVÉ systému** pole.
+
+Vložte obě tyto hodnoty do textového souboru. Brzy je budete potřebovat.
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
+
+Vytvoření instančního objektu služby podle pokynů v tomto tématu: [Postup: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
+
+:heavy_check_mark: Při provádění kroků v [vytvoření aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) části tohoto článku, nezapomeňte nastavit **přihlašovací adresa URL** pole **vytvořit** dialogové okno pro identifikátor URI koncového bodu právě shromažďují.
+
+:heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, nezapomeňte přiřadit aplikaci do **Role Přispěvatel úložiště objektů Blob**.
+
+:heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
@@ -58,7 +77,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
     Vyberte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**.
 
-3. Vytvoření pracovního prostoru trvá několik minut. Během vytváření pracovního prostoru se na pravé straně portálu zobrazí dlaždice **Odesílání nasazení pro Azure Databricks**. Možná se budete muset posunout do pravé části řídicího panelu, aby se dlaždice zobrazila. V horní části obrazovky se také zobrazí indikátor průběhu. Průběh můžete sledovat v obou oblastech.
+3. Trvá si trochu času vytvořit pracovní prostor. Při vytváření pracovního prostoru **odesílá se nasazení pro Azure Databricks** dlaždici se zobrazí na pravé straně. Pokud chcete zobrazit nadpis, budete muset posunout doprava na řídicím panelu. Je také indikátor průběhu, který se zobrazí v horní části obrazovky. Průběh můžete sledovat v obou oblastech.
 
     ![Dlaždice nasazení Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-deployment-tile.png "Dlaždice nasazení Databricks")
 
@@ -77,7 +96,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     Přijměte všechny výchozí hodnoty kromě následujících:
 
     * Zadejte název clusteru.
-    * Vytvořte cluster pomocí **5.1 beta** modulu runtime.
+    * Vytvořte cluster pomocí **5.1** modulu runtime.
     * Nezapomeňte zaškrtnout políčko **Terminate after 120 minutes of inactivity** (Ukončit po 120 minutách nečinnosti). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
 4. Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
@@ -100,49 +119,26 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
     Vyberte **Vytvořit**.
 
-4. Pracovní prostor Databricks připojíte ke svému účtu ADLS Gen2. Existují tři podporované mechanismy pro dosažení tohoto cíle: připojení pomocí OAuth, přímý přístup pomocí OAuth a přímý přístup pomocí sdíleného klíče. 
+4. Zkopírujte a vložte následující blok kódu do první buňky, ale není ještě tento kód spustit.
 
-    Každý mechanismus je znázorněno v následujícím příkladu. Při testování příkladů se nezapomeňte nahradit zástupné symboly v závorce v ukázce vlastními hodnotami:
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
-    **Připojit pomocí OAuth**     
-        
-    ```scala
-    %python%
-    configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-    
-    dbutils.fs.mount(
-        source = "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/[<directory-name>]",
-        mount_point = "/mnt/<mount-name>",
-        extra_configs = configs)
-    ```
+   ```
+ 
+    > [!NOTE]
+    > Tento blok kódu přímo má přístup k Data Lake Gen2 koncový bod pomocí OAuth, ale existují jiné způsoby připojení k vašemu účtu Data Lake Storage Gen2 pracovního prostoru Databricks. Můžete třeba připojit systém souborů pomocí OAuth nebo přímý přístup pomocí sdíleného klíče. <br>Mezi příklady těchto přístupů najdete v tématu [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks.
 
-    **Přímý přístup pomocí OAuth**
+5. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` zástupné hodnoty hodnotami, které jste shromáždili, když jste dokončili kroky v v tomto bloku kódu [vyhradit účet úložiště konfigurace](#config) a [vytvoření instančního objektu](#service-principal) částech tohoto článku.  Nastavte `file-system-name` hodnotu zástupného symbolu cokoli, co můžete pojmenovat chcete umožnit systému souborů.
 
-    ```scala
-    spark.conf.set("fs.azure.account.auth.type.<account-name>.dfs.core.windows.net": "OAuth")
-    spark.conf.set("fs.azure.account.oauth.provider.type.<account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id.<account-name>.dfs.core.windows.net": "<service-client-id>")
-    spark.conf.set("fs.azure.account.oauth2.client.secret.<account-name>.dfs.core.windows.net": "<service-credentials>")
-    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net": "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
-
-    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
-    ```
-        
-    **Přímý přístup pomocí sdíleného klíče** 
-
-    ```scala    
-    spark.conf.set("fs.azure.account.key.<account-name>.dfs.core.windows.net", "<account-key>")
-
-    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
-    ```
-
-5. Zadejte kód do první buňky a stiskněte klávesu **SHIFT + ENTER** ho spustit.
-
-Tím vytvoříte systém souborů pro účet úložiště.
+6. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
 ## <a name="ingest-sample-data"></a>Ingestace ukázkových dat
 
@@ -154,7 +150,7 @@ Do buňky poznámkového bloku zadejte následující kód:
 
 V buňce, stiskněte klávesu **SHIFT + ENTER** spuštění kódu.
 
-Nyní nové buňky pod touto, zadejte následující kód a nahraďte hodnoty v závorkách se stejnými hodnotami, které jste použili dříve:
+Teď do nové buňky pod tohohle, zadejte následující kód a nahraďte hodnoty, které se zobrazují v závorkách se stejnými hodnotami, které jste použili dříve:
 
     dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
 
@@ -172,7 +168,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
+     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
     )
     ```
 
@@ -214,7 +210,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení článku můžete cluster ukončit. V pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery) a najděte cluster, který chcete ukončit. Přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
+Jakmile budete hotovi s tímto článkem, můžete cluster ukončit. V pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery) a najděte cluster, který chcete ukončit. Přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
 
 ![Zastavení clusteru Databricks](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 

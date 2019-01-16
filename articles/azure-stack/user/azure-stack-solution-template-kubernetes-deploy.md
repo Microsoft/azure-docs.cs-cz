@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 064a9fc48ae60e530a11633b0823764a2f862811
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722392"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320017"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Nasazení Kubernetes pro Azure Stack
 
@@ -139,7 +139,7 @@ Poskytněte přístup instančního objektu služby do vašeho předplatného, t
 
 1. Zadejte **veřejný klíč SSH** se používají pro autorizaci pro všechny počítače s Linuxem vytvořili jako součást clusteru Kubernetes a DVM.
 
-1. Zadejte **předpony DNS profilu hlavní** , které je jedinečné pro danou oblast. Musí se jednat oblasti jedinečný název, jako například `k8s-12345`. Zkuste jste zvolili, je stejná jako skupina prostředků pojmenujte jako nejlepší praxe.
+1. Zadejte **předpony DNS profilu hlavní** , které je jedinečné pro danou oblast. Musí se jednat oblasti jedinečný název, jako například `k8s-12345`. Zkuste provést stejný jako název skupiny prostředků jako osvědčený postup.
 
     > [!Note]  
     > Pro každý cluster použijte předponu DNS nových a jedinečných hlavní profilu.
@@ -150,9 +150,9 @@ Poskytněte přístup instančního objektu služby do vašeho předplatného, t
 
 1. Vyberte **počet profil fond uzlů Kubernetes**. Počet obsahuje počet agentů v clusteru. 
 
-1. Vyberte **profil úložiště**. Můžete zvolit **objektu Blob disku** nebo **spravovaného disku**. Toto nastavení určuje virtuální počítače uzlů virtuálních počítačů velikosti Kubernetes. 
+1. Vyberte **profil úložiště**. Můžete zvolit **objektu Blob disku** nebo **spravovaného disku**. 
 
-1. Zadejte **ID klienta instančního objektu** slouží od poskytovatele cloudu Kubernetes Azure. ID klienta, které jsou identifikovány jako ID aplikace při vaší vytvoření instančního objektu služby.
+1. Zadejte **ID klienta instančního objektu** slouží od poskytovatele cloudu Kubernetes Azure. ID klienta byla identifikována jako ID aplikace při vaší vytvoření instančního objektu služby.
 
 1. Zadejte **tajný kód klienta instančního objektu** , který jste vytvořili při vytváření instančního objektu služby.
 

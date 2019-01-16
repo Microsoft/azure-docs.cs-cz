@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: mayg
-ms.openlocfilehash: 5de8bc9acd97016b401bd1c2bcce46f5ab851430
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 210872a468f92f92edef9c8e29a26382c5646dae
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811558"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321547"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
@@ -90,7 +90,7 @@ Během profilace můžete volitelně předat název a klíč účtu úložiště
 
 Můžete spouštět více instancí nástroje pro různé sady virtuálních počítačů. Zkontrolujte, že se názvy virtuálních počítačů v sadách profilace neopakují. Pokud například profilujete deset virtuálních počítačů (VM1–VM10) a po několika dnech chcete profilovat dalších pět virtuálních počítačů (VM11–VM15), můžete nástroj spustit z jiné konzoly příkazového řádku pro druhou sadu virtuálních počítačů (VM11–VM15). Zajistěte, aby druhá sada virtuálních počítačů neobsahovala žádné názvy virtuálních počítačů z první instance profilace, nebo pro druhé spuštění použijte jiný výstupní adresář. Pokud se k profilování stejných virtuálních počítačů používají dvě instance nástroje a stejný výstupní adresář, vygenerovaná sestava bude nepřesná.
 
-Ve výchozím nastavení je tento nástroj konfigurovaný tak, aby profiloval a generoval sestavy až pro 1000 virtuálních počítačů. Tento limit můžete změnit nastavením hodnoty klíče MaxVMsSupported v souboru *ASRDeploymentPlanner.exe.config*.
+Ve výchozím nastavení je tento nástroj konfigurovaný k a generoval sestavy až 1 000 virtuálních počítačů. Tento limit můžete změnit nastavením hodnoty klíče MaxVMsSupported v souboru *ASRDeploymentPlanner.exe.config*.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
@@ -168,7 +168,7 @@ Po dokončení profilace můžete nástroj spustit v režimu generování sestav
 |-OfferId|(Volitelné) Nabídka přidružená k danému předplatnému. Výchozí hodnota je MS-AZR-0003P (průběžné platby).|
 |-Currency|(Volitelné) Měna, ve které se ve vygenerované sestavě zobrazí náklady. Výchozí hodnota je americký dolar ($) nebo poslední použitá měna.<br>K dispozici je seznam [podporovaných měn](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).|
 
-Ve výchozím nastavení je tento nástroj konfigurovaný tak, aby profiloval a generoval sestavy až pro 1000 virtuálních počítačů. Tento limit můžete změnit nastavením hodnoty klíče MaxVMsSupported v souboru *ASRDeploymentPlanner.exe.config*.
+Ve výchozím nastavení tento nástroj je profiloval k a generoval sestavy až 1 000 virtuálních počítačů. Tento limit můžete změnit nastavením hodnoty klíče MaxVMsSupported v souboru *ASRDeploymentPlanner.exe.config*.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>

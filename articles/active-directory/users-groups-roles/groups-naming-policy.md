@@ -1,6 +1,6 @@
 ---
-title: Název nastavení zásad skupiny pro skupiny Office 365 ve službě Azure Active Directory (preview) | Dokumentace Microsoftu
-description: Jak nastavit vypršení platnosti pro skupiny Office 365 ve službě Azure Active Directory (preview)
+title: Název zásady (preview) – skupin Office 365, Azure Active Directory skupiny | Dokumentace Microsoftu
+description: Nastavení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 3368133dec82d946318a755dc98b068a048b9e83
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1118be1c335d8f88171b359c9cd273cdd2923021
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275104"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321717"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 
@@ -213,8 +213,8 @@ Outlook Customer Managerem (OCM) | Outlook Customer Managerem je kompatibilní s
 Aplikace Classroom | Skupiny vytvořené v aplikaci Classroom v souladu se zásadami vytváření názvů, ale zásady pojmenování se použijí automaticky a pojmenování zásady, ve verzi preview není zobrazen uživatelům při zadávání názvu skupiny učebnu. Uživatelé musíte zadat název skupiny vynucené učebny s předpon a přípon. Pokud ne, classroom skupiny vytvořte nebo upravte operace se nezdaří s chybami.
 Power BI | Pracovní prostory Power BI jsou kompatibilní se zásadami vytváření názvů.    
 Yammer | Když uživatel přihlášení na Yammer se svým účtem Azure Active Directory vytvoří skupinu nebo upraví název skupiny, název skupiny dodržovat zásady pojmenování. To platí i pro skupiny Office 365 připojené a všechny ostatní skupiny Yammeru.<br>Pokud připojené skupiny Office 365 byl vytvořen před zásady pojmenování je na místě, nebude podle názvu skupiny automaticky zásady vytváření názvů. Když uživatel upraví název skupiny, jsou vyzváni k přidání předpon a přípon.
-Staffhubu  | Týmy Staffhubu nepostupujte podle zásady pojmenování, ale základní skupina Office 365. Název týmu Staffhubu doporučení se netýká předpon a přípon a nekontroluje blokované zadejte vlastní slova. Ale Staffhubu použít předpon a přípon a odebere blokované slova ze základní skupiny Office 365.
-Exchange Powershellu | Rutiny Powershellu v Exchangi vyhovují zásadám vytváření názvů. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady pojmenování v název skupiny a alias skupiny (mailNickname).
+StaffHub  | Týmy Staffhubu nepostupujte podle zásady pojmenování, ale základní skupina Office 365. Název týmu Staffhubu doporučení se netýká předpon a přípon a nekontroluje blokované zadejte vlastní slova. Ale Staffhubu použít předpon a přípon a odebere blokované slova ze základní skupiny Office 365.
+Exchange PowerShell | Rutiny Powershellu v Exchangi vyhovují zásadám vytváření názvů. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady pojmenování v název skupiny a alias skupiny (mailNickname).
 Rutiny Azure Powershellu pro Active Directory | Rutiny Azure Powershellu pro Active Directory jsou kompatibilní s zásad pojmenování. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady vytváření názvů v názvech skupin a alias skupiny.
 Centra pro správu Exchange | Centra pro správu Exchange je kompatibilní s zásad pojmenování. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady vytváření názvů v název skupiny a alias skupiny.
 Centrum pro správu Office 365 | Centrum pro správu Office 365 je kompatibilní s zásad pojmenování. Když uživatel vytvoří nebo názvy skupin úpravy, bude automaticky použito zásad vytváření názvů a uživatelé obdrží příslušné chyby při zadávání blokované zadejte vlastní slova. Centrum pro správu Office 365 ještě nezobrazí ve verzi preview zásady pojmenování a nevrací vlastní zablokované slovo chyby, když uživatel zadá název skupiny.

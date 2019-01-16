@@ -3,21 +3,22 @@ title: SQL Server na Azure pro Linux Virtual Machines – nejčastější dotazy
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se systémem SQL Server na virtuálních počítačích Azure s Linuxem.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rothja
-manager: jhubbard
+author: MashaMSFT
+manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
-ms.author: jroth
-ms.openlocfilehash: e8297892c533f3b0126f925f81d3e9bc429828ef
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: fb1cafcf9405576749ea91aeea033c6ee783a026
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039951"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330428"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Nejčastější dotazy k SQL serveru v Azure virtuální počítače s Linuxem
 
@@ -60,7 +61,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
    Službu virtual machines RHEL a SLES vyžaduje předplatné bez omezení výdajů a ověřený způsob platby metody (obvykle platební karty) přidružené k předplatnému. Pokud zřizujete s RHEL nebo SLES virtuálního počítače bez odebrání limitu útraty, vaše předplatné bude zakázán a zastavit všechny virtuální počítače nebo služby. Pokud narazíte na tento stav, pokud chcete předplatné znovu aktivovat [odebrat limit útraty](https://account.windowsazure.com/subscriptions). Zbývající kredit se obnoví do aktuálního fakturačního cyklu, ale příplatek image RHEL nebo SLES virtuálního počítače přejde z vaší platební karty, pokud se rozhodnete znovu spustí a dál používat, musíte.
 
-## <a name="licensing"></a>Správa licencí
+## <a name="licensing"></a>Licencování
 
 1. **Jak mohu nainstalovat licencovanou kopii systému SQL Server na Virtuálním počítači Azure?**
 

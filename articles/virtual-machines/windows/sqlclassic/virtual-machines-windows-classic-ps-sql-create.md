@@ -1,9 +1,9 @@
 ---
-title: Vytvoření virtuálního počítače s SQL serverem v prostředí Azure PowerShell (klasické) | Microsoft Docs
-description: Obsahuje kroky a skriptů prostředí PowerShell pro vytvoření virtuálního počítače Azure s obrázky Galerie virtuálního počítače systému SQL Server. Toto téma používá režim nasazení classic.
+title: Vytvoření virtuálního počítače s SQL serverem v prostředí Azure PowerShell (Classic) | Dokumentace Microsoftu
+description: Poskytuje kroky a skripty prostředí PowerShell pro vytvoření virtuálního počítače Azure s využitím Image z Galerie virtuálních počítačů SQL serveru. Toto téma používá režim nasazení classic.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.assetid: b73be387-9323-4e08-be53-6e5928e3786e
@@ -13,64 +13,65 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/07/2017
-ms.author: jroth
-ms.openlocfilehash: 66f44e27562f33373e0b67fe6e0ebf9c6bf99e03
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: ad8b59a9290c533a3687b5ff8956d8682fb6d9e9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29399657"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332281"
 ---
-# <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Zřízení virtuálního počítače s SQL serverem pomocí Azure PowerShell (klasické)
+# <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Zřízení virtuálního počítače s SQL serverem přes Azure PowerShell (Classic)
 
-Tento článek obsahuje kroky pro vytvoření virtuálního počítače s SQL serverem v Azure pomocí rutin prostředí PowerShell.
+Tento článek popisuje kroky pro vytvoření virtuálního počítače s SQL serverem v Azure pomocí rutin prostředí PowerShell.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Resource Manager verzi tohoto tématu naleznete v části [zřízení virtuálního počítače s SQL serverem pomocí Azure PowerShell Resource Manager](../sql/virtual-machines-windows-ps-sql-create.md).
+Verzi tohoto tématu Resource Manageru najdete v části [zřízení virtuálního počítače s SQL serverem pomocí Resource Manageru prostředí Azure PowerShell](../sql/virtual-machines-windows-ps-sql-create.md).
 
-### <a name="install-and-configure-powershell"></a>Instalace a konfigurace prostředí PowerShell:
+### <a name="install-and-configure-powershell"></a>Instalace a konfigurace Powershellu:
 1. Pokud účet Azure nemáte, můžete začít používat [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
-2. [Stáhněte a nainstalujte nejnovější příkazy prostředí Azure PowerShell](/powershell/azure/overview).
-3. Spusťte prostředí Windows PowerShell a připojte ho k předplatnému Azure s **Add-AzureAccount** příkaz.
+2. [Stáhněte a nainstalujte nejnovější Azure PowerShell příkazy](/powershell/azure/overview).
+3. Spusťte prostředí Windows PowerShell a připojte ho k předplatnému Azure pomocí **Add-AzureAccount** příkazu.
 
    ```powershell
    Add-AzureAccount
    ```
 
-## <a name="determine-your-target-azure-region"></a>Určení cílových oblast Azure
+## <a name="determine-your-target-azure-region"></a>Určení vaší cílovou oblastí Azure
 
-Váš virtuální počítač SQL Server bude hostován v rámci cloudové služby, který se nachází v určité oblasti Azure. Následující postup vám pomůže určit oblasti, účet úložiště a cloudové služby, který se použije pro zbytek tohoto kurzu.
+Virtuálnímu počítači SQL serveru bude hostovaná v cloudové službě, která se nachází v konkrétní oblasti Azure. Následující postup vám pomůže určit oblasti, účet úložiště a cloudové služby, který se použije pro zbývající část tohoto kurzu.
 
-1. Určuje datové centrum, které chcete použít k hostování virtuální počítač s SQL serverem. Následující příkaz prostředí PowerShell zobrazí seznam názvů dostupné oblasti.
+1. Určení datové centrum, které chcete použít k hostování virtuálního počítače s SQL serverem. Následující příkaz prostředí PowerShell zobrazí seznam názvů dostupných oblastí.
 
    ```powershell
    (Get-AzureLocation).Name
    ```
 
-2. Jakmile jste zformulovali upřednostňované umístění, nastavení proměnné s názvem **$dcLocation** do této oblasti. Následující příkaz třeba nastaví oblasti, kterou chcete "Východ USA":
+2. Jakmile identifikujete upřednostňované umístění, nastavte proměnnou s názvem **$dcLocation** pro tuto oblast. Následující příkaz třeba Nastaví oblast pro "Východ USA":
 
    ```powershell
    $dcLocation = "East US"
    ```
 
-## <a name="set-your-subscription-and-storage-account"></a>Nastavit vaše předplatné a účet úložiště
+## <a name="set-your-subscription-and-storage-account"></a>Nastavte vaše předplatné a účet úložiště
 
-1. Určete předplatné, které chcete použít pro nový virtuální počítač.
+1. Určete předplatné Azure, které se použijí pro nový virtuální počítač.
 
    ```powershell
    (Get-AzureSubscription).SubscriptionName
    ```
 
-2. Přiřadit cílových předplatného Azure k **$subscr** proměnné. Potom nastavením jako vaším aktuálním předplatným Azure.
+2. Přiřaďte cílové předplatné Azure k **$subscr** proměnné. Nastavte tuto vlastnost jako vaše aktuální předplatné Azure.
 
    ```powershell
    $subscr="<subscription name>"
    Select-AzureSubscription -SubscriptionName $subscr –Current
    ```
 
-3. Zkontrolujte pro existující účty úložiště. Následující skript zobrazí všechny účty úložiště, které existují ve vaší vybrané oblasti:
+3. Pak vyhledejte existující účty úložiště. Tento skript zobrazí všechny účty úložiště, které existují ve vybrané oblasti:
 
    ```powershell
    (Get-AzureStorageAccount | where { $_.GeoPrimaryLocation -eq $dcLocation }).StorageAccountName
@@ -79,22 +80,22 @@ Váš virtuální počítač SQL Server bude hostován v rámci cloudové služb
    > [!NOTE]
    > Pokud budete potřebovat nový účet úložiště, název účtu úložiště všechna malá nejprve vytvořte pomocí příkazu New-AzureStorageAccount jako v následujícím příkladu: `New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
-4. Přiřadit název cílového účtu úložiště k **$staccount**. Potom pomocí **Set-AzureSubscription** nastavte předplatné a aktuální účet úložiště.
+4. Název účtu cílového úložiště pro přiřazení **$staccount**. Pak pomocí **Set-AzureSubscription** nastavte předplatné a aktuální účet úložiště.
 
    ```powershell
    $staccount="<storage account name>"
    Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
    ```
 
-## <a name="select-a-sql-server-virtual-machine-image"></a>Vyberte bitovou kopii virtuálního počítače systému SQL Server
+## <a name="select-a-sql-server-virtual-machine-image"></a>Vyberte image virtuálního počítače systému SQL Server
 
-1. Získat seznam dostupných imagí SQL serveru virtuálních počítačů z galerie. Tyto Image jsou vybavené **ImageFamily** vlastnost, která začíná "SQL". Následující dotaz zobrazí pro předinstalována systému SQL Server, které vám k dispozici bitovou kopii rodiny.
+1. Přečtěte si seznam dostupných imagí virtuálních počítačů SQL serveru z galerie. Tyto obrázky mají **ImageFamily** vlastnost, která začíná textem "SQL". Následující dotaz zobrazí dostupné image řady pro vás, na kterém SQL Server, včetně.
 
    ```powershell
    Get-AzureVMImage | where { $_.ImageFamily -like "SQL*" } | select ImageFamily -Unique | Sort-Object -Property ImageFamily
    ```
 
-2. Pokud zjistíte, rodina bitové kopie virtuálního počítače, může být více bitových kopií publikované v této rodině. Pomocí následujícího skriptu najít nejnovější název bitové kopie publikované virtuálního počítače pro vybranou image rodinu (například **SQL Server 2016 RTM Enterprise na Windows Server 2012 R2**):
+2. Když najdete řadu image virtuálního počítače může být několik publikovaných imagí v této rodině. Pomocí následujícího skriptu k vyhledání názvu nejnovější image virtuálních počítačů publikované pro vaši rodinu vybrané bitové kopie (například **SQL Server 2016 RTM Enterprise na Windows serveru 2012 R2**):
 
    ```powershell
    $family="<ImageFamily value>"
@@ -106,16 +107,16 @@ Váš virtuální počítač SQL Server bude hostován v rámci cloudové služb
 
 ## <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Nakonec vytvořte virtuální počítač pomocí prostředí PowerShell:
+Nakonec vytvořte virtuální počítač v prostředí PowerShell:
 
-1. Vytvořte cloudovou službu k hostování nového virtuálního počítače. Všimněte si, že je také možné místo toho použít stávající cloudovou službu. Vytvoření nové proměnné **$svcname** s krátký název cloudové služby.
+1. Vytvořte cloudovou službu k hostování nového virtuálního počítače. Všimněte si, že je také možné místo toho použít existující cloudovou službu. Vytvoření nové proměnné **$svcname** s krátkým názvem cloudové služby.
 
    ```powershell
    $svcname = "<cloud service name>"
    New-AzureService -ServiceName $svcname -Label $svcname -Location $dcLocation
    ```
 
-2. Zadejte název virtuálního počítače a velikost. Další informace o velikosti virtuálních počítačů najdete v tématu [velikostí virtuálních počítačů pro Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+2. Zadejte název virtuálního počítače a velikost. Další informace o velikostech virtuálních počítačů najdete v tématu [velikostí virtuálních počítačů pro Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
    ```powershell
    $vmname="<machine name>"
@@ -130,18 +131,18 @@ Nakonec vytvořte virtuální počítač pomocí prostředí PowerShell:
    $vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
    ```
 
-4. Spusťte následující skript pro vytvoření virtuálního počítače.
+4. Spusťte následující skript k vytvoření virtuálního počítače.
 
    ```powershell
    New-AzureVM –ServiceName $svcname -VMs $vm1
    ```
 
 > [!NOTE]
-> Další vysvětlení a možnosti konfigurace najdete v tématu **sestavení vaší sadu příkazů** kapitoly [použití Azure PowerShell k vytvoření a nastavení virtuálních počítačích se systémem Windows](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+> Další vysvětlení a možnosti konfigurace, najdete v článku **sestavení sady příkaz** tématu [pomocí prostředí Azure PowerShell k vytvoření a předkonfigurace virtuálního počítače se systémem Windows](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="example-powershell-script"></a>Ukázkový skript prostředí PowerShell
 
-Následující skript představuje příklad dokončení skriptu, který vytvoří **SQL Server 2016 RTM Enterprise na Windows Server 2012 R2** virtuálního počítače. Pokud chcete použít tento skript, je nutné přizpůsobit počáteční proměnné podle předchozích kroků v tomto tématu.
+Následující skript představuje příklad celý skript, který vytvoří **SQL Server 2016 RTM Enterprise na Windows serveru 2012 R2** virtuálního počítače. Pokud používáte tento skript, je třeba upravit počáteční proměnné podle předchozích kroků v tomto tématu.
 
 ```powershell
 # Customize these variables based on your settings and requirements:
@@ -176,32 +177,32 @@ $vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCrede
 New-AzureVM –ServiceName $svcname -VMs $vm1
 ```
 
-## <a name="connect-with-remote-desktop"></a>Připojit pomocí vzdálené plochy
+## <a name="connect-with-remote-desktop"></a>Připojte se přes vzdálenou plochu
 
-1. Soubory protokolu RDP vytvořte ve složce dokumentu stávajícího uživatele ke spuštění těchto virtuálních počítačů k dokončení instalace:
+1. Vytvoření souborů protokolu RDP ve složce aktuální uživatel dokumentu spustit tyto virtuální počítače a dokončete nastavení:
 
    ```powershell
    $documentspath = [environment]::getfolderpath("mydocuments")
    Get-AzureRemoteDesktopFile -ServiceName $svcname -Name $vmname -LocalPath "$documentspath\vm1.rdp"
    ```
 
-2. V adresáři dokumenty spusťte soubor RDP. Spojte se s správce uživatelské jméno a heslo zadané dříve (například pokud vaše uživatelské jméno je VMAdmin, zadejte "\VMAdmin" jako uživatel a zadejte heslo).
+2. V adresáři dokumenty spusťte soubor RDP. Spojte se s správce uživatelské jméno a heslo, které jste zadali dříve (například, pokud uživatelské jméno bylo VMAdmin, zadejte "\VMAdmin" jako uživatele a zadejte heslo).
 
    ```powershell
    cd $documentspath
    .\vm1.rdp
    ```
 
-## <a name="complete-the-configuration-of-the-sql-server-machine-for-remote-access"></a>Dokončení konfigurace počítače systému SQL Server pro vzdálený přístup
+## <a name="complete-the-configuration-of-the-sql-server-machine-for-remote-access"></a>Dokončete konfiguraci počítače SQL serveru pro vzdálený přístup
 
-Po přihlášení k počítači pomocí vzdálené plochy, nakonfigurujte podle pokynů v systému SQL Server [kroky pro konfiguraci připojení k systému SQL Server ve virtuálním počítači Azure](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
+Po přihlášení k počítači pomocí vzdálené plochy, konfigurace systému SQL Server podle pokynů v [kroky pro konfiguraci připojení k SQL serveru na Virtuálním počítači Azure](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete najít další pokyny pro zřizování virtuálních počítačů pomocí prostředí PowerShell ve [virtuální počítače dokumentaci](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Můžete najít další pokyny pro zřizování virtuálních počítačů pomocí Powershellu v [dokumentace k virtuálním počítačům](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-V mnoha případech je dalším krokem je migrace databáze do tohoto nového virtuálního počítače SQL serveru. Pokyny pro migraci databáze najdete v tématu [migrace databáze do systému SQL Server na virtuálním počítači Azure](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+Dalším krokem v mnoha případech je migrace databází do tohoto nového virtuálního počítače SQL serveru. Pokyny k migraci databáze, najdete v části [migrace databáze do služby SQL Server na Virtuálním počítači Azure](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
-Pokud vás zajímá také pomocí portálu Azure vytvořit virtuální počítače se systémem SQL, najdete v článku [zřizování virtuálního počítače systému SQL Server na platformě Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md). Všimněte si, že kurz, který vás provede portálu vytvoří virtuální počítače pomocí modelu Resource Manager doporučené místo klasického modelu použitým v tomto tématu prostředí PowerShell.
+Pokud vás zajímá také pomocí webu Azure portal k vytvoření virtuálních počítačů SQL naleznete v tématu [zřízení virtuálního počítače SQL serveru v Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md). Všimněte si, že tento kurz vás provede portál vytvoří virtuální počítače pomocí doporučený model Resource Manager místo klasického modelu použitým v tomto tématu prostředí PowerShell.
 
-Kromě těchto prostředků, doporučujeme, abyste si prošli [další témata související s SQL serverem v Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Kromě těchto prostředků, doporučujeme, abyste si přečetli [další témata související s SQL serverem na Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

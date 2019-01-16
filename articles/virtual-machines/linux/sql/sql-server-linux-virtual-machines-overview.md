@@ -1,23 +1,24 @@
 ---
-title: Přehled SQL Serveru na virtuálních počítačích Azure s Linuxem | Microsoft Docs
+title: Přehled SQL Serveru na virtuálních počítačích Azure s Linuxem | Dokumentace Microsoftu
 description: Zjistěte, jak spouštět úplné edice SQL Serveru na virtuálních počítačích Azure s Linuxem. Získáte přímé odkazy na všechny image virtuálních počítačů s Linuxem a SQL Serverem a související obsah.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rothja
-manager: jhubbard
+author: MashaMSFT
+manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
 ms.date: 04/10/2018
-ms.author: jroth
-ms.openlocfilehash: 9c24536d8d5647e4a2c19afa17c35050e1f11c20
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 18f9dd5318c6aecff8819178168469d9334e5e29
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31424116"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332400"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Přehled SQL Serveru na virtuálních počítačích Azure (Linux)
 
@@ -57,11 +58,11 @@ Při konfiguraci SQL Serveru v Linuxu nainstalujete balíček databázového str
 
 ## <a name="related-products-and-services"></a>Související produkty a služby
 
-### <a name="linux-virtual-machines"></a>Virtuální počítače s Linuxem
+### <a name="linux-virtual-machines"></a>Linux Virtual Machines
 
 * [Přehled služby Virtual Machines](../overview.md)
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 * [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
@@ -76,7 +77,7 @@ Při konfiguraci SQL Serveru v Linuxu nainstalujete balíček databázového str
 * [Dokumentace k SQL Serveru na Linuxu](https://docs.microsoft.com/sql/linux)
 * [Porovnání Azure SQL Database](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začínáme s SQL Serverem na virtuálních počítačích Azure s Linuxem:
 

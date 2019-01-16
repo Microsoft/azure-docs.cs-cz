@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 820a918b9ab5dd7a399dc43bcfed29fb3b94e99b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971099"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321564"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavení řešení IoT s použitím Stream Analytics
 
@@ -36,7 +36,7 @@ Potřebujete následující požadované součásti pro dokončení tohoto řeš
 ## <a name="scenario-introduction-hello-toll"></a>Úvod scénář: "Hello, linka!"
 Stanice linka je běžné jev. Kterými je mnoho rychlostních, přemostění a tunely po celém světě. Každá stanice linka má více kabin linka. Při ruční kabin zastavíte platit linka průvodcem. Na automatické kabin prohledává senzoru na každý z mýtných bran RFID karty, který je opatřit čelního skla vaše vozidla, jak předat z mýtných bran linka. Je snadno pochopitelný průchod vozidel přes tyto stanice linka jako datového proudu událostí nad tím, které zajímavé operace lze provádět.
 
-! [Obrázek auta v linka kabin] (media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth JPG)
+![Obrázek auta v kabin linka](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>Příchozí data
 Toto řešení funguje s dvěma datových proudů. Nainstalovaných ve vstupu a výstupu stanice linka vytvořit první datový proud. Druhý datový proud je datová sada statické vyhledávání, který má vozidla registrační data.

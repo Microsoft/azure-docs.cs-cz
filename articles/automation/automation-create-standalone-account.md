@@ -6,21 +6,21 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2e419da4ed84f3d202113f9616050c3e7c29f240
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958801"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322040"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
 V tomto článku se dozvíte, jak vytvořit účet Azure Automation na webu Azure Portal. Na portálu účtu Automation můžete použít k vyhodnocení a další informace o automatizaci bez použití dalších řešení pro správu nebo integrace s Azure Log Analytics. Můžete přidat tato řešení pro správu nebo integraci s Log Analytics pro pokročilé monitorování úloh runbooků v libovolném okamžiku v budoucnu.
 
-Pomocí účtu Automation můžete ověření runbooků pomocí správy prostředků v Azure Resource Manageru nebo v modelu nasazení classic. Jeden účet Automation můžete spravovat prostředky ve všech oblastech a předplatná pro daného tenanta.
+Pomocí účtu Automation můžete ověření runbooků pomocí správy prostředků v Azure Resource Manageru nebo v modelu nasazení classic. Jeden účet Automation může spravovat prostředky napříč všemi oblastmi a předplatnými daného tenanta.
 
 Při vytváření účtu Automation na webu Azure Portal, se automaticky vytvoří tyto účty:
 
@@ -69,7 +69,7 @@ Chcete-li vytvořit účet Azure Automation na webu Azure Portal, proveďte nás
   >
   > ![Přidání upozornění pro účet služby Automation](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. V **přidat účet Automation** podokno v **název** pole, zadejte název nového účtu Automation. Tento název nedá změnit, jakmile je vybrán. *Názvy účtů Automation jsou na oblast a skupinu prostředků jedinečné.*
+1. V **přidat účet Automation** podokno v **název** pole, zadejte název nového účtu Automation. Tento název nedá změnit, jakmile je vybrán. *Názvy účtů Automation jsou na oblast a skupinu prostředků jedinečné. Názvy pro účty Automation, které se odstranily nemusí být hned dostupné.*
 1. Pokud máte více než jedno předplatné, v **předplatné** , určete předplatné, které chcete použít pro nový účet.
 1. Pro **skupiny prostředků**, zadejte nebo vyberte skupinu pro nový nebo existující prostředek.
 1. Pro **umístění**, vyberte umístění datového centra Azure.

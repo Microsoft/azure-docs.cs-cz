@@ -1,5 +1,5 @@
 ---
-title: 'Dynamické členství ve skupině: Kurz automatického přidávání a odebírání uživatelů v Azure Active Directory'
+title: Členství v dynamické skupině přidat odebírání uživatelů – kurz – Azure Active Directory
 description: V tomto kurzu použijete skupiny s pravidly členství uživatelů k automatickému přidávání nebo odebírání uživatelů.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.date: 08/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2119bb60cbdc36f62623ce0db52885e17f3d3006
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 6efb649142f43a98ea08c99ae853de0fc0c8ea3c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40209151"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321258"
 ---
-# <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Automatické přidávání nebo odebírání členů skupin
+# <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Přidání nebo odebrání členů skupiny automaticky
 
 V Azure Active Directory (Azure AD) můžete automaticky přidávat uživatele do skupin zabezpečení nebo skupin Office 365 nebo je z nich odebírat, abyste to pokaždé nemuseli dělat ručně. Při každé změně jakýchkoli vlastností uživatele nebo zařízení Azure AD vyhodnotí všechna dynamická pravidla skupin ve vašem tenantovi a zjistí, jestli má změna přidat nebo odebrat členy.
 
@@ -83,7 +83,7 @@ Možná je vaším konečným správním plánem přiřadit všechny uživatele 
 1. Vyberte **Azure Active Directory** > **Skupiny**. Výběrem názvu skupiny **Všichni uživatelé** otevřete skupinu.
 1. Vyberte **Pravidla dynamického členství**, vymažte veškerý text pravidla a vyberte **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]

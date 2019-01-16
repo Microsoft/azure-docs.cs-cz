@@ -11,18 +11,18 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8f7e414d2aa4962534a90a295e104f8e8ebabbd9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079234"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321870"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
 V tomto kurzu se dozvíte, jak připravit data pro modelování s použitím sady SDK pro Azure Machine Learning Data Prep regrese. Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.  
 
-Tento kurz je první částí z dvou částí série. Po dokončení série kurzů, lze odhadnout náklady na cesty taxíkem díky trénování modelu na datových funkcích. Tyto funkce patří vyzvednutí den a čas, počet cestujících a výstupní umístění.
+Tento kurz je **první částí z dvoudílné série kurzů**. Po dokončení série kurzů, lze odhadnout náklady na cesty taxíkem díky trénování modelu na datových funkcích. Tyto funkce patří vyzvednutí den a čas, počet cestujících a výstupní umístění.
 
 V tomto kurzu se naučíte:
 

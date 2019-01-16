@@ -13,14 +13,14 @@ ms.topic: How to
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 3021fafe7d74f71450eec9b3720c974b04ada224
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0e9ad89e504ce1cb86daad48bec9ffe9423e2cf1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426923"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319541"
 ---
-# <a name="schedule-your-first-test"></a>Naplánovat prvního testu
+# <a name="scheduling-a-test"></a>Plánování testu
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
@@ -35,8 +35,8 @@ Při průchodu testu pracovní postup je možné spustit jakýkoli test poskytov
 Než budete postupovat podle tohoto rychlého startu, musí dokončit následující položky:
 
 - [Nastavení ověření jako prostředky služby](azure-stack-vaas-set-up-resources.md)
-- [Nasazení místního agenta](azure-stack-vaas-local-agent.md) (doporučeno)
-- [Ověření jako klíčové koncepty služby](azure-stack-vaas-key-concepts.md) (doporučeno)
+- [Nasazení místního agenta](azure-stack-vaas-local-agent.md) (povinné)
+- [Ověření jako klíčové koncepty služby](azure-stack-vaas-key-concepts.md) (povinné)
 
 ## <a name="start-a-workflow"></a>Spustit pracovní postup
 

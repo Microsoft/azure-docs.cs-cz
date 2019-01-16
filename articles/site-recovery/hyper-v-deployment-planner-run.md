@@ -1,18 +1,18 @@
 ---
 title: Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii Hyper-V do Azure | Dokumentace Microsoftu
 description: Tento článek popisuje, jak spustit Azure Site Recovery Deployment Planner pro zotavení po havárii Hyper-V do Azure.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 4aec31acf5a279f5ac887788d7e1554c31dfe342
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: b5f0a2a418c53a5049ebff9bba9188219a9aeb13
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846619"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321173"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Spuštění plánovače nasazení služby Azure Site Recovery pro zotavení po havárii Hyper-V do Azure
 
@@ -45,8 +45,8 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 
 ### <a name="getvmlist-discovery"></a>Zjišťování GetVMList
 
-- **Cluster Hyper-V:** Když je v souboru se seznamem serverů uvedený název clusteru Hyper-V, nástroj najde všechny uzly Hyper-V tohoto clusteru a získá všechny virtuální počítače na jednotlivých hostitelích Hyper-V.
-**Hostitel Hyper-V:** Když je zadaný název hostitele Hyper-V, nástroj nejdřív zkontroluje, jestli patří do clusteru. Pokud ano, nástroj načte uzly, které patří do clusteru. Potom získá virtuální počítače ze všech hostitelů Hyper-V. 
+- **Hyper-V cluster**: Když v seznamu souboru serveru je uvedený název clusteru Hyper-V, nástroj najde všechny uzly Hyper-V tohoto clusteru a získá všechny virtuální počítače na jednotlivých hostitelích Hyper-V.
+**Hostitel Hyper-V**: Když je zadaný název hostitele Hyper-V, nástroj nejdřív zkontroluje, jestli patří do clusteru. Pokud ano, nástroj načte uzly, které patří do clusteru. Potom získá virtuální počítače ze všech hostitelů Hyper-V. 
 
 Případně můžete v souboru uvést seznam popisných názvů nebo IP adres virtuálních počítačů, které chcete profilovat ručně.
 
@@ -96,7 +96,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Password|(Volitelné) Heslo pro připojení k hostiteli Hyper-V. Pokud ho neurčíte jako parametr, budete k tomu vyzváni při spuštění příkazu.|
 |-StorageAccountName|(Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1).|
 |-StorageAccountKey|(Volitelné) Klíč, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal a vyberte **Účty úložiště** > *název účtu úložiště* > **Nastavení** > **Přístupové klíče** > **Klíč1** (nebo primární přístupový klíč pro klasický účet úložiště).|
-|-Environment|(Volitelné) Cílové prostředí pro účet úložiště Azure. Může mít jednu ze tří hodnot: AzureCloud, AzureUSGovernment nebo AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud je vaší cílovou oblastí Azure US Government nebo Azure China.|
+|-Environment|(Volitelné) Cílové prostředí pro účet úložiště Azure. Může být jedna ze tří hodnot: AzureCloud, AzureUSGovernment nebo AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud je vaší cílovou oblastí Azure US Government nebo Azure China.|
 
 Doporučujeme profilovat virtuální počítače po dobu delší než 7 dní. Pokud se vzor četnosti změn v měsíci mění, doporučujeme profilaci v týdnu, kdy je četnost změn maximální. Nejlepší způsob, jak získat lepší doporučení, je provádět profilaci 31 dní. 
 
@@ -177,7 +177,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | -StartDate | (Volitelné) Počáteční datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr StartDate je nutné zadat společně s parametrem EndDate. Pokud zadáte parametr StartDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
 | -EndDate | (Volitelné) Koncové datum a čas ve formátu MM-DD-YYYY:HH:MM (ve 24hodinovém formátu). Parametr EndDate je nutné zadat společně s parametrem StartDate. Pokud zadáte parametr EndDate, sestava se vygeneruje pro profilovaná data shromážděná mezi StartDate a EndDate. |
 | -GrowthFactor | (Volitelné) Faktor růstu vyjádřený v procentech. Výchozí hodnota je 30 procent. |
-| -UseManagedDisks | (Volitelné) UseManagedDisks: Yes/No (Ano/Ne). Výchozí hodnota je Yes (Ano). Počet virtuálních počítačů, které lze umístit do jednoho účtu úložiště, se vypočítá s na základě toho, že převzetí služeb při selhání nebo testovací převzetí služeb při selhání virtuálních počítačů se provádí na spravovaný disk namísto nespravovaného disku. |
+| -UseManagedDisks | (Volitelné) UseManagedDisks: Ano nebo ne. Výchozí hodnota je Yes (Ano). Počet virtuálních počítačů, které lze umístit do jednoho účtu úložiště, se vypočítá s na základě toho, že převzetí služeb při selhání nebo testovací převzetí služeb při selhání virtuálních počítačů se provádí na spravovaný disk namísto nespravovaného disku. |
 |-SubscriptionId |(Volitelné) GUID předplatného. Tento parametr slouží k vytvoření sestavy odhadu nákladů s nejnovějšími cenami na základě vašeho předplatného a nabídky, která je přidružená k vašemu předplatnému, a pro cílovou oblast Azure v zadané měně.|
 |-TargetRegion|(Volitelné) Oblast Azure, která je cílem replikace. Vzhledem k tomu, že Azure má různé náklady pro jednotlivé oblasti, pro generování sestavy s konkrétní cílovou oblastí Azure použijte tento parametr. Výchozí hodnota je WestUS2 nebo poslední použitá cílová oblast. K dispozici je seznam [podporovaných cílových oblastí](hyper-v-deployment-planner-cost-estimation.md#supported-target-regions).|
 |-OfferId|(Volitelné) Nabídka přidružená k předplatnému. Výchozí hodnota je MS-AZR-0003P (průběžné platby).|
@@ -279,7 +279,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -StorageAccountName | Název účtu úložiště, který se použije k zjištění využité šířky pásma pro replikaci místních dat do Azure. Nástroj zjistí využitou šířku pásma tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1).|
 | -StorageAccountKey | Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal a vyberte **Účty úložiště** > *název účtu úložiště* > **Nastavení** > **Přístupové klíče** > **Klíč1**.|
 | -VMListFile | Soubor se seznamem virtuálních počítačů určených k profilaci pro výpočet využité šířky pásma. Cesta k souboru může být absolutní nebo relativní. Pro Hyper-V je tento soubor výstupním souborem operace GetVMList. Pokud provádíte přípravu ručně, měl by tento soubor obsahovat jednu IP adresu nebo název serveru, následované názvem virtuálního počítače (oddělené \ na každém řádku). Název virtuálního počítače zadaný v souboru se musí shodovat s názvem virtuálního počítače na hostiteli Hyper-V.<br><br>**Příklad:** Soubor VMList.txt obsahuje následující virtuální počítače:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Environment|(Volitelné) Cílové prostředí pro účet úložiště Azure. Může mít jednu ze tří hodnot: AzureCloud, AzureUSGovernment nebo AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaší cílovou oblastí Azure jsou Azure US Government nebo Azure China.|
+|-Environment|(Volitelné) Cílové prostředí pro účet úložiště Azure. Může být jedna ze tří hodnot: AzureCloud, AzureUSGovernment nebo AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaší cílovou oblastí Azure jsou Azure US Government nebo Azure China.|
 
 ### <a name="example"></a>Příklad:
 ```

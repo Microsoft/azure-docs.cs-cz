@@ -1,6 +1,6 @@
 ---
 title: Vytvořit průběžnou integraci Azure kanál – vědecké zpracování týmových dat
-description: 'DevOps pro aplikace s umělou inteligencí (AI): vytvoření kanálu průběžné integrace v Azure pomocí Dockeru a Kubernetes'
+description: 'DevOps pro aplikace s umělou inteligencí (AI): Vytvoření kanálu průběžné integrace v Azure pomocí Dockeru a Kubernetes'
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: a3c570d3d22742afcbba86f35a9dd1f6a85c0b8f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bace951141ea1d437d102b11ac4f548beaf5c75e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134280"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329408"
 ---
-# <a name="creating-continous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Vytvoření kanálu průběžné integrace v Azure s využitím aplikace Python Flask, Docker a Kubernetes
+# <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Vytvoření kanálu průběžné integrace v Azure s využitím aplikace Python Flask, Docker a Kubernetes
 Aplikace AI jsou často dvěma datovými proudy práce, datovým vědcům sestavování modelů strojového učení a vývojáře aplikací, vytváření aplikace, která bude vystavená koncovým uživatelům využívat. V tomto článku jsme ukazují, jak implementovat průběžné integrace (CI) / průběžné doručování (CD) kanálů pro aplikaci AI. Aplikace AI je kombinací kódu aplikace, které jsou vložené s modelem které je předem vytrénované machine learning (ML). Pro účely tohoto článku jsme pretrained modelu načítají z účtu úložiště objektů blob v Azure privátní, může to být účet AWS S3. Pro článek budeme používat webovou aplikaci flask python jednoduché.
 
 > [!NOTE]

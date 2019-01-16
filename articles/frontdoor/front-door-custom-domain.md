@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 58829bcd1b3c38b70929167beae5d8866483d616
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0e1c5e4c3e4b40fd04ca9d48aba9b1e5194d4261
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716493"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330921"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Kurz: Přidání vlastní domény do služby Front Door
 V tomto kurzu se dozvíte, jak do služby Front Door přidat vlastní doménu. Pokud k doručování aplikací používáte službu Azure Front Door Service a chcete, aby se v požadavcích koncových uživatelů zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky.
@@ -43,7 +43,7 @@ Pokud k hostování [domén DNS](https://docs.microsoft.com/azure/dns/dns-overvi
 
 ## <a name="create-a-cname-dns-record"></a>Vytvoření záznamu DNS CNAME
 
-Než budete moct se službou Front Door použít vlastní doménu, musíte nejprve u svého poskytovatele domény vytvořit záznam kanonického názvu (CNAME) odkazující na výchozího hostitele front-endu vaší služby Front Door (třeba contose.azurefd.net). Záznam CNAME je typem záznamu DNS, který mapuje zdrojový název domény na cílový název domény. V případě služby Azure Front Door Service je zdrojovým názvem domény vlastní název domény a cílovým názvem domény je výchozí název hostitele služby Front Door. Jakmile služba Front Door ověří vytvořený záznam CNAME, bude se provoz určený do zdrojové vlastní domény (například www.contoso.com) směrovat do výchozího hostitele front-endu zadané cílové služby Front Door (například contoso.azurefd.net). 
+Předtím, než budete moct použít vlastní doménu s vaší branou, je nutné nejprve vytvořit záznam kanonického názvu (CNAME) s vašeho poskytovatele domény tak, aby odkazovala na váš branou výchozí front-endu hostitele (třeba contoso.azurefd.net). Záznam CNAME je typem záznamu DNS, který mapuje zdrojový název domény na cílový název domény. V případě služby Azure Front Door Service je zdrojovým názvem domény vlastní název domény a cílovým názvem domény je výchozí název hostitele služby Front Door. Jakmile služba Front Door ověří vytvořený záznam CNAME, bude se provoz určený do zdrojové vlastní domény (například www.contoso.com) směrovat do výchozího hostitele front-endu zadané cílové služby Front Door (například contoso.azurefd.net). 
 
 Vlastní doména a její subdoména můžou současně být přidružené pouze k jedné službě Front Door. Pro různé služby Front Door však můžete použít různé subdomény stejné vlastní domény, a to pomocí několika záznamů CNAME. Na stejnou službu Front Door můžete také namapovat vlastní doménu s různými subdoménami.
 
@@ -90,9 +90,9 @@ Například postup pro registrátora domén GoDaddy je následující:
 
     - Hostitel: Zadejte subdoménu vlastní domény k použití, včetně názvu subdomény afdverify. Například afdverify.www.
 
-    - Odkazuje na: Zadejte název hostitele vašeho výchozího branou front-endu hostitele, včetně názvu subdomény afdverify. Například afdverify.contoso.azurefd.net. 
+    - Points to: Zadejte název hostitele vašeho výchozího branou front-endu hostitele, včetně názvu subdomény afdverify. Například afdverify.contoso.azurefd.net. 
 
-    - HODNOTA TTL: Ponechte *1 hodina* vybrané.
+    - TTL: Ponechte *1 hodina* vybrané.
 
 6. Vyberte **Uložit**.
  
@@ -171,9 +171,9 @@ Například postup pro registrátora domén GoDaddy je následující:
 
     - Hostitel: Zadejte subdoménu vlastní domény k použití. Například www nebo profile.
 
-    - Odkazuje na: Zadejte výchozí název hostitele vašeho branou. Například contoso.azurefd.net. 
+    - Points to: Zadejte výchozí název hostitele vašeho branou. Například contoso.azurefd.net. 
 
-    - HODNOTA TTL: Ponechte *1 hodina* vybrané.
+    - TTL: Ponechte *1 hodina* vybrané.
 
 6. Vyberte **Uložit**.
  

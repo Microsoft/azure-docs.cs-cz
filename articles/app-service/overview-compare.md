@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 05afbd9a621752b8b665c7d2f68cd8cfcc8a1d1a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729718"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322023"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 
@@ -53,7 +53,7 @@ Následující tabulka porovnává možnosti služeb App Service, Cloud Services
 | Horizontální navýšení kapacity na několik instancí bez opětovného nasazení |X |X |X |X |Služba Virtual Machines se může škálovat na více instancí, ale služby v ní spuštěné musí být napsané tak, aby si s tímto škálováním na více instancí poradily. Je potřeba nakonfigurovat nástroj pro vyrovnávání zatížení, který bude přesměrovávat požadavky do počítačů, a ujistit se, že máte v [sadě dostupnosti](../virtual-machines/windows/manage-availability.md) více než jednu instanci virtuálního počítače. |
 | Podpora protokolu SSL |X |X |X |X |Webové aplikace App Service podporují SSL pro vlastní názvy domén pouze v režimu Basic a Standard. Informace o použití SSL s webovými aplikacemi najdete v tématu [Konfigurace certifikátu SSL pro web Azure](app-service-web-tutorial-custom-ssl.md). |
 | Integrace se sadou Visual Studio |X |X |X |X | |
-| Vzdálené ladění |X |X |X | | |
+| Vzdálené ladění |X |X |X |X | |
 | Nasazení kódu pomocí sady Team Foundation Server |X |X |X |X | |
 | Izolace sítě pomocí služby [Azure Virtual Network](/azure/virtual-network/) |X |X |X |X |Viz také [Integrace služby Virtual Network ve službě Azure Websites](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/). |
 | Podpora služby [Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |× | |

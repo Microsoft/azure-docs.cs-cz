@@ -1,6 +1,6 @@
 ---
 title: Přehled Jenkinse a Azure
-description: Hostujte automatizační server Jenkinse pro sestavování a nasazování v Azure a rozšiřte své kanály průběžné integrace a nasazování (CI/CD) s využitím výpočetních prostředků a prostředků úložiště Azure.
+description: Hostování buildu Jenkinse a nasazovat automatizační server v Azure a používat výpočetní a úložnou kapacitu Azure k rozšíření průběžnou integraci a nasazování (CI/CD) kanálů.
 ms.service: jenkins
 keywords: jenkins, azure, devops, overview
 author: tomarchermsft
@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: 1f09e1711cbbbd8f05a982e620b1e09184320d13
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 69e9a49bf83be5b58faf3e71ab0ffbfb6c6f11a1
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078962"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329700"
 ---
 # <a name="azure-and-jenkins"></a>Azure a Jenkins
 

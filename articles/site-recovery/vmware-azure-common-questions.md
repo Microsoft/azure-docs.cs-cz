@@ -7,13 +7,13 @@ ms.service: site-recovery
 services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
-ms.author: rayne
-ms.openlocfilehash: e229fcc2c9eb6b8e1b49293dfd741a2f96f62871
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: raynew
+ms.openlocfilehash: 90f3a4571e485e52a47eda34eacf6367aef35933
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077381"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320986"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -91,7 +91,7 @@ Pro účely replikace virtuálního počítače VMware musí běžet podporovan�
 Při replikaci virtuálních počítačů VMware do Azure je průběžné replikace.
 
 ### <a name="can-i-extend-replication"></a>Je možné rozšířit replikaci?
-Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).
+Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Můžete provést offline počáteční replikaci?
 Toto není podporováno. Žádost o tuto funkci [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).

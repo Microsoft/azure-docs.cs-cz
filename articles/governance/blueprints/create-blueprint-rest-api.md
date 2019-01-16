@@ -4,17 +4,17 @@ description: Podrobné plány Azure Blueprint slouží k vytváření, definová
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/07/2018
+ms.date: 01/15/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 999df06e7a22201ee9c1134ec3eb04fced43a2f5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b66a1c2c12a97ea8754377a138b51a4ca1739c21
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265817"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320680"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
@@ -68,7 +68,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
-- `{YourMG}` -Nahraďte ID skupiny pro správu 
+- `{YourMG}` -Nahraďte ID skupiny pro správu
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 1. Vytvořte počáteční objekt _blueprint_. **Text požadavku** obsahuje vlastnosti podrobného plánu, vytvářené skupiny prostředků a všechny parametry na úrovni podrobného plánu. Tyto parametry se nastaví při přiřazení a používají je artefakty přidané v dalších krocích.
@@ -130,7 +130,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-1. Přidejte do předplatného přiřazení role. **Text žádosti** definuje _druh_ artefaktu, vlastnosti odpovídající identifikátoru definice role a hlavní identity předávané jako pole hodnot. V následujícím příkladu jsou identity instančního objektu s přiřazenou určenou rolí nakonfigurované na parametr nastavený při přiřazení podrobného plánu.
+1. Přidejte do předplatného přiřazení role. **Text žádosti** definuje _druh_ artefaktu, vlastnosti odpovídající identifikátoru definice role a hlavní identity předávané jako pole hodnot. V následujícím příkladu jsou identity instančního objektu s přiřazenou určenou rolí nakonfigurované na parametr nastavený při přiřazení podrobného plánu. V tomto příkladu _Přispěvatel_ předdefinovanou roli s identifikátorem GUID z `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
    - Identifikátor URI v REST API
 
@@ -150,7 +150,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-1. Přidejte do předplatného přiřazení zásad. **Text požadavku** definuje _druh_ artefaktu, vlastnosti odpovídající definici zásady nebo iniciativy a konfiguruje přiřazení zásady na použití definovaných parametrů podrobného plánu konfigurovaných při přiřazení podrobného plánu.
+1. Přidejte do předplatného přiřazení zásad. **Text požadavku** definuje _druh_ artefaktu, vlastnosti odpovídající definici zásady nebo iniciativy a konfiguruje přiřazení zásady na použití definovaných parametrů podrobného plánu konfigurovaných při přiřazení podrobného plánu. V tomto příkladu _použít značku a její výchozí hodnotu pro skupiny prostředků_ integrované zásady s identifikátorem GUID z `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - Identifikátor URI v REST API
 
@@ -178,7 +178,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-1. Přidejte do předplatného další přiřazenou zásadu pro značku úložiště (znovu použijte parametr _storageAccountType_). Tento další artefakt přiřazené zásady ukazuje, že parametr definovaný v podrobném plánu může používat více artefaktů. V tomto příklad se parametr **storageAccountType** používá k nastavení značky u skupiny prostředků. Tato hodnota poskytuje informace o účtu úložiště, který se vytvoří v dalším kroku.
+1. Přidejte do předplatného další přiřazenou zásadu pro značku úložiště (znovu použijte parametr _storageAccountType_). Tento další artefakt přiřazené zásady ukazuje, že parametr definovaný v podrobném plánu může používat více artefaktů. V tomto příklad se parametr **storageAccountType** používá k nastavení značky u skupiny prostředků. Tato hodnota poskytuje informace o účtu úložiště, který se vytvoří v dalším kroku. V tomto příkladu _použít značku a její výchozí hodnotu pro skupiny prostředků_ integrované zásady s identifikátorem GUID z `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - Identifikátor URI v REST API
 
@@ -292,7 +292,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-1. Přidejte pod skupinu prostředků přiřazení role. Jde o podobné přiřazení jako při předchozím přiřazení role. V následujícím příkladu se identifikátor definice použije pro roli **Owner** (Vlastník), který jí z podrobného plánu nabídne jiný parametr.
+1. Přidejte pod skupinu prostředků přiřazení role. Jde o podobné přiřazení jako při předchozím přiřazení role. V následujícím příkladu se identifikátor definice použije pro roli **Owner** (Vlastník), který jí z podrobného plánu nabídne jiný parametr. V tomto příkladu _vlastníka_ předdefinovanou roli s identifikátorem GUID z `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
 
    - Identifikátor URI v REST API
 

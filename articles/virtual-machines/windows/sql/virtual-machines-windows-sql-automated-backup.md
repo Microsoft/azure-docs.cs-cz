@@ -3,7 +3,7 @@ title: Automatizované zálohování pro SQL Server 2014 Azure Virtual Machines 
 description: Vysvětluje funkci automatizované zálohování pro SQL Server 2014, virtuální počítače spuštěné v Azure. Tento článek je určený speciálně pro virtuální počítače pomocí Resource Manageru.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: jroth
-ms.openlocfilehash: 0a1ad6d50c624115bab7ad09ff0e30a36e7df500
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: ca9c7611197de001265f70fd1b34314d90ee83b2
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256608"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329833"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatizovaná záloha pro SQL Server 2014 Virtual Machines (Resource Manager)
 
@@ -191,7 +192,7 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 To může trvat několik minut, instalaci a konfiguraci agenta SQL Server IaaS.
 
 > [!NOTE]
-> Existují další nastavení pro **New-AzureRmVMSqlServerAutoBackupConfig** , která platí jenom pro SQL Server 2016 a automatizovaného zálohování v2. SQL Server 2014 nepodporuje následující nastavení: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**,  **FullBackupStartHour**, **FullBackupWindowInHours**, a **LogBackupFrequencyInMinutes**. Při pokusu o konfiguraci těchto nastavení na virtuálním počítači s SQL Server 2014, se nezobrazí žádná chyba, ale není položka konfigurace použije. Pokud chcete použít tato nastavení na virtuálním počítači s SQL serverem 2016, přečtěte si téma [v2 automatizované zálohování pro SQL Server 2016 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
+> Existují další nastavení pro **New-AzureRmVMSqlServerAutoBackupConfig** , která platí jenom pro SQL Server 2016 a automatizovaného zálohování v2. SQL Server 2014 nepodporuje následující nastavení: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**, a **LogBackupFrequencyInMinutes**. Při pokusu o konfiguraci těchto nastavení na virtuálním počítači s SQL Server 2014, se nezobrazí žádná chyba, ale není položka konfigurace použije. Pokud chcete použít tato nastavení na virtuálním počítači s SQL serverem 2016, přečtěte si téma [v2 automatizované zálohování pro SQL Server 2016 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
 
 Pokud chcete povolit šifrování, upravit předchozí skript k předání **EnableEncryption** parametr spolu s heslem (zabezpečený řetězec) **CertificatePassword** parametru. Následující skript povolí nastavení automatizovaného zálohování v předchozím příkladu a přidá šifrování.
 
@@ -280,7 +281,7 @@ Další možností je využít integrované funkce databázového e-mailu pro oz
 
 Automatizované zálohování nakonfiguruje spravovaného zálohování na virtuálních počítačích Azure. Proto je důležité [najdete v dokumentaci spravovaného zálohování systému SQL Server 2014](https://msdn.microsoft.com/library/dn449497(v=sql.120).aspx).
 
-Můžete najít další zálohování a obnovení doprovodné materiály pro SQL Server na virtuálních počítačích Azure v následujícím článku: [zálohování a obnovení pro SQL Server ve službě Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
+Můžete najít další zálohování a obnovení doprovodné materiály pro SQL Server na virtuálních počítačích Azure v následujícím článku: [Zálohování a obnovení pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-backup-recovery.md).
 
 Informace o dalších úlohách dostupných automation najdete v tématu [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).
 

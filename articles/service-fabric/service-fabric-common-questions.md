@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 54ce1d9ab6216f1d757d7076cb95362d55ea9d9c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60fe7296d95a7746fd703c3a45349faf294e5bbd
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537616"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320595"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -56,7 +56,7 @@ Pro clustery, které nejsou spuštěné v Azure, máme [aplikace k dispozici](se
 
 **Krátký odpovědí** – ne. 
 
-**Dlouho Odpovědět** – i když se škálovacími sadami velkých virtuálních počítačů umožňují škálování virtuálního počítače instancím škálovací sady až pro 1000 virtuálních počítačů, dělá to pomocí skupin umístění (PGs). Selhání (FD) a upgradovací domény (ud) jsou konzistentní pouze v rámci a umístění skupiny Service fabric pomocí doménami selhání a aktualizačními doménami rozhodování umístění repliky nebo služby instance vaší služby. Protože doménami selhání a aktualizačními doménami jsou srovnatelné pouze v rámci skupiny umístění, nelze ji použít SF. Například pokud VM1 v so1 topologie FD = 0 a VM9 do skupiny SO2 má topologie FD = 4, neznamená, že VM1 a VM2 jsou ve dvou různých skříních hardwaru, proto SF nelze použít FD hodnoty v tomto případě rozhodnutí o umístění.
+**Dlouho Odpovědět** – i když se škálovacími sadami velkých virtuálních počítačů umožňují škálování virtuálního počítače škálovací sady až 1 000 instancí virtuálních počítačů, dělá to pomocí skupin umístění (PGs). Selhání (FD) a upgradovací domény (ud) jsou konzistentní pouze v rámci a umístění skupiny Service fabric pomocí doménami selhání a aktualizačními doménami rozhodování umístění repliky nebo služby instance vaší služby. Protože doménami selhání a aktualizačními doménami jsou srovnatelné pouze v rámci skupiny umístění, nelze ji použít SF. Například pokud VM1 v so1 topologie FD = 0 a VM9 do skupiny SO2 má topologie FD = 4, neznamená, že VM1 a VM2 jsou ve dvou různých skříních hardwaru, proto SF nelze použít FD hodnoty v tomto případě rozhodnutí o umístění.
 
 Jako chybějící úrovně 4 načíst vyrovnávání podporu existují jiné problémy se škálovacími sadami velkých virtuálních počítačů v současné době. Vyhledejte [podrobnosti o velké škálovací sady](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
 

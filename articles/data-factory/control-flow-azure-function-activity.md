@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 0fd9b679411dd06336fd65bcb400b152316146fa
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ee99733440d74424f98a2ed16de83c88bae53ff1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188636"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321785"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure ve službě Azure Data Factory
 
 Aktivita funkce Azure vám umožní spustit [Azure Functions](../azure-functions/functions-overview.md) v kanálech Data Factory. Ke spuštění funkce Azure, musíte vytvořit propojenou službu připojení a aktivitu, která určuje, kterou chcete použít ke spuštění funkce Azure functions.
+
+Úvod osm minut a ukázku této funkce podívejte se na následující video:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Run-Azure-Functions-from-Azure-Data-Factory-pipelines/player]
 
 ## <a name="azure-function-linked-service"></a>Služba Azure propojené – funkce
 

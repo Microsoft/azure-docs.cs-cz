@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: addd901e1b3a9bb537278082763081a7e39b21da
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824281"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332298"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod k protokolování toků pro skupiny zabezpečení sítě
 
@@ -33,10 +33,12 @@ Protokoly toku Nsg cíl, ale není zobrazí stejné jako další protokoly. Prot
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
- 
+Můžete analyzovat protokoly toků a získejte přehled o provozu vaší sítě pomocí [traffic analytics](traffic-analytics.md).
+
 Platí stejné zásady uchovávání informací, které jsou viditelné pro ostatní protokoly pro protokoly toků. Zásady uchovávání informací protokolu můžete nastavit od 1 den do 2147483647 dnů. Pokud zásady uchovávání nejsou nastavené, protokoly se ukládají navždy.
 
-Můžete také analyzovat protokolů toku s využitím [traffic analytics](traffic-analytics.md).
+> [!NOTE] 
+> Funkce zásad uchování pomocí toku NSG protokolování může vést k velkému počtu operací úložiště a souvisejících nákladů. Pokud nechcete, aby funkce zásad uchování, doporučujeme vám, nastavte tuto hodnotu na 0.
 
 
 ## <a name="log-file"></a>Soubor protokolu
@@ -47,7 +49,7 @@ Protokoly toku obsahují následující vlastnosti:
 * **ID systému** – ID prostředku. skupiny zabezpečení sítě
 * **kategorie** – kategorie události. Do kategorie je vždy **NetworkSecurityGroupFlowEvent**
 * **ResourceId** -resource Id skupiny zabezpečení sítě
-* **operationName** -vždy NetworkSecurityGroupFlowEvents
+* **operationName** - Always NetworkSecurityGroupFlowEvents
 * **vlastnosti** – kolekce vlastností toku
     * **Verze** – číslo verze schéma událostí protokolu toku
     * **toky** – kolekce toků. Tato vlastnost obsahuje několik záznamů pro různá pravidla
@@ -63,7 +65,7 @@ Protokoly toku obsahují následující vlastnosti:
                     * **Protokol** -protokolu toku. Platné hodnoty jsou **T** pro protokol TCP a **U** pro UDP
                     * **Přenosy dat** -směr toku provozu. Platné hodnoty jsou **můžu** pro příchozí a **O** pro odchozí.
                     * **Provoz rozhodnutí** – ať povolené nebo zakázané přenosy. Platné hodnoty jsou **A** povolena a **D** pro odepřen.
-                    * **Stav toku – verze 2 pouze** -zachycuje stav toku. Možné stavy **B**: Begin, když se vytvoří tok. Nejsou zadány Statistika. **C**: pokračování pro probíhající toku. Statistiky jsou k dispozici v intervalech 5 minut. **Elektronické**: ukončení, když tok je ukončen. Statistiky jsou k dispozici.
+                    * **Stav toku – verze 2 pouze** -zachycuje stav toku. Možné stavy **B**: Proces, při vytváření toku. Nejsou zadány Statistika. **C**: Pokračování pro probíhající toku. Statistiky jsou k dispozici v intervalech 5 minut. **E**: Ukončit, pokud tok je ukončen. Statistiky jsou k dispozici.
                     * **Pakety - zdroje do cíle – verze 2 pouze** celkový počet TCP nebo UDP pakety odeslané ze zdroje do cíle od poslední aktualizace.
                     * **Počet odeslaných bajtů - zdroje do cíle – verze 2 pouze** celkový počet TCP nebo UDP paketů bajtů odeslaných ze zdroje do cíle od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části.
                     * **Pakety – cíl a zdroj - verze 2 pouze** celkový počet TCP nebo UDP pakety odeslané z cílového zdroje od poslední aktualizace.
@@ -71,7 +73,7 @@ Protokoly toku obsahují následující vlastnosti:
 
 ## <a name="nsg-flow-logs-version-2"></a>Verze 2 protokolů toku NSG
 > [!NOTE] 
-> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Konfigurace je k dispozici prostřednictvím webu Azure Portal a rozhraní REST API. Povolení verze 2 protokoly v nepodporované oblasti výsledkem bude výstupem do vašeho účtu úložiště protokolů verze 1.
+> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Povolení verze 2 protokoly v nepodporované oblasti výsledkem bude výstupem do vašeho účtu úložiště protokolů verze 1.
 
 Verze 2 v protokolech představuje stav toku. Můžete nakonfigurovat, kterou verzi protokolů toku se zobrazí. Informace o povolení protokolů toku, najdete v článku [protokolování toků NSG povolení](network-watcher-nsg-flow-logging-portal.md).
 
@@ -79,13 +81,19 @@ Tok stavu *B* zaznamenán, kdy se má aktivovat tok. Tok stavu *C* a stav toku *
 
 Pro pokračování *C* a end *E* stavy toku, počet bajtů a paketu jsou agregace počtů z času předchozí záznam tok řazené kolekce členů. Odkazování na předchozí příklad konverzace, celkový počet paketů přenosu je 1021 + 52 + 8005 + 47 = 9125. Celkový počet bajtů přenesených je 588096 + 29952 + 4610880 + 27072 = 5256000.
 
-**Příklad**: tok řazenými kolekcemi členů z TCP konverzaci mezi 185.170.185.105:35370 a 10.2.0.4:23:
+**Příklad**: Tok řazenými kolekcemi členů z TCP konverzaci mezi 185.170.185.105:35370 a 10.2.0.4:23:
 
 "1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
 
 Pro pokračování *C* a end *E* stavy toku, počet bajtů a paketu jsou agregace počtů z času předchozí záznam tok řazené kolekce členů. Odkazování na předchozí příklad konverzace, celkový počet paketů přenosu je 1021 + 52 + 8005 + 47 = 9125. Celkový počet bajtů přenesených je 588096 + 29952 + 4610880 + 27072 = 5256000.
 
 Text, který následuje je příkladem protokolu toku. Jak je vidět, existují více záznamů, které následují v seznamu vlastností je popsáno v předchozí části.
+
+## <a name="nsg-flow-logging-considerations"></a>Důležité informace protokolování toku NSG
+
+**Povolení toku NSG protokolování na všechny skupiny Nsg, které jsou připojené k prostředku**: Tok protokolování v Azure je nakonfigurovaná na prostředek NSG. Tok pouze bude přidružen k jedno pravidlo skupiny zabezpečení sítě. Ve scénářích, kde jsou využívána více skupin zabezpečení sítě, doporučujeme vám, že je povoleno protokolování toků NSG na všechny skupiny Nsg použije zdroje podsíti nebo síťovému rozhraní k zajištění, že veškerý provoz zaznamenán. Zobrazit [jak provoz se vyhodnocuje](../virtual-network/security-overview.md#how-traffic-is-evaluated) Další informace o skupinách zabezpečení sítě. 
+
+**Tok protokolování náklady**: Protokolování toků NSG se fakturuje podle objemu protokoly vytvořené. Vysoký objem přenosů může způsobit velké tok svazek protokolu a související náklady. Protokolů toku NSG Flow ceny nezahrnují základní ceny za úložiště. Funkce zásad uchování pomocí toku NSG protokolování může vést k velkému počtu operací úložiště a souvisejících nákladů. Pokud nechcete, aby funkce zásad uchování, doporučujeme vám, nastavte tuto hodnotu na 0. Zobrazit [ceny služby Network Watcher](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) a [ceny za Azure Storage](https://azure.microsoft.com/en-us/pricing/details/storage/) další podrobnosti.
 
 ## <a name="sample-log-records"></a>Záznamy protokolu vzorku
 

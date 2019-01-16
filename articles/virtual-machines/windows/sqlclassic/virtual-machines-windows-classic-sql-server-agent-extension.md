@@ -3,7 +3,7 @@ title: Automatizace úloh správy na virtuálních počítačích SQL (Classic) 
 description: Toto téma popisuje, jak spravovat rozšíření agenta SQL serveru, který automatizuje určité úlohy správy systému SQL Server. Patří mezi ně automatizovaného zálohování, automatické opravy a integrace Azure Key Vault. Toto téma používá režim nasazení classic.
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
-ms.author: jroth
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55a31d7a0ab603dd7fe7de514d11d003e044240a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 2b719185aabd39cd70b9cb890a9599aa06ca4ff4
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008327"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330528"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatizace úloh správy v Azure Virtual Machines pomocí rozšíření agenta SQL serveru (Classic)
 > [!div class="op_single_selector"]

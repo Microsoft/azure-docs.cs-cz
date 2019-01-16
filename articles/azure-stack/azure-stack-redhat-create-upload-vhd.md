@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: 397f07c23d1c272e540741a339b57a8e1bcce198
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9b8c44cd0afa7e156cfa7a20ff47316fa5242d7
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104008"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320612"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure Stack
 
@@ -670,6 +670,6 @@ Další informace najdete v tématu [znovu sestavit initramfs](https://access.re
 
 ## <a name="next-steps"></a>Další postup
 
-Nyní jste připraveni použít virtuální pevný disk systému Red Hat Enterprise Linux k vytvoření nových virtuálních počítačů ve službě Azure Stack. Pokud je to poprvé, že se nahrávání souboru virtuálního pevného disku do služby Azure Stack, najdete v článku [použijte sadu nástrojů Marketplace k vytvoření a publikování položky marketplace](azure-stack-marketplace-publisher.md).
+Nyní jste připraveni použít virtuální pevný disk systému Red Hat Enterprise Linux k vytvoření nových virtuálních počítačů ve službě Azure Stack. Pokud je to poprvé, že se nahrávání souboru virtuálního pevného disku do služby Azure Stack, najdete v článku [vytvoření a publikování položky Marketplace](azure-stack-create-and-publish-marketplace-item.md).
 
 Další informace o hypervisorů, které certifikaci pro Red Hat Enterprise Linux, najdete v části [web Red Hat](https://access.redhat.com/certified-hypervisors).

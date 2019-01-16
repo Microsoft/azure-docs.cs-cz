@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: db37515926bf3872a1183467e0449035f7bf6097
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fd37c0c118812bb3554b19fec9bf5ae3f33a2fdc
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122832"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54314089"
 ---
 GPU optimalizované virtuálních počítačů velikosti jsou specializované virtuální počítače s jedním nebo několika grafickými procesory NVIDIA. Tyto velikosti jsou navržené pro úlohy náročné na výpočetní prostředky, náročné na grafiku a vizualizace. Tento článek obsahuje informace o počtu a typu GPU, virtuálních procesorů, datové disky a síťové adaptéry. Úložiště propustnost a šířku pásma sítě jsou také zahrnuté pro jednotlivé velikosti v této skupině. 
 
@@ -86,13 +86,13 @@ Virtuální počítače řady NCv3-series využívají [NVIDIA Tesla V100](http:
 | Standard_NC6s_v3 |6 |112 | 736 | 1 | 16 | 12 | 4 |
 | Standard_NC12s_v3 |12 |224 | 1474 | 2 | 32 | 24 | 8 |
 | Standard_NC24s_v3 |24 |448 | 2948 | 4 | 64 | 32 | 8 | 
-| Standard_NC24rs_v3 * |24 |448 | 2948 | 4 | 64 | 32 | 8 |
+| Standard_NC24rs_v3* |24 |448 | 2948 | 4 | 64 | 32 | 8 |
 
 1 GPU = jedna karta V100.
 
 *Podpora RDMA
 
-## <a name="ndv2-series-preview"></a>NDv2-series (ve verzi Preview)
+## <a name="ndv2-series-preview"></a>NDv2-series (Preview)
 
 
 Premium Storage:  Podporováno
@@ -108,9 +108,9 @@ NDv2-series virtuálních počítačů jsou novým rozšířením řady GPU navr
 <br>
 
 
-| Velikost              | virtuálních procesorů | GPU              | Memory (Paměť)  | Síťové karty (Max.) | Max. Velikost disku           | Max. datové disky (1 023 GB) | Maximální šířka pásma sítě | 
-|-------------------|-------------|-------------------|--------|------------------|---------|------------|--------------------------|--------------------|--------------------------------|-----------------------------------------|-----------------------|------------|
-| Standard_ND40s_v2 | 40     | 8 V100 (NVlilnk) | 672 GB | 8          | Dočasné 1344 / 2948XIO | 32    | 24 000 MB/s             | 
+| Velikost              | Virtuální procesory | GPU              | Memory (Paměť)  | Síťové karty (Max.) | Max. Velikost disku           | Max. datové disky (1 023 GB) | Maximální šířka pásma sítě | 
+|-------------------|------|------------------|---------|------------|--------------------------|--------------------------------|-----------------------|
+| Standard_ND40s_v2 | 40   | 8 V100 (NVlilnk) | 672 GiB | 8          | Dočasné 1344 / 2948XIO | 32                             | 24 000 MB/s           |
 
 ## <a name="nd-series"></a>ND-Series
 
@@ -129,7 +129,7 @@ Virtuální počítače ND-series jsou novým rozšířením řady GPU určený 
 | Standard_ND6s |6 |112 | 736 | 1 | 24 | 12 | 4 |
 | Standard_ND12s |12 |224 | 1474 | 2 | 48 | 24 | 8 | 
 | Standard_ND24s |24 |448 | 2948 | 4 | 96 | 32 | 8 |
-| Standard_ND24rs * |24 |448 | 2948 | 4 | 96 | 32 | 8 |
+| Standard_ND24rs* |24 |448 | 2948 | 4 | 96 | 32 | 8 |
 
 1 GPU = jedna karta P40.
 

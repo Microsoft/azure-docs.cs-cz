@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a28c8056e6dc25148299415a63a32993e874e01
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0bdf2d4e9c5ee659666eeb1a6e92c34c181ba805
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284536"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331788"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -23,7 +23,7 @@ Asset připojení Automation obsahuje informace potřebné pro připojení k ext
 Když vytvoříte připojení, je nutné zadat *typ připojení*. Typ připojení je šablonu, která definuje sadu vlastností. Připojení se definuje hodnoty pro jednotlivé vlastnosti definované v jeho typ připojení. Typy připojení jsou přidány do služby Azure Automation v integračních modulech nebo vytvářené pomocí [rozhraní API služby Azure Automation](https://msdn.microsoft.com/library/azure/mt163818.aspx) Pokud modulu integrace obsahuje typ připojení a importovat do účtu Automation. V opačném případě je potřeba vytvořit soubor metadat pro určení typu připojení služby Automation.  Další informace ohledně této najdete v tématu [moduly integrace](automation-integration-modules.md).  
 
 >[!NOTE]
->Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč uložený ve službě Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu.
+>Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč je uložen v systému spravované služby Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu. Tento proces se spravuje přes Azure Automation.
 
 ## <a name="windows-powershell-cmdlets"></a>Rutiny Windows Powershellu
 

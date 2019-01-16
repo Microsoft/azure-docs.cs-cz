@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4059d8d2f6020a23e3593bb906c2e3fc64a4779e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025585"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331533"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-on-premises-mongodb-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-mongodb.md)
 
@@ -31,12 +31,12 @@ ms.locfileid: "54025585"
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat z místní databáze MongoDB. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
 
-Kopírování dat z do místního úložiště dat MongoDB do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Data factory aktuálně podporuje pouze přesouvá data z úložiště dat MongoDB do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat MongoDB. 
+Kopírování dat z do místního úložiště dat MongoDB do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Data factory aktuálně podporuje pouze přesouvá data z úložiště dat MongoDB do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat MongoDB.
 
 ## <a name="prerequisites"></a>Požadavky
 Pro službu Azure Data Factory bude moct připojit k vaší místní databáze MongoDB je třeba nainstalovat následující komponenty:
 
-- Jsou podporované verze MongoDB:  2.4, 2.6, 3.0, 3.2, 3.4 a 3.6.
+- Jsou podporované verze MongoDB: 2.4, 2.6, 3.0, 3.2, 3.4 a 3.6.
 - Brána správy dat ve stejném počítači, který je hostitelem databáze nebo na samostatném počítači, aby soutěží o prostředky s databází. Brána správy dat je software, který se připojuje ke cloudovým službám místních zdrojů dat zabezpečení a správě způsobem. Zobrazit [brána správy dat](data-factory-data-management-gateway.md) , kde najdete podrobnosti o brána správy dat. Zobrazit [přesun dat z místních do cloudu](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny o nastavení brány datového kanálu pro přesun dat.
 
     Když bránu instalujete, automaticky nainstaluje ovladač Microsoft MongoDB ODBC použité pro připojení k MongoDB.
@@ -49,15 +49,15 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úloži�
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
-Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky: 
+Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
 1. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory.
-2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. 
-3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. 
+2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování.
+3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup.
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat místní MongoDB, naleznete v tématu [příklad JSON: Kopírování dat z MongoDB do objektů Blob v Azure](#json-example-copy-data-from-mongodb-to-azure-blob) části tohoto článku. 
+Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat místní MongoDB, naleznete v tématu [příklad JSON: Kopírování dat z MongoDB do objektů Blob v Azure](#json-example-copy-data-from-mongodb-to-azure-blob) části tohoto článku.
 
 Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní ke zdroji MongoDB:
 
@@ -74,7 +74,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | heslo |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Nepovinné (Pokud se používá základní ověřování). Výchozí: používá účet správce a databáze určená vlastnost databaseName. |
 | databaseName |Název databáze MongoDB, které chcete získat přístup. |Ano |
-| Název brány |Název brány, který přistupuje k úložišti. |Ano |
+| gatewayName |Název brány, který přistupuje k úložišti. |Ano |
 | encryptedCredential |Přihlašovací údaje zašifrované pomocí brány. |Nepovinné |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -125,11 +125,11 @@ Jako první krok instalace brány správy dat podle pokynů [brána správy dat]
         "typeProperties":
         {
             "authenticationType": "<Basic or Anonymous>",
-            "server": "< The IP address or host name of the MongoDB server >",  
+            "server": "< The IP address or host name of the MongoDB server >",
             "port": "<The number of the TCP port that the MongoDB server uses to listen for client connections.>",
             "username": "<username>",
             "password": "<password>",
-           "authSource": "< The database that you want to use to check your credentials for authentication. >",
+            "authSource": "< The database that you want to use to check your credentials for authentication. >",
             "databaseName": "<database name>",
             "gatewayName": "<mygateway>"
         }
@@ -155,12 +155,12 @@ Jako první krok instalace brány správy dat podle pokynů [brána správy dat]
 
 ```json
 {
-     "name":  "MongoDbInputDataset",
+    "name": "MongoDbInputDataset",
     "properties": {
         "type": "MongoDbCollection",
         "linkedServiceName": "OnPremisesMongoDbLinkedService",
         "typeProperties": {
-            "collectionName": "<Collection name>"    
+            "collectionName": "<Collection name>"
         },
         "availability": {
             "frequency": "Hour",
@@ -246,7 +246,7 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurovaný pomoc�
                 "typeProperties": {
                     "source": {
                         "type": "MongoDbSource",
-                        "query": "$$Text.Format('select * from  MyTable where LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)"
+                        "query": "$$Text.Format('select * from MyTable where LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)"
                     },
                     "sink": {
                         "type": "BlobSink",
@@ -303,7 +303,7 @@ Při přesouvání dat až po MongoDB se používají následující mapování 
 | NumberLong |Int64 |
 | ObjectID |Řetězec |
 | Řetězec |Řetězec |
-| IDENTIFIKÁTOR UUID |Guid |
+| UUID |Guid |
 | Objekt |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
 
 > [!NOTE]

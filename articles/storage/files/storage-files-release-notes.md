@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 1/14/2019
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 87e6f2c956766011adef23ce9a8565625483a244
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 006a8172faae529ce9943773552da325bfae3f4b
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635540"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321530"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,25 +25,25 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| Kumulativní – aktualizace z prosince [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. prosince 2018 | Podporované (doporučená verze) |
-| Kumulativní aktualizace z prosince | 4.1.0.0 | 4. prosince 2018 | Podporováno |
+| 2019 ledna kumulativní - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | Od 14. května 2019 | Podporované (doporučená verze) |
+| Kumulativní – aktualizace z prosince 2018 [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. prosince 2018 | Podporováno |
+| Kumulativní aktualizace z prosince 2018 | 4.1.0.0 | 4. prosince 2018 | Podporováno |
 | Verzi V4 | 4.0.1.0 | 13. listopadu 2018 | Podporováno |
-| Kumulativní aktualizace. září | 3.3.0.0 | 24. září 2018 | Podporováno |
-| Kumulativní aktualizace ze srpna | 3.2.0.0 | 15. srpna 2018 | Podporováno |
+| Kumulativní aktualizace. září 2018 | 3.3.0.0 | 24. září 2018 | Podporováno |
+| Kumulativní aktualizace. srpna 2018 | 3.2.0.0 | 15. srpna 2018 | Podporováno |
 | Všeobecná dostupnost | 3.1.0.0 | 19. července 2018 | Podporováno |
-| S kumulativní aktualizací z června | 3.0.13.0 | 29. června 2018 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| Aktualizace 2 | 3.0.12.0 | 22. května 2018 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| Kumulativní aktualizace dne | 2.3.0.0 | 8. května 2018 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| Kumulativní aktualizace. března | 2.2.0.0 | 12. března 2018 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| Kumulativní aktualizace. února | 2.1.0.0 | 28. února 2018 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| Aktualizace 1 | 2.0.11.0 | 8. února 2018 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| Od kumulativní aktualizace | 1.4.0.0 | 8. ledna 2018 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| S kumulativní aktualizací z listopadu | 1.3.0.0 | 30. listopadu 2017 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| Říjen kumulativní aktualizace | 1.2.0.0 | 31. října 2017 | Nepodporuje se – verze agenta platnost 1. října 2018 |
-| Počáteční verze Preview | 1.1.0.0 | 26. září 2017 | Nepodporuje se – verze agenta platnost 1. října 2018 |
+| Vypršela platnost agentů | 1.1.0.0 - 3.0.13.0 | neuvedeno | Nepodporuje se – verze agentů platnost 1. října 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-4300"></a>Verze agenta 4.3.0.0
+Následující poznámky k verzi platí pro verze 4.3.0.0 agenta Azure File Sync vydaného od 14. května 2019. Tyto poznámky doplňují uvedené verze 4.0.1.0 poznámky.
+
+Seznam opravených chybách v této verzi:  
+- Po upgradu na verzi agenta Azure File Sync nejsou vrstvené soubory 4.x.
+- AfsUpdater.exe se teď podporuje Windows Server 2019.
+- Různé vyšší spolehlivost pro synchronizaci. 
 
 ## <a name="agent-version-4200"></a>Verze agenta 4.2.0.0
 Následující poznámky k verzi platí pro verze 4.2.0.0 agenta Azure File Sync vydáno 10. prosince 2018. Tyto poznámky doplňují uvedené verze 4.0.1.0 poznámky.

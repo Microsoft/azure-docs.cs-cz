@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: ec7de756a5b3c8e713fa8e73c18cebee32b83e28
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201308"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332247"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Nejčastější dotazy – Azure Backup
 
@@ -76,7 +76,7 @@ Máme verzi private preview pro zálohování SAP HANA s plánovaný bod obnoven
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Jak se rozhodnout, jestli se má obnovit jenom disky nebo úplné virtuálního počítače?
 Představte si obnovení virtuálního počítače jako možnost pro rychlé vytvoření virtuálního počítače Azure. Tato možnost změní názvy disků, kontejnery, které používají disky, veřejné IP adresy a názvy síťových rozhraní. Změna udržuje jedinečný prostředky při vytvoření virtuálního počítače. Virtuální počítač není přidán do skupiny dostupnosti.
 
-Možnost obnovení disku, pokud chcete:
+Pokud chcete, můžete použít možnost obnovení disku:
   * Přizpůsobení virtuálního počítače, který se vytvoří. Například změna velikosti.
   * Přidat nastavení konfigurace, které nebyly existuje v době zálohování
   * Ovládací prvek zásady vytváření názvů pro prostředky, které jsou vytvořeny.

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405480"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329730"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Řešení potíží s Azure Blockchain Workbench
 
@@ -26,7 +26,7 @@ Skript prostředí PowerShell je k dispozici pro vám pomůže s developer ladě
 * Application Insights
 * (Log Analytics) pro monitorování Azure
 
-Informace můžete určit další kroky a určení původní příčiny problémů. 
+Informace můžete určit další kroky a určení původní příčiny problémů.
 
 ## <a name="troubleshooting-script"></a>Řešení potíží s skriptu
 
@@ -75,4 +75,4 @@ Soubor souhrnu poskytuje snímek celkový stav aplikace a stav aplikace. Souhrn 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Architektura Azure Blockchain Workbench](architecture.md)
+> [Průvodce odstraňováním potíží Azure Blockchain Workbench Application Insights](https://aka.ms/workbenchtroubleshooting)

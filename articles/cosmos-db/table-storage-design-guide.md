@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 9784d08a8e3e471a8b516c3bc285430c537857a8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5b418f28cb8cb48d8c9ee369289c899c7f6525bc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044174"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331958"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek
 
@@ -213,7 +213,7 @@ V dřívější části [Přehled služby Azure Table](#overview) popisuje někt
 * Za druhé nejlepší je ***dotazu na rozsah*** , která používá **PartitionKey** a filtry na mnoha různých **RowKey** hodnoty k vrácení více než jednu entitu. **PartitionKey** hodnota označuje konkrétní oddíl a **RowKey** hodnoty identifikaci podmnožiny entity v tomto oddílu. Příklad: $filter = PartitionKey eq "Prodeje a RowKey ge" a RowKey lt 'T'  
 * Je třetí nejlepší ***oddílu kontrolovat*** , která používá **PartitionKey** a filtry v jiné neklíčovým vlastnosti, které může vrátit více než jednu entitu. **PartitionKey** identifikuje hodnotu konkrétního oddílu, a vlastnost hodnot vyberte pro celou dílčí sadu entit v oddílu. Příklad: $filter = PartitionKey eq "Prodeje" a LastName eq: Váša.  
 * A ***prohledávání tabulky*** nezahrnuje **PartitionKey** je neefektivní, protože vyhledá všechny oddíly, které tvoří tabulky pak u všech odpovídajících entit. Bude provedeno prohledání tabulky bez ohledu na to, jestli váš filtr používá **RowKey**. Příklad: $filter = LastName eq "Jones"  
-* Dotazy vracející více entit je řazení v vrátit **PartitionKey** a **RowKey** pořadí. Abyste se vyhnuli nutnosti uchýlit se entity v klientovi, zvolte **RowKey** , který definuje nejběžnější pořadí řazení.  
+* Azure Table Storage dotazy, které vracejí více entit je řazení v vrátit **PartitionKey** a **RowKey** pořadí. Abyste se vyhnuli nutnosti uchýlit se entity v klientovi, zvolte **RowKey** , který definuje nejběžnější pořadí řazení. Výsledky dotazu vrácená rozhraním API tabulky Azure v Azure Cosmso DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Pomocí "**nebo**" zadat filtr na základě **RowKey** hodnoty výsledky v oddílu kontroly a není považován za rozsahového dotazu. Proto byste se měli vyhnout dotazů, které používají jako filtry: $filter = PartitionKey eq "Prodeje" a (RowKey eq "121" nebo RowKey eq "322")  
 
@@ -251,7 +251,13 @@ Služba Table service automaticky indexuje entit pomocí **PartitionKey** a **Ro
 * [Model entity indexů](#index-entities-pattern) -udržovat index entity, které umožňují efektivní prohledávání, které vrací seznam entit.  
 
 ### <a name="sorting-data-in-the-table-service"></a>Řazení dat ve službě Table service
-Služba Table service vrací entity ve vzestupném pořadí podle **PartitionKey** a potom podle **RowKey**. Tyto klíče jsou hodnoty řetězců a aby číselných hodnot řadily správně, musí je převést na pevnou délkou a vyplnění nulami. Například, pokud hodnota id zaměstnance použijete jako **RowKey** je celočíselná hodnota, je třeba id zaměstnance převést **123** k **00000123**.  
+
+Výsledky dotazu jsou seřazené ve vzestupném pořadí podle **PartitionKey** a potom podle **RowKey**.
+
+> [!NOTE]
+> Výsledky dotazu vrácená rozhraním API tabulky Azure v Azure Cosmso DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+
+Klíče v tabulce Azure Storage jsou řetězcové hodnoty a aby číselných hodnot řadily správně, musí je převést na pevnou délkou a vyplnění nulami. Například, pokud hodnota id zaměstnance použijete jako **RowKey** je celočíselná hodnota, je třeba id zaměstnance převést **123** k **00000123**. 
 
 Mnoho aplikací mají požadavky na používání dat v různém pořadí řazení: podle názvu nebo díky připojení ke službě data, například řazení zaměstnanci. Následující vzory v části [vzory návrhu v tabulce](#table-design-patterns) adres jak alternativní pořadí řazení pro vaší entity:  
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0a18bcf9f9e1217b674bda5f5ae698908f1911a8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262910"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329986"
 ---
 # <a name="publish-azure-application-offer"></a>Publikovat nabídku aplikací Azure
 
@@ -41,7 +41,7 @@ Následující tabulka uvádí a popisuje jednotlivé kroky pro publikování a 
 | Ověření testů jednotky          | < 2 hodiny   | (Volitelné) Pokud Test Drive je k dispozici, Microsoft ověřuje, že je nasadit a replikovat.  |
 | Balení a registrace generování potenciálních zákazníků | < 1 hodina  | Technické prostředky nabídky jsou zabaleny pro používání zákazníka a systémy potenciálních zákazníků jsou konfigurovány a nasazeny. |
 |  Odhlášení vydavatele             |  Ruční    | Zkontrolujte poslední vydavatele a potvrzení před uvedete nabídky. Nabídka je teď dostupná ve verzi preview.  Ověřit, zda splňuje všechny požadavky, můžete nasadit vaši nabídku ve vybraných předplatných (v krocích informace nabídky).  Po ověření tuto nabídku, vyberte **aktivace** tak vaši nabídku můžete přesunout k dalšímu kroku. |
-| Microsoft review                | 7 – 14 dnů * | Microsoft holistické zkontroluje vaše aplikace Azure a odešle e-mail, pokud jsou zjištěny problémy.  * Tento krok zřídka, může trvat déle než 14 dní, v závislosti na složitosti aplikace a problémů zjištěných.  |
+| Microsoft review                | 7 – 14 dní | Microsoft holistické zkontroluje vaše aplikace Azure a odešle e-mail, pokud jsou zjištěny problémy.  Tento krok závisí na složitosti aplikace, problémů zjištěných a jak rychle reagovat na ně.  |
 | Živé                           | < 1 den | Nabídka je uvolněna, replikovaná do oblastí, zadaný a veřejně k dispozici. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
  

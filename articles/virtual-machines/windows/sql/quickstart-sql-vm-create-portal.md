@@ -3,7 +3,7 @@ title: Vytvoření virtuálního počítače s Windows a SQL Serverem na portál
 description: Díky tomuto kurzu se dozvíte, jak vytvořit virtuální počítač s Windows a SQL Serverem 2017 na webu Azure Portal.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
-ms.author: jroth
-ms.openlocfilehash: aeeee58242a5f6ea41b9ba354efc4f5d5087151c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 234625825c1d9729d4f06f2bb0c96325cdd81f22
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38720120"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329340"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem 2017 na webu Azure Portal
 
@@ -46,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Do vyhledávacího pole zadejte **SQL Server 2017 Developer on Windows Server 2016** a stiskněte ENTER.
 
-1. Vyberte image **Bezplatná licence SQL Serveru: SQL Server 2017 Developer ve Windows Serveru 2016**.
+1. Vyberte **bezplatná licence SQL serveru: SQL Server 2017 Developer ve Windows serveru 2016** bitové kopie.
 
    ![Nové okno hledání](./media/quickstart-sql-vm-create-portal/newsearch.png)
 
@@ -151,7 +152,7 @@ Přístup k počítači vám umožňuje podle potřeb přímo měnit nastavení 
 
 Pokud nepotřebujete, aby virtuální počítač SQL VM běžel nepřetržitě, můžete se vyhnout zbytečným poplatkům: když počítač nepoužíváte, zastavte ho. Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači odstraněním příslušné skupiny prostředků na portálu. Tím trvale odstraníte i virtuální počítač, proto tento příkaz používejte opatrně. Další informace najdete v tématu [Správa prostředků Azure prostřednictvím portálu](../../../azure-resource-manager/resource-group-portal.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili virtuální počítač s SQL Serverem 2017 na webu Azure Portal. Další informace o tom, jak na tento nový SQL Server přenést data, najdete v následujícím článku.
 

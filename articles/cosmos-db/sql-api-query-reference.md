@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d238e5e7c129241fc599e3b656d785d750b330c7
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044378"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332031"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Referenční dokumentace jazyka služby Azure Cosmos DB SQL 
 
@@ -2331,7 +2331,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
  **Syntaxe**  
   
 ```  
-SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
+SUBSTRING(<str_expr>, <num_expr>, <num_expr>)  
 ```  
   
  **Argumenty**  
@@ -2342,7 +2342,7 @@ SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     Je jakýkoli platný číselný výraz.  
+     Je jakýkoli platný číselný výraz k označení počáteční a koncový znak.    
   
  **Návratové typy**  
   

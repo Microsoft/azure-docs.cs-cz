@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: ''
-ms.openlocfilehash: 1bfc97eb850cf81ff638f92bc628c856fa75681e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 9ec183c55a74a2ab12c8accb8b3578ea530f1da2
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230658"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322074"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Příručka nasazení funkce Azure Active Directory
 
@@ -36,9 +36,9 @@ Další informace o licencování najdete na následujících stránkách:
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Licence k sadě Azure AD s B2B](../b2b/licensing-guidance.md)
 
-## <a name="phase-1-foundation-of-security"></a>Fáze 1: Základy zabezpečení
+## <a name="phase-1-build-a-foundation-of-security"></a>Fáze 1: Tvoří základ zabezpečení
 
-Ve fázi 1 správci povolit standardních hodnot zabezpečení funkce pro vytváření základních zabezpečené a snadno se používá ve službě Azure AD předtím, než jsme naimportovat nebo vytvořit běžné uživatelské účty. Tato základní fáze zajišťuje jsou ve stavu zabezpečení od samého začátku a koncovým uživatelům, pouze že zavést do nových konceptů jednou.
+V této fázi správci povolit standardních hodnot zabezpečení funkce pro vytváření základních zabezpečené a snadno se používá ve službě Azure AD předtím, než jsme naimportovat nebo vytvořit běžné uživatelské účty. Tato základní fáze zajišťuje jsou ve stavu zabezpečení od samého začátku a koncovým uživatelům, pouze že zavést do nových konceptů jednou.
 
 | Úkol | Detail | Požadovaná licence |
 | ---- | ------ | ---------------- |
@@ -57,9 +57,9 @@ Ve fázi 1 správci povolit standardních hodnot zabezpečení funkce pro vytvá
 | [Rizikové události použít k aktivaci služby Multi-Factor authentication a změn hesel](../authentication/tutorial-risk-based-sspr-mfa.md) | Povolte automatizaci, která mohou aktivovat události, jako je ověřování službou Multi-Factor Authentication, resetování hesla a blokování přihlášení podle rizika. | Azure AD Premium P2 |
 | [Povolit sblížené registrace pro samoobslužné resetování hesla a Vícefaktorové ověřování Azure AD (preview)](../authentication/concept-registration-mfa-sspr-converged.md) | Povolit uživatelům registrovat z jednoho společného prostředí pro ověřování Azure Multi-Factor Authentication a samoobslužné resetování hesla. | Azure AD Premium P1 |
 
-## <a name="phase-2-users-synchronization-and-devices"></a>Fáze 2: Uživatelé, synchronizace a zařízení
+## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Fáze 2: Import uživatelů, povolit synchronizaci a správě zařízení
 
-Ve fázi 2, přidáme do foundation podle fáze 1 Import našich uživatelů a povolením synchronizace, plánování pro hosty a příprava pro podporu dalších funkcí.
+V dalším kroku přidáme do foundation podle fáze 1 Import našich uživatelů a povolením synchronizace, plánování pro hosty a příprava pro podporu dalších funkcí.
 
 | Úkol | Detail | Požadovaná licence |
 | ---- | ------ | ---------------- |
@@ -72,9 +72,9 @@ Ve fázi 2, přidáme do foundation podle fáze 1 Import našich uživatelů a p
 | [Při rozhodování o strategie správy zařízení](../devices/overview.md) | Rozhodněte se, co vaše organizace povoluje týkající se zařízení. Společnosti k dispozici registrace vs se zapojíte, vs přineste si vlastní zařízení. | |
 | [Nasazení Windows Hello pro firmy ve vaší organizaci](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Příprava na ověření bez hesla pomocí Windows Hello | |
 
-## <a name="phase-3-applications"></a>Fáze 3: Aplikace
+## <a name="phase-3-manage-applications"></a>Fáze 3: Správa aplikací
 
-Ve fázi 3 začněte správci trvalý proces pro přidání do aplikací.
+Jak budeme dál stavět na předchozí fáze, jsme identifikovat aplikace Release candidate pro migraci a integrace se službou Azure AD a dokončete instalaci těchto aplikací.
 
 | Úkol | Detail | Požadovaná licence |
 | ---- | ------ | ---------------- |
@@ -82,15 +82,15 @@ Ve fázi 3 začněte správci trvalý proces pro přidání do aplikací.
 | [Integrujte podporované aplikace SaaS v galerii](../manage-apps/add-application-portal.md) | Azure AD má galerie, která obsahuje tisíce předem integrovaných aplikací. Některé z aplikací, které vaše organizace používá jsou pravděpodobně v galerii dostupné přímo z webu Azure portal. | Azure AD Free |
 | [Pomocí Proxy aplikací můžete integrovat místní aplikace](../manage-apps/application-proxy-add-on-premises-application.md) | Proxy aplikací umožňuje uživatelům přístup k místním aplikacím, když se přihlásíte pomocí svého účtu Azure AD. | Azure AD Basic |
 
-## <a name="phase-4-privileged-identities-access-reviews-and-user-lifecycle"></a>Fáze 4: Privilegované identity, kontroly přístupu a životního cyklu uživatele
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>Fáze 4: Auditovat privilegované identity, dokončení kontroly přístupu a správě životního cyklu uživatele
 
 Fáze 4 vidí správci vynucování zásad nejnižší oprávnění pro správu, dokončení jejich první kontrolu přístupu a povolení automatizace běžné uživatelské úlohy životního cyklu.
 
 | Úkol | Detail | Požadovaná licence |
 | ---- | ------ | ---------------- |
-| [Vynutit používání služby Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Odebrání role pro správu z normální každodenní uživatelské účty. Ujistěte se, administrativní uživatelé mají nárok na využití jejich role po úspěšné kontroly ověřování službou Multi-Factor Authentication, poskytuje obchodní odůvodnění nebo z určených schvalovatelů odesílání žádostí o schválení. | Azure AD Premium P2 |
+| [Vynutit používání služby Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | Odebrání role pro správu z normální každodenní uživatelské účty. Ujistěte se, administrativní uživatelé mají nárok na využití jejich role po úspěšné kontroly ověřování službou Multi-Factor Authentication, poskytuje obchodní odůvodnění nebo z určených schvalovatelů odesílání žádostí o schválení. | Azure AD Premium P2 |
 | [Dokončení kontroly přístupu pro role adresáře Azure AD v PIM](../privileged-identity-management/pim-how-to-start-security-review.md) | Práce s vaší zabezpečení a vedoucí týmy k vytvoření zásad přístupu zkontrolujte zkontrolovat přístup pro správu na základě zásad vaší organizace. | Azure AD Premium P2 |
-| [Zásady členství implementovat dynamické skupiny](../users-groups-roles/groups-dynamic-membership.md) | Umožňuje automaticky přiřadit uživatele do skupin na základě jejich atributů z personálního oddělení (nebo zdroji pravdivých informací), jako je například oddělení, název, oblast a další atributy dynamické skupiny. |  |
+| [Implementovat zásady členství v dynamické skupině](../users-groups-roles/groups-dynamic-membership.md) | Umožňuje automaticky přiřadit uživatele do skupin na základě jejich atributů z personálního oddělení (nebo zdroji pravdivých informací), jako je například oddělení, název, oblast a další atributy dynamické skupiny. |  |
 | [Implementace skupinové zřizování aplikací](../manage-apps/what-is-access-management.md) | Pomocí přístupu na základě skupiny správy zřizování, které umožňuje automaticky zřizovat uživatele pro aplikace SaaS. |  |
 | [Automatizace a rušení zřizování uživatelů](../manage-apps/user-provisioning.md) | Vyžadováno provedení ručních kroků odebrání životní cyklus vašeho zaměstnance účet před neoprávněným přístupem. Synchronizaci identit mezi vaším zdrojem pravdivých informací (HR systému) do služby Azure AD. |  |
 

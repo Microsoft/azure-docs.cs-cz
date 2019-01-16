@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 6349ced07385ede42b21c9a8401dd3e0a23bcfbe
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5f3e7164c0569422fe164283efaa8f282ccfe9f8
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790296"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318939"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím protokolu SMB
 
@@ -38,7 +38,7 @@ Než začnete, ujistěte se, že:
 
 ## <a name="connect-to-data-box"></a>Připojení k Data Boxu
 
-V závislosti na vybraném účtu úložiště vytvoří Data Box až:
+Založené na vybraný účet úložiště, zařízení Data Box vytvoří až:
 - Tři sdílené složky pro každý přidružený účet úložiště GPv1 a GPv2.
 - Jednu sdílenou složku pro účet úložiště Premium nebo účet úložiště objektů blob.
 

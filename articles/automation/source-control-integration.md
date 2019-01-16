@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94d948267286ad716aa200cb5aa858acf2eb2624
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342234"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330761"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -52,13 +52,16 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 |Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu        |
 |Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHubu</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |Úložiště     | Název úložiště nebo projektu. Tato hodnota se načítají z úložiště správy zdrojového kódu. Příklad: $/ ContosoFinanceTFVCExample         |
-|Větev     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |
+|Branch     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |
 |Cesta ke složce     | Tato složka obsahuje sady runbook k synchronizaci. Příklad: /Runbooks         |
 |Automatická synchronizace     | Zapne nebo vypne Automatická synchronizace při potvrzení změn do úložiště správy zdrojového kódu         |
 |Publikování Runbooku     | Pokud hodnotu **na**po sady runbook se synchronizují ze správy zdrojových kódů, bude automaticky publikován.         |
 |Popis     | Textové pole poskytnout další podrobnosti        |
 
 ![Přehled ovládacího prvku zdroje](./media/source-control-integration/source-control-summary.png)
+
+> [!NOTE]
+> Ujistěte se, že jste přihlášeni správný účet při konfiguraci správy zdrojového kódu. Pokud je nejisté, otevřete novou kartu v prohlížeči a odhlaste se z visualstudio.com nebo webu github.com a opakujte připojení správy zdrojového kódu.
 
 ## <a name="syncing"></a>Synchronizace
 
@@ -112,12 +115,12 @@ Správy zdrojových kódů vyžaduje některé minimální sadu oprávnění pro
 |Rozsah  |Popis  |
 |---------|---------|
 |**úložiště**     |         |
-|úložiště: stav     | Stav přístupu pro potvrzení změn         |
+|repo:status     | Stav přístupu pro potvrzení změn         |
 |repo_deployment      | Stav přístupu pro nasazení         |
 |public_repo     | Přístup veřejných úložišť         |
-|**Admin: repo_hook**     |         |
-|zápis: repo_hook     | Zápis háky úložiště         |
-|čtení: repo_hook|Háky úložiště pro čtení|
+|**admin:repo_hook**     |         |
+|write:repo_hook     | Zápis háky úložiště         |
+|read:repo_hook|Háky úložiště pro čtení|
 
 ### <a name="azure-devops"></a>Azure DevOps
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: dd8e0950de6aae71dd123d21b59c6de591bd7f29
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a5619db18ef326b160bf9f4a1fbacbd6b3e9f012
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107702"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319456"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -120,10 +120,10 @@ Windows Server 2016 64 bitů | Standard, Datacenter, Essentials | WIT nejnověj�
 Windows Server 2012 R2 64 bitů | Standard, Datacenter, Foundation | S nejnovější aktualizace service Pack nebo aktualizací.
 Windows Server 2012 64 bitů | Datacenter, Foundation, Standard | S nejnovější aktualizace service Pack nebo aktualizací.
 Windows Storage Server 2016 64 bitů | Standard, Workgroup | S nejnovější aktualizace service Pack nebo aktualizací.
-Windows Storage Server 2012 R2 64 bitů | Essential Standard, pracovní skupiny, | S nejnovější aktualizace service Pack nebo aktualizací.
+Windows Storage Server 2012 R2 64 bitů | Standard, Workgroup, Essential | S nejnovější aktualizace service Pack nebo aktualizací.
 Windows Storage Server 2012 64 bitů | Standard, Workgroup | S nejnovější aktualizace service Pack nebo aktualizací.
 Windows Server 2008 R2 SP1 64 bitů | Standard, Enterprise, Datacenter, Foundation | S nejnovějšími aktualizacemi.
-Windows Server 2008 64 bitů | Standard, Enterprise, Datacenter | S nejnovějšími aktualizacemi.
+Windows Server 2008 64 bit | Standard, Enterprise, Datacenter | S nejnovějšími aktualizacemi.
 
 Zálohování virtuálních počítačů Azure s Linuxem, Azure Backup podporuje [seznam distribucí schválených pro Azure](../virtual-machines/linux/endorsed-distros.md), kromě základního OS Linux a 32bitový operační systém. Ostatní Linuxové distribuce přineste vlastní může pracovat za předpokladu, že agent virtuálního počítače je k dispozici na virtuálním počítači a podporovaný Python.
 

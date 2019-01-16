@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6f5a6c6ac4bd125fd7aa6358fe92f9453a0314b1
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 45f1b4d16bd982e17b67d6fb337e0d917f635851
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266770"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332689"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videa a přepis
 
@@ -241,7 +241,7 @@ Kód provede následující kroky:
 
 - Zkontroluje, že konfigurace v souboru `App.config` obsahuje všechna nutná data.
 - Zkontroluje, že je přítomný binární soubor `ffmpeg`.
-- Vytvoří název výstupního souboru přidáním `_c.mp4` k základnímu názvu souboru (například `Example.mp4` -> `E>xample_c.mp4`).
+- Vytvoří název výstupního souboru přidáním `_c.mp4` k základnímu názvu souboru (například `Example.mp4` -> `Example_c.mp4`).
 - Vytvoří řetězec příkazového řádku k provedení konverze.
 - S použitím příkazového řádku spustí proces `ffmpeg`.
 - Čeká na video ke zpracování.

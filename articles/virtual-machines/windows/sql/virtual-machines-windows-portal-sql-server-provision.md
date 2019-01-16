@@ -3,7 +3,7 @@ title: Zřizování Příručka pro virtuální počítače s Windows SQL server
 description: Tato příručka popisuje možnosti pro vytváření virtuálních počítačů s Windows a SQL serverem 2017 na webu Azure Portal.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
-ms.author: jroth
-ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: fd01fdd3f7f8803dc7221bd0bd6c993120a83d44
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704534"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330887"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Přidělení virtuálního počítače s Windows SQL serverem na webu Azure Portal
 
@@ -54,7 +55,7 @@ Při vytváření virtuálního počítače s SQL serverem, vyberte jednu z něk
 
 1. Projděte si dostupné image SQL Serveru. U každé image je označena příslušná verze SQL Serveru a operační systém.
 
-1. Vyberte image s názvem **Bezplatná licence SQL Serveru: SQL Server 2017 Developer v systému Windows Server 2016**.
+1. Vyberte image s názvem **bezplatná licence SQL serveru: SQL Server 2017 Developer ve Windows serveru 2016**.
 
    > [!TIP]
    > U verze Developer edition je použít v tomto návodu, protože je plně funkční, bezplatnou edici systému SQL Server pro vývoj testování. Platíte jenom náklady na provozování virtuálního počítače. Ale budete moci vybrat kteroukoli z Image na použití v tomto názorném postupu. Popis dostupných imagí najdete v tématu [SQL Server Windows Virtual Machines – přehled](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
@@ -249,7 +250,7 @@ V následující tabulce jsou uvedeny parametry, které jsou nezbytné pro konfi
 | **Adresa URL služby Key Vault** |Umístění služby Key Vault |https://contosokeyvault.vault.azure.net/ |
 | **Název objektu zabezpečení** |Hlavní název služby Azure Active Directory. Tento název se také označuje jako ID klienta. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **Tajný kód objektu zabezpečení** |Tajný klíč objektu zabezpečení služby Azure Active Directory. Tento tajný klíč se také označuje jako Tajný klíč klienta. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
-| **Název přihlašovacího údaje** |**Název přihlašovacího údaje:** Integrace se službou Azure Key Vault vytvoří přihlašovací údaje v rámci SQL Serveru, díky čemuž mají virtuální počítače přístup do trezoru klíčů. Zvolte název pro tyto přihlašovací údaje. |moje_přihlaš1 |
+| **Název přihlašovacího údaje** |**Název přihlašovacího údaje**: Integrace se službou AZURE vytvoří přihlašovací údaje v rámci SQL serveru, díky čemuž mají přístup k trezoru klíčů virtuální počítače. Zvolte název pro tyto přihlašovací údaje. |moje_přihlaš1 |
 
 Další informace najdete v tématu [Konfigurace Integrace se službou Azure Key Vault pro virtuální počítače Azure](virtual-machines-windows-ps-sql-keyvault.md).
 

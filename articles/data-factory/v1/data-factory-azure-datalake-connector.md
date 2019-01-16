@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3fec0952f4b164327942d5dee108f89b17613042
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b5425bd9f86bce289cc1f60c088febfd8f05ee3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015535"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332621"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopírování dat do a z Data Lake Storage Gen1 pomocí služby Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Může kopírovat data z následujících datových skladů **do Azure Data Lake
 ## <a name="supported-authentication-types"></a>Typy podporované metody ověřování
 Konektor Data Lake Store podporuje tyto typy ověřování:
 * Ověřování instančních objektů
-* Ověření uživatele přihlašovací údaje (OAuth) 
+* Ověření uživatele přihlašovací údaje (OAuth)
 
 Doporučujeme používat ověřování instančních objektů, zejména pro plánovanou kopírování. Vypršení platnosti tokenu chování může dojít, s ověřením pověření uživatele. Podrobnosti o konfiguraci, najdete v článku [vlastnostem propojených služeb](#linked-service-properties) oddílu.
 
@@ -58,12 +58,12 @@ Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, 
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvoření **služby data factory**. Datová továrna může obsahovat jeden nebo víc kanálů. 
-2. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory. Například pokud se kopírování dat z Azure blob storage do Azure Data Lake Store, vytvoříte dvě propojené služby pro propojení účtu služby Azure storage a Azure Data Lake store se svou datovou továrnou. Vlastnosti propojené služby, které jsou specifické pro Azure Data Lake Store, naleznete v tématu [vlastnostem propojených služeb](#linked-service-properties) oddílu. 
+1. Vytvoření **služby data factory**. Datová továrna může obsahovat jeden nebo víc kanálů.
+2. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory. Například pokud se kopírování dat z Azure blob storage do Azure Data Lake Store, vytvoříte dvě propojené služby pro propojení účtu služby Azure storage a Azure Data Lake store se svou datovou továrnou. Vlastnosti propojené služby, které jsou specifické pro Azure Data Lake Store, naleznete v tématu [vlastnostem propojených služeb](#linked-service-properties) oddílu.
 2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. V příkladu uvedených v posledním kroku vytvoříte datovou sadu, která zadejte kontejner objektů blob a složku obsahující vstupní data. A vytvořte jinou datovou sadu k určení složky a cesta k souboru ve službě Data Lake store, obsahující data zkopírovaná z úložiště objektů blob. Vlastnosti datové sady, které jsou specifické pro Azure Data Lake Store, naleznete v tématu [vlastnosti datové sady](#dataset-properties) oddílu.
-3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. V příkladu již bylo zmíněno dříve pomocí BlobSource jako zdroj a AzureDataLakeStoreSink jako jímka pro aktivitu kopírování. Podobně pokud kopírujete z Azure Data Lake Store do Azure Blob Storage, můžete použít AzureDataLakeStoreSource a BlobSink v aktivitě kopírování. Kopírovat vlastnosti aktivity, které jsou specifické pro Azure Data Lake Store, naleznete v tématu [vlastnosti aktivity kopírování](#copy-activity-properties) oddílu. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku klikněte na odkaz v předchozí části datového úložiště.  
+3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. V příkladu již bylo zmíněno dříve pomocí BlobSource jako zdroj a AzureDataLakeStoreSink jako jímka pro aktivitu kopírování. Podobně pokud kopírujete z Azure Data Lake Store do Azure Blob Storage, můžete použít AzureDataLakeStoreSource a BlobSink v aktivitě kopírování. Kopírovat vlastnosti aktivity, které jsou specifické pro Azure Data Lake Store, naleznete v tématu [vlastnosti aktivity kopírování](#copy-activity-properties) oddílu. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku klikněte na odkaz v předchozí části datového úložiště.
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Ukázky s definicemi JSON entit služby Data Factory, které se používají ke kopírování dat do a ze Azure Data Lake Store najdete v tématu [JSON příklady](#json-examples-for-copying-data-to-and-from-data-lake-store) části tohoto článku.
+Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON. Ukázky s definicemi JSON entit služby Data Factory, které se používají ke kopírování dat do a ze Azure Data Lake Store najdete v tématu [JSON příklady](#json-examples-for-copying-data-to-and-from-data-lake-store) části tohoto článku.
 
 Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory, které jsou specifické pro Data Lake Store.
 
@@ -74,13 +74,13 @@ Propojená služba propojuje úložiště dat do služby data factory. Vytvořen
 |:--- |:--- |:--- |
 | **type** | Vlastnost type musí být nastavená na **AzureDataLakeStore**. | Ano |
 | **dataLakeStoreUri** | Informace o účtu Azure Data Lake Store. Tyto informace má jednu z následujících formátů: `https://[accountname].azuredatalakestore.net/webhdfs/v1` nebo `adl://[accountname].azuredatalakestore.net/`. | Ano |
-| **ID předplatného** | ID předplatného Azure, ke kterému patří účet Data Lake Store. | Vyžaduje se pro jímku |
+| **subscriptionId** | ID předplatného Azure, ke kterému patří účet Data Lake Store. | Vyžaduje se pro jímku |
 | **resourceGroupName** | Název skupiny prostředků Azure, ke kterému patří účet Data Lake Store. | Vyžaduje se pro jímku |
 
 ### <a name="service-principal-authentication-recommended"></a>Ověřování instančních objektů (doporučeno)
 Pokud chcete používat ověřování instančních objektů, entity aplikaci zaregistrovat ve službě Azure Active Directory (Azure AD) a jí udělit přístup k Data Lake Store. Podrobné pokyny najdete v článku [ověřování služba služba](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které slouží k definování propojené služby:
 * ID aplikace
-* Klíč aplikace 
+* Klíč aplikace
 * ID tenanta
 
 > [!IMPORTANT]
@@ -233,7 +233,7 @@ Podrobnosti o třídách služby Data Factory používá v kódu, najdete v čl�
     ```
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-K určení datové sady reprezentující vstupní data v Data Lake Store, můžete nastavit **typ** vlastnosti datové sady na **AzureDataLakeStore**. Nastavte **linkedServiceName** vlastnosti datové sady na název Data Lake Store propojenou službu. Úplný seznam části JSON a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Části datové sady ve formátu JSON, jako například **struktura**, **dostupnosti**, a **zásady**, jsou podobné jako u všech typů datovou sadu (Azure SQL database, Azure blob a tabulek v Azure, pro např.). **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace, jako je umístění a formát dat v úložišti. 
+K určení datové sady reprezentující vstupní data v Data Lake Store, můžete nastavit **typ** vlastnosti datové sady na **AzureDataLakeStore**. Nastavte **linkedServiceName** vlastnosti datové sady na název Data Lake Store propojenou službu. Úplný seznam části JSON a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Části datové sady ve formátu JSON, jako například **struktura**, **dostupnosti**, a **zásady**, jsou podobné jako u všech typů datovou sadu (Azure SQL database, Azure blob a tabulek v Azure, pro např.). **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace, jako je umístění a formát dat v úložišti.
 
 **TypeProperties** části datové sady typu **AzureDataLakeStore** obsahuje následující vlastnosti:
 
@@ -242,7 +242,7 @@ K určení datové sady reprezentující vstupní data v Data Lake Store, může
 | **folderPath** |Cesta k kontejner a složku v Data Lake Store. |Ano |
 | **fileName** |Název souboru v Azure Data Lake Store. **FileName** vlastnost je volitelná a malá a velká písmena. <br/><br/>Pokud zadáte **fileName**, aktivity (včetně kopie) funguje na konkrétní soubor.<br/><br/>Když **fileName** není zadán, zahrnuje kopírování všech souborů v **folderPath** ve vstupní sadě.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není zadán v jímky aktivity, je název generovaného souboru ve formátu Data. _Identifikátor GUID_.txt ". Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Ne |
 | **partitionedBy** |**PartitionedBy** vlastnost je volitelná. Slouží k určení dynamické cestu a název souboru pro data časových řad. Například **folderPath** může být parametrizován pro každou hodinu data. Podrobnosti a příklady najdete v tématu [vlastnost partitionedBy](#using-partitionedby-property). |Ne |
-| **Formát** | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. Nastavte **typ** vlastnosti v části **formátu** na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly v [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku. <br><br> Pokud chcete zkopírovat soubory "jako-je" mezi souborové úložiště (binární kopie), přejděte `format` části v definicích oba vstupní a výstupní datové sady. |Ne |
+| **Formát** | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, and **ParquetFormat**. Nastavte **typ** vlastnosti v části **formátu** na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly v [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku. <br><br> Pokud chcete zkopírovat soubory "jako-je" mezi souborové úložiště (binární kopie), přejděte `format` části v definicích oba vstupní a výstupní datové sady. |Ne |
 | **Komprese** | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 ### <a name="the-partitionedby-property"></a>Vlastnost partitionedBy
@@ -264,14 +264,14 @@ V následujícím příkladu, rok, měsíc, den a čas `SliceStart` jsou extraho
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Podrobné informace o časových řad datové sady, plánování a řezů, najdete v článku [datové sady ve službě Azure Data Factory](data-factory-create-datasets.md) a [služby Data Factory plánování a provádění](data-factory-scheduling-and-execution.md) článků. 
+Podrobné informace o časových řad datové sady, plánování a řezů, najdete v článku [datové sady ve službě Azure Data Factory](data-factory-create-datasets.md) a [služby Data Factory plánování a provádění](data-factory-scheduling-and-execution.md) článků.
 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
@@ -284,7 +284,6 @@ K dispozici ve vlastnosti **typeProperties** části aktivity se liší s jednot
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | **rekurzivní** |Určuje, jestli se data číst rekurzivně z podsložky nebo pouze z určené složky. |True, False (výchozí hodnota) |Ne |
-
 
 **AzureDataLakeStoreSink** podporuje následující vlastnosti v **typeProperties** části:
 
@@ -308,7 +307,7 @@ Tato část popisuje výsledné chování pro různé kombinace hodnot rekurzivn
 Podrobnosti najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku.
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Příklady JSON pro kopírování dat do a z Data Lake Store
-Následující příklady popisují ukázková definice JSON. Tyto ukázkové definice můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data do a z Data Lake Store a Azure Blob storage. Nicméně je možné zkopírovat data _přímo_ z jakéhokoli zdroje na jakýkoli z podporovaných jímky. Další informace najdete v oddílu "podporovaná úložiště dat a formáty" v [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md) článku.  
+Následující příklady popisují ukázková definice JSON. Tyto ukázkové definice můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data do a z Data Lake Store a Azure Blob storage. Nicméně je možné zkopírovat data _přímo_ z jakéhokoli zdroje na jakýkoli z podporovaných jímky. Další informace najdete v oddílu "podporovaná úložiště dat a formáty" v [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md) článku.
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Příklad: Kopírování dat z Azure Blob Storage do Azure Data Lake Store
 Příklad kódu v této části ukazuje:
@@ -319,7 +318,7 @@ Příklad kódu v této části ukazuje:
 * Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureDataLakeStore](#dataset-properties).
 * A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a [AzureDataLakeStoreSink](#copy-activity-properties).
 
-Příklady ukazují, jak časových řad dat z Azure Blob Storage je zkopírován do Data Lake Store za hodinu. 
+Příklady ukazují, jak časových řad dat z Azure Blob Storage je zkopírován do Data Lake Store za hodinu.
 
 **Propojená služba Azure Storage**
 
@@ -428,68 +427,67 @@ Následující příklad zkopíruje data do Data Lake Store. Nová data zkopíro
 ```JSON
 {
     "name": "AzureDataLakeStoreOutput",
-      "properties": {
+    "properties": {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
         "typeProperties": {
             "folderPath": "datalake/output/"
         },
         "availability": {
-              "frequency": "Hour",
-              "interval": 1
+            "frequency": "Hour",
+            "interval": 1
         }
-      }
+    }
 }
 ```
-
 
 **Aktivita kopírování v kanálu s blob zdroje a jímky Data Lake Store**
 
 V následujícím příkladu kanálu obsahujícího aktivitu kopírování, která je nakonfigurovaná k použití vstupní a výstupní datové sady. Aktivita kopírování je naplánováno spuštění každou hodinu. V definici JSON kanálu `source` je typ nastaven na `BlobSource`a `sink` je typ nastaven na `AzureDataLakeStoreSink`.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
     "properties":
-    {  
+    {
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline with copy activity",
         "activities":
-        [  
-              {
+        [
+            {
                 "name": "AzureBlobtoDataLake",
                 "description": "Copy Activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureBlobInput"
-                  }
+                    {
+                        "name": "AzureBlobInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureDataLakeStoreOutput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "BlobSource"
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "AzureDataLakeStoreSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
+            }
         ]
     }
 }
@@ -504,7 +502,7 @@ Příklad kódu v této části ukazuje:
 * Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 * A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [AzureDataLakeStoreSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Kód zkopíruje data časových řad z Data Lake Store do objektu blob Azure každou hodinu. 
+Kód zkopíruje data časových řad z Data Lake Store do objektu blob Azure každou hodinu.
 
 **Propojená služba Azure Data Lake Store**
 
@@ -547,7 +545,7 @@ V tomto příkladu nastavení `"external"` k `true` informuje služby Data Facto
 ```json
 {
     "name": "AzureDataLakeStoreInput",
-      "properties":
+    "properties":
     {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
@@ -563,16 +561,16 @@ V tomto příkladu nastavení `"external"` k `true` informuje služby Data Facto
         "external": true,
         "availability": {
             "frequency": "Hour",
-              "interval": 1
+            "interval": 1
         },
         "policy": {
-              "externalData": {
+            "externalData": {
                 "retryInterval": "00:01:00",
                 "retryTimeout": "00:10:00",
                 "maximumRetry": 3
-              }
+            }
         }
-      }
+    }
 }
 ```
 **Výstupní datová sada Azure Blob**
@@ -640,47 +638,47 @@ V následujícím příkladu, data se zapisují do nového objektu blob každou 
 V následujícím příkladu kanálu obsahujícího aktivitu kopírování, která je nakonfigurovaná k použití vstupní a výstupní datové sady. Aktivita kopírování je naplánováno spuštění každou hodinu. V definici JSON kanálu `source` je typ nastaven na `AzureDataLakeStoreSource`a `sink` je typ nastaven na `BlobSink`.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline for copy activity",
-        "activities":[  
-              {
+        "activities":[
+            {
                 "name": "AzureDakeLaketoBlob",
                 "description": "copy activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureDataLakeStoreInput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureBlobOutput"
-                  }
+                    {
+                        "name": "AzureBlobOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "AzureDataLakeStoreSource",
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "BlobSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
-         ]
+            }
+        ]
     }
 }
 ```

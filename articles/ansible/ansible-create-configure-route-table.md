@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
-ms.openlocfilehash: 5d7a16ebda088d0ed42021e9def20a398e914ad9
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 29672a75408e42fb9239e5d826784b46e7280805
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158121"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332264"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>Vytvoření, změna nebo odstranění Azure směrovací tabulky pomocí Ansible
 Azure automaticky směruje provoz mezi Azure podsítěmi virtuálních sítí a místní sítí. Pokud chcete změnit výchozí směrování v Azure, můžete udělat tak, že vytvoříte [směrovací tabulka](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
@@ -51,7 +51,7 @@ ansible-playbook route_table_create.yml
 ## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení směrovací tabulky k podsíti
 Podsíť může mít žádnou nebo jednu směrovací tabulky přidružené k němu. Směrovací tabulky můžou být přidružené k nula nebo více podsítí. Protože směrovací tabulky nejsou přidružené k virtuálním sítím, třeba přidružení směrovací tabulky do každé podsítě má směrovací tabulky přidružené k. Všechny přenosů z podsítě se směruje podle trasy, které jste vytvořili v rámci směrovacích tabulek [výchozí trasy](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#default), a šíření tras z místní sítě, pokud virtuální síť připojená k (bránu virtuální sítě Azure ExpressRoute nebo VPN, pokud pomocí protokolu BGP s bránou VPN). Můžete přidružit pouze směrovací tabulku do podsítí ve virtuálních sítích, které existují ve stejném umístění Azure a předplatné jako směrovací tabulky.
 
-Tato část představuje playbook Ansible ukázka, která vytvoří virtuální síť a odeslat, a pak přidruží směrovací tabulky k podsíti.
+Tato část představuje playbook Ansible ukázka, která vytvoří virtuální síť a podsíť, a pak přidruží směrovací tabulky k podsíti.
 
 ```yml
 - hosts: localhost

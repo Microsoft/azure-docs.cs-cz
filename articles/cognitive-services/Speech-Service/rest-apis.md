@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: bae4c0dccb0ce336c319fe94936be72ab6fc9a8e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b7f5d4683f0042b95399b86cd4f53c93518c3c56
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230369"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330666"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 
@@ -469,7 +469,10 @@ Toto je seznam podporovaných formátů zvuku, které se odesílají v každé �
 
 ### <a name="request-body"></a>Text požadavku
 
-Text se odešle jako těla protokolu HTTP `POST` požadavku. Může být prostý text (ASCII nebo UTF-8) nebo [Markup Language syntézu řeči](speech-synthesis-markup.md) (SSML) formát (UTF-8). Žádosti ve formátu prostého textu pomocí hlasu Speech Service výchozí. U SSML můžete zadat hlasu.
+Text jednotlivých `POST` žádosti se odešle jako [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md). SSML můžete rozhodnout voice a jazyk řečového vrácené službou převod textu na řeč. Úplný seznam podporovaných hlasů, naleznete v tématu [jazykovou podporu](language-support.md#text-to-speech).
+
+> [!NOTE]
+> Pokud používáte vlastní hlasové, tělo požadavku nelze odesílat jako prostý text (ASCII nebo UTF-8).
 
 ### <a name="sample-request"></a>Ukázková žádost
 

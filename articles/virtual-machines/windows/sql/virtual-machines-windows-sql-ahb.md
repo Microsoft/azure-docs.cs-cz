@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/14/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cd784163047f4fe15fde719ce56aba64eed60dd2
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c516bf9b48164f2ef8dc7fea6fb834bdae00a0d1
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336981"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332145"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak změnit licenční model virtuálního počítače s SQL serverem v Azure
 Tento článek popisuje, jak změnit licenční model pro virtuální počítače s SQL serverem v Azure pomocí nového poskytovatele prostředků SQL - **Microsoft.SqlVirtualMachine**. Existují dva licenční modely pro virtuální počítač (VM), který je hostitelem SQL serveru – platby za využití a používání vlastní licence (BYOL). A teď se pomocí Powershellu nebo rozhraní příkazového řádku Azure, můžete upravit který licenční model virtuálního počítače s SQL využívá. 
@@ -31,12 +31,17 @@ Tento článek popisuje, jak změnit licenční model pro virtuální počítač
 
 Přepínání mezi těmito dvěma modely licence s sebou nese náklady **bez výpadků**, neprovede restartování virtuálního počítače, přidá **bez dalších poplatků** (ve skutečnosti aktivace AHB snižuje náklady) a je **okamžitou platností**. 
 
+## <a name="prerequisites"></a>Požadavky
+Použití zprostředkovatele prostředků virtuálního počítače s SQL se vyžaduje rozšíření SQL IaaS. V důsledku toho pokud chcete pokračovat s využitím poskytovatele prostředků virtuálního počítače s SQL, budete potřebovat následující:
+- [Předplatného Azure](https://azure.microsoft.com/free/).
+- A [virtuálního počítače s SQL serverem](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) s [rozšíření SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) nainstalované. 
 
 ## <a name="register-existing-sql-vm-with-new-resource-provider"></a>Registrace existujícího virtuálního počítače SQL pomocí nového poskytovatele prostředků
 Umožňuje přepnout mezi licenční modely je funkce poskytované nového poskytovatele prostředků SQL VM (Microsoft.SqlVirtualMachine). V tuto chvíli bude moci přepnout váš licenční model, je nejprve potřeba registraci nového poskytovatele do vašeho předplatného a pak zaregistrujte existujícího virtuálního počítače s poskytovatelem prostředků pro nový virtuální počítač s SQL. Využívat poskytovatele prostředků virtuálního počítače s SQL, musíte také nainstalovat rozšíření SQL IaaS. To vám umožní zaregistrovat virtuální pevný disk, který byl nasazen virtuální počítač. Další informace najdete v tématu [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md). 
 
   >[!IMPORTANT]
   > Pokud odstraníte váš prostředek virtuálního počítače s SQL, přejdete zpět na pevně zakódované licence nastavení bitové kopie. 
+  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -85,6 +90,10 @@ Následující fragment kódu přepne licencí platit za použití modelu BYOL (
 #example: $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType="AHUB"
+<# the following code snippet is only necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
 $SqlVm | Set-AzureRmResource -Force 
 ``` 
 
@@ -93,6 +102,10 @@ Následující fragment kódu přepne na platby za využití BYOL model:
 #example: $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType="PAYG"
+<# the following code snippet is only necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
 $SqlVm | Set-AzureRmResource -Force 
 ```
 
@@ -127,6 +140,37 @@ Následující fragment kódu umožňuje zobrazit vaše aktuální model správy
 #example: $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType
+```
+
+## <a name="known-errors"></a>Známých chyb
+
+### <a name="sql-iaas-extension-is-not-installed-on-virtual-machine"></a>Na virtuálním počítači není nainstalovaná rozšíření SQL IaaS
+Rozšíření SQL IaaS je potřebná předpokladem pro registraci virtuálního počítače s SQL serverem s poskytovatelem prostředků pro virtuální počítač s SQL. Pokud se pokusíte zaregistrovat virtuálního počítače s SQL Server před instalací rozšíření SQL IaaS, se setkají následující chybu:
+
+`Sql IaaS Extension is not installed on Virtual Machine: '{0}'. Please make sure it is installed and in running state and try again later.`
+
+Chcete-li vyřešit tento problém, nainstalujte rozšíření SQL IaaS před pokusem o registraci vašeho virtuálního počítače s SQL serverem. 
+
+  > [!NOTE]
+  > Instalace SQL IaaS rozšíření se restartovat službu systému SQL Server a by mělo být provedeno pouze během časového období údržby. Další informace najdete v tématu [instalace rozšíření SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension#installation). 
+
+### <a name="cannot-validate-argument-on-parameter-sku"></a>Nelze ověřit argument u parametru "Sku.
+K této chybě může dojít při pokusu o změnu váš licenční model virtuálního počítače s SQL serverem, při použití Azure Powershellu > 4.0:
+
+`Set-AzureRmResource : Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
+
+Chcete-li vyřešit tuto chybu, Odkomentujte tyto řádky ve výše uvedených fragmentu kódu Powershellu při přepnutí váš licenční model: 
+```PowerShell
+# the following code snippet is necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
+```
+
+Použijte následující kód k ověření verze Azure Powershellu:
+
+```PowerShell
+Get-Module -ListAvailable -Name Azure -Refresh
 ```
 
 ## <a name="next-steps"></a>Další postup

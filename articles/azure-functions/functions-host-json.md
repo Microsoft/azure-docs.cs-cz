@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4da64f01f3b4f39bd10fd3cb1b67910ffca886b8
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413264"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331213"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>referenční materiály k Host.JSON pro Azure Functions 2.x  
 
-> [!div class="op_single_selector" title1="Vyberte verzi programu Azure Functions, který používáte: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Verze 1](functions-host-json-v1.md)
 > * [Verze 2](functions-host-json.md)
 
@@ -88,7 +88,7 @@ Následující ukázka *host.json* soubory mají všechny zadané možnosti.
 
 Následující části tohoto článku popisují jednotlivé vlastnosti nejvyšší úrovně. Všechny jsou volitelné, pokud není uvedeno jinak.
 
-## <a name="aggregator"></a>Agregátor
+## <a name="aggregator"></a>aggregator
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
@@ -109,12 +109,15 @@ Ovládací prvky [vzorkování funkcí ve službě Application Insights](./funct
 }
 ```
 
+> [!NOTE]
+> Vzorkování protokolu může způsobit, že některé spuštění není zobrazí v okně monitorování Application Insights.
+
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|hodnotu isEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
+|isEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
 |maxTelemetryItemsPerSecond|5|Prahová hodnota, na které vzorkování začíná.| 
 
-## <a name="cosmosdb"></a>cosmos DB
+## <a name="cosmosdb"></a>cosmosDb
 
 Konfigurace nastavení najdete v [Cosmos DB triggerů a vazeb](functions-bindings-cosmosdb-v2.md#host-json).
 
@@ -172,7 +175,7 @@ Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/
 |healthCheckInterval|10 sekund|Časový interval mezi stavu na pozadí pravidelně kontroluje. | 
 |healthCheckWindow|2 minut|Použít ve spojení s klouzavého časového období `healthCheckThreshold` nastavení.| 
 |healthCheckThreshold|6|Maximální počet pokusů o kontrolu stavu může selhat, předtím, než je zahájeno recyklace hostitele.| 
-|counterThreshold|0,80|Prahová hodnota, na které čítače výkonu se budou považovat za není v pořádku.| 
+|counterThreshold|0.80|Prahová hodnota, na které čítače výkonu se budou považovat za není v pořádku.| 
 
 ## <a name="http"></a>http
 
@@ -222,7 +225,7 @@ Toto nastavení je podřízeným prvkem [protokolování](#logging). Určuje kon
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|hodnotu isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
+|isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
 
 ## <a name="queues"></a>fronty
 
@@ -232,7 +235,7 @@ Konfigurace nastavení se dají najít v [úložiště fronty aktivačními udá
 
 Konfigurace nastavení najdete v [SendGrid aktivačními událostmi a vazbami](functions-bindings-sendgrid.md#host-json).
 
-## <a name="servicebus"></a>služby Service Bus
+## <a name="servicebus"></a>serviceBus
 
 Konfigurace nastavení najdete v [aktivační události služby Service Bus a vazby](functions-bindings-service-bus.md#host-json).
 

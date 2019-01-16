@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d302fc67225213ad55687797c97c7a2a8a17cc6d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091641"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329503"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service podporované oblasti
 
@@ -46,11 +46,24 @@ Sadou SDK pro řeč je k dispozici v těchto oblastech pro **rozpoznávání ře
 
 ### <a name="intent-recognition"></a>Rozpoznání záměru
 
-**Rozpoznání záměru** složek sadou SDK pro řeč oblasti podporují služba luis. Úplný seznam dostupných oblastí najdete v tématu [publikování oblasti a koncové body – LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)
+Dostupné oblasti pro **rozpoznání záměru** prostřednictvím sadou SDK pro řeč jsou následující:
 
-Dostupné oblasti pro **rozpoznání záměru** prostřednictvím sadou SDK pro řeč jsou uvedeny na [stránku oblasti služby Language Understanding](/azure/cognitive-services/luis/luis-reference-regions).
+ Globální oblast | Oblast | Parametr SDK řeči
+ ------|-------|--------
+ Asie | Východní Asie | `eastasia`
+ Asie | Jihovýchodní Asie | `southeastasia`
+ Austrálie | Austrálie – východ | `australiaeast`
+ Evropa | Severní Evropa | `northeurope`
+ Evropa | Západní Evropa | `westeurope`
+ Severní Amerika | USA – východ | `eastus`
+ Severní Amerika | Východní USA 2 | `eastus2`
+ Severní Amerika | Středojižní USA | `southcentralus`
+ Severní Amerika | Západní střed USA | `westcentralus`
+ Severní Amerika | Západní USA | `westus`
+ Severní Amerika | Západní USA 2 | `westus2`
+ Jižní Amerika | Brazílie – jih | `brazilsouth`
 
-Pro každou oblast publikování uvedené, pomocí zadaných **název oblasti rozhraní API**. Například použít `westus` pro oblast západní USA.
+Toto je podmnožinou publikování oblastí podporovaných službou [služby Language Understanding (LUIS)](/azure/cognitive-services/luis/luis-reference-regions).
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
