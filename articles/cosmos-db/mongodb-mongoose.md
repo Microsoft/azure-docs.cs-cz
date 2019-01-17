@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 34ec22550106f03bc90c95b407af088327b7837f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6cdfa7492a9916cc3e2300ad71e21acfb68e3d30
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036167"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352236"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojit aplikaci Node.js využívající Mongoose ke službě Azure Cosmos DB
 
@@ -183,7 +183,7 @@ Výchozím chováním Mongoose je vytvořit kolekci MongoDB při každém vytvo�
 
 1. Nyní že přejdete na web Azure Portal, zjistíte v Cosmos DB vytvořily dvě kolekce.
 
-    ![Kurz k Node.js – Snímek obrazovky webu Azure Portal se zobrazeným účtem služby Azure Cosmos DB a několika zvýrazněnými názvy kolekcí – databáze Node][mutiple-coll]
+    ![Kurz k Node.js – Snímek obrazovky webu Azure Portal se zobrazeným účtem služby Azure Cosmos DB a několika zvýrazněnými názvy kolekcí – databáze Node][multiple-coll]
 
 1. Ze služby Cosmos DB nakonec načteme data. Vzhledem k tomu, že používáme výchozí provozní model Mongoose, probíhá čtení stejným způsobem jako jakákoli jiná čtení pomocí Mongoose.
 
@@ -313,4 +313,4 @@ Jak vidíte, pracovat s diskriminátory Mongoose je snadné. Takže pokud máte 
 - Prozkoumejte MongoDB [ukázky](mongodb-samples.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[mutiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

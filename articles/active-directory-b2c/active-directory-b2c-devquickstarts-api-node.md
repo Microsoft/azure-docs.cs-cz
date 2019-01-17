@@ -10,15 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5c89673f6154c77a40fb71ae483151998596e7fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117907"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354412"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Zabezpečení webového rozhraní API pomocí Node.js
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+# <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>Zabezpečení webového rozhraní API s použitím prostředí Node.js v Azure Active Directory B2C
 
 S Azure Active Directory (Azure AD) B2C můžete zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth 2.0. Tyto tokeny umožňují ověření přístupu klientských aplikací, které používají Azure AD B2C, do rozhraní API. Tento článek ukazuje, jak vytvořit rozhraní API „seznam úkolů“, které umožňuje uživatelům přidávat úkoly a vypisovat jejich seznam. Webové rozhraní API je zabezpečeno pomocí Azure AD B2C a umožňuje pouze ověřeným uživatelům spravovat své seznamy úkolů.
 
@@ -36,7 +35,7 @@ Chcete-li postupovat podle této ukázky, budete muset:
 3. Nakonfigurovat klientskou aplikaci, aby volala webové rozhraní API „seznam úkolů“.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
-Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta.  Adresář je kontejner pro všechny uživatele, aplikace, skupiny a další.  Pokud ho ještě nemáte, [vytvořte adresář B2C](active-directory-b2c-get-started.md) předtím, než budete pokračovat.
+Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta.  Adresář je kontejner pro všechny uživatele, aplikace, skupiny a další.  Pokud ho ještě nemáte, [vytvořte adresář B2C](tutorial-create-tenant.md) předtím, než budete pokračovat.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 Dále musíte ve svém adresáři B2C vytvořit aplikaci, která poskytne Azure AD informace potřebné k bezpečné komunikaci s vaší aplikací. V tomto případě mají klientská aplikace i webové rozhraní API stejné **ID aplikace**, protože společně tvoří jednu logickou aplikaci. Chcete-li vytvořit aplikaci, postupujte podle [těchto pokynů](active-directory-b2c-app-registration.md). Ujistěte se, že:
@@ -47,17 +46,13 @@ Dále musíte ve svém adresáři B2C vytvořit aplikaci, která poskytne Azure 
 * Poznamenejte si **ID aplikace** přiřazené vaší aplikaci. Tato data budete potřebovat později.
 
 ## <a name="create-your-policies"></a>Vytvořte svoje zásady
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje dvě možnosti pro identitu: registraci a přihlášení. Pro každý typ rozhraní musíte vytvořit zásadu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow).  Když vytváříte tyto tři zásady, nezapomeňte:
+V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje dvě možnosti pro identitu: Zaregistrujte se a přihlaste se. Je potřeba vytvořit jednu zásadu každého typu.  Při vytváření zásady nezapomeňte na následující:
 
 * Zvolit **Zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
 * Zvolit deklarace identity aplikace **Zobrazovaný název** a **ID objektu** v každé zásadě.  Můžete zvolit i další deklarace identity.
 * Po vytvoření každé zásady si poznamenejte její **Název**. Měl by mít předponu `b2c_1_`.  Tyto názvy zásad budete potřebovat později.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-Po vytvoření těchto tří zásad jste připraveni k sestavení aplikace.
-
-Chcete-li se dozvědět, jak fungují zásady v Azure AD B2C, začněte [kurzem Začínáme s webovými aplikacemi .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
+Po vytvoření zásad jste připraveni k sestavení aplikace.
 
 ## <a name="download-the-code"></a>Stáhněte si kód
 Kód k tomuto kurzu [je udržovaný na GitHubu](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). Chcete-li během čtení tohoto návodu rovnou sestavit ukázku, můžete si [stáhnout kostru projektu v souboru ZIP](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Kostru můžete také klonovat:

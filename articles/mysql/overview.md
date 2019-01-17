@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 11/14/2018
-ms.openlocfilehash: 9385ccf61f8cb8de0b3a459ac00c05b32d2630e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 99039c4d6abb8a839886e9d623e92c9fb2c41787
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536878"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353324"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database for MySQL?
 Azure Database for MySQL je služba relačních databází v cloudu Microsoftu založená na [MySQL Community Edition](https://www.mysql.com/products/community/) databázový stroj, verze 5.6 a 5.7. Azure Database for MySQL nabízí:
@@ -47,7 +47,7 @@ Dostupnost služby Azure se smlouvou o úrovní služeb (SLA) dosahuje špičkov
 ## <a name="secure-your-data"></a>Zabezpečení dat
 Databázové služby Azure mají tradici zabezpečení dat, které podporuje Azure Database for MySQL, pomocí funkcí, které omezují přístup, chránit data v klidovém stavu a za provozu a pomáhají monitorovat aktivitu. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
-Služba Azure Database for MySQL používá šifrování úložiště pro data v klidovém stavu. Data včetně záloh se šifrují na disku (s výjimkou dočasných souborů vytvořených databázovým strojem při spouštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+Azure Database for MySQL – služba používá šifrování úložiště pro data v klidovém stavu a je kompatibilní s FIPS 140-2. Data včetně záloh se šifrují na disku (s výjimkou dočasných souborů vytvořených databázovým strojem při spouštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
 Ve výchozím nastavení, služba Azure Database for MySQL je nakonfigurovaný tak, aby vyžadovala [zabezpečení připojení protokolem SSL](./concepts-ssl-connection-security.md) pro data přenášená přes síť. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
 

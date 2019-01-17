@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 0d66c7d714aeac28a46adb31fdb73b4781ac81f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6dd7707c489bbbad7a97a0ec0a76e7c631bd1465
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024718"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359251"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure Cosmos DB (rozhraní SQL API) pomocí služby Azure Data Factory
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Aktuální verze](connector-azure-cosmos-db.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory pro kopírování dat z a do služby Azure Cosmos DB (rozhraní SQL API). Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
 >[!NOTE]
->Tento konektor podporuje pouze kopírování dat do a z rozhraní SQL API služby Cosmos DB. Rozhraní MongoDB API najdete v tématu [konektoru MongoDB API služby Cosmos DB](connector-azure-cosmos-db-mongodb-api.md). Jiné typy rozhraní API nejsou nyní podporovány.
+>Tento konektor podporuje pouze kopírování dat do a z rozhraní SQL API služby Cosmos DB. MongoDB, najdete v tématu [konektor pro rozhraní API služby Azure Cosmos DB pro MongoDB](connector-azure-cosmos-db-mongodb-api.md). Jiné typy rozhraní API nejsou nyní podporovány.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 

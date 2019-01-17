@@ -5,6 +5,7 @@ description: Přehled funkcí Azure Load balancer úrovně Standard
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -13,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 15a67bb5d42028f945cc44a75a7210f132a434c3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2eb2fbb1d184bf58923748278d4989a271adf434
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245156"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352576"
 ---
-# <a name="azure-standard-balancer-overview"></a>Přehled služby Azure balanceru úrovně Standard
+# <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 
 Nástroj Azure Load Balancer umožňuje škálovat svoje aplikace a poskytovat vysokou dostupnost vaší služby. Nástroj pro vyrovnávání zatížení lze použít pro příchozí i odchozí scénáře a poskytuje nízkou latenci a vysokou propustnost a škálování až na úrovni milionů toků pro všechny aplikace TCP a UDP. 
 
 Tento článek se zaměřuje na Load balanceru úrovně Standard.  Obecnější přehled nástroje pro vyrovnávání zatížení Azure, najdete v tématu [Load Balancer – přehled](load-balancer-overview.md) také.
 
-## <a name="what-is-standard-load-balancer"></a>Co je Load balancer úrovně Standard?
+## <a name="what-is-standard-load-balancer"></a>Co je Standard Load Balancer?
 
 Load balancer úrovně Standard je nový produkt nástroje pro vyrovnávání zatížení pro všechny protokoly TCP a UDP aplikací pomocí funkce služby rozšíření a podrobnější nastavení přes Load balancer úrovně Basic.  I když existují mnoho podobností, je důležité se seznámit s rozdíly, jak je uvedeno v tomto článku.
 

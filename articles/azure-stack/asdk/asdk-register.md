@@ -11,18 +11,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 00c4d750d0617d36ab476719ce31c8038065511c
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d8c4d28d6f5fdcc66e512375448f4b1d5fc9b8ed
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807206"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359166"
 ---
 # <a name="azure-stack-registration"></a>Registrace Azure Stack
-Instalaci sady Azure Stack Development Kit (ASDK) můžete zaregistrovat pomocí Azure pro stažení položek z marketplace z Azure a jak nastavit obchodní data hlášení zpět společnosti Microsoft. Chcete-li podporovat všechny funkce služby Azure Stack, včetně syndikace marketplace je nutná registrace. Registrace se doporučuje, protože umožňuje testovat důležité funkce služby Azure Stack, jako jsou syndikace marketplace a generování sestav o využívání. Po dokončení registrace Azure Stack, využití se oznamuje službě Azure commerce. Zobrazí se v rámci předplatného, které jste použili k registraci. Však uživatelé ASDK neúčtují se za jakékoliv využití, které vykazují.
+Instalaci sady Azure Stack Development Kit (ASDK) můžete zaregistrovat pomocí Azure pro stažení položek z marketplace z Azure a jak nastavit obchodní data hlášení zpět společnosti Microsoft. Chcete-li podporovat všechny funkce služby Azure Stack, včetně syndikace marketplace je nutná registrace. Umožňuje otestovat důležité funkce služby Azure Stack, jako jsou syndikace marketplace a generování sestav o využívání, je nutná registrace. Po dokončení registrace Azure Stack, využití se oznamuje službě Azure commerce. Zobrazí se v rámci předplatného, které jste použili k registraci. Však uživatelé ASDK neúčtují se za jakékoliv využití, které vykazují.
 
 Pokud vaše ASDK nezaregistrujete, může se zobrazit **vyžadována aktivace** výstražné upozornění, s výzvou k registraci Azure Stack Development Kit. Jde o očekávané chování.
 
@@ -37,6 +37,8 @@ $ExecutionContext.SessionState.LanguageMode
 
 Zkontrolujte výstup vrací **FullLanguageMode**. Pokud se vrátí další režim jazyka, registrace bude muset být spuštěn na jiném počítači nebo režim jazyka muset nastavit na **FullLanguageMode** než budete pokračovat.
 
+Účet Azure AD pro registraci potřeby umožňuje mít přístup k předplatnému Azure a máte oprávnění k vytváření aplikací identity a instanční objekty v adresáři spojený s tímto předplatným. Doporučujeme registraci Azure Stack v Azure pomocí správy nejnižších možných oprávnění [vytvořit účet služby pro registraci](..\azure-stack-registration-role.md) místo použití přihlašovací údaje globálního správce.
+
 ## <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 Postupujte podle těchto kroků k registraci ASDK ve službě Azure.
 
@@ -45,7 +47,7 @@ Postupujte podle těchto kroků k registraci ASDK ve službě Azure.
 
 1. Otevřete konzolu Powershellu jako správce.  
 
-2. Spusťte následující příkazy Powershellu registraci ASDK instalace v Azure. Musíte se přihlásit k vašemu předplatnému Azure a místní instalace ASDK. Pokud nemáte předplatné Azure, ale můžete [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure Stack se neúčtují žádné poplatky na vaše předplatné Azure.<br><br>Pokud spustíte skript registrace na více než jednu instanci služby Azure Stack pomocí stejného ID předplatného Azure, nastavit jedinečný název pro registraci při spuštění **Set-AzsRegistration** rutiny. **RegistrationName** parametr má výchozí hodnotu **AzureStackRegistration**. Nicméně pokud použijete stejný název ve více než jednu instanci služby Azure Stack, skript se nezdaří.
+2. Spusťte následující příkazy Powershellu registraci ASDK instalace v Azure. Musíte se přihlásit k vašemu předplatnému Azure a místní instalace ASDK. Pokud nemáte předplatné Azure, ale můžete [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure Stack se neúčtují žádné poplatky na vaše předplatné Azure.<br><br>Nastavit jedinečný název pro registraci při spuštění **Set-AzsRegistration** rutiny. **RegistrationName** parametr má výchozí hodnotu **AzureStackRegistration**. Nicméně pokud použijete stejný název ve více než jednu instanci služby Azure Stack, skript se nezdaří.
 
     ```PowerShell  
     # Add the Azure cloud subscription environment name. 

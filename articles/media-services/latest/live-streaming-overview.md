@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/26/2018
+ms.date: 01/15/2019
 ms.author: juliako
-ms.openlocfilehash: 3a2b3752926a3a4391ae9479ba636694533c97a8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788204"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354174"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -29,6 +29,22 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 - Komponenty ve službě Media Services, která umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a vysílat živě přenášená akce vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
 Tento článek poskytuje podrobný přehled najdete pokyny a zahrnuje diagramy hlavní součásti účastnící se živé streamování pomocí služby Media Services.
+
+## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
+
+Tady jsou kroky pro pracovní postup živého streamování:
+
+1. Vytvoření **živá událost**.
+2. Vytvořte nový **Asset** objektu.
+3. Vytvoření **Live výstup** a používat název assetu, kterou jste vytvořili.
+4. Vytvoření **streamování zásad** a **klíč obsahu** Pokud máte v úmyslu šifrování obsahu pomocí DRM.
+5. Pokud nepoužíváte DRM, vytvořte **Lokátor streamování** pomocí integrované **streamování zásad** typy.
+6. Seznam cest na **streamování zásad** získat zpět adresy URL používat (Toto jsou deterministické).
+7. Získání názvu hostitele pro **koncový bod streamování** chcete z datový proud stream (ujistěte se, že je spuštěný koncový bod streamování). 
+8. Adresu URL v kroku 6 v kombinaci s názvem hostitele v kroku 7 zobrazíte úplnou adresu URL.
+9. Pokud budete chtít zastavit, aby vaše **živá událost** viditelná, musíte zastavit streamování události tak, že odstraníte **Lokátor streamování**.
+
+Další informace najdete v tématu [živého streamování kurzu](stream-live-tutorial-with-api.md) , který je založen na [Live .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) vzorku.
 
 ## <a name="overview-of-main-components"></a>Přehled hlavních komponent
 
@@ -89,9 +105,10 @@ V následujícím článku obsahuje tabulku, která obsahuje porovnání funkcí
 
 A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) vám umožňuje řídit vlastnosti odchozí živého datového proudu, například kolik datového proudu je zaznamenán (např. kapacita cloudového DVR) a zda prohlížeče můžete spustit sledování živého datového proudu. Vztah mezi **Livestream** a jeho **LiveOutput**vztah s je podobná tradičním televizní vysílání, kterým kanál (**Livestream**) představuje nepřetržitý datový proud videa a nahrávání (**LiveOutput**) působí na určité časové segmentů (například večer novinky od 18:30:00 do 19:00:00). Můžete zaznamenat televizoru pomocí záznamu pro digitální Video (DVR) – ekvivalentní funkce v LiveEvents se spravuje přes vlastnost ArchiveWindowLength. Je formátu ISO 8601 časový interval doba trvání (například PTHH:MM:SS), která určuje kapacitu DVR a můžete nastavit na minimálně 3 minuty, které maximálně 25 hodin.
 
-
 > [!NOTE]
-> **LiveOutput**s spuštění při vytvoření a zastavení při odstranění. Když odstraníte **LiveOutput**, nejsou odstranění podkladové **Asset** a obsahu v prostředku.  
+> **LiveOutput**s spuštění při vytvoření a zastavení při odstranění. Když odstraníte **LiveOutput**, nejsou odstranění podkladové **Asset** a obsahu v prostředku. 
+>
+> Pokud jste publikovali **Lokátor streamování**s prostředků pro **LiveOutput**, událost (až do délky okna DVR) bude dál zobrazit až koncový čas **Lokátor streamování**  nebo do při odstranění Lokátor, podle toho, co nastane dřív.   
 
 Další informace najdete v tématu [použití cloudového DVR](live-event-cloud-dvr.md).
 
@@ -110,21 +127,6 @@ Podrobné informace najdete v tématu [stavy a fakturace](live-event-states-bill
 ## <a name="latency"></a>Latence
 
 Podrobné informace o latenci LiveEvents najdete v tématu [latence](live-event-latency.md).
-
-## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
-
-Tady jsou kroky pro pracovní postup živého streamování:
-
-1. Vytvoření Livestream.
-2. Vytvořte nový objekt Asset.
-3. Vytvořte LiveOutput a použijte název assetu, kterou jste vytvořili.
-4. Pokud máte v úmyslu šifrování obsahu pomocí DRM vytvořte klíč obsahu a streamování zásad.
-5. Pokud není v rámci předdefinovaných typů zásad streamování pomocí DRM, vytvořte Lokátor streamování.
-6. Seznam cest na streamování zásadám a získat zpět adresy URL používat (Toto jsou deterministické).
-7. Získáte název hostitele koncového bodu streamování chcete z datového proudu. 
-8. Adresu URL v kroku 6 v kombinaci s názvem hostitele v kroku 7 zobrazíte úplnou adresu URL.
-
-Další informace najdete v tématu [živého streamování kurzu](stream-live-tutorial-with-api.md) , který je založen na [Live .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) vzorku.
 
 ## <a name="next-steps"></a>Další postup
 

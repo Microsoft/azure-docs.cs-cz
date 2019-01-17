@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/19/2018
-ms.openlocfilehash: 21eb28611c1e40695356d502c262c23013591986
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: b53c26f265cc5d944c8e15ae5bf436e8f71dcc2f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117363"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352729"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Rychlý start: Ingestování dat z Kafka do Průzkumníku dat Azure
  
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí zpracování (načítání dat) z platformy Kafka. Kafka je distribuovaná streamovací platforma, která umožňuje vytváření v reálném čase streamovaných datových kanálů, které spolehlivě přesunovat data mezi systémy nebo aplikace. 
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí zpracování (načítání dat) z platformy Kafka. Kafka je distribuovaná streamovací platforma, která umožňuje vytváření v reálném čase streamovaných datových kanálů, které spolehlivě přesunovat data mezi systémy nebo aplikace.
  
 ## <a name="prerequisites"></a>Požadavky
  
@@ -30,9 +30,11 @@ Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání d
 * [Visual Studio 2017 verze 15.3.2 nebo vyšší](https://www.visualstudio.com/vs/) ke spuštění ukázkové aplikace
  
 ## <a name="kafka-connector-setup"></a>Instalace konektoru Kafka
-Připojit Kafka je nástroj pro scalably a spolehlivě streamovaná data mezi Apache Kafka a dalšími systémy. To zjednodušuje k rychlému definování konektorů, které přesun velkých sad dat do a z Kafka. Jímka Kafka ADX slouží jako konektor z platformy Kafka.
+
+Připojit Kafka je nástroj pro škálovatelných a spolehlivých streamování dat mezi Apache Kafka a dalšími systémy. To zjednodušuje k rychlému definování konektorů, které přesun velkých sad dat do a z Kafka. Jímka Kafka ADX slouží jako konektor z platformy Kafka.
  
-### <a name="bundle"></a>Sady prostředků 
+### <a name="bundle"></a>Sady prostředků
+
 Můžete načíst Kafka `.jar` jako modul plug-in, který bude sloužit jako vlastní konektor. K vytvoření, `.jar`, budeme klonování kódu místně a sestavení pomocí nástroje Maven. 
 
 #### <a name="clone"></a>Klon
@@ -41,7 +43,7 @@ Můžete načíst Kafka `.jar` jako modul plug-in, který bude sloužit jako vla
 git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
- 
+
 #### <a name="build"></a>Sestavení
 
 Místně sestavovat pomocí Maven k vytvoření `.jar` dokončení se závislostmi.
@@ -55,9 +57,9 @@ V kořenovém adresáři *kafka jímky azure kusto*, spusťte:
 ```bash
 mvn clean compile assembly:single
 ```
- 
+
 ### <a name="deploy"></a>Nasazení 
- 
+
 Načtení modulu plug-in do Kafka. Příklad nasazení pomocí dockeru najdete tady [kafka jímky azure kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  
 
@@ -112,13 +114,16 @@ Vytvoření tabulky v ADX, ke kterému Kafka může odesílat data. Vytvoření 
 Teď, když Kafka cluster je připojený k ADX, použijte [ukázkovou aplikaci](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) jste si stáhli generují data.
 
 ### <a name="clone"></a>Klon
+
 Naklonujte ukázkovou aplikaci místně:
 
 ```cmd
 git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
 cd ./azure-kusto-samples-dotnet/kafka/
 ```
+
 ### <a name="run-the-app"></a>Spuštění aplikace
+
 1. Otevřete řešení ukázkové aplikace v sadě Visual Studio.
 
 1. V `Program.cs` soubor, aktualizovat `connectionString` konstanty pro připojovací řetězec systému Kafka.
@@ -127,11 +132,11 @@ cd ./azure-kusto-samples-dotnet/kafka/
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. Sestavte a spusťte aplikaci. Aplikace odešle zprávy do clusteru Kafka a vytiskne na jeho stav každých deset sekund.
+1. Sestavte a spusťte aplikaci. Aplikace odešle zprávy do clusteru Kafka a vytiskne na jeho stav každých 10 sekund.
 
 1. Po odeslání několik zpráv aplikace přesune k dalšímu kroku.
  
-## <a name="query-and-review-the-data"></a>Dotazování a zkontrolujte data 
+## <a name="query-and-review-the-data"></a>Dotazování a zkontrolujte data
 
 1. Aby nedošlo k žádným chybám při příjmu:
 
@@ -159,4 +164,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
 ## <a name="next-steps"></a>Další postup
  
 > [!div class="nextstepaction"]
-> [Rychlý start: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)

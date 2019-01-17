@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a034e41f5b12ffb8f043f14d90284617316f18d2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0e3022296dd1a3e1221bb44c94df787660df2a70
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723038"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359880"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Přístup k datům cloudu v poznámkovém bloku
 
@@ -69,7 +69,7 @@ Poznámkový blok ukázka ukazuje práci s tabulkami a objekty BLOB, jak povolit
 Azure Cosmos DB zajišťující NoSQL s dvojicí plně indexovaných dokumentů JSON). Následující články poskytují celou řadou způsobů, jak pracovat s Cosmos DB z Pythonu:
 
 - [Sestavení rozhraní SQL API aplikací s využitím Pythonu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Sestavení aplikace Flask pomocí služby Azure Cosmos DB pro rozhraní MongoDB API](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [Sestavení aplikace Flask pomocí rozhraní API služby Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [Vytvoření databáze grafů pomocí Pythonu a rozhraní Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [Sestavení aplikace Cassandra pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [Sestavení aplikace Table API pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
@@ -81,11 +81,11 @@ Při práci se službou Cosmos DB, můžete použít [azure-cosmos DB table](htt
 Azure nabízí celou řadu jiných typů databází, které můžete použít. Následující články poskytují pokyny pro přístup k těmto databázím z Pythonu:
 
 - [Azure Database for PostgreSQL: Použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Rychlý start: Použití Azure Redis Cache s Pythonem](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [Rychlé zprovoznění: Použití Azure Redis Cache s Pythonem](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
 - [Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Průvodce kopírováním pro službu Azure Data Factory](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>Další postup
 
-- [Jak: Práce s datovými soubory projektu](work-with-project-data-files.md)
+- [Postup: Práce s datovými soubory projektu](work-with-project-data-files.md)

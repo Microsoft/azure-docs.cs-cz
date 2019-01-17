@@ -1,38 +1,30 @@
 ---
-title: Hostování více webů ve službě Azure Application Gateway | Dokumentace Microsoftu
-description: Tato stránka poskytuje přehled podpory služby Application Gateway pro více webů.
-documentationcenter: na
+title: Hostování více webů ve službě Azure Application Gateway
+description: Tato stránka poskytuje přehled podpory více webů Azure Application Gateway.
 services: application-gateway
-author: amsriva
-manager: rossort
-editor: ''
-ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2017
+ms.date: 1/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 645f68d836babf11f32fc391e6dacc9430f0070c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 04aca43e7220b0d5f644ca4f03db3a7442972728
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22704757"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358464"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
-Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci ve stejné instanci služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii vašich nasazení tím, že přidáte až 20 webů do jedné služby Application Gateway. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com a fabrikam.com ze dvou fondů back-endového serveru s názvy FondServeruContoso a FondServeruFabrikam.
+Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci ve stejné instanci služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii vašich nasazení tak, že přidáte až 100 webů do jedné služby application gateway. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com a fabrikam.com ze dvou fondů back-endového serveru s názvy FondServeruContoso a FondServeruFabrikam.
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
 
 > [!IMPORTANT]
 > Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
 
-Požadavky na http://contoso.com jsou směrovány na FondServeruContoso a požadavky na http://fabrikam.com jsou směrovány na FondServeruFabrikam.
+Požadavky na adresu http://contoso.com se směrují na ContosoServerPool a požadavky na adresu http://fabrikam.com na FabrikamServerPool.
 
-Podobně lze ve stejném nasazení služby Application Gateway hostovat dvě poddomény stejné nadřazené domény. Příklady použití poddomén mohou zahrnovat http://blog.contoso.com a http://app.contoso.com hostované v jednom nasazení služby Application Gateway.
+Podobně lze ve stejném nasazení služby Application Gateway hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy http://blog.contoso.com a http://app.contoso.com hostované v jednom nasazení aplikační brány.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hlavičky hostitele a Identifikace názvu serveru (SNI)
 
@@ -127,7 +119,6 @@ V pravidle směrování není požadována žádná změna. Stále byste měli v
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po získání informací o hostování více webů přejděte k tématu [Vytvoření služby Application Gateway používající hostování více webů](application-gateway-create-multisite-azureresourcemanager-powershell.md) a vytvořte službu Application Gateway se schopností podporovat více než jednu webovou aplikaci.
-

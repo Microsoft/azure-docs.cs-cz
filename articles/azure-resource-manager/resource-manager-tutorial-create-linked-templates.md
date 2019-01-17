@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/07/2018
+ms.date: 01/16/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fd2c5c0aab9b9b9f2977b3a38b9e08c51e98d451
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9a63344df4aeea16aa89924b287a0dacafda4046
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973481"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352372"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Kurz: Vytvoření propojených šablon Azure Resource Manageru
 
@@ -158,7 +158,7 @@ Propojená šablona vytvoří účet úložiště. Propojené šablony je témě
 
 ## <a name="upload-the-linked-template"></a>Odeslání propojené šablony
 
-Hlavní šablony a propojené šablony musí být přístupné ze kterého spouštíte nasazení. V tomto kurzu použijete metody nasazení Cloud shell jako jste použili v [kurzu: Vytváření šablon Azure Resource Manageru s závislé prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Hlavní šablona (azuredeploy.json) je odeslána do prostředí. Propojená šablona (linkedTemplate.json) musí být někde bezpečně sdílet. Následující skript Powershellu vytvoří účet služby Azure Storage, nahraje šablona do účtu úložiště a poté vygeneruje token SAS udělit omezený přístup k souboru šablony. Jednoduše najdete v tomto kurzu stáhne skript dokončené propojené šablony ze sdíleného umístění. Pokud chcete použít propojené šablony vytvoříte, můžete použít [Cloud shell](https://shell.azure.com) odeslání propojené šablony, a následně upravit skript, který chcete použít vlastní propojenou šablonu.
+Hlavní šablony a propojené šablony musí být přístupné ze kterého spouštíte nasazení. V tomto kurzu použijete metody nasazení Cloud shell jako jste použili v [kurzu: Vytváření šablon Azure Resource Manageru s závislé prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Hlavní šablona (azuredeploy.json) je odeslána do prostředí. Propojená šablona (linkedTemplate.json) musí být někde bezpečně sdílet. Následující skript Powershellu vytvoří účet služby Azure Storage, nahraje šablona do účtu úložiště a poté vygeneruje token SAS udělit omezený přístup k souboru šablony. Pro zjednodušení tento kurz, stáhne skript dokončené propojené šablony ze sdíleného umístění. Pokud chcete použít propojené šablony vytvoříte, můžete použít [Cloud shell](https://shell.azure.com) odeslání propojené šablony, a následně upravit skript, který chcete použít vlastní propojenou šablonu.
 
 > [!NOTE]
 > Skript omezuje token SAS pro použití v rámci osm hodin. Pokud potřebujete více času k dokončení tohoto kurzu, zvýšit čas vypršení platnosti.

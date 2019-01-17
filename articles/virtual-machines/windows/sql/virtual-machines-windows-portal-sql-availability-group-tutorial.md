@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 1605fdc5e49d2b8e95a2876dea8dff378ee33e2e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232273"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359710"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
 
@@ -41,16 +41,19 @@ V následující tabulce jsou uvedeny požadavky, které je potřeba dokončit p
 
 |  |Požadavek |Popis |
 |----- |----- |----- |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Dva servery SQL | – Ve skupině dostupnosti Azure <br/> – V jedné doméně <br/> -S nainstalovanou funkcí Clustering převzetí služeb při selhání |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Two SQL Servers | – Ve skupině dostupnosti Azure <br/> – V jedné doméně <br/> -S nainstalovanou funkcí Clustering převzetí služeb při selhání |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Sdílení souborů pro cluster s kopií clusteru |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet služby SQL Server | Účet domény |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet služby agenta systému SQL Server | Účet domény |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otevřete porty brány firewall | – SQL Server: **1433** pro výchozí instanci <br/> -Koncovým bodem zrcadlení databáze: **5022** nebo jakýkoli dostupný port <br/> – Sonda stavu IP adresu nástroje pro vyrovnávání zatížení dostupnost skupiny: **59999** nebo jakýkoli dostupný port <br/> – Nástroje pro vyrovnávání zatížení core, IP sondu stavu adresy clusteru: **58888** nebo jakýkoli dostupný port |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otevřete porty brány firewall | - SQL Server: **1433** pro výchozí instanci <br/> -Koncovým bodem zrcadlení databáze: **5022** nebo jakýkoli dostupný port <br/> – Sonda stavu IP adresu nástroje pro vyrovnávání zatížení dostupnost skupiny: **59999** nebo jakýkoli dostupný port <br/> – Nástroje pro vyrovnávání zatížení core, IP sondu stavu adresy clusteru: **58888** nebo jakýkoli dostupný port |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Přidání funkce Clustering převzetí služeb při selhání | Tato funkce vyžaduje oba servery SQL |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet domény pro instalaci | – Místní správce na všech serverech SQL <br/> – Správce sysadmin systému SQL Server pevné role serveru pro každou instanci systému SQL Server  |
 
 
 Před zahájením tohoto kurzu, budete muset [splnit požadavky pro vytváření skupin dostupnosti Always On v Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md). Pokud tyto požadavky jsou již dokončen, můžete přejít na [vytvořit Cluster](#CreateCluster).
+
+  >[!NOTE]
+  > Celá řada kroků v tomto kurzu je možné automatizovat pomocí šablony Azure Quickstart. Další informace najdete v tématu [vytvoření služby WSFC, naslouchací proces a nakonfigurujte ILB pro skupiny dostupnosti Always On na virtuálním počítači SQL serveru pomocí šablon Azure Quickstart](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: abb77f59e49a98c1195dcd2e7b622b2b8e3fd7b8
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 151f6fa7880db03909c522147d9c1f74508f51a1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087272"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351845"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Nasazení clusteru Service Fabric v Azure stacku
 
@@ -118,7 +118,7 @@ Pomocí následujícího skriptu vytvořte trezor klíčů a přidat *certifiká
    ``` 
 
 
-Další informace najdete v tématu [Spravovat trezor klíčů ve službě Azure Stack s prostředím PowerShell](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-kv-manage-powershell).
+Další informace najdete v tématu [Spravovat trezor klíčů ve službě Azure Stack s prostředím PowerShell](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-key-vault-manage-powershell).
 
 ## <a name="deploy-the-marketplace-item"></a>Nasadit položky Marketplace
 
@@ -138,10 +138,10 @@ Další informace najdete v tématu [Spravovat trezor klíčů ve službě Azure
 
    Pro *kryptografický otisk klientského certifikátu správce*, zadejte kryptografický otisk *správce klientský certifikát*. (Viz [požadavky](#prerequisites).)
    
-   - Key Vault zdroj: Zadejte celý *id trezoru klíčů* řetězec ve výsledcích skriptu. 
-   - Adresa URL certifikátu clusteru: Zadejte celou adresu URL z *tajný klíč Id* ve výsledcích skriptu. 
+   - Zdrojový trezor klíčů:  Zadejte celé *id trezoru klíčů* řetězec ve výsledcích skriptu. 
+   - Adresa URL certifikátu clusteru: Zadejte úplnou adresu URL z *tajný klíč Id* ve výsledcích skriptu. 
    - Kryptografický otisk certifikátu clusteru: Zadejte *kryptografický otisk certifikátu clusteru* ve výsledcích skriptu.
-   - Správce klienta kryptografické otisky certifikátu: Zadejte *kryptografický otisk klientského certifikátu správce* vytvořené v rámci požadavků. 
+   - Klient pro správu kryptografické otisky certifikátu: Zadejte *kryptografický otisk klientského certifikátu správce* vytvořené v rámci požadavků. 
 
    ![Výstup skriptu](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 

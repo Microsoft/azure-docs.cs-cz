@@ -6,36 +6,37 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: CLI
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 01/15/2019
 ms.author: mabrigg
-ms.openlocfilehash: ba8bed71d24c1b4ed71611b5cd2dfeb7800408b8
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 1da23337b6a23f713eaadefbc4cee4aca07f56de
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304019"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351544"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Certifikát kořenové certifikační Autority můžete poskytnout uživatelům Azure stacku, tak, aby se používat rozhraní příkazového řádku Azure na svých počítačích vývojářů. Uživatelé budou potřebovat certifikát ke správě prostředků prostřednictvím rozhraní příkazového řádku.
+Certifikát kořenové certifikační Autority můžete poskytnout uživatelům Azure stacku, tak, aby se používat rozhraní příkazového řádku Azure na svých počítačích vývojářů. Uživatelé potřebují certifikát, který chcete spravovat prostředky přes rozhraní příkazového řádku.
 
-* **Kořenový certifikát certifikační Autority Azure stacku** je vyžadována, pokud uživatelé používají rozhraní příkazového řádku z pracovní stanice mimo Azure Stack Development Kit.  
+ - **Kořenový certifikát certifikační Autority Azure stacku** je vyžadována, pokud uživatelé používají rozhraní příkazového řádku z pracovní stanice mimo Azure Stack Development Kit.  
 
-* **Koncový bod virtuálního počítače aliasy** poskytuje alias, jako je "UbuntuLTS" nebo "Win2012Datacenter,", který odkazuje vydavatel image, nabídky, SKU a verze jako jediný parametr při nasazování virtuálních počítačů.  
+ - **Koncový bod virtuálního počítače aliasy** poskytuje alias, jako je "UbuntuLTS" nebo "Win2012Datacenter,", který odkazuje vydavatel image, nabídky, SKU a verze jako jediný parametr při nasazování virtuálních počítačů.  
 
 Následující části popisují, jak získat tyto hodnoty.
 
 ## <a name="export-the-azure-stack-ca-root-certificate"></a>Exportujte certifikát kořenové certifikační Autority Azure stacku
 
-Kořenový certifikát certifikační Autority Azure Stack najdete na vývojové sadě a virtuálnímu počítači tenanta, na kterém běží ve vývojovém prostředí sady. Export kořenového certifikátu služby Azure Stack ve formátu PEM, přihlaste se k development kit nebo tomuto virtuálnímu počítači a spusťte následující skript:
+Pokud použijete integrovaný systém, není nutné exportovat certifikát kořenové certifikační Autority. Je potřeba vyexportovat kořenový certifikát certifikační Autority na Azure Stack Development Kit (ASDK).
+
+Export kořenového certifikátu ASDK ve formátu PEM, přihlaste se a spusťte následující skript:
 
 ```powershell
 $label = "<Your Azure Stack CA root certificate name>"
@@ -56,15 +57,15 @@ certutil -encode root.cer root.pem
 
 ## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Nastavení koncového bodu virtuálního počítače aliasy
 
-Operátoři Azure stacku byste nastavit veřejně přístupném koncovém bodu, který je hostitelem soubor alias virtuálního počítače. Soubor alias virtuálního počítače je soubor JSON, který poskytuje běžný název pro image. Tento název je následně zadat při nasazení virtuálního počítače jako parametr příkazového řádku Azure.  
+Operátoři Azure stacku byste nastavit veřejně přístupném koncovém bodu, který je hostitelem soubor alias virtuálního počítače. Soubor alias virtuálního počítače je soubor JSON, který poskytuje běžný název pro image. Název budete používat při nasazování virtuálního počítače jako parametr příkazového řádku Azure.  
 
-Předtím, než přidáte položku do souboru alias, ujistěte se, že jste [stažení Image z Azure Marketplace](azure-stack-download-azure-marketplace-item.md), nebo mít [publikovat vlastní image](azure-stack-add-vm-image.md). Pokud publikujete vlastní image, poznamenejte si informace vydavatele, nabídky, SKU a verze, které jste zadali během publikování. Pokud se jedná image z marketplace, můžete zobrazit informace s použitím ```Get-AzureVMImage``` rutiny.  
+Předtím, než přidáte položku do souboru alias, ujistěte se, že jste [stažení Image z Azure Marketplace](azure-stack-download-azure-marketplace-item.md) nebo mít [publikovat vlastní image](azure-stack-add-vm-image.md). Pokud publikujete vlastní image, poznamenejte si informace vydavatele, nabídky, SKU a verze, které jste zadali během publikování. Pokud se jedná image z marketplace, můžete zobrazit informace s použitím ```Get-AzureVMImage``` rutiny.  
 
 A [ukázkový soubor alias](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) běžné imagi aliasů je k dispozici. Který můžete použít jako výchozí bod. Hostování tento soubor do místa, kde vaši klienti rozhraní příkazového řádku k němu přistoupit. Jedním ze způsobů je hostitelem souboru v účtu blob storage a sdílejte její adresu URL s uživateli:
 
 1. Stáhněte si [ukázkový soubor](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) z Githubu.
-2. Vytvořte nový účet úložiště ve službě Azure Stack. Po dokončení, který vytvoříte nový kontejner objektů blob. Nastavit zásady přístupu k "public".  
-3. Nahrajte soubor JSON do nového kontejneru. Po dokončení, který se zobrazí adresa URL objektu blob výběrem názvu objektu blob a pak vyberete adresu URL z vlastností objektu blob.
+2. Vytvoření účtu úložiště ve službě Azure Stack. Po dokončení, vytvořte kontejner objektů blob. Nastavit zásady přístupu k "public".  
+3. Nahrajte soubor JSON do nového kontejneru. Po dokončení, který se zobrazí adresa URL objektu blob. Vyberte název objektu blob a pak vyberete adresu URL z vlastností objektu blob.
 
 ## <a name="next-steps"></a>Další postup
 

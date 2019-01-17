@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: jegeib
-ms.openlocfilehash: 8b0700e76bbcc0913b376e607f706f540b1df2bb
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4e08491ae898fef16af1e199a76a4c07a6c226b9
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307071"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358656"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Nástroj pro modelování hrozeb Microsoftu
 
@@ -33,12 +33,12 @@ Tento nástroj umožňuje všem uživatelům:
 
 Tady jsou některé funkce nástroje a inovace, jenom na pár:
 
-* **Automatizace:** pokyny a zpětnou vazbu v kreslení modelu
-* **STRIDE jeden Element:** na základě analýzy hrozeb a jejich zmírnění
-* **Vytváření sestav:** aktivity související se zabezpečením a testování ve fázi ověření
-* **Jedinečné metodologie:** umožňuje uživatelům lepší vizualizace a pochopení hrozby
+* **Automatizace:** Pokyny a zpětnou vazbu v kreslení modelu
+* **STRIDE jeden Element:** S asistencí analýzy hrozeb a jejich zmírnění
+* **Vytváření sestav:** Aktivity související se zabezpečením a testování ve fázi ověření
+* **Jedinečné metodologie:** Umožňuje uživatelům lepší vizualizace a pochopení hrozby
 * **Navržené pro vývojáře a na střed na Software:** se na prostředky nebo útočníci na mnoho přístupů. Můžeme se na software. Při sestavování u aktivit, které všem vývojářům a architektům znají – například vykreslování obrázků pro architekturu softwaru
-* **Zaměřuje na návrh analýzy:** termín "modelování hrozeb" mohou odkazovat požadavky nebo technika analýzy návrhu. V některých případech odkazuje na komplexní kombinace dvou. Microsoft SDL přístup k modelování hrozeb je technika návrhu zaměřené analýzy
+* **Zaměřuje na návrh analýzy:** Termín "modelování hrozeb" mohou odkazovat na požadavky nebo technika analýzy návrhu. V některých případech odkazuje na komplexní kombinace dvou. Microsoft SDL přístup k modelování hrozeb je technika návrhu zaměřené analýzy
 
 ## <a name="next-steps"></a>Další postup
 
@@ -46,7 +46,7 @@ Následující tabulka obsahuje důležité odkazy, které vám pomůžou začí
 
 | Krok  | Popis                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
-| **1** | [Stáhněte si nástroje Modelování ohrožení](https://aka.ms/tmtpreview)                                |
+| **1** | [Stáhněte si nástroje Modelování ohrožení](https://aka.ms/threatmodelingtool)                                |
 | **2** | [Přečtěte si, že naše – Příručka Začínáme](./azure-security-threat-modeling-tool-getting-started.md)    |
 | **3** | [Seznamte se s funkcemi](./azure-security-threat-modeling-tool-feature-overview.md)   |
 | **4** | [Další informace o kategoriích generované před internetovými útoky](./azure-security-threat-modeling-tool-threats.md)   |

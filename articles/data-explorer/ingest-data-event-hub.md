@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b33a646c52ca5ce85e0525b04e9be5009cc6f90d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064691"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352921"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure
 
@@ -189,7 +189,7 @@ Když teď aplikace generuje data, můžete zobrazit tok těchto dat z centra ud
     ![Sada výsledků dotazu na zprávy](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > ADX má zásady agregace (dávkování) pro příjem dat, určená k optimalizaci procesu ingestování. U nakonfigurované na 5 minut, může docházet k latenci.
+    > Průzkumník služby Azure Data má zásady agregace (dávkování) pro příjem dat, určená k optimalizaci procesu ingestování. U nakonfigurované na 5 minut, může docházet k latenci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -208,4 +208,4 @@ Pokud už centrum událostí nebudete chtít dál používat, vyčistěte **test
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)

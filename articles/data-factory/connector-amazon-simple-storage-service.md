@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 8a0808c0e82ee31a5fd684d449fa30cd331d3dba
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: ab7c0558720ae47357d2aca04b934b8176c82cc2
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063858"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352831"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon Simple Storage Service pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ Konkrétně tento konektor Amazon S3 podporuje kopírování souborů jako-je ne
 Zkopírujte data z Amazonu S3, ujistěte se, že máte následující oprávnění:
 
 - **Pro spuštění aktivity kopírování:**: `s3:GetObject` a `s3:GetObjectVersion` pro operace objektu Amazon S3.
-- **Pro grafické uživatelské rozhraní Data Factory pro vytváření**: `s3:ListAllMyBuckets` a `s3:ListBucket` / `s3:GetBucketLocation` pro Amazon S3 sady Operations se navíc vyžaduje oprávnění, pro cesty k souborům operací, jako jsou test připojení a procházení a přejděte. Pokud nechcete, aby pro udělení těchto oprávnění, přeskočte test připojení na stránce pro vytvoření propojené služby a speicify ji přímo v nastavení datové sady.
+- **Pro grafické uživatelské rozhraní Data Factory pro vytváření**: `s3:ListAllMyBuckets` a `s3:ListBucket` / `s3:GetBucketLocation` pro Amazon S3 sady Operations se navíc vyžaduje oprávnění, pro cesty k souborům operací, jako jsou test připojení a procházení a přejděte. Pokud nechcete, aby pro udělení těchto oprávnění, přeskočit test připojení na stránce pro vytvoření propojené služby a zadejte cestu přímo v nastavení datové sady.
 
 Podrobnosti o úplný seznam Amazon S3 oprávnění najdete v tématu [určení oprávnění v zásadách](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
@@ -57,7 +57,7 @@ Pro Amazon S3 propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost type musí být nastavená na **AmazonS3**. | Ano |
 | accessKeyId | ID tajný přístupový klíč. |Ano |
 | secretAccessKey | Vlastního klíče přístupu k tajným klíčům. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| ServiceUrl | Zadejte vlastní koncový bod S3, pokud data kopírujete text z poskytovatele úložiště kompatibilního se S3 než oficiální služby Amazon S3. Například [kopírování dat z Google Cloud Storage](#copy-from-google-cloud-storage), zadejte `https://storage.googleapis.com`. | Ne |
+| serviceUrl | Zadejte vlastní koncový bod S3, pokud data kopírujete text z poskytovatele úložiště kompatibilního se S3 než oficiální služby Amazon S3. Například [kopírování dat z Google Cloud Storage](#copy-from-google-cloud-storage), zadejte `https://storage.googleapis.com`. | Ne |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!TIP]

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 01/16/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8c0575472a4fa480117aaab6904a417746616b7e
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 50fbafdf714e6071ffac6f9f18d0802ecc1e574d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54322125"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360050"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -49,7 +49,8 @@ K dispozici jsou následující role správce:
 
 * **[Správce cloudových zařízení](#cloud-device-administrator)**: Uživatelé v této roli můžou povolit, zakázat a odstraňovat zařízení ve službě Azure AD a čtení klíče nástroje BitLocker systému Windows 10 (pokud existuje) na webu Azure Portal. Role nejsou udělena oprávnění ke správě jiných vlastností v zařízení.
 
-* **[Správce dodržování předpisů](#compliance-administrator)**: Uživatelé s touto rolí mají v Centru zabezpečení a dodržování předpisů Office 365 a Centru pro správu Exchange oprávnění pro správu. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Správce dodržování předpisů](#compliance-administrator)**: Uživatelé s touto rolí mají oprávnění ke správě funkce související s dodržování předpisů v centru dodržování předpisů Microsoft 365, Microsoft 365 security center, Centrum pro správu služeb Microsoft 365 a Azure. Uživatelé mohou také spravovat všechny funkce v rámci centra pro správu Exchange, správce dodržování předpisů a týmy a Skype pro firmy centra pro správu a vytvářet lístky podpory pro Azure a Microsoft 365. Další informace jsou k dispozici v [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d). 
+
 
 * **[Správce podmíněného přístupu](#conditional-access-administrator)**: Uživatelé s touto rolí mají možnost spravovat nastavení podmíněného přístupu Azure Active Directory.
   > [!NOTE]

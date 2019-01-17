@@ -7,32 +7,32 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315549"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354548"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
-Ve službě Azure Search [je služba zřízena za](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Dostupné úrovně **Free**, **základní**, nebo **standardní**, kde **standardní** je k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte **standardní** vývojovou a provozní nasazení. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání. 
+Ve službě Azure Search [je prostředek vytvořený](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Dostupné úrovně **Free**, **základní**, nebo **standardní**, kde **standardní** je k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte **standardní** vývojovou a provozní nasazení. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání. 
 
 Úrovně určit kapacitu, není funkce a jsou rozlišené pomocí:
 
 + Počet indexů, které lze vytvořit
 + Velikost a rychlost oddílů (fyzické úložiště)
 
-Přestože všechny úrovně, včetně **Free** vrstvy, obecně nabízí paritu funkcí, větší úlohy může diktovat požadavky pro vyšší úrovně. Například [kognitivního vyhledávání](cognitive-search-concept-intro.md) indexování má dlouhotrvající dovednosti tento časový limit na bezplatné služby není-li být velmi malé datové sady se stane s.
+Přestože všechny úrovně, včetně **Free** vrstvy, obecně nabízí paritu funkcí, větší úlohy může diktovat požadavky pro vyšší úrovně. Například [kognitivního vyhledávání](cognitive-search-concept-intro.md) indexování má dlouhotrvající dovednosti tento časový limit na bezplatné služby není-li být malé datové sady se stane s.
 
 > [!NOTE] 
 > Výjimka, která má paritu funkcí je [indexery](search-indexer-overview.md), které nejsou k dispozici na S3HD.
 >
 
-V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-capacity-planning.md) pro optimalizaci výkonu. Vzhledem k tomu může začínat dva nebo tři jednotlivých, může dočasně zvýšit váš výpočetní výkon pro náročné úlohy indexování. Schopnost optimalizovat úrovně prostředků v rámci úrovně zvyšuje flexibilitu, ale také mírně komplikuje analýzy. Budete muset experimentovat, uvidíte, jestli nižší úrovně s vyšší prostředky/replik nabízí lepší výkon než vyšší úroveň s nižší prostředky a hodnotu. Další informace o kdy a proč by upravit kapacitu, najdete v článku [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
+V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-capacity-planning.md) pro optimalizaci výkonu. Může začínat dva nebo tři jednotlivých a dočasně zvýšit váš výpočetní výkon pro náročné úlohy indexování. Schopnost optimalizovat úrovně prostředků v rámci úrovně zvyšuje flexibilitu, ale také mírně komplikuje analýzy. Budete muset experimentovat, uvidíte, jestli nižší úrovně s vyšší prostředky/replik nabízí lepší výkon než vyšší úroveň s nižší prostředky a hodnotu. Další informace o kdy a proč by upravit kapacitu, najdete v článku [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
 
 <!---
 The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
@@ -40,23 +40,46 @@ The purpose of this article is to help you choose a tier. It supplements the [pr
 
 ## <a name="how-billing-works"></a>Jak funguje fakturace
 
-Ve službě Azure Search je nejdůležitější fakturační koncept pochopit *jednotka služby search* (SU). Protože Azure Search závisí na repliky a oddíly na funkci, nemá smysl pro fakturaci podle právě jeden z nich. Místo toho fakturace vychází složeného obou. 
+Ve službě Azure Search existují čtyři způsoby, jak vám může mít za následek náklady při vytváření prostředku search na portálu:
+
+* Přidání repliky a oddíly, které používají pro pravidelné indexování a dotazování úlohy. Začněte s jedním z každé, ale jedno nebo obě přidat kapacitu, můžete zvýšit, výběru a platíte za další úrovně prostředky. 
+* Poplatky za odchozí přenos dat během indexování. Při přijetí dat z Azure SQL Database nebo Cosmos DB zdroje dat, zobrazí se poplatky za transakce v faktury za tyto prostředky.
+* Pro [kognitivního vyhledávání](cognitive-search-concept-intro.md) pouze extrakce image během hádání dokumentu se účtuje na základě počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma.
+* Pro [kognitivního vyhledávání](cognitive-search-concept-intro.md) pouze na základě obohacení [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtují podle prostředku služeb Cognitive Services. Obohacení se účtují za stejnou sazbu jako kdyby jste provedli úloh přímo pomocí služeb Cognitive Services.
+
+Pokud nepoužíváte [kognitivního vyhledávání](cognitive-search-concept-intro.md) nebo [indexerů Azure Search](search-indexer-overview.md), jsou pouze náklady související s repliky a oddíly v aktivním využití pro pravidelné úlohy indexování a dotazování.
+
+### <a name="billing-for-general-purpose-indexing-and-queries"></a>Fakturace pro indexování pro obecné účely a dotazy
+
+Pro operace Azure Search je nejdůležitější fakturační koncept pochopit *jednotka služby search* (SU). Protože Azure Search závisí na repliky a oddíly pro indexování a dotazy, nemá smysl pro fakturaci podle právě jeden z nich. Místo toho fakturace vychází složeného obou. 
 
 SU je produkt *repliky* a *oddíly* používané službou: **`(R X P = SU)`**
 
-Každá služba začíná 1 SU (jednu repliku a jeden oddíl) jako minimální. Maximální počet pro libovolnou službu je 36 su, které můžete dosáhnout různými způsoby: 6 oddíly x 6 repliky, nebo replik pro 3 oddíly x 12 pár. 
-
-Je běžné použití nižší, než celkové kapacity. Například repliky 3, 3 oddíly služby, účtovat jako 9 su. 
+Každá služba začíná u jedné SU (jednu repliku a jeden oddíl) jako minimální. Maximální počet pro libovolnou službu je 36 su, které můžete dosáhnout různými způsoby: 6 oddíly x 6 repliky, nebo replik pro 3 oddíly x 12 pár. Je běžné použití nižší, než celkové kapacity. Například repliky 3, 3 oddíly služby, účtovat jako 9 su. 
 
 Fakturační sazba je **po hodinách za SU**, kde každá úroveň s postupně vyšší sazba. Vyšší úrovně součástí větší a zrychlit oddíly přispívající k celkové vyšší hodinové sazby za tuto úroveň. Sazby za pro každou vrstvu můžete najít na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/). 
 
 Většina zákazníků přinést jen část celkové kapacity online, uchovávající zbývající ve fondu. Z hlediska fakturace, je počet oddílů a replik uvést online, vypočítané pomocí vzorce SU, která určuje, co skutečně platíte po hodinách.
 
-### <a name="tips-for-reducing-costs"></a>Tipy pro snížení nákladů
+### <a name="billing-for-image-extraction-in-cognitive-search"></a>Fakturace pro extrahování bitové kopie v kognitivního vyhledávání
+
+Když se extrakce obrázků ze souborů v kognitivního vyhledávání, indexování kanálu, bude vám účtována pro tuto operaci je ve vyúčtování Azure Search. Je parametr, který aktivuje image extrakce **imageAction** v [konfigurace indexeru](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters). Pokud **imageAction** je nastavena na hodnotu none (výchozí), neúčtují žádné poplatky pro extrakci bitové kopie.
+
+Ceny se mohou změnit, ale je vždy popsané na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/) stránku pro službu Azure Search. 
+
+### <a name="billing-for-built-in-skills-in-cognitive-search"></a>Fakturace za integrované znalosti kognitivního vyhledávání
+
+Při nastavování kanál obohacování jakékoli [integrované znalosti](cognitive-search-predefined-skills.md) použít v kanálu jsou založeny na modely strojového učení. Tyto modely jsou k dispozici ve službách Cognitive Services. Použití těchto modelech během indexování se účtuje stejná sazba jako v případě, že můžete požadovaly prostředek přímo.
+
+Předpokládejme například, kanál, který se skládá z optické rozpoznávání znaků (OCR) proti naskenovaný soubory JPEG, kde je výsledný text odesílají do indexu Azure Search pro volného tvaru vyhledávací dotazy. Váš kanál indexování bude zahrnovat indexer s [OCR dovednosti](cognitive-search-skill-ocr.md), a že by bylo dovednosti [připojené k prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Při spuštění indexeru se zobrazují na faktuře Cognitive prostředků pro spouštění technologie OCR poplatky.
+
+## <a name="tips-for-reducing-costs"></a>Tipy pro snížení nákladů
 
 Nelze vypnout službu na nižší faktury. Provozní 24 7 přidělené pro vaše výhradní použití po dobu životnosti vaší služby jsou vyhrazené prostředky. Jediný způsob, jak snížit účet se snížením repliky a oddíly, které na nízké úrovni, která stále poskytuje přijatelný výkon a [dodržování předpisů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Jedna úroveň mu pomáhá snižovat náklady je výběr úrovně s nižší hodinové sazby. S1 hodinové sazby jsou nižší než S2 nebo S3. Může si zřídíte službu zaměřené na dolní hranice vaší zatížení projekce. Pokud jste velký růst službu, vytvořte druhý větší vrstvené službu, opětovné sestavení indexů na druhý služby a odstraňte první z nich. Pokud jste provedli plánování kapacity na místních serverech, víte, že je společné pro "koupit" tak, aby bylo možné zpracovat očekávané růstu. Ale s cloudovou službou, vám může pokračovat další úspory nákladů agresivně vzhledem k tomu, že nejsou uzamčeny konkrétní nákupu. Můžete vždy přejdete na službu vyšší vrstvenou pokud tu není dostatečná.
+Jedna úroveň mu pomáhá snižovat náklady je výběr úrovně s nižší hodinové sazby. S1 hodinové sazby jsou nižší než S2 nebo S3. Za předpokladu, že si zřídíte službu zaměřené na dolní hranice vaší zatížení projekce, je-li velký růst služby, může vytvořit druhý větší vrstvené službu, opětovné sestavení indexů na druhý služby a odstraňte první z nich. 
+
+Pokud jste provedli plánování kapacity na místních serverech, víte, že je společné pro "koupit" tak, aby bylo možné zpracovat očekávané růstu. Ale s cloudovou službou, vám může pokračovat další úspory nákladů agresivně vzhledem k tomu, že nejsou uzamčeny konkrétní nákupu. Můžete vždy přejdete na službu vyšší vrstvenou pokud tu není dostatečná.
 
 ### <a name="capacity-drill-down"></a>Kapacita procházení
 
@@ -143,9 +166,9 @@ Index počtu a velikosti jsou stejně důležité pro analýzu, protože je dosa
 
 **Důležité informace o svazku dotazu**
 
-Dotazů za sekundu (QPS) je metriku, která získá význačnost během optimalizace výkonu, ale není obvykle potřeba úroveň Pokud očekáváte, že svazek vysoce dotaz na začátku.
+Dotazů za sekundu (QPS) je metriku, která získá význačnost během optimalizace výkonu, ale není obvykle potřeba úroveň Pokud očekáváte, že svazek vysokou dotaz na začátku.
 
-Všechny úrovně standard rovnováhu replik doručovat do oddílů, podpora obsloužit dotaz prostřednictvím další repliky pro načítání vyrovnávání a další oddíly pro paralelní zpracování. Po zřízení služby můžete vyladit výkon.
+Úrovně standard mohla doručovat rovnováhu replik oddílů, podpora obsloužit dotaz prostřednictvím další repliky pro načítání vyrovnávání a další oddíly pro paralelní zpracování. Po zřízení služby můžete vyladit výkon.
 
 Zákazníky, kteří očekávají strong trvalejší dotazu svazky od samého počátku zvažte vyšší úrovně, se opírá o výkonnější hardware. Můžete pak proveďte oddílů a replik v režimu offline nebo dokonce přepnout na nižší úroveň služby, pokud tyto svazky dotaz sloučit. Další informace o tom, jak vypočítat propustnost dotazů, najdete v části [Azure Search výkon a optimalizace](search-performance-optimization.md).
 
@@ -158,7 +181,7 @@ Zákazníky, kteří očekávají strong trvalejší dotazu svazky od samého po
 
 + Zjistěte, jak vytvářet efektivní indexy a které metodologie aktualizace jsou nejnižší impactful. Doporučujeme [Analýza provozu vyhledávání](search-traffic-analytics.md) pro poznatky získané v aktivitě dotazu.
 
-+ Povolit metriky pro sestavení kolem dotazů a shromažďování dat celého vzorce používání (dotazy během pracovní doby, indexování během hodin mimo špičku) a tato data použít k informování budoucími rozhodnutí o zřízení. Zatímco na úrovni hodinových nebo denních není praktické, můžete dynamicky upravit oddíly a prostředky, abyste plánované změny ve svazcích dotazu, nebo neplánované ale trvalé změny Pokud úrovně dostatečně dlouhá, aby zaručujete akce.
++ Povolit metriky pro sestavení kolem dotazů a shromažďování dat celého vzorce používání (dotazy během pracovní doby, indexování během hodin mimo špičku) a tato data použít k informování budoucími rozhodnutí o zřízení. Zatímco v hodinových nebo denních tempo není praktické, můžete dynamicky upravit oddíly a prostředky, abyste plánované změny ve svazcích dotazu, nebo neplánované ale trvalé změny Pokud úrovně dostatečně dlouhá, aby zaručujete akce.
 
 + Mějte na paměti, že pouze nevýhodou zřizování je, že bude pravděpodobně nutné dovolí služby, pokud jsou větší než na kolik máte odhadované skutečné požadavky. Pokud chcete zabránit přerušení služby, by vytvořit novou službu v rámci stejného předplatného na vyšší úrovni a spustit ji vedle sebe, dokud všechny aplikace a žádosti o cílit na nový koncový bod.
 

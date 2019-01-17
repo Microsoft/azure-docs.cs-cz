@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: b5975f3d11a76d7713928ab008dbd9ec19b85738
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 54bb66d79979e68c55a671035fa2bc11d8220b17
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082574"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351590"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Registrace samostatného předplatného Azure a zobrazení informací o nákladech
 
@@ -29,7 +29,7 @@ Pomocí svého předplatného Azure se zaregistrujete u Cloudyn. Registrací zí
 
 1. Na webu Azure Portal klikněte v seznamu služeb na **Cost Management a fakturace**.
 2. V části **Přehled** klikněte na **Cloudyn**.  
-    ![Cloudyn stránky zobrazené ve službě Azure portálu](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
+    ![Cloudyn stránka zobrazená na webu Azure Portal](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
 3. Na stránce **Cost Management** klikněte na **Přejít na Cloudyn** a v novém okně se otevře stránka pro registraci u Cloudyn.
 4. Na stránce pro registraci zkušební verze portálu Cloudyn zadejte název vaší společnosti, vyberte **Vlastník samostatného předplatného Azure** a pak klikněte na **Další**. Do formuláře se automaticky přidá název vašeho účtu a ID tenanta.  
     ![Registrace zkušební verze stránky, kde zadáte informace o registraci](./media/quick-register-azure-sub/trial-reg-ind.png)

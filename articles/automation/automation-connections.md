@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/15/2019
+ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0bdf2d4e9c5ee659666eeb1a6e92c34c181ba805
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331788"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358826"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -24,6 +24,16 @@ Když vytvoříte připojení, je nutné zadat *typ připojení*. Typ připojen�
 
 >[!NOTE]
 >Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč je uložen v systému spravované služby Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu. Tento proces se spravuje přes Azure Automation.
+
+## <a name="connection-types"></a>Typy připojení
+
+Existují tři typy vytvořené v připojení k dispozici ve službě Azure Automation:
+
+* **Azure** -toto připojení je možné spravovat klasické prostředky.
+* **AzureClassicCertificate** -toto připojení používá **AzureClassicRunAs** účtu.
+* **AzureServicePrincipal** -toto připojení používá **AzureRunAs** účtu.
+
+Ve většině případů nepotřebujete vytvořit prostředek připojení, jakmile je vytvořena při vytváření [účet Spustit jako](manage-runas-account.md).
 
 ## <a name="windows-powershell-cmdlets"></a>Rutiny Windows Powershellu
 

@@ -10,18 +10,19 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c9d6a66a9d54c75fbb20775f0ae4de4d22a7d599
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3d2019101abf1086a58d0224ab31f2aa27afe8de
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840858"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54350587"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Nastavení samoobslužného resetování hesla pro vaše zákazníky
+
 Díky funkci resetování hesla pomocí samoobslužné služby mohou vaši zákazníci, kteří si zaregistrovali pro místní účty resetování hesel na své vlastní. To významně snižuje zatížení pracovníkům podpory, zejména v případě, že má vaše aplikace miliony zákazníci, kteří používají v pravidelných intervalech. V současné době pomocí ověřený e-mailová adresa je metoda pouze podporované obnovení.
 
 > [!NOTE]
-> Tento článek se týká hesla pomocí samoobslužné služby použít v kontextu rozhraní V1 resetování **přihlášení** tok uživatele, který používá **přihlášení místním účtem** jako zprostředkovatele identity. Pokud potřebujete toky uživatelů pro resetování plně přizpůsobitelná hesla vyvolané z vaší aplikace, přečtěte si [v tomto článku](active-directory-b2c-reference-policies.md#create-a-password-reset-user-flow).
+> Tento článek se týká hesla pomocí samoobslužné služby použít v kontextu rozhraní V1 resetování **přihlášení** tok uživatele, který používá **přihlášení místním účtem** jako zprostředkovatele identity. Pokud potřebujete toky uživatelů pro resetování plně přizpůsobitelná hesla vyvolané z vaší aplikace, přečtěte si [v tomto článku](active-directory-b2c-reference-policies.md).
 > 
 > 
 

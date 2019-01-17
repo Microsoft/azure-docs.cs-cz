@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: patricka
 ms.openlocfilehash: 0d9f0a24d84bd18bdf1fac84c744cc34a7d89ab3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742513"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54355464"
 ---
 Pokud chcete povolit upravování profilu ve své aplikaci, můžete použít **upravování profilu** tok uživatele. Tento tok uživatele popisuje prostředí, které zákazníci budou procházet při upravování profilu a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339395"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358979"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
@@ -49,13 +49,19 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
    Ano. Azure udržuje pouze jednu image pro každou hlavní verze a edice. Po vydání nové aktualizace service pack SQL serveru, Azure přidá novou bitovou kopii do Galerie pro s aktualizací service pack. Image SQL serveru pro předchozí aktualizaci service pack se okamžitě odebere z portálu Azure portal. Je však stále k dispozici pro zřizování z prostředí PowerShell pro následující tři měsíce. Po třech měsících na předchozím obrázku service pack už nejsou k dispozici. Tyto zásady odebrání by platí také v případě dosáhne konci svého životního cyklu se stane Nepodporovaná verze systému SQL Server.
 
+
+1. **Je možné nasadit starších image SQL serveru, který se nezobrazuje na portálu Azure Portal?**
+
+   Ano, s použitím prostředí PowerShell. Další informace o nasazování virtuálních počítačů SQL Server pomocí Powershellu najdete v tématu [jak zřídit virtuální počítače systému SQL Server v prostředí Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
+
 1. **Můžete vytvořit image virtuálního pevného disku z virtuálního počítače s SQL serverem?**
 
    Ano, ale zde je několik důležitých informací. Je-li nasadit tento virtuální pevný disk do nového virtuálního počítače v Azure, provedete není ge část konfigurace systému SQL Server na portálu. Pak musíte spravovat možnosti konfigurace serveru SQL Server pomocí Powershellu. Navíc vám bude účtovat sazbou původně podle vaší image virtuálního počítače SQL. To platí i v případě systému SQL Server odeberete z virtuálního pevného disku před nasazením. 
 
 1. **Je možné nastavit konfigurace není zobrazené v galerii virtuálních počítačů (pro příklad Windows 2008 R2 a SQL Server 2012)?**
 
-   Ne. Pro Image Galerie virtuálních počítačů, které patří SQL Server musíte vybrat jednu z zadané bitové kopie.
+   Ne. Image Galerie virtuálních počítačů, které patří SQL Server, musíte vybrat některou ze zadané imagí na webu Azure portal nebo prostřednictvím [Powershellu](virtual-machines-windows-ps-sql-create.md). 
+
 
 ## <a name="creation"></a>Vytvoření
 
@@ -102,11 +108,11 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
  
    Ano. Všichni zákazníci budou moct zaregistrovat u nového poskytovatele prostředků virtuálního počítače s SQL. Ale můžete jenom zákazníci s programem Software Assurance Benefit aktivovat [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (byol) na virtuální počítač s SQL serverem. 
 
-1. **Co se stane _\*Microsoft.SqlVirtualMachine_\* prostředku, pokud je přesunut nebo vyřadit prostředku virtuálního počítače?** 
+1. **Co se stane _* Microsoft.SqlVirtualMachine_* prostředku, pokud je přesunut nebo vyřadit prostředku virtuálního počítače?** 
 
    Pokud je prostředků Microsoft.Compute/VirtualMachine vyřadit nebo přesunout, pak je přidružený prostředek Microsoft.SqlVirtualMachine upozornění, že má asynchronní replikace operaci.
 
-1. **Co se stane k virtuálnímu počítači, pokud _\*vyřadit Microsoft.SqlVirtualMachine_\* prostředků?**
+1. **Co se stane k virtuálnímu počítači, pokud _* vyřadit Microsoft.SqlVirtualMachine_* prostředků?**
 
    Prostředek Microsoft.Compute/VirtualMachine nemá žádný vliv při přetažení Microsoft.SqlVirtualMachine prostředků. Licencování změní se však výchozí zpět na původní zdroj obrázku. 
 

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1d977631b9975f717d60afff6f1b303fdd4039ff
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6ad8eea21c10726b2c3eaf1e10bfd5efba4d1e48
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54328813"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358690"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurace integrace Azure Key Vaultu pro SQL Server na Azure Virtual Machines (Resource Manager)
 
@@ -37,6 +37,10 @@ Pokud používáte systém SQL Server pomocí místních počítačů, existují
 Pokud je tato funkce povolena, automaticky se nainstaluje konektor SQL serveru, nakonfiguruje zprostředkovatele EKM. pro přístup k Azure Key Vault a vytvoří přihlašovací údaj, který umožňuje přístup k trezoru. Pokud podívali se na postup v dokumentaci k výše uvedené v místním, uvidíte, že tato funkce automatizuje kroky 2 a 3. Jediné, co by stále muset provést ručně, je vytvořit trezor klíčů a klíče. Tady je automatické celé nastavení virtuálního počítače s SQL. Po dokončení této instalace a nastavení tuto funkci můžete spustit příkazy T-SQL k zahájit šifrování vašich databází nebo zálohy jako obvykle.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
+
+  >[!NOTE]
+  > Zprostředkovatele EKM. verze 1.0.4.0 je nainstalovaný na virtuálním počítači SQL serveru prostřednictvím [rozšíření SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension). Upgrade rozšíření SQL IaaS neaktualizuje verze zprostředkovatele. Zvážení prosím ručně upgrade verze zprostředkovatele EKM. v případě potřeby (například při migraci do spravované Instance SQL).
+
 
 ## <a name="enabling-and-configuring-akv-integration"></a>Povolení a konfigurace integrace se službou AZURE
 Můžete povolit integrace se službou AZURE během zřizování nebo ho nakonfigurovat pro stávající virtuální počítače.

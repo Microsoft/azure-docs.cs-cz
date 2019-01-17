@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e91bcdf3980b0f03967c09b0b7a75aa3d3a520a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014620"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351739"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory
 
@@ -43,7 +43,7 @@ Pro ServiceNow propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **ServiceNow** | Ano |
 | endpoint | Koncový bod serveru ServiceNow (`http://<instance>.service-now.com`).  | Ano |
-| authenticationType. | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **Základní**, **OAuth2** | Ano |
+| authenticationType. | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **Basic**, **OAuth2** | Ano |
 | uživatelské jméno | Uživatelské jméno pro připojení k ServiceNow server pro ověřování Basic a OAuth2.  | Ano |
 | heslo | Uživatelské jméno pro ověřování OAuth2 pomocí Basic a odpovídající heslo. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | ID klienta | ID klienta pro ověřování OAuth2.  | Ne |
@@ -115,7 +115,7 @@ Ke zkopírování dat z ServiceNow, nastavte typ zdroje v aktivitě kopírován�
 Při zadání schématu ve sloupci pro ServiceNow v dotazu, pamatujte na Tyhle a **najdete [tipy ke zvýšení výkonu](#performance-tips) na dopad na výkon kopírování**.
 
 - **Schéma:** zadejte schéma jako `Actual` nebo `Display` v dotazu, ServiceNow, které můžete na něj podíváte jako parametr `sysparm_display_value` jako true nebo false, při volání metody [rozhraní restful API ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Sloupec:** název sloupce pro skutečné hodnoty v rámci `Actual` schéma je `[columne name]_value`, zatímco pro zobrazení hodnoty v rámci `Display` schéma je `[columne name]_display_value`. Poznámka: název sloupce musí mapování schématu je použitý v dotazu.
+- **Sloupec:** název sloupce pro skutečné hodnoty v rámci `Actual` schéma je `[column name]_value`, zatímco pro zobrazení hodnoty v rámci `Display` schéma je `[column name]_display_value`. Poznámka: název sloupce musí mapování schématu je použitý v dotazu.
 
 **Ukázkový dotaz:**
 `SELECT col_value FROM Actual.alm_asset` OR 

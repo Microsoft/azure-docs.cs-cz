@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1a3855b7b95224e0f872764f6710f9fa907780a7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025449"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358707"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapování schématu v aktivitě kopírování
 Tento článek popisuje, jak funguje Azure Data Factory za kopírování schématu mapování a mapování datového typu z datového zdroje do jímky dat při spuštění kopírovat data.
@@ -142,7 +142,7 @@ Pokud používáte syntaxe `"columnMappings": "UserId: MyUserId, Group: MyGroup,
 
 ## <a name="schema-mapping"></a>mapování schématu
 
-Mapování schématu platí při kopírování dat mezi hierarchické ve tvaru dat a tabulkové upravená data, například kopírování z MongoDB nebo rozhraní REST do textového souboru a kopírovat z SQL do rozhraní API MongoDB služby Azure Cosmos DB. Následující vlastnosti jsou podporovány v aktivitě kopírování `translator` části:
+Mapování schématu platí při kopírování dat mezi hierarchické ve tvaru a tabulkové ve tvaru daty, třeba kopírování z MongoDB nebo rozhraní REST do textového souboru a kopírovat z SQL do služby Azure Cosmos DB API pro MongoDB. Následující vlastnosti jsou podporovány v aktivitě kopírování `translator` části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

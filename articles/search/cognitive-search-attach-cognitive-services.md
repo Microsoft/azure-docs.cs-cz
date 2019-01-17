@@ -1,5 +1,5 @@
 ---
-title: Přidružte prostředek služeb Cognitive Services k dovedností – Azure Search
+title: Připojit prostředek služeb Cognitive Services dovedností – Azure Search
 description: Pokyny pro připojení ke kanálu kognitivní rozšíření ve službě Azure Search All-in-One předplatné služeb Cognitive Services.
 manager: cgronlun
 author: LuisCabrer
@@ -7,36 +7,36 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/07/2018
+ms.date: 01/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 315e050f9ff8768cfeb8ff5417834e8e163ce334
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5bffeacaa07f90a11c374061eb6c0d36fc8f86a9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231423"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351454"
 ---
-# <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Přidružte prostředek služeb Cognitive Services k dovedností v Azure Search 
+# <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojit prostředek služeb Cognitive Services dovedností v Azure Search 
 
 Algoritmy AI řízení [kognitivního vyhledávání kanály](cognitive-search-concept-intro.md) pro zpracovávání nestrukturovaných dat, které jsou založeny na [ **prostředků služeb Cognitive Services**](https://azure.microsoft.com/services/cognitive-services/). Zdroje, jako jsou [ **pro počítačové zpracování obrazu** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) poskytují analýzu obrázků a optického rozpoznávání znaků (OCR) pro extrahování textu a struktura mimo soubory obrázků, zatímco [ **Text Analytics** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) poskytuje například entity rozpoznávání a extrakci klíčových frází, další zpracování přirozeného jazyka.
 
-Můžete zdarma rozšiřovat omezený počet dokumentů nebo připojit fakturovatelné prostředku služeb Cognitive Services pro větší a častější úlohy. V tomto článku se dozvíte, jak chcete přidružit vaše kognitivní dovednosti a obohacení dat během indexování prostředku služeb Cognitive Services.
+Můžete zdarma rozšiřovat omezený počet dokumentů nebo připojit fakturovatelné prostředku služeb Cognitive Services pro větší a častější úlohy. V tomto článku najdete informace o prostředku služeb Cognitive Services přidružit vaše kognitivní dovednosti a obohacení dat během [indexování Azure Search](search-what-is-an-index.md).
 
 Pokud váš kanál se skládá pouze z [vlastních dovedností](cognitive-search-create-custom-skill-example.md), není potřeba připojení prostředku služeb Cognitive Services.
 
 > [!NOTE]
 > Od 21. prosince 2018 přidružíte k prostředku služeb Cognitive Services k dovednosti Azure Search. To umožňuje poplatky za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
 >
-> Provedení příkazu [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/), na stejné přenosové rychlosti, jako kdyby jste provedli úloh nezávisle na Azure Search. Ceny extrakce bitové kopie se účtuje za ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Provedení příkazu [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services), na stejná sazba jako by měl provést úlohu přímo. Extrakce Image je Azure Search účtovaných událostí, na ceny verze preview v současné době nabízena. Podrobnosti najdete v tématu [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) nebo [fakturace](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="use-free-resources"></a>Použití uvolnění prostředků
 
-Můžete použít možnost omezené bezplatné zpracování, která vás opravňuje k obohacení 20 dokumentu denně dostatečná k dokončení kurzu a rychlý start cvičení kognitivního vyhledávání. 
+K dokončení kurzu a rychlý start cvičení kognitivního vyhledávání můžete použít možnost omezená, bez zpracování. 
 
 > [!Important]
-> Od 1. února 2019 **Free (omezená obohacení)** je omezen na 20 dokumenty za den. 
+> Od 1. února 2019 **Free (omezená obohacení)** bude omezený na 20 dokumenty za den. 
 
 1. Otevřít **importovat data** průvodce.
 
@@ -144,7 +144,7 @@ Content-Type: application/json
 
 Pokud chcete odhadnout náklady spojené s využitím kognitivního vyhledávání, indexování, začněte s představu o dokument průměrné vypadá tak, aby mohly běžet některá čísla. Pro účely odhadů, vám může Přibližná například:
 
-+ 1000 PDF
++ 1000 PDFs
 + Šest stránek
 + Jednu image pro každou stránku (6000 imagí)
 + 3000 znaků na jednu stránku

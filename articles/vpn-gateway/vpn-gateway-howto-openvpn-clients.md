@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4de4a5a659f38577c1261b169a43df560bf05495
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cd84948b5895a628fc94cc2946156d9fa2284369
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971262"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352311"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway (Preview)
 
@@ -22,7 +22,7 @@ Tento článek vám pomůže nakonfigurovat OpenVPN klientů.
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Podrobnosti najdete v tématu [OpenVPN konfigurace pro službu Azure VPN Gateway](vpn-gateway-howto-openvpn.md).
 
@@ -72,6 +72,10 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 7. Poklikejte na soubor profilu a vytvořte profil v tunnelblik.
 8. Spusťte Tunnelblik ze složky aplikace.
 9. Klikněte na ikonu Tunnelblik na hlavním panelu systému a připojit výběru.
+
+> [!IMPORTANT]
+>Jenom iOS 11.0 a vyšší a MacOS 10.13 a novější podporují OpenVPN protokolu.
+>
 
 ## <a name="linux"></a>Klienti Linux
 

@@ -3,9 +3,9 @@ title: Začínáme – modelování nástroj Microsoft Threat – Azure | Dokume
 description: Toto je hlubší přehled zvýraznění nástroj pro modelování hrozeb v akci.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 340c92d2830069a9d957f4ece79416a707062629
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: jegeib
+ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096770"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359472"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s nástroj pro modelování hrozeb
 
-Cloudové a podnikové zabezpečení nástroje team vydání Preview nástroj pro modelování hrozeb počátkem tohoto roku jako bezplatná  **[klikněte na tlačítko Stáhnout](https://aka.ms/tmtpreview)**. Změnu v hodnotě mechanismus doručení umožňuje nabízet nejnovější vylepšení a opravy chyb pro zákazníky pokaždé, když otevřou nástroj, což usnadňuje údržbě a používání.
+2018 pro nástroj pro modelování hrozeb Microsoft byla vydána jako GA v září 2018 jako bezplatná  **[klikněte na tlačítko Stáhnout](https://aka.ms/threatmodelingtool)**. Změnu v hodnotě mechanismus doručení umožňuje nabízet nejnovější vylepšení a opravy chyb pro zákazníky pokaždé, když otevřou nástroj, což usnadňuje údržbě a používání.
 Tento článek vás provede procesem Začínáme se službou Microsoft SDL hrozeb modelování přístup a ukazuje, jak pomocí nástroje pro vývoj modely skvělé hrozeb jako páteřní zabezpečení procesu.
 
 Tento článek vychází stávajících znalostí hrozeb SDL modelování přístup. Stručné shrnutí, najdete v tématu **[modelování ohrožení webových aplikací](https://msdn.microsoft.com/library/ms978516.aspx)** a archivované verze **[odkrýt zabezpečení chyby pomocí přístupu STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** Publikování článku MSDN v 2006.
@@ -67,14 +67,14 @@ V této části budeme postupovat podle:
 
 Probíhá proces vývoje jejich první model hrozeb.
 
-> Ricardo: Dobrý den Cristina, jsem pracoval v diagramu model hrozeb a chtěli jsme se ujistit, že nám dává podrobnosti správné. Můžete mi může pomoci Projděte část?
-> Cristina: vůbec. Podívejme se na to.
+> Ricardo: Cristina Dobrý den jsem pracoval v diagramu modelu před internetovými útoky a chtěli jste Ujistěte se, že jsme získali podrobnosti správné. Můžete mi může pomoci Projděte část?
+> Cristina: Jistě. Podívejme se na to.
 > Ricardo otevře nástroj a sdílet svou obrazovku s Cristina.
 
 ![Základní rizik](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
-> Cristina: Ok, vyhledá jasné, ale můžete si projdete mi to?
-> Ricardo: zda! Tady je výčet:
+> Cristina: Tak dobře, vypadá jasné, ale můžete si projdete mi to?
+> Ricardo: Že! Tady je výčet:
 > - Naše lidské uživatele se vykreslí jako externí entity – čtverec
 > - Při posílání příkazů do našich webového serveru – kruhu
 > - Webový server je consulting databáze (paralelní dva řádky)
@@ -82,7 +82,7 @@ Probíhá proces vývoje jejich první model hrozeb.
 Co Ricardo chvilkou ukázal Cristina je diagramu toku dat, krátká pro  **[Diagram toku dat](https://en.wikipedia.org/wiki/Data_flow_diagram)**. Nástroj pro modelování hrozeb umožní uživatelům zadat hranicemi vztahů důvěryhodnosti označená červenou tečkované čáry, chcete-li zobrazit, kde jsou různé entity v ovládacím prvku. Například správci IT vyžadují systému Active Directory pro účely ověřování, proto je služba Active Directory nemá pod kontrolou.
 
 > Cristina: Vypadá dobře mně. Jaké informace o hrozbách?
-> Ricardo: Let me můžete zobrazit.
+> Ricardo: Nechat mě můžete zobrazit.
 
 ## <a name="analyzing-threats"></a>Analýza hrozeb
 
@@ -143,4 +143,4 @@ Přístup k modelování, který jsme jste okomentovat ohrožení je výrazně j
 
 ## <a name="next-steps"></a>Další kroky
 
-Odesílat dotazy, komentáře a aspekty do tmtextsupport@microsoft.com. **[Stáhněte si](https://aka.ms/tmtpreview)**  nástroj pro modelování hrozeb začít pracovat.
+Odesílat dotazy, komentáře a aspekty do tmtextsupport@microsoft.com. **[Stáhněte si](https://aka.ms/threatmodelingtool)**  nástroj pro modelování hrozeb začít pracovat.

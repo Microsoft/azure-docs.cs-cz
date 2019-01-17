@@ -6,14 +6,14 @@ author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792882"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353851"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Rychlý start: Nastavení clusterů v HDInsight
 
@@ -25,6 +25,10 @@ Hadoop cluster se skládá z několika virtuálních počítačů (uzlů), kter�
 >Účtování clusteru HDInsight začne vytvořením clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá. Zjistěte, jak [odstranění clusteru.](../../hdinsight/hdinsight-delete-cluster.md)
 
 Účet úložiště s Data Lake Storage Gen2 funkce se používá jako datové vrstvě v tomto rychlém startu. S jeho hierarchického oboru názvů služby a [Hadoop ovladač](data-lake-storage-abfs-driver.md), Data Lake Storage Gen2 je optimalizovaná pro distribuované zpracování a analýzu. Data uložená v účtu úložiště, který má povolené Data Lake Storage Gen2 přetrvává i po odstranění clusteru služby HDInsight.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Budete potřebovat pro vytvoření uživatelsky přiřazené identity spravované a zařaďte **Role Přispěvatel úložiště objektů Blob** identitě. Zobrazit [vytvoření, list, delete nebo přiřadit roli, kterou chcete přiřadit uživatele spravovanou identitu pomocí webu Azure portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
 ## <a name="cluster-setup-methods"></a>Metody instalace clusteru
 
@@ -104,8 +108,7 @@ Během konfigurace zadáte pro výchozí koncový bod úložiště Data Lake Sto
 
 ![Nastavení úložiště clusteru: Koncové body HDFS kompatibilního úložiště](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
-> [!IMPORTANT]
-> Nezapomeňte **zakázat přístup k Data Lake Store**. Tato nastavení odkazuje na starý *Data Lake Store* funkce a třeba zakázat, aby *Data Lake Storage* funkce správně fungovat.
+V **spravované identity přiřazené uživateli**, ujistěte se, že k výběru spravovaného uživatele uživatelsky přiřazené spravovaná identita, kterou jste vytvořili jako předpoklad v tomto článku.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -225,7 +228,7 @@ V některých případech budete chtít nakonfigurovat následující konfigura�
 * Storm-site.xml
 * tez-site.xml
 * webhcat-site.xml
-* yarn site.xml
+* yarn-site.xml
 
 Další informace najdete v tématu [HDInsight přizpůsobení clusterů pomocí Bootstrap](../../hdinsight/hdinsight-hadoop-customize-cluster-bootstrap.md).
 

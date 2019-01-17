@@ -11,23 +11,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/16/2019
 ms.author: anwestg
-ms.openlocfilehash: e8a75afe2c7dbe91c7c98d0d35c319088f40748f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cfbf71d4cfbd01eb8544d4b577292c5d7f8faf66
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612674"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359098"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualizace služby Azure App Service v Azure stacku
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!IMPORTANT]  
-> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.4.
->
->
+> Aktualizace 1809 nebo novější do služby Azure Stack integrovaného systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.4. Před aktualizací zprostředkovatele prostředků, přečtěte si poznámky k verzi pro další informace o nové funkce, opravy a známých problémech, které můžou ovlivnit nasazení.
 
 Podle pokynů v tomto článku, můžete upgradovat [poskytovatele prostředků App Service](azure-stack-app-service-overview.md) nasazené v prostředí Azure Stack, který je připojený k Internetu.
 
@@ -56,7 +54,7 @@ Při upgradu nasazení služby App Service ve službě Azure Stack, postupujte p
 
 2. Spustit appservice.exe jako správce
 
-    ![Instalační program služby App Service][1]
+    ![App Service Installer][1]
 
 3. Klikněte na tlačítko **nasazení služby App Service nebo upgradujte na nejnovější verzi.**
 

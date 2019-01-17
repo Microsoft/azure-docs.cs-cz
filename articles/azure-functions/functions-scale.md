@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1940908cc0120ed5a69ae6603ec101d020b0ef3f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08897b2085c2a8f0eafb90b77486d60a0edce190
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722069"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359863"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
 Služba Azure Functions se spustí ve dvou různých režimech: Plán consumption a plán služby App Service. Plán Consumption automaticky přiděluje výpočetní výkon, pokud váš kód běží. Vaše aplikace je škálovat na více systémů v případě potřeby pro zpracování zátěže a kapacitu vertikálně snížit, když kód není spuštěný. Nemusíte platit za nečinných virtuálních počítačů nebo záložní kapacita předem.
 
 > [!NOTE]  
-> [Hostování v Linuxu](functions-create-first-azure-function-azure-cli-linux.md) je momentálně dostupná jenom na plán služby App Service.
+> Plán spotřeby pro Linux je [nyní ve verzi Public Preview](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/).
 
 Pokud nejste obeznámeni s využitím Azure Functions, přečtěte si článek [přehled Azure Functions](functions-overview.md).
 

@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: 99f19f6595f2e3105c4b30a7c2e7ef1e296fad6e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a55652c8d19866b717cbafec4629030a7708bb50
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724847"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359489"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Připojení služby Cosmos DB pomocí Azure Search pomocí indexerů
 
@@ -38,7 +38,7 @@ V následujícím videu Azure Cosmos DB programový manažer Andrew Liu ukazuje,
 <a name="supportedAPIs"></a>
 ## <a name="supported-api-types"></a>Podporované typy rozhraní API
 
-I když službu Azure Cosmos DB podporuje širokou škálu datových modelů a rozhraní API, podpora produkční indexeru Azure Search rozšiřuje rozhraní SQL API. Podpora pro Azure Cosmos DB pro rozhraní MongoDB API je aktuálně ve verzi public preview.  
+I když službu Azure Cosmos DB podporuje širokou škálu datových modelů a rozhraní API, podpora produkční indexeru Azure Search rozšiřuje rozhraní SQL API. Podpora pro Azure Cosmos DB API pro MongoDB je aktuálně ve verzi public preview.  
 
 Podpora pro další rozhraní API je připravovaný. Pokud chcete nám pomohou určit prioritu ty, které chcete podporovat nejprve, přetypujte hlasování na webu User Voice:
 
@@ -100,9 +100,9 @@ Text žádosti obsahuje definici zdroje dat, která by měla obsahovat následuj
 * **Typ**: Musí být `documentdb`.
 * **přihlašovací údaje**:
   
-  * **připojovací řetězec**: Povinná hodnota. Zadejte informace o připojení k vaší databázi Azure Cosmos DB v následujícím formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` Kolekce MongoDB, přidejte **ApiKind = MongoDb** na připojovací řetězec: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  * **connectionString**: Povinná hodnota. Zadejte informace o připojení k vaší databázi Azure Cosmos DB v následujícím formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` Kolekce MongoDB, přidejte **ApiKind = MongoDb** na připojovací řetězec: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
   Vyhněte se čísla portů v adresu url koncového bodu. Pokud je číslo portu, nepůjde Azure Search k indexování databáze Azure Cosmos DB.
-* **kontejner**:
+* **container**:
   
   * **Název**: Povinná hodnota. Zadejte id kolekce databáze, který se má indexovat.
   * **dotaz**: Volitelné. Můžete zadat dotaz, který libovolný dokument JSON sloučit do ploché schéma, které Azure Search můžete indexovat. Dotazy nejsou podporovány pro kolekce MongoDB. 
@@ -182,7 +182,7 @@ Ujistěte se, že schéma cílový index je kompatibilní s schématu zdroje dok
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Mapování mezi JSON datové typy a typy dat Azure Search
 | JSON datového typu | Typy polí kompatibilní cílový index |
 | --- | --- |
-| BOOL |Typem Edm.Boolean Edm.String |
+| BOOL |Edm.Boolean, Edm.String |
 | Čísla, které vypadají jako celá čísla |Edm.Int32, Edm.Int64, Edm.String |
 | Čísla tento vzhled jako číslo s plovoucí čárkou body |Edm.Double, Edm.String |
 | Řetězec |Edm.String |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 2c0c8b49d3f7122b71a08bc57ac615ba9e0c0108
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f8ae6d9138a7413b0cca4cca7bcc47c13212674
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239436"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358047"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Představení skupin dostupnosti AlwaysOn SQL serveru na virtuálních počítačích Azure #
 
@@ -33,6 +33,8 @@ Diagram ukazuje části kompletní skupiny dostupnosti SQL serveru ve službě A
 ![Skupina dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
 Klíčovým rozdílem pro skupinu dostupnosti v Azure Virtual Machines je, že virtuální počítače Azure vyžadují [nástroj pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md). Nástroje pro vyrovnávání zatížení obsahuje IP adresy pro naslouchací proces skupiny dostupnosti. Pokud máte více než jedné skupině dostupnosti vyžaduje každá skupina naslouchací proces. Jeden nástroj pro vyrovnávání zatížení může podporovat víc naslouchacích procesů.
+
+Kromě toho v clusteru převzetí služeb při selhání hosta virtuálního počítače Azure IaaS, doporučujeme jednu síťovou kartu na serveru (uzlu clusteru) a jednu podsíť. Sítě Azure má fyzický redundanci díky další síťové adaptéry a podsítě zbytečné v clusteru hostů virtuálních počítačů Azure IaaS. I když sestavu ověření clusteru, vydá upozornění, že uzly jsou pouze v jedné síti dostupný, toto upozornění můžete ignorovat v clusterech převzetí služeb při selhání hosta virtuálního počítače Azure IaaS. 
 
 Až budete připravení k vytvoření skupiny dostupnosti systému SQL Server na Azure Virtual Machines, najdete v těchto kurzech.
 

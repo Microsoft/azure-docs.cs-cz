@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6bc8966113fd1d5ac855ed8c12aa5ad4b387b211
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2828330a0b00bb0695dcf91a84d0099d30c43183
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247231"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360118"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převést převod textu na řeč pomocí Pythonu
 
@@ -162,9 +162,10 @@ Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předpla
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Referenční informace k rozhraní API pro převod textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+> [Prozkoumejte ukázky Pythonu na Githubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
+* [Referenční informace k rozhraní API pro převod textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
 * [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)
 * [Záznam hlasu ukázky vytvořte vlastní hlasové](record-custom-voice-samples.md)

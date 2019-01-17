@@ -1,19 +1,19 @@
 ---
 title: Kopírování dat do vaší aplikace Microsoft Azure Data Box prostřednictvím systému souborů NFS | Dokumentace Microsoftu
-description: Zjistěte, jak zkopírovat data do Azure Data Boxu.
+description: Zjistěte, jak kopírovat data do Azure Data Box prostřednictvím systému souborů NFS
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/20/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 646acca7eeb2e811f8683a1d35ff8c6efae130da
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 1cd88e24b945bc6ce627b25b0645bf961039037b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319007"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359812"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím systému souborů NFS 
 
@@ -44,12 +44,13 @@ Založené na vybraný účet úložiště, zařízení Data Box vytvoří až:
 
 Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou entitami první úrovně kontejnery a entitami druhé úrovně objekty blob. Ve sdílených složkách souborů Azure jsou entitami první úrovně sdílené složky a entitami druhé úrovně soubory.
 
-Představte si následující příklad. 
-
-- Účet úložiště: *Mystoracct*
-- Sdílené složky pro objekt blob bloku: *Mystoracct_BlockBlob/my-container/blob*
-- Sdílené složky pro objekt blob stránky: *Mystoracct_PageBlob/my-container/blob*
-- Sdílené složky pro soubor: *Mystoracct_AzFile/my-share*
+V následující tabulce jsou uvedeny cesty UNC ke sdílené složky na vaše zařízení Data Box a Azure Storage cestu URL, kterého se nahrávají data. Konečná adresa URL služby Azure Storage cesta může být odvozena z cesty UNC sdílené složky.
+ 
+|                   |                                                            |
+|-------------------|--------------------------------------------------------------------------------|
+| Objekty BLOB bloku Azure | <li>Cesta UNC ke sdílené složky: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Objekty BLOB stránky Azure  | <li>Cesta UNC ke sdílené složky: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Soubory Azure       |<li>Cesta UNC ke sdílené složky: `//<DeviceIPAddres>/<StorageAccountName_AzFile>/<ShareName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |
 
 Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího postupu nakonfigurujte Data Box tak, aby povoloval přístup klientům systému souborů NFS.
 
@@ -71,14 +72,17 @@ Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího p
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
+    **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené v rámci objektů blob bloku a objektů blob stránky sdílené složky představuje kontejner, do kterého se data odesílají jako objekty BLOB. Nelze kopírovat soubory přímo do *$root* složky v účtu úložiště.
+
 ## <a name="copy-data-to-data-box"></a>Kopírování dat do Data Boxu
 
-Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Před kopírováním dat si nezapomeňte přečíst následující důležité informace:
+Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Než začnete kopírování dat, projděte si následující aspekty:
 
 - Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
 -  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení úložiště Azure a Data Boxu](data-box-limits.md). 
 - Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
 - Doporučujeme, abyste nepoužívali protokol SMB a systém souborů NFS současně a abyste nekopírovali stejná data do stejného cíle v Azure. V takových případech není možné určit konečný výsledek.
+- **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené v rámci objektů blob bloku a objektů blob stránky sdílené složky představuje kontejner, do kterého se data odesílají jako objekty BLOB. Nelze kopírovat soubory přímo do *$root* složky v účtu úložiště.
 
 Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -117,6 +121,10 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
      V tomto příkazu parametr j určuje úroveň paralelizace a hodnota X počet paralelních kopií.
 
      Doporučujeme začít s 16 paralelními kopiemi a zvyšovat počet vláken v závislosti na dostupnosti prostředků.
+
+- Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
+    
+   ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="prepare-to-ship"></a>Příprava k odeslání
 

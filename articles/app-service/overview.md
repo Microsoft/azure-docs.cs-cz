@@ -15,16 +15,16 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1abd9aac5f06eb8f588f4169fa3288bade2d08b9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5f3fed9255b86696b0e71c70adcd7ff23c0573d9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720352"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352440"
 ---
 # <a name="app-service-overview"></a>Přehled App Service
 
-*Azure App Service* je služba pro hostování webových aplikací, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce, ať už jde o .NET, .NET Core, Javu, Ruby, Node.js, PHP nebo Python. Aplikace se snadno spouštějí a škálují v prostředích založených na Windows. Informace o prostředích založených na Linuxu najdete v tématu [App Service v Linuxu](containers/app-service-linux-intro.md). 
+*Azure App Service* je služba pro hostování webových aplikací, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce, ať už jde o .NET, .NET Core, Javu, Ruby, Node.js, PHP nebo Python. Aplikace spouštění a škálování s lehkostí a elegancí na Windows i linuxem prostředí. Prostředí založené na Linuxu najdete v části App Service na [App Service v Linuxu](containers/app-service-linux-intro.md). 
 
 App Service nejen přidá do vaší aplikace, jako je zabezpečení, Vyrovnávání zatížení, automatické škálování, výkon Microsoft Azure a automatizované správy. Můžete také využívat její možnosti DevOps, jako jsou průběžné nasazování z Azure DevOps, GitHubu, Docker Hubu a dalších zdrojů, správa balíčků, přípravná prostředí, vlastní doména a certifikáty SSL. 
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 7d451f7eae16426c85ed5540b35993cd9b218b83
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d209e1f6924e5c7d6bba7512606504b7165f0ed3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033141"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359421"
 ---
 # <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>Konfigurovat bránu firewall protokolu IP pro váš účet Azure Cosmos DB
 
@@ -145,10 +145,10 @@ az cosmosdb update \
 Když zapnete zásady řízení přístupu IP pro váš účet Azure Cosmos DB, zablokujete všechny požadavky ke svému účtu z počítače mimo seznamu povolených rozsahů IP adres. Povolit portálu operace roviny dat, jako je procházení kontejnery a dotazování dokumentů, je potřeba explicitně povolit přístup na portál Azure s použitím **brány Firewall** podokně na portálu.
 
 ### <a name="sdks"></a>Sady SDK 
-Když zobrazujete prostředky Azure Cosmos DB s použitím sady SDK z počítače, které nejsou na seznamu povolených, obecný **404 Nenalezeno** vrátí odpověď se žádné další podrobnosti. Ověření seznamu povolených IP pro váš účet a ujistěte se, že správné zásady konfigurace se použije ke svému účtu Azure Cosmos DB. 
+Když zobrazujete prostředky Azure Cosmos DB s použitím sady SDK z počítače, které nejsou na seznamu povolených, obecný **403 Zakázáno** vrátí odpověď se žádné další podrobnosti. Ověření seznamu povolených IP pro váš účet a ujistěte se, že správné zásady konfigurace se použije ke svému účtu Azure Cosmos DB. 
 
 ### <a name="source-ips-in-blocked-requests"></a>Zdrojové IP adresy v Blokované požadavky
-Povolte protokolování diagnostiky ve vašem účtu Azure Cosmos DB. Tyto protokoly ukazují jednotlivých požadavků a odpovědí. Zprávy týkající se brány firewall jsou protokolovány interně 403 návratový kód. Pomocí filtrování tyto zprávy, uvidíte zdrojové IP adresy pro blokované požadavky. Zobrazit [protokolování diagnostiky služby Azure Cosmos DB](logging.md).
+Povolte protokolování diagnostiky ve vašem účtu Azure Cosmos DB. Tyto protokoly ukazují jednotlivých požadavků a odpovědí. Zprávy týkající se brány firewall se protokolují pod 403 návratový kód. Pomocí filtrování tyto zprávy, uvidíte zdrojové IP adresy pro blokované požadavky. Zobrazit [protokolování diagnostiky služby Azure Cosmos DB](logging.md).
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Povolené žádosti z podsítě s koncovým bodem služby pro službu Azure Cosmos DB
 Požadavky z podsítě ve virtuální síti, která má koncový bod služby pro službu Azure Cosmos DB povolené odešle virtuální síť a podsíť identity k účtům Azure Cosmos DB. Tyto požadavky nemají veřejné IP adresy zdroje, proto je zamítnout filtrů IP adres. Pokud chcete povolit přístup z konkrétních podsítí ve virtuálních sítích, přidejte seznam řízení přístupu, jak je uvedeno v [konfigurace virtuální sítě a přístupu na základě podsítě pro váš účet Azure Cosmos DB](how-to-configure-vnet-service-endpoint.md). Může trvat až 15 minut pro pravidla brány firewall, chcete-li použít.

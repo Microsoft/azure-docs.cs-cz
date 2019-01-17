@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725048"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359438"
 ---
 # <a name="configure-containers"></a>Konfigurace kontejnerů
 
@@ -116,7 +116,7 @@ Kontejner pro rozpoznávání tváře ukládá objekt blob, mezipaměť, metadat
   Kontejner pro rozpoznávání tváře využívá Azure Storage a Azure Cosmos DB k distribuci tyto čtyři typy dat napříč trvalého úložiště. Zpracování dat objektů BLOB a fronty Azure Storage. Metadata a mezipaměti dat zařizuje služba Azure Cosmos DB. Pokud kontejner pro rozpoznávání tváře je zastavena nebo odebrán, všechna data v úložišti pro tento kontejner zůstane uložená v Azure Storage a Azure Cosmos DB.  
   Prostředky využívané třídou scénáře služby Azure storage mají následující další požadavky
   * Prostředek služby Azure Storage, musíte použít StorageV2 druh účtu
-  * Prostředek služby Azure Cosmos DB musí používat služby Azure Cosmos DB pro rozhraní MongoDB API
+  * Prostředek služby Azure Cosmos DB musí používat rozhraní API Azure Cosmos DB pro MongoDB
 
 Scénáře využití služby storage a související konfigurační nastavení jsou spravovány `Storage` objektu v oblasti `CloudAI` konfigurační oddíl. Jsou k dispozici v následujícím nastavením konfigurace `Storage` objektu:
 

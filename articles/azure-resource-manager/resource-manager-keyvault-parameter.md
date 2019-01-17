@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a885fda23bb76091705ebe388f40a6eae7b56416
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078066"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351505"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení
 
@@ -84,14 +84,14 @@ Add-Type -AssemblyName System.Web
 [System.Web.Security.Membership]::GeneratePassword(16,3)
 ```
 
-Použití šablony Resource Manageru: viz [kurz: integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
+Použití šablony Resource Manageru: Zobrazit [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
 
 > [!NOTE]
-> Jednotlivé služby Azure má požadavky na konkrétní heslo. Například požadavky na Azure virtuální počítače najdete tady [jaké jsou požadavky na heslo při vytváření virtuálního počítače?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+> Každá služba Azure má specifické požadavky na hesla. Například požadavky na Azure virtuální počítače najdete tady [jaké jsou požadavky na heslo při vytváření virtuálního počítače?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="enable-access-to-the-secret"></a>Povolení přístupu k tajný kód
 
-Kromě nastavení `enabledForTemplateDeployment` k `true`, musí mít uživatel nasazení šablony `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro obor, který obsahuje Key Vault, včetně skupiny prostředků a Key Vault. [Vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) obě role udělit přístup. Pokud vytvoříte trezor klíčů, jste vlastníkem, abyste měli oprávnění. Pokud služby Key Vault je pod správou jiného předplatného, musí vlastník služby Key Vault grand přístup.
+Kromě nastavení `enabledForTemplateDeployment` k `true`, musí mít uživatel nasazení šablony `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro obor, který obsahuje Key Vault, včetně skupiny prostředků a Key Vault. [Vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) obě role udělit přístup. Pokud vytvoříte trezor klíčů, jste vlastníkem, abyste měli oprávnění. Pokud služby Key Vault je pod správou jiného předplatného, vlastník služby Key Vault musí udělit přístup.
 
 Následující postup ukazuje, jak vytvořit roli s minimální permssion a přiřazení uživatele
 1. Vytvořte soubor JSON s definicí vlastní role:

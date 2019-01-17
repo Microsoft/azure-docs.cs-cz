@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c4f5d6888d581cb44702a8d76e1ebbb13845091
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aef88a4fbc7d71ee1438333afd9773d1aba3ed9c
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582911"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359149"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
@@ -68,8 +68,8 @@ V této části vytvoříte kanál sestavení, která je nakonfigurována na aut
 1. V editoru kanálu zvolte fond agentů. 
     
     * Pokud chcete vytvářet moduly v amd64 platformu pro kontejnery Linuxu, zvolte **hostované 1604 Ubuntu**
-    * Pokud chcete vytvářet moduly v amd64 platformu pro kontejnery Windows, zvolte **hostované VS2017** 
-    * Pokud chcete vytvářet moduly v arm32v7 platformu pro kontejnery Linuxu, budete muset sadu si vlastního agenta sestavení návštěvou **spravovat** tlačítko.
+    * Pokud chcete vytvářet moduly v amd64 platformu pro kontejnery Windows 1809, budete muset [nastavte v místním prostředí agenta na Windows](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+    * Pokud chcete vytvářet moduly v arm32v7 platformu pro kontejnery Linuxu, budete muset [nastavení agenta v místním prostředí v Linuxu](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
     ![Konfigurace fondu agentů sestavení](./media/how-to-ci-cd/configure-env.png)
 

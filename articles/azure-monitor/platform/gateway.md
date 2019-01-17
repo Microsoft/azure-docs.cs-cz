@@ -11,20 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 01/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194228"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353035"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a Log Analytics pomocí Log Analytics gateway při přímé připojení nebo Operations Manager monitoruje počítače nemají přístup k Internetu.  Bránu Log Analytics, která je dopředné proxy server HTTP, který podporuje tunelování pomocí příkazu HTTP připojení HTTP, můžete shromažďovat data a odeslat do služby Azure Automation a Log Analytics jejich jménem.  
 
 Log Analytics gateway podporuje:
 
+* Vytváření sestav až čtyři stejné Log Analytics pracovní prostory agenti jeho jsou nakonfigurováni pomocí  
 * Azure Automation Hybrid Runbook Worker  
 * Počítače s Windows pomocí agenta Microsoft Monitoring Agent přímo připojené k pracovnímu prostoru Log Analytics
 * Počítačů s Linuxem pomocí agenta Log Analytics pro Linux přímo připojený k pracovnímu prostoru Log Analytics  
@@ -32,15 +33,15 @@ Log Analytics gateway podporuje:
 
 Pokud zásady zabezpečení IT neumožňují počítačů ve vaší síti pro připojení k Internetu, jako je například bod terminálů zařízení nebo serverů podporující IT služby, ale budete muset připojit je ke službě Azure Automation nebo Log Analytics, spravovat a monitorovat jejich , se dají konfigurovat přímo komunikovat s Log Analytics brány na konfigurace a předávání dat jejich jménem.  Pokud tyto počítače jsou nakonfigurované pomocí agenta Log Analytics k přímému připojení k pracovnímu prostoru Log Analytics, všechny počítače se místo toho komunikovat s Log Analytics gateway.  Brána přenáší data z agentů do služby přímo, nebudou analyzované žádné přenášená data.
 
-Když skupinu pro správu Operations Manageru je integrovaný s Log Analytics, dá se servery pro správu pro připojení k bráně Log Analytics pro příjem informací o konfiguraci a posílání shromážděných dat v závislosti na řešení, které jste povolili.  Agenti nástroje Operations Manager některá data, jako jsou výstrahy nástroje Operations Manager, posouzení konfigurace, prostoru instancí a data o kapacitě odeslat na server pro správu. Další velkého objemu dat, jako jsou protokoly služby IIS, výkonu a události zabezpečení odesílány přímo ke službě Log Analytics gateway.  Pokud máte nasazený v hraniční sítě nebo jiné izolované sítě pro monitorování systémů nedůvěryhodné nejméně jeden server brány Operations Manager nemůže komunikovat s využitím služby Log Analytics gateway.  Servery nástroje Operations Manager brány může jenom nahlásit to k serveru pro správu.  Když skupinu pro správu Operations Manageru je nakonfigurován pro komunikaci s bránou Log Analytics, informace o konfiguraci proxy serveru je automaticky distribuován do každý počítač spravovaný agentem, který je nakonfigurovaný ke shromažďování dat i pro Log Analytics Pokud nastavení je prázdné.    
+Když skupinu pro správu Operations Manageru je integrovaný s Log Analytics, dá se servery pro správu pro připojení k bráně Log Analytics pro příjem informací o konfiguraci a posílání shromážděných dat v závislosti na řešení, které jste povolili.  Agenti nástroje Operations Manager některá data, jako jsou výstrahy nástroje Operations Manager, posouzení konfigurace, prostoru instancí a data o kapacitě odeslat na server pro správu. Další velkého objemu dat, jako jsou protokoly služby IIS, výkonu a události zabezpečení odesílány přímo ke službě Log Analytics gateway.  Pokud máte nasazený v hraniční sítě nebo jiné izolované sítě pro monitorování systémů nedůvěryhodné nejméně jeden server brány Operations Manager nemůže komunikovat s Log Analytics gateway.  Servery nástroje Operations Manager brány může jenom nahlásit to k serveru pro správu.  Když skupinu pro správu Operations Manageru je nakonfigurován pro komunikaci s bránou Log Analytics, informace o konfiguraci proxy serveru je automaticky distribuován do každý počítač spravovaný agentem, který je nakonfigurovaný ke shromažďování dat i pro Log Analytics Pokud nastavení je prázdné.    
 
 Pro zajištění vysoké dostupnosti pro přímé připojení nebo operace skupinami pro správu komunikovat s Log Analytics prostřednictvím brány, můžete použít vyrovnávání zatížení sítě k přesměrování a distribuuje provoz mezi více serverů brány.  Pokud jeden server brány ocitne mimo provoz, provoz přesměruje do jiného uzlu k dispozici.  
 
-Agenta Log Analytics se vyžaduje na počítači se systémem Log Analytics gateway mohla identifikovat koncové body služby, které jsou potřebné ke komunikaci s a monitorování brány Log Analytics k analýze jeho výkonu nebo dat událostí.
+Agenta Log Analytics Windows se vyžaduje na počítači se systémem brány Log Analytics v pořadí a nejenom identifikovat, které jsou potřebné ke komunikaci s koncovými body služby, ale také sestavu do stejného pracovní prostory, které agentů nebo Operations Manager Skupina pro správu za bránou se nakonfigurují se. To je nezbytné pro bránu, aby se mohly komunikovat s jejich přiřazené pracovního prostoru. Může být brána s více adresami k až čtyři pracovním prostorům, je to celkový počet pracovních prostorů, které podporuje Windows agenta.  
 
-Každý agent musí mít připojení k síti pro svou bránu, aby agenti automaticky můžou přenášet data do a z brány. Instalace brány na řadiči domény se nedoporučuje.
+Každý agent musí mít síťové připojení k bráně, tak, aby agenti automaticky můžou přenášet data do a z něj. Instalace brány na řadiči domény se nedoporučuje.
 
-Následující diagram znázorňuje tok dat z přímí agenti Azure Automation a Log Analytics pomocí serveru brány.  Agenty musí mít jejich konfiguraci proxy serveru, které odpovídají stejný port, který má nakonfigurovanou komunikaci ke službě Log Analytics gateway.  
+Následující diagram znázorňuje tok dat z přímí agenti Azure Automation a Log Analytics pomocí serveru brány. Agenty musí mít jejich konfiguraci proxy serveru, které odpovídají stejný port, který má nakonfigurovanou bránu Log Analytics.  
 
 ![přímý agent komunikaci s diagram služby](./media/gateway/oms-omsgateway-agentdirectconnect.png)
 
@@ -56,7 +57,7 @@ Při určování počítač pro spuštění brány Log Analytics, musí splňova
 * Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2,  Windows Server 2008
 * Rozhraní .net framework 4.5
 * Minimálně 4 jádra procesoru a 8 GB paměti 
-* Agenta log Analytics pro Windows 
+* [Agenta log Analytics pro Windows](agent-windows.md) je nainstalovaný a nakonfigurovaný k ukládání dat do stejného pracovního prostoru jako agenti komunikovat prostřednictvím brány.  
 
 ### <a name="language-availability"></a>Dostupnost jazyka
 
@@ -83,12 +84,12 @@ Brána Log Analytics je dostupná v následujících jazycích:
 Log Analytics brána podporuje pouze zabezpečení TLS (Transport Layer) 1.0, 1.1 a 1.2.  Nepodporuje vrstvy SSL (Secure Sockets).  – Pomáhat zajistit zabezpečení dat při přenosu do služby Log Analytics, důrazně doporučujeme, abyste ke konfiguraci k bráně pro použití alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**.  Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Podporovaný počet připojení agenta
-V následující tabulce najdete podporovaný počet agentů komunikaci se serverem brány.  Tato podpora je založen na agentech nahrávání přibližně 200KB dat každých 6 sekund. Objem dat podle agenta testování je přibližně 2.7GB za den.
+V následující tabulce najdete podporovaný počet agentů komunikaci se serverem brány.  Tato podpora je založen na agentech nahrávání přibližně 200 KB dat každých 6 sekund. Objem dat podle agenta testování je přibližně 2.7 GB za den.
 
 |brána |Asi počet agentů podporována|  
 |--------|----------------------------------|  
-|-PROCESORU: Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 2 jádra<br> -Paměti: 4 GB<br> – Šířka pásma sítě: 1 Gb/s| 600|  
-|-PROCESORU: Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 4 jádra<br> -Paměti: 8 GB<br> – Šířka pásma sítě: 1 Gb/s| 1000|  
+|- CPU: Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 2 jádra<br> -Paměti: 4 GB<br> – Šířka pásma sítě: 1 Gb/s| 600|  
+|- CPU: Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 4 jádra<br> -Paměti: 8 GB<br> – Šířka pásma sítě: 1 Gb/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Stáhněte si bránu Log Analytics
 
@@ -120,11 +121,12 @@ Pokud chcete nainstalovat bránu, postupujte následovně.  Pokud jste nainstalo
    1. Zadejte číslo portu TCP pro použití brány. Instalační program nakonfiguruje příchozí pravidlo s tímto číslem portu v bráně Windows firewall.  Výchozí hodnota je 8080.
       Platný rozsah číslo portu je 1-65535. Pokud vstup do tohoto rozsahu nespadá, zobrazí se chybová zpráva.
    1. Pokud server, kde je nainstalovaná brána potřebuje komunikovat prostřednictvím proxy serveru, volitelně zadejte adresu proxy serveru, kde je potřeba brána připojení. Například, `http://myorgname.corp.contoso.com:80`.  Pokud je pole prázdné, brány se pokusí připojit přímo k Internetu.  Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo.<br><br> ![Konfigurace proxy serveru brány Průvodce](./media/gateway/gateway-wizard02.png)<br>   
-   1. Klikněte na tlačítko **Další**.
+   1. Klikněte na **Další**.
 1. Pokud nemáte povolenu službu Microsoft Update, zobrazí se stránka Microsoft Update, kde můžete vybrat, aby je. Proveďte výběr a potom klikněte na tlačítko **Další**. V opačném případě pokračujte k dalšímu kroku.
 1. Na **cílovou složku** stránky, ponechte výchozí složky C:\Program Files\OMS brány nebo zadejte umístění, kam chcete nainstalovat bránu a potom klikněte na tlačítko **Další**.
 1. Na **připraveno k instalaci** klikněte na **nainstalovat**. Řízení uživatelských účtů se může zobrazit žádost o oprávnění k instalaci. Pokud ano, klikněte na tlačítko **Ano**.
-1. Po dokončení instalace klikněte na tlačítko **Dokončit**. Můžete ověřit, že je služba spuštěná tak, že otevřete services.msc a ověřte, že **Log Analytics gateway** se zobrazí v seznamu služeb a jeho stav je **systémem**.<br><br> ![Služby – Brána Log Analytics](./media/gateway/gateway-service.png)  
+1. Po dokončení instalace klikněte na tlačítko **Dokončit**. Můžete ověřit, že je služba spuštěná tak, že otevřete services.msc a ověřte, že **bránu OMS** se zobrazí v seznamu služeb a jeho stav je **systémem**.<br><br> ![Služby – Brána Log Analytics](./media/gateway/gateway-service.png)  
+
 
 ## <a name="configure-network-load-balancing"></a>Konfigurace služby Vyrovnávání zatížení sítě 
 Můžete nakonfigurovat bránu pro zajištění vysoké dostupnosti pomocí služby Vyrovnávání zatížení sítě (NLB) buď Microsoft sítě vyrovnávání zatížení (NLB) nebo nástroje pro vyrovnávání zatížení na základě hardwaru.  Nástroje pro vyrovnávání zatížení spravuje provozu přesměrování mezi jeho uzly požadované připojení z agentů Log Analytics nebo serverů pro správu Operations Manageru. Pokud jeden server brány ocitne mimo provoz, provoz přesměrován do dalších uzlů.
@@ -133,14 +135,18 @@ Zjistěte, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížen
 
 1. Přihlaste do Windows serveru, který je členem clusteru programu NLB s účtem správce.  
 1. Ve Správci serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Správce vyrovnávání zatížení sítě**.
-1. Pro připojení k serveru služby Brána Log Analytics pomocí Microsoft Monitoring Agent nainstalován, klikněte pravým tlačítkem na IP adresu clusteru a potom klikněte na tlačítko **přidat hostitele do clusteru**.<br><br> ![Zatížení vyrovnávání správce – přidat hostitele do clusteru](./media/gateway/nlb02.png)<br> 
+1. Pro připojení k serveru brány Log Analytics pomocí Microsoft Monitoring Agent nainstalován, klikněte pravým tlačítkem na IP adresu clusteru a potom klikněte na tlačítko **přidat hostitele do clusteru**.<br><br> ![Zatížení vyrovnávání správce – přidat hostitele do clusteru](./media/gateway/nlb02.png)<br> 
 1. Zadejte IP adresu serveru brány, kterou chcete připojit.<br><br> ![Zatížení vyrovnávání správce – přidat hostitele do clusteru: Připojení](./media/gateway/nlb03.png) 
     
 ## <a name="configure-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurace agenta Log Analytics a skupinu pro správu Operations Manageru
 Následující část obsahuje pokyny ke konfiguraci přímo připojených agentů Log Analytics, skupiny pro správu Operations Manageru nebo Azure Automation Hybrid Runbook Worker ve službě Log Analytics gateway ke komunikaci s Azure Automation nebo protokolu Analytics.  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>Konfigurace samostatného agenta Log Analytics
-Požadavky a pokyny k instalaci agenta Log Analytics na počítačích Windows přímého připojení k Log Analytics najdete v tématu [počítače Windows se připojit ke službě Log Analytics](agent-windows.md) nebo Linux počítačů najdete v tématu [ Připojení počítačů s Linuxem k Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Místo zadání proxy serveru při konfiguraci agenta, nahraďte tuto hodnotu IP adresu serveru brány Log Analytics a jeho číslo portu.  Pokud jste nasadili více serverů brány za nástroj pro vyrovnávání zatížení sítě, je konfigurace proxy serveru agenta Log Analytics virtuální IP adresy služby NLB.  
+Požadavky a pokyny k instalaci agenta Log Analytics na bránu a v počítačích Windows přímého připojení k Log Analytics najdete v tématu [počítače Windows se připojit ke službě Log Analytics](agent-windows.md) nebo počítačů pro Linux najdete v článku [ Připojení počítačů s Linuxem k Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Místo zadání proxy serveru při konfiguraci agenta, nahraďte tuto hodnotu IP adresu serveru brány Log Analytics a jeho číslo portu. Pokud jste nasadili více serverů brány za nástroj pro vyrovnávání zatížení sítě, je konfigurace proxy serveru agenta Log Analytics virtuální IP adresy služby NLB.  
+
+Po instalaci agenta na server brány, můžete nakonfigurovat na hlásit do pracovního prostoru nebo pracovním prostorům agentů s bránou. Pokud agenta Log Analytics Windows není nainstalována na bráně, k se zapíše událost 300 **protokol brány OMS** protokolu událostí udávající agenta musí být nainstalovaný. Pokud je agent nainstalován, ale není nakonfigurovaný k ukládání dat do stejného pracovního prostoru jako agenti komunikaci přes něj, se zapíše událost 105 do stejného protokolu událostí, s informacemi o tom, že agent na bráně je potřeba nakonfigurovat k ukládání dat do stejného pracovního prostoru jako agenti s t he brány.
+
+Po dokončení konfigurace budete muset restartovat **bránu OMS** služby, aby se změny projevily. Jinak, brána odmítnou agentů pokouší komunikovat s Log Analytics a sestav id události 105 v **protokol brány OMS** protokolu událostí. To platí i při přidání nebo odebrání pracovního prostoru z konfigurace agenta na server brány.   
 
 Informace týkající se služby Automation Hybrid Runbook Worker, naleznete v tématu [nasazení funkce Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).
 
@@ -149,18 +155,20 @@ Chcete-li přidat server brány nástroje Operations Manager nakonfigurujete.  K
 
 Použití brány pro podporu nástroje Operations Manager, musíte mít:
 
-* Microsoft Monitoring Agent (verze agenta – **8.0.10900.0** nebo novější) na serveru služby Brána nainstalovaná a nakonfigurovaná pro pracovní prostory Log Analytics, se kterými chcete komunikovat.
+* Microsoft Monitoring Agent (verze agenta – **8.0.10900.0** nebo novější) na serveru služby Brána nainstalovaná a nakonfigurovaná s stejný pracovní prostory Log Analytics, že vaši skupinu pro správu je nakonfigurovaný k ukládání dat do.
 * Brány musí mít připojení k Internetu nebo připojení k proxy serveru, která provádí.
 
 > [!NOTE]
 > Pokud nezadáte hodnotu pro bránu, prázdné hodnoty se nasdílejí do všech agentů.
 > 
 
-Pokud je to první s pracovním prostorem Log Analytics je registrace skupiny pro správu nástroje Operations Manager, můžete zadat konfiguraci proxy serveru pro skupinu pro správu není k dispozici v konzoli Operations console.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Aby bylo možné nakonfigurovat integraci, jakož i všechny servery pro správu ve skupině pro správu, je potřeba v systému, ze kterého spouštíte konzolu Operations Console, aktualizovat systémovou konfiguraci proxy serveru pomocí nástroje Netsh.  
+Pokud je prvním s pracovním prostorem Log Analytics je registrace skupiny pro správu nástroje Operations Manager, můžete zadat konfiguraci proxy serveru pro skupinu pro správu není k dispozici v konzoli Operations console.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Vaše spuštění konzoly Operations console z ke konfiguraci integrace a všechny servery pro správu ve skupině pro správu aktualizujte konfiguraci proxy serveru systému pomocí nástroje Netsh v systému.  
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními.
-   a. Přejděte na **Start** a typ **cmd**.
-   b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
+
+    a. Přejděte na **Start** a typ **cmd**.  
+    b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte **spustit jako správce**.  
+
 1. Zadejte následující příkaz a stiskněte **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`

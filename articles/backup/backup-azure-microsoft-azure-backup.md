@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: f6a6a1deb55bf16c65982c0d58cd6d92559596af
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a57161fd379269f69ce4e83730a29588d9028b7a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728272"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351607"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup serveru
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Tento článek vysvětluje postup přípravy prostředí pro zálohování úloh
 >
 >
 
-Můžete taky chránit infrastruktury jako služby (IaaS) úloh, jako jsou virtuální počítače v Azure.
+MABS nasazené ve Virtuálním počítači Azure můžete zálohovat virtuální počítače v Azure, ale by měl být ve stejné doméně, abyste umožnili operace zálohování. Proces zálohování virtuálního počítače Azure zůstane stejná jako zálohování virtuálních počítačů v místním prostředí, ale nasazení MABS v Azure má některá omezení. Další informace o omezení najdete v části [DPM jako virtuální počítač Azure](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
 > Azure nabízí dva modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek obsahuje informace a postupy pro obnovení virtuální počítače nasazené pomocí modelu Resource Manager.
@@ -52,7 +52,7 @@ Pokud nechcete pro spuštění základního serveru v Azure, můžete spustit na
 
 | Operační systém | Platforma | Skladová jednotka (SKU) |
 |:--- | --- |:--- |
-| Windows Server. 2019 |64bitová verze |Standard, Datacenter, Essentials (MABS V3 a novější) |
+| Windows Server 2019 |64bitová verze |Standard, Datacenter, Essentials (MABS V3 a novější) |
 | Windows Server 2016 a nejnovější aktualizace Service packu |64bitová verze |Standard, Datacenter, Essentials (MABS V2 a novější) |
 | Windows Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Datacenter, Foundation |
 | Windows Server 2012 a nejnovější aktualizace Service Packu |64bitová verze |Datacenter, Foundation, Standard |
@@ -263,7 +263,7 @@ Pokud potřebujete přesunout MABS na nový server, a přitom zachovat úložiš
 9. Obnovení SQL databázi DPMDB
 10. Z příkazového řádku správce na nový disk cd serveru do služby Microsoft Azure Backup nainstalujte umístění a složky bin
 
-Příklad cesty: C:\windows\system32 > cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
+Příklad cesty: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
 do Azure zálohovat spusťte DPMSYNC-SYNC
 
 10) Spusťte nástroj DPMSYNC-SYNC Poznámka: Pokud nové disky, které jste přidali do fondu úložiště DPM namísto přesouvání staré, pak spusťte DPMSYNC - Reallocatereplica

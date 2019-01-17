@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 51c0fefc0d18127da1f5fc513b493407510a071b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4bae38b7596504d8de452e445c05e1c973aba78a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994432"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354577"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -341,6 +341,7 @@ Azure Storage poskytuje následující metriky kapacity ve službě Azure Monito
 | BlobCapacity | Celkové využití úložiště objektů Blob v účtu úložiště. <br/><br/> Jednotka: B <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 <br/> Dimenze: BlobType ([definice](#metrics-dimensions)) |
 | BlobCount    | Počet objektů blob uložených v účtu úložiště. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 <br/> Dimenze: BlobType ([definice](#metrics-dimensions)) |
 | ContainerCount    | Počet kontejnerů v účtu úložiště. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 |
+| IndexCapacity     | Velikost úložiště využitá službou ADLS Gen2 hierarchické indexu <br/><br/> Jednotka: B <br/> Typ agregace: Průměr <br/> Příklad hodnoty: 1024 |
 
 ### <a name="table-storage"></a>Úložiště Table
 
@@ -368,7 +369,7 @@ Azure Storage poskytuje následující metriky kapacity ve službě Azure Monito
 
 ## <a name="transaction-metrics"></a>Metriku transakcí
 
-Transakce se odesílají ze služby Azure Storage do Azure monitoru každou minutu. Všechny transakce metriky jsou k dispozici na úrovni účtu a služby (úložiště objektů Blob, Table storage, Azure Files a Queue storage). Agregační interval definuje časový interval, který se zobrazí hodnoty metrik. Podporovaný agregační zrna pro všechny metriky transakce jsou PT1H a PT1M.
+Ze služby Azure Storage do Azure monitoru jsou emitovány metriku transakcí na každý požadavek na účet úložiště. V případě žádná aktivita v účtu úložiště nebudou žádná data na metriku transakcí v období. Všechny transakce metriky jsou k dispozici na úrovni účtu a služby (úložiště objektů Blob, Table storage, Azure Files a Queue storage). Agregační interval definuje časový interval, který se zobrazí hodnoty metrik. Podporovaný agregační zrna pro všechny metriky transakce jsou PT1H a PT1M.
 
 Azure Storage poskytuje následující metriku transakcí ve službě Azure Monitor.
 
@@ -379,7 +380,7 @@ Azure Storage poskytuje následující metriku transakcí ve službě Azure Moni
 | Výchozí přenos | Množství výchozích dat. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat. <br/><br/> Jednotka: B <br/> Typ agregace: Celkem <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
 | SuccessServerLatency | Průměrná doba zpracování úspěšného požadavku službou Azure Storage. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu. <br/><br/> Jednotka: Milisekundy <br/> Typ agregace: Průměr <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
 | SuccessE2ELatency | Průměrná celková latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi. <br/><br/> Jednotka: Milisekundy <br/> Typ agregace: Průměr <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
-| Dostupnost | Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota pro celkový počet fakturovatelných požadavků vydělí počtem příslušných požadavků, včetně požadavků došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API. <br/><br/> Jednotka: Procento <br/> Typ agregace: Průměr <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 99,99 |
+| Dostupnost | Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že hodnota pro celkový počet fakturovatelných požadavků vydělí počtem příslušných požadavků, včetně požadavků došlo k neočekávané chybě. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API. <br/><br/> Jednotka: Procento <br/> Typ agregace: Průměr <br/> Příslušné dimenze: GeoType ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 99.99 |
 
 ## <a name="metrics-dimensions"></a>Dimenze metriky
 

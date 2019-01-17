@@ -1,25 +1,25 @@
 ---
 title: Pochopení osvědčených postupů zabezpečení digitální dvojče Azure | Dokumentace Microsoftu
-description: Digitální dvojče osvědčené postupy zabezpečení Azure
+description: Digitální dvojče osvědčené postupy zabezpečení Azure.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 01/15/2019
 ms.author: adgera
-ms.openlocfilehash: 6ca01523744dbce15f8fdb3bbe2d5a9b44510f3f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 16bb148a0b3a424c9ba3aaae422f423ebd40793b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959473"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358809"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
-Zabezpečení Azure digitální dvojče umožňuje přesné přístup ke konkrétním prostředkům a akcím v grafu IoT. Dělá to pomocí granulární role a oprávnění správy nazývá řízení přístupu na základě rolí.
+Zabezpečení Azure digitální dvojče umožňuje přesné přístup ke konkrétním prostředkům a akcím v grafu IoT. Provádí se prostřednictvím detailní role a oprávnění správy volá [řízení přístupu na základě rolí](./security-role-based-access-control.md).
 
-Azure digitální dvojče používá také další funkce zabezpečení, které jsou k dispozici s využitím Azure IoT, které zahrnuje službu Azure Active Directory (Azure AD). Z tohoto důvodu konfigurace aplikace pro digitální dvojče Azure zahrnuje mnoho stejných pomocí [postupy zabezpečení Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/) aktuálně doporučené.
+Azure digitální dvojče používá také další funkce zabezpečení, které se nacházejí ve službě Azure IoT, včetně služby Azure Active Directory (Azure AD). Z tohoto důvodu, konfiguraci a zabezpečení aplikace založené na Azure digitální dvojče využívá mnoho stejných [postupy zabezpečení Azure IoT](../iot-fundamentals/iot-security-best-practices.md) aktuálně doporučené.
 
 Tento článek shrnuje klíčové doporučené postupy.
 
@@ -42,25 +42,27 @@ Některé klíče postupy k zabezpečení bezpečně prostorem IoT patří:
 > [!div class="checklist"]
 > * Šifrovat data uložená, uložené nebo trvalé.
 > * Vyžadovat hesla nebo klíče pravidelně změnit nebo aktualizovat.
-> * Důkladným omezením přístupu a oprávnění rolí. V části "přístup na základě rolí k řízení osvědčené postupy."
+> * Důkladným omezením přístupu a oprávnění rolí. V části [osvědčené postupy pro řízení přístupu na základě Role](#rbac) níže.
 > * Pomocí výkonných šifrování. Vyžadovat dlouhá hesla a používají zabezpečené protokoly a dvojúrovňového ověřování.
 
-Monitorujte prostředky IoT a sledujte odlehlé hodnoty, hrozby nebo parametry prostředků, které spadají mimo rozsah běžné operace. Pomocí Azure Analytics ke správě, monitorování.
+[Monitorování](./how-to-configure-monitoring.md) prostředky IoT a sledujte odlehlé hodnoty, hrozby nebo parametry prostředků, které spadají mimo rozsah běžné operace. Pomocí Azure Analytics pro monitorování správy.
 
 > [!NOTE]
 > Další informace o monitorování a zpracování událostí naleznete v tématu [směrování událostí a zpráv pomocí Azure digitální dvojče](./concepts-events-routing.md).
 
 ## <a name="azure-active-directory-best-practices"></a>Osvědčené postupy pro Azure Active Directory
 
-Azure digitální dvojče používá Azure AD k ověřování uživatelů a ochraně aplikací. Azure AD podporuje ověřování pro širokou škálu moderní architektury. Všechny založených na standardních oborových protokolů, jako jsou OAuth 2.0 nebo OpenID Connect. Pár klíčů postupy zabezpečení IoT prostoru pro Azure AD patří:
+Azure digitální dvojče používá Azure Active Directory k ověřování uživatelů a ochraně aplikací. Azure Active Directory podporuje ověřování pro širokou škálu moderní architektury. Všechny založených na standardních oborových protokolů, jako jsou OAuth 2.0 nebo OpenID Connect. Pár klíčů postupy zabezpečení IoT prostoru pro Azure Active Directory jsou následující:
 
 > [!div class="checklist"]
-> * Store klíčů nebo tajných kódů aplikace Azure AD v zabezpečeném umístění, jako například [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
-> * Použít certifikát vydaný důvěryhodný [certifikační autorita](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) místo tajných kódů aplikace k ověření.
+> * Store klíčů nebo tajných kódů aplikace Azure Active Directory v zabezpečeném umístění, jako například [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+> * Použít certifikát vydaný důvěryhodný [certifikační autorita](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) místo tajných kódů aplikace k ověření.
 > * Omezit obor přístupu pro token OAuth 2.0.
 > * Zkontrolujte dobu, kterou je token platný a zda zůstane platný token.
 > * Nastavte odpovídající délky času, které jsou platné pro tokeny.
 > * Aktualizujte vypršení platnosti tokenů.
+
+<div id="rbac"></div>
 
 ## <a name="role-based-access-control-best-practices"></a>Osvědčené postupy pro řízení přístupu na základě role
 
@@ -68,8 +70,8 @@ Azure digitální dvojče používá Azure AD k ověřování uživatelů a ochr
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o osvědčených postupech pro Azure IoT, [osvědčené postupy zabezpečení IoT](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/).
+* Další informace o osvědčených postupech pro Azure IoT, [osvědčené postupy zabezpečení IoT](../iot-fundamentals/iot-security-best-practices.md).
 
-Další informace o řízení přístupu na základě rolí najdete v článku [řízení přístupu na základě rolí](./security-role-based-access-control.md).
+* Další informace o řízení přístupu na základě rolí najdete v článku [řízení přístupu na základě rolí](./security-role-based-access-control.md).
 
-Další informace o ověřování najdete v článku [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
+* Další informace o ověřování najdete v článku [ověřování pomocí rozhraní API](./security-authenticating-apis.md).

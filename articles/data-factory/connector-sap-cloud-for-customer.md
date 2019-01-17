@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 360cf92686682e65cf5348ee717bbb80cdc85cb4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e4625b934f9e1cf98254f3dee59f9c26e8e16fb5
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016167"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353375"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z cloudu SAP pro zákazníka (C4C) pomocí služby Azure Data Factory
 
@@ -91,7 +91,7 @@ Ke zkopírování dat z cloudu SAP pro zákazníka, nastavte vlastnost typ datov
     "name": "SAPC4CDataset",
     "properties": {
         "type": "SapCloudForCustomerResource",
-        "typePoperties": {
+        "typeProperties": {
             "path": "<path e.g. LeadCollection>"
         },
         "linkedServiceName": {

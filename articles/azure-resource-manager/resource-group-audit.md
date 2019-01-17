@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 09f7fba2b8ae3b3ccc8710ffe9302d02d311c74c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 636e4d5216f87440463fbaecd7f6c7a5a25c7502
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514328"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359387"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazení protokolů aktivit pro auditování akcí u prostředků
 
@@ -53,7 +53,7 @@ Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhr
 
     ![nastavení filtru](./media/resource-group-audit/set-filter.png)
 
-4. Pokud je potřeba znovu spustit dotaz, vyberte **Uložit** a zadejte název dotazu.
+4. Pokud je potřeba znovu spustit dotaz, vyberte **připnout aktuální filtry** a pojmenujte ho.
 
     ![Uložit dotaz](./media/resource-group-audit/save-query.png)
 5. K rychlému spouštění dotazu, můžete vybrat jednu z předdefinovaných dotazů, jako je například selhání nasazení.

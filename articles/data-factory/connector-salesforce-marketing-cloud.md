@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 2a469864a7b4a693ecc908fda360da1b82e8c5f3
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: de472cd25997b0c48f258927b2617c2399b2bb21
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200441"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353358"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopírování dat z cloudu marketingových Salesforce pomocí Azure Data Factory (Preview)
 
@@ -49,7 +49,7 @@ Pro Marketing Cloud Salesforce propojené služby jsou podporovány následujíc
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **SalesforceMarketingCloud** | Ano |
 | ID klienta | ID klienta přidružené k aplikaci Salesforce Marketing Cloud.  | Ano |
-| ClientSecret | Tajný kód klienta přidruženou k aplikaci Salesforce Marketing Cloud. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování acitivty o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
+| ClientSecret | Tajný kód klienta přidruženou k aplikaci Salesforce Marketing Cloud. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |

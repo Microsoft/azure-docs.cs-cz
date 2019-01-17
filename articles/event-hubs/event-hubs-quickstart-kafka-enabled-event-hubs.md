@@ -1,6 +1,6 @@
 ---
 title: Stream do centra událostí povolené Kafka – Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek obsahuje informace do datového proudu do služby Azure Event Hubs pomocí rozhraní API a protokol Kafka.
+description: Tento článek obsahuje informace jak datový proud do služby Azure Event Hubs pomocí rozhraní API a protokol Kafka.
 services: event-hubs
 author: basilhariri
 ms.author: bahariri
@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.openlocfilehash: 541095ddff19f16e3050d79846a339d4e5bad2b8
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 19d903a4083c432ac3932189ad8a6890be9014fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244286"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354225"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamování do služby Event Hubs pro Apache Kafka
 Tento rychlý start ukazuje, jak streamovat do služby Event Hubs s podporou Kafka, aniž byste museli měnit klienty protokolů nebo provozovat vlastní clustery. Zjistíte, jak prostou změnou konfigurace aplikací zajistit komunikaci producentů a příjemců se službou Event Hubs s podporou Kafka. Azure Event Hubs podporuje [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html).

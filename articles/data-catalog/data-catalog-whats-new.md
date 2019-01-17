@@ -8,12 +8,12 @@ ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 86c8e8c10811b1478ae2c853f1efef5b6b5caa83
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 782f68c52285e787b9dfc6d21352ab2d53876085
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406324"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353137"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Co je nového ve službě Azure Data Catalog
 Aktualizace **Azure Data Catalog** pravidelně se vydávají. Ne každá vydaná verze obsahuje nové funkce přístupných, protože některých vydání se zaměřuje na možnosti back-end služby. Na této stránce ukazuje novou přístupných možnosti přidané do služby Azure Data Catalog.
@@ -45,7 +45,7 @@ Od srpna 2017 jsme přidali následující funkce do služby Azure Data Catalog:
 
 ## <a name="whats-new-for-july-2017"></a>Co je nového. července 2017 
 Od července 2017 jsme přidali následující funkce do služby Azure Data Catalog:
-*   Podpora pro podrobnější kontrolu nad operace s metadaty permited včetně:
+*   Podpora pro podrobnější kontrolu nad operací povolených metadata, včetně:
     - Správci katalogu můžou omezit schopnosti uživatelů přispívat značky a související metadata do katalogu, povolení přístup jen pro čtení do katalogu.
     - Správci katalogu můžou omezit schopnosti uživatelů registrovat nové zdroje dat v katalogu.
     - Správci katalogu můžou omezit schopnosti uživatelů převzít vlastnictví dat asset metadat v katalogu.
@@ -153,7 +153,7 @@ Od února 2016 následující funkce byly přidány do služby Azure Data Catalo
 
 * Výběr zdroje nově přepracovaném dat prostředí v nástroji pro registraci zdroje dat Azure Data Catalog. Nástroj registrace zdroje dat byla aktualizována, aby bylo snazší najít a vybrat ze zdroje dat podporované službou Azure Data Catalog.
 * Podpora dalších 10 jazyků na portálu Azure Data Catalog a nástroj registrace zdroje dat Vedle angličtiny se teď je k dispozici v němčina, španělština, francouzština, italština, japonština, korejština, brazilská portugalština, ruština, zjednodušená čínština a tradiční čínštiny prostředí Azure Data Catalog Uživatelské prostředí Azure Data Catalog je lokalizován podle jazykové předvolby nastavit ve Windows nebo ve webovém prohlížeči uživatele.
-* Podpora pro geografickou replikaci dat Azure Data Catalog pro obchodní kontinuity podnikových procesů a zotavení po havárii. Veškerý obsah v Azure Data Catalog, včetně metadat a crowdsourcingu poznámky zdroje dat jsou nyní replikovat mezi dvěma oblastmi Azure bez dalších poplatků pro zákazníky. Oblastí Azure jsou předem spárované, aspoň 500 mil od sebe a postupujte podle mapování, jak je popsáno v [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure](../best-practices-availability-paired-regions.md).
+* Podpora pro geografickou replikaci dat Azure Data Catalog pro obchodní kontinuity podnikových procesů a zotavení po havárii. Veškerý obsah v Azure Data Catalog, včetně metadat a crowdsourcingu poznámky zdroje dat jsou nyní replikovat mezi dvěma oblastmi Azure bez dalších poplatků pro zákazníky. Oblastí Azure jsou předem spárované, aspoň 500 mil od sebe a postupujte podle mapování, jak je popsáno v [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Spárovaných oblastech Azure](../best-practices-availability-paired-regions.md).
 * Podpora pro změnu předplatné Azure, které používají Azure Data Catalog. Správci služby Azure Data Catalog můžete na stránce nastavení na portálu Azure Data Catalog a vyberte jiné předplatné Azure pro účely fakturace.
 
 ## <a name="whats-new-for-january-2016"></a>Co je nového pro leden 2016
@@ -263,6 +263,6 @@ K srpnu 2015 jsme přidali následující funkce do služby Azure Data Catalog:
 * Podpora pro poskytování informací o žádosti o přístup pro registrované datové zdroje. K registrovaným datovým prostředkům mohou uživatelé nyní poskytují pokyny pro žádost o přístup, včetně e-mailu odkazy nebo adresy URL, tak jednoduše integrovat do existujících nástrojů a procesů.
 * Popisy tlačítek pro značky a odborníky, aby bylo snazší zjistit, co uživatelé zadali metadat jaký registrovaných datových assetů.
 * Přidali jsme nové tlačítko "User" a nabídky pro naše horním navigačním panelu. Tato nabídka umožňuje uživateli zobrazit účet použitý k přihlášení ke službě Azure Data Catalog a odhlásit se v případě potřeby. Tato nabídka také zobrazí název katalogu, který je užitečný pro vývojáře pomocí REST API služby Azure Data Catalog.
-* Standard Edition pouze: Při přidávání vlastníky k datovým assetům, Azure Data Catalog teď podporuje uživatelské účty a skupiny zabezpečení jako vlastníky. Přidat skupinu zabezpečení jako vlastník vybrané datové prostředky, můžete zadat zobrazovaný název skupiny nebo skupiny (UPN) e-mailovou adresu, pokud jej obsahuje.
+* Pouze standardní edice: Při přidávání vlastníky k datovým assetům, Azure Data Catalog teď podporuje uživatelské účty a skupiny zabezpečení jako vlastníci. Přidat skupinu zabezpečení jako vlastník vybrané datové prostředky, můžete zadat zobrazovaný název skupiny nebo skupiny (UPN) e-mailovou adresu, pokud jej obsahuje.
 * Podpora pro zdroje dat Azure Blob Storage. Uživatelé teď můžete registrovat a zjišťovat objekty BLOB služby Azure Storage a adresáře.
 

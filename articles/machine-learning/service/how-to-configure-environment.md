@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/14/2018
 ms.custom: seodec18
-ms.openlocfilehash: db853be456dbf893163f53bbc797cf12172d38b7
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261090"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353222"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -264,15 +264,15 @@ Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
 
 1. Nainstalujte a připojte balíček sady SDK Azure Machine Learning k vašemu clusteru.  
 
-    * [Vytvoření knihovny](https://docs.databricks.com/user-guide/libraries.html#create-a-library) s jedním z těchto nastavení (zvolte pouze jednu z těchto možností):
+    * [Vytvoření knihovny](https://docs.databricks.com/user-guide/libraries.html#create-a-library) s jedním z těchto nastavení (_pouze jednu z těchto možností zvolte_):
     
-        * Instalace sady SDK Azure Machine Learning bez automatizované strojového učení funkce:
+        * Chcete-li nainstalovat sadu SDK Azure Machine Learning _bez_ automatizované funkce machine learning:
             | Nastavení | Hodnota |
             |----|---|
             |Zdroj | Nahrát Python Egg nebo PyPI
             |Název PyPi | azureml-sdk[databricks]
     
-        * Instalace sady SDK Azure Machine Learning pomocí automatizovaných machine learning:
+        * Chcete-li nainstalovat sadu SDK Azure Machine Learning _s_ automatizované strojového učení:
             | Nastavení | Hodnota |
             |----|---|
             |Zdroj | Nahrát Python Egg nebo PyPI
@@ -286,9 +286,11 @@ Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
 
     Pokud máte starší verzi sady SDK, zrušte zaškrtnutí možnosti z nainstalovaných knihoven clusteru a přesunout do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po této dochází k nějakému problému, odpojit a znovu ho připojte svůj cluster.
 
-    Jakmile budete hotovi, knihovny je připojený, jak je znázorněno na následujícím obrázku. Mějte na paměti tyto [běžných potíží s Databricks](resource-known-issues.md#databricks).
+    Jakmile budete hotovi, knihovny je připojený, jak je znázorněno na následujících obrázcích. Mějte na paměti tyto [běžných potíží s Databricks](resource-known-issues.md#databricks).
 
-   ![Sada SDK nainstalované v Databricks ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
+    * Pokud jste nainstalovali sadu SDK Azure Machine Learning _bez_ automatizované strojového učení ![SDK bez automatizované strojového učení, které jsou nainstalované v Databricks ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+
+    * Pokud jste nainstalovali sadu SDK Azure Machine Learning _s_ automatizované strojového učení ![SDK s automatizované strojového učení, které jsou nainstalované v Databricks ](./media/how-to-configure-environment/automlonadb.jpg)
 
    Pokud tento krok nezdaří, restartujte svůj cluster následujícím způsobem:
 

@@ -10,12 +10,12 @@ ms.service: azure-functions; cosmos-db
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 19a6ebaeb0c643c82277656ebade576c79ed0211
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 112442c280ee4b1b263a30c8976ea6d51f04e036
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001953"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359727"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 1.x
 
@@ -33,7 +33,7 @@ Tento článek vysvětluje, jak pracovat s [služby Azure Cosmos DB](../cosmos-d
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Vazby Azure Cosmos DB se podporují jenom pro použití s rozhraním SQL API. Pro všechny ostatní Azure Cosmos DB API, by měl přístup k databázi z funkce s použitím statické klienta pro vaše rozhraní API, včetně [služby Azure Cosmos DB pro rozhraní MongoDB API](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [rozhraní Cassandra API](../cosmos-db/cassandra-introduction.md), [Gremlin API](../cosmos-db/graph-introduction.md), a [Table API](../cosmos-db/table-introduction.md).
+> Vazby Azure Cosmos DB se podporují jenom pro použití s rozhraním SQL API. Pro všechny ostatní Azure Cosmos DB API, by měl přístup k databázi z funkce s použitím statické klienta pro vaše rozhraní API, včetně [rozhraní API služby Azure Cosmos DB pro MongoDB](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [rozhraní Cassandra API](../cosmos-db/cassandra-introduction.md), [Gremlin API](../cosmos-db/graph-introduction.md), a [Table API](../cosmos-db/table-introduction.md).
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
@@ -200,7 +200,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**leaseRenewInterval**| **leaseRenewInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval obnovení pro všechny zapůjčení pro oddíly právě načtený v instanci. Výchozí hodnota je 17000 (17 sekund).
 |**checkpointFrequency**| **checkpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po každé volání funkce.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Volitelné) Pokud nastavíte, přizpůsobuje maximální objem přijatých položek pro volání funkce.
-|**startFromBeginning**| **startFromBeginning**| (Volitelné) Pokud nastavíte, sdělí triggeru pro spuštění čtení změny od začátku této historie kolekce místo aktuální čas. Toto funguje, pouze při prvním spuštění triggeru, stejně jako v následné spuštění, kontrolní body jsou již uloženy. Nastavení na `true` pokud existuje zapůjčení už vytvořili nemá žádný vliv.
+|**startFromBeginning**| **StartFromBeginning**| (Volitelné) Pokud nastavíte, sdělí triggeru pro spuštění čtení změny od začátku této historie kolekce místo aktuální čas. Toto funguje, pouze při prvním spuštění triggeru, stejně jako v následné spuštění, kontrolní body jsou již uloženy. Nastavení na `true` pokud existuje zapůjčení už vytvořili nemá žádný vliv.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

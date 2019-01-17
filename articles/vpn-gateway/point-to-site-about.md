@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: bf84ec16d5d13439796b386a8ab4f40840ca4eaa
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 682d1d123d3381a52c9d356cd1bf226d2a847df4
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438406"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352865"
 ---
 # <a name="about-point-to-site-vpn"></a>Informace o VPN typu Point-to-Site
 
@@ -22,7 +22,7 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 Point-to-site VPN můžete použít jednu z následujících protokolů:
 
-* OpenVPN, SSL/TLS na základě protokol VPN. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. OpenVPN je možné se připojit z Androidu, iOS, zařízení se systémy Linux a Mac (OSX verze 10.11 a novější).
+* OpenVPN, SSL/TLS na základě protokol VPN. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. OpenVPN je možné se připojit z Android, iOS (verze 11.0 a vyšší), zařízení se systémy Linux a Mac (OSX verze 10.13 a vyšší).
 
 * Zabezpečte SSTP Socket Tunneling Protocol (), speciální protokol VPN založený na protokolu SSL. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. SSTP je podporována pouze na zařízeních s Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
 
@@ -57,7 +57,7 @@ Server protokolu RADIUS můžete také integrovat s jinými systémy pro extern�
 >OpenVPN protokol není podporován ověřováním pomocí protokolu RADIUS.
 >
 
-![Point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
+![point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Jaké jsou požadavky na konfiguraci klienta?
 

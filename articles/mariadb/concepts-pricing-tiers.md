@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b85737adb8f1c9481fb4b7b2005d2856d2bce9f5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: bb6e27f92f60712cce71ba6fca53b40af00ee714
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544579"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354446"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database pro MariaDB cenové úrovně
 
@@ -53,8 +53,7 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 
 Můžete přidat další kapacitu, během a po vytvoření serveru. Úroveň Basic neposkytuje záruka vstupně-výstupních operací. V obecné účely a optimalizovaný pro paměť cenové úrovně se škálují vstupně-výstupních operací s velikost zřízeného úložiště poměr 3:1.
 
-Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure. Důležité metriky pro monitorování se limitu úložiště, procento úložiště, využité úložiště a vstupně-výstupních operací procent.
-<!--[storage limit, storage percentage, storage used, and IO percent](concepts-monitoring.md)-->
+Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure. Jsou důležité metriky pro monitorování [limitu úložiště, procento úložiště, využité úložiště a vstupně-výstupních operací procent](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
@@ -64,7 +63,7 @@ Zatímco se služba pokouší nastavit server jen pro čtení, všechny požadav
 
 Doporučujeme nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty, tomu se můžete vyhnout, převedení do stavu jen pro čtení. 
 
-<!--For more information, see the documentation on [how to set up an alert](howto-alert-on-metric.md).-->
+Další informace najdete v dokumentaci na [jak nastavit výstrahu](howto-alert-metric.md).
 
 ## <a name="backup"></a>Backup
 

@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 5b302be582bd22a7b38601c90f5fe475062afb26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0d9d10214f8bc61a914de3f72ddae13679f2811e
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239667"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358503"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Integrace ostatních služeb s využitím SQL Data Warehouse
 Kromě jejích klíčových funkcí SQL Data Warehouse umožňuje integrovat s mnoha dalšími službami v Azure. Mezi tyto služby patří:
@@ -30,8 +30,8 @@ SQL Data Warehouse dál integrovat další služby napříč Azure a další [pa
 ## <a name="power-bi"></a>Power BI
 Integrace Power BI umožňuje kombinovat výkon služby SQL Data Warehouse s dynamické generování sestav a vizualizací Power BI. Integrace Power BI aktuálně zahrnuje:
 
-* **Přímé připojení**: více rozšířených připojení s logickou přenosu směrem dolů na SQL Data Warehouse. Přenosu směrem dolů poskytuje rychlejší analýzy ve větším měřítku.
-* **Otevřít v Power BI**: tlačítko Otevřít v Power BI předává informace o instanci Power BI za účelem simplifed způsob, jak připojit.
+* **Přímém připojení**: Pokročilejší připojení logické přenosu směrem dolů na SQL Data Warehouse. Přenosu směrem dolů poskytuje rychlejší analýzy ve větším měřítku.
+* **Otevřít v Power BI**: Tlačítko Otevřít v Power BI předává informace o instanci Power BI za účelem simplifed způsob, jak připojit.
 
 Další informace najdete v tématu [integrace s Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), nebo [dokumentaci k Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx).
 
@@ -39,22 +39,22 @@ Další informace najdete v tématu [integrace s Power BI](sql-data-warehouse-ge
 Azure Data Factory poskytuje uživatelům spravovaná platforma pro vytváření komplexních extrakce a načítání kanály. SQL Data Warehouse integrace s Azure Data Factory obsahuje:
 
 * **Uložené procedury**: Orchestrace spuštění uložených procedur na SQL Data Warehouse.
-* **Kopírování**: ADF používá k přesunu dat do SQL Data Warehouse. Tato operace můžete použít mechanismus přesun ADF standardní dat nebo PolyBase pod pokličkou. 
+* **Kopírování**: Přesun dat do SQL Data Warehouse pomocí ADF. Tato operace můžete použít mechanismus přesun ADF standardní dat nebo PolyBase pod pokličkou. 
 
-Další informace najdete v tématu [integrace s Azure Data Factory](sql-data-warehouse-get-started-visualize-with-power-bi.md).
+Další informace najdete v tématu [integrace s Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 Azure Machine Learning je plně spravovaná analytická služba, která umožňuje vytvářet složité modely pomocí rozsáhlé sady nástrojů pro prediktivní. SQL Data Warehouse je podporovaný jako zdroj i cíl pro tyto modely s následujícími funkcemi:
 
-* **Čtení dat:** jednotka modely ve velkém měřítku pomocí jazyka T-SQL s SQL Data Warehouse.
-* **Zápis dat:** potvrzení změny z jakéhokoli modelu zpět do služby SQL Data Warehouse.
+* **Čtení dat:** Jednotka modely ve velkém měřítku pomocí jazyka T-SQL s SQL Data Warehouse.
+* **Zápis dat:** Potvrzení změn z jakéhokoli modelu zpět do služby SQL Data Warehouse.
 
 Další informace najdete v tématu [integrací se službami Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md).
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Azure Stream Analytics je komplexní, plně spravovaná infrastruktura pro zpracování a spotřebovává data události vygenerovaná ze služby Azure Event Hub.  Integrace s SQL Data Warehouse umožňuje pro streamování dat do efektivní zpracování a uložení společně s relačními daty povolení hlubší, rozšířené analýzy.  
 
-* **Výstup úlohy:** odeslání výstupu z úlohy Stream Analytics přímo do služby SQL Data Warehouse.
+* **Výstup úlohy:** Odeslání výstupu z úlohy Stream Analytics přímo do služby SQL Data Warehouse.
 
 Další informace najdete v tématu [integrací se službami Azure Stream Analytics](sql-data-warehouse-integrate-azure-stream-analytics.md).
 

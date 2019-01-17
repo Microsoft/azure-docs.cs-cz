@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a5bf15289e91cc568524e8110702b5608118bc2d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 413a69f31125c6c8f18401bb997a490c0f99f948
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833920"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352083"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C: Aplikace pro Android pomocí přihlášení
+# <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Přihlášení pomocí aplikace pro Android v Azure Active Directory B2C
 
 Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Tyto normy vám umožňují využívat všechny knihovny, které chcete integrovat s Azure Active Directory B2C. Můžete použít další knihovny, můžete v návodu podobný následujícímu ukazují, jak konfigurovat 3. stran knihovny pro připojení k platformě Microsoft identity. Většinu knihoven, které implementují [specifikace RFC6749 oauth2](https://tools.ietf.org/html/rfc6749) můžete připojit k platformě Microsoft Identity.
 
@@ -30,7 +30,7 @@ Pokud jste ještě nikdy nepracovali s OAuth2 nebo OpenID Connect, pak vám tahl
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
 
-Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny vaše uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](active-directory-b2c-get-started.md) předtím, než budete pokračovat.
+Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny vaše uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](tutorial-create-tenant.md) předtím, než budete pokračovat.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
@@ -42,13 +42,11 @@ Dále musíte vytvořit aplikaci v adresáři B2C. Azure AD díky tomu získá i
 
 ## <a name="create-your-user-flows"></a>Vytvářet toky uživatelů
 
-V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md), což je sada zásad, které řídí chování Azure AD. Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci uživatelů flowu. Je potřeba vytvořit tento tok uživatele, jak je popsáno v [článku toku uživatele](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Když vytvoříte tok uživatele, nezapomeňte na následující:
+V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md), což je sada zásad, které řídí chování Azure AD. Tato aplikace vyžaduje tok přihlášení a registraci uživatele. Když vytvoříte tok uživatele, nezapomeňte na následující:
 
 * Zvolte **zobrazovaný název** jako atribut registrace ve svém toku uživatele.
 * Zvolte **zobrazovaný název** a **ID objektu** deklaracemi identity aplikace v každé tok uživatele. Můžete zvolit i další deklarace identity.
 * Kopírovat **název** každý toku uživatele. po jeho vytvoření. Měl by mít předponu `b2c_1_`.  Název toku uživatele budete potřebovat později.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 Po vytvoření toků uživatelů, budete připraveni k sestavení aplikace.
 
@@ -134,6 +132,4 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
 ```
 
 Najdete [AppAuth průvodce](https://openid.github.io/AppAuth-Android/) o tom, k dokončení procesu. Pokud chcete rychle začít s funkční aplikaci, přečtěte si [naše ukázka](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Postupujte podle pokynů [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) zadat konfiguraci Azure AD B2C.
-
-Máme vždy otevřít na názory a návrhy! Pokud nemají nějaké problémy s tímto článkem, nebo máte doporučení k vylepšení tohoto obsahu, uvítáme vaše zpětná vazba v dolní části stránky. Pro žádosti o funkce, přidejte je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 5a0430e9ad124319147342c49fc51e11472ac8ff
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c2348df7a1a55584807a03216e294486ddadfc52
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811837"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352593"
 ---
 # <a name="message-and-connection-in-azure-signalr-service"></a>Zpráva a připojení ve službě Azure SignalR
 
@@ -25,7 +25,7 @@ Službě Azure SignalR podporuje stejné formáty, které podporuje funkce Signa
 
 Službě Azure SignalR nemá žádné omezení velikosti zpráv.
 
-V praxi, velkých zpráv je rozdělený do menších zprávy více než 2 KB / a přenáší jako samostatné zprávy. Zpráva rozdělení a sestavení jsou zpracovávány sady SDK. Nejsou potřeba žádné úsilí pro vývojáře.
+V praxi, velkých zpráv je rozdělený do menších zprávy více než 2 KB / a přenáší jako samostatné zprávy. Sady SDK se zpracovala zpráva rozdělení a propojením. Nejsou potřeba žádné úsilí pro vývojáře.
 
 Ale velkých zpráv má negativní dopad na výkon, zasílání zpráv. Použijte menší velikost zprávy, kdykoli je to možné a testu zvolte velikost optimální zprávy pro jednotlivé scénáře použití.
 
@@ -33,22 +33,29 @@ Ale velkých zpráv má negativní dopad na výkon, zasílání zpráv. Použijt
 
 Jsme pouze počet odchozích zpráv ze služby SignalR a ignoruje zprávy ping mezi klienty a servery.
 
-Zprávy je větší než 2 KB se počítá jako více zpráv 2 KB. Graf počtu zpráv na webu Azure portal, aktualizuje každých 100 zpráv za rozbočovač.
+Zprávy je větší než 2 KB se počítá jako více zpráv 2 KB. Graf počtu zpráv na webu Azure portal se aktualizuje každých 100 zpráv za rozbočovač.
 
-Uživatel má například 3 klienty a serverem aplikace: 1. Jeden klient odešle jednu zprávu 4 KB nechat server vysílat pro všechny klienty. Počet zpráv bude 8: 1 zpráv ze služby aplikační server, 3 zprávy ze služby pro klienty a každá zpráva se počítá jako 2 zprávy 2 KB.
+Například máte tři klienty a serverem jednu aplikaci. Jeden klient odešle jednu zprávu 4 KB nechat server vysílat pro všechny klienty. Počet zpráv je 8: Zpráv ze služby aplikační server, tři zprávy ze služby pro klienty a každá zpráva se počítá jako dvě zprávy 2 KB.
 
 Počet zpráv, které jsou uvedené na webu Azure portal je stále 0, dokud se nahromadí být více než 100.
 
 ## <a name="how-to-count-connections"></a>Jak počet připojení?
 
-Nejsou k dispozici připojení k serveru a připojení klientů. Ve výchozím nastavení má každý server aplikace 5 připojení na rozbočovači SignalR službou a každý klient má 1 připojení klienta pomocí služby SignalR.
+Nejsou k dispozici připojení k serveru a připojení klientů. Ve výchozím nastavení má každý aplikační server pěti připojení na rozbočovači SignalR službou a každý klient má jedno připojení klienta pomocí služby SignalR.
 
 Počet připojení webu Azure Portal obsahuje serverová připojení a připojení klientů.
 
-Například uživatel má dva servery aplikace a definuje kódy 5 rozbočovače. Počet připojení serverů webu Azure Portal bude 2 servery aplikace * 5 hubs * 5 připojení/rozbočovač = 50 připojení k serveru.
+Například můžete mít dva servery aplikace a definovat pět rozbočovače v kódu. Počet připojení serverů je 50: 2 servery aplikace * 5 hubs * 5 připojení/rozbočovač.
+
+Funkce SignalR technologie ASP.NET se liší ve výpočtu připojení k serveru. Obsahuje jeden výchozí centra kromě definovaných zákazníkem rozbočovače. Každý server aplikace potřebuje 5 další připojení serveru ve výchozím nastavení. Počet připojení pro rozbočovač výchozí zajišťuje konzistentní s ostatními centry.
+
+## <a name="how-to-count-inbound-traffic--outbound-traffic"></a>Jak vypočítat příchozího provozu / odchozí provoz
+
+Příchozí / odchozí je z hlediska služby SignalR. Provoz se počítá v bajtech. Jako počet zpráv přenosu má také jeho vzorkovací frekvenci. Příchozí nebo odchozí grafu na webu Azure portal, aktualizuje každých 100 KB na rozbočovači.
 
 ## <a name="related-resources"></a>Související prostředky
 
+- [Typ agregace ve službě Azure Monitor](/azure/azure-monitor/platform/metrics-supported#microsoftsignalrservicesignalr )
 - [Konfigurace jádra SignalR technologie ASP.NET](/aspnet/core/signalr/configuration)
 - [JSON](https://www.json.org/)
 - [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)

@@ -1,59 +1,33 @@
 ---
-title: Replikace pomocí služby Azure SQL Database Managed Instance | Dokumentace Microsoftu
-description: Další informace o použití replikace systému SQL Server s Azure SQL Database Managed Instance
+title: Konfigurace replikace v Azure SQL Database Managed Instance | Dokumentace Microsoftu
+description: Další informace o konfiguraci replikace transakcí do Azure SQL Database Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/11/2019
-ms.openlocfilehash: e658eba29368530c4c221496de98823c002985fe
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/16/2019
+ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329459"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360084"
 ---
-# <a name="replication-with-sql-database-managed-instance"></a>Replikace SQL Database Managed Instance
+# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Konfigurace replikace v Azure SQL Database Managed Instance
 
-Replikace je dostupná ve veřejné verzi preview na [Azure SQL Database Managed Instance](sql-database-managed-instance.md). Managed Instance může hostovat databáze vydavatele, distributor a odběratele.
-
-## <a name="common-configurations"></a>Obvyklé konfigurace
-
-Obecně platí vydavatelem a distributorem musí být buď v cloudu nebo místně. Podporují se následující konfigurace:
-
-- **Vydavatele s místní distributor na spravovanou instanci**
-
-   ![Replication-with-azure-sql-db-single-managed-instance-publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
-
-   Vydavateli a distributorovi databáze se konfiguruje v jedné spravované instance.
-
-- **Vydavatele s vzdáleného distributora na spravovanou instanci**
-
-   ![Replication-with-azure-sql-db-separate-managed-instances-publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
-
-   Vydavateli a distributorovi konfigurují na dvou spravované instance. V této konfiguraci:
-
-  - Obě spravované instance jsou ve stejné virtuální síti.
-
-  - Obě spravované instance jsou ve stejném umístění.
-
-- **Vydavateli a distributorovi místně pomocí odběratele na spravovanou instanci**
-
-   ![Replication-from-on-premises-to-azure-sql-db-subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
-
-   V této konfiguraci služby Azure SQL database je odběratel. Tato konfigurace podporuje migraci z místního do Azure. V roli odběratele SQL database nevyžaduje Managed Instance, ale můžete jako krok při migraci z místního Azure SQL Database Managed Instance. Další informace o Azure SQL Database předplatitele najdete v tématu [replikace do služby SQL Database](replication-to-sql-database.md).
+Transakční replikace umožňuje replikovat data z databáze systému SQL Server nebo Azure SQL Database Managed Instance, do spravované Instance nebo push změny provedené ve vašich databázích ve spravované instanci jiné systému SQL Server, izolovaná databáze Azure nebo jiné Managed Instance. Replikace je ve verzi public preview na [Azure SQL Database Managed Instance](sql-database-managed-instance.md). Managed Instance může hostovat databáze vydavatele, distributor a odběratele. Zobrazit [transakční replikace konfigurace](sql-database-managed-instance-transactional-replication.md#common-configurations) pro dostupné konfigurace.
 
 ## <a name="requirements"></a>Požadavky
 
 Vyžaduje vydavatelem a distributorem pro službu Azure SQL Database:
 
-- Spravovaná Instance Azure SQL Database.
+- Azure SQL Database Managed Instance, který není v konfiguraci Geo-DR.
 
    >[!NOTE]
    >Azure SQL Database, které nejsou nakonfigurované pro Managed Instance je možné pouze Odběratelé.
@@ -74,7 +48,13 @@ Podporuje:
 
 - Předplatitelé může být místní, izolované databáze ve službě Azure SQL Database nebo databáze ve fondu v elastických fondů Azure SQL Database.
 
-- Jednosměrné nebo obousměrné replikace
+- Jednosměrné nebo obousměrné replikace.
+
+Nejsou podporovány následující funkce:
+
+- Aktualizovatelné odběry.
+
+- Aktivní geografickou replikaci.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurace publikování a distribuci příklad
 
@@ -188,15 +168,7 @@ Podporuje:
                 @job_password = N'<PASSWORD>'
    GO
    ```
-
-## <a name="limitations"></a>Omezení
-
-Nejsou podporovány následující funkce:
-
-- Aktualizovatelné odběry
-
-- Aktivní geografická replikace
-
+   
 ## <a name="see-also"></a>Viz také
 
 - [Transakční replikace](sql-database-managed-instance-transactional-replication.md)

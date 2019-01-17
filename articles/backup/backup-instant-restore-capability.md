@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: trinadhk
-ms.openlocfilehash: 64e012b84f863196592133da52b35736e486c9ce
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a0cbb8650a818c3ae6c839d69bbc9b94f8d080ca
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266905"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351392"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
@@ -55,14 +55,19 @@ Přírůstkovými snímky se ukládají v účtu úložiště Virtuálního poč
 
 
 ## <a name="upgrading-to-instant-restore"></a>Upgrade na rychlé obnovení
-Pokud použijete Azure portal, zobrazí se oznámení na řídicím panelu trezoru. Toto oznámení se týká podporu velkých disků a zvýšení rychlosti zálohování a obnovení. Případně můžete přejít na stránku vlastností zobrazíte možnost upgrade trezoru.
 
+Pokud použijete Azure portal, zobrazí se oznámení na řídicím panelu trezoru. Toto oznámení se týká podporu velkých disků a zvýšení rychlosti zálohování a obnovení.
 
 ![Úloha zálohování v modelu nasazení Resource Manager zásobník záloh virtuálních počítačů – podpora oznámení](./media/backup-azure-vms/instant-rp-banner.png)
 
 Otevření obrazovky pro upgrade na rychlé obnovení, klikněte na banner.
 
 ![Úloha zálohování v zásobníku zálohování virtuálních počítačů modelu nasazení Resource Manager – upgrade](./media/backup-azure-vms/instant-rp.png)
+
+Případně můžete přejít na **vlastnosti** stránce trezoru, chcete-li získat **upgradovat** v části **zásobník záloh virtuálních počítačů**.
+
+![Úloha zálohování v zásobníku zálohování virtuálních počítačů – stránka Vlastnosti](./media/backup-azure-vms/instant-restore-capability-properties.png)
+
 
 ## <a name="upgrade-to-instant-restore-using-powershell"></a>Upgrade provést rychlé obnovení pomocí prostředí PowerShell
 

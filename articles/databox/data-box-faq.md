@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/27/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 09d982c98e830b957be8db43974e3a44df505967
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: c8aa08dc189a77a206ea24b535aedf64454838c7
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321054"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359404"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -114,6 +114,9 @@ A. Pokud svítí dioda, která signalizuje chybu systému, znamená to, že syst
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Otázka: Nemám přístup k heslu pro odemčení Data Boxu na webu Azure Portal. Čím to může být?
 A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu Azure Portal, zkontrolujte oprávnění v předplatném a v účtu úložiště. Ověřte, že na úrovni skupiny prostředků máte oprávnění přispěvatele nebo vlastníka. Pokud ne, musíte mít minimálně oprávnění role operátor pole Data chcete zobrazit přihlašovací údaje pro přístup.
+
+### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>Otázka: Konfigurace portu kanál vyslané zařízení Data Box? A co funkce MPIO?
+A. Nepodporujeme konfigurace kanál portu, konfigurace funkce Multipath vstupně-výstupních operací (MPIO) nebo konfiguraci sítě vLAN na zařízení Data Box.
 
 ## <a name="track-status"></a>Sledování stavu
 
@@ -223,17 +226,17 @@ A.  Služba Azure Data Box nativně nabízí sestavy, které můžete použít k
 ### <a name="what-type-of-reporting-is-available-to-support-chain-of-custody"></a>Jaký typ sestav je k dispozici pro řetězec opatrovnictví?
 A.  Řetězec opatrovnictví podporují následující sestavy:
 
-- Přepravní logistika DHL a UPS
+- Přenos logistiky z UPS.
 - Protokolování zapnutí a přístupu uživatelů ke sdíleným složkám
 - Soubor manifestu s 64bitovou kontrolou CRC (CRC-64) nebo s kontrolním součtem každého souboru úspěšně ingestovaného do zařízení Data Box
 - Sestava souborů, které se nepodařilo nahrát do účtu Azure Storage
 - Sanitarizace zařízení Data Box (podle norem NIST 800 88R1) po zkopírování dat do účtu Azure Storage.
 
-### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>Jsou od dopravců (UPS/DHL) k dispozici protokoly o sledování zásilky? 
+### <a name="are-the-carrier-tracking-logs-from-ups-available"></a>Jsou dopravce sledování protokoly (UPS) k dispozici? 
 A.  Protokoly dopravců o sledování zásilky jsou zaznamenané v historii objednávky Data Boxu. Tuto sestavu máte k dispozici po vrácení zařízení do datacentra Azure a vymazání dat z disků zařízení. Pokud potřebujete informace hned, přejděte rovnou na webové stránky dopravce a zadejte číslo sledované zásilky, abyste získali informace o sledování.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Můžu dopravit Data Box do datacentra Azure? 
-A.  Ne. Datacentrum Azure v současnosti nepřijímá od zákazníků zařízení Data Box doručená jinými dopravci než UPS/DHL.
+A.  Ne. Datové centrum Azure aktuálně nepřijímá doručení od zákazníků nebo ze prostředníci než UPS zařízení Data Box.
 
 
 ## <a name="next-steps"></a>Další postup

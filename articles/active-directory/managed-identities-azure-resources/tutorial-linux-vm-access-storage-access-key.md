@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: f00de9095e45901f92fcf3004a5f51cfdd709da2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ee26db80e3219c170c77a2bd90f7d1416676333e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724762"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352746"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage prostřednictvím přístupového klíče
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače s Linuxem pro přístup k Azure Storage prostřednictvím přístupového klíče
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -61,7 +61,7 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-storage-account-access-keys"></a>Udělení přístupu pro použití přístupových klíčů k účtu úložiště spravované identitě přiřazené systémem na virtuálním počítači
 
-Azure Storage nativně nepodporuje ověřování Azure AD.  Spravované identity pro prostředky Azure ale můžete použít k načtení přístupových klíčů k účtu úložiště z Resource Manageru a pak klíč použít pro přístup k úložišti.  V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači přístup ke klíčům k vašemu účtu úložiště.   
+V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači přístup ke klíčům k vašemu účtu úložiště.   
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  

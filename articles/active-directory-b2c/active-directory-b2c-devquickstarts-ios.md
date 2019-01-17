@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e6e0904efdb86376688710a94920cdb44c2804ec
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842268"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353120"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Aplikace pro iOS pomocí přihlášení
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Přihlášení pomocí aplikace pro iOS
 
 Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Pomocí otevřeného protokolu nabízí více možností pro vývojáře, při výběru knihovnu integrovat s našimi službami. Líbí se na podporu vývojářů při psaní aplikace, které se připojují k platformě Microsoft Identity poskytujeme Tento názorný postup a další. Většinu knihoven, které implementují [specifikace RFC6749 oauth2](https://tools.ietf.org/html/rfc6749) se připojit k platformě Microsoft Identity.
 
@@ -29,7 +29,7 @@ Platforma Microsoft identity používá otevřené standardy, jako je napříkla
 Pokud jste nepracovali s OAuth2 nebo OpenID Connect, velkou část tahle vzorová konfigurace možná moc smysl pro vás. Doporučujeme prohlédnout si stručný [přehled protokolu, který uvádíme tady](active-directory-b2c-reference-protocols.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
-Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](active-directory-b2c-get-started.md) předtím, než budete pokračovat.
+Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](tutorial-create-tenant.md) předtím, než budete pokračovat.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 Dále musíte vytvořit aplikaci v adresáři B2C. Registrace aplikací poskytuje Azure AD informace potřebné k bezpečné komunikaci s vaší aplikací. Při vytváření mobilních aplikací, postupujte podle [tyto pokyny](active-directory-b2c-app-registration.md). Ujistěte se, že:
@@ -39,13 +39,11 @@ Dále musíte vytvořit aplikaci v adresáři B2C. Registrace aplikací poskytuj
 * Nastavení **identifikátor URI pro přesměrování** s vlastním schématem (například com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Budete později potřebovat pomocí tohoto identifikátoru URI.
 
 ## <a name="create-your-user-flows"></a>Vytvářet toky uživatelů
-V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci. Vytvořte tento tok uživatele podle popisu v [článku toku uživatele](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Když vytvoříte tok uživatele, nezapomeňte na následující:
+V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci. Když vytvoříte tok uživatele, nezapomeňte na následující:
 
 * V části **atributy registrace**, vyberte atribut **zobrazovaný název**.  Můžete vybrat i jiné atributy.
 * V části **deklarace identit aplikace**, vyberte deklarace identity **zobrazovaný název** a **ID objektu uživatele**. Můžete vybrat i další deklarace identity.
 * Kopírovat **název** každý toku uživatele. po jeho vytvoření. Vaše uživatelské jméno tok předchází `b2c_1_` když uložíte tok uživatele.  Název toku uživatele budete potřebovat později.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 Po vytvoření toků uživatelů, budete připraveni k sestavení aplikace.
 

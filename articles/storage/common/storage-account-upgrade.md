@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 7f97b72dc7b3456488d97009bde590b0e29918e6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631427"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352134"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgradovat na účet úložiště pro obecné účely verze 2
 
@@ -21,7 +21,8 @@ ms.locfileid: "53631427"
 Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely v1 a účty úložiště Blob je jednoduché. Můžete upgradovat pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure. 
 
 > [!NOTE]
-> Se změnou úrovně úložiště můžou být spojeny další poplatky. Další informace najdete v části [Ceny a fakturace](#pricing-and-billing).
+> Upgrade vašeho účtu úložiště na účet pro obecné účely verze 2 je zdarma.
+> Změna úrovně přístupu úložiště můžou způsobit změny na faktuře. Další informace najdete v části [Ceny a fakturace](#pricing-and-billing).
 
 ## <a name="upgrade-using-the-azure-portal"></a>Upgrade s využitím webu Azure portal
 
@@ -62,8 +63,8 @@ Vrstva přístupu umožňují zvolit cenově nejvýhodnější úložiště zalo
 
 Ve výchozím nastavení v horká vrstva přístupu je vytvořen nový účet úložiště a účet úložiště pro obecné účely v1 je upgradovat na horká vrstva přístupu. Pokud zkoumáte jaké úroveň přístupu pro vaše data po upgradu, zvažte možnost váš scénář. Existují dva běžné uživatelské scénáře pro migraci na účet pro obecné účely verze 2:
 
-* Máte stávající účet úložiště pro obecné účely v1 a chcete vyhodnotit přechod na účet úložiště pro obecné účely verze 2 s vhodnou úrovní úložiště pro data objektů blob.
-* Rozhodli jste se použít účet úložiště pro obecné účely verze 2 nebo již máte a chcete vyhodnotit, jestli byste měli použít pro data objektů blob v horké nebo studené úrovni úložiště.
+* Máte stávající účet úložiště pro obecné účely v1 a chcete vyhodnotit upgrade na účet úložiště pro obecné účely v2, se na úrovni přístupu úložiště pro data objektů blob.
+* Rozhodli jste se použít účet úložiště pro obecné účely verze 2 nebo již máte a chcete vyhodnotit, jestli byste měli použít pro data objektů blob v horké nebo studené úrovni přístupu úložiště.
 
 V obou případech je hlavní prioritou odhad nákladů na ukládání, přístup k a provozování na datech uložených v účtu úložiště pro obecné účely v2 a jejich porovnání s aktuálními náklady.
 
@@ -71,9 +72,9 @@ V obou případech je hlavní prioritou odhad nákladů na ukládání, přístu
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 Všechny účty úložiště vycházejí z cenového modelu úložiště objektů blob založeného na úrovních jednotlivých objektů blob. Při použití účtu úložiště je potřeba vzít v úvahu tyto fakturační podmínky:
 
-* **Náklady na úložiště**: Kromě objemu uložených dat náklady na ukládání dat se liší podle úrovně úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
+* **Náklady na úložiště**: Kromě objemu uložených dat náklady na uložení dat liší v závislosti na úrovni přístupu úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
 
-* **Cena za přístup**: Přístup k datům za úroveň chladnější. Přístup k datům ve studené úrovni úložiště a v úrovni úložiště Archive je zpoplatněný podle sazby za GB přečtených dat.
+* **Cena za přístup**: Přístup k datům za úroveň chladnější. Pro data ve studené a archivní úrovni přístupu úložiště bude se vám účtovat poplatek za GB dat přístup pro čtení.
 
 * **Cena za transakce**: Se účtuje poplatek za transakce pro všechny úrovně, které zvýší úroveň chladnější.
 
@@ -81,7 +82,7 @@ Všechny účty úložiště vycházejí z cenového modelu úložiště objekt�
 
 * **Cena za přenosy odchozích dat**: Přenosy odchozích dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné využití šířky pásma na základě sazby za gigabajt konzistentní s účty úložiště pro obecné účely.
 
-* **Změna vrstvy úložiště**: Změna vrstvy úložiště účtu ze studené na horkou je zpoplatněna částkou, která odpovídá přečtení všech dat v aktuálním účtu úložiště. Naproti tomu změna vrstvy úložiště účtu z horké na studenou je zpoplatněna částkou, která odpovídá zápisu všech dat do studené vrstvy (pouze účty GPv2).
+* **Změna úrovně přístupu úložiště**: Změna úrovně přístupu účtu úložiště ze studené na horkou je zpoplatněna částkou, která odpovídá přečtení všech dat v aktuálním účtu úložiště. Ale změna úrovně přístupu účtu z horké na studenou je zpoplatněna částkou, která odpovídá zápisu všech dat do studené vrstvy (pouze účty GPv2).
 
 > [!NOTE]
 > Další informace o cenovém modelu pro účty úložišť najdete na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Další informace o poplatcích za odchozí přenosy dat najdete na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).
@@ -156,7 +157,7 @@ Pokud chcete pro účet Blob Storage odhadnout náklady za přístup k datům, j
 Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v případě účtu úložiště typu GRS nebo RA-GRS dá vypočítat pomocí toho, že odhadnete množství zapsaných dat.
 
 > [!NOTE]
-> Podrobnější příklad výpočtu ceny za využívání horké či studené vrstvy úložiště najdete v odpovědi na často kladenou otázku *Co jsou horká a studená vrstva přístupu a jak určit, která z nich se má použít?* na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+> Podrobnější příklad výpočtu ceny za využívání vybrat horkou nebo studenou úroveň přístupu, podívejte se na Kladenou *"co jsou úrovně přístupu Hot a Cool a jak určit, který se má použít?"* na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="next-steps"></a>Další postup
 

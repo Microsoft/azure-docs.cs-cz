@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 470813b1a51db183476dd046dc102eb89d73debd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051947"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354566"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ ms.locfileid: "54051947"
 
 * U přímé/TCP přenosu diagnostiky přidá TransportException, vnitřní výjimka typu sady SDK. Pokud je k dispozici v zprávy o výjimkách, vytiskne tento typ Další informace pro řešení problémů s připojením klienta.
 
-* Přidání nové konstruktor přetížení, která přebírá objekt HttpMessageHandler sada obslužných rutin HTTP pro odesílání požadavků HttpClient (například HttpClientHandler).
+* Přidání nové přetížení konstruktoru, který přebírá objekt HttpMessageHandler sada obslužných rutin HTTP pro odesílání požadavků HttpClient (například HttpClientHandler).
 
 * Oprava chyby, kde záhlaví s hodnotami null nebyly zajišťující správné zpracování.
 
@@ -265,7 +265,7 @@ ms.locfileid: "54051947"
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Přidání podpory pro účty databáze ve více oblastech.
 * Přidání podpory pro opakování v omezené požadavky.  Uživatel může upravit počet opakovaných pokusů a maximální čekací doba nakonfigurováním ConnectionPolicy.RetryOptions vlastnost.
-* Přidání nového rozhraní IDocumentClient, který definuje podpisy všechny DocumenClient vlastností a metod.  V rámci této změny se změní také rozšiřující metody, které vytvářejí IQueryable a IOrderedQueryable metod na vlastní třídy DocumentClient.
+* Přidání nového rozhraní IDocumentClient, který definuje podpisy všechny DocumentClient vlastností a metod.  V rámci této změny se změní také rozšiřující metody, které vytvářejí IQueryable a IOrderedQueryable metod na vlastní třídy DocumentClient.
 * Možnost přidání konfigurace nastavení ServicePoint.ConnectionLimit pro daný koncový bod služby Azure Cosmos DB identifikátoru Uri.  Pomocí ConnectionPolicy.MaxConnectionLimit můžete změnit výchozí hodnotu, která je nastavena na 50.
 * Nepoužívané IPartitionResolver a jeho implementaci.  Podpora pro IPartitionResolver je nyní zastaralé. Doporučuje se použít dělené kolekce vyšší úložiště a propustnost.
 
@@ -282,7 +282,7 @@ ms.locfileid: "54051947"
 * Implementovat [dělené kolekce](partition-data.md) a [uživatelsky definovaným výkonem úrovně](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Opraveno]**  Vyvolá koncový bod dotazování služby Azure Cosmos DB: "System.Net.Http.HttpRequestException: Při kopírování obsahu do datového proudu došlo k chybě ".
+* **[Opraveno]**  Vyvolá koncový bod dotazování služby Azure Cosmos DB: 'System.Net.Http.HttpRequestException: Při kopírování obsahu do datového proudu došlo k chybě ".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Rozšířené LINQ podpory, včetně nových operátorů pro stránkování, podmíněné výrazy a být v rozsahu porovnání.

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fc32cf40266bdad1aa5365b30a27210ad735f299
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606178"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354378"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Vytváření desktopových aplikací pro Windows
 Pomocí Azure Active Directory (Azure AD) B2C můžete přidat funkce správy identity výkonné samoobslužné služby do aplikace klasické pracovní plochy v několika krocích. Tento článek vám ukáže jak vytvořit aplikaci "seznam úkolů".NET Windows Presentation Foundation (WPF), která zahrnuje uživatelské registrace, přihlašování a správy profilů. Aplikace bude zahrnovat podporu registrace a přihlášení pomocí uživatelského jména nebo e-mailu. Bude také zahrnovat podporu registrace a přihlášení pomocí účtů na sociálních sítích, jako je například Facebook nebo Google.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
-Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny vaše uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](active-directory-b2c-get-started.md) předtím, než budete pokračovat.
+Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny vaše uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](tutorial-create-tenant.md) předtím, než budete pokračovat.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 Dále musíte vytvořit aplikaci v adresáři B2C. Azure AD díky tomu získá informace potřebné k bezpečné komunikaci s vaší aplikací. Chcete-li vytvořit aplikaci, postupujte podle [těchto pokynů](active-directory-b2c-app-registration.md). Ujistěte se, že:
@@ -31,16 +31,14 @@ Dále musíte vytvořit aplikaci v adresáři B2C. Azure AD díky tomu získá i
 * Poznamenejte si **ID aplikace** přiřazené vaší aplikaci. Budete ho potřebovat později.
 
 ## <a name="create-your-policies"></a>Vytvořte svoje zásady
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato ukázka kódu obsahuje tři činnosti identity: registrace, přihlášení a úpravy profilu. Budete muset vytvořit zásadu pro každý typ, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Když vytváříte tyto tři zásady, nezapomeňte:
+V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato ukázka kódu obsahuje tři činnosti identity: registrace, přihlášení a úpravy profilu. Při vytváření zásady nezapomeňte na následující:
 
 * Zvolit v okně zprostředkovatelé identity buď **Registrace pomocí ID uživatele** nebo **Registrace pomocí e-mailu**.
 * Zvolit **Zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
 * Zvolit **Zobrazovaný název** a deklarace identity **ID objektu** jako deklarace identity aplikace v každé zásadě. Můžete zvolit i další deklarace identity.
 * Po vytvoření každé zásady si poznamenejte její **Název**. Měl by mít předponu `b2c_1_`. Tyto názvy zásad budete potřebovat později.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-Po úspěšném vytvoření těchto tří zásad jste připraveni k sestavení aplikace.
+Po úspěšném vytvoření zásad jste připraveni k sestavení aplikace.
 
 ## <a name="download-the-code"></a>Stáhněte si kód
 Kód k tomuto kurzu [je udržovaný na GitHubu](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet). Chcete-li během čtení tohoto návodu rovnou sestavit ukázku, můžete si [stáhnout kostru projektu v souboru ZIP](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip). Kostru můžete také klonovat:

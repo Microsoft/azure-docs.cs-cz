@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190324"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359319"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Vytvoření serveru Azure Database for MariaDB pomocí Azure CLI
 
@@ -59,10 +59,10 @@ version | **10.2** | Hlavní verze modulu MariaDB
 admin-user | **myadmin** | Uživatelské jméno pro přihlášení správce. Parametr **admin-user** nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
 admin-password | *Vaše heslo* | Heslo uživatele, který je správcem. Vaše heslo musí mít 8 až 128 znaků. Musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, čísla a jiné než alfanumerické znaky.
 
-Hodnota parametru **sku-name** má formát *cenová úroveň*\_*výpočetní generace*\_*počet virtuálních jader*, jak je znázorněno v následujících příkladech:
-+ `--sku-name B_Gen5_4` se mapuje na cenovou úroveň Basic, výpočetní generaci Gen 5 a 4 virtuální jádra.
-+ `--sku-name GP_Gen5_32` se mapuje na cenovou úroveň pro obecné účely, výpočetní generaci Gen 5 a 32 virtuálních jader.
-+ `--sku-name MO_Gen5_2` se mapuje na cenovou úroveň optimalizovanou pro paměť, výpočetní generaci Gen 5 a 2 virtuální jádra.
+Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
++ `--sku-name B_Gen5_1` mapuje se na Basic, obecné 5 a 1 virtuální jádro. Tato možnost je k dispozici nejmenší SKU.
++ `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
++ `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
 Informace o platných hodnotách pro jednotlivé oblasti a úrovně najdete v tématu [Cenové úrovně](./concepts-pricing-tiers.md).
 

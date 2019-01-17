@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: 476e74a4d167fb3e9158f07cc5c073f129a74daa
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2ad641ae054f9542ec1ef42f5ebbe724ba4ecf87
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545888"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354021"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database pro MariaDB
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database pro MariaDB poskytuje různé metriky, které poskytují přehled o chování vašeho serveru.
@@ -19,7 +19,7 @@ Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pr
 ## <a name="metrics"></a>Metriky
 Všechny metriky Azure máte minutových frekvence a jednotlivé metriky poskytuje 30 dní historie. Můžete nakonfigurovat výstrahy o metrikách. Další úkoly zahrnují nastavením automatizovaných akcí, provádění pokročilých analýz a pro archivaci historie. Další informace najdete v článku [přehled o metriky Azure] (.. /Monitoring-and-Diagnostics/Monitoring-Overview-Metrics.MD).
 
-<!--For step by step guidance, see [How to set up alerts](howto-alert-on-metric.md). -->
+Pokyny krok za krokem, najdete v článku [jak nastavit výstrahy](howto-alert-metric.md).
 
 ### <a name="list-of-metrics"></a>Seznam metrik
 Tyto metriky jsou k dispozici pro službu Azure Database pro MariaDB:
@@ -45,5 +45,4 @@ Můžete povolit na vašem serveru protokolování pomalých dotazů. Další in
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o tom, jak získat přístup a exportovat metriky pomocí webu Azure portal, rozhraní REST API nebo rozhraní příkazového řádku najdete v tématu [přehled metriky Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-
-<!-- - See [How to set up alerts](howto-alert-on-metric.md) for guidance on creating an alert on a metric.-->
+ - Zobrazit [jak nastavit výstrahy](howto-alert-metric.md) pokyny k vytvoření upozornění na metriku.

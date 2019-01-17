@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: patricka
 ms.openlocfilehash: 17c0213d63879687e9c6d5f8dca06b9113c44af8
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742561"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54355516"
 ---
 Pokud chcete povolit pouze registraci ve vaší aplikaci, můžete použít **registrace** tok uživatele. Tento tok uživatele popisuje prostředí, které zákazníkům procházet při registraci a obsah tokenů, které aplikace obdrží po úspěšné registraci.
 

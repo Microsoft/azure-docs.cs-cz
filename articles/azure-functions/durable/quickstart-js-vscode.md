@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 0db76e80b2ff7400e7c2914efbd2bbcb24d9b005
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4ee1c9edf8cb10cae1a8a6e1c15f9bcf6e9a8ff8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034314"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359455"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první funkce trvalý v jazyce JavaScript
 
@@ -94,7 +94,7 @@ Přidali jsme orchestrator ke koordinaci aktivit funkce. Přidejme nyní odkazov
 
 ## <a name="create-an-activity-function"></a>Vytvoření funkce aktivity
 
-1. Opakujte kroky v předchozích částech vytvoříte třetí funkci pomocí šablony triggeru HTTP. Ale tentokrát název funkce `SayHello`.
+1. Opakujte kroky v předchozích částech vytvoříte třetí funkci pomocí šablony triggeru HTTP. Ale tentokrát název funkce `E1_SayHello`.
 
 2. Otevřete soubor index.js nové funkce a nahraďte obsah následujícím kódem:
 
@@ -121,9 +121,11 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
     ![Místní výstup Azure](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-4. Vložte adresu URL pro požadavek HTTP do panelu Adresa prohlížeče a zobrazit stav vaší Orchestrace.
+4. Nahraďte `{functionName}` za `OrchestratorFunction` (Jak velká může být moje znalostní báze?).
 
-5. Pokud chcete ladění zastavit, stiskněte Shift + F1.
+5. Pomocí některého nástroje, například [Postman](https://www.getpostman.com/) nebo [cURL](https://curl.haxx.se/), odeslání požadavku HTTP POST do koncového bodu adresy URL.
+
+6. Pokud chcete zastavit ladění, stiskněte Shift + F1 v nástroji VS Code.
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 

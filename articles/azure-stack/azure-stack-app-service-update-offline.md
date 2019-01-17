@@ -12,23 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/16/2019
 ms.author: anwestg
-ms.openlocfilehash: 740a3ce36dde953cb92c52a10cbebf12544adae0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 21c43bdd9f872841c3adaf5293177efe23fc3021
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968148"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358962"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Offline aktualizace služby Azure App Service ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.4.
->
->
+> Aktualizace 1809 nebo novější do služby Azure Stack integrovaného systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.4. Před aktualizací zprostředkovatele prostředků, přečtěte si poznámky k verzi pro další informace o nové funkce, opravy a známých problémech, které můžou ovlivnit nasazení.
 
 Podle pokynů v tomto článku, můžete upgradovat [poskytovatele prostředků App Service](azure-stack-app-service-overview.md) nasazené v prostředí Azure Stack, která je:
 
@@ -62,11 +60,11 @@ Chcete-li upgradovat službu App Service v odpojeném prostředí, musíte nejd�
 
 1. Spustit appservice.exe jako správce
 
-    ![Instalační program služby App Service][1]
+    ![App Service Installer][1]
 
 2. Klikněte na tlačítko **Upřesnit** > **vytvořit balíček pro offline instalaci**
 
-    ![Instalační program služby App Service, Upřesnit][2]
+    ![App Service Installer Advanced][2]
 
 3. Instalační program služby App Service vytvoří offline balíček s upgradem a zobrazuje cestu k němu.  Můžete kliknout na **otevřít složku** otevřete složku v Průzkumníku souborů.
 
@@ -81,11 +79,11 @@ Chcete-li upgradovat službu App Service v odpojeném prostředí, musíte nejd�
 
 1. Appservice.exe spusťte jako správce.
 
-    ![Instalační program služby App Service][1]
+    ![App Service Installer][1]
 
 2. Klikněte na tlačítko **Upřesnit** > **dokončit offline instalaci nebo upgrade**.
 
-    ![Instalační program služby App Service, Upřesnit][2]
+    ![App Service Installer Advanced][2]
 
 3. Přejděte do umístění v režimu offline balíček s upgradem jste dříve vytvořili a pak klikněte na tlačítko **Další**.
 

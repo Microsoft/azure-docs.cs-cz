@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b290cada86401d91313939a7673998810cb82551
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 3ac7d8cc4705fe1b6e80f1e0c7e26d847d761cf6
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51028131"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54357029"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
@@ -21,7 +21,7 @@ ms.locfileid: "51028131"
 
     ![Výběr cíle publikování](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
-    Když povolíte **Spustit ze souboru Zip**, vaše aplikace funkcí se spouští přímo z balíčku pro nasazení. Další informace najdete v tématu věnovaném [spouštění Azure Functions ze souboru balíčku](../articles/azure-functions/run-functions-from-deployment-package.md).
+    Když povolíte **spustit z Zip**, vaše aplikace function app v Azure, přejde do režimu jen pro čtení a je spuštěna přímo z balíčku pro nasazení. Další informace najdete v tématu věnovaném [spouštění Azure Functions ze souboru balíčku](../articles/azure-functions/run-functions-from-deployment-package.md).
      
     >[!CAUTION]
     >Pokud zvolíte **Vybrat existující**, soubory z místního projektu přepíší všechny soubory ve stávající aplikaci funkcí v Azure. Tuto možnost použijte pouze v případě, že znovu publikujete aktualizace stávající aplikace funkcí.

@@ -8,12 +8,12 @@ ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 07323f1b0541555ef71919e026ecaf2494056dad
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ec646ad1e9e1330a7e0b3f3f0576cee9d58c08e1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406494"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353256"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Metody a procesy pro zavádění služby Azure Data Catalog
 Tento článek vám pomůže přijmout službu **Azure Data Catalog** ve vaší organizaci. Chcete-li úspěšně přijmout službu **Azure Data Catalog**, budete se muset zaměřit na tři klíčové položky: definovat svou vizi, identifikovat klíčové případy obchodního použití v rámci vaší organizace a zvolit pilotní projekt.
@@ -66,7 +66,7 @@ Zde jsou některé tipy k identifikaci případů použití:
 * **Definování cílů týmu** – jak tým dosahuje svých cílů? Ještě se nezaměřujte na katalog Data Catalog, protože v této fázi chcete být objektivní. Mějte na paměti, že se že jedná o obchodní výsledky, nikoli o technologii.
 * **Definování obchodního problému** – jaké jsou problémy, týkající se hledání a získávání informací o datových prostředcích, jimž tým čelí? Například informace o důležitých zdrojích dat lze nalézt v sešitech aplikace Excel v síťové složce a tým může trávit spoustu času vyhledáním příslušných sešitů.
 * **Pochopení kultury týmu související se změnou** – mnoho problémů s přijetím se týká odporu vůči změně místo zavádění nového nástroje. Jak týmy reagují na změnu je důležité při identifikaci případů použití, protože existující proces může být používán, neboť "takhle jsme to dělali vždycky" nebo "pokud to není rozbité, proč to opravovat?". Přijetí nového nástroje nebo procesu je vždy jednodušší, když postižení zaměstnanci chápou hodnotu, která se má změnou realizovat a chápou závažnost problémů, které mají být vyřešeny.
-* **Udržování zaměření souvisejícího s datovými prostředky** – když hovoříte o obchodních problémech, kterým tým čelí, musíte se "probít plevelem" a zaměřit na to, co je relevantní pro více efektivní využívání datových prostředků organizace.
+* **Udržování zaměření souvisejícího k datovým assetům** – když hovoříte o obchodních problémů, kterým tým čelí, je potřeba "vyjmout plevelem" a zaměřit na to, co je relevantní pro efektivnější využití podnikové datové prostředky.
 
 Zde jsou některé případy použití příklad týkající se katalogu Data Catalog:
 

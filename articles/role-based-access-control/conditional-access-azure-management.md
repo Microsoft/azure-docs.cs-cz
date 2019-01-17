@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 4cfd3c38631778373e99872fd305d8316cdadb75
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b824d122a5d26c17c41a0e2ea1c595c9e2dd7206
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274734"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354344"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Správa přístupu ke správě Azure s podmíněným přístupem
 
@@ -32,7 +32,7 @@ Vytvoření zásad pro správu Azure, vyberte **Microsoft Azure Management** pod
 
 ![Podmíněný přístup pro správu Azure](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-Zásady, kterou vytvoříte platí pro všechny koncové body správy Azure, včetně portálu Azure classic, webu Azure portal, Azure Resource Manageru poskytovatele, classic služby API Management a Azure Powershellu. Všimněte si, že se zásady vztahují k Azure Powershellu, která volá rozhraní API Azure Resource Manageru. Nevztahuje se na [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), která volá Microsoft Graphu.
+Zásady, které vytvoříte platí pro všechny koncové body správy Azure, včetně webu Azure portal, Azure Resource Manageru zprostředkovatele, classic služby API Management, Azure PowerShell a sady Visual Studio portálu správce předplatných. Všimněte si, že se zásady vztahují k Azure Powershellu, která volá rozhraní API Azure Resource Manageru. Nevztahuje se na [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), která volá Microsoft Graphu.
 
 > [!CAUTION]
 > Ujistěte se, že chápete, jak podmíněný přístup funguje před nastavením zásad pro správu přístupu pro správu Azure. Ujistěte se, že nevytvoříte podmínky, které by mohly blokovat vlastní přístup k portálu.

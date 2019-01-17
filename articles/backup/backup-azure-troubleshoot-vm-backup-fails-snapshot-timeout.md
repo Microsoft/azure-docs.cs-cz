@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 2c4c2982febf1d81aaaa81bb9c894785b860503b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200082"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353954"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -54,7 +54,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 Doporučená akce:<br>
 Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků virtuálního počítače a zkuste operaci zopakovat a aktivovat čištění.
 > [!NOTE]
-    > Služba Backup vytvoří samostatné skupiny prostředků než skupina prostředků virtuálního počítače k uložení kolekci bodů obnovení. Zákazníkům doporučujeme není zamknout skupiny prostředků vytvořené pro použití službou Backup. Formát názvu skupiny prostředků vytvořené pomocí služby Backup je: AzureBackupRG_`<Geo>`_`<number>` např: AzureBackupRG_northeurope_1
+    > Služba Backup vytvoří samostatné skupiny prostředků než skupina prostředků virtuálního počítače k uložení kolekci bodů obnovení. Zákazníkům doporučujeme není zamknout skupiny prostředků vytvořené pro použití službou Backup. Formát názvu skupiny prostředků vytvořené pomocí služby Backup je: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 **Krok 1: [Odebrat zámek ze skupiny prostředků bodů obnovení](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2: [Odstranit kolekci bodů obnovení](#clean_up_restore_point_collection)**<br>
@@ -122,33 +122,8 @@ Za požadavek na nasazení virtuální počítač nemá přístup k Internetu. N
 
 Správné fungování rozšíření Backup vyžaduje připojení k veřejným IP adresám Azure. Rozšíření odesílá příkazy do služby Azure storage koncový bod (adresy URL HTTPs) ke správě snímky virtuálního počítače. Pokud přípona nemá přístup k veřejným Internetem, zálohování nakonec dojde k chybě.
 
-Je možné nasadit proxy server pro směrování provozu virtuálního počítače.
-##### <a name="create-a-path-for-https-traffic"></a>Vytvoření cesty pro komunikaci přes protokol HTTPs
-
-1. Pokud máte síťových omezení na místě (například skupinu zabezpečení sítě), nasadíte server proxy HTTPs ke směrování provozu.
-2. Pokud chcete povolit přístup k Internetu prostřednictvím serveru proxy protokolu HTTPs, přidáte pravidla skupiny zabezpečení sítě, pokud nemáte.
-
-Informace o nastavení serveru proxy protokolu HTTPs pro zálohy virtuálních počítačů najdete v tématu [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-
-Zálohované virtuální počítač nebo proxy server, přes který se směruje provoz vyžaduje přístup k Azure, veřejné IP adresy
-
 ####  <a name="solution"></a>Řešení
-Chcete-li vyřešit tento problém, zkuste použijte jeden z následujících metod:
-
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>Povolit přístup k úložišti Azure, která odpovídá na oblast
-
-Můžete použít [značky služeb](../virtual-network/security-overview.md#service-tags) umožňující připojení k úložišti určité oblasti. Ujistěte se, že pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidla, která zablokuje přístup internet.
-
-![Skupina zabezpečení sítě se značkami úložiště pro oblast](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-Podívejte se na informace o tom postup krok za krokem konfigurace značky služeb, [toto video](https://youtu.be/1EjLQtbKm1M).
-
-> [!WARNING]
-> Značky služeb úložiště jsou ve verzi preview. Jsou k dispozici pouze v konkrétní oblasti. Seznam oblastí naleznete v tématu [značky pro úložiště služeb](../virtual-network/security-overview.md#service-tags).
-
-Pokud používáte Azure Managed Disks, může být nutné počáteční další portu (port 8443) na bránu firewall.
-
-Kromě toho pokud podsíť nemá trasy pro odchozí přenosy z Internetu, musíte přidat koncový bod služby se značka služby "Microsoft.Storage" pro vaši podsíť.
+Chcete-li vyřešit problém sítě, naleznete v tématu [navázat připojení k síti](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)
 
@@ -185,7 +160,7 @@ Většina souvisejících s agenty nebo souvisejících s rozšířením selhán
 3. [Konfigurace automatického restartování agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Spusťte nové zálohování testu. Pokud chyba přetrvává, shromážděte následující protokoly z virtuálního počítače:
 
-   * /var/lib/waagent/*.XML
+   * /var/lib/waagent/*.xml
    * /var/log/waagent.log
    * / var/protokolu/azure / *
 

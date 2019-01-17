@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 89552bc568ce38c6153683e9c3b0f3f26f569083
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 530bb7b164ec7d7b31e6d4a58bca97aa17dc62fa
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959531"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54357874"
 ---
 # <a name="what-is-azure-stack"></a>Co je Azure Stack?
 
@@ -29,8 +29,6 @@ Microsoft Azure Stack je hybridní Cloudová platforma, která vám umožní pos
 
 Azure Stack se teď nabízí dvě možnosti nasazení podle svých potřeb.
 
-## <a name="azure-stack-integrated-systems"></a>Integrované systémy pro službu Azure Stack
-Azure Stack nabízí integrované systémy Díky partnerství Microsoftu a [hardwarových partnerů](https://azure.microsoft.com/overview/azure-stack/integrated-systems/), vytváření řešení, které nabízí cloud tempem inovace a výpočetnímu zjednodušení správy. Azure Stack se nabízí jako integrované hardwaru a softwaru system, takže máte flexibility a kontroly, které potřebujete, spolu se schopností na inovace v cloudu. Systémy ve službě Azure Stack integrované v rozsahu od 4 až 16 uzlů a společně podporuje hardwarových partnerů a Microsoft.  Integrované systémy Azure Stack slouží k vytvoření nové scénáře a nasazovat nové řešení pro vaše produkční úlohy.
 
 ## <a name="azure-stack-development-kit"></a>Vývojová sada pro Azure Stack
 
@@ -44,6 +42,9 @@ ASDK má následující omezení:
 * ASDK je přidružen jedné služby Azure Active Directory (Azure AD) nebo zprostředkovatele identity služby Active Directory Federation Services (AD FS). Můžete vytvořit více uživatelů v tomto adresáři a přiřaďte předplatná každému uživateli.
 * Protože komponenty služby Azure Stack jsou nasazené na jednom počítači hostitele, existují omezené fyzické prostředky dostupné pro prostředky tenanta. Tato konfigurace není určena pro zkušební škálování a výkon.
 * Scénáře pro sítě jsou omezené z důvodu jednom hostiteli a síťovou kartu požadavky na nasazení.
+
+## <a name="azure-stack-integrated-systems"></a>Integrované systémy pro službu Azure Stack
+Azure Stack nabízí integrované systémy Díky partnerství Microsoftu a [hardwarových partnerů](https://azure.microsoft.com/overview/azure-stack/integrated-systems/), vytváření řešení, které nabízí cloud tempem inovace a výpočetnímu zjednodušení správy. Azure Stack se nabízí jako integrované hardwaru a softwaru system, takže máte flexibility a kontroly, které potřebujete, spolu se schopností na inovace v cloudu. Systémy ve službě Azure Stack integrované v rozsahu od 4 až 16 uzlů a společně podporuje hardwarových partnerů a Microsoft.  Integrované systémy Azure Stack slouží k vytvoření nové scénáře a nasazovat nové řešení pro vaše produkční úlohy.
 
 ## <a name="next-steps"></a>Další postup
 

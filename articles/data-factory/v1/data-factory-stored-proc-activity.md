@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3f13cb2626394d16a127b172bb69c4ab88121cdb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017697"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352525"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server aktivita uložených procedur
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -76,7 +76,7 @@ Následující návod používá aktivitu uložená procedura v kanálu vyvolat 
 2. Vytvořte následující **uloženou proceduru** , která vloží data v **sampletable**.
 
     ```SQL
-    CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
+    CREATE PROCEDURE usp_sample @DateTime nvarchar(127)
     AS
 
     BEGIN
@@ -108,7 +108,7 @@ Následující návod používá aktivitu uložená procedura v kanálu vyvolat 
    ![Domovská stránka datová továrna](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Vytvoření propojené služby Azure SQL
-Po vytvoření objektu pro vytváření dat Azure SQL vytvoříte propojené služby, která propojí vaši databázi Azure SQL, která obsahuje sampletable tabulky a sp_sample uloženou proceduru se svou datovou továrnou.
+Po vytvoření objektu pro vytváření dat Azure SQL vytvoříte propojené služby, která propojí vaši databázi Azure SQL, která obsahuje sampletable tabulky a usp_sample uloženou proceduru se svou datovou továrnou.
 
 1. Klikněte na tlačítko **Autor a nasadit** na **služby Data Factory** okno **SProcDF** ke spuštění editoru služby Data Factory.
 2. Klikněte na tlačítko **nové datové úložiště** na příkaz pruhové a zvolte **Azure SQL Database**. Měli byste vidět skript JSON pro vytvoření služby Azure SQL, které jsou propojeny v editoru.
@@ -160,7 +160,7 @@ Teď vytvoříte kanál s aktivitou uložené procedury.
 Všimněte si, že následující vlastnosti: 
 
 - **Typ** je nastavena na **SqlServerStoredProcedure**. 
-- **StoredProcedureName** v typ vlastnosti je nastavený na **sp_sample** (název uložené procedury).
+- **StoredProcedureName** v typ vlastnosti je nastavený na **usp_sample** (název uložené procedury).
 - **StoredProcedureParameters** oddíl obsahuje jeden parametr s názvem **data a času**. Název a použití malých a velkých parametr ve formátu JSON musí odpovídat názvu a použití malých a velkých parametr v definici uloženou proceduru. Pokud je nutné předat pro parametr hodnotu null, použijte syntaxi: `"param1": null` (malými písmeny).
  
 1. Pokud tlačítko nevidíte, klikněte na panelu nástrojů na **... Další** na panelu příkazů a klikněte na **nový kanál**.
@@ -174,7 +174,7 @@ Všimněte si, že následující vlastnosti:
                 {
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-                        "storedProcedureName": "sp_sample",
+                        "storedProcedureName": "usp_sample",
                         "storedProcedureParameters": {
                             "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                         }
@@ -340,7 +340,7 @@ CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable2(Id);
 **Uložená procedura:**
 
 ```SQL
-CREATE PROCEDURE sp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
+CREATE PROCEDURE usp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
 
 AS
 
@@ -355,7 +355,7 @@ Nyní, předejte **scénář** parametr a hodnotu z aktivity uložené procedury
 ```JSON
 "typeProperties":
 {
-    "storedProcedureName": "sp_sample",
+    "storedProcedureName": "usp_sample",
     "storedProcedureParameters":
     {
         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
@@ -394,7 +394,7 @@ Nyní, předejte **scénář** parametr a hodnotu z aktivity uložené procedury
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample2",
+                    "storedProcedureName": "usp_sample2",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
                         "Scenario": "Document sample"

@@ -1,6 +1,6 @@
 ---
-title: Okno nastavení Azure Application Insights Profiler | Dokumentace Microsoftu
-description: Zobrazit stav profileru a spuštění relace profilování
+title: Použití pokokna nastavení Azure Application Insights Profiler | Dokumentace Microsoftu
+description: Zobrazit stav Profiler a spuštění relace profilování
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,109 +12,117 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b656fb521ad72256e91de63e96aa261f1e94bd13
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 16e855d8c9c5863339ec09b48d41d6f011b3e836
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082728"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358673"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurovat Application Insights Profiler
 
-## <a name="profiler-settings-page"></a>Stránka nastavení Profiler
+## <a name="profiler-settings-pane"></a>Podokno nastavení Profiler
 
-Na stránce nastavení profileru můžete otevřít ze stránky s Application Insights výkon stisknutím kombinace kláves **Profiler** tlačítko.
+Otevření podokna nastavení Azure Application Insights Profiler, přejděte do podokna výkonu Application Insights a vyberte **Profiler** tlačítko.
 
-![Nakonfigurujte záznamy v podokně profileru][configure-profiler-entry]
+![Konfigurace panelu Profiler][configure-profiler-entry]
 
-Na stránce konfigurace Application Insights Profiler obsahuje čtyři funkce: 
-1. **Profil nyní** – kliknutím na toto tlačítko způsobí, že relace profilování spuštění pro všechny aplikace, které jsou propojeny k této instanci Application Insights
-1. **Propojené aplikace** – seznam aplikací, odesílání profiler k tomuto prostředku Application Insights
-1. **Relace v průběhu** – při stisknutí klávesy **profilu nyní**, stav relace se tady zobrazí.)
-1. **Nedávné relace profilace** – zobrazí informace o poslední relace profilování.
+**Nakonfigurovat Application Insights Profiler** podokno obsahuje čtyři funkce: 
+* **Profil nyní**: Spuštění profilování relací pro všechny aplikace, které jsou propojeny k této instanci Application Insights.
+* **Propojené aplikace**: Seznam aplikací, které odesílají profilování dat k tomuto prostředku Application Insights.
+* **Relace v průběhu**: Zobrazuje stav relace, když vyberete **profilu nyní**. 
+* **Nedávné relace profilace**: Zobrazí informace o poslední relace profilování.
 
 ![Profiler na vyžádání][profiler-on-demand]
 
-## <a name="app-service-environments-ase"></a>Služby App Service Environment (ASE)
-V závislosti na konfiguraci služby ASE může být zablokován volání na kontrolu stavu agenta. Tato stránka se dozvíte, když se ve skutečnosti není spuštěn agent. Webové úlohy můžete zkontrolovat Opravdu chcete ve své aplikaci. Ale pokud jsou všechna nastavení aplikací správně nastavené a rozšíření webu App Insights je nainstalován ve své aplikaci, poběží profileru a nedávné relace profilování v seznamu byste měli vidět, pokud neexistuje odpovídající provozu do vaší aplikace.
+## <a name="app-service-environment"></a>App Service Environment
+V závislosti na konfiguraci služby Azure App Service Environment může být blokovaný volání na kontrolu stavu agenta. V podokně se může zobrazit zpráva, že agent není spuštěn i v případě, že je spuštěná. Pokud chcete mít jistotu, že se jedná, zkontrolujte úlohy webjob ve své aplikaci. Pokud jsou všechny hodnoty nastavení aplikace správné a rozšíření webu Application Insights je nainstalován ve své aplikaci, je spuštěn Profiler. Pokud vaše aplikace přijímá dostatek provozu, poslední relace profilování má být zobrazena v seznamu.
 
 ## <a id="profileondemand"></a> Ručně aktivovat Profiler
 
-Profiler lze spustit ručně kliknutím na jedno tlačítko. Předpokládejme, že jste spustili v testu výkonnosti webu. Budete potřebovat trasování, které vám pomohou pochopit, jaký je výkon vaší webové aplikace v zatížení. Máte kontrolu nad při zaznamenat trasování je zásadní, protože nevíte, kdy bude spuštěn zátěžový test, ale náhodný vzorkovací přijít.
-Následující postup ukazuje, jak v tomto scénáři funguje:
+Profiler můžete ručně aktivovat jediným kliknutím. Předpokládejme, že máte spuštěnou testu výkonnosti webu. Budete potřebovat trasování, které vám pomohou pochopit, jaký je výkon vaší webové aplikace v zatížení. Řídit, kdy jsou zachyceny trasování je zásadní, protože víte, kdy bude spuštěn zátěžový test. Ale interval vzorkování náhodné přijít.
 
-### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(Volitelné) Krok 1: Vytvořte provozu do vaší webové aplikace tím, že spuštění testu výkonnosti webu
+Další části ukazuje, jak v tomto scénáři funguje:
+
+### <a name="step-1-optional-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>Krok 1: (Volitelné) Vytvořte provozu do vaší webové aplikace tím, že spuštění testu výkonnosti webu
 
 Pokud vaše webová aplikace už obsahuje příchozí provoz nebo pokud chcete jen vygenerovat ručně provoz, tuto část přeskočit a pokračovat v kroku 2.
 
-Přejděte na portál Application Insights **konfigurovat > testování výkonu**. Klikněte na tlačítko Spustit nový test výkonnosti.
+1. Na portálu Application Insights, vyberte **konfigurovat** > **testování výkonu**. 
 
-![Vytvořit nový test výkonnosti][create-performance-test]
+1. Chcete-li spustit nový test výkonnosti, vyberte **nový** tlačítko.
 
-V **nový test výkonnosti** podokně nakonfigurovat cílová adresa URL testu. Přijměte všechna výchozí nastavení a spuštění zátěžového testu.
+   ![Vytvořit nový test výkonnosti][create-performance-test]
 
-![Konfigurace zátěžového testu][configure-performance-test]
+1. V **nový test výkonnosti** podokně nakonfigurovat cílová adresa URL testu. Přijměte všechna výchozí nastavení a pak vyberte **spustit test** spouštění zátěžového testu.
 
-Zobrazí se že nový test se do fronty zařadí nejprve, za nímž následuje ve stavu v průběhu.
+    ![Konfigurace zátěžového testu][configure-performance-test]
 
-![zátěžový test je odeslána a zařazeny do fronty][load-test-queued]
+    Nový test se do fronty zařadí nejprve, za nímž následuje stav *probíhá*.
 
-![v průběhu je spuštěn zátěžový test][load-test-in-progress]
+    ![zátěžový test je odeslána a zařazeny do fronty][load-test-queued]
 
-### <a name="step-2-start-profiler-on-demand"></a>Krok 2: Spustit profilování na vyžádání
+    ![v průběhu je spuštěn zátěžový test][load-test-in-progress]
 
-Jakmile je spuštěn zátěžový test, můžeme začít profiler k zaznamenání trasování ve webové aplikaci, zatímco přijímá zatížení.
-Přejděte do podokna Profiler konfigurace:
+### <a name="step-2-start-a-profiler-on-demand-session"></a>Krok 2: Spusťte Profiler relaci na vyžádání
+
+1. Když je spuštěn zátěžový test, spusťte Profiler k zaznamenání trasování ve webové aplikaci, zatímco přijímá zatížení.
+
+1. Přejděte **nakonfigurujte Profiler** podokně.
 
 
 ### <a name="step-3-view-traces"></a>Krok 3: Zobrazení trasování
 
-Po doběhnutí profileru, postupujte podle pokynů v oznámení pro přechod na stránku a zobrazení trasování výkonu.
+Po doběhnutí Profiler, postupujte podle pokynů v oznámení pro přechod na podokno a zobrazení trasování výkonu.
 
-## <a name="troubleshooting-on-demand-profiler"></a>Řešení potíží s profilování na vyžádání
+## <a name="troubleshoot-the-profiler-on-demand-session"></a>Řešení potíží s Profiler relaci na vyžádání
 
-V některých případech může se zobrazit chybová zpráva vypršení časového limitu Profiler po relaci na vyžádání:
+Po relaci na vyžádání vám může Profiler vypršení časového limitu chybová zpráva:
 
 ![Chyba časového limitu Profiler][profiler-timeout]
 
-Může existovat dva důvody, proč se zobrazí tato chyba:
+Tato chyba se může zobrazit pro některý z následujících důvodů:
 
-1. Relace profilování na vyžádání bylo úspěšné, ale trvalo déle zpracovat shromážděná data, Application Insights. Pokud data se nedokončilo zpracování za 15 minut, na portálu se zobrazí zpráva vypršení časového limitu. Když po chvíli se zobrazí trasování Profiler. Pokud k tomu dojde, ignorujte prozatím chybová zpráva. Aktivně pracujeme na opravě.
+* Profiler relaci na vyžádání bylo úspěšné, ale trvalo déle, než se očekávalo se shromážděná data zpracovat, Application Insights.  
 
-1. Webové aplikace má starší verzi agenta Profiler, který nemá žádné funkce na vyžádání. Pokud jste dříve povolili profil Application Insights, je pravděpodobné, že je potřeba aktualizovat váš Profiler agenta chcete začít používat funkce na vyžádání.
+  Pokud není během 15 minut zpracování dat na portálu zobrazí zprávu vypršení časového limitu. Po chvíli ale Profiler trasování se zobrazí. Pokud se zobrazí chybová zpráva, teď ho ignorujte. Aktivně pracujeme na opravě.
+
+* Webové aplikace má starší verzi agenta Profiler, který nemá funkce na vyžádání.  
+
+  Pokud jste povolili Application Insights Profiler dříve, může být potřeba aktualizovat váš Profiler agenta chcete začít používat funkce na vyžádání.
   
-Postupujte podle těchto kroků zkontrolujte a nainstalujte nejnovější Profiler:
+Přejděte na App Services **nastavení aplikace** podokno a vyhledejte následující nastavení:
+* **APPINSIGHTS_INSTRUMENTATIONKEY**: Nahraďte správné Instrumentační klíč pro službu Application Insights.
+* **APPINSIGHTS_PORTALINFO**: ASP.NET
+* **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
-1. Přejděte do nastavení aplikace služby App a zaškrtněte, pokud následující nastavení mají hodnotu:
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Nahraďte správné Instrumentační klíč pro službu Application Insights.
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 Pokud některé z těchto nastavení nejsou nastavená, přejděte do podokna povolení Application Insights se nainstalovat nejnovější rozšíření lokality.
+Pokud nejsou nastavené žádné předchozí hodnoty, nainstalujte nejnovější rozšíření webu následujícím způsobem:
 
-1. Přejděte do podokna Application Insights na portálu služby App Services.
+1. Přejděte **Application Insights** podokně portálu App Services.
 
-    ![Povolit Application Insights na portálu služby App Services][enable-app-insights]
+    ![Povolit Application Insights z portálu služby App Services][enable-app-insights]
 
-1. Pokud se zobrazí na tlačítko 'Aktualizovat' v následující stránku, klikněte na něj aktualizovat rozšíření webu Application Insights, který bude instalovat nejnovější verzi agenta Profiler.
+1. Pokud **Application Insights** podokně se zobrazí **aktualizovat** tlačítko, vyberte ji a aktualizovat rozšíření webu Application Insights, který nainstaluje nejnovější verzi agenta Profiler.
 
     ![Aktualizovat rozšíření webu][update-site-extension]
 
-1. Pak klikněte na tlačítko **změnit** chcete zajistit, Profiler zapnutý a vyberte **OK** a uložte změny.
+1. Ujistěte se, že je zapnutá Profiler, vyberte **změnu**a pak vyberte **OK** a uložte změny.
 
     ![Změnit a uložit app insights][change-and-save-appinsights]
 
-1. Přejděte zpět na **nastavení aplikace** jsou nastaveny kartu pro App Service a zkontrolujte následující položky nastavení aplikace:
+1. Přejděte zpět na **nastavení aplikace** podokno pro službu App Service k zajištění, že jsou nastaveny následující hodnoty:
     * **APPINSIGHTS_INSTRUMENTATIONKEY**: Nahraďte správné Instrumentační klíč pro službu application insights.
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET
+    * **APPINSIGHTS_PORTALINFO**: ASP.NET 
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
-    ![nastavení aplikace pro profiler][app-settings-for-profiler]
+    ![Nastavení aplikace pro Profiler][app-settings-for-profiler]
 
-1. Volitelně můžete zaškrtnutím verze rozšíření a ujistěte se, že není k dispozici žádná aktualizace.
+1. Volitelně vyberte **rozšíření**a zkontrolujte verzi rozšíření a určit, zda je k dispozici aktualizace.
 
     ![Vyhledat aktualizace rozšíření][check-for-extension-update]
 
-## <a name="next-steps"></a>Další kroky
-[Povolit Profiler a zobrazení trasování](profiler-overview.md ?toc=/azure/azure-monitor/toc.json)
+## <a name="next-steps"></a>Další postup
+[Povolit Profiler a zobrazit trasování](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png
 [configure-profiler-entry]: ./media/profiler-settings/configure-profiler-entry.png

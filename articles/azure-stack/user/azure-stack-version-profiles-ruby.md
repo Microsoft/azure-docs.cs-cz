@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 0e7d624c77447f537e6d47ea19d9054c1117d742
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: aafeeab50a60116ac93cbfa8acb0375224453b03
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263644"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353987"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Použití profilů verzí API pomocí Ruby ve službě Azure Stack
 
@@ -33,7 +33,7 @@ Ruby SDK pro Azure Resource Manageru zásobníku poskytuje nástroje, které vá
 Profil rozhraní API je kombinací poskytovatelů prostředků a verze aktualizace service. Profil rozhraní API můžete kombinovat různé typy zdrojů.
 
 - Chcete-li používat nejnovější verze všech služeb, použijte **nejnovější** profilu gem kumulativní sadu Azure SDK.
-- Chcete-li použít služby kompatibilní s Azure Stack, použijte **V2017_03_09** profilu gem kumulativní sadu Azure SDK.
+- Chcete-li použít služby kompatibilní s Azure Stack, použijte **V2018_03_01** profilu gem kumulativní sadu Azure SDK.
 - Aby používal nejnovější **verze api-version** služby, použijte **nejnovější** profilu konkrétní gem. Například, pokud byste chtěli použít nejnovější **verze api-version** výpočetní služby samostatně, použijte **nejnovější** profil **Compute** gem.
 - Jak používat konkrétní **verze api-version** pro službu, pomocí konkrétní verze rozhraní API definované uvnitř gem.
 
@@ -72,12 +72,12 @@ Azure Resource Manageru Ruby SDK je ve verzi preview a budou mít nejnovější 
 
 ## <a name="use-the-azuresdk-gem"></a>Použijte nástroj gem azure_sdk
 
-Nástroj gem, **azure_sdk**, je souhrn všech podporovaných gems v Ruby SDK. Tento nástroj gem se skládá z **nejnovější** profil, který podporuje nejnovější verzi všech služeb. Představuje systémovou správou verzí profilu **V2017_03_09** profil, který je sestaven pro Azure Stack.
+Nástroj gem, **azure_sdk**, je souhrn všech podporovaných gems v Ruby SDK. Tento nástroj gem se skládá z **nejnovější** profil, který podporuje nejnovější verzi všech služeb. Zavádí dvě verze profilu **V2017_03_09** a **V2018_03_01** profilů, které jsou vytvořené pro Azure Stack.
 
 Souhrn gem azure_sdk můžete nainstalovat pomocí následujícího příkazu:  
 
 ```Ruby  
-gem install 'azure_sdk
+gem install 'azure_sdk'
 ```
 
 ## <a name="prerequisites"></a>Požadavky
@@ -127,11 +127,12 @@ Chcete-li nastavit proměnné prostředí, v příkazovém řádku Windows, pou�
 
 ## <a name="existing-api-profiles"></a>Stávající profily rozhraní API
 
-Souhrn gem Azure_sdk má následující dva profily:
+Souhrn gem Azure_sdk má následující tři profily:
 
-1. **V2017_03_09**  
+1. **V2018_03_01** profilu vytvořené pro Azure Stack. Používáte tento profil pro využívat všechny nejnovější verze služby, které jsou k dispozici ve službě Azure Stack.
+2. **V2017_03_09**  
   Profil vytvořené pro Azure Stack. Použijte tento profil služby nejvíce kompatibilní s Azure Stack.
-2. **nejnovější**  
+3. **nejnovější**  
   Profil se skládá z nejnovější verze všech služeb. Použijte nejnovější verze všech služeb.
 
 Další informace o profilech rozhraní API a služby Azure Stack, najdete v článku [souhrn rozhraní API profily](azure-stack-version-profiles.md#summary-of-api-profiles).
@@ -158,7 +159,7 @@ options = {
 }
 
 # Target profile built for Azure Stack
-client = Azure::Resources::Profiles::V2017_03_09::Mgmt::Client.new(options)
+client = Azure::Resources::Profiles::V2018_03_01::Mgmt::Client.new(options)
 ```
 
 Profil klienta můžete použít pro přístup k poskytovateli jednotlivých prostředků, jako jsou výpočty, úložiště a síť:
@@ -172,7 +173,7 @@ purchase_plan_obj = profile_client.compute.model_classes.purchase_plan.new
 
 # Option 2: To access the models associated with Compute
 # Notice Namespace: Azure::Profiles::<Profile Name>::<Service Name>::Mgmt::Models::<Model Name>
-purchase_plan_obj = Azure::Profiles::V2017_03_09::Compute::Mgmt::Models::PurchasePlan.new
+purchase_plan_obj = Azure::Profiles::V2018_03_01::Compute::Mgmt::Models::PurchasePlan.new
 ```
 
 ## <a name="define-azure-stack-environment-setting-functions"></a>Definování funkcí, nastavení prostředí Azure Stack
@@ -201,27 +202,27 @@ end
 
 Můžete použít následující ukázek, které najdete na Githubu jako reference pro vytváření řešení pomocí Ruby a rozhraní API služby Azure Stack profilů:
 
-- [Správa prostředků a skupin prostředků Azure v Ruby](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)
-- [Správa virtuálních počítačů pomocí Ruby](https://github.com/Azure-Samples/compute-ruby-manage-vm/tree/master/Hybrid)
-- [Nasazení SSH povolené virtuální počítač pomocí šablony v Ruby](https://github.com/Azure-Samples/resource-manager-ruby-template-deployment/tree/master/Hybrid)
+- [Správa prostředků a skupin prostředků Azure v Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)
+- [Správa virtuálních počítačů pomocí Ruby](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM)
+- [Nasazení SSH povolené virtuální počítač pomocí šablony v Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Template-Deployment)
 
 ### <a name="sample-resource-manager-and-groups"></a>Ukázka Resource Manageru a skupiny
 
 Ke spuštění ukázky, ujistěte se, že máte nainstalované Ruby. Pokud používáte Visual Studio Code, stáhněte si rozšíření Ruby SDK také.
 
 > [!NOTE]  
-> Úložiště můžete získat ukázce kódu na "[Správa prostředků Azure a skupiny prostředků pomocí Ruby](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)".
+> Úložiště můžete získat ukázce kódu na "[Správa prostředků Azure a skupiny prostředků pomocí Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)".
 
 1. Naklonujte úložiště:
 
    ```bash
-   git clone https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups.git
+   git clone https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups.git
    ```
 
 2. Instalace závislosti pomocí sady prostředků:
 
    ```Bash
-   cd resource-manager-ruby-resources-and-groups\Hybrid\
+   cd Hybrid-Resource-Manager-Ruby-Resources-And-Groups
    bundle install
    ```
 
@@ -269,7 +270,7 @@ Ke spuštění ukázky, ujistěte se, že máte nainstalované Ruby. Pokud použ
 7. Vytvoření profilu klienta, který cílí na profil Azure Stack:
 
    ```ruby  
-   client = Azure::Resources::Profiles::V2017_03_09::Mgmt::Client.new(options)
+   client = Azure::Resources::Profiles::V2018_03_01::Mgmt::Client.new(options)
    ```
 
 8. K ověření objektu služby Azure Stack, musí být definován koncové body pomocí **get_active_directory_settings()**. Tato metoda používá **ARM_Endpoint** proměnné prostředí, které jste nastavili při vytváření vaší proměnné prostředí:

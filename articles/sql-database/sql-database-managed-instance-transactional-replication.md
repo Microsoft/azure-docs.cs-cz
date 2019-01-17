@@ -12,16 +12,23 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/08/2019
-ms.openlocfilehash: 1839ca0d2495a07f6fc734501540cddcdcb28e18
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d94173f9b1940613c26451658b90c956c71876fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332836"
+ms.locfileid: "54353239"
 ---
 # <a name="transactional-replication-with-azure-sql-logical-server-and-azure-sql-managed-instance"></a>Transakční replikace se logický Server SQL Azure a spravované Instance Azure SQL
 
 Transakční replikace je funkce Azure SQL Database Managed Instance a SQL Server, který umožňuje replikovat data z tabulky ve službě Azure SQL Database nebo SQL Server do tabulek umístit do vzdálené databáze. Tato funkce umožňuje synchronizovat více tabulek v různých databázích.
+
+## <a name="when-to-use-transactional-replication"></a>Použití transakční replikace
+
+Transakční replikace je užitečná v následujících scénářích:
+- Publikovat změny provedené v jedné nebo více tabulek v databázi a Rozdejte je jeden nebo více systému SQL Server a Azure SQL databáze, které přihlášený(á) k odběru změn.
+- Zachovat několik distribuované databáze ve stavu synchronizovaná.
+- Migrace databází z jednoho serveru SQL Server nebo spravované Instance do jiné databáze a průběžně publikujte změny.
 
 ## <a name="overview"></a>Přehled 
 Klíčové komponenty v transakční replikaci můžete vidět na následujícím obrázku:  
@@ -81,16 +88,19 @@ Obecně platí vydavatelem a distributorem musí být buď v cloudu nebo místn�
 
 ![Jedna instance jako vydavateli a distributorovi ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Vydavateli a distributorovi jsou nakonfigurované v rámci jednoho Managed Instance. 
+Vydavateli a distributorovi jsou nakonfigurované v rámci jednoho Managed Instance a distribuci změny do jiných Managed Instance, izolovaná databáze nebo serveru SQL Server v místním. V této konfiguraci vydavatel/spravované Instance distributora nelze konfigurovat pomocí [geografickou replikaci a automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md).
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Vydavatele s vzdáleného distributora na Managed Instance
+
+V této konfiguraci jednoho Managed Instance publikuje změny distributora umístěny na jiné mi, který může sloužit velký počet spravovaných instancí zdroje a distribuovat změny na jeden nebo více cílů na Managed Instance, izolovaná databáze nebo serveru SQL Server.
 
 ![Samostatné instance pro vydavatele a distributora](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
 Vydavateli a distributorovi konfigurují na dvou spravovaných instancí. V této konfiguraci
 
 - Obě Managed instance jsou ve stejné virtuální síti.
-- Obě Managed instance jsou ve stejném umístění. 
+- Obě Managed instance jsou ve stejném umístění.
+- Publikování spravované instance, které jsou hostiteli a nejde ho distributora databází [geograficky replikovaný pomocí automatického převzetí služeb při selhání groups](sql-database-auto-failover-group.md).
 
 ### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-managed-instance-or-logical-server"></a>Vydavateli a distributorovi místně pomocí odběratele na Managed Instance nebo logického serveru 
 

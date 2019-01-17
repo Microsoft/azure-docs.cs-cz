@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c2d121106218c0965cd8f4e07776cf8d2578543f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651448"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354157"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Jak používat balíček obsahu Azure Active Directory Power BI
 
@@ -101,13 +101,45 @@ Pokud chcete aktualizovat svůj balíček obsahu na novější verzi:
 
 Jakmile ověříte, že nová verze balíčku obsahu funguje podle očekávání, můžete odebrat starou verzi v případě potřeby odstraněním podkladových sestav a datové sady přidružené k tomuto balíčku obsahu.
 
-## <a name="still-having-issues"></a>Pořád máte problémy? 
+## <a name="troubleshoot-content-pack-errors"></a>Řešení potíží s chybami balíčku obsahu
 
-Podívejte se na [průvodce odstraňováním potíží](troubleshoot-content-pack.md). Obecnou nápovědu k Power BI najdete v těchto [článcích nápovědy](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
+Při práci s balíčkem obsahu, je možné, že narazíte na následující chyby: 
+
+- [Aktualizace se nezdařila.](#refresh-failed) 
+- [Nepovedlo se aktualizovat přihlašovací údaje ke zdroji dat](#failed-to-update-data-source-credentials) 
+- [Import dat trvá moc dlouho](#data-import-is-too-slow) 
+
+Obecnou nápovědu k Power BI najdete v těchto [článcích nápovědy](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
+
+### <a name="refresh-failed"></a>Aktualizace se nezdařila 
+ 
+**Jak se zobrazí tato chyba**: E-mailu z Power BI nebo stavu selhání v historii aktualizace. 
+
+
+| Příčina | K vyřešení |
+| ---   | ---        |
+| Aktualizujte chyby, které chyby může být způsobena přihlašovacích údajů uživatele, připojení k balíčku obsahu byly obnovit, ale není aktualizovaná. v nastavení připojení balíčku obsahu. | V Power BI, vyhledejte sadu dat odpovídající panel protokolů aktivity služby Azure AD (**protokoly aktivit Azure Active Directory**), zvolte naplánovat aktualizaci a pak zadejte svoje přihlašovací údaje Azure AD. |
+| Obnovení může selhat kvůli problémům s daty v základní balíčku obsahu. | [Lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
+ 
+### <a name="failed-to-update-data-source-credentials"></a>Nepovedlo se aktualizovat přihlašovací údaje ke zdroji dat 
+ 
+**Jak se zobrazí tato chyba**: V Power BI, když se připojíte k balíčku obsahu protokolů aktivit Azure AD. 
+
+| Příčina | K vyřešení |
+| ---   | ---        |
+| Je připojující se uživatel není globální správce nebo čtenáře zabezpečení nebo správce zabezpečení. | Použijte účet, který je globálním správcem nebo Čtenář zabezpečení nebo správce zabezpečení pro přístup k obsahu sady. |
+| Váš tenant není Premium tenanta nebo nemá alespoň jeden uživatel s licencí Premium souboru. | [Lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
+### <a name="data-import-is-too-slow"></a>Import dat je pomalý 
+ 
+**Jak se zobrazí tato chyba**: V Power BI připojíte balíček obsahu, proces importu dat spustí Příprava řídicí panel aktivit Azure AD protokoly. Zobrazí se tato zpráva: **Importují se data...**  bez jakékoli další krok.  
+
+| Příčina | K vyřešení |
+| ---   | ---        |
+| V závislosti na velikosti tenanta tento krok může trvat pár minut až 30 minut. | Pokud zprávu nezmění na zobrazení řídicího panelu do jedné hodiny, [lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+  
 ## <a name="next-steps"></a>Další postup
 
 * [Nainstalujte balíček obsahu Power BI](quickstart-install-power-bi-content-pack.md).
-* [Řešení potíží s chybami balíčku obsahu](troubleshoot-content-pack.md).
 * [Co jsou sestavy Azure AD? ](overview-reports.md).

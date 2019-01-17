@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8df43a9b2c518e77d14dd5cb392b042b0b4846e2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407962"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352355"
 ---
 # <a name="using-a-cloud-dvr"></a>Použití cloudového DVR
 
@@ -35,7 +35,10 @@ Každý **LiveOutput** je přidružený **Asset**, kterou používá pro záznam
 A **Livestream** podporuje až tři souběžně běžících **LiveOutput**s, takže můžete vytvořit maximálně 3 záznamy/archivů z jednoho živého datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Předpokládejme, že budete potřebovat k vysílání 24 x 7 živé lineární kanál a vytvořit různé programy v průběhu dne nabídnout zákazníkům jako obsah na vyžádání pro zobrazení můžete projít "záznam". V tomto scénáři je nejprve vytvořit primární LiveOutput s krátkou archivačního okna 1 hodina nebo méně – Toto je primární živého datového proudu, který by vaši uživatelé naladit. Vytvoříte **StreamingLocator** to **LiveOutput** a publikujete ho vaše aplikace nebo webu jako kanál "Live". Zatímco **Livestream** je spuštěná, můžete prostřednictvím kódu programu vytvořit druhý souběžných **LiveOutput** na začátku programu (nebo 5 minut, než již v rané fázi poskytují některé popisovače mají být odebrány později). Tento druhý **LiveOutput** je možné odstranit 5 minut po ukončení programu. Pomocí této druhé **Asset**, můžete vytvořit nový **StreamingLocator** publikovat tento program jako prostředek na vyžádání v katalogu vaší aplikace. Tento proces může opakovat více než jednou pro ostatní meze programů nebo vybraná vystoupení, které chcete sdílet jako videa na vyžádání, zatímco "Live" informačního kanálu z první **LiveOutput** pokračuje k vysílání lineární kanál. 
 
 > [!NOTE]
-> **LiveOutput**s spuštění při vytvoření a zastavení při odstranění. Když odstraníte **LiveOutput**, nejsou odstranění podkladové **Asset** a obsahu v prostředku.  
+> **LiveOutput**s spuštění při vytvoření a zastavení při odstranění. Když odstraníte **LiveOutput**, nejsou odstranění podkladové **Asset** a obsahu v prostředku. 
+>
+> Pokud jste publikovali **Lokátor streamování**s prostředků pro **LiveOutput**, událost (až do délky okna DVR) bude dál zobrazit až koncový čas **Lokátor streamování**  nebo do při odstranění Lokátor, podle toho, co nastane dřív.   
+  
 
 ## <a name="next-steps"></a>Další postup
 

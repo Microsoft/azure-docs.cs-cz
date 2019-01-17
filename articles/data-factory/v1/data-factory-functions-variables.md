@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 48a0bf2a7209812af23c3dd9eec9703ec5826fa9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a82d871ea232b31b31cfc24585af672141617d88
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019567"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353002"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
 > [!NOTE]
@@ -31,7 +31,7 @@ Tento článek obsahuje informace o funkcích a proměnné, které podporované 
 | --- | --- | --- | --- |
 | WindowStart |Začátek časový interval pro spuštění okno aktuální aktivity |aktivita |<ol><li>Zadejte dotazech pro výběr data. Najdete v článcích konektor odkazuje [aktivity přesunu dat](data-factory-data-movement-activities.md) článku.</li> |
 | WindowEnd |Konec časový interval pro spuštění okno aktuální aktivity |aktivita |stejné jako WindowStart. |
-| Vlastnosti SliceStart |Začátek časového intervalu pro datový řez se vytváří |aktivita<br/>Datové sady |<ol><li>Zadejte cesty ke složkám dynamické a názvy souborů při práci s [objektů Blob v Azure](data-factory-azure-blob-connector.md) a [systému souborů datových sad](data-factory-onprem-file-system-connector.md).</li><li>Zadejte vstupní závislosti s funkce data factory v kolekci vstupů aktivity.</li></ol> |
+| SliceStart |Začátek časového intervalu pro datový řez se vytváří |aktivita<br/>Datové sady |<ol><li>Zadejte cesty ke složkám dynamické a názvy souborů při práci s [objektů Blob v Azure](data-factory-azure-blob-connector.md) a [systému souborů datových sad](data-factory-onprem-file-system-connector.md).</li><li>Zadejte vstupní závislosti s funkce data factory v kolekci vstupů aktivity.</li></ol> |
 | SliceEnd |Konec časového intervalu pro aktuální datový řez. |aktivita<br/>Datové sady |stejné jako vlastnosti SliceStart. |
 
 > [!NOTE]
@@ -153,7 +153,7 @@ V následujícím příkladu je určen parametrem data a času pro aktivity ulo�
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample",
+                    "storedProcedureName": "usp_sample",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                     }

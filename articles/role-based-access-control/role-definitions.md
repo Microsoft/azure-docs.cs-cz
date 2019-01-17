@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 1c8af3e0d3d5d29531a2ba81abc745fcdca5fb08
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 065695f9ce0f0d8dfbb9a43877131c8ab7fada5e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231899"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354310"
 ---
 # <a name="understand-role-definitions"></a>Vysvětlení definic rolí
 
@@ -167,13 +167,17 @@ Zobrazení a práce s operace s daty, musí mít správné verze prvků nástroj
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-azurerm-ps) | 5.6.0 nebo novější |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 nebo novější |
-| [Azure pro .NET](/dotnet/azure/) | 2.8.0-Preview nebo novější |
+| [Azure for .NET](/dotnet/azure/) | 2.8.0-Preview nebo novější |
 | [Azure SDK for Go](/go/azure/azure-sdk-go-install) | 15.0.0 nebo novější |
 | [Azure pro Javu](/java/azure/) | 1.9.0 nebo novější |
-| [Azure pro Python](/python/azure) | 0.40.0 nebo novější |
+| [Azure for Python](/python/azure) | 0.40.0 nebo novější |
 | [Azure SDK pro Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 nebo novější |
 
-Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah front a objektů Blob v kontejnerech přes Azure AD ve verzi preview prostředí. Sledujte a spravujte obsah kontejneru fronty nebo objektu Blob klikněte na odkaz "Prozkoumat data pomocí Azure AD ve verzi preview" v účtu úložiště – Přehled.
+Zobrazení a použití operací s daty v rozhraní REST API, je nutné nastavit **verze api-version** parametr na následující verze nebo novější:
+
+- 2018-01-01-preview
+
+Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah front a objektů Blob v kontejnerech přes Azure AD ve verzi preview prostředí. Zobrazit a spravovat obsah kontejneru kliknutím fronty nebo objektu Blob **zkoumání dat pomocí Azure AD ve verzi preview** na účet úložiště – Přehled.
 
 ![Prozkoumejte službu front a objektů Blob kontejnerů pomocí Azure AD ve verzi preview](./media/role-definitions/rbac-dataactions-browsing.png)
 
@@ -197,7 +201,7 @@ Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah
 > Pokud uživatel je přiřazena role, který vylučuje operace v `NotActions`a je mu přiřazená druhá role, která uděluje přístup ke stejné operace má uživatel k provedení této operace. `NotActions` není odmítnout pravidlo – je jednoduše pohodlný způsob, jak vytvořit sadu povolených operací při určité operace je třeba vyloučit.
 >
 
-## <a name="dataactions-preview"></a>dataActions (Preview)
+## <a name="dataactions-preview"></a>DataActions (Preview)
 
 `DataActions` Oprávnění určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Například pokud uživatel má přístup k datům objektu blob do účtu úložiště najdete potom může číst objekty BLOB v rámci tohoto účtu úložiště. Tady je několik příkladů operace s daty, které lze použít v `DataActions`.
 
@@ -208,7 +212,7 @@ Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Vrátí zprávu. |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Vrátí zprávu nebo psaní nebo odstranění zprávy. |
 
-## <a name="notdataactions-preview"></a>notDataActions (Preview)
+## <a name="notdataactions-preview"></a>NotDataActions (Preview)
 
 `NotDataActions` Oprávnění určuje datové operace, které jsou vyloučené z povolených `DataActions`. Udělení přístupu podle role (efektivní oprávnění) je vypočítána odečtením `NotDataActions` operací `DataActions` operace. Každý poskytovatel prostředků nabízí jeho odpovídající sadu rozhraní API pro splnění operace s daty.
 

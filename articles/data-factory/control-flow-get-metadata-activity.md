@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: e733b82e1b5870d98de5d65771bd621d9bffdf44
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024885"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354259"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získání metadat aktivity v Azure Data Factory
 Aktivita GetMetadata slouží k načtení **metadat** jakýchkoli dat ve službě Azure Data Factory. Tato aktivita se dá použít v následujících scénářích:
@@ -42,10 +42,10 @@ Aktivita GetMetadata přijímá datovou sadu jako požadovaný vstup a výstup i
 
 **Úložiště souborů:**
 
-| Connector/metadat | Název položky<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>(soubor) | vytvořené<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | počet sloupců<br>(soubor) | Existuje<br>(soubor/složka) |
+| Connector/metadat | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>(soubor) | vytvořené<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | počet sloupců<br>(soubor) | Existuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
-| Azure Blob | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Azure Blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Systém souborů | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -70,7 +70,7 @@ Dá se zadat následující typy metadat v seznamu polí aktivita GetMetadata na
 
 | Typ metadat | Popis |
 |:--- |:--- |
-| Název položky | Název souboru nebo složky. |
+| itemName | Název souboru nebo složky. |
 | itemType | Typ souboru nebo složky. Výstupní hodnota je `File` nebo `Folder`. |
 | velikost | Velikost souboru v bajtech. Použít pouze soubor. |
 | vytvořené | Vytvořený data a času souboru nebo složky. |
@@ -102,7 +102,7 @@ Dá se zadat následující typy metadat v seznamu polí aktivita GetMetadata na
 }
 ```
 
-**Datová sada:**
+**Dataset:**
 
 ```json
 {

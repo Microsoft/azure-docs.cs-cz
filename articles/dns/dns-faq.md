@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
+ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 663ba97ce96244aa890bef45d1229c12ca170802
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880144"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352917"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -94,7 +94,7 @@ Funkce přesměrování URL jsou sledovány v nevyřízených položkách Azure 
 
 Ano. Azure DNS podporuje rozšířené ASCII kódování sady pro sady záznamů TXT. Ale je nutné použít nejnovější verzi rozhraní REST API služby Azure, sady SDK, prostředí PowerShell a rozhraní příkazového řádku. Verze starší než 1. října 2017, nebo sadu SDK 2.1 nepodporují rozšířené sady ASCII. 
 
-Například lze uživatele zadejte řetězec jako hodnotu pro záznam TXT, který má rozšířené \128 znak ASCII. Příkladem je "abcd\128efgh." Azure DNS používá hodnotu bajtu tohoto znaku, který je 128, v interní reprezentace. V době překlad názvů DNS je vrácena tato hodnota bajtu v odpovědi. Všimněte si také, že "abc" a "\097\098\099" jsou zaměnitelné jde řešení. 
+Můžete například zadat řetězec jako hodnotu pro záznam TXT, který má rozšířené \128 znak ASCII. Příkladem je "abcd\128efgh." Azure DNS používá hodnotu bajtu tohoto znaku, který je 128, v interní reprezentace. V době překlad názvů DNS je vrácena tato hodnota bajtu v odpovědi. Všimněte si také, že "abc" a "\097\098\099" jsou zaměnitelné jde řešení. 
 
 Budeme postupovat podle [definicí RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zóna pravidla řídicí hlavní formát souboru pro záznamy TXT. Například `\` nyní skutečně řídicí sekvence všechno za specifikaci RFC. Pokud zadáte `A\B` jako hodnotu záznamu TXT, má reprezentované a vyřešeno jako sdílení `AB`. Pokud chcete záznam TXT, který chcete mít `A\B` rozlišením, budete muset escape `\` znovu. Například zadejte `A\\B`.
 
@@ -195,7 +195,7 @@ Ke konfiguraci IDN ve službě Azure DNS, převeďte na kódování punycode ná
 
 Podpora pro privátní domény je implementována pomocí funkce privátní zóny. Tato funkce je aktuálně dostupná ve verzi public preview. Privátní zóny se spravují pomocí stejných nástrojů jako zóny Azure DNS směřujících k Internetu. Jsou Přeložitelné pouze z v rámci zadaného virtuálních sítích. Další informace najdete v tématu [přehled](private-dns-overview.md).
 
-V tuto chvíli nepodporuje privátní zóny na portálu Azure portal. 
+V současné době privátních zón nejsou podporovány na portálu Azure portal.
 
 Informace o dalších interní možnosti služby DNS v Azure najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
@@ -217,7 +217,7 @@ Ano. Zákazníky můžete přidružit až 10 virtuální sítě pro překlad jed
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Můžete virtuální síť, která patří do jiného předplatného přidat jako virtuální síť pro překlad do privátní zóny?
 
-Ano. Uživatel musí mít oprávnění k zápisu operace na virtuální sítě a privátní zóny DNS. Některé role RBAC můžete udělit oprávnění k zápisu. Například role RBAC Přispěvatel klasické sítě má oprávnění k zápisu do virtuální sítě. Další informace o rolích RBAC najdete v tématu [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
+Ano. Musíte mít oprávnění k zápisu operace na virtuální sítě a privátní zóny DNS. Některé role RBAC můžete udělit oprávnění k zápisu. Například role RBAC Přispěvatel klasické sítě má oprávnění k zápisu do virtuální sítě. Další informace o rolích RBAC najdete v tématu [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Záznamy DNS automaticky registrované virtuální počítač v privátní zóny se automaticky odstraní při odstranění virtuální počítače zákazníka?
 
@@ -257,7 +257,7 @@ Ano. Ve verzi public preview existují následující omezení.
 * Pokud je zadaný registrační virtuální síť, záznamy DNS pro virtuální počítače z této virtuální sítě, které jsou registrované pro privátní zóny nelze zobrazit ani načíst z prostředí PowerShell, rozhraní příkazového řádku nebo rozhraní API. Záznamy virtuálního počítače jsou zaregistrované a úspěšně vyřešit.
 * Reverzní DNS funguje pouze pro privátní adresní prostor IP v registrační virtuální síť.
 * Reverzních záznamů DNS pro privátní IP adresu, která není registrována v privátní zóny vrátí "internal.cloudapp.net" jako příponu DNS. Tato přípona se nepodařilo najít. Příkladem je privátní IP adresy pro virtuální počítač ve virtuální síti, který se propojí jako řešení virtuální sítě pro privátní zóny.
-* Virtuální síť nemůže mít žádné virtuální počítače s síťovému adaptéru připojenému při odkazuje poprvé k privátní zóně jako virtuální síť registraci nebo řešení. Jinými slovy virtuální sítě musí být prázdný. Virtuální sítě pak může být prázdná. pro budoucí propojení jako rozlišení nebo registrační virtuální síť k jiné privátní zóny. 
+* Virtuální síť musí být prázdný, když odkazuje poprvé k privátní zóně jako virtuální síť registraci nebo řešení. Virtuální sítě pak může být prázdná. pro budoucí propojení jako rozlišení nebo registrační virtuální síť k jiné privátní zóny.
 * Podmíněné předávání se nepodporuje – třeba, aby bylo možné rozlišení mezi Azure a místní sítí. Zjistěte, jak umožňuje zákazníkům realizovat tento scénář prostřednictvím jiné mechanismy. Zobrazit [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Existují všechny kvóty nebo limity na zóny a záznamy pro privátní zóny?

@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 25131fdbc7a3633bf4ba9af05fdff9163f41f26b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e143c0c8ef09af49aed656d479bcad4dd35e2211
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265103"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351794"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
  
@@ -44,12 +44,8 @@ Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro
 ## <a name="databricks"></a>Databricks
 
 Problémy s Databricks a Azure Machine Learning.
-
-1. Doporučení clusteru Databricks:
-   
-   Vytvoření clusteru Azure Databricks jako v4.x Python 3. Doporučujeme, abyste clusteru vysokou souběžnosti.
  
-2. Při instalaci dalších balíčků AML SDK nainstalovat selhání v Databricks.
+1. Při instalaci dalších balíčků AML SDK nainstalovat selhání v Databricks.
 
    Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám instalace, instalace balíčků zmrazení lib verzí. Tento problém je související s Databricks a Azure ML SDK nesouvisí – které mohou nastat ho pomocí jiných knihoven příliš. Příklad:
    ```python
@@ -57,9 +53,10 @@ Problémy s Databricks a Azure Machine Learning.
    ```
    Alternativně můžete použít skripty init, pokud je zachovat otočena směrem problémů s instalací s knihoven Pythonu. Tento přístup není oficiálně podporovaných přístup. Můžete se podívat do [tohoto dokumentu](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-3. Při použití automatického Machine Learning v Databricks, pokud se zobrazí `Import error: numpy.core.multiarray failed to import`
+2. Při použití automatického Machine Learning v Databricks, pokud chcete zrušit běh a začněte nový experiment spustit, restartujte prosím vaše Azure Databricks pro cluster.
 
-   Alternativní řešení: import knihovny Python `numpy==1.14.5` k vaší Databricks pomocí clusteru vytvořte knihovnu pro [nainstalujte a připojte](https://docs.databricks.com/user-guide/libraries.html#create-a-library).
+3. V případě, že máte ml nastavení automatické > show_output 10 iterací nastavte prosím hodnotu false, při odesílání spuštění.
+
 
 ## <a name="azure-portal"></a>portál Azure
 Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud je potřeba jiný pracovní prostor zobrazit, alternativním řešením je přejít přímo na [webu Azure portal](https://portal.azure.com) a vyhledejte název pracovního prostoru.

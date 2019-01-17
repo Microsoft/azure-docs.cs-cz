@@ -7,20 +7,19 @@ author: Juliako
 writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240218"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359983"
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování 
 
@@ -28,20 +27,26 @@ ms.locfileid: "50240218"
 
 V Microsoft Azure Media Services (AMS) **koncový bod streamování** reprezentuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do Content Delivery Network (CDN) k další distribuci. Služba Media Services také poskytuje bezproblémovou integraci Azure CDN. Výstupní datový proud ze služby StreamingEndpoint může být v živém datovém proudu, videa na vyžádání nebo progresivní stahování asset ve vašem účtu Media Services. Každý účet služby Azure Media Services obsahuje výchozí StreamingEndpoint. Další koncové body streamování se dají vytvořit v rámci účtu. Existují dvě verze koncové body streamování, 1.0 a 2.0. Od 10. ledna 2017, budou všechny nově vytvořené účty AMS zahrnují verze 2.0 **výchozí** StreamingEndpoint. Další koncové body streamování, které přidáte k tomuto účtu budou také verze 2.0. Tato změna neovlivní existující účty; stávající koncové body streamování se verze 1.0 a je možné upgradovat na verzi 2.0. Tato změna bude změny chování, fakturace a funkce (Další informace najdete v tématu **streamování typy a verze** části je uvedeno níže).
 
-Kromě toho počínaje 2.15 verze (vydaná v lednu 2017), Azure Media Services přidat následující vlastnosti k entitě koncový bod streamování: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Podrobný přehled o těchto vlastnostech najdete v části [to](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Azure Media Services přidat následující vlastnosti k entitě koncový bod streamování: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Podrobný přehled o těchto vlastnostech najdete v části [to](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
 Při vytváření účtu Azure Media Services koncový bod streamování standard je pro vás vytvořen výchozí **Zastaveno** stavu. Nelze odstranit výchozí koncový bod streamování. V závislosti na dostupnosti Azure CDN v cílové oblasti, ve výchozím nastavení nově vytvořen výchozí koncový bod streamování také zahrnuje "StandardVerizon" CDN poskytovatele integrace. 
-
->[!NOTE]
->Integrace s Azure CDN je možné zakázat před zahájením koncový bod streamování.
+                
+> [!NOTE]
+> Integrace s Azure CDN je možné zakázat před zahájením koncový bod streamování. `hostname` a adresu URL streamování zůstala stejná, zda povolit síť CDN.
 
 Toto téma obsahuje přehled hlavních funkcí, které jsou poskytovány koncové body streamování.
+
+## <a name="naming-conventions"></a>Zásady vytváření názvů
+
+Pro výchozí koncový bod: `{AccountName}.streaming.mediaservices.windows.net`
+
+Pro všechny další koncové body: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Streamování typy a verze
 
 ### <a name="standardpremium-types-version-20"></a>Typy Standard nebo Premium (verze 2.0)
 
-Od verze. ledna 2017 služby Media Services, budete mít dva typy datových proudů: **standardní** a **Premium**. Tyto typy jsou součástí verze koncový bod streamování "2.0".
+Od verze. ledna 2017 služby Media Services, budete mít dva typy datových proudů: **Standardní** a **Premium**. Tyto typy jsou součástí verze koncový bod streamování "2.0".
 
 Typ|Popis
 ---|---

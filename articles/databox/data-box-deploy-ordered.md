@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 00c001b5c0c2c3dab86477fca798ec651f7b6c93
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5ce8217629cff702ecd3ec274d77918e54efacc6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189962"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359115"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednávky zařízení Azure Data Box
 
@@ -22,7 +22,7 @@ Azure Data Box Disk je hybridní řešení, které umožňuje rychle, snadno a s
 Tento kurz popisuje, jak objednat Azure Data Box. V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Registrace Data Boxu
+> * Požadavky na nasazení Data Boxu
 > * Objednání Data Boxu
 > * Sledování objednávky
 > * Zrušení objednávky
@@ -63,7 +63,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 4. Podívejte se, zda je služba Data Box dostupná ve vaší oblasti. Zadejte nebo vyberte následující informace a pak klikněte na **Použít**. 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Předplatné     | Vyberte pro službu Data Box předplatné se smlouvou Enterprise, CSP nebo s průběžnými platbami. <br> Předplatné je propojeno s vaším fakturačním účtem.       |
+    |Předplatné     | Vyberte předplatné EA, CSP nebo Azure sponsorship pro službu Data Box. <br> Předplatné je propojeno s vaším fakturačním účtem.       |
     |Typ přenosu     | Vyberte **Importovat do Azure**.        |
     |Zdrojová země     |   Vyberte zemi, ve které jsou data aktuálně umístěna.         |
     |Cílová oblast Azure     |     Vyberte oblast Azure, do které chcete data přenést.        |
@@ -79,7 +79,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |Název     |  Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.      |
     |Skupina prostředků     |   Použijte existující skupinu prostředků, nebo vytvořte novou. <br> Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně.         |
     |Cílová oblast Azure     | K účtu úložiště přiřaďte oblast. <br> Další informace najdete v části věnované [dostupnosti v oblastech](data-box-overview.md#region-availability).        |
-    |Účty úložiště     | Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. <br> Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**.        |
+    |Účty úložiště     | Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. <br> Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**. Nelze použít účty úložiště, které mají nakonfigurovaná pravidla. Účty úložiště musí **povolit přístup ze všech sítí** v části fireworks a virtuální sítě.|
     
 7. V části **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Klikněte na **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení. Klikněte na **Další**.
 
@@ -94,7 +94,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 
 ## <a name="track-the-order"></a>Sledování objednávky
 
-Po odeslání objednávky můžete její stav sledovat na webu Azure Portal. Přejděte na objednávku a potom do části **Přehled**, kde se můžete podívat na stav. Na portálu se objednávka zobrazuje ve stavu **Objednáno**.
+Po odeslání objednávky můžete její stav sledovat na webu Azure Portal. Přejděte na svoji objednávku Data Box a potom přejděte ke **přehled** k zobrazení stavu. Na portálu se objednávka zobrazuje ve stavu **Objednáno**.
 
 Pokud zařízení není k dispozici, dostanete oznámení. Pokud je zařízení k dispozici, Microsoft určí zařízení k odeslání a připraví zásilku. Při přípravě zařízení dojde k těmto akcím:
 

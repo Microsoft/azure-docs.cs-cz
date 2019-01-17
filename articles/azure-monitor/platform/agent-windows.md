@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 1d4760eb6490ce458e699ad9bc59a57cb473ef6d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8ccd2bfe78ca7b0fabac2b8c9bfd6ba002782a41
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104118"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352800"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 
@@ -57,9 +57,9 @@ Konfigurace používání [TLS 1.2](https://docs.microsoft.com/windows-server/se
 
 Konfigurace rozhraní .NET Framework 4.6 nebo novější k podpoře zabezpečené šifrování, protože ve výchozím nastavení je zakázána. [Silného šifrování](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) používá bezpečnější síťové protokoly, jako je protokol TLS 1.2 a blokuje protokoly, které nejsou zabezpečeny. 
 
-1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
+1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**.  
 2. Vytvořte hodnotu DWORD **SchUseStrongCrypto** v tomto podklíči s hodnotou **1**.  
-3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
+3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**.  
 4. Vytvořte hodnotu DWORD **SchUseStrongCrypto** v tomto podklíči s hodnotou **1**. 
 5. Restartujte systém pro nastavení projevilo. 
 
@@ -100,7 +100,7 @@ Následující tabulka obsahuje konkrétní parametry Log Analytics podporuje in
 |OPINSIGHTS_PROXY_USERNAME               | Uživatelské jméno pro přístup k ověřený proxy server |
 |OPINSIGHTS_PROXY_PASSWORD               | Heslo pro přístup k ověřený proxy server |
 
-1. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými oprávněními spusťte `MMASetup-<platform>.exe /c` a zobrazí výzvu pro cestu k extrakci souborů.  Případně lze zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Path>`.  
+1. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými oprávněními spusťte `MMASetup-<platform>.exe /c` a zobrazí výzvu pro cestu k extrakci souborů.  Případně lze zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.  
 2. Bezobslužná instalace agenta a nakonfigurovat, aby hlásit do pracovního prostoru v komerčním cloudu Azure, ze složky extrahovány instalační soubory, zadejte: 
    
      ```dos

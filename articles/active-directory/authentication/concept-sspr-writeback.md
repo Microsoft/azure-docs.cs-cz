@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 66f33dd0edc44a490c3ccaf989d6d9308e615bb0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 06a3ac4520a40369c095e57f8e92978fdb280b51
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246105"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359578"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -42,7 +42,7 @@ Zpětný zápis hesla nabízí:
 * **Nevyžaduje se žádná pravidla brány firewall pro příchozí**: Zpětný zápis hesla předávání přes Azure Service Bus používá jako základní komunikační kanál. Veškerá komunikace je odchozí port 443.
 
 > [!Note]
-> Uživatelské účty, které existují v rámci chráněné skupiny v místní službě Active Directory nelze použít se zpětným zápisem hesla. Další informace o chráněné skupiny, najdete v části [chráněné účty a skupiny ve službě Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
+> Uživatelské účty, které existují v rámci chráněné skupiny v místní službě Active Directory nelze použít se zpětným zápisem hesla. Správce účtů, které existují v rámci chráněné skupiny v místní AD lze použít se zpětným zápisem hesla. Další informace o chráněné skupiny, najdete v části [chráněné účty a skupiny ve službě Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
 >
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla

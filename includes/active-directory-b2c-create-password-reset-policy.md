@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: patricka
 ms.openlocfilehash: 78abb190dccd27c5bf70dfe12f978e1118601815
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742260"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54355469"
 ---
 Pokud chcete povolit jemné resetování hesla na aplikace, použijete **resetování hesla** tok uživatele. Všimněte si, že možnost resetování hesel v rámci celého tenanta je zadán [tady](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Tento tok uživatele popisuje prostředí, které zákazníci budou procházet při resetování hesla a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
 

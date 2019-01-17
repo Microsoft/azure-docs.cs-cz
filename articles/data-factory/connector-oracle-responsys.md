@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9510b26b56d1602787e35006379a40ce1cbd21d9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7440a08bd8ceb85cc569e1bb6d7c4ee1e52178a4
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015164"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352151"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Kopírování dat z Responsys Oracle pomocí Azure Data Factory (Preview)
 
@@ -47,7 +47,7 @@ Pro Oracle Responsys propojené služby jsou podporovány následující vlastno
 | type | Vlastnost type musí být nastavená na: **Responsys** | Ano |
 | endpoint | Koncový bod serveru Respopnsys  | Ano |
 | ID klienta | ID klienta přidružené k aplikaci Responsys.  | Ano |
-| ClientSecret | Tajný kód klienta přidruženou k aplikaci Responsys. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování acitivty o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
+| ClientSecret | Tajný kód klienta přidruženou k aplikaci Responsys. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |

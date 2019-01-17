@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 12/03/2018
-ms.openlocfilehash: 507425a6cffc6f3b49e117ebf5a604bf0d252164
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7fecc280d4e92df88f5f8e9b9e571273328d2458
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542012"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352304"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Co je Azure Database for MariaDB?
 
@@ -45,7 +45,7 @@ Azure Database pro MariaDB service nabízí několik úrovní služby: Basic, pr
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
-Jak se rozhodnout, kdy vertikálně navýšit nebo snížit kapacitu? Můžete využít integrované funkce monitorování výkonu a upozorňování v Azure Database for MariaDB v kombinaci s hodnocením výkonu na základě virtuálních jader. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity virtuálních jader v závislosti na stávajících nebo předpokládaných požadavcích. <!--See [Alerts](howto-alert-on-metric.md) for details.-->
+Jak se rozhodnout, kdy vertikálně navýšit nebo snížit kapacitu? Můžete využít integrované funkce monitorování výkonu a upozorňování v Azure Database for MariaDB v kombinaci s hodnocením výkonu na základě virtuálních jader. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity virtuálních jader v závislosti na stávajících nebo předpokládaných požadavcích. Podrobnosti najdete v tématu [Upozornění](howto-alert-metric.md).
 
 ## <a name="keep-your-app-and-business-running"></a>Udržujte své aplikace a podnikáni v chodu
 
@@ -55,7 +55,7 @@ Smlouva SLA špičkovou 99,99 % dostupnost Azure využívá k tomu globální s�
 
 Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for MariaDB zachovává. Azure Database for MariaDB nabízí funkce, které omezují přístup, chrání přenášená i neaktivní uložená data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
-Služba Azure Database for MariaDB používá pro neaktivní uložená data šifrování úložiště. Data včetně zálohovaných dat se šifrují na disku. (Dočasné soubory vytvořené databázovým strojem při spouštění dotazů se na disku nešifrují.) Služba používá 256bitové šifrování AES, které je součástí šifrování služby Azure Storage. Klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+Azure Database pro MariaDB službu používá šifrování úložiště pro data v klidovém stavu a je kompatibilní s FIPS 140-2. Data včetně zálohovaných dat se šifrují na disku. (Dočasné soubory vytvořené databázovým strojem při spouštění dotazů se na disku nešifrují.) Služba používá 256bitové šifrování AES, které je součástí šifrování služby Azure Storage. Klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
 Ve výchozím nastavení je ve službě Azure Database for MariaDB nakonfigurované vyžadování [zabezpečení připojení protokolem SSL](./concepts-ssl-connection-security.md) pro data přenášená přes síť. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
 

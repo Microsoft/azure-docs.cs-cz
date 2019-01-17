@@ -8,13 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
-ms.date: 08/19/2018
-ms.openlocfilehash: f60cb79324cad194877402203dbd1706727468d0
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/16/2019
+ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330717"
+ms.locfileid: "54352508"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
 
@@ -60,10 +60,17 @@ Před odesláním zprávy do dávky této služby batch musí nejprve existovat 
    |----------|-------------|
    | **Režim dávky** | - **Vložené**: Při definování kritéria uvolnění uvnitř triggeru batch <br>- **Účet pro integraci**: Pro definování více konfigurací kritéria uvolnění prostřednictvím [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Pomocí účtu pro integraci díky čemuž můžete udržovat tyto konfigurace vše na jednom místě, nikoli v samostatných logic apps. | 
    | **Název dávky** | Název služby batch, je "TestBatch" v tomto příkladu, který se týká pouze **vložené** režimu služby batch |  
-   | **Kritéria uvolnění** | Platí jenom pro **vložené** dávkové režimu a vybere kritéria pro splnění před zpracováním jednotlivých dávek: <p>- **Zprávy podle počtu**: Počet zpráv ve službě batch, například shromažďování 10 zpráv <br>- **Velikost na základě**: Maximální velikost dávky v bajtech, například 10 MB <br>- **Podle plánu**: Interval a frekvenci mezi verzemi služby batch, například 10 minut. Minimální opakování je 60 sekund nebo 1 minuta. Desetinné hodnoty minut se efektivně zaokrouhluje nahoru na 1 minutu. Chcete-li zadat počáteční datum a čas, zvolte **zobrazit pokročilé možnosti**. <br>- **Vybrat vše**: Použijte všechna zadaná kritéria. | 
+   | **Kritéria uvolnění** | Platí jenom pro **vložené** dávkové režimu a vybere kritéria pro splnění před zpracováním jednotlivých dávek: <p>- **Zprávy podle počtu**: Verze služby batch na základě počtu zpráv shromažďovaných služby batch. <br>- **Velikost na základě**: Verze služby batch podle celková velikost v bajtech pro všechny zprávy shromážděné této služby batch. <br>- **Plán**: Verze služby batch na základě plánu opakování, který určuje interval a frekvenci. V části Upřesnit možnosti můžete také vyberte časové pásmo a zadejte datum a čas. <br>- **Vybrat vše**: Použijte všechna zadaná kritéria. | 
+   | **Počet zpráv** | Počet zpráv ve službě batch, například shromažďování 10 zpráv. Omezení služby batch je 8 000 zpráv. | 
+   | **Velikost dávky** | Celková velikost v bajtech pro shromažďování ve službě batch, například 10 MB. Omezení velikosti služby batch je 80 MB. | 
+   | **Plán** | Interval a frekvenci mezi verzemi služby batch, například 10 minut. Minimální opakování je 60 sekund nebo 1 minuta. Zlomcích minut se efektivně zaokrouhluje nahoru na 1 minutu. Chcete-li zadat časové pásmo nebo počáteční datum a čas, zvolte **zobrazit pokročilé možnosti**. | 
    ||| 
 
-   Tento příklad ukazuje všechna kritéria, ale pro účely vlastního testování, vyberte pouze jedno kritérium:
+   > [!NOTE]
+   > 
+   > Při změně kritéria uvolnění, zatímco aktivační událost má stále dávce ale neodeslané zprávy, aktivační události na základě kritérií aktualizovanou verzi pro zpracování neodeslané zprávy. 
+
+   Tento příklad ukazuje všechna kritéria, ale pro účely vlastního testování, zkuste pouze jedno kritérium:
 
    ![Zadejte podrobnosti o triggeru Batch](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
 

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 1/16/2019
+ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728121"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359846"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL
 
@@ -118,8 +118,9 @@ Funkce pravidel virtuální sítě pro službu Azure SQL Database má následuj�
 
 - Virtuální síť pravidla se vztahují pouze k virtuálním sítím Azure Resource Manageru; a nikoli k [modelu nasazení classic] [ arm-deployment-model-568f] sítě.
 
-- Zapnutí na koncové body služby virtuální sítě do služby Azure SQL Database také umožňuje koncové body služby MySQL a PostgreSQL Azure. Nicméně se na koncové body, se nezdaří pokusy o připojení k instancím MySQL nebo PostgreSQL z koncových bodů.
-  - Základní důvodem je, že MySQL a PostgreSQL nepodporují v současné době ACLing.
+- Zapnutí na koncové body služby virtuální sítě do služby Azure SQL Database také umožňuje koncové body služby MySQL a PostgreSQL Azure. Pomocí koncových bodů dále, ale pokusy o připojení k instancím MySQL nebo PostgreSQL z koncových bodů může selhat.
+  - Základní důvodem je, MySQL a PostgreSQL pravděpodobně nemají nakonfigurované pravidlo virtuální sítě. Je nutné nakonfigurovat pravidlo virtuální sítě pro Azure Database for MySQL a PostgreSQL a připojení bude úspěšné.
+
 - V bráně firewall rozsahy IP adres se vztahují na následující síťové položky, ale nepodporují pravidla virtuální sítě:
   - [Site-to-Site (S2S) virtuální privátní sítě (VPN)][vpn-gateway-indexmd-608y]
   - On-premises prostřednictvím [ExpressRoute][expressroute-indexmd-744v]

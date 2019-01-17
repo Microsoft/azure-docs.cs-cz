@@ -1,6 +1,6 @@
 ---
 title: Napsání kódu pro sledování požadavků pomocí Azure Application Insights | Dokumentace Microsoftu
-description: Napsání kódu pro sledování požadavků pomocí nástroje Application Insights, abyste se mohli profily pro své žádosti
+description: Napsání kódu pro sledování požadavků pomocí nástroje Application Insights, abyste se mohli profilů pro vaše požadavky.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,19 +12,20 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: bdbca30d31febe37e6b568894179c88d834d3a83
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 978f9a341eec2f16b9f6fe3d164e97805d7a8e93
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266684"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359628"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Napsání kódu pro sledování požadavků pomocí nástroje Application Insights
 
-Profily pro vaši aplikaci najdete na stránce výkonu musí být sledování požadavků pro vaši aplikaci Application Insights. Application Insights může automaticky sledovat žádosti o aplikace, které jsou založené na rozhraní, které již byly instrumentovány, jako je ASP.net a ASP.Net Core. Ale pro jiné aplikace, jako jsou role pracovního procesu Azure Cloud Service a Service Fabric bezstavové rozhraní API, potřeba psát kód říct Application Insights, kde žádostí o zahájení a ukončení. Tento kód jste napsali jednou žádostí telemetrie se bude posílat do Application Insights a telemetrická data zobrazí na stránce výkon a profily, nebudou se shromažďovat pro tyto požadavky. 
+Chcete-li zobrazit profily pro vaši aplikaci na stránce výkon, Azure Application Insights potřebuje ke sledování požadavků pro vaši aplikaci. Application Insights může automaticky sledovat žádosti o aplikace, které jsou postavené na již instrumentována architektur. Dva příklady jsou ASP.NET a ASP.NET Core. 
 
-Tady jsou kroky je potřeba provést manuálně sledovat požadavky:
+U ostatních aplikací, jako jsou role pracovního procesu Azure Cloud Services a Service Fabric bezstavové rozhraní API budete muset psát kód sdělit své žádosti, kde začít Application Insights a end. Poté, co jste napsali tento kód, telemetrie požadavky odeslána do služby Application Insights. Telemetrii můžete zobrazit na stránce výkon a profily se shromažďují, aby tyto požadavky. 
 
+Můžete manuálně sledovat žádosti, postupujte takto:
 
   1. V rané fázi životního cyklu aplikací přidejte následující kód:  
 
@@ -36,7 +37,7 @@ Tady jsou kroky je potřeba provést manuálně sledovat požadavky:
         ```
       Další informace o této konfiguraci globální Instrumentační klíč najdete v části [pomocí Service Fabric pomocí Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. Pro jsou části kódu, který chcete instrumentovat, přidejte `StartOperation<RequestTelemetry>` **použití** příkaz kolem něj, jak je znázorněno v následujícím příkladu:
+  1. Pro jsou části kódu, který chcete instrumentovat, přidejte `StartOperation<RequestTelemetry>` **pomocí** příkaz kolem něj, jak je znázorněno v následujícím příkladu:
 
         ```csharp
         using Microsoft.ApplicationInsights;

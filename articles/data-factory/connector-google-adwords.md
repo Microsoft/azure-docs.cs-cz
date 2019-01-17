@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b712b576e1dd47698de66889d4edf9dda026a16c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 65d6685947c5796a65985aff0b789223736df0b8
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017986"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354276"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Kopírování dat z Google AdWords pomocí Azure Data Factory (Preview)
 
@@ -46,11 +46,11 @@ Následující vlastnosti jsou podporovány pro Google AdWords propojené služb
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **GoogleAdWords** | Ano |
 | clientCustomerID | ID zákazníka klienta AdWords účtu, který chcete načíst data sestavy pro.  | Ano |
-| developerToken | Token pro vývojáře spojené s účtem správce, který použijete k udělení přístupu k rozhraní API AdWords.  Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování acitivty o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
+| developerToken | Token pro vývojáře spojené s účtem správce, který použijete k udělení přístupu k rozhraní API AdWords.  Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
 | authenticationType. | Mechanismus ověřování OAuth 2.0 pro ověřování. ServiceAuthentication jde použít jenom v místním prostředí IR. <br/>Povolené hodnoty jsou: **ServiceAuthentication**, **UserAuthentication** | Ano |
-| refreshToken | Obnovovací token získaný z Googlu pro autorizaci přístupu ke AdWords pro UserAuthentication. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování acitivty o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ne |
-| ID klienta | Id klienta aplikace google, slouží k získání tokenu obnovení. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování acitivty o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ne |
-| ClientSecret | Tajný kód klienta aplikace služby google slouží k získání tokenu obnovení. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování acitivty o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ne |
+| refreshToken | Obnovovací token získaný z Googlu pro autorizaci přístupu ke AdWords pro UserAuthentication. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ne |
+| ID klienta | Id klienta aplikace google, slouží k získání tokenu obnovení. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ne |
+| ClientSecret | Tajný kód klienta aplikace služby google slouží k získání tokenu obnovení. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ne |
 | e-mail | ID e-mailu účtu služby, který se používá pro ServiceAuthentication a jde použít jenom v místním prostředí IR.  | Ne |
 | keyFilePath | Úplná cesta k souboru klíče .p12, který se používá k ověření e-mailovou adresu účtu služby a jde použít jenom v místním prostředí IR.  | Ne |
 | trustedCertPath | Úplná cesta soubor .pem obsahující certifikáty důvěryhodné CA pro ověření serveru, při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts.pem součástí IR.  | Ne |

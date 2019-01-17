@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f72d15707d9f56b9e9b5a5d527d1204007c40afa
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 03acd7c283fd1296af06dd19d0170a4b3c65eeb3
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621968"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352491"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k API pro vytváření sestav Azure Active Directory
 
@@ -214,6 +214,42 @@ Pokud chcete získat tajný kód klienta aplikace, budete muset vytvořit nový 
 
     d. Hodnotu klíče si zkopírujte.
 
+## <a name="troubleshoot-errors-in-the-reporting-api"></a>Řešení potíží s chybami v rozhraní API pro generování sestav
+
+Tato část uvádí běžné chybové zprávy, které můžete narazit při přístupu k sestavy aktivit pomocí rozhraní MS Graph API a kroků pro jejich řešení.
+
+### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 protokolu HTTP se interní chyba serveru při přístupu k Microsoft Graphu V2 koncového bodu
+
+Aktuálně nepodporujeme koncového bodu v2 Microsoft Graphu – Ujistěte se, že přístup k protokolům aktivit pomocí koncového bodu v1 Microsoft Graphu.
+
+### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Chyba: Nepovedlo se získat uživatelské role z AD Graphu
+
+Může zobrazit tato chybová zpráva při pokusu o přístup k přihlášení pomocí Graph Exploreru. Ujistěte se, že jste přihlášeni ke svému účtu pomocí tlačítek přihlášení v Uživatelském rozhraní Graph Explorer, jak je znázorněno na následujícím obrázku. 
+
+![Graph Exploreru](./media/troubleshoot-graph-api/graph-explorer.png)
+
+### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Chyba: Nepovedlo se provést kontrola licence premium z AD Graphu 
+
+Pokud narazíte na tato chybová zpráva při pokusu o přístup k přihlášení pomocí Graph Exploreru zvolte **upravit oprávnění** pod svůj účet na levém navigačním podokně a vyberte **Tasks.ReadWrite** a **Directory.Read.All**. 
+
+![Upravit oprávnění uživatelského rozhraní](./media/troubleshoot-graph-api/modify-permissions.png)
+
+
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Chyba: Je tenant B2C ani klient nemá licenci premium
+
+Přístup k sestavy přihlášení Azure Active Directory premium 1 (P1) vyžaduje licenci. Pokud se zobrazí tato chybová zpráva při přístupu k přihlášení, ujistěte se, že je váš tenant licenci na licenci Azure AD P1.
+
+### <a name="error-user-is-not-in-the-allowed-roles"></a>Chyba: Uživatel není povolené role 
+
+Pokud při pokusu o přístup k protokolům auditu nebo přihlášení pomocí rozhraní API se zobrazí tato chybová zpráva, ujistěte se, že váš účet je součástí **Čtenář zabezpečení** nebo **čtenáře sestav** role ve službě Azure Active Directory tenanta. 
+
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Chyba: Aplikace AAD oprávnění čtení dat adresáře 
+
+Postupujte podle kroků v [požadavky pro přístup k API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md) zajistit, že aplikace běží s správnou sadu oprávnění. 
+
+### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Chyba: Aplikace oprávnění 'Číst všechna data protokolů auditu' MSGraph rozhraní API
+
+Postupujte podle kroků v [požadavky pro přístup k API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md) zajistit, že aplikace běží s správnou sadu oprávnění. 
 
 ## <a name="next-steps"></a>Další postup
 

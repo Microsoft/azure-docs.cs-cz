@@ -10,12 +10,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 1d53fc6cef022f627bb1cd1f832ebf65698207a9
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2c035b7c6bbd687ca2922d5f52e2ddaa0c96e50c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002416"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351420"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služeb virtuální sítě pro Azure Key Vault
 
@@ -74,6 +74,7 @@ Tady je seznam důvěryhodných služeb, které můžou přistupovat k trezoru k
 |Azure SQL Database|[Transparentní šifrování dat s podporou vlastního klíče pro Azure SQL Database a Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Šifrování dat v Azure Data Lake Store](../data-lake-store/data-lake-store-encryption.md) pomocí klíče spravovaného zákazníkem.|
+|Azure databricks|[Rychlá, snadná a spolupráci založené na Apache Sparku analytická služba](../azure-databricks/what-is-azure-databricks.md)|
 
 
 

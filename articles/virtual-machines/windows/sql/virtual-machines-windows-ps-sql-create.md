@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8282901dfcacb7ca0330274d114cd4c2990fdec1
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 321f6fc043147c0a1559c93fb5ada3d33d9e3dd9
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330446"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359965"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak zřídit virtuální počítače SQL serveru pomocí Azure Powershellu
 
@@ -101,9 +101,10 @@ $OSDiskName = $VMName + "OSDisk"
 ```
 
 ### <a name="choose-a-sql-server-image"></a>Vyberte bitovou kopii systému SQL Server
-Definujte image SQL serveru používat pro virtuální počítač.
 
-1. Nejprve vypište všechny nabídky imagí SQL serveru s **Get-AzureRmVMImageOffer** příkaz:
+Použijte následující proměnné k definování image SQL serveru používat pro virtuální počítač. 
+
+1. Nejprve vypište všechny nabídky imagí SQL serveru s `Get-AzureRmVMImageOffer` příkazu. Tento příkaz zobrazí seznam aktuálních imagí, které jsou k dispozici na webu Azure Portal a také starší imagí, které se dá nainstalovat jenom pomocí prostředí PowerShell:
 
    ```PowerShell
    Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'

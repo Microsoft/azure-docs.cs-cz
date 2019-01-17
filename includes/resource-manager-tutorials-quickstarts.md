@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/05/2018
+ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 11bcfa1b4719d6def5bfc4a6a189bd2b58896b5b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729335"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54334345"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Rychlé starty a kurzy
 
@@ -48,5 +48,6 @@ V následujících rychlých startech a kurzech se naučíte vyvíjet šablony R
     |[Nasazení rozšíření SQL](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|Provádění úloh po nasazení s použitím rozšíření. V tomto kurzu nasadíte rozšíření vlastních skriptů k instalaci webového serveru na virtuálním počítači. |
     |[Artefakty zabezpečení](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|Zabezpečte artefaktů potřebných k dokončení nasazení. V tomto kurzu se dozvíte, jak zabezpečit artefakt v kurzu nasazení SQL rozšíření. |
     |[Použití postupů bezpečného nasazení](../articles/azure-resource-manager/deployment-manager-tutorial.md)|Použití Azure Deployment Manageru |
+    |[Kurz: Řešení potíží s nasazení šablon Resource Manageru](../articles/azure-resource-manager/resource-manager-tutorial-troubleshoot.md)|Řešení potíží s problémy se šablonou nasazení.|
 
 Tyto kurzy lze použít jednotlivě nebo jako řada další hlavní koncepty vývoj šablon Resource Manageru.

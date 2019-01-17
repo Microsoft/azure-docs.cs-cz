@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: aaae119ec72a713adc2faa311dbcb6bd204035fd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a6e25bdbcec2a99e323ac7f426307dd49e50d76c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835084"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352423"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -102,9 +102,9 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
 **DefaultUserJourney** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| referenceId | Ano | Identifikátor cesty uživatele v zásadách. Další informace najdete v části [cesty uživatele](userjourneys.md) |
+| ReferenceId | Ano | Identifikátor cesty uživatele v zásadách. Další informace najdete v tématu [cesty uživatele](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -113,7 +113,7 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 | Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Rozsah jednotné přihlašování (SSO) chování relace cesty uživatele. |
-| Sessionexpirytype pro |0:1 | Chování ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute`. `Rolling` Hodnotu (výchozí) určuje, že uživatel zůstane přihlášený za předpokladu, uživatel je neustále aktivní v aplikaci. `Absolute` Hodnota značí, že uživatel musí po době určené aplikace relace donutit k životnost. |
+| SessionExpiryType |0:1 | Chování ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute`. `Rolling` Hodnotu (výchozí) určuje, že uživatel zůstane přihlášený za předpokladu, uživatel je neustále aktivní v aplikaci. `Absolute` Hodnota značí, že uživatel musí po době určené aplikace relace donutit k životnost. |
 | SessionExpiryInSeconds | 0:1 | Doba života souboru cookie relace Azure AD B2C, která je zadán jako celé číslo uložené v prohlížeči uživatele po úspěšném ověření. |
 | JourneyInsights | 0:1 | Azure Application Insights. Instrumentační klíč má být použit. |
 | ContentDefinitionParameters | 0:1 | Seznam párů klíčových hodnot, které se mají připojit k načtení obsahu definice identifikátoru URI. |
@@ -122,7 +122,7 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
 **SingleSignOn** obsahuje element v následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Rozsah | Ano | Rozsah chování jednotné přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`, nebo `Policy`. `Suppressed` Hodnota označuje, zda je potlačeno chování. Například v případě jedné relace přihlášení, žádná relace se zachová pro uživatele a uživatel vždy zobrazí výzva výběru zprostředkovatele identity. `TrustFramework` Hodnota značí, že je chování aplikováno pro všechny zásady v rámci vztahu důvěryhodnosti. Například uživatel procházet dvě cesty zásady pro vztah důvěryhodnosti framework vyzván výběru zprostředkovatele identity. `Tenant` Hodnota značí, že je chování aplikováno na všechny zásady v tenantovi. Například uživatel procházení dvě cesty zásad pro klienta není vyzván výběru zprostředkovatele identity. `Application` Hodnota značí, že je chování aplikováno na všechny zásady pro aplikace, který zadal žádost. Například uživatel procházení dvě cesty zásad pro aplikaci není vyzván výběru zprostředkovatele identity. `Policy` Hodnota značí, že chování platí jenom pro zásadu. Například je procházení dvě cesty zásady pro vztah důvěryhodnosti framework uživatel vyzván výběru zprostředkovatele identity při přepínání mezi zásadami. |
 
@@ -130,7 +130,7 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
 **JourneyInsights** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Ano | Hodnota musí být `ApplicationInsights`. | 
 | InstrumentationKey | Ano | Řetězec, který obsahuje klíč instrumentace pro application insights element. |
@@ -157,7 +157,7 @@ Následující příklad předá parametr s názvem `campaignId` s hodnotou `haw
 
 **ContentDefinitionParameter** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Název | Ano | Název páru klíč-hodnota. |
 
@@ -167,7 +167,7 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 
 **Technický profil** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- | 
 | ID | Ano | Hodnota musí být `PolicyProfile`. |
 
@@ -184,7 +184,7 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 
 **Protokol** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Název | Ano | Název platný protokol podporovaný službou Azure AD B2C, který se používá jako součást technický profil. Možné hodnoty: `OpenIdConnect` nebo `SAML2`. `OpenIdConnect` Hodnota představuje standardní protokol OpenID Connect 1.0 podle specifikace foundation OpenID. `SAML2` Představuje standardní protokol SAML 2.0 podle specifikace OASIS. Nepoužívejte v produkčním prostředí tokenu SAML. |
 
@@ -198,7 +198,7 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 
 **OutputClaim** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Odkaz na **typu deklarace identity** již definována v **ClaimsSchema** oddílu v souboru zásad. |
 | Výchozí hodnota | Ne | Výchozí hodnota, která lze použít, pokud hodnota deklarace identity je prázdný. |
@@ -212,9 +212,9 @@ S **SubjectNameingInfo** prvku, řídí hodnota tokenu subjektu:
 
 **SubjectNamingInfo** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Typ ClaimType | Ano | Odkaz na výstupní deklarací **PartnerClaimType**. Výstup deklarací identity, musí být definován v zásadách předávající strana **OutputClaims** kolekce. |
+| ClaimType | Ano | Odkaz na výstupní deklarací **PartnerClaimType**. Výstup deklarací identity, musí být definován v zásadách předávající strana **OutputClaims** kolekce. |
 
 Následující příklad ukazuje, jak definovat OpenId Connect, předávající strany. Informace o názvu subjektu je nakonfigurovaný jako `objectId`:
 

@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení sítě v Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Principy integrace brány firewall protokolu IP a virtuální sítě v Azure Data Lake Storage Gen1
+description: Pochopení virtuálních integrace sítě funguje v Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 703a865eca90deabcb6bbc64a75fc2bad52b43b7
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: a363b5688e5fe915bd96393c35b3f39c69052d7c
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287995"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359302"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>Integrace virtuální sítě pro Azure Data Lake Storage Gen1 – Preview
 
-Tento článek představuje integraci virtuální sítě pro Azure Data Lake Storage Gen1 ve verzi Preview. Díky integraci virtuální sítě můžete své účty nakonfigurovat tak, aby přijímaly provoz pouze z konkrétních virtuálních sítí a podsítí. 
+Tento článek představuje integrace služby virtual network pro Azure Data Lake Storage Gen1. Díky integraci virtuální sítě můžete své účty nakonfigurovat tak, aby přijímaly provoz pouze z konkrétních virtuálních sítí a podsítí. 
 
 Tato funkce vám pomůže zabezpečit účet Data Lake Storage před externími hrozbami.
 
@@ -65,25 +65,25 @@ Kromě zabezpečení přístupu k účtům Data Lake Storage z virtuálních sí
 Použijte řešení brány firewall ve vaší virtuální síti k filtrování odchozího provozu na základě adresy URL cílového účtu. Povolte přístup pouze schváleným účtům Data Lake Storage Gen1.
 
 Mezi dostupné možnosti patří:
-- [Azure Firewall:](https://docs.microsoft.com/azure/firewall/overview) [Nasaďte a nakonfigurujte službu Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) pro vaši virtuální síť. Zajistěte zabezpečení odchozího provozu Data Lake Storage a uzamkněte ho pro adresu URL známého a schváleného účtu.
-- Brána firewall [síťového virtuálního zařízení](https://azure.microsoft.com/solutions/network-appliances/): Váš správce může povolit používání bran firewall pouze od určitých komerčních dodavatelů. Stejného výsledku dosáhnete použitím řešení brány firewall síťového virtuálního zařízení, které je k dispozici na webu Azure Marketplace.
+- [Brány Firewall Azure](https://docs.microsoft.com/azure/firewall/overview): [Nasazení a konfigurace Azure bránu firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) pro vaši virtuální síť. Zajistěte zabezpečení odchozího provozu Data Lake Storage a uzamkněte ho pro adresu URL známého a schváleného účtu.
+- [Síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) brány firewall: Správce může povolit použití jenom některé obchodní brány firewall na dodavatele. Stejného výsledku dosáhnete použitím řešení brány firewall síťového virtuálního zařízení, které je k dispozici na webu Azure Marketplace.
 
 > [!NOTE]
 > Použitím brány firewall v cestě k datům se do ní přidá další segment směrování. To může mít vliv na výkon sítě při výměně dat od začátku do konce. Ovlivněná může být i dostupná propustnost a latence připojení. 
 
 ## <a name="limitations"></a>Omezení
 
-- Clustery HDInsight vytvořené před zavedením podpory integrace virtuální sítě Data Lake Storage Gen1 je potřeba vytvořit znovu, aby tuto novou funkci podporovaly.
+- Clustery HDInsight, které byly vytvořeny před podporou integrace Data Lake Storage Gen1 virtuální sítě byla k dispozici je potřeba znovu vytvořit na podporu této nové funkci.
  
-- Pokud vytvoříte nový cluster HDInsight a vyberete účet Data Lake Storage Gen1 s povolenou integrací virtuální sítě, proces selže. Nejprve zakažte pravidlo virtuální sítě. Případně v okně **Brána firewall a virtuální sítě** účtu Data Lake Storage vyberte **Povolit přístup ze všech sítí a služeb**. Další informace najdete v části [Výjimky](##Exceptions).
+- Pokud vytvoříte nový cluster HDInsight a vyberete účet Data Lake Storage Gen1 s povolenou integrací virtuální sítě, proces selže. Nejprve zakažte pravidlo virtuální sítě. Případně v okně **Brána firewall a virtuální sítě** účtu Data Lake Storage vyberte **Povolit přístup ze všech sítí a služeb**. Vytvořte HDInsight cluster před nakonec znovu ji povolit pravidlo virtuální sítě nebo zrušit výběr **povolit přístup ze všech sítí a služby**. Další informace najdete v části [Výjimky](##Exceptions).
 
-- Integrace virtuální sítě Data Lake Storage Gen1 ve verzi Preview nefunguje se [spravovanými identitami pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- Integrace služby virtual network data Lake Storage Gen1 nefunguje při využití [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   
 - Data v souborech a složkách ve vašem účtu Data Lake Storage Gen1 s podporou virtuálních sítí nejsou přístupná na portálu. Toto omezení zahrnuje přístup z virtuálního počítače v rámci virtuální sítě a aktivity, jako je používání Průzkumníka dat. Aktivity správy účtu fungují dál. Data v souborech a složkách ve vašem účtu Data Lake Storage s podporou virtuálních sítí jsou přístupná přes všechny prostředky mimo portál. Mezi tyto prostředky patří přístup s využitím sad SDK, skripty PowerShellu a další služby Azure, pokud nepocházejí z portálu. 
 
 ## <a name="configuration"></a>Konfigurace
 
-### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>Krok 1: Konfigurace virtuální sítě pro používání koncového bodu služby Azure AD
+### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>Krok 1: Konfigurace virtuální sítě můžete použít koncový bod služby Azure AD
 
 1.  Přejděte na web Azure Portal a přihlaste se ke svému účtu.
  
@@ -107,7 +107,7 @@ Mezi dostupné možnosti patří:
  
     ![Úspěšné přidání koncového bodu služby](media/data-lake-store-network-security/config-vnet-4.png)
 
-### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>Krok 2: Nastavení povolené virtuální sítě nebo podsítě pro účet Data Lake Storage Gen1
+### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>Krok 2: Nastavení povolených virtuální síť nebo podsítě pro svůj účet Data Lake Storage Gen1
 
 1.  Po dokončení konfigurace virtuální sítě ve svém předplatném [vytvořte nový účet Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account). Případně můžete přejít k existujícímu účtu Data Lake Storage Gen1. Účet Data Lake Storage Gen1 musí být ve stejné oblasti jako virtuální síť.
  

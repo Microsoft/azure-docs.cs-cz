@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: c510bb060d5c0dc866c3802fab751c1cbeff3745
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 623ed10e155012780f039bf7b9148be34143454d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058027"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353273"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Připojení s vysokou dostupností mezi jednotlivými místy a VNet-to-VNet
 Tento článek obsahuje přehled konfigurací s vysokou dostupností pro vaše propojení mezi jednotlivými místy a propojení VNet-to-VNet se službami Azure VPN Gateway.
@@ -49,7 +49,8 @@ V této konfiguraci existuje několik aktivních tunelů ze stejné Azure VPN Ga
 3. Pro tuto konfiguraci se vyžaduje BGP. Každá brána místní sítě reprezentující zařízení VPN musí mít jedinečnou IP adresu partnerského uzlu protokolu BGP, zadanou vlastností BgpPeerIpAddress.
 4. Pole vlastnosti AddressPrefix v každé bráně místní sítě se nesmí překrývat. Do pole AddressPrefix zadávejte vlastnost BgpPeerIpAddress ve formátu /32 CIDR, například 10.200.200.254/32.
 5. Protokol BGP byste měli použít k inzerování stejných předpon stejných místních sítí pro Azure VPN Gateway, provoz pak bude přes tyto tunely směrován současně.
-6. Každé spojení se započítává do maximálního počtu tunelů pro vaši službu Azure VPN Gateway – 10 pro SKU úrovně Basic a Standard a 30 pro SKU úrovně HighPerformance. 
+6. Je nutné použít stejné náklady Multipath směrování ECMP ().
+7. Každé spojení se započítává do maximálního počtu tunelů pro vaši službu Azure VPN Gateway – 10 pro SKU úrovně Basic a Standard a 30 pro SKU úrovně HighPerformance. 
 
 V této konfiguraci je Azure VPN Gateway stále v režimu aktivní–pohotovostní, takže platí stejné převzetí služeb při selhání a stejné přerušení služby, jak je popsáno [nahoře](#activestandby). Tato konfigurace ale chrání proti selháním nebo přerušením, jejichž příčina je v místní síti nebo v zařízení VPN.
 

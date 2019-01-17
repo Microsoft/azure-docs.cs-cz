@@ -1,6 +1,6 @@
 ---
-title: Profilovat webové aplikace běžící na Virtuálním počítači Azure s Application Insights Profiler | Dokumentace Microsoftu
-description: Profilovat webové aplikace na Virtuálním počítači Azure s Application Insights Profiler.
+title: Profilovat webové aplikace běžící na Virtuálním počítači Azure s využitím Application Insights Profiler | Dokumentace Microsoftu
+description: Profilovat webové aplikace na Virtuálním počítači Azure s využitím Application Insights Profiler.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,28 +12,32 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 764088e7f463f0c249f176514d485944d9c9d76e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3f720cdf369e7377f16bb2ea9cba7e898097cc29
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264627"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359778"
 ---
-# <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Profil webové aplikace běžící na virtuálním počítači Azure nebo škálovací sady virtuálních počítačů pomocí Application Insights Profiler
-Můžete také nasadit Application Insights profiler za tyto služby:
+# <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Nastavení profilu webové aplikace běžící na virtuálním počítači Azure nebo škálovací sadu virtuálních počítačů s použitím Application Insights Profiler
+
+Můžete také nasadit Azure Application Insights Profiler za tyto služby:
 * [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Cloud Services](profiler-cloudservice.md ?toc=/azure/azure-monitor/toc.json)
-* [Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-## <a name="deploy-profiler-on-a-virtual-machine-or-scale-set"></a>Nasazení Profiler do virtuálního počítače nebo Škálovací sady
-Tato stránka vás provede kroky potřebuje získat Application Insights profiler běží na vašem virtuálním počítači Azure nebo virtuální počítač Azure škálovací sady. Application Insights Profiler se instaluje s rozšíření Windows Azure Diagnostics pro virtuální počítače. Rozšíření je potřeba nakonfigurovat pro spuštění profileru a musí být sestaveny App Insights SDK do vaší aplikace.
+## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Profiler nasazení na virtuální počítač nebo škálovací sady virtuálních počítačů
+V tomto článku se dozvíte, jak získat Application Insights Profiler běží na vašich virtuálních počítačů (VM) Azure nebo škálovací sady virtuálních počítačů Azure. Profiler je nainstalován pomocí rozšíření Azure Diagnostics pro virtuální počítače. Nakonfigurujte toto rozšíření spustit Profiler a sestavení Application Insights SDK do vaší aplikace.
 
-1. Přidejte application Insights SDK do vaší [aplikace ASP.Net](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) nebo pravidelných [aplikace .NET.](https://docs.microsoft.com/azure/application-insights/app-insights-windows-services?toc=/azure/azure-monitor/toc.json) Musí být pro vaše požadavky na odeslání telemetrie žádostí Application Insights najdete v tématu profily.
-1. Nainstalujte rozšíření Windows Azure Diagnostics na virtuálním počítači. Úplné příklady šablony Resource Manageru najdete v tématu:  
+1. Přidejte Application Insights SDK do vaší [aplikace ASP.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) nebo běžné [aplikace .NET](https://docs.microsoft.com/azure/application-insights/windows-services?toc=/azure/azure-monitor/toc.json).  
+  Chcete-li zobrazit profily pro vaše požadavky, musíte poslat telemetrie žádostí Application Insights.
+
+1. Nainstalujte rozšíření Azure Diagnostics na virtuálním počítači. Úplné příklady šablony Resource Manageru najdete v tématu:  
     * [Virtuální počítač](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
     * [Škálovací sada virtuálních počítačů](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
     
-    Klíčovým faktorem je ApplicationInsightsProfilerSink v WadCfg. Přidáte jiný jímky do této části a řekněte WAD chcete povolit profiler k odesílání dat do svůj Instrumentační klíč.
+    Klíčovým faktorem je ApplicationInsightsProfilerSink v WadCfg. Pokud chcete, aby Azure Diagnostics povolit Profiler k odesílání dat do svůj Instrumentační klíč, přidejte do této části jiného jímky.
+    
     ```json
       "SinksConfig": {
         "Sink": [
@@ -51,9 +55,9 @@ Tato stránka vás provede kroky potřebuje získat Application Insights profile
 
 1. Definice nasazení upravené prostředí nasazení.  
 
-   Chcete-li použít změny, obvykle zahrnuje kompletní šablonu nasazení nebo je Cloudová služba založená publikovat prostřednictvím rutin prostředí PowerShell nebo sady Visual Studio.  
+   Použití změny obvykle zahrnuje kompletní šablonu nasazení nebo cloudu založený na službách publikovat prostřednictvím rutin prostředí PowerShell nebo sady Visual Studio.  
 
-   Následující příkazy powershellu jsou alternativní přístup pro stávající virtuální počítače, které se týkají pouze rozšíření Azure Diagnostics. Stačí přidat ProfilerSink, jak bylo uvedeno výše ke konfiguraci, která je vrácena pomocí příkazu Get-AzureRmVMDiagnosticsExtension. Předejte do příkazu Set-AzureRmVMDiagnosticsExtension aktualizované konfigurace.
+   Následující příkazy Powershellu jsou alternativní přístup pro stávající virtuální počítače, které se týkají pouze rozšíření Azure Diagnostics. Přidání výše uvedených ProfilerSink ke konfiguraci, která je vrácena pomocí příkazu Get-AzureRmVMDiagnosticsExtension a předat do příkazu Set-AzureRmVMDiagnosticsExtension aktualizované konfigurace.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()
@@ -66,7 +70,7 @@ Tato stránka vás provede kroky potřebuje získat Application Insights profile
 
 1. Pokud je odpovídající aplikace spuštěna [IIS](https://www.microsoft.com/web/downloads/platform.aspx), povolte `IIS Http Tracing` funkce Windows.
 
-   a. Navázání vzdáleného přístupu do prostředí a pak použít [funkce Windows přidat]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) okna, nebo spusťte následující příkaz v Powershellu (jako správce):  
+   a. Navázání vzdáleného přístupu do prostředí a pak použít [funkce Windows přidat]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) okna. Nebo spuštěním následujícího příkazu v Powershellu (jako správce):  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -79,11 +83,11 @@ Tato stránka vás provede kroky potřebuje získat Application Insights profile
 
 1. Při nasazování aplikace.
 
-## <a name="can-profiler-run-on-on-premises-servers"></a>Můžete spustit profiler na místní servery?
-Nemáme žádné plány pro podporu Application Insights Profiler pro místní servery.
+## <a name="can-profiler-run-on-on-premises-servers"></a>Můžete spustit Profiler na místní servery?
+Máme k dispozici žádný plán pro podporu Application Insights Profiler pro místní servery.
 
 ## <a name="next-steps"></a>Další postup
 
-- Generovat provozu do vaší aplikace (Příklad: launch [test dostupnosti](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)). Vyčkejte 10 až 15 minut, než se trasování pro odeslání do instance služby Application Insights.
-- Zobrazit [trasy Profiler](https://docs.microsoft.com/azure/application-insights/app-insights-profiler-overview?toc=/azure/azure-monitor/toc.json) na webu Azure Portal.
-- Získejte pomoc při řešení potíží s profileru v [Profiler řešení potíží s](profiler-troubleshooting.md ?toc=/azure/azure-monitor/toc.json).
+- Generovat provozu do vaší aplikace (Příklad: launch [test dostupnosti](https://docs.microsoft.com/azure/application-insights/monitor-web-app-availability)). Vyčkejte 10 až 15 minut, než se trasování pro odeslání do instance služby Application Insights.
+- Zobrazit [trasy Profiler](https://docs.microsoft.com/azure/application-insights/profiler-overview?toc=/azure/azure-monitor/toc.json) na webu Azure Portal.
+- Vám pomůžou při řešení potíží Profiler [Profiler řešení potíží s](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).

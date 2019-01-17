@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 0ff92ad58cc8b7206b7061c88f8aadbb701870f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 765596500e3ac294dc79f0785b12b03370fa652a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044514"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354480"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Upozornění pacientů změny zdravotní péče záznamu HL7 FHIR pomocí Logic Apps a Azure Cosmos DB
 
@@ -130,11 +130,11 @@ Používáme [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/libr
             /// <param name="maximumItemCount">-1 returns all (default)</param>
             /// <returns></returns>
             [Metadata("Get New or Modified FHIR Documents",
-                "Query for new or modifed FHIR Documents By Resource Type " +
+                "Query for new or modified FHIR Documents By Resource Type " +
                 "from Last Run Date or Beginning of Collection creation"
             )]
             [SwaggerResponse(HttpStatusCode.OK, type: typeof(Task<dynamic>))]
-            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modifed Documents found")]
+            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modified Documents found")]
             [SwaggerOperation("GetNewOrModifiedFHIRDocuments")]
             public async Task<dynamic> GetNewOrModifiedFhirDocuments(
                 [Metadata("Database Id", "Database Id")] string databaseId,
@@ -217,11 +217,11 @@ Následující obrázek ukazuje všechny služby Azure pro toto řešení, kter�
 
 ## <a name="summary"></a>Souhrn
 
-- Jste se naučili, Azure Cosmos DB má nativní podpora pro oznámení pro nové nebo upravené dokumenty a jak snadné je používat. 
+- Jste se naučili, Azure Cosmos DB má nativní podporu pro oznámení pro nové nebo upravené dokumenty a jak snadné je používat. 
 - S využitím Logic Apps, můžete vytvářet pracovní postupy bez psaní kódu.
 - Ke zpracování distribuce pro dokumenty HL7 FHIR pomocí fronty Azure Service Bus.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o službě Azure Cosmos DB najdete v tématu [domovskou stránku služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Další informace o Logic Apps, najdete v části [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Další informace o službě Azure Cosmos DB najdete v tématu [domovskou stránku služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Další informace o Logic Apps najdete v tématu [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
 

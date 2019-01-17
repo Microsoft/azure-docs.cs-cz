@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: f7c8313e6216f10dccdfbb298bbf02036e21c138
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 03862f88bb5debc66940ebae5308771525f51b0b
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043001"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351642"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET change Feed procesoru SDK: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -67,11 +67,11 @@ ms.locfileid: "54043001"
 * Vylepšení diagnostiky podverze.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Přidání nového rozhraní API, úloha&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). To je možné získat odhad práce pro každý oddíl.
+* Added new API, Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). To je možné získat odhad práce pro každý oddíl.
 * Podporuje Microsoft.Azure.DocumentDB SDK 2.0. Vyžaduje Microsoft.Azure.DocumentDB 2.0 nebo novější.
 
 ### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
-* Přidání ChangeFeedEventHost.HostName veřejné vlastnosti pro compativility s v1.
+* Přidání ChangeFeedEventHost.HostName veřejné vlastnosti pro kompatibilitu s v1.
 
 ### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
 * Opravili jsme časování, ke kterému dochází rozdělení oddílů. Časování může vést k získání zapůjčení a okamžitě ztráty během rozdělení oddílů a způsobí kolizi. Problém stav soupeření vyřešen v této vydané verzi.
@@ -102,7 +102,7 @@ ms.locfileid: "54043001"
   * Tvůrce vzor pro flexibilní konstrukce procesoru: ChangeFeedProcessorBuilder třídy.
     * Můžete využít libovolnou kombinaci parametrů.
     * Může trvat instance DocumentClient pro monitorování a/nebo zapůjčení kolekci (není k dispozici ve v1).
-  * IChangeFeedObserver.ProcessChangesAsync nyní přijímá CancellationToken.
+  * IChangeFeedObserver.ProcessChangesAsync now takes CancellationToken.
   * IRemainingWorkEstimator - odhad zbývající práce, je možné samostatně z procesoru.
   * Nové rozšíření body:
     * IPartitionLoadBalancingStrategy - pro vlastní Vyrovnávání zatížení oddílů mezi instancemi procesoru.

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7bf8258524b0b5e73c1a499fb6d3578098a0821e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 08638f0b55c84a6b0e42d3782246ef5b2ce833f3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039159"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359064"
 ---
 # <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Použít pro podporu MongoDB pro funkce a syntaxi MongoDB API služby Azure Cosmos DB
 
@@ -20,13 +20,13 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 Pomocí rozhraní Azure Cosmos DB API pro MongoDB můžete využívat výhod MongoDB jste zvyklí, se všemi podnikových funkcí, které poskytuje služba Cosmos DB: [globální distribuce](distribute-data-globally.md), [automatické horizontální dělení](partition-data.md), záruky latence a dostupnost, automatické indexování každé pole, šifrování neaktivních uložených dat, zálohování a spoustu dalších věcí.
 
-## <a name="mongodb-protocol-support"></a>Podpora protokolu MongoDB
+## <a name="protocol-support"></a>Podpora protokolu
 
 Rozhraní API pro Azure Cosmos DB pro MongoDB je kompatibilní s verzí serveru MongoDB **3.2** ve výchozím nastavení. Podporované operátory a případná omezení nebo výjimky jsou uvedené níže. Funkce nebo operátory dotazu přidané v MongoDB verze **3.4** jsou v současné době dostupné jako funkce Preview. Všechny ovladače klienta, která analyzuje tyto protokoly by měl být schopný se připojit k rozhraní API služby Azure Cosmos DB pro MongoDB.
 
 [Kanál agregace MongoDB](#aggregation-pipeline) je v současné době také dostupný jako samostatná funkce Preview.
 
-## <a name="mongodb-query-language-support"></a>Podpora dotazovacího jazyka MongoDB
+## <a name="query-language-support"></a>Podpora jazyků dotazu
 
 Rozhraní API služby Azure Cosmos DB pro MongoDB poskytuje komplexní podporu pro konstruktory jazyka dotazů MongoDB. Níže najdete podrobný seznam aktuálně podporovaných operací, operátorů, fází, příkazů a možností.
 

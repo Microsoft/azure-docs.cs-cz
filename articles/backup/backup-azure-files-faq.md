@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 875eb20a05a96d094a17229699bb2d87b3377a62
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793508"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359897"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -94,11 +94,14 @@ Ano. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohova
 
 ## <a name="manage-backup"></a>Správa zálohování
 
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>Můžete použít PowerShell konfigurace a správa/obnovení záloh sdílených složek Azure? <br/>
+Ano. Najdete v podrobné dokumentaci popisující [zde](backup-azure-afs-automation.md)
+
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>Můžu získat přístup ke snímkům pořízeným službou Azure Backup a připojit je? <br/>
 Přístup ke všem snímkům pořízeným službou Azure Backup je možný přes zobrazení snímků na portálu, v PowerShellu nebo v rozhraní příkazového řádku. Další informace o snímcích sdílených složek Azure najdete v tématu [Přehled snímků sdílených složek u souborů Azure (Preview)](../storage/files/storage-snapshots-files.md).
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>Jakou maximální dobu uchovávání záloh můžu nakonfigurovat? <br/>
-Zálohování sdílených složek Azure nabízí možnost uchovávat denní zálohy po dobu až 120 dnů.
+Zálohování sdílených složek Azure nabízí možnost konfigurovat zásady uchovávání informací nahoru na 180 dnů. Avšak použití [možnost "zálohování na vyžádání" v prostředí PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup), vytvoření bodu obnovení můžete zachovat i po dobu 10 let.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Co se stane, když u sdílené složky Azure změním zásady zálohování? <br/>
 Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se budou řídit touto novou zásadou. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a budou odstraněny.
