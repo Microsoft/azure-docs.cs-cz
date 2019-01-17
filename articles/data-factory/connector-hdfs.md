@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 01/16/2019
 ms.author: jingwang
-ms.openlocfilehash: a5df9d4d323158ee52c872b0122fdd28d9f74979
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 161683b48ae66edc621981142c538f8bce44a2b6
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019856"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352168"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírovat data z HDFS pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-hdfs-connector.md)
 > * [Aktuální verze](connector-hdfs.md)
 
@@ -39,6 +39,9 @@ Konkrétně tento konektor HDFS podporuje:
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete zkopírovat data z HDFS, který není veřejně přístupná, musíte nastavit modul Integration Runtime. Zobrazit [modul Integration Runtime](concepts-integration-runtime.md) článku se dozvíte podrobnosti.
+
+> [!NOTE]
+> Ujistěte se, že se prostředí Integration Runtime přístup k **všechny** [název uzlu serveru]: [název uzlu port] a [data uzlu servery]: [data uzlu port] clusteru Hadoop. Výchozí [název uzlu port] je 50070 a výchozí [data uzlu port] je 50075.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -111,7 +114,7 @@ Ke zkopírování dat z HDFS, nastavte vlastnost typ datové sady na **sdílení
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **Sdílenou složku.** |Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **FileShare** |Ano |
 | folderPath | Cesta ke složce. Filtr zástupných znaků není podporován. Příklad: / podsložce složky / |Ano |
 | fileName |  **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>– Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` dostala mimo vašeho skutečného názvu souboru má zástupných znaků nebo tento znak escape uvnitř. |Ne |
 | formát | Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat soubory s konkrétním formátu, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formát](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro binární kopie scénář) |
@@ -243,8 +246,8 @@ Níže je příklad konfigurace aktivity kopírování kopíruje data z HDFS do 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Používat ověřování protokolem Kerberos pro konektor HDFS
 
 Existují dvě možnosti, jak nastavit v místním prostředí tak, aby používala ověřování protokolu Kerberos v konektoru HDFS. Můžete zvolit, že je lépe vyhovuje vašemu případu.
-* Možnost 1: [Připojte se k počítači modul Integration Runtime ve sféře Kerberos](#kerberos-join-realm)
-* Možnost 2: [Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos](#kerberos-mutual-trust)
+* Option 1: [Připojte se k počítači modul Integration Runtime ve sféře Kerberos](#kerberos-join-realm)
+* Option 2: [Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos](#kerberos-mutual-trust)
 
 ### <a name="kerberos-join-realm"></a>Možnost 1: Připojte se k počítači modul Integration Runtime ve sféře Kerberos
 
@@ -276,7 +279,7 @@ Existují dvě možnosti, jak nastavit v místním prostředí tak, aby použív
 
 * Nakonfigurujte pomocí konektoru HDFS **ověřování Windows** společně s vaší hlavní název Kerberos a heslo pro připojení ke zdroji dat HDFS. Zkontrolujte [propojená služba HDFS vlastnosti](#linked-service-properties) části na podrobnosti o konfiguraci.
 
-### <a name="kerberos-mutual-trust"></a>Možnost 2: Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos
+### <a name="kerberos-mutual-trust"></a>Option 2: Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos
 
 #### <a name="requirements"></a>Požadavky
 
