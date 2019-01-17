@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 1ae0be44be524e4cb4e8d446e2279a1bfd800a04
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231610"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320082"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -114,9 +114,6 @@ Zařízení data odkazují na jednotlivá zařízení data uložená ve službě
 ## <a name="device-identity"></a>Identita zařízení
 Identita zařízení je jedinečný identifikátor přiřazený do všech zařízení zaregistrované v [registr identit](#identity-registry).
 
-## <a name="module-identity"></a>Modul identity
-Identita modulu je jedinečný identifikátor přiřazený každého modulu, který patří do zařízení. Modul identity je zaregistrovaná taky v [registr identit](#identity-registry).
-
 ## <a name="device-management"></a>Správa zařízení
 Správa zařízení zahrnuje celý životní cyklus spojené se správou zařízení ve vašem řešení IoT, včetně plánování, zřízení, konfigurace, monitorování a vyřazování z provozu.
 
@@ -131,15 +128,6 @@ Zřizování zařízení je proces přidávání počáteční [data zařízení
 
 ## <a name="device-twin"></a>Dvojče zařízení
 A [dvojče zařízení](iot-hub-devguide-device-twins.md) je dokument JSON, který ukládá informace o stavu zařízení jako jsou metadata, konfigurace a podmínky. [IoT Hub](#iot-hub) udržuje takové dvojče pro každé zařízení, zřídíte ve službě IoT hub. Dvojčata zařízení umožní synchronizaci [zařízení podmínky](#device-condition) a konfigurací mezi zařízením a řešení back-endu. Dvojčata zařízení k vyhledání konkrétních zařízení a zjistit stav dlouhotrvající operace se můžete dotazovat.
-
-## <a name="module-twin"></a>Dvojče zařízení
-Podobně jako u dvojče zařízení, dvojče modulu je dokument JSON, který ukládá informace o stavu modulu například metadata, konfigurace a podmínky. IoT Hub udržuje takové dvojče modulu pro každou identitu modulu, který zřídíte s identitou zařízení služby IoT hub. Dvojčaty modulů umožňují synchronizovat modul ujednání a konfigurací modulu a back-endu řešení. Můžete zadávat dotazy dvojčaty modulů k vyhledání konkrétních modulů a zjistit stav dlouhotrvající operace.
-
-## <a name="twin-queries"></a>Dotazy dvojčete
-[Dotazů na dvojčata zařízení a modul](iot-hub-devguide-query-language.md) použijte dotazovací jazyk služby IoT Hub podobném SQL načtěte informace z dvojčat zařízení nebo dvojčaty modulů. Stejné dotazovací jazyk služby IoT Hub můžete použít k načtení informací o [](#job) spuštěná ve službě IoT hub.
-
-## <a name="twin-synchronization"></a>Dvojče synchronizace
-Dvojče používá synchronizaci [požadované vlastnosti](#desired-properties) dvojčat zařízení nebo dvojčaty modulů ke konfiguraci zařízení nebo moduly a načíst [ohlášené vlastnosti](#reported-properties) z nich k uložení ve dvojčeti.
 
 ## <a name="direct-method"></a>Přímá metoda
 A [přímá metoda](iot-hub-devguide-direct-methods.md) je způsob, jakým můžete aktivovat metodu ke spuštění na zařízení prostřednictvím volání rozhraní API ve službě IoT hub.
@@ -190,6 +178,17 @@ Akcelerátory řešení Azure IoT zabalit společně několik služeb Azure do �
 
 ## <a name="job"></a>Úloha
 Back-endem řešení můžete použít [úlohy](iot-hub-devguide-jobs.md) k plánování a sledování aktivit na sadu zařízení registrovaná ve službě IoT hub. Aktivity zahrnout aktualizace dvojčete zařízení [požadované vlastnosti](#desired-properties), aktualizace dvojčete zařízení [značky](#tags)a vyvolání [přímé metody](#direct-method). [IoT Hub](#iot-hub) používá také k [importovat a exportovat](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [registr identit](#identity-registry).
+
+## <a name="modules"></a>Moduly
+Sady SDK pro zařízení služby IoT Hub na straně zařízení umožňují vytvářet [moduly](iot-hub-devguide-module-twins.md) kde každý z nich se otevře nezávislé připojení ke službě IoT Hub. Tato funkce umožňuje používat samostatné obory názvů pro různé součásti na vašem zařízení.
+
+Modul identity a dvojče zařízení poskytují stejné funkce jako [identitu zařízení](#device-identity) a [dvojče zařízení](#device-twin) ale podrobnější rozlišovací schopnosti. Tento rozlišovací schopnosti povolí podporuje zařízení, jako jsou založené na operační systém nebo zařízení firmwaru správy více komponenty a izolovat konfigurace a podmínky pro každou z těchto komponent.
+
+## <a name="module-identity"></a>Modul identity
+Identita modulu je jedinečný identifikátor přiřazený každého modulu, který patří do zařízení. Modul identity je zaregistrovaná taky v [registr identit](#identity-registry).
+
+## <a name="module-twin"></a>Dvojče zařízení
+Podobně jako u dvojče zařízení, dvojče modulu je dokument JSON, který ukládá informace o stavu modulu například metadata, konfigurace a podmínky. IoT Hub udržuje takové dvojče modulu pro každou identitu modulu, který zřídíte s identitou zařízení služby IoT hub. Dvojčaty modulů umožňují synchronizovat modul ujednání a konfigurací modulu a back-endu řešení. Můžete zadávat dotazy dvojčaty modulů k vyhledání konkrétních modulů a zjistit stav dlouhotrvající operace.
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) je jeden z zasílání zpráv, které protokoly [služby IoT Hub](#iot-hub) podporuje pro komunikaci se zařízeními. Další informace o protokoly zasílání zpráv, které podporuje službu IoT Hub najdete v tématu [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
@@ -256,6 +255,12 @@ Zařízení shromažďování telemetrických dat, jako je například rychlost 
 
 ## <a name="token-service"></a>Služba tokenů
 Token služby můžete implementovat mechanismus ověřování pro vaše zařízení. Pomocí služby IoT Hub [sdílené zásady přístupu](#shared-access-policy) s **DeviceConnect** oprávnění k vytvoření *rozsahem zařízení* tokeny. Tyto tokeny umožňují zařízení pro připojení ke službě IoT hub. Vlastní ověřovací mechanismus zařízení používá k ověření pomocí služby tokenů. Pokud úspěšně ověří zařízení, služba tokenů vydá token SAS pro zařízení používat pro přístup k službě IoT hub.
+
+## <a name="twin-queries"></a>Dotazy dvojčete
+[Dotazů na dvojčata zařízení a modul](iot-hub-devguide-query-language.md) použijte dotazovací jazyk služby IoT Hub podobném SQL načtěte informace z dvojčat zařízení nebo dvojčaty modulů. Stejné dotazovací jazyk služby IoT Hub můžete použít k načtení informací o [](#job) spuštěná ve službě IoT hub.
+
+## <a name="twin-synchronization"></a>Dvojče synchronizace
+Dvojče používá synchronizaci [požadované vlastnosti](#desired-properties) dvojčat zařízení nebo dvojčaty modulů ke konfiguraci zařízení nebo moduly a načíst [ohlášené vlastnosti](#reported-properties) z nich k uložení ve dvojčeti.
 
 ## <a name="x509-client-certificate"></a>Klientského certifikátu X.509
 Zařízení slouží k ověření pomocí certifikátu X.509 [služby IoT Hub](#iot-hub). Pomocí certifikátu X.509 se o alternativu k použití [SAS token](#shared-access-signature).
