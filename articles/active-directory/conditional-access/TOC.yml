@@ -32,6 +32,8 @@ items:
   expanded: false
 - name: Návody
   items:
+  - name: Plánování nasazení podmíněného přístupu
+    href: plan-conditional-access.md
   - name: Osvědčené postupy
     href: best-practices.md
   - name: Blokování starší verze ověřování
@@ -65,9 +67,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: cbba6bd7e49f4866a83e8b37945a5066c33d0b35
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: dbddb667324cb4724aa9c43e317057306ac4e5a7
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015190"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354004"

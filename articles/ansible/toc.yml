@@ -16,33 +16,45 @@ items:
   - name: Správa virtuálního počítače s Linuxem
     href: /azure/virtual-machines/linux/ansible-manage-linux-vm
     maintainContext: true
+  - name: Spuštění playbooku v Cloud Shellu
+    href: ./ansible-run-playbook-in-cloudshell.md
   expanded: true
 - name: Kurzy
   items:
-  - name: Spuštění playbooku v Cloud Shellu
-    href: ./ansible-run-playbook-in-cloudshell.md
-    maintainContext: true
-  - name: Správa dynamického inventáře
-    href: ./ansible-manage-azure-dynamic-inventories.md
-    maintainContext: true
-  - name: Vytvoření a konfigurace VMSS
-    href: ./ansible-create-configure-vmss.md
-  - name: Nasazení aplikace do VMSS
-    href: ./ansible-deploy-app-vmss.md
-  - name: Automatické škálování VMSS
-    href: ./ansible-auto-scale-vmss.md
-  - name: Vytvoření a konfigurace clusterů AKS
-    href: ./ansible-create-configure-aks.md
-  - name: Vytvoření a konfigurace služby Azure Application Gateway
-    href: ./ansible-create-configure-application-gateway.md
-  - name: Vytvoření a konfigurace Azure DB for MySQL
-    href: ./ansible-create-configure-mysql.md
-  - name: Vytvoření a konfigurace Azure Web Apps
-    href: ./ansible-create-configure-azure-web-apps.md
-  - name: Škálování Azure Web Apps
-    href: ./ansible-scale-azure-web-apps.md
-  - name: Vytvoření a konfigurace směrovacích tabulek
-    href: ./ansible-create-configure-route-table.md
+  - name: AKS
+    items:
+    - name: Vytvoření a konfigurace clusterů AKS
+      href: ./ansible-create-configure-aks.md
+  - name: App Service
+    items:
+    - name: Vytvoření a konfigurace Azure Web Apps
+      href: ./ansible-create-configure-azure-web-apps.md
+    - name: Škálování Azure Web Apps
+      href: ./ansible-scale-azure-web-apps.md
+  - name: Application Gateway
+    items:
+    - name: Vytvoření a konfigurace služby Azure Application Gateway
+      href: ./ansible-create-configure-application-gateway.md
+  - name: Databáze
+    items:
+    - name: Vytvoření a konfigurace Azure DB for MySQL
+      href: ./ansible-create-configure-mysql.md
+  - name: Dynamický inventář
+    items:
+    - name: Správa dynamického inventáře
+      href: ./ansible-manage-azure-dynamic-inventories.md
+  - name: Virtuální síť
+    items:
+    - name: Vytvoření a konfigurace směrovacích tabulek
+      href: ./ansible-create-configure-route-table.md
+  - name: VMSS
+    items:
+    - name: Vytvoření a konfigurace VMSS
+      href: ./ansible-create-configure-vmss.md
+    - name: Nasazení aplikace do VMSS
+      href: ./ansible-deploy-app-vmss.md
+    - name: Automatické škálování VMSS
+      href: ./ansible-auto-scale-vmss.md
 - name: Referenční informace
   items:
   - name: Role playbooku
@@ -67,9 +79,9 @@ items:
   items:
   - name: Rozšíření editoru Visual Studio Code pro Ansible
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: a54936953aa812cbe943394b9d083d8957f770ae
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 914987ee58a2ba09295d425c2107ba7eb192c131
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789836"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359234"

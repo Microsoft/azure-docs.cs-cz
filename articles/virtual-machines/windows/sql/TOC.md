@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 050eb5e51ec4f589d160ac20322ffc02f77efc61
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358605"
+---
 # Přehled
 ## [Virtuální počítače s Windows a SQL Serverem](virtual-machines-windows-sql-server-iaas-overview.md) 
 ## [Poznámky k verzi](virtual-machines-windows-sql-server-iaas-release-notes.md) 
@@ -11,6 +19,12 @@
 ### [Osvědčené postupy z hlediska výkonu](virtual-machines-windows-sql-performance.md)
 ### [Aspekty zabezpečení](virtual-machines-windows-sql-security.md)
 ### [Vzory aplikací](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+## Kontinuita podnikových procesů
+### [Možnosti vysoké dostupnosti](virtual-machines-windows-sql-high-availability-dr.md) 
+### [Skupiny dostupnosti Always On](virtual-machines-windows-portal-sql-availability-group-overview.md)
+### [Zálohování a obnovení](virtual-machines-windows-sql-backup-recovery.md)
+### [Automatizovaná záloha pro SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
+### [Automatizovaná záloha pro SQL Server 2016+](virtual-machines-windows-sql-automated-backup-v2.md)
 ## Správa
 ### [Připojení k virtuálnímu počítači](virtual-machines-windows-sql-connect.md)
 ### [Konfigurace úložiště](virtual-machines-windows-sql-server-storage-configuration.md)
@@ -18,22 +32,19 @@
 #### [Použití rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md)
 #### [Automatizované opravy](virtual-machines-windows-sql-automated-patching.md)
 #### [Integrace se službou Azure Key Vault](virtual-machines-windows-ps-sql-keyvault.md)
-## Zálohování a obnovení
-### [Zálohování a obnovení](virtual-machines-windows-sql-backup-recovery.md)
-### [Automatizovaná záloha pro SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
-### [Automatizovaná záloha pro SQL Server 2016+](virtual-machines-windows-sql-automated-backup-v2.md)
-### [Použití služby Azure Storage pro zálohování a obnovení](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # Návody
 ## Vytvoření virtuálního počítače SQL
 ### [Použití portálu](virtual-machines-windows-portal-sql-server-provision.md)
 ### [Použití Azure Powershellu](virtual-machines-windows-ps-sql-create.md)
+## [Změna modelu licencování pro virtuální počítač SQL](virtual-machines-windows-sql-ahb.md)
 ## Migrace
 ### [Migrace databáze SQL Serveru](virtual-machines-windows-migrate-sql.md)
 ## Konfigurace vysoké dostupnosti
-### [Možnosti vysoké dostupnosti](virtual-machines-windows-sql-high-availability-dr.md) 
-### [Skupiny dostupnosti Always On](virtual-machines-windows-portal-sql-availability-group-overview.md)
-#### [Automaticky – pomocí šablony](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+### [Použití služby Azure Storage pro zálohování a obnovení](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
+### Skupina dostupnosti Always On
+#### [Použití šablony webu Azure Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Použití šablon Rychlý start](virtual-machines-windows-sql-availability-group-quickstart-template.md)
 #### [Ručně – požadavky](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [Ručně – kurz](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 #### [Load Balancer – web Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
@@ -41,7 +52,7 @@
 #### [Několik oblastí](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Instance clusteru převzetí služeb při selhání
 #### [Konfigurace](virtual-machines-windows-portal-sql-create-failover-cluster.md)
-## [Změna modelu licencování pro virtuální počítač SQL](virtual-machines-windows-sql-ahb.md)
+
 
 # Referenční informace
 ## [Azure PowerShell](/powershell/azure/overview)
