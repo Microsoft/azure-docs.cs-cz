@@ -234,17 +234,19 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
-  - name: Jazyk neuronových sítí Net#
-    href: azure-ml-netsharp-reference-guide.md
   - name: Fórum MSDN
     href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: Příručka pro vývojáře v R
     href: ../r-developers-guide.md
-ms.openlocfilehash: f8fa65cfb7c61cd3d359331f1872d279ab113d19
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+  - name: Vlastní neurální sítě s Net#
+    href: azure-ml-netsharp-reference-guide.md
+  - name: Porovnání našich produktů ML
+    href: ../service/overview-more-machine-learning.md
+ms.openlocfilehash: 821a6ffb787aef0d75dbc0f9e1ab331ad35dafa0
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320510"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389925"
