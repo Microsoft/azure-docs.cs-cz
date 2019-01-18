@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: acedfab277199c2ada6af17584bab3f222fe1a13
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843202"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390030"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -234,8 +234,8 @@ Ani jedna služba MSDTC ani [elastické transakce](https://docs.microsoft.com/az
 
 Některé cíle Windows specifické pro události Xevent nepodporuje:
 
-- `etw_classic_sync target` není podporováno. Store `.xel` souborů v Azure blob storage. Zobrazit [etw_classic_sync cílové](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
-- `event_file target`není podporováno. Store `.xel` souborů v Azure blob storage. Zobrazit [event_file cílové](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#eventfile-target).
+- `etw_classic_sync target` není podporováno. Store `.xel` souborů v Azure blob storage. See [etw_classic_sync target](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
+- `event_file target`není podporováno. Store `.xel` souborů v Azure blob storage. Zobrazit [event_file cílové](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externí knihovny
 
@@ -270,7 +270,7 @@ Propojené servery ve spravované instanci podporuje omezený počet cílů:
 Operace
 
 - Různé instance zápisu transakce nejsou podporovány.
-- `sp_dropserver` platí pro odkazovaný server vyřadit. Zobrazit [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
+- `sp_dropserver` platí pro odkazovaný server vyřadit. See [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - `OPENROWSET` funkci můžete použít k provádění dotazů pouze na instancích systému SQL Server (buď spravovaných, místně nebo ve virtuálních počítačích). Zobrazit [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE` funkci můžete použít k provádění dotazů pouze na instancích systému SQL Server (buď spravovaných, místně nebo ve virtuálních počítačích). Pouze `SQLNCLI`, `SQLNCLI11`, a `SQLOLEDB` hodnoty jsou podporovány jako zprostředkovatel. Například: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Zobrazit [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
 
@@ -465,7 +465,7 @@ Protokoly chyb, které jsou k dispozici ve spravované instanci nejsou trvalé a
 
 Spravovaná Instance umístí podrobné informace v protokolech chyb a mnoho z nich nejsou relevantní. V budoucnu bude možné snížit množství informací v protokolech chyb.
 
-**Alternativní řešení**: použijte vlastní postup pro čtení protokoly chyb, které filtr na více instancí některých – příslušné položky. Podrobnosti najdete v tématu [Azure SQL DB mi – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+**Alternativní řešení**: Vlastní procedura použita pro čtení protokoly chyb, které filtr na více instancí některých – příslušné položky. Podrobnosti najdete v tématu [Azure SQL DB mi – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Obor transakce ve dvou databázích v rámci stejné instance se nepodporuje.
 
@@ -496,13 +496,13 @@ using (var scope = new TransactionScope())
 
 Přestože tento kód pracuje s daty v rámci stejné instance nezbytné MSDTC.
 
-**Alternativní řešení**: použijte [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) použití jiné databáze v kontextu připojení místo použití dvě připojení.
+**Alternativní řešení**: Použít [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) použití jiné databáze v kontextu připojení místo použití dvě připojení.
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>Moduly CLR a nějakou dobu propojené servery nemůže odkazovat na místní IP adresa
 
 Moduly CLR umístí do Managed Instance a propojené servery pro/distribuované dotazy, které se odkazuje na aktuální instanci nějakou dobu nelze přeložit IP místní instance. Tato chyba je přechodný problém.
 
-**Alternativní řešení**: Pokud je to možné použít připojení kontextu v modulu CLR.
+**Alternativní řešení**: Pokud je to možné použijte připojení kontextu v modulu CLR.
 
 ## <a name="next-steps"></a>Další postup
 

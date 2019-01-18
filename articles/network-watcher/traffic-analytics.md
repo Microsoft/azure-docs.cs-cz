@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d339908b9347843da891dd1c7fa038c45cee1dcb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338579"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382833"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -99,9 +99,6 @@ Váš účet musí být členem jedné z následujících Azure [předdefinovan�
 |                   | Přispěvatel            |
 |                   | Čtenář                 |
 |                   | Přispěvatel sítě    |
-|Classic            | Správce účtu  |
-|                   | Správce služeb  |
-|                   | Spolusprávce       |
 
 Pokud váš účet nemá přiřazenou do jedné z předdefinovaných rolí, musíte být přiřazeni k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) , který je přiřazen následující akce na úrovni předplatného:
 
@@ -317,7 +314,7 @@ Distribuce provozu na aplikační brány a nástroje pro vyrovnávání zatíže
  - Znalost, které podsíť je rozhovory pro které služba Application gateway nebo nástroje pro vyrovnávání zatížení. Pokud zjistíte neočekávané konverzace, můžete opravit konfiguraci.
  - Pokud podvodný sítě jsou rozhovory s Application gateway nebo nástroje pro vyrovnávání zatížení, budete moct opravit tím, že nakonfigurujete pravidla NSG pro blokování podvodný sítě. 
 
-    ![Subnet-Topology-showcasing-Traffic-Distribution-to-a-Application-Gateway-Subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Zobrazení portů a virtuální počítače přijímají data z Internetu
 

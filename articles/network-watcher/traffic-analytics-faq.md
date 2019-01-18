@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582492"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383005"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -35,7 +35,6 @@ Analýza provozu vyžaduje následující požadavky:
 
 Váš účet musí splňovat jeden z následujících akcí k povolení analýzy provozu:
 
-- Váš účet musí mít přiřazenou k jednomu z následujících rolí na úrovni předplatného: účet správce, Správce služeb nebo spolupracující správce.
 - Váš účet musí mít některou z následujících rolí řízení přístupu na základě role v oboru předplatného: vlastník, Přispěvatel, Čtenář nebo Přispěvatel sítě.
 - Pokud váš účet nemá přiřazenou do jedné z výše uvedených rolí, musíte být přiřazeni vlastní roli, která je přiřazena následující akce na úrovni předplatného.
             
@@ -61,7 +60,7 @@ Kontrola role přiřazené uživateli pro předplatné:
 Pokud nevidíte žádný výstup, obraťte se na příslušného předplatného správce získat přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [spravovat řízení přístupu podle role pomocí prostředí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
-## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Ve které oblasti jsou analýzu provozu dostupné?
+## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>V které oblasti Azure je analýza provozu k dispozici?
 
 Použití analýzy provozu pro skupiny zabezpečení sítě v některém z následujících podporovaných oblastech:
 - Kanada – střed
@@ -133,7 +132,7 @@ Tok protokolování fungovalo správně, musí mít zaregistrovaný poskytovatel
 
 Řídicím panelu může trvat až 30 minut se zobrazí při prvním. Řešení musí nejprve shromažďovat dostatek dat, aby se odvodit smysluplné přehledy. Potom generuje sestavy. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co když se zobrazí tato zpráva: "jsme nenašli žádná data z tohoto pracovního prostoru pro vybraný časový interval. Zkuste změnit časový interval, nebo vyberte jiný pracovní prostor. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co když se zobrazí tato zpráva: "Jsme nenašli žádná data z tohoto pracovního prostoru pro vybraný časový interval. Zkuste změnit časový interval, nebo vyberte jiný pracovní prostor. "?
 
 Vyzkoušejte následující možnosti:
 - Změňte časový interval, v horním panelu.
@@ -142,7 +141,7 @@ Vyzkoušejte následující možnosti:
     
 Pokud potíže potrvají, vyvolat připomínky můžete vystavit ve [fóru User voice](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "analýza skupina NSG flow protokoly poprvé. Tento proces může trvat 20 – 30 minut. Kontrola znovu za chvíli. (2) Pokud váš pracovní prostor je pod SKU zdarma předchozí krok nefunguje, zkontrolujte ověření přes kvótu využití pracovního prostoru, jinak postupujte při nejčastějších dotazech týkajících se žádostí o další informace. "?
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "Analýza protokolů toku NSG poprvé. Tento proces může trvat 20 – 30 minut. Kontrola znovu za chvíli. (2) Pokud váš pracovní prostor je pod SKU zdarma předchozí krok nefunguje, zkontrolujte ověření přes kvótu využití pracovního prostoru, jinak postupujte při nejčastějších dotazech týkajících se žádostí o další informace. "?
 
 Vzhledem k tomu, může se zobrazit tato zpráva:
 - Analýza provozu nedávno povolilo řešení a nemusí mít ještě agregovat dostatek dat, aby se odvodit smysluplné přehledy.
@@ -150,7 +149,7 @@ Vzhledem k tomu, může se zobrazit tato zpráva:
     
 Pokud potíže potrvají, vyvolat připomínky můžete vystavit ve [fóru User voice](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "vypadá to, máme data prostředků (topologii) a informace o žádné toky. Mezitím můžete kliknout sem pro zobrazení zdroje dat a další informace naleznete na nejčastější dotazy. "?
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "Vypadá to, máme data prostředků (topologii) a informace o žádné toky. Mezitím můžete kliknout sem pro zobrazení zdroje dat a další informace naleznete na nejčastější dotazy. "?
 
 Informace o zdroji se zobrazuje na řídicím panelu; Nicméně jsou k dispozici žádné statistiky týkající se flow. Data, nemusí být k dispozici z důvodu žádné toky komunikaci mezi prostředky. Počkejte po dobu 60 minut a spusťte opětovnou kontrolu stavu. Pokud se problém nevyřeší, a jste si jisti, že existují toky komunikaci mezi prostředky, vyvolat připomínky můžete vystavit ve [fóru User voice](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
@@ -233,8 +232,8 @@ Příklad, jak je uvedeno [cenový plán](https://azure.microsoft.com/pricing/de
 
 Na stránce geografické mapy obsahuje dvě hlavní části:
     
-- **Banner**: banner v horní části geografické mapy obsahuje tlačítka a vyberte filtry distribuce přenosů (například nasazení, provoz ze zemí a škodlivé). Když vyberete tlačítko, příslušný filtr platí na mapě. Například pokud vyberete tlačítko aktivní, zvýrazní mapy aktivní datových center ve vašem nasazení.
-- **Mapa**: následující hlavičky, části Mapa zobrazuje distribuce provozu mezi datacentry Azure a zemí.
+- **Banner**: Banner v horní části geografické mapy obsahuje tlačítka a vyberte filtry distribuce přenosů (například nasazení, provoz ze zemí a škodlivé). Když vyberete tlačítko, příslušný filtr platí na mapě. Například pokud vyberete tlačítko aktivní, zvýrazní mapy aktivní datových center ve vašem nasazení.
+- **Mapa**: Následující hlavičky zobrazuje mapa oddílu distribuce provozu mezi datacentry Azure a zemí.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Procházení pomocí klávesnice na informační zprávě
     
@@ -263,8 +262,8 @@ Na stránce geografické mapy obsahuje dvě hlavní části:
 
 Na stránce topologie virtuální sítě obsahuje dvě hlavní části:
     
-- **Banner**: banner v horní části topologie virtuální sítě poskytuje tlačítka a vyberte filtry distribuce přenosů (například propojenými virtuálními sítěmi, odpojené virtuální sítě a veřejné IP adresy). Když vyberete tlačítko, příslušný filtr platí na topologii. Například pokud vyberete tlačítko aktivní, zvýrazní topologie active virtuální sítě ve vašem nasazení.
-- **Topologie**: následující hlavičky, zobrazuje v části topologie distribuce provozu mezi virtuálními sítěmi.
+- **Banner**: Banner v horní části topologie virtuální sítě poskytuje tlačítka a vyberte filtry distribuce přenosů (například propojenými virtuálními sítěmi, odpojené virtuální sítě a veřejné IP adresy). Když vyberete tlačítko, příslušný filtr platí na topologii. Například pokud vyberete tlačítko aktivní, zvýrazní topologie active virtuální sítě ve vašem nasazení.
+- **Topologie**: Následující hlavičky zobrazuje v části topologie distribuce provozu mezi virtuálními sítěmi.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Procházení pomocí klávesnice na informační zprávě
     
@@ -285,8 +284,8 @@ Na stránce topologie virtuální sítě obsahuje dvě hlavní části:
 
 Na stránce topologie virtuální podsítě obsahuje dvě hlavní části:
     
-- **Banner**: banner v horní části topologie virtuální podsítě obsahuje tlačítka a vyberte filtry distribuce přenosů (například aktivní, střední a brány podsítě). Když vyberete tlačítko, příslušný filtr platí na topologii. Například pokud vyberete tlačítko aktivní, zvýrazní topologie active virtuální podsítě ve vašem nasazení.
-- **Topologie**: následující hlavičky, zobrazuje v části topologie distribuce provozu mezi virtuální podsítě.
+- **Banner**: Banner v horní části topologie virtuální podsítě obsahuje tlačítka a vyberte filtry distribuce přenosů (například aktivní, střední a brány podsítě). Když vyberete tlačítko, příslušný filtr platí na topologii. Například pokud vyberete tlačítko aktivní, zvýrazní topologie active virtuální podsítě ve vašem nasazení.
+- **Topologie**: Následující hlavičky zobrazuje v části topologie distribuce provozu mezi virtuální podsítě.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Procházení pomocí klávesnice na informační zprávě
     

@@ -14,12 +14,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: cafae6d71401bc44813b2e366f8e72f7b806236b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 8049db848e34b0aa9bc23f08169a8c63f765791a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062771"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389754"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Použití profilů verzí API s využitím Pythonu ve službě Azure Stack
 
@@ -29,11 +29,12 @@ ms.locfileid: "54062771"
 
 Python SDK podporuje profilů verzí API cílit na různé cloudové platformy, jako je Azure Stack a globální Azure. Pomocí profilů rozhraní API ve vytváření řešení pro hybridní cloud. Python SDK podporuje následující profily rozhraní API:
 
-1. **nejnovější**  
-    Profil, který cílí na nejnovější verze rozhraní API pro všechny poskytovatele služby na platformě Azure.
-2. **2017-03-09-profile**  
-   **2017-03-09-profile**  
-   Profil, který cílí na verze rozhraní API poskytovatele prostředků, které jsou podporované ve službě Azure Stack.
+- **nejnovější**  
+    Tento profil zaměřuje na nejnovější verze rozhraní API pro všechny poskytovatele služby na platformě Azure.
+- **2018-03-01-hybrid**     
+    Tento profil zaměřuje na nejnovější verze rozhraní API pro všechny poskytovatele prostředků na platformě Azure Stack.
+- **2017-03-09-profile**  
+    Tento profil, zaměřuje nejvíce kompatibilní verze rozhraní API poskytovatele prostředků, které jsou podporované ve službě Azure Stack.
 
    Další informace o profilech rozhraní API a služby Azure Stack najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](azure-stack-version-profiles.md).
 
@@ -56,10 +57,19 @@ Chcete-li použít sady Azure Python SDK pro Azure Stack, musíte zadat následu
 | ID předplatného | AZURE_SUBSCRIPTION_ID | [ID předplatného](../azure-stack-plan-offer-quota-overview.md#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack. |
 | Tajný kód klienta | AZURE_CLIENT_SECRET | Služba hlavní tajný klíč aplikace neuloží, když se vytvoří nový instanční objekt služby. |
 | Koncový bod Resource Manageru | ARM_ENDPOINT | Zobrazit [koncový bod služby Azure Stack resource manager](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| Umístění prostředku | AZURE_RESOURCE_LOCATION | Umístění prostředku vaším prostředím Azure Stack.
 
 ## <a name="python-samples-for-azure-stack"></a>Ukázky Pythonu pro službu Azure Stack
 
-Následující ukázky kódu můžete použít k provádění běžných úloh správy pro virtuální počítače v Azure stacku. Ukázky kódu ukazují, na:
+Zde jsou některé z ukázek kódu, který je k dispozici pro službu Azure Stack pomocí sady Python SDK:
+
+- [Správa prostředků a skupin prostředků](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/).
+- [Správa účtu úložiště](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/).
+- [Správa virtuálních počítačů](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/).
+
+## <a name="python-manage-virtual-machine-sample"></a>Správa Pythonu ukázkový virtuální počítač
+
+Následující vzorový kód můžete použít k provádění běžných úloh správy pro virtuální počítače v Azure stacku. Vzorový kód ukazuje na:
 
 - Vytvoření virtuálních počítačů:
   - Vytvoření virtuálního počítače s Linuxem
@@ -76,7 +86,7 @@ Následující ukázky kódu můžete použít k provádění běžných úloh s
 - Seznam virtuálních počítačů
 - Odstranění virtuálního počítače
 
-Kód, který provádí těchto operací najdete v tématu **run_example()** funkce ve skriptu Pythonu **Hybrid/unmanaged-disks/example.py** v úložišti Githubu [ virtuální počítače python Správa](https://github.com/Azure-Samples/virtual-machines-python-manage).
+Kód, který provádí těchto operací najdete v tématu **run_example()** funkce ve skriptu Pythonu **example.py** v úložišti Githubu [hybridní-výpočetní-Python-spravovat-VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM).
 
 Každá operace jasně označené jako komentář a tisku funkcí. Příklady není nutně v pořadí uvedeném v tomto seznamu.
 
@@ -99,13 +109,13 @@ Každá operace jasně označené jako komentář a tisku funkcí. Příklady ne
 4. Naklonujte úložiště:
 
     ```bash
-    git clone https://github.com/Azure-Samples/virtual-machines-python-manage.git
+    git clone https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM.git
     ```
 
 5. Instalace závislosti pomocí pip:
 
     ```bash
-    cd virtual-machines-python-manage\Hybrid
+    cd Hybrid-Compute-Python-Manage-VM
     pip install -r requirements.txt
     ```
 
@@ -119,6 +129,7 @@ Každá operace jasně označené jako komentář a tisku funkcí. Příklady ne
     export AZURE_CLIENT_SECRET={your client secret}
     export AZURE_SUBSCRIPTION_ID={your subscription id}
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
+    export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
 8. Pokud chcete tuto ukázku spustit, musí být Ubuntu 16.04-LTS a WindowsServer 2012-R2-Datacenter imagí v Tržišti Azure Stack. Mohou to být buď [stáhli z Azure](../azure-stack-download-azure-marketplace-item.md), nebo přidat do [úložiště Imagí platforem](../azure-stack-add-vm-image.md).
@@ -126,17 +137,9 @@ Každá operace jasně označené jako komentář a tisku funkcí. Příklady ne
 9. Spusťte ukázku:
 
     ```python
-    python unmanaged-disks\example.py
+    python example.py
     ```
 
-## <a name="notes"></a>Poznámky
-
-Jste možná v pokušení se pokouší načíst disk s operačním systémem Virtuálního počítače pomocí `virtual_machine.storage_profile.os_disk`. V některých případech to může provést požadovanou, ale mějte na paměti, že poskytuje **OSDisk** objektu. Za účelem aktualizace velikost disku operačního systému, jako `example.py` provádí, můžete **disku** objekt nelze **OSDisk** objektu. `example.py` Získá **disku** objektu s následujícími vlastnostmi:
-
-```python
-os_disk_name = virtual_machine.storage_profile.os_disk.name
-os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
-```
 
 ## <a name="next-steps"></a>Další postup
 

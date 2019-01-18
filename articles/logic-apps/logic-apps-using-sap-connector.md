@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 1738f02d28a4eb9ff5cbb51c73bc50ddf3c9a68b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231334"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391285"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP v Azure Logic Apps
 
@@ -23,9 +23,9 @@ Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP 
 
 Konektor SAP ECC používá <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .net knihovna konektorů (NCo)</a> a poskytuje tyto operace nebo akce:
 
-- **Poslat SAP**: IDoc odeslání nebo volání funkce BAPI přes tRFC v systémů SAP.
-- **Přijímat od SAPU**: přijímat IDoc nebo BAPI volání funkcí přes tRFC ze systémů SAP.
-- **Vygenerovat schémata**: vygenerovat schémata pro SAP artefakty pro IDoc nebo BAPI nebo RFC.
+- **Poslat SAP**: Odeslat IDoc nebo volat funkce BAPI přes tRFC v systémů SAP.
+- **Přijímat od SAPU**: Volání funkcí IDoc nebo BAPI přijímat přes tRFC ze systémů SAP.
+- **Vygenerovat schémata**: Vygenerujte schémata pro SAP artefakty pro IDoc nebo BAPI nebo RFC.
 
 Konektor SAP se integruje s místními systémy SAP prostřednictvím [na místní bránu dat](https://www.microsoft.com/download/details.aspx?id=53127). Ve scénářích odeslat, třeba při odesílání zprávy z aplikací logiky se systémem SAP brána dat funguje jako klient RFC a předává požadavky přijatými od Logic Apps s SAP.
 V případech Receive, brána dat funguje jako server RFC přijímá žádosti od SAPU a předává do aplikace logiky. 
@@ -38,7 +38,7 @@ Chcete-li postupovat podle tohoto článku, budete potřebovat tyto položky:
 
 * Předplatné Azure. Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>.
 
-* Aplikace logiky, ze kterého má přístup k systému SAP a aktivační události, která spustí pracovní postup aplikace logiky. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikace logiky, ze kterého má přístup k systému SAP a aktivační události, která spustí pracovní postup aplikace logiky. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Vaše <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">aplikační Server SAP</a> nebo <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">Server zpráv SAP</a>
 
@@ -71,7 +71,7 @@ V tomto příkladu vytvoříte aplikaci logiky s koncovým bodem v Azure tak, ab
 
 1. V [webu Azure portal](https://portal.azure.com), vytvoření prázdné aplikace logiky, otevře se návrhář aplikace logiky. 
 
-2. Do vyhledávacího pole zadejte jako filtr "požadavek http". Ze seznamu triggerů vyberte tento trigger: **požadavek – přijetí požadavku HTTP je při**
+2. Do vyhledávacího pole zadejte jako filtr "požadavek http". Ze seznamu triggerů vyberte tento trigger: **Žádost o – při přijetí požadavku HTTP**
 
    ![Přidat aktivační událost požadavek HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -92,7 +92,7 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Přidání akce](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. Do vyhledávacího pole zadejte jako filtr "sap". Ze seznamu akcí vyberte tuto akci: **posílání zpráv pro SAP**
+2. Do vyhledávacího pole zadejte jako filtr "sap". Ze seznamu akcí vyberte tuto akci: **Odeslat zprávu pro SAP**
   
    ![Výběr akce Odeslat SAP](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
@@ -159,7 +159,7 @@ Teď přidejte akci odpovědi do pracovního postupu aplikace logiky a zahrnutí
 
 1. V návrháři aplikace logiky podle akce SAP, zvolte **nový krok** > **přidat akci**.
 
-2. Do vyhledávacího pole zadejte jako filtr "odpověď". Ze seznamu akcí vyberte tuto akci: **požadavku - odpovědi**
+2. Do vyhledávacího pole zadejte jako filtr "odpověď". Ze seznamu akcí vyberte tuto akci: **Žádost - odpověď**
 
 3. Klikněte do **tělo** pole tak, aby zobrazil seznam dynamického obsahu. Z tohoto seznamu v části **poslat SAP**, vyberte **tělo** pole. 
 
@@ -201,7 +201,7 @@ Tento příklad používá aplikace logiky, která se aktivuje při přijetí zp
 
 1. Na webu Azure Portal vytvoření prázdné aplikace logiky, otevře se návrhář aplikace logiky. 
 
-2. Do vyhledávacího pole zadejte jako filtr "sap". Ze seznamu triggerů vyberte tento trigger: **při doručení zprávy od SAPU.**
+2. Do vyhledávacího pole zadejte jako filtr "sap". Ze seznamu triggerů vyberte tento trigger: **Při doručení zprávy od SAPU.**
 
    ![Přidání triggeru SAP](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
 
@@ -269,7 +269,7 @@ Tento příklad používá aplikace logiky, který můžete aktivovat pomocí po
 
 1. Na webu Azure Portal vytvoření prázdné aplikace logiky, otevře se návrhář aplikace logiky. 
 
-2. Do vyhledávacího pole zadejte jako filtr "požadavek http". Ze seznamu triggerů vyberte tento trigger: **požadavek – přijetí požadavku HTTP je při**
+2. Do vyhledávacího pole zadejte jako filtr "požadavek http". Ze seznamu triggerů vyberte tento trigger: **Žádost o – při přijetí požadavku HTTP**
 
    ![Přidat aktivační událost požadavek HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -286,7 +286,7 @@ Na panelu nástrojů návrháře zvolte **Uložit**.
 
    ![Přidání akce](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. Do vyhledávacího pole zadejte jako filtr "sap". Ze seznamu akcí vyberte tuto akci: **vygenerovat schémata**
+2. Do vyhledávacího pole zadejte jako filtr "sap". Ze seznamu akcí vyberte tuto akci: **Vygenerovat schémata**
   
    ![Výběr akce Odeslat SAP](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
@@ -343,7 +343,7 @@ Na panelu nástrojů návrháře zvolte **Uložit**.
 
 Volitelně můžete stáhnout nebo uložit vygenerovaný schémata do úložiště, včetně objektů blob, úložiště nebo účet pro integraci. Účty pro integraci poskytovat prvotřídní prostředí s jinými akcemi XML, tak tento příklad ukazuje, jak nahrát schémata do účtu pro integraci pro stejnou aplikaci logiky s využitím konektoru Azure Resource Manageru.
 
-1. V návrháři aplikace logiky, pod triggerem zvolte **nový krok** > **přidat akci**. Do vyhledávacího pole zadejte jako filtr "resource manager". Vyberte tuto akci: **vytvořit nebo aktualizovat prostředek**
+1. V návrháři aplikace logiky, pod triggerem zvolte **nový krok** > **přidat akci**. Do vyhledávacího pole zadejte jako filtr "resource manager". Vyberte tuto akci: **Vytvořit nebo aktualizovat prostředek**
 
    ![Zvolte akci Azure Resource Manageru](media/logic-apps-using-sap-connector/select-arm-action.png) 
 
@@ -379,7 +379,7 @@ Volitelně můžete stáhnout nebo uložit vygenerovaný schémata do úložišt
 
 Tady jsou aktuálně známé problémy a omezení pro konektor SAP:
 
-* Položka hierarchyinfoguid aktivační událost SAP podporují přijetí batch Idoc ze SAP. Tato akce může způsobit RFC selhání připojení mezi systému SAP a bránou data gateway.
+* Aktivační událost SAP nepodporuje přijímání batch Idoc ze SAP. Tato akce může způsobit RFC selhání připojení mezi systému SAP a bránou data gateway.
 
 * Aktivační událost SAP nepodporuje data clusterů bran. V některých případech převzetí služeb při selhání uzel brány dat, který komunikuje se systémem SAP mohou lišit od aktivního uzlu, což vede k neočekávanému chování. Clustery bran s data odeslat scénáře jsou podporovány.
 

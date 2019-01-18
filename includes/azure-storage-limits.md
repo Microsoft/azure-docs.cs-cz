@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1dd11e22361e25721effe2ed919f175d9cb1b9e4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: e4fa42b6c32c3eb383eea4489ea109c0d496bdb9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249626"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54392732"
 ---
 Následující tabulka popisuje výchozí omezení pro službu Azure Storage. *Příchozího přenosu dat* limit odkazuje na všechna data (požadavky) odesílané do účtu úložiště. *Odchozího přenosu dat* limit odkazuje na všechna data (požadavky) přijímané z účtu úložiště.
 
@@ -25,11 +25,11 @@ Následující tabulka popisuje výchozí omezení pro službu Azure Storage. *P
 | Maximální frekvence požadavků<sup>1</sup> jeden účet úložiště | 20 000 požadavků za sekundu |
 | Maximální příchozí<sup>1</sup> jeden účet úložiště (nám oblasti) | 10 GB/s je-li povolena RA-GRS/GRS, 20 GB/s pro LRS nebo ZRS<sup>2</sup> |
 | Maximální příchozí<sup>1</sup> jeden účet úložiště (oblasti mimo USA) | 5 GB/s je-li povolena RA-GRS/GRS, 10 GB/s pro LRS nebo ZRS<sup>2</sup> |
-| Maximální počet odchozího přenosu dat pro obecné účely v2 a účty Blob storage (všechny oblasti) | 50 GB/s |
+| Maximální počet odchozího přenosu dat pro obecné účely v2 a účty Blob storage (všechny oblasti) | 50 Gbps |
 | Maximální počet odchozího přenosu dat pro účty služby storage pro obecné účely v1 (oblasti v USA) | 20 GB/s je-li povolena RA-GRS/GRS, 30 GB/s pro LRS nebo ZRS <sup>2</sup> |
 | Maximální počet odchozího přenosu dat pro účty úložiště pro obecné účely v1 (oblasti mimo USA) | 10 GB/s je-li povolena RA-GRS/GRS, 15 GB/s pro LRS nebo ZRS <sup>2</sup> |
 
-<sup>1</sup> účty úložiště azure podporují vyšší limity pro příchozí přenos dat a vstupně-výstupních operací požadavku. Chcete-li požádat o navýšení limitů účtu, kontaktujte prosím [podpory Azure](https://azure.microsoft.com/support/faq/).
+<sup>1</sup> účty úložiště azure úrovně standard podporovat vyšší limity pro příchozí přenos dat podle požadavku. Chcete-li požádat o zvýšení v omezení účtu pro příchozí přenos dat, obraťte se na [podpory Azure](https://azure.microsoft.com/support/faq/).
 
 <sup>2</sup> [replikace azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) mezi možnosti patří:
 * **RA-GRS**: Geograficky redundantní úložiště jen pro čtení. Pokud je povolené RA-GRS, jsou stejné jako pro primární umístění cíle odchozího přenosu dat pro sekundární lokality.

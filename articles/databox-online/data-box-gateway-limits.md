@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49164429"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388428"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Omezení pro Azure Data Box brány (Preview)
 
@@ -57,9 +57,9 @@ Nejnovější informace o omezení služby Azure storage a osvědčené postupy 
 Při jejich přesunu do Azure se vztahují následující upozornění na data.
 
 - Doporučujeme vám, že více než jedno zařízení by neměl zapisovat do stejného kontejneru.
-- Pokud máte existující objekt Azure (například soubor nebo objekt blob) v cloudu se stejným názvem jako objekt, který je kopírování, bude zařízení přepsat soubor v cloudu. 
+- Pokud máte existující objekt Azure (například soubor nebo objekt blob) v cloudu se stejným názvem jako objekt, který je kopírování, bude zařízení přepsat soubor v cloudu.
 - Hierarchii prázdný adresář (bez jakékoli soubory) vytvořené v rámci sdílení složek nebylo odesláno na kontejnery objektů blob.
-
+- Pokud kopírujete soubory větší než velikost zařízení, doporučuje se použít *Robocopy* nebo *rsync* abyste zajistili zde nejsou žádné chyby.
 
 ## <a name="azure-storage-account-size-and-object-size-limits"></a>Omezení velikosti účtu úložiště Azure a objekt velikosti
 

@@ -8,26 +8,26 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 179cc133e755a317c70b84acc95aafc61f4e0e68
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 83c4ae7ff942579d55a5855c24a28809f60fdc62
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078163"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382462"
 ---
-# <a name="analyze-data-using-jupyter-notebook-and-kqlmagic"></a>Analýza dat pomocí poznámkového bloku Jupyter a Kqlmagic
+# <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>Analýza dat pomocí poznámkového bloku Jupyter a KQL magic
 
 Poznámkový blok Jupyter je open source webová aplikace, která umožňuje vytvářet a sdílet dokumenty, které obsahují živého kódu, rovnice, vizualizace a vyprávěného textu. Použití zahrnuje čištění dat a transformace, číselné simulace, statistické modelování, vizualizace dat a strojové učení.
-[Poznámkový blok Jupyter](https://jupyter.org/) podporuje magic funkce, které rozšiřují možnosti jádra díky podpoře dalších příkazů. Kqlmagic je příkaz, který rozšiřuje možnosti jádra Python do poznámkového bloku Jupyter, abyste mohli spustit dotazy v jazyce Kusto nativně. Můžete snadno kombinovat Python a Kusto dotazovací jazyk pro dotazování a vizualizace dat s využitím bohaté integrovaná knihovna Plot.ly `render` příkazy. Zdroje dat pro spouštění dotazů nejsou podporovány. Tyto zdroje dat patří Průzkumník dat Azure, zkoumání rychlá a vysoce škálovatelnými datové služby pro data protokolů a telemetrická data, i pro Log Analytics a Application Insights. Kqlmagic funguje taky s příponou poznámkových bloků Azure Jupyter Lab a Visual Studio Code Jupyter.
+[Poznámkový blok Jupyter](https://jupyter.org/) podporuje magic funkce, které rozšiřují možnosti jádra díky podpoře dalších příkazů. KQL magic je příkaz, který rozšiřuje možnosti jádra Python do poznámkového bloku Jupyter, abyste mohli spustit dotazy v jazyce Kusto nativně. Můžete snadno kombinovat Python a Kusto dotazovací jazyk pro dotazování a vizualizace dat s využitím bohaté integrovaná knihovna Plot.ly `render` příkazy. Zdroje dat pro spouštění dotazů nejsou podporovány. Tyto zdroje dat patří Průzkumník dat Azure, zkoumání rychlá a vysoce škálovatelnými datové služby pro data protokolů a telemetrická data, i pro Log Analytics a Application Insights. KQL magic funguje taky s příponou poznámkových bloků Azure Jupyter Lab a Visual Studio Code Jupyter.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Organizační e-mailový účet, který je členem z Azure Active Directory (AAD).
 - Poznámkový blok Jupyter nainstalované na místním počítači nebo použití poznámkových bloků Azure a vytvoření klonu ukázky [poznámkového bloku v Azure](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
 
-## <a name="install-kqlmagic-library"></a>Nainstalujte knihovnu Kqlmagic
+## <a name="install-kql-magic-library"></a>Nainstalujte knihovnu KQL magic
 
-1. Nainstalujte Kqlmagic:
+1. Nainstalujte KQL magic:
 
     ```python
     !pip install Kqlmagic --no-cache-dir  --upgrade
@@ -35,7 +35,7 @@ Poznámkový blok Jupyter je open source webová aplikace, která umožňuje vyt
     > [!NOTE]
     > Při použití poznámkových bloků Azure, tento krok není povinný.
 
-1. Načte Kqlmagic:
+1. Načíst KQL magic:
 
     ```python
     reload_ext Kqlmagic
@@ -78,7 +78,7 @@ StormEvents
 
 ### <a name="customize-the-chart-colors"></a>Přizpůsobení barev grafu
 
-Pokud se vám výchozí palety barev, upravit grafy, pomocí možnosti palety. K dispozici palety najdete tady: [Zvolte paletu barev pro výsledek Kqlmagic dotazu grafu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+Pokud se vám výchozí palety barev, upravit grafy, pomocí možnosti palety. K dispozici palety najdete tady: [Zvolte paletu barev pro výsledek KQL magic dotazu grafu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
 1. Seznam palety:
 
@@ -99,7 +99,7 @@ Pokud se vám výchozí palety barev, upravit grafy, pomocí možnosti palety. K
 
 ## <a name="parameterize-a-query-with-python"></a>Parametrizovat dotazování pomocí Pythonu
 
-Kqlmagic umožňuje jednoduchou výměny mezi Kusto dotazovací jazyk a Python. Další informace: [Parametrizace dotazu Kqlmagic pomocí Pythonu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+KQL magic umožňuje jednoduchou výměny mezi Kusto dotazovací jazyk a Python. Další informace: [Parametrizovat KQL magic dotazu pomocí Pythonu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
 ### <a name="use-a-python-variable-in-your-kql-query"></a>Použití Pythonu proměnné v dotazu KQL
 
@@ -169,8 +169,8 @@ V mnoha scénářích analytics můžete vytvářet opakovaně použitelné pozn
 ## <a name="next-steps"></a>Další postup
 
 Spusťte příkaz help prozkoumávat následující ukázkové poznámkové bloky, které obsahují všechny podporované funkce:
-- [Začínáme s Kqlmagic pro Průzkumník dat Azure](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
-- [Začínáme s Kqlmagic pro Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
-- [Začínáme s Kqlmagic pro Log Analytics](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
-- [Parametrize Kqlmagic dotazu pomocí Pythonu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
-- [Zvolte paletu barev pro výsledek Kqlmagic dotazu grafu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+- [Začínáme s KQL magic pro Průzkumník dat Azure](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
+- [Začínáme s KQL magic pro službu Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
+- [Začínáme s KQL magic ke službě Log Analytics](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
+- [Parametrize KQL magic dotazu pomocí Pythonu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
+- [Zvolte paletu barev pro výsledek KQL magic dotazu grafu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)

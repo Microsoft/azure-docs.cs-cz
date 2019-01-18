@@ -9,32 +9,54 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 12/04/2018
-ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 1/17/2019
+ms.openlocfilehash: d5660d1a4d5d2a26af57e2a2411552e3f6267379
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557882"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389132"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Co je strojové učení produktů v Microsoftu?
 
 Microsoft nabízí širokou škálu produktů pro sestavování, nasazování a správu modelů strojového učení. Porovnejte si je a zvolte ty, které potřebujete, aby vývoj vašich řešení pro strojové učení byl co nejefektivnější.
 
-| Produkt pro strojové učení | Co to je | Jaké nabízí možnosti |
+
+**Možnosti založené na cloudu**
+
+Tyto možnosti jsou k dispozici pro strojové učení v cloudu Azure.
+
+| Cloud&nbsp;možnosti | Co to je | Jaké nabízí možnosti |
 |-|-|-|
-| ***V cloudu*** | | |
 | [Služba Azure Machine Learning](#azure-machine-learning-services) | Spravovaná cloudová služba pro strojové učení  | Trénování, nasazování a správa modelů v Azure s použitím Pythonu a rozhraní CLI |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio) | Přetáhněte&ndash;a&ndash;vizuální rozhraní pro ML | Sestavování a nasazování modelů pomocí předkonfigurovaných algoritmů a experimentování s nimi |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio) | Přetáhněte&ndash;a&ndash;vizuální rozhraní pro ML | Sestavení, experimentování a nasazování modelů pomocí předem nakonfigurovaných algoritmy (Pythonu a r.)|
 | [Azure Databricks](#azure-databricks) | Analytická platforma založená na Sparku | Sestavování a nasazování modelů a pracovních postupů pro data |
 | [Azure Cognitive Services](#azure-cognitive-services) | Služby Azure s předkonfigurovanými modely umělé inteligence a strojového učení | Jednoduché přidávání inteligentních funkcí do vašich aplikací |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | Virtuální počítač s předinstalovanými nástroji pro datové vědy | Vývoj řešení pro strojové učení v předkonfigurovaném prostředí |
-| ***Místní***<br>*(pro místní servery také mohou být spuštěny na virtuálním počítači v cloudu)* | | |
+
+**Možnosti místního**
+
+Tyto možnosti jsou k dispozici pro strojové učení v místním prostředí. Místní servery můžou také běžet v rámci virtuálního počítače v cloudu.
+
+| Místní&nbsp;možnosti | Co to je | Jaké nabízí možnosti |
+|-|-|-|
 | [SQL Server Machine Learning Services](#sql-server-machine-learning-services) | Analytický modul vložený do SQL | Sestavování a nasazování modelů na SQL Serveru |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | Samostatný firemní server pro prediktivní analýzy | Sestavování a nasazování modelů v jazycích R a Python |
-| ***Nástroje pro vývojáře*** | | |
+
+**Nástroje pro vývoj**
+
+Tyto nástroje jsou k dispozici pro machine learning.
+
+| Vývoj&nbsp;nástroje | Co to je | Jaké nabízí možnosti |
+|-|-|-|
 | [ML.NET](#mlnet) | Multiplatformní sada SDK typu open source pro strojové učení | Vývoj řešení strojového učení pro aplikace .NET |
 | [Windows ML](#windows-ml) | Platforma strojového učení pro Windows 10 | Vyhodnocování trénovaných modelů na zařízení s Windows 10 |
+
+
+
+
+
+
 
 ## <a name="azure-machine-learning-service"></a>Služba Azure Machine Learning
 

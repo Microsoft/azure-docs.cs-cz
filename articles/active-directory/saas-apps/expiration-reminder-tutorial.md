@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/6/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 04874eff4375ac57a8c8e15a11399ca650bd5c15
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 76860fa1e98bfcef180c4a50452739dd26de18d5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019013"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390618"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>Kurz: Integrace Azure Active Directory s připomenutím vypršení platnosti
 
@@ -78,8 +78,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s připomenutím 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Nakonfigurovat vypršení platnosti připomenutí Single Sign-On](#configure-expiration-reminder-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele vypršení platnosti připomenutí](#create-expiration-reminder-test-user)**  – Pokud chcete mít protějšek Britta Simon do vypršení platnosti připomenutí, které souvisí s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele vypršení platnosti připomenutí](#create-expiration-reminder-test-user)**  – Pokud chcete mít protějšek Britta Simon do vypršení platnosti připomenutí, které souvisí s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -104,7 +104,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s připomenutím vypršení p
 
     ![Vypršení platnosti připomenutí domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL: `https://app.expirationreminder.net/account/sso`.
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://app.expirationreminder.net/account/sso`
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -179,7 +179,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v připomenutí vypršení platnosti. Práce s [tým podpory vypršení platnosti připomenutí](mailto:support@expirationreminder.net) přidat uživatele na platformě připomenutí vypršení platnosti. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

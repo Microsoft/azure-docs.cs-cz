@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: b04a31ec46194d68dbbc5e5a4eb2b600968d7be5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3f42e149b88c2405a37366c3c7b886c7a8613e00
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037102"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382547"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
@@ -382,7 +382,7 @@ Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připoje
 
 8. Přejděte na a otevřete **rezervační složka** v rámci **EcommerceWebApp.sln.** Otevřete **Web.config** soubor v této složce.  
 
-9. V rámci `<appSettings>` blokovat, přidejte **URI** a **primární klíč** , že jste předtím uložili na označené. Potom přidat do vaší **název databáze** a **název kolekce** jak je uvedeno. (Tyto názvy musí být **changefeedlabdatabase** a **changefeedlabcollection** Pokud jste se nerozhodli pojmenujte svůj odlišně.)  
+9. V rámci `<appSettings>` blokovat, přidejte **URI** a **primární klíč** , že jste předtím uložili na označené. Potom přidat do vaší **název_databáze** a **název kolekce** jak je uvedeno. (Tyto názvy musí být **changefeedlabdatabase** a **changefeedlabcollection** Pokud jste se nerozhodli pojmenujte svůj odlišně.)  
 
 10. Stisknutím klávesy **Start** v horní části stránky a spusťte program.  
 

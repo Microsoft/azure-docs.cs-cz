@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 597b8f59ef6991f7868d3de481e98ed9a459077b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: a720b264c4283498604d1446283c5a2242fdb8b3
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050791"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381801"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
 
@@ -58,9 +58,20 @@ Zdrojový počítač zaregistruje s konfiguračním serverem při instalaci agen
 
 Tato chyba nastane, pokud služba nelze číst data z přenosového připojení, když je instalace agenta mobility a registrace konfiguračního serveru. Chcete-li vyřešit tento problém, povolte protokol TLS 1.0 je na zdrojovém počítači.
 
+## <a name="vcenter-discovery-failures"></a>selhání rozpoznávání vCenter
+
+Aby bylo možné vyřešit chyby zjišťování serveru vCenter, zajistěte, aby že tento server vCenter je přidaná do nastavení proxy serveru seznamu jednorázové přihlášení. K provedení této aktivity
+
+- Stáhněte si nástroj PsExec z [tady](https://aka.ms/PsExec) pro přístup k obsahu pro uživatele systému.
+- Spusťte aplikaci Internet Explorer v systému uživatele obsahu spuštěním následujícího příkazového řádku psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+- Přidat nastavení proxy serveru v Internet Exploreru a restartujte službu tmanssvc.
+- Konfigurace nastavení proxy serveru DRA, spuštěním cd C:\Program Files\Microsoft Azure Site Recovery Provider
+- V dalším kroku spusťte DRCONFIGURATOR. Soubor EXE / configure /AddBypassUrls [přidat IP adresu nebo plně kvalifikovaný název domény systému vCenter Server k dispozici během **konfigurovat vCenter serveru nebo serveru vSphere ESXi** kroku [nasazení konfiguračního serveru](vmware-azure-deploy-configuration-server.md#configure-settings)]
+
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>Změňte IP adresu konfiguračního serveru
 
 Důrazně doporučujeme, že nechcete změnit IP adresu konfiguračního serveru. Ujistěte se, že všechny IP adresy, které jsou přiřazeny ke konfiguračnímu serveru jsou statické IP adresy. Nepoužívejte IP adresy služby DHCP.
+>>>>>>> c842cff5a0480caa5183dbb7afe5016a7061c7b9
 
 ## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: SAML token je neplatný.
 
@@ -85,7 +96,7 @@ Nastavení | Podrobnosti
 --- | ---
 Využití | / Csendpoint UnifiedAgentConfigurator.exe < IP adresa konfiguračního serveru \> /passphrasefilepath < cesta k souboru heslo\>
 Protokoly konfigurace agenta | Přidávaném % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
-/ CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte libovolná platná IP adresa.
+/CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte libovolná platná IP adresa.
 /PassphraseFilePath |  Povinné. Umístění přístupové heslo. Použijte libovolný platný název UNC nebo místní cesta k souboru.
 
 ### <a name="if-the-source-machine-runs-linux"></a>Pokud na zdrojovém počítači běží Linux

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 33512b47eff75421ce07b02f9c17ae3028152568
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3262720f52bc75ba5d430e941da25568a105fe0d
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276243"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391265"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Integrované systémy pro nasazení Azure odpojené plánování rozhodnutí pro službu Azure Stack
 Poté, co jste se rozhodli [jak budou integrovat Azure Stack v hybridním cloudovém prostředí](azure-stack-connection-models.md), pak můžete dokončit vaše rozhodnutí o nasazení služby Azure Stack.
@@ -49,9 +49,9 @@ Azure Stack je navržena pro spolupráci při připojení k Azure, takže je dů
 |Marketplace – možnost a vyberte a přidejte balíčky Galerie přímo z Azure Marketplace|Zrakově postižené – když nasadíte Azure Stack v odpojeném režimu (bez žádné připojení k Internetu), nelze stažení položek z marketplace pomocí portálu Azure Stack. Můžete však použít [marketplace syndikace nástroj](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) stažení položek z marketplace k počítači, který má připojení k Internetu a přenést je do prostředí Azure Stack.|
 |Správa nasazení služby Azure Stack pomocí účtů Azure Active Directory federation|Není k dispozici – tato funkce vyžaduje připojení k Azure. Služba AD FS s místní instancí Active Directory musí použít.|
 |App Services|Zrakově postižené – webové aplikace může vyžadovat přístup k Internetu pro aktualizaci obsahu.|
-|Rozhraní příkazového řádku (CLI)|Zrakově postižené – rozhraní příkazového řádku snížila funkce z hlediska ověřování a zřizování zásad služby.|
+|Rozhraní příkazového řádku (CLI)|Zrakově postižené – rozhraní příkazového řádku snížila funkce z hlediska ověřování a zřizování instančních objektů.|
 |Visual Studio – Cloud discovery|Cloud Discovery zrakově postižené – zjistí různých cloudů nebo nebude vůbec fungovat.|
-|Visual Studio – služby AD FS|Zrakově postižené – pouze pro Visual Studio Enterprise podporuje služby AD FS.
+|Visual Studio – AD FS|Zrakově postižené – pouze pro Visual Studio Enterprise podporuje služby AD FS.
 Telemetrická data|Není k dispozici – Telemetrická data pro Azure Stack jako i pro případný třetích stran Galerie balíčků, které jsou závislé na telemetrická data.|
 |Certifikáty|Není k dispozici – připojení k Internetu je vyžadován pro seznam odvolaných certifikátů (CRL) a protokolu protokolu (Online Certificate Status OSCP) služby v rámci protokolu HTTPS.|
 |Key Vault|Zrakově postižené – běžným případem použití pro službu Key Vault je, aby aplikace čtení tajných klíčů v době běhu. Pro tuto aplikaci musí instančního objektu v adresáři. Ve službě Azure Active Directory běžní uživatelé (bez oprávnění správce) jsou ve výchozím nastavení povoleno přidat instančních objektů. Ve službě AD (pomocí služby AD FS) nejsou. To umístí mezní začátku do konce prostředí vzhledem k tomu, že jeden musí directory správce přidat libovolnou aplikaci vždy projít.| 

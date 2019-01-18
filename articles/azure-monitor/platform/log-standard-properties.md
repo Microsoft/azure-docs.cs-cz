@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: abcf3100dc5252db9e3a5e7b446417333a9b37ca
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321887"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381955"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Standardní vlastnosti v záznamech Log Analytics
 Data v [Log Analytics](../log-query/log-query-overview.md) se ukládá jako sady záznamů, každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
@@ -92,7 +92,7 @@ AzureActivity
 Pokud chcete získat seznam počítačů odesílajících billed datové typy, použijte následující dotaz:
 
 > [!NOTE]
-> Použití dotazů s `union withsource = tt *` střídmě prohledávání dat typům dat je vždycky provést. 
+> Použití dotazů s `union withsource = tt *` střídmě kontroly typům dat je vždycky provést. 
 
 ```Kusto
 union withsource = tt * 

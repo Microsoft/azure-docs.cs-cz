@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: d68215359d50ac153d6df3bbcce5a9b6171698bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: bf34d7e85632999056388eb74816140ce667ce10
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085435"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382349"
 ---
 # <a name="openshift-in-azure"></a>OpenShift v Azure
 
@@ -35,7 +35,7 @@ OpenShift zahrnuje pro správu a Orchestrace kontejnerů Kubernetes. Přidá zam
 Nejsou k dispozici více verzí OpenShift:
 
 - OpenShift Container Platform
-- OpenShift v Azure (plně spravovanou OpenShift už v rané fázi CY2019)
+- OpenShift v Azure (plně spravovanou OpenShift už po konci Q1 CY2019)
 - OKD (dříve OpenShift Origin)
 - OpenShift Dedicated
 - OpenShift Online
@@ -50,7 +50,7 @@ Protože zákazníkům "vlastní" celou platformu, jejich ji nainstalujte ve sv�
 
 ## <a name="openshift-on-azure"></a>OpenShift v Azure
 
-OpenShift v Azure je plně spravovaná nabídka služby OpenShift v Azure. Tato služba je společně spravované a podporované společností Microsoft a Red Hat. Cluster se nasadí do předplatného Azure zákazníka. Služba je aktuálně ve verzi Private Preview a bude GA v dřívější CY 2019. Další informace vám poskytneme jako nabídka získá blíž ke zveřejnění obecné dostupnosti
+OpenShift v Azure je plně spravovaná nabídka služby OpenShift v Azure. Tato služba je společně spravované a podporované společností Microsoft a Red Hat. Cluster se nasadí do předplatného Azure zákazníka. Služba je aktuálně ve verzi Private Preview a bude GA po konci Q1 CY2019. Pro zákazníky, kteří chtěli zúčastnit ve verzi Private Preview, vyplňte prosím [Nominační formulář](http://aka.ms/openshiftazureinterest).  Další informace vám poskytneme jako nabídka získá blíž ke zveřejnění obecné dostupnosti
 
 ## <a name="okd-formerly-openshift-origin"></a>OKD (dříve OpenShift Origin)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: juliako
-ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3e968c71b87f7227dc4bd2e3f4ee486719b65e40
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240133"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388158"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 Při dodáváte streamování nebo vod (Video-on-demand) obsah pro zákazníky, je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách.
@@ -61,7 +61,7 @@ Chcete-li uživatelům poskytnout adresu URL, která slouží ke streamování n
 * Lokátory OnDemandOrigin. Ty se používají ke streamování médií (například MPEG-DASH, HLS nebo technologie Smooth Streaming) nebo progresivně stahovat soubory.
 * Lokátory URL sdíleného přístupového podpisu (SAS). Ty se používají ke stahování multimediálních souborů do místního počítače.
 
-*Zásada přístupu* se používá k definování oprávnění (jako jsou čtení, zápisu a seznamu) a doby trvání, pro které má klient přístup pro konkrétní prostředek. Všimněte si, že seznam oprávnění (AccessPermissions.List) by neměl být použité při vytváření Lokátor OrDemandOrigin.
+*Zásada přístupu* se používá k definování oprávnění (jako jsou čtení, zápisu a seznamu) a doby trvání, pro které má klient přístup pro konkrétní prostředek. Všimněte si, že seznam oprávnění (AccessPermissions.List) by neměl být použité při vytváření Lokátor OnDemandOrigin.
 
 Lokátory mají datum vypršení platnosti. Na webu Azure portal nastaví datum vypršení platnosti 100 let v budoucnosti pro lokátory.
 
@@ -77,7 +77,7 @@ Lokátory nejsou určené ke správě řízení přístupu na uživatele. Pomoc�
 Když vytvoříte Lokátor, může dojít ke zpoždění 30sekundovém kvůli požadované úložiště a šíření procesy ve službě Azure Storage.
 
 ## <a name="adaptive-streaming"></a>Adaptivní streamování
-Technologie s adaptivní přenosovou rychlostí povolit aplikací pro přehrávání videa k určení stavu sítě a vybrat z několika přenosových rychlostí. Při komunikaci sítě s zhoršení, že klient může vybrat nižší přenosovou rychlostí, přehrávání může pokračovat v kvalita videa je nižší. Jak vylepšit síťové podmínky, klient může přepnout na vyšší s přenosovou rychlostí s lepší kvalitu videa. Azure Media Services podporuje následující technologie s adaptivní přenosovou rychlostí: HTTP Live Streaming (HLS), technologie Smooth Streaming a MPEG-DASH.
+Technologie s adaptivní přenosovou rychlostí povolit aplikací pro přehrávání videa k určení stavu sítě a vybrat z několika přenosových rychlostí. Při komunikaci sítě s zhoršení, že klient může vybrat nižší přenosovou rychlostí, přehrávání může pokračovat v kvalita videa je nižší. Jak vylepšit síťové podmínky, klient může přepnout na vyšší s přenosovou rychlostí s lepší kvalitu videa. Azure Media Services podporuje následující technologie adaptivní přenosové rychlosti: HTTP Live Streaming (HLS), technologie Smooth Streaming a MPEG-DASH.
 
 Uživatelům poskytnout adresy URL pro streamování, nejprve musíte vytvořit lokátor OnDemandOrigin. Vytváření Lokátor obsahuje základní cestu k prostředku, který obsahuje obsah, který chcete Streamovat. Ale abyste mohli Streamovat obsah, musíte upravte tuto cestu další. Pokud chcete vytvořit úplnou adresu URL k souboru manifestu datových proudů, musí zřetězit hodnotu lokátoru cesty a manifest (filename.ism) název souboru. Potom připojte **/Manifest** a příslušném formátu (v případě potřeby) do lokátoru cesty.
 

@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 08/09/2018
-ms.openlocfilehash: 078a64bf625fad15b66a3c4e6e31e798f675fc33
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 01/17/2019
+ms.openlocfilehash: c6d0d2eec61375760ee3dc4e4b100b24cef2b405
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161773"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388773"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrace certifikátů transparentní šifrování dat chráněné databáze do Azure SQL Database Managed Instance
 
@@ -39,7 +39,7 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 - Nástroj příkazového řádku [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) nainstalovaný na místním serveru nebo jiném počítači s přístupem k certifikátu, který se exportuje do souboru. Nástroj Pvk2pfx je součástí [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), samostatného a nezávislého prostředí příkazového řádku.
 - [Prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) nainstalované ve verzi 5.0 nebo vyšší.
-- [Nainstalovaný a aktualizovaný](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) modul AzureRM PowerShellu.
+- [Nainstalovaný a aktualizovaný](https://docs.microsoft.com/powershell/azure/install-az-ps) modul AzureRM PowerShellu.
 - [Modul AzureRM.Sql](https://www.powershellgallery.com/packages/AzureRM.Sql) verze 4.10.0 nebo novější.
   Modul PowerShell nainstalujte spuštěním následujících příkazů v prostředí PowerShell:
 

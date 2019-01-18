@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 32b1788d73e1c323d93b40b778bc64a1ba45c4ad
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855829"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390668"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Ověřování pomocí Azure Container Registry z Azure Container Instances
 
@@ -24,7 +24,7 @@ V tomto článku zjistíte, jak vytvořit a nakonfigurovat instanční objekt Az
 
 Instanční objekt služby byste měli použít pro ověření od ACI v **bezobslužného scénáře**, například aplikace nebo služby, které vytvářejí instance kontejnerů bezobslužné způsobem automatizované nebo jinak.
 
-Například, pokud máte automatizovaný skript, který spouští každou noc a vytvoří [instance založené na úlohách kontejneru](../container-instances/container-instances-restart-policy.md) ke zpracování nějaká data, může použít instanční objekt služby s vyžádanou (čtenáři) oprávnění k ověření do registru. Potom můžete pravidelná Změna přihlašovacích údajů instančního objektu nebo odvolat přístup úplně bez ovlivnění dalších služeb a aplikací.
+Například, pokud máte automatizovaný skript, který spouští každou noc a vytvoří [instance založené na úlohách kontejneru](../container-instances/container-instances-restart-policy.md) ke zpracování nějaká data, může použít instanční objekt služby s vyžádanou oprávnění k ověření do registru. Potom můžete pravidelná Změna přihlašovacích údajů instančního objektu nebo odvolat přístup úplně bez ovlivnění dalších služeb a aplikací.
 
 Instanční objekty by mělo být také použít, pokud registru [uživatele s rolí správce](container-registry-authentication.md#admin-account) je zakázaná.
 
@@ -49,7 +49,7 @@ az container create \
 Předchozí ukázky skriptů pro rozhraní příkazového řádku Azure na Githubu najdete jako i verze pro prostředí Azure PowerShell:
 
 * [Azure CLI][acr-scripts-cli]
-* [Prostředí Azure PowerShell][acr-scripts-psh]
+* [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Další postup
 

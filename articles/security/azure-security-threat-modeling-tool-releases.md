@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 12372186bf8fad10236530782b097a0fc2d5a080
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 00f3cded865fe76a4220c4ab2fa5f747320308e1
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360264"
+ms.locfileid: "54389766"
 ---
 # <a name="threat-modeling-tool-releases"></a>Verze nástroje pro modelování hrozeb
 
-Nástroj pro modelování hrozeb Microsoft aktuálně všeobecně dostupné jako bezplatná [klikněte na tlačítko Stáhnout](https://aka.ms/threatmodelingtool) aplikace pro Windows. Tento mechanismus doručení umožňuje nabízet nejnovější vylepšení a opravy chyb pro zákazníky pokaždé, když otevřou nástroj, což usnadňuje údržbě a používání.
+Nástroj pro modelování hrozeb Microsoft aktuálně všeobecně dostupné jako bezplatná [klikněte na tlačítko Stáhnout](https://aka.ms/threatmodelingtool) aplikace pro Windows. Tento mechanismus doručení umožňuje nabízet nejnovější vylepšení a opravy chyb pro zákazníky pokaždé, když otevřou nástroj.
 
 ## <a name="system-requirements"></a>Systémové požadavky
 
 - Podporované operační systémy
   - Microsoft Windows 10
 - Další požadavky
-  - Připojení k Internetu je potřebný k přijetí aktualizací nástroje, jakož i šablon.
+  - Připojení k Internetu je potřebný k přijetí aktualizací do nástroje a šablony.
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-- [Verze sady Microsoft Threat modelování nástroj GA 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) – 12/9/2018
-- [Verze sady Microsoft Threat modelování nástroj GA 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) – 11/1. února 2018
+- [Verze sady Microsoft Threat modelování nástroj GA 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) – 12. září 2018
+- [Verze sady Microsoft Threat modelování nástroj GA 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) – 1. listopadu 2018

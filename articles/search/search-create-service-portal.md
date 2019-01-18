@@ -1,20 +1,20 @@
 ---
 title: Vytvoření služby Azure Search na portálu – Azure Search
-description: Zřízení služby Azure Search na webu Azure Portal. Výběr skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
+description: Zřízení prostředků Azure Search na webu Azure Portal. Výběr skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/02/2019
+ms.date: 01/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: dfb6ccac01933ea114694de361c2f1d4d5a649b0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5be958a2137fd8a9e7598b1dc92993a9ddcdb35f
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230522"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390998"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
@@ -22,9 +22,9 @@ Azure Search je samostatný prostředek, který se používá k vyhledávání v
 
 V tomto článku se dozvíte, jak a vytvoří prostředek Azure Search v [webu Azure portal](https://portal.azure.com/). 
 
-![Prostředek Azure Search na portálu](media/search-create-service-portal/azure-search-resource-label.png)
+![Prostředek Azure Search na portálu](media/search-create-service-portal/azure-search-resource-label.png "vyhledejte tento prostředek na portálu")
 
-Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manageru. Pomoc v začátcích, naleznete v tématu [Správa služby Azure Search pomocí prostředí PowerShell](search-manage-powershell.md).
+Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manageru. Nápovědu k zahájení práce, naleznete v tématu [Správa služby Azure Search pomocí prostředí PowerShell](search-manage-powershell.md).
 
 ## <a name="subscribe-free-or-paid"></a>Předplatné (bezplatné nebo placené)
 
@@ -34,10 +34,10 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-search"></a>Vyhledání služby Azure Search
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Klikněte na symbol plus (+ Vytvořit prostředek) v levém horním rohu.
+2. Klikněte na symbol plus (+ vytvořit prostředek") do levého horního rohu.
 3. Pomocí panelu hledání vyhledejte "Azure Search" nebo přejít k prostředku pomocí **webové** > **Azure Search**.
 
-![](./media/search-create-service-portal/find-search3.png)
+![Přejděte do prostředku služby Azure Search](./media/search-create-service-portal/find-search3.png "navigační cestu do služby Azure Search")
 
 ## <a name="name-the-service-and-url-endpoint"></a>Zadání názvu služby a koncového bodu adresy URL
 
@@ -53,7 +53,7 @@ Požadavky na název služby:
    * Nikde nepoužívejte po sobě jdoucí pomlčky („--“).
 
 ## <a name="select-a-subscription"></a>Výběr předplatného
-Pokud máte více než jedno předplatné, vyberte to, jehož součástí jsou také služby úložiště dat nebo souborů. Služba Azure Search dokáže automaticky rozpoznat úložiště Azure Table a Blob, databázi SQL a databázi Azure Cosmos DB pro indexování prostřednictvím [*indexerů*](search-indexer-overview.md), ale pouze pro služby ve stejném předplatném.
+Pokud máte více než jedno předplatné, vyberte to, jehož součástí jsou také služby úložiště dat nebo souborů. Služba Azure Search můžete zjišťovat Azure Table Storage a Blob storage, SQL Database a Azure Cosmos DB pro indexování prostřednictvím [ *indexery*](search-indexer-overview.md), ale pouze pro služby ve stejném předplatném.
 
 ## <a name="select-a-resource-group"></a>Výběr skupiny prostředků
 Skupina prostředků je kolekce společně používaných služeb a prostředků Azure. Pokud například používáte Azure Search k indexování databáze SQL, pak by obě služby měly být součástí stejné skupiny prostředků.
@@ -64,7 +64,9 @@ Pokud prostředky nejsou sloučením do jedné skupiny, nebo existující skupin
 > Odstraněním skupiny prostředků se odstraní také služby v této skupině. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu. 
 
 ## <a name="select-a-hosting-location"></a>Výběr umístění pro hostování 
-Protože se jedná o službu Azure, je Azure Search možné hostovat v datových centrech po celém světě. Mějte na paměti, že v různých zeměpisných oblastech se [ceny mohou lišit](https://azure.microsoft.com/pricing/details/search/).
+Protože se jedná o službu Azure, je Azure Search možné hostovat v datových centrech po celém světě. [Ceny mohou lišit](https://azure.microsoft.com/pricing/details/search/) podle zeměpisné oblasti.
+
+Pokud máte v úmyslu použít kognitivního vyhledávání, zvolte [oblasti s dostupností funkcí](cognitive-search-quickstart-blob.md#supported-regions).
 
 ## <a name="select-a-pricing-tier-sku"></a>Výběr cenové úrovně (SKU)
 [Služba Azure Search je v současné době nabízena v několika cenových úrovních](https://azure.microsoft.com/pricing/details/search/): Free, Basic nebo Standard. Každá úroveň má svou vlastní [kapacitu a limity](search-limits-quotas-capacity.md). Další pokyny získáte v tématu věnovaném [volbě cenové úrovně nebo SKU](search-sku-tier.md).
@@ -77,7 +79,21 @@ Po vytvoření služby nelze cenovou úroveň změnit. Pokud budete později pot
 
 Připněte si službu na řídicí panel, abyste k ní po přihlášení měli snadno přístup.
 
-![](./media/search-create-service-portal/new-service3.png)
+![Připnout na řídicí panel](./media/search-create-service-portal/new-service3.png "Připnutí prostředků na řídicí panel pro pohodlný přístup")
+
+## <a name="get-a-key-and-url-endpoint"></a>Získejte klíč a koncový bod adresy URL
+
+S několika výjimkami pomocí nové služby vyžaduje zadání koncového bodu adresy URL a autorizační klíč rozhraní api –. Rychlé starty, kurzy, jako [prozkoumat Azure Search REST API (Postman)](search-fiddler.md) a [jak používat Azure Search z .NET](search-howto-dotnet-sdk.md), ukázky a vlastní kód všechny nutné koncového bodu a klíče ke spuštění pro váš konkrétní prostředek.
+
+1. Na stránce Přehled služby vyhledejte a zkopírujte adresu URL koncového bodu na levé straně stránky. 
+
+   ![Stránka s přehledem služby pomocí koncového bodu adresy URL](./media/search-create-service-portal/url-endpoint.png "koncový bod adresy URL a další podrobnosti služby")
+
+2. V levém navigačním podokně vyberte **klíče** a potom zkopírujte jednu z klíčů správce (jsou ekvivalentní). Správce klíče api Key jsou požadovány pro vytváření, aktualizaci a odstraňování objektů ve službě service.
+
+   ![Klíče stránce zobrazující primární a sekundární klíče](./media/search-create-service-portal/admin-api-keys.png "klíče rozhraní api správce pro autorizaci")
+
+Koncového bodu a klíče nejsou potřebné pro úlohy založené na portálu. Na portálu je už propojený prostředek Azure Search pomocí oprávnění správce. Portálu kurz začněte [kurzu: Import, index a dotazů ve službě Azure Search](search-get-started-portal.md).
 
 ## <a name="scale-your-service"></a>Škálování služby
 Vytvoření služby může trvat několik minut (15 minut nebo déle v závislosti na úrovni). Po zřízení můžete službu škálovat tak, aby vyhovovala vašim potřebám. Protože jste pro službu Azure Search zvolili úroveň Standard, můžete škálovat dvě dimenze: repliky a oddíly. Pokud byste zvolili úroveň Basic, mohli byste přidávat pouze repliky. Při zřízení bezplatné služby škálování není k dispozici.
@@ -95,14 +111,14 @@ Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkul
 2. V levém navigačním podokně vyberte **Nastavení** > **Škálování**.
 3. Přetažením posuvníku můžete přidat prostředky obou typů.
 
-![](./media/search-create-service-portal/settings-scale.png)
+![Přidat kapacitu](./media/search-create-service-portal/settings-scale.png "navyšovat kapacitu pomocí repliky a oddíly")
 
 > [!Note] 
 > Každá úroveň má jiné [limity](search-limits-quotas-capacity.md) pro celkový počet jednotek vyhledávání povolených v jedné službě (repliky * oddíly = celkový počet jednotek vyhledávání).
 
 ## <a name="when-to-add-a-second-service"></a>Přidání druhé služby
 
-Většina zákazníků používá pouze jednu službu zřízenou na úrovni, která poskytuje [správnou rovnováhu prostředků](search-sku-tier.md). Jedna služba může hostovat více indexů v souladu s [maximálními limity vámi vybrané úrovně](search-capacity-planning.md), přičemž každý index je izolovaný od ostatních indexů. Ve službě Azure Search můžou být požadavky směrovány pouze na jeden index, což minimalizuje nebezpečí náhodného nebo záměrného načítání dat z jiných indexů ve stejné službě.
+Většina zákazníků používá jenom jednu službu zřízenou na úrovni poskytování [správnou rovnováhu prostředků](search-sku-tier.md). Jedna služba může hostovat více indexů v souladu s [maximálními limity vámi vybrané úrovně](search-capacity-planning.md), přičemž každý index je izolovaný od ostatních indexů. Ve službě Azure Search můžou být požadavky směrovány pouze na jeden index, což minimalizuje nebezpečí náhodného nebo záměrného načítání dat z jiných indexů ve stejné službě.
 
 I když většina zákazníků používá jenom jednu službu, redundance služby může být nutná v případě následujících provozních požadavků:
 

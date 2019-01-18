@@ -11,19 +11,19 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 366bdf73c6b62ffa98ce44076374df8be8b3de3c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/17/2019
+ms.openlocfilehash: 93b7fb0cd303f34d4afadf461f8886aaac52e4c3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865875"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388581"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Vytvoření a správa elastických fondů Azure SQL Database
 
 S elastickým fondem určení množství prostředků, které vyžaduje elastického fondu pro zpracování úloh z jeho databází a množství prostředků pro každou databázi ve fondu.
 
-## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Azure portal: Správa elastických fondů a databází ve fondu
+## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Azure portal: Spravovat elastické fondy a databáze ve fondu
 
 Všechna nastavení fondu najdete na jednom místě: **konfigurace fondu** okno. Tady získáte najít elastického fondu na portálu a klikněte na **konfigurace fondu** buď z horní části okna nebo v nabídce prostředků na levé straně.
 
@@ -37,9 +37,9 @@ Odsud můžete provést libovolné z následujících změn a uložte si je vše
 
 ![Okno Konfigurace elastického fondu](./media/sql-database-elastic-pool-manage-portal/configure-pool.png)
 
-## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>Prostředí PowerShell: Správa elastické fondy a databáze ve fondu
+## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Spravovat elastické fondy a databáze ve fondu
 
-Pokud chcete vytvářet a spravovat databázi SQL elastické fondy a databáze ve fondu pomocí prostředí Azure PowerShell, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Vytvoření a Správa logických serverů pro elastický fond, naleznete v tématu [logické servery vytvořit a spravované](sql-database-logical-servers.md). Vytvoření a Správa pravidel brány firewall najdete v tématu [vytvoření a Správa pravidel brány firewall pomocí prostředí PowerShell](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
+Pokud chcete vytvářet a spravovat databázi SQL elastické fondy a databáze ve fondu pomocí prostředí Azure PowerShell, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Vytvoření a Správa logických serverů pro elastický fond, naleznete v tématu [logické servery vytvořit a spravované](sql-database-logical-servers.md). Vytvoření a Správa pravidel brány firewall najdete v tématu [vytvoření a Správa pravidel brány firewall pomocí prostředí PowerShell](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
 
 > [!TIP]
 > Příklady skriptů Powershellu, najdete v části [vytváření elastických fondů a přesun databází mezi fondy a mimo fondu pomocí prostředí PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) a [pomocí Powershellu pro monitorování a škálování elastického fondu SQL ve službě Azure SQL Database](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -60,7 +60,7 @@ Pokud chcete vytvářet a spravovat databázi SQL elastické fondy a databáze v
 > [!TIP]
 > Vytvoření mnoha databází v elastickém fondu může trvat dobu, pokud se provádí pomocí portálu nebo rutiny prostředí PowerShell jednu databázi po jednom. K automatizaci vytváření elastického fondu, naleznete v tématu [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
 
-## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Rozhraní příkazového řádku Azure: Správa elastických fondů a databází ve fondu
+## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure CLI: Spravovat elastické fondy a databáze ve fondu
 
 Můžete vytvářet a spravovat elastické fondy SQL Database s [rozhraní příkazového řádku Azure](/cli/azure), použijte následující [databáze SQL Azure CLI](/cli/azure/sql/db) příkazy. Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows.
 
@@ -77,7 +77,7 @@ Můžete vytvářet a spravovat elastické fondy SQL Database s [rozhraní pří
 |[AZ sql elastic-pool update](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)|Aktualizuje elastického fondu.|
 |[AZ sql elastic-pool delete](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-delete)|Odstraní elastického fondu.|
 
-## <a name="transact-sql-manage-pooled-databases"></a>Příkaz Transact-SQL: Správa databáze ve fondu
+## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL: Správa databáze ve fondu
 
 Vytvoření a přesunutí databází v rámci existující elastických fondů nebo který vrací informace o elastického fondu SQL Database pomocí jazyka Transact-SQL, použijte následující příkazy T-SQL. Můžete použít tyto příkazy pomocí webu Azure portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), nebo jiný program, který můžete připojit k serveru Azure SQL Database a předat příkazů jazyka Transact-SQL příkazy. Vytvoření a Správa pravidel brány firewall pomocí jazyka T-SQL najdete v tématu [Správa pravidel brány firewall pomocí příkazů jazyka Transact-SQL](sql-database-firewall-configure.md#manage-firewall-rules-using-transact-sql).
 
@@ -93,7 +93,7 @@ Vytvoření a přesunutí databází v rámci existující elastických fondů n
 |[Sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Vrátí statistiky o využití prostředků pro všechny fondy elastických databází na logickém serveru. Pro každý fond elastické databáze je jeden řádek pro každou 15 sekundu reporting okno (čtyři řádky za minutu). To zahrnuje využití procesoru, vstupně-výstupních operací, protokolu, spotřebu úložiště a využití souběžný požadavek/relace všechny databáze ve fondu.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edition (úroveň služby), cíl služby (cenová úroveň) a název elastického fondu, pokud existují pro službu Azure SQL database nebo Azure SQL Data Warehouse. Pokud přihlášení k hlavní databázi na serveru Azure SQL Database, vrátí informace ve všech databázích. Pro službu Azure SQL Data Warehouse musí být připojené k hlavní databázi.|
 
-## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>Rozhraní REST API: Správa elastických fondů a databází ve fondu
+## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST API: Spravovat elastické fondy a databáze ve fondu
 
 Můžete vytvářet a spravovat databázi SQL elastické fondy a databáze ve fondu, použijte tyto požadavky rozhraní REST API.
 

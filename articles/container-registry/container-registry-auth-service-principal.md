@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3aa986efd4986eb1d96c0f013d997486e6e8ae2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754199"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390925"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Ověřování služby Azure Container Registry pomocí instančních objektů
 
 Instanční objekt Azure Active Directory (Azure AD) můžete použít k poskytování image kontejneru `docker push` a `pull` přístupu do vašeho registru kontejneru. S použitím instančního objektu, můžete poskytnout přístup k "bezobslužný" služeb a aplikací.
 
-## <a name="what-is-a-service-principal"></a>Co je objekt služby?
+## <a name="what-is-a-service-principal"></a>Co je instanční objekt?
 
 Azure AD *instanční* poskytují přístup k prostředkům Azure v rámci vašeho předplatného. Si můžete představit službu objektu zabezpečení jako identitu uživatele u služby, kde "služba" se všechny aplikace, služby nebo platforma, která potřebuje přístup k prostředkům. Konfigurace instančního objektu s přístupovými právy obor pouze na tyto prostředky, které zadáte. Potom nakonfigurujte vaše aplikace nebo služba používat přihlašovací údaje instančního objektu pro přístup k těmto prostředkům.
 
@@ -43,13 +43,11 @@ Pro jednotlivý přístup k registru, jako je například při ruční vyžádá
 Předchozí ukázky skriptů pro rozhraní příkazového řádku Azure na Githubu najdete jako i verze pro prostředí Azure PowerShell:
 
 * [Azure CLI][acr-scripts-cli]
-* [Prostředí Azure PowerShell][acr-scripts-psh]
+* [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Další postup
 
-Jakmile budete mít instanční objekt služby, že jste poskytli přístup do vašeho registru kontejneru, můžete použít pověření uživatele vaší aplikace a služby pro interakci registru.
-
-Při konfiguraci jednotlivých aplikací používat pověření instančního objektu je mimo rámec tohoto článku, najdete pokyny pro některé specifické služby a platformy tady:
+Jakmile budete mít instanční objekt služby, že jste poskytli přístup do vašeho registru kontejneru, můžete použít pověření uživatele vaší aplikace a služby pro interakci bezobslužného registru. Můžete použít pověření instančního objektu z libovolné služby Azure, které se můžou ověřovat pomocí služby Azure container registry. Příklady obsahují:
 
 * [Ověřování pomocí Azure Container Registry z Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
 * [Ověřování pomocí Azure Container Registry z Azure Container Instances (ACI)](container-registry-auth-aci.md)

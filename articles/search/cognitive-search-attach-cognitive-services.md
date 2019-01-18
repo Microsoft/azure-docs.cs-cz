@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5bffeacaa07f90a11c374061eb6c0d36fc8f86a9
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 776363278352ca3de365760d334e99ab43b14bb5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351454"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389568"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojit prostředek služeb Cognitive Services dovedností v Azure Search 
 
@@ -23,7 +23,7 @@ Algoritmy AI řízení [kognitivního vyhledávání kanály](cognitive-search-c
 
 Můžete zdarma rozšiřovat omezený počet dokumentů nebo připojit fakturovatelné prostředku služeb Cognitive Services pro větší a častější úlohy. V tomto článku najdete informace o prostředku služeb Cognitive Services přidružit vaše kognitivní dovednosti a obohacení dat během [indexování Azure Search](search-what-is-an-index.md).
 
-Pokud váš kanál se skládá pouze z [vlastních dovedností](cognitive-search-create-custom-skill-example.md), není potřeba připojení prostředku služeb Cognitive Services.
+Pokud váš kanál se skládá z dovednosti, které nesouvisí se rozhraní API služeb Cognitive Services, má stále připojovat prostředku služeb Cognitive Services, ale nebudou se vám účtovat tyto dovednosti. Nesouvisející zahrnují dovednosti: [vlastních dovedností](cognitive-search-create-custom-skill-example.md), [sloučení textu](cognitive-search-skill-textmerger.md), [text rozdělovač](cognitive-search-skill-textsplit.md), a [shaper](cognitive-search-skill-shaper.md).
 
 > [!NOTE]
 > Od 21. prosince 2018 přidružíte k prostředku služeb Cognitive Services k dovednosti Azure Search. To umožňuje poplatky za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
@@ -52,7 +52,9 @@ Pokračovat k dalšímu kroku, **přidat obohacení**. Popis dovednosti, které 
 
 ## <a name="use-billable-resources"></a>Fakturovatelné zdroje
 
-Pro úlohy s více než 20 dokumenty číslování denně budete potřebovat fakturovatelné prostředku služeb Cognitive Services.
+Pro úlohy s více než 20 obohacení číslování denně budete muset připojit fakturovatelné prostředku služeb Cognitive Services. 
+
+Pouze bude vám účtována dovednosti, které volají rozhraní API služeb Cognitive Services. Na rozhraní API bez znalosti, jako jsou [vlastních dovedností](cognitive-search-create-custom-skill-example.md), [sloučení textu](cognitive-search-skill-textmerger.md), [text rozdělovač](cognitive-search-skill-textsplit.md), a [shaper](cognitive-search-skill-shaper.md) dovednosti se nic neúčtuje.
 
 1. V **importovat data** v průvodci **připojení služeb Cognitive Services**, vyberte existující prostředek, nebo klikněte na tlačítko **vytvořit nový prostředek služeb Cognitive Services**.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Firstbird | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Firstbird | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Firstbird.
 services: active-directory
 documentationCenter: na
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/03/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4de6323d3cf6c642ea7714eabf45200e1be0c269
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 355d5a00c9a2d8bb6930113b35b2ed68c4b970ae
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884079"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391300"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>Kurz: Integrace Azure Active Directory se službou Firstbird
+# <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>Kurz: Integrace Azure Active Directory s Firstbird
 
 V tomto kurzu se dozvíte, jak integrovat Firstbird s Azure Active Directory (Azure AD).
 Firstbird integraci se službou Azure AD poskytuje následující výhody:
@@ -79,8 +79,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s [název aplikac
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace Firstbird Single Sign-On](#configure-firstbird-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele Firstbird](#create-firstbird-test-user)**  – Pokud chcete mít protějšek Britta Simon Firstbird, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele Firstbird](#create-firstbird-test-user)**  – Pokud chcete mít protějšek Britta Simon Firstbird, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -105,16 +105,16 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
     ![Firstbird domény a adresy URL jednotného přihlašování – informace](common/idp_intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company-domain>.auth.1brd.com/saml/sp`.
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company-domain>.auth.1brd.com/saml/sp`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company-domain>.auth.1brd.com/saml/callback`.
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company-domain>.auth.1brd.com/saml/callback`
 
 5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Firstbird domény a adresy URL jednotného přihlašování – informace](common/metadata_upload_additional_signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company-domain>.1brd.com/login`.
-    
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<company-domain>.1brd.com/login`
+
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory Firstbird klienta](mailto:support@firstbird.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 

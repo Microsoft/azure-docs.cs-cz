@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e5f1f2fe3745ae2817b73b2500ee90a59fc283e1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1de0f9b77bd1248d77f182a2e32e490c2814f42b
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607077"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382788"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Povolení automatického ladění monitorování dotazů a zlepšit výkon úloh
 
@@ -87,6 +87,10 @@ Chcete-li konfigurovat jednotlivé možnosti automatického ladění prostředni
    ```
    
 Nastavení jednotlivých možnost na hodnotu ON, přepíše nastavení, která databáze dědí a povolte možnost. Nastavení na hodnotu OFF, bude také přepsat nastavení, která databáze dědí a zakažte možnost. Možnosti automatického ladění, což výchozí nastavení je definováno, bude tuto konfiguraci dědit z automatického ladění nastavení úroveň databáze.  
+
+> [!IMPORTANT]
+> V případě klíčových [aktivní geografickou replikaci](sql-database-auto-failover-group.md), automatické ladění je třeba nakonfigurovat v primární databázi. Automaticky použije ladění akce, jako jsou pro index příklad vytvoření nebo odstranění budou automaticky replikovat do sekundární lokality jen pro čtení. Pokus o povolení automatické ladění prostřednictvím T-SQL na sekundárním jen pro čtení způsobí selhání jako s jinou konfiguraci ladění na sekundární jen pro čtení se nepodporuje.
+>
 
 Najít možnosti jazyka T-SQL pro konfiguraci automatického ladění, naleznete v tématu o našich dalších [možnostem ALTER DATABASE SET (Transact-SQL) pro logický server služby SQL Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 

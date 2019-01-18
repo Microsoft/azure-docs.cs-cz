@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v Pythonu pomocí sady SDK služby řeči'
+title: 'Rychlý start: Rozpoznávání řeči, Python – hlasové služby'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v Pythonu pomocí sady SDK služby řeči
+description: Tento průvodce vám vytvořit speech to text konzolovou aplikaci pomocí sadou SDK pro řeč pro Python. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.
 services: cognitive-services
 author: chlandsi
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 1/16/2019
 ms.author: chlandsi
-ms.openlocfilehash: 7610b12b351b2652df7ade603711d4d92e587292
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 40869457ce933368e17a2054dfca50fc4505fa22
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723905"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381573"
 ---
-# <a name="quickstart-using-the-speech-service-from-python"></a>Rychlý start: Pomocí služby řeči z Pythonu
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Python
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -39,7 +39,7 @@ Než začnete, tady je seznam požadovaných součástí:
 
 * Na Windows, musíte také [Microsoft Visual C++ Redistributable pro Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu.
 
-## <a name="get-the-speech-sdk-python-package"></a>Získat balíček Python SDK řeči
+## <a name="install-the-speech-sdk"></a>Instalace sady SDK pro řeč
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -61,7 +61,7 @@ Pokud máte problém nebo funkce chybí, podíváme se na naše [stránku podpor
 
 ## <a name="create-a-python-application-using-the-speech-sdk"></a>Vytvoření aplikace v Pythonu pomocí sadou SDK pro řeč
 
-### <a name="running-the-sample-in-a-terminal"></a>V terminálu spuštěním ukázky
+### <a name="run-the-sample"></a>Spuštění ukázky
 
 Můžete kopírovat [kód](#quickstart-code) z tohoto rychlého startu do zdrojového souboru `quickstart.py` a ho spustit v prostředí (IDE) nebo v konzole
 
@@ -71,11 +71,11 @@ python quickstart.py
 
 nebo si můžete stáhnout tento rychlý úvodní kurz jako [Jupyter](https://jupyter.org) Poznámkový blok z [úložiště ukázek Cognitive Services řeči](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) a spusťte ho jako poznámkový blok.
 
-### <a name="quickstart-code"></a>Kód tohoto rychlého startu
+### <a name="sample-code"></a>Ukázka kódu
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
 
-### <a name="installing-the-speech-sdk-python-package-and-running-the-sample-in-visual-studio-code"></a>Instaluje se balíček Python SDK řeči a spuštění ukázky ve Visual Studio Code
+### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a používání sadou SDK pro řeč s Visual Studio Code
 
 1. [Stáhněte si](https://www.python.org/downloads/) a nainstalujte verzi 64-bit (3.5 nebo novější) aplikace Pythonu ve vašem počítači.
 1. [Stáhněte si](https://code.visualstudio.com/Download) a instalace Visual Studio Code.

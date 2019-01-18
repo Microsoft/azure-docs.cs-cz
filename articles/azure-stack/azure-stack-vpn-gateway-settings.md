@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 05f198aa869bbff121d438688aaee89a292516c1
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d5538ce94428f189fc83cfa1107c52b9d57a3d13
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807960"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381563"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Konfigurace nastavení služby VPN gateway pro Azure Stack
 
@@ -51,9 +51,9 @@ Azure Stack nabízí VPN gateway skladové položky uvedené v následující ta
 
 |   | Propustnost brány sítě VPN |Tunelových propojení IPsec maximální brány sítě VPN |
 |-------|-------|-------|
-|**Základní SKU**  | 100 Mb/s  | 10    |
-|**Standardní SKU**           | 100 Mb/s  | 10    |
-|**SKU pro vysoký výkon** | 200 Mb/s    | 5 |
+|**Základní SKU**  | 100 Mb/s  | 20    |
+|**Standardní SKU**           | 100 Mb/s  | 20    |
+|**SKU pro vysoký výkon** | 200 Mb/s    | 10    |
 
 ### <a name="resizing-gateway-skus"></a>Změna velikosti SKU brány
 
@@ -119,11 +119,11 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 
 V následující tabulce jsou uvedeny požadavky pro brány VPN Gateway.
 
-| |Brány sítě VPN PolicyBased Basic | Brána VPN typu RouteBased Basic | Brána VPN typu RouteBased Standard | RouteBased vysoce výkonná brána sítě VPN|
+| |Brány sítě VPN PolicyBased Basic | Brána VPN typu RouteBased Basic | RouteBased Standard VPN Gateway | RouteBased vysoce výkonná brána sítě VPN|
 |--|--|--|--|--|
 | **Připojení Site-to-Site (S2S připojení)** | Nepodporuje se | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased |
 | **Metoda ověřování**  | Nepodporuje se | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  |   
-| **Maximální počet připojení S2S**  | Nepodporuje se | 10 | 10| 5|
+| **Maximální počet připojení S2S**  | Nepodporuje se | 20 | 20| 10|
 |**Podpora aktivního směrování (BGP)** | Nepodporuje se | Nepodporuje se | Podporováno | Podporováno |
 
 ### <a name="gateway-subnet"></a>Podsíť brány

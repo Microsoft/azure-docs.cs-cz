@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.openlocfilehash: 68d4cdf3c7ba08f7cf37132936c6769c99c177cc
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: f675ff0dfaf183c2efd177c7888549e6976fbe6d
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319414"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389480"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Tom, jak bezpečně migrace uživatelů mezi licencemi produktů pomocí licencování na základě skupin
 
@@ -85,7 +85,7 @@ Následující fragment kódu ukazuje, jak automatizovat proces migrace pro rozs
 > [!NOTE]
 > Vzorový kód používá funkce Powershellu, které jsou součástí [poslední část](#powershell-automation-of-migration-and-verification-steps) tohoto článku.
 
-```
+```powershell
 # A batch of users that we want to migrate in this iteration.
 # The batch can be specified as an array of User Principal Names (string) or ObjectIds (Guid).
 # Note: The batch can be loaded from a text file that represents a larger batch of users that we want to migrate.
@@ -128,7 +128,7 @@ ExecuteVerificationLoop ${function:VerifySourceLicenseRemovedAndTargetLicenseAss
 
 **Ukázkový výstup (migrace dva uživatele)**
 
-```
+```powershell
 Verifying initial assumptions:
 Enough TailspinOnline:ENTERPRISEPREMIUM licenses available (13) for users: 2.
 migrationuser@tailspinonline.com                OK
@@ -215,7 +215,7 @@ Následující fragment kódu ukazuje, jak automatizovat proces migrace pro rozs
 > [!NOTE]
 > Vzorový kód používá funkce Powershellu, které jsou součástí [poslední část](#powershell-automation-of-migration-and-verification-steps) tohoto článku.
 
-```
+```powershell
 # A batch of users that we want to migrate in this iteration.
 # The batch can be specified as an array of User Principal Names (string) or ObjectIds (Guid).
 # Note: The batch can be loaded from a text file that represents a larger batch of users that we want to migrate.
@@ -265,7 +265,7 @@ ExecuteVerificationLoop ${function:VerifySourceLicenseRemovedAndTargetLicenseAss
 
 **Ukázkový výstup (migrace dva uživatele)**
 
-```
+```powershell
 Verifying initial assumptions:
 Enough TailspinOnline:ENTERPRISEPACK licenses available (61) for users: 2.
 migrationuser@tailspinonline.com                OK
@@ -321,7 +321,7 @@ Tato část obsahuje kódem Powershellu, který je potřeba spouštět skripty, 
 
 Ke spouštění kódu, postupujte podle pokynů v [Azure AD PowerShell verze 1.0 knihovny](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0). Před spuštěním skriptu, spusťte `connect-msolservice` rutiny pro přihlášení k tenantovi.
 
-```
+```powershell
 # BEGIN: Helper functions that are used in the scripts.
 
 # GetUserObject function
@@ -523,7 +523,7 @@ function IsExpectedLicenseStateForGroup
     # The license is expected to be fully assigned from the group and not in an error state.
     if([string]::IsNullOrEmpty($expectedError))
     {
-        # Check if the assigned license is inherted from the expected group and without an error on it.
+        # Check if the assigned license is inherited from the expected group and without an error on it.
         return (UserHasLicenseAssignedFromThisGroup $user $skuId $groupId)
     }
     # The license is expected to be in the specific error state on the specific group.
@@ -614,7 +614,7 @@ function VerifyAssumptionsForUser
         return $false
     }
 
-    # 2. The user does't have the same source license assigned from another group at the same time,
+    # 2. The user doesn't have the same source license assigned from another group at the same time,
     #    and the user doesn't have the source license assigned directly.
     [Guid[]]$otherObjectsAssigningLicense = GetObjectIdsAssigningLicense $user $sourceSkuId | Where {$_ -ne $sourceGroupId}
     foreach($otherObject in $otherObjectsAssigningLicense)

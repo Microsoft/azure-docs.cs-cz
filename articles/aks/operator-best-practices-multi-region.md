@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 622cdd36a1ecf582c4cdb883b12753ee2a75d50e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 36e87550c90c1a5d4b05aa62f2fbe79b04b25445
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855736"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382435"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro obchodní kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ AKS cluster je nasazený do jedné oblasti. K ochraně před selhání oblasti, 
 * [Spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * Určit vaši zeměpisnou polohu zvolte dvou oblastech, které jsou párovány mezi sebou. Tyto oblasti koordinovat aktualizace platformy a určit prioritu o obnovení místech.
 * Dostupnost úrovně služby (horká nebo horkou, horká/záložním, horké/studené)
-  * Chcete spustit obě oblasti současně s jednou oblastí *připravené* spustit obsluhující provoz nebo jedné oblasti, kterou je potřeba čas get připravené k obsluze provozu.
+  * Chcete spustit obě oblasti současně s jednou oblastí *připravené* spustit obsluhující provoz nebo jedné oblasti, který je čas na přípravu k obsluze provozu.
 
 Dostupnost v oblastech AKS a spárované oblasti jsou společné pozornost. Nasazení clusterů AKS do spárovaných oblastí, které jsou určeny ke společné správě oblasti zotavení po havárii. Například je k dispozici v AKS *USA – východ* a *USA – západ*. Tyto oblasti jsou také spárovat. Tyto dvě oblasti doporučenou při vytváření strategie AKS BC/zotavení po Havárii.
 

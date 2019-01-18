@@ -6,14 +6,14 @@ manager: hegate
 ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/25/2018
+ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a30311f8b171d80e036b4e554b2f1026b43c8a67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604767"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382258"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio
 
@@ -48,16 +48,9 @@ K dokončení místní nasazení, budete potřebovat následující nástroje na
 
 V této části spustíte mikroslužeb vzdáleného monitorování. Spuštění ve webovém uživatelském rozhraní nativně, simulace zařízení služby v Dockeru a mikroslužby v sadě Visual Studio.
 
-### <a name="run-the-web-ui"></a>Spuštění webového uživatelského rozhraní
-
-V tomto kroku spuštění ve webovém uživatelském rozhraní. Přejděte **webui** složky ve své místní kopie úložiště a spusťte následující příkazy:
-
-```cmd
-npm install
-npm start
-```
-
 ### <a name="run-the-device-simulation-service"></a>Spusťte službu simulace zařízení
+
+Otevřete nové okno příkazového řádku, ujistěte se, že máte přístup k proměnným prostředí nastavil **start.cmd** skript v předchozí části.
 
 Spuštěním následujícího příkazu spusťte kontejner Dockeru pro službu pro simulaci zařízení. Služba simuluje zařízení pro řešení vzdáleného monitorování.
 
@@ -69,16 +62,16 @@ Spuštěním následujícího příkazu spusťte kontejner Dockeru pro službu p
 
 Následující kroky ukazují, jak spouštět mikroslužby vzdálené monitorování v sadě Visual Studio 2017:
 
-1. Spusťte Visual Studio 2017
+1. Launch Visual Studio 2017
 1. Otevřít **vzdálené monitoring.sln** řešení **služby** složky místní kopie úložiště.
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na řešení a potom na **vlastnosti**.
 1. Vyberte **společná nastavení > projekt po spuštění**.
 1. Vyberte **více projektů po spuštění** a nastavte **akce** k **Start** pro následující projekty:
-    * Webové služby (asa manager\WebService)
+    * WebService (asa-manager\WebService)
     * Webové služby (auth\WebService)
-    * Webové služby (config\WebService)
+    * WebService (config\WebService)
     * Webové služby (zařízení telemetry\WebService)
-    * Webové služby (iothub-manager\WebService)
+    * WebService (iothub-manager\WebService)
     * Webové služby (úložiště adapter\WebService)
 1. Klikněte na tlačítko **OK** uložit vaše volby.
 1. Klikněte na tlačítko **ladit > Spustit ladění** sestavení a spuštění webové služby na místním počítači.
@@ -91,14 +84,25 @@ Postupujte podle těchto kroků spustíte úlohu Stream Analytics:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Přejděte **skupiny prostředků** vytvořen pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění **start.cmd** skript **.
-1. Klikněte na **úlohy Stream Analytics** v seznamu prostředků.
+1. Klikněte na tlačítko **úlohy Stream Analytics** v seznamu prostředků.
 1. V úloze Stream Analytics **přehled** stránky, klikněte na tlačítko **Start** tlačítko. Pak klikněte na tlačítko **Start** ihned spustíte úlohu.
+
+### <a name="run-the-web-ui"></a>Spuštění webového uživatelského rozhraní
+
+V tomto kroku spuštění ve webovém uživatelském rozhraní. Otevřete nové okno příkazového řádku, ujistěte se, že máte přístup k proměnným prostředí nastavil **start.cmd** skriptu. Přejděte **webui** složky ve své místní kopie úložiště a spusťte následující příkazy:
+
+```cmd
+npm install
+npm start
+```
+
+Po dokončení spuštění v prohlížeči zobrazí na stránce **http://localhost:3000/dashboard**. Chyby na této stránce se očekává. Chcete-li zobrazit aplikaci bez chyby, proveďte následující kroky.
 
 ### <a name="configure-and-run-nginx"></a>Nakonfigurování a spuštění serveru NGINX
 
 Reverzní proxy server nastavte propojení webové aplikace a mikroslužeb spouštěných v místním počítači:
 
-* Kopírování **nginx.conf** soubor **webui\scripts\localhost** složku **nginx\conf** instalační adresář.
+* Kopírování **nginx.conf** ze soubor **webui\scripts\localhost** složky místní kopie úložiště **nginx\conf** instalační adresář.
 * Spustit **nginx**.
 
 Další informace o spouštění **nginx**, naleznete v tématu [nginx pro Windows](https://nginx.org/en/docs/windows.html).

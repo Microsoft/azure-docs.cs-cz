@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cbf58f7e5553f10087c854428a6a369cbb8c3bf9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d5a8187394fba8c7718a8d056cb2063f37347832
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196544"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Kurz: Integrace Azure Active Directory s zastřešující Cisco
 
@@ -78,8 +78,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s [název aplikac
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace Cisco zastřešující Single Sign-On](#configure-cisco-umbrella-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele Cisco zastřešující](#create-cisco-umbrella-test-user)**  – Pokud chcete mít protějšek Britta Simon Cisco zastřešující, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele Cisco zastřešující](#create-cisco-umbrella-test-user)**  – Pokud chcete mít protějšek Britta Simon Cisco zastřešující, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -110,7 +110,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
     c. V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://login.umbrella.com/sso`
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **soubor XML s metadaty**z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **soubor XML s metadaty**z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
 1. V jiném okně prohlížeče přihlašování k webu společnosti Cisco zastřešující jako správce.
 
-2.  V levé nabídce klikněte na **správce** a přejděte do **ověřování** a potom klikněte na **SAML**.
+2. V levé nabídce klikněte na **správce** a přejděte do **ověřování** a potom klikněte na **SAML**.
 
     ![Správce](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_admin.png)
 
@@ -144,7 +144,6 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
     ![Na další](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-
 6. V **možnost A: Nahrajte soubor XML**, nahrajte **kód XML metadat federace** soubor, který jste si stáhli z portálu Azure portal a po nahrání metadat následujících hodnot získat automaticky vyplní automaticky a potom klikněte na **Další**.
 
     ![Choosefile ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
@@ -155,7 +154,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
 8. Klikněte na **ULOŽIT**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -215,7 +214,7 @@ V případě Cisco zastřešující zřizování je ruční úloha.
 
 1. V jiném okně prohlížeče přihlašování k webu společnosti Cisco zastřešující jako správce.
 
-2.  V levé nabídce klikněte na **správce** a přejděte do **účty**.
+2. V levé nabídce klikněte na **správce** a přejděte do **účty**.
 
     ![Účet](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_account.png)
 
@@ -237,7 +236,7 @@ V případě Cisco zastřešující zřizování je ruční úloha.
 
     g. Klikněte na tlačítko **vytvořit**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -250,4 +249,3 @@ Po kliknutí na dlaždici Cisco zastřešující na přístupovém panelu, vám 
 - [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

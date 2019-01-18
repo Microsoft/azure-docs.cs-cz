@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c63e7d03c0fc17e9892617aaeca94803c671acea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1f7162e4be1392a8b5b3228a5338fd470fdcc525
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196528"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389313"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Kurz: Integrace Azure Active Directory s InstaVR prohlížeč
 
@@ -79,8 +79,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s InstaVR prohlí
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace InstaVR prohlížeč Single Sign-On](#configure-instavr-viewer-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele InstaVR prohlížeč](#create-instavr-viewer-test-user)**  – Pokud chcete mít protějšek Britta Simon InstaVR prohlížeč, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele InstaVR prohlížeč](#create-instavr-viewer-test-user)**  – Pokud chcete mít protějšek Britta Simon InstaVR prohlížeč, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -105,13 +105,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s InstaVR prohlížeč, prove
 
     ![InstaVR prohlížeč domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`.
-    
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
+
     > [!NOTE]
     > Neexistuje žádná pevná vzor pro přihlášení na adrese URL. To se vygeneruje, když zákazník InstaVR prohlížeč webové balení. Je jedinečný pro všechny zákazníky a balíčku. Pro získání znaménka přesnou adresu URL, musíte se přihlásit do prohlížeče InstaVR instance a webových balení.
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`. 
-    
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
+
     > [!NOTE]
     > Hodnota identifikátoru není skutečný. Aktualizujte tuto hodnotu Skutečná hodnota identifikátor, který je vysvětlen později v tomto kurzu.
 

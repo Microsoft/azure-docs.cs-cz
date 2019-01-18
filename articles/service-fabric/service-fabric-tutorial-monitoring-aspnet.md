@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/14/2017
+ms.date: 01/17/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: a130351131f59511ef4f60b579197da96f9334e6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 27a114378cf72e766e894dc0dd6886197f56a841
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720724"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390255"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Kurz: Monitorování a Diagnostika aplikace ASP.NET Core v Service Fabric pomocí Application Insights
 
@@ -59,7 +59,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="set-up-an-application-insights-resource"></a>Nastavení prostředku Application Insights
 
-Application Insights je platforma pro správu výkonu aplikací Azure a doporučená platforma Service Fabric pro monitorování a diagnostiku aplikací. Pokud chcete vytvořit prostředek Application Insights, přejděte na web [Azure Portal](https://portal.azure.com). Kliknutím na **Vytvořit prostředek** v levé navigační nabídce otevřete Azure Marketplace. Klikněte na **Monitorování a správa** a pak na **Application Insights**.
+Application Insights je platforma pro správu výkonu aplikací Azure a doporučená platforma Service Fabric pro monitorování a diagnostiku aplikací. Pokud chcete vytvořit prostředek Application Insights, přejděte na web [Azure Portal](https://portal.azure.com). Kliknutím na **Vytvořit prostředek** v levé navigační nabídce otevřete Azure Marketplace. Klikněte na **Application Insights**.
 
 ![Vytvoření nového prostředku Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 
@@ -76,13 +76,8 @@ Spusťte sadu Visual Studio 2017 se zvýšenými oprávněními. Provedete to ta
 
 Postupujte podle těchto kroků a nakonfigurujte Application Insights pro službu VotingWeb i VotingData:
 
-1. Klikněte pravým tlačítkem na název služby a pak klikněte na **Nakonfigurovat Application Insights**.
-
-    ![Konfigurace Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
->[!NOTE]
->V závislosti na typu projektu když jste klikněte pravým tlačítkem na název služby, budete muset klikněte na tlačítko Přidat -> Telemetrie Application Insights...
-
-2. Klikněte na **Začít zdarma**.
+1. Klikněte pravým tlačítkem na název služby a vyberte **Přidat -> Telemetrie Application Insights...** .    
+2. Klikněte na tlačítko **Začínáme**.
 3. Přihlaste se ke svému účtu (se kterým jste také nastavili své předplatné Azure) a vyberte předplatné, ve kterém jste vytvořili prostředek Application Insights. Vyhledejte prostředek v rozevírací nabídce Prostředek v části *Stávající prostředek Application Insights*. Kliknutím na **Zaregistrovat** přidejte Application Insights do své služby.
 
     ![Registrace Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
@@ -101,8 +96,8 @@ Tady je postup nastavení balíčku NuGet:
 2. Klikněte na **Procházet** v horní části navigační nabídky v okně NuGet – Řešení a zaškrtněte políčko **Zahrnout předběžné verze** vedle panelu vyhledávání.
 3. Vyhledejte `Microsoft.ApplicationInsights.ServiceFabric.Native` a klikněte na odpovídající balíček NuGet.
 
->[!NOTE]
->Podobným způsobem možná bude potřeba nainstalovat balíček Microsoft.ServiceFabric.Diagnostics.Internal, pokud už nebyl nainstalovaný před instalací balíčku Application Insights.
+    >[!NOTE]
+    >Podobným způsobem možná bude potřeba nainstalovat balíček Microsoft.ServiceFabric.Diagnostics.Internal, pokud už nebyl nainstalovaný před instalací balíčku Application Insights.
 
 4. Na pravé straně klikněte na dvě zaškrtávací políčka vedle dvou služeb v aplikaci – **VotingWeb** a **VotingData** – a klikněte na **Nainstalovat**.
     ![Balíček NuGet sady Application Insights SDK](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)

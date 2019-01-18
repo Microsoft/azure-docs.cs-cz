@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/28/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 858c062c2b3d61b38247e323bf70d2768d33b257
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bd874e6918528d340bca69ebdd91aa060158073
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969331"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383060"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Kurz: Stream živé pomocí Media Services v3 pomocí rozhraní API
 
@@ -100,6 +100,8 @@ Některá další nastavení, která můžete chtít zadat při vytváření ud�
 * Omezení IP adres u ingestování a náhledu. Můžete definovat IP adresy, u kterých je povolené ingestování videa do této události LiveEvent. Povolené IP adresy se dají zadat jako jedna IP adresa (třeba 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (třeba 10.0.0.1/22) nebo rozsah IP adres a maska podsítě v desítkovém zápisu s tečkou (třeba 10.0.0.1(255.255.252.0)).
     
     Pokud nezadáte žádné IP adresy a neexistuje definice pravidla, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
+    
+    IP adresy musí být v jednom z následujících formátů: Adresu IpV4 s 4 číslice, rozsah adres CIDR.
 
 Při vytváření události můžete nastavit automatické spouštění. 
 

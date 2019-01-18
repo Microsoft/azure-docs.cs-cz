@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/6/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: fd65d6a5d210b4b0549236ec39844e36480b10c9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e910fc3c685f3ffb3e77308dafa9ec7e6ce6a950
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790254"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Kurz: Integrace Azure Active Directory s YouEarnedIt
 
@@ -78,8 +78,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s YouEarnedIt, kt
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace YouEarnedIt Single Sign-On](#configure-youearnedit-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele YouEarnedIt](#create-youearnedit-test-user)**  – Pokud chcete mít protějšek Britta Simon YouEarnedIt, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele YouEarnedIt](#create-youearnedit-test-user)**  – Pokud chcete mít protějšek Britta Simon YouEarnedIt, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -104,22 +104,24 @@ Ke konfiguraci Azure AD jednotné přihlašování s YouEarnedIt, proveďte nás
 
     ![YouEarnedIt domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujících vzorů: 
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujících vzorů:
+
     | Prostředí  | Vzor  |
     |:--- |:--- |
     | Výroba | `https://<company name>.youearnedit.com/users/sign_in` |
     | Izolovaný prostor  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujících vzorů:
+
     | Prostředí  | Vzor  |
     |:--- |:--- |
     | Výroba | `<company name>.youearnedit.com` |
     | Izolovaný prostor  |`<company name>.sandbox.youearnedit.com` |
 
-    > [!NOTE] 
+    > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontaktujte správce úspěchy zákazníků YouEarnedIt přiřazené k získání těchto hodnot.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
@@ -192,11 +194,10 @@ V této části je povolit Britta Simon k udělení přístupu k YouEarnedIt pou
 
 V této části vytvoříte uživatele v YouEarnedIt jako Britta Simon. Správce přiřazené YouEarnedIt zákazníkům úspěch a přidejte uživatele na platformě YouEarnedIt prosím pracujete.
 
->[!NOTE]
->YouEarnedIt očekávat, že zprostředkovatel Identity k poskytování EmailAddress nebo uživatelské jméno v atributu NameID. Ověření se nezdaří, pokud odpovídající uživatelské jméno nebo EmailAddress nebyl nalezen v databázi nebo se neshoduje přesně. To vyžaduje, aby účty importuje i do systému YouEarnedIt před integraci jednotného přihlašování (obvykle buď prostřednictvím rozhraní API nebo CSV import).
+> [!NOTE]
+> YouEarnedIt očekávat, že zprostředkovatel Identity k poskytování EmailAddress nebo uživatelské jméno v atributu NameID. Ověření se nezdaří, pokud odpovídající uživatelské jméno nebo EmailAddress nebyl nalezen v databázi nebo se neshoduje přesně. To vyžaduje, aby účty importuje i do systému YouEarnedIt před integraci jednotného přihlašování (obvykle buď prostřednictvím rozhraní API nebo CSV import).
 
-
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -209,4 +210,3 @@ Po kliknutí na dlaždici YouEarnedIt na přístupovém panelu, můžete by měl
 - [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

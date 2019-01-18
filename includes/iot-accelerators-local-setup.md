@@ -5,21 +5,21 @@ services: iot-accelerators
 author: avneet723
 ms.service: iot-accelerators
 ms.topic: include
-ms.date: 10/29/2018
+ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: 900d75f826830ea7336044a892506d3bec546e30
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d4da1597ebed6c27cf6c12bab4a4e59be742c577
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283908"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383108"
 ---
 ## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
 
-Vzdálené monitorování úložišť zdrojového kódu zahrnout soubory konfigurace Dockeru, které potřebujete pro spuštění imagí Dockeru mikroslužeb.
+Úložišť zdrojového kódu vzdáleného monitorování zahrnují zdrojový kód a soubory konfigurace Dockeru, které potřebujete pro spuštění imagí Dockeru mikroslužeb.
 
-Klonovat a vytvořte místní verzi úložiště, použijte prostředí příkazového řádku přejděte do složky na místním počítači vhodný. Poté spusťte následující sady příkazů naklonujte buď .NET nebo Javě úložiště:
+Klonovat a vytvořte místní verzi úložiště, použijte prostředí příkazového řádku přejděte do složky na místním počítači vhodný. Poté spusťte následující sady příkazů buď naklonujte úložiště .NET:
 
 Pokud chcete stáhnout nejnovější verzi implementace mikroslužby .NET, spusťte:
 
@@ -32,7 +32,7 @@ cd azure-iot-pcs-remote-monitoring-dotnet
 git submodule foreach git pull origin master
 ```
 
-Pokud chcete stáhnout nejnovější verzi implementace mikroslužeb Java, spusťte:
+Tento článek předpokládá, že používáte mikroslužby .NET. K dispozici také implementace jazyka Java. Pokud chcete stáhnout nejnovější verzi implementace mikroslužeb Java, spusťte:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
@@ -70,11 +70,13 @@ Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle tě
 
     Tento skript vytvoří skupinu prostředků v Azure s názvem řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení. Jakmile už nepotřebujete odpovídající prostředky můžete odstranit tuto skupinu prostředků.
 
-    Skript také přidá sadu proměnných prostředí s předponou **počítače** do místního počítače. Při spuštění kontejneru Docker místně jejich čtení jejich hodnoty konfigurace z těchto proměnných prostředí.
+    Skript také přidá sadu proměnných prostředí s předponou **počítače** do místního počítače. Při spuštění kontejnerů Dockeru nebo mikroslužeb projekty místně, jejich čtení jejich hodnoty konfigurace z těchto proměnných prostředí.
 
-> [!TIP]
-> Po dokončení skriptu, zobrazí se seznam proměnných prostředí. Pokud uložíte tyto hodnoty **služby\\skripty\\místní\\.env** soubor, můžete využít pro nasazení akcelerátoru řešení budoucí. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
+    > [!TIP]
+    > Po dokončení skriptu, také uloží proměnné prostředí do souboru s názvem  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** . Můžete je použít pro nasazení akcelerátoru řešení budoucí. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
+
+1. Výstup z prostředí příkazového řádku.
 
 ### <a name="use-existing-azure-resources"></a>Použít existující prostředky Azure
 
-Pokud jste již vytvořili požadované prostředky Azure, vytvořte odpovídající proměnné prostředí v místním počítači. Jste uložili v tyto hodnoty **služby\\skripty\\místní\\.env** souboru jako součást vašeho posledního nasazení. Všimněte si, že proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
+Pokud jste již vytvořili požadované prostředky Azure, vytvořte odpovídající proměnné prostředí v místním počítači. Ty mohou být uloženy v  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** souboru z nasazení. Všimněte si, že proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.

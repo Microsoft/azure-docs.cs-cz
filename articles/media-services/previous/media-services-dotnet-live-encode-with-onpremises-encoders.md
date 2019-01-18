@@ -1,6 +1,6 @@
 ---
-title: Jak provést živé streamování s místními kodéry, pomocí rozhraní .NET | Microsoft Docs
-description: Toto téma ukazuje, jak používat rozhraní .NET k provádění kódování v reálném čase pomocí místních kodérů.
+title: Jak provést živé streamování pomocí místních kodérů pomocí .NET | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak provádět živé kódování pomocí místních kodérů pomocí .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 32d456aee83c6f7c6d5d242a1ce039e7e370c0fd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 493383583513f94689b30b5eca615005137da4a9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788652"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382692"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provést živé streamování s místními kodéry, pomocí rozhraní .NET
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provést živé streamování pomocí místních kodérů pomocí .NET
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -29,14 +29,14 @@ ms.locfileid: "33788652"
 > 
 > 
 
-Tento kurz vás provede kroky vytváření pomocí .NET SDK služby Azure Media Services **kanál** který je nakonfigurován pro průchozí doručování. 
+Tento kurz vás provede kroky pro použití Azure Media Services .NET SDK k vytvoření **kanálu** , který je nakonfigurován pro průchozí doručování. 
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující:
 
 * Účet Azure.
 * Účet Media Services.    Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
-* Nastavení prostředí vývojářů. Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).
+* Nastavení vývojového prostředí. Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).
 * Webová kamera. Například [kodér Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).
 
 Doporučujeme přečtení následujících článků:
@@ -49,15 +49,15 @@ Doporučujeme přečtení následujících článků:
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="example"></a>Příklad:
-Následující příklad kódu ukazuje, jak dosáhnout následujících úloh:
+Následující příklad kódu ukazuje, jak dokončit následující úlohy:
 
 * Připojení ke službě Media Services
 * Vytvoření kanálu
-* Aktualizace kanál
-* Načtěte vstupní koncový bod v kanálu. Místní kodéru za provozu by měly být zadané vstupní koncový bod. Za provozu kodér převede signály z kamery do datových proudů, které se odesílají do tohoto kanálu vstup (ingestování) koncového bodu.
-* Načtení koncového bodu náhledu kanálu
-* Vytvořte a spusťte program
-* Vytvořit lokátor potřebné pro přístup k programu
+* Aktualizace kanálu
+* Načte vstupní koncový bod kanálu. Vstupní koncový bod musí být zadána do místní kodér služby live Encoding. Převede signály kodér služby live Encoding z fotoaparátu/kamery do datových proudů, které se odesílají na vstup z kanálu (ingestování) koncového bodu.
+* Načíst koncový bod kanálu ve verzi preview
+* Vytvoření a spuštění programu
+* Vytvoření lokátoru potřebné pro přístup k programu
 * Vytvoření a spuštění StreamingEndpoint
 * Aktualizace koncového bodu streamování
 * Vypnout prostředky
@@ -68,7 +68,7 @@ Následující příklad kódu ukazuje, jak dosáhnout následujících úloh:
 >[!NOTE]
 >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
-Informace o tom, jak nakonfigurovat za provozu kodér najdete v tématu [podpora RTMP ve službě Azure Media Services a kodéry Live](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
+Informace o tom, jak nakonfigurovat kodér služby live Encoding najdete v tématu [podpora RTMP ve službě aplikace Azure Media Services a kodéry](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
 ```csharp
 using System;
@@ -149,6 +149,7 @@ namespace AMSLiveTest
 
         private static ChannelInput CreateChannelInput()
         {
+        // When creating a Channel, you can specify allowed IP addresses in one of the following formats: IpV4 address with 4 numbers, CIDR address range.
             return new ChannelInput
             {
                 StreamingProtocol = StreamingProtocol.RTMP,
@@ -171,6 +172,7 @@ namespace AMSLiveTest
 
         private static ChannelPreview CreateChannelPreview()
         {
+         // When creating a Channel, you can specify allowed IP addresses in one of the following formats: IpV4 address with 4 numbers, CIDR address range.
             return new ChannelPreview
             {
                 AccessControl = new ChannelAccessControl
@@ -390,8 +392,8 @@ namespace AMSLiveTest
 }
 ```
 
-## <a name="next-step"></a>Další krok
-Zkontrolujte kurzů ke službě Media Services
+## <a name="next-step"></a>Dalším krokem
+Projděte si mapy kurzů k Media Services
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

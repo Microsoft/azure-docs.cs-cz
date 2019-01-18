@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: c3392c3fd169ceed84368ed9e8b8d81cab7baea4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8d3dcd501fd0c4a9cc9f6cb5f7b27fa2e12004ad
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212921"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382596"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí Azure Powershellu
 
@@ -111,7 +111,7 @@ Následující blok kódu rozhraní příkazového řádku Azure nemá mnoho př
 
 Následující blok kódu prostředí Azure PowerShell k vytvoření úložiště objektů blob, který se používá pro výstup úlohy používá příkazy. Prohlédněte si jednotlivé části a seznamte se s kódem.
 
-1. Vytvořte standardní obecný účet úložiště pomocí rutiny [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount).  Tento příklad vytvoří účet úložiště s názvem **myasaquickstartstorage** s místně redundantním úložištěm a šifrováním objektů blob (ve výchozím nastavení povolena.  
+1. Vytvořte standardní obecný účet úložiště pomocí rutiny [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount).  Tento příklad vytvoří účet úložiště s názvem **myasaquickstartstorage** s místně redundantním úložištěm a šifrováním objektů blob (standardně povoleno).  
    
 2. Načtěte kontext účtu úložiště `$storageAccount.Context` určující účet úložiště, který chcete použít. Když pracujete s účtem úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. 
 

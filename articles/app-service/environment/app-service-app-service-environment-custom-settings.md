@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2016
+ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: de68c59987a7ec1198c344cc22978ebed09c75e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6463759dbd217cd054f838c09c7cfcf99a06aa2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271348"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390820"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Vlastní nastavení konfigurace pro služby App Service Environment
 ## <a name="overview"></a>Přehled
-Vzhledem k tomu služby App Service Environment izolované pro jediného zákazníka, existují určitá nastavení konfigurace, které mohou být použity výhradně App Service Environment. Tento článek popisuje různé konkrétních vlastních nastavení, které jsou k dispozici pro App Service Environment.
+Protože App Service Environment (ase) jsou izolované pro jediného zákazníka, existují určitá nastavení konfigurace, které mohou být použity výhradně App Service Environment. Tento článek popisuje různé konkrétních vlastních nastavení, které jsou k dispozici pro App Service Environment.
 
 Pokud nemáte službu App Service Environment, přečtěte si téma [vytvoření služby App Service Environment](app-service-web-how-to-create-an-app-service-environment.md).
 
@@ -65,10 +65,11 @@ Alternativně můžete aktualizovat služby App Service Environment pomocí [Azu
 Ale odešlete změny, bude trvat přibližně 30 minut počtem front-endové systémy v App Service Environment tato změna projevila.
 Například pokud služba App Service Environment má čtyři front-endů, bude trvat přibližně dvě hodiny pro dokončení aktualizace konfigurace. Při změně konfigurace se nasazuje, žádná jiná operace škálování nebo jejich změn konfigurace může proběhnout ve službě App Service Environment.
 
-## <a name="disable-tls-10"></a>Zakázat protokol TLS 1.0
-Opakované dotaz od zákazníků, hlavně zákazníkům, kteří se zabývají dodržování PCI audity, je explicitně pro svoje aplikace zákaz protokolu TLS 1.0.
+## <a name="disable-tls-10-and-tls-11"></a>Zákaz protokolu TLS 1.0 a TLS 1.1
 
-Protokol TLS 1.0 se dají zakázat pomocí následující **clusterSettings** položky:
+Pokud chcete spravovat nastavení protokolu TLS na základě aplikace app, pak můžete použít pokyny, opatřeného [nastavení vynucení protokolu TLS](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions) dokumentaci. 
+
+Pokud chcete zakázat všechny příchozí protokol TLS 1.0 a TLS 1.1 provoz pro všechny aplikace ve službě ASE, můžete nastavit následující **clusterSettings** položky:
 
         "clusterSettings": [
             {
@@ -76,6 +77,8 @@ Protokol TLS 1.0 se dají zakázat pomocí následující **clusterSettings** po
                 "value": "1"
             }
         ],
+
+Název nastavení říká 1.0, ale při konfiguraci, zakáže protokol TLS 1.0 a TLS 1.1.
 
 ## <a name="change-tls-cipher-suite-order"></a>Změna pořadí sady šifer TLS
 Další otázkou od zákazníků, je-li, můžete upravit seznam šifer vyjednaném svůj server a jde tohoto dosáhnout úpravou **clusterSettings** jak je znázorněno níže. Seznam dostupných šifrovacích sad můžete získat z [článku na webu MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).

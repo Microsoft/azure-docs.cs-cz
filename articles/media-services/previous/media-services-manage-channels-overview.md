@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako
-ms.openlocfilehash: 9e8dc926fd796e82ea531aba6cb3a682649dff41
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3814041359884fc2862b0e90a58aabd1ad26c4cb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060559"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382142"
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Přehled živého streamování využívajícího službu Azure Media Services
 
@@ -27,6 +27,7 @@ ms.locfileid: "42060559"
 > Od 12. května 2018, živé kanály budou nadále podporu přenosového streamu RTP/MPEG-2 protokol ingestování. Migrujte prosím z RTP/MPEG-2 na RTMP nebo MP4 s fragmentací (Smooth Streaming) ingestovací protokoly.
 
 ## <a name="overview"></a>Přehled
+
 Při doručování živě streamovaných událostí pomocí Azure Media Services se běžně podílejí následující komponenty:
 
 * Kamera používaná k vysílání události.
@@ -43,19 +44,19 @@ Při doručování živě streamovaných událostí pomocí Azure Media Services
 
 **Microsoft Azure Media Services** (AMS) nabízí možnost ingestovat, kódovat, zobrazovat náhled, ukládat a doručovat obsah vašeho živého streamování.
 
-Při doručování obsahu zákazníkům je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách. Za tím účelem můžete kodéry překódujte svůj datový proud na datový proud videa s více přenosovými rychlostmi (adaptivní přenosová rychlost).  Pokud chcete zajistit o streamování na různá zařízení, použijte [dynamické balení](media-services-dynamic-packaging-overview.md) ve službě Media Services a dynamicky znovu zabalte datový proud do různých protokolů. Služba Media Services podporuje doručování následujících technologií streamování s adaptivní přenosovou rychlostí: HTTP Live Streaming (HLS), technologie Smooth Streaming, MPEG DASH.
+Při doručování obsahu zákazníkům je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách. Za tím účelem můžete kodéry překódujte svůj datový proud na datový proud videa s více přenosovými rychlostmi (adaptivní přenosová rychlost).  Pokud chcete zajistit o streamování na různá zařízení, použijte [dynamické balení](media-services-dynamic-packaging-overview.md) ve službě Media Services a dynamicky znovu zabalte datový proud do různých protokolů. Služba Media Services podporuje doručování následujících adaptivní přenosové rychlosti streamování technologií: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
 
 Ve službě Azure Media Services se o zpracování všech funkcí živého streamování včetně ingestování, formátování, DVR, zabezpečení, škálovatelnosti a redundance starají **kanály**, **programy** a **koncové body streamování**.
 
 **Kanál** představuje cestu pro zpracování obsahu živého streamování. Kanál může přijímat živé vstupní datové proudy následujícími způsoby:
 
-* Místní kodéru pro kódování v reálném čase odešle **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) s více přenosovými rychlostmi do kanálu, který je nakonfigurovaný na **průchozí** doručování. **Průchozí** doručování nastává, když ingestované datové proudy prochází **kanálem** bez dalšího zpracování. Můžete použít následující kodéry, které výstupu technologie Smooth Streaming s více přenosovými rychlostmi: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek a Transkodéry tricaster.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní kodéru pro kódování v reálném čase odešle **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) s více přenosovými rychlostmi do kanálu, který je nakonfigurovaný na **průchozí** doručování. **Průchozí** doručování nastává, když ingestované datové proudy prochází **kanálem** bez dalšího zpracování. Následující kodéry, které výstupu technologie Smooth Streaming s více přenosovými rychlostmi můžete použít: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek a Transkodéry tricaster.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
   > [!NOTE]
   > Použití průchozí metody je nejekonomičtější způsob, jak živě streamovat při pořádání několika událostí po delší dobu, když jste už investovali do místních kodérů. Viz podrobnosti o [cenách](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* Místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí do kanálu, který má povolené provádět živé kódování pomocí Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Pro práci s kanály tohoto typu jsou známé následující kodéry s výstupu RTMP: Telestream Wirecast, FMLE. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí do kanálu, který má povolené provádět živé kódování pomocí Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Následující kodéry s výstupem RTMP se ví, pracovat s kanály tohoto typu: Telestream Wirecast, FMLE. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
 Od verze Media Services 2.10, když vytvoříte kanál, můžete určit, jakým způsobem chcete, aby pro váš kanál pro příjem vstupního datového proudu a určuje, jestli chcete pro kanál provádět živé kódování datového proudu. Máte dvě možnosti:
 
@@ -63,6 +64,7 @@ Od verze Media Services 2.10, když vytvoříte kanál, můžete určit, jakým 
 * **Standardní** – tuto hodnotu zvolte, pokud máte v plánu používat Media Services ke kódování živého datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi. Tato metoda je úspornější pro vertikální navýšení kapacity rychle pro úlohy s řídkým události. Mějte na paměti, že fakturace dopad kódování v reálném čase a měli pamatovat opuštění živého kódování kanálu ve stavu "Spuštěno" budou účtovat poplatky.  Doporučuje se po dokončení se vyhnout poplatkům za velmi hodinové živě streamované události okamžitě zastavit spuštěné kanálů.
 
 ## <a name="comparison-of-channel-types"></a>Porovnání typů kanálů
+
 Následující tabulka poskytuje návod k porovnání dvou typů kanálů, které jsou podporované ve službě Media Services
 
 | Funkce | Průchozí kanál | Běžný kanál |
@@ -80,6 +82,7 @@ Následující tabulka poskytuje návod k porovnání dvou typů kanálů, kter�
 | Dojde ke ztrátě Auto přístupnými kanálů při zadání informačního kanálu |Ne |Po 12 hodinách, pokud není spuštěn žádný Program |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů (průchozí)
+
 Následující diagram znázorňuje hlavní části platformy AMS, které se podílejí na **průchozím** pracovním postupu.
 
 ![Živý pracovní postup](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
@@ -87,6 +90,7 @@ Následující diagram znázorňuje hlavní části platformy AMS, které se pod
 Další informace najdete v článku o [práci s kanály, které přijímají živé streamování s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
 
 ## <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Práce s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services
+
 Následující diagram znázorňuje hlavní část platformy AMS, které se podílejí na pracovním postupu živého streamování, ve kterém má kanál povolené kódování v reálném čase pomocí služby Media Services.
 
 ![Živý pracovní postup](./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png)
@@ -94,12 +98,16 @@ Následující diagram znázorňuje hlavní část platformy AMS, které se pod�
 Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>Popis kanálu a jeho souvisejících součástí.
+
 ### <a name="channel"></a>Kanál
+
 Ve službě Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s zodpovídají za zpracování obsahu živého streamování. Kanál obsahuje vstupní koncový bod (adresa URL ingestu), pak poskytnete živé převaděč. Kanál obdrží živé vstupní datové proudy z živého převaděč a zpřístupňuje je prostřednictvím jednoho nebo více koncové body streamování. Kanály také poskytuje koncový bod ve verzi preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
 Při vytváření kanálu můžete získat adresu URL ingestování a adresu URL ve verzi preview. Pokud chcete získat tyto adresy URL, nemá kanál ve spuštěném stavu. Pokud jste připravení začít zapisovat data z živého převaděč do kanálu, musí se spustit kanál. Po spuštění ingestovat data živého převaděč můžete zobrazit náhled datového proudu.
 
 Každý účet Media Services může obsahovat několik kanálů, více programů a více koncové body streamování. V závislosti na požadavcích šířku pásma a zabezpečení služby StreamingEndpoint může být vyhrazen pro jeden nebo více kanálů. Žádné StreamingEndpoint můžete načítat jakémkoli jiném kanálu.
+
+Při vytváření kanálu, můžete zadat povolené IP adresy v jednom z následujících formátů: Adresu IpV4 s 4 číslice, rozsah adres CIDR.
 
 ### <a name="program"></a>Program
 A [Program](https://docs.microsoft.com/rest/api/media/operations/program) vám umožňuje řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy. Vztah kanálů a programů se velmi podobná tradičním médiím, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezen na určité načasované události v tomto kanálu.
@@ -157,4 +165,4 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 
 [Kvóty a omezení](media-services-quotas-and-limitations.md).  
 
-[Koncepty služby Media Services](media-services-concepts.md)
+[Media Services Concepts](media-services-concepts.md)

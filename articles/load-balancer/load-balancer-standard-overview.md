@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 2eb2fbb1d184bf58923748278d4989a271adf434
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352576"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382563"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 
@@ -213,7 +213,7 @@ Nástroje pro vyrovnávání zatížení jsou k dispozici s 99,99 % smlouva SLA.
 
 Standardní použití nástroje pro vyrovnávání zatížení se účtuje.
 
-- Počet nakonfigurovaných Vyrovnávání zatížení a odchozí pravidla pravidla (pravidla příchozího překladu adres nezapočítávají celkový počet pravidel)
+- Počet konfigurovat Vyrovnávání zatížení a odchozích pravidel (pravidla příchozího překladu adres nezapočítávají celkový počet pravidel)
 - Objem dat zpracovaných příchozích a odchozích bez ohledu na pravidlo. 
 
 Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [cenami za Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).

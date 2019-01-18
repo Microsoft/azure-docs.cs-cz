@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: dc6994cd682997dd00e76b57b4996ebad1f73fbb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 844feb7999f88f63c9406c9f430d1d076cd032df
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352389"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390677"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Řešení potíží s nasazení tak, aby Kubernetes pro Azure Stack
 
@@ -47,7 +47,7 @@ Následující diagram znázorňuje obecný postup nasazení clusteru.
     Zadejte hodnoty, budete muset nastavit Kubernetes cluster, včetně:
     -  **Uživatelské jméno**: Uživatelské jméno pro virtuální počítače Linux, které jsou součástí clusteru Kubernetes a DVM.
     -  **Veřejný klíč SSH**: Klíč, který se používá pro autorizaci všechny počítače s Linuxem, které byly vytvořeny jako součást clusteru Kubernetes a DVM.
-    -  **Princip služby**: Identifikátor, který se používá od poskytovatele cloudu Kubernetes Azure. ID klienta, který je identifikován jako ID aplikace při vytváření instančního objektu služby. 
+    -  **Instanční objekt služby**: Identifikátor, který se používá od poskytovatele cloudu Kubernetes Azure. ID klienta, který je identifikován jako ID aplikace při vytváření instančního objektu služby. 
     -  **Tajný kód klienta**: Tyto klíče při vytváření instančního objektu služby.
 
 2. Vytvoření nasazení virtuálního počítače a rozšíření vlastních skriptů.

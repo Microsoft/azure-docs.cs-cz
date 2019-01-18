@@ -9,33 +9,35 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b07c71a9365fca3a2e5d7c837acf689af980afdd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 88f7135cea00b3e8c6cf30a1abd2b94297681c4c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075817"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391128"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR kognitivních dovedností
 
+Optické rozpoznávání znaků (OCR) dovednosti rozpozná tištěné a rukou psaný text v souborech bitové kopie. Tato dovednosti pomocí strojového učení modelů poskytované [pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) ve službě Cognitive Services. **OCR** dovedností se mapuje na následující funkce:
+
++ Pokud je nastavena na "rukou psaný", textExtractionAlgorithm ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) slouží funkce.
++ Pokud je nastavena na "Tisk", textExtractionAlgorithm ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkce se používá pro jiné jazyky než angličtinu. Pro angličtinu nové ["Rozpoznat Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) slouží funkce pro tištěný text.
+
 **OCR** dovednosti extrahuje text z obrazových souborů. Podporované formáty souborů patří:
 
-+ . JPEG
-+ . JPG
-+ . PNG
-+ . BMP
-+ . GIF
++ .JPEG
++ .JPG
++ .PNG
++ .BMP
++ .GIF
 
 > [!NOTE]
-> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
+> Od 21. prosince 2018 můžete [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) s dovednosti Azure Search. To umožňuje spouštění poplatků za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
 >
-> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
->
->  OCR dovedností se mapuje na následujících funkcí služeb cognitive services: Pokud je nastavena na "rukou psaný", textExtractionAlgorithm ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) slouží funkce.
->  Pokud je nastavena na "Tisk", textExtractionAlgorithm ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkce se používá pro jiné jazyky než angličtinu. Pro angličtinu nové ["Rozpoznat Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) slouží funkce pro tištěný text.
+> Provádění předdefinované dovednosti je poplatek za služby Cognitive Services, účtovat stávající [platit jako můžete přejít cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny extrakce Image je poplatek za Azure Search, aktuálně účtovat ceny verze preview, jak je popsáno na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). 
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
@@ -58,7 +60,7 @@ Parametry rozlišují malá a velká písmena.
 | Název výstupního     | Popis                   |
 |---------------|-------------------------------|
 | text          | Prostý text extrahovaný z image.   |
-| layoutText    | Komplexní typ, který popisuje byl extrahován text, stejně jako umístění, ve kterém byl nalezen text.|
+| layoutText    | Komplexní typ, který popisuje byl extrahován text a umístění, kde se nachází textu.|
 
 
 ## <a name="sample-definition"></a>Ukázková definice
@@ -136,7 +138,7 @@ Parametry rozlišují malá a velká písmena.
 
 Běžným případem použití pro sloučení textu je možnost sloučit textovou reprezentaci řetězce obrázků (text ze OCR dovedností nebo popisek image) do pole obsahu dokumentu. 
 
-Následující příklad dovednosti vytvoří *merged_text* pole obsahující textový obsah dokumentu, jakož i OCRed text ze všech obrázků, které jsou součástí tohoto dokumentu. 
+Následující příklad dovednosti vytvoří *merged_text* pole. Toto pole obsahuje textový obsah dokumentu a OCRed text ze všech imagí vložený do tohoto dokumentu. 
 
 #### <a name="request-body-syntax"></a>Syntaxe textu požadavku
 ```json

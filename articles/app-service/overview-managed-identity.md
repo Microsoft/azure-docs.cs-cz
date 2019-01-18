@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 5e09401c37d40c99d3f8bbb643d104c0105812f4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 413473b856d76f9ebeff9669eb1facc54d89b509
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730925"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382526"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravované identity pro App Service a Azure Functions
 
@@ -260,7 +260,7 @@ Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s spravovan
 
 1. Přidat odkazy [Microsoft.Azure.Services.appauthentication přistupovat](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a jakékoli další potřebné balíčky NuGet pro vaši aplikaci. Následujícím příkladu také používá [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
-2.  Přidejte následující kód pro vaši aplikaci, úprava cílit na správný zdroj. Tento příklad ukazuje dva způsoby, jak pracovat se službou Azure Key Vault:
+2. Přidejte následující kód pro vaši aplikaci, úprava cílit na správný zdroj. Tento příklad ukazuje dva způsoby, jak pracovat se službou Azure Key Vault:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
@@ -277,12 +277,12 @@ Další informace o Microsoft.Azure.Services.appauthentication přistupovat a zp
 ### <a name="using-the-rest-protocol"></a>Pomocí protokolu REST
 
 Aplikace s využitím spravované identity má dvě proměnné prostředí definované:
+
 - MSI_ENDPOINT
 - MSI_SECRET
 
 **MSI_ENDPOINT** místní adresu URL, ze kterého můžete aplikaci požádat o tokeny. Získá token pro určitý prostředek, ujistěte se, požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
 
-> [!div class="mx-tdBreakAll"]
 > |Název parametru|V|Popis|
 > |-----|-----|-----|
 > |prostředek|Dotaz|AAD identifikátor URI prostředku, pro která by měla být získána token. To může být jedna z [služby Azure, že podpora Azure AD ověřování](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) nebo jakékoli jiné identifikátor URI prostředku.|
@@ -290,10 +290,8 @@ Aplikace s využitím spravované identity má dvě proměnné prostředí defin
 > |Tajný kód|Hlavička|Hodnota proměnné prostředí MSI_SECRET.|
 > |ID klienta|Dotaz|(Volitelné) ID uživatelsky přiřazené identity použít. Pokud tento parametr vynechán, systém přiřadil identita se používá.|
 
-
 Úspěšná odpověď 200 OK obsahuje text JSON s následujícími vlastnostmi:
 
-> [!div class="mx-tdBreakAll"]
 > |Název vlastnosti|Popis|
 > |-------------|----------|
 > |access_token|Požadovaný přístupový token. Volání webové služby můžete použít tento token k ověření přijímající webové služby.|
@@ -301,24 +299,27 @@ Aplikace s využitím spravované identity má dvě proměnné prostředí defin
 > |prostředek|Identifikátor URI ID aplikace přijímající webové služby.|
 > |token_type|Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je nosiče. Další informace o nosných tokenů najdete v tématu [rozhraní Framework autorizace OAuth 2.0: Použití tokenu nosiče (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
-
 Tato odpověď je stejné jako [odpověď pro požadavek tokenu přístupu do služby AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
-> [!NOTE] 
+> [!NOTE]
 > Proměnné prostředí jsou nastavené při prvním spuštění procesu, tak po povolení spravovanou identitu pro vaši aplikaci, budete muset restartovat aplikaci nebo znovu její kód před `MSI_ENDPOINT` a `MSI_SECRET` jsou k dispozici pro váš kód.
 
 ### <a name="rest-protocol-examples"></a>Příklady protokolu REST
+
 Příklad žádosti může vypadat nějak takto:
+
 ```
 GET /MSI/token?resource=https://vault.azure.net&api-version=2017-09-01 HTTP/1.1
 Host: localhost:4141
 Secret: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
 ```
+
 A ukázkové odpovědi může vypadat nějak takto:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json
- 
+
 {
     "access_token": "eyJ0eXAi…",
     "expires_on": "09/14/2017 00:00:00 PM +00:00",
@@ -328,7 +329,9 @@ Content-Type: application/json
 ```
 
 ### <a name="code-examples"></a>Příklady kódu
+
 <a name="token-csharp"></a>K této žádosti v jazyce C#:
+
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -336,10 +339,12 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
     return await client.GetAsync(String.Format("{0}/?resource={1}&api-version={2}", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource, apiversion));
 }
 ```
+
 > [!TIP]
 > Pro jazyky .NET, můžete také použít [Microsoft.Azure.Services.appauthentication přistupovat](#asal) místo vytváření to požádat o sobě.
 
 <a name="token-js"></a>V Node.JS:
+
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
@@ -355,6 +360,7 @@ const getToken = function(resource, apiver, cb) {
 ```
 
 <a name="token-powershell"></a>V prostředí PowerShell:
+
 ```powershell
 $apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -370,13 +376,13 @@ Systém přiřadil identitou lze odebrat tím, že zakážete funkci stejným zp
 ```json
 "identity": {
     "type": "None"
-}    
+}
 ```
 
 Odebrání identitou systém přiřadil tímto způsobem také odstranit ji ze služby AAD. Systém uživatelsky přiřazené identity taky automaticky odeberou z AAD při odstraňování prostředků aplikace.
 
-> [!NOTE] 
-> Je také nastavení aplikace, kterou můžete nastavit, WEBSITE_DISABLE_MSI, tím se zakáže pouze místní služby tokenů. Ale ponechá identity na místě a nástrojů se stále zobrazí spravovanou identitu jako "on" nebo "povoleno". Použití tohoto nastavení v důsledku toho není doporučená.
+> [!NOTE]
+> Je také nastavení aplikace, kterou můžete nastavit, WEBSITE_DISABLE_MSI, tím se zakáže pouze místní služby tokenů. Ale ponechá identity na místě a nástrojů se stále zobrazí spravovanou identitu jako "on" nebo "povoleno". V důsledku toho se nedoporučuje použití tohoto nastavení.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -11,28 +11,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 30c033b487fe58d017080b02c257502f82338164
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 371751f2eb643c3699e5462fe44380d7792243ef
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710036"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388310"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení použití a zásady
-Tento článek popisuje, jak nakonfigurovat počet uživatelů pro testovací prostředí, je registrován v testovacím, řídí počet hodin, můžete použít virtuální počítač a další. 
+Tento článek popisuje, jak přidat uživatele do testovacího prostředí, je registrován v testovacím, řídí počet hodin, můžete použít virtuální počítač a další. 
 
 
-## <a name="specify-the-number-of-users-allowed-into-the-lab"></a>Zadejte počet uživatelů povolený do testovacího prostředí
+## <a name="add-users-to-the-lab"></a>Přidání uživatelů do testovacího prostředí
+Pokud máte **omezit přístup** povolena, přidejte do seznamu uživatelé (e-mailové adresy).
 
-1. Vyberte **Usage policy** (Zásady používání). 
-2. V nastavení **Usage policy** (Zásady používání) zadejte **počet uživatelů**, kteří mohou testovací prostředí používat.
-3. Vyberte **Save** (Uložit). 
+1. Vyberte **uživatelé** v nabídce vlevo.
+2. Vyberte **přidat uživatele** na panelu nástrojů. 
+3. Na **přidat uživatele** stránky, zadejte e-mailové adresy uživatele na samostatných řádcích nebo na jednom řádku, oddělené středníky. 
 
-    ![Zásady používání](../media/how-to-manage-classroom-labs/usage-policy-settings.png)
+    ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Vyberte **Uložit**. Zobrazí se e-mailové adresy uživatelů a jejich stavy (zaregistrované, nebo ne) v seznamu. 
+
+    ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
 
 ## <a name="send-registration-link-to-students"></a>Odeslání odkazu pro registraci studentům
+Následující postup obsahuje kroky k odeslání odkazu registrace pro uživatele. Pokud **omezit přístup** je povolená pro testovací prostředí, pouze uživatelé ze seznamu uživatelů můžete použít odkaz na registraci k zaregistrování do testovacího prostředí. 
 
 1. Přepněte **uživatelé** zobrazení tak, že vyberete **uživatelé** v nabídce vlevo. 
 2. Vyberte **odkazu registrace** dlaždici.
@@ -52,9 +57,10 @@ Tento článek popisuje, jak nakonfigurovat počet uživatelů pro testovací pr
 
 Vyberte **uživatelé** v nabídce vlevo, pokud chcete zobrazit seznam uživatelů zaregistrované testovací prostředí. 
 
-![Seznam uživatelů zaregistrovaného testovacího prostředí](../media/how-to-configure-student-usage/users-list.png)
+![Seznam uživatelů zaregistrovaného testovacího prostředí](../media/how-to-configure-student-usage/users-list-new.png)
 
 ## <a name="set-quotas-per-user"></a>Nastavení kvót na uživatele
+Kvóty uživatele můžete nastavit pomocí následujících kroků: 
 
 1. Vyberte **uživatelé** v nabídce vlevo.
 2. Vyberte **kvóty na uživatele: neomezená** na panelu nástrojů. 
@@ -62,21 +68,9 @@ Vyberte **uživatelé** v nabídce vlevo, pokud chcete zobrazit seznam uživatel
 4. Pro **kolik hodin chcete poskytnout všem uživatelům**, zadejte počet hodin a vyberte **Uložit**. 
 
     ![Počet hodin na uživatele](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. Nyní zobrazit počet hodin na panelu nástrojů: **kvóty na uživatele: &lt;počet hodin&gt;**. 
+5. Nyní uvidíte počet hodin na panelu nástrojů: **Kvóta na uživatele: &lt;počet hodin&gt;**. 
 
     ![Kvóta na uživatele](../media/how-to-configure-student-usage/quota-per-user.png)
-
-## <a name="add-users-to-the-lab"></a>Přidání uživatelů do testovacího prostředí
-Pokud máte **omezit přístup** povolena, přidejte do seznamu uživatelé (e-mailové adresy).
-
-1. Vyberte **uživatelé** v nabídce vlevo.
-2. Vyberte **přidat uživatele** na panelu nástrojů. 
-3. Na **přidat uživatele** stránky, zadejte e-mailové adresy uživatele na samostatných řádcích nebo na jednom řádku, oddělené středníky. 
-
-    ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Vyberte **Uložit**. Zobrazí se e-mailové adresy uživatelů a jejich stavy (zaregistrované, nebo ne) v seznamu. 
-
-    ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Přidání uživatelů tím, že nahrajete soubor CSV
 Nahrajete soubor .csv s e-mailové adresy uživatelů, můžete také přidat uživatele.
@@ -96,6 +90,16 @@ Můžete provádět následující úlohy na studenta virtuálního počítače:
 - Připojte se k virtuálnímu počítači. 
 - Odstranění virtuálního počítače. 
 - Zobrazí počet hodin, že uživatelé používat virtuální počítač. 
+
+## <a name="update-number-of-virtual-machines-in-lab"></a>Aktualizace počtu virtuálních počítačů v testovacím prostředí
+Pokud chcete aktualizovat počet virtuálních počítačů v testovacím prostředí, proveďte následující kroky **virtuálních počítačů** stránky:
+
+1. Vyberte **virtuálních počítačů** v nabídce vlevo. 
+2. Vyberte **kapacity testovacího prostředí: &lt;číslo&gt; tento počet počítačů:** na panelu nástrojů. 
+3. Zadejte **číslo** virtuálních počítačů.
+4. Vyberte **Uložit**.
+
+    ![Virtuální počítače v testovacím prostředí](../media/how-to-configure-student-usage/number-virtual-machines.png)
 
 
 ## <a name="next-steps"></a>Další postup

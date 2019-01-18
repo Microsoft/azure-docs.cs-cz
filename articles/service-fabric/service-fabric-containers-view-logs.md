@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: twhitney
-ms.openlocfilehash: c4add1034e4b149cbe9d3c76c03987d45ca587c4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d66e27d860d18a37ffd9c6355b8d769116f26d73
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993773"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391240"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Zobrazit protokoly pro Service Fabric container service
 Azure Service Fabric je orchestrátor kontejnerů a podporuje obě [kontejnerů Linuxu a Windows](service-fabric-containers-overview.md).  Tento článek popisuje postup zobrazení protokolů kontejneru spuštěných služby kontejneru nebo dead kontejneru, takže můžete diagnostikovat a řešit problémy.
@@ -43,6 +43,8 @@ Jako pomoc s diagnostikou selhání spuštění kontejneru Service Fabric (verze
  ```
 
 Nastavení **ContainersRetentionCount** určuje počet kontejnerů, které se při svém selhání zachovají. Pokud je zadaná hodnota záporná, zachovají se všechny kontejnery, které selhaly. Když **ContainersRetentionCount** atribut není zadán, zachovají se žádné kontejnery. Atribut **ContainersRetentionCount** také podporuje parametry aplikace, takže uživatelé mohou zadat různé hodnoty pro testovací a produkční clustery. Při použití této funkce použijte omezení umístění, aby služba kontejneru cílila na konkrétní uzel. Zabrání se tak přesunu služby kontejneru na jiné uzly. Všechny kontejnery zachované pomocí této funkce je nutné ručně odebrat.
+
+Nastavení **RunInteractive** odpovídá Docker `--interactive` a `tty` [příznaky](https://docs.docker.com/engine/reference/commandline/run/#options). Pokud toto nastavení nastavena na hodnotu true v souboru manifestu, tyto příznaky se používá ke spuštění kontejneru.  
 
 ### <a name="rest"></a>REST
 Použití [získat protokoly nasazení na uzel kontejneru](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) operaci získat protokoly pro kontejner chyb. Zadejte název uzlu, který byl kontejner spuštěný, název aplikace, název manifestu služby a název balíčku kódu.  Zadejte `&Previous=true`. Odpověď bude obsahovat protokoly kontejneru pro neaktivní kontejner instance balíček kódu.

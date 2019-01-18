@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: a4671d383c46bf0b932ce528f4eacb7255bad5e7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: dd555d5406988d1c87859ec697a0f84be0db6cc5
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105402"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382656"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Zařízení připojená k tom, jak spravovat místní skupiny administrators na Azure AD
 
@@ -106,7 +106,7 @@ Nelze přiřadit skupiny k roli Správce zařízení, jsou povoleny pouze jednot
 
 Správci zařízení jsou přiřazené do všech zařízení připojeno k Azure AD. Nemůže být obor na konkrétní sadu zařízení.
 
-Při odebrání uživatele z role Správce zařízení stále mají oprávnění místního správce v zařízení tak dlouho, dokud jsou přihlášení k němu. Oprávnění se zrušil během na další přihlašování, nebo po 4 hodinách, po vydání nové primární obnovovací token.
+Při odebrání uživatele z role Správce zařízení stále mají oprávnění místního správce v zařízení tak dlouho, dokud jsou přihlášení k němu. Při dalším přihlášení nebo po 4 hodinách, po vydání nové primární obnovovací token je odvolán oprávnění.
 
 
 

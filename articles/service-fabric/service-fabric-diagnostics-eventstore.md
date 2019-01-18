@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b66373b6847b96a4fcbc1a0c9da42d285d089a9d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a23d8c1e72ec453724514e4d1638c5a223d1644
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727881"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389225"
 ---
 # <a name="eventstore-service-overview"></a>Přehled služby Eventstoru
 
@@ -34,6 +34,7 @@ Počínaje verze 6.2, je služba Eventstoru možnosti monitorování v Service F
 * Potvrďte, že správně zpracovává akce správy, které je možné ve vašem clusteru
 * Získat "snímek" jak dixons carphone Service Fabric s konkrétní entity
 
+![Eventstoru](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 Pokud chcete zobrazit úplný seznam událostí, které jsou k dispozici v Eventstoru, naleznete v tématu [události Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -53,7 +54,7 @@ Pro události, které jsou k dispozici pro každou entitu a typ entity ve vašem
 * Repliky oddílů: události ze všech replik nebo instancí v rámci konkrétního oddílu identifikovaný `partitionId`
 * Repliky oddílu: události z konkrétní repliky / instance identifikovaný `replicaId` a `partitionId`
 
-Další informace o rozhraní API, projděte si [referenční dokumentace rozhraní API Eventstoru] ((https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Další informace o rozhraní API, projděte si [reference k rozhraní API Eventstoru](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
 Služba Eventstoru má také možnost ke korelaci událostí ve vašem clusteru. Zobrazením událostí, které byly vytvořeny ve stejnou dobu od různé entity, které může mít vliv na sobě navzájem, služba Eventstoru je moci připojit k těmto událostem a pomůže identifikovat příčiny pro aktivity ve vašem clusteru. Například pokud nastane jednou z vašich aplikací bez nutnosti jakkoli měnit vyvolané špatného, Eventstoru se také podívat na další události vystavené platformy a to s může korelovat `Error` nebo `Warning` událostí. To pomáhá při rychlejší detekce chyb a hlavní příčiny potíží analýzy.
 

@@ -7,14 +7,14 @@ manager: cgronlund
 ms.service: cognitive-services
 ms.component: ''
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/17/2018
 ms.author: nitinme
-ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 4a398342382d21d9261c8f693b78f184876bfed3
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025391"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381939"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co jsou Azure Cognitive Services?
 
@@ -89,6 +89,14 @@ Všechna rozhraní API máte bezplatnou zkušební verzi plánu.  Placené nabí
 Rozhraní API ve službě Cognitive Services jsou hostované na rozšiřující se síť Datacenter spravovaných microsoftem. Dostupnost podle oblastí najdete pro každé rozhraní API v [oblasti Azure seznamu](https://azure.microsoft.com/regions).
 
 Hledáte oblast nepodporujeme ještě? Dejte nám vědět, vyplňte žádost o funkci na naše [fórum UserVoice](https://cognitive.uservoice.com/).
+
+## <a name="supported-cultural-languages"></a>Podporované jazyky jazykové verze
+
+ Služby cognitive Services podporuje širokou škálu kulturní jazyky na úrovni služby. Můžete najít dostupnost jazyk pro každé rozhraní API v [podporované jazyky seznamu](language-support.md).
+
+ ## <a name="container-support"></a>Podpora kontejnerů
+
+ Služby cognitive Services poskytuje kontejnery pro nasazení v cloudu Azure nebo místně. Další informace o [Cognitive Service kontejnery](cognitive-services-container-support.md).
 
 ## <a name="support"></a>Podpora
 

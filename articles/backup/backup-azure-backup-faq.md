@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: a5619db18ef326b160bf9f4a1fbacbd6b3e9f012
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 4e3a79c28fc0e67fbf22e4d0fde3de9528d3edf4
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319456"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382637"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -230,7 +230,7 @@ Když se použije nová zásada, plán a uchovávání nové zásady následuje.
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Jsou data odesílaná do Azure šifrovaná?
 
-Ano. Data se šifrují na místním počítači pomocí AES256. Data se odesílají prostřednictvím zabezpečeného spojení HTTPS.
+Ano. Data se šifrují na místním počítači pomocí AES256. Data se odesílají prostřednictvím zabezpečeného spojení HTTPS. Data se přenášejí v cloudu je chráněn odkazu HTTPS pouze mezi služby úložiště a obnovení. Protokol iSCSI zabezpečuje data přenášená mezi počítači pro obnovení služby a uživatele. Zabezpečené tunelové propojení se používá k ochraně kanál iSCSI.
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Jsou šifrovaná i zálohovaná data v Azure?
 

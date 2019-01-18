@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: c8aa08dc189a77a206ea24b535aedf64454838c7
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 10e277618e9741cec4b4fbe88262b29c4f25e3c2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359404"
+ms.locfileid: "54383093"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -192,7 +192,9 @@ Další informace najdete v části o [bezpečnostních funkcích zařízení Da
 
 ### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Otázka: Dokončili jsme přípravu zařízení k odeslání a zařízení jsme vypnuli. Můžeme do Data Boxu přidat další data?
 A. Ano. Zařízení můžete znovu zapnout a přidat do něj další data. Až data nakopírujete, budete muset znovu spustit **přípravu k odeslání**.
-  
+
+### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Otázka: Zobrazila se mi Moje zařízení a se nespouští nahoru? Jak můžu odešlete zařízení zpět?
+A. Pokud vaše zařízení se nespouští, přejděte na vaši objednávku na webu Azure Portal. Stáhnout Expediční štítek a opatří, která na zařízení. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).
 
 ## <a name="verify-and-upload"></a>Ověření a nahrání
 

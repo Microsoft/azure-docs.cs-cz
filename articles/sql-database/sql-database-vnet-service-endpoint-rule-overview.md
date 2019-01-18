@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 1/16/2019
-ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.date: 01/17/2019
+ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359846"
+ms.locfileid: "54390395"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL
 
@@ -173,7 +173,7 @@ Azure Storage implementoval stejné funkce, která vám umožní omezit připoje
 PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z účtů služby Azure Storage. Pokud účet služby Azure Storage, která se načítají data z omezuje přístup jenom na sadu podsítí virtuální sítě, dojde k přerušení připojení z PolyBase k účtu. Umožňující použití obou PolyBase importovat a exportovat scénáře s Azure SQL Data Warehouse připojení k Azure Storage, která je zabezpečena k virtuální síti, postupujte podle kroků uvedených dole:
 
 #### <a name="prerequisites"></a>Požadavky
-1.  Instalace Azure Powershellu pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+1.  Instalace Azure Powershellu pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Pokud máte účet pro obecné účely v1 a blob storage, je nutné nejprve upgradovat na v2 pro obecné účely použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Musíte mít **Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště** zapnuté pod účtem služby Azure Storage **brány firewall a virtuální sítě** nabídky nastavení. Projít tento [průvodce](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Další informace.
  

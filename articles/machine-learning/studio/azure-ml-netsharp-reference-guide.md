@@ -1,17 +1,17 @@
 ---
-Název: Neuronových sítí NET # titleSuffix: Azure Machine Learning Studio Popis: Syntaxe Net # neuronových sítí specifikačnímu jazyku, spolu s příklady toho, jak vytvořit model vlastní neuronové sítě pomocí Net # s Azure Machine Learning Studio.
+Název: Vytvořte vlastní neuronových sítí Net # titleSuffix: Azure Machine Learning Studio Popis: Průvodce syntaxí pro specifikačnímu jazyku neuronových sítí Net #. Zjistěte, jak vytvářet modely vlastní neuronové sítě v nástroji Azure Machine Learning Studio.
 služby: machine learningu ms.service: ms.component strojového učení: studio ms.topic: referenční dokumentace
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
-NET # je jazyk vyvinutý microsoftem, který se používá k definování architektur neuronové sítě. Pomocí Net # pro definici struktury neuronové sítě umožňuje definovat složité struktury, jako jsou hluboké neuronové sítě nebo convolutions libovolného dimenzí, kterých se ví, ke zlepšení učení na data, například obrázek, zvuk nebo video.
+NET # je jazyk vyvinutý microsoftem, který se používá k definování architektur komplexní neuronové sítě jako hluboké neuronové sítě nebo convolutions libovolného dimenzí. Složité struktury můžete použít ke zlepšení učení na data, jako jsou image, video nebo ve zvukovém souboru.
 
 Architektura specifikace Net # můžete použít v těchto kontextech:
 
 + Všechny moduly neuronových sítí v Microsoft Azure Machine Learning Studio: [Víc tříd Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Two-Class Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), a [regrese Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Funkce neuronových sítí v MicrosoftML: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) a [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)jazyka R a [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) pro Python.
++ Funkce neuronových sítí v Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) a [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)jazyka R a [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) pro Python.
 
 
 Tento článek popisuje základní koncepty a syntaxe, které potřebujete pro vývoj vlastní neuronové sítě pomocí Net #: 
@@ -26,17 +26,17 @@ Tento článek popisuje základní koncepty a syntaxe, které potřebujete pro v
 
 Struktura neuronové sítě se skládá z uzlů, které jsou uspořádány do vrstev a vážené připojení (nebo hrany) mezi uzly. Připojení se směrové a každé připojení má zdrojový uzel a cílový uzel.  
 
-Každá trainable vrstva (skrytý nebo vrstvu výstupu) má jeden nebo více **připojení sady**. Připojení sady se skládá ze zdrojové vrstvy a specifikaci připojení z této zdrojové vrstvy. Všechna připojení v dané sadě sdílejí stejnou úroveň zdroje a stejnou cílovou vrstvu. Net # sady připojení se považuje za jako patřící do cílové vrstvy do sady prostředků.
+Každá trainable vrstva (skrytý nebo vrstvu výstupu) má jeden nebo více **připojení sady**. Připojení sady se skládá ze zdrojové vrstvy a specifikaci připojení z této zdrojové vrstvy. Všechna připojení v dané sadě sdílet zdrojové a cílové vrstvy. Net # sady připojení se považuje za jako patřící do cílové vrstvy do sady prostředků.
 
-NET # podporuje různé typy připojení sad, které umožňuje přizpůsobit způsob vstupy jsou mapované na skrytými vrstvami a mapované na výstupy.
+NET # podporuje různé typy připojení sad, které umožňují přizpůsobit vstupy způsob, jak jsou mapovány na skrytými vrstvami a mapovat na výstupy.
 
 Výchozí nebo standardní sada je **úplnou sadu**, ve které je připojeno každý uzel ve vrstvě zdroje na každý uzel v cílové vrstvy.
 
 Kromě toho Net # podporuje následující čtyři typy sad rozšířeného připojení:
 
-+ **Filtrované sady**. Uživatel můžete definovat predikátu pomocí umístění vrstvy zdrojový a cílový uzel vrstvy. Pokaždé, když predikát je hodnota True, jsou uzly připojeny.
++ **Filtrované sady**. Predikát můžete definovat pomocí umístění vrstvy zdrojový a cílový uzel vrstvy. Pokaždé, když predikát je hodnota True, jsou uzly připojeny.
 
-+ **Svazky s využitím konvolučních**. Uživatel můžete definovat malé sousedství uzly ve zdrojové vrstvy. Každý uzel v cílové vrstvy je připojen k jedné okolí uzly ve zdrojové vrstvy.
++ **Svazky s využitím konvolučních**. Můžete definovat malé sousedství uzlů ve vrstvě zdroje. Každý uzel v cílové vrstvy je připojen k jedné okolí uzly ve zdrojové vrstvy.
 
 + **Sdružování sady** a **odpovědi normalizace sady**. Ty jsou podobné konvoluční sad v tom, že uživatel definuje malé sousedství uzly ve zdrojové vrstvy. Rozdíl je, že nejsou trainable váhy okraje v těchto svazcích. Místo toho předdefinované funkce použity na zdrojové hodnoty uzlu k určení hodnoty cílový uzel.
 

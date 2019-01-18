@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788391"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382751"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Zálohování klienta nebo Windows Serveru do Azure s využitím modelu nasazení Resource Manager
 Tento článek vysvětluje, jak zálohovat Windows Server (nebo klienta Windows) souborů a složek do Azure pomocí Azure Backup pomocí modelu nasazení Resource Manager.
@@ -48,9 +48,9 @@ Trezor služby Recovery Services je entita, která ukládá všechny zálohy a b
 
 6. V části **Skupina prostředků**:
 
-    * vyberte **Vytvořit novou**, pokud chcete vytvořit novou skupinu prostředků.
+    * Klikněte na tlačítko **vybrat existující...**  Rozevírací nabídka zobrazíte seznam dostupných skupin prostředků.
     Nebo
-    * vyberte **Použít existující** a kliknutím na rozevírací nabídku zobrazte seznam dostupných skupin prostředků.
+    * vyberte **Vytvořit novou**, pokud chcete vytvořit novou skupinu prostředků.
 
   Kompletní informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
 
@@ -70,21 +70,21 @@ Při prvním vytvoření trezoru Služeb zotavení určíte, jak má být úlož
 
 1. V okně **Trezory služby Recovery Services** klikněte na nový trezor.
 
-    ![Výběr nového trezoru ze seznamu trezorů služby Recovery Services](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
+    ![Výběr nového trezoru ze seznamu trezorů služby Recovery Services](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    Po výběru trezoru se okno **Trezory služby Recovery Services** zúží a otevře se okno Nastavení (*s názvem trezoru v horní části*) a okno s podrobnostmi o trezoru.
+    Po výběru trezoru, trezor služby Recovery Services okno zúží a **přehled** blade (*obsahující název trezoru v horní části*) podrobnosti trezoru otevřete okno.
 
-    ![Zobrazení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+    ![Zobrazení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 
-2. V okně Nastavení nového trezoru pomocí vertikálního posuvníku přejděte dolů do části Správa a klikněte na **Infrastruktura zálohování**.
+2. V novém trezoru v části **nastavení** oddílu, přejděte na **vlastnosti**.
 
-  Otevře se okno Infrastruktura zálohování.
+  **Vlastnosti** se otevře okno.
 
-3. V okně Infrastruktura zálohování klikněte na **Konfigurace zálohování**. Otevře se okno **Konfigurace zálohování**.
+3. V **vlastnosti** okna, klikněte na tlačítko **aktualizace** pod **konfigurace zálohování** okno. **Konfigurace zálohování** se otevře okno.
 
-  ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+  ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-4. Zvolte vhodnou možnost replikace pro svůj trezor.
+4. Zvolte vhodnou možnost replikace pro svůj trezor a klikněte na tlačítko **Uložit**.
 
   ![volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
@@ -183,7 +183,7 @@ Zásada zálohování je, naplánovat, kdy jsou pořizovány body obnovení a do
 
 ### <a name="to-create-a-backup-schedule"></a>Vytvoření plánu zálohování
 
-Nastavte plán zálohování na počítači, který chcete zálohovat. Všimněte si, že času nastavenému pro zálohování se mohou lišit od času místní vzhledem k tomu Azure Backup nepřijímá letní čas (DST) do účtu. 
+Nastavte plán zálohování na počítači, který chcete zálohovat. Všimněte si, že času nastavenému pro zálohování se mohou lišit od času místní vzhledem k tomu Azure Backup nepřijímá letní čas (DST) do účtu.
 1. Otevřete agenta Microsoft Azure Backup. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.
 
     ![Spuštění agenta Azure Backup](./media/backup-configure-vault/snap-in-search.png)

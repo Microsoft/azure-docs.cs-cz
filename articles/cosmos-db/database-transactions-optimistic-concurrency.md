@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cbd09f141128f9103af88b695baf717eaa3c99d5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038832"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389104"
 ---
 # <a name="database-transactions-and-optimistic-concurrency-control"></a>Databázové transakce a optimistického řízení souběžnosti
 
@@ -49,7 +49,7 @@ Spouštění jazyka JavaScript přímo uvnitř databázového stroje zajišťuje
 
 ## <a name="optimistic-concurrency-control"></a>Optimistického řízení souběžnosti 
 
-Optimistického řízení souběžnosti umožňuje zabránit ztrátou určitých aktualizací a odstraní. Souběžné, konfliktní operace podléhají regulární pesimistické zamykání databázového stroje hostuje logický oddíl, který vlastní položku. Při pokusu o aktualizaci nejnovější verzi položky v rámci logického oddílu, jeden z těchto dvou souběžných operací vyhraje a druhý se nezdaří. Nicméně pokud jedna nebo dvě operace pokus o aktualizaci souběžně jedné položce bylo dříve přečtené starší hodnota položky, databáze nebude vědět, pokud dříve čtení podle jedné nebo obou konfliktní operace byla zadána hodnota skutečně nejnovější hodnotu položky. Naštěstí tuto situaci lze zjistit pomocí optimistického řízení souběžnosti řízení přístupu (OCC) před umožníte tím dvě operace zadejte hranici transakce v databázovém stroji. OCC chrání vaše data před náhodnému přepsání změny provedené jinými uživateli. Je také zabrání ostatním náhodnému přepsání vlastní změny.
+Optimistického řízení souběžnosti umožňuje zabránit ztrátou určitých aktualizací a odstraní. Souběžné, konfliktní operace podléhají regulární pesimistické zamykání databázového stroje hostuje logický oddíl, který vlastní položku. Při pokusu o dvě souběžná operace aktualizovat nejnovější verzi položky v rámci logického oddílu, jeden z nich vyhraje a druhý se nezdaří. Nicméně pokud jedna nebo dvě operace pokus o aktualizaci souběžně jedné položce bylo dříve přečtené starší hodnota položky, databáze nebude vědět, pokud dříve čtení podle jedné nebo obou konfliktní operace byla zadána hodnota skutečně nejnovější hodnotu položky. Naštěstí tuto situaci lze zjistit pomocí optimistického řízení souběžnosti řízení přístupu (OCC) před umožníte tím dvě operace zadejte hranici transakce v databázovém stroji. OCC chrání vaše data před náhodnému přepsání změny provedené jinými uživateli. Je také zabrání ostatním náhodnému přepsání vlastní změny.
 
 Souběžná aktualizace položky podléhají OCC vrstvou komunikace protokolu služby Azure Cosmos DB. Databáze Azure Cosmos se zajistí, že klientské verze položky, která jsou aktualizace (nebo odstranění) je stejná jako verze položky v kontejneru Azure Cosmos. Zaručí se tak, že zápisů jsou chráněny před přepsáním omylem podle zápisy ostatních a naopak. V prostředí s více uživateli optimistického řízení souběžnosti ovládacím prvku chrání proti náhodnému odstranění nebo aktualizaci chybná verze položky. V důsledku toho jsou položky chráněné proti nechvalně známý "ztracené aktualizace" nebo "ztráty delete" problémy.
 

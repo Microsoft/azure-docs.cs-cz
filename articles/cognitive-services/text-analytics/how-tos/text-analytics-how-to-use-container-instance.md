@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: 513067f09d8cac64ca747ff217c84667c5469d82
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9f9ae8bb3aa1da51d2a9b81cf7d50d75c5229c11
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248234"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382034"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Nasazení kontejneru detekce jazyka do služby Azure Kubernetes Service
 
@@ -38,7 +38,7 @@ Tento postup vyžaduje několik nástrojů, které musí být nainstalován a sp
 
 Tento postup načte a spustí ukázku kontejneru Cognitive Services pro rozpoznávání jazyka. Ukázka má dva kontejnery, jeden pro klientskou aplikaci a jeden pro kontejner služeb Cognitive Services. Musíte nainstalovat obě tyto bitové kopie do vlastní službě Azure Container Registry. Poté, co jsou na vlastním registru, vytvoření služby Azure Kubernetes pro přístup k těmto obrázkům a spouštět kontejnery. Pokud jsou spuštěné kontejnery, použijte **kubectl** rozhraní příkazového řádku a sledujte výkon kontejnerů. Přístup k aplikaci klienta s žádostí HTTP a zobrazit výsledky. 
 
-
+![Koncepční představu o spuštění ukázkových kontejnerů](../media/how-tos/container-instance-sample/containers.png)
 
 ## <a name="the-sample-containers"></a>Ukázkových kontejnerů
 

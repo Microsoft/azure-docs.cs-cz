@@ -7,14 +7,14 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 08638f0b55c84a6b0e42d3782246ef5b2ce833f3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ed440b5d4a95689c6b6d9f1986dfe35ea47e4298
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359064"
+ms.locfileid: "54390383"
 ---
-# <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Použít pro podporu MongoDB pro funkce a syntaxi MongoDB API služby Azure Cosmos DB
+# <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB: podporovány funkcí a syntaxe
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Může komunikovat s rozhraním API Azure Cosmos DB pro MongoDB pomocí kteréhokoli z klienta MongoDB opensourcových [ovladače](https://docs.mongodb.org/ecosystem/drivers). Azure Cosmos DB API pro MongoDB umožňuje použití existujících ovladačů klienta dodržováním MongoDB [svážete protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 

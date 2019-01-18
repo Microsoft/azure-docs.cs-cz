@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e11db0cacb14ab94c40ebbf6cac356a08cc016f1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352678"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388475"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Přidat Kubernetes na webu Marketplace služby Azure Stack
 
@@ -60,11 +60,11 @@ Vytvořte plán, nabídky a předplatné pro položky Kubernetes Marketplace. M�
 
     e. Vyberte **nabízejí**. Vyberte název nabídky, která jste vytvořili. Poznamenejte si ID předplatného.
 
-## <a name="create-a-service-principle-and-credentials-in-ad-fs"></a>Vytvořit instanční objekt a přihlašovacích údajů ve službě AD FS
+## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>Vytvoření instančního objektu a přihlašovacích údajů ve službě AD FS
 
 Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu identity management, je potřeba vytvořit instanční objekt pro uživatele nasazení clusteru Kubernetes.
 
-1. Vytváření a exportování certifikátu se použije k vytvoření instančního objektu. Následující fragment kódu níže ukazuje, jak vytvořit certifikát podepsaný svým držitelem. 
+1. Vytváření a exportování certifikátu se použije k vytvoření instančního objektu služby. Následující fragment kódu níže ukazuje, jak vytvořit certifikát podepsaný svým držitelem. 
 
     - Budete potřebovat následující údaje:
 
@@ -111,13 +111,13 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
        | Hodnota | Popis                     |
        | ---   | ---                             |
        | ERCS IP | V ASDK, privilegovaných koncový bod je obvykle `AzS-ERCS01`. |
-       | Název aplikace | Jednoduchý název instančnímu objektu aplikace. |
+       | Název aplikace | Jednoduchý název instančního objektu aplikace. |
        | Umístění úložiště certifikátů | Cesta v počítači, kam jste uložili certifikát. Příklad: `Cert:\LocalMachine\My\<someuid>` |
 
     - Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními. Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
 
         ```PowerShell  
-        #Create service principle using the certificate
+        #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
         #certificate store location. Eg. Cert:\LocalMachine\My
@@ -132,7 +132,7 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
         # Creating a PSSession to the ERCS PrivilegedEndpoint
         $session = New-PSSession -ComputerName $privilegedendpoint -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-        # Get Service Principle Information
+        # Get Service principal Information
         $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name "$using:applicationName" -ClientCertificates $using:cert}
 
         # Get Stamp information
@@ -167,7 +167,7 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
         $ServicePrincipal
         ```
 
-    - Podrobnosti o zásadě služby vypadat jako následující fragment kódu
+    - Podrobnosti instančního objektu služby vypadat jako následující fragment kódu
 
         ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356

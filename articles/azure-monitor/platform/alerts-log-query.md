@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
 ms.component: alerts
-ms.openlocfilehash: 9cd745cedd6d870262e412709e4e104c1406558e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c1bcbf1245ef3256ceb1db098d6bcb014c7cd155
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54234078"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382025"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Dotazy na výstrahy protokolu ve službě Azure Monitor
 [Upozornění pravidla založená na protokoly Azure monitoru](alerts-unified-log.md) v pravidelných intervalech spouští, proto měli byste zajistit, že se zapisují pro minimalizaci režie a latenci. Tento článek obsahuje doporučení pro psaní efektivní dotazy na výstrahy protokolu a proces pro převod existujících dotazů. 
@@ -27,7 +27,7 @@ Například následující dotaz je vymezen _SecurityEvent_ tabulky a vyhledá I
 SecurityEvent | where EventID == 4624 
 ```
 
-Dotazy, které začínají `search` nebo `union` umožňují prohledávat napříč více více sloupců v tabulce nebo dokonce více tabulek. Následující příklady ukazují několik metod pro hledání termín _paměti_:
+Dotazy, které začínají `search` nebo `union` umožňují prohledávat napříč více sloupců v tabulce nebo dokonce více tabulek. Následující příklady ukazují několik metod pro hledání termín _paměti_:
 
 ```Kusto
 search "Memory"

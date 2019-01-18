@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.openlocfilehash: 68665cc588f8a6340de393330c7a248503b07125
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: fa2e834b142d5df4751b46f6dac2db9b3a10a463
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244983"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391312"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>Operace údržby poskytovatele prostředků SQL
 
-Poskytovatele prostředků SQL běží na virtuálním počítači s uzamčená. Povolit operace údržby, budete muset aktualizovat zabezpečení virtuálních počítačů. Chcete-li to udělat principu nejnižších možných oprávnění, můžete použít [Powershellu Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) koncový bod *DBAdapterMaintenance*. Instalační balíček pro poskytovatele prostředků zahrnuje skript pro tuto operaci.
+Poskytovatele prostředků SQL běží na virtuálním počítači s uzamčená. Povolit operace údržby, budete muset aktualizovat zabezpečení virtuálních počítačů. Provedete to pomocí objektu nejnižší možná oprávnění, můžete použít [Powershellu Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) koncový bod *DBAdapterMaintenance*. Instalační balíček pro poskytovatele prostředků zahrnuje skript pro tuto operaci.
 
 ## <a name="patching-and-updating"></a>Opravy a aktualizace
 
@@ -97,7 +97,7 @@ Při použití poskytovatele prostředků SQL nebo MySQL pomocí služby Azure S
     -DefaultSSLCertificatePassword $certPasswd
 ```
 
-### <a name="secretrotationsqlproviderps1-parameters"></a>Parametry SecretRotationSQLProvider.ps1
+### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 parameters
 
 |Parametr|Popis|
 |-----|-----|
@@ -182,7 +182,7 @@ $session | Remove-PSSession
 Shromažďování protokolů z uzamčená virtuálního počítače, můžete použít PowerShell Just Enough Administration (JEA) koncového bodu *DBAdapterDiagnostics*. Tento koncový bod poskytuje následující příkazy:
 
 - **Get-AzsDBAdapterLog**. Tento příkaz vytvoří balíček zip diagnostické protokoly pro poskytovatele prostředků a uloží soubor na disku uživatelské relace. Můžete spustit tento příkaz bez parametrů a poslední 4 hodiny protokoly se shromažďují.
-- **Odebrat AzsDBAdapterLog**. Tento příkaz odebere existující balíčky protokolu v poskytovateli prostředků virtuálního počítače.
+- **Remove-AzsDBAdapterLog**. Tento příkaz odebere existující balíčky protokolu v poskytovateli prostředků virtuálního počítače.
 
 ### <a name="endpoint-requirements-and-process"></a>Koncový bod požadavky a proces
 

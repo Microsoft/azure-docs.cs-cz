@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Folloze | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Folloze | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Folloze.
 services: active-directory
 documentationCenter: na
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/03/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 121e5ec57dd8ec87c0b7156dc761e0d9bd7b76eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e9adb084da818f96eb892864d2f27a90fe62a646
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884098"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390072"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-folloze"></a>Kurz: Integrace Azure Active Directory se službou Folloze
+# <a name="tutorial-azure-active-directory-integration-with-folloze"></a>Kurz: Integrace Azure Active Directory s Folloze
 
 V tomto kurzu se dozvíte, jak integrovat Folloze s Azure Active Directory (Azure AD).
 Folloze integraci se službou Azure AD poskytuje následující výhody:
@@ -79,8 +79,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Folloze, které
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace Folloze Single Sign-On](#configure-folloze-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele Folloze](#create-folloze-test-user)**  – Pokud chcete mít protějšek Britta Simon Folloze, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele Folloze](#create-folloze-test-user)**  – Pokud chcete mít protějšek Britta Simon Folloze, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -113,7 +113,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Folloze, proveďte následu
 
     | Název |  Zdrojový atribut|
     | ---------------| --------- |
-    | Email | User.othermail |
+    | Email | user.othermail |
     | Nameasemail | user.userprincipalname |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.

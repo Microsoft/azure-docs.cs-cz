@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/12/2018
+ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2e631a0605385f8d55c652a26739b23a0945674f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 541d1473b21056e24c6b04b86414936a02b7d9d5
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077246"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382578"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-end služby webového rozhraní API ASP.NET Core pomocí Kestrel
 
@@ -158,7 +158,9 @@ serviceContext =>
         }))
 ```
 
-Přidejte také následující metodu, aby Kestrel mohl vyhledat certifikát v úložišti `Cert:\LocalMachine\My` pomocí předmětu.  Nahraďte "&lt;your_CN_value&gt;" s "mytestcert", pokud jste pomocí předchozího příkazu Powershellu vytvořili certifikát podepsaný svým držitelem, nebo použijte název vašeho certifikátu.
+Přidejte také následující metodu, aby Kestrel mohl vyhledat certifikát v úložišti `Cert:\LocalMachine\My` pomocí předmětu.  
+
+Nahraďte "&lt;your_CN_value&gt;" s "mytestcert", pokud jste pomocí předchozího příkazu Powershellu vytvořili certifikát podepsaný svým držitelem, nebo použijte název vašeho certifikátu.
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -347,7 +349,7 @@ Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Instalace certifikátu na uzlech clusteru
 
-Než aplikaci nasadíte do Azure, nainstalujte certifikát do úložiště `Cert:\LocalMachine\My` na uzly vzdáleného clusteru.  Při spuštění webové front-end služby na uzlu clusteru vyhledá spouštěcí skript certifikát a nakonfiguruje přístupová oprávnění.
+Před nasazením aplikace do Azure, nainstalujte certifikát do `Cert:\LocalMachine\My` úložiště na uzly vzdáleného clusteru.  Služby můžete přesunout na různých uzlech clusteru.  Při spuštění webové front-end služby na uzlu clusteru vyhledá spouštěcí skript certifikát a nakonfiguruje přístupová oprávnění.
 
 Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci certlm.msc a přejděte do části **Osobní**>**Certifikáty**.  Klikněte pravým tlačítkem na *mytestcert* certifikátu a vyberte **všechny úkoly**>**exportovat**.
 

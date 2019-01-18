@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 52caae38c21fe403735b8479ec2e721ef38f521e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 01/17/2019
+ms.openlocfilehash: f43c2cd5a3c155258cd698f6b55854bc0df9f861
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845786"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388595"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Vytvoření a správa izolovaných databází ve službě Azure SQL Database a logické servery
 
@@ -55,9 +55,9 @@ Chcete-li spravovat stávající databázi, přejděte na **databází SQL** str
 > [!TIP]
 > Azure portal rychlém startu najdete v části [vytvořit databázi Azure SQL na webu Azure Portal](sql-database-get-started-portal.md).
 
-## <a name="powershell-manage-logical-servers-and-databases"></a>Prostředí PowerShell: Správa logických serverů a databází
+## <a name="powershell-manage-logical-servers-and-databases"></a>PowerShell: Správa logických serverů a databází
 
-Pokud chcete vytvořit a spravovat logické servery Azure SQL, databáze ve fondu a jeden a logický server brány firewall pomocí Azure Powershellu, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Pokud chcete vytvořit a spravovat logické servery Azure SQL, databáze ve fondu a jeden a logický server brány firewall pomocí Azure Powershellu, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!TIP]
 > Příklady skriptů Powershellu, najdete v části [použití Powershellu k vytvoření izolované databáze Azure SQL a konfigurace pravidla brány firewall logický server](scripts/sql-database-create-and-configure-database-powershell.md) a [sledování a škálování jednoho SQL database s využitím Powershellu](scripts/sql-database-monitor-and-scale-database-powershell.md).
@@ -79,7 +79,7 @@ Pokud chcete vytvořit a spravovat logické servery Azure SQL, databáze ve fond
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|Odstraní pravidlo brány firewall ze serveru.|
 | New-AzureRmSqlServerVirtualNetworkRule | Vytvoří [ *pravidlo virtuální sítě*](sql-database-vnet-service-endpoint-rule-overview.md)založená na podsíť, která je koncový bod služby virtuální sítě. |
 
-## <a name="azure-cli-manage-logical-servers-and-databases"></a>Rozhraní příkazového řádku Azure: Správa logických serverů a databází
+## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI: Správa logických serverů a databází
 
 K vytváření a správě serveru Azure SQL, databáze a brány firewall s [rozhraní příkazového řádku Azure](/cli/azure), použijte následující [databáze SQL Azure CLI](/cli/azure/sql/db) příkazy. Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows. Vytváření a správa elastických fondů najdete v tématu [elastické fondy](sql-database-elastic-pool.md).
 
@@ -91,7 +91,7 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall s [rozh
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Vytvoří databázi|
 |[AZ sql db list](/cli/azure/sql/db#az-sql-db-list)|Obsahuje seznam všech databází a datových skladů na serveru, nebo všechny databáze v elastickém fondu|
-|[AZ sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|Seznamy dostupnou službu cíle a omezení úložiště|
+|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|Seznamy dostupnou službu cíle a omezení úložiště|
 |[AZ sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Vrací databáze využití|
 |[AZ sql db show](/cli/azure/sql/db#az-sql-db-show)|Získá databázi ani na datový sklad|
 |[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Aktualizace databáze|
@@ -102,19 +102,19 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall s [rozh
 |[AZ sql server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|Vrátí použití serveru|
 |[AZ sql server show](/cli/azure/sql/server#az-sql-server-show)|Získá serveru|
 |[aktualizace az sql server](/cli/azure/sql/server#az-sql-server-update)|Aktualizace serveru|
-|[AZ sql server delete](/cli/azure/sql/server#az-sql-server-delete)|Odstraní server|
+|[az sql server delete](/cli/azure/sql/server#az-sql-server-delete)|Odstraní server|
 |[Vytvoření az sql server firewall-rule](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Vytvoří pravidlo brány firewall serveru|
 |[AZ sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Obsahuje seznam pravidel brány firewall na serveru|
 |[AZ sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Zobrazí podrobnosti pravidla brány firewall|
 |[AZ sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Aktualizuje pravidlo brány firewall|
 |[AZ sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Odstraní pravidlo brány firewall|
 
-## <a name="transact-sql-manage-logical-servers-and-databases"></a>Příkaz Transact-SQL: Správa logických serverů a databází
+## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL: Správa logických serverů a databází
 
 K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí příkazů jazyka Transact-SQL, použijte následující příkazy T-SQL. Můžete použít tyto příkazy pomocí webu Azure portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), nebo jiný program, který můžete připojit k serveru Azure SQL Database a předat příkazů jazyka Transact-SQL příkazy. Elastické fondy, přečtěte si téma [elastické fondy](sql-database-elastic-pool.md).
 
 > [!TIP]
-> Rychlý start pomocí SQL Server Management Studio na Microsoft Windows, naleznete v tématu [Azure SQL Database: použití SQL Server Management Studio k připojení a dotazování dat](sql-database-connect-query-ssms.md). Rychlý start v systému macOS, Linux nebo Windows pomocí Visual Studio Code, naleznete v tématu [Azure SQL Database: použití Visual Studio Code k připojení a dotazování dat](sql-database-connect-query-vscode.md).
+> Rychlý start pomocí SQL Server Management Studio na Microsoft Windows, naleznete v tématu [Azure SQL Database: Použít SQL Server Management Studio k připojení a dotazování dat](sql-database-connect-query-ssms.md). Rychlý start v systému macOS, Linux nebo Windows pomocí Visual Studio Code, naleznete v tématu [Azure SQL Database: Použití Visual Studio Code k připojení a dotazování dat](sql-database-connect-query-vscode.md).
 > [!IMPORTANT]
 > Nejde vytvořit nebo odstranit server pomocí příkazů jazyka Transact-SQL.
 
@@ -125,7 +125,7 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edition (úroveň služby), cíl služby (cenová úroveň) a název elastického fondu, pokud existují pro službu Azure SQL database nebo Azure SQL Data Warehouse. Pokud přihlášení k hlavní databázi na serveru Azure SQL Database, vrátí informace ve všech databázích. Pro službu Azure SQL Data Warehouse musí být připojené k hlavní databázi.|
 |[Sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí spotřeby procesoru, vstupně-výstupní operace a paměti pro databázi Azure SQL Database. Jeden řádek existuje pro každých 15 sekund, i v případě, že neexistuje žádná aktivita v databázi.|
-|[Sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Vrátí data o využití a úložiště CPU pro službu Azure SQL Database. Data se shromažďují a agregují v pětiminutovém intervalu.|
+|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Vrátí data o využití a úložiště CPU pro službu Azure SQL Database. Data se shromažďují a agregují v pětiminutovém intervalu.|
 |[Sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Obsahuje statistiku pro události připojení databáze SQL Database, nabízí přehled databáze připojení úspěchy a selhání. |
 |[Sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Vrátí úspěšná připojení databáze Azure SQL Database, selhání připojení a zablokování. Tyto informace můžete použít ke sledování nebo řešení potíží s aktivitu své databáze s využitím SQL Database.|
 |[příkaz sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Vytvoří nebo aktualizuje nastavení brány firewall na úrovni serveru pro váš server SQL Database. Tuto uloženou proceduru lze pouze v hlavní databázi, a hlavní přihlášení na úrovni serveru. Pravidlo brány firewall na úrovni serveru můžete vytvořit pouze pomocí příkazů jazyka Transact-SQL po vytvoření prvního pravidla brány firewall na úrovni serveru uživatelem s oprávněními úrovně Azure|
@@ -135,7 +135,7 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Vrátí informace o nastavení brány firewall na úrovni databáze, které jsou přidružené k Microsoft Azure SQL Database. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Nastavení brány firewall na úrovni databáze odebere z Azure SQL Database nebo SQL Data Warehouse. |
 
-## <a name="rest-api-manage-logical-servers-and-databases"></a>Rozhraní REST API: Správa logických serverů a databází
+## <a name="rest-api-manage-logical-servers-and-databases"></a>REST API: Správa logických serverů a databází
 
 K vytváření a správě serveru Azure SQL, databází a bran firewall, použijte tyto požadavky rozhraní REST API.
 

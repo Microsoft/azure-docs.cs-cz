@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9aa03146608796f1a2d26d44b4e76b0331f8c5be
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: bb66dca9c68535c2ab36e9a7286570d34a7ea310
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063552"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Kurz: Integrace Azure Active Directory s další Tabule
 
@@ -79,8 +79,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Tabule informac
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace Tabule další Single Sign-On](#configure-blackboard-learn-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele Tabule Další](#create-blackboard-learn-test-user)**  – Pokud chcete mít protějšek Britta Simon Tabule zjistěte, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele Tabule Další](#create-blackboard-learn-test-user)**  – Pokud chcete mít protějšek Britta Simon Tabule zjistěte, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -117,7 +117,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s další Tabule, proveďte n
     ![image](common/edit-attribute.png)
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, konfigurovat atributy tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky. Jsme změnili Userprincipalname jako atribut jedinečných uživatelů, ale můžete ho namapovat na odpovídající hodnotu, která jednoznačně odlišuje uživatel v organizaci a, která se mapuje na Tabule další pole uživatelské jméno.
-    
+
     | Název | Zdrojový atribut|
     | ---------------| --------------- |
     | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 | user.userprincipalname |
@@ -140,11 +140,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s další Tabule, proveďte n
 
     g. Klikněte na **Uložit**.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavit další Tabule** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+8. Na **nastavit další Tabule** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -226,4 +226,3 @@ Po kliknutí na dlaždici další Tabule na přístupovém panelu, vám by měl 
 - [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

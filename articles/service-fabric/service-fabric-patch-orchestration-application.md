@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 58e853a3e9df0c3ba78b41f0c62e37bbcc3cdb5a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 6bd71b7cecfb8a5decd3049152a2293dc7867bde
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754029"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382730"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -141,7 +141,7 @@ Automatické aktualizace Windows může vést ke ztrátě dostupnosti protože v
 
 Aplikace spolu s instalační skripty si můžete stáhnout z [archivu odkaz](https://go.microsoft.com/fwlink/?linkid=869566).
 
-Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://aka.ms/POA/POA_v1.2.2.sfpkg). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
+Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://aka.ms/POA/POA.sfpkg). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurace aplikace
 
@@ -150,14 +150,14 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 |**Parametr**        |**Typ**                          | **Podrobnosti**|
 |:-|-|-|
 |MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků Windows Update, které by měly být uložené v mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzel a měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> – Výsledky po dobu posledních tří měsíců by měla být uložena. |
-|TaskApprovalPolicy   |Výčet <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací Windows napříč uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace Windows je nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace Windows je nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace Windows.)<br> Odkazovat na [nejčastější dotazy k](#frequently-asked-questions) část o tom, jak rozhodnout, který je nejlépe hodí zásady pro váš cluster.
+|TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací Windows napříč uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace Windows je nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace Windows je nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace Windows.)<br> Odkazovat na [nejčastější dotazy k](#frequently-asked-questions) část o tom, jak rozhodnout, který je nejlépe hodí zásady pro váš cluster.
 |LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: 1024)               |Maximální velikost oprava Orchestrace aplikace přihlásí MB, který mohl být trvalý místně na uzlech.
 | WUQuery               | řetězec<br>(Výchozí: "IsInstalled = 0")                | Použijte dotaz pro získání aktualizace Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: Hodnota TRUE)                 | Tento příznak umožňuje instalaci aktualizací operačního systému Windows.            |
+| InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: true)                 | Pomocí tohoto příznaku do správy, které aktualizace by měla být stažen a nainstalován. Jsou povoleny následující hodnoty <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace v počítači.          |
 | WUOperationTimeOutInMinutes | Int <br>(Výchozí: 90)                   | Určuje časový limit pro všechny operace aktualizace Windows (hledání nebo stáhnout nebo nainstalovat). Pokud se operace nedokončí v rámci zadaného časového limitu, je přerušeno.       |
 | WURescheduleCount     | Int <br> (Výchozí: 5)                  | Maximální počet pokusů, které služba přeplánuje Windows update v případě, že docházet k chybě operace.          |
 | WURescheduleTimeInMinutes | Int <br>(Výchozí: 30) | Interval, ve kterém přeplánuje služby Windows update v případě, že chyba přetrvává. |
-| WUFrequency           | Řetězec s hodnotami oddělenými čárkou (výchozí: "Každý týden, Středa 7:00:00")     | Frekvence pro instalaci aktualizace Windows. Formát a možné hodnoty jsou: <br>– Měsíční, DD, hh, například každý měsíc, 5, 12: 22:32. <br> – Každý týden, den, hh: mm:, například týdně, úterý, 12:22:32.  <br> -Denní, hh: mm:, třeba každý den, 12:22:32.  <br> -Žádný označuje, že by se neměly provést aktualizace Windows.  <br><br> Všimněte si, že čas ve standardu UTC.|
+| WUFrequency           | Řetězec s hodnotami oddělenými čárkou (výchozí: "Každý týden, Středa 7:00:00")     | Frekvence pro instalaci aktualizace Windows. Formát a možné hodnoty jsou: <br>– Měsíční, DD, hh, například každý měsíc, 5, 12: 22:32.<br>Povolené hodnoty pro pole DD (den) jsou čísla až rozsahu 1-28 "last". <br> – Každý týden, den, hh: mm:, například týdně, úterý, 12:22:32.  <br> -Denní, hh: mm:, třeba každý den, 12:22:32.  <br> -Žádný označuje, že by se neměly provést aktualizace Windows.  <br><br> Všimněte si, že čas ve standardu UTC.|
 | AcceptWindowsUpdateEula | Logická hodnota <br>(Výchozí: true) | Tím, že nastavíte tento příznak, tato aplikace přijme licenční smlouva koncového uživatele pro Windows Update jménem vlastníka počítače.              |
 
 > [!TIP]
@@ -229,7 +229,7 @@ Pole | Hodnoty | Podrobnosti
 -- | -- | --
 OperationResult | 0 – úspěšné<br> 1 - bylo úspěšně dokončeno s chybami<br> 2 – se nezdařilo<br> 3 - bylo přerušeno<br> 4 - bylo přerušeno s časovým limitem | Určuje výsledek operace (obvykle zahrnující instalace jedné nebo více aktualizací).
 Kód výsledku | Stejný jako výsledek | Toto pole indikuje výsledek operace instalace pro individuální aktualizaci.
-Typ operace | 1 – instalace<br> 0 - hledání a stahování.| Instalace je jediným typem operace OperationType, který by být standardně zobrazena ve výsledcích.
+OperationType | 1 – instalace<br> 0 - hledání a stahování.| Instalace je jediným typem operace OperationType, který by být standardně zobrazena ve výsledcích.
 WindowsUpdateQuery | Výchozí hodnota je "IsInstalled = 0" |Windows aktualizujte dotaz, který byl použit k vyhledání aktualizací. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 RebootRequired | true – se vyžaduje restartování<br> false – nebyl požadován restart | Označuje, pokud restartování se vyžaduje pro dokončení instalace aktualizace.
 
@@ -397,8 +397,14 @@ Správce musíte zasáhnout a zjistit, proč k problému, kvůli aktualizaci Win
 
 - Oprava chyby v pracovním postupu vertikální snížení kapacity clusteru Zavedla uvolňování paměti kolekce logiku pro POA opravit úlohy patřící do neexistující uzly.
 
-### <a name="version-122-latest"></a>Verze 1.2.2 (nejnovější)
+### <a name="version-122"></a>Verze 1.2.2
 
 - Různé opravy chyb.
 - Nyní jsou podepsané binární soubory.
-- odkaz ke stažení sfpkg nyní odkazuje na konkrétní verzi.
+- Přidat odkaz sfpkg pro aplikaci.
+
+### <a name="version-130"></a>Verze 1.3.0
+
+- Nastavení InstallWindowsOSOnlyUpdates na hodnotu false nyní nainstaluje všechny dostupné aktualizace.
+- Změnit logiku zakázáním automatických aktualizací. To řeší chyby, kde nebylo získávání zakázáno automatické aktualizace na serveru 2016 a vyšší.
+- Omezení umístění pro mikroslužby POA pro pokročilé usecases s parametry.

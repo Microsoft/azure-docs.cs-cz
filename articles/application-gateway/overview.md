@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 21aac318542f9d30cb44d940392d05367f1f7b9f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9aab33eb4ba6a49d96bcacfc2151c3554fbebfaf
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246462"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382873"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -114,10 +114,26 @@ Služba Application Gateway nyní podporuje schopnosti přepsat záhlaví příc
 
 Další informace o této funkci ve verzi public preview, najdete v části [hlavičky protokolu HTTP přepsat](rewrite-http-headers.md).
 
+## <a name="sizing"></a>Velikost
+
+Služba Application Gateway je teď nabízíme ve třech velikostech: **Malé**, **střední**, a **velké**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
+
+Úplný seznam omezení služby Application Gateway najdete na stránce [Omezení služby Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+
+Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway s povoleným přesměrováním zpracování SSL:
+
+| Průměrná velikost odpovědi back endové stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
+| --- | --- | --- | --- |
+| 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
+| 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |
+
+> [!NOTE]
+> Tyto hodnoty jsou přibližné hodnoty propustnosti služby Application Gateway. Skutečná propustnost závisí na různých podrobnostech o prostředí, jako jsou například průměrná velikost stránky, umístění back-endových instancí a doba zpracování potřebná k doručení stránky. Přesné údaje o výkonu získáte, když spustíte vlastní testy. Tyto hodnoty slouží jenom jako vodítko při plánování kapacity.
+
 ## <a name="next-steps"></a>Další postup
 
 V závislosti na vašich požadavcích a prostředí můžete vytvořit testovací Application Gateway pomocí portálu Azure Portal, Azure PowerShellu nebo rozhraní Azure CLI:
 
-- [Rychlý start: Směrování webového provozu s využitím Azure Application Gateway – Azure portal](quick-create-portal.md).
-- [Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
-- [Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – rozhraní příkazového řádku Azure](quick-create-cli.md)
+- [Rychlé zprovoznění: Směrování webového provozu s využitím Azure Application Gateway – Azure portal](quick-create-portal.md).
+- [Rychlé zprovoznění: Přímé webového provozu s využitím Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
+- [Rychlé zprovoznění: Přímé webového provozu s využitím Azure Application Gateway – rozhraní příkazového řádku Azure](quick-create-cli.md)

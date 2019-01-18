@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec136b418e78f82486d9d38f361e411c3d00c31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: b4cb5975eb5be3236558d0b0b19551c6726f64de
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312281"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391045"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování, můžete řídit objektů, které se zobrazí ve službě Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přijímá všechny objekty ve všech doménách nakonfigurovaných doménových struktur. Obecně platí toto je doporučená konfigurace. Uživatele, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, těžit z globální seznam adresu odeslání e-mailu a volat všem uživatelům. Ve výchozí konfiguraci bylo by nutné stejným způsobem, který by měla s implementací místní Exchange nebo Lync.
@@ -77,10 +77,10 @@ Až dokončíte všechny provedené změny filtrování, nezapomeňte se vraťte
 ## <a name="filtering-options"></a>Možnosti filtrování
 Můžete provést následující typy konfigurace filtrování u nástroje pro synchronizaci adresáře:
 
-* [**Na základě skupin**](#group-based-filtering): filtrování na základě jedné skupiny dá nakonfigurovat jenom na počáteční instalaci pomocí Průvodce instalací.
-* [**Založený na doméně**](#domain-based-filtering): pomocí této možnosti můžete vybrat, které domény synchronizovat se službou Azure AD. Můžete také přidat a odebrat domény z konfigurace modulu synchronizace, když provedete změny v místní infrastruktuře po instalaci synchronizace Azure AD Connect.
-* [**Organizační jednotka (OU) – na základě**](#organizational-unitbased-filtering): pomocí této možnosti můžete vybrat, které organizační jednotky synchronizovat se službou Azure AD. Tato možnost se týká všech typů objektů ve vybrané organizační jednotky.
-* [**Založených na atributech**](#attribute-based-filtering): pomocí této možnosti můžete filtrovat objekty podle hodnot atributů na objektech. Také může mít různé filtry pro různé typy objektů.
+* [**Na základě skupin**](#group-based-filtering): Filtrování na základě jedné skupiny se nakonfigurovat jenom na počáteční instalaci pomocí Průvodce instalací.
+* [**Založený na doméně**](#domain-based-filtering): Když použijete tuto možnost, můžete vybrat, které domény synchronizovat se službou Azure AD. Můžete také přidat a odebrat domény z konfigurace modulu synchronizace, když provedete změny v místní infrastruktuře po instalaci synchronizace Azure AD Connect.
+* [**Organizační jednotka (OU) – na základě**](#organizational-unitbased-filtering): Když použijete tuto možnost, můžete vybrat, které organizační jednotky synchronizovat se službou Azure AD. Tato možnost se týká všech typů objektů ve vybrané organizační jednotky.
+* [**Založených na atributech**](#attribute-based-filtering): Když použijete tuto možnost, můžete filtrovat objekty podle hodnot atributů na objektech. Také může mít různé filtry pro různé typy objektů.
 
 Můžete použít několik možností filtrování ve stejnou dobu. Například můžete filtrování podle organizační jednotky zahrnout pouze objekty v jedné organizační jednotce. Ve stejnou dobu můžete filtrování podle atributů k filtrování další objekty. Při použití více metod filtrování použijte filtry logický operátor "a" mezi filtry.
 
@@ -185,6 +185,9 @@ S touto konfigurací nové organizační jednotky, který byl vytvořený v rám
 
 ## <a name="attribute-based-filtering"></a>Filtrování na základě atributů
 Ujistěte se, že používáte listopad 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) nebo novější sestavení pro tyto kroky při práci.
+
+> [!IMPORTANT]
+>Společnost Microsoft doporučuje nelze upravit výchozí pravidla vytvořil **Azure AD Connect**. Pokud chcete upravit pravidlo, naklonujte a původní pravidlo zakázat. Proveďte požadované změny z klonovaného pravidla. Upozorňujeme, že tímto způsobem (zakázání původní pravidlo) bude přeskočíte všechny opravy chyb a funkce přidané pomocí tohoto pravidla.
 
 Filtrování podle atributů je nejflexibilnější způsob, jak filtrovat objekty. Můžete použít sílu [deklarativní zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md) řídit skoro každý aspekt když je objekt synchronizovány do Azure AD.
 

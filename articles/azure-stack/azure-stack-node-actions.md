@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 7e01feff1344557c90f23bb006520111f58e437a
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 170cf458496d91a28260296e2aba803d76fbc06b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302676"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388834"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Uzel akcí jednotky škálování ve službě Azure Stack
 
@@ -154,4 +154,4 @@ Spuštěním akce opravy, otevřete řádku Powershellu se zvýšenými oprávn�
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o modulu Správce prostředků infrastruktury Azure Stack, najdete v článku [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.5.0).
+Další informace o modulu Správce prostředků infrastruktury Azure Stack, najdete v článku [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).

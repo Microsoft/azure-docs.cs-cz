@@ -8,19 +8,22 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 376a5a2214c5f1d77439923d6a11aaad5e011e73
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 05134ff59f87aaac71588057f1ac50015a769672
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313849"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389843"
 ---
 #   <a name="text-split-cognitive-skill"></a>Text rozdělit kognitivních dovedností
 
 **Rozdělení textu** dovednosti rozdělí text na bloky textu. Můžete určit, zda chcete provést přerušení textu do věty nebo do stránky určité délky. Tato dovednosti je obzvláště užitečné, pokud existují maximální text požadavky na délku ve směru server-klient další dovednosti. 
+
+> [!NOTE]
+> Tato dovednosti není vázán na API služeb Cognitive Services a neexistují žádné poplatky přidružené k této dovedností. Však musí [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) přesto k přepsání volba bezplatné zdroje, která omezuje vám malý počet denních obohacení.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -32,7 +35,7 @@ Parametry rozlišují malá a velká písmena.
 | Název parametru     | Popis |
 |--------------------|-------------|
 | textSplitMode      | "Výraz stránky" nebo "věty" | 
-| maximumPageLength | Pokud textSplitMode nastavená na výraz "stránky", to se vztahuje na délku maximální stránky naměřenou podle `String.Length`. Minimální hodnota je 100.  Pokud textSplitMode nastavená na výraz "stránky", se pokusí algoritmus rozdělit do bloků dat, které jsou maximálně "maximumPageLenth" velikost textu. V takovém případě provede algoritmus je nejlepší k rozdělení věty na hranici věty tak velikost bloku dat může být o něco menší než "maximumPageLength". | 
+| maximumPageLength | Pokud textSplitMode nastavená na výraz "stránky", to se vztahuje na délku maximální stránky naměřenou podle `String.Length`. Minimální hodnota je 100.  Pokud textSplitMode nastavená na výraz "stránky", se pokusí algoritmus rozdělit do bloků dat, které jsou maximálně "maximumPageLength" velikost textu. V takovém případě provede algoritmus je nejlepší k rozdělení věty na hranici věty tak velikost bloku dat může být o něco menší než "maximumPageLength". | 
 | defaultLanguageCode   | (volitelné) Jeden z následujících kódů jazyka: `da, de, en, es, fi, fr, it, ko, pt`. Výchozí hodnota je angličtina (en). Vezměte v úvahu několik věcí:<ul><li>Pokud předáte formátu languagecode countrycode, se používá jenom část languagecode formátu.</li><li>Pokud jazyk není v předchozím seznamu, přestane fungovat dovednosti rozdělit na znak hranice.</li><li>Poskytuje kód jazyka je vhodné vyhnout cutting slova na polovinu jiný než mezera jazyků, jako jsou čínštiny, japonštiny a korejštiny.</li></ul>  |
 
 

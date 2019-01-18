@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v jazyce JavaScript v Node.js pomocí sady SDK služby řeči'
+title: 'Rychlý start: Rozpoznávání řeči, Node.js – hlasové služby'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v jazyce JavaScript v Node.js pomocí sady SDK služby řeči
+description: Tento průvodce vám vytvořit speech to text konzolové aplikace pomocí sadou SDK pro řeč pro Node.js. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.
 services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 1/16/2019
 ms.author: fmegen
-ms.openlocfilehash: 35652b169067bc545fa0d1fcc977bbaee79ec3aa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e0ae916687ca32835dd8daf6e5059b8f6eea0ff6
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724421"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382170"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-nodejs-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce JavaScript v Node.js pomocí sady SDK služby řeči
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Node.js
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -29,9 +29,9 @@ Aplikace je založena na webu společnosti Microsoft [sadou SDK pro řeč Cognit
 * Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
 * Aktuální verze [Node.js](https://nodejs.org).
 
-## <a name="create-a-new-project-folder"></a>Vytvořte novou složku projektu
+## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Vytvořte novou prázdnou složku a inicializujte ji jako nový projekt jazyka JavaScript a Node.js.
+Vytvořte novou složku a inicializace projektu.
 
 ```sh
 npm init -f
@@ -39,13 +39,17 @@ npm init -f
 
 Tímto krokem se init soubory package.json s výchozími hodnotami. Pravděpodobně bude chtít tento soubor upravit později.
 
-## <a name="install-the-speech-sdk-for-javascript-into-that-folder"></a>Instalace sadou SDK pro řeč pro JavaScript do této složky
+## <a name="install-the-speech-sdk"></a>Instalace sady SDK pro řeč
 
-Přidat sadou SDK pro řeč prostřednictvím `npm install microsoft-cognitiveservices-speech-sdk` do projektu Node.js.
+Přidejte do projektu Node.js SDK řeči.
 
-Toto stáhne a nainstaluje nejnovější verzi sadou SDK pro řeč a všechny nezbytné součásti z npmjs. Sada SDK se nainstalují v `node_modules` adresáře uvnitř složky vašeho projektu.
+```
+npm install microsoft-cognitiveservices-speech-sdk
+```
 
-## <a name="using-the-speech-sdk"></a>Pomocí sady SDK pro řeč
+Tím se stáhne a nainstaluje nejnovější verzi sadou SDK pro řeč a všechny požadované součásti z npmjs. Sada SDK se nainstalují v `node_modules` adresáře uvnitř složky vašeho projektu.
+
+## <a name="use-the-speech-sdk"></a>Umožňuje využít řeč SDK
 
 Vytvořte ve složce nový soubor `index.js` a otevřete ho v textovém editoru.
 
@@ -58,7 +62,7 @@ Přidejte následující kód jazyka JavaScript:
 
 [!code-javascript[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/js-node/index.js#code)]
 
-## <a name="running-the-sample-from-command-line"></a>Spuštění ukázky z příkazového řádku
+## <a name="run-the-sample"></a>Spuštění ukázky
 
 Spusťte aplikaci, přizpůsobit `YourSubscriptionKey`, `YourServiceRegion`, a `YourAudioFile.wav` do vaší konfigurace. Potom můžete provést zavoláním následujícího příkazu:
 
@@ -88,7 +92,7 @@ SpeechRecognitionResult {
 }
 ```
 
-## <a name="running-the-sample-from-visual-studio-code"></a>Spuštění ukázky z Visual Studio Code
+## <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a používání sadou SDK pro řeč s Visual Studio Code
 
 Ukázku můžete spustit i z Visual Studio Code. Postupujte podle těchto kroků nainstalujte, otevřete a spusťte tohoto rychlého startu:
 

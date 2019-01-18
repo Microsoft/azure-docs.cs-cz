@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 471232fee5245426afce89993d9faebccc6a8ea8
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265613"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389398"
 ---
 # <a name="azure-stack-telemetry"></a>Telemetrická data Azure Stack
 
@@ -40,7 +40,7 @@ Telemetrická data Azure Stack je založená na Windows serveru 2016 připojené
 
 ## <a name="privacy-considerations"></a>Aspekty ochrany osobních údajů
 
-Trasování událostí pro Windows service směruje telemetrická data do služby chráněný cloud storage. Princip nejnižších oprávnění vodítka přístup k telemetrická data. Pouze pracovníci společnosti Microsoft s platným obchodní potřebě získávali přístup k telemetrická data. Microsoft nebude sdílet osobní zákaznická data s třetími stranami, s výjimkou uvážení zákazníka nebo omezené důvodů popsaných v [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/PrivacyStatement). Obchodní sestavy, které jsou sdíleny s výrobci OEM a partnery zahrnovat agregované, anonymizovaná data. Data sdílení rozhodnutí, která vyrábí celá interní Microsoft team, včetně ochrany osobních údajů, právní informace a data správy zúčastněných stran.
+Trasování událostí pro Windows service směruje telemetrická data do služby chráněný cloud storage. Objekt zabezpečení nejnižší možná oprávnění provede přístup k telemetrická data. Pouze pracovníci společnosti Microsoft s platným obchodní potřebě získávali přístup k telemetrická data. Microsoft nebude sdílet osobní zákaznická data s třetími stranami, s výjimkou uvážení zákazníka nebo omezené důvodů popsaných v [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/PrivacyStatement). Obchodní sestavy, které jsou sdíleny s výrobci OEM a partnery zahrnovat agregované, anonymizovaná data. Data sdílení rozhodnutí, která vyrábí celá interní Microsoft team, včetně ochrany osobních údajů, právní informace a data správy zúčastněných stran.
 
 Společnost Microsoft se řídí zásadou v a postupy pro minimalizaci informací. Usilujeme o získání informací, které je potřeba a uložte ho pro pouze po dobu podle potřeby k poskytování služeb nebo pro analýzu. Většinu informací o fungování systémech pro Azure Stack a Azure services je odstranit do šesti měsíců. Shrnuto nebo agregovaná data se uchovávají po delší dobu.
 

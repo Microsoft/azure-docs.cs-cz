@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5c40e6c681a4f37c61519040eb32531d3c8f071c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3065a003dfe318aeffaee2ecd052fce97105f52a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437142"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390569"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -32,6 +32,7 @@ V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obra
    * [Počítač připojená k Azure AD](../device-management-azure-portal.md) nebo
    * [Hybridní služby Azure AD připojená k počítači](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény.
 * Samoobslužné resetování hesla Azure AD musí být povolené.
+* Pokud vaše počítačů s Windows 10 jsou za proxy server nebo bránu firewall, přenosy HTTPS (443) k `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com` by mělo být povoleno.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune
 
@@ -126,8 +127,6 @@ Je známo, že následující nastavení zásad v konfliktu s možností k reset
    * Explorer.exe nahradí za vlastní prostředí
 
 Tato funkce nefunguje pro sítí pomocí protokolu 802. 1 x ověřování sítě nasazené a možnost "Provádět bezprostředně před přihlášením uživatele". Sítí pomocí protokolu 802. 1 x ověřování sítě nasadit se doporučuje použití ověřování počítače pro tuto funkci povolil.
-
-Pokud jsou vaše počítače s Windows 10 za proxy serverem nebo bránou firewall, měl by být povolený provoz HTTPS (port 443) na adresu passwordreset.microsoftonline.com and ajax.aspnetcdn.com.
 
 U scénářů s hybridní k doméně scénáři existuje, kde bude pracovní postup samoobslužné resetování HESLA dokončit bez nutnosti řadič domény služby Active Directory. Připojení k řadiči domény, je potřeba pomocí nového hesla poprvé.
 

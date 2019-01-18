@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4d201669bf627cf9b591958f3372760c0c990db9
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e5f569d5561050c9993ec48b096f60595d44b1b1
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808090"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391175"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -28,7 +28,7 @@ Pracovní postup probíhá obecně toto pořadí:
 
 1. Vývoj strojového učení trénovací skripty v **Python**.
 1. Vytvoření a konfigurace **cílové výpočetní prostředí**.
-1. **Odeslat skripty** do cílového výpočetního nakonfigurované prostředí pro spuštění v daném prostředí. Během cvičení, ukládá cílové výpočetní prostředí spouštění záznamy **datastore**. Zde se záznamy ukládají do **experimentovat**.
+1. **Odeslat skripty** do cílového výpočetního nakonfigurované prostředí pro spuštění v daném prostředí. Při školení, může číst nebo zapisovat do skriptů **datastore**. A záznamy o spuštění se uložit jako **spustí** v **pracovní prostor**, který se rozdělil přes **experimentovat**.
 1. **Dotazování experiment** pro metrikách zaznamenaných do protokolu běhů aktuálního i staršího. Pokud metriky neindikují požadovaného výsledku, smyčka zpátky ke kroku 1 a iterovat své skripty.
 1. Po uspokojivé spustit je najít, zaregistrujte model trvalého v **modelu registru**.
 1. Vyvíjejte hodnoticí skript.
@@ -228,5 +228,5 @@ Aktivity může poskytnout oznámení prostřednictvím sady SDK nebo ve webové
 Abyste mohli začít se službou Azure Machine Learning, naleznete v tématu:
 
 * [Co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Rychlý start: Vytvoření pracovního prostoru s využitím Pythonu](quickstart-get-started.md)
+* [Rychlé zprovoznění: Vytvoření pracovního prostoru s využitím Pythonu](quickstart-get-started.md)
 * [Kurz: Trénování modelu](tutorial-train-models-with-aml.md)

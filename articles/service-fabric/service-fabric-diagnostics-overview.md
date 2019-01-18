@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d6865349f103278131a02c2385557fb53ee24f5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f558c6fcfa864b142209712a536adf1be97122cf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720588"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389248"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a diagnostiky pro Azure Service Fabric
 
@@ -41,9 +41,12 @@ Máme také kurz s postupy [nastavíte pro aplikace .NET](service-fabric-tutoria
 Uživatel má kontrolu nad jaké telemetrická data pochází z jejich aplikace protože uživatel zapíše kód samotné, ale co o diagnostické z platformy Service Fabric? Jedním z cílů Service Fabric je udržovat aplikace odolné vůči selhání hardwaru. Tento cíl se dosahuje prostřednictvím možnosti platformy systémových služeb ke zjištění problémů s infrastrukturou a rychlé převzetí služeb při selhání úlohy jiným uzlům v clusteru. Ale v tomto konkrétním případě co když vlastních služeb systému mají problémy? Nebo pokud při pokusu o nasazení nebo přesunutí úlohy, jsou pravidla pro umístění služby došlo k porušení? Service Fabric nabízí diagnostiku pro tyto a další zajistit, aby že byli informováni o probíhající ve vašem clusteru aktivity. Několik ukázkových scénářů pro monitorování clusterů patří:
 
 Service Fabric nabízí komplexní sadu událostí úprav. Tyto [události Service Fabric](service-fabric-diagnostics-events.md) přístupné prostřednictvím Eventstoru nebo provozní kanál (událost kanálu vystavené platformu). 
-* Eventstoru - Eventstoru je funkce nabízených platformou, která poskytuje události platformy Service Fabric jsou k dispozici v Service Fabric Exploreru a prostřednictvím rozhraní REST API. Zobrazí se zobrazení snímku, co se děje ve vašem clusteru pro každou entitu například uzel, služby, aplikace a pro dotazy podle času události. Můžete také další informace o Eventstoru na [přehled Eventstoru](service-fabric-diagnostics-eventstore.md).    
 
 * Service Fabric události kanálů – Windows na Service Fabric jsou k dispozici z jednoho zprostředkovatele trasování událostí pro Windows se sadou relevantní `logLevelKeywordFilters` použijí k výběru mezi provozní Data a zasílání zpráv v kanálech – Toto je způsob, ve kterém jsme oddělit odchozí Service Fabric události filtrovanou na podle potřeby. Události Service Fabric v Linuxu, procházejí LTTng a jsou vloženy do jedné tabulky úložiště, ze které se dají se filtrovat podle potřeby. Tyto kanály obsahovat kurátorované, strukturované události, které lze použít pro lepší pochopení stavu vašeho clusteru. Je povolená Diagnostika ve výchozím nastavení při vytváření clusteru, které vytvářejí tabulce Azure Storage se odešle události z těchto kanálů pro vás k dotazování v budoucnu. 
+
+* Eventstoru - Eventstoru je funkce nabízených platformou, která poskytuje události platformy Service Fabric jsou k dispozici v Service Fabric Exploreru a prostřednictvím rozhraní REST API. Zobrazí se zobrazení snímku, co se děje ve vašem clusteru pro každou entitu například uzel, služby, aplikace a pro dotazy podle času události. Můžete také další informace o Eventstoru na [přehled Eventstoru](service-fabric-diagnostics-eventstore.md).    
+
+![Eventstoru](media/service-fabric-diagnostics-overview/eventstore.png)
 
 Diagnostika k dispozici jsou ve formě komplexní sadu událostí úprav. Tyto [události Service Fabric](service-fabric-diagnostics-events.md) znázorňují akce prováděné platformy na různé entity, jako je například uzly, aplikace, služby, oddíly atd. V posledním scénáři nad uzel, přestanou fungovat, pokud platformu by generování `NodeDown` událostí a může dostat tak oznámení okamžitě tak váš nástroj pro sledování podle výběru. Další běžné příklady `ApplicationUpgradeRollbackStarted` nebo `PartitionReconfigured` při selhání. **Stejné události jsou k dispozici na clustery s Linuxem a Windows.**
 

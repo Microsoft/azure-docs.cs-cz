@@ -13,16 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 1dee53f633d8b5edf893e2f6c83430d7c1a69022
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341588"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382951"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení alert managementu ve službě Azure Log Analytics
 
 ![Ikona upozornění správy](media/alert-management-solution/icon.png)
+
+> [!NOTE]
+>  Azure Monitor teď podporuje rozšířené možnosti pro [Správa upozornění ve velkém měřítku](https://aka.ms/azure-alerts-overview), včetně těch, které vygeneroval [monitorování nástroje, jako jsou nástroje SCOM a Nagios a Zabbix](https://aka.ms/managing-alerts-other-monitoring-services).
+>  
+
 
 Správa výstrah řešení pomáhá analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy mohou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořené službou Log Analytics](../../azure-monitor/platform/alerts-overview.md) nebo [naimportované z Nagios a Zabbix](../../azure-monitor/learn/quick-collect-linux-computer.md). Řešení také importuje výstrahy z libovolného [připojené skupiny pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
 
