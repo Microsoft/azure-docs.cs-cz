@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4d343520ebfb7820cf1de769233e262f89862f14
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.date: 01/17/2019
+ms.openlocfilehash: 92cd67a4b57fcab51f30b4dd9e6c773a056aec8b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754233"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391027"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Synchronizace mezi několika databázemi SQL pomocí PowerShellu
  
@@ -26,7 +26,7 @@ Tento příklad PowerShellu konfiguruje Synchronizaci dat pro synchronizaci mezi
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](../sql-database-sync-data.md).
 
