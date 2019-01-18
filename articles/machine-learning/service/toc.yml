@@ -173,11 +173,11 @@ items:
     href: resource-known-issues.md
   - name: Získat podporu
     href: support-for-aml-services.md
-  - name: Porovnání produktů ML v Microsoftu
+  - name: Porovnání našich produktů ML
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 471928ec98a4fe037078e121a38286f30919d186
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 81173503e3afc8a93ae897072111a42c04049d65
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359200"
+ms.locfileid: "54390466"
