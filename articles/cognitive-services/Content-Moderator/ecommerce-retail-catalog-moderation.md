@@ -97,7 +97,7 @@ Po klasifikátoru mají školení, získat klíč předpovědi a adresu URL konc
 
 ## <a name="create-reviews-for-review-tool"></a>Vytvoření kontroly pro nástroj pro recenze
 
-V předchozích částech jste si poznamenali metody, které prohledat příchozí obrázků pro dospělé nebo pikantního obsahu (Content Moderator), celebrit (pro počítačové zpracování obrazu) a různé další objekty (Custom Vision). V dalším kroku najdete v článku **CreateReview** metodu, která nahrává obrázky, se všemi jejich použité značky (předané jako _metadat_), nástroji Content Moderator zkontrolujte tak můžou být k dispozici pro recenze prováděné lidmi. 
+V předchozích částech jste si poznamenali metody, které prohledat příchozí obrázků pro dospělé nebo pikantního obsahu (Content Moderator), celebrit (pro počítačové zpracování obrazu) a různé další objekty (Custom Vision). V dalším kroku najdete v článku **CreateReview** metodu, která nahrává obrázky, se všemi jejich použité značky (předané jako _Metadata_ ), nástroji Content Moderator zkontrolujte tak můžou být k dispozici pro recenze prováděné lidmi. 
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 
