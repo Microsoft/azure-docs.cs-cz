@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: b7a43135ef0aa0ecfe80000d2d0d73c57e138102
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8be8fa68b48257a8d94d3ba6364d47c522bbf3de
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975022"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401992"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Průvodce laděním výkonu pro Spark v HDInsight a Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ Při ladění výkonu ve Sparku, je potřeba zvážit počet aplikací, které b
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+* **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 * **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage Gen2. Ujistěte se, že se že povolení vzdálené plochy pro cluster. 
 * **Spuštění clusteru Spark v Data Lake Storage Gen2**.  Další informace najdete v tématu [clusteru HDInsight Spark použít k analýze dat v Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
 * **Pokyny pro Data Lake Storage Gen2 pro optimalizaci výkonu**.  Obecné informace o výkonu koncepty, najdete v části [Data Lake Storage Gen2 ladění Průvodce výkonem](data-lake-storage-performance-tuning-guidance.md) 
@@ -43,7 +43,7 @@ Při spuštění úlohy Spark, tady jsou nejdůležitější nastavení, které 
 
 **Prováděcí modul jader** tím se nastaví počet jader využívaných za prováděcího modulu, která určuje počet paralelních vláken, které můžou běžet na prováděcího modulu.  Například pokud prováděcí modul jádra = 2, pak každý prováděcí modul můžete spustit 2 paralelní úlohy v prováděcí modul.  Prováděcí modul jádra potřeby budou závislé na úlohu.  Vstupně-výstupní operace náročné úlohy nevyžadují velké množství paměti na jeden úkol, takže každý prováděcí modul dokáže zpracovat další paralelní úlohy.
 
-Ve výchozím nastavení jsou definovány dvě virtuální jádra YARN pro každé fyzické jádro při spouštění Sparku v HDInsight.  Toto číslo obsahuje dobrou rovnováhu mezi concurrecy a množství kontextu přepínání z více vláken.  
+Ve výchozím nastavení jsou definovány dvě virtuální jádra YARN pro každé fyzické jádro při spouštění Sparku v HDInsight.  Toto číslo obsahuje dobrou rovnováhu mezi souběžnosti a množství kontextu přepínání z více vláken.  
 
 ## <a name="guidance"></a>Doprovodné materiály
 
@@ -55,12 +55,12 @@ Pro zlepšení souběžnosti pro úlohy náročné na vstupně-výstupních oper
 
 **Krok 2: Nastavení paměti prováděcí modul** – první věc, kterou chcete nastavit je paměť prováděcího modulu.  Paměť budou závislé na úlohu, která se má spustit.  Zlepšení souběžnosti přidělením méně paměti za prováděcího modulu.  Pokud se zobrazí nedostatek paměti výjimky při spuštění úlohy, měli byste zvýšit hodnotu tohoto parametru.  Jeden alternativou je načíst větší množství paměti pomocí funkce clusteru, který má větší objem paměti a zvyšuje velikost vašeho clusteru.  Větší množství paměti umožní další moduly provádění, kterou chcete použít, což znamená, že větší souběžnost.
 
-**Krok 3: Nastavení prováděcího modulu jádra** – pro vstupně-výstupních operací úloh náročných na, které nemají komplexních operací, je dobré začít s vysokým počtem prováděcího modulu jádra na zvýšení počtu paralelních úkolů na prováděcí modul.  Nastavení prováděcího modulu jádra na 4 je dobrý začátek.   
+**Krok 3: Nastavte prováděcího modulu jádra** – pro vstupně-výstupních operací úloh náročných na, které nemají komplexních operací, je dobré začít s vysokým počtem prováděcího modulu jádra na zvýšení počtu paralelních úkolů na prováděcí modul.  Nastavení prováděcího modulu jádra na 4 je dobrý začátek.   
 
     executor-cores = 4
 Zvýšení počtu jader prováděcí modul vám poskytne další paralelismu tak můžete experimentovat s jinou prováděcího modulu jádra.  Pro úlohy, které mají složitějších operací by měla snížit počet jader na prováděcího modulu.  Pokud prováděcí modul jader je nastavená na vyšší hodnotu než 4, pak uvolňování paměti může být neefektivní a snížit výkon.
 
-**Krok 4: Určení množství paměti YARN v clusteru** – tyto informace jsou k dispozici v Ambari.  Přejděte na YARN a zobrazit na kartě konfigurace.  V tomto okně se zobrazí paměti YARN.  
+**Krok 4: Určit množství paměti YARN v clusteru** – tyto informace jsou k dispozici v Ambari.  Přejděte na YARN a zobrazit na kartě konfigurace.  V tomto okně se zobrazí paměti YARN.  
 Poznámka: když jste v okně se zobrazí také výchozí velikost kontejneru YARN.  Velikost kontejneru YARN je stejný jako paměti na jeden parametr prováděcího modulu.
 
     Total YARN memory = nodes * YARN memory per node
@@ -87,10 +87,10 @@ Nastaví větší číslo počet prováděcích modulů nemusí se nutně zvýš
 **Krok 2: Nastavení paměti prováděcí modul** – v tomto příkladu ověříme, že bude 6 GB paměti prováděcí modul dostatečná pro úlohy náročné na vstupně-výstupních operací.  
 
     executor-memory = 6GB
-**Krok 3: Nastavení prováděcího modulu jádra** – protože úlohu náročné na vstupně-výstupních operací, jsme nastavili na počet jader pro každý prováděcí modul na 4.  Nastavování počet jader na prováděcí modul na větší než 4 může způsobit problémy kolekce uvolnění paměti.  
+**Krok 3: Nastavte prováděcího modulu jádra** – protože úlohu náročné na vstupně-výstupních operací, jsme nastavili na počet jader pro každý prováděcí modul na 4.  Nastavování počet jader na prováděcí modul na větší než 4 může způsobit problémy kolekce uvolnění paměti.  
 
     executor-cores = 4
-**Krok 4: Určení množství paměti YARN v clusteru** – přejdeme na Ambari a zjistěte, zda má každý D4v2 25 GB paměti YARN.  Protože je 8 uzlů, dostupné paměti YARN se násobí hodnotou 8.
+**Krok 4: Určit množství paměti YARN v clusteru** – přejdeme na Ambari a zjistěte, zda má každý D4v2 25 GB paměti YARN.  Protože je 8 uzlů, dostupné paměti YARN se násobí hodnotou 8.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB

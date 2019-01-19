@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: bbc9ad4f15bdffa2c0f9b6f4b56f8b1701c83c47
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: d4b706a088769530e3994d8813b28f99d5a56df5
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636607"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411964"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Běžné požadavky pro nasazení OpenShift v Azure
 
@@ -52,7 +52,7 @@ Tato příručka popisuje, jak vytvořit artefakty spojené s požadavky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 Přihlaste se k předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) příkaz a postupujte podle pokynů na obrazovce pokynů nebo klikněte na tlačítko **vyzkoušet** použití Cloud Shell.
 
 ```azurecli 
@@ -101,7 +101,7 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu 
 OpenShift komunikuje s Azure pomocí uživatelského jména a hesla nebo instanční objekt služby. Instanční objekt Azure je identita zabezpečení, který vám pomůže s aplikací, služeb a nástrojů automatizace, jako je OpenShift. Kontrolou a můžete definovat oprávnění, operace, které můžete provádět instanční objekt služby v Azure. Doporučujeme rozsah oprávnění pro instanční objekt na určitých skupinách prostředků a místo celé předplatné.
 
-Vytvořit instanční objekt s [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) tak za výstupní přihlašovací údaje, které potřebuje OpenShift.
+Vytvořit instanční objekt s [az ad sp create-for-rbac](/cli/azure/ad/sp) tak za výstupní přihlašovací údaje, které potřebuje OpenShift.
 
 Následující příklad vytvoří službu objektu zabezpečení a přiřadí ji do skupiny prostředků s názvem openshiftrg oprávnění přispěvatele.
 

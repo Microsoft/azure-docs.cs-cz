@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 8d0138d20e1a30ab3efc509eb71f17a6b1e4e8e5
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 9ed3ab89387afc78bd631416a683e11f4dc7054a
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287468"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402247"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků ve službě Azure SQL Data Warehouse
 Pokyny k používání třídy prostředků ke správě paměti a souběžnosti pro dotazy ve službě Azure SQL Data Warehouse.  
@@ -81,16 +81,16 @@ Na **Gen2 pouze**, dynamický prostředek třídy jsou skutečně dynamické adr
 
 | Třída prostředku | Procento paměti | Minimální počet souběžných dotazů |
 |:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3 %                | 32                     |
+| smallrc        | 3%                | 32                     |
 | mediumrc       | 10 %               | 10                     |
-| largerc        | 22 %               | 4                      |
+| largerc        | 22%               | 4                      |
 | xlargerc       | 70 %               | 1                      |
 
 
 ### <a name="default-resource-class"></a>Výchozí třídy prostředků
 Ve výchozím nastavení, každý uživatel je členem třídy dynamický prostředek **smallrc**. 
 
-Třída prostředků Správce služeb je pevná a nedá se změnit.  Správce služeb je uživatelem vytvořené během procesu zřizování.
+Třída prostředků Správce služeb je stanoveno v smallrc a nedá se změnit.  Správce služeb je uživatelem vytvořené během procesu zřizování.  Správce služeb v tomto kontextu je přihlašovací údaje zadané pro "přihlášení pro správce serveru" při vytváření nové instance SQL Data Warehouse pomocí nového serveru.
 
 > [!NOTE]
 > Uživatele nebo skupiny, které jsou definované jako správce Active Directory jsou také správci služeb.

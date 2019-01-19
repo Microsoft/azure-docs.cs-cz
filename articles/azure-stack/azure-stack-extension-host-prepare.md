@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: fcd5137792e573c3077a4b9d5e815b9bf20774f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ec7b1ad33ec80593b718bdf86a48269fb469e078
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155061"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413511"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Příprava pro rozšíření hostitele pro Azure Stack
 
@@ -29,8 +29,8 @@ V tabulce jsou uvedeny nové obory názvů a přidružené certifikáty:
 
 | Složka pro nasazení | Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN) | Obor (podle oblasti) | SubDomain namespace |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
-| Hostitel Správce rozšíření | *.adminhosting. \<oblast >. \<plně kvalifikovaný název domény > (zástupné certifikáty SSL) | Hostitel Správce rozšíření | adminhosting. \<oblast >. \<plně kvalifikovaný název domény > |
-| Veřejná rozšiřující hostitele | * .hosting. \<oblast >. \<plně kvalifikovaný název domény > (zástupné certifikáty SSL) | Veřejná rozšiřující hostitele | hostování. \<oblast >. \<plně kvalifikovaný název domény > |
+| Hostitel Správce rozšíření | *.adminhosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Hostitel Správce rozšíření | adminhosting.\<region>.\<fqdn> |
+| Veřejná rozšiřující hostitele | *.hosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Veřejná rozšiřující hostitele | hostování. \<oblast >. \<plně kvalifikovaný název domény > |
 
 Požadavky na podrobné certifikát najdete v [požadavky na certifikáty infrastruktury veřejných klíčů služby Azure Stack](azure-stack-pki-certs.md) článku.
 
@@ -129,8 +129,8 @@ Pokud záznamy o jednotlivého hostitele bylo nakonfigurováno pro publikování
 
 | IP adresa | Název hostitele | Typ |
 |----|------------------------------|------|
-| \<IP &GT; | *. Adminhosting. \<Oblast >. \<Plně kvalifikovaný název domény > | A |
-| \<IP &GT; | *. Hostování. \<Oblast >. \<Plně kvalifikovaný název domény > | A |
+| \<IP> | *.Adminhosting.\<Region>.\<FQDN> | A |
+| \<IP> | *.Hosting.\<Region>.\<FQDN> | A |
 
 Přidělené IP adresy se dá načíst pomocí privilegovaných koncového bodu spuštěním rutiny **Get-AzureStackStampInformation**.
 
@@ -201,8 +201,8 @@ Následující existující porty koncového bodu musí být uzavřena v existuj
 
 | Koncový bod (VIP) | Protocol (Protokol) | Porty |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Portál (správce) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13020<br>13021<br>13026<br>30015 |
-| Portál (uživatel) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003 |
+| Portál (správce) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015 |
+| Portál (uživatel) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003 |
 | Azure Resource Manager (správce) | HTTPS | 30024 |
 | Azure Resource Manageru (uživatel) | HTTPS | 30024 |
 

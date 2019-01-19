@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 1/14/2019
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: fdf9ecd9b6133f05c1b2bda9c32d763d067a0243
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 77194de0b175ae66c0a119a816f32b152f269e56
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304580"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413341"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Rychlý start: vytvoření serveru virtuálního počítače s Linuxem pomocí Azure CLI ve službě Azure Stack
 
@@ -73,7 +73,7 @@ Veřejnou IP adresu se vrátí v **PublicIpAddress** parametru. Tato adresa zapi
 
 ## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz
 
-Protože tento virtuální počítač bude spouštět na webovém serveru IIS, budete muset otevřít port 80 pro přenosy z Internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm#open-port).
+Protože tento virtuální počítač bude spouštět na webovém serveru IIS, budete muset otevřít port 80 pro přenosy z Internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm).
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM

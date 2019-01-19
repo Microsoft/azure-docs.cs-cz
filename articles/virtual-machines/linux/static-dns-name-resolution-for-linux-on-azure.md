@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: acfdd9070b49805c20b8ef921b5387c151448aa1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 621cc79c23fa21401f9ec11ee15b84ae3b9b1288
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961497"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411100"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Vytvořit virtuální síťové karty a použití interního serveru DNS pro překlad adres virtuálních počítačů v Azure
 
@@ -70,7 +70,7 @@ Interní názvy DNS jsou pouze Přeložitelné uvnitř virtuální sítě Azure.
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad `myResourceGroup`, `myNic`, a `myVM`.
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
-Nejprve vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westus` umístění:
+Nejprve vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -80,7 +80,7 @@ az group create --name myResourceGroup --location westus
 
 Dalším krokem je vytvoření virtuální sítě pro spuštění virtuálních počítačů do. Virtuální síť obsahuje jednu podsíť v tomto návodu. Další informace o virtuálních sítích Azure najdete v tématu [vytvoření virtuální sítě](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
 
-Vytvoření virtuální sítě s [az network vnet vytvořit](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť s názvem `myVnet` a podsíť s názvem `mySubnet`:
+Vytvoření virtuální sítě s [az network vnet vytvořit](/cli/azure/network/vnet). Následující příklad vytvoří virtuální síť s názvem `myVnet` a podsíť s názvem `mySubnet`:
 
 ```azurecli
 az network vnet create \
@@ -103,7 +103,7 @@ az network nsg create \
 ```
 
 ## <a name="add-an-inbound-rule-to-allow-ssh"></a>Přidat pravidlo pro příchozí spojení umožňující SSH
-Přidat příchozí pravidlo pro skupinu zabezpečení sítě s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Následující příklad vytvoří pravidlo `myRuleAllowSSH`:
+Přidat příchozí pravidlo pro skupinu zabezpečení sítě s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule). Následující příklad vytvoří pravidlo `myRuleAllowSSH`:
 
 ```azurecli
 az network nsg rule create \

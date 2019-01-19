@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 2ef5d285c19900fd2896279edde8841581d7e947
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: f5e29f29a02509775347b491b8a11816cbbacd05
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388164"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413768"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Kognitivní dovednosti sloučení textu
 
 **Sloučení textu** dovednosti konsoliduje text z kolekce polí do jednoho pole. 
 
 > [!NOTE]
-> Tato dovednosti není vázán na API služeb Cognitive Services a neexistují žádné poplatky přidružené k této dovedností. Však musí [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) přesto k přepsání volba bezplatné zdroje, která omezuje vám malý počet denních obohacení.
+> Tato dovednosti není vázán na API služeb Cognitive Services a se vám neúčtují poplatky k jeho používání. Měli stále [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md), ale k přepsání **Free** resource – možnost, která omezuje vám malý počet denních obohacení za den.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

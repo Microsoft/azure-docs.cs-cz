@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 9e93dc14a4729011f74c5eafe94528608b89116f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: HT
+ms.openlocfilehash: 41f026da8b961cec0ae200e6182a7baa7a849af7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29848283"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411777"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Odstranění kontejnerů na základě předpony názvu kontejneru
 
@@ -48,13 +48,13 @@ Tento skript k odstranění kontejnerů na základě předpony názvu kontejneru
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Vytvoří účet služby Azure Storage v zadané skupině prostředků. |
 | [az storage container create](/cli/azure/storage/container#az_storage_container_create) | Vytvoří kontejner v úložišti objektů blob v Azure. |
 | [az storage container list](/cli/azure/storage/container#az_storage_container_list) | Vypíše kontejnery v účtu služby Azure Storage. |
 | [az storage container delete](/cli/azure/storage/container#az_storage_container_delete) | Odstraní kontejnery v účtu služby Azure Storage. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

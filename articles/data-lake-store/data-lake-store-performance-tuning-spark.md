@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: d280ef50d91f2e9b5157de5ec918e496f9887681
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: dc92e7d2fcc911aeb6d92b91dd2d430af3c502ad
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127665"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401703"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Průvodce laděním výkonu pro Spark v HDInsight a Azure Data Lake Storage Gen1
 
@@ -47,7 +47,7 @@ Při spuštění úlohy Spark, tady jsou nejdůležitější nastavení, které 
 
 **Prováděcí modul jader** tím se nastaví množství jader využívaných za prováděcího modulu, která určuje počet paralelních vláken, které můžou běžet na prováděcího modulu.  Například pokud prováděcí modul jádra = 2, pak každý prováděcí modul můžete spustit 2 paralelní úlohy v prováděcí modul.  Prováděcí modul jádra potřeby budou závislé na úlohu.  Vstupně-výstupní operace náročné úlohy nevyžadují velké množství paměti na jeden úkol, takže každý prováděcí modul dokáže zpracovat další paralelní úlohy.
 
-Ve výchozím nastavení jsou definovány dvě virtuální jádra YARN pro každé fyzické jádro při spouštění Sparku v HDInsight.  Toto číslo obsahuje dobrou rovnováhu mezi concurrecy a množství kontextu přepínání z více vláken.  
+Ve výchozím nastavení jsou definovány dvě virtuální jádra YARN pro každé fyzické jádro při spouštění Sparku v HDInsight.  Toto číslo obsahuje dobrou rovnováhu mezi souběžnosti a množství kontextu přepínání z více vláken.  
 
 ## <a name="guidance"></a>Doprovodné materiály
 
@@ -59,12 +59,12 @@ Pro zlepšení souběžnosti pro úlohy náročné na vstupně-výstupních oper
 
 **Krok 2: Nastavení paměti prováděcí modul** – první věc, kterou chcete nastavit je paměť prováděcího modulu.  Paměť budou závislé na úlohu, která se má spustit.  Zlepšení souběžnosti přidělením méně paměti za prováděcího modulu.  Pokud se zobrazí nedostatek paměti výjimky při spuštění úlohy, měli byste zvýšit hodnotu tohoto parametru.  Jeden alternativou je načíst větší množství paměti pomocí funkce clusteru, který má větší objem paměti a zvyšuje velikost vašeho clusteru.  Větší množství paměti umožní další moduly provádění, kterou chcete použít, což znamená, že větší souběžnost.
 
-**Krok 3: Nastavení prováděcího modulu jádra** – pro vstupně-výstupních operací úloh náročných na, které nemají komplexních operací, je dobré začít s vysokým počtem prováděcího modulu jádra na zvýšení počtu paralelních úkolů na prováděcí modul.  Nastavení prováděcího modulu jádra na 4 je dobrý začátek.   
+**Krok 3: Nastavte prováděcího modulu jádra** – pro vstupně-výstupních operací úloh náročných na, které nemají komplexních operací, je dobré začít s vysokým počtem prováděcího modulu jádra na zvýšení počtu paralelních úkolů na prováděcí modul.  Nastavení prováděcího modulu jádra na 4 je dobrý začátek.   
 
     executor-cores = 4
 Zvýšení počtu jader prováděcí modul vám poskytne další paralelismu tak můžete experimentovat s jinou prováděcího modulu jádra.  Pro úlohy, které mají složitějších operací by měla snížit počet jader na prováděcího modulu.  Pokud prováděcí modul jader je nastavená na vyšší hodnotu než 4, pak uvolňování paměti může být neefektivní a snížit výkon.
 
-**Krok 4: Určení množství paměti YARN v clusteru** – tyto informace jsou k dispozici v Ambari.  Přejděte na YARN a zobrazit na kartě konfigurace.  V tomto okně se zobrazí paměti YARN.  
+**Krok 4: Určit množství paměti YARN v clusteru** – tyto informace jsou k dispozici v Ambari.  Přejděte na YARN a zobrazit na kartě konfigurace.  V tomto okně se zobrazí paměti YARN.  
 Poznámka: když jste v okně se zobrazí také výchozí velikost kontejneru YARN.  Velikost kontejneru YARN je stejný jako paměti na jeden parametr prováděcího modulu.
 
     Total YARN memory = nodes * YARN memory per node
@@ -91,10 +91,10 @@ Nastaví větší číslo počet prováděcích modulů nemusí se nutně zvýš
 **Krok 2: Nastavení paměti prováděcí modul** – v tomto příkladu ověříme, že bude 6 GB paměti prováděcí modul dostatečná pro úlohy náročné na vstupně-výstupních operací.  
 
     executor-memory = 6GB
-**Krok 3: Nastavení prováděcího modulu jádra** – protože úlohu náročné na vstupně-výstupních operací, jsme nastavili na počet jader pro každý prováděcí modul na 4.  Nastavování počet jader na prováděcí modul na větší než 4 může způsobit problémy kolekce uvolnění paměti.  
+**Krok 3: Nastavte prováděcího modulu jádra** – protože úlohu náročné na vstupně-výstupních operací, jsme nastavili na počet jader pro každý prováděcí modul na 4.  Nastavování počet jader na prováděcí modul na větší než 4 může způsobit problémy kolekce uvolnění paměti.  
 
     executor-cores = 4
-**Krok 4: Určení množství paměti YARN v clusteru** – přejdeme na Ambari a zjistěte, zda má každý D4v2 25 GB paměti YARN.  Protože je 8 uzlů, dostupné paměti YARN se násobí hodnotou 8.
+**Krok 4: Určit množství paměti YARN v clusteru** – přejdeme na Ambari a zjistěte, zda má každý D4v2 25 GB paměti YARN.  Protože je 8 uzlů, dostupné paměti YARN se násobí hodnotou 8.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB

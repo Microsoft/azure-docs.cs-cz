@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 09464342bd39e57f6e637ce90adc7190d08340a9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 128e389a8d6928f9f133fe9d649d0fc7e982e4df
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265409"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402350"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -69,11 +69,11 @@ Azure Backup pořídí pořizovat snímky jsou spuštěné aplikace, snímky kon
 
 Následující tabulka vysvětluje různé typy konzistence.
 
-**snímek** | **Na základě VSS** | **Podrobnosti** | **Obnovení**
+**snímek** | **Podrobnosti** | **Obnovení** | **Posouzení**
 --- | --- | --- | ---
-**Konzistentní s aplikací** | Ano (jenom Windows) | Zálohování konzistentní vzhledem k zachycení paměti obsahu a čeká se na vstupně-výstupních operací. Snímky konzistentní s pomocí zapisovače VSS (nebo předzálohovacího nebo pozálohovacího skriptu pro Linux), který zajištění konzistence dat aplikací, než dojde k zálohování. | Při obnovení s konzistentní vzhledem k snímku virtuálního počítače se spustí. Neexistuje žádný poškození nebo ztrátu. Spuštění aplikace v konzistentním stavu.
-**Konzistentní se systémem souborů** | Ano (jenom Windows) |  Konzistentní zálohování souborů poskytuje konzistentní zálohování souborů na disku díky pořizování snímku všechny soubory ve stejnou dobu.<br/><br/> Body obnovení Azure Backup jsou konzistentní vzhledem k aplikacím pro soubor:<br/><br/> -Linux virtuální počítače, zálohování, které nemají předzálohovacího nebo pozálohovacího skripty, nebo že máte skript, který se nezdařilo.<br/><br/> – Zálohování virtuálního počítače Windows kde služby VSS se nezdařila. | Při obnovování s konzistentními snímku virtuálního počítače se spustí. Neexistuje žádný poškození nebo ztrátu. Aplikace je třeba implementovat vlastní mechanismus "Opravit" Ujistěte se, že je obnovená data konzistentní vzhledem k aplikacím.
-**Konzistentní při selhání** | Ne | Konzistenci při chybě často dochází při vypnutí virtuálního počítače Azure v době zálohování.  Pouze data, která již existuje na disku v době zálohování je zaznamenat a zálohovat.<br/><br/> Vytvoření bodu obnovení konzistentního nezaručuje konzistenci dat pro operační systém nebo aplikace. | Nejsou žádné záruky, ale obvykle spustí virtuální počítač a způsobem s diskem zaškrtněte, pokud chcete opravit chyby poškozující. Žádná data v paměti nebo zápisu, které nebyly převedeny na disku se ztratí. Aplikace implementovat vlastní ověřovací data. Například pro aplikaci na databázi, pokud transakčního protokolu obsahuje položky, které nejsou v databázi, databázový software postupně až do data jsou konzistentní vzhledem k aplikacím.
+**Konzistentní s aplikací** | Zálohování konzistentní vzhledem k zachycení paměti obsahu a čeká se na vstupně-výstupních operací. Snímky konzistentní s pomocí zapisovače VSS (nebo předzálohovacího nebo pozálohovacího skriptu pro Linux), který zajištění konzistence dat aplikací, než dojde k zálohování. | Při obnovení s konzistentní vzhledem k snímku virtuálního počítače se spustí. Neexistuje žádný poškození nebo ztrátu. Spuštění aplikace v konzistentním stavu. | Windows: Všechny zapisovače VSS úspěšné<br/><br/> Linux: Předzálohovacího nebo pozálohovacího skripty jsou konfigurovány a byla úspěšná
+**Konzistentní se systémem souborů** | Konzistentní zálohování souborů poskytuje konzistentní zálohování souborů na disku díky pořizování snímku všechny soubory ve stejnou dobu.<br/><br/> | Při obnovování s konzistentními snímku virtuálního počítače se spustí. Neexistuje žádný poškození nebo ztrátu. Aplikace je třeba implementovat vlastní mechanismus "Opravit" Ujistěte se, že je obnovená data konzistentní vzhledem k aplikacím. | Windows: Některé zapisovače služby VSS se nezdařila <br/><br/> Linux: Výchozí (Pokud předzálohovacího nebo pozálohovacího skriptů nejsou nakonfigurovaná nebo neúspěšných)
+**Konzistentní při selhání** | Konzistenci při chybě často dochází při vypnutí virtuálního počítače Azure v době zálohování.  Pouze data, která již existuje na disku v době zálohování je zaznamenat a zálohovat.<br/><br/> Vytvoření bodu obnovení konzistentního nezaručuje konzistenci dat pro operační systém nebo aplikace. | Nejsou žádné záruky, ale obvykle spustí virtuální počítač a způsobem s diskem zaškrtněte, pokud chcete opravit chyby poškozující. Žádná data v paměti nebo zápisu, které nebyly převedeny na disku se ztratí. Aplikace implementovat vlastní ověřovací data. Například pro aplikaci na databázi, pokud transakčního protokolu obsahuje položky, které nejsou v databázi, databázový software postupně až do data jsou konzistentní vzhledem k aplikacím. | Virtuální počítač je ve stavu vypnutí
 
 
 ## <a name="service-and-subscription-limits"></a>Omezení služby a předplatného

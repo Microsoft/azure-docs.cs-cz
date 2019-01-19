@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 0fa695218bb1112324ef2ddac80e52f927a5971b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9ff75cbd0a4915cdf7045be9a45d11075dda15bd
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045292"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402315"
 ---
 # <a name="u-sql-programmability-guide"></a>Průvodce programovatelností U-SQL
 
@@ -504,7 +504,7 @@ Konstruktor třídy:
 
 * SqlUserDefinedTypeAttribute (formátovací modul typu)
 
-* Formátovací modul typu: povinný parametr pro definování formátování UDT – konkrétně typ `IFormatter` rozhraní musí být předán tady.
+* Formátovací modul typu: Povinný parametr pro definování formátování UDT – konkrétně typ `IFormatter` rozhraní musí být předán tady.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -529,13 +529,13 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 \<typeparam name = "T" > typ kořenového objektu grafu serializovat a deserializovat.
 
-* **Deserializovat**: deserializaci dat na zadaný datový proud a reconstitutes grafu objektů.
+* **Deserializovat**: Deserializuje data na zadaný datový proud a reconstitutes grafu objektů.
 
-* **Serializace**: serializuje objekt nebo grafu objektů s danou kořenového adresáře zadaného datového proudu.
+* **Serializace**: Serializuje objekt nebo grafu objektů s danou kořenového adresáře zadaného datového proudu.
 
-`MyType` instance: Instance daného typu.  
-`IColumnWriter` Zapisovač / `IColumnReader` reader: základního datového proudu sloupce.  
-`ISerializationContext` kontext: výčet, který definuje sadu příznaků, které určuje zdrojový nebo cílový kontext pro datový proud během serializace.
+`MyType` Instance: Instance daného typu.  
+`IColumnWriter` Zapisovač / `IColumnReader` reader: Základní stream pro sloupec.  
+`ISerializationContext` Kontext: Výčet, který definuje sadu příznaků, která určuje zdrojový nebo cílový kontext pro datový proud během serializace.
 
 * **Zprostředkující**: Určuje, že zdrojový nebo cílový kontext není trvalému úložišti.
 
@@ -945,8 +945,8 @@ Chcete-li deklarovat správný vstup a výstup datové typy, použijte definici 
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1: Accumulate první parametr
-* T2: Accumulate první parametr
+* T1: První parametr k shromažďování
+* T2: První parametr k shromažďování
 * TResult: Návratový typ ukončení
 
 Příklad:
@@ -1067,11 +1067,11 @@ UDO je obvykle volána explicitně ve skriptu U-SQL jako součást následujíc�
 ## <a name="use-user-defined-extractors"></a>Použití uživatelem definované – extraktory
 U-SQL umožňuje import externích dat pomocí příkazu EXTRAKCE. Příkaz EXTRAKCE můžete použít předdefinované – extraktory UDO:  
 
-* *Extractors.Text()*: poskytuje extrakce z textových souborů s oddělovači jiné kódování.
+* *Extractors.Text()*: Poskytuje extrakce z textových souborů s oddělovači jiné kódování.
 
-* *Extractors.Csv()*: poskytuje extrakce z hodnot oddělených čárkami (CSV) soubory jiné kódování.
+* *Extractors.Csv()*: Poskytuje extrakce z hodnot oddělených čárkami (CSV) soubory jiné kódování.
 
-* *Extractors.Tsv()*: poskytuje extrakce z hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
+* *Extractors.Tsv()*: Poskytuje extrakce z hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
 
 Může být užitečné pro vývoj vlastní Extraktor. To může být užitečné při importu dat pokud chceme proveďte jednu z následujících úloh:
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>Použití uživatelem definované výstupní moduly
 Uživatelem definované outputter je jiný UDO U-SQL, který umožňuje rozšířit vestavěné funkce U-SQL. Podobně jako extraktoru, existuje několik předdefinovaných výstupní moduly.
 
-* *Outputters.Text()*: zapisuje data do textových souborů s oddělovači jiné kódování.
-* *Outputters.Csv()*: zapisuje data do různých kódování na soubory hodnotami oddělenými čárkami (CSV).
-* *Outputters.Tsv()*: zapisuje data do hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
+* *Outputters.Text()*: Zapíše data do textových souborů s oddělovači jiné kódování.
+* *Outputters.Csv()*: Zapíše data do různých kódování na soubory hodnotami oddělenými čárkami (CSV).
+* *Outputters.Tsv()*: Zapíše data do hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
 
 Vlastní outputter umožňuje zapisovat data ve vlastním formátu definovaný. To může být užitečné pro následující úlohy:
 
@@ -1300,7 +1300,7 @@ string val = row.Get<string>(col.Name)
 
 Tento přístup umožňuje vytvářet flexibilní outputter pro žádné schéma metadat.
 
-Výstupní data se zapisují do souboru s použitím `System.IO.StreamWriter`. Parametr datový proud je nastaven na `output.BaseStrea` jako součást `IUnstructuredWriter output`.
+Výstupní data se zapisují do souboru s použitím `System.IO.StreamWriter`. Parametr datový proud je nastaven na `output.BaseStream` jako součást `IUnstructuredWriter output`.
 
 Všimněte si, že je důležité, abyste po každé iteraci řádek vyprázdní vyrovnávací paměť dat do souboru. Kromě toho `StreamWriter` objekt musí použít s uvolnitelné atribut povoleno (výchozí) a **pomocí** – klíčové slovo:
 
@@ -1775,7 +1775,7 @@ V tomto scénáři použití uživatelem definované applier funguje jako analyz
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
+303 Y0AB2CD34XY458890   Chevrolet,Cruise,2010,4Dr,32455
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 

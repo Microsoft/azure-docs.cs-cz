@@ -7,28 +7,28 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 01/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 776363278352ca3de365760d334e99ab43b14bb5
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: bfa9bbb9816148182b79a8231f2ddb3e46433804
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389568"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413239"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojit prostředek služeb Cognitive Services dovedností v Azure Search 
 
-Algoritmy AI řízení [kognitivního vyhledávání kanály](cognitive-search-concept-intro.md) pro zpracovávání nestrukturovaných dat, které jsou založeny na [ **prostředků služeb Cognitive Services**](https://azure.microsoft.com/services/cognitive-services/). Zdroje, jako jsou [ **pro počítačové zpracování obrazu** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) poskytují analýzu obrázků a optického rozpoznávání znaků (OCR) pro extrahování textu a struktura mimo soubory obrázků, zatímco [ **Text Analytics** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) poskytuje například entity rozpoznávání a extrakci klíčových frází, další zpracování přirozeného jazyka.
+Jednotky algoritmů AI [kognitivního vyhledávání kanály](cognitive-search-concept-intro.md) použity pro zpracování nestrukturovaných dat v Azure Search indexování operace. Tyto algoritmy jsou založeny na [prostředků služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), včetně [pro počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/) image analýzy a optického rozpoznávání znaků (OCR) a [rozhraní Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/)pro rozpoznávání entit, extrakce klíčových frází a dalších obohacení.
 
 Můžete zdarma rozšiřovat omezený počet dokumentů nebo připojit fakturovatelné prostředku služeb Cognitive Services pro větší a častější úlohy. V tomto článku najdete informace o prostředku služeb Cognitive Services přidružit vaše kognitivní dovednosti a obohacení dat během [indexování Azure Search](search-what-is-an-index.md).
 
-Pokud váš kanál se skládá z dovednosti, které nesouvisí se rozhraní API služeb Cognitive Services, má stále připojovat prostředku služeb Cognitive Services, ale nebudou se vám účtovat tyto dovednosti. Nesouvisející zahrnují dovednosti: [vlastních dovedností](cognitive-search-create-custom-skill-example.md), [sloučení textu](cognitive-search-skill-textmerger.md), [text rozdělovač](cognitive-search-skill-textsplit.md), a [shaper](cognitive-search-skill-shaper.md).
+Pokud váš kanál se skládá z dovednosti, které nesouvisí se rozhraní API služeb Cognitive Services, by měl pořád připojit prostředek služeb Cognitive Services. To tedy přepsání **Free** prostředek, který omezuje k malé množství obohacení za den. Neplatí žádné poplatky pro dovednosti, které nejsou vázány na rozhraní API služeb Cognitive Services. Zahrnout tyto dovednosti: [vlastních dovedností](cognitive-search-create-custom-skill-example.md), [sloučení textu](cognitive-search-skill-textmerger.md), [text rozdělovač](cognitive-search-skill-textsplit.md), a [shaper](cognitive-search-skill-shaper.md).
 
 > [!NOTE]
 > Od 21. prosince 2018 přidružíte k prostředku služeb Cognitive Services k dovednosti Azure Search. To umožňuje poplatky za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
 >
-> Provedení příkazu [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services), na stejná sazba jako by měl provést úlohu přímo. Extrakce Image je Azure Search účtovaných událostí, na ceny verze preview v současné době nabízena. Podrobnosti najdete v tématu [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) nebo [fakturace](search-sku-tier.md#how-billing-works).
+> [Integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) spuštění, se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services), na stejné přenosové rychlosti, jako by měl provést úlohu přímo. Extrakce Image je poplatek za Azure Search, v současné době nabízena na ceny verze preview. Podrobnosti najdete v tématu [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) nebo [fakturace](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="use-free-resources"></a>Použití uvolnění prostředků

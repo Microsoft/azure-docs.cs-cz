@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: 9870eac87204f24993ab71e373dcab3a8ead3e89
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a53fee8ee492de4d9eaa8b45a8d4a88e692da02d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075333"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410366"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 ## <a name="1-set-up-azure-authentication"></a>1. Nastavení ověřování Azure
 
 > [!NOTE]
-> Pokud [používáte proměnné prostředí nástroje Terraform](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](terraform-cloud-shell.md), tuto část přeskočte.
+> Pokud [používáte proměnné prostředí nástroje Terraform](/azure/virtual-machines/linux/terraform-install-configure) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](terraform-cloud-shell.md), tuto část přeskočte.
 
 V této části vygenerujete instanční objekt Azure a dva konfigurační soubory Terraformu obsahující přihlašovací údaje z objektu zabezpečení.
 

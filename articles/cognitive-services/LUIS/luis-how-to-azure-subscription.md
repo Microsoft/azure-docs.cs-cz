@@ -9,16 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 5d3e837cf644e0cb9b35a0cfc715a9dcace592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e69d03e2c45ee34723bd6aace3a2a26cead63e96
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082981"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411607"
 ---
-# <a name="manage-azure-endpoint-subscription-keys"></a>Spravovat klíče předplatného koncový bod Azure
+# <a name="manage-azure-resource-keys-for-prediction-endpoint-queries"></a>Správa prostředků Azure klíčů pro dotazy předpovědi s koncového bodu
+
+[!INCLUDE [Azure resource creation for Language Understanding and Cognitive Service resources](../../../includes/cognitive-services-luis-azure-resource-instructions.md)]
 
 Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte. Pro produkční systémy, používat [placené](https://aka.ms/luis-price-tier) vrstvy. 
 
@@ -57,7 +59,7 @@ Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte.
 5. Nezapomeňte [přiřadit tento klíč koncového bodu](luis-how-to-manage-keys.md#assign-endpoint-key) na **publikovat** stránce a používat ho v všechny dotazy na koncový bod. 
 
 ## <a name="exceed-pricing-tier-usage"></a>Překročit využití cenové úrovně
-Každá úroveň umožňuje koncový bod požadavků na účet služby LUIS určitou rychlostí. Pokud se o počet žádostí o je vyšší než povolený počet účtu Účtovaná podle objemu dat za minutu nebo za měsíc, požadavky obdrží chybu HTTP "429: příliš mnoho požadavků."
+Každá úroveň umožňuje koncový bod požadavků na účet služby LUIS určitou rychlostí. Pokud se o počet žádostí o je vyšší než povolený počet účtu Účtovaná podle objemu dat za minutu nebo za měsíc, požadavky obdrží chybu HTTP "429: Příliš mnoho požadavků."
 
 Každá úroveň umožňuje kumulativní žádostí za měsíc. Pokud celkový počet požadavků jsou vyšší než povolený počet souborů, požadavky obdrží chybu HTTP "403: zakázáno".  
 

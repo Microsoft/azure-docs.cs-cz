@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 3be75f2fe004939eff6bf6cc960759db69bfb93a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8de052175d93abdb82390d12d601c29bf0d4d462
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215095"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411862"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurace aplikací v reálném čase přístup k monitorování pomocí Microsoft Cloud App Security a Azure Active Directory
 Nakonfigurujte místní aplikace v Azure Active Directory (Azure AD) pro použití Microsoft Cloud App Security (MCAS) pro monitorování v reálném čase. MCAS používá Conditional Access App Control k monitorování a řízení relace v reálném čase podle zásady podmíněného přístupu. Tyto zásady můžete použít k místním aplikacím, které používají Proxy aplikací v Azure Active Directory (Azure AD).
@@ -64,7 +64,7 @@ Nakonfigurovat svoji aplikaci pomocí podmíněného řízení přístupu aplika
 
 ## <a name="test-conditional-access-app-control"></a>Test Conditional Access App Control
 
-Chcete-li otestovat nasazení aplikací Azure AD pomocí podmíněného řízení přístupu aplikace, postupujte podle pokynů v [testovací nasazení pro aplikace Azure AD](/cloud-app-security/proxy-deployment-aad#test-the-deployment).
+Chcete-li otestovat nasazení aplikací Azure AD pomocí podmíněného řízení přístupu aplikace, postupujte podle pokynů v [testovací nasazení pro aplikace Azure AD](/cloud-app-security/proxy-deployment-aad).
 
 
 

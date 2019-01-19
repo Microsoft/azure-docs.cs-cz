@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: ff3aa86fee7fc30cfc18edc3b413a4378df69662
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306997"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402043"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -28,18 +28,17 @@ Video Indexer je služba umělé inteligence, který je součástí Microsoft Az
 
 ### <a name="what-can-i-do-with-video-indexer"></a>Co můžu dělat s Video Indexer?
 
-Video Indexer lze provádět následující typy operací v mediálních souborů:
+Operace, které můžete provádět funkce Video Indexer na mediálních souborů patří:
 
-* Identifikujte a extrahovat řeči a identifikaci mluvčích.
-* Identifikovat a na obrazovce extrahovat text ve videu.
-* Identifikovat a označit objekty v souboru videa.
-* Identifikujte značek jako je Microsoft z zvukové stopy a na obrazovce text ve videu.
-* Detekci a rozpoznávání tváří z databáze celebrit a uživatelem definované databázové tváří.
-* Extrakce klíčových slov z obrazový a zvukový obsah na základě textu na mluvené slovo a vizuální.
-* Extrahujte témata popsané, ale ne nutně explicitně podle audio a video obsahu na základě textu na mluvené slovo a vizuální.
-* Vytvoření z zvukové stopy titulků.
+* Identifikace a extrahování řeči a identifikaci mluvčích.
+* Identifikace a extrahování na obrazovce text ve videu.
+* Zjišťování objektů v souboru videa.
+* Identifikujte značky (například: Microsoft) z zvukové stopy a na obrazovce text ve videu.
+* Detekce a rozpoznávání tváře z databáze celebrit a uživatelem definované databázové tváří.
+* Extrahování témata popsána, ale ne nutně podle audio a video obsahu.
+* Vytváření z zvukové stopy titulků.
 
-Další informace najdete v tématu [Přehled](video-indexer-overview.md).
+Další informace a další funkce Video Indexer, naleznete v tématu [přehled](video-indexer-overview.md).
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Jak můžu začít pracovat s Video Indexer?
 

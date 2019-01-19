@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: e1257cbe14d8d0fe9dc6d9b0f2a48dbb8b3cc6e4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 81c33818733b2896f98e1f3a3648b4fe9b823211
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466545"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413851"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí šablony Azure
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Kurz: Automatické škálování virtuálního počítače škálovací sady pomocí šablony Azure
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -164,7 +164,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 ## <a name="generate-cpu-load-on-scale-set"></a>Generování zatížení CPU ve škálovací sadě
 Pokud chcete pravidla automatického škálování otestovat, vygenerujte nějaké zatížení CPU instancí virtuálních počítačů ve škálovací sadě. Toto simulované zatížení CPU způsobí, že pravidla automatického škálování provedou horizontální navýšení kapacity a zvýší počet instancí virtuálních počítačů. S následným snížením zatížení CPU pravidla automatického škálování provedou horizontální snížení kapacity a sníží počet instancí virtuálních počítačů.
 
-Nejprve vypište adresu a porty pro připojení k instancím virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info):
+Nejprve vypište adresu a porty pro připojení k instancím virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss list-instance-connection-info](/cli/azure/vmss):
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -194,7 +194,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Jakmile nástroj **stress** zobrazí podobný výstup: *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, stisknutím klávesy *Enter* se vraťte do příkazového řádku.
+Při **zátěže** zobrazí podobný výstup *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, stiskněte *Enter* klíč se vraťte do příkazového řádku.
 
 Pokud chcete potvrdit, že nástroj **stress** generuje zatížení CPU, prozkoumejte zatížení aktivního systému pomocí nástroje **top**:
 
@@ -209,7 +209,7 @@ Ctrl-c
 exit
 ```
 
-Připojte se k druhé instanci virtuálního počítače s použitím čísla portu uvedeného ve výstupu předchozího příkazu [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info):
+Připojte se k druhé instanci virtuálního počítače s použitím čísla portu uvedeného ve výstupu předchozího příkazu [az vmss list-instance-connection-info](/cli/azure/vmss):
 
 ```azurecli-interactive
 ssh azureuser@13.92.224.66 -p 50003
@@ -222,7 +222,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Jakmile nástroj **stress** zobrazí podobný výstup: *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, opět se stisknutím klávesy *Enter* vraťte do příkazového řádku.
+Znovu, když **zátěže** zobrazí podobný výstup *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, stiskněte *Enter* klíč se vraťte do příkazového řádku.
 
 Ukončete připojení k druhé instanci virtuálního počítače. Nástroj **stress** zůstane na instanci virtuálního počítače spuštěný.
 
@@ -271,7 +271,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak automaticky horizontálně snižovat nebo zvyšovat kapacitu škálovací sady pomocí Azure CLI:
 
 > [!div class="checklist"]

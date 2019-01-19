@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 60c709108da041dc1e54ba69d3b1b153accebc19
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138071"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401397"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Průvodce programováním pro službu Azure Event Hubs
 Tento článek popisuje některé běžné situace při psaní kódu s využitím služby Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -92,7 +92,7 @@ Další informace a diskuze o kompromisech mezi dostupností a konzistencí najd
 
 Odesílání událostí v dávkách může pomoci zvýšit propustnost. Můžete použít [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) rozhraní API k vytvoření dávky dat je možné později přidat objekty pro [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) volání.
 
-Jeden batch nesmí překročit velikost 256 KB omezení pro událost. Kromě toho každá zpráva v batchi používá stejnou identitu zdroje. Dodržení maximálního limitu velikosti události u batche musí zajistit odesílatel. V případě překročení se u klienta vygeneruje chyba odeslání (**Send**). Můžete použít metodu helper [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) zajistit, že služby batch není delší než 256 KB. Získejte prázdnou [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) z [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) rozhraní API a pak použijte [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) přidání události k vytvoření služby batch. 
+Jeden batch nesmí překročit 1 MB omezení pro událost. Kromě toho každá zpráva v batchi používá stejnou identitu zdroje. Dodržení maximálního limitu velikosti události u batche musí zajistit odesílatel. V případě překročení se u klienta vygeneruje chyba odeslání (**Send**). Můžete použít metodu helper [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) zajistit, že služby batch není delší než 1 MB. Získejte prázdnou [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) z [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) rozhraní API a pak použijte [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) přidání události k vytvoření služby batch. 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchronní odesílání a škálované odesílání
 

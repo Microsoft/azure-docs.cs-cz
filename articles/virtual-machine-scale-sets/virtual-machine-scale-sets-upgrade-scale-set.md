@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: 4ef611965382906e933f8d50b5dbdb3969d0b45f
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: ce031b5c0dba96ab1a51532ad771eebeafb5d599
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979042"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413256"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 V průběhu životního cyklu aplikací můžete změnit nebo aktualizovat škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci škálovací sady nebo změnit konfiguraci aplikace. Tento článek popisuje, jak změnit existující škálovací sady pomocí rozhraní REST API, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
@@ -86,7 +86,7 @@ Tyto vlastnosti se vztahují do škálovací sady jako celek.
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
     ```
 
-- Azure CLI s [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view):
+- Azure CLI s [az vmss get-instance-view](/cli/azure/vmss):
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
@@ -180,7 +180,7 @@ Podobně jako u jak škálovací sady má zobrazení instance, všechny instance
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
-- Azure CLI s [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view)
+- Azure CLI s [az vmss get-instance-view](/cli/azure/vmss)
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId

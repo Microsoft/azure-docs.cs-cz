@@ -1,23 +1,18 @@
 ---
-title: Integrace Azure DNS s prostředky Azure | Dokumentace Microsoftu
+title: Integrace Azure DNS s prostředky Azure.
 description: Zjistěte, jak používat Azure DNS podél zajištění DNS pro prostředky Azure.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 1/19/2018
+ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8e8a09ede66213247b306c77938dbff30651fee5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b513e898e25397f54b8f7f7590a4466523a705ff
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727144"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401414"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Použití Azure DNS k poskytování nastavení vlastní domény pro službu Azure
 
@@ -33,7 +28,7 @@ Můžete nakonfigurovat individuální nebo vlastní doménu pro [aplikace Azure
 
 Konfigurace vlastní domény pro aplikace Azure function App, je vytvořili záznam CNAME, tak i konfigurace v samotné aplikaci function app.
  
-Přejděte do **jiných** > **aplikace Function App** a vyberte aplikaci funkcí. Klikněte na tlačítko **funkce platformy** a v části **sítě** klikněte na tlačítko **vlastní domény**.
+Přejděte do **aplikace Function App** a vyberte aplikaci funkcí. Klikněte na tlačítko **funkce platformy** a v části **sítě** klikněte na tlačítko **vlastní domény**.
 
 ![okno app – funkce](./media/dns-custom-domain/functionapp.png)
 
@@ -51,9 +46,9 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
 |Alias     | adatumfunction.azurewebsites.net        | Název DNS vytvoříte alias, v tomto příkladu je název DNS adatumfunction.azurewebsites.net dostupné ve výchozím nastavení aplikace function App.        |
 
-Přejděte zpět do aplikace function app, klikněte na **funkce platformy**a v části **sítě** klikněte na tlačítko **vlastní domény**, pak v oblasti **názvy hostitelů**klikněte na tlačítko **+ přidat název hostitele**.
+Přejděte zpět do aplikace function app, klikněte na **funkce platformy**a v části **sítě** klikněte na tlačítko **vlastní domény**, pak v oblasti **vlastní názvy hostitelů** klikněte na tlačítko **+ přidat název hostitele**.
 
-Na **přidat název hostitele** okně zadejte záznam CNAME v **hostname** textové pole a klikněte na tlačítko **ověřit**. Pokud záznam byl schopen najít, **přidat název hostitele** se zobrazí tlačítko. Klikněte na tlačítko **přidat název hostitele** přidat alias.
+Na **přidat název hostitele** okně zadejte záznam CNAME v **hostname** textové pole a klikněte na tlačítko **ověřit**. Pokud se najde záznam **přidat název hostitele** se zobrazí tlačítko. Klikněte na tlačítko **přidat název hostitele** přidat alias.
 
 ![aplikace Function App přidat název okna hostitele](./media/dns-custom-domain/functionaddhostname.png)
 
@@ -86,7 +81,7 @@ Jakmile se vytvoří záznam A, spusťte `nslookup` ověření záznamů řeší
 
 Následující kroky vás provedou konfigurace vlastní domény k webové aplikaci app service.
 
-Přejděte do **Web a mobilní zařízení** > **služby App Service** a vyberte prostředek, je konfigurace vlastního názvu domény a klikněte na tlačítko **vlastní domény**.
+Přejděte do **služby App Service** a vyberte prostředek, je konfigurace vlastního názvu domény a klikněte na tlačítko **vlastní domény**.
 
 Všimněte si aktuální adresa url na **vlastní domény** okno, tato adresa se používá jako alias pro záznam DNS vytvořený.
 
@@ -149,7 +144,7 @@ Další informace o mapování vlastní domény do koncového bodu blob storage 
 
 Následující kroky vás provedou konfigurací záznam CNAME pro koncový bod CDN pomocí metody cdnverify. Tato metoda zajišťuje, že neexistuje žádný výpadek.
 
-Přejděte do **sítě** > **profily CDN**, vyberte váš profil CDN a klikněte na tlačítko **koncové body** pod **Obecné**.
+Přejděte do **sítě** > **profily CDN**, vyberte váš profil CDN.
 
 Vyberte koncový bod ve spolupráci s a klikněte na tlačítko **+ vlastní doména**. Poznámka: **název hostitele koncového bodu** jako tato hodnota je záznam CNAME odkazující na záznam.
 

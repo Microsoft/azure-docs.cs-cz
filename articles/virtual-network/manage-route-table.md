@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 45c7a07231cbdcdc64ec348ed425a62b63bd822a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d50e1b0f5d9c965ba9562eae1f06dd51341731ad
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016558"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412236"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvořit, změnit nebo odstranit tabulku směrování
 
@@ -125,7 +125,7 @@ Směrovací tabulka je přidružen k žádné podsítě, nelze odstranit. [Zruš
 **Příkazy**
 
 - Azure CLI: [az sítě route-table delete](/cli/azure/network/route-table/route#az_network_route_table_delete)
-- PowerShell: [Odebrat AzureRmRouteTable](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermroutetable?view=azurermps-6.8.1) 
+- PowerShell: [Remove-AzureRmRouteTable](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermroutetable?view=azurermps-6.8.1) 
 
 ## <a name="create-a-route"></a>Vytvoření trasy
 
@@ -144,7 +144,7 @@ Platí omezení na tom, kolik tras ve směrovací tabulce můžete vytvořit pro
 **Příkazy**
 
 - Azure CLI: [vytvořit az network route-table trasy](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
-- PowerShell: [Nové AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
+- PowerShell: [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
 
 ## <a name="view-routes"></a>Zobrazit trasy
 
@@ -156,7 +156,7 @@ Směrovací tabulka obsahuje nula nebo více tras. Další informace o informace
 
 **Příkazy**
 
-- Azure CLI: [az network route-table trasy seznamu](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
+- Azure CLI: [az network route-table trasy seznamu](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
 ## <a name="view-details-of-a-route"></a>Zobrazení podrobností o trase
@@ -195,7 +195,7 @@ Směrovací tabulka obsahuje nula nebo více tras. Další informace o informace
 **Příkazy**
 
 - Azure CLI: [az sítě route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
-- PowerShell: [Odebrat AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
+- PowerShell: [Remove-AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
 
 ## <a name="view-effective-routes"></a>Zobrazení efektivních tras
 

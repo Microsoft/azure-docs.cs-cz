@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: a720b264c4283498604d1446283c5a2242fdb8b3
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cb965313fda90da3fb0ec0cd418f87795a4e2722
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381801"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413460"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
 
@@ -71,7 +71,6 @@ Aby bylo možné vyřešit chyby zjišťování serveru vCenter, zajistěte, aby
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>Změňte IP adresu konfiguračního serveru
 
 Důrazně doporučujeme, že nechcete změnit IP adresu konfiguračního serveru. Ujistěte se, že všechny IP adresy, které jsou přiřazeny ke konfiguračnímu serveru jsou statické IP adresy. Nepoužívejte IP adresy služby DHCP.
->>>>>>> c842cff5a0480caa5183dbb7afe5016a7061c7b9
 
 ## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: SAML token je neplatný.
 

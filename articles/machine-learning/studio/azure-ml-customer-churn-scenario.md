@@ -10,14 +10,14 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: dbe853172c0f0e49408bd4a2dd630a69659421d3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 153ddcc1ba0da6171963ec91511fafe84023ecf8
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260597"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401960"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Analýza výpovědí zákazníků pomocí Azure Machine Learning Studio
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analýza výpovědí zákazníků pomocí Azure Machine Learning Studio
 ## <a name="overview"></a>Přehled
 Tento článek představuje referenční implementaci projektu pro analýzu přechodu se zákazník je vytvořená pomocí Azure Machine Learning. V tomto článku se podíváme na přidružených modelech obecné pro holistické řešení problému přechodu firemních zákazníků změn. Můžeme také měřit přesnost modelů, které jsou vytvořeny pomocí Machine Learning a posoudit pokynů pro další vývoj.  
 

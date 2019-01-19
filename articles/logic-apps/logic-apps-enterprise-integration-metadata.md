@@ -1,6 +1,6 @@
 ---
 title: Správa integrace účtu artefaktu metadat – Azure Logic Apps | Dokumentace Microsoftu
-description: Přidat nebo načíst metadata artefaktů z účtů pro integraci v Azure Logic Apps sadou Enterprise Integration Pack
+description: Přidání nebo získat metadata artefaktů z účtů pro integraci v Azure Logic Apps sadou Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,57 +9,101 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
-ms.date: 02/23/2018
-ms.openlocfilehash: 537014c2780fe94cfb35806759f8bcbd974c4c95
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 01/17/2019
+ms.openlocfilehash: 2a5066a2dcb74051088b2fc67b5089e95ae4dd3f
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128799"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410349"
 ---
-# <a name="manage-artifact-metadata-from-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Správa artefaktů metadat z účtů pro integraci v Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Správa metadat artefakt v účty pro integraci s Azure Logic Apps a Enterprise Integration Pack
 
-Můžete definovat vlastních metadat pro artefakty v integračních účtů a načtení těchto metadat za běhu pro vaši aplikaci logiky. Můžete například zadat metadat pro artefakty, jako jsou partneři, smlouvy, schémat a mapy – všechna metadata úložiště pomocí páry klíč hodnota. 
+Můžete definovat vlastních metadat pro artefakty v integračních účtů a získání těchto metadat za běhu pro vaši aplikaci logiky použít. Například můžete zadat metadat pro artefakty, jako jsou partneři, smlouvy, schémat a mapy – všechna metadata úložiště pomocí páry klíč hodnota. 
 
-## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>Přidat metadata do artefaktů v účty pro integraci
+## <a name="prerequisites"></a>Požadavky
 
-1. Na webu Azure Portal vytvořit [účtu pro integraci](logic-apps-enterprise-integration-create-integration-account.md).
+* Předplatné Azure. Pokud předplatné nemáte, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
-2. Přidání artefaktu do účtu pro integraci, například, [partnera](logic-apps-enterprise-integration-partners.md), [smlouvy](logic-apps-enterprise-integration-agreements.md), nebo [schématu](logic-apps-enterprise-integration-schemas.md).
+* Základní [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , který má artefakty, ve které chcete přidat metadata, například: 
 
-3. Vyberte prosím artefakt, zvolte **upravit**a zadejte podrobnosti o metadata.
+  * [Partner](logic-apps-enterprise-integration-partners.md)
+  * [Smlouva](logic-apps-enterprise-integration-agreements.md)
+  * [schéma](logic-apps-enterprise-integration-schemas.md)
+  * [Mapa](logic-apps-enterprise-integration-maps.md)
 
-   ![Zadejte metadat](media/logic-apps-enterprise-integration-metadata/image1.png)
+* Aplikace logiky, který je propojený s integrační účet a artefaktů metadata, kterou chcete použít. Pokud vaše aplikace logiky není již propojena, přečtěte si [postup propojení aplikace logiky s účty pro integraci](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
 
-## <a name="retrieve-metadata-from-artifacts-for-logic-apps"></a>Načíst metadata z artefaktů pro logic apps
+  Pokud ještě nemáte aplikace logiky, přečtěte si [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+  Přidáte aktivační události a akce, které chcete použít pro správu metadata artefaktů. Nebo jenom vyzkoušet zkoušení různých věcí, přidání triggeru **žádosti** nebo **HTTP** do aplikace logiky.
 
-1. Na portálu Azure vytvořit [aplikace logiky](quickstart-create-first-logic-app-workflow.md).
+## <a name="add-metadata-to-artifacts"></a>Přidání metadat pro artefakty
 
-2. Vytvoření [odkaz z aplikace logiky do účtu pro integraci](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
+1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a> pomocí přihlašovacích údajů svého účtu Azure. Vyhledání a otevření účtu pro integraci.
 
-3. V návrháři aplikace logiky přidávat aktivační události jako **žádosti** nebo **HTTP** do aplikace logiky.
+1. Vyberte prosím artefakt, ve které chcete přidat metadata a zvolte **upravit**. Zadejte podrobnosti metadat pro tento artefakt zobrazil, například:
 
-4. Pod triggerem zvolte **nový krok** > **přidat akci**. Vyhledejte "účet pro integraci", aby mohla najít a pak vyberte tuto akci: **účet pro integraci – vyhledání artefaktu účtu pro integraci**
+   ![Zadejte metadat](media/logic-apps-enterprise-integration-metadata/add-partner-metadata.png)
 
-   ![Vyberte vyhledání artefaktu účtu pro integraci](media/logic-apps-enterprise-integration-metadata/image2.png)
+1. Jakmile budete hotovi, zvolte **OK**.
 
-5. Vyberte **Typ artefaktu** a poskytnout **název artefaktu**. Příklad:
+1. Chcete-li zobrazit tato metadata v definici JavaScript Object Notation (JSON) pro účet pro integraci, zvolte **upravit jako JSON** tak, aby se otevře že editor JSON: 
 
-   ![Vyberte typ artefaktu a zadejte název artefaktu](media/logic-apps-enterprise-integration-metadata/image3.png)
+   ![JSON pro metadata partnera](media/logic-apps-enterprise-integration-metadata/partner-metadata.png)
 
-## <a name="example-retrieve-partner-metadata"></a>Příklad: Načtení partnera metadat
+## <a name="get-artifact-metadata"></a>Získat metadata artefaktů
 
-Předpokládejme, že tohoto partnera se tato metadata s `routingUrl` podrobnosti:
+1. Na webu Azure Portal otevřete aplikaci logiky, který je propojený účet integrace, který chcete. 
 
-![Najít partnera "routingURL" metadata](media/logic-apps-enterprise-integration-metadata/image6.png)
+1. V návrháři aplikace logiky, pokud přidáváte krok pro získávání metadat v aktivační události nebo poslední akce v pracovním postupu, vyberte **nový krok** > **přidat akci**. 
 
-1. Ve vaší aplikaci logiky přidáte trigger, **účet pro integraci – vyhledání artefaktu účtu pro integraci** akce pro vašeho partnera a **HTTP** akce, například:
+1. Do vyhledávacího pole zadejte "účet integrace". Pod vyhledávacím polem vyberte **všechny**. Ze seznamu akcí vyberte tuto akci: **Vyhledání artefaktu účtu pro integraci – účet pro integraci**
 
-   ![Přidání triggeru, vyhledání artefaktu a akce HTTP do aplikace logiky](media/logic-apps-enterprise-integration-metadata/image4.png)
+   ![Vyberte "Vyhledání artefaktu účtu pro integraci"](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
 
-2. Chcete-li získat identifikátor URI, na panelu nástrojů návrháře aplikace logiky zvolte **zobrazení kódu** pro vaši aplikaci logiky. Definici aplikace logiky by měl vypadat jako v tomto příkladu:
+1. Zadejte tyto informace pro artefakt, který chcete vyhledat:
 
-   ![Hledání vyhledávání](media/logic-apps-enterprise-integration-metadata/image5.png)
+   | Vlastnost | Požaduje se | Hodnota | Popis | 
+   |----------|---------|-------|-------------| 
+   | **Typ artefaktu** | Ano | **Schéma**, **mapy**, **partnera**, **smlouvy**, nebo vlastní typ | Typ artefaktu, který chcete | 
+   | **Název artefaktu** | Ano | <*Název artefaktu*> | Název artefaktu, který chcete | 
+   ||| 
+
+   Například předpokládejme, že chcete získat metadata pro obchodní partner artefaktu:
+
+   ![Vyberte typ artefaktu a zadejte název artefaktu](media/logic-apps-enterprise-integration-metadata/artifact-lookup-information.png)
+
+1. Přidejte akci, která chcete použít pro zpracování těchto metadat, například:
+
+   1. V části **vyhledání artefaktu účtu pro integraci** akce, zvolte **další krok**a vyberte **přidat akci**. 
+
+   1. Do vyhledávacího pole zadejte "http". Pod vyhledávacím polem vyberte **předdefinované**a vyberte tuto akci: **HTTP - HTTP**
+
+      ![Přidání akce HTTP](media/logic-apps-enterprise-integration-metadata/http-action.png)
+
+   1. Zadejte informace pro metadata artefaktů, které chcete spravovat. 
+
+      Předpokládejme například, že chcete získat `routingUrl` metadata, která se přidá dříve v tomto tématu. Tady jsou hodnoty vlastností, které můžete například zadat: 
+
+      | Vlastnost | Požaduje se | Hodnota | Popis | 
+      |----------|----------|-------|-------------| 
+      | **Metoda** | Ano | <*operation-to-run*> | Operace protokolu HTTP pro spuštění na artefakt. Například používá tuto akci HTTP **získat** metody. | 
+      | **URI** | Ano | <*metadata-location*> | Pro přístup `routingUrl` metadat hodnotu v artefaktu načíst, můžete použít ve výrazu, například: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Hlavičky** | Ne | <*hodnoty hlavičky*> | Libovolné záhlaví výstupy z aktivační události, které chcete předat do akce HTTP. Pro příklad, a zajistěte tak předání triggeru `headers` hodnota vlastnosti: můžete použít ve výrazu, například: <p>`@triggeroutputs()['headers']` | 
+      | **Text** | Ne | <*body-content*> | Další obsah, které chcete předat prostřednictvím akce HTTP `body` vlastnost. Tento příklad předává na artefakt `properties` hodnoty na akci HTTP: <p>1. Klikněte do **tělo** vlastnosti, takže se zobrazí v seznamu dynamického obsahu. Pokud se nezobrazí žádné vlastnosti, zvolte **zobrazit další**. <br>2. Ze seznamu dynamického obsahu v části **vyhledání artefaktu účtu pro integraci**vyberte **vlastnosti**. | 
+      |||| 
+
+      Příklad:
+
+      ![Zadejte hodnoty a výrazy pro akce HTTP](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
+
+   1. Pokud chcete zkontrolovat informace, které jste zadali pro akce HTTP, zobrazení definice JSON vaší aplikace logiky. Na panelu nástrojů návrháře aplikace logiky zvolte **zobrazení kódu** tak objeví definice JSON aplikace, například:
+
+      ![Definice JSON aplikace logiky](media/logic-apps-enterprise-integration-metadata/finished-logic-app-definition.png)
+
+      Po přepnutí zpět k návrháři aplikace logiky, všechny výrazy, které jste použili teď budou zobrazovat přeložit, například:
+
+      ![Vyřešené výrazy v návrháři aplikace logiky](media/logic-apps-enterprise-integration-metadata/resolved-expressions.png)
 
 ## <a name="next-steps"></a>Další postup
 

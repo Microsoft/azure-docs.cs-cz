@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0aef8c5e055eb43576ea0ecc7ef8bf09d22d6ed3
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199965"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412899"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central
 
@@ -75,7 +75,7 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
 
 ## <a name="create-a-new-custom-device-template"></a>Vytvoření nové vlastní šablony zařízení
 
-Jako tvůrce můžete ve vaší aplikaci vytvářet a upravovat šablony zařízení. Když vytvoříte šablonu zařízení, Azure IoT Central z této šablony vygeneruje simulované zařízení. Toto simulované zařízení generuje telemetrická data, která umožňují otestovat chování vaší aplikace, než připojíte fyzické zařízení.
+Jako tvůrce můžete ve vaší aplikaci vytvářet a upravovat šablony zařízení. Když vytvoříte šablonu zařízení, Azure IoT Central z této šablony vygeneruje simulované zařízení. Simulované zařízení generuje telemetrická data, která umožňuje testovat chování aplikace před připojit skutečné zařízení.
 
 Pokud chcete do vaší aplikace přidat novou šablonu zařízení, musíte přejít na stránku **Application Builder** (Tvůrce aplikací). K tomuto účelu zvolte **Application builder** (Tvůrce aplikací) v levé navigační nabídce.
 
@@ -155,7 +155,7 @@ Následující kroky ukazují, jak vytvořit novou šablonu zařízení **Connec
 
 ## <a name="define-event-measurement"></a>Definování měření událostí
 
-Událost můžete využít k definování dat v určitém časovém bodu, která se zařízení odesílají jako indikátor něčeho důležitého, například chyby nebo selhání komponenty. Podobně jako u měření telemetrických dat může Azure IoT Central simulovat události zařízení, aby bylo možné otestovat chování aplikace před připojením skutečného zařízení. K definování měření událostí pro příslušný typ zařízení se použije zobrazení **Measurements** (Měření).
+Událost můžete využít k definování dat v určitém časovém bodu, která se zařízení odesílají jako indikátor něčeho důležitého, například chyby nebo selhání komponenty. Stejně jako měření telemetrická data Azure IoT Central můžete simulovat zařízení událostí umožňuje testovat chování aplikace před připojit skutečné zařízení. K definování měření událostí pro příslušný typ zařízení se použije zobrazení **Measurements** (Měření).
 
 1. Pokud chcete přidat měření události **Fan Motor Error** (Chyba motoru ventilátoru), zvolte **New Measurement** (Nové měření). Potom jako typ měření zvolte **Event** (Událost):
 
@@ -191,7 +191,7 @@ Událost můžete využít k definování dat v určitém časovém bodu, která
 
 ## <a name="define-state-measurement"></a>Definování měření stavu
 
-Pomocí měření stavu můžete definovat a vizualizovat stav zařízení nebo jeho komponent za časové období. Podobně jako u měření telemetrických dat může Azure IoT Central simulovat stav zařízení, aby bylo možné otestovat chování aplikace před připojením skutečného zařízení. K definování měření stavu pro příslušný typ zařízení se použije zobrazení **Measurements** (Měření).
+Pomocí měření stavu můžete definovat a vizualizovat stav zařízení nebo jeho komponent za časové období. Stejně jako měření telemetrická data Azure IoT Central můžete simulovat stavu zařízení umožňuje testovat chování aplikace před připojit skutečné zařízení. K definování měření stavu pro příslušný typ zařízení se použije zobrazení **Measurements** (Měření).
 
 1. Pokud chcete přidat měření **Fan Mode** (Režim ventilátoru), zvolte **New Measurement** (Nové měření). Potom jako typ měření zvolte **State** (Stav):
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b8cc69c45332d0779c6e57b5d74145ee1f5140cd
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391010"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410111"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper kognitivních dovedností
 
@@ -29,7 +29,7 @@ Ve výchozím nastavení tato technika podporuje objekty, které jsou jednu úro
 V odpovědi výstupní název je vždy "výstupní". Kanál interně, můžete namapovat jiný název, jako je například "analyzedText" v příkladech níže "výstupní", ale **Shaper** dovednosti, samotný vrátí "výstupní" v odpovědi. To může být důležité Pokud ladíte bohatších možností dokumenty a Všimněte si názvů nesrovnalosti, nebo pokud při vývoji vlastních dovedností a jsou strukturování odpovědi, sami.
 
 > [!NOTE]
-> Tato dovednosti není vázán na API služeb Cognitive Services a neexistují žádné poplatky přidružené k této dovedností. Však musí [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) přesto k přepsání volba bezplatné zdroje, která omezuje vám malý počet denních obohacení.
+> Tato dovednosti není vázán na API služeb Cognitive Services a se vám neúčtují poplatky k jeho používání. Měli stále [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md), ale k přepsání **Free** resource – možnost, která omezuje vám malý počet denních obohacení za den.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

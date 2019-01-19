@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 8506e6eaac51730cb3d7a20f1d21f1c8bce03bee
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 74f187cff5abd54780d064e9e74c33901aa9fb82
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540023"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410740"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Obnovení serveru Azure Database for MySQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku obnoví jeden server Azure Database for MySQL k dřívějšímu bodu v čase.
@@ -38,7 +38,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az group create](/cli/azure/group#create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az mysql server create](/cli/azure/mysql/server#create) | Vytvoří server MySQL, který je hostitelem databází. |
 | [az mysql server restore](/cli/azure/mysql/server#restore) | Obnoví server ze zálohy. |
-| [az group delete](/cli/azure/group#delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group delete](/cli/azure/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup
 - Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure).

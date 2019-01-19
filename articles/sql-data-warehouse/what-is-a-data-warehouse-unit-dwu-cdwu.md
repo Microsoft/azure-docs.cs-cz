@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 50e70ab9be87c15816dc6471a2a29afd0f17d907
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c1a1da9fd0fff09bab027c4b4cc4e3085c5439f2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301241"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411102"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (Dwu) a výpočetní jednotky datového skladu (cDWUs)
 Doporučení pro výběr ideální počet jednotek datového skladu (Dwu, cDWUs) optimalizovat ceny a výkonu a jak změnit počet jednotek. 
@@ -90,6 +90,8 @@ SQL Data Warehouse je horizontální navýšení kapacity systému, který můž
 ## <a name="permissions"></a>Oprávnění
 
 Změna jednotek datového skladu vyžaduje oprávnění popsaná v [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql). 
+
+Předdefinované role pro prostředky Azure, jako je Přispěvatel databází SQL a Přispěvatel SQL serveru můžete změnit nastavení jednotek DWU. 
 
 ## <a name="view-current-dwu-settings"></a>Zobrazit aktuální nastavení DWU
 

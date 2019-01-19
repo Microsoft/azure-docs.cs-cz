@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 91323ac904ee7a806283673a1f98c46c1c211f7f
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353222"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413120"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -68,13 +68,15 @@ Vývoj s využitím poznámkových bloků Azure, najdete v článku [Začínáme
 
 Datové VĚDY je přizpůsobenou image virtuálního počítače (VM). Je navržen pro práci vědy data, která je předem nakonfigurovaným programem:
 
-  - Balíčky, jako je TensorFlow, PyTorch, Scikit poučení, XGBoost a Azure Machine Learning SDK.
-  - Vědy oblíbenými datovými nástrojů, jako je Spark samostatné a zotavení po havárii.
-  - Nástroje Azure, jako je Azure CLI, AzCopy a Průzkumníka služby Storage.
-  - Integrované vývojové prostředí (IDE) jako je Visual Studio Code, PyCharm a Rstudia.
-  - Aplikace Jupyter Notebook Server. 
+  - Balíčky, jako je TensorFlow, PyTorch, Scikit poučení, XGBoost a Azure Machine Learning SDK
+  - Oblíbenými datovými vědy nástrojů, jako je Spark samostatné a zotavení po havárii
+  - Nástroje Azure, jako je Azure CLI, AzCopy a Průzkumníka služby Storage
+  - Integrované vývojové prostředí (IDE), jako je Visual Studio Code a PyCharm
+  - Server poznámkového bloku Jupyter
 
-Azure Machine Learning SDK funguje na Ubuntu nebo Windows verzi datové VĚDY. Pokud chcete používat datové VĚDY jako vývojové prostředí, postupujte takto:
+Azure Machine Learning SDK funguje na Ubuntu nebo Windows verzi datové VĚDY. Ale pokud máte v plánu používat jako cílové výpočetní prostředí a datové VĚDY, se podporuje jen Ubuntu.
+
+Pokud chcete používat datové VĚDY jako vývojové prostředí, postupujte takto:
 
 1. Vytvoření DSVM v některém z následujících prostředích:
 

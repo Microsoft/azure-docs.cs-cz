@@ -1,5 +1,5 @@
 ---
-title: 'SADY .NET SDK: Operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
+title: '.NET SDK: Operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
 description: Použití Azure Data Lake Storage Gen1 .NET SDK k provádění operací systému souborů v Data Lake Storage Gen1, jako je vytváření složek atd.
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 929ce0d984e53586c46f15f21b9e5c90c6a34771
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163225"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402298"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "53163225"
 >
 >
 
-V tomto článku se dozvíte, jak k provádění operací systému ve službě Data Lake Storage Gen1 pomocí sady .NET SDK. Mezi operace systému souborů patří vytváření složek v účtu Data Lake Storage Gen1, nahrávání souborů, stahování souborů atd.
+V tomto článku se dozvíte, jak k provádění operací systému souborů ve službě Data Lake Storage Gen1 pomocí sady .NET SDK. Mezi operace systému souborů patří vytváření složek v účtu Data Lake Storage Gen1, nahrávání souborů, stahování souborů atd.
 
 Pokyny, jak provádět operace správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md).
 

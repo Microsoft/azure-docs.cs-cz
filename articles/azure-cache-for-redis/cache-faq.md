@@ -3,7 +3,7 @@ title: Mezipaměť Azure pro Redis – nejčastější dotazy | Dokumentace Micr
 description: Další odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: wesmc
-ms.openlocfilehash: 5d70e4beb97a23212bc85d529382d8e89f09336d
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.author: yegu
+ms.openlocfilehash: 3a0fb06acd9fc798f1528a1487ae0682135187ca
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199912"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402386"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis.
@@ -138,10 +138,10 @@ Z této tabulky jsme lze nakreslit následující závěry:
 | **Velikosti Standard mezipaměti** | | |**Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý bez SSL (předávajících stran)** |**Požadavky na druhý protokol SSL (předávajících stran)** |
 | C0 |250 MB |Shared |100 / 12.5 |15 000 |7 500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
-| C2 |2,5 GB |2 |500 / 62.5 |41,000 |37 000 |
-| C3 |6 GB |4 |1 000 / 125 |100 000 |90,000 |
+| C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
+| C3 |6 GB |4 |1000 / 125 |100 000 |90,000 |
 | C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
-| C5 |26 GB |4 |1,000 / 125 |102 000 |93,000 |
+| C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
 | **Velikosti mezipaměti úrovně Premium** | |**Počet jader procesoru na horizontálních oddílů** | **Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý (předávajících stran) bez SSL, za horizontální oddíl** |**Požadavky na druhý protokol SSL (předávajících stran), za horizontální oddíl** |
 | P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
@@ -210,7 +210,7 @@ Obvykle jsou výchozí hodnoty klienta dostatečná. Můžete podrobně upravit 
       * Tyto pokyny mohou vést k více zjednodušené latencí na `ConnectionMultiplexer`.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Jaké mezipaměti Azure Redis klientů můžete použít?
-Jednou z nejlepších věcí na Redis je, že existují mnoho klientů podporuje mnoho různých programovacích jazyků. Aktuální seznam klientů najdete v tématu [klienti Redis](https://redis.io/clients). Kurzy, které zahrnují několik různých jazycích a klientů najdete na stránce [použití mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka selektoru v horní části tohoto článku.
+Jednou z nejlepších věcí na Redis je, že existují mnoho klientů podporuje mnoho různých programovacích jazyků. Aktuální seznam klientů najdete v tématu [klienti Redis](https://redis.io/clients). Kurzy, které zahrnují několik různých jazycích a klientů najdete na stránce [použití mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a je na stejné úrovni články v tabulce obsahu.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -259,7 +259,7 @@ Můžete použít některý z příkazů uvedený na [příkazy Redis](https://r
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Proč Azure mezipaměti Redis nemá MSDN knihovny tříd jako některé z dalších služeb Azure?
 Microsoft Azure Cache Redis je založená na oblíbené open source mezipaměti Azure pro Redis a je možný přes celou řadu [klienti Redis](https://redis.io/clients) pro řadu programovacích jazyků. Každý klient má své vlastní rozhraní API, která provede volání do mezipaměti Azure Redis pomocí instance [příkazy Redis](https://redis.io/commands).
 
-Protože každá klient se liší, není jednu centrální třída reference na webu MSDN a každý klient udržuje svůj vlastní referenční dokumentaci. Kromě referenční dokumentaci jsou k dispozici několik kurzů ukazuje, jak začít pracovat s mezipamětí Azure pro Redis používající různé jazyky a ukládat do mezipaměti klientů. Pro přístup k tyto kurzy, naleznete v tématu [použití mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka selektoru v horní části tohoto článku.
+Protože každá klient se liší, není jednu centrální třída reference na webu MSDN a každý klient udržuje svůj vlastní referenční dokumentaci. Kromě referenční dokumentaci jsou k dispozici několik kurzů ukazuje, jak začít pracovat s mezipamětí Azure pro Redis používající různé jazyky a ukládat do mezipaměti klientů. Pro přístup k tyto kurzy, naleznete v tématu [použití mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a je na stejné úrovni články v tabulce obsahu.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Můžu použít Azure Cache pro Redis jako mezipaměť relace PHP?
 Ano, pro účely mezipaměti Azure Redis jako mezipaměť relace PHP, zadejte připojovací řetězec do mezipaměti Azure pro instanci Redis v `session.save_path`.
@@ -392,7 +392,7 @@ Jak nakonfigurovat toto nastavení:
   > Hodnota zadaná v tento prvek konfigurace je *na jádro* nastavení. Například pokud máte 4jádrový počítač a chcete nastavení minIOThreads být 200 za běhu, použijete `<processModel minIoThreads="50"/>`.
   >
 
-* Mimo technologii ASP.NET a Azure WebSites global.asax, použijte [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) ROZHRANÍ API.
+* Mimo technologii ASP.NET a Azure WebSites global.asax, použijte [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
 
   > [!NOTE]
   > Hodnotu zadanou pomocí tohoto rozhraní API je globální nastavení, by to ovlivnilo celé doméně AppDomain. Pokud máte 4jádrový počítač a chcete nastavit minWorkerThreads a minIOThreads až 50 jeden procesor a jsou za běhu, můžete využít ThreadPool.SetMinThreads (200, 200).

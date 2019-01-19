@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: 2f3cc3b386dec0010b179455372fb49bcec55ffc
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 85cb23d865133f2ee769874aa5150ab13e04cd69
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558392"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410547"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Průběžnou integraci a vývoj s použitím Stream Analytics tools
 Tento článek popisuje, jak můžete nastavit průběžnou integraci a nasazování procesu pomocí nástroje Azure Stream Analytics pro Visual Studio.
@@ -54,6 +54,8 @@ Pro všechny přihlašovací údaje, výchozí hodnoty jsou nastaveny na hodnotu
     },
 ```
 Další informace o tom, jak [nasadit pomocí souboru šablony Resource Manageru a Azure Powershellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Další informace o tom, jak [použití objektu jako parametr v šabloně Resource Manageru](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+
+Použití spravované Identity jako výstupní jímku pro Azure Data Lake Store Gen1, budete muset poskytnout přístup ke službě instančního objektu pomocí prostředí PowerShell před nasazením do Azure. Další informace o tom, jak [nasazení Gen1 ADLS s využitím Identity spravované pomocí šablony Resource Manageru](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
 
 ## <a name="command-line-tool"></a>Nástroj příkazového řádku

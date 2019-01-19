@@ -4,7 +4,7 @@ description: Tento kurz vás provede kroky k vytvoření kanálu, který přijí
 services: media-services
 documentationcenter: ''
 author: anilmur
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 4df5e690-ff63-47cc-879b-9c57cb8ec240
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/09/2017
+ms.date: 01/17/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 0258bf34e57a0acad1e5fef061a1cf961be9d2f0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f3d3c53241f7f383c564d827be5b7e253f058d0b
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262417"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402213"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Postup živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí rozhraní .NET
 > [!div class="op_single_selector"]
@@ -227,6 +227,10 @@ namespace EncodeLiveStreamWithAmsClear
         /// <returns></returns>
         private static ChannelInput CreateChannelInput()
         {
+            // When creating a Channel, you can specify allowed IP addresses in one of the following formats: 
+            // IpV4 address with 4 numbers
+            // CIDR address range
+        
             return new ChannelInput
             {
                 StreamingProtocol = StreamingProtocol.FragmentedMP4,
@@ -251,6 +255,10 @@ namespace EncodeLiveStreamWithAmsClear
         /// <returns></returns>
         private static ChannelPreview CreateChannelPreview()
         {
+            // When creating a Channel, you can specify allowed IP addresses in one of the following formats: 
+            // IpV4 address with 4 numbers
+            // CIDR address range
+        
             return new ChannelPreview
             {
                 AccessControl = new ChannelAccessControl

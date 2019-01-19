@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: e3e333594b32cff018f02cd1d3b32eaf44c11a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3193e9ac6ac5e90584bbf548142b7573d61c310a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904154"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413069"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Principy souhlasu s aplikací Azure AD narazí
 
@@ -49,7 +49,7 @@ Následující diagram a tabulka poskytují informace o stavebních bloků výzv
 | 2 | Titul | Změny názvů založené na tom, jestli uživatelé projít tok vyjádření souhlasu uživatele nebo správce. V toku souhlasu uživatele název bude "Požadováno oprávnění" při v toku souhlasu správce názvu bude mít další řádek "Accept pro vaši organizaci". |
 | 3 | Logo aplikace | Tato image by měly pomoci uživatelům mají vizuální upozornění, jestli tato aplikace je aplikace určené pro přístup k. Tento obrázek pochází od vývojáře aplikací a vlastnictví tohoto obrázku není ověřený. |
 | 4 | App name (Název aplikace) | Tato hodnota by měla informovat uživatele, který aplikace žádá o přístup ke svým datům. Poznámka: Tento název je k dispozici vývojáři a vlastnictví tento název aplikace není ověřený. |
-| 5 | Doména vydavatele | Tato hodnota by měla poskytnout uživatelům s doménou, které mohou být možné vyhodnotit důvěryhodnost. Tato doména je poskytována vývojáři a ověřit vlastnictví domény vydavatele. |
+| 5 | Publisher domain | Tato hodnota by měla poskytnout uživatelům s doménou, které mohou být možné vyhodnotit důvěryhodnost. Tato doména je poskytována vývojáři a ověřit vlastnictví domény vydavatele. |
 | 6 | Oprávnění | Tento seznam obsahuje klientská aplikace požaduje oprávnění. Uživatelé by měla vždy posoudíte typy vašich oprávnění žádá chcete pochopit, jaká data aplikace klienta se oprávnění pro přístup k jejich jménem, pokud je přijmou. Jako vývojář aplikací je nejvhodnější pro vyžádání přístupu k oprávnění s nejnižšími oprávněními. |
 | 7 | Popis oprávnění | Tato hodnota je poskytována služba zveřejňující oprávnění. Chcete-li zobrazit popis oprávnění, musí přepnout na dvojitou šipku vedle oprávnění. |
 | 8 | Podmínky pro aplikaci | Tyto podmínky obsahují odkazy na podmínky služby a o ochraně osobních údajů příkazu aplikace. Vydavatel je zodpovědná za sbalování již nemají svá pravidla v podmínkách služby. Kromě toho je zodpovědná za zveřejnění způsobu použití a sdílení dat uživatele ve své prohlášení o ochraně osobních údajů vydavatele. Pokud vydavatel neobsahuje odkazy na tyto hodnoty pro víceklientské aplikace, bude uveden tučně upozornění na příkazovém řádku souhlas. |
@@ -84,4 +84,4 @@ Tady jsou souhlasu prostředí, které může uživatel zobrazit v běžných sc
 
 ## <a name="next-steps"></a>Další postup
 - Získejte podrobný přehled o [způsob implementace rozhraní Azure AD pro udělování souhlasu souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework).
-- Větší hloubky, přečtěte si [použití rozhraní pro udělování souhlasu víceklientské aplikaci](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) k implementaci "user" a "admin" souhlas, podpora více pokročilé modely vícevrstvých aplikací.
+- Větší hloubky, přečtěte si [použití rozhraní pro udělování souhlasu víceklientské aplikaci](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) k implementaci "user" a "admin" souhlas, podpora více pokročilé modely vícevrstvých aplikací.

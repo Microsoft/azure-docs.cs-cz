@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 70f07b3925eb91d91dfbd623f8f1611ac31a1b6f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2c0fd7bd811445cd6bda8315c9c90ff6646d2be0
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542505"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413902"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>V Azure Service Bus a Event Hubs Průvodce protokolem AMQP 1.0
 
@@ -161,46 +161,46 @@ Stručně řečeno v následujících částech schéma přehled performative to
 | Klient | Service Bus |
 | --- | --- |
 | --> připojit ()<br/>název = {název odkazu},<br/>zpracování = {číselné popisovač},<br/>role =**odesílatele**,<br/>Zdroj = {ID klienta odkaz},<br/>cíl = {název entity}<br/>) |Žádná akce |
-| Žádná akce |< – připojit ()<br/>název = {název odkazu},<br/>zpracování = {číselné popisovač},<br/>role =**příjemce**,<br/>Zdroj = null,<br/>cíl = null<br/>)<br/><br/>< – odpojení ()<br/>zpracování = {číselné popisovač},<br/>zavření =**true**,<br/>Chyba = {informace o chybě}<br/>) |
+| Žádná akce |< – připojit ()<br/>název = {název odkazu},<br/>zpracování = {číselné popisovač},<br/>role =**příjemce**,<br/>Zdroj = null,<br/>cíl = null<br/>)<br/><br/>< – odpojení ()<br/>zpracování = {číselné popisovač},<br/>closed=**true**,<br/>Chyba = {informace o chybě}<br/>) |
 
 #### <a name="close-message-receiversender"></a>Zavřít zprávu příjemce nebo odesílatele
 
 | Klient | Service Bus |
 | --- | --- |
-| --> odpojení ()<br/>zpracování = {číselné popisovač},<br/>zavření =**true**<br/>) |Žádná akce |
-| Žádná akce |< – odpojení ()<br/>zpracování = {číselné popisovač},<br/>zavření =**true**<br/>) |
+| --> odpojení ()<br/>zpracování = {číselné popisovač},<br/>closed=**true**<br/>) |Žádná akce |
+| Žádná akce |< – odpojení ()<br/>zpracování = {číselné popisovač},<br/>closed=**true**<br/>) |
 
 #### <a name="send-success"></a>Odeslat (úspěch)
 
 | Klient | Service Bus |
 | --- | --- |
-| přenos (--><br/>doručování id = {číselné popisovač},<br/>doručování tag = {binární popisovač},<br/>Vyrovnané =**false**,, více =**false**,<br/>Stav =**null**,<br/>Obnovit =**false**<br/>) |Žádná akce |
-| Žádná akce |<-disposition ()<br/>role = příjemce,<br/>první = {doručování ID}<br/>poslední = {doručování ID}<br/>Vyrovnané =**true**,<br/>Stav =**přijato**<br/>) |
+| přenos (--><br/>doručování id = {číselné popisovač},<br/>doručování tag = {binární popisovač},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |Žádná akce |
+| Žádná akce |<-disposition ()<br/>role = příjemce,<br/>první = {doručování ID}<br/>poslední = {doručování ID}<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
 #### <a name="send-error"></a>Odeslat (chyba)
 
 | Klient | Service Bus |
 | --- | --- |
-| přenos (--><br/>doručování id = {číselné popisovač},<br/>doručování tag = {binární popisovač},<br/>Vyrovnané =**false**,, více =**false**,<br/>Stav =**null**,<br/>Obnovit =**false**<br/>) |Žádná akce |
-| Žádná akce |<-disposition ()<br/>role = příjemce,<br/>první = {doručování ID}<br/>poslední = {doručování ID}<br/>Vyrovnané =**true**,<br/>Stav =**odmítl**()<br/>Chyba = {informace o chybě}<br/>)<br/>) |
+| přenos (--><br/>doručování id = {číselné popisovač},<br/>doručování tag = {binární popisovač},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |Žádná akce |
+| Žádná akce |<-disposition ()<br/>role = příjemce,<br/>první = {doručování ID}<br/>poslední = {doručování ID}<br/>settled=**true**,<br/>state=**rejected**(<br/>Chyba = {informace o chybě}<br/>)<br/>) |
 
 #### <a name="receive"></a>Přijmout
 
 | Klient | Service Bus |
 | --- | --- |
-| --> () toku<br/>Link platební = 1<br/>) |Žádná akce |
-| Žádná akce |< přenosu ()<br/>doručování id = {číselné popisovač},<br/>doručování tag = {binární popisovač},<br/>Vyrovnané =**false**,<br/>více =**false**,<br/>Stav =**null**,<br/>Obnovit =**false**<br/>) |
-| --> () dispozice<br/>role =**příjemce**,<br/>první = {doručování ID}<br/>poslední = {doručování ID}<br/>Vyrovnané =**true**,<br/>Stav =**přijato**<br/>) |Žádná akce |
+| --> flow(<br/>link-credit=1<br/>) |Žádná akce |
+| Žádná akce |< přenosu ()<br/>doručování id = {číselné popisovač},<br/>doručování tag = {binární popisovač},<br/>settled=**false**,<br/>více =**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
+| --> () dispozice<br/>role =**příjemce**,<br/>první = {doručování ID}<br/>poslední = {doručování ID}<br/>settled=**true**,<br/>state=**accepted**<br/>) |Žádná akce |
 
 #### <a name="multi-message-receive"></a>Přijetí zprávy více
 
 | Klient | Service Bus |
 | --- | --- |
-| --> () toku<br/>Link platební = 3<br/>) |Žádná akce |
-| Žádná akce |< přenosu ()<br/>doručování id = {číselné popisovač},<br/>doručování tag = {binární popisovač},<br/>Vyrovnané =**false**,<br/>více =**false**,<br/>Stav =**null**,<br/>Obnovit =**false**<br/>) |
-| Žádná akce |< přenosu ()<br/>doručování id = {číselné popisovač + 1},<br/>doručování tag = {binární popisovač},<br/>Vyrovnané =**false**,<br/>více =**false**,<br/>Stav =**null**,<br/>Obnovit =**false**<br/>) |
-| Žádná akce |< přenosu ()<br/>doručování id = {číselné popisovač + 2},<br/>doručování tag = {binární popisovač},<br/>Vyrovnané =**false**,<br/>více =**false**,<br/>Stav =**null**,<br/>Obnovit =**false**<br/>) |
-| --> () dispozice<br/>role = příjemce,<br/>první = {doručování ID}<br/>poslední = {doručování ID + 2},<br/>Vyrovnané =**true**,<br/>Stav =**přijato**<br/>) |Žádná akce |
+| --> flow(<br/>link-credit=3<br/>) |Žádná akce |
+| Žádná akce |< přenosu ()<br/>doručování id = {číselné popisovač},<br/>doručování tag = {binární popisovač},<br/>settled=**false**,<br/>více =**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
+| Žádná akce |< přenosu ()<br/>doručování id = {číselné popisovač + 1},<br/>doručování tag = {binární popisovač},<br/>settled=**false**,<br/>více =**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
+| Žádná akce |< přenosu ()<br/>doručování id = {číselné popisovač + 2},<br/>doručování tag = {binární popisovač},<br/>settled=**false**,<br/>více =**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
+| --> () dispozice<br/>role = příjemce,<br/>první = {doručování ID}<br/>poslední = {doručování ID + 2},<br/>settled=**true**,<br/>state=**accepted**<br/>) |Žádná akce |
 
 ### <a name="messages"></a>Zprávy
 
@@ -227,14 +227,14 @@ Jakákoli vlastnost, která aplikace potřebuje definuje musí být mapováno na
 | na |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
 | předmět |Identifikátor účelu zpráv definované aplikací není Interpretovaná ve službě Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
-| id korelace |Identifikátor korelace definované aplikací, není Interpretovaná ve službě Service Bus. |[ID korelace](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
-| Typ obsahu |Definované aplikací ukazatel typu obsahu pro obsah, není Interpretovaná ve službě Service Bus. |[contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
-| kódování obsahu |Definované aplikací kódování obsahu indikátor pro text není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
+| id korelace |Identifikátor korelace definované aplikací, není Interpretovaná ve službě Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |Definované aplikací ukazatel typu obsahu pro obsah, není Interpretovaná ve službě Service Bus. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
+| content-encoding |Definované aplikací kódování obsahu indikátor pro text není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
 | absolutní čas vypršení platnosti |Deklaruje, na které absolutní okamžité zprávy vyprší platnost. Pro zadání (hlavička se vyskytuje hodnota TTL), ignoruje autoritativní na výstupu. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
 | čas vytvoření |Deklaruje kdy byla zpráva vytvořena. Nepoužívá se ve službě Service Bus |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
 | id skupiny |Identifikátor definovaného aplikací pro související sadu zpráv. Používá se pro relace služby Service Bus. |[ID relace](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
 | skupiny pořadí |Čítač určení relativní pořadové číslo zprávy v relaci. Ignoruje se ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
-| odpověď na skupiny id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
+| reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
 #### <a name="message-annotations"></a>Zpráva poznámky
 
@@ -242,14 +242,14 @@ Existuje několik dalších služby Service bus vlastnosti zprávy, které nejso
 
 | Klíč Map poznámky | Využití | Název rozhraní API |
 | --- | --- | --- |
-| x optimalizované naplánované-zařadit do fronty time | Deklaruje tentokrát zprávy by se zobrazit na entitu |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt-scheduled-enqueue-time | Deklaruje tentokrát zprávy by se zobrazit na entitu |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
 | x-opt-partition-key | Definované aplikací klíč, který určuje oddíl, který zprávu by měl přejít v. | [partitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt – prostřednictvím--klíče oddílu | Aplikace klíče oddílu hodnota definovaná při transakce se má použít pro odesílání zpráv prostřednictvím fronty přenosu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt – čas zařazení do fronty | Služba definovaná čas UTC představující skutečný čas zařadit zprávy. Ignoruje se na vstup. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt--číslo sekvence | Jedinečné číslo definovaných službou přiřazené ke zprávě. | [sequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| x-opt-via-partition-key | Aplikace klíče oddílu hodnota definovaná při transakce se má použít pro odesílání zpráv prostřednictvím fronty přenosu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-enqueued-time | Služba definovaná čas UTC představující skutečný čas zařadit zprávy. Ignoruje se na vstup. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt--číslo sekvence | Jedinečné číslo definovaných službou přiřazené ke zprávě. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
 | x optimalizované posun | Zařazených do fronty definovaných službou pořadové číslo zprávy. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
 | x-opt uzamčen – až do | Definice služby. Datum a čas, do které se uzamkne zprávy ve frontě nebo odběru. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-nedoručených zpráv source | Definice služby. Pokud doručení zprávy z fronty nedoručených zpráv, zdroj původní zprávy. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-deadletter-source | Definice služby. Pokud doručení zprávy z fronty nedoručených zpráv, zdroj původní zprávy. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
 
 ### <a name="transaction-capability"></a>Transakce funkce
 
@@ -268,10 +268,10 @@ Chcete-li začít transakční práce. kontroler musí získat `txn-id` ze coord
 
 | Klient (kontroler) | | Service Bus (koordinátor) |
 | --- | --- | --- |
-| připojení)<br/>název = {název odkazu},<br/>... ,<br/>role =**odesílatele**,<br/>Cíl =**Coordinator**<br/>) | ------> |  |
-|  | <------ | připojení)<br/>název = {název odkazu},<br/>... ,<br/>target=Coordinator()<br/>) |
-| přenos)<br/>doručování id = 0,...)<br/>{AmqpValue (**Declare()**)}| ------> |  |
-|  | <------ | dispozice) <br/> první = 0, 0, poslední = <br/>Stav =**Declared**()<br/>**txn id**= {ID transakce}<br/>))|
+| attach(<br/>název = {název odkazu},<br/>... ,<br/>role =**odesílatele**,<br/>target=**Coordinator**<br/>) | ------> |  |
+|  | <------ | attach(<br/>název = {název odkazu},<br/>... ,<br/>target=Coordinator()<br/>) |
+| přenos)<br/>doručování id = 0,...)<br/>{ AmqpValue (**Declare()**)}| ------> |  |
+|  | <------ | dispozice) <br/> první = 0, 0, poslední = <br/>state=**Declared**(<br/>**txn id**= {ID transakce}<br/>))|
 
 #### <a name="discharging-a-transaction"></a>Výkonu transakce
 
@@ -281,11 +281,11 @@ Kontroler končí transakční práce odesláním `discharge` zpráva koordinát
 
 | Klient (kontroler) | | Service Bus (koordinátor) |
 | --- | --- | --- |
-| přenos)<br/>doručování id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+| přenos)<br/>doručování id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | dispozice) <br/> první = 0, 0, poslední = <br/>Stav = deklarovaný ()<br/>txn-id = {ID transakce}<br/>))|
 | | . . . <br/>Transakční práce<br/>na další odkazy<br/> . . . |
-| přenos)<br/>doručování id = 57,...)<br/>{AmqpValue)<br/>**Jeho propuštění (txn-id = 0,<br/>selhání = false)**)}| ------> |  |
-| | <------ | dispozice) <br/> první = 57, poslední = 57, <br/>Stav =**funkce Accepted()**)|
+| přenos)<br/>doručování id = 57,...)<br/>{ AmqpValue (<br/>**Jeho propuštění (txn-id = 0,<br/>selhání = false)**)}| ------> |  |
+| | <------ | dispozice) <br/> první = 57, poslední = 57, <br/>state=**Accepted()**)|
 
 #### <a name="sending-a-message-in-a-transaction"></a>Odeslání zprávy v transakci
 
@@ -293,10 +293,10 @@ Všech transakční práce lze provést pomocí stavu transakční doručování
 
 | Klient (kontroler) | | Service Bus (koordinátor) |
 | --- | --- | --- |
-| přenos)<br/>doručování id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+| přenos)<br/>doručování id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | dispozice) <br/> první = 0, 0, poslední = <br/>Stav = deklarovaný ()<br/>txn-id = {ID transakce}<br/>))|
-| přenos)<br/>zpracování = 1,<br/>doručování id = 1, <br/>**Stav =<br/>TransactionalState (<br/>txn-id = 0)**)<br/>{datová část}| ------> |  |
-| | <------ | dispozice) <br/> první = 1, poslední = 1, <br/>Stav =**TransactionalState (<br/>txn-id = 0,<br/>outcome=Accepted()**))|
+| přenos)<br/>zpracování = 1,<br/>doručování id = 1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{datová část}| ------> |  |
+| | <------ | dispozice) <br/> první = 1, poslední = 1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))|
 
 #### <a name="disposing-a-message-in-a-transaction"></a>Připravuje se zprávy v transakci
 
@@ -304,10 +304,10 @@ Zpráva dispozice zahrnuje operace, jako je `Complete`  /  `Abandon`  /  `DeadLe
 
 | Klient (kontroler) | | Service Bus (koordinátor) |
 | --- | --- | --- |
-| přenos)<br/>doručování id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+| přenos)<br/>doručování id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | dispozice) <br/> první = 0, 0, poslední = <br/>Stav = deklarovaný ()<br/>txn-id = {ID transakce}<br/>))|
-| | <------ |přenos)<br/>zpracování = 2,<br/>doručování id = 11 <br/>Stav = null)<br/>{datová část}|  
-| dispozice) <br/> první = 11, 11, poslední = <br/>Stav =**TransactionalState (<br/>txn-id = 0,<br/>outcome=Accepted()**))| ------> |
+| | <------ |přenos)<br/>zpracování = 2,<br/>delivery-id=11, <br/>Stav = null)<br/>{datová část}|  
+| dispozice) <br/> první = 11, 11, poslední = <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
 
 
 ## <a name="advanced-service-bus-capabilities"></a>Pokročilé funkce služby Service Bus
@@ -327,10 +327,10 @@ Všechny tyto gesta vyžadují žádostí a odpovědí interakce mezi klientem a
 
 | Logické operace | Klient | Service Bus |
 | --- | --- | --- |
-| Vytvořit cestu požadavku odpovědi |--> připojit ()<br/>název = {*název odkazu*},<br/>zpracování = {*číselné popisovač*},<br/>role =**odesílatele**,<br/>Zdroj =**null**,<br/>target = "Správa myentity / $"<br/>) |Žádná akce |
-| Vytvořit cestu požadavku odpovědi |Žádná akce |\<--připojení ()<br/>název = {*název odkazu*},<br/>zpracování = {*číselné popisovač*},<br/>role =**příjemce**,<br/>Zdroj = null,<br/>target = "myentity"<br/>) |
-| Vytvořit cestu požadavku odpovědi |--> připojit ()<br/>název = {*název odkazu*},<br/>zpracování = {*číselné popisovač*},<br/>role =**příjemce**,<br/>zdroj = "Správa myentity / $",<br/>target = "myclient$ id"<br/>) | |
-| Vytvořit cestu požadavku odpovědi |Žádná akce |\<--připojení ()<br/>název = {*název odkazu*},<br/>zpracování = {*číselné popisovač*},<br/>role =**odesílatele**,<br/>zdroj = "myentity"<br/>target = "myclient$ id"<br/>) |
+| Vytvořit cestu požadavku odpovědi |--> připojit ()<br/>název = {*název odkazu*},<br/>zpracování = {*číselné popisovač*},<br/>role =**odesílatele**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |Žádná akce |
+| Vytvořit cestu požadavku odpovědi |Žádná akce |\<--připojení ()<br/>název = {*název odkazu*},<br/>zpracování = {*číselné popisovač*},<br/>role =**příjemce**,<br/>Zdroj = null,<br/>target=”myentity”<br/>) |
+| Vytvořit cestu požadavku odpovědi |--> připojit ()<br/>název = {*název odkazu*},<br/>zpracování = {*číselné popisovač*},<br/>role =**příjemce**,<br/>source=”myentity/$management”,<br/>target=”myclient$id”<br/>) | |
+| Vytvořit cestu požadavku odpovědi |Žádná akce |\<--připojení ()<br/>název = {*název odkazu*},<br/>zpracování = {*číselné popisovač*},<br/>role =**odesílatele**,<br/>zdroj = "myentity"<br/>target=”myclient$id”<br/>) |
 
 Máte tento pár odkazů na místě, implementaci požadavku nebo odpovědi je jednoduché: žádost je zpráva odeslaná do entity uvnitř infrastruktura zasílání zpráv, které rozumí tohoto modelu. Této zprávy požadavku *odpovědi* pole *vlastnosti* části je nastavena na *cílové* identifikátor pro odkaz, na kterém doručit odpověď. Entity zpracování zpracuje požadavek a pak poskytuje odpověď přes propojení jehož *cílové* odpovídá na zadaný identifikátor *odpovědi* identifikátor.
 
@@ -361,7 +361,7 @@ Zpráva požadavku má následující vlastnosti aplikace:
 
 | Klíč | Nepovinné | Typ hodnoty | Hodnota obsahu |
 | --- | --- | --- | --- |
-| operace |Ne |řetězec |**PUT-token** |
+| operace |Ne |řetězec |**put-token** |
 | type |Ne |řetězec |Typ tokenu uložením. |
 | jméno |Ne |řetězec |"Cílová skupina" na kterou se vztahuje token. |
 | konec platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
@@ -372,7 +372,7 @@ Zpráva požadavku má následující vlastnosti aplikace:
 | --- | --- | --- | --- |
 | amqp:jwt |JSON Web Token (JWT) |AMQP hodnoty (string) |Zatím není k dispozici. |
 | amqp:swt |Jednoduchý webový Token (SWT) |AMQP hodnoty (string) |Podporuje jenom pro SWT tokeny vystavené službou AAD/ACS |
-| servicebus.Windows.NET:sastoken |Token SAS služby Service Bus |AMQP hodnoty (string) |- |
+| servicebus.windows.net:sastoken |Token SAS služby Service Bus |AMQP hodnoty (string) |- |
 
 Tokeny udělit práva. Service Bus ví o tři základní práva: Povolí odesílání "Naslouchání" Povolí příjem, "Odeslat" a "Manage" umožňuje manipulaci s entitami. Tato práva SWT tokeny vystavené službou AAD/ACS explicitně zahrnuly jako deklarace identity. Tokeny SAS služby Service Bus odkazovat na pravidla, které jsou nakonfigurované na oboru názvů nebo entity a tato pravidla jsou nakonfigurovány s oprávněními. Podpis tokenu s klíč spojený s tímto pravidlem tedy díky token express příslušných práv. Token přidružený k entitu s využitím *put token* povoluje připojení klienta k interakci s entitou za token práva. Certifikovaného klienta na odkaz *odesílatele* role vyžaduje "Odeslat"; přímo na *příjemce* role vyžaduje "Naslouchání" vpravo.
 
@@ -380,8 +380,8 @@ Zprávy s odpovědí obsahuje následující *vlastnosti aplikace* hodnoty
 
 | Klíč | Nepovinné | Typ hodnoty | Hodnota obsahu |
 | --- | --- | --- | --- |
-| Stavový kód |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
-| Popis stavu |Ano |řetězec |Popis stavu. |
+| status-code |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
+| status-description |Ano |řetězec |Popis stavu. |
 
 Klient může volat *put token* opakovaně a pro každou entitu v infrastruktura zasílání zpráv. Tokeny jsou omezená na aktuální klient a ukotven na aktuální připojení, což znamená, že server zahodí všechny tokeny zachované při připojení.
 
@@ -403,8 +403,8 @@ Pomocí této funkce vytvoříte odesílatele a vytvořit odkaz `via-entity`. P�
 
 | Klient | | Service Bus |
 | --- | --- | --- |
-| připojení)<br/>název = {název odkazu},<br/>role = odesílatele<br/>Zdroj = {ID klienta odkaz},<br/>Cíl =**{prostřednictvím entity}**,<br/>**Vlastnosti mapy = [(<br/>com.microsoft:transfer. cílová adresa =<br/>{Cílová entita})]** ) | ------> | |
-| | <------ | připojení)<br/>název = {název odkazu},<br/>role = příjemce,<br/>Zdroj = {ID klienta odkaz},<br/>cíl = {prostřednictvím entity},<br/>Vlastnosti mapy [() =<br/>com.Microsoft:Transfer. cílová adresa =<br/>{Cílová entita})] ) |
+| attach(<br/>název = {název odkazu},<br/>role = odesílatele<br/>Zdroj = {ID klienta odkaz},<br/>target=**{via-entity}**,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
+| | <------ | attach(<br/>název = {název odkazu},<br/>role = příjemce,<br/>Zdroj = {ID klienta odkaz},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>Další postup
 

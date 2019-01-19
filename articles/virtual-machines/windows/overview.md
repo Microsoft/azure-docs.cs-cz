@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a58644deb8d1325fd466d2a4d3a1fc927c83b685
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0db867b31776f19aa3fef28f1e8b5c8798ff958a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720250"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410541"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -49,7 +49,7 @@ Při sestavování infrastruktury aplikace v Azure vždy existuje velké množst
 * Související prostředky, které virtuální počítač potřebuje
 
 ### <a name="naming"></a>Pojmenování
-Virtuální počítač má přiřazený [název](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a název počítače má nakonfigurovaný jako součást operačního systému. Název virtuálního může být až 15 znaků dlouhý.
+Virtuální počítač má přiřazený [název](/azure/architecture/best-practices/naming-conventions) a název počítače má nakonfigurovaný jako součást operačního systému. Název virtuálního může být až 15 znaků dlouhý.
 
 Pokud k vytvoření disku operačního systému použijete Azure, název počítače a název virtuálního počítače budou stejné. Pokud [nahrajete a použijete vlastní image](upload-generalized-managed.md), která obsahuje dříve nakonfigurovaný operační systém, a použijete ji k vytvoření virtuálního počítače, mohou se tyto názvy lišit. Když nahráváte vlastní soubor s imagí, doporučujeme použít stejný název počítače v operačním systému jako název virtuálního počítače.
 

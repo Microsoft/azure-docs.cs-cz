@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4fc17daf640e95ab028150cec029471a0c7bc565
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6ec59108652fa928dbbc2a3cbb04c51ae0440dde
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062991"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402387"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím služby Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Cosmos DB jakožto globálně distribuovaná databáze, poskytuje komplexní sml
 
 |Typ operace  | Jedna oblast |Ve více oblastech (zápisy do jedné oblasti)|Ve více oblastech (více oblastí zápisu) |
 |---------|---------|---------|-------|
-|Zápisy    | 99,99    |99,99   |99,999|
-|Čtení     | 99,99    |99,999  |99,999|
+|Zápisy    | 99.99    |99.99   |99.999|
+|Čtení     | 99.99    |99.999  |99.999|
 
 > [!NOTE]
 > V praxi dostupnost skutečné zápisu omezená neaktuálnost, relace, modelů konzistence konzistentní Předpona a konečný výsledek je výrazně vyšší než publikované smlouvy o úrovni služeb. Skutečnou dostupnost čtení pro všechny úrovně konzistence je výrazně vyšší než publikované smlouvy o úrovni služeb.
@@ -48,7 +48,7 @@ Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze b
 
 - Nakonfigurovaná s několika oblasti účty ve více oblastech budou s vysokou dostupností pro zápisy a čtení. Regionální převzetí služeb při selhání jsou okamžité a nevyžadují žádné změny z aplikace.
 
-- Účty ve více oblastech s jedním zápisu oblastí: Během výpadku oblasti zápisu zůstanou tyto účty s vysokou dostupností pro čtení. Však pro zápis musí "Povolit automatické převzetí služeb při selhání" na vašem účtu Cosmos ovlivněné oblasti do jiné oblasti přidružené převzetí služeb při selhání. Převzetí služeb při selhání dojde v pořadí podle priority oblasti, kterou jste zadali. Nakonec pokud ovlivněné oblasti je zpátky do online režimu, nereplikované data k dispozici v oblasti ovlivněné zápisu během výpadku je k dispozici prostřednictvím konflikty informačního kanálu. Aplikace může číst konflikty informačního kanálu, vyřešte konflikty, na základě specifické pro aplikaci logiky a zapsat aktualizovaná data zpět do kontejneru Cosmos podle potřeby. Po obnoví dříve ovlivněné zápisu oblasti stane automaticky k dispozici jako oblasti čtení. Můžete vyvolat ruční převzetí služeb při selhání a nakonfigurovat ovlivněné oblasti jako oblast pro zápis. Ruční převzetí služeb při selhání můžete provést pomocí [webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover).  
+- Účty ve více oblastech s jedním zápisu oblastí: Během výpadku oblasti zápisu zůstanou tyto účty s vysokou dostupností pro čtení. Však pro zápis musí "Povolit automatické převzetí služeb při selhání" na vašem účtu Cosmos ovlivněné oblasti do jiné oblasti přidružené převzetí služeb při selhání. Převzetí služeb při selhání dojde v pořadí podle priority oblasti, kterou jste zadali. Nakonec pokud ovlivněné oblasti je zpátky do online režimu, nereplikované data k dispozici v oblasti ovlivněné zápisu během výpadku je k dispozici prostřednictvím konflikty informačního kanálu. Aplikace může číst konflikty informačního kanálu, vyřešte konflikty, na základě specifické pro aplikaci logiky a zapsat aktualizovaná data zpět do kontejneru Cosmos podle potřeby. Po obnoví dříve ovlivněné zápisu oblasti stane automaticky k dispozici jako oblasti čtení. Můžete vyvolat ruční převzetí služeb při selhání a nakonfigurovat ovlivněné oblasti jako oblast pro zápis. Ruční převzetí služeb při selhání můžete provést pomocí [webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover). Je **bez ztráty dat nebo dostupnost** před, během nebo po ruční převzetí služeb při selhání. Vaše aplikace i nadále s vysokou dostupností. 
 
 - Účty ve více oblastech s jedním zápisu oblastí: Během výpadku oblasti čtení zůstanou tyto účty s vysokou dostupností pro čtení a zápis. Ovlivněné oblasti se automaticky odpojí z oblasti pro zápis a budou označeny v režimu offline. Cosmos DB SDK přesměruje volání další dostupné oblasti v seznamu preferované oblasti čtení. Pokud žádná z oblasti v seznamu preferované oblasti není k dispozici, volání automaticky vrátit do aktuální oblasti pro zápis. Nevyžaduje žádné změny v kódu aplikace zpracovávat výpadku oblasti čtení. Nakonec při ovlivněné oblasti je zpátky do online režimu, budou automaticky synchronizovat s aktuální oblasti pro zápis dříve ovlivněné oblasti čtení a bude možné znovu obsluhovat požadavky na čtení. Další čtení se přesměrují na obnoveném oblasti nevyžaduje žádné změny kódu aplikace. Během převzetí služeb při selhání i některých dříve nezdařené oblasti záruky konzistence čtení dál respektovat Cosmos DB.
 

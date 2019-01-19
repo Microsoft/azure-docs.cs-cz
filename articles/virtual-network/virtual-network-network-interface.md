@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1916144ab2c8d5b5f0ae8f5ec87bfbf03cf4629d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023749"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413885"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -112,7 +112,7 @@ DNS server je přiřazené serverem Azure DHCP k síťovému rozhraní v operač
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>Povolení nebo zakázání předávání IP
@@ -133,7 +133,7 @@ Nastavení musí být povolena pro každé síťové rozhraní, který je připo
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>Změnit přidružení podsítě
@@ -167,7 +167,7 @@ Pouze můžete přidat síťové rozhraní nebo odebrat ze skupiny zabezpečení
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>Přidružení nebo zrušit přidružení skupiny zabezpečení sítě
@@ -199,7 +199,7 @@ Při odstranění síťového rozhraní se vydávají jakékoli MAC nebo IP adre
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic delete](/cli/azure/network/nic#az_network_nic_delete)|
+|Rozhraní příkazového řádku|[AZ network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>Vyřešte problémy s připojením

@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ed1fedab45ce59af2c67ed8a2ef60714d26d5801
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091022"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402332"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled služby Event Hubs Dedicated
 
@@ -32,7 +32,7 @@ Následující tabulka porovnává dostupné úrovně služby Event Hubs. Nabíd
 | --- |:---:|:---:|:---:|
 | Události příchozího přenosu dat | Platba za milion událostí | Zahrnuje |
 | Jednotka propustnosti (1 MB/s příchozí, 2 MB/s odchozí) | Platba za hodinu | Zahrnuje |
-| Velikost zprávy | 256 kB | 1 MB |
+| Velikost zprávy | 1 MB | 1 MB |
 | Zásady vydavatele | Ano | Ano |   
 | Skupiny příjemců | 20 | 20 |
 | Přehrání zprávy | Ano | Ano |
@@ -47,11 +47,10 @@ Následující tabulka porovnává dostupné úrovně služby Event Hubs. Nabíd
 Při použití vyhrazená Služba Event Hubs jsou dostupné následující výhody:
 
 * Hostování se bez zbytečných dat jiných tenantů jednoho tenanta.
-* Velikost zprávy se zvýší na 1 MB než 256 KB pro úroveň Standard.
 * Pokaždé, když Opakovatelný výkon.
 * Garantované kapacity pro splnění potřeb rozšíření.
 * Zahrnuje [zachycení](event-hubs-capture-overview.md) funkce Event Hubs, zajistit integraci s mikrodávek i dlouhodobé uchovávání.
-* Nula údržby: služba spravuje Vyrovnávání zatížení, operační systém aktualizací, oprav zabezpečení a dělení.
+* Žádná Údržba díky samosprávě: Služba spravuje Vyrovnávání zatížení, operační systém aktualizací, oprav zabezpečení a dělení.
 * Opravili jsme cenou.
 * Uchovávání zpráv až na 7 dnů bez dalších poplatků.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
-ms.openlocfilehash: bbed197eb78e34c6e53802dfcfdcc192f780df33
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c86ea4ca5353207d091d3e6edb13f1f3eba59175
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465655"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410655"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Správa virtuálního počítače škálovací sady pomocí Azure CLI
 V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Tento článek podrobně popisuje některé běžné příkazy rozhraní příkazového řádku Azure, které umožňují provádět tyto úlohy.
@@ -37,7 +37,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Zobrazení virtuálních počítačů ve škálovací sadě
-Chcete-li zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte [az vmss list-instances](/cli/azure/vmss#list-instances). Následující příklad zobrazí seznam všech instancí virtuálních počítačů ve škálovací sadě s názvem *myScaleSet* v *myResourceGroup* skupinu prostředků. Zadejte vlastní hodnoty pro tyto názvy:
+Chcete-li zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte [az vmss list-instances](/cli/azure/vmss). Následující příklad zobrazí seznam všech instancí virtuálních počítačů ve škálovací sadě s názvem *myScaleSet* v *myResourceGroup* skupinu prostředků. Zadejte vlastní hodnoty pro tyto názvy:
 
 ```azurecli
 az vmss list-instances \
@@ -108,7 +108,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 
 
 ### <a name="start-vms-in-a-scale-set"></a>Spuštění virtuálních počítačů ve škálovací sadě
-Chcete-li spustit jeden nebo více virtuálních počítačů ve škálovací sadě, použijte [az vmss start](/cli/azure/vmss#az_vmss_start). Pomocí parametru `--instance-ids` můžete zadat jeden nebo několik virtuálních počítačů, které se mají spustit. Pokud nezadáte ID instance, spustí se všechny virtuální počítače ve škálovací sadě. Spuštění několika virtuálních počítačů, každá instance ID oddělte mezerou.
+Chcete-li spustit jeden nebo více virtuálních počítačů ve škálovací sadě, použijte [az vmss start](/cli/azure/vmss). Pomocí parametru `--instance-ids` můžete zadat jeden nebo několik virtuálních počítačů, které se mají spustit. Pokud nezadáte ID instance, spustí se všechny virtuální počítače ve škálovací sadě. Spuštění několika virtuálních počítačů, každá instance ID oddělte mezerou.
 
 Následující příklad spustí instanci *0* ve škálovací sadě s názvem *myScaleSet* a *myResourceGroup* skupinu prostředků. Zadejte vlastní hodnoty následujícím způsobem:
 

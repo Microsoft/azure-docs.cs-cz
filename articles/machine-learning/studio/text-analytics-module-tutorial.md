@@ -1,9 +1,10 @@
 ---
-Název: Vytvoření titleSuffix modely analýzy textu: Azure Machine Learning Studio Popis: Postup vytvoření modelů analýzy textu v Azure Machine Learning Studio pomocí moduly pro předzpracování, N-gramy text nebo funkce hash služby: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Vytvoření titleSuffix modelu analýzy subjektivního hodnocení: Azure Machine Learning Studio Popis: Postup vytvoření modelů analýzy textu v Azure Machine Learning Studio pomocí moduly pro předzpracování, N-gramy text nebo funkce hash služby: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2018
 ---
-# <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Vytvoření modelů analýzy textu v nástroji Azure Machine Learning Studio
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Vytvoření modelů analýzy subjektivního hodnocení v nástroji Azure Machine Learning Studio
+
 Azure Machine Learning můžete sestavovat a zprovozňovat modely analýzy textu. Tyto modely vám může pomoct vyřešit, například problémy analýzy dokumentu klasifikace nebo mínění.
 
 V experimentu analýzy textu které by obvykle:

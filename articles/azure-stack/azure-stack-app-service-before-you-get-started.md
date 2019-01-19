@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 31fe0ede202b72a3e71c8028543ef0677a44a335
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275665"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413018"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -96,7 +96,7 @@ K vytvoření certifikátů, postupujte podle těchto kroků:
 3. Spustit *vytvořit AppServiceCerts.ps1* skriptu ze složky, které jste extrahovali pomocné skripty. Tento skript vytvoří čtyři certifikáty ve stejné složce jako skript, který požadavkům vytváření certifikátů služby App Service.
 4. Zadejte heslo k zabezpečení soubory PFX a poznamenejte si ho. Budete muset zadat ve službě App Service na Instalační službě Azure Stack.
 
-#### <a name="create-appservicecertsps1-script-parameters"></a>Vytvoření AppServiceCerts.ps1 parametry skriptu
+#### <a name="create-appservicecertsps1-script-parameters"></a>Create-AppServiceCerts.ps1 script parameters
 
 | Parametr | Požadované nebo volitelné | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
@@ -166,7 +166,7 @@ Jako osvědčený postup, při práci s některým z nezbytné [certifikáty Azu
 
 Azure App Service ve službě Azure Stack umožňuje nasazení poskytovatele prostředků do existující virtuální síť nebo vám umožní vytvářet virtuální sítě jako součást svého nasazení. Použití existující virtuální síť umožňuje využívání interní IP adresy pro připojení k souborový server a SQL server vyžaduje ve službě Azure App Service ve službě Azure Stack. Virtuální síť musí mít nakonfigurovanou následující rozsah adres a podsítí před instalací služby Azure App Service ve službě Azure Stack:
 
-Virtuální sítě – /16
+Virtual Network - /16
 
 Podsítě
 
@@ -202,7 +202,7 @@ A [šablonu pro rychlý start referenční architektury](https://github.com/Azur
 
 2. Vytvořte následující účty služby Active Directory jako účty služeb:
 
-   - Vlastníka sdílené složky
+   - FileShareOwner
    - FileShareUser
 
    Osvědčeným postupem je uživatelů pro tyto účty (a pro všechny webové role) zabezpečení by měl být jedinečný a mít silné uživatelská jména a hesla. Nastavení hesla pomocí následujících podmínek:
@@ -327,7 +327,7 @@ Správci musí nakonfigurovat jednotné přihlašování pro:
 Postupujte následovně:
 
 1. Otevřete prostředí PowerShell instanci jako azurestack\AzureStackAdmin.
-2. Přejděte do umístění skripty, které jste stažené a rozbalené v [požadovaný krok](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+2. Přejděte do umístění skripty, které jste stažené a rozbalené v [požadovaný krok](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started).
 3. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).
 4. Spustit **vytvořit AADIdentityApp.ps1** skriptu. Jakmile budete vyzváni, zadejte ID tenanta Azure AD, který používáte pro nasazení Azure Stack. Zadejte například **myazurestack.onmicrosoft.com**.
 5. V **přihlašovacích údajů** okno, zadejte účet správce služby Azure AD a heslo. Vyberte **OK**.
@@ -371,7 +371,7 @@ Správci musí nakonfigurovat jednotné přihlašování pro:
 Postupujte následovně:
 
 1. Otevřete prostředí PowerShell instanci jako azurestack\AzureStackAdmin.
-2. Přejděte do umístění skripty, které jste stažené a rozbalené v [požadovaný krok](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+2. Přejděte do umístění skripty, které jste stažené a rozbalené v [požadovaný krok](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started).
 3. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).
 4. Spustit **vytvořit ADFSIdentityApp.ps1** skriptu.
 5. V **přihlašovacích údajů** okno, zadejte účet správce cloudu služby AD FS a heslo. Vyberte **OK**.

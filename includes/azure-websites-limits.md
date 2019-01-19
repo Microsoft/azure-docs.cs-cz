@@ -4,20 +4,20 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 6bb7db5d57508d448f88a30623b7f30e88a0a821
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d66f36e737e100a0d8e60b85b51f6dcf632e6d3e
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736778"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404677"
 ---
 | Prostředek | Free | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Webové, mobilní telefon nebo API apps](https://azure.microsoft.com/services/app-service/) za [plán služby App Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup>|
-| [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) |1 na oblast |10 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků|
+| [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) |10 na oblast |10 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků|
 | Výpočetní instance typu |Shared |Shared |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup></p> |Vyhrazené<sup>3</sup>|
 | [Horizontální navýšení kapacity](../articles/app-service/web-sites-scale.md) (maximální počet instancí) |sdílené 1 |sdílené 1 |3 vyhrazené<sup>3</sup> |10 vyhrazené<sup>3</sup> |20 vyhrazených<sup>3</sup>|100 vyhrazených<sup>4</sup>|
-| Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |ABY SE 250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
+| Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | Čas procesoru (5 minut)<sup>6</sup> |3 minuty |3 minuty |Neomezený počet, platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený počet, platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený počet, platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený počet, platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | Čas procesoru (den)<sup>6</sup> |60 minut |240 minut |Neomezený počet, platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený počet, platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený počet, platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený počet, platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |
 | Paměť (1 hodina) |1 024 MB za plán služby App Service |1 024 MB na aplikaci |neuvedeno |neuvedeno |neuvedeno |neuvedeno |
@@ -26,7 +26,7 @@ ms.locfileid: "53736778"
 | Webové sokety každou instanci<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |Unlimited |
 | Souběžné [připojení ladicího programu](../articles/app-service/troubleshoot-dotnet-visual-studio.md) na aplikaci. |1 |1 |1 |5 |5 |5 |
 | Certifikáty App Service na jedno předplatné<sup>10</sup>| Nepodporuje se | Nepodporuje se |10 |10 |10 |10 |
-| Vlastní domény na aplikaci</a> |0 (pouze subdoména azurewebsites.net)|500 |500 |500 |500 |500 |
+| Vlastní domény na aplikaci</a> |0 (azurewebsites.net subdomain only)|500 |500 |500 |500 |500 |
 | Vlastní domény [podpora protokolu SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nepodporuje se. Pro certifikát se zástupným znakem *. azurewebsites.net ve výchozím nastavení dostupné.|Nepodporuje se. Pro certifikát se zástupným znakem *. azurewebsites.net ve výchozím nastavení dostupné.|Neomezené možnosti připojení SNI SSL |Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté |Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté | Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté|
 | Integrovaný nástroj Load Balancer | |X |X |X |X |X<sup>9</sup> |
 | [Always On](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |

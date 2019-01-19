@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 88f7135cea00b3e8c6cf30a1abd2b94297681c4c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: dbbff7644d0c9375a4d2a145769d09a786b01c25
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391128"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412321"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR kognitivních dovedností
 
@@ -37,7 +37,7 @@ Optické rozpoznávání znaků (OCR) dovednosti rozpozná tištěné a rukou ps
 > [!NOTE]
 > Od 21. prosince 2018 můžete [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) s dovednosti Azure Search. To umožňuje spouštění poplatků za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
 >
-> Provádění předdefinované dovednosti je poplatek za služby Cognitive Services, účtovat stávající [platit jako můžete přejít cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny extrakce Image je poplatek za Azure Search, aktuálně účtovat ceny verze preview, jak je popsáno na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). 
+> [Integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) spuštění, se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services), na stejné přenosové rychlosti, jako by měl provést úlohu přímo. Extrakce Image je poplatek za Azure Search, v současné době nabízena na ceny verze preview. Podrobnosti najdete v tématu [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) nebo [fakturace](search-sku-tier.md#how-billing-works).
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 

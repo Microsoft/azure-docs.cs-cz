@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96b0c44ff36dac3832e518deeed7f07b11e78c16
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cede896e9a2a4c92a495a502fb6cf69805d755ee
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160042"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402128"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operací v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:
@@ -70,7 +70,7 @@ Také můžete nasadit kompletní instalované platformy SAP HANA ve službě Az
 ### <a name="choose-azure-storage-type"></a>Zvolte typ služby Azure Storage
 Azure nabízí dva typy úložiště, které jsou vhodné pro virtuální počítače Azure, které se spouštějí SAP HANA:
 
-- [Azure Storage úrovně Standard](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
+- [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
 - [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
 
 Azure nabízí dvě metody nasazení pro virtuální pevné disky na Azure na úrovni Standard a Premium Storage. Pokud celková scénář umožňuje, využít výhod [Azure spravovaný disk](https://azure.microsoft.com/services/managed-disks/) nasazení.
@@ -127,14 +127,14 @@ Akcelerátor zápisu Azure je funkce, které je Začínáme zavádět pro virtu�
 
 Doporučená konfigurace vypadat takto:
 
-| SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | / hana/dat | / hana/log | / hana/sdílené | / root svazku | / usr/sap | Hana/zálohování |
+| SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Max. VM I/O<br /> Propustnost | / hana/dat | / hana/log | / hana/sdílené | / root svazku | / usr/sap | Hana/zálohování |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 giB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
+| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
 | M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
 | M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P30 |
-| M64s | 1 000 GB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
+| M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
-| M128s | 2000 giB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
 | M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
 
 Zkontrolujte, jestli bude vyhovovat propustnost úložiště pro různé svazky navrhované na zatížení, které chcete spustit. Pokud úloha vyžaduje větší svazky pro **/hana/data** a **/hana/log**, je potřeba zvýšit počet virtuálních pevných disků Storage úrovně Premium pro Azure. Pro změnu velikosti svazku s více virtuálními pevnými disky než uvedené zvýší propustnost vstupně-výstupních operací a vstupně-výstupní operace v rámci omezení typu virtuálního počítače Azure.
@@ -159,19 +159,19 @@ Následující tabulka ukazuje konfiguraci typy virtuálních počítačů, kter
 > Pro produkční scénáře, zkontrolujte, zda určitého typu virtuálních počítačů, je podporován pro SAP HANA SAP v [dokumentaci k SAPU pro IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
 
 
-| SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | / hana/dat a/hana/log<br /> prokládané s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | Hana/zálohování |
+| SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Max. VM I/O<br /> Propustnost | / hana/dat a/hana/log<br /> prokládané s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | Hana/zálohování |
 | --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| E64v3 | 432 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
 | GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| M32ts | 192 giB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
 | M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
 | M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 |1 x S30 |
-| M64s | 1 000 GB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
+| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
-| M128s | 2000 giB | 2000 MB/s |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
 | M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
 
 
@@ -271,9 +271,9 @@ Základní konfigurace uzlu virtuálního počítače pro horizontální navýš
 
 Změna velikosti svazků pro uzly s výjimkou je stejná jako vertikálně navýšit kapacitu, **/hana/sdílené**. Pro skladovou Položku virtuálního počítače M128s doporučené velikosti a typy vypadat:
 
-| SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | / hana/dat | / hana/log | / root svazku | / usr/sap | Hana/zálohování |
+| SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Max. VM I/O<br /> Propustnost | / hana/dat | / hana/log | / root svazku | / usr/sap | Hana/zálohování |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| M128s | 2000 giB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
 
 
 Zkontrolujte, jestli bude vyhovovat propustnost úložiště pro různé svazky navrhované na zatížení, které chcete spustit. Pokud úloha vyžaduje větší svazky pro **/hana/data** a **/hana/log**, je potřeba zvýšit počet virtuálních pevných disků Storage úrovně Premium pro Azure. Pro změnu velikosti svazku s více virtuálními pevnými disky než uvedené zvýší propustnost vstupně-výstupních operací a vstupně-výstupní operace v rámci omezení typu virtuálního počítače Azure. Platí také akcelerátor zápisu Azure pro disky, které tvoří **/hana/log** svazku.
@@ -403,8 +403,8 @@ Zobrazit další informace o akcelerovaných síťových služeb Azure [zde](htt
 
 Podle DT 2.0 nejlepších praktik propustnost vstupně-výstupních operací disku by měl být minimální 50 MB/s každé fyzické jádro. Prohlížení specifikace pro dva typy virtuálních počítačů Azure, které jsou podporovány pro DT 2.0, jeden disk maximální limit propustnosti vstupně-výstupních operací pro virtuální počítač zobrazí:
 
-- E32sv3:   768 MB/s (bez mezipaměti) to znamená, že poměr 48 MB za sekundu podle počtu fyzických jader
-- M64 32MS:  1 000 MB za sekundu (bez mezipaměti) to znamená, že poměr 62,5 MB za sekundu podle počtu fyzických jader
+- E32sv3    :   768 MB/s (bez mezipaměti) to znamená, že poměr 48 MB za sekundu podle počtu fyzických jader
+- M64-32ms  :  1 000 MB za sekundu (bez mezipaměti) to znamená, že poměr 62,5 MB za sekundu podle počtu fyzických jader
 
 Je potřeba připojit k virtuálnímu počítači 2.0 DT více disků v Azure a vytvořit software raid (prokládáním) na úrovni operačního systému k dosažení maximálního limitu propustnost disků jednotlivých virtuálních počítačů. Jeden disk Azure nemůže poskytnout propustnost pro dosažení maximálního limitu virtuálních počítačů v této souvislosti. Azure Premium storage je povinné pro spuštění DT 2.0. 
 

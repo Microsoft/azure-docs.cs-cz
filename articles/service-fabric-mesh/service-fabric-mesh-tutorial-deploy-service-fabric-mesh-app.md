@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec282bc1159e8a8cf21b88b8430bbf3067686528
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e1f2991b2e006c97087c6288d3ed3c20d2927e8c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788612"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413477"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Kurz: Nasazení aplikace Service Fabric mřížky
 
@@ -106,7 +106,8 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Spusťte webový prohlížeč a přejděte na tuto adresu URL, abyste se mohli podívat na web spuštěný v Azure.
 
-## <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh 
+## <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
+
 K dokončení zbývajících kroků můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Nainstalujte rozšiřující modul Azure Service Fabric Mesh CLI pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md).
 
 ## <a name="check-application-deployment-status"></a>Zkontrolovat stav nasazení aplikace
@@ -117,6 +118,14 @@ Název aplikace pro účely tohoto kurzu je `todolistapp`. Podrobnosti o aplikac
 
 ```azurecli-interactive
 az mesh app show --resource-group $rg --name todolistapp
+```
+
+## <a name="get-the-ip-address-of-your-deployment"></a>Získejte IP adresu vašeho nasazení
+
+Pokud chcete získat IP adresu pro vaše aplikace, použijte následující příkaz:
+  
+```azurecli-interactive
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>Zobrazení všech aplikací aktuálně nasazených v předplatném

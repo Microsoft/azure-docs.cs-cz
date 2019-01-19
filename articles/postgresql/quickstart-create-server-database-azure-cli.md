@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 2fd60aa635fdea078a2b5c4b724318798d57573d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 533120bd13d9aad48e62b7799e5f1167b6098d37
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359577"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413800"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL pomocí rozhraní CLI Azure
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak vytvořit server Azure Database for PostgreSQL ve [skupině prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rozhraní CLI Azure.
@@ -209,7 +209,7 @@ Všechny prostředky, které jste v rychlém startu vytvořili, můžete vyčist
 az group delete --name myresourcegroup
 ```
 
-Pokud chcete odstranit jenom nově vytvořený server, můžete spustit příkaz [az postgres server delete](/cli/azure/postgres/server#az_postgres_server_delete).
+Pokud chcete odstranit jenom nově vytvořený server, můžete spustit příkaz [az postgres server delete](/cli/azure/postgres/server).
 ```azurecli-interactive
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```

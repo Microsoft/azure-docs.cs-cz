@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 638ca5d1b1b68896ff5dcad70fedf27261ae96cb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 20d806540b0aa814c88ef4ff69834283ba4a7722
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452050"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413834"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Spravovat administrativní uživatelé, SSH a kontrola nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess pomocí Azure CLI
 ## <a name="overview"></a>Přehled
@@ -40,11 +40,11 @@ Rozšíření přístupu virtuálních počítačů můžete spustit proti těmt
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS a 12.04 LTS |
 | Debian | Debian 7.9 +, 8.2 + |
-| Red Hat | RHEL 6.7 + 7.1 + |
+| Red Hat | RHEL 6.7+, 7.1+ |
 | Oracle Linux | 6.4+, 7.0+ |
 | SuSE | 11 a 12 |
 | OpenSuse | openSUSE přestupné 42.2 + |
-| CentOS | CentOS 6.3 + 7.0 + |
+| CentOS | CentOS 6.3+, 7.0+ |
 | CoreOS | 494.4.0+ |
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>Způsoby, jak použít rozšíření VMAccess
@@ -53,7 +53,7 @@ Existují dva způsoby, můžete použít rozšíření VMAccess na vaše virtu�
 * Pomocí Azure CLI a požadované parametry.
 * [Používat nezpracované soubory JSON, které zpracovávají rozšíření VMAccess](#use-json-files-and-the-vmaccess-extension) a pak na ně.
 
-Následující příklady používají [az vm uživatele](/cli/azure/vm/user) příkazy. Pokud chcete tento postup, musíte na nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Následující příklady používají [az vm uživatele](/cli/azure/vm/user) příkazy. Pokud chcete tento postup, musíte na nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index).
 
 ## <a name="update-ssh-key"></a>Aktualizovat klíč SSH
 Následující příklad aktualizuje klíč SSH pro uživatele `azureuser` na virtuálním počítači s názvem `myVM`:
@@ -66,7 +66,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **Poznámka:** `az vm user update` příkaz přidá nový veřejný klíč text, který se `~/.ssh/authorized_keys` souboru pro uživatele s rolí správce ve virtuálním počítači. Není to nahraďte nebo odstraňte nějaké existující klíče SSH. Nedojde k odebrání předchozí klíče nastavit v době nasazení nebo následné aktualizace prostřednictvím rozšíření VMAccess.
+> **POZNÁMKA:** `az vm user update` Příkaz přidá nový veřejný klíč text, který se `~/.ssh/authorized_keys` souboru pro uživatele s rolí správce ve virtuálním počítači. Není to nahraďte nebo odstraňte nějaké existující klíče SSH. Nedojde k odebrání předchozí klíče nastavit v době nasazení nebo následné aktualizace prostřednictvím rozšíření VMAccess.
 
 ## <a name="reset-password"></a>Resetování hesla
 Následující příklad resetuje heslo pro uživatele `azureuser` na virtuálním počítači s názvem `myVM`:

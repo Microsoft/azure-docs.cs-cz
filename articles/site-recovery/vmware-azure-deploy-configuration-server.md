@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 41511b27a84731df203d37d70d20df40f85af4fb
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794350"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410757"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -67,13 +67,16 @@ Licence, které jsou poskytovány s šablonou OVA je zkušební licenci, která 
 3. V **výběr zdroje**, zadejte umístění staženého souboru OVF.
 4. V **podrobnosti**vyberte **Další**.
 5. V **vyberte název a složku** a **vyberte konfiguraci**, přijměte výchozí nastavení.
-6. V nabídce **Select storage** (Vybrat úložiště) vyberte v části **Select virtual disk format** (Vybrat formát virtuálního disku) možnost **Thick Provision Eager Zeroed** (Vytvoření celého disku s vynulováním celého disku), která zajistí nejlepší výkon.
+6. V nabídce **Select storage** (Vybrat úložiště) vyberte v části **Select virtual disk format** (Vybrat formát virtuálního disku) možnost **Thick Provision Eager Zeroed** (Vytvoření celého disku s vynulováním celého disku), která zajistí nejlepší výkon. Použití dynamického zajišťování možností zřizování může mít vliv na výkon konfiguračního serveru.
 7. Na zbývajících stránkách průvodce přijměte výchozí nastavení.
 8. V části **Ready to complete** (Připraveno k dokončení):
 
     * Pokud chcete vytvořit virtuální počítač s výchozím nastavením, vyberte **Power on after deployment** (Spustit po nasazení) > **Finish** (Dokončit).
 
     * Chcete-li přidat další síťové rozhraní, zrušte **Power on po nasazení**a pak vyberte **Dokončit**. Ve výchozím nastavení se šablona konfiguračního serveru nasadí s jedním síťovým adaptérem. Po nasazení můžete přidat další síťové adaptéry.
+
+> [!IMPORTANT]
+> Po nasazení neměňte konfigurace prostředků (omezení paměti a jader/procesoru), úprava nebo odstranění nainstalované služby nebo soubory na konfiguračním serveru. To se negativně registrace konfiguračního serveru pomocí služeb Azure a výkonu konfiguračního serveru.
 
 ## <a name="add-an-additional-adapter"></a>Přidání dalšího adaptéru
 
@@ -119,7 +122,7 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 
 ## <a name="upgrade-the-configuration-server"></a>Upgradujte konfigurační server
 
-Konfigurační server upgradovat na nejnovější verzi, postupujte podle těchto [kroky](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+Konfigurační server upgradovat na nejnovější verzi, postupujte podle těchto [kroky](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Podrobné pokyny o tom, jak upgradovat všechny součásti Site Recovery, klikněte na tlačítko [tady](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
 
 ## <a name="manage-the-configuration-server"></a>Správa konfiguračního serveru
 
@@ -141,20 +144,26 @@ Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa
     Odkazovat na [replikaci z VMware do Azure replikace architektura](vmware-azure-architecture.md) získat další informace o konfiguračním serveru a jeho funkcí poskytujete.
 5. Kde najdete nejnovější verzi konfiguračního serveru?
 
-    Kroky pro upgrade konfiguračního serveru pomocí portálu, najdete v části [upgradujte konfigurační server](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Můžete ji také přímo stáhnout [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+    Kroky pro upgrade konfiguračního serveru pomocí portálu, najdete v části [upgradujte konfigurační server](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Můžete ji také přímo stáhnout [Microsoft Download Center](https://aka.ms/asrconfigurationserver). Podrobné pokyny o tom, jak upgradovat všechny součásti Site Recovery, najdete v tématu [tady](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
 6. Kde lze stáhnout přístupové heslo pro konfigurační server?
 
     Odkazovat na [v tomto článku](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) stáhnout přístupové heslo.
-7. Kde lze stáhnout registrační klíče trezoru?
+7. Můžete změnit heslo?
+
+    **Ne**, jste **důrazně doporučuje kvůli změně přístupového hesla** konfiguračního serveru. Změna přístupové heslo přestane fungovat replikaci chráněných počítačů a vede k kritickém stavu.
+8. Kde lze stáhnout registrační klíče trezoru?
 
     V **trezor služby Recovery Services**, **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**. Na serverech, vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
-8. Můžete naklonovat stávající konfigurační Server a použít ho pro orchestraci replikace?
+9. Můžete naklonovat stávající konfigurační Server a použít ho pro orchestraci replikace?
 
     **Ne**, použití klonovaný součásti serveru Configuration není podporováno.
 
-9. Můžete změnit IP adresa konfiguračního serveru?
+10. Můžete změnit IP adresa konfiguračního serveru?
 
     **Ne**, se důrazně doporučuje ne změnit IP adresu konfiguračního serveru. Zkontrolujte všechny IP adresy přiřazené ke konfiguračnímu serveru jsou statické IP adresy a ne IP adresy DHCP.
+11. Můžete nastavit konfigurační server v Azure?
+
+    Doporučujeme nastavit konfigurační server v místním prostředí s přímým přístupem řádku přístup pomocí Vcenter a minimalizovat latenci přenosu dat. Můžete provádět plánované zálohování konfiguračního serveru pro [účely navrácení služeb po obnovení](vmware-azure-manage-configuration-server.md#failback-requirements).
 
 ## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: dbca662f38f13833a4b9e642a4d8f690017d999a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b7710b081668bf07d40718baf1d84314246861f5
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262128"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412390"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycené výjimky a časy spuštění metody do webové aplikace v Javě
 
@@ -96,6 +96,23 @@ Ve výchozím nastavení `reportExecutionTime` má hodnotu true a `reportCaughtE
 
 > [!NOTE]
 > AI Agent.xml a soubor jar agenta musí být ve stejné složce. Jsou často umístěny společně v `/resources` složky projektu. 
+
+### <a name="spring-rest-template"></a>Spring Rest šablony
+
+V pořadí pro službu Application Insights úspěšně instrumentovat volání HTTP pomocí šablony pro Spring Rest používá klient Apache HTTP se vyžaduje. Ve výchozím nastavení není nakonfigurovaný pro Spring Rest šablony pro použití klient Apache HTTP. Zadáním [HttpComponentsClientHttpRequestfactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/client/HttpComponentsClientHttpRequestFactory.html) v konstruktoru šablonu Spring Rest, bude tento nástroj používat Apache HTTP.
+
+Tady je příklad toho, jak to udělat pomocí lusků Spring. To je velmi jednoduchý příklad, který používá výchozí nastavení objekt pro vytváření tříd.
+
+```java
+@bean
+public ClientHttpRequestFactory httpRequestFactory() {
+return new HttpComponentsClientHttpRequestFactory()
+}
+@Bean(name = 'myRestTemplate')
+public RestTemplate dcrAccessRestTemplate() {
+    return new RestTemplate(httpRequestFactory())
+}
+```
 
 #### <a name="enable-w3c-distributed-tracing"></a>Povolit distribuované trasování W3C
 

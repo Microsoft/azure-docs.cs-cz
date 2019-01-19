@@ -11,20 +11,44 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223292"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411233"
 ---
 # <a name="troubleshoot-rbac-in-azure"></a>Řešení potíží s RBAC v Azure
 
 V tomto článku, abyste věděli, co očekávat při používání role na webu Azure portal a můžete řešení problémů s přístupem k odpovědi na běžné dotazy o řízení přístupu na základě rolí (RBAC).
+
+## <a name="problems-with-rbac-role-assignments"></a>Potíže s přiřazováním rolí RBAC
+
+- Pokud se nemůžete přidat přiřazení role, protože **přidat přiřazení role** možnost je zakázaná, nebo protože se zobrazí chybu oprávnění, zkontrolujte, že používáte roli, která má `Microsoft.Authorization/roleAssignments/*` oprávnění v oboru, který se pokoušíte přiřazení role. Pokud toto oprávnění nemáte, obraťte se na správce vašeho předplatného.
+- Pokud dojde k chybě oprávnění při pokusu o vytvoření prostředku, zkontrolujte, že používáte roli, která má oprávnění k vytváření prostředků na vybraný obor. Potřebujete například stát přispěvatelem. Pokud nemáte oprávnění, obraťte se na správce předplatného.
+- Pokud dojde k chybě oprávnění při pokusu o vytvoření nebo aktualizaci lístek podpory, zkontrolujte, že používáte roli, která má `Microsoft.Support/*` oprávnění, jako například [podpory požádat o Přispěvatel](built-in-roles.md#support-request-contributor).
+- Pokud při pokusu o přiřazení role dojde k chybě kvůli překročení počtu přiřazení rolí, zkuste snížit počet přiřazení rolí tím, že místo toho přiřadíte role ke skupinám. Azure podporuje až **2000** přiřazení rolí na jedno předplatné.
+
+## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
+
+- Pokud se nemůžete aktualizovat existující vlastní roli, zkontrolujte, jestli máte `Microsoft.Authorization/roleDefinition/write` oprávnění.
+- Pokud nemůžete aktualizovat existující vlastní roli, zkontrolujte, zda jeden nebo více přiřaditelnými obory se odstranily v tenantovi. `AssignableScopes` Vlastnost pro ovládací prvky vlastní roli [který můžete vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli](custom-roles.md#who-can-create-delete-update-or-view-a-custom-role).
+- Pokud dojde k chybě, která překročila maximální počet definic rolí při pokusu o vytvoření nové role, odstranit vlastní role, ke kterým se dá použít. Můžete také zkusit konsolidovat nebo opakovaně používat všechny stávající vlastní role. Azure podporuje až **2000** vlastní role v tenantovi.
+- Pokud nemůžete odstranit vlastní roli, zkontrolujte, zda jeden nebo více přiřazení rolí stále používají vlastní roli.
+
+## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Obnovení RBAC při přesouvání předplatných mezi tenanty
+
+- Pokud potřebujete zjistit, jak postupovat při přenosu předplatného do jiného tenanta, přečtěte si téma [Přenos vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md).
+- Pokud přenesete předplatné na jiného tenanta, všechna přiřazení rolí se trvale odstraní z tenanta zdroje a nebudou migrována k cílovému tenantovi. Budete muset znovu vytvořit přiřazení role v cílovému tenantovi.
+- Pokud jsou globální správy a jste ztratili přístup k předplatnému, použijte **Access management pro prostředky Azure** tímto přepínačem můžete dočasně [zvýšení vaší přístupu](elevate-access-global-admin.md) moct znovu přistupovat ke předplatné.
+
+## <a name="rbac-changes-are-not-being-detected"></a>Nebyly detekovány změny RBAC
+
+Azure Resource Manageru někdy ukládá do mezipaměti, konfigurace a dat s cílem zlepšit výkon. Při vytváření nebo odstraňování přiřazení rolí, může trvat až 30 minut, než se změny projevily. Pokud používáte web Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure, můžete vynutit aktualizaci změn přiřazení role odhlášení a přihlášení. Pokud provádíte změny přiřazení role pomocí volání rozhraní REST API, můžete vynutit aktualizaci obnovením přístupového tokenu.
 
 ## <a name="web-app-features-that-require-write-access"></a>Webové aplikace funkce, které vyžadují přístup pro zápis
 
@@ -93,10 +117,6 @@ Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vy�
 ![Funkční aplikace bez přístupu](./media/troubleshooting/functionapps-noaccess.png)
 
 Můžete kliknout na tlačítko čtečky **funkce platformy** kartu a potom klikněte na tlačítko **všechna nastavení** zobrazení některých nastavení související se aplikace function app (podobně jako webová aplikace), ale nemohou upravovat některé z těchto nastavení.
-
-## <a name="rbac-changes-are-not-being-detected"></a>Nebyly detekovány změny RBAC
-
-Azure Resource Manageru někdy ukládá do mezipaměti, konfigurace a dat s cílem zlepšit výkon. Při vytváření nebo odstraňování přiřazení rolí, může trvat až 30 minut, než se změny projevily. Pokud používáte web Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure, můžete vynutit aktualizaci změn přiřazení role odhlášení a přihlášení. Pokud provádíte změny přiřazení role pomocí volání rozhraní REST API, můžete vynutit aktualizaci obnovením přístupového tokenu.
 
 ## <a name="next-steps"></a>Další postup
 * [Správa přístupu pomocí RBAC a portálu Azure Portal](role-assignments-portal.md)

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: c3e142c65cdfe00fb26694063f7733d62882cc0c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5be96fc93a5a6636ccac6faf456458b3bcb8423a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267364"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413715"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v C# pomocí rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
@@ -153,7 +153,7 @@ Na webu Azure Portal, klikněte na **testování ve Web Chat** otestovat robota.
 > Mohou uchovávat aplikace LUIS bez jakékoli změny kódu vašeho robota. Zobrazit [přidání projevů příklad](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování vaší aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Stáhněte si robota, aby ladění
-Pokud váš robot nefunguje, stáhněte si projekt do svého místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot). 
+Pokud váš robot nefunguje, stáhněte si projekt do svého místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot). 
 
 ## <a name="learn-more-about-bot-framework"></a>Další informace o Bot Frameworku
 Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https://github.com/Microsoft/BotBuilder) a [4.x](https://github.com/Microsoft/botbuilder-dotnet) sady SDK.

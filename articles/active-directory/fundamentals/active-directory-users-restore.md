@@ -12,12 +12,12 @@ ms.date: 12/17/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 066c9189e0c3cea409a99217e0ab4b46002df1f9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 92b3b3a2218486d41ab917472945b8485ccb4e12
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556777"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411794"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odeberte nedávno odstraněného uživatele pomocí služby Azure Active Directory
 Po odstranění uživatele účet zůstane v pozastaveném stavu po dobu 30 dnů. Během tohoto časového období 30 dnů uživatelský účet můžete obnovit, spolu se všemi vlastnostmi. Po uplynutí 30 dnů okno uživatele je automaticky a chcete trvale odstranit.
@@ -59,9 +59,6 @@ Uživatelský účet je pozastaven, se zachovají všechny informace o souvisej�
 2. Vyberte **obnovení uživatele**.
 
     ![Uživatelé – stránka odstraněných uživatelů se zvýrazněnou možností obnovení uživatele](media/active-directory-users-restore/users-deleted-users-restore-user.png)
-
->[!NOTE]
->Dříve po uživatele byl odebrán z oboru synchronizace s místními a odstranění v cloudu, DirSyncEnabled účtu byl chybně nastaven stav "False". Pokud později, tento uživatel byl ručně obnovit z odpadkového koše Azure AD, jsme si ukázali nesprávný stav účtu "Jenom cloudu". To teď pevně a hodnotu stavu DirSyncEnabled vždy zůstane "True" když je uživatel odebrán z oboru synchronizace, pak obnovitelně odstraněný a ručně obnovit z odpadkového koše Azure AD.
 
 ## <a name="permanently-delete-a-user"></a>Trvale odstranit uživatele
 Bez čekání na 30 dnů pro automatické odstranění můžete trvale odstranit uživatele z adresáře. Trvale odstraněného uživatele nelze obnovit, jiný správce, ani zákaznickou podporu Microsoftu.

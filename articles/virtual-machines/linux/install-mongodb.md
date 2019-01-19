@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: zarhoads
-ms.openlocfilehash: f1f8db985917b8eae6a5f301379af3c1bf09021f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 138435664222ff268069465aa98a53f0902a9f99
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465419"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412695"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Linuxem
 
@@ -31,9 +31,9 @@ ms.locfileid: "49465419"
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Ručně nainstalujte a nakonfigurujte MongoDB na virtuálním počítači
-MongoDB [poskytují pokyny k instalaci](https://docs.mongodb.com/manual/administration/install-on-linux/) pro distribuce Linuxu, včetně Red Hat nebo CentOS, SUSE, Ubuntu nebo Debian. Následující příklad vytvoří *CentOS* virtuálního počítače. K vytvoření tohoto prostředí, budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+MongoDB [poskytují pokyny k instalaci](https://docs.mongodb.com/manual/administration/install-on-linux/) pro distribuce Linuxu, včetně Red Hat nebo CentOS, SUSE, Ubuntu nebo Debian. Následující příklad vytvoří *CentOS* virtuálního počítače. K vytvoření tohoto prostředí, budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index).
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -121,7 +121,7 @@ Základní instance MongoDB můžete vytvořit na jednoho virtuálního počíta
 
 * [Základní instance MongoDB na CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-K vytvoření tohoto prostředí, budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+K vytvoření tohoto prostředí, budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -134,7 +134,7 @@ az group deployment create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
-Přihlaste se k virtuálnímu počítači pomocí veřejné adresy DNS vašeho virtuálního počítače. Můžete zobrazit veřejnou adresu DNS s [az vm show](/cli/azure/vm#az_vm_show):
+Přihlaste se k virtuálnímu počítači pomocí veřejné adresy DNS vašeho virtuálního počítače. Můžete zobrazit veřejnou adresu DNS s [az vm show](/cli/azure/vm):
 
 ```azurecli
 az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
@@ -172,7 +172,7 @@ Můžete vytvořit cluster komplexní horizontálně dělené MongoDB pomocí n�
 > [!WARNING]
 > Nasazení clusteru horizontálně dělené tento komplexní MongoDB vyžaduje více než 20 jader, což je obvykle výchozí počet jader na oblast a předplatné. Otevřete žádost o podporu Azure o navýšení vaší počet jader.
 
-K vytvoření tohoto prostředí, budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+K vytvoření tohoto prostředí, budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

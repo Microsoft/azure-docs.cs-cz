@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: tamram
-ms.openlocfilehash: deb91e1b881afe59d47f677fbee1c307da51f4e5
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 8085f3855d58bc1ddb7b4529ac4799b8292cea53
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062209"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401771"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Povolit ověřování Azure Active Directory přes protokol SMB pro soubory Azure (preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -241,7 +241,7 @@ Při spuštění následující ukázkový skript, nezapomeňte nahradit zástup
 #List the custom roles
 az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
 #Assign the custom role to the target identity
-az role assignment create --role "<custome-role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
+az role assignment create --role "<custom-role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 ```
 
 ## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurace oprávnění NTFS přes protokol SMB 

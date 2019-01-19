@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1ca6f2a0f8246e730206ea2a431f7968273a6e8d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966499"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412338"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Nahrání a vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure
 
@@ -35,13 +35,13 @@ Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých `myResourceGroup`, `mystorageaccount`, a `mydisks`.
 
-Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `WestUs` umístění:
+Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `WestUs`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Vytvořte účet úložiště pro uložení virtuálních discích s [vytvořit účet úložiště az](/cli/azure/storage/account#az_storage_account_create). Následující příklad vytvoří účet úložiště s názvem `mystorageaccount`:
+Vytvořte účet úložiště pro uložení virtuálních discích s [vytvořit účet úložiště az](/cli/azure/storage/account). Následující příklad vytvoří účet úložiště s názvem `mystorageaccount`:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
@@ -124,7 +124,7 @@ Viz také **[poznámky k instalaci Linux](create-upload-generic.md#general-linux
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Skupiny prostředků logicky pohromadě všechny prostředky Azure pro podporu vašich virtuálních počítačích, jako jsou virtuální sítě a úložiště. Další informace o skupin prostředků, najdete v části [přehled skupin prostředků](../../azure-resource-manager/resource-group-overview.md). Před nahráním vlastního disku a vytvoření virtuálních počítačů, musíte nejprve vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group#az_group_create).
 
-Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westus` umístění:
+Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -132,7 +132,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Vytvoření účtu úložiště pro váš vlastní disk a virtuální počítače s [vytvořit účet úložiště az](/cli/azure/storage/account#az_storage_account_create). Všechny virtuální počítače s nespravovanými disky, které jste vytvořili z vašeho vlastního disku musí být ve stejném účtu úložiště jako disk. 
+Vytvoření účtu úložiště pro váš vlastní disk a virtuální počítače s [vytvořit účet úložiště az](/cli/azure/storage/account). Všechny virtuální počítače s nespravovanými disky, které jste vytvořili z vašeho vlastního disku musí být ve stejném účtu úložiště jako disk. 
 
 Následující příklad vytvoří účet úložiště s názvem `mystorageaccount` ve skupině prostředků vytvořili dříve:
 

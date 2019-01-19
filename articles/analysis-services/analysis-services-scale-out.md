@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/18/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 213a695d99c50cea5962237c6210e6efcdbc5f6a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190810"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411675"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontální navýšení kapacity Azure Analysis Services
 
@@ -107,7 +107,7 @@ Pro aplikace SSMS, SSDT a připojovací řetězce v prostředí PowerShell, apli
 
 **Problém:** Uživatelé získají chyba **nelze nalézt server '\<název serveru > "instance v režimu připojení 'ReadOnly'.**
 
-**Řešení:** Při výběru **oddělte server pro zpracování od fondu dotazů** možnost připojení klienta pomocí výchozí připojovací řetězec (bez: rw) se přesměrují na fond replikami dotazu. Pokud repliky ve fondu dotazů jsou online, ale protože synchronizace nebyl dosud nebylo dokončeno, přesměrované klientská připojení může selhat. Pokud chcete zabránit neúspěšná připojení, zvolte nepoužívání oddělte server pro zpracování od fondu dotazů, dokud operace škálování a synchronizace dokončeny. Paměť a QPU metriky můžete použít k monitorování stavu synchronizace.
+**Řešení:** Při výběru **oddělte server pro zpracování od fondu dotazů** možnost připojení klienta pomocí výchozí připojovací řetězec (bez: rw) se přesměrují na fond replikami dotazu. Pokud repliky ve fondu dotazů jsou online, ale protože synchronizace nebyl dosud nebylo dokončeno, přesměrované klientská připojení může selhat. Pokud chcete zabránit neúspěšná připojení, musí existovat alespoň dva servery ve fondu dotaz při provedení synchronizace. Každý server se synchronizuje jednotlivě, ostatní budou i nadále online. Pokud se rozhodnete, že nebudete chtít server zpracování ve fondu dotaz během zpracování, můžete ho odebrat z fondu pro zpracování a pak ho přidat zpět do fondu, jakmile se zpracování dokončí, ale před synchronizací. Použití paměti a QPU metriky pro monitorování stavu synchronizace.
 
 ## <a name="related-information"></a>Související informace
 

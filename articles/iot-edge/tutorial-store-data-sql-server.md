@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 01/18/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 426e4fe05890f1669859545db3d731943a12428a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2b99207f35bd83c9e02ad636a070ae538ae3472c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260171"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412219"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Store dat na hraničních zařízeních s databází SQL serveru
 
@@ -36,7 +36,10 @@ V tomto kurzu se naučíte:
 
 Zařízení Azure IoT Edge:
 
-* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md). 
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
+
+  > [!NOTE]
+  > SQL Server podporuje pouze kontejnery Linuxu. Pokud chcete otestovat v tomto kurzu pomocí zařízení s Windows jako vaše hraniční zařízení, musíte ji nakonfigurovat tak, aby používal kontejnery Linuxu. Zobrazit [modul runtime nainstalovat Azure IoT Edge ve Windows](how-to-install-iot-edge-windows-with-linux.md) požadavky a kroky instalace pro konfiguraci modulu runtime IoT Edge pro kontejnery Linuxu ve Windows.
 
 Cloudové prostředky:
 
@@ -227,15 +230,9 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
 
 1. V průzkumníku Visual Studio Code otevřete soubor **deployment.template.json**. 
 
-2. Najít **moduly** oddílu. Měla by obsahovat dva moduly: modul**tempSensor**, který generuje simulovaná data, a váš modul **sqlFunction**.
+1. Najít **moduly** oddílu. Měla by obsahovat dva moduly: modul**tempSensor**, který generuje simulovaná data, a váš modul **sqlFunction**.
 
-3. Pokud používáte kontejnery Windows, upravte sekci **sqlFunction.settings.image**.
-
-   ```json
-   "image": "${MODULES.sqlFunction.windows-amd64}"
-   ```
-
-4. Přidáním následujícího kódu deklarujte třetí modul. Za sekci sqlFunction přidejte čárku a vložte:
+1. Přidáním následujícího kódu deklarujte třetí modul. Za sekci sqlFunction přidejte čárku a vložte:
 
    ```json
    "sql": {
@@ -253,29 +250,7 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
 
    ![Přidat modul SQL server do manifestu](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-5. V závislosti na typu kontejnerů Dockeru na vašem zařízení IoT Edge, aktualizujte **sql** parametry modulu s následujícím kódem:
-   * Kontejnery Windows:
-
-      ```json
-      "env": {
-        "ACCEPT_EULA": {"value": "Y"},
-        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-      },
-      "settings": {
-        "image": "microsoft/mssql-server-windows-developer",
-        "createOptions": {
-          "HostConfig": {
-            "Mounts": [{"Target": "C:\\mssql","Source": "sqlVolume","Type": "volume"}],
-            "PortBindings": {
-              "1433/tcp": [{"HostPort": "1401"}]
-            }
-          }
-        }
-      }
-      ```
-
-   * Linuxové kontejnery:
-
+1. Aktualizace **sql** parametry modulu s následujícím kódem:
       ```json
       "env": {
         "ACCEPT_EULA": {"value": "Y"},
@@ -295,9 +270,9 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
       ```
 
    >[!Tip]
-   >Po vytvoření kontejneru SQL Serveru v produkčním prostředí byste vždy měli [změnit výchozí heslo správce systému](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).
+   >Po vytvoření kontejneru SQL Serveru v produkčním prostředí byste vždy měli [změnit výchozí heslo správce systému](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker).
 
-6. Uložte soubor **deployment.template.json**.
+1. Uložte soubor **deployment.template.json**.
 
 ## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
 
@@ -353,42 +328,16 @@ Když pro své zařízení použijete manifest nasazení, získáte tři spušt�
 Spusťte následující příkazy na zařízení IoT Edge. Tyto příkazy připojení k **sql** modulu běžícího ve vašem zařízení a vytvořte databázi a tabulku pro uchovávání dat teploty odesílané do něj. 
 
 1. V nástroji příkazového řádku na vašem zařízení IoT Edge připojení k vaší databázi. 
-   * Kontejner Windows:
-   
-      ```cmd
-      docker exec -it sql cmd
-      ```
-    
-   * Kontejner Linuxu: 
-
       ```bash
       sudo docker exec -it sql bash
       ```
 
 2. Otevřete nástroj příkazového řádku SQL.
-   * Kontejner Windows:
-
-      ```cmd
-      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
-      ```
-
-   * Kontejner Linuxu: 
-
       ```bash
       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
       ```
 
 3. Vytvořte databázi: 
-
-   * Kontejner Windows
-      ```sql
-      CREATE DATABASE MeasurementsDB
-      ON
-      (NAME = MeasurementsDB, FILENAME = 'C:\mssql\measurementsdb.mdf')
-      GO
-      ```
-
-   * Kontejner Linuxu
       ```sql
       CREATE DATABASE MeasurementsDB
       ON

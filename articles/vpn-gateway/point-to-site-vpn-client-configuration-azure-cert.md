@@ -5,26 +5,26 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 11d23102ca807ab1ddf41f1d0e72aed8a8513ac8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 0f834c88a22aca52a861309681ea0da204b2a552
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636641"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412061"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S konfigurace nativního certifikátu Azure
 
-Konfiguračních souborů klienta VPN jsou obsaženy v souboru zip. Konfigurační soubory poskytují nastavením požadovaným pro nativní klienty Windows, Mac IKEv2 VPN nebo Linuxem pro připojení k virtuální síti pomocí připojení Point-to-Site, které používají nativní ověřování certifikátů Azure. Další informace o připojení Point-to-Site najdete v tématu věnovaném [síti VPN typu Point-to-Site](point-to-site-about.md).
+Konfiguračních souborů klienta VPN jsou obsaženy v souboru zip. Konfigurační soubory poskytují nastavením požadovaným pro nativní klienty Windows, Mac IKEv2 VPN nebo Linuxem pro připojení k virtuální síti pomocí připojení Point-to-Site, které používají nativní ověřování certifikátů Azure.
+
+Konfigurační soubory klienta jsou specifické pro konfiguraci sítě VPN pro virtuální síť. Pokud existují změny v konfiguraci Point-to-Site VPN od vygenerování konfiguračních souborů klienta VPN, jako je protokol typu sítě VPN nebo typ ověřování, je nutné generovat nové soubory konfigurace klienta VPN pro uživatele zařízení. 
+
+* Další informace o připojení Point-to-Site najdete v tématu věnovaném [síti VPN typu Point-to-Site](point-to-site-about.md).
+* OpenVPN pokyny najdete v tématu [OpenVPN konfigurace p2s](vpn-gateway-howto-openvpn.md) a [klienty nakonfigurovat OpenVPN](vpn-gateway-howto-openvpn-clients.md).
 
 >[!IMPORTANT]
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
->
-
->[!NOTE]
->Konfigurační soubory klienta jsou specifické pro konfiguraci sítě VPN pro virtuální síť. Pokud existují změny v konfiguraci Point-to-Site VPN od vygenerování konfiguračních souborů klienta VPN, jako je protokol typu sítě VPN nebo typ ověřování, je nutné generovat nové soubory konfigurace klienta VPN pro uživatele zařízení.
->
 >
 
 ## <a name="generate"></a>Generování souborů konfigurace klienta VPN

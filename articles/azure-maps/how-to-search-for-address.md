@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cd6927cccfa85c8409d612a40a4e708e81af746a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387425"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413545"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Najít adresu pomocí služby vyhledávání Azure Maps
 
@@ -105,7 +105,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
     |------------------|-------------------------|
     | verze API-version | 1.0 |
     | klíč předplatného | \<klíč Azure Maps\> |
-    | query | 400 širokým SV, Seattle, WA 98109 |
+    | query | 400 Broad St, Seattle, WA 98109 |
   
 4. Klikněte na tlačítko **odeslat** a zkontrolujte text odpovědi.
   
@@ -158,7 +158,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
     |-----|------------|
     | číslo | true (pravda) |
 
-    Pokud [číslo](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr dotazu se odešle s požadavkem, odpověď může obsahovat straně ulice (doleva nebo doprava) a také posunutí pozice za daný počet.
+    Pokud [číslo](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr dotazu se odešle s požadavkem, odpověď může obsahovat straně ulice (doleva nebo doprava) a také posunutí pozice za daný počet.
   
 6. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
 
@@ -166,7 +166,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
     |-----|------------|
     | returnSpeedLimit | true (pravda) |
   
-    Když [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr dotazu je nastavena, odpověď vrácení odeslaných omezení rychlosti.
+    Když [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr dotazu je nastavena, odpověď vrácení odeslaných omezení rychlosti.
 
 7. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
 
@@ -174,7 +174,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
     |-----|------------|
     | returnRoadUse | true (pravda) |
 
-    Když [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr dotazu je nastavena, odpověď se vrátí silniční použijte pole pro reverzní geocodes ulice na úrovni.
+    Když [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr dotazu je nastavena, odpověď se vrátí silniční použijte pole pro reverzní geocodes ulice na úrovni.
 
 8. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
 
@@ -182,7 +182,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
     |-----|------------|
     | roadUse | true (pravda) |
 
-    Dotaz zpětné geokód můžete omezit na určitý typ pomocí použití silniční [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr dotazu.
+    Dotaz zpětné geokód můžete omezit na určitý typ pomocí použití silniční [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr dotazu.
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Hledání napříč ulice pomocí reverzního ulice hledání různé adresy
 

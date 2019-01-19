@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d61810adb24bb56b849a0a07ad1f097a1c33744
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198078"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410485"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
-Tento článek popisuje, jak jako vývojář zařízení připojit Obecná aplikace Node.js představující fyzické zařízení na aplikaci Microsoft Azure IoT Central.
+Tento článek popisuje, jak jako vývojář zařízení připojit Obecná aplikace Node.js představující skutečné zařízení do aplikace Microsoft Azure IoT Central.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -97,7 +97,7 @@ V aplikaci Azure IoT Central přidání skutečné zařízení ze šablony zař�
 
 ### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
-Následující kroky ukazují, jak vytvořit klientskou aplikaci, která implementuje skutečné zařízení, které jste přidali do aplikace. Aplikace Node.js zde představuje skutečné fyzické zařízení. 
+Následující kroky ukazují, jak vytvořit klientskou aplikaci, která implementuje skutečné zařízení, které jste přidali do aplikace. Aplikace Node.js zde představuje skutečné zařízení. 
 
 1. Na počítači vytvořte složku s názvem `connected-air-conditioner-adv`. Přejděte do této složky ve vašem prostředí příkazového řádku.
 

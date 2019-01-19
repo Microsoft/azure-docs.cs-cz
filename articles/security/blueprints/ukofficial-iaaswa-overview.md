@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d40e23a7cc113a9db297a7dbf00a2372063dfb52
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d5b759fcde66a2a9be86cc15cba1ead1765ba248
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060562"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413392"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpečení Azure a dodržování předpisů – IaaS třívrstvé webové aplikace pro UK OFFICIAL
 
@@ -39,7 +39,7 @@ ms.locfileid: "39060562"
 
  Toto řešení používá následující služby Azure. Podrobnosti o architektura nasazení jsou umístěné v [architektura nasazení](#deployment-architecture) oddílu.
 
-(((1) /16 virtuální sítě – provozní síti
+(1) /16 Virtual Network - Operational VNet
 - (3) /24 podsítě – úroveň 3 (Web, Biz, Data)
 - (1) velikost/27 přidá podsíť –
 - podsíť (1) velikost/27 – podsíť brány
@@ -57,7 +57,7 @@ ms.locfileid: "39060562"
 (1) application Gateway
 - -Aktivovanou úrovní WAF
 - Režim WAF – ochrany před únikem informací
-- Sada pravidel, která: OWASP 3.0
+- Sada pravidel: OWASP 3.0
 - Naslouchací proces protokolu HTTP na portu 80
 - Připojení/přenosů upraveno prostřednictvím skupiny zabezpečení sítě
 - Koncový bod veřejné IP adresy definované (Azure)
@@ -105,11 +105,11 @@ Skupiny dostupnosti
 - (1) nastavte virtuální počítač na úrovni data – 2 virtuální počítače
 
 Load Balancer
-- (1) webové nástroje pro vyrovnávání zatížení vrstvy
+- (1) Web Tier Load Balancer
 - (1) nástroj pro vyrovnávání zatížení vrstvy biz
 - (1) nástroj pro vyrovnávání zatížení vrstvy data
 
-Úložiště
+Storage
 - (14) účty úložiště celkový počet
   - Skupinu dostupnosti řadiče domény služby Active Directory
     - (2) primární účtů místně redundantního úložiště (LRS) - 1 pro každý virtuální počítač  
@@ -129,54 +129,54 @@ Load Balancer
 
 ### <a name="deployment-architecture"></a>Architektura nasazení:
 
-**V místní síti**: privátní místní síť implementovaná v organizaci.
+**Místní síť**: Privátní místní síť implementovaná v organizaci.
 
-**Virtuální síť výroby**: produkční [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (virtuální sítě) je hostitelem aplikace a jiných provozní prostředky spuštěné v Azure. Každá virtuální síť může obsahovat několik podsítí, které se používají pro izolování a správu síťového provozu.
+**Virtuální síť výroby**: Produkční [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (virtuální sítě) je hostitelem aplikace a jiných provozní prostředky spuštěné v Azure. Každá virtuální síť může obsahovat několik podsítí, které se používají pro izolování a správu síťového provozu.
 
-**Webová vrstva**: zpracovává příchozí požadavky HTTP. Odpovědi se vrátí přes tuto úroveň.
+**Webová vrstva**: Zpracovává příchozí požadavky HTTP. Odpovědi se vrátí přes tuto úroveň.
 
-**Obchodní vrstva**: implementuje obchodní procesy a další logiku funkčnosti systému.
+**Obchodní vrstva**: Implementuje obchodní procesy a další logiku funkčnosti systému.
 
-**Databáze úrovně**: poskytuje úložiště trvalých dat pomocí [SQL Server skupin dostupnosti Always On](https://msdn.microsoft.com/library/hh510230.aspx) pro zajištění vysoké dostupnosti. Zákazníci můžou využít [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) jako alternativu PaaS.
+**Databáze úrovně**: Poskytuje úložiště trvalých dat pomocí [SQL Server skupin dostupnosti Always On](https://msdn.microsoft.com/library/hh510230.aspx) pro zajištění vysoké dostupnosti. Zákazníci můžou využít [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) jako alternativu PaaS.
 
 **Brána**: [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) poskytuje připojení mezi směrovači v místní síti a produkční virtuální sítě.
 
-**Internetové brány a veřejné IP adresy**: Internetová brána zpřístupňuje aplikačními službami, abyste uživatelům prostřednictvím Internetu. Přístup k těmto službám provoz je zabezpečený pomocí [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) nabízí směrování vrstvy 7 a funkce ochrany webové brány firewall (WAF) služby Vyrovnávání zatížení.
+**Internetovou bránu a veřejnou IP adresu**: Internetová brána zpřístupňuje aplikačními službami, abyste uživatelům prostřednictvím Internetu. Přístup k těmto službám provoz je zabezpečený pomocí [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) nabízí směrování vrstvy 7 a funkce ochrany webové brány firewall (WAF) služby Vyrovnávání zatížení.
 
-**Správa virtuální sítě**: to [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) obsahuje prostředky, které implementují správu a monitorování pro úlohy běžící v produkčním prostředí virtuální sítě.
+**Správa virtuální sítě**: To [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) obsahuje prostředky, které implementují správu a monitorování pro úlohy běžící v produkčním prostředí virtuální sítě.
 
-**Jumpbox**: zkratka [bastion host](https://en.wikipedia.org/wiki/Bastion_host), což je zabezpečený virtuální počítač v síti, který správci používají pro připojení k virtuálním počítačům v produkčním prostředí virtuální sítě. Jumpbox má skupinu NSG, která umožňuje vzdálenou komunikaci pouze z jedné veřejné IP adresy na seznamu bezpečných adres. Zdroje přenosů pro povolení provozu vzdálené plochy (RDP), musí být definován v této skupině. Správa produkčních prostředků je přes protokol RDP pomocí zabezpečeného virtuálního počítače s Jumpbox.
+**Jumpbox**: Zkratka [bastion host](https://en.wikipedia.org/wiki/Bastion_host), což je zabezpečený virtuální počítač v síti, který správci používají pro připojení k virtuálním počítačům v produkčním prostředí virtuální sítě. Jumpbox má skupinu NSG, která umožňuje vzdálenou komunikaci pouze z jedné veřejné IP adresy na seznamu bezpečných adres. Zdroje přenosů pro povolení provozu vzdálené plochy (RDP), musí být definován v této skupině. Správa produkčních prostředků je přes protokol RDP pomocí zabezpečeného virtuálního počítače s Jumpbox.
 
-**Trasy definované uživatelem**: [trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) se používají k definování tok přenosů IP ve virtuálních sítích Azure.
+**Trasy definované uživatelem**: [Trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) se používají k definování tok přenosů IP ve virtuálních sítích Azure.
 
-**Sítě v partnerském vztahu virtuálních sítí**: produkčním prostředí a správu virtuálních sítí jsou propojeny pomocí [VNet peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+**Sítě partnerských virtuálních sítích**: Produkční a správu virtuálních sítí jsou propojeny pomocí [VNet peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 Tyto virtuální sítě jsou i nadále spravovány jako samostatné prostředky, ale pro tyto virtuální počítače všechny účely připojení jeví jako jedna. Tyto sítě spolu komunikovat přímo pomocí privátních IP adres. Služba VNet peering je v souladu s virtuálními sítěmi ve stejné oblasti Azure.
 
-**Skupiny zabezpečení sítě**: [skupiny Nsg](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) obsahují seznamy řízení přístupu, která povolují nebo zakazují provoz ve virtuální síti. Skupiny zabezpečení sítě slouží k zabezpečení provozu na úrovni jednotlivých virtuálních počítačů nebo podsítě.
+**Skupiny zabezpečení sítě**: [Skupiny Nsg](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) obsahují seznamy řízení přístupu, která povolují nebo zakazují provoz ve virtuální síti. Skupiny zabezpečení sítě slouží k zabezpečení provozu na úrovni jednotlivých virtuálních počítačů nebo podsítě.
 
 **Active Directory Domain Services (AD DS)**: Tato architektura poskytuje vyhrazený [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) nasazení.
 
-**Protokolování a auditování**: [protokolu aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zachycuje operace s prostředky ve vašem předplatném, jako je například kdo inicioval operaci, při operaci došlo k chybě, stav operace a hodnoty Další vlastnosti, které vám mohou pomoci při zkoumání operace. Protokol aktivit v Azure je služba platformy Azure, který explicitně zaznamenává všechny akce v rámci předplatného. Protokoly můžete archivovat nebo exportovat podle potřeby.
+**Protokolování a auditování**: [Protokol aktivit v Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zachycení operace pro prostředky ve vašem předplatném, jako například provádět, kteří při operaci došlo k chybě, který operaci spustil, stav operace a hodnotách jiných vlastností, které vám můžou pomoct prozkoumat operace. Protokol aktivit v Azure je služba platformy Azure, který explicitně zaznamenává všechny akce v rámci předplatného. Protokoly můžete archivovat nebo exportovat podle potřeby.
 
-**Monitorování a upozorňování sítě**: [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) je služba platformy poskytuje zachytávání paketů sítě, protokolování toků, topologie nástroje a diagnostiky pro traffics sítě v rámci virtuální sítě.
+**Síť, monitorování a upozorňování**: [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) je služba platformy poskytuje zachytávání paketů sítě, protokolování toků, topologie nástroje a diagnostiky pro traffics sítě v rámci virtuální sítě.
 
 ## <a name="guidance-and-recommendations"></a>Pokyny a doporučení
 
 ### <a name="business-continuity"></a>Kontinuita podnikových procesů
 
-**Vysoká dostupnost**: Server úlohy jsou seskupené ve [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k zajištění vysoké dostupnosti virtuálních počítačů v Azure. Tato konfigurace pomáhá zajistit, že během plánované i neplánované údržby alespoň jeden virtuální počítač bude mít k dispozici a musí splňovat 99,95 % Azure SLA.
+**Vysoká dostupnost**: Jiné úlohy serveru jsou seskupené ve [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k zajištění vysoké dostupnosti virtuálních počítačů v Azure. Tato konfigurace pomáhá zajistit, že během plánované i neplánované údržby alespoň jeden virtuální počítač bude mít k dispozici a musí splňovat 99,95 % Azure SLA.
 
 ### <a name="logging-and-audit"></a>Protokolování a auditování
 
 **Monitorování**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) je služba platformy, která poskytuje jeden zdroj pro monitorování protokolu aktivit, metriky a diagnostické protokoly ze všech vašich prostředků Azure. Azure Monitor můžete nastavit vizualizace, dotazy, směrovat, archivace a jednat na základě metriky a protokoly pocházející z prostředků v Azure. Doporučuje se, že řízení přístupu na základě prostředku se používá k zabezpečení záznam pro audit, abychom zajistili, že uživatelé nemají k dispozici je možnost Upravit protokoly.
 
-**Protokoly aktivit**: konfigurace [protokolů aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) k poskytování přehledů o operacích provedených na prostředky ve vašem předplatném.
+**Protokoly aktivit**: Konfigurace [protokolů aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) k poskytování přehledů o operacích provedených na prostředky ve vašem předplatném.
 
-**Diagnostické protokoly**: [diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly generované prostředek. Tyto protokoly mohou zahrnovat protokoly událostí systému Windows, objektů blob, tabulky a fronty protokoly.
+**Diagnostické protokoly**: [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly generované prostředek. Tyto protokoly mohou zahrnovat protokoly událostí systému Windows, objektů blob, tabulky a fronty protokoly.
 
 **Brána firewall protokoly**: Application Gateway poskytuje úplnou diagnostiku a protokoly přístupů. Protokoly brány firewall jsou dostupné pro prostředky služby Application Gateway, které mají povolený Firewall webových aplikací.
 
-**Archivace protokolu**: protokol úložiště dat je možné nakonfigurovat pro zápis do centralizované úložiště Azure pro účet, archivace a období definované uchovávání informací. Protokoly je možné zpracovávat pomocí Azure Log Analytics nebo systémy jiných výrobců SIEM.
+**Archivace protokolu**: Úložiště dat protokolu je možné nakonfigurovat k zápisu do účet centralizované úložiště Azure pro archivaci a období definované uchovávání informací. Protokoly je možné zpracovávat pomocí Azure Log Analytics nebo systémy jiných výrobců SIEM.
 
 ### <a name="identity"></a>Identita
 
@@ -186,27 +186,27 @@ Tyto virtuální sítě jsou i nadále spravovány jako samostatné prostředky,
 
 [Pokyny pro nasazení systému Windows Server Active Directory na virtuálních počítačích Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
-**Integrace služby Active Directory**: jako alternativu k vyhrazené architektury služby AD DS, mohou zákazníci chtít používat [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-azure-active-directory) integrace nebo [služby Active Directory v Azure připojené k místní doménová struktura](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest).
+**Integrace služby Active Directory**: Jako alternativu k vyhrazené architektury služby AD DS, mohou zákazníci chtít používat [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) integrace nebo [připojené služby Active Directory v Azure do místní doménové struktury](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest).
 
 ### <a name="security"></a>Zabezpečení
 
-**Správa zabezpečení**: podrobný plán umožňuje správcům připojit k rozhraní pro správu virtuálních sítí a Jumpbox pomocí protokolu RDP z důvěryhodného zdroje. Přenos v síti pro virtuální síť pro správu je řízen pomocí skupin zabezpečení sítě. Přístup k portu 3389 je omezen na provoz z důvěryhodných IP rozsahu, s přístupem k podsíť obsahující Jumpbox.
+**Správa zabezpečení**: Tento podrobný plán umožňuje správcům připojit k rozhraní pro správu virtuálních sítí a Jumpbox pomocí protokolu RDP z důvěryhodného zdroje. Přenos v síti pro virtuální síť pro správu je řízen pomocí skupin zabezpečení sítě. Přístup k portu 3389 je omezen na provoz z důvěryhodných IP rozsahu, s přístupem k podsíť obsahující Jumpbox.
 
 Zákazníci mohou také zvážit použití [zvýšené zabezpečení pro správu modelu](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access) pro zabezpečení prostředí při připojování ke službě pro správu virtuálních sítí a Jumpbox. Doporučuje se, že pro zvýšení zabezpečení zákazníci používat [Privileged Access pracovní stanice](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw) a konfigurace RDGateway. Použití síťových virtuálních zařízení a veřejného/soukromého zóny DMZ nabídne další vylepšení zabezpečení.
 
-**Zabezpečení sítě**: [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (Nsg) doporučují pro každou podsíť pro druhou úroveň ochrany u příchozích přenosů obejít nesprávně nakonfigurované nebo zakázané brány. Příklad – [šablony Resource Manageru pro nasazení skupiny NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
+**Zabezpečení sítě**: [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (Nsg) doporučují pro každou podsíť pro druhou úroveň ochrany u příchozích přenosů obejít nesprávně nakonfigurované nebo zakázané brány. Příklad – [šablony Resource Manageru pro nasazení skupiny NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
 
 **Zabezpečení koncových bodů veřejných**: Internetová brána zpřístupňuje aplikačními službami, abyste uživatelům prostřednictvím Internetu. Provoz přístup k těmto službám je zabezpečený pomocí [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction), který poskytuje protokol správy brány Firewall webových aplikací a HTTPS.
 
-**Rozsahy IP adres**: rozsahy IP adres v architektuře, která jsou navrhované rozsahy. Zákazníkům doporučujeme zvážit svoje vlastní prostředí a použijte příslušné rozsahy.
+**Rozsahy IP adres**: Rozsahy IP adres v architektuře, která jsou navrhované rozsahy. Zákazníkům doporučujeme zvážit svoje vlastní prostředí a použijte příslušné rozsahy.
 
-**Hybridní připojení**: cloudové úlohy, které jsou připojeny k místním datovým centrem pomocí protokolu IPSEC VPN s použitím Azure VPN Gateway. Zákazníci by měl zajistit, že používají příslušné brány sítě VPN pro připojení k Azure. Příklad – [VPN Gateway Resource Manageru šablony](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Zákazníky, kteří používají ve velkém měřítku, nejdůležitější úlohy s velkými objemy dat požadavky chtít zvážit použití architektury hybridní sítě [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) privátní síťové připojení k Microsoft cloud services.
+**Hybridní připojení**: Cloudové úlohy jsou připojené k místním datovým centrem pomocí protokolu IPSEC VPN s použitím Azure VPN Gateway. Zákazníci by měl zajistit, že používají příslušné brány sítě VPN pro připojení k Azure. Příklad – [VPN Gateway Resource Manageru šablony](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Zákazníky, kteří používají ve velkém měřítku, nejdůležitější úlohy s velkými objemy dat požadavky chtít zvážit použití architektury hybridní sítě [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) privátní síťové připojení k Microsoft cloud services.
 
 **Oddělení oblastí zájmu**: Tato referenční architektura oddělí virtuální sítě pro operace správy a obchodních operací. Samostatné virtuální sítě a podsítě povolit správu provozu, včetně omezení pro příchozí a odchozí provoz, s použitím skupin zabezpečení sítě mezi síťové segmenty následující [zabezpečení cloudové služby a sítě Microsoft](https://docs.microsoft.com/azure/best-practices-network-security) osvědčené postupy.
 
-**Správa prostředků**: spravuje prostředky Azure, jako jsou virtuální počítače, virtuální sítě a nástroje pro vyrovnávání zatížení seskupí společně do [skupin prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource). Řízení přístupu na základě role prostředků pak můžete přiřadit ke každé skupině prostředků k omezení přístupu jenom na autorizované uživatele.
+**Správa prostředků**: Prostředky Azure, jako jsou virtuální počítače, virtuální sítě a nástroje pro vyrovnávání zatížení jsou spravovány seskupí společně do [skupin prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource). Řízení přístupu na základě role prostředků pak můžete přiřadit ke každé skupině prostředků k omezení přístupu jenom na autorizované uživatele.
 
-**Přístup k omezení ovládacích prvků**: použití [řízení přístupu na základě Role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) ke správě prostředků v aplikaci pomocí [vlastní role](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC slouží k omezení operací, které DevOps můžete provádět na jednotlivých úrovních. Při udělování oprávnění používat [principu nejnižších možných oprávnění](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokolujte všechny operace správy a provádějte pravidelné audity, abyste měli jistotu, že byly všechny změny konfigurace plánované.
+**Přístup k omezení ovládacích prvků**: Použití [řízení přístupu na základě Role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) ke správě prostředků v aplikaci pomocí [vlastní role](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC slouží k omezení operací, které můžete provádět DevOps na jednotlivých úrovních. Při udělování oprávnění používat [principu nejnižších možných oprávnění](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokolujte všechny operace správy a provádějte pravidelné audity, abyste měli jistotu, že byly všechny změny konfigurace plánované.
 
 **Přístup k Internetu**: Tato referenční architektura využívá [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) jako internetové brány a load balancer. Někteří zákazníci mohou také zvážit použití síťových virtuálních zařízení jiných výrobců pro další vrstvy zabezpečení jako alternativu k připojení sítě [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
 

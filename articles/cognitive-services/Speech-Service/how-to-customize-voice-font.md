@@ -10,18 +10,18 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: panosper
-ms.openlocfilehash: e2c176e35cbc75747230e429d0ddae9d420db8b5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 181797cd8ba193d7200e5ece8b599ffa40f7185b
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867576"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413698"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
-Přizpůsobení hlasové převod textu na ŘEČ umožňuje vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky: *hlasového písma.* 
+Přizpůsobení hlasové převod textu na ŘEČ umožňuje vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky: *hlasového písma.*
 
-K vytvoření hlasového písma, provedete studio nahrávání a nahrát přidružené skripty jako trénovací data. Služba potom vytvoří jedinečný hlas modelu, která je vyladěná pro nahrávání. Můžete použít tento hlasového písma tak, aby odpovídaly řeči. 
+K vytvoření hlasového písma, provedete studio nahrávání a nahrát přidružené skripty jako trénovací data. Služba potom vytvoří jedinečný hlas modelu, která je vyladěná pro nahrávání. Můžete použít tento hlasového písma tak, aby odpovídaly řeči.
 
 Můžete začít s menším objemem dat pro testování konceptu. Ale čím více dat zadáte, čím více přirozený a professional zvuky svůj hlas.
 
@@ -49,7 +49,7 @@ Hlasové trénovací datové sady se skládá ze sady zvukové soubory, spolu s 
 
 Tyto soubory dvě možnosti, jak můžete připravit. Buď napsat skript a jeho číst talentu hlasu nebo použít veřejně dostupné zvuk a přepisy na text. Pokud tak učiníte ten, upravte disfluencies z zvukové soubory, jako je například "um" a dalších přednastavené zvuky, zadrhává, mumbled slova nebo mispronunciations.
 
-K vytvoření dobré hlasového písma, ujistěte se, záznamy v tichém místnosti s vysoce kvalitní mikrofon. Konzistentní svazku mluvený míra mluvený rozteč a expresivní zkoušky prezentace řeči jsou nezbytné pro vytváření skvělých hlasových digitální. 
+K vytvoření dobré hlasového písma, ujistěte se, záznamy v tichém místnosti s vysoce kvalitní mikrofon. Konzistentní svazku mluvený míra mluvený rozteč a expresivní zkoušky prezentace řeči jsou nezbytné pro vytváření skvělých hlasových digitální.
 
 Pokud chcete vytvořit hlasový vstup pro použití v produkčním prostředí, doporučujeme že použít profesionální záznam studio a způsobu vyjadřování talentu. Další informace najdete v tématu [jak záznam hlasu ukázky pro vlastní hlasové](record-custom-voice-samples.md).
 
@@ -63,7 +63,7 @@ Zvukové soubory potřeba se připravit následujícím způsobem. Další form�
 | ------------ | --------- |
 | Formát souboru  | RIFF (.wav)|
 | Vzorkovací frekvence| aspoň 16 000 Hz |
-| Vzor formátu| PCM, 16 bitů |
+| Vzor formátu| PCM, 16-bit |
 | Název souboru    | Číselné hodnoty a s `.wav` rozšíření |
 | Formát archivu| .zip      |
 | Maximální velikost|200 MB|
@@ -102,30 +102,30 @@ Po přípravě archivu zvukový soubor a záznamy o studiu, odešle je prostřed
 
     **Moje hlasové** tabulky se zobrazí. To je prázdný, pokud jste neodeslali žádné datové sady hlasové ještě.
 
-3. Otevřete stránku pro nahrávání novou datovou sadu, vyberte **importovat data**. 
+3. Otevřete stránku pro nahrávání novou datovou sadu, vyberte **importovat data**.
 
     ![Import hlasová Data](media/custom-voice/import-voice-data.png)
 
-4. Zadejte název a popis do pole, která jsou k dispozici. 
+4. Zadejte název a popis do pole, která jsou k dispozici.
 
-5. Vyberte národní prostředí pro hlasová písma. Ujistěte se, že informace o národním prostředí odpovídá jazyku záznam dat a skriptů. 
+5. Vyberte národní prostředí pro hlasová písma. Ujistěte se, že informace o národním prostředí odpovídá jazyku záznam dat a skriptů.
 
 6. Vyberte pohlaví mluvčího jehož hlasové, které používáte.
 
-7. Vyberte skript a zvukové soubory k nahrání. 
+7. Vyberte skript a zvukové soubory k nahrání.
 
 8. Vyberte **Import** nahrát data. U větších datových sad může import trvat několik minut.
 
 > [!NOTE]
 > Uživatelé bezplatné předplatné můžete nahrát dvě datové sady v čase. Předplatné standard sady mohou uživatelé odeslat pět datových sad současně. Pokud limit překročíte, počkejte aspoň jeden z datových sad dokončení importu. Pak to zkuste znovu.
 
-Po dokončení nahrávání **Moje hlasová Data** tabulky se zobrazí znovu. Měli byste vidět položku, která odpovídá datovou sadu, kterou jste právě nahráli. 
+Po dokončení nahrávání **Moje hlasová Data** tabulky se zobrazí znovu. Měli byste vidět položku, která odpovídá datovou sadu, kterou jste právě nahráli.
 
 Datové sady se automaticky ověří po odeslání. Ověření dat obsahuje řadu kontrol zvukové soubory, chcete-li ověřit jejich formát souboru, velikost a vzorkovací frekvenci. Kontroly soubory určené k transkripci ověřte formát souboru a provést některé normalizace text. Projevy jsou přepsány, rozpoznávání řeči. Výsledný text je pak porovnána s přepisu, které jste zadali.
 
 ![Moje hlasová Data](media/custom-voice/my-voice-data.png)
 
-V následující tabulce jsou uvedeny stavy zpracování pro importované datové sady: 
+V následující tabulce jsou uvedeny stavy zpracování pro importované datové sady:
 
 | Stav | Význam
 | ----- | -------
@@ -143,19 +143,19 @@ Vezměte v úvahu znovu záznam jakékoli projevy s nízkou výslovnost skóre n
 
 ## <a name="build-your-voice-font"></a>Sestavení hlasového písma
 
-Po ověření datové sady můžete vytvářet vlastní hlasové písmo. 
+Po ověření datové sady můžete vytvářet vlastní hlasové písmo.
 
 1.  V **vlastní hlasové** rozevírací nabídky vyberte **modely**.
- 
+
     **Moje hlasová písma** tabulky se zobrazí, výpis všechny vlastní hlasové písmo jste už vytvořili.
 
-1. V části název tabulky, vyberte **vytvořit hlasy**. 
+1. V části název tabulky, vyberte **vytvořit hlasy**.
 
     Zobrazí se stránka pro vytvoření hlasového písma. Aktuální národní prostředí se zobrazí v prvním řádku tabulky. Změňte národní prostředí pro vytváření hlasový vstup v jiném jazyce. Národní prostředí musí být stejné jako u datových sad, které jsou použity k vytvoření hlasu.
 
-1. Stejně jako při odesílání vaší datové sadě, zadejte název a popis, který vám pomůže identifikovat tento model. 
+1. Stejně jako při odesílání vaší datové sadě, zadejte název a popis, který vám pomůže identifikovat tento model.
 
-    Zvolte název pečlivě. Název, které zadáte tady bude název, který se používá k určení hlasu ve vaší žádosti pro syntézu řeči, jako součást SSML vstup. Pouze písmena, číslice a pár znaků interpunkce, jako '-', '_' a '(',')'.
+    Zvolte název pečlivě. Název, které zadáte tady bude název, který se používá k určení hlasu ve vaší žádosti pro syntézu řeči, jako součást SSML vstup. Pouze písmena, číslice a pár znaků interpunkce, jako `-`, `_`, a `(', ')` jsou povoleny.
 
     Běžně **popis** pole je záznam názvech datových sad, které byly použity k vytvoření modelu.
 
@@ -167,7 +167,7 @@ Po ověření datové sady můžete vytvářet vlastní hlasové písmo.
 
     ![Vytvoření modelu](media/custom-voice/create-model.png)
 
-Se zobrazí v novém modelu **Moje hlasová písma** tabulky. 
+Se zobrazí v novém modelu **Moje hlasová písma** tabulky.
 
 ![Moje hlasová písma](media/custom-voice/my-voice-fonts.png)
 
@@ -212,7 +212,7 @@ Pokud je stav nasazení **Succeeded**, koncovým bodem nasazeného hlasového p�
 
 Online testování koncového bodu je také k dispozici prostřednictvím portálu pro vlastní hlasové. Chcete-li otestovat váš koncový bod, zvolte **testování koncových bodů** z **vlastní hlasové** rozevírací nabídky. Koncový bod testování stránky se zobrazí. Zvolte nasazené vlastní hlasové a zadejte text, který má být španělským (prostý text nebo formátu SSML) do textového pole.
 
-> [!NOTE] 
+> [!NOTE]
 > Při použití SSML, `<voice>` značky musí být zadán název, který jste zadali vlastní hlasové při jeho vytváření. Pokud publikujete prostý text, je vždy použito vlastní hlasové.
 
 Pokud chcete slyšet text, kterým se mluví ve vaší vlastní hlasové písmo, vyberte **Přehrát**.
@@ -223,10 +223,18 @@ Vlastní koncový bod je funkčně stejný jako standardní koncový bod, který
 
 ## <a name="language-support"></a>Podpora jazyků
 
-Přizpůsobení hlasu je k dispozici pro Americkou angličtinu (en US), Španělsko čínština (zh-CN) a italština (it-IT).
+Přizpůsobení hlasu je k dispozici v těchto jazycích:
+
+| Jazyk | Národní prostředí |
+|----------|--------|
+| Čínština (Španělsko) | zh-CN |
+| English (US) | en-US |
+| Francouzština | fr-FR |
+| Němčina | de-DE |
+| italština | IT-IT |
 
 > [!NOTE]
-> Školení italsky začíná u datové sady projevy 2 000 +. Čínština – angličtina dvojjazyčné modely jsou také podporovány s datovou sadou projevy 2 000 +.
+> Francouzština, němčina a italština školení způsobu vyjadřování začíná u datové sady projevy 2 000 +. Čínština – angličtina dvojjazyčné modely jsou také podporovány s datovou sadou projevy 2 000 +.
 
 ## <a name="next-steps"></a>Další postup
 

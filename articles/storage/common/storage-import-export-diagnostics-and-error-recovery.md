@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 2a54752f933b91265d0aa8add61ca0707615931b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0d58a384a6ca7c249a3b0e8b690095202fe373a2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526323"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413613"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostika a zotavení z chyb pro úlohy Azure Import/Export
 Pro každou jednotku zpracována služba Azure Import/Export vytvoří protokol chyb do přidruženého účtu úložiště. Můžete také povolit podrobné protokolování tak, že nastavíte `LogLevel` vlastnost `Verbose` při volání [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs#Jobs_Update) operace.
 
  Ve výchozím nastavení, protokoly se zapisují do kontejneru s názvem `waimportexport`. Můžete zadat jiný název tak, že nastavíte `DiagnosticsPath` vlastnost při volání `Put Job` nebo `Update Job Properties` operace. Protokoly se ukládají jako objekty BLOB bloku s následujícími zásadami vytváření názvů: `waies/jobname_driveid_timestamp_logtype.xml`.
 
- Identifikátor URI v protokolech úlohy můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operace. Identifikátor URI pro podrobného protokolování se vrátí v `VerboseLogUri` pro každou jednotku, zatímco identifikátor URI pro protokol chyb je vrácen ve vlastnosti `ErrorLogUri` vlastnost.
+ Identifikátor URI v protokolech úlohy můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs) operace. Identifikátor URI pro podrobného protokolování se vrátí v `VerboseLogUri` pro každou jednotku, zatímco identifikátor URI pro protokol chyb je vrácen ve vlastnosti `ErrorLogUri` vlastnost.
 
 Protokolování dat můžete použít k identifikaci následující problémy.
 

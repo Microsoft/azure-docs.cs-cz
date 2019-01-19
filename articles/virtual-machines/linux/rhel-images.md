@@ -11,19 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2018
+ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: dbef04710e1a91cfda8b039605b517de9524ee19
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fd73863dacd7914e23199ba92211ea67e68f7d0d
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229570"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402145"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Image Red Hat Enterprise Linux v Azure
 Tento článek popisuje dostupných imagí Red Hat Enterprise Linux (RHEL) na webu Azure Marketplace spolu s zásady po jejich názvy a uchování.
 
 Informace o zásadách podpory Red Hat pro všechny verze systému RHEL můžete najít na [Red Hat Enterprise Linux životního cyklu](https://access.redhat.com/support/policy/updates/errata) stránky.
+
+>[!Important]
+> Image RHEL aktuálně dostupné v Tržišti Azure marketplace podporu přenést-Your-vlastní – předplatné (BYOS) nebo průběžných plateb (PAYG) licenční modely. [Program Azure Hybrid Use Benefit](../windows/hybrid-use-benefit-licensing.md) a dynamické přepínání mezi BYOS a průběžné platby se nepodporuje. Přepnout režim licencování vyžaduje opětovné nasazení virtuálního počítače z odpovídající image.
+
+>[!Note]
+> Pro jakýkoli problém související s imagí RHEL v galerii Azure marketplace prosím lístek podpory s Microsoftem.
 
 ## <a name="images-available-in-the-ui"></a>Image dostupné v uživatelském rozhraní
 Při hledání "Red Hat" na webu Marketplace nebo při vytváření prostředku v uživatelském rozhraní webu Azure portal, uvidíte podmnožinu dostupných imagí RHEL a související produkty Red Hat. Vždy můžete získat úplnou sadu dostupných imagí virtuálních počítačů pomocí Azure CLI/Powershellu/API.
@@ -70,23 +76,23 @@ Omezení je ve skutečnosti, že bez – selektivní `yum update` spustí pro vi
 Tyto nabídky jsou že skladové položky jsou aktuálně k dispozici pro obecné použití:
 Nabídka| Skladová jednotka (SKU) | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
-RHEL | NEZPRACOVANÁ 7 | NEZPRACOVANÉ | Linuxový agent | RHEL 7 řady imagí
-| | 7 LVM | LVM | Linuxový agent | RHEL 7 řady imagí
-| | 7-RAW-CI | NEZPRACOVANÁ CI | Cloud-init | RHEL 7 řady imagí
-| | 6.7 | NEZPRACOVANÉ | Linuxový agent | Image RHEL 6.7, staré pojmenování
-| | 6.8 | NEZPRACOVANÉ | Linuxový agent | Jak je uvedeno výše pro RHEL 6.8 stejný
-| | 6.9 | NEZPRACOVANÉ | Linuxový agent | Jak je uvedeno výše pro RHEL 6.9 stejný
-| | 6.10 | NEZPRACOVANÉ | Linuxový agent | Jak je uvedeno výše pro RHEL 6.10 stejný
-| | 7.2 | NEZPRACOVANÉ | Linuxový agent | Stejný, jak je uvedeno výše pro RHEL 7.2
-| | 7.3 | NEZPRACOVANÉ | Linuxový agent | Jak je uvedeno výše pro RHEL 7.3 stejný
-| | 7.4 | NEZPRACOVANÉ | Linuxový agent | Jak je uvedeno výše pro RHEL 7.4 stejný
-| | 7.5 | NEZPRACOVANÉ | Linuxový agent | Stejný, jak je uvedeno výše pro RHEL 7.5
-RHEL SAP | 7.4 | LVM | Linuxový agent | 7.4 RHEL for SAP HANA a obchodní aplikace
+RHEL | NEZPRACOVANÁ 7 | RAW | Linuxový agent | RHEL 7 řady imagí
+| | 7-LVM | LVM | Linuxový agent | RHEL 7 řady imagí
+| | 7-RAW-CI | RAW-CI | Cloud-init | RHEL 7 řady imagí
+| | 6.7 | RAW | Linuxový agent | Image RHEL 6.7, staré pojmenování
+| | 6.8 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 6.8 stejný
+| | 6.9 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 6.9 stejný
+| | 6.10 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 6.10 stejný
+| | 7.2 | RAW | Linuxový agent | Stejný, jak je uvedeno výše pro RHEL 7.2
+| | 7.3 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 7.3 stejný
+| | 7.4 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 7.4 stejný
+| | 7.5 | RAW | Linuxový agent | Stejný, jak je uvedeno výše pro RHEL 7.5
+RHEL-SAP | 7.4 | LVM | Linuxový agent | 7.4 RHEL for SAP HANA a obchodní aplikace
 | | 7.5 | LVM | Linuxový agent | 7.5 RHEL for SAP HANA a obchodní aplikace
-RHEL. SAP HANA | 6.7 | NEZPRACOVANÉ | Linuxový agent | RHEL 6.7 pro SAP HANA
+RHEL-SAP-HANA | 6.7 | RAW | Linuxový agent | RHEL 6.7 pro SAP HANA
 | | 7.2 | LVM | Linuxový agent | RHEL 7.2 pro SAP HANA
 | | 7.3 | LVM | Linuxový agent | 7.3 RHEL for SAP HANA
-RHEL. SAP APLIKACE | 6.8 | NEZPRACOVANÉ | Linuxový agent | 6.8 RHEL for SAP Business Applications
+RHEL-SAP-APPS | 6.8 | RAW | Linuxový agent | 6.8 RHEL for SAP Business Applications
 | | 7.3 | LVM | Linuxový agent | 7.3 RHEL for SAP Business Applications
 
 ### <a name="old-naming-convention"></a>Stará konvence pojmenování

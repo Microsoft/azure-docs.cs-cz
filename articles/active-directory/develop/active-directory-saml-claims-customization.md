@@ -17,14 +17,14 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: afcdb7c64f4431e920f1f1fbce1e1e6d3e4db79c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 11132426bb8adb6ede564e706e18f3eddd649bef
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424948"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401873"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
 Azure Active Directory (Azure AD) ještě dnes podporuje jednotné přihlašování na se většina podnikových aplikací, včetně obě aplikace předem integrované v galerii aplikací Azure AD, jakož i vlastních aplikací. Při ověření uživatele k aplikaci prostřednictvím služby Azure AD pomocí protokolu SAML 2.0, Azure AD odešle token do aplikace (přes HTTP POST). A potom aplikaci ověří a použije token k přihlášení uživatele místo vás vyzve k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli, známé jako "deklarace".
 
@@ -75,13 +75,13 @@ Můžete také použít funkce speciální deklarace identity transformace.
 | Funkce | Popis |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény od e-mailovou adresu, název účtu SAM nebo hlavní název uživatele. To vyextrahuje jenom první část uživatelské jméno se předává (například "joe_smith" namísto joe_smith@contoso.com). |
-| **Join()** | Připojí se atribut s ověřenou doménu. Pokud je hodnota identifikátoru vybraného uživatele domény, bude extrahovat uživatelské jméno pro připojení vybrané ověřenou doménu. Například, pokud vyberete e-mailu (joe_smith@contoso.com) jako hodnotu identifikátoru uživatele a vyberte contoso.onmicrosoft.com jako ověřenou doménu, výsledkem bude joe_smith@contoso.onmicrosoft.com. |
-| **ToLower() byly** | Znaky v datech vybraného atributu převede na malá písmena. |
+| **join()** | Připojí se atribut s ověřenou doménu. Pokud je hodnota identifikátoru vybraného uživatele domény, bude extrahovat uživatelské jméno pro připojení vybrané ověřenou doménu. Například, pokud vyberete e-mailu (joe_smith@contoso.com) jako hodnotu identifikátoru uživatele a vyberte contoso.onmicrosoft.com jako ověřenou doménu, výsledkem bude joe_smith@contoso.onmicrosoft.com. |
+| **ToLower()** | Znaky v datech vybraného atributu převede na malá písmena. |
 | **ToUpper()** | Znaky v datech vybraného atributu převede na velká písmena. |
 
 ## <a name="adding-claims"></a>Přidání deklarace identity
 
-Při přidání deklarace identity, můžete zadat název (který se nemusí nezbytně se řídí vzorem identifikátoru URI podle specifikace SAML). Nastavte hodnotu na jakýkoli atribut uživatele, který je uložen v adresáři.
+Při přidání deklarace identity, můžete zadat název (který se nemusí nezbytně se řídí vzorem identifikátoru URI podle specifikace SAML). Nastavte hodnotu na jakýkoli atribut uživatele, který je uložen v adresáři nebo použijte hodnotu dosažení konstantních jako statické položky pro všechny uživatele ve vaší organizaci.
 
 ![Přidat atribut uživatele][7]
 

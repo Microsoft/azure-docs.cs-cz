@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/03/2018
 ms.author: cynthn
-ms.openlocfilehash: f84626c5a487d52f53a2c8bf492a124c87599ed0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e283f21b65706860e198e2deca933f1986073cab
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932390"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413222"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak vytvořit Linuxové Image virtuálních počítačů v Azure pomocí Packeru
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje Linuxovou distribuci a verzi operačního systému. Image můžete zahrnout předinstalované aplikace a konfigurace. Na webu Azure Marketplace obsahuje celou řadu imagí první a třetí strany pro nejběžnější distribuce a prostředí aplikace, nebo můžete vytvořit vlastní Image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source nástroj [Packeru](https://www.packer.io/) k definování a vytvoření vlastních imagí v Azure.
@@ -36,7 +36,7 @@ az group create -n myResourceGroup -l eastus
 ```
 
 
-## <a name="create-azure-credentials"></a>Vytvořit přihlašovací údaje Azure
+## <a name="create-azure-credentials"></a>Vytvoření přihlašovacích údajů Azure
 Packeru se ověřuje pomocí Azure s využitím instančního objektu. Instanční objekt Azure je identita zabezpečení, který vám pomůže s aplikací, služeb a nástrojů automatizace, jako je Packeru. Kontrolou a můžete definovat oprávnění, jaké operace lze provádět instanční objekt služby v Azure.
 
 Vytvořit instanční objekt s [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) a přihlašovací údaje, které potřebuje Packeru výstup:
@@ -201,7 +201,7 @@ Trvá několik minut, než Packeru pro vytvoření virtuálního počítače, sp
 
 
 ## <a name="create-vm-from-azure-image"></a>Vytvoření virtuálního počítače z Imagí Azure
-Nyní můžete vytvořit virtuální počítač z bitové kopie s [az vm vytvořit](/cli/azure/vm#az_vm_create). Určete bitovou kopii, která jste vytvořili pomocí `--image` parametru. Následující příklad vytvoří virtuální počítač s názvem *myVM* z *myPackerImage* a vygeneruje klíče SSH, pokud ještě neexistují:
+Nyní můžete vytvořit virtuální počítač z bitové kopie s [az vm vytvořit](/cli/azure/vm). Určete bitovou kopii, která jste vytvořili pomocí `--image` parametru. Následující příklad vytvoří virtuální počítač s názvem *myVM* z *myPackerImage* a vygeneruje klíče SSH, pokud ještě neexistují:
 
 ```azurecli
 az vm create \

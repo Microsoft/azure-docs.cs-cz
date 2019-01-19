@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/18/2019
 ms.author: raynew
-ms.openlocfilehash: b6713eabec62b1658b54dcb29231ddbfb2faceb7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7c01c8ec8c4957900688fed7ca09830f792a7886
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107493"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413409"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -48,7 +48,7 @@ Volné místo na disku | 600 GB místa potřebného pro mezipaměť procesového
 Volné místo na disku | 600 GB místa potřebného pro jednotka pro uchování.
 Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 |
 Národní prostředí operačního systému | Angličtina (en-us)
-PowerCLI. | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") by měly být nainstalovány.
+PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") by měly být nainstalovány.
 Role Windows Serveru | Nepovolí: <br/> – Active Directory Domain Services <br/>– Internet Information Service <br/> – Hyper-V |
 Zásady skupiny| Nepovolí: <br/> -Zabránit přístupu do příkazového řádku. <br/> -Zabránit přístupu k nástrojům pro úpravu registru. <br/> – Logika důvěryhodnosti pro přiložené soubory. <br/> -Zapnutí provádění skriptů. <br/> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Ujistěte se, že jste:<br/><br/> – Dříve existující výchozí web není nutné. <br/> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br/> -Nemají dříve existující web nebo aplikace naslouchá na portu 443<br/>
@@ -72,12 +72,12 @@ Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\
 **Podporované verze** | **Verze služby Azure Site Recovery Mobility Service** | **Verze jádra** |
 --- | --- | --- |
 14.04 LTS | [9.21][9.21 UR] | 3.13.0-24-Generic k 3.13.0-163-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.15.0-1023-Azure k 4.15.0-1035-azure |
-14.04 LTS | [9,20][9.20 UR] | 3.13.0-24-Generic k 3.13.0-153-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.15.0-1023-Azure k 4.15.0-1025-azure |
+14.04 LTS | [9.20][9.20 UR] | 3.13.0-24-Generic k 3.13.0-153-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.15.0-1023-Azure k 4.15.0-1025-azure |
 14.04 LTS | [9.19][9.19 UR] | 3.13.0-24-Generic k 3.13.0-153-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-131-generic |
 14.04 LTS | [9.18][9.18 UR] | 3.13.0-24-Generic k 3.13.0-153-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-130-generic |
 |||
 16.04 LTS | [9.21][9.21 UR] | 4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-42-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1035-azure|
-16.04 LTS | [9,20][9.20 UR] | 4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-38-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1025-azure|
+16.04 LTS | [9.20][9.20 UR] | 4.4.0-21-Generic k 4.4.0-138-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-38-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1025-azure|
 16.04 LTS | [9.19][9.19 UR] | 4.4.0-21-Generic k 4.4.0-131-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-30-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1019-azure|
 16.04 LTS | [9.18][9.18 UR] | 4.4.0-21-Generic k 4.4.0-130-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic |
 
@@ -86,9 +86,9 @@ Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\
 
 **Podporované verze** | **Verze služby Azure Site Recovery Mobility Service** | **Verze jádra** |
 --- | --- | --- |
-Debian 7 | [9.18][9.18 UR],[9.19][9.19 UR],[9,20][9.20 UR],[9.21][9.21 UR] | 3.2.0-4-amd64 k 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | [9.18][9.18 UR],[9.19][9.19 UR],[9.20][9.20 UR],[9.21][9.21 UR] | 3.2.0-4-amd64 k 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | [9,20][9.20 UR],[9.21][9.21 UR] | 3.16.0-4-amd64 k 3.16.0-7-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.8-amd64 |
+Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR] | 3.16.0-4-amd64 k 3.16.0-7-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.8-amd64 |
 Debian 8 | [9.19][9.19 UR] | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.7-amd64 |
 Debian 8 | [9.18][9.18 UR] | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.6-amd64 |
 
@@ -98,7 +98,7 @@ Debian 8 | [9.18][9.18 UR] | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.21][9.21 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.156-94.72-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9,20][9.20 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.156-94.64-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.20][9.20 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.156-94.64-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.19][9.19 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.96-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default k 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.18][9.18 UR] | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.96-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default k 4.4.138-94.39-default |
 
@@ -106,13 +106,14 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.18][9.18 UR] | SP1 3.12.49-1
 
 **Komponenta** | **Podporuje se**
 --- | ---
-Systémy souborů | ext3 ext4, XFS
+Systémy souborů | ext3, ext4, XFS
 Správce svazků | Před [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. LVM2 je podporována. <br/> 2. LVM je podporována pouze datových disků. <br/> 3. Virtuální počítače Azure mají pouze jedním diskem operačního systému.<br/><br/>Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) LVM a LVM2 a vyšší, podporují.
 Paravirtualizovanými úložných zařízení | Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
 Blokovat fronty více vstupně-výstupních operací zařízení | Nepodporuje se.
 Fyzické servery s řadič úložiště HP CCISS | Nepodporuje se.
 Zásady vytváření názvů zařízení/přípojný bod | Název zařízení nebo název přípojného bodu musí být jedinečné. Zajistěte, aby velká a malá písmena názvy žádné dvě zařízení a přípojné body. </br> Příklad: Pojmenování dvě zařízení stejný virtuální počítač jako *zařízení1* a *zařízení1* není povolený.
-Adresáře | Před [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. V následujících adresářích (Pokud nastavený jako samostatné oddíly /-systémy souborů) musí být na stejném disku operačního systému na zdrojovém serveru: / (root), Boot, / USR, /usr/local, /var, / etc.</br>2. Boot by měl být na disku oddílu a nesmí být svazku LVM.<br/><br/> Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) a vyšší, nad omezení neplatí.
+Adresáře | Před [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. V následujících adresářích (Pokud nastavený jako samostatné oddíly /-systémy souborů) musí být na stejném disku operačního systému na zdrojovém serveru: / (root), Boot, / USR, /usr/local, /var, / etc.</br>2. Boot by měl být na disku oddílu a nesmí být svazku LVM.<br/><br/> Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) a vyšší, nad omezení neplatí. Boot objemu LVM napříč více než jeden disky se nepodporuje.
+Spouštěcí adresář | Více spouštěcí disky na virtuálním počítači se nepodporuje. <br/><br/> Počítač bez spouštěcí disk nejde chránit.
 
 Požadavky na místo na bezplatné | 2 GB na oddíl/root <br/><br/> 250 MB v instalační složce XFSv5 | XFSv5 v systémech souborů s XFS, jako je například metadata kontrolního součtu, jsou však podporovány ze služby Mobility verze dále 9.10. Pomocí nástroje xfs_info tzv XFS pro oddíl. Pokud ftype je nastavena na hodnotu 1, funkce XFSv5 jsou používána.
 
@@ -157,9 +158,10 @@ Akcelerované síťové služby | Ne
 ## <a name="storage"></a>Storage
 **Komponenta** | **Podporuje se**
 --- | ---
-Hostitele systému souborů NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
-Hostitele po síti SAN (iSCSI nebo FC) | Ano
-Síť vSAN hostitele | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
+Dynamický disk | Operace systémový disk musí být základní disk. <br/><br/>Datové disky můžou být dynamických disků
+Host NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
+Host SAN (iSCSI/FC) | Ano
+Host vSAN | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Hostitel multipath (MPIO Multipath) | Ano, testováním s využitím Microsoft DSM EMC PowerPath 5.7 SP4, EMC PowerPath DSM pro CLARiiON
 Svazky virtuálního hostitele (VVols) | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Host/server VMDK | Ano
@@ -206,7 +208,7 @@ Pro virtuální sítě na cílový účet úložiště mezipaměti nebo úloži�
 **Funkce** | **Podporuje se**
 --- | ---
 Skupiny dostupnosti | Ano
-CENTRUM | Ano
+HUB | Ano
 Managed Disks | Ano
 
 ## <a name="azure-vm-requirements"></a>Požadavky virtuálních počítačů Azure

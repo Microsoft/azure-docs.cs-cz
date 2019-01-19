@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/8/2019
 ms.author: rajanaki
-ms.openlocfilehash: c267fc8a3a40d5e1a4f34b607762e1f79e5940b3
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: eecd409c0256c42646edfc99208e180a42f1cb5b
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383434"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401482"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Aktualizace služeb ve službě Azure Site Recovery
 Jako organizace budete muset zjistit, jak budete bezpečnost vašich dat a aplikací a úloh v případě plánovaných a neplánovaných výpadků. Azure Site Recovery přispívá ke strategii BCDR tím, že vaše aplikace běžící na virtuálních počítačích a fyzických serverů, které jsou k dispozici, pokud web přestane fungovat. Site Recovery replikuje úlohy spuštěné na virtuálních počítačích a fyzických serverech, aby zůstaly dostupné v sekundárním umístění v případě, že je primární lokalita nedostupná. Po opětovném zprovoznění primární lokality do ní úlohy obnoví.
@@ -48,7 +48,7 @@ Azure Site Recovery vydává aktualizace služeb v pravidelných intervalech –
 2. Přečtěte si naše [aktualizace služeb](https://azure.microsoft.com/updates/?product=site-recovery) a zjistěte, jaké verze služby Site Recovery komponenty podporují konkrétní versionn chcete provést upgrade na.
 3. Nejprve upgradujte na nejnovější verzi lokality obnovit.
 4. Nyní upgrade na požadované verze operačního systému nebo jádru.
-5. Provést restartování.
+5. Proveďte restart.
 6. Tím se zajistí, že verze operačního systému nebo jádra na počítačích upgradují na nejnovější verzi, a také, že nejnovější změny Site Recovery, které jsou vyžadovány pro podporu nové verze se také načtou na zdrojovém počítači.
 
 

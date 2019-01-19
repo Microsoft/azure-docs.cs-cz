@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: a533bd6ee447479f08add23833bf5acdde5c4d40
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a55e77853a1c9466892f686f34d17a5e84b11ba7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155095"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411281"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Vizualizace dat snímače v reálném čase ze služby Azure IoT Hub pomocí Power BI
 
@@ -57,13 +57,13 @@ Začněme vytvořením úlohy Stream Analytics. Když vytvoříte úlohu, definu
 
 2. Zadejte o úloze následující informace.
 
-   **Název úlohy:** Název, který chcete úloze dát. Název musí být globálně jedinečný.
+   **Název úlohy**: Název úlohy. Název musí být globálně jedinečný.
 
-   **Skupina prostředků**: použijte stejnou skupinu prostředků, která používá službu IoT hub.
+   **Skupina prostředků**: Použijte stejnou skupinu prostředků, která používá službu IoT hub.
 
-   **Umístění**: určit stejné umístění jako skupina prostředků.
+   **Umístění**: Použijte stejné umístění jako skupina prostředků.
 
-   **Připnout na řídicí panel:** Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
+   **Připnout na řídicí panel**: Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
 
    ![Vytvoření úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
 
@@ -75,11 +75,13 @@ Začněme vytvořením úlohy Stream Analytics. Když vytvoříte úlohu, definu
 
 2. V části **Topologie úlohy** klikněte na **Vstupy**.
 
-3. V **vstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:
+3. V **vstupy** podokně klikněte na tlačítko **přidat vstup streamu**a potom zadejte následující informace:
 
-   **Vstupní alias**: jedinečný alias pro vstup.
+   **Vstupní alias**: Jedinečný alias pro vstup a vyberte **nastavení poskytovat služby IoT Hub ručně** níže.
 
-   **Zdroj**: vyberte **služby IoT hub**.
+   **Zdroj**: Vyberte **služby IoT hub**.
+   
+   **Koncový bod**: Klikněte na tlačítko **zasílání zpráv**.
 
    **Skupina uživatelů**: Vyberte skupinu příjemců, který jste právě vytvořili.
 
@@ -91,15 +93,9 @@ Začněme vytvořením úlohy Stream Analytics. Když vytvoříte úlohu, definu
 
 1. V části **Topologie úlohy** klikněte na **Výstupy**.
 
-2. V **výstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:
+2. V **výstupy** podokně klikněte na tlačítko **přidat** a **Power BI**a potom zadejte následující informace:
 
-   **Alias pro výstup:** Jedinečný alias pro výstup.
-
-   **Jímka**: vyberte **Power BI**.
-
-3. Klikněte na tlačítko **Authorize**a pak se přihlaste ke svému účtu Power BI.
-
-4. Po ověření zadejte následující informace:
+   **Alias pro výstup**: Jedinečný alias pro výstup.
 
    **Pracovní prostor skupiny**: Vyberte pracovní prostor vaší cílové skupině.
 
@@ -107,7 +103,9 @@ Začněme vytvořením úlohy Stream Analytics. Když vytvoříte úlohu, definu
 
    **Název tabulky**: Zadejte název tabulky.
 
-5. Klikněte na možnost **Vytvořit**.
+3. Klikněte na tlačítko **Authorize**a pak se přihlaste ke svému účtu Power BI.
+
+4. Klikněte na možnost **Vytvořit**.
 
    ![Přidat výstup do úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 
@@ -135,13 +133,13 @@ V úloze Stream Analytics klikněte na **Spustit** > **Nyní** > **Spustit**. Ja
 
 2. Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/en-us/).
 
-3. Přejděte do pracovního prostoru skupiny, které jste nastavili při vytváření výstup úlohy Stream Analytics.
+3. Klikněte na pracovním prostoru, který jste použili, **pracovní prostor**.
 
-4. Klikněte na tlačítko **streamované datové sady**.
+4. Klikněte na **Datové sady**.
 
-   Měli byste vidět datovou sadu určenou při vytváření výstupu pro úlohu služby Stream Analytics.
+   Měli byste vidět datové sady, který jste zadali při vytváření výstup úlohy Stream Analytics.
 
-5. V části **AKCE** kliknutím na první ikonu vytvořte sestavu.
+5. Datové sady, který jste vytvořili, klikněte na tlačítko **přidat sestavu** (první ikona napravo od názvu datové sady).
 
    ![Vytvoření sestavy Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/7_create-power-bi-report-microsoft.png)
 
@@ -165,9 +163,11 @@ V úloze Stream Analytics klikněte na **Spustit** > **Nyní** > **Spustit**. Ja
 
 8. Kliknutím na **Uložit** sestavu uložte.
 
-9. Klikněte na tlačítko **souboru** > **publikovat na webu**.
+9. Klikněte na tlačítko **sestavy** v levém podokně a pak klikněte na sestavu, že jste právě vytvořili.
 
-10. Klikněte na tlačítko **vytvořit kód pro vložení**a potom klikněte na tlačítko **publikovat**.
+10. Klikněte na tlačítko **souboru** > **publikovat na webu**.
+
+11. Klikněte na tlačítko **vytvořit kód pro vložení**a potom klikněte na tlačítko **publikovat**.
 
 Zadáte odkaz na sestavu, že můžete sdílet s kýmkoli pro přístup k sestavě a fragment kódu pro integraci sestavy do blogu nebo webu.
 

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 1a0be03c278a152ea56fe0dac5277c39a0878057
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579215"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412485"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí SQL Server Integration Services (SSIS)
 
@@ -40,13 +40,13 @@ Skript U-SQL můžete získat z různých míst pomocí integrovaných funkcí s
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>Scénář 1 – použití vloženého skriptu volání tvf a uložené procs
 
-Nakonfigurujte v Azure Data Lake Analytics Editor úloh, **SourceType** jako **DiretInput**a put U-SQL příkazy do **USQLStatemnt**.
+Nakonfigurujte v Azure Data Lake Analytics Editor úloh, **SourceType** jako **DirectInput**a put U-SQL příkazy do **USQLStatemnt**.
 
-Pro snadné úpravy a správy kódu pouze vložte krátký skript U-SQL jako vložené skripty například můžete volat existující funkce vracející tabulku a uloženým procedurám databáze U-SQL. 
+Pro snadné údržby a správy kódu pouze vložte krátký skript U-SQL jako vložené skripty například můžete volat existující funkce vracející tabulku a uloženým procedurám databáze U-SQL. 
 
 ![Upravit skript pro vložené U-SQL v úloze služby SSIS](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-Související článek: [jak předat parametr uložené procedury](#scenario-6-pass-parameters-to-u-sql-script)
+Související článek: [Jak předat parametr uložené procedury](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>Scénář 2 pomocí U-SQL souborů v Azure Data Lake Store
 
@@ -119,7 +119,7 @@ V zobrazení návrhu balíčku služby SSIS, přidejte **úlohy Azure Data Lake 
 
 Soubory U-SQL ve službě Azure Blob Storage můžete používat pomocí **úloha stažení objektů Blob v Azure** v Azure Feature Pack. Díky tomu můžete pomocí skriptů v cloudu.
 
-Kroky jsou podobné s [Scnario 2: soubory využití U-SQL v Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Změňte úlohu systém souborů Azure Data Lake Store k úloze stažení objektů Blob v Azure. [Další informace o úloze stažení objektů Blob v Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Kroky jsou podobné s [scénář 2: Použití souborů U-SQL v Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Změňte úlohu systém souborů Azure Data Lake Store k úloze stažení objektů Blob v Azure. [Další informace o úloze stažení objektů Blob v Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 Tok řízení je jako níže.
 

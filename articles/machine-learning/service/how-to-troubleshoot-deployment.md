@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6bd3bc86aa828ab28462de9d45f660889634cbd7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 71b4cf5d44ec6cb3fb8b70975193320a4eabfc3f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100510"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401312"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Řešení potíží s nasazením služby AKS a ACI Azure Machine Learning
 
@@ -93,10 +93,10 @@ Pokud je systém nelze sestavit image Dockeru `image.wait_for_creation()` volán
 print(image.image_build_log_uri)
 
 # if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images()['myimg'].image_build_log_uri)
+print(ws.images['myimg'].image_build_log_uri)
 
 # list logs for all images in the workspace
-for name, img in ws.images().items():
+for name, img in ws.images.items():
     print (img.name, img.version, img.image_build_log_uri)
 ```
 Identifikátor uri protokolu bitové kopie je adresa URL SAS odkazující na soubor protokolu se ukládají ve službě Azure blob storage. Jednoduše zkopírujte a vložte identifikátor uri do okna prohlížeče a můžete stáhnout a zobrazit soubor protokolu.
@@ -115,7 +115,7 @@ Můžete vytisknout podrobné zprávy protokolu modulu Dockeru z objektu služby
 print(service.get_logs())
 
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
-print(ws.webservices()['mysvc'].get_logs())
+print(ws.webservices['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>Ladit místně image Dockeru
@@ -218,7 +218,7 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-**Poznámka:**: vrácení chybových zpráv ze `run(input_data)` volání by mělo být provedeno pro ladění pouze pro účely. Nemusí být vhodné provést v produkčním prostředí z bezpečnostních důvodů.
+**Poznámka:** Vrací chybové zprávy z `run(input_data)` volání by mělo být provedeno pro ladění pouze pro účely. Nemusí být vhodné provést v produkčním prostředí z bezpečnostních důvodů.
 
 
 ## <a name="next-steps"></a>Další postup

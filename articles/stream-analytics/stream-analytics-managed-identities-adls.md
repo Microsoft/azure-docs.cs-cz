@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 87c605feeab742ae589cf8d5d9a98c8e53ccf662
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090427"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410451"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravované identity (Preview)
 
@@ -21,9 +21,9 @@ Azure Stream Analytics podporuje spravovanou identitu ověřování pomocí Azur
 
 Přejděte [osm nových funkcí ve službě Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) příspěvek na blogu k registraci pro tuto verzi preview a přečtěte si více o nových funkcích.
 
-Tento článek ukazuje dva způsoby, jak povolit spravovanou identitu pro úlohy Azure Stream Analytics, jejichž výstupem jsou do Azure Data Lake Storage Gen1: na webu Azure portal a až po nasazení šablony Azure Resource Manageru.
+Tento článek ukazuje dva způsoby, jak povolit spravovanou identitu pro úlohy Azure Stream Analytics, jejichž výstupem jsou do Azure Data Lake Storage Gen1 prostřednictvím webu Azure portal, nasazení šablony Azure Resource Manageru a Azure Stream Analytics tools for Visual Studio.
 
-## <a name="enable-managed-identity-with-azure-portal"></a>Povolit identitu spravované pomocí webu Azure portal
+## <a name="azure-portal"></a>portál Azure
 
 1. Začněte tím, že vytvoříte novou úlohu Stream Analytics nebo tak, že otevřete existující projekt na webu Azure portal. V panelu nabídky na levé straně obrazovky vyberte **spravovaná identita (preview)** umístěna ve složce **konfigurovat**.
 
@@ -64,6 +64,28 @@ Tento článek ukazuje dva způsoby, jak povolit spravovanou identitu pro úlohy
    ![Stream Analytics přístup k seznamu v portálu](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    Další informace o oprávnění systému souborů Data Lake Storage Gen1 najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
+
+## <a name="stream-analytics-tools-for-visual-studio"></a>Stream Analytics tools for Visual Studio
+
+1. V JobConfig.json, nastavte **použijte systém přiřadil Identity** k **True**.
+
+   ![Konfigurace úlohy Stream Analytics spravovaných identit](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
+
+2. V okně výstupu vlastnosti výstupní jímky ADLS Gen1, klikněte na rozevírací seznam a vyberte režim ověřování **spravovaná identita (preview)**.
+
+   ![ADLS výstup spravovaných identit](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
+
+3. Vyplňte zbývající vlastnosti nástroje a klikněte na tlačítko **Uložit**.
+
+4. Klikněte na tlačítko **odeslat do Azure** v editoru dotazů.
+
+   Když odešlete úlohu nástroje udělat dvě věci:
+
+   * Automaticky vytvoří službu objektu zabezpečení pro identifikaci úlohy Stream Analytics v Azure Active Directory. Azure bude spravovat životní cyklus nově vytvořený identity. Při odstranění úlohy Stream Analytics přidružený identity (to znamená, instanční objekt) Azure automaticky odstraní.
+
+   * Automaticky nastavit **zápisu** a **Execute** oprávnění pro ADLS Gen1 předponová cesta použité v této úloze a přiřaďte ho ke tato složka a všechny podřízené objekty.
+
+5. Pomocí následujících vlastností pomocí šablon Resource Manageru můžete vygenerovat [Stream Analytics CI. Balíček CD Nuget](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) verze 1.5.0 nebo vyšší na sestavovacím počítači (mimo sadu Visual Studio). Pomocí Resource Manageru šablony nasazení kroky v další části, kde získat službu objektu zabezpečení a udělte oprávnění pro instanční objekt pomocí Powershellu.
 
 ## <a name="resource-manager-template-deployment"></a>Nasazení šablony Resource Manageru
 
@@ -153,3 +175,5 @@ Tento článek ukazuje dva způsoby, jak povolit spravovanou identitu pro úlohy
 ## <a name="next-steps"></a>Další postup
 
 * [Vytvořit výstupní Data lake Store pomocí stream analytics](../data-lake-store/data-lake-store-stream-analytics.md)
+* [Testování dotazů Stream Analytics místně pomocí sady Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Živá data test místně pomocí nástroje Azure Stream Analytics pro Visual Studio](stream-analytics-live-data-local-testing.md) 

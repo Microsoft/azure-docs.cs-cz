@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309446"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412564"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
@@ -57,7 +57,7 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core
 
 ### <a name="what-youll-need"></a>Co budete potřebovat
 
-Nastavení fyzického zařízení Windows 10 IoT Core, musíte nejprve mít zařízení se systémem Windows 10 IoT Core. Zjistěte, jak nastavit zařízení s Windows 10 IoT Core [tady](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
+Pokud chcete nastavit skutečné zařízení Windows 10 IoT Core, musíte nejprve mít zařízení se systémem Windows 10 IoT Core. Zjistěte, jak nastavit zařízení s Windows 10 IoT Core [tady](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
 Budete také potřebovat klientské aplikace, který může komunikovat s Azure IoT Central. Můžete sestavit vlastní aplikaci pomocí sady Azure SDK a nasaďte ji do zařízení pomocí sady Visual Studio, nebo si můžete stáhnout [předem připravené ukázky](https://developer.microsoft.com/windows/iot/samples) a jednoduše nasadit a spustit ho v zařízení. 
 
@@ -105,7 +105,7 @@ Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows 
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 0       | 100     | 0              |
-| temp           | ° C     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | tlak       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>Nastavení

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 82ccbe8e57ff35904b7e763e838a81660ab13f88
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361064"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412814"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Povolení zpětného zápisu zařízení
 > [!NOTE]
@@ -41,7 +41,7 @@ To poskytuje dodatečné zabezpečení a záruky, které je udělen přístup k 
 ## <a name="part-1-install-azure-ad-connect"></a>Část 1: Instalace služby Azure AD Connect
 Nainstalujte Azure AD Connect s použitím vlastní nebo expresní nastavení. Společnost Microsoft doporučuje začít s všichni uživatelé a skupiny se úspěšně synchronizovaly před povolení zpětného zápisu zařízení.
 
-## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>Část 2: Zpětný zápis zařízení povolit ve službě Azure AD Connect
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>Část 2: Povolení zpětného zápisu zařízení ve službě Azure AD Connect
 1. Znovu spusťte Průvodce instalací. Vyberte **konfigurovat možnosti zařízení** z další úkoly stránky a klikněte na tlačítko **Další**. 
 
     ![Konfigurovat možnosti zařízení](./media/how-to-connect-device-writeback/deviceoptions.png)
@@ -57,10 +57,10 @@ Nainstalujte Azure AD Connect s použitím vlastní nebo expresní nastavení. S
 
 4. **Kontejner zařízení** stránka poskytuje možnost přípravy služby active directory pomocí jedné z dostupných možností:
 
-    a. **Zadání podnikových přihlašovacích údajů správce**: Pokud jsou k dispozici přihlašovací údaje podnikového správce pro doménovou strukturu, kdy je potřeba zpětný zápis zařízení, Azure AD Connect se připravit doménovou strukturu automaticky během konfigurace zpětný zápis zařízení.
+    a. **Zadání podnikových přihlašovacích údajů správce**: Pokud přihlašovací údaje podnikového správce pro doménovou strukturu, kdy je potřeba zpětný zápis zařízení jsou služby Azure AD Connect se připravit doménovou strukturu automaticky během konfigurace zpětného zápisu zařízení.
 
     b. **Stáhnout Poweshellový skript**: Azure AD Connect automaticky vygeneruje skript Powershellu, který může připravit služby active directory pro zpětný zápis zařízení. V případě, že přihlašovací údaje podnikového správce nelze zadat ve službě Azure AD Connect, doporučuje se stáhnout skript prostředí PowerShell. Zadejte staženého skriptu prostředí PowerShell **CreateDeviceContainer.psq** do doménové struktury, ve kterém zařízení se zapíšou zpátky do správce rozlehlé sítě.
-    ![Příprava doménové struktury v adresáři active Directory](./media/how-to-connect-device-writeback/devicecontainercreds.png)
+    ![Příprava doménové struktury služby active directory](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Tyto operace jsou prováděny při přípravě doménové struktury služby active directory:
     * Pokud již neexistuje, vytvoří a nakonfiguruje nové kontejnery a objekty v rámci CN = Device Registration Configuration, CN = Services, CN = Configuration, [rozlišující název doménové struktury].

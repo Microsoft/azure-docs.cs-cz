@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54242359"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404690"
 ---
 Můžete využít výhod množství příležitostí k monitorování virtuálních počítačů shromažďování, zobrazení a analýza diagnostických a protokolovat data. Provést jednoduché [monitorování](../articles/azure-monitor/overview.md) vašeho virtuálního počítače, můžete použít obrazovka s přehledem pro virtuální počítač na webu Azure Portal. Můžete použít [rozšíření](../articles/virtual-machines/windows/extensions-features.md) ke konfiguraci diagnostiky na virtuálních počítačích shromažďovat další data metriky. Můžete použít také pokročilejší možnosti monitorování, jako například [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) a [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -60,13 +60,11 @@ Některé z akcí, které vám pomůžou s diagnostických protokolů patří:
 
 - [Uložit do účtu úložiště](../articles/azure-monitor/platform/archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech), pomocí nastavení diagnostiky prostředku.
 - [Stream do služby Event Hubs](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
-- Analyzovat pomocí [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
+- Analyzovat pomocí [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování
 
-- [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/) poskytuje možnosti nápravy monitorování, výstrahy a oznámení napříč cloudovou a místní prostředky. Rozšíření můžete nainstalovat [virtuálního počítače s Linuxem](../articles/virtual-machines/linux/extensions-oms.md) nebo [virtuálního počítače Windows](../articles/virtual-machines/windows/extensions-oms.md) , který nainstaluje agenta OMS a registraci virtuálního počítače do existujícího pracovního prostoru OMS.
-
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) je služba v OMS, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji.
+- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) je služba, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. Rozšíření můžete nainstalovat [virtuálního počítače s Linuxem](../articles/virtual-machines/linux/extensions-oms.md) nebo [virtuálního počítače Windows](../articles/virtual-machines/windows/extensions-oms.md) , který nainstaluje agenta Log Analytics a zaregistruje virtuální počítač do existujícího pracovního prostoru Log Analytics.
 
     Pro Windows a virtuální počítače s Linuxem po instalaci agenta Log Analytics je doporučená metoda pro shromažďování protokolů a metrik. Nejjednodušší způsob, jak nainstalovat agenta Log Analytics na virtuálním počítači je prostřednictvím [rozšíření Log Analytics pro virtuální počítač](../articles/log-analytics/log-analytics-azure-vm-extension.md). Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru Log Analytics, který zadáte. Agent se také automaticky upgraduje a tím zajišťuje, abyste měli nejnovější funkce a opravy.
 

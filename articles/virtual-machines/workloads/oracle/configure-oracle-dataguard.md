@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 08420be7171df78babf62b262fef84fd29fb34ab
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 37ecb314c5f09a51d9ce9d28534a4664b75069af
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495059"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412746"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementace Oracle Data Guard na virtuálním počítači Azure s Linuxem 
 
@@ -38,7 +38,7 @@ Pokud chcete nainstalovat Oracle Data Guard, je potřeba vytvořit dva virtuáln
 
 Image Marketplace, který použijete k vytvoření virtuálních počítačů je Oracle: Oracle – databáze-Ee:12.1.0.2:latest.
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
+### <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 
 Přihlaste se ke svému předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) příkaz a postupujte podle pokynů na obrazovce pokynů.
 
@@ -48,9 +48,9 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků s použitím [vytvořit skupiny az](/cli/azure/group#az_group_create) příkazu. Skupina prostředků Azure je logický kontejner, ve které se nasazují a spravují prostředky. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve které se nasazují a spravují prostředky. 
 
-Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westus` umístění:
+Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -573,7 +573,7 @@ cdb1_stby=
   )
 ```
 
-Spusťte SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 $ sqlplus sys/OraPasswd1@cdb1
@@ -617,7 +617,7 @@ DGMGRL>
 
 Teď můžete připojit k databázi v pohotovostním režimu.
 
-Spusťte SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 
@@ -659,7 +659,7 @@ Switchover succeeded, new primary is "cdb1"
 
 Ještě jednou je teď třeba může připojit k primární databáze.
 
-Spusťte SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c921d9bed666e428779a125c17591c65ad690f1c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888932"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411250"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Přidat vrstvu symbolů do mapy
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak může vykreslit data bodu ze zdroje dat jako Symbo
 > [!TIP]
 > Vykreslí souřadnice všechny geometrie ve zdroji dat se vrstvy symbol ve výchozím nastavení. K omezení vrstvu tak, aby pouze vykreslí bod geometrie funkce set `filter` vlastnost vrstva `['==', '$type', 'Point']`
 
-## <a name="add-a-symbol-layer"></a>Přidat vrstvu symbol
+## <a name="add-a-symbol-layer"></a>Přidání vrstvy symbolů
 
 <iframe height='500' scrolling='no' title='Připnout umístění přepínače' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>přepínač připnout umístění</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -32,7 +32,7 @@ První blok výše uvedený kód vytvoří objekt Map. Můžete zobrazit [Vytvo�
 
 V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. [Funkce], který obsahuje [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) geometrii je uzavřena v [tvar](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) třídy, aby bylo snazší, pokud chcete aktualizovat, pak vytvořen a přidán do zdroje dat.
 
-Vytvoří třetí bloku kódu [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) a aktualizace souřadnice bodu po myši klikněte na tlačítko horizontálních oddílů pomocí třídy tvar [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest#setcoordinates) metoda.
+Vytvoří třetí bloku kódu [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) a aktualizace souřadnice bodu po myši klikněte na tlačítko horizontálních oddílů pomocí třídy tvar [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metoda.
 
 A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Zdroj dat, naslouchací proces událostí kliknutím a vrstvě symbol vytvořen a přidán do mapování v rámci [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že po načtení mapy plně, zobrazí se místo.
 

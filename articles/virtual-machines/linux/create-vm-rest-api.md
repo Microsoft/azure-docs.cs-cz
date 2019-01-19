@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3eeaee9bc6320231f10aa85227e2f43756181806
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 22a800e65c0f64dfa897433d1ea983006ed62250
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433476"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412185"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače s Linuxem, které využívá ověřování SSH pomocí rozhraní REST API
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak používat rozhraní REST API k vytvoření vi
 Před vytvořením a odešlete žádost, budete potřebovat:
 
 * `{subscription-id}` Pro vaše předplatné
-  * Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)
+  * Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
 * A `{resourceGroupName}` jste předem vytvořili
 * A [virtuální síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) ve stejné skupině prostředků
 * Pár klíčů SSH (můžete [vygenerovat nový token](mac-create-ssh-keys.md) pokud ho nemáte)
@@ -67,10 +67,10 @@ Následující běžné definice slouží k sestavení hlavní část žádosti:
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | řetězec                                                                              | Umístění prostředku. |
 | jméno                       |          | řetězec                                                                              | Název virtuálního počítače. |
-| properties.hardwareProfile |          | [Položka HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Určuje nastavení hardwaru pro virtuální počítač. |
+| properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Určuje nastavení hardwaru pro virtuální počítač. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Určuje nastavení úložiště pro disky virtuálních počítačů. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Určuje nastavení operačního systému pro virtuální počítač. |
-| properties.networkProfile  |          | [Položky NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Určuje síťová rozhraní virtuálního počítače. |
+| properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Určuje síťová rozhraní virtuálního počítače. |
 
 Text požadavku příkladu jsou uvedeny níže. Je nutné zadat název virtuálního počítače v `{computerName}` a `{name}` parametry, název síťového rozhraní, které jste vytvořili v části `networkInterfaces`, vaše uživatelské jméno v `adminUsername` a `path`a *veřejného*část vašich klíčů SSH (například umístěný v `~/.ssh/id_rsa.pub`) v `keyData`. Zahrnout další parametry, můžete chtít upravit `location` a `vmSize`.  
 
@@ -139,8 +139,8 @@ Existují dva úspěšné odpovědi pro operaci vytvoření nebo aktualizaci vir
 
 | Název        | Typ                                                                              | Popis |
 |-------------|-----------------------------------------------------------------------------------|-------------|
-| 200 OK      | [Virtuální počítač](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 – vytvořeno | [Virtuální počítač](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |
+| 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
+| 201 – vytvořeno | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |
 
 Zhuštěnému *201 – vytvořeno* odpovědi z předchozího textu požadavku příklad, který vytvoří virtuální počítač zobrazuje *vmId* bylo přiřazeno a *provisioningState* je *Vytváření*:
 

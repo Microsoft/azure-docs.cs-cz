@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: zarhoads
-ms.openlocfilehash: 024cf099dd65db036ae0b68d7094a60427ffa69c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f16dbd743f7e5bb659d05325f85255223feb677d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119880"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411512"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet
 
@@ -67,7 +67,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>Vytvořit a nakonfigurovat více síťových rozhraní
-Vytvořit dva síťové adaptéry s [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create). Následující příklad vytvoří dva síťové adaptéry s názvem *myNic1* a *myNic2*, připojené skupiny zabezpečení sítě s jednou síťovou KARTOU připojení ke každé podsíti:
+Vytvořit dva síťové adaptéry s [az network nic vytvořit](/cli/azure/network/nic). Následující příklad vytvoří dva síťové adaptéry s názvem *myNic1* a *myNic2*, připojené skupiny zabezpečení sítě s jednou síťovou KARTOU připojení ke každé podsíti:
 
 ```azurecli
 az network nic create \
@@ -105,7 +105,7 @@ Přidání tabulek směrování do hostovaného operačního systému podle post
 ## <a name="add-a-nic-to-a-vm"></a>Přidat síťové rozhraní k virtuálnímu počítači
 V předchozích krocích vytvořili virtuální počítač s několika síťovými kartami. Síťové adaptéry můžete také přidat do existujícího virtuálního počítače pomocí Azure CLI. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](change-vm-size.md).
 
-Vytvořte další síťová karta s [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create). Následující příklad vytvoří síťové rozhraní s názvem *myNic3* připojené k back endové podsítě a skupinu zabezpečení sítě vytvořené v předchozích krocích:
+Vytvořte další síťová karta s [az network nic vytvořit](/cli/azure/network/nic). Následující příklad vytvoří síťové rozhraní s názvem *myNic3* připojené k back endové podsítě a skupinu zabezpečení sítě vytvořené v předchozích krocích:
 
 ```azurecli
 az network nic create \

@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 01/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 716c6b67676bb3421fd5dbd0274ed41c7705c676
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b71b62d50f209c033597799dd26f579fcb200cc9
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133515"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413360"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -60,14 +60,21 @@ Nepoužívejte tyto znaky v názvech záměr a entity:
 |`]`|Pravá hranatá závorka|
 |`\`|Zpětné lomítko|
 
+## <a name="key-usage"></a>Použití klíče
+
+Principy jazyka má různé klíče, jeden typ určený k vytváření a jeden typ pro dotazování na koncový bod předpovědi. Další informace o rozdílech mezi typy klíčů najdete v tématu [vytváření obsahu a dotaz předpovědi klíče koncového bodu v LUIS](luis-concept-keys.md).
+
 ## <a name="key-limits"></a>Omezení klíčů
+
 Vytváření klíč má různá omezení pro vytváření obsahu a koncový bod. Klíč koncového bodu služby LUIS platí pouze pro dotazy na koncový bod.
+
 
 |Klíč|Vytváření obsahu|Koncový bod|Účel|
 |--|--|--|--|
-|Vytváření/Starter|1 milion za měsíc, 5 za sekundu|1 tisíc za měsíc, 5 za sekundu|Vytváření aplikace LUIS|
-|[Předplatné] [ pricing] - F0 – úroveň Free |neplatné|10 tisíc za měsíc, 5 za sekundu|Dotazování na koncový bod služby LUIS|
-|[Předplatné] [ pricing] - S0 - na úrovni Basic|neplatné|50/s|Dotazování na koncový bod služby LUIS|
+|Vytváření Principy jazyka/Starter|1 milion za měsíc, 5 za sekundu|1 tisíc za měsíc, 5 za sekundu|Vytváření aplikace LUIS|
+|Language Understanding [předplatné] [ pricing] - F0 – úroveň Free |neplatné|10 tisíc za měsíc, 5 za sekundu|Dotazování na koncový bod služby LUIS|
+|Language Understanding [předplatné] [ pricing] - S0 - na úrovni Basic|neplatné|50/s|Dotazování na koncový bod služby LUIS|
+|Služby cognitive Services [předplatné] [ pricing] - S0 - úrovně Standard|neplatné|50/s|Dotazování na koncový bod služby LUIS|
 |[Integrace analýzy mínění](luis-how-to-publish-app.md#enable-sentiment-analysis)|neplatné|bez poplatků|Přidání informací o mínění včetně extrakce klíčových frází |
 |Integrace rozpoznávání řeči|neplatné|Žádosti koncového bodu 5.50 USD/1 tisíc|Převést utterance mluvené slovo na text utterance a vrátí výsledky LUIS|
 
@@ -79,7 +86,7 @@ Vytváření klíč má různá omezení pro vytváření obsahu a koncový bod.
 
 ## <a name="website-sign-in-time-period"></a>Webu přihlásit v časovém období
 
-Přihlášení přístup je pro **60 minut**. Tato chyba se zobrazí po tomto časovém období. Musíte se přihlásit znovu.
+Přihlášení přístup je pro **60 minut**. Tato chyba se zobrazí po tomto časovém období. Budete muset znovu přihlásit.
 
 [luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
 [batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing

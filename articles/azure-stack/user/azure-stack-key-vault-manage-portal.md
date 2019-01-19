@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/201
+ms.date: 01/04/2019
 ms.author: sethm
-ms.openlocfilehash: 5e0462c533be11241908cafc593c89588f61f349
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 791582e38f4c271be13d1635d623aada97f1d39e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192190"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413001"
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>Správa služby Key Vault ve službě Azure Stack pomocí portálu
 

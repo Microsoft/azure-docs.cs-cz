@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 27db76087165e37db936e802a01ddc4ecd269f4c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: df1c2ae4cbad474a2a002fe27f56d9fe0a6ca223
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874426"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413732"
 ---
-# <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Kurz: Vytvoření aplikační brány, která hostuje více webů, v Azure CLI
+# <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Kurz: Vytvoření služby application gateway, který je hostitelem více webů pomocí Azure CLI
 
 Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto kurzu definujete back-endové fondy adres pomocí škálovacích sad virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
 
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 Pravidla se zpracovávají v pořadí, v kterém jsou uvedena, a provoz se směruje pomocí prvního odpovídajícího pravidla bez ohledu na specifickou podobu. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
 
-V tomto příkladu vytvoříte dvě nová pravidla a odstraníte výchozí pravidlo, které se vytvořilo při vytvoření aplikační brány. Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
+V tomto příkladu vytvoříte dvě nová pravidla a odstraníte výchozí pravidlo, které se vytvořilo při vytvoření aplikační brány. Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway rule create \

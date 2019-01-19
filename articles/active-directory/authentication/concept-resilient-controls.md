@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 34d60d82ff70ecf683b955b8b796b5d3269df53c
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101917"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401907"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
 
@@ -119,30 +119,48 @@ Zásady pohotovostní podmíněného přístupu je **zakázali zásadu** , kter�
 * Použití zásad, které omezují přístup v rámci aplikace, pokud je určitá úroveň ověřování není dosaženo místo jednoduše nouzové přepnutí na úplný přístup. Příklad:
   * Nakonfigurujte zásady zálohování, které odešle deklaraci identity s omezeným přístupem relace ke službě Exchange a SharePoint.
   * Pokud vaše organizace používá Microsoft Cloud App Security, zvažte nouzové přepnutí na zásadu, která zaujme MCAS a potom MCAS umožňuje přístup jen pro čtení, ale ne nahraje.
+* Zadejte název a ujistěte se, že se dají snadno najít je během přerušení. Název zásad zahrnout následující prvky:
+  * A *číslo popisku* zásady.
+  * Text, který má zobrazit, tato zásada je určená pro nouzové situace co pouze. Příklad: **POVOLIT NOUZOVÉ**
+  * *Přerušení* se vztahuje na. Příklad: **Během výpadků MFA**
+  * A *pořadové číslo* -li zobrazit pořadí, je nutné aktivovat zásady.
+  * *Aplikace* se vztahuje na.
+  * *Ovládací prvky* použije.
+  * *Podmínky* vyžaduje.
+  
+Toto standardní pojmenování pro pohotovostní zásady budou následujícím způsobem: 
 
-V následujícím příkladu: **Příklad A – řešení nepředvídaných událostí certifikační Autority zásad obnovit přístup k životně důležitého aplikace pro spolupráci**, je typické podnikové řešení nepředvídaných událostí. V tomto scénáři organizaci obvykle vyžadují vícefaktorové ověřování pro veškerý přístup pro Exchange Online a SharePoint Online a narušení v tomto případě je, že má poskytovatel MFA pro zákazníka výpadku (ať už s Azure MFA v místním poskytovatele MFA nebo vícefaktorové ověřování třetích stran). Tato zásada omezuje takového výpadku tím, že konkrétní cíloví uživatelé přístup k těmto aplikacím z důvěryhodných zařízení Windows pouze v případě, že jejich přístupu k aplikaci z důvěryhodných podnikové síti. Také se vyloučí nouzový účtů a správců core z těchto omezení. V tomto příkladu bude vyžadovat umístění v síti s názvem **CorpNetwork** a skupinu zabezpečení **ContingencyAccess** s cílových uživatelů s názvem skupiny **CoreAdmins** s Správci jádra a skupina s názvem **EmergencyAccess** s účty pro nouzový přístup. Pohotovostní vyžaduje čtyři zásady a zajistit tak požadovaný přístup.
+`
+EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
+`
+
+V následujícím příkladu: **Příklad A – řešení nepředvídaných událostí certifikační Autority zásad obnovit přístup k životně důležitého aplikace pro spolupráci**, je typické podnikové řešení nepředvídaných událostí. V tomto scénáři organizaci obvykle vyžadují vícefaktorové ověřování pro veškerý přístup pro Exchange Online a SharePoint Online a narušení v tomto případě je, že má poskytovatel MFA pro zákazníka výpadku (ať už s Azure MFA v místním poskytovatele MFA nebo vícefaktorové ověřování třetích stran). Tato zásada omezuje takového výpadku tím, že konkrétní cíloví uživatelé přístup k těmto aplikacím z důvěryhodných zařízení Windows pouze v případě, že jejich přístupu k aplikaci z důvěryhodných podnikové síti. Také se vyloučí nouzový účtů a správců core z těchto omezení. Cíloví uživatelé pak získávat přístup k Exchangi Online a SharePoint Online, zatímco jiné nebudou mít uživatelé dál přístup k aplikacím z důvodu výpadek. V tomto příkladu bude vyžadovat umístění v síti s názvem **CorpNetwork** a skupinu zabezpečení **ContingencyAccess** s cílových uživatelů s názvem skupiny **CoreAdmins** s Správci jádra a skupina s názvem **EmergencyAccess** s účty pro nouzový přístup. Pohotovostní vyžaduje čtyři zásady a zajistit tak požadovaný přístup. 
 
 **Příklad A – řešení nepředvídaných událostí certifikační Autority zásad obnovit přístup k životně důležitého spolupráci aplikací:**
 
 * Zásady 1: Vyžadovat zařízení připojené k doméně pro Exchange a SharePoint
+  * Název: EM001 - POVOLIT NOUZOVÉ: MFA přerušení [1/4] - Exchange SharePoint - vyžadovala připojení k hybridní službě Azure AD
   * Uživatelé a skupiny: Zahrnout ContingencyAccess. Vyloučit CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Exchange Online a SharePoint Online
   * Podmínky: Všechny
   * Udělit řízení: Vyžadovat připojených k doméně
   * Stav: Zakázáno
 * Zásady 2: Blok jiných platformách než Windows
+  * Název: EM002 - POVOLIT NOUZOVÉ: Přerušení MFA [2/4] - Exchange SharePoint – zablokuje přístup s výjimkou Windows
   * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Exchange Online a SharePoint Online
   * Podmínky: Platforma zahrnout všechny platformy zařízení, vyloučit Windows
   * Udělit řízení: Zablokovat
   * Stav: Zakázáno
 * Zásady 3: Sítí bloku než CorpNetwork
+  * Název: EM003 - POVOLIT NOUZOVÉ: Přerušení MFA [3/4] - Exchange SharePoint – zablokuje přístup s výjimkou podnikové sítě
   * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Exchange Online a SharePoint Online
   * Podmínky: Umístění obsahovat jakékoli umístění, vyloučit CorpNetwork
   * Udělit řízení: Zablokovat
   * Stav: Zakázáno
 * Zásady 4: Explicitně Block EAS
+  * Název: EM004 - POVOLIT NOUZOVÉ: MFA přerušení [4/4] - Exchange - Block EAS pro všechny uživatele
   * Uživatelé a skupiny: Zahrnout všechny uživatele
   * Cloudové aplikace: Zahrnout Exchange Online
   * Podmínky: Klientské aplikace: Protokolu Exchange Active Sync
@@ -163,12 +181,14 @@ V tomto příkladu Další **příklad B - zásad podmíněného přístupu ře�
 **Příklad B - řešení nepředvídaných událostí certifikační Autority zásad:**
 
 * Zásady 1: Blokovat všem není v týmu SalesContingency
+  * Název: EM001 - POVOLIT NOUZOVÉ: Narušení dodržování předpisů zařízení [1/2] - Salesforce – blokovat všechny uživatele kromě SalesforceContingency
   * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit SalesAdmins a SalesforceContingency
   * Cloudové aplikace: Salesforce.
   * Podmínky: Žádný
   * Udělit řízení: Zablokovat
   * Stav: Zakázáno
 * Zásady 2: Blokovat prodejního týmu z jakékoli platformy, než mobilní zařízení (ke snížení plochy útoku)
+  * Název: EM002 - POVOLIT NOUZOVÉ: Narušení dodržování předpisů zařízení [2/2] - Salesforce – blokovat všechny platformy kromě zařízení s iOS a Android
   * Uživatelé a skupiny: Zahrnout SalesforceContingency. Vyloučit SalesAdmins
   * Cloudové aplikace: Salesforce
   * Podmínky: Vyloučit platformy zahrnout všechny platformy zařízení, zařízení s iOS a Android
@@ -215,14 +235,14 @@ V závislosti na tom, které jejich zmírnění nebo pojistné události se pou�
 
 ## <a name="after-a-disruption"></a>Po přerušení
 
-Je nutné vrátit zpět změny provedené v rámci aktivované plán řešení nepředvídaných událostí po obnovení služby, která způsobila narušení. 
+Vrátit zpět změny provedené v rámci aktivované plán řešení nepředvídaných událostí po obnovení služby, která způsobila narušení. 
 
 1. Povolení regulární zásad
 2. Zakážete řešení nepředvídaných událostí zásady. 
 3. Vrátit zpět změny provedené a uvádí během narušení.
 4. Pokud jste použili účet pro nouzový přístup, nezapomeňte znovu vygenerovat přihlašovací údaje a fyzicky zabezpečené nové podrobnosti přihlašovací údaje jako součást vašich procedur nouzový přístup účtu.
 5. I nadále [třídění všechny rizikové události hlásí](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) po přerušení pro podezřelé aktivity.
-6. Odvolat všechny obnovovací tokeny, které byly vydány [pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) cílit na skupinu uživatelů. Odvolání všechny obnovovací tokeny je zvlášť důležité pro privilegované účty používané během narušení a teď už se vynutí jejich donutit a kontrolu nad obnovené zásady.
+6. Odvolat všechny obnovovací tokeny, které byly vydány [pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) cílit na skupinu uživatelů. Odvolání všechny obnovovací tokeny je důležité pro privilegované účty používané během narušení a teď už vynutí jejich donutit a kontrolu nad obnovené zásady.
 
 ## <a name="emergency-options"></a>Nouzový možnosti
 

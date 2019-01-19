@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2018
 ms.author: pareshmu
-ms.openlocfilehash: ded3ecd973dae74104bd09a46717ca99e8d3251a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: c66544b9c74377ea58633c63bda70d16eb1ba9bd
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360067"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413432"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -106,7 +106,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **Jisc** |Podporováno |Podporováno |Londýn |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Podporováno |Podporováno |Soul |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | Podporováno | Podporováno | Amsterdam | 
-| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporováno |Podporováno |Amsterdam, Chicago, Dallas, Londýn, Newport, Sao Paulo, Seattle, Silicon Valley, Singapur, Washington DC |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporováno |Podporováno |Amsterdam, Chicago, Dallas, Londýn, Newport (Wales), Sao Paulo, Seattle, Silicon Valley, Singapur, Washington DC |
 | **LG CNS** |Podporováno |Podporováno |Busan, Soul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Podporováno |Podporováno |Kapské město, Johannesburg |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporováno |Podporováno |Amsterdam, Atlanta, Chicago, Dallas, Denver, Dublin, Hongkong, Las Vegas, Londýn, Los Angeles, Melbourne, Miami, New York, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sydney, Toronto, Washington DC |
@@ -127,6 +127,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Softbank](http://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |Podporováno |Podporováno |Ósaka, Tokio |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |Podporováno |Podporováno |Chicago, Silicon Valley, Washington DC |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Podporováno |Podporováno |Amsterdam, Čennaj, Hongkong, Londýn, Bombaj, Sao Paulo, Silicon Valley, Singapur, Washington DC |
+| **Telecity Group** |Podporováno |Podporováno |Amsterdam |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Podporováno |Podporováno |Amsterdam, Sao Paulo |
 | **[Telehouse – KDDI](http://www.telehouse.net/solutions/cloud-services/cloud-link)** |Podporováno |Podporováno |Londýn |
 | **Telenor** |Podporováno |Podporováno |Amsterdam, Londýn |
@@ -135,11 +136,11 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Podporováno |Podporováno |Melbourne, Singapur, Sydney |
 | **[Telus](http://www.telus.com)** |Podporováno |Podporováno |Montreal, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Podporováno |Podporováno |Kapské město, Johannesburg |
-| **TIME dotCom** | Podporováno | Podporováno | Kuala Lumpur |
+| **[ČAS dotCom](https://www.time.com.my/enterprise/connectivity/cloud-interconnect)** | Podporováno | Podporováno | Kuala Lumpur |
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Podporováno |Podporováno |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Podporováno |Podporováno |Amsterdam, Chicago, Dallas, Hongkong, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Podporováno |Nepodporuje se |Londýn, Singapur |
-| **Vodafone Idea** | Podporováno | Podporováno | Bombaj2 |
+| **Vodafone Idea** | Podporováno | Podporováno | Bombaj, Mumbai2 |
 | **[Zayo](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Podporováno |Podporováno |Amsterdam, Chicago, Dallas, Londýn, Los Angeles, Montreal, New York, Seattle, Silicon Valley, Toronto, Washington DC |
 
  **+** označuje brzké uvedení.

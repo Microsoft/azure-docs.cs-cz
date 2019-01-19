@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 4d37d8b3bb52853885ab406a49154f8e70f54b56
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: a2bf61c167211e1ff62abe1453ac62227a137d53
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388187"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411369"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Kognitivní dovednosti rozpoznávání entit
 
@@ -25,7 +25,7 @@ ms.locfileid: "54388187"
 > [!NOTE]
 > Od 21. prosince 2018 můžete [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) s dovednosti Azure Search. To umožňuje spouštění poplatků za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
 >
-> Provádění předdefinované dovednosti je poplatek za služby Cognitive Services, účtovat stávající [platit jako můžete přejít cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny extrakce Image je poplatek za Azure Search, aktuálně účtovat ceny verze preview, jak je popsáno na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). 
+> [Integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) spuštění, se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services), na stejné přenosové rychlosti, jako by měl provést úlohu přímo. Extrakce Image je poplatek za Azure Search, v současné době nabízena na ceny verze preview. Podrobnosti najdete v tématu [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) nebo [fakturace](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -43,7 +43,7 @@ Parametry jsou malá a velká písmena a jsou nepovinné.
 | categories    | Pole kategorií, které má být extrahován.  Typy možných kategorií: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Pokud je k dispozici žádná kategorie, budou vráceny všechny typy.|
 |defaultLanguageCode |  Kód jazyka vstupního textu. Jsou podporovány následující jazyky: `de, en, es, fr, it`|
 |minimumPrecision | Nevyužité. Vyhrazeno pro budoucí použití. |
-|includeTypelessEntites | Pokud je nastavený na hodnotu true, pokud text obsahuje dobře známé entity, ale nelze zařadit do jedné z podporovaných kategorií, se vrátí jako součást `"entities"` komplexní výstupního pole. Výchozí hodnota je `false` |
+|includeTypelessEntites | Pokud je nastavený na hodnotu true, pokud text obsahuje dobře známé entity, ale nelze zařadit do jedné z podporovaných kategorií, bude se vrátil jako součást `"entities"` komplexní výstupního pole. Výchozí hodnota je `false` |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností

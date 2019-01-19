@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 4483d71ba745cc5cbb49d22420d83c3b2ceae0ad
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: bdbaa9154f12c8b66a4c1d801671e7b21756e0f7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157016"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412729"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí externího přesměrování pomocí Azure CLI
 
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Přidat naslouchací proces a pravidlo směrování
 
-Naslouchací proces je nutné povolit aplikační brány pro směrování provozu odpovídajícím způsobem. Vytvořte naslouchací proces, pomocí [az network application-gateway-naslouchací proces protokolu http vytvořit](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) s front-endový port vytvořené pomocí [az network application-gateway front-endu port vytvořit](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create). Pravidlo je vyžadováno pro naslouchací proces vědět, kam má odesílat příchozí provoz. Vytvořte základní pravidlo s názvem *redirectRule* pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
+Naslouchací proces je nutné povolit aplikační brány pro směrování provozu odpovídajícím způsobem. Vytvořte naslouchací proces, pomocí [az network application-gateway-naslouchací proces protokolu http vytvořit](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) s front-endový port vytvořené pomocí [az network application-gateway front-endu port vytvořit](/cli/azure/network/application-gateway). Pravidlo je vyžadováno pro naslouchací proces vědět, kam má odesílat příchozí provoz. Vytvořte základní pravidlo s názvem *redirectRule* pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \

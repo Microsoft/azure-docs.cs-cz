@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 12/12/2018
-ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/18/2019
+ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789903"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411743"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
@@ -141,6 +141,14 @@ Chcete-li zobrazit seznam operační systémy a verze jádra, které Azure Site 
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Spouštěcí a systémové oddíly nebo svazky nejsou stejném disku (ID chyby: 95309)
 
 Před 9.20 verze, spouštěcí a systémové oddíly nebo svazky na různých discích was má nepodporovanou konfiguraci. Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), tato konfigurace je podporovaná. Tato podpora používali nejnovější verzi.
+
+## <a name="boot-disk-not-found-errorid-95310"></a>Spouštěcí disk nebyl nalezen (ID chyby: 95310)
+
+Virtuální počítač bez spouštěcí disk nejde chránit. To je zajistit hladký průběh obnovení virtuálního počítače během operace převzetí služeb při selhání. Neexistence spouštěcí disk má za následek selhání ke spuštění počítače po převzetí služeb při selhání. Ujistěte se, že virtuální počítač obsahuje spouštěcí disk a operaci opakujte. Všimněte si také, že se nepodporuje více spouštěcích disků na stejném počítači.
+
+## <a name="multiple-boot-disks-found-errorid-95311"></a>Nalezeno více spouštěcí disky (ID chyby: 95311)
+
+Virtuální počítač s více spouštěcí disk není [podporované konfigurace](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systémový oddíl na více discích (ID chyby: 95313)
 

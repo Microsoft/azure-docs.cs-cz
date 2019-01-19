@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8d910ffcf966e98def33a42a6452baea9f4b3998
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2794f45bf9d9d8d60f9be286fdf0e4d288a969fa
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356581"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412287"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci galerii konfigurované pro federované jednotné přihlašování
 
@@ -34,7 +34,7 @@ Chcete-li vyřešit váš problém, zkontrolujte konfiguraci aplikace ve služb�
 
 ## <a name="application-not-found-in-directory"></a>Aplikace nebyla nalezena v adresáři
 
-*Chyba AADSTS70001: Aplikaci s identifikátorem "https://contoso.com' nebyl nalezen v adresáři*.
+*Chyba AADSTS70001: Aplikace s identifikátorem "https://contoso.com' nebyl nalezen v adresáři*.
 
 **Možná příčina**
 
@@ -66,7 +66,7 @@ Po aktualizaci hodnota identifikátoru ve službě Azure AD a odešle hodnotu ho
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adresa pro odpovědi neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci.
 
-*Chyba AADSTS50011: Adresa pro odpovědi https://contoso.com' neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci*
+*Chyba AADSTS50011: Zpáteční adresu https://contoso.com' neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci*
 
 **Možná příčina**
 
@@ -99,7 +99,7 @@ Poté, co jste aktualizovali hodnotu adresy URL odpovědi ve službě Azure AD a
 
 ## <a name="user-not-assigned-a-role"></a>Uživatel není přiřazený k roli
 
-*Chyba AADSTS50105: Přihlášeného uživatele 'brian@contoso.com"není přiřazen k roli pro aplikaci*.
+*Chyba AADSTS50105: Přihlášený uživatel "brian@contoso.com" není přiřazen k roli pro aplikaci*.
 
 **Možná příčina**
 
@@ -133,7 +133,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle názvu nebo e-mailová adresa** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
+12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
 
 13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 
@@ -145,7 +145,7 @@ Po krátké době možné ke spouštění těchto aplikací pomocí metod popsan
 
 ## <a name="not-a-valid-saml-request"></a>Není platný SAML požadavek
 
-*Chyba AADSTS75005: Požadavek není platná zpráva protokolu typu Saml2.*
+*Chyba AADSTS75005: Žádost není platná zpráva protokolu typu Saml2.*
 
 **Možná příčina**
 
@@ -228,7 +228,7 @@ Pokud možnost 1 výše pro vás nefunguje, zkuste odebrat aplikaci z adresáře
 
 ## <a name="certificate-or-key-not-configured"></a>Certifikát nebo klíč není nakonfigurováno
 
-*Chyba AADSTS50003: Žádný podpisový klíč nakonfigurován.*
+*Chyba AADSTS50003: Nakonfigurovaný žádný podpisový klíč.*
 
 **Možná příčina**
 
@@ -261,6 +261,19 @@ Pokud chcete odstranit a vytvořit nový certifikát, postupujte podle následuj
 10. Zkontrolujte **nastavit nový certifikát jako aktivní** přepsat aktivní certifikát. Potom klikněte na **Uložit** v horní části podokna a přijměte aktivaci certifikátu výměny.
 
 11. V části **podpisový certifikát SAML** klikněte na tlačítko **odebrat** odebrat **nepoužitý** certifikátu.
+
+## <a name="saml-request-not-present-in-the-request"></a>Požadavek SAML, není k dispozici v požadavku
+
+*Chyba AADSTS750054: SAMLRequest nebo SAMLResponse musí být k dispozici jako parametry řetězce v požadavku HTTP pro SAML přesměrování vazby dotazu.*
+
+**Možná příčina**
+
+Azure AD nebyl schopen identifikovat si požadavek SAML v rámci parametrů adresy URL v požadavku HTTP. To může nastat, pokud se aplikace nepoužívá přesměrování vazby HTTP při odesílání požadavku SAML do služby Azure AD.
+
+**Řešení**
+
+Aplikace potřebuje k odeslání požadavku SAML překóduje se na hlavičku umístění pomocí přesměrování vazby protokolu HTTP. Další informace o tom, jak implementovat, najdete v části přesměrování vazby protokolu HTTP v [dokument specifikace protokolu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problém při přizpůsobování deklarací identity SAML, odesílá se do aplikace
 

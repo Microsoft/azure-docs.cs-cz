@@ -10,17 +10,17 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 36db91cd7c4dad3c28c0c110ee837ca6d1284959
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b272dd1c5b12c9f171c7e8c7c346f4d6cd4b777
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575373"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413868"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Pokyny k návrhu distribuované tabulky ve službě Azure SQL Data Warehouse
 Doporučení pro navrhování distribuovaných hash a kruhové dotazování distribuované tabulky ve službě Azure SQL Data Warehouse.
 
-Tento článek předpokládá, že máte zkušenosti s distribuci dat a koncepty přesouvání dat ve službě SQL Data Warehouse.  Další informace najdete v tématu [Azure SQL Data Warehouse – architektura masivně paralelní zpracování (MPP)](massively-parallel-processing-mpp-architecture.md). 
+Tento článek předpokládá, že máte zkušenosti s distribuci dat a koncepty přesouvání dat ve službě SQL Data Warehouse.  Další informace najdete v tématu [Azure SQL Data Warehouse – architektura masivně paralelní zpracování (MPP)](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Co je distribuované tabulky?
 Distribuované tabulky se zobrazí jako jedné tabulky, ale řádky jsou ve skutečnosti uložených ve 60 distribucí. Řádky se distribuují se kruhové dotazování algoritmus nebo hash.  
@@ -29,11 +29,11 @@ Distribuované tabulky se zobrazí jako jedné tabulky, ale řádky jsou ve skut
 
 Další možností úložiště table je replikovat malé tabulky do výpočetních uzlů. Další informace najdete v tématu [pro replikované tabulky s pokyny k návrhu](design-guidance-for-replicated-tables.md). Rychle vybrat mezi tři možnosti, najdete v článku distribuované tabulky v [Přehled tabulek](sql-data-warehouse-tables-overview.md). 
 
-Jako součást návrh tabulky zjistěte, co nejvíc o vašich datech a jak dotazovat data.  Představte si třeba tyto otázky:
+Jako součást návrh tabulky zjistěte, co nejvíc o vašich datech a jak dotazovat data.  Představte si třeba tyto otázky:
 
-- Jak velké jsou tabulky?   
-- Jak často se aktualizuje v tabulce?   
-- Musím tabulkami faktů a dimenzí v datovém skladu?   
+- Jak velké jsou tabulky?   
+- Jak často se aktualizuje v tabulce?   
+- Musím tabulkami faktů a dimenzí v datovém skladu?   
 
 
 ### <a name="hash-distributed"></a>Provádět distribuci hodnot hash
@@ -147,7 +147,7 @@ where two_part_name in
     from dbo.vTableSizes
     where row_count > 0
     group by two_part_name
-    having min(row_count * 1.000)/max(row_count * 1.000) > .10
+    having (max(row_count * 1.000) - min(row_count * 1.000))/max(row_count * 1.000) >= .10
     )
 order by two_part_name, row_count
 ;

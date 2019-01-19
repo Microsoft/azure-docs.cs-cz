@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 7a7acb7da2e5999fc844fe6c6c2e191783df9190
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fd2d18ea2d129729c5c3835e39a94df7166c3f11
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093953"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402026"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče HTTPS příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Můžete také:
 - [Vytvoření řadiče příchozího přenosu dat, která používá vlastní certifikáty TLS][aks-ingress-own-tls]
 - [Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky vygenerovat certifikáty protokolu TLS se statickou veřejnou IP adresu][aks-ingress-static-tls]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek používá Helm k instalaci serveru NGINX kontroler příchozího přenosu dat, správce certifikátů a ukázkovou webovou aplikaci. Musíte mít Helm inicializován v rámci clusteru AKS a pomocí účtu služby pro Tiller. Ujistěte se, že používáte nejnovější verzi nástroje Helm. Pokyny k upgradu, najdete v článku [Helm instalace dokumentace][helm-install]. Další informace o konfiguraci a použití Helm, naleznete v tématu [instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)][use-helm].
 
@@ -172,6 +172,19 @@ $ kubectl apply -f certificates.yaml
 certificate.certmanager.k8s.io/tls-secret created
 ```
 
+Chcete-li ověřit, že certifikát byl úspěšně vytvořen, použijte `kubectl describe certificate tls-secret` příkazu.
+
+Pokud certifikát vydala, zobrazí se výstup podobný následujícímu:
+```
+Type    Reason          Age   From          Message
+----    ------          ----  ----          -------
+  Normal  CreateOrder     11m   cert-manager  Created new ACME order, attempting validation...
+  Normal  DomainVerified  10m   cert-manager  Domain "demo-aks-ingress.eastus.cloudapp.azure.com" verified with "http-01" validation
+  Normal  IssueCert       10m   cert-manager  Issuing certificate...
+  Normal  CertObtained    10m   cert-manager  Obtained certificate from ACME server
+  Normal  CertIssued      10m   cert-manager  Certificate issued successfully
+```
+
 ## <a name="run-demo-applications"></a>Spuštění ukázkové aplikace
 
 Byly nakonfigurovány kontroler příchozího přenosu dat a řešení pro správu certifikátů. Teď Pojďme spuštění dvě ukázkové aplikace ve vašem clusteru AKS. V tomto příkladu Helm umožňuje nasadit dvě instance aplikace jednoduchý "Hello world".
@@ -308,7 +321,7 @@ Tento článek zahrnuty některé externí součásti pro AKS. Další informace
 
 - [Helm CLI][helm-cli]
 - [Kontroler příchozího přenosu dat serveru NGINX][nginx-ingress]
-- [Správce certifikátů][cert-manager]
+- [cert-manager][cert-manager]
 
 Můžete také:
 

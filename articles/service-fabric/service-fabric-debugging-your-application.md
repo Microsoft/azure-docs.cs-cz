@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f16bf06d03511223b54542ad7a389f78d37f3ea9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 06db540600be323b3129d64d18739582f6d9f2d0
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235067"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412637"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Ladění aplikace Service Fabric pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "51235067"
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>Ladění místní aplikace Service Fabric
-Nasazení a ladění aplikace Azure Service Fabric v místním počítači vývojový cluster můžete ušetřit čas a peníze. Visual Studio 2017 nebo Visual Studio 2015 můžete nasadit aplikaci do místního clusteru a automaticky připojit ladicí program pro všechny instance aplikace.
+Nasazení a ladění aplikace Azure Service Fabric v místním počítači vývojový cluster můžete ušetřit čas a peníze. Visual Studio 2017 nebo Visual Studio 2015 můžete nasadit aplikace do místního clusteru a automaticky připojit ladicí program na všechny instance aplikace; Visual Studio musíte spustit jako správce pro připojení ladicího programu.
 
 1. Spusťte místní vývojový cluster podle pokynů v [nastavení vývojového prostředí Service Fabric](service-fabric-get-started.md).
 2. Stisknutím klávesy **F5** nebo klikněte na tlačítko **ladění** > **spustit ladění**.

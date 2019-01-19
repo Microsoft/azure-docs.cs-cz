@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: f0ae48cadf2e90dc685a24aff54d89f86a11c287
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cb5ad6f351cdeadb999b1a62c225f23937c5b92e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494289"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413817"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace brány Golden Oracle na virtuálním počítači Azure s Linuxem 
 
@@ -45,11 +45,11 @@ Následuje souhrn konfigurace prostředí:
 > | **Operační systém** |Oracle Linux 6.x |Oracle Linux 6.x |
 > | **Oracle SID** |CDB1 |CDB1 |
 > | **Replikace schématu** |TEST|TEST |
-> | **Brána Golden vlastníka/replikace** |C ##GGADMIN |REPUSER |
+> | **Brána Golden vlastníka/replikace** |C##GGADMIN |REPUSER |
 > | **Proces Golden brány** |EXTORA |REPORA|
 
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
+### <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 
 Přihlaste se k předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) příkazu. Potom postupujte podle na obrazovce pokynů.
 
@@ -59,7 +59,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, do které prostředky Azure se nasadí a od které bylo možné je spravovat. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, do které prostředky Azure se nasadí a od které bylo možné je spravovat. 
 
 Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění `westus`.
 

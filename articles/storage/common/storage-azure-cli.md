@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 977d40ba6fdb00f47f4ff32e60642ee3ab102da2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984369"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413630"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Použití Azure CLI s Azure Storage
 
@@ -31,7 +31,7 @@ Tento průvodce to předpokládá, že chápete základní koncepty služby Azur
 
 ### <a name="accounts"></a>Účty
 * **Účet Azure**: Pokud ještě nemáte předplatné Azure, [vytvořit si bezplatný účet Azure](https://azure.microsoft.com/free/).
-* **Účet Storage**: Viz část [Vytvoření účtu úložiště](storage-quickstart-create-account.md) v článku [Informace o účtech Azure Storage](storage-create-storage-account.md).
+* **Účet úložiště**: Zobrazit [vytvořit účet úložiště](storage-quickstart-create-account.md) v [účty Azure storage](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
@@ -183,9 +183,9 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location` [Povinné]: umístění. Například "západní USA".
-* `--name` [Povinné]: název účtu úložiště. Název musí mít délku 3 až 24 znaků a používejte pouze malé alfanumerické znaky.
-* `--resource-group` [Povinné]: název skupiny prostředků.
+* `--location` [Povinné]: Umístění. Například "západní USA".
+* `--name` [Povinné]: Název účtu úložiště. Název musí mít délku 3 až 24 znaků a používejte pouze malé alfanumerické znaky.
+* `--resource-group` [Povinné]: Název skupiny prostředků.
 * `--sku` [Povinné]: SKU účtu úložiště. Povolené hodnoty:
   * `Premium_LRS`
   * `Standard_GRS`
@@ -197,7 +197,7 @@ az storage account create \
 
 Ve vašem předplatném Azure můžete mít více účtů úložiště. Pokud chcete vybrat jeden z nich se má použít pro všechny následné příkazy, můžete nastavit tyto proměnné prostředí:
 
-Nejprve zobrazte klíče účtu úložiště pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys#list):
+Nejprve zobrazte klíče účtu úložiště pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys):
 
 ```azurecli-interactive
 az storage account keys list \
@@ -242,7 +242,7 @@ az storage container create --name <container_name>
 
 Můžete nastavit jednu ze tří úrovní oprávnění ke čtení pro nový kontejner zadáním nepovinného `--public-access` argument:
 
-* `off` (výchozí): kontejner data jsou privátní pro vlastníka účtu.
+* `off` (výchozí): Kontejner data jsou privátní pro vlastníka účtu.
 * `blob`: Veřejné oprávnění ke čtení pro objekty BLOB.
 * `container`: Veřejné čtení a seznam přístupu k celému kontejneru.
 
@@ -523,4 +523,4 @@ Tady jsou některé další prostředky pro dostávat další informace o práci
 
 * [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Referenční informace k příkazu Azure CLI](/cli/azure)
-* [Rozhraní příkazového řádku Azure na Githubu](https://github.com/Azure/azure-cli)
+* [Azure CLI on GitHub](https://github.com/Azure/azure-cli)

@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 281c426170985d43401a13988218126ea3951634
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17a2d1ac747b46ed9a55ceffeea3ba9f4b2f0bc7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405610"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412044"
 ---
 # <a name="custom-roles-in-azure"></a>Vlastní role v Azure
 
@@ -84,7 +84,7 @@ Když vytvoříte vlastní roli, se zobrazí na webu Azure Portal s ikona oranž
 
     Jakmile budete mít vlastní roli, musíte otestovat a ověřit, že funguje podle očekávání. Pokud je potřeba provést úpravy později, můžete aktualizovat vlastní roli.
 
-Podrobný kurz o tom, jak vytvořit vlastní roli, najdete v tématu [kurz: vytvoření vlastní role pomocí prostředí Azure PowerShell](tutorial-custom-role-powershell.md) nebo [kurz: vytvoření vlastní role pomocí Azure CLI](tutorial-custom-role-cli.md).
+Podrobný kurz o tom, jak vytvořit vlastní roli, najdete v tématu [kurzu: Vytvoření vlastní role pomocí prostředí Azure PowerShell](tutorial-custom-role-powershell.md) nebo [kurzu: Vytvoření vlastní role pomocí Azure CLI](tutorial-custom-role-cli.md).
 
 ## <a name="custom-role-properties"></a>Vlastnosti vlastní role
 
@@ -113,6 +113,7 @@ Předdefinované role, stejně jako `AssignableScopes` vlastnost určuje, že je
 | Zobrazit vlastní roli | `Microsoft.Authorization/ roleDefinition/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny vestavěné role povolit být k dispozici pro přiřazení vlastní role. |
 
 ## <a name="next-steps"></a>Další postup
-- [Vytvoření vlastní role pomocí Azure Powershellu](custom-roles-powershell.md)
+- [Vytváření vlastních rolí pomocí Azure PowerShellu](custom-roles-powershell.md)
 - [Vytváření vlastních rolí pomocí CLI](custom-roles-cli.md)
 - [Vysvětlení definice rolí](role-definitions.md)
+- [Řešení potíží s RBAC v Azure](troubleshooting.md)

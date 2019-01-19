@@ -1,5 +1,5 @@
 ---
-title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-Site: Rozhraní příkazového řádku | Dokumentace Microsoftu'
+title: 'Připojení místní sítě ke službě Azure virtual network: Síť Site-to-Site VPN: ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU | Dokumentace Microsoftu'
 description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí rozhraní příkazového řádku.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 73bf57721f670c06042b9b7a00f53126a6d1b145
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f7c07dbffaa179434fd30b2fdbc92fa661cdc516
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957067"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412117"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Vytvoření virtuální sítě s připojením VPN typu Site-to-Site pomocí rozhraní příkazového řádku
 
@@ -31,7 +31,7 @@ Tento článek ukazuje, jak pomocí Azure CLI vytvořit připojení brány VPN t
 
 Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě k virtuální síti Azure přes tunel VPN IPsec/IKE (IKEv1 nebo IKEv2). Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o bránách VPN najdete v tématu [Informace o službě VPN Gateway](vpn-gateway-about-vpngateways.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -49,21 +49,21 @@ Tyto hodnoty můžete použít k vytvoření testovacího prostředí nebo můž
 ```
 #Example values
 
-VnetName                = TestVNet1 
-ResourceGroup           = TestRG1 
-Location                = eastus 
-AddressSpace            = 10.11.0.0/16 
-SubnetName              = Subnet1 
-Subnet                  = 10.11.0.0/24 
-GatewaySubnet           = 10.11.255.0/27 
-LocalNetworkGatewayName = Site2 
+VnetName                = TestVNet1 
+ResourceGroup           = TestRG1 
+Location                = eastus 
+AddressSpace            = 10.11.0.0/16 
+SubnetName              = Subnet1 
+Subnet                  = 10.11.0.0/24 
+GatewaySubnet           = 10.11.255.0/27 
+LocalNetworkGatewayName = Site2 
 LNG Public IP           = <VPN device IP address>
 LocalAddrPrefix1        = 10.0.0.0/24
-LocalAddrPrefix2        = 20.0.0.0/24   
-GatewayName             = VNet1GW 
-PublicIP                = VNet1GWIP 
-VPNType                 = RouteBased 
-GatewayType             = Vpn 
+LocalAddrPrefix2        = 20.0.0.0/24   
+GatewayName             = VNet1GW 
+PublicIP                = VNet1GWIP 
+VPNType                 = RouteBased 
+GatewayType             = Vpn 
 ConnectionName          = VNet1toSite2
 ```
 
@@ -83,7 +83,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="VNet"></a>3. Vytvoření virtuální sítě
 
-Pokud ještě nemáte virtuální síť, vytvořte ji pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Při vytváření virtuální sítě ověřte, že se zadané adresní prostory nepřekrývají s adresními prostory ve vaší místní síti.
+Pokud ještě nemáte virtuální síť, vytvořte ji pomocí příkazu [az network vnet create](/cli/azure/network/vnet). Při vytváření virtuální sítě ověřte, že se zadané adresní prostory nepřekrývají s adresními prostory ve vaší místní síti.
 
 >[!NOTE]
 >Aby se tato virtuální síť připojila k místnímu umístění, budete se muset domluvit se správcem vaší místní sítě a vyčlenit rozsah IP adres, který můžete použít speciálně pro tuto virtuální síť. Pokud existuje duplicitní rozsah adres na obou stranách připojení VPN, provoz se nemusí směrovat očekávaným způsobem. Pokud navíc chcete připojit tuto virtuální síť k jiné virtuální síti, adresní prostor se nesmí překrývat s jinou virtuální sítí. Podle toho pečlivě naplánujte konfiguraci sítě.
@@ -118,7 +118,7 @@ Použijte následující hodnoty:
 * *--gateway-ip-address* je IP adresa vašeho místního zařízení VPN. Zařízení VPN nesmí být umístěné za překladem adres (NAT).
 * *--local-address-prefixes* jsou vaše místní adresní prostory.
 
-Pomocí příkazu [az network local-gateway create](/cli/azure/network/local-gateway#az_network_local_gateway_create) přidejte bránu místní sítě s několika předponami adres:
+Pomocí příkazu [az network local-gateway create](/cli/azure/network/local-gateway) přidejte bránu místní sítě s několika předponami adres:
 
 ```azurecli-interactive
 az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 --resource-group TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
@@ -147,7 +147,7 @@ Použijte následující hodnoty:
 Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/network/vnet-gateway#az_network_vnet_gateway_create). Pokud tento příkaz spustíte s použitím parametru --no-wait, nezobrazí se žádná zpětná vazba ani výstup. Tento parametr umožňuje bránu vytvořit na pozadí. Vytvoření brány trvá přibližně 45 minut.
 
 ```azurecli-interactive
-az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
+az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
 ## <a name="VPNDevice"></a>8. Konfigurace zařízení VPN

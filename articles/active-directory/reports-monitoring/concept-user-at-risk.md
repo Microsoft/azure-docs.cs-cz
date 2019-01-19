@@ -11,15 +11,15 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/17/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a7a3877970d5ecf3b86471b94fbb1bf6e5efbb4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 7b27dbbf34f1c19efa0fc21af71339ce6cacd9d8
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621067"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410814"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Uživatelé označení příznakem rizika sestavy na webu Azure Portal
 
@@ -55,19 +55,16 @@ Uživatelé označení příznakem rizika sestavy ve službě Azure AD free a ba
 
 ![Riziková přihlášení](./media/concept-user-at-risk/03.png)
 
-Kliknutím na uživatele otevřete okno se souvisejícími uživatelskými daty. U ohrožených uživatelů můžete zkontrolovat historii jejich přihlášení a v případě potřeby resetovat heslo.
-
-![Riziková přihlášení](./media/concept-user-at-risk/46.png)
-
+Kliknutím na uživatele poskytuje přihlašovací údaje. U ohrožených uživatelů můžete zkontrolovat historii jejich přihlášení a v případě potřeby resetovat heslo.
 
 V tomto dialogovém okně máte možnost:
 
 - Stáhnout sestavu
-
 - Vyhledávat uživatele
 
-![Riziková přihlášení](./media/concept-user-at-risk/16.png)
+    ![Riziková přihlášení](./media/concept-user-at-risk/16.png)
 
+Podrobnější informace potřebujete licenci úrovně premium.
 
 ## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Sestava ohrožených pro edice premium služby Azure AD uživatelů
 

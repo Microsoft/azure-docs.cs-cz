@@ -9,12 +9,12 @@ ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 4f9a30bf25cea1e80f53596be9eea6ae57a79889
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246459"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402281"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analýza webových protokolů pomocí Azure Data Lake Analytics
 Zjistěte, jak analýza webových protokolů pomocí Data Lake Analytics, zvláště na hledání, které odkazující servery nastaly chyby při pokusu o přejděte na webovou stránku.
@@ -165,7 +165,7 @@ Uživatelem definované operátory sčítání můžete přidat do aplikace.  Da
 
 1. V **Průzkumníku serveru** rozbalte položku **Azure**, rozbalte položku **Data Lake Analytics**, rozbalte účet Data Lake Analytics, rozbalte položku **Účty Storage**, klikněte pravým tlačítkem na výchozí účet Data Lake Storage a potom klikněte na položku **Explorer**.
 2. Dvakrát klikněte na panel **ukázky** otevřete složku a potom dvakrát klikněte na panel **výstupy**.
-3. Dvakrát klikněte na panel **UnsuccessfulResponsees.log**.
+3. Dvakrát klikněte na panel **UnsuccessfulResponses.log**.
 4. Můžete také dvakrát kliknout na výstupní soubor v zobrazení grafu úlohy aby bylo možné přejít přímo do výstupu.
 
 ## <a name="see-also"></a>Další informace najdete v tématech

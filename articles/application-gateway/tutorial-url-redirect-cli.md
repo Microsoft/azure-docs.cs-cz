@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 60dacaa6b8a813c3e77bbd2d661740510e903b26
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 3a3862cf1f2367b5aa031bfdbef9e8ed6ad1b171
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159991"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412475"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Kurz: Vytvoření služby application gateway pomocí adresy URL na základě cest přesměrování pomocí Azure CLI
 
@@ -43,7 +43,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create).
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group).
 
 V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem myAppGateway použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway#create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Application gateway je přiřazeno *myAGSubnet* a *myPublicIPAddress* , kterou jste vytvořili.
+K vytvoření aplikační brány s názvem myAppGateway použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Application gateway je přiřazeno *myAGSubnet* a *myPublicIPAddress* , kterou jste vytvořili.
 
 ```azurecli-interactive
 az network application-gateway create \

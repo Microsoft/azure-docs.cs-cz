@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/21/2018
+ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 55c9d9942272821de5724568ff58fe27c1641eb2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9fd64e4a9eb100b00dc4597042321b21466f2c7d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54012095"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54414463"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN je možné mít v konfiguraci připojení Point-to-Site?
 
@@ -70,7 +70,7 @@ Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Podporuje Azure IKEv2 VPN s Windows?
 
-IKEv2 se podporuje v systémech Windows 10 a Server 2016. Pokud ale chcete používat IKEv2, musíte nainstalovat aktualizace a nastavit hodnotu klíče registru v místním prostředí. Verze operačního systému starší než Windows 10 se nepodporují a mohou používat jenom SSTP.
+IKEv2 se podporuje v systémech Windows 10 a Server 2016. Pokud ale chcete používat IKEv2, musíte nainstalovat aktualizace a nastavit hodnotu klíče registru v místním prostředí. Verze operačního systému starší než Windows 10 nejsou podporovány a mohou používat pouze protokol SSTP nebo OpenVPN.
 
 Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
 
@@ -80,7 +80,7 @@ Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 verze 1607 | 17. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 verze 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 verze 1709 | 22. března 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 Version 1709 | 22. března 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
 2. Nastavte hodnotu klíče registru. Vytvořte nebo nastavte klíč REG_DWORD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload v registru na hodnotu 1.

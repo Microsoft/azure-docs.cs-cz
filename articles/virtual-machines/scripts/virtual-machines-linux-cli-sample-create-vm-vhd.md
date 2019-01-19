@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 271390757b7e79eb29c5a3c14ca9ee1b38b53e29
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
-ms.translationtype: HT
+ms.openlocfilehash: a71ac929c9db1b7046796242a8b0146f183aa927
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918192"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411539"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Vytvoření virtuálního počítače s využitím virtuálního pevného disku
 
@@ -56,7 +56,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | Vypíše účty úložiště. |
 | [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | Zkontroluje platnost názvu účtu úložiště a jestli už neexistuje. |
-| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#az_storage_account_keys_list) | Vypíše klíče pro účty úložiště. |
+| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | Vypíše klíče pro účty úložiště. |
 | [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | Zkontroluje, jestli objekt blob existuje. |
 | [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | Vytvoří kontejner v účtu úložiště. |
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Vytvoří v kontejneru objekt blob nahráním virtuálního pevného disku. |
@@ -64,7 +64,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Vytvoří virtuální počítače. |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Získá IP adresu vytvořeného virtuálního počítače. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

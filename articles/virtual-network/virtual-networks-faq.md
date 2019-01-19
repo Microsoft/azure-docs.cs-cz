@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021029"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412865"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -52,7 +52,12 @@ Tyto nástroje můžete použít k vytvoření nebo konfigurace virtuální sít
 * Soubor konfigurace sítě (netcfg - pro jenom klasické virtuální sítě). Zobrazit [konfigurace virtuální sítě pomocí souboru konfigurace sítě](virtual-networks-using-network-configuration-file.md) článku.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Jaké rozsahy adres můžete použít ve své virtuální sítě?
-Všechny rozsahy IP adres definované v [RFC 1918](http://tools.ietf.org/html/rfc1918). Například 10.0.0.0/16.
+Všechny rozsahy IP adres definované v [RFC 1918](http://tools.ietf.org/html/rfc1918). Například 10.0.0.0/16. Nelze přidat následující rozsahy adres:
+* 224.0.0.0/4 (vícesměrové vysílání)
+* 255.255.255.255/32 (vysílání)
+* 127.0.0.0/8 (adresu zpětné smyčky)
+* 169.254.0.0/16 (Link-local)
+* 168.63.129.16/32 (interního serveru DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Může mít veřejné IP adresy ve virtuální sítě?
 Ano. Další informace o veřejné rozsahy IP adres najdete v tématu [vytvoření virtuální sítě](manage-virtual-network.md#create-a-virtual-network). Veřejné IP adresy nejsou přímo dostupné z Internetu.

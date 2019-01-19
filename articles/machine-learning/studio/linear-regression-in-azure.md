@@ -1,45 +1,41 @@
 ---
-Název: Použití lineární regrese v nástroji Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Porovnání modelů lineární regrese v Excelu a služby Azure Machine Learning Studio: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Migrace analytics z Excelu do Azure Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Porovnání modelů lineární regrese v Excelu a služby Azure Machine Learning Studio: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/20/2017
 ---
-# <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Použití lineární regrese v nástroji Azure Machine Learning Studio
-> *Kate Baroni* a *Robert Boatman* jsou podnikové architekty řešení ve společnosti Microsoft Data Insights bez System Center. V tomto článku popisují práci migrace sady existující regresní analýzy na cloudové řešení, které využívá Azure Machine Learning. 
-> 
-> 
+# <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrace analytics z Excelu do Azure Machine Learning Studio
 
-&nbsp; 
-
-
+> *Kate Baroni* a *Robert Boatman* jsou podnikové architekty řešení ve společnosti Microsoft Data Insights bez System Center. V tomto článku popisují práci migrace sady existující regresní analýzy na cloudové řešení, které využívá Azure Machine Learning Studio.
 
 ## <a name="goal"></a>Cíl
+
 Náš projekt spustit s dva cíle v úvahu: 
 
 1. Využití prediktivních analýz, aby se zlepšila přesnost naší organizace měsíční výnosy projekce 
-2. Pomocí služby Azure Machine Learning k potvrzení, optimalizovat, zvýšení rychlosti a škálování naší výsledků. 
+2. Pomocí Azure Machine Learning Studio můžete potvrdit, optimalizovat, zvýšení rychlosti a škálování naší výsledků. 
 
-Stejně jako řada podniků naši organizaci prochází měsíční výnosy proces Prognózování. Úkolem naší malý tým specialisty na obchodní analýzu bylo proces a zvyšte přesnost předpovědi pomocí Azure Machine Learning. Tým strávil několik měsíců, shromažďování dat z více zdrojů a s atributy dat prostřednictvím statistická analýza identifikace klíčových atributů, které jsou relevantní pro prognózy prodeje služeb. Dalším krokem bylo začít vytváření prototypů statistické regresní modely na datech v aplikaci Excel. Během pár týdnů měli jsme regresní model aplikace Excel, který byl překonají aktuálního pole a finanční Prognózování procesy. To se výsledek předpovědi směrného plánu. 
+Stejně jako řada podniků naši organizaci prochází měsíční výnosy proces Prognózování. Úkolem naší malý tým specialisty na obchodní analýzu bylo proces a zvyšte přesnost předpovědi pomocí Azure Machine Learning Studio. Tým strávil několik měsíců, shromažďování dat z více zdrojů a s atributy dat prostřednictvím statistická analýza identifikace klíčových atributů, které jsou relevantní pro prognózy prodeje služeb. Dalším krokem bylo začít vytváření prototypů statistické regresní modely na datech v aplikaci Excel. Během pár týdnů měli jsme regresní model aplikace Excel, který byl překonají aktuálního pole a finanční Prognózování procesy. To se výsledek předpovědi směrného plánu. 
 
-Jsme pak trvalo dál přesunem naše prediktivní analýzy Azure Machine Learning a zjistěte, jak může zlepšit Machine Learning na prediktivní výkon.
+Jsme pak trvalo dál přesunem Studio a zjistěte, jak může zlepšit Studio prediktivní výkonu našich prediktivní analýzy.
 
 ## <a name="achieving-predictive-performance-parity"></a>Dosažení parity prediktivní výkonu
-Naší hlavní prioritou došlo k dosažení parity mezi regresních modelů strojového učení a Excel. Pro trénování a testování dat zadané na stejná data a stejné rozdělení, chtěli bychom dosažení parity prediktivní výkon mezi Excelem a Machine Learning. Zpočátku se nám nepovedlo. Modelu Excelu překonal mohl model Machine Learning. K selhání došlo kvůli nedostatku porozumění nastavení základní nástroje ve službě Machine Learning. Po synchronizaci s produktovým týmem Machine Learning jsme získali lépe pochopit základní nastavení požadovaná pro naše datové sady a dosáhnout rozdíly mezi těmito dvěma modely. 
+Naší hlavní prioritou došlo k dosažení parity mezi regresních modelů Studio a Excel. Pro trénování a testování dat zadané na stejná data a stejné rozdělení, chtěli bychom dosažení parity prediktivní výkon mezi Excelem a Studio. Zpočátku se nám nepovedlo. Modelu Excelu překonal Studio modelu. K selhání došlo kvůli nedostatku porozumění nastavení základní nástroje v sadě Studio. Po synchronizaci s produktovým týmem Studio jsme získali lépe pochopit základní nastavení požadovaná pro naše datové sady a dosáhnout rozdíly mezi těmito dvěma modely. 
 
 ### <a name="create-regression-model-in-excel"></a>Vytvořit regresní model v aplikaci Excel
 Naše aplikace Excel Regrese používá trénování modelu lineární regrese standardní součástí analytické aplikace Excel. 
 
-Můžeme vypočítat *% střední absolutní chyba* a použít ho jako míra výkonu pro model. Jakou trvalo tři měsíce můžete přejít na pracovní model pomocí aplikace Excel. Můžeme převést do režimu velkou část učení do experimentu Machine Learning Studio, který nakonec bylo výhodné v Principy požadavků.
+Můžeme vypočítat *% střední absolutní chyba* a použít ho jako míra výkonu pro model. Jakou trvalo tři měsíce můžete přejít na pracovní model pomocí aplikace Excel. Můžeme převést do režimu velkou část učení do Studio experimentu, který nakonec bylo výhodné v Principy požadavků.
 
-### <a name="create-comparable-experiment-in-azure-machine-learning"></a>Vytvoření srovnatelné experimentu v nástroji Azure Machine Learning
-Jsme postupovali podle těchto kroků a vytvořte naše experiment v Machine Learning Studio: 
+### <a name="create-comparable-experiment-in-studio"></a>Vytvoření srovnatelné experimentu v nástroji Studio
+Jsme postupovali podle těchto kroků k vytvoření naší experimentu v nástroji Studio: 
 
-1. Nahrání datové sady do souboru csv do nástroje Machine Learning Studio (velmi malý soubor)
+1. Nahrání datové sady jako soubor csv a Studio (velmi malý soubor)
 2. Vytvoří nový experiment a použít [výběr sloupců v datové sadě] [ select-columns] modul se vybere stejné funkce data použít v aplikaci Excel 
 3. Použít [rozdělení dat] [ split] modulu (s *relativní výraz* režimu) rozdělení dat do stejné cvičných datových sad, jako kdyby byla provedena v aplikaci Excel 
 4. Experimentovali s [lineární regrese] [ linear-regression] modulu (výchozí možnosti pouze), zdokumentované a porovnat výsledky pro náš regresní model aplikace Excel
 
 ### <a name="review-initial-results"></a>Počáteční výsledků kontroly
-Zpočátku modelu Excelu jasně překonal model Machine Learning Studio: 
+Zpočátku modelu Excelu jasně překonal modelu Studio: 
 
 |  | Excel | Studio |
 | --- |:---:|:---:|
@@ -51,13 +47,13 @@ Zpočátku modelu Excelu jasně překonal model Machine Learning Studio:
 
 Když jsme spustili náš proces a výsledky používají vývojáři a odborníci přes data v týmu Machine Learning, poskytnou rychle několik užitečných tipů. 
 
-* Při použití [lineární regrese] [ linear-regression] modulu v nástroji Machine Learning Studio, jsou k dispozici dvě metody:
+* Při použití [lineární regrese] [ linear-regression] modulu v sadě Studio jsou k dispozici dvě metody:
   * Online sestupu: Může být vhodnější pro problémy pracovat ve větším měřítku
   * Běžné čtverců: Toto je metoda, kterou většina lidí si můžete představit při jejich slyšet lineární regrese. Pro malé datové sady může být běžný čtverců více optimální volbou.
 * Vezměte v úvahu úprava parametr L2 Regularizace váha ke zlepšení výkonu. Je ve výchozím nastavení má 0,001, ale pro naše malá datová sada jsme ho nastavte na 0,005 ke zlepšení výkonu. 
 
 ### <a name="mystery-solved"></a>Co je vyřešen!
-Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výkonu v nástroji Machine Learning Studio jako v Excelu: 
+Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výkonu v nástroji Studio jako v Excelu: 
 
 |  | Excel | Studio (výchozí) | Studio plánovaným bodem obnovení kratším čtverců |
 | --- |:---:|:---:|:---:|
@@ -85,7 +81,7 @@ Kromě toho koeficienty Excel porovnání dobře s váhy funkce v Azure trénova
 ## <a name="next-steps"></a>Další kroky
 Chtěli jsme se používání této webové služby Machine Learning v aplikaci Excel. Naši obchodní analytici využívají aplikace Excel a potřebujeme způsob, jak volat webovou službu Machine Learning s řádkem Excelových dat a jeho vrátit předpovězené hodnoty aplikace Excel. 
 
-Také chceme optimalizaci náš model pomocí možnosti a algoritmy, které jsou k dispozici v nástroji Machine Learning Studio.
+Také chceme optimalizaci náš model pomocí možnosti a algoritmy, které jsou k dispozici v sadě Studio.
 
 ### <a name="integration-with-excel"></a>Integrace s Excelem
 Naším řešením bylo zprovoznění náš model strojového učení regrese vytvořením webové služby z trénovaného modelu. Během několika minut webová služba vytvořila a jsme lze volat přímo z aplikace Excel k vrácení hodnoty předpovězené výnosy. 
@@ -103,7 +99,7 @@ Teď, když jsme měli směrný plán s náš model aplikace Excel, jsme přesun
 
 Dále jsme chcete zahrnout další algoritmy, jako je [Bayesova] [ bayesian-linear-regression] nebo [vylepšené rozhodovací stromy] [ boosted-decision-tree-regression] v našich experimentu k porovnání výkon. 
 
-Pokud chcete experimentovat s regrese, je dobré datovou sadu, která akci ukázkovou datovou sadou energetickou efektivitu regrese, který má spoustu číselné atributy. Datová sada je dodáván jako součást ukázkových datových sad v nástroji Machine Learning Studio. Škály výukových moduly můžete použít k predikci vytápění zatížení nebo chlazení zatížení. Následující graf je že porovnání výkonu různých regrese učí proti předpověď energetickou účinnost datovou sadu pro Cílová proměnná chlazení zatížení: 
+Pokud chcete experimentovat s regrese, je dobré datovou sadu, která akci ukázkovou datovou sadou energetickou efektivitu regrese, který má spoustu číselné atributy. Datová sada je dodáván jako součást ukázkových datových sad v nástroji Studio. Škály výukových moduly můžete použít k predikci vytápění zatížení nebo chlazení zatížení. Následující graf je že porovnání výkonu různých regrese učí proti předpověď energetickou účinnost datovou sadu pro Cílová proměnná chlazení zatížení: 
 
 | Model | Střední absolutní chyba | Střední kořenové spolehlivosti chyba | Relativní absolutní chyba | Relativní spolehlivosti chyba | Koeficient spolehlivosti |
 | --- | --- | --- | --- | --- | --- |
@@ -113,11 +109,11 @@ Pokud chcete experimentovat s regrese, je dobré datovou sadu, která akci ukáz
 | Lineární regrese (běžný čtverců) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Stěžejní zjištění
-Jsme získali mnohem podle z běžící aplikace Excel regrese a paralelně experimenty Azure Machine Learning. Vytvoření základního modelu v Excelu a srovnáním s modely s využitím strojového učení [lineární regrese] [ linear-regression] pomohl nám další Azure Machine Learning a zjistili jsme příležitosti k vylepšení dat Výběr modelu a výkonu. 
+Jsme se naučili mnohem ve spuštěné aplikace Excel regrese a experimentů Studio paralelně. Vytvoření základního modelu v Excelu a srovnáním s modely s využitím strojového učení [lineární regrese] [ linear-regression] pomohl nám další Studio a zjistili jsme příležitosti k vylepšení výběr dat a modelu výkon. 
 
-Zjistili jsme také, že je vhodné použít [výběr součástí na základě filtru] [ filter-based-feature-selection] ke zrychlení předpovědi budoucí projekty. S použitím výběr funkcí k vašim datům, můžete vytvořit vylepšené modelu ve službě Machine Learning s lepší výkon. 
+Zjistili jsme také, že je vhodné použít [výběr součástí na základě filtru] [ filter-based-feature-selection] ke zrychlení předpovědi budoucí projekty. S použitím výběr funkcí k vašim datům, můžete vytvořit vylepšené modelu v sadě Studio s lepší výkon. 
 
-Možnost přenášet prediktivních analytických odhady ze strojového učení do Excelu systemically umožňuje významné zvýšení schopnost úspěšně poskytovat výsledky pro cílovou skupinu široké obchodní uživatele. 
+Možnost přenášet prediktivních analytických odhady ze sady Studio do aplikace Excel systemically umožňuje významné zvýšení schopnost úspěšně poskytovat výsledky pro cílovou skupinu široké obchodní uživatele. 
 
 ## <a name="resources"></a>Zdroje a prostředky
 Tady jsou některé prostředky pro dokážete pracovat regrese: 
