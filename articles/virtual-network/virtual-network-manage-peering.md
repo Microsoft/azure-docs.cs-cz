@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 39cb9f606e6829fe8265a40216de5312c3e7e60b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4278ec65dd21e998fa2f498435d7df143ea07d0a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075188"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412882"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -71,7 +71,7 @@ Podrobné pokyny k implementaci partnerský vztah mezi virtuálními sítěmi v 
 ### <a name="commands"></a>Příkazy
 
 - **Azure CLI**: [vytvořit partnerský vztah virtuální sítě az sítě](/cli/azure/network/vnet/peering#create)
-- **Prostředí PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
+- **PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Zobrazit nebo změnit nastavení partnerského vztahu
 
@@ -87,8 +87,8 @@ Před změnou, partnerský vztah, seznamte se s [požadavky a omezení](#require
 
 **Příkazy**
 
-- **Azure CLI**: [az sítě vnet partnerského vztahu seznam](/cli/azure/network/vnet/peering#az_network_vnet_peering_list) na seznam partnerských vztahů pro virtuální síť, [az sítě zobrazit partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) zobrazit nastavení pro konkrétní partnerského vztahu a [az network aktualizace partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) Chcete-li změnit nastavení partnerského vztahu. |
-- **Prostředí PowerShell**: [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) načíst zobrazení nastavení partnerského vztahu a [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) Chcete-li změnit nastavení.
+- **Azure CLI**: [az sítě vnet partnerského vztahu seznam](/cli/azure/network/vnet/peering) na seznam partnerských vztahů pro virtuální síť, [az sítě zobrazit partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) zobrazit nastavení pro konkrétní partnerského vztahu a [az network aktualizace partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) Chcete-li změnit nastavení partnerského vztahu. |
+- **PowerShell**: [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) načíst zobrazení nastavení partnerského vztahu a [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) Chcete-li změnit nastavení.
 
 ## <a name="delete-a-peering"></a>Odstranit partnerský vztah
 
@@ -108,7 +108,7 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 **Příkazy**
 
 - **Azure CLI**: [az sítě vnet partnerského vztahu delete](/cli/azure/network/vnet/peering#az_network_vnet_peering_delete)
-- **Prostředí PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
+- **PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
 
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení 
 
