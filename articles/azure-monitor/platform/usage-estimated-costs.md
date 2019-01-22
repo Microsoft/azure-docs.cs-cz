@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: 6b8940f62b94615b4622f60786e411b9a18b2dee
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1b679e333ba3a84e2d1ffd90a3f47f48a46e236e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001613"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427759"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorování využití a odhadované náklady
 
@@ -112,7 +112,7 @@ Chcete-li přejít u určitého předplatného na nový cenový model, stačí v
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>Automatizovat přechod na nový cenový model
 
-Následující skripty vyžaduje modul Azure PowerShell. Chcete-li zkontrolovat, pokud máte nejnovější verzi naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0).
+Následující skripty vyžaduje modul Azure PowerShell. Chcete-li zkontrolovat, pokud máte nejnovější verzi naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.1.0).
 
 Až budete mít nejnovější verzi Azure Powershellu, je nejprve třeba spustit ``Connect-AzureRmAccount``.
 

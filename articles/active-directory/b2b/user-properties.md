@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/5/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 278c31f3f1880a3df561038d2710a2b5cc3d68e6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996628"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437837"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti uživatele spolupráce Azure Active Directory s B2B
 
@@ -25,11 +25,11 @@ V závislosti na potřebách zvoucí organizaci uživatele spolupráce B2B ve sl
 
 - Stav 1: Uložená v externí instanci Azure AD, vyjádřena jako uživatel typu Host ve zvoucí organizaci. V tomto případě uživatel B2B přihlásí pomocí účtu služby Azure AD, který patří k tenantovi pozvaného. Pokud partnerské organizace nepoužívá Azure AD, je stále vytváření uživatele typu Host ve službě Azure AD. Požadavky se, že se uplatňovat svou pozvánku a Azure AD ověří jejich e-mailovou adresu. Toto uspořádání se také nazývá tenantů just-in-time (JIT) nebo "virálního" tenantů.
 
-- Stav 2: Uložená v Microsoftu nebo jiného účtu, vyjádřena jako uživatele typu Host v organizaci hostitele. V tomto případě uživatel typu Host přihlásí pomocí účtu Microsoft nebo účtu na sociální síti (google.com nebo podobnou). Identita pozvaného uživatele je vytvořen jako účet Microsoft v adresáři zvoucí organizaci při využití nabídky.
+- Stav 2: Uložená v Microsoftu nebo jiného účtu, vyjádřena jako uživatel typu Host v organizaci hostitele. V tomto případě uživatel typu Host přihlásí pomocí účtu Microsoft nebo účtu na sociální síti (google.com nebo podobnou). Identita pozvaného uživatele je vytvořen jako účet Microsoft v adresáři zvoucí organizaci při využití nabídky.
 
-- Stav 3: Adresami v organizaci hostitele v místní službě Active Directory a synchronizují s hostiteli organizace Azure AD. Můžete použít Azure AD Connect pro synchronizaci partnerské účty v cloudu jako Azure AD B2B uživatelé s UserType = hosta. Zobrazit [udělit partnera místně spravované účty přístup ke cloudovým prostředkům](hybrid-on-premises-to-cloud.md).
+- Stav 3: Uložená v organizaci hostitele v místní službě Active Directory a synchronizují s hostiteli organizace Azure AD. Můžete použít Azure AD Connect pro synchronizaci partnerské účty v cloudu jako Azure AD B2B uživatelé s UserType = hosta. Zobrazit [udělit partnera místně spravované účty přístup ke cloudovým prostředkům](hybrid-on-premises-to-cloud.md).
 
-- Stav 4: Adresami v organizaci hostitele Azure AD s UserType = hosta a přihlašovací údaje, které spravuje organizace hostitele.
+- Stav 4: Uložená v organizaci hostitele Azure AD s UserType = hosta a přihlašovací údaje, které spravuje organizace hostitele.
 
   ![Zobrazení iniciály odesílatel pozvánky.](media/user-properties/redemption-diagram.png)
 
@@ -73,7 +73,7 @@ Tato vlastnost určuje, jak se uživatel přihlásí.
 
 - Externí služby Active Directory: Tento uživatel je uložená v externí organizace a ověří pomocí účtu služby Azure AD, který patří do jiné organizace. Tento typ přihlášení odpovídá stavu 1.
 
-- Účet Microsoft: Tento uživatel je uložená v účtu Microsoft a provede ověření pomocí účtu Microsoft. Tento typ přihlášení odpovídá stavu 2.
+- Účet Microsoft: Tento uživatel je uložená v účtu Microsoft a ověří pomocí účtu Microsoft. Tento typ přihlášení odpovídá stavu 2.
 
 - Windows Server Active Directory: Tento uživatel je přihlášený z místní služby Active Directory, který patří do této organizace. Tento typ přihlášení odpovídá stavu 3.
 

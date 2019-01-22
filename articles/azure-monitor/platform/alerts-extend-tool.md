@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: bdc3646116dfd5f16c0c039c4fb95d11c6593adf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: alerts
+ms.openlocfilehash: dc8c1733f506870765523b17c1fc3e283ff9cbdb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120989"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423271"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozšíření upozornění z Log Analytics do upozornění Azure
 Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jako součást tohoto přechodu je výstrahy, které jste nakonfigurovali v Log Analytics se rozšířit do Azure. Pokud nechcete čekat na jejich automaticky přesunou na Azure, můžete zahájit proces:
@@ -24,7 +24,7 @@ Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jak
 > [!NOTE]
 > Microsoft automaticky rozšíří upozornění vytvořená v instancích veřejné cloudové služby Log Analytics pro Azure Alerts, od 14. května 2018, opakovala, dokud nebude dokončena. Pokud máte potíže s vytvořením [skupiny akcí](../../azure-monitor/platform/action-groups.md), použijte [tyto kroky nápravy](alerts-extend-tool.md#troubleshooting) získat skupiny akcí, které jsou vytvořeny automaticky. Pomocí těchto kroků 5. července 2018. *Není k dispozici pro uživatele suverénních cloudů služby Log Analytics a Azure Government*. 
 
-## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Možnost 1: Zahájení z portálu Operations Management Suite
+## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Option 1: Zahájení z portálu Operations Management Suite
 Následující kroky popisují, jak rozšířit výstrahy pro pracovní prostor z portálu Operations Management Suite.  
 
 1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
@@ -37,7 +37,7 @@ Následující kroky popisují, jak rozšířit výstrahy pro pracovní prostor 
 ![Snímek obrazovky s Operations Management Suite nastavení výstrah stránka portálu, se rozšířit do Azure zvýrazněnou](media/alerts-extend-tool/ExtendInto.png)
 6. Krok 3 průvodce se zobrazí v **výstrahy** podokně. Přečtěte si přehled a vyberte **Další**.
 ![Snímek obrazovky krok 1 Průvodce](media/alerts-extend-tool/ExtendStep1.png)  
-7. V druhém kroku, zobrazí se souhrn navrhovaných změn, výpis příslušné [skupiny akcí](../../azure-monitor/platform/action-groups.md) pro výstrahy. Pokud jsou podobné akcí napříč více než jedna výstraha, Průvodce navrhuje přidružte skupinu jednu akci všechny z nich.  Zásady vytváření názvů je následující: *WorkspaceName_AG_ #Number*. Chcete-li pokračovat, vyberte **Další**.
+7. V druhém kroku, zobrazí se souhrn navrhovaných změn, výpis příslušné [skupiny akcí](../../azure-monitor/platform/action-groups.md) pro výstrahy. Pokud jsou podobné akcí napříč více než jedna výstraha, Průvodce navrhuje přidružte skupinu jednu akci všechny z nich.  Zásady vytváření názvů je následující: *WorkspaceName_AG_#Number*. Chcete-li pokračovat, vyberte **Další**.
 ![Snímek obrazovky z kroku 2 Průvodce](media/alerts-extend-tool/ExtendStep2.png)  
 8. V posledním kroku průvodce vyberte **Dokončit**a potvrďte výzvu k zahájení procesu. Volitelně můžete zadat e-mailovou adresu, tak, aby se zobrazí oznámení po dokončení procesu a všechny výstrahy byly úspěšně přesunuty do upozornění Azure.
 ![Snímek obrazovky krok 3 Průvodce](media/alerts-extend-tool/ExtendStep3.png)
@@ -49,10 +49,10 @@ Upozornění dál zobrazovat na portálu Operations Management Suite, i když js
 ![Stránka nastavení výstrah portálu snímek obrazovky s Operations Management Suite](media/alerts-extend-tool/PostExtendList.png)
 
 
-## <a name="option-2-use-the-alertsversion-api"></a>Možnost 2: Použití rozhraní AlertsVersion API
+## <a name="option-2-use-the-alertsversion-api"></a>Option 2: Použití rozhraní AlertsVersion API
 Rozhraní AlertsVersion API Log Analytics můžete použít k rozšíření upozornění z Log Analytics do upozornění Azure z libovolného klienta, která může volat rozhraní REST API. Rozhraní API můžete přistupovat z Powershellu pomocí [ARMClient](https://github.com/projectkudu/ARMClient), je open source nástroj příkazového řádku. Můžete výstup výsledků ve formátu JSON.  
 
-Pokud chcete používat rozhraní API, je nejprve vytvořit požadavek GET. To vyhodnotí a vrátí přehled navrhovaných změn, než zkusíte skutečně rozšířit do Azure s použitím požadavek POST. Seznam výsledků obsahuje upozornění a seznam navrhovaných [skupiny akcí](../../azure-monitor/platform/action-groups.md), ve formátu JSON. Pokud jsou podobné akcí napříč více než jedna výstraha, služba navrhuje všechny z nich přidružit ke skupině jedné akce. Zásady vytváření názvů je následující: *WorkspaceName_AG_ #Number*.
+Pokud chcete používat rozhraní API, je nejprve vytvořit požadavek GET. To vyhodnotí a vrátí přehled navrhovaných změn, než zkusíte skutečně rozšířit do Azure s použitím požadavek POST. Seznam výsledků obsahuje upozornění a seznam navrhovaných [skupiny akcí](../../azure-monitor/platform/action-groups.md), ve formátu JSON. Pokud jsou podobné akcí napříč více než jedna výstraha, služba navrhuje všechny z nich přidružit ke skupině jedné akce. Zásady vytváření názvů je následující: *WorkspaceName_AG_#Number*.
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
@@ -481,3 +481,4 @@ Tady jsou kroky nápravy u každé chyby:
 
 * Další informace o novém [prostředí Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Další informace o [upozornění protokolů ve službě Azure Alerts](alerts-unified-log.md).
+

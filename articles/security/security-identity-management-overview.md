@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
-ms.openlocfilehash: 84ab35c269af66f58f3886a5dd0606ce69a11be9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d1933e58cae522b03ced29183440e226d47dfdf9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255877"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435052"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení správy identit Azure
 
@@ -44,7 +44,7 @@ Tento článek se zaměřuje na následující možnosti správy identit Azure c
 * Monitorování zabezpečení, oznámení a sestavy založené na učení počítače
 * Správa identit a přístupu zákazníků
 * Registrace zařízení
-* Privileged identity management.
+* Privileged Identity Management
 * Ochrana identit
 * Hybridní identity management a Azure AD connect
 * Kontroly přístupu Azure AD
@@ -101,11 +101,11 @@ Monitorování zabezpečení, výstrah a machine learning sestav založených na
 
 Na webu Azure Portal sestavy spadají do následujících kategorií:
 
-* **Sestavy anomálií**: obsahovat události přihlášení nalezené na neobvyklé. Naším cílem je informovat vás tyto aktivity a umožní určit, zda je podezřelé události.
-* **Integrované sestavy aplikací**: poskytují přehled o používání cloudových aplikací ve vaší organizaci. Azure AD umožňuje integraci s tisíci cloudových aplikací.
-* **Zprávy o chybách**: označení chyb, které mohou nastat při zřizování účtů do externí aplikace.
-* **Sestavy pro konkrétní uživatele**: zobrazit data aktivit přihlašování zařízení pro konkrétního uživatele.
-* **Protokoly aktivit**: obsahují záznam všechny auditované události v posledních 24 hodin, posledních 7 dnů, nebo posledních 30 dní a aktivitu změny skupiny a aktivita resetování a registraci hesla.
+* **Sestavy anomálií**: Obsahovat události přihlášení nalezené na neobvyklé. Naším cílem je informovat vás tyto aktivity a umožní určit, zda je podezřelé události.
+* **Integrované sestavy aplikací**: Poskytují přehled o používání cloudových aplikací ve vaší organizaci. Azure AD umožňuje integraci s tisíci cloudových aplikací.
+* **Zprávy o chybách**: Označení chyb, které mohou nastat při zřizování účtů do externí aplikace.
+* **Sestavy pro konkrétní uživatele**: Zobrazit data aktivit přihlašování zařízení pro konkrétního uživatele.
+* **Protokoly aktivit**: V posledních 24 hodin, posledních 7 dnů, nebo posledních 30 dní a aktivitu změny skupiny a aktivita resetování a registraci hesla obsahovat záznam všechny auditované události.
 
 Další informace:
 
@@ -124,7 +124,7 @@ Při použití Azure AD B2C, zákazníci můžou si zaregistrovat pro vaše apli
 Další informace:
 
 * [Co je Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C ve verzi preview: přihlášení a přihlašování uživatelů aplikace](../active-directory-b2c/active-directory-b2c-overview.md)
+* [Azure Active Directory B2C ve verzi preview: Registrace a přihlašování uživatelů ve vašich aplikacích](../active-directory-b2c/active-directory-b2c-overview.md)
 * [Azure Active Directory B2C ve verzi Preview: Typy aplikací](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>Registrace zařízení
@@ -139,7 +139,7 @@ Další informace:
 * [Automatická registrace zařízení ve službě Azure AD pro zařízení s Windows připojených k doméně](../active-directory/active-directory-conditional-access-automatic-device-registration.md)
 * [Nastavte si Automatická registrace Windows zařízení připojených k doméně pomocí Azure AD](../active-directory/active-directory-conditional-access-automatic-device-registration-setup.md)
 
-## <a name="privileged-identity-management"></a>Privileged identity management.
+## <a name="privileged-identity-management"></a>Privileged Identity Management
 
 S Azure AD Privileged Identity Management můžete spravovat, řídit a monitorovat privilegované identity a přístup k prostředkům v Azure AD a dalších online službách Microsoftu, jako je Office 365 a Microsoft Intune.
 
@@ -154,9 +154,8 @@ S Azure AD Privileged Identity Management můžete:
 
 Další informace:
 
-* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
-* [Role ve službě Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-roles.md)
-* [Azure AD Privileged Identity Management: Jak přidat nebo odebrat roli uživatele](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [Co je Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)
+* [Přiřazení role adresáře Azure AD v PIM](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Ochrana identit
 
@@ -165,7 +164,7 @@ Služba Azure AD Identity Protection je služba zabezpečení, která poskytuje 
 Další informace:
 
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Kanál 9: Azure AD a Identity Show: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Kanál 9: Azure AD a Identity zobrazit: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybridní identity management a Azure AD connect
 

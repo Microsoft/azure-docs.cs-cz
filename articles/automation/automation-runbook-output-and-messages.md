@@ -3,32 +3,32 @@ title: Runbook Output and Messages ve službě Azure Automation
 description: Popisuje postup vytvoření a načtení výstupu a chybové zprávy ze sady runbook ve službě Azure Automation.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc1ef2a3ab09ec5b86d1dc0b4c139afd43ba356d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969120"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431210"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Sada Runbook výstup a zprávy ve službě Azure Automation
 Většina runbooků služeb automatizace Azure mají určitou formu výstupu. Tento výstup může být chybová zpráva pro uživatele nebo složitý objekt, že máte v úmyslu používat s jinou sadou runbook. Prostředí Windows PowerShell poskytuje [různých datových proudů](/powershell/module/microsoft.powershell.core/about/about_redirection) odesílat výstup ze skriptu nebo pracovního postupu. Azure Automation funguje s každou z těchto datových proudů jinak. Postupujte podle osvědčené postupy pro jejich používání při vytváření sady runbook.
 
 Následující tabulka obsahuje stručný popis jednotlivých datových proudů a jejich chování na webu Azure Portal pro publikované sady runbook a kdy [testování runbooku](automation-testing-runbook.md). Další podrobnosti o jednotlivých datových proudech jsou k dispozici v předchozích částech.
 
-| Datový proud | Popis | Publikováno | Test |
+| Datový proud | Popis | Publikování | Test |
 |:--- |:--- |:--- |:--- |
 | Výstup |Objekty, které mají zpracovávat jiné runbooky. |Zapíšou se do historie úlohy. |Zobrazí v podokně výstup testu. |
 | Upozornění |Upozornění určené pro uživatele. |Zapíšou se do historie úlohy. |Zobrazí v podokně výstup testu. |
 | Chyba |Chybová zpráva určená pro uživatele. Na rozdíl od výjimky runbook pokračuje po chybové zprávě ve výchozím nastavení. |Zapíšou se do historie úlohy. |Zobrazí v podokně výstup testu. |
 | Podrobný |Zprávy, které poskytují obecné nebo ladicí informace. |Zapíšou se do historie úlohy, jenom v případě, že je pro runbook vypnuté podrobné protokolování. |V podokně výstup testu zobrazí jenom v případě, že $VerbosePreference nastavená na pokračovat v sadě runbook. |
 | Průběh |Záznamy automaticky generované před a za každou aktivitu v sadě runbook. Runbook by se neměl pokoušet vytvořit vlastní záznamy průběhu, protože jsou určené pro interaktivního uživatele. |Zapíšou se do historie úlohy, jenom v případě, že je pro runbook vypnuté protokolování průběhu. |Nezobrazuje se v podokně výstup testu. |
-| Ladění |Zprávy určené pro interaktivního uživatele. Nesmí se používat v runboocích. |Nezapíše se do historie úlohy. |Nezapíše se do podokna výstup testu. |
+| Ladit |Zprávy určené pro interaktivního uživatele. Nesmí se používat v runboocích. |Nezapíše se do historie úlohy. |Nezapíše se do podokna výstup testu. |
 
 ## <a name="output-stream"></a>Výstupní stream
 Výstupní datový proud je určený pro výstup objektů, které jsou vytvořeny pomocí skriptu nebo pracovního postupu při správném spuštění. Ve službě Azure Automation, tento datový proud používá primárně u objektů, který se má používat podle [nadřazené sady runbook, které volají aktuální runbook](automation-child-runbooks.md). Pokud jste [voláte přiřazený runbook](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) z nadřízeného runbooku, vrátí data z výstupního datového proudu na nadřazený prvek. Výstupní datový proud lze použijte pouze ke sdělování informací uživateli, pokud víte, že sada runbook je nikdy volat žádný jiný runbook. Jako osvědčený postup, ale obvykle používejte [podrobné Stream](#verbose-stream) ke sdělování informací uživateli.
@@ -162,15 +162,15 @@ Následující tabulka obsahuje seznam proměnných předvoleb, které lze použ
 
 | Proměnná | Výchozí hodnota | Platné hodnoty |
 |:--- |:--- |:--- |
-| WarningPreference |Pokračovat |Zastavit<br>Pokračovat<br>SilentlyContinue |
-| ErrorActionPreference |Pokračovat |Zastavit<br>Pokračovat<br>SilentlyContinue |
-| VerbosePreference |SilentlyContinue |Zastavit<br>Pokračovat<br>SilentlyContinue |
+| WarningPreference |pokračovat |Zastavit<br>pokračovat<br>SilentlyContinue |
+| ErrorActionPreference |pokračovat |Zastavit<br>pokračovat<br>SilentlyContinue |
+| VerbosePreference |SilentlyContinue |Zastavit<br>pokračovat<br>SilentlyContinue |
 
 Následující tabulka uvádí chování pro hodnoty proměnných předvoleb, které jsou platné v sadách runbook.
 
 | Hodnota | Chování |
 |:--- |:--- |
-| Pokračovat |Zaprotokoluje zprávu a pokračuje v provádění runbooku. |
+| pokračovat |Zaprotokoluje zprávu a pokračuje v provádění runbooku. |
 | SilentlyContinue |Pokračuje v provádění runbooku bez protokolování zprávy. Tato hodnota je ignorování zprávy. |
 | Zastavit |Zaprotokoluje zprávu a pozastaví runbook. |
 
@@ -204,7 +204,7 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 ``` 
 
 ### <a name="graphical-authoring"></a>Vytváření grafického obsahu
-Grafické runbooky dodatečné protokolování je k dispozici ve formě trasování na úrovni aktivity. Existují dvě úrovně trasování: Basic a Detailed. V základní trasování, zobrazí se počáteční a koncový čas každé aktivity v sadě runbook a informace týkající se jakékoli aktivity opakování. Některé příklady jsou počtem pokusů a počáteční čas aktivity. V podrobné trasování, získáte plus základní trasování vstupní a výstupní data pro každou aktivitu. Aktuálně záznamy trasování jsou zapsány pomocí podrobný datový proud, takže je potřeba povolit podrobné protokolování, když je povoleno trasování. Grafické runbooky s povoleným trasováním není nutné na protokolování záznamů o průběhu. Základní trasování slouží stejnému účelu a je více informacemi.
+Grafické runbooky dodatečné protokolování je k dispozici ve formě trasování na úrovni aktivity. Existují dvě úrovně trasování: Základní a podrobné. V základní trasování, zobrazí se počáteční a koncový čas každé aktivity v sadě runbook a informace týkající se jakékoli aktivity opakování. Některé příklady jsou počtem pokusů a počáteční čas aktivity. V podrobné trasování, získáte plus základní trasování vstupní a výstupní data pro každou aktivitu. Aktuálně záznamy trasování jsou zapsány pomocí podrobný datový proud, takže je potřeba povolit podrobné protokolování, když je povoleno trasování. Grafické runbooky s povoleným trasováním není nutné na protokolování záznamů o průběhu. Základní trasování slouží stejnému účelu a je více informacemi.
 
 ![Grafické vytváření úlohy streamování zobrazení](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
@@ -234,4 +234,5 @@ Další informace o tom, jak konfigurovat integraci s Log Analytics shromažďov
 ## <a name="next-steps"></a>Další postup
 * Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).
 * Návrh a použít podřízené runbooky najdete v tématu [podřízené runbooky ve službě Azure Automation](automation-child-runbooks.md)
+
 

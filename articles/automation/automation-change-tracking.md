@@ -3,19 +3,19 @@ title: Sledování změn s využitím Azure Automation
 description: Řešení Change Tracking umožňuje identifikovat software a změny služby Windows, kterým ve vašem prostředí.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213208"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433012"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -134,7 +134,7 @@ Pomocí následujících kroků nakonfigurovat sledování klíčů registru v p
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který má být sledovány.        |
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
-|Klíč registru systému Windows   | Cesta ke kontrole souboru. Příklad: "Spuštění HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common"      |
+|Klíč registru systému Windows   | Cesta ke kontrole souboru. Příklad: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>Omezení
 
@@ -202,9 +202,9 @@ Agent sleduje pouze změny, tím se optimalizuje výkon agenta. Tím, že nastav
 > |---------|
 > |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorování běžných automatické spouštění záznamy, které integrovat přímo do Windows Explorer a obvykle spuštění v procesu Explorer.exe.    |
-> |**Podstrom HKEY\_místní\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorování skripty, které se spustí při spuštění.     |
-> |**Podstrom HKEY\_místní\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorování skripty, které běží na vypnutí.     |
 > |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje klíče, které jsou načteny před uživatel přihlásí ke svému účtu Windows. Klíč je používán pro 32-bit programy spuštěné na 64bitových počítačích.    |
@@ -230,21 +230,21 @@ Agent sleduje pouze změny, tím se optimalizuje výkon agenta. Tím, že nastav
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje 32bitové ovladače přidružené wavemapper wave1 a wave2, msacm.imaadpcm, .msadpcm, .msgsm610 a čtyřznakového. Podobně jako v části [ovladače] v systému. Soubor INI.|
 > |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorování 32bitové ovladače přidružené wavemapper, wave1 a wave2, msacm.imaadpcm, .msadpcm, .msgsm610 a čtyřznakového pro 32-bit programy spuštěné na 64bitových počítačích. Podobně jako v části [ovladače] v systému. Soubor INI.|
-> |**Podstrom HKEY\_místní\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
+> |**HKEY\_LOCAL\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje seznam známých nebo běžně používaných systémové knihovny DLL; Tento systém zabraňuje lidé zneužití oprávnění adresáře slabé aplikace přetažením v trojský kůň verze systémové knihovny DLL.|
-> |**Podstrom HKEY\_místní\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
+> |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje seznam balíčků může přijímat oznámení událostí z přihlášení do systému Windows, model podpory interaktivní přihlášení pro operační systém Windows.|
 
 ## <a name="network-requirements"></a>Síťové požadavky
 
 Tyto adresy jsou požadovány speciálně pro řešení Change Tracking. Komunikace na tyto adresy se provádí přes port 443.
 
-|Veřejné Azure  |Azure Government  |
+|Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.Azure-automation.us|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Pomocí řešení Change Tracking
 
@@ -268,7 +268,7 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro měnit
 
 |Dotaz  |Popis  |
 |---------|---------|
-|ConfigurationData<br>&#124;kde ConfigDataType == "WindowsServices" a SvcStartupType == "Auto"<br>&#124;kde SvcState == "Zastavena"<br>&#124;shrnutí arg_max(TimeGenerated, *) podle názvu softwaru, počítač         | Zobrazuje nejnovější záznamy inventáře pro služby Windows, které byly nastavené na automaticky, ale nebyly hlášeny jako zastavení<br>Výsledky jsou omezené na o nejnovější záznam pro tohoto názvu softwaru nebo počítače      |
+|ConfigurationData<br>&#124;kde ConfigDataType == "WindowsServices" a SvcStartupType == "Auto"<br>&#124;kde SvcState == "Zastavena"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Zobrazuje nejnovější záznamy inventáře pro služby Windows, které byly nastavené na automaticky, ale nebyly hlášeny jako zastavení<br>Výsledky jsou omezené na o nejnovější záznam pro tohoto názvu softwaru nebo počítače      |
 |ConfigurationChange<br>&#124;kde ConfigChangeType == "Software" a ChangeCategory == "Odebrat"<br>&#124;Řadit podle TimeGenerated desc|Záznamy změn pro odebrání softwaru|
 
 ## <a name="next-steps"></a>Další postup
@@ -279,3 +279,4 @@ Navštivte tento kurz na další informace o použití řešení sledování zm�
 > [Řešení potíží se změnami ve vašem prostředí](automation-tutorial-troubleshoot-changes.md)
 
 * Použití [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md) zobrazíte podrobné data řešení change tracking.
+

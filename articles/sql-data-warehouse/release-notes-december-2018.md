@@ -10,14 +10,14 @@ ms.component: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 21baa89293c74ec49720bffc2506e20789fe9e55
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b897b50edf4d5a7eeabacc6da1505e165f2bb21a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410961"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431737"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Prosince 2018
+# <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Prosinec 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v prosince 2018.
 
 ## <a name="virtual-network-service-endpoints-generally-available"></a>Obecná dostupnost koncových bodech virtuální sítě
@@ -53,6 +53,9 @@ Další informace o Query Store ve službě Azure SQL Data Warehouse, najdete v 
 Azure SQL Data Warehouse Gen2 teď podporuje nižší výpočetní úrovně. Zákazníci mohou špičkového výkonu Azure SQL Data Warehouse, flexibilitu a funkce zabezpečení od 100 cDWU ([jednotky datového skladu](https://docs.microsoft.com/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu)) a škálování až na 30 000 cDWU během několika minut. Od poloviny prosince 2018, zákazníci využívat Gen2 výkon a flexibilitu s nižší výpočetní úrovně v [oblastech](https://docs.microsoft.com/azure/sql-data-warehouse/gen2-lower-tier-regions), se zbytkem oblasti k dispozici během 2019.
 
 Přetažením vstupní bod pro další generace datových skladů Microsoft otevře dveře řízené hodnotu zákazníkům, kteří chcete vyhodnotit všechny výhody zabezpečené, vysoce výkonné datového skladu bez opakovaně uhodnout zkušební prostředí, ve kterém je pro ně nejvhodnější. Může spustit zákazníků v rozsahu od 100 cDWU dolů z aktuální 500 cDWU vstupní bod. SQL Data Warehouse Gen2 nadále podporují pozastavení a obnovení operací a jenom flexibilitu v výpočetní prostředky. Gen2 také podporuje neomezené úložiště sloupce kapacita úložiště spolu s 2,5 × více paměti na jeden dotaz, až do 128 souběžných dotazů a [adaptivní ukládání do mezipaměti](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/) funkce. Tyto funkce v průměru přenést pětkrát větší výkon ve srovnání s stejné jednotka datového skladu na Gen1 za stejnou cenu. Geograficky redundantní zálohy jsou standardní pro Gen2 integrované zaručené ochranu. Azure SQL Data Warehouse Gen2 je připravené ke škálování po.
+
+## <a name="columnstore-background-merge"></a>Pozadí Columnstore slučovací
+Ve výchozím nastavení, Azure SQL Data Warehouse (Azure SQL data Warehouse) ukládá data ve sloupcovém formátu, s názvem micro oddíly [rowgroups](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-memory-optimizations-for-columnstore-compression). V některých případech z důvodu paměti omezuje na indexu dobu načítání sestavení nebo data, může rowgroups zkomprimují s méně než optimální velikost jednoho milionu řádků. Rowgroups může také dojít k fragmentaci z důvodu odstranění. Malé nebo fragmentovaný rowgroups za následek vyšší využití paměti a také provádění dotazu neefektivní. Této verze služby Azure SQL data Warehouse sloučí úlohu údržbu na pozadí columnstore malé komprimované rowgroups vytvořit větší rowgroups lepší využití paměti a zrychlení provádění dotazu.
 
 ## <a name="next-steps"></a>Další postup
 Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse]. Pokud jste ještě do Azure, můžete zjistit [Glosář Azure] [ Azure glossary] užitečné při učení, nový terminologií. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  

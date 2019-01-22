@@ -4,7 +4,7 @@ description: Ukázky kódu pro virtuální počítač Azure, který se má sprav
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 6827b01e72cd72d3f017df36205ccb985b4f242e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ad269365fe5318c4a954a32a59f8be193a509b25
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106774"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427878"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Použití spravované identity pro prostředky Azure na Virtuálním počítači Azure pomocí sady Azure SDK 
 

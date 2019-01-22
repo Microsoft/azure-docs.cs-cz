@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f30a0d80b40626530ecebdb129daff4a0c5215fc
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296240"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426195"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez vyžadování registrace koncového uživatele
 
@@ -75,7 +75,7 @@ Následující pole lze nastavit pomocí prostředí PowerShell:
 
 * **Alternativní e-mailu**
 * **Mobilní telefon**
-* **Telefon do kanceláře**: lze nastavit pouze v případě, že nejsou synchronizaci s místním adresářem
+* **Telefon do kanceláře**: Lze nastavit pouze v případě, že nejsou synchronizaci s místním adresářem
 
 ### <a name="use-powershell-version-1"></a>Pomocí prostředí PowerShell verze 1
 

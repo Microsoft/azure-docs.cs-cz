@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: ade5fa78191fe670bd898e8edcbb1fab3b9b2379
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a0a06ff79d1a48e8fbbc13a8e2410817c020d9a9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273993"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430844"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Vytvoření zónově redundantní virtuální síťová brána v zónách dostupnosti Azure
 
 Můžete nasadit připojení VPN a ExpressRoute Gateway v zónách dostupnosti Azure. To přináší odolnost proti chybám, škálovatelnosti a vysoké dostupnosti do brány virtuální sítě. Nasazení brány v zónách dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, současně připojení k místní síti Azure byla chráněná před výpadky na úrovni zóny. Informace najdete v tématu [o branách virtuálních sítí zónově redundantní](about-zone-redundant-vnet-gateways.md) a [o zóny dostupnosti Azure](../availability-zones/az-overview.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Můžete použít buď PowerShell nainstalovaný místně na počítači, nebo na Azure Cloud Shell. Pokud se rozhodnete nainstalovat a používat PowerShell místně, tato funkce vyžaduje nejnovější verzi modulu prostředí PowerShell.
 
@@ -33,7 +33,7 @@ Pokud používáte PowerShell místně v počítači, místo použití Cloud She
 Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
 ```
 
-Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 11/30/2018
+ms.date: 01/11/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 97f884a45a0a07e2b4c48f39483c70248e7a492e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 1e3dc984de15fa2c94fc5150020f1af1579e2c5c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620375"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434100"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -254,6 +254,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource - zdroj není nakonfigurovaný tak, aby přijímal pouze zařízení tokeny. |
 | AADSTS240001 | BulkAADJTokenUnauthorized – uživatel nemá oprávnění k registraci zařízení ve službě Azure AD. |
 | AADSTS240002 | RequiredClaimIsMissing – požadavku id_token nelze použít jako `urn:ietf:params:oauth:grant-type:jwt-bearer` udělit.|
+| AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest – aplikace nebyla nalezena v tenantu Active directory /. To může nastat, pokud aplikace nebyla nainstalována správcem tenanta nebo souhlas. k libovolným uživatelem v tenantovi. Možná máte správně nakonfigurovaný. hodnota identifikátoru pro aplikaci nebo odeslání žádosti o ověření do nesprávného tenanta. |
 | AADSTS700020 | InteractionRequired – udělení přístupu vyžaduje zásah. |
 | AADSTS700022 | InvalidMultipleResourcesScope – zadaná hodnota pro obor vstupní parametr není platný, protože obsahuje více než jeden prostředek. |
 | AADSTS700023 | InvalidResourcelessScope – zadaná hodnota pro obor vstupní parametr není platný při žádost o přístupový token. |

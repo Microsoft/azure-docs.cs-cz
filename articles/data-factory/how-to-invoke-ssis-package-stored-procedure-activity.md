@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 98a833667aa4073e05b94a62a3e3aea4355e8fb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f4148f3afc0cde7beeef8cbe09bd0abce8732e3a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958959"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424400"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spouštění balíčků služby SSIS pomocí aktivity uložené procedury ve službě Azure Data Factory
 Tento článek popisuje, jak spustit balíčku SSIS pomocí aktivity uložených procedur v kanálu Azure Data Factory. 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak spustit balíčku SSIS pomocí aktivity uložených
 Názorný postup v tomto článku se používá Azure SQL database, který hostuje katalog služby SSIS. Můžete také použít Azure SQL Database Managed Instance.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Vytvoření prostředí Azure-SSIS Integration Runtime
-Vytvořit prostředí Azure-SSIS integration runtime, pokud nemáte podle podrobných pokynů v [kurz: balíčků služby SSIS nasazovat](tutorial-create-azure-ssis-runtime-portal.md).
+Pokud nemáte podle podrobných pokynů v, vytvořte prostředí Azure-SSIS integration runtime [kurzu: Nasazení balíčků SSIS](tutorial-create-azure-ssis-runtime-portal.md).
 
 ## <a name="data-factory-ui-azure-portal"></a>Uživatelské rozhraní služby Data Factory (portál Azure portal)
 V této části použijete uživatelské rozhraní služby Data Factory vytvoříte kanál služby Data Factory s aktivitou uložené procedury, která volá balíčku SSIS.
@@ -146,7 +146,7 @@ V této části se aktivuje spuštění kanálu a potom monitorovat.
 ## <a name="azure-powershell"></a>Azure PowerShell
 V této části použijete Azure PowerShell k vytvoření kanálu Data Factory s aktivitou uložené procedury, která volá balíčku SSIS. 
 
-Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-azurerm-ps). 
+Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps). 
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 Můžete použít stejné datové továrny, který má Azure-SSIS IR, nebo vytvořit samostatné datové továrny. Následující postup předvádí kroky k vytvoření datové továrny. Vytvoření kanálu s aktivitou uložené procedury v této datové továrně. Aktivity uložených procedur spouští uloženou proceduru v databázi SSISDB pro spuštění vašeho balíčku služby SSIS. 
@@ -187,7 +187,7 @@ Je třeba počítat s následujícím:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure.
-* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
 Vytvořte propojenou službu, která propojí vaši databázi Azure SQL, který hostuje katalog služby SSIS se svou datovou továrnou. Data Factory používá pro připojení k databázi SSISDB informace v této propojené službě a spouští uloženou proceduru pro spuštění balíčku SSIS. 
@@ -214,7 +214,7 @@ Vytvořte propojenou službu, která propojí vaši databázi Azure SQL, který 
 
 2. V **prostředí Azure PowerShell**, přepněte **C:\ADF\RunSSISPackage** složky.
 
-3. Spuštěním rutiny **Set-AzureRmDataFactoryV2LinkedService** vytvořte propojenou službu **AzureSqlDatabaseLinkedService**. 
+3. Spustit **Set-AzureRmDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -255,7 +255,7 @@ V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Aktivita vyvol
     }
     ```
 
-2. Chcete-li vytvořit kanál: **RunSSISPackagePipeline**, spusťte **Set-AzureRmDataFactoryV2Pipeline** rutiny.
+2. Pokud chcete vytvořit kanál: **RunSSISPackagePipeline**, spusťte **Set-AzureRmDataFactoryV2Pipeline** rutiny.
 
     ```powershell
     $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"

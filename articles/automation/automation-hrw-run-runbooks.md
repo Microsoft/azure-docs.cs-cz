@@ -3,18 +3,18 @@ title: Spouštění runbooků v Azure Automation Hybrid Runbook Worker
 description: Tento článek obsahuje informace o spouštění runbooků v počítačích v místním datovém centru nebo poskytovatele cloudu s rolí pracovního procesu Hybrid Runbook Worker.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 89f8b4a842c9a632c661d9770d17c1ec01d4211e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0d622f6f03f9d132f3c57910d8a60c5731ad7c94
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582248"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425776"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků v procesu Hybrid Runbook Worker
 
@@ -255,3 +255,4 @@ Pokud vaše sady runbook nejsou úspěšně dokončit, zkontrolujte na Průvodce
 
 * Další informace o různých metodách, které můžete použít ke spuštění sady runbook najdete v tématu [spuštění Runbooku ve službě Azure Automation](automation-starting-a-runbook.md).
 * Vysvětlení různé způsoby, jak pracovat s Powershellovými runbooky ve službě Azure Automation pomocí textového editoru, najdete v tématu [úpravy sady Runbook ve službě Azure Automation](automation-edit-textual-runbook.md)
+

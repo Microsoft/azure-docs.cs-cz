@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 2713f48ce490aa42b6b1aa4e69a71f8f8053d1fb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be7aa43ec6001be78fb405290914f19174559530
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426200"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435715"
 ---
-# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: resetování hesla pomocí samoobslužné služby Azure AD
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Azure AD samoobslužné resetování hesla
 
 Jak samoobslužné služby pro resetování hesla (SSPR)? Co tato možnost znamená rozhraní? Pokračujte ve čtení a zjistěte další informace o samoobslužné resetování HESLA Azure Active Directory (Azure AD).
 
@@ -89,7 +89,7 @@ Při použití mobilní aplikace, jako je aplikace Microsoft Authenticator jako 
 * Když správci potřebují jednu metodu možné použít k resetování hesla, ověřovací kód je jediná dostupná možnost.
 * Když správci vyžadují dvě metody se používá k resetování hesla, uživatelé se můžou použít **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
 
-| Počet metod nutných pro resetování | Jeden | Dvě |
+| Počet metod nutných pro resetování | Jeden | Dva |
 | :---: | :---: | :---: |
 | Funkce mobilních aplikací, které jsou k dispozici | Kód | Kód nebo oznámení |
 
@@ -186,8 +186,8 @@ Tento ovládací prvek určuje, jestli si uživatelé, kteří navštíví port�
 Resetování hesla a změny jsou plně podporovány ve všech konfiguracích business-to-business (B2B). Resetování hesla uživatele B2B je podporována v následujících třech případech:
 
    * **Uživatelé v organizaci partnera poskytujícího s existujícím tenantem Azure AD**: Pokud má organizace partnerství s existujícím tenantovi Azure AD, jsme *respektovat jakékoli zásady pro resetování hesla jsou povolené v tomto tenantovi*. Pro resetování hesel v práci abyste měli jistotu, že je povolené samoobslužné resetování HESLA Azure AD stejně musí organizaci partnera poskytujícího. Neplatí žádné další poplatky pro zákazníky s Office 365, a to se dá nastavit pomocí následujících kroků v našich [Začínáme se správou hesel](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) průvodce.
-   * **Uživatelé, kteří se zaregistrují prostřednictvím** samoobslužnou registraci: Pokud organizace partnerství s používané [samoobslužnou registraci](../users-groups-roles/directory-self-service-signup.md) funkce do tenanta, informujeme je resetovat heslo pomocí e-mailu jsou registrované.
-   * **Uživatele B2B**: jakékoli nové uživatele B2B, které jsou vytvořené pomocí nových [možnosti Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) budete také moct resetovat heslo pomocí e-mailu, registruje se během procesu pozvánku.
+   * **Uživatelé, kteří se zaregistrují prostřednictvím** samoobslužnou registraci: Organizace se stanete-li použít [samoobslužnou registraci](../users-groups-roles/directory-self-service-signup.md) funkce do tenanta, informujeme je resetovat heslo pomocí e-mailu jsou registrované.
+   * **Uživatele B2B**: Žádné nové uživatele B2B, které jsou vytvořené pomocí nových [možnosti Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) budete také moct resetovat heslo pomocí e-mailu, registruje se během procesu pozvánku.
 
 K otestování tohoto scénáře, přejděte na https://passwordreset.microsoftonline.com s jedním z těchto partnerů. Pokud mají alternativní e-mailu nebo e-mail pro ověření definované, resetování hesla funguje podle očekávání.
 

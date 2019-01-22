@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: fbe1cfdcfb1b5ec295748c3c77030df45323ee54
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: a31f9a5a0f613d6c70e8c95e584d8caca87e93be
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434320"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434151"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditování a vytváření sestav uživatele spolupráce B2B
 Uživatelé typu Host máte podobné možnosti auditování s využitím členské uživatele. 

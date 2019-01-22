@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b0bbd3300e48e82e44a7b7fac05f89c8d25e007f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8cddea1757b37ca462611874af7ace1af70c9646
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603493"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425168"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Glosář Principy jazyka common slovník a koncepty
 Language Understanding (LUIS) Glosář vysvětluje podmínky, které můžete narazit při práci se službou LUIS rozhraní API.
@@ -74,7 +74,7 @@ V rámci služby LUIS **domény** je oblast znalostní báze. Vaše doména je s
 
 ## <a name="endpoint"></a>Koncový bod
 
-[Koncový bod služby LUIS](https://aka.ms/luis-endpoint-apis) je adresa URL, kde odesílání dotazů LUIS po [aplikace LUIS](#luis-app) je vytvořili a publikovali. Adresa URL koncového bodu obsahuje oblast publikované aplikace i ID aplikace. Koncový bod můžete najít na **[klíče a koncových bodů](luis-how-to-manage-keys.md)** stránka aplikace, nebo můžete získat adresu URL koncového bodu z [získat informace o aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) rozhraní API.
+[Koncový bod služby LUIS](https://aka.ms/luis-endpoint-apis) je adresa URL, kde odesílání dotazů LUIS po [aplikace LUIS](#luis-app) je vytvořili a publikovali. Adresa URL koncového bodu obsahuje oblast publikované aplikace i ID aplikace. Koncový bod můžete najít na **[klíče a koncových bodů](luis-how-to-azure-subscription.md)** stránka aplikace, nebo můžete získat adresu URL koncového bodu z [získat informace o aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) rozhraní API.
 
 Příkladem koncového bodu vypadá takto:
 
@@ -177,7 +177,7 @@ Stejné jako [programový klíč](#programmatic-key), přejmenováno na klíč p
 
 ## <a name="subscription-key"></a>Klíč předplatného
 
-Klíč předplatného je **koncový bod** klíč související se službou LUIS [jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč není [vytváření klíč](#programmatic-key). Pokud máte klíč koncového bodu, by měla použít pro libovolný koncový bod požadavky na místo vytváření klíče. Zobrazí aktuální klíč koncového bodu uvnitř adresu URL koncového bodu v dolní části [ **klíče a koncových bodů** stránky](luis-how-to-manage-keys.md) v [LUIS](luis-reference-regions.md) webu. Je hodnota **klíč předplatného** dvojici název/hodnota.
+Klíč předplatného je **koncový bod** klíč související se službou LUIS [jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč není [vytváření klíč](#programmatic-key). Pokud máte klíč koncového bodu, by měla použít pro libovolný koncový bod požadavky na místo vytváření klíče. Zobrazí aktuální klíč koncového bodu uvnitř adresu URL koncového bodu v dolní části [ **klíče a koncových bodů** stránky](luis-how-to-azure-subscription.md) v [LUIS](luis-reference-regions.md) webu. Je hodnota **klíč předplatného** dvojici název/hodnota.
 
 ## <a name="test"></a>Test
 

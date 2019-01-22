@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: cea882bd1ba2ba12d34690fb47ec1afd6edf5c4c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 423de49faa20289a7c5663ae621f890b63a5752c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982166"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428507"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Opustit organizaci jako uživatele typu Host
 
 Můžete se rozhodnout opustit organizaci kdykoli, pokud už nepotřebujete k použití aplikací z této organizace nebo udržovat žádné přidružení uživatele typu Host s Azure Active Directory (Azure AD) B2B. Uživatele můžete nechat organizace samostatně, aniž by bylo nutné kontaktovat správce.
 
-## <a name="leave-an-organization"></a>Opustit organizaci
+## <a name="leave-an-organization"></a>Opuštění organizace
 
 Pokud chcete opustit organizaci, jako uživatel přihlásil k [přístupového panelu](https://myapps.microsoft.com), postupujte takto:
 
@@ -44,7 +44,7 @@ Když uživatel odejde z organizace, odstranění uživatelského účtu"soft" v
 V případě potřeby správce tenanta můžete trvale odstranit účet kdykoli během 30 dnů. Použijte následující postup:
 
 1. V [webu Azure portal](https://portal.azure.com)vyberte **Azure Active Directory**.
-2. V části **spravovat**vyberte **uživatelé**.
+2. V části **Spravovat** vyberte **Uživatele**.
 3. Vyberte **odstraněných uživatelů**.
 4. Zaškrtněte políčko vedle odstraněného uživatele a pak vyberte **trvale odstranit**.
 

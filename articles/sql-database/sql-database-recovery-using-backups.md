@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 8785ef50cd7bd27e866b1fa546317021eed5da01
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 301b0179c8222bfdff3b07f7962a74a4cc83b8f6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599096"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432281"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 
@@ -85,17 +85,15 @@ Obecně obnovení databáze k dřívějšímu bodu pro účely obnovení. Pokud 
 
 Obnovení jedné, ve fondu nebo spravované Instance databáze do bodu v čase pomocí webu Azure portal, otevřete stránku pro vaši databázi a klikněte na tlačítko **obnovení** na panelu nástrojů.
 
-![bod v čase obnovení](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
+![point-in-time-restore](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
 > [!IMPORTANT]
 > Programová obnova databáze ze zálohy, naleznete v tématu [pomocí provádí programově obnovení automatizované zálohování](sql-database-recovery-using-backups.md#programmatically-performing-recovery-using-automated-backups)
 
 ## <a name="deleted-database-restore"></a>Obnovení odstraněné databáze
 
-Čas odstranění pro odstraněnou databázi na stejném logickém serveru pomocí webu Azure portal, můžete obnovit odstraněnou databázi [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), nebo [REST (createMode = obnovit)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Můžete obnovit odstraněnou databázi k dřívějšímu bodu v době uchování pomocí [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
+Čas odstranění pro odstraněnou databázi na stejném logickém serveru pomocí webu Azure portal, můžete obnovit odstraněnou databázi [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), nebo [REST (createMode = obnovit)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Je možné [obnovení odstraněné databáze na Managed Instance pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance). Můžete obnovit odstraněnou databázi k dřívějšímu bodu v době uchování pomocí [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
-> [!Note]
-> Obnovení odstraněné databáze není k dispozici ve spravované instanci.
 > [!TIP]
 > Ukázkový skript prostředí PowerShell ukazuje, jak obnovit odstraněnou databázi, naleznete v tématu [obnovení databáze SQL pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
 > [!IMPORTANT]
@@ -121,7 +119,7 @@ Obnovení databáze SQL na libovolném serveru v libovolné oblasti Azure z posl
 
 Geografické obnovení je výchozí možnost zotavení, pokud vaše databáze není k dispozici z důvodu incidentu v oblasti, kde se hostuje databázi. Pokud ve velkém měřítku incidentů v oblasti výsledky v nedostupnost databázovou aplikaci, můžete obnovit databázi z geograficky replikovaných záloh na server v jiné oblasti. Dochází ke zpoždění mezi pořizování zálohy a kdy je geograficky replikované do služby Azure blob do jiné oblasti. Toto zpoždění může být až hodinu, proto, pokud dojde k havárii, může trvat jednu hodinu ztrátu. Následující obrázek znázorňuje obnovit databázi z poslední dostupnou zálohou v jiné oblasti.
 
-![Geografické obnovení](./media/sql-database-geo-restore/geo-restore-2.png)
+![geo-restore](./media/sql-database-geo-restore/geo-restore-2.png)
 
 > [!TIP]
 > Ukázkový skript prostředí PowerShell ukazuje, jak provést geografické obnovení, najdete v části [obnovení databáze SQL pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).

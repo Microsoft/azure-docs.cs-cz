@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: e91ca2ff438e3ae9e9b3f46e5a8db89f17fb1c8e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 6cbc4fa071a45e670dae3cc6be66272bc67767f7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295117"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437177"
 ---
-# <a name="tutorial-enabling-password-writeback"></a>Kurz: Zapnutí zpětného zápisu hesla
+# <a name="tutorial-enabling-password-writeback"></a>Kurz: Povolení zpětného zápisu hesla
 
 V tomto kurzu zapnete zpětný zápis hesla pro vaše hybridní prostředí. Zpětný zápis hesla se používá k synchronizaci změn hesel mezi službou Azure Active Directory (Azure AD) a vaším místním prostředím Active Directory Domain Services (AD DS). Zpětný zápis hesla je součástí služby Azure AD Connect, aby poskytnul zabezpečený mechanismus k odesílání změn v heslech z Azure AD zpět do existujícího místního adresáře. Podrobnější informace o vnitřních mechanismech zpětného zápisu hesla najdete v článku na téma [co je zpětný zápis hesla](concept-sspr-writeback.md).
 
@@ -55,7 +55,7 @@ Zapnutí funkce zpětného zápisu hesla ve službě Azure AD Connect je pouze p
 4. U možnosti **Povolit uživatelům odemčení účtů bez resetování hesel?** také nastavte **Ano**.
 5. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zapnuli zpětný zápis hesla pro prostředí samoobslužného resetování hesla. Nechte okno s webem Azure Portal otevřené a pokračujte k dalšímu kurzu, ve kterém nakonfigurujete další nastavení související se samoobslužným resetováním hesla, než toto řešení zavedete v pilotním nasazení.
 

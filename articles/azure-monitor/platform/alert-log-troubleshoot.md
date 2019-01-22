@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: cffc3ac8808992f7884839329e5bf152d318820c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: alerts
+ms.openlocfilehash: 56d76cd43b63a389569ae39c1e987a5fccbb9793
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789360"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429442"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 
@@ -33,7 +33,7 @@ Tady je několik běžných příčin, proč nakonfigurovaného [pravidel upozor
 
 ### <a name="data-ingestion-time-for-logs"></a>Doba příjem dat protokolů
 
-Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [doba příjem dat v Log Analytics](../platform/data-ingestion-time.md).
+Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [Čas pro příjem dat v Log Analytics](../platform/data-ingestion-time.md).
 
 Ke zmírnění zpoždění příjmu dat, systému vyčká a pokusí znovu výstraha dotazu více než jednou pokud zjistí, že zatím není přijatých potřebná data. Systém má exponenciálně rostoucím čekací doba nastavena. Protokol výstrah pouze aktivační události po dat je k dispozici, takže jejich zpoždění může být způsobeno ingestování protokol pomalých operací. 
 
@@ -84,7 +84,7 @@ Další podrobné jsou některé běžné důvody, proč nakonfigurovaného [pra
 
 ### <a name="alert-triggered-by-partial-data"></a>Výstraha se aktivuje částečná data
 
-Provozování Log Analytics a Application Insights Analytics podléhají zpoždění ingestování a zpracování. to v době při spuštění dotaz na upozornění protokolu zadaná - může být případ žádná data k dispozici nebo jenom některá data, které jsou k dispozici. Další informace najdete v tématu [doba příjem dat v Log Analytics](../platform/data-ingestion-time.md).
+Provozování Log Analytics a Application Insights Analytics podléhají zpoždění ingestování a zpracování. to v době při spuštění dotaz na upozornění protokolu zadaná - může být případ žádná data k dispozici nebo jenom některá data, které jsou k dispozici. Další informace najdete v tématu [Čas pro příjem dat v Log Analytics](../platform/data-ingestion-time.md).
 
 V závislosti na konfiguraci pravidla upozornění, může mít chybné spalování neexistuje žádná data nebo částečná data v protokolech v době spuštění výstrahy. V takovém případě doporučujeme vám změnit dotaz na upozornění nebo konfigurace. 
 

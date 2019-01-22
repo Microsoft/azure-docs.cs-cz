@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: HT
+ms.openlocfilehash: 6b36cdecb178a7189773abbfe963411e19764401
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311384"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438656"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Kurz: Informace o řízení virtuálních počítačů s Windows pomocí Azure PowerShellu
+# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Kurz: Další informace o řízení virtuálních počítačů Windows pomocí Azure Powershellu
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Příklady v tomto článku vyžadují prostředí Azure PowerShell verze 6.0 nebo novější. Pokud používáte PowerShell místně a nemáte verzi 6.0 nebo novější, [proveďte aktualizaci](/powershell/azure/install-azurerm-ps). Musíte také spustit příkaz `Connect-AzureRmAccount`, abyste vytvořili připojení k Azure. Pro místní instalace musíte také [stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) k vytvoření nové skupiny Azure Active Directory.
+Příklady v tomto článku vyžadují prostředí Azure PowerShell verze 6.0 nebo novější. Pokud používáte PowerShell místně a nemáte verzi 6.0 nebo novější, [proveďte aktualizaci](/powershell/azure/azurerm/install-azurerm-ps). Musíte také spustit příkaz `Connect-AzureRmAccount`, abyste vytvořili připojení k Azure. Pro místní instalace musíte také [stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) k vytvoření nové skupiny Azure Active Directory.
 
 ## <a name="understand-scope"></a>Orientace v oborech
 
@@ -222,7 +222,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili jste se tyto postupy:
 

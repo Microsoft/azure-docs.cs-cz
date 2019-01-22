@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: cda439973c584a57cadc30de7fb931732682de00
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 73d14ebf8ed365659ec547469cd903d5db22c561
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092453"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428609"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spouštění balíčků služby SSIS se spuštění aktivity balíčku SSIS v Azure Data Factory
 Tento článek popisuje způsob spouštění balíčku služby SSIS v kanálu Azure Data Factory pomocí aktivity spustit balíčků služby SSIS. 
@@ -28,7 +28,7 @@ Tento článek popisuje způsob spouštění balíčku služby SSIS v kanálu Az
 **Azure SQL Database**. Názorný postup v tomto článku se používá Azure SQL database, který hostuje katalog služby SSIS. Můžete také použít Azure SQL Database Managed Instance.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Vytvoření prostředí Azure-SSIS Integration Runtime
-Vytvořit prostředí Azure-SSIS integration runtime, pokud nemáte podle podrobných pokynů v [kurz: balíčků služby SSIS nasazovat](tutorial-create-azure-ssis-runtime-portal.md).
+Pokud nemáte podle podrobných pokynů v, vytvořte prostředí Azure-SSIS integration runtime [kurzu: Nasazení balíčků SSIS](tutorial-create-azure-ssis-runtime-portal.md).
 
 ## <a name="run-a-package-in-the-azure-portal"></a>Spuštění balíčku na webu Azure Portal
 V této části použijete uživatelské rozhraní služby Data Factory k vytvoření kanálu Data Factory s aktivitou spuštění balíčku služby SSIS, na kterém běží balíčku SSIS.
@@ -137,7 +137,7 @@ Můžete také vytvořit naplánovanou aktivační událost pro svůj kanál tak
 ## <a name="run-a-package-with-powershell"></a>Spusťte balíček pomocí Powershellu
 V této části použijete Azure PowerShell k vytvoření kanálu Data Factory s aktivitou spuštění balíčku služby SSIS, na kterém běží balíčku SSIS. 
 
-Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-azurerm-ps). 
+Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps). 
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 Můžete použít stejné datové továrny, který má Azure-SSIS IR, nebo vytvořit samostatné datové továrny. Následující postup předvádí kroky k vytvoření datové továrny. Vytvoření kanálu s aktivitou spuštění balíčku služby SSIS v této datové továrně. Spuštění aktivit spuštění balíčku služby SSIS balíčku služby SSIS. 
@@ -180,7 +180,7 @@ Je třeba počítat s následujícím:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure.
-* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Vytvoření kanálu s aktivitou spuštění balíčku služby SSIS 
 V tomto kroku vytvoříte kanál s aktivitou spuštění balíčku služby SSIS. Spuštění aktivit vašeho balíčku služby SSIS. 

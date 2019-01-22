@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: ergreenl
-ms.openlocfilehash: b58df5ebf5332688424ac6ed2eeb9679487bcdc4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ce6d3815e562e5ada2a70ebaff04f9abc20b714c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240252"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426535"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolit Azure Active Directory Domain Services pomocí Powershellu
 Tento článek popisuje, jak povolit Azure Active Directory (AD) Domain Services pomocí Powershellu.
@@ -31,17 +31,17 @@ Tento článek popisuje, jak povolit Azure Active Directory (AD) Domain Services
 Postupujte podle pokynů v článku [instalace modulu Azure AD PowerShell a připojte se k Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 ### <a name="install-and-configure-azure-powershell"></a>Instalace a konfigurace Azure Powershellu
-Postupujte podle pokynů v článku [instalace modulu Azure PowerShell a připojte se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+Postupujte podle pokynů v článku [instalace modulu Azure PowerShell a připojte se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 
-## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>Úkol 2: Vytvoření požadované instančního objektu v adresáři služby Azure AD
+## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>Úloha 2: Vytvoření instančního objektu požadovaná služba v adresáři služby Azure AD
 Zadejte následující příkaz prostředí PowerShell k vytvoření instančního objektu služby, vyžaduje se pro Azure AD Domain Services v adresáři služby Azure AD.
 ```powershell
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>Úloha 3: Vytvoření a konfigurace skupiny "Správci AAD DC.
+## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>Úloha 3: Vytvořte a nakonfigurujte skupinu "Správci AAD DC.
 Dalším krokem je vytvoření skupiny správců, který se použije k delegování úkolů správy ve vaší spravované doméně.
 ```powershell
 # Create the delegated administration group for AAD Domain Services.
@@ -67,14 +67,14 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>Úloha 4: Zaregistrujte poskytovatele prostředků služby Azure AD Domain Services
+## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>Úloha 4: Registrace poskytovatele prostředků služby Azure AD Domain Services
 Zadejte následující příkaz Powershellu zaregistrujte poskytovatele prostředků služby Azure AD Domain Services:
 ```powershell
 # Register the resource provider for Azure AD Domain Services with Resource Manager.
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-## <a name="task-5-create-a-resource-group"></a>Úloha 5: Vytvořte skupinu prostředků
+## <a name="task-5-create-a-resource-group"></a>Úloha 5: Vytvoření skupiny prostředků
 Zadejte následující příkaz prostředí PowerShell k vytvoření skupiny prostředků:
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"

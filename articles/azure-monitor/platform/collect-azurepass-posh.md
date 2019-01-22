@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
-ms.openlocfilehash: b7896ccc979d7c5bcdf6c46cbbef01d261a3a625
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3a20884dedf2d0f197cd73f0e67f412633736686
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183892"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421571"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurace shromažďování metrik prostředků Azure PaaS s využitím Log Analytics
 
@@ -37,7 +37,7 @@ Ověřte, že máte následující moduly Azure Resource Manageru nainstalované
 >[!NOTE]
 >Doporučujeme vám, že všechny moduly Azure Resource Manageru jsou stejné verze pro zajištění kompatibilitě, když spustíte příkazy Azure Resource Manageru v Powershellu.
 >
-Nainstalujte nejnovější moduly Azure Resource Manageru ve vašem počítači, naleznete v tématu [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps).  
+Nainstalujte nejnovější moduly Azure Resource Manageru ve vašem počítači, naleznete v tématu [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.1#update-azps).  
 
 ## <a name="enable-azure-diagnostics"></a>Povolení diagnostiky Azure  
 Konfigurace diagnostiky Azure pro prostředky PaaS dosahuje spuštěním skriptu **povolit AzureRMDiagnostics.ps1**, který je k dispozici [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Enable-AzureRMDiagnostics/2.52).  Tento skript podporuje následující scénáře:

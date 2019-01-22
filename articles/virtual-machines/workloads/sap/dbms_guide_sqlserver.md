@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 78ad40796a31e0c803b892e0c1b50e66b32c2b0a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430166"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425872"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení SQL serveru Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -235,7 +235,7 @@ ms.locfileid: "49430166"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -328,9 +328,9 @@ V následujících částech jsou části částí dokumentace v části výše 
 
 V IaaS konkrétní informace, které byste měli znát před pokračováním je některé SQL Server:
 
-* **Podpora verzí SQL**: Zákazníci pro SAP, SQL Server 2008 R2 a vyšší je podporovaná ve virtuálních počítačích Microsoft Azure. Starší verze nepodporují. Kontrola této Obecné [prohlášení o odborné pomoci](https://support.microsoft.com/kb/956893) další podrobnosti. Obecně platí SQL Server 2008 je společnost Microsoft podporuje také. Ale protože významné funkce pro SAP, která byla zavedena v systému SQL Server 2008 R2, SQL Server 2008 R2 je minimální verzi pro SAP. Obecně platí měli byste zvážit použití nejnovější serveru SQL Server verze spouštění úloh SAP v Azure IaaS. Nejnovější verze systému SQL Server nabízejí lepší integraci do služby Azure a funkce. Nebo obsahují změny, které optimalizaci operací v infrastruktuře Azure IaaS. Proto je omezen na SQL Server 2016 a SQL serverem 2017 papíru.
+* **Podpora verzí SQL**: Pro zákazníky, SAP, SQL Server 2008 R2 a vyšší je podporovaná ve virtuálních počítačích Microsoft Azure. Starší verze nepodporují. Kontrola této Obecné [prohlášení o odborné pomoci](https://support.microsoft.com/kb/956893) další podrobnosti. Obecně platí SQL Server 2008 je společnost Microsoft podporuje také. Ale protože významné funkce pro SAP, která byla zavedena v systému SQL Server 2008 R2, SQL Server 2008 R2 je minimální verzi pro SAP. Obecně platí měli byste zvážit použití nejnovější serveru SQL Server verze spouštění úloh SAP v Azure IaaS. Nejnovější verze systému SQL Server nabízejí lepší integraci do služby Azure a funkce. Nebo obsahují změny, které optimalizaci operací v infrastruktuře Azure IaaS. Proto je omezen na SQL Server 2016 a SQL serverem 2017 papíru.
 * **Výkon SQL**: Microsoft Azure a porovnání jiné nabídky veřejného cloudu virtualizace, ale jednotlivé výsledky provedení hostované virtuální počítače se můžou lišit. Podívejte se článek [osvědčené postupy z hlediska výkonu pro SQL Server ve službě Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
-* **Pomocí Imagí z webu Azure Marketplace**: nejrychlejší způsob, jak nasadit nový virtuální počítač Microsoft Azure je chcete použít některou image z Azure Marketplace. Existují imagí v Tržišti Azure Marketplace, které obsahují nejnovější verze systému SQL Server. Obrázky, kde je již nainstalován SQL Server nelze použít pro aplikace SAP NetWeaver okamžitě. Důvodem je, že výchozí kolace systému SQL Server je nainstalovaný v rámci těchto imagí a nejsou vyžadované systémy SAP NetWeaver kolace. Chcete-li použít tyto bitové kopie, zkontrolujte kroky popsané v kapitole [pomocí bitové kopie systému SQL Server z webu Microsoft Azure Marketplace][dbms-guide-5.6]. 
+* **Pomocí Imagí z webu Azure Marketplace**: Nejrychlejší způsob, jak nasadit nový virtuální počítač Microsoft Azure je chcete použít některou image z Azure Marketplace. Existují imagí v Tržišti Azure Marketplace, které obsahují nejnovější verze systému SQL Server. Obrázky, kde je již nainstalován SQL Server nelze použít pro aplikace SAP NetWeaver okamžitě. Důvodem je, že výchozí kolace systému SQL Server je nainstalovaný v rámci těchto imagí a nejsou vyžadované systémy SAP NetWeaver kolace. Chcete-li použít tyto bitové kopie, zkontrolujte kroky popsané v kapitole [pomocí bitové kopie systému SQL Server z webu Microsoft Azure Marketplace][dbms-guide-5.6]. 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Doporučení pro virtuální počítač nebo virtuální pevný disk strukturu pro nasazení SAP související SQL serveru
@@ -392,7 +392,7 @@ Podrobnosti o této funkci najdete v článku [datové soubory SQL serveru v Mic
 Doporučení pro produkční systémy se vyhnout této konfigurace a místo toho zvolte umístění dat SQL serveru a souborů protokolů v Azure Premium Storage virtuální pevné disky místo přímo na objektech BLOB Azure.
 
 
-## <a name="sql-server-2014-buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti SQL serveru 2014
+## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014 Buffer Pool Extension
 SQL Server 2014 zavedli novou funkci, která se nazývá [rozšíření fondu vyrovnávací paměti](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension?view=sql-server-2017). Tato funkce rozšíření fondu vyrovnávací paměti systému SQL Server, který je uložen v paměti s mezipamětí druhé úrovně, která je založená na místní jednotky SSD serveru nebo na virtuálním počítači. Rozšíření fondu vyrovnávací paměti povolí, uchovávání větší pracovní sadu dat "v paměti". Ve srovnání s přístupem k Azure Standard Storage přístup do rozšíření fondu vyrovnávací paměti, který je uložený na místní SSD disků virtuálního počítače Azure je řada faktorů rychleji. Rozšíření fondu vyrovnávací paměti do mezipaměti Azure Premium Storage pro čtení, porovnání podle doporučení pro datové soubory SQL serveru, jsou pro rozšíření fondu vyrovnávací paměti neočekávají žádné významné výhody. Důvodem je, že oba mezipamětí (rozšíření fondu vyrovnávací paměti SQL serveru a mezipaměť pro čtení úložiště úrovně Premium) budou používat místní disky výpočetního uzlu Azure.
 
 Zkušenosti získané do té doby se rozšíření fondu vyrovnávací paměti SQL serveru s úlohami SAP je a stále neumožňuje vymazat doporučení na, jestli se má použít ve všech případech. Ideálním případem je, že pracovní sady, které vyžaduje aplikace SAP zapadá do hlavní paměti. Díky Azure mezitím nabídky virtuálních počítačů, které jsou součástí až na 4 TB paměti by měl být dosažitelný zachovat pracovní sady v paměti. Proto využití rozšíření fondu vyrovnávací paměti je omezená na některých výjimečných případech a by neměl být hlavní fáze technické případ.  
@@ -422,8 +422,8 @@ Automatizované zálohování poskytuje automatické zálohování služby pro e
 
 Další podrobnosti o možnostech této metody můžete najít v těchto článcích:
 
-- SQL Server 2014: [automatizované zálohování pro SQL Server 2014 Virtual Machines (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
-- SQL Server 2016 a 2017: [automatizované zálohování v2 pro Azure Virtual Machines (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
+- SQL Server 2014: [Automatizovaná záloha pro SQL Server 2014 Virtual Machines (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
+- SQL Server 2016/2017: [Automatizované zálohování v2 pro Azure Virtual Machines (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
 Podívat se na dokumentaci, uvidíte, že vylepšené funkce s novější verzí systému SQL Server. Některé další podrobnosti o systému SQL Server v tomto článku se vydávají automatizovaných záloh [spravované zálohování SQL serveru do Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017). Omezení velikosti teoretické zálohování je 12 TB.  Automatizované zálohování může být vhodné metody pro zálohování velikosti až 12 TB. Vzhledem k tomu víc objektů blob se zapisují do paralelně, můžete očekávat propustnost větší než 100 MB/s. 
  
@@ -450,7 +450,7 @@ Vzhledem k tomu, že Image SQL serveru na webu Azure Marketplace nejsou nastaven
 
 * Jako správce otevřete okno příkazového řádku Windows.
 * Změňte adresář na C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Spusťte příkaz: Setup.exe/quiet nezobrazí /ACTION = InstanceName REBUILDDATABASE = MSSQLSERVER /SQLSYSADMINACCOUNTS =`<local_admin_account_name`> /SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+* Spusťte příkaz: Setup.exe/quiet /ACTION = InstanceName REBUILDDATABASE = MSSQLSERVER /SQLSYSADMINACCOUNTS =`<local_admin_account_name`> /SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> je účet, který byl definován jako účet správce při nasazování virtuálního počítače poprvé v galerii.
 
 Proces zabere jenom pár minut. Pokud chcete mít jistotu, zda se na krok skončila s správný výsledek, proveďte následující kroky:

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vynucení vícefaktorového ověřování pro uživatele typu host B2B služby Azure AD'
+title: 'Kurz: Vynutit ověřování Multi-Factor Authentication pro uživatele typu Host Azure AD s B2B'
 description: Zjistěte, jak vyžadovat vícefaktorové ověřování (MFA), když používáte B2B služby Azure AD ke spolupráci s externími uživateli a partnerskými organizacemi.
 services: active-directory
 ms.service: active-directory
@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 34ca5667b5bf47bec8c48a7e5836b7d51ad08724
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 88225ee7aeefd9030e754f2b1abc66e4c05e5c6b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986813"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431164"
 ---
-# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Kurz: Vynucení vícefaktorového ověřování pro uživatele typu host B2B
+# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Kurz: Vynutit ověřování Multi-Factor Authentication pro uživatele typu Host B2B
 
 Když spolupracujete s externími uživateli typu host B2B, je vhodné si své aplikace chránit zásadami vícefaktorového ověřování (MFA). Externí uživatelé budou potřebovat víc než jen uživatelské jméno a heslo, aby získali přístup k vašim prostředkům. V Azure Active Directory (Azure AD) toho můžete dosáhnout pomocí zásad podmíněného přístupu, které pro přístup vyžadují vícefaktorové ověřování. Zásady vícefaktorového ověřování je možné vynucovat na úrovni tenanta, aplikace nebo jednotlivých uživatelů typu host úplně stejným způsobem, jako když se používají u členů vaší organizace.
 
@@ -138,5 +138,5 @@ Když už testovacího uživatele ani testovací zásady podmíněného přístu
 5.  V levém podokně vyberte **Azure Active Directory**.
 6.  V části **Zabezpečení** vyberte **Podmíněný přístup**.
 7.  Na seznamu **Název zásady** vyberte u testovací zásady místní nabídku (...) a pak vyberte **Odstranit**. Odstranění potvrďte výběrem **Ano**.
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili zásady podmíněného přístupu, které vyžadují, aby uživatelé typu host používali při přihlašování k jedné z vašich cloudových aplikací vícefaktorové ověřování. Další informace o přidávání uživatelů typu host ke spolupráci najdete v článku o [přidávání uživatelů pro spolupráci B2B služby Azure Active Directory na webu Azure Portal](add-users-administrator.md).

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 06f05da839ebca2ae53e255acce7f07d1989673c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6da222086f29c4b492652d924b4d98e9780eaa53
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539767"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434593"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Vytvoření IoT hubu pomocí poskytovatel prostředků REST API (.NET)
 
@@ -23,7 +23,7 @@ ms.locfileid: "38539767"
 Můžete použít [rozhraní REST API poskytovatele prostředků služby IoT Hub] [ lnk-rest-api] můžete vytvářet a spravovat služby Azure IoT hubs prostřednictvím kódu programu. V tomto kurzu se dozvíte, jak vytvořit IoT hub z programu v jazyce C# pomocí rozhraní REST API poskytovatele prostředků služby IoT Hub.
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manageru a Klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Azure Resource Manageru.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Azure Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Azure Resource Manageru.
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -188,7 +188,7 @@ Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 

@@ -3,22 +3,22 @@ title: Plány ve službě Azure Automation
 description: Plány služeb automatizace se používají k plánování runbooků ve službě Azure Automation, aby se spouštěla automaticky. Popisuje, jak vytvářet a spravovat plán v tak, aby může automaticky spustit runbook v určitou dobu nebo podle plánu opakování.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d8492d2a8982c9c85bfc91867f7eb6c2da04e58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c1c36736e9d023ab1bd2ed607638b600bc468f2c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294760"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437212"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Naplánování runbooku v Azure Automation
 
-Plánování runbooku ve službě Azure Automation ke spuštění v určenou dobu, můžete ho propojit s jedním nebo víc plány. Plán můžete nakonfigurovat na spuštění jednou nebo vyskytovat nadále hodinové nebo denní plán pro sady runbook na portálu Azure portal. Můžete také naplánovat je pro každý týden, měsíc, konkrétní dny v týdnu nebo dny v měsíci nebo konkrétní den v měsíci. Sady runbook lze propojit s více plánů a plán může mít víc runbooků k němu.
+Plánování runbooku ve službě Azure Automation ke spuštění v určenou dobu, můžete ho propojit s jedním nebo víc plány. Plán můžete nakonfigurovat na spuštění jednou nebo vyskytovat nadále hodinové nebo denní plán pro sady runbook na portálu Azure portal. Můžete také naplánovat je pro každý týden, měsíc, konkrétní dny v týdnu nebo dny v měsíci nebo konkrétní den v měsíci. Runbook můžete spojit s víc plány a k jednomu plánu může být připojených víc Runbooků.
 
 > [!NOTE]
 > Plány Azure Automation DSC konfigurace aktuálně nepodporují.
@@ -71,7 +71,7 @@ $scheduleName -StartTime "7/01/2016 15:30:00" -MonthInterval 1 `
 
 ## <a name="linking-a-schedule-to-a-runbook"></a>Připojení plánu k runbooku
 
-Sady runbook lze propojit s více plánů a plán může mít víc runbooků k němu. Pokud runbook obsahuje parametry, můžete zadat hodnoty pro ně. Musíte zadat hodnoty všech povinných parametrů a může poskytnout hodnoty pro všechny volitelné parametry. Tyto hodnoty se používají při každém spuštění runbooku pomocí tohoto plánu. Můžete připojit stejnou sadu runbook na jiný plán a zadejte jiné hodnoty parametru.
+Runbook můžete spojit s víc plány a k jednomu plánu může být připojených víc Runbooků. Pokud runbook obsahuje parametry, můžete zadat hodnoty pro ně. Musíte zadat hodnoty všech povinných parametrů a může poskytnout hodnoty pro všechny volitelné parametry. Tyto hodnoty se používají při každém spuštění runbooku pomocí tohoto plánu. Můžete připojit stejnou sadu runbook na jiný plán a zadejte jiné hodnoty parametru.
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Připojení plánu k runbooku pomocí portálu Azure portal
 
@@ -129,3 +129,4 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 ## <a name="next-steps"></a>Další postup
 
 * Začínáme se sadami runbook ve službě Azure Automation najdete v článku [spuštění Runbooku ve službě Azure Automation](automation-starting-a-runbook.md)
+

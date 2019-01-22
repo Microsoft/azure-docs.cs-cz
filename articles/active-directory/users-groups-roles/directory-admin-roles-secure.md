@@ -13,16 +13,16 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c2ee0834b0c6872d96bebe71231f1a9424ff261a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387076"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438146"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
-Zabezpečení většiny nebo veškerých podnikových prostředků v moderních organizacích závisí na integritě privilegovaných účtů, které spravují a řídí systémy IT. Útočníky včetně internetoví útočníci často cílí účtům pro správu a další prvky privilegovaného přístupu, pokusí se rychle získat přístup k citlivým datům a systémům pomocí útoků využívajících krádež přihlašovacích údajů. Pro cloud services, ochrany před únikem informací a odpovědi jsou společné odpovědnost poskytovatel cloudových služeb a zákazníka. Další informace o nejnovějších hrozbách do koncových bodů a cloud, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/sir/default.aspx). Tento článek pomáhají při vývoji plánu směrem k uzavření mezery mezi vašich aktuálních plánů a pokyny popsané.
+Zabezpečení většiny nebo veškerých podnikových prostředků v moderních organizacích závisí na integritě privilegovaných účtů, které spravují a řídí systémy IT. Útočníky včetně internetoví útočníci často cílí účtům pro správu a další prvky privilegovaného přístupu, pokusí se rychle získat přístup k citlivým datům a systémům pomocí útoků využívajících krádež přihlašovacích údajů. Pro cloud services, ochrany před únikem informací a odpovědi jsou společné odpovědnost poskytovatel cloudových služeb a zákazníka. Další informace o nejnovějších hrozbách do koncových bodů a cloud, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report). Tento článek pomáhají při vývoji plánu směrem k uzavření mezery mezi vašich aktuálních plánů a pokyny popsané.
 
 > [!NOTE] 
 > Společnost Microsoft se zavazuje poskytovat nejvyšší úrovně důvěryhodnosti, transparentnosti, shoda se standardy a předpisy. Další informace o jak globální reakce na incidenty týmu Microsoftu snižuje důsledky útoků proti cloudové služby a jak zabezpečení je integrováno do produktů Microsoft business a cloudovým službám v [Microsoft Trust Center - zabezpečení](https://www.microsoft.com/trustcenter/security)a Microsoft dodržování předpisů cílí na [Microsoft Trust Center - dodržování předpisů](https://www.microsoft.com/trustcenter/compliance).
@@ -446,7 +446,7 @@ Další informace o tom, jak Microsoft Office 365 zpracovává bezpečnostní in
 
 * [Pokyny o tom, jak provést vyhodnocení rizik](https://www.microsoft.com/trustcenter/guidance/risk-assessment) – Spravovat požadavky na zabezpečení a dodržování předpisů pro cloudové služby Microsoftu
 
-### <a name="other-ms-online-services"></a>Další Online služby MS 
+### <a name="other-ms-online-services"></a>Other MS Online Services 
 
 * [Microsoft Intune zabezpečení](https://www.microsoft.com/trustcenter/security/intune-security) – Intune poskytuje správu mobilních zařízení, správy mobilních aplikací a možnosti správy počítačů z cloudu.
 

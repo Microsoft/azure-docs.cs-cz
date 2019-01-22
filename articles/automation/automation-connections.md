@@ -3,18 +3,18 @@ title: Assety připojení v Azure Automation.
 description: Assety připojení v Azure Automation. obsahují informace potřebné pro připojení k externí službě nebo aplikaci z runbooku nebo konfigurace DSC. Tento článek vysvětluje podrobnosti připojení a jak pracovat s nimi v textové a grafické vytváření obsahu.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358826"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439013"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -164,3 +164,4 @@ azure_credential = get_automation_runas_credential(runas_connection)
 - Kontrola [odkazy v vytváření grafického obsahu](automation-graphical-authoring-intro.md#links-and-workflow) pochopit, jak k řízení a řízení toku logiku v runboocích.  
 
 - Další informace o službě Azure Automation použití modulů Powershellu a osvědčené postupy pro vytváření vlastních modulů Powershellu fungovat jako moduly integrace v rámci Azure Automation najdete v tématu [moduly integrace](automation-integration-modules.md).  
+

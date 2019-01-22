@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b772aa314316906a4079e3d6b8b4e0aeb0f54fba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4339782304f1bc175f1066954f1050bc00f25005
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022984"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434236"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration Runtime ve službě Azure Data Factory
 Tento článek popisuje kroky pro zřízení prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF). Potom můžete použít SQL Server Data Tools (SSDT) nebo SQL Server Management Studio (SSMS) k nasazení a spouštění balíčků SQL Server Integration Services (SSIS) v tomto modulu integration runtime v Azure. 
@@ -50,7 +50,7 @@ Když si zřídíte Azure-SSIS IR, nainstaluje se také Azure Feature Pack for S
     - Na serveru Azure SQL Database s koncovými body služby virtuální sítě nebo spravovanou instanci, která je ve virtuální síti, jsou hostiteli databáze SSISDB. 
     - Chcete se připojit k datům v místním úložišti z balíčků SSIS spuštěných v Azure-SSIS IR. 
 
-- **Azure PowerShell**. Postupujte podle pokynů [instalace a konfigurace Azure Powershellu](/powershell/azure/install-azurerm-ps), pokud chcete spustit skript prostředí PowerShell ke zřízení prostředí Azure-SSIS IR. 
+- **Azure PowerShell**. Postupujte podle pokynů [instalace a konfigurace Azure Powershellu](/powershell/azure/azurerm/install-azurerm-ps), pokud chcete spustit skript prostředí PowerShell ke zřízení prostředí Azure-SSIS IR. 
 
 ### <a name="region-support"></a>Oblasti podpory
 Seznam oblastí Azure, ve kterých jsou aktuálně k dispozici, ADF a Azure-SSIS IR najdete v části [ADF + SSIS IR dostupnost podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 

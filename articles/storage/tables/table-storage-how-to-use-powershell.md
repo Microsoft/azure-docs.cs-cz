@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: rogarana
 ms.component: cosmosdb-table
-ms.openlocfilehash: 9aa3431e91196d7c33582d17494ddf0c32fba704
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: af76f67ba97b820d8571fd4f6bd3409396fb27ce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634469"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433182"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provádění operací Azure Table storage pomocí Azure Powershellu 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,7 @@ Tento článek popisuje běžné operace Azure Table storage. Získáte informac
 
 Tento článek ukazuje, jak vytvořit nový účet úložiště Azure do nové skupiny prostředků, takže je můžete snadno odebrat po dokončení. Pokud místo toho můžete využít existující účet úložiště, můžete to udělat místo.
 
-V příkladech vyžaduje modul Azure PowerShell `AzureRM` verze 4.4.0 nebo novější. V okně Powershellu, spusťte `Get-Module -ListAvailable AzureRM` k vyhledání verze. Pokud se nezobrazí nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+V příkladech vyžaduje modul Azure PowerShell `AzureRM` verze 4.4.0 nebo novější. V okně Powershellu, spusťte `Get-Module -ListAvailable AzureRM` k vyhledání verze. Pokud se nezobrazí nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 

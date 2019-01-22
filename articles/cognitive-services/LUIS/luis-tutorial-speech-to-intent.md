@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 8e664e26a2cafc2f0b32ebea0f019918426d956c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2d212ae8f5a12c06f40e025a7a8d786a44194a92
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714574"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438724"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Speech service integrovat s vaší aplikací Language Understanding
 [Služba Speech](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) služby Speech, který je již zahrnutý jako odkaz. 
@@ -24,7 +24,7 @@ ms.locfileid: "53714574"
 Pro účely tohoto článku potřebujete bezplatný webový účet [LUIS][LUIS], abyste mohli aplikaci importovat.
 
 ## <a name="create-luis-endpoint-key"></a>Vytvoření klíče koncového bodu služby LUIS
-Na webu Azure Portal [vytvořte](luis-how-to-azure-subscription.md#create-luis-endpoint-key) klíč služby **Language Understanding** (LUIS). 
+Na webu Azure Portal [vytvořte](luis-how-to-azure-subscription.md) klíč služby **Language Understanding** (LUIS). 
 
 ## <a name="import-human-resources-luis-app"></a>Import aplikace LUIS pro lidské zdroje
 Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidské zdroje, k dispozici [Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) úložiště GitHub. Stáhněte soubor [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json), uložte ho s příponou `.json` a [importujte](luis-how-to-start-new-app.md#import-new-app) ho do služby LUIS. 

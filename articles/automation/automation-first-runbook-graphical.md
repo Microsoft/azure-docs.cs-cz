@@ -4,18 +4,18 @@ description: Kurz vás provede vytvořením, otestováním a publikováním jedn
 keywords: runbook, šablona sady runbook, automatizace sady runbook, runbook azure
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a9e6bbf3bc507a4d45af03c791104c9490cd36f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: be811d0dc2ce2eca0b20ca12165eaf0799bd6b5d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195892"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426782"
 ---
 # <a name="my-first-graphical-runbook"></a>Můj první grafický runbook
 
@@ -56,7 +56,7 @@ Ovládací prvek Knihovna na levé straně editoru vám umožní vybrat aktivity
 
 1. V ovládacím prvku Knihovna klikněte do textového pole hledání a zadejte text **Write-Output**. Výsledky hledání jsou znázorněné na následujícím obrázku: <br> ![Microsoft.PowerShell.Utility](media/automation-first-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
 1. Přejděte do dolní části seznamu. Můžete buď kliknout pravým tlačítkem na **Write-Output** a vybrat **Přidat na plátno**, nebo kliknout na tři tečky vedle rutiny a vybrat **Přidat na plátno**.
-1. Klikněte na aktivitu **Write-Output** na plátně. Tato akce otevře stránce ovládacího prvku konfigurace, které umožňuje konfigurovat aktivity.
+1. Klikněte na aktivitu **Write-Output** na plátně. Tato akce otevře stránku ovládací prvek konfigurace, které umožňuje aktivitu konfigurovat.
 1. **Popisek** obsahuje ve výchozím nastavení název rutiny, ale můžete ho změnit na něco popisnějšího. Změňte ho na *Textový výstup Hello World*.
 1. Klikněte na tlačítko **Parametry** a zadejte hodnoty parametru rutiny.
 
@@ -74,7 +74,7 @@ Ovládací prvek Knihovna na levé straně editoru vám umožní vybrat aktivity
 
 Před publikováním runbooku, které ho zpřístupní v produkčním prostředí, byste měli runbook otestovat a ujistit se, že funguje správně. Když runbook testujete, spustíte jeho  verzi **Koncept** a interaktivně zobrazíte jeho výsledek.
 
-1. Vyberte **testovací podokno** chcete otevřít stránku testu.
+1. Vyberte **testovací podokno** otevřete stránku testu.
 1. Kliknutím na **Spustit** spustíte test. Měla by to být jediná povolená možnost.
 1. Vytvoří se [úloha runbooku](automation-runbook-execution.md) a její stav se zobrazí v podokně.
 
@@ -88,18 +88,18 @@ Před publikováním runbooku, které ho zpřístupní v produkčním prostřed�
 Vytvořený runbook je stále v režimu konceptu. Abyste ho mohli spustit v produkčním prostředí, je potřeba ho publikovat. Když runbook publikujete, přepíšete vydanou verzi verzí v režimu konceptu. V tomto případě zatím ještě publikovanou verzi nemáte, protože jste runbook teprve vytvořili.
 
 1. Vyberte **publikovat** Publikovat sadu runbook a potom **Ano** po zobrazení výzvy.
-1. Pokud jste posunete doleva, abyste runbook viděli v **sady Runbook** stránce se zobrazí **stav vytváření** z **publikováno**.
-1. Posuňte se zpět doprava, abyste viděli stránce **MyFirstRunbook-Graphical**.
+1. Pokud posunete doleva, abyste runbook viděli v **sady Runbook** stránce ukazuje **stav vytváření** z **publikováno**.
+1. Posuňte se zpět doprava, abyste viděli na stránce pro **MyFirstRunbook-Graphical**.
 
    Možnosti v horní části nám umožňují spuštění runbooku, naplánování jeho spuštění někdy v budoucnu nebo vytvoření [webhooku](automation-webhooks.md), který umožní spuštění prostřednictvím volání protokolu HTTP.
 
-1. Vyberte **spustit** a potom **Ano** po zobrazení výzvy pro spuštění sady runbook.
-1. Na stránce úlohy je otevřené úlohy runbooku, který byl vytvořen. Ověřte, že se jako **Stav úlohy** zobrazuje **Dokončeno**.
-1. Když se jako stav runbooku zobrazí *Dokončeno*, klikněte na **Výstup**. **Výstup** otevření stránky a zobrazí se *Hello, World* v podokně.
+1. Vyberte **Start** a potom **Ano** po zobrazení výzvy pro spuštění sady runbook.
+1. Na stránce úlohy je otevřen pro úlohy runbooku, který byl vytvořen. Ověřte, že se jako **Stav úlohy** zobrazuje **Dokončeno**.
+1. Když se jako stav runbooku zobrazí *Dokončeno*, klikněte na **Výstup**. **Výstup** stránka se otevře a zobrazí se *Hello World* v podokně.
 1. Zavřete stránku výstup.
-1. Klikněte na tlačítko **všechny protokoly** chcete otevřít stránku datové proudy k úloze runbooku. Ve výstupním datovém proudu byste měli vidět jenom text *Hello World*, ale můžou se zobrazit i jiné datové proudy z úlohy runbooku, například Podrobný nebo Chyba, pokud do nich runbook zapisuje.
-1. Zavřete stránku všechny protokoly a návrat na stránku MyFirstRunbook-Graphical stránky úlohy.
-1. Chcete-li zobrazit všechny úlohy pro runbook zavřete **úlohy** a vyberte **úlohy** pod **prostředky**. Vypíšou se všechny úlohy, které tento runbook vytvořil. Ve výpisu by se měla zobrazit pouze jedna úloha, protože jste ji spustili jenom jednou.
+1. Klikněte na tlačítko **všechny protokoly** otevřete stránku datové proudy úlohy runbooku. Ve výstupním datovém proudu byste měli vidět jenom text *Hello World*, ale můžou se zobrazit i jiné datové proudy z úlohy runbooku, například Podrobný nebo Chyba, pokud do nich runbook zapisuje.
+1. Zavřete všechny protokoly stránku a na stránku úlohy se vrátíte na stránku MyFirstRunbook-Graphical.
+1. Chcete-li zobrazit všechny úlohy runbooku, zavřete **úlohy** stránku a vybrat **úlohy** v části **prostředky**. Vypíšou se všechny úlohy, které tento runbook vytvořil. Ve výpisu by se měla zobrazit pouze jedna úloha, protože jste ji spustili jenom jednou.
 1. Na tuto úlohu můžete kliknout a otevřít podokno Úloha, které jste zobrazili při spuštění runbooku. Pomocí této možnosti se můžete vrátit v čase a zobrazit si podrobnosti libovolné úlohy, která byla pro konkrétní runbook vytvořena.
 
 ## <a name="create-variable-assets"></a>Vytvoření proměnných assetů
@@ -108,31 +108,31 @@ Runbook jste otestovali a publikovali, ale zatím nedělá nic užitečného. Ch
 
 1. Na stránce účty Automation vyberte **proměnné** pod **SDÍLENÉ prostředky**.
 1. Vyberte **přidat proměnnou**.
-1. Na stránce nové proměnné v **název** zadejte **AzureSubscriptionId** a v **hodnotu** pole zadejte ID předplatného. Ponechte *řetězec* možnosti **Typ** a výchozí hodnotu možnosti **Šifrování**.
+1. V nové proměnné stránky v **název** zadejte **AzureSubscriptionId** a **hodnotu** zadejte ID svého předplatného. Ponechte *řetězec* možnosti **Typ** a výchozí hodnotu možnosti **Šifrování**.
 1. Kliknutím na **Vytvořit** vytvořte proměnnou.
 
 ## <a name="add-authentication"></a>Přidání ověřování
 
-Teď, když máte proměnnou, do které se uloží ID předplatného, můžete runbook nakonfigurovat k ověřování pomocí přihlašovacích údajů Spustit jako, které jsou uvedené v [požadavcích](#prerequisites). To uděláte tak, že přidáte připojení spustit v Azure jako **Asset** a **Connect-AzureRmAccount** rutiny na plátno.
+Teď, když máte proměnnou, do které se uloží ID předplatného, můžete runbook nakonfigurovat k ověřování pomocí přihlašovacích údajů Spustit jako, které jsou uvedené v [požadavcích](#prerequisites). Můžete to udělat tak, že přidáte připojení spustit jako pro Azure **Asset** a **Connect-AzureRmAccount** rutiny na plátno.
 
 1. Přejděte zpět do sady runbook a vyberte **upravit** na stránce MyFirstRunbook-Graphical.
-1. Není nutné **zápisu textový výstup Hello World** už nepotřebujeme, takže klikněte na výpustky (...) a vyberte **odstranit**.
+1. Není nutné **zapisovat výstup Hello World** už nepotřebujeme, takže klikněte na symbol tří teček (...) a vyberte **odstranit**.
 1. V ovládacím prvku Knihovna rozbalte **ASSETY**, **Připojení** a výběrem možnosti **Přidat na plátno** přidejte **AzureRunAsConnection** na plátno.
 1. V ovládacím prvku knihovna zadejte **Connect-AzureRmAccount** do textového pole hledání.
 
    > [!IMPORTANT]
-   > **Přidat-AzureRmAccount** je nyní alias **Connect-AzureRMAccount**. Při hledání vaše knihovna položek, pokud se nezobrazí **Connect-AzureRMAccount**, můžete použít **Add-AzureRmAccount**, nebo můžete aktualizovat moduly v účtu Automation.
+   > **Add-AzureRmAccount** je nyní alias pro **Connect-AzureRMAccount**. Při vyhledávání knihovny položky, pokud se nezobrazí **Connect-AzureRMAccount**, můžete použít **Add-AzureRmAccount**, nebo ve vašem účtu Automation můžete aktualizovat moduly.
 
 1. Přidat **Connect-AzureRmAccount** na plátno.
-1. Najeďte ukazatelem myši nad položku **Get Run As Connection**, dokud se v dolní části obrazce nezobrazí kruh. Klikněte na kruh a přetáhněte šipku na **Connect-AzureRmAccount**. Šipka, kterou jste vytvořili, je *odkazem*. Sada runbook začíná **získat připojení spustit jako** a spusťte **Connect-AzureRmAccount**.<br> ![Vytvoření propojení mezi aktivitami](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
-1. Na plátně vyberte **Connect-AzureRmAccount** a v podokně ovládacího prvku konfigurace zadejte **přihlášení k Azure** v **popisek** textové pole.
+1. Najeďte ukazatelem myši nad položku **Get Run As Connection**, dokud se v dolní části obrazce nezobrazí kruh. Klikněte na kruh a přetáhněte šipku na **Connect-AzureRmAccount**. Šipka, kterou jste vytvořili, je *odkazem*. Sada runbook začíná **Get Run As Connection** a pak spusťte **Connect-AzureRmAccount**.<br> ![Vytvoření propojení mezi aktivitami](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
+1. Na plátně, vyberte **Connect-AzureRmAccount** a v podokně ovládacího prvku konfigurace zadejte **přihlášení k Azure** v **popisek** textového pole.
 1. Klikněte na tlačítko **parametry** a zobrazí se stránka konfigurace parametru aktivity.
-1. **Připojit-AzureRmAccount** obsahuje několik sad parametrů, takže je nutné vybrat jeden před zadáním hodnot parametru. Klikněte na **Sada parametrů** a potom vyberte sadu **ServicePrincipalCertificate**.
+1. **Connect-AzureRmAccount** obsahuje několik sad parametrů, takže je nutné vybrat jednu před zadáním hodnot parametrů. Klikněte na **Sada parametrů** a potom vyberte sadu **ServicePrincipalCertificate**.
 1. Po výběru sady parametrů se zobrazí na stránce konfigurace parametru aktivity. Klikněte na **APPLICATIONID**.<br> ![Přidání parametrů účtu Azure RM](media/automation-first-runbook-graphical/Add-AzureRmAccount-params.png)
-1. Na stránce hodnota parametru vyberte **výstup aktivity** pro **zdroj dat** a vyberte **získat připojení spustit jako** ze seznamu v **cesta pole** zadejte **ApplicationId**a potom klikněte na **OK**. Název vlastnosti pro cestu pole zadáváte kvůli tomu, že výstupem aktivity je objekt s více vlastnostmi.
-1. Klikněte na tlačítko **CERTIFICATETHUMBPRINT**a na stránce hodnota parametru vyberte **výstup aktivity** pro **zdroj dat**. V seznamu vyberte **Get Run As Connection**, do textového pole **Cesta pole** zadejte **CertificateThumbrprint**. Potom klikněte na **OK**.
-1. Klikněte na tlačítko **SERVICEPRINCIPAL**a na stránce hodnota parametru vyberte **ConstantValue** pro **zdroj dat**, klikněte na možnost **True**, a pak klikněte na **OK**.
-1. Klikněte na tlačítko **TENANTID**a na stránce hodnota parametru vyberte **výstup aktivity** pro **zdroj dat**. V seznamu vyberte **Get Run As Connection**, do textového pole **Cesta pole** zadejte **TenantId** a potom dvakrát klikněte na tlačítko **OK**.
+1. Na stránce hodnota parametru vyberte **výstup aktivity** pro **zdroj dat** a vyberte **Get Run As Connection** ze seznamu, v **cesta pole** textového pole zadejte **ApplicationId**a potom klikněte na tlačítko **OK**. Název vlastnosti pro cestu pole zadáváte kvůli tomu, že výstupem aktivity je objekt s více vlastnostmi.
+1. Klikněte na tlačítko **CERTIFICATETHUMBPRINT**a hodnota parametru stránce vyberte **výstup aktivity** pro **zdroj dat**. V seznamu vyberte **Get Run As Connection**, do textového pole **Cesta pole** zadejte **CertificateThumbrprint**. Potom klikněte na **OK**.
+1. Klikněte na tlačítko **SERVICEPRINCIPAL**a hodnota parametru stránce vyberte **ConstantValue** pro **zdroj dat**, klikněte na možnost **True**, a pak klikněte na tlačítko **OK**.
+1. Klikněte na tlačítko **TENANTID**a hodnota parametru stránce vyberte **výstup aktivity** pro **zdroj dat**. V seznamu vyberte **Get Run As Connection**, do textového pole **Cesta pole** zadejte **TenantId** a potom dvakrát klikněte na tlačítko **OK**.
 1. V ovládacím prvku Knihovna zadejte do textového pole hledání text **Set-AzureRmContext**.
 1. Přidejte **Set-AzureRmContext** na plátno.
 1. Na plátně vyberte **Set-AzureRmContext** a v podokně ovládacího prvku Konfigurace zadejte do textového pole **Popisek** text **Zadat ID předplatného**.
@@ -164,7 +164,7 @@ Váš runbook by měl v tuto chvíli vypadat následovně: <br>![Konfigurace ov�
 Náš runbook nyní spouští virtuální počítač ve skupině prostředků, kterou jste určili v rutině **Start-AzureRmVM**. Runbook by mohl být užitečnější, kdybychom mohli obojí zadat při spuštění runbooku. Teď do runbooku přidáte vstupní parametry, které tuto funkci zajistí.
 
 1. Kliknutím otevřete grafický editor **upravit** na **MyFirstRunbook-Graphical** podokně.
-1. Vyberte **vstup a výstup** a potom **přidat vstup** otevřete podokno vstupní parametr Runbooku.
+1. Vyberte **vstup a výstup** a potom **přidat vstup** a otevřete podokno vstupní parametr Runbooku.
 1. V části **Název** zadejte *VMName*. U možnosti **Typ** nechte *řetězec*, ale možnost **Povinné** změňte na *Ano*. Klikněte na **OK**.
 1. Vytvořte druhý povinný vstupní parametr s názvem *ResourceGroupName* a potom kliknutím na tlačítko **OK** zavřete podokno **Vstup a výstup**.<br> ![Vstupní parametry runbooku](media/automation-first-runbook-graphical/start-azurermvm-params-outputs.png)
 1. Vyberte aktivitu **Start-AzureRmVM** a potom klikněte na **Parametry**.
@@ -181,7 +181,7 @@ Náš runbook nyní spouští virtuální počítač ve skupině prostředků, k
 
 Teď runbook upravíte, aby se pokusil virtuální počítač spustit jenom v případě, že ještě není spuštěný. To provedete tak, že do runbooku přidáte rutinu **Get-AzureRmVM**, která získá stav úrovně instance virtuálního počítače. Potom přidáte modul s kódem pracovního postupu PowerShellu s názvem **Get Status** s fragmentem kódu PowerShellu, který bude zjišťovat, jestli je virtuální počítač ve spuštěném nebo zastaveném stavu. Podmíněné propojení z modulu **Get Status** spustí rutinu **Start-AzureRmVM** jenom v případě, že je počítač v zastaveném stavu. Nakonec pomocí rutiny PowerShellu Write-Output odešlete výstup v podobě zprávy, která vás bude informovat o tom, jestli se virtuální počítač úspěšně spustil nebo ne.
 
-1. Otevřete **MyFirstRunbook-Graphical** v grafickém editoru.
+1. Otevřít **MyFirstRunbook-Graphical** v grafickém editoru.
 1. Kliknutím na propojení a stisknutím klávesy *Delete* odebere propojení mezi **Zadat ID předplatného** a **Start-AzureRmVM**.
 1. V ovládacím prvku Knihovna zadejte do textového pole hledání text **Get-AzureRm**.
 1. Přidejte **Get-AzureRmVM** na plátno.
@@ -220,7 +220,7 @@ Teď runbook upravíte, aby se pokusil virtuální počítač spustit jenom v p�
 1. Vyberte propojení s **Oznámit spuštění virtuálního počítače** a změňte možnost **Použít podmínku** na **Pravda**.
 1. V případě **výrazu podmínky** zadejte *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true*. Tato rutina Write-Output se teď spustí jenom v případě, že je virtuální počítač úspěšně spuštěn.
 1. Vyberte propojení na **Oznámit neúspěšné spuštění virtuálního počítače** a změňte možnost **Použít podmínku** na **Pravda**.
-1. V případě **výrazu podmínky** zadejte *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true*. Tato rutina Write-Output se teď spustí jenom v případě, že virtuální počítač není úspěšně spuštěn. Runbook by měl vypadat podobně jako na následujícím obrázku: <br> ![Runbook s aktivitou Write-Output](media/automation-first-runbook-graphical/runbook-startazurermvm-complete.png)
+1. V případě **výrazu podmínky** zadejte *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true*. Tato rutina Write-Output se teď spustí jenom v případě, že virtuální počítač není úspěšně spuštěn. Vaše sada runbook by měl vypadat jako na následujícím obrázku: <br> ![Runbook s aktivitou Write-Output](media/automation-first-runbook-graphical/runbook-startazurermvm-complete.png)
 1. Uložte runbook a otevřete testovací podokno.
 1. Spusťte runbook se zastaveným virtuálním počítačem  a virtuální počítač by se měl spustit.
 
@@ -229,4 +229,5 @@ Teď runbook upravíte, aby se pokusil virtuální počítač spustit jenom v p�
 * Další informace o vytváření grafického obsahu najdete v článku [Vytváření grafického obsahu v Azure Automation](automation-graphical-authoring-intro.md).
 * První kroky s powershellovými runbooky najdete v článku [Můj první powershellový runbook](automation-first-runbook-textual-powershell.md).
 * První kroky s runbooky pracovních postupů PowerShellu najdete v článku [Můj první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md).
+
 

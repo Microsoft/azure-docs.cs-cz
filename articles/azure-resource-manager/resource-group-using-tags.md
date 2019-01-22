@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: d9afc62b4ab5d5d83394dcaaacf85a7642a2ba22
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 27ba79e9168e098717e91e5a7179b5bc419ef86c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260592"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438402"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 
@@ -31,7 +31,7 @@ Použití značek k prostředkům, musí mít uživatel přístup pro zápis do 
 
 ## <a name="powershell"></a>PowerShell
 
-Příklady v tomto článku vyžadují prostředí Azure PowerShell verze 6.0 nebo novější. Pokud nemáte verzi 6.0 nebo novější, [aktualizovat verzi](/powershell/azure/install-azurerm-ps).
+Příklady v tomto článku vyžadují prostředí Azure PowerShell verze 6.0 nebo novější. Pokud nemáte verzi 6.0 nebo novější, [aktualizovat verzi](/powershell/azure/azurerm/install-azurerm-ps).
 
 Pokud chcete zobrazit existující značky pro *skupinu prostředků*, použijte:
 

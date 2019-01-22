@@ -3,18 +3,18 @@ title: Automatizace nasazení virtuálního počítače ve službě Amazon Web S
 description: Tento článek ukazuje, jak pomocí Azure Automation k automatizaci vytváření virtuálních počítačů Amazon Web Service
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8a5b34cd92f3afd166d5d67ca445c99a52c684e2
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 348c28f6a2d72048e34f117e802abf243597b458
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290888"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425216"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scénář Azure Automation – zřízení virtuálního počítače s AWS
 V tomto článku se dozvíte, jak se dají využít Azure Automation ke zřízení virtuálního počítače ve vašem předplatném služby AWS (Amazon Web) a poskytnout tohoto virtuálního počítače konkrétním názvem – AWS označuje jako "označení" virtuální počítač.
@@ -105,4 +105,5 @@ Než budete pokračovat v testování sady runbook, je třeba ověřit pár věc
 * První kroky s runbooky pracovních postupů PowerShellu najdete v článku [Můj první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md).
 * Další informace o typech runbooků, jejich výhodách a omezeních najdete v článku [Typy runbooků ve službě Azure Automation](automation-runbook-types.md).
 * Další informace o funkci podpory powershellových skriptů najdete v článku [Nativní podpora powershellových skriptů ve službě Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+
 

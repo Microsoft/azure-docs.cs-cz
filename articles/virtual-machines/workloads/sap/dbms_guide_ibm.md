@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/11/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 945dcf5776867a9b892a879569a4b58890cb1975
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2c496f78650be6fc19197c82dc9534fbd256ac45
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076082"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422588"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení databázového systému IBM DB2 Azure Virtual Machines pro úlohy SAP
 
@@ -235,7 +235,7 @@ ms.locfileid: "39076082"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -319,19 +319,19 @@ Jsou různé články týkající se úloh SAP v Azure všeobecně dostupné.  D
 
 Následující poznámky SAP jsou související s řešením SAP v Azure týkající se oblasti zahrnuté v tomto dokumentu:
 
-| Podporované operační systém a verze databáze | Titul |
+| Poznámka: číslo | Titul |
 | --- | --- |
-| [1928533] |Aplikace SAP v Azure: podporované produkty a virtuálních počítačů Azure typy |
-| [2015553] |Podporované operační systém verze, vydání systému databáze podporován služby virtuálního počítače Azure společně s softwaru SAP jsou dokumentovány v článku Poznámka SAP 1928533. |
-| [1999351] |Aplikace SAP a vydání podporována v služby virtuálního počítače Azure jsou popsané v Poznámka SAP 1928533. |
-| [2178632] |Ke spuštění jako virtuální počítače hostované v Azure pro scénáře SAP jsou podporovány pouze 64bitové kopie. |
-| [1409604] |Zároveň to znamená, že jsou podporovány pouze 64bitové aplikace SAP a databází. |
-| [2191498] |Služby virtuálního počítače Microsoft Azure |
+| [1928533] |Aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure |
+| [2015553] |SAP v Microsoft Azure: Požadavky pro podporu |
+| [1999351] |Řešení potíží s rozšířené monitorování Azure pro SAP |
+| [2178632] |Klíč monitorování metrik pro SAP v Microsoft Azure |
+| [1409604] |Virtualizace ve Windows: Rozšířené monitorování |
+| [2191498] |SAP v Linuxu se službou Azure: Rozšířené monitorování |
 | [2233094] |DB6: Aplikace SAP v Azure s využitím IBM DB2 pro Linux, UNIX a Windows – Další informace |
-| [2243692] |Platforma Microsoft Azure se internetovém měřítku platforma pro cloudové služby hostované a provozované v datových centrech společnosti Microsoft. |
-| [1984787] |Platforma obsahuje služeb virtuálního počítače Microsoft Azure (infrastruktury jako služby nebo IaaS) a sadu bohatá platforma jako služba (PaaS) možnosti. |
-| [2002167] |Platforma Azure omezuje potřebu přímých technologie a nákupech infrastruktury. |
-| [1597355] |Správa infrastruktury je automatizované díky platformě, která je navržená pro zajištění vysoké dostupnosti a dynamické škálování tak, aby odpovídaly potřebám využití s možností cenového modelu s průběžnými platbami. |
+| [2243692] |Linux v Microsoft Azure (IaaS) virtuálního počítače: Problémy licence SAP |
+| [1984787] |SUSE LINUX Enterprise Server 12: Poznámky k instalaci |
+| [2002167] |Red Hat Enterprise Linux 7.x: Instalace a Upgrade |
+| [1597355] |Doporučení odkládacího prostoru pro Linux |
 
 Jako žádosti o přijetí změn – čtení k tomuto dokumentu, by měl mít čtení dokumentu [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) a také další příručky v [úloh SAP v dokumentaci Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
@@ -358,7 +358,7 @@ Důležité informace o výkonu také naleznete kapitoly "Data zabezpečení a d
 
 Alternativně můžete používat fondy úložiště systému Windows (pouze k dispozici ve Windows serveru 2012 a vyšší) podle popisu [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) vytvořte jedno velké logické zařízení přes několik disků.
 
-Pro disky obsahující cesty úložiště DB2 sapdata a saptmp adresářů je nutné zadat velikost sektoru fyzického disku 512 kB. Pokud používáte fondy úložišť systému Windows, je třeba vytvořit fondy úložiště ručně pomocí rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault`. Další informace najdete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Pro disky obsahující cesty úložiště DB2 sapdata a saptmp adresářů je nutné zadat velikost sektoru fyzického disku 512 kB. Pokud používáte fondy úložišť systému Windows, je třeba vytvořit fondy úložiště ručně pomocí rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault`. Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Pro virtuální počítače Azure řady M-Series lze snížit latenci zápisu do protokolů transakcí faktorů, které jsou ve srovnání s výkonem Azure Premium Storage, při použití akcelerátor zápisu Azure. Proto byste měli nasadit akcelerátor zápisu Azure pro virtuální pevné disky, který tvoří svazek pro protokoly transakcí DB2. Podrobnosti najdete v dokumentu [akcelerátorem zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 1465ba23f6fed85f0d4164f8e3fdc8c38be43ad3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 1b488e938cf314eef18117ffd33f582319260162
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427722"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438775"
 ---
-# <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Postupy: povolení heslo resetovat z Windows 7, 8 a 8.1
+# <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Postup: Povolit heslo resetovat z Windows 7, 8 a 8.1
 
 Jako správce máte povolené samoobslužné resetování hesla (SSPR), ale uživatelé zachovat volání technickou podporu k resetování hesla, protože do okna prohlížeče, nelze získat přístup k [portál samoobslužné resetování HESLA](https://aka.ms/sspr). U počítačů s Windows 10, můžete povolit na "Resetovat heslo" odkaz na přihlašovací obrazovce pomocí tohoto kurzu [hesla Azure AD z přihlašovací obrazovky resetování](tutorial-sspr-windows.md), následující pokyny vám pomůže s Windows 7, 8 a 8.1 uživatelům umožnit resetování hesla pomocí samoobslužné resetování HESLA na přihlašovací obrazovce Windows.
 
@@ -74,7 +74,7 @@ Pokud se vyžaduje dodatečné protokolování, klíče registru na počítači 
 HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}
 ```
 
-* Pokud chcete zapnout podrobné protokolování, vytvořte REG_DWORD: "EnableLogging" a nastavte ho na hodnotu 1.
+* Pokud chcete povolit podrobné protokolování, vytvořením hodnoty registru: "EnableLogging" a nastavte ho na hodnotu 1.
 * Vypnout podrobné protokolování, změňte REG_DWORD "EnableLogging" na hodnotu 0.
 
 Pokud vaše počítače Windows 7, 8 a 8.1 jsou za proxy server nebo bránu firewall, má povolený provoz HTTPS (443) do passwordreset.microsoftonline.com.

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 818674ba1825a438a5abeb7927bcf0f683506625
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 045d95daf78775c483a9ec4e7abec0baff999838
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159919"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432672"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integrace adresáře mezi Azure MFA Serverem a službou Active Directory
 
@@ -28,17 +28,17 @@ Ve výchozím nastavení je Azure Multi-Factor Authentication (MFA) Server nakon
 
 | Funkce | Popis |
 | --- | --- |
-| Použít Active Directory |Vyberte možnost Použít Active Directory, pokud chcete používat Active Directory pro importování a synchronizaci.  Toto je výchozí nastavení. <br>Poznámka: Aby integrace služby Active Directory fungovala správně, připojte počítač k doméně a přihlaste se pomocí doménového účtu. |
+| Použít Active Directory |Vyberte možnost Použít Active Directory, pokud chcete používat Active Directory pro importování a synchronizaci.  Toto je výchozí nastavení. <br>Poznámka: Integrace služby Active Directory fungovala správně připojte počítač k doméně a přihlaste se pomocí účtu domény. |
 | Zahrnout důvěryhodné domény |Zaškrtněte políčko **Zahrnout důvěryhodné domény**, pokud chcete, aby se agent pokusil připojit k doménám, kterým důvěřuje aktuální doména, k jiné doméně v doménové struktuře nebo k doménám ve vztahu důvěryhodnosti doménové struktury.  Pokud neimportujete ani nesynchronizujete uživatele z jakékoli důvěryhodné domény, zrušte označení tohoto zatržítka – zvýší se tím výkon.  Ve výchozím nastavení je zatržítko označené. |
-| Použít specifickou konfiguraci LDAP |Vyberte možnost Použít LDAP, pokud chcete pro importování a synchronizaci použít specifické nastavení LDAP. Poznámka: Pokud je vybraná možnost Použít LDAP, v uživatelském prostředí se odkazy na Active Directory změní na odkazy na LDAP. |
+| Použít specifickou konfiguraci LDAP |Vyberte možnost Použít LDAP, pokud chcete pro importování a synchronizaci použít specifické nastavení LDAP. Poznámka: Pokud je vybraná možnost použít LDAP, uživatelské rozhraní změní odkazy ze služby Active Directory do adresáře LDAP. |
 | Tlačítko Upravit |Tlačítko Upravit umožňuje udělat změny nastavení konfigurace. |
-| Použít dotazy na obor atributů |Určuje, jestli se mají použít dotazy na obor atributů.  Dotazy na obor atributů umožňují efektivní prohledávání adresáře a kvalifikaci záznamů podle položek v atributech jiného záznamu.  Azure Multi-Factor Authentication Server používá dotazy na obor atributů pro efektivní dotazování uživatelů, kteří jsou členy skupiny zabezpečení.   <br>Poznámka:  Existují případy, kdy se sice dotazy na obor atributů podporují, ale použít by se neměly.  Active Directory třeba může mít s dotazy na obor atributů problémy, pokud skupina zabezpečení obsahuje členy z více než jedné domény. V takovém případě zaškrtnutí zrušte. |
+| Použít dotazy na obor atributů |Určuje, jestli se mají použít dotazy na obor atributů.  Dotazy na obor atributů umožňují efektivní prohledávání adresáře a kvalifikaci záznamů podle položek v atributech jiného záznamu.  Azure Multi-Factor Authentication Server používá dotazy na obor atributů pro efektivní dotazování uživatelů, kteří jsou členy skupiny zabezpečení.   <br>Poznámka:  Existují případy, kdy dotazy na obor atributů podporují, ale neměl by se používat.  Active Directory třeba může mít s dotazy na obor atributů problémy, pokud skupina zabezpečení obsahuje členy z více než jedné domény. V takovém případě zaškrtnutí zrušte. |
 
 V následující tabulce jsou popsaná nastavení konfigurace LDAP.
 
 | Funkce | Popis |
 | --- | --- |
-| Server |Zadejte název hostitele nebo IP adresu serveru, na kterém běží adresář LDAP.  Můžete taky zadat záložní server oddělený středníkem. <br>Poznámka: Když je Typ vazby nastavený na SSL, je potřeba zadat plně kvalifikovaný název hostitele. |
+| Server |Zadejte název hostitele nebo IP adresu serveru, na kterém běží adresář LDAP.  Můžete taky zadat záložní server oddělený středníkem. <br>Poznámka: Když je typ vazby nastavený na SSL, je potřeba zadat plně kvalifikovaný název hostitele. |
 | Základní rozlišující název |Zadejte rozlišující název objektu základního adresáře, ze kterého začínají všechny dotazy na adresář.  Příklad: dc=abc,dc=com. |
 | Typ vazby - Dotazy |Vyberte požadovaný typ vazby pro použití při vytváření vazby pro vyhledávání v adresáři LDAP.  Používá se pro importy, synchronizaci a překlad uživatelského jména. <br><br>  Anonymní – Vytvoří se anonymní vazba.  Hodnoty Rozlišující název vázání a Heslo vázání se nepoužijí.  Toto funguje, pouze pokud adresář LDAP umožňuje anonymní vytváření vazby a oprávnění umožňují dotazování příslušných záznamů a atributů.  <br><br> Jednoduchá – Hodnoty Rozlišující název vázání a Heslo vázání se předají jako prostý text pro vazby k adresáři LDAP.  Tento typ slouží pro testovací účely k ověření, jestli se dá kontaktovat server a jestli má účet vazby odpovídající přístup. Po nainstalování příslušného certifikátu místo toho použijte protokol SSL.  <br><br> SSL – Hodnoty Rozlišující název vázání a Heslo vázání se zašifrují pomocí protokolu SSL pro vazbu k adresáři LDAP.  Nainstalujte v místním prostředí certifikát, kterému adresář LDAP důvěřuje.  <br><br> Windows – Uživatelské jméno vázání a Heslo vázání se použijí pro zabezpečené připojení k ovladači domény služby Active Directory nebo adresáři ADAM.  Pokud je pole Uživatelské jméno vázání prázdné, pro vazbu se použije účet přihlášeného uživatele. |
 | Typ vazby - Ověřování |Vyberte požadovaný typ vazby pro použití při ověřování vazby LDAP.  Podívejte se na popis typů vazby v části Typ vazby – Dotazy.  Umožňuje například použít Anonymní vázání pro dotazy a SSL vázání pro zabezpečení ověření vazby LDAP. |
@@ -54,9 +54,9 @@ Filtry vám umožní nastavit kritéria pro kvalifikování záznamů při prohl
 
 Azure Multi-Factor Authentication má tyto tři možnosti filtru:
 
-* **Filtr kontejneru** - Zadejte kritéria filtru, která se použijí pro kvalifikaci záznamů kontejneru při prohledávání adresáře.  Pro Active Directory a ADAM se obvykle používá (|(objectClass=organizationalUnit)(objectClass=container)).  Pro jiné adresáře LDAP použijte kritéria filtru, která kvalifikují každý typ objektu kontejneru v závislosti na schématu adresáře.  <br>Poznámka: Pokud je toto pole prázdné, použije se výchozí hodnota ((objectClass=organizationalUnit)(objectClass=container)).
-* **Filtr skupiny zabezpečení** - Zadejte kritéria filtru, která se použijí pro kvalifikaci záznamů skupiny zabezpečení při prohledávání adresáře.  Pro Active Directory a ADAM se obvykle používá (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)).  Pro jiné adresáře LDAP použijte kritéria, která kvalifikují každý typ objektu skupiny zabezpečení v závislosti na schématu adresáře.  <br>Poznámka: Pokud je toto pole prázdné, použije se výchozí hodnota (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)).
-* **Filtr uživatele** - Zadejte kritéria filtru, která se použijí pro kvalifikaci záznamů uživatele při prohledávání adresáře.  Pro Active Directory a ADAM se obvykle používá (&(objectClass=user)(objectCategory=person)).  Pro jiné adresáře LDAP použijte (objectClass=inetOrgPerson) nebo něco podobného v závislosti na schématu adresáře. <br>Poznámka: Pokud je toto pole prázdné, použije se výchozí hodnota (&(objectCategory=person)(objectClass=user)).
+* **Filtr kontejneru** - Zadejte kritéria filtru, která se použijí pro kvalifikaci záznamů kontejneru při prohledávání adresáře.  Pro Active Directory a ADAM se obvykle používá (|(objectClass=organizationalUnit)(objectClass=container)).  Pro jiné adresáře LDAP použijte kritéria filtru, která kvalifikují každý typ objektu kontejneru v závislosti na schématu adresáře.  <br>Poznámka:  Pokud je ponecháno prázdné, ((objectClass=organizationalUnit)(objectClass=container)) se používá ve výchozím nastavení.
+* **Filtr skupiny zabezpečení** - Zadejte kritéria filtru, která se použijí pro kvalifikaci záznamů skupiny zabezpečení při prohledávání adresáře.  Pro Active Directory a ADAM se obvykle používá (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)).  Pro jiné adresáře LDAP použijte kritéria, která kvalifikují každý typ objektu skupiny zabezpečení v závislosti na schématu adresáře.  <br>Poznámka:  Pokud je ponecháno prázdné, (&(objectCategory=Group) (objectCategory=Group)(grouptype:1.2.840.113556.1.4.804:=-2147483648)).)) se používá ve výchozím nastavení.
+* **Filtr uživatele** - Zadejte kritéria filtru, která se použijí pro kvalifikaci záznamů uživatele při prohledávání adresáře.  Pro Active Directory a ADAM se obvykle používá (&(objectClass=user)(objectCategory=person)).  Pro jiné adresáře LDAP použijte (objectClass=inetOrgPerson) nebo něco podobného v závislosti na schématu adresáře. <br>Poznámka:  Pokud je ponecháno prázdné, používá (& (objectCategory=person)(objectClass=user)) je ve výchozím nastavení.
 
 ## <a name="attributes"></a>Atributy
 Atributy můžete podle potřeby upravit pro konkrétní adresář.  To vám umožní přidat vlastní atributy a nastavit synchronizaci pouze na atributy, které potřebujete. Pro hodnotu každého pole atributu použijte název atributu, jak je definovaný ve schématu adresáře. Následující tabulka poskytuje další informace k jednotlivým funkcím.
@@ -111,8 +111,8 @@ Následující tabulka obsahuje další informace k jednotlivým nastavením na 
 
 | Funkce | Popis |
 | --- | --- |
-| Povolit synchronizaci se službou Active Directory |Pokud je toto políčko zaškrtnuté, služba Multi-Factor Auth Server se bude pravidelně dotazovat služby Active Directory na změny. <br><br>Poznámka: Než služba Multi-Factor Auth Server začne zpracovávat změny, musí se přidat aspoň jedna Synchronizační položka a aspoň jednou provést akce Synchronizovat. |
-| Synchronizovat každých |Zadejte dobu, po kterou bude služba Multi-Factor Auth Server čekat mezi jednotlivými dotazy zpracováními změn. <br><br> Poznámka: Zadaná doba je interval mezi začátky jednotlivých cyklů.  Pokud doba zpracování změn překročí tento interval, služba ihned provede další dotazování. |
+| Povolit synchronizaci se službou Active Directory |Pokud je toto políčko zaškrtnuté, služba Multi-Factor Auth Server se bude pravidelně dotazovat služby Active Directory na změny. <br><br>Poznámka: Musí být přidán alespoň jedna položka synchronizace a synchronizovat nyní musí být provedeny před služba Multi-Factor Auth Server začne zpracovávat změny. |
+| Synchronizovat každých |Zadejte dobu, po kterou bude služba Multi-Factor Auth Server čekat mezi jednotlivými dotazy zpracováními změn. <br><br> Poznámka: Zadaný interval označuje čas mezi začátky jednotlivých cyklů.  Pokud doba zpracování změn překročí tento interval, služba ihned provede další dotazování. |
 | Odebrat uživatele, kteří již nejsou ve službě Active Directory |Pokud je tato možnost označená, služba Multi-Factor Auth Server zpracuje náhrobky uživatelů odstraněných z Active Directory a odstraní odpovídající uživatele ze služby Multi-Factor Auth Server. |
 | Vždy provádět úplnou synchronizaci |Pokud je tato možnost označená, služba Multi-Factor Auth Server vždy provede úplnou synchronizaci.  Pokud označená není, služba Multi-Factor Auth Server provede přírůstkovou synchronizaci tak, že se bude dotazovat jen na uživatele, kteří se změnili.  Ve výchozím nastavení zatržítko není označené. <br><br>Pokud toto políčko není zaškrtnuté, Azure MFA Server provádí přírůstkovou synchronizaci jen tehdy, když adresář podporuje ovládací prvek DirSync a když má účet vázaný na adresář oprávnění pro provedení přírůstkových dotazů DirSync.  Pokud účet nemá odpovídající oprávnění nebo pokud se synchronizace týká více domén, Azure MFA Server provádí úplnou synchronizaci. |
 | Vyžadovat schválení správce, pokud bude zablokováno nebo odstraněno více než X uživatelů |Synchronizační položky se můžou nastavit tak, aby zablokovaly nebo odstranili uživatele, kteří už nejdou členy skupiny zabezpečení nebo kontejneru položky.  Jako pojistku můžete nastavit, že když počet uživatelů, kteří se mají zablokovat nebo odstranit, přesáhne určitou hranici, bude to muset schválit správce.  Pokud je toto políčko zaškrtnuté, bude při překročení určité hranice potřeba schválení.  Výchozí hodnota je 5 a zadat se můžou hodnoty v rozsahu 1 až 999. <br><br> Schválení se získá tak, že se nejdřív správcům pošle e-mail s oznámením. V něm jsou pokyny, že mají správci zkontrolovat a schválit zablokování nebo odstranění uživatelů.  Při spuštění uživatelského prostředí Multi-Factor Auth Serveru se objeví výzva ke schválení. |

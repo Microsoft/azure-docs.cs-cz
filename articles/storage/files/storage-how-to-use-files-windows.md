@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 5e36a41c1678ac38c7ebee5b47fd88076fa3fb70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b068744f7dac1cc4cdd6fd41b35c6131e1b00903
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629692"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430804"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -24,7 +24,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 | Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Možnost připojit v místním prostředí |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server. 2019    | SMB 3.0 | Ano | Ano |
+| Windows Server 2019    | SMB 3.0 | Ano | Ano |
 | Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
 | Pololetní kanál Windows Server<sup>2</sup> | SMB 3.0 | Ano | Ano |
 | Windows Server 2016    | SMB 3.0     | Ano                   | Ano                  |
@@ -47,7 +47,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 * **Klíč účtu úložiště**: Připojení sdílené složky Azure, musíte primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB vyžaduje port TCP 445 být otevřená. připojení se nezdaří, pokud je port 445 blokovaný. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Následující kód PowerShellu předpokládá, že máte nainstalovaný modul AzureRM PowerShell. Další informace najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
+* **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB vyžaduje port TCP 445 být otevřená. připojení se nezdaří, pokud je port 445 blokovaný. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Následující kód PowerShellu předpokládá, že máte nainstalovaný modul AzureRM PowerShell. Další informace najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
     ```PowerShell
     $resourceGroupName = "<your-resource-group-name>"

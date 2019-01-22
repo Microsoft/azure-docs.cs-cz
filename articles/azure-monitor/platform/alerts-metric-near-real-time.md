@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
-ms.component: alerts
-ms.openlocfilehash: be9f8079480438b194f0d5779ac0da50328b5dd3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 8235ba65d9e2e000995d338c200a61845911fbff
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585247"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426739"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované zdroje pro upozornění metrik ve službě Azure Monitor
 
@@ -54,10 +54,10 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.Network/loadBalancers (pouze pro standardní skladové položky)| Ano| [Nástroje pro vyrovnávání zatížení](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/publicipaddresses     |  neuvedeno       |[Veřejné IP adresy](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft.PowerBIDedicated/capacities | neuvedeno | [Kapacity](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
-|Microsoft.Network/trafficManagerProfiles | Ano | [Profily Traffic Manageru](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
+|Microsoft.Network/trafficManagerProfiles | Ano | [Traffic Manager Profiles](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft.Search/searchServices     |   neuvedeno      |[Vyhledávací služby](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Ano       |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
-|Microsoft.Storage/storageAccounts.     |    Ano     | [Účty úložiště](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts     |    Ano     | [Účty úložiště](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services     |     Ano    | [Objekt BLOB služby](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [souborové služby](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [fronty služby](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) a [tabulky služeb](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 | Microsoft.Web/serverfarms | Ano | [Plány služby App Service](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)  |
@@ -124,3 +124,4 @@ Operace POST obsahuje následující datovou část JSON a schéma pro všechny 
 * Další informace o novém [výstrahy prostředí](../../azure-monitor/platform/alerts-overview.md).
 * Další informace o [upozornění protokolů ve službě Azure](../../azure-monitor/platform/alerts-unified-log.md).
 * Další informace o [výstrah ve službě Azure](../../azure-monitor/platform/alerts-overview.md).
+

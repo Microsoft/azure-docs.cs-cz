@@ -3,28 +3,28 @@ title: Předávání dat úloh Azure Automation do Log Analytics
 description: Tento článek předvádí postup odesílání stavu úlohy a runbook datové proudy úlohy ke službě Azure Log Analytics k poskytování dalších přehledů a správu.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8a1f7e367b3f8f06e33bbcd11f8090c9578c1d30
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269562"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432961"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Předávání stavu úlohy a datové proudy úlohy ze služby Automation do Log Analytics
 
 Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru Log Analytics. Tento proces nezahrnuje propojení pracovního prostoru a je zcela nezávislé. Protokoly úloh a datové proudy úlohy jsou viditelné na webu Azure Portal nebo pomocí Powershellu, pro jednotlivé úlohy, což umožňuje provádět jednoduché šetření. Teď pomocí Log Analytics vám umožňuje:
 
-* Získejte přehled o vašich úloh služby Automation.
+* Získání přehledu o vašich úlohách Automation
 * Aktivační událost e-mailem nebo výstrahy založené na váš stav úlohy runbooku (například chybných nebo pozastavených).
-* Zápis upřesňující dotazy napříč vaší datové proudy úlohy.
-* Propojte úlohy napříč účty služby Automation.
-* V čase můžete Vizualizujte historii úlohy.
+* Vytváření pokročilých dotazů napříč datovými proudy úloh
+* Korelace úloh napříč účty Automation
+* Vizualizace historie úloh v průběhu času
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Požadavky a důležité informace o nasazení
 
@@ -98,7 +98,7 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v Log Anal
 | SourceSystem | Jak Log Analytics shromažďuje data. Vždy *Azure* Azure Diagnostics. |
 | resultDescription |Popisuje výsledný stav úlohy runbooku. Možné hodnoty:<br>- Úloha se spustila<br>- Zpracování úlohy se nezdařilo<br>- Úloha je dokončená |
 | CorrelationId |Identifikátor GUID, který představuje ID korelace úlohy runbooku. |
-| ID prostředku |Určuje id prostředku účtu Azure Automation runbook. |
+| ResourceId |Určuje id prostředku účtu Azure Automation runbook. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet Automation. |
 | ResourceGroup | Název skupiny prostředků pro účet Automation. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
@@ -121,7 +121,7 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v Log Anal
 | SourceSystem | Jak Log Analytics shromažďuje data. Vždy *Azure* Azure Diagnostics. |
 | resultDescription |Zahrnuje výstupní datový proud z runbooku. |
 | CorrelationId |Identifikátor GUID, který představuje ID korelace úlohy runbooku. |
-| ID prostředku |Určuje id prostředku účtu Azure Automation runbook. |
+| ResourceId |Určuje id prostředku účtu Azure Automation runbook. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet Automation. |
 | ResourceGroup | Název skupiny prostředků pro účet Automation. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
@@ -183,3 +183,4 @@ Log Analytics poskytuje větší provozní viditelnost do úloh služby Automati
 * Postup vytvoření a načtení výstupu a chybové zprávy z runbooků najdete v tématu [Runbook výstup a zprávy](automation-runbook-output-and-messages.md).
 * Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).
 * Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../azure-monitor/platform/collect-azure-metrics-logs.md).
+

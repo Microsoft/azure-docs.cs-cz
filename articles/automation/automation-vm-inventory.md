@@ -3,25 +3,25 @@ title: Správa virtuálního počítače Azure se shromažďováním dat pro inv
 description: Správa virtuálního počítače se shromažďováním dat pro inventarizaci
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: inventory, automation, change, tracking
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 761bb1a6974afd5e7b851efb0c60101ab7d8958b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9fabaa2be850e5b15f10fc78adb14dfd5c112906
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403606"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426042"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci
 
 Sledování inventáře pro virtuální počítač Azure můžete povolit na stránce prostředků příslušného virtuálního počítače. Tato metoda poskytuje uživatelské rozhraní v prohlížeči pro nastavení a konfiguraci shromažďování dat pro inventarizaci.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -65,7 +65,7 @@ Následující tabulka obsahuje informace o jednotlivých vlastnostech, které j
 |Povoleno     | Určuje, jestli se nastavení používá.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
 |Skupina     | Název skupiny pro logické seskupení souborů        |
-|Klíč registru systému Windows   | Cesta, ve které se má soubor hledat. Například: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
+|Klíč registru systému Windows   | Cesta ke kontrole souboru: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="windows-files"></a>Soubory Windows
 
@@ -126,3 +126,4 @@ Odebrání virtuálního počítače ze správy inventáře:
 
 * Informace o správě změn nastavení souborů a registru na virtuálních počítačích najdete v tématu [Sledování změn softwaru v prostředí pomocí řešení Change Tracking](../log-analytics/log-analytics-change-tracking.md).
 * Další informace o správě Windows a aktualizace balíčků na virtuálních počítačích, najdete v článku [řešení Update Management v Azure](../operations-management-suite/oms-solution-update-management.md).
+

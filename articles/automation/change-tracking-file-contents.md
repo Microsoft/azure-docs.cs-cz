@@ -3,18 +3,18 @@ title: Zobrazit změny obsahu souboru s využitím Azure Automation
 description: Chcete-li zobrazit obsah souboru, který se změnil použijte funkci Změna obsahu soubor sledování změn.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0582505d66bbef3064359fa4047676c4ba60b4e9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ad011d778ab575c146c202a7940e03a4451979fb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871630"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437997"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Zobrazit obsah souboru, který je sledován pomocí řešení Change Tracking
 
@@ -76,3 +76,4 @@ Navštivte tento kurz na další informace o použití řešení sledování zm�
 > [Řešení potíží se změnami ve vašem prostředí](automation-tutorial-troubleshoot-changes.md)
 
 * Použití [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md) zobrazíte podrobné data řešení change tracking.
+

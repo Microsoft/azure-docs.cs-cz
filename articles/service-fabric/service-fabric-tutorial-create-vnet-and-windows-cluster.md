@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: a720bb906192731b8b636939e22b13a8e52bbe76
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 76281113c0d1e7b3943e137accf7aa93c2863fe6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632887"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435375"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Windows do virtuální sítě Azure
 
@@ -51,7 +51,7 @@ Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte sadu [Service Fabric SDK a modul PowerShellu](service-fabric-get-started.md).
-* Nainstalujte [modul Azure PowerShellu verze 4.1 nebo vyšší](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+* Nainstalujte [modul Azure PowerShellu verze 4.1 nebo vyšší](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 
 Provedením následujících postupů se vytvoří cluster Service Fabric s pěti uzly. Pokud chcete vypočítat náklady vzniklé používáním clusteru Service Fabric v Azure, použijte [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/).
 
@@ -92,24 +92,24 @@ V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Wind
 
 * jeden typ uzlu
 * pět uzlů primárního typu (možnost konfigurace v parametrech šablony)
-* operační systém: Windows Server 2016 Datacenter s kontejnery (možnost konfigurace v parametrech šablony)
+* Operační systém: Windows Server 2016 Datacenter s kontejnery (možnost konfigurace v parametrech šablony)
 * zabezpečení pomocí certifikátu (možnost konfigurace v parametrech šablony)
 * [reverzní proxy server](service-fabric-reverseproxy.md) je povolen
 * [služba DNS](service-fabric-dnsservice.md) je povolena
 * bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
 * stříbrná [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
 * koncový bod připojení klienta: 19000 (možnost konfigurace v parametrech šablony)
-* koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony)
+* Koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony)
 
 ### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
 V prostředku **Microsoft.Network/loadBalancers** dochází ke konfiguraci nástroje pro vyrovnávání zatížení a k nastavení sond a pravidel pro následující porty:
 
 * koncový bod připojení klienta: 19000
-* koncový bod brány HTTP: 19080
+* Koncový bod brány HTTP: 19080
 * port aplikací: 80
 * port aplikací: 443
-* reverzní proxy server Service Fabric: 19081
+* Service Fabric reverzního proxy serveru: 19081
 
 Pokud jsou potřebné další porty aplikací, je potřeba upravit prostředky **Microsoft.Network/loadBalancers** a **Microsoft.Network/networkSecurityGroups**, aby byl povolený příchozí provoz.
 
@@ -118,13 +118,13 @@ Pokud jsou potřebné další porty aplikací, je potřeba upravit prostředky *
 Názvy virtuální sítě, podsítě a skupiny zabezpečení sítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
 * adresní prostor virtuální sítě: 172.16.0.0/20
-* adresní prostor podsítě Service Fabric: 172.16.2.0/23
+* Adresní prostor podsítě Service Fabric: 172.16.2.0/23
 
 V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená následující pravidla pro příchozí provoz. Hodnoty portů můžete změnit změnou proměnných šablony.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB : 445
+* SMB: 445
 * Internodecommunication – 1025, 1026, 1027
 * Rozsah dočasných portů – 49152 až 65534 (potřebných je alespoň 256 portů)
 * Porty pro použití aplikací: 80 a 443

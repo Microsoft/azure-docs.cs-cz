@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: d9f3ba642a5d00594aa6bdef597d5db43c2fc121
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 008fba2fd6052ac9043de6ec217cb71d17f3ecce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188976"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427096"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Verze Preview: Azure AD hesla ochrany monitorování, vytváření sestav a řešení potíží
 
@@ -39,8 +39,8 @@ Události jsou protokolovány podle různých komponent agenta řadiče domény 
 |Komponenta |Rozsah ID událostí|
 | --- | --- |
 |Knihovny dll filtru hesel agenta řadiče domény| 10000-19999|
-|Řadič domény agenta služby hostitelského procesu| 20000 29999|
-|Logiku ověřování zásad služby agenta řadiče domény| 30000 39999|
+|Řadič domény agenta služby hostitelského procesu| 20000-29999|
+|Logiku ověřování zásad služby agenta řadiče domény| 30000-39999|
 
 Pro operace ověření hesla se podařila je obvykle jednu událost se zaznamená z knihovny dll filtru hesel agenta řadiče domény. Pro neúspěšného operace ověření hesla, obecně existují dvě události protokolované, jeden z řadiče domény služba agent a jeden z knihovny dll filtru hesel agenta DC.
 
@@ -153,7 +153,7 @@ Protokolování trasování je ve výchozím nastavení zakázána.
 
 Řadič domény agenta služby lze nastavit k zápisu do protokolu text tak, že nastavíte následující hodnotu registru:
 
-HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters! EnableTextLogging = 1 (hodnoty REG_DWORD)
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 
 Protokolování textu je standardně zakázáno. Restartovat službu agenta řadiče domény je požadovaná pro tuto hodnotu, než se projeví změny. Pokud povolena řadiče domény Služba agenta bude zapisovat do souboru protokolu, která je umístěna ve složce:
 
@@ -188,7 +188,7 @@ Protokolování trasování je ve výchozím nastavení zakázána.
 
 Proxy služby mohou být konfigurovány pro zápis do protokolu text tak, že nastavíte následující hodnotu registru:
 
-HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters! EnableTextLogging = 1 (hodnoty REG_DWORD)
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 
 Protokolování textu je standardně zakázáno. Restartování služby serveru Proxy je požadovaná pro tuto hodnotu, než se projeví změny. Pokud povolena proxy serveru, kdy bude služba zapisovat do souboru protokolu, která je umístěna ve složce:
 

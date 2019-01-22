@@ -3,18 +3,18 @@ title: Pomocí upozornění můžete aktivovat runbooku Azure Automation
 description: Zjistěte, jak aktivovat sadu runbook spustit, když se vyvolá výstraha Azure.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d35d2bfdf379d5bf02ebb4b2fd71fb85519c741a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 88fe7740170638e9e0d7398a02dcf83ab81f6ffc
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581638"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421679"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Pomocí upozornění můžete aktivovat runbooku Azure Automation
 
@@ -232,3 +232,4 @@ Vytvoření klasického upozornění:
 * Podrobnosti o různých způsobech spouštění sady runbook najdete v tématu [spuštění sady runbook](automation-starting-a-runbook.md).
 * Další postup vytvoření upozornění protokolu aktivit najdete v tématu [vytvoření upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
 * Zjistěte, jak vytvořit téměř v reálném čase výstrahy, najdete v článku [vytvořit pravidlo upozornění na webu Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+

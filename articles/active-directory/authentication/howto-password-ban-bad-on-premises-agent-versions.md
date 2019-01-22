@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 89d64a28d2fe43464995e434c9f3807047b29492
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1d27aa46148e0169909a7aaf05baaac18b050a34
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913632"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423659"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Ve verzi Preview: Historie verzí agenta ochrany heslo pro Azure AD
+# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Verze Preview:  Azure AD hesla protection agent verze historie
 
 |     |
 | --- |

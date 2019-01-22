@@ -3,22 +3,22 @@ title: Spuštění Runbooku ve službě Azure Automation
 description: Popisuje podrobnosti o zpracování sady runbook ve službě Azure Automation.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb6236203a1165361505c8699ba94bff54e41c2a
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 859ef4c28b858b00fcc9c7c73a3a706a11225113
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247346"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430717"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
 
-Při spuštění runbooku ve službě Azure Automation, se vytvoří úloha. Úloha je instance jednoho spuštění sady runbook. Pracovník s Azure Automation se přiřadí ke spuštění každé úlohy. Když zaměstnanci sdílí mnoho účtů Azure, úlohy z různých účtů Automation jsou od sebe. Nemáte máte kontrolu, nad kterou pracovního procesu služby žádost pro vaši úlohu. Jeden runbook může mít mnoho úloh spuštěných současně. Spouštěcí prostředí pro úlohy ve stejném účtu Automation může znovu použít. Další úlohy spuštění ve stejnou dobu, tím častěji může odesílat do stejného izolovaného prostoru. Úlohy spuštěné ve stejném izolovaném prostoru procesu může ovlivnit mezi sebou, jedním z příkladů je spuštěna `Disconnect-AzureRMAccount` rutiny. Spuštění této rutiny by odpojit každé úlohy runbooku ve sdílené izolovaného prostoru procesu. Při zobrazení seznamu sad runbook na portálu Azure portal, zobrazí stav všech úloh, které byly spuštěny pro každou sadu runbook. Zobrazí se seznam úloh pro každou sadu runbook, chcete-li sledovat stav každého. Protokoly úlohy jsou uloženy maximálně 30 dnů. Popis stavy různé úlohy [stavy úlohy](#job-statuses).
+Při spuštění runbooku ve službě Azure Automation, se vytvoří úloha. Úloha je instance jednoho spuštění Runbooku. Pracovník s Azure Automation se přiřadí ke spuštění každé úlohy. Když zaměstnanci sdílí mnoho účtů Azure, úlohy z různých účtů Automation jsou od sebe. Nemáte máte kontrolu, nad kterou pracovního procesu služby žádost pro vaši úlohu. Jeden runbook může mít mnoho úloh spuštěných současně. Spouštěcí prostředí pro úlohy ve stejném účtu Automation může znovu použít. Další úlohy spuštění ve stejnou dobu, tím častěji může odesílat do stejného izolovaného prostoru. Úlohy spuštěné ve stejném izolovaném prostoru procesu může ovlivnit mezi sebou, jedním z příkladů je spuštěna `Disconnect-AzureRMAccount` rutiny. Spuštění této rutiny by odpojit každé úlohy runbooku ve sdílené izolovaného prostoru procesu. Při zobrazení seznamu sad runbook na portálu Azure portal, zobrazí stav všech úloh, které byly spuštěny pro každou sadu runbook. Zobrazí se seznam úloh pro každou sadu runbook, chcete-li sledovat stav každého. Protokoly úlohy jsou uloženy maximálně 30 dnů. Popis stavy různé úlohy [stavy úlohy](#job-statuses).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -34,21 +34,21 @@ Následující diagram znázorňuje životní cyklus úlohy runbooku pro [Powers
 
 ## <a name="job-statuses"></a>Stavy úlohy
 
-Následující tabulka popisuje různé stavy, které jsou u úlohy nastat. Prostředí PowerShell má dva typy chyb, ukončujícími a neukončujícími chybami. Chyby se ukončuje nastavit stav sady runbook **neúspěšné** Pokud k nim dojde. Neukončující chyby povolit skriptu pokračovat i po jejich výskytu. Příklad neukončující chyba používá `Get-ChildItem` rutiny s cestou, která neexistuje. Prostředí PowerShell vidí, že cesta neexistuje, vyvolá chybu a pokračuje do další složky. Tato chyba nebude nastavit stav sady runbook **neúspěšné** a může být označen jako **dokončeno**. Chcete-li vynutit sady runbook a zastavit na neukončující chybě, můžete použít `-ErrorAction Stop` na rutiny.
+Následující tabulka popisuje různé stavy, které můžou u úlohy nastat. Prostředí PowerShell má dva typy chyb, ukončujícími a neukončujícími chybami. Chyby se ukončuje nastavit stav sady runbook **neúspěšné** Pokud k nim dojde. Neukončující chyby povolit skriptu pokračovat i po jejich výskytu. Příklad neukončující chyba používá `Get-ChildItem` rutiny s cestou, která neexistuje. Prostředí PowerShell vidí, že cesta neexistuje, vyvolá chybu a pokračuje do další složky. Tato chyba nebude nastavit stav sady runbook **neúspěšné** a může být označen jako **dokončeno**. Chcete-li vynutit sady runbook a zastavit na neukončující chybě, můžete použít `-ErrorAction Stop` na rutiny.
 
 | Status | Popis |
 |:--- |:--- |
-| Dokončeno |Úloha byla úspěšně dokončena. |
+| Dokončení |Úloha se úspěšně dokončila. |
 | Selhalo |Pro [grafické runbooky pracovních postupů Powershellu](automation-runbook-types.md), sada runbook se nepodařilo zkompilovat. Pro [Powershellový skript sady runbook](automation-runbook-types.md), se nepodařilo spustit sadu runbook nebo úloha měla výjimku. |
 | Se nezdařilo, čekání na prostředky |Úloha se nezdařila, protože bylo dosaženo [spravedlivé sdílení](#fair-share) omezit třikrát a spustit pokaždé, když ze stejného kontrolního bodu nebo od začátku runbooku. |
-| Ve frontě |Úloha čeká pro prostředky služby Automation zpřístupnění pracovního procesu tak, aby jeho spuštění. |
+| Ve frontě |Úloha čeká, než budou dostupné prostředky pracovního procesu Automatizace, aby se dala spustit. |
 | Spouštění |Úloha byla přiřazena k pracovnímu procesu a spouštění systému. |
 | Obnovení |Systém obnovuje úlohy poté, co bylo pozastaveno. |
-| Spuštěno |Úloha je spuštěna. |
+| Spuštěno |Úloha je spuštěná. |
 | Spuštění, čekání na prostředky |Úloha byla uvolněna, protože bylo dosaženo [spravedlivé sdílení](#fair-share) limit. Bude pokračovat i za chvíli od svého posledního kontrolního bodu. |
-| Zastaveno |Úloha se zastavila tímto uživatelem, než se provedl. |
+| Zastaveno |Úlohu uživatel zastavil před tím, než se dokončila. |
 | Zastavování |V systému Probíhá zastavování úlohy. |
-| Pozastaveno |Úlohu pozastavil uživatel, systém nebo příkaz v runbooku. Pokud sada runbook neobsahuje kontrolní bod, začne od začátku runbooku. Pokud má kontrolní bod, můžete začít znovu a pokračovat od svého posledního kontrolního bodu. Sada runbook je pouze pozastaveno systémem, když dojde k výjimce. Ve výchozím nastavení, ErrorActionPreference nastavená na **pokračovat**, což znamená, že úloha běžel na chybu. Pokud je tato předvolba proměnné nastavená **Zastavit**, pak v případě chyby pozastaví úlohu. Platí pro [grafické runbooky pracovních postupů Powershellu](automation-runbook-types.md) pouze. |
+| Pozastaveno |Úlohu pozastavil uživatel, systém nebo příkaz v Runbooku. Pokud sada runbook neobsahuje kontrolní bod, začne od začátku runbooku. Pokud má kontrolní bod, můžete začít znovu a pokračovat od svého posledního kontrolního bodu. Sada runbook je pouze pozastaveno systémem, když dojde k výjimce. Ve výchozím nastavení, ErrorActionPreference nastavená na **pokračovat**, což znamená, že úloha běžel na chybu. Pokud je tato předvolba proměnné nastavená **Zastavit**, pak v případě chyby pozastaví úlohu. Platí pro [grafické runbooky pracovních postupů Powershellu](automation-runbook-types.md) pouze. |
 | Pozastavování |Systém se pokouší pozastavit úlohu na žádost uživatele. Sada runbook dosažení následujícího kontrolního bodu předtím, než je možné ho pozastavit. Pokud už uplynulé svého posledního kontrolního bodu, pak dokončí předtím, než je možné ho pozastavit. Platí pro [grafické runbooky pracovních postupů Powershellu](automation-runbook-types.md) pouze. |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Zobrazení stavu úlohy na webu Azure Portal
@@ -77,9 +77,9 @@ Alternativně můžete zobrazit podrobnosti souhrnu úlohy pro konkrétní sadu 
 
 ### <a name="job-summary"></a>Souhrn úlohy
 
-Můžete zobrazit seznam všech úloh, které byly vytvořeny pro konkrétní sadu runbook a jejich aktuální stav. Můžete filtrovat tento seznam podle stavu úlohy a rozsahu dat poslední změny úlohy. Chcete-li zobrazit podrobné informace a výstup, klikněte na název úlohy. V podrobném zobrazení úlohy obsahuje hodnoty parametrů runbooku poskytnuté pro tuto úlohu.
+Můžete zobrazit seznam všech úloh, které byly vytvořeny pro konkrétní sadu runbook a jejich aktuální stav. Můžete filtrovat tento seznam podle stavu úlohy a rozsahu dat poslední změny úlohy. Chcete-li zobrazit podrobné informace a výstup, klikněte na název úlohy. V podrobném zobrazení úlohy najdete hodnoty parametrů Runbooku poskytnuté pro tuto úlohu.
 
-Chcete-li zobrazit úlohy pro sady runbook můžete použít následující kroky.
+Úlohy Runbooku můžete zobrazit takto.
 
 1. Na webu Azure Portal, vyberte **automatizace** a potom vyberte název účtu Automation.
 2. Z centra, vyberte **sady Runbook** a pak na **sady Runbook** stránky ze seznamu vybrat sadu runbook.
@@ -144,3 +144,4 @@ Další možností je Optimalizujte sady runbook pomocí runbooků. Pokud vaše 
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o různých metodách, které můžete použít ke spuštění sady runbook ve službě Azure Automation najdete v tématu [spuštění runbooku ve službě Azure Automation](automation-starting-a-runbook.md)
+

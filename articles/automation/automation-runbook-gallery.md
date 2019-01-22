@@ -3,18 +3,18 @@ title: Galerie modulů a Runbooků Azure Automation
 description: Jsou si můžete nainstalovat a používat ve vašem prostředí Azure Automation. Runbooky a moduly, od Microsoftu a komunity.  Tento článek popisuje, jak přistupovat k těmto prostředkům a k přispívání do Galerie runbooků.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7330d826cb196a664f06198a0e83f73bd7763ef9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634316"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428099"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie modulů a Runbooků Azure Automation
 Místo vytváření vlastních modulů a runbooků ve službě Azure Automation, můžete přistupovat širokou škálu scénářů, které již byly vytvořeny od Microsoftu a komunity.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete použít jako výchozí bod a upravit je pro vaše konkrétní požadavky.
@@ -108,4 +108,5 @@ Můžete odesílat žádosti o [User Voice](https://feedback.azure.com/forums/24
 ## <a name="next-steps"></a>Další kroky
 * Začínáme se sadami runbook, najdete v článku [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)
 * Rozdíly mezi Powershellu a pracovní postup Powershellu se sadami runbook najdete v tématu [Learning Powershellový pracovní postup](automation-powershell-workflow.md)
+
 

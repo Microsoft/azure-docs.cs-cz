@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: e5e9901d6265b48a7b57cdf2c146ebb623ad5c3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992198"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428155"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Zobrazení topologie služby Azure virtual network
 
@@ -46,7 +46,7 @@ Můžete použít [webu Azure portal](#azure-portal), [rozhraní příkazového 
 
 6. Vyberte **stáhnout typologii** stáhnout jako soubor upravovat ve formátu svg.
 
-Prostředky uvedené v diagramu jsou podmnožinou síťové součásti ve virtuální síti. Například když se zobrazí skupiny zabezpečení sítě, pravidla zabezpečení v něm nejsou zobrazeny v diagramu. I když není rozlišené v diagramu, řádky představovat jednu z dvou vztahů: *členství ve skupině* nebo *přidružené*. Pokud chcete zobrazit úplný seznam prostředků v rámci virtuální sítě a druh vztahu mezi prostředky, generovat topologie s [PowerShell](#powershell) nebo [rozhraní příkazového řádku Azure](#azure-cli).
+Prostředky uvedené v diagramu jsou podmnožinou síťové součásti ve virtuální síti. Například když se zobrazí skupiny zabezpečení sítě, pravidla zabezpečení v něm nejsou zobrazeny v diagramu. I když není rozlišené v diagramu, řádky představovat jednu z dvou vztahů: *Členství ve skupině* nebo *přidružené*. Pokud chcete zobrazit úplný seznam prostředků v rámci virtuální sítě a druh vztahu mezi prostředky, generovat topologie s [PowerShell](#powershell) nebo [rozhraní příkazového řádku Azure](#azure-cli).
 
 ## <a name = "azure-cli"></a>Zobrazení topologie – rozhraní příkazového řádku Azure
 
@@ -85,7 +85,7 @@ Vámi používaný účet musí mít potřebná [oprávnění](required-rbac-per
 
 Spusťte příkazy v následujících kroků:
 - Ve službě Azure Cloud Shell, tak, že vyberete **vyzkoušet** nahoře napravo od libovolného příkazu. Azure Cloud Shell je bezplatné interaktivní prostředí, který má běžné nástroje Azure, včetně a nakonfigurovány pro použití s vaším účtem.
-- Spuštění Powershellu z vašeho počítače. Při spuštění PowerShell z počítače, kroky v tomto článku vyžadují verzi 5.7.0 nebo novějším modulu AzureRm. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Spuštění Powershellu z vašeho počítače. Při spuštění PowerShell z počítače, kroky v tomto článku vyžadují verzi 5.7.0 nebo novějším modulu AzureRm. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
 
 Vámi používaný účet musí mít potřebná [oprávnění](required-rbac-permissions.md).
 
@@ -132,18 +132,18 @@ Všechny prostředky, které jsou vráceny v topologii mít jednu z následujíc
 | Typ vztahu | Příklad:                                                                                                |
 | ---               | ---                                                                                                    |
 | Členství ve skupině       | Virtuální síť obsahuje podsítě. Podsíť obsahuje síťové rozhraní.                            |
-| Související        | Síťové rozhraní je přidružený virtuální počítač. Veřejná IP adresa je přidružená k síťovému rozhraní. |
+| Přidruženo        | Síťové rozhraní je přidružený virtuální počítač. Veřejná IP adresa je přidružená k síťovému rozhraní. |
 
 ## <a name="properties"></a>Vlastnosti
 
 Všechny prostředky, které jsou vráceny v topologii mají následující vlastnosti:
 
-- **Název**: název prostředku
-- **ID**: identifikátor URI prostředku.
-- **Umístění**: oblast Azure, zda prostředek existuje v.
-- **Přidružení**: seznam přidružení k odkazovaného objektu. Každé přidružení má následující vlastnosti:
-    - **AssociationType**: odkazuje na vztah mezi objektem podřízené a nadřazené. Platné hodnoty jsou *obsahuje* nebo *přidružené*.
-    - **Název**: název odkazovaného prostředku.
+- **Název**: Název prostředku
+- **ID**: Identifikátor URI prostředku.
+- **Umístění**: Oblasti Azure, zda prostředek existuje v.
+- **Přidružení**: Seznam přidružení k odkazovaného objektu. Každé přidružení má následující vlastnosti:
+    - **AssociationType**: Odkazuje na vztah mezi objektem podřízené a nadřazené. Platné hodnoty jsou *obsahuje* nebo *přidružené*.
+    - **Název**: Název odkazovaného prostředku.
     - **ResourceId**:-identifikátor URI prostředku, který odkazuje přidružení.
 
 ## <a name="next-steps"></a>Další postup

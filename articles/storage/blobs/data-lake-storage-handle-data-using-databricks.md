@@ -8,26 +8,27 @@ ms.author: jamesbak
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: e4e75c65178c4bbedcf781c2fbf2149a94a702cd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 0bb2e9a91890f88466b27439b55d516848fd2270
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321190"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438824"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 
-V tomto kurzu jste pomocí Azure Databricks provádět ETL (extrakce, transformace a načítání dat) operace. Přesun dat z účtu služby Azure Storage s Azure Data Lake Storage Gen2 povolené do služby Azure SQL Data Warehouse.
+V tomto kurzu provedete ETL (extrakce, transformace a načítání dat) operace s využitím Azure Databricks. Extrahovat data z Azure Data Lake Storage Gen2 do Azure Databricks, spouštět transformace dat v Azure Databricks a pak načítat Transformovaná data do Azure SQL Data Warehouse.
 
-V tomto kurzu se naučíte:
+Postup, který je popsaný v tomto kurzu, používá k přenosu dat do Azure Databricks konektor SQL Data Warehouse pro Azure Databricks. Tento konektor zase používá Azure Blob Storage jako dočasné úložiště dat přenášených mezi clusterem Azure Databricks a službou Azure SQL Data Warehouse.
+
+Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Vytvoření pracovního prostoru Azure Databricks.
 > * Vytvoření clusteru Spark v Azure Databricks.
-> * Vytvoření účtu Azure Data Lake Storage Gen2 podporuje.
-> * Nahrání dat do Azure Data Lake Storage Gen2.
-> * Vytvoření poznámkového bloku v Azure Databricks.
-> * Extrahujte data z Data Lake Storage Gen2.
+> * Vytvořit systém souborů a nahrání dat do služby Azure Data Lake Storage Gen2.
+> * Vytvoření instančního objektu.
+> * Extrahujte data z Data Lake Store.
 > * Transformujte data v Azure Databricks.
 > * Načtení dat do Azure SQL Data Warehouse.
 
@@ -37,37 +38,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Vytvoření služby Azure SQL data warehouse, vytvořte pravidlo brány firewall na úrovni serveru a připojení k serveru jako správce serveru. Postupujte podle pokynů [rychlý start: Vytvoření služby Azure SQL data warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md) článku.
-* Vytvořte hlavní klíč databáze pro službu Azure SQL data warehouse. Postupujte podle pokynů [vytvořte hlavní klíč databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key) článku.
-* [Vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
-* Stáhněte si soubor s ukázkovými daty (**small_radio_json.json**) z úložiště [příkladů a sledování problémů U-SQL](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) a poznamenejte si cestu, kam jste tento soubor uložili.
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+> [!div class="checklist"]
+> * Vytvoření služby Azure SQL data warehouse, vytvořte pravidlo brány firewall na úrovni serveru a připojení k serveru jako správce serveru. Zobrazit [rychlý start: Vytvoření služby Azure SQL data warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md).
+> * Vytvořte hlavní klíč databáze pro službu Azure SQL data warehouse. Zobrazit [vytvořte hlavní klíč databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+> * Vytvoření účtu Azure Data Lake Storage Gen2. Zobrazit [vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+> * Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="set-aside-storage-account-configuration"></a>Odložení konfigurace účtu úložiště
-
-Budete potřebovat název účtu úložiště a koncovým bodem systému souborů identifikátoru URI.
-
-Pokud chcete získat název účtu úložiště na webu Azure Portal, zvolte **všechny služby** a filtrováním podle termín *úložiště*. Vyberte **účty úložiště** a vyhledejte svůj účet úložiště.
-
-Pokud chcete získat koncový bod systému souborů identifikátoru URI, zvolte **vlastnosti**a v podokně vlastností najít hodnotu **primární ADLS koncový bod SOUBOROVÉ systému** pole.
-
-Vložte obě tyto hodnoty do textového souboru. Brzy je budete potřebovat.
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
-
-Vytvoření instančního objektu služby podle pokynů v tomto tématu: [Postup: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
-
-:heavy_check_mark: Při provádění kroků v [vytvoření aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) části tohoto článku, nezapomeňte nastavit **přihlašovací adresa URL** pole **vytvořit** dialogové okno pro identifikátor URI koncového bodu právě shromažďují.
-
-:heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, nezapomeňte přiřadit aplikaci do **Role Přispěvatel úložiště objektů Blob**.
-
-:heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
-
-## <a name="create-the-workspace"></a>Vytvořit pracovní prostor
+## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
 V této části vytvoříte pracovní prostor služby Azure Databricks s využitím webu Azure portal.
 
@@ -93,35 +70,64 @@ V této části vytvoříte pracovní prostor služby Azure Databricks s využit
 
     ![Dlaždice nasazení Databricks](./media/data-lake-storage-handle-data-using-databricks/databricks-deployment-tile.png "Dlaždice nasazení Databricks")
 
-## <a name="create-the-spark-cluster"></a>Vytvoření clusteru Spark
-
-K provádění operací v tomto kurzu, budete potřebovat Spark cluster. Použijte následující postup k vytvoření clusteru Spark.
+## <a name="create-a-spark-cluster-in-azure-databricks"></a>Vytvoření clusteru Spark v Azure Databricks
 
 1. Na webu Azure Portal, přejděte do pracovního prostoru Databricks, který jste vytvořili a vyberte **spustit pracovní prostor**.
 
-1. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
+2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
 
     ![Databricks v Azure](./media/data-lake-storage-handle-data-using-databricks/databricks-on-azure.png "Databricks v Azure")
 
-1. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
+3. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
 
     ![Vytvoření clusteru Databricks Spark v Azure](./media/data-lake-storage-handle-data-using-databricks/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
 
-1. Zadejte hodnoty následujících polí a potvrďte výchozí hodnoty dalších polí:
+4. Zadejte hodnoty následujících polí a potvrďte výchozí hodnoty dalších polí:
 
     * Zadejte název clusteru.
+
     * Pro účely tohoto článku vytvořte cluster pomocí **5.1** modulu runtime.
+
     * Ujistěte se, že jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko. Pokud se nepoužívá clusteru, cluster ukončit poskytnou doba trvání (v minutách).
 
-1. Vyberte **Vytvořit cluster**.
+    * Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
-Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
+## <a name="create-a-file-system-and-upload-sample-data"></a>Vytvořit systém souborů a nahrání ukázkových dat
 
-## <a name="create-a-file-system"></a>Vytvořit systém souborů
+Nejprve vytvořte systému souborů ve vašem účtu Data Lake Storage Gen2. Potom můžete nahrát soubor ukázkových dat do Data Lake Store. Později tento soubor použijete v Azure Databricks ke spuštění některých transformací.
 
-K ukládání dat ve vašem účtu úložiště Data Lake Storage Gen2, budete muset vytvořit systém souborů.
+1. Stáhněte si [small_radio_json.json](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) ukázkový datový soubor do vašeho místního systému souborů.
 
+2. Z [webu Azure portal](https://portal.azure.com/), přejděte do účtu Data Lake Storage Gen2, kterou jste vytvořili jako požadavky do tohoto kurzu.
+
+3. Z **přehled** stránce účtu úložiště vyberte **otevřít v Průzkumníkovi**.
+
+   ![Otevřete Průzkumníka služby Storage](./media/data-lake-storage-handle-data-using-databricks/data-lake-storage-open-storage-explorer.png "otevřete Průzkumníka služby Storage")
+
+4. Vyberte **otevřete Průzkumníka služby Azure Storage** otevřete Průzkumníka služby Storage.
+
+   ![Otevřít Průzkumníka služby Storage se zobrazí druhá výzva](./media/data-lake-storage-handle-data-using-databricks/data-lake-storage-open-storage-explorer-2.png "se zobrazí druhá výzva otevřete Průzkumníka služby Storage")
+
+   Otevře se Průzkumník služby Storage. Můžete vytvořit systém souborů a nahrání ukázkových dat pomocí pokynů v tomto tématu: [Rychlé zprovoznění: Pomocí Průzkumníka služby Azure Storage ke správě dat v účtu služby Azure Data Lake Storage Gen2](data-lake-storage-explorer.md).
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
+
+Vytvoření instančního objektu služby podle pokynů v tomto tématu: [Postup: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
+
+:heavy_check_mark: Při provádění kroků v [vytvoření aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) části tohoto článku, nezapomeňte nastavit **přihlašovací adresa URL** pole **vytvořit** dialogové okno pro identifikátor URI koncového bodu právě shromažďují.
+
+:heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, nezapomeňte přiřadit aplikaci do **Role Přispěvatel úložiště objektů Blob**.
+
+:heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
 Nejprve vytvořte ve vašem pracovním prostoru Azure Databricks Poznámkový blok a pak spustíte fragmenty kódu pro vytváření systému souborů ve vašem účtu úložiště.
+
+## <a name="extract-data-from-the-data-lake-store"></a>Extrahovat data z Data Lake Store
+
+V této části vytvořte v pracovním prostoru Azure Databricks Poznámkový blok a pak spustíte fragmenty kódu extrahovat data z Data Lake Store do Azure Databricks.
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do pracovního prostoru Azure Databricks, který jste vytvořili a vyberte **spustit pracovní prostor**.
 
@@ -133,227 +139,195 @@ Nejprve vytvořte ve vašem pracovním prostoru Azure Databricks Poznámkový bl
 
     ![Zadejte podrobnosti pro poznámkového bloku v Databricks](./media/data-lake-storage-handle-data-using-databricks/databricks-notebook-details.png "zadejte podrobnosti pro poznámkového bloku v Databricks")
 
-    Vyberte **Vytvořit**.
+4. Vyberte **Vytvořit**.
 
-4. Zkopírujte a vložte následující blok kódu do první buňky, ale není ještě tento kód spustit.
+5. Zkopírujte a vložte následující blok kódu do první buňky.
 
-    ```scala
-    val configs = Map(
-    "fs.azure.account.auth.type" -> "OAuth",
-    "fs.azure.account.oauth.provider.type" -> "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-    "fs.azure.account.oauth2.client.id" -> "<application-id>",
-    "fs.azure.account.oauth2.client.secret" -> "<authentication-key>"),
-    "fs.azure.account.oauth2.client.endpoint" -> "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
-    "fs.azure.createRemoteFileSystemDuringInitialization"->"true")
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   ```
 
-    dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<directory-name>",
-    mountPoint = "/mnt/<mount-name>",
-    extraConfigs = configs)
-    ```
-
-5. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` zástupné hodnoty hodnotami, které jste shromáždili, když jste dokončili kroky v v tomto bloku kódu [vyhradit účet úložiště konfigurace](#config) a [vytvoření instančního objektu](#service-principal) částech tohoto článku. Nastavte `file-system-name`, `directory-name`, a `mount-name` zástupné hodnoty tak, aby odkazoval na libovolné názvy, kterému chcete udělit systému souborů, adresáře a připojení.
+5. V tomto bloku kódu, nahraďte `application-id`, `authentication-id`, a `tenant-id` hodnoty zástupných symbolů v tomto bloku kódu nahraďte hodnotami, které jste shromáždili, když jste dokončili kroky v [odložit konfigurací účtu úložiště](#config). Nahradit `storage-account-name` zástupnou hodnotu s názvem účtu úložiště.
 
 6. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
-## <a name="upload-the-sample-data"></a>Nahrání ukázkových dat
+7. Nyní můžete načíst ukázkový soubor json jako datový rámec v Azure Databricks. Vložte následující kód do nové buňky. Nahraďte zástupné symboly v závorce s vašimi hodnotami.
 
-Dalším krokem je ukázkový datový soubor nahrát do účtu úložiště pro transformaci dále v Azure Databricks.
+   ```scala
+   val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
+   ```
 
-Nahrání ukázkových dat, který jste stáhli do účtu úložiště. Metoda, která slouží k nahrávání dat do účtu úložiště se liší v závislosti na tom, jestli máte hierarchického oboru názvů povolené.
+   * Nahradit `file-system-name` zástupnou hodnotu s názvem, který jste zadali systému souborů v Průzkumníku služby Storage.
 
-Provést odeslání, můžete použít Azure Data Factory, distp nebo AzCopy (verze 10). AzCopy verze 10 je momentálně dostupný jenom prostřednictvím ve verzi preview. Pokud chcete použít AzCopy, vložte do příkazového okna následující kód:
+   * Nahradit `storage-account-name` zástupný symbol s názvem účtu úložiště.
 
-```bash
-set ACCOUNT_NAME=<ACCOUNT_NAME>
-set ACCOUNT_KEY=<ACCOUNT_KEY>
-azcopy cp "<DOWNLOAD_PATH>\small_radio_json.json" https://<ACCOUNT_NAME>.dfs.core.windows.net/data --recursive 
-```
+8. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
-## <a name="extract-the-data"></a>Extrahovat data
+9. Spuštěním následujícího kódu zobrazíte obsah datového rámce:
 
-Pro práci s ukázkovými daty ve službě Databricks, budete muset extrahovat data z vašeho účtu úložiště.
+    ```scala
+    df.show()
+    ```
+   Zobrazí se výstup, který bude podobný následujícímu fragmentu kódu:
 
-Vraťte se do vaší poznámkového bloku Databricks a zadejte následující kód do nové buňky v poznámkovém bloku.
+   ```bash
+   +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
+   |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
+   +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
+   | El Arrebato         |Logged In| Annalyse|     F|            2|Montgomery|234.57914| free  |  Killeen-Temple, TX|   PUT|NextSong|1384448062332|     1879|Quiero Quererte Q...|   200|1409318650332|   309|
+   | Creedence Clearwa...|Logged In|   Dylann|     M|            9|    Thomas|340.87138| paid  |       Anchorage, AK|   PUT|NextSong|1400723739332|       10|        Born To Move|   200|1409318653332|    11|
+   | Gorillaz            |Logged In|     Liam|     M|           11|     Watts|246.17751| paid  |New York-Newark-J...|   PUT|NextSong|1406279422332|     2047|                DARE|   200|1409318685332|   201|
+   ...
+   ...
+   ```
 
-Přidejte následující fragment kódu do buňky prázdný kód. Nahraďte zástupné symboly v závorkách hodnotami, které jste předtím uložili z účtu úložiště.
+   Tím jste extrahovali data z Azure Data Lake Storage Gen2 do Azure Databricks.
 
-```scala
-dbutils.widgets.text("storage_account_name", "STORAGE_ACCOUNT_NAME", "<YOUR_STORAGE_ACCOUNT_NAME>")
-dbutils.widgets.text("storage_account_access_key", "YOUR_ACCESS_KEY", "<YOUR_STORAGE_ACCOUNT_SHARED_KEY>")
-```
-
-Vyberte klávesy Shift + Enter pro spuštění kódu.
-
-Teď můžete ukázkový soubor JSON načíst jako datový rámec do služby Azure Databricks. Vložte následující kód do nové buňky. Nahraďte zástupné symboly v závorce s vašimi hodnotami.
-
-```scala
-val df = spark.read.json("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/data/small_radio_json.json")
-```
-
-Vyberte klávesy Shift + Enter pro spuštění kódu.
-
-Spuštěním následujícího kódu zobrazíte obsah datového rámce:
-
-```scala
-df.show()
-```
-
-Zobrazí se výstup, který bude podobný následujícímu fragmentu kódu:
-
-```bash
-+---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
-|               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
-+---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
-| El Arrebato         |Logged In| Annalyse|     F|            2|Montgomery|234.57914| free  |  Killeen-Temple, TX|   PUT|NextSong|1384448062332|     1879|Quiero Quererte Q...|   200|1409318650332|   309|
-| Creedence Clearwa...|Logged In|   Dylann|     M|            9|    Thomas|340.87138| paid  |       Anchorage, AK|   PUT|NextSong|1400723739332|       10|        Born To Move|   200|1409318653332|    11|
-| Gorillaz            |Logged In|     Liam|     M|           11|     Watts|246.17751| paid  |New York-Newark-J...|   PUT|NextSong|1406279422332|     2047|                DARE|   200|1409318685332|   201|
-...
-...
-```
-
-Tím jste extrahovali data z Azure Data Lake Storage Gen2 do Azure Databricks.
-
-## <a name="transform-the-data"></a>Transformace dat
+## <a name="transform-data-in-azure-databricks"></a>Transformace dat v Azure Databricks
 
 Nezpracovaná ukázková data **small_radio_json.json** souboru zaznamená cílovou skupinu stanice a má různé sloupce. V této části transformujete data z datové sady načetly jenom určité sloupce.
 
-Nejdřív, načtěte jenom sloupce **firstName**, **lastName**, **pohlaví**, **umístění**, a **úroveň**z datového rámce, který jste vytvořili.
+1. Nejdřív, načtěte jenom sloupce **firstName**, **lastName**, **pohlaví**, **umístění**, a **úroveň**z datového rámce, který jste vytvořili.
 
-```scala
-val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
-```
+   ```scala
+   val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
+   specificColumnsDf.show()
+   ```
 
-Zobrazí se výstup, jak je znázorněno v následujícím fragmentu kódu:
+   Zobrazí se výstup, jak je znázorněno v následujícím fragmentu kódu:
 
-```bash
-+---------+----------+------+--------------------+-----+
-|firstname|  lastname|gender|            location|level|
-+---------+----------+------+--------------------+-----+
-| Annalyse|Montgomery|     F|  Killeen-Temple, TX| free|
-|   Dylann|    Thomas|     M|       Anchorage, AK| paid|
-|     Liam|     Watts|     M|New York-Newark-J...| paid|
-|     Tess|  Townsend|     F|Nashville-Davidso...| free|
-|  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
-|     Alan|     Morse|     M|Chicago-Napervill...| paid|
-|Gabriella|   Shelton|     F|San Jose-Sunnyval...| free|
-|   Elijah|  Williams|     M|Detroit-Warren-De...| paid|
-|  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
-|     Tess|  Townsend|     F|Nashville-Davidso...| free|
-|     Alan|     Morse|     M|Chicago-Napervill...| paid|
-|     Liam|     Watts|     M|New York-Newark-J...| paid|
-|     Liam|     Watts|     M|New York-Newark-J...| paid|
-|   Dylann|    Thomas|     M|       Anchorage, AK| paid|
-|     Alan|     Morse|     M|Chicago-Napervill...| paid|
-|   Elijah|  Williams|     M|Detroit-Warren-De...| paid|
-|  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
-|     Alan|     Morse|     M|Chicago-Napervill...| paid|
-|   Dylann|    Thomas|     M|       Anchorage, AK| paid|
-|  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
-+---------+----------+------+--------------------+-----+
-```
+   ```bash
+   +---------+----------+------+--------------------+-----+
+   |firstname|  lastname|gender|            location|level|
+   +---------+----------+------+--------------------+-----+
+   | Annalyse|Montgomery|     F|  Killeen-Temple, TX| free|
+   |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
+   |     Liam|     Watts|     M|New York-Newark-J...| paid|
+   |     Tess|  Townsend|     F|Nashville-Davidso...| free|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
+   |     Alan|     Morse|     M|Chicago-Napervill...| paid|
+   |Gabriella|   Shelton|     F|San Jose-Sunnyval...| free|
+   |   Elijah|  Williams|     M|Detroit-Warren-De...| paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
+   |     Tess|  Townsend|     F|Nashville-Davidso...| free|
+   |     Alan|     Morse|     M|Chicago-Napervill...| paid|
+   |     Liam|     Watts|     M|New York-Newark-J...| paid|
+   |     Liam|     Watts|     M|New York-Newark-J...| paid|
+   |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
+   |     Alan|     Morse|     M|Chicago-Napervill...| paid|
+   |   Elijah|  Williams|     M|Detroit-Warren-De...| paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
+   |     Alan|     Morse|     M|Chicago-Napervill...| paid|
+   |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
+   +---------+----------+------+--------------------+-----+
+   ```
 
-Teď můžete v datech sloupec **level** přejmenovat na **subscription_type**.
+2. Teď můžete v datech sloupec **level** přejmenovat na **subscription_type**.
 
-```scala
-val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
-renamedColumnsDF.show()
-```
+   ```scala
+   val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
+   renamedColumnsDF.show()
+   ```
 
-Zobrazí se výstup, jak je znázorněno v následujícím fragmentu kódu.
+   Zobrazí se výstup, jak je znázorněno v následujícím fragmentu kódu.
 
-```bash
-+---------+----------+------+--------------------+-----------------+
-|firstname|  lastname|gender|            location|subscription_type|
-+---------+----------+------+--------------------+-----------------+
-| Annalyse|Montgomery|     F|  Killeen-Temple, TX|             free|
-|   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
-|     Liam|     Watts|     M|New York-Newark-J...|             paid|
-|     Tess|  Townsend|     F|Nashville-Davidso...|             free|
-|  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
-|     Alan|     Morse|     M|Chicago-Napervill...|             paid|
-|Gabriella|   Shelton|     F|San Jose-Sunnyval...|             free|
-|   Elijah|  Williams|     M|Detroit-Warren-De...|             paid|
-|  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
-|     Tess|  Townsend|     F|Nashville-Davidso...|             free|
-|     Alan|     Morse|     M|Chicago-Napervill...|             paid|
-|     Liam|     Watts|     M|New York-Newark-J...|             paid|
-|     Liam|     Watts|     M|New York-Newark-J...|             paid|
-|   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
-|     Alan|     Morse|     M|Chicago-Napervill...|             paid|
-|   Elijah|  Williams|     M|Detroit-Warren-De...|             paid|
-|  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
-|     Alan|     Morse|     M|Chicago-Napervill...|             paid|
-|   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
-|  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
-+---------+----------+------+--------------------+-----------------+
-```
+   ```bash
+   +---------+----------+------+--------------------+-----------------+
+   |firstname|  lastname|gender|            location|subscription_type|
+   +---------+----------+------+--------------------+-----------------+
+   | Annalyse|Montgomery|     F|  Killeen-Temple, TX|             free|
+   |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
+   |     Liam|     Watts|     M|New York-Newark-J...|             paid|
+   |     Tess|  Townsend|     F|Nashville-Davidso...|             free|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
+   |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
+   |Gabriella|   Shelton|     F|San Jose-Sunnyval...|             free|
+   |   Elijah|  Williams|     M|Detroit-Warren-De...|             paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
+   |     Tess|  Townsend|     F|Nashville-Davidso...|             free|
+   |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
+   |     Liam|     Watts|     M|New York-Newark-J...|             paid|
+   |     Liam|     Watts|     M|New York-Newark-J...|             paid|
+   |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
+   |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
+   |   Elijah|  Williams|     M|Detroit-Warren-De...|             paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
+   |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
+   |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
+   +---------+----------+------+--------------------+-----------------+
+   ```
 
-## <a name="load-the-data"></a>Načtení dat
+## <a name="load-data-into-azure-sql-data-warehouse"></a>Načtení dat do Azure SQL Data Warehouse
 
 V této části načtete transformovaná data do služby Azure SQL Data Warehouse. Konektor Azure SQL Data Warehouse pro Azure Databricks můžete datový rámec nahrát přímo jako tabulku do SQL data warehouse.
 
 Konektor SQL Data Warehouse využívá úložiště objektů Blob v Azure jako dočasné úložiště pro nahrávání dat mezi službami Azure Databricks a Azure SQL Data Warehouse. Proto musíte napřed zadat konfiguraci pro připojení k účtu tohoto úložiště. Je potřeba už měli vytvořený účet jako součást požadavků pro účely tohoto článku.
 
-Zadejte konfiguraci pro přístup k účtu Azure Storage z Azure Databricks.
+1. Zadejte konfiguraci pro přístup k účtu Azure Storage z Azure Databricks.
 
-```scala
-val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
-val fileSystemName = "<FILE_SYSTEM_NAME>"
-val accessKey =  "<ACCESS_KEY>"
-```
+   ```scala
+   val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
+   val fileSystemName = "<FILE_SYSTEM_NAME>"
+   val accessKey =  "<ACCESS_KEY>"
+   ```
 
-Zadejte dočasnou složku pro použití při přesouvání dat mezi službami Azure Databricks a Azure SQL Data Warehouse.
+2. Zadejte dočasnou složku pro použití při přesouvání dat mezi službami Azure Databricks a Azure SQL Data Warehouse.
 
-```scala
-val tempDir = "abfs://" + fileSystemName + "@" + storageURI +"/tempDirs"
-```
+   ```scala
+   val tempDir = "abfss://" + fileSystemName + "@" + storageURI +"/tempDirs"
+   ```
 
-Spusťte následující fragment kódu, který v konfiguraci uloží přístupové klíče služby Azure Blob Storage. Tím zajistíte, že není nutné udržovat přístupový klíč do poznámkového bloku ve formátu prostého textu.
+3. Spusťte následující fragment kódu, který v konfiguraci uloží přístupové klíče služby Azure Blob Storage. Tím zajistíte, že není nutné udržovat přístupový klíč do poznámkového bloku ve formátu prostého textu.
 
-```scala
-val acntInfo = "fs.azure.account.key."+ storageURI
-sc.hadoopConfiguration.set(acntInfo, accessKey)
-```
+   ```scala
+   val acntInfo = "fs.azure.account.key."+ storageURI
+   sc.hadoopConfiguration.set(acntInfo, accessKey)
+   ```
 
-Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Musíte mít vytvořený SQL data warehouse jako předpoklad.
+4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Musíte mít vytvořený SQL data warehouse jako předpoklad.
 
-```scala
-//SQL Data Warehouse related settings
-val dwDatabase = "<DATABASE NAME>"
-val dwServer = "<DATABASE SERVER NAME>" 
-val dwUser = "<USER NAME>"
-val dwPass = "<PASSWORD>"
-val dwJdbcPort =  "1433"
-val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
-val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
-val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
-```
+   ```scala
+   //SQL Data Warehouse related settings
+   val dwDatabase = "<DATABASE NAME>"
+   val dwServer = "<DATABASE SERVER NAME>" 
+   val dwUser = "<USER NAME>"
+   val dwPass = "<PASSWORD>"
+   val dwJdbcPort =  "1433"
+   val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+   val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
+   val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
+   ```
 
-Spusťte následující fragment kódu pro načtení transformovaný datový rámec **renamedColumnsDF**, jako tabulky v SQL data warehouse. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**.
+5. Spusťte následující fragment kódu pro načtení transformovaný datový rámec **renamedColumnsDF**, jako tabulky v SQL data warehouse. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**.
 
-```scala
-spark.conf.set(
-    "spark.sql.parquet.writeLegacyFormat",
-    "true")
-    
-renamedColumnsDF.write
-    .format("com.databricks.spark.sqldw")
-    .option("url", sqlDwUrlSmall) 
-    .option("dbtable", "SampleTable")
-    .option( "forward_spark_azure_storage_credentials","True")
-    .option("tempdir", tempDir)
-    .mode("overwrite")
-    .save()
-```
+   ```scala
+   spark.conf.set(
+       "spark.sql.parquet.writeLegacyFormat",
+       "true")
 
-Připojení k SQL database a ověřte, jestli se databáze s názvem **SampleTable**.
+   renamedColumnsDF.write
+       .format("com.databricks.spark.sqldw")
+       .option("url", sqlDwUrlSmall) 
+       .option("dbtable", "SampleTable")
+       .option( "forward_spark_azure_storage_credentials","True")
+       .option("tempdir", tempDir)
+       .mode("overwrite")
+       .save()
+   ```
 
-![Ověření ukázkové tabulky](./media/data-lake-storage-handle-data-using-databricks/verify-sample-table.png "ověření ukázkové tabulky")
+6. Připojení k SQL database a ověřte, jestli se databáze s názvem **SampleTable**.
 
-Spusťte výběrový dotaz, kterým ověříte obsah tabulky. Tabulka by měla obsahovat stejná data jako **renamedColumnsDF** datového rámce.
+   ![Ověření ukázkové tabulky](./media/data-lake-storage-handle-data-using-databricks/verify-sample-table.png "ověření ukázkové tabulky")
 
-![Ověření obsahu ukázkové tabulky](./media/data-lake-storage-handle-data-using-databricks/verify-sample-table-content.png "ověření obsahu ukázkové tabulky")
+7. Spusťte výběrový dotaz, kterým ověříte obsah tabulky. Tabulka by měla obsahovat stejná data jako **renamedColumnsDF** datového rámce.
+
+    ![Ověření obsahu ukázkové tabulky](./media/data-lake-storage-handle-data-using-databricks/verify-sample-table-content.png "ověření obsahu ukázkové tabulky")
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

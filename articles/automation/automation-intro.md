@@ -3,19 +3,19 @@ title: Přehled Azure Automation
 description: Zjistěte, jako pomocí Azure Automation automatizovat životní cyklus infrastruktury a aplikací.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: eamonoreilly
 ms.author: eamono
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: f91464ebdd29c082fd721e9e4b2e029de991cc1e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b14550d0e03382a6709924ca5671cb26d09fcc35
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958691"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434049"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -87,3 +87,4 @@ Ceny služby Azure Automation najdete na stránce s [cenami](https://azure.micro
 
 > [!div class="nextstepaction"]
 > [Vytvoření účtu Automation](automation-quickstart-create-account.md)
+

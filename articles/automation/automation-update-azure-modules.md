@@ -3,18 +3,18 @@ title: Aktualizovat moduly Azure ve službě Azure Automation
 description: Tento článek popisuje, jak můžete nyní aktualizovat běžných modulů Azure Powershellu, které jsou k dispozici ve výchozím nastavení ve službě Azure Automation.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a60dd9af60328759e332514c8af061e50382798
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c0636a3e1fa50f90c68393aea910f36d38d8eaf5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634860"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437263"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
@@ -72,4 +72,5 @@ Pokud chcete použít konkrétní verzi modulu Azure Powershellu místo nejnově
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o integrační moduly a vytvoření vlastních modulů k další integraci s jinými systémy, služby nebo řešení automatizace, naleznete v tématu [moduly integrace](automation-integration-modules.md).
+
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 366ff0b59835ca3a28cafd5de77c0bd645ff58c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984224"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424638"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika potíží s filtrováním na provoz sítě virtuálního počítače
 
@@ -44,8 +44,8 @@ Následující kroky předpokládají, že máte existující virtuální počí
 
    Pravidla vidíte uvedený na předchozím obrázku jsou pro síťové rozhraní s názvem **myVMVMNic**. Zjistíte, že existují **PŘÍCHOZÍ pravidla portů** pro síťové rozhraní ze dvou skupin zabezpečení jinou síť:
    
-   - **mySubnetNSG**: přidruženou k podsíti, síťové rozhraní nachází.
-   - **myVMNSG**: přidruženou k síťové rozhraní ve virtuálním počítači s názvem **myVMVMNic**.
+   - **mySubnetNSG**: Přidružené k podsíti, ke které se síťové rozhraní.
+   - **myVMNSG**: Přidružené k síťovému rozhraní ve virtuálním počítači s názvem **myVMVMNic**.
 
    Pravidlo s názvem **DenyAllInBound** je co brání příchozí komunikace k virtuálnímu počítači přes port 80 z Internetu, jak je popsáno v [scénář](#scenario). Pravidla seznamů *0.0.0.0/0* pro **zdroj**, což zahrnuje Internetu. Žádné pravidlo s vyšší prioritou (nižším číslem) umožňuje port 80 příchozí. Aby bylo možné portem 80 příchozí provoz do virtuálního počítače z Internetu, přečtěte si téma [vyřešit problém](#resolve-a-problem). Další informace o pravidlech zabezpečení a jak Azure aplikuje je najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
 
@@ -73,11 +73,11 @@ Následující kroky předpokládají, že máte existující virtuální počí
 
 I když platná pravidla zabezpečení se zobrazit pomocí virtuálního počítače, můžete také zobrazit platná pravidla zabezpečení prostřednictvím osobně:
 - **Síťové rozhraní**: Zjistěte, jak [zobrazit síťové rozhraní](virtual-network-network-interface.md#view-network-interface-settings).
-- **Skupina zabezpečení sítě**: Zjistěte, jak [zobrazit skupinu NSG](manage-network-security-group.md#view-details-of-a-network-security-group).
+- **NSG**: Zjistěte, jak [zobrazit skupinu NSG](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnostikovat pomocí Powershellu
 
-Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Při spuštění PowerShell z počítače, je nutné *AzureRM* modul prostředí PowerShell, verze 6.0.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` v počítači nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzureRmAccount` přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions)].
+Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Při spuštění PowerShell z počítače, je nutné *AzureRM* modul prostředí PowerShell, verze 6.0.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` v počítači nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzureRmAccount` přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions)].
 
 Získání platná pravidla zabezpečení pro síťové rozhraní s [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup). Následující příklad získá platná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic*, která je ve skupině prostředků s názvem *myResourceGroup*:
 
@@ -154,9 +154,9 @@ Ve výstupu předchozí název síťového rozhraní je *myVMVMNic rozhraní*.
 
 Bez ohledu na to, zda jste použili [PowerShell](#diagnose-using-powershell), nebo [rozhraní příkazového řádku Azure](#diagnose-using-azure-cli) a Diagnostikujte problém, zobrazí se výstup, který obsahuje následující informace:
 
-- **Skupinu zabezpečení sítě**: ID skupiny zabezpečení sítě.
-- **Přidružení**: zda je skupina zabezpečení sítě přidružená k *NetworkInterface* nebo *podsítě*. Pokud je skupina zabezpečení sítě přidružené k oběma, výstup se vrací s **– NetworkSecurityGroup**, **přidružení**, a **EffectiveSecurityRules**, pro jednotlivé skupiny NSG. Pokud skupina zabezpečení sítě je přidružením nebo zrušením přidružení bezprostředně před spuštěním příkazu zobrazíte platná pravidla zabezpečení, budete muset Počkejte několik sekund, aby se změny tak, aby odrážely ve výstupu příkazu.
-- **EffectiveSecurityRules**: vysvětlení každé vlastnosti je podrobně popsaná v [vytvořit pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule). Pravidlo názvy začíná *defaultSecurityRules /* jsou výchozí pravidla zabezpečení, které existují v každé skupině NSG. Pravidlo názvy začíná *securityRules /* pravidla, která jste vytvořili. Pravidla, která určují [značka služby](security-overview.md#service-tags), jako například **Internet**, **VirtualNetwork**, a **AzureLoadBalancer** pro  **destinationAddressPrefix** nebo **hodnotu sourceAddressPrefix** také mít hodnoty pro vlastnosti, **expandedDestinationAddressPrefix** vlastnost. **ExpandedDestinationAddressPrefix** seznamů vlastností všechny předpony adres, které jsou reprezentovány ve značce služby.
+- **NetworkSecurityGroup**: ID skupiny zabezpečení sítě.
+- **Přidružení**: Zda je skupina zabezpečení sítě přidružená k *NetworkInterface* nebo *podsítě*. Pokud je skupina zabezpečení sítě přidružené k oběma, výstup se vrací s **– NetworkSecurityGroup**, **přidružení**, a **EffectiveSecurityRules**, pro jednotlivé skupiny NSG. Pokud skupina zabezpečení sítě je přidružením nebo zrušením přidružení bezprostředně před spuštěním příkazu zobrazíte platná pravidla zabezpečení, budete muset Počkejte několik sekund, aby se změny tak, aby odrážely ve výstupu příkazu.
+- **EffectiveSecurityRules**: Vysvětlení každé vlastnosti je podrobně popsaná v [vytvořit pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule). Pravidlo názvy začíná *defaultSecurityRules /* jsou výchozí pravidla zabezpečení, které existují v každé skupině NSG. Pravidlo názvy začíná *securityRules /* pravidla, která jste vytvořili. Pravidla, která určují [značka služby](security-overview.md#service-tags), jako například **Internet**, **VirtualNetwork**, a **AzureLoadBalancer** pro  **destinationAddressPrefix** nebo **hodnotu sourceAddressPrefix** také mít hodnoty pro vlastnosti, **expandedDestinationAddressPrefix** vlastnost. **ExpandedDestinationAddressPrefix** seznamů vlastností všechny předpony adres, které jsou reprezentovány ve značce služby.
 
 Pokud se vám zobrazit duplicitní pravidla uvedená ve výstupu, je to, protože je skupina zabezpečení sítě přidružené k síťovému rozhraní i podsíť. Obě mají stejné výchozí pravidla skupin zabezpečení sítě a může mít duplicitní další pravidla, pokud vytvoříte vlastní pravidla, které jsou stejné v obou skupin zabezpečení sítě.
 
@@ -175,7 +175,7 @@ Ať už používáte Azure [portál](#diagnose-using-azure-portal), [PowerShell]
 | Protocol (Protokol)                | TCP                                                                                |
 | Akce                  | Povolit                                                                              |
 | Priorita                | 100                                                                                |
-| Název                    | Povolit HTTP-All                                                                     |
+| Název                    | Allow-HTTP-All                                                                     |
 
 Po vytvoření pravidla, port 80 je povolený příchozí provoz z Internetu, protože je vyšší než výchozí pravidlo zabezpečení s názvem prioritu pravidla *DenyAllInBound*, které znemožňuje provoz. Zjistěte, jak [vytvořit pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule). Pokud různé skupiny zabezpečení sítě jsou přidružené k síťovému rozhraní i podsíti, musíte vytvořit pravidlo stejné v obou skupin zabezpečení sítě.
 

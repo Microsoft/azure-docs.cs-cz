@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 47d41884a50450399df6273502096e0e630dbcf3
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8938f4bcf012eadb8d4b0ced92b9996bc58236a5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981758"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432043"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
@@ -84,7 +84,7 @@ Kromě toho i v případě, že Contoso má schopnost vícefaktorové ověřová
 
 Nakonec prostředků tenanta MFA funguje taky pro účty spravované služby a identifikátory sociálních sítí a pro partnerské organizace, které nemají nastavení vícefaktorového ověřování.
 
-Doporučení pro vícefaktorové ověřování pro uživatele B2B je proto vždy vyžadovat vícefaktorové ověřování ve zvoucí tenantovi. Tento požadavek může vést k double vícefaktorové ověřování v některých případech, ale při každém přístupu k pozvání tenanta, koncovým uživatelům prostředí je předvídatelné: Sally musíte zaregistrovat pro vícefaktorové ověřování u tenanta pozvat.
+Doporučení pro vícefaktorové ověřování pro uživatele B2B je proto vždy vyžadovat vícefaktorové ověřování ve zvoucí tenantovi. Tento požadavek může vést k double vícefaktorové ověřování v některých případech, ale při každém přístupu k pozvání tenanta, je předvídatelný prostředí pro koncové uživatele: Jan musí zaregistrovat pro MFA s pozval tenanta.
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Na základě zařízení, na základě umístění a na základě rizik podmíněného přístupu pro uživatele B2B
 
@@ -105,5 +105,5 @@ V současné době na základě rizik zásady přihlašování nelze použít pr
 Na spolupráce B2B ve službě Azure AD najdete v následujících článcích:
 
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-* [Licencování spolupráce v Azure AD B2B](licensing-guidance.md)
-* [Spolupráce Azure Active Directory s B2B – nejčastější dotazy (FAQ)](faq.md)
+* [Licencování spolupráce B2B ve službě Azure AD](licensing-guidance.md)
+* [Nejčastější dotazy týkající se spolupráce Azure Active Directory s B2B](faq.md)

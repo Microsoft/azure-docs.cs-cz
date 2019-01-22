@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: dc4cd28fe61c422f65f47c74c7cbc4686d73ab77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: d9fd7544c61b021bbb5db32087847cbeaddd3918
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628830"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431720"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
 
@@ -58,9 +58,9 @@ Tato data jsou k dispozici prostřednictvím [webu Azure portal](https://portal.
 
 Sestavy aktivit přihlašování pro vícefaktorové ověřování poskytují přístup k následujícím informacím:
 
-**Vyžadování vícefaktorového ověřování:** Uvádí, jestli se pro přihlašování vyžaduje vícefaktorové ověřování, nebo ne. Vícefaktorové ověřování můžete vyžadovat vícefaktorové ověřování jednotlivých uživatelů, podmíněný přístup nebo z jiných důvodů. Možné hodnoty jsou **Ano** nebo **ne**.
+**Vyžaduje se MFA:** Určuje, zda se vyžaduje pro přihlášení vícefaktorové ověřování, nebo ne. Vícefaktorové ověřování můžete vyžadovat vícefaktorové ověřování jednotlivých uživatelů, podmíněný přístup nebo z jiných důvodů. Možné hodnoty jsou **Ano** nebo **ne**.
 
-**Výsledek vícefaktorového ověřování:** Další informace o splnění nebo odepření vícefaktorového ověřování:
+**Výsledek vícefaktorového ověřování:** Další informace o tom, jestli splnění nebo odepření vícefaktorového ověřování:
 
 - Pokud bylo vícefaktorové ověřování splněno, v tomto sloupci se zobrazí informace o způsobu splnění vícefaktorového ověřování.
    - Azure Multi-Factor Authentication
@@ -103,7 +103,7 @@ Sestavy aktivit přihlašování pro vícefaktorové ověřování poskytují p�
       - uživatel nenalezen
       - ověřovací kód již byl použitý
 
-**Metoda vícefaktorového ověřování:** Metoda ověřování, kterou uživatel dokončil vícefaktorové ověřování. Možné hodnoty:
+**Metoda Vícefaktorového ověřování:** Metoda ověřování, uživatel dokončil vícefaktorové ověřování. Možné hodnoty:
 
 - Textová zpráva
 - Oznámení mobilní aplikace
@@ -112,7 +112,7 @@ Sestavy aktivit přihlašování pro vícefaktorové ověřování poskytují p�
 - Telefonní hovor (telefon do kanceláře)
 - Telefonní hovor (telefon pro alternativní ověření)
 
-**Podrobnosti o vícefaktorovém ověřování:** Zkrácená verze telefonního čísla, například: +X XXXXXXXX64.
+**Podrobnosti o Vícefaktorovém ověřování:** Zkrácená verze telefonního čísla, například: + X XXXXXXXX64.
 
 **Podmíněný přístup** najít informace o vytváření zásad podmíněného přístupu, které měla vliv na pokus o přihlášení, včetně:
 

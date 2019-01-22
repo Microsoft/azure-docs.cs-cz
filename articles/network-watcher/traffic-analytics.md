@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: d339908b9347843da891dd1c7fa038c45cee1dcb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 3b0db93d44827e3f5d0543f28a6f4b5fb0c4818e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382833"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429085"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -173,7 +173,7 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 
 Opakujte předchozí kroky pro žádné jiné skupiny zabezpečení sítě pro které chcete povolit analýzu provozu pro. Data z protokolů toku se odesílají do pracovního prostoru, zajistěte proto, že místní zákony a předpisy ve vaší zemi povolit ukládání dat v oblasti, ve kterém existuje pracovní prostor.
 
-Můžete taky nakonfigurovat pomocí analýzy provozu [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) rutiny prostředí PowerShell v modul AzureRm PowerShell verze 6.2.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Můžete taky nakonfigurovat pomocí analýzy provozu [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) rutiny prostředí PowerShell v modul AzureRm PowerShell verze 6.2.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="view-traffic-analytics"></a>Zobrazení analýzy provozu
 

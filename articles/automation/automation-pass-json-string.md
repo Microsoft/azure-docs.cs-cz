@@ -3,19 +3,19 @@ title: Předání objektu JSON do runbooku Azure Automation
 description: Jak předávat parametry v sadě runbook jako objekt JSON
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: prostředí PowerShell, sady runbook, json, služby azure automation
-ms.openlocfilehash: 5e1ab8d6bd2de24251851cfc60d270a2fef4090d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 65f3bfcebdde50352d5e9e2748036d4522b2a991
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918814"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424888"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Předání objektu JSON do runbooku Azure Automation
 
@@ -32,7 +32,7 @@ Pro absolvování tohoto kurzu potřebujete:
 * Předplatné Azure. Pokud jeden ještě nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
 * [Účet Automation](automation-sec-configure-azure-runas-account.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure.  Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
 * Virtuální počítač Azure. Počítač zastavíme a spustíme, proto to nesmí být produkční virtuální počítač.
-* Na místním počítači nainstalovaný Azure Powershell. Zobrazit [nainstalovat a nakonfigurovat Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0) informace o tom, jak získat Azure Powershellu.
+* Na místním počítači nainstalovaný Azure Powershell. Zobrazit [nainstalovat a nakonfigurovat Azure Powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.1.0) informace o tom, jak získat Azure Powershellu.
 
 ## <a name="create-the-json-file"></a>Vytvořte soubor JSON
 
@@ -90,7 +90,7 @@ Spusťte následující příkazy Powershellu:
 
 1. Získat obsah souboru JSON a převést na řetězec:
     ```powershell
-    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
+    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
     ```
     `JsonPath` představuje cestu, kam jste uložili soubor JSON.
 1. Převést řetězec obsah `$json` na objekt prostředí PowerShell:
@@ -118,5 +118,6 @@ Sada runbook používá hodnoty ze souboru JSON pro spuštění virtuálního po
 
 * Další informace o editaci v sadě textový editor sady runbook Powershellu a pracovních postupů Powershellu najdete v tématu [úpravy textových runbooků ve službě Azure Automation](automation-edit-textual-runbook.md) 
 * Další informace o vytváření a import sad runbook najdete v tématu [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)
+
 
 

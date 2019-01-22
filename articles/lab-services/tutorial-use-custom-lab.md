@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470859"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422894"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Kurz: Přístup k testovacímu prostředí v Azure DevTest Labs
-V tomto kurzu použijete testovací prostředí vytvořené v tématu [Kurz: Vytvoření testovacího prostředí v Azure DevTest Labs](tutorial-create-custom-lab.md).
+V tomto kurzu použijete, který byl vytvořen v testovacím prostředí [kurzu: Vytvoření testovacího prostředí ve službě Azure DevTest Labs](tutorial-create-custom-lab.md) .
 
 V tomto kurzu provedete následující akce:
 
@@ -68,14 +68,16 @@ Jakmile virtuální počítač přestanete používat, vraťte ho pomocí násle
 1. Na stránce virtuálního počítače vyberte na panelu nástrojů možnost **Vrátit**. 
 
     ![Vrácení virtuálního počítače](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. Virtuální počítač se před vrácením vypne. 
-
-    ![Stav vrácení](./media/tutorial-use-custom-lab/unclaim-status.png) 
-1. Po dokončení operace vrácení se virtuální počítač zobrazí dole v seznamu **Nárokovatelné virtuální počítače**. 
+1. Virtuální počítač se před vrácením vypne. Zobrazí se stav této operace v oznámeních.  
+3. Kliknutím na název vašeho testovacího prostředí v nabídce navigace s popisem cesty v horní části přejděte zpět na stránku DevTest Lab. 
     
-## <a name="next-steps"></a>Další kroky
+    ![Přejděte zpět do testovacího prostředí](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. Zkontrolujte, jestli se virtuální počítač v seznamu **nárokovatelné virtuální počítače** seznam v dolní části.
+
+    
+## <a name="next-steps"></a>Další postup
 Tento kurz vám ukázal, jak přistupovat k testovacímu prostředí vytvořenému pomocí služby Azure DevTest Labs a jak ho používat. Další informace o přístupu k virtuálním počítačům a o jejich používání v testovacím prostředí najdete v tématu 
 
 > [!div class="nextstepaction"]
-> [Postupy: Použití virtuálních počítačů v testovacím prostředí](devtest-lab-add-vm.md)
+> [Postup: Použití virtuálních počítačů v testovacím prostředí](devtest-lab-add-vm.md)
 

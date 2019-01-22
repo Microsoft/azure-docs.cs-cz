@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ebb1e61c832ab60d95a1e8a5938410ebdc7a4a0c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e5939e54a3ad10d12a8a7bfa23e50c3a250540b9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258852"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437364"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Ruby a rozhraní API REST vyhledávání zpráv Bingu
 
@@ -26,7 +26,7 @@ Zatímco tato aplikace je napsaný v Pythonu, je rozhraní API RESTful webových
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ruby [2.4 nebo vyšší](https://www.ruby-lang.org/downloads/)
+* Ruby [2.4 nebo vyšší](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 

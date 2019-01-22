@@ -3,18 +3,18 @@ title: Spuštění/zastavení virtuálních počítačů v době mimo špičku �
 description: Toto řešení správy virtuálního počítače spustí a zastaví virtuální počítače Azure Resource Managerem podle časového plánu a aktivně monitoruje od Log Analytics.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f5c86a90325c9a6dcd521a97cb899b88b55198d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f1ed355e7df6a58096743fd57ca1cbc65578d285
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194262"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439132"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -185,13 +185,13 @@ Zahrnout všechny nadřazené sady runbook _WhatIf_ parametru. Pokud je nastaven
 |Runbook | Parametry | Popis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se, nezávisle na nadřízeném runbooku. Tato sada runbook vytvoří výstrahy na základě jednotlivých zdrojích pro scénář AutoStop.|
-|AutoStop_CreateAlert_Parent | Seznamů VMList<br> WhatIf: True nebo False  | Vytvoří nebo aktualizuje Azure pravidla upozornění na virtuálních počítačích v cílových skupinách předplatné nebo prostředek. <br> Seznamů VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True nebo False  | Vytvoří nebo aktualizuje Azure pravidla upozornění na virtuálních počítačích v cílových skupinách předplatné nebo prostředek. <br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
 |AutoStop_Disable | žádný | Zakáže upozornění AutoStop a výchozí plán.|
 |AutoStop_StopVM_Child | WebHookData | Volá se, nezávisle na nadřízeném runbooku. Pravidla upozornění voláním tohoto runbooku se zastavit virtuální počítač.|
 |Bootstrap_Main | žádný | Jednou použít ke konfiguraci bootstrap konfigurací, jako jsou třeba webhookURI, které nejsou obvykle přístupné z Azure Resource Manageru. Tato sada runbook je automaticky odebere po úspěšném nasazení.|
 |ScheduledStartStop_Child | VMName <br> Akce: Spuštění nebo zastavení <br> ResourceGroupName | Volá se, nezávisle na nadřízeném runbooku. Provede akci spuštění nebo zastavení pro plánované stop.|
-|ScheduledStartStop_Parent | Akce: Spuštění nebo zastavení <br>Seznamů VMList <br> WhatIf: True nebo False | Toto nastavení ovlivňuje všechny virtuální počítače v rámci předplatného. Upravit **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** provádět pouze na tyto cílové skupiny prostředků. Můžete také vyloučit konkrétní virtuální počítače prostřednictvím aktualizace **External_ExcludeVMNames** proměnné.<br> Seznamů VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> _WhatIf_ ověří logiky sad runbook bez spuštění.|
-|SequencedStartStop_Parent | Akce: Spuštění nebo zastavení <br> WhatIf: True nebo False<br>Seznamů VMList| Vytvoření značky s názvem **sequencestart** a **sequencestop** na každý virtuální počítač, pro které chcete do sekvenční aktivity spuštění/zastavení. Tyto názvy tagů rozlišují malá a velká písmena. Hodnota značky musí být kladné celé číslo (1, 2, 3), který odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br> Seznamů VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_. <br> _WhatIf_ ověří logiky sad runbook bez spuštění. <br> **Poznámka:**: Virtuální počítače musí být v rámci skupiny prostředků, které jsou definované jako External_Start_ResourceGroupNames External_Stop_ResourceGroupNames a External_ExcludeVMNames ve službě Azure Automation proměnné. Musí mít odpovídající značky pro akce se projeví.|
+|ScheduledStartStop_Parent | Akce: Spuštění nebo zastavení <br>VMList <br> WhatIf: True nebo False | Toto nastavení ovlivňuje všechny virtuální počítače v rámci předplatného. Upravit **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** provádět pouze na tyto cílové skupiny prostředků. Můžete také vyloučit konkrétní virtuální počítače prostřednictvím aktualizace **External_ExcludeVMNames** proměnné.<br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> _WhatIf_ ověří logiky sad runbook bez spuštění.|
+|SequencedStartStop_Parent | Akce: Spuštění nebo zastavení <br> WhatIf: True nebo False<br>VMList| Vytvoření značky s názvem **sequencestart** a **sequencestop** na každý virtuální počítač, pro které chcete do sekvenční aktivity spuštění/zastavení. Tyto názvy tagů rozlišují malá a velká písmena. Hodnota značky musí být kladné celé číslo (1, 2, 3), který odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_. <br> _WhatIf_ ověří logiky sad runbook bez spuštění. <br> **Poznámka:** Virtuální počítače musí být v rámci skupiny prostředků, které jsou definované jako External_Start_ResourceGroupNames External_Stop_ResourceGroupNames a External_ExcludeVMNames ve službě Azure Automation proměnné. Musí mít odpovídající značky pro akce se projeví.|
 
 ### <a name="variables"></a>Proměnné
 
@@ -281,8 +281,8 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 |Dotaz | Popis|
 |----------|----------|
-|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | "" hledání kategorie == "JobLogs" | kde (RunbookName_s == "ScheduledStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno")  | shrnutí |AggregatedValue = count() by hodnotu ResultType bin (TimeGenerated, 1 hodina) | Seřadit podle TimeGenerated desc ".|
-|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | "" hledání kategorie == "JobLogs" | kde (RunbookName_s == "SequencedStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno") | shrnutí |AggregatedValue = count() by hodnotu ResultType bin (TimeGenerated, 1 hodina) | Seřadit podle TimeGenerated desc ".|
+|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | kde (RunbookName_s == "ScheduledStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno")  | shrnutí |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | Seřadit podle TimeGenerated desc ".|
+|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | kde (RunbookName_s == "SequencedStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno") | shrnutí |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | Seřadit podle TimeGenerated desc ".|
 
 ## <a name="viewing-the-solution"></a>Zobrazení řešení
 

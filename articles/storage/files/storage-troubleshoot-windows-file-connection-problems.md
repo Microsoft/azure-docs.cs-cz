@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c99ee1f520496148e22e540fa1f41f9bd74ae6a5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023080"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436208"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
@@ -61,7 +61,7 @@ Systémová chyba 53 nebo 67 systémové chybě může dojít, pokud 445 odchoz�
 
 Chcete-li zkontrolovat, zda brána firewall nebo poskytovatele internetových služeb neblokuje port 445, použijte [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) nástroj nebo `Test-NetConnection` rutiny. 
 
-Použít `Test-NetConnection` rutiny AzureRM PowerShell musí být nainstalovaný modul, naleznete v tématu [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps) Další informace. Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
+Použít `Test-NetConnection` rutiny AzureRM PowerShell musí být nainstalovaný modul, naleznete v tématu [instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) Další informace. Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
    
     $resourceGroupName = "<your-resource-group-name>"
@@ -239,7 +239,7 @@ Kopírování souboru přes síť, můžete jej nejprve dešifrovat. Použijte j
 - Nastavte následující klíč registru:
   - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Typ hodnoty = DWORD
-  - Název = CopyFileAllowDecryptedRemoteDestination
+  - Name = CopyFileAllowDecryptedRemoteDestination
   - Hodnota = 1
 
 Mějte na paměti, že nastavení klíče registru ovlivňuje všechny operace kopírování, které jsou provedeny do sdílené síťové složky.

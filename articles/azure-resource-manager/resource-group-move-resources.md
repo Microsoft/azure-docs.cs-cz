@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 32298b78f3b98afb6754e07ad63467f4f995d84f
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 4e53351d4581791df77dbb64d9eb0f25815204f5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382906"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426722"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -98,7 +98,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Portálu řídicích panelů
 * Power BI – jak Power BI Embedded a Power BI pracovního prostoru kolekce
 * Veřejná IP adresa – základní veřejnou IP adresu SKU je možné přesunout. Standardní veřejné IP adresy skladové položky nelze přesunout.
-* Trezor služby Recovery Services - vám musí být zaregistrované v [omezené veřejné verzi preview](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+* Služby Recovery Services vault – zaregistrovat své předplatné pro [omezené veřejné verzi preview](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 * Mezipaměť Azure pro Redis - li ukládání do mezipaměti Azure pro instanci Redis je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).
 * Scheduler
 * Search – několik hledání prostředky nejde přesunout v různých oblastech v rámci jedné operace. Místo toho přesuňte je v samostatné operace.
@@ -305,7 +305,7 @@ Operace může běžet několik minut.
 
 ### <a name="recovery-services-limitations"></a>Omezení Recovery Services
 
-Pro přesun trezoru služby Recovery Services, musíte se zaregistrovat [omezené veřejné verzi preview](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+ Chcete-li přesunout trezor služby Recovery Services, zaregistrovat své předplatné pro [omezené veřejné verzi preview](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 
 V současné době můžete přesunout jeden trezor služby Recovery Services na oblast, najednou. Nelze přesunout trezorů, které se zálohování souborů Azure, Azure File Sync nebo SQL na virtuálních počítačích IaaS.
 

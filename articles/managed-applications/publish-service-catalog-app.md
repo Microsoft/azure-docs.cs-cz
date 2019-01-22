@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: a2e6e78268f97136533b4f72ce28373642b6c394
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 7e9db85fb91dd0c9a33cc8205bdb30a648dfd38a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801263"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438734"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Vytvoření a publikování definice spravované aplikace
 
@@ -30,7 +30,7 @@ Pokud chcete publikovat spravovanou aplikaci pro katalog služeb, je třeba prov
 
 V tomto článku má spravovaná aplikace jenom účet úložiště. Jejím cílem je ilustrovat postup publikování spravované aplikace. Úplné příklady najdete v tématu [Ukázkové projekty pro spravované aplikace Azure](sample-projects.md).
 
-Příklady PowerShellu v tomto článku vyžadují prostředí Azure PowerShell verze 6.2 nebo novější. V případě potřeby [aktualizujte verzi](/powershell/azure/install-azurerm-ps).
+Příklady PowerShellu v tomto článku vyžadují prostředí Azure PowerShell verze 6.2 nebo novější. V případě potřeby [aktualizujte verzi](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="create-the-resource-template"></a>Vytvoření šablony prostředků
 
@@ -214,7 +214,7 @@ New-AzureRmManagedApplicationDefinition `
 
 Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Informace o tom, kdo má přístup k definici, a o přidání uživatelů nebo skupin najdete v tématu [Použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Informace o publikování spravované aplikace na webu Azure Marketplace najdete v tématu [Spravované aplikace Azure v Marketplace](publish-marketplace-app.md).
 * Informace o nasazení instance spravované aplikace najdete v tématu [Nasazení aplikace z katalogu služeb prostřednictvím webu Azure Portal](deploy-service-catalog-quickstart.md).

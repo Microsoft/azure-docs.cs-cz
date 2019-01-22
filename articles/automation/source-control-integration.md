@@ -3,18 +3,18 @@ title: Integrace správy zdrojového kódu ve službě Azure Automation
 description: Tento článek popisuje integrace správy zdrojového kódu pomocí GitHub ve službě Azure Automation.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94d948267286ad716aa200cb5aa858acf2eb2624
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 400cf53172fbd1ce5803cf3de298749afbf45cd4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330761"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430190"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -144,3 +144,4 @@ Vyberte modul správy zdrojových kódů, které chcete odebrat. Na **souhrnný 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o typech runbooků, jejich výhodách a omezeních najdete v článku [Typy runbooků ve službě Azure Automation](automation-runbook-types.md).
+

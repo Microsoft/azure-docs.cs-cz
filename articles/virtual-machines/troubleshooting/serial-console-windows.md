@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 535c65f58ac9a3f39faa347ca853bfa410b7f182
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 61b64b63a53318e0a703678d5525399fe13efa83
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185323"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432757"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>Konzola sériového portu virtuálního počítače pro Windows
 
@@ -53,6 +53,9 @@ Konzole sériového portu pro virtuální počítače je přístupný pouze pros
   1. Přejděte dolů k položce **podpora a řešení potíží** a vyberte **konzoly sériového portu**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
 
 ## <a name="enable-serial-console-functionality"></a>Povolení funkce konzoly sériového portu
+
+> [!NOTE]
+> Pokud se nezobrazují v konzole sériového portu nic, ujistěte se, že Diagnostika spouštění je povolená na virtuálním počítači.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Povolit konzole sériového portu v obrázcích vlastní nebo starší
 Novější Image Windows serveru v Azure mají [Speciální konzoly pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ve výchozím nastavení povolená. SAC je podporováno ve verzích Windows na serveru ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7).
@@ -124,7 +127,7 @@ Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignoro
 
 Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azure s využitím klávesnice ikonu na panelu příkazů. Jakmile se doručí NMI, konfigurace virtuálního počítače bude řídit, jak systém reaguje při. Windows by šlo o chybách a vytvořte soubor s výpisem paměti při příjmu NMI.
 
-![Odeslat NMI](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+![Poslat nemaskovatelné přerušení](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
 
 Informace o konfiguraci Windows vytvořte soubor s výpisem paměti při selhání při přijetí NMI najdete v tématu [jak vygenerovat soubor s výpisem paměti při selhání s použitím NMI](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
 
@@ -237,6 +240,7 @@ Nelze zadat v SAC řádku, pokud je povoleno ladění jádra. | Připojení RDP 
 Pokud původní obsah měli opakující se znak, vkládání do prostředí PowerShell ve výsledcích SAC ve třetí znaku. | Alternativní řešení spustit `Remove-Module PSReadLine` uvolnění modulu PSReadLine z aktuální relace. Tato akce neodstraní ani odinstalace modulu.
 Některé klávesnice vstupy generovat výstup strangeová SAC (například **[A**, **[3 ~**). | [VT100](https://aka.ms/vtsequences) řídicí sekvence nejsou podporovány SAC řádku.
 Vkládání dlouhé řetězce nebude fungovat. | Konzole sériového portu omezení délky řetězce do terminálu na 2 048 znaků, aby se zabránilo přetížení šířky pásma sériového portu.
+Konzola sériového portu nefunguje s bránou firewall účtu úložiště. | Konzoly sériového portu záměrné nemůže pracovat s branami firewall účet úložiště na účet úložiště diagnostiky spouštění povolené.
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy

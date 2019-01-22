@@ -3,18 +3,18 @@ title: Spuštění runbooku Azure Automation s webhooku
 description: Webhook, který umožňuje klientovi spuštění runbooku ve službě Azure Automation z volání protokolu HTTP.  Tento článek popisuje, jak vytvořit webhook a volání jednoho spuštění runbooku.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 381f8c5fb59379c0494dabcd22f4675be9535837
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 19a771d75cd1f2a2a18a3a4c42fcc34e55afb111
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016687"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438843"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění runbooku Azure Automation s webhooku
 
@@ -61,7 +61,7 @@ Například pokud jsou od webu Azure portal následující sady runbook a chcete
 Následující sady runbook, pokud mají následující vlastnosti pro parametr WebhookData:
 
 * WebhookName: *MyWebhook*
-* Includesearchresults: TRUE: *[{"ResourceGroup": "myResourceGroup", "Name": "vm01"}, {"ResourceGroup": "myResourceGroup", "Name": "vm02"}]*
+* RequestBody: *[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*
 
 Pak by předat následující hodnotu JSON v uživatelském rozhraní pro parametr WebhookData. Vrátí následující příklad se na začátek a znaky nového řádku odpovídá formátu, který je předán z webhooku.
 
@@ -226,3 +226,4 @@ Následující příklad ukazuje, text, který je k dispozici pro sadu runbook v
 ## <a name="next-steps"></a>Další postup
 
 * Zjistěte, jak reagovat na upozornění Azure pomocí Azure Automation, najdete v článku [pomocí upozornění můžete aktivovat runbooku Azure Automation](automation-create-alert-triggered-runbook.md).
+

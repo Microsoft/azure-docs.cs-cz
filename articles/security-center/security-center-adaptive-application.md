@@ -3,7 +3,7 @@ title: Adaptivní řízení aplikací v Azure Security Center | Microsoft Docs
 description: Tento dokument vám pomůže použít adaptivní řízení aplikací v Azure Security Center k přidávání aplikací spuštěných na virtuálních počítačích Azure na seznam povolených.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2018
-ms.author: rkarlin
-ms.openlocfilehash: e4538127b39e01f2e30f8b219c2ccee56cb4d2bc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.date: 01/21/2019
+ms.author: monhaber
+ms.openlocfilehash: b7a27dea9f521f14bfb4278eada636cb7e30c581
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262893"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427130"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptivní řízení aplikací v Azure Security Center
 Pomocí tohoto názorného postupu zjistíte, jak nakonfigurovat řízení aplikací v Azure Security Center.
@@ -73,7 +73,7 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
 
   ![Pravidla řízení aplikací](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
 
-3. V **vybrat virtuální počítače**zkontrolujte seznam doporučených virtuálních počítačů a zrušte zaškrtnutí těch, nechcete použít zásady whitelising aplikace k. Dále se zobrazí dva seznamy:
+3. V **vybrat virtuální počítače**zkontrolujte seznam doporučených virtuálních počítačů a zrušte zaškrtnutí těch, nechcete použít zásady aplikací na přidávání na seznam povolených. Dále se zobrazí dva seznamy:
 
   - **Doporučené aplikace**: seznam aplikací, které se často vyskytují na virtuálních počítačích v této skupině a doporučený postup bude moct spustit.
   - **Další aplikace**: seznam aplikací, které jsou méně často na virtuálních počítačích v této skupině nebo, který se označuje jako zneužitelné (Další informace najdete níže) a doporučuje zkontrolovat.
@@ -87,7 +87,6 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
 
 5. Jakmile budete s výběry hotovi, vyberte **Vytvořit**. <br>
 Po výběru vytvořit Azure Security Center automaticky vytvoří příslušná pravidla nad přidávání na seznam povolených řešení integrované aplikace, které jsou k dispozici na Windows serverech (Applockeru).
-
 
 > [!NOTE]
 > - Služba Security Center potřebuje minimálně dva týdny dat, aby mohla vytvořit základní hodnoty a doplnit jedinečná doporučení pro skupinu virtuálních počítačů. Noví zákazníci služby Security Center úrovně Standard by měli počítat s chováním, kdy se skupiny virtuálních počítačů zpočátku zobrazí na kartě *Žádné doporučení*.
@@ -122,7 +121,7 @@ Po výběru vytvořit Azure Security Center automaticky vytvoří příslušná 
    > - Jak už jsme zmínili, ve výchozím nastavení se nová zásada řízení aplikací vždy nakonfiguruje v režimu *Audit*. 
    >
 
-4. V části **rozšíření zásady**, můžete přidat libovolnou aplikaci cestu, kterou chcete povolit. Po přidání těchto cest, Security Center aktualizace zásad na seznam povolených aplikací na virtuálních počítačích v rámci vybrané skupiny virtuálních počítačů a vytvoří příslušná pravidla pro tyto aplikace pravidla, která už jsou na místě.
+4. V části **rozšíření zásady**, přidejte všechny cesta k aplikaci, kterou chcete povolit. Po přidání těchto cest, Security Center aktualizace zásad na seznam povolených aplikací na virtuálních počítačích v rámci vybrané skupiny virtuálních počítačů a vytvoří příslušná pravidla pro tyto aplikace pravidla, která už jsou na místě.
 
 5. Zkontrolujte aktuální porušení pravidel uvedených v **nedávné** oddílu. Klikněte na každý řádek přesměrování **výstrahy** stránku v rámci Azure Security Center a zobrazit všechny výstrahy, které byly zjištěny službou Azure Security Center na přidružených virtuálních počítačích.
   - **Výstrahy**: Zaprotokolovaná porušení pravidel.

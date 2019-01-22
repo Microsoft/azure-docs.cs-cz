@@ -10,19 +10,20 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7a02a7fb8043c63ce47f7f0c7dccf025ab5ab402
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118434"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421449"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
-Azure SQL Data Warehouse je cloudové Enterprise Data Warehouse třídy, které využívá masivně paralelní zpracování (MPP) k rychlému spouštění složitých dotazů nad petabajty dat. Využijte službu SQL Data Warehouse jako klíčovou součást řešení pro velké objemy dat. Importujte do služby SQL Data Warehouse velké objemy dat pomocí dotazů PolyBase T-SQL a následně využijte sílu architektury MPP ke spouštění vysoce výkonných analýz. Postupným integrováním a analyzováním se datový sklad stane pro vaši firmu jediným spolehlivým zdrojem pravdivých informací.
+Azure SQL Data Warehouse (datový Sklad SQL) je cloudové podnikového datového skladu, který využívá masivně paralelní zpracování (MPP) k rychlému spouštění složitých dotazů nad petabajty dat. Využijte službu SQL Data Warehouse jako klíčovou součást řešení pro velké objemy dat. Importujte do služby SQL Data Warehouse velké objemy dat pomocí dotazů PolyBase T-SQL a následně využijte sílu architektury MPP ke spouštění vysoce výkonných analýz. Postupným integrováním a analyzováním se datový sklad stane pro vaši firmu jediným spolehlivým zdrojem pravdivých informací.
 
 Kliknutím na odkazy níže a zjistěte další informace o nové funkce a vylepšení, které můžete očekávat v nejnovější verzi služby Azure SQL Data Warehouse. Můžete očekávat pro příjem těchto aktualizací služby během vašeho plánu údržby identifikovaní.
 
+- [SQL data Warehouse verze 10.0.10106.0](./release-notes-10-0-10106-0.md)
 - [Prosince 2018](./release-notes-december-2018.md)
 - [. Října 2018](./release-notes-october-2018.md)
 - [. Září 2018](./release-notes-september-2018.md)
@@ -39,9 +40,9 @@ Pro potvrzení, které vydání bylo podle byla použita k vašemu datovému skl
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-Příklad výstupu: ![Verze SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
+Příklad výstupu: ![Verze SQL Data Warehouse](./media/release-notes/dw-version.png)
 
-Použijte prosím datum identifikovat pro potvrzení, které verze se nastavily pro Azure SQL Data Warehouse. 
+Použijte prosím verzi identifikovat pro potvrzení, které verze se nastavily pro Azure SQL Data Warehouse. 
 
 
 ## <a name="next-steps"></a>Další postup

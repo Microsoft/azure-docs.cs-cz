@@ -14,34 +14,34 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 0c47600082a2c633116d1e85e9f31324544c2c57
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: fab422612bc3f83c8dc75d0dd99f42369dfa1d26
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261747"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438078"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konzola sériového portu virtuálního počítače pro Linux
 
-Konzole sériového portu virtuálního počítače (VM) na webu Azure Portal poskytuje přístup ke konzole založený na textu pro virtuální počítače s Linuxem. Toto sériové připojení připojí k COM1 sériového portu virtuálního počítače, poskytování přístupu k němu nezávisle na stav sítě nebo operační systém virtuálního počítače. Přístup ke konzole sériového portu u virtuálních počítačů lze provést pouze pomocí webu Azure portal. Je povolen pouze pro uživatele, kteří mají přístup k roli Přispěvatel virtuálních počítačů nebo vyšší k virtuálnímu počítači. 
+Konzole sériového portu virtuálního počítače (VM) na webu Azure Portal poskytuje přístup ke konzole založený na textu pro virtuální počítače s Linuxem. Toto sériové připojení připojí k COM1 sériového portu virtuálního počítače, poskytování přístupu k němu nezávisle na stav sítě nebo operační systém virtuálního počítače. Přístup ke konzole sériového portu u virtuálních počítačů lze provést pouze pomocí webu Azure portal. Je povolen pouze pro uživatele, kteří mají přístup k roli Přispěvatel virtuálních počítačů nebo vyšší k virtuálnímu počítači.
 
 Dokumentaci ke konzole sériového portu pro virtuální počítače s Windows, naleznete v tématu [konzoly sériového portu virtuálního počítače pro Windows](../windows/serial-console.md).
 
-> [!NOTE] 
+> [!NOTE]
 > Konzole sériového portu u virtuálních počítačů je obecně dostupná v globálními oblastmi Azure. Zatím není k dispozici v Azure government nebo Azure China cloudy.
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadavky
 
-- Virtuální počítač, ve kterém přistupujete konzoly sériového portu, musíte použít model nasazení správy prostředků. Klasická nasazení nejsou podporovány. 
+- Virtuální počítač, ve kterém přistupujete konzoly sériového portu, musíte použít model nasazení správy prostředků. Klasická nasazení nejsou podporovány.
 
-- Virtuální počítač, ve kterém přistupujete konzoly sériového portu musí mít [Diagnostika spouštění](boot-diagnostics.md) povolena. 
+- Virtuální počítač, ve kterém přistupujete konzoly sériového portu musí mít [Diagnostika spouštění](boot-diagnostics.md) povolena.
 
     ![Nastavení diagnostiky spouštění](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-- Musíte mít účet, který se používá konzoly sériového portu [role Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště: 
+- Musíte mít účet, který se používá konzoly sériového portu [role Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště:
 
-    - Virtuální počítač, ve kterém přistupujete konzoly sériového portu, musíte mít účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu. 
+    - Virtuální počítač, ve kterém přistupujete konzoly sériového portu, musíte mít účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu.
 
     - Nastavení specifická pro Linuxové distribuce, naleznete v tématu [konzoly sériového portu dostupnost distribuce Linuxu](#serial-console-linux-distribution-availability).
 
@@ -61,37 +61,40 @@ Konzole sériového portu pro virtuální počítače je přístupný pouze pros
      ![Okno konzoly sériového portu Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 
-> [!NOTE] 
+> [!NOTE]
 > Konzole sériového portu vyžaduje místního uživatele s nakonfigurovaným heslem. Virtuální počítače nakonfigurované pouze veřejný klíč SSH, nebudou moct přihlásit ke konzole sériového portu. K vytvoření místního uživatele s heslem, použijte [rozšíření VMAccess](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), která je k dispozici na portálu tak, že vyberete **resetovat heslo** na webu Azure Portal a vytvořte místní uživatele s heslem.
 > Můžete také resetovat heslo správce v účtu podle [pomocí GRUB ke spuštění do režimu jednoho uživatele](./serial-console-grub-single-user-mode.md).
 
 ## <a name="serial-console-linux-distribution-availability"></a>Konzola sériového portu dostupnost distribuce systému Linux
-Konzole sériového portu správně fungovala musí být hostovaný operační systém nakonfigurované pro čtení a zápis zpráv konzoly sériového portu. Většina [distribucí Linuxu schválených pro Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mají ve výchozím nastavení nakonfigurované konzoly sériového portu. Výběr **konzoly sériového portu** v **podpora a řešení potíží** části webu Azure portal poskytuje přístup ke konzole sériového portu. 
+Konzole sériového portu správně fungovala musí být hostovaný operační systém nakonfigurované pro čtení a zápis zpráv konzoly sériového portu. Většina [distribucí Linuxu schválených pro Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mají ve výchozím nastavení nakonfigurované konzoly sériového portu. Výběr **konzoly sériového portu** v **podpora a řešení potíží** části webu Azure portal poskytuje přístup ke konzole sériového portu.
 
 Distribuce      | Přístup ke konzole sériového portu
 :-----------|:---------------------
-Red Hat Enterprise Linux    | Přístup ke konzole sériového portu ve výchozím nastavení povolená. 
-CentOS      | Přístup ke konzole sériového portu ve výchozím nastavení povolená. 
+Red Hat Enterprise Linux    | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
+CentOS      | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
 Ubuntu      | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
 CoreOS      | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
-SUSE        | Novější imagí SLES dostupných v Azure měli konzoly sériového portu ve výchozím nastavení povolená. Pokud používáte starší verze SLES (10 nebo starší) v Azure, najdete v článku [článku znalostní BÁZE](https://www.novell.com/support/kb/doc.php?id=3456486) umožňující konzoly sériového portu. 
+SUSE        | Novější imagí SLES dostupných v Azure měli konzoly sériového portu ve výchozím nastavení povolená. Pokud používáte starší verze SLES (10 nebo starší) v Azure, najdete v článku [článku znalostní BÁZE](https://www.novell.com/support/kb/doc.php?id=3456486) umožňující konzoly sériového portu.
 Oracle Linux        | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
 Vlastní Linuxové Image     | Pokud chcete povolit konzole sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v souboru */etc/inittab* ke spuštění v terminálu `ttyS0`. Například: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Další informace o správně vytváření vlastních imagí najdete v tématu [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd). Pokud vytváříte vlastní jádra, zvažte povolení tyto příznaky jádra: `CONFIG_SERIAL_8250=y` a `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Konfigurační soubor se obvykle nachází v */boot/* cestu.
 
-## <a name="common-scenarios-for-accessing-the-serial-console"></a>Časté scénáře pro přístup ke konzole sériového portu 
-Scénář          | Akce v konzole sériového portu                
+> [!NOTE]
+> Pokud se nezobrazují v konzole sériového portu nic, ujistěte se, že Diagnostika spouštění je povolená na virtuálním počítači.
+
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>Časté scénáře pro přístup ke konzole sériového portu
+Scénář          | Akce v konzole sériového portu
 :------------------|:-----------------------------------------
 Nefunkční *FSTAB* souboru | Stisknutím klávesy **Enter** klíč pomocí textového editoru opravit a pokračovat *FSTAB* souboru. Musíte může být v jednouživatelském režimu Uděláte to tak. Další informace najdete v tématu [k vyřešení potíží se souborem fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) a [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
-Pravidla brány firewall na nesprávný | Přístup ke konzole sériového portu a iptables vyřešit. 
-Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a proveďte obnovení ze systému souborů. 
-Problémy s konfigurací SSH nebo RDP | Přístup ke konzole sériového portu a změnit nastavení. 
-Uzamknutí sítě v systému| Na webu Azure Portal ke správě systému přístup ke konzole sériového portu. 
-Interakce s zaváděcího programu pro spouštění | GRUB přístup z konzoly sériového portu. Další informace najdete v tématu [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md). 
+Pravidla brány firewall na nesprávný | Přístup ke konzole sériového portu a iptables vyřešit.
+Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a proveďte obnovení ze systému souborů.
+Problémy s konfigurací SSH nebo RDP | Přístup ke konzole sériového portu a změnit nastavení.
+Uzamknutí sítě v systému| Na webu Azure Portal ke správě systému přístup ke konzole sériového portu.
+Interakce s zaváděcího programu pro spouštění | GRUB přístup z konzoly sériového portu. Další informace najdete v tématu [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Zakázat konzole sériového portu
 Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Můžete zakázat konzole sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače.
 
-> [!NOTE] 
+> [!NOTE]
 > K povolení nebo zakázání konzole sériového portu k předplatnému, musíte mít oprávnění k zápisu do předplatného. Tato oprávnění zahrnují role správce nebo vlastníka. Vlastní role můžete také mít oprávnění k zápisu.
 
 ### <a name="subscription-level-disable"></a>Zakázat úroveň předplatného
@@ -99,11 +102,11 @@ Konzole sériového portu se dají zakázat pro celé předplatné prostřednict
 
 ![Vyzkoušet rozhraní REST API](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
-Alternativně můžete použít následující sady příkazů prostředí bash ve službě Cloud Shell k zakázání, povolení a zobrazení zakázané konzole sériového portu pro předplatné: 
+Alternativně můžete použít následující sady příkazů prostředí bash ve službě Cloud Shell k zakázání, povolení a zobrazení zakázané konzole sériového portu pro předplatné:
 
 * Pokud chcete získat zakázané konzole sériového portu pro předplatné:
     ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
 
@@ -111,7 +114,7 @@ Alternativně můžete použít následující sady příkazů prostředí bash 
     ```
 * Chcete-li zakázat konzole sériového portu pro předplatné:
     ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
 
@@ -119,7 +122,7 @@ Alternativně můžete použít následující sady příkazů prostředí bash 
     ```
 * Pokud chcete povolit konzole sériového portu pro předplatné:
     ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
+    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
 
@@ -129,24 +132,24 @@ Alternativně můžete použít následující sady příkazů prostředí bash 
 ### <a name="vm-level-disable"></a>Zakázat úrovni virtuálního počítače
 Konzole sériového portu je možné zakázat konkrétní virtuální počítač zakázáním nastavení diagnostiky spouštění Virtuálního počítače. Diagnostika spouštění na webu Azure Portal k zakázání konzole sériového portu pro virtuální počítač vypněte.
 
-## <a name="serial-console-security"></a>Zabezpečení konzoly sériového portu 
+## <a name="serial-console-security"></a>Zabezpečení konzoly sériového portu
 
-### <a name="access-security"></a>Zabezpečení přístupu 
+### <a name="access-security"></a>Zabezpečení přístupu
 Přístup ke konzole sériového portu je omezená na uživatele, kteří mají roli přístup z [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nebo vyšší, k virtuálnímu počítači. Pokud váš tenant Azure Active Directory vyžaduje vícefaktorové ověřování (MFA), je přístup ke konzole sériového portu bude také nutné vícefaktorové ověřování, protože přístup ke konzole sériového portu, je prostřednictvím [webu Azure portal](https://portal.azure.com).
 
 ### <a name="channel-security"></a>Zabezpečení kanálu
 Přenosu se šifrují všechna data, která se odešle vpřed a zpět.
 
 ### <a name="audit-logs"></a>Protokoly auditu
-Veškerý přístup ke konzole sériového portu je aktuálně přihlášen [Diagnostika spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) protokoly virtuálního počítače. Přístup k tyto protokoly jsou vlastněné a řídí správce virtuálních počítačů Azure.  
+Veškerý přístup ke konzole sériového portu je aktuálně přihlášen [Diagnostika spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) protokoly virtuálního počítače. Přístup k tyto protokoly jsou vlastněné a řídí správce virtuálních počítačů Azure.
 
->[!CAUTION] 
-Žádná hesla přístup pro konzolu jsou protokolovány. Nicméně pokud příkazy se spouští v rámci konzoly obsahovat nebo výstup hesla, tajné kódy, uživatelská jména nebo jakoukoli jinou formu identifikovatelné osobní údaje (PII), ty se zapíšou do protokolů diagnostiky spouštění virtuálního počítače. Se zapíšou spolu s všechny ostatní viditelného textu, jako součást provádění konzoly sériového portu přejděte zpět funkce. Tyto protokoly jsou cyklické a přístup k nim mají pouze uživatelé, kteří mají oprávnění ke čtení pro účet úložiště diagnostiky. Však doporučujeme osvědčený postup pomocí vzdálené plochy pro všechno, co, která může zahrnovat tajné kódy a/nebo identifikovatelné osobní údaje. 
+>[!CAUTION]
+Žádná hesla přístup pro konzolu jsou protokolovány. Nicméně pokud příkazy se spouští v rámci konzoly obsahovat nebo výstup hesla, tajné kódy, uživatelská jména nebo jakoukoli jinou formu identifikovatelné osobní údaje (PII), ty se zapíšou do protokolů diagnostiky spouštění virtuálního počítače. Se zapíšou spolu s všechny ostatní viditelného textu, jako součást provádění konzoly sériového portu přejděte zpět funkce. Tyto protokoly jsou cyklické a přístup k nim mají pouze uživatelé, kteří mají oprávnění ke čtení pro účet úložiště diagnostiky. Však doporučujeme osvědčený postup pomocí vzdálené plochy pro všechno, co, která může zahrnovat tajné kódy a/nebo identifikovatelné osobní údaje.
 
 ### <a name="concurrent-usage"></a>Souběžné používání
 Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úspěšně požaduje přístup k tomuto virtuálnímu počítači stejný, bude první uživatel odpojen a druhý uživatel se připojil do stejné relace.
 
->[!CAUTION] 
+>[!CAUTION]
 To znamená, že uživatel, který je odpojen nebude odhlášeni. Schopnost Vynutit odhlášení při odpojení (pomocí SIGHUP nebo mechanismus podobný) je stále v se plánuje. Pro Windows se automatické vypršení časového limitu povolené ve speciální správy konzoly (SAC); ale pro Linux můžete nakonfigurovat nastavení terminálu vypršení časového limitu. Chcete-li to provést, přidejte `export TMOUT=600` ve vaší *.bash_profile* nebo *.profile* souboru pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
 
 ## <a name="accessibility"></a>Přístupnost
@@ -161,26 +164,27 @@ Konzole sériového portu je integrované podpoře čtečky obrazovky. Navigace 
 ## <a name="errors"></a>Chyby
 Protože většina chyb jsou přechodné, opakování pokusu o připojení je často opravit. V následující tabulce najdete seznam chyb a způsoby zmírnění rizik.
 
-Chyba                            |   Omezení rizik 
+Chyba                            |   Omezení rizik
 :---------------------------------|:--------------------------------------------|
-Nepovedlo se načíst nastavení diagnostiky spouštění pro  *&lt;VMNAME&gt;*. Použití konzole sériového portu, zajistěte, že Diagnostika spouštění je povolená pro tento virtuální počítač. | Ujistěte se, že má virtuální počítač [Diagnostika spouštění](boot-diagnostics.md) povolena. 
+Nepovedlo se načíst nastavení diagnostiky spouštění pro  *&lt;VMNAME&gt;*. Použití konzole sériového portu, zajistěte, že Diagnostika spouštění je povolená pro tento virtuální počítač. | Ujistěte se, že má virtuální počítač [Diagnostika spouštění](boot-diagnostics.md) povolena.
 Virtuální počítač je v zastaveném stavu Uvolněno. Spusťte virtuální počítač a pokus o připojení konzoly sériového portu. | Virtuální počítač musí být ve spuštěném stavu pro přístup ke konzole sériového portu.
 Nemáte požadovaná oprávnění pro tento virtuální počítač pomocí konzoly sériového portu. Ujistěte se, máte alespoň oprávnění role Přispěvatel virtuálních počítačů.| Konzola sériového portu přístup vyžaduje určitá oprávnění. Další informace najdete v tématu [požadavky](#prerequisites).
 Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spouštění  *&lt;STORAGEACCOUNTNAME&gt;*. Ověřte, že Diagnostika spouštění je povolená pro tento virtuální počítač a máte přístup k tomuto účtu úložiště. | Konzola sériového portu přístup vyžaduje určitá oprávnění. Další informace najdete v tématu [požadavky](#prerequisites).
 Webové sokety je uzavřený nebo nelze otevřít. | Možná budete muset povolit `*.console.azure.com`. Podrobnější ale delší přístup je na seznamu povolených IP adres [rozsahy IP adres Datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653), které mění poměrně.
 Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá firewall k účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzole sériového portu na funkci.
 
-## <a name="known-issues"></a>Známé problémy 
+## <a name="known-issues"></a>Známé problémy
 Jsme si vědomi některé problémy s konzole sériového portu. Tady je seznam těchto problémů a kroky pro omezení rizik.
 
-Problém                           |   Omezení rizik 
+Problém                           |   Omezení rizik
 :---------------------------------|:--------------------------------------------|
 Stisknutím klávesy **Enter** po připojení banner nezpůsobí výzvě přihlášení má být zobrazen. | Další informace najdete v tématu [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Tomuto problému může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo konfigurace GRUB, který způsobí, že Linux selhání správně připojení do sériového portu.
 Text konzoly sériového portu zabere jenom část na velikost obrazovky (často po pomocí textového editoru). | Konzoly sériového portu nepodporují vyjednávání o velikost okna ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), což znamená, že bude bez signálu SIGWINCH odesílat aktualizace velikosti obrazovky a virtuální počítač bude nemají žádné informace o velikosti svého terminálu. Nainstalovat xterm nebo podobného nástroje, abyste měli `resize` příkaz a poté spusťte `resize`.
 Vkládání dlouhé řetězce nebude fungovat. | Konzole sériového portu omezení délky řetězce do terminálu na 2 048 znaků, aby se zabránilo přetížení šířky pásma sériového portu.
+Konzola sériového portu nefunguje s bránou firewall účtu úložiště. | Konzoly sériového portu záměrné nemůže pracovat s branami firewall účet úložiště na účet úložiště diagnostiky spouštění povolené.
 
 
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy 
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Q. Jak můžu poslat svůj názor?**
 
@@ -203,7 +207,7 @@ A. K povolení nebo zakázání konzole sériového portu na úrovni celé před
 
 **Q. Kdo má přístup k konzole sériového portu pro virtuální počítač?**
 
-A. Musíte mít roli Přispěvatel virtuálních počítačů nebo vyšší pro virtuální počítač pro přístup ke konzole sériového portu Virtuálního počítače. 
+A. Musíte mít roli Přispěvatel virtuálních počítačů nebo vyšší pro virtuální počítač pro přístup ke konzole sériového portu Virtuálního počítače.
 
 **Q. Moje konzoly sériového portu se nezobrazuje nic, co mám dělat?**
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.component: alerts
-ms.openlocfilehash: 0f72097ad9e8b8675d78654c07a62fb6baf90f4a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 79d10a02b02ecb69f656e5b3d7b0c9ae986504d1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582299"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438962"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 Jako součást definice skupiny akcí můžete nakonfigurovat webhooku koncových bodů pro příjem oznámení výstrah protokolu aktivit. Pomocí webhooků můžete směrovat tato oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Tento článek popisuje, jak vypadá datová část požadavku HTTP POST do webhooku.
@@ -169,7 +169,7 @@ Podrobnosti konkrétní schématu na všechny ostatní upozornění protokolu ak
 | --- | --- |
 | status |Používá se pro upozornění na metriku. Vždy nastaven na "aktivované" pro upozornění protokolu aktivit. |
 | Kontext |Kontext události. |
-| Název resourceProviderName |Poskytovatel prostředků ovlivněných prostředků. |
+| resourceProviderName |Poskytovatel prostředků ovlivněných prostředků. |
 | conditionType |Vždy "událost". |
 | jméno |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy. |
@@ -186,7 +186,7 @@ Podrobnosti konkrétní schématu na všechny ostatní upozornění protokolu ak
 | correlationId |Obvykle GUID ve formátu řetězce. Události s ID korelace patřit do stejné akce větší a obvykle sdílet ID korelace. |
 | eventDescription |Statický text popis události. |
 | eventDataId |Jedinečný identifikátor pro událost. |
-| EventSource |Název služby Azure nebo infrastruktury, které vygenerovalo událost. |
+| eventSource |Název služby Azure nebo infrastruktury, které vygenerovalo událost. |
 | httpRequest |Požadavek obvykle zahrnuje ID žádosti klienta, clientIpAddress a metodou HTTP (například UMÍSTIT). |
 | úroveň |Jeden z následujících hodnot: Kritické, chyba, upozornění a informativní. |
 | operationId |Obvykle GUID sdílen události odpovídá jedné operace. |
@@ -201,3 +201,4 @@ Podrobnosti konkrétní schématu na všechny ostatní upozornění protokolu ak
 * [Pomocí aplikace logiky můžete poslat zprávu SMS přes Twilio z Azure výstrahy](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Tento příklad je určený pro upozornění na metriky, ale může být upraveno pro práci s upozornění protokolu aktivit.
 * [Pomocí aplikace logiky můžete poslat zprávu Slack z Azure výstrahy](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Tento příklad je určený pro upozornění na metriky, ale může být upraveno pro práci s upozornění protokolu aktivit.
 * [Použijte aplikace logiky pro odeslání zprávy do fronty služby Azure z Azure výstrahy](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Tento příklad je určený pro upozornění na metriky, ale může být upraveno pro práci s upozornění protokolu aktivit.
+

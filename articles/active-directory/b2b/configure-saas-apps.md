@@ -1,6 +1,6 @@
 ---
 title: Konfigurace aplikací SaaS pro spolupráci B2B ve službě Azure Active Directory | Dokumentace Microsoftu
-description: Ukázky kódu a prostředí PowerShell pro spolupráci Azure Active Directory s B2B
+description: Kód a ukázky PowerShellu pro spolupráci B2B služby Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 78f34183b30f8ea9fe44ddaf2b57b237cbb09749
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: efec0feae3ea15868290756ea1b34b2f52784e1d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985758"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423625"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
 
@@ -30,7 +30,7 @@ Předtím, než se podíváte na pokyny specifické pro aplikace, tady jsou něk
 * Atributy uživatele na zmírnit problémy s disk profilu pozměnění uživatele (UPD) u uživatelů typu Host, vždy nastavte **identifikátor uživatele** k **user.mail**.
 
 
-## <a name="dropbox-business"></a>Obchodní Dropboxu
+## <a name="dropbox-business"></a>Dropbox Business
 
 Pokud chcete povolit uživatelům umožní přihlásit se pomocí svého účtu organizace, je nutné ručně nakonfigurovat Dropboxu obchodního použití služby Azure AD jako zprostředkovatele identity zabezpečení kontrolního výrazu SAML (Markup Language). Pokud obchodní Dropboxu není nakonfigurovaná k tomu, nemůže výzvu nebo jinak umožnit uživatelům přihlášení pomocí Azure AD.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 4ead84ef415dcb85682b15414380055d8799b54c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bbeccd03fffb699c95d52d50ec5c45e38b43ef51
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051216"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430394"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>Použití Powershellu k zálohování a obnovení sdílených složek Azure
 
@@ -34,7 +34,7 @@ Chcete-li zobrazit **AzureRm.RecoveryServices.Backup** Reference k rutinám Powe
 ## <a name="setup-and-registration"></a>Instalace a registrace
 
 > [!NOTE]
-> Jak je uvedeno v [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), podporu pro nové funkce v AzureRM modulu končí v listopadu 2018. Podpora se poskytuje pro zálohování sdílených složek Azure pomocí nového modulu prostředí PowerShell Az, která je teď obecně dostupná.
+> Jak je uvedeno v [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0), podporu pro nové funkce v AzureRM modulu končí v listopadu 2018. Podpora se poskytuje pro zálohování sdílených složek Azure pomocí nového modulu prostředí PowerShell Az, která je teď obecně dostupná.
 
 Použijte následující postup začít.
 
@@ -311,7 +311,7 @@ Obnovení jednotlivých souborů místo celou sdílenou jednoznačné identifika
 * **TargetStorageAccountName**: Účet úložiště, ke kterému je obnovit zálohovaná obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
 * **TargetFileShareName**: Sdílené složky v rámci cílového úložiště účtu zálohovanou obsah je obnovit.
 * **TargetFolder**: Složka, v rámci sdílené složky, do kterého se data obnovit. Pokud se zálohovaná obsahu je možné obnovit do kořenové složky, poskytují cílové složky hodnoty jako prázdný řetězec.
-* **Cestakezdrojovemusouboru**: Absolutní cesta souboru pro obnovení ve sdílené složce, jako řetězec. Tato cesta je stejnou cestu používané **Get-AzStorageFile** rutiny Powershellu.
+* **SourceFilePath**: Absolutní cesta souboru pro obnovení ve sdílené složce, jako řetězec. Tato cesta je stejnou cestu používané **Get-AzStorageFile** rutiny Powershellu.
 * **SourceFileType**: Určuje, zda je vybrána adresář nebo soubor. Přijímá **Directory** nebo **souboru**.
 * **ResolveConflict**: Instrukce, pokud dojde ke konfliktu s obnovená data. Přijímá **přepsat** nebo **přeskočit**.
 

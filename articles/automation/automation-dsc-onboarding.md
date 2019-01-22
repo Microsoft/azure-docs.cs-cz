@@ -3,18 +3,18 @@ title: Připojování počítačů pro správu podle konfigurace stavu služby A
 description: Jak nastavit počítače pro správu pomocí Azure Automation State Configuration
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 50f8fea04da3b1e414917a6404cb3f6e838bf716
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 74587d05ec27e87d87aa3647c22f5c90a9cdcf58
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284808"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436385"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu služby Azure Automation
 
@@ -25,7 +25,7 @@ Stejně jako [PowerShell Desired State Configuration](/powershell/dsc/overview),
 Konfigurace stavu Azure Automation můžete použít ke správě různých počítačů:
 
 - Virtuální počítače Azure (nasazené jak v modelu classic a modelu nasazení Azure Resource Manager)
-- Instance EC2 Amazon Web Services (AWS)
+- Amazon Web Services (AWS) EC2 instances
 - Windows fyzické nebo virtuální počítače, místně nebo v jiném cloudu než Azure nebo AWS
 - Linux fyzické nebo virtuální počítače v místním prostředí, v Azure nebo v jiném cloudu než Azure
 

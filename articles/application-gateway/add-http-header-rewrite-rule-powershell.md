@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 8429618a945ec70c52b925887790aa469e23ef89
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1044a29e30d664ae8bb88d55508756934d495c3e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730949"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428151"
 ---
 # <a name="rewrite-http-headers-in-an-existing-application-gateway"></a>Přepsání hlavičky protokolu HTTP v existující aplikační bráně
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz vyžaduje místní použití Azure PowerShellu. Musí mít Az modulu verze 1.0.0 nebo novější. Spustit `Import-Module Az` a potom`Get-Module Az` k vyhledání verze. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+Tento kurz vyžaduje místní použití Azure PowerShellu. Musí mít Az modulu verze 1.0.0 nebo novější. Spustit `Import-Module Az` a potom`Get-Module Az` k vyhledání verze. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 

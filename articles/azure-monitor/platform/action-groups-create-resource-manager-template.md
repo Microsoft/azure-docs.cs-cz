@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 5c0bfa3512215124a4e6169622c84c6cf3fb3cf7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 638dd8efba5e86bb7e8abb78a41196bfac9524df
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345960"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421857"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Vytvoření skupiny akcí pomocí šablony Resource Manageru
 V tomto článku se dozvíte, jak pomocí [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) ke konfiguraci skupin akcí. Pomocí šablon můžete automaticky nastavit skupiny akcí, které je možné využít v určitých typů výstrahy. Tyto skupiny akcí Ujistěte se, že jsou všechny správné strany oznámení, když se aktivuje upozornění.
@@ -167,3 +167,4 @@ Chcete-li vytvořit skupinu akcí pomocí šablony Resource Manageru vytvoříte
 * Další informace o [skupiny akcí](../../azure-monitor/platform/action-groups.md).
 * Další informace o [výstrahy](alerts-overview.md).
 * Zjistěte, jak přidat [výstrah pomocí šablony Resource Manageru](../../azure-monitor/platform/alerts-activity-log.md).
+

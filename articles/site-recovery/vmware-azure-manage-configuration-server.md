@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 0d45d460b56f956a97779b46a72d0e4cd97a6b41
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 81f775d8deccb9fb8b23e811a6ca89886576f55f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849696"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431635"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware
 
@@ -65,7 +65,7 @@ Pokud jste během nasazování OVF konfiguračního serveru, přidání přihla�
 
 1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače**.
 2. Klikněte na **přidat přihlašovací údaje virtuálního počítače**.
-    ![Přidejte pověření mobility](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Zadejte nové přihlašovací údaje a klikněte na **přidat**.
 
 Můžete také přidat přihlašovací údaje prostřednictvím CSPSConfigtool.exe.
@@ -174,7 +174,7 @@ Upgrade serveru následujícím způsobem:
 
 Volitelně můžete odstranit konfigurační server pomocí prostředí PowerShell.
 
-1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modulu Azure PowerShell.
+1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) modulu Azure PowerShell.
 2. Přihlaste se ke svému účtu Azure pomocí tohoto příkazu:
 
     `Connect-AzureRmAccount`

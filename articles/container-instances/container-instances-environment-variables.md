@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 4dde10c5cb4a764a268b8b9d3ebfaebc008e13ed
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: ce6c3364c594bc515abd9f0c02bd69bf500e4f4e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162505"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436565"
 ---
 # <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
@@ -20,9 +20,9 @@ Nastavení proměnných prostředí ve vaší službě container instances umož
 
 Například pokud spustíte [microsoft/aci-wordcount] [ aci-wordcount] image kontejneru, můžete upravit své chování tak, že zadáte následující proměnné prostředí:
 
-*NumWords*: počet slov odeslané do STDOUT.
+*NumWords*: Počet odeslaných do STDOUT slov.
 
-*MinLength*: minimální počet znaků v aplikaci word, které se mají spočítat. Větší číslo ignoruje běžná slova, jako je "z" a "the".
+*MinLength*: Minimální počet znaků v aplikaci word, které se mají spočítat. Větší číslo ignoruje běžná slova, jako je "z" a "the".
 
 Pokud je potřeba předat tajné kódy jako proměnné prostředí, Azure Container Instances podporuje [zabezpečení hodnoty](#secure-values) pro kontejnery Windows i Linuxu.
 
@@ -255,6 +255,6 @@ Scénáře založené na úlohách, jako jsou dávkové zpracování velkou dato
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/install-azurerm-ps
+[azure-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

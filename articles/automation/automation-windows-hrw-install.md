@@ -3,18 +3,18 @@ title: Funkce Hybrid Runbook Worker služby Azure Automation ve Windows
 description: Tento článek obsahuje informace o instalaci Azure Automation Hybrid Runbook Worker, který používáte ke spuštění sady runbook v počítačích se systémem Windows v místním datovém centru nebo v cloudovém prostředí.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a0e0000c4baa22ccc1c26c0e40ec62bb277104af
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2d9f1b99407f5c94581a3108c785292e9928cbb4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993903"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432316"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Windows Hybrid Runbook Worker
 
@@ -53,12 +53,12 @@ Proveďte následující kroky k automatizaci instalace a konfigurace role Windo
 
    Skript New-OnPremiseHybridWorker.ps1 vyžaduje následující parametry během spuštění:
 
-   * *AutomationAccountName* (povinné): název vašeho účtu Automation.
-   * *AAResourceGroupName* (povinné): název skupiny prostředků, který je spojen s vaším účtem Automation.
-   * *OMSResourceGroupName* (volitelné): název skupiny prostředků pro pracovní prostor Log Analytics. Pokud tato skupina prostředků není zadán, *AAResourceGroupName* se používá.
-   * *HybridGroupName* (povinné): název skupiny Hybrid Runbook Worker, který zadáte jako cíl pro sady runbook, která podporuje tento scénář.
-   * *SubscriptionID* (povinné): ID předplatného Azure, uložený v účtu Automation.
-   * *WorkspaceName* (volitelné): název pracovního prostoru Log Analytics. Pokud nemáte pracovní prostor Log Analytics, skript vytvoří a nakonfiguruje jednu.
+   * *AutomationAccountName* (mandatory): Název účtu služby Automation.
+   * *AAResourceGroupName* (mandatory): Název skupiny prostředků, který je spojen s vaším účtem Automation.
+   * *OMSResourceGroupName* (optional): Název skupiny prostředků pro pracovní prostor Log Analytics. Pokud tato skupina prostředků není zadán, *AAResourceGroupName* se používá.
+   * *HybridGroupName* (mandatory): Název skupiny Hybrid Runbook Worker, který zadáte jako cíl pro sady runbook, která podporuje tento scénář.
+   * *SubscriptionID* (povinné): ID předplatného Azure, které váš účet služby Automation.
+   * *WorkspaceName* (volitelné): Název pracovního prostoru Log Analytics. Pokud nemáte pracovní prostor Log Analytics, skript vytvoří a nakonfiguruje jednu.
 
      > [!NOTE]
      > V současné době pouze oblasti služby Automation, které podporuje integraci s Log Analytics jsou **Austrálie – jihovýchod**, **USA – východ 2**, **jihovýchodní Asie**, a  **Západní Evropa**. Pokud váš účet Automation není v těchto oblastech, skript vytvoří pracovní prostor Log Analytics ale vás upozorní, že jej nelze propojit dohromady.
@@ -146,3 +146,4 @@ Další pokyny o tom, jak řešit problémy pomocí správy aktualizací najdete
 
 * Další informace o konfiguraci runbooky pro automatizaci procesů do vašeho místního datového centra nebo jiné cloudové prostředí, najdete v článku [spouštění runbooků v procesu Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
 * Pokyny k odebrání funkce Hybrid Runbook Worker, naleznete v tématu [odebrat Azure Automation Hybrid Runbook Worker](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
+

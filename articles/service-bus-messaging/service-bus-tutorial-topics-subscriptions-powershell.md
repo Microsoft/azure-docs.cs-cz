@@ -9,14 +9,14 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: fdf97234e840de5fdd2811f3cdae8dd4cdc76a22
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 135f5e2500ab86d418085a5061f517176b9a4dad
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229148"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430003"
 ---
-# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů
+# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Kurz: Aktualizovat inventáře pomocí Powershellu a témata nebo předplatná
 
 Microsoft Azure Service Bus je víceklientská cloudová služba pro zasílání zpráv, která odesílá informace mezi aplikacemi a službami. Asynchronní operace umožňují flexibilní zprostředkované zasílání zpráv a také strukturované zasílání zpráv typu FIFO (first-in-first-out) a funkce pro publikování a přihlášení k odběru. 
 
@@ -47,7 +47,7 @@ Tento kurz vyžaduje použití nejnovější verze Azure PowerShellu. Pokud Powe
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Pomocí následujících příkazů se přihlaste k Azure. Tyto kroky nejsou potřebné, pokud příkazy PowerShellu spouštíte ve službě Cloud Shell: 
 
@@ -267,7 +267,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zřídili prostředky v prostředí Azure PowerShell a poté odesílali a přijímali zprávy z tématu služby Service Bus a jeho odběrů. Naučili jste se tyto postupy:
 
@@ -286,4 +286,4 @@ Přejděte k dalšímu kurzu, kde se dozvíte více o možnostech publikování 
 > [Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Instalace a konfigurace Azure PowerShellu]: /powershell/azure/install-azurerm-ps
+[Instalace a konfigurace Azure PowerShellu]: /powershell/azure/azurerm/install-azurerm-ps

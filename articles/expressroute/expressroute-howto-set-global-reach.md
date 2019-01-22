@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 3df107f8854469b50c5e8483515388b5c93fb244
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ab1098ca65ad92cffdbe1dfb24fd43fcc8f10eae
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383268"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431668"
 ---
 # <a name="configure-expressroute-global-reach-preview"></a>Konfigurace ExpressRoute globální dosah (preview)
 Tento článek vám pomůže nakonfigurovat ExpressRoute globální dosah pomocí Powershellu. Další informace najdete v tématu [ExpressRouteRoute globální dosah](expressroute-global-reach.md).
@@ -26,7 +26,7 @@ Tento článek vám pomůže nakonfigurovat ExpressRoute globální dosah pomoc�
 
 Před zahájením konfigurace, zkontrolujte následující body:
 
-* Že jste nainstalovali nejnovější verzi Azure Powershellu. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-azurerm-ps).
+* Že jste nainstalovali nejnovější verzi Azure Powershellu. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
 * Vysvětlení zřizování okruhů ExpressRoute [pracovních postupů](expressroute-workflows.md).
 * Aby vaše okruhy ExpressRoute jsou ve stavu zřízeno.
 * Tento soukromý partnerský vztah Azure je nakonfigurovaná na okruhů ExpressRoute.  

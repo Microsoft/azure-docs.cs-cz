@@ -3,18 +3,18 @@ title: Grafické vytváření obsahu v Azure Automation
 description: Vytváření grafického obsahu umožňuje vytváření runbooků Azure Automation bez práce s kódem. Tento článek obsahuje úvod do vytváření grafického obsahu a všechny informace potřebné k vytvoření grafického runbooku.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233673"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427232"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření obsahu v Azure Automation.
 
@@ -111,7 +111,7 @@ Pokud zadáte hodnotu pro parametr, vyberte zdroj dat k určení, jak je zadaná
 
 | Zdroj dat | Popis |
 |:--- |:--- |
-| Konstanta |Zadejte hodnotu pro parametr. To je k dispozici pouze pro následující typy dat: datový typ Int32, Int64, řetězec, logická hodnota, data a času, přepínač. |
+| Konstantní hodnota |Zadejte hodnotu pro parametr. To je k dispozici pouze pro následující typy dat: Datový typ Int32, Int64, řetězec, logická hodnota, data a času, přepnout. |
 | Výstup aktivity |Výstupem z aktivity, které předchází aktuální aktivitu v pracovním postupu. Všechny aktivity. Platné jsou uvedeny. Vyberte aktivitu používat svůj výstup pro hodnotu parametru. V případě, že výstupem aktivity je objekt s více vlastnostmi, můžete zadat název vlastnosti po výběru aktivity. |
 | Vstup z Runbooku |Vyberte vstupní parametr runbooku s jako vstup pro parametr aktivity. |
 | Variabilní prostředek |Proměnná služby Automation vyberte jako vstup. |
@@ -272,7 +272,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 Můžete nastavit [kontrolní body](automation-powershell-workflow.md#checkpoints) v sadě runbook grafický Powershellový pracovní postup tak, že vyberete *runbook kontrolního bodu* u všech aktivit. To způsobí, že kontrolní bod nastavit po spuštění aktivit.
 
-![Kontrolní bod](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 Kontrolní body jsou povolené jenom v sadách runbook grafický Powershellový pracovní postup, není k dispozici v grafických runboocích. Pokud sada runbook používá rutiny Azure, měli byste postupovat podle všechny kontrolní aktivity s Connect-AzureRmAccount v případě, je runbook pozastavený a restartuje od tohoto kontrolního bodu na jinému pracovnímu procesu.
 

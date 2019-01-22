@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 55feef336ade461d4e3936d2f76122e5b4b4c00e
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 59602977c1b7f6dd0524c6535d8458d3eb1a3f26
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401295"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425573"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Jak používat diagnostiku spouštění k řešení potíží s virtuálními počítači v Azure
 
@@ -79,7 +79,7 @@ Diagnostický profil umožňuje vybrat účet úložiště pro ukládání proto
 }
 ```
 
-Další informace o nasazení prostředků pomocí šablon najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Další informace o nasazení prostředků pomocí šablon najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Povolení diagnostiky spouštění na existující virtuální počítač 
 

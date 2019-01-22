@@ -11,19 +11,19 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2018
+ms.date: 01/18/2019
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 3d0f24331243c22fa356de7778a89185df2cde4e
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
-ms.translationtype: HT
+ms.openlocfilehash: 63ef5a36dc5a9d770e3474e15b4733d4165b9937
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003206"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421908"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
-# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>Kurz: Konfigurace zařízení z back-endové služby
+# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>Kurz: Konfigurovat zařízení z back-end služby
 
 Vedle příjmu telemetrických dat ze zařízení můžete potřebovat zařízení nakonfigurovat z back-endové služby. Když do zařízení odesíláte požadovanou konfiguraci, můžete z nich někdy chtít zároveň přijmout aktualizace stavu a souladu s předpisy. Můžete tak například pro zařízení nastavit cílový rozsah provozní teploty nebo z nich shromáždit informace o verzi firmwaru.
 
@@ -258,7 +258,7 @@ Můžete použít také rozhraní příkazového řádku:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili synchronizovat informace o stavu mezi zařízeními a centrem IoT. V dalším kurzu se dozvíte, jak využít dvojčata zařízení k implementaci procesu aktualizace firmwaru.
 

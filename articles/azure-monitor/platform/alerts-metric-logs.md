@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 1ec190380fb07530c0c2b8ca3213b8b647fc05b3
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: alerts
+ms.openlocfilehash: dfc61bdb596687abfea932ad6084d9a05d1569a4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102886"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423421"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Vytvářet upozornění metrik, protokolů ve službě Azure Monitor  
 
@@ -357,3 +357,4 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 * Další informace o [ upozornění na metriku](https://aka.ms/createmetricalert).
 * Další informace o [upozornění protokolů ve službě Azure](../../azure-monitor/platform/alerts-unified-log.md).
 * Další informace o [výstrah ve službě Azure](alerts-overview.md).
+

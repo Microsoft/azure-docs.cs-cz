@@ -3,18 +3,18 @@ title: Správa účtů služby Automation spustit jako pro Azure
 description: Tento článek popisuje, jak spravovat účty spustit jako pomocí Powershellu nebo z portálu.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 34c8a7d547acf023af442599708f9c183e5b9ae9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726164"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431193"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -44,8 +44,8 @@ Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávn�
 |---|---------|---------|
 |Vytvoření aplikace Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Role pro vývojáře aplikací        |
 |Přidání přihlašovacích údajů k aplikaci.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Správce aplikace nebo globální správce         |
-|Vytvořte a získejte instanční objekt Azure AD|[Nové AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Správce aplikace nebo globální správce        |
-|Přiřazení nebo získat roli RBAC pro zadaný objekt zabezpečení|[Nový AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Správce uživatelských přístupů nebo vlastníka        |
+|Vytvořte a získejte instanční objekt Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Správce aplikace nebo globální správce        |
+|Přiřazení nebo získat roli RBAC pro zadaný objekt zabezpečení|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Správce uživatelských přístupů nebo vlastníka        |
 |Vytvořit nebo odebrat na server certifikát služby Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Přispěvatelem skupiny prostředků         |
 |Vytvoření nebo odebrání připojení služby Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Přispěvatelem skupiny prostředků |
 
@@ -389,3 +389,4 @@ Tyto potíže s účtem Spustit jako můžete rychle vyřešit jeho odstranění
 
 * Další informace o instančních objektech najdete v tématu [aplikace a instanční objekty](../active-directory/develop/app-objects-and-service-principals.md).
 * Další informace o certifikátech a službách Azure najdete v tématu [Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+

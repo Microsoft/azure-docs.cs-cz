@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 9dc57876467deb24a763a3c3772209e3e2e0ca0d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 967bd0d980bf0f9c184287c10fd531758c992247
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360033"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437854"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
@@ -85,7 +85,7 @@ Generalizace virtuálního počítače Windows, postupujte podle těchto kroků:
 Vytvoření bitové kopie přímo z virtuálního počítače se zajistí, že na obrázku obsahuje všechny disky přidružené k virtuálnímu počítači, včetně disk s operačním systémem a všechny datové disky. Tento příklad ukazuje postup vytvoření spravované image z virtuálního počítače, že používá spravované disky.
 
 
-Než začnete, ujistěte se, že máte nejnovější verzi modul AzureRM.Compute Powershellu, který musí být verze 5.7.0 nebo novější. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable AzureRM.Compute` v prostředí PowerShell. Pokud potřebujete upgrade, přečtěte si téma [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, spusťte `Connect-AzureRmAccount` vytvořit připojení k Azure.
+Než začnete, ujistěte se, že máte nejnovější verzi modul AzureRM.Compute Powershellu, který musí být verze 5.7.0 nebo novější. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable AzureRM.Compute` v prostředí PowerShell. Pokud potřebujete upgrade, přečtěte si téma [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, spusťte `Connect-AzureRmAccount` vytvořit připojení k Azure.
 
 
 > [!NOTE]

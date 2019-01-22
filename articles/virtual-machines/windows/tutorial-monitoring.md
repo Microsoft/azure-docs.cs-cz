@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ce90ea447f7dcf4df1451294acf9f7fd093ad6ee
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 1bee08800eb5b480024001f742e8965cbd609a73
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408638"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428881"
 ---
-# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: Monitorování a aktualizace virtuálních počítačů s Windows v Azure
+# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: Monitorovat a aktualizovat virtuální počítač s Windows v Azure
 
 Monitorování Azure prostřednictvím agentů shromažďuje data spouštění a výkonu z virtuálních počítačů Azure, ukládá tato data do úložiště Azure a zpřístupňuje je přes portál, modul Azure PowerShell a Azure CLI. Správa aktualizací umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows.
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 > * Monitorování změn a inventáře
 > * Nastavení pokročilého monitorování
 
-Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -280,7 +280,7 @@ Po několika minutách by se nový počítač měl zobrazit v pracovním prostor
 
 ![Okno Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nakonfigurovali a zkontrolovali virtuální počítače ve službě Azure Security Center. Naučili jste se tyto postupy:
 

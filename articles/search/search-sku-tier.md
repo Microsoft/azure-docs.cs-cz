@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4c1f115061dfba36a37da1647c34dd4587857377
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354548"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427470"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -63,7 +63,7 @@ Většina zákazníků přinést jen část celkové kapacity online, uchovávaj
 
 ### <a name="billing-for-image-extraction-in-cognitive-search"></a>Fakturace pro extrahování bitové kopie v kognitivního vyhledávání
 
-Když se extrakce obrázků ze souborů v kognitivního vyhledávání, indexování kanálu, bude vám účtována pro tuto operaci je ve vyúčtování Azure Search. Je parametr, který aktivuje image extrakce **imageAction** v [konfigurace indexeru](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters). Pokud **imageAction** je nastavena na hodnotu none (výchozí), neúčtují žádné poplatky pro extrakci bitové kopie.
+Když se extrakce obrázků ze souborů v kognitivního vyhledávání, indexování kanálu, bude vám účtována pro tuto operaci je ve vyúčtování Azure Search. Je parametr, který aktivuje image extrakce **imageAction** v [konfigurace indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters). Pokud **imageAction** je nastavena na hodnotu none (výchozí), neúčtují žádné poplatky pro extrakci bitové kopie.
 
 Ceny se mohou změnit, ale je vždy popsané na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/) stránku pro službu Azure Search. 
 

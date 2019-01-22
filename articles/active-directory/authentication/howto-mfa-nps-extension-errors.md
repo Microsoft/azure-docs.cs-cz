@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 861dfacb556b646a288ce7cf7c749cec858f8bd5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634222"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432655"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
 
@@ -42,7 +42,7 @@ Pokud narazíte na chyby pomocí rozšíření NPS pro Azure Multi-Factor Authen
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: userObjectSid vyhledávání se nezdařilo | Ověřte, zda uživatel existuje v instanci aplikace místní služby Active Directory. Pokud používáte vztah důvěryhodnosti mezi doménovými strukturami, [obraťte se na podporu](#contact-microsoft-support) o další pomoc. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: Alternativní LoginId vyhledávání se nezdařilo | Ověřte, zda LDAP_ALTERNATE_LOGINID_ATTRIBUTE nastaveno [platné služby active directory atribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Pokud LDAP_FORCE_GLOBAL_CATALOG nastavena na hodnotu True nebo LDAP_LOOKUP_FORESTS je nakonfigurována s neprázdnou hodnotu, ověřte, že jste nakonfigurovali globálního katalogu a že je do ní přidat atribut AlternateLoginId. <br><br> Pokud je nakonfigurované LDAP_LOOKUP_FORESTS neprázdná hodnota, ověřte správnost hodnotu. Pokud existuje více než jeden název doménové struktury, musí být názvy oddělené středníkem, nikoli mezery. <br><br> Pokud tyto kroky není problém vyřešit, [obraťte se na podporu](#contact-microsoft-support) o další pomoc. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Chyba: Hodnota alternativní LoginId je prázdná | Ověřte, že atribut AlternateLoginId je nakonfigurovaný pro uživatele. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Chyba: Alternativní LoginId hodnota je prázdná | Ověřte, že atribut AlternateLoginId je nakonfigurovaný pro uživatele. |
 
 ## <a name="errors-your-users-may-encounter"></a>Chyby uživatele mohou nastat.
 

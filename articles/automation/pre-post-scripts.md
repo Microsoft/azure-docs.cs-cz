@@ -3,18 +3,18 @@ title: Nakonfigurujte skripty před a po nasazení správy aktualizací v Azure 
 description: Tento článek popisuje, jak konfigurovat a spravovat před a po skriptů pro nasazení aktualizací
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edbb953111fb4589539369bd9b2519b48b9b70eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121307"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428235"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
@@ -54,7 +54,7 @@ Po kliknutí do nasazení aktualizací, kterým jsou k dispozici další podrobn
 
 Když konfigurujete před a po skripty, které můžete předat parametry stejně, jako je plánování runbooku. Parametry jsou definované v době vytvoření nasazení aktualizace. Kromě standardní sada runbook parametry je k dispozici další parametr. Tento parametr je **SoftwareUpdateConfigurationRunContext**. Tento parametr je řetězec formátu JSON, a pokud definujete ve skriptu před nebo po parametru, je automaticky předána v nasazení aktualizací. Parametr obsahuje informace o nasazení aktualizace, která je podmnožinou vrácených podle informací [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) v následující tabulce se dozvíte, vlastnosti, které jsou k dispozici v proměnné:
 
-### <a name="softwareupdateconfigurationruncontext-properties"></a>Vlastnosti SoftwareUpdateConfigurationRunContext
+### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext properties
 
 |Vlastnost  |Popis  |
 |---------|---------|
@@ -224,3 +224,4 @@ Pokračujte ke kurzu se naučíte spravovat aktualizace pro virtuální počíta
 
 > [!div class="nextstepaction"]
 > [Správa aktualizací a oprav pro virtuální počítače Azure s Windows](automation-tutorial-update-management.md)
+

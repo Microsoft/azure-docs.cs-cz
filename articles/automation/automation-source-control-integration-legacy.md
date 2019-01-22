@@ -3,18 +3,18 @@ title: Integrace správy zdrojového kódu ve službě Azure Automation – star
 description: Tento článek popisuje integrace správy zdrojového kódu pomocí GitHub ve službě Azure Automation.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a6ae91ba768f9aa002c2814133b26dd152c7ef25
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 8316e571e97fce65b3f8308709d3300bc585663f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784804"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434865"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integrace správy zdrojového kódu ve službě Azure Automation – starší verze
 
@@ -79,7 +79,7 @@ Pokud už máte účet GitHub a úložiště, který chcete propojit s Azure Aut
 
     ![Proměnné](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
-    * **Automatizace správy zdrojového kódu** se přidá jako autorizovanou aplikaci ke svému účtu GitHub. Chcete-li zobrazit aplikaci: na domovské stránce Githubu, přejděte do vaší **profilu** > **nastavení** > **aplikací**. Tato aplikace umožňuje službě Azure Automation k synchronizaci vašeho úložiště GitHub s účtem Automation.  
+    * **Automatizace správy zdrojového kódu** se přidá jako autorizovanou aplikaci ke svému účtu GitHub. Chcete-li zobrazit aplikaci: Na domovské stránce Githubu, přejděte k vaší **profilu** > **nastavení** > **aplikací**. Tato aplikace umožňuje službě Azure Automation k synchronizaci vašeho úložiště GitHub s účtem Automation.  
 
     ![Libovolná aplikace](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
 
@@ -99,7 +99,7 @@ Runbook se změnami umožňuje nasdílení změn, které jste provedli v sadě r
 1. Po kliknutí na **vrácení se změnami**, zobrazí se výzva k potvrzení, klikněte na tlačítko **Ano** pokračujte.  
    
     ![Zpráva pro vrácení se změnami](media/automation-source-control-integration-legacy/automation_07_CheckinMessage.png)
-2. Vrácení se změnami spustí runbook zdrojového ovládacího prvku: **synchronizace MicrosoftAzureAutomationAccountToGitHubV1**. Tato sada runbook umožňuje připojení ke Githubu a nasdílí změny ve službě Azure Automation do vašeho úložiště. Chcete-li zobrazit kontrolovaný v historii úlohy, přejděte zpět na **integrace správy zdrojového kódu** kartu a kliknutím otevřete stránku synchronizace úložiště. Tato stránka zobrazuje všechny vaše úlohy řízení zdrojů.  Vyberte úlohu chcete zobrazit a kliknutím zobrazíte podrobnosti.  
+2. Vrácení se změnami spustí runbook ovládací prvek zdroje: **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. Tato sada runbook umožňuje připojení ke Githubu a nasdílí změny ve službě Azure Automation do vašeho úložiště. Chcete-li zobrazit kontrolovaný v historii úlohy, přejděte zpět na **integrace správy zdrojového kódu** kartu a kliknutím otevřete stránku synchronizace úložiště. Tato stránka zobrazuje všechny vaše úlohy řízení zdrojů.  Vyberte úlohu chcete zobrazit a kliknutím zobrazíte podrobnosti.  
    
     ![Vrácení se změnami sadu Runbook](media/automation-source-control-integration-legacy/automation_08_CheckinRunbook.png)
    
@@ -110,7 +110,7 @@ Runbook se změnami umožňuje nasdílení změn, které jste provedli v sadě r
 3. Název změněné runbooku se odešle jako vstupní parametr pro vrácena se změnami sadu runbook. Je možné [zobrazte podrobnosti o úloze](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) tak, že rozbalíte sadu runbook v **synchronizace úložišť** stránky.  
    
     ![Vstup vrácení se změnami](media/automation-source-control-integration-legacy/automation_09_CheckinInput.png)
-4. Po dokončení úlohy a prohlédněte si změny, aktualizujte stránku vašeho úložiště GitHub.  Ve vašem úložišti a zobrazí se potvrzovací zpráva by měla být potvrzení: **aktualizované *název sady Runbook* ve službě Azure Automation.**  
+4. Po dokončení úlohy a prohlédněte si změny, aktualizujte stránku vašeho úložiště GitHub.  Ve vašem úložišti a zobrazí se potvrzovací zpráva by měla být potvrzení změn: **Aktualizovat *název sady Runbook* ve službě Azure Automation.**  
 
 ### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>Synchronizace sad runbook ze správy zdrojového kódu do Azure Automation
 Tlačítko Synchronizovat na stránce synchronizace úložiště umožňuje stáhnout všechny sady runbook cesta ke složce runbooků úložiště do vašeho účtu Automation. Stejné úložiště můžete synchronizované do více než jeden účet služby Automation. Dále jsou uvedené kroky k synchronizaci sady runbook:
@@ -118,7 +118,7 @@ Tlačítko Synchronizovat na stránce synchronizace úložiště umožňuje stá
 1. Z účtu Automation, kde nastavit správu zdrojového kódu, otevřete **synchronizace integrace nebo úložiště správy zdrojového** stránky a klikněte na tlačítko **synchronizace**.  Zobrazí se výzva k potvrzení klikněte na tlačítko **Ano** pokračujte.  
    
     ![Tlačítko Synchronizovat](media/automation-source-control-integration-legacy/automation_10_SyncButtonwithMessage.png)
-2. Sada runbook spustí synchronizaci: **synchronizace MicrosoftAzureAutomationAccountFromGitHubV1**. Tato sada runbook umožňuje připojení ke Githubu a načte změny z úložiště do Azure Automation. Měli byste vidět nové úlohy na **synchronizace úložišť** stránky pro tuto akci. Chcete-li zobrazit podrobnosti o úloze synchronizace, klikněte na tlačítko otevřete stránku Podrobnosti úlohy.  
+2. Synchronizace spuštění sady runbook: **Sync-MicrosoftAzureAutomationAccountFromGitHubV1**. Tato sada runbook umožňuje připojení ke Githubu a načte změny z úložiště do Azure Automation. Měli byste vidět nové úlohy na **synchronizace úložišť** stránky pro tuto akci. Chcete-li zobrazit podrobnosti o úloze synchronizace, klikněte na tlačítko otevřete stránku Podrobnosti úlohy.  
    
     ![Synchronizace sady Runbook](media/automation-source-control-integration-legacy/automation_11_SyncRunbook.png)
 
@@ -139,7 +139,8 @@ Pokud chcete odpojit od účtu GitHub, otevřete stránku synchronizace úloži�
 ## <a name="next-steps"></a>Další postup
 Další informace o integraci správy zdrojových kódů najdete v článku na následujících odkazech:  
 
-* [Služby Azure Automation: Integrace správy zdrojového kódu ve službě Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+* [Azure Automation: Integrace správy zdrojového kódu ve službě Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
 * [Hlasujte pro Oblíbené ve zdrojovém systému ovládacího prvku](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)  
-* [Služby Azure Automation: Integrace sada Runbook zdrojového kódu s Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+* [Azure Automation: Integrace sady Runbook zdrojového kódu s Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+
 

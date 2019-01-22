@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 15a6a7f4753d51118d23d2e3c021010218d2d2d7
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451829"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434985"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Instalace rozšíření na virtuálních počítačích s Windows pomocí zásad Azure
 
 Pokud chcete zabránit použití nebo instalace některých rozšíření na vašich virtuálních počítačích s Windows, můžete vytvořit zásady služby Azure pomocí prostředí PowerShell k omezení rozšíření pro virtuální počítače v rámci skupiny prostředků. 
 
-Tento kurz používá prostředí Azure PowerShell ve službě Cloud Shell, která se neustále aktualizuje na nejnovější verzi. Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte pro tento kurz použít modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Tento kurz používá prostředí Azure PowerShell ve službě Cloud Shell, která se neustále aktualizuje na nejnovější verzi. Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte pro tento kurz použít modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 
@@ -139,7 +139,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>Testování zásad
 
-K otestování zásady, zkuste použít rozšíření přístupu virtuálních počítačů. Následující by selhat se zprávou "Sada AzureRmVMAccessExtension: zásady nepovolily prostředek"myVMAccess"."
+K otestování zásady, zkuste použít rozšíření přístupu virtuálních počítačů. Následující by selhat se zprávou "AzureRmVMAccessExtension sady: Prostředek "myVMAccess" zásady nepovolily."
 
 ```azurepowershell-interactive
 Set-AzureRmVMAccessExtension `

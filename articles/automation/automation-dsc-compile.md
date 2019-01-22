@@ -3,18 +3,18 @@ title: Kompilace konfigurací v konfiguraci stavu služby Azure Automation
 description: Tento článek popisuje, jak kompilaci konfigurace Desired State Configuration (DSC) pro Azure Automation.
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca3c29101e17a7970ba782b5c49267bf9f18482e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257152"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423404"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu služby Azure Automation
 
@@ -130,7 +130,7 @@ Informace o předání PSCredentials jako parametrů najdete v tématu [Assety p
 
 ## <a name="composite-resources"></a>Složené prostředky
 
-**Složené prostředky** vám umožní použít konfigurace DSC jako vnořených prostředků v rámci konfigurace. To umožňuje použití několika konfigurací na jediný prostředek. Zobrazit [složené prostředky: pomocí konfigurace DSC jako prostředek](/powershell/dsc/authoringresourcecomposite) Další informace o **složené prostředky**.
+**Složené prostředky** vám umožní použít konfigurace DSC jako vnořených prostředků v rámci konfigurace. To umožňuje použití několika konfigurací na jediný prostředek. Zobrazit [složené prostředky: Pomocí konfigurace DSC jako prostředek](/powershell/dsc/authoringresourcecomposite) Další informace o **složené prostředky**.
 
 > [!NOTE]
 > Aby **složené prostředky** pro kompilaci správně, je nutné nejdříve zkontrolovat, že veškeré prostředky DSC, které složeného spoléhá na prvním nainstalování v úložišti moduly účet Azure Automation, nebo není správně importovat.
@@ -283,7 +283,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 ```
 
 > [!NOTE]
-> Po dokončení kompilace může zobrazit chybová zpráva: **'Microsoft.PowerShell.Management' modul nebyl importován, protože modul snap-in 'Microsoft.PowerShell.Management' již byl importován.** Toto upozornění můžete ignorovat.
+> Po dokončení sestavení zobrazí chybová zpráva: **Modul "Microsoft.PowerShell.Management" nebyl importován, protože modul snap-in 'Microsoft.PowerShell.Management' již byl importován.** Toto upozornění můžete ignorovat.
 
 ## <a name="importing-node-configurations"></a>Import konfigurace uzlu
 

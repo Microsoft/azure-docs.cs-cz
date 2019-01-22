@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a86547ad3eddb57328a2a0358ac453c979b84d37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
-ms.translationtype: HT
+ms.openlocfilehash: 21f2081f5aae0bb93cb9066407140f5fd35dc06d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163303"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424020"
 ---
-# <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Kurz: Dokončení zavedení pilotního nasazení samoobslužného resetování hesla služby Azure AD
+# <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Kurz: Kompletní Azure AD samoobslužné resetování hesla pilotní zavedení
 
 V tomto kurzu zapnete ve své organizaci pilotní nasazení samoobslužného resetování hesla služby Azure AD a otestujete ho pomocí účtu bez oprávnění správce.
 
@@ -75,7 +75,7 @@ Pokud se rozhodnete, že už funkci nakonfigurovanou jako součást tohoto kurzu
 1. Na stránce **Vlastnosti** v části **Samoobslužné resetování hesla povoleno** zvolte **Žádné**.
 1. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zapnuli samoobslužné resetování hesla služby Azure AD. Pokračujte dalším kurzem, abyste zjistili, jak můžete integrovat místní infrastrukturu Active Directory Domain Services do prostředí samoobslužného resetování hesla.
 

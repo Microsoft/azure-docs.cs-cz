@@ -13,14 +13,14 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 1e3043a6053625f8363e9035e59b53275714a827
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
-ms.translationtype: HT
+ms.openlocfilehash: f49f6f03b6d9f1c51cada58ae782bbc364fc9d66
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300605"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427283"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Kurz: Vytvoření vlastní role pomocí Azure PowerShellu
+# <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Kurz: Vytvoření vlastní role pomocí Azure Powershellu
 
 Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požadavky vaší organizace, můžete vytvořit své vlastní role. V tomto kurzu pomocí Azure PowerShellu vytvoříte vlastní roli Čtenář lístků podpory. Tato vlastní role umožní uživateli zobrazit vše v předplatném a také otevírat lístky podpory.
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Pro absolvování tohoto kurzu potřebujete:
 
 - Oprávnění k vytváření vlastních rolí, například [Vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
-- Místně nainstalovaný [Azure PowerShell](/powershell/azure/install-azurerm-ps)
+- Místně nainstalovaný [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
 
 ## <a name="sign-in-to-azure-powershell"></a>Přihlášení k Azure PowerShellu
 
@@ -290,7 +290,7 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
 
 1. Když se zobrazí výzva k potvrzení, zadejte **Y**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytváření vlastních rolí pomocí PowerShellu](custom-roles-powershell.md)

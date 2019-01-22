@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 696c331111fef9d6fc238b733e15230ab3ee1e56
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 50340218f80dfb0b443075a3a4f85e7a5ed86159
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378012"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433267"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Kterou verzi Azure MFA je nejvhodnější pro moji organizaci?
 

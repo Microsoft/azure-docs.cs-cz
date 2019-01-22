@@ -3,18 +3,18 @@ title: Vstupní parametry runbooku
 description: Vstupní parametry Runbooku zvýšíte flexibilitu sad runbook, neboť umožňuje předat data do sady runbook, kdy byla spuštěna. Tento článek popisuje různé scénáře použití vstupních parametrů v sadách runbook.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 650effed388dde4419e2ff6aede2f0468551a959
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d22a2de29e170979d9ab5d61c7f21a47d6aee99c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276682"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433437"
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -151,7 +151,7 @@ Popisek pod do vstupního pole zobrazí se atributy, které jsou nastavené pro 
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>Spuštění publikovaného runbooku pomocí rutin prostředí PowerShell a přiřadit parametry
 
-* **Rutiny Azure Resource Manageru:** spustíte runbook služby Automation, který byl vytvořen ve skupině prostředků s použitím [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook).
+* **Rutiny Azure Resource Manageru:** Můžete spustit runbook služby Automation, který byl vytvořen ve skupině prostředků s použitím [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook).
   
   **Příklad:**
   
@@ -160,7 +160,7 @@ Popisek pod do vstupního pole zobrazí se atributy, které jsou nastavené pro 
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* **Rutiny modelu nasazení Azure classic:** spustíte runbook služby automation, který byl vytvořen v výchozí skupiny prostředků s použitím [Start AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
+* **Rutiny modelu nasazení Azure classic:** Můžete spustit runbook služby automation, který byl vytvořen v výchozí skupiny prostředků s použitím [Start AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
   
   **Příklad:**
   
@@ -177,7 +177,7 @@ Popisek pod do vstupního pole zobrazí se atributy, které jsou nastavené pro 
 
 #### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>Spuštění runbooku pomocí sady SDK a přiřadit parametry
 
-* **Azure Resource Manageru metoda:** sady runbook můžete spustit pomocí sady SDK programovací jazyk. Tady je fragment kódu jazyka C# pro spuštění sady runbook ve vašem účtu Automation. Můžete zobrazit veškerý kód v našich [úložiště GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
+* **Metoda Azure Resource Manageru:** Spuštění runbooku pomocí sady SDK programovací jazyk. Tady je fragment kódu jazyka C# pro spuštění sady runbook ve vašem účtu Automation. Můžete zobrazit veškerý kód v našich [úložiště GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
   
   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -196,7 +196,7 @@ Popisek pod do vstupního pole zobrazí se atributy, které jsou nastavené pro 
       return response.Job;
       }
   ```
-* **Metoda modelu nasazení Azure classic:** sady runbook můžete spustit pomocí sady SDK programovací jazyk. Tady je fragment kódu jazyka C# pro spuštění sady runbook ve vašem účtu Automation. Můžete zobrazit veškerý kód v našich [úložiště GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
+* **Metoda modelu nasazení Azure classic:** Spuštění runbooku pomocí sady SDK programovací jazyk. Tady je fragment kódu jazyka C# pro spuštění sady runbook ve vašem účtu Automation. Můžete zobrazit veškerý kód v našich [úložiště GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
   
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -236,14 +236,14 @@ Popisek pod do vstupního pole zobrazí se atributy, které jsou nastavené pro 
 V identifikátoru URI požadavku nahraďte následující parametry:
 
 * **id předplatného:** ID vašeho předplatného Azure.  
-* **Název cloudové služby:** název cloudu služeb pro který by měl být požadavek odeslán.  
-* **název účtu služby Automation:** název vašeho účtu automation, která je hostována v rámci zadané cloudové služby.  
-* **id úlohy:** identifikátor GUID úlohy. Identifikátory GUID v prostředí PowerShell můžete vytvořit pomocí **[GUID]::NewGuid(). ToString()** příkazu.
+* **cloud-service-name:** Název cloudové služby, na kterou má žádost odeslána.  
+* **automation-account-name:** Název účtu služby automation, která je hostována v rámci zadané cloudové služby.  
+* **job-id:** Identifikátor GUID úlohy. Identifikátory GUID v prostředí PowerShell můžete vytvořit pomocí **[GUID]::NewGuid(). ToString()** příkazu.
 
 Pokud chcete předat parametry úlohy runbooku, použijte datovou část požadavku. Trvá následující dvě vlastnosti, které jsou k dispozici ve formátu JSON:
 
-* **Název sady Runbook:** vyžaduje. Název sady runbook pro spuštění úlohy.  
-* **Parametry sady Runbook:** volitelné. Slovník seznamu parametrů (název, hodnotu) naformátujte kde název by měl být typu String a hodnota může být libovolný platný JSON.
+* **Název sady Runbook:** Povinná hodnota. Název sady runbook pro spuštění úlohy.  
+* **Parametry sady Runbook:** Volitelné. Slovník seznamu parametrů (název, hodnotu) naformátujte kde název by měl být typu String a hodnota může být libovolný platný JSON.
 
 Pokud chcete spustit **Get-AzureVMTextual** sady runbook, který jste vytvořili pomocí **VMName** a **resourceGroupName** jako parametry, pomocí následujícího formátu JSON pro datová část požadavku.
 
@@ -285,4 +285,5 @@ Při spuštění sady runbook pomocí webhooku, předdefinované vstupní parame
 * Podrobnosti o různých způsobech spouštění sady runbook najdete v tématu [spuštění sady runbook](automation-starting-a-runbook.md).
 * Upravit textové sady runbook, najdete v tématu [úpravy textových runbooků](automation-edit-textual-runbook.md).
 * Chcete-li upravit grafický runbook, přečtěte si [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md).
+
 

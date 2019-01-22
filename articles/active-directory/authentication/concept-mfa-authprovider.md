@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 41edbc621baede92c548f43ad2730b73f59756c0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 681a25877bb185e058774d609a1896d18b059ae3
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496101"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431754"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kdy použít poskytovatele Azure Multi-Factor Authentication
 

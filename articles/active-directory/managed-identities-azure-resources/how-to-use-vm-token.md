@@ -4,7 +4,7 @@ description: Podrobné pokyny a příklady použití spravované identity pro pr
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 10cc8007c4f54808b5d7eb41ad2caa008b5c7107
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d737f1b17322d4b2ea0ab00a8e0bd386e8cb1747
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078996"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422402"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak získat přístupový token pomocí spravované identity pro prostředky Azure na Virtuálním počítači Azure 
 
@@ -377,7 +377,7 @@ Tato část popisuje možné chybové odpovědi. Objekt "200 OK" stav je úspě�
 | 401 Neautorizováno | unknown_source | Neznámý zdroj  *\<identifikátoru URI\>* | Ověřte, že váš požadavek HTTP GET identifikátoru URI je správný. `scheme:host/resource-path` Část musí být zadán jako `http://localhost:50342/oauth2/token`. Naleznete v části "ukázkový požadavek" v [předchozí ZBÝVAJÍCÍ části](#rest) příklad.|
 |           | invalid_request | Požadavku chybí povinný parametr, obsahuje neplatnou hodnotu parametru, obsahuje více než jednou. parametr nebo jinak je poškozený. |  |
 |           | unauthorized_client | Klient není oprávněný žádat přístupový token pomocí této metody. | Způsobeno žádosti, která nebyla použití místní zpětné smyčky pro volání rozšíření, nebo na virtuálním počítači, na kterém není spravovaným identitám pro prostředky Azure, které jsou nakonfigurované správně. Zobrazit [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače. |
-|           | ACCESS_DENIED | Vlastník prostředku nebo autorizační server tuto žádost odmítl. |  |
+|           | access_denied | Vlastník prostředku nebo autorizační server tuto žádost odmítl. |  |
 |           | unsupported_response_type | Autorizační server nepodporuje získání přístupového tokenu pomocí této metody. |  |
 |           | invalid_scope | Požadovaný rozsah je neplatný, neznámý nebo poškozený. |  |
 | Chyba 500 interní server | Neznámé | Nepovedlo se získat token ze služby Active directory. Podrobnosti najdete v protokolech  *\<cesta k souboru\>* | Ověřte, že spravovaných identit pro prostředky Azure je povoleno na virtuálním počítači. Zobrazit [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače.<br><br>Dál ověřte, že váš požadavek HTTP GET identifikátoru URI je správný, zejména zadaná v řetězci dotazu identifikátoru URI prostředku. Naleznete v části "ukázkový požadavek" v [předchozí ZBÝVAJÍCÍ části](#rest) příklad, nebo [služby Azure, že podpora Azure AD ověřování](services-support-msi.md) seznam služeb a jejich odpovídající ID prostředků.

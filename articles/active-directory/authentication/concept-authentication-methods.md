@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 90eb9177ec679fdf8007b734848a5bc3c72e5974
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249689"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430326"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -59,41 +59,41 @@ Pokud používáte bezpečnostní otázky, doporučujeme používat je společn�
 
 ### <a name="predefined-questions"></a>Předdefinované dotazy
 
-* V jakém městě jste potkali svého manžela nebo manželku (partnera nebo partnerku)?
-* V jakém městě se potkali vaši rodiče?
-* V jakém městě žije váš nejbližší sourozenec?
-* V jakém městě se narodil váš otec?
-* V jakém městě jste měli první práci?
-* V jakém městě se narodila vaše matka?
-* V jakém městě jste byli na Nový rok 2000?
-* Jaké je příjmení vašeho oblíbeného učitele ze střední školy?
-* Jaký je název univerzity, na kterou jste se hlásili, ale nechodili na ni?
-* Jak se jmenuje město, kde jste měli svatební hostinu?
-* Jaký je oblíbený sport vašeho otce?
+* Ve kterém městě jste se seznámili s prvním manželem či manželkou (případně partnerem či partnerkou)?
+* Ve kterém městě se seznámili vaši rodiče?
+* Ve kterém městě žije váš sourozenec, kterého máte nejblíže?
+* Ve kterém městě se narodil váš otec?
+* Ve kterém městě jste vykonávali své první zaměstnání?
+* Ve kterém městě se narodila vaše matka?
+* Ve kterém městě jste byli na Nový rok 2000?
+* Uveďte příjmení svého nejoblíbenějšího učitele na střední škole.
+* Jak se nazývá vysoká škola, na kterou jste se hlásili, ale pak na ni nenastoupili?
+* Jak se nazývá místo, kde se konala vaše první svatební oslava?
+* Jaké je druhé křestní jméno vašeho otce?
 * Jaké je vaše oblíbené jídlo?
-* Jaké je jméno a příjmení vaší babičky z matčiny strany?
-* Jak se za svobodna jmenovala vaše matka?
+* Uveďte celé jméno své babičky ze strany matky.
+* Jaké je druhé křestní jméno vaší matky?
 * Co je měsíci a roce svého nejstaršího sourozence? (např. listopad 1985)
-* Jaké je křestní jméno vašeho nejstaršího sourozence?
-* Jaké je jméno a příjmení vašeho dědečka z otcovy strany?
-* Jaké je křestní jméno vašeho nejmladšího sourozence?
-* Do jaké školy jste chodili v šesté třídě?
-* Jaké měl jméno a příjmení váš nejlepší přítel v dětství?
-* Jaké měl jméno a příjmení váš první partner nebo partnerka?
-* Jaké bylo příjmení vašeho oblíbeného učitele ze základní školy?
-* Jaká byla značka a model vašeho prvního auta nebo motorky?
-* Jaký byl název první školy, do které jste chodili?
-* Jaký název měla nemocnice, ve které jste se narodili?
-* Jak se jmenovala ulice, kde jste v dětství bydleli?
-* Jak se jmenoval váš dětský idol?
-* Jaké bylo jméno vašeho oblíbeného plyšáka?
-* Jak se jmenovalo vaše první domácí zvířátko?
+* Jaké je druhé křestní jméno vašeho nejstaršího sourozence?
+* Uveďte celé jméno svého dědečka ze strany otce.
+* Jaké je druhé křestní jméno vašeho nejmladšího sourozence?
+* Do které školy jste chodili v šestém ročníku?
+* Uveďte celé jméno svého nejlepšího kamaráda nebo kamarádky z dětství.
+* Uveďte celé jméno svého prvního partnera nebo partnerky.
+* Uveďte příjmení svého nejoblíbenějšího učitele na prvním stupni.
+* Uveďte značku a model svého prvního auta nebo motocyklu.
+* Jak se jmenovala první škola, do které jste docházeli?
+* Uveďte název nemocnice, ve které jste se narodili.
+* Na jaké ulici jste bydleli v dětství v úplně prvním bydlišti?
+* Jak se jmenoval váš dětský hrdina?
+* Jak se jmenuje váš nejoblíbenější plyšák?
+* Jak se jmenoval váš první domácí mazlíček?
 * Jakou jste měli v dětství přezdívku?
 * Jaký byl váš oblíbený sport na střední škole?
-* Jaká byla vaše první práce?
-* Jaké byly poslední čtyři číslice vašeho telefonu v dětství?
-* Jaké bylo v dětství vaše vysněné povolání?
-* Jakou nejznámější osobnost jste kdy potkali?
+* Co bylo vaším prvním zaměstnáním?
+* Uveďte poslední čtyři číslice telefonního čísla, které jste používali v dětství?
+* Čím jste jako dítě chtěli být, až vyrostete?
+* Uveďte nejslavnějšího člověka, se kterým jste se v životě setkali.
 
 Všechny předdefinované bezpečnostní otázky jsou přeloženy a lokalizován do úplnou sadu Office 365 jazyky podle národního prostředí prohlížeče uživatele.
 

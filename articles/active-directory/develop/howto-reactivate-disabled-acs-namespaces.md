@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 01/21/2019
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 0f0de122dc3dbd770e91a8412430423bee222b30
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 085923dd124a4f973a709f0e59a07ad4137c6901
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577941"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438491"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postupy: nová aktivace deaktivovaného Access Control Service obory názvů
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postup: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
 
 V listopadu 2017 jsme oznámili, že Microsoft Azure Access Control Service (ACS), služba Azure Active Directory (Azure AD), se vyřazuje k 7. listopadu 2018.
 
@@ -32,7 +32,7 @@ Protože potom odeslali jsme vám e-mailů k e-mailu správce že ACS předplatn
 
 ## <a name="why-your-namespace-is-disabled"></a>Proč je neaktivní váš obor názvů
 
-Pokud rozšíření ještě výslovného souhlasu, začneme zakazovat obory názvů ACS od 7. listopadu 2018. Pokud se vynechalo komunikací a přesto chcete vyjádřit výslovný souhlas pro rozšíření do 4. února 2019, postupujte podle pokynů v následujících částech.
+Pokud rozšíření ještě výslovného souhlasu, začneme zakazovat obory názvů ACS od 7. listopadu 2018. Požádali jste o musí rozšíření do 4. února 2019 již; v opačném případě nebudete moct povolit oborů názvů pomocí prostředí PowerShell.
 
 > [!NOTE]
 > Musíte být správce služeb nebo spolusprávcem předplatného, který chcete spustit příkazy Powershellu a požádali o prodloužení.
@@ -57,7 +57,7 @@ ACS Powershellu můžete použít k zobrazení seznamu všech oborů názvů ACS
 
         Pokud chcete zobrazit nápovědu ke konkrétnímu příkazu, spusťte:
 
-        ```
+        ```powershell
         Get-Help [Command-Name] -Full
         ```
     
@@ -79,18 +79,45 @@ ACS Powershellu můžete použít k zobrazení seznamu všech oborů názvů ACS
 
 ## <a name="request-an-extension"></a>Žádost o rozšíření
 
-1. Přejděte na portál pro správu vašeho oboru názvů služby ACS tak, že přejdete do `https://{your-namespace}.accesscontrol.windows.net`.
-1. Vyberte **čtení podmínky** tlačítko ke čtení [podmínky použití aktualizovat](https://azure.microsoft.com/support/legal/access-control/), který nasměruje na stránku s aktualizované podmínky použití.
+Jsme se rozhodli nové žádosti o rozšíření od 21. ledna 2019.
 
-    [![Klikněte na tlačítko podmínky pro čtení](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png#lightbox)
+Začneme zakázání obory názvů pro zákazníky, kteří odeslali žádost o rozšíření do 4. února 2019. Můžete stále znovu povolit oborů názvů pomocí Powershellu, ale obory názvů bude zakázáno znovu po 48 hodinách.
 
-1. Vyberte **žádost o rozšíření** na banner v horní části stránky. Tlačítko bude povoleno pouze po přečtení [podmínky použití aktualizovat](https://azure.microsoft.com/support/legal/access-control/).
+Po 4 března 2019 zákazníci už budou moct znovu povolit všechny obory názvů pomocí prostředí PowerShell.
 
-    [![Klikněte na tlačítko požádat o rozšíření](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png#lightbox)
+Další rozšíření se už být automaticky schvalovat. Pokud budete potřebovat další čas na migraci, obraťte se na [podpory Azure](https://portal.azure.com/#create/Microsoft.Support) stanovit časovou osu migrace podrobné.
 
-1. Po registraci rozšíření požadavek na stránce se aktualizuje s novým bannerem v horní části stránky.
+### <a name="to-request-an-extension"></a>Chcete-li požádat o prodloužení
 
-    [![Aktualizovaná stránka s aktualizovat banner](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png#lightbox)
+1. Připojte se k webu Azure portal a vytvoření [novou žádost o podporu](https://portal.azure.com/#create/Microsoft.Support).
+1. Vyplňte formulář nové žádosti o podporu, jak je znázorněno v následujícím příkladu.
+
+    | Pole žádosti o podporu | Hodnota |
+    |-----------------------|--------------------|
+    | **Typ problému** | `Technical` |
+    | **Předplatné** | Nastavte na předplatné |
+    | **Služba** | `All services` |
+    | **Prostředek** | `General question/Resource not available` |
+    | **Typ problému** | `ACS to SAS Migration` |
+    | **Předmět** | Popište problém |
+
+  ![Nová žádost o technickou podporu](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+
+<!--
+
+1. Navigate to your ACS namespace's management portal by going to `https://{your-namespace}.accesscontrol.windows.net`.
+1. Select the **Read Terms** button to read the [updated Terms of Use](https://azure.microsoft.com/support/legal/access-control/), which will direct you to a page with the updated Terms of Use.
+
+    [![Select the Read Terms button](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/read-terms-button-expanded.png#lightbox)
+
+1. Select **Request Extension** on the banner at the top of the page. The button will only be enabled after you read the [updated Terms of Use](https://azure.microsoft.com/support/legal/access-control/).
+
+    [![Select the Request Extension button](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/request-extension-button-expanded.png#lightbox)
+
+1. After the extension request is registered, the page will refresh with a new banner at the top of the page.
+
+    [![Updated page with refreshed banner](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png)](./media/howto-reactivate-disabled-acs-namespaces/updated-banner-expanded.png#lightbox)
+-->
 
 ## <a name="help-and-support"></a>Nápověda a podpora
 
@@ -99,4 +126,4 @@ ACS Powershellu můžete použít k zobrazení seznamu všech oborů názvů ACS
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si informace o vyřazení z provozu služby ACS v [postupy: Migrace z Azure Access Control Service](active-directory-acs-migration.md).
+- Přečtěte si informace o vyřazení z provozu služby ACS v [jak: Migrace z Azure Access Control Service](active-directory-acs-migration.md).

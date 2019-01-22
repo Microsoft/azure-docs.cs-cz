@@ -7,12 +7,12 @@ ms.service: databox
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: alkohli
-ms.openlocfilehash: b4966d03e44591f01bee945c743ea83f57e6da93
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d1367504182eb8d8335796dc37800c30e0a563b8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54392270"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438588"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Případy použití pro Azure Data Box brány
 
@@ -41,7 +41,7 @@ Jak zařízení plní daty, začne omezení rychlost příchozího přenosu dat 
 
 Brána pole dat použijte, pokud chcete uchovávat data pro dlouhodobé v cloudu. Můžete použít **archivu** vrstvu úložiště pro dlouhodobé uchovávání.
 
-Archivní úroveň je optimalizovaná pro ukládání zřídka dat nejméně na 180 dnů. **Archivu** nabízí nejnižší náklady na úložiště, ale má nejvyšší náklady na přístup. Další informace najdete v části [archivní úroveň přístupu](/azure/storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
+Archivní úroveň je optimalizovaná pro ukládání zřídka dat nejméně na 180 dnů. **Archivu** nabízí nejnižší náklady na úložiště, ale má nejvyšší náklady na přístup. Další informace najdete v části [archivní úroveň přístupu](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
 
 ### <a name="move-data-to-archive-tier"></a>Přesun dat do archivní úrovně
 
@@ -49,14 +49,14 @@ Než začnete, ujistěte se, že máte spuštěné zařízení Data Box brány. 
 
 - Použijte k odesílání dat do Azure prostřednictvím obvykle přenos postup, jak je popsáno v zařízení Data Box brány [přenos dat přes bránu dat pole](data-box-gateway-deploy-add-shares.md).
 - Po nahrání dat je potřeba ho přesunout do archivní úrovně. Na úrovni objektů blob můžete nastavit dvěma způsoby: Skript Azure Powershellu nebo zásady správy životního cyklu úložiště Azure.  
-    - Pokud pomocí prostředí Azure PowerShell, postupujte podle těchto [kroky](/azure/databox/data-box-how-to-set-data-tier.md#use-azure-powershell-to-set-the-blob-tier) pro přesun dat do archivní úrovně.
+    - Pokud pomocí prostředí Azure PowerShell, postupujte podle těchto [kroky](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) pro přesun dat do archivní úrovně.
     - Pokud používáte správu životního cyklu Azure, použijte následující postup přesun dat do archivní úrovně.
-        - [Zaregistrujte](/azure/storage/common/storage-lifecycle-management-concepts.md#register-for-preview) ve verzi Preview služby správy životního cyklu objektu Blob použití archivní úroveň.
-        - Použít tyto zásady na [archivovat data na ingestování](/azure/storage/blobs/storage-lifecycle-management-concepts.md#archive-data-at-ingest.md).
+        - [Zaregistrujte](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) ve verzi Preview služby správy životního cyklu objektu Blob použití archivní úroveň.
+        - Použít tyto zásady na [archivovat data na ingestování](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
 - Jakmile objekty BLOB jsou označeny jako archiv, se může nelze nadále upravovat bránou dokud nebudou přesunuty do horké nebo studené úrovně. Pokud je soubor v místním úložišti, všechny změny místní kopie (včetně odstraní) nejsou nahrát do archivní úrovně.
 - Číst data v archivním úložišti, musí být rehydrated změnou úrovně objektu blob na horkou nebo studenou. [Aktualizace sdílené složky](data-box-gateway-manage-shares.md#refresh-shares) na bráně dosazení není objekt blob.
 
-Další informace najdete další informace o tom, jak [spravovat Azure Blob Storage cyklu](/azure/storage/common/storage-lifecycle-management-concepts.md).
+Další informace najdete další informace o tom, jak [spravovat Azure Blob Storage cyklu](/azure/storage/common/storage-lifecycle-management-concepts).
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Počáteční hromadného přenosu, za nímž následuje přírůstkového přenosu
 
@@ -66,10 +66,10 @@ Data Box a pole bránu dat používejte společně Pokud chcete provést hromadn
 
 Postupujte podle těchto kroků ke zkopírování dat do zařízení Data Box a nahrajte do služby Azure Storage.
 
-1. [Pořadí Data Box](/azure/databox/data-box-deploy-ordered.md).
-2. [Nastavení vašeho zařízení Data Box](/azure/databox/data-box-deploy-set-up.md).
-3. [Kopírování dat do služby Data Box přes SMB](/azure/databox/data-box-deploy-copy-data.md).
-4. [Ověřte nahrání dat do Azure, vrátí Data Box](/azure/databox/data-box-deploy-picked-up.md).
+1. [Pořadí Data Box](/azure/databox/data-box-deploy-ordered).
+2. [Nastavení vašeho zařízení Data Box](/azure/databox/data-box-deploy-set-up).
+3. [Kopírování dat do služby Data Box přes SMB](/azure/databox/data-box-deploy-copy-data).
+4. [Ověřte nahrání dat do Azure, vrátí Data Box](/azure/databox/data-box-deploy-picked-up).
 5. Po dokončení nahrávání dat do Azure se všechna data by mělo být v kontejnerech služby Azure storage. V účtu úložiště pro Data Box přejděte do kontejneru objektů Blob (a soubor) abyste měli jistotu, že se data kopírují. Poznamenejte si název kontejneru Ujistěte se, jak bude tento název použijete později. Například v následujícím snímku obrazovky `databox` kontejneru se použije pro přírůstkového přenosu.
 
     ![Kontejner s daty na zařízení Data Box](media/data-box-gateway-use-cases/data-container1.png)

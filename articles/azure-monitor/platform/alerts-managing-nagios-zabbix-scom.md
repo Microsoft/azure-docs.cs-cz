@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: f45774d8afc8760d0a02cb0c863c9ef100ef1365
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.subservice: alerts
+ms.openlocfilehash: 48fb9d8eaf2003834a420b48d649c830c608fd6e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381863"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421211"
 ---
 # <a name="manage-alerts-from-scom-zabbix-and-nagios-in-azure-monitor"></a>Správa výstrah z SCOM a ve službě Azure Monitor Nagios a Zabbix
 
@@ -32,3 +32,4 @@ Po nakonfigurování importu do Log Analytics můžete začít zobrazovat výstr
 >  1. Všechny instance aktivovaná upozornění bude k dispozici v nástroji Azure Monitor a Azure Log Analytics. V současné době neexistuje žádný způsob, jak zvolit dvě nebo přijímat pouze konkrétní vyvolané výstrahy.
 >  1. Všechny výstrahy z nástroje SCOM a Nagios a Zabbix mít typ signálu "Neznámá", protože základní typ telemetrických dat není k dispozici.
 >  1. Výstrahy Nagios nejsou stavové – například [monitorování stavu](https://aka.ms/azure-alerts-overview) výstrahy nebudou přejít z "Fired" na "Vyřešeno". Místo toho "Fired" i "Vyřešeno" se zobrazí jako samostatné výstrahy instance. 
+

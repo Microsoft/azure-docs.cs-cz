@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 47c9c66f9dd837da3343f1cfd602a5b51aefc76d
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 80b594eb8d926465f37771e2e6911f9ab3e63f1f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389346"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423812"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
@@ -727,7 +727,7 @@ Tady je ukázka šablony nasazení, který můžete importovat v kanálech Azure
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Ukázkový skript k zastavení a restartování aktivační události a vyčištění
 
-Tady je ukázkový skript zastavit aktivačních událostí před nasazením a později restartuje aktivační události. Skript také zahrnuje kód odstraňte prostředky, které byly odebrány. Pokud chcete nainstalovat nejnovější verzi Azure Powershellu, najdete v článku [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0).
+Tady je ukázkový skript zastavit aktivačních událostí před nasazením a později restartuje aktivační události. Skript také zahrnuje kód odstraňte prostředky, které byly odebrány. Pokud chcete nainstalovat nejnovější verzi Azure Powershellu, najdete v článku [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.9.0).
 
 ```powershell
 param

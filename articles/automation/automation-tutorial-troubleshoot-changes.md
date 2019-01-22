@@ -3,7 +3,7 @@ title: Řešení potíží se změnami na virtuálním počítači Azure | Dokum
 description: Potíže se změnami na virtuálním počítači Azure můžete řešit pomocí řešení Change Tracking.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: change, tracking, automation
 author: jennyhunter-msft
 ms.author: jehunte
@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fa1e3ffd92b3c375837c7b9a4a0e7fd1a80893a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190012"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433675"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
@@ -42,7 +42,7 @@ Pro absolvování tohoto kurzu potřebujete:
 * [Účet Automation](automation-offering-get-started.md), který bude obsahovat sledovací proces, runbooky akcí a úlohu sledovacího procesu.
 * [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) pro připojení.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -102,7 +102,7 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Povoleno     | Určuje, jestli se nastavení používá.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
 |Skupina     | Název skupiny pro logické seskupení souborů        |
-|Klíč registru systému Windows   | Cesta ke kontrole souboru: "Spuštění HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common"      |
+|Klíč registru systému Windows   | Cesta ke kontrole souboru: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="add-a-windows-file"></a>Přidání souboru Windows
 
@@ -228,3 +228,4 @@ Další informace najdete v přehledu řešení Change Tracking a Inventory.
 
 > [!div class="nextstepaction"]
 > [Řešení Change Tracking a Inventory](automation-change-tracking.md)
+

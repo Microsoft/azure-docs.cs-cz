@@ -1,5 +1,5 @@
 ---
-title: 'Obnovení se nezdařilo - okruhu ExpressRoute: prostředí PowerShell: Azure | Dokumentace Microsoftu'
+title: 'Obnovení se nezdařilo - okruhu ExpressRoute: PowerShell: Azure | Dokumentace Microsoftu'
 description: Tento článek pomůže obnovit okruh ExpressRoute, který je ve stavu selhání.
 services: expressroute
 author: anzaman
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: 7b88ba6e00cbec05263fe5bc8e795cda95beee04
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e94ba2f7f6981355f4736683b891fbdced001d03
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093661"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425335"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Resetování okruhu ExpressRoute, který selhal
 
@@ -21,7 +21,7 @@ Při operaci v okruhu ExpressRoute nepodaří úspěšně vyřídit, okruh můž
 
 ## <a name="reset-a-circuit"></a>Resetování okruhu
 
-1. Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-azurerm-ps).
+1. Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
 
 2. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 

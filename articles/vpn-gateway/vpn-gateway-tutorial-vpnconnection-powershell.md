@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 61e040fc2f7ff70794b49204e3dea01375637641
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
-ms.translationtype: HT
+ms.openlocfilehash: 0c71062bded65f8aa7c259c0678ee6675e2dab38
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336572"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432213"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>Vytváření a správa připojení VPN typu Site-to-Site pomocí modulu Azure PowerShell
 
@@ -39,11 +39,11 @@ Následující diagram ukazuje topologii pro tento kurz:
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.3 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.3 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="requirements"></a>Požadavky
 
-Dokončete první kurz [Vytvoření brány VPN pomocí Azure PowerShellu](vpn-gateway-tutorial-create-gateway-powershell.md) a vytvořte následující prostředky:
+Prvním kurzu: "[Vytvořit VPN gateway pomocí Azure Powershellu](vpn-gateway-tutorial-create-gateway-powershell.md)" vytvoříte následující prostředky:
 
 1. Skupina prostředků (TestRG1), virtuální síť (VNet1) a podsíť brány GatewaySubnet
 2. Brána VPN (VNet1GW)
@@ -140,7 +140,7 @@ Brána VPN Azure podporuje protokol dynamického směrování BGP. Pro jednotliv
 * ASN místní brány místní sítě
 * IP adresa partnera BGP místní brány místní sítě
 
-Pokud jste nenakonfigurovali vlastnosti BGP, pomocí následujících příkazů přidejte tyto vlastnosti do vaší brány VPN a brány místní sítě: [Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) a [Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1).
+Pokud jste nenakonfigurovali vlastnosti protokolu BGP, pomocí následujících příkazů můžete přidat tyto vlastnosti k bráně VPN a bránu místní sítě: [Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) a [Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1).
 
 ```azurepowershell-interactive
 $vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -168,7 +168,7 @@ BGP můžete zakázat změnou hodnoty vlastnosti -EnableBGP na **$False**. Podro
 Místo použití [výchozích návrhů](vpn-gateway-about-vpn-devices.md#ipsec) můžete použít volitelné zásady IPsec/IKE a zadat pro připojení přesnou kombinaci kryptografických algoritmů IPsec/IKE a síly klíče. Následující ukázkový skript vytvoří jinou zásadu IPsec/IKE s následujícími algoritmy a parametry:
 
 * IKEv2: AES256, SHA256, DHGroup14
-* IPsec: AES128, SHA1, PFS14, životnost SA 14 400 sekund a 102 400 000 kB
+* Protokol IPsec: Aes128, SHA1, PFS14, sekund 14 400 fakturovatelných životnost SA & 102,400,000 KB
 
 ```azurepowershell-interactive
 $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 `
@@ -226,7 +226,7 @@ Pokud už ji nepotřebujete, odstraňte bránu místní sítě. Bránu místní 
 Remove-AzureRmVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se seznámili s vytvářením a správou připojení VPN typu Site-to-Site a s následujícími postupy:
 

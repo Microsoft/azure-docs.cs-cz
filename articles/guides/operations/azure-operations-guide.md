@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 4ced3aa9b7d37543b4942bbfa9a5605058a614d8
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 508614d2126d95323ce3550954b4b8a7d4d9d7d8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014731"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438807"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -169,7 +169,7 @@ Kromě vytváření, správu a odstraňování prostředků pomocí webu Azure p
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Prostředí Azure PowerShell je sada modulů, které poskytují rutiny pro správu Azure. Rutiny můžete použít k vytvoření, správě a odebrání služby Azure. Rutiny vám umožňují dosáhnete konzistentní vzhledem k aplikacím, opakovatelným a bezobslužnou nasazení. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-azurerm-ps).
+Prostředí Azure PowerShell je sada modulů, které poskytují rutiny pro správu Azure. Rutiny můžete použít k vytvoření, správě a odebrání služby Azure. Rutiny vám umožňují dosáhnete konzistentní vzhledem k aplikacím, opakovatelným a bezobslužnou nasazení. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
 
 #### <a name="azure-command-line-interface"></a>rozhraní příkazového řádku Azure
 
@@ -191,17 +191,17 @@ Předplatné je logické seskupení služeb Azure, který je propojený s účte
 
 Než začnete pracovat se službami Azure, musíte mít předplatné. Několik typů předplatného jsou k dispozici.
 
-**Bezplatné účty**: odkaz pro registraci bezplatného účtu je na [web Azure](https://azure.microsoft.com/). Získáte kredit v průběhu 30 dnů vyzkoušet libovolnou kombinaci prostředků v Azure. Při překročení kreditu, který vaše, váš učet je zablokovaný. Na konci zkušebního období vaše služby jsou vyřazeny z provozu a přestane fungovat. Můžete upgradovat na předplatné s průběžnými platbami kdykoli.
+**Bezplatné účty**: Odkaz pro registraci bezplatného účtu je na [web Azure](https://azure.microsoft.com/). Získáte kredit v průběhu 30 dnů vyzkoušet libovolnou kombinaci prostředků v Azure. Při překročení kreditu, který vaše, váš učet je zablokovaný. Na konci zkušebního období vaše služby jsou vyřazeny z provozu a přestane fungovat. Můžete upgradovat na předplatné s průběžnými platbami kdykoli.
 
 **Předplatná MSDN**: Pokud máte předplatné MSDN, můžete získat určitou velikostí v kreditech Azure každý měsíc. Například pokud máte Microsoft Enterprise sady Visual Studio s předplatným MSDN získáte \$150 USD v kreditech Azure.
 
 Při překročení kreditu, který, služby jsou zakázané, dokud nezačne další měsíc. Můžete vypnout limit útraty a přidat platební kartu pro další náklady. Některé tyto náklady Dáváme pro účty MSDN. Například platíte cenu Linux pro virtuální počítače s Windows serverem a neexistuje žádné další poplatky za servery společnosti Microsoft, jako je Microsoft SQL Server. Díky tomu MSDN účty ideální pro scénáře vývoje a testování.
 
-**Účty BizSpark**: programu The Microsoft BizSpark má spoustu výhod pro začínající firmy. Jednou z těchto výhod je přístup k veškerému softwaru Microsoftu pro vývojová a testovací prostředí pro účty až o pěti MSDN. Získejte 150 USD v kreditech Azure pro každou z těchto pět MSDN účtů a platit nižší sazby pro několik služeb Azure, jako jsou virtuální počítače.
+**Účty BizSpark**: Program Microsoft BizSpark má spoustu výhod pro začínající firmy. Jednou z těchto výhod je přístup k veškerému softwaru Microsoftu pro vývojová a testovací prostředí pro účty až o pěti MSDN. Získejte 150 USD v kreditech Azure pro každou z těchto pět MSDN účtů a platit nižší sazby pro několik služeb Azure, jako jsou virtuální počítače.
 
-**Průběžné platby**: U tohoto předplatného, platíte za použití připojením kreditní nebo debetní kartu k účtu. Pokud organizace, můžete je také schválené pro fakturaci.
+**Průběžné platby**: Toto předplatné platíte za použití připojením kreditní nebo debetní kartu k účtu. Pokud organizace, můžete je také schválené pro fakturaci.
 
-**Smlouvy Enterprise**: se smlouvou enterprise agreement, můžete zavázat k využívání počet služeb v Azure přes příští rok, a vy platíte šířka předem. Závazek, který se spotřebovává během roku. Pokud překročíte závazku odečítá, můžete platit Nadlimitní využití za uplynulé čtvrtletí. V závislosti na množství závazku Získejte slevu na služby v Azure.
+**Smlouvy Enterprise**: Se smlouvou enterprise zavázat k využívání počet služeb v Azure v příštím roce a vy platíte šířka předem. Závazek, který se spotřebovává během roku. Pokud překročíte závazku odečítá, můžete platit Nadlimitní využití za uplynulé čtvrtletí. V závislosti na množství závazku Získejte slevu na služby v Azure.
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Udělit přístup správce k předplatnému Azure
 
@@ -273,19 +273,19 @@ Když děláte rozhodnutí o vaší skupiny prostředků, vezměte v úvahu tyto
 
 Šablony Resource Manageru se skládá ze čtyř částí:
 
-- **Parametry**: Toto jsou vstupy nasazení. Hodnoty parametru lze zadat člověk nebo automatizovaného procesu. Jako příklad parametr může být správce uživatelské jméno a heslo pro virtuální počítač s Windows. Hodnoty parametrů se používají v rámci nasazení, když jste zadali.
+- **Parametry**: Jedná se o vstupy nasazení. Hodnoty parametru lze zadat člověk nebo automatizovaného procesu. Jako příklad parametr může být správce uživatelské jméno a heslo pro virtuální počítač s Windows. Hodnoty parametrů se používají v rámci nasazení, když jste zadali.
 
-- **Proměnné**: ty se používají pro uchování hodnoty, které se používají v rámci nasazení. Na rozdíl od parametry hodnotu proměnné není k dispozici v době nasazení. Místo toho je obtížné kódované nebo generuje dynamicky.
+- **Proměnné**: Ty se používají pro uchování hodnoty, které se používají v rámci nasazení. Na rozdíl od parametry hodnotu proměnné není k dispozici v době nasazení. Místo toho je obtížné kódované nebo generuje dynamicky.
 
-- **Prostředky**: v této části šablony definuje prostředky k nasazení, jako jsou virtuální počítače, účty úložiště a virtuální sítě.
+- **prostředky**: Tato část šablony definuje prostředky k nasazení, jako jsou virtuální počítače, účty úložiště a virtuální sítě.
 
 - **Výstup**: Po dokončení nasazení Resource Manageru můžete vrátit data, jako jsou dynamicky generované připojovací řetězce.
 
 Jsou k dispozici pro automatizaci nasazení následujících mechanismů:
 
-- **Funkce**: můžete použít několik funkcí v šablonách Resource Manageru. Patří mezi ně operací, jako je například převod řetězce na malá písmena, nasazení více instancí definovaných prostředků a dynamicky vrácení cílová skupina prostředků. Funkce Resource Manageru vám pomůžou rozvíjet dynamických nasazení.
+- **Funkce:** Můžete použít několik funkcí v šablonách Resource Manageru. Patří mezi ně operací, jako je například převod řetězce na malá písmena, nasazení více instancí definovaných prostředků a dynamicky vrácení cílová skupina prostředků. Funkce Resource Manageru vám pomůžou rozvíjet dynamických nasazení.
 
-- **Závislosti prostředků**: když nasazujete více zdrojů, některé prostředky budou mít závislost na ostatní. Pro usnadnění nasazení, můžete použít deklarace závislostí tak, aby ostatní jsou nasazena závislé prostředky.
+- **Závislosti prostředků**: Při nasazování několika prostředcích, některé prostředky budou mít závislost na ostatní. Pro usnadnění nasazení, můžete použít deklarace závislostí tak, aby ostatní jsou nasazena závislé prostředky.
 
 - **Propojení šablony**: Z v rámci jedné šablony Resource Manageru můžete propojit s jinou šablonu. To umožňuje rozložené nasazení na sadu cílových, zaměřené na konkrétní účel šablony.
 
@@ -301,17 +301,17 @@ Pokud chcete udělit přístup, přiřadíte roli pro uživatele nebo skupiny u�
 
 Tady je příklad několika [předdefinované role v Azure](../../role-based-access-control/built-in-roles.md):
 
-- **Vlastník**: uživatel s touto rolí můžou spravovat všechno včetně přístupu.
+- **Vlastník**: Uživatel s touto rolí můžou spravovat všechno včetně přístupu.
 
-- **Čtečka**: uživatel s touto rolí může číst prostředky všech typů (s výjimkou tajné kódy), ale nemůže provádět změny.
+- **Reader**: Uživatel s touto rolí může číst prostředky všech typů (s výjimkou tajné kódy), ale nemůže provádět změny.
 
-- **Přispěvatel virtuálních počítačů**: uživatel s touto rolí může spravovat virtuální počítače, ale nemůže spravovat virtuální sítě pro které jsou připojené nebo účet úložiště, kde se nachází soubor virtuálního pevného disku.
+- **Přispěvatel virtuálních počítačů**: Uživatel s touto rolí může spravovat virtuální počítače, ale nemůže spravovat virtuální sítě pro které jsou připojené nebo účet úložiště, kde se nachází soubor virtuálního pevného disku.
 
-- **Přispěvatel databází SQL**: uživatel s touto rolí můžou spravovat databáze SQL, ale ne jejich zásady související se zabezpečením.
+- **Přispěvatel databází SQL**: Uživatel s touto rolí můžou spravovat databáze SQL, ale ne jejich zásady související se zabezpečením.
 
-- **Správce zabezpečení SQL**: uživatel s touto rolí můžou spravovat zásady související se zabezpečením SQL serverů a databází.
+- **SQL Security Manager**: Uživatel s touto rolí můžou spravovat zásad souvisejících se zabezpečením SQL serverů a databází.
 
-- **Přispěvatel účtů úložiště**: uživatel s touto rolí můžou spravovat účty úložiště, ale nemůžete spravovat přístup k účtům úložiště.
+- **Přispěvatel účtů úložiště**: Uživatel s touto rolí můžou spravovat účty úložiště, ale nemůžete spravovat přístup k účtům úložiště.
 
 Další informace najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
@@ -359,7 +359,7 @@ A konečně stejně jako u správy všechny počítače, byste měli poskytnout 
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure Storage je služba spravovaná Microsoftem, která poskytuje odolné, škálovatelné a redundantní úložiště. Účet úložiště Azure můžete přidat jako prostředek do libovolné skupiny prostředků pomocí libovolné metody nasazení prostředků. Azure obsahuje čtyři typy úložišť: Blob storage, File Storage, Table storage a Queue storage. Při nasazení účtu úložiště, dva typy účtů jsou k dispozici, pro obecné účely a úložiště objektů blob. Účet úložiště pro obecné účely poskytuje přístup pro všechny čtyři typy úložiště. Účty úložiště BLOB jsou podobné účtům pro obecné účely, ale obsahovat specializované objekty BLOB, které zahrnují přístup horké a studené úrovně. Další informace o úložišti objektů blob najdete v tématu [úložiště objektů Blob v Azure](../../storage/blobs/storage-blob-storage-tiers.md).
+Azure Storage je služba spravovaná Microsoftem, která poskytuje odolné, škálovatelné a redundantní úložiště. Účet úložiště Azure můžete přidat jako prostředek do libovolné skupiny prostředků pomocí libovolné metody nasazení prostředků. Azure obsahuje čtyři typy úložiště: Úložiště objektů BLOB, File Storage, Table storage a Queue storage. Při nasazení účtu úložiště, dva typy účtů jsou k dispozici, pro obecné účely a úložiště objektů blob. Účet úložiště pro obecné účely poskytuje přístup pro všechny čtyři typy úložiště. Účty úložiště BLOB jsou podobné účtům pro obecné účely, ale obsahovat specializované objekty BLOB, které zahrnují přístup horké a studené úrovně. Další informace o úložišti objektů blob najdete v tématu [úložiště objektů Blob v Azure](../../storage/blobs/storage-blob-storage-tiers.md).
 
 Účty úložiště Azure můžete nakonfigurovat různé úrovně redundance:
 
@@ -481,9 +481,9 @@ Existuje několik možností pro nasazení virtuální sítě.
 
 - Šablony Azure Resource Manageru
 
->**Kdy použít**: když pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentace vašich virtuálních počítačů do podsítí veřejných a privátních podobné místních datových centrech.
+>**Kdy použít**: Když pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentace vašich virtuálních počítačů do podsítí veřejných a privátních podobné místních datových centrech.
 
->**Začínáme**: nasazení služby Azure virtual network pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nové virtuální sítě můžete nasadit do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Začínáme a [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
+>**Začínáme**: Nasazení služby Azure virtual network pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nové virtuální sítě můžete nasadit do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Začínáme a [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Přístup a zabezpečení pro virtuální sítě
 

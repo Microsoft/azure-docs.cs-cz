@@ -5,14 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f1ab6d955c81ce6f7b141eef42341f43bb379f6
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 9670d67fa1eb79e9e5e8c81726c10cc78767fb74
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165313"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435457"
 ---
 # <a name="what-is-azure-data-box-gateway-preview"></a>Co je Azure Data Box Gateway (Preview)? 
 
@@ -39,7 +39,10 @@ Data Box Gateway má následující výhody:
 
 - **Snadný přenos dat** – přenos dat do a z úložiště Azure je stejně snadný jako práce s místní sdílenou síťovou složkou.  
 - **Vysoký výkon** – vysoce výkonné přenosy dat do a z Azure eliminují nepříjemnosti spojené s přenosem dat přes síť. 
-- **Rychlý přístup** – poslední soubory ukládá do mezipaměti z důvodu rychlého přístupu k místním souborům.  
+- **Rychlý přístup a sazby za příjem vysokou dat během pracovní doby** – brána dat pole má místní mezipaměti, který definujete jako místní kapacita velikost při zřizování virtuálního zařízení. Velikost datového disku by měl uvést jak je uvedeno [minimální požadavky na virtuální zařízení](data-box-gateway-system-requirements.md#specifications-for-the-virtual-device). Místní mezipaměť poskytuje následující výhody:
+    - Místní mezipaměť umožňuje příjem dat vysokou rychlostí. Při vysoké množství data ingestují během pracovní doby ve špičce, můžete mezipaměti uchování dat a nahrajte ho do cloudu.
+    - Místní mezipaměť umožňuje rychlý přístup ke čtení až do určité prahové hodnoty. Než se zařízení 50 až 60 % plný, všechny operace čtení ze zařízení jsou přístupné z mezipaměti, díky kterým jsou rychlejší. Jakmile se využité místo na zařízení překročí tuto prahovou hodnotu, zařízení spustí odstranit místní soubory. 
+ 
 - **Využití omezené šířky pásma** – data lze zapisovat do Azure, i když je síť omezena, aby se snížilo využití během frekventované pracovní doby.  
 
 ## <a name="key-capabilities"></a>Klíčové funkce
@@ -67,7 +70,7 @@ Virtuální zařízení Data Box Gateway má následující specifikace:
 | Virtuální procesory (jádra)   | Minimálně 4 |            
 | Memory (Paměť)  | Minimálně 8 GB|
 | Dostupnost|Jeden uzel|
-| Disky| Disk operačního systému: 250 GB <br> Datový disk: minimálně 2 TB, dynamicky zřizovaný, musí být zálohován pomocí disků SSD|
+| Disky| Disk s operačním systémem: 250 GB <br> Datový disk: Minimálně 2 TB, dynamického zajišťování zřízené a musí být založená na jednotkách SSD|
 | Síťová rozhraní|1 nebo více rozhraní virtuální sítě|
 | Nativní protokoly pro sdílení souborů|SMB a NFS  |
 | Zabezpečení| Ověřování pro odemknutí přístupu k zařízení a datům <br> Přenášená data šifrovaný pomocí 256bitového šifrování AES|
@@ -107,7 +110,7 @@ Fyzické zařízení Data Box Edge, prostředek Azure a účet cílového úlož
     Oblasti, do kterých účty úložiště ukládají data služby Data Box, by se měly nacházet v blízkosti umístění zařízení, aby byl zajištěn optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si [systémové požadavky služby Data Box Gateway](data-box-gateway-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Gateway](data-box-gateway-limits.md).

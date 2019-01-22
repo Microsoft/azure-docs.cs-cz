@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: ef3d26112c631ee0ed3c754394339092020add53
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 327d38de8c51e01851e6f7d37fca73d4cee316b8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332536"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425301"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -265,7 +265,7 @@ Všechny aplikace logiky ve stejné oblasti používat stejné rozsahy IP adres.
 
 Pro podporu volání, která [konektorů spravovaných microsoftem](../connectors/apis-list.md) zkontrolujte nastavení brány firewall s *všechny* [odchozí](#outbound) IP adresy používané službou tyto konektory podle oblastí Pokud existují logic apps. Tyto adresy se zobrazí v rámci **odchozí** záhlaví v této části a jsou seřazeny podle oblasti. 
 
-Pro [Azure Government](/azure-government/documentation-government-welcome) a [Azure China 21Vianet](/azure/china/china-welcome), rezervované IP adresy pro konektory nejsou nyní k dispozici.
+Pro [Azure Government](/azure-government/documentation-government-overview) a [Azure China 21Vianet](/azure/china/china-welcome), rezervované IP adresy pro konektory nejsou nyní k dispozici.
 
 > [!IMPORTANT]
 > 

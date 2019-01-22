@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 3848e2caefbc8fdfb30f36272f1b13e120312a7c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185014"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439098"
 ---
 # <a name="load-balancer-outbound-rules"></a>Odchozí pravidla nástroje pro vyrovnávání zatížení
 
@@ -208,6 +208,7 @@ Při použití interní Load balanceru úrovně Standard, odchozí NAT není k d
 - Rozsah konfigurovatelné odchozí časový limit nečinnosti je 66 do 4 minut (240 až 4000 sekund).
 - Nástroj pro vyrovnávání zatížení nepodporuje protokol ICMP pro odchozí NAT.
 - Portál nelze použít ke konfiguraci nebo zobrazení odchozí pravidla.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
+- Odchozí pravidla lze použít pouze pro primární síťovou kartu a primární konfigurace IP adresy.
 
 ## <a name="next-steps"></a>Další postup
 

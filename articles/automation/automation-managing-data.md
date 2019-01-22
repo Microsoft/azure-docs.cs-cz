@@ -3,18 +3,18 @@ title: Správa dat Azure Automation
 description: Tento článek obsahuje více témat pro správu prostředí Azure Automation.  Nyní zahrnuje uchování dat a zálohování zotavení po havárii Azure Automation ve službě Azure Automation.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 05da900e9ddf4cbb99df5c6d62ddb569059e2c4b
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054615"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428473"
 ---
 # <a name="managing-azure-automation-data"></a>Správa dat Azure Automation
 Tento článek obsahuje více témat pro správu prostředí Azure Automation.
@@ -76,4 +76,5 @@ V následující tabulce jsou uvedeny párování k dispozici primární a sekun
 | Japonsko – východ |Japonsko – západ |
 
 V nepravděpodobném případě, že dojde ke ztrátě dat primární oblasti Microsoft se pokusí obnovit. Pokud není možné obnovit primární data, pak je provedena geo-převzetí služeb při selhání a ovlivněných bude zákazníky informovat o tom prostřednictvím svého předplatného.
+
 

@@ -8,14 +8,14 @@ ms.topic: sample
 ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: cb88645530f904bc35c70dfa12b09b76fcd1eb7c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 67ddcb977fc61e48ab06ccf732874208236664c9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985256"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430937"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Portál se samoobslužnou registrací pro spolupráci B2B služby Azure AD
 
@@ -29,7 +29,7 @@ Tento projekt na GitHubu ukazuje, jak můžou organizace použít rozhraní API,
 
 Tento kód je k dispozici jako ukázka použití rozhraní API pro pozvánky Azure Active Directory B2B. Váš tým vývojářů nebo partner by ho měl přizpůsobit a před nasazením do produkčního prostředí byste ho měli zkontrolovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 * [Licencování spolupráce B2B ve službě Azure AD](licensing-guidance.md)

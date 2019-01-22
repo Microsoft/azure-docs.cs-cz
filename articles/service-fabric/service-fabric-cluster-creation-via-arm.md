@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ba870cf722f95fb6516e1969350d3d25ba280a8c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 06e0509f05352a023651d7121aa89e18e375ef32
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043783"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428321"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Azure Resource Manageru 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Použijte následující příkaz rychle vytvořit cluster tak, že zadáte mini
 Následujícího příkazu můžete vytvořit buď Windows nebo Linux clusterů, je třeba zadat operačního systému odpovídajícím způsobem. Příkazy prostředí PowerShell nebo rozhraní příkazového řádku také výstupní certifikát v zadaném *CertificateOutputFolder*; nicméně, ujistěte se, že složka certifikát už vytvořili. Příkaz přijímá další parametry například skladovou Položku virtuálního počítače stejně.
 
 > [!NOTE]
-> Následující příkaz Powershellu funguje jenom s Azure Resource Manageru s prostředím PowerShell verze > 6.1. Zkontrolujte aktuální verzi Azure Powershellu pro Resource Manager verze, spusťte následující příkaz prostředí PowerShell "Get-Module AzureRM". Postupujte podle [tento odkaz](/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0) k upgradu verze Azure Powershellu pro Resource Manager. 
+> Následující příkaz Powershellu funguje jenom s Azure Resource Manageru s prostředím PowerShell verze > 6.1. Zkontrolujte aktuální verzi Azure Powershellu pro Resource Manager verze, spusťte následující příkaz prostředí PowerShell "Get-Module AzureRM". Postupujte podle [tento odkaz](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.3.0) k upgradu verze Azure Powershellu pro Resource Manager. 
 >
 >
 
@@ -292,7 +292,7 @@ V tomto okamžiku máte zabezpečeného clusteru v Azure. Dále [připojení k v
 Syntaxi JSON a vlastnosti, které chcete použít šablonu najdete v tématu [referenčními informacemi k šablonám Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template

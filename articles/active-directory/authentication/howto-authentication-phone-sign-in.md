@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: librown
-ms.openlocfilehash: b09bb65cdb571c9df95d1922f4132abe5b77907c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0179f87787c91a90edb54a1956a6f10d1dffc4b1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963943"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434185"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Přihlašování telefonem bez hesla pomocí aplikace Microsoft Authenticator (public preview)
 
@@ -37,16 +37,21 @@ Pro verzi public preview správce musíte nejprve přidat zásady pomocí powers
 
 ### <a name="steps-to-enable"></a>Postup povolení
 
-Ujistěte se, že máte nejnovější verzi modulu Azure Active Directory V2 PowerShell verze Public Preview. Možná budete chtít odinstalovat a znovu nainstalujte, potvrďte to spuštěním následujících příkazů:
+1. Ujistěte se, že máte nejnovější verzi modulu Azure Active Directory V2 PowerShell verze Public Preview. Možná budete chtít odinstalovat a znovu nainstalujte, potvrďte to spuštěním následujících příkazů:
+    ```powershell
+    Uninstall-Module -Name AzureADPreview
+    Install-Module -Name AzureADPreview
+    ```
 
-1. `Uninstall-Module -Name AzureADPreview`
-2. `Install-Module -Name AzureADPreview`
+2. Ověření do tenanta Azure AD, který chcete použít modul Azure AD V2 Powershellu. Použitý účet musí být buď správce zabezpečení nebo globální správce.
+    ```powershell
+    Connect-AzureAD
+    ```
 
-Můžete povolit bez hesla telefon přihlášení preview použijte následující příkazy Powershellu:
-
-1. `Connect-AzureAD`
-   1. V dialogovém okně pro ověření přihlašují účtem v tenantovi. Účet musí být buď správce zabezpečení nebo globální správce.
-1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+3. Vytvoření zásad ověřovací data přihlášení:
+    ```powershell
+    New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
+    ```
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak koncovým uživatelům povolit přihlašování telefonem?
 
@@ -64,7 +69,7 @@ Jakmile uživatel má účet MFA s nabízenými oznámeními v aplikaci Microsof
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="ad-fs-integration"></a>Integrace služby AD FS
+### <a name="ad-fs-integration"></a>AD FS Integration
 
 Když uživatel povolí přihlašovací údaje bez hesla, které Microsoft Authenticator, ověřování pro tohoto uživatele bude vždy ve výchozím nastavení odesílání oznámení o schválení. Tuto logiku zabraňuje uživatelům v tenantovi hybridní do AD FS pro ověřování přihlášení uživatele, s ohledem na další krok směrovat do příslušných klikněte na tlačítko "Místo toho použít heslo." Tento proces bude také vynechat všechny místní zásady podmíněného přístupu a toky předávací ověřování. Výjimkou z tohoto procesu je login_hint je-li zadána, uživatel bude automaticky se službou AD FS a vynechat možnost použití přihlašovacích údajů bez hesla.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aef88a4fbc7d71ee1438333afd9773d1aba3ed9c
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 519b9e73e63285f167fca76061f84752ff676916
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359149"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431499"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
@@ -81,7 +81,7 @@ V této části vytvoříte kanál sestavení, která je nakonfigurována na aut
     
     ![Konfigurace úlohy bitové kopie modulu sestavení](./media/how-to-ci-cd/build-and-push.png)
 
-1. Ve druhém **Azure IoT Edge** úkolů, aktualizujte **zobrazovaný název** k **Azure IoT Edge – bitové kopie modulu nabízených**a v **akce** rozevíracího seznamu Vyberte možnost **Push bitové kopie modulu**. Zvolte typ registru kontejneru, ujistěte se, že nakonfigurujete a vyberte stejné registr ve vaší code(module.json). V **. soubor template.json** ovládací prvek, vyberte **deployment.template.json** soubor, který popisuje vaše řešení IoT Edge. Klikněte na tlačítko **výchozí platformu**, ujistěte se, že vyberete stejnou platformu pro vaše Image sestavené modulu. Tato úloha zařadí všechny bitové kopie modulu do registru kontejneru, který jste vybrali. A také přidat přihlašovací údaje registru kontejneru v **deployment.json** souboru, cesta k souboru můžete najít ve výstupní proměnné. Nastavte alias na `edge` pro tuto proměnnou. Pokud máte více registrů kontejnerů k hostování vaší bitové kopie modulu, budete muset Duplikovat tuto úlohu, vyberte jiný registr kontejneru a použijte **obejít modulu nebo modulech** v upřesňujících nastaveních obejít imagí, které nejsou pro tuto konkrétního registru.
+1. Ve druhém **Azure IoT Edge** úkolů, aktualizujte **zobrazovaný název** k **Azure IoT Edge – bitové kopie modulu nabízených**a v **akce** rozevíracího seznamu Vyberte možnost **Push bitové kopie modulu**. Zvolte typ registru kontejneru, ujistěte se, že nakonfigurujete a vyberte stejné registr ve vaší code(module.json). V **. soubor template.json** ovládací prvek, vyberte **deployment.template.json** soubor, který popisuje vaše řešení IoT Edge. Klikněte na tlačítko **výchozí platformu**, ujistěte se, že vyberete stejnou platformu pro vaše Image sestavené modulu. Tato úloha zařadí všechny bitové kopie modulu do registru kontejneru, který jste vybrali. A také přidat přihlašovací údaje registru kontejneru v **deployment.json** souboru. Pokud máte více registrů kontejnerů k hostování vaší bitové kopie modulu, budete muset Duplikovat tuto úlohu, vyberte jiný registr kontejneru a použijte **obejít modulu nebo modulech** v upřesňujících nastaveních obejít imagí, které nejsou pro tuto konkrétního registru.
 
     ![Nakonfigurovat úlohu imagí modul nabízených oznámení](./media/how-to-ci-cd/push.png)
 

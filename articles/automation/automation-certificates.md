@@ -3,18 +3,18 @@ title: Prostředků certifikátů ve službě Azure Automation
 description: Certifikáty můžete bezpečně uložená ve službě Azure Automation, takže jsou dostupné sady runbook nebo konfigurace DSC k ověřování vůči Azure a materiály třetích stran.  Tento článek vysvětluje podrobnosti certifikátů a jak pracovat s nimi v textové a grafické vytváření obsahu.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d91a7ba8d2c05e2d24738764438ce91325743699
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 714bf5f915cb588a99552a8bbbc5ffa76aa16846
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330853"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426127"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Prostředků certifikátů ve službě Azure Automation
 
@@ -121,3 +121,4 @@ print cert
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o práci s odkazy na ovládací prvek logický tok vaše sada runbook je určené k provádění aktivit najdete v tématu [odkazy v vytváření grafického obsahu](automation-graphical-authoring-intro.md#links-and-workflow). 
+

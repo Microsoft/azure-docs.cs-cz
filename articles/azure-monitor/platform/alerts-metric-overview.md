@@ -6,13 +6,13 @@ ms.author: snmuvva
 ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
-ms.component: alerts
-ms.openlocfilehash: 24d0965fa2a88bc844a81c7430d46c071a9b874b
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 40cf37c08705384fb664402c3d40efa229cbbcdf
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580038"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422792"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
 
@@ -52,7 +52,7 @@ Upozornění metrik ve službě Azure Monitor také podporovat monitorování n�
 - Cílový prostředek: myAppServicePlan
 - Metrika: Procento CPU
 - Dimenze
-  - Instance = InstanceName1 InstanceName2
+  - Instance = InstanceName1, InstanceName2
 - Časová agregace: Průměr
 - Období: Za posledních 5 minut.
 - Frekvence: 1 min.
@@ -122,10 +122,10 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 |Microsoft.Network/trafficManagerProfiles | Ano|
 |Microsoft.Search/searchServices | Ne|
 |Microsoft.ServiceBus/namespaces| Ne|
-|Microsoft.Storage/storageAccounts. | Ano|
+|Microsoft.Storage/storageAccounts | Ano|
 |Microsoft.StreamAnalytics/streamingjobs| Ano|
 |Microsoft.TimeSeriesInsights/environments | Ano|
-|Microsoft Web/serverových farem | Ano |
+|Microsoft Web/serverfarms | Ano |
 |Microsoft Weby (s výjimkou funkce) | Ano|
 |Microsoft Web/hostingEnvironments/multiRolePools | Ne|
 |Microsoft Web/hostingEnvironments/workerPools| Ne
@@ -136,3 +136,4 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 - [Zjistěte, jak vytvořit, zobrazit a spravovat upozornění metrik v Azure](alerts-metric.md)
 - [Zjistěte, jak nasadit upozornění na metriku pomocí šablony Azure Resource Manageru](../../azure-monitor/platform/alerts-metric-create-templates.md)
 - [Další informace o skupinách akcí](action-groups.md)
+

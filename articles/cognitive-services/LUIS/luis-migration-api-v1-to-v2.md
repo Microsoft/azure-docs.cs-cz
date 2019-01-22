@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9542fe14cc262731ca0f2ade65e6e4dfafbc34d7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138819"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427504"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Rozhraní API v1 na v2 Průvodce migrací pro aplikace LUIS
 Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) jsou zastaralé rozhraní API. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
@@ -112,7 +112,7 @@ Klíč předplatného koncový bod rozhraní API jsou zastaralé, vrací 410 GON
 |1|/luis/V1.0/Prog/subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [klíče koncového bodu](luis-how-to-azure-subscription.md) se generují na portálu Azure portal. Přiřazení klíče na aplikaci LUIS na **[publikovat](luis-how-to-manage-keys.md)** stránky. Nepotřebujete vědět, skutečná hodnota klíče. Služba LUIS přiřazení pomocí názvu předplatného. 
+Azure [klíče koncového bodu](luis-how-to-azure-subscription.md) se generují na portálu Azure portal. Přiřazení klíče na aplikaci LUIS na **[publikovat](luis-how-to-azure-subscription.md)** stránky. Nepotřebujete vědět, skutečná hodnota klíče. Služba LUIS přiřazení pomocí názvu předplatného. 
 
 ## <a name="new-versioning-route"></a>Novou trasu správy verzí
 V2 model je teď součástí [verze](luis-how-to-manage-versions.md). Název verze byla 10 znaků v této trase. Výchozí verze je "0.1".

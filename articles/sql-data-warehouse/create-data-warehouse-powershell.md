@@ -10,20 +10,20 @@ ms.component: manage
 ms.date: 11/15/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 60bd7cc2084ce64477cf89a5fd28d9a505fbfbfb
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 22ccc11d1eb74fd868fd740f02311baeb5ac5987
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852635"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433607"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Vytvoření a dotazování služby Azure SQL data warehouse pomocí Azure Powershellu
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Vytvořit a dotazovat službu Azure SQL data warehouse pomocí Azure Powershellu
 
 Rychle vytvořte službu Azure SQL data warehouse pomocí Azure Powershellu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Tento kurz vyžaduje modul Azure PowerShell verze 5.1.1 nebo novější. To, jakou verzi aktuálně používáte, zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Tento kurz vyžaduje modul Azure PowerShell verze 5.1.1 nebo novější. To, jakou verzi aktuálně používáte, zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
 
 
 > [!NOTE]
@@ -31,7 +31,7 @@ Tento kurz vyžaduje modul Azure PowerShell verze 5.1.1 nebo novější. To, jak
 >
 >
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k předplatnému Azure pomocí [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) příkaz a postupujte podle pokynů na obrazovce pokynů.
 
@@ -122,16 +122,16 @@ New-AzureRmSqlDatabase `
 
 Požadované parametry jsou:
 
-* **RequestedServiceObjectiveName**: množství [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) se požaduje. Zvýšení tato částka zvyšuje náklady na výpočetní prostředky. Seznam podporovaných hodnot naleznete v tématu [omezení paměti a souběžnosti](memory-and-concurrency-limits.md).
-* **DatabaseName**: název služby SQL Data Warehouse, kterou vytváříte.
-* **ServerName**: název serveru, který používáte pro vytváření.
-* **Název skupiny prostředků**: Skupina prostředků, které používáte. K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
-* **Edition:** Aby bylo možné vytvořit SQL Data Warehouse, je nutné nastavit edici DataWarehouse.
+* **RequestedServiceObjectiveName**: Množství [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) se požaduje. Zvýšení tato částka zvyšuje náklady na výpočetní prostředky. Seznam podporovaných hodnot naleznete v tématu [omezení paměti a souběžnosti](memory-and-concurrency-limits.md).
+* **DatabaseName**: Název služby SQL Data Warehouse, kterou vytváříte.
+* **ServerName**: Název serveru, který používáte pro vytváření.
+* **ResourceGroupName**: Skupina prostředků, které používáte. K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
+* **Edice**: Musí být "Datových skladů" k vytvoření SQL Data Warehouse.
 
 Volitelné parametry jsou:
 
-- **CollationName:** Pokud není uvedeno, je výchozí kolace SQL_Latin1_General_CP1_CI_AS. Kolaci nejde změnit na databázi.
-- **MaxSizeBytes:** Výchozí maximální velikost databáze je 10 GB.
+- **%{Collationname/**: Výchozí kolace, pokud není zadán, je SQL_Latin1_General_CP1_CI_AS. Kolaci nejde změnit na databázi.
+- **MaxSizeBytes**: Výchozí maximální velikost databáze je 10 GB.
 
 Další informace o možných parametrech najdete v tématu [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase).
 

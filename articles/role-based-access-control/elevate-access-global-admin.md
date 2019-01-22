@@ -1,6 +1,6 @@
 ---
-title: Zvýšení úrovně přístupu pro globálního správce ve službě Azure Active Directory | Dokumentace Microsoftu
-description: Popisuje postup zvýšení úrovně přístupu pro globální správce v Azure Active Directory pomocí webu Azure portal nebo rozhraní REST API.
+title: Zvýšení úrovně přístupu ke správě všech předplatných Azure a skupiny pro správu | Dokumentace Microsoftu
+description: Popisuje postup zvýšení úrovně přístupu pro globální správce ke správě všech předplatných a skupin pro správu v Azure Active Directory pomocí webu Azure portal nebo rozhraní REST API.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,32 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321661"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437466"
 ---
-# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Zvýšení úrovně přístupu pro globálního správce ve službě Azure Active Directory
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení úrovně přístupu ke správě všech předplatných Azure a skupiny pro správu
 
-Pokud jste [globálního správce](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) ve službě Azure Active Directory (Azure AD), může nastat situace, kdy budete chtít provést následující:
-
-- Pokud uživatel ztratí přístup znovu získat přístup k předplatnému Azure
-- Udělit jiným uživatelem nebo sami přístup k předplatnému Azure
-- Zobrazit všechna předplatná Azure v rámci organizace
-- Povolit přístup všech předplatných Azure k automatizace aplikace (jako je například aplikace auditování nebo fakturace)
-
-Tento článek popisuje různé způsoby, můžete zvýšit váš přístup ve službě Azure AD.
+Jako globální správce ve službě Azure Active Directory (Azure AD) nebudete mít přístup ke všem předplatných a skupin pro správu ve vašem adresáři. Tento článek popisuje způsoby, můžete zvýšit váš přístup na všechna předplatná a skupiny pro správu.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="overview"></a>Přehled
+## <a name="why-would-you-need-to-elevate-your-access"></a>Proč potřebují k rozvoji vaší přístup?
 
-Azure AD a prostředky Azure jsou zabezpečené nezávisle na sobě navzájem. To znamená přiřazení role Azure AD bez možnosti udělovat přístup k prostředkům Azure, a přiřazení Azure role bez možnosti udělovat přístup ke službě Azure AD. Ale pokud jste globální správce ve službě Azure AD, můžete přiřadit sami přístup ke všem předplatným Azure a skupiny pro správu ve vašem adresáři. Tuto funkci použijte, pokud nemáte přístup k prostředkům předplatného Azure, jako jsou virtuální počítače nebo účty úložiště, a chcete použít k získání přístupu k těmto prostředkům vaše oprávnění globálního správce.
+Pokud jste globální správce, může nastat situace, kdy chcete provést následující kroky:
+
+- Pokud uživatel ztratí přístup jak opět získat přístup do Azure předplatné nebo skupinu pro správu
+- Udělit jiným uživatelem nebo sami přístup do Azure předplatné nebo skupinu pro správu
+- Zobrazit všechna předplatná Azure nebo skupiny pro správu v organizaci
+- Povolit aplikaci služby automation (jako je například aplikace auditování nebo fakturace) pro přístup k Všechna předplatná Azure nebo skupiny pro správu
+
+## <a name="how-does-elevate-access-work"></a>Jak zvýšit přístup do práce?
+
+Azure AD a prostředky Azure jsou zabezpečené nezávisle na sobě navzájem. To znamená přiřazení role Azure AD bez možnosti udělovat přístup k prostředkům Azure, a přiřazení Azure role bez možnosti udělovat přístup ke službě Azure AD. Ale pokud jste [globálního správce](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) ve službě Azure AD, můžete přiřadit sami přístup ke všem předplatným Azure a skupiny pro správu ve vašem adresáři. Tuto funkci použijte, pokud nemáte přístup k prostředkům předplatného Azure, jako jsou virtuální počítače nebo účty úložiště, a chcete použít k získání přístupu k těmto prostředkům vaše oprávnění globálního správce.
 
 Když je zvýšení úrovně přístupu, se vám přidělí [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) role v Azure na kořenového oboru (`/`). To umožňuje zobrazit všechny prostředky a přiřadit přístup v libovolné předplatné nebo skupinu pro správu v adresáři. Přiřazení rolí správce uživatelských přístupů lze odebrat pomocí Powershellu.
 
@@ -65,9 +67,19 @@ Použijte následující postup zvýšení úrovně přístupu pro globálního 
 
 1. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-   Toto nastavení se nenachází ve vlastnosti globální a platí jenom pro aktuálně přihlášeného uživatele.
+   Toto nastavení se nenachází ve vlastnosti globální a platí jenom pro aktuálně přihlášeného uživatele. Nelze zvýšení úrovně přístupu pro všechny členy rolí globálního správce.
 
-1. Provádění úloh, které je třeba provést na přístup se zvýšeným oprávněním. Jakmile budete hotovi, nastavte přepínač zpět **ne**.
+1. Odhlaste se a znovu se přihlaste k aktualizaci vašeho přístupu.
+
+    Nyní byste měli mít přístup ke všem předplatných a skupin pro správu ve vašem adresáři. Můžete si všimnout, že mají přiřazenou roli správce uživatelských přístupů na kořenového oboru.
+
+   ![Přiřazení rolí předplatné s kořenového oboru – snímek obrazovky](./media/elevate-access-global-admin/iam-root.png)
+
+1. Změny, které je třeba provést na přístup se zvýšeným oprávněním.
+
+    Informace o přiřazování rolí najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](role-assignments-portal.md). Pokud používáte Azure AD Privileged Identity Management (PIM), přečtěte si téma [prostředků zjistit Azure ke správě v PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) nebo [role prostředků Azure přiřadit v PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+
+1. Jakmile budete hotovi, nastavte **Access management pro prostředky Azure** přepnete zpět do **ne**. Vzhledem k tomu, že toto je uživatelská nastavení, které musíte být přihlášeni pod stejným uživatelem používala pro zvýšení úrovně přístupu.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -89,16 +101,22 @@ RoleDefinitionName : User Access Administrator
 RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
 ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
+CanDelegate        : False
 ```
 
 ### <a name="remove-a-role-assignment-at-the-root-scope-"></a>Odebrání přiřazení role v kořenovém oboru (/)
 
-Chcete-li odebrat přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) příkazu.
+Chcete-li odebrat přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), postupujte podle těchto kroků.
 
-```azurepowershell
-Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
-  -RoleDefinitionName "User Access Administrator" -Scope "/"
-```
+1. Přihlaste se jako uživatel, který může odebrat přístup se zvýšeným oprávněním. Může to být stejný uživatel, který byl použitý ke zvýšení oprávnění přístupu nebo jiného globálního správce se zvýšenými oprávněními přístup v kořenovém oboru.
+
+
+1. Použití [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) příkaz pro odebrání přiřazení role správce přístupu uživatelů.
+
+    ```azurepowershell
+    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+      -RoleDefinitionName "User Access Administrator" -Scope "/"
+    ```
 
 ## <a name="rest-api"></a>REST API
 

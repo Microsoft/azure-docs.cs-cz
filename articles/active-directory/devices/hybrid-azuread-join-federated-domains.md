@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f904690187f6f2b020cb9cc32f9a20712d8bb53
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: baf38b2bb82be06963828e6ad80d958592ac6e99
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107561"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435766"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace připojení k hybridní službě Azure Active Directory službě u federovaných domén
 
@@ -73,11 +73,11 @@ Postup konfigurace v tomto článku vychází z tohoto průvodce. Pokud máte na
 
 Pro hybridní připojení k Azure AD je potřeba, aby zařízení měla ze sítě vaší organizace přístup k následujícím prostředkům Microsoftu:  
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
+- https\://enterpriseregistration.windows.net
+- https\://login.microsoftonline.com
+- https\://device.login.microsoftonline.com
 - Služba tokenů zabezpečení vaší organizace (federované domény)
-- https://autologon.microsoftazuread-sso.com (Pokud využíváte bezproblémové jednotné přihlašování nebo to plánujete)
+- HTTPS\://autologon.microsoftazuread-sso.com (Pokud používáte nebo plánujete použít bezproblémové jednotné přihlašování)
 
 Od verze Windows 10 1803 platí, že pokud se nezdaří okamžité připojení k hybridní službě Azure AD pro federované domény, jako je AD FS, využíváme Azure AD Connect k synchronizaci objektu počítače v Azure AD a ten se potom použije k dokončení registrace zařízení pro připojení k hybridní službě Azure AD.
 

@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.component: alerts
-ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: b8252e6575ec7acb46fb69563720cc38796964ce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584296"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425064"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat upozornění na metriku pomocí Azure monitoru
 
@@ -117,13 +117,13 @@ V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla
 6. Metriky pravidlo upozornění pomocí následujícího příkazu můžete zakázat.
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} -enabled false
+    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --enabled false
     ```
 
 7. Metriky pravidlo upozornění pomocí následujícího příkazu můžete odstranit.
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} -enabled false
+    az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
 
 ## <a name="next-steps"></a>Další postup
@@ -131,3 +131,4 @@ V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla
 - [Vytvoření upozornění na metriku pomocí šablony Azure Resource Manageru](../../azure-monitor/platform/alerts-enable-template.md).
 - [Vysvětlení, jak metrika výstrahy pracovní](alerts-metric-overview.md).
 - [Pochopení schématu webových hook pro upozornění na metriku](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+

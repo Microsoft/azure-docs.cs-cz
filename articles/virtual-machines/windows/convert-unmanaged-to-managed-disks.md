@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 26ddc1df8353a8a8b0e0c54a0c906c8d8b6b45b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fecf17d95231cc37a141cfb72397f44ce2e980b5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495342"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435596"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na managed disks
 
 Pokud máte existující Windows virtuální počítače (VM), které používají nespravované disky virtuálních počítačů určených k použití spravovaných disků prostřednictvím můžete převést [Azure Managed Disks](managed-disks-overview.md) služby. Tento proces převede disk s operačním systémem i všechny připojené datové disky.
 
-V tomto článku se dozvíte, jak převést virtuální počítače pomocí Azure Powershellu. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/install-azurerm-ps).
+V tomto článku se dozvíte, jak převést virtuální počítače pomocí Azure Powershellu. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/azurerm/install-azurerm-ps).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 
 * Kontrola [naplánovat migraci do služby Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).

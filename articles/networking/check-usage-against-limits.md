@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: d57f34da261d51707caf499bfdf1fffa344b72a9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0b15861f663c98d3b873f95a0ea6c485ada91fb6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385511"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421602"
 ---
 # <a name="check-resource-usage-against-limits"></a>Kontrola využití prostředků proti omezení
 
@@ -34,9 +34,9 @@ V tomto článku se dozvíte, jak můžete zobrazit počet každý typ síťové
 4. Vyberte název předplatného, které chcete zobrazit informace o využití.
 5. V části **nastavení**vyberte **kvóty a využití**.
 6. Můžete vybrat následující možnosti:
-    - **Typy prostředků**: můžete vybrat všechny typy prostředků nebo vyberte konkrétní typy prostředků, které chcete zobrazit.
-    - **Poskytovatelé**: můžete vybrat všechny poskytovatele prostředků nebo vyberte **Compute**, **sítě**, nebo **úložiště**.
-    - **Umístění**: můžete vybrat všech umístěních Azure, nebo vybrat konkrétní umístění.
+    - **Typy prostředků**: Můžete vybrat všechny typy prostředků nebo vyberte konkrétní typy prostředků, které chcete zobrazit.
+    - **Poskytovatelé**: Můžete vybrat všechny poskytovatele prostředků nebo vyberte **Compute**, **sítě**, nebo **úložiště**.
+    - **Umístění**: Můžete vybrat všech umístěních Azure, nebo vybrat konkrétní umístění.
     - Můžete vybrat, chcete-li zobrazit všechny prostředky nebo jenom prostředky, ve kterém je nasazená alespoň jeden.
 
     Příklad na následujícím obrázku zobrazuje všechny síťových prostředků pomocí nejméně jeden prostředek nasazený v oblasti východní USA:
@@ -47,7 +47,7 @@ V tomto článku se dozvíte, jak můžete zobrazit počet každý typ síťové
 
 ## <a name="powershell"></a>PowerShell
 
-Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Při spuštění PowerShell z počítače, je nutné *AzureRM* modul prostředí PowerShell, verze 6.0.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` v počítači nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzureRmAccount` se přihlaste k Azure.
+Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Při spuštění PowerShell z počítače, je nutné *AzureRM* modul prostředí PowerShell, verze 6.0.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` v počítači nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzureRmAccount` se přihlaste k Azure.
 
 Zobrazit využití proti omezení s [Get-AzureRmNetworkUsage](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0). Následující příklad získá využití prostředků, kde je nasazený aspoň jeden prostředek v umístění východní USA:
 

@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: d89c5a3f2545edd7c02b67fa9d2e2b78937a9791
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: c8d1f659078a36bc57e92b01e6e32502be7a0ea9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779526"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434746"
 ---
-# <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Kurz: Diagnostika potíží s komunikací mezi sítěmi na portálu Azure Portal
+# <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Kurz: Diagnostika potíží s komunikací mezi sítěmi pomocí webu Azure portal
 
 Brána virtuální sítě připojuje virtuální síť Azure k místní síti nebo k jiné virtuální síti. V tomto kurzu se naučíte:
 
@@ -36,12 +36,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat diagnostiku VPN, musí být spuštěná brána VPN. Pokud bránu VPN pro diagnostiku ještě nepoužíváte, můžete ji nasadit pomocí [skriptu PowerShellu](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skript PowerShellu můžete spustit z těchto umístění:
-    - **Místní instalace PowerShellu**: Skript vyžaduje modul AzureRM PowerShell verze 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, podívejte se na článek o [instalaci Azure PowerShellu](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
-    - **Azure Cloud Shell**: Služba [Azure Cloud Shell](https://shell.azure.com/powershell) má nainstalovanou a nakonfigurovanou nejnovější verzi PowerShellu a přihlásí vás k Azure.
+    - **V místně nainstalovaném Powershellu**: Tento skript vyžaduje modul AzureRM PowerShell verze 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, podívejte se na článek o [instalaci Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+    - **Azure Cloud Shell**: [Azure Cloud Shell](https://shell.azure.com/powershell) má nejnovější verzi prostředí PowerShell nainstalovaný a nakonfigurovaný a protokoly můžete do Azure.
 
 Vytvoření brány VPN pomocí tohoto skriptu trvá přibližně hodinu. Ve zbývajících krocích se předpokládá, že diagnostikovanou bránou je brána nasazená pomocí tohoto skriptu. Pokud tedy diagnostikujete jinou vlastní bránu, výsledky se budou lišit.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -107,7 +107,7 @@ Pokud jste vytvořili bránu VPN pomocí skriptu uvedeného v části [Požadavk
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *TestRG1* a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli, jak diagnostikovat potíže s bránou virtuální sítě. Síťovou komunikaci do a z virtuálního počítače můžete protokolovat, aby bylo možné v protokolu vyhledávat anomálie. Postup najdete v dalším kurzu.
 

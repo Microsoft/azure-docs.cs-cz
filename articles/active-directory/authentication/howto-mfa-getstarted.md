@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: bd2f796ab2feee4bb862d8de2c44efc742163f06
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1a5a5dc04f9ac663fe2e29fd81df5201435c1bc1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167524"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430158"
 ---
-# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Nasazení cloudového ověřování Azure Multi-Factor Authentication
+# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Nasadit cloudovou službu Azure Multi-Factor Authentication
 
 Začínáme se službou Azure Multi-Factor Authentication (Azure MFA) je jednoduchý proces.
 
@@ -74,14 +74,14 @@ Než povolíte ověřování Azure Multi-Factor Authentication, vaše organizace
 1. Zadejte výstižný název zásady.
 1. V části **uživatelů a skupin**:
    * Na **zahrnout** kartu, vyberte **všichni uživatelé** přepínací tlačítko
-   * DOPORUČENO: Na **vyloučit** kartu, zaškrtněte políčko u **uživatelů a skupin** a zvolte skupinu, která má být použit pro vyloučení, když uživatelé nebudou mít přístup ke své metody ověřování.
+   * DOPORUČENÉ: Na **vyloučit** kartu, zaškrtněte políčko u **uživatelů a skupin** a zvolte skupinu, která má být použit pro vyloučení, když uživatelé nebudou mít přístup ke své metody ověřování.
    * Klikněte na **Done** (Hotovo).
 1. V části **cloudové aplikace**, vyberte **všechny cloudové aplikace** přepínač.
-   * VOLITELNĚ: Na **vyloučit** , vyberte cloudové aplikace, které vaše organizace nevyžaduje vícefaktorové ověřování pro.
+   * VOLITELNĚ MŮŽETE: Na **vyloučit** , vyberte cloudové aplikace, které vaše organizace nevyžaduje vícefaktorové ověřování pro.
    * Klikněte na **Done** (Hotovo).
 1. V části **podmínky** části:
-   * VOLITELNĚ: Pokud jste povolili službu Azure Identity Protection, můžete vyhodnotit riziko přihlášení jako součást této zásady.
-   * VOLITELNĚ: Pokud jste nakonfigurovali důvěryhodných umístění nebo pojmenovaná umístění, můžete zahrnout nebo vyloučit ze zásad těchto umístěních.
+   * VOLITELNĚ MŮŽETE: Pokud jste povolili službu Azure Identity Protection, můžete vyhodnotit riziko přihlášení jako součást této zásady.
+   * VOLITELNĚ MŮŽETE: Pokud jste nakonfigurovali důvěryhodných umístění nebo pojmenovaná umístění, můžete zahrnout nebo vyloučit ze zásad těchto umístěních.
 1. V části **udělení**, ujistěte se, že **udělit přístup** je přepínač vybrán.
     * Zaškrtněte políčko u **vyžadovat vícefaktorové ověřování**.
     * Klikněte na **Vybrat**.

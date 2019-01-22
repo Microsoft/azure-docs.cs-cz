@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.component: alerts
-ms.openlocfilehash: c1bcbf1245ef3256ceb1db098d6bcb014c7cd155
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.subservice: alerts
+ms.openlocfilehash: 36be305e60806ba2cdea260fc46bc329c43284cb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382025"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429782"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Dotazy na výstrahy protokolu ve službě Azure Monitor
 [Upozornění pravidla založená na protokoly Azure monitoru](alerts-unified-log.md) v pravidelných intervalech spouští, proto měli byste zajistit, že se zapisují pro minimalizaci režie a latenci. Tento článek obsahuje doporučení pro psaní efektivní dotazy na výstrahy protokolu a proces pro převod existujících dotazů. 
@@ -222,3 +222,4 @@ on Hour
 ## <a name="next-steps"></a>Další postup
 - Další informace o [upozornění protokolů](alerts-log.md) ve službě Azure Monitor.
 - Další informace o [protokolu dotazy](../log-query/log-query-overview.md).
+

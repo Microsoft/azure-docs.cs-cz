@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b69cc0bcff8f791e0740b30f5521a2a7b36af3b1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329765"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437653"
 ---
 # <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>Migrace klasického virtuálního počítače pro použití spravovaného disku 
 
@@ -93,7 +93,7 @@ Příprava aplikace pro výpadek. Pokud chcete provést čistou migrace, je nutn
 
 Příprava aplikace pro výpadek. Pokud chcete provést čistou migrace, je nutné zastavit veškeré zpracování v aktuálním systému. Teprve pak můžete získat do konzistentního stavu, které můžete migrovat na novou platformu. Doba trvání výpadku závisí množství dat na discích, které chcete migrovat.
 
-Tato část vyžaduje modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Musíte také spustit příkaz `Connect-AzureRmAccount`, abyste vytvořili připojení k Azure.
+Tato část vyžaduje modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Musíte také spustit příkaz `Connect-AzureRmAccount`, abyste vytvořili připojení k Azure.
 
 
 Vytváření proměnných pro společné parametry.

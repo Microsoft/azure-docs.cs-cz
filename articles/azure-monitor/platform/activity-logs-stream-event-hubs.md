@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: b58b7c7ebc3547153f805f762c4caf3511a5a709
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717497"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429765"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream protokolů aktivit Azure do služby Event Hubs
 Můžete Streamovat [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) téměř v reálném čase pro libovolné aplikace buď:
@@ -84,7 +84,7 @@ Pokud profil protokolu již existuje, musíte nejprve odstranit stávající pro
    Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
-### <a name="via-azure-cli"></a>Prostřednictvím rozhraní příkazového řádku Azure
+### <a name="via-azure-cli"></a>Via Azure CLI
 Pokud profil protokolu již existuje, musíte nejprve odstranit stávající profilu protokolu a potom vytvořit nový profil protokolu.
 
 1. Použití `az monitor log-profiles list` a zjistěte, jestli existuje profil protokolu.
@@ -102,4 +102,5 @@ Schéma pro protokol aktivit je k dispozici v [monitorovat aktivitu předplatné
 * [Archivace protokolu aktivit do účtu úložiště](../../azure-monitor/platform/archive-activity-log.md)
 * [Přečtěte si přehled protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md)
 * [Nastavte si výstrahy na základě události protokolu aktivit](../../azure-monitor/platform/alerts-log-webhook.md)
+
 

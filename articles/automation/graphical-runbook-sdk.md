@@ -3,18 +3,18 @@ title: Přehled runbooku Azure Automation Grpahical SDK
 description: Tento článek popisuje, jak použít SDK grafického Runbooku Azure Automation
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 702af8311887afc94e7127704d3377e944503324
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: bc9f1feff6d8d45e52c8621d1ec4b36e0a4a4a76
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239853"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434253"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Použití Azure Automation grafický runbook SDK
 
@@ -103,7 +103,7 @@ Aktivity jsou implementované následující třídy v `Orchestrator.GraphRunboo
 |WorkflowScriptActivity     | Provede blok kódu Powershellu nebo pracovním postupu Powershellu (v závislosti na typu runbook) v rámci dané sady runbook. Jedná se o výkonný nástroj, ale je nadměrně: uživatelské rozhraní se zobrazí tento blok skriptu jako text. prováděcí modul bude považovat za zadaný blok černé políčko a způsobí, že žádné pokusy o analyzovat obsah, s výjimkou kontrola základní syntaxe. Pokud chcete vyvolat jediný příkaz Powershellu, raději CommandActivity.        |
 
 > [!NOTE]
-> Vaše vlastní aktivity není odvozena od třídy zadané: Azure Automation, nebude možné používat vlastní aktivity sady runbook.
+> Není odvozen vaše vlastní aktivity ze zadané třídy: Azure Automation, nebude možné používat vlastní aktivity sady runbook.
 
 Parametry CommandActivity a InvokeRunbookActivity musí zadat jako hodnotu popisovače, ne přímým přístupem hodnoty. Hodnota popisovače zadejte vytváření skutečný parametr hodnoty. Následující hodnota popisovače jsou aktuálně k dispozici:
 
@@ -119,7 +119,7 @@ Parametry CommandActivity a InvokeRunbookActivity musí zadat jako hodnotu popis
 |PowerShellExpressionValueDescriptor     | Určuje Powershellový výraz volného tvaru, který se vyhodnotí pouze před vyvoláním aktivity.  <br/>Jedná se o výkonný nástroj, ale je nadměrně: uživatelské rozhraní se zobrazí tento výraz jako text. prováděcí modul bude považovat za zadaný blok černé políčko a způsobí, že žádné pokusy o analyzovat obsah, s výjimkou kontrola základní syntaxe. Pokud je to možné, upřednostňují konkrétnější hodnotu popisovače.      |
 
 > [!NOTE]
-> Vlastní hodnota popisovače není odvozena od třídy zadané: použití sad runbook s vlastní hodnotou popisovače typů nebude možné Azure Automation.
+> Vlastní hodnota popisovače z neodvozuje zadané třídy: Použití sad runbook s vlastní hodnotou popisovače typů nebude možné Azure Automation.
 
 Vytvoření instance odkazy připojení aktivit a jejich přidání do sady runbook:
 
@@ -146,3 +146,4 @@ Serializovaný formát může změnit v budoucích verzích `Orchestrator.GraphR
 ## <a name="next-steps"></a>Další postup
 
 Další informace o grafické Runbooky ve službě Azure Automation najdete v tématu [vytváření grafického obsahu Úvod](automation-graphical-authoring-intro.md)
+

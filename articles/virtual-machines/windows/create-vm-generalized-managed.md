@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8acbb33b396aa617936eb0333bd68fea60532425
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c452341567055e0272c8e6a90c43d6b886d6a928
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404652"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425590"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
@@ -43,7 +43,7 @@ Před vytvořením nového virtuálního počítače, budete muset [vytvoření 
 
 Můžete použít PowerShell k vytvoření virtuálního počítače z image pomocí zjednodušené sady parametrů [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) rutiny. Na obrázku musí být ve stejné skupině prostředků, kde vytvoříte virtuální počítač.
 
-Tento příklad vyžaduje AzureRM modulu verze 5.6.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento příklad vyžaduje AzureRM modulu verze 5.6.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 Zjednodušené sady parametrů pro [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) vyžaduje pouze, že zadáte název, skupinu prostředků a název image vytvořit virtuální počítač z bitové kopie. New-AzureRmVm použije hodnotu **– název** parametr jako název všech prostředků, které se vytvoří automaticky. V tomto příkladu budeme poskytovat podrobnější názvy pro všechny prostředky ale nechat rutiny automaticky vytvořit. Můžete také vytvořit prostředky předem, jako je například virtuální síť a předat název prostředku do rutiny. New-AzureRmVm použije stávající prostředky, pokud jej lze najít podle názvu.
 

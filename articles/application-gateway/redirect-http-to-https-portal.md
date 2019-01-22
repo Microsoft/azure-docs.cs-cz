@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/7/2018
 ms.author: victorh
-ms.openlocfilehash: a10314d4c396298f018459e56252d0d0d1656f08
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c27c31bc2f21cfae9036849973301a66a437de42
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107782"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435237"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření služby application gateway s protokolem HTTP na HTTPS přesměrování pomocí webu Azure portal
 
@@ -29,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější vytvořit certifikát a nainstalovat službu IIS. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Login-AzureRmAccount` vytvořit připojení k Azure.
+Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější vytvořit certifikát a nainstalovat službu IIS. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Login-AzureRmAccount` vytvořit připojení k Azure.
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 

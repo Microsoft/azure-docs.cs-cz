@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 92c8de0961f64eea8eef830ad99c7baa268099d9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c19275f096191a2d55c939cbc9b76e7ffc6e1b8b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007582"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424434"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Ve verzi Preview: Azure AD hesla ochranu provozní postupy
+# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Verze Preview: Azure AD hesla ochranu provozní postupy
 
 |     |
 | --- |

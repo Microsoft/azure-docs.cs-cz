@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae090a8cd812868f63c9805b2f5b59769a715090
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 638020ab4f64d800bd9d42f226cb36701720f8d0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975266"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427186"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Porozumění projevy vhodné pro aplikace LUIS
 
@@ -88,7 +88,7 @@ Pokud chcete ignorovat slova nebo interpunkčním znaménkem v příkladu uttera
 
 ## <a name="testing-utterances"></a>Testování projevy 
 
-Vývojáři by měla začínat testování jejich LUIS aplikace skutečný provozu odesláním projevy do [koncový bod předpovědi](luis-how-to-manage-keys.md) adresy URL. Tyto projevy, které se používají ke zlepšení výkonu záměry a entity, které [zkontrolujte projevy](luis-how-to-review-endoint-utt.md). Testy odeslané s webem služby LUIS testování podokně neodešlou prostřednictvím koncového bodu a proto se nepodílejí na aktivní učení. 
+Vývojáři by měla začínat testování jejich LUIS aplikace skutečný provozu odesláním projevy do [koncový bod předpovědi](luis-how-to-azure-subscription.md) adresy URL. Tyto projevy, které se používají ke zlepšení výkonu záměry a entity, které [zkontrolujte projevy](luis-how-to-review-endoint-utt.md). Testy odeslané s webem služby LUIS testování podokně neodešlou prostřednictvím koncového bodu a proto se nepodílejí na aktivní učení. 
 
 ## <a name="review-utterances"></a>Zkontrolujte projevy
 

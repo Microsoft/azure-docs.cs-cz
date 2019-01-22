@@ -3,18 +3,18 @@ title: Předávání Azure Automation stavu konfigurační data pro generování
 description: Tento článek ukazuje, jak odeslat Desired State Configuration (DSC) data z konfigurace stavu služby Azure Automation do Log Analytics k poskytování dalších přehledů a správu pro vytváření sestav.
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88805f26869ad75830cef1aa074cd90cb947e76f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2450ffcbd9fa7bebd5a1b862aa9c35baa5dbdc95
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681734"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425169"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav do služby Log Analytics
 
@@ -127,7 +127,7 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy ve sl
 | NodeName_s |Název spravovaných uzlů. |
 | NodeComplianceStatus_s |Určuje, zda je uzel kompatibilní. |
 | DscReportStatus |Kontrola dodržování předpisů, jestli proběhla úspěšně. |
-| ConfigurationMode | Jak tato konfigurace používá k uzlu. Možné hodnoty jsou __"ApplyOnly"__,__"ApplyandMonitior"__, a __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: aplikuje konfiguraci DSC a neprovede žádnou další akci, pokud nová konfigurace se vloží do cílového uzlu nebo když nová konfigurace se načítají ze serveru. Po počáteční použití nové konfigurace DSC nekontroluje odchylky od dříve nakonfigurované stavu. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyOnly__ projeví. </li><li> __ApplyAndMonitor__: Jedná se o výchozí hodnotu. LCM platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu sestavy DSC nesrovnalosti v protokolech. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyAndMonitor__ projeví.</li><li>__ApplyAndAutoCorrect__: platí všechny nové konfigurace DSC. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu DSC sestavy nesrovnalosti v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
+| ConfigurationMode | Jak tato konfigurace používá k uzlu. Možné hodnoty jsou __"ApplyOnly"__,__"ApplyandMonitior"__, a __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC aplikuje konfiguraci a neprovede žádnou další akci, pokud nová konfigurace se vloží do cílového uzlu nebo když nová konfigurace se načítají ze serveru. Po počáteční použití nové konfigurace DSC nekontroluje odchylky od dříve nakonfigurované stavu. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyOnly__ projeví. </li><li> __ApplyAndMonitor__: Toto je výchozí hodnota. LCM platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu sestavy DSC nesrovnalosti v protokolech. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyAndMonitor__ projeví.</li><li>__ApplyAndAutoCorrect__: DSC platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu DSC sestavy nesrovnalosti v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
 | HostName_s | Název spravovaných uzlů. |
 | IP adresa | Adresa IPv4 spravovaných uzlů. |
 | Kategorie | DscNodeStatus |
@@ -140,7 +140,7 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy ve sl
 | ReportEndTime_t |Datum a čas dokončení sestavy. |
 | NumberOfResources_d |Počet prostředků DSC se volá v konfiguraci použitý k uzlu. |
 | SourceSystem | Jak Log Analytics shromažďuje data. Vždy *Azure* Azure Diagnostics. |
-| ID prostředku |Určuje účet Azure Automation. |
+| ResourceId |Určuje účet Azure Automation. |
 | resultDescription | Popis pro tuto operaci. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet Automation. |
 | ResourceGroup | Název skupiny prostředků pro účet Automation. |
@@ -171,7 +171,7 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy ve sl
 | ErrorMessage_s |Chybová zpráva, pokud prostředek se nepovedlo. |
 | DscResourceDuration_d |Čas v sekundách, které byly spuštěny prostředků DSC. |
 | SourceSystem | Jak Log Analytics shromažďuje data. Vždy *Azure* Azure Diagnostics. |
-| ID prostředku |Určuje účet Azure Automation. |
+| ResourceId |Určuje účet Azure Automation. |
 | resultDescription | Popis pro tuto operaci. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet Automation. |
 | ResourceGroup | Název skupiny prostředků pro účet Automation. |

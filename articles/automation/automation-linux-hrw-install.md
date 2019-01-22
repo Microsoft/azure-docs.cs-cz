@@ -3,18 +3,18 @@ title: Funkce Hybrid Runbook Worker služby Azure Automation v Linuxu
 description: Tento článek obsahuje informace o instalaci Azure Automation Hybrid Runbook Worker, takže je možné spustit runbooky v počítačích se systémem Linux v místním datovém centru nebo v cloudovém prostředí.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f32574dc0a3fd61c21e8c9a7c1ec93c7d366d384
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e0aaddb841687718295e09e64b23d9cefa9246fd
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408842"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436106"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Linuxu Hybrid Runbook Worker
 
@@ -48,8 +48,8 @@ Jsou minimální požadavky pro Linux Hybrid Runbook Worker:
 
 | **Požadovaný balíček** | **Popis** | **Minimální verze**|
 |--------------------- | --------------------- | -------------------|
-|Knihovnou Glibc |Knihovna GNU C| 2.5-12 |
-|OpenSSL| Knihovny OpenSSL | 1.0 (TLS 1.1 a TLS 1.2 podporují|
+|Glibc |Knihovna GNU C| 2.5-12 |
+|Openssl| Knihovny OpenSSL | 1.0 (TLS 1.1 a TLS 1.2 podporují|
 |Curl | cURL webového klienta | 7.15.5|
 |Python ctypes | |
 |PAM | Moduly PAM|
@@ -119,3 +119,4 @@ Další řešení potíží s procesy Hybrid Runbook Worker, najdete v článku 
 
 * Další informace o konfiguraci runbooky pro automatizaci procesů do vašeho místního datového centra nebo jiné cloudové prostředí, najdete v článku [spouštění runbooků v procesu Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
 * Pokyny k odebrání funkce Hybrid Runbook Worker, naleznete v tématu [odebrat Azure Automation Hybrid Runbook Worker](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
+

@@ -3,18 +3,18 @@ title: Podřízené runbooky ve službě Azure Automation
 description: Popisuje různé metody pro spuštění sady runbook ve službě Azure Automation z jiného runbooku a sdílení informací mezi nimi.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc9e9cbf3e385a43eee8ce63d2f2fa6b863e95cc
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 37cf44e2c9d28b1aac8f2ab80ba29d126fb8651f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391341"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422964"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky ve službě Azure Automation
 
@@ -122,3 +122,4 @@ Následující tabulka shrnuje rozdíly mezi dvěma způsoby volání runbooku z
 
 * [Spuštění runbooku ve službě Azure Automation](automation-starting-a-runbook.md)
 * [Sada Runbook výstup a zprávy ve službě Azure Automation](automation-runbook-output-and-messages.md)
+

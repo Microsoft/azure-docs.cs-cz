@@ -3,24 +3,24 @@ title: Začínáme s Azure Automation stavu konfigurace
 description: Vysvětlení a příklady zvládnout běžné úkoly v Azure Automation stavu Configuration (DSC)
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634351"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432441"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Začínáme s Azure Automation stavu konfigurace
 
 Tento článek vysvětluje, jak provádět běžné úkoly s konfigurací stav automatizace Azure, jako je například vytvoření, import a kompilace konfigurací, připojování počítačů pro správu a prohlížení sestav. Přehled konfigurace stavu, které Azure Automation je, najdete v části [přehled Azure Automation stavu konfigurace](automation-dsc-overview.md). Desired State Configuration (DSC) dokumentaci najdete v tématu [Windows PowerShell Desired State Configuration přehled](/powershell/dsc/overview).
 
-Tento článek poskytuje podrobný návod, jak pomocí Azure Automation stav konfigurace. Pokud chcete ukázkové prostředí, které je již nastavena bez kroků popsaných v tomto článku, můžete použít následující šablonu Resource Manageru: [šablony uzlu spravováno agenty Azure Automation](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Tato šablona nastavuje dokončené prostředí konfigurace stavu služby Azure Automation, včetně virtuálního počítače Azure, který je spravovaný nástrojem Konfigurace stavu služby Azure Automation.
+Tento článek poskytuje podrobný návod, jak pomocí Azure Automation stav konfigurace. Pokud chcete ukázkové prostředí, které je již nastavena bez kroků popsaných v tomto článku, můžete použít následující šablonu Resource Manageru: [Šablony Azure Automation uzlu spravováno agenty](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Tato šablona nastavuje dokončené prostředí konfigurace stavu služby Azure Automation, včetně virtuálního počítače Azure, který je spravovaný nástrojem Konfigurace stavu služby Azure Automation.
 
 ## <a name="prerequisites"></a>Požadavky
 

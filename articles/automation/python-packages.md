@@ -3,24 +3,24 @@ title: Správa balíčků Python 2 ve službě Azure Automation
 description: Tento článek popisuje, jak spravovat balíčky Python 2 ve službě Azure Automation.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5974a8e622ca0969b2a7b5ee9500766ac95398c9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: de0998dffeac54db5311bbcde1c9499488b23556
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986291"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434967"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Správa balíčků Python 2 ve službě Azure Automation
 
 Azure Automation umožňuje spuštění sad runbook Python 2, v Azure a na Linuxu Hybrid Runbook Worker. Pomoci při zjednodušení sad runbook, můžete balíčky Pythonu pro import modulů, které potřebujete. Tento článek popisuje, jak spravovat a používat balíčky Pythonu ve službě Azure Automation.
 
-## <a name="import-packages"></a>Importovat balíčky
+## <a name="import-packages"></a>Import balíčků
 
 Ve vašem účtu Automation vyberte **balíčků Python 2** pod **sdílené prostředky**. Klikněte na tlačítko **+ přidat balíček Python 2**.
 

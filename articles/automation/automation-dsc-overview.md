@@ -4,18 +4,18 @@ description: Přehled o Azure Automation stavu Configuration (DSC), podmínky a 
 keywords: PowerShell dsc, konfigurace požadovaného stavu prostředí powershell dsc azure
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1f28f642d1a5fc30055c73a4b7d60c076c83d204
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ca7a1913e94242af46e777be308ef92fc5a5abb3
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250097"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427062"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled Azure Automation stavu konfigurace
 
@@ -45,18 +45,18 @@ Uzly, které se spravují pomocí Azure Automation State Configuration odesílá
 
 Je vyžadována pro stav konfigurace (DSC) ke komunikaci s automatizací následující port a adresy URL:
 
-* Port: Se jenom TCP 443 pro odchozí přístup k Internetu vyžaduje.
-* Globální adresa URL: *.azure-automation.net
-* Globální adresa URL US Gov Virginie: *.azure-automation.us
+* Port: Vyžádáním jenom TCP 443 pro odchozí přístup k Internetu.
+* Global URL: *.azure-automation.net
+* Global URL of US Gov Virginia: *.azure-automation.us
 * Služba agenta: https://\<ID pracovního prostoru\>.agentsvc.azure-automation.net
 
 Doporučuje se použít adresy, které uvedete při definování výjimky. Pro IP adresy, které si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
 
 Pokud máte účet Automation, který je definován pro konkrétní oblasti, můžete omezit komunikaci s místní stejné datové centrum. Následující tabulka obsahuje záznam DNS pro každou oblast:
 
-| **Oblast** | **Záznam DNS** |
+| **Oblast** | **DNS record** |
 | --- | --- |
-| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice nepodařilo prod-1.azure-automation.net |
+| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada – střed |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
@@ -66,8 +66,8 @@ Pokud máte účet Automation, který je definován pro konkrétní oblasti, mů
 | Střed Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Austrálie – jihovýchod |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice nepodařilo prod-1.azure-automation.net |
-| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice nepodařilo prod-1.azure-automation.us |
+| Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Seznam oblastí IP adres místo názvů oblast, stáhněte si [IP adresy Datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653) XML soubor z webu Microsoft Download Center.
 

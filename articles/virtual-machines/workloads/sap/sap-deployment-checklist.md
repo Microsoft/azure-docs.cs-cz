@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/07/2019
+ms.date: 01/18/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201325"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439149"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
 
@@ -36,6 +36,7 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
 
 1. Podrobný návrh dokumentu – tento dokument by měl obsahovat:
     1. Aktuální seznam aplikací a komponenty SAP a cílového inventář aplikací v Azure
+    2. Vytváření a práci odpovědnost přiřazení matice (RACI), která definuje odpovědnosti a přiřazení různé zúčastněné strany. Spusťte na vysoké úrovni a pracujeme, abychom čím dál tím víc podrobné úrovně propustnosti první a plánování nasazení
     2. Architektura vysoké úrovně řešení
     3. Rozhodnutí o oblasti Azure, které chcete nasadit do. Seznam oblastí Azure, zkontrolujte, [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). Služby k dispozici ve všech oblastech Azure, najdete v článku [produkty, které jsou k dispozici v jedné oblasti](https://azure.microsoft.com/global-infrastructure/services/)
     4. Síťová architektura pro připojení z místního do Azure. Začátkem sami znát [plán virtuální datové centrum Azure](https://docs.microsoft.com/azure/architecture/vdc/)
@@ -46,7 +47,7 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
     3.  Architektura provozní kontinuitu a zotavení po havárii
     4.  Podrobné operačního systému, databáze, jádra a SAP podporují balíčku verze. Nejedná se vzhledem k tomu, že všechny vydané verze operačního systému, který podporuje SAP NetWeaver a S/4HANA je podporována ve virtuálních počítačích Azure. Totéž platí pro verze DBMS. Je povinné, získáte následující zdroje zaškrtnuto, abyste mohli zarovnání a v případě potřeby upgradujte verze SAP DBMS verzí a verzí operačního systému dalo v SAP a Azure nepodporuje okno. Je povinné, že jsou v rámci SAP a podporované kombinace verze a získejte plnou podporu od SAPU a Microsoftu v Azure. V případě potřeby, musíte naplánovat pro upgrade některé ze součástí softwaru. Další informace o podporovaných SAP, operačního systému a systém DBMS softwaru najdete v těchto umístěních:
         1.  Poznámka: podpora SAP [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Tato poznámka definuje minimální verze operačního systému podporována ve virtuálních počítačích Azure. Také definuje minimální databázové vydané verze, vyžaduje se pro většinu bez HANA database. Poznámka také prezentuje velikosti SAP různých typů virtuálních počítačů Azure nepodporuje SAP.
-        2.  Poznámka: podpora SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619). Poznámka definuje matice podpory Oracle v Azure. Uvědomte si, že Oracle podporuje pouze Windows a Oracle Linux jako hostovaný operační systém v Azure pro úlohy SAP. Toto prohlášení o odborné pomoci se vztahuje na aplikační vrstvě SAP spuštěné instance SAP také. Oracle, ale nepodporuje vysokou dostupnost pro centrální služby SAP. Díky tomu může být nutné jiný operační systém pro centrální služby SAP, které nejsou připojení k systému správy databáze Oracle
+        2.  Poznámka: podpora SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619). Poznámka definuje matice podpory Oracle v Azure. Uvědomte si, že Oracle podporuje pouze Windows a Oracle Linux jako hostovaný operační systém v Azure pro úlohy SAP. Toto prohlášení o odborné pomoci se vztahuje na aplikační vrstvě SAP spuštěné instance SAP také. Oracle, ale nepodporuje vysokou dostupnost pro centrální služby SAP v Oracle Linuxu. Pro Windows SAP pro centrální služby SAP se podporuje ve spojení se společností Oracle jako vrstva DBMS nepodporuje řešení Windows převzetí služeb při selhání clusteru převzetí služeb při selhání. 
         3.  Poznámka: podpora SAP [#2235581](https://launchpad.support.sap.com/#/notes/2235581) získat podporu pro SAP HANA na různých operačních systémech verze
         4.  SAP HANA nepodporuje virtuální počítače Azure a [velkých instancích HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) patří [zde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
         5.  [Přehled dostupnosti SAP produktu](https://support.sap.com/en/)
@@ -56,14 +57,18 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
         2.  [SAP ASCS/SCS instance s několika SID vysokou dostupnost s možnostmi Windows Server Failover Clustering a sdílení souborů v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     6.  Vysoká dostupnost a obnovení architektury
         1.  Definujte na základě RTO a RPO vysokou dostupnost a obnovení architektura vyžaduje, aby vypadala jako
-        2.  Pro zajištění vysoké dostupnosti v rámci stejné zóny zkontrolujte požadované DBMS se nabízí v Azure. Většina DBMS nabízejí synchronních metod synchronní aktivní pohotovostní režim, který doporučujeme pro produkční systémy.
+        2.  Pro zajištění vysoké dostupnosti v rámci stejné zóny zkontrolujte požadované DBMS se nabízí v Azure. Většina DBMS nabízejí synchronních metod synchronní aktivní pohotovostní režim, který doporučujeme pro produkční systémy. Také kontrola systému SAP související dokumentaci pro různé databáze počínaje [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) a související dokumenty
+            1.  Pomocí služby clusteru převzetí služeb při selhání Windows se sdíleným diskem konfigurací pro vrstvu DBMS, jako je například pro SQL Server [tady](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) je **není** podporována. Místo toho řešení, jako je:
+                1.  [Technologie AlwaysOn systému SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
+                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                3.  [Systémové replikace HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  Pro zotavení po havárii v různých oblastech Azure zkontrolujte, jaké možnosti jsou nabízeny od různých dodavatelů DBMS. Většina z nich podporuje asynchronní replikaci nebo přesouvání protokolu
         4.  Pro aplikační vrstvě SAP definujte, jestli jste by běžet vaše obchodní regrese testovací systémy, které jsou v ideálním případě repliky nasazení produkčního prostředí, ve stejné oblasti Azure nebo v oblasti zotavení po Havárii. V druhém případě je možné cílit na daný systém regrese firmy jako cíl obnovení po Havárii pro vaše produkční prostředí
-        5.  Pokud se rozhodnete-li se o neprodukční systémy v lokalitě zotavení po Havárii, vypadat jako přijatelné metodu replikace aplikační vrstvě SAP do oblasti zotavení po Havárii Azure do Azure Site Recovery. Viz také [nastavit zotavení po havárii pro nasazení vícevrstvé aplikace SAP NetWeaver](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap) 
-        6.  Pokud se rozhodnete použít kombinované využití konfigurace HA/DR [zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) stát zkušenosti s oblastí Azure, kde zóny dostupnosti jsou k dispozici a omezení, které mohou být způsobeny zvyšuje latence sítě mezi dvě zóny dostupnosti  
+        5.  Pokud se rozhodnete umístit neprodukční systémy v lokalitě zotavení po Havárii, pohlížet jako přijatelné metody replikace aplikační vrstvě SAP do oblasti zotavení po Havárii Azure do Azure Site Recovery. Viz také [nastavit zotavení po havárii pro nasazení vícevrstvé aplikace SAP NetWeaver](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap) 
+        6.  Pokud se rozhodnete použít kombinované konfiguraci HA/DR, využití [zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) stát zkušenosti s oblastí Azure zóny dostupnosti jsou k dispozici a omezení, které mohou být způsobeny latence sítě mezi dvě zóny dostupnosti  
 3.  Zákazník nebo Partner měli vytvořit seznam všech rozhraní SAP (SAP a mimo systém SAP). 
 4.  Návrh Foundation Services – návrh – tento návrh zahrnuje různé věci, třeba
-    1.  Návrh služby Active Directory a DSN
+    1.  Návrh služby Active Directory a DNS
     2.  Topologie sítě v rámci Azure a přiřazení různých systémů SAP
     3.  [Přístup na základě role](https://docs.microsoft.com/azure/role-based-access-control/overview) strukturu pro různé týmy, které spravují infrastrukturu a aplikace SAP v Azure
     3.  Skupina prostředků topologie 
@@ -78,7 +83,7 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
 9.  Definování regulárního návrh a zkontrolujte pravidelnost mezi vámi jako zákazník, systémoví integrátoři, Microsoft a jiných součástí strany
 
  
-## <a name="pilot-phase-optional"></a>Pilotní fáze (volitelné)
+## <a name="pilot-phase-strongly-recommended"></a>Pilotní fáze (doporučeno)
  
 Pilotní nasazení můžete spustit před nebo v paralelní k plánování a příprava projektu. Fáze slouží také k testování přístupy a usnadnění návrhu s dobrou ve fázi plánování a příprava. Pilotní fázi můžete roztažen tak, aby skutečné testování konceptů. Doporučuje se nastavit a ověřit úplné HA/DR řešení a také návrh zabezpečení během pilotního nasazení. V některých případech zákazníka škálovatelnost testů také mohou být prováděna v této fázi. Další zákazníků používá jako pilotní fázi nasazení systémů SAP izolovaného prostoru. Takže předpokládáme, identifikovat systému, který chcete migrovat do Azure za účelem spouštění pilotní nasazení.
 
@@ -100,6 +105,8 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
         3.  Akcelerátor zápisu Azure použijte pro disky protokolu DBMS s M-Series. Mějte na paměti omezení akcelerátor zápisu a využití, jak je uvedeno v [akcelerátorem zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)
         4.  Pro různé typy DBMS, zkontrolujte [týkající se obecné SAP DBMS dokumentaci](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) a konkrétní dokumentace DBMS obecného dokumentu odkazuje, vám
         5.  Pro SAP HANA, další podrobnosti jsou popsány v [konfigurace infrastruktury SAP HANA a operací v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
+        6.  Nikdy připojení Azure datové disky na virtuálním počítači Azure s Linuxem s použitím ID zařízení. Místo toho použijte univerzálně jedinečným identifikátorem (UUID). Buďte opatrní při použití grafické nástroje pro připojení Azure datových disků, např. Zkontrolujte položky v/etc/fstab, abyste měli jistotu, že jsou připojené disky pomocí identifikátoru UUID
+            1.  Další podrobnosti najdete [zde](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)
     3.  Sítě
         1.  Testování a hodnocení infrastruktury virtuální sítě a distribuce aplikace SAP napříč nebo mezi různými virtuálními sítěmi Azure
             1.  Vyhodnocení přístupu centra a architekturu virtuální sítě paprsků nebo microsegmentation v rámci jedné virtuální síť Azure na základě
@@ -121,7 +128,7 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
         1.   Pokud nasadíte aplikační vrstvě SAP bez definování konkrétní zóně dostupnosti Azure, ujistěte se, že jsou všechny virtuální počítače spuštěné instance SAP dialogové okno nebo middleware instance na jednom systému SAP v nasazené [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). 
             1.   V případě nevyžadují vysokou dostupnost pro centrální služby SAP a DBMS, tyto virtuální počítače je možné nasadit do stejné sadě dostupnosti jako aplikační vrstvě SAP
         2.   Pokud chráníte centrální služby SAP a vrstvu DBMS pro vysokou dostupnost s pasivním repliky, máte dva uzly pro centrální služby SAP v jedné samostatné skupiny dostupnosti a dvěma uzly DBMS v jiné sady dostupnosti
-        3.   Pokud provádíte nasazení do zóny dostupnosti Azure nemůžou využívat skupiny dostupnosti. Musíte ale ujistěte se, že budete nasazovat aktivními a pasivními uzly centrální služby do dvou různých zón dostupnosti, které zobrazují nejmenší latenci mezi zónami.
+        3.   Pokud provádíte nasazení do zóny dostupnosti Azure, nemůžou využívat skupiny dostupnosti. Musíte ale ujistěte se, že budete nasazovat aktivními a pasivními uzly centrální služby do dvou různých zón dostupnosti, které zobrazují nejmenší latenci mezi zónami.
             1.   Pamatujte, že budete muset použít [Azure Load balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) pro případ zřízení Pacemaker clustery převzetí služeb při selhání nebo Windows pro vrstvu DBMS a centrální služby SAP napříč zónami dostupnosti. [Load balancer úrovně Basic](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nelze použít pro zónové nasazení 
     5.   Nastavení časového limitu
         1.   Zkontrolovat trasování pro vývojáře SAP NetWeaver jinou instancí SAP a ujistěte se, že jsou uvedené žádné konce připojení mezi serverem pro zařazení do fronty a pracovní postupy SAP. Tyto konce připojení se lze vyvarovat nastavením tyto dvě registru parametry:
@@ -134,11 +141,11 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
             1.   SameSubNetDelay = 2
             2.   SameSubNetThreshold = 15
 4.   Testování vysokou dostupnost a obnovení procedury programu
-    1.   Vypínání virtuálních počítačů nebo provozu operační systémy v tísňový režimu, aby bylo možné zjistit, jestli vaše konfigurace převzetí služeb při selhání fungovat tak, jak navrženo simulujte situace převzetí služeb při selhání. 
+    1.   Situace převzetí služeb při selhání simulujte vypíná virtuální počítače (hostovaného operačního systému Windows) nebo uvedení operační systémy v režimu tísňový (hostovaného operačního systému Linux), aby bylo možné zjistit, jestli vaše konfigurace převzetí služeb při selhání fungovat tak, jak navrženo. 
     2.   Změřte vaše dobu potřebnou ke spuštění převzetí služeb při selhání. Pokud dobu trvá příliš dlouho, vezměte v úvahu:
         1.   SUSE Linux použijte SBD zařízení místo agenta oplocení Azure ke zrychlení převzetí služeb při selhání
         2.   Pro SAP HANA Pokud opětovné načtení dat trvá příliš dlouho zvažte zřídit větší šířku pásma úložiště
-    3.   Testovat zálohování a obnovení pořadí a ladit v případě potřeby
+    3.   Vyzkoušejte zálohování a obnovení pořadí a načasování a ladit v případě potřeby. Ujistěte se, že časy pouze zálohování jsou dostatečné. Také testovací obnovení a provádět s nimi načasování obnovení činnosti. Ujistěte se, že časů obnovení jsou v rámci vašich smlouvách SLA RTO Pokud stanovíte RTO závisí na databázi nebo procesu obnovení virtuálního počítače
     4.   Testování v oblasti zotavení po Havárii funkcí a architektury
 5.  Kontroly zabezpečení
     1.  Test platnosti roli Azure na základě architektura přístupu (RBAC), které jste implementovali. Cílem je omezit přístup a oprávnění z různých týmů a oddělit. Jako příklad členové týmu SAP základ měl k nasazení virtuálních počítačů a přiřazení disky ze služby Azure storage do dané virtuální sítě Azure. Ale SAP základ týmu by neměl moct vytvářet vlastní virtuální sítě nebo změnit nastavení existující virtuální sítě. Na druhé straně nesmí být schopni nasadit virtuální počítače do virtuální sítě, kde aplikace SAP DBMS virtuální počítače běží a členové týmu pro sítě. Ani měli členové týmu pro sítě být schopni změnit atributy virtuálních počítačů nebo dokonce odstranit virtuální počítače nebo disky.  
@@ -160,7 +167,8 @@ V této fázi předpokládáme, že po úspěšném pilotním projektu nebo test
 3.  Testování a definujte, jestli chcete vytvořit vlastní Image operačního systému pro virtuální počítače v Azure nebo zda chcete použít image z Galerie Imagí Azure. Pokud používáte image z Galerie Azure, ujistěte se, že zvolíte správné bitové kopie, která zohledňuje, smlouvu o podpoře s vaším dodavatelem operačního systému. Pro někteří dodavatelé operačního systému Galerie Azure nabízí chcete použít vlastní licenci. Pro ostatní bitové kopie operačního systému, podpora je zahrnutá v ceně v uvozovkách Azure. Pokud se rozhodnete vytvořit vlastní Image operačního systému, můžete najít dokumentaci v těchto článcích:
     1.  Můžete vytvářet generalizované image virtuálního počítače s Windows nasazené v Azure na základě [této dokumentaci](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
     2.  Můžete vytvářet generalizované image systému Linux virtuálního počítače nasazeného v Azure na základě [této dokumentaci](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
-3.  Ujistěte se, že splňují požadavky na podporu, které SAP, které se týkají smlouvy o podpoře Microsoft. Informace najdete v poznámce podpory SAP [#2015553](https://launchpad.support.sap.com/#/notes/2015553). Pro velké instance HANA, naleznete v dokumentu [požadavků na připojení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)
+3.  Pokud používáte Image operačního systému SUSE a Red Hat Linux z Galerie virtuálních počítačů Azure, budete muset použít obrázky pro SAP poskytovaných dodavateli Linux v galerii virtuálních počítačů Azure
+4.  Ujistěte se, že splňují požadavky na podporu, které SAP, které se týkají smlouvy o podpoře Microsoft. Informace najdete v poznámce podpory SAP [#2015553](https://launchpad.support.sap.com/#/notes/2015553). Pro velké instance HANA, naleznete v dokumentu [požadavků na připojení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)
 4.  Ujistěte se, že lidé získat [oznámení plánované údržby](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/), tedy v čase můžete zvolit výpadek a restartování virtuálních počítačů
 5.  Neustálé přečtěte dokumentaci k Azure z Microsoft prezentace na kanálů, jako jsou [Channel9](https://channel9.msdn.com/) pro nové funkce, které se mohou vztahovat na vaše nasazení
 6.  Související poznámky k vrácení SAP do Azure, jako je podpora Poznámka [#1928533](https://launchpad.support.sap.com/#/notes/1928533) pro nové skladové položky virtuálních počítačů nebo nově podporované verze operačního systému a systém DBMS. Porovnání nové typy virtuálních počítačů na virtuálním počítači starší typy, které do ceny, tak, že budete moct nasadit virtuální počítače s nejlepší poměr cena/výkon
@@ -178,7 +186,7 @@ V této fázi předpokládáme, že po úspěšném pilotním projektu nebo test
 
  
 ## <a name="production-preparation-phase"></a>Fáze přípravy v ostrém provozu 
-Toto je fáze, ve které chcete shromažďovat všechny prostředí a poznatky o neprodukční nasazení a použít je v budoucnu nasazení v produkčním prostředí. Kromě toho k jednotlivým fázím dříve, budete také muset připravit pracovní přenos dat mezi aktuálním umístění pro hostování a Azure. 
+V této fázi budete chtít shromáždit všechna prostředí a poznatky o neprodukční nasazení a použít je v budoucnu nasazení v produkčním prostředí. Kromě toho k jednotlivým fázím dříve, budete také muset připravit pracovní přenos dat mezi aktuálním umístění pro hostování a Azure. 
 
 1.  Seznámení se základními nezbytné upgradu verze SAP produkční systémy před přesunem do Azure
 2.  Souhlasím s vlastníkům obchodních na funkční a obchodní testy, které je potřeba provést po migraci produkčního systému.
@@ -189,8 +197,7 @@ Toto je fáze, ve které chcete shromažďovat všechny prostředí a poznatky o
     3.  Použití SAP monitorování migrace implementována do nástroje SAP SWPM provádět heterogenní migrace
     4.  Použití [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) zpracování, pokud je potřeba v kombinaci s upgrade verze SAP. Uvědomte si, že ne všechny kombinace mezi zdrojem a cílem DBMS jsou podporovány. Další informace najdete v konkrétních podporuje poznámky SAP pro dvě různé verze DMO. Například [možnost migrace databáze (DMO) ze SOUČTU 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872)
     5.  Otestujte, zda přenos dat přes internet nebo prostřednictvím ExpressRoute je lepší propustnost pro případ, budete potřebovat přesunout zálohy nebo SAP exportovat soubory. Mějte na paměti, že pro případ přesouvá data prostřednictvím Internetu, můžete potřebovat změnit některá pravidla NSG a ASG zabezpečení, které je potřeba mít na místě pro budoucí produkční systémy.
-3.  Před přesunutím shromažďovat data o spotřebě prostředků, jako je využití procesoru, propustnost úložiště a vstupně-výstupních operací datové systémy od starého platformy do Azure. Zejména z DBMS jednotky, vrstvy, ale také z jednotky vrstvy aplikace. Také měření sítě a úložiště lat
-4.  ency.
+3.  Před přesunutím shromažďovat data o spotřebě prostředků, jako je využití procesoru, propustnost úložiště a vstupně-výstupních operací datové systémy od starého platformy do Azure. Zejména z DBMS jednotky, vrstvy, ale také z jednotky vrstvy aplikace. Také měření latence sítě a úložiště.
 4.  Ověření prostředky na podporu poznámky SAP, SAP HANA hardwaru adresáře a znovu PAM SAP chcete mít jistotu, že nebyly provedeny žádné změny v podporovaných virtuálních počítačích Azure, uvolní podporovaný operační systém v těchto virtuálních počítačů a podporovaných SAP a DBMS vydané verze 
 4.  Upravit skripty nasazení pro nejnovější změny, které jste se rozhodli pro typy virtuálních počítačů a funkce Azure
 5.  Po nasazení infrastruktury a aplikací, projděte si sérii kontrol v pořadí pro ověření:
@@ -202,6 +209,8 @@ Toto je fáze, ve které chcete shromažďovat všechny prostředí a poznatky o
     6.  Azure Premium Storage se použil pro citlivé disky latence nebo kde [jeden virtuální počítač poskytuje se smlouva SLA 99,9 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) je povinný
     7.  Zkontrolujte správné nasazení akcelerátor zápisu Azure
         1.  Ujistěte se, že na virtuálním počítači a prostory úložiště, nebo na discích, které vyžadují podporu akcelerátor zápisu Azure je teď správně sestavena prokládané sady
+            1.  Zkontrolujte [konfigurace softwarového pole RAID v Linuxu](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
+            2.  Zkontrolujte [konfigurace LVM na virtuální počítač s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
     8.  [Azure managed disks](https://azure.microsoft.com/services/managed-disks/) byly použity výhradně
     9.  Virtuální počítače je teď nasadit do skupiny dostupnosti správný a zóny dostupnosti
     10. Ujistěte se, že [akcelerovaných síťových služeb Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) je na virtuální počítače použité v aplikační vrstvě SAP a SAP DBMS vrstvu povolená

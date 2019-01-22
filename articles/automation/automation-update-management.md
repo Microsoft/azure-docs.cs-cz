@@ -3,18 +3,18 @@ title: Řešení Update Management v Azure
 description: Tento článek je určený k vám pomohou pochopit, jak používat řešení Azure Update Management ke správě aktualizací pro počítače s Windows a Linuxem.
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8635d943120f0e79b8efcfe1f9be0b74d8bb4fac
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214993"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433896"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -324,12 +324,12 @@ Správa aktualizací spoléhá na službu WSUS nebo Windows Update o opravu podp
 
 Tyto adresy jsou požadovány speciálně pro správu aktualizací. Probíhá komunikace na tyto adresy přes port 443.
 
-|Veřejné Azure  |Azure Government  |
+|Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.Azure-automation.us|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
 
 Další informace o portech, které vyžaduje, aby Hybrid Runbook Worker, naleznete v tématu [porty role Hybrid Worker](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
@@ -615,3 +615,4 @@ Pokračujte ke kurzu se naučíte spravovat aktualizace pro virtuální počíta
 * [Vytvořit upozornění](automation-tutorial-update-management.md#configure-alerts) stav nasazení aktualizace.
 
 * Zjistěte, jak pracovat s Update managementem přes rozhraní REST API, najdete v článku [konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurations)
+

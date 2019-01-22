@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1bd9dd82fb72c3d6b0759139680647be764f273a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 0c78974eb9775506f2ccbc6158eb03aa0c73be49
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161549"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431533"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -88,7 +88,7 @@ Pokud vaše organizace jako jednu z metod ověřování používá aplikaci Micr
 
 Instalace portálu uživatele na jiném serveru, než je Azure Multi-Factor Authentication Server, vyžaduje následující kroky:
 
-1. **Na MFA Serveru** přejděte do instalační cesty (příklad: C:\Program Files\Multi-Factor Authentication Server) a zkopírujte soubor **MultiFactorAuthenticationUserPortalSetup64** do umístění, ke kterému má přístup server s přístupem k internetu, na který budete MFA Server instalovat.
+1. **Na MFA serveru**, přejděte do instalační cesty (Příklad: C:\Program Files\Multi-Factor Authentication Server) a zkopírujte obsah souboru **MultiFactorAuthenticationUserPortalSetup64** do umístění dostupného na internetovém serveru kterého ho chcete nainstalovat.
 2. **Na webovém serveru s přístupem k internetu** spusťte instalační soubor MultiFactorAuthenticationUserPortalSetup64 jako správce, změňte v případě potřeby web, a pokud chcete, změňte virtuální adresář na krátký název.
 3. Vytvořte vazbu certifikátu SSL k webu ve službě IIS.
 
@@ -138,7 +138,7 @@ Server Azure Multi-Factor Authentication poskytuje pro uživatelský portál ně
 | V nouzové situaci použít bezpečnostní otázky | Povolí bezpečnostní otázky, pokud se nezdaří dvoustupňové ověřování. Můžete zadat počet bezpečnostních otázek, které je potřeba správně zodpovědět. |
 | Povolit uživatelům přidružení tokenu OATH jiného výrobce | Povolí uživatelům zadat token OATH jiného výrobce. |
 | V nouzové situaci použít token OATH | Umožní použití tokenu OAUTH, pokud se nezdaří dvoustupňové ověřování. Můžete taky zadat časový limit relace v minutách. |
-| Povolit protokolování | Povolí protokolování na portálu User Portal. Protokoly se ukládají do: C:\Program Files\Multi-Factor Authentication Server\Logs. |
+| Povolit protokolování | Povolí protokolování na portálu User Portal. Soubory protokolu se nachází na: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
 Na portálu se tato nastavení uživatelům zviditelní, jakmile jsou povolena a uživatelé jsou přihlášeni na portálu User Portal.
 

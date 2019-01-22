@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 51470e9f8e0bffe18d1dc4007433246d084a5cb2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846654"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424145"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
@@ -39,7 +39,7 @@ Při replikaci virtuálních počítačů VMware:
 
 ## <a name="enable-replication"></a>Povolení replikace
 
-1. Klikněte na **Krok 2: Replikujte aplikaci** > **Zdroj**. Po prvním povolení replikace kliknutím na **+Replikovat** v trezoru povolte replikaci pro další počítače.
+1. Klikněte na tlačítko **krok 2: Replikovat aplikaci** > **zdroj**. Po prvním povolení replikace kliknutím na **+Replikovat** v trezoru povolte replikaci pro další počítače.
 2. V **zdroj** stránky > **zdroj**, vyberte konfigurační server.
 3. V **typ počítače**vyberte **virtuálních počítačů** nebo **fyzické počítače**.
 4. V části **vCenter/vSphere Hypervisor** vyberte vCenter Server, který spravuje hostitele vSphere, nebo vyberte samotného hostitele. Toto nastavení není relevantní, pokud replikujete fyzické počítače.
@@ -59,7 +59,7 @@ Při replikaci virtuálních počítačů VMware:
 8. Vyberte síť Azure a podsíť, ke kterým se připojí virtuální počítače Azure, když se zprovozní po převzetí služeb při selhání. Síť musí být ve stejné oblasti jako trezor Služeb zotavení. Výběrem možnosti **Nakonfigurovat pro vybrané počítače** použijte nastavení sítě pro všechny počítače, které jste vybrali pro ochranu. Vyberte **Nakonfigurovat později** a vyberte síť Azure pro konkrétní počítač. Pokud nemáte sítě, budete muset [vytvořit](#set-up-an-azure-network). Pokud chcete vytvořit síť pomocí Resource Manageru, klikněte na tlačítko **vytvořit nový**. Vyberte podsíť, pokud je k dispozici a potom klikněte na tlačítko **OK**.
 
     ![Povolit nastavení cíle replikace](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. V části **Virtuální počítače** > **Výběr virtuálních počítačů** vyberte každý počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak klikněte na **OK**.
+9. V části **Virtuální počítače** > **Výběr virtuálních počítačů** vyberte každý počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak klikněte na **OK**. Pokud nejste schopni zobrazení/vybrat konkrétní virtuální počítač, klikněte na tlačítko [tady](https://aka.ms/doc-plugin-VM-not-showing) k vyřešení daného problému.
 
     ![Povolení replikace vyberte virtuálních počítačů](./media/vmware-azure-enable-replication/enable-replication5.png)
 10. V **vlastnosti** > **konfigurovat vlastnosti**, vyberte účet používaný službou procesový server při automatické instalaci služby Mobility na počítači.  

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 95582fb62f19dcc34aa03a6550f4dbc46257cf7f
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7d97f68c04656c1f8e227069bb3d33aba13d4b53
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494343"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435069"
 ---
 # <a name="start-using-pim"></a>Zahájení práce s využitím PIM
 
@@ -33,7 +33,7 @@ Pokud chcete používat PIM, musí mít jeden z těchto licencí:
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
 
-Další informace najdete v tématu [požadavky na předplatné používat PIM](subscription-requirements.md).
+Další informace najdete v tématu [licenční požadavky pro použití PIM](subscription-requirements.md).
 
 ## <a name="first-person-to-use-pim"></a>První, kdo používat PIM
 

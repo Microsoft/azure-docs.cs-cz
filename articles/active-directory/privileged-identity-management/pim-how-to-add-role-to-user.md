@@ -12,18 +12,18 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 69bc2bb5fa06f4edc0283961063d2302c7905b4f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724940"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438996"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>Přiřazení role adresáře Azure AD v PIM
 
 S Azure Active Directory (Azure AD), globální správce může nastavit **trvalé** přiřazení rolí adresáře. Tato přiřazení rolí můžete vytvořit pomocí [webu Azure portal](../users-groups-roles/directory-assign-admin-roles.md) nebo pomocí [příkazy prostředí PowerShell](/powershell/module/azuread#directory_roles).
 
-Služba Azure AD Privileged Identity Management (PIM) také umožňuje správcům privilegovaných rolí adresáře trvalé přiřazení rolí. Kromě toho správci privilegovaných rolí, můžete nastavit uživatele **oprávněné** pro role adresáře. Správce může aktivovat roli, když ho potřebují, a potom jejich oprávnění vyprší po jejich dokončení. Informace o rolích, které můžete spravovat pomocí PIM, naleznete v tématu [role adresáře Azure AD můžete spravovat v PIM](pim-roles.md).
+Služba Azure AD Privileged Identity Management (PIM) také umožňuje správci privilegovaných rolí, aby adresář trvalé přiřazení rolí. Kromě toho správce privilegovaných rolí, můžete nastavit uživatele **oprávněné** pro role adresáře. Správce může aktivovat roli, když ho potřebují, a potom jejich oprávnění vyprší po jejich dokončení.
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Nastavit jako oprávněné pro roli uživatele
 

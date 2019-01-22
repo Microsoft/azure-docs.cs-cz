@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 2035d342a89ace6d286fc205c346591b29646c5d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270130"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427398"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro Proaktivní monitorování sítě pomocí výstrah a Azure Functions
 
@@ -35,7 +35,7 @@ Pomocí Network Watcher, upozorňování a funkce z v rámci ekosystému Azure m
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější verzi [prostředí Azure PowerShell](/powershell/azure/install-azurerm-ps).
+* Nejnovější verzi [prostředí Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 * Stávající instance Network Watcheru. Pokud ho ještě nemáte, [vytvoření instance služby Network Watcher](network-watcher-create.md).
 * Existující virtuální počítač ve stejné oblasti jako sledovací proces sítě se [rozšíření Windows](../virtual-machines/windows/extensions-nwa.md) nebo [rozšíření virtuálního počítače Linux](../virtual-machines/linux/extensions-nwa.md).
 

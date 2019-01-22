@@ -3,18 +3,18 @@ title: Assety přihlašovacích údajů ve službě Azure Automation
 description: Assety přihlašovacích údajů ve službě Azure Automation obsahovat zabezpečovací pověření, která slouží k ověřování k prostředkům přistupuje z runbooku nebo konfigurace DSC. Tento článek popisuje, jak vytvořit assety přihlašovacích údajů a jejich použití v runbooku nebo konfigurace DSC.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 07452a97ba16d7745d48e210dd90ce077be64683
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9884138127d62e2dc524dc1b6d9e827d1ee0fac8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233435"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439183"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Assety přihlašovacích údajů ve službě Azure Automation
 
@@ -33,8 +33,8 @@ Rutiny v následující tabulce se používají k vytváření a správě prost�
 |:--- |:--- |
 | [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |Načte informace o asset přihlašovacích údajů. Přihlašovací údaje samotného dá načíst jenom z **Get-AutomationPSCredential** aktivity. |
 | [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Vytvoří nový přihlašovací údaj automatizace. |
-| [Remove - AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Odebere přihlašovací údaje služby Automation. |
-| [Set - AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Nastaví vlastnosti pro existující pověření služby Automation. |
+| [Remove- AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Odebere přihlašovací údaje služby Automation. |
+| [Set- AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Nastaví vlastnosti pro existující pověření služby Automation. |
 
 ## <a name="azurerm-powershell-cmdlets"></a>Rutiny AzureRM Powershellu
 
@@ -142,4 +142,5 @@ print cred["password"]
 * První kroky s grafickými runbooky najdete v článku [Můj první grafický runbook](automation-first-runbook-graphical.md).
 * První kroky s runbooky pracovních postupů PowerShellu najdete v článku [Můj první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md). 
 * Začínáme s runbooky Python2 najdete v článku [Můj první runbook Python2](automation-first-runbook-textual-python2.md) 
+
 

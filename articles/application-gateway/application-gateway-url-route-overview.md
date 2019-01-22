@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 95d443eeebf2fe5a8fad185210f88576a5f21f6a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188755"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435291"
 ---
 # <a name="url-path-based-routing-overview"></a>Přehled směrování na základě cest URL
 
@@ -23,7 +23,7 @@ V následujícím příkladu služba Application Gateway obsluhuje provoz pro co
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Požadavky na adresu http://contoso.com/video/ se směrují na VideoServerPool a požadavky na adresu http://contoso.com/images/ na ImageServerPool. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
+Požadavky pro protokol http\://contoso.com/video/* jsou směrovány na Videofondserveru a http\://contoso.com/images/* jsou směrovány na Obrazkyfondserveru. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
 
 > [!IMPORTANT]
 > Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
@@ -67,7 +67,7 @@ PathPattern je seznam vzorů cest tak, aby odpovídaly. Každý vzor musí zač�
 
 Podporované vzory jsou závislé na tom, jestli nasazujete Application Gateway v1 nebo v2:
 
-#### <a name="v1"></a>V1
+#### <a name="v1"></a>v1
 
 Pravidla přidávání cest jsou malá a velká písmena.
 

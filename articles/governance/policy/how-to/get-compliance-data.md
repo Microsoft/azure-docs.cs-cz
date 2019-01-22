@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3bbd9bc7f213f117b2389f0a2526a75fef6f0234
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 71911c3e196a05b9e10c719afe8f3b44522e6b02
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318675"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437908"
 ---
 # <a name="getting-compliance-data"></a>Získávání dat o dodržování předpisů
 
@@ -283,7 +283,7 @@ Další informace o dotazování události zásad najdete v článku [události 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Modul Azure Powershellu pro zásady je dostupná v galerii prostředí PowerShell jako [AzureRM.PolicyInsights](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights). Použití modulu PowerShellGet, můžete nainstalovat pomocí modulu `Install-Module -Name AzureRM.PolicyInsights` (ujistěte se, že máte nejnovější [prostředí Azure PowerShell](/powershell/azure/install-azurerm-ps) nainstalovaný):
+Modul Azure Powershellu pro zásady je dostupná v galerii prostředí PowerShell jako [AzureRM.PolicyInsights](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights). Použití modulu PowerShellGet, můžete nainstalovat pomocí modulu `Install-Module -Name AzureRM.PolicyInsights` (ujistěte se, že máte nejnovější [prostředí Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) nainstalovaný):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet

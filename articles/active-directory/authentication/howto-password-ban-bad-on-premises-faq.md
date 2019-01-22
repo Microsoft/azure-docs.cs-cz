@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: d3d42a3c81153d54690f0825368eaa950dbac18e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9046090a45d52a283d28d1c4cc79b44503cb5a9d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314775"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427589"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Ve verzi Preview: Azure AD hesla ochrany místních – nejčastější dotazy
+# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Verze Preview: Azure AD hesla ochrany místních – nejčastější dotazy
 
 |     |
 | --- |
@@ -26,11 +26,11 @@ ms.locfileid: "52314775"
 
 ## <a name="general-questions"></a>Obecné otázky
 
-**Otázka: kdy dosáhne ochrana hesel Azure AD obecné dostupnosti (GA)?**
+**Otázka: Při dosažení obecné dostupnosti (GA) ochrany hesla Azure AD**
 
 Ještě jsme oznámili ještě datum všeobecné dostupnosti.
 
-**Otázka: je místní ochrana heslem služby Azure AD nepodporuje v jiných veřejných cloudech?**
+**Otázka: Je v místním ochrany hesla Azure AD nepodporuje v jiných veřejných cloudech?**
 
 Ne – ochrana heslem v místním Azure AD je podporován pouze ve veřejném cloudu.
 
@@ -38,11 +38,11 @@ Ne – ochrana heslem v místním Azure AD je podporován pouze ve veřejném cl
 
 Nepodporuje se. Jakmile nasazená a aktivovaná, ochrana hesel Azure AD není rozlišení – všichni uživatelé obdrží stejné výhody.
 
-**Otázka: je podporována instalace ochrany hesla Azure AD souběžně s jinými produkty pomocí filtru hesla?**
+**Otázka: Je podporováno pro instalaci služby Azure AD hesla protection souběžně s jinými produkty pomocí filtru hesla?**
 
 Ano. Podpora více knihovny DLL filtru registrované heslo je základní funkcí Windows a nezávislé na ochrana hesel Azure AD. Všechny knihovny DLL filtru registrované hesla musí souhlasit, před přijetím heslo.
 
-**Otázka: Proč se DFSR vyžaduje k replikování adresáře sysvol?**
+**Otázka: Proč je DFSR se vyžaduje k replikování adresáře sysvol?**
 
 Služba replikace souborů (technologie předchůdce do DFSR) má mnoho známé problémy a není zcela podporována v novějších verzích Windows Server Active Directory. Nulové testování ochrana hesel Azure AD se nevytvoří FRS nakonfigurované domény.
 
@@ -56,7 +56,7 @@ Další informace najdete v následujících článcích:
 
 Tento požadavek je způsobeno jádra Windows chování.
 
-**Otázka: existuje žádný způsob, jak nakonfigurovat agenta do řadiče domény použít konkrétní proxy server?**
+**Otázka: Existuje nějaký způsob, jak nakonfigurovat agenta do řadiče domény použít konkrétní proxy server?**
 
 Ne.
 

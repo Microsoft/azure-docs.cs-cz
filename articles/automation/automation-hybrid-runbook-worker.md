@@ -3,18 +3,18 @@ title: Azure Automation Hybrid Runbook Worker
 description: Tento článek obsahuje informace o instalaci a použití procesu Hybrid Runbook Worker, což je funkce služby Azure Automation, který používáte ke spuštění sady runbook na počítačích v místním datovém centru nebo poskytovatele cloudu.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d42a9458afa6244e0b6d8e7deb420a8ac49a130f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3525a3ad3d0e539e0bab5ee0ed9ba0adca1a68c6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634162"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428626"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -101,18 +101,18 @@ Pokud používáte proxy server pro komunikaci mezi agentem a službou Log Analy
 
 Následující portů a adres URL jsou požadovány pro role Hybrid Runbook Worker ke komunikaci se službou Automation:
 
-* Port: Se jenom TCP 443 pro odchozí přístup k Internetu vyžaduje.
-* Globální adresa URL: *.azure-automation.net
-* Globální adresa URL US Gov Virginie: *.azure-automation.us
+* Port: Vyžádáním jenom TCP 443 pro odchozí přístup k Internetu.
+* Global URL: *.azure-automation.net
+* Global URL of US Gov Virginia: *.azure-automation.us
 * Služba agenta: https://\<ID pracovního prostoru\>.agentsvc.azure-automation.net
 
 Doporučuje se použít adresy, které uvedete při definování výjimky. Pro IP adresy, které si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
 
 Pokud máte účet Automation, který je definován pro konkrétní oblasti, můžete omezit komunikaci s místní stejné datové centrum. Následující tabulka obsahuje záznam DNS pro každou oblast:
 
-| **Oblast** | **Záznam DNS** |
+| **Oblast** | **DNS record** |
 | --- | --- |
-| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice nepodařilo prod-1.azure-automation.net |
+| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada – střed |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
@@ -122,8 +122,8 @@ Pokud máte účet Automation, který je definován pro konkrétní oblasti, mů
 | Střed Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Austrálie – jihovýchod |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice nepodařilo prod-1.azure-automation.net |
-| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice nepodařilo prod-1.azure-automation.us |
+| Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Seznam oblastí IP adres místo názvů oblast, stáhněte si [IP adresy Datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653) XML soubor z webu Microsoft Download Center.
 
@@ -138,11 +138,11 @@ Seznam oblastí IP adres místo názvů oblast, stáhněte si [IP adresy Datacen
 
 Nad rámec standardních adresy a porty, které vyžaduje, aby Hybrid Runbook Worker jsou požadovány speciálně pro správu aktualizací těchto adres. Komunikace na tyto adresy se provádí přes port 443.
 
-|Veřejné Azure  |Azure Government  |
+|Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
@@ -151,3 +151,4 @@ Další řešení potíží s procesy Hybrid Runbook Worker, najdete v článku 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o konfiguraci runbooky pro automatizaci procesů do vašeho místního datového centra nebo jiné cloudové prostředí, najdete v článku [spouštění runbooků v procesu Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
+

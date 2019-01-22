@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 4c5fead0a7f4634a8f5ee005114d24cae9a2590f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7cb1acace3dd8605d7506013a6f1c0273dafa32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739817"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421432"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminuje chybná hesla ve vaší organizaci
 
@@ -30,7 +30,7 @@ Vedoucím postavením zjistíte to usnadňuje složité a ne se dají jednoduše
 
 Microsoft se vždy snaží být o krok před kybernetickými zločinci. Proto tým služby Azure AD Identity Protection průběžně běžně používané a ohrožení zabezpečení hesla vyhledat. Potom tato hesla, které se považují za moc známé v co se nazývá seznam zakázaných hesel globální blokují. Kybernetičtí zločinci také používají podobné strategie jejich útocích, proto Microsoft nebude publikován obsah tohoto seznamu veřejně. Tyto citlivá hesla jsou blokovány, než se stanou skutečnou hrozbou zákazníkům společnosti Microsoft. Další informace o aktuální zabezpečení, a to, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
 
-## <a name="preview-custom-banned-password-list"></a>Ve verzi Preview: Vlastní zakázané seznam hesel
+## <a name="preview-custom-banned-password-list"></a>Verze Preview: Vlastní seznam zakázaných hesel
 
 Některé organizace mohou chtít využít zabezpečení jeden krok dál tak, že přidáte vlastní úpravy na seznamu zakázaných hesel globální v co Microsoft volá seznamu vlastních zakázaných hesel. Podnikoví zákazníci jako Contoso rozhodnout blokovat variant jejich názvy, podmínky specifické pro společnost nebo dalších položek.
 
