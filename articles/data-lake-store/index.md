@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 14fde29a898eb42d57e67dc843c0c565c4c661c3
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4e2fcdac282d0cca9fe993efdaf787e43c2b6e9d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494857"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433812"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentace ke službě Azure Data Lake Storage Gen1
 
@@ -195,7 +195,7 @@ Pokud se chcete o verzi Preview služby Data Lake Storage Gen2 dozvědět víc, 
                     <div class="cardText">
                         <h3>Jazyky</h3>
                         <p><a href="/dotnet/api/overview/azure/data-lake-store">.NET</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.datalake.store">Java</a></p>
+                        <p><a href="/java/api/overview/azure/datalake">Java</a></p>
                         <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>
                         <p><a href="https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python">Python (správa účtů)</a></p>
                         <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (správa systému souborů)</a></p>

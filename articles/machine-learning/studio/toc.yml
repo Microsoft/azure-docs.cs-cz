@@ -212,23 +212,21 @@ items:
     href: /azure/templates/microsoft.machinelearning/allversions
 - name: Zdroje a prostředky
   items:
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
-  - name: Fórum MSDN
-    href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
-  - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-machine-learning
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Příručka pro vývojáře v R
     href: ../r-developers-guide.md
   - name: Vlastní neurální sítě s Net#
     href: azure-ml-netsharp-reference-guide.md
+  - name: Získat podporu
+    href: support-aml-studio.md
   - name: Porovnání našich produktů ML
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: a79ff2e7b2fba67e5c341468b462eacd07e2693c
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 585310705bebbceb0aa4576977ef096704d87483
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401941"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424781"
