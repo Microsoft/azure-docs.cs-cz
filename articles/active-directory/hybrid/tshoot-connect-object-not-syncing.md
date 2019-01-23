@@ -4,7 +4,7 @@ description: Řešit potíže způsobující objektu se nesynchronizuje do Azure
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b66aeb0832058c56e63c56c0420c7793eb2a632a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5b64472c6388a642c817fb67c97e963ecfa14c2c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312421"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478650"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Řešení potíží s objekt, který se nesynchronizuje do Azure AD
 
@@ -47,8 +47,8 @@ V horní polovině zobrazuje všechna spuštění v chronologickém pořadí. Ve
 
 | Status | Poznámka |
 | --- | --- |
-| zastavené-* |Spuštění se nepovedlo dokončit. Například, pokud vzdálený systém je vypnutý a nelze kontaktovat. |
-| Zastavit omezení chyb |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
+| stopped-* |Spuštění se nepovedlo dokončit. Například, pokud vzdálený systém je vypnutý a nelze kontaktovat. |
+| stopped-error-limit |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
 | dokončené -\*– chyby |Dokončení běhu, ale nejsou chyby (méně než 5 000), které by mělo být vypátráno. |
 | dokončené -\*– upozornění |Běh dokončen, ale některá data není v očekávaném stavu. Pokud už máte chyby, pak tato zpráva je obvykle pouze příznakem. Až vyřešíte chyby by neměl prozkoumat upozornění. |
 | úspěch |Žádné problémy. |
@@ -103,7 +103,7 @@ Můžete také uvidíte **PasswordSync** sloupec, který může přispívat v pr
 
 Na kartě rodokmenu můžete získat do úložiště metaverse kliknutím [vlastnosti objektu úložiště Metaverse](#mv-attributes).
 
-V dolní části všechny karty se nacházejí dvě tlačítka: **ve verzi Preview** a **protokolu**.
+V dolní části všechny karty se nacházejí dvě tlačítka: **Ve verzi Preview** a **protokolu**.
 
 ### <a name="preview"></a>Preview
 Na stránce ve verzi preview se používá k synchronizaci jeden jeden objekt. To je užitečné, pokud řešíte některá vlastní synchronizační pravidla a chcete posoudit účinek parametru změnu u jednoho objektu. Můžete vybrat mezi **Full sync** a **rozdílová synchronizace**. Můžete také vybrat mezi **generovat ve verzi Preview**, který pouze sleduje změny v paměti, a **potvrzení změn ve verzi Preview**, který aktualizovat úložiště metaverse a zpracuje všechny změny prostor konektoru cíl.  

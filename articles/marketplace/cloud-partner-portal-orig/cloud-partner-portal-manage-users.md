@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d24cf56a898a4f4f8317246cbc2317e926256a77
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 56c646c2ab1f733c37a20cf6e6a5945b223beec4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809315"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447271"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>Správa uživatelů na portál cloud partner
 ======================================
@@ -36,20 +36,20 @@ K **přidat uživatele a přiřadit role** publikování nabídky, postupujte po
 <a name="step-2-click-add-user"></a>Krok 2. Klikněte na Přidat uživatele.
 -----------------------
 
-![Vyberte Adducer](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
+![Výběr možnosti Přidat uživatele](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
 
 <a name="step-3-type-email-address-and-select-a-role-assignment"></a>Krok 3. Zadejte e-mailovou adresu a vyberte přiřazení role.
 --------------------------------------------------------
 
 Můžete přidat nového uživatele jako "vlastník" nebo "Přispěvatel".
 
-**E-mailu**: přidat e-mailové adresy členové týmu, kteří budou pracovat na publikování nabídky. Jsou podporovány účty Microsoft (Outlook, Hotmail a Live) a ID organizace.
+**e-mailu**: Přidáte e-mailové adresy členové týmu, kteří budou pracovat na publikování nabídky. Jsou podporovány účty Microsoft (Outlook, Hotmail a Live) a ID organizace.
 
 o přidat "týmu nebo skupiny e-mailu alias nebo skupinu zabezpečení ' v případě, že jednotlivé práce na tuto nabídku opustí organizaci.
 
 Ujistěte se, že e-mailu ID, které jsou k dispozici na na portál Cloud Partner jsou sledovány pro jakékoli komunikaci od společnosti Microsoft o.
 
-**Role**: naleznete v tabulce níže identifikovat typ odpovídající uživatelské role.
+**Role**: Naleznete v tabulce níže identifikovat typ odpovídající uživatelské role.
 
 ![Přiřazení Role](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
 ![úroveň role](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
@@ -59,7 +59,8 @@ V současné době přístupná pouze vlastníci kartách výplaty Azure a záka
 <a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Krok 4. Vyberte název vydavatele, který chcete přidat nového uživatele a pak klikněte na tlačítko Přidat k dokončení přidání uživatele.
 ----------------------------------------------------------------------------------------------------------------------------
 
-> `NOTE: The ‘publisher names’ for which your email is added as an owner or contributor will show up in the drop-down list of Publisher for selection.`
+> [!NOTE]
+> "Názvy vydavatelů se u kterých je váš e-mail přidán jako vlastníka nebo přispěvatele se zobrazí v rozevíracím seznamu vydavatele pro výběr."
 
 ![Přiřazení Role – vyberte vydavatele](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

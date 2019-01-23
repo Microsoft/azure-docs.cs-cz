@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Instance služby synchronizace | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Synchronizovat instance služby | Dokumentace Microsoftu'
 description: Tato stránka dokumenty speciální aspekty pro instance služby Azure AD.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: f340ea11-8ff5-4ae6-b09d-e939c76355a3
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d086b958ddca6caded19cc02a790f8091aba993e
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be20f50b68ab3715e2b7a98db208dcd81a995f1b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425164"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463877"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Speciální aspekty pro instance
 Azure AD Connect je nejčastěji používaná celosvětové instance služby Azure AD a Office 365. Ale existují také jiné instance a ty mají různé požadavky na adresy URL a další důležité.
@@ -41,7 +41,7 @@ Funkce aktuálně není k dispozici v Microsoft cloudu Německo:
 * **Zpětný zápis hesla** dostupná ve verzi preview služby Azure AD Connect verze 1.1.570.0 a po.
 * Další služby Azure AD Premium nejsou k dispozici.
 
-## <a name="microsoft-azure-government-cloud"></a>Cloud Microsoft Azure Government
+## <a name="microsoft-azure-government-cloud"></a>Microsoft Azure Government cloud
 [Cloudu Microsoft Azure Government](https://azure.microsoft.com/features/gov/) je cloud určený pro státní správu USA.
 
 Tento cloud má byla podporuje starší verze nástroje DirSync. Z buildu 1.1.180 služby Azure AD Connect se podporuje další generaci cloudu. Tato generace používá pouze pro USA založené na koncových bodech a mít různé seznamy adres URL pro otevření v proxy serveru.

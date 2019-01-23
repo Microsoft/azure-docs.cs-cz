@@ -1,11 +1,11 @@
 ---
-title: 'Synchronizace Azure AD Connect: způsob správy účtu služby Azure AD | Dokumentace Microsoftu'
+title: 'Synchronizace Azure AD Connect: Jak spravovat účet služby Azure AD | Dokumentace Microsoftu'
 description: Toto téma popisuje postup při obnovení účtu služby Azure AD.
 services: active-directory
 keywords: AADSTS70002, AADSTS50054, jak resetovat heslo pro účet konektoru služby synchronizace Azure AD Connect
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6077043a-27f1-4304-a44b-81dc46620f24
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 93dcbe5ceac87d84db9638de6d5fe120de8c2d36
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8fd8667484284fba8ba30e2f078538e7ed1888ef
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313646"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461362"
 ---
-# <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Synchronizace Azure AD Connect: způsob správy účtu služby Azure AD
+# <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Synchronizace Azure AD Connect: Jak spravovat účet služby Azure AD
 Účet služby používaný nástrojem konektor služby Azure AD by měla být služba zdarma. Pokud potřebujete resetovat svoje přihlašovací údaje, toto téma je za vás. Například pokud globální správce má omylem resetovat heslo k účtu služby pomocí prostředí PowerShell.
 
 ## <a name="reset-the-credentials"></a>Resetovat přihlašovací údaje
@@ -42,16 +42,16 @@ Tato část se seznam chyb hlášených zákazníky, které byly opraveny pově�
 - - -
 Událost 6900  
 Na serveru došlo k neočekávané chybě při zpracování oznámení o změně hesla:  
-AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: Staré heslo se používá k ověřování.
+AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: K ověřování se používá staré heslo.
 
 - - -
 Událost 659  
 Chyba při načítání konfigurace synchronizace zásad hesel. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
-AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: Staré heslo se používá k ověřování.
+AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: K ověřování se používá staré heslo.
 
 ## <a name="next-steps"></a>Další postup
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 

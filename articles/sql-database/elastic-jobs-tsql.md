@@ -12,18 +12,18 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: eda71351b0375789d41808f9351cf000945b5f4c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606805"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449397"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
 Tento článek obsahuje mnoho ukázkové scénáře, abyste mohli začít pracovat s Elastickými úlohami pomocí jazyka T-SQL.
 
-V příkladech se používá [uložených procedur komponentami TableAdapter](#job-stored-procedures) a [zobrazení](#job-views) k dispozici v [ *databáze úloh*](elastic-jobs-overview.md#job-database).
+V příkladech se používá [uložených procedur komponentami TableAdapter](#job-stored-procedures) a [zobrazení](#job-views) k dispozici v [ *databáze úloh*](sql-database-job-automation-overview.md#job-database).
 
 Příkaz Transact-SQL (T-SQL) slouží k vytváření, konfiguraci, spuštění a Správa úloh. Vytvoření agenta Elastických úloh není podporováno v T-SQL, proto je nutné nejprve vytvořit *agenta Elastických úloh* pomocí portálu, nebo [Powershellu](elastic-jobs-powershell.md#create-the-elastic-job-agent).
 
@@ -53,7 +53,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>Vytvořte cílovou skupinu (servery)
 
 Následující příklad ukazuje, jak spustit úlohu proti všem databázím na serveru.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 
 ```sql
@@ -78,7 +78,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-a-single-database"></a>Vyloučit izolované databáze
 
 Následující příklad ukazuje, jak spustit úlohu proti všem databázím na serveru, s výjimkou databázi s názvem *MappingDB*.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -121,7 +121,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>Vytvořte cílovou skupinu (fondy)
 
 Následující příklad ukazuje, jak cílit na všechny databáze v jedné nebo víc elastických fondů.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -146,7 +146,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>Nasazení nové schéma pro velký počet databází
 
 Následující příklad ukazuje, jak nasadit nové schéma pro všechny databáze.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 
 ```sql
@@ -195,7 +195,7 @@ Ve výchozím nastavení bude vypadat agent úlohy k vytvoření této tabulky m
 2. Další sloupec pro internal_execution_id s datovým typem uniqueidentifier.
 3. Neclusterovaný index s názvem "IX_<TableName>_Internal_Execution_ID" ve sloupci internal_execution_id.
 
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkazy:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkazy:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -266,7 +266,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ## <a name="view-job-definitions"></a>Definice zobrazení úloh
 
 Následující příklad ukazuje, jak zobrazit aktuální definice úlohy.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -287,7 +287,7 @@ select * from jobs.jobsteps
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>Zahájit provádění ad-hoc úlohy
 
 Následující příklad ukazuje, jak chcete okamžitě spustit úlohu.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,7 +310,7 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>Plánování spouštění úlohy
 
 Následující příklad ukazuje, jak naplánovat úlohu pro budoucí spouštění.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -325,7 +325,7 @@ EXEC jobs.sp_update_job
 ## <a name="monitor-job-execution-status"></a>Stav provádění úlohy monitorování
 
 Následující příklad ukazuje, jak chcete-li zobrazit podrobnosti o stavu spuštění pro všechny úlohy.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -354,7 +354,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>Zrušení úlohy
 
 Následující příklad ukazuje, jak zrušit úlohy.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -373,7 +373,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>Odstranit staré historie úlohy
 
 Následující příklad ukazuje, jak odstranit historii úloh před k určitému datu.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -387,7 +387,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>Odstranění úlohy a všechny jeho historie úloh
 
 Následující příklad ukazuje, jak odstranit úlohu a všechny související historie úlohy.  
-Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkaz:
+Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -402,7 +402,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 ## <a name="job-stored-procedures"></a>Úloha uložené procedury
 
-Následující uložené procedury jsou v [úloh databáze](elastic-jobs-overview.md#job-database).
+Následující uložené procedury jsou v [úloh databáze](sql-database-job-automation-overview.md#job-database).
 
 
 
@@ -456,7 +456,7 @@ Popis úlohy. Popis je nvarchar(512), výchozí hodnota je NULL. Pokud popis je 
 [  **@enabled =** ] povolená  
 Plán úloh Určuje, zda je povoleno. Povolena je bit, výchozí hodnota je 0 (zakázáno). Pokud je 0, úloha není povoleno a nespustí podle zadaného plánu; Nicméně jej lze spustit ručně. Pokud 1, úloha se spustí podle zadaného plánu a můžete spustit také ručně.
 
-[  **@schedule_interval_type =**] schedule_interval_type  
+[ **@schedule_interval_type =**] schedule_interval_type  
 Hodnota znamená, když je úloha má být proveden. schedule_interval_type je nvarchar(50), výchozí hodnota je jednou a může být jedna z následujících hodnot:
 - Jednou,
 - 'Minuty'
@@ -465,7 +465,7 @@ Hodnota znamená, když je úloha má být proveden. schedule_interval_type je n
 - "Týdnů.
 - "Měsíců.
 
-[  **@schedule_interval_count =** ] schedule_interval_count  
+[ **@schedule_interval_count =** ] schedule_interval_count  
 Počet období schedule_interval_count ke kterým dochází mezi každé spuštění úlohy. schedule_interval_count je int, výchozí hodnota je 1. Hodnota musí být větší než nebo rovno 1.
 
 [  **@schedule_start_time =** ] schedule_start_time  
@@ -522,7 +522,7 @@ Popis úlohy. Popis je nvarchar(512).
 [  **@enabled =** ] povolená  
 Určuje, jestli plán úloh je povoleno (1) nebo nejsou povolené (0). Povolena je bit.
 
-[  **@schedule_interval_type=** ] schedule_interval_type  
+[ **@schedule_interval_type=** ] schedule_interval_type  
 Hodnota znamená, když je úloha má být proveden. schedule_interval_type je nvarchar(50) a může být jedna z následujících hodnot:
 
 - Jednou,
@@ -532,7 +532,7 @@ Hodnota znamená, když je úloha má být proveden. schedule_interval_type je n
 - "Týdnů.
 - "Měsíců.
 
-[  **@schedule_interval_count=** ] schedule_interval_count  
+[ **@schedule_interval_count=** ] schedule_interval_count  
 Počet období schedule_interval_count ke kterým dochází mezi každé spuštění úlohy. schedule_interval_count je int, výchozí hodnota je 1. Hodnota musí být větší než nebo rovno 1.
 
 [  **@schedule_start_time=** ] schedule_start_time  
@@ -656,16 +656,16 @@ Zpoždění před prvním opakováním pokus selže při pokusu o provedení po�
 [  **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Maximální zpoždění mezi opakovanými pokusy. Pokud by růst větší než tato hodnota zpoždění mezi opakovanými pokusy, to je se na tuto hodnotu místo toho uzavřeny. maximum_retry_interval_seconds je int, s výchozí hodnotou 120.
 
-[  **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Násobitel použít na zpoždění opakování, pokud více úloh kroku spuštění pokusí selhání. Například pokud prvním opakováním měli trvat 5 sekund a omezení rychlosti multiplikátor je 2.0, pak druhý opakování budou mít ke zpoždění 10 sekund a třetí opakování budou mít ke zpoždění 20 sekund. retry_interval_backoff_multiplier je skutečný s výchozí hodnotou 2.0.
 
 [  **@retry_attempts =** ] retry_attempts  
 Počet pokusů o zopakování provedení počáteční pokus nebude úspěšný. Například pokud je hodnota retry_attempts 10, pak bude 1 počáteční pokus a 10 pokusy o opakování, poskytuje celkový počet pokusů o zadání 11. Pokud se poslední opakovaný pokus nezdaří, bude ukončen provádění úlohy se životního cyklu se nezdařilo. retry_attempts je int, s výchozí hodnotou 10.
 
-[  **@step_timeout_seconds =** ] step_timeout_seconds  
+[ **@step_timeout_seconds =** ] step_timeout_seconds  
 Maximální množství času kroku ke spuštění. Pokud dojde k překročení této doby bude ukončen provádění úlohy s životního cyklu vypršel časový limit. step_timeout_seconds je int, s výchozí hodnotou 43 200 sekund (12 hodin).
 
-[  **@output_type =** ] "output_type.  
+[ **@output_type =** ] 'output_type'  
 Pokud není null, typ cílového umístění, které sady výsledků dotazu prvním příkazu je zapsán do. output_type je nvarchar(50), výchozí hodnota je NULL.
 
 Je-li zadána, hodnota musí být SQL Database.
@@ -679,13 +679,13 @@ Popis musí.
 [  **@output_resource_group_name =** ] "output_resource_group_name.  
 Popis musí.
 
-[  **@output_server_name =** ] "output_server_name.  
+[ **@output_server_name =** ] 'output_server_name'  
 Pokud není null, plně kvalifikovaný název DNS serveru, který obsahuje výstup cílové databázi. Je třeba zadat Pokud output_type rovná SQL Database. output_server_name je nvarchar(256), výchozí hodnota je NULL.
 
 [  **@output_database_name =** ] "output_database_name.  
 Pokud není null, název databáze, která obsahuje výstupní cílové tabulky. Je třeba zadat Pokud output_type rovná SQL Database. output_database_name je nvarchar(128), výchozí hodnota je NULL.
 
-[  **@output_schema_name =** ] "output_schema_name.  
+[ **@output_schema_name =** ] 'output_schema_name'  
 Pokud není null, název schématu SQL, který obsahuje výstup cílové tabulky. Pokud output_type shodná s SQL Database, výchozí hodnota je dbo. output_schema_name je nvarchar(128).
 
 [  **@output_table_name =** ] "output_table_name.  
@@ -786,16 +786,16 @@ Zpoždění před prvním opakováním pokus selže při pokusu o provedení po�
 [  **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Maximální zpoždění mezi opakovanými pokusy. Pokud by růst větší než tato hodnota zpoždění mezi opakovanými pokusy, to je se na tuto hodnotu místo toho uzavřeny. maximum_retry_interval_seconds je int, s výchozí hodnotou 120.
 
-[  **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Násobitel použít na zpoždění opakování, pokud více úloh kroku spuštění pokusí selhání. Například pokud prvním opakováním měli trvat 5 sekund a omezení rychlosti multiplikátor je 2.0, pak druhý opakování budou mít ke zpoždění 10 sekund a třetí opakování budou mít ke zpoždění 20 sekund. retry_interval_backoff_multiplier je skutečný s výchozí hodnotou 2.0.
 
 [  **@retry_attempts =** ] retry_attempts  
 Počet pokusů o zopakování provedení počáteční pokus nebude úspěšný. Například pokud je hodnota retry_attempts 10, pak bude 1 počáteční pokus a 10 pokusy o opakování, poskytuje celkový počet pokusů o zadání 11. Pokud se poslední opakovaný pokus nezdaří, bude ukončen provádění úlohy se životního cyklu se nezdařilo. retry_attempts je int, s výchozí hodnotou 10.
 
-[  **@step_timeout_seconds =** ] step_timeout_seconds  
+[ **@step_timeout_seconds =** ] step_timeout_seconds  
 Maximální množství času kroku ke spuštění. Pokud dojde k překročení této doby bude ukončen provádění úlohy s životního cyklu vypršel časový limit. step_timeout_seconds je int, s výchozí hodnotou 43 200 sekund (12 hodin).
 
-[  **@output_type =** ] "output_type.  
+[ **@output_type =** ] 'output_type'  
 Pokud není null, typ cílového umístění, které sady výsledků dotazu prvním příkazu je zapsán do. Resetovat hodnotu output_type zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_type je nvarchar(50), výchozí hodnota je NULL.
 
 Je-li zadána, hodnota musí být SQL Database.
@@ -803,13 +803,13 @@ Je-li zadána, hodnota musí být SQL Database.
 [  **@output_credential_name =** ] "output_credential_name.  
 Pokud není null, název databáze s rozsahem přihlašovací údaj, který se používá pro připojení k cílové databázi výstup. Je třeba zadat Pokud output_type rovná SQL Database. Resetovat hodnotu output_credential_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_credential_name je nvarchar(128) s výchozí hodnotou Null.
 
-[  **@output_server_name =** ] "output_server_name.  
+[ **@output_server_name =** ] 'output_server_name'  
 Pokud není null, plně kvalifikovaný název DNS serveru, který obsahuje výstup cílové databázi. Je třeba zadat Pokud output_type rovná SQL Database. Resetovat hodnotu output_server_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_server_name je nvarchar(256), výchozí hodnota je NULL.
 
 [  **@output_database_name =** ] "output_database_name.  
 Pokud není null, název databáze, která obsahuje výstupní cílové tabulky. Je třeba zadat Pokud output_type rovná SQL Database. Resetovat hodnotu output_database_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_database_name je nvarchar(128), výchozí hodnota je NULL.
 
-[  **@output_schema_name =** ] "output_schema_name.  
+[ **@output_schema_name =** ] 'output_schema_name'  
 Pokud není null, název schématu SQL, který obsahuje výstup cílové tabulky. Pokud output_type shodná s SQL Database, výchozí hodnota je dbo. Resetovat hodnotu output_schema_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_schema_name je nvarchar(128).
 
 [  **@output_table_name =** ] "output_table_name.  
@@ -1028,13 +1028,13 @@ Název cílové skupiny, ke které se přidají člena. target_group_name je nva
 [  **@membership_type =** ] "membership_type.  
 Určuje, pokud cílový člen skupiny budou zahrnuty nebo vyloučeny. target_group_name je nvarchar(128) s výchozí hodnotu "Zahrnutí". Platné hodnoty pro target_group_name jsou "Zahrnutí" nebo "Vyloučit".
 
-[  **@target_type =** ] "target_type –.  
-Typ cílové databázi nebo kolekci databází, včetně všech databází na serveru, všechny databáze v Elastickém fondu, všechny databáze v mapě horizontálních oddílů nebo jednotlivé databáze. target_type – je nvarchar(128) bez výchozí hodnoty. Target_type – platné hodnoty jsou "Systému SQL Server", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap". 
+[ **@target_type =** ] 'target_type'  
+Typ cílové databázi nebo kolekci databází, včetně všech databází na serveru, všechny databáze v Elastickém fondu, všechny databáze v mapě horizontálních oddílů nebo jednotlivé databáze. target_type is nvarchar(128), with no default. Target_type – platné hodnoty jsou "Systému SQL Server", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap". 
 
 [  **@refresh_credential_name =** ] "refresh_credential_name.  
 Název logického serveru. refresh_credential_name je nvarchar(128) bez výchozí hodnoty.
 
-[  **@server_name =** ] "Název_serveru"  
+[ **@server_name =** ] 'server_name'  
 Název logického serveru, který by měl být přidán do zadanou cílovou skupinu. název_serveru musí být zadaný po target_type – "Systému SQL Server". název_serveru je nvarchar(128) bez výchozí hodnoty.
 
 [  **@database_name =** ] "název_databáze.  
@@ -1109,7 +1109,7 @@ Odebere z cílová skupina členem cílové skupiny.
 Argumenty [ @target_group_name =] "target_group_name.  
 Název cílové skupiny, ze kterého chcete odebrat člena cílové skupiny. target_group_name je nvarchar(128) bez výchozí hodnoty.
 
-[ @target_id =] target_id  
+[ @target_id = ] target_id  
  Cíl identifikační číslo přiřazené cílový člen skupiny má být odebrán. target_id je uniqueidentifier, výchozí hodnota je NULL.
 
 #### <a name="return-code-values"></a>Hodnoty návratový kód
@@ -1190,7 +1190,7 @@ GO
 
 ## <a name="job-views"></a>Zobrazení úlohy
 
-Jsou k dispozici v následujících zobrazení [úloh databáze](elastic-jobs-overview.md#job-database).
+Jsou k dispozici v následujících zobrazení [úloh databáze](sql-database-job-automation-overview.md#job-database).
 
 
 |Zobrazení  |Popis  |
@@ -1206,7 +1206,7 @@ Jsou k dispozici v následujících zobrazení [úloh databáze](elastic-jobs-ov
 
 ### <a name="jobsexecutions-view"></a>jobs_executions zobrazení
 
-[úlohy]. [jobs_executions]
+[jobs].[jobs_executions]
 
 Zobrazí historii spuštění úlohy.
 
@@ -1215,18 +1215,18 @@ Zobrazí historii spuštění úlohy.
 |---------|---------|---------|
 |**job_execution_id**   |UniqueIdentifier|  Jedinečné ID instance provádění úlohy.
 |**hodnotu job_name**   |nvarchar(128)  |Název úlohy.
-|**parametrem job_id** |UniqueIdentifier|  Jedinečné ID úlohy.
+|**job_id** |UniqueIdentifier|  Jedinečné ID úlohy.
 |**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).
 |**step_id**    |int|   (Pro tuto úlohu) Jedinečný identifikátor pro krok. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**is_active**| Bit |Určuje, zda informace jsou aktivní nebo neaktivní. 1 označuje aktivní úlohy a 0 označuje neaktivní.
-|**životní cyklus**| nvarchar(50)|Hodnotu označující stav úlohy: 'Vytvořit', v průběhu, 'se nezdařil., "Bylo úspěšné", "Bylo přeskočeno", "SucceededWithSkipped"|
+|**lifecycle**| nvarchar(50)|Hodnotu označující stav úlohy: 'Vytvořit', v průběhu, 'se nezdařil., "Bylo úspěšné", "Bylo přeskočeno", "SucceededWithSkipped"|
 |**create_time**|   datetime2(7)|   Datum a čas vytvoření úlohy.
 |**start_time** |datetime2(7)|  Datum a čas spuštění úlohy spuštění. Hodnota NULL, pokud úloha ještě nebyla spuštěna.
 |**end_time**|  datetime2(7)    |Datum a čas dokončení provádění úlohy. Hodnota NULL, pokud úloha ještě nebyla spuštěna, nebo nebylo dosud dokončen.
 |**current_attempts**   |int    |Počet pokusů, které se na krok opakovat. Nadřazená úloha bude 0, podřízená úloha spuštění bude 1 nebo větší podle zásady spouštění.
 |**current_attempt_start_time** |datetime2(7)|  Datum a čas spuštění úlohy spuštění. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**last_message**   |nvarchar(max)| Zpráva historie úloh nebo krok. 
-|**target_type**|   nvarchar(128)   |Typ cílové databázi nebo kolekci databází, včetně všech databází serveru, všechny databáze v Elastickém fondu nebo v databázi. Target_type – platné hodnoty jsou "Systému SQL Server", "SqlElasticPool" nebo "SqlDatabase". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
+|**target_type**|   nvarchar(128)   |Typ cílové databázi nebo kolekci databází, včetně všech databází serveru, všechny databáze v Elastickém fondu nebo v databázi. Valid values for target_type are ‘SqlServer’, ‘SqlElasticPool’ or ‘SqlDatabase’. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_id**  |UniqueIdentifier|  Jedinečné ID člena cílové skupiny.  Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_group_name**  |nvarchar(128)  |Název cílové skupiny. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_server_name**|    nvarchar(256)|  Název logického serveru obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
@@ -1242,9 +1242,9 @@ Zobrazí všechny úlohy.
 |Název sloupce|   Typ dat|  Popis|
 |------|------|-------|
 |**hodnotu job_name**|  nvarchar(128)   |Název úlohy.|
-|**parametrem job_id**|    UniqueIdentifier    |Jedinečné ID úlohy.|
+|**job_id**|    UniqueIdentifier    |Jedinečné ID úlohy.|
 |**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
-|**Popis**    |nvarchar(512)| Popis pro úlohu. povolené bit označuje, zda je povoleno úlohy. 1 znamená povolené úlohy a 0 znamená zakázané úlohy.|
+|**description**    |nvarchar(512)| Popis pro úlohu. povolené bit označuje, zda je povoleno úlohy. 1 znamená povolené úlohy a 0 znamená zakázané úlohy.|
 |**schedule_interval_type** |nvarchar(50)   |Hodnota určující, kdy úloha má být provedena: "Po", 'Minuty', 'Hodiny', ' dnů","Týden","měsíců.
 |**schedule_interval_count**|   int|    Počet období schedule_interval_type ke kterým dochází mezi každé spuštění úlohy.|
 |**schedule_start_time**    |datetime2(7)|  Datum a čas, kdy byl poslední bylo zahájeno spuštění úlohy.|
@@ -1253,14 +1253,14 @@ Zobrazí všechny úlohy.
 
 ### <a name="jobversions-view"></a>job_versions zobrazení
 
-[úlohy]. [job_verions]
+[jobs].[job_verions]
 
 Zobrazí všechny verze úlohy.
 
 |Název sloupce|   Typ dat|  Popis|
 |------|------|-------|
 |**hodnotu job_name**|  nvarchar(128)   |Název úlohy.|
-|**parametrem job_id**|    UniqueIdentifier    |Jedinečné ID úlohy.|
+|**job_id**|    UniqueIdentifier    |Jedinečné ID úlohy.|
 |**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
 
 
@@ -1273,7 +1273,7 @@ Zobrazí všechny kroky v aktuální verzi každou úlohu.
 |Název sloupce    |Typ dat| Popis|
 |------|------|-------|
 |**hodnotu job_name**   |nvarchar(128)| Název úlohy.|
-|**parametrem job_id** |UniqueIdentifier   |Jedinečné ID úlohy.|
+|**job_id** |UniqueIdentifier   |Jedinečné ID úlohy.|
 |**job_version**|   int|    Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
 |**step_id**    |int    |(Pro tuto úlohu) Jedinečný identifikátor pro krok.|
 |**STEP_NAME**  |nvarchar(128)  |(Pro tuto úlohu) jedinečný název kroku.|
@@ -1301,13 +1301,13 @@ Zobrazí všechny kroky v aktuální verzi každou úlohu.
 
 ### <a name="jobstepversions-view"></a>jobstep_versions zobrazení
 
-[úlohy]. [jobstep_versions]
+[jobs].[jobstep_versions]
 
 Zobrazí všechny kroky ve všech verzích každé úlohy. Schéma je stejný jako [kroky úlohy](#jobsteps-view).
 
-### <a name="targetgroups-view"></a>target_groups zobrazení
+### <a name="targetgroups-view"></a>target_groups view
 
-[úlohy]. [target_groups]
+[jobs].[target_groups]
 
 Uvádí všechny cílové skupiny.
 
@@ -1316,9 +1316,9 @@ Uvádí všechny cílové skupiny.
 |**target_group_name**| nvarchar(128)   |Název cílové skupiny, kolekce databází. 
 |**target_group_id**    |UniqueIdentifier   |Jedinečné ID cílové skupiny.
 
-### <a name="targetgroupsmembers-view"></a>target_groups_members zobrazení
+### <a name="targetgroupsmembers-view"></a>target_groups_members view
 
-[úlohy]. [target_groups_members]
+[jobs].[target_groups_members]
 
 Zobrazuje všechny členy všechny cílové skupiny.
 
@@ -1332,8 +1332,8 @@ Zobrazuje všechny členy všechny cílové skupiny.
 |**refresh_credential_name**    |nvarchar(128)  |Název databáze s rozsahem přihlašovací údaje použité pro připojení k cílové člena skupiny.|
 |**subscription_id**    |UniqueIdentifier|  Jedinečné ID předplatného.|
 |**resource_group_name**    |nvarchar(128)| Název skupiny prostředků, ve kterém se nachází cílový člen skupiny.|
-|**název_serveru**    |nvarchar(128)  |Název logického serveru obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". |
-|**Název databáze database_name**  |nvarchar(128)  |Název databáze, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlDatabase".|
+|**server_name**    |nvarchar(128)  |Název logického serveru obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". |
+|**database_name**  |nvarchar(128)  |Název databáze, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlDatabase".|
 |**elastic_pool_name**  |nvarchar(128)| Název elastického fondu obsažené v cílové skupině. Zadat, jenom když target_type – je "SqlElasticPool".|
 |**shard_map_name** |nvarchar(128)| Název mapy horizontálních oddílů, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlShardMap".|
 

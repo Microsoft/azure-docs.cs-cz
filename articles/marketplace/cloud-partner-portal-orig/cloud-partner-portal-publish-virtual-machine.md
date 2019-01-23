@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 519867b1e0607a769948c86af263c172e810d107
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9a2512c488ac368205da11d79de479a888735729
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078112"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448699"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Publikování virtuálního počítače na webu Azure Marketplace
 
@@ -84,7 +84,7 @@ Skladová položka se zobrazí v případě nadřazené nabídky na webu Azure M
     - Nabídka nastavení
     - Skladové položky
     - Marketplace
-    - Podpora každé zobrazení obsahuje sadu polí umožňující vyplnit. Povinné pole jsou označena červená hvězdička (\*)
+    - Podpora každé zobrazení obsahuje sadu polí umožňující vyplnit. Povinné pole jsou označeny červenou hvězdičkou (\*)
 
 ## <a name="to-configure-offer-settings"></a>Ke konfiguraci nastavení nabídky
 
@@ -138,7 +138,7 @@ Toto pole můžete zadat dostupnosti pro vaši skladovou jednotku v různých Cl
 
 Tato skladová položka je možné nasadit zákazníkům ve všech veřejných oblastech Azure, které integraci webu Marketplace.
 
-**Cloud Azure Government**
+**Azure Government Cloud**
 
 Tato skladová položka je možné nasadit v cloudu Azure Government. Před publikováním na [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), doporučujeme, abyste vydavatelé otestovat a ověřit svoje řešení funguje podle očekávání. Pro fázi a testování [požádat o zkušební verzi účtu](https://azure.microsoft.com/offers/ms-azr-usgov-0044p). 
 

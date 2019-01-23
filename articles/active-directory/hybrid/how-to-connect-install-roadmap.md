@@ -1,9 +1,9 @@
 ---
-title: Plán instalace Azure AD Connect a Azure AD Connect Health | Microsoft Docs
+title: Plán instalace Azure AD Connect a Azure AD Connect Health | Dokumenty Microsoft
 description: Tento dokument obsahuje přehled možností instalace a cest, které jsou k dispozici pro instalaci Azure AD Connect a Connect Health.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5da946ff0c9bdda91668999db2fccdd12a67c0d2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 149c6436101750811af9ba3051ab715dd9eac021
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253189"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462331"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
 
@@ -55,7 +55,7 @@ Také asi bude chtít připravit na problematiku [provozu](how-to-connect-sync-o
 |Podporované topologie | [Topologie pro Azure AD Connect](plan-connect-topologies.md)|
 |Koncepty návrhu | [Koncepty návrhu Azure AD Connect](plan-connect-design-concepts.md)|
 |Účty použité k instalaci | [Další informace o účtech a oprávněních služby Azure AD Connect](reference-connect-accounts-permissions.md)|
-|Provozní plánování | [Synchronizace Azure AD Connect: Provozní úlohy a požadavky](how-to-connect-sync-operations.md)|
+|Provozní plánování | [Synchronizace Azure AD Connect: Provozní úlohy a důležité informace](how-to-connect-sync-operations.md)|
 |Možnosti přihlášení uživatele | [Možnosti přihlášení uživatele Azure AD Connect](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>Konfigurace synchronizačních funkcí
@@ -97,9 +97,9 @@ Model konfigurace v synchronizaci se označuje [deklarativní zřizování](conc
 |Téma |Odkaz|  
 | --- | --- |
 |Všechny články o synchronizaci služby Azure AD Connect | [Synchronizace služby Azure AD Connect](how-to-connect-sync-whatis.md)|
-|Technické koncepty | [Synchronizace služby Azure AD Connect: Technické koncepty](how-to-connect-sync-technical-concepts.md)|
-|Principy výchozí konfigurace | [Synchronizace služby Azure AD Connect: Principy výchozí konfigurace](concept-azure-ad-connect-sync-default-configuration.md)|
-|Principy uživatelů a kontaktů | [Synchronizace služby Azure AD Connect: Principy uživatelů a kontaktů](concept-azure-ad-connect-sync-user-and-contacts.md)|
+|Technické koncepty | [Synchronizace Azure AD Connect: Technické koncepce](how-to-connect-sync-technical-concepts.md)|
+|Principy výchozí konfigurace | [Synchronizace Azure AD Connect: Principy výchozí konfigurace](concept-azure-ad-connect-sync-default-configuration.md)|
+|Principy uživatelů a kontaktů | [Synchronizace Azure AD Connect: Principy uživatelů a kontaktů](concept-azure-ad-connect-sync-user-and-contacts.md)|
 |Deklarativní zřizování | [Synchronizace služby Azure AD Connect: Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |Změna výchozí konfigurace | [Osvědčené postupy pro změnu výchozí konfigurace](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
@@ -158,13 +158,13 @@ Portál služby Azure AD Connect Health umožňuje zobrazovat upozornění, moni
     
 ![Portál služby Azure AD Connect Health](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **Rychlý start:** Po výběru této možnosti se otevře okno **Rychlý start**. Výběrem možnosti **Získat nástroje** si můžete stáhnout agenta služby Azure AD Connect Health. Máte také přístup k dokumentaci a můžete nám poskytnout zpětnou vazbu.
-* **Azure Active Directory Connect (synchronizace):** Tato možnost ukazuje vaše servery Azure AD Connect, které služba Azure AD Connect Health aktuálně monitoruje. Položka **Chyby synchronizace** ukazuje základní chyby synchronizace vaší první zaregistrované služby synchronizace podle kategorií. Po výběru položky **Služby synchronizace** se otevře okno s informacemi o vašich serverech Azure AD Connect. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health pro synchronizaci](how-to-connect-health-sync.md).
-* **Active Directory Federation Services:** Tato možnost ukazuje všechny služby AD FS, které služba Azure AD Connect Health aktuálně monitoruje. Po výběru některé instance se otevře okno s informacemi o příslušné instanci služby. Tyto informace zahrnují přehled, vlastnosti, výstrahy, monitorování a analýzu využití. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md).
-* **Active Directory Domain Services:** Tato možnost ukazuje všechny doménové struktury AD DS, které služba Azure AD Connect Health aktuálně monitoruje. Po výběru některé doménové struktury se otevře okno s informacemi o příslušné doménové struktuře. Tyto informace zahrnují přehled základních informací, řídicí panel Řadiče domény, řídicí panel Stav replikace, upozornění a monitorování. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md).
-* **Konfigurace:** Tato část umožňuje zapnout nebo vypnout následující možnosti:
+* **Rychlý Start**: Když vyberete tuto možnost, **rychlý Start** se otevře okno. Výběrem možnosti **Získat nástroje** si můžete stáhnout agenta služby Azure AD Connect Health. Máte také přístup k dokumentaci a můžete nám poskytnout zpětnou vazbu.
+* **Azure Active Directory Connect (sync)**: Tato možnost ukazuje vaše servery Azure AD Connect, které aktuálně monitoruje služba Azure AD Connect Health. Položka **Chyby synchronizace** ukazuje základní chyby synchronizace vaší první zaregistrované služby synchronizace podle kategorií. Po výběru položky **Služby synchronizace** se otevře okno s informacemi o vašich serverech Azure AD Connect. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health pro synchronizaci](how-to-connect-health-sync.md).
+* **Active Directory Federation Services**: Tato možnost ukazuje všechny služby AD FS, které aktuálně monitoruje služba Azure AD Connect Health. Po výběru některé instance se otevře okno s informacemi o příslušné instanci služby. Tyto informace zahrnují přehled, vlastnosti, výstrahy, monitorování a analýzu využití. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md).
+* **Active Directory Domain Services**: Tato možnost ukazuje všechny doménové struktury AD DS, které aktuálně monitoruje služba Azure AD Connect Health. Po výběru některé doménové struktury se otevře okno s informacemi o příslušné doménové struktuře. Tyto informace zahrnují přehled základních informací, řídicí panel Řadiče domény, řídicí panel Stav replikace, upozornění a monitorování. Další informace o těchto možnostech najdete v tématu [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md).
+* **Konfigurace**: Tato část obsahuje možnosti, jak zapnout nebo vypnout následující:
 
-  - Položka **Nastavení** obsahuje základní konfigurace vašich agentů. Nastavení automatického upgradu umožňuje automaticky aktualizovat agenta služby Azure AD Connect Health na nejnovější verzi: aktualizace na nejnovější verzi agenta služby Azure AD Connect Health proběhne automaticky pokaždé, když bude taková verze k dispozici. Tato možnost je ve výchozím nastavení zapnutá. Umožnit Microsoftu přístup k datům o stavu adresáře Azure AD výhradně pro účely řešení problémů: Pokud je tato možnost povolená, Microsoft bude moci zobrazit stejná data, která vidíte vy. Tyto informace můžou pomoci při řešení potíží a problémů. Tato možnost je ve výchozím nastavení zakázána.
+  - Položka **Nastavení** obsahuje základní konfigurace vašich agentů. Automatický upgrade nastavení umožňuje automaticky aktualizovat na nejnovější verzi agenta Azure AD Connect Health: Které budou automaticky aktualizovány na nejnovější verze Agent Azure AD Connect Health Jakmile budou k dispozici. Tato možnost je ve výchozím nastavení zapnutá. Povolí Microsoftu přístup k datům o stavu adresáře Azure AD pro řešení potíží s pouze pro účely: Pokud je tato možnost povolena, Microsoft bude moci zobrazit stejná data, která se zobrazí. Tyto informace můžou pomoci při řešení potíží a problémů. Tato možnost je ve výchozím nastavení zakázána.
 * **Řízení přístupu na základě role (IAM):** V této části se spravuje přístup k datům služby Connect Health na základě role. 
 
 ## <a name="next-steps"></a>Další kroky

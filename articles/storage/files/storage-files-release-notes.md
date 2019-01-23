@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 1/14/2019
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 006a8172faae529ce9943773552da325bfae3f4b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 245314f0b7460cce270c97307e0719beebee472a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321530"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478633"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -72,7 +72,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 
 - Instalační balíček agenta musí být nainstalovaný oprávnění se zvýšenými oprávněními (správce).
 - Agent se nepodporuje v možnostech nasazení Windows Server Core nebo Nano Server.
-- Agent se podporuje pouze ve Windows Serveru 2016 a Windows Serveru 2012 R2.
+- Agent se podporuje jenom u 2019 serveru systému Windows, Windows Server 2016 a Windows Server 2012 R2.
 - Agent vyžaduje alespoň 2 GB paměti. Pokud na serveru běží na virtuálním počítači s povolenou dynamickou paměť, musí být virtuální počítač nakonfigurovaný s minimální MiB 2048 paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nachází na svazku, který má systémový svazek informace (SVI) adresář komprimované. Tato konfigurace bude vést k neočekávaným výsledkům.
 - Chyba zastavení 0x3B nebo Chyba stop 0x1E může dojít, když se vytvoří snímek služby VSS.

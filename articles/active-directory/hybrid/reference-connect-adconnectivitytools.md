@@ -2,20 +2,20 @@
 title: 'Azure AD Connect: Referenční informace prostředí PowerShell ADConnectivityTools | Dokumentace Microsoftu'
 description: Tento dokument obsahuje referenční informace pro modul Powershellu ADConnectivityTools.psm1.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d63c35d82a98d816c18dd299a8e0e81baa5bc8d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e398814e9ce8b98d8b1079d6f6c429e829c99d21
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425220"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462093"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: Referenční informace prostředí PowerShell ADConnectivityTools
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADConnectivityTools
 Následující dokumentace obsahuje referenční informace pro modul Powershellu ADConnectivityTools.psm1, která je součástí služby Azure AD Connect.
 
 ## <a name="confirm-dnsconnectivity"></a>Potvrďte DnsConnectivity
@@ -62,7 +62,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-Řadiče domény
+#### <a name="-dcs"></a>-DCs
 Určení řadiče domény pro porovnání výsledků testů.
 
 ```yaml
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v části about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-networkconnectivity"></a>Potvrďte NetworkConnectivity
+## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
 ### <a name="synopsis"></a>SYNOPSE
 Zjistí problémy s připojením k místní síti.
@@ -260,7 +260,7 @@ Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbos
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-dcs"></a>-Řadiče domény
+#### <a name="-dcs"></a>-DCs
 Určení řadiče domény pro porovnání výsledků testů.
 
 ```yaml
@@ -310,7 +310,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v části about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-targetsarereachable"></a>Potvrďte TargetsAreReachable
+## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
 ### <a name="synopsis"></a>SYNOPSE
 Určuje, zda zadané doménové struktury a její přidružené řadiče domény dostupný.
@@ -353,7 +353,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-Řadiče domény
+#### <a name="-dcs"></a>-DCs
 Určení řadiče domény pro porovnání výsledků testů.
 
 ```yaml
@@ -461,7 +461,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v části about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Potvrďte ValidEnterpriseAdminCredentials
+## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>SYNOPSE
 Ověří, pokud má uživatel přihlašovací údaje podnikového správce.
@@ -693,9 +693,9 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
-Pro vlastní instalace: Příznak, který je $True pokud uživatel vybral "Vytvořit nový účet AD" v okně Průvodce AADConnect účet doménové struktury služby AD.
+Pro vlastní zařízení: Příznak, který je $True, pokud uživatel vybral "Vytvořit nový účet AD" v okně Průvodce AADConnect účet doménové struktury služby AD.
 $False Pokud uživatel vybral "Použít existující účet AD".
-Hodnota této proměnné pro expresní instalace: Musí být $True pro expresní instalace.
+Pro expresní instalace: Hodnotu této proměnné musí být $True pro expresní instalace.
 
 ```yaml
 Type: Boolean
@@ -789,7 +789,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-logfilelocation"></a>-Parametrů LogFileLocation
+#### <a name="-logfilelocation"></a>-LogFileLocation
 Určuje, umístění souboru protokolu, který bude obsahovat výstup této funkce.
 
 ```yaml
@@ -804,7 +804,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-Řadiče domény
+#### <a name="-dcs"></a>-DCs
 Určení řadiče domény pro porovnání výsledků testů.
 
 ```yaml

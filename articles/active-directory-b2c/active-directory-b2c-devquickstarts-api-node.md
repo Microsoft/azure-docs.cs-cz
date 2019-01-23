@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5c89673f6154c77a40fb71ae483151998596e7fb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4016a81cd743149d846d425f1e2f7d5774a9e1fb
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354412"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449074"
 ---
 # <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>Zabezpečení webového rozhraní API s použitím prostředí Node.js v Azure Active Directory B2C
 
@@ -687,7 +687,7 @@ var findById = function(id, fn) {
 var oidcStrategy = new OIDCBearerStrategy(options,
     function(token, done) {
         log.info('verifying the user');
-        log.info(token, 'was the token retreived');
+        log.info(token, 'was the token retrieved');
         findById(token.sub, function(err, user) {
             if (err) {
                 return done(err);

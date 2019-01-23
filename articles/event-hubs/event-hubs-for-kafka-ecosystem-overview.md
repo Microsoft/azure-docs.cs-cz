@@ -3,19 +3,19 @@ title: Použití centra událostí z aplikací Apache Kafka – Azure Event Hubs
 description: Tento článek obsahuje informace o podporovaných Apache Kafka se službou Azure Event Hubs.
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: shvija
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 1c484b6418fd5a453713bc464fff690ef444f109
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8bf381e7c66e06bbaa140ed865f0f7c9b4f001af
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091182"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452339"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití služby Azure Event Hubs z aplikací Apache Kafka
 Služba Event Hubs poskytuje Kafka koncového bodu, který lze použít ve stávajících Kafka aplikací založených na jako alternativu ke spuštění clusteru Kafka. Podporuje Služba Event Hubs [protokolu Apache Kafka 1.0 nebo novější](https://kafka.apache.org/documentation/)a funguje s vašimi stávajícími aplikacemi Kafka, včetně nástroje MirrorMaker.  
@@ -31,7 +31,7 @@ Koncepčně Kafka a Event Hubs jsou téměř identické: jsou obě dělené prot
 | Koncept Kafka | Event Hubs koncept|
 | --- | --- |
 | Cluster | Obor názvů |
-| Téma | Event Hubs |
+| Téma | Centrum událostí |
 | Oddíl | Oddíl|
 | Skupina uživatelů | Skupina uživatelů |
 | Posun | Posun|
@@ -76,6 +76,4 @@ Tento článek poskytuje úvod do služby Event Hubs pro systém Kafka. Další 
 - [Připojení Akka Streams k centru událostí s podporou Kafka](event-hubs-kafka-akka-streams-tutorial.md)
 - [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
 
- 
- 
 

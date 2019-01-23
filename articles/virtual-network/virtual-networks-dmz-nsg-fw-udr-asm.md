@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 9c2ebcfc376456f63896ebae8331136aff0cdb99
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36d6733ddc73ace2026ea838cf8f701db95469e6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119437"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448462"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Příklad 3 – vytvoření DMZ k ochraně sítě pomocí brány Firewall, směrování definovaného uživatelem a skupiny zabezpečení sítě
 [Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -110,7 +110,7 @@ V tomto příkladu se používají následující příkazy k vytvoření směro
 
 1. Nejprve musí být vytvořená v základní tabulce směrování. Tento fragment kódu ukazuje vytvoření objektu v tabulce pro podsíť back-endu. Ve skriptu příslušné tabulky se vytvoří také pro front-endové podsítě.
    
-     Nové AzureRouteTable – název $BERouteTableName.
+     New-AzureRouteTable -Name $BERouteTableName `
    
          -Location $DeploymentLocation `
          -Label "Route table for $BESubnet subnet"
@@ -134,7 +134,7 @@ V tomto příkladu se používají následující příkazy k vytvoření směro
             -NextHopType VNETLocal
 5. Nakonec se do směrovací tabulky vytvořena a naplněna trasy definované uživatelem v tabulce musí nyní být vázán na podsíť. Ve skriptu je dále vázané směrovací tabulka front-endu na front-endové podsítě. Tady je skript vazby pro podsíť back-endu.
    
-     Set-AzureSubnetRouteTable - VirtualNetworkName $VNetName.
+     Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
    
         -SubnetName $BESubnet `
         -RouteTableName $BERouteTableName
@@ -241,7 +241,7 @@ I když není jasně zobrazen zde kvůli použití proměnné, ale koncové body
 
 Klienta správy bude potřeba nainstalovat na počítači pro správu brány firewall a vytváření konfigurací potřeba. O správě zařízení najdete v článku dodavatele dokumentace ke službě z vaší brány firewall (nebo jiné síťové virtuální zařízení). Zbývající část této části a v další části vytváření pravidel brány Firewall, popisuje konfigurace, brány firewall prostřednictvím dodavatele správy klienta (tzn. ne Azure portal nebo Powershellu).
 
-Pokyny pro stažení klienta a připojení k Barracuda použitý v tomto příkladu najdete tady: [Barracuda NG správce](https://techlib.barracuda.com/NG61/NGAdmin)
+Pokyny pro stažení klienta a připojení k Barracuda použitý v tomto příkladu najdete tady: [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
 
 Po přihlášení na bránu firewall, ale před vytvořením pravidel brány firewall, existují dvě požadovaný objekt třídy, které umožňují vytváření pravidel snadněji; Objekty, sítě a služby.
 
@@ -263,7 +263,7 @@ Druhý požadované objekty jsou objekty služby. Představují porty pro připo
 
 Hodnoty lze upravit k reprezentaci službu protokolu RDP pro konkrétní server. Pro AppVM01 výše uvedené výchozí pravidlo protokolu RDP by měl být upraven tak, aby odrážely nový název služby, popis a externí Port RDP v diagramu obrázek 8 (Poznámka: porty jsou změněny výchozí RDP 3389 pro externí port se používají pro tento konkrétní server v případě AppVM01 externí Port je 8025) upravenou službu jsou uvedené níže:
 
-![Pravidlo AppVM01][6]
+![AppVM01 Rule][6]
 
 Tento proces opakuje k vytvoření služby protokolu RDP pro ostatní servery; AppVM02 DNS01 a IIS01. Vytvoření těchto služeb bude zjednodušit vytváření pravidla a zřetelnější v další části.
 
@@ -312,10 +312,10 @@ Specifika každé pravidlo předpokladem pro dokončení v tomto příkladu jsou
      
      | Název pravidla | Server | Služba | Seznam cílů |
      | --- | --- | --- | --- |
-     | Protokol RDP IIS01 |IIS01 |IIS01 PROTOKOLU RDP |10.0.1.4:3389 |
-     | Protokol RDP DNS01 |DNS01 |DNS01 PROTOKOLU RDP |10.0.2.4:3389 |
-     | Protokol RDP AppVM01 |AppVM01 |AppVM01 protokolu RDP |10.0.2.5:3389 |
-     | Protokol RDP AppVM02 |AppVM02 |AppVm02 protokolu RDP |10.0.2.6:3389 |
+     | RDP-to-IIS01 |IIS01 |IIS01 RDP |10.0.1.4:3389 |
+     | RDP-to-DNS01 |DNS01 |DNS01 RDP |10.0.2.4:3389 |
+     | RDP-to-AppVM01 |AppVM01 |AppVM01 protokolu RDP |10.0.2.5:3389 |
+     | RDP-to-AppVM02 |AppVM02 |AppVm02 RDP |10.0.2.6:3389 |
 
 > [!TIP]
 > Usnadnit působnosti polích zdroje a služby se omezení možností útoku. Nejvíce omezený obor, který vám umožní funkce by měla sloužit.
@@ -777,7 +777,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
         $FatalError = $true}
     Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation variable is correct and the network config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
@@ -967,7 +967,7 @@ Pokud chcete nainstalovat ukázkovou aplikaci pro tuto a další příklady hran
 [3]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectfrontend.png "Vytvoření front-endové síti objektu"
 [4]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectdns.png "Vytvoření objektu serveru DNS"
 [5]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpa.png "Kopii výchozí pravidlo protokolu RDP"
-[6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "Pravidlo AppVM01"
+[6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "AppVM01 Rule"
 [7]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconapplicationredirect.png "Ikona aplikace pro přesměrování"
 [8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "Určení ikony NAT"
 [9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Ikona pass"

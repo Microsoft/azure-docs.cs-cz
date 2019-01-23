@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat zásady podmíněného přístupu pod
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b59e4898f85de7ad93d9172cdb3c551a17799194
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 2df2d716516cb8e451c054fce3e184e1b4bf3f9b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630479"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447594"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: Vyžadovat spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Jak: Spravovaná zařízení vyžadovat pro přístup k aplikaci cloud s podmíněným přístupem
 
 Ve světě upřednostňujícím mobilní a cloud na prvním Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k aplikacím a službám odkudkoli. Autorizovaní uživatelé měli přístup k vašim cloudovým aplikacím širokou škálu zařízení včetně mobilních a také osobní zařízení. Mnoho prostředí však mít aspoň pár aplikací, které by měl mít přístup jenom zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Tato zařízení jsou také známé jako spravovaná zařízení. 
 
@@ -34,9 +34,9 @@ Tento článek vysvětluje, jak nakonfigurovat zásady podmíněného přístupu
 
 Vyžadování spravovaných zařízení pro cloudové aplikace access ties **podmíněný přístup Azure AD** a **správu zařízení Azure AD** společně. Pokud nejste obeznámeni s jedním z těchto oblastí ještě, přečtěte si následující témata, nejdřív:
 
-- **[Podmíněný přístup ve službě Azure Active Directory](../active-directory-conditional-access-azure-portal.md) ** – Tento článek obsahuje koncepční přehled podmíněného přístupu a související terminologie.
+- **[Podmíněný přístup ve službě Azure Active Directory](../active-directory-conditional-access-azure-portal.md)**  – Tento článek obsahuje koncepční přehled podmíněného přístupu a související terminologie.
 
-- **[Úvod do správy zařízení ve službě Azure Active Directory](../devices/overview.md) ** – Tento článek obsahuje přehled různých možností, budete muset získat zařízení pod správou organizace kódu. 
+- **[Úvod do správy zařízení ve službě Azure Active Directory](../devices/overview.md)**  – Tento článek obsahuje přehled různých možností, budete muset získat zařízení pod správou organizace kódu. 
 
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -60,11 +60,11 @@ Jednoduše řečeno, spravovaná zařízení jsou zařízení, která jsou pod *
 
 Pokud chcete získat zařízení registrovaná službou Azure AD, máte tři možnosti:
 
-- **[Azure AD registrované zařízení](../devices/overview.md#azure-ad-registered-devices) ** – Pokud chcete získat osobní zařízení zaregistrované v Azure AD
+- **[Azure AD registrované zařízení](../devices/overview.md#azure-ad-registered-devices)**  – Pokud chcete získat osobní zařízení zaregistrované v Azure AD
 
-- **[Zařízení připojená k Azure AD](../devices/overview.md#azure-ad-joined-devices) ** – Pokud chcete získat organizační zařízení Windows 10, které není připojené k místní AD registrované v Azure AD. 
+- **[Zařízení připojená k Azure AD](../devices/overview.md#azure-ad-joined-devices)**  – Pokud chcete získat organizační zařízení Windows 10, které není připojené k místní AD registrované v Azure AD. 
 
-- **[Zařízení připojená k hybridní službě Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices) ** – Pokud chcete získat Windows 10 nebo podporovaných zařízení nižší úrovně, které je připojené k místní AD registrované v Azure AD.
+- **[Zařízení připojená k hybridní službě Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)**  – Pokud chcete získat Windows 10 nebo podporovaných zařízení nižší úrovně, které je připojené k místní AD registrované v Azure AD.
 
 Se spravované zařízení zaregistrovaného zařízení musí být buď **zařízení připojenému k hybridní službě Azure AD** nebo **zařízení, která byla označena jako vyhovující**.  
 

@@ -2,17 +2,17 @@
 title: Azure Event Grid obslužné rutiny událostí
 description: Popisuje obslužné rutiny událostí podporovaných pro Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2018
-ms.author: tomfitz
-ms.openlocfilehash: 12cc5a918044e3bc74e34f2e05adc9773dee5421
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 01/21/2019
+ms.author: spelluru
+ms.openlocfilehash: 33604a16f5895e20d4475d1dd8b27c34184feb72
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498653"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478463"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí ve službě Azure Event Grid
 
@@ -26,7 +26,7 @@ Zpracování událostí pomocí automatizované runbooky pomocí Azure Automatio
 
 |Titul  |Popis  |
 |---------|---------|
-|[Kurz: Automatizace Azure pomocí služby Event Grid a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Vytvořte virtuální počítač, který odešle událost. Událost se aktivuje runbook služby Automation, značky virtuální počítač, který aktivuje zprávu, která je odeslána do kanálu Microsoft Teams. |
+|[Kurz: Automatizace v Azure pomocí služby Event Grid a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Vytvořte virtuální počítač, který odešle událost. Událost se aktivuje runbook služby Automation, značky virtuální počítač, který aktivuje zprávu, která je odeslána do kanálu Microsoft Teams. |
 
 ## <a name="azure-functions"></a>Azure Functions
 

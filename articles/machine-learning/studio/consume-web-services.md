@@ -72,7 +72,7 @@ V [Azure Machine Learning Web Services portálu](https://services.azureml.net/):
 1. Klikněte na tlačítko **webových služeb** v horní nabídce.
 2. Klikněte na webovou službu, pro které chcete načíst klíč.
 
-Klikněte na tlačítko **použijte webovou službu** zobrazíte identifikátory URI pro požadavek Reposonse a spuštění služby Batch a ukázkový kód v C#, R a Python.
+Klikněte na tlačítko **použijte webovou službu** zobrazíte identifikátory URI pro Request-Response a spuštění služby Batch a ukázkový kód v C#, R a Python.
 
 Klikněte na tlačítko **rozhraní API Swaggeru** na získání Swaggeru podle dokumentace pro rozhraní API volat ze zadaných identifikátorů URI.
 
@@ -167,7 +167,7 @@ namespace CallRequestResponseService
                 {
                     Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
 
-                    // Print the headers - they include the requert ID and the timestamp,
+                    // Print the headers - they include the request ID and the timestamp,
                     // which are useful for debugging the failure
                     Console.WriteLine(response.Headers.ToString());
 
@@ -228,7 +228,7 @@ try:
 except urllib2.HTTPError, error: 
     print("The request failed with status code: " + str(error.code))
 
-    # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+    # Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
     print(error.info())
     print(json.loads(error.read())) 
 ```
@@ -280,7 +280,7 @@ if (httpStatus >= 400)
 {
 print(paste("The request failed with status code:", httpStatus, sep=" "))
 
-# Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+# Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
 print(headers)
 }
 

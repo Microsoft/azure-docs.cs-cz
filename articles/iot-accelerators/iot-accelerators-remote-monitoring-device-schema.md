@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3c2bca45a7927689992cf44fb70199e246641760
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635523"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445418"
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schématu modelu zařízení
 
@@ -22,7 +22,7 @@ Simulovaná zařízení v řešení vzdáleného monitorování můžete testova
 Tento článek popisuje schématu modelu zařízení, která určuje funkce a chování simulovaných zařízení. Model zařízení je uložená v souboru JSON.
 
 > [!NOTE]
-> Toto schéma modelu zařízení je jenom pro Simulovaná zařízení, které jsou hostované ve službě simulace zařízení. Pokud chcete vytvořit jedno fyzické zařízení, přečtěte si téma [připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
+> Toto schéma modelu zařízení je jenom pro Simulovaná zařízení, které jsou hostované ve službě simulace zařízení. Pokud chcete vytvořit skutečné zařízení, přečtěte si téma [připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
 V následujících článcích se vztahují k aktuální článku:
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 543ae7cecf9edcb5997a0bae66e0722d258a4523
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: eb66e5c84542127f63b6311a887494f1e2ba394c
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135301"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448784"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zprovoznění modelů strojového učení předdefinovaných Spark
 
@@ -120,7 +120,7 @@ Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinovan
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Příjem dat a vytvořit objekt frame, vyčištěnou dat
 Tato část obsahuje kód pro řadu úloh potřebných k ingestování dat zohlednit. Číst v připojeném k ukázce 0,1 % taxislužby cesty a tarif souboru (uložený jako soubor TSV), formát data a pak vytvoří čisté datového rámce.
 
-Soubory odezvy a tarif taxislužby byly připojené na základě na postup uvedený v: [vědecké zpracování týmových dat v akci: clusterů systému HDInsight Hadoop](hive-walkthrough.md) tématu.
+Soubory odezvy a tarif taxislužby byly připojené na základě na postup uvedený v: [Vědecké zpracování týmových dat v akci: clusterů systému HDInsight Hadoop](hive-walkthrough.md) tématu.
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -279,7 +279,7 @@ Také obsahuje kód, který ukazuje, jak škálovat data `StandardScalar` poskyt
                              line.trip_distance, line.fare_amount])
         return  features
 
-    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC RERESSION MODELS
+    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC REGRESSION MODELS
     def parseRowOneHotBinary(line):
         features = np.concatenate((np.array([line.pickup_hour, line.weekday, line.passenger_count,
                                             line.trip_time_in_secs, line.trip_distance, line.fare_amount]), 
@@ -524,7 +524,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Použití Sparku modelů prostřednictvím webového rozhraní
-Spark poskytuje mechanismus pro vzdáleně pomocí komponenty s názvem Livy odeslání dávkových úloh Hive nebo interaktivní dotazy pomocí rozhraní REST. Livy je povolené ve výchozím nastavení na svém clusteru HDInsight Spark. Další informace o Livy najdete v tématu: [odesílání Sparkových úloh pomocí Livy vzdáleně](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+Spark poskytuje mechanismus pro vzdáleně pomocí komponenty s názvem Livy odeslání dávkových úloh Hive nebo interaktivní dotazy pomocí rozhraní REST. Livy je povolené ve výchozím nastavení na svém clusteru HDInsight Spark. Další informace o Livy najdete v tématu: [Odesílání Sparkových úloh pomocí Livy vzdáleně](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Vám pomůže Livy vzdáleně odešlete úlohu, jejíž batch skóre, které se soubor, který je uložený v objektu blob Azure a výsledky pak zapíše do jiného objektu blob. K tomuto účelu můžete nahrát skript Pythonu z  
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do objektu blob z clusteru Spark. Můžete použít nástroje, jako je **Microsoft Azure Storage Explorer** nebo **AzCopy** zkopírujte skript do objektu blob clusteru. V našem případě jsme nahráli skript, který chcete ***wasb:///example/python/ConsumeGBNYCReg.py***.   
@@ -555,7 +555,7 @@ Zde je kód Python pro volání HTTP:
 
     import os
 
-    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF THE REQUEST LIBRARY AS THEY ARE AVAILBLE BY DEFAULT
+    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF THE REQUEST LIBRARY AS THEY ARE AVAILABLE BY DEFAULT
     import httplib, urllib, base64
 
     # REPLACE VALUE WITH ONES FOR YOUR SPARK CLUSTER
@@ -587,5 +587,5 @@ Pokud dáváte přednost prostředí bezplatného klienta kódu, použijte [Azur
 ![Návrhář pro Logic Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Co dále?
-**Křížového ověření a hyperparameter sweeping**: naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) na to, jak modely můžete pomocí křížového ověření a hyperparametrické sweeping školení.
+**Křížové ověření a hyperparameter sweeping**: Naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) na to, jak modely můžete pomocí křížového ověření a hyperparametrické sweeping školení.
 

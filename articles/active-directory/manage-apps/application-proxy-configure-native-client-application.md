@@ -4,7 +4,7 @@ description: Popisuje, jak povolit nativní klientské aplikace pro komunikaci s
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: a73e652c74f9d88f1e066de190834fc033c13cf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 472b30b849ef11ae0a42e1b41c25ec5dc341fb27
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135522"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462925"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikací
 
@@ -51,7 +51,7 @@ Nakonfigurujte vaše nativní aplikace následujícím způsobem:
 Podrobné informace o vytváření registrace nové aplikace, najdete v článku [integrace aplikací s Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 
-## <a name="step-3-grant-access-to-other-applications"></a>Krok 3: Udělení přístupu k aplikacím
+## <a name="step-3-grant-access-to-other-applications"></a>Krok 3: Udělit přístup k ostatním aplikacím
 Povolte nativní aplikace zpřístupní k ostatním aplikacím ve vašem adresáři:
 
 1. Pořád ještě v **registrace aplikací**, vyberte nové nativní aplikaci, kterou jste právě vytvořili.
@@ -68,7 +68,7 @@ Povolte nativní aplikace zpřístupní k ostatním aplikacím ve vašem adresá
 8. Vyberte **Done** (Hotovo).
 
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>Krok 4: Úprava Active Directory Authentication Library
+## <a name="step-4-edit-the-active-directory-authentication-library"></a>Krok 4: Upravit Active Directory Authentication Library
 Upravte kód nativní aplikace v rámci ověřování z Active Directory Authentication Library (ADAL) zahrnout následující text:
 
 ```

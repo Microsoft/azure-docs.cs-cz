@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 5059e4c00fc3bcbee76f8f5a3746b4d8783d901b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: c38ca56bc71215ed7fb64d346571ca517a79914f
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359268"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450196"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Kodeky a formáty Media Encoderu Premium Workflow
 
@@ -31,9 +31,9 @@ ms.locfileid: "54359268"
 
 Tento dokument obsahuje seznam vstupních a výstupních formátů a kodeků, které podporuje verzi public preview **pracovní postup kodéru Media Encoder Premium** kodér.
 
-[Media Encoder Premium Worflow vstupní formáty a kodeky](#input_formats)
+[Pracovní postup kodéru Media Encoder Premium vstupní formáty a kodeky](#input_formats)
 
-[Media Encoder Premium Worflow výstupní formáty a kodeky](#output_formats)
+[Kodeky a formáty výstupu pro pracovního postupu Media Encoder Premium](#output_formats)
 
 **Pracovní postup kodéru Media Encoder Premium** podporuje titulků je popsáno v [to](#closed_captioning) oddílu. 
 

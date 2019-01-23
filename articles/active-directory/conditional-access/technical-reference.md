@@ -4,7 +4,7 @@ description: Získejte přehled o podporovaných nastavení v zásadách podmín
 services: active-directory.
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
 ms.component: conditional-access
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 46dfb96df7b16fe03bd5c2c69fd9e2e33b04bbd2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0971b5abee872d9a7010f0ce931f09c47808eb80
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408574"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452135"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -126,15 +126,15 @@ Toto nastavení funguje u všech prohlížečů. Tím se uspokojí zásady pro z
 | Operační systém                     | Prohlížeče                            | Podpora     |
 | :--                    | :--                                 | :-:         |
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     | ![Zaškrtnout][1] |
-| Windows 8 nebo 8.1        | Aplikace Internet Explorer, Chrome           | ![Zaškrtnout][1] |
-| Windows 7              | Aplikace Internet Explorer, Chrome           | ![Zaškrtnout][1] |
+| Windows 8 nebo 8.1        | Internet Explorer, Chrome           | ![Zaškrtnout][1] |
+| Windows 7              | Internet Explorer, Chrome           | ![Zaškrtnout][1] |
 | iOS                    | Safari, Intune Managed Browser      | ![Zaškrtnout][1] |
 | Android                | Chrome, Intune Managed Browser      | ![Zaškrtnout][1] |
-| telefon se systémem Windows          | Aplikace Internet Explorer, Microsoft Edge             | ![Zaškrtnout][1] |
-| Windows Server 2016    | Aplikace Internet Explorer, Microsoft Edge             | ![Zaškrtnout][1] |
+| telefon se systémem Windows          | Internet Explorer, Microsoft Edge             | ![Zaškrtnout][1] |
+| Windows Server 2016    | Internet Explorer, Microsoft Edge             | ![Zaškrtnout][1] |
 | Windows Server 2016    | Chrome                              | Již brzy |
-| Windows Server 2012 R2 | Aplikace Internet Explorer, Chrome           | ![Zaškrtnout][1] |
-| Windows Server 2008 R2 | Aplikace Internet Explorer, Chrome           | ![Zaškrtnout][1] |
+| Windows Server 2012 R2 | Internet Explorer, Chrome           | ![Zaškrtnout][1] |
+| Windows Server 2008 R2 | Internet Explorer, Chrome           | ![Zaškrtnout][1] |
 | macOS                  | Chrome, Safari                      | ![Zaškrtnout][1] |
 
 
@@ -186,7 +186,7 @@ Toto nastavení nemá vliv na pokusy o přístup z následující mobilní aplik
 |Aplikace pro Office 2016, Office univerzální aplikace, Office 2013, synchronizačního klienta Onedrivu (naleznete v tématu [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), do budoucna plánujeme přidat podpora skupin Office, do budoucna plánujeme přidat podpora aplikací služby SharePoint|Office 365 SharePoint Online|Windows 10|
 |Office 2016 pro macOS (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podpora do budoucna plánujeme přidat|Office 365 SharePoint Online|Mac OS X|
 |Mobilní aplikace Office|Office 365 SharePoint Online|Android, iOS|
-|Aplikace Yammer pro Office|Office 365 Yammeru|Windows 10, iOS, Android|
+|Aplikace Yammer pro Office|Office 365 Yammer|Windows 10, iOS, Android|
 |Outlook 2016 (Office pro macOS)|Office 365 Exchange Online|Mac OS X|
 |Outlook 2016, Outlook 2013, Skype pro firmy|Office 365 Exchange Online|Windows 8.1, Windows 7|
 |Mobilní aplikace Outlook|Office 365 Exchange Online|Android, iOS|
@@ -214,16 +214,16 @@ Toto nastavení platí pro následující klientské aplikace:
 
 - Microsoft Intune Managed Browser
 - Microsoft PowerBI
-- Microsoft fakturace
-- Spouštěcí program společnosti Microsoft
+- Microsoft Invoicing
+- Microsoft Launcher
 - Microsoft Azure Information Protection
 - Microsoft Excel
 - Microsoft Kaizala 
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
-- Aplikace Microsoft Planner
-- Aplikace Microsoft PowerPoint
+- Microsoft Planner
+- Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Skype pro firmy
 - Microsoft StaffHub

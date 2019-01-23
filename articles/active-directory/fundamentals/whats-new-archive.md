@@ -3,7 +3,7 @@ title: Archiv co je nového? – Azure Active Directory | Dokumentace Microsoftu
 description: Co je nového poznámky k verzi v přehledu, že část této sady obsahu obsahuje 6 měsíců aktivity. Po 6 měsíců položky se odeberou z hlavní článek a vložit do tohoto článku archivu.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc9892882cfd4c3f68118648baaaf278133bb2a8
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7dc067cd84ef43850034dec2f58da7e7dfa64cc4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191917"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449601"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -420,7 +420,7 @@ Další informace najdete v tématu [co je spolupráce B2B ve službě Azure AD?
  
 **Nyní ve verzi public preview!**
 
-**Intune Managed Browser jednotného přihlašování:** Zaměstnancům můžete použít jednotné přihlašování napříč nativní klienty (třeba Microsoft Outlook) a Intune Managed Browser pro všechny Azure aplikace propojené s AD.
+**Intune Managed Browser SSO:** Zaměstnancům můžete použít jednotné přihlašování napříč nativní klienty (třeba Microsoft Outlook) a Intune Managed Browser pro všechny Azure aplikace propojené s AD.
 
 **Podpora podmíněného přístupu prohlížeče se spravují přes Intune:** Teď můžete vyžadovat zaměstnancům používat Intune Managed browser pomocí zásady podmíněného přístupu na základě aplikace.
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fdb316f5f5c1f67dbb92fe8847c0ffacce46ae07
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cb36b9514d98fe32f20e740fbb578ac7daada79c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789088"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478395"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Předávací ověřování služby Azure Active Directory: Nejčastější dotazy
 
@@ -156,7 +156,7 @@ Pokud odinstalujete agenta předávací ověřování ze serveru, způsobí, že
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Mám starší tenanta, který byl původně instalaci pomocí služby AD FS.  Jsme nedávno provedla migraci do PTA, ale teď nezobrazují naše změny UPN nesynchronizuje do Azure AD.  Proč jsou naše UPN se změní není synchronizované?
 
-ODPOVĚĎ: V následujících případech nemusí přestane synchronizovat změny místní hlavní název uživatele:
+Odpověď: V následujících případech nemusí přestane synchronizovat změny místní hlavní název uživatele:
 
 - Před 15. června 2015 byla vytvořena vašeho tenanta Azure AD
 - Zpočátku se byly Federovaná pomocí vašeho tenanta Azure AD pomocí služby AD FS pro ověřování

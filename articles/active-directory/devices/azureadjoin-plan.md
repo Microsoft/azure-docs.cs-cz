@@ -4,7 +4,7 @@ description: Vysvětluje kroky, které jsou nutné k implementaci služby Azure 
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: devices
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: be7cded5b9cd2f7a3f33d1de11f36e82f079fc4b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189509"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448564"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 
@@ -239,7 +239,7 @@ Tady je porovnání těchto tří metod
 |Použitelné toky|Nastavení & OOBE|Pouze OOBE|Pouze OOBE|
 |Práva místního správce na primárním uživatelem|Ano, ve výchozím nastavení|Konfigurovatelné|Ne|
 |Nepožadujete podporu zařízení OEM|Ne|Ano|Ne|
-|Podporované verze|verze 1511 +|1709 +|1703 +|
+|Podporované verze|1511+|1709+|1703+|
  
 Zvolte postup nasazení nebo přístupy revize výše uvedené tabulce a kontrolou následující důležité informace pro přijetí kterýkoliv přístup:  
 

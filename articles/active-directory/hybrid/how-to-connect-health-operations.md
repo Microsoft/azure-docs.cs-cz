@@ -4,7 +4,7 @@ description: Tento článek popisuje další operace, které lze provést po nas
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 7e0e2e19f2f21fa3199cbc4911fed3427cbc162c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 35bbc44a8a54071530806576294163cb7ba627ea
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280504"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478293"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Na provoz Azure Active Directory Connect Health
 Toto téma popisuje různé operace, které můžete provést pomocí Azure Active Directory (Azure AD) Connect Health.
@@ -64,6 +64,7 @@ Azure AD Connect Health pro Active Directory Federation Services (AD FS) a Azure
 
 1. Otevřít **Server** oknu **seznam serverů** okno tak, že vyberete název serveru, která se má odebrat.
 2. Na **Server** oknu, na panelu akcí klikněte na tlačítko **odstranit**.
+![Snímek obrazovky s Azure AD Connect Health se odstranit server](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Potvrďte zadáním názvu serveru v potvrzovacím okně.
 4. Klikněte na **Odstranit**.
 
@@ -86,8 +87,9 @@ Když se odstranění instance služby, mějte na paměti toto:
 * Po provedení této akce, pokud chcete začít sledovat tuto službu, odinstalujte a znovu nainstalujte agenta stavu ve všech serverech. Po provedení této akce, pokud chcete začít monitorovat na stejný server znovu, odinstalovat, přeinstalovat a registrace agenta stavu na tomto serveru.
 
 #### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Chcete-li odstranit instanci služby ze služby Azure AD Connect Health
-1. Otevřít **služby** oknu **seznamu služeb** okno tak, že vyberete identifikátor služby (název farmy), který chcete odebrat.
-2. Na **Server** oknu, na panelu akcí klikněte na tlačítko **odstranit**.
+1. Otevřít **služby** oknu **seznamu služeb** okno tak, že vyberete identifikátor služby (název farmy), který chcete odebrat. 
+2. Na **služby** oknu, na panelu akcí klikněte na tlačítko **odstranit**. 
+![Snímek obrazovky s Azure AD Connect Health se odstranit službu](./media/how-to-connect-health-operations/DeleteServer.png)
 3. V potvrzovacím okně zadejte název služby (například: sts.contoso.com).
 4. Klikněte na **Odstranit**.
    <br><br>
@@ -111,13 +113,13 @@ Všechny ostatní role (jako je například správci přístupu uživatelů nebo
 Azure AD Connect Health podporuje správu přístupu na dvou úrovních:
 
 * **Všechny instance služby**: Toto je doporučený ve většině případů. Určuje přístup pro všechny instance služby (například farmu služby AD FS) napříč všemi typy rolí, které jsou monitorovány pomocí služby Azure AD Connect Health.
-* **Instance služby**: V některých případech možná budete muset oddělit přístupu na základě typů role nebo instance služby. V takovém případě můžete spravovat přístup na úrovni instance služby.  
+* **Instance služby**: V některých případech můžete potřebovat k oddělení přístupu na základě typů role nebo instance služby. V takovém případě můžete spravovat přístup na úrovni instance služby.  
 
 Pokud koncový uživatel má přístup buď na adresář nebo služby je uděleno oprávnění instance úroveň.
 
 ### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Povolit uživatelům nebo skupinám přístup k Azure AD Connect Health
 Následující kroky ukazují, jak povolit přístup.
-#### <a name="step-1-select-the-appropriate-access-scope"></a>Krok 1: Vyberte odpovídající přístup oboru
+#### <a name="step-1-select-the-appropriate-access-scope"></a>Krok 1: Vyberte obor odpovídající přístup
 Pokud chcete povolit přístup uživatele na *všech instancí služby* úrovně v rámci Azure AD Connect Health, otevřete hlavní okno ve službě Azure AD Connect Health.<br>
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Krok 2: Přidání uživatelů a skupin a přiřazování rolí
@@ -140,7 +142,7 @@ Uvedení uživatelé a skupiny teď mají přístup, podle jejich přiřazených
 >
 >
 
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Krok 3: Umístění okno sdílejte s uživateli nebo skupinami
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Krok 3: Umístění okno sdílet s uživateli nebo skupinami
 1. Po přiřazení oprávnění má uživatel přístup Azure AD Connect Health tak, že přejdete [tady](https://aka.ms/aadconnecthealth).
 2. V okně uživatele můžete Připnout okno nebo jiné části na řídicí panel. Stačí kliknout **připnout na řídicí panel** ikonu.<br>
    ![Snímek obrazovky s Azure AD Connect Health RBAC Připnout okno, s ikona připnout zvýrazněná](./media/how-to-connect-health-operations/RBAC_pin_blade.png)

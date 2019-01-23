@@ -12,16 +12,16 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 34277aaa6ad6c5b22fb1691af83091e49d3bf5c1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08571ac8b7e13bc0f414b481a481132793ba865d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021318"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452747"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
 
-[Elastické úlohy](elastic-jobs-overview.md) umožňují paralelní spouštění jednoho nebo více skriptů Transact-SQL (T-SQL) napříč mnoha databázemi.
+[Elastické úlohy](sql-database-job-automation-overview.md#elastic-database-jobs) umožňují paralelní spouštění jednoho nebo více skriptů Transact-SQL (T-SQL) napříč mnoha databázemi.
 
 V tomto kurzu se naučíte kroky potřebné ke spuštění dotazu napříč několika databázemi:
 
@@ -65,7 +65,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="create-required-resources"></a>Vytvoření požadovaných prostředků
 
-K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](elastic-jobs-overview.md#job-database). 
+K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](sql-database-job-automation-overview.md#job-database). 
 
 *Následující skript vytvoří novou skupinu prostředků, server a databázi, která se použije jako databáze úloh. Následující skript také vytvoří druhý server se 2 prázdnými databázemi, pro které se budou spouštět úlohy.*
 
@@ -210,7 +210,7 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 ## <a name="define-the-target-databases-you-want-to-run-the-job-against"></a>Definice cílových databází, pro které se má úloha spustit
 
-[Cílová skupina](elastic-jobs-overview.md#target-group) definuje sadu jedné nebo více databází, pro které se provede určitý krok úlohy. 
+[Cílová skupina](sql-database-job-automation-overview.md#target-group) definuje sadu jedné nebo více databází, pro které se provede určitý krok úlohy. 
 
 Následující fragment kódu vytvoří dva cílové skupiny: *ServerGroup*, a *ServerGroupExcludingDb2*. Cílem skupiny *ServerGroup* jsou všechny databáze, které na serveru existují v době spuštění, a cílem skupiny *ServerGroupExcludingDb2* jsou všechny databáze na serveru kromě databáze *TargetDb2*:
 

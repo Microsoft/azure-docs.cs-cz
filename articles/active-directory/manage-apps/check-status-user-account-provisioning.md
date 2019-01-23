@@ -4,7 +4,7 @@ description: Zjistěte, jak zkontrolovat stav automatické uživatelský účet 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: af5d7174a2726a6ff8a62477149606ec5d43e94e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: def3c6aea7b915e8665367d4da27c1314374000c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356525"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463061"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Vytváření sestav o zřizování automatické uživatelských účtů
 
@@ -40,9 +40,9 @@ Zřizování konektory jsou nastavit a nakonfigurovat pomocí [webu Azure portal
 
 Tento článek používá následující podmínky, definovaná níže:
 
-* **Zdrojový systém** -úložišti uživatelů, pro které služba zřizování Azure AD se synchronizuje z. Azure Active Directory je zdrojový systém pro většinu předem integrovaných konektorů zřizování, ale existují některé výjimky (Příklad: příchozí synchronizace Workday).
+* **Zdrojový systém** -úložišti uživatelů, pro které služba zřizování Azure AD se synchronizuje z. Azure Active Directory je zdrojový systém pro většinu předem integrovaných konektorů, zřizování, ale existují některé výjimky (Příklad: WORKDAY synchronizace příchozích dat).
 
-* **Cíl systému** -úložišti uživatelů, které se synchronizuje služba zřizování Azure AD. Toto je obvykle aplikace SaaS (příklady: Salesforce, ServiceNow, Google Apps, Dropbox for Business), ale v některých případech může být místnímu systému, jako je Active Directory (Příklad: příchozí synchronizace Workday do Active Directory).
+* **Cíl systému** -úložišti uživatelů, které se synchronizuje služba zřizování Azure AD. Toto je obvykle aplikace SaaS (příklady: Salesforce, ServiceNow, Google Apps, Dropbox for Business), ale v některých případech může být místnímu systému, jako je Active Directory (Příklad: WORKDAY synchronizace příchozích dat do služby Active Directory).
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Načítání, vytváření sestav z portálu pro správu Azure
@@ -68,7 +68,7 @@ Zřizování Souhrnná sestava se nezobrazuje **zřizování** kartu pro danou a
 
 Zřizování Souhrnná sestava by měla být první pohled správci místě můžete zkontrolovat na provozní stav úlohy zřizování.
 
- ![Souhrnná sestava](./media/check-status-user-account-provisioning/summary_report.PNG)
+ ![Souhrnná sestava](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>Zřizování protokolů auditu
 Všechny aktivity prováděné zřizovací služby se zaznamenávají do protokolů auditu Azure AD, které lze zobrazit v **protokoly auditu** kartu **zřizování účtů** kategorie. Typy událostí protokolu aktivit patří:
@@ -83,11 +83,11 @@ Všechny aktivity prováděné zřizovací služby se zaznamenávají do protoko
 
 Při prohlížení zřizování události pro jednotlivé uživatele, obvykle dojde k událostem v tomto pořadí:
 
-1. Import události: uživatel je načten ze zdrojového systému.
+1. Importovat události: Uživatel je načten ze zdrojového systému.
 
-2. Import události: Cílový systém se dotazuje na provedení kontroly existence uživatele.
+2. Importovat události: Cílový systém vyzván k provedení kontroly existence uživatele.
 
-3. Synchronizační pravidlo událost: uživatelská data ze zdrojové a cílové systémy vyhodnocují nakonfigurované mapování atributů pravidla a filtry oborů k určení, jaké akce, pokud existuje, je třeba provést.
+3. Synchronizační pravidlo událost: Uživatelská data ze zdrojové a cílové systémy vyhodnocují nakonfigurované mapování atributů pravidla a filtry oborů k určení, jaké akce, pokud existuje, je třeba provést.
 
 4. Export událostí: Pokud synchronizační pravidlo událost závisí, by měl být akce provést (přidání, aktualizace, odstranění), pak výsledky akce jsou zaznamenány v události exportu.
 

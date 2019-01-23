@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 62220104329e36fbb2e6f7d3b5b48bcaeaba3660
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082641"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445058"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 pro kartu Podrobnosti z prodejních míst zapojení zákazníků
 
@@ -76,7 +76,7 @@ Kde následující tabulka popisuje pole na této kartě:
 |      Pole            |    Popis                 |
 |  ---------------      |  ---------------               |
 | Nabídka logo (formátu png, 48 x 48) | Nahrajte obrázek, který bude zobrazen na stránce hledání vaší aplikace. Formát je PNG a velikost musí být 48 x 48 pixelů. |
-| Nabídka logo (formátu png, 216 x 216) | Nahrajte obrázek, který bude disaply na stránku podrobností aplikace. Formát je PNG a velikost musí být 216 x 216 pixelů. |
+| Nabídka logo (formátu png, 216 x 216) | Nahrajte obrázek, který bude zobrazen na stránce podrobností aplikace. Formát je PNG a velikost musí být 216 x 216 pixelů. |
 | Videa                | Nahrajte propagační nebo instruktážní videa pro aplikace s délkou maximálně čtyři.  Pro každé video vyplňte název videa, adresa URL (YouTube nebo Vimeo pouze) a přidružené miniaturu ve formátu PNG a velikosti 1280 × 720 pixelů.  | 
 | Dokumenty             | Odeslat produktu propagační nebo instruktážní dokumenty ve formátu PDF, s délkou maximálně tři.  Pro každý dokument zadejte název dokumentu.  |
 | Snímky obrazovek           | Nahrajte maximálně pět obrázků aplikace uživatelského rozhraní ve formátu PNG a velikosti 1280 × 720 pixelů.  Tyto snímky obrazovky se zobrazí na stránce s podrobnostmi AppSource pro aplikaci. |

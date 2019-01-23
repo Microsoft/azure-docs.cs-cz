@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 12/06/2018
+ms.date: 01/06/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 466f7614026866bb038f3c73b23e28e34d9f2e30
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 73916fca980b9806fea0229cdd25f6f367609c84
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321012"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462636"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 

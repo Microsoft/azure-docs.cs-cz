@@ -4,7 +4,7 @@ description: Úvod k použití služby Azure AD k automatickému zřízení, zru
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: edd8e08ee20e7e6331701b55b3d58ebad3848408
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311449"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478480"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 
@@ -60,10 +60,10 @@ Některé běžné motivace pro použití této funkce patří:
 *obrázek 1: Služba zřizování Azure AD*
 
 ![Odchozí zřizování](./media/user-provisioning/provisioning1.PNG)
-*obrázek 2: "Výstupní" uživatele, zřizování pracovního postupu ze služby Azure AD k oblíbeným aplikacím SaaS*
+*obrázek 2: "Odchozí" uživatele, zřizování pracovního postupu ze služby Azure AD k oblíbeným aplikacím SaaS*
 
 ![Příchozí zřizování](./media/user-provisioning/provisioning2.PNG)
-*obrázek 3: "Příchozí" uživatele, zřizování pracovního postupu z oblíbených aplikací lidského kapitálu správy (HCM) do Azure Active Directory a Windows Server Active Directory*
+*obrázek 3: "Příchozí" uživatel zřizování pracovního postupu z oblíbených aplikací lidského kapitálu správy (HCM) do Azure Active Directory a Windows Server Active Directory*
 
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jaké aplikace a systémy můžete použít s Azure AD automatické zřizování uživatelů?
@@ -103,7 +103,7 @@ Na obrazovce správy aplikací, zřizování je nakonfigurovaný v **zřizován�
 
 * **Přihlašovací údaje správce** musí být zadaná do služby Azure AD, zřizovací služba, která umožní připojení k rozhraní API poskytuje aplikace pro správu uživatelů. Tato část také umožňuje povolit e-mailová oznámení, pokud selhání přihlašovací údaje nebo zřizování úloha přejde do [karantény](#quarantine).
 
-* **Mapování atributů** lze nakonfigurovat, které určují, která pole ve zdrojovém systému (Příklad: Azure AD) se jejich obsah synchronizují do pole, která v cílovém systému (Příklad: ServiceNow). Pokud je cílová aplikace podporuje, v této části vám umožní volitelně konfigurace zřizování skupin kromě uživatelských účtů. "Odpovídající vlastnosti" umožňuje zvolit pole, která se používají tak, aby odpovídaly účty mezi systémy. "[Výrazy](functions-for-customizing-application-data.md)" umožňují upravovat a transformovat hodnoty získané z zdrojového systému, než jsou zapsány do cílového systému. Další informace najdete v tématu [přizpůsobení mapování atributů](customize-application-attributes.md).
+* **Mapování atributů** lze nakonfigurovat, které určují, která pole ve zdrojovém systému (Příklad: Azure AD) budou mít jejich obsah synchronizovány do pole, která v cílovém systému (Příklad: ServiceNow). Pokud je cílová aplikace podporuje, v této části vám umožní volitelně konfigurace zřizování skupin kromě uživatelských účtů. "Odpovídající vlastnosti" umožňuje zvolit pole, která se používají tak, aby odpovídaly účty mezi systémy. "[Výrazy](functions-for-customizing-application-data.md)" umožňují upravovat a transformovat hodnoty získané z zdrojového systému, než jsou zapsány do cílového systému. Další informace najdete v tématu [přizpůsobení mapování atributů](customize-application-attributes.md).
 
 ![Nastavení](./media/user-provisioning/provisioning_settings1.PNG)
 
@@ -133,7 +133,7 @@ Při spuštění služby zřizování, bude první synchronizace nikdy neprovád
 
 1. Všichni uživatelé a skupiny ze zdrojového systému načtení všech atributů definovaných v dotazu [mapování atributů](customize-application-attributes.md).
 2. Filtrovat uživatele a skupiny vrátila, některou nakonfigurované [přiřazení](assign-user-or-group-access-portal.md) nebo [založených na atributech filtry oborů](define-conditional-rules-for-provisioning-user-accounts.md).
-3. Při přiřazení je najít uživatele nebo v oboru pro zřizování, dotazuje službu cílový systém, hledá odpovídající uživatele s využitím určené [shodné atributy](customize-application-attributes.md#understanding-attribute-mapping-properties). Příklad: Pokud je název userPrincipal ve zdrojovém systému odpovídajícím atributem a mapuje na uživatelské jméno v cílovém systému a pak službu zřizování se dotazuje cílový systém pro uživatelská jména, které odpovídají názvu hodnoty userPrincipal ve zdrojovém systému.
+3. Při přiřazení je najít uživatele nebo v oboru pro zřizování, dotazuje službu cílový systém, hledá odpovídající uživatele s využitím určené [shodné atributy](customize-application-attributes.md#understanding-attribute-mapping-properties). Příklad: Pokud je název userPrincipal ve zdrojovém systému odpovídajícím atributem a mapuje na uživatelské jméno v cílovém systému a pak službu zřizování dotazuje cílovém systému pro uživatelská jména, které odpovídají názvu hodnoty userPrincipal ve zdrojovém systému.
 4. Pokud odpovídající uživatel nebyl nalezen v cílovém systému, je vytvořen s využitím atributů vrácených ze zdrojového systému. Po vytvoření uživatelského účtu službu zřizování detekuje a ukládá do mezipaměti ID cílového systému pro nového uživatele, který se používá k provádění všech budoucích operací na tohoto uživatele.
 5. Pokud je nalezen odpovídající uživatele, je aktualizován pomocí atributů ve zdrojovém systému k dispozici. Po uživatelský účet je nalezena shoda, zřizovací služba detekuje a ukládá do mezipaměti ID cílového systému pro nového uživatele, který se používá k provádění všech budoucích operací na tohoto uživatele.
 6. Pokud mapování atributů obsahovat atributy typu "odkaz", služba provede další aktualizace v cílovém systému k vytvoření a propojení odkazované objekty. Uživatel například může mít atribut "Správce" v cílovém systému, který je propojený s jiným uživatelem vytvořené v cílovém systému.
@@ -197,13 +197,13 @@ Následující tabulka shrnuje časů synchronizace pro běžné scénáře zři
 
 | Konfigurace oboru | Uživatelé, skupiny a členové v oboru | Čas počáteční synchronizace | Přírůstková synchronizace |
 | -------- | -------- | -------- | -------- |
-| Přiřazení uživatelé a skupiny pouze synchronizovat |  < 1 000 |  < 30 minut | < 30 minut |
+| Přiřazení uživatelé a skupiny pouze synchronizovat |  < 1,000 |  < 30 minut | < 30 minut |
 | Přiřazení uživatelé a skupiny pouze synchronizovat |  1,000 - 10,000 | 142 - minut 708 | < 30 minut |
-| Přiřazení uživatelé a skupiny pouze synchronizovat |   10 000 - 100 000 | 1,170 - 2,340 minut | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  < 1 000 | < 30 minut  | < 30 minut |
+| Přiřazení uživatelé a skupiny pouze synchronizovat |   10,000 - 100,000 | 1,170 - 2,340 minut | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  < 1,000 | < 30 minut  | < 30 minut |
 | Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  1,000 - 10,000 | < 30-120 minut | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  10 000 - 100 000  | 713 - 1,425 minut | < 30 minut |
-| Synchronizovat všechny uživatele ve službě Azure AD|  < 1 000  | < 30 minut | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  10,000 - 100,000  | 713 - 1,425 minut | < 30 minut |
+| Synchronizovat všechny uživatele ve službě Azure AD|  < 1,000  | < 30 minut | < 30 minut |
 | Synchronizovat všechny uživatele ve službě Azure AD | 1,000 - 10,000  | 43 - 86 minut | < 30 minut |
 
 

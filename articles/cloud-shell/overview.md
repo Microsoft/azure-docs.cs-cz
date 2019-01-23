@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 85d054be6b72c736ec66384b9caec71208f36802
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869359"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447203"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní, prohlížeč přístupné prostředí pro správu prostředků Azure.
@@ -57,11 +57,16 @@ Cloud Shell nabízí integrované grafické text editor založený na editoru Mo
 
 [Další informace o službě Cloud Shell editor](using-cloud-shell-editor.md).
 
+### <a name="integrated-with-docsmicrosoftcom"></a>Integrován webu docs.microsoft.com
+
+Cloud Shell, můžete použít přímo z dokumentace ke službě hostované na [docs.microsoft.com](https://docs.microsoft.com). Je integrován v [Microsoft Learn](https://docs.microsoft.com/learn/), [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) a [dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure) – klikněte na tlačítko "Vyzkoušet" ve fragmentu kódu. Chcete-li otevřít atraktivní prostředí prostředí. 
+
 ### <a name="multiple-access-points"></a>Několik přístupových bodů
 Cloud Shell je flexibilní nástroj, který je možné z:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Rozhraní příkazového řádku "Vyzkoušejte si to" dokumentace ke službě Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
+* [Dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure)
+* [Dokumentace k Azure Powershellu](https://docs.microsoft.com/powershell/azure/overview)
 * [Mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Rozšíření Azure Account kódu VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

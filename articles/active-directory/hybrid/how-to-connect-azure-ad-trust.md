@@ -5,7 +5,7 @@ keywords: Služba AD FS, AD FS, správy služby AD FS, AAD Connect, připojit, A
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
-manager: mtillman
+manager: daveba
 ms.component: hybrid
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: bfdc58b8af9fc5c7c5e56e78b17d97aa60681239
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432048"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462364"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztah důvěryhodnosti služby AD FS pomocí Azure AD pomocí služby Azure AD Connect
 
@@ -58,12 +58,12 @@ Služby Azure AD connect neprovede aktualizaci všech nastavení pro vztah dův�
 | Nejdříve projít instalace (rychlé) | Žádný |
 | Nejdříve projít instalace (novou farmu služby AD FS) | Vytvořit novou farmu služby AD FS a vztah důvěryhodnosti s Azure AD je vytvořený z nuly. |
 | Nejdříve projít instalace (existující farmu služby AD FS, existující vztah důvěryhodnosti Azure AD) | Identifikátor vztahu důvěryhodnosti Azure AD, pravidla transformace vystavení, koncové body služby Azure AD, alternativní id (v případě potřeby), automatické metadata update |
-| Resetovat vztah důvěryhodnosti Azure AD | Token podpisový certifikát, podpisový algoritmus, identifikátor vztahu důvěryhodnosti Azure AD, transformace vystavení tokenu pravidla, koncové body služby Azure AD, alternativní id (v případě potřeby), automatické metadata update |
+| Resetovat vztah důvěryhodnosti služby Azure AD | Token podpisový certifikát, podpisový algoritmus, identifikátor vztahu důvěryhodnosti Azure AD, transformace vystavení tokenu pravidla, koncové body služby Azure AD, alternativní id (v případě potřeby), automatické metadata update |
 | Přidat federační server | Žádný |
 | Přidání serveru WAP | Žádný |
 | Možnosti zařízení | Pravidla transformace vystavení, IWA pro registraci zařízení |
 | Přidání federované domény | Pokud přidáte doméně poprvé, to znamená, nastavení se mění z jedné domény federace do více domény federace – Azure AD Connect vytvoří znovu od začátku vztah důvěryhodnosti. Pokud už je nakonfigurovaný vztah důvěryhodnosti s Azure AD pro více domén, jsou změněny pouze pravidla transformace vystavení |
-| Aktualizace SSL | Žádný |
+| Update SSL | Žádný |
 
 Během všechny operace, ve kterém, všechna nastavení je upravený, Azure AD Connect vytvoří zálohu aktuální nastavení vztahu důvěryhodnosti v **%ProgramData%\AADConnect\ADFS**
 

@@ -4,7 +4,7 @@ description: Přehled a mapa obsahu z Průvodce aspekty návrhu hybridní Identi
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: d0930de0ac3272d2858e961ec2038093dcc9ccc9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344878"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463010"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Důležité informace k návrhu hybridní identity Azure Active Directory
 Zařízení se systémem příjemce se proliferating světě a se snadno přijmout cloudové aplikace software jako služba (SaaS). V důsledku toho je náročné mít pod kontrolou přístupu uživatelů aplikace mezi interní datacentry a cloudovými platformami.  
@@ -49,7 +49,7 @@ Na obrázku výše je příkladem řešení s hybridní identitou, která se vyu
 
 Tato příručka obsahuje řadu kroků a úloh, které můžete provést k navržení řešení hybridní identity, který splňuje jedinečné požadavky vaší organizace. V následujících krocích a úlohách uvádí Průvodce relevantní technologie a možnosti funkcí, které jsou k dispozici pro splnění funkčních a úrovni požadavky na kvalitu služeb pro vaši organizaci.
 
-**Předpoklady**: máte nějaké zkušenosti s Windows serverem, Active Directory Domain Services a Azure Active Directory. V tomto dokumentu se předpokládá, že hledáte způsob tato řešení můžete svých obchodních potřeb sami, nebo integrované řešení.
+**Předpoklady**: Máte nějaké zkušenosti s Windows serverem, Active Directory Domain Services a Azure Active Directory. V tomto dokumentu se předpokládá, že hledáte způsob tato řešení můžete svých obchodních potřeb sami, nebo integrované řešení.
 
 ## <a name="design-considerations-overview"></a>Přehled aspektů návrhu
 Tento dokument obsahuje sadu kroků a úloh, které můžete provést k navržení řešení hybridní identity, která nejlépe vyhovuje vašim požadavkům. Kroky uvádíme v seřazené posloupnosti. Aspekty návrhu, které se seznámíte v dalších krocích se může vyžadovat, budete muset změnit rozhodnutí, které jste udělali v dřívějších krocích, ale kvůli konfliktním volbám návrhu. Každý pokusu o vytvoření vás upozorní na potenciální konflikty návrhu v celém dokumentu. 

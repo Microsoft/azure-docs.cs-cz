@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 11651c2721756a4f750a5a5e78f86fdbd363fb9d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954027"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462585"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Pro povolení vlastní protokol HTTPS ve službě Azure CDN povolená certifikační autority
 
@@ -33,54 +33,51 @@ Pro vlastní doménu Azure Content Delivery Network (CDN) na **Azure CDN Standar
 Následující certifikační autority jsou povoleny v případě, že vytvoříte vlastní certifikát:
 
 - Kořenové AddTrust externí certifikační Autority
-- AlphaSSL kořenové certifikační Autority
-- Název infrastruktura certifikační Autority 01
-- Název infrastruktura certifikační Autority 02
+- AlphaSSL Root CA
+- AME Infra CA 01
+- AME Infra CA 02
 - Ameroot
-- Asie a Tichomoří kořenové certifikační Autority
-- Asie a Tichomoří kořenové certifikační autority 2013
-- Asie a Tichomoří kořenové certifikační autority 2014
-- APCA DM3P
+- APCA-DM3P
 - AutoPilot kořenové certifikační Autority
 - Baltimore CyberTrust Root
 - Třída 3 veřejný primárního certifikační autority
 - COMODO RSA certifikační autority
 - COMODO RSA domény ověření zabezpečeného serveru certifikační Autority
-- D DŮVĚRYHODNÉ kořenové certifikační Autority třídy 3 2 2009
-- DigiCert cloudových služeb certifikační Autority-1
+- D-TRUST Root Class 3 CA 2 2009
+- DigiCert Cloud Services CA-1
 - DigiCert globální kořenové certifikační Autority
-- Vysoce DigiCert Assurance CA-3
-- Vysoce DigiCert Assurance EV kořenové certifikační Autority
+- DigiCert High Assurance CA-3
+- DigiCert High Assurance EV Root CA
 - DigiCert SHA2 rozšířené ověřování serveru certifikační Autority
 - DigiCert SHA2 vysokou zárukou Server certifikační Autority
 - DigiCert SHA2 zabezpečeného serveru certifikační Autority
 - Kořenové certifikační Autority X3 letního času
-- D důvěryhodné kořenové certifikační Autority třídy 3 2 2009
+- D-trust Root Class 3 CA 2 2009
 - Všude šifrování TLS DV certifikační Autority
 - Kořenové certifikační autority Entrust
 - Entrust kořenové certifikační autority - G2
 - Entrust.NET certifikační autority (2048)
-- Globální certifikační Autority GeoTrust
+- GeoTrust Global CA
 - Primární GeoTrust certifikační autority
 - Primární GeoTrust certifikační autorita – G2
-- RSA Geotrust 2018 certifikační Autority
+- Geotrust RSA CA 2018
 - GlobalSign
 - GlobalSign rozšířené G2 CA - SHA256 – ověření
 - Ověřování organizace GlobalSign CA - G2
-- GlobalSign kořenové certifikační Autority
+- GlobalSign Root CA
 - Go Daddy kořenová certifikační autorita – G2
 - Go Daddy zabezpečení certifikační autority - G2
-- RSA RapidSSL 2018 certifikační Autority
-- Agentura kořenové
+- G3 CA2 QuoVadis kořenové
+- RapidSSL RSA CA 2018
 - Třída Symantec 3 EV SSL CA - G3
 - Třída Symantec 3 zabezpečeného serveru certifikační Autority - G4
 - Mobilní kořenové Symantec Enterprise pro Microsoft
 - Primární Thawte kořenové certifikační Autority
 - Primární Thawte, kořenové certifikační Autority - G2
 - Primární Thawte, kořenové certifikační Autority - G3
-- RSA Thawte 2018 certifikační Autority
+- Thawte RSA CA 2018
 - Vytvoření časového razítka Thawte certifikační Autority
-- TrustAsia TLS RSA certifikační Autority
+- TrustAsia TLS RSA CA
 - Třída VeriSign 3 rozšíření ověřování SSL CA
 - Třída VeriSign 3 rozšíření ověřování SSL potřebujete certifikační Autority
 - Třídy VeriSign 3 veřejný primárního certifikační autorita – G5

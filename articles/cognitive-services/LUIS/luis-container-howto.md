@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1398db59199c62e90f8cf5654586bda1c24f2541
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055043"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463274"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -36,7 +36,7 @@ Chcete-li spustit kontejner LUIS, musíte mít následující:
 |--|--|
 |Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
 |Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
-|Language Understanding (LUIS) prostředků a přidružené aplikace |Chcete-li použít kontejner, musíte mít:<br><br>* A [ _Language Understanding_ prostředků Azure](luis-how-to-azure-subscription.md), spolu s klíčem přidruženého koncového bodu a koncový bod identifikátoru URI (použito jako fakturace koncový bod).<br>* A trénovaného nebo publikované aplikace lze zabalit jako připojené vstup do kontejneru s jeho přidružené ID aplikace.<br>* Klíč pro vytváření obsahu a stáhněte balíček aplikace, pokud je to z rozhraní API.<br><br>Tyto požadavky se používají k předání argumentů příkazového řádku následující proměnné:<br><br>**{AUTHORING_KEY}** : Tento klíč se používá k získání zabalené aplikace ze služby LUIS v cloudu a nahrajte protokoly dotazů zpátky do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Tento Identifikátor slouží k výběru aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je na webu Azure portal v rámci _Language Understanding_ klíče seznamu zdrojů. Klíč koncového bodu je také k dispozici na portálu služby LUIS nad klíči a koncový bod stránku nastavení. Nepoužívejte klávesu starter.<br><br>**{BILLING_ENDPOINT}** : Fakturační hodnota koncového bodu je k dispozici na stránce s přehledem Language Understanding webu Azure portal. Příklad: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Vytváření klíč a klíče koncového bodu](luis-boundaries.md#key-limits) mají různé účely. Nepoužívejte je Zaměnitelně. |
+|Language Understanding (LUIS) prostředků a přidružené aplikace |Chcete-li použít kontejner, musíte mít:<br><br>* A [ _Language Understanding_ prostředků Azure](luis-how-to-azure-subscription.md), spolu s klíčem přidruženého koncového bodu a koncový bod identifikátoru URI (použito jako fakturace koncový bod).<br>* A trénovaného nebo publikované aplikace lze zabalit jako připojené vstup do kontejneru s jeho přidružené ID aplikace.<br>* Klíč pro vytváření obsahu a stáhněte balíček aplikace, pokud je to z rozhraní API.<br><br>Tyto požadavky se používají k předání argumentů příkazového řádku následující proměnné:<br><br>**{AUTHORING_KEY}**: Tento klíč se používá k získání zabalené aplikace ze služby LUIS v cloudu a nahrajte protokoly dotazů zpátky do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Tento Identifikátor slouží k výběru aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}**: Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je na webu Azure portal v rámci _Language Understanding_ klíče seznamu zdrojů. Klíč koncového bodu je také k dispozici na portálu služby LUIS nad klíči a koncový bod stránku nastavení. Nepoužívejte klávesu starter.<br><br>**{BILLING_ENDPOINT}**: Fakturační hodnota koncového bodu je k dispozici na stránce s přehledem Language Understanding webu Azure portal. Příklad: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Vytváření klíč a klíče koncového bodu](luis-boundaries.md#key-limits) mají různé účely. Nepoužívejte je Zaměnitelně. |
 
 ### <a name="the-host-computer"></a>Hostitelském počítači
 
@@ -113,7 +113,8 @@ Může obsahovat vstupní přípojného adresáře **produkční**, **pracovní*
 |Fázování|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
 |Výroba|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**Důležité:** Přejmenovat, změnit nebo dekomprimovat soubory balíčku LUIS.
+> [!IMPORTANT]
+> Přejmenovat, změnit nebo dekomprimovat soubory balíčku LUIS.
 
 ### <a name="packaging-prerequisites"></a>Požadavky na balení
 
@@ -262,8 +263,8 @@ Použít hostitele, https://localhost:5000, pro kontejner rozhraní API.
 
 |Typ balíčku|Metoda|Trasa|Parametry dotazu|
 |--|--|--|--|
-|Publikováno|[Získat](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [příspěvku](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/ luis/v2.0/apps/{appId}?|q = {q}<br>& pracovní<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]<br>|
-|Školení|GET, Post|/ luis/v2.0/apps/{appId}/versions/{versionId}?|q = {q}<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]|
+|Publikováno|[Získat](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [příspěvku](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q = {q}<br>& pracovní<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]<br>|
+|Školení|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q = {q}<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]|
 
 Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 
@@ -383,3 +384,4 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, insta
 
 * Kontrola [konfigurace kontejnery](luis-container-configuration.md) nastavení konfigurace
 * Odkazovat na [– nejčastější dotazy (FAQ)](luis-resources-faq.md) k vyřešení problémů týkajících se služby LUIS funkce.
+* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)

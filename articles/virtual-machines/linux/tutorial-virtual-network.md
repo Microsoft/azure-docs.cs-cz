@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: daee5a2073e78ca5bb9e0eb0386617d7638ab930
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: a0eb3ed26b0e8641cf4e1004c2c162c799dd8999
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988510"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463758"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem pomocí Azure CLI
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Kurz: Vytvoření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem pomocí Azure CLI
 
 Virtuální počítače Azure používají pro interní i externí síťovou komunikaci sítě Azure. Tento kurz vás provede nasazením dvou virtuálních počítačů a konfigurací sítě Azure pro tyto virtuální počítače. Příklady v tomto kurzu předpokládají, že virtuální počítače hostují webovou aplikaci s back-endovou databází, ale aplikace se v tomto kurzu nenasazuje. V tomto kurzu se naučíte:
 
@@ -208,7 +208,7 @@ az network nsg rule create \
   --destination-port-range 80
 ```
 
-Front-endový virtuální počítač je přístupný pouze na portech *22* a *80*. Veškerý ostatní příchozí provoz je skupinou zabezpečení sítě zablokovaný. Někdy může být užitečné si konfigurace pravidla skupiny zabezpečení sítě vizualizovat. Konfiguraci pravidla skupiny zabezpečení sítě vrátíte pomocí příkazu [az network rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list). 
+Front-endový virtuální počítač je přístupný pouze na portech *22* a *80*. Veškerý ostatní příchozí provoz je skupinou zabezpečení sítě zablokovaný. Někdy může být užitečné si konfigurace pravidla skupiny zabezpečení sítě vizualizovat. Konfiguraci pravidla skupiny zabezpečení sítě vrátíte pomocí příkazu [az network rule list](/cli/azure/network/nsg/rule). 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myFrontendNSG --output table
@@ -285,13 +285,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Back-endový virtuální počítač je přístupný pouze na portech *22* a *3306* z front-endové podsítě. Veškerý ostatní příchozí provoz je skupinou zabezpečení sítě zablokovaný. Někdy může být užitečné si konfigurace pravidla skupiny zabezpečení sítě vizualizovat. Konfiguraci pravidla skupiny zabezpečení sítě vrátíte pomocí příkazu [az network rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list). 
+Back-endový virtuální počítač je přístupný pouze na portech *22* a *3306* z front-endové podsítě. Veškerý ostatní příchozí provoz je skupinou zabezpečení sítě zablokovaný. Někdy může být užitečné si konfigurace pravidla skupiny zabezpečení sítě vizualizovat. Konfiguraci pravidla skupiny zabezpečení sítě vrátíte pomocí příkazu [az network rule list](/cli/azure/network/nsg/rule). 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste v souvislosti s virtuálními počítači vytvořili a zabezpečené sítě Azure. Naučili jste se tyto postupy:
 

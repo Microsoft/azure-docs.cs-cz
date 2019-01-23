@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 18b2b3df2748392b12b60517604478b120871754
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8ea8f225941a8b859a5cc8d9c7accbc631a75842
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256056"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447526"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
@@ -89,7 +89,7 @@ Spusťte následující kód k vytvoření cílové výpočetní prostředí z j
 from azureml.core.compute import ComputeTarget, RemoteCompute 
 
 attach_config = RemoteCompute.attach_configuration(username='<username>',
-                                                   address='<ip_adress_or_fqdn>',
+                                                   address='<ip_address_or_fqdn>',
                                                    ssh_port=22,
                                                    private_key_file='./.ssh/id_rsa')
 compute_target = ComputeTarget.attach(workspace=ws,
@@ -255,7 +255,7 @@ Načítání modelu vysvětlení dat umožňuje zobrazit podrobné informace o m
 * overall_summary: Hodnoty význam úroveň funkce modelu seřazeny v sestupném pořadí
 * overall: Názvy funkcí seřazeny ve stejném pořadí jako overall_summary
 * per_class_summary: Na úrovni funkce význam hodnoty třídy seřazeny v sestupném pořadí. K dispozici jenom pro případ klasifikace
-* per_class: Názvy funkcí seřazeny ve stejném pořadí jako per_class_summary. K dispozici jenom pro případ klasifikace
+* per_class_imp: Názvy funkcí seřazeny ve stejném pořadí jako per_class_summary. K dispozici jenom pro případ klasifikace
 
 Chcete-li vybrat nejlepší kanál ze své iterace použijte následující kód. `get_output` Metoda vrátí nejlepší spuštění a vybavené model pro poslední přizpůsobit vyvolání.
 

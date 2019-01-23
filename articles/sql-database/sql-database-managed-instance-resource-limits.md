@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.date: 01/22/2019
+ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584492"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450877"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -39,7 +39,8 @@ Azure SQL Database Managed Instance je možné nasadit na generování dvě hard
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader) | Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé eNVM SSD, vCore = 1 LP (hyper vlákno) |
 | Compute | 8, 16, 24 virtuálních jader | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
 | Memory (Paměť) | 7 GB na vCore | 5.1 GB na vCore |
-| Maximální velikost úložiště (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
+| Maximální velikost úložiště (Obecné) |  8 TB | 1 TB |
+| Maximální velikost úložiště (pro důležité obchodní informace) | 8 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
 
@@ -48,15 +49,14 @@ Managed Instance má dvě úrovně služeb - obecné účely a pro důležité o
 | **Funkce** | **Obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Paměť) | Gen4: 56GB – 156GB<br/>Gen5: 44GB - 440GB<br/>\*Proporční na počet virtuálních jader | Gen4: 56GB – 156GB <br/> Gen5: 41GB - 408GB<br/>\*Proporční na počet virtuálních jader |
+| Memory (Paměť) | Gen4: 56GB – 156GB<br/>Gen5: 44GB - 440GB<br/>\*Proporční na počet virtuálních jader | Gen4: 56GB – 156GB <br/> Gen5: 41GB-408GB<br/>\*Proporční na počet virtuálních jader |
 | Maximální velikost úložiště | 8 TB | Gen 4: 1 TB <br/> Generace 5: <br/>-1 TB pro 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet databází na instanci | Až 280 | 32 767 počet souborů v databázi |
-| Data/Log IOPS (přibližné) | 500-7500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 110 tis. (1375 vCore) |
-| Propustnost instance protokolu | 22MB/s na instanci | 3MB/s na vCore<br/>Maximální počet 48MB/s |
+| Data/Log IOPS (přibližné) | 500-7500 na soubor<br/>\*[Závisí na velikosti souboru] (https://docs.microsoft.com/azure/virtual-machines ce protokolu propustnost | 22MB/s na instanci | 3MB/s na vCore<br/>Max 48MB/s |
 | Propustnost dat (přibližné) | 100 250 MB/s na souboru<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48MB/s na vCore |
-| Vstupně-výstupní latence (přibližné) | 5 až 10 ms | 1 až 2 ms |
+| Vstupně-výstupní latence (přibližné) | 5-10 ms | 1-2 ms |
 | Maximální velikost tempDB | 192 1920 GB (24 GB na vCore) | Bez omezení – limitován velikostí úložiště maximální počet instancí |
 
 **Poznámky k**:
@@ -72,7 +72,7 @@ Spravované Instanced lze vytvořit pouze v [podporované oblasti](https://azure
 Nasazení spravované Instance aktuálně podporuje jenom pro následující typy předplatných:
 
 - [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/)
+- [Pay-as-you-go](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Poskytovatele cloudových služeb (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Vývoj/testování s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0023p/)
@@ -91,11 +91,11 @@ V následující tabulce jsou uvedeny výchozí místní omezení pro podporovan
 
 |Typ odběru| Maximální počet podsítí Managed Instance | Maximální počet instancí |Maximální počet GP managed instance *|Maximální počet BC managed instance *|
 | :---| :--- | :--- |:--- |:--- |
-|Průběžné platby|1 *|4 *|4 *|1 *|
-|CSP |1 *|4 *|4 *|1 *|
-|Vývoj/testování s průběžnými platbami|1 *|4 *|4 *|1 *|
-|Enterprise pro vývoj/testování|1 *|4 *|4 *|1 *|
-|EA|3 **|12 **|12 **|3 **|
+|Průběžné platby|1*|4*|4*|1*|
+|CSP |1*|4*|4*|1*|
+|Vývoj/testování s průběžnými platbami|1*|4*|4*|1*|
+|Enterprise pro vývoj/testování|1*|4*|4*|1*|
+|EA|3**|12**|12**|3**|
 
 \* 1 BC nebo 4 GP instance v jedné podsíti můžete nasadit buď tak, aby celkový počet jednotek"instance" v podsíti nikdy nepřesáhne 4.
 
@@ -118,11 +118,11 @@ Následující příklady pokrývají nasazené služby se neprázdný podsítě
 |Počet podsítí|Podsíť 1|Podsíť 2|Podsíť 3|
 |:---|:---|:---|:---|
 |1|1 BC až 8 GP<br>2 BC až 4 GP|neuvedeno| neuvedeno|
-|2|BC 0, až 4 GP|BC 1, až 4 GP<br>BC 2, 0 GP|neuvedeno|
-|2|BC 1, 0 GP|BC 0, až na 8 GP<br>BC 1, až 4 GP|neuvedeno|
-|2|BC 2, 0 GP|BC 0, až 4 GP|neuvedeno|
-|3|BC 1, 0 GP|BC 1, 0 GP|BC 0, až 4 GP|
-|3|BC 1, 0 GP|BC 0, až 4 GP|BC 0, až 4 GP|
+|2|BC 0, až 4 GP|BC 1, až 4 GP<br>2 BC, 0 GP|neuvedeno|
+|2|1 BC, 0 GP|BC 0, až na 8 GP<br>BC 1, až 4 GP|neuvedeno|
+|2|2 BC, 0 GP|BC 0, až 4 GP|neuvedeno|
+|3|1 BC, 0 GP|1 BC, 0 GP|BC 0, až 4 GP|
+|3|1 BC, 0 GP|BC 0, až 4 GP|BC 0, až 4 GP|
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání vyšší kvóty pro spravovanou instanci SQL
 
@@ -140,7 +140,7 @@ Chcete-li zahájit proces získávání vyšší kvóty:
 
      ![Problém typ kvóty](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3. Klikněte na tlačítko **Další**.
+3. Klikněte na **Další**.
 4. Na kartě problém pro novou žádost o podporu:
    - Pro **závažnost**, vyberte úroveň závažnosti problému.
    - Pro **podrobnosti**, poskytují další informace o svém problému, včetně chybových zpráv.
@@ -154,7 +154,7 @@ Chcete-li zahájit proces získávání vyšší kvóty:
      > - Požadovaný počet instancí na úroveň služby v existující podsítě po kvótu zvýšit (je-li žádné existující podsítě potřeba rozšířit
      > - Požadované číslo nové podsítě a celkový počet instancí na úrovni služby v rámci nové podsítě (Pokud je potřeba nasadit spravované instance v nové podsítě).
 
-5. Klikněte na tlačítko **Další**.
+5. Klikněte na **Další**.
 6. Na kartě kontaktní informace pro novou žádost o podporu zadejte upřednostňovaný způsob kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.
 

@@ -3,7 +3,7 @@ title: Rychlý start, chcete-li zobrazit skupiny a členové – Azure Active Di
 description: Pokyny ohledně toho, jak vyhledat a zobrazit organizační skupiny a jejich přiřazených členů.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,16 +12,16 @@ ms.date: 09/24/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 002b4bb4ab20e531132b461f90857cfab6aecfd3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7ccd42fa1593e420c3d95ac1b50e8ef5084e68a0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087469"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446404"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Rychlý start: Zobrazení skupin a členů vaší organizace ve službě Azure Active Directory
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Rychlý start: Zobrazení skupiny a členové vaší organizace v Azure Active Directory
 Existující skupiny a členy skupin vaší organizace můžete zobrazit pomocí webu Azure Portal. Skupiny se používají ke správě uživatelů (členů), kteří potřebují mít stejný přístup a oprávnění pro potenciálně omezené aplikace a služby.
 
 V tomto rychlém startu zobrazíte všechny existující skupiny vaší organizace a přiřazené členy.
@@ -43,11 +43,11 @@ Vytvořte novou skupinu s názvem _MDM policy – West_. Další informace o vyt
 
 2. Vyplňte stránku **Skupina**:
     
-    - **Typ skupiny:** Vyberte **Zabezpečení**.
+    - **Typ skupiny:** Vyberte **zabezpečení**
     
-    - **Název skupiny:** Zadejte _MDM policy – West_.
+    - **Název skupiny:** Typ _zásady MDM – západ_
     
-    - **Typ členství:** Vyberte **Přiřazené**.
+    - **Typ členství:** Vyberte **přiřazené**.
 
 3. Vyberte **Vytvořit**.
 
@@ -58,9 +58,9 @@ Vytvořte nového uživatele se jménem _Alain Charon_. Uživatel musí existova
 
 2. Vyplňte stránku **Uživatel**:
 
-    - **Jméno:** Zadejte _Alain Charon_.
+    - **Jméno:** Typ _Alain Charon_.
 
-    - **Uživatelské jméno:** Zadejte *alain@contoso.com*.
+    - **Uživatelské jméno:** Typ *alain@contoso.com*.
 
 3. Zkopírujte automaticky vygenerované heslo v poli **Heslo** a pak vyberte **Vytvořit**.
 

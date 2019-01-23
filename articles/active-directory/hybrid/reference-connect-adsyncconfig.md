@@ -2,20 +2,20 @@
 title: 'Azure AD Connect: Referenční informace prostředí PowerShell ADSyncConfig | Dokumentace Microsoftu'
 description: Tento dokument obsahuje referenční informace pro modul Powershellu ADSyncConfig.psm1.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84be07eeb112711de35853162b798b5f6ed0b2aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 015823ee9674c2c704cdea13e44ced06e5b9644c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422758"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463520"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: Referenční informace prostředí PowerShell ADSyncConfig
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADSyncConfig
 Následující dokumentace obsahuje referenční informace pro modul Powershellu ADSyncConfig.psm1, která je součástí služby Azure AD Connect.
 
 
@@ -1355,7 +1355,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v části about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="show-adsyncadobjectpermissions"></a>Show ADSyncADObjectPermissions
+## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
 Zobrazuje oprávnění zadaného objektu AD.

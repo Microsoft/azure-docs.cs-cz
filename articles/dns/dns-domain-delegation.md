@@ -1,24 +1,17 @@
 ---
-title: Přehled delegování DNS v Azure | Dokumentace Microsoftu
+title: Přehled delegování DNS v Azure
 description: Zjistěte, jak změnit delegování domény a pomocí názvových serverů Azure DNS umožněte hosting domén.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: a00cc00dee3a505f88abef3ecf99f49aa027c30b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-ms.translationtype: HT
+ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170500"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461022"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegování zón DNS s využitím Azure DNS
 
@@ -58,17 +51,20 @@ Následující obrázek ukazuje příklad dotazu DNS. Contoso.net a partners.con
 ![Názvový server DNS](./media/dns-domain-delegation/image1.png)
 
 1. Klient si vyžádá `www.partners.contoso.net` z místního serveru DNS.
-1. Místní server DNS záznam nemá, proto vytvoří požadavek na svůj kořenový názvový server.
-1. Kořenový názvový server záznam nemá, ale zná adresu názvového serveru `.net`, kterou poskytne serveru DNS.
-1. Server DNS odešle požadavek na názvový server `.net`, který záznam nemá, ale zná adresu názvového serveru contoso.com. V tomto případě je to zóna DNS hostovaná v Azure DNS.
-1. Zóna `contoso.net` záznam nemá, ale zná názvový server pro `partners.contoso.net`, který odešle jako odpověď. V tomto případě je to zóna DNS hostovaná v Azure DNS.
-1. Server DNS odešle požadavek na IP adresu pro `partners.contoso.net` ze zóny `partners.contoso.net`. Ta obsahuje záznam A a jako odpověď odešle IP adresu.
-1. Server DNS poskytne tuto IP adresu klientovi.
-1. Klient se připojí k webu `www.partners.contoso.net`.
+2. Místní server DNS záznam nemá, proto vytvoří požadavek na svůj kořenový názvový server.
+3. Kořenový názvový server záznam nemá, ale zná adresu názvového serveru `.net`, kterou poskytne serveru DNS.
+4. Místní server DNS odešle požadavek na `.net` názvový server.
+5. `.net` Názvový server záznam nemá, ale znát adresu `contoso.net` názvový server. V takovém případě odpovědí s adresou serveru název zóny DNS hostované v Azure DNS.
+6. Místní server DNS odešle požadavek na názvový server pro `contoso.net` zóně hostované v Azure DNS.
+7. Zóna `contoso.net` záznam nemá, ale zná názvový server pro `partners.contoso.net` a odpoví na adresu. V takovém případě je to zóna DNS hostovaná v Azure DNS.
+8. Místní server DNS odešle požadavek na názvový server pro `partners.contoso.net` zóny.
+9. `partners.contoso.net` Zóna obsahuje záznam a odpovídá zprávou IP adresu.
+10. Místní server DNS poskytne tuto IP adresu klientovi
+11. Klient se připojí k webu `www.partners.contoso.net`.
 
 Každé delegování má ve skutečnosti dvě kopie záznamů NS – jednu v nadřazené zóně, která ukazuje na podřízenou zónu, a druhou v samotné podřízené zóně. Zóna contoso.net obsahuje záznamy NS pro contoso.net (vedle záznamů NS v „net“). Tyto záznamy se nazývají záznamy autoritativních NS a nacházejí se na vrcholu podřízené zóny.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak [delegovat doménu do Azure DNS](dns-delegate-domain-azure-dns.md).
 

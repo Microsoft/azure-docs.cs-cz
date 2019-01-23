@@ -4,7 +4,7 @@ description: Vysvětluje, jak řešit chyby zjištěné během synchronizace se 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 2209d5ce-0a64-447b-be3a-6f06d47995f8
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 34a719c8fb62a2b993320d1bd9f97f9d47abf494
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250445"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463303"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
 Při synchronizaci dat identity z Windows Server Active Directory (AD DS) do Azure Active Directory (Azure AD), může dojít k chybám. Tento článek obsahuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak opravit chyby. Tento článek obsahuje běžné typy chyb a nemusí zahrnovat všechny možné chyby.
@@ -30,7 +30,7 @@ S nejnovější verzí služby Azure AD Connect \(. srpna 2016 nebo novějším\
 
 Od 1. září 2016 [Azure Active Directory duplicitní atribut odolnost proti chybám](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkce bude povolena ve výchozím nastavení pro všechny *nové* Tenantů Azure Active Directory. Tato funkce bude automaticky povolená u stávajících tenantů v nadcházejících měsících.
 
-Azure AD Connect provede tři typy operací z adresáře udržuje synchronizované: Import a synchronizaci a Export. Chyby může proběhnout ve všech operacích. Tento článek zaměřuje především na chyby při exportu do služby Azure AD.
+Azure AD Connect provede tři typy operací z adresáře, které provádí synchronizaci: Import, synchronizace a exportu. Chyby může proběhnout ve všech operacích. Tento článek zaměřuje především na chyby při exportu do služby Azure AD.
 
 ## <a name="errors-during-export-to-azure-ad"></a>Chyby při exportu do služby Azure AD
 Následující část popisuje různé druhy chyb synchronizace, které se můžou objevit během operace exportu do služby Azure AD pomocí konektoru služby Azure AD. Tento konektor lze identifikovat podle názvu formát je "contoso. *onmicrosoft.com*".
@@ -74,16 +74,16 @@ Schéma služby Active Directory Azure nepovoluje dva nebo více objektů mají 
 2. Bob Smith **UserPrincipalName** je nastaven jako **bobs@contoso.com**.
 3. **"abcdefghijklmnopqrstuv =="** je **SourceAnchor** vypočte tak Azure AD Connect s použitím Bob Smith **objectGUID** z místní služby Active Directory, která je  **immutableId** Bob Smith v Azure Active Directory.
 4. Bob také obsahuje následující hodnoty **proxyAddresses** atribut:
-   * SMTP: bobs@contoso.com
-   * SMTP: bob.smith@contoso.com
-   * **SMTP: bob@contoso.com**
+   * smtp: bobs@contoso.com
+   * smtp: bob.smith@contoso.com
+   * **smtp: bob@contoso.com**
 5. Nový uživatel **Bob Taylora**, se přidá do místní služby Active Directory.
 6. Bob Taylora **UserPrincipalName** je nastaven jako **bobt@contoso.com**.
 7. **"abcdefghijkl0123456789 ==" "** je **sourceAnchor** vypočte tak Azure AD Connect s použitím Bob Taylora **objectGUID** z na místní služby Active Directory. Bob Taylora objektu má není synchronizované do Azure Active Directory ještě.
 8. Bob Taylora má následující hodnoty atributu proxyAddresses
-   * SMTP: bobt@contoso.com
-   * SMTP: bob.taylor@contoso.com
-   * **SMTP: bob@contoso.com**
+   * smtp: bobt@contoso.com
+   * smtp: bob.taylor@contoso.com
+   * **smtp: bob@contoso.com**
 9. Během synchronizace Azure AD Connect rozpozná přidání Roberta Taylora v místní službě Active Directory a pokládat službu Azure AD, chcete-li provést stejnou změnu.
 10. Azure AD se nejprve provést pevné shoda. To znamená, budou vyhledány Pokud libovolný objekt s immutableId se rovná "abcdefghijkl0123456789 ==". Pevné shoda se nezdaří, protože žádný jiný objekt ve službě Azure AD bude mít tento immutableId.
 11. Azure AD se pak pokusí konfigurace soft-match Bob Taylora. To znamená bude hledat, pokud je jakýkoli objekt s proxyAddresses rovna tří hodnot, včetně smtp: bob@contoso.com
@@ -144,14 +144,14 @@ Pokud Azure AD Connect se pokusí o přidání nového objektu nebo aktualizovat
 1. **Bob Smith** je synchronizované uživatele v Azure Active Directory z na místní služby Active Directory contoso.com
 2. Bob Smith **UserPrincipalName** v místním prostředí je nastaven jako **bobs@contoso.com**.
 3. Bob také obsahuje následující hodnoty **proxyAddresses** atribut:
-   * SMTP: bobs@contoso.com
-   * SMTP: bob.smith@contoso.com
-   * **SMTP: bob@contoso.com**
+   * smtp: bobs@contoso.com
+   * smtp: bob.smith@contoso.com
+   * **smtp: bob@contoso.com**
 4. Nový uživatel **Bob Taylora**, se přidá do místní služby Active Directory.
 5. Bob Taylora **UserPrincipalName** je nastaven jako **bobt@contoso.com**.
-6. **Bob Taylora** má následující hodnoty **ProxyAddresses** atribut i. SMTP: bobt@contoso.com ii. SMTP: bob.taylor@contoso.com
+6. **Bob Taylora** má následující hodnoty **ProxyAddresses** atribut i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
 7. Objekt Taylora Bob úspěšně synchronizována s Azure AD.
-8. Správce rozhodl aktualizaci Bob Taylora **ProxyAddresses** atribut s následující hodnotou: i. **SMTP: bob@contoso.com**
+8. Správce rozhodl aktualizaci Bob Taylora **ProxyAddresses** atribut s následující hodnotou: i. **smtp: bob@contoso.com**
 9. Azure AD se pokus o aktualizaci Bob Taylora objektu ve službě Azure AD s vyšší hodnotou, ale tato operace se nezdaří jako, že hodnota ProxyAddresses je už přiřazený k Bob Smith, výsledkem chyba "AttributeValueMustBeUnique".
 
 #### <a name="how-to-fix-attributevaluemustbeunique-error"></a>K vyřešení chyby AttributeValueMustBeUnique

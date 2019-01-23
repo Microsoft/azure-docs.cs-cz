@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: ae45a268536f6a8fcb4ab27336a1281837cf5dc7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 40588ec29eb6f7c33ba5e1d6071caf5c8ed43424
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045715"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450165"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Pomocí ovládacích prvků přístupu na základě rolí Azure definují přístup k konfigurační soubor Kubernetes ve službě Azure Kubernetes Service (AKS)
 
-Můžete pracovat s clustery Kubernetes pomocí `kubectl` nástroj. Rozhraní příkazového řádku Azure poskytuje snadný způsob, jak získat přístup k přihlašovací údaje a informace o konfiguraci pro připojení k vaší AKS clusterů pomocí `kubectl`. Pro omezení, kdo může získat tuto konfiguraci Kubernetes (*kubeconfig*) informace a oprávnění, pak mají, můžete použít řízení přístupu Azure na základě rolí (RBAC).
+Můžete pracovat s clustery Kubernetes pomocí `kubectl` nástroj. Rozhraní příkazového řádku Azure poskytuje snadný způsob, jak získat přístup k přihlašovací údaje a informace o konfiguraci pro připojení k vaší AKS clusterů pomocí `kubectl`. Pro omezení, kdo může získat tuto konfiguraci Kubernetes (*kubeconfig*) informace a pokud chcete omezit oprávnění, pak mají, můžete použít řízení přístupu Azure na základě rolí (RBAC).
 
 Tento článek ukazuje, jak přiřadit role RBAC tohoto limitu, který můžete získat informace o konfiguraci pro AKS cluster.
 
@@ -128,7 +128,7 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 
 ## <a name="next-steps"></a>Další postup
 
-Pro lepší zabezpečení a přístup k clusteru AKS [integrace ověření služby Azure Active Directory][aad-integration].
+Pro zvýšení zabezpečení přístupu ke clusterům AKS [integrace ověření služby Azure Active Directory][aad-integration].
 
 <!-- LINKS - external -->
 [kubectl-config-use-context]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config

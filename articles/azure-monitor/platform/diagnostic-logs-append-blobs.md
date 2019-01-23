@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: ba163b797cfaaf73c660f1ef3d8da18758e8139a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: logs
+ms.openlocfilehash: 186b0c693b077b4fa0b1287301b52de5d09c3fe6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541995"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478497"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Příprava pro změnu formátu pro diagnostické protokoly Azure monitoru archivovat do účtu úložiště
 
@@ -137,3 +137,4 @@ Vlastní nástroje se musí aktualizovat na aktuální formát a formát řádk�
 
 * Další informace o [archivace diagnostických protokolů prostředků do účtu úložiště](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * Další informace o [archivovat data protokolu aktivit do účtu úložiště](./../../azure-monitor/platform/archive-activity-log.md)
+

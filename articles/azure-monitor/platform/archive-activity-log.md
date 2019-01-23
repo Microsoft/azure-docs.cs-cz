@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 9714cb8ce1c3380ac74150148c8d84bd410e3fc4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: d9abfe90296b27918594c41a207befe2b59027b9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715207"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461592"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivace protokolu aktivit Azure
 V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershellu nebo CLI pro různé platformy pro archivaci vaše [ **protokolu aktivit Azure** ](../../azure-monitor/platform/activity-logs-overview.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat váš protokol aktivit déle než 90 dnů (s úplnou kontrolou nad zásady uchovávání informací) pro audit, statické analýzy nebo pro zálohování. Pokud potřebujete události uchovávat po 90 dní nebo méně nepotřebujete nastavit archivaci do účtu úložiště, protože události protokolu aktivit se zachovají na platformě Azure po dobu 90 dnů bez povolení archivace.
@@ -78,7 +78,7 @@ Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
 | jméno |Ano |Název profilu protokolu. |
-| id účtu úložiště |Ano |ID prostředku účtu úložiště, ke kterému má být uložen protokolů aktivit. |
+| storage-account-id |Ano |ID prostředku účtu úložiště, ke kterému má být uložen protokolů aktivit. |
 | umístění |Ano |Místo oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `az account list-locations --query [].name`. |
 | dny |Ano |Počet dní pro události, které by měla být zachována, od 1 do 2147483647. Hodnota nula bude po neomezenou dobu ukládání protokolů (trvale).  Pokud nula, povolené parametr by měl být nastavte na hodnotu true. |
 |povoleno | Ano |True nebo False.  Umožňuje povolit nebo zakázat zásady uchovávání informací.  Pokud je hodnota True, musí být parametr dní hodnotu větší než 0.
@@ -184,4 +184,5 @@ V rámci souboru pt1h.JSON, když se ukládají všechny události v poli "zázn
 * [Stažení objektů blob pro analýzu](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Stream protokolů aktivit do služby Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
 * [Další informace o protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md)
+
 

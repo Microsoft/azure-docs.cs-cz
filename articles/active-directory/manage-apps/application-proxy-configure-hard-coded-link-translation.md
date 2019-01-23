@@ -4,7 +4,7 @@ description: Popisuje základní informace o konektory Proxy aplikací Azure AD.
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6476793bc0c7398bb407a8ad2b245f48613717b7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230059"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461548"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
 
@@ -31,11 +31,11 @@ Ke konfiguraci externí adresy URL vaší aplikace bude stejná jako jejich inte
 
 Pokud nemůžete použít vlastní domény ve vašem tenantovi, existuje několik dalších možností pro poskytnutí této funkce. Všechny tyto budou také kompatibilní s vlastní domény a mezi sebou, takže můžete nakonfigurovat vlastní domény a dalších řešení v případě potřeby. 
 
-**Možnost 1: Použití v aplikaci Managed Browser** – toto řešení platí pouze pokud budete chtít doporučujeme nebo vyžadovat, aby uživatelé přístup k aplikaci přes Intune Managed Browser. Zpracuje všechny publikované adresy URL. 
+**Option 1: Použít v aplikaci Managed Browser** – toto řešení platí pouze pokud budete chtít doporučujeme nebo vyžadovat, aby uživatelé přístup k aplikaci přes Intune Managed Browser. Zpracuje všechny publikované adresy URL. 
 
-**Možnost 2: Použití rozšíření MyApps** – toto řešení vyžaduje, aby uživatelé nainstalovat rozšíření na straně klienta prohlížeče, ale bude zpracovávat všechny publikované adresy URL a spolupracuje s většinou oblíbených prohlížeče. 
+**Option 2: Použití rozšíření MyApps** – toto řešení vyžaduje, aby uživatelé nainstalovat rozšíření na straně klienta prohlížeče, ale bude zpracovávat všechny publikované adresy URL a spolupracuje s většinou oblíbených prohlížeče. 
 
-**Možnost 3: Použití nastavení překladu odkaz** – Toto je nastavení na straně správce, který není viditelný pro uživatele. Však bude zpracovávat jenom adresy URL v kódu HTML a CSS. Pevně zakódované interní adresy URL vygenerované pomocí jazyka Javascript (například) nebudou fungovat.  
+**Možnost 3: Použít nastavení překladu odkaz** – Toto je nastavení na straně správce, který není viditelný pro uživatele. Však bude zpracovávat jenom adresy URL v kódu HTML a CSS. Pevně zakódované interní adresy URL vygenerované pomocí jazyka Javascript (například) nebudou fungovat.  
 
 Tyto tři funkce zachovat propojení práce bez ohledu na to, kde jsou vaši uživatelé. Pokud máte aplikace, které přejděte přímo na koncovým bodům s interním nebo porty, můžete namapovat tyto vnitřní adresy URL na publikované externí aplikace Proxy adresy URL. 
 
@@ -46,13 +46,13 @@ Tyto tři funkce zachovat propojení práce bez ohledu na to, kde jsou vaši už
 >Nebo, pokud je aplikace, je potřeba nakonfigurovat s odkazem na překlad služby SharePoint, naleznete v tématu [konfigurace alternativních mapování přístupu pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) jiný způsob mapování odkazy. 
 
  
-### <a name="option-1-intune-managed-browser-integration"></a>Možnost 1: Spravovaná pomocí Intune Integration prohlížeče 
+### <a name="option-1-intune-managed-browser-integration"></a>Option 1: Intune Managed Browser integrace 
 
 Intune Managed Browser můžete rozšířit ochranu, aplikace a obsah. Pokud chcete používat toto řešení, budete muset vyžadují/doporučujeme uživatelům přístup k aplikaci prostřednictvím Intune Managed Browser. Všechny interní adresy URL, které jsou publikované pomocí Proxy aplikace služby bude v aplikaci Managed Browser rozpozná a přesměruje na odpovídající externí adresu URL. Tím se zajistí, že všechny pevně zakódované interní adresy URL pracovat, a pokud uživatel přejde v prohlížeči a přímo typy interní adresa URL, to funguje i v případě, že uživatel je vzdálený.  
 
 Další informace, včetně postupu konfigurace této možnosti najdete v tématu [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) dokumentaci.  
 
-### <a name="option-2-myapps-browser-extension"></a>Možnost 2: Rozšíření prohlížeče MyApps 
+### <a name="option-2-myapps-browser-extension"></a>Option 2: Rozšíření prohlížeče MyApps 
 
 Pomocí rozšíření prohlížeče MyApps všechny interní adresy URL, které jsou publikované pomocí Proxy aplikace rozpozná rozšíření a přesměrování na odpovídající externí adresu URL. Tím se zajistí, že všechny pevně zakódované interní adresy URL pracovat, a pokud uživatel přejde do adresního řádku prohlížeče a přímo typy interní adresa URL, to funguje i v případě, že uživatel je vzdálený.  
 
@@ -85,7 +85,7 @@ Existují dva běžné typy interní odkazů v místním aplikacím:
 
 Překlad odkazů je povolená pro každou aplikaci tak, že budete mít kontrolu nad činnost koncového uživatele na úrovni aplikace za. Zapnout překlad odkazu pro aplikace, pokud chcete odkazy *z* tuto aplikaci k převodu, nikoli odkazy *k* tuto aplikaci. 
 
-Předpokládejme například, že budete mít tři aplikace publikované prostřednictvím Proxy aplikací, které jsou všechny se navzájem propojují: výhod, nákladů a cesty. Je čtvrtý aplikace, zpětnou vazbu, která není publikované prostřednictvím Proxy aplikací.
+Předpokládejme například, že budete mít tři aplikace publikované prostřednictvím Proxy aplikací, které jsou všechny se navzájem propojují: Výhody, náklady a cesty. Je čtvrtý aplikace, zpětnou vazbu, která není publikované prostřednictvím Proxy aplikací.
 
 Když povolíte překlad odkazu pro aplikaci výhody, odkazy na výdaje a cestovní ruch přesměrování na externí adresy URL pro tyto aplikace, ale na odkaz pro zpětnou vazbu není přesměrovat, protože neexistuje žádná externí adresa URL. Odkazy z výdaje a cestovní ruch zpět na výhody nefungují, protože odkaz překladu nebyl povolen pro tyto dvě aplikace.
 

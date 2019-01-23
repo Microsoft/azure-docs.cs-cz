@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e241317231f3c607c373cb8a54e4b5bf6601b8e7
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620757"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54457047"
 ---
 > [!div class="op_single_selector"]
 > * [C ve Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -41,7 +41,7 @@ K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet
 
 ## <a name="before-you-start"></a>Než začnete
 
-Než začnete psát kód pro vaše zařízení, nasaďte akcelerátor řešení vzdálené monitorování a přidávat nové fyzické zařízení k řešení.
+Předtím, než začnete psát kód pro vaše zařízení, nasaďte akcelerátor řešení vzdálené monitorování a přidat nový skutečné zařízení do řešení.
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Nasazení akcelerátor řešení vzdálené monitorování
 
@@ -62,17 +62,17 @@ Přidání zařízení do řešení vzdáleného monitorování, proveďte násl
 
 1. Zvolte **+ nové zařízení**a klikněte na tlačítko **fyzické** jako **typ zařízení**:
 
-    ![Přidat fyzického zařízení](media/iot-suite-selector-connecting/devicesprovision.png)
+    ![Přidání skutečného zařízení](media/iot-suite-selector-connecting/devicesprovision.png)
 
 1. Zadejte **fyzické chladič** jako ID zařízení. Zvolte **symetrický klíč** a **automaticky vygenerovat klíče** možnosti:
 
     ![Zvolte možnosti zařízení](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. Zvolte **použít**. Potom si poznamenejte **ID zařízení**, **primární klíč**, a **primární klíč připojovacího řetězce** hodnoty:
+1. Zvolte **Použít**. Potom si poznamenejte **ID zařízení**, **primární klíč**, a **primární klíč připojovacího řetězce** hodnoty:
 
     ![Načtení přihlašovacích údajů](media/iot-suite-selector-connecting/credentials.png)
 
-Právě jste přidali fyzické zařízení k akcelerátoru řešení vzdáleného monitorování a jste si poznamenali svůj připojovací řetězec zařízení. V následujících částech můžete implementovat klientská aplikace, která používá připojovací řetězec zařízení pro připojení k vašemu řešení.
+Právě jste přidali skutečné zařízení k akcelerátoru řešení vzdáleného monitorování a jste si poznamenali svůj připojovací řetězec zařízení. V následujících částech můžete implementovat klientská aplikace, která používá připojovací řetězec zařízení pro připojení k vašemu řešení.
 
 Klientská aplikace implementuje předdefinované **chladič** model zařízení. Model zařízení akcelerátoru řešení určuje následující informace o zařízení:
 

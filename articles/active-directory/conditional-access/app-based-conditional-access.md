@@ -5,7 +5,7 @@ services: active-directory
 keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 20beff7accbc987842141fa7ece9c17f11b0032e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415385"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448801"
 ---
-# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Postupy: Vyžaduje schválené klientské aplikace pro přístup k aplikaci cloud s podmíněným přístupem 
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Jak: Vyžadovat klientem schválených aplikací pro přístup k aplikaci cloud s podmíněným přístupem 
 
 Vaši zaměstnanci používají mobilní zařízení pro osobní a pracovní úkoly. A ujistěte se, vaši zaměstnanci byli produktivní, můžete také chcete zabránit ztrátě dat. S podmíněným přístupem Azure Active Directory (Azure AD) můžete omezit přístup k vašim cloudovým aplikacím na klientem schválených aplikací, které můžete chránit podniková data.  
 
@@ -52,7 +52,7 @@ Zásady podmíněného přístupu na základě aplikace s jinými zásadami mů�
  
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Toto téma předpokládá, že máte zkušenosti s:
 
@@ -110,11 +110,11 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 2. **Uživatelé a skupiny**: Každá zásada podmíněného přístupu musí mít aspoň jeden vybraný uživatel nebo skupina.
 
-3. **Cloudové aplikace:** jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**.
+3. **Cloudové aplikace:** Jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**.
 
     ![Podmíněný přístup](./media/app-based-conditional-access/07.png)
 
-4. **Podmínky:** jako **podmínky**, budete muset nakonfigurovat **platformy zařízení** a **klientské aplikace**:
+4. **Podmínky:** Jako **podmínky**, budete muset nakonfigurovat **platformy zařízení** a **klientské aplikace**:
 
     a. Jako **platformy zařízení**vyberte **Android** a **iOS**.
 
@@ -140,11 +140,11 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 2. **Uživatelé a skupiny**: Každá zásada podmíněného přístupu musí mít aspoň jeden vybraný uživatel nebo skupina.
 
 
-3. **Cloudové aplikace:** jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**.
+3. **Cloudové aplikace:** Jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**.
 
     ![Podmíněný přístup](./media/app-based-conditional-access/07.png)
 
-4. **Podmínky:** jako **podmínky**, budete muset nakonfigurovat **klientské aplikace (preview)**. 
+4. **Podmínky:** Jako **podmínky**, budete muset nakonfigurovat **klientské aplikace (preview)**. 
 
     a. Jako **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
 
@@ -191,11 +191,11 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 2. **Uživatelé a skupiny**: Každá zásada podmíněného přístupu musí mít aspoň jeden vybraný uživatel nebo skupina.
 
 
-3. **Cloudové aplikace:** jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online** a **Office 365 SharePoint Online**. 
+3. **Cloudové aplikace:** Jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online** a **Office 365 SharePoint Online**. 
 
     ![Podmíněný přístup](./media/app-based-conditional-access/02.png)
 
-4. **Podmínky:** jako **podmínky**, budete muset nakonfigurovat **platformy zařízení** a **klientské aplikace**:
+4. **Podmínky:** Jako **podmínky**, budete muset nakonfigurovat **platformy zařízení** a **klientské aplikace**:
 
     a. Jako **platformy zařízení**vyberte **Android** a **iOS**.
 
@@ -222,11 +222,11 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 2. **Uživatelé a skupiny**: Každá zásada podmíněného přístupu musí mít aspoň jeden vybraný uživatel nebo skupina.
 
-3. **Cloudové aplikace:** jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**. Online 
+3. **Cloudové aplikace:** Jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**. Online 
 
     ![Podmíněný přístup](./media/app-based-conditional-access/07.png)
 
-4. **Podmínky:** jako **podmínky**, budete muset nakonfigurovat **klientské aplikace**:
+4. **Podmínky:** Jako **podmínky**, budete muset nakonfigurovat **klientské aplikace**:
 
     a. Jako **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
 
@@ -275,11 +275,11 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 2. **Uživatelé a skupiny**: Každá zásada podmíněného přístupu musí mít aspoň jeden vybraný uživatel nebo skupina.
 
-3. **Cloudové aplikace:** jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online** a **Office 365 SharePoint Online**. 
+3. **Cloudové aplikace:** Jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online** a **Office 365 SharePoint Online**. 
 
      ![Podmíněný přístup](./media/app-based-conditional-access/02.png)
 
-4. **Podmínky:** jako **podmínky**, budete muset nakonfigurovat **platformy zařízení** a **klientské aplikace**. 
+4. **Podmínky:** Jako **podmínky**, budete muset nakonfigurovat **platformy zařízení** a **klientské aplikace**. 
  
     a. Jako **platformy zařízení**vyberte **Android** a **iOS**.
 
@@ -311,11 +311,11 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 2. **Uživatelé a skupiny**: Každá zásada podmíněného přístupu musí mít aspoň jeden vybraný uživatel nebo skupina.
 
-3. **Cloudové aplikace:** jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**. 
+3. **Cloudové aplikace:** Jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**. 
 
     ![Podmíněný přístup](./media/app-based-conditional-access/07.png)
 
-4. **Podmínky:** jako **podmínky**, budete muset nakonfigurovat **klientské aplikace**. 
+4. **Podmínky:** Jako **podmínky**, budete muset nakonfigurovat **klientské aplikace**. 
 
     Jako **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
 
@@ -371,11 +371,11 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 2. **Uživatelé a skupiny**: Každá zásada podmíněného přístupu musí mít aspoň jeden vybraný uživatel nebo skupina.
 
-3. **Cloudové aplikace:** jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online** a **Office 365 SharePoint Online**. 
+3. **Cloudové aplikace:** Jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online** a **Office 365 SharePoint Online**. 
 
      ![Podmíněný přístup](./media/app-based-conditional-access/02.png)
 
-4. **Podmínky:** jako **podmínky**, budete muset nakonfigurovat **platformy zařízení** a **klientské aplikace**. 
+4. **Podmínky:** Jako **podmínky**, budete muset nakonfigurovat **platformy zařízení** a **klientské aplikace**. 
  
     a. Jako **platformy zařízení**vyberte **Android** a **iOS**.
 
@@ -407,11 +407,11 @@ Pro zásady podmíněného přístupu v tomto kroku budete muset nakonfigurovat 
 
 2. **Uživatelé a skupiny**: Každá zásada podmíněného přístupu musí mít aspoň jeden vybraný uživatel nebo skupina.
 
-3. **Cloudové aplikace:** jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**. 
+3. **Cloudové aplikace:** Jako cloudové aplikace, budete muset vybrat **Office 365 Exchange Online**. 
 
     ![Podmíněný přístup](./media/app-based-conditional-access/07.png)
 
-4. **Podmínky:** jako **podmínky**, budete muset nakonfigurovat **klientské aplikace (preview)**. 
+4. **Podmínky:** Jako **podmínky**, budete muset nakonfigurovat **klientské aplikace (preview)**. 
 
     Jako **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
 

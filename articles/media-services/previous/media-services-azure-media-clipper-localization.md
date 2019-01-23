@@ -1,32 +1,32 @@
 ---
-title: Konfigurace Azure Media výřez lokalizace | Microsoft Docs
-description: Další informace o Azure Media výřez podporované jazyky a podpora lokalizace
+title: Konfigurace Azure Media Clipperem lokalizace | Dokumentace Microsoftu
+description: Další informace o Azure Media Clipperem podporované jazyky a podporu lokalizace
 services: media-services
-keywords: klip; subclip; kódování; média
+keywords: Galerie, dílčí klip, kódování, médií
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: dd0fc87741befd92cc41d0129fafcbc64db7ec9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 227a312839950652924e75f0bafb474ce7bac588
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788141"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448662"
 ---
 # <a name="configure-localization"></a>Konfigurace lokalizace
-Azure Media výřez je k dispozici v 18 jazycích. Nastavení jazyka pomůcky, je nutné definovat `language` parametr během inicializace. Předejte v řetězci požadovaný jazyk kódu z následujícího seznamu:
+Azure Media Clipperem je k dispozici v jazycích 18. Nastavení jazyka widgetů, je nutné definovat `language` parametr během inicializace. Předat řetězec požadovaný jazyk kódu z následujícího seznamu:
 - Čínština (zjednodušená): zh-hans
 - Čínština (tradiční): zh-hant
 - Čeština: cs
-- Holandská, Flemish: nl
-- Angličtina: en
+- Nizozemští, Flemish: nl
+- Angličtina: cs
 - Francouzština: fr
-- Němčina: de
+- Němčina: Německo
 - Maďarština: hu
-- Italština: ho
+- Italština: ji
 - Japonština: Japonsko
 - Korejština: ko
 - Polština: pl
@@ -37,7 +37,7 @@ Azure Media výřez je k dispozici v 18 jazycích. Nastavení jazyka pomůcky, j
 - Švédština: sv
 - Turečtina: tr
 
-Nastavit slovník vlastní jazyk nebo rozšířit slovníku výchozí jazyk, je nutné definovat `languages` nebo `extraLanguages` parametr, v uvedeném pořadí. Předejte vlastní slovník pomocí následujícího formátu JSON:
+Nastavit vlastní slovník nebo rozšířit výchozí slovník jazyka, je nutné definovat `languages` nebo `extraLanguages` parametr, v uvedeném pořadí. Předat do vlastního slovníku v následujícím formátu JSON:
 
 ```javascript
 {
@@ -49,7 +49,7 @@ Nastavit slovník vlastní jazyk nebo rozšířit slovníku výchozí jazyk, je 
 }
 ```
 
-Například následující ukázka definuje lokalizované anglickou řetězce:
+Například následující příklad definuje lokalizované anglické řetězce:
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Například následující ukázka definuje lokalizované anglickou řetězce:
         'AdvancedSettings.allAudioTracks': 'All audio tracks selected',
         'AdvancedSettings.someAudioTracks': '{0} audio tracks selected',
         'AdvancedSettings.includeAllAudioTracks': 'Include all audio tracks',
-        'AssetsPanel.loadingError': 'Failed to retreive assets from server.',
+        'AssetsPanel.loadingError': 'Failed to retrieve assets from server.',
         'AssetsPanel.retry': 'Retry?',
         'CommandBar.prevFrameTitle': 'Move one frame backwards',
         'CommandBar.prevKeyFrameTitle': 'Move one GOP backwards',
@@ -139,7 +139,7 @@ Například následující ukázka definuje lokalizované anglickou řetězce:
 ```
 
 ## <a name="next-steps"></a>Další postup
-Najdete v části Další kroky pro konfiguraci Azure Media výřez:
-- [Načítání prostředků do Azure Media výřez](media-services-azure-media-clipper-load-assets.md)
-- [Konfigurace vlastní klávesové zkratky](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [Odeslání úlohy výstřižek z výřez](media-services-azure-media-clipper-submit-job.md)
+Informace o tom další kroky pro konfiguraci Azure Media Clipperem:
+- [Načítání prostředků do Azure Media Clipperu](media-services-azure-media-clipper-load-assets.md)
+- [Konfigurace vlastních klávesových zkratek](media-services-azure-media-clipper-keyboard-shortcuts.md)
+- [Odesílání úloh oříznutí z Clipperem](media-services-azure-media-clipper-submit-job.md)

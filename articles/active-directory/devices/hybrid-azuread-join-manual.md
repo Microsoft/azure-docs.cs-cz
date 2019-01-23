@@ -4,7 +4,7 @@ description: Zjistěte, jak ručně nakonfigurovat zařízení Azure Active Dire
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: daf929c99665407d9633c901f66bb4f780c124ee
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 6aae96320f8bb4c34fa172c54302bb69ea5799eb
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54392138"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447543"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridní služby Azure Active Directory připojené zařízení 
 

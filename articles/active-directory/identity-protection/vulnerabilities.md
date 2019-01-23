@@ -5,7 +5,7 @@ services: active-directory
 keywords: cloud discovery, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení služby Azure active directory identity protection
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
 ms.component: conditional-access
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 680e52fefd8256b3ac270e8d721f27645ced49eb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 12440a8da63f19961322f06fd2459a28119e9d59
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004248"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463197"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection
 Ohrožení zabezpečení jsou slabá místa ve vašem prostředí, která je někdo zneužije ze strany útočníka. Doporučujeme, abyste řešit tyto nedostatky zabezpečení a zlepšit stav zabezpečení vaší organizace a útočníkům zabránit v jejich využívání.
@@ -40,7 +40,7 @@ Ověřování Azure Multi-Factor Authentication poskytuje druhou vrstvu zabezpe�
 
 Doporučujeme vyžadovat ověřování Azure Multi-Factor Authentication pro přihlášení uživatelů. Ověřování službou Multi-Factor Authentication hrají klíčovou roli v rámci zásad podmíněného přístupu na základě rizik k dispozici prostřednictvím služby Identity Protection.
 
-Další informace najdete v tématu [co je Azure Multi-Factor Authentication?](../authentication/multi-factor-authentication.md)
+Další informace najdete v tématu [Co je Azure Multi-Factor Authentication?](../authentication/multi-factor-authentication.md)
 
 ## <a name="unmanaged-cloud-apps"></a>Nespravované cloudové aplikace
 Toto ohrožení zabezpečení pomáhá identifikovat nespravované cloudové aplikace ve vaší organizaci.

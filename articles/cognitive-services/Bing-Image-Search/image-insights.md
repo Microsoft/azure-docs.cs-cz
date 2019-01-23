@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 280c646a3265ff7ab9a3d32412a2be2e3989e22e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bb17916fb4d9b9b3ae1481ead7508214f5956c70
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297465"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464268"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Získání přehledů image pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -217,9 +217,9 @@ Následující příklad ukazuje odpověď na předchozí požadavek. Vzhledem k
 Hodnoty obdélník jsou relativní vzhledem k šířku a výšku původní bitové kopie a jsou v rozmezí 0,0 až 1,0. Například pokud bitová kopie je 300 x 200 a zároveň klauzuli top oblasti, levém rohu se v okamžiku (10, 20) a dolního okraje, pravém rohu v okamžiku (290, 150), pak normalizované obdélníku je:  
 
 -   Left: 10 / 300 = 0.03333...  
--   TOP: 20 / 200 = 0,1  
+-   TOP:  20 / 200 = 0.1  
 -   Right: 290 / 300 = 0.9667...  
--   Bottom: 150 / 200 = 0,75.  
+-   Dole: 150 / 200 = 0.75  
 
 Můžete použít oblast, která vrací Bingu ve voláních další přehledy. Chcete-li například získat vizuálně podobné obrázky rozpoznaný entity. Další informace najdete v tématu [oříznutí Image na použití s moduly rozpoznávání entit a vizuálně podobné](#croppingimages). Následuje ukázka mapování polí oblast a parametry dotazu, můžete použít k oříznutí obrázků.  
 
@@ -408,7 +408,7 @@ Následující příklad ukazuje odpověď na předchozí požadavek. Odpověď 
 }
 ```
 
-Chcete-li získat seznam obchodníci, které nabízejí online produktu (naleznete v tématu [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offer-offercount) pole), volání rozhraní API znovu a nastavte `modules` k ShoppingSources. Potom nastavte `insightsToken` parametru dotazu na token součástí produktu souhrnného obrázku.  
+Chcete-li získat seznam obchodníci, které nabízejí online produktu (naleznete v tématu [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) pole), volání rozhraní API znovu a nastavte `modules` k ShoppingSources. Potom nastavte `insightsToken` parametru dotazu na token součástí produktu souhrnného obrázku.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

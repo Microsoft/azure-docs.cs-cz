@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 90f3a4571e485e52a47eda34eacf6367aef35933
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 703d255a962dbac7a430404835c6d45c358d99a7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320986"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478088"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -43,7 +43,23 @@ Budete potřebovat účet úložiště LRS nebo GRS. Doporučujeme účet úlož
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Oprávnění k vytvoření virtuálních počítačů musí Můj účet Azure?
 Pokud si nejste správce předplatného, máte oprávnění replikace, které potřebujete. Pokud si nejste, budete potřebovat oprávnění k vytvoření virtuálního počítače Azure ve skupině prostředků a virtuální síť, kterou zadáte při konfiguraci Site Recovery a oprávnění k zápisu do vybraného účtu úložiště. [Další informace](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
+## <a name="azure-site-recovery-components-upgrade"></a>Upgradujte komponenty Azure Site Recovery
 
+### <a name="my-mobility-agentconfiguration-serverprocess-server-version-is-very-old-and-my-upgrade-has-failed-how-should-i-upgrade-to-latest-version"></a>Agent Mobility/konfigurační Server/je velmi stará verze procesového serveru a tento upgrade se nezdařil. Jak mám upgradovat na nejnovější verzi?
+
+Azure Site Recovery se řídí model podpory N-4. Odkazovat na naše [podporují příkaz](https://aka.ms/asr_support_statement) pochopit podrobnosti o tom, jak upgradovat z velmi staré verze.
+
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-azure-site-recovery"></a>Kde najdu kumulativní poznámky nebo aktualizovat verzi služby Azure Site Recovery?
+
+Odkazovat [dokumentu](https://aka.ms/asr_update_rollups) pro informace o poznámkách k vydané verzi. Odkazy instalaci příslušných součástí najdete v každé kumulativní aktualizaci.
+
+### <a name="how-should-i-upgrade-site-recovery-components-for-on-premises-vmware-or-physical-site-to-azure"></a>Jak upgradovat součásti Site Recovery pro VMware v místním prostředí nebo fyzického serveru do Azure?
+
+Přečtěte si naše doprovodné materiály k dispozici [tady](https://aka.ms/asr_vmware_upgrades) upgradovat vaše komponenty.
+
+## <a name="is-reboot-of-source-machine-mandatory-for-each-upgrade"></a>Restartování zdrojového počítače je povinné pro každý upgrade?
+
+I když doporučuje, není to povinné pro každý upgrade. Přečtěte si [tady](https://aka.ms/asr_vmware_upgrades) pro jasné pokyny.
 
 ## <a name="on-premises"></a>Lokálně
 
@@ -142,7 +158,7 @@ Ne. K tomu potřeba nastavit konfigurační server v jednotlivých oblastech.
 Při nejbližším virtuálnímu počítači Azure s konfiguračního serveru potřebuje komunikovat s virtuálními počítači a na místní infrastrukturu VMware. Může přidat latenci a mít vliv na probíhající replikaci.
 
 ### <a name="how-do-i-update-the-configuration-server"></a>Jak můžu aktualizovat konfigurační server?
-[Další informace o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) aktualizuje konfigurační server. Můžete najít informace o nejnovější aktualizaci v [stránku aktualizace Azure](https://azure.microsoft.com/updates/?product=site-recovery). Můžete také přímo stáhnout nejnovější verzi konfiguračního serveru z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+[Další informace o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) aktualizuje konfigurační server. Můžete najít informace o nejnovější aktualizaci v [stránku aktualizace Azure](https://azure.microsoft.com/updates/?product=site-recovery). Můžete také přímo stáhnout nejnovější verzi konfiguračního serveru z [Microsoft Download Center](https://aka.ms/asrconfigurationserver). Pokud je vaše verze starší než verze 4 z aktuální verze, podívejte se na naše [podporují příkaz](https://aka.ms/asr_support_statement) pokyny k upgradu.
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>Můžu zálohovat nasazené konfiguračního serveru?
 Doporučujeme pravidelných naplánovaných záloh konfiguračního serveru. Úspěšné navrácení služeb po obnovení se při navrácení služeb obnoví virtuální počítač musí existovat v databázi konfigurací serveru a konfiguračního serveru musí být spuštěn a v připojeném stavu. Další informace o běžných úloh správy serveru konfigurace [tady](vmware-azure-manage-configuration-server.md).

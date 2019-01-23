@@ -2,17 +2,17 @@
 title: Předplatná Azure Event Grid prostřednictvím portálu
 description: Popisuje, jak vytvořit odběry služby Event Grid prostřednictvím portálu.
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: tomfitz
-ms.openlocfilehash: eb48e40007a25992a9a399176b6a4f93be89efc8
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 01/08/2019
+ms.author: spelluru
+ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344076"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477902"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Přihlášení k odběru událostí prostřednictvím portálu
 

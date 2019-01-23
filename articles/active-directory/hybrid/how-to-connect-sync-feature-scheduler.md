@@ -1,10 +1,10 @@
 ---
-title: 'Synchronizace Azure AD Connect: Plánovač | Dokumentace Microsoftu'
+title: 'Synchronizace Azure AD Connect: Scheduler | Dokumentace Microsoftu'
 description: Toto téma popisuje funkce integrované plánovače ve službě Azure AD Connect sync.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d8deb03d03446c1452d73a7c08df4cf14ffcd5b5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8099194feed3761e32686ab15e8738b10ffd4e8b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311021"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462313"
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Plánovač
+# <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Scheduler
 Toto téma popisuje (označovaný také jako integrované plánovače ve službě Azure AD Connect sync synchronizační stroj).
 
 Tato funkce byla zavedena v systému sestavení 1.1.105.0 (všeobecně dostupné. února 2016).
@@ -123,7 +123,7 @@ Plánovač synchronizační cyklus běží, potřebujete ji zastavit. Napříkla
 Když cyklus synchronizace je spuštěná, nemůžete provádět změny konfigurace. Počkat až do dokončení procesu plánovače, ale taky můžete zastavit jeho abyste mohli dělat změny okamžitě. Zastavování aktuální cyklu není škodlivých a čekajících změn se zpracovávají další spuštění.
 
 1. Začněte tím, že o tom, aby ukončit jeho aktuální cyklu pomocí rutiny Powershellu `Stop-ADSyncSyncCycle`.
-2. Pokud používáte sestavení před 1.1.281, nezastaví pak zastavení plánovače aktuální konektor z jeho aktuálního úkolu. Přinutit konektoru zastavit pomocí následujících kroků: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. Pokud používáte sestavení před 1.1.281, nezastaví pak zastavení plánovače aktuální konektor z jeho aktuálního úkolu. Vynutit konektoru zastavit pomocí následujících kroků: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
    * Spustit **synchronizační služba** z nabídky start. Přejděte na **konektory**, zvýrazněte konektoru se stavem **systémem**a vyberte **Zastavit** z akcí.
 
 Plánovač je stále aktivní a znovu spustí na nejbližší příležitosti.
@@ -133,7 +133,7 @@ Rutiny uvedené v této části jsou dostupné pouze v sestavení [1.1.130.0](re
 
 Pokud integrované plánovače nesplňuje vaše požadavky, můžete naplánovat konektorů pomocí Powershellu.
 
-### <a name="invoke-adsyncrunprofile"></a>Vyvolání ADSyncRunProfile
+### <a name="invoke-adsyncrunprofile"></a>Invoke-ADSyncRunProfile
 Profil, který můžete spustit pro konektor tímto způsobem:
 
 ```

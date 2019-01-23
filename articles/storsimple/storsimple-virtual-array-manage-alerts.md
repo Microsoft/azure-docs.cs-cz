@@ -1,6 +1,6 @@
 ---
-title: Zobrazovat a spravovat Microsoft Azure StorSimple virtuální pole výstrahy | Microsoft Docs
-description: Popisuje výstrahy podmínky pole virtuální zařízení StorSimple a závažnost a jak používat službu StorSimple Manager ke správě výstrah.
+title: Umožňuje zobrazit a spravovat Microsoft Azure StorSimple Virtual Array upozornění | Dokumentace Microsoftu
+description: Popisuje podmínky upozornění StorSimple Virtual Array a závažnost a jak spravovat výstrahy pomocí služby StorSimple Manager.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,157 +15,155 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d4d680e3460fbeff73c2f334c6461da7967374d
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27786403"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447220"
 ---
-# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple Spravovat výstrahy pro toto pole virtuální zařízení StorSimple
+# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple ke správě výstrah pro StorSimple Virtual Array
 
 ## <a name="overview"></a>Přehled
 
-Výstrahy funkce ve službě StorSimple Manager zařízení poskytuje způsob, jak ke kontrole a vymazat výstrahy související s pole virtuální zařízení StorSimple na základě v reálném čase. Můžete výstrahy na **souhrn služby** okna centrálně monitorovat stav problémy vaše pole virtuální zařízení StorSimple a celkového řešení Microsoft Azure StorSimple.
+Funkce výstrah ve službě Správce zařízení StorSimple poskytuje způsob, jak ke kontrole a zrušte upozornění týkající se virtuálních polí StorSimple na základě v reálném čase. Výstrahy můžete použít na **souhrn služby** okno centrálně monitorovat stav problémy vaše virtuální pole StorSimple a celkového řešení Microsoft Azure StorSimple.
 
-Tento kurz popisuje, jak nakonfigurovat oznámení o výstrahách, obecné výstrahy podmínky, úrovně závažnosti výstrah a postup zobrazení a sledovat výstrahy. Kromě toho zahrnuje výstrahy Stručná referenční tabulky, které vám umožní rychle vyhledat konkrétní výstrahu a reagují odpovídajícím způsobem.
+Tento kurz popisuje, jak nakonfigurovat oznámení o výstrahách, běžné podmínky upozornění, úrovně závažnosti výstrah a jak zobrazit a sledovat výstrahy. Kromě toho zahrnuje upozornění Stručná referenční příručka tabulek, které vám umožní rychle najít konkrétní výstrahu a reagují odpovídajícím způsobem.
 
-![stránka výstrah](./media/storsimple-virtual-array-manage-alerts/alerts1.png)
+![Stránky s upozorněními](./media/storsimple-virtual-array-manage-alerts/alerts1.png)
 
 ## <a name="configure-alert-settings"></a>Konfigurace nastavení výstrah
 
-Můžete zvolit, zda chcete oznámení e-mailové výstrahy podmínky pro všechny vaše pole virtuální zařízení StorSimple. Kromě toho můžete identifikovat ostatní příjemci oznámení výstrah zadáním jejich e-mailové adresy ve **příjemců další e-mailu** pole, oddělené středníky.
+Můžete zvolit, jestli chcete dostat e-mailové výstrahy podmínek pro každý z vašich virtuálních polí StorSimple. Kromě toho můžete identifikovat dalších příjemců oznámení výstrah tak, že zadáte své e-mailové adresy **další e-mailové příjemce** pole, oddělené středníky.
 
 > [!NOTE]
-> Můžete zadat maximálně 20 e-mailové adresy na virtuální pole.
+> Můžete zadat maximálně 20 e-mailových adres na jedno virtuální pole.
 
-
-Po povolení e-mailové oznámení pro virtuální pole členy v seznamu oznámení e-mailovou zprávu, dojde k kritickou výstrahu pokaždé, když obdrží. Odešle zprávy ze  *storsimple-alerts-noreply@mail.windowsazure.com*  a popíše podmínka upozornění. Můžete kliknout na příjemci **Unsubscribe** sami odebrat ze seznamu adresátů oznámení e-mailu.
+Po povolení e-mailové oznámení pro virtuální pole se v seznamu oznámení obdrží e-mailovou zprávu, vyvolá se pokaždé, když kritickou výstrahu. Pošle zprávy z *storsimple-alerts-noreply@mail.windowsazure.com* a popíše se vyskytl výstražný stav. Můžete kliknout na příjemce **Unsubscribe** sami odebrat ze seznamu e-mailové oznámení.
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Chcete-li povolit e-mailové oznámení pro výstrahy
 
-1. Přejděte na služby StorSimple Manager zařízení a **správy** , vyberte a klikněte na tlačítko **zařízení**. Seznam zařízení, na které se zobrazí vyberte a klikněte na zařízení.
+1. Přejděte do služby Správce zařízení StorSimple a **správu** části, vyberte a klikněte na tlačítko **zařízení**. Ze seznamu zařízení zobrazí vyberte a klikněte na vašem zařízení.
    
     ![nastavení výstrah](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
 2. Otevře **nastavení** okno. V **nastavení zařízení** vyberte **Obecné**. Otevře **obecné nastavení** okno.
    
     ![Konfigurace oznámení výstrah](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
-3. V **obecné nastavení** okno, přejděte na **výstrahy nastavení** tématu a nastavte následující:
+3. V **obecné nastavení** okno, přejděte na **nastavení výstrah** tématu a nastavte následující:
    
    1. V **povolit e-mailové oznámení** pole, vyberte **Ano**.
-   2. V **e-mailem správci služeb** pole, vyberte **Ano** Pokud chcete mít správce služeb a spolusprávci všechny přijímat oznámení výstrah.
-   3. V **příjemců další e-mailu** pole, zadejte e-mailové adresy všech příjemců, kterým mají být doručena oznámení výstrah. Zadejte názvy ve formátu  *someone@somewhere.com* . K oddělení e-mailové adresy použijte středníky. Můžete nakonfigurovat maximálně 20 e-mailové adresy na virtuální zařízení.
+   2. V **e-mailem správci služeb** pole, vyberte **Ano** Pokud chcete mít správce služeb a všichni spolusprávci dostávali oznámení výstrah.
+   3. V **další e-mailové příjemce** zadejte e-mailové adresy všech příjemců, kteří mají dostávat oznámení výstrah. Zadejte názvy ve formátu *someone@somewhere.com*. K oddělení e-mailových adres použijte středníky. Nakonfigurovat můžete nanejvýš 20 e-mailových adres na jedno virtuální zařízení.
       
        ![Konfigurace oznámení výstrah](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
-   4. Pokud chcete poslat testovací e-mailová oznámení, klikněte na tlačítko **odeslat zkušební e-mail**. Služby StorSimple Manager zařízení se zobrazí stavové zprávy, jak předává testovací oznámení.
+   4. Pokud chcete poslat testovací e-mailové oznámení, klikněte na tlačítko **odeslat zkušební email**. Služba Správce zařízení StorSimple se zobrazí stavové zprávy, jak předává testovací oznámení.
       
-       ![Výstrahy testování odeslaných e-mailové oznámení](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
+       ![Upozornění testovací odeslání e-mailové oznámení](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > Pokud nelze odeslat testovací zprávu oznámení, služby StorSimple Manager zařízení se zobrazí příslušná zpráva. Klikněte na tlačítko **OK**, počkejte několik minut a potom se pokusíte odeslat testovací zprávu oznámení znovu.
-      > 
-      > 
+      > Pokud nelze odeslat testovací oznámení, ve službě Správce zařízení StorSimple se zobrazí odpovídající zprávu. Klikněte na tlačítko **OK**, počkejte několik minut a pak zkuste znovu odeslat zprávu oznámení vašeho testu.
+      >
+      >
    5. V dolní části stránky klikněte na tlačítko **Uložit** uložte konfiguraci. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
       
-      ![Výstrahy testování odeslaných e-mailové oznámení](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
+      ![Upozornění testovací odeslání e-mailové oznámení](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
 
-## <a name="common-alert-conditions"></a>Obecné podmínky výstrah
+## <a name="common-alert-conditions"></a>Běžné podmínky upozornění
 
-Pole virtuální zařízení StorSimple generuje výstrahy v reakci na celou řadu podmínek. Následují nejčastější typy výstrah podmínek:
+StorSimple Virtual Array generuje výstrahy v reakci na různé podmínky. Následují nejčastější typy podmínky upozornění:
 
-* **Problémy s připojením k** – tyto výstrahy dojít, když se potíže při přenosu dat. Problémy s komunikací může dojít během přenosu dat do a z účtu úložiště Azure nebo z důvodu nedostatku připojení mezi virtuální zařízení a služby StorSimple Manager zařízení. Problémy s komunikací jsou některé nejtěžší opravit, protože nejsou k dispozici mnoho body selhání. Měli byste vždy nejprve ověřit, že než budete pokračovat k více pokročilá řešení problémů jsou k dispozici síťové připojení a přístup k Internetu. Informace o portech a nastavení brány firewall, přejděte na [požadavky na systém pole virtuální zařízení StorSimple](storsimple-ova-system-requirements.md). Nápovědu k řešení potíží, přejděte na [Poradce při potížích s rutinu Test-Connection](storsimple-troubleshoot-deployment.md).
-* **Problémy s výkonem** – tyto výstrahy jsou nastat, když systém nepracuje optimálně, například když je v případě velkého zatížení.
+* **Problémy s připojením** – tyto výstrahy zobrazují tehdy, když se potíže při přenášení dat. Problémy s komunikací může dojít při přenosu dat do a z účtu úložiště Azure nebo z důvodu nedostatku možností připojení mezi virtuální zařízení a služby Správce zařízení StorSimple. Problémy s komunikací jsou některé z těch nejtěžších opravit, protože tolik bodů selhání. Vždy nejdříve je nutné ověřit, že před pokračováním pokročilejší řešení potíží jsou k dispozici připojení k síti a přístup k Internetu. Informace o portech a nastavení brány firewall, přejděte na [požadavky systému virtuálních polí StorSimple](storsimple-ova-system-requirements.md). Pomoc při řešení potíží, přejděte na [řešení potíží pomocí rutiny Test-Connection](storsimple-troubleshoot-deployment.md).
+* **Problémy s výkonem** – tyto výstrahy jsou způsobeny, když váš systém nepracuje optimálně, například pokud je v případě velkého zatížení.
 
-Kromě toho se může zobrazit upozornění týkající se zabezpečení, aktualizací nebo selhání úlohy.
+Kromě toho se může zobrazit upozornění týkající se zabezpečení, aktualizace nebo selhání úloh.
 
 ## <a name="alert-severity-levels"></a>Úrovně závažnosti výstrah
 
-Výstrahy mají různé úrovně závažnosti, v závislosti na dopadu, který bude mít výstrahy situaci a není nutné pro reakci na výstrahy. Jsou úrovně závažnosti:
+Výstrahy mají různé úrovně závažnosti, v závislosti na dopadu, který bude mít výstrah situace a není nutné pro reakci na upozornění. Existují tyto úrovně závažnosti:
 
-* **Kritické** – Tato výstraha je v reakci na podmínku, která ovlivňuje úspěšné výkon systému. Je potřeba zajistit, aby StorSimple služba není přerušena.
-* **Upozornění** – tento stav může být důležité, pokud není vyřešené. Měli prozkoumat situaci a proveďte akce požadované zrušte problém.
+* **Kritické** – Tato výstraha se v reakci na určitou podmínku, která ovlivňuje úspěšné výkon vašeho systému. Akce je potřeba zajistit, aby StorSimple služba není přerušena.
+* **Upozornění** – tento stav může být důležité, pokud nebyl vyřešen. By měl prozkoumat situace a provádět žádnou akci potřeba vymazat problém.
 * **Informace o** – Tato výstraha obsahuje informace, které mohou být užitečné při sledování a správa systému.
 
-## <a name="view-and-track-alerts"></a>Zobrazení a sledovat výstrahy
+## <a name="view-and-track-alerts"></a>Zobrazení a sledování výstrah
 
-V okně Souhrn služby StorSimple Manager zařízení vám poskytne rychlý přehled na počet výstrah na virtuální zařízení uspořádané podle úrovně závažnosti.
+Okně s přehledem služby Správce zařízení StorSimple poskytuje rychlý přehled počet oznámení na vaše virtuální zařízení, uspořádané podle úrovně závažnosti.
 
-![Řídicí panel výstrahy](./media/storsimple-virtual-array-manage-alerts/alerts14.png)
+![Řídicí panel výstrah](./media/storsimple-virtual-array-manage-alerts/alerts14.png)
 
-Klepnutím na tlačítko úroveň závažnosti **výstrahy** okno. Výsledky budou zahrnovat pouze upozornění, která odpovídají této úrovně závažnosti.
+Klepnutím na tlačítko úroveň závažnosti **výstrahy** okno. Budou výsledky obsahovat pouze výstrahy, které odpovídají této úrovni závažnosti.
 
-![Sestava výstrahy omezená na typ výstrahy](./media/storsimple-virtual-array-manage-alerts/alerts15.png)
+![Sestava výstrah omezená na typ výstrahy](./media/storsimple-virtual-array-manage-alerts/alerts15.png)
 
-Klikněte na výstrahu v seznamu zobrazíte další podrobnosti výstrahy, včetně doby poslední výstrahy byla nahlášena, počet výskytů výstrahy na zařízení a doporučené akce k vyřešení výstrahy.
+Klikněte na výstrahu v seznamu zobrazíte další podrobnosti k výstraze, včetně posledního upozornění byla nahlášena, počet výskytů prvku oznámení na zařízení a doporučenou akci pro tuto výstrahu vyřešíte tak.
 
-![Seznam výstrah a podrobnosti](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
+![Seznam výstrah a podrobností](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
 
-Podrobnosti výstrahy můžete zkopírovat do textového souboru, pokud je potřeba poslat informace o Microsoft Support. Poté, co jste postupovali podle doporučení a vyřešit podmínka pro upozornění na místě, byste měli Vymazat výstrahu ze seznamu. Vyberte příslušnou výstrahu ze seznamu a pak klikněte na tlačítko **zrušte**. Zrušte více výstrah, vyberte jednotlivé výstrahy, klikněte na možnost žádný sloupec s výjimkou **výstraha** sloupec a pak klikněte na tlačítko **vymazat** po výběru všechny výstrahy vymazat.
+Do textového souboru můžete zkopírovat podrobnosti výstrahy, pokud je potřeba poslat informace o Microsoft Support. Až budete mít postupovali podle doporučení a vyskytl výstražný stav v místním, byste měli vymazat výstrahy ze seznamu. Vyberte příslušnou výstrahu ze seznamu a potom klikněte na tlačítko **vymazat**. Pokud chcete vymazat více výstrah, vyberte jednotlivé výstrahy, klikněte na všechny sloupce s výjimkou **výstraha** sloupec a pak klikněte na tlačítko **vymazat** po výběru všech výstrah vymazání.
 
-Když kliknete na tlačítko **zrušte**, máte možnost zadat komentář výstraha a kroky, které jste si k vyřešení problému. 
+Po kliknutí na **vymazat**, budete mít příležitost k poskytování poznámky o upozornění a kroky, které jste provedli v zájmu vyřešení problému.
 
-![výstrahy komentáře](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
+![oznámení komentářů](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 
-Některé události budou vymazána v systému, pokud jiná událost se aktivuje se novými informacemi. 
+Některé události bude vymazáno systém, pokud jiné událost se aktivuje pomocí nové informace.
 
-## <a name="sort-and-review-alerts"></a>Řazení a zkontrolujte výstrahy
+## <a name="sort-and-review-alerts"></a>Řazení a kontrola upozornění
 
-**Výstrahy** okně může zobrazit až 250 výstrahy. Pokud byl překročen počet výstrah, zobrazí se ve výchozím zobrazení ne všechny výstrahy. Zkombinováním k přizpůsobení, které výstrahy se zobrazují následující pole:
+**Výstrahy** okně můžete zobrazit až 250 výstrahy. Pokud byl překročen počet výstrah, ne všechny výstrahy, zobrazí se ve výchozím zobrazení. Můžete kombinovat přizpůsobení, které výstrahy se zobrazují následující pole:
 
-* **Stav** – můžete zobrazit buď **Active** nebo **nezaškrtnuto** výstrahy. Aktivní výstrahy se stále aktivují v systému, když byly buď ručně vymazat správcem nebo prostřednictvím kódu programu vymazat, protože systém aktualizovat podmínka upozornění s informací o novém nezaškrtnuté výstrahy.
-* **Závažnost** – můžete zobrazit výstrahy všechny úrovně závažnosti (kritická, upozornění, informace o) nebo pouze určité závažnosti, například pouze kritické výstrahy.
-* **Zdroj** – můžete zobrazit výstrahy ze všech zdrojů nebo omezit výstrahy na ty, které pocházejí z služba nebo jednoho nebo všech virtuální zařízení.
-* **Čas rozsah** – zadáním **z** a **k** kalendářních dat a časových razítek, můžete se podívat na výstrahy během časové období, které vás zajímají.
+* **Stav** – můžete zobrazit buď **aktivní** nebo **nezaškrtnuto** výstrahy. Aktivní výstrahy se stále aktivují ve vašem systému, zatímco nezaškrtnuté výstrahy byla buď ručně zrušena správcem nebo programově vymazat, protože systém se vyskytl výstražný stav aktualizuje novými informacemi.
+* **Závažnost** – můžete zobrazit výstrahy všechny úrovně závažnosti (kritická, upozornění, informace o), nebo jenom určité závažnosti, jako je například pouze kritické výstrahy.
+* **Zdroj** – můžete zobrazit výstrahy ze všech zdrojů nebo omezit oznámení na ty, které pocházejí z jednoho nebo všech virtuálních zařízení nebo službu.
+* **Časový rozsah** – zadáním **z** a **k** data a časová razítka, můžete se podívat na výstrahy během časového období, které vás zajímají.
 
 ## <a name="alerts-quick-reference"></a>Stručná referenční příručka výstrahy
 
-Následující tabulka uvádí některé z StorSimple výstrahy, které se můžete setkat, a také další informace a doporučení tam, kde je k dispozici. Pole virtuální zařízení StorSimple výstrahy spadat do jednoho z následujících kategorií:
+V následujících tabulkách jsou uvedeny některé výstrahy StorSimple, které může dojít, a také další informace a doporučení tam, kde je k dispozici. StorSimple Virtual Array výstrahy spadají do jedné z následujících kategorií:
 
 * [Výstrahy připojení cloudu](#cloud-connectivity-alerts)
-* [Konfigurace výstrahy](#configuration-alerts)
-* [Upozornění na selhání úlohy](#job-failure-alerts)
+* [Konfigurace výstrah](#configuration-alerts)
+* [Výstrahy na selhání úloh](#job-failure-alerts)
 * [Výstrahy výkonu](#performance-alerts)
 * [Výstrahy zabezpečení](#security-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Výstrahy připojení cloudu
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Zařízení  *<device name>*  není připojen do cloudu. |Pojmenované zařízení se nemůže připojit ke cloudu. |Nelze se připojit ke cloudu. To může být způsobeno jedním z těchto:<ul><li>Je možné, problémy s nastavení sítě na vašem zařízení.</li><li>Pravděpodobně došlo k problému s údaje k účtu úložiště.</li></ul>Další informace o řešení potíží s připojením, přejděte na [místního webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md) zařízení. |
+| Zařízení <*název zařízení*> není připojená ke cloudu. |Pojmenované zařízení lze připojit ke cloudu. |Nepovedlo se připojit ke cloudu. Může to být způsobené jedním z následujících důvodů:<ul><li>Může se jednat problém pomocí nastavení sítě na vašem zařízení.</li><li>Může se jednat problém s přihlašovacími údaji účtu úložiště.</li></ul>Další informace o řešení problémů s připojením, přejděte [místního webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md) zařízení. |
 
-### <a name="configuration-alerts"></a>Konfigurace výstrahy
+### <a name="configuration-alerts"></a>Konfigurace výstrah
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Nepodporovaná konfigurace virtuálního zařízení na místě. |Nízký výkon. |Aktuální konfigurace může vést ke snížení výkonu. Zkontrolujte, zda server splňuje minimální požadavky na konfiguraci. Další informace, přejděte na [pole požadavky virtuální zařízení StorSimple](storsimple-ova-system-requirements.md). |
-| Spustíte nedostatek místa na disku zřízené v <*název zařízení*>. |Upozornění místa na disku. |Jsou dostatek místa na disku zřízené. Pro uvolnění místa, zvažte přesunutí úloh na jiný svazek nebo sdílenou složku nebo odstraňovat data. |
+| Nepodporovaná konfigurace virtuálního zařízení místní. |Nízký výkon. |Aktuální konfigurace může způsobit snížení výkonu. Zajistěte, aby server splňoval minimální konfigurační požadavky. Další informace najdete v části [StorSimple virtuální pole – požadavky](storsimple-ova-system-requirements.md). |
+| Vám dochází zřízené místo na disku <*název zařízení*\>. |Upozornění místa na disku. |Vám dochází zřízené místo na disku. Uvolněte místo tak, zvažte přesun úloh do jiného svazku nebo sdílené složky nebo odstraňovat data. |
 
-### <a name="job-failure-alerts"></a>Upozornění na selhání úlohy
+### <a name="job-failure-alerts"></a>Výstrahy na selhání úloh
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Zálohování <*název zařízení*> nebylo možné dokončit. |Selhání úlohy zálohování. |Nelze vytvořit zálohu. Zvažte jednu z těchto možností:<ul><li>Problémy s připojením k může bránit úspěšně dokončení operace zálohování. Ujistěte se, že neexistují žádné problémy s připojením. Další informace o řešení potíží s připojením, přejděte na [místního webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md) pro virtuální zařízení.</li><li>Dosáhli jste limitu úložiště k dispozici. Pro uvolnění místa, zvažte odstranění všechny zálohy, které už nejsou potřeba.</li></ul> Vyřešte problémy, vymažte výstrahy a operaci opakujte. |
-| Klonovat z <*název zařízení*> nebylo možné dokončit. |Klonování úloha se nezdařila. |Nelze vytvořit klon počítače. Zvažte jednu z těchto možností:<ul><li>Zálohování seznamu nemusí být platný. Aktualizujte seznam a ověří, zda že je stále platný.</li><li>Problémy s připojením k může bránit úspěšné dokončení operace klonování. Ujistěte se, že neexistují žádné problémy s připojením.</li><li>Dosáhli jste limitu úložiště k dispozici. Pro uvolnění místa, zvažte odstranění všechny zálohy, které už nejsou potřeba.</li></ul>Vyřešte problémy, vymažte výstrahy a operaci opakujte. |
+| Zálohování <*název zařízení* \> nebylo možné dokončit. |Selhání úlohy zálohování. |Nejde vytvořit zálohu. Zvažte jednu z následujících akcí:<ul><li>Problémy s připojením může bránit operaci zálohování nejde úspěšně dokončit. Ujistěte se, že neexistují žádné problémy s připojením. Další informace o řešení problémů s připojením, přejděte [místního webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md) pro vaše virtuální zařízení.</li><li>Jste dosáhli limitu úložiště k dispozici. Uvolněte místo tak, zvažte odstranění všechny zálohy, které už nejsou potřeba.</li></ul> Vyřešte problémy, vymažte upozornění a zkuste operaci zopakovat. |
+| Klon <*název zařízení* \> nebylo možné dokončit. |Naklonujte nezdaření úlohy. |Nepovedlo se vytvořit klon. Zvažte jednu z následujících akcí:<ul><li>Zálohování seznamu nemusí být platný. Aktualizujte seznam k ověření, že je stále platný.</li><li>Problémy s připojením může bránit úspěšné dokončení operace klonování. Ujistěte se, že neexistují žádné problémy s připojením.</li><li>Jste dosáhli limitu úložiště k dispozici. Uvolněte místo tak, zvažte odstranění všechny zálohy, které už nejsou potřeba.</li></ul>Vyřešte problémy, vymažte upozornění a zkuste operaci zopakovat. |
 
 ### <a name="networking-alerts"></a>Výstrahy sítě
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Nelze se připojit k ověřovací službě. |Chyba DataPath |Adresu URL, která se používá k ověření není dostupný. Ujistěte se, že vašich pravidlech brány firewall zahrnují vzory adresa URL zadaná pro zařízení StorSimple. Další informace o vzorů adresy URL na portálu Azure, přejděte na [pole virtuální zařízení StorSimple sítě požadavky](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|
+| Nelze se připojit k ověřovací službě. |Chyba DataPath |Adresa URL, která se používá k ověření není dostupný. Ujistěte se, že pravidla brány firewall zahrnout vzory adres URL zadaná pro zařízení StorSimple. Další informace o vzorech adres URL na webu Azure portal, přejděte na [StorSimple Virtual Array požadavky na síť](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|
 
 ### <a name="performance-alerts"></a>Výstrahy výkonu
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Neočekávané zpoždění při přenosu dat se setkáváte s. |Přenos dat pomalé. |Dochází k omezení chybám, když překročíte cíle škálovatelnosti služby úložiště. Služba úložiště nemá to zajistit, že žádné jednoho klienta nebo klienta můžete používat služby za cenu ostatní. Další informace o řešení potíží s vaším účtem úložiště Azure, přejděte na [monitorování, Diagnostika a řešení Microsoft Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
-| Máte málo místní rezervace místa na disku na <*název zařízení*>. |Doba pomalé odezvy. |10 % celkové velikosti zřízené pro <*název zařízení*> je vyhrazen na místním zařízení a vy teď docházejí vyhrazené místo. Úlohy na <*název zařízení*> generuje a vyšší míra změn, nebo může mít nedávno migrace velké množství dat. Výsledkem může být snížený výkon. Jeden z následujících akcí to vyřešit vezměte v úvahu:<ul><li>Zvětšete šířku pásma cloudu tohoto zařízení.</li><li>Snižte nebo přesouvat úlohy na jiný svazek nebo sdílenou složku.</li></ul> |
+| Dochází k neočekávaným zpožděním při přenosu dat. |Přenos dat pomalé. |Po překročení cíle škálovatelnosti služby úložiště, dojde k chybám omezování. Služba storage to dělá proto ujistěte se, že žádné jednoho klienta nebo tenanta použít služby za cenu ostatní. Další informace o řešení potíží s svůj účet úložiště Azure, přejděte na [monitorování, Diagnostika a řešení problémů s Microsoft Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
+| Dochází vám místní rezervace místa na disku ve <*název zařízení*\>. |Pomalá odezva čas. |10 % celkové zřízené velikosti pro <*název zařízení* \> je vyhrazen na místním zařízení a vy teď docházejí vyhrazené místo. Úlohy na <*název zařízení* \> generuje a vyšší míra četností změn dat nebo vám může mít nedávno provedla migraci velkých objemů dat. To může mít za následek snížený výkon. Zvažte jednu z následujících akcí, chcete-li tento problém vyřešit:<ul><li>Zvětšete šířku pásma cloudu do tohoto zařízení.</li><li>Omezit nebo přesunout úlohy na jiný svazek nebo sdílenou složku.</li></ul> |
 
 ### <a name="security-alerts"></a>Výstrahy zabezpečení
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Heslo pro <*název zařízení*> do vypršení platnosti <*číslo*> dnů. |Heslo upozornění. |Heslo vyprší za < číslo < dnů. Zvažte změnu hesla. Další informace, přejděte na [změnit heslo správce zařízení StorSimple virtuální pole](storsimple-virtual-array-change-device-admin-password.md). |
+| Heslo pro <*název zařízení* \> vyprší za <*číslo* \> dnů. |Upozornění heslo. |Vaše heslo vyprší za <*číslo* \> dnů. Zvažte možnost změnit své heslo. Další informace najdete v části [změnit heslo správce zařízení StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md). |
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o pole virtuální zařízení StorSimple](storsimple-ova-overview.md).
-
+* [Další informace o StorSimple Virtual Array](storsimple-ova-overview.md).

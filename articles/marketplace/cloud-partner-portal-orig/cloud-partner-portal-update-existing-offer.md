@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bfe2b0c70c8b912f6489ed461f5bcf6f233ed60d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4bf11c0a084cb0241125a1ed546f48c1c5455de3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809247"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449448"
 ---
 <a name="update-an-existing-offer-for-azure-marketplace"></a>Aktualizace stávající nabídky pro Azure Marketplace
 ==============================================
@@ -87,7 +87,7 @@ Chcete-li zpřístupnit novou skladovou Položku pro váš stávající nabídky
 
 1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 2.  V části **všechny nabídky** najít nabídky, které chcete aktualizovat.
-3.  V části **SKU** formulář, clik na **přidat novou skladovou Položku** a zadejte **SKU ID** v místní nabídce.
+3.  V části **SKU** formulář a potom klikněte na **přidat novou skladovou Položku** a zadejte **SKU ID** v místní nabídce.
 4.  Postupujte podle zbývajících kroky popsané v [publikování virtuálního počítače na webu Azure Marketplace](./cloud-partner-portal-publish-virtual-machine.md).
 5.  Klikněte na **publikovat** aktivovala publikovat pracovní postup má vysílat živě nové skladové jednotky.
 
@@ -130,52 +130,52 @@ Budete mít až do 1. listopadu 2018 nastavit nové ceny pro oblasti, ve které 
 
 | Země                  | ISO2 kódu | Zjednodušené fakturační měna |
 |--------------------------|-----------|-----------------------------|
-| **Alžírsko**              | DZ        | USD                         |
+| **Algeria**              | DZ        | USD                         |
 | **Argentina**            | AR        | USD                         |
-| **Bahrajn**              | BH        | USD                         |
-| **Bělorusko**              | PODLE        | USD                         |
-| **Brazílie**               | BRAZÍLIE        | BRL                         |
-| **Bulharsko**             | BG        | EUR                         |
+| **Bahrain**              | BH        | USD                         |
+| **Bělorusko**              | BY        | USD                         |
+| **Brazílie**               | BR        | BRL                         |
+| **Bulgaria**             | BG        | EUR                         |
 | **Chile**                | CL        | USD                         |
 | **Kolumbie**             | CO        | USD                         |
-| **Kostarika**           | ZNAK CR        | USD                         |
-| **Chorvatsko**              | HR        | EUR                         |
+| **Costa Rica**           | CR        | USD                         |
+| **Croatia**              | HR        | EUR                         |
 | **Česká republika**       | CZ        | EUR                         |
-| **Egypt**                | TŘEBA        | USD                         |
+| **Egypt**                | EG        | USD                         |
 | **Guatemala**            | GT        | USD                         |
 | **Hongkong**            | HK        | USD                         |
 | **Maďarsko**              | HU        | EUR                         |
-| **Island**              | JE        | EUR                         |
+| **Island**              | IS        | EUR                         |
 | **Indonésie**            | ID        | USD                         |
 | **Izrael**               | IL        | USD                         |
 | **Jordánsko**               | JO        | USD                         |
 | **Kazachstán**           | KZ        | USD                         |
 | **Keňa**                | KE        | USD                         |
 | **Kuvajt**               | KW        | USD                         |
-| **Lichtenštejnsko**        | LI        | EUR                         |
+| **Liechtenstein**        | LI        | EUR                         |
 | **Makedonie (bývalá republika Jugoslávie)**     | MK        | USD                         |
-| **Malajsie**             | MOJE        | USD                         |
-| **Mexiko**               | MX        | USD                         |
-| **Černá Hora**           | ME        | USD                         |
-| **Maroko**              | MA        | USD                         |
-| **Nigérie**              | NG        | USD                         |
-| **Omán**                 | OBJEKTOVÝ MODEL        | USD                         |
+| **Malaysia**             | MY        | USD                         |
+| **Mexico**               | MX        | USD                         |
+| **Montenegro**           | ME        | USD                         |
+| **Morocco**              | MA        | USD                         |
+| **Nigeria**              | NG        | USD                         |
+| **Oman**                 | OM        | USD                         |
 | **Pákistán**             | PK        | USD                         |
 | **Paraguay**             | PY        | USD                         |
 | **Peru**                 | PE        | USD                         |
 | **Filipíny**          | PH        | USD                         |
 | **Polsko\***             | PL        | EUR                         |
-| **Katar**                | KONTROLA KVALITY        | USD                         |
+| **Qatar**                | QA        | USD                         |
 | **Rumunsko**              | RO        | EUR                         |
 | **Saúdská Arábie**         | SA        | USD                         |
 | **Srbsko**               | RS        | USD                         |
-| **Singapur**            | ZABEZPEČENÍ        | USD                         |
+| **Singapur**            | SG        | USD                         |
 | **Jižní Afrika**         | ZA        | USD                         |
 | **Thajsko**             | TH        | USD                         |
 | **Trinidad a Tobago**  | TT        | USD                         |
-| **Tunisko**              | TN        | USD                         |
+| **Tunisia**              | TN        | USD                         |
 | **Turecko**               | TR        | USD                         |
-| **Ukrajina**              | UŽIVATELSKÝ AGENT        | USD                         |
+| **Ukrajina**              | UA        | USD                         |
 | **Spojené arabské emiráty** | AE        | USD                         |
 | **Uruguay**              | UY        | USD                         |
 |  |  |  |

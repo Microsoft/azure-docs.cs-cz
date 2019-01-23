@@ -5,7 +5,7 @@ services: active-directory
 keywords: cloud discovery, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení služby Azure active directory identity protection
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
 ms.component: conditional-access
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 5c2a37f3753292c6db847a4a9152bd4506f8fa5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7e706b1dd9c7dd79285666885cb6ada89d8126b2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580482"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460520"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Playbook Azure Active Directory Identity Protection
 
@@ -115,7 +115,7 @@ Tato část obsahuje kroky pro testování uživatelského rizika a zásady zabe
 
 ### <a name="user-risk-security-policy"></a>Zásady zabezpečení rizik uživatelů
 
-Další informace najdete v tématu [jak nakonfigurovat zásady rizik uživatelů](howto-user-risk-policy.md).
+Další informace najdete v článku, který se zabývá [způsobem konfigurace zásad rizik uživatelů](howto-user-risk-policy.md).
 
 ![Riziko uživatele](./media/playbook/02.png "Playbook")
 
@@ -140,7 +140,7 @@ Další informace najdete v tématu [jak nakonfigurovat zásady rizik uživatel�
 
 ### <a name="sign-in-risk-security-policy"></a>Zásady zabezpečení rizik přihlašování
 
-Další informace najdete v tématu [jak nakonfigurovat zásady rizik přihlašování](howto-sign-in-risk-policy.md).
+Další informace najdete v článku, který se zabývá [způsobem konfigurace zásad rizik přihlášení](howto-sign-in-risk-policy.md).
 
 ![Riziko přihlášení](./media/playbook/01.png "Playbook")
 

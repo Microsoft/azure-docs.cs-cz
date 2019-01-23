@@ -5,7 +5,7 @@ services: active-directory
 keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 11/20/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 3bc7dd8103bed9a5a04566d08a1daec0708a59c4
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: fc78e6381c3e3bae0d1806f85b4d7038ad11e799
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285029"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452401"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co je co-li nástroj podmíněného přístupu Azure Active Directory?
 
@@ -32,7 +32,7 @@ Tento článek vysvětluje, jak můžete tento nástroj pro testování zásad p
 
 ## <a name="what-it-is"></a>Co to je
 
-**Podmíněný přístup citlivostní nástroj zásad** umožňuje na vědomí následky zásad podmíněného přístupu ve vašem prostředí. Místo test řízení zásad ručně provedením více přihlášení tento nástroj umožňuje vyhodnotit Simulovaná přihlášení uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. Sestava neobsahuje pouze seznam použitých zásad správy zásad přístupu ale také [klasické zásady](policy-migration.md#classic-policies) Pokud existují.    
+**Podmíněný přístup citlivostní nástroj zásad** umožňuje na vědomí následky zásad podmíněného přístupu ve vašem prostředí. Místo testování zásad ručním prováděním několika přihlášení umožňuje tento nástroj vyhodnotit simulované přihlášení uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. Sestava neobsahuje pouze seznam použitých zásad správy zásad přístupu ale také [klasické zásady](policy-migration.md#classic-policies) Pokud existují.    
 
 Co Pokud nástroje také poskytuje způsob, jak rychle určit zásady, které platí pro konkrétní uživatele. Informace, můžete použít například, pokud je potřeba vyřešit nějaký problém.  
 

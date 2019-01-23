@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bc044c8b59c939163336ecab01546fc26a7a2643
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6e5bcd6d9923b4051d44d51ff1a2534bc5e02f41
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809361"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445656"
 ---
 <a name="publish-an-azure-managed-application-to-azure-marketplace"></a>Publikování aplikace spravované v Azure na webu Azure Marketplace 
 ========================================================
@@ -88,7 +88,7 @@ Skladová položka se zobrazí v nadřazené nabídky na webu Azure Marketplace 
 
 3.  Nová nabídka \"Editor\" zobrazení je teď otevřít, a můžete začít vytváření obsahu.
 
-4.  \"Forms\" jsou viditelné na levé straně v rámci, které je potřeba doplnit \"Editor\" zobrazení. Každý \"formuláře\" sestává ze sady polí, která se mají doplnit. Povinné pole označená atributem červená hvězdička (\*).
+4.  \"Forms\" jsou viditelné na levé straně v rámci, které je potřeba doplnit \"Editor\" zobrazení. Každý \"formuláře\" sestává ze sady polí, která se mají doplnit. Vyžaduje se pole označená červenou hvězdičkou (\*).
 
     > Existují 4 hlavní formuláře pro vytváření spravované aplikace
 

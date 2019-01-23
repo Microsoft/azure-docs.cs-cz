@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box Disk – nejčastější dotazy | Microsoft Docs
-description: Obsahuje nejčastější otázky a odpovědi týkající se Azure Data Box Disk, cloudového řešení, které umožňuje přenos velkých objemů dat do Azure.
+description: Obsahuje nejčastější dotazy a odpovědi pro disky Azure Data Box, cloudové řešení, která umožňuje přenášet velké objemy dat do Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 4320e56b04761c6adcae1db259eeecf332fbd781
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 68bc3302874849a69249a50dcecd46024ad939ef
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158784"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448325"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -125,7 +125,7 @@ A.  Ne. Pro použití s disky Data Box Disk se momentálně podporuje jenom jede
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Otázka: Co je sada nástrojů, které jsou k dispozici pro data s datovými disky pole?
 A. Sada nástrojů dostupná s datovým diskem pole obsahuje tři nástroje:
  - **Data Box Disk odemknutí nástroj**: Tento nástroj použijte k odemknutí zašifrované disky, které se dodávají od Microsoftu. Při odemykání disky pomocí nástroje, je třeba zadat klíč k dispozici v objednávka disku Data Box na webu Azure Portal. 
- - **Data Box Disk ověření nástroj**: Použití tohoto nástroje můžete ověřit, velikost, formátu a objektů blob pojmenuje podle názvy convnetions v Azure. Také vygeneruje kontrolní součty pro zkopírovaná data, která se následně použijí k ověření, nahrát data do Azure.
+ - **Data Box Disk ověření nástroj**: Použití tohoto nástroje můžete ověřit, velikost, formátu a objektů blob pojmenuje podle zásady pro vytváření názvů. Také vygeneruje kontrolní součty pro zkopírovaná data, která se následně použijí k ověření, nahrát data do Azure.
  - **Nástroj pro kopírování rozdělení disku pole data**: Tento nástroj použijte, pokud používáte několik disků a mají velkou datovou sadu, kterou je potřeba rozdělit a zkopírovali na všech discích. Tento nástroj je momentálně dostupná pro Windows.
 
 Sada nástrojů je k dispozici pro Windows i Linux. Si můžete stáhnout na sadu nástrojů:

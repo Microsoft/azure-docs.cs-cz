@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/18/2019
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: 3a7ec043f1990dd7f380177fd612c8cd88786b07
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440212"
+ms.locfileid: "54452713"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Delegate an Azure DNS subdomain
 
@@ -47,7 +47,7 @@ Next, copy the four name servers for your subdomain.
 
 V dalším kroku vytvoření záznamu názvového serveru (NS) pro **engineering** zóny.
 
-1. Přejděte do souboru zóny pro nadřazené domény.
+1. Přejděte k zóně pro nadřazené domény.
 2. Vyberte **+ Sada záznamů**.
 3. Na **přidat sadu záznamů** podokně, zadejte **engineering** v **název** textového pole.
 4. Pro **typ**vyberte **NS**.

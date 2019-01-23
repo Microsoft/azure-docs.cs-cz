@@ -1,6 +1,6 @@
 ---
 title: Nastavení aplikace v portálu pro publikování | Dokumentace Microsoftu
-description: Podle pokynů v nastavení vašeho splňovali na portálu publikování cloudu.
+description: Podle pokynů v nastavení aplikace v portálu pro publikování cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9386f0e0bf552789b027df96e9e54ebcf31d7d34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809221"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448479"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Nastavení aplikace na portálu publikování
 
@@ -82,9 +82,9 @@ Většina vydavatelé ponechá tato pole s výchozími hodnotami, uživatele, ne
 
 Následuje vysvětlení těchto polí:
 
-* Název souboru balíčku: název souboru, který jste vytvořili v předchozím kroku při vytváření souboru zip, který je váš balíček AppSource CRM. V příkladu výše je "Microsoft\_SamplePackage.zip".
+* Název souboru balíčku: Název souboru jste vytvořili v předchozím kroku při vytváření souboru zip, který je váš balíček AppSource CRM. V příkladu výše je "Microsoft\_SamplePackage.zip".
 * Adresa URL umístění balíčku: Toto je adresa URL k účtu Azure Storage, který obsahuje název souboru balíčku, který je zadaný výše. To je adresa URL vytvořené v kroku 9 v části výše.
-* Existuje více než jeden balíček crm v souboru balíčku: Vyberte Ano **pouze** pokud podporujete více verzí aplikace crm pomocí různých balíčků. Pro většinu partnerů bude jím "Ne". Pokud vyberete Ano, musíte vytvořit balíčky AppSource pro každou verzi vašeho řešení. _Poznámka: Toto není s dotazem, pokud máte více **zip** soubory. Pokud máte víc souborů solution.zip ale jenom jedna verze, byste měli stále vybrat "Ne". Nástroj pro vytváření balíčků se pohromadě tyto na automaticky._
+* Existuje více než jeden balíček crm v souboru balíčku: Vyberte možnost Ano **pouze** pokud podporujete více verzí aplikace crm pomocí různých balíčků. Pro většinu partnerů bude jím "Ne". Pokud vyberete Ano, musíte vytvořit balíčky AppSource pro každou verzi vašeho řešení. _Poznámka: NENÍ to požádá, pokud máte více **zip** soubory. Pokud máte víc souborů solution.zip ale jenom jedna verze, byste měli stále vybrat "Ne". Nástroj pro vytváření balíčků se pohromadě tyto na automaticky._
 
 ### <a name="crm-package-availability"></a>Dostupnost balíčku CRM
 
@@ -184,7 +184,7 @@ Zadejte adresu URL podpory pro vaši aplikaci.
 
 ### <a name="lead-destination"></a>Vedoucí cíl
 
-Vyberte systému CRM, kde vést se uloží. Zde vyberte "Azure Table", pokud máte jednu z následujících systémů CRM: Salesforce, Marketo, Microsoft Dynamics CRM. Systému CRM, zde je, kde napíšeme podrobnosti koncových uživatelů, kteří vyzkouší vaši aplikaci na AppSource (zájemce). V závislosti na systému CRM, které vyberete klikněte na odpovídající následující adresu URL pro informace o tom, jak projít další sadu polí
+Vyberte systému CRM, kde vést se uloží. Zde vyberte "Azure Table", pokud máte jeden z následujících systémů CRM: Salesforce, Marketo, Microsoft Dynamics CRM. Systému CRM, zde je, kde napíšeme podrobnosti koncových uživatelů, kteří vyzkouší vaši aplikaci na AppSource (zájemce). V závislosti na systému CRM, které vyberete klikněte na odpovídající následující adresu URL pro informace o tom, jak projít další sadu polí
 
 * [Tabulka Azure](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
@@ -193,4 +193,4 @@ Vyberte systému CRM, kde vést se uloží. Zde vyberte "Azure Table", pokud má
 
 ## <a name="storefront-details"></a>Prezentace podrobnosti
 
-Kontaktní údaje se používají pouze pro vnitřní komunikace mezi partnerem a Microsoftem. Poznámka: Je potřeba použít e-mailovou adresu, která je sledována v těchto polích. Tento e-mail budeme používat ke komunikaci s vámi na průběh v publikování na AppSource. Pouze adresu URL podpory se nebude zobrazovat na zákazníky.
+Kontaktní údaje se používají pouze pro vnitřní komunikace mezi partnerem a Microsoftem. Poznámka: Je důležité používat e-mailovou adresu, která je sledována v těchto polích. Tento e-mail budeme používat ke komunikaci s vámi na průběh v publikování na AppSource. Pouze adresu URL podpory se nebude zobrazovat na zákazníky.

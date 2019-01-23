@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: fdc4885c079a3659d394517f0a10394eff0720c8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 19e9690905fd993d59b186d59cc257b6b57e78b2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119149"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449822"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Příklad 2 – Vytvoření DMZ k ochraně aplikací s bránou Firewall a skupin zabezpečení sítě
 [Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -87,7 +87,7 @@ Popsané výše uvedených pravidel skupiny zabezpečení sítě jsou velmi podo
 ## <a name="firewall-rules"></a>Pravidla brány firewall
 Klienta správy bude potřeba nainstalovat na počítači pro správu brány firewall a vytváření konfigurací potřeba. O správě zařízení najdete v článku dodavatele dokumentace ke službě z vaší brány firewall (nebo jiné síťové virtuální zařízení). Zbytek tohoto oddílu popisuje konfigurace, brány firewall prostřednictvím dodavatele správy klienta (tzn. ne Azure portal nebo Powershellu).
 
-Pokyny pro stažení klienta a připojení k Barracuda použitý v tomto příkladu najdete tady: [Barracuda NG správce](https://techlib.barracuda.com/NG61/NGAdmin)
+Pokyny pro stažení klienta a připojení k Barracuda použitý v tomto příkladu najdete tady: [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
 
 V bráně firewall pravidla předávání bude nutné vytvořit. Protože v tomto příkladu pouze směruje přenosy z Internetu ve vázané na bránu firewall a potom na webový server, je potřeba jenom jeden předávání pravidlo překladu adres. Pravidlo v bráně Firewall Barracuda NextGen použitý v tomto příkladu bude pravidlo NAT cíl ("letního času NAT"), abyste tento provoz.
 
@@ -422,7 +422,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
         $FatalError = $true}
     Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation variable is correct and the network config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 

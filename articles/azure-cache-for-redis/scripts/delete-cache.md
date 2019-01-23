@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 58ee6c7239e3a71fed9a9ab987b962abcc9c0508
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4a7b239010d57e3f352ee29afe267273391ffbcd
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085192"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461820"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Odstranění Azure mezipaměti Redis
 
@@ -40,7 +40,7 @@ Tento skript používá následující příkazy odstranění mezipaměti Azure 
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ redis delete](https://docs.microsoft.com/cli/azure/redis#az_redis_delete) | Odstranění mezipaměti Azure pro Redis instance. |
+| [AZ redis delete](https://docs.microsoft.com/cli/azure/redis) | Odstranění mezipaměti Azure pro Redis instance. |
 
 
 ## <a name="next-steps"></a>Další postup

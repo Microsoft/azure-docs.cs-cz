@@ -1,6 +1,6 @@
 ---
 title: Vyzkoušejte Azure Resource Manageru | Dokumentace Microsoftu
-description: Sestavení Markeplace testovací jízdu a pomocí Azure Resource Manageru
+description: Sestavení webu Marketplace testovací jízdu a pomocí Azure Resource Manageru
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b7cbd69a4551605b71930a23f837b467177e3cc3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139261"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451353"
 ---
 <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
 =================================
@@ -298,7 +298,7 @@ Teď, když máte vaše testovací verze vytvořené, tato část vás provede k
 
 Je toto první a nejdůležitější pole můžete určit, jestli chcete, aby Test Drive, nebo není povolená pro vaši nabídku. Když vyberete **Ano,** rest s všechna požadovaná pole ve formuláři se zobrazí pro vás k vyplnění. Když vyberete **Ne,** formuláře bude zakázáno a opětovné publikování pomocí testovací verze zakázán, vaše testovací verze se odebere z produkčního prostředí.
 
-Poznámka: Pokud jsou všechny testy jednotek aktivně používá uživatelů, tyto testovací verze bude nadále spuštěna do vypršení platnosti jejich relace.
+Poznámka: Pokud neexistují žádné testy jednotek aktivně používá uživatelů, tyto jednotky testů bude pokračovat ke spuštění, dokud nevyprší jejich relace.
 
 ### <a name="details"></a>Podrobnosti
 

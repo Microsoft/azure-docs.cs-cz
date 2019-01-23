@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a6357640ceeb7c5f1bde4eea85aa5265990935f4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dd917136dd777226f421d3ae6315798d36de8dc2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157152"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452050"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Publikovat nabídku na Cortana Intelligence pomocí portál Cloud Partner
 
@@ -31,9 +31,9 @@ Portál Cloud Partner podporuje přístup na základě rolí na portál, který 
 
 Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kteří mají \"vlastníka\" role je potřeba souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/), [prohlášení o ochraně osobních údajů Microsoft](https://www.microsoft.com/privacystatement/default.aspx), a [smlouva k programu Microsoft Azure Certified](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
-## <a name="to-start-creating-a-cortana-inteligence-offer"></a>Chcete začít vytvářet nabídky Cortana Inteligence
+## <a name="to-start-creating-a-cortana-intelligence-offer"></a>Chcete začít vytvářet nabídky Cortana Intelligence
 
-Jakmile jsou splněné všechny požadavky, jste připravení začít vytváření nabídkou Cortana Inteligence.
+Jakmile jsou splněné všechny požadavky, jste připravení začít s nabídkou na Cortana Intelligence pro vytváření.
 
 1.  Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/).
 2.  V levém navigačním panelu vyberte **+ nová nabídka**.
@@ -78,7 +78,7 @@ Po dokončení poskytující informace, které potřebujete v nabízejí nastave
 
 Pomocí tohoto zobrazení poskytují technické informace, které se zobrazí na stránce nabídky. Následující pole použít pro toto zobrazení.
 
-### <a name="partner-mpn-id"></a>Id MPN partnera.
+### <a name="partner-mpn-id"></a>Partner MPN Id
 
 Pokud si nejste registrovaná partnera společnosti Microsoft, přejděte [partneři webu](https://partners.microsoft.com/) a přihlaste se k získání ID vaší organizace partnera. Zadejte pro toto ID **partnerů programu MPN Id**.
 

@@ -4,7 +4,7 @@ description: Toto téma popisuje účty používat a vytvořit a oprávněních.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef8b621b41bb43c46ef728e28d3b312ac49f1da3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 403fd0679e0850d758dd0e2f65cec3fe2ff79965
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308779"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478599"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -39,7 +39,7 @@ Azure AD Connect používá 3 účty, aby bylo možné synchronizovat informace 
 
 Kromě tyto tři účty používají ke spouštění služby Azure AD Connect budete také potřebovat následující další účty k instalaci Azure AD Connect.  Jsou to:
 
-- **Účet místního správce**: správce, který je instalace Azure AD Connect a který má oprávnění místního správce na počítači.
+- **Účet místního správce**: Správce, který je instalace Azure AD Connect a který má oprávnění místního správce na počítači.
 
 - **Účet správce podnikové sítě AD DS**: Volitelně můžete použít k vytvoření "účet AD DS konektoru" výše.
 
@@ -120,7 +120,7 @@ Následuje souhrn stránkách Průvodce vlastní instalaci, přihlašovací úda
 >[!IMPORTANT]
 >Nový modul prostředí PowerShell s názvem ADSyncConfig.psm1 byla zavedena v systému sestavení **1.1.880.0** (vydané spolu. srpna 2018), který obsahuje kolekci rutin, které vám pomohou nakonfigurovat správné oprávnění služby Active Directory pro Azure AD DS Účet konektoru.
 >
->Další informace najdete v části [Azure AD Connect: konfigurace AD DS konektor účtu oprávnění](how-to-connect-configure-ad-ds-connector-account.md)
+>Další informace najdete v části [Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru](how-to-connect-configure-ad-ds-connector-account.md)
 
 Zadaný účet na **připojení k adresářům** stránky musí být k dispozici ve službě Active Directory před instalací.  Azure AD Connect verze 1.1.524.0 a novější je možnost nechat vytvořit průvodce Azure AD Connect **účet AD DS konektoru** používaná k připojení ke službě Active Directory.  
 
@@ -149,7 +149,7 @@ Když upgradujete z jedné verze nástroje Azure AD Connect na novou verzi, pot�
 | --- | --- | --- |
 | Uživatel, který spouští Průvodce instalací |Správce místního serveru |Aktualizujte binární soubory. |
 | Uživatel, který spouští Průvodce instalací |Člen ADSyncAdmins |Změny synchronizační pravidla a další konfiguraci. |
-| Uživatel, který spouští Průvodce instalací |Pokud používáte plnou instalaci systému SQL server: vlastník databáze (nebo podobnou) modul databáze synchronizace |Ujistěte se, změny na úrovni databáze, jako je aktualizace s novými sloupci tabulky. |
+| Uživatel, který spouští Průvodce instalací |Pokud používáte plnou instalaci systému SQL server: Vlastník databáze (nebo podobnou) modul databáze synchronizace |Ujistěte se, změny na úrovni databáze, jako je aktualizace s novými sloupci tabulky. |
 
 ## <a name="more-about-the-created-accounts"></a>Další informace o vytvořené účty
 ### <a name="ad-ds-connector-account"></a>Účet AD DS konektoru
@@ -164,7 +164,7 @@ Synchronizační služba může běžet pod různými účty. Můžou běžet po
 
 | Typ účtu | Možnost instalace | Popis |
 | --- | --- | --- |
-| [Účet virtuální služby](#virtual-service-account) | 2017 Express a vlastní, duben a novější | Toto je používán pro všechny Expresní instalace, s výjimkou zařízení na řadiči domény. Pro vlastní je výchozí možnost, není-li použít jinou možnost. |
+| [Virtual Service Account](#virtual-service-account) | 2017 Express a vlastní, duben a novější | Toto je používán pro všechny Expresní instalace, s výjimkou zařízení na řadiči domény. Pro vlastní je výchozí možnost, není-li použít jinou možnost. |
 | [Účet spravované služby skupiny](#group-managed-service-account) | 2017 vlastní, duben a novější | Pokud používáte vzdálený SQL server, pak doporučujeme použít účet skupiny spravované služby. |
 | [Uživatelský účet](#user-account) | 2017 Express a vlastní, duben a novější | Uživatelský účet s předponou AAD_ je vytvořen pouze během instalace při instalaci v systému Windows Server 2008 a nainstalovaný na řadiči domény. |
 | [Uživatelský účet](#user-account) | 2017 Express a vlastní, dne a starší | Místní účet s předponou AAD_ je vytvořena během instalace. Pokud používáte vlastní instalaci, je možné zadat jiný účet. |
@@ -187,11 +187,11 @@ Legenda:
 - sMSA - [samostatný účet spravované služby](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA - [skupinový účet spravované služby](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Vlastní | Vzdálený server SQL</br>Vlastní |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Vlastní | Remote SQL</br>Vlastní |
 | --- | --- | --- | --- |
 | **počítač samostatného nebo pracovní skupiny** | Nepodporuje se | **VSA**</br>Místní účet (2008)</br>Místní účet |  Nepodporuje se |
 | **počítače připojené k doméně** | **VSA**</br>Místní účet (2008) | **VSA**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA, gMSA | **gMSA**</br>Účet domény |
-| **Řadič domény** | **Účet domény** | *gMSA*</br>**Účet domény**</br>sMSA| *gMSA*</br>**Účet domény**|
+| **Domain Controller** | **Účet domény** | *gMSA*</br>**Účet domény**</br>sMSA| *gMSA*</br>**Účet domény**|
 
 #### <a name="virtual-service-account"></a>Účet virtuální služby
 Účet virtuální služby je speciální typ účtu, který nemá žádné heslo a spravuje Windows.

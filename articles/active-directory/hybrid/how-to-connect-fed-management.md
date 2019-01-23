@@ -5,7 +5,7 @@ keywords: Služba AD FS, AD FS, AD FS správy, AAD Connect, připojit, přihlá�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a9a7848069300d5f52d16585a55313643e02bc72
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 02256c3e45d198fe35c0b3686bf4c1bc6f64c51a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244453"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463894"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení služby AD FS pomocí služby Azure AD Connect
 Tento článek popisuje, jak spravovat a upravovat Active Directory Federation Services (AD FS) pomocí služby Azure Active Directory (Azure AD) Connect. Zahrnuje také dalších běžných úkolů služby AD FS, které možná bude potřeba provést kompletní konfiguraci farmy služby AD FS.
@@ -76,7 +76,7 @@ Doporučuje se, že Name(UPN) objektu zabezpečení uživatele v místním prost
 ![Výběr atributu alternativní ID](./media/how-to-connect-fed-management/attributeselection.png)
 
 Konfigurace alternativního přihlašovacího ID pro službu AD FS zahrnuje dva hlavní kroky:
-1. **Konfigurace správnou sadu vystavování deklarací identity**: pravidel vystavování deklarací identity v Azure AD předávající straně důvěryhodnosti jsou upraveny pro použití vybraný atribut UserPrincipalName jako alternativní ID uživatele.
+1. **Konfigurace správnou sadu vystavování deklarací identity**: Pravidla vystavování deklarací identity v Azure AD vztah důvěryhodnosti předávající strany se upravený, aby používal vybraný atribut UserPrincipalName jako alternativní ID uživatele.
 2. **Povolte alternativní přihlašovací ID v konfiguraci služby AD FS**: Konfigurace služby AD FS se aktualizuje tak, aby služba AD FS můžete vyhledávat uživatele v příslušné doménové struktury pomocí alternativní ID. Tato konfigurace je podporovaná pro službu AD FS na Windows Server 2012 R2 (s KB2919355) nebo novější. Pokud jsou servery služby AD FS 2012 R2, Azure AD Connect ověří přítomnost požadovaných KB. Pokud nebude nalezena KB, upozornění se zobrazí po dokončení konfigurace, jak je znázorněno níže:
 
     ![Upozornění na chybějící znalostní BÁZE na 2012 R2](./media/how-to-connect-fed-management/kbwarning.png)

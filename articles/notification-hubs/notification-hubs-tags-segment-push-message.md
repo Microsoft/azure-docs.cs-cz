@@ -1,10 +1,10 @@
 ---
-title: Směrování a značky výrazy
-description: Toto téma vysvětluje směrování a značky výrazy pro Azure notification hubs.
+title: Směrování a výrazy označení
+description: Toto téma vysvětluje, směrování a značku výrazy pro službu Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
@@ -12,94 +12,102 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: e08fca0b6b57d654f2b2ff7b935f38d8c517487b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: f52900d06049623a0a81e509abdc5e9ef76f95e5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776161"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451472"
 ---
-# <a name="routing-and-tag-expressions"></a>Výrazy směrování a značka
+# <a name="routing-and-tag-expressions"></a>Směrování a značky výrazů
+
 ## <a name="overview"></a>Přehled
-Výrazy značky umožňují vytvořit cíl konkrétní sady zařízení, konkrétně registrací, nebo při odesílání nabízených oznámení pomocí centra oznámení.
+
+Výrazy označení vám umožní cílit na konkrétní sady zařízení nebo přesněji řečeno registrace při odesílání nabízených oznámení pomocí Notification Hubs.
 
 ## <a name="targeting-specific-registrations"></a>Cílení na konkrétní registrace
-Jediný způsob, jak cíl konkrétní oznámení registrace je umožní přiřadit značky s nimi, pak cíle těchto značek. Jak je popsáno v [registrace správu](notification-hubs-push-notification-registration-management.md), aby bylo možné přijímat nabízená oznámení, aplikace musí registrovat zařízení zpracování v rozbočovači oznámení. Jakmile registrace je vytvořena v centru oznámení, back-end aplikace může odesílat nabízená oznámení k němu.
-Back-end aplikace můžete zvolit registrace k cíli s konkrétní oznámení následujícími způsoby:
+
+Jediný způsob, jak cíl konkrétní upozornění registrace je umožní přiřadit značky s nimi, pak cílit na těchto značek. Jak je popsáno v [Správa registrací](notification-hubs-push-notification-registration-management.md), aby bylo možné přijímat nabízená oznámení aplikace má k registraci zařízení zpracování na centrum oznámení. Po vytvoření registrace v centru oznámení back-end aplikace může odesílat nabízená oznámení k němu.
+Back-endu aplikací můžete zvolit registrace k cíli s konkrétní oznámení následujícími způsoby:
 
 1. **Vysílání**: všechny registrace v centru oznámení dostávat oznámení.
-2. **Značka**: všechny registrace, které obsahují zadaná značka přijímat oznámení.
-3. **Značka výraz**: všechny registrace, jejichž sadu značky odpovídají zadaným výrazem přijímat oznámení.
+2. **Značka**: všechny registrace, které obsahují stanovené značky přijímat oznámení.
+3. **Označení výrazu**: jehož sady značek odpovídají zadanému výrazu registrace všech oznámení.
 
 ## <a name="tags"></a>Značky
-Značku může být libovolný řetězec, až 120 znaků, který obsahuje alfanumerické znaky a následující jiných než alfanumerických znaků: '_', ' @', '#', '. ',':', '-'. Následující příklad ukazuje aplikace, ze kterého můžete přijímat oznámení informačního nápisu o konkrétní Hudba skupinách. V tomto scénáři je jednoduchý způsob, jak oznámení trasy popisek registrace pomocí značek, které představují různé pruhy, stejně jako na následujícím obrázku:
+
+Značka může být libovolný řetězec, a to až 120 znaků, který obsahuje alfanumerické a následující jiné než alfanumerické znaky: "_", "@", "#", ".",":", "-". Následující příklad ukazuje aplikace, ze kterého můžete přijímat oznámení informačního nápisu o Hudba konkrétní skupiny. V tomto scénáři je jednoduchý způsob, jak směrovat oznámení o popisek registrace se značkami, které představují různé pruhy, stejně jako v následujícím obrázku:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
-Na tomto obrázku, označí zprávu **Beatles** dosáhne pouze tablet, který zaregistrovali značky **Beatles**.
+Na tomto obrázku zprávy označené **Beatles** dosáhne pouze tablety, které registrované se značkou **Beatles**.
 
-Další informace o vytváření registrace pro značky najdete v tématu [registrace správu](notification-hubs-push-notification-registration-management.md).
+Další informace o vytváření registrace pro značky, naleznete v tématu [Správa registrací](notification-hubs-push-notification-registration-management.md).
 
-Oznámení můžete odesílat na základě značek použití metod odeslání oznámení `Microsoft.Azure.NotificationHubs.NotificationHubClient` třídy v [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. Můžete také použít Node.js nebo REST API služby nabízených oznámení.  Tady je příklad pomocí sady SDK.
+Oznámení můžete odesílat na značky pomocí metody odeslat oznámení `Microsoft.Azure.NotificationHubs.NotificationHubClient` třídy v [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. Můžete také použít Node.js, nebo REST API služby nabízených oznámení.  Tady je příklad použití sady SDK.
 
-    Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
+```csharp
+Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
 
-    // Windows 8.1 / Windows Phone 8.1
-    var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
-    "You requested a Beatles notification</text></binding></visual></toast>";
-    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Beatles");
+// Windows 8.1 / Windows Phone 8.1
+var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
+"You requested a Beatles notification</text></binding></visual></toast>";
+outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Beatles");
 
-    // Windows 10
-    toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
-    "You requested a Wailers notification</text></binding></visual></toast>";
-    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
+// Windows 10
+toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
+"You requested a Wailers notification</text></binding></visual></toast>";
+outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
+```
 
-
-
-
-Značky nemusí být předem zřízená a mohou odkazovat na několika koncepty konkrétní aplikaci. Uživatelé této ukázkové aplikaci můžete například komentář k pásma a chcete přijímat informační zprávy, nejen pro komentáře na svých oblíbených pásma, ale také pro všechny komentáře od svých přátel, bez ohledu na vzdálené správy, na kterém jsou komentářů. Následující obrázek znázorňuje příklad tohoto scénáře:
+Značky nemusíte být předem zřízená a mohou odkazovat na více koncepty specifické pro aplikace. Například uživatelé této ukázkové aplikaci můžete komentovat pruhy a nechcete dostávat informační zprávy, nejen pro komentáře na své oblíbené pruhy, ale také pro všechny komentáře od svých přátel, bez ohledu na náramku, na kterém jsou komentáře. Následující obrázek ukazuje příklad tohoto scénáře:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
 
-Na tomto obrázku Alice má zájem o aktualizace Beatles a má zájem o aktualizace Wailers Bob. Bob má také zájem o Karel na komentáře a Karel v zajímá Wailers. Při odesílání oznámení pro Karel na komentář na Beatles Alice a Bob ji přijmout.
+Na tomto obrázku je žádající o aktualizaci pro Beatles Alice a Bob se žádající o aktualizaci pro Wailers. Bob má také zájem o Karel pro komentáře a Karel v zajímá vás Wailers. Pokud jsou oznámení odesílána Karel pro komentáře na Beatles, Alice a Bob ji přijmout.
 
-Když může být kódován více obavy ve značkách (například "band_Beatles" nebo "follows_Charlie"), značky jsou jednoduché řetězce a vlastnosti hodnotami. Registrace je nalezena shoda pouze na přítomnosti nebo absenci s konkrétní značkou tag.
+Přestože můžete kódovat více připomínky můžete vystavit ve značky (například "band_Beatles" nebo "follows_Charlie"), značky jsou jednoduché řetězce a nikoli vlastnosti s hodnotami. Registrace je nalezena shoda, pouze na přítomnosti nebo nepřítomnosti s konkrétní značkou.
 
-Úplné podrobný kurz o tom, jak používat značky pro odeslání do zájmových skupin, najdete v části [novinkách](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
+Celý podrobný kurz o tom, jak používat značky pro odesílání zájmových skupin, najdete v části [novinkách](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
 ## <a name="using-tags-to-target-users"></a>Pomocí značek pro cílové uživatele
-Jiný způsob, jak používat značky je identifikace všechna zařízení z určitého uživatele. Registrace může být označené značku, která obsahuje ID uživatele, stejně jako na následujícím obrázku:
+
+Dalším způsobem, jak používat značky je identifikovat všechna zařízení z určitého uživatele. Registrace může být označené značkou, který obsahuje ID uživatele, jako na následujícím obrázku:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-Na tomto obrázku, označí zprávu uid: Alice dosáhne všechny registrace s příznakem uid:Alice; proto všechna zařízení od Alice.
+Na tomto obrázku s příznakem uid zpráva: Alice dosáhne všechny registrace označený "uid:Alice"; proto všechny uživatele Jaroslava zařízení.
 
-## <a name="tag-expressions"></a>Značka výrazy
-Existují případy, ve kterých má oznámení cílit sadu registrací identifikovanou není jedinou značku, ale logický výraz na značky.
+## <a name="tag-expressions"></a>Výrazy označení
 
-Vezměte v úvahu aplikace sportu, která odesílá připomenutí pro všechny uživatele v Boston o hru mezi Red Sox a Cardinals. Pokud klientské aplikace zaregistruje značky o zájem o týmy a umístění, by měly pro všechny uživatele v Boston, kteří chtějí Red Sox nebo Cardinals cílené oznámení. Tento stav může být vyjádřený s následující logický výraz:
+Existují případy, ve kterých má oznámení cílit na sadu registrace, který je identifikován není podle jedné značky, ale podle logického výrazu na značky.
 
-    (follows_RedSox || follows_Cardinals) && location_Boston
+Vezměte v úvahu sportovní aplikaci, která pošle připomenutí pro všechny uživatele v Bostonu o hře mezi Red Sox a Cardinals. Pokud klientská aplikace registruje značky o zájem týmy a umístění, by měl všem uživatelům v Bostonu, kteří chtějí Red Sox nebo Cardinals cílená oznámení. Tuto podmínku můžete vyjádřit pomocí následující logický výraz:
 
+```csharp
+(follows_RedSox || follows_Cardinals) && location_Boston
+```
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
 
-Výrazy značka může obsahovat všech logických operátorů, například AND (& &), nebo (|) a ne (!). Mohou také obsahovat závorek. Značky výrazy jsou omezeny na 20 značky v případě, že obsahují jenom ORs; jinak jsou omezeny na 6 značky.
+Výrazy označení mohou obsahovat všechny logické operátory, jako například AND (& &), nebo (|) a ne (!). Mohou také obsahovat závorky. Výrazy označení jsou omezené na 20 značky v případě, že obsahují pouze or; v opačném případě jsou omezené na 6 značky.
 
-Tady je příklad pro odesílání oznámení pomocí výrazů značky pomocí sady SDK.
+Tady je příklad odesílání oznámení s výrazy označení pomocí sady SDK.
 
-    Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
+```csharp
+Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
 
-    String userTag = "(location_Boston && !follows_Cardinals)";    
+String userTag = "(location_Boston && !follows_Cardinals)";
 
-    // Windows 8.1 / Windows Phone 8.1
-    var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
-    "You want info on the Red Sox</text></binding></visual></toast>";
-    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
+// Windows 8.1 / Windows Phone 8.1
+var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
+"You want info on the Red Sox</text></binding></visual></toast>";
+outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
 
-    // Windows 10
-    toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
-    "You want info on the Red Sox</text></binding></visual></toast>";
-    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
+// Windows 10
+toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
+"You want info on the Red Sox</text></binding></visual></toast>";
+outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
+```

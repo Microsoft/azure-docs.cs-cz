@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 66d816795ec06891aafce73036d7aea9bb52b2c8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e861d8fe22d4e7acb970990b27998caf923ed6c2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140522"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449638"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay licenční požadavky a konfigurace 
 
 Azure Media Services umožňuje šifrování obsahu HLS pomocí **Apple FairPlay** (AES-128 CBC). Služba Media Services také poskytuje službu k doručování licencí FairPlay. Když hráč pokusí k přehrávání obsahu s ochranou FairPlay, žádost přijde na službu doručování licencí licenci. Pokud licenční služby schválí, problémy s licencí, které se odešle klientovi a slouží k dešifrování a přehrát zadaný obsah.
 
-Služba Media Services také poskytuje rozhraní API, která vám umožní nakonfigurujte své licence FairPlay. Toto téma popisuje požadavky na licence FairPlay a ukazuje, jak nakonfigurovat **FairPlay** licence pomocí rozhraní API Sercies média. 
+Služba Media Services také poskytuje rozhraní API, která vám umožní nakonfigurujte své licence FairPlay. Toto téma popisuje požadavky na licence FairPlay a ukazuje, jak nakonfigurovat **FairPlay** licence pomocí rozhraní API služby Media Services. 
 
 ## <a name="requirements"></a>Požadavky
 
@@ -35,7 +35,7 @@ Vyžadují se následující věci při použití služby Media Services k šifr
 * Apple vyžaduje k získání vlastníka obsahu [balíček pro nasazení](https://developer.apple.com/contact/fps/). Stav již implementováno klíč zabezpečení modulu (KSM) pomocí služby Media Services, a že žádáte finálním balíčku snímků za Sekundu. Existují pokyny ve finálním balíčku snímků za Sekundu pro generování certifikace a získat klíč tajný klíč aplikace (AKS). Konfigurace FairPlay použijete dotaz.
 * Na straně doručování klíčů/licencí Media Services musí být nastaveny následující věci:
 
-    * **Certifikát aplikace (AC)**: Toto je soubor .pfx, který obsahuje privátní klíč. Tento soubor vytvořte a šifrovat pomocí hesla. Skupiny soubor .pfx, být ve formátu Base64.
+    * **Certifikát aplikace (AC)**: Toto je soubor .pfx, který obsahuje privátní klíč. Tento soubor vytvořte a šifrovat pomocí hesla. Soubor .pfx musí být ve formátu Base64.
 
         Následující kroky popisují, jak generovat soubor certifikátu .pfx pro FairPlay:
 
@@ -49,8 +49,8 @@ Vyžadují se následující věci při použití služby Media Services k šifr
 
             "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-export - out FairPlay out.pfx-inkey privatekey.pem – v file:privatekey-pem-pass.txt - passin FairPlay out.pem
             
-    * **Heslo certifikátu aplikace**: heslo pro vytvoření souboru .pfx.
-    * **Požádejte**: Tento klíč je dostanete při generování certifikace prostřednictvím portálu pro vývojáře Apple. Jednotlivé vývojové týmy obdrží jedinečný položit dotaz. Uložit kopii zadání a uložte ho na bezpečném místě. Musíte nakonfigurovat položit dotaz jako FairPlayAsk pomocí služby Media Services.
+    * **Heslo certifikátu aplikace**: Heslo pro vytvoření souboru .pfx.
+    * **POŽÁDEJTE**: Tento klíč je dostanete při generování certifikace prostřednictvím portálu pro vývojáře Apple. Jednotlivé vývojové týmy obdrží jedinečný položit dotaz. Uložit kopii zadání a uložte ho na bezpečném místě. Musíte nakonfigurovat položit dotaz jako FairPlayAsk pomocí služby Media Services.
     
 * Snímků za Sekundu na straně klienta je nutné nastavit následující věci:
 

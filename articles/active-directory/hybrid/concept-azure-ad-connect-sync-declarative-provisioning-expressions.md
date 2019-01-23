@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Výrazů deklarativního zřizování | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Deklarativní zřizování výrazů | Dokumentace Microsoftu'
 description: Vysvětluje výrazů deklarativního zřizování.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 26c835e6c2f658f7ad852fdd02dc8974db33e47b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 488309d9d78834896a939c66ccdc7515310103de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312064"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460489"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizace Azure AD Connect: Principy výrazů deklarativního zřizování
 Synchronizace Azure AD Connect navazuje na deklarativní zřizování poprvé byla představena v produktu Forefront Identity Manager 2010. Umožňuje implementovat obchodní logiku integrace naprosto bez nutnosti psát zkompilovaný kód.
@@ -35,10 +35,10 @@ Atributy jsou silného typu. Funkce přijímá pouze atributy nesprávného typu
 * Funkce mají název, za nímž následuje argumenty v závorkách: FunctionName (argument 1, argument N).
 * Atributy jsou určeny hranaté závorky: [attributeName]
 * Parametry jsou označeny podle procenta: ParameterName %
-* Řetězcové konstanty jsou uzavřeny v uvozovkách: například "Contoso" (Poznámka: musíte použít rovné uvozovky "" a není inteligentní uvozovky "")
+* Řetězcové konstanty jsou uzavřeny v uvozovkách: Například "Contoso" (Poznámka: musíte použít rovné uvozovky "" a není inteligentní uvozovky "")
 * Číselné hodnoty jsou vyjádřené bez uvozovek a být desítkové. Šestnáctkové hodnoty mají předponu & H. Například 98052 & HFF
-* Logické hodnoty jsou vyjádřeny pomocí konstant: True a False.
-* Předdefinované konstanty a literály jsou vyjádřeny názvem pouze jejich: NULL, CRLF, IgnoreThisFlow
+* Logické hodnoty jsou vyjádřeny pomocí konstant: Hodnota TRUE, False.
+* Předdefinované konstanty a literály jsou vyjádřeny včetně pouze jejich jména: Hodnota NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Functions
 Deklarativní zřizování využívá mnoho funkcí k zajištění možnost transformovat hodnoty atributů. Tyto funkce mohou být vnořené, takže výsledkem jedna funkce je předáno do jiné funkce.
@@ -93,10 +93,10 @@ Příklad:
 
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 
 **Referenční témata**
 
-* [Synchronizace Azure AD Connect: Functions – Reference](reference-connect-sync-functions-reference.md)
+* [Synchronizace Azure AD Connect: Reference k funkcím](reference-connect-sync-functions-reference.md)
 

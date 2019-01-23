@@ -2,22 +2,22 @@
 title: Schéma událostí služby Azure Event Grid Container Registry
 description: Popisuje vlastnosti, které jsou k dispozici pro kontejner Reigstry událostí pomocí služby Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/13/2018
-ms.author: tomfitz
-ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.date: 01/13/2019
+ms.author: spelluru
+ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42057481"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462840"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Schéma událostí Azure Event Grid pro registr kontejneru
 
-Tento článek obsahuje vlastnosti a schéma pro události Container Registry. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události Container Registry. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
 ## <a name="available-event-types"></a>Typy událostí k dispozici
 
@@ -100,13 +100,13 @@ Událost má následující dat nejvyšší úrovně:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| Předmět | řetězec | Vydavatel definované cesta předmět události. |
-| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
 | čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události úložiště objektů BLOB. |
 | dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
@@ -114,9 +114,9 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | id | řetězec | ID události. |
 | časové razítko | řetězec | Čas, kdy došlo k události. |
-| akce | řetězec | Akce, která zahrnuje zadané události. |
+| action | řetězec | Akce, která zahrnuje zadané události. |
 | cíl | objekt | Cíl události. |
-| požadavek | objekt | Požadavek, který událost vyvolal. |
+| žádost | objekt | Požadavek, který událost vyvolal. |
 
 Cílový objekt má následující vlastnosti:
 
@@ -126,7 +126,7 @@ Cílový objekt má následující vlastnosti:
 | velikost | integer | Počet bajtů obsahu. Stejné jako délku pole. |
 | ověřování algoritmem Digest | řetězec | Přehled obsahu, jak je definováno ve specifikaci protokolu HTTP rozhraní API V2 registru. |
 | Délka | integer | Počet bajtů obsahu. Stejná jako velikost pole. |
-| Úložiště | řetězec | Název úložiště. |
+| úložiště | řetězec | Název úložiště. |
 | značka | řetězec | Název značky. |
 
 Objekt žádosti má následující vlastnosti:

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: acedfab277199c2ada6af17584bab3f222fe1a13
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390030"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463741"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -503,6 +503,12 @@ Přestože tento kód pracuje s daty v rámci stejné instance nezbytné MSDTC.
 Moduly CLR umístí do Managed Instance a propojené servery pro/distribuované dotazy, které se odkazuje na aktuální instanci nějakou dobu nelze přeložit IP místní instance. Tato chyba je přechodný problém.
 
 **Alternativní řešení**: Pokud je to možné použijte připojení kontextu v modulu CLR.
+
+### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>Transparentní šifrování dat šifrované databáze nepodporují zálohování iniciovaná uživatelem
+
+Nelze provést `BACKUP DATABASE ... WITH COPY_ONLY` na databázi, která je zašifrovaná pomocí transparentního šifrování dat (TDE). Transparentní šifrování dat vynutí zálohy šifrované pomocí interní klíče TDE a nedá se exportovat klíč, proto nebudete moci obnovit zálohu.
+
+**Alternativní řešení**: Použít automatické zálohování a obnovení k určitému bodu v čase, nebo zakázat šifrování v databázi.
 
 ## <a name="next-steps"></a>Další postup
 

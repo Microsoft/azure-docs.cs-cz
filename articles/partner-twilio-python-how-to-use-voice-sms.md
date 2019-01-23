@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 63eb894c64919826922fa60f4e12894542a97c69
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994161"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447356"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Postup použití Twilia pro hlasové hovory a SMS v Pythonu
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh pomocí služby Twilio API v Azure. Pokryté scénáře zahrnují vytváření telefonních hovorů a posílání zpráv služby krátké zprávy (SMS). Další informace o Twilio a používání hlasové hovory a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) oddílu.
@@ -49,14 +49,14 @@ Následuje seznam příkazů Twilio. Další informace o ostatních příkazů a
 * **&lt;Volání&gt;**: Volající se připojí k jiný telefon.
 * **&lt;Shromážděte&gt;**: Shromažďuje číslice zadané na klávesnici telefonu.
 * **&lt;Zavěšení&gt;**: Ukončí volání.
-* **&lt;Pozastavit&gt;**: Bezobslužná počká zadaný počet sekund.
+* **&lt;Pause&gt;**: Bezobslužná počká zadaný počet sekund.
 * **&lt;Přehrát&gt;**: Přehraje zvukový soubor.
 * **&lt;Fronty&gt;**: Přidejte do fronty pro volající.
-* **&lt;Záznam&gt;**: Zaznamenává hlasu volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;Record&gt;**: Zaznamenává hlasu volajícího a vrátí adresu URL souboru, který obsahuje záznam.
 * **&lt;Přesměrovat&gt;**: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
 * **&lt;Odmítnout&gt;**: Odmítne příchozí volání na vaše číslo Twilio bez fakturace je.
 * **&lt;Řekněme, že&gt;**: Převede text na řeč, který je k volání.
-* **&lt;SMS&gt;**: Odešle zprávu SMS.
+* **&lt;Sms&gt;**: Odešle zprávu SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založený na formátu XML podle Twilio příkazy, které informují o Twilio, jak zpracovat hovor nebo SMS.
@@ -89,7 +89,7 @@ První s názvem [nastavení nového virtuálního počítače Linux Azure] [azu
 
 ### <a name="set-the-dns-name-label"></a>Nastavení popisku názvu DNS
   1. Přejděte na stránku [veřejné IP adresy] [azure_ips].
-  2. Vyberte veřejnou IP adresu tohoto correspends s virtuálním počítačem.
+  2. Vyberte veřejné IP adresy, která odpovídá s virtuálním počítačem.
   3. Nastavte **popisku názvu DNS** v **konfigurace** oddílu. V tomto příkladu to bude vypadat asi takhle nějak *váš popisek domény*. centralus.cloudapp.azure.com
 
 Jakmile budete moct připojit přes SSH k virtuálnímu počítači můžete nainstalovat webové platformy podle vašeho výběru (nejvíce dobře známá v Pythonu se dvěma [Flask](http://flask.pocoo.org/) a [Django](https://www.djangoproject.com)). Můžete nainstalovat buď z nich stačí spuštěním `pip install` příkazu.

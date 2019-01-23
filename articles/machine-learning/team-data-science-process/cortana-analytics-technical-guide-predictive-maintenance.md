@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d7acb24a6fef0435d59e5a07f5312f1e6368fe52
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ca29526ab8abbfffcf5e58939acbd1c9b4798a51
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140179"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451719"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce do šablony řešení Cortana Intelligence pro prediktivní údržby v leteckém průmyslu
 
@@ -143,7 +143,7 @@ To [kanálu](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentovat použité pro tuto šablonu řešení poskytuje zbývající dobu životnosti (RUL) leteckého motoru. Experiment je specifická pro datové sady spotřebované a vyžaduje úpravy nebo nahrazení specifické pro data režimu.
 
-Informace o způsobu vytvoření experimentu Azure Machine Learning najdete v tématu [prediktivní údržba: Krok 1 ze 3, přípravy dat a vytváření funkcí](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
+Informace o způsobu vytvoření experimentu Azure Machine Learning najdete v tématu [prediktivní údržby: Krok 1 ze 3, přípravy dat a vytváření funkcí](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
 
 ## <a name="monitor-progress"></a>Sledování průběhu
 Po spuštění generátor dat kanálu začne nechávají dehydratovat a různých komponent řešení start aktivace do akce následující příkazy vydané službou data factory. Existují dva způsoby a začněte monitorovat kanál.
@@ -162,7 +162,7 @@ Nastavte řídicí panel Power BI k vizualizaci dat Azure Stream Analytics (hork
 ### <a name="set-up-the-cold-path-dashboard"></a>Nastavit řídicí panel studené cesty
 V kanálu dat studené cesty je cílem získat prediktivní RUL (zbývající doba životnosti) každý motor letadla po dokončení letu (cyklu). Předpověď výsledků je aktualizována každé 3 hodiny pro predikci letecké motory, které dokončení let během poslední 3 hodiny.
 
-Power BI se připojí ke službě Azure SQL database jako zdroj dat, kde jsou uloženy výsledky předpovědí. Poznámka: 1) pro nasazení řešení, predikcí se zobrazí v databázi během 3 hodin.
+Power BI se připojí ke službě Azure SQL database jako zdroj dat, kde jsou uloženy výsledky předpovědí. Poznámka: (1) pro nasazení řešení, predikcí se zobrazí v databázi během 3 hodin.
 Souboru pbix, která byla součástí ke stažení generátor obsahuje počáteční hodnoty data, takže můžete hned vytvořit řídicí panel Power BI. (2) v tomto kroku kontrolu požadovaných součástí je ke stažení a instalaci tohoto bezplatného softwaru [Power BI desktopu](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
 
 Následující kroky vás o tom, jak připojit soubor pbix do SQL Database, která byla spuštěné v době nasazení řešení obsahující data (například výsledky předpovědí) za účelem vizualizace.
@@ -174,7 +174,7 @@ Následující kroky vás o tom, jak připojit soubor pbix do SQL Database, kter
    * Jednou **"Azure SQL Database"** v šabloně řešení diagram změní na zelenou, klikněte na něj a potom klikněte na tlačítko **"Otevřít"**.
    * Zobrazí se vám nové kartě nebo okno prohlížeče zobrazující stránky Azure portal. Klikněte na tlačítko **"Skupiny prostředků"** na levém panelu.
    * Vyberte předplatné, který používáte pro nasazení řešení a pak vyberte **"YourSolutionName\_ResourceGroup"**.
-   * V nové lokalitě pop si panelu, klikněte na tlačítko ![SQL ikonu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonu pro přístup k vaší databázi. Název databáze je vedle této ikony (například **"pmaintenancedb"**) a **název databázového serveru** je uvedený v části vlastnosti název serveru a by měl vypadat podobně jako  **YourSoutionName.database.windows.net**.
+   * V nové lokalitě pop si panelu, klikněte na tlačítko ![SQL ikonu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonu pro přístup k vaší databázi. Název databáze je vedle této ikony (například **"pmaintenancedb"**) a **název databázového serveru** je uvedený v části vlastnosti název serveru a by měl vypadat podobně jako  **YourSolutionName.database.windows.net**.
    * Vaše databáze **uživatelské jméno** a **heslo** jsou stejné jako uživatelské jméno a heslo zaznamenaných během nasazení řešení.
 2. Aktualizujte zdroj dat ze studené cesty souboru sestavy v Power BI Desktopu.
    
@@ -182,7 +182,7 @@ Následující kroky vás o tom, jak připojit soubor pbix do SQL Database, kter
      
      ![Upravit dotazy](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
    * Zobrazí se vám dvou tabulek, **RemainingUsefulLife** a **PMResult**. Vyberte v první tabulce a klikněte na tlačítko ![ikona nastavení dotazu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) vedle **'Source'** pod **použitý postup** na pravé straně **"Nastavení dotazu"** panel. Ignorujte jakékoli upozornění, které se zobrazí.
-   * V lokalitě pop si okna nahradit **"Server"** a **'Databáze'** s vlastními názvy serveru a databáze a pak klikněte na tlačítko **"OK"**. Pro název serveru, je nutné zadat port 1433 (**YourSoutionName.database.windows.net, 1433**). Ponechejte pole databáze jako **pmaintenancedb**. Ignorujte upozornění, které se zobrazí na obrazovce.
+   * V lokalitě pop si okna nahradit **"Server"** a **'Databáze'** s vlastními názvy serveru a databáze a pak klikněte na tlačítko **"OK"**. Pro název serveru, je nutné zadat port 1433 (**YourSolutionName.database.windows.net, 1433**). Ponechejte pole databáze jako **pmaintenancedb**. Ignorujte upozornění, které se zobrazí na obrazovce.
    * V dalším pop si okno se zobrazí dvě možnosti, v levém podokně (**Windows** a **databáze**). Klikněte na tlačítko **'Databáze'**, vyplňte vaše **'Jméno uživatele'** a **'Password'** (Toto je uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvoří Azure SQL database). V ***jaké úroveň, která se použije toto nastavení vyberte***, zaškrtněte možnost na úrovni databáze. Pak klikněte na tlačítko **"Připojit"**.
    * Klikněte na druhé tabulky **PMResult** klikněte ![ikona navigace](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) vedle **'Source'** pod **použitý postup** na pravé straně **"Nastavení dotazu"** panelu a aktualizujte název serveru a databáze jako výše uvedené kroky a klikněte na tlačítko OK.
    * Jakmile budete s asistencí zpět na předchozí stránku, zavřete okno. Zobrazí se zpráva – klikněte na tlačítko **použít**. A konečně, klikněte na tlačítko **Uložit** tlačítko Uložit změny. Váš soubor Power BI má nyní navázalo se připojení k serveru. Pokud vaše vizualizace jsou prázdné, nezapomeňte že vymazat výběry na vizualizace, která bude vizualizovat všechna data kliknutím na ikonu gumy v pravém horním rohu legend. Pomocí tlačítka aktualizovat tak, aby odrážely nová data na vizualizace. Na začátku zobrazí jenom data počáteční hodnoty na vaše vizualizace jako služby data factory je naplánovaná aktualizace každé 3 hodiny. Po 3 hodiny zobrazí se nových předpovědí projeví ve svých vizualizacích při aktualizaci data.
@@ -210,7 +210,7 @@ Následující kroky vás provedou, jak vizualizovat výstup dat z úloh Stream 
 
 1. Přidáte výstup Power BI v Azure Stream Analytics (ASA).
    
-   * Postupujte podle pokynů v [Azure Stream Analytics a Power BI: analytickém řídicím panelu pro streamování dat v reálném čase viditelnost](../../stream-analytics/stream-analytics-power-bi-dashboard.md) nastavit výstup úlohy Azure Stream Analytics jako řídicí panel Power BI.
+   * Postupujte podle pokynů v [Azure Stream Analytics a Power BI: Analytickém řídicím panelu pro streamování dat v reálném čase viditelnost](../../stream-analytics/stream-analytics-power-bi-dashboard.md) nastavit výstup úlohy Azure Stream Analytics jako řídicí panel Power BI.
    * Dotaz Azure Stream Analytics obsahuje tři výstupy, které jsou **aircraftmonitor**, **aircraftalert**, a **flightsbyhour**. Zobrazí se dotaz po kliknutí na kartě dotazu. Odpovídající každé z těchto tabulek, musíte přidat výstup Azure Stream Analytics. Když přidáte první výstup (**aircraftmonitor**) ujistěte se, že **Alias pro výstup**, **název datové sady** a **název tabulky** jsou stejné (**aircraftmonitor**). Opakujte postup pro přidání výstupy pro **aircraftalert**, a **flightsbyhour**. Po přidání všech tří výstupní tabulky a spuštění úlohy Azure Stream Analytics, měli byste obdržet potvrzovací zpráva ("spouští se Stream Analytics úlohy maintenancesa02asapbi bylo úspěšné").
 2. Přihlaste se k [Power BI online](http://www.powerbi.com)
    

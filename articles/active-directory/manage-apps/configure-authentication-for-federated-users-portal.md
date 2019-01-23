@@ -4,7 +4,7 @@ description: Vysvětluje, jaké tenanta služby Azure AD je a jak spravovat slu�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: infrastructure-services
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: f9cd761080bc5098d0500841e7327ac8ce9f9a2d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7b16e3ff5be21c52f354f0dcbb5dd91b4509e65e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957924"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461191"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace přihlašování Azure Active Directory v chování aplikace s použitím zásad zjišťování domovské sféry
 
@@ -63,9 +63,9 @@ Pomocný parametr syntaxe domény se liší v závislosti na protokol, který se
 
 **WS-Federation**: whr=contoso.com v řetězci dotazu.
 
-**SAML**: buď ověření požadavku SAML, který obsahuje nápovědu domény nebo whr=contoso.com řetězec dotazu.
+**SAML**:  Buď ověření požadavku SAML, který obsahuje nápovědu domény nebo whr=contoso.com řetězec dotazu.
 
-**Otevřete připojení ID**: domain_hint=contoso.com řetězec dotazu. 
+**Open ID Connect**: Domain_hint=contoso.com řetězec dotazu. 
 
 Pokud nápovědu domény je zahrnutá v žádosti o ověření z aplikace a tenanta je Federovaná pomocí dané domény, Azure AD se pokusí přesměrování přihlášení pro zprostředkovatele identity, který je nakonfigurovaný pro danou doménu. 
 
@@ -204,7 +204,7 @@ Get-AzureADPolicy
 
 Použití zásad HRD až po jeho vytvoření, ji můžete přiřadit k více instančních objektů aplikace.
 
-#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2: Vyhledání instanční objekt služby, ke kterému chcete přiřadit zásady  
+#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2: Vyhledejte objekt služby, ke kterému chcete přiřadit zásady  
 Je nutné **ObjectID** objektů služby, u kterých chcete zásady přiřadit. Existuje několik způsobů, jak najít **ObjectID** objektů služby.    
 
 Můžete na portálu, nebo můžete dát dotaz na [Microsoft Graphu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Můžete také přejít na [Graph Exploreru nástroj](https://developer.microsoft.com/graph/graph-explorer) a přihlaste se ke svému účtu Azure AD budete moct zobrazit všechna firemní instančních objektů. Vzhledem k tomu, že používáte PowerShell, můžete seznam instanční objekty a jejich ID rutinu rutinu get-AzureADServicePrincipal.
@@ -220,7 +220,7 @@ Tento příkaz můžete opakovat pro každý instanční objekt služby, ke kter
 
 V případě, kde aplikace už má přiřazené zásady HomeRealmDiscovery nebudete moct přidat druhý.  V takovém případě změňte definici zásady zjišťování domovské sféry, který je přiřazen do aplikace přidat další parametry.
 
-#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>Krok 4: Kontrola které instančních objektů aplikace je přiřazená vašich zásad HRD
+#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>Krok 4: Zkontrolujte, které instančních objektů aplikace je přiřazená vašich zásad HRD
 Ke kontrole aplikací, které mají nakonfigurované zásady HRD, použijte **Get-AzureADPolicyAppliedObject** rutiny. Předejte ji **ObjectID** zásad, které chcete zkontrolovat.
 
 ``` powershell
@@ -229,7 +229,7 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 #### <a name="step-5-youre-done"></a>Krok 5: Je to!
 Zkuste aplikace a zjistit, že nové zásady fungují.
 
-### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Příklad: Zobrazení seznamu aplikací, pro které HRD jsou nakonfigurované zásady
+### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Příklad: Seznam aplikací, pro které HRD jsou nakonfigurované zásady
 
 #### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>Krok 1: Seznam všech zásad, které byly vytvořeny ve vaší organizaci 
 
@@ -246,10 +246,10 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 
 ### <a name="example-remove-an-hrd-policy-for-an-application"></a>Příklad: Odeberte zásadu HRD pro aplikaci
-#### <a name="step-1-get-the-objectid"></a>Krok 1: Získání ObjectID
+#### <a name="step-1-get-the-objectid"></a>Krok 1: Získejte ObjectID
 V předchozím příkladu můžete získat **ObjectID** zásad a u aplikace instanční objekt, ze kterého chcete odebrat. 
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Krok 2: Odebrání přiřazení zásad z instančního objektu aplikace  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Krok 2: Odebrat přiřazení zásad z instančního objektu aplikace  
 
 ``` powershell
 Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: b8252e6575ec7acb46fb69563720cc38796964ce
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d871cecda8e7957e3d0d3c37078b8a1fa2ab5214
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425064"
+ms.locfileid: "54451251"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat upozornění na metriku pomocí Azure monitoru
 
@@ -31,23 +31,23 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění metriky na w
     > [!TIP]
     > Většina oken prostředků také mít **výstrahy** ve své nabídce prostředků v rámci **monitorování**, upozornění můžete například vytvořit i z něj.
 
-3. Klikněte na tlačítko **Výběr cíle**, v podokně kontext, který načítá, vyberte cílový prostředek, který chcete upravit. Použití **předplatné** a **typ prostředku** rozevírací seznamy se najít prostředek, kterou chcete monitorovat. Na panelu hledání můžete také najít váš prostředek.
+3. Klikněte na tlačítko **Výběr cíle**, v podokně kontext, který načítá, vyberte cílový prostředek, který chcete upozornit na. Použití **předplatné** a **typ prostředku** rozevírací seznamy se najít prostředek, kterou chcete monitorovat. Na panelu hledání můžete také najít váš prostředek.
 
-4. Pokud vybraný prostředek má, můžete vytvářet upozornění metrik **dostupné signály** na dolní pravé bude obsahovat metriky. Můžete zobrazit úplný seznam typů prostředků, které jsou podporovány pro upozornění metrik v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
+4. Pokud vybraný prostředek má, můžete vytvářet upozornění metrik **dostupné signály** na dolní pravé bude obsahovat metriky. Můžete zobrazit úplný seznam typů prostředků, které jsou podporovány pro upozornění metrik v tomto [článku](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-5. Jakmile vyberete cílový prostředek, klikněte na **přidat kritéria**
+5. Jakmile vyberete cílový prostředek, klikněte na **přidat podmínku**.
 
 6. Se zobrazí seznam signálů, které jsou podporovány pro prostředek, vyberte metriku, kterou chcete vytvořit upozornění na.
 
-7. Zobrazí se graf metriky za posledních 6 hodin. Definovat **období**, **frekvence**, **operátor** a **prahová hodnota**, určí se tak logiku, která se pravidlo upozornění metriky Vyhodnoťte.
+7. Volitelně můžete upřesnit metriku úpravou **období** a **agregace**. Pokud metrika má rozměrů, zobrazí se **dimenze** tabulky zobrazené. Vyberte jednu nebo více hodnot na dimenzi. Upozornění metriky se spustí vyhodnotit podmínku pro všechny kombinace vybraných hodnot. [Další informace o tom, jak funguje upozorňování na vícedimenzionálních metrik](alerts-metric-overview.md). Můžete také **vyberte \***  pro libovolný počet rozměrů. **Vyberte \***  bude dynamicky škálování výběru pro všechny aktuální a budoucí hodnoty pro dimenzi.
 
-8. Pomocí grafu metriky můžete určit, co může být rozumné prahovou hodnotu.
+8. Zobrazí se graf metriky za posledních 6 hodin. Definovat parametry upozornění; **Typ podmínky**, **frekvence**, **operátor** a **prahová hodnota** nebo **citlivosti**, tím se určení logiku, která se vyhodnotí jako pravidlo upozornění metriky. [Další informace o možnostech typu a citlivosti podmínku dynamickými prahovými hodnotami](alerts-dynamic-thresholds.md).
 
-9. Volitelně, pokud metrika má rozměrů, zobrazí se rozměry tabulky zobrazené. Vyberte jednu nebo více hodnot na dimenzi. Upozornění metriky se spustí vyhodnotit podmínku pro všechny kombinace vybraných hodnot. [Další informace o tom, jak funguje upozorňování na vícedimenzionálních metrik](alerts-metric-overview.md). Můžete také **vyberte \***  pro libovolný počet rozměrů. **Vyberte \***  bude dynamicky škálování výběru pro všechny aktuální a budoucí hodnoty pro dimenzi.
+9. Pokud používáte statické prahové hodnoty, grafu metriky, vám pomůže určit, co může být rozumné prahovou hodnotu. Pokud používáte dynamické prahové hodnoty, metriky grafu se zobrazí vypočítané prahové hodnoty podle poslední data.
 
 10. Klikněte na **Hotovo**.
 
-11. Volitelně můžete přidáte další kritéria, pokud chcete sledovat komplexní pravidla výstrahy
+11. Volitelně můžete přidáte další kritéria, pokud chcete sledovat komplexní pravidla výstrahy. Uživatelé nyní mohou mít pravidla upozornění s dynamickými prahovými hodnotami kritéria jako jediné kritérium.
 
 12. Vyplňte **podrobnosti výstrahy** jako **název pravidla upozornění**, **popis** a **závažnost**
 
@@ -73,7 +73,7 @@ Můžete zobrazit a spravovat pravidla upozornění na metriky pomocí okna Spra
 
 4. Klikněte na název metriky pravidlo výstrahy, kterou chcete upravit
 
-5. V pravidle upravit, klikněte na **upozornění kritéria** chcete upravit. Můžete změnit metriky, prahové hodnoty a další pole, podle potřeby
+5. V pravidle upravit, klikněte na **upozornění kritéria** chcete upravit. Můžete změnit metriky, podmínku prahové hodnoty a další pole, podle potřeby
 
     > [!NOTE]
     > Nelze upravovat **cílový prostředek** a **název pravidla upozornění** po vytvoření upozornění metriky.
@@ -92,10 +92,10 @@ V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla
     az monitor metrics alert --help
     ```
 
-3. Můžete vytvořit jednoduché pravidlo metriky výstrahy, které monitoruje Pokud průměrné využití CPU na virtuálním počítači je větší než 70
+3. Můžete vytvořit jednoduché pravidlo metriky výstrahy, které monitoruje Pokud průměrné využití CPU na virtuálním počítači je větší než 90
 
     ```azurecli
-    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90"
+    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
     ```
 
 4. Ve skupině prostředků pomocí následujícího příkazu můžete zobrazit všechna upozornění metrik
@@ -130,5 +130,6 @@ V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla
 
 - [Vytvoření upozornění na metriku pomocí šablony Azure Resource Manageru](../../azure-monitor/platform/alerts-enable-template.md).
 - [Vysvětlení, jak metrika výstrahy pracovní](alerts-metric-overview.md).
+- [Vysvětlení, jak metriky upozornění s dynamickými prahovými hodnotami podmínky práce](alerts-dynamic-thresholds.md).
 - [Pochopení schématu webových hook pro upozornění na metriku](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
 

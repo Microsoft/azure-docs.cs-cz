@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Objekt synchronizace řešení potíží s | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Řešení potíží s objekt synchronizace | Dokumentace Microsoftu'
 description: Toto téma popisuje kroky pro řešení potíží s synchronizace objektů pomocí úlohy řešení potíží.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cfd963ae38d42d245f2eec1ddb76c7af316039ba
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ed13014dd5ad559ed3793ff52ae410be9174ae2b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961123"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461310"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s synchronizace objektů pomocí synchronizace Azure AD Connect
 Tento článek popisuje kroky pro řešení potíží s synchronizace objektů pomocí úlohy řešení potíží. Podívejte se na řešení potíží s fungování v Azure Active Directory (Azure AD) Connect najdete [Toto krátké video](https://aka.ms/AADCTSVideo).
@@ -84,7 +84,7 @@ Objekt je mimo rozsah jako domény nebylo nalezeno spustit kroky profily nebo sp
 ## <a name="object-is-filtered-due-to-ou-filtering"></a>Objekt je filtrovaná kvůli filtrování podle organizačních jednotek
 Objekt je synchronizovaný oboru kvůli konfiguraci filtrování organizačních jednotek. V následujícím příkladu objekt náleží do organizační jednotky = NoSync, DC = bvtadwbackdc, DC = com.  Rozsah synchronizace není součástí této organizační jednotky.</br>
 
-![ORGANIZAČNÍ JEDNOTKY](./media/tshoot-connect-objectsync/objsynch7.png)
+![OU](./media/tshoot-connect-objectsync/objsynch7.png)
 
 ## <a name="linked-mailbox-issue"></a>Problém propojená poštovní schránky
 Propojená poštovní schránka by měla být přidružená s externí hlavní účet nachází v jiné doménové struktuře pro důvěryhodného účtu. Pokud není žádný takový externí hlavní účet a Azure AD Connect nebude synchronizace uživatele účtu odpovídá propojená poštovní schránky v doménové struktuře serveru Exchange do tenanta služby Azure AD.</br>

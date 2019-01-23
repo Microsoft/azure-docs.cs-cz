@@ -25,7 +25,7 @@ S modulem PowerShell můžete provádět například některé z těchto úloh. 
 * Spusťte experiment ([Start-AmlExperiment](https://github.com/hning86/azuremlps#start-amlexperiment)).
 * Z prediktivního experimentu vytvořte webovou službu ([New-AmlWebService](https://github.com/hning86/azuremlps#new-amlwebservice)).
 * Vytvořit koncový bod v publikované webové službě ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
-* Zavolejte koncový bod webové služby RRS či BES ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) a [Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint)).
+* Vyvolání RRS či BES koncový bod webové služby ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) a [Invoke-AmlWebServiceBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
 
 Na jednoduchém příkladu si můžeme ukázat, jak se pomocí PowerShell spustí existující experiment:
 

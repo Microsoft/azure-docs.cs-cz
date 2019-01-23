@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2a88b130c92f7b9074fd248afc97f0ea6b4c13bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d101931fb2a4184ff9ffffc0aed4fc90fee2cbd5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042134"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452951"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Příklady dotazů SQL k dotazování dat ze služby Azure Cosmos DB
 
@@ -506,7 +506,7 @@ Lze také vnořit volání operátoru jako v dotazu níže.
 
 Jako s dalšími operátory dotazu, pokud chybí odkazovaný vlastnosti na podmíněný výraz v libovolné položky nebo typy, který se porovnává se liší, pak tyto položky jsou vyloučeny ve výsledcích dotazu.
 
-Coalesce (?) – operátor umožňuje efektivně vyhledávat přítomnost vlastnosti (označovaný také jako Definuje) v položce. Tento operátor je užitečná při dotazování na částečně strukturovaná nebo data smíšené typy. Tento dotaz například vrátí "lastName", pokud jsou k dispozici, nebo "Příjmení", pokud není k dispozici.
+Coalesce (?) – operátor umožňuje efektivně vyhledávat přítomnost vlastnosti v položce. Tento operátor je užitečná při dotazování na částečně strukturovaná nebo data smíšené typy. Tento dotaz například vrátí "lastName", pokud jsou k dispozici, nebo "Příjmení", pokud není k dispozici.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -1740,7 +1740,7 @@ Tady je seznam podporovaných operátory LINQ v zprostředkovatele LINQ, který 
 * **Operátor SelectMany**: Umožňuje uvolnění polí do klauzule SQL JOIN. Je možné řetězec/vnoření výrazy k filtrování prvky pole
 * **OrderBy a OrderByDescending**: Přeloží na klauzule ORDER BY ascending/descending
 * **Počet**, **součet**, **Min**, **maximální**, a **průměrné** operátory pro agregaci a jejich ekvivalenty asynchronní **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, a **AverageAsync**.
-* **Metoda CompareTo**: Přeloží na porovnání rozsahu. Běžně se používají pro řetězce, protože nejsou porovnatelné v rozhraní .NET
+* **CompareTo**: Přeloží na porovnání rozsahu. Běžně se používají pro řetězce, protože nejsou porovnatelné v rozhraní .NET
 * **Využijte**: Přeloží do horní části SQL pro omezení výsledků z dotazu
 * **Matematické funkce**: Podporuje překlad z. NET pro funkce Abs, funkce Acos, Asin, Atan, Ceiling, Cos, Exp, Floor, protokolu, Log10, Pow, kruhové, přihlášení, Sin, Sqrt, Tan, Truncate na ekvivalentní funkce integrované v SQL.
 * **Řetězec funkce**: Podporuje překlad z. EndsWith Concat, obsahuje, od sítě, IndexOf, počet, ToLower, TrimStart, nahradit, zpětné, TrimEnd, StartsWith, podřetězec, ToUpper na ekvivalentní integrované funkce SQL.
@@ -2264,7 +2264,7 @@ Následující příklad ukazuje způsob použití queryDocuments v rozhraní AP
 10. Zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů
 11. Logická jednotka, Ooi, Tan, zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů.
 12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: Není tak cizího jazyka pro zpracování dat, SIGMOD 2008.
-13. G. Graefe. Cascades architektura pro optimalizaci dotazu. Eng. IEEE dat Bull., 18(3): roce 1995.
+13. G. Graefe. Cascades architektura pro optimalizaci dotazu. Eng. IEEE dat Bull., 18(3): 1995.
 
 [1]: ./media/how-to-sql-query/sql-query1.png
 [introduction]: introduction.md

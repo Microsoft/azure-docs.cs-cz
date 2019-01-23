@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: f484eaf127c1dda0e3389e237ace75f51401a806
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/22/2019
+ms.openlocfilehash: b0b4a89aaf9b00b30e6b4759c8aa168f06d0d008
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959866"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462466"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 
@@ -61,6 +61,9 @@ Není nutné k dešifrování databáze pro operace v rámci Azure. Nastavení �
 - Vytvoření kopie databáze
 - Obnovení zálohy do spravované Instance Azure SQL
 
+> [!IMPORTANT]
+> Vytvoření ruční zálohy COPY-ONLY databáze zašifrováno transparentní šifrování dat spravovaným službou není ve spravované instanci Azure SQL, povolená, protože certifikát použitý k šifrování není přístupný. Pomocí funkce bodu v čase obnovení lze přesunout do jiného Managed Instance tohoto typu databáze.
+
 Při exportu transparentní data šifrování chráněné databáze exportovaný obsah databáze nejsou šifrována. Tento exportovaný obsah uložený v nezašifrované souborů BACPAC. Ujistěte se, k ochraně souborů BACPAC odpovídajícím způsobem a povolit transparentní šifrování dat po dokončení importu se nová databáze.
 
 Například pokud exportu souboru BACPAC z instance SQL serveru v místním, importovaný obsah nové databáze není automaticky šifrují. Podobně pokud soubor BACPAC se exportují do místní instance systému SQL Server, nové databáze také se automaticky šifrují.
@@ -92,11 +95,11 @@ Pomocí následujících rutin pro Azure SQL Database a Data Warehouse:
 | [Set-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasetransparentdataencryption) |Povolí nebo zakáže transparentní šifrování dat pro databázi|
 | [Get-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) |Získá stav šifrování transparentní dat pro databázi |
 | [Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryptionactivity) |Kontroluje, Probíhá šifrování pro databázi |
-| [Přidat AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) |Přidá klíč služby Key Vault k instanci systému SQL Server |
+| [Add-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) |Přidá klíč služby Key Vault k instanci systému SQL Server |
 | [Get-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) |Získá klíče služby Key Vault pro server služby Azure SQL database  |
-| [Rutiny Set-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) |Nastaví ochrana dat transparentní šifrování pro instanci systému SQL Server |
+| [Set-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) |Nastaví ochrana dat transparentní šifrování pro instanci systému SQL Server |
 | [Get-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) |Získá data transparentní ochrana šifrování |
-| [Odebrat AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlserverkeyvaultkey) |Odebere klíč služby Key Vault z instance systému SQL Server |
+| [Remove-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlserverkeyvaultkey) |Odebere klíč služby Key Vault z instance systému SQL Server |
 |  | |
 
 > [!IMPORTANT]
@@ -109,7 +112,7 @@ Připojení k databázi pomocí přihlašovacích údajů, který je správce ne
 | Příkaz | Popis |
 | --- | --- |
 | [Příkaz ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | NASTAVENÍ nebo šifrování vypnout šifruje nebo dešifruje databáze |
-| [Sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Vrátí informace o stav šifrování databáze a její přidružené databáze, šifrovacích klíčů |
+| [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Vrátí informace o stav šifrování databáze a její přidružené databáze, šifrovacích klíčů |
 | [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Vrátí informace o šifrování stavu každého datového skladu uzel a jeho přidružená databáze šifrovací klíče |
 |  | |
 

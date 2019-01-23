@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 4907bbc9ed7a32e74175a4c6a178ac41bc165961
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: df82c66f344b733ef61df35920aa5a702465b245
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085198"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464100"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Vytvoření Azure Cache pro Redis
 
@@ -41,7 +41,7 @@ Tento skript používá následující příkazy k vytvoření skupiny prostřed
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Vytvoření az redis](https://docs.microsoft.com/cli/azure/redis#az_redis_create) | Vytvoření Azure Cache pro instanci Redis. |
+| [Vytvoření az redis](https://docs.microsoft.com/cli/azure/redis) | Vytvoření Azure Cache pro instanci Redis. |
 
 
 ## <a name="next-steps"></a>Další postup
