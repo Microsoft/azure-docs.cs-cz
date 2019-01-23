@@ -1,30 +1,137 @@
 ---
 layout: HubPage
 hide_bc: false
-title: Dokumentace ke službě Azure Active Directory – kurzy, reference k rozhraní API | Dokumentace Microsoftu
-description: Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.
+title: 'Dokumentace ke službě Azure Active Directory – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
+description: 'Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.'
 services: active-directory
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
-ms.date: 11/30/2018
+ms.date: 01/16/2019
 ms.author: mtillman
-ms.openlocfilehash: 38efd682c530e79bdea3747bd6f14faa10d399c4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723342"
 ---
+
 <div id="main" class="v2">
     <div class="container">
         <h1>Dokumentace k Azure Active Directory</h1>
-        <p>Azure Active Directory (Azure AD) je víceklientská cloudová adresářová služba a služba pro správu identit.</p>
-        <hr style="margin: 30px 0;" />
+        <p>Azure Active Directory (Azure AD) je víceklientská cloudová adresářová služba a služba pro správu identit.</p><p></p>
+        <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
+            <li>
+                <a href="fundamentals/active-directory-whatis.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_overview.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Co je Azure AD?</h3>
+                                <p>Přečtěte si víc o službě Azure Active Directory, včetně typů dostupných licencí a přidružených funkcí.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="fundamentals/add-custom-domain.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_get-started.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Přidání vlastního názvu domény</h3>
+                                <p>Přečtěte si víc o přidávání názvů domén vaší organizace a o vytváření známých jmen uživatelů.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="fundamentals/customize-branding.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Přidání značky společnosti</h3>
+                                <p>Zjistěte, jak přidat logo a barevné schéma vaší organizace na přihlašovací stránky služby Azure AD.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="fundamentals/add-users-azure-active-directory.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Vytvoření skupiny a přidání členů</h3>
+                                <p>Přečtěte si víc o vytváření základních skupin a postupu při přidávání nebo odebírání členů.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="fundamentals/active-directory-users-assign-role-azure-portal.md">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Přiřazení rolí uživatelům</h3>
+                                <p>Zjistěte, jak přiřazovat a odebírat role jednotlivých uživatelů, a to na základě potřebných oprávnění.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="/learn/modules/secure-azure-resources-with-conditional-access/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="../cognitive-services/media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Informace</h3>
+                                <p>Další informace o zabezpečení vašich prostředků Azure pomocí podmíněného přístupu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </li>
+        </ul>
         <ul class="pivots">
             <li>
                 <a href="#products"></a>
@@ -35,59 +142,6 @@ ms.locfileid: "52723342"
                             <li class="fullSpan">
                                 <a href="#index1" data-linktype="self-bookmark"></a>
                                 <ul class="cardsF cols cols4" id="index1" style="float: left; display: flex; width: 100%; border-bottom: 1px var(--grey-lighter) solid;">  
-                                    <li>
-                                        <ul class="cardsB panelContent" id="cardtypes-B" style="float: left; display: flex; width: 100%;">
-                                            <li>
-                                                <a href="">
-                                                    <div class="cardSize">
-                                                        <div class="cardPadding">
-                                                            <div class="card">
-                                                                <div class="cardImageOuter">
-                                                                    <div class="cardImage">
-                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="fundamentals/index.yml">Naučte se základy</a></h3> 
-                                                                    <p>
-                                                                        <a href="fundamentals/active-directory-whatis.md">Co je Azure AD?</a><br>
-                                                                        <a href="fundamentals/add-custom-domain.md">Přidání vlastního názvu domény</a><br>
-                                                                        <a href="fundamentals/customize-branding.md">Přidání značky společnosti</a><br>
-                                                                        <a href="fundamentals/add-users-azure-active-directory.md">Vytvoření skupiny a přidání členů</a><br>
-                                                                        <a href="fundamentals/active-directory-users-assign-role-azure-portal.md">Přiřazení rolí uživatelům</a><br>
-                                                                        <a href="fundamentals/active-directory-how-subscriptions-associated-directory.md">Přidružení předplatného Azure</a><br>
-                                                                        <a href="fundamentals/index.yml"><i>Další informace&gt;</i></a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="">
-                                                    <div class="cardSize">
-                                                        <div class="cardPadding">
-                                                            <div class="card">
-                                                                <div class="cardImageOuter">
-                                                                    <div class="cardImage">
-                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="/learn/">Získávání dovedností pomocí Microsoft Learn</a></h3> 
-                                                                    <p>
-                                                                        <a href="/learn/modules/secure-azure-resources-with-conditional-access/">Zabezpečení vašich prostředků Azure pomocí podmíněného přístupu</a><br>
-                                                                        <a href="/learn/browse/?products=azure-active-directory"><i>Další interaktivní výuka&gt;</i></a><br>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
                                     <li>
                                         <div class="cardSize">
                                             <div class="cardPadding">
@@ -125,13 +179,6 @@ ms.locfileid: "52723342"
                                                             <a href="/azure/active-directory-b2c/index"><i>Další informace&gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="conditional-access/index.yml">Podmíněný přístup</a></h3>
-                                                        <p>
-                                                            <a href="conditional-access/overview.md">Co je podmíněný přístup?</a><br>
-                                                            <a href="conditional-access/app-based-mfa.md">Vyžadování MFA pro specifické aplikace</a><br>
-                                                            <a href="conditional-access/location-condition.md">Podmínky založené na poloze</a><br>
-                                                            <a href="conditional-access/index.yml"><i>Další informace&gt;</i></a>
-                                                            </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,7 +189,15 @@ ms.locfileid: "52723342"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="develop/index.yml">Vývojáři</a></h3>
+                                                        <h3><a href="conditional-access/index.yml">Podmíněný přístup</a></h3>
+                                                        <p>
+                                                            <a href="conditional-access/overview.md">Co je podmíněný přístup?</a><br>
+                                                            <a href="conditional-access/app-based-mfa.md">Vyžadování MFA pro specifické aplikace</a><br>
+                                                            <a href="conditional-access/location-condition.md">Podmínky založené na poloze</a><br>
+                                                            <a href="conditional-access/index.yml"><i>Další informace&gt;</i></a>
+                                                            </p>
+                                                        <br><br>
+                                                           <h3><a href="develop/index.yml">Vývojáři</a></h3>
                                                         <p>
                                                             <a href="develop/about-microsoft-identity-platform.md">O platformě Microsoft Identity Platform</a><br>
                                                             <a href="develop/v2-oauth2-auth-code-flow.md">Udělení toku kódu OAuth 2.0</a><br>
@@ -166,6 +221,16 @@ ms.locfileid: "52723342"
                                                             <a href="/azure/active-directory-domain-services/index"><i>Další informace&gt;</i></a>
                                                         </p>
                                                         <br><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
                                                         <h3><a href="users-groups-roles/index.yml">Podnikoví uživatelé</a></h3>
                                                         <p>
                                                             <a href="users-groups-roles/groups-create-rule.md">Vytvoření dynamické skupiny</a><br>
@@ -181,16 +246,7 @@ ms.locfileid: "52723342"
                                                             <a href="hybrid/how-to-connect-install-custom.md">Vlastní instalace služby Azure AD Connect</a><br>
                                                             <a href="hybrid/index.yml"><i>Další informace&gt;</i></a>
                                                         </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cardSize">
-                                            <div class="cardPadding">
-                                                <div class="card">
-                                                    <div class="cardText">
+                                                        <br><br>
                                                         <h3><a href="governance/index.yml">Zásady správného řízení identit</a></h3>
                                                         <p>
                                                             <a href="governance/create-access-review.md">Vytvoření kontroly přístupu</a><br>
@@ -206,8 +262,17 @@ ms.locfileid: "52723342"
                                                             <a href="identity-protection/howto-unblock-user.md">Postup při odblokování uživatelů</a><br>
                                                             <a href="identity-protection/index.yml"><i>Další informace&gt;</i></a>
                                                         </p>
-                                                        <br><br>
-                                                        <h3><a href="managed-identities-azure-resources/index.yml">Spravované identity pro prostředky Azure</a></h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="privileged-identity-management/index.yml">Spravované identity pro prostředky Azure</a></h3>
                                                         <p>
                                                             <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Použití virtuálního počítače s Windows pro přístupu k Azure SQL</a><br>
                                                             <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Použití virtuálního počítače Azure pro získání tokenu</a><br>

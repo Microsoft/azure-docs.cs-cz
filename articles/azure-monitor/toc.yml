@@ -1,1029 +1,1022 @@
-items:
 - name: Dokumentace ke službě Azure Monitor
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Azure Monitor?
-    href: overview.md
-  - name: Změny brandingu
-    href: azure-monitor-rebrand.md
+    - name: Co je Azure Monitor?
+      href: overview.md
+    - name: Změny brandingu
+      href: azure-monitor-rebrand.md
 - name: Šablony Rychlý start
-  items:
-  - name: Aplikace
-    items:
-    - name: Aplikace v .NET
-      href: learn/quick-monitor-portal.md
-    - name: Aplikace v .NET Core
-      href: learn/dotnetcore-quick-start.md
-    - name: Aplikace v Node.js
-      href: learn/nodejs-quick-start.md
-    - name: Aplikace v Javě
-      href: learn/java-quick-start.md
-    - name: Mobilní aplikace
-      href: learn/mobile-center-quickstart.md
-    - name: Webová aplikace
-      href: app/website-monitoring.md
-  - name: Virtuální počítače
-    items:
-    - name: Shromažďování – virtuální počítače Azure
-      href: learn/quick-collect-azurevm.md
-    - name: Shromažďování – počítač Linux
-      href: learn/quick-collect-linux-computer.md
-    - name: Shromažďování – počítač s Windows
-      href: learn/quick-collect-windows-computer.md
   expanded: true
+  items:
+    - name: Aplikace
+      items:
+        - name: Aplikace v .NET
+          href: learn/quick-monitor-portal.md
+        - name: Aplikace v .NET Core
+          href: learn/dotnetcore-quick-start.md
+        - name: Aplikace v Node.js
+          href: learn/nodejs-quick-start.md
+        - name: Aplikace v Javě
+          href: learn/java-quick-start.md
+        - name: Mobilní aplikace
+          href: learn/mobile-center-quickstart.md
+        - name: Webová aplikace
+          href: app/website-monitoring.md
+    - name: Virtuální počítače
+      items:
+        - name: Shromažďování – virtuální počítače Azure
+          href: learn/quick-collect-azurevm.md
+        - name: Shromažďování – počítač Linux
+          href: learn/quick-collect-linux-computer.md
+        - name: Shromažďování – počítač s Windows
+          href: learn/quick-collect-windows-computer.md
 - name: Kurzy
   items:
-  - name: Analýza dat v Log Analytics
-    href: learn/tutorial-viewdata.md
-  - name: Vizualizace dat v Log Analytics
-    href: learn/tutorial-logs-dashboards.md
-  - name: Archivace metrik platformy a dat protokolů
-    href: learn/tutorial-archive-data.md
-  - name: Upozornění na data protokolů
-    href: learn/tutorial-response.md
-  - name: Automatické škálování podle výkonu a plánu
-    href: learn/tutorial-autoscale-performance-schedule.md
-  - name: Vyhledání běhových výjimek aplikací
-    href: learn/tutorial-runtime-exceptions.md
-  - name: Vyhledání potíží s výkonem aplikací
-    href: learn/tutorial-performance.md
-  - name: Upozornění na stav aplikace
-    href: learn/tutorial-alert.md
-  - name: Vysvětlení uživatelů aplikací
-    href: learn/tutorial-users.md
-  - name: Vytvoření vlastních řídicích panelů
-    href: learn/tutorial-app-dashboards.md
+    - name: Analýza dat v Log Analytics
+      href: learn/tutorial-viewdata.md
+    - name: Vizualizace dat v Log Analytics
+      href: learn/tutorial-logs-dashboards.md
+    - name: Archivace metrik platformy a dat protokolů
+      href: learn/tutorial-archive-data.md
+    - name: Upozornění na data protokolů
+      href: learn/tutorial-response.md
+    - name: Automatické škálování podle výkonu a plánu
+      href: learn/tutorial-autoscale-performance-schedule.md
+    - name: Vyhledání běhových výjimek aplikací
+      href: learn/tutorial-runtime-exceptions.md
+    - name: Vyhledání potíží s výkonem aplikací
+      href: learn/tutorial-performance.md
+    - name: Upozornění na stav aplikace
+      href: learn/tutorial-alert.md
+    - name: Vysvětlení uživatelů aplikací
+      href: learn/tutorial-users.md
+    - name: Vytvoření vlastních řídicích panelů
+      href: learn/tutorial-app-dashboards.md
 - name: Ukázky
   items:
-  - name: Azure PowerShell
-    href: platform/powershell-samples.md
+    - name: Azure PowerShell
+      href: platform/powershell-samples.md
 - name: Koncepty
   items:
-  - name: Správa Azure
-    href: azure-management.md?toc=/azure/azure-monitor/toc.json
-  - name: Průběžné sledování
-    href: continuous-monitoring.md
-  - name: Data monitorování
-    items:
-    - name: Metriky a protokoly
-      href: platform/data-collection.md
-    - name: Zdroje dat
-      href: platform/data-sources.md
-    - name: Zdroje dat Azure
-      href: platform/data-sources-reference.md
-    - name: Protokol aktivit
-      href: platform/activity-logs-overview.md
-    - name: Diagnostické protokoly
-      href: platform/diagnostic-logs-overview.md
-    - name: Protokolování času pro příjem dat
-      href: platform/data-ingestion-time.md
-    - name: Vlastní metriky do úložiště metrik
-      href: platform/metrics-custom-overview.md
-    - name: Zabezpečení dat
+    - name: Správa Azure
+      href: azure-management.md?toc=/azure/azure-monitor/toc.json
+    - name: Průběžné sledování
+      href: continuous-monitoring.md
+    - name: Data monitorování
       items:
-      - name: Protokolování dat
-        href: platform/data-security.md
-      - name: Zpracování osobních protokolovaných dat
-        href: platform/personal-data-mgmt.md
-      - name: Shromažďování, uchovávání a ukládání dat aplikací
-        href: app/data-retention-privacy.md
-  - name: Insights
-    items:
-    - name: Application Insights
+        - name: Metriky a protokoly
+          href: platform/data-collection.md
+        - name: Zdroje dat
+          href: platform/data-sources.md
+        - name: Zdroje dat Azure
+          href: platform/data-sources-reference.md
+        - name: Protokol aktivit
+          href: platform/activity-logs-overview.md
+        - name: Diagnostické protokoly
+          href: platform/diagnostic-logs-overview.md
+        - name: Protokolování času pro příjem dat
+          href: platform/data-ingestion-time.md
+        - name: Vlastní metriky do úložiště metrik
+          href: platform/metrics-custom-overview.md
+        - name: Zabezpečení dat
+          items:
+            - name: Protokolování dat
+              href: platform/data-security.md
+            - name: Zpracování osobních protokolovaných dat
+              href: platform/personal-data-mgmt.md
+            - name: 'Shromažďování, uchovávání a ukládání dat aplikací'
+              href: app/data-retention-privacy.md
+    - name: Insights
       items:
-      - name: Přehled
-        href: app/app-insights-overview.md
-      - name: DevOps
-        href: app/detect-triage-diagnose.md
-      - name: Distribuované trasování
-        href: app/distributed-tracing.md
-      - name: Metriky založené na protokolech a agregované předem
-        href: app/pre-aggregated-metrics-log-metrics.md
-    - name: Containers
-      href: insights/container-insights-overview.md
-    - name: Virtuální počítače
-      href: insights/vminsights-overview.md
-    - name: Řešení monitorování
-      href: insights/solutions-inventory.md
-  - name: Analýza dat
-    items:
-    - name: Log Analytics
-      href: log-query/log-query-overview.md
-    - name: Portály dotazů na protokoly
-      href: log-query/portals.md
-    - name: Přechod na portál OMS
+        - name: Application Insights
+          items:
+            - name: Přehled
+              href: app/app-insights-overview.md
+            - name: DevOps
+              href: app/detect-triage-diagnose.md
+            - name: Distribuované trasování
+              href: app/distributed-tracing.md
+            - name: Metriky založené na protokolech a agregované předem
+              href: app/pre-aggregated-metrics-log-metrics.md
+        - name: Containers
+          href: insights/container-insights-overview.md
+        - name: Virtuální počítače
+          href: insights/vminsights-overview.md
+        - name: Řešení monitorování
+          href: insights/solutions-inventory.md
+    - name: Analýza dat
       items:
-      - name: Přehled
-        href: platform/oms-portal-transition.md
-      - name: Časté dotazy
-        href: platform/oms-portal-faq.md
-  - name: Reakce na incidenty
-    items:
-    - name: Výstrahy
-      href: platform/alerts-overview.md
-    - name: Klasická upozornění
-      href: platform/alerts-classic.overview.md
-    - name: Inteligentní skupiny
-      href: platform/alerts-smartgroups-overview.md
-    - name: Automatické škálování
-      href: platform/autoscale-overview.md
-    - name: Upozornění metrik
-      href: platform/alerts-metric-overview.md
-    - name: Výstrahy protokolu
-      href: platform/alerts-unified-log.md
-    - name: Upozornění protokolu aktivit
-      href: platform/activity-log-alerts.md
-  - name: Vizualizace dat
-    href: visualizations.md?toc=/azure/azure-monitor/toc.json
-  - name: Integrace partnerů
-    href: platform/partners.md
-  - name: Nejčastější dotazy
-    items:
-    - name: Log Analytics
-      href: platform/log-faq.md
-    - name: Application Insights
-      href: app/troubleshoot-faq.md
+        - name: Log Analytics
+          href: log-query/log-query-overview.md
+        - name: Portály dotazů na protokoly
+          href: log-query/portals.md
+        - name: Přechod na portál OMS
+          items:
+            - name: Přehled
+              href: platform/oms-portal-transition.md
+            - name: Časté dotazy
+              href: platform/oms-portal-faq.md
+    - name: Reakce na incidenty
+      items:
+        - name: Výstrahy
+          href: platform/alerts-overview.md
+        - name: Klasická upozornění
+          href: platform/alerts-classic.overview.md
+        - name: Inteligentní skupiny
+          href: platform/alerts-smartgroups-overview.md
+        - name: Automatické škálování
+          href: platform/autoscale-overview.md
+        - name: Upozornění metrik
+          href: platform/alerts-metric-overview.md
+        - name: Výstrahy protokolu
+          href: platform/alerts-unified-log.md
+        - name: Upozornění protokolu aktivit
+          href: platform/activity-log-alerts.md
+    - name: Vizualizace dat
+      href: visualizations.md?toc=/azure/azure-monitor/toc.json
+    - name: Integrace partnerů
+      href: platform/partners.md
+    - name: Nejčastější dotazy
+      items:
+        - name: Log Analytics
+          href: platform/log-faq.md
+        - name: Application Insights
+          href: app/troubleshoot-faq.md
 - name: Návody
   items:
-  - name: Plánování a příprava
-    items:
-    - name: Správa přístupu
+    - name: Plánování a příprava
       items:
-      - name: Zabezpečení a oprávnění rolí
-        href: platform/roles-permissions-security.md
-      - name: Pracovní prostory
-        href: platform/manage-access.md
-      - name: Aplikace
-        href: app/resources-roles-access-control.md
-      - name: IP adresy
-        href: app/ip-addresses.md
-    - name: Monitorování aplikací
-      items:
-      - name: Hloubková diagnostika webových aplikací a služeb
-        href: app/devops.md
-      - name: Sledování výkonu webových aplikací
-        href: app/web-monitor-performance.md
-      - name: Samostatný vývoj, testování a provoz
-        href: app/separate-resources.md
-      - name: Jak mám udělat ... pomocí Application Insights?
-        href: app/how-do-i.md
-    - name: Správa pracovních prostorů
-      items:
-      - name: Vytvoření pracovního prostoru
-        items:
-        - name: Použití webu Azure Portal
-          href: learn/quick-create-workspace.md
-        - name: Použití Azure CLI
-          href: learn/quick-create-workspace-cli.md
-        - name: Použití Azure Powershell
-          href: learn/quick-create-workspace-posh.md
-      - name: Odstranění pracovního prostoru
-        href: platform/delete-workspace.md
-      - name: Návrh pro poskytovatele služeb
-        href: platform/service-providers.md
-  - name: Shromažďování dat
-    items:
-    - name: Instalace a konfigurace agentů
-      items:
-      - name: Přehled agentů monitorování
-        href: platform/agents-overview.md
-      - name: Agenti Log Analytics
-        items:
-        - name: Přehled
-          href: platform/log-analytics-agent.md
-        - name: Agenti systému Windows
-          href: platform/agent-windows.md
-        - name: Rozšíření virtuálního počítače pro Windows
-          href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
-        - name: Rozšíření virtuálního počítače pro Linux
-          href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
-        - name: Operations Manager
-          href: platform/om-agents.md
-        - name: Brána OMS
-          href: platform/gateway.md
-        - name: Správa agentů
-          href: platform/agent-manage.md
-      - name: Rozšíření Azure Diagnostics
-        items:
-        - name: Přehled
-          href: platform/diagnostics-extension-overview.md
-        - name: Odeslání do Azure Storage
-          href: platform/diagnostics-extension-to-storage.md
-        - name: Odeslání do Application Insights
-          href: platform/diagnostics-extension-to-application-insights.md
-        - name: Odeslání do Event Hubs
-          href: platform/diagnostics-extension-stream-event-hubs.md
-        - name: Řešení potíží
-          href: platform/diagnostics-extension-troubleshooting.md
-        - name: Povolení diagnostických nastavení s využitím šablon Resource Manageru
-          href: platform/diagnostic-logs-stream-template.md
-        - name: Příprava pro formát řádkových diagnostických protokolů JSON
-          href: platform/diagnostic-logs-append-blobs.md
-        - name: Host virtuálního počítače do úložiště metrik
-          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-        - name: Host škálovací sady virtuálních počítačů do úložiště metrik
-          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-        - name: Host klasického virtuálního počítače do úložiště metrik
-          href: platform/collect-custom-metrics-guestos-vm-classic.md
-        - name: Host cloudové služby do úložiště metrik
-          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-      - name: Řešení potíží
-        items:
-        - name: Rozšíření Log Analytics pro virtuální počítače
-          href: platform/vmext-troubleshoot.md
-        - name: Linuxový agent Log Analytics
-          href: platform/agent-linux-troubleshoot.md
-    - name: Zdroje dat agenta
-      items:
-      - name: Přehled
-        href: platform/agent-data-sources.md
-      - name: Události systému Windows
-        href: platform/data-sources-windows-events.md
-      - name: Vlastní data JSON
-        href: platform/data-sources-json.md
-      - name: Shromážděná data o výkonu
-        href: platform/data-sources-collectd.md
-      - name: Upozornění Nagiosu a Zabbixu
-        href: platform/data-sources-alerts-nagios-zabbix.md
-      - name: Syslog
-        href: platform/data-sources-syslog.md
-      - name: Čítače výkonu
-        href: platform/data-sources-performance-counters.md
-      - name: Výkon linuxových aplikací
-        href: platform/data-sources-linux-applications.md
-      - name: Protokoly IIS
-        href: platform/data-sources-iis-logs.md
-      - name: Vlastní protokoly
-        href: platform/data-sources-custom-logs.md
-      - name: Vlastní pole
-        href: platform/custom-fields.md
-    - name: Konfigurace aplikací
-      items:
-      - name: Aplikace Azure
-        items:
-        - name: Azure App Service
-          href: ../application-insights/app-insights-azure-web-apps.md?toc=/azure/azure-monitor/toc.json
-        - name: Azure Cloud Services
-          href: app/cloudservices.md
-        - name: Přidání průběžného monitorování
-          href: app/continuous-monitoring.md
-        - name: Profiler
+        - name: Správa přístupu
           items:
-          - name: Přehled
-            href: app/profiler-overview.md
-          - name: Povolení profileru pro App Service
-            href: app/profiler.md
-          - name: Povolení profileru pro cloudovou službu
-            href: app/profiler-cloudservice.md
-          - name: Povolení profileru pro aplikaci Service Fabric
-            href: app/profiler-servicefabric.md
-          - name: Povolení profileru pro virtuální počítač Azure
-            href: app/profiler-vm.md
-          - name: Nastavení profileru
-            href: app/profiler-settings.md
-          - name: Sledování požadavků pro profilaci
-            href: app/profiler-trackrequests.md
-          - name: Řešení potíží s profilerem
-            href: app/profiler-troubleshooting.md
-        - name: Diagnostika
-          href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
-        - name: Náhledy
-          href: app/previews.md
-      - name: Aplikace v ASP.NET
-        items:
-        - name: Webové aplikace
-          href: app/asp-net.md
-        - name: Monitorování stavu
-          href: app/monitor-performance-live-website-now.md
-        - name: Služby pro Windows
-          href: app/windows-services.md
-        - name: Plocha Windows
-          href: app/windows-desktop.md
-        - name: Jádro ASP.NET
-          href: app/asp-net-core.md
+            - name: Zabezpečení a oprávnění rolí
+              href: platform/roles-permissions-security.md
+            - name: Pracovní prostory
+              href: platform/manage-access.md
+            - name: Aplikace
+              href: app/resources-roles-access-control.md
+            - name: IP adresy
+              href: app/ip-addresses.md
+        - name: Monitorování aplikací
           items:
-          - name: Profiler pro linuxové aplikační služby
-            href: app/profiler-aspnetcore-linux.md
-        - name: Konzola
-          href: app/console.md
-        - name: Řídicí panel aplikací
-          href: app/overview-dashboard.md
-        - name: Získání další telemetrie
-          href: app/asp-net-more.md
-        - name: Výjimky
-          href: app/asp-net-exceptions.md
-        - name: Trasování protokolů
-          href: app/asp-net-trace-logs.md
-        - name: Čítače výkonu
-          href: app/performance-counters.md
-        - name: Závislosti
-          href: app/asp-net-dependencies.md
-        - name: Poznámky k verzi
-          href: app/annotations.md
-        - name: ApplicationInsights.config
-          href: app/configuration-with-applicationinsights-config.md
-        - name: Ladicí program snímků
-          href: app/snapshot-debugger.md
-      - name: Aplikace v Javě
-        items:
-        - name: Webové aplikace
-          href: app/java-get-started.md
-        - name: Webové aplikace – běhové prostředí
-          href: app/java-live.md
-        - name: Aplikace v Dockeru
-          href: app/docker.md
-        - name: Trasování protokolů
-          href: app/java-trace-logs.md
-        - name: Unixové metriky
-          href: app/java-collectd.md
-        - name: Závislosti
-          href: app/java-agent.md
-        - name: Filtrování telemetrie
-          href: app/java-filter-telemetry.md
-        - name: Metriky v mikrometrech
-          href: app/micrometer-java.md
-      - name: Aplikace v Node.js
-        items:
-        - name: Node.js
-          href: app/nodejs.md
-      - name: Webové stránky
-        items:
-        - name: JavaScript
-          href: app/javascript.md
-      - name: Monitorování Azure Functions
-        href: ../azure-functions/functions-monitoring.md?toc=/azure/application-insights/toc.json
-      - name: Distribuované trasování
-        items:
-        - name: Místní předávání
-          href: app/opencensus-local-forwarder.md
-        - name: Python
-          href: app/opencensus-python.md
-        - name: Přejít
-          href: app/opencensus-go.md
-      - name: Jiné platformy
-        items:
-        - name: Weby SharePoint
-          href: app/sharepoint.md
-        - name: Dynamics CRM
-          href: app/sample-mscrm.md
-      - name: Inteligentní zjišťování
-        href: app/proactive-diagnostics.md
-        items:
-        - name: Anomálie selhání
-          href: app/proactive-failure-diagnostics.md
-        - name: Anomálie výkonu
-          href: app/proactive-performance-diagnostics.md
-        - name: Snížení výkonnosti trasování
-          href: app/proactive-trace-severity.md
-        - name: Objem výjimek
-          href: app/proactive-exception-volume.md
-        - name: Nevrácená paměť
-          href: app/proactive-potential-memory-leak.md
-        - name: Využití prostředků
-          href: app/proactive-low-utilization-cloud-resources.md
-        - name: Zjišťování zabezpečení
-          href: app/proactive-application-security-detection-pack.md
-        - name: Azure Cloud Services
-          href: app/proactive-cloud-services.md
-        - name: Správa pravidel inteligentního zjišťování
-          href: app/proactive-arm-config.md
-      - name: Vytvoření prostředku
-        href: app/create-new-resource.md
-      - name: Řešení potíží
-        items:
-        - name: Žádná data pro .NET
-          href: app/asp-net-troubleshoot-no-data.md
-        - name: Ladicí program snímků
-          href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
-        - name: Analýzy
-          href: app/analytics-troubleshooting.md
-        - name: Java
-          href: app/java-troubleshoot.md
-        - name: Analýza využití
-          href: app/usage-troubleshoot.md
-    - name: Prostředky Azure
-      items:
-      - name: Protokoly aktivit Azure
-        items:
-        - name: Analýzy
-          href: platform/collect-activity-logs.md
-        - name: Shromažďování napříč předplatnými
-          href: platform/collect-activity-logs-subscriptions.md
-      - name: Metriky a protokoly služeb
-        href: platform/collect-azure-metrics-logs.md
-      - name: Diagnostika nebo protokolování dat z úložiště Azure
-        href: platform/azure-storage-iis-table.md
-      - name: Prostředky Azure PaaS
-        href: platform/collect-azurepass-posh.md
-      - name: Korelace vlastních zdrojů dat
-        href: app/custom-data-correlation.md
-    - name: Shromažďování vlastních dat
-      items:
-      - name: Rozhraní API kolekce dat služby Log Analytics
-        href: platform/data-collector-api.md
-      - name: Příklad kanálu rozhraní API kolekce dat služby Log Analytics
-        href: platform/create-pipeline-datacollector-api.md
-      - name: Rozhraní REST API úložiště metrik
-        href: platform/metrics-store-custom-rest-api.md
-      - name: Hostovaný operační systém do linuxového virtuálního počítače úložiště metrik (Telegraf)
-        href: platform/collect-custom-metrics-linux-telegraf.md
-    - name: System Center
-      items:
-      - name: Configuration Manager
-        href: platform/collect-sccm.md
-      - name: Sledování výkonu aplikací s využitím SCOM
-        href: app/scom.md
-    - name: Směrování dat
-      items:
-      - name: Archivace protokolu aktivit
-        href: platform/archive-activity-log.md
-      - name: Archivace diagnostických protokolů
-        href: platform/archive-diagnostic-logs.md
-      - name: Ukládání diagnostických protokolů
-        href: platform/diagnostic-logs-stream-log-store.md
-      - name: Streamování protokolu aktivit do služby Event Hubs
-        href: platform/activity-logs-stream-event-hubs.md
-      - name: Protokoly a metriky do služby centra událostí
-        href: platform/stream-monitoring-data-event-hubs.md
-      - name: Diagnostické protokoly do centra událostí
-        href: platform/diagnostic-logs-stream-event-hubs.md
-      - name: Data aplikací do služby Log Analytics
-        href: platform/app-insights-connector.md
-      - name: Export dat aplikací
-        items:
-        - name: Průběžný export
-          href: app/export-telemetry.md
+            - name: Hloubková diagnostika webových aplikací a služeb
+              href: app/devops.md
+            - name: Sledování výkonu webových aplikací
+              href: app/web-monitor-performance.md
+            - name: 'Samostatný vývoj, testování a provoz'
+              href: app/separate-resources.md
+            - name: Jak mám udělat ... pomocí Application Insights?
+              href: app/how-do-i.md
+        - name: Správa pracovních prostorů
           items:
-          - name: Ukázky kódů
-            items:
-            - name: Export do SQL s použitím Stream Analytics
-              href: app/code-sample-export-sql-stream-analytics.md
-            - name: Export do Stream Analytics
-              href: app/export-stream-analytics.md
-        - name: Export datového modelu
-          href: app/export-data-model.md
-  - name: Získání přehledů
-    items:
-    - name: Monitorování aplikací
+            - name: Vytvoření pracovního prostoru
+              items:
+                - name: Použití webu Azure Portal
+                  href: learn/quick-create-workspace.md
+                - name: Použití Azure CLI
+                  href: learn/quick-create-workspace-cli.md
+                - name: Použití Azure Powershell
+                  href: learn/quick-create-workspace-posh.md
+            - name: Odstranění pracovního prostoru
+              href: platform/delete-workspace.md
+            - name: Návrh pro poskytovatele služeb
+              href: platform/service-providers.md
+    - name: Shromažďování dat
       items:
-      - name: Portál Application Insights
-        items:
-        - name: Search
-          href: app/diagnostic-search.md
-        - name: Metriky
-          href: app/metrics-explorer.md
-        - name: Živý datový proud
-          href: app/live-stream.md
-        - name: Mapa aplikace
-          href: app/app-map.md
-        - name: Diagnostika transakcí
-          href: app/transaction-diagnostics.md
-        - name: Data HockeyApp
-          href: app/hockeyapp-bridge-app.md
-      - name: Visual Studio
-        items:
-        - name: Náhledy pomocí klávesy F5
-          href: app/visual-studio.md
-        - name: Trendy
-          href: app/visual-studio-trends.md
-        - name: CodeLens
-          href: app/visual-studio-codelens.md
-      - name: Využití
-        items:
-        - name: Přehled
-          href: app/usage-overview.md
-        - name: Odeslání kontextu uživatele
-          href: app/usage-send-user-context.md
-        - name: Uživatelé, relace, události
-          href: app/usage-segmentation.md
-        - name: Trychtýře
-          href: app/usage-funnels.md
-        - name: Kohorty
-          href: app/usage-cohorts.md
-        - name: Dopad
-          href: app/usage-impact.md
-        - name: Uchovávání
-          href: app/usage-retention.md
-        - name: Toky uživatele
-          href: app/usage-flows.md
-        - name: Workbooks
-          href: app/usage-workbooks.md
-      - name: Řešení analýzy webových aplikací
-        href: insights/azure-web-apps-analytics.md
-    - name: Monitorování kontejnerů
+        - name: Instalace a konfigurace agentů
+          items:
+            - name: Přehled agentů monitorování
+              href: platform/agents-overview.md
+            - name: Agenti Log Analytics
+              items:
+                - name: Přehled
+                  href: platform/log-analytics-agent.md
+                - name: Agenti systému Windows
+                  href: platform/agent-windows.md
+                - name: Rozšíření virtuálního počítače pro Windows
+                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                - name: Rozšíření virtuálního počítače pro Linux
+                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                - name: Operations Manager
+                  href: platform/om-agents.md
+                - name: Brána OMS
+                  href: platform/gateway.md
+                - name: Správa agentů
+                  href: platform/agent-manage.md
+            - name: Rozšíření Azure Diagnostics
+              items:
+                - name: Přehled
+                  href: platform/diagnostics-extension-overview.md
+                - name: Odeslání do Azure Storage
+                  href: platform/diagnostics-extension-to-storage.md
+                - name: Odeslání do Application Insights
+                  href: platform/diagnostics-extension-to-application-insights.md
+                - name: Odeslání do Event Hubs
+                  href: platform/diagnostics-extension-stream-event-hubs.md
+                - name: Řešení potíží
+                  href: platform/diagnostics-extension-troubleshooting.md
+                - name: Povolení diagnostických nastavení s využitím šablon Resource Manageru
+                  href: platform/diagnostic-logs-stream-template.md
+                - name: Příprava pro formát řádkových diagnostických protokolů JSON
+                  href: platform/diagnostic-logs-append-blobs.md
+                - name: Host virtuálního počítače do úložiště metrik
+                  href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                - name: Host škálovací sady virtuálních počítačů do úložiště metrik
+                  href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                - name: Host klasického virtuálního počítače do úložiště metrik
+                  href: platform/collect-custom-metrics-guestos-vm-classic.md
+                - name: Host cloudové služby do úložiště metrik
+                  href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+            - name: Řešení potíží
+              items:
+                - name: Rozšíření Log Analytics pro virtuální počítače
+                  href: platform/vmext-troubleshoot.md
+                - name: Linuxový agent Log Analytics
+                  href: platform/agent-linux-troubleshoot.md
+        - name: Zdroje dat agenta
+          items:
+            - name: Přehled
+              href: platform/agent-data-sources.md
+            - name: Události systému Windows
+              href: platform/data-sources-windows-events.md
+            - name: Vlastní data JSON
+              href: platform/data-sources-json.md
+            - name: Shromážděná data o výkonu
+              href: platform/data-sources-collectd.md
+            - name: Upozornění Nagiosu a Zabbixu
+              href: platform/data-sources-alerts-nagios-zabbix.md
+            - name: Syslog
+              href: platform/data-sources-syslog.md
+            - name: Čítače výkonu
+              href: platform/data-sources-performance-counters.md
+            - name: Výkon linuxových aplikací
+              href: platform/data-sources-linux-applications.md
+            - name: Protokoly IIS
+              href: platform/data-sources-iis-logs.md
+            - name: Vlastní protokoly
+              href: platform/data-sources-custom-logs.md
+            - name: Vlastní pole
+              href: platform/custom-fields.md
+        - name: Konfigurace aplikací
+          items:
+            - name: Aplikace Azure
+              items:
+                - name: Azure App Service
+                  href: app/azure-web-apps.md
+                - name: Azure Cloud Services
+                  href: app/cloudservices.md
+                - name: Přidání průběžného monitorování
+                  href: app/continuous-monitoring.md
+                - name: Profiler
+                  items:
+                    - name: Přehled
+                      href: app/profiler-overview.md
+                    - name: Povolení profileru pro App Service
+                      href: app/profiler.md
+                    - name: Povolení profileru pro cloudovou službu
+                      href: app/profiler-cloudservice.md
+                    - name: Povolení profileru pro aplikaci Service Fabric
+                      href: app/profiler-servicefabric.md
+                    - name: Povolení profileru pro virtuální počítač Azure
+                      href: app/profiler-vm.md
+                    - name: Nastavení profileru
+                      href: app/profiler-settings.md
+                    - name: Sledování požadavků pro profilaci
+                      href: app/profiler-trackrequests.md
+                    - name: Řešení potíží s profilerem
+                      href: app/profiler-troubleshooting.md
+                - name: Diagnostika
+                  href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+                - name: Náhledy
+                  href: app/previews.md
+            - name: Aplikace v ASP.NET
+              items:
+                - name: Webové aplikace
+                  href: app/asp-net.md
+                - name: Monitorování stavu
+                  href: app/monitor-performance-live-website-now.md
+                - name: Služby pro Windows
+                  href: app/windows-services.md
+                - name: Plocha Windows
+                  href: app/windows-desktop.md
+                - name: Jádro ASP.NET
+                  href: app/asp-net-core.md
+                  items:
+                    - name: Profiler pro linuxové aplikační služby
+                      href: app/profiler-aspnetcore-linux.md
+                - name: Konzola
+                  href: app/console.md
+                - name: Řídicí panel aplikací
+                  href: app/overview-dashboard.md
+                - name: Získání další telemetrie
+                  href: app/asp-net-more.md
+                - name: Výjimky
+                  href: app/asp-net-exceptions.md
+                - name: Trasování protokolů
+                  href: app/asp-net-trace-logs.md
+                - name: Čítače výkonu
+                  href: app/performance-counters.md
+                - name: Závislosti
+                  href: app/asp-net-dependencies.md
+                - name: Poznámky k verzi
+                  href: app/annotations.md
+                - name: ApplicationInsights.config
+                  href: app/configuration-with-applicationinsights-config.md
+                - name: Ladicí program snímků
+                  href: app/snapshot-debugger.md
+            - name: Aplikace v Javě
+              items:
+                - name: Webové aplikace
+                  href: app/java-get-started.md
+                - name: Webové aplikace – běhové prostředí
+                  href: app/java-live.md
+                - name: Aplikace v Dockeru
+                  href: app/docker.md
+                - name: Trasování protokolů
+                  href: app/java-trace-logs.md
+                - name: Unixové metriky
+                  href: app/java-collectd.md
+                - name: Závislosti
+                  href: app/java-agent.md
+                - name: Filtrování telemetrie
+                  href: app/java-filter-telemetry.md
+                - name: Metriky v mikrometrech
+                  href: app/micrometer-java.md
+            - name: Aplikace v Node.js
+              items:
+                - name: Node.js
+                  href: app/nodejs.md
+            - name: Webové stránky
+              items:
+                - name: JavaScript
+                  href: app/javascript.md
+            - name: Monitorování Azure Functions
+              href: ../azure-functions/functions-monitoring.md?toc=/azure/application-insights/toc.json
+            - name: Distribuované trasování
+              items:
+                - name: Místní předávání
+                  href: app/opencensus-local-forwarder.md
+                - name: Python
+                  href: app/opencensus-python.md
+                - name: Přejít
+                  href: app/opencensus-go.md
+            - name: Jiné platformy
+              items:
+                - name: Weby SharePoint
+                  href: app/sharepoint.md
+                - name: Dynamics CRM
+                  href: app/sample-mscrm.md
+            - name: Inteligentní zjišťování
+              href: app/proactive-diagnostics.md
+              items:
+                - name: Anomálie selhání
+                  href: app/proactive-failure-diagnostics.md
+                - name: Anomálie výkonu
+                  href: app/proactive-performance-diagnostics.md
+                - name: Snížení výkonnosti trasování
+                  href: app/proactive-trace-severity.md
+                - name: Objem výjimek
+                  href: app/proactive-exception-volume.md
+                - name: Nevrácená paměť
+                  href: app/proactive-potential-memory-leak.md
+                - name: Využití prostředků
+                  href: app/proactive-low-utilization-cloud-resources.md
+                - name: Zjišťování zabezpečení
+                  href: app/proactive-application-security-detection-pack.md
+                - name: Azure Cloud Services
+                  href: app/proactive-cloud-services.md
+                - name: Správa pravidel inteligentního zjišťování
+                  href: app/proactive-arm-config.md
+            - name: Vytvoření prostředku
+              href: app/create-new-resource.md
+            - name: Řešení potíží
+              items:
+                - name: Žádná data pro .NET
+                  href: app/asp-net-troubleshoot-no-data.md
+                - name: Ladicí program snímků
+                  href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
+                - name: Analýzy
+                  href: app/analytics-troubleshooting.md
+                - name: Java
+                  href: app/java-troubleshoot.md
+                - name: Analýza využití
+                  href: app/usage-troubleshoot.md
+        - name: Prostředky Azure
+          items:
+            - name: Protokoly aktivit Azure
+              items:
+                - name: Analýzy
+                  href: platform/collect-activity-logs.md
+                - name: Shromažďování napříč předplatnými
+                  href: platform/collect-activity-logs-subscriptions.md
+            - name: Metriky a protokoly služeb
+              href: platform/collect-azure-metrics-logs.md
+            - name: Diagnostika nebo protokolování dat z úložiště Azure
+              href: platform/azure-storage-iis-table.md
+            - name: Prostředky Azure PaaS
+              href: platform/collect-azurepass-posh.md
+            - name: Korelace vlastních zdrojů dat
+              href: app/custom-data-correlation.md
+        - name: Shromažďování vlastních dat
+          items:
+            - name: Rozhraní API kolekce dat služby Log Analytics
+              href: platform/data-collector-api.md
+            - name: Příklad kanálu rozhraní API kolekce dat služby Log Analytics
+              href: platform/create-pipeline-datacollector-api.md
+            - name: Rozhraní REST API úložiště metrik
+              href: platform/metrics-store-custom-rest-api.md
+            - name: Hostovaný operační systém do linuxového virtuálního počítače úložiště metrik (Telegraf)
+              href: platform/collect-custom-metrics-linux-telegraf.md
+        - name: System Center
+          items:
+            - name: Configuration Manager
+              href: platform/collect-sccm.md
+            - name: Sledování výkonu aplikací s využitím SCOM
+              href: app/scom.md
+        - name: Směrování dat
+          items:
+            - name: Archivace protokolu aktivit
+              href: platform/archive-activity-log.md
+            - name: Archivace diagnostických protokolů
+              href: platform/archive-diagnostic-logs.md
+            - name: Ukládání diagnostických protokolů
+              href: platform/diagnostic-logs-stream-log-store.md
+            - name: Streamování protokolu aktivit do služby Event Hubs
+              href: platform/activity-logs-stream-event-hubs.md
+            - name: Protokoly a metriky do služby centra událostí
+              href: platform/stream-monitoring-data-event-hubs.md
+            - name: Diagnostické protokoly do centra událostí
+              href: platform/diagnostic-logs-stream-event-hubs.md
+            - name: Data aplikací do služby Log Analytics
+              href: platform/app-insights-connector.md
+            - name: Export dat aplikací
+              items:
+                - name: Průběžný export
+                  href: app/export-telemetry.md
+                  items:
+                    - name: Ukázky kódů
+                      items:
+                        - name: Export do SQL s použitím Stream Analytics
+                          href: app/code-sample-export-sql-stream-analytics.md
+                        - name: Export do Stream Analytics
+                          href: app/export-stream-analytics.md
+                - name: Export datového modelu
+                  href: app/export-data-model.md
+    - name: Získání přehledů
       items:
-      - name: Azure Monitor pro kontejnery
-        items:
-        - name: Přehled
-          href: insights/container-insights-overview.md
-        - name: Onboarding
-          href: insights/container-insights-onboard.md
-        - name: Analýza
-          href: insights/container-insights-analyze.md
-        - name: Zákaz monitorování
-          href: insights/container-insights-optout.md
-        - name: Zobrazení živých protokolů kontejneru
-          href: insights/container-insights-live-logs.md
-        - name: Správa agentů
-          href: insights/container-insights-manage-agent.md
-        - name: Řešení potíží
-          href: insights/container-insights-troubleshoot.md
-      - name: Monitorování Dockeru a kontejnerů s Windows
-        href: insights/containers.md
-      - name: Monitorování aplikací Dockeru
-        href: app/docker.md
-    - name: Monitorování skupin prostředků
-      href: insights/resource-group-insights.md
-    - name: Monitorování databází
+        - name: Monitorování aplikací
+          items:
+            - name: Portál Application Insights
+              items:
+                - name: Search
+                  href: app/diagnostic-search.md
+                - name: Metriky
+                  href: app/metrics-explorer.md
+                - name: Živý datový proud
+                  href: app/live-stream.md
+                - name: Mapa aplikace
+                  href: app/app-map.md
+                - name: Diagnostika transakcí
+                  href: app/transaction-diagnostics.md
+                - name: Data HockeyApp
+                  href: app/hockeyapp-bridge-app.md
+            - name: Visual Studio
+              items:
+                - name: Náhledy pomocí klávesy F5
+                  href: app/visual-studio.md
+                - name: Trendy
+                  href: app/visual-studio-trends.md
+                - name: CodeLens
+                  href: app/visual-studio-codelens.md
+            - name: Využití
+              items:
+                - name: Přehled
+                  href: app/usage-overview.md
+                - name: Odeslání kontextu uživatele
+                  href: app/usage-send-user-context.md
+                - name: 'Uživatelé, relace, události'
+                  href: app/usage-segmentation.md
+                - name: Trychtýře
+                  href: app/usage-funnels.md
+                - name: Kohorty
+                  href: app/usage-cohorts.md
+                - name: Dopad
+                  href: app/usage-impact.md
+                - name: Uchovávání
+                  href: app/usage-retention.md
+                - name: Toky uživatele
+                  href: app/usage-flows.md
+                - name: Workbooks
+                  href: app/usage-workbooks.md
+            - name: Řešení analýzy webových aplikací
+              href: insights/azure-web-apps-analytics.md
+        - name: Monitorování kontejnerů
+          items:
+            - name: Azure Monitor pro kontejnery
+              items:
+                - name: Přehled
+                  href: insights/container-insights-overview.md
+                - name: Onboarding
+                  href: insights/container-insights-onboard.md
+                - name: Analýza
+                  href: insights/container-insights-analyze.md
+                - name: Zákaz monitorování
+                  href: insights/container-insights-optout.md
+                - name: Zobrazení živých protokolů kontejneru
+                  href: insights/container-insights-live-logs.md
+                - name: Správa agentů
+                  href: insights/container-insights-manage-agent.md
+                - name: Řešení potíží
+                  href: insights/container-insights-troubleshoot.md
+            - name: Monitorování Dockeru a kontejnerů s Windows
+              href: insights/containers.md
+            - name: Monitorování aplikací Dockeru
+              href: app/docker.md
+        - name: Monitorování skupin prostředků
+          href: insights/resource-group-insights.md
+        - name: Monitorování databází
+          items:
+            - name: Azure SQL
+              href: insights/azure-sql.md
+            - name: SQL Server
+              href: insights/sql-assessment.md
+        - name: Monitorování sítí
+          items:
+            - name: Analýza sítě
+              href: insights/azure-networking-analytics.md
+            - name: Sledování výkonu sítě
+              items:
+                - name: Přehled řešení
+                  href: insights/network-performance-monitor.md
+                - name: Monitorování výkonu
+                  href: insights/network-performance-monitor-performance-monitor.md
+                - name: Koncový bod služby
+                  href: insights/network-performance-monitor-service-endpoint.md
+                - name: ExpressRoute
+                  href: insights/network-performance-monitor-expressroute.md
+                - name: Ceny
+                  href: insights/network-performance-monitor-pricing-faq.md
+                - name: Nejčastější dotazy
+                  href: insights/network-performance-monitor-faq.md
+        - name: Monitorování virtuálních počítačů
+          items:
+            - name: Azure Monitor pro virtuální počítače
+              items:
+                - name: Přehled
+                  href: insights/vminsights-overview.md
+                - name: Známé problémy
+                  href: insights/vminsights-known-issues.md
+                - name: Nejčastější dotazy
+                  href: insights/vminsights-faq.md
+                - name: Onboarding
+                  href: insights/vminsights-onboard.md
+                - name: Monitorování stavu
+                  href: insights/vminsights-health.md
+                - name: Závislosti map
+                  href: insights/vminsights-maps.md
+                - name: Monitorování výkonu
+                  href: insights/vminsights-performance.md
+                - name: Dotazy na data s využitím Log Analytics
+                  href: insights/vminsights-log-search.md
+                - name: Zákaz monitorování
+                  href: insights/vminsights-optout.md
+            - name: Stav agenta
+              href: insights/solution-agenthealth.md
+            - name: Kapacita a výkon
+              href: insights/capacity-performance.md
+            - name: VMware Analytics
+              href: insights/vmware.md
+            - name: Linková data
+              href: insights/wire-data.md
+            - name: Mapa služeb
+              items:
+                - name: Použití
+                  href: insights/service-map.md
+                - name: Konfigurace
+                  href: insights/service-map-configure.md
+                - name: Integrace s Operations Managerem
+                  href: insights/service-map-scom.md
+        - name: Monitorování prostředků Azure
+          items:
+            - name: Key Vault Analytics
+              href: insights/azure-key-vault.md
+            - name: Service Fabric Analytics
+              href: ../service-fabric/service-fabric-diagnostics-oms-agent.md?toc=/azure/azure-monitor/toc.json
+        - name: Monitorování dalších prostředků
+          items:
+            - name: Posouzení stavu AD
+              href: insights/ad-assessment.md
+            - name: Stav replikace AD
+              href: insights/ad-replication-status.md
+            - name: DNS
+              href: insights/dns-analytics.md
+            - name: Office 365
+              href: insights/solution-office-365.md
+            - name: Posouzení Operations Manageru
+              href: insights/scom-assessment.md
+            - name: Surface Hub
+              href: insights/surface-hubs.md
+        - name: Použití řešení monitorování
+          items:
+            - name: Přehled
+              href: insights/solutions.md
+            - name: Cílová řešení
+              href: insights/solution-targeting.md
+    - name: Vizualizace dat
       items:
-      - name: Azure SQL
-        href: insights/azure-sql.md
-      - name: SQL Server
-        href: insights/sql-assessment.md
-    - name: Monitorování sítí
+        - name: Zobrazení
+          href: platform/view-designer.md
+          items:
+            - name: Referenční informace k dlaždicím
+              href: platform/view-designer-tiles.md
+            - name: Referenční informace k části vizualizace
+              href: platform/view-designer-parts.md
+            - name: Filtry
+              href: platform/view-designer-filters.md
+        - name: Řídicí panely
+          items:
+            - name: Logs
+              href: platform/dashboards.md
+            - name: Aplikace
+              href: app/app-insights-dashboards.md
+        - name: Power BI
+          items:
+            - name: Export dat protokolů
+              href: platform/powerbi.md
+            - name: Export dat aplikací
+              href: app/export-power-bi.md
+        - name: Odeslání dat do Grafany
+          href: platform/grafana-plugin.md
+    - name: Analýza dat
       items:
-      - name: Analýza sítě
-        href: insights/azure-networking-analytics.md
-      - name: Sledování výkonu sítě
-        items:
-        - name: Přehled řešení
-          href: insights/network-performance-monitor.md
-        - name: Monitorování výkonu
-          href: insights/network-performance-monitor-performance-monitor.md
-        - name: Koncový bod služby
-          href: insights/network-performance-monitor-service-endpoint.md
-        - name: ExpressRoute
-          href: insights/network-performance-monitor-expressroute.md
-        - name: Ceny
-          href: insights/network-performance-monitor-pricing-faq.md
-        - name: Nejčastější dotazy
-          href: insights/network-performance-monitor-faq.md
-    - name: Monitorování virtuálních počítačů
+        - name: Vytvoření grafů metrik v Průzkumníku metrik
+          href: platform/metrics-charts.md
+        - name: Zobrazení událostí v protokolu aktivit
+          href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
+        - name: Zobrazení oznámení služby
+          href: platform/service-notifications.md
+        - name: Dotazy na data protokolů
+          items:
+            - name: Dokumentace k dotazovacímu jazyku
+              href: log-query/query-language.md
+            - name: Rozdíly v jazycích
+              href: log-query/data-explorer-difference.md
+            - name: Přechod z prohledávání protokolu
+              href: log-query/log-search-transition.md
+            - name: Začínáme
+              items:
+                - name: Začínáme s portálem Analytics
+                  href: log-query/get-started-portal.md
+                - name: Začínáme s dotazy
+                  href: log-query/get-started-queries.md
+                - name: Vyhledávací dotazy
+                  href: log-query/search-queries.md
+                - name: Užitečné operátory
+                  href: log-query/useful-operators.md
+            - name: Lekce
+              items:
+                - name: Operace s řetězci
+                  href: log-query/string-operations.md
+                - name: Operace s datem a časem
+                  href: log-query/datetime-operations.md
+                - name: Agregační funkce
+                  href: log-query/aggregations.md
+                - name: Pokročilé agregace
+                  href: log-query/advanced-aggregations.md
+                - name: Spojení
+                  href: log-query/joins.md
+                - name: JSON a datové struktury
+                  href: log-query/json-data-structures.md
+                - name: Psaní rozšířených dotazů
+                  href: log-query/advanced-query-writing.md
+                - name: Grafy a diagramy
+                  href: log-query/charts.md
+                - name: Functions
+                  href: log-query/functions.md
+            - name: Přehledy
+              items:
+                - name: SQL
+                  href: log-query/sql-cheatsheet.md
+                - name: Splunk
+                  href: log-query/splunk-cheatsheet.md
+            - name: Dotazovací jazyk
+              items:
+                - name: Příklady
+                  href: log-query/examples.md
+                - name: Vytváření efektivních dotazů
+                  href: log-query/log-query-performance.md
+                - name: Inteligentní analýza
+                  href: log-query/smart-analytics.md
+                - name: Hledání napříč prostředky
+                  href: log-query/cross-workspace-query.md
+                - name: výraz rozhraní API
+                  href: log-query/app-expression.md
+                - name: výraz pracovního prostoru
+                  href: log-query/workspace-expression.md
+            - name: Protokolování dat
+              items:
+                - name: Data aplikací
+                  href: app/analytics.md
+                - name: Sjednocení prostředků dat aplikací
+                  href: log-query/unify-app-resource-data.md
+                - name: Standardní vlastnosti
+                  href: platform/log-standard-properties.md
+                - name: Analýza textových dat
+                  href: log-query/parse-text.md
+            - name: Provedení akce na základě výsledků hledání
+              href: log-query/take-action.md
+            - name: Skupiny počítačů
+              href: platform/computer-groups.md
+            - name: Konektor pro Flow
+              href: platform/flow-tutorial.md
+            - name: Rozhraní API pro prohledávání protokolů
+              href: 'https://dev.loganalytics.io/'
+    - name: Reakce na incidenty
       items:
-      - name: Azure Monitor pro virtuální počítače
-        items:
-        - name: Přehled
-          href: insights/vminsights-overview.md
-        - name: Známé problémy
-          href: insights/vminsights-known-issues.md
-        - name: Nejčastější dotazy
-          href: insights/vminsights-faq.md
-        - name: Onboarding
-          href: insights/vminsights-onboard.md
-        - name: Monitorování stavu
-          href: insights/vminsights-health.md
-        - name: Závislosti map
-          href: insights/vminsights-maps.md
-        - name: Monitorování výkonu
-          href: insights/vminsights-performance.md
-        - name: Dotazy na data s využitím Log Analytics
-          href: insights/vminsights-log-search.md
-        - name: Zákaz monitorování
-          href: insights/vminsights-optout.md
-      - name: Stav agenta
-        href: insights/solution-agenthealth.md
-      - name: Kapacita a výkon
-        href: insights/capacity-performance.md
-      - name: VMware Analytics
-        href: insights/vmware.md
-      - name: Linková data
-        href: insights/wire-data.md
-      - name: Mapa služeb
-        items:
-        - name: Použití
-          href: insights/service-map.md
-        - name: Konfigurace
-          href: insights/service-map-configure.md
-        - name: Integrace s Operations Managerem
-          href: insights/service-map-scom.md
-    - name: Monitorování prostředků Azure
+        - name: Výstrahy
+          items:
+            - name: Použití upozornění metrik
+              items:
+                - name: 'Vytvoření, zobrazení a správa upozornění metrik v Azure Monitoru'
+                  href: platform/alerts-metric.md
+                - name: 'Vytvoření, zobrazení a správa klasických upozornění metrik v Azure Monitoru'
+                  href: platform/alerts-classic-portal.md
+                - name: Upozornění metrik s dynamickými prahovými hodnotami
+                  href: platform/alerts-dynamic-thresholds.md
+                - name: Konfigurace upozornění metrik pro protokoly
+                  href: platform/alerts-metric-logs.md
+                - name: Vytvoření novějšího upozornění na metriku pomocí šablony Resource Manageru
+                  href: platform/alerts-metric-create-templates.md
+                - name: Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
+                  href: platform/alerts-enable-template.md
+                - name: Nastavení klasického upozornění metrik pro volání webhooku
+                  href: platform/alerts-webhooks.md
+            - name: Použití upozornění protokolu
+              items:
+                - name: Konfigurace upozornění pro analytický dotaz
+                  href: platform/alerts-log.md
+                - name: Dotazy na upozornění protokolu
+                  href: platform/alerts-log-query.md
+                - name: Akce webhooku pro výstrahy protokolu
+                  href: platform/alerts-log-webhook.md
+                - name: Řešení potíží s výstrahami protokolu
+                  href: platform/alert-log-troubleshoot.md
+            - name: Použití upozornění protokolu aktivit
+              items:
+                - name: Konfigurace upozornění pro událost protokolu aktivit
+                  href: platform/alerts-activity-log.md
+                - name: Migrace na upozornění protokolu aktivit
+                  href: platform/migrate-management-alerts.md
+                - name: Konfigurace upozornění pro oznámení služby
+                  href: platform/alerts-activity-log-service-notifications.md
+            - name: Použití upozornění aplikací
+              items:
+                - name: Dostupnost
+                  href: app/monitor-web-app-availability.md
+                - name: Upozornění metrik
+                  href: app/alerts.md
+            - name: Použití skupin akcí s upozorněními
+              items:
+                - name: Vytvoření skupin akcí
+                  href: platform/action-groups.md
+                - name: Další informace o schématu webhooků
+                  href: platform/activity-log-alerts-webhook.md
+                - name: Chování upozornění SMS
+                  href: platform/alerts-sms-behavior.md
+                - name: Omezení četnosti upozornění
+                  href: platform/alerts-rate-limiting.md
+                - name: Vytvoření skupiny akcí s využitím Resource Manageru
+                  href: platform/action-groups-create-resource-manager-template.md
+                - name: Implementace akce aplikace logiky
+                  href: platform/action-groups-logic-app.md
+            - name: Upozornění z Operations Manageru
+              href: platform/alert-management-solution.md
+            - name: Správa upozornění
+              items:
+                - name: Správa instancí upozornění
+                  href: platform/alerts-managing-alert-instances.md
+                - name: Správa inteligentních skupin
+                  href: platform/alerts-managing-smart-groups.md
+                - name: Správa stavů inteligentních skupin a upozornění
+                  href: platform/alerts-managing-alert-states.md
+                - name: Správa upozornění z ostatních služeb monitorování
+                  href: platform/alerts-managing-nagios-zabbix-scom.md
+        - name: Automatické škálování
+          items:
+            - name: Principy automatického škálování
+              href: platform/autoscale-get-started.md
+            - name: Vysvětlení nastavení automatického škálování
+              href: platform/autoscale-understanding-settings.md
+            - name: Osvědčené postupy
+              href: platform/autoscale-best-practices.md
+            - name: Běžné metriky
+              href: platform/autoscale-common-metrics.md
+            - name: Obvyklé scénáře
+              href: platform/autoscale-common-scale-patterns.md
+            - name: Automatické škálování s použitím vlastních metrik
+              href: platform/autoscale-custom-metric.md
+            - name: Automatické škálování služby VM Scale Sets pomocí šablon Resource Manageru
+              href: platform/autoscale-virtual-machine-scale-sets.md
+            - name: Automatické škálování počítačů ve škálovací sadě virtuálních počítačů
+              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json?toc=/azure/azure-monitor/toc.json
+            - name: Konfigurace webhooků a e-mailových oznámení pro automatické škálování
+              href: platform/autoscale-webhook-email.md
+        - name: Oznámení služby
+          items:
+            - name: Zobrazení oznámení služby
+              href: platform/service-notifications.md
+            - name: Konfigurace upozornění pro oznámení služby
+              href: platform/alerts-activity-log-service-notifications.md
+        - name: Správa služeb IT
+          items:
+            - name: IT Service Management Connector
+              href: platform/itsmc-overview.md
+            - name: Připojení IT Service Management
+              href: platform/itsmc-connections.md
+            - name: Vytvoření webové aplikace Service Manageru
+              href: platform/itsmc-service-manager-script.md
+    - name: Správa využití a nákladů
       items:
-      - name: Key Vault Analytics
-        href: insights/azure-key-vault.md
-      - name: Service Fabric Analytics
-        href: ../service-fabric/service-fabric-diagnostics-oms-agent.md?toc=/azure/azure-monitor/toc.json
-    - name: Monitorování dalších prostředků
+        - name: Využití a odhadované náklady
+          href: platform/usage-estimated-costs.md
+        - name: Náklady a využití aplikací
+          href: app/pricing.md
+        - name: Protokolování nákladů a využití dat
+          href: platform/manage-cost-storage.md
+    - name: Automatizace
       items:
-      - name: Posouzení stavu AD
-        href: insights/ad-assessment.md
-      - name: Stav replikace AD
-        href: insights/ad-replication-status.md
-      - name: DNS
-        href: insights/dns-analytics.md
-      - name: Office 365
-        href: insights/solution-office-365.md
-      - name: Posouzení Operations Manageru
-        href: insights/scom-assessment.md
-      - name: Surface Hub
-        href: insights/surface-hubs.md
-    - name: Použití řešení monitorování
+        - name: PowerShell
+          items:
+            - name: Ukázky Azure PowerShellu
+              href: platform/powershell-quickstart-samples.md
+            - name: Rutiny prostředí PowerShell
+              href: platform/powershell-workspace-configuration.md
+            - name: Aplikace
+              items:
+                - name: Vytvoření prostředků Application Insights
+                  href: app/powershell.md
+                - name: Vytvoření prostředků
+                  href: app/powershell-script-create-resource.md
+                - name: Nastavení upozornění
+                  href: app/powershell-alerts.md
+                - name: Získání diagnostiky Azure
+                  href: app/powershell-azure-diagnostics.md
+        - name: Ukázky Azure CLI
+          href: platform/cli-samples.md
+        - name: Šablony Resource Manageru
+          href: platform/template-workspace-configuration.md
+        - name: Rozhraní API
+          items:
+            - name: Názorný postup s použitím REST API
+              href: platform/rest-api-walkthrough.md
+            - name: Rozhraní API pro výstrahy
+              href: platform/api-alerts.md
+        - name: Aplikace
+          items:
+            - name: Automatizace s využitím Microsoft Flow
+              href: app/automate-with-flow.md
+            - name: Automatizace s využitím Azure Logic App
+              href: app/automate-with-logic-apps.md
+            - name: Vlastní e-mailové sestavy
+              href: app/automate-custom-reports.md
+    - name: Rozšíření
       items:
-      - name: Přehled
-        href: insights/solutions.md
-      - name: Cílová řešení
-        href: insights/solution-targeting.md
-  - name: Vizualizace dat
-    items:
-    - name: Zobrazení
-      href: platform/view-designer.md
-      items:
-      - name: Referenční informace k dlaždicím
-        href: platform/view-designer-tiles.md
-      - name: Referenční informace k části vizualizace
-        href: platform/view-designer-parts.md
-      - name: Filtry
-        href: platform/view-designer-filters.md
-    - name: Řídicí panely
-      items:
-      - name: Logs
-        href: platform/dashboards.md
-      - name: Aplikace
-        href: app/app-insights-dashboards.md
-    - name: Power BI
-      items:
-      - name: Export dat protokolů
-        href: platform/powerbi.md
-      - name: Export dat aplikací
-        href: app/export-power-bi.md
-    - name: Odeslání dat do Grafany
-      href: platform/grafana-plugin.md
-  - name: Analýza dat
-    items:
-    - name: Vytvoření grafů metrik v Průzkumníku metrik
-      href: platform/metrics-charts.md
-    - name: Zobrazení událostí v protokolu aktivit
-      href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
-    - name: Zobrazení oznámení služby
-      href: platform/service-notifications.md
-    - name: Dotazy na data protokolů
-      items:
-      - name: Dokumentace k dotazovacímu jazyku
-        href: log-query/query-language.md
-      - name: Rozdíly v jazycích
-        href: log-query/data-explorer-difference.md
-      - name: Přechod z prohledávání protokolu
-        href: log-query/log-search-transition.md
-      - name: Začínáme
-        items:
-        - name: Začínáme s portálem Analytics
-          href: log-query/get-started-portal.md
-        - name: Začínáme s dotazy
-          href: log-query/get-started-queries.md
-        - name: Vyhledávací dotazy
-          href: log-query/search-queries.md
-        - name: Užitečné operátory
-          href: log-query/useful-operators.md
-      - name: Lekce
-        items:
-        - name: Operace s řetězci
-          href: log-query/string-operations.md
-        - name: Operace s datem a časem
-          href: log-query/datetime-operations.md
-        - name: Agregační funkce
-          href: log-query/aggregations.md
-        - name: Pokročilé agregace
-          href: log-query/advanced-aggregations.md
-        - name: Spojení
-          href: log-query/joins.md
-        - name: JSON a datové struktury
-          href: log-query/json-data-structures.md
-        - name: Psaní rozšířených dotazů
-          href: log-query/advanced-query-writing.md
-        - name: Grafy a diagramy
-          href: log-query/charts.md
-        - name: Functions
-          href: log-query/functions.md
-      - name: Přehledy
-        items:
-        - name: SQL
-          href: log-query/sql-cheatsheet.md
-        - name: Splunk
-          href: log-query/splunk-cheatsheet.md
-      - name: Dotazovací jazyk
-        items:
-        - name: Příklady
-          href: log-query/examples.md
-        - name: Vytváření efektivních dotazů
-          href: log-query/log-query-performance.md
-        - name: Inteligentní analýza
-          href: log-query/smart-analytics.md
-        - name: Hledání napříč prostředky
-          href: log-query/cross-workspace-query.md
-        - name: výraz rozhraní API
-          href: log-query/app-expression.md
-        - name: výraz pracovního prostoru
-          href: log-query/workspace-expression.md
-      - name: Protokolování dat
-        items:
-        - name: Data aplikací
-          href: app/analytics.md
-        - name: Sjednocení prostředků dat aplikací
-          href: log-query/unify-app-resource-data.md
-        - name: Standardní vlastnosti
-          href: platform/log-standard-properties.md
-        - name: Analýza textových dat
-          href: log-query/parse-text.md
-      - name: Provedení akce na základě výsledků hledání
-        href: log-query/take-action.md
-      - name: Skupiny počítačů
-        href: platform/computer-groups.md
-      - name: Konektor pro Flow
-        href: platform/flow-tutorial.md
-      - name: Rozhraní API pro prohledávání protokolů
-        href: https://dev.loganalytics.io/
-  - name: Reakce na incidenty
-    items:
-    - name: Výstrahy
-      items:
-      - name: Použití upozornění metrik
-        items:
-        - name: Vytvoření, zobrazení a správa upozornění metrik v Azure Monitoru
-          href: platform/alerts-metric.md
-        - name: Vytvoření, zobrazení a správa klasických upozornění metrik v Azure Monitoru
-          href: platform/alerts-classic-portal.md
-        - name: Upozornění s dynamickými prahovými hodnotami
-          href: platform/alerts-dynamic-thresholds.md
-        - name: Konfigurace upozornění metrik pro protokoly
-          href: platform/alerts-metric-logs.md
-        - name: Vytvoření novějšího upozornění na metriku pomocí šablony Resource Manageru
-          href: platform/alerts-metric-create-templates.md
-        - name: Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
-          href: platform/alerts-enable-template.md
-        - name: Nastavení klasického upozornění metrik pro volání webhooku
-          href: platform/alerts-webhooks.md
-      - name: Použití upozornění protokolu
-        items:
-        - name: Konfigurace upozornění pro analytický dotaz
-          href: platform/alerts-log.md
-        - name: Dotazy na upozornění protokolu
-          href: platform/alerts-log-query.md
-        - name: Akce webhooku pro výstrahy protokolu
-          href: platform/alerts-log-webhook.md
-        - name: Řešení potíží s výstrahami protokolu
-          href: platform/alert-log-troubleshoot.md
-      - name: Použití upozornění protokolu aktivit
-        items:
-        - name: Konfigurace upozornění pro událost protokolu aktivit
-          href: platform/alerts-activity-log.md
-        - name: Migrace na upozornění protokolu aktivit
-          href: platform/migrate-management-alerts.md
-        - name: Konfigurace upozornění pro oznámení služby
-          href: platform/alerts-activity-log-service-notifications.md
-      - name: Použití upozornění aplikací
-        items:
-        - name: Dostupnost
-          href: app/monitor-web-app-availability.md
-        - name: Upozornění metrik
-          href: app/alerts.md
-      - name: Použití skupin akcí s upozorněními
-        items:
-        - name: Vytvoření skupin akcí
-          href: platform/action-groups.md
-        - name: Další informace o schématu webhooků
-          href: platform/activity-log-alerts-webhook.md
-        - name: Chování upozornění SMS
-          href: platform/alerts-sms-behavior.md
-        - name: Omezení četnosti upozornění
-          href: platform/alerts-rate-limiting.md
-        - name: Vytvoření skupiny akcí s využitím Resource Manageru
-          href: platform/action-groups-create-resource-manager-template.md
-        - name: Implementace akce aplikace logiky
-          href: platform/action-groups-logic-app.md
-      - name: Upozornění z Operations Manageru
-        href: platform/alert-management-solution.md
-      - name: Správa upozornění
-        items:
-        - name: Správa instancí upozornění
-          href: platform/alerts-managing-alert-instances.md
-        - name: Správa inteligentních skupin
-          href: platform/alerts-managing-smart-groups.md
-        - name: Správa stavů inteligentních skupin a upozornění
-          href: platform/alerts-managing-alert-states.md
-        - name: Správa upozornění z ostatních služeb monitorování
-          href: platform/alerts-managing-nagios-zabbix-scom.md
-    - name: Automatické škálování
-      items:
-      - name: Principy automatického škálování
-        href: platform/autoscale-get-started.md
-      - name: Vysvětlení nastavení automatického škálování
-        href: platform/autoscale-understanding-settings.md
-      - name: Osvědčené postupy
-        href: platform/autoscale-best-practices.md
-      - name: Běžné metriky
-        href: platform/autoscale-common-metrics.md
-      - name: Obvyklé scénáře
-        href: platform/autoscale-common-scale-patterns.md
-      - name: Automatické škálování s použitím vlastních metrik
-        href: platform/autoscale-custom-metric.md
-      - name: Automatické škálování služby VM Scale Sets pomocí šablon Resource Manageru
-        href: platform/autoscale-virtual-machine-scale-sets.md
-      - name: Automatické škálování počítačů ve škálovací sadě virtuálních počítačů
-        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json?toc=/azure/azure-monitor/toc.json
-      - name: Konfigurace webhooků a e-mailových oznámení pro automatické škálování
-        href: platform/autoscale-webhook-email.md
-    - name: Oznámení služby
-      items:
-      - name: Zobrazení oznámení služby
-        href: platform/service-notifications.md
-      - name: Konfigurace upozornění pro oznámení služby
-        href: platform/alerts-activity-log-service-notifications.md
-    - name: Správa služeb IT
-      items:
-      - name: IT Service Management Connector
-        href: platform/itsmc-overview.md
-      - name: Připojení IT Service Management
-        href: platform/itsmc-connections.md
-      - name: Vytvoření webové aplikace Service Manageru
-        href: platform/itsmc-service-manager-script.md
-  - name: Správa využití a nákladů
-    items:
-    - name: Využití a odhadované náklady
-      href: platform/usage-estimated-costs.md
-    - name: Náklady a využití aplikací
-      href: app/pricing.md
-    - name: Protokolování nákladů a využití dat
-      href: platform/manage-cost-storage.md
-  - name: Automatizace
-    items:
-    - name: PowerShell
-      items:
-      - name: Ukázky Azure PowerShellu
-        href: platform/powershell-quickstart-samples.md
-      - name: Rutiny prostředí PowerShell
-        href: platform/powershell-workspace-configuration.md
-      - name: Aplikace
-        items:
-        - name: Vytvoření prostředků Application Insights
-          href: app/powershell.md
-        - name: Vytvoření prostředků
-          href: app/powershell-script-create-resource.md
-        - name: Nastavení upozornění
-          href: app/powershell-alerts.md
-        - name: Získání diagnostiky Azure
-          href: app/powershell-azure-diagnostics.md
-    - name: Ukázky Azure CLI
-      href: platform/cli-samples.md
-    - name: Šablony Resource Manageru
-      href: platform/template-workspace-configuration.md
-    - name: Rozhraní API
-      items:
-      - name: Názorný postup s použitím REST API
-        href: platform/rest-api-walkthrough.md
-      - name: Rozhraní API pro výstrahy
-        href: platform/api-alerts.md
-    - name: Aplikace
-      items:
-      - name: Automatizace s využitím Microsoft Flow
-        href: app/automate-with-flow.md
-      - name: Automatizace s využitím Azure Logic App
-        href: app/automate-with-logic-apps.md
-      - name: Vlastní e-mailové sestavy
-        href: app/automate-custom-reports.md
-  - name: Rozšíření
-    items:
-    - name: Aplikace
-      items:
-      - name: Rozhraní API pro vlastní události a metriky
-        href: app/api-custom-events-metrics.md
-      - name: Sledování vlastních operací v sadě .NET SDK
-        href: app/custom-operations-tracking.md
-      - name: Filtrování a předběžné zpracování telemetrie
-        href: app/api-filtering-sampling.md
-      - name: Vzorkování
-        href: app/sampling.md
-    - name: Řešení monitorování
-      items:
-      - name: Návrh a sestavení
-        href: insights/solutions-creating.md
-      - name: Soubor řešení
-        href: insights/solutions-solution-file.md
-      - name: Prostředky služby Automation
-        href: insights/solutions-resources-automation.md
-      - name: Prohledávání protokolů a upozornění
-        href: insights/solutions-resources-searches-alerts.md
-      - name: Zobrazení
-        href: insights/solutions-resources-views.md
-      - name: Osvědčené postupy
-        href: insights/solutions-best-practices.md
-      - name: Shromažďování dat monitorování z runbooku
-        href: platform/runbook-datacollect.md
+        - name: Aplikace
+          items:
+            - name: Rozhraní API pro vlastní události a metriky
+              href: app/api-custom-events-metrics.md
+            - name: Sledování vlastních operací v sadě .NET SDK
+              href: app/custom-operations-tracking.md
+            - name: Filtrování a předběžné zpracování telemetrie
+              href: app/api-filtering-sampling.md
+            - name: Vzorkování
+              href: app/sampling.md
+        - name: Řešení monitorování
+          items:
+            - name: Návrh a sestavení
+              href: insights/solutions-creating.md
+            - name: Soubor řešení
+              href: insights/solutions-solution-file.md
+            - name: Prostředky služby Automation
+              href: insights/solutions-resources-automation.md
+            - name: Prohledávání protokolů a upozornění
+              href: insights/solutions-resources-searches-alerts.md
+            - name: Zobrazení
+              href: insights/solutions-resources-views.md
+            - name: Osvědčené postupy
+              href: insights/solutions-best-practices.md
+            - name: Shromažďování dat monitorování z runbooku
+              href: platform/runbook-datacollect.md
 - name: Referenční informace
   items:
-  - name: Application Insights
-    items:
-    - name: Automatické shromažďování závislostí
-      href: app/auto-collect-dependencies.md
-    - name: Korelace telemetrie
-      href: app/correlation.md
-    - name: Balíčky NuGet
-      href: app/nuget.md
-    - name: Podpora platformy
-      href: app/platforms.md
-  - name: Datový model Application Insights
-    items:
-    - name: Přehled
-      href: app/data-model.md
-    - name: Žádost
-      href: app/data-model-request-telemetry.md
-    - name: Závislost
-      href: app/data-model-dependency-telemetry.md
-    - name: Výjimka
-      href: app/data-model-exception-telemetry.md
-    - name: Trasování
-      href: app/data-model-trace-telemetry.md
-    - name: Událost
-      href: app/data-model-event-telemetry.md
-    - name: Metrika
-      href: app/data-model-metric-telemetry.md
-    - name: Kontext
-      href: app/data-model-context.md
-  - name: Azure CLI
-    href: /cli/azure/monitor?view=azure-cli-latest
-  - name: Azure Functions
-    href: app/azure-functions-supported-features.md
-  - name: Azure PowerShell
-    items:
-    - name: Monitorování
-      href: /powershell/module/azurerm.insights
-    - name: Logs
-      href: /powershell/module/azurerm.operationalinsights
-  - name: REST API
-    items:
-    - name: Monitorování
-      href: /rest/api/monitor/
-    - name: Logs
-      href: /rest/api/loganalytics
-  - name: Šablona Resource Manageru
-    items:
-    - name: Monitorování
-      href: /azure/templates/microsoft.insights/allversions
-    - name: Logs
-      href: /azure/templates/microsoft.operationalinsights/allversions
-  - name: Metriky
-    items:
-    - name: Podporované metriky
-      href: platform/metrics-supported.md
-    - name: Podporované metriky pro novější upozornění
-      href: platform/alerts-metric-near-real-time.md
-  - name: Schémata
-    items:
-    - name: Služby, kategorie a schémata pro diagnostické protokoly
-      href: platform/tutorial-dashboards.md
-    - name: Schéma událostí protokolu aktivit
-      href: platform/activity-log-schema.md
-    - name: Schéma rozšíření Azure Diagnostics
-      href: platform/diagnostics-extension-schema.md
+    - name: Application Insights
       items:
-      - name: 1.3 a novější
-        href: platform/diagnostics-extension-schema-1dot3.md
-      - name: "1.2"
-        href: platform/diagnostics-extension-schema-1dot2.md
-      - name: "1"
-        href: platform/diagnostics-extension-schema-1dot0.md
-  - name: Vyřazení funkcí a rozhraní API z provozu
-    items:
-    - name: Klasické rozhraní API pro metriky a automatické škálování
-      href: ./platform/classic-api-retirement-metrics-autoscale.md
-    - name: Klasické upozorňování a monitorování
-      href: platform/monitoring-classic-retirement.md
-    - name: Rozšíření upozornění z Log Analytics do Azure
-      href: platform/alerts-extend.md
-    - name: Zkopírování upozornění z portálu OMS na web Azure Portal
-      href: platform/alerts-extend-tool.md
+        - name: Automatické shromažďování závislostí
+          href: app/auto-collect-dependencies.md
+        - name: Korelace telemetrie
+          href: app/correlation.md
+        - name: Balíčky NuGet
+          href: app/nuget.md
+        - name: Podpora platformy
+          href: app/platforms.md
+    - name: Datový model Application Insights
+      items:
+        - name: Přehled
+          href: app/data-model.md
+        - name: Žádost
+          href: app/data-model-request-telemetry.md
+        - name: Závislost
+          href: app/data-model-dependency-telemetry.md
+        - name: Výjimka
+          href: app/data-model-exception-telemetry.md
+        - name: Trasování
+          href: app/data-model-trace-telemetry.md
+        - name: Událost
+          href: app/data-model-event-telemetry.md
+        - name: Metrika
+          href: app/data-model-metric-telemetry.md
+        - name: Kontext
+          href: app/data-model-context.md
+    - name: Azure CLI
+      href: /cli/azure/monitor?view=azure-cli-latest
+    - name: Azure Functions
+      href: app/azure-functions-supported-features.md
+    - name: Azure PowerShell
+      items:
+        - name: Monitorování
+          href: /powershell/module/azurerm.insights
+        - name: Logs
+          href: /powershell/module/azurerm.operationalinsights
+    - name: REST API
+      items:
+        - name: Monitorování
+          href: /rest/api/monitor/
+        - name: Logs
+          href: /rest/api/loganalytics
+    - name: Šablona Resource Manageru
+      items:
+        - name: Monitorování
+          href: /azure/templates/microsoft.insights/allversions
+        - name: Logs
+          href: /azure/templates/microsoft.operationalinsights/allversions
+    - name: Metriky
+      items:
+        - name: Podporované metriky
+          href: platform/metrics-supported.md
+        - name: Podporované metriky pro novější upozornění
+          href: platform/alerts-metric-near-real-time.md
+    - name: Schémata
+      items:
+        - name: 'Služby, kategorie a schémata pro diagnostické protokoly'
+          href: platform/tutorial-dashboards.md
+        - name: Schéma událostí protokolu aktivit
+          href: platform/activity-log-schema.md
+        - name: Schéma rozšíření Azure Diagnostics
+          href: platform/diagnostics-extension-schema.md
+          items:
+            - name: 1.3 a novější
+              href: platform/diagnostics-extension-schema-1dot3.md
+            - name: 1.2
+              href: platform/diagnostics-extension-schema-1dot2.md
+            - name: 1
+              href: platform/diagnostics-extension-schema-1dot0.md
+    - name: Vyřazení funkcí a rozhraní API z provozu
+      items:
+        - name: Klasické rozhraní API pro metriky a automatické škálování
+          href: ./platform/classic-api-retirement-metrics-autoscale.md
+        - name: Klasické upozorňování a monitorování
+          href: platform/monitoring-classic-retirement.md
+        - name: Rozšíření upozornění z Log Analytics do Azure
+          href: platform/alerts-extend.md
+        - name: Zkopírování upozornění z portálu OMS na web Azure Portal
+          href: platform/alerts-extend-tool.md
 - name: Zdroje a prostředky
   items:
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/log-analytics/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Novinky
-    items:
-    - name: Aktualizace služeb Application Insights
-      href: https://azure.microsoft.com/updates/?product=application-insights
-    - name: Aktualizace služeb Log Analytics
-      href: https://azure.microsoft.com/updates/?product=log-analytics
-    - name: Poznámky k verzi sady SDK
-      href: app/release-notes.md
-    - name: Poznámky k verzi pro Developer Analytics Tools
-      href: app/release-notes-vsix.md
-  - name: Analýzy ve Windows
-    href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/regions/services/
-  - name: Videa
-    href: https://azure.microsoft.com/resources/videos/index/?services=monitor
-  - name: Šablony Rychlý start
-    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=monitoring
-  - name: Ukázky kódů
-    href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 5cb859501356213289c674e3bfa689095c9b28e1
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390713"
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Novinky
+      items:
+        - name: Aktualizace služeb Application Insights
+          href: 'https://azure.microsoft.com/updates/?product=application-insights'
+        - name: Aktualizace služeb Log Analytics
+          href: 'https://azure.microsoft.com/updates/?product=log-analytics'
+        - name: Poznámky k verzi sady SDK
+          href: app/release-notes.md
+        - name: Poznámky k verzi pro Developer Analytics Tools
+          href: app/release-notes-vsix.md
+    - name: Analýzy ve Windows
+      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=monitor'
+    - name: Šablony Rychlý start
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=monitoring'
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=monitor'
