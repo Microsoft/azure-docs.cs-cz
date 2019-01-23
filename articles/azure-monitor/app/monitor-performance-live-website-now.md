@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 463b2e8c7e349fa46737a9d630bd027fb28e7780
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f84be4dffb601d3748d951da15050e381e1cecc1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199381"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464846"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentace webových aplikací za běhu pomocí monitorování stavu Application Insights
 
@@ -32,11 +32,12 @@ Monitorování stavu slouží k instrumentaci aplikace .NET hostované ve služb
 
 ![Snímek obrazovky s App Insights přehled grafy obsahující informace o neúspěšných požadavků, doba odezvy serveru a požadavky na server](./media/monitor-performance-live-website-now/overview-graphs.png)
 
-Můžete si vybrat ze tří způsobů, jak u webových aplikací .NET použít službu Application Insights:
+Máte možnost volby dvě tras, jak použít Application Insights do webových aplikací .NET:
 
 * **Čas sestavení:** [Přidejte Application Insights SDK] [ greenbrown] na kód vaší webové aplikace.
 * **Čas spuštění:** Instrumentace webové aplikace na serveru, jak je popsáno níže, bez znovu sestavovat a nasazovat kód.
-* **Obojí:** Sestavení sady SDK do kódu webové aplikace a zároveň uplatněte rozšíření za běhu. Získáte to nejlepší z obou možností.
+> [!NOTE]
+> Pokud používáte instrumentace čas sestavení, spuštění instrumentace nebude fungovat i v případě, že je zapnutý.
 
 Tady je rekapitulace toho, co každý způsob přináší:
 

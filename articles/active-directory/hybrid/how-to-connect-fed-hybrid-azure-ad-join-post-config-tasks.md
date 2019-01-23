@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Úkoly konfigurace po připojení k hybridní službě Azure AD. | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Úkoly konfigurace po připojení k hybridní službě Azure AD | Dokumentace Microsoftu'
 description: Tento dokument podrobně popisuje úkoly po konfiguraci potřebné k dokončení připojení k hybridní službě Azure AD
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 31bf3c7ba2365f3fdfd6f2da1dbd1942ada1327e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999235"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475454"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
 
@@ -30,12 +30,12 @@ Po spuštění služby Azure AD Connect ke konfiguraci vaší organizaci pro př
 Všechna zařízení připojená k doméně s Windows 10 a Windows serveru 2016 automaticky zaregistrovat v Azure AD po dokončení všech kroků konfigurace. Pokud dáváte přednost řízeně uvádět, nikoli automatickou registraci, můžete použít zásady skupiny výběrově povolit nebo zakázat automatické zavedení.  Tyto zásady skupiny by měl nastavit před spuštěním další konfigurační kroky: Azure AD
 * Vytvoření objektu zásad skupiny ve službě Active Directory.
 * Pojmenujte ho (ex – hybridní službě Azure AD join).
-* Upravit & Přejít na: Konfigurace počítače > zásady > šablony pro správu > součásti Windows > registrace zařízení.
+* Upravit & Přejít na:  Konfigurace počítače > zásady > šablony pro správu > součásti Windows > registrace zařízení.
 
 >[!NOTE]
 >Pro 2012R2 nastavení zásad jsou v **konfigurace počítače > zásady > šablony pro správu > součásti Windows > připojení k pracovní ploše > automaticky klientské počítače se připojení k síti na pracovišti**
 
-* Toto nastavení zakázat: registrace připojené k doméně počítače jako zařízení.
+* Toto nastavení zakážete:  Počítače připojené k doméně můžete zaregistrujte jako zařízení.
 * Použít a klikněte na tlačítko OK.
 * Propojte objekt zásad skupiny do umístění podle vašeho výběru (organizační jednotky, zabezpečení, skupiny, nebo do domény pro všechna zařízení).
 
@@ -69,7 +69,7 @@ Pokud vaše organizace používá synchronizaci hodnot Hash hesel nebo předáva
 K registraci zařízení s Windows nižší úrovně, budete muset Ujistěte se, že zásady služby Azure AD umožňuje uživatelům zaregistrovat zařízení. 
 
 * Přihlášení ke svému účtu na webu Azure Portal.
-* Přejděte na: Azure Active Directory > zařízení > Nastavení zařízení
+* Přejít na:  Azure Active Directory > zařízení > Nastavení zařízení
 * Ke všem nastavte "Uživatelé můžou registrovat svoje zařízení s Azure AD".
 * Kliknutí na Uložit
 
@@ -87,8 +87,8 @@ Tento instalační program vytvoří naplánovanou úlohu v systému zařízení
 
 * Vytvoření objektu zásad skupiny ve službě Active Directory – Pokud ještě není vytvořena.
 * Pojmenujte ho (ex – hybridní službě Azure AD join).
-* Upravit & Přejít na: Konfigurace počítače > zásady > šablony pro správu > součásti Windows > registrace zařízení
-* Povolit: Registrace připojené k doméně počítače jako zařízení
+* Upravit & Přejít na:  Konfigurace počítače > zásady > šablony pro správu > součásti Windows > registrace zařízení
+* Povolte:  Zaregistrujte se jako zařízení připojených k doméně počítače
 * Použít a klikněte na tlačítko OK.
 * Propojte objekt zásad skupiny do umístění podle vašeho výběru (organizační jednotky, zabezpečení, skupiny, nebo do domény pro všechna zařízení).
 

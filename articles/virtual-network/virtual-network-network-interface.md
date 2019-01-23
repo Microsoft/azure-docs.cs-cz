@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: a26deba97d1ed61f2a6f3b54dafe9f651167ab5b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 381c9a2af0f1743509db4495603c0e26da5c1736
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424366"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474515"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -38,7 +38,7 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
 
 ## <a name="create-a-network-interface"></a>Vytvořte síťové rozhraní
 
-Při vytváření virtuálního počítače pomocí webu Azure portal, na portálu se vytvoří síťové rozhraní s výchozím nastavením za vás. Pokud by místo toho zadat všechna nastavení síťového rozhraní, můžete vytvořit síťové rozhraní s vlastním nastavením a připojit síťové rozhraní k virtuálnímu počítači při vytváření virtuálního počítače (pomocí Powershellu nebo rozhraní příkazového řádku Azure CLI). Můžete také vytvořit síťové rozhraní a přidat do existujícího virtuálního počítače (pomocí Powershellu nebo rozhraní příkazového řádku Azure CLI). Informace o vytvoření virtuálního počítače s existující síťové rozhraní nebo přidat nebo odebrat síťová rozhraní z existujících virtuálních počítačů najdete v tématu [přidání nebo odebrání síťových rozhraní](virtual-network-network-interface-vm.md). Před vytvořením síťového rozhraní, musíte mít existující [virtuální sítě](manage-virtual-network.md#create-a-virtual-network) ve stejném umístění a předplatném můžete vytvořit síťové rozhraní v.
+Při vytváření virtuálního počítače pomocí webu Azure portal, na portálu se vytvoří síťové rozhraní s výchozím nastavením za vás. Pokud by místo toho zadat všechna nastavení síťového rozhraní, můžete vytvořit síťové rozhraní s vlastním nastavením a připojit síťové rozhraní k virtuálnímu počítači při vytváření virtuálního počítače (pomocí Powershellu nebo rozhraní příkazového řádku Azure CLI). Můžete také vytvořit síťové rozhraní a přidat do existujícího virtuálního počítače (pomocí Powershellu nebo rozhraní příkazového řádku Azure CLI). Informace o vytvoření virtuálního počítače s existující síťové rozhraní nebo přidat nebo odebrat síťová rozhraní z existujících virtuálních počítačů najdete v tématu [přidání nebo odebrání síťových rozhraní](virtual-network-network-interface-vm.md). Před vytvořením síťového rozhraní, musíte mít existující [virtuální sítě](manage-virtual-network.md) ve stejném umístění a předplatném můžete vytvořit síťové rozhraní v.
 
 1. Do pole, které obsahuje text *vyhledat prostředky* v horní části stránky na webu Azure portal, zadejte *síťová rozhraní*. Když **síťová rozhraní** nezobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte **+ přidat** pod **síťová rozhraní**.
@@ -69,7 +69,7 @@ Na portálu neposkytuje možnost pro síťové rozhraní přiřadit do skupin za
 |Nástroj|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface#create)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Zobrazení nastavení síťového rozhraní
 
@@ -158,7 +158,7 @@ Můžete změnit podsíť, ale ne virtuální síti, přiřazené k síťovému 
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Přidat nebo odebrat ze skupiny zabezpečení aplikací
 
-Pouze můžete přidat síťové rozhraní nebo odebrat ze skupiny zabezpečení aplikací pomocí portálu, pokud je síťové rozhraní připojené k virtuálnímu počítači síťového rozhraní. Můžete přidat síťové rozhraní pomocí Powershellu nebo rozhraní příkazového řádku Azure nebo síťové rozhraní odebrat skupinu zabezpečení aplikace, zda síťové rozhraní je připojené k virtuálnímu počítači, nebo ne. Další informace o [skupiny zabezpečení aplikací](security-overview.md#application-security-groups) a jak [vytvořit skupinu zabezpečení aplikace](manage-network-security-group.md#create-an-application-security-group).
+Pouze můžete přidat síťové rozhraní nebo odebrat ze skupiny zabezpečení aplikací pomocí portálu, pokud je síťové rozhraní připojené k virtuálnímu počítači síťového rozhraní. Můžete přidat síťové rozhraní pomocí Powershellu nebo rozhraní příkazového řádku Azure nebo síťové rozhraní odebrat skupinu zabezpečení aplikace, zda síťové rozhraní je připojené k virtuálnímu počítači, nebo ne. Další informace o [skupiny zabezpečení aplikací](security-overview.md#application-security-groups) a jak [vytvořit skupinu zabezpečení aplikace](manage-network-security-group.md).
 
 1. V *hledat prostředky, služby a dokumenty* pole v horní části portálu, začněte psát název virtuálního počítače, který má síťové rozhraní, které chcete přidat nebo odebrat ze skupiny zabezpečení aplikace. Když se ve výsledcích hledání zobrazí název vašeho virtuálního počítače, vyberte ji.
 2. V části **NASTAVENÍ** vyberte **Sítě**.  Vyberte **konfigurace skupin zabezpečení aplikací**vyberte skupiny zabezpečení aplikací, které chcete přidat síťové rozhraní, nebo zrušte výběr skupiny zabezpečení aplikací, které chcete odstranit síťové rozhraní, a pak vyberte **Uložit**. Jenom síťová rozhraní, které existují ve stejné virtuální síti je přidat do stejné skupiny zabezpečení aplikace. Skupiny zabezpečení aplikací musí existovat ve stejném umístění jako síťové rozhraní.

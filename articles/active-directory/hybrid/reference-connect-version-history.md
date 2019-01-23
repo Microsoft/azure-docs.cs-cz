@@ -4,7 +4,7 @@ description: Tento článek obsahuje seznam všech vydaných verzích služby Az
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 780a4c5cd590b4fa1b4dd5b29fab738cb9a8bb6a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e5d98b1d10051fee6ee5299fcdd8376434109603
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608439"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469757"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -64,7 +64,7 @@ Pokud žádné sestavení obsahující funkci aktualizované možnosti zařízen
 
 ### <a name="release-status"></a>Stav verze 
 
-30/11/2018:  Všeobecně dostupné ke stažení
+11/30/2018:  Všeobecně dostupné ke stažení
 
 ### <a name="fixed-issues"></a>Oprava potíží
 
@@ -76,7 +76,7 @@ Tato oprava hotfix sestavení opravy ke konfliktu, kde může dojít k chybě ov
 
 ### <a name="release-status"></a>Stav verze 
 
-19/11/2018:  Všeobecně dostupné ke stažení
+11/19/2018:  Všeobecně dostupné ke stažení
 
 ### <a name="fixed-issues"></a>Oprava potíží
 
@@ -684,14 +684,14 @@ CBool(
 
   * Schéma MV byly přidány následující atributy:
     * Skupina: Název účtu
-    * Skupina: domainNetBios
+    * Group: domainNetBios
     * Skupina: domainFQDN
     * Osoba: distinguishedName
 
   * Byly přidány následující atributy do schématu konektor služby Azure AD:
     * Skupina: OnPremisesSamAccountName
     * Skupina: NetBiosName
-    * Skupina: Název_domény_dns
+    * Skupina: DnsDomainName
     * Uživatel: OnPremisesDistinguishedName
 
 * Tento skript rutiny ADSyncDomainJoinedComputerSync teď má nový volitelný parametr s názvem AzureEnvironment. Tento parametr slouží k určení jakou oblast odpovídající tenanta Azure Active Directory je hostován v. Platné hodnoty jsou:
@@ -805,8 +805,8 @@ Synchronizace služby Azure AD Connect
     * Průvodce Azure AD Connect ve výchozím nastavení, vytvoří účet virtuální služby a použije je jako jeho účet služby.
     * Pokud nainstalujete na řadič domény, Azure AD Connect spadne zpět na předchozí chování, kde se vytvoří účet uživatele domény a použije je jako jeho účet služby.
     * Výchozí chování můžete přepsat zadáním jednoho z následujících akcí:
-      * Skupinový účet spravované služby
-      * Účet spravované služby
+      * A Group Managed Service Account
+      * A Managed Service Account
       * Účet uživatele domény
       * Místní uživatelský účet
 * Dříve při upgradu na nové sestavení Azure AD Connect obsahuje konektory aktualizovat nebo změny v pravidlech synchronizace, Azure AD Connect spustí cyklus úplné synchronizace. Nyní Azure AD Connect selektivně aktivuje kroky úplný Import pouze pro konektory s aktualizací update a úplnou synchronizaci pouze pro konektory se změny pravidel synchronizace.

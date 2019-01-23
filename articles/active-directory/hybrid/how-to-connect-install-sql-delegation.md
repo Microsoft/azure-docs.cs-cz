@@ -3,7 +3,7 @@ title: Instalace služby Azure AD Connect pomocí oprávnění delegovaného spr
 description: Toto téma popisuje aktualizaci služby Azure AD Connect, která umožňuje instalaci pomocí účtu, který má pouze oprávnění SQL dbo.
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: jparsons
 ms.assetid: ''
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b951f541487d70bccb8a709f79a3674ef22eba3a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e4f1e60424e058f805e89fc3291cfa9a28390c8d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314514"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474898"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL
 Před na nejnovější verzi Azure AD Connect správu delegování, při nasazování konfigurace, které vyžaduje SQL, nepodporovaly.  Uživatelé, kteří chtěli nainstalovat Azure AD Connect je potřeba mít oprávnění správce serveru na SQL serveru.
 
 S nejnovější verzí služby Azure AD Connect zřizování může databáze nyní možné provádět vzdáleně správce SQL a následně je nainstalován Správce služby Azure AD Connect s oprávněními vlastníka databáze.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Chcete-li tuto funkci použít, budete muset dobré si uvědomit, že existuje několik pohyblivých částí a každý z nich může zahrnovat jiného správce ve vaší organizaci.  Následující tabulka shrnuje jednotlivé role a jejich povinností v nasazení služby Azure AD Connect s touto funkcí.
 
 |Role|Popis|

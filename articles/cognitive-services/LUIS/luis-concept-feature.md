@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2d6f7e2fd332e1687db1564befeb6f531045c5dd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 7a2d86bb61a27b9360d55775b64d16119fec0601
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993055"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474009"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Seznam frázi je součástí aplikace LUIS
 

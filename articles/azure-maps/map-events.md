@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b9174d98dd6d4dfb5353d6976d074bb4c91373dc
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 16455719f05688793e2aee6f10fa00a707d553c0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678317"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469529"
 ---
 # <a name="interact-with-the-map---mouse-events"></a>Interakce s mapou - události myši
 
-V tomto článku se dozvíte, jak používat [map – třída](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) vlastnost zvýrazněte události na mapě a na různých vrstev mapy. Je také ukazuje, jak pomocí vlastnosti události mapování třídy zvýrazněte události, kdy budete moct používat značky HTML.
+V tomto článku se dozvíte, jak používat [map – třída](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) vlastnost zvýrazněte události na mapě a na různých vrstev mapy. Je také ukazuje, jak pomocí vlastnosti události mapování třídy zvýrazněte události, kdy budete moct používat značky HTML.
 
 ## <a name="interact-with-the-map"></a>Interakce s mapou
 

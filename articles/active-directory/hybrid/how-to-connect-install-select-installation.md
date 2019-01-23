@@ -1,10 +1,10 @@
 ---
-title: 'Služby Azure AD Connect: Vyberte typ instalace | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Vyberte typ instalace | Dokumentace Microsoftu'
 description: Toto téma vás provede postupy vybrat typ instalace pro Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e4185b6b30bdd01492d9aae7ac38e18aaba7eef5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6082d583432e246ba3d45f3e97f4b104710e8727
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312043"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473686"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Výběr typu instalace pro Azure AD Connect
-Azure AD Connect zahrnuje dva typy instalace pro novou instalaci: expresní a přizpůsobenou. Toto téma pomáhá při rozhodování, kterou možnost použít během instalace.
+Azure AD Connect zahrnuje dva typy instalace pro novou instalaci: Expresní a přizpůsobenou. Toto téma pomáhá při rozhodování, kterou možnost použít během instalace.
 
 ## <a name="express"></a>Express
 Express je nejběžnější možnost a používá přibližně 90 % všechna nová zařízení. Je navržená k poskytování konfiguraci, která funguje nejběžnějších scénářů zákazníků.
@@ -43,7 +43,7 @@ Získáte:
 
 Možnosti, kde můžete dál používat Express:
 
-- Pokud nechcete synchronizovat všechny organizační jednotky, můžete stále použít Express a na poslední stránce, zrušte výběr **spustit proces synchronizace...**\*. Potom znovu spusťte Průvodce instalací a změnit organizační jednotky ve [možnosti konfigurace](how-to-connect-installation-wizard.md#customize-synchronization-options) a povolení plánované synchronizace.
+- Pokud nechcete synchronizovat všechny organizační jednotky, můžete stále použít Express a na poslední stránce, zrušte výběr ** spustit proces synchronizace... ***. Potom znovu spusťte Průvodce instalací a změnit organizační jednotky ve [možnosti konfigurace](how-to-connect-installation-wizard.md#customize-synchronization-options) a povolení plánované synchronizace.
 - Chcete povolit jednou z funkcí v Azure AD Premium, jako je například zpětný zápis hesla. Nejdřív projděte express získat počáteční instalace byla dokončena. Potom znovu spusťte Průvodce instalací a změnit [možnosti konfigurace](how-to-connect-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Vlastní

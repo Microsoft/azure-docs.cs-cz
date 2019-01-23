@@ -3,7 +3,7 @@ title: Konfigurace jednotného přihlašování – Azure Active Directory | Mic
 description: Tento kurz využívá Azure Portal ke konfiguraci jednotného přihlašování založeného na SAML pro aplikaci s využitím Azure Active Directory (Azure AD).
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: tutorial
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: barbkess
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: aceacdea8b3c86a5c4f26a5f082f4c6cf0b3805d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 73e97a38913b3098ba2e14294ecf621add310428
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011973"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465713"
 ---
-# <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Kurz: Konfigurace jednotného přihlašování založeného na SAML pro aplikaci s využitím Azure Active Directory
+# <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Kurz: Konfigurace založené na SAML jednotného přihlašování pro aplikaci pomocí Azure Active Directory
 
 Tento kurz využívá [Azure Portal](https://portal.azure.com) ke konfiguraci jednotného přihlašování založeného na SAML pro aplikaci s využitím Azure Active Directory (Azure AD). Pomocí tohoto kurzu, když [kurzu specifické pro aplikaci](../saas-apps/tutorial-list.md) není k dispozici. 
 
@@ -33,7 +33,7 @@ Tento kurz využívá Azure Portal k provedení následujících kroků:
 > * Konfigurace jednotného přihlašování založeného na SAML pro aplikaci
 > * Test nastavení SAML
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 1. Pokud aplikace nebyl přidán do vašeho tenanta Azure AD, přečtěte si téma [rychlý start: Přidání aplikace do svého tenanta Azure AD](add-application-portal.md).
 
@@ -71,10 +71,10 @@ Konfigurace domény a adres URL:
 
     | Nastavení konfigurace | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
     |:--|:--|:--|:--|
-    | Přihlašovací adresa URL | Vyžadováno | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Office 365 nebo Azure AD přístupového panelu. Když je pole prázdné, Azure AD spoléhá na zprostředkovatele identity k zahájení jednotného přihlašování, když uživatel spustí aplikaci.|
+    | Přihlašovací adresa URL | Požaduje se | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Office 365 nebo Azure AD přístupového panelu. Když je pole prázdné, Azure AD spoléhá na zprostředkovatele identity k zahájení jednotného přihlašování, když uživatel spustí aplikaci.|
     | Identifikátor (ID entity) | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Jednoznačně identifikuje aplikaci, pro kterou se konfiguruje jednotné přihlašování. Azure AD odešle identifikátor aplikace jako parametr cílové skupiny tokenu SAML. Abyste ověřili, že se očekává aplikace. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací.|
-    | Adresa URL odpovědi | Volitelná | Vyžadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). |
-    | Stav přenosu | Volitelná | Volitelná | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je tato hodnota platná adresa URL aplikace, ale některé aplikace s tímto polem pracují jinak. Další informace vám sdělí dodavatel aplikace.
+    | Adresa URL odpovědi | Nepovinné | Požaduje se | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). |
+    | Stav přenosu | Nepovinné | Nepovinné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je tato hodnota platná adresa URL aplikace, ale některé aplikace s tímto polem pracují jinak. Další informace vám sdělí dodavatel aplikace.
 
 2. Zadejte požadované informace. Pokud chcete zobrazit všechna nastavení, klikněte na **Zobrazit pokročilé nastavení URL**.
 
@@ -147,7 +147,7 @@ Už jste téměř hotovi.  Na závěr je potřeba nakonfigurovat aplikaci tak, a
 2. Na portálu klikněte na **Konfigurovat aplikaci** a postupujte podle pokynů.
 3. Ručně vytvořte uživatelské účty v aplikaci otestovat jednotné přihlašování. Vytvořte uživatelské účty, které jste k aplikaci přiřadili v [předchozí části](#assign-users-to-the-application). 
 
-## <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+## <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Jste připraveni otestovat své nastavení.  
 

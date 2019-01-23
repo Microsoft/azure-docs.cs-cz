@@ -4,7 +4,7 @@ description: Pokyny pro konkrétní chyby při přihlašování do aplikace, kte
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2794f45bf9d9d8d60f9be286fdf0e4d288a969fa
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8a21f1ac0839a37455fe06537242edc6e43731a4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412287"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477296"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci galerii konfigurované pro federované jednotné přihlašování
 

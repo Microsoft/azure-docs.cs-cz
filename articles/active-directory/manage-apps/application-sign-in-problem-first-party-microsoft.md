@@ -4,7 +4,7 @@ description: S řešením běžných problémů, kterým čelí při přihlašov
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ab0face3c211a8ea1477f40167f80330f0423498
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 2a13df5fc609fe7cfddff91841e082c123d758f5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379260"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468726"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoftu
 
@@ -34,11 +34,11 @@ Existují tři hlavní způsoby, že uživatel může získat přístup k aplika
 
 -   Pro aplikace, které společnost Microsoft nebo 3. stran publikuje zpřístupněna bezplatně pro může je používat kdokoli, uživatelé mohou také být udělen přístup prostřednictvím **souhlas správce**. To znamená, že správce určil, že aplikace může je používat kdokoli v organizaci, přihlaste se k aplikaci pomocí účtu globálního správce a udělit přístup všem uživatelům v organizaci.
 
-Váš problém vyřešit, spusťte s [obecné problémových oblastí pomocí přístupu k aplikacím, které byste měli zvážit](#general-problem-areas-with-application-access-to-consider) a pak si můžete přečíst [názorný postup: kroky pro řešení potíží s přístupem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access) do Podrobnosti.
+Váš problém vyřešit, spusťte s [obecné problémových oblastí pomocí přístupu k aplikacím, které byste měli zvážit](#general-problem-areas-with-application-access-to-consider) a pak si můžete přečíst [názorný postup: Postup řešení potíží s přístupem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access) k ponoříte do detailů.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Obecné problémových oblastí pomocí přístupu k aplikacím, které je třeba zvážit
 
-Následuje seznam obecné problémových oblastí, které můžete zobrazit další podrobnosti Pokud máte představu, kde začít, ale doporučujeme si přečíst Průvodce pro rychlé zahájení: [názorný postup: kroky pro řešení potíží s přístupem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
+Následuje seznam obecné problémových oblastí, které můžete zobrazit další podrobnosti Pokud máte představu, kde začít, ale doporučujeme, abyste že si přečíst Průvodce pro rychlé zahájení práce: [Návod: Postup řešení potíží s přístupem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
 
 -   [Problémy s účtem uživatele](#problems-with-the-users-account)
 
@@ -204,7 +204,7 @@ Pokud chcete zkontrolovat stav služby Multi-Factor authentication, postupujte p
 
 9.  Vyberte uživatele ze seznamu uživatelů a **povolit**, **zakázat**, nebo **vynutit** ověřování službou Multi-Factor Authentication podle potřeby.
 
-  * **Poznámka:**: Pokud je uživatel v **vynucené** stavu, může je nastavená na **zakázané** dočasně a informovat je zpátky do svého účtu. Poté, co jsou zpět v, můžete změnit jejich stav na **povoleno** znovu, aby je znovu zaregistrovat svoje kontaktní údaje při příštím přihlášení v vyžadují. Alternativně můžete podle kroků v [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info) ověření nebo pro ně nastavit tato data.
+  * **Poznámka:** Pokud je uživatel v **vynucené** stavu, může je nastavená na **zakázané** dočasně a informovat je zpátky do svého účtu. Poté, co jsou zpět v, můžete změnit jejich stav na **povoleno** znovu, aby je znovu zaregistrovat svoje kontaktní údaje při příštím přihlášení v vyžadují. Alternativně můžete podle kroků v [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info) ověření nebo pro ně nastavit tato data.
 
 ### <a name="check-a-users-authentication-contact-info"></a>Zkontrolujte kontaktní údaje pro ověření uživatele
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: bc3ee549a4219441b657b89bef56d35dfac6626a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: logs
+ms.openlocfilehash: b01afe1626fe27a20e7b7103ccb020e4414f774f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547486"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476458"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat diagnostické protokoly Azure
 
@@ -74,7 +74,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| ID prostředku |Ano |ID prostředku prostředku, na kterém chcete nastavit nastavení diagnostiky. |
+| ResourceId |Ano |ID prostředku prostředku, na kterém chcete nastavit nastavení diagnostiky. |
 | StorageAccountId |Ne |ID prostředku účtu úložiště, ke kterému má být uložen diagnostické protokoly. |
 | Kategorie |Ne |Čárkou oddělený seznam kategorií protokolu povolit. |
 | Povoleno |Ano |Logická hodnota označující, jestli jsou povolené nebo zakázané pro tento prostředek diagnostiku. |
@@ -165,3 +165,4 @@ V rámci souboru pt1h.JSON, když se ukládají všechny události v poli "zázn
 * [Stream diagnostické protokoly na obor názvů služby Event Hubs](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Archivovat protokoly služby Azure Active Directory prostřednictvím služby Azure Monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Další informace o diagnostických protokolů](../../azure-monitor/platform/diagnostic-logs-overview.md)
+

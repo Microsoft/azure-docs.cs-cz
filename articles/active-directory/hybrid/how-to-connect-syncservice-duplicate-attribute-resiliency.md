@@ -4,7 +4,7 @@ description: Nové chování, jak zpracovat objekty s hlavní název uživatele 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f3460520b8914a25807c77f631aa4c64f3b2efb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406190"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464863"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
 Odolnost duplicitních atributů je funkce v Azure Active Directory, ke které dojde k odstranění řešit zádrhele spojené s způsobené **UserPrincipalName** a **ProxyAddress** je v konfliktu při spuštění jedné od Microsoftu Nástroje pro synchronizaci.
@@ -133,7 +133,7 @@ Tady je příklad vypadá e-mailové oznámení pro ProxyAddress konflikt:
 ## <a name="resolving-conflicts"></a>Řešení konfliktů
 Řešení potíží s taktika strategie a řešení pro tyto chyby by neměl lišit od způsob zpracovávaly chyby duplicitních atributů v minulosti. Jediným rozdílem je, že úlohy časovače přesune prostřednictvím klienta na straně služby automaticky přidat atribut dotyčný správný objekt po vyřešení konfliktu.
 
-Následující článek popisuje různé strategie jejich řešení: [Zduplikování dotazu nebo neplatné atributy zakázat synchronizaci adresáře služeb Office 365](https://support.microsoft.com/kb/2647098).
+Následující článek popisuje různé strategie jejich řešení: [Duplicitní nebo neplatný atributů, které brání synchronizace adresářů v Office 365](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Známé problémy
 Žádná z těchto známých problémů způsobí, že snížení dat ke ztrátě nebo služby. Některé z nich jsou aesthetic, ostatní způsobit standard "*předběžné odolnost proti chybám*" chyby duplicitních atributů, která je vyvolána namísto umístění do karantény atribut konflikt a druhý způsobí, že některé chyby tak, aby vyžadovala velmi ruční opravit.

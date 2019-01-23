@@ -11,14 +11,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
-ms.openlocfilehash: 9a925a01cae75124dc56b0c2bc5cc931a6e04100
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4e332023e4e3a6efcca8f8a9c7961e299ebf9247
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721610"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473788"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Monitorování stavu a výstrah ve službě Azure Stack
 

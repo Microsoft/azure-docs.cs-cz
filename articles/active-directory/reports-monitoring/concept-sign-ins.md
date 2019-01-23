@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4b4c2e35059fa3521a74e1cb0c218c100b12a4ec
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: cb0c72c8a14dd71bbbe9d6cd46224542f7bf3e5b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436718"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470575"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -203,7 +203,10 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 - Datum
 - Vyžaduje se MFA
 - Stav přihlášení
- 
+
+> [!NOTE]
+> IP adresy se vydávají takovým způsobem, že neexistuje žádná konečné připojení mezi IP adresy a kdy je počítač s touto adresou fyzicky umístěn. Mapování IP adres je složité fakt, poskytovatelů mobilních a sítím VPN a vydávat IP adresy z centrální fondů, které jsou často velmi daleko od skutečně použití klientského zařízení. V sestavách služby Azure AD, převod IP adres na fyzické umístění je aktuálně pokusí na základě trasování, klíče registru, zpětného vyhledávání a další informace.
+
 Na stránce **Uživatelé** zobrazíte úplný přehled všech přihlášení uživatelů kliknutím na **Přihlášení** v části **Aktivita**.
 
 ![Aktivita přihlašování](./media/concept-sign-ins/08.png "Aktivita přihlašování")

@@ -4,7 +4,7 @@ description: Popisuje základní informace o konektory Proxy aplikací Azure AD.
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 2afe75045444fbc0ca36ee1cfca3d96f5b218ab0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 72b3a009ec3ed85bb1bacc089a0fa12f1aa9ecce
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135487"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474570"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s Azure AD Application Proxy
 
@@ -65,9 +65,9 @@ Po nastavení vzdálené plochy a Azure AD Application Proxy pro vaše prostřed
 
 1. [Publikujte novou aplikaci Proxy aplikací](application-proxy-add-on-premises-application.md) s použitím následujících hodnot:
    - Interní adresa URL: `https://\<rdhost\>.com/`, kde `\<rdhost\>` je společný kořen, webu a brány VP sdílet.
-   - Externí adresa URL: Toto pole se vyplní automaticky na základě názvu aplikace, ale můžete ho upravit. Vaši uživatelé budou moct tuto adresu URL, když přistupují k vzdálené plochy
+   - Externí adresa URL: Toto pole se automaticky vyplní podle názvu aplikace, ale můžete ho upravit. Vaši uživatelé budou moct tuto adresu URL, když přistupují k vzdálené plochy
    - Metoda předběžného ověření: Azure Active Directory
-   - Přeložit hlavička adresy URL: Ne
+   - Překlad hlavička adresy URL: Ne
 2. Přiřadíte uživatele k publikované aplikaci VP. Zajistěte, aby že všichni mají přístup k vzdálené ploše, příliš.
 3. Nechte jedinou metodu přihlašování pro aplikaci jako **Azure AD jednotné přihlašování zakázáno**. Uživatelům se výzva k ověření jednou do služby Azure AD a jednou na webu, ale mají jednotné přihlašování ve službě Brána VP.
 4. Přejděte na **Azure Active Directory** > **registrace aplikací** > *aplikace* > **nastavení**.

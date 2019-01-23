@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 170cf458496d91a28260296e2aba803d76fbc06b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 90910580fd7fc766376569de3ce43fc5ce297e8b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388834"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469198"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Uzel akcí jednotky škálování ve službě Azure Stack
 
@@ -148,9 +148,25 @@ Když spustíte akci oprava, musíte zadat BMC IP adresu.
 
 Spuštěním akce opravy, otevřete řádku Powershellu se zvýšenými oprávněními a spusťte následující rutinu:
 
-  ````PowerShell
+  ```PowerShell
   Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
-  ````
+  ```
+
+## <a name="shutdown"></a>Shutdown
+
+**Vypnutí** fist akce přesune všechny aktivní úlohy na zbývající uzly ve stejné jednotce škálování. Akce pak řádně ukončí uzel jednotek škálování.
+
+Po spuštění uzlu, který byl ukončen, budete muset spustit [obnovit](#resume) akce. Předchozí úlohy, které byly spuštěny na uzlu není navrácení služeb po obnovení.
+
+Pokud operace vypnutí selže, pokusí [vyprázdnit](#drain) operaci za nímž následuje operace vypnutí.
+
+Spustit akci vypnutí, otevřete řádku Powershellu se zvýšenými oprávněními a spusťte následující rutinu:
+
+  ```PowerShell
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -Shutdown
+  ```
+
+
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Python'
+title: 'Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Python'
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v Pythonu. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: c28a3097e8b0733db229fc10778d0ac77a3b0a7a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ad3730968f22f89bf8618454039e16581b3f94b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306366"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473040"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Python
+# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Python
 
 Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v Pythonu. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
@@ -170,7 +170,7 @@ Po prvním volání rozhraní API Bingu pro vyhledávání na webu se pojďme po
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Omezení počtu výsledků vrácených Bingem
 
-V této ukázce jsou použité parametry `count` a `offset` k omezení počtu výsledků vrácených [metodou `search`](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search) sady SDK. Vytiskne se `name` a `URL` prvního výsledku.
+V této ukázce jsou použité parametry `count` a `offset` k omezení počtu výsledků vrácených [metodou `search`](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) sady SDK. Vytiskne se `name` a `URL` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
     ```python
@@ -181,7 +181,7 @@ V této ukázce jsou použité parametry `count` a `offset` k omezení počtu v�
         try:
             '''
             Set the query, offset, and count using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(query="Best restaurants in Seattle", offset=10, count=20)
             print("\r\nSearching for \"Best restaurants in Seattle\"")
@@ -207,7 +207,7 @@ V této ukázce jsou použité parametry `count` a `offset` k omezení počtu v�
 
 ### <a name="filter-for-news-and-freshness"></a>Filtrování zpráv podle stáří
 
-V této ukázce použijeme parametry `response_filter` a `freshness` k filtrování výsledků hledání vrácených [metodou `search`](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations#search) sady SDK. Vrácené výsledky hledání jsou omezené na nové zprávy a stránky, které Bing našel za posledních 24 hodin. Vytiskne se `name` a `URL` prvního výsledku.
+V této ukázce použijeme parametry `response_filter` a `freshness` k filtrování výsledků hledání vrácených [metodou `search`](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) sady SDK. Vrácené výsledky hledání jsou omezené na nové zprávy a stránky, které Bing našel za posledních 24 hodin. Vytiskne se `name` a `URL` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
     ```python
@@ -217,7 +217,7 @@ V této ukázce použijeme parametry `response_filter` a `freshness` k filtrová
         try:
             '''
             Set the query, response_filter, and freshness using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(query="xbox",
                 response_filter=["News"],
@@ -255,7 +255,7 @@ V této ukázce použijeme parametry `response_filter` a `freshness` k filtrová
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Použití bezpečného hledání, počtu odpovědí a propagačního filtru
 
-V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k filtrování výsledků hledání vrácených [metodou `search`](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search) sady SDK. Zobrazí se `name` a `URL` prvního výsledku.
+V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k filtrování výsledků hledání vrácených [metodou `search`](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) sady SDK. Zobrazí se `name` a `URL` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
     ```python
@@ -267,7 +267,7 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
         try:
             '''
             Set the query, answer_count, promote, and safe_search parameters using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(
                 query="Niagara Falls",

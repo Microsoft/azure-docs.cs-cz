@@ -16,16 +16,16 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3f4090f1724850b0263905a0593fc77cc6dbfd16
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0184fb058e467e8a9981edcf223613dfc431b933
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620730"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464319"
 ---
-# <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rychlý start: Stažení sestavy auditování pomocí portálu Azure Portal
+# <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rychlý start: Stáhněte si sestavu auditování pomocí webu Azure portal
 
-V tomto rychlém startu se dozvíte, jak stáhnout protokoly auditu pro vašeho tenanta za posledních 24 hodin.
+V tomto rychlém startu se dozvíte, jak stáhnout protokoly auditu pro vašeho tenanta za posledních 24 hodin. Až 5000 záznamů si můžete stáhnout z webu Azure portal. Záznamy jsou seřazeny podle většinu poslední, tak ve výchozím nastavení, můžete získat nejnovější 5000 záznamů. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +34,7 @@ Budete potřebovat:
 * Tenanta Azure Active Directory. 
 * Uživatel, který je v **správce zabezpečení**, **Čtenář zabezpečení**, nebo **globálního správce** role pro příslušného tenanta. Každý uživatel v tenantovi může navíc použít vlastní protokoly auditu.
 
-## <a name="quickstart-download-an-audit-report"></a>Rychlý start: Stažení sestavy auditování
+## <a name="quickstart-download-an-audit-report"></a>Rychlý start: Stažení sestavy auditu
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Z levého navigačního podokna vyberte **Azure Active Directory** a pomocí tlačítka **Přepnout adresář** vyberte aktivní adresář.

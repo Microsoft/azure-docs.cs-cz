@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050587"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464217"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Volby architektury vzdáleného monitorování
 
@@ -45,7 +45,7 @@ Tato část podrobně technologické volby provedené v řešení vzdáleného m
 
 ![Základní Diagram](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png)
 
-### <a name="cloud-gateway"></a>Cloudová brána
+### <a name="cloud-gateway"></a>Cloud Gateway
 
 Azure IoT Hub se používá jako cloudová brána řešení vzdáleného monitorování. [IoT Hub](https://azure.microsoft.com/services/iot-hub/) nabízí zabezpečenou obousměrnou komunikaci mezi zařízeními.
 
@@ -61,7 +61,7 @@ Pro zpracování datového proudu, používá řešení vzdáleného monitorová
 
 ### <a name="storage"></a>Storage
 
-Akcelerátor řešení vzdálené monitorování pro úložiště, používá Azure Time Series Insights a Azure Cosmos DB. Azure Time Series Insights ukládá zprávy přicházející z připojených zařízení prostřednictvím služby IoT Hub. Akcelerátor řešení využívá Azure Cosmos DB pro všechna úložiště, jako je například studeného úložiště, definice pravidla, alarmy a nastavení konfigurace.
+Akcelerátor řešení vzdálené monitorování pro úložiště, používá Azure Time Series Insights a Azure Cosmos DB. Azure Time Series Insights ukládá zprávy přicházející z připojených zařízení prostřednictvím služby IoT Hub. Akcelerátor řešení využívá Azure Cosmos DB pro všechna úložiště, jako je například studeného úložiště, definice pravidla, výstrahy a nastavení konfigurace.
 
 Azure Cosmos DB je doporučené úložiště pro obecné účely teplé řešení pro IoT aplikace. Řešení, jako je Azure Time Series Insights a Azure Data Lake jsou však vhodné pro mnoho případy použití. S Azure Time Series Insights můžete získat podrobnější přehled o datech časových řad ze zjistíte trendy a anomálie. Tato funkce umožňuje provádět analýzy původních příčin a vyhnout se nákladným prostojům.
 
@@ -70,7 +70,7 @@ Azure Cosmos DB je doporučené úložiště pro obecné účely teplé řešen�
 
 ### <a name="business-integration"></a>Obchodní integrace
 
-Integrace obchodních v řešení vzdáleného monitorování je omezená na generování alarmy, které jsou umístěny v záložním úložišti. Připojte řešení pomocí Azure Logic Apps provádět lepší obchodní scénáře integrace.
+Integrace obchodních v řešení vzdáleného monitorování je omezená na generování výstrah, které jsou umístěny v záložním úložišti. Připojte řešení pomocí Azure Logic Apps provádět lepší obchodní scénáře integrace.
 
 ### <a name="user-interface"></a>Uživatelské rozhraní
 

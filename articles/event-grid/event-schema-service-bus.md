@@ -6,18 +6,18 @@ author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 01/17/2019
 ms.author: babanisa
-ms.openlocfilehash: afb85f20c49821ca98e078791730a3376198e9e5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054025"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467736"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Schéma událostí Azure Event Grid pro Service Bus
 
-Tento článek obsahuje vlastnosti a schéma pro události služby Service Bus. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události služby Service Bus. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
 Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj události služby Service Bus](event-sources.md#service-bus).
 
@@ -83,13 +83,13 @@ Událost má následující dat nejvyšší úrovně:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| Předmět | řetězec | Vydavatel definované cesta předmět události. |
-| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
 | čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události úložiště objektů BLOB. |
 | dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
@@ -97,7 +97,7 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | namespaceName | řetězec | V existuje prostředek oboru názvů Service Bus. |
 | requestUri | řetězec | Identifikátor URI, do konkrétní fronty nebo předplatné, které vysílá události. |
-| Typ entity | řetězec | Typ entity služby Service Bus generování událostí (fronty nebo odběru). |
+| entityType | řetězec | Typ entity služby Service Bus generování událostí (fronty nebo odběru). |
 | queueName | řetězec | Frontu s aktivní zprávy, pokud se přihlášení k odběru do fronty. Hodnota null, pokud používáte témata a odběry. |
 | topicName | řetězec | V tématu odběr služby Service Bus s aktivní zprávy patří. Hodnota null, pokud používáte fronty. |
 | subscriptionName | řetězec | Odběr služby Service Bus s aktivní zprávy. Hodnota null, pokud používáte fronty. |

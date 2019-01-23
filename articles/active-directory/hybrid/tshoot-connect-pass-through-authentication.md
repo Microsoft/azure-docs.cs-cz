@@ -5,7 +5,7 @@ services: active-directory
 keywords: Řešení potíží s Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: db3dfc10d6936b063a225e48fd043b6208f10475
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686190"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472768"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s Azure Active Directory předávací ověřování
 
@@ -66,7 +66,7 @@ Přejděte do **Azure Active Directory** -> **přihlášení** na [centra pro sp
 | 80002 | Vypršel časový limit žádosti o ověření hesla ověřovacího agenta. | Zkontrolujte, jestli je dostupný z ověřovacího agenta služby Active Directory.
 | 80003 | Ověřovací agent přijal neplatnou odpověď. | Pokud se jedná o reprodukovatelné konzistentně napříč více uživatelů, zkontrolujte konfiguraci služby Active Directory.
 | 80004 | V žádosti o přihlášení byl použit nesprávný hlavní název uživatele (UPN). | Požádejte uživatele k přihlášení pomocí pověření správné uživatelské jméno.
-| 80005 | Ověřovací agent: Došlo k chybě. | Došlo k přechodné chybě. Zkuste to znovu později.
+| 80005 | Ověřovací Agent: Došlo k chybě. | Došlo k přechodné chybě. Zkuste to znovu později.
 | 80007 | Ověřovací agent se nemohl připojit k Active Directory. | Zkontrolujte, jestli je dostupný z ověřovacího agenta služby Active Directory.
 | 80010 | Ověřovací agent nebyl schopen dešifrovat heslo. | Pokud se jedná o konzistentně reprodukovatelnou, instalace a registrace bude nový Agent ověřování. A odinstalovat stávající. 
 | 80011 | Ověřovací agent nebyl schopen získat dešifrovací klíč. | Pokud se jedná o konzistentně reprodukovatelnou, instalace a registrace bude nový Agent ověřování. A odinstalovat stávající.
@@ -95,7 +95,7 @@ Ověřte, že používáte cloudový účet globálního správce pro všechny s
 
 ### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Upozornění při odinstalaci služby Azure AD Connect
 
-Pokud máte ve svém tenantovi povoleno předávací ověřování a odinstalaci služby Azure AD Connect, zobrazuje se následující upozornění: "uživatelé nebudou moct přihlásit ke službě Azure AD bez dalších předávací ověřování agenti nainstalovaní na ostatní servery."
+Pokud máte ve svém tenantovi povoleno předávací ověřování a odinstalaci služby Azure AD Connect, zobrazí se následující upozornění: "Uživatelé nebudou moct přihlásit ke službě Azure AD bez dalších předávací ověřování agenti nainstalovaní na jiné servery."
 
 Ujistěte se, že vaše instalace [s vysokou dostupností](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) před odinstalováním vyhnuli narušení funkčnosti přihlášení uživatele Azure AD Connect.
 
@@ -137,7 +137,7 @@ Chcete-li vyřešit neúspěšných přihlášení uživatele, vyhledejte protok
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-Popisný podrobnosti o chybě ("1328" v předchozím příkladu) můžete získat tak, že se vám otevírají příkazového řádku a spuštěním následujícího příkazu (Poznámka: "1328" nahraďte aktuální číslo chyby, který se zobrazí v protokolech):
+Popisný podrobnosti o chybě ("1328" v předchozím příkladu) můžete získat tak, že se vám otevírají příkazového řádku a spuštěním následujícího příkazu (Poznámka: Nahraďte "1328" aktuální číslo chyby, který se zobrazí v protokolech):
 
 `Net helpmsg 1328`
 

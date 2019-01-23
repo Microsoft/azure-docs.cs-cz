@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 92e16104edb46298d6e503b7546449ed71041047
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 236b7543772f9e6df9c7ba7f1a9365153593a929
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005746"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473176"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – výkonné paralelní zpracování (MPP) architektury
 Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti. 
@@ -51,7 +51,7 @@ SQL Data Warehouse využívá úložiště Azure k bezpečnost vašich dat uživ
 
 Výpočetní uzly poskytují výpočetní výkon. Distribuce namapovat na výpočetních uzlech pro zpracování. Protože platíte za další výpočetní prostředky, SQL Data Warehouse znovu mapuje distribucí do výpočetních uzlů k dispozici. Počet výpočetních uzlů v rozmezí od 1 do 60 a je určen podle úrovně služeb pro datový sklad.
 
-Každý výpočetní uzel má ID uzlu, který je viditelný v zobrazeních systému. Tím, že hledají sloupci $node_id v systémových zobrazeních, jejichž názvy začínají řetězcem sys.pdw_nodes uvidíte ID výpočetního uzlu. Seznam těchto zobrazení systému najdete v tématu [MPP systémová zobrazení](sql-data-warehouse-reference-tsql-statements.md).
+Každý výpočetní uzel má ID uzlu, který je viditelný v zobrazeních systému. Tím, že hledají sloupci $node_id v systémových zobrazeních, jejichž názvy začínají řetězcem sys.pdw_nodes uvidíte ID výpočetního uzlu. Seznam těchto zobrazení systému najdete v tématu [MPP systémová zobrazení](http://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Služba pro přesun dat
 Přesun dat Service (DMS) je technologie přenosu dat, která koordinuje přesun dat mezi jednotlivými výpočetními uzly. Některé dotazy vyžadují přesunu dat pro zajištění přesných výsledků vrátí paralelní dotazy. Při přesunu dat je potřeba, DMS zajišťuje že ta správná data načte do správného umístění. 

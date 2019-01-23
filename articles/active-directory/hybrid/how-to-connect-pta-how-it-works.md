@@ -1,11 +1,11 @@
 ---
-title: 'Služby Azure AD Connect: Předávací ověřování – jak to funguje | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Předávací ověřování – jak to funguje | Dokumentace Microsoftu'
 description: Tento článek popisuje, jak funguje Azure Active Directory předávací ověřování
 services: active-directory
 keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 437800483004cdbff89814579137f4057133d0fb
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 423edfecb7bfd69de9ef004686db4a05824d0857
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913785"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465424"
 ---
-# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure předávací ověřování služby Active Directory: Podrobné technické informace
+# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Předávací ověřování služby Azure Active Directory: Podrobné technické informace
 Tento článek je přehled toho, jak funguje předávací ověřování služby Azure Active directory (Azure AD). Podrobné technické a informace o zabezpečení najdete v tématu [podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md) článku.
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Jak funguje předávacího ověřování Azure Active Directory?
@@ -51,12 +51,12 @@ Následující diagram znázorňuje všechny součásti a kroky:
 
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
-- [Rychlý Start](how-to-connect-pta-quick-start.md): uvedení do provozu na předávacího ověřování Azure AD.
+- [Rychlý Start](how-to-connect-pta-quick-start.md): Uvedení do provozu na předávacího ověřování Azure AD.
 - [Migrace ze služby AD FS na předávací ověřování](https://aka.ms/adfstoPTADP) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Nakonfigurujte schopnosti inteligentním uzamčením ve svém tenantovi k ochraně uživatelské účty.
 - [Nejčastější dotazy](how-to-connect-pta-faq.md): Najděte odpovědi na nejčastější dotazy.
 - [Řešení potíží s](tshoot-connect-pass-through-authentication.md): Zjistěte, jak řešit běžné problémy s funkcí předávací ověřování.
-- [Podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md): získáte podrobné technické informace o funkci předávací ověřování.
-- [Azure AD bezproblémového jednotného přihlašování k](how-to-connect-sso.md): Další informace o této doplňkové funkce.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte fórum Azure Active Directory do souboru žádostí o nové funkce.
+- [Podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md): Získejte podrobné technické informace o funkci předávací ověřování.
+- [Bezproblémové jednotné přihlašování Azure AD](how-to-connect-sso.md): Další informace o této doplňkové funkce.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fórum Azure Active Directory pomocí do souboru žádostí o nové funkce.
 

@@ -4,7 +4,7 @@ description: Vysvětluje, uživatele, skupiny nebo kontakty ve službě Azure AD
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 8d204647-213a-4519-bd62-49563c421602
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 46d0ce28d6381662847917ce83c77780f1bd9e4c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c59065b21935336a77e3fb88c30f12cded341808
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315235"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473924"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizace Azure AD Connect: Principy uživatelů, skupin a kontaktů
 Existuje několik různých důvodů, proč byste měli několik doménových struktur služby Active Directory a existuje několik topologií jiného nasazení. Běžné modely zahrnují při nasazování prostředků účtu a doménových struktur sync'ed GAL po fúze a akvizice. Ale i v případě, že existují čistě modely, hybridní modely jsou běžné také. Výchozí konfigurace ve službě Azure AD Connect sync nepřebírá žádné konkrétní modelu, ale v závislosti na tom, jak uživatel odpovídající byla vybrána v instalační příručce, může být dodržen jiné chování.
@@ -73,6 +73,6 @@ Předpokladem je, že pokud účet zakázaný uživatel se nenašel, pak jsme ne
 Pokud objekt byly exportovány do služby Azure AD a změna sourceAnchor již není povolena. Pokud byl objekt exportovat atribut úložiště metaverze **cloudSourceAnchor** nastavená **sourceAnchor** hodnotu přijat službou Azure AD. Pokud **sourceAnchor** se změní a neodpovídá **cloudSourceAnchor**, pravidlo **na AAD – uživatel připojit** vyvolá chybu **má atribut sourceAnchor Změnit**. V takovém případě konfigurace nebo dat musí být opraveny stejné sourceAnchor je k dispozici v úložišti metaverse znovu předtím, než objekt lze znovu synchronizovat.
 
 ## <a name="additional-resources"></a>Další prostředky
-* [Azure AD Connect Sync: Možnosti přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace služby Azure AD Connect: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: 2376ade49b990ff22683a14ecd4ae6b4dda356c3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.component: disks
+ms.openlocfilehash: 3627891df429745c66bb85aed5182ff934268027
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434539"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475420"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v Linuxu
 Je běžným scénářem pomocí softwarového pole RAID na virtuální počítače s Linuxem v Azure k dispozici více připojené datové disky jako jedno zařízení RAID. Obvykle to umožňuje zlepšit výkon a umožňuje lepší výkon ve srovnání s použitím pouze jedním diskem.
@@ -35,7 +36,7 @@ sudo apt-get update
 sudo apt-get install mdadm
 ```
 
-* **CentOS a Oracle Linux**
+* **CentOS & Oracle Linux**
 ```bash
 sudo yum install mdadm
 ```

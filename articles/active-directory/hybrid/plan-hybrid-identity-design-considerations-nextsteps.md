@@ -4,7 +4,7 @@ description: Stručný a další kroky po přečtení Průvodce aspekty návrhu 
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 02d48768-ea9e-4bfe-ae54-b54c4bd0a789
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a36dc0cd8148b8cf58729d2e8d22011e61140b0f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 37c89771823649f6a2590911ba41eaf64c6ccbd8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426323"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474412"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory hybridní identity návrhu důležité informace o další kroky
 Teď, když jste dokončili definování vašich požadavků a prozkoumání všech možností pro řešení správy mobilních zařízení, jste připraveni udělat další kroky k nasazení podpůrná infrastruktura, která je pro vás a vaši organizaci.

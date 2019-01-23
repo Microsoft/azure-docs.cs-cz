@@ -4,7 +4,7 @@ description: Řešení běžných potíží čelí při nemůžete se přihlási
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 6f34945750d8f37a175e0b500a0596de08cf8ce4
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 66207952b0236e7d44d79250e12a72b2b2e8ef13
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356506"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476423"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Potíže při přihlašování k místní aplikaci pomocí proxy aplikací služby Azure AD
 

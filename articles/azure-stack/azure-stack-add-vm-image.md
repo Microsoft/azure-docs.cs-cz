@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 1/14/2019
+ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 3bd86fe8708d2cbb8cbddac4ca35d5afdc68d2e3
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: bac0b2933d4b6d4a88ebbb0402bba0ffd508b395
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306076"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474366"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image virtuálního počítače ve službě Azure Stack
 
@@ -42,21 +41,21 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
     > [!IMPORTANT]  
     >  Azure Stack nepodporuje dynamického disku VHD. Změna velikosti dynamický disk, který je připojen k virtuálnímu počítači ponechá virtuální počítač ve stavu selhání. Chcete-li tento problém zmírnit, odstraňte virtuální počítač bez odstranění disku Virtuálního počítače, objekt blob VHD v účtu úložiště. Převést virtuální pevný disk z dynamický disk na pevný disk a znovu vytvořte virtuální počítač.
 
-   * To je mnohem efektivnější k nahrání obrázku do úložiště objektů blob v Azure stacku, než se do Azure blob storage vzhledem k tomu, že bude trvat kratší dobu nasdílejte image do úložiště imagí Azure Stack.
+   - To je mnohem efektivnější k nahrání obrázku do úložiště objektů blob v Azure stacku, než se do Azure blob storage vzhledem k tomu, že bude trvat kratší dobu nasdílejte image do úložiště imagí Azure Stack.
 
-   * Po odeslání [image virtuálního počítače Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), ujistěte se, že k nahrazení **přihlášení k Azure** krok s [konfigurace prostředí PowerShell pro operátory Azure stacku](azure-stack-powershell-configure-admin.md) kroku.  
+   - Po odeslání [image virtuálního počítače Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), ujistěte se, že k nahrazení **přihlášení k Azure** krok s [konfigurace prostředí PowerShell pro operátory Azure stacku](azure-stack-powershell-configure-admin.md) kroku.  
 
-   * Poznamenejte si úložiště objektů blob v identifikátoru URI, kde jste tuto image odeslat. Identifikátor URI objektu blob úložiště má následující formát: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
+   - Poznamenejte si úložiště objektů blob v identifikátoru URI, kde jste tuto image odeslat. Identifikátor URI objektu blob úložiště má následující formát: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
 
-   * Pokud chcete zpřístupnit tento objekt blob anonymně, přejděte na kontejner objektů blob v účtu úložiště kde virtuálního pevného disku image virtuálního počítače na server nebyl nahrán. Vyberte **Blob**a pak vyberte **zásady přístupu**. Můžete volitelně vygenerovat sdílený přístupový podpis kontejneru a zahrnout ho jako součást identifikátor URI objektu blob. Tento krok zajistí, že se že objekt blob je možné použít pro přidání tohoto jako obrázek. Pokud se objekt blob není dostupné anonymně, image virtuálního počítače bude vytvořena ve stavu selhání.
+   - Pokud chcete zpřístupnit tento objekt blob anonymně, přejděte na kontejner objektů blob v účtu úložiště kde virtuálního pevného disku image virtuálního počítače na server nebyl nahrán. Vyberte **Blob**a pak vyberte **zásada přístupu**. Můžete volitelně vygenerovat sdílený přístupový podpis kontejneru a zahrnout ho jako součást identifikátor URI objektu blob. Tento krok zajistí, že se že objekt blob je možné použít pro přidání tohoto jako obrázek. Pokud se objekt blob není dostupné anonymně, image virtuálního počítače bude vytvořena ve stavu selhání.
 
-   ![Přejít na objektech blob na účtu úložiště](./media/azure-stack-add-vm-image/image1.png)
+    ![Přejít na objektech blob na účtu úložiště](./media/azure-stack-add-vm-image/image1.png)
 
-   ![Sada objektů blob přístup k veřejné](./media/azure-stack-add-vm-image/image2.png)
+    ![Sada objektů blob přístup k veřejné](./media/azure-stack-add-vm-image/image2.png)
 
-2. Přihlaste se ke službě Azure Stack jako operátor. V nabídce vyberte **všechny služby**. Potom v části **správu** vyberte kategorii **Compute** > **imagí virtuálních počítačů** > **přidat**.
+2. Přihlaste se ke službě Azure Stack jako operátor. V nabídce vyberte **všechny služby** > **image** pod **Compute** > **přidat**.
 
-3. V části **přidat Image virtuálního počítače**, zadejte vydavatele, nabídky, SKU a verzi image virtuálního počítače. K imagi virtuálního počítače v šablonách Resource Manageru najdete v těchto segmentech název. Je nutné vybrat **osType** hodnota správně. Pro **OS identifikátor URI objektu Blob disku**, zadejte identifikátor URI objektu Blob, kde image se odeslala. Vyberte **vytvořit** můžete začít vytvářet Image virtuálního počítače.
+3. V části **vytvoření image**, zadejte název, předplatné, skupinu prostředků, umístění, disk s operačním systémem, typ operačního systému, identifikátor URI objektu blob úložiště, typ účtu a hostujte ukládání do mezipaměti. Vyberte **vytvořit** můžete začít vytvářet Image virtuálního počítače.
 
    ![Zahájit vytvoření bitové kopie](./media/azure-stack-add-vm-image/image4.png)
 

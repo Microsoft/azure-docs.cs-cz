@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 047b173339e2b3c0715d7843f581c1df231d6030
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: alerts
+ms.openlocfilehash: 43e842d6325897f484d9dff342505cace6640e78
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230930"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472277"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -247,4 +247,5 @@ az group deployment create --resource-group myRG --template-file sampleScheduled
 * Vysvětlení [akce Webhooku pro výstrahy protokolu](../../azure-monitor/platform/alerts-log-webhook.md)
 * Další informace o [Application Insights](../../azure-monitor/app/analytics.md)
 * Další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 
+
 

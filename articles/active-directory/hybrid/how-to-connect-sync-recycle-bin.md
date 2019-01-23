@@ -5,7 +5,7 @@ services: active-directory
 keywords: Koš služby Active Directory, nechtěnému odstranění, zdrojové ukotvení
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: afec4207-74f7-4cdd-b13a-574af5223a90
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d1a09c077adbc3c9176740bce69bf051a912bc22
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 4836ffc8c6ab013ef5ad7a661db0df3254b6d4e1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555570"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468727"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronizace Azure AD Connect: Povolení odpadkového koše AD
 Doporučuje se, že povolíte funkci Koš služby Active Directory pro vaše místní Active Directory, jichž, které jsou synchronizovány do Azure AD. 

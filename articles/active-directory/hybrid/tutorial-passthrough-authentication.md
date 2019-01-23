@@ -3,19 +3,19 @@ title: 'Kurz:  Integrace jedné doménové struktury AD do Azure s využitím p�
 description: Ukazuje, jak nastavit prostředí hybridní identity pomocí předávacího ověřování.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 140161e88ee572d728a7f9c923c9528ea6755cc1
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6bbf9cbea0671aaa73ddc5402f3102eea3154e6c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165449"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467901"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Kurz:  Integrace jedné doménové struktury AD s využitím předávacího ověřování (PTA)
 
@@ -226,7 +226,7 @@ Nyní je čas ke stažení a instalaci Azure AD Connect.  Po jeho instalaci prov
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. Na obrazovce připojení ke službě Azure AD, zadejte uživatelské jméno a heslo globálního správce, který jsme vytvořili výše a klikněte na tlačítko **Další**.
 2. Na obrazovce adresáře připojení, klikněte na tlačítko **přidat adresář**.  Potom vyberte **vytvořit nový účet AD** zadejte contoso\Administrator uživatelské jméno a heslo a klikněte na tlačítko **OK**.
-3. Klikněte na tlačítko **Další**.
+3. Klikněte na **Další**.
 4. Na obrazovce konfigurace přihlášení Azure AD, vyberte **pokračovat bez odpovídajícího všechny přípony UPN k ověřených domén** a klikněte na tlačítko **Další.**
 5. Na doménu a organizační jednotku filtrování obrazovka, klikněte na tlačítko **Další**.
 6. Na Jednoznačná identifikace uživatelů obrazovky, klikněte na tlačítko **Další**.

@@ -4,7 +4,7 @@ description: Pomocí řízení podmíněného přístupu Azure Active Directory 
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 65f80aea-0426-4072-83e1-faf5b76df034
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 16b09b7d4bddc24d9efa2e37c9e31f61a4333f86
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 436bb3c235c76f04e0f3d0fec1beeec3872f1dfb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311721"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475811"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Plánování životního cyklu hybridní Identity
 Identita je jedním ze základů strategii enterprise mobility a aplikaci přístup. Jestli se přihlašujete vaše mobilní zařízení nebo aplikaci SaaS, vaše identita je klíčem k získání přístupu ke všemu, co. Na nejvyšší úrovni řešení pro správu identit zahrnuje sjednocení a synchronizaci mezi vaší identity úložišť, což zahrnuje automatizuje a centralizuje proces zřizování prostředků. Řešení identit by měl být centralizované identitou napříč místním i cloudovým a zároveň použít určitou formu federace identit pro zachovat centralizované ověřování a bezpečně sdílet a spolupracovat s externími uživateli a firmy. Prostředky v rozsahu od operačních systémů a aplikací na osoby ve ani pod něj nespadá s organizací. Organizační struktura může být upraven, aby odpovídal zřizování zásad a postupů.

@@ -1,10 +1,10 @@
 ---
-title: 'Služby Azure AD Connect: Podporované topologie | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Podporované topologie | Dokumentace Microsoftu'
 description: Toto téma podrobně popisuje podporované a nepodporované topologie pro Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 74b2cea8e3adfb6689d4ac7049e7892f8f0ecf4a
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: be53e26d6277465836163b43fc5ab2529c67deef
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582628"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470184"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), ve kterých pomocí synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek popisuje podporované a nepodporované konfigurace.

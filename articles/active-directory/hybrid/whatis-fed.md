@@ -3,7 +3,7 @@ title: Co je federace se službou Azure AD? | Dokumenty Microsoft
 description: Popisuje federace se službou Azure AD.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 11/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0556a01490786ec4101176bc0437661723ce9b4f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ac58992d81be8d3e275dc89a26ed4cb8b6a3242c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109471"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475964"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Co je federace se službou Azure AD?
 

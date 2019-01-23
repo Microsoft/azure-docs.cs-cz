@@ -3,6 +3,7 @@ Název: Nasazení pracovní prostor Studio s Azure Resource Manageru titleSuffix
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/05/2018
 ---
+
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Nasazení aplikace Azure Machine Learning Studio prostoru pomocí Azure Resource Manageru
 
 Pomocí Azure Resource Manageru šablony nasazení šetří čas vyznačuje mimořádně škálovatelný způsob, jak nasadit vzájemně propojených součástí ověřování a mechanismus opakování. Nastavení pracovních prostorů Azure Machine Learning, například musíte nejprve nakonfigurovat účet úložiště Azure a pak nasaďte váš pracovní prostor. Představte si to ručně pro stovky pracovní prostory. Jednodušší alternativu je použití šablony Azure Resource Manageru k nasazení pracovního prostoru služby Azure Machine Learning a všechny jeho závislosti. Tento článek vás provede krok za krokem tohoto procesu. Skvělý přehled Azure Resource Manageru najdete v tématu [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
@@ -83,7 +84,7 @@ Connect-AzureRmAccount
 ```
 Tento krok je potřeba opakovat pro každou relaci. Po ověření, má být zobrazena informace o vašem předplatném.
 
-![Účet Azure][1]
+! [Azure účet] [1]
 
 Když teď máme přístup k Azure, můžeme vytvořit skupinu prostředků.
 
@@ -97,7 +98,7 @@ $rg
 Ověřte, že skupina prostředků je správně zřízený. **Stav zřizování** by měl být "byla úspěšná."
 Název skupiny prostředků pomocí šablony slouží ke generování názvu účtu úložiště. Název účtu úložiště musí být dlouhý 3 až 24 znaků a použít pouze číslice a malá písmena.
 
-![Skupina prostředků][2]
+! [Skupina prostředků] [2]
 
 * Pomocí nasazení skupiny prostředků, nasaďte nový pracovní prostor Machine Learning.
 
@@ -125,10 +126,8 @@ Po zřízení pracovního prostoru můžete automatizovat řadu úloh Azure Mach
 * Další informace o [Tvorba šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md). 
 * Podívejte se na [úložišti šablon Azure Quickstart](https://github.com/Azure/azure-quickstart-templates). 
 * Podívejte se na video o [Azure Resource Manageru](https://channel9.msdn.com/Events/Ignite/2015/C9-39). 
-
-<!--Image references-->
-[1]: ./media/deploy-with-resource-manager-template/azuresubscription.png
-[2]: ./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png
+* Zobrazit [nápovědy referenční dokumentace šablony Resource Manageru](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions) 
+ <!--Image references--> [1]:./media/deploy-with-resource-manager-template/azuresubscription.png [2]: ./media/deploy-with-resource-manager-template/ resourcegroupprovisioning.PNG
 
 
 <!--Link references-->

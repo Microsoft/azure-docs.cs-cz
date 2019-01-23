@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e060075fbcf6a5083e51b753e119cb5471129a79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ca18aa5af89ec0a80d1aa8139671bf017a86e36c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308462"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465169"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení ve službě Azure SQL Data Warehouse
 Zjistěte, jak funguje zálohování a obnovení Azure SQL Data Warehouse. Použití datového skladu snímky k obnovení nebo zkopírujte váš datový sklad k určitému bodu obnovení v primární oblasti. Použití datového skladu geograficky redundantní zálohy k obnovení do jiné geografické oblasti. 
@@ -86,7 +86,7 @@ Každý snímek vytvoří bod obnovení, který představuje čas spuštění sn
 
 Můžete zachovat obnovené datového skladu a aktuální, nebo odstraňte jednu z nich. Pokud chcete nahradit aktuální datový sklad obnovená data warehouse, můžete ji jakkoli přejmenovat pomocí [ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) možnost změnit název. 
 
-Chcete-li obnovit datový sklad, přečtěte si téma [obnovení datového skladu pomocí webu Azure portal](sql-data-warehouse-restore-database-portal.md), [obnovit data warehouse pomocí prostředí PowerShell](sql-data-warehouse-restore-database-powershell.md), nebo [obnovení datového skladu pomocí jazyka T-SQL](sql-data-warehouse-restore-database-rest-api.md) .
+Chcete-li obnovit datový sklad, přečtěte si téma [obnovení datového skladu pomocí webu Azure portal](sql-data-warehouse-restore-database-portal.md), [obnovit data warehouse pomocí prostředí PowerShell](sql-data-warehouse-restore-database-powershell.md), nebo [obnovení datového skladu pomocí rozhraní REST API](sql-data-warehouse-restore-database-rest-api.md).
 
 Chcete-li obnovit odstraněné nebo pozastaveného datového skladu, můžete [vytvořit lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md). 
 

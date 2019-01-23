@@ -1,10 +1,10 @@
 ---
-title: Zabezpečení pro centra oznámení
-description: Toto téma vysvětluje zabezpečení služby Azure notification hubs.
+title: Oznámení Centra zabezpečení
+description: Toto téma vysvětluje zabezpečení Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
 ms.service: notification-hubs
@@ -12,38 +12,41 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 9f197a85dfad31ce32d0f9c93127b69d8e33c9ee
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: bd9df12cbe941b868c769daccd02c1d81b39f7bd
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778269"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465356"
 ---
-# <a name="security"></a>Zabezpečení
+# <a name="security-model-of-azure-notification-hubs"></a>Model zabezpečení služby Azure Notification Hubs
+
 ## <a name="overview"></a>Přehled
-Toto téma popisuje model zabezpečení Azure Notification hubs. Protože Notification Hubs entity služby sběrnice, implementace modelu zabezpečení jako Service Bus. Další informace najdete v tématu [ověřování sběrnice služby](https://msdn.microsoft.com/library/azure/dn155925.aspx) témata.
 
-## <a name="shared-access-signature-security-sas"></a>Zabezpečení sdílený přístupový podpis (SAS)
-Notification Hubs implementuje zabezpečení na úrovni entit schéma volá SAS (sdíleného přístupového podpisu). Toto schéma umožňuje deklarovat až 12 autorizační pravidla v popisu, která udělují oprávnění na dané entity entit pro zasílání zpráv.
+Toto téma popisuje model zabezpečení služby Azure Notification Hubs. Vzhledem k tomu Notification Hubs jsou entity služby Service Bus, implementace modelu zabezpečení jako služby Service Bus. Další informace najdete v tématu [ověřování pomocí služby Service Bus](https://msdn.microsoft.com/library/azure/dn155925.aspx) témata.
 
-Každé pravidlo obsahuje název, hodnotu klíče (sdílený tajný klíč) a sada práv, jak je popsáno v části "Deklarací identity zabezpečení." Při vytváření centra oznámení, se automaticky vytvoří dvě pravidla: jednu s naslouchání právy (pomocí klientské aplikace) a druhou se všemi právy k (které používá back-end aplikace).
+## <a name="shared-access-signature-security-sas"></a>Zabezpečení sdíleného přístupového podpisu (SAS)
 
-Při provádění správy registrace z klientské aplikace, pokud odesílané informace prostřednictvím oznámení není citlivé (například počasí aktualizace), běžný způsob přístup Centrum oznámení je umožnit hodnota klíče pravidla přístup jen pro naslouchání na klientskou aplikaci a umožňuje klíčovou hodnotu pravidlo úplný přístup k back-end aplikace.
+Notification Hubs implementuje schéma zabezpečení na úrovni entity volat SAS (sdíleným přístupovým podpisům). Toto schéma umožňuje deklarovat až 12 autorizační pravidla v popisu, které udělit práva na dané entitě entit pro zasílání zpráv.
 
-Není doporučeno vložit hodnotu klíče klienta aplikace pro Windows Store. Způsob, jak se vyhnout vložení hodnota klíče se se klientskou aplikaci načíst z back-end aplikace při spuštění.
+Každé pravidlo obsahuje název, hodnotu klíče (sdílený tajný klíč) a sada práv, jak je popsáno v části "Deklarací identity zabezpečení." Při vytváření centra oznámení, automaticky vytvoří dvě pravidla: jeden s vlastností listenurimode nastavenou na právy (klientská aplikace využívá) a druhý se všemi právy k (které používá back-endu aplikace).
 
-Je důležité si uvědomit, že klíč s přístupem k naslouchání umožňuje klientskou aplikaci zaregistrovat pro všechny značky. Pokud vaše aplikace musí registrace omezit na konkrétní značky pro konkrétní klienty (například když značky představují ID uživatele), musíte provést back-end aplikace registrace. Další informace najdete v tématu registrace správy. Všimněte si, že tímto způsobem, klientská aplikace nebudou mít přímý přístup k centru oznámení.
+Při provádění Správa registrací z klientských aplikací, pokud informace odeslány prostřednictvím oznámení není citlivé (například aktualizace počasí), běžný způsob pro přístup k centru oznámení je poskytnout hodnotu klíče pravidlo přístup jen pro naslouchání na klientskou aplikaci a poskytnout hodnotu klíče pravidlo úplný přístup k back-endu aplikace.
 
-## <a name="security-claims"></a>Deklarací identity zabezpečení
-Podobně jako ostatní entity, jsou povolené operace centra oznámení pro tři deklarací identity zabezpečení: naslouchání, odeslání a spravovat.
+Není vhodné vložit hodnotu klíče v klientských aplikacích pro Windows Store. Pro zabránění vkládání hodnota klíče je, aby klientská aplikace načíst z back-endu aplikace při spuštění.
 
-| Deklarovat | Popis | Povolené operace |
-| --- | --- | --- |
-| Naslouchání |Vytvořit nebo aktualizovat, čtení a odstranění jednoho registrace |Vytvořit nebo aktualizovat registraci<br><br>Registrace pro čtení<br><br>Číst všechny registrace pro popisovač<br><br>Odstranit registrace |
-| Odeslat |Odesílání zpráv do centra oznámení |Odeslat zprávu |
-| Spravovat |CRUDs v Notification Hubs (včetně aktualizace systému PNS přihlašovacích údajů a zabezpečení klíče) a čtení registrace podle značky |Vytvoření, aktualizace nebo pro čtení nebo odstranění notification hubs<br><br>Číst registrace podle značky |
+Je důležité pochopit, že klíč s přístupem k naslouchání umožňuje klientskou aplikaci pro registraci všechny značky. Pokud vaše aplikace musí omezení registrace konkrétní značky pro konkrétní klienty (třeba při značky představují ID uživatele), musíte provést back-endu aplikace registrace. Další informace najdete v tématu Správa registrací. Všimněte si, že tímto způsobem klientská aplikace nebudou mít přímý přístup k Notification Hubs.
 
-Centra oznámení přijímat deklarace identity udělena tokeny řízení přístupu Microsoft Azure a tokeny podpis vygeneroval s sdílených klíčů nakonfigurované přímo v centru oznámení.
+## <a name="security-claims"></a>Zabezpečení deklarace identity
 
+Podobně jako u jiných entit, operace centra oznámení jsou povoleny pro tři deklarace identity zabezpečení: Naslouchání, odesílat a spravovat.
+
+| Deklarovat   | Popis                                          | Přípustné operace |
+| ------- | ---------------------------------------------------- | ------------------ |
+| Naslouchat  | Vytvoření/aktualizaci, čtení a odstranění jednoho registrace | Vytvoří nebo aktualizuje registrace<br><br>Registrace pro čtení<br><br>Číst všechny registrace pro popisovač<br><br>Odstranit registrace |
+| Odeslat    | Odesílání zpráv do centra oznámení                | Odeslat zprávu |
+| Spravovat  | CRUDs v Notification Hubs (včetně, aktualizují se přihlašovací údaje systému oznámení platformy a zabezpečení klíče) a na základě značek čtení registrací |Vytvoření, aktualizaci, čtení nebo odstranění notification hubs<br><br>Čtení registrací podle značky |
+
+Notification Hubs přijímat deklarace identity poskytuje prostřednictvím Microsoft Azure Access Control tokeny a podpis tokeny vygenerovat pomocí sdíleného klíče nakonfigurovaná přímo v centru oznámení.

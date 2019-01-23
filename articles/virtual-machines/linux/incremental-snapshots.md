@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
-ms.openlocfilehash: 095ade4f4d833242e333c6d51e1b62d1230037c1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.component: disks
+ms.openlocfilehash: 3c74367ed7b4aa15aaa0f83cd16177058c3799f6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495435"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469284"
 ---
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

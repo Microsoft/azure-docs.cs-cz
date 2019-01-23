@@ -2,10 +2,10 @@
 title: Azure AD Connect – aktualizace certifikátu SSL pro farmu služby AD FS | Dokumentace Microsoftu
 description: Tento dokument podrobně popisuje kroky a aktualizujete certifikát SSL farmy služby AD FS pomocí služby Azure AD Connect.
 services: active-directory
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
-ms.service: active-directory
+ms.service: active-directory  
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.component: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
-ms.openlocfilehash: 8320eae9e1c12123a4379887124dee810998c4e3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cd9d20065c0be580c415100fae470b362b19a3de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314500"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474596"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizace certifikátu SSL pro farmu služby Active Directory Federation Services (AD FS)
 
@@ -37,12 +37,12 @@ Můžete provést i celou operaci aktualizace certifikátu SSL pro farmu služby
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Farma služby AD FS**: Ujistěte se, že vaše farma služby AD FS je založené na Windows Server 2012 R2 nebo novější.
+* **AD FS Farm**: Ujistěte se, že vaše farma služby AD FS je založená na Windows Server 2012 R2 nebo novější.
 * **Azure AD Connect**: Ujistěte se, že verze služby Azure AD Connect 1.1.553.0 nebo vyšší. Budete používat úlohy **aktualizace AD certifikát SSL služby FS**.
 
 ![Úloha aktualizace SSL](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
-## <a name="step-1-provide-ad-fs-farm-information"></a>Krok 1: Zadání informací o farmě služby AD FS
+## <a name="step-1-provide-ad-fs-farm-information"></a>Krok 1: Zadejte informace o farmě AD FS
 
 Azure AD Connect se pokusí získat informace o farmě služby AD FS automaticky:
 1. Dotaz na informace o farmě ze služby AD FS (Windows Server 2016 nebo novější).
@@ -59,7 +59,7 @@ Pokud seznam obsahuje server, který už není součástí farmy služby AD FS, 
 >[!NOTE]
 > Odebrání serveru ze seznamu serverů pro farmu služby AD FS v Azure AD Connect je místní operace a aktualizuje informace pro farmu služby AD FS, který Azure AD Connect udržuje místně. Azure AD Connect nezmění konfigurace ve službě AD FS tak, aby odrážely změny.    
 
-## <a name="step-2-provide-a-new-ssl-certificate"></a>Krok 2: Zadání nového certifikátu protokolu SSL
+## <a name="step-2-provide-a-new-ssl-certificate"></a>Krok 2: Zadejte nový certifikát protokolu SSL
 
 Po ověření, že informace o servery ve farmě služby AD FS, Azure AD Connect požádá o nový certifikát protokolu SSL. Zadejte certifikát PFX chráněný heslem pokračujte v instalaci.
 

@@ -4,7 +4,7 @@ description: Tento článek obsahuje informace o tom, jak řešit potíže se sy
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 036933c6b6e86856871c5f59f08fea20a0343ad7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 23787c777f20025d9310fac2efe0f429d66c4586
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314843"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470439"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s synchronizaci hodnot hash hesel pomocí synchronizace Azure AD Connect
 Toto téma popisuje kroky pro řešení potíží s synchronizaci hodnot hash hesel. Pokud hesla se nesynchronizují podle očekávání, může být pro podmnožinu uživatelů nebo pro všechny uživatele.
@@ -233,7 +233,7 @@ Postupujte podle následujících kroků zjistěte, proč hesla se nesynchronizu
 3. Pokud funkce není povolena ve službě Azure AD nebo pokud stav kanálu synchronizace není povolená, spusťte Průvodce instalací služby Connect. Vyberte **přizpůsobit možnosti synchronizace**a zrušte výběr synchronizaci hesel. Tato změna se dočasně zakáže funkci. Potom spusťte průvodce znovu a znovu povolit synchronizaci hesel. Spuštění skriptu znovu k ověření, zda je konfigurace správná.
 
 4. Vyhledejte v protokolu událostí pro chyby. Vyhledejte následující události, které by mohly ukazovat na problém:
-    * Zdroje: ID "Synchronizace adresářů": 0, 611, 652, pokud se zobrazí tyto události 655 máte problém připojením. Zprávy protokolu událostí obsahuje informace o doménové struktuře, kde máte problém. Další informace najdete v tématu [problému s připojením](#connectivity problem).
+    * Zdroj: "Synchronizace adresářů" ID: 0, 611, 652, pokud se zobrazí tyto události 655 máte problém připojením. Zprávy protokolu událostí obsahuje informace o doménové struktuře, kde máte problém. Další informace najdete v tématu [problému s připojením](#connectivity problem).
 
 5. Pokud se žádný prezenční signál nebo pokud nic jiného nepracovali, spusťte [aktivovat úplná synchronizace všech hesel](#trigger-a-full-sync-of-all-passwords). Spusťte skript pouze jednou.
 
@@ -417,5 +417,5 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="next-steps"></a>Další postup
 * [Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](how-to-connect-password-hash-synchronization.md)
-* [Azure AD Connect Sync: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace služby Azure AD Connect: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

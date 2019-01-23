@@ -8,14 +8,14 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f70f3804bb1c6f385081b56fe6139b1b680a95cf
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055009"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467328"
 ---
-# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Kurz: Řídit směrování provozu s koncovými body vážený pomocí Traffic Manageru 
+# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Kurz: Řídit směrování provozu s koncovými body vážený pomocí Traffic Manageru
 
 Tento kurz popisuje, jak pomocí služby Azure Traffic Manager řídit směrování uživatelského provozu mezi koncovými body s využitím metody váženého směrování. V této metodě směrování každému koncovému bodu přiřadíte váhu v konfiguraci profilu služby Traffic Manager. Uživatelský provoz se pak bude směrovat na základě váhy přiřazené jednotlivým koncovým bodům. Váha je celé číslo od 1 do 1 000. Čím vyšší je hodnota váhy přiřazená ke koncovému bodu, tím vyšší má prioritu.
 
@@ -36,7 +36,7 @@ Pokud chcete zobrazit službu Traffic Manager v akci, nasaďte pro účely tohot
 - Dvě instance webů na úrovni basic spuštěné v různých oblastech Azure: Východní USA a západní Evropa.
 - Dva testovací virtuální počítače pro testování služby Traffic Manager: jeden v oblasti USA – východ a druhý v oblasti Západní Evropa Testovací virtuální počítače slouží k předvedení způsobu, jakým Traffic Manager směruje uživatelský provoz na web, jehož koncový bod má přiřazenou vyšší váhu.
 
-### <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
+### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -86,27 +86,27 @@ V této části vytvoříte dva virtuální počítače (*myIISVMEastUS* a *myII
 
 #### <a name="install-iis-and-customize-the-default-webpage"></a>Instalace služby IIS a přizpůsobení výchozí webové stránky
 
-V této části na oba virtuální počítače &mdash; myIISVMEastUS a myIISVMWEurope &mdash; nainstalujete server služby IIS a pak aktualizujete výchozí webovou stránku. Na přizpůsobené webové stránce se zobrazí název virtuálního počítače, ke kterému se připojujete při prohlížení webu ve webovém prohlížeči.
+V této části nainstalujete službu IIS na dva virtuální počítače&mdash;myIISVMEastUS a myIISVMWEurope&mdash;a aktualizujte výchozí webovou stránku. Na přizpůsobené webové stránce se zobrazí název virtuálního počítače, ke kterému se připojujete při prohlížení webu ve webovém prohlížeči.
 
 1. V nabídce vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myIISVMEastUS** ve skupině prostředků **myResourceGroupTM1**.
-2. Na stránce **Přehled** vyberte **Připojit**. V části **Připojení k virtuálnímu počítači** vyberte **Stáhnout soubor RDP**. 
-3. Otevřete stažený soubor .rdp. Pokud se zobrazí výzva, vyberte **Připojit**. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače. Možná bude nutné vybrat **Další možnosti** > **Použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače. 
+2. Na stránce **Přehled** vyberte **Připojit**. V části **Připojení k virtuálnímu počítači** vyberte **Stáhnout soubor RDP**.
+3. Otevřete stažený soubor .rdp. Pokud se zobrazí výzva, vyberte **Připojit**. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače. Možná bude nutné vybrat **Další možnosti** > **Použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 4. Vyberte **OK**.
 5. Při přihlášení se může zobrazit upozornění na certifikát. Pokud se toto upozornění zobrazí, vyberte **Ano** nebo **Pokračovat** a pokračujte v připojování.
 6. Na ploše serveru přejděte do části **Nástroje pro správu Windows** > **Správce serveru**.
 7. Na prvním virtuálním počítači otevřete Windows PowerShell. Pomocí následujících příkazů nainstalujte server služby IIS a aktualizujte výchozí soubor .htm.
     ```powershell-interactive
     # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # Remove default .htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    remove-item C:\inetpub\wwwroot\iisstart.htm
     
     #Add custom .htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
     ```
 
-     ![Instalace služby IIS a přizpůsobení webové stránky](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
+    ![Instalace služby IIS a přizpůsobení webové stránky](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 
 8. Ukončete připojení RDP k virtuálnímu počítači **myIISVMEastUS**.
 9. Zopakujte kroky 1 až 8. Vytvořte připojení RDP k virtuálnímu počítači **myIISVMWEurope** ve skupině prostředků **myResourceGroupTM2** a nainstalujte na něj službu IIS a přizpůsobte výchozí webovou stránku.
@@ -165,7 +165,7 @@ Vytvořte profil služby Traffic Manager založený na metodě **váženého** s
 
 ## <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
 
-Přidejte dva virtuální počítače se servery služby IIS myIISVMEastUS a myIISVMWEurope, aby se do nich směroval uživatelský provoz.
+Přidejte dva virtuální počítače se službou myIISVMEastUS servery služby IIS a myIISVMWEurope, směrovat provoz uživatelů na ně.
 
 1. Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který jste vytvořili v předchozí části. Ve výsledcích, které se zobrazí, vyberte profil.
 2. V okně **Profil služby Traffic Manager** v části **Nastavení** vyberte **Koncové body** > **Přidat**.
@@ -180,8 +180,8 @@ Přidejte dva virtuální počítače se servery služby IIS myIISVMEastUS a myI
     |  Hmotnost      | Zadejte **100**.        |
     |        |           |
 
-4. Zopakujte kroky 2 a 3 a přidejte další koncový bod **myWestEuropeEndpoint** pro veřejnou IP adresu **myIISVMWEurope-ip**. Tato adresa je přidružená k virtuálnímu počítači se serverem služby IIS myIISVMWEurope. Jako **Váha** zadejte **25**. 
-5.  Po přidání se oba koncové body zobrazí v profilu služby Traffic Manager a jejich stav monitorování bude **Online**.
+4. Zopakujte kroky 2 a 3 a přidejte další koncový bod **myWestEuropeEndpoint** pro veřejnou IP adresu **myIISVMWEurope-ip**. Tato adresa je přidružená k virtuálnímu počítači se serverem služby IIS myIISVMWEurope. Jako **Váha** zadejte **25**.
+5. Po přidání se oba koncové body zobrazí v profilu služby Traffic Manager a jejich stav monitorování bude **Online**.
 
 ## <a name="test-the-traffic-manager-profile"></a>Test profilu služby Traffic Manager
 Pokud chcete zobrazit službu Traffic Manager v akci, proveďte následující kroky:
@@ -189,28 +189,28 @@ Pokud chcete zobrazit službu Traffic Manager v akci, proveďte následující k
 2. Zobrazte službu Traffic Manager v akci.
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Určení názvu DNS profilu služby Traffic Manager
-V tomto kurzu pro zjednodušení k prohlížení webů použijete název DNS profilu služby Traffic Manager. 
+V tomto kurzu pro zjednodušení k prohlížení webů použijete název DNS profilu služby Traffic Manager.
 
 Název DNS profilu služby Traffic Manager můžete určit následujícím způsobem:
 
-1.  Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který jste vytvořili v předchozí části. Ve výsledcích, které se zobrazí, vyberte profil služby Traffic Manager.
+1. Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který jste vytvořili v předchozí části. Ve výsledcích, které se zobrazí, vyberte profil služby Traffic Manager.
 1. Vyberte **Přehled**.
 2. V profilu služby Traffic Manager se zobrazí jeho název DNS. V produkčních nasazeních pomocí záznamu DNS CNAME nakonfigurujete individuální název domény odkazující na název domény služby Traffic Manager.
 
    ![Název DNS služby Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>Zobrazení služby Traffic Manager v akci
-V této části uvidíte službu Traffic Manager v akci. 
+V této části uvidíte službu Traffic Manager v akci.
 
 1. V nabídce vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myVMEastUS** ve skupině prostředků **myResourceGroupTM1**.
-2. Na stránce **Přehled** vyberte **Připojit**. V části **Připojení k virtuálnímu počítači** vyberte **Stáhnout soubor RDP**. 
-3. Otevřete stažený soubor .rdp. Pokud se zobrazí výzva, vyberte **Připojit**. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače. Možná bude nutné vybrat **Další možnosti** > **Použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače. 
+2. Na stránce **Přehled** vyberte **Připojit**. V části **Připojení k virtuálnímu počítači** vyberte **Stáhnout soubor RDP**.
+3. Otevřete stažený soubor .rdp. Pokud se zobrazí výzva, vyberte **Připojit**. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače. Možná bude nutné vybrat **Další možnosti** > **Použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 4. Vyberte **OK**.
-5. Při přihlášení se může zobrazit upozornění na certifikát. Pokud se toto upozornění zobrazí, vyberte **Ano** nebo **Pokračovat** a pokračujte v připojování. 
+5. Při přihlášení se může zobrazit upozornění na certifikát. Pokud se toto upozornění zobrazí, vyberte **Ano** nebo **Pokračovat** a pokračujte v připojování.
 6. Do webového prohlížeče na virtuálním počítači myVMEastUS zadejte název DNS vašeho profilu služby Traffic Manager a zobrazte váš web. Budete přesměrováni na web hostovaný na serveru služby IIS myIISVMEastUS, protože má přiřazenou vyšší váhu s hodnotou **100**. Server služby IIS myIISVMWEurope má přiřazenou nižší váhu koncového bodu s hodnotou **25**.
 
    ![Test profilu služby Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
-   
+
 ## <a name="delete-the-traffic-manager-profile"></a>Odstranění profilu služby Traffic Manager
 Pokud už skupiny prostředků vytvořené v tomto kurzu nepotřebujete, můžete je odstranit. Uděláte to tak, že vyberte skupinu prostředků (**ResourceGroupTM1** nebo **ResourceGroupTM2**) a pak vyberete **Odstranit**.
 
@@ -218,5 +218,3 @@ Pokud už skupiny prostředků vytvořené v tomto kurzu nepotřebujete, můžet
 
 > [!div class="nextstepaction"]
 > [Směrování provozu do konkrétních koncových bodů na základě zeměpisného umístění uživatele](traffic-manager-configure-geographic-routing-method.md)
-
-

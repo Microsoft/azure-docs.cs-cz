@@ -8,15 +8,15 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 11/30/2017
-ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 01/12/2019
+ms.openlocfilehash: e735c9773971a4c594c32e9ae29eeb295c32810c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106069"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473703"
 ---
-# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Kurz: Monitorování změn virtuálního počítače pomocí Azure Event Grid a Logic Apps
+# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Kurz: Monitorování změn virtuálních počítačů pomocí Azure Event Gridu a Logic Apps
 
 Při určitých událostech, ke kterým dochází v prostředcích Azure nebo v prostředcích třetích stran, můžete spustit automatický [pracovní postup aplikace logiky](../logic-apps/logic-apps-overview.md). Tyto prostředky mohou tyto události publikovat do [Azure Event Gridu](../event-grid/overview.md). Event Grid tyto události pošle odběratelům, kteří jako své koncové body používají fronty, webhooky nebo [centra událostí](../event-hubs/event-hubs-what-is-event-hubs.md). Vy jako odběratel čekáte se svou aplikací logiky na události z Event Gridu, aby spustily automatické pracovní postupy, které provádějí úlohy – všechno bez psaní kódu.
 
@@ -81,9 +81,9 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
    V návrháři pro Logic Apps se zobrazí [*konektory*](../connectors/apis-list.md) a [*aktivační události*](../logic-apps/logic-apps-overview.md#logic-app-concepts), které můžete použít k vytvoření své aplikace logiky. Zobrazí se také akce, které můžete přidat za aktivační událost, aby plnily úkoly. Aktivační událost vytvoří instanci aplikace logiky a spustí pracovní postup aplikace logiky. 
    Aplikace logiky potřebuje nejprve aktivační událost.
 
-6. Do vyhledávacího pole zadejte filtr „event grid“. Vyberte tuto aktivační událost: **Azure Event Grid - On a resource event** (Azure Event Grid - při události prostředku).
+6. Do vyhledávacího pole zadejte filtr „event grid“. Vyberte tento trigger: **Azure Event Grid - na událost prostředku**
 
-   ![Výběr aktivační události „Azure Event Grid - On a resource event“](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
+   ![Vyberte tento trigger: "Azure Event Grid - na událost prostředku"](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
 7. Po zobrazení výzvy se přihlaste do Azure Event Gridu pod stejnými přihlašovacími údaji jako do Azure.
 
@@ -101,7 +101,7 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
    | **Předplatné** | *{předplatné-Azure-virtuálního-počítače}* | Vyberte předplatné Azure vydavatele události. V tomto kurzu vyberte předplatné Azure svého virtuálního počítače. | 
    | **Typ prostředku** | Microsoft.Resources.resourceGroups | Vyberte typ prostředku vydavatele události. V tomto kurzu vyberte zadanou hodnotu, aby aplikace logiky monitorovala jenom skupiny prostředků. | 
    | **Název prostředku** | *{název-skupiny-prostředků-virtuálního-počítače}* | Vyberte název prostředku vydavatele. V tomto kurzu vyberte název skupiny prostředků svého virtuálního počítače. | 
-   | Pokud chcete upřesnit nastavení, zvolte **Zobrazit pokročilé možnosti**. | *{viz popisy}* | * **Filtr předpon**: V tomto kurzu nechte nastavení prázdné. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec předpony, třeba cestu k určitému prostředku a jeho parametr. <p>* **Filtr přípon**: V tomto kurzu nechte nastavení prázdné. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec přípony, třeba příponu názvu souboru, pokud chcete jenom určité typy souborů.<p>* **Název předplatného**: Zadejte jedinečný název odběru události. |
+   | Pokud chcete upřesnit nastavení, zvolte **Zobrazit pokročilé možnosti**. | *{viz popisy}* | * **Filtr předpon**: Pro účely tohoto kurzu ponechte toto nastavení prázdné. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec předpony, třeba cestu k určitému prostředku a jeho parametr. <p>* **Filtr přípony**: Pro účely tohoto kurzu ponechte toto nastavení prázdné. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec přípony, třeba příponu názvu souboru, pokud chcete jenom určité typy souborů.<p>* **Název předplatného**: Zadejte jedinečný název odběru události. |
    | | | 
 
    Až to budete mít, trigger služby Event Grid bude vypadat podobně jako v následujícím příkladu:
@@ -182,8 +182,8 @@ Teď přidejte [*akci*](../logic-apps/logic-apps-overview.md#logic-app-concepts)
    | Nastavení | Navrhovaná hodnota | Popis | 
    | ------- | --------------- | ----------- | 
    | **Komu** | *{e-mailová-adresa-příjemce}* |Zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu. | 
-   | **Předmět** | Aktualizovaný prostředek: **Předmět**| Zadejte obsah předmětu e-mailu. V tomto kurzu zadejte navrhovaný text a vyberte pole události **Předmět**. V našem příkladu je v předmětu e-mailu název aktualizovaného prostředku (virtuálního počítače). | 
-   | **Text** | Skupina prostředků: **Téma** <p>Typ události: **Typ události**<p>ID události: **ID**<p>Čas: **Čas události** | Zadejte obsah e-mailu. V tomto kurzu zadejte navrhovaný text a vyberte pole události **Téma**, **Typ události**, **ID** a **Čas události**, aby e-mail obsahoval název skupiny prostředku, typ události, časové razítko události a ID události týkající se aktualizace. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. | 
+   | **Předmět** | Aktualizuje prostředek: **Předmět**| Zadejte obsah předmětu e-mailu. V tomto kurzu zadejte navrhovaný text a vyberte pole události **Předmět**. V našem příkladu je v předmětu e-mailu název aktualizovaného prostředku (virtuálního počítače). | 
+   | **Text** | Skupina zdrojů: **Téma** <p>Typ události: **Typ události**<p>ID události: **ID**<p>Čas: **Čas události** | Zadejte obsah e-mailu. V tomto kurzu zadejte navrhovaný text a vyberte pole události **Téma**, **Typ události**, **ID** a **Čas události**, aby e-mail obsahoval název skupiny prostředku, typ události, časové razítko události a ID události týkající se aktualizace. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. | 
    | | | 
 
    > [!NOTE] 

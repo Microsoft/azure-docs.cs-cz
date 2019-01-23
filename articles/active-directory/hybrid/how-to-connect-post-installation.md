@@ -4,7 +4,7 @@ description: Zjistěte, jak rozšířit výchozí konfigurace a provozní úlohy
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c18bee36-aebf-4281-b8fc-3fe14116f1a5
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 878b483c1f644bcfe39824766ca5495f111d1864
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f9c9af94b15c78783f95fb92be548321a35b15a6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312183"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473210"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a jak spravovat Azure AD Connect
 Přizpůsobení služby Azure Active Directory (Azure AD) Connect pro splnění potřeb vaší organizace a požadavky pomocí provozní postupy v tomto článku.  

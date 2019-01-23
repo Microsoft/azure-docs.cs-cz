@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 12/17/2018
-ms.openlocfilehash: 08faef2eaf5c9cd09172d455c464531e293d5f3e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 01/17/2019
+ms.openlocfilehash: 662e946eee633d12cf517549509281fca4047385
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554584"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470422"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Správa témat a publikovat události pomocí událostí domény
 

@@ -3,7 +3,7 @@ title: Vzdálený přístup k místním aplikacím – Azure Active Directory Ap
 description: Proxy aplikací Azure Active Directory poskytuje zabezpečený vzdálený přístup k místním webovým aplikacím. Po jednotné přihlašování do služby Azure AD mohou uživatelé přistupovat cloudové a místní aplikace prostřednictvím externí adresu URL nebo interní aplikace portálu. Proxy aplikace může například poskytnout vzdálený přístup a jednotné přihlašování do vzdálené plochy, SharePoint, Teams, Tableau, Qlik a obchodní (LOB) aplikace.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 94330c9d53b69d86ff05fe2f0164cb7559e9d389
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 48f06d0f8b36c129ab7fa99a037cf2ccdb5b7004
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159124"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473346"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Vzdálený přístup k místním aplikacím přes Azure Active Directory Application Proxy 
 

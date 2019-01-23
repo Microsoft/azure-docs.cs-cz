@@ -4,7 +4,7 @@ description: Popisuje aspekty zabezpečení pro používání Azure AD Applicati
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 985ea1f16cff010041d61d808280cb47f2b77aa9
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 23ea1806c1670b73883384a0e4981f362bad90f0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618355"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472718"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Informace o zabezpečení pro přístup k aplikacím s využitím Azure AD Application Proxy
 
@@ -48,7 +48,7 @@ Použijte bohatší ovládací prvky zásad, předtím, než se naváže připoj
 
 S [podmíněného přístupu](../conditional-access/overview.md), na jaký provoz je povolený přístup k back endovým aplikacím můžete definovat omezení. Můžete vytvořit zásady, které omezují přihlášení podle umístění, síla ověření a profil rizika pro uživatele.
 
-Můžete také použít podmíněný přístup ke konfiguraci zásad ověřování službou Multi-Factor Authentication, přidává další vrstvu zabezpečení k ověřování vašich uživatelů. 
+Můžete také použít podmíněný přístup ke konfiguraci zásad ověřování službou Multi-Factor Authentication, přidává další vrstvu zabezpečení k ověřování vašich uživatelů. Kromě toho vaše aplikace je také možné směrovat do Microsoft Cloud App Security přes podmíněný přístup Azure AD, aby zajišťoval sledování v reálném čase a ovládací prvky, prostřednictvím [přístup](https://docs.microsoft.com/en-us/cloud-app-security/access-policy-aad) a [relace](https://docs.microsoft.com/en-us/cloud-app-security/session-policy-aad) zásady
 
 ### <a name="traffic-termination"></a>Ukončení provozu
 
@@ -93,7 +93,7 @@ Microsoft sleduje vzory provozu pro jednotlivé aplikace a pro vaše předplatn�
 Proxy aplikací Azure AD se skládá ze dvou částí:
 
 * Cloudové služby: Tato služba běží v Azure a je provedena připojení externí klient/uživatel.
-* [Software on-premises connector](application-proxy-connectors.md): jako součást místní konektor čeká na požadavky od připojení služby a obslužné rutiny Proxy aplikací Azure AD na interní aplikace. 
+* [Software on-premises connector](application-proxy-connectors.md): Jako součást místní konektor čeká na požadavky od připojení služby a obslužné rutiny Proxy aplikací Azure AD na interní aplikace. 
 
 Vytvořit tok mezi konektoru a službou Proxy aplikací při:
 
@@ -110,8 +110,8 @@ Konektor používá klientský certifikát k ověření Proxy aplikací služby 
 
 Pokud je nejprve konektor nastavit, provedou se následující události toku:
 
-1. Jako součást instalace konektoru se stane registrace konektoru ke službě. Uživatelům se výzva k zadání přihlašovacích údajů správce Azure AD. Token získaných z tohoto ověřování se pak předává do služby Azure AD Application Proxy.
-2. Proxy aplikací služby vyhodnotí token. Zkontroluje, jestli je uživatel správce společnosti v tenantovi. Pokud uživatel není správcem, proces se ukončí.
+1. Jako součást instalace konektoru se stane registrace konektoru ke službě. Uživatelům se výzva k zadání přihlašovacích údajů správce Azure AD. Token získaných z tohoto ověřování se pak předává do služby Azure AD Application Proxy.
+2. Proxy aplikací služby vyhodnotí token. Zkontroluje, jestli je uživatel správce společnosti v tenantovi. Pokud uživatel není správcem, proces se ukončí.
 3. Konektor vygeneruje žádost o certifikát klienta a předává je, spolu s token pro službu Proxy aplikací. Služba pak ověří token a podepíše žádost o certifikát klienta.
 4. Konektor používá certifikát klienta pro budoucí komunikaci se službou Proxy aplikací.
 5. Konektor provede počáteční o přijetí změn systému konfiguračních dat ze služby pomocí jeho klientský certifikát a je teď jste připraveni udělat požadavky.
@@ -176,7 +176,7 @@ Po dokončení požadavku a přenos veškerý obsah do back-endu konektoru ček�
 
 Po obdržení odpovědi, konektor umožňuje odchozí připojení ke službě Proxy aplikací, a vrátí podrobnosti o hlavičky a začít Streamovat návratová data.
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5. Služby streamování dat pro uživatele. 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5. Služby streamování dat pro uživatele. 
 
 Může dojít k nějaké zpracování žádosti. Pokud jste nakonfigurovali Proxy aplikací přeložit záhlaví nebo adresy URL ve vaší aplikaci, že zpracování se stane, podle potřeby během tohoto kroku.
 

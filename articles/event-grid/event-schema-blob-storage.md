@@ -2,21 +2,21 @@
 title: Azure Event Grid objektu blob úložiště událostí schématu
 description: Popisuje vlastnosti, které jsou k dispozici pro události služby blob storage pomocí služby Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: 11524f8868a0102e30b06f3385a26b1bd06aae6e
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: 401eb660d7e5ddc68bc7422ef9f2e600295d2aea
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055447"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469728"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Schéma událostí Azure Event Grid pro úložiště objektů Blob
 
-Tento článek obsahuje vlastnosti a schéma pro události služby blob storage. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události služby blob storage. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
 Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj události úložiště](event-sources.md#storage).
 
@@ -83,7 +83,7 @@ Se podobá schéma pro objekt blob odstranit událost:
   "metadataVersion": "1"
 }]
 ```
- 
+ 
 ## <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující dat nejvyšší úrovně:
@@ -91,25 +91,25 @@ Událost má následující dat nejvyšší úrovně:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| Předmět | řetězec | Vydavatel definované cesta předmět události. |
-| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
 | čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události úložiště objektů BLOB. |
 | dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | rozhraní api | řetězec | Operace, který spustil danou událost. |
-| ID žádosti klienta | řetězec | Klientem generovaná, neprůhledná hodnota se limit znaků 1 KB. Pokud jste povolili protokolování analýzy úložiště, se zaznamená do protokoly analýzy. |
-| ID žádosti | řetězec | Jedinečný identifikátor pro daný požadavek. Použijte pro řešení potíží s požadavku. |
+| clientRequestId | řetězec | Klientem generovaná, neprůhledná hodnota se limit znaků 1 KB. Pokud jste povolili protokolování analýzy úložiště, se zaznamená do protokoly analýzy. |
+| requestId | řetězec | Jedinečný identifikátor pro daný požadavek. Použijte pro řešení potíží s požadavku. |
 | značka eTag | řetězec | Hodnota, která můžete použít k provádění operací podmíněně. |
 | contentType | řetězec | Pro tento objekt blob zadaný typ obsahu. |
 | contentLength | integer | Velikost objektu blob v bajtech. |
-| BlobType | řetězec | Typ objektu blob. Platné hodnoty jsou "BlockBlob" nebo "PageBlob". |
+| blobType | řetězec | Typ objektu blob. Platné hodnoty jsou "BlockBlob" nebo "PageBlob". |
 | url | řetězec | Cesta k objektu blob. |
 | aplikace Sequencer | řetězec | Řízené uživatelem hodnotu, která můžete použít ke sledování požadavků. |
 | storageDiagnostics | objekt | Informace o diagnostice úložiště. |

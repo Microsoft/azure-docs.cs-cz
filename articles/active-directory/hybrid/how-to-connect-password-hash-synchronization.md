@@ -4,7 +4,7 @@ description: Poskytuje informace o fungování synchronizaci hodnot hash hesel a
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f70c92e4f617ff5c2b652900ce3b803f8609d2f9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff5127e584ab7ddede31ff811824612a3be21f18
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078646"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468059"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -140,6 +140,6 @@ Informace o zabezpečení a FIPS najdete v tématu [synchronizace hodnot hash he
 Pokud máte problémy se synchronizace hodnot hash hesel, přečtěte si téma [řešit synchronizaci hodnot hash hesel](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>Další postup
-* [Synchronizace Azure AD Connect: vlastní nastavení možností synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 * [Získejte podrobný postup nasazení plánu pro migrace ze služby AD FS na synchronizaci hodnot Hash hesel](https://aka.ms/authenticationDeploymentPlan)

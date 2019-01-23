@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ae4f3c9f5aa9fecf997c3e367f9ca941edd40c1e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3381bf32bfd3df538641b11b35a64b53fda6744f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434083"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466869"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvořit, změnit nebo odstranit tabulku směrování
 
@@ -96,7 +96,7 @@ Pokud je vaše virtuální síť připojená k Azure VPN gateway, nepřidružujt
 
 **Příkazy**
 
-- Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
+- Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet?view=azure-cli-latest)
 - PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>Zrušit přidružení směrovací tabulky z podsítě
@@ -111,7 +111,7 @@ Pokud zrušíte přidružení směrovací tabulky z podsítě, Azure směruje pr
 
 **Příkazy**
 
-- Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
+- Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet?view=azure-cli-latest)
 - PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
 
 ## <a name="delete-a-route-table"></a>Odstranit tabulku směrování
@@ -181,7 +181,7 @@ Směrovací tabulka obsahuje nula nebo více tras. Další informace o informace
 
 **Příkazy**
 
-- Azure CLI: [az sítě route-table route update](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_update)
+- Azure CLI: [az sítě route-table route update](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - PowerShell: [Set-AzureRmRouteConfig](/powershell/module/azurerm.network/set-azurermrouteconfig)
 
 ## <a name="delete-a-route"></a>Odstranit trasu

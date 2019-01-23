@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 75d8503e6179b8ef3578a4a8c62ef1b288657a7b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 73b76561829e6d50918881427894ea310920fce6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576812"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465192"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co je Azure Active Directory Identity Protection?
 
-Azure Active Directory Identity Protection je funkce edice Azure AD Premium P2, která vám umožní:
+Azure Active Directory Identity Protection je funkce verze Azure AD Premium P2, která umožňuje:
 
 - Zjistit potenciální ohrožení zabezpečení dopadem na identity vaší organizace
 
 - Nakonfigurovat automatické odpovědi na zjištěné podezřelé akce, které se vztahují na identity vaší organizace  
 
-- Prozkoumat podezřelé incidenty a přijmout vhodná opatření k jejich řešení   
+- Zkoumat podezřelé incidenty a přijímat vhodná opatření k jejich řešení   
 
 
 ## <a name="get-started"></a>Začínáme
@@ -110,7 +110,7 @@ Svou cestu prostřednictvím služby Identity Protection obvykle začíná říd
 
 ![Náprava](./media/overview/1000.png "nápravy")
 
-Řídicí panel poskytuje přístup:
+Tento řídicí panel poskytuje přístup k:
 
 * Sestavy, jako například **uživatelé označení příznakem rizika**, **rizikových událostí** a **ohrožení zabezpečení**
 * Nastavení, jako je konfigurace vašeho **zásady zabezpečení**, **oznámení** a **registracích vícefaktorového ověřování**
@@ -134,7 +134,7 @@ Pokud chcete implementovat automatické odpovědi, Azure Active Directory Identi
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kanál 9: Azure AD a Identity Show: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Kanál 9: Azure AD a Identity zobrazit: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 - [Povolení služby Azure Active Directory Identity Protection](enable.md)
 

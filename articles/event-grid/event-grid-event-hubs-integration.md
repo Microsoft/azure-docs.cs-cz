@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 12/13/2018
+ms.date: 01/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 450cbf4deace7d3edc1fcb50b8c3d8a91e936012
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6e8ca9d3a7fbdf1926ac642ac60a37d298af0129
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385410"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476849"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: Streamování velkých objemů dat do datového skladu
 Azure [služby Event Grid](overview.md) je služba inteligentního směrování událostí, která umožňuje reagovat na upozornění (události) z aplikací a služeb. Může například aktivovat funkci Azure Functions pro zpracování dat služby Event Hubs, která byla zachycena do služby Azure Blob storage nebo Azure Data Lake Storage a migraci dat do jiných úložišť dat. To [ukázka integrace Event Hubs a služby Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak pomocí služby Event Hubs s využitím služby Event Grid můžou hladce migrovat zachycená data Event Hubs ze služby blob storage do SQL Data Warehouse.

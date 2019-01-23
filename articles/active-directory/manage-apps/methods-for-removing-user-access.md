@@ -4,7 +4,7 @@ description: Vysvětlení k odebrání přístupu uživatele k aplikaci
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 9eb8b6e6af6fb2912789b66ed622fd47d2cb8b8b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 06c6f583cc5f4f0247dd47b5e2698086d7fe5b01
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311877"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475692"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Postup odebrání přístupu uživatele k aplikaci
 

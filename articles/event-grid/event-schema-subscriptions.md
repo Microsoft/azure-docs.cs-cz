@@ -2,21 +2,21 @@
 title: Schéma událostí předplatného Azure Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro odběr událostí pomocí služby Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 10/12/2018
-ms.author: tomfitz
-ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 01/12/2019
+ms.author: spelluru
+ms.openlocfilehash: 04bb19c074edff08677d759fb386608f6905e979
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310229"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473431"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schéma událostí Azure Event Grid pro předplatná
 
-Tento článek obsahuje vlastnosti a schéma pro události předplatného Azure. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události předplatného Azure. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
 Skupiny prostředků a předplatná Azure generování stejné typy událostí. Typy událostí se vztahují na změny zdrojů nebo akce. Hlavní rozdíl je, že skupiny prostředků vysílat události pro prostředky v rámci skupiny prostředků a předplatných Azure vysílat události pro prostředky v rámci předplatného.
 
@@ -237,13 +237,13 @@ Událost má následující dat nejvyšší úrovně:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| Předmět | řetězec | Vydavatel definované cesta předmět události. |
-| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
 | čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události předplatného. |
 | dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
@@ -253,7 +253,7 @@ Datový objekt má následující vlastnosti:
 | deklarace identity | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | řetězec | ID operace odstraňování potíží. |
 | httpRequest | objekt | Podrobnosti o operaci. Tento objekt je pouze zahrnuty při aktualizaci stávajícího prostředku nebo odstranění prostředku. |
-| ResourceProvider | řetězec | Poskytovatel prostředků pro operaci. |
+| resourceProvider | řetězec | Poskytovatel prostředků pro operaci. |
 | resourceUri | řetězec | Identifikátor URI prostředku v operaci. |
 | operationName | řetězec | Operace, která byla provedena. |
 | status | řetězec | Stav operace. |

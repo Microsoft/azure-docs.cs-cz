@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0f98f815c0417d1ee8ad5708589b5402a033f83a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5fc5829744d3740f3484303ae009145106264fec
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989530"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470711"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Propojení virtuálních sítí pomocí partnerského vztahu virtuálních sítí pomocí rozhraní příkazového řádku Azure
 
@@ -47,7 +47,7 @@ Před vytvořením virtuální sítě, je nutné vytvořit skupinu prostředků 
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork1* s předponou adresy *10.0.0.0/16*.
+Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet). Následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork1* s předponou adresy *10.0.0.0/16*.
 
 ```azurecli-interactive 
 az network vnet create \
@@ -88,7 +88,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-Vytvoření partnerského vztahu z *myVirtualNetwork1* k *myVirtualNetwork2* s [vytvořit partnerský vztah virtuální sítě sítě az](/cli/azure/network/vnet/peering#az_network_vnet_peering_create). Pokud `--allow-vnet-access` parametr není zadán, se naváže partnerský vztah, ale žádná komunikace probíhá přes ho.
+Vytvoření partnerského vztahu z *myVirtualNetwork1* k *myVirtualNetwork2* s [vytvořit partnerský vztah virtuální sítě sítě az](/cli/azure/network/vnet/peering). Pokud `--allow-vnet-access` parametr není zadán, se naváže partnerský vztah, ale žádná komunikace probíhá přes ho.
 
 ```azurecli-interactive
 az network vnet peering create \

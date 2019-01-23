@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
-ms.openlocfilehash: 2a835e7cd9d4c45c1c39c3c135705cb4dff0e6fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 190d81fc7811e4afdb32555407716f60f5b9a2d1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842182"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476134"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Použití aktualizací ve službě Azure Stack
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Můžete použít **aktualizovat** dlaždici v portálu pro správu použít Microsoft nebo výrobce OEM balíčky aktualizací pro Azure Stack. Musíte stáhnout balíček aktualizace, importovat soubory balíčku do služby Azure Stack a potom nainstalujte balíček aktualizace.
 
@@ -50,13 +50,11 @@ Následující postup ukazuje, jak importovat a nainstalovat balíčky aktualiza
 
 2. V dialogovém okně Filtr zadejte **aktualizovat**a vyberte **updateadminaccount** účtu úložiště.
 
-    ![Ukazuje, jak vyhledat updateadminaccount](media/azure-stack-apply-updates/ApplyUpdates2.png)
-
 3. Ve službě storage account podrobnosti najdete v části **služby**vyberte **objekty BLOB**.
  
     ![Ukazuje, jak získat k objektům blob pro účet úložiště](media/azure-stack-apply-updates/ApplyUpdates3.png) 
- 
-4. V části **službu Blob service**vyberte **+ kontejner** k vytvoření kontejneru. Zadejte název (například *aktualizace 1709*) a pak vyberte **OK**.
+
+4. V části **službu Blob service**vyberte **+ kontejner** k vytvoření kontejneru. Zadejte název (například *aktualizace 1811*) a pak vyberte **OK**.
  
      ![Ukazuje, jak přidat kontejner v účtu úložiště](media/azure-stack-apply-updates/ApplyUpdates4.png)
 
@@ -66,12 +64,12 @@ Následující postup ukazuje, jak importovat a nainstalovat balíčky aktualiza
 
 6. V části **nahrát objekt blob**, klikněte na ikonu složky, vyhledejte soubor .exe balíček aktualizace a pak klikněte na tlačítko **otevřít** v okně Průzkumníka souborů.
   
-7. V části **nahrát objekt blob**, klikněte na tlačítko **nahrát**. 
+7. V části **nahrát objekt blob**, klikněte na tlačítko **nahrát**.
   
     ![Ukazuje, kde kvůli nahrání každého souboru balíčku](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. Zopakujte kroky 6 a 7 pro *název_balíčku*soubor .bin a soubory Metadata.xml. Pokud zahrnutý import souboru doplňkové Notice.txt.
-9. Až budete hotovi, můžete zkontrolovat oznámení (ikona zvonku v pravém horním rohu portálu). Oznámení měl označovat, že se nahrávání dokončí. 
+8. Zopakujte kroky 6 a 7 pro *název_balíčku*soubor .bin a soubory Metadata.xml. Pokud zahrnutý import souboru doplňkové Notice.txt.
+9. Až budete hotovi, můžete zkontrolovat oznámení (ikona zvonku v pravém horním rohu portálu). Oznámení měl označovat, že se nahrávání dokončí.
 10. Přejděte zpět na Aktualizovat dlaždici na řídicím panelu. Na dlaždici měl označovat, že je k dispozici aktualizace. Kliknutím na dlaždici ke kontrole nově přidané aktualizace balíčku.
 11. K instalaci aktualizace, vyberte balíček, který je označen jako **připravené** a buď klikněte pravým tlačítkem na balíček a vyberte **aktualizovat**, nebo klikněte na tlačítko **aktualizovat** akce nahoře .
 12. Po kliknutí na instalaci balíčku aktualizace, můžete zobrazit stav v **podrobnosti Hromadná postupná aktualizace** oblasti. Z tohoto místa můžete také kliknout na **stáhnout úplných protokolů** ke stažení souborů protokolu.

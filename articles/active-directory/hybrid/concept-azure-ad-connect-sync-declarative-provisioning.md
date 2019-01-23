@@ -4,7 +4,7 @@ description: Vysvětluje deklarativní zřizování konfigurační model ve slu�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9242ffc0c87ee9f314745463b8287ad7531a982d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 45b145d9a8922bc3da50cef7d9fa7aacf260417d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315032"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471767"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizace Azure AD Connect: Principy deklarativní zřizování
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizace Azure AD Connect: Principy deklarativního zřizování
 Toto téma popisuje model konfigurace ve službě Azure AD Connect. Model se nazývá deklarativní zřizování a umožní vám provádět změny s lehkostí a elegancí konfigurace. Mnoho věcí, které jsou popsané v tomto tématu jsou rozšířené a nevyžaduje se pro většinu scénářů zákazníků.
 
 ## <a name="overview"></a>Přehled
@@ -91,7 +91,7 @@ Objekt úložiště metaverse zůstane, dokud je jedno pravidlo synchronizace v 
 Při odstranění objektu úložiště metaverse všechny objekty přidružené pravidlo odchozí synchronizace označen pro **zřízení** jsou označená k odstranění.
 
 ## <a name="transformations"></a>Transformace
-Transformace se používají k definování, jak atributy jakým způsobem se předávají ze zdroje do cíle. Toky můžete mít jednu z následujících **tok typy**: přímé, konstanty nebo výraz. Tok s přímým přístupem, toky hodnotu atributu jako-je bez dalších transformací. Konstantní hodnota Nastaví zadanou hodnotu. Výraz používá deklarativní zřizování jazyk výrazů vyjádřit, jak by měla být transformace. Podrobnosti o výraz jazyka najdete v [Principy deklarativní zřizování jazyk výrazů](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) tématu.
+Transformace se používají k definování, jak atributy jakým způsobem se předávají ze zdroje do cíle. Toky můžete mít jednu z následujících **tok typy**: Přímo, nebo výraz konstanta. Tok s přímým přístupem, toky hodnotu atributu jako-je bez dalších transformací. Konstantní hodnota Nastaví zadanou hodnotu. Výraz používá deklarativní zřizování jazyk výrazů vyjádřit, jak by měla být transformace. Podrobnosti o výraz jazyka najdete v [Principy deklarativní zřizování jazyk výrazů](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) tématu.
 
 ![Zřízení nebo spojení](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -158,9 +158,9 @@ V tomto scénáři budete muset změnit rozsah synchronizační pravidla, takže
 
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 
 **Referenční témata**
 
-* [Synchronizace Azure AD Connect: Functions – Reference](reference-connect-sync-functions-reference.md)
+* [Synchronizace Azure AD Connect: Reference k funkcím](reference-connect-sync-functions-reference.md)

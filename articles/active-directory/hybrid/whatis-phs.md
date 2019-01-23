@@ -3,19 +3,19 @@ title: Co je synchronizace hodnot hash hesel v Azure AD? | Dokumenty Microsoft
 description: Popisuje synchronizaci hodnot hash hesel.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 12/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3e0c13312557503f4c2e1900f3c13eb45912345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ae4244a9ce17cdcb5942100e97b67916d455d019
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109472"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470244"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Co je synchronizace hodnot hash hesel v Azure AD?
 Synchronizace hodnot hash hesel je jedna z metod přihlašování používat k provádění hybridní identita. Azure AD Connect synchronizuje hodnoty hash,-the-hash, hesla uživatelů z místní instance Active Directory do služby Azure AD se cloudové instance.

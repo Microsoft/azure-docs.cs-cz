@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.component: autoscale
-ms.openlocfilehash: 640a939f6f9aabb00ad830f9ba27e396b329ce7f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: autoscale
+ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440559"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469487"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatickým Škálováním v Azure
 Tento článek popisuje, jak vytvořit nastavení automatického škálování pro váš prostředek na portálu Microsoft Azure.
@@ -133,3 +133,4 @@ Můžete se kdykoli vrátit k automatickému škálování kliknutím **povolit 
 [12]: ./media/autoscale-get-started/scale-definition-json.png
 [13]: ./media/autoscale-get-started/disable-autoscale.png
 [14]: ./media/autoscale-get-started/set-manualscale.png
+

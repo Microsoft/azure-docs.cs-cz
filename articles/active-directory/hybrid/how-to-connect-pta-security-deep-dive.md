@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 45f99ac99c54caab17ba7b74dc09a46c335c8fe4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185065"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476338"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování podrobné informace o zabezpečení
 
@@ -49,7 +49,7 @@ Jde o aspektech zabezpečení klíče této funkce:
 ## <a name="components-involved"></a>Součástí
 
 Obecné podrobnosti o zabezpečení dat a provozní, služba Azure AD, najdete v článku [centrum](https://azure.microsoft.com/support/trust-center/). Při používání předávacího ověřování pro přihlášení uživatele se podílejí následující komponenty:
-- **Služba tokenů zabezpečení Azure AD**: Bezstavové služby tokenů zabezpečení (STS), která zpracovává požadavky na přihlášení a vydává tokeny zabezpečení pro prohlížeče, klienty nebo služby podle potřeby uživatelů.
+- **Azure AD STS**: Bezstavové služby tokenů zabezpečení (STS), která zpracovává požadavky na přihlášení a vydává tokeny zabezpečení pro prohlížeče, klienty nebo služby podle potřeby uživatelů.
 - **Azure Service Bus**: Poskytuje cloudovou komunikaci s podnikovým zasíláním zpráv a propojení komunikace, která pomáhá propojit místní řešení s cloudem.
 - **Azure AD Connect ověřovací Agent nebyl**: Součást v místním, která přijímá a reaguje na požadavky ověřování hesla.
 - **Azure SQL Database**: Obsahuje informace o vašem tenantovi agentů ověřování, včetně jejich metadata, šifrovacích klíčů.

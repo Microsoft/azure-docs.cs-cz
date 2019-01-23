@@ -1,22 +1,22 @@
 ---
-title: Repliky pro čtení ve službě Azure Database for PostgreSQL
+title: Repliky pro čtení v Azure Database for PostgreSQL
 description: Tento článek popisuje další repliky ve službě Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 7aecfdedba04502ffdc68876635611a2f26d9896
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/22/2019
+ms.openlocfilehash: cb02f0b786ff6f1c7dbef5471fb95ce6516f824c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383497"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466070"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL
 Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for PostgreSQL server (správce) až k pěti jen pro čtení serverům (replik pro čtení) v rámci stejné oblasti Azure. Repliky pro čtení se aktualizují asynchronně pomocí technologie nativní replikace stroje PostgreSQL.
 
-Repliky jsou nové servery, které je možné spravovat podobným způsobem jako normální samostatné databáze Azure pro servery PostgreSQL. Repliky se počítají za stejnou sazbu jako samostatný server.
+Repliky jsou nové servery, které je možné spravovat podobným způsobem jako normální samostatné databáze Azure pro servery PostgreSQL. Pro každou další repliku bude vám Účtovaná zřízených výpočetních jádrech a zřízeného úložiště v GB/měsíc.
 
 ## <a name="when-to-use-read-replicas"></a>Kdy použít repliky pro čtení
 Funkce repliky pro čtení je cílená na pomáhá zlepšit výkon a škálování úlohy náročné na čtení. Další úlohy, může být izolovaných replik, při zápisu úlohy mohou být přesměrováni na hlavní server.
@@ -117,7 +117,7 @@ Poté, co byla vytvořena replika, cenová úroveň (s výjimkou do a z Basic), 
 > [!IMPORTANT]
 > Předtím, než se konfigurace serveru hlavní server je aktualizovat na nové hodnoty, tyto repliky konfigurace se musí aktualizovat na stejné nebo vyšší hodnoty. Tím se zajistí, že tyto repliky jsou schopné udržovat tempo se změnami provedenými na hlavní server.
 
-Zejména Postgres vyžaduje hodnotu hlavního serveru pro max_connections jako větší než hodnota repliky v opačném případě, že replika nebude spuštěna. Ve službě Azure Database for PostgreSQL je nastavena hodnota max_connections v závislosti na tom, které skladová jednotka potřebuje. Další informace najdete v článku [dokumentu limity](concepts-limits.md). 
+Zejména Postgres vyžaduje hodnotu server repliky pro parametr max_connections být větší než nebo rovna hodnotě předlohy v opačném případě, že replika nebude spuštěna. Ve službě Azure Database for PostgreSQL je nastavena hodnota max_connections v závislosti na tom, které skladová jednotka potřebuje. Další informace najdete v článku [dokumentu limity](concepts-limits.md). 
 
 Pokus aktualizaci, která je v rozporu to povede k chybě.
 

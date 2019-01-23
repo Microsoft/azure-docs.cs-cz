@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9daf0f0d1c7ca94308bfb0d894366b457a045770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970395"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470643"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Vizualizovat data vzdálené monitorování pomocí Power BI
 
@@ -28,7 +28,7 @@ Tento kurz vás provede jak k řešení vzdáleného monitorování dat z cosmos
 
 ## <a name="information-needed-from-azure-portal"></a>Informace o potřebné z webu Azure Portal
 
-1. Přejděte do [webu Azure Portal](https://portal.azure.com) a v případě potřeby se přihlaste
+1. Přejděte do [webu Azure Portal](https://portal.azure.com) a přihlaste se v případě potřeby
 
 2. Na panelu vlevo klikněte na skupiny prostředků
 
@@ -40,9 +40,9 @@ Tento kurz vás provede jak k řešení vzdáleného monitorování dat z cosmos
 
     ![Skupina prostředků](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
-5. Na panelu vlevo klikněte v části "Klíče" a poznamenejte následující hodnoty, které se použijí ve službě Power BI:
+5. Na panelu vlevo klikněte v části "Klíče" a poznamenejte následující hodnoty pro použití v Power BI:
 
-    - URI
+    - Identifikátor URI
     - Primární klíč
 
     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
@@ -59,7 +59,7 @@ Tento kurz vás provede jak k řešení vzdáleného monitorování dat z cosmos
   
 3. Zadejte informace, které jste pořídili jste výše:
 
-    * URI
+    * Identifikátor URI
     * Primární klíč
 
 4. Vyberte všechny tabulky k importu do Power BI. Tím se spustí řízený načítá data. Čím delší je řešení spuštěné, tím déle, může trvat pro načtení dat (až několik hodin). 
@@ -84,11 +84,11 @@ Tento kurz vás provede jak k řešení vzdáleného monitorování dat z cosmos
 
 ## <a name="creating-a-dashboard"></a>Vytváření řídicího panelu
 
-Jakmile datový proud byl připojen, budete chtít vytvořit přizpůsobené řídicí panely! Řídicí panel níže je příklad odběr, který otáčí telemetrická data se immmited podle našich Simulovaná zařízení a zobrazuje různé kolem, jako: 
+Jakmile datový proud byl připojen, budete chtít vytvořit přizpůsobené řídicí panely! Řídicí panel níže je příklad pořízení telemetrie probíhá emitovány Simulovaná zařízení, a zobrazuje různé pivotů kolem, jako: 
 
 * Umístění zařízení na mapě (vpravo)
 * Zařízení s jejich stavu a závažnosti. (nahoře vlevo)
-* Zařízení s pravidly na místě a pokud neexistují žádné alarmy bude pro ně (vlevo dole)
+* Zařízení s pravidly na místě a pokud jsou nějaké výstrahy bude pro ně (vlevo dole)
 
 ![Vizualizace Power BI](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
 

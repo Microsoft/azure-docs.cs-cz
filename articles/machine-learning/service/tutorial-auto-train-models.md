@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5bd6649b063521853864d4da423372ae181cf977
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 86a3430f6109eb4b61baa0c7014752d07063fe85
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580514"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468723"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -66,9 +66,15 @@ import logging
 import os
 ```
 
+Pokud jste se v tomto kurzu ve prostředí Pythonu, použijte následující nainstalují potřebné balíčky.
+
+```shell
+pip install azureml-sdk[automl,notebooks] azureml-dataprep pandas scikit-learn matplotlib
+```
+
 ## <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. A `Workspace` je třída, která přijímá údaje předplatného a prostředků Azure. Také vytvoří prostředek v cloudu pro monitorování a sledování vašich modelů spuštění. 
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. A `Workspace` je třída, která přijímá údaje předplatného a prostředků Azure. Také vytvoří prostředek v cloudu pro monitorování a sledování vašich modelů spuštění.
 
 `Workspace.from_config()` přečte soubor **aml_config/config.json** a načte podrobnosti do objektu s názvem `ws`.  `ws` se používá ve zbývající části kódu v tomto kurzu.
 
@@ -95,7 +101,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>Zkoumání dat
 
-Použití objektu toku dat vytvořili v předchozím kurzu. Otevření a spuštění toku dat a zkontrolovat výsledky kontroly:
+Použití objektu toku dat vytvořili v předchozím kurzu. Souhrnně řečeno, části 1 tohoto kurzu vyčistit data taxislužby NYC, aby mohl být použit v model strojového učení. Nyní používat různé funkce v sadě dat a povolit automatické modelu vytvářet relace mezi funkcí a cen cesty taxíkem. Otevření a spuštění toku dat a zkontrolovat výsledky kontroly:
 
 
 ```python
@@ -605,27 +611,27 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 y_train.values.flatten()
 ```
 
-Teď máte potřebné balíčky a data připravena pro autotraining modelu.
+Účelem tohoto kroku je, aby datových bodů pro otestování dokončení modelu, které nebyly použity pro trénování modelu, aby bylo možné měření true přesnost. Jinými slovy, dobře trénovaného modelu by měl provádět přesně předpovědí z dat, že již není vidět. Teď máte potřebné balíčky a data připravena pro autotraining modelu.
 
 ## <a name="automatically-train-a-model"></a>Automaticky trénování modelu
 
 Chcete-li automaticky trénování modelu, proveďte následující kroky:
-1. Definujte nastavení pro běh experimentu.
-1. Odeslání experimentu pro ladění modelu.
+1. Definujte nastavení pro běh experimentu. Připojit trénovacích dat do konfigurace a změnit nastavení, která řídí proces školení.
+1. Odeslání experimentu pro ladění modelu. Po odeslání experimentu procesu prochází různé algoritmy strojového učení a nastavení hyperparameter týkajícími se definovaná omezení. Model přizpůsobený zvolí optimalizací metriku přesnost.
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>Definovat nastavení pro automatické generování a ladění
 
-Definujte parametr experiment a nastavení pro ladění a automatické generování modelu. Zobrazit úplný seznam [nastavení](how-to-configure-auto-train.md).
+Definujte parametr experiment a nastavení pro ladění a automatické generování modelu. Zobrazit úplný seznam [nastavení](how-to-configure-auto-train.md). Odeslání experimentu s těmito nastaveními výchozí bude trvat přibližně 10 – 15 minut, ale pokud chcete, aby v kratší době spuštění snížit buď `iterations` nebo `iteration_timeout_minutes`.
 
 
 |Vlastnost| Hodnota v tomto kurzu |Popis|
 |----|----|---|
-|**iteration_timeout_minutes**|10|Časový limit během několika minut pro každou iteraci.|
-|**iterations**|30|Počet iterací. V každé iteraci model trénovat s daty s konkrétním kanálu.|
-|**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat|
-|**preprocess**| True | S použitím **True**, experiment můžete předběžně zpracovat vstup.|
+|**iteration_timeout_minutes**|10|Časový limit během několika minut pro každou iteraci. Zmenšete tuto hodnotu a snížit celkové doby běhu.|
+|**iterations**|30|Počet iterací. V každé iteraci se trénuje nový model strojového učení s vašimi daty. Jedná se o primární hodnotu, která ovlivní celkové doby běhu.|
+|**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Přizpůsobený modelu bude zvolen v závislosti na tuto metriku.|
+|**preprocess**| True | S použitím **True**, experiment můžete předběžně zpracovat vstupní data (zpracování chybí data, převod textu na číselné, atd.)|
 |**Úroveň podrobností**| logging.INFO | Určuje úroveň protokolování.|
-|**n_cross_validationss**|5|Počet rozdělí křížového ověření.|
+|**n_cross_validations**|5|Počet rozdělí křížového ověření provést, pokud není zadána data pro ověření.|
 
 
 
@@ -640,6 +646,7 @@ automl_settings = {
 }
 ```
 
+Použít jako parametr pro nastavení definované školení `AutoMLConfig` objektu. Kromě toho určit trénovacích dat a typ modelu, který je `regression` v tomto případě.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -664,6 +671,8 @@ experiment=Experiment(ws, experiment_name)
 local_run = experiment.submit(automated_ml_config, show_output=True)
 ```
 
+Aktualizace výstupu live při spuštění testu. Pro každou iteraci zobrazí typ modelu, doba trvání běhu a přesnost školení. Pole `BEST` stopy s tím nejlepším skóre školení podle metriky typu.
+
     Parent Run ID: AutoML_02778de3-3696-46e9-a71b-521c8fca0651
     *******************************************************************************************
     ITERATION: The iteration being evaluated.
@@ -672,7 +681,7 @@ local_run = experiment.submit(automated_ml_config, show_output=True)
     METRIC: The result of computing score on the fitted pipeline.
     BEST: The best observed score thus far.
     *******************************************************************************************
-    
+
      ITERATION   PIPELINE                                       DURATION      METRIC      BEST
              0   MaxAbsScaler ExtremeRandomTrees                0:00:08       0.9447    0.9447
              1   StandardScalerWrapper GradientBoosting         0:00:09       0.9536    0.9536
@@ -709,7 +718,7 @@ local_run = experiment.submit(automated_ml_config, show_output=True)
 
 Prozkoumejte výsledky automatického školení s pomůckou Jupyter nebo prozkoumáním historie experimentu.
 
-### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Možnost 1: Přidat pomůcku Jupyter zobrazíte výsledky
+### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Option 1: Přidat pomůcku Jupyter zobrazíte výsledky
 
 Pokud používáte Poznámkový blok Jupyter, pomocí tohoto widgetu Poznámkový blok Jupyter zobrazíte graf a tabulku všechny výsledky:
 
@@ -722,9 +731,9 @@ RunDetails(local_run).show()
 ![Podrobnosti o spuštění Jupyter widgetu](./media/tutorial-auto-train-models/automl-dash-output.png)
 ![Jupyter widgetu graf](./media/tutorial-auto-train-models/automl-chart-output.png)
 
-### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Možnost 2: Získání a zkontrolovat všechny spuštění iterace v Pythonu
+### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Option 2: Získání a zkontrolovat všechny spuštění iterace v Pythonu
 
-Můžete také načíst historii každé experiment a prozkoumání jednotlivých metrik pro každé spuštění iterace:
+Můžete také načíst historii každé experiment a prozkoumání jednotlivých metrik pro každé spuštění iterace. Prozkoumáním RMSE (root_mean_squared_error) pro každé jednotlivé modelu spustit uvidíte, že většina iterací jsou předpověď taxislužby veletrh náklady v rozumné okraj (3-4 USD).
 
 ```python
 children = list(local_run.get_children())
@@ -1081,28 +1090,16 @@ print(best_run)
 print(fitted_model)
 ```
 
-## <a name="register-the-model"></a>Zaregistrujte model
-
-Zaregistrujte model ve vašem pracovním prostoru služby Azure Machine Learning:
-
-
-```python
-description = 'Automated Machine Learning Model'
-tags = None
-local_run.register_model(description=description, tags=tags)
-local_run.model_id # Use this id to deploy the model as a web service in Azure
-```
-
 ## <a name="test-the-best-model-accuracy"></a>Testování osvědčených přesnost modelu
 
-Nejlepší model použijte ke spuštění předpovědi na základě testovací datové. Funkce `predict` používá nejlepší model a predikuje hodnoty y, **dojít náklady**, z `x_test` datové sady. Tisk prvních 10 předpovědět hodnot z nákladů `y_predict`:
+Nejlepší model použijte ke spuštění předpovědi na základě testovací datové předpovědět tarify taxislužby. Funkce `predict` používá nejlepší model a predikuje hodnoty y, **dojít náklady**, z `x_test` datové sady. Tisk prvních 10 předpovědět hodnot z nákladů `y_predict`:
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Vytvoření korelačního diagramu k vizualizaci hodnoty předpokládaných nákladů ve srovnání s hodnotami skutečné náklady. Následující kód používá `distance` funkce jako osu x a o jízdách `cost` jako osy y. Určený k porovnání odchylku předpokládaných nákladů na jednotlivé hodnoty vzdálenost o jízdách prvních 100 předpovídat a skutečné náklady jsou vytvořeny jako samostatné řady. Zkoumání vykreslení ukazuje, že je téměř lineárním vztah vzdálenosti a náklady. A hodnoty předpovězené náklady jsou ve většině případů velmi blízko skutečné náklady hodnoty pro stejnou o jízdách vzdálenost.
+Vytvoření korelačního diagramu k vizualizaci hodnoty předpokládaných nákladů ve srovnání s hodnotami skutečné náklady. Následující kód používá `distance` funkce jako osu x a o jízdách `cost` jako osy y. Určený k porovnání odchylku předpokládaných nákladů na jednotlivé hodnoty vzdálenost o jízdách prvních 100 předpovídat a skutečné náklady jsou vytvořeny jako samostatné řady. Zkoumání vykreslení ukazuje, že je téměř lineárním relace vzdálenosti a náklady a náklady na předpokládané hodnoty jsou ve většině případů velmi blízko skutečné náklady hodnoty pro stejnou o jízdách vzdálenost.
 
 ```python
 import matplotlib.pyplot as plt
@@ -1127,7 +1124,7 @@ plt.show()
 
 ![Predikce korelačního diagramu](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-Vypočítat `root mean squared error` výsledků. Použití `y_test` datového rámce. Převeďte ji do seznamu k porovnání předpovězeným hodnotám. Funkce `mean_squared_error` má dvě pole hodnot a vypočítá průměrné kvadratická chyba mezi nimi. S ohledem druhou odmocninu výsledku vrátí chybu v stejné jednotky jako proměnnou y **náklady**. Označuje, jsou vaše predikcí zhruba jak daleko od skutečné hodnoty:
+Vypočítat `root mean squared error` výsledků. Použití `y_test` datového rámce. Převeďte ji do seznamu k porovnání předpovězeným hodnotám. Funkce `mean_squared_error` má dvě pole hodnot a vypočítá průměrné kvadratická chyba mezi nimi. S ohledem druhou odmocninu výsledku vrátí chybu v stejné jednotky jako proměnnou y **náklady**. Označuje zhruba dole jsou předpovědi tarif taxislužby od skutečné tarify:
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1165,6 +1162,8 @@ print(1 - mean_abs_percent_error)
 
     Model Accuracy:
     0.8945484613043041
+
+Z metriky přesnosti konečné předpovědi uvidíte, že je velmi vhodný pro predikci taxislužby tarify z datové sady funkcí, obvykle v rámci + - $3.00 model. Tradiční strojového učení proces vývoje modelu je velmi náročná a vyžaduje investice významné domény znalostní báze a čas ke spuštění a porovnávat výsledky desítky modely. Pomocí automatizovaných machine learning je skvělý způsob, jak rychle otestovat mnoho různých modelů pro váš scénář.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

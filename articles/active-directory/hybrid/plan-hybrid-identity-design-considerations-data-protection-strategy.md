@@ -4,7 +4,7 @@ description: Můžete definovat strategie ochrany dat pro hybridní řešení id
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e76fd1f4-340a-492a-84d9-e05f3b7cc396
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 20782679a4e73c029d6c83fd3bc57914b4d28691
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bef5671637b26f4fd0d0c27211edca946c395cdf
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865042"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468552"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze budete definovat strategie ochrany dat pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v:
@@ -118,32 +118,32 @@ Po ověření uživatele pomocí služby Azure AD, je důležité vyhodnotit úr
 
 Každá interakce v diagramu, ukázalo v obrázek X představuje jeden scénář přístup ovládací prvek, který se dá pokrýt komponentami služby Azure AD. Dál budete mít popis jednotlivých scénářů:
 
-  1. Podmíněný přístup k aplikacím, které jsou hostované v místním: registrovaná zařízení se zásadami přístupu můžete použít pro aplikace, které jsou nakonfigurovány pro použití služby AD FS pomocí Windows serveru 2012 R2.
+  1. Podmíněný přístup k aplikacím, které jsou hostované místně: Registrovaná zařízení se zásadami přístupu můžete použít pro aplikace, které jsou nakonfigurovány pro použití služby AD FS pomocí Windows serveru 2012 R2.
 
-  2. Řízení přístupu k webu Azure portal: Azure také umožňuje řídit přístup k portálu pomocí řízení přístupu na základě role (RBAC)). Tato metoda umožňuje společnosti chcete omezit počet operací, které jednotlivec může udělat na webu Azure Portal. Pomocí RBAC pro řízení přístupu na portál, můžete správci IT delegovat přístup pomocí následujících postupů správy přístupu:
+  2. Řízení přístupu k webu Azure portal:  Azure také umožňuje řídit přístup k portálu pomocí řízení přístupu na základě role (RBAC)). Tato metoda umožňuje společnosti chcete omezit počet operací, které jednotlivec může udělat na webu Azure Portal. Pomocí RBAC pro řízení přístupu na portál, můžete správci IT delegovat přístup pomocí následujících postupů správy přístupu:
 
-   - Přiřazení role na základě skupin: přístup můžete přiřadit skupinám Azure AD, které se synchronizují z vaší místní služby Active Directory. To vám umožňuje využít stávající investice, které vaše organizace provedla v nástrojů a procesů pro správu skupin. Můžete také použít funkci delegované skupiny pro správu služby Azure AD Premium.
-   - Použití předdefinované role v Azure: můžete použít tři role – vlastník, Přispěvatel a Čtenář, ujistěte se, že uživatelé a skupiny mají oprávnění pouze úlohy, které potřebují ke své práci.
-   -  Granulární přístup k prostředkům: můžete přiřadit role pro uživatele a skupiny pro konkrétní předplatné, skupinu prostředků nebo jednotlivých prostředků Azure, jako je například na webu nebo v databázi. Tímto způsobem můžete zajistit, aby uživatelé měli přístup ke všem prostředkům, které potřebují a bez přístupu k prostředkům, které není potřeba spravovat.
+   - Přiřazení role na základě skupin: Přístup můžete přiřadit skupinám Azure AD, které se synchronizují z vaší místní služby Active Directory. To vám umožňuje využít stávající investice, které vaše organizace provedla v nástrojů a procesů pro správu skupin. Můžete také použít funkci delegované skupiny pro správu služby Azure AD Premium.
+   - Použití předdefinované role v Azure: Můžete použít tři role – vlastník, Přispěvatel a Čtenář, ujistěte se, že uživatelé a skupiny mají oprávnění pouze úlohy, které potřebují ke své práci.
+   -  Granulární přístup k prostředkům: Můžete je přiřadit role uživatelů a skupin pro konkrétní předplatné, skupinu prostředků nebo jednotlivých prostředků Azure, jako je například na webu nebo v databázi. Tímto způsobem můžete zajistit, aby uživatelé měli přístup ke všem prostředkům, které potřebují a bez přístupu k prostředkům, které není potřeba spravovat.
 
    > [!NOTE]
    > Pokud se vytváření aplikací a chcete přizpůsobit řízení přístupu pro ně, je také možné pro autorizaci použít role aplikace Azure AD. Přečtěte si [WebApp-RoleClaims-DotNet příklad](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) o tom, jak vytvářet aplikace pro použití této funkce.
 
 
-  3. Podmíněný přístup pro aplikace Office 365 s Microsoft Intune: správci IT mohou poskytnout zásady podmíněného přístupu zařízení k podnikovým prostředkům, zatímco zároveň umožnili pracovníkům s vhodnými zařízeními přístup ke službám zabezpečení. 
+  3. Podmíněný přístup pro aplikace Office 365 s Microsoft Intune:  Správci IT mohou poskytnout zásady podmíněného přístupu zařízení k podnikovým prostředkům, zatímco zároveň umožnili pracovníkům s vhodnými zařízeními přístup ke službám zabezpečení. 
   
-  4. Podmíněný přístup pro aplikace Saas: [tuto funkci](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umožňuje konfigurovat pravidla přístupu k ověření službou Multi-Factor Authentication podle aplikace a k možnosti zablokovat přístup pro uživatele není v důvěryhodné síti. Můžete použít pravidla ověřování službou Multi-Factor Authentication pro všechny uživatele, které jsou přiřazeny k aplikaci nebo jenom pro uživatele v rámci určených skupinách zabezpečení. Uživatelé mohou vyloučit z požadavek na ověření službou Multi-Factor Authentication, jejich přístupu k aplikaci z IP adresy, který v rámci organizace sítě.
+  4. Podmíněný přístup pro aplikace Saas: [Tato funkce](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umožňuje konfigurovat pravidla přístupu k ověření službou Multi-Factor Authentication podle aplikace a k možnosti zablokovat přístup pro uživatele není v důvěryhodné síti. Můžete použít pravidla ověřování službou Multi-Factor Authentication pro všechny uživatele, které jsou přiřazeny k aplikaci nebo jenom pro uživatele v rámci určených skupinách zabezpečení. Uživatelé mohou vyloučit z požadavek na ověření službou Multi-Factor Authentication, jejich přístupu k aplikaci z IP adresy, který v rámci organizace sítě.
 
 Protože možnosti pro řízení přístupu použít s více vrstvami přístup, se nedají použít pro tuto úlohu porovnání mezi těmito možnostmi. Ujistěte se, že jsou využívat všechny možnosti, které jsou k dispozici pro jednotlivé scénáře, které vyžadují řízení přístupu k vašim prostředkům.
 
 ## <a name="define-incident-response-options"></a>Definování možností reakce na incidenty
 Azure AD vám můžou pomoct IT na potenciální rizika zabezpečení identit v prostředí pomocí sledování činnosti uživatelů. IT můžete použít Azure AD Access a sestavy využití získat náhled do integrity a zabezpečení adresáře vaší organizace. Pomocí těchto informací správce IT může zjistit, kde můžou být potenciální bezpečnostní rizika, mohli odpovídajícím způsobem plánovat pro zmírnění rizika.  [Předplatné Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) obsahuje sadu sestavy zabezpečení, které můžete povolit IT pro získání těchto informací. [Sestavy Azure AD](../reports-monitoring/overview-reports.md) jsou zařazené do kategorií následujícím způsobem:
 
-* **Sestavy anomálií**: obsahovat události přihlášení, které jevily jako neobvyklé. Cílem je informovat vás tyto činnosti a vám umožní provádět rozhodnutí o tom, zda je podezřelé události.
-* **Integrované sestavy aplikace**: poskytuje přehled o používání cloudových aplikací ve vaší organizaci. Azure Active Directory nabízí integraci s tisíci cloudových aplikací.
-* **Zprávy o chybách**: označení chyb, které mohou nastat při zřizování účtů do externí aplikace.
+* **Sestavy anomálií**: Obsahovat události přihlášení, které jevily jako neobvyklé. Cílem je informovat vás tyto činnosti a vám umožní provádět rozhodnutí o tom, zda je podezřelé události.
+* **Integrované sestavy aplikace**: Poskytuje přehled o používání cloudových aplikací ve vaší organizaci. Azure Active Directory nabízí integraci s tisíci cloudových aplikací.
+* **Zprávy o chybách**: Označení chyb, které mohou nastat při zřizování účtů do externí aplikace.
 * **Sestavy pro konkrétní uživatele**: Zobrazí zařízení nebo znak v dat o aktivitách pro konkrétního uživatele.
-* **Protokoly aktivit**: obsahují záznam všechny auditované události během posledních 24 hodin, posledních 7 dnů, nebo posledních 30 dní, jakož i změny skupiny aktivit a aktivita resetování a registraci hesla.
+* **Protokoly aktivit**: V posledních 24 hodin, posledních 7 dnů, nebo posledních 30 dní, jakož i změny skupiny aktivit a aktivita resetování a registraci hesla obsahovat záznam všechny auditované události.
 
 > [!TIP]
 > Jiné sestavy, které může také pomoct reakce na incidenty tým pracující na případ je [uživatel s uniklými přihlašovacími údaji](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) sestavy. Tato sestava zobrazí žádná shoda mezi seznamu uniklými přihlašovacími údaji a tenanta.

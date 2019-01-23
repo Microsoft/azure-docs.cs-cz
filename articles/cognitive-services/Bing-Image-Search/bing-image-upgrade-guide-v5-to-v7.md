@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 2192e3d2a344a31717c59c813123ed0c807a2841
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c62ed151e1b09482c227f59ee5264de01d425255
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256549"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477806"
 ---
 # <a name="bing-image-search-api-upgrade-guide"></a>Průvodce upgradem API pro vyhledávání obrázků Bingu
 
@@ -74,9 +74,9 @@ Blokováno|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Přejmenovat `modulesRequested` parametr do dotazu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules).  
+- Přejmenovat `modulesRequested` parametr do dotazu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).  
 
-- Přejmenovat poznámky se značkami. Zobrazit [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) parametr se značkami dotazu.  
+- Přejmenovat poznámky se značkami. Zobrazit [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) parametr se značkami dotazu.  
 
 - Seznam podporované trhy hodnota filtru ShoppingSources změnit na pouze en US. Zobrazit [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype).  
 
@@ -98,13 +98,13 @@ Blokováno|InvalidRequest.Blocked
 - Tyto parametry dotazu jsou nyní platné jen spolu s `/images/details` koncového bodu.  
 
     -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken)  
-    -   [Moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules)  
+    -   [Moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)  
     -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl)  
-    -   [soubor CAB](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
+    -   [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
     -   [licence CAL](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
     -   [Auto](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car)  
-    -   [CAT](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  
-    -   [CT](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#ct)  
+    -   [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  
+    -   [ct](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#ct)  
 
 - Přejmenovat `ImageInsightsResponse` objektu [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsights).  
 

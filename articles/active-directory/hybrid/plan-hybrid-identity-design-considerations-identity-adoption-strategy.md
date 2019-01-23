@@ -4,7 +4,7 @@ description: Pomocí řízení podmíněného přístupu Azure Active Directory 
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 50f2d3f3ad934668c4a243b387b56db48c3e7d35
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999087"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471799"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definování strategie přijetí hybridní identity
 V této úloze definujete strategie přijetí hybridních identit pro hybridní řešení identit plnění obchodních požadavků, které byly zmíněny v:
@@ -181,7 +181,7 @@ Možnosti návrhu služby Multi-Factor Authentication:
 
 | Prostředek k zabezpečení | MFA v cloudu | Místní MFA |
 | --- | --- | --- |
-| Aplikace od Microsoftu |ano |ano |
+| Microsoft apps |ano |ano |
 | Aplikace Saas v galerii aplikací |ano |ano |
 | Aplikace služby IIS publikované prostřednictvím proxy aplikace Azure AD |ano |ano |
 | Aplikace služby IIS nepublikované prostřednictvím Proxy aplikace Azure AD |ne |ano |

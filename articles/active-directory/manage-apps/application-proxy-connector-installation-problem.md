@@ -4,7 +4,7 @@ description: Jak řešit problémy, se kterými může setkat při instalaci kon
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 2d528c04a9301998220b5564330f20ed014b68d6
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a4e32697826b37f16bd0eacec3c5bfc34e94f73f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036925"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464642"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
 
@@ -38,7 +38,7 @@ Při instalaci konektoru selže, hlavní příčinou je obvykle jednu z následu
 
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Ověření připojení k Proxy aplikace Cloud service a Microsoft Login stránku
 
-**Cíl:** ověřte, že konektor počítače může připojit k koncový bod registrace AAD Application Proxy, stejně jako přihlašovací stránku Microsoft.
+**Cíl:** Ověřte, že konektor počítače může připojit k koncový bod registrace AAD Application Proxy, stejně jako přihlašovací stránku Microsoft.
 
 1.  Otevřete prohlížeč a přejděte na webové stránce: <https://aadap-portcheck.connectorporttest.msappproxy.net> a ověřte, zda je funkční připojení k datovým centrům střed USA a východní USA se porty 80 a 443.
 
@@ -48,7 +48,7 @@ Při instalaci konektoru selže, hlavní příčinou je obvykle jednu z následu
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Ověřte, zda počítač a back-end komponentami podporu certifikátu vztahu důvěryhodnosti Proxy aplikací
 
-**Cíl:** ověřte, zda počítač konektoru, back-endu proxy a brána firewall podporuje certifikát vytvořený konektor pro budoucí vztah důvěryhodnosti.
+**Cíl:** Ověřte, zda počítač konektoru, back-endu proxy a brána firewall podporuje certifikát vytvořený konektor pro budoucí vztah důvěryhodnosti.
 
 >[!NOTE]
 >Konektor se pokusí vytvořit SHA512 certifikát, který podporuje TLS1.2. Pokud je počítač nebo back-end bránu firewall a proxy server nepodporuje TLS1.2, instalace se nezdaří.
@@ -63,7 +63,7 @@ Při instalaci konektoru selže, hlavní příčinou je obvykle jednu z následu
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ověřte, že správce se používá k instalaci konektoru
 
-**Cíl:** ověřte, že uživatel, který se snaží nainstalovat konektor je správce se správnými přihlašovacími údaji. V současné době uživatel musí být buď správce aplikace nebo globální správce pro instalace proběhla úspěšně.
+**Cíl:** Ověřte, že uživatel, který se snaží nainstalovat konektor je správce se správnými přihlašovacími údaji. V současné době uživatel musí být buď správce aplikace nebo globální správce pro instalace proběhla úspěšně.
 
 **Chcete-li ověřit, že jsou správné přihlašovací údaje:**
 

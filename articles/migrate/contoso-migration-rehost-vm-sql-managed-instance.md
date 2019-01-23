@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 35d2234ee52516c4ebf3e354e1ab6890144cdd5d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3564288c55716a9c64ae2460048cb255a60dcc02
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879464"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469572"
 ---
-# <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálním počítači Azure a SQL Database Managed Instance
+# <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migrace Contoso: Změna hostitele aplikace on-premises na virtuálním počítači Azure a SQL Database, spravované Instance
 
 V tomto článku se migruje Contoso jeho aplikace SmartHotel360 front-endového virtuálního počítače na Virtuálním počítači Azure pomocí služby Azure Site Recovery. Contoso také migraci databáze aplikace do Azure SQL Database Managed Instance.
 
@@ -35,9 +35,9 @@ Tento článek je jednou z řady článků, který popisuje, jak fiktivní spole
 [Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje SmartHotel aplikace. Společnost Contoso využívá Site Recovery k migraci virtuálních počítačů aplikace. Jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn využívá službu Database Migration Service. | K dispozici.
 [Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso dokončení migrace lift and shift jeho Linux osTicket aplikace na virtuální počítače Azure pomocí Site Recovery. | K dispozici.
 [Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje svou aplikaci osTicket Linux do virtuálních počítačů Azure pomocí Site Recovery. Migrace databáze aplikace ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. | K dispozici.
-[Článek 9: Refaktorujte aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje jeho SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure. | K dispozici.
-[Článek 10: Refaktorujte Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje jeho Linuxovou aplikaci osTicket do webové aplikace Azure v několika lokalitách. Webová aplikace je integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici.
-[Článku 11: Refaktorujte Team Foundation Server na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje své místní nasazení serveru Team Foundation Server a migrujte ho ke službám Azure DevOps v Azure. | K dispozici.
+[Článek 9: Refaktorovat aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje jeho SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure. | K dispozici.
+[Článek 10: Refaktorovat Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje jeho Linuxovou aplikaci osTicket do webové aplikace Azure v několika lokalitách. Webová aplikace je integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici.
+[Článek 11: Refaktorovat a Team Foundation Server na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje své místní nasazení serveru Team Foundation Server a migrujte ho ke službám Azure DevOps v Azure. | K dispozici.
 [Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure a potom rearchitects aplikace. Contoso rearchitects webové vrstvy aplikace jako kontejner Windows a rearchitects databázi aplikace s využitím Azure SQL Database. | K dispozici.
 [Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service, Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
 [Článek 14: Škálování migrace do Azure](contoso-migration-scale.md) | Po vyzkoušení kombinace migrace, Contoso připraví škálovat na plné migraci do Azure. | K dispozici.
@@ -55,10 +55,10 @@ Společnosti Contoso vedení IT úzké spolupráci s obchodními partnery spole�
 
 - **Adresa obchodní růst**: Contoso roste. V důsledku toho přetížení zvýšil na místních systémech a infrastrukturu vaší společnosti.
 - **Zvýšení efektivity**: Contoso potřebuje odebrat nepotřebné postupy a zjednodušte procesy pro její vývojáře a uživatele. Obchodní potřeby IT být rychlé a k není produkovaného odpadu čas a peníze, takže společnost doručovat rychleji na požadavky zákazníků.
-- **Zvýšení flexibility**: Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změny, ke kterým dochází v marketplace pro společnost v globální ekonomiku proběhla úspěšně. IT ve společnosti Contoso nesmí získat způsobem, nebo se Staňte obchodní blokování.
-- **Škálování**: s růstem společnosti úspěšně Contoso IT musí poskytnout systémy, které můžou růst stejným tempem.
+- **Zvýšení flexibility**:  Contoso IT je potřeba se více přizpůsobovat podle potřeb firmy. Musí být schopné reagovat rychleji než změny, ke kterým dochází v marketplace pro společnost v globální ekonomiku proběhla úspěšně. IT ve společnosti Contoso nesmí získat způsobem, nebo se Staňte obchodní blokování.
+- **Škálování**: S růstem společnosti úspěšně, musíte zadat Contoso IT systémy, které můžou růst stejným tempem.
 
-## <a name="migration-goals"></a>Migrace cíle
+## <a name="migration-goals"></a>Cíle migrace
 
 Tým cloudových Contoso zjistila cíle pro tuto migraci. Společnost používá cílů migrace určit nejlepší metody migrace.
 
@@ -156,11 +156,11 @@ Zde je, jak společnosti Contoso má v plánu nastavení nasazení:
 
 > [!div class="checklist"]
 > * **Krok 1: Nastavení SQL Database Managed Instance**: Contoso potřebuje předem vytvořené Managed Instance do kterého budete migrovat místní databázi systému SQL Server.
-> * **Krok 2: Příprava službu Database Migration Service**: Contoso musí zaregistrovat poskytovatele migrace databáze, vytvoření instance a potom vytvořte projekt Database Migration Service. Contoso také musíte nastavit sdílený přístupový podpis (SAS) identifikátor URI (Uniform Resource) pro službu Database Migration Service. Identifikátor URI SAS poskytuje Delegovaný přístup k prostředkům v účtu úložiště společnosti Contoso, společnost Contoso může udělit omezená oprávnění k objektům úložiště. Contoso nastaví identifikátor URI SAS, tak služba Database Migration Service můžete přístup ke kontejneru účtu úložiště, ke kterému službu nahraje soubory zálohy systému SQL Server.
-> * **Krok 3: Příprava Azure Site Recovery**: Contoso musí vytvořit účet úložiště k ukládání replikovaných dat pro Site Recovery. Také musí vytvořit trezor služby Azure Recovery Services.
+> * **Krok 2: Připravte službu Database Migration Service**: Contoso musí zaregistrovat poskytovatele migrace databáze, vytvoření instance a potom vytvořte projekt Database Migration Service. Contoso také musíte nastavit sdílený přístupový podpis (SAS) identifikátor URI (Uniform Resource) pro službu Database Migration Service. Identifikátor URI SAS poskytuje Delegovaný přístup k prostředkům v účtu úložiště společnosti Contoso, společnost Contoso může udělit omezená oprávnění k objektům úložiště. Contoso nastaví identifikátor URI SAS, tak služba Database Migration Service můžete přístup ke kontejneru účtu úložiště, ke kterému službu nahraje soubory zálohy systému SQL Server.
+> * **Krok 3: Příprava Azure Site Recovery**: Společnosti Contoso musí vytvořit účet úložiště k ukládání replikovaných dat pro Site Recovery. Také musí vytvořit trezor služby Azure Recovery Services.
 > * **Krok 4: Příprava VMware v místním prostředí pro Site Recovery**: Contoso připravíte účty pro virtuální počítač zjišťování a instalaci agenta pro připojení k virtuálním počítačům Azure po převzetí služeb při selhání.
-> * **Krok 5: Replikace virtuálních počítačů**: nastavení replikace, Contoso nakonfigurujte Site Recovery zdrojové a cílové prostředí, nastaví zásady replikace a spustí replikaci virtuálních počítačů do Azure Storage.
-> * **Krok 6: Migrovat databáze s použitím službu Database Migration Service**: Contoso migruje databáze.
+> * **Krok 5: Replikace virtuálních počítačů**: Pro nastavení replikace, nakonfigurujte Site Recovery zdrojové a cílové prostředí Contoso, nastaví zásady replikace a spustí replikaci virtuálních počítačů do Azure Storage.
+> * **Krok 6: Migrace databáze pomocí službu Database Migration Service**: Contoso migruje databáze.
 > * **Krok 7: Migrace virtuálních počítačů pomocí Site Recovery**: Contoso běží převzetí služeb při selhání testu Ujistěte se, že všechno funguje. Pak spustí Contoso úplné převzetí služeb při selhání k migraci virtuálních počítačů do Azure.
 
 ## <a name="step-1-prepare-a-sql-database-managed-instance"></a>Krok 1: Příprava spravovaná Instance SQL Database
@@ -171,7 +171,7 @@ Contoso potřebuje nastavit Azure SQL Database Managed Instance, podsíť, kter�
 - Po vytvoření Managed Instance je Contoso, neměli byste přidávat prostředky do podsítě.
 - Podsíť nemůže mít skupinu zabezpečení sítě spojenou s ním.
 - Podsíť musí obsahovat tabulku uživatelem definované trasy směrování (UDR). By měla být přiřazena pouze trasy 0.0.0.0/0 směrování Internetu. 
-- Vlastní DNS nepovinné: Pokud je vlastní DNS zadaná ve službě Azure virtual network, Azure rekurzivní překladače IP adresu (například adresy 168.63.129.16) musí být přidaný do seznamu. Zjistěte, jak [konfigurace vlastního DNS pro spravovanou instanci](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
+- Volitelné vlastní server DNS: Pokud vlastní DNS je zadána ve službě Azure virtual network, Azure rekurzivní překladače IP adresu (například adresy 168.63.129.16) musí být přidaný do seznamu. Zjistěte, jak [konfigurace vlastního DNS pro spravovanou instanci](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 - Podsítě nesmí mít koncový bod služby (storage nebo SQL) s ním spojená. Koncové body služby je třeba zakázat ve virtuální síti.
 - Podsíť musí mít minimálně 16 IP adres. Zjistěte, jak [velikost podsíť Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#determine-the-size-of-subnet-for-managed-instances).
 - V hybridním prostředí společnosti Contoso jsou vyžadovány vlastní nastavení služby DNS. Contoso nakonfiguruje nastavení DNS použít jeden nebo více serverů Azure DNS vaší společnosti. Další informace o [DNS přizpůsobení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
@@ -184,7 +184,7 @@ Správce společnosti Contoso ve virtuální síti wmm nastavit takto:
 2. Adresní prostor 10.235.0.0/24 přiřadí. Zajišťují, že se rozsah nepřekrývá s jinými sítěmi v jeho organizace.
 3. Dvě podsítě, přidejte k síti:
     - **SQLMI-DS-EUS2** (10.235.0.0.25)
-    - **SQLMI. SAW EUS2** (10.235.0.128/29). Tato podsíť se používá pro připojení k Managed Instance adresáře.
+    - **SQLMI-SAW-EUS2** (10.235.0.128/29). Tato podsíť se používá pro připojení k Managed Instance adresáře.
 
       ![Spravovaná Instance – vytvoření virtuální sítě](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
 
@@ -200,7 +200,7 @@ Správce společnosti Contoso ve virtuální síti wmm nastavit takto:
     - Umístěný v **PROD. řadič domény EUS2** podsítě, v oblasti východní USA 2 produkční sítě (**připojení typu VNET-PROD-EUS2**)
     - **CONTOSODC3** adresa: 10.245.42.4
     - **CONTOSODC4** adresa: 10.245.42.5
-    - Azure DNS překladač: 168.63.129.16
+    - Překladače Azure DNS: 168.63.129.16
 
       ![Servery DNS](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
 
@@ -238,7 +238,7 @@ Contoso bere v úvahu tyto faktory:
     
 *Potřebujete další pomoc?*
 
-Zjistěte, jak [nastavit trasy pro Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal#create-new-route-table-and-a-route).
+Zjistěte, jak [nastavit trasy pro Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal).
 
 ### <a name="create-a-managed-instance"></a>Vytvoření Managed Instance
 
@@ -260,7 +260,7 @@ Správce společnosti Contoso, teď můžete zřídit SQL Database Managed Insta
 
 Zjistěte, jak [zřízení spravované Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal).
 
-## <a name="step-2-prepare-the-database-migration-service"></a>Krok 2: Příprava službu Database Migration Service
+## <a name="step-2-prepare-the-database-migration-service"></a>Krok 2: Připravte službu Database Migration Service
 
 Připravit službu Database Migration Service, třeba správce společnosti Contoso provést pár věcí:
 
@@ -441,9 +441,9 @@ Pokud zdroj a cíl jsou nastavena tak, Contoso správci vytvořit zásady replik
 
 1. V **připravit infrastrukturu** > **nastavení replikace** > **zásady replikace** >  **vytvořit a Přidružit**, vytvoří **ContosoMigrationPolicy** zásad.
 2. Používají výchozí nastavení:
-    - **Prahová hodnota cíle bodu obnovení**: výchozí hodnotu 60 minut. Tato hodnota určuje, jak často se tvoří body obnovení. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
-    - **Uchování bodu obnovení**: výchozí hodnotu 24 hodin. Tato hodnota určuje, jak dlouho je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu.
-    - **Frekvence snímků konzistentní vzhledem k**: výchozí hodnotu 1 hodina. Tato hodnota určuje frekvenci, s jakou se vytvořit snímky konzistentní s aplikací.
+    - **Prahová hodnota cíle bodu obnovení**: Výchozí hodnotu 60 minut. Tato hodnota určuje, jak často se tvoří body obnovení. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
+    - **Uchování bodu obnovení**: Výchozí hodnotu 24 hodin. Tato hodnota určuje, jak dlouho je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu.
+    - **Frekvence snímků konzistentní vzhledem k**: Výchozí hodnotu 1 hodina. Tato hodnota určuje frekvenci, s jakou se vytvořit snímky konzistentní s aplikací.
  
     ![Zásady replikace – vytvořit](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
 
@@ -615,7 +615,7 @@ Další informace o postupech zabezpečení pro virtuální počítače najdete 
 
 Společnosti Contoso pro provozní kontinuitu a zotavení po havárii (BCDR), provede následující akce:
 
-- Byla data v bezpečí: Contoso zálohuje data na virtuálních počítačích pomocí služby Azure Backup. [Další informace](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Bezpečnost dat: Contoso zálohuje data na virtuálních počítačích pomocí služby Azure Backup. [Další informace](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - Udržujte aplikace rychle zprovoznit: Contoso replikuje aplikace virtuální počítače v Azure do sekundární oblasti vzdálené používání služby Site Recovery. [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 - Contoso zjišťuje informace o správě spravované instanci SQL, včetně [záloh databází](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups).
 

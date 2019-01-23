@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 310311c22be25960b15f20d573624f50b0f618b1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536538"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474808"
 ---
 # <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
 
@@ -178,3 +178,4 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, insta
 * Kontrola [přehled pro rozpoznávání tváře](Overview.md) získat další informace o zjištění a identifikaci tváře  
 * Odkazovat [API pro rozpoznávání tváře](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) podrobné informace o metodách podporuje kontejneru.
 * Odkazovat na [– nejčastější dotazy (FAQ)](FAQ.md) k vyřešení problémů týkajících se funkce rozpoznávání tváře.
+* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4c1f115061dfba36a37da1647c34dd4587857377
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427470"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471816"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
 Ve službě Azure Search [je prostředek vytvořený](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Dostupné úrovně **Free**, **základní**, nebo **standardní**, kde **standardní** je k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte **standardní** vývojovou a provozní nasazení. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání. 
 
-Úrovně určit kapacitu, není funkce a jsou rozlišené pomocí:
+Vrstev odrážejí charakteristiky hardwaru, hostování služby (spíše než funkce) a jsou rozlišené pomocí:
 
 + Počet indexů, které lze vytvořit
 + Velikost a rychlost oddílů (fyzické úložiště)

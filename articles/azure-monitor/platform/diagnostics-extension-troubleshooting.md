@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103940"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473805"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží diagnostiky Azure
 Tento článek popisuje informace o odstraňování potíží, které se týkají pomocí Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -66,8 +66,8 @@ Pokud nejsou žádná data pro konkrétní metrika, zkontrolujte **konfiguraci d
 - Aplikace \ASP.NET (__celkový__) \Errors celkem/s
 - \ASP.NET\Requests zařazených do fronty
 - \ASP.NET\Requests zamítnuto
-- \Processor(W3wp)\% času procesoru
-- Bajty \Private \Process (w3wp)
+- \Processor(w3wp)\% Processor Time
+- \Process(w3wp)\Private Bytes
 - \Process(WaIISHost)\% času procesoru
 - Bajty \Private \Process (WaIISHost)
 - \Process(WaWorkerHost)\% času procesoru
@@ -204,9 +204,9 @@ Tento kód vytvoří čtyři tabulky:
 | Událost | Název tabulky |
 | --- | --- |
 | Zprostředkovatel = "prov1" &lt;událost s id = "1" /&gt; |WADEvent + MD5("prov1") + "1" |
-| Zprostředkovatel = "prov1" &lt;událost s id = "2" eventDestination = "dest1" /&gt; |WADdest1 |
+| provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /&gt; |WADdest1 |
 | Zprostředkovatel = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
-| Zprostředkovatel = "prov2" &lt;DefaultEvents eventDestination = "dest2" /&gt; |WADdest2 |
+| provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /&gt; |WADdest2 |
 
 ## <a name="references"></a>Odkazy
 
@@ -293,3 +293,4 @@ Prostředí portálu na virtuálních počítačích ukazuje některé čítače
 - Určuje, zda data ve službě storage mají názvy čítačů v angličtině. Pokud nejste názvy čítačů v angličtině, nebude moci rozpoznat portálu grafu metriky. **Zmírnění dopadů**: Změňte strojového jazyka na angličtinu pro systémové účty. Chcete-li to provést, vyberte **ovládací panely** > **oblasti** > **správy** > **Kopírovat nastavení**. V dalším kroku zrušte výběr **úvodní obrazovka a systémové účty** tak, aby vlastní jazyka neplatí pro systémový účet.
 
 - Pokud použijete zástupné znaky (\*) v názvech čítače výkonu, nebude možnost provést korelaci nakonfigurované a shromáždění čítačů při čítače výkonu se odesílají do jímky Azure Storage na portálu. **Zmírnění dopadů**: Abyste měli jistotu, můžete použít zástupné znaky a mít na portálu rozbalte (\*), čítače výkonu chcete směrovat [jímka "Azure monitoru"](diagnostics-extension-schema.md#diagnostics-extension-111).
+

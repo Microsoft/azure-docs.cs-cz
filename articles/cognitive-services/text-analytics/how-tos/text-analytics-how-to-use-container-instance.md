@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 9f9ae8bb3aa1da51d2a9b81cf7d50d75c5229c11
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 19ac1819c3b098597819ec75adcedeca929e802d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382034"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464540"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Nasazení kontejneru detekce jazyka do služby Azure Kubernetes Service
 
@@ -407,8 +407,8 @@ az group delete --name cogserv-container-rg
 
 ## <a name="next-steps"></a>Další postup 
 
-> [!div class="nextstepaction"]
-> [Použití rozhraní Text Analytics připojená služba](../vs-text-connected-service.md)
+* Použití více [kontejnery Cognitive Services](../../cognitive-services-container-support.md)
+* Použití rozhraní Text Analytics připojená služba] (.. / vs-text připojené service.md)
 
 
 <!--

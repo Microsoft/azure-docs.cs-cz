@@ -4,7 +4,7 @@ description: Určete možnosti monitorování a vytváření sestav pro hybridn�
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: a3d2a459-599b-4b67-8e51-7369ee25082d
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: baa1d1fec6438b937ba783adcc86c4f74fa1a6db
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5a5b166e9b90ede5f5c51b2c288ce1d2d6290ba6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312057"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464829"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na reakce na incidenty pro vaše řešení hybridní identity
 Střední a velké organizace pravděpodobně budou mít [reakce na incidenty zabezpečení](https://technet.microsoft.com/library/cc700825.aspx) která vám pomůžou IT odpovídajícím způsobem provést akce na úrovni incident. Systém správy identit je důležitou součástí procesu reakce na incidenty, protože ho lze použít k určení, kdo provedl konkrétní akce s cílem pomoct. Řešení hybridní identity musí být schopný poskytnout možnosti monitorování a vytváření sestav, které mohou využívat IT k provádění akcí na identifikaci a zmírnění potenciální hrozbu. V plánu reakcí na incidenty typické máte následující fáze jako součást plánu:
@@ -51,7 +51,7 @@ Systém správy identit by měl pomoc správci IT identifikovat a sestavy těcht
 * Potřebuje vaše společnost auditovat přístup a akce uživatele?
 * Potřebuje vaše společnost vědět, kdy uživatel resetovat své heslo?
 
-## <a name="policy-enforcement"></a>Vynucení zásad
+## <a name="policy-enforcement"></a>Vynucování zásad
 Během kontroly poškození a snížení rizika – fáze je potřeba rychle snížit skutečné a potenciální účinky útoku. Tuto akci, která bude trvat v tomto okamžiku může být rozdíl mezi za a hlavní jeden. Přesná reakce bude záviset na vaší organizaci a povahu útoku, kterými se setkáváte. Pokud počáteční vyhodnocení dospělo k závěru, že došlo k napadení účet, je potřeba vynucovat zásady, aby blokovaly tento účet. To je jenom jeden příklad, kde se využívají systém správy identit. Při návrhu hybridní řešení identit přitom v úvahu, jak se bude vynucovat zásady reagovat na incident probíhající použijte níže uvedené otázky:
 
 * Má vaše společnost nějaké zásady na místě k blokování uživatelů před přístupem k síti v případě potřeby?

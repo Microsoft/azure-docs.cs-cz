@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.author: dukek
-ms.component: logs
-ms.openlocfilehash: 2dec2b1f9bdca8c83669b753d424204218f7a9ae
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.subservice: logs
+ms.openlocfilehash: 9bd5ec3471fc3447d1e29d875c154793daf8e9e5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190693"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474026"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazit oznámení o stavu služby pomocí webu Azure portal
 
@@ -37,7 +37,7 @@ correlationId | Obvykle GUID ve formátu řetězce. Události, které obvykle pa
 eventDataId | Jedinečný identifikátor události.
 eventName | Název události.
 úroveň | Úroveň události
-Název resourceProviderName | Název poskytovatele prostředků pro ovlivněných prostředků.
+resourceProviderName | Název poskytovatele prostředků pro ovlivněných prostředků.
 Typ prostředku| Typ prostředku ovlivněných prostředků.
 Podřízený stav | Stavový kód HTTP odpovídající REST obvykle volat, ale může také obsahovat jiných řetězců s popisem substatus. Příklad: OK (kód stavu HTTP: 200), vytvořit (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybná žádost (kód stavu HTTP: 400), nebyl nalezen (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), se interní chyba serveru (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504).
 eventTimestamp | Časové razítko události vygenerované službou Azure zpracování požadavku odpovídající události.
@@ -48,7 +48,7 @@ operationName | Název operace.
 category | Tato vlastnost je vždy **ServiceHealth**.
 resourceId | ID prostředku ovlivněných prostředků.
 Properties.Title | Lokalizovaný název pro tuto komunikaci. Výchozí hodnota je angličtina.
-Properties.Communication | Lokalizované podrobnosti o komunikaci s značka jazyka HTML. Výchozí hodnota je angličtina.
+Properties.communication | Lokalizované podrobnosti o komunikaci s značka jazyka HTML. Výchozí hodnota je angličtina.
 Properties.incidentType | Jeden z následujících hodnot: **Je vyžadována akce**, **informační**, **Incident**, **údržby**, nebo **zabezpečení**.
 Properties.trackingId | Incident, ke kterému tato událost je přidružena. Použijte ke korelaci událostí souvisejících s incidentem.
 Properties.impactedServices | Uvozený uvozovacím znakem blob JSON, s popisem služby a oblasti vliv incident. Vlastnost obsahuje seznam služeb, z nichž každá má **ServiceName**a seznam ovlivněných oblastí, z nichž každá má **RegionName**.
@@ -66,10 +66,10 @@ Properties.communicationId | Komunikace, ke kterému tato událost je přidruže
     - Upozornění: Nouzový údržby
     - Informační - standard plánovaná údržba
 
-**Informace o** (properties.incidentType == informace)
+**Information** (properties.incidentType == Information)
     - Informační – správce může být nutné zabránilo dopadu na stávající služby
 
-**Zabezpečení** (properties.incidentType == zabezpečení)
+**Security** (properties.incidentType == Security)
     - Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
     - Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
     - Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
@@ -95,3 +95,4 @@ Properties.communicationId | Komunikace, ke kterému tato událost je přidruže
 ## <a name="next-steps"></a>Další postup
 Přijímat [oznámení pokaždé, když služba stavu oznámení o upozorněních](../../azure-monitor/platform/alerts-activity-log-service-notifications.md) nový tweet.  
 Další informace o [upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts.md).
+

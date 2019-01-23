@@ -3,7 +3,7 @@ title: Principy konektorů Proxy aplikací Azure AD | Dokumentace Microsoftu
 description: Popisuje základní informace o konektory Proxy aplikací Azure AD.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 8b410cc85584f45d4a3e9d7bce180a2c6aa46114
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ca483e84b28b50d963ecc6c2e26499574f546e0f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134961"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473618"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -120,9 +120,9 @@ Vyrovnávání zatížení se stane mezi konektory skupiny pro daný konektor. P
 
 Dalším faktorem, který má vliv na výkon je kvalita sítě mezi konektorů, včetně: 
 
-* **Služba online**: pomalý nebo vysokou latencí připojení k Proxy aplikace služby v Azure ovlivní výkon konektoru. Pro zajištění nejlepšího výkonu připojení k Azure pomocí Expressroute vaší organizace. V opačném případě máte síťovým týmem Ujistěte se, že připojení k Azure jsou zpracovány jako efektivně. 
+* **Služba online**: Pomalá nebo vysokou latencí připojení ke službě Proxy aplikací v Azure mají vliv na výkon konektoru. Pro zajištění nejlepšího výkonu připojení k Azure pomocí Expressroute vaší organizace. V opačném případě máte síťovým týmem Ujistěte se, že připojení k Azure jsou zpracovány jako efektivně. 
 * **Back-endové aplikace**: V některých případech jsou další proxy mezi konektoru a back-endové aplikace, které mohou zpomalit nebo zakázat připojení. Tento scénář lze vyřešit, otevřete prohlížeč ze serveru konektoru a pokusí o přístup k aplikaci. Pokud spustíte konektorů v Azure, ale aplikace jsou v místním, nemusí být prostředí co vaši uživatelé očekávají.
-* **Řadiče domény**: Pokud konektory provádět jednotného přihlašování pomocí omezeného delegování protokolu Kerberos, kontaktovat řadiče domény před odesláním požadavku do back-endu. Konektory mají mezipaměť lístky protokolu Kerberos, ale v prostředí zaneprázdněný rychlost odezvy řadičů domény může ovlivnit výkon. Tento problém je běžné pro konektory, které běží v Azure, ale komunikovat s řadiči domény, které jsou místně. 
+* **Řadiče domény**: Pokud konektory provádět jednotného přihlašování pomocí omezeného delegování protokolu Kerberos, se kontaktovat řadiče domény před odesláním požadavku do back-endu. Konektory mají mezipaměť lístky protokolu Kerberos, ale v prostředí zaneprázdněný rychlost odezvy řadičů domény může ovlivnit výkon. Tento problém je běžné pro konektory, které běží v Azure, ale komunikovat s řadiči domény, které jsou místně. 
 
 Další informace o optimalizaci sítě najdete v tématu [aspekty topologie sítě, při použití Azure Active Directory Application Proxy](application-proxy-network-topology.md).
 

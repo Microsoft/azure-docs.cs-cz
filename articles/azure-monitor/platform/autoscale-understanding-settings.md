@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: af7e280c7dcd82c18e91ded759756c3826342cd3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: autoscale
+ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585248"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474825"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
 Nastavení automatického škálování pomáhají, ujistěte se, že máte správného množství prostředků systémem pro zpracování zátěže fluktuující vaší aplikace. Můžete nakonfigurovat nastavení automatického škálování tak, aby se dá spouštět podle metrik, které označují zátěžové nebo výkonové, nebo spouštěnou v naplánované datum a čas. V tomto článku se podíváme podrobné na anatomie nastavení automatického škálování. Článek začíná schématu a vlastnosti nastavení a potom provede odlišných typů profilů, které lze nastavit. Nakonec článek popisuje, jak funkce automatického škálování v Azure vyhodnocuje který profil ke spuštění v daném okamžiku.
@@ -310,3 +310,4 @@ Další informace o automatické škálování rekapitulací takto:
 * [Osvědčené postupy pro automatické škálování služby Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
 * [Pomocí akcí automatického škálování můžete odeslat emailová a webhooková oznámení výstrah](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Rozhraní REST API pro automatické škálování](https://msdn.microsoft.com/library/dn931953.aspx)
+

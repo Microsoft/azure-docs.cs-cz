@@ -4,7 +4,7 @@ description: Obsahuje postup pro řešení potíží s chybami v Azure AD Applic
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 2904de3243e37d7ee575a504934d5975789c00ef
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b440965fa3acb6c08c4827dce941247b8921b98b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135062"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473465"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
@@ -49,12 +49,12 @@ Po nalezení konektor chyby z protokolu událostí použijte tuto tabulku běžn
 
 | Chyba | Doporučené kroky |
 | ----- | ----------------- |
-| Konektor se nepovedlo zaregistrovat: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. : "Jeden nebo více chybám došlo k chybě." | Pokud se zavře okno registrace bez přihlášení ke službě Azure AD, znovu spusťte Průvodce pro konektor nástroje a registrace konektoru. <br><br> Pokud se otevře okno registrace a pak hned zavře bez povolení k přihlášení, zobrazí se pravděpodobně k této chybě. K této chybě dochází, když dojde k chybě sítě ve vašem systému. Ujistěte se, že je možné se připojit z prohlížeče na veřejném webu a porty jsou otevřené, jak je uvedeno v [požadavky na Proxy aplikace](application-proxy-add-on-premises-application.md). |
+| Registrace konektoru se nezdařilo: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. Chyba: "Jeden nebo více chybám došlo k chybě." | Pokud se zavře okno registrace bez přihlášení ke službě Azure AD, znovu spusťte Průvodce pro konektor nástroje a registrace konektoru. <br><br> Pokud se otevře okno registrace a pak hned zavře bez povolení k přihlášení, zobrazí se pravděpodobně k této chybě. K této chybě dochází, když dojde k chybě sítě ve vašem systému. Ujistěte se, že je možné se připojit z prohlížeče na veřejném webu a porty jsou otevřené, jak je uvedeno v [požadavky na Proxy aplikace](application-proxy-add-on-premises-application.md). |
 | Vymazat chyby se zobrazí v okně registrace. Nelze pokračovat | Pokud se zobrazí tato chyba a pak okno zavřete, zadali jste nesprávné uživatelské jméno nebo heslo. Zkuste to znova. |
-| Konektor se nepovedlo zaregistrovat: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. Chyba: "AADSTS50059: žádné informace o identifikaci tenanta najít v jednom požadavku nebo implikována v žádném zadané přihlašovací údaje a vyhledávání podle služby se nezdařilo instančního objektu URI. | Pokoušíte se přihlásit pomocí Account Microsoft a nikoli domény, který je součástí organizace ID adresáře, který se pokoušíte získat přístup. Ujistěte se, že správce součástí se stejným názvem domény jako doména tenanta, například pokud Azure AD doména je contoso.com, Správce by měl být admin@contoso.com. |
+| Registrace konektoru se nezdařilo: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. Chyba: 'AADSTS50059: Žádné informace o identifikaci tenanta najít v jednom požadavku nebo implikována v žádném zadané přihlašovací údaje a vyhledávání podle služby se nezdařilo instančního objektu URI. | Pokoušíte se přihlásit pomocí Account Microsoft a nikoli domény, který je součástí organizace ID adresáře, který se pokoušíte získat přístup. Ujistěte se, že správce součástí se stejným názvem domény jako doména tenanta, například pokud Azure AD doména je contoso.com, Správce by měl být admin@contoso.com. |
 | Nepovedlo se načíst aktuální zásady spouštění pro spuštěné skripty prostředí PowerShell. | Pokud instalace konektoru selže, zkontrolujte, že nejsou zakázané zásady spouštění prostředí PowerShell. <br><br>1. Otevřete Editor zásad skupiny.<br>2. Přejděte na **konfigurace počítače** > **šablony pro správu** > **součásti Windows**  >   **Prostředí Windows PowerShell** a dvakrát klikněte na panel **zapnutí provádění skriptů**.<br>3. Zásady spouštění může být nastaven na hodnotu **Nenakonfigurováno** nebo **povoleno**. Pokud hodnotu **povoleno**, ujistěte se, že v možnostech, zásady spouštění je nastaven na hodnotu **Povolit místní a vzdálené podepsaných skriptů** nebo **povolit všechny skripty**. |
 | Konektor se nepovedlo stáhnout konfiguraci. | Tento konektor klientský certifikát, který se používá pro ověřování, vypršela platnost. To může také dojít, pokud máte nainstalovaný za proxy serverem konektor. V tomto případě konektor nemá přístup k Internetu a nebudete moct aplikacím vzdáleným uživatelům poskytnout. Obnovit ručně pomocí vztahu důvěryhodnosti `Register-AppProxyConnector` rutiny v prostředí Windows PowerShell. Pokud váš konektor je za proxy serverem, je potřeba udělit přístup k Internetu k účtům konektor "síťové služby" a "místní systém." Můžete to provést tak, že udělíte přístup k proxy serveru nebo tak, že nastavíte, aby obcházení proxy serveru. |
-| Konektor se nepovedlo zaregistrovat: Ujistěte se, že jste globální správce služby Active Directory k registraci konektoru. Chyba: "registrace žádost byla zamítnuta." | Alias, který se snažíte přihlásit se se správcem v této doméně. Váš konektor je vždy nainstalován pro adresář, který vlastní domény uživatele. Ujistěte se, zda má účet správce, který se pokoušíte přihlásit pomocí globální oprávnění k tenantovi Azure AD. |
+| Registrace konektoru se nezdařilo: Ujistěte se, že jste globální správce služby Active Directory k registraci konektoru. Chyba: "Žádost o registraci byl odepřen." | Alias, který se snažíte přihlásit se se správcem v této doméně. Váš konektor je vždy nainstalován pro adresář, který vlastní domény uživatele. Ujistěte se, zda má účet správce, který se pokoušíte přihlásit pomocí globální oprávnění k tenantovi Azure AD. |
 
 ## <a name="kerberos-errors"></a>Chyby protokolu Kerberos
 

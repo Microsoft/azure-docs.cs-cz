@@ -4,7 +4,7 @@ description: Pokyny pro specifické problémy mohou nastat při přihlašování
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 17114818105935d8d6a7ac647f1d98c097e78efd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8f545aad7256764780a68f4b43ee30bf68749187
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356381"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469708"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci mimo Galerii konfigurované pro federované jednotné přihlašování
 
@@ -34,7 +34,7 @@ Chcete-li vyřešit váš problém, zkontrolujte konfiguraci aplikace ve služb�
 
 ## <a name="application-not-found-in-directory"></a>Aplikace nebyla nalezena v adresáři
 
-*Chyba AADSTS70001: Aplikaci s identifikátorem "https://contoso.com' nebyl nalezen v adresáři*.
+*Chyba AADSTS70001: Aplikace s identifikátorem "https://contoso.com' nebyl nalezen v adresáři*.
 
 **Možná příčina**
 
@@ -66,7 +66,7 @@ Po aktualizaci hodnota identifikátoru ve službě Azure AD a odešle hodnotu ho
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adresa pro odpovědi neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci. 
 
-*Chyba AADSTS50011: Adresa pro odpovědi https://contoso.com' neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci* 
+*Chyba AADSTS50011: Zpáteční adresu https://contoso.com' neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci* 
 
 **Možná příčina** 
 
@@ -100,7 +100,7 @@ Poté, co jste aktualizovali hodnotu adresy URL odpovědi ve službě Azure AD a
 
 ## <a name="user-not-assigned-a-role"></a>Uživatel není přiřazený k roli
 
-*Chyba AADSTS50105: Přihlášeného uživatele 'brian@contoso.com"není přiřazen k roli pro aplikaci*
+*Chyba AADSTS50105: Přihlášený uživatel "brian@contoso.com" není přiřazen k roli pro aplikaci*
 
 **Možná příčina**
 
@@ -134,7 +134,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle názvu nebo e-mailová adresa** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
+12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
 
 13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 
@@ -146,7 +146,7 @@ Po krátké době možné ke spouštění těchto aplikací pomocí metod popsan
 
 ## <a name="not-a-valid-saml-request"></a>Není platný SAML požadavek
 
-*Chyba AADSTS75005: Požadavek není platná zpráva protokolu typu Saml2.*
+*Chyba AADSTS75005: Žádost není platná zpráva protokolu typu Saml2.*
 
 **Možná příčina**
 
@@ -202,7 +202,7 @@ Po změně konfigurace aplikace, by měl být schopni se přihlásit k aplikaci.
 
 ## <a name="certificate-or-key-not-configured"></a>Certifikát nebo klíč není nakonfigurováno
 
-Chyba AADSTS50003: Žádný podpisový klíč nakonfigurován.
+Chyba AADSTS50003: Nakonfigurovaný žádný podpisový klíč.
 
 **Možná příčina**
 

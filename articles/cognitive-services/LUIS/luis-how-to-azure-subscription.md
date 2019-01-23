@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7127dad813dc4c026f8feb2840f3a3903e7a3e2c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7662d58c1686dfa4e545246eb897af134a67144c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423081"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473380"
 ---
-# <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíče předplatného s aplikace LUIS
+# <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíčů předplatného s aplikací LUIS
 
 Není nutné k vytvoření klíčů předplatného používat dotazy zdarma prvních 1 000 koncových bodů. Jakmile se používají tyto dotazy koncového bodu, vytvořte prostředek Azure v [webu Azure portal](http://portal.azure.com), daný prostředek přiřadit aplikace LUIS v [LUIS portál](https://www.luis.ai).
 

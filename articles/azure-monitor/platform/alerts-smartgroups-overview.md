@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: 960dc8f2908a20620a84113b27e474b553cd45d4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345963"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466906"
 ---
 # <a name="smart-groups"></a>Inteligentní skupiny
 Běžné challenge čelí při práci s výstrahami je procházení šumu a zjistěte, co skutečně záleží – inteligentní skupin by měla být řešení tohoto problému.  
@@ -62,4 +62,5 @@ Název inteligentní skupiny je název své první výstraha. Nelze vytvořit an
 
 - [Spravovat inteligentní skupiny](https://aka.ms/managing-smart-groups)
 - [Změna stavu výstrah a inteligentní skupinu](https://aka.ms/managing-alert-smart-group-states)
+
 

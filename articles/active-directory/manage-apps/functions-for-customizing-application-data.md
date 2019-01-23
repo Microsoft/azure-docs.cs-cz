@@ -4,7 +4,7 @@ description: Další informace o použití mapování výrazů má být transfor
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 867fdd57df163f37d86572798aaae6d78d43f479
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 61aeb6a80d492a82dffa66491742899df0acc237
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973719"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470048"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -28,7 +28,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 
 * Celý výraz musí být definován jako funkce, které tvoří název, za nímž následuje argumenty v závorkách: <br>
   *FunctionName (`<<argument 1>>`,`<<argument N>>`)*
-* Může vnořit do jiné funkce. Příklad: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
+* Může vnořit do jiné funkce. Příklad: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * Tři různé typy argumentů můžete předat do funkce:
   
   1. Atributy, které musí být uzavřeny do hranatých závorek. Příklad: [attributeName]
@@ -298,8 +298,8 @@ Založené na uživatele křestní jméno, křestní jméno a příjmení, je po
 
 **Ukázkový vstup/výstup:**
 
-* **VSTUP** (PreferredFirstName): "John"
-* **VSTUP** (PreferredLastName): "Macek"
+* **INPUT** (PreferredFirstName): "John"
+* **INPUT** (PreferredLastName): "Macek"
 * **VÝSTUP**: "John.Smith@contoso.com" Pokud hodnotu hlavního názvu uživatele John.Smith@contoso.com ještě neexistuje v adresáři
 * **VÝSTUP**: "J.Smith@contoso.com" Pokud hodnotu hlavního názvu uživatele John.Smith@contoso.com již existuje v adresáři
 * **VÝSTUP**: "Jo.Smith@contoso.com" Pokud výše uvedené hodnoty dva hlavní název uživatele v adresáři už existuje

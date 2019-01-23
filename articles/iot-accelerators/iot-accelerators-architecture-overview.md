@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: 5fb615ff042cc5cdd3b6b8e42e4d91b161ebf445
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602371"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467311"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Úvod do referenční architektura Azure IoT
 
@@ -79,7 +79,7 @@ Jako řešení ingestuje telemetrická data, je důležité pochopit, jak Tok zp
 
 Směrování můžete odesílat telemetrii na jeden nebo více koncových bodů úložiště, procesy analýzy a akce. Řešení může kombinovat fází v různém pořadí a jejich zpracování s souběžných paralelními úlohami.
 
-Řešení vzdáleného monitorování využívá [Azure Stream Analytics](/azure/stream-analytics/) ke zpracování datových proudů. Stroj pravidel v řešení dotazů Stream Analytics používá k vygenerování falešné poplachy a akce. Například můžete použít řešení dotazu k identifikaci průměrná teplota v prostoru úložiště truck více než pět minut klesne pod 36 stupňů.
+Řešení vzdáleného monitorování využívá [Azure Stream Analytics](/azure/stream-analytics/) ke zpracování datových proudů. Stroj pravidel v řešení dotazů Stream Analytics používá k vygenerování výstrahy a akce. Například můžete použít řešení dotazu k identifikaci průměrná teplota v prostoru úložiště truck více než pět minut klesne pod 36 stupňů.
 
 ### <a name="storage"></a>Storage
 

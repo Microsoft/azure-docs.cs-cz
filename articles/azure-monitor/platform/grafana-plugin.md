@@ -8,13 +8,13 @@ ms.author: robb
 ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
-ms.component: ''
-ms.openlocfilehash: 4579dd4fb14a01454f86d5913eb9dd44a8977db6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: ''
+ms.openlocfilehash: 9d0f814428a4d7bc57b4f0a01ff5adc658af1d91
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440958"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466981"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Teď můžete monitorovat služby a aplikace z Azure [Grafana](https://grafana.com/) pomocí [zdroje dat monitorování Azure plugin](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikace shromážděná službou Azure Monitor, včetně různé protokoly a metriky. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -167,3 +167,4 @@ Pokud jste instalační program Grafana prostředí v Azure se účtují, když 
 
 ## <a name="next-steps"></a>Další postup
 * [Přehled metrik Azure monitoru](../../azure-monitor/platform/data-collection.md)
+

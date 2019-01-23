@@ -8,16 +8,16 @@ manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 08/14/2018
+ms.date: 01/14/2019
 ms.author: eamono
-ms.openlocfilehash: 9da40508c6f8fec1122ab116786ed726b576a639
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d7113842aff4d6d9ec66439d1d43e5e24333d3f1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106698"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467566"
 ---
-# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Kurz: Integrace služby Azure Automation s Event Grid a Microsoft Teams
+# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Kurz: Integrace služby Azure Automation se službou Event Grid a Microsoft Teams
 
 V tomto kurzu se naučíte:
 

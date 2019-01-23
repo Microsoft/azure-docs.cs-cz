@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: e8e838fae0da3a47fe1b3ec8d412f956f5f28034
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 31d6725b6e02bbc583ad80f235360574941a97d3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975505"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468331"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnery dockeru Language Understanding 
 
@@ -35,6 +35,7 @@ Tento kontejner má následující nastavení:
 |Ano|[Fakturace](#billing-setting)|Určuje identifikátor URI prostředku služby koncového bodu v Azure.|
 |Ano|[Smlouva EULA](#eula-setting)| Označuje, že jste přijali licenční pro kontejner.|
 |Ne|[Fluentd](#fluentd-settings)|Zápis protokolu a volitelně data metriky Fluentd server.|
+|Ne|[Http Proxy](#http-proxy-credentials-settings)|Konfigurace proxy serveru HTTP pro provedení odchozích požadavků.|
 |Ne|[Protokolování](#logging-settings)|Poskytuje podporu pro váš kontejner protokolování ASP.NET Core. |
 |Ano|[Připojí](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru však zpět na hostitelském počítači.|
 
@@ -77,6 +78,10 @@ Toto nastavení najdete v následujících umístěních:
 
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru http
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Nastavení protokolování
  
@@ -189,3 +194,4 @@ ApiKey={APPLICATION_ID} \
 
 * Kontrola [instalace a spouštění kontejnerů](luis-container-howto.md)
 * Odkazovat na [– nejčastější dotazy (FAQ)](luis-resources-faq.md) k vyřešení problémů týkajících se služby LUIS funkce.
+* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)

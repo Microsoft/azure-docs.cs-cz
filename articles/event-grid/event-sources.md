@@ -2,17 +2,17 @@
 title: Zdroje událostí služby Azure Event Grid
 description: Tento článek popisuje zdroje událostí podporovaných pro Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 01/19/2019
+ms.author: spelluru
+ms.openlocfilehash: 44bd92568db3a762453e1d76a620e6c792cd8913
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498296"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476032"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí ve službě Azure Event Grid
 
@@ -26,7 +26,7 @@ Přihlášení k odběru předplatného Azure událostí reakce na změny v pros
 
 |Titul |Popis  |
 |---------|---------|
-| [Kurz: Automatizace Azure pomocí služby Event Grid a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Vytvořte virtuální počítač, který odešle událost. Událost se aktivuje runbook služby Automation, značky virtuální počítač, který aktivuje zprávu, která je odeslána do kanálu Microsoft Teams. |
+| [Kurz: Automatizace v Azure pomocí služby Event Grid a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Vytvořte virtuální počítač, který odešle událost. Událost se aktivuje runbook služby Automation, značky virtuální počítač, který aktivuje zprávu, která je odeslána do kanálu Microsoft Teams. |
 | [Postupy: přihlášení k odběru událostí prostřednictvím portálu](subscribe-through-portal.md) | Použití portálu k přihlášení k odběru událostí předplatného Azure. |
 | [Azure CLI: přihlášení k odběru událostí předplatného Azure](./scripts/event-grid-cli-azure-subscription.md) |Ukázkový skript, který vytvoří odběr Event gridu s předplatným Azure a odesílá události Webhooku. |
 | [Prostředí PowerShell: přihlášení k odběru událostí předplatného Azure](./scripts/event-grid-powershell-azure-subscription.md)| Ukázkový skript, který vytvoří odběr Event gridu s předplatným Azure a odesílá události Webhooku. |
@@ -117,7 +117,7 @@ Přihlášení k odběru služby Service Bus událostí reagovat na zprávy bez 
 | [Přehled: Azure Service Bus k integraci služby Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Přehled integrace služby Service Bus s využitím služby Event Grid. |
 | [Schéma událostí](event-schema-service-bus.md) | Zobrazí pole v událostech služby Service Bus. |
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Přihlášení k odběru úložiště objektů Blob událostí reagovat na události vytvořené a odstraněných objektů blob.
 
@@ -128,7 +128,7 @@ Přihlášení k odběru úložiště objektů Blob událostí reagovat na udál
 | [Rychlý start: vytvoření a směrování událostí služby Blob storage pomocí webu Azure portal](blob-event-quickstart-portal.md) | Ukazuje, jak používat portál k odesílání událostí služby blob storage do Webhooku. |
 | [Azure CLI: přihlášení k odběru událostí účtu úložiště objektů Blob](./scripts/event-grid-cli-blob.md) | Ukázkový skript, který se přihlásí odběru událostí účtu úložiště objektů Blob. Odešle událost Webhooku. |
 | [Prostředí PowerShell: přihlášení k odběru událostí účtu úložiště objektů Blob](./scripts/event-grid-powershell-blob.md) | Ukázkový skript, který se přihlásí odběru událostí účtu úložiště objektů Blob. Odešle událost Webhooku. |
-| [Šablony Resource Manageru: vytvoření objektu Blob úložiště a odběru](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Nasadí účet úložiště objektů blob v Azure a přihlásí se k odběru událostí tohoto účtu úložiště. Odesílá události do Webhooku. |
+| [Šablony Resource Manageru: Vytvoření úložiště objektů Blob a předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Nasadí účet úložiště objektů blob v Azure a přihlásí se k odběru událostí tohoto účtu úložiště. Odesílá události do Webhooku. |
 | [Přehled: reakce na události služby Blob storage](../storage/blobs/storage-blob-event-overview.md) | Přehled integrace úložiště objektů Blob pomocí služby Event Grid. |
 | [Schéma událostí](event-schema-blob-storage.md) | Zobrazí pole v události služby Blob Storage. |
 

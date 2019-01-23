@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6df8d9a5c1ca1e587834ea08f73b3dd9498f8537
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: cafb48f28e38794ce0757d50a5d87432b237e17c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753145"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467158"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB JSON pomocí indexeru Azure Search Blob
 V tomto článku se dozvíte, jak nakonfigurovat indexer Azure Search blob k extrakci Strukturovaný obsah z objektů BLOB JSON ve službě Azure Blob storage.
@@ -23,6 +23,9 @@ V tomto článku se dozvíte, jak nakonfigurovat indexer Azure Search blob k ext
 Můžete použít [portál](#json-indexer-portal), [rozhraní REST API](#json-indexer-rest), nebo [sady .NET SDK](#json-indexer-dotnet) do indexu obsah JSON. Společná pro všechny přístupy se nachází v kontejneru objektů blob v účtu služby Azure Storage dokumentů JSON. Pokyny k odesílání dokumentů JSON z jiných platforem než Azure najdete v tématu [import dat ve službě Azure Search](search-what-is-data-import.md).
 
 Objekty BLOB JSON ve službě Azure Blob storage jsou obvykle jednotlivý dokument JSON nebo pole JSON. Indexování objektů blob ve službě Azure Search můžete analyzovat buď konstrukce, v závislosti na tom, jak nastavit **parsingMode** parametru na požadavek.
+
+> [!IMPORTANT]
+> Indexování objektů blob JSON je obecně dostupná, ale analýza pole je ve verzi public preview a neměli byste používat v produkčním prostředí. Další informace najdete v tématu [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
 
 <a name="json-indexer-portal"></a>
 
@@ -293,10 +296,10 @@ V následujícím příkladu je plně zadaný indexer datovou část, včetně m
 
 Sady .NET SDK má plně parity pomocí rozhraní REST API. Doporučujeme, abyste si předchozí části rozhraní REST API, další koncepty, pracovních postupů a požadavků. Poté můžete odkázat na následující referenční dokumentace rozhraní API .NET k implementaci JSON indexer ve spravovaném kódu.
 
-+ [Microsoft.Azure.Search.models.DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [Microsoft.Azure.Search.models.DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [Microsoft.Azure.Search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [Microsoft.Azure.Search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

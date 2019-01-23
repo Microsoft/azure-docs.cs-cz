@@ -4,7 +4,7 @@ description: Seznamte se s Synchronization Service Manager pro služby Azure AD 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 5847c33f-aaa2-48f9-abe6-78c4a87a3b7c
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 439535975c6e1b996bf888a1df7b6f2ae6732a6d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 17a842d5de08f067559f1d0f208180ce436a1f3c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717531"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474638"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Úvod do služby Azure AD Connect uživatelského rozhraní Synchronization Service Manager
 

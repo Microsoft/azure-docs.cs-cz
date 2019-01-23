@@ -4,7 +4,7 @@ description: Tento článek vysvětluje uživatelům Office 365, jak řešit pro
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 543b7dc1-ccc9-407f-85a1-a9944c0ba1be
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6512efb45ee5c56cd0a10286d4156ae2d81f2f99
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237091"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464948"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -58,7 +58,7 @@ Azure AD se pokusí federačních metadat. monitorování a aktualizace je urče
 >
 
 ## Zaškrtněte, pokud je nutné aktualizovat certifikáty <a name="managecerts"></a>
-### <a name="step-1-check-the-autocertificaterollover-state"></a>Krok 1: Kontrola stavu AutoCertificateRollover
+### <a name="step-1-check-the-autocertificaterollover-state"></a>Krok 1: Zkontrolujte stav AutoCertificateRollover
 Na serveru služby AD FS otevřete prostředí PowerShell. Zkontrolujte, jestli je hodnota AutoCertificateRollover nastavena na hodnotu True.
 
     Get-Adfsproperties
@@ -68,7 +68,7 @@ Na serveru služby AD FS otevřete prostředí PowerShell. Zkontrolujte, jestli 
 >[!NOTE] 
 >Pokud používáte službu AD FS 2.0, nejprve spusťte Add-Pssnapin Microsoft.Adfs.Powershell.
 
-### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Krok 2: Zkontrolujte, že služba AD FS a Azure AD jsou synchronizované
+### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Krok 2: Ověřte, zda jsou synchronizace služby AD FS a Azure AD
 Na serveru služby AD FS otevřete příkazový řádek MSOnline Powershellu a připojení k Azure AD.
 
 > [!NOTE]
@@ -92,7 +92,7 @@ Zkontrolujte nakonfigurovaných ve službě AD FS a Azure AD, vlastnosti pro zad
 
 Pokud odpovídají kryptografickým otiskům v obou výstupy certifikáty jsou synchronizované s Azure AD.
 
-### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Krok 3: Kontrola, pokud certifikátu brzy vyprší platnost
+### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Krok 3: Zkontrolujte, jestli je váš certifikát vyprší
 Ve výstupu příkazu Get-MsolFederationProperty nebo Get-AdfsCertificate zkontrolujte datum v části "Ne po." Pokud je datum méně než 30 dnů, byste měli provést akci.
 
 | AutoCertificateRollover | Certifikáty, které jsou synchronizované s Azure AD | Federační metadata je veřejně dostupná | Platnost | Akce |
@@ -153,11 +153,11 @@ Na druhé straně Pokud **AutoCertificateRollover** je nastavena na **True**, al
 
 Dva certifikáty by měly být uvedeny nyní, z nichž jeden je **NotAfter** datum v budoucnosti přibližně jeden rok a pro které **IsPrimary** hodnotu **False**.
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Krok 2: Aktualizace nový token podpisové certifikáty pro vztah důvěryhodnosti služeb Office 365
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Krok 2: Aktualizujte nové podpisové certifikáty pro vztah důvěryhodnosti služeb Office 365
 Aktualizujte Office 365 nový token podpisové certifikáty, které má být použit pro vztah důvěryhodnosti, následujícím způsobem.
 
 1. Otevřete modul Microsoft Azure Active Directory pro prostředí Windows PowerShell.
-2. Spustit $cred = Get-Credential. Když tato rutina vás vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudových služeb.
+2. Run $cred=Get-Credential. Když tato rutina vás vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudových služeb.
 3. Spustit Connect-MsolService – $cred přihlašovacích údajů. Tato rutina vás připojí ke cloudové službě. Vytvoření kontextu, který vás připojí ke cloudové službě je potřeba před spuštěním další rutiny nainstalované pomocí nástroje.
 4. Pokud se spuštění těchto příkazů na počítači, který není primární federační server AD FS, spusťte Set-MSOLAdfscontext-počítače &lt;primární server AD FS&gt;, kde &lt;primární server AD FS&gt; je interní plně kvalifikovaný název domény název primárního serveru AD FS. Tato rutina vytvoří kontext, který slouží jako propojení se službou AD FS.
 5. Spustit Update-MSOLFederatedDomain-DomainName &lt;domény&gt;. Tato rutina aktualizuje nastavení ze služby AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.

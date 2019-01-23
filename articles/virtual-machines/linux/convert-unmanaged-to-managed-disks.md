@@ -15,12 +15,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 62ac70134c1bdf9d178d59723ff73561049a4bbf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: disks
+ms.openlocfilehash: ee3f24b7e7a0e4242337aabedc87515b7fabbb9a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993066"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467943"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Linuxem z nespravovaných disků na managed disks
 
@@ -28,7 +29,7 @@ Pokud máte existující virtuální počítače s Linuxem (VM), které použív
 
 V tomto článku se dozvíte, jak převést virtuální počítače pomocí rozhraní příkazového řádku Azure. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli). 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 * Kontrola [nejčastější dotazy týkající se migrace na spravované disky](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
@@ -37,7 +38,7 @@ V tomto článku se dozvíte, jak převést virtuální počítače pomocí rozh
 ## <a name="convert-single-instance-vms"></a>Převést virtuální počítače s jednou instancí
 Tato část popisuje, jak převést virtuální počítače Azure s jednou instancí z nespravovaných disků na managed disks. (Pokud jsou vaše virtuální počítače ve skupině dostupnosti, najdete v další části.) Tento postup můžete použít k převodu virtuálních počítačů z úrovně premium (SSD) nespravované disky na spravované disky úrovně premium, nebo z úrovně standard (HDD), nespravované disky na spravované disky úrovně standard.
 
-1. Uvolněte virtuální počítač s použitím [az vm deallocate](/cli/azure/vm#az_vm_deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+1. Uvolněte virtuální počítač s použitím [az vm deallocate](/cli/azure/vm). V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -71,7 +72,7 @@ Všechny virtuální počítače ve skupině dostupnosti musí být napřed zru�
         --output table
     ```
 
-2. Uvolnit všechny virtuální počítače s použitím [az vm deallocate](/cli/azure/vm#az_vm_deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+2. Uvolnit všechny virtuální počítače s použitím [az vm deallocate](/cli/azure/vm). V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM

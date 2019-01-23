@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: 02678738c225742db1795a2e168b6eac1320aead
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: metrics
+ms.openlocfilehash: be2274b5d7a0e39733440379ce9678ab012d7d27
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232885"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473822"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -42,15 +42,15 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |CleanerCurrentPrice|Paměť: Aktuální cena čisticího modulu|Počet|Průměr|Aktuální cena paměti a $/ bajt/čas, normalizovaná na 1000.|ServerResourceType|
 |CleanerMemoryShrinkable|Paměť: Zmenšitelná paměť čisticího modulu|B|Průměr|Velikost paměti v bajtech, která čisticí procesem na pozadí se vyprázdňuje.|ServerResourceType|
 |CleanerMemoryNonshrinkable|Paměť: Nezmenšitelná paměť|B|Průměr|Velikost paměti v bajtech, která není v souladu s čisticí vyprazdňování procesem na pozadí.|ServerResourceType|
-|Parametru MemoryUsage|Paměť: Využití paměti|B|Průměr|Využití paměti procesu serveru, jak se používají při výpočtu cena čisticího modulu paměti. Rovnat čítači Process\PrivateBytes plus velikost dat mapovaných do paměti, ignoruje se jakákoli paměť, která byla mapována nebo přidělena analýzu v paměti modulu xVelocity (VertiPaq) Limit paměti modulu xVelocity.|ServerResourceType|
+|MemoryUsage|Paměť: Využití paměti|B|Průměr|Využití paměti procesu serveru, jak se používají při výpočtu cena čisticího modulu paměti. Rovnat čítači Process\PrivateBytes plus velikost dat mapovaných do paměti, ignoruje se jakákoli paměť, která byla mapována nebo přidělena analýzu v paměti modulu xVelocity (VertiPaq) Limit paměti modulu xVelocity.|ServerResourceType|
 |MemoryLimitHard|Paměť: Limit paměti – pevná|B|Průměr|Limit pevné paměti, z konfiguračního souboru.|ServerResourceType|
-|Hodnota MemoryLimitHigh|Paměť: Limit paměti – vysoká|B|Průměr|Limit vysoké paměti, z konfiguračního souboru.|ServerResourceType|
+|MemoryLimitHigh|Paměť: Limit paměti – vysoká|B|Průměr|Limit vysoké paměti, z konfiguračního souboru.|ServerResourceType|
 |MemoryLimitLow|Paměť: Limit paměti – nízká|B|Průměr|Limit nízké paměti, z konfiguračního souboru.|ServerResourceType|
-|MemoryLimitVertiPaq|Paměť: Limit paměti – VertiPaq|B|Průměr|Limit v paměti, z konfiguračního souboru.|ServerResourceType|
+|MemoryLimitVertiPaq|Paměť: Memory Limit VertiPaq|B|Průměr|Limit v paměti, z konfiguračního souboru.|ServerResourceType|
 |Kvóta|Paměť: Kvóta|B|Průměr|Aktuální kvóta paměti, v bajtech. Kvóta paměti se taky říká rezervace paměti grant nebo paměti.|ServerResourceType|
 |QuotaBlocked|Paměť: Kvóta – blokováno|Počet|Průměr|Aktuální počet požadavků kvóty, které jsou blokovány, dokud jsou uvolněny jiné kvóty paměti.|ServerResourceType|
-|VertiPaqNonpaged|Paměť: VertiPaq nestránkované|B|Průměr|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|ServerResourceType|
-|VertiPaqPaged|Paměť: VertiPaq stránkované|B|Průměr|Počet bajtů stránkované paměti používaných pro data v paměti.|ServerResourceType|
+|VertiPaqNonpaged|Paměť: VertiPaq Nonpaged|B|Průměr|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|ServerResourceType|
+|VertiPaqPaged|Paměť: VertiPaq Paged|B|Průměr|Počet bajtů stránkované paměti používaných pro data v paměti.|ServerResourceType|
 |RowsReadPerSec|Zpracování: Počet přečtených řádků za sekundu|CountPerSecond|Průměr|Rychlost čtení řádků ze všech relačních databází.|ServerResourceType|
 |RowsConvertedPerSec|Zpracování: Řádky převést za sekundu|CountPerSecond|Průměr|Rychlost převodu řádků během zpracování.|ServerResourceType|
 |RowsWrittenPerSec|Zpracování: Počet zapsaných řádků za sekundu|CountPerSecond|Průměr|Rychlost zápisu řádků během zpracování.|ServerResourceType|
@@ -149,7 +149,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |cacheRead|Čtení z mezipaměti|BytesPerSecond|Maximum||ShardId|
 |percentProcessorTime|Procesor|Procento|Maximum||ShardId|
 |cacheLatency|Mezipaměť latence mikrosekundy (Preview)|Počet|Průměr||ShardId SampleType|
-|chyby|Chyby|Počet|Maximum||ShardId ErrorType.|
+|chyby|Chyby|Počet|Maximum||ShardId, ErrorType|
 |connectedclients0|Připojených klientů (horizontálních oddílů 0)|Počet|Maximum||Žádné dimenze|
 |totalcommandsprocessed0|Celkový počet operací (horizontálních oddílů 0)|Počet|Celkem||Žádné dimenze|
 |cachehits0|Přístupy do mezipaměti (horizontálních oddílů 0)|Počet|Celkem||Žádné dimenze|
@@ -226,7 +226,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys4|Prošlé klíče (horizontálních oddílů 4)|Počet|Celkem||Žádné dimenze|
 |usedmemory4|Využitá paměť (horizontálních oddílů 4)|B|Maximum||Žádné dimenze|
 |usedmemoryRss4|Využitá paměť RSS (horizontálních oddílů 4)|B|Maximum||Žádné dimenze|
-|serverLoad4|Zatížení serveru (horizontálních oddílů 4)|Procento|Maximum||Žádné dimenze|
+|serverLoad4|Server Load (Shard 4)|Procento|Maximum||Žádné dimenze|
 |cacheWrite4|Zápis do mezipaměti (horizontálních oddílů 4)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead4|Čtení z mezipaměti (horizontálních oddílů 4)|BytesPerSecond|Maximum||Žádné dimenze|
 |percentProcessorTime4|Procesor (horizontálních oddílů 4)|Procento|Maximum||Žádné dimenze|
@@ -274,7 +274,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys7|Prošlé klíče (horizontální oddíl 7)|Počet|Celkem||Žádné dimenze|
 |usedmemory7|Využitá paměť (horizontální oddíl 7)|B|Maximum||Žádné dimenze|
 |usedmemoryRss7|Využitá paměť RSS (horizontální oddíl 7)|B|Maximum||Žádné dimenze|
-|serverLoad7|Zatížení serveru (horizontální oddíl 7)|Procento|Maximum||Žádné dimenze|
+|serverLoad7|Server Load (Shard 7)|Procento|Maximum||Žádné dimenze|
 |cacheWrite7|Zápis do mezipaměti (horizontální oddíl 7)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead7|Čtení z mezipaměti (horizontální oddíl 7)|BytesPerSecond|Maximum||Žádné dimenze|
 |percentProcessorTime7|Procesor (horizontální oddíl 7)|Procento|Maximum||Žádné dimenze|
@@ -430,7 +430,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |CpuUsage|Využití procesoru|Počet|Průměr|Využití procesoru u všech jader v jednotkách millicore|containerName|
-|Parametru MemoryUsage|Využití paměti|B|Průměr|Celkové využití paměti v bajtech|containerName|
+|MemoryUsage|Využití paměti|B|Průměr|Celkové využití paměti v bajtech|containerName|
 |NetworkBytesReceivedPerSecond|Bajty přijaté přes síť za sekundu|B|Průměr|Bajty přijaté přes síť za sekundu|Žádné dimenze|
 |NetworkBytesTransmittedPerSecond|Bajty přenesené přes síť za sekundu|B|Průměr|Bajty přenesené přes síť za sekundu|Žádné dimenze|
 
@@ -460,7 +460,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |DCIOutboundKpiExportFailed|Exportovat odchozí klíčového ukazatele výkonu se nezdařilo|Počet|Celkem||Žádné dimenze|
 |DCIOutboundKpiExportDuration|Doba trvání odchozí Export klíčového ukazatele výkonu|Sekundy|Celkem||Žádné dimenze|
 |DCIOutboundKpiExportStarted|Spuštěn Export odchozí klíčového ukazatele výkonu|Sekundy|Celkem||Žádné dimenze|
-|DCIOutboundKpiRecordCount|Počet záznamů odchozí klíčového ukazatele výkonu|Sekundy|Celkem||Žádné dimenze|
+|DCIOutboundKpiRecordCount|Outbound Kpi Record Count|Sekundy|Celkem||Žádné dimenze|
 |DCIOutboundProfileExportCount|Počet odchozích profilu exportu|Sekundy|Celkem||Žádné dimenze|
 |DCIOutboundInitialProfileExportFailed|Počáteční odchozí profilu exportu se nezdařila|Sekundy|Celkem||Žádné dimenze|
 |DCIOutboundInitialProfileExportSucceeded|Počáteční odchozí profilu exportu byla úspěšná|Sekundy|Celkem||Žádné dimenze|
@@ -496,8 +496,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ActivitySucceededRuns|Úspěšné běhy metriky aktivity|Počet|Celkem||ActivityType, PipelineName, FailureType, název|
 |TriggerFailedRuns|Se nezdařilo metrika spuštění aktivační události|Počet|Celkem||Název, FailureType|
 |TriggerSucceededRuns|Aktivační událost metriky spuštění bylo úspěšné|Počet|Celkem||Název, FailureType|
-|IntegrationRuntimeCpuPercentage|Využití Integration runtime – procesor|Procento|Průměr||IntegrationRuntimeName NodeName|
-|IntegrationRuntimeAvailableMemory|Integration runtime – paměť k dispozici|B|Průměr||IntegrationRuntimeName NodeName|
+|IntegrationRuntimeCpuPercentage|Využití Integration runtime – procesor|Procento|Průměr||IntegrationRuntimeName, NodeName|
+|IntegrationRuntimeAvailableMemory|Integration runtime – paměť k dispozici|B|Průměr||IntegrationRuntimeName, NodeName|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
@@ -581,9 +581,9 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |---|---|---|---|---|---|
 |d2c.telemetry.ingress.allProtocol|Pokusy o odeslat zpráva telemetrie|Počet|Celkem|Počet zpráv typu zařízení cloud telemetrie, které se pokusil odeslat do služby IoT hub|Žádné dimenze|
 |d2c.telemetry.ingress.success|Telemetrické zprávy odesílané|Počet|Celkem|Počet zpráv typu zařízení cloud telemetrie úspěšně odeslán do služby IoT hub|Žádné dimenze|
-|c2d.Commands.egress.COMPLETE.Success|Dokončení příkazů|Počet|Celkem|Počet příkazů typu cloud zařízení zařízení byla úspěšně dokončena|Žádné dimenze|
+|c2d.commands.egress.complete.success|Dokončení příkazů|Počet|Celkem|Počet příkazů typu cloud zařízení zařízení byla úspěšně dokončena|Žádné dimenze|
 |c2d.commands.egress.abandon.success|Příkazy opuštění|Počet|Celkem|Počet opuštěných zařízení příkazy typu cloud zařízení|Žádné dimenze|
-|c2d.Commands.egress.Reject.Success|Příkazy zamítnuto|Počet|Celkem|Počet odmítnutých zařízení příkazy typu cloud zařízení|Žádné dimenze|
+|c2d.commands.egress.reject.success|Příkazy zamítnuto|Počet|Celkem|Počet odmítnutých zařízení příkazy typu cloud zařízení|Žádné dimenze|
 |devices.totalDevices|Celkový počet zařízení (zastaralé)|Počet|Celkem|Počet zařízení zaregistrovaný do služby IoT hub|Žádné dimenze|
 |devices.connectedDevices.allProtocol|Připojené zařízení (zastaralé) |Počet|Celkem|Počet zařízení připojená ke službě IoT hub|Žádné dimenze|
 |d2c.telemetry.egress.success|Směrování: telemetrické zprávy doručí|Počet|Celkem|Počet pokusů, které zprávy se úspěšně doručila na všechny koncové body pomocí služby IoT Hub směrování. Pokud zpráva je směrována do několika koncových bodů, tato hodnota zvýší o jedna pro každé úspěšné dodání. Pokud zpráva se doručí na stejný koncový bod vícekrát, tato hodnota zvýší o jedna pro každé úspěšné dodání.|Žádné dimenze|
@@ -599,25 +599,25 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |d2c.endpoints.latency.serviceBusTopics|Směrování: zpráva latence pro téma služby Service Bus|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do tématu koncovým bodem Service Bus.|Žádné dimenze|
 |d2c.endpoints.egress.builtIn.events|Směrování: zprávy doručovat zprávy a události|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zprávy na integrovaný koncový bod (zprávy/events).|Žádné dimenze|
 |d2c.endpoints.latency.builtIn.events|Směrování: zpráva latence pro zprávy a události|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do integrovaného koncového bodu (zprávy/events).|Žádné dimenze|
-|d2c.endpoints.egress.Storage|Směrování: doručení zprávy do služby storage|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do koncových bodů úložiště.|Žádné dimenze|
-|d2c.endpoints.latency.Storage|Směrování: zpráva latence pro úložiště|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy na koncový bod úložiště.|Žádné dimenze|
-|d2c.endpoints.egress.Storage.bytes|Směrování: data doručí do úložiště|B|Celkem|Objem dat (v bajtech) směrování služby IoT Hub doručí do koncových bodů úložiště.|Žádné dimenze|
-|d2c.endpoints.egress.Storage.BLOBS|Směrování: objekty BLOB doručit do úložiště|Počet|Celkem|Počet pokusů, které směrování služby IoT Hub doručí do koncových bodů úložiště objektů BLOB.|Žádné dimenze|
+|d2c.endpoints.egress.storage|Směrování: doručení zprávy do služby storage|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do koncových bodů úložiště.|Žádné dimenze|
+|d2c.endpoints.latency.storage|Směrování: zpráva latence pro úložiště|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy na koncový bod úložiště.|Žádné dimenze|
+|d2c.endpoints.egress.storage.bytes|Směrování: data doručí do úložiště|B|Celkem|Objem dat (v bajtech) směrování služby IoT Hub doručí do koncových bodů úložiště.|Žádné dimenze|
+|d2c.endpoints.egress.storage.blobs|Směrování: objekty BLOB doručit do úložiště|Počet|Celkem|Počet pokusů, které směrování služby IoT Hub doručí do koncových bodů úložiště objektů BLOB.|Žádné dimenze|
 |d2c.twin.read.success|Čtení dvojčat úspěšné ze zařízení|Počet|Celkem|Počet všech úspěšných čtení dvojčat zařízení iniciované.|Žádné dimenze|
-|d2c.Twin.Read.failure|Čtení dvojčat ze zařízení se nezdařila|Počet|Celkem|Počet všech se nezdařilo čtení dvojčat zařízení inicioval.|Žádné dimenze|
+|d2c.twin.read.failure|Čtení dvojčat ze zařízení se nezdařila|Počet|Celkem|Počet všech se nezdařilo čtení dvojčat zařízení inicioval.|Žádné dimenze|
 |d2c.twin.read.size|Velikost odpovědi čtení dvojčat zařízení|B|Průměr|Průměrné, minimální a maximální ze všech úspěšné, zařízení iniciované dvojčete čtení.|Žádné dimenze|
 |d2c.twin.update.success|Aktualizace dvojčat úspěšné ze zařízení|Počet|Celkem|Počet všech úspěšných aktualizací dvojčete zařízení iniciované.|Žádné dimenze|
-|d2c.Twin.Update.failure|Aktualizace dvojčat ze zařízení s chybami|Počet|Celkem|Počet všech neúspěšných dvojčete zařízení iniciované aktualizací.|Žádné dimenze|
+|d2c.twin.update.failure|Aktualizace dvojčat ze zařízení s chybami|Počet|Celkem|Počet všech neúspěšných dvojčete zařízení iniciované aktualizací.|Žádné dimenze|
 |d2c.twin.update.size|Velikost aktualizace dvojčete zařízení|B|Průměr|Průměrné a minimální a maximální velikost všech úspěšné, zařízení iniciované dvojčete aktualizace.|Žádné dimenze|
 |c2d.methods.success|Volání úspěšné přímé metody|Počet|Celkem|Počet všech úspěšných volání přímé metody.|Žádné dimenze|
-|c2d.Methods.failure|Přímé metody vyvolání se nezdařilo|Počet|Celkem|Počet všech se nezdařilo volání metody s přímým přístupem.|Žádné dimenze|
-|c2d.Methods.requestSize|Žádost o velikosti vyvolání přímé metody|B|Průměr|Průměrné, minimální a maximální počet všech úspěšných požadavků přímé metody.|Žádné dimenze|
+|c2d.methods.failure|Přímé metody vyvolání se nezdařilo|Počet|Celkem|Počet všech se nezdařilo volání metody s přímým přístupem.|Žádné dimenze|
+|c2d.methods.requestSize|Žádost o velikosti vyvolání přímé metody|B|Průměr|Průměrné, minimální a maximální počet všech úspěšných požadavků přímé metody.|Žádné dimenze|
 |c2d.methods.responseSize|Velikost odpovědi vyvolání přímé metody|B|Průměr|Průměrné, minimální a maximální všechny úspěšné přímé metody odpovědí.|Žádné dimenze|
 |c2d.twin.read.success|Čtení dvojčat úspěšné z back-endu|Počet|Celkem|Počet všech úspěšných čtení dvojčat iniciované back-end.|Žádné dimenze|
-|c2d.Twin.Read.failure|Čtení dvojčat se nezdařilo z back-endu|Počet|Celkem|Počet všech se nezdařilo čtení dvojčat iniciované back-end.|Žádné dimenze|
+|c2d.twin.read.failure|Čtení dvojčat se nezdařilo z back-endu|Počet|Celkem|Počet všech se nezdařilo čtení dvojčat iniciované back-end.|Žádné dimenze|
 |c2d.twin.read.size|Velikost odpovědi čtení dvojčat z back-endu|B|Průměr|Průměr a minimální a maximální velikost všech úspěšné, iniciované back-end dvojčete čtení.|Žádné dimenze|
 |c2d.twin.update.success|Aktualizace dvojčat úspěšné z back-endu|Počet|Celkem|Počet všech úspěšné aktualizace dvojčete iniciované back-end.|Žádné dimenze|
-|c2d.Twin.Update.failure|Aktualizace dvojčat se nezdařilo z back-endu|Počet|Celkem|Počet všech neúspěšných iniciované back-end dvojčete aktualizací.|Žádné dimenze|
+|c2d.twin.update.failure|Aktualizace dvojčat se nezdařilo z back-endu|Počet|Celkem|Počet všech neúspěšných iniciované back-end dvojčete aktualizací.|Žádné dimenze|
 |c2d.twin.update.size|Velikost dvojčete aktualizací z back-endu|B|Průměr|Průměrné, minimální a maximální velikost všech úspěšné, iniciované back-end dvojčete aktualizace.|Žádné dimenze|
 |twinQueries.success|Úspěšné dvojčete dotazy|Počet|Celkem|Počet všech úspěšných dvojčete dotazů.|Žádné dimenze|
 |twinQueries.failure|Neúspěšné dvojčete dotazy|Počet|Celkem|Počet všech neúspěšných dvojčete dotazů.|Žádné dimenze|
@@ -633,7 +633,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |jobs.queryJobs.success|Úspěšné úlohy dotazů|Počet|Celkem|Počet všech úspěšných volání do úlohy dotaz.|Žádné dimenze|
 |jobs.queryJobs.failure|Neúspěšné úlohy dotazy|Počet|Celkem|Počet všech neúspěšných volání do úlohy dotaz.|Žádné dimenze|
 |jobs.completed|Dokončené úlohy|Počet|Celkem|Počet všech dokončených úloh.|Žádné dimenze|
-|jobs.Failed|Neúspěšné úlohy|Počet|Celkem|Počet všech neúspěšných úloh.|Žádné dimenze|
+|jobs.failed|Neúspěšné úlohy|Počet|Celkem|Počet všech neúspěšných úloh.|Žádné dimenze|
 |d2c.telemetry.ingress.sendThrottle|Počet chyb omezení|Počet|Celkem|Omezí počet chyb omezení kvůli propustnost zařízení|Žádné dimenze|
 |dailyMessageQuotaUsed|Celkový počet zpráv používá|Počet|Průměr|Počet celkový počet zpráv, které se dnes používají. Jedná se o kumulativní hodnotu, která se resetuje na nulu v 00:00 UTC každý den.|Žádné dimenze|
 |deviceDataUsage|Celkový počet devicedata využití (zastaralé)|B|Celkem|Bajtů přenesených do a z jakékoli zařízení připojené k IOT hub|Žádné dimenze|
@@ -648,7 +648,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |---|---|---|---|---|---|
 |RegistrationAttempts|Pokusy o registraci|Počet|Celkem|Počet k pokusu o registraci zařízení|Stav ProvisioningServiceName IotHubName,|
 |DeviceAssignments|Přiřazená zařízení|Počet|Celkem|Počet zařízení přiřazená do služby IoT hub|ProvisioningServiceName, IotHubName|
-|AttestationAttempts|Pokusy o ověření identity|Počet|Celkem|Počet zařízení atestací pokus o|ProvisioningServiceName, stav protokolu|
+|AttestationAttempts|Pokusy o ověření identity|Počet|Celkem|Počet zařízení atestací pokus o|ProvisioningServiceName, Status, Protocol|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
@@ -784,15 +784,15 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |/ Neúspěšné závislosti|Chyby závislostí|Počet|Počet|Počet neúspěšných volání závislostí prováděných aplikací vůči externím prostředkům|/ Typ závislosti, závislost nebo performanceBucket, operace nebo syntetický, cloudu/instance role, cloudu/roleName|
 |zobrazení stránky nebo count|Zobrazení stránek|Počet|Počet|Počet zobrazení stránky|operace/synthetic|
 |zobrazení stránky a doba trvání|Doba načtení zobrazení stránky|Milisekundy|Průměr|Doba načtení zobrazení stránky|operace/synthetic|
-|čítače výkonu nebo requestExecutionTime|Doba provádění požadavku HTTP|Milisekundy|Průměr|Doba provádění nejnovější žádosti|cloud nebo instance role|
-|čítače výkonu nebo requestsInQueue|Požadavky HTTP ve frontě aplikací|Počet|Průměr|Délka fronty žádostí na aplikace|cloud nebo instance role|
-|čítače výkonu nebo requestsPerSecond|Četnost požadavků HTTP|CountPerSecond|Průměr|Počet všech žádostí na aplikaci za sekundu z ASP.NET|cloud nebo instance role|
-|čítače výkonu nebo exceptionsPerSecond|Frekvence výjimek|CountPerSecond|Průměr|Počet zpracovaných a nezpracovaných výjimek hlášených systému Windows, včetně výjimek .NET a nespravovaných výjimek převedených na výjimky .NET|cloud nebo instance role|
-|čítače výkonu nebo processIOBytesPerSecond|Frekvence V/V procesu|BytesPerSecond|Průměr|Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu|cloud nebo instance role|
-|čítače výkonu nebo processCpuPercentage|Proces – procesor|Procento|Průměr|Procento uplynulého času, že všechna vlákna procesu používala procesor pro spouštění instrukcí. To se může lišit od 0 do 100. Tato Metrika vyjadřuje výkon samotného procesu w3wp.|cloud nebo instance role|
-|čítače výkonu nebo processorCpuPercentage|Čas procesoru|Procento|Průměr|Procento času, které procesor stráví na nečinných vláknech|cloud nebo instance role|
-|čítače výkonu nebo memoryAvailableBytes|Dostupná paměť|B|Průměr|Okamžitě dostupná fyzická paměť pro přidělení procesu nebo pro systémové použití|cloud nebo instance role|
-|čítače výkonu nebo processPrivateBytes|Privátní bajty procesu|B|Průměr|Paměť exkluzivně přiřazená k procesům monitorované aplikace|cloud nebo instance role|
+|performanceCounters/requestExecutionTime|Doba provádění požadavku HTTP|Milisekundy|Průměr|Doba provádění nejnovější žádosti|cloud/roleInstance|
+|performanceCounters/requestsInQueue|Požadavky HTTP ve frontě aplikací|Počet|Průměr|Délka fronty žádostí na aplikace|cloud/roleInstance|
+|performanceCounters/requestsPerSecond|Četnost požadavků HTTP|CountPerSecond|Průměr|Počet všech žádostí na aplikaci za sekundu z ASP.NET|cloud/roleInstance|
+|performanceCounters/exceptionsPerSecond|Frekvence výjimek|CountPerSecond|Průměr|Počet zpracovaných a nezpracovaných výjimek hlášených systému Windows, včetně výjimek .NET a nespravovaných výjimek převedených na výjimky .NET|cloud/roleInstance|
+|performanceCounters/processIOBytesPerSecond|Frekvence V/V procesu|BytesPerSecond|Průměr|Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu|cloud/roleInstance|
+|čítače výkonu nebo processCpuPercentage|Proces – procesor|Procento|Průměr|Procento uplynulého času, že všechna vlákna procesu používala procesor pro spouštění instrukcí. To se může lišit od 0 do 100. Tato Metrika vyjadřuje výkon samotného procesu w3wp.|cloud/roleInstance|
+|čítače výkonu nebo processorCpuPercentage|Čas procesoru|Procento|Průměr|Procento času, které procesor stráví na nečinných vláknech|cloud/roleInstance|
+|čítače výkonu nebo memoryAvailableBytes|Dostupná paměť|B|Průměr|Okamžitě dostupná fyzická paměť pro přidělení procesu nebo pro systémové použití|cloud/roleInstance|
+|performanceCounters/processPrivateBytes|Privátní bajty procesu|B|Průměr|Paměť exkluzivně přiřazená k procesům monitorované aplikace|cloud/roleInstance|
 |požadavky a doba trvání|Doba odezvy serveru|Milisekundy|Průměr|Doba mezi přijetím žádosti HTTP a dokončením odesílání odpovědi|žádost/performanceBucket, požadavek/kód výsledku, operace nebo syntetický, cloud nebo instance role, žádost o/úspěch, cloudu/roleName|
 |požadavky nebo count|Požadavky serveru|Počet|Počet|Počet dokončených žádostí HTTP|žádost/performanceBucket, požadavek/kód výsledku, operace nebo syntetický, cloud nebo instance role, žádost o/úspěch, cloudu/roleName|
 |/ Neúspěšné požadavky|Neúspěšné požadavky|Počet|Počet|Požadavky HTTP počet označen jako neúspěšný. Ve většině případů jde o žádosti s kódem odpovědi > = 400 a není rovno 401.|žádost/performanceBucket, požadavek/resultCode, operace nebo syntetický, cloudu/instance role, cloudu/roleName|
@@ -874,10 +874,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|AverageOtherLatency|Průměrná další latence|MS/op|Průměr|Průměrná jiné (který není pro čtení nebo zápisu) latence v milisekundách na operaci|Žádné dimenze|
-|AverageReadLatency|Průměrná latence čtení|MS/op|Průměr|Průměrná latence v milisekundách na operaci čtení|Žádné dimenze|
-|AverageTotalLatency|Průměrná celková latence|MS/op|Průměr|Průměrná celková latence v milisekundách na operaci|Žádné dimenze|
-|AverageWriteLatency|Zápis Průměrná latence|MS/op|Průměr|Zápis Průměrná latence v milisekundách na operaci|Žádné dimenze|
+|AverageOtherLatency|Průměrná další latence|ms/op|Průměr|Průměrná jiné (který není pro čtení nebo zápisu) latence v milisekundách na operaci|Žádné dimenze|
+|AverageReadLatency|Průměrná latence čtení|ms/op|Průměr|Průměrná latence v milisekundách na operaci čtení|Žádné dimenze|
+|AverageTotalLatency|Průměrná celková latence|ms/op|Průměr|Průměrná celková latence v milisekundách na operaci|Žádné dimenze|
+|AverageWriteLatency|Zápis Průměrná latence|ms/op|Průměr|Zápis Průměrná latence v milisekundách na operaci|Žádné dimenze|
 |FilesystemOtherOps|Systém souborů ostatní operace|OPS|Průměr|Číslo systému souborů ostatní operace (které není pro čtení nebo zápis)|Žádné dimenze|
 |FilesystemReadOps|Operace čtení systému souborů|OPS|Průměr|Operace čtení počtu systému souborů|Žádné dimenze|
 |FilesystemTotalOps|Celkový počet operací systému souborů|OPS|Průměr|Součet všech operací systému souborů|Žádné dimenze|
@@ -920,21 +920,21 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|VipAvailability|Cesta dostupnost dat|Počet|Průměr|Průměrná dostupnost cesty dat nástroje pro vyrovnávání zatížení na dobu trvání|FrontendIPAddress FrontendPort|
-|DipAvailability|Sondy stavu|Počet|Průměr|Průměrná nástroje pro vyrovnávání zatížení sondy stavu na dobu trvání|ProtocolType, back-endovému portu, FrontendIPAddress, FrontendPort, BackendIPAddress|
-|ByteCount|Počet bajtů|Počet|Celkem|Celkový počet bajtů přenesených v časovém období|Směr FrontendIPAddress FrontendPort,|
-|PacketCount|Počet paketů|Počet|Celkem|Celkový počet paketů přenášet v časovém období|Směr FrontendIPAddress FrontendPort,|
-|SYNCount|Počet SYN|Počet|Celkem|Celkový počet paketů SYN přenášet v časovém období|Směr FrontendIPAddress FrontendPort,|
+|VipAvailability|Cesta dostupnost dat|Počet|Průměr|Průměrná dostupnost cesty dat nástroje pro vyrovnávání zatížení na dobu trvání|FrontendIPAddress, FrontendPort|
+|DipAvailability|Sondy stavu|Počet|Průměr|Průměrná nástroje pro vyrovnávání zatížení sondy stavu na dobu trvání|ProtocolType, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
+|ByteCount|Počet bajtů|Počet|Celkem|Celkový počet bajtů přenesených v časovém období|FrontendIPAddress, FrontendPort, Direction|
+|PacketCount|Počet paketů|Počet|Celkem|Celkový počet paketů přenášet v časovém období|FrontendIPAddress, FrontendPort, Direction|
+|SYNCount|Počet SYN|Počet|Celkem|Celkový počet paketů SYN přenášet v časovém období|FrontendIPAddress, FrontendPort, Direction|
 |SnatConnectionCount|Počet připojení SNAT|Počet|Celkem|Celkový počet nových připojení SNAT vytvořených v časovém období|Vlastnost ConnectionState FrontendIPAddress BackendIPAddress,|
-|AllocatedSnatPorts|Přidělené SNAT porty (Preview)|Počet|Celkem|Celkový počet portů SNAT přidělené v časovém období|ProtocolType FrontendIPAddress BackendIPAddress,|
-|UsedSnatPorts|Používané porty SNAT (Preview)|Počet|Celkem|Celkový počet SNAT porty používané v časovém období|ProtocolType FrontendIPAddress BackendIPAddress,|
+|AllocatedSnatPorts|Přidělené SNAT porty (Preview)|Počet|Celkem|Celkový počet portů SNAT přidělené v časovém období|FrontendIPAddress, BackendIPAddress, ProtocolType|
+|UsedSnatPorts|Používané porty SNAT (Preview)|Počet|Celkem|Celkový počet SNAT porty používané v časovém období|FrontendIPAddress, BackendIPAddress, ProtocolType|
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |QueryVolume|Množství dotazů|Počet|Celkem|Počet dotazů, které jsou zpracovány pro zónu DNS|Žádné dimenze|
-|RecordSetCount|Počet sady záznamů|Počet|Maximum|Počet sad záznamů v zóně DNS|Žádné dimenze|
+|RecordSetCount|Record Set Count|Počet|Maximum|Počet sad záznamů v zóně DNS|Žádné dimenze|
 |RecordSetCapacityUtilization|Sada záznamů využití kapacity|Procento|Maximum|Procento kapacity sady záznamů využívaných zóny DNS|Žádné dimenze|
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
@@ -1034,12 +1034,12 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|RequestCount|Počet požadavků|Počet|Celkem|Počet požadavků klientů obsluhuje proxy HTTP/S|Stav HTTP, ClientCountry HttpStatusGroup ClientRegion,|
-|RequestSize|Velikost požadavku|B|Celkem|Počet bajtů odeslaných na požadavky klientů na proxy server HTTP/S|Stav HTTP, ClientCountry HttpStatusGroup ClientRegion,|
-|ResponseSize|Velikost odpovědi|B|Celkem|Počet bajtů odeslaných jako odpovědi ze serveru proxy HTTP/S pro klienty|Stav HTTP, ClientCountry HttpStatusGroup ClientRegion,|
-|BackendRequestCount|Počet požadavků back-endu|Počet|Celkem|Počet požadavků odesílat back-endů proxy HTTP/S|Stav HTTP, HttpStatusGroup, back-endu|
+|RequestCount|Počet požadavků|Počet|Celkem|Počet požadavků klientů obsluhuje proxy HTTP/S|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
+|RequestSize|Velikost požadavku|B|Celkem|Počet bajtů odeslaných na požadavky klientů na proxy server HTTP/S|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
+|ResponseSize|Velikost odpovědi|B|Celkem|Počet bajtů odeslaných jako odpovědi ze serveru proxy HTTP/S pro klienty|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
+|BackendRequestCount|Počet požadavků back-endu|Počet|Celkem|Počet požadavků odesílat back-endů proxy HTTP/S|HttpStatus, HttpStatusGroup, Backend|
 |BackendRequestLatency|Odezva back-endu požadavku|Milisekundy|Průměr|Čas počítají na základě když byla vyslána žádost proxy HTTP/S back-endu dokud proxy HTTP/S poslední bajt odpovědi přijaté z back-endu|Back-end|
-|TotalLatency|Celková latence|Milisekundy|Průměr|Čas počítají na základě když žádost klienta byla přijata službou proxy HTTP/S dokud klient potvrzení poslední bajt odpovědi z proxy serveru HTTP/S|Stav HTTP, ClientCountry HttpStatusGroup ClientRegion,|
+|TotalLatency|Celková latence|Milisekundy|Průměr|Čas počítají na základě když žádost klienta byla přijata službou proxy HTTP/S dokud klient potvrzení poslední bajt odpovědi z proxy serveru HTTP/S|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |BackendHealthPercentage|Procento stav back-endu|Procento|Průměr|Procento úspěšných stavů testy z proxy serveru HTTP/S na back-EndY|Back-endu, Bezproblémových|
 |WebApplicationFirewallRequestCount|Počet požadavků brány Firewall webových aplikací|Počet|Celkem|Počet žádostí klienta zpracovaných rozhraním firewallu webových aplikací|PolicyName, Název_pravidla, akce|
 
@@ -1047,21 +1047,21 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Registration.all|Registrace – operace|Počet|Celkem|Počet všech úspěšných operací s registrací (vytvoření, aktualizace, dotazy a odstranění) |Žádné dimenze|
-|Registration.Create|Registrace – vytvořit operace|Počet|Celkem|Počet všech úspěšných vytvoření registrací|Žádné dimenze|
-|Registration.Update|Registrace – aktualizovat operace|Počet|Celkem|Počet všech úspěšných aktualizací registrací|Žádné dimenze|
-|Registration.Get|Registrace – přečíst operace|Počet|Celkem|Počet všech úspěšných dotazů registrací|Žádné dimenze|
+|registration.all|Registrace – operace|Počet|Celkem|Počet všech úspěšných operací s registrací (vytvoření, aktualizace, dotazy a odstranění) |Žádné dimenze|
+|registration.create|Registrace – vytvořit operace|Počet|Celkem|Počet všech úspěšných vytvoření registrací|Žádné dimenze|
+|registration.update|Registrace – aktualizovat operace|Počet|Celkem|Počet všech úspěšných aktualizací registrací|Žádné dimenze|
+|registration.get|Registrace – přečíst operace|Počet|Celkem|Počet všech úspěšných dotazů registrací|Žádné dimenze|
 |registration.delete|Registrace – odstranit operace|Počet|Celkem|Počet všech úspěšných odstranění registrací|Žádné dimenze|
 |příchozí|Příchozí zprávy|Počet|Celkem|Počet všech úspěšných volání rozhraní API, pomocí kterých se odesílají data |Žádné dimenze|
 |incoming.scheduled|Odeslaná plánovaná nabízená oznámení|Počet|Celkem|Zrušená plánovaná nabízená oznámení|Žádné dimenze|
 |incoming.scheduled.cancel|Zrušená plánovaná nabízená oznámení|Počet|Celkem|Zrušená plánovaná nabízená oznámení|Žádné dimenze|
 |Scheduled.Pending|Čekající plánovaná oznámení|Počet|Celkem|Čekající plánovaná oznámení|Žádné dimenze|
-|Installation.all|Operace správy instalace|Počet|Celkem|Operace správy instalace|Žádné dimenze|
-|Installation.Get|Operace získání instalace|Počet|Celkem|Operace získání instalace|Žádné dimenze|
-|Installation.upsert|Vytvořit nebo aktualizovat operace instalace|Počet|Celkem|Vytvořit nebo aktualizovat operace instalace|Žádné dimenze|
-|Installation.patch|Opravit operace instalace|Počet|Celkem|Opravit operace instalace|Žádné dimenze|
-|Installation.delete|Operace odstranění instalace|Počet|Celkem|Operace odstranění instalace|Žádné dimenze|
-|outgoing.allpns.Success|Úspěšná oznámení|Počet|Celkem|Počet všech úspěšných oznámení|Žádné dimenze|
+|installation.all|Operace správy instalace|Počet|Celkem|Operace správy instalace|Žádné dimenze|
+|installation.get|Operace získání instalace|Počet|Celkem|Operace získání instalace|Žádné dimenze|
+|installation.upsert|Vytvořit nebo aktualizovat operace instalace|Počet|Celkem|Vytvořit nebo aktualizovat operace instalace|Žádné dimenze|
+|installation.patch|Opravit operace instalace|Počet|Celkem|Opravit operace instalace|Žádné dimenze|
+|installation.delete|Operace odstranění instalace|Počet|Celkem|Operace odstranění instalace|Žádné dimenze|
+|outgoing.allpns.success|Úspěšná oznámení|Počet|Celkem|Počet všech úspěšných oznámení|Žádné dimenze|
 |outgoing.allpns.invalidpayload|Chyby datové části|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože systém oznámení platformy vrátil chybu, která se týká chybné datové části|Žádné dimenze|
 |outgoing.allpns.pnserror|Chyby externího systému oznámení|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože při komunikaci se systémem oznámení platformy došlo k problému (nezahrnuje problémy s ověřováním)|Žádné dimenze|
 |outgoing.allpns.channelerror|Chyby kanálů|Počet|Celkem|Počet nabídek, které nebyly úspěšné, protože kanál nebyl platný nebo přidružený ke správné aplikaci, byl omezený, nebo jeho platnost vypršela|Žádné dimenze|
@@ -1076,7 +1076,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |outgoing.wns.wrongtoken|WNS – chyby autorizace (chybný token)|Počet|Celkem|Token se poskytl službě nabízených oznámení Windows je platný, ale pro jinou aplikaci (stav služby nabízených oznámení Windows: 403 Zakázáno). To může nastat, pokud je parametr ChannelURI v registraci přidružený k jiné aplikaci. Zkontrolujte, že klientská aplikace souvisí s stejnou aplikaci, jehož přihlašovací údaje jsou v centru oznámení.|Žádné dimenze|
 |outgoing.wns.invalidnotificationformat|WNS – neplatný formát oznámení|Počet|Celkem|Formát oznámení není platný (stav služby nabízených oznámení Windows: 400). Všimněte si, že služby nabízených oznámení Windows není odmítnout všechny neplatné datové části.|Žádné dimenze|
 |outgoing.wns.invalidnotificationsize|WNS – chyba neplatné velikosti oznámení|Počet|Celkem|Datová část oznámení je moc velká (stav služby nabízených oznámení Windows: 413).|Žádné dimenze|
-|outgoing.wns.channelthrottled|WNS – omezený kanál|Počet|Celkem|Oznámení byla zahozena, protože se omezuje parametr ChannelURI v registraci (hlavička odpovědi služby nabízených oznámení Windows: X - WNS - notificationstatus:).|Žádné dimenze|
+|outgoing.wns.channelthrottled|WNS – omezený kanál|Počet|Celkem|Oznámení byla zahozena, protože se omezuje parametr ChannelURI v registraci (hlavička odpovědi služby nabízených oznámení Windows: X-WNS-NotificationStatus:channelThrottled).|Žádné dimenze|
 |outgoing.wns.channeldisconnected|WNS – odpojený kanál|Počet|Celkem|Oznámení byla zahozena, protože se omezuje parametr ChannelURI v registraci (hlavička odpovědi služby nabízených oznámení Windows: X-WNS-DeviceConnectionStatus: odpojení).|Žádné dimenze|
 |outgoing.wns.dropped|WNS – vynechaná oznámení|Počet|Celkem|Oznámení se ignoruje, protože v registraci se omezuje parametr ChannelURI (X-WNS-NotificationStatus: dropped, ale ne X-WNS-DeviceConnectionStatus: disconnected).|Žádné dimenze|
 |outgoing.wns.pnserror|WNS – chyby|Počet|Celkem|Oznámení se nedoručilo kvůli chybám při komunikaci se Službou nabízených oznámení Windows.|Žádné dimenze|
@@ -1466,7 +1466,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Gen1Collections|Uvolnění paměti 1. generace|Počet|Celkem|Uvolnění paměti 1. generace|Instance|
 |Gen2Collections|Uvolnění paměti 2. generace|Počet|Celkem|Uvolnění paměti 2. generace|Instance|
 
-## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkce)
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (functions)
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
@@ -1476,7 +1476,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MemoryWorkingSet|Pracovní sada paměti|B|Průměr|Pracovní sada paměti|Instance|
 |AverageMemoryWorkingSet|Průměrná pracovní sada paměti|B|Průměr|Průměrná pracovní sada paměti|Instance|
 |FunctionExecutionUnits|Jednotky provádění funkcí|Počet|Celkem|Jednotky provádění funkcí|Instance|
-|Rozsah|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
+|FunctionExecutionCount|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
 |PrivateBytes|Privátní bajty|B|Průměr|Privátní bajty|Instance|
 |IoReadBytesPerSecond|V/V – přečtené bajty za sekundu|BytesPerSecond|Celkem|V/V – přečtené bajty za sekundu|Instance|
 |IoWriteBytesPerSecond|V/V – zapsané bajty za sekundu|BytesPerSecond|Celkem|V/V – zapsané bajty za sekundu|Instance|
@@ -1513,7 +1513,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |AverageMemoryWorkingSet|Průměrná pracovní sada paměti|B|Průměr|Průměrná pracovní sada paměti|Instance|
 |AverageResponseTime|Průměrná doba odezvy|Sekundy|Průměr|Průměrná doba odezvy|Instance|
 |FunctionExecutionUnits|Jednotky provádění funkcí|Počet|Celkem|Jednotky provádění funkcí|Instance|
-|Rozsah|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
+|FunctionExecutionCount|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
 |AppConnections|Připojení|Počet|Průměr|Připojení|Instance|
 |Popisovače|Počet popisovačů|Počet|Průměr|Počet popisovačů|Instance|
 |Vlákna|Počet vláken|Počet|Průměr|Počet vláken|Instance|
@@ -1573,3 +1573,4 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 * [Přečtěte si informace o metriky ve službě Azure Monitor](../../azure-monitor/platform/data-collection.md)
 * [Vytváření upozornění na metriky](../../azure-monitor/platform/alerts-overview.md)
 * [Export metrik úložiště, Centrum událostí a Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
+

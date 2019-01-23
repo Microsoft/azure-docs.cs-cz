@@ -7,28 +7,28 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 6ed8bae2e1571722f7a9a0030a48e64c4f7fbc60
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: ''
+ms.openlocfilehash: 90ad5306c1594381409ed2bcbe767e2ffd055531
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106660"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473958"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů Azure Monitor
 | Partneři |  |  |
 | --- | --- | --- |
-| [**AlertLogic**<br/>![partnerské Logo][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![partnerské Logo][appdynamics-logo]][appdynamics-anchor] | [**ArcSight**][arcsight-anchor] |
+| [**AlertLogic**<br/>![Partner Logo][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![Partner Logo][appdynamics-logo]][appdynamics-anchor] | [**ArcSight**][arcsight-anchor] |
 | [**Od společnosti Atlassian**<br/>![partnerské Logo][atlassian-logo]][atlassian-anchor] | [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![partnerské Logo][circonus-logo]][circonus-anchor] |
-| [**CloudHealth**<br/>![partnerské Logo][cloudhealth-logo]][cloudhealth-anchor] | [**CloudMonix** <br/> ![partnerské Logo][cloudmonix-logo]][cloudmonix-anchor] | [**Služby Datadog**<br/>![partnerské Logo][datadog-logo]][datadog-anchor] |
-| [**Dynatrace** <br/> ![partnerské Logo][dynatrace-logo]][dynatrace-anchor] | [**Elastické**<br/>![partnerské Logo][elastic-logo]][elastic-anchor] | [**Grafana**<br/>![partnerské Logo][grafana-logo]][grafana-anchor] |
-| [**Influxdata**<br/>![partnerské Logo][influxdata-logo]][influxdata-anchor] | [**Monitorování Logic**<br/>![partnerské Logo][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![partnerské Logo][moogsoft-logo]][moogsoft-anchor] |
-| [**NewRelic**<br/>![partnerské Logo][newrelic-logo]][newrelic-anchor] | [**Použitím OpsGenie**<br/>![partnerské Logo][opsgenie-logo]][opsgenie-anchor] | [**PagerDuty**<br/>![partnerské Logo][pagerduty-logo]][pagerduty-anchor] |
-| [**QRadar**<br/>![partnerské Logo][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![partnerské Logo][sciencelogic-logo]][sciencelogic-anchor] | [**SignalFx**<br/>![partnerské Logo][signalfx-logo]<br/>][signalfx-anchor] |
-| [**SIGNL4**<br/>![partnerské Logo][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [**Splunk** <br/> ![partnerské Logo][splunk-logo]][splunk-anchor] |
-| [**Logika sumo**<br/>![partnerské Logo][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![partnerské Logo][turbonomic-logo]][turbonomic-anchor] |
+| [**CloudHealth**<br/>![Partner Logo][cloudhealth-logo]][cloudhealth-anchor] | [**CloudMonix** <br/>![Partner Logo][cloudmonix-logo]][cloudmonix-anchor] | [**Služby Datadog**<br/>![partnerské Logo][datadog-logo]][datadog-anchor] |
+| [**Dynatrace** <br/> ![partnerské Logo][dynatrace-logo]][dynatrace-anchor] | [**Elastické**<br/>![partnerské Logo][elastic-logo]][elastic-anchor] | [**Grafana**<br/>![Partner Logo][grafana-logo]][grafana-anchor] |
+| [**Influxdata**<br/>![partnerské Logo][influxdata-logo]][influxdata-anchor] | [**Monitorování Logic**<br/>![partnerské Logo][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![Partner Logo][moogsoft-logo]][moogsoft-anchor] |
+| [**NewRelic**<br/>![Partner Logo][newrelic-logo]][newrelic-anchor] | [**OpsGenie**<br/>![Partner Logo][opsgenie-logo]][opsgenie-anchor] | [**PagerDuty**<br/>![Partner Logo][pagerduty-logo]][pagerduty-anchor] |
+| [**QRadar**<br/>![Partner Logo][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![Partner Logo][sciencelogic-logo]][sciencelogic-anchor] | [**SignalFx**<br/>![Partner Logo][signalfx-logo]<br/>][signalfx-anchor] |
+| [**SIGNL4**<br/>![partnerské Logo][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [**Splunk** <br/>![Partner Logo][splunk-logo]][splunk-anchor] |
+| [**Sumo Logic**<br/>![Partner Logo][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![partnerské Logo][turbonomic-logo]][turbonomic-anchor] |
 
-## <a name="alertlogic-log-manager"></a>Služba Log Manager AlertLogic
+## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
 Alert Logic Log Manager shromažďuje protokoly platformy Azure pro analýzu zabezpečení a uchovávání dat, aplikací a virtuálních počítačů. Shromáždí se také protokoly aktivit Azure prostřednictvím rozhraní API služby Azure Monitor. Tyto informace slouží k detekci malfeasance a musí splňovat požadavky na dodržování předpisů.
 
 [Přejděte k dokumentaci.][alertlogic-doc]
@@ -43,7 +43,7 @@ ArcSight má inteligentní konektor pro monitorování Azure event hubs.
 
 [Víc se uč.][arcsight-doc]
 
-## <a name="atlassian-jira"></a>Od společnosti Atlassian JIRA
+## <a name="atlassian-jira"></a>Atlassian JIRA
 Azure Monitor výstrah můžete vytvářet lístky JIRA.
 
 [Přejděte k dokumentaci.][atlassian-doc]
@@ -173,18 +173,18 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
 [appdynamics-anchor]: #appdynamics "AppDynamics"
 [arcsight-anchor]: #microfocus-arcsight "ArcSight"
-[atlassian-anchor]: #atlassian-jira "Od společnosti Atlassian"
+[atlassian-anchor]: #atlassian-jira "Atlassian"
 [botmetric-anchor]: #botmetric "Botmetric"
 [circonus-anchor]: #circonus "Circonus"
 [cloudhealth-anchor]: #cloudhealth "CloudHealth"
 [cloudmonix-anchor]: #cloudmonix "CloudMonix"
-[datadog-anchor]: #datadog "Služby Datadog"
+[datadog-anchor]: #datadog "Datadog"
 [dynatrace-anchor]: #dynatrace "Dynatrace"
 [elastic-anchor]: #elastic "Elastická databáze"
 [newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
 [influxdata-anchor]: #Influxdata "Influxdata"
-[logicmonitor-anchor]: #logic-monitor "Monitorování Logic"
+[logicmonitor-anchor]: #logic-monitor "Logic Monitor"
 [moogsoft-anchor]: #moogsoft "Moogsoft"
 [opsgenie-anchor]: #opsgenie "OpsGenie"
 [pagerduty-anchor]: #pagerduty "PagerDuty"
@@ -194,7 +194,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 [signl4-anchor]: #signl4 "SIGNL4"
 [solarwinds-anchor]: #solarwinds "SolarWinds"
 [splunk-anchor]: #azure-monitor-add-on-for-splunk "Splunk"
-[sumologic-anchor]: #sumo-logic "Sumo logiky"
+[sumologic-anchor]: #sumo-logic "Sumo Logic"
 [turbonomic-anchor]: #turbonomic "Turbonomic"
 
 <!--Icon references-->
@@ -249,3 +249,4 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Dokumentace ke službě Splunk."
 [sumologic-doc]: https://www.sumologic.com/azure "Dokumentace ke službě SumoLogic."
 [turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Turbonomic úvod."
+

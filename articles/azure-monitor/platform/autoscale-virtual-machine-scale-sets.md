@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: c7b4da7292600f3d477d5c16263660eb6d4d4226
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.subservice: autoscale
+ms.openlocfilehash: 074f090d295ef5eafad48e57f68dad019bf7eab9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051268"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470031"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru
 Můžete škálování na méně instancí a škálování Škálovací sady virtuálních počítačů na základě výkonu metriky prahových hodnot, podle opakovaného plánu nebo podle konkrétního data. Můžete také nakonfigurovat emailová a webhooková oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty pomocí šablony Resource Manageru v sadě škálování virtuálního počítače.

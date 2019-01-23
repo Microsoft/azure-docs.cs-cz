@@ -1,10 +1,10 @@
 ---
-title: 'Synchronizace Azure AD Connect: rozšíření adresáře | Dokumentace Microsoftu'
+title: 'Synchronizace Azure AD Connect: Rozšíření adresáře | Dokumentace Microsoftu'
 description: Toto téma popisuje funkce rozšíření adresáře ve službě Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b6c5f55a575605eef3a280de4f973d9b2d0a4ace
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e96a7d88a2e30bbedd6c57f9a72dd92f63586dd1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288301"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476899"
 ---
-# <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizace Azure AD Connect: rozšíření adresáře
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizace Azure AD Connect: Rozšíření adresáře
 Rozšíření adresáře můžete použít k rozšíření schématu do služby Azure Active Directory (Azure AD) pomocí vlastních atributů z místní služby Active Directory. Tato funkce umožňuje vytváření obchodních aplikací prostřednictvím atributy, které budete nadále spravovat místní. Tyto atributy mohou být spotřebovány prostřednictvím [rozšíření adresáře Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) nebo [Microsoft Graphu](https://developer.microsoft.com/graph/). Dostupné atributy lze zobrazit pomocí [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) a [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)v uvedeném pořadí.
 
 V současné době žádné úlohy Office 365 využívá tyto atributy.
@@ -37,8 +37,8 @@ Můžete nakonfigurovat další atributy, které se mají synchronizovat v cest�
 Instalace zobrazuje následující atributy, které jsou platné kandidáty:
 
 * Typy uživatelů a skupin objektů
-* Jednohodnotové atributy: řetězec, logická hodnota, celé číslo, binární soubor
-* Více jednohodnotových atributů: řetězec, binární soubor
+* Jednohodnotové atributy: Řetězec, logická hodnota, celé číslo, binární soubor
+* Více jednohodnotových atributů: Řetězec, binární soubor
 
 
 >[!NOTE]
@@ -63,7 +63,7 @@ Nebo můžete zadat dotaz na atributy prostřednictvím rozhraní Microsoft Grap
 >[!NOTE]
 > Budete muset požádat o atributy, které mají být vráceny. Explicitně vybrat atributy takto: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select = extension_9d98ed114c4840d298fad781915f27e4_employeeID extension_9d98ed114c4840d298fad781915f27e4_division. 
 >
-> Další informace najdete v tématu [Microsoft Graph: použijte parametry dotazu](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
+> Další informace najdete v tématu [Microsoft Graph: Použití parametrů dotazu](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [synchronizace Azure AD Connect](how-to-connect-sync-whatis.md) konfigurace.

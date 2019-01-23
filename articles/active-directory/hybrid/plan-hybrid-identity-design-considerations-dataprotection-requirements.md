@@ -4,7 +4,7 @@ description: Při plánování řešení hybridní identity, identifikujte poža
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 40dc4baa-fe82-4ab6-a3e4-f36fa9dcd0df
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: c317c2bab26a44fc78e42fe440744bd26add1f2e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 34c284f3fdd78d8b2f56ec7c36e139f9ac9d78bf
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315228"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473499"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Plán pro zlepšení zabezpečení dat prostřednictvím řešení využívá silné identity
 Prvním krokem při ochraně dat je identifikovat, kdo má přístup k těmto datům. Navíc musíte mít řešení identit, které můžete integrovat do vašeho systému pro poskytování možností ověřování a autorizace. Ověřování a autorizace se často zaměňuje za číslo mezi sebou a nesprávně pochopeny, jejich role. Ve skutečnosti jsou různé, jak je znázorněno na následujícím obrázku:

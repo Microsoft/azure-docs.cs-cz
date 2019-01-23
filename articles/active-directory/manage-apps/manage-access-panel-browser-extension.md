@@ -4,7 +4,7 @@ description: Jak používat zásady skupiny nasadit doplněk aplikace Internet E
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7ccaf272a79268ecd781821593a6041d5653a39b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715036"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471884"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Řešení potíží s rozšíření přístupového panelu pro aplikaci Internet Explorer
 Tento článek pomáhá řešit následující problémy:
@@ -28,7 +28,7 @@ Tento článek pomáhá řešit následující problémy:
 * Budete moci přistupovat k vaší aplikace na portálu Moje aplikace při použití aplikace Internet Explorer.
 * Zobrazí se zpráva "Instalace softwaru" i když jste již nainstalovali software.
 
-Pokud jste správcem, viz také: [jak pro aplikaci Internet Explorer pomocí zásad skupiny nasadit rozšíření přístupového panelu](deploy-access-panel-browser-extension.md)
+Pokud jste správcem, viz také: [Jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny](deploy-access-panel-browser-extension.md)
 
 ## <a name="run-the-diagnostic-tool"></a>Spusťte nástroj pro diagnostiku
 Stažením a instalací diagnostický nástroj přístupového panelu můžete diagnostikovat potíže s instalací s rozšíření přístupového panelu:
