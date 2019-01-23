@@ -4,7 +4,7 @@ description: Ukazuje, jak nastavit prostředí hybridní identity pomocí synchr
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ed8b2ec0c31adebac72e105ecfc4c5ec28e7b74b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164690"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471867"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Kurz:  Integrace jedné doménové struktury AD s využitím synchronizace hodnot hash hesel (PHS)
 
@@ -205,8 +205,8 @@ Nyní je čas ke stažení a instalaci Azure AD Connect.  Po jeho instalaci prov
 3. Na uvítací obrazovce zaškrtněte políčko, kterým odsouhlasíte licenční podmínky, a klikněte na **Pokračovat**.  
 4. Na obrazovce expresního nastavení klikněte na **Použít expresní nastavení**.</br>  
 ![Vytvoření](media/tutorial-password-hash-sync/express1.png)</br>
-5. Na obrazovce připojení ke službě Azure AD zadejte uživatelské jméno a heslo globálního správce pro službu Azure AD. Klikněte na tlačítko **Další**.  
-6. Na obrazovce Připojení ke službě AD DS zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Klikněte na tlačítko **Další**.  
+5. Na obrazovce připojení ke službě Azure AD zadejte uživatelské jméno a heslo globálního správce pro službu Azure AD. Klikněte na **Další**.  
+6. Na obrazovce Připojení ke službě AD DS zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Klikněte na **Další**.  
 7. Na obrazovce Připraveno ke konfiguraci klikněte na **Instalovat**.
 8. Až instalace skončí, klikněte na **Konec**.
 9. Po dokončení instalace se odhlaste a znovu se přihlaste teprve pak použijte Synchronization Service Manager nebo Synchronization Rule Editor.

@@ -4,7 +4,7 @@ description: Toto téma popisuje způsob použití existující databáze ADSync
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/30/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bbf8dc4ccbd16f2157e65773b01fb42587fbfe9d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a03e04b9ab249b5bb8ed43eecbc18d3a24374659
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417476"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473127"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace Azure AD Connect pomocí existující databáze ADSync
 Azure AD Connect vyžaduje databázi SQL serveru ukládat data. Můžete buď použít výchozí nastavení, které SQL Server 2012 Express LocalDB nainstalované pomocí služby Azure AD Connect, nebo použijte vlastní plnou verzi SQL. Dříve při instalaci Azure AD Connect vytvoří nová databáze s názvem ADSync byla vždy. S Azure AD Connect verze 1.1.613.0 (nebo po) máte možnost nainstalovat Azure AD Connect kliknutím na existující databáze ADSync.
@@ -100,6 +100,6 @@ Následující tabulku použijte k ověření dalších kroků, které jsou pož
 ## <a name="next-steps"></a>Další postup
 
 - Nyní, když máte nainstalovanou službu Azure AD Connect, můžete si [ověřit instalaci a přiřadit licence](how-to-connect-post-installation.md).
-- Podrobněji se seznamte s těmito funkcemi, které byly povoleny v rámci instalace: [Prevence náhodného smazání](how-to-connect-sync-feature-prevent-accidental-deletes.md) a [Azure AD Connect Health](how-to-connect-health-sync.md).
+- Další informace o těchto funkcích, které byly povoleny v rámci instalace: [Prevence náhodného odstranění](how-to-connect-sync-feature-prevent-accidental-deletes.md) a [Azure AD Connect Health](how-to-connect-health-sync.md).
 - Zjistěte více o těchto běžných tématech: [plánovač a jak aktivovat synchronizaci](how-to-connect-sync-feature-scheduler.md).
 - Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

@@ -2,17 +2,17 @@
 title: Koncepty služby Azure Event Grid
 description: Popisuje Azure Event Grid a jeho koncepty. Definuje několika klíčovými komponentami služby Event Grid.
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: tomfitz
-ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.author: spelluru
+ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747554"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474349"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty ve službě Azure Event Grid
 
@@ -62,7 +62,7 @@ Informace o tom, jak aktuální event grid předplatných najdete v tématu [dot
 
 [Rozšíření služby Event Grid](/cli/azure/azure-cli-extensions-list) pro rozhraní příkazového řádku Azure vám umožní nastavit vypršení datum vytvoření odběru událostí. Pokud používáte rozhraní REST API, použijte `api-version=2018-09-15-preview`
 
-Odběr událostí je automaticky vypršela po tomto datu. Nastavit dobu platnosti pro odběry událostí, které jsou vyžadovány pouze po omezenou dobu a nechcete, aby se starat o vyčištění těchto předplatných. Při vytváření odběru událostí pro scénář testování, můžete chtít nastavit vypršení. 
+Po tomto datu automaticky vyprší platnost odběru událostí. Nastavit dobu platnosti pro odběry událostí, které jsou vyžadovány pouze po omezenou dobu a nechcete, aby se starat o vyčištění těchto předplatných. Při vytváření odběru událostí pro scénář testování, můžete chtít nastavit vypršení. 
 
 Příkladem vypršení nastavení, najdete v části [přihlásit k odběru s rozšířené filtry](how-to-filter-events.md#subscribe-with-advanced-filters).
 

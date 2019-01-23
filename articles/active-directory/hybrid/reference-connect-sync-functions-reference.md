@@ -4,7 +4,7 @@ description: Odkaz na výrazů deklarativního zřizování ve službě Azure AD
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cad9cec83ac5cc75ba5b4e5fc395e7f68f7d2770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157475"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471172"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizace Azure AD Connect: Reference k funkcím
 Ve službě Azure AD Connect funkce se používají k práci s hodnotu atributu během synchronizace.  
@@ -57,14 +57,14 @@ Funkce s typy **mvbin**, **mvstr**, a **mvref** funguje jenom u více jednohodno
 | [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
 | [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
 | [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
-| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[certThumbprint](#certthumbprint) | |
+| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
 [ CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Převod** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
 | [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#StringFromGuid) |[StringFromSid](#stringfromsid) | |
 | **Datum / čas** | | | | |
-| [Funkce DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[formatDateTime](#formatdatetime) |[Nyní](#now) | |
+| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Nyní](#now) | |
 | [NumFromDate](#numfromdate) | | | | |
 | **Adresář** | | | | |
 | [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
@@ -77,13 +77,13 @@ Funkce s typy **mvbin**, **mvstr**, a **mvref** funguje jenom u více jednohodno
 | **Více Vážíme si toho** | | | | |
 | [Obsahuje](#contains) |[Počet](#count) |[Položka](#item) |[ItemOrNull](#itemornull) | |
 | [Spojení](#join) |[Removeduplicates –](#removeduplicates) |[rozdělení](#split) | | |
-| **Tok programu** | | | | |
+| **Program Flow** | | | | |
 | [Chyba](#error) |[IIF](#iif) |[Výběr](#select) |[Přepínač](#switch) | |
 | [kde](#where) |[s](#with) | | | |
 | **Text** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [doleva](#left) |[Délka](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [padLeft](#padleft) |[PadRight –](#padright) |[PCase](#pcase) |[nahradit](#replace) | |
+| [PadLeft](#padleft) |[PadRight –](#padright) |[PCase](#pcase) |[nahradit](#replace) | |
 | [ReplaceChars](#replacechars) |[doprava](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Aplikace Word](#word) | | | |
 
@@ -431,7 +431,7 @@ Převede hodnotu pole celých čísel na její ekvivalentní řetězcové vyjád
 
 **Příklad:**  
 `ConvertToBase64("Hello world!")`  
-Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
+Returns "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 - - -
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
@@ -446,7 +446,7 @@ Výstupní formát této funkce používá Azure Active Directory jako formát r
 
 **Příklad:**  
 `ConvertToUTF8Hex("Hello world!")`  
-Vrátí 48656C6C6F20776F726C6421
+Returns 48656C6C6F20776F726C6421
 
 - - -
 ### <a name="count"></a>Počet
@@ -504,10 +504,10 @@ Vrátí hodnotu data obsahující datum, do které byl přidán zadaný časový
   * q čtvrtletí
   * m měsíc
   * y den roku
-  * d den
+  * d Day
   * w den v týdnu
   * TT týden
-  * h hodinu
+  * h Hour
   * n minutách
   * s druhou
 * Hodnota: Počet jednotek, které chcete přidat. Může být (Chcete-li získat data v budoucnosti) kladná nebo záporná (Chcete-li získat data v minulosti).
@@ -988,7 +988,7 @@ PadLeft funkce vlevo-dotyková zařízení a řetězce na určenou délku pomoc�
 **Poznámky:**
 
 * Pokud délka řetězce je menší než délka, pak padCharacter opakovaně připojí do začátku (vlevo) řetězce dokud má délku rovna délce.
-* padCharacter může být znak mezery, ale nemůže být hodnota null.
+* PadCharacter může být znak mezery, ale nemůže být hodnota null.
 * Pokud délka řetězce je roven nebo větší než délka, řetězec je vrácen beze změny.
 * Pokud řetězec má délku větší než nebo rovna délce, vrátí se stejný řetězec jako řetězec.
 * Pokud délka řetězce je menší než délka, je vrácena nový řetězec má požadovanou délku obsahující řetězce, aby bylo vytvořeno padCharacter.
@@ -1222,7 +1222,7 @@ Přepínač funkce se používá k vrácení jednu hodnotu podle vyhodnocených 
 **Syntaxe:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* výraz: Varianty výraz, který chcete vyhodnotit.
+* expr: Varianty výraz, který chcete vyhodnotit.
 * Hodnota: Hodnota má být vrácena, pokud je odpovídající výraz hodnotu True.
 
 **Poznámky:**  

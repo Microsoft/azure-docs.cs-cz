@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: b37f8c53e9528919da3aaf0acf66376876bd64b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 3f893318c3f39f6faa4806cd7c1736710e032ca9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470876"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474706"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure CLI
 
@@ -226,7 +226,7 @@ az vm availability-set create \
     --name myAvailabilitySet
 ```
 
-Teď můžete vytvořit virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří tři virtuální počítače a vygeneruje klíče SSH, pokud ještě neexistují:
+Teď můžete vytvořit virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří tři virtuální počítače a vygeneruje klíče SSH, pokud ještě neexistují:
 
 ```bash
 for i in `seq 1 3`; do
@@ -314,7 +314,7 @@ az network nic ip-config address-pool add \
 Pokud chcete ověřit připojení virtuální síťové karty k fondu back-end adres, znovu použijte příkaz [az network lb address-pool show](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_show) z předchozího kroku.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili nástroj pro vyrovnávání zatížení a připojili jste k němu virtuální počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

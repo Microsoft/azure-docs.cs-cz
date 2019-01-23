@@ -3,7 +3,7 @@ title: Přidat místní aplikace – Proxy aplikace ve službě Azure Active Dir
 description: Azure Active Directory (Azure AD) obsahuje Proxy aplikace služby, který umožňuje uživatelům přistupovat k místním aplikacím, když se přihlásíte pomocí svého účtu Azure AD. V tomto kurzu se dozvíte, jak připravit prostředí pro použití se službou Proxy aplikací a potom pomocí webu Azure portal přidat místní aplikace do svého tenanta Azure AD.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 926a339bc8214c989da4ef934ae41012eea58d1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0ea948760c7639f24031a0177df0d42f9706d006
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120729"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471208"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -81,7 +81,7 @@ Otevřít následující porty **odchozí** provoz.
 
 Pokud vaše brána firewall vynucuje přenos v závislosti na zdroji uživatelů, taky otevřete porty 80 a 443 pro přenosy služby Windows, na kterých běží jako síťové služby.
 
-Pokud už používáte Proxy aplikací, bude pravděpodobně starší verzi nainstalovaný konektor.  V tomto kurzu nainstalujte nejnovější verzi konektoru. Verze starší než 1.5.132.0 také vyžadovat že otevřít následující porty: 5671, 8080, 9350 9090-9091 9352, 10100 – 10120. 
+Pokud už používáte Proxy aplikací, bude pravděpodobně starší verzi nainstalovaný konektor.  V tomto kurzu nainstalujte nejnovější verzi konektoru. Verze starší než 1.5.132.0 také vyžadovat že otevřít následující porty: 5671, 8080, 9090-9091, 9350, 9352, 10100–10120. 
 
 ### <a name="allow-access-to-urls"></a>Povolit přístup k adresám URL
 
@@ -89,7 +89,7 @@ Povolit přístup k následujícím adresám URL:
 
 | zprostředkovatele identity | Jak se používá |
 | --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektoru a cloudovou službou Proxy aplikací |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikace mezi konektoru a cloudovou službou Proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Tyto adresy URL Azure používá k ověření certifikátů |
 | login.windows.net<br>login.microsoftonline.com | Konektor používá tyto adresy URL během procesu registrace. |
 

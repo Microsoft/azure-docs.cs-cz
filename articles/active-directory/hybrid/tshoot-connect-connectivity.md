@@ -4,7 +4,7 @@ description: Vysvětluje, jak řešit problémy s připojením u služby Azure A
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d5eee525c6f071840d186cb6bd54faf9bf2787b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 85c60cf25cd00826df6b48ed6714a646fa44a962
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310663"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474876"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením u služby Azure AD Connect
 Tento článek vysvětluje, jak funguje připojení mezi Azure AD Connect a službou Azure AD a jak řešit problémy s připojením. Tyto problémy jsou pravděpodobně se zobrazí v prostředí s proxy serverem.
@@ -75,7 +75,7 @@ Tato chyba se zobrazí, pokud koncový bod **https://secure.aadcdn.microsoftonli
 
 ### <a name="the-password-cannot-be-verified"></a>Heslo nelze ověřit.
 Pokud Průvodce instalací byl úspěšný při připojování ke službě Azure AD, ale heslo samotné nelze ověřit, že se zobrazí tato chyba:  
-![BadPassword](./media/tshoot-connect-connectivity/badpassword.png)
+![badpassword](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Dočasné heslo je heslo a musí být změněno? Je ve skutečnosti správné heslo? Zkuste se přihlásit k https://login.microsoftonline.com (na jiném počítači než na serveru služby Azure AD Connect) a ověřte účet je použitelná.
 
@@ -116,7 +116,7 @@ Tady je výpis z skutečný proxy protokolu a stránce Průvodce instalací z kd
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |Připojte se: / /*bba800 ukotvení*. microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
@@ -126,13 +126,13 @@ Tady je výpis z skutečný proxy protokolu a stránce Průvodce instalací z kd
 | Čas | zprostředkovatele identity |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |Připojte se: / /*bba800 ukotvení*. microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |Připojte se: / /*bba800 ukotvení*. microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
@@ -144,7 +144,7 @@ Tady je výpis z skutečný proxy protokolu a stránce Průvodce instalací z kd
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
 | 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
-| 1/11/2016 8:49 |Připojte se: / /*bba800 ukotvení*. microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Chyby ověřování
 Tento oddíl řeší chyby, které mohou být vráceny z knihovny ADAL (knihovny pro ověřování použít Azure AD Connect) a prostředí PowerShell. Chyba je vysvětleno by mělo pomoci vám v dalších krocích.

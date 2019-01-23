@@ -4,7 +4,7 @@ description: Zapněte Proxy aplikace na webu Azure Portal a nainstalujte konekto
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: d382a71de34e6c1527d810b0576e518b9101cf7d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6d370f9fb7fc67c9df5e08a06de38db8e97c6fb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132750"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471901"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikací a Qlik Sense 
 Azure Active Directory Application Proxy a Qlik Sense uzavřeli partnerství s společně k zajištění, že budete moct snadno použít k poskytnutí vzdáleného přístupu pro vaše nasazení Qlik Sense Proxy aplikací.  
@@ -51,15 +51,15 @@ Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější n
 ### <a name="application-2"></a>Aplikace #2: 
 Postupujte stejným způsobem jako u aplikace č. 1, s následujícími výjimkami: 
 
-**Krok #5**: interní adresa URL by nyní měly být adresy URL QlikSense s port ověřování v aplikaci použít. Výchozí hodnota je **4244** protokoly HTTPS a 4248 pro protokol HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br>**Krok #10:** nemáte nastavit jednotné přihlašování a nechte **jednotné přihlašování zakázáno** 
-
+**Krok #5**: Interní adresa URL by měla nyní být adresa URL QlikSense s port ověřování v aplikaci použít. Výchozí hodnota je **4244** protokoly HTTPS a 4248 pro protokol HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br> 
+**Krok #10:** Nepoužívejte nastavit jednotné přihlašování a nechte **jednotné přihlašování zakázáno**
  
  
 ## <a name="testing"></a>Testování 
 Vaše aplikace je teď připravený k testování. Přístup k externí adresu URL jste použili k publikování QlikSense v aplikaci č. 1 a přihlášení jako uživatel přiřazený na obě aplikace.  
 
 ## <a name="additional-references"></a>Další odkazy
-Další informace o publikování Qlik Sense přes Proxy aplikací, najdete v článku komunity Qlik: [Azure AD pomocí integrovaného ověřování Windows s použitím omezeného delegování protokolu Kerberos s Qlik Sense](https://community.qlik.com/docs/DOC-20183).
+Další informace o publikování Qlik Sense přes Proxy aplikací najdete v článku Qlik komunity: [Azure AD pomocí integrovaného ověřování Windows s použitím omezeného delegování protokolu Kerberos s Qlik Sense](https://community.qlik.com/docs/DOC-20183).
 
 ## <a name="next-steps"></a>Další postup
 

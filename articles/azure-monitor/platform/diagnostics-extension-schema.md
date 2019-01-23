@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 064c1b8100e165627d5227b9f24b87aefae2e769
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790754"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471646"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Verze rozšíření schématu konfigurace Azure Diagnostics a historie
 Tato stránka indexy verze schématu rozšíření Azure Diagnostics se dodávají jako součást sady Microsoft Azure SDK.  
@@ -210,3 +210,4 @@ Pokud provádíte upgrade projektu z Azure SDK 2.4 pro Azure SDK 2.5 nebo nověj
 * **Diagnostika pro aplikace cloud service se dá nakonfigurovat jenom na úrovni role, ne na úrovni instance.**
 * **Pokaždé, když nasadíte aplikaci, konfiguraci diagnostiky se aktualizuje** – to může způsobit problémy s paritou, pokud změníte konfiguraci diagnostiky z Průzkumníka serveru a poté znovu proveďte nasazení vaší aplikace.
 * **V Azure SDK 2.5 nebo novější, výpisy stavu systému jsou nakonfigurované v konfiguračním souboru diagnostiky není v kódu** – Pokud máte výpisy při selhání nakonfigurovaný v kódu, budete muset ručně převést konfiguraci z kódu do konfiguračního souboru, protože výpisy stavu systému se nepřenesou během migrace do Azure SDK 2.6.
+

@@ -3,19 +3,19 @@ title: Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server. |
 description: Tento dokument popisuje, jak přesunout databázi Azure AD Connect z místního serveru SQL Server Express na vzdálený SQL Server.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cbc86405225cca0d5144b48b113cf41607ce16f4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8f9d530531d5f72e92bdb7362879199ce6a4853c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434116"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474842"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server 
 
@@ -59,7 +59,7 @@ Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdále
 ![Uvítání](./media/how-to-connect-install-move-db/db7.png)
  
  
-16. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na tlačítko **Další**.
+16. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
 ![Uvítání](./media/how-to-connect-install-move-db/db8.png)
  
  

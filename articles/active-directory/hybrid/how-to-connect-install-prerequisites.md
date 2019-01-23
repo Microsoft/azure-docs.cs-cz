@@ -4,7 +4,7 @@ description: Toto téma popisuje požadavky a požadavky na hardware pro Azure A
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a36868e5bab64883036e0f93352bea5341ff7fe7
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: eb5ad49a26631ca363737406f54b4c794e01ebda
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384041"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472836"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -79,7 +79,7 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
   * Pokud používáte Microsoft cloudu v Německu nebo v cloudu Microsoft Azure Government, přejděte na téma [služby synchronizace Azure AD Connect instance aspekty](reference-connect-instances.md) pro adresy URL.
 * Azure AD Connect (verze 1.1.614.0 a po provedení) ve výchozím nastavení používá TLS 1.2 pro šifrování komunikace mezi synchronizačního modulu a Azure AD. Pokud není k dispozici na příslušný operační systém TLS 1.2, Azure AD Connect postupně vrací zpět ke starším protokolům (TLS 1.1 a TLS 1.0).
 * Starší než verze 1.1.614.0 Azure AD Connect ve výchozím nastavení používá protokol TLS 1.0 pro šifrování komunikace mezi synchronizačního modulu a Azure AD. Chcete-li změnit na TLS 1.2, postupujte podle kroků v [povolení protokolu TLS 1.2 pro Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* Pokud používáte odchozího proxy serveru pro připojení k Internetu, následující nastavení **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** soubor musí být přidán pro Průvodce instalací a Azure AD Synchronizace bude moct připojit k Internetu a Azure AD Connect. Tento text je třeba zadat v dolní části souboru. V tomto kódu &lt;PROXYADRESS&gt; představuje skutečné proxy IP adresu nebo název hostitele.
+* Pokud používáte odchozího proxy serveru pro připojení k Internetu, následující nastavení **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** soubor musí být přidán pro Průvodce instalací a Azure AD Synchronizace bude moct připojit k Internetu a Azure AD Connect. Tento text je třeba zadat v dolní části souboru. V tomto kódu &lt;PROXYADDRESS&gt; představuje skutečné proxy IP adresu nebo název hostitele.
 
 ```
     <system.net>
@@ -120,7 +120,7 @@ Další informace najdete v případě, že máte problémy s připojením, [ře
 Azure AD Connect, závisí na Microsoft PowerShell a rozhraní .NET Framework 4.5.1. Je nutné tuto verzi nebo novější verze na serveru nainstalovaný. V závislosti na vaší verzi Windows serveru postupujte takto:
 
 * Windows Server 2012R2
-  * Ve výchozím nastavení je nainstalovaný Microsoft PowerShell. Nemusíte nic dělat.
+  * Ve výchozím nastavení je nainstalovaný Microsoft PowerShell. Nevyžaduje se žádná akce.
   * Rozhraní .NET framework 4.5.1 a novějších verzí se nabízejí prostřednictvím služby Windows Update. Ujistěte se, že máte nainstalované nejnovější aktualizace na Windows Server v Ovládacích panelech.
 * Windows Server 2008 R2 a Windows Server 2012
   * Je k dispozici v nejnovější verzi Powershellu Microsoft **Windows Management Framework 4.0**, která je dostupná na [Microsoft Download Center](https://www.microsoft.com/downloads).
@@ -184,7 +184,7 @@ Následuje seznam komponent, které Azure AD Connect nainstaluje na server, kde 
 * Azure AD Connect Health
 * Nástroje příkazového řádku Microsoft SQL Server 2012
 * Microsoft SQL Server 2012 Express LocalDB
-* Nativní klient systému Microsoft SQL Server 2012
+* Microsoft SQL Server 2012 Native Client
 * Balíček Microsoft Visual C++ 2013 automatické distribuce signatur
 
 ## <a name="hardware-requirements-for-azure-ad-connect"></a>Požadavky na hardware pro Azure AD Connect

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
-ms.component: ''
-ms.openlocfilehash: 72c50871f0d339d5d8f173a50e03aefc72fdcb36
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: d3bd4d80f167a496c9b980891f31d30bc86a0cb2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585256"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473755"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Úvodní ukázky v Azure Powershellu pro monitorování
 Tento článek ukazuje ukázkové příkazy prostředí PowerShell můžete získat přístup k funkcím Azure Monitor.
@@ -145,7 +145,7 @@ Následující tabulka popisuje parametry a hodnoty použité k vytvoření upoz
 | Název |simpletestdiskwrite |
 | Umístění tohoto upozornění pravidla |USA – východ |
 | ResourceGroup |montest |
-| TargetResourceId |/subscriptions/S1/resourceGroups/montest/providers/Microsoft.COMPUTE/virtualMachines/testconfig |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | MetricName výstrahy, která je vytvořena |\PhysicalDisk (využití _celkem) \Disk zápisů za sekundu. Zobrazit `Get-MetricDefinitions` rutiny o tom, jak získat přesné názvy metrik |
 | – Operátor |GreaterThan |
 | Prahová hodnota (počet za sekundu za pro tuto metriku) |1 |
@@ -387,3 +387,4 @@ Všimněte si, že má vlastnost ID pracovního prostoru *ID prostředku* pracov
 ```
 
 Tyto příkazy mohou být kombinovány pro odesílání dat do více cílů.
+

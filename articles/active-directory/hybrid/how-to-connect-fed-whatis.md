@@ -4,7 +4,7 @@ description: Tato stránka je centrální umístění pro veškerou dokumentaci 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: f9107cf5-0131-499a-9edf-616bf3afef4d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 214dd95bb277053794656e1ba3dd148c085688ce
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3462c61bbd7c9972248eb1126763782f5fbc7e84
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900440"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472284"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect a federace
 Konfigurace federace se službou Azure Active Directory (Azure AD) Connect umožňuje místní služby Active Directory Federation Services (AD FS) a Azure AD. S federací přihlášení můžete povolit uživatelům umožní přihlásit k Azure AD službám pomocí jejich místních hesel – a v podnikové síti, aniž byste museli znovu zadávat hesla. Pomocí možnosti federační službou AD FS, můžete nasadit nové instalace služby AD FS, nebo můžete zadat existující instalace ve farmě systému Windows Server 2012 R2.
@@ -50,7 +50,7 @@ Toto téma je domovská stránka pro informace o funkcím souvisejícím s feder
 | [Upravit pravidla deklarací identity služby AD FS](how-to-connect-fed-management.md#modclaims) |Úprava nebo přidání pravidel deklarací identity ve službě AD FS, které odpovídají konfiguraci synchronizace Azure AD Connect. |
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Federování dvě služby Azure AD s jednou službou AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md)
 * [Nasazení služby AD FS v Azure](how-to-connect-fed-azure-adfs.md)
 * [Nasazení vysoká dostupnost mezi geografickými AD FS v Azure pomocí Azure Traffic Manageru](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
