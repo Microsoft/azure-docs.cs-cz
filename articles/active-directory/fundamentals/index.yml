@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4c9f26c36b0cf79c8bd28e57fc7bdec5dda22764
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 2ead2ac4c842ed5c3c106b23e2bc560466d677c6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636321"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449414"
 documentType: LandingData
 title: Základní dokumentace ke službě Azure Active Directory
 metadata:
@@ -14,7 +14,7 @@ metadata:
   services: active-directory
   ms.component: fundamentals
   author: eross-msft
-  manager: mtillman
+  manager: daveba
   ms.service: active-directory
   ms.topic: landing-page
   ms.date: 09/07/2018
