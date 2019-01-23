@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 253cfd7ddeb04a12a3609ab5e14a37365015a568
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c16a0eeb674e712ec1c3678a2e0002a8ddcfc329
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790873"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464702"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
 
@@ -67,8 +67,8 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | automationaccounts | Ano | Ano |
-| automationaccounts/konfigurace | Ano | Ano |
-| automationaccounts/sady runbook | Ano | Ano |
+| automationaccounts/configurations | Ano | Ano |
+| automationaccounts/runbooks | Ano | Ano |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -113,7 +113,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftcache"></a>Microsoft.Cache
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Redis Cache | Ano | Ano |
+| redis | Ano | Ano |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -130,13 +130,13 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | domainnames | Ano | Ne |
-| virtuálních počítačů | Ano | Ne |
+| virtualmachines | Ano | Ne |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | networksecuritygroups | Ne | Ne |
-| adresy | Ne | Ne |
+| reservedips | Ne | Ne |
 | virtualnetworks | Ne | Ne |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
@@ -162,8 +162,8 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | sharedvmimages | Ne | Ne |
 | sharedvmimages/verze | Ne | Ne |
 | snímky | Ano | Ano |
-| virtuálních počítačů | Ano | Ano |
-| virtuálních počítačů/rozšíření | Ano | Ano |
+| virtualmachines | Ano | Ano |
+| virtualmachines/extensions | Ano | Ano |
 | virtualmachinescalesets | Ano | Ano |
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
@@ -295,7 +295,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | testovací prostředí a virtuálních počítačů | Ano | Ne |
 | Plány | Ne | Ne |
 
-## <a name="microsoftdns"></a>Microsoft.DNS
+## <a name="microsoftdns"></a>microsoft.dns
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | dnszones | Ne | Ne |
@@ -349,7 +349,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | ------------- | -------------- | ------------ |
 | úlohy | Ano | Ano |
 
-## <a name="microsoftinsights"></a>Microsoft.insights
+## <a name="microsoftinsights"></a>microsoft.insights
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | actiongroups | Ano | Ano |
@@ -360,7 +360,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | metricalerts | Ne | Ne |
 | scheduledqueryrules | Ano | Ano |
 | webové testy | Ano | Ano |
-| Sešity | Ano | Ano |
+| sešity | Ano | Ano |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -371,6 +371,11 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | trezory služby | Ano | Ano |
+
+## <a name="microsoftkusto"></a>Microsoft.Kusto
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | -------------- | ------------ |
+| Clustery | Ano | Ano |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -456,7 +461,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | applicationgateways | Ne | Ne |
-| jenom | Ano | Ano |
+| applicationsecuritygroups | Ano | Ano |
 | azurefirewalls | Ne | Ne |
 | připojení | Ano | Ano |
 | ddosprotectionplans | Ne | Ne |
@@ -471,7 +476,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Load balancerech | Ano | Ano |
 | localnetworkgateways | Ano | Ano |
 | networkintentpolicies | Ano | Ano |
-| Síťová | Ano | Ano |
+| networkinterfaces | Ano | Ano |
 | networkprofiles | Ne | Ne |
 | networksecuritygroups | Ano | Ano |
 | networkwatchers | Ano | Ano |
@@ -545,7 +550,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | toky | Ano | Ano |
-| nemůžou | Ano | Ano |
+| jobcollections | Ano | Ano |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -624,7 +629,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | prostředí/eventsources | Ano | Ano |
 | prostředí/referencedatasets | Ano | Ano |
 
-## <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
+## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | account | Ano | Ano |
@@ -642,7 +647,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | hostingenvironments | Ne | Ne |
 | serverfarms | Ano | Ano |
 | Weby | Ano | Ano |
-| servery/premieraddons | Ano | Ano |
+| sites/premieraddons | Ano | Ano |
 | servery a sloty | Ano | Ano |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
@@ -655,10 +660,10 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 
 Třeba služby třetích stran aktuálně nepodporují operace přesunu. Tyto poskytovatele prostředků patří:
 
-* 84codes. CloudAMQP
+* 84codes.CloudAMQP
 * AppDynamics.APM
 * Aspera.Transfers
-* Auth0.cloud
+* Auth0.Cloud
 * Citrix.Cloud
 * Citrix.Services
 * CloudSimple.PrivateCloudIaaS

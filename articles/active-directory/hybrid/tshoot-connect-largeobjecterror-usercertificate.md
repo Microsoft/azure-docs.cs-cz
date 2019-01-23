@@ -4,7 +4,7 @@ description: Toto téma obsahuje kroky k nápravě chyb LargeObject způsobenýc
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 0882976df898d36f1d5a5ff06e0de5c747613719
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ffc8832fa2da9d4bfad23752a5bc767ace2b573e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312078"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478616"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizace Azure AD Connect: chyb LargeObject způsobených atributem userCertificate
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizace Azure AD Connect: Zpracování chyb LargeObject způsobených atributem userCertificate
 
 Azure AD se vynucuje maximální limit **15** certifikátu na hodnoty **userCertificate** atribut. Pokud Azure AD Connect exportuje objekt s více než 15 hodnot do služby Azure AD, vrátí funkce Azure AD **LargeObject** chybová zpráva:
 

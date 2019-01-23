@@ -245,7 +245,7 @@ Další informace o sdružování vrstvy najdete v těchto článcích:
 
 ## <a name="response-normalization-bundles"></a>Odpověď normalizace sady
 
-**Odpověď normalizace** je místní normalizace schéma, které bylo poprvé dostupné ve Geoffrey Hinton nedostupným v knize [ImageNet Classiﬁcation s využitím Konvolučních Neuronových sítí hloubkové](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf). 
+**Odpověď normalizace** je místní normalizace schéma, které bylo poprvé dostupné ve Geoffrey Hinton nedostupným v knize [ImageNet klasifikace s využitím Konvolučních Neuronových sítí hloubkové](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf). 
 
 Normalizace odpovědi se používá na podporu Generalizace v neuronových sítí. Když jeden neuron se spouští na aktivaci velmi vysoké úrovni, potlačí vrstvu normalizace místní odpovědi úroveň aktivace okolního neurons. To se provádí pomocí tří parametrů (`α`, `β`, a `k`) a využitím konvolučních strukturu (nebo detekovaná sousední obrazec). Každý neuron v cílové vrstvy **y** odpovídá neuron **x** ve vrstvě zdroje. Úroveň aktivace **y** je dán na následující vzorec, kde `f` je úroveň aktivace neuron, a `Nx` je jádro (nebo sadu, která obsahuje neurons v okolí z **x**), jak jsou definovány následující konvoluční konstrukcí:  
 

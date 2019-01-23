@@ -4,7 +4,7 @@ description: Tento článek popisuje chyby, které mohou nastat při vyjadřová
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 70413d3467b2f9d5591e6138ed1a7347db58264b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 362671e255f8dc36f9474fd2d4e3117e4cc0c1e4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356411"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477715"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při povolování spuštění aplikace
 
@@ -36,17 +36,17 @@ Musí být splněny pro uživatele na oprávnění, která aplikace vyžaduje so
 Tato chyba nastane, pokud uživatel, který není správcem společnosti se pokusí použít aplikaci, která žádá o oprávnění, která lze udělit pouze správce. Tuto chybu můžete vyřešit microsoftem nebo správcem udělení přístupu k aplikaci jménem organizace.
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Zásada zabraňuje udělení oprávnění chyba
-* **AADSTS90093:** správcem &lt;tenanta tenantDisplayName&gt; nastavil zásadu, která vám brání v poskytování &lt;název aplikace&gt; oprávnění vyžaduje. Obraťte se na správce &lt;tenanta tenantDisplayName&gt;, který můžete udělit oprávnění k této aplikaci za vás.
+* **AADSTS90093:** Správce &lt;tenanta tenantDisplayName&gt; nastavil zásadu, která vám brání v poskytování &lt;název aplikace&gt; oprávnění vyžaduje. Obraťte se na správce &lt;tenanta tenantDisplayName&gt;, který můžete udělit oprávnění k této aplikaci za vás.
 
 Tato chyba nastane, pokud správce společnosti vypne možnost, aby uživatelé vyjádřili souhlas aplikacím, potom se pokusí použít aplikaci, která vyžaduje souhlas uživatele bez oprávnění správce. Tuto chybu můžete vyřešit microsoftem nebo správcem udělení přístupu k aplikaci jménem organizace.
 
 ## <a name="intermittent-problem-error"></a>Chyba přerušovaně docházelo k problému
-* **AADSTS90090:** vypadá procesu přihlašování došlo k chybě občasný problém záznam jste se pokusili získat udělit oprávnění &lt;clientAppDisplayName&gt;. Zkuste to znovu později.
+* **AADSTS90090:** Vypadá to procesu přihlašování došlo k chybě občasný problém záznam jste se pokusili získat udělit oprávnění &lt;clientAppDisplayName&gt;. Zkuste to znovu později.
 
 Tato chyba označuje, že má došlo k chybě na straně přerušované služby. Se dá vyřešit pokusem o souhlas s aplikací znovu.
 
 ## <a name="resource-not-available-error"></a>Prostředek není k dispozici – chyba
-* **AADSTS65005:** aplikace &lt;clientAppDisplayName&gt; požadovaná oprávnění pro přístup k prostředku &lt;resourceAppDisplayName&gt; , který není k dispozici. 
+* **AADSTS65005:** Aplikace &lt;clientAppDisplayName&gt; požadovaná oprávnění pro přístup k prostředku &lt;resourceAppDisplayName&gt; , který není k dispozici. 
 
 Obraťte se na vývojáře aplikace.
 
@@ -56,7 +56,7 @@ Obraťte se na vývojáře aplikace.
 Zajistěte, aby byl tento prostředek k dispozici nebo se obraťte na správce &lt;tenanta tenantDisplayName&gt;.
 
 ## <a name="permissions-mismatch-error"></a>Chybová zpráva o neshodě oprávnění
-* **AADSTS65005:** aplikace požaduje svolení k přístupu k prostředku &lt;resourceAppDisplayName&gt;. Tento požadavek se nezdařil, protože se neshoduje, jak byla předem nakonfigurované aplikace při registraci aplikace. Obraťte se na aplikace vendor.* *
+* **AADSTS65005:** Požadovaná aplikace svolení k přístupu k prostředku &lt;resourceAppDisplayName&gt;. Tento požadavek se nezdařil, protože se neshoduje, jak byla předem nakonfigurované aplikace při registraci aplikace. Obraťte se na aplikace vendor.* *
 
 Tyto chyby, které všechny dojít, když aplikace, kterou uživatel se pokouší o souhlas s žádá o oprávnění pro přístup k aplikaci prostředku, který nebyl nalezen v adresáři organizace (tenant). Tato situace může nastat z několika důvodů:
 

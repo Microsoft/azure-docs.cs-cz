@@ -4,7 +4,7 @@ description: Řešení potíží s důvod, proč se aplikace zobrazuje na přís
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewr: japere
-ms.openlocfilehash: 85e0eccf8ed30f5fc91bd892463fe6f1bd835d75
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ac2bbe045e82611de927e69b6dac859460a016f1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356373"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461650"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>Jak se zobrazují na přístupovém panelu aplikací
 

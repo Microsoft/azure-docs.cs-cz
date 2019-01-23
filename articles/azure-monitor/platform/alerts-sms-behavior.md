@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 481340dbab6a2ae7247a53cb78b17f3353edcd00
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 85480a098dc5ef70938a5ec4cd7a31105496df6f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345994"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461396"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS upozornění chování ve skupinách akcí
 ## <a name="overview"></a>Přehled ##
@@ -35,7 +35,7 @@ Přijímače SMS, který je nakonfigurovaný jako součást skupiny akcí obdrž
 | ZAKÁZAT <Action Group Short name> | Další SMS zakáže skupiny akcí |
 | POVOLIT <Action Group Short name> | Znovu povolí SMS skupiny akcí |
 | STOP | Další SMS zakáže ze všech skupin akcí |
-| SPUŠTĚNÍ | Znovu povolí SMS ze všech skupin akcí |
+| START | Znovu povolí SMS ze všech skupin akcí |
 | POMOC | Odkazy na tento článek je uživateli odeslána odpověď. |
 
 >[!NOTE]
@@ -45,3 +45,4 @@ Přijímače SMS, který je nakonfigurovaný jako součást skupiny akcí obdrž
 Získat [přehled upozornění protokolu aktivit](alerts-overview.md) a zjistěte, jak nechte se upozornit,  
 Další informace o [rychlosti SMS](alerts-rate-limiting.md)  
 Další informace o [skupiny akcí](../../azure-monitor/platform/action-groups.md)
+

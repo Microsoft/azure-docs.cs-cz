@@ -1,10 +1,10 @@
 ---
-title: Registrace správy
-description: Toto téma vysvětluje, jak k registraci zařízení s centry oznámení, aby bylo možné přijímat nabízená oznámení.
+title: Správa registrací
+description: Toto téma vysvětluje, jak zaregistrovat zařízení pomocí služby notification hubs, abyste mohli přijímat nabízená oznámení.
 services: notification-hubs
 documentationcenter: .net
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
@@ -12,310 +12,328 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 7f9052da066fcc0021151bf3b547484859cf216d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: jowargo
+ms.date: 01/04/2019
+ms.openlocfilehash: da1cad5c949579e0c66d9cc49f99b7cee9d53f35
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776919"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452237"
 ---
 # <a name="registration-management"></a>Správa registrací
+
 ## <a name="overview"></a>Přehled
-Toto téma vysvětluje, jak k registraci zařízení s centry oznámení, aby bylo možné přijímat nabízená oznámení. Téma popisuje registrace na vysoké úrovni a potom zavádí dvě hlavní vzory pro registraci zařízení: registraci ze zařízení přímo k centru oznámení a registraci prostřednictvím back-end aplikace. 
+
+Toto téma vysvětluje, jak zaregistrovat zařízení pomocí služby notification hubs, abyste mohli přijímat nabízená oznámení. Téma popisuje registrace na vysoké úrovni a pak zavádí dva hlavní způsoby registrace zařízení: registrace ze zařízení přímo k centru oznámení a registrace prostřednictvím back-endu aplikace.
 
 ## <a name="what-is-device-registration"></a>Co je registrace zařízení
-Registrace zařízení s centrem oznámení se provádí pomocí **registrace** nebo **instalace**.
 
-#### <a name="registrations"></a>Registrace
-Registrace přidruží popisovač služby oznámení platformy (PNS) pro zařízení značky a případně šablonu. Popisovače systému PNS může být ChannelURI, token zařízení nebo id registrace GCM. Značky se používají k oznámení směrovat na správná sada popisovačů zařízení. Další informace najdete v tématu [směrování a značky výrazy](notification-hubs-tags-segment-push-message.md). Šablony slouží k implementaci za registraci transformace. Další informace najdete v tématu [šablony](notification-hubs-templates-cross-platform-push-messages.md).
+Registrace zařízení ve službě Centrum oznámení se provádí pomocí **registrace** nebo **instalace**.
 
-#### <a name="installations"></a>Instalace
-Instalace je vylepšený registrace, který zahrnuje kontejner nabízené souvisejících vlastností. Je nejnovější a nejlepší způsob registrace zařízení. Však není podporována sadou SDK .NET na straně klienta ([SDK centra oznámení pro back-end operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud registrujete ze samotného klientského zařízení, je třeba použít [rozhraní API REST centra oznámení](https://msdn.microsoft.com/library/mt621153.aspx) přístup k podpoře instalaci. Pokud používáte back-end službu, byste měli použít [SDK centra oznámení pro back-end operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+### <a name="registrations"></a>Registrace
 
-Tady jsou některé klíčové výhody pomocí instalace:
+Registrace přidruží popisovač služby oznamování platformy (PNS) pro zařízení se značkami a případně šablony. Popisovač systému oznámení platformy může být parametr ChannelURI, token zařízení nebo id registrace služby GCM. Značky se používají k oznámení směrovat na správná sada popisovače zařízení. Další informace najdete v tématu [směrování a výrazy označení](notification-hubs-tags-segment-push-message.md). Šablony slouží k provedení transformace za registraci. Další informace najdete v tématu [Šablony](notification-hubs-templates-cross-platform-push-messages.md).
 
-* Vytvoření nebo aktualizace instalace je plně idempotent. Proto ji můžete zopakovat bez jakékoli pochybnostmi duplicitní registrace.
-* Instalační model usnadňuje provést jednotlivé nabízených oznámení - cílení na konkrétní zařízení. Značku systému **"$InstallationId: [installationId]"** se automaticky přidá s každou instalace na základě registrace. Proto můžete volat odeslání na tuto značku zaměřit na konkrétní zařízení bez nutnosti psaní Další.
-* Pomocí instalace také umožňuje provést registraci částečné aktualizace. Částečné aktualizace instalace se požaduje pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je užitečné, pokud chcete aktualizovat značky na registraci. Nemáte stahují celý registrace a pak znovu odeslat všechny předchozí značky.
+### <a name="installations"></a>Instalace
 
-Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Instalace je vylepšený vlastnosti související s registrací, který obsahuje kontejner nabízených oznámení. Je nejnovější a nejlepší přístup k registraci zařízení. Však není podporována sadou SDK pro .NET na straně klienta ([SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud se registrace ze samotného klientského zařízení, je třeba použít [rozhraní REST API pro Notification Hubs](https://msdn.microsoft.com/library/mt621153.aspx) přístup pro podporu instalace. Pokud používáte službu back-endu, byste měli moct používat [SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-    // Example installation format to show some supported properties
-    {,
-        installationId: "",
-        expirationTime: "",
-        tags: [],
-        platform: "",
-        pushChannel: "",
-        ………
-        templates: {
-            "templateName1" : {
-                body: "",
-                tags: [] },
-            "templateName2" : {
-                body: "",
-                // Headers are for Windows Store only
-                headers: {
-                    "X-WNS-Type": "wns/tile" }
-                tags: [] }
-        },
-        secondaryTiles: {
-            "tileId1": {
-                pushChannel: "",
-                tags: [],
-                templates: {
-                    "otherTemplate": {
-                        bodyTemplate: "",
-                        headers: {
-                            ... }
-                        tags: [] }
-                }
+Tady jsou některé klíčové výhody použití zařízení:
+
+- Vytvoření nebo aktualizace instalace je plně idempotentní. Takže můžete opakovat bez jakékoli obavy o duplicitní registrace.
+- Instalační model usnadňuje provést individuální nabízená oznámení – cílení na konkrétní zařízení. Systémovou značku **"$InstallationId: [hodnota installationId]"** se automaticky přidá s každé registraci na základě instalace. Takže můžete volat odeslání na tuto značku cílit na konkrétní zařízení bez nutnosti vytvářet další kód.
+- Použití zařízení také vám umožní registraci částečné aktualizace. Částečné aktualizace instalace je požadováno pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je užitečné, pokud chcete aktualizovat značky na registraci. Není nutné stáhnout celý registrace a pak znovu odeslat všechny předchozí značky.
+
+Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat rozhraní REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+
+```javascript
+// Example installation format to show some supported properties
+{
+    installationId: "",
+    expirationTime: "",
+    tags: [],
+    platform: "",
+    pushChannel: "",
+    ………
+    templates: {
+        "templateName1" : {
+            body: "",
+            tags: [] },
+        "templateName2" : {
+            body: "",
+            // Headers are for Windows Store only
+            headers: {
+                "X-WNS-Type": "wns/tile" }
+            tags: [] }
+    },
+    secondaryTiles: {
+        "tileId1": {
+            pushChannel: "",
+            tags: [],
+            templates: {
+                "otherTemplate": {
+                    bodyTemplate: "",
+                    headers: {
+                        ... }
+                    tags: [] }
             }
         }
     }
+}
+```
 
+> [!NOTE]
+> Ve výchozím nastavení registrace a instalace, nevyprší platnost.
 
+Registrace a instalace musí obsahovat platný popisovač systému oznámení platformy pro každé zařízení nebo kanálu. Protože popisovačů systému PNS lze získat pouze v klientské aplikaci na zařízení, jeden vzor je zaregistrovat přímo na tomto zařízení pomocí klientské aplikace. Na druhé straně důležité informace o zabezpečení a obchodní logiky související s značek může vyžadovat ke správě při registraci zařízení v back-end aplikace.
 
-Je důležité si uvědomit, že registrace a instalace ve výchozím nastavení už platnost.
+### <a name="templates"></a>Šablony
 
-Registrace a instalace musí obsahovat platný popisovače systému PNS pro každé zařízení nebo kanál. Vzhledem k tomu, že popisovačů systému PNS se dá získat jenom v klientskou aplikaci na zařízení, je jeden vzor zaregistrovat přímo na daném zařízení s klientské aplikace. Na druhé straně aspekty zabezpečení a obchodní logiku související s značky může vyžadovat umožňuje spravovat registraci zařízení v back-end aplikace. 
+Pokud chcete použít [šablony](notification-hubs-templates-cross-platform-push-messages.md), instalace zařízení obsahuje také všechny šablony, které jsou spojené s tímto zařízením v JSON formátu (viz ukázka výše). Názvy šablon pomoct cílové různé šablony služby pro stejné zařízení.
 
-#### <a name="templates"></a>Šablony
-Pokud chcete použít [šablony](notification-hubs-templates-cross-platform-push-messages.md), instalace zařízení také obsahuje všechny šablony, které jsou spojené s tímto zařízením v JSON formátu (viz ukázka výše). Názvy šablon pomoci cíl různé šablony pro stejné zařízení.
+Název každé šablony se mapuje na šablony textu a volitelná sada značky. Kromě toho jednotlivé platformy, může mít vlastnosti další šablony. Pro Windows Store (s použitím služby nabízených oznámení Windows) a Windows Phone 8 (pomocí MPNS) další sadu záhlaví může být součástí šablony. V případě služby APN můžete nastavit vlastnost vypršení platnosti buď konstanta, nebo výraz šablony. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) tématu.
 
-Každý název šablony se mapuje na text šablony a volitelná sada značky. Kromě toho každou platformu můžete mít další šablony vlastnosti. Pro Windows Store (pomocí WNS) a Windows Phone 8 (pomocí MPNS) může být další sadu hlaviček součástí šablony. V případě služby APN můžete nastavit vlastnost vypršení platnosti buď konstanta, nebo výraz šablony. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) tématu.
+### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundární dlaždice pro aplikace Windows Store
 
-#### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundární dlaždice pro aplikace pro Windows Store
-Pro klientské aplikace Windows Store odesílání oznámení do sekundární dlaždice je stejný jako je pošlete na primární. To je podporováno také v instalaci. Sekundární dlaždice mít jiný ChannelUri, která zpracovává sadu SDK na vaší klientské aplikace transparentně.
+Pro Windows Store klientské aplikace odesíláním oznámení na sekundární dlaždice je stejný jako posílá do primární. To je podporováno také v zařízení. Sekundární dlaždice mají různé parametr ChannelUri, která zpracovává sadu SDK na vaší klientské aplikace transparentní.
 
-Slovník SecondaryTiles používá stejné TileId, který se používá k vytvoření objektu SecondaryTiles v aplikaci Windows Store.
-Stejně jako u primární ChannelUri ChannelUris sekundární dlaždice můžete změnit v každém okamžiku. Chcete-li zachovat instalace portálu v centru oznámení, aktualizovat, musíte aktualizovat zařízení s aktuální ChannelUris sekundární dlaždic je.
+Slovník SecondaryTiles používá stejné TileId, který se používá k vytvoření objektu SecondaryTiles v aplikaci pro Windows Store.
+Stejně jako u primární parametr ChannelUri ChannelUris sekundární dlaždice můžete změnit v daném okamžiku provádějí. Aby bylo možné zachovat zařízení v centru oznámení, aktualizovat, musíte aktualizovat zařízení s aktuální ChannelUris sekundární dlaždice je.
 
-## <a name="registration-management-from-the-device"></a>Správa registraci ze zařízení
-Při správě registraci zařízení z klientské aplikace, je odpovědná za zasílání oznámení pouze back-end. Klientské aplikace zachovávat aktuálnost popisovačů systému PNS a zaregistrujte značky. Následující obrázek znázorňuje tento vzor.
+## <a name="registration-management-from-the-device"></a>Správa registrací zařízení
+
+Při správě registraci zařízení z klientských aplikací, je odpovědná za zasílání oznámení pouze back-endu. Klientské aplikace aktualizovat popisovačů systému PNS a zaregistrujte značky. Tento model je znázorněný na následujícím obrázku.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-Zařízení se nejdřív načte popisovače systému PNS z systém PNS a potom zaregistruje s centrem oznámení přímo. Po úspěšné registraci back-end aplikace může odesílat oznámení cílení k registraci. Další informace o tom, jak odesílat oznámení najdete v tématu [směrování a značky výrazy](notification-hubs-tags-segment-push-message.md).
-V takovém případě použijete pouze naslouchání práva pro přístup k vaší centra oznámení ze zařízení. Další informace najdete v tématu [zabezpečení](notification-hubs-push-notification-security.md).
+Zařízení nejdřív načte popisovač systému oznámení platformy z systém oznámení platformy a pak zaregistruje v centru oznámení přímo. Po úspěšné registraci se back-end aplikace může odeslat oznámení cílení na registraci. Další informace o tom, jak odesílat oznámení, naleznete v tématu [směrování a výrazy označení](notification-hubs-tags-segment-push-message.md).
 
-Nejjednodušším způsobem je registraci ze zařízení, ale má některé nevýhody.
-První nevýhodou je, že klientská aplikace lze aktualizovat pouze jeho značky když je aplikace aktivní. Například pokud má uživatel dvě zařízení, které registrují značky související s sport týmy během první zařízení zaregistruje pro další značky (například Seahawks), druhé zařízení nebude dostávat oznámení o Seahawks aplikace na druhé zařízení je proveden ještě jednou. Obecně platí když značky jsou ovlivněné více zařízení, správa značky z back-end je žádoucí možnost.
-Druhý nevýhodou registrace správy z klientské aplikace je, že vzhledem k tomu, že aplikace může hacker, zabezpečení, aby se registrace konkrétními značkami vyžaduje zvláštní pozornost, jak je popsáno v části "zabezpečení na úrovni značky."
+V tomto případě používáte pouze oprávnění k naslouchání pro přístup k vaší notification hubs ze zařízení. Další informace najdete v tématu [zabezpečení](notification-hubs-push-notification-security.md).
 
-#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Ukázkový kód pro registraci se Centrum oznámení ze zařízení pomocí instalace
-V tuto chvíli je podporováno pouze pomocí [rozhraní API REST centra oznámení](https://msdn.microsoft.com/library/mt621153.aspx).
+Registrace zařízení je nejjednodušší způsob, ale má určité nevýhody:
 
-Můžete taky pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
+- Klientská aplikace lze aktualizovat pouze její klíčová slova, když je aplikace aktivní. Například pokud má uživatel dvě zařízení, které registrují značky související s týmy sportu, během prvního zařízení zaregistruje pro další značka (třeba Seahawks), ve druhém zařízení nebudou přijímat oznámení o Seahawks dokud je aplikace na druhém zařízení spustit znovu. Obecně platí když značky jsou ovlivněny více zařízení, správě značek z back-endu je žádoucí možnost.
+- Protože aplikace mohou být zneužity, zabezpečení registrace konkrétní značky vyžaduje velmi opatrně, jak je popsáno v části "zabezpečení na úrovni značku."
 
-    class DeviceInstallation
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Ukázkový kód pro registraci centra oznámení ze zařízení pomocí instalace
+
+V tuto chvíli je podporováno pouze pomocí [rozhraní REST API pro Notification Hubs](https://msdn.microsoft.com/library/mt621153.aspx).
+
+Můžete také pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
+
+```
+class DeviceInstallation
+{
+    public string installationId { get; set; }
+    public string platform { get; set; }
+    public string pushChannel { get; set; }
+    public string[] tags { get; set; }
+}
+
+private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
+        string hubName, string listenConnectionString)
+{
+    if (deviceInstallation.installationId == null)
+        return HttpStatusCode.BadRequest;
+
+    // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
+    ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
+    string hubResource = "installations/" + deviceInstallation.installationId + "?";
+    string apiVersion = "api-version=2015-04";
+
+    // Determine the targetUri that we will sign
+    string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
+
+    //=== Generate SaS Security Token for Authorization header ===
+    // See, https://msdn.microsoft.com/library/azure/dn495627.aspx
+    string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
+
+    using (var httpClient = new HttpClient())
     {
-        public string installationId { get; set; }
-        public string platform { get; set; }
-        public string pushChannel { get; set; }
-        public string[] tags { get; set; }
+        string json = JsonConvert.SerializeObject(deviceInstallation);
+
+        httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
+
+        var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+        return response.StatusCode;
     }
+}
 
-    private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
-         string hubName, string listenConnectionString)
+var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+string installationId = null;
+var settings = ApplicationData.Current.LocalSettings.Values;
+
+// If we have not stored a installation id in application data, create and store as application data.
+if (!settings.ContainsKey("__NHInstallationId"))
+{
+    installationId = Guid.NewGuid().ToString();
+    settings.Add("__NHInstallationId", installationId);
+}
+
+installationId = (string)settings["__NHInstallationId"];
+
+var deviceInstallation = new DeviceInstallation
+{
+    installationId = installationId,
+    platform = "wns",
+    pushChannel = channel.Uri,
+    //tags = tags.ToArray<string>()
+};
+
+var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
+                    "<HUBNAME>", "<SHARED LISTEN CONNECTION STRING>");
+
+if (statusCode != HttpStatusCode.Accepted)
+{
+    var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
+    dialog.Commands.Add(new UICommand("OK"));
+    await dialog.ShowAsync();
+}
+else
+{
+    var dialog = new MessageDialog("Registration successful using installation Id : " + installationId);
+    dialog.Commands.Add(new UICommand("OK"));
+    await dialog.ShowAsync();
+}
+```
+
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Ukázkový kód pro registraci centra oznámení ze zařízení pomocí registrace
+
+Tyto metody vytvořit nebo aktualizovat registraci pro zařízení, na kterém jsou volány. To znamená, že za účelem aktualizace popisovač nebo značky, musí přepsat celý registrace. Mějte na paměti, že registrace jsou přechodné, takže byste měli vždy mít spolehlivé úložiště s aktuální značky, které jsou v konkrétní zařízení.
+
+```
+// Initialize the Notification Hub
+NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
+
+// The Device id from the PNS
+var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+// If you are registering from the client itself, then store this registration id in device
+// storage. Then when the app starts, you can check if a registration id already exists or not before
+// creating.
+var settings = ApplicationData.Current.LocalSettings.Values;
+
+// If we have not stored a registration id in application data, store in application data.
+if (!settings.ContainsKey("__NHRegistrationId"))
+{
+    // make sure there are no existing registrations for this push handle (used for iOS and Android)    
+    string newRegistrationId = null;
+    var registrations = await hub.GetRegistrationsByChannelAsync(pushChannel.Uri, 100);
+    foreach (RegistrationDescription registration in registrations)
     {
-        if (deviceInstallation.installationId == null)
-            return HttpStatusCode.BadRequest;
-
-        // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
-        ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
-        string hubResource = "installations/" + deviceInstallation.installationId + "?";
-        string apiVersion = "api-version=2015-04";
-
-        // Determine the targetUri that we will sign
-        string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
-
-        //=== Generate SaS Security Token for Authorization header ===
-        // See, https://msdn.microsoft.com/library/azure/dn495627.aspx
-        string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
-
-        using (var httpClient = new HttpClient())
+        if (newRegistrationId == null)
         {
-            string json = JsonConvert.SerializeObject(deviceInstallation);
-
-            httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
-
-            var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
-            return response.StatusCode;
+            newRegistrationId = registration.RegistrationId;
+        }
+        else
+        {
+            await hub.DeleteRegistrationAsync(registration);
         }
     }
 
-    var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+    newRegistrationId = await hub.CreateRegistrationIdAsync();
 
-    string installationId = null;
-    var settings = ApplicationData.Current.LocalSettings.Values;
+    settings.Add("__NHRegistrationId", newRegistrationId);
+}
 
-    // If we have not stored a installation id in application data, create and store as application data.
-    if (!settings.ContainsKey("__NHInstallationId"))
-    {
-        installationId = Guid.NewGuid().ToString();
-        settings.Add("__NHInstallationId", installationId);
-    }
+string regId = (string)settings["__NHRegistrationId"];
 
-    installationId = (string)settings["__NHInstallationId"];
+RegistrationDescription registration = new WindowsRegistrationDescription(pushChannel.Uri);
+registration.RegistrationId = regId;
+registration.Tags = new HashSet<string>(YourTags);
 
-    var deviceInstallation = new DeviceInstallation
-    {
-        installationId = installationId,
-        platform = "wns",
-        pushChannel = channel.Uri,
-        //tags = tags.ToArray<string>()
-    };
+try
+{
+    await hub.CreateOrUpdateRegistrationAsync(registration);
+}
+catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
+{
+    settings.Remove("__NHRegistrationId");
+}
+```
 
-    var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
-                        "<HUBNAME>", "<SHARED LISTEN CONNECTION STRING>");
+## <a name="registration-management-from-a-backend"></a>Správa registrace z back-endu.
 
-    if (statusCode != HttpStatusCode.Accepted)
-    {
-        var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
-        dialog.Commands.Add(new UICommand("OK"));
-        await dialog.ShowAsync();
-    }
-    else
-    {
-        var dialog = new MessageDialog("Registration successful using installation Id : " + installationId);
-        dialog.Commands.Add(new UICommand("OK"));
-        await dialog.ShowAsync();
-    }
-
-
-
-#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Ukázkový kód pro registraci se Centrum oznámení ze zařízení pomocí registrace
-Tyto metody vytvořit nebo aktualizovat registrace pro zařízení, na které se nazývají. To znamená, musí přepsat za účelem aktualizace popisovač nebo značky, celý registrace. Mějte na paměti, že jsou registrace přechodný, a proto byste měli mít vždy spolehlivé úložiště s aktuální značky, které potřebuje určité zařízení.
-
-    // Initialize the Notification Hub
-    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
-
-    // The Device id from the PNS
-    var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-
-    // If you are registering from the client itself, then store this registration id in device
-    // storage. Then when the app starts, you can check if a registration id already exists or not before
-    // creating.
-    var settings = ApplicationData.Current.LocalSettings.Values;
-
-    // If we have not stored a registration id in application data, store in application data.
-    if (!settings.ContainsKey("__NHRegistrationId"))
-    {
-        // make sure there are no existing registrations for this push handle (used for iOS and Android)    
-        string newRegistrationId = null;
-        var registrations = await hub.GetRegistrationsByChannelAsync(pushChannel.Uri, 100);
-        foreach (RegistrationDescription registration in registrations)
-        {
-            if (newRegistrationId == null)
-            {
-                newRegistrationId = registration.RegistrationId;
-            }
-            else
-            {
-                await hub.DeleteRegistrationAsync(registration);
-            }
-        }
-
-        newRegistrationId = await hub.CreateRegistrationIdAsync();
-
-        settings.Add("__NHRegistrationId", newRegistrationId);
-    }
-
-    string regId = (string)settings["__NHRegistrationId"];
-
-    RegistrationDescription registration = new WindowsRegistrationDescription(pushChannel.Uri);
-    registration.RegistrationId = regId;
-    registration.Tags = new HashSet<string>(YourTags);
-
-    try
-    {
-        await hub.CreateOrUpdateRegistrationAsync(registration);
-    }
-    catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
-    {
-        settings.Remove("__NHRegistrationId");
-    }
-
-
-## <a name="registration-management-from-a-backend"></a>Registrace správy z back-end
-Správa registrace z back-end vyžaduje zápis další kód. Aplikace ze zařízení musíte zadat zpracovat aktualizovaný systém PNS a back-end při každém spuštění aplikace (společně se značkami a šablony) a back-end musíte aktualizovat tento popisovač v centru oznámení. Následující obrázek znázorňuje tento návrh.
+Správa registrace z back-end vyžaduje psaním dalšího kódu. Aplikace ze zařízení musíte zadat zpracování aktualizace systému oznámení platformy na back-end při každém spuštění aplikace (spolu s značky a šablony) a back-end musíte aktualizovat tento ovladač v centru oznámení. Tento návrh je znázorněný na následujícím obrázku.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
-Výhody správy registrace z back-end, zahrnují možnost Upravit značky na registrací i v případě, že odpovídající aplikace na zařízení je neaktivní a k ověření klientské aplikace před přidáním značky k jeho registraci.
+Výhody Správa registrace z back-endu patří schopnost upravit značky pro registrace i v případě, že odpovídající aplikace na zařízení není aktivní a ověření klienta aplikace před přidáním značky k jeho registraci.
 
-#### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Ukázkový kód pro registraci se centra oznámení z back-end pomocí instalace
-Klientské zařízení stále získá jeho popisovače systému PNS a vlastnosti relevantní instalace jako před a volání vlastní rozhraní API na back-end, které můžete provést registraci a autorizaci značky atd. Můžete využít back-end [SDK centra oznámení pro back-end operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Ukázkový kód pro registraci centra oznámení z back-end pomocí instalace
 
-Můžete taky pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
+Klientské zařízení stále získá jeho popisovač systému oznámení platformy a vlastnosti relevantní instalace jako před a volání vlastních rozhraní API na back-end, který může provádět registraci a autorizujte značek atd. Můžete využívat back-endu [SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-    // Initialize the Notification Hub
-    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
+Můžete také pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
 
-    // Custom API on the backend
-    public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
+```
+// Initialize the Notification Hub
+NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
+
+// Custom API on the backend
+public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
+{
+
+    Installation installation = new Installation();
+    installation.InstallationId = deviceUpdate.InstallationId;
+    installation.PushChannel = deviceUpdate.Handle;
+    installation.Tags = deviceUpdate.Tags;
+
+    switch (deviceUpdate.Platform)
     {
-
-        Installation installation = new Installation();
-        installation.InstallationId = deviceUpdate.InstallationId;
-        installation.PushChannel = deviceUpdate.Handle;
-        installation.Tags = deviceUpdate.Tags;
-
-        switch (deviceUpdate.Platform)
-        {
-            case "mpns":
-                installation.Platform = NotificationPlatform.Mpns;
-                break;
-            case "wns":
-                installation.Platform = NotificationPlatform.Wns;
-                break;
-            case "apns":
-                installation.Platform = NotificationPlatform.Apns;
-                break;
-            case "gcm":
-                installation.Platform = NotificationPlatform.Gcm;
-                break;
-            default:
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
-        }
-
-
-        // In the backend we can control if a user is allowed to add tags
-        //installation.Tags = new List<string>(deviceUpdate.Tags);
-        //installation.Tags.Add("username:" + username);
-
-        await hub.CreateOrUpdateInstallationAsync(installation);
-
-        return Request.CreateResponse(HttpStatusCode.OK);
+        case "mpns":
+            installation.Platform = NotificationPlatform.Mpns;
+            break;
+        case "wns":
+            installation.Platform = NotificationPlatform.Wns;
+            break;
+        case "apns":
+            installation.Platform = NotificationPlatform.Apns;
+            break;
+        case "gcm":
+            installation.Platform = NotificationPlatform.Gcm;
+            break;
+        default:
+            throw new HttpResponseException(HttpStatusCode.BadRequest);
     }
 
 
-#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Ukázkový kód pro registraci se Centrum oznámení ze zařízení pomocí ID registrace
-Z vašeho back-end aplikace můžete provádět základní operace CRUDS při registraci. Příklad:
+    // In the backend we can control if a user is allowed to add tags
+    //installation.Tags = new List<string>(deviceUpdate.Tags);
+    //installation.Tags.Add("username:" + username);
 
-    var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
+    await hub.CreateOrUpdateInstallationAsync(installation);
 
-    // create a registration description object of the correct type, e.g.
-    var reg = new WindowsRegistrationDescription(channelUri, tags);
+    return Request.CreateResponse(HttpStatusCode.OK);
+}
+```
 
-    // Create
-    await hub.CreateRegistrationAsync(reg);
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Ukázkový kód pro registraci centra oznámení ze zařízení s použitím ID registrace
 
-    // Get by id
-    var r = await hub.GetRegistrationAsync<RegistrationDescription>("id");
+Z back-endu aplikace můžete provádět základní operace CRUDS při registraci. Příklad:
 
-    // update
-    r.Tags.Add("myTag");
+```
+var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 
-    // update on hub
-    await hub.UpdateRegistrationAsync(r);
+// create a registration description object of the correct type, e.g.
+var reg = new WindowsRegistrationDescription(channelUri, tags);
 
-    // delete
-    await hub.DeleteRegistrationAsync(r);
+// Create
+await hub.CreateRegistrationAsync(reg);
 
+// Get by id
+var r = await hub.GetRegistrationAsync<RegistrationDescription>("id");
 
-Back-end musí zpracovávat souběžnosti mezi aktualizace registrace. Service Bus nabízí optimistické řízení souběžného pro správu registrace. Na úrovni protokolu HTTP tato možnost je implementovaná pomocí použití značky ETag na operace správy registrace. Tato funkce slouží transparentně SDKs Microsoft, která je vyvolána výjimka, pokud aktualizace byl odmítnut z důvodů souběžnosti. Back-end aplikace je zodpovědná za zpracování těchto výjimek a v případě potřeby opakováním aktualizace.
+// update
+r.Tags.Add("myTag");
 
+// update on hub
+await hub.UpdateRegistrationAsync(r);
+
+// delete
+await hub.DeleteRegistrationAsync(r);
+```
+
+Back-endu, musí umět zpracovat souběžnosti mezi aktualizací registrací. Service Bus nabízí optimistického řízení souběžnosti pro správu registrace. Na úrovni protokolu HTTP to je implementováno s použitím značky ETag na operací správy registrace. Tato funkce slouží transparentně Microsoft SDKs, která je vyvolána výjimka, pokud aktualizace byl odmítnut z důvodu souběžnosti. Back-endu aplikace je zodpovědná za zpracování těchto výjimek a opakování pokusu o aktualizaci v případě potřeby.

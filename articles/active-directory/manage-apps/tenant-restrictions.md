@@ -4,7 +4,7 @@ description: Jak používat exportní Tenanta pro správu, které uživatelé m�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: yossib
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 6989fe88fa17bcd99c99ee3e82d82fb403d1aae4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 97cabf7821f223b900f86115c3bd85b12de450d4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096702"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478140"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Omezení Tenanta můžete spravovat přístup k SaaS cloudové aplikace
 
@@ -70,7 +70,7 @@ Aktivaci Tenanta omezení prostřednictvím vaší infrastruktury služby proxy 
 
 #### <a name="configuration"></a>Konfigurace
 
-Pro každého příchozího požadavku login.microsoftonline.com login.microsoft.com a login.windows.net, vložit dvě záhlaví HTTP: *omezit přístup pro klienty* a *omezit přístup kontextu*.
+Pro každého příchozího požadavku login.microsoftonline.com login.microsoft.com a login.windows.net, vložte dva hlavičky protokolu HTTP: *Omezit přístup na Tenantů* a *omezit kontextu přístup*.
 
 Záhlaví by měl obsahovat následující prvky: 
 - Pro *omezit přístup pro klienty*, hodnota \<povolené seznamu v tenantovi\>, což je čárkou oddělený seznam klientů, které chcete povolit uživatelům přístup k. Do libovolné domény, který je registrovaný pomocí tenanta můžete použít k identifikaci tenanta služby v tomto seznamu. Například tak, aby povolovala přístup pro klienty Contoso a Fabrikam, dvojice název/hodnota vypadá takto:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 

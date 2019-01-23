@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: 621cc79c23fa21401f9ec11ee15b84ae3b9b1288
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 862d239227c277a92cbf80e54b010a4b184da016
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411100"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466087"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Vytvořit virtuální síťové karty a použití interního serveru DNS pro překlad adres virtuálních počítačů v Azure
 
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>Nasazení virtuálního počítače a připojení virtuálního síťového adaptéru
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). `--nics` Příznak připojí virtuálního síťového adaptéru k virtuálnímu počítači při nasazování do Azure. Následující příklad vytvoří virtuální počítač s názvem `myVM` s Azure Managed Disks a bude k obrazci virtuálního síťového adaptéru s názvem `myNic` z předchozího kroku:
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). `--nics` Příznak připojí virtuálního síťového adaptéru k virtuálnímu počítači při nasazování do Azure. Následující příklad vytvoří virtuální počítač s názvem `myVM` s Azure Managed Disks a bude k obrazci virtuálního síťového adaptéru s názvem `myNic` z předchozího kroku:
 
 ```azurecli
 az vm create \
@@ -149,7 +149,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Nasazení virtuálního počítače do infrastruktury virtuální sítě
 Teď máme virtuální síť a podsíť, skupiny zabezpečení sítě funguje jako brána firewall k ochraně našich podsítě zákonné zodpovědnosti organizací blokováním veškerý příchozí provoz, s výjimkou port 22 pro SSH a virtuální síťový adaptér. Teď můžete nasadit virtuální počítač se tento stávající síťové infrastruktuře.
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem `myVM` s Azure Managed Disks a bude k obrazci virtuálního síťového adaptéru s názvem `myNic` z předchozího kroku:
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem `myVM` s Azure Managed Disks a bude k obrazci virtuálního síťového adaptéru s názvem `myNic` z předchozího kroku:
 
 ```azurecli
 az vm create \

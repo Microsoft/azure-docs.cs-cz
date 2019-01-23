@@ -1,10 +1,10 @@
 ---
-title: 'Synchronizace služby Azure Active Directory Connect: Konfigurace upřednostňované umístění dat pro možnosti geografickým oblastem v Office 365 | Dokumentace Microsoftu'
+title: 'Synchronizace Azure Active Directory Connect: Nakonfigurovat upřednostňované umístění dat pro možnosti geografickým oblastem v Office 365 | Dokumentace Microsoftu'
 description: Popisuje, jak uvést vaše prostředky uživatele Office 365 umístěný blízko uživatele pomocí služby Azure Active Directory Connect sync.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1dfc01d0f2f0f5f3eae58fd6c889fee3ad306135
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2fde653c6520b743990ae837f1553004793fefa2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623023"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470694"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace služby Azure Active Directory Connect: Konfigurace upřednostňované umístění dat pro prostředky služeb Office 365
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace Azure Active Directory Connect: Nakonfigurovat upřednostňované umístění dat pro prostředky služeb Office 365
 Účelem tohoto tématu je pro vás provedou postupem konfigurace atribut upřednostňované umístění dat ve službě Azure Active Directory (Azure AD) Connect sync. Při použití možnosti geografickým oblastem v Office 365, můžete použít tento atribut k určení geografické umístění dat uživatele v Office 365. (Podmínky *oblasti* a *geograficky* zaměňují.)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Povolení synchronizace hodnot upřednostňované umístění dat
@@ -42,15 +42,15 @@ Se používají Geografie v Office 365, které jsou k dispozici pro geografický
 | Zeměpisná oblast | Hodnota preferredDataLocation |
 | --- | --- |
 | Asie a Tichomoří | APC |
-| Austrálie | JEDNOTEK AU |
-| Kanada | MŮŽETE |
+| Austrálie | AUS |
+| Kanada | CAN |
 | Evropská unie | EUR |
 | Francie | SADA FRA |
 | Indie | IND |
-| Japonsko | SADA JPN |
+| Japonsko | JPN |
 | Jižní Korea | KOR |
 | Spojené království | GBR |
-| Spojené státy | NÁZEV |
+| Spojené státy | NAM |
 
 * Pokud zeměpisné oblasti není uveden v této tabulce (například Jižní Amerika), pak jej nelze použít pro geografickým oblastem.
 * Zeměpisné oblasti Indie je pouze dostupné zákazníkům s fakturační adresu a v této geografické zakoupených licencí k agentům.
@@ -93,7 +93,7 @@ Aby se zabránilo neúmyslnému změny exportované do služby Azure AD, ujistě
 
 ![Snímek obrazovky portálu Service Manager synchronizace](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
-## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Krok 2: Přidání zdrojového atributu schématu místní konektor služby Active Directory
+## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Krok 2: Přidejte zdrojový atribut schématu místní konektor služby Active Directory
 Ne všechny atributy služby Azure AD jsou importovány do místního prostoru konektoru služby Active Directory. Pokud vyberete použití atributu, který není synchronizován ve výchozím nastavení, musíte ho naimportovat. Přidání zdrojového atributu na seznam importovaných atributy:
 
 1. Vyberte **konektory** kartu v Synchronization Service Manager.
@@ -104,7 +104,7 @@ Ne všechny atributy služby Azure AD jsou importovány do místního prostoru k
 
 ![Dialogové okno snímek obrazovky Synchronization Service Manager a vlastnosti](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
-## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Krok 3: Přidání **preferredDataLocation** schématu konektor služby Azure AD
+## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Krok 3: Přidat **preferredDataLocation** schématu konektor služby Azure AD
 Ve výchozím nastavení **preferredDataLocation** atribut není importován do prostoru konektoru Azure AD. Přidejte do seznamu importované atributů:
 
 1. Vyberte **konektory** kartu v Synchronization Service Manager.
@@ -144,7 +144,7 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu přejít ze zdrojov
 
 ![Snímek obrazovky vytvoření pravidla synchronizace příchozích dat](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step4.png)
 
-## <a name="step-5-create-an-outbound-synchronization-rule"></a>Krok 5: Vytvoření pravidla odchozí synchronizace
+## <a name="step-5-create-an-outbound-synchronization-rule"></a>Krok 5: Vytvořit pravidlo odchozí synchronizace
 Pravidlo odchozí synchronizace povoluje hodnotu atributu z úložiště metaverse na tok **preferredDataLocation** atributu ve službě Azure AD:
 
 1. Přejděte **Editor synchronizačních pravidel**.
@@ -181,7 +181,7 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu z úložiště metaver
 
 ![Snímek obrazovky vytvořit pravidlo odchozí synchronizace](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step5.png)
 
-## <a name="step-6-run-full-synchronization-cycle"></a>Krok 6: Spuštění cyklu úplné synchronizace
+## <a name="step-6-run-full-synchronization-cycle"></a>Krok 6: Spustit úplnou synchronizaci cyklus
 Obecně platí úplná synchronizace cyklus je povinný. Toto je vzhledem k tomu, že jsme přidali nové atributy služby Active Directory a Azure AD Connector schématu a zavedl vlastní synchronizační pravidla. Ověřte změny před exportem do služby Azure AD. Následující kroky můžete ověřit změny, při ručním spuštěním kroky, které tvoří úplnou synchronizační cyklus.
 
 1. Spustit **úplný import** na místní konektoru služby Active Directory:
@@ -229,13 +229,13 @@ Obecně platí úplná synchronizace cyklus je povinný. Toto je vzhledem k tomu
 > [!NOTE]
 > Můžete si všimnout, že kroky neobsahují krok úplná synchronizace v konektoru služby Azure AD, nebo krok export na konektoru služby Active Directory. Kroky nejsou povinné, protože hodnoty atributů jsou vyplývající z místní služby Active Directory do služby Azure AD pouze.
 
-## <a name="step-7-re-enable-sync-scheduler"></a>Krok 7: Opětovné povolení Plánovač synchronizace
+## <a name="step-7-re-enable-sync-scheduler"></a>Krok 7: Povolte Plánovač synchronizace
 Povolte Plánovač integrované synchronizace:
 
 1. Spusťte relaci Powershellu.
 2. Plánované synchronizaci znovu povolte spuštěním této rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>Krok 8: Ověření výsledku
+## <a name="step-8-verify-the-result"></a>Krok 8: Ověřte výsledek
 Nyní je čas potřebný k ověření konfigurace nebo ji povolit pro vaše uživatele.
 
 1. Přidáte vybraný atribut uživatele zeměpisné oblasti. Seznam dostupných zeměpisných oblastech najdete v [Tato tabulka](#enable-synchronization-of-preferreddatalocation).  
@@ -261,5 +261,5 @@ Další informace o model konfigurace v modulu synchronizace:
 
 Témata s přehledem:
 
-* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

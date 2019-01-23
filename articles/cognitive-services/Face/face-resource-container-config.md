@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: a75f5ec11644bbd64a6bafeb8585371437eedc3b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359438"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476916"
 ---
 # <a name="configure-containers"></a>Konfigurace kontejnerů
 
@@ -33,6 +33,7 @@ Nastavení konfigurace v kontejneru pro rozpoznávání tváře, jsou hierarchic
 * [CloudAI](#cloudai-configuration-settings)
 * [Smlouva EULA](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [Nastavení přihlašovacích údajů proxy serveru http](#http-proxy-credentials-settings)
 * [Protokolování](#logging-configuration-settings)
 * [Připojí](#mounts-configuration-settings)
 
@@ -162,6 +163,11 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 | `TlsConnectionEstablishmentTimeoutMs` | Integer | Časový limit v milisekundách pro navázání připojení SSL/TLS s Fluentd serveru. Výchozí hodnota je 10000 milisekund (10 sekund).<br/> Pokud `UseTLS` je nastavena na hodnotu false, tato hodnota se ignoruje. |
 | `UseTLS` | Logická hodnota | Označuje, zda kontejner musí používat protokol SSL/TLS pro komunikaci se serverem Fluentd. Výchozí hodnota je false. |
 
+
+## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru http
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Konfigurace nastavení protokolování
 
 `Logging` Podporu protokolování ASP.NET Core pro váš kontejner spravovat nastavení konfigurace. Pro váš kontejner, který je možné pro aplikace ASP.NET Core můžete použít stejný konfigurační nastavení a hodnoty. Podporuje následující zprostředkovatele protokolování kontejneru pro rozpoznávání tváře:
@@ -212,3 +218,7 @@ Například následující příkaz definuje přípojný vazby Dockeru k `D:\Out
   ```
 
 Kontejner pro rozpoznávání tváře nepoužívá vstup nebo výstup připojí k ukládání dat školení nebo databáze. Kontejner pro rozpoznávání tváře místo toho poskytuje scénáře využití služby storage pro správu dat pro trénování a databáze. Další informace o používání scénáře využití služby storage najdete v tématu [nastavení scénář úložiště](#storage-scenario-settings).
+
+## <a name="next-steps"></a>Další postup
+
+* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)

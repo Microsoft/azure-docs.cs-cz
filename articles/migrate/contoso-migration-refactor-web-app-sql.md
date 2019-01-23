@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: eb046ceebf9c6233fa5178d18603add2f0c26a29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: dec58b2bb82eeab8b95c59e2775d21d58e18cac4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608013"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450417"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migrace Contoso: Refaktorovat a místní aplikace do webové aplikace Azure a Azure SQL database
 
@@ -140,28 +140,28 @@ Tady je způsob spuštění migrace Contoso:
 
 1. Vyberte správce společnosti Contoso vytvořit databázi SQL v Azure. 
 
-    ![Zřízení SQL](media/contoso-migration-refactor-web-app-sql/provision-sql1.png)
+    ![Provision SQL](media/contoso-migration-refactor-web-app-sql/provision-sql1.png)
 
 2. Zadejte název databáze tak, aby odpovídaly databáze na místním virtuálním počítači běží (**SmartHotel.Registration**). Ve skupině prostředků ContosoRG, umístěte databázi. Toto je skupina prostředků, které používají pro produkční prostředky v Azure.
 
-    ![Zřízení SQL](media/contoso-migration-refactor-web-app-sql/provision-sql2.png)
+    ![Provision SQL](media/contoso-migration-refactor-web-app-sql/provision-sql2.png)
 
 3. Nastavené nové instanci SQL serveru (**sql. smarthotel eus2**) v primární oblasti.
 
-    ![Zřízení SQL](media/contoso-migration-refactor-web-app-sql/provision-sql3.png)
+    ![Provision SQL](media/contoso-migration-refactor-web-app-sql/provision-sql3.png)
 
 4. Nastavují cenové úrovně tak, aby odpovídaly svůj server a databázové požadavky. A vyberou s programem Azure Hybrid Benefit ušetříte peníze, protože už mají licence SQL serveru.
 5. K určení velikosti používají podle jader v nákupu a nastavte limity pro jejich očekávaný požadavky.
 
-    ![Zřízení SQL](media/contoso-migration-refactor-web-app-sql/provision-sql4.png)
+    ![Provision SQL](media/contoso-migration-refactor-web-app-sql/provision-sql4.png)
 
 6. Potom vytvoří instanci databáze.
 
-    ![Zřízení SQL](media/contoso-migration-refactor-web-app-sql/provision-sql5.png)
+    ![Provision SQL](media/contoso-migration-refactor-web-app-sql/provision-sql5.png)
 
 7. Po vytvoření instance otevřít databázi a poznamenejte si podrobnosti, které potřebují při použití asistované migraci databáze pro migraci.
 
-    ![Zřízení SQL](media/contoso-migration-refactor-web-app-sql/provision-sql6.png)
+    ![Provision SQL](media/contoso-migration-refactor-web-app-sql/provision-sql6.png)
 
 
 **Potřebujete další pomoc?**
@@ -347,7 +347,7 @@ Správce společnosti Contoso teď nakonfigurovat Azure DevOps k provedení sest
 
     ![Nasadit službu app service](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
-18. V **vybrat soubor nebo složku**, vyhledejte **SmartHotel.Registration.Wcf.zip** soubor, který vytvářel během sestavení a clilck **Uložit**.-sql
+18. V **vybrat soubor nebo složku**, vyhledejte **SmartHotel.Registration.Wcf.zip** soubor, který vytvářel během sestavení a clilck **Uložit**.
 
     ![Uložit WCF](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 

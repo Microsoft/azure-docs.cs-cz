@@ -11,36 +11,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 149da2c186ae1e0c3fa5af14a630a0edef7deb25
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302710"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470269"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště ve službě Azure Stack
+
 Zjistěte, jak spravovat účty úložiště ve službě Azure Stack najít, obnovit a získat kapacity úložiště na základě obchodních potřeb.
 
-## <a name="find"></a>Najít účet úložiště
+## <a name="find-a-storage-account"></a>Najít účet úložiště
 Seznam účtů úložiště v oblasti lze zobrazit ve službě Azure Stack podle:
 
 1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
 
-2. Vyberte **všechny služby** > **Správa oblastí** pod **správu**.
+2. Vyberte **všechny služby** > **účty úložiště**.
 
-3. Vyberte **úložiště** z **poskytovatelů prostředků** seznamu.
-   
-   ![Zprostředkovatel prostředku úložiště](media/azure-stack-manage-storage-accounts/image1.png)
-
-5. Vyberte **účty úložiště** v **úložiště**.
-   
-   ![](media/azure-stack-manage-storage-accounts/image2.png)
-   
-   V okně zobrazí seznam účtů úložiště v dané oblasti.
-   
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
 Ve výchozím nastavení se zobrazí prvních 10 účtů. Můžete také načíst informace kliknutím **načíst další** odkaz v dolní části seznamu.

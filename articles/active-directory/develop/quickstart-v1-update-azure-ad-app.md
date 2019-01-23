@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f311f951e09e064b8eac779b1082c666fe029479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 9a89768a5cf02cc8d4cdce670bdfb5b90f504bdf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977232"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447458"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Rychlý start: Aktualizace aplikace v Azure Active Directory
 
@@ -44,8 +44,8 @@ Aby se webová nebo důvěrná klientská aplikace mohla účastnit toku udělen
 
 Než klient získá přístup k webovému rozhraní API zveřejněnému aplikací prostředků (jako je rozhraní API pro Microsoft Graph), rozhraní pro udělování souhlasu zajišťuje, že klient musí nejprve na základě vyžádání oprávnění získat udělení oprávnění. Ve výchozím nastavení si mohou všechny aplikace zvolit oprávnění z **Azure Active Directory** (rozhraní Graph API) a modelu nasazení Azure Classic. Ve výchozím nastavení je také vybrané [oprávnění rozhraní Graph API pro „přihlášení a čtení uživatelského profilu“](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails). Pokud je váš klient zaregistrovaný v tenantovi, který má účty s předplatným Office 365, budou k dispozici k výběru webová rozhraní API a oprávnění pro SharePoint a Exchange Online. U každého požadovaného webového rozhraní API si můžete vybrat ze dvou typů oprávnění:
 
-- Oprávnění aplikace: Klientská aplikace vyžaduje přímý přístup k webovému rozhraní API sama za sebe (bez kontextu uživatele). Tento typ oprávnění vyžaduje souhlas správce a navíc není k dispozici pro nativní klientské aplikace.
-- Delegovaná oprávnění: Klientská aplikace vyžaduje přístup k webovému rozhraní API jako přihlášený uživatel, ale s přístupem omezeným vybraným oprávněním. Pokud tento typ oprávnění nevyžaduje souhlas správce, může ho udělit uživatel.
+- Oprávnění aplikace: Klientská aplikace potřebuje přístup k webovému rozhraní API jako samotný (žádný kontext uživatele). Tento typ oprávnění vyžaduje souhlas správce a navíc není k dispozici pro nativní klientské aplikace.
+- Delegovaná oprávnění: Klientská aplikace potřebuje přístup k webovému rozhraní API jako přihlášený uživatel, ale přístup omezen vybrané oprávnění. Pokud tento typ oprávnění nevyžaduje souhlas správce, může ho udělit uživatel.
 
   > [!NOTE]
   > Přidání delegovaného oprávnění do aplikace neuděluje uživatelům v tenantovi souhlas automaticky. Pokud správce neudělí souhlas jménem všech uživatelů, musí uživatelé stále souhlas pro delegovaná oprávnění přidaná za běhu udělit ručně.
@@ -111,9 +111,9 @@ V následující části se dozvíte, jak zveřejnit obory přístupu úpravou m
   ```
 
   > [!NOTE]
-  > Hodnota `id` se musí vygenerovat programově nebo pomocí nástroje pro generování globálně jedinečných identifikátorů (GUID), jako je [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Hodnota `id` představuje jedinečný identifikátor pro obor zveřejněný webovým rozhraním API. Jakmile se klient správně nakonfiguruje pomocí oprávnění pro přístup k webovému rozhraní API, Azure AD vydá přístupový token OAuth 2.0. Když klient volá webové rozhraní API, představí přístupový token, jehož deklarace identity oboru je nastavená na oprávnění vyžádaná v registraci aplikace.
+  > `id` Hodnota musí být generována prostřednictvím kódu programu nebo pomocí identifikátoru GUID generování nástroje, jako [Guidgen –](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Hodnota `id` představuje jedinečný identifikátor pro obor zveřejněný webovým rozhraním API. Jakmile se klient správně nakonfiguruje pomocí oprávnění pro přístup k webovému rozhraní API, Azure AD vydá přístupový token OAuth 2.0. Když klient volá webové rozhraní API, představí přístupový token, jehož deklarace identity oboru je nastavená na oprávnění vyžádaná v registraci aplikace.
   >
-  > Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru v přijatém přístupovém tokenu OAuth 2.0.
+  > Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru (`scp`) v přijatém přístupovém tokenu OAuth 2.0.
 
 6. Jakmile budete hotoví, klikněte na **Uložit**. Webové rozhraní API je teď nakonfigurované k použití jinými aplikacemi v adresáři.
 
@@ -190,7 +190,7 @@ Pro další informace o změnách aplikace, které se vyžadují pro podporu př
 
 - [Postup přihlášení libovolného uživatele služby Azure Active Directory (AD) pomocí vzoru aplikace s více tenanty](howto-convert-app-to-be-multi-tenant.md)
 - Seznam [ukázek kódu pro více tenantů](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant)
-- [Rychlý start: Přidání firemního brandingu na přihlašovací stránku služby Azure AD](../fundamentals/customize-branding.md)
+- [Rychlé zprovoznění: Přidání firemního brandingu na přihlašovací stránku ve službě Azure AD](../fundamentals/customize-branding.md)
 
 ## <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>Povolení implicitního udělení OAuth 2.0 u jednostránkových aplikací
 
@@ -215,7 +215,7 @@ Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázan
   ```
 5. Aktualizovaný manifest uložte. Po uložení je webové rozhraní API nakonfigurované k používání implicitního udělení OAuth 2.0 pro ověřování uživatelů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Získejte další informace o těchto rychlých startech souvisejících se správou aplikací používajících koncový bod Azure AD v1.0:
 - [Přidání aplikace do Azure AD](quickstart-v1-integrate-apps-with-azure-ad.md)

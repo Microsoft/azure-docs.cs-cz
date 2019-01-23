@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 6b3f862acd5aba39a7ad6eb0ce2f0a9b4a9e5307
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 27cef0287156d4cf76914704b849cb646c21dd7d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973651"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467481"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletní Linuxový virtuální počítač pomocí Azure CLI
 Rychle vytvořit virtuální počítač (VM) v Azure, můžete jediným příkazem Azure CLI, který používá výchozí hodnoty pro vytvoření jakékoli požadované podpůrné prostředky. Prostředky, jako jsou virtuální síť, veřejnou IP adresu a pravidla skupiny zabezpečení sítě se vytvoří automaticky. Pro další kontrolu nad vaším prostředím v produkčním prostředí používat, můžete vytvořit tyto prostředky předem domluvili a pak do nich přidejte virtuální počítače. Tento článek vás provede postupy vytvoření virtuálního počítače a všechny podpůrné prostředky jeden po druhém.
@@ -333,7 +333,7 @@ Výstup:
 ```
 
 ## <a name="create-a-virtual-nic"></a>Vytvoření virtuálních síťových Adaptérů
-Virtuální síťové karty (síťové adaptéry) jsou prostřednictvím kódu programu k dispozici, protože pravidla lze použít k jejich použití. V závislosti na tom [velikost virtuálního počítače](sizes.md), víc virtuálních síťových karet můžete připojit k virtuálnímu počítači. V následujícím [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create) příkaz, vytvořte síťové rozhraní s názvem *myNic* a přidružte skupinu zabezpečení sítě. Veřejnou IP adresu *myPublicIP* je rovněž asociována s virtuální síťový adaptér
+Virtuální síťové karty (síťové adaptéry) jsou prostřednictvím kódu programu k dispozici, protože pravidla lze použít k jejich použití. V závislosti na tom [velikost virtuálního počítače](sizes.md), víc virtuálních síťových karet můžete připojit k virtuálnímu počítači. V následujícím [az network nic vytvořit](/cli/azure/network/nic) příkaz, vytvořte síťové rozhraní s názvem *myNic* a přidružte skupinu zabezpečení sítě. Veřejnou IP adresu *myPublicIP* je rovněž asociována s virtuální síťový adaptér
 
 ```azurecli
 az network nic create \

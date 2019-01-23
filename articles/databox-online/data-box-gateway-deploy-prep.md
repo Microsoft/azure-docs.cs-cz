@@ -8,14 +8,14 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: b8aac8a6a666bf3f360ef2867ff15933ad72dbd7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6db713984b62ce3db48b2e72a4b117696bdd6add
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166980"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452968"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Kurz: Příprava k nasazení služby Azure Data Box Gateway (Preview)
+# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Kurz: Příprava na nasazení Azure Data Box Gateway (Preview)
 
 
 Toto je první kurz série kurzů nasazení potřebných k dokončení nasazení služby Azure Data Box Gateway. Tento kurz popisuje přípravu webu Azure Portal k nasazení prostředku Data Box Gateway. 
@@ -147,9 +147,9 @@ Aktivační klíč slouží k registraci všech zařízení Data Box Gateway, kt
 
 > [!IMPORTANT]
 > - Platnost aktivačního klíče vyprší 3 dny po vygenerování. 
-> - Pokud platnost klíče vyprší, vygenerujte nový klíč. Starší klíč není platný.
+> - Pokud vypršela platnost klíče, vygenerujte nový klíč. Starší klíč není platný.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Data Box Gateway, jako jsou:
 

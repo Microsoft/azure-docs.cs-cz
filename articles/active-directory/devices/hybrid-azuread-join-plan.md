@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat hybridní zařízení připojená k A
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bddd183c517c611373afd1df64f22bfcd6a0cea8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7045940f861b19685a55dbea37fbd354dcbc7c0d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102274"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451285"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 
@@ -158,7 +158,7 @@ Připojení k Windows 10 hybridní Azure AD poskytuje omezenou podporu pro [alte
  
 Následující tabulka obsahuje podrobnosti o podpoře pro některý z těchto alternativních přihlašovacích ID v připojení k hybridní službě Azure AD Windows 10
 
-|Typ alternativního přihlašovacího ID|Typ domény|Verze Windows 10|Popis|
+|Typ alternativního přihlašovacího ID|Typ domény|Windows 10 version|Popis|
 |-----|-----|-----|-----|
 |Směrovatelné|Federovaná |Od verze 1703|Obecně dostupná|
 |Směrovatelné|Spravované|Od verze 1709|Aktuálně ve verzi private preview. Samoobslužné resetování HESLA Azure AD se nepodporuje. |

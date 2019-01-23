@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4aa7e8b45f3791212280226b396ed9eb0f86538c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 422c0477accab65b53071d22d067d96547bfeb8a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135470"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450558"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 
@@ -52,11 +52,11 @@ Postup instalace a kódu jsou k dispozici v tomto názorném postupu pro použí
 
 ### <a name="spark-16-notebooks"></a>Poznámkové bloky Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): obsahuje témata v poznámkovém bloku #1 a vývoje modelů pomocí hyperparametrů a křížového ověření.
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Obsahuje témata v poznámkovém bloku #1 a vývoje modelů pomocí hyperparametrů a křížového ověření.
 
 ### <a name="spark-20-notebooks"></a>Poznámkové bloky Spark 2.0
 
-[Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování a vyhodnocování v clusterech Spark 2.0.
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování a vyhodnocování v clusterech Spark 2.0.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -403,7 +403,7 @@ Tady je kód pro indexování a kódování funkcí text pro binární klasifika
         labPt = LabeledPoint(line.tipped, features)
         return  labPt
 
-    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC RERESSION MODELS
+    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC REGRESSION MODELS
     def parseRowOneHotBinary(line):
         features = np.concatenate((np.array([line.pickup_hour, line.weekday, line.passenger_count,
                                             line.trip_time_in_secs, line.trip_distance, line.fare_amount]), 
@@ -998,9 +998,9 @@ Tyto modely jsou popsány v úvodu. Každý model vytváření část kódu je r
 2. **Model hodnocení** na testovací datové sady s metrikami
 3. **Probíhá ukládání modelu** v objektu blob pro budoucí využití   
 
-> AZURE Poznámka: Cross-validation se nepoužívá tři regresních modelů v této části, protože to se zobrazilo podrobněji a logistické regresní modely. Příklad ukazuje, jak pomocí CV elastické Net pro lineární regrese je k dispozici v dodatku v tomto tématu.
+> POZNÁMKA: AZURE: Křížové ověření není s tři regresních modelů v této části použít, protože to se zobrazilo podrobněji a logistické regresní modely. Příklad ukazuje, jak pomocí CV elastické Net pro lineární regrese je k dispozici v dodatku v tomto tématu.
 > 
-> AZURE Poznámka: Podle našich zkušeností může existovat problémy s konvergence LinearRegressionWithSGD modelů a parametry musí být změněno či optimalizovanou pečlivě pro získání platný model. Škálování proměnných výrazně pomáhá s konvergence. Elastické net regrese, uvedené v dodatku k tomuto tématu, je také použít místo LinearRegressionWithSGD.
+> POZNÁMKA: AZURE: Podle našich zkušeností může být problémy s konvergence LinearRegressionWithSGD modelů a parametry musí být změněno či optimalizovanou pečlivě pro získání platný model. Škálování proměnných výrazně pomáhá s konvergence. Elastické net regrese, uvedené v dodatku k tomuto tématu, je také použít místo LinearRegressionWithSGD.
 > 
 > 
 
@@ -1054,7 +1054,7 @@ Kód v této části ukazuje, jak používat škálován funkce k trénování l
 
 Koeficienty: [0.0141707753435-0.0252930927087,-0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092,-0.00456498588241,-0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632,-0.00289545676449,- 0.00791124681938 0.54396316518,-0.536293513569, 0.0119076553369,-0.0173039244582, 0.0119632796147, 0.00146764882502]
 
-Zachytit: 0.854507624459
+Zachycení: 0.854507624459
 
 RMSE = 1.23485131376
 
@@ -1438,5 +1438,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>Co dále?
 Teď, když jste vytvořili modely regrese a klasifikaci s knihovna Spark MlLib, jste připraveni se naučíte stanovení skóre a vyhodnocovat u nich tyto modely.
 
-**Model spotřeby:** informace o určení skóre a vyhodnocovat u nich klasifikačních a regresních modelů vytvořených v tomto tématu najdete v tématu [skóre a vyhodnocení modelů strojového učení předdefinovaných Spark](spark-model-consumption.md).
+**Využití modelu:** Informace o určení skóre a vyhodnocovat u nich klasifikačních a regresních modelů vytvořených v tomto tématu najdete v tématu [skóre a vyhodnocení modelů strojového učení předdefinovaných Spark](spark-model-consumption.md).
 

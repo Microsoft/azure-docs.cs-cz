@@ -4,7 +4,7 @@ description: Řešení potíží s hybridní služby Azure Active Directory při
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1d96c1e8adee55127a50b2d7c374418c22bfec4c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f9a32058bb9d9cb2f1fa2d04c8002f06fa80edeb
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050561"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446098"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Zařízení s Windows 10 a Windows serveru 2016 připojená k řešení potíží s hybridní služby Azure Active Directory 
 
@@ -59,8 +59,8 @@ Pro Windows 10 a Windows Server 2016, hybridní připojení k Azure Active Direc
     | Stav zařízení |  +----------------------------------------------------------------------+
     
         AzureAdJoined: YES
-     EnterpriseJoined: Žádné DeviceId: 5820fbe9-60c8-43b0-bb11-44aee233e4e7 kryptografický otisk: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: TpmProtected zprostředkovatele kryptografických služeb platformy Microsoft: Ano KeySignTest:: musíte spustit se zvýšenými oprávněními k testování.
-                  Zprostředkovatele identity: login.windows.net TenantId: 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName: Contoso AuthCodeUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl: https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl: https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl: https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl : eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ == JoinSrvVersion: 1.0 JoinSrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId: urn: ms-drs:enterpriseregistration.windows.net KeySrvVersion: 1.0 KeySrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId: urn: ms-drs:enterpriseregistration.windows.net DomainJoined: Ano DomainName: CONTOSO
+     EnterpriseJoined: ŽÁDNÉ ID zařízení: 5820fbe9-60c8-43B0-bb11-44aee233e4e7 kryptografický otisk: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: Zprostředkovatel kryptografických služeb TpmProtected platforma Microsoftu: Ano KeySignTest:: MUSÍTE spustit se zvýšenými oprávněními k testování.
+                  Idp: login.windows.net TenantId: 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName: Contoso AuthCodeUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl: https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl: https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl: https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl: eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ== JoinSrvVersion: 1.0 JoinSrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId: urn:ms-drs:enterpriseregistration.windows.net KeySrvVersion: 1.0 KeySrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId: urn:ms-drs:enterpriseregistration.windows.net DomainJoined: Ano DomainName: CONTOSO
     
     +----------------------------------------------------------------------+
     | Stav uživatele |  +----------------------------------------------------------------------+
@@ -69,15 +69,15 @@ Pro Windows 10 a Windows Server 2016, hybridní připojení k Azure Active Direc
                NgcKeyId: {C7A9AEDC-780E-4FDA-B200-1AE15561A46B}
         WorkplaceJoined: NO
           WamDefaultSet: YES
-    WamDefaultAuthority: organizace WamDefaultId: https://login.microsoft.com WamDefaultGUID: {B16898C6-A148-4967-9171-64D755DA8520} AzureAdPrt (Azure AD): Ano
+    WamDefaultAuthority: organizace WamDefaultId: https://login.microsoft.com       WamDefaultGUID: {B16898C6-A148-4967-9171-64D755DA8520} AzureAdPrt (Azure AD): ANO
 
 
 
-## <a name="step-2-evaluate-the-join-status"></a>Krok 2: Vyhodnoťte stav spojení 
+## <a name="step-2-evaluate-the-join-status"></a>Krok 2: Vyhodnocení stavu připojení 
 
 Zkontrolujte následující pole a ujistěte se, že očekávané hodnoty:
 
-### <a name="azureadjoined--yes"></a>AzureAdJoined: Ano  
+### <a name="azureadjoined--yes"></a>AzureAdJoined: ANO  
 
 Toto pole indikuje, jestli zařízení je spojen s Azure AD. Pokud je hodnota **ne**, nebyl dosud dokončen připojení ke službě Azure AD. 
 
@@ -103,19 +103,19 @@ Toto pole indikuje, jestli zařízení je spojen s Azure AD. Pokud je hodnota **
 
 ---
 
-### <a name="domainjoined--yes"></a>DomainJoined: Ano  
+### <a name="domainjoined--yes"></a>DomainJoined : ANO  
 
 Toto pole indikuje, jestli zařízení je připojen k místní Active Directory, nebo ne. Pokud je hodnota **ne**, zařízení nelze provést připojení k hybridní službě Azure AD.  
 
 ---
 
-### <a name="workplacejoined--no"></a>WorkplaceJoined: Ne  
+### <a name="workplacejoined--no"></a>WorkplaceJoined: NO  
 
 Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD jako osobní zařízení (označené jako *připojená k pracovišti*). Tato hodnota by měla být **ne** pro počítač připojený k doméně, která je také připojená k hybridní službě Azure AD. Pokud je hodnota **Ano**, pracovní nebo školní účet byl přidán před dokončením připojení k hybridní službě Azure AD. V takovém případě účtu se ignoruje při použití verze Anniversary Update sady Windows 10 (1607).
 
 ---
 
-### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: Ano a AzureADPrt: Ano
+### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: Ano a AzureADPrt: ANO
   
 Tato pole označuje, zda uživatel se úspěšně ověřil do služby Azure AD při přihlašování k zařízení. Pokud jsou hodnoty **ne**, může být vypršení platnosti:
 

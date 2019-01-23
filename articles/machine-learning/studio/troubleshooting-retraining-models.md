@@ -1,5 +1,5 @@
 ---
-Název: Řešení potíží s přetrénování titleSuffix klasické webové služby Machine Learning Studio: Azure Machine Learning Studio Popis: Identifikovat a vyřešit běžné problémy k chybě, když jsou přetrénování modelu pro webové služby Azure Machine Learning Studio.
+Název: Řešení potíží s přetrénování titleSuffix klasické webové služby Machine Learning Studio: Azure Machine Learning Studio Popis: Identifikujte a opravte běžných problémů při jsou přetrénování modelu pro webové služby Azure Machine Learning Studio.
 Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 11/01/2017
@@ -31,7 +31,7 @@ Dali všechno na místě jsou hlavní kroky, které je třeba provést při prog
 ### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Zkontrolujte, jestli máte správnou adresu URL oprava
 Oprava adresa URL, které používáte musí být přidružený k nový bodovací koncový bod, který jste přidali do hodnoticí webové služby. Existuje mnoho způsobů, jak získat adresu URL opravy:
 
-**Option 1: Programově**
+**Option 1: Prostřednictvím kódu programu**
 
 Chcete-li získat správnou adresu URL opravy:
 

@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2eacb55eaf355a4eef17b9e16075d8d12167266d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 44eea4ec4fd335cd0061807521f96f2887751f7a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165013"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54457126"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Příprava k ověřování požadavků Azure Resource Manageru
 Všechny operace, které můžete provádět s prostředky pomocí musí ověřit [Azure Resource Manageru] [ lnk-authenticate-arm] s Azure Active Directory (AD). Nejjednodušší způsob, jak nastavit tuto konfiguraci je pomocí Powershellu nebo rozhraní příkazového řádku Azure.
@@ -42,8 +42,8 @@ Následující kroky ukazují, jak nastavit ověřování heslem pro aplikaci AD
    
    * **{Název}:** zobrazovaný název pro vaši aplikaci, jako **MySampleApp**
    * **{Adresu URL domovské stránky}:** adresa URL domovské stránky vaší aplikace, jako **http://mysampleapp/home**. Tato adresa URL nemusí odkazovat na aplikace skutečný.
-   * **{Identifikátor aplikace}:** jedinečný identifikátor jako **http://mysampleapp**. Tato adresa URL nemusí odkazovat na aplikace skutečný.
-   * **{Heslo}:** heslo, které použijete k ověření s vaší aplikací.
+   * **{Identifikátor aplikace}:** Jedinečný identifikátor jako **http://mysampleapp**. Tato adresa URL nemusí odkazovat na aplikace skutečný.
+   * **{Heslo}:** Heslo, které použijete k ověření s vaší aplikací.
      
      ```powershell
      $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
@@ -69,4 +69,4 @@ Teď vytvoříte aplikace Azure AD, která umožňuje ověření z vaší vlastn
 * Heslo
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps

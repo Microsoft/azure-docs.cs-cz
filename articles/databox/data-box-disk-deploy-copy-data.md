@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 10750b5005810ec9034d2b4c7907578949ca6821
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 97c33a5dc2eb43644081579b5d1c0172ce953906
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155197"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449346"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na disku Azure Data Box a ověřit
 
@@ -161,7 +161,7 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
     
     Další informace o příkazu Robocopy najdete v článku [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Robocopy a několik příkladů).
 
-6. Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování došlo k nějakým chybám, stáhněte si soubory protokolu, abyste mohli vyřešit případné potíže. Soubory protokolu jsou uložené v umístění, které udává příkaz robocopy.
+6. Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování došlo k nějakým chybám, stáhněte si soubory protokolu, abyste mohli vyřešit případné potíže. Soubory protokolu se nachází uvedená v příkazu robocopy.
  
 > [!IMPORTANT]
 > - Je vaší povinností ujistit se, že jste data zkopírovali do složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do složky určené pro objekty blob bloku. Pokud formát dat neodpovídá příslušné složce (typu úložiště), pozdější nahrávání dat do Azure se nezdaří.
@@ -251,7 +251,7 @@ Pokud nástroj pro kopírování rozdělení není použili ke kopírování dat
     ![Výstup kontrolního součtu](media/data-box-disk-deploy-copy-data/data-box-disk-checksum-output.png)
 
     > [!TIP]
-    > - Mezi dvěma spuštěními nástroj resetujte.
+    > - Resetujte nástroj mezi dvěma spuštěními.
     > - Možnost 1 použijte, pokud pracujete s rozsáhlou sadou dat obsahující malých souborů (~ znalostní báze). Tuto možnost pouze ověří soubory, protože kontrolní součet generování může trvat velmi dlouho a výkon může být velmi pomalé.
 
 3. Pokud používáte víc disků, spusťte příkaz pro každý disk.

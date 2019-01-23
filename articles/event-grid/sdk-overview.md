@@ -1,27 +1,27 @@
 ---
-title: Sady SDK služby Azure Event mřížky
-description: Popisuje sady SDK pro Azure Event mřížky. Tyto sady SDK zajištění správy, publikování a využívání.
+title: Sady SDK pro Azure Event Grid
+description: Popisuje sady SDK pro Azure Event Grid. Tyto sady SDK poskytují spotřeby, publikování a správy.
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 06/29/2018
-ms.author: tomfitz
-ms.openlocfilehash: 3c085074863aa166a5766116b6c63b7dc341ad96
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.date: 01/19/2019
+ms.author: spelluru
+ms.openlocfilehash: 53a1f50647e05b71afe6accb85f8a90cd8b7e253
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130831"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470393"
 ---
-# <a name="event-grid-sdks-for-management-and-publishing"></a>Událost mřížky sady SDK pro správu a publikování
+# <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid sady SDK pro správu a publikování
 
-Událost mřížky poskytuje sady SDK, které vám umožní programově spravovat prostředky a odesílat události.
+Event gridu poskytuje sady SDK, které umožňují programově spravovat vaše prostředky a odesílat události.
 
 ## <a name="management-sdks"></a>Management SDK
 
-Správa sad SDK umožňují vytvářet, aktualizovat a odstraňovat události mřížky témat a odběrů. V současné době jsou k dispozici následující sady SDK:
+Sady SDK pro správu umožňují vytvářet, aktualizovat a odstraňovat témata event gridu a předplatných. V současné době jsou k dispozici následující sady SDK:
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
@@ -30,9 +30,9 @@ Správa sad SDK umožňují vytvářet, aktualizovat a odstraňovat události m�
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)
 
-## <a name="data-plane-sdks"></a>Roviny data sady SDK
+## <a name="data-plane-sdks"></a>Sady SDK roviny dat
 
-Roviny data sady SDK umožňují odesílají události do témata podle postará o ověřování, které tvoří události a asynchronně publikování na zadaný koncový bod. Umožňují také zpracovávat první strany události. V současné době jsou k dispozici následující sady SDK:
+Rovina dat sady SDK umožňují odesílat události na témata podle postará o ověřování, které tvoří události a asynchronně účtování v určeném koncovém bodě. Umožňují také zpracovávat události první strany. V současné době jsou k dispozici následující sady SDK:
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
@@ -43,7 +43,7 @@ Roviny data sady SDK umožňují odesílají události do témata podle postará
 
 ## <a name="next-steps"></a>Další postup
 
-* Například aplikace, najdete v části [ukázky kódu událostí mřížky](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
-* Úvod k mřížce událostí, naleznete v části [co je mřížky událostí?](overview.md)
-* Příkazy událostí mřížky v Azure CLI, najdete v části [rozhraní příkazového řádku Azure](/cli/azure/eventgrid).
-* Událost mřížky příkazy v prostředí PowerShell, najdete v části [prostředí PowerShell](/powershell/module/azurerm.eventgrid).
+* Příklad naleznete v tématu [ukázky kódu služby Event Grid](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
+* Úvod do služby Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
+* Event Grid příkazy v rozhraní příkazového řádku Azure, najdete v části [rozhraní příkazového řádku Azure](/cli/azure/eventgrid).
+* Event Grid příkazy v prostředí PowerShell najdete v [Powershellu](/powershell/module/azurerm.eventgrid).

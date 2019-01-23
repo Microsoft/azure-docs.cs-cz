@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 62474aba9eb429755ff5e7c78725ee3ce2d90117
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: ''
+ms.openlocfilehash: 4c8d14e01805ea66ff3a954c153d858bf4ecaba6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728206"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467498"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Používat data monitorování z Azure
 
@@ -41,11 +41,12 @@ Celou platformu Azure Dáváme dohromady data monitorování na jednom místě d
 | Upozornění protokolu aktivit monitorování Azure | Oznámení | Všechny služby Azure | <ul><li>**Webhook:** Upozornění protokolu aktivit Azure</li></ul> |
 | Oznámení o automatickém škálování | Oznámení | [Podívejte se sem seznam](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Schéma datová část webhooku oznámení automatického škálování](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
 | Vyhledávací dotaz upozornění protokolů | Oznámení | Log Analytics | <ul><li>**Webhook:** [Akce Webhooku pro pravidla upozornění protokolů](alerts-log-webhook.md)</li></ul> |
-| Upozornění metrik Application Insights | Oznámení | Application Insights | <ul><li>**Webhook:** [Application Insights výstrahy](../../azure-monitor/app/alerts.md)</li></ul> |
-| Webové testy Application Insights | Oznámení | Application Insights | <ul><li>**Webhook:** [Application Insights výstrahy](../../azure-monitor/app/alerts.md)</li></ul> |
+| Upozornění metrik Application Insights | Oznámení | Application Insights | <ul><li>**Webhook:** [Application Insights alerts](../../azure-monitor/app/alerts.md)</li></ul> |
+| Webové testy Application Insights | Oznámení | Application Insights | <ul><li>**Webhook:** [Application Insights alerts](../../azure-monitor/app/alerts.md)</li></ul> |
 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [metrik Azure monitoru](data-collection.md)
 - Další informace o [protokolu aktivit Azure](activity-logs-overview.md)
 - Další informace o [diagnostické protokoly Azure](diagnostic-logs-overview.md)
+

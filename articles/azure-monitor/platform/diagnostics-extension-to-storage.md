@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
-ms.component: diagnostic-extension
-ms.openlocfilehash: f0d1a51a3c787bd4d9602eeaad9ac92eda7bacb7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 23379e9d9bb29efb7fb026260e8245e8eb8a2d71
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103736"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468518"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Ukládání a zobrazení diagnostických dat v Azure Storage
 Diagnostická data nejsou ukládána trvale, pokud přenos pro emulátor úložiště Microsoft Azure nebo do úložiště Azure. Jednou v úložišti, bude možné dokument zobrazit s jedním z několika dostupných nástrojů.
@@ -79,4 +79,5 @@ Několik nástroje jsou k dispozici k zobrazení dat po převedení do úložiš
 
 ## <a name="next-steps"></a>Další kroky
 [Trasování toku do aplikace cloudové služby pomocí diagnostiky Azure](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
+
 

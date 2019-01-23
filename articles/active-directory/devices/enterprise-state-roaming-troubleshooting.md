@@ -5,7 +5,7 @@ services: active-directory
 keywords: Enterprise stavu cestovní nastavení cloudu systému windows, nejčastější dotazy k enterprise stav roamingu
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: devices
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
@@ -18,12 +18,12 @@ ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 3825d527e520fae87d0dd2712df767090adad4e5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 417b909e4a5272b993a4696c1ef8d6718e055738
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248417"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452934"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení v Azure Active Directory
 
@@ -42,7 +42,7 @@ Předtím, než se pustíte do odstraňování, ověřte, že uživatele a zař�
 ## <a name="information-to-include-when-you-need-help"></a>Informace, které byste měli zahrnout při nápovědy
 Pokud nelze vyřešit vaše potíže s níže uvedeném doprovodném materiálu, můžete kontaktovat našimi techniky podpory. Pokud je kontaktovat, uveďte následující informace:
 
-* **Obecný popis chyby**: existují chybové zprávy pro uživatele viditelný? Pokud se žádná chybová zpráva, popište neočekávané chování, které jste si všimli, podrobně. Jaké funkce jsou povolené pro synchronizaci a co je uživatel očekává synchronizovat? Nejsou synchronizaci více funkcí nebo je izolovaná na jednu?
+* **Obecný popis chyby**: Jsou nějaké chybové zprávy pro uživatele viditelný? Pokud se žádná chybová zpráva, popište neočekávané chování, které jste si všimli, podrobně. Jaké funkce jsou povolené pro synchronizaci a co je uživatel očekává synchronizovat? Nejsou synchronizaci více funkcí nebo je izolovaná na jednu?
 * **Ovlivnění uživatelé** – je synchronizace pracovní/selhání pro jeden nebo více uživateli? Kolik zařízení se podílejí na uživatele? Všechny z nich nesynchronizuje, nebo některé z nich synchronizace a některé nesynchronizuje?
 * **Informace o uživateli** – co je identita uživatele pomocí pro přihlášení k zařízení? Jak uživatel přihlašuje k zařízení? Jsou součástí vybrané skupiny zabezpečení můžou synchronizovat? 
 * **Informace o zařízení** – je toto zařízení Azure AD připojen nebo připojené k doméně? Jaké sestavení je na zařízení? Co jsou nejnovější aktualizace?
@@ -74,15 +74,15 @@ Enterprise State Roaming vyžaduje zařízení k registraci v Azure AD. I když 
 **Potenciální problém**: **WamDefaultSet** a **AzureAdJoined** "Ne" mají hodnoty pole, zařízení je připojené k doméně a registrované v Azure AD i ne synchronizaci zařízení. Pokud je to zobrazeno, zařízení mohou muset počkat, než zásady a použít nebo ověřování pro zařízení se nezdařila při připojování ke službě Azure AD. Uživatel může mít počkat několik hodin pro zásadu použít. Při řešení potíží může zahrnovat odhlásit a znovu v opakování pokusu o automatickou registraci, nebo spouštění úloh v Plánovači úloh. V některých případech se systémem "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
 
 
-**Potenciální problém**: pole pro **SettingsUrl** je prázdný a není synchronizovaná zařízení. Uživatel může mít naposledy přihlásil k zařízení než Enterprise State Roaming bylo povoleno na portálu Azure Active Directory. Restartujte zařízení a jste přihlášení uživatele. Volitelně můžete na portálu, zkuste s IT správce, přejděte na **Azure Active Directory** > **zařízení** > **Enterprise State Roaming** zakázat a znovu povolit **uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních**. Jednou obnovená, restartujte zařízení a jste přihlášení uživatele. Pokud to problém nevyřeší **SettingsUrl** může být prázdný, v případě certifikát chybná zařízení. V takovém případě spuštění "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
+**Potenciální problém**: Pole pro **SettingsUrl** je prázdný a není synchronizovaná zařízení. Uživatel může mít naposledy přihlásil k zařízení než Enterprise State Roaming bylo povoleno na portálu Azure Active Directory. Restartujte zařízení a jste přihlášení uživatele. Volitelně můžete na portálu, zkuste s IT správce, přejděte na **Azure Active Directory** > **zařízení** > **Enterprise State Roaming** zakázat a znovu povolit **uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních**. Jednou obnovená, restartujte zařízení a jste přihlášení uživatele. Pokud to problém nevyřeší **SettingsUrl** může být prázdný, v případě certifikát chybná zařízení. V takovém případě spuštění "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming a ověřování službou Multi-Factor Authentication 
 
 Za určitých podmínek Enterprise State Roaming může selhat synchronizaci dat, pokud je nakonfigurované ověřování Azure Multi-Factor Authentication. Další podrobnosti o těchto příznaků, naleznete v dokumentu podporu [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Potenciální problém**: Pokud zařízení nakonfigurován tak, aby ověřování službou Multi-Factor Authentication na portálu Azure Active Directory, může selhat pro synchronizaci nastavení při přihlašování k zařízení s Windows 10 pomocí hesla. Tento typ konfigurace ověřování službou Multi-Factor Authentication je určen k ochraně účet správce služby Azure. Správci mohou nadále moci synchronizovat po přihlášení k zařízení s Windows 10 s jejich Microsoft Passport pro pracovní PIN kód nebo pomocí služby Multi-Factor Authentication při přístupu k dalšími službami Azure, jako je Office 365.
+**Potenciální problém**: Pokud vaše zařízení nakonfigurován tak, aby ověřování službou Multi-Factor Authentication na portálu Azure Active Directory, nemusí podařit synchronizovat nastavení při přihlašování k zařízení s Windows 10 pomocí hesla. Tento typ konfigurace ověřování službou Multi-Factor Authentication je určen k ochraně účet správce služby Azure. Správci mohou nadále moci synchronizovat po přihlášení k zařízení s Windows 10 s jejich Microsoft Passport pro pracovní PIN kód nebo pomocí služby Multi-Factor Authentication při přístupu k dalšími službami Azure, jako je Office 365.
 
-**Potenciální problém**: synchronizace mohou selhat, pokud správce nakonfiguruje zásady podmíněného přístupu ověřování Active Directory Federation Services službou Multi-Factor Authentication a vyprší platnost přístupového tokenu v zařízení. Zajistěte, aby přihlášení a odhlášení pomocí Microsoft Passport pro Work PIN nebo dokončí ověření služby Multi-Factor Authentication při přístupu k dalšími službami Azure, jako je Office 365.
+**Potenciální problém**: Synchronizace může selhat, pokud správce nakonfiguruje zásady podmíněného přístupu ověřování Active Directory Federation Services službou Multi-Factor Authentication a vyprší platnost přístupového tokenu v zařízení. Zajistěte, aby přihlášení a odhlášení pomocí Microsoft Passport pro Work PIN nebo dokončí ověření služby Multi-Factor Authentication při přístupu k dalšími službami Azure, jako je Office 365.
 
 ### <a name="event-viewer"></a>Prohlížeč událostí
 
@@ -166,7 +166,7 @@ V kroku vyčištění, čištění následující soubory:
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>ID události 6065:80070533, které tento uživatel nemůže přihlásit, protože tento účet je aktuálně zakázaný.  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>ID události 6065: 80070533 tento uživatel nemůže přihlásit, protože tento účet je aktuálně zakázaný.  
 
 V prohlížeči událostí pod protokoly SettingSync/Debug může tato chyba zobrazí, pokud vypršela platnost přihlašovacích údajů uživatele. Kromě toho může dojít, když klient automaticky neměl AzureRMS zřízené. 
 
@@ -175,9 +175,9 @@ V prvním případě požádejte uživatele, aktualizujte svoje přihlašovací 
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>ID události. 1098: Chyba: 0xCAA5001C Token zprostředkovatele operace se nezdařila  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>ID události. 1098: Chyba: 0xCAA5001C token zprostředkovatele operace se nezdařila.  
 
-V prohlížeči událostí pod protokoly AAD/Operational tato chyba může zobrazit s událostí 1104: Asie a Tichomoří cloudu AAD modulu plug-in volání Get token vrátil chybu: 0xC000005F. K tomuto problému dochází, pokud jsou chybějící oprávnění nebo vlastnictví atributy.  
+V prohlížeči událostí pod protokoly AAD/Operational může zobrazit tato chyba s 1104 události: Asie a Tichomoří cloudu AAD modulu plug-in volání Get token vrátil chybu: 0xC000005F. K tomuto problému dochází, pokud jsou chybějící oprávnění nebo vlastnictví atributy.  
 
 **Doporučená akce**  
 Postupujte podle kroků uvedených [KB3196528](https://support.microsoft.com/kb/3196528).  

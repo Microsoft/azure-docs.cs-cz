@@ -8,12 +8,12 @@ ms.date: 01/17/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 231dd3789a20b649efd99a6b88f6e429e2626bd3
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 1500fc5826b50e97e7fd51d18e672933275a9533
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391327"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468195"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -32,13 +32,13 @@ Unknown_user_type: Unknown User Type
 
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, pokud název assetu přihlašovacích údajů není platný nebo pokud nejsou platné uživatelské jméno a heslo, které jste použili k nastavení služby Automation asset přihlašovacích údajů.
+K této chybě dochází v případě, že název assetu přihlašovacích údajů není platný. Této chybě může také dojít, pokud nejsou platné uživatelské jméno a heslo, které jste použili k nastavení služby Automation asset přihlašovacích údajů.
 
 #### <a name="resolution"></a>Řešení
 
 Pokud chcete zjistit, co je špatně, proveďte následující kroky:  
 
-1. Ujistěte se, že není nutné žádné speciální znaky, včetně **@** znak v názvu asset přihlašovacích údajů Automation, který používáte pro připojení k Azure.  
+1. Ujistěte se, že není nutné žádné speciální znaky. Zahrnout tyto znaky **@** znak v názvu asset přihlašovacích údajů Automation, který používáte pro připojení k Azure.  
 2. Zkontrolujte, jestli můžete použít uživatelské jméno a heslo, které se ukládají v přihlašovacích údajích Azure Automation v místním prostředí PowerShell ISE editor. Můžete provést Zkontrolujte uživatelské jméno a heslo jsou správné spuštěním následující rutiny v prostředí PowerShell ISE:  
 
    ```powershell
@@ -87,15 +87,19 @@ The subscription named <subscription name> cannot be found.
 
 #### <a name="error"></a>Chyba
 
-K této chybě dochází v případě, že název předplatného není platný nebo pokud uživatele Azure Active Directory, který se pokouší získat podrobnosti o předplatném není nakonfigurovaný jako správce předplatného.
+K této chybě může dojít, pokud:
+
+* Název předplatného není platný
+
+* Azure Active Directory uživatele, který se pokouší načíst podrobnosti o předplatném není nakonfigurovaný jako správce předplatného.
 
 #### <a name="resolution"></a>Řešení
 
-K určení, zda jste správně ověření do Azure a přístup k předplatnému, které se snažíte vyberte, proveďte následující kroky:  
+Proveďte následující kroky k určení, zda ověření do Azure a přístup k předplatnému, které se snažíte vyberte:  
 
-1. Skript mimo Azure Automation. abyste měli jistotu, že funguje samostatná otestujte.
+1. Pokud chcete mít jistotu, že funguje samostatná, otestujte svůj skript mimo Azure Automation.
 2. Ujistěte se, že spouštíte `Add-AzureAccount` dřív, než spustíte rutiny `Select-AzureSubscription` rutiny. 
-3. Přidat `Disable-AzureRmContextAutosave –Scope Process` na začátku své sadě runbook. Tím se zajistí, že žádné přihlašovací údaje platí pouze pro provádění aktuální sady runbook.
+3. Přidat `Disable-AzureRmContextAutosave –Scope Process` na začátku své sadě runbook. Tato rutina zajistí, že žádné přihlašovací údaje platí pouze pro provádění aktuální sady runbook.
 4. Pokud se stále zobrazí tato chybová zpráva, upravte kód tak, že přidáte **AzureRmContext** následující parametr `Add-AzureAccount` rutiny a pak spusťte kód.
 
    ```powershell
@@ -187,7 +191,7 @@ Tuto chybu může způsobovat pomocí zastaralého moduly Azure.
 
 Tuto chybu lze vyřešit aktualizací moduly Azure na nejnovější verzi.
 
-Ve vašem účtu Automation, klikněte na tlačítko **moduly**a klikněte na tlačítko **moduly Azure aktualizace**. Aktualizace trvá přibližně 15 minut, po dokončení opětovné spuštění sady runbook, který došlo k selhání. Další informace o aktualizaci modulů najdete v tématu [moduly Azure aktualizace ve službě Azure Automation](../automation-update-azure-modules.md).
+Ve vašem účtu Automation, klikněte na tlačítko **moduly**a klikněte na tlačítko **moduly Azure aktualizace**. Aktualizace trvá přibližně 15 minut, po dokončení je znovu spustit runbook, který došlo k selhání. Další informace o aktualizaci modulů najdete v tématu [moduly Azure aktualizace ve službě Azure Automation](../automation-update-azure-modules.md).
 
 ### <a name="runbook-auth-failure"></a>Scénář: Sady Runbook nezdaří při práci s několika předplatnými
 
@@ -240,7 +244,7 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba může být způsobeno z následujících důvodů:
+K této chybě může dojít založen na některém z následujících důvodů:
 
 1. Modul, který obsahuje rutinu není importován do účtu automation
 2. Modul, který obsahuje rutinu je naimportovány, ale je zastaralá
@@ -265,7 +269,7 @@ The job was tried three times but it failed
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba může být způsobeno z následujících důvodů:
+K této chybě dochází kvůli jednomu z následujících problémů:
 
 1. Limit paměti. Nepřispějete na tom, kolik paměti je přidělen izolovaném prostoru se nachází v umístění [omezení služby Automation](../../azure-subscription-service-limits.md#automation-limits). Úlohy se může selhat, pokud aplikace používá více než 400 MB paměti.
 
@@ -273,15 +277,19 @@ Tato chyba může být způsobeno z následujících důvodů:
 
 3. Nekompatibilní modul. Této chybě může dojít, pokud modul závislosti nejsou správné, a pokud nejsou, vaše sada runbook obvykle vrací "Příkaz nebyl nalezen" nebo "Nelze vytvořit vazbu parametru" zprávy.
 
+4. Vaše sada runbook se pokusil zavolat spustitelný soubor nebo podproces v sadě runbook, která běží v Azure izolovaný prostor. Tento scénář není podporován v Azure karantény.
+
 #### <a name="resolution"></a>Řešení
 
 Některé z následujících řešení tento problém vyřešit:
 
-* Navrhované metody pro práci v rámci omezení paměti jsou rozdělit zatížení mezi více runbooky, není zpracování co nejvíce dat v paměti, nikoli k zápisu zbytečné výstup z vaší sady runbook, nebo zvažte počet kontrolních bodů zápisu do vašich pracovních postupů prostředí PowerShell sady runbook. Clear – metoda můžete použít například `$myVar.clear()` vymazání proměnné a použití `[GC]::Collect()` spustit uvolňování paměti okamžitě, tím se snižuje nároky na paměť pro sady runbook za běhu.
+* Navrhované metody pro práci v rámci omezení paměti jsou rozdělit zatížení mezi více runbooky, není zpracování co nejvíce dat v paměti, nikoli k zápisu zbytečné výstup z vaší sady runbook, nebo zvažte počet kontrolních bodů zápisu do vašich pracovních postupů prostředí PowerShell sady runbook. Clear – metoda můžete použít například `$myVar.clear()` vymazání proměnné a použití `[GC]::Collect()` okamžitě spustit uvolňování paměti. Tyto akce snížit nároky na paměť pro sady runbook za běhu.
 
 * Aktualizovat moduly Azure pomocí následujících kroků [aktualizace modulů Azure Powershellu ve službě Azure Automation](../automation-update-azure-modules.md).  
 
 * Druhým řešením je spouštět sadu runbook [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybridní pracovní procesy nejsou omezeny omezení paměti a sítě, které jsou Azure karantény.
+
+* Pokud je potřeba volat procesu (jako je například .exe nebo subprocess.call) v sadě runbook, bude nutné ke spuštění sady runbook [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md).
 
 ### <a name="fails-deserialized-object"></a>Scénář: Sada Runbook selže z důvodu deserializovaný objekt
 
@@ -307,6 +315,34 @@ Tento problém vyřešit některé z následujících tří řešení:
 2. Název nebo hodnotu, která je nutné předejte z komplexní objekt místo předávání celý objekt.
 3. Místo pracovních postupů Powershellu použijte Powershellový runbook.
 
+### <a name="runbook-fails"></a>Scénář: Můj Runbook selže, ale funguje, když byl spuštěn místně
+
+#### <a name="issue"></a>Problém
+
+Váš skript selže, když byl spuštěn jako sady runbook, ale funguje, když byl spuštěn místně.
+
+#### <a name="cause"></a>Příčina
+
+Skript může selhat při spuštění jako sady runbook pro jednu z následujících důvodů:
+
+1. Authentication issues
+2. Požadované moduly nejsou importované nebo zastaralá.
+3. Skript může být vás vyzve k zadání interakci s uživatelem.
+4. Některé moduly vytvořit předpoklady o knihovny, které jsou k dispozici na počítačích s Windows. Tyto knihovny nemusí být k dispozici v izolovaném prostoru.
+5. Některé moduly spoléhají na určitou verzi rozhraní .NET, která je odlišné od těch, které jsou k dispozici v izolovaném prostoru.
+
+#### <a name="resolution"></a>Řešení
+
+Tento problém lze pravděpodobně vyřešit některé z následujících řešení:
+
+1. Ověření jsou správně [ověřování v Azure](../manage-runas-account.md).
+2. Zkontrolujte vaše [moduly Azure jsou aktuální a importované](../automation-update-azure-modules.md).
+3. Ověřte, že žádná z rutin se vás vyzve k zadání informace. Toto chování není podporováno v sadách runbook.
+4. Zkontrolujte, zda cokoli, co je součástí modulu má závislost na libovolnou položku, která není zahrnutá v modulu.
+5. Sandboxy Azure pomocí rozhraní .NET Framework 4.7.2, pokud modul používá na vyšší verzi nebude fungovat. V takovém případě by měl používat [Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md)
+
+Pokud se žádná z těchto řešení vyřešit váš problemReview [úlohy protokoly](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) pro konkrétní podrobnosti, proč vaše sada runbook mohlo dojít k selhání.
+
 ### <a name="quota-exceeded"></a>Scénář: Úloha Runbooku se nezdařila, protože překročil přidělenou kvótu.
 
 #### <a name="issue"></a>Problém
@@ -319,7 +355,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 #### <a name="cause"></a>Příčina
 
-Této chybě dochází při provádění úlohy překročí 500 minut bezplatnou kvótu pro váš účet. Tato kvóta se vztahuje na všechny typy spuštění úloh, jako je například testování úlohy, spouští úlohu z portálu, provádění úlohy pomocí webhooků a plánování úloh ke spuštění s použitím portálu Azure nebo ve vašem datovém centru. Další informace o cenách pro službu Automation najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
+Této chybě dochází při provádění úlohy překročí 500 minut bezplatnou kvótu pro váš účet. Tato kvóta se vztahuje na všechny typy spuštění úloh. Některé z těchto úloh může být testování úlohy, spouští úlohu z portálu, provádění úlohy pomocí webhooků, nebo naplánování úlohy provést pomocí portálu Azure nebo ve vašem datovém centru. Další informace o cenách pro službu Automation najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
 #### <a name="resolution"></a>Řešení
 
@@ -327,7 +363,7 @@ Pokud chcete využívat víc než 500 minut zpracování za měsíc, budete muse
 
 1. Přihlaste se ke svému předplatnému Azure.  
 2. Vyberte účet Automation, který chcete upgradovat.  
-3. Klikněte na **nastavení** > **ceny**.
+3. Klikněte na tlačítko **nastavení** > **ceny**.
 4. Klikněte na tlačítko **povolit** v dolní části stránky můžete upgradovat svůj účet na **základní** vrstvy.
 
 ### <a name="cmdlet-not-recognized"></a>Scénář: Rutina není rozpoznán po spuštění sady runbook
@@ -342,7 +378,7 @@ Vaše úloha runbooku se nezdaří s chybou:
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je nastává, když modul Powershellu nejde najít rutiny, které používáte ve své sadě runbook. To může být způsobeno modulu, který obsahuje rutinu chybí z účtu, dojde ke konfliktu názvu pomocí názvu sady runbook nebo rutina také existuje v jiném modulu a automatizace nemůže přeložit název.
+Tato chyba je nastává, když modul Powershellu nejde najít rutiny, které používáte ve své sadě runbook. Tato chyba mohla být, protože chybí modul, který obsahuje rutinu z účtu, dojde ke konfliktu názvu pomocí názvu sady runbook nebo rutina také existuje v jiném modulu a automatizace nemůže přeložit název.
 
 #### <a name="resolution"></a>Řešení
 
@@ -350,7 +386,7 @@ Některé z následujících řešení tento problém vyřešit:
 
 * Zkontrolujte, zda jste zadali název rutiny správně.  
 * Ujistěte se, že rutina existuje ve vašem účtu Automation a že nebyly zjištěny žádné konflikty. Chcete-li ověřit, zda je k dispozici rutiny, otevřete sadu runbook v režimu úprav a vyhledání rutiny, které chcete najít v knihovně nebo spuštění `Get-Command <CommandName>`. Jakmile ověříte, které rutina je k dispozici na účet a že nejsou žádné název je v konfliktu s jinými rutinami nebo sady runbook, přidejte ho na plátno a ujistěte se, že používáte platný parametr nastavení v sadě runbook.  
-* Pokud máte ke konfliktu názvů a rutina je k dispozici ve dvou různých modulech, můžete vyřešit pomocí plně kvalifikovaného názvu pro rutinu. Například můžete použít **ModuleName\CmdletName**.  
+* Pokud máte ke konfliktu názvů a rutina je k dispozici ve dvou různých modulech, můžete tento problém vyřešit pomocí plně kvalifikovaného názvu pro rutinu. Například můžete použít **ModuleName\CmdletName**.  
 * Pokud se spuštění sady runbook v místním ve skupině hybrid worker, ujistěte se, že je nainstalován modul a rutiny na počítači, který je hostitelem procesu hybrid worker.
 
 ### <a name="long-running-runbook"></a>Scénář: Dokončení dlouho spuštěná sada runbook selhalo
@@ -363,7 +399,7 @@ Vaše sada runbook zobrazuje **Zastaveno** stavu po spuštění pro 3 hodiny. Ta
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
-Toto chování je záměrné Azure pomocí sandboxů kvůli sledování "Spravedlivé sdílení" procesů v rámci Azure Automation, který automaticky zastaví sadu runbook, pokud se provede déle než tři hodiny. Stav sady runbook, která překračuje spravedlivé sdílení časový limit se liší podle typu runbook. Prostředí PowerShell a Python sady runbook nastaveno **Zastaveno** stav. Runbooky pracovních postupů Powershellu jsou nastaveny na **neúspěšné**.
+Toto chování je záměrné Azure pomocí sandboxů kvůli sledování "Spravedlivé sdílení" procesů v rámci Azure Automation. Pokud se provede déle než tři hodiny, spravedlivé sdílení automaticky zastaví sadu runbook. Stav sady runbook, která překračuje spravedlivé sdílení časový limit se liší podle typu runbook. Prostředí PowerShell a Python sady runbook nastaveno **Zastaveno** stav. Runbooky pracovních postupů Powershellu jsou nastaveny na **neúspěšné**.
 
 #### <a name="cause"></a>Příčina
 
@@ -373,21 +409,21 @@ Sada runbook spustil přes 3 hodiny limit povolený spravedlivé sdílení v San
 
 Jeden doporučená řešení je ke spuštění sady runbook [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md).
 
-Hybridní pracovní procesy nejsou omezeny [spravedlivé sdílení](../automation-runbook-execution.md#fair-share) limit runbook 3 hodiny jsou Azure karantény. Zatímco proces Hybrid Runbook Worker nejsou omezeny limit spravedlivé sdílení 3 hodiny, runbooky spuštěné v hybridní pracovní procesy Runbooku by měly být vypracovány dál k podpoře restartování chování, pokud dojde k problémům neočekávaný místní infrastruktury.
+Hybridní pracovní procesy nejsou omezeny [spravedlivé sdílení](../automation-runbook-execution.md#fair-share) limit runbook 3 hodiny jsou Azure karantény. Runbooky spuštěné v by měly být vypracovány Hybrid Runbook Worker pro podporu restartování chování, pokud dojde k problémům neočekávaný místní infrastruktury.
 
-Další možností je optimalizace sadu runbook tak, že vytvoříte [podřízené runbooky](../automation-child-runbooks.md). Pokud vaše sada runbook prochází stejnou funkci na celé řadě zdrojů, jako je například databázová operace na několik databází, můžete tuto funkci přesunout do podřízeného runbooku. Každá z těchto podřízených runbooků spustí paralelně v oddělených procesech. Toto chování snižuje celkovou dobu pro nadřazený runbook k dokončení.
+Další možností je optimalizace sadu runbook tak, že vytvoříte [podřízené runbooky](../automation-child-runbooks.md). Pokud vaše sada runbook prochází stejnou funkci na několik prostředků, jako je například databázová operace na několik databází, můžete tuto funkci přesunout do podřízeného runbooku. Každá z těchto podřízených runbooků spustí paralelně v oddělených procesech. Toto chování snižuje celkovou dobu pro nadřazený runbook k dokončení.
 
 Rutiny Powershellu, které umožňují scénáře podřízené sady runbook jsou:
 
 [Start-AzureRMAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) – Tato rutina umožňuje spuštění sady runbook a předání parametrů do runbooku
 
-[Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) – Tato rutina umožňuje kontrole stavu úlohy pro každý podřízený prvek, pokud operace, které je třeba provést po dokončení podřízeného runbooku.
+[Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) – Pokud operace, které je třeba provést po dokončení podřízeného runbooku se tato rutina umožňuje zkontrolovat stav úlohy u jednotlivých podřízených.
 
-### <a name="expired webhook"></a>Scénář: Stav: 400 – Chybný požadavek při vyvolání webhooku
+### <a name="expired webhook"></a>Scénář: Stav: 400 – Chybný požadavek při zavolání webhooku
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o vyvolání webhook pro runbook Azure Automation, se zobrazí následující chyba.
+Při pokusu o vyvolání webhook pro runbook Azure Automation, zobrazí se následující chybová zpráva:
 
 ```error
 400 Bad Request : This webhook has expired or is disabled
@@ -421,31 +457,6 @@ Existují dva způsoby, jak vyřešit tuto chybu:
 
 * Upravit sadu runbook a snížení počtu datové proudy úlohy, které vydává.
 * Snižte počet datových proudů, která se má načíst při spuštění rutiny. Pokud chcete postupovat podle tohoto chování, můžete zadat `-Stream Output` parametr `Get-AzureRmAutomationJobOutput` rutina pro načtení pouze výstupním datovým proudům. 
-
-## <a name="common-errors-when-importing-modules"></a>Běžné chyby při importu modulů
-
-### <a name="module-fails-to-import"></a>Scénář: Chyby modulu k importu nebo rutin nelze provést po dokončení importu
-
-#### <a name="issue"></a>Problém
-
-Modul nejde importovat nebo se importuje správně, ale jsou extrahovány žádné rutiny.
-
-#### <a name="cause"></a>Příčina
-
-Je několik běžných příčin, které modul nemusí úspěšně importovat do Azure Automation:
-
-* Struktura neodpovídá struktuře Automation musí být v.
-* Modul je závislá na jiný modul, který nebyl nasazen do vašeho účtu Automation.
-* Modul chybí jeho závislosti do složky.
-* `New-AzureRmAutomationModule` Rutina se používá k nahrání modulu a nedali úložiště úplnou cestu nebo nebyly načteny modulu pomocí adresy URL veřejně přístupná.
-
-#### <a name="resolution"></a>Řešení
-
-Některé z následujících řešení tento problém vyřešit:
-
-* Ujistěte se, že modul má tento formát: ModuleName.Zip **->** název modulu nebo číslo verze **->** (ModuleName.psm1, ModuleName.psd1)
-* Otevření souboru .psd1 a zjistěte, jestli modul mají všechny závislosti. Pokud ano, nahrajte do účtu Automation tyto moduly.
-* Ujistěte se, že jsou ve složce modulu všechny odkazované knihovny DLL debuggle.
 
 ## <a name="next-steps"></a>Další postup
 

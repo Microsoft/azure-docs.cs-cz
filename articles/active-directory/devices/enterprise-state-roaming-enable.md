@@ -5,7 +5,7 @@ services: active-directory
 keywords: Enterprise stav roamingu, cloudu systému windows, jak povolit roaming stavu enterprise
 documentationcenter: ''
 author: tanning
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.component: devices
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 9dc223015f85d83278d48494bf05693c7932bdde
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 3e6b2d09c2b3c204fc62428ab53a4d4e33d57eac
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097803"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448376"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -41,7 +41,7 @@ Když povolíte Enterprise State Roaming, vaše organizace je automaticky uděle
 Pro zařízení s Windows 10 k používání služby Enterprise State Roaming zařízení musí ověřit pomocí identity Azure AD. Pro zařízení, která jsou připojená k Azure AD je primární přihlašovací identitu uživatele svoji identitu služby Azure AD, takže není nutná žádná další konfigurace. Zařízení, která používají místní služby Active Directory, musí správce IT [zařízení připojená k hybridní službě Azure Active Directory konfigurovat](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps). 
 
 ## <a name="data-storage"></a>Úložiště dat
-Enterprise State Roaming dat je hostovaná v jednom nebo více [oblastí Azure](https://azure.microsoft.com/regions/) , že nejlepší bylo v souladu s země/oblast hodnotu nastavenou v instanci Azure Active Directory. Enterprise State Roaming data jsou rozdělená podle tři hlavní geografických oblastech: Severní Amerika, EMEA a APAC. Enterprise State Roaming dat pro tenanta se nachází na místně geografické oblasti a není replikován napříč oblastmi.  Příklad:
+Enterprise State Roaming dat je hostovaná v jednom nebo více [oblastí Azure](https://azure.microsoft.com/regions/) , že nejlepší bylo v souladu s země/oblast hodnotu nastavenou v instanci Azure Active Directory. Enterprise State Roaming data jsou rozdělená podle tři hlavní zeměpisné oblasti: Severní Amerika, EMEA a APAC. Enterprise State Roaming dat pro tenanta se nachází na místně geografické oblasti a není replikován napříč oblastmi.  Příklad:
 
 Země/oblast hodnoty | má konání svá data
 ---------------------|-------------------------
@@ -75,8 +75,8 @@ Data synchronizují do cloudu Microsoftu pomocí Enterprise State Roaming se uch
 ### <a name="explicit-deletion"></a>Explicitní odstranění
 Explicitní odstranění je, když Azure správce odstraní uživatele nebo adresář nebo jinak požadavků explicitně, že data se odstraní.
 
-* **Odstranění uživatele**: Při odstranění uživatele ve službě Azure AD, uživatelský účet roamingová data se odstraní po uplynutí 90 až 180 dnů. 
-* **Odstranění adresáře**: odstranění celý adresář ve službě Azure AD je okamžitě operace. Nastavení data související s, které adresáře odstraněny po 90 až 180 dní. 
+* **Odstranění uživatele**: Při odstranění uživatele ve službě Azure AD je uživatelský účet roamingová data odstraněny po 90 až 180 dní. 
+* **Odstranění adresáře**: Odstraňuje se celý adresář ve službě Azure AD je okamžitě operace. Nastavení data související s, které adresáře odstraněny po 90 až 180 dní. 
 * **V žádosti o odstranění**: Pokud chce správce služby Azure AD ručně odstranit data nebo data nastavení konkrétního uživatele, Správce může lístek pomocí [podpory Azure](https://azure.microsoft.com/support/). 
 
 ### <a name="stale-data-deletion"></a>Odstranění zastaralých dat

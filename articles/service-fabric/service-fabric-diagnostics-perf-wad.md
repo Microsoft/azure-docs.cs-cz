@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 0675e06564fcacf5f7d14ef6986762f36df18b1b
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: a6941e28bdfd922a68ff484c57031326a9aa5c0b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290318"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452628"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorování výkonu pomocí rozšíření Windows Azure Diagnostics
 
@@ -43,7 +43,7 @@ Získat čítače výkonu pomocí WAD, budete muset upravit konfiguraci odpovíd
     }
     ```
 
-    `scheduledTransferPeriod` Definuje konfiguraci frquently hodnoty čítačů, které se shromažďují se přenáší do tabulky Azure storage a do libovolné jímky. 
+    `scheduledTransferPeriod` Definuje, jak často se přenáší hodnoty čítačů, které se shromažďují do tabulky Azure storage a do libovolné jímky nakonfigurované. 
 
 3. Přidat čítače výkonu chcete shromažďovat pro `PerformanceCounterConfiguration` , který byl deklarován v předchozím kroku. Jednotlivé čítače, které chcete shromažďovat je definována s `counterSpecifier`, `sampleRate`, `unit`, `annotation`a všechny relevantní `sinks`.
 

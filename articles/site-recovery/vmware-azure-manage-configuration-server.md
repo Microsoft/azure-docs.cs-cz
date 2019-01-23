@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 81f775d8deccb9fb8b23e811a6ca89886576f55f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: db5482fe17b9181097e13d446937bc489c3db8fe
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431635"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462823"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware
 
@@ -137,10 +137,12 @@ Spuštění kumulativní aktualizace se aktualizovat konfigurační server. Aktu
 - Pokud spustíte 9.7, 9.8, 9.9 nebo 9.10, můžete upgradovat přímo na 9.11.
 - Pokud chcete provést upgrade 9.11 spustíte 9,6 nebo starší, musíte nejprve upgradovat na verzi 9.7. před 9.11.
 
-Odkazy na kumulativní aktualizace pro upgrade pro všechny verze konfiguračního serveru jsou k dispozici v [stránku aktualizace Azure](https://azure.microsoft.com/updates/?product=site-recovery).
+Podrobné pokyny k komponent Azure Site Recovery najdete v prohlášení o odborné pomoci [tady](https://aka.ms/asr_support_statement).
+Odkazy na kumulativní aktualizace pro upgrade pro všechny verze konfiguračního serveru jsou k dispozici [tady](https://aka.ms/asr_update_rollups).
 
 > [!IMPORTANT]
-> S každou novou verzí "n" Azure Site Recovery komponentu, která je všeobecně dostupné, všechny verze nižší než n-4' je považován za bez podpory. Je vždy vhodné k upgradu na nejnovější verze k dispozici.
+> S každou novou verzí "n" Azure Site Recovery komponentu, která je všeobecně dostupné, všechny verze nižší než n-4' je považován za bez podpory. Je vždy vhodné k upgradu na nejnovější verze k dispozici.</br>
+> Podrobné pokyny k komponent Azure Site Recovery najdete v prohlášení o odborné pomoci [tady](https://aka.ms/asr_support_statement).
 
 Upgrade serveru následujícím způsobem:
 
@@ -158,6 +160,7 @@ Upgrade serveru následujícím způsobem:
     ![Aktualizace](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Klikněte na tlačítko **Dokončit** zavřete Instalační služby.
+8. Chcete-li upgradovat zbývající součásti Site Recovery, přečtěte si naše [pokyny k upgradu](https://aka.ms/asr_vmware_upgrades).
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>Odstranění nebo zrušení registrace konfiguračního serveru
 

@@ -4,7 +4,7 @@ description: Pomáhá definovat úkoly správy hybridní identity podle možnost
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5590f1fc3716582da090b8429f8bcf4fc7911dbe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6512cb71cc8ca973a778b7e172afcd9e056421ed
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251759"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478378"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Určení strategie přijetí životního cyklu hybridní identity
 V této úloze budete definovat strategie správy identit pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v [určit úlohy správy hybridních identit](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -43,9 +43,9 @@ Pomocí řešení správy přístupu vhodné účet vaší organizace můžete s
 Přístup na základě rolí používá role (RBAC) řídit a zřizování zásad k vyhodnocení, testování a vynucování obchodních procesů a pravidel pro udělení přístupu uživatelům. Klíče správci vytvořit zásady zřizování a přiřazení uživatelů k rolím a, které definují sadu oprávnění k prostředkům pro tyto role. RBAC rozšiřuje řešení správy identit použijte procesy na software a snížit ručního zásahu uživatele v procesu zřizování.
 Azure AD RBAC umožňuje společnosti chcete omezit počet operací, které jednotlivec můžete dělat, když má přístup k webu Azure portal. Pomocí RBAC pro řízení přístupu k portálu správce IT certifikační autority delegovat přístup pomocí následujících postupů správy přístupu:
 
-* **Přiřazení role na základě skupin**: přístup můžete přiřadit skupinám Azure AD, které se synchronizují z vaší místní služby Active Directory. To umožňuje využít stávající investice, které vaše organizace provedla v nástrojů a procesů pro správu skupin. Můžete také použít funkci delegované skupiny pro správu služby Azure AD Premium.
-* **Využijte vestavěné role v Azure**: můžete použít tři role – vlastník, Přispěvatel a Čtenář, ujistěte se, že uživatelé a skupiny mají oprávnění pouze úlohy, které potřebují ke své práci.
-* **Granulární přístup k prostředkům**: můžete přiřadit role pro uživatele a skupiny pro konkrétní předplatné, skupinu prostředků nebo jednotlivých prostředků Azure, jako je například na webu nebo v databázi. Tímto způsobem můžete zajistit, aby uživatelé měli přístup ke všem prostředkům, které potřebují a bez přístupu k prostředkům, které není potřeba spravovat.
+* **Přiřazení role na základě skupin**: Přístup můžete přiřadit skupinám Azure AD, které se synchronizují z vaší místní služby Active Directory. To umožňuje využít stávající investice, které vaše organizace provedla v nástrojů a procesů pro správu skupin. Můžete také použít funkci delegované skupiny pro správu služby Azure AD Premium.
+* **Využijte vestavěné role v Azure**: Můžete použít tři role – vlastník, Přispěvatel a Čtenář, ujistěte se, že uživatelé a skupiny mají oprávnění pouze úlohy, které potřebují ke své práci.
+* **Granulární přístup k prostředkům**: Můžete je přiřadit role uživatelů a skupin pro konkrétní předplatné, skupinu prostředků nebo jednotlivých prostředků Azure, jako je například na webu nebo v databázi. Tímto způsobem můžete zajistit, aby uživatelé měli přístup ke všem prostředkům, které potřebují a bez přístupu k prostředkům, které není potřeba spravovat.
 
 ## <a name="provisioning-and-other-customization-options"></a>Zřizování a další možnosti vlastního nastavení
 Váš tým může použít obchodní plány a požadavky se rozhodnout, kolik chcete přizpůsobit řešení identit. Například velký podnik může vyžadovat postupné zavedení plánu pro pracovní postupy a vlastní adaptéry, které je založená na časové ose pro přírůstkové zřizování aplikací, které se běžně používají napříč geografickými oblastmi. Pro dva nebo více aplikací zřídit napříč celou organizací, po úspěšném otestování může poskytovat jiný plán přizpůsobení. Interakce uživatele – aplikace se dají přizpůsobit a postupy pro zřizování prostředků může být změněn tak, aby vyhovovaly automatického zřizování.
@@ -93,7 +93,7 @@ Projděte si následující tabulku k porovnání vybrané možnosti synchroniza
 
 | Možnost správy synchronizace | Výhody | Nevýhody |
 | --- | --- | --- |
-| Na základě synchronizace (prostřednictvím DirSync nebo AADConnect) |Uživatelé a skupiny synchronizované z místní prostředí a cloudu <br>  **Řízení pomocí zásad**: účet zásady je možné nastavit prostřednictvím služby Active Directory, která poskytuje schopnost spravovat zásady pro hesla, pracovní stanice, omezení, uzamčení ovládacích prvků správce a další, aniž byste museli provádět další úkoly v v cloudu.  <br>  **Řízení přístupu**: můžete omezit přístup ke cloudové službě, tak, aby služby přístupné prostřednictvím podnikového prostředí prostřednictvím online servery nebo obojí. <br>  Snížená volání podpory: Pokud uživatelé používají méně hesel, která mějte na paměti, jsou méně pravděpodobné, že zapomenete je. <br>  Zabezpečení: Identity uživatelů a informace jsou chráněny, protože všechny servery a služby použité v jednotného přihlašování, standardní a řídit místní. <br>  Podpora pro silné ověřování: silné ověřování (také nazývané dvoufaktorové ověřování) můžete použít s cloudovou službou. Nicméně pokud používáte silné ověřování, musíte použít jednotné přihlašování. | |
+| Na základě synchronizace (prostřednictvím DirSync nebo AADConnect) |Uživatelé a skupiny synchronizované z místní prostředí a cloudu <br>  **Řízení pomocí zásad**: Je možné nastavit zásady účtů prostřednictvím služby Active Directory, která umožňuje správci spravovat zásady pro hesla, pracovní stanice, omezení, uzamčení ovládací prvky a další, aniž byste museli provádět další úkoly v cloudu.  <br>  **Řízení přístupu**: Můžete omezit přístup ke cloudové službě, aby služby přístupné prostřednictvím podnikové prostředí prostřednictvím online servery, nebo obojí. <br>  Omezit volání podpory: Pokud uživatelé používají méně hesel, která mějte na paměti, jsou méně pravděpodobné, že zapomenete je. <br>  Zabezpečení: Identity uživatelů a informace jsou chráněny, protože všechny servery a služby použité v jednotného přihlašování, standardní a řídit místní. <br>  Podpora pro silné ověřování: Silné ověřování (také nazývané dvoufaktorové ověřování) můžete použít s cloudovou službou. Nicméně pokud používáte silné ověřování, musíte použít jednotné přihlašování. | |
 | Federační (prostřednictvím služby AD FS) |Zajišťuje služba tokenů zabezpečení (STS). Při konfiguraci služby tokenů zabezpečení zajistit přístup pomocí jednotného přihlašování s cloudovou službou Microsoftu, budete vytvářet federovaného vztahu důvěryhodnosti mezi vaší místní služby STS a federovanou doménu, kterou jste zadali ve vašem tenantovi Azure AD. <br> Umožňuje koncovým uživatelům získat přístup k více prostředkům používá stejnou sadu přihlašovacích údajů <br>koncoví uživatelé nemusíte udržovat několik sad přihlašovacích údajů. Zatím, uživatelé musí zadat své přihlašovací údaje pro každé z nich zúčastněných prostředků., B2B a B2C scénáře podporované. |Vyžaduje specializované pracovníky pro nasazení a údržby vyhrazené místní servery služby AD FS. Existují omezení týkající se použití silné ověřování, pokud plánujete použití služby AD FS pro vaši službu tokenů zabezpečení. Další informace najdete v tématu [konfigurace rozšířené možnosti pro službu AD FS 2.0](https://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]

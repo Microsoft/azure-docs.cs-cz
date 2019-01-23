@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6e21b1d8905dc0f0eda5b6282e345ef52006a75a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605530"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468025"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení vzdáleného sledování
 
@@ -47,11 +47,11 @@ Protože společnost Microsoft vydala první akcelerátory řešení se vyvinula
 
 Toto řešení zahrnuje následující součásti v části připojení k zařízení logickou architekturu:
 
-### <a name="physical-devices"></a>Fyzická zařízení
+### <a name="real-devices"></a>Skutečných zařízení
 
-Připojení fyzických zařízení k řešení. Můžete implementovat chování simulovaných zařízení pomocí sady SDK pro zařízení Azure IoT.
+Skutečné zařízení můžete připojit k řešení. Můžete implementovat chování simulovaných zařízení pomocí sady SDK pro zařízení Azure IoT.
 
-Můžete zřídit fyzické zařízení na řídicím panelu portálu řešení.
+Můžete zřídit skutečných zařízení na řídicím panelu portálu řešení.
 
 ### <a name="device-simulation-microservice"></a>Mikroslužby simulace zařízení
 
@@ -66,7 +66,7 @@ Zřízení simulovaného zařízení na řídicím panelu portálu řešení.
 
 ### <a name="iot-hub"></a>IoT Hub
 
-[Služby IoT hub](../iot-hub/index.yml) ingestuje telemetrická data odesílaná z fyzických a simulovaných zařízení do cloudu. IoT hub zpřístupní telemetrická data do služeb back-endu řešení IoT pro zpracování.
+[Služby IoT hub](../iot-hub/index.yml) ingestuje telemetrická data odesílaná ze skutečných a simulovaných zařízení do cloudu. IoT hub zpřístupní telemetrická data do služeb back-endu řešení IoT pro zpracování.
 
 Služba IoT Hub v řešení také:
 
@@ -79,7 +79,7 @@ Služba IoT Hub v řešení také:
 
 Toto řešení zahrnuje následující součásti v zpracování dat a analýz součástí logickou architekturu:
 
-### <a name="iot-hub-manager-microservice"></a>Mikroslužby Správce služby IoT Hub
+### <a name="iot-hub-manager-microservice"></a>IoT Hub manager microservice
 
 Toto řešení zahrnuje [mikroslužeb Správce služby IoT Hub](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) zpracování interakce s centrem IoT, jako:
 
@@ -106,7 +106,7 @@ Tato služba poskytuje koncový bod RESTful pro operace CRUD s páry klíč hodn
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Nasazení akcelerátoru řešení používat [služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) k uložení pravidel, alarmy, nastavení konfigurace a všechny ostatní studeného úložiště.
+Nasazení akcelerátoru řešení používat [služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) k uložení pravidla, oznámení, nastavení konfigurace a všechny ostatní studeného úložiště.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Azure Stream Analytics správce mikroslužeb
 

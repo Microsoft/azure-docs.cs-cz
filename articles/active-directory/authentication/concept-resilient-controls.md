@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 73bd86591f2d8604e0eb9553f99c311b6d421603
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9e13b8872fab89bef6ec952fe2ee0b901a25092e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424021"
+ms.locfileid: "54452543"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
 
@@ -199,7 +199,7 @@ Pořadí aktivace:
 
 1. Vylučte SalesAdmins a SalesforceContingency ze stávající zásady dodržování předpisů zařízení pro služby Salesforce. Ověřte, že uživatel ve skupině SalesforceContingency můžete přistupovat k Salesforce.
 2. Povolte zásady 1: Ověřte, že uživatelé mimo SalesContingency nemají přístup k Salesforce. Ověřování uživatelů v SalesAdmins a SalesforceContingency přístup k Salesforce.
-3. Povolte zásady 2: Ověření uživatelů ve skupině SalesContigency nemohou přistupovat k Salesforce z jejich přenosné počítače Windows nebo Mac, ale můžete pořád přístup z mobilních zařízení. Ověřte, že SalesAdmin můžete pořád přístup k Salesforce z libovolného zařízení.
+3. Povolte zásady 2: Ověření uživatelů ve skupině SalesContingency nemohou přistupovat k Salesforce z jejich přenosné počítače Windows nebo Mac, ale můžete pořád přístup z mobilních zařízení. Ověřte, že SalesAdmin můžete pořád přístup k Salesforce z libovolného zařízení.
 4. Zakážete existující zásady dodržování předpisů zařízením pro Salesforce.
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Nasadit synchronizace hodnot hash hesel, i když jsou federované nebo pomocí předávacího ověřování

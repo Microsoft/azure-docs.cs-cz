@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 5e3b42b1e1f72ccc4d1127f2926ee53c51d66291
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789752"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470507"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co je rozšíření Azure Diagnostics
 Rozšíření Azure Diagnostics je agent v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Rozšíření diagnostiky můžete z mnoha různých zdrojů. V tuto chvíli nepodporuje jsou cloudové služby Azure (klasické) webové a pracovní role, Virtual Machines, Virtual Machine Scale sets a Service Fabric. Další služby Azure mají různé diagnostiky metody. Zobrazit [Přehled monitorování v Azure](../../azure-monitor/overview.md).
@@ -85,3 +85,4 @@ Začínáme při [monitorovat aplikace Service Fabric](../../service-fabric/serv
 ## <a name="general-articles"></a>Obecné články související s
 * Zjistěte, jak [pomocí čítačů výkonu v diagnostice Azure](../../cloud-services/diagnostics-performance-counters.md).
 * Pokud máte potíže se spuštěním diagnostiky nebo hledání vaše data do tabulky v úložišti Azure, najdete v článku [odstraňování potíží diagnostiky Azure](diagnostics-extension-troubleshooting.md)
+

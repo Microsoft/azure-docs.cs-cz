@@ -1,10 +1,10 @@
 ---
-title: 'Synchronizace Azure AD Connect: provozní úlohy a důležité informace | Dokumentace Microsoftu'
+title: 'Synchronizace Azure AD Connect: Provozní úlohy a důležité informace | Dokumentace Microsoftu'
 description: Toto téma popisuje provozní úlohy synchronizace Azure AD Connect a postup přípravy k provozování této součásti.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 11390f1ad777d20e31c263b4a694ae5cb31f3fd3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c4dc5ae107cc8babbd425edd6c5de428e130fc3a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311896"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467532"
 ---
-# <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Synchronizace Azure AD Connect: provozní úlohy a požadavky
+# <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Synchronizace Azure AD Connect: Provozní úlohy a důležité informace
 Cílem tohoto tématu je k popisu provozní úlohy pro synchronizaci Azure AD Connect.
 
 ## <a name="staging-mode"></a>Pracovní režim
@@ -74,8 +74,8 @@ Nyní máte připravené změny do služby Azure AD a místní AD (Pokud použí
 
 #### <a name="verify"></a>Ověřit
 1. Spusťte příkazový řádek a přejděte na `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Spustit: `csexport "Name of Connector" %temp%\export.xml /f:x` název konektoru najdete v synchronizační služba. Má název "contoso.com – AAD" podobně jako pro Azure AD.
-3. Spustit: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` máte soubor ve složce % temp % s názvem export.csv, které se dají prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
+2. Spusťte: `csexport "Name of Connector" %temp%\export.xml /f:x` Název konektoru můžete najít v synchronizační služba. Má název "contoso.com – AAD" podobně jako pro Azure AD.
+3. Spusťte: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` Když máte soubor ve složce % temp % s názvem export.csv, které se dají prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 4. Proveďte potřebné změny data nebo konfigurace a projít tyto kroky opakujte (Import a synchronizaci a ověřte, zda) až se očekává, že změny, které mají být exportovány.
 
 **Vysvětlení souboru export.csv** většina souboru je zřejmých. Některé zkratky obsahu:
@@ -126,7 +126,7 @@ Pokud nechcete použít SQL Server Express, která se dodává s Azure AD Connec
 
 Azure AD Connect verze 1.1.524.0 byla přidaná podpora pro SQL AOA. Před instalací Azure AD Connect je nutné povolit SQL AOA. Během instalace Azure AD Connect zjistí, zda zadaná instance SQL je nebo není povolená pro SQL AOA. Pokud je povolené SQL AOA, Azure AD Connect další přijde na to, pokud SQL AOA je nakonfigurovaná pro používání replikace synchronní nebo asynchronní replikace. Při nastavování naslouchacího procesu skupiny dostupnosti, se doporučuje nastavit vlastnost RegisterAllProvidersIP na hodnotu 0. Je to proto, že Azure AD Connect v současnosti využívá nativní klient systému SQL pro připojení k SQL a nativní klient systému SQL nepodporuje používání vlastnosti MultiSubNetFailover.
 
-## <a name="appendix-csanalyzer"></a>Příloha CSAnalyzer
+## <a name="appendix-csanalyzer"></a>Appendix CSAnalyzer
 V části [ověřte](#verify) o tom, jak pomocí tohoto skriptu.
 
 ```
@@ -152,9 +152,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency
@@ -271,5 +271,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>Další postup
 **Témata s přehledem**  
 
-* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)  
+* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)  
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)  

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: d3e024998e186e9c552a9a21d2b5a4bb74e18c2f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c8c7d94e216f45551ed869b2ba921f3c79e6307a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422775"
+ms.locfileid: "54452679"
 ---
 # <a name="get-started"></a>Rychlý start: Vytvoření veřejného load balanceru úrovně pomocí Azure Powershellu
 Tento rychlý start vám ukáže, jak vytvořit Load Balancer úrovně Basic pomocí Azure PowerShellu. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače s Windows Serverem, které mezi sebou budou vyrovnávat zatížení webové aplikace.
@@ -277,7 +277,7 @@ Parametr `-AsJob` vytvoří virtuální počítač jako úlohu na pozadí, takž
  
 Následujícím způsobem nainstalujte na obou back-endových virtuálních počítačích službu IIS s vlastní webovou stránkou:
 
-1. Získejte veřejnou IP adresu Load Balanceru. Pomocí rutiny `Get-AzureRmPublicIPAdress` získejte veřejnou IP adresu Load Balanceru.
+1. Získejte veřejnou IP adresu Load Balanceru. Pomocí rutiny `Get-AzureRmPublicIPAddress` získejte veřejnou IP adresu Load Balanceru.
 
   ```azurepowershell-interactive
     Get-AzureRmPublicIPAddress `

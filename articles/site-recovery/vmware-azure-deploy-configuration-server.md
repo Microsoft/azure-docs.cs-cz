@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: 41511b27a84731df203d37d70d20df40f85af4fb
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 01/22/2018
+ms.author: ramamill
+ms.openlocfilehash: 712f8fb2cb951460ad2be36b2899f52d4966fc82
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410757"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468399"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -144,7 +144,7 @@ Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa
     Odkazovat na [replikaci z VMware do Azure replikace architektura](vmware-azure-architecture.md) získat další informace o konfiguračním serveru a jeho funkcí poskytujete.
 5. Kde najdete nejnovější verzi konfiguračního serveru?
 
-    Kroky pro upgrade konfiguračního serveru pomocí portálu, najdete v části [upgradujte konfigurační server](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Můžete ji také přímo stáhnout [Microsoft Download Center](https://aka.ms/asrconfigurationserver). Podrobné pokyny o tom, jak upgradovat všechny součásti Site Recovery, najdete v tématu [tady](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
+    Kroky pro upgrade konfiguračního serveru pomocí portálu, najdete v části [upgradujte konfigurační server](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Podrobné pokyny o tom, jak upgradovat všechny součásti Site Recovery, najdete v tématu [tady](https://aka.ms/asr_how_to_upgrade).
 6. Kde lze stáhnout přístupové heslo pro konfigurační server?
 
     Odkazovat na [v tomto článku](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) stáhnout přístupové heslo.
@@ -164,6 +164,8 @@ Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa
 11. Můžete nastavit konfigurační server v Azure?
 
     Doporučujeme nastavit konfigurační server v místním prostředí s přímým přístupem řádku přístup pomocí Vcenter a minimalizovat latenci přenosu dat. Můžete provádět plánované zálohování konfiguračního serveru pro [účely navrácení služeb po obnovení](vmware-azure-manage-configuration-server.md#failback-requirements).
+
+Další nejčastější dotazy na konfiguračním serveru, najdete v našich [dokumentaci na běžné dotazy týkající se konfigurace serveru](vmware-azure-common-questions.md#configuration-server) .
 
 ## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 

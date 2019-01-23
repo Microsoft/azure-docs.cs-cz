@@ -4,7 +4,7 @@ description: Tento článek popisuje výchozí konfigurace ve službě Azure AD 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bd708d279649138fcb17362491da4eb7539c478b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6de48b0f4c7c69ab0c6acb4099234b853d2c1523
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313954"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478565"
 ---
-# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace služby Azure AD Connect: Principy výchozí konfigurace
+# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace Azure AD Connect: Principy výchozí konfigurace
 Tento článek vysvětluje, out-of-box konfigurační pravidla. Dokumentují pravidla a vliv těchto pravidel v konfiguraci. To vás také provede výchozí konfiguraci synchronizace Azure AD Connect. Cílem je, že čtečky rozumí fungováním konfigurační model s názvem deklarativní zřizování v reálný příklad. Tento článek předpokládá, že jste již nainstalovali a konfigurace synchronizace služby Azure AD Connect pomocí Průvodce instalací.
 
 Informace o tom podrobnosti o konfiguraci modelu, přečtěte si [Principy deklarativní zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
@@ -134,7 +134,7 @@ SRE je nástroj resource kit a je nainstalován pomocí synchronizace Azure AD C
 
 ![Příchozí pravidla synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
-V tomto podokně se zobrazí všechna synchronizační pravidla, které jsou vytvořené pro vaši konfiguraci. Každý řádek v tabulce je jeden synchronizační pravidlo. Na levé straně v části typy pravidel, jsou uvedeny dva různé typy: příchozí a odchozí. Příchozí a odchozí je z pohledu úložiště metaverse. Hlavně budete moct soustředit na příchozí pravidla v tomto přehledu. Skutečný seznam pravidel synchronizace závisí na zjištěné schématu ve službě AD. Na obrázku výše doménové struktury účtu (fabrikamonline.com) nemá žádné služby, jako je například Exchange a Lync, a žádná pravidla synchronizace byly vytvořeny pro tyto služby. Nicméně v doménové struktuře prostředku (res.fabrikamonline.com) zjistíte synchronizační pravidla pro tyto služby. Obsah pravidla se liší v závislosti na verzi zjištěna. Například v nasazení s Exchange 2013 existují další toky atributů, které jsou nakonfigurované než v systému Exchange 2010 nebo 2007.
+V tomto podokně se zobrazí všechna synchronizační pravidla, které jsou vytvořené pro vaši konfiguraci. Každý řádek v tabulce je jeden synchronizační pravidlo. Na levé straně v části typy pravidel jsou uvedeny dva různé typy: Příchozí a odchozí. Příchozí a odchozí je z pohledu úložiště metaverse. Hlavně budete moct soustředit na příchozí pravidla v tomto přehledu. Skutečný seznam pravidel synchronizace závisí na zjištěné schématu ve službě AD. Na obrázku výše doménové struktury účtu (fabrikamonline.com) nemá žádné služby, jako je například Exchange a Lync, a žádná pravidla synchronizace byly vytvořeny pro tyto služby. Nicméně v doménové struktuře prostředku (res.fabrikamonline.com) zjistíte synchronizační pravidla pro tyto služby. Obsah pravidla se liší v závislosti na verzi zjištěna. Například v nasazení s Exchange 2013 existují další toky atributů, které jsou nakonfigurované než v systému Exchange 2010 nebo 2007.
 
 ### <a name="synchronization-rule"></a>Synchronizační pravidlo
 Synchronizační pravidlo je objekt konfigurace sadu atributů tok, když je splněna podmínka. Také se používá k popisu, jak je objekt v prostoru konektoru vztahujících se k objektu v úložišti metaverse, označované jako **spojení** nebo **odpovídat**. Synchronizační pravidla mají přednost před hodnotu, která udává, jak se vztahují k sobě navzájem. Synchronizační pravidlo s nižší číselnou hodnotu má vyšší prioritu a v došlo ke konfliktu toku atributů vyšší prioritu služby wins řešení konfliktů.
@@ -145,7 +145,7 @@ Toto pravidlo je pravidlo out-of-box, zobrazí se při otevření pravidlo upozo
 
 ![Synchronizační pravidla upozornění](./media/concept-azure-ad-connect-sync-default-configuration/warningeditrule.png)
 
-Synchronizační pravidlo obsahuje čtyři oddíly konfigurace: popis, rozsah filtru, spojení pravidla a transformace.
+Synchronizační pravidlo obsahuje čtyři oddíly konfigurace: Popis, Scoping filtr, spojení pravidla a transformace.
 
 #### <a name="description"></a>Popis
 První část obsahuje základní informace, jako je název a popis.
@@ -216,7 +216,7 @@ Se teď podívat na některé jednotlivé synchronizační pravidla, ale pravidl
 
 Priorita pro synchronizační pravidla nastavena ve skupinách pomocí Průvodce instalací. Všechna pravidla ve skupině mají stejný název, ale jsou připojené k různým adresářům připojené. Průvodce instalací poskytuje pravidlo **v ze služby AD – uživatel připojit** nejvyšší prioritu a Iteruje přes všechny připojené adresářů AD. Pak bude pokračovat s další skupiny pravidla v předdefinované pořadí. Ve skupině přidají pravidla v pořadí, ve kterém konektory byly přidány v průvodci. Pokud přidáte jiný konektor pomocí průvodce, přeuspořádají synchronizační pravidla a pravidla nový konektor jsou vloženy poslední v každé skupině.
 
-### <a name="putting-it-all-together"></a>Vložení všechno dohromady
+### <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
 Teď už máte dostatek informací o pravidel tak, aby měli pochopit, jak služba konfigurace pracuje s různá pravidla synchronizace. Když se podíváte na uživatele a atributy, které se poskytly úložišti metaverse, pravidla se použijí v uvedeném pořadí:
 
 | Název | Poznámka |
@@ -236,6 +236,6 @@ Teď už máte dostatek informací o pravidel tak, aby měli pochopit, jak služ
 
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 

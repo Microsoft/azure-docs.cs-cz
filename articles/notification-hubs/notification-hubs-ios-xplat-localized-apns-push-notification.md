@@ -3,8 +3,8 @@ title: Zařízení s iOS pomocí Azure Notification Hubs odesílat nabízená oz
 description: Další informace o použití lokalizovaných nabízených oznámení do zařízení se systémem iOS pomocí Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: ios
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 484914b5-e081-4a05-a84a-798bbd89d428
 ms.service: notification-hubs
@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: d19fc4290f32359d3af66d96512f65abb17f5d34
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: 56662a40df6abeb672992a2da4c04692e7280021
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918619"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451693"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Kurz: Odesílání lokalizovaných oznámení do zařízení s iOS pomocí Azure Notification Hubs 
+# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Kurz: Odesílání lokalizovaných nabízených oznámení do zařízení s iOS pomocí Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -63,7 +63,7 @@ Zajistěte, že zařízení zaregistrovat šablonou, která odkazuje na správn�
 
 ```json
 {
-    aps:{
+    aps: {
         alert: "$(News_French)"
     }
 }
@@ -73,14 +73,14 @@ Další informace o šablonách najdete v tématu [šablony](notification-hubs-t
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Dokončení [nabízená oznámení do zařízení s Iosem konkrétní](notification-hubs-ios-xplat-segmented-apns-push-notification.md) kurz a máte kód, který je k dispozici, protože v tomto kurzu staví přímo na tento kód.
-- Visual Studio 2017 je volitelné.
+* Dokončení [nabízená oznámení do zařízení s Iosem konkrétní](notification-hubs-ios-xplat-segmented-apns-push-notification.md) kurz a máte kód, který je k dispozici, protože v tomto kurzu staví přímo na tento kód.
+* Visual Studio 2017 je volitelné.
 
 ## <a name="update-the-app-user-interface"></a>Aktualizace uživatelského rozhraní aplikace
 
 V této části upravíte novinkách aplikaci, kterou jste vytvořili v tématu [Používání centra oznámení k odesílání novinek] k odesílání lokalizovaných mimořádné zprávy pomocí šablon.
 
-Ve vaší **MainStoryboard_iPhone.storyboard**, přidat segmentované ovládací prvek se třemi jazyky: angličtina, francouzština a Mandarínština.
+Ve vaší `MainStoryboard_iPhone.storyboard`, přidat segmentované ovládací prvek se třemi jazyky: Angličtina, francouzština a Mandarínština.
 
 ![Vytvoření uživatelského rozhraní scénáři iOS][13]
 
@@ -90,7 +90,7 @@ Pak nezapomeňte přidat IBOutlet ve vašich ViewController.h, jak je znázorně
 
 ## <a name="build-the-ios-app"></a>Vytvoření aplikace pro iOS
 
-1. Ve vaší Notification.h přidat *retrieveLocale* metody a úprava úložiště a odběru metod, jak je znázorněno v následujícím kódu:
+1. Ve vaší `Notification.h` přidat `retrieveLocale` metody a úprava úložiště a odběru metod, jak je znázorněno v následujícím kódu:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -101,7 +101,7 @@ Pak nezapomeňte přidat IBOutlet ve vašich ViewController.h, jak je znázorně
 
     - (int) retrieveLocale;
     ```
-    V Notification.m, upravte *storeCategoriesAndSubscribe* metodu, přidejte parametr národního prostředí a ukládání ve výchozím nastavení uživatele:
+    Ve vaší `Notification.m`, upravit `storeCategoriesAndSubscribe` metodu tak, že přidáte `locale` parametr a jeho uložení ve výchozím nastavení uživatele:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -139,7 +139,7 @@ Pak nezapomeňte přidat IBOutlet ve vašich ViewController.h, jak je znázorně
     }
     ```
 
-    Použijte metodu *registerTemplateWithDeviceToken*, namísto *registerNativeWithDeviceToken*. Při registraci k šabloně, musíte zadat šablonu json a také název pro šablonu (jak aplikace může být vhodné zaregistrovat různé šablony služby). Ujistěte se, že k registraci kategorie jako značky, jak chcete Ujistěte se, že pro příjem notifciations těchto zpráv.
+    Použijte metodu `registerTemplateWithDeviceToken`, namísto `registerNativeWithDeviceToken`. Při registraci k šabloně, musíte zadat šablonu json a také název pro šablonu (jak aplikace může být vhodné zaregistrovat různé šablony služby). Ujistěte se, že k registraci kategorie jako značky, jak chcete Ujistěte se, že chcete dostávat oznámení těchto zpráv.
 
     Přidejte metodu pro načtení z uživatelská nastavení pro výchozí národní prostředí:
 
@@ -153,13 +153,13 @@ Pak nezapomeňte přidat IBOutlet ve vašich ViewController.h, jak je znázorně
     }
     ```
 
-2. Teď, když jste změnili třídu oznámení, budete muset Ujistěte se, že ViewController využívá nové UISegmentControl. Přidejte následující řádek v *viewDidLoad* metoda Ujistěte se, že zobrazíte národní prostředí, která je aktuálně vybrána:
+2. Teď, když jste změnili `Notifications` třídy, je nutné Ujistěte se, že `ViewController` využívá nové `UISegmentControl`. Přidejte následující řádek v `viewDidLoad` metoda Ujistěte se, že zobrazíte národní prostředí, která je aktuálně vybrána:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    Pak na vaše *odběru* metodu, změňte volání *storeCategoriesAndSubscribe* v následujícím kódu:
+    Pak na vaše `subscribe` metodu, změňte volání `storeCategoriesAndSubscribe` v následujícím kódu:
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
@@ -174,7 +174,7 @@ Pak nezapomeňte přidat IBOutlet ve vašich ViewController.h, jak je znázorně
     }];
     ```
 
-3. Nakonec budete muset aktualizovat *didRegisterForRemoteNotificationsWithDeviceToken* metoda ve vaší AppDelegate.m tak, aby správně můžete aktualizovat svoji registraci při spuštění vaší aplikace. Změňte volání *odběru* metoda oznámení s následujícím kódem:
+3. Nakonec budete muset aktualizovat `didRegisterForRemoteNotificationsWithDeviceToken` metoda ve vaší AppDelegate.m tak, aby správně můžete aktualizovat svoji registraci při spuštění vaší aplikace. Změňte volání `subscribe` metoda oznámení s následujícím kódem:
 
     ```obj-c
     NSSet* categories = [self.notifications retrieveCategories];
@@ -261,20 +261,14 @@ Pokud nemusíte mít přístup ke službě Visual Studio, nebo chcete testován�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste odeslali lokalizovaných oznámení do zařízení s Iosem. Pokud se chcete naučit nabízená oznámení odesílaná konkrétním uživatelům aplikace pro iOS, přejděte k následujícímu kurzu: 
+V tomto kurzu jste odeslali lokalizovaných oznámení do zařízení s Iosem. Pokud se chcete naučit nabízená oznámení odesílaná konkrétním uživatelům aplikace pro iOS, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
 >[Zasílání nabízených oznámení určitým uživatelům](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)
 
 <!-- Images. -->
-
 [13]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
 [14]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
-
-
-
-
-
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
@@ -292,7 +286,6 @@ V tomto kurzu jste odeslali lokalizovaných oznámení do zařízení s Iosem. P
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-ios
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [JavaScript and HTML]: ../get-started-with-push-js.md
-
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx

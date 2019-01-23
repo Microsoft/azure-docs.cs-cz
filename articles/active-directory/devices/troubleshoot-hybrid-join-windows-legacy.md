@@ -4,7 +4,7 @@ description: Řešení potíží s hybridní služby Azure Active Directory zař
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 546f9054978f0b9fbe6bb9063905c982de627442
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800855"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445282"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory 
 
@@ -73,7 +73,7 @@ Tento příkaz zobrazí dialogové okno, které vám poskytne podrobné informac
 ![Připojení k pracovní ploše pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Vyhodnoťte hybridní stav připojení k Azure AD 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Vyhodnocení hybridního stav připojení k Azure AD 
 
 Pokud zařízení nebyla připojená k hybridní Azure AD, pokuste se provést připojení k hybridní službě Azure AD. Kliknutím na tlačítko "Join". Pokud se nezdaří pokus provést připojení k hybridní službě Azure AD, zobrazí se podrobnosti o chybě.
 
@@ -116,7 +116,7 @@ Pokud zařízení nebyla připojená k hybridní Azure AD, pokuste se provést p
 
     ![Připojení k pracovní ploše pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-Informace o stavu můžete také najít v protokolu událostí v: **aplikací a služeb Log\Microsoft-Workplace Join**
+Informace o stavu můžete také najít v protokolu událostí v části: **Aplikace a služby Log\Microsoft Workplace Join**
   
 **Nejběžnější příčiny selhání hybridní službě Azure AD join jsou:** 
 

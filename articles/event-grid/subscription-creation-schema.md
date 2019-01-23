@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 05/02/2018
+ms.date: 01/02/2019
 ms.author: babanisa
-ms.openlocfilehash: cd599a45ef4d3bfd38789a71647847f55cc0b966
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9464ab89e08f53f61cb6f5a4b1e91da35b785af0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085888"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460818"
 ---
 # <a name="event-grid-subscription-schema"></a>Schéma předplatného Event Grid
 

@@ -4,7 +4,7 @@ description: Publikování aplikací pomocí Proxy aplikace a PingAccess pro pod
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c5a69e0c15d6d75bb4f182c1d8f62863aae7c760
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52111d54031b2d458b0bfc727dcb310fbbcbd9ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140842"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468592"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -73,7 +73,7 @@ Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější n
 3. Vyberte **přidat** v horní části okna.
 4. Vyberte **On-premises application**.
 5. Vyplňte požadovaná pole s informacemi o novou aplikaci. Použijte následující pokyny pro nastavení:
-   - **Interní adresa URL**: obvykle zadejte adresu URL, která vás na přihlašovací stránce aplikace, když jste v podnikové síti. V tomto scénáři konektoru je potřeba považovat za PingAccess proxy serveru na přední stránce aplikace. Použijte tento formát: `https://<host name of your PA server>:<port>`. Port, který je 3000 ve výchozím nastavení, ale můžete ho nakonfigurovat PingAccess.
+   - **Interní adresa URL**: Obvykle je zadat adresu URL, která vás na přihlašovací stránce aplikace, když jste v podnikové síti. V tomto scénáři konektoru je potřeba považovat za PingAccess proxy serveru na přední stránce aplikace. Použijte tento formát: `https://<host name of your PA server>:<port>`. Port, který je 3000 ve výchozím nastavení, ale můžete ho nakonfigurovat PingAccess.
 
     > [!WARNING]
     > Pro tento typ jednotného přihlašování interní adresa URL musí používat protokol https a http nelze použít.

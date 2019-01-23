@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: c655f117009c0c7c682ad92a951edc7e12255bc2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: autoscale
+ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326045"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463302"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Pomocí akcí automatického škálování můžete poslat e-mail a webhook oznámení výstrah ve službě Azure Monitor
 Tento článek popisuje, jak nastavit aktivační události tak, aby je volání adresy URL konkrétních webů nebo odeslat e-mailů na základě akcí automatického škálování v Azure.  
@@ -120,3 +120,4 @@ Při generování oznámení automatického škálování je datová část webh
 | oldCapacity |Ano |Aktuální (staré) počet instancí kdy automatického škálování je akce škálování |
 | newCapacity |Ano |Nový počet instancí, který prostředek, který chcete škálovat automatického škálování |
 | Vlastnosti |Ne |Volitelné. Sadu < klíč, hodnota > páry (například Dictionary < String, String >). Vlastnosti pole je volitelné. Vlastní uživatelské rozhraní nebo pracovní postup aplikace logiky na základě aplikace můžete zadat klíče a hodnoty, které mohou být předány pomocí datové části. Existuje alternativní způsob předat vlastní vlastnosti odchozí volání webhooku je použití webhooku URI samotného (jako parametry dotazu) |
+

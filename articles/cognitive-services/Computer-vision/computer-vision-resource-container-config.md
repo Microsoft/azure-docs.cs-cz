@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 97de65acf724d12afd131ede25713e8f29d30bad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579783"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477630"
 ---
 # <a name="configure-recognize-text-containers"></a>Konfigurovat rozpoznání textu kontejnery
 
@@ -32,6 +32,7 @@ Nastavení konfigurace v kontejnerech pro počítačové zpracování obrazu, js
 * [Fakturace](#billing-configuration-setting)
 * [Smlouva EULA](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [Nastavení přihlašovacích údajů proxy serveru http](#http-proxy-credentials-settings)
 * [Protokolování](#logging-configuration-settings)
 * [Připojí](#mounts-configuration-settings)
 
@@ -116,6 +117,11 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 | `TlsConnectionEstablishmentTimeoutMs` | Integer | Časový limit v milisekundách pro navázání připojení SSL/TLS s Fluentd serveru. Výchozí hodnota je 10000 milisekund (10 sekund).<br/> Pokud `UseTLS` je nastavena na hodnotu false, tato hodnota se ignoruje. |
 | `UseTLS` | Logická hodnota | Označuje, zda kontejner musí používat protokol SSL/TLS pro komunikaci se serverem Fluentd. Výchozí hodnota je false. |
 
+
+## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru http
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Konfigurace nastavení protokolování
 
 `Logging` Podporu protokolování ASP.NET Core pro váš kontejner spravovat nastavení konfigurace. Pro váš kontejner, který je možné pro aplikace ASP.NET Core můžete použít stejný konfigurační nastavení a hodnoty. Následující zprostředkovatele protokolování podporuje kontejnery pro počítačové zpracování obrazu:
@@ -164,3 +170,7 @@ Například následující příkaz definuje přípojný vazby Dockeru k `D:\Out
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Disk:Format=json
   ```
+
+## <a name="next-steps"></a>Další postup
+
+* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)

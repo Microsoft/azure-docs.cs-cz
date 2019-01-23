@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: concepts
 ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: 44507e919b7ed827eb3c08101a04849faf92293c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ec814bf641dea6f47b907e9f9e2646dfcf84ade1
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310230"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451744"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -56,7 +56,7 @@ V tuto chvíli vyhrazené modulu hardwarového zabezpečení Azure pouze poskytu
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>DOTAZ: Bude vyhrazený modulu hardwarového zabezpečení Azure hostovat Moje moduly hardwarového zabezpečení pro mě nejlepší?
 
-Microsoft pouze nabízí HSM Gemalto SafeNet Luna sítě prostřednictvím služby vyhrazené HSM a nemůže hostovat jakýmkoli zákazníkem a zařízení k dispozici.
+Microsoft pouze nabízí HSM Gemalto SafeNet Luna sítě prostřednictvím služby vyhrazené HSM a nemůže hostovat nějaká zařízení poskytnuté zákazníkem.
 
 ### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>DOTAZ: Nepodporuje vyhrazené modulu hardwarového zabezpečení Azure podporují funkce kódu PIN/ETF nebo splňovat požadavky na certifikaci PCI HSM v1 nebo v2?
 
@@ -235,7 +235,7 @@ Vyhrazená zařízení ustanovení SafeNet sítě HSM 7 služby modulu hardwarov
   * CAST
   * Ověřování algoritmem Digest/HMAC hash/zpráva: SHA-1, SHA-2, SM3
   * Odvození klíče: Režim SP800 108 čítače
-  * Zabalení klíče: SP800 38F
+  * Zabalení klíče: SP800-38F
   * Náhodné generování čísel: Schválené DRBG (SP 800-90 PEV.cenu režimu), v souladu s BSI DRG.4 FIPS 140-2
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>DOTAZ: Je vyhrazený HSM ověřené podle standardu FIPS 140-2 Level 3?
@@ -256,7 +256,7 @@ Než požádáte o zrušení zřízení, musí mít zákazník zeroized modulu H
 
 Vyhrazená zařízení ustanovení SafeNet sítě HSM 7 modulu hardwarového zabezpečení (model A790). Zde je uveden seznam maximální výkon pro některé operace: 
 
-* RSA 2048: 10 000 transakcí za sekundu
+* RSA-2048: 10 000 transakcí za sekundu
 * ECC P256: 20 000 transakcí za sekundu
 * AES-GCM: 17,000 transakcí za sekundu
 

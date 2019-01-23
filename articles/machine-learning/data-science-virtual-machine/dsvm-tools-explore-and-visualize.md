@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dfe6184779d3c26273e8e7cabef4890360cf7e76
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567379"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446251"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Data vizualizace nástroje pro zkoumání a na virtuální počítač pro datové vědy
 
@@ -32,7 +32,7 @@ Klíče krok pro datové vědy je rozumět datům. Vizualizace a nástroje na pr
 | Co je to?   | Opensourcový modul dotazů SQL u velkých objemů dat.    |
 | Podporované DSVM verze      | Windows, Linux  |
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?      |  Nainstalované v `/dsvm/tools/drill*` vložený pouze v režimu   |
-| Typické použití      |  Která zkoumání dat bez nutnosti ETL. Dotazování různých datových zdrojů a formátů includign CSV, JSON, relačních tabulkách, Hadoop     |
+| Typické použití      |  Která zkoumání dat bez nutnosti ETL. Dotazy na různých datových zdrojů a formátů, včetně CSV, JSON, relačních tabulkách, Hadoop     |
 | Jak používat nebo ji spustit?      | Zástupce na ploše  <br/> [Začínáme se přejít na 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | Související nástroje na datové VĚDY      |   Rattle, Weka, SQL Server Management Studio      |
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 69e3708ef4c31e2dd91b5f50baecc46ea129cf33
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346066"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452220"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Přehled akcelerátorů řešení simulace zařízení
 
@@ -28,7 +28,7 @@ Při vývoji řešení IoT, experimentování a testování se základními post
 
 ![Ukázka dronu simulace](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Pomocí simulace zařízení můžete definovat modely zařízení pro simulaci fyzických zařízení. Tento model zahrnuje formáty zpráv, dvojčete vlastnosti a metody. Můžete také simulovat chování komplexní zařízení pomocí JavaScriptu.
+Pomocí simulace zařízení můžete definovat modely zařízení pro simulaci skutečných zařízení. Tento model zahrnuje formáty zpráv, dvojčete vlastnosti a metody. Můžete také simulovat chování komplexní zařízení pomocí JavaScriptu.
 
 Můžete spouštět simulace pro tisíce zařízení připojující se k libovolné službě IoT hub. Abyste s testováním, Volitelně můžete nasadit službu IoT hub společně s simulace zařízení pro samostatné prostředí.
 

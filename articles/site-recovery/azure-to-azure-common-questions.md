@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260460"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449550"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
 
@@ -101,8 +101,8 @@ Následující snímek obrazovky ukazuje příklad. Na snímku obrazovky:
 ### <a name="how-far-back-can-i-recover"></a>Jak daleko mohou obnovit?
 Nejstarší bod obnovení, který vám pomůže je 72 hodin.
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-pruned"></a>Co se stane, když mám zásady replikace 24 hodin a problém brání Site Recovery z generování body obnovení po dobu více než 24 hodin? Budou zmenšil předchozí body obnovení?
-Ne, Site Recovery zachovají všechna vaše předchozí body obnovení v tomto případě. 
+### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Co se stane, když mám zásady replikace 24 hodin a problém brání Site Recovery z generování body obnovení po dobu více než 24 hodin? Budou Moje předchozí body obnovení ztraceny?
+Ne, Site Recovery budete mít všechna vaše předchozí body obnovení. V závislosti na interval uchovávání bodů obnovení, 24 hodin. v takovém případě Site Recovery nahrazuje nejstarší bod pouze v případě, že je generování nových bodů. V takovém případě nebudou žádné nový bod obnovení, které jsou generované kvůli problému, staré body zůstane zachován beze změny Jakmile dosáhneme okno uchování.
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Po povolení replikace na virtuálním počítači, jak změním zásady replikace? 
 Přejděte na **trezor Site Recovery** > **infrastruktura Site Recovery** > **zásady replikace**. Vyberte zásadu, kterou chcete upravit a uložit změny. Všechny změny se uplatní na všechny stávající replikace příliš. 

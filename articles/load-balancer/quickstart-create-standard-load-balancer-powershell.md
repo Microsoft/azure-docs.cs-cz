@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 93bcf30010b6fecd302342d262080fcfe18ed0ce
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 62ccf86d138ff71706aca4c19f548f175e6c09ce
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425233"
+ms.locfileid: "54447611"
 ---
 # <a name="get-started"></a>Rychlý start: Vytvořit Standard pro vyrovnávání zatížení pomocí Azure Powershellu
 Tento rychlý start ukazuje, jak pomocí Azure PowerShellu vytvořit Load Balancer úrovně Standard. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače s Windows Serverem, které mezi sebou budou vyrovnávat zatížení webové aplikace. Další informace o Load Balanceru úrovně Standard najdete v tématu [Co je Load Balancer úrovně Standard](load-balancer-standard-overview.md).
@@ -281,7 +281,7 @@ Parametr `-AsJob` vytvoří virtuální počítač jako úlohu na pozadí, takž
  
 Následujícím způsobem nainstalujte na obou back-endových virtuálních počítačích službu IIS s vlastní webovou stránkou:
 
-1. Získejte veřejnou IP adresu Load Balanceru. Pomocí rutiny `Get-AzureRmPublicIPAdress` získejte veřejnou IP adresu Load Balanceru.
+1. Získejte veřejnou IP adresu Load Balanceru. Pomocí rutiny `Get-AzureRmPublicIPAddress` získejte veřejnou IP adresu Load Balanceru.
 
   ```azurepowershell-interactive
     Get-AzureRmPublicIPAddress `

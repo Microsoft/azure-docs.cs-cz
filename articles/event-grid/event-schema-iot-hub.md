@@ -8,14 +8,14 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: df1c0f8256b49e23b720df47c513fba8c62677b5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143569"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475199"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schéma událostí Azure Event Grid pro službu IoT Hub
 
@@ -115,18 +115,18 @@ Všechny události obsahovat stejná data nejvyšší úrovně:
 | -------- | ---- | ----------- |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| Předmět | řetězec | Vydavatel definované cesta předmět události. |
-| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
 | čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | data | objekt | Data událostí služby IoT Hub.  |
 | dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Pro všechny události služby IoT Hub datový objekt obsahuje následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| HubName | řetězec | Název služby IoT Hub, kde byl vytvořen zařízení nebo je odstranit. |
+| hubName | řetězec | Název služby IoT Hub, kde byl vytvořen zařízení nebo je odstranit. |
 | deviceId | řetězec | Jedinečný identifikátor zařízení. Tento řetězec malá a velká písmena mohou být dlouhé až 128 znaků a podporuje ASCII 7bitové alfanumerické znaky a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 
 Obsah datového objektu se liší pro každý zdroj události. Pro **zařízení připojeno** a **odpojení zařízení** události služby IoT Hub, datový objekt obsahuje následující vlastnosti:
@@ -142,8 +142,8 @@ Obsah datového objektu se liší pro každý zdroj události. Pro **zařízení
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | dvojče | objekt | Informace o dvojčeti zařízení, což je cloudové represenation metadat zařízení aplikace. | 
-| ID zařízení | řetězec | Jedinečný identifikátor dvojčeti zařízení. | 
-| Značka Etag | řetězec | Validátor pro zajištění konzistence aktualizace dvojčete zařízení. Každá značka etag je musí být jedinečný na dvojče zařízení. |  
+| deviceID | řetězec | Jedinečný identifikátor dvojčeti zařízení. | 
+| etag | řetězec | Validátor pro zajištění konzistence aktualizace dvojčete zařízení. Každá značka etag je musí být jedinečný na dvojče zařízení. |  
 | deviceEtag| řetězec | Validátor pro zajištění konzistence aktualizací do registru zařízení. Každý deviceEtag je musí být jedinečný na registr zařízení. |
 | status | řetězec | Dvojče zařízení určuje, zda je povoleno nebo zakázáno. | 
 | statusUpdateTime | řetězec | Aktualizovat ISO8601 časové razítko poslední stav dvojčete zařízení. |
@@ -154,7 +154,7 @@ Obsah datového objektu se liší pro každý zdroj události. Pro **zařízení
 | X509Thumbprint | řetězec | Jedinečná hodnota pro x509 je kryptografický otisk certifikátu, běžně používají k vyhledání konkrétního certifikátu v úložišti certifikátů. Kryptografický otisk generuje dynamicky pomocí algoritmu SHA1 a fyzicky neexistuje v certifikátu. | 
 | primaryThumbprint | řetězec | Primární kryptografický otisk pro x509 certifikátu. |
 | secondaryThumbprint | řetězec | Sekundární kryptografický otisk pro x509 certifikátu. | 
-| verze | integer | Celé číslo, které je zvýšen o každý čas zařízení dvojčete se aktualizuje. |
+| version | integer | Celé číslo, které je zvýšen o každý čas zařízení dvojčete se aktualizuje. |
 | požadované | objekt | Část vlastnosti, které může zapisovat pouze pomocí back endové aplikace a číst zařízení. | 
 | Hlášená | objekt | Část vlastnosti, které může zapisovat pouze podle zařízení a číst back endové aplikace. |
 | lastUpdated | řetězec | Aktualizovat ISO8601 časové razítko poslední vlastnosti dvojčete zařízení. | 
